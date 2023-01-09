@@ -23,6 +23,8 @@ packages/varlet-cli/site/site.config.json
 packages/varlet-cli/site/*.site.config.json
 packages/varlet-cli/lib/node/bin.d.ts
 
+packages/varlet-vite-plugins/lib
+
 packages/varlet-ui/site
 packages/varlet-ui/lib
 packages/varlet-ui/es

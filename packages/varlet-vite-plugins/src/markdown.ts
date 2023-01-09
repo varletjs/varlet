@@ -1,30 +1,29 @@
-import markdown from 'markdown-it'
+import markdownIt from 'markdown-it'
 import hljs from 'highlight.js'
+import { kebabCase } from '@varlet/shared'
+import type { Plugin } from 'vite'
 
-function kebabCase(key) {
-  const ret = key.replace(/([A-Z])/g, ' $1').trim()
-  return ret.split(' ').join('-').toLowerCase()
-}
-
-function htmlWrapper(html) {
+function htmlWrapper(html: string) {
   const hGroup = html.replace(/<h3/g, ':::<h3').replace(/<h2/g, ':::<h2').split(':::')
+
   const cardGroup = hGroup
     .map((fragment) => (fragment.includes('<h3') ? `<div class="card">${fragment}</div>` : fragment))
     .join('')
+
   return cardGroup.replace(/<code>/g, '<code v-pre>')
 }
 
-function extractComponents(source) {
+function extractComponents(source: string) {
   const componentRE = /import (.+) from ['"].+['"]/
   const importRE = /import .+ from ['"].+['"]/g
   const vueRE = /```vue((.|\r|\n)*?)```/g
-  const imports = []
-  const components = []
+  const imports: string[] = []
+  const components: string[] = []
 
   source = source.replace(vueRE, (_, p1) => {
     const partImports = p1.match(importRE)
 
-    const partComponents = partImports?.map((importer) => {
+    const partComponents = partImports?.map((importer: string) => {
       importer = importer.replace(/(\n|\r)/g, '')
       const component = importer.replace(componentRE, '$1')
       !imports.includes(importer) && imports.push(importer)
@@ -43,7 +42,7 @@ function extractComponents(source) {
   }
 }
 
-function injectCodeExample(source) {
+function injectCodeExample(source: string) {
   const codeRE = /(<pre class="hljs">(.|\r|\n)*?<\/pre>)/g
 
   return source.replace(codeRE, (str) => {
@@ -63,7 +62,7 @@ function injectCodeExample(source) {
   })
 }
 
-function highlight(str, lang, style) {
+function highlight(str: string, lang: string, style?: string) {
   let link = ''
 
   if (style) {
@@ -82,9 +81,9 @@ function highlight(str, lang, style) {
   return ''
 }
 
-function markdownToVue(source, options) {
+function markdownToVue(source: string, options: MarkdownOptions) {
   const { source: vueSource, imports, components } = extractComponents(source)
-  const md = markdown({
+  const md = markdownIt({
     html: true,
     highlight: (str, lang) => highlight(str, lang, options.style),
   })
@@ -107,10 +106,16 @@ export default {
   `
 }
 
-export default function VarletMarkdownVitePlugin(options) {
+export interface MarkdownOptions {
+  style?: string
+}
+
+export function markdown(options: MarkdownOptions): Plugin {
   return {
-    name: 'varlet-markdown-vite-plugin',
+    name: 'vite-plugin-varlet-markdown',
+
     enforce: 'pre',
+
     transform(source, id) {
       if (!/\.md$/.test(id)) {
         return
@@ -118,11 +123,12 @@ export default function VarletMarkdownVitePlugin(options) {
 
       try {
         return markdownToVue(source, options)
-      } catch (e) {
+      } catch (e: any) {
         this.error(e)
         return ''
       }
     },
+
     async handleHotUpdate(ctx) {
       if (!/\.md$/.test(ctx.file)) return
 

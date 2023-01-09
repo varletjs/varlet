@@ -1,10 +1,9 @@
-import vue from '@vitejs/plugin-vue'
-import md from '@varlet/markdown-vite-plugin'
-import jsx from '@vitejs/plugin-vue-jsx'
 import fse from 'fs-extra'
-import { injectHtml } from 'vite-plugin-html'
+import vue from '@vitejs/plugin-vue'
+import jsx from '@vitejs/plugin-vue-jsx'
+import { markdown, html, inlineCss } from '@varlet/vite-plugins'
+import { kebabCase } from '@varlet/shared'
 import {
-  CWD,
   ES_DIR,
   LIB_DIR,
   SITE_CONFIG,
@@ -16,13 +15,12 @@ import {
   UMD_DIR,
   VITE_RESOLVE_EXTENSIONS,
 } from '../shared/constant.js'
-import { InlineConfig, PluginOption } from 'vite'
+import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
-import { kebabCase } from '@varlet/shared'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config'
 
-const { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } = fse
+const { copyFileSync, removeSync } = fse
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -33,6 +31,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
     resolve: {
       extensions: VITE_RESOLVE_EXTENSIONS,
+
       alias: {
         '@config': SITE_CONFIG,
         '@pc-routes': SITE_PC_ROUTES,
@@ -51,14 +50,17 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
       vue({
         include: [/\.vue$/, /\.md$/],
       }),
-      md({ style: get(varletConfig, 'highlight.style') }),
+
       jsx(),
-      injectHtml({
+
+      markdown({ style: get(varletConfig, 'highlight.style') }),
+
+      html({
         data: {
-          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
-          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           logo: get(varletConfig, `logo`),
           baidu: get(varletConfig, `analysis.baidu`, ''),
+          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
+          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
         },
       }),
     ],
@@ -88,39 +90,6 @@ export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConf
   }
 }
 
-function inlineCSS(fileName: string, dir: string): PluginOption {
-  return {
-    name: 'varlet-inline-css-vite-plugin',
-    apply: 'build',
-    closeBundle() {
-      const cssFile = resolve(dir, 'style.css')
-      if (!pathExistsSync(cssFile)) {
-        return
-      }
-
-      const jsFile = resolve(dir, fileName)
-      const cssCode = readFileSync(cssFile, 'utf-8')
-      const jsCode = readFileSync(jsFile, 'utf-8')
-      const injectCode = `;(function(){var style=document.createElement('style');style.type='text/css';\
-style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.replace(/\\/g, '\\\\')}\`));\
-var head=document.querySelector('head');head.appendChild(style)})();`
-      writeFileSync(jsFile, `${injectCode}${jsCode}`)
-      copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
-      removeSync(cssFile)
-    },
-  }
-}
-
-function clear(): PluginOption {
-  return {
-    name: 'varlet-clear-vite-plugin',
-    apply: 'build',
-    closeBundle() {
-      removeSync(resolve(CWD, 'dist'))
-    },
-  }
-}
-
 export function getESMBundleConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.esm.js`
@@ -129,7 +98,8 @@ export function getESMBundleConfig(varletConfig: Required<VarletConfig>): Inline
     logLevel: 'silent',
 
     build: {
-      emptyOutDir: true,
+      emptyOutDir: false,
+      copyPublicDir: false,
       lib: {
         name,
         formats: ['es'],
@@ -147,20 +117,21 @@ export function getESMBundleConfig(varletConfig: Required<VarletConfig>): Inline
         },
       },
     },
-
-    plugins: [clear()],
   }
 }
 
 export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const name = get(varletConfig, 'name')
   const fileName = `${kebabCase(name)}.js`
+  const jsFile = resolve(UMD_DIR, fileName)
+  const cssFile = resolve(UMD_DIR, 'style.css')
 
   return {
     logLevel: 'silent',
 
     build: {
       emptyOutDir: true,
+      copyPublicDir: false,
       lib: {
         name,
         formats: ['umd'],
@@ -179,6 +150,15 @@ export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig
       },
     },
 
-    plugins: [inlineCSS(fileName, UMD_DIR), clear()],
+    plugins: [
+      inlineCss({
+        jsFile,
+        cssFile,
+        onEnd() {
+          copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
+          removeSync(cssFile)
+        },
+      }),
+    ],
   }
 }
