@@ -42,16 +42,15 @@ export default defineComponent({
           ))}
           {enabledModes.value.length > 1 && (
             <var-button
-              type="primary"
               round
+              text
               onClick={() => {
                 const index = enabledModes.value.findIndex((m) => m.name === props.mode)
                 emit('update:mode', enabledModes.value[(index + 1) % enabledModes.value.length].name)
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <var-icon name="menu-up" />
-                <var-icon name="menu-down" />
+                <var-icon size={20} name="unfold-more-horizontal" />
               </div>
             </var-button>
           )}
