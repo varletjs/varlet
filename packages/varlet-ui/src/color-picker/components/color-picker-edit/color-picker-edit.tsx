@@ -3,7 +3,6 @@ import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-
 import { createNamespace } from '../../../utils/components'
 import { modes as defaultModes } from '../../utils/color-utils'
 import './color-picker-edit.less'
-import VarButton from '../../../button/index'
 
 const { n, classes } = createNamespace('color-picker-edit')
 export default defineComponent({

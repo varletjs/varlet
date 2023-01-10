@@ -1,9 +1,10 @@
 import type { PropType, ExtractPropTypes } from 'vue'
-import type { ColorPickerColor } from '../../utils/color-utils-types'
+import type { ColorPickerColor, HSVA } from '../../utils/color-utils-types'
 
 export const colorPickerAlphaSliderProps = {
   color: {
-    type: Object,
+    type: Object as PropType<HSVA>,
+    default: { a: 1, h: 0, s: 1, v: 1 },
   },
   modelValue: {
     type: Object as PropType<ColorPickerColor>,

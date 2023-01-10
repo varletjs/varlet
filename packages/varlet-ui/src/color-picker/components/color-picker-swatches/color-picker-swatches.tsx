@@ -2,7 +2,7 @@
 import './color-picker-swatches.less'
 
 import colors from '../../utils/color'
-import { fromHSVA, HSVAtoHex, parseBaseColor, parseColor } from '../../utils/color-utils'
+import { fromHex, parseBaseColor } from '../../utils/color-utils'
 // Types
 import { defineComponent, PropType, toRefs } from 'vue'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
@@ -55,11 +55,12 @@ export default defineComponent({
               <div class="var-color-picker-swatches__swatch">
                 {swatch.map((colorItem) => {
                   const hsv = parseBaseColor(colorItem)
-                  const iconColor = changeColorValue(fromHSVA(hsv), 0.5)
+                  const iconColor = changeColorValue(hsv!, 0.5)
+                  console.log(iconColor)
                   return (
                     <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', hsv)}>
                       <div style={{ background: colorItem }}>
-                        {props.color && deepEqual(props.color, hsv) ? (
+                        {color.value && deepEqual(color.value, hsv) ? (
                           <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />
                         ) : undefined}
                       </div>
@@ -74,5 +75,3 @@ export default defineComponent({
     }
   },
 })
-
-export type VarColorPickerSwatches = InstanceType<typeof VarColorPickerSwatches>

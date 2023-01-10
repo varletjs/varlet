@@ -4,7 +4,6 @@ import { DOMUtils } from '../../utils/dom-dragger'
 import './color-picker-hue-slider.less'
 import { HSVA } from '../../utils/color-utils-types'
 
-type ColorPickerColor = NonNullable<ColorPickerHueSliderProps['color']>
 type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'ColorHueSlider',

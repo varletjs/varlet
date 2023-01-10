@@ -11,14 +11,15 @@ export default defineComponent({
   props: colorPickerPaletteProps,
   emits: ['update:color', 'changeTextColor'],
   setup(props: ColorPickerPaletteProps, ctx) {
-    const { n, classes } = createNamespace('color-picker')
+    const { n } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const paletteElement = ref<HTMLElement | null>(null)
     const canvasElement = ref<HTMLCanvasElement | null>(null)
     const handlerElement = ref<HTMLElement | null>(null)
     const paletteInstance = getCurrentInstance()
-
+    const height = Number(props.height)
+    const width = Number(props.width)
     const cursorTop = ref(0)
     const cursorLeft = ref(0)
     const getDotStyle = computed(() => {
@@ -32,18 +33,18 @@ export default defineComponent({
         const canvas = canvasElement.value.getContext('2d')
         if (canvas) {
           const parentWidth = paletteElement.value?.offsetWidth || 0
-          canvasElement.value.width = props.width
-          canvasElement.value.height = props.height
+          canvasElement.value.width = width
+          canvasElement.value.height = height
           const saturationGradient = canvas.createLinearGradient(0, 0, parentWidth as number, 0)
           saturationGradient.addColorStop(0, 'hsla(0, 0%, 100%, 1)') // white
           saturationGradient.addColorStop(1, `hsla(${props.color?.h ?? 0}, 100%, 50%, 1)`)
           canvas.fillStyle = saturationGradient
-          canvas.fillRect(0, 0, parentWidth, props.height)
-          const valueGradient = canvas.createLinearGradient(0, 0, 0, props.height)
+          canvas.fillRect(0, 0, parentWidth, height)
+          const valueGradient = canvas.createLinearGradient(0, 0, 0, height)
           valueGradient.addColorStop(0, 'hsla(0, 0%, 100%, 0)') // transparent
           valueGradient.addColorStop(1, 'hsla(0, 0%, 0%, 1)') // black
           canvas.fillStyle = valueGradient
-          canvas.fillRect(0, 0, parentWidth, props.height)
+          canvas.fillRect(0, 0, parentWidth, height)
         }
       }
     }
@@ -56,7 +57,7 @@ export default defineComponent({
         let left = event.clientX - rect.left
         let top = event.clientY - rect.top
         left = clamp(left, 0, parentWidth)
-        top = clamp(top, 0, props.height)
+        top = clamp(top, 0, height)
         cursorLeft.value = left
         cursorTop.value = top
         const isChangeTextColor = computed(() => {
@@ -68,8 +69,8 @@ export default defineComponent({
 
         ctx.emit('update:color', {
           h: props.color?.h ?? 0,
-          s: clamp(event.clientX - rect.left, 0, props.width) / props.width,
-          v: 1 - clamp(event.clientY - rect.top, 0, props.height) / props.height,
+          s: clamp(event.clientX - rect.left, 0, width) / width,
+          v: 1 - clamp(event.clientY - rect.top, 0, height) / height,
           a: props.color?.a,
         })
         ctx.emit('changeTextColor', isChangeTextColor.value)

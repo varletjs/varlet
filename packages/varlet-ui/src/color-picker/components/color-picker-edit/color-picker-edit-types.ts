@@ -1,6 +1,6 @@
 import type { PropType, ExtractPropTypes } from 'vue'
 import { modes } from '../../utils/color-utils'
-import type { HSV, HSVA, InitialColor } from '../../utils/color-utils-types'
+import type { HSVA } from '../../utils/color-utils-types'
 
 export const colorPickerEditProps = {
   mode: {
@@ -9,7 +9,7 @@ export const colorPickerEditProps = {
   modes: {
     type: Array as PropType<string[]>,
     default: () => Object.keys(modes),
-    // validator: (v: any) => Array.isArray(v) && v.every(m => Object.keys(modes).includes(m)),
+    validator: (v: any) => Array.isArray(v) && v.every((m) => Object.keys(modes).includes(m)),
   },
   disabled: {
     type: Boolean,

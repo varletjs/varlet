@@ -183,7 +183,7 @@ export function HexToHSVA(hex: Hex): HSVA {
   return RGBAtoHSVA(rgb)
 }
 
-export function HSVAtoHex(hsva: HSVA | null): Hex {
+export function HSVAtoHex(hsva: HSVA): Hex {
   return RGBAtoHex(HSVAtoRGBA(hsva!))
 }
 

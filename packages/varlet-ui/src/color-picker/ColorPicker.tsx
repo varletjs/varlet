@@ -2,8 +2,7 @@ import { defineComponent, ref, computed, toRefs, onMounted, StyleValue, Computed
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVAtoHex } from './utils/color-utils'
-import { HSV, HSVA, InitialColor } from './utils/color-utils-types'
-import VarColorPickerPreview from './components/color-picker-preview/color-picker-preview'
+import { HSVA } from './utils/color-utils-types'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
 import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
 import VarColorPickerSwatches from './components/color-picker-swatches/color-picker-swatches'
@@ -14,9 +13,6 @@ import '../styles/elevation.less'
 
 export default defineComponent({
   name: 'VarColorPicker',
-  components: {
-    VarColorPickerPreview,
-  },
   props: colorPickerProps,
   emits: ['update:modelValue'],
   setup(props: ColorPickerProps, { emit }) {
