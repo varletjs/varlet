@@ -56,7 +56,6 @@ export default defineComponent({
                 {swatch.map((colorItem) => {
                   const hsv = parseBaseColor(colorItem)
                   const iconColor = changeColorValue(hsv!, 0.5)
-                  console.log(iconColor)
                   return (
                     <div class="var-color-picker-swatches__color" onClick={() => emit('update:color', hsv)}>
                       <div style={{ background: colorItem }}>
