@@ -44,6 +44,6 @@ export const colorPickerProps = {
     type: Boolean,
     default: false,
   },
-} as const
+}
 
 export type ColorPickerProps = ExtractPropTypes<typeof colorPickerProps>

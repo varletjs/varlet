@@ -20,12 +20,9 @@ export default defineComponent({
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
     const hsva = computed(() => parseBaseColor(modelValue.value))
-    const hex = computed(() => HSVAtoHex(hsva.value))
-    console.log(hex.value)
-
+    const hex = computed(() => HSVAtoHex(hsva.value!))
     function updateModelValueColor(color: any) {
       initialColor.value = parseBaseColor(color)
-      console.log(initialColor.value)
       const value = extractBaseColor(initialColor.value, props.modelValue)
       emit('update:modelValue', value)
     }
