@@ -4,7 +4,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `v-model:value` | 颜色选择器值 | _string_ | `undefined` |
+| `v-model` | 颜色选择器值 | _string_ | `undefined` |
 | `mode` | 您可以使用 mode 指定用户可以使用哪些输入模式 | _rgba ｜ hsla ｜ hexa_ | `rgba` |
 | `swatches` | 设置可用的颜色样本以供选择 | _string[]_ | `undefined` |
 | `swatches-max-height` | 样本最大高度 | _string / number_ | `150px`  |
