@@ -146,24 +146,25 @@ function handleAutoLoadingClick() {
 
 ### Props
 
-| Prop             | Description                                                                        | Type      | Default        |
-|------------------|------------------------------------------------------------------------------------|-----------|----------------|
-| `type`           | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `size`           | Button size, Can be set to `normal` `mini` `small` `large`                         | _string_  | `normal`       |
-| `loading`        | Loading status                                                                     | _boolean_ | `false`        |
-| `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                      | _string  \| number_        | `-`      |
-| `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`              | _string_  | `circle`       |
-| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                        | _string_  | `normal`       |
-| `loading-color`  | Loading color                                                                      | _string_  | `currentColor` |
-| `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                              | _boolean_ | `false`        |
-| `round`          | Whether to be round button                                                         | _boolean_ | `false`        |
-| `block`          | Whether to be block button                                                         | _boolean_ | `false`        |
-| `text`           | Whether to be text button                                                          | _boolean_ | `false`        |
-| `outline`        | Whether to be outline button                                                       | _boolean_ | `false`        |
-| `disabled`       | Whether to disable button                                                          | _boolean_ | `false`        |
-| `ripple`         | Whether to be ripple button                                                        | _boolean_ | `true`         |
-| `text-color`     | Button Text color                                                                  | _string_  | `-`            |
-| `color`          | Button background color                                                            | _string_  | `-`            |
+| Prop             | Description                                                                             | Type      | Default        |
+|------------------|-----------------------------------------------------------------------------------------|-----------|----------------|
+| `type`           | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger`      | _string_  | `default`      |
+| `native-type`    | Native button type, Can be set to `button` `submit` `reset` | _string_  | `button`       |
+| `size`           | Button size, Can be set to `normal` `mini` `small` `large`                              | _string_  | `normal`       |
+| `loading`        | Loading status                                                                          | _boolean_ | `false`        |
+| `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                           | _string  \| number_        | `-`      |
+| `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`                   | _string_  | `circle`       |
+| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                             | _string_  | `normal`       |
+| `loading-color`  | Loading color                                                                           | _string_  | `currentColor` |
+| `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                                   | _boolean_ | `false`        |
+| `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
+| `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
+| `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
+| `outline`        | Whether to be outline button                                                            | _boolean_ | `false`        |
+| `disabled`       | Whether to disable button                                                               | _boolean_ | `false`        |
+| `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
+| `text-color`     | Button Text color                                                                       | _string_  | `-`            |
+| `color`          | Button background color                                                                 | _string_  | `-`            |
 
 ### Events
 

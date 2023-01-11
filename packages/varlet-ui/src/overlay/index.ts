@@ -5,6 +5,6 @@ Overlay.install = function (app: App) {
   app.component(Overlay.name, Overlay)
 }
 
-export const _PopupComponent = Overlay
+export const _OverlayComponent = Overlay
 
 export default Overlay

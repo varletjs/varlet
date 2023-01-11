@@ -18,6 +18,7 @@
       color: textColor,
       background: color,
     }"
+    :type="nativeType"
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"

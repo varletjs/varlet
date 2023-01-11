@@ -1,11 +1,12 @@
 import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize, ListenerProp } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
-import { VNode } from 'vue'
+import { ButtonHTMLAttributes, VNode } from 'vue'
 
 export { ButtonType, ButtonSize }
 
 export interface ButtonProps extends BasicAttributes {
   type?: ButtonType
+  nativeType?: ButtonHTMLAttributes['type']
   size?: ButtonSize
   loading?: boolean
   round?: boolean
