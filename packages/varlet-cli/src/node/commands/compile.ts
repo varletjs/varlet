@@ -34,14 +34,16 @@ export async function compile(options: CompileCommandOptions) {
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
   process.env.TARGET_MODULE = 'module'
+  process.env.BABEL_MODULE = 'module'
   await runTask('module', compileModule)
 
   process.env.TARGET_MODULE = 'esm-bundle'
-  await runTask('esm bundle', () => compileModule('esm-bundle'))
+  await runTask('esm bundle', compileModule)
 
   process.env.TARGET_MODULE = 'commonjs'
-  await runTask('commonjs', () => compileModule('commonjs'))
+  process.env.BABEL_MODULE = 'commonjs'
+  await runTask('commonjs', compileModule)
 
   process.env.TARGET_MODULE = 'umd'
-  !options.noUmd && (await runTask('umd', () => compileModule('umd')))
+  !options.noUmd && (await runTask('umd', compileModule))
 }

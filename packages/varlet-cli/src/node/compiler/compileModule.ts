@@ -12,7 +12,7 @@ import {
 } from '../shared/constant.js'
 import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils.js'
 import { compileSFC } from './compileSFC.js'
-import { compileESEntry, compileCommonJSEntry, compileScriptFile } from './compileScript.js'
+import { compileESEntry, compileCommonJSEntry, compileScriptFile, getScriptExtname } from './compileScript.js'
 import { clearLessFiles, compileLess } from './compileStyle.js'
 import { getESMBundleConfig, getUMDConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
@@ -20,24 +20,14 @@ import { generateReference } from './compileTypes.js'
 
 const { copy, ensureFileSync, readdir, removeSync } = fse
 
-export function compileUMD() {
-  return new Promise<void>((resolve, reject) => {
-    getVarletConfig().then((varletConfig) => {
-      build(getUMDConfig(varletConfig))
-        .then(() => resolve())
-        .catch(reject)
-    })
-  })
+export async function compileUMD() {
+  const varletConfig = await getVarletConfig()
+  await build(getUMDConfig(varletConfig))
 }
 
-export function compileESMBundle() {
-  return new Promise<void>((resolve, reject) => {
-    getVarletConfig().then((varletConfig) => {
-      build(getESMBundleConfig(varletConfig))
-        .then(() => resolve())
-        .catch(reject)
-    })
-  })
+export async function compileESMBundle() {
+  const varletConfig = await getVarletConfig()
+  await build(getESMBundleConfig(varletConfig))
 }
 
 export async function compileDir(dir: string) {
@@ -65,20 +55,20 @@ export async function compileFile(file: string) {
   isDir(file) && (await compileDir(file))
 }
 
-export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' | boolean = false) {
-  if (modules === 'umd') {
+export async function compileModule() {
+  const targetModule = process.env.TARGET_MODULE
+
+  if (targetModule === 'umd') {
     await compileUMD()
     return
   }
 
-  if (modules === 'esm-bundle') {
+  if (targetModule === 'esm-bundle') {
     await compileESMBundle()
     return
   }
 
-  process.env.BABEL_MODULE = modules === 'commonjs' ? 'commonjs' : 'module'
-
-  const dest = modules === 'commonjs' ? LIB_DIR : ES_DIR
+  const dest = targetModule === 'commonjs' ? LIB_DIR : ES_DIR
   await copy(SRC_DIR, dest)
   const moduleDir: string[] = await readdir(dest)
 
@@ -86,7 +76,7 @@ export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' |
     moduleDir.map((filename: string) => {
       const file: string = resolve(dest, filename)
 
-      isDir(file) && ensureFileSync(resolve(file, './style/index.js'))
+      isDir(file) && ensureFileSync(resolve(file, `./style/index.${getScriptExtname()}`))
 
       return isDir(file) ? compileDir(file) : null
     })
@@ -94,7 +84,7 @@ export async function compileModule(modules: 'umd' | 'commonjs' | 'esm-bundle' |
 
   const publicDirs = await getPublicDirs()
 
-  if (modules === 'commonjs') {
+  if (targetModule === 'commonjs') {
     await compileCommonJSEntry(dest, publicDirs)
   } else {
     await compileESEntry(dest, publicDirs)

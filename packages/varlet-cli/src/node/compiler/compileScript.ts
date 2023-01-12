@@ -25,7 +25,7 @@ export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/
 export const REQUIRE_JSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]\))(?!\s*['"`])/g
 export const REQUIRE_TSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]\))(?!\s*['"`])/g
 
-const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
+const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.${getScriptExtname()}${p2}`
 
 export const replaceVueExt = (script: string): string =>
   script.replace(IMPORT_VUE_PATH_RE, scriptReplacer).replace(REQUIRE_VUE_PATH_RE, scriptReplacer)
@@ -51,9 +51,9 @@ export const moduleCompatible = async (script: string): Promise<string> => {
 }
 
 export async function compileScript(script: string, file: string) {
-  const modules = process.env.BABEL_MODULE
+  const targetModule = process.env.TARGET_MODULE
 
-  if (modules === 'commonjs') {
+  if (targetModule === 'commonjs') {
     script = await moduleCompatible(script)
   }
 
@@ -61,15 +61,15 @@ export async function compileScript(script: string, file: string) {
     filename: file,
   })) as BabelFileResult
 
-  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
-  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
+  code = extractStyleDependencies(file, code as string, targetModule === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
+  code = extractStyleDependencies(file, code as string, targetModule === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
   code = replaceVueExt(code as string)
   code = replaceTSXExt(code as string)
   code = replaceJSXExt(code as string)
   code = replaceTSExt(code as string)
 
   removeSync(file)
-  writeFileSync(replaceExt(file, '.js'), code, 'utf8')
+  writeFileSync(replaceExt(file, `.${getScriptExtname()}`), code, 'utf8')
 }
 
 export async function compileScriptFile(file: string) {
@@ -78,23 +78,32 @@ export async function compileScriptFile(file: string) {
   await compileScript(sources, file)
 }
 
+export function getScriptExtname() {
+  if (process.env.TARGET_MODULE === 'module') {
+    return 'mjs'
+  }
+
+  return 'js'
+}
+
 export async function compileESEntry(dir: string, publicDirs: string[]) {
   const imports: string[] = []
   const plugins: string[] = []
   const constInternalComponents: string[] = []
   const cssImports: string[] = []
   const publicComponents: string[] = []
+  const scriptExtname = getScriptExtname()
 
   publicDirs.forEach((dirname: string) => {
     const publicComponent = bigCamelize(dirname)
 
     publicComponents.push(publicComponent)
-    imports.push(`import ${publicComponent}, * as ${publicComponent}Module from './${dirname}'`)
+    imports.push(`import ${publicComponent}, * as ${publicComponent}Module from './${dirname}/index.${scriptExtname}'`)
     constInternalComponents.push(
       `export const _${publicComponent}Component = ${publicComponent}Module._${publicComponent}Component || {}`
     )
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssImports.push(`import './${dirname}/style'`)
+    cssImports.push(`import './${dirname}/style/index.${scriptExtname}'`)
   })
 
   const install = `
@@ -138,9 +147,9 @@ export default {
 `
 
   await Promise.all([
-    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'umdIndex.js'), umdTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'index.mjs'), indexTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'index.umd.mjs'), umdTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'style.mjs'), styleTemplate, 'utf-8'),
   ])
 }
 
@@ -154,9 +163,9 @@ export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
     const publicComponent = bigCamelize(dirname)
 
     publicComponents.push(publicComponent)
-    requires.push(`var ${publicComponent} = require('./${dirname}')['default']`)
+    requires.push(`var ${publicComponent} = require('./${dirname}/index.js')['default']`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssRequires.push(`require('./${dirname}/style')`)
+    cssRequires.push(`require('./${dirname}/style/index.js')`)
   })
 
   const install = `

@@ -93,7 +93,7 @@ export async function compileSFC(sfc: string) {
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
       smartAppendFileSync(
         cssFile,
-        process.env.BABEL_MODULE === 'commonjs'
+        process.env.TARGET_MODULE === 'commonjs'
           ? `require('${dependencyPath}.css')\n`
           : `import '${dependencyPath}.css'\n`
       )

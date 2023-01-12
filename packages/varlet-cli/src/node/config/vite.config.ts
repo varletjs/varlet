@@ -104,7 +104,7 @@ export function getESMBundleConfig(varletConfig: Required<VarletConfig>): Inline
         name,
         formats: ['es'],
         fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
+        entry: resolve(ES_DIR, 'index.umd.mjs'),
       },
       rollupOptions: {
         external: ['vue'],
@@ -136,7 +136,7 @@ export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig
         name,
         formats: ['umd'],
         fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
+        entry: resolve(ES_DIR, 'index.umd.mjs'),
       },
       rollupOptions: {
         external: ['vue'],
