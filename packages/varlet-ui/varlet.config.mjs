@@ -9,9 +9,6 @@ export default defineConfig({
     header: {
       version: {
         current: 'Vue 3',
-        items: {
-          'Vue 2': 'https://varlet.gitee.io/varlet-ui-vue2/',
-        },
       },
       playground:
         process.env.NODE_ENV === 'development'
