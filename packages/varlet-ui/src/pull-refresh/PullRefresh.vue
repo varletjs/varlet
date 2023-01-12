@@ -92,14 +92,14 @@ export default defineComponent({
       const scrollTop = getScrollTop(scroller)
       const isReachTop = scrollTop === 0
 
+      if (scrollTop > 0 || !isTouchable.value) return
+
       const touch = event.touches[0]
       deltaY = touch.clientY - startY
 
       if (isReachTop && deltaY >= 0) {
         event.preventDefault()
       }
-
-      if (scrollTop > 0 || !isTouchable.value) return
 
       if (refreshStatus.value !== 'pulling') {
         refreshStatus.value = 'pulling'
