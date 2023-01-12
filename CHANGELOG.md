@@ -1,3 +1,12 @@
+## [2.6.2](https://github.com/varletjs/varlet/compare/v2.6.1...v2.6.2) (2023-01-12)
+
+
+### Bug Fixes
+
+* **ui/pull-refresh:** fix pull-refresh touchMove ([#829](https://github.com/varletjs/varlet/issues/829)) ([1614e73](https://github.com/varletjs/varlet/commit/1614e733a0144572883a70a0f859ea95a4ad88a8))
+
+
+
 ## [2.6.1](https://github.com/varletjs/varlet/compare/v2.6.0...v2.6.1) (2023-01-11)
 
 
