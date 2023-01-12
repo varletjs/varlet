@@ -89,10 +89,11 @@ export default defineComponent({
     }
 
     const touchMove = (event: TouchEvent) => {
-      const scrollTop = getScrollTop(scroller)
-      const isReachTop = scrollTop === 0
+      if (!isTouchable.value) return
 
-      if (scrollTop > 0 || !isTouchable.value) return
+      const scrollTop = getScrollTop(scroller)
+      if (scrollTop > 0) return
+      const isReachTop = scrollTop === 0
 
       const touch = event.touches[0]
       deltaY = touch.clientY - startY
