@@ -19,18 +19,22 @@ const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExi
 // https://regexr.com/765a4
 export const IMPORT_FROM_DEPENDENCE_RE = /import\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
 // https://regexr.com/764ve
-export const IMPORT_DEPENDENCE_RE = /import\s+['"]\s*\.{1,2}\/(.+)\s*['"];?/g
+export const IMPORT_DEPENDENCE_RE = /import\s+(".*?"|'.*?')/g
 // https://regexr.com/764vn
-export const REQUIRE_DEPENDENCE_RE = /require\(['"]\s*(\.{1,2}\/.+)\s*['"]\)/g
+export const REQUIRE_DEPENDENCE_RE = /require\((".*?"|'.*?')\)/g
 
-export const scriptExtNames = ['mjs', 'vue', 'ts', 'tsx', 'js', 'jsx']
+export const scriptExtNames = ['.vue', '.ts', '.tsx', '.mjs', '.js', '.jsx']
+
+export const styleExtNames = ['.less', '.css']
 
 export const scriptIndexes = ['index.mjs', 'index.vue', 'index.ts', 'index.tsx', 'index.js', 'index.jsx']
+
+export const styleIndexes = ['index.less', 'index.css']
 
 export const tryMatchExtname = (file: string, extname: string[]) => {
   // eslint-disable-next-line no-restricted-syntax
   for (const ext of extname) {
-    const matched = `${file}.${ext}`
+    const matched = `${file}${ext}`
 
     if (pathExistsSync(matched)) {
       return ext
@@ -39,24 +43,44 @@ export const tryMatchExtname = (file: string, extname: string[]) => {
 }
 
 export const resolveDependence = (file: string, script: string) => {
-  return script.replace(IMPORT_FROM_DEPENDENCE_RE, (source, dependence) => {
+  const replacer = (source: string, dependence: string) => {
     dependence = dependence.slice(1, dependence.length - 1)
+
     const ext = extname(dependence)
     const targetDependenceFile = resolve(dirname(file), dependence)
     const scriptExtname = getScriptExtname()
     const inNodeModules = !dependence.startsWith('.')
+    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
 
     if (inNodeModules) {
       // e.g. @varlet/shared
       return source
     }
 
+    if (ext) {
+      if (scriptExtNames.includes(ext)) {
+        // e.g. './a.vue' -> './a.m?js'
+        return done(dependence.replace(ext, scriptExtname))
+      }
+
+      if (styleExtNames.includes(ext)) {
+        // e.g. './a.css' -> './a.css' './a.less' -> './a.less'
+        return source
+      }
+    }
+
     if (!ext) {
       // e.g. ../button/props -> ../button/props.m?js
-      const matched = tryMatchExtname(targetDependenceFile, scriptExtNames)
+      const matchedScript = tryMatchExtname(targetDependenceFile, scriptExtNames)
 
-      if (matched) {
-        return source.replace(dependence, `${dependence}.${scriptExtname}`)
+      if (matchedScript) {
+        return done(`${dependence}${scriptExtname}`)
+      }
+
+      const matchedStyle = tryMatchExtname(targetDependenceFile, styleExtNames)
+
+      if (matchedStyle) {
+        return done(`${dependence}${matchedStyle}`)
       }
     }
 
@@ -68,20 +92,24 @@ export const resolveDependence = (file: string, script: string) => {
 
       if (hasScriptIndex) {
         // e.g. -> ../button/index.m?js
-        return source.replace(dependence, `${dependence}/index.${scriptExtname}`)
+        return done(`${dependence}/index${scriptExtname}`)
       }
 
-      const hasStyleIndex = files.some((file) => ['index.less', 'index.css'].some((name) => file.endsWith(name)))
+      const hasStyleIndex = files.some((file) => styleIndexes.some((name) => file.endsWith(name)))
 
       if (hasStyleIndex) {
         // e.g. -> ../button/index.css
-        return source.replace(dependence, `${dependence}/index.css`)
+        return done(`${dependence}/index.css`)
       }
     }
 
-    // e.g. ../button/props.ts -> ../button/props.m?js
-    return source.replace(dependence, dependence.replace(ext, `.${scriptExtname}`))
-  })
+    return ''
+  }
+
+  return script
+    .replace(IMPORT_FROM_DEPENDENCE_RE, replacer)
+    .replace(IMPORT_DEPENDENCE_RE, replacer)
+    .replace(REQUIRE_DEPENDENCE_RE, replacer)
 }
 
 export const moduleCompatible = async (script: string): Promise<string> => {
@@ -107,11 +135,11 @@ export async function compileScript(script: string, file: string) {
   })) as BabelFileResult
 
   if (code) {
+    code = resolveDependence(file, code)
     code = extractStyleDependencies(file, code, targetModule === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
     code = extractStyleDependencies(file, code, targetModule === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
-    code = resolveDependence(file, code)
     removeSync(file)
-    writeFileSync(replaceExt(file, `.${getScriptExtname()}`), code, 'utf8')
+    writeFileSync(replaceExt(file, getScriptExtname()), code, 'utf8')
   }
 }
 
@@ -123,10 +151,10 @@ export async function compileScriptFile(file: string) {
 
 export function getScriptExtname() {
   if (process.env.TARGET_MODULE === 'module') {
-    return 'mjs'
+    return '.mjs'
   }
 
-  return 'js'
+  return '.js'
 }
 
 export async function compileESEntry(dir: string, publicDirs: string[]) {
@@ -139,13 +167,13 @@ export async function compileESEntry(dir: string, publicDirs: string[]) {
 
   publicDirs.forEach((dirname: string) => {
     const publicComponent = bigCamelize(dirname)
-    const module = `'./${dirname}/index.${scriptExtname}'`
+    const module = `'./${dirname}/index${scriptExtname}'`
 
     publicComponents.push(publicComponent)
     imports.push(`import ${publicComponent} from ${module}`)
     exports.push(`export * from ${module}`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssImports.push(`import './${dirname}/style/index.${scriptExtname}'`)
+    cssImports.push(`import './${dirname}/style/index${scriptExtname}'`)
   })
 
   const install = `
@@ -221,6 +249,8 @@ export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
     cssRequires.push(`require('./${dirname}/style/index.js')`)
   })
 
+  const version = `const version = '${getVersion()}'`
+
   const install = `
 function install(app) {
   ${plugins.join('\n  ')}
@@ -229,11 +259,12 @@ function install(app) {
 
   const indexTemplate = `\
 ${requires.join('\n')}\n
+${version}
 ${install}
 
 function ignoreDefault(module) {
   return Object.keys(module).reduce((exports, key) => {
-    if (key !=== 'default') {
+    if (key !== 'default') {
       exports[key] = module[key]
     }
 
@@ -241,11 +272,10 @@ function ignoreDefault(module) {
   }, {})
 }
 
-exports.install = install
-
 module.exports = {
+  version,
   install,
-  ${exports.join(',\n  ')}
+  ${exports.join(',\n  ')},
   ${publicComponents.join(',\n  ')}
 }
 `

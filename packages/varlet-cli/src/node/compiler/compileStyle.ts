@@ -31,7 +31,7 @@ export function normalizeStyleDependency(styleImport: string, reg: RegExp) {
 
 export function extractStyleDependencies(file: string, code: string, styleReg: RegExp) {
   const styleImports = code.match(styleReg) ?? []
-  const cssFile = resolve(parse(file).dir, `./style/index.${getScriptExtname()}`)
+  const cssFile = resolve(parse(file).dir, `./style/index${getScriptExtname()}`)
   const targetModule = process.env.TARGET_MODULE
 
   styleImports.forEach((styleImport: string) => {

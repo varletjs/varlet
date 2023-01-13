@@ -76,7 +76,7 @@ export async function compileModule() {
     moduleDir.map((filename: string) => {
       const file: string = resolve(dest, filename)
 
-      isDir(file) && ensureFileSync(resolve(file, `./style/index.${getScriptExtname()}`))
+      isDir(file) && ensureFileSync(resolve(file, `./style/index${getScriptExtname()}`))
 
       return isDir(file) ? compileDir(file) : null
     })
