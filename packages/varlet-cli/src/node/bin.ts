@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-import fse from 'fs-extra'
 import { Command } from 'commander'
-import { CLI_PACKAGE_JSON } from './shared/constant.js'
-
-const { readJSONSync } = fse
+import { getCliVersion } from './shared/fsUtils.js'
 
 const program = new Command()
 
-program.version(`varlet-cli ${readJSONSync(CLI_PACKAGE_JSON).version}`).usage('<command> [options]')
+program.version(`varlet-cli ${getCliVersion()}`).usage('<command> [options]')
 
 program
   .command('dev')

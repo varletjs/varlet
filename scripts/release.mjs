@@ -1,6 +1,7 @@
 import { buildCli, buildIcons, buildShared, buildUI, buildVitePlugins, runTask } from './build.mjs'
+import { release } from '@varlet/cli'
 
-(async () => {
+async function task() {
   await runTask('shared', buildShared)
   await Promise.all([
     runTask('cli', buildCli),
@@ -8,4 +9,6 @@ import { buildCli, buildIcons, buildShared, buildUI, buildVitePlugins, runTask }
     runTask('icons', buildIcons)
   ])
   await runTask('ui', () => buildUI(false))
-})()
+}
+
+await release({ task })

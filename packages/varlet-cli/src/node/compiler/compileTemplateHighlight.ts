@@ -11,14 +11,13 @@ import {
   HL_DIR,
   HL_TAGS_JSON,
   HL_ATTRIBUTES_JSON,
-  CLI_PACKAGE_JSON,
 } from '../shared/constant.js'
 import { resolve } from 'path'
-import { isDir, isMD } from '../shared/fsUtils.js'
+import { getCliVersion, isDir, isMD } from '../shared/fsUtils.js'
 import { get } from 'lodash-es'
 import { getVarletConfig } from '../config/varlet.config.js'
 
-const { ensureDir, readdirSync, readFileSync, readJSONSync, writeFile } = fse
+const { ensureDir, readdirSync, readFileSync, writeFile } = fse
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
@@ -183,7 +182,7 @@ export async function compileTemplateHighlight() {
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
-    version: readJSONSync(CLI_PACKAGE_JSON).version,
+    version: getCliVersion(),
     name: get(varletConfig, 'title'),
     contributions: {
       html: {
