@@ -51,6 +51,7 @@ declare module 'vue' {
   const template = `\
 import type { App } from 'vue'
 
+export const version: string
 export const install: (app: App) => void
 
 ${exports.join('\n')}

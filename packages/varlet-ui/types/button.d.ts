@@ -4,6 +4,8 @@ import { ButtonHTMLAttributes, VNode } from 'vue'
 
 export { ButtonType, ButtonSize }
 
+export declare const buttonProps: Record<string, any>
+
 export interface ButtonProps extends BasicAttributes {
   type?: ButtonType
   nativeType?: ButtonHTMLAttributes['type']
