@@ -211,6 +211,7 @@ ${cssImports.join('\n')}
 
   const bundleTemplate = `\
 ${imports.join('\n')}\n
+${exports.join('\n')}\n
 ${cssImports.join('\n')}\n
 ${version}
 ${install}
