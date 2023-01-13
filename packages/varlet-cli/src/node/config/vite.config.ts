@@ -1,26 +1,20 @@
-import fse from 'fs-extra'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { markdown, html, inlineCss } from '@varlet/vite-plugins'
-import { kebabCase } from '@varlet/shared'
 import {
   ES_DIR,
-  LIB_DIR,
   SITE_CONFIG,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
   SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
-  UMD_DIR,
   VITE_RESOLVE_EXTENSIONS,
 } from '../shared/constant.js'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config'
-
-const { copyFileSync, removeSync } = fse
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -122,7 +116,7 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
         name,
         formats: [format],
         fileName: () => fileName,
-        entry: resolve(ES_DIR, 'index.umd.mjs'),
+        entry: resolve(ES_DIR, 'index.bundle.mjs'),
       },
       rollupOptions: {
         external: ['vue'],

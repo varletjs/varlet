@@ -18,6 +18,8 @@ const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExi
 
 // https://regexr.com/765a4
 export const IMPORT_FROM_DEPENDENCE_RE = /import\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
+// https://regexr.com/767e6
+export const EXPORT_FROM_DEPENDENCE_RE = /export\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
 // https://regexr.com/764ve
 export const IMPORT_DEPENDENCE_RE = /import\s+(".*?"|'.*?')/g
 // https://regexr.com/764vn
@@ -108,6 +110,7 @@ export const resolveDependence = (file: string, script: string) => {
 
   return script
     .replace(IMPORT_FROM_DEPENDENCE_RE, replacer)
+    .replace(EXPORT_FROM_DEPENDENCE_RE, replacer)
     .replace(IMPORT_DEPENDENCE_RE, replacer)
     .replace(REQUIRE_DEPENDENCE_RE, replacer)
 }
@@ -206,7 +209,7 @@ export default {
 ${cssImports.join('\n')}
 `
 
-  const umdTemplate = `\
+  const bundleTemplate = `\
 ${imports.join('\n')}\n
 ${cssImports.join('\n')}\n
 ${version}
@@ -226,7 +229,7 @@ export default {
 
   await Promise.all([
     writeFile(resolve(dir, 'index.mjs'), indexTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'index.umd.mjs'), umdTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'index.bundle.mjs'), bundleTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.mjs'), styleTemplate, 'utf-8'),
   ])
 }
