@@ -29,3 +29,15 @@ export async function runTask(taskName, task) {
     console.error(e.toString())
   }
 }
+
+export async function runTaskQueue() {
+  await runTask('shared', buildShared)
+
+  await Promise.all([
+    runTask('cli', buildCli),
+    runTask('vite plugins', buildVitePlugins),
+    runTask('icons', buildIcons)
+  ])
+
+  await runTask('ui', buildUI)
+}
