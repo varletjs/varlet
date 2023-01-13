@@ -77,13 +77,6 @@ export async function compileFile(file: string) {
 }
 
 export async function compileModule() {
-  const targetModule = process.env.TARGET_MODULE
-
-  if (targetModule === 'bundle') {
-    await compileBundle()
-    return
-  }
-
   const dest = ES_DIR
   await copy(SRC_DIR, dest)
   const moduleDir: string[] = await readdir(dest)

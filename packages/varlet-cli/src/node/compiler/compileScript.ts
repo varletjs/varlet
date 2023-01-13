@@ -2,16 +2,8 @@ import fse from 'fs-extra'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
 import { getVersion, isDir, replaceExt } from '../shared/fsUtils.js'
-import {
-  extractStyleDependencies,
-  IMPORT_CSS_RE,
-  IMPORT_LESS_RE,
-  REQUIRE_CSS_RE,
-  REQUIRE_LESS_RE,
-} from './compileStyle.js'
+import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
 import { resolve, extname, dirname } from 'path'
-import { get } from 'lodash-es'
-import { getVarletConfig } from '../config/varlet.config.js'
 import type { BabelFileResult } from '@babel/core'
 
 const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExistsSync } = fse
@@ -59,7 +51,7 @@ export const resolveDependence = (file: string, script: string) => {
 
     if (ext) {
       if (scriptExtNames.includes(ext)) {
-        // e.g. './a.vue' -> './a.m?js'
+        // e.g. './a.vue' -> './a.mjs'
         return done(dependence.replace(ext, scriptExtname))
       }
 
@@ -70,7 +62,7 @@ export const resolveDependence = (file: string, script: string) => {
     }
 
     if (!ext) {
-      // e.g. ../button/props -> ../button/props.m?js
+      // e.g. ../button/props -> ../button/props.mjs
       const matchedScript = tryMatchExtname(targetDependenceFile, scriptExtNames)
 
       if (matchedScript) {
@@ -91,7 +83,7 @@ export const resolveDependence = (file: string, script: string) => {
       const hasScriptIndex = files.some((file) => scriptIndexes.some((name) => file.endsWith(name)))
 
       if (hasScriptIndex) {
-        // e.g. -> ../button/index.m?js
+        // e.g. -> ../button/index.mjs
         return done(`${dependence}/index${scriptExtname}`)
       }
 
@@ -112,32 +104,15 @@ export const resolveDependence = (file: string, script: string) => {
     .replace(IMPORT_DEPENDENCE_RE, replacer)
 }
 
-export const moduleCompatible = async (script: string): Promise<string> => {
-  const moduleCompatible = get(await getVarletConfig(), 'moduleCompatible', {} as Record<string, string>)
-
-  Object.keys(moduleCompatible).forEach((esm) => {
-    const commonjs = moduleCompatible[esm]
-    script = script.replace(esm, commonjs)
-  })
-
-  return script
-}
-
 export async function compileScript(script: string, file: string) {
-  const targetModule = process.env.TARGET_MODULE
-
-  if (targetModule === 'commonjs') {
-    script = await moduleCompatible(script)
-  }
-
   let { code } = (await transformAsync(script, {
     filename: file,
   })) as BabelFileResult
 
   if (code) {
     code = resolveDependence(file, code)
-    code = extractStyleDependencies(file, code, targetModule === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
-    code = extractStyleDependencies(file, code, targetModule === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
+    code = extractStyleDependencies(file, code, IMPORT_CSS_RE)
+    code = extractStyleDependencies(file, code, IMPORT_LESS_RE)
     removeSync(file)
     writeFileSync(replaceExt(file, getScriptExtname()), code, 'utf8')
   }

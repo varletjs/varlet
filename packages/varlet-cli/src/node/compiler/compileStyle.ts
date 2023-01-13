@@ -12,8 +12,6 @@ export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
 export const IMPORT_CSS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.css)['"]\s*;?(?!\s*['"`])/g
 export const IMPORT_LESS_RE = /(?<!['"`])import\s+['"](\.{1,2}\/.+\.less)['"]\s*;?(?!\s*['"`])/g
-export const REQUIRE_CSS_RE = /(?<!['"`])require\(\s*['"](\.{1,2}\/.+\.css)['"]\s*\);?(?!\s*['"`])/g
-export const REQUIRE_LESS_RE = /(?<!['"`])require\(\s*['"](\.{1,2}\/.+\.less)['"]\s*\);?(?!\s*['"`])/g
 export const STYLE_IMPORT_RE = /@import\s+['"](.+)['"]\s*;/g
 
 export const clearEmptyLine = (s: string) => s.replace(EMPTY_LINE_RE, '').replace(EMPTY_SPACE_RE, ' ')
@@ -32,14 +30,10 @@ export function normalizeStyleDependency(styleImport: string, reg: RegExp) {
 export function extractStyleDependencies(file: string, code: string, styleReg: RegExp) {
   const styleImports = code.match(styleReg) ?? []
   const cssFile = resolve(parse(file).dir, `./style/index${getScriptExtname()}`)
-  const targetModule = process.env.TARGET_MODULE
 
   styleImports.forEach((styleImport: string) => {
     const normalizedPath = normalizeStyleDependency(styleImport, styleReg)
-    smartAppendFileSync(
-      cssFile,
-      targetModule === 'commonjs' ? `require('${normalizedPath}.css')\n` : `import '${normalizedPath}.css'\n`
-    )
+    smartAppendFileSync(cssFile, `import '${normalizedPath}.css'\n`)
   })
 
   return code.replace(styleReg, '')
