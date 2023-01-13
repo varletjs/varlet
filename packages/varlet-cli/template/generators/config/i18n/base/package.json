@@ -2,8 +2,8 @@
   "name": "@varlet/ui",
   "version": "0.0.0",
   "description": "A components library example",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "lib/varlet.cjs.js",
+  "module": "es/index.mjs",
   "typings": "types/index.d.ts",
   "vetur": {
     "tags": "highlight/tags.json",
