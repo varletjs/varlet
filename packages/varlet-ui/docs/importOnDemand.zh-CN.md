@@ -12,7 +12,7 @@
 // playground-ignore
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 
 createApp().use(Button)
 ```
@@ -23,7 +23,7 @@ createApp().use(Button)
 // playground-ignore
 <script setup>
 import { Button as VarButton } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 </script>
 
 <template>
@@ -117,8 +117,8 @@ export default defineConfig({
 // playground-ignore
 <script setup>
 import { Button as VarButton, Snackbar } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-import '@varlet/ui/es/snackbar/style/index.js'
+import '@varlet/ui/es/button/style/index'
+import '@varlet/ui/es/snackbar/style/index'
 
 function handleClick() {
   Snackbar('你好!')
