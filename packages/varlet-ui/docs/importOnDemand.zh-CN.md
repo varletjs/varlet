@@ -144,3 +144,12 @@ function handleClick() {
   <var-button @click="handleClick">说你好</var-button>
 </template>
 ```
+
+### 文件路径注意
+
+在`@varlet/ui@2.7.0`及其之后的版本，我们推荐使用如下省略后缀名的文件引入方式，以兼容 `js` 和 `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
+```
