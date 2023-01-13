@@ -5,6 +5,10 @@ export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
 }
 
+export function variantValidator(variant: string) {
+  return ['outlined', 'standard'].includes(variant)
+}
+
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
 export const props = {
@@ -19,6 +23,15 @@ export const props = {
     type: String as PropType<'text' | 'password' | 'number' | 'tel' | 'email'>,
     default: 'text',
     validator: typeValidator,
+  },
+  size: {
+    type: String as PropType<'small'>,
+    validator: (size: string) => size === 'small',
+  },
+  variant: {
+    type: String as PropType<'outlined' | 'standard'>,
+    default: 'standard',
+    validator: variantValidator,
   },
   textarea: {
     type: Boolean,

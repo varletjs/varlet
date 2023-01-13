@@ -1,125 +1,171 @@
 <template>
-  <div :class="classes(n(), n('$--box'), [disabled, n('--disabled')])" @click="handleClick">
-    <div
-      :class="
-        classes(
-          n('controller'),
-          [isFocus, n('--focus')],
-          [errorMessage, n('--error')],
-          [formDisabled || disabled, n('--disabled')]
-        )
-      "
-      :style="{
-        color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
-      }"
-    >
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="prepend-icon" />
-      </div>
-
-      <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
-        <input :class="n('autocomplete')" v-if="type === 'password'" />
-        <textarea
-          :class="
-            classes(
-              n('input'),
-              n('--textarea'),
-              [formDisabled || disabled, n('--disabled')],
-              [errorMessage, n('--caret-error')]
-            )
-          "
-          ref="el"
-          autocomplete="new-password"
-          :id="id"
-          :disabled="formDisabled || disabled || formReadonly || readonly"
-          :type="type"
-          :value="modelValue"
-          :maxlength="maxlength"
-          :rows="rows"
-          :style="{
-            color: textColor,
-            caretColor: !errorMessage ? focusColor : undefined,
-            resize: resize ? 'vertical' : 'none',
-          }"
-          @focus="handleFocus"
-          @blur="handleBlur"
-          @input="handleInput"
-          @change="handleChange"
-          @touchstart="handleTouchstart"
-          v-if="textarea"
-        >
-        </textarea>
-        <input
-          :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
-          ref="el"
-          autocomplete="new-password"
-          :id="id"
-          :disabled="formDisabled || disabled || formReadonly || readonly"
-          :type="type"
-          :value="modelValue"
-          :maxlength="maxlength"
-          :style="{
-            color: textColor,
-            caretColor: !errorMessage ? focusColor : undefined,
-          }"
-          @focus="handleFocus"
-          @blur="handleBlur"
-          @input="handleInput"
-          @change="handleChange"
-          @touchstart="handleTouchstart"
-          v-else
-        />
-        <label
-          :class="
-            classes(
-              n('$--ellipsis'),
-              [isFocus, n('--focus')],
-              [formDisabled || disabled, n('--disabled')],
-              [errorMessage, n('--error')],
-              [textarea, n('textarea-placeholder'), n('placeholder')],
-              computePlaceholderState(),
-              [!hint, n('--placeholder-non-hint')]
-            )
-          "
-          :style="{
-            color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
-          }"
-          :for="id"
-        >
-          {{ placeholder }}
-        </label>
-      </div>
-
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="append-icon">
-          <var-icon
-            :class="n('clear-icon')"
-            var-input-cover
-            name="close-circle"
-            size="14px"
-            v-if="clearable && !isEmpty(modelValue)"
-            @click="handleClear"
-          />
-        </slot>
-      </div>
-    </div>
-
-    <div
-      :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
-      :style="{ background: !errorMessage ? blurColor : undefined }"
-      v-if="line"
-    >
+  <div
+    :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--box'), [disabled, n('--disabled')])"
+    @click="handleClick"
+  >
+    <div :class="classes(n('$--relative'))">
       <div
         :class="
           classes(
-            n('dot'),
-            [isFocus, n('--spread')],
-            [formDisabled || disabled, n('--line-disabled')],
-            [errorMessage, n('--line-error')]
+            n('controller'),
+            [isFocus, n('--focus')],
+            [errorMessage, n('--error')],
+            [formDisabled || disabled, n('--disabled')]
           )
         "
-        :style="{ background: !errorMessage ? focusColor : undefined }"
-      ></div>
+        :style="{
+          color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+        }"
+      >
+        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependRef">
+          <slot name="prepend-icon" />
+        </div>
+
+        <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
+          <input :class="n('autocomplete')" v-if="type === 'password'" />
+          <textarea
+            :class="
+              classes(
+                n('input'),
+                n('--textarea'),
+                [formDisabled || disabled, n('--disabled')],
+                [errorMessage, n('--caret-error')]
+              )
+            "
+            ref="el"
+            autocomplete="new-password"
+            :id="id"
+            :disabled="formDisabled || disabled || formReadonly || readonly"
+            :type="type"
+            :value="modelValue"
+            :maxlength="maxlength"
+            :rows="rows"
+            :style="{
+              color: textColor,
+              caretColor: !errorMessage ? focusColor : undefined,
+              resize: resize ? 'vertical' : 'none',
+            }"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @input="handleInput"
+            @change="handleChange"
+            @touchstart="handleTouchstart"
+            v-if="textarea"
+          >
+          </textarea>
+          <input
+            :class="
+              classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])
+            "
+            ref="el"
+            autocomplete="new-password"
+            :id="id"
+            :disabled="formDisabled || disabled || formReadonly || readonly"
+            :type="type"
+            :value="modelValue"
+            :maxlength="maxlength"
+            :style="{
+              color: textColor,
+              caretColor: !errorMessage ? focusColor : undefined,
+            }"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @input="handleInput"
+            @change="handleChange"
+            @touchstart="handleTouchstart"
+            v-else
+          />
+          <label
+            ref="placeholderRef"
+            :class="
+              classes(
+                n('$--ellipsis'),
+                [isFocus, n('--focus')],
+                [formDisabled || disabled, n('--disabled')],
+                [errorMessage, n('--error')],
+                [textarea, n('textarea-placeholder'), n('placeholder')],
+                placeholderState,
+                [!hint, n('--placeholder-non-hint')]
+              )
+            "
+            :style="{
+              color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+            }"
+            :for="id"
+          >
+            {{ placeholder }}
+          </label>
+        </div>
+
+        <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
+          <slot name="append-icon">
+            <var-icon
+              :class="n('clear-icon')"
+              var-input-cover
+              name="close-circle"
+              size="14px"
+              v-if="clearable && !isEmpty(modelValue)"
+              @click="handleClear"
+            />
+          </slot>
+        </div>
+      </div>
+
+      <template v-if="line">
+        <div
+          v-if="variant === 'outlined'"
+          :class="classes(n('line'), [isFocus, n('--line-focus')], [formDisabled || disabled, n('--line-disabled')])"
+        >
+          <template v-if="!(formDisabled || disabled)">
+            <div
+              :class="classes(n('line__start'), [errorMessage, n('--line-error')])"
+              :style="{
+                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+              }"
+            />
+            <div
+              :class="
+                classes(
+                  n('line__notch'),
+                  [hint && (!isEmpty(modelValue) || isFocus), n('line__notch--hint')],
+                  [errorMessage, n('--line-error')]
+                )
+              "
+              :style="{
+                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+              }"
+            >
+              <div :class="classes(n('line__placeholder'))">{{ placeholder }}</div>
+            </div>
+            <div
+              :class="classes(n('line__end'), [errorMessage, n('--line-error')])"
+              :style="{
+                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+              }"
+            />
+          </template>
+        </div>
+
+        <div
+          :class="
+            classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])
+          "
+          :style="{ background: !errorMessage ? blurColor : undefined }"
+          v-else
+        >
+          <div
+            :class="
+              classes(
+                n('dot'),
+                [isFocus, n('--spread')],
+                [formDisabled || disabled, n('--line-disabled')],
+                [errorMessage, n('--line-error')]
+              )
+            "
+            :style="{ background: !errorMessage ? focusColor : undefined }"
+          />
+        </div>
+      </template>
     </div>
 
     <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
@@ -129,7 +175,7 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted, watchEffect } from 'vue'
 import { props } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
@@ -147,9 +193,11 @@ export default defineComponent({
     VarFormDetails,
   },
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
     const el: Ref<HTMLInputElement | null> = ref(null)
+    const placeholderRef: Ref<HTMLInputElement | null> = ref(null)
+    const prependRef: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
@@ -180,15 +228,28 @@ export default defineComponent({
       })
     }
 
-    const computePlaceholderState = () => {
-      const { hint, modelValue } = props
+    const placeholderState = ref('')
+    watchEffect(() => {
+      const { hint, modelValue, variant } = props
       if (!hint && !isEmpty(modelValue)) {
-        return n('--placeholder-hidden')
+        placeholderState.value = n('--placeholder-hidden')
+        return
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n('--placeholder-hint')
+        placeholderState.value = n('--placeholder-hint')
+
+        if (variant === 'outlined' && placeholderRef.value) {
+          const x = slots['prepend-icon'] && prependRef.value ? prependRef.value.clientWidth : 0
+          placeholderRef.value.style.translate = `-${x}px -50%`
+        }
+        return
       }
-    }
+      placeholderState.value = ''
+
+      if (variant === 'outlined' && placeholderRef.value) {
+        placeholderRef.value.style.translate = ''
+      }
+    })
 
     const handleFocus = (e: FocusEvent) => {
       isFocus.value = true
@@ -299,16 +360,18 @@ export default defineComponent({
 
     return {
       el,
+      placeholderRef,
+      prependRef,
       id,
       isFocus,
       errorMessage,
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      placeholderState,
       n,
       classes,
       isEmpty,
-      computePlaceholderState,
       handleFocus,
       handleBlur,
       handleInput,

@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  smallSize: 'Small Size',
   plainMode: 'Plain Mode',
   textarea: 'Textarea',
   maxlength: 'Maxlength',
