@@ -90,58 +90,44 @@ export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConf
   }
 }
 
-export function getESMBundleConfig(varletConfig: Required<VarletConfig>): InlineConfig {
-  const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.esm.js`
-
-  return {
-    logLevel: 'silent',
-
-    build: {
-      emptyOutDir: false,
-      copyPublicDir: false,
-      lib: {
-        name,
-        formats: ['es'],
-        fileName: () => fileName,
-        entry: resolve(ES_DIR, 'index.umd.mjs'),
-      },
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          dir: ES_DIR,
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-          },
-        },
-      },
-    },
-  }
+export interface BundleBuildOptions {
+  fileName: string
+  output: string
+  format: 'es' | 'cjs' | 'umd'
+  emptyOutDir: boolean
 }
 
-export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig {
+export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
+  const plugins = []
   const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.js`
-  const jsFile = resolve(UMD_DIR, fileName)
-  const cssFile = resolve(UMD_DIR, 'style.css')
+  const { fileName, output, format, emptyOutDir } = buildOptions
+
+  if (format === 'umd') {
+    plugins.push(
+      inlineCss({
+        jsFile: resolve(output, fileName),
+        cssFile: resolve(output, 'style.css'),
+      })
+    )
+  }
 
   return {
     logLevel: 'silent',
 
     build: {
-      emptyOutDir: true,
+      minify: format === 'cjs' ? false : 'esbuild',
+      emptyOutDir,
       copyPublicDir: false,
       lib: {
         name,
-        formats: ['umd'],
+        formats: [format],
         fileName: () => fileName,
         entry: resolve(ES_DIR, 'index.umd.mjs'),
       },
       rollupOptions: {
         external: ['vue'],
         output: {
-          dir: UMD_DIR,
+          dir: output,
           exports: 'named',
           globals: {
             vue: 'Vue',
@@ -149,16 +135,5 @@ export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig
         },
       },
     },
-
-    plugins: [
-      inlineCss({
-        jsFile,
-        cssFile,
-        onEnd() {
-          copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
-          removeSync(cssFile)
-        },
-      }),
-    ],
   }
 }

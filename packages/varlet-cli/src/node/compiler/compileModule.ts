@@ -9,25 +9,46 @@ import {
   ES_DIR,
   STYLE_DIR_NAME,
   LIB_DIR,
+  UMD_DIR,
 } from '../shared/constant.js'
 import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils.js'
 import { compileSFC } from './compileSFC.js'
 import { compileESEntry, compileCommonJSEntry, compileScriptFile, getScriptExtname } from './compileScript.js'
 import { clearLessFiles, compileLess } from './compileStyle.js'
-import { getESMBundleConfig, getUMDConfig } from '../config/vite.config.js'
+import { BundleBuildOptions, getBundleConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { generateReference } from './compileTypes.js'
+import { get } from 'lodash-es'
+import { kebabCase } from '@varlet/shared'
 
 const { copy, ensureFileSync, readdir, removeSync } = fse
 
-export async function compileUMD() {
+export async function compileBundle() {
   const varletConfig = await getVarletConfig()
-  await build(getUMDConfig(varletConfig))
-}
+  const name = kebabCase(get(varletConfig, 'name'))
+  const buildOptions: BundleBuildOptions[] = [
+    {
+      format: 'es',
+      fileName: `${name}.esm.js`,
+      output: ES_DIR,
+      emptyOutDir: false,
+    },
+    {
+      format: 'cjs',
+      fileName: `${name}.cjs.js`,
+      output: LIB_DIR,
+      emptyOutDir: false,
+    },
+    {
+      format: 'umd',
+      fileName: `${name}.js`,
+      output: UMD_DIR,
+      emptyOutDir: true,
+    },
+  ]
+  const tasks = buildOptions.map((options) => build(getBundleConfig(varletConfig, options)))
 
-export async function compileESMBundle() {
-  const varletConfig = await getVarletConfig()
-  await build(getESMBundleConfig(varletConfig))
+  await Promise.all(tasks)
 }
 
 export async function compileDir(dir: string) {
@@ -58,13 +79,8 @@ export async function compileFile(file: string) {
 export async function compileModule() {
   const targetModule = process.env.TARGET_MODULE
 
-  if (targetModule === 'umd') {
-    await compileUMD()
-    return
-  }
-
-  if (targetModule === 'esm-bundle') {
-    await compileESMBundle()
+  if (targetModule === 'bundle') {
+    await compileBundle()
     return
   }
 

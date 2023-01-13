@@ -42,10 +42,9 @@ program
 program
     .command('compile')
     .description('Compile varlet components library code')
-    .option('-nu, --noUmd', 'Do not compile umd target code')
-    .action(async (options) => {
+    .action(async () => {
     const { compile } = await import('./commands/compile.js');
-    return compile(options);
+    return compile();
 });
 program
     .command('lint')

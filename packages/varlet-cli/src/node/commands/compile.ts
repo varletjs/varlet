@@ -23,11 +23,7 @@ export async function runTask(taskName: string, task: () => any) {
   }
 }
 
-interface CompileCommandOptions {
-  noUmd?: boolean
-}
-
-export async function compile(options: CompileCommandOptions) {
+export async function compile() {
   process.env.NODE_ENV = 'compile'
 
   await removeDir()
@@ -37,13 +33,11 @@ export async function compile(options: CompileCommandOptions) {
   process.env.BABEL_MODULE = 'module'
   await runTask('module', compileModule)
 
-  process.env.TARGET_MODULE = 'esm-bundle'
-  await runTask('esm bundle', compileModule)
-
   process.env.TARGET_MODULE = 'commonjs'
   process.env.BABEL_MODULE = 'commonjs'
   await runTask('commonjs', compileModule)
 
-  process.env.TARGET_MODULE = 'umd'
-  !options.noUmd && (await runTask('umd', compileModule))
+  process.env.BABEL_MODULE = ''
+  process.env.TARGET_MODULE = 'bundle'
+  await runTask('bundle', compileModule)
 }

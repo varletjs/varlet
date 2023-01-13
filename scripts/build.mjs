@@ -17,7 +17,7 @@ export const buildShared = () => execa('pnpm', ['build'], { cwd: PKG_SHARED })
 
 export const buildIcons = () => execa('pnpm', ['build'], { cwd: PKG_ICONS })
 
-export const buildUI = (noUmd) => execa('pnpm', ['compile', noUmd ? '--noUmd' : ''], { cwd: PKG_UI })
+export const buildUI = () => execa('pnpm', ['compile'], { cwd: PKG_UI })
 
 export async function runTask(taskName, task) {
   const s = ora().start(`Building ${taskName}`)

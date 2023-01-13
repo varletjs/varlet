@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 import fse from 'fs-extra'
 
-const { pathExistsSync, writeFileSync, readFileSync } = fse
+const { pathExistsSync, writeFileSync, readFileSync, removeSync } = fse
 
 export interface InlineCssOptions {
   cssFile: string
@@ -37,6 +37,7 @@ style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.rep
 var head=document.querySelector('head');head.appendChild(style)})();`
 
       writeFileSync(jsFile, `${injectCode}${jsCode}`)
+      removeSync(cssFile)
       onEnd?.()
     },
   }

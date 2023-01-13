@@ -8,7 +8,7 @@ async function task() {
     runTask('vite plugins', buildVitePlugins),
     runTask('icons', buildIcons)
   ])
-  await runTask('ui', () => buildUI(false))
+  await runTask('ui', buildUI)
 }
 
 await release({ task })

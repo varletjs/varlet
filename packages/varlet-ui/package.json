@@ -2,7 +2,7 @@
   "name": "@varlet/ui",
   "version": "2.6.2",
   "description": "A material like components library",
-  "main": "lib/index.js",
+  "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
   "typings": "types/index.d.ts",
   "vetur": {
