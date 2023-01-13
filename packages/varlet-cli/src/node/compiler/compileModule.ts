@@ -13,7 +13,7 @@ import {
 } from '../shared/constant.js'
 import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils.js'
 import { compileSFC } from './compileSFC.js'
-import { compileESEntry, compileCommonJSEntry, compileScriptFile, getScriptExtname } from './compileScript.js'
+import { compileESEntry, compileScriptFile, getScriptExtname } from './compileScript.js'
 import { clearLessFiles, compileLess } from './compileStyle.js'
 import { BundleBuildOptions, getBundleConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
@@ -84,7 +84,7 @@ export async function compileModule() {
     return
   }
 
-  const dest = targetModule === 'commonjs' ? LIB_DIR : ES_DIR
+  const dest = ES_DIR
   await copy(SRC_DIR, dest)
   const moduleDir: string[] = await readdir(dest)
 
@@ -99,13 +99,7 @@ export async function compileModule() {
   )
 
   const publicDirs = await getPublicDirs()
-
-  if (targetModule === 'commonjs') {
-    await compileCommonJSEntry(dest, publicDirs)
-  } else {
-    await compileESEntry(dest, publicDirs)
-  }
-
+  await compileESEntry(dest, publicDirs)
   clearLessFiles(dest)
   generateReference(dest)
 }

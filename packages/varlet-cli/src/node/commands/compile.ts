@@ -33,10 +33,6 @@ export async function compile() {
   process.env.BABEL_MODULE = 'module'
   await runTask('module', compileModule)
 
-  process.env.TARGET_MODULE = 'commonjs'
-  process.env.BABEL_MODULE = 'commonjs'
-  await runTask('commonjs', compileModule)
-
   process.env.BABEL_MODULE = ''
   process.env.TARGET_MODULE = 'bundle'
   await runTask('bundle', compileModule)

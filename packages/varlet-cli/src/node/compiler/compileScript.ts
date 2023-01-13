@@ -22,8 +22,6 @@ export const IMPORT_FROM_DEPENDENCE_RE = /import\s+?[\w\s{},$*]+\s+from\s+?(".*?
 export const EXPORT_FROM_DEPENDENCE_RE = /export\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
 // https://regexr.com/764ve
 export const IMPORT_DEPENDENCE_RE = /import\s+(".*?"|'.*?')/g
-// https://regexr.com/764vn
-export const REQUIRE_DEPENDENCE_RE = /require\((".*?"|'.*?')\)/g
 
 export const scriptExtNames = ['.vue', '.ts', '.tsx', '.mjs', '.js', '.jsx']
 
@@ -112,7 +110,6 @@ export const resolveDependence = (file: string, script: string) => {
     .replace(IMPORT_FROM_DEPENDENCE_RE, replacer)
     .replace(EXPORT_FROM_DEPENDENCE_RE, replacer)
     .replace(IMPORT_DEPENDENCE_RE, replacer)
-    .replace(REQUIRE_DEPENDENCE_RE, replacer)
 }
 
 export const moduleCompatible = async (script: string): Promise<string> => {
@@ -153,11 +150,7 @@ export async function compileScriptFile(file: string) {
 }
 
 export function getScriptExtname() {
-  if (process.env.TARGET_MODULE === 'module') {
-    return '.mjs'
-  }
-
-  return '.js'
+  return '.mjs'
 }
 
 export async function compileESEntry(dir: string, publicDirs: string[]) {
@@ -232,64 +225,5 @@ export default {
     writeFile(resolve(dir, 'index.mjs'), indexTemplate, 'utf-8'),
     writeFile(resolve(dir, 'index.bundle.mjs'), bundleTemplate, 'utf-8'),
     writeFile(resolve(dir, 'style.mjs'), styleTemplate, 'utf-8'),
-  ])
-}
-
-export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
-  const requires: string[] = []
-  const plugins: string[] = []
-  const cssRequires: string[] = []
-  const publicComponents: string[] = []
-  const exports: string[] = []
-
-  publicDirs.forEach((dirname: string) => {
-    const publicComponent = bigCamelize(dirname)
-    const module = `'./${dirname}/index.js'`
-
-    publicComponents.push(publicComponent)
-    requires.push(`var ${publicComponent} = require(${module})['default']`)
-    exports.push(`...ignoreDefault(require(${module}))`)
-    plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssRequires.push(`require('./${dirname}/style/index.js')`)
-  })
-
-  const version = `const version = '${getVersion()}'`
-
-  const install = `
-function install(app) {
-  ${plugins.join('\n  ')}
-}
-`
-
-  const indexTemplate = `\
-${requires.join('\n')}\n
-${version}
-${install}
-
-function ignoreDefault(module) {
-  return Object.keys(module).reduce((exports, key) => {
-    if (key !== 'default') {
-      exports[key] = module[key]
-    }
-
-    return exports
-  }, {})
-}
-
-module.exports = {
-  version,
-  install,
-  ${exports.join(',\n  ')},
-  ${publicComponents.join(',\n  ')}
-}
-`
-
-  const styleTemplate = `\
-${cssRequires.join('\n')}
-`
-
-  await Promise.all([
-    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
   ])
 }

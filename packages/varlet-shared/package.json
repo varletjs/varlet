@@ -1,9 +1,9 @@
 {
   "name": "@varlet/shared",
   "version": "2.6.2",
+  "type": "module",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "typings": "lib/index.d.ts",
+  "module": "lib/index.js",
   "description": "shared utils of varlet",
   "keywords": [
     "shared",
@@ -14,8 +14,6 @@
   "license": "MIT",
   "files": [
     "lib",
-    "es",
-    "tsconfig.cjs.json",
     "tsconfig.json"
   ],
   "repository": {
@@ -27,7 +25,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json"
+    "build": "tsc"
   },
   "devDependencies": {
     "typescript": "^4.4.4"
