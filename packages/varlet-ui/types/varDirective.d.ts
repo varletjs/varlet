@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { DirectiveBinding } from '@vue/runtime-core'
+import { DirectiveBinding } from 'vue'
 
 export class VarDirective {
   static install(app: App): void
