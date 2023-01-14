@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const uploaderProps: Record<string, any>
+
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'

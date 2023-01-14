@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode, App, TeleportProps } from 'vue'
 
+export declare const actionSheetProps: Record<string, any>
+
 export interface ActionSheetProps extends BasicAttributes {
   actions?: ActionItem[]
   show?: boolean
@@ -71,4 +73,4 @@ export interface IActionSheet {
 
 export class _ActionSheetComponent extends ActionSheetComponent {}
 
-export const ActionSheet: IActionSheet
+export declare const ActionSheet: IActionSheet

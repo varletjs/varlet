@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const cardProps: Record<string, any>
+
 export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type CardLayout = 'row' | 'column'

@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const spaceProps: Record<string, any>
+
 export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'
 
 export type SpaceDirection = 'row' | 'column'

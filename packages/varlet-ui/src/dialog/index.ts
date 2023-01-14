@@ -106,6 +106,8 @@ Dialog.close = () => {
 
 Dialog.Component = VarDialog
 
+export { props as dialogProps } from './props'
+
 export const _DialogComponent = VarDialog
 
 export default Dialog

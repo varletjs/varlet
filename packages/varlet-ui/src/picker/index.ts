@@ -121,6 +121,8 @@ Picker.close = () => {
   }
 }
 
+export { props as pickerProps } from './props'
+
 export const _PickerComponent = VarPicker
 
 export default Picker

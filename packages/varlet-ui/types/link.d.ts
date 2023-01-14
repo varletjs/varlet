@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, Type as LinkType, ListenerProp } from '.
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
+export declare const linkProps: Record<string, any>
+
 export type LinkUnderline = 'always' | 'hover' | 'none'
 
 export { LinkType }

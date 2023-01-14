@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
+export declare const rateProps: Record<string, any>
+
 export interface RateProps extends BasicAttributes {
   modelValue?: string | number
   count?: string | number

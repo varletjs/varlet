@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const appBarProps: Record<string, any>
+
 export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
 export interface AppBarProps extends BasicAttributes {

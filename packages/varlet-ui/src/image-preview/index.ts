@@ -79,6 +79,8 @@ ImagePreview.install = function (app: App) {
 
 ImagePreview.Component = VarImagePreview
 
+export { props as imagePreviewProps } from './props'
+
 export const _ImagePreviewComponent = VarImagePreview
 
 export default ImagePreview

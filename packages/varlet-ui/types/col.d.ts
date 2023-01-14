@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const colProps: Record<string, any>
+
 export type ColSizeDescriptor = {
   span?: number | string
   offset?: number | string

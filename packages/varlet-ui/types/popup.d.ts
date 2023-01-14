@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode, TeleportProps } from 'vue'
 
+export declare const popupProps: Record<string, any>
+
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
 
 export interface PopupProps extends BasicAttributes {

@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 
+export declare const formDetailsProps: Record<string, any>
+
 export interface FormDetailsProps extends BasicAttributes {
   errorMessage?: string
   extraMessage?: string

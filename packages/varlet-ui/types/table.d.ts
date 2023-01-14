@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const tableProps: Record<string, any>
+
 export interface TableProps extends BasicAttributes {
   fullWidth?: string | number
 }

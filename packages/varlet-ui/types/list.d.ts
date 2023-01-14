@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const listProps: Record<string, any>
+
 export interface ListProps extends BasicAttributes {
   loading?: boolean
   immediateCheck?: boolean

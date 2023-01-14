@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import type { App, TeleportProps, VNode } from 'vue'
 
+export declare const dialogProps: Record<string, any>
+
 export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
 
 export interface DialogProps extends BasicAttributes {
@@ -86,6 +88,6 @@ export interface IDialog {
   install(app: App): void
 }
 
-export const Dialog: IDialog
+export declare const Dialog: IDialog
 
 export class _DialogComponent extends DialogComponent {}

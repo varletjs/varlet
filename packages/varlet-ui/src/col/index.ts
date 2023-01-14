@@ -5,6 +5,8 @@ Col.install = function (app: App) {
   app.component(Col.name, Col)
 }
 
+export { props as colProps } from './props'
+
 export const _ColComponent = Col
 
 export default Col
