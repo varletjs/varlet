@@ -13,6 +13,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" v-model="value" />
+  <var-input placeholder="Please enter text" v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -34,6 +35,13 @@ const value = ref('')
     placeholder="Please enter text"
     v-model="value"
   />
+  <var-input 
+    :hint="false" 
+    :line="false" 
+    placeholder="Please enter text"
+    v-model="value"
+    variant="outlined"
+  />
 </template>
 ```
 
@@ -48,6 +56,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" textarea v-model="value" />
+  <var-input placeholder="Please enter text" textarea v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -62,6 +71,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
+  <var-input placeholder="Please enter text" :maxlength="10" v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -76,6 +86,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" disabled v-model="value" />
+  <var-input placeholder="Please enter text" disabled v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -90,6 +101,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" readonly v-model="value" />
+  <var-input placeholder="Please enter text" readonly v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -104,6 +116,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" clearable v-model="value" />
+  <var-input placeholder="Please enter text" clearable v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -118,6 +131,14 @@ const value = ref('')
 
 <template>
   <var-input placeholder="Please enter text" v-model="value">
+    <template #prepend-icon>
+      <var-icon name="plus"/>
+    </template>
+    <template #append-icon>
+      <var-icon name="minus"/>
+    </template>
+  </var-input>
+  <var-input placeholder="Please enter text" v-model="value" variant="outlined">
     <template #prepend-icon>
       <var-icon name="plus"/>
     </template>
@@ -146,6 +167,12 @@ const value = ref('')
     :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
     v-model="value"
   />
+  <var-input
+    placeholder="Please enter text"
+    :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
+    v-model="value"
+    variant="outlined"
+  />
 </template>
 ```
 
@@ -158,6 +185,8 @@ const value = ref('')
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
 | `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
+| `size` | Input size, The optional value is `small`                                                          | _string_ | `-` |
+| `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |
 | `textarea` | Is it a textarea                                                                                                                       | _boolean_ | `false` |  
 | `rows` | Number of lines to display in the textarea                                                                                             | _string \| number_ | `8` |  
@@ -206,7 +235,7 @@ const value = ref('')
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
-| --- | --- |
+| `--input-input-height` | `24px` |
 | `--input-input-text-color` | `#555` |
 | `--input-error-color` | `var(--color-danger)` |
 | `--input-blur-color` | `#888` |
@@ -214,8 +243,12 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--input-placeholder-size` | `16px` |
 | `--input-textarea-height` | `auto` |
 | `--input-textarea-padding-top` | `8px` |
-| `--input-icon-padding` | `16px 0 0` |
+| `--input-input-padding-top` | `16px` |
+| `--input-input-padding-bottom` | `16px` |
+| `--input-input-padding-left` | `14px` |
+| `--input-input-padding-right` | `14px` |
+| `--input-icon-padding` | `20px 0 0` |
 | `--input-icon-size` | `20px` |
 | `--input-line-size` | `1px` |
-| `--input-line-spread-size` | `2px` |
+| `--input-line-focus-size` | `2px` |
 | `--input-disabled-color` | `var(--color-text-disabled)` |
