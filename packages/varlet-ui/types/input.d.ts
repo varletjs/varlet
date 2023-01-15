@@ -5,9 +5,13 @@ export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
+export type InputVariant = 'outlined' | 'standard'
+
 export interface InputProps extends BasicAttributes {
   modelValue?: string
   type?: InputType
+  size?: 'small'
+  variant?: InputVariant
   textarea?: boolean
   rows?: string | number
   placeholder?: string

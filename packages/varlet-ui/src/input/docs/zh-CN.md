@@ -2,7 +2,7 @@
 
 ### 基本使用
 
-输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串。
+输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串，可选择 `standard` 和 `outlined` 两种风格，默认为 `standard`。
 
 ```html
 <script setup>
@@ -13,6 +13,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" v-model="value" />
+  <var-input placeholder="请输入文本" v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -34,6 +35,13 @@ const value = ref('')
     :line="false"
     placeholder="请输入文本"
     v-model="value"
+  /> 
+  <var-input
+    :hint="false"
+    :line="false"
+    placeholder="请输入文本"
+    v-model="value"
+    variant="outlined"
   />
 </template>
 ```
@@ -49,6 +57,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" textarea v-model="value" />
+  <var-input placeholder="请输入文本" textarea v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -63,6 +72,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" :maxlength="10" v-model="value" />
+  <var-input placeholder="请输入文本" :maxlength="10" v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -77,6 +87,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" disabled v-model="value" />
+  <var-input placeholder="请输入文本" disabled v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -91,6 +102,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" readonly v-model="value" />
+  <var-input placeholder="请输入文本" readonly v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -105,6 +117,7 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" clearable v-model="value" />
+  <var-input placeholder="请输入文本" clearable v-model="value" variant="outlined" />
 </template>
 ```
 
@@ -119,6 +132,14 @@ const value = ref('')
 
 <template>
   <var-input placeholder="请输入文本" v-model="value">
+    <template #prepend-icon>
+      <var-icon name="plus"/>
+    </template>
+    <template #append-icon>
+      <var-icon name="minus"/>
+    </template>
+  </var-input>
+  <var-input placeholder="请输入文本" v-model="value" variant="outlined">
     <template #prepend-icon>
       <var-icon name="plus"/>
     </template>
@@ -147,6 +168,12 @@ const value = ref('')
     :rules="[v => v.length > 6 || '文本长度必须大于6']"
     v-model="value"
   />
+  <var-input
+    placeholder="请输入文本"
+    :rules="[v => v.length > 6 || '文本长度必须大于6']"
+    v-model="value"
+    variant="outlined"
+  />
 </template>
 ```
 
@@ -159,6 +186,8 @@ const value = ref('')
 | `v-model` | 绑定的值                                                                     | _string_ | `-` |
 | `placeholder` | 占位符                                                                      | _string_ | `-` |
 | `type` | 输入框类型, 可选值为 `text` `password` `number` `tel`                             | _string_ | `text` |
+| `size` | 输入框尺寸，可选值 `small`                                                          | _string_ | `-` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | 最大长度                                                                     | _string \| number_ | `-` |
 | `textarea` | 是否是文本域                                                                   | _boolean_ | `false` |
 | `rows` | 文本域的显示行数                                                                 | _string \| number_ | `8` |
@@ -208,6 +237,7 @@ const value = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
+| `--input-input-height` | `24px` |
 | `--input-input-text-color` | `#555` |
 | `--input-error-color` | `var(--color-danger)` |
 | `--input-blur-color` | `#888` |
@@ -215,8 +245,12 @@ const value = ref('')
 | `--input-placeholder-size` | `16px` |
 | `--input-textarea-height` | `auto` |
 | `--input-textarea-padding-top` | `8px` |
-| `--input-icon-padding` | `16px 0 0` |
+| `--input-input-padding-top` | `16px` |
+| `--input-input-padding-bottom` | `16px` |
+| `--input-input-padding-left` | `14px` |
+| `--input-input-padding-right` | `14px` |
+| `--input-icon-padding` | `20px 0 0` |
 | `--input-icon-size` | `20px` |
 | `--input-line-size` | `1px` |
-| `--input-line-spread-size` | `2px` |
+| `--input-line-focus-size` | `2px` |
 | `--input-disabled-color` | `var(--color-text-disabled)` |
