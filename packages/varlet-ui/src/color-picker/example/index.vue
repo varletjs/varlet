@@ -6,6 +6,7 @@ import { ref } from 'vue'
 
 watchLang(use)
 const color = ref('#ff00ff')
+const red = '#fba'
 </script>
 
 <template>
@@ -18,5 +19,6 @@ const color = ref('#ff00ff')
   <var-button type="primary" @click="color = { h: 300, s: 1, v: 1, a: 1 }">hsva</var-button>
   <app-type>我是color picker</app-type>
   {{ color }}
+  <var-color-picker v-model="red" mode="hsla" />
   <var-color-picker v-model="color" mode="hsla" />
 </template>
