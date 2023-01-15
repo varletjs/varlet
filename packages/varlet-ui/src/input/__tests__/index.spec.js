@@ -16,6 +16,50 @@ test('test input plugin', () => {
   expect(app.component(Input.name)).toBeTruthy()
 })
 
+test('test input variant', () => {
+  ;['standard', 'outlined'].forEach((variant) => {
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: 'text',
+        variant,
+      },
+    })
+
+    expect(wrapper.find('.var-input').classes()).toContain(`var-input--${variant}`)
+    switch (variant) {
+      case 'standard': {
+        expect(wrapper.find('.var-input').classes()).toContain('var-input--standard')
+        expect(wrapper.find('.var-input__line').wrapperElement.querySelector('.var-input__dot')).toBeTruthy()
+        break
+      }
+
+      case 'outlined': {
+        expect(wrapper.find('.var-input').classes()).toContain('var-input--outlined')
+        expect(wrapper.find('.var-input__line').wrapperElement.querySelector('.var-input__line__start')).toBeTruthy()
+        break
+      }
+
+      default:
+        break
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+})
+
+test('test input size', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'text',
+      size: 'small',
+    },
+  })
+
+  expect(wrapper.find('.var-input').classes()).toContain('var-input--small')
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
 describe('test input events', () => {
   async function expectFocusAndBlur(props = {}) {
     const onFocus = jest.fn()
