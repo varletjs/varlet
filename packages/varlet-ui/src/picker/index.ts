@@ -1,9 +1,8 @@
 import VarPicker from './Picker.vue'
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, type App, type Component, type TeleportProps } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '@varlet/shared'
 import { call, mountInstance } from '../utils/components'
-import type { App, Component, TeleportProps } from 'vue'
 
 export type Texts = any[]
 

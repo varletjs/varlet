@@ -3,6 +3,8 @@ import { VNode } from 'vue'
 
 export type SliderLabelVisible = 'always' | 'normal' | 'never'
 
+export declare const sliderProps: Record<string, any>
+
 export interface SliderProps extends BasicAttributes {
   modelValue?: number | Array<number>
   step?: number | string

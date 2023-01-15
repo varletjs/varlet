@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
+export declare const switchProps: Record<string, any>
+
 export interface SwitchProps extends BasicAttributes {
   modelValue?: any
   activeValue?: any

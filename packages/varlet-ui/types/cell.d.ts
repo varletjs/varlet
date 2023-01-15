@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const cellProps: Record<string, any>
+
 export interface CellProps extends BasicAttributes {
   title?: string | number
   icon?: string

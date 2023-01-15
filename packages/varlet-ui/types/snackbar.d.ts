@@ -6,6 +6,8 @@ export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
+export declare const snackbarProps: Record<string, any>
+
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
   content?: string
@@ -82,6 +84,6 @@ export interface ISnackbar {
   clear(): void
 }
 
-export const Snackbar: ISnackbar
+export declare const Snackbar: ISnackbar
 
 export class _SnackbarComponent extends SnackbarComponent {}

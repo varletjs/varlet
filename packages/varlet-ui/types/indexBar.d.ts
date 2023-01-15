@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const indexBarProps: Record<string, any>
+
 export interface IndexBarProps extends BasicAttributes {
   sticky?: boolean
   stickyOffsetTop?: number | string

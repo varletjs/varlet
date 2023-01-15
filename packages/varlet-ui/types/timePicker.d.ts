@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
+export declare const timePickerProps: Record<string, any>
+
 export type AllowedTime = {
   hours?: (hour: number) => boolean
   minutes?: (minute: number) => boolean

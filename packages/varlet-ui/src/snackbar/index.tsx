@@ -267,6 +267,8 @@ VarSnackbar.install = function (app: App) {
   app.component(VarSnackbar.name, VarSnackbar)
 }
 
+export { props as snackbarProps } from './props'
+
 export const _SnackbarComponent = VarSnackbar
 
 export default Snackbar

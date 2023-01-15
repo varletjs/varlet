@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const collapseProps: Record<string, any>
+
 export type CollapseModelValue = null | string | number | Array<string | number>
 
 export interface CollapseProps extends BasicAttributes {

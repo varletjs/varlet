@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const datePickerProps: Record<string, any>
+
 export type DatePickerType = 'date' | 'month'
 
 export interface DatePickerProps extends BasicAttributes {

@@ -3,6 +3,8 @@ import { VNode } from 'vue'
 
 export { StepsDirection }
 
+export declare const stepsProps: Record<string, any>
+
 export interface StepsProps extends BasicAttributes {
   active?: string | number
   direction?: StepsDirection

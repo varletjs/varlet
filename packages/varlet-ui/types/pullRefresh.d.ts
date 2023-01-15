@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const pullRefreshProps: Record<string, any>
+
 export interface PullRefreshProps extends BasicAttributes {
   modelValue?: boolean
   disabled?: boolean
