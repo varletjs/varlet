@@ -1,4 +1,5 @@
 :root {
+  --input-input-height: 24px;
   --input-input-text-color: #555;
   --input-error-color: var(--color-danger);
   --input-blur-color: #888;
@@ -10,10 +11,10 @@
   --input-input-padding-bottom: 16px;
   --input-input-padding-left: 14px;
   --input-input-padding-right: 14px;
-  --input-icon-padding: calc(var(--input-placeholder-size) + 4px) 0 0;
+  --input-icon-padding: 20px 0 0;
   --input-icon-size: 20px;
   --input-line-size: 1px;
-  --input-line-spread-size: 2px;
+  --input-line-focus-size: 2px;
   --input-disabled-color: var(--color-text-disabled);
 }
 
@@ -59,6 +60,7 @@
     position: absolute;
     font-size: var(--input-placeholder-size);
     color: var(--input-blur-color);
+    line-height: 1em;
     cursor: inherit;
   }
 
@@ -68,6 +70,7 @@
     max-width: 100%;
     transform-origin: left;
     font-size: var(--input-placeholder-size);
+    line-height: 1em;
     color: var(--input-blur-color);
     cursor: inherit;
   }
@@ -83,7 +86,7 @@
 
   &__input {
     width: 100%;
-    height: 24px;
+    height: var(--input-input-height);
     padding: 0;
     outline: none;
     border: none;
@@ -101,11 +104,6 @@
 
   &--textarea {
     height: var(--input-textarea-height);
-  }
-
-  &--placeholder-non-hint {
-    top: 50%;
-    transform: translate(0, -50%) scale(1);
   }
 
   &--non-hint {
@@ -134,10 +132,15 @@
   }
 
   &--standard {
+    --input-input-padding-top: 20px;
     --input-input-padding-bottom: 4px;
 
     .var-input__wrap {
-      padding: calc(var(--input-placeholder-size) + 4px) 0 var(--input-input-padding-bottom);
+      padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom);
+    }
+
+    .var-input--wrap-non-hint {
+      padding: 4px 0;
     }
 
     .var-input__icon {
@@ -149,7 +152,7 @@
       left: 0;
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
-      transform: translate(0, calc(-50% + var(--input-placeholder-size) / 2)) scale(1);
+      transform: translate(0, 0) scale(1);
     }
 
     .var-input--textarea {
@@ -167,6 +170,10 @@
       transform: translate(0, 0) scale(0.75);
     }
 
+    .var-input--placeholder-non-hint {
+      transform: translate(0, -50%);
+    }
+
     .var-input__line {
       width: 100%;
       height: var(--input-line-size);
@@ -180,14 +187,14 @@
 
     .var-input__dot {
       width: 100%;
-      height: var(--input-line-spread-size);
+      height: var(--input-line-focus-size);
       background: var(--input-focus-color);
       transform: scaleX(0);
       transform-origin: center;
       transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
     }
 
-    .var-input--spread {
+    .var-input--line-focus {
       transform: scaleX(1);
     }
 
@@ -276,22 +283,22 @@
     .var-input--line-focus {
       .var-input__line__start {
         border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-spread-size);
-        border-bottom-width: var(--input-line-spread-size);
-        border-inline-start-width: var(--input-line-spread-size);
+        border-top-width: var(--input-line-focus-size);
+        border-bottom-width: var(--input-line-focus-size);
+        border-inline-start-width: var(--input-line-focus-size);
       }
 
       .var-input__line__notch {
         border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-spread-size);
-        border-bottom-width: var(--input-line-spread-size);
+        border-top-width: var(--input-line-focus-size);
+        border-bottom-width: var(--input-line-focus-size);
       }
 
       .var-input__line__end {
         border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-spread-size);
-        border-bottom-width: var(--input-line-spread-size);
-        border-inline-end-width: var(--input-line-spread-size);
+        border-top-width: var(--input-line-focus-size);
+        border-bottom-width: var(--input-line-focus-size);
+        border-inline-end-width: var(--input-line-focus-size);
       }
     }
 
@@ -307,8 +314,11 @@
 
   &--small {
     .var-input--standard& {
+      --input-input-padding-top: 16px;
+      --input-icon-padding: 16px 0 0;
+
       .var-input__wrap {
-        padding: var(--input-placeholder-size) 0 var(--input-input-padding-bottom);
+        padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom);
       }
     }
 
@@ -317,6 +327,10 @@
       --input-input-padding-bottom: 8px;
       --input-input-padding-left: 12px;
       --input-input-padding-right: 12px;
+
+      .var-input--placeholder-hint {
+        margin: 0 4px;
+      }
     }
   }
 }
