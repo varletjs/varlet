@@ -21,7 +21,7 @@
           <slot name="prepend-icon" />
         </div>
 
-        <div :class="classes(n('wrap'), [!hint, n('--non-hint')])">
+        <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
           <input :class="n('autocomplete')" v-if="type === 'password'" />
           <textarea
             :class="
@@ -157,7 +157,7 @@
             :class="
               classes(
                 n('dot'),
-                [isFocus, n('--spread')],
+                [isFocus, n('--line-focus')],
                 [formDisabled || disabled, n('--line-disabled')],
                 [errorMessage, n('--line-error')]
               )
