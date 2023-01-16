@@ -170,6 +170,7 @@ function handleAutoLoadingClick() {
 | 参数               | 说明                                                              | 类型        | 默认值            |
 |------------------|-----------------------------------------------------------------|-----------|----------------|
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
+| `native-type`    | 原生类型，可选值为 `button` `submit` `reset` | _string_  | `button`       |
 | `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`       |
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
 | `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |

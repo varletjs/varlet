@@ -37,7 +37,7 @@
 可以在尾部插槽中插入一些东西，最常见的是插入分页组件。
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 
 const gen = (current, size) => {

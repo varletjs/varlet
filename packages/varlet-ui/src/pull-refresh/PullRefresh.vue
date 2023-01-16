@@ -1,5 +1,5 @@
 <template>
-  <div ref="freshNode" :class="n()" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchEnd">
+  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -18,13 +18,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, onMounted } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted, onBeforeUnmount, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
-import { props } from './props'
+import { props, type RefreshStatus } from './props'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
-import type { RefreshStatus } from './props'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -48,6 +46,9 @@ export default defineComponent({
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
+
+    let startY = 0
+    let deltaY = 0
 
     // https://github.com/varletjs/varlet/issues/509
     const iconHasChanged: Ref<boolean> = ref(true)
@@ -82,16 +83,33 @@ export default defineComponent({
       el.classList[action](`${n()}--lock`)
     }
 
+    const touchStart = (event: TouchEvent) => {
+      startY = event.touches[0].clientY
+      deltaY = 0
+    }
+
     const touchMove = (event: TouchEvent) => {
+      if (!isTouchable.value) return
+
       const scrollTop = getScrollTop(scroller)
-      if (scrollTop > 0 || !isTouchable.value) return
+      if (scrollTop > 0) return
+      const isReachTop = scrollTop === 0
+
+      const touch = event.touches[0]
+      deltaY = touch.clientY - startY
+
+      if (isReachTop && deltaY >= 0) {
+        event.preventDefault()
+      }
 
       if (refreshStatus.value !== 'pulling') {
         refreshStatus.value = 'pulling'
         startPosition.value = event.touches[0].clientY
       }
 
-      if (scrollTop === 0 && distance.value > controlPosition.value) lockEvent('add')
+      if (isReachTop && distance.value > controlPosition.value) {
+        lockEvent('add')
+      }
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
 
@@ -165,6 +183,12 @@ export default defineComponent({
       scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
 
       setPosition()
+
+      freshNode.value?.addEventListener('touchmove', touchMove, { passive: false })
+    })
+
+    onBeforeUnmount(() => {
+      freshNode.value?.removeEventListener('touchmove', touchMove)
     })
 
     return {
@@ -175,6 +199,7 @@ export default defineComponent({
       refreshStatus,
       freshNode,
       controlNode,
+      touchStart,
       touchMove,
       touchEnd,
       iconName,

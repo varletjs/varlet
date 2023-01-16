@@ -1,3 +1,39 @@
+## [2.6.2](https://github.com/varletjs/varlet/compare/v2.6.1...v2.6.2) (2023-01-12)
+
+
+### Bug Fixes
+
+* **ui/pull-refresh:** fix pull-refresh touchMove ([#829](https://github.com/varletjs/varlet/issues/829)) ([1614e73](https://github.com/varletjs/varlet/commit/1614e733a0144572883a70a0f859ea95a4ad88a8))
+
+
+
+## [2.6.1](https://github.com/varletjs/varlet/compare/v2.6.0...v2.6.1) (2023-01-11)
+
+
+### Features
+
+* support native-type and fix overlay auto import error ([35097ca](https://github.com/varletjs/varlet/commit/35097ca2285f38f175934b07c5b7b117d8d1cc4d))
+
+
+
+# [2.6.0](https://github.com/varletjs/varlet/compare/v2.5.6...v2.6.0) (2023-01-10)
+
+
+### Features
+
+* support vite4 and create a new package vite-plugins ([#824](https://github.com/varletjs/varlet/issues/824)) ([34bbb86](https://github.com/varletjs/varlet/commit/34bbb86038916a9303a57a2938a0a29727965137))
+
+
+
+## [2.5.6](https://github.com/varletjs/varlet/compare/v2.5.5...v2.5.6) (2023-01-07)
+
+
+### Bug Fixes
+
+* **pagination:** watch page-count and close [#820](https://github.com/varletjs/varlet/issues/820) ([a4bb395](https://github.com/varletjs/varlet/commit/a4bb3952f2a7a7cddf2eb48ae8a6f44e0a120623))
+
+
+
 ## [2.5.5](https://github.com/varletjs/varlet/compare/v2.5.4...v2.5.5) (2023-01-05)
 
 

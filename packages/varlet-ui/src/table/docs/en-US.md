@@ -37,7 +37,7 @@ A minimal table, when you need to display some data in the form of a table, you 
 You can insert something in the tail slot, the most common is to insert a `Pagination`.
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 
 const gen = (current, size) => {

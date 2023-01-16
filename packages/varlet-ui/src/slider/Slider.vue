@@ -65,35 +65,12 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
-import { props } from './props'
+import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import VarFormDetails from '../form-details'
 import type { Ref, ComputedRef, UnwrapRef } from 'vue'
 import type { SliderProvider } from './provide'
 
 const { n, classes } = createNamespace('slider')
-
-enum Thumbs {
-  First = '1',
-  Second = '2',
-}
-
-interface ThumbProps {
-  startPosition: number
-  currentLeft: number
-  percentValue: number
-  active: boolean
-}
-
-type ThumbsProps = {
-  [Thumbs.First]: ThumbProps
-  [Thumbs.Second]: ThumbProps
-}
-
-interface ThumbsListProps {
-  value: number | number[]
-  enumValue: Thumbs
-  text: number
-}
 
 export default defineComponent({
   name: 'VarSlider',

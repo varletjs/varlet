@@ -242,7 +242,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">自定义上传样式</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\">
+    <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\" type=\\"button\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">上传</div>
       </button></div>
@@ -289,7 +289,7 @@ exports[`test uploader example 1`] = `
   <div>
     <div class=\\"var-uploader var--box\\">
       <div class=\\"var-uploader__file-list\\">
-        <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\">
+        <div class=\\"\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\" type=\\"button\\">
             <!--v-if-->
             <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms; font-size: 28px;\\"></i></div>
           </button></div>

@@ -14,7 +14,7 @@
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const createBasic = async () => {
+async function createBasic() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -47,7 +47,7 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect(){
   const action = await ActionSheet({ 
     actions: [
       {
@@ -83,7 +83,7 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -120,7 +120,7 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect(){
   await ActionSheet({ 
     actions: [
       {
@@ -137,7 +137,7 @@ const handleSelect = async () => {
       },
     ], 
     closeOnClickAction: false,
-    onSelect: action => Snackbar(`Your selected is:${action.name}`), 
+    onSelect: action => Snackbar(`您选择的是:${action.name}`), 
   })
 }
 </script>
@@ -155,7 +155,7 @@ const handleSelect = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -210,7 +210,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action){
   Snackbar(`${action.name}`)
 }
 </script>
@@ -248,7 +248,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action){
   Snackbar(`${action.name}`)
 }
 </script>
@@ -288,7 +288,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -326,7 +326,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -368,7 +368,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>

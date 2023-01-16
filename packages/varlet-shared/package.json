@@ -1,12 +1,14 @@
 {
   "name": "@varlet/shared",
-  "version": "2.5.5",
+  "version": "2.6.2",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "exports": {
     ".": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
       "import": "./lib/index.js"
     }
   },

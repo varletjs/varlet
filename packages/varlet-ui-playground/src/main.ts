@@ -1,6 +1,5 @@
-import { createApp } from 'vue'
-import { Locale } from '@varlet/ui'
 import '@vue/repl/style.css'
+import { createApp } from 'vue'
 import App from './App.vue'
 
 Locale.add('en-US', Locale.enUS)

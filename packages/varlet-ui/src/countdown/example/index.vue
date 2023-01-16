@@ -1,21 +1,21 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCountdown from '..'
 import Snackbar from '../../snackbar'
 import VarButton from '../../button'
 import VarRow from '../../row'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
 const countdown = ref(null)
 const time = ref(3000)
 
-const end = () => {
+function end() {
   Snackbar.info('end!')
 }
 
-const change = () => {
+function change() {
   console.log('change')
 }
 
