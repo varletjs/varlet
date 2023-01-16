@@ -5,6 +5,29 @@ function labelValidator(label: string) {
   return ['always', 'normal', 'never'].includes(label)
 }
 
+export enum Thumbs {
+  First = '1',
+  Second = '2',
+}
+
+export interface ThumbProps {
+  startPosition: number
+  currentLeft: number
+  percentValue: number
+  active: boolean
+}
+
+export type ThumbsProps = {
+  [Thumbs.First]: ThumbProps
+  [Thumbs.Second]: ThumbProps
+}
+
+export interface ThumbsListProps {
+  value: number | number[]
+  enumValue: Thumbs
+  text: number
+}
+
 export const props = {
   // 当前进度百分比
   modelValue: {
