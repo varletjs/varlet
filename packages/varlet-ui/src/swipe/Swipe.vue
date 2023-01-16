@@ -262,11 +262,13 @@ export default defineComponent({
 
     // expose
     const resize = () => {
+      if (!swipeEl.value) {
+        return
+      }
+
       lockDuration.value = true
 
-      size.value = props.vertical
-        ? (swipeEl.value as HTMLElement).offsetHeight
-        : (swipeEl.value as HTMLElement).offsetWidth
+      size.value = props.vertical ? swipeEl.value.offsetHeight : swipeEl.value.offsetWidth
       trackSize.value = size.value * length.value
       translate.value = index.value * -size.value
 
