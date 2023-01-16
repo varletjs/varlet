@@ -112,3 +112,4 @@
 | `--app-bar-left-gap`      | `6px` |
 | `--app-bar-right-gap`     | `6px` |
 | `--app-bar-border-radius` | `4px` |
+| `--app-bar-font-size` | `var(--font-size-lg)` |
