@@ -111,4 +111,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--app-bar-left-gap` | `6px` |
 | `--app-bar-right-gap` | `6px` |
 | `--app-bar-border-radius` | `4px` |
-| `--app-bar-font-size` | `var(--font-size-md)` |
+| `--app-bar-font-size` | `var(--font-size-lg)` |
