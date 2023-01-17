@@ -16,7 +16,7 @@ function mockIndexBarOwnTop() {
 
     if (this && this.map) {
       changedArr = this.map((value, index) => {
-        if (value.ownTop && !value.ownTop.value) value.ownTop.value = (index + 1) * 50
+        if (value.ownTop && !value.ownTop.value) value.ownTop.value = index % 2 === 0 ? index * 10 : index * -10
 
         return value
       })

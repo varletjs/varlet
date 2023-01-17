@@ -73,12 +73,21 @@ export default defineComponent({
       call(props.onChange, anchorName)
     }
 
+    const getOffsetTop = () => {
+      if (!('getBoundingClientRect' in scroller.value!)) return 0
+
+      const { top: parentTop } = scroller.value.getBoundingClientRect()
+      const { scrollTop } = scroller.value
+      const { top: targetTop } = barEl.value!.getBoundingClientRect()
+      return scrollTop - parentTop + targetTop
+    }
+
     const handleScroll = () => {
       const scrollTop = getScrollTop(scroller.value!)
       const scrollHeight =
         scroller.value === window ? document.body.scrollHeight : (scroller.value as HTMLElement).scrollHeight
 
-      const { offsetTop } = barEl.value as HTMLElement
+      const offsetTop = getOffsetTop()
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
         const top = scrollTop - anchorTop + stickyOffsetTop.value - offsetTop
@@ -86,7 +95,7 @@ export default defineComponent({
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
-        if (top >= 0 && top < distance && !clickedName.value) {
+        if (top >= 0 && top < distance && clickedName.value === '') {
           if (index && !props.cssMode) {
             indexAnchors[index - 1].setDisabled(true)
           }
@@ -98,12 +107,12 @@ export default defineComponent({
     }
 
     const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
-      const { offsetTop } = barEl.value as HTMLElement
-
       if (manualCall) call(props.onClick, anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
+
+      const offsetTop = getOffsetTop()
       const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
       const left = getScrollLeft(scroller.value!)
       clickedName.value = anchorName
