@@ -344,9 +344,10 @@ export default defineComponent({
       idx = idx >= length.value ? length.value : idx
 
       const task = idx > index.value ? next : prev
+      const count = Math.abs(idx - index.value)
 
-      Array.from({ length: Math.abs(idx - index.value) }).forEach(() => {
-        task(options)
+      Array.from({ length: count }).forEach((_, index) => {
+        task({ event: index === count - 1 ? options?.event : false })
       })
     }
 
