@@ -101,9 +101,9 @@ onMounted(() => {
 
 | 方法名 | 说明 | 参数 | 返回值                                 |
 | --- | --- | --- |-------------------------------------|
-| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: ScrollToOptions`` | `-` |
+| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: IndexBarScrollToOptions`` | `-` |
 
-#### ScrollToOptions
+#### IndexBarScrollToOptions
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

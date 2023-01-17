@@ -30,7 +30,7 @@ import {
   toPxNum,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
-import { props, type ScrollToOptions, type ClickOptions } from './props'
+import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { IndexBarProvider } from './provide'
 import type { IndexAnchorProvider } from '../index-anchor/provide'
@@ -65,7 +65,7 @@ export default defineComponent({
 
     bindIndexAnchors(indexBarProvider)
 
-    const emitEvent = (anchor: IndexAnchorProvider | number | string, options?: ScrollToOptions) => {
+    const emitEvent = (anchor: IndexAnchorProvider | number | string, options?: IndexBarScrollToOptions) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
       if (anchorName === active.value || anchorName === undefined) return
 
@@ -133,7 +133,7 @@ export default defineComponent({
     }
 
     // expose
-    const scrollTo = (index: number | string, options?: ScrollToOptions) => {
+    const scrollTo = (index: number | string, options?: IndexBarScrollToOptions) => {
       requestAnimationFrame(() => anchorClick({ anchorName: index, options }))
     }
 

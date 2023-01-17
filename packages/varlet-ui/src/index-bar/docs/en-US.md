@@ -101,9 +101,9 @@ Use ref to get IndexBar instance and call instance methods.
 
 | Method | Description	 | arguments | Return |
 | ---- | ------- | -------- |---- |
-| `scrollTo` | scroll to target element	 | `index: number \| string, options?: ScrollToOptions`` | `-` |
+| `scrollTo` | scroll to target element	 | `index: number \| string, options?: IndexBarScrollToOptions`` | `-` |
 
-#### ScrollToOptions
+#### IndexBarScrollToOptions
 
 | Option              | Description                      | Type               | Default |
 | --- | --- | --- | --- |

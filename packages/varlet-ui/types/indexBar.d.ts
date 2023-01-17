@@ -1,7 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
-export interface ScrollToOptions {
+export interface IndexBarScrollToOptions {
   event?: boolean
 }
 
@@ -24,7 +24,7 @@ export class IndexBar extends VarComponent {
     default(): VNode[]
   }
 
-  scrollTo: (index: number | string, options: ScrollToOptions) => void
+  scrollTo: (index: number | string, options?: IndexBarScrollToOptions) => void
 }
 
 export class _IndexBarComponent extends IndexBar {}
