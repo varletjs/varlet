@@ -1,6 +1,10 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export interface ScrollToOptions {
+  event?: boolean
+}
+
 export interface IndexBarProps extends BasicAttributes {
   sticky?: boolean
   stickyOffsetTop?: number | string
@@ -20,7 +24,7 @@ export class IndexBar extends VarComponent {
     default(): VNode[]
   }
 
-  scrollTo: (index: number | string) => void
+  scrollTo: (index: number | string, options: ScrollToOptions) => void
 }
 
 export class _IndexBarComponent extends IndexBar {}

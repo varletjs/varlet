@@ -7,7 +7,7 @@
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
         :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
-        @click="anchorClick(anchorName, true)"
+        @click="anchorClick({ anchorName, manualCall: true })"
       >
         {{ anchorName }}
       </li>
@@ -30,7 +30,7 @@ import {
   toPxNum,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
-import { props } from './props'
+import { props, type ScrollToOptions, type ClickOptions } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { IndexBarProvider } from './provide'
 import type { IndexAnchorProvider } from '../index-anchor/provide'
@@ -65,12 +65,14 @@ export default defineComponent({
 
     bindIndexAnchors(indexBarProvider)
 
-    const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
+    const emitEvent = (anchor: IndexAnchorProvider | number | string, options?: ScrollToOptions) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
       if (anchorName === active.value || anchorName === undefined) return
 
       active.value = anchorName
-      call(props.onChange, anchorName)
+      if (options?.event !== false) {
+        call(props.onChange, anchorName)
+      }
     }
 
     const getOffsetTop = () => {
@@ -106,7 +108,7 @@ export default defineComponent({
       })
     }
 
-    const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
+    const anchorClick = async ({ anchorName, manualCall = false, options }: ClickOptions) => {
       if (manualCall) call(props.onClick, anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
@@ -116,7 +118,7 @@ export default defineComponent({
       const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
       const left = getScrollLeft(scroller.value!)
       clickedName.value = anchorName
-      emitEvent(anchorName)
+      emitEvent(anchorName, options)
 
       await varScrollTo(scroller.value!, {
         left,
@@ -131,8 +133,8 @@ export default defineComponent({
     }
 
     // expose
-    const scrollTo = (index: number | string) => {
-      requestAnimationFrame(() => anchorClick(index))
+    const scrollTo = (index: number | string, options?: ScrollToOptions) => {
+      requestAnimationFrame(() => anchorClick({ anchorName: index, options }))
     }
 
     watch(

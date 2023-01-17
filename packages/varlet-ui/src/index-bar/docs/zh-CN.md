@@ -99,9 +99,16 @@ onMounted(() => {
 ### 方法
 通过 ref 可以获取到 IndexBar 实例并调用实例方法
 
-| 方法名 | 说明 | 参数 | 返回值 |
+| 方法名 | 说明 | 参数 | 返回值                                 |
+| --- | --- | --- |-------------------------------------|
+| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: ScrollToOptions`` | `-` |
+
+#### ScrollToOptions
+
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `scrollTo` | 滚动到指定锚点	 | `index: number \| string` | `-` |
+| `event` | 值为 `false` 时阻止触发 `change` 事件 | _boolean_ | `-` |
+
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
