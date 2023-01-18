@@ -47,9 +47,6 @@ watchDarkMode(dark)
   <div class="pb">
     <var-input :hint="false" :line="false" :placeholder="pack.placeholder" v-model="value7" />
   </div>
-  <div class="pb">
-    <var-input :hint="false" :placeholder="pack.placeholder" v-model="value7" variant="outlined" />
-  </div>
 
   <app-type class="pb">{{ pack.textarea }}</app-type>
   <div class="pb">

@@ -206,6 +206,7 @@
   &--outlined {
     .var-input__controller {
       padding: 0 var(--input-input-padding-right) 0 var(--input-input-padding-left);
+      cursor: text;
     }
     .var-input__wrap {
       padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom) 0;
@@ -257,10 +258,7 @@
         border: 0 solid var(--input-blur-color);
         border-top-width: var(--input-line-size);
         border-bottom-width: var(--input-line-size);
-      }
-
-      &__notch--hint {
-        border-top: none !important;
+        transition: border 0.2s;
       }
 
       &__placeholder {
@@ -309,6 +307,10 @@
 
     .var-input--line-error {
       border-color: var(--input-error-color) !important;
+    }
+
+    .var-input__line__notch--hint {
+      border-top-color: transparent !important;
     }
   }
 
