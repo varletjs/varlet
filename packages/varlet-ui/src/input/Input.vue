@@ -3,7 +3,7 @@
     :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--box'), [disabled, n('--disabled')])"
     @click="handleClick"
   >
-    <div :class="classes(n('$--relative'))">
+    <label :class="classes(n('$--relative'))" :for="id">
       <div
         :class="
           classes(
@@ -166,7 +166,7 @@
           />
         </div>
       </template>
-    </div>
+    </label>
 
     <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
   </div>

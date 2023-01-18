@@ -35,13 +35,6 @@ const value = ref('')
     :line="false"
     placeholder="请输入文本"
     v-model="value"
-  /> 
-  <var-input
-    :hint="false"
-    :line="false"
-    placeholder="请输入文本"
-    v-model="value"
-    variant="outlined"
   />
 </template>
 ```

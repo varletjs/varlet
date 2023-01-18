@@ -164,8 +164,7 @@ exports[`test form with counter 4`] = `
 
 exports[`test form with input 1`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box">
-    <div class="var--relative">
+  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
       <div class="var-input__controller var-input--disabled">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -178,7 +177,7 @@ exports[`test form with input 1`] = `
       <div class="var-input__line var-input--line-disabled">
         <div class="var-input__dot var-input--line-disabled"></div>
       </div>
-    </div>
+    </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
@@ -188,8 +187,7 @@ exports[`test form with input 1`] = `
 
 exports[`test form with input 2`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box">
-    <div class="var--relative">
+  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -202,7 +200,7 @@ exports[`test form with input 2`] = `
       <div class="var-input__line">
         <div class="var-input__dot"></div>
       </div>
-    </div>
+    </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
@@ -212,8 +210,7 @@ exports[`test form with input 2`] = `
 
 exports[`test form with input 3`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box">
-    <div class="var--relative">
+  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
       <div class="var-input__controller var-input--error">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -226,7 +223,7 @@ exports[`test form with input 3`] = `
       <div class="var-input__line var-input--line-error">
         <div class="var-input__dot var-input--line-error"></div>
       </div>
-    </div>
+    </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <div class="var-form-details">
         <div class="var-form-details__error-message">
@@ -247,8 +244,7 @@ exports[`test form with input 3`] = `
 
 exports[`test form with input 4`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box">
-    <div class="var--relative">
+  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -261,7 +257,7 @@ exports[`test form with input 4`] = `
       <div class="var-input__line">
         <div class="var-input__dot"></div>
       </div>
-    </div>
+    </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
