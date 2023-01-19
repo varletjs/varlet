@@ -30,7 +30,7 @@ export const colorPickerProps = {
   },
   swatchesLayout: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   canvasLayout: {
     type: Boolean,
