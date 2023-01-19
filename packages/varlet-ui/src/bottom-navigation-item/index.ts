@@ -5,6 +5,8 @@ BottomNavigationItem.install = function (app: App) {
   app.component(BottomNavigationItem.name, BottomNavigationItem)
 }
 
+export { props as bottomNavigationItemProps } from './props'
+
 export const _BottomNavigationItemComponent = BottomNavigationItem
 
 export default BottomNavigationItem

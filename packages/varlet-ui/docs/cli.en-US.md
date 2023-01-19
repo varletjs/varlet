@@ -60,7 +60,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 If you want to insert other pages into the component library, you can create a `pages` folder in the project root directory to write a vue component to generate other pages.
 The directory structure is as follows:
 
-```js
+```text
 // playground-ignore
 |-- varlet-ui
   |-- src
@@ -210,33 +210,3 @@ varlet-cli create
 
 - 1.`npm` repository registry must set to `npm` official mirror
 - 2.Execute `npm login` to log in
-
-### Module Compatible
-
-Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is:
-
-```js
-// playground-ignore
-import dayjs from 'dayjs/esm'
-```
-
-In order to build `commonjs`, the writing method is:
-
-```js
-// playground-ignore
-import * as dayjs from 'dayjs'
-```
-
-In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation:
-
-```js
-// playground-ignore
-// varlet.config.mjs
-import { defineConfig } from '@varlet/cli'
-
-export default defineConfig({
-  moduleCompatible: {
-    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
-  }
-})
-```

@@ -47,7 +47,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({

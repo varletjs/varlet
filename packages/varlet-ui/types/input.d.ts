@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const inputProps: Record<string, any>
+
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'

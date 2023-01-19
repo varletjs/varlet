@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 
+export declare const menuProps: Record<string, any>
+
 type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
 export type MenuPlacement =

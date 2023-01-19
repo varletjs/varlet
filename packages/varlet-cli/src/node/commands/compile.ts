@@ -2,7 +2,7 @@ import ora from 'ora'
 import logger from '../shared/logger.js'
 import fse from 'fs-extra'
 import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant.js'
-import { compileModule } from '../compiler/compileModule.js'
+import { compileBundle, compileModule } from '../compiler/compileModule.js'
 import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight.js'
 import { compileTypes } from '../compiler/compileTypes.js'
 
@@ -23,25 +23,15 @@ export async function runTask(taskName: string, task: () => any) {
   }
 }
 
-interface CompileCommandOptions {
-  noUmd?: boolean
-}
-
-export async function compile(options: CompileCommandOptions) {
+export async function compile() {
   process.env.NODE_ENV = 'compile'
 
   await removeDir()
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
-  process.env.TARGET_MODULE = 'module'
+  process.env.BABEL_MODULE = 'module'
   await runTask('module', compileModule)
 
-  process.env.TARGET_MODULE = 'esm-bundle'
-  await runTask('esm bundle', () => compileModule('esm-bundle'))
-
-  process.env.TARGET_MODULE = 'commonjs'
-  await runTask('commonjs', () => compileModule('commonjs'))
-
-  process.env.TARGET_MODULE = 'umd'
-  !options.noUmd && (await runTask('umd', () => compileModule('umd')))
+  process.env.BABEL_MODULE = ''
+  await runTask('bundle', compileBundle)
 }

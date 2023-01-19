@@ -2,8 +2,8 @@
   "name": "@varlet/ui",
   "version": "2.6.3",
   "description": "A material like components library",
-  "module": "es/index.js",
-  "main": "lib/index.js",
+  "main": "lib/varlet.cjs.js",
+  "module": "es/index.mjs",
   "typings": "types/index.d.ts",
   "vetur": {
     "tags": "highlight/tags.json",
@@ -36,7 +36,7 @@
   "sideEffects": [
     "es/**/style/*",
     "lib/**/style/*",
-    "es/style.js",
+    "es/style.mjs",
     "lib/style.js",
     "*.css"
   ],

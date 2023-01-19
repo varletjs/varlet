@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const rowProps: Record<string, any>
+
 export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around'
 
 export type RowAlign = 'flex-start' | 'center' | 'flex-end'

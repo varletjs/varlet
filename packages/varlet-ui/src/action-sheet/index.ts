@@ -1,6 +1,5 @@
 import VarActionSheet from './ActionSheet.vue'
-import type { App, TeleportProps } from 'vue'
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, type App, type TeleportProps } from 'vue'
 import { inBrowser } from '@varlet/shared'
 import { call, mountInstance } from '../utils/components'
 
@@ -96,6 +95,8 @@ ActionSheet.close = () => {
 ActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
+
+export { props as actionSheetProps } from './props'
 
 export const _ActionSheetComponent = VarActionSheet
 

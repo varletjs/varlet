@@ -4,14 +4,6 @@
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./lib/index.d.ts",
-      "require": "./lib/index.js",
-      "import": "./lib/index.js"
-    }
-  },
   "description": "shared utils of varlet",
   "keywords": [
     "shared",

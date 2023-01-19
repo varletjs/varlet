@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const backTopProps: Record<string, any>
+
 export interface BackTopProps extends BasicAttributes {
   visibilityHeight?: number | string
   duration?: number

@@ -47,7 +47,7 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({

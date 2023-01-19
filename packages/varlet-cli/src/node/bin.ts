@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-import fse from 'fs-extra'
 import { Command } from 'commander'
-import { CLI_PACKAGE_JSON } from './shared/constant.js'
-
-const { readJSONSync } = fse
+import { getCliVersion } from './shared/fsUtils.js'
 
 const program = new Command()
 
-program.version(`varlet-cli ${readJSONSync(CLI_PACKAGE_JSON).version}`).usage('<command> [options]')
+program.version(`varlet-cli ${getCliVersion()}`).usage('<command> [options]')
 
 program
   .command('dev')
@@ -58,11 +55,10 @@ program
 program
   .command('compile')
   .description('Compile varlet components library code')
-  .option('-nu, --noUmd', 'Do not compile umd target code')
-  .action(async (options) => {
+  .action(async () => {
     const { compile } = await import('./commands/compile.js')
 
-    return compile(options)
+    return compile()
   })
 
 program

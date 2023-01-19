@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Swipe } from './swipe'
 import { VNode } from 'vue'
 
+export declare const tabsItemsProps: Record<string, any>
+
 export interface TabsItemsProps extends BasicAttributes {
   active?: string | number
   'onUpdate:active'?: ListenerProp<(active: string | number) => void>

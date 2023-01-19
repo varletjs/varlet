@@ -1,26 +1,20 @@
-import fse from 'fs-extra'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { markdown, html, inlineCss } from '@varlet/vite-plugins'
-import { kebabCase } from '@varlet/shared'
 import {
   ES_DIR,
-  LIB_DIR,
   SITE_CONFIG,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
   SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
-  UMD_DIR,
   VITE_RESOLVE_EXTENSIONS,
 } from '../shared/constant.js'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config'
-
-const { copyFileSync, removeSync } = fse
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -90,58 +84,44 @@ export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConf
   }
 }
 
-export function getESMBundleConfig(varletConfig: Required<VarletConfig>): InlineConfig {
-  const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.esm.js`
-
-  return {
-    logLevel: 'silent',
-
-    build: {
-      emptyOutDir: false,
-      copyPublicDir: false,
-      lib: {
-        name,
-        formats: ['es'],
-        fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
-      },
-      rollupOptions: {
-        external: ['vue'],
-        output: {
-          dir: ES_DIR,
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-          },
-        },
-      },
-    },
-  }
+export interface BundleBuildOptions {
+  fileName: string
+  output: string
+  format: 'es' | 'cjs' | 'umd'
+  emptyOutDir: boolean
 }
 
-export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig {
+export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
+  const plugins = []
   const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.js`
-  const jsFile = resolve(UMD_DIR, fileName)
-  const cssFile = resolve(UMD_DIR, 'style.css')
+  const { fileName, output, format, emptyOutDir } = buildOptions
+
+  if (format === 'umd') {
+    plugins.push(
+      inlineCss({
+        jsFile: resolve(output, fileName),
+        cssFile: resolve(output, 'style.css'),
+      })
+    )
+  }
 
   return {
     logLevel: 'silent',
 
     build: {
-      emptyOutDir: true,
+      minify: format === 'cjs' ? false : 'esbuild',
+      emptyOutDir,
       copyPublicDir: false,
       lib: {
         name,
-        formats: ['umd'],
+        formats: [format],
         fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
+        entry: resolve(ES_DIR, 'index.bundle.mjs'),
       },
       rollupOptions: {
         external: ['vue'],
         output: {
-          dir: UMD_DIR,
+          dir: output,
           exports: 'named',
           globals: {
             vue: 'Vue',
@@ -149,16 +129,5 @@ export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig
         },
       },
     },
-
-    plugins: [
-      inlineCss({
-        jsFile,
-        cssFile,
-        onEnd() {
-          copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
-          removeSync(cssFile)
-        },
-      }),
-    ],
   }
 }

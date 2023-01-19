@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Direction as TabsDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const tabsProps: Record<string, any>
+
 export { TabsDirection }
 
 export interface TabsProps extends BasicAttributes {

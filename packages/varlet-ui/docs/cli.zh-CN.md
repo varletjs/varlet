@@ -60,7 +60,7 @@ varlet-cli gen
 如果想在组件库中插入其他页面，可以在项目根目录下的创建 `pages` 文件夹编写 vue 组件， 用来生成其他的页面。
 目录结构如下：
 
-```js
+```text
 // playground-ignore
 |-- varlet-ui
   |-- src
@@ -209,33 +209,3 @@ varlet-cli create
 
 - 1.`npm` 的仓库源必须指向 `npm` 官方镜像
 - 2.执行 `npm login` 进行登录
-
-### 模块适配对象
-
-一些外部依赖可能需要进行模块语法的适配，以达到可以正确编译到 `commonjs` 和 `esmodule` 的目的，例如 `dayjs` 的 `esmodule` 写法是:
-
-```js
-// playground-ignore
-import dayjs from 'dayjs/esm'
-```
-
-而为了构建 `commonjs` 时的写法是:
-
-```js
-// playground-ignore
-import * as dayjs from 'dayjs'
-```
-
-在项目中我们拥抱 `esmodule` 模块使用第一种写法，并做如下配置进行适配:
-
-```js
-// playground-ignore
-// varlet.config.mjs
-import { defineConfig } from '@varlet/cli'
-
-export default defineConfig({
-  moduleCompatible: {
-    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
-  }
-})
-```

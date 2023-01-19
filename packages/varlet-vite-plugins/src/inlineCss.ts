@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite'
 import fse from 'fs-extra'
 
-const { pathExistsSync, writeFileSync, readFileSync } = fse
+const { pathExistsSync, writeFileSync, readFileSync, removeSync } = fse
 
 export interface InlineCssOptions {
   cssFile: string
@@ -19,12 +19,14 @@ export function inlineCss(options: InlineCssOptions): Plugin {
       const { cssFile, jsFile, onEnd } = options
 
       if (!pathExistsSync(cssFile)) {
-        this.error('css file cannot found')
+        this.warn('css file cannot found')
+        onEnd?.()
         return
       }
 
       if (!pathExistsSync(jsFile)) {
         this.error('js file cannot found')
+        onEnd?.()
         return
       }
 
@@ -35,6 +37,7 @@ style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.rep
 var head=document.querySelector('head');head.appendChild(style)})();`
 
       writeFileSync(jsFile, `${injectCode}${jsCode}`)
+      removeSync(cssFile)
       onEnd?.()
     },
   }

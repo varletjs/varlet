@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes } from './varComponent'
 import { ButtonProps } from './button'
 import { VNode } from 'vue'
 
+export declare const bottomNavigationProps: Record<string, any>
+
 export interface BottomNavigationProps extends BasicAttributes {
   active?: number | string
   fixed?: boolean

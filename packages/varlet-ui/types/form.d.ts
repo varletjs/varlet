@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { ComputedRef, VNode, Ref } from 'vue'
 
+export declare const formProps: Record<string, any>
+
 export interface FormValidation {
   validate(): Promise<boolean>
   resetValidation(): void

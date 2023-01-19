@@ -3,6 +3,8 @@ import { VNode } from 'vue'
 
 export type ProgressMode = 'linear' | 'circle'
 
+export declare const progressProps: Record<string, any>
+
 export interface ProgressProps extends BasicAttributes {
   mode?: ProgressMode
   lineWidth?: string | number

@@ -17,7 +17,7 @@ export const buildShared = () => execa('pnpm', ['build'], { cwd: PKG_SHARED })
 
 export const buildIcons = () => execa('pnpm', ['build'], { cwd: PKG_ICONS })
 
-export const buildUI = (noUmd) => execa('pnpm', ['compile', noUmd ? '--noUmd' : ''], { cwd: PKG_UI })
+export const buildUI = () => execa('pnpm', ['compile'], { cwd: PKG_UI })
 
 export async function runTask(taskName, task) {
   const s = ora().start(`Building ${taskName}`)
@@ -28,4 +28,16 @@ export async function runTask(taskName, task) {
     s.fail(`Build ${taskName} failed!`)
     console.error(e.toString())
   }
+}
+
+export async function runTaskQueue() {
+  await runTask('shared', buildShared)
+
+  await Promise.all([
+    runTask('cli', buildCli),
+    runTask('vite plugins', buildVitePlugins),
+    runTask('icons', buildIcons)
+  ])
+
+  await runTask('ui', buildUI)
 }

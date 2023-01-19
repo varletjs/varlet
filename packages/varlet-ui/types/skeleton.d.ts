@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const skeletonProps: Record<string, any>
+
 export interface SkeletonProps extends BasicAttributes {
   loading?: boolean
   title?: boolean

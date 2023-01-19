@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const checkboxProps: Record<string, any>
+
 export type CheckboxValidateTriggers = 'onChange'
 
 export interface CheckboxProps extends BasicAttributes {

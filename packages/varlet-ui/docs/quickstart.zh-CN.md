@@ -12,7 +12,7 @@
 ```html
 <!-- playground-ignore -->
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
@@ -43,7 +43,7 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
@@ -52,3 +52,12 @@ createApp(App).use(Varlet).mount('#app')
 
 我们提供了网页版的组件编辑器，方便您对组件库的各个组件进行快速上手、在线编辑、分享给他人或是下载代码包本地运行。
 您可以点击网页右上角的 `{...}` 图标或是 [这里前往](https://varlet.gitee.io/varlet-ui-playground)。
+
+### 文件路径注意
+
+在`@varlet/ui@2.7.0`及其之后的版本，我们推荐使用如下省略后缀名的文件引入方式，以兼容 `js` 和 `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
+```

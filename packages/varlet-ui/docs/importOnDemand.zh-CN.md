@@ -12,7 +12,7 @@
 // playground-ignore
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 
 createApp().use(Button)
 ```
@@ -23,7 +23,7 @@ createApp().use(Button)
 // playground-ignore
 <script setup>
 import { Button as VarButton } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 </script>
 
 <template>
@@ -117,8 +117,8 @@ export default defineConfig({
 // playground-ignore
 <script setup>
 import { Button as VarButton, Snackbar } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-import '@varlet/ui/es/snackbar/style/index.js'
+import '@varlet/ui/es/button/style/index'
+import '@varlet/ui/es/snackbar/style/index'
 
 function handleClick() {
   Snackbar('你好!')
@@ -143,4 +143,13 @@ function handleClick() {
 <template>
   <var-button @click="handleClick">说你好</var-button>
 </template>
+```
+
+### 文件路径注意
+
+在`@varlet/ui@2.7.0`及其之后的版本，我们推荐使用如下省略后缀名的文件引入方式，以兼容 `js` 和 `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
 ```

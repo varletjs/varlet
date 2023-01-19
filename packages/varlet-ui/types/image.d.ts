@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
-type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+export declare const imageProps: Record<string, any>
+
+export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export interface ImageProps extends BasicAttributes {
   src?: string

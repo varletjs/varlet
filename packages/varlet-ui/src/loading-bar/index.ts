@@ -94,6 +94,8 @@ const LoadingBar: LoadingBar = {
   mergeConfig,
 }
 
+export { props as loadingBarProps } from './props'
+
 export const _LoadingBarComponent = LoadingBar
 
 export default LoadingBar

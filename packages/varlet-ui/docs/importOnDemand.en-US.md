@@ -12,7 +12,7 @@ Each component is a `Vue plugin` and consists of `component logic` and `style fi
 // playground-ignore
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 
 createApp().use(Button)
 ````
@@ -23,7 +23,7 @@ OR
 // playground-ignore
 <script setup>
 import { Button as VarButton } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
+import '@varlet/ui/es/button/style/index'
 </script>
 
 <template>
@@ -119,8 +119,8 @@ Manual introduction.
 // playground-ignore
 <script setup>
 import { Button as VarButton, Snackbar } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-import '@varlet/ui/es/snackbar/style/index.js'
+import '@varlet/ui/es/button/style/index'
+import '@varlet/ui/es/snackbar/style/index'
 
 function handleClick() {
   Snackbar('Hello!')
@@ -146,3 +146,12 @@ function handleClick() {
   <var-button @click="handleClick">Say Hello</var-button>
 </template>
 ````
+
+### File path note
+
+In `@varlet/ui@2.7.0` and later versions, we recommend using the following file import method with omitting the suffix to be compatible with `js` and `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
+```

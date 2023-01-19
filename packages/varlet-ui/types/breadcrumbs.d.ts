@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const breadcrumbsProps: Record<string, any>
+
 export interface BreadcrumbsProps extends BasicAttributes {
   separator?: string
 }

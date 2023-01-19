@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
+export declare const iconProps: Record<string, any>
+
 export interface IconProps extends BasicAttributes {
   name?: string
   size?: string | number

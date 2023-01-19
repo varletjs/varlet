@@ -8,6 +8,7 @@ import inquirer from 'inquirer'
 import { CWD } from '../shared/constant.js'
 import { resolve } from 'path'
 import { changelog } from './changelog.js'
+import { getVersion } from '../shared/fsUtils.js'
 
 const { writeFileSync, readJSONSync } = fse
 const { prompt } = inquirer
@@ -118,11 +119,12 @@ async function getReleaseType() {
 
 interface ReleaseCommandOptions {
   remote?: string
+  task?(): Promise<void>
 }
 
 export async function release(options: ReleaseCommandOptions) {
   try {
-    const currentVersion = readJSONSync(resolve(CWD, 'package.json')).version
+    const currentVersion = getVersion()
 
     if (!currentVersion) {
       logger.error('Your package is missing the version field')
@@ -152,6 +154,10 @@ export async function release(options: ReleaseCommandOptions) {
     }
 
     updateVersion(expectVersion)
+
+    if (options.task) {
+      await options.task()
+    }
 
     await publish(isPreRelease)
 

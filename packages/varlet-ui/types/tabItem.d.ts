@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const tabItemProps: Record<string, any>
+
 export interface TabItemProps extends BasicAttributes {
   name?: string | number
 }

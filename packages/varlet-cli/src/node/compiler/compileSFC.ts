@@ -91,12 +91,7 @@ export async function compileSFC(sfc: string) {
 
       code = extractStyleDependencies(file, code, STYLE_IMPORT_RE)
       writeFileSync(file, clearEmptyLine(code), 'utf-8')
-      smartAppendFileSync(
-        cssFile,
-        process.env.BABEL_MODULE === 'commonjs'
-          ? `require('${dependencyPath}.css')\n`
-          : `import '${dependencyPath}.css'\n`
-      )
+      smartAppendFileSync(cssFile, `import '${dependencyPath}.css'\n`)
 
       if (style.lang === 'less') {
         await compileLess(file)

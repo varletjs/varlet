@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Type as BadgeType } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const badgeProps: Record<string, any>
+
 export type BadgePosition = 'right-top' | 'right-bottom' | 'left-top' | 'left-bottom'
 
 export { BadgeType }

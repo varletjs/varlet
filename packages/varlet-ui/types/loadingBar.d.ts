@@ -5,6 +5,8 @@ export interface LoadingBarOptions {
   top?: string | number
 }
 
+export declare const loadingBarProps: Record<string, any>
+
 export interface ILoadingBar {
   mergeConfig(options: LoadingBarOptions): void
 
@@ -15,4 +17,4 @@ export interface ILoadingBar {
   error(): void
 }
 
-export const LoadingBar: ILoadingBar
+export declare const LoadingBar: ILoadingBar
