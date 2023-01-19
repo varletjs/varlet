@@ -1,17 +1,20 @@
 :root {
   --app-bar-color: var(--color-primary);
   --app-bar-title-padding: 0 12px;
+  --app-bar-title-font-size: var(--font-size-lg);
   --app-bar-text-color: #fff;
   --app-bar-height: 54px;
   --app-bar-left-gap: 6px;
   --app-bar-right-gap: 6px;
   --app-bar-border-radius: 4px;
+  --app-bar-font-size: var(--font-size-lg);
 }
 
 .var-app-bar {
   position: relative;
   display: flex;
   width: 100%;
+  font-size: var(--app-bar-font-size);
   justify-content: center;
   align-items: center;
   height: var(--app-bar-height);
@@ -20,6 +23,7 @@
   transition: background-color 0.25s;
 
   &__title {
+    font-size: var(--app-bar-title-font-size);
     flex: 1;
     display: flex;
     justify-content: center;

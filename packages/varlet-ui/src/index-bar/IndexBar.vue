@@ -7,7 +7,7 @@
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
         :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
-        @click="anchorClick(anchorName, true)"
+        @click="anchorClick({ anchorName, manualCall: true })"
       >
         {{ anchorName }}
       </li>
@@ -30,7 +30,7 @@ import {
   toPxNum,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
-import { props } from './props'
+import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { IndexBarProvider } from './provide'
 import type { IndexAnchorProvider } from '../index-anchor/provide'
@@ -65,12 +65,23 @@ export default defineComponent({
 
     bindIndexAnchors(indexBarProvider)
 
-    const emitEvent = (anchor: IndexAnchorProvider | number | string) => {
+    const emitEvent = (anchor: IndexAnchorProvider | number | string, options?: IndexBarScrollToOptions) => {
       const anchorName = isPlainObject(anchor) ? anchor.name.value : anchor
       if (anchorName === active.value || anchorName === undefined) return
 
       active.value = anchorName
-      call(props.onChange, anchorName)
+      if (options?.event !== false) {
+        call(props.onChange, anchorName)
+      }
+    }
+
+    const getOffsetTop = () => {
+      if (!('getBoundingClientRect' in scroller.value!)) return 0
+
+      const { top: parentTop } = scroller.value.getBoundingClientRect()
+      const { scrollTop } = scroller.value
+      const { top: targetTop } = barEl.value!.getBoundingClientRect()
+      return scrollTop - parentTop + targetTop
     }
 
     const handleScroll = () => {
@@ -78,7 +89,7 @@ export default defineComponent({
       const scrollHeight =
         scroller.value === window ? document.body.scrollHeight : (scroller.value as HTMLElement).scrollHeight
 
-      const { offsetTop } = barEl.value as HTMLElement
+      const offsetTop = getOffsetTop()
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
         const anchorTop = anchor.ownTop.value
         const top = scrollTop - anchorTop + stickyOffsetTop.value - offsetTop
@@ -86,7 +97,7 @@ export default defineComponent({
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
-        if (top >= 0 && top < distance && !clickedName.value) {
+        if (top >= 0 && top < distance && clickedName.value === '') {
           if (index && !props.cssMode) {
             indexAnchors[index - 1].setDisabled(true)
           }
@@ -97,17 +108,17 @@ export default defineComponent({
       })
     }
 
-    const anchorClick = async (anchorName: string | number, manualCall?: boolean) => {
-      const { offsetTop } = barEl.value as HTMLElement
-
+    const anchorClick = async ({ anchorName, manualCall = false, options }: ClickOptions) => {
       if (manualCall) call(props.onClick, anchorName)
       if (anchorName === active.value) return
       const indexAnchor = indexAnchors.find(({ name }: IndexAnchorProvider) => anchorName === name.value)
       if (!indexAnchor) return
+
+      const offsetTop = getOffsetTop()
       const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
       const left = getScrollLeft(scroller.value!)
       clickedName.value = anchorName
-      emitEvent(anchorName)
+      emitEvent(anchorName, options)
 
       await varScrollTo(scroller.value!, {
         left,
@@ -122,8 +133,8 @@ export default defineComponent({
     }
 
     // expose
-    const scrollTo = (index: number | string) => {
-      requestAnimationFrame(() => anchorClick(index))
+    const scrollTo = (index: number | string, options?: IndexBarScrollToOptions) => {
+      requestAnimationFrame(() => anchorClick({ anchorName: index, options }))
     }
 
     watch(

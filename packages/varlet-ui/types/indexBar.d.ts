@@ -3,6 +3,10 @@ import { VNode } from 'vue'
 
 export declare const indexBarProps: Record<string, any>
 
+export interface IndexBarScrollToOptions {
+  event?: boolean
+}
+
 export interface IndexBarProps extends BasicAttributes {
   sticky?: boolean
   stickyOffsetTop?: number | string
@@ -22,7 +26,7 @@ export class IndexBar extends VarComponent {
     default(): VNode[]
   }
 
-  scrollTo: (index: number | string) => void
+  scrollTo: (index: number | string, options?: IndexBarScrollToOptions) => void
 }
 
 export class _IndexBarComponent extends IndexBar {}

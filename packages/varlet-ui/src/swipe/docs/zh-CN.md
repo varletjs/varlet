@@ -164,17 +164,15 @@ import { Snackbar } from '@varlet/ui'
 ```html
 <template>
   <var-swipe class="swipe-example">
-    <template #default>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-      </var-swipe-item>
-    </template>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
 
     <template #indicator="{ index, length }">
       <div class="swipe-example-indicators">
@@ -229,9 +227,15 @@ import { Snackbar } from '@varlet/ui'
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `resize` | 产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
-| `prev` | 上一页 | `-` | `-` |
-| `next` | 下一页 | `-` | `-` |
-| `to` | 跳转到指定下标 | `index: number` | `-` |
+| `prev` | 上一页 | `options?: SwipeToOptions` | `-` |
+| `next` | 下一页 | `options?: SwipeToOptions` | `-` |
+| `to` | 跳转到指定下标 | `index: number, options?: SwipeToOptions` | `-` |
+
+#### SwipeToOptions
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `event` | 值为 `false` 时阻止触发 `change` 事件 | _boolean_ | `-` |
 
 ### 事件
 

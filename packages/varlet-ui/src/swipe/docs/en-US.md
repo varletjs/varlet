@@ -165,17 +165,15 @@ import { Snackbar } from '@varlet/ui'
 ```html
 <template>
   <var-swipe class="swipe-example">
-    <template #default>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
-      </var-swipe-item>
-    </template>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
 
     <template #indicator="{ index, length }">
       <div class="swipe-example-indicators">
@@ -229,9 +227,15 @@ import { Snackbar } from '@varlet/ui'
 | Method   | Description                                                          | Arguments       | Return |
 | -------- | -------------------------------------------------------------------- | --------------- | ------ |
 | `resize` | You can call this method to redraw when a tabs changes position size | `-`             | `-`    |
-| `prev`   | Previous page                                                        | `-`             | `-`    |
-| `next`   | Next page                                                            | `-`             | `-`    |
-| `to`     | To index page                                                        | `index: number` | `-`    |
+| `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
+| `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
+| `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
+
+#### SwipeToOptions
+
+| Option              | Description                      | Type               | Default |
+| --- | --- | --- | --- |
+| `event` | prevent `change` emit event when `false` | _boolean_ | `-` |
 
 ### Events
 
@@ -243,8 +247,8 @@ import { Snackbar } from '@varlet/ui'
 
 #### Swipe Slots
 
-| Name | Description | SlotProps |
-| ----------- | ----------------------- | ------------------------------------- |
+| Prop              | Description                      | Type               | Default |
+| ----------------- | -------------------------------- | ------------------ | ------- |
 | `default`   | Swipe content           | `-`                                   |
 | `indicator` | Swipe indicator content | `index: number` <br> `length: number` |
 

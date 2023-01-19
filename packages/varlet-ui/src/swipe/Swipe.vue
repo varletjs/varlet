@@ -32,15 +32,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { useSwipeItems } from './provide'
+import { defineComponent, ref, computed, watch, onMounted, onUnmounted, type Ref, type ComputedRef } from 'vue'
+import { useSwipeItems, type SwipeProvider } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
-import { props } from './props'
+import { props, type SwipeToOptions } from './props'
 import { isNumber, toNumber } from '@varlet/shared'
-import type { Ref, ComputedRef } from 'vue'
-import type { SwipeProvider } from './provide'
-import type { SwipeItemProvider } from '../swipe-item/provide'
 import { call, createNamespace } from '../utils/components'
+import { type SwipeItemProvider } from '../swipe-item/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -73,15 +71,15 @@ export default defineComponent({
       if (!props.loop) {
         return
       }
-      // track越左边界
+      // track out of bounds from left
       if (translate.value >= 0) {
         findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
       }
-      // track越右边界
+      // track out of bounds from right
       if (translate.value <= -(trackSize.value - size.value)) {
         findSwipeItem(0).setTranslate(trackSize.value)
       }
-      // track没越界
+      // track not out of bounds
       if (translate.value > -(trackSize.value - size.value) && translate.value < 0) {
         findSwipeItem(length.value - 1).setTranslate(0)
         findSwipeItem(0).setTranslate(0)
@@ -262,11 +260,13 @@ export default defineComponent({
 
     // expose
     const resize = () => {
+      if (!swipeEl.value) {
+        return
+      }
+
       lockDuration.value = true
 
-      size.value = props.vertical
-        ? (swipeEl.value as HTMLElement).offsetHeight
-        : (swipeEl.value as HTMLElement).offsetWidth
+      size.value = props.vertical ? swipeEl.value.offsetHeight : swipeEl.value.offsetWidth
       trackSize.value = size.value * length.value
       translate.value = index.value * -size.value
 
@@ -281,7 +281,7 @@ export default defineComponent({
       })
     }
     // expose
-    const next = () => {
+    const next = (options?: SwipeToOptions) => {
       if (length.value <= 1) {
         return
       }
@@ -290,7 +290,10 @@ export default defineComponent({
 
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex + 1)
-      call(onChange, index.value)
+
+      if (options?.event !== false) {
+        call(onChange, index.value)
+      }
 
       fixPosition(() => {
         if (currentIndex === length.value - 1 && loop) {
@@ -305,7 +308,7 @@ export default defineComponent({
       })
     }
     // expose
-    const prev = () => {
+    const prev = (options?: SwipeToOptions) => {
       if (length.value <= 1) {
         return
       }
@@ -314,7 +317,10 @@ export default defineComponent({
 
       const currentIndex = index.value
       index.value = boundaryIndex(currentIndex - 1)
-      call(onChange, index.value)
+
+      if (options?.event !== false) {
+        call(onChange, index.value)
+      }
 
       fixPosition(() => {
         if (currentIndex === 0 && loop) {
@@ -329,7 +335,7 @@ export default defineComponent({
       })
     }
     // expose
-    const to = (idx: number) => {
+    const to = (idx: number, options?: SwipeToOptions) => {
       if (length.value <= 1 || idx === index.value) {
         return
       }
@@ -338,8 +344,11 @@ export default defineComponent({
       idx = idx >= length.value ? length.value : idx
 
       const task = idx > index.value ? next : prev
+      const count = Math.abs(idx - index.value)
 
-      Array.from({ length: Math.abs(idx - index.value) }).forEach(task)
+      Array.from({ length: count }).forEach((_, index) => {
+        task({ event: index === count - 1 ? options?.event : false })
+      })
     }
 
     const swipeProvider: SwipeProvider = {

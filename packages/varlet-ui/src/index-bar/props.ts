@@ -1,5 +1,15 @@
 import { defineListenerProp } from '../utils/components'
 
+export interface IndexBarScrollToOptions {
+  event?: boolean
+}
+
+export interface ClickOptions {
+  anchorName: string | number
+  manualCall?: boolean
+  options?: IndexBarScrollToOptions
+}
+
 export const props = {
   sticky: {
     type: Boolean,
