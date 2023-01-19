@@ -26,6 +26,7 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `桌面端适配器，让移动端组件库可以在桌面端运行` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground)  | `Varlet 组件库在线编辑工具`       |
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension)  | `Varlet 组件库 VSCode 插件`   |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Varlet 组件库与各种生态集成的案例集合`   |
 
 ### 社区生态
 

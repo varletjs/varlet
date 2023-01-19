@@ -28,6 +28,7 @@ The following projects are maintained by the official team for a long time.
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Case collection of Varlet component library and various ecosystem integration` |
 
 ### Community Ecosystem
 

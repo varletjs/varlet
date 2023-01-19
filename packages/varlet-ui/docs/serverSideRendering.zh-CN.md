@@ -55,4 +55,4 @@ export default defineNuxtConfig({
 
 ### 示例仓库
 
-[varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example)
+[varlet-install-example/nuxt](https://github.com/varletjs/varlet-install-example/tree/main/nuxt)
