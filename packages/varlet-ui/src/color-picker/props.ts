@@ -44,6 +44,9 @@ export const colorPickerProps = {
     type: Boolean,
     default: false,
   },
+  'onUpdate:modelValue': {
+    type: Function as PropType<(value: any) => void>,
+  },
 }
 
 export type ColorPickerProps = ExtractPropTypes<typeof colorPickerProps>

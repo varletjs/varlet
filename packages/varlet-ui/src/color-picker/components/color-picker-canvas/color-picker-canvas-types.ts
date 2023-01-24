@@ -7,6 +7,9 @@ export const colorPickerPaletteProps = {
     type: Object as PropType<HSVA>,
     default: () => fromRGBA({ r: 255, g: 0, b: 0, a: 1 }),
   },
+  'onUpdate:color': {
+    type: Function as PropType<(value: any) => void>,
+  },
   height: {
     type: [Number, String],
     default: 150,

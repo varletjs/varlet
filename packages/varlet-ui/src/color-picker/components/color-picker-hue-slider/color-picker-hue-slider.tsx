@@ -3,12 +3,12 @@ import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-pi
 import { DOMUtils } from '../../utils/dom-dragger'
 import './color-picker-hue-slider.less'
 import { HSVA } from '../../utils/color-utils-types'
+import { call } from '../../../utils/components'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'ColorHueSlider',
   props: colorPickerHueSliderProps,
-  emits: ['update:color'],
   setup(props: ColorPickerHueSliderProps, ctx) {
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const barElement = ref<HTMLElement | null>(null)
@@ -44,12 +44,13 @@ export default defineComponent({
         left = Math.min(left, rect.width - offsetWidth / 2)
         left = Math.max(offsetWidth / 2, left)
         const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
-        ctx.emit('update:color', {
+        const hsv = {
           h: hue,
           s: (props.color as HSVA).s,
           v: (props.color as HSVA).v,
           a: (props.color as HSVA).a,
-        })
+        }
+        call(props['onUpdate:color'], hsv)
       }
     }
 

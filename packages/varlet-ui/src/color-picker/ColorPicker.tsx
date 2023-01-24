@@ -1,6 +1,6 @@
 import { defineComponent, ref, computed, toRefs, onMounted, StyleValue, ComputedRef } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, call } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVAtoHex } from './utils/color-utils'
 import { HSVA } from './utils/color-utils-types'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
@@ -14,8 +14,7 @@ import '../styles/elevation.less'
 export default defineComponent({
   name: 'VarColorPicker',
   props: colorPickerProps,
-  emits: ['update:modelValue'],
-  setup(props: ColorPickerProps, { emit }) {
+  setup(props: ColorPickerProps) {
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
@@ -24,7 +23,7 @@ export default defineComponent({
     function updateModelValueColor(color: any) {
       initialColor.value = parseBaseColor(color)
       const value = extractBaseColor(initialColor.value, props.modelValue)
-      emit('update:modelValue', value)
+      call(props['onUpdate:modelValue'], value)
     }
     updateModelValueColor(modelValue.value)
     const currentMode = ref('rgba')

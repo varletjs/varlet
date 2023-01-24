@@ -1,5 +1,5 @@
 import { defineComponent, ref, onMounted, computed, getCurrentInstance, watch } from 'vue'
-import { createNamespace } from '../../../utils/components'
+import { createNamespace, call } from '../../../utils/components'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { clamp, convertToUnit } from '../../utils/helpers'
 import { colorPickerPaletteProps, ColorPickerPaletteProps } from './color-picker-canvas-types'
@@ -9,7 +9,6 @@ type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'VarColorCanvas',
   props: colorPickerPaletteProps,
-  emits: ['update:color', 'changeTextColor'],
   setup(props: ColorPickerPaletteProps, ctx) {
     const { n } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
@@ -60,20 +59,13 @@ export default defineComponent({
         top = clamp(top, 0, height)
         cursorLeft.value = left
         cursorTop.value = top
-        const isChangeTextColor = computed(() => {
-          if (left > rect.width / 2 || top > rect.height / 2) {
-            return true
-          }
-          return false
-        })
-
-        ctx.emit('update:color', {
+        const hsv = {
           h: props.color?.h ?? 0,
           s: clamp(event.clientX - rect.left, 0, width) / width,
           v: 1 - clamp(event.clientY - rect.top, 0, height) / height,
           a: props.color?.a,
-        })
-        ctx.emit('changeTextColor', isChangeTextColor.value)
+        }
+        call(props['onUpdate:color'], hsv)
       }
     }
 
