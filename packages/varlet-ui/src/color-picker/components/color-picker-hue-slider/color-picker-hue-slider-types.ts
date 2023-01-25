@@ -8,6 +8,10 @@ export const colorPickerHueSliderProps = {
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 } as const
 
 export type ColorPickerHueSliderProps = ExtractPropTypes<typeof colorPickerHueSliderProps>

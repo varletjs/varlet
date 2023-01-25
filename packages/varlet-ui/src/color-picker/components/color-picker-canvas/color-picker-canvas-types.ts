@@ -10,6 +10,10 @@ export const colorPickerPaletteProps = {
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   height: {
     type: [Number, String],
     default: 150,

@@ -50,6 +50,7 @@ export default defineComponent({
                 height={props.canvasHeight}
                 color={initialColor.value}
                 onUpdate:color={updateColor}
+                disabled={disabled.value}
               />
             )}
             {(props.sliderLayout || props.inputLayout) && (
@@ -58,10 +59,18 @@ export default defineComponent({
                   <div class={classes(n('preview'))}>
                     <div class={classes(n('preview__dots'))} style={dotStyle.value}></div>
                     <div class={classes(n('preview__slider'))}>
-                      <VarColorPickerHueSlider color={initialColor.value} onUpdate:color={updateColor} />
+                      <VarColorPickerHueSlider
+                        color={initialColor.value}
+                        onUpdate:color={updateColor}
+                        disabled={disabled.value}
+                      />
 
                       {currentMode.value.endsWith('a') ? (
-                        <VarColorPickerAlphaSlider color={initialColor.value} onUpdate:color={updateColor} />
+                        <VarColorPickerAlphaSlider
+                          color={initialColor.value}
+                          onUpdate:color={updateColor}
+                          disabled={disabled.value}
+                        />
                       ) : null}
                     </div>
                   </div>
@@ -78,7 +87,13 @@ export default defineComponent({
                 )}
               </div>
             )}
-            {props.swatchesLayout && <VarColorPickerSwatches color={initialColor.value} onUpdate:color={updateColor} />}
+            {props.swatchesLayout && (
+              <VarColorPickerSwatches
+                color={initialColor.value}
+                onUpdate:color={updateColor}
+                disabled={disabled.value}
+              />
+            )}
           </div>
         </>
       )

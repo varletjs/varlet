@@ -37,21 +37,20 @@ export default defineComponent({
 
     const onMoveBar = (event: MouseEvent) => {
       event.stopPropagation()
-      if (barElement.value && cursorElement.value) {
-        const rect = barElement.value.getBoundingClientRect()
-        const { offsetWidth } = cursorElement.value
-        let left = event.clientX - rect.left
-        left = Math.min(left, rect.width - offsetWidth / 2)
-        left = Math.max(offsetWidth / 2, left)
-        const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
-        const hsv = {
-          h: hue,
-          s: (props.color as HSVA).s,
-          v: (props.color as HSVA).v,
-          a: (props.color as HSVA).a,
-        }
-        call(props['onUpdate:color'], hsv)
+      if (props.disabled || !barElement.value || !cursorElement.value) return
+      const rect = barElement.value.getBoundingClientRect()
+      const { offsetWidth } = cursorElement.value
+      let left = event.clientX - rect.left
+      left = Math.min(left, rect.width - offsetWidth / 2)
+      left = Math.max(offsetWidth / 2, left)
+      const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
+      const hsv = {
+        h: hue,
+        s: (props.color as HSVA).s,
+        v: (props.color as HSVA).v,
+        a: (props.color as HSVA).a,
       }
+      call(props['onUpdate:color'], hsv)
     }
 
     const onClickSlider = (event: Event) => {

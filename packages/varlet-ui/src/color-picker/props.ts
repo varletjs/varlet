@@ -16,6 +16,10 @@ export const colorPickerProps = {
     default: () => Object.keys(modes),
     validator: (v: any) => Array.isArray(v) && v.every((m) => Object.keys(modes).includes(m)),
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   width: {
     type: [Number, String],
     default: 300,

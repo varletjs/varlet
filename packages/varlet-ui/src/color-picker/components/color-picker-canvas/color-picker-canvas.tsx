@@ -49,28 +49,30 @@ export default defineComponent({
     }
 
     function handleDrag(event: MouseEvent) {
+      event.preventDefault()
+      if (props.disabled || !paletteInstance) return
+      console.log(props.disabled)
+
       const parentWidth = paletteElement.value?.offsetWidth || 0
-      if (paletteInstance) {
-        const el = canvasElement.value
-        const rect = el?.getBoundingClientRect() as DOMRect
-        let left = event.clientX - rect.left
-        let top = event.clientY - rect.top
-        left = clamp(left, 0, parentWidth)
-        top = clamp(top, 0, height)
-        cursorLeft.value = left
-        cursorTop.value = top
-        const hsv = {
-          h: props.color?.h ?? 0,
-          s: clamp(event.clientX - rect.left, 0, width) / width,
-          v: 1 - clamp(event.clientY - rect.top, 0, height) / height,
-          a: props.color?.a,
-        }
-        call(props['onUpdate:color'], hsv)
+      const el = canvasElement.value
+      const rect = el?.getBoundingClientRect() as DOMRect
+      let left = event.clientX - rect.left
+      let top = event.clientY - rect.top
+      left = clamp(left, 0, parentWidth)
+      top = clamp(top, 0, height)
+      cursorLeft.value = left
+      cursorTop.value = top
+      const hsv = {
+        h: props.color?.h ?? 0,
+        s: clamp(event.clientX - rect.left, 0, width) / width,
+        v: 1 - clamp(event.clientY - rect.top, 0, height) / height,
+        a: props.color?.a,
       }
+      call(props['onUpdate:color'], hsv)
     }
 
     function clickPalette(event: Event) {
-      if (event.target !== paletteElement.value) {
+      if (event.target !== paletteElement.value && !props.disabled) {
         handleDrag(event as MouseEvent)
       }
     }

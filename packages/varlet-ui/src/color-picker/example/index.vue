@@ -18,5 +18,5 @@ const color = ref('#ff00ff')
   <app-type>我是color picker</app-type>
   {{ color }}
   <!-- <var-color-picker v-model="red" mode="hsla" /> -->
-  <var-color-picker v-model="color" mode="hsla" />
+  <var-color-picker v-model="color" mode="hsla" disabled />
 </template>

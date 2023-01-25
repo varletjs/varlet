@@ -36,7 +36,7 @@ export default defineComponent({
       return (
         <div class="var-color-picker-edit">
           {inputs.value?.map((props) => (
-            <VColorPickerInput {...props} />
+            <VarColorPickerInput {...props} />
           ))}
           {enabledModes.value.length > 1 && (
             <var-button
@@ -58,7 +58,7 @@ export default defineComponent({
   },
 })
 
-const VColorPickerInput = ({ label, ...rest }: any) => {
+const VarColorPickerInput = ({ label, ...rest }: any) => {
   return (
     <div class={classes(n('input'))}>
       <input {...rest} />
