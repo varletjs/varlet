@@ -77,7 +77,7 @@ export default defineComponent({
     })
     return () => {
       return (
-        <div class="var-color-picker-hue-slider">
+        <div class={['var-color-picker-hue-slider', props.disabled ? 'var-color-picker-hue-slider__disabled' : null]}>
           <div ref={barElement} class="var-color-picker-hue-slider__bar" onClick={onClickSlider}>
             <div class="var-color-picker-hue-slider__bar-pointer" ref={cursorElement} style={getCursorStyle.value}>
               <div class="var-color-picker-hue-slider__bar-handle"></div>

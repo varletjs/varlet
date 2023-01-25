@@ -44,10 +44,6 @@ export const colorPickerProps = {
     type: Boolean,
     default: true,
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: any) => void>,
   },

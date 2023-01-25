@@ -69,7 +69,7 @@ export default defineComponent({
           onMoveBar(event as MouseEvent)
         },
       }
-      if (barElement.value && cursorElement.value) {
+      if (barElement.value && cursorElement.value && !props.disabled) {
         DOMUtils.triggerDragEvent(barElement.value, dragConfig)
       }
     })
@@ -84,7 +84,10 @@ export default defineComponent({
         <div class={alphaClass.value}>
           <div
             ref={barElement}
-            class="var-color-picker-alpha-slider__bar"
+            class={[
+              'var-color-picker-alpha-slider__bar',
+              props.disabled ? 'var-color-picker-alpha-slider__disabled' : null,
+            ]}
             style={barStyle.value}
             onClick={onClickSlider}
           >

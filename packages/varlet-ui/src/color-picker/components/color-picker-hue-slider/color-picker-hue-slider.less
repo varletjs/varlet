@@ -4,12 +4,13 @@
   height: 8px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
   border-radius: 15px;
-
   &.transparent {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
     background-repeat: repeat;
   }
-
+  &__disabled {
+    filter: brightness(50%);
+  }
   &__bar {
     position: relative;
     width: 100%;
