@@ -7,6 +7,7 @@ import cell from './cell'
 import checkbox from './checkbox'
 import chip from './chip'
 import collapse from './collapse'
+import colorpicker from './colorpicker'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
@@ -74,4 +75,5 @@ export default {
   ...bottomNavigationItem,
   ...menu,
   ...result,
+  ...colorpicker,
 } as StyleVars

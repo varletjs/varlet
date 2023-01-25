@@ -1,5 +1,6 @@
 :root {
-  --popup-overlay-background-color: rgba(0, 0, 0, 0.6);
+  --colorpicker-edit-background-color: #42424233;
+  --colorpicker-edit-color: #000;
 }
 
 .var-color-picker-edit {
@@ -15,6 +16,7 @@
     justify-content: center;
     text-align: center;
     input {
+      font: inherit;
       border-radius: 4px;
       margin-bottom: 8px;
       box-shadow: none !important;
@@ -24,13 +26,13 @@
       width: 100%;
       height: 32px;
       border: none !important;
-      background: var(--popup-overlay-background-color);
-      color: #fff;
+      background: var(--colorpicker-edit-background-color);
+      color: var(--colorpicker-edit-colors);
     }
   }
 
   span {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   // &-text {

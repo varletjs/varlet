@@ -34,7 +34,7 @@ export default defineComponent({
       currentMode.value = mode
     }
     const dotStyle: ComputedRef<any> = computed(() => {
-      return { '--var-color-picker-preview-dots': hex.value }
+      return { '--color-picker-preview-dots': hex.value }
     })
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
@@ -42,7 +42,7 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class={[classes(n()), 'var-elevation--3']}>
+          <div class={classes(n(), n('$-elevation--2'))}>
             <div></div>
             {props.canvasLayout && (
               <VarColorPickerCanvas

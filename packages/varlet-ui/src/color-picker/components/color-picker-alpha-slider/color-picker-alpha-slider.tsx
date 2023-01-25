@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'ColorAlphaSlider',
   props: colorPickerAlphaSliderProps,
   emits: ['update:color'],
-  setup(props: colorPickerAlphaSliderProps, ctx) {
+  setup(props: colorPickerAlphaSliderProps) {
     const DEFAULT_TRANSITION = { transition: 'all 0.3s ease' }
     const clickTransform = ref<{ transition: string } | null>(DEFAULT_TRANSITION)
     const barElement = ref<HTMLElement | null>(null)
@@ -78,7 +78,7 @@ export default defineComponent({
       return ['var-color-picker-alpha-slider', 'transparent']
     })
     const barStyle: any = computed(() => {
-      return { '--var-color-picker-alpha-slider': HSVAtoHex(color.value) }
+      return { '--color-picker-alpha-slider': HSVAtoHex(color.value) }
     })
     return () => {
       return (

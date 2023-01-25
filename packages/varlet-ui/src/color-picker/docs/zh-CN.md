@@ -9,7 +9,6 @@
 | `swatches`        | 设置可用的颜色样本以供选择                   | _string[]_             | `undefined` |
 | `disabled`        | 禁用颜色选择器                               | _boolean_              | `false`     |
 | `swatches-layout` | 是否展示颜色样本                             | _boolean_              | `true`      |
-| `elevation`       | 指定应用于构件的高程，范围在0到24之间。      | _number ｜ string_     | `undefined` |
 | `canvas-layout`   | 是否展示颜色样本                             | _boolean_              | `false`     |
 | `input-layout`    | 是否展示input                                | _boolean_              | `false`     |
 | `slider-layout`   | 是否展示slider                               | _boolean_              | `false`     |
