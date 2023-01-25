@@ -1,13 +1,10 @@
-// Styles
-import './color-picker-swatches.less'
-
 import colors from '../../utils/color'
 import { parseBaseColor } from '../../utils/color-utils'
-// Types
 import { defineComponent, PropType, toRefs } from 'vue'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
 import { changeColorValue } from '../../utils/composable'
 import { call } from '../../../utils/components'
+import './color-picker-swatches.less'
 
 function parseDefaultColors(colors: Record<string, Record<string, string>>) {
   return Object.keys(colors).map((key) => {

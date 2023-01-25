@@ -1,4 +1,4 @@
-import { defineComponent, ref, computed, toRefs, onMounted, StyleValue, ComputedRef } from 'vue'
+import { defineComponent, ref, computed, toRefs, onMounted, ComputedRef } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVAtoHex } from './utils/color-utils'

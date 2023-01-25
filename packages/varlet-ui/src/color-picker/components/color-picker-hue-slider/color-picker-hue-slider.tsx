@@ -1,15 +1,15 @@
 import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
-import './color-picker-hue-slider.less'
 import { HSVA } from '../../utils/color-utils-types'
 import { call } from '../../../utils/components'
+import './color-picker-hue-slider.less'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'ColorHueSlider',
   props: colorPickerHueSliderProps,
-  setup(props: ColorPickerHueSliderProps, ctx) {
+  setup(props: ColorPickerHueSliderProps) {
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)

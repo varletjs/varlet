@@ -1,6 +1,6 @@
 import { computed, defineComponent, toRefs } from 'vue'
 import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-types'
-import { createNamespace } from '../../../utils/components'
+import { call, createNamespace } from '../../../utils/components'
 import { modes as defaultModes } from '../../utils/color-utils'
 import './color-picker-edit.less'
 
@@ -8,8 +8,7 @@ const { n, classes } = createNamespace('color-picker-edit')
 export default defineComponent({
   name: 'VarColorPickerEdit',
   props: colorPickerEditProps,
-  emit: ['update:color', 'update:mode'],
-  setup(props: ColorPickerEditProps, { emit }) {
+  setup(props: ColorPickerEditProps) {
     const { color, modes } = toRefs(props)
     const enabledModes = computed(() => {
       return modes.value.map((key) => ({ ...defaultModes[key], name: key }))
@@ -28,7 +27,7 @@ export default defineComponent({
           onChange: (e: InputEvent) => {
             const target = e.target as HTMLInputElement | null
             if (!target) return
-            emit('update:color', mode.from(getColor(convertColor, target.value)))
+            call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
           },
         }
       })
@@ -45,7 +44,7 @@ export default defineComponent({
               text
               onClick={() => {
                 const index = enabledModes.value.findIndex((m) => m.name === props.mode)
-                emit('update:mode', enabledModes.value[(index + 1) % enabledModes.value.length].name)
+                call(props['onUpdate:mode'], enabledModes.value[(index + 1) % enabledModes.value.length].name)
               }}
             >
               <div style={{ display: 'flex', flexDirection: 'column' }}>

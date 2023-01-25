@@ -9,7 +9,7 @@ type DefaultTransition = { transition: string }
 export default defineComponent({
   name: 'VarColorCanvas',
   props: colorPickerPaletteProps,
-  setup(props: ColorPickerPaletteProps, ctx) {
+  setup(props: ColorPickerPaletteProps) {
     const { n } = createNamespace('color-picker')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
@@ -74,13 +74,12 @@ export default defineComponent({
         handleDrag(event as MouseEvent)
       }
     }
-    // function updatePosition() {
-    //   if (paletteInstance) {
-    //     const parentWidth = paletteElement.value?.offsetWidth || 0
-    //     cursorLeft.value = Number(props.color?.s) * parentWidth
-    //     cursorTop.value = (1 - Number(props.color?.v)) * props.height
-    //   }
-    // }
+    function updatePosition() {
+      if (paletteInstance) {
+        cursorLeft.value = props.color!.s * parseInt(`${props.width}`, 10)
+        cursorTop.value = (1 - props.color!.v) * parseInt(`${props.height}`, 10)
+      }
+    }
     onMounted(() => {
       renderCanvas()
       if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
@@ -94,23 +93,10 @@ export default defineComponent({
             handleDrag(event as MouseEvent)
           },
         })
-        // updatePosition()
       }
     })
-    // watch(
-    //   () => props.color,
-    //   () => {
-    //     updatePosition()
-    //   }
-    // )
-    watch(
-      () => props.color,
-      () => {
-        cursorLeft.value = props.color!.s * parseInt(`${props.width}`, 10)
-        cursorTop.value = (1 - props.color!.v) * parseInt(`${props.height}`, 10)
-      },
-      { immediate: true, deep: true }
-    )
+
+    watch(() => props.color, updatePosition, { immediate: true, deep: true })
     watch(() => props.color?.h, renderCanvas, { immediate: true })
     return () => {
       return (

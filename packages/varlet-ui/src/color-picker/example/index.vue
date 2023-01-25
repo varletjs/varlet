@@ -9,7 +9,6 @@ const color = ref('#ff00ff')
 </script>
 
 <template>
-  <var-button type="primary" @click="changeColor">切换按钮</var-button>
   <var-button type="primary" @click="color = null">null</var-button>
   <var-button type="primary" @click="color = '#ff00ff'">hex</var-button>
   <var-button type="primary" @click="color = '#ff00ffff'">hexa</var-button>

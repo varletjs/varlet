@@ -2,8 +2,9 @@ import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
 import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { HSVAtoHex } from '../../utils/color-utils'
-import './color-picker-alpha-slider.less'
 import { HSVA } from '../../utils/color-utils-types'
+import { call } from '../../../utils/components'
+import './color-picker-alpha-slider.less'
 
 export default defineComponent({
   name: 'ColorAlphaSlider',
@@ -24,12 +25,13 @@ export default defineComponent({
         left = Math.max(offsetWidth / 2, left)
         left = Math.min(left, rect.width - offsetWidth / 2)
         const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
-        ctx.emit('update:color', {
+        const hsv = {
           h: props.color?.h,
           s: (props.color as HSVA).s,
           v: (props.color as HSVA).v,
           a: alpha / 100,
-        })
+        }
+        call(props['onUpdate:color'], hsv)
       }
     }
 

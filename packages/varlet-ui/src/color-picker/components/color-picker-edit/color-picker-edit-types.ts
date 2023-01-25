@@ -21,6 +21,9 @@ export const colorPickerEditProps = {
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
+  'onUpdate:mode': {
+    type: Function as PropType<(value: any) => void>,
+  },
 } as const
 
 export type ColorPickerEditProps = ExtractPropTypes<typeof colorPickerEditProps>
