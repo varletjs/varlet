@@ -90,9 +90,13 @@ const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
 const columns = genColumns(1970, 2100)
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
 function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
@@ -258,9 +262,13 @@ const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
 const columns = ref(genColumns(1970, 2100))
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
 function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
