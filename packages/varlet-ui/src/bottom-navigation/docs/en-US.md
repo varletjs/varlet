@@ -88,7 +88,8 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const active = ref(0)
-const handleChange = (active) => {
+
+function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
 </script>
@@ -111,17 +112,18 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const active = ref(0)
-const handleClick = (active) => {
+
+function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
 </script>
 
 <template>
   <var-bottom-navigation v-model:active="active">
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="account-circle" />
+    <var-bottom-navigation-item label="label" icon="home" @click="handleClick" />
+    <var-bottom-navigation-item label="label" icon="magnify" @click="handleClick" />
+    <var-bottom-navigation-item label="label" icon="heart" @click="handleClick"/>
+    <var-bottom-navigation-item label="label" icon="account-circle" @click="handleClick"/>
   </var-bottom-navigation>
 </template>
 ```
@@ -142,14 +144,15 @@ const isEven = ref(true)
     v-model:active="active"
     @fab-click="isEven = !isEven"
   >
-    <template #fab>
-      <var-icon name="heart" />
-    </template>
     <var-bottom-navigation-item label="label" icon="home" />
     <var-bottom-navigation-item label="label" icon="magnify" />
     <var-bottom-navigation-item label="label" icon="heart" />
     <var-bottom-navigation-item label="label" icon="bell" />
     <var-bottom-navigation-item v-if="!isEven" label="label" icon="account-circle" />
+
+    <template #fab>
+      <var-icon name="heart" />
+    </template>
   </var-bottom-navigation>
 </template>
 

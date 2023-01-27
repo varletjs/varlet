@@ -2,18 +2,18 @@
 import VarIcon from '..'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
 import { reactive, onMounted, ref } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
 
-const toggle = () => {
+function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
 }
 
@@ -28,6 +28,7 @@ onMounted(() => {
 })
 
 watchLang(use)
+
 watchDarkMode(dark, (theme) => {
   background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })

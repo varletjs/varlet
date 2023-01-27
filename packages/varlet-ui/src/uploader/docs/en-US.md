@@ -11,7 +11,10 @@ Get the file upload server by listening for `after-read` events.
 import { ref } from 'vue'
 
 const files = ref([])
-const handleAfterRead = file => console.log(file)
+
+function handleAfterRead(file) {
+  console.log(file)
+}
 </script>
 
 <template>
@@ -70,7 +73,7 @@ const files = ref([
   }
 ])
 
-const handleAfterRead = (file) => {
+function handleAfterRead(file) {
   file.state = 'loading'
 
   setTimeout(() => {
@@ -108,14 +111,10 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
-
-const handleOversize = () => {
-  Snackbar.warning('file size exceeds limit')
-}
 </script>
 
 <template>
-  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+  <var-uploader v-model="files" :maxsize="1024" @oversize="Snackbar.warning('file size exceeds limit')" />
 </template>
 ```
 
@@ -130,7 +129,7 @@ import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
 
-const handleBeforeRead = (file) => {
+function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
     Snackbar.success('the file is less than 1M, the upload is successful')
     return true
@@ -190,7 +189,7 @@ const files = ref([
   }
 ])
 
-const handleBeforeRemove = async () => {
+async function handleBeforeRemove() {
   const action = await Dialog({
     title: 'Delete or not?',
     message: 'Cannot be withdrawn after deletion'

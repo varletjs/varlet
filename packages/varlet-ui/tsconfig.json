@@ -3,6 +3,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "allowJs": true
   }
 }

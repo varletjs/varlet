@@ -2,8 +2,8 @@
 import Snackbar from '../index'
 import VarButton from '../../button'
 import VarSpace from '../../space'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -19,11 +19,11 @@ const VarSnackbar = Snackbar.Component
 
 const { show1, show2, show3, show4, show9 } = toRefs(shows)
 
-const changeValue = (type) => {
+function changeValue(type) {
   shows[type] = !shows[type]
 }
 
-const create = (type) => {
+function create(type) {
   const text = type === 'loading' ? pack.value.wait : pack.value.text
   const snackbar = Snackbar[type](text)
 
@@ -35,7 +35,7 @@ const create = (type) => {
   }
 }
 
-const createSnackbar = (type) => {
+function createSnackbar(type) {
   if (type === 'time') {
     Snackbar({
       content: pack.value.text,
@@ -55,7 +55,7 @@ const createSnackbar = (type) => {
   }
 }
 
-const openMultiple = () => {
+function openMultiple() {
   Snackbar.allowMultiple(true)
 
   const snackbar1 = Snackbar('Snackbar 1')

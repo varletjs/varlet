@@ -1,10 +1,10 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCollapse from '..'
 import VarCollapseItem from '../../collapse-item'
 import VarButton from '../../button'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -18,7 +18,7 @@ const values = reactive({
   value4: ['2'],
 })
 
-const changeHandle = (val) => {
+function changeHandle(val) {
   console.log(val)
 }
 

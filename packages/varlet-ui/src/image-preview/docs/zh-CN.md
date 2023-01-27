@@ -12,7 +12,7 @@
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
 }
 </script>
@@ -28,7 +28,7 @@ const preview = () => {
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview({
     images: [
       'https://varlet.gitee.io/varlet-ui/cat.jpg',
@@ -143,7 +143,6 @@ const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
 ])
-const handleCloseEvent = () => Snackbar('触发了关闭事件。');
 </script>
 
 <template>
@@ -157,7 +156,7 @@ const handleCloseEvent = () => Snackbar('触发了关闭事件。');
   <var-image-preview
     :images="images"
     v-model:show="show"
-    @close="handleCloseEvent"
+    @close="Snackbar('触发了关闭事件。')"
   />
 </template>
 ```

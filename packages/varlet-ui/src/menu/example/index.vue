@@ -37,7 +37,7 @@ const placementOptions = ref([
   'cover-right',
 ])
 
-const closeMenu = () => {
+function closeMenu() {
   show.value = false
 }
 

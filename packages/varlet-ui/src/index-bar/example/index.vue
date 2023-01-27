@@ -17,7 +17,7 @@ onMounted(() => {
   }
 })
 
-const change = (value) => {
+function change(value) {
   console.log(value)
 }
 

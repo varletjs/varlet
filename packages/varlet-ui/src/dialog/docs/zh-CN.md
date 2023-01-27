@@ -12,12 +12,10 @@
 ```html
 <script setup>
 import { Dialog } from '@varlet/ui'
-
-const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
 </script>
 
 <template>
-  <var-button type="primary" block @click="createBasic">基本使用</var-button>
+  <var-button type="primary" block @click="Dialog('兰亭临帖 行书如行云流水')">基本使用</var-button>
 </template>
 ```
 
@@ -27,7 +25,7 @@ const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const modifyTitle = () => {
+function modifyTitle() {
   Dialog({
     title: '兰亭序',
     message: '兰亭临帖 行书如行云流水',
@@ -46,7 +44,7 @@ const modifyTitle = () => {
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const hideButton = () => {
+function hideButton() {
   Dialog({
     message: '兰亭临帖 行书如行云流水',
     confirmButton: false,
@@ -75,7 +73,9 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
+async function createAction() {
+  actions[await Dialog('兰亭临帖 行书如行云流水')]()
+}
 </script>
 
 <template>
@@ -97,15 +97,16 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('正在异步关闭')
+  
   setTimeout(() => {
     actions[action]()
     done()
   }, 1000)
 }
 
-const createAction = async () => {
+function createAction() {
   Dialog({
     message: '兰亭临帖 行书如行云流水',
     onBeforeClose
@@ -158,7 +159,7 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('Asynchronous shutdown in progress')
 
   setTimeout(() => {

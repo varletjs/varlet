@@ -60,7 +60,7 @@ import { ref } from 'vue'
 
 const name = ref('information')
 
-const toggle = () => {
+function toggle() {
   name.value = name.value === 'information' 
     ? 'checkbox-marked-circle' 
     : 'information'

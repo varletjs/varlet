@@ -14,7 +14,7 @@ import { ref } from 'vue'
 
 const value = ref(['1'])
 
-const changeHandle = (val) => {
+function changeHandle(val) {
   console.log(val)
 }
 </script>

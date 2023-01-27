@@ -59,12 +59,12 @@ Use `slot` to set custom countdown style.
 ```html
 <template>
   <var-countdown :time="108000000">
-    <template #default="timeData">
-      <span class="countdown-example-block">{{ timeData.hours }}</span>
+    <template #default="{ hours, minutes, seconds }">
+      <span class="countdown-example-block">{{ hours }}</span>
       <span class="countdown-example-colon">:</span>
-      <span class="countdown-example-block">{{ timeData.minutes }}</span>
+      <span class="countdown-example-block">{{ minutes }}</span>
       <span class="countdown-example-colon">:</span>
-      <span class="countdown-example-block">{{ timeData.seconds }}</span>
+      <span class="countdown-example-block">{{ seconds }}</span>
      </template>
   </var-countdown>
 </template>

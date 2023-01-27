@@ -12,12 +12,10 @@ A dialog pops up to display the content and handle the user interaction.
 ```html
 <script setup>
 import { Dialog } from '@varlet/ui'
-
-const createBasic = () => Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')
 </script>
 
 <template>
-  <var-button type="primary" block @click="createBasic">Basic Use</var-button>
+  <var-button type="primary" block @click="Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')">Basic Use</var-button>
 </template>
 ```
 
@@ -27,7 +25,7 @@ const createBasic = () => Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho M
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const modifyTitle = () => {
+function modifyTitle() {
   Dialog({
     title: 'Beat It',
     message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
@@ -46,7 +44,7 @@ const modifyTitle = () => {
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const hideButton = () => {
+function hideButton() {
   Dialog({
     message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
     confirmButton: false,
@@ -75,7 +73,9 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const createAction = async () => actions[await Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')]()
+async function createAction() {
+  actions[await Dialog('Don\'t Wanna See No Blood, Don\'t Be A Macho Man')]()
+}
 </script>
 
 <template>
@@ -97,15 +97,16 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('Asynchronous shutdown in progress')
+
   setTimeout(() => {
     actions[action]()
     done()
   }, 1000)
 }
 
-const createAction = async () => {
+function createAction() {
   Dialog({
     message: 'Don\'t Wanna See No Blood, Don\'t Be A Macho Man',
     onBeforeClose
@@ -158,7 +159,7 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('Asynchronous shutdown in progress')
 
   setTimeout(() => {

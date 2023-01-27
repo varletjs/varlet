@@ -114,14 +114,10 @@ const show = ref(false)
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar("Hello, I'm a snackbar")
-}
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Basic Usage</var-button>
+  <var-button type="warning" block @click="Snackbar("Hello, I'm a snackbar")">Basic Usage</var-button>
 </template>
 ```
 
@@ -131,7 +127,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "Hello, I'm a snackbar",
     duration: 1000
@@ -140,7 +136,7 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Display Duration</var-button>
+  <var-button type="warning" block @click="createSnackbar">Display Duration</var-button>
 </template>
 ```
 
@@ -150,7 +146,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "Hello, I'm a snackbar",
     position: 'bottom'
@@ -159,7 +155,7 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Bottom Display</var-button>
+  <var-button type="warning" block @click="createSnackbar">Bottom Display</var-button>
 </template>
 ```
 
@@ -169,7 +165,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = (type) => {
+function createSnackbar(type) {
   Snackbar[type]("Hello, I'm a snackbar")
   if (type === 'loading') {
     setTimeout(() => {
@@ -228,7 +224,7 @@ When using functional calls, Snackbar use singleton mode by default, if you need
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const openMultiple = () => {
+function openMultiple() {
   Snackbar.allowMultiple(true)
 
   const snackbar1 = Snackbar('Snackbar 1');

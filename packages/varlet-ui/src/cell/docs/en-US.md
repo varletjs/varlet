@@ -8,7 +8,7 @@ The cell is a single display item in the list.
 
 ```html
 <template>
-  <var-cell> This is Cell </var-cell>
+  <var-cell>This is Cell</var-cell>
 </template>
 ```
 
@@ -36,7 +36,7 @@ The cell is a single display item in the list.
 
 ```html
 <template>
-  <var-cell border> This is Cell </var-cell>
+  <var-cell border>This is Cell</var-cell>
 </template>
 ```
 

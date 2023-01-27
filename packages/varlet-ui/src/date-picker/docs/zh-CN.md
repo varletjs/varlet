@@ -28,6 +28,7 @@ import { ref } from 'vue'
 
 const date = ref('2021-04-08')
 </script>
+
 <template>
   <var-date-picker type="month" v-model="date" elevation />
 </template>
@@ -43,6 +44,7 @@ import { ref } from 'vue'
 
 const date = ref([])
 </script>
+
 <template>
   <var-date-picker v-model="date" multiple />
 </template>
@@ -58,6 +60,7 @@ import { ref } from 'vue'
 
 const date = ref(['2021-04-08', '2021-04-20'])
 </script>
+
 <template>
   <var-date-picker type="date" v-model="date" range />
 </template>
@@ -73,9 +76,7 @@ import { ref } from 'vue'
 
 const date = ref('2020-11-11')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[2], 10) % 2 === 1
-}
+const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 </script>
 
 <template>
@@ -96,11 +97,9 @@ import { ref } from 'vue'
 
 const date = ref('2021-05')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[1], 10) % 2 === 1
-}
+const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
 
-const change = (date) => {
+function change(date) {
   console.log(date)
 }
 </script>

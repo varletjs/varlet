@@ -13,7 +13,7 @@ import { LoadingBar } from '@varlet/ui'
 
 const hasCustomStyle = ref(false)
 
-const setStyle = () => {
+function setStyle() {
   LoadingBar.mergeConfig({
     errorColor: hasCustomStyle.value ? undefined : '#ff8800',
     color: hasCustomStyle.value ? undefined : '#10afef',

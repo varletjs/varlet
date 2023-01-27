@@ -104,7 +104,7 @@ import { ref } from 'vue'
 
 const loading = ref(false)
 
-const fullscreen = () => {
+function fullscreen() {
   loading.value = true
 
   setTimeout(() => {

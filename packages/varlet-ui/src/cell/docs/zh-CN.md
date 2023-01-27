@@ -8,7 +8,7 @@
 
 ```html
 <template>
-  <var-cell> 这是单元格 </var-cell>
+  <var-cell>这是单元格</var-cell>
 </template>
 ```
 
@@ -36,7 +36,7 @@
 
 ```html
 <template>
-  <var-cell border> 这是单元格 </var-cell>
+  <var-cell border>这是单元格</var-cell>
 </template>
 ```
 

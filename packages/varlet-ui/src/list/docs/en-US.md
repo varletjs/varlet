@@ -18,7 +18,7 @@ const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
     
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -59,7 +59,7 @@ const loading = ref(false)
 const error = ref(false)
 const list = ref([])
     
-const load = () => {
+function load() {
   setTimeout(() => {
     if (list.value.length === 40) {
       error.value = true
@@ -99,7 +99,7 @@ const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -142,14 +142,14 @@ const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     console.log('refresh')
     refreshing.value = false
   }, 2000)
 }
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)

@@ -95,7 +95,7 @@ import { ref } from 'vue'
 
 const hidden = ref(false)
 
-const handleChange = () => {
+function handleChange() {
   hidden.value = !hidden.value
 }
 </script>

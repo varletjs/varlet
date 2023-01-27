@@ -1,10 +1,10 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarBadge from '..'
 import VarButton from '../../button'
 import VarChip from '../../chip'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -13,7 +13,7 @@ const value1 = ref(188)
 const maxValue = ref(99)
 const hidden = ref(false)
 
-const handleChange = () => {
+function handleChange() {
   hidden.value = !hidden.value
 }
 

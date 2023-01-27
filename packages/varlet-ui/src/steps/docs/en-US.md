@@ -14,7 +14,7 @@ import { ref } from 'vue'
 
 const active = ref(0)
 
-const next = () => {
+function next() {
   active.value = (active.value + 1) % 4
 }
 </script>

@@ -142,19 +142,14 @@ const placementOptions = [
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.success('opened')
-const close = () => Snackbar.warning('close')
-const closed = () => Snackbar.error('closed')
 </script>
 
 <template>
   <var-menu
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">注册事件</var-button>
     
@@ -194,7 +189,10 @@ const closed = () => Snackbar.error('closed')
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeMenu = () => { show.value = false }
+
+function closeMenu() {
+  show.value = false
+}
 </script>
 
 <template>

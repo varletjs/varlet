@@ -189,7 +189,7 @@ import { Snackbar } from '@varlet/ui'
 
 const score = ref(3)
 
-const handleChange = (score) => {
+function handleChange(score) {
   Snackbar({
     content: `click ${score}`,
     position: 'top'

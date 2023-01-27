@@ -99,7 +99,7 @@ import { ref } from 'vue'
 
 const date = ref('05:10')
 
-const change = (time) => {
+function change(time) {
   console.log(time)
 }
 </script>

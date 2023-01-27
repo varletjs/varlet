@@ -14,7 +14,7 @@ import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
-const change = (value) => {
+function change(value) {
   console.log(value)
 }
 

@@ -11,7 +11,10 @@
 import { ref } from 'vue'
 
 const files = ref([])
-const handleAfterRead = file => console.log(file)
+
+function handleAfterRead(file) { 
+  console.log(file)
+}
 </script>
 
 <template>
@@ -70,7 +73,7 @@ const files = ref([
   }
 ])
 
-const handleAfterRead = (file) => {
+function handleAfterRead(file) {
   file.state = 'loading'
 
   setTimeout(() => {
@@ -108,14 +111,10 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
-
-const handleOversize = () => {
-  Snackbar.warning('文件大小超出限制')
-}
 </script>
 
 <template>
-  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+  <var-uploader v-model="files" :maxsize="1024" @oversize="Snackbar.warning('文件大小超出限制')" />
 </template>
 ```
 
@@ -130,7 +129,7 @@ import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
 
-const handleBeforeRead = (file) => {
+function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
     Snackbar.success('文件小于1M，上传成功')
     return true
@@ -190,7 +189,7 @@ const files = ref([
   }
 ])
 
-const handleBeforeRemove = async () => {
+async function handleBeforeRemove() {
   const action = await Dialog({
     title: '是否删除?',
     message: '删除后无法撤回'

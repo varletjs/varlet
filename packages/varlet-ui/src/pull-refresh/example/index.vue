@@ -7,11 +7,10 @@ import { watchDarkMode } from '@varlet/cli/client'
 
 const data1 = Array(30).fill('List Item')
 const data2 = Array(30).fill('This is new List Item')
-
 const isRefresh = ref(false)
 const data = ref(data1)
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     data.value = data.value[0] === 'List Item' ? data2 : data1
     isRefresh.value = false

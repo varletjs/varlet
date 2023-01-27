@@ -44,7 +44,7 @@ import { ref } from 'vue'
 
 const value = ref([24, 50])
 
-const handleChange = (value) => {
+function handleChange(value) {
   console.log(value)
 }
 </script>

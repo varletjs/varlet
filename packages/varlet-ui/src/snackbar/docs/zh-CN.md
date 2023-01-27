@@ -17,7 +17,7 @@ const show = ref(false)
 
 <template>
   <var-button type="primary" block @click="show = !show">基本使用</var-button>
-  <var-snackbar v-model:show="show"> 这是一个消息条！！ </var-snackbar>
+  <var-snackbar v-model:show="show">这是一个消息条！！</var-snackbar>
 </template>
 ```
 
@@ -112,14 +112,10 @@ const show = ref(false)
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar("这是一个消息条")
-}
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">基本使用</var-button>
+  <var-button type="warning" block @click="Snackbar("这是一个消息条")">基本使用</var-button>
 </template>
 ```
 
@@ -129,7 +125,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "这是一个消息条!!",
     duration: 1000
@@ -138,7 +134,7 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">显示时长</var-button>
+  <var-button type="warning" block @click="createSnackbar">显示时长</var-button>
 </template>
 ```
 
@@ -148,7 +144,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "这是一个消息条！！",
     position: 'bottom'
@@ -157,7 +153,7 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">底部显示</var-button>
+  <var-button type="warning" block @click="createSnackbar">底部显示</var-button>
 </template>
 ```
 
@@ -167,7 +163,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = (type) => {
+function createSnackbar(type) {
   Snackbar[type]("这是一个消息条")
   if (type === 'loading') {
     setTimeout(() => {
@@ -226,7 +222,7 @@ const createSnackbar = (type) => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const openMultiple = () => {
+function openMultiple() {
   Snackbar.allowMultiple(true)
 
   const snackbar1 = Snackbar('Snackbar 1');

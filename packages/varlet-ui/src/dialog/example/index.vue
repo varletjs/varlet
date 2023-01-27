@@ -4,8 +4,8 @@ import VarButton from '../../button'
 import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import VarCell from '../../cell'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -25,21 +25,22 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const createBasic = () =>
-  Dialog({
-    message: pack.value.message,
-  })
+function createBasic() {
+  Dialog(pack.value.message)
+}
 
-const createAction = async () => actions[await Dialog(pack.value.message)]()
+async function createAction() {
+  actions[await Dialog(pack.value.message)]()
+}
 
-const modifyTitle = () => {
+function modifyTitle() {
   Dialog({
     title: pack.value.title,
     message: pack.value.message,
   })
 }
 
-const hideButton = () => {
+function hideButton() {
   Dialog({
     message: pack.value.message,
     confirmButton: false,
@@ -47,7 +48,7 @@ const hideButton = () => {
   })
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading(pack.value.asyncCloseProgress)
 
   setTimeout(() => {
@@ -56,7 +57,7 @@ const onBeforeClose = (action, done) => {
   }, 1000)
 }
 
-const asyncClose = () => {
+function asyncClose() {
   Dialog({
     message: pack.value.message,
     onBeforeClose,

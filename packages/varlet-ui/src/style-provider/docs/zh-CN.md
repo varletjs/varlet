@@ -60,7 +60,7 @@ const successTheme = {
 
 const styleVars = ref(null)
 
-const toggleTheme = () => {
+function toggleTheme() {
   styleVars.value = styleVars.value ? null : successTheme
 }
 </script>
@@ -95,7 +95,7 @@ const darkTheme = {
   '--color-primary': '#3f51b5'
 }
 
-const toggleRootTheme = () => {
+function toggleRootTheme() {
   rootStyleVars = rootStyleVars ? null : darkTheme
   StyleProvider(rootStyleVars)
 }
