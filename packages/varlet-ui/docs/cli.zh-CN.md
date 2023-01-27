@@ -53,7 +53,6 @@ varlet-cli gen
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
 | `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
 | `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
-| `moduleCompatible` | 模块兼容配置 | _Record<string, string>_ | `-` |
 
 ### 自定义页面
 

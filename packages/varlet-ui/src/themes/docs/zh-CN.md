@@ -13,7 +13,7 @@ import { StyleProvider, Themes } from '@varlet/ui'
 
 let currentTheme = null
 
-const toggleTheme = () => {
+function toggleTheme() {
   currentTheme = currentTheme ? null : Themes.dark
   StyleProvider(currentTheme)
 }

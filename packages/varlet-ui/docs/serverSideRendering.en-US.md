@@ -37,19 +37,19 @@ import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-   build: {
-     transpile: ['@varlet/ui/es'],
-   },
-   vite: {
-     plugins: [
-       components({
-         resolvers: [VarletUIResolver()]
-       }),
-       autoImport({
-         resolvers: [VarletUIResolver({ autoImport: true })],
-       })
-     ]
-   }
+  vite: {
+    ssr: {
+      noExternal: ['@varlet/ui']
+    },
+    plugins: [
+      components({
+        resolvers: [VarletUIResolver()]
+      }),
+      autoImport({
+        resolvers: [VarletUIResolver({ autoImport: true })],
+      })
+    ]
+  }
 })
 ```
 

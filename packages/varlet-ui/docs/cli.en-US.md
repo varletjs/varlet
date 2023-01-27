@@ -53,7 +53,6 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `analysis` | Document statistics related | _{ baidu: string }_ | `-` |
 | `pc` | PC-side document structure configuration | _Record<string, any>_ | `-` |
 | `mobile` | Mobile side document structure configuration | _Record<string, any>_ | `-` |
-| `moduleCompatible` | Module Compatible Configurations | _Record<string, string>_ | `-` |
 
 ### Custom pages
 
