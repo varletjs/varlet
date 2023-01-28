@@ -34,7 +34,7 @@ export default defineComponent({
     })
     return () => {
       return (
-        <div class="var-color-picker-edit">
+        <div class={n()}>
           {inputs.value?.map((props) => (
             <VarColorPickerInput {...props} />
           ))}
@@ -47,7 +47,7 @@ export default defineComponent({
                 call(props['onUpdate:mode'], enabledModes.value[(index + 1) % enabledModes.value.length].name)
               }}
             >
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div class={n('icon')}>
                 <var-icon size={20} name="unfold-more-horizontal" />
               </div>
             </var-button>

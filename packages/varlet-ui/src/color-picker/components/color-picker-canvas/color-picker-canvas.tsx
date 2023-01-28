@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'VarColorCanvas',
   props: colorPickerPaletteProps,
   setup(props: ColorPickerPaletteProps) {
-    const { n } = createNamespace('color-picker')
+    const { n } = createNamespace('color-picker-canvas')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const paletteElement = ref<HTMLElement | null>(null)
@@ -51,8 +51,6 @@ export default defineComponent({
     function handleDrag(event: MouseEvent) {
       event.preventDefault()
       if (props.disabled || !paletteInstance) return
-      console.log(props.disabled)
-
       const parentWidth = paletteElement.value?.offsetWidth || 0
       const el = canvasElement.value
       const rect = el?.getBoundingClientRect() as DOMRect
@@ -103,7 +101,7 @@ export default defineComponent({
     return () => {
       return (
         <div
-          class={[n('canvas')]}
+          class={n()}
           style={{
             width: convertToUnit(props.width),
             height: convertToUnit(props.height),

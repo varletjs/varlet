@@ -3,7 +3,7 @@ import { parseBaseColor } from '../../utils/color-utils'
 import { defineComponent, PropType, toRefs } from 'vue'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
 import { changeColorValue } from '../../utils/composable'
-import { call } from '../../../utils/components'
+import { call, createNamespace } from '../../../utils/components'
 import './color-picker-swatches.less'
 
 function parseDefaultColors(colors: Record<string, Record<string, string>>) {
@@ -38,6 +38,7 @@ export default defineComponent({
     maxHeight: [Number, String],
   },
   setup(props) {
+    const { n } = createNamespace('color-picker--swatches')
     const { color } = toRefs(props)
     return () => {
       return (
@@ -47,14 +48,14 @@ export default defineComponent({
             maxHeight: convertToUnit(props.maxHeight),
           }}
         >
-          <div class="var-color-picker-swatches__colorful">
+          <div class={n('colorful')}>
             {props.swatches.map((swatch) => (
-              <div class="var-color-picker-swatches__swatch">
+              <div class={n('swatch')}>
                 {swatch.map((colorItem) => {
                   const hsv = parseBaseColor(colorItem)
                   const iconColor = changeColorValue(hsv!, 0.5)
                   return (
-                    <div class="var-color-picker-swatches__color" onClick={() => call(props['onUpdate:color'], hsv)}>
+                    <div class={n('color')} onClick={() => call(props['onUpdate:color'], hsv)}>
                       <div style={{ background: colorItem }}>
                         {color.value && deepEqual(color.value, hsv) ? (
                           <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />

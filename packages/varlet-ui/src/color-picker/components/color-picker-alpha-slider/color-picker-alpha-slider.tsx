@@ -3,7 +3,7 @@ import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { HSVAtoHex } from '../../utils/color-utils'
 import { HSVA } from '../../utils/color-utils-types'
-import { call } from '../../../utils/components'
+import { call, createNamespace } from '../../../utils/components'
 import './color-picker-alpha-slider.less'
 
 export default defineComponent({
@@ -12,6 +12,7 @@ export default defineComponent({
   emits: ['update:color'],
   setup(props: colorPickerAlphaSliderProps) {
     const DEFAULT_TRANSITION = { transition: 'all 0.3s ease' }
+    const { n } = createNamespace('color-picker-alpha-slider')
     const clickTransform = ref<{ transition: string } | null>(DEFAULT_TRANSITION)
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
@@ -74,7 +75,7 @@ export default defineComponent({
       }
     })
     const alphaClass = computed(() => {
-      return ['var-color-picker-alpha-slider', 'transparent']
+      return [n(), 'transparent']
     })
     const barStyle: any = computed(() => {
       return { '--color-picker-alpha-slider': HSVAtoHex(color.value) }
@@ -84,19 +85,12 @@ export default defineComponent({
         <div class={alphaClass.value}>
           <div
             ref={barElement}
-            class={[
-              'var-color-picker-alpha-slider__bar',
-              props.disabled ? 'var-color-picker-alpha-slider__disabled' : null,
-            ]}
+            class={[n('bar'), props.disabled ? n('disabled') : null]}
             style={barStyle.value}
             onClick={onClickSlider}
           >
-            <div
-              class={['var-color-picker-alpha-slider__bar-pointer']}
-              ref={cursorElement}
-              style={getCursorStyle.value}
-            >
-              <div class="var-color-picker-alpha-slider__bar-handle"></div>
+            <div class={n('bar-pointer')} ref={cursorElement} style={getCursorStyle.value}>
+              <div class={n('bar-handle')}></div>
             </div>
           </div>
         </div>

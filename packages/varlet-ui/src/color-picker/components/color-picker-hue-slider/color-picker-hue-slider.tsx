@@ -2,7 +2,7 @@ import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { HSVA } from '../../utils/color-utils-types'
-import { call } from '../../../utils/components'
+import { call, createNamespace } from '../../../utils/components'
 import './color-picker-hue-slider.less'
 
 type DefaultTransition = { transition: string }
@@ -11,6 +11,7 @@ export default defineComponent({
   props: colorPickerHueSliderProps,
   setup(props: ColorPickerHueSliderProps) {
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
+    const { n } = createNamespace('color-picker-hue-slider')
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
@@ -77,10 +78,10 @@ export default defineComponent({
     })
     return () => {
       return (
-        <div class={['var-color-picker-hue-slider', props.disabled ? 'var-color-picker-hue-slider__disabled' : null]}>
-          <div ref={barElement} class="var-color-picker-hue-slider__bar" onClick={onClickSlider}>
-            <div class="var-color-picker-hue-slider__bar-pointer" ref={cursorElement} style={getCursorStyle.value}>
-              <div class="var-color-picker-hue-slider__bar-handle"></div>
+        <div class={[n(), props.disabled ? n('disabled') : null]}>
+          <div ref={barElement} class={n('bar')} onClick={onClickSlider}>
+            <div class={n('bar-pointer')} ref={cursorElement} style={getCursorStyle.value}>
+              <div class={n('bar-handle')}></div>
             </div>
           </div>
         </div>
