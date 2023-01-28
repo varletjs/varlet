@@ -3,7 +3,7 @@ import hash from 'hash-sum'
 import { parse, resolve } from 'path'
 import { parse as parseSFC, compileTemplate, compileStyle } from '@vue/compiler-sfc'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
-import { compileScript } from './compileScript.js'
+import { compileScript, getScriptExtname } from './compileScript.js'
 import {
   clearEmptyLine,
   compileLess,
@@ -80,7 +80,7 @@ export async function compileSFC(sfc: string) {
       const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
       const { base, dir } = parse(file)
       const dependencyPath = normalizeStyleDependency(base, STYLE_IMPORT_RE)
-      const cssFile = resolve(dir, './style/index.js')
+      const cssFile = resolve(dir, `./style/index${getScriptExtname()}`)
 
       let { code } = compileStyle({
         source: style.content,
