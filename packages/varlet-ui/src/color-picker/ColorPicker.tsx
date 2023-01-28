@@ -54,11 +54,11 @@ export default defineComponent({
               />
             )}
             {(props.sliderLayout || props.inputLayout) && (
-              <div class={classes(n('control'))}>
+              <div class={n('control')}>
                 {props.sliderLayout && (
-                  <div class={classes(n('preview'))}>
-                    <div class={classes(n('preview__dots'))} style={dotStyle.value}></div>
-                    <div class={classes(n('preview__slider'))}>
+                  <div class={n('preview')}>
+                    <div class={n('preview__dots')} style={dotStyle.value}></div>
+                    <div class={n('preview__slider')}>
                       <VarColorPickerHueSlider
                         color={initialColor.value}
                         onUpdate:color={updateColor}
