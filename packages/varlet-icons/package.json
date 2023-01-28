@@ -1,6 +1,6 @@
 {
   "name": "@varlet/icons",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "Icons of varlet",
   "type": "module",
   "main": "dist/index.js",

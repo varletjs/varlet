@@ -1,3 +1,12 @@
+## [2.7.1](https://github.com/varletjs/varlet/compare/v2.7.0...v2.7.1) (2023-01-28)
+
+
+### Bug Fixes
+
+* the sfc style cannot append to style folder ([06b0360](https://github.com/varletjs/varlet/commit/06b0360f0a684ecaa5f6f095b7df3b9adbcb2a01))
+
+
+
 # [2.7.0](https://github.com/varletjs/varlet/compare/v2.6.3...v2.7.0) (2023-01-27)
 
 
