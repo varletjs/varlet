@@ -5,10 +5,14 @@ import { use, pack } from './locale'
 import { ref } from 'vue'
 
 watchLang(use)
-const color = ref('#ff00ff')
+const color = ref('#f00')
 </script>
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-color-picker v-model="color" mode="hsla" />
+  <var-color-picker v-model="color" />
+  <app-type>{{ pack.disabled }}</app-type>
+  <var-color-picker v-model="color" disabled />
+  <app-type>{{ pack.swatches }}</app-type>
+  <var-color-picker v-model="color" swatches-layout />
 </template>

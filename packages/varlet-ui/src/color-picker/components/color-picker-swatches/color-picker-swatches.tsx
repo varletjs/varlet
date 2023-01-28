@@ -38,12 +38,12 @@ export default defineComponent({
     maxHeight: [Number, String],
   },
   setup(props) {
-    const { n } = createNamespace('color-picker--swatches')
     const { color } = toRefs(props)
+    const { n } = createNamespace('color-picker-swatches')
     return () => {
       return (
         <div
-          class="var-color-picker-swatches"
+          class={n()}
           style={{
             maxHeight: convertToUnit(props.maxHeight),
           }}

@@ -1,7 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
-  customFormat: 'Custom Format',
-  showMillisecond: 'Show Millisecond',
+  disabled: 'Disabled',
+  swatches: 'Swatches',
   customStyle: 'Custom Style',
   manualControl: 'Manual Control',
   format: 'DD Day, HH:mm:ss',
