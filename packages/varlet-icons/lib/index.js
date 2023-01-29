@@ -24,22 +24,35 @@ async function resetDistDir() {
 async function buildPNG(svgFiles) {
   await Promise.all(
     svgFiles.map((svg) => {
-      const { name } = parse(svg)
-      return sharp({
-        create: {
-          width: 36,
-          height: 36,
-          channels: 4,
-          background: '#4a7afe',
-        },
+      return new Promise((done) => {
+        const { name } = parse(svg)
+        resolve(SVG_DIR, svg)
+
+        sharp(resolve(SVG_DIR, svg))
+          .resize({ height: 100 })
+          .toBuffer()
+          .then((buffer) => {
+            sharp({
+              create: {
+                width: 100,
+                height: 100,
+                channels: 4,
+                background: '#4a7afe',
+              },
+            })
+              .composite([
+                {
+                  input: buffer,
+                  blend: 'dest-in',
+                },
+              ])
+              .png()
+              .toFile(resolve(PNG_DIR, `${name}.png`))
+              .then(() => {
+                done()
+              })
+          })
       })
-        .composite([
-          {
-            input: resolve(SVG_DIR, svg),
-            blend: 'dest-in',
-          },
-        ])
-        .toFile(resolve(PNG_DIR, `${name}.png`))
     })
   )
 }

@@ -11,7 +11,7 @@ import {
 } from 'vscode'
 import { componentMap, type ComponentDescriptor } from './componentMap'
 import { bigCamelize, kebabCase } from '@varlet/shared'
-import { LANGUAGE_IDS, PROP_NAME_RE } from './constant'
+import { getSite, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
 
 export function registerCompletions(context: ExtensionContext) {
   const componentProvider: CompletionItemProvider = {
@@ -67,9 +67,12 @@ export function registerCompletions(context: ExtensionContext) {
 
     resolveCompletionItem(completionItem) {
       const id = completionItem.label
-      const url = `https://varlet.gitee.io/varlet-ui/icons/png/u${pointCodes[id as string]}-${id}.png`
-      const markdownString = new MarkdownString(`#### varlet icon: ${id}
-<p align="center"><img height="26" src="${url}"></p>`)
+      const url = `https://varlet.gitee.io/varlet-ui/icons/png/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
+      const markdownString = new MarkdownString(`#### name: ${id}
+<p align="center"><img height="100" src="${url}"></p>
+
+[For all icons see here](${getSite()}/icon)
+`)
 
       markdownString.supportHtml = true
 
