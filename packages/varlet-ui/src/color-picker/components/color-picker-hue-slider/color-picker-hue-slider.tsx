@@ -4,6 +4,7 @@ import { DOMUtils } from '../../utils/dom-dragger'
 import { HSVA } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
 import './color-picker-hue-slider.less'
+import { nullColor } from '../../utils/color-utils'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({
@@ -51,7 +52,7 @@ export default defineComponent({
         v: (props.color as HSVA).v,
         a: (props.color as HSVA).a,
       }
-      call(props['onUpdate:color'], hsv)
+      call(props['onUpdate:color'], hsv ?? nullColor)
     }
 
     const onClickSlider = (event: Event) => {

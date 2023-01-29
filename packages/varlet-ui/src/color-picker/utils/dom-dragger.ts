@@ -81,8 +81,8 @@ export class DOMUtils {
     const upFn = (event: Event) => {
       DOMUtils.removeEventListener(document, 'mousemove', moveFn)
       DOMUtils.removeEventListener(document, 'mouseup', upFn)
-      // DOMUtils.removeEventListener(document, 'touchmove', moveFn)
-      // DOMUtils.removeEventListener(document, 'touchend', upFn)
+      DOMUtils.removeEventListener(document, 'touchmove', moveFn)
+      DOMUtils.removeEventListener(document, 'touchend', upFn)
       document.onselectstart = null
       document.ondragstart = null
 
@@ -104,7 +104,7 @@ export class DOMUtils {
       options.start?.(event)
     }
     DOMUtils.addEventListener(element, 'mousedown', downFn)
-    // DOMUtils.addEventListener(element, 'touchstart', downFn)
+    DOMUtils.addEventListener(element, 'touchstart', downFn)
   }
 
   static getBoundingClientRect(element: HTMLElement): DOMRect | null {

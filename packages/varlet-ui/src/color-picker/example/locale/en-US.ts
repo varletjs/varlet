@@ -2,10 +2,6 @@ export default {
   basicUsage: 'Basic Usage',
   disabled: 'Disabled',
   swatches: 'Swatches',
-  customStyle: 'Custom Style',
-  manualControl: 'Manual Control',
-  format: 'DD Day, HH:mm:ss',
-  startText: 'Start',
-  pauseText: 'Pause',
-  resetText: 'Reset',
+  modes: ' users with the modes prop.',
+  model: ' uses the v-model prop to control the color displayed',
 }

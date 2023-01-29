@@ -1,7 +1,7 @@
 import { defineComponent, ref, computed, toRefs, onMounted, ComputedRef } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
-import { parseBaseColor, extractBaseColor, HSVAtoHex } from './utils/color-utils'
+import { parseBaseColor, extractBaseColor, HSVAtoHex, HSVtoCSS, nullColor } from './utils/color-utils'
 import { HSVA } from './utils/color-utils-types'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
 import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
@@ -57,7 +57,9 @@ export default defineComponent({
               <div class={n('control')}>
                 {props.sliderLayout && (
                   <div class={n('preview')}>
-                    <div class={n('preview__dots')} style={dotStyle.value}></div>
+                    <div class={n('preview__dots')}>
+                      <div style={{ background: HSVtoCSS(initialColor.value ?? nullColor) }} />
+                    </div>
                     <div class={n('preview__slider')}>
                       <VarColorPickerHueSlider
                         color={initialColor.value}

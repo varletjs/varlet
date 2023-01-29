@@ -1,7 +1,7 @@
 import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
 import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
-import { HSVAtoHex } from '../../utils/color-utils'
+import { HSVAtoHex, nullColor } from '../../utils/color-utils'
 import { HSVA } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
 import './color-picker-alpha-slider.less'
@@ -32,7 +32,7 @@ export default defineComponent({
         v: (props.color as HSVA).v,
         a: alpha / 100,
       }
-      call(props['onUpdate:color'], hsv)
+      call(props['onUpdate:color'], hsv ?? nullColor)
     }
 
     const onClickSlider = (event: Event) => {

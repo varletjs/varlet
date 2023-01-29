@@ -15,4 +15,8 @@ const color = ref('#f00')
   <var-color-picker v-model="color" disabled />
   <app-type>{{ pack.swatches }}</app-type>
   <var-color-picker v-model="color" swatches-layout />
+  <app-type>{{ pack.modes }}</app-type>
+  <var-color-picker v-model="color" />
+  <app-type>{{ pack.model }}</app-type>
+  <var-color-picker v-model="color" disabled />
 </template>

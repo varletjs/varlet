@@ -17,6 +17,8 @@ import {
   Color,
 } from './color-utils-types'
 
+export const nullColor = { h: 0, s: 0, v: 1, a: 1 }
+
 export function omit<T extends Record<string, unknown>, K extends keyof T>(obj: T, fields: K[]): Omit<T, K> {
   const shallowCopy = Object.assign({}, obj)
   for (let i = 0; i < fields.length; i += 1) {
@@ -152,10 +154,6 @@ export function HSLAtoHSVA(hsl: HSLA): HSVA {
 
 export function RGBAtoCSS(rgba: RGBA): string {
   return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`
-}
-
-export function RGBtoCSS(rgba: RGBA): string {
-  return RGBAtoCSS({ ...rgba, a: 1 })
 }
 
 export function RGBAtoHex(rgba: RGBA): Hex {
@@ -747,4 +745,12 @@ export function HSLtoHSV(hsl: HSL): HSV {
   const sprime = v === 0 ? 0 : 2 - (2 * l) / v
 
   return { h, s: sprime, v, a }
+}
+
+export function RGBtoCSS({ r, g, b, a }: RGB): string {
+  return a === undefined ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${a})`
+}
+
+export function HSVtoCSS(hsva: HSV): string {
+  return RGBtoCSS(HSVtoRGB(hsva))
 }
