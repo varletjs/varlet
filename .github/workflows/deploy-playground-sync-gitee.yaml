@@ -23,7 +23,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --ignore-scripts && node scripts/bootstrap.mjs
+        run: pnpm install --no-frozen-lockfile --ignore-scripts=false && node scripts/bootstrap.mjs
 
       - name: Build playground
         run: cd packages/varlet-ui-playground && pnpm build
