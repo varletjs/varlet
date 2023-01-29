@@ -4,6 +4,7 @@ import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
 import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { isArray } from '@varlet/shared'
 import { pathToFileURL } from 'url'
+import { type CopyOptions } from '@varlet/vite-plugins'
 
 const { pathExistsSync, statSync } = fse
 
@@ -43,7 +44,7 @@ export interface VarletConfig {
   analysis?: { baidu: string }
   pc?: Record<string, any>
   mobile?: Record<string, any>
-  moduleCompatible?: Record<string, string>
+  copy?: CopyOptions['paths']
 }
 
 export function defineConfig(config: VarletConfig) {

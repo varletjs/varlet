@@ -605,5 +605,6 @@ export default defineConfig({
   },
   highlight: {
     style: null,
-  }
+  },
+  copy: [{ from: '../varlet-icons/svg', to: './public/icons', type: 'folder' }]
 })

@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { markdown, html, inlineCss } from '@varlet/vite-plugins'
+import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import {
   ES_DIR,
   SITE_CONFIG,
@@ -48,6 +48,8 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
       jsx(),
 
       markdown({ style: get(varletConfig, 'highlight.style') }),
+
+      copy({ paths: get(varletConfig, 'copy', []) }),
 
       html({
         data: {

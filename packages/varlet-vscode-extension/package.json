@@ -28,11 +28,15 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
+    "dev": "webpack --watch",
     "build": "vsce package",
+    "compile": "webpack",
+    "package": "webpack --mode production --devtool hidden-source-map",
     "publish": "pnpm compile & pnpm build & vsce publish"
+  },
+  "dependencies": {
+    "@varlet/shared": "workspace:*",
+    "@varlet/icons": "workspace:*"
   },
   "devDependencies": {
     "@types/glob": "^7.1.3",
