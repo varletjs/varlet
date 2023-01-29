@@ -1,7 +1,7 @@
-import { defineComponent, ref, computed, toRefs, onMounted, ComputedRef } from 'vue'
+import { defineComponent, ref, toRefs, onMounted } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
-import { parseBaseColor, extractBaseColor, HSVAtoHex, HSVtoCSS, nullColor } from './utils/color-utils'
+import { parseBaseColor, extractBaseColor, HSVtoCSS, nullColor } from './utils/color-utils'
 import { HSVA } from './utils/color-utils-types'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
 import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
@@ -11,6 +11,7 @@ import VarColorPickerAlphaSlider from './components/color-picker-alpha-slider/co
 import './colorPicker.less'
 import '../styles/elevation.less'
 
+const DEFAULT_MODE = 'rgba'
 export default defineComponent({
   name: 'VarColorPicker',
   props: colorPickerProps,
@@ -18,24 +19,19 @@ export default defineComponent({
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
-    const hsva = computed(() => parseBaseColor(modelValue.value))
-    const hex = computed(() => HSVAtoHex(hsva.value!))
     function updateModelValueColor(color: any) {
-      initialColor.value = parseBaseColor(color)
+      initialColor.value = parseBaseColor(color) ?? nullColor
       const value = extractBaseColor(initialColor.value, props.modelValue)
       call(props['onUpdate:modelValue'], value)
     }
     updateModelValueColor(modelValue.value)
-    const currentMode = ref('rgba')
+    const currentMode = ref(DEFAULT_MODE)
     function updateColor(hsva: HSVA) {
       updateModelValueColor(hsva)
     }
     function updateMode(mode: string) {
       currentMode.value = mode
     }
-    const dotStyle: ComputedRef<any> = computed(() => {
-      return { '--color-picker-preview-dots': hex.value }
-    })
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
