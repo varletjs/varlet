@@ -25,8 +25,20 @@ async function buildPNG(svgFiles) {
   await Promise.all(
     svgFiles.map((svg) => {
       const { name } = parse(svg)
-      return sharp(resolve(SVG_DIR, svg))
-        .png()
+      return sharp({
+        create: {
+          width: 36,
+          height: 36,
+          channels: 4,
+          background: '#4a7afe',
+        },
+      })
+        .composite([
+          {
+            input: resolve(SVG_DIR, svg),
+            blend: 'dest-in',
+          },
+        ])
         .toFile(resolve(PNG_DIR, `${name}.png`))
     })
   )
