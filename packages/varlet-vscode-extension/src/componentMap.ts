@@ -19,9 +19,9 @@ export const componentMap: Record<string, ComponentDescriptor> = {
   },
   icon: {
     site: '/icon',
-    attrs: ['name=""'],
+    attrs: ['name='],
     closeSelf: true,
-    characterDelta: -3,
+    characterDelta: -2,
   },
   image: {
     site: '/image',
