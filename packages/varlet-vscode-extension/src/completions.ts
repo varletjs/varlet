@@ -1,4 +1,4 @@
-import icons from '@varlet/icons'
+import icons, { pointCodes } from '@varlet/icons'
 import {
   languages,
   Range,
@@ -66,8 +66,9 @@ export function registerCompletions(context: ExtensionContext) {
     },
 
     resolveCompletionItem(completionItem) {
-      const url = `https://varlet.gitee.io/varlet-ui/icons/${completionItem.label}.svg`
-      const markdownString = new MarkdownString(`####    Varlet Icon: ${completionItem.label}
+      const id = completionItem.label
+      const url = `https://varlet.gitee.io/varlet-ui/icons/u${pointCodes[id]}-${id}.svg`
+      const markdownString = new MarkdownString(`####    Varlet Icon: ${id}
 <p align="center"><img height="64" src="${url}"></p>
 [Icon SVG](${url})
 `)

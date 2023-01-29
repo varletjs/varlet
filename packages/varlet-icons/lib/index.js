@@ -40,9 +40,13 @@ async function build() {
     }
   })
 
-  const iconNames = icons.map((iconName) => `  "${iconName.name}"`)
+  const iconNames = icons.map((iconName) => `  '${iconName.name}'`)
 
   const indexTemplate = `\
+export const pointCodes = {
+  ${icons.map(({ pointCode, name }) => `'${name}': '${pointCode}'`).join(',\n  ')}
+}
+
 export default [
 ${iconNames.join(',\n')}
 ]
