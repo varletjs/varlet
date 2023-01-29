@@ -32,12 +32,8 @@ export async function runTask(taskName, task) {
 
 export async function runTaskQueue() {
   await runTask('shared', buildShared)
-
-  await Promise.all([
-    runTask('cli', buildCli),
-    runTask('vite plugins', buildVitePlugins),
-    runTask('icons', buildIcons)
-  ])
-
+  await runTask('vite plugins', buildVitePlugins)
+  await runTask('icons', buildIcons)
+  await runTask('cli', buildCli)
   await runTask('ui', buildUI)
 }
