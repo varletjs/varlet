@@ -11,3 +11,4 @@ export * from './commands/lint.js';
 export * from './commands/changelog.js';
 export * from './commands/preview.js';
 export * from './commands/vite.js';
+export * from './commands/extension.js';

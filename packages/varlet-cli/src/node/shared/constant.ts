@@ -49,5 +49,8 @@ export const HL_TAGS_JSON = resolve(HL_DIR, 'tags.json')
 export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
+// extension
+export const EXTENSION_ENTRY = resolve(CWD, 'src/extension.ts')
+
 // jest
 export const JEST_CONFIG = resolve(dirname, '../../../cjs/jest.config.cjs')

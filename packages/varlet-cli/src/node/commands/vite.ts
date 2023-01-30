@@ -2,7 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { build, createServer, type ViteDevServer } from 'vite'
 
-type ViteCommandMode = 'dev' | 'build'
+export type ViteCommandMode = 'dev' | 'build'
 
 export async function vite(mode: ViteCommandMode) {
   const run = mode === 'build' ? build : createServer

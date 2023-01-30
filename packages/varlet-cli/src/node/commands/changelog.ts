@@ -6,7 +6,7 @@ import { CWD } from '../shared/constant.js'
 
 const { createWriteStream } = fse
 
-interface ChangelogCommandOptions {
+export interface ChangelogCommandOptions {
   file?: string
   releaseCount?: number
 }

@@ -19,9 +19,11 @@ export function registerCompletions(context: ExtensionContext) {
       const completionItems: CompletionItem[] = []
 
       Object.keys(componentMap).forEach((key) => {
+        const name = `var-${key}`
+
         completionItems.push(
-          new CompletionItem(`var-${key}`, CompletionItemKind.Field),
-          new CompletionItem(bigCamelize(`var-${key}`), CompletionItemKind.Field)
+          new CompletionItem(name, CompletionItemKind.Field),
+          new CompletionItem(bigCamelize(name), CompletionItemKind.Field)
         )
       })
 

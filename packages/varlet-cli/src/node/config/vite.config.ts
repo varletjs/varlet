@@ -10,6 +10,7 @@ import {
   SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
   VITE_RESOLVE_EXTENSIONS,
+  EXTENSION_ENTRY,
 } from '../shared/constant.js'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
@@ -129,6 +130,28 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
             vue: 'Vue',
           },
         },
+      },
+    },
+  }
+}
+
+export type ExtensionMode = 'dev' | 'build'
+
+export function getExtensionConfig(mode: ExtensionMode): InlineConfig {
+  return {
+    build: {
+      sourcemap: mode === 'dev' ? 'inline' : false,
+
+      watch: mode === 'dev' ? {} : null,
+
+      lib: {
+        entry: EXTENSION_ENTRY,
+        fileName: 'extension',
+        formats: ['cjs'],
+      },
+
+      rollupOptions: {
+        external: ['vscode'],
       },
     },
   }

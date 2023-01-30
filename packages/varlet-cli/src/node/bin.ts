@@ -26,6 +26,15 @@ program
   })
 
 program
+  .command('dev:vite')
+  .description('Use vite start server for development')
+  .action(async () => {
+    const { vite } = await import('./commands/vite.js')
+
+    return vite('dev')
+  })
+
+program
   .command('build:vite')
   .description('Use vite build app for production')
   .action(async () => {
@@ -35,12 +44,21 @@ program
   })
 
 program
-  .command('dev:vite')
-  .description('Use vite start server for development')
+  .command('dev:extension')
+  .description('Run VSCode extension development environment')
   .action(async () => {
-    const { vite } = await import('./commands/vite.js')
+    const { extension } = await import('./commands/extension.js')
 
-    return vite('dev')
+    return extension('dev')
+  })
+
+program
+  .command('build:extension')
+  .description('Build VSCode extension for production')
+  .action(async () => {
+    const { extension } = await import('./commands/extension.js')
+
+    return extension('build')
   })
 
 program

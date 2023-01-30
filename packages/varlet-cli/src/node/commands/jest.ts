@@ -3,7 +3,7 @@ import jestModule from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant.js'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 
-interface JestCommandOptions {
+export interface JestCommandOptions {
   watch?: boolean
   watchAll?: boolean
   component?: string

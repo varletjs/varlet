@@ -1,4 +1,4 @@
-# Components Library Tools(@varlet/cli)
+# Components Library Tools
 
 ### Intro
 
@@ -13,6 +13,7 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 📦 &nbsp;Out-of-the-box code inspection tool
 - 📦 &nbsp;Out-of-the-box unit testing tools
 - 📦 &nbsp;Out-of-the-box code publishing tool, publishes to both `npm` and `github`, and automatically generates changelogs
+- 💪 &nbsp;Support for `VSCode` extension development
 - 💪 &nbsp;Support for `Typescript`
 - 💪 &nbsp;Support `Dark Mode`
 - 🌍 &nbsp;Support `Internationalization`
@@ -118,6 +119,20 @@ varlet-cli preview
 ```shell
 # playground-ignore
 varlet-cli compile
+```
+
+### Run VSCode extension development environment
+
+```shell
+# playground-ignore
+varlet-cli dev:extension
+```
+
+### Build VSCode extension for production
+
+```shell
+# playground-ignore
+varlet-cli build:extension
 ```
 
 #### Execute all unit tests

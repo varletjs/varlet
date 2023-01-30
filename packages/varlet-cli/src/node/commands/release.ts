@@ -117,7 +117,7 @@ async function getReleaseType() {
   return ret[name]
 }
 
-interface ReleaseCommandOptions {
+export interface ReleaseCommandOptions {
   remote?: string
   task?(): Promise<void>
 }
