@@ -9,6 +9,7 @@ import { ref } from 'vue'
 watchLang(use)
 const color = ref('')
 const value = ref('')
+const modes = ['rgba', 'hsla', 'hex']
 </script>
 
 <template>
