@@ -68,10 +68,9 @@ export function registerCompletions(context: ExtensionContext) {
     resolveCompletionItem(completionItem) {
       const id = completionItem.label
       const url = `https://varlet.gitee.io/varlet-ui/icons/png/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
-      const markdownString = new MarkdownString(`#### name: ${id}
-<p align="center"><img height="100" src="${url}"></p>
-
-[For all icons see here](${getSite()}/icon)
+      const markdownString = new MarkdownString(`[icon: ${id}](${getSite()}/icon)
+<p align="center"><img height="80" src="${url}"></p>
+<br>
 `)
 
       markdownString.supportHtml = true
