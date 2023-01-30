@@ -287,10 +287,10 @@ importers:
       '@types/vscode': ^1.56.0
       '@varlet/icons': workspace:*
       '@varlet/shared': workspace:*
+      '@vscode/vsce': ^2.17.0
       glob: ^7.1.6
       ts-loader: ^8.0.14
       typescript: ^4.1.3
-      vsce: ^2.13.0
       webpack: ^5.23.0
       webpack-cli: ^4.4.0
     dependencies:
@@ -300,10 +300,10 @@ importers:
       '@types/glob': 7.2.0
       '@types/node': 14.18.24
       '@types/vscode': 1.70.0
+      '@vscode/vsce': 2.17.0
       glob: 7.2.3
       ts-loader: 8.4.0_xnp4kzegbjokq62cajex2ovgkm
       typescript: 4.7.4
-      vsce: 2.13.0
       webpack: 5.74.0_webpack-cli@4.10.0
       webpack-cli: 4.10.0_webpack@5.74.0
 
@@ -2645,6 +2645,34 @@ packages:
       vue: 3.2.25
     dev: false
 
+  /@vscode/vsce/2.17.0:
+    resolution: {integrity: sha512-W4HN5MtTVj/mroQU1d82bUEeWM3dUykMFnMYZPtZ6jrMiHN1PUoN3RGcS896N0r2rIq8KpWDtufcQHgK8VfgpA==}
+    engines: {node: '>= 14'}
+    hasBin: true
+    dependencies:
+      azure-devops-node-api: 11.2.0
+      chalk: 2.4.2
+      cheerio: 1.0.0-rc.12
+      commander: 6.2.1
+      glob: 7.2.3
+      hosted-git-info: 4.1.0
+      leven: 3.1.0
+      markdown-it: 12.3.2
+      mime: 1.6.0
+      minimatch: 3.1.2
+      parse-semver: 1.1.1
+      read: 1.0.7
+      semver: 5.7.1
+      tmp: 0.2.1
+      typed-rest-client: 1.8.9
+      url-join: 4.0.1
+      xml2js: 0.4.23
+      yauzl: 2.10.0
+      yazl: 2.5.1
+    optionalDependencies:
+      keytar: 7.9.0
+    dev: true
+
   /@vue/babel-helper-vue-transform-on/1.0.2:
     resolution: {integrity: sha512-hz4R8tS5jMn8lDq6iD+yWL6XNB699pGIVLk7WSJnn1dbpjaazsjZQkieJoRX6gW5zpYSCFqQ7jUquPNY65tQYA==}
     dev: false
@@ -3730,7 +3758,7 @@ packages:
       domhandler: 5.0.3
       domutils: 3.0.1
       htmlparser2: 8.0.1
-      parse5: 7.0.0
+      parse5: 7.1.2
       parse5-htmlparser2-tree-adapter: 7.0.0
     dev: true
 
@@ -4466,7 +4494,7 @@ packages:
     dependencies:
       domelementtype: 2.3.0
       domhandler: 5.0.3
-      entities: 4.3.1
+      entities: 4.4.0
     dev: true
 
   /domelementtype/1.3.1:
@@ -4594,8 +4622,8 @@ packages:
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
 
-  /entities/4.3.1:
-    resolution: {integrity: sha512-o4q/dYJlmyjP2zfnaWDUC6A3BQFmVTX+tZPezK7k0GLSU9QYCauscf5Y+qcEPzKL+EixVouYDgLQK5H9GrLpkg==}
+  /entities/4.4.0:
+    resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
     engines: {node: '>=0.12'}
     dev: true
 
@@ -5725,7 +5753,7 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       domutils: 3.0.1
-      entities: 4.3.1
+      entities: 4.4.0
     dev: true
 
   /http-auth/3.1.3:
@@ -6893,6 +6921,7 @@ packages:
       node-addon-api: 4.3.0
       prebuild-install: 7.1.1
     dev: true
+    optional: true
 
   /kind-of/3.2.2:
     resolution: {integrity: sha512-NOW9QQXMoZGg/oqnVNoNTTIFEIid1627WCffUBJEdMxYApq7mNE7CpzucIPc+ZQg25Phej7IJSmX3hO+oblOtQ==}
@@ -7528,11 +7557,12 @@ packages:
     resolution: {integrity: sha512-YPG3Co0luSu6GwOBsmIdGW6Wx0NyNDLg/hriIyDllVsNwnI6UeqaWShxC3lbH4LtEQUgoLP3XR1ndXiDAWvmRw==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.3.7
+      semver: 7.3.8
 
   /node-addon-api/4.3.0:
     resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
     dev: true
+    optional: true
 
   /node-addon-api/5.1.0:
     resolution: {integrity: sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==}
@@ -7882,17 +7912,17 @@ packages:
     resolution: {integrity: sha512-B77tOZrqqfUfnVcOrUvfdLbz4pu4RopLD/4vmu3HUPswwTA8OH0EMW9BlWR2B0RCoiZRAHEUu7IxeP1Pd1UU+g==}
     dependencies:
       domhandler: 5.0.3
-      parse5: 7.0.0
+      parse5: 7.1.2
     dev: true
 
   /parse5/6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: false
 
-  /parse5/7.0.0:
-    resolution: {integrity: sha512-y/t8IXSPWTuRZqXc0ajH/UwDj4mnqLEbSttNbThcFhGrZuOyoyvNBO85PBp2jQa55wY9d07PBNjsK8ZP3K5U6g==}
+  /parse5/7.1.2:
+    resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==}
     dependencies:
-      entities: 4.3.1
+      entities: 4.4.0
     dev: true
 
   /parseurl/1.3.3:
@@ -8651,7 +8681,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: false
 
   /send/0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
@@ -9631,7 +9660,7 @@ packages:
     dependencies:
       qs: 6.11.0
       tunnel: 0.0.6
-      underscore: 1.13.4
+      underscore: 1.13.6
     dev: true
 
   /typedarray-to-buffer/3.1.5:
@@ -9668,8 +9697,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: false
 
-  /underscore/1.13.4:
-    resolution: {integrity: sha512-BQFnUDuAQ4Yf/cYY5LNrK9NCJFKriaRbD9uR1fTeXnBeoa97W0i41qkZfGO9pSo8I5KzjAcSY2XYtdf0oKd7KQ==}
+  /underscore/1.13.6:
+    resolution: {integrity: sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==}
     dev: true
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
@@ -10031,33 +10060,6 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
-
-  /vsce/2.13.0:
-    resolution: {integrity: sha512-t1otQ2lqyi5Y/G6qUl9BEc561nEIYrZbLT8k+R1SoZaKNa6gaehaLGQG5zvB524YPGZOVvbOBzAXoO7Mor1J5g==}
-    engines: {node: '>= 14'}
-    hasBin: true
-    dependencies:
-      azure-devops-node-api: 11.2.0
-      chalk: 2.4.2
-      cheerio: 1.0.0-rc.12
-      commander: 6.2.1
-      glob: 7.2.3
-      hosted-git-info: 4.1.0
-      keytar: 7.9.0
-      leven: 3.1.0
-      markdown-it: 12.3.2
-      mime: 1.6.0
-      minimatch: 3.1.2
-      parse-semver: 1.1.1
-      read: 1.0.7
-      semver: 5.7.1
-      tmp: 0.2.1
-      typed-rest-client: 1.8.9
-      url-join: 4.0.1
-      xml2js: 0.4.23
-      yauzl: 2.10.0
-      yazl: 2.5.1
-    dev: true
 
   /vue-eslint-parser/9.1.0_eslint@7.32.0:
     resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}
