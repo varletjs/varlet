@@ -49,27 +49,27 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '暗黑模式',
-          'en-US': 'Dark Mode',
-        },
-        doc: 'themes',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': '服务端渲染',
-          'en-US': 'Server side rendering',
-        },
-        doc: 'serverSideRendering',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '浏览器适配',
           'en-US': 'Browser Adaptation',
         },
         doc: 'browserAdaptation',
         type: 3,
+      },
+      {
+        text: {
+          'zh-CN': 'VSCode 插件',
+          'en-US': 'VSCode Extension',
+        },
+        doc: 'extension',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '暗黑模式',
+          'en-US': 'Dark Mode',
+        },
+        doc: 'themes',
+        type: 2,
       },
       {
         text: {
@@ -81,10 +81,10 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '开发工具支持',
-          'en-US': 'IDE Code Support',
+          'zh-CN': '服务端渲染',
+          'en-US': 'Server side rendering',
         },
-        doc: 'ide',
+        doc: 'serverSideRendering',
         type: 3,
       },
       {
