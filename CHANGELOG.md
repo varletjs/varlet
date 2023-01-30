@@ -1,3 +1,13 @@
+## [2.7.2](https://github.com/varletjs/varlet/compare/v2.7.1...v2.7.2) (2023-01-30)
+
+
+### Features
+
+* **extension:** support icon preview and completion ([adfa778](https://github.com/varletjs/varlet/commit/adfa77883844177b56664f839e174bd8002ec964))
+* **icons:** support pointCodes map ([ddd2575](https://github.com/varletjs/varlet/commit/ddd2575b9db3deff92310e84f3a0bba2b6fc48c3))
+
+
+
 ## [2.7.1](https://github.com/varletjs/varlet/compare/v2.7.0...v2.7.1) (2023-01-28)
 
 
