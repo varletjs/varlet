@@ -164,7 +164,7 @@ exports[`test form with counter 4`] = `
 
 exports[`test form with input 1`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-3">
       <div class="var-input__controller var-input--disabled">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -187,7 +187,7 @@ exports[`test form with input 1`] = `
 
 exports[`test form with input 2`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-3">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -210,7 +210,7 @@ exports[`test form with input 2`] = `
 
 exports[`test form with input 3`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-3">
       <div class="var-input__controller var-input--error">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -244,7 +244,7 @@ exports[`test form with input 3`] = `
 
 exports[`test form with input 4`] = `
 "<div class="var-form">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-3">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">

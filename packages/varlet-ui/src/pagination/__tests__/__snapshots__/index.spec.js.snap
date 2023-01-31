@@ -4,7 +4,7 @@ exports[`Size related props 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-120">
+    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-120">
         <div class="var-input__controller">
           <div class="var-input__icon"></div>
           <div class="var-input__wrap">
@@ -40,7 +40,7 @@ exports[`Size related props 2`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-120">
+    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-120">
         <div class="var-input__controller">
           <div class="var-input__icon"></div>
           <div class="var-input__wrap">
@@ -100,7 +100,7 @@ exports[`basic mode mount 1`] = `
       <!--teleport end-->
     </div>
   </li>
-  <li class="var-pagination__quickly">前往 <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-90">
+  <li class="var-pagination__quickly">前往 <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-90">
         <div class="var-input__controller">
           <div class="var-input__icon"></div>
           <div class="var-input__wrap">
@@ -127,7 +127,7 @@ exports[`simple mode disabled prop 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple var-pagination__item--disabled">
-    <div class="var-input var-input--standard var--box var-input--disabled" var-pagination-cover=""><label class="var--relative" for="var-input-68">
+    <div class="var-input var-input--standard var--box var-input--disabled" var-pagination-cover=""><label class="var--relative var--block" for="var-input-68">
         <div class="var-input__controller var-input--disabled">
           <div class="var-input__icon"></div>
           <div class="var-input__wrap">
@@ -163,7 +163,7 @@ exports[`simple mode mount 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-54">
+    <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-54">
         <div class="var-input__controller">
           <div class="var-input__icon"></div>
           <div class="var-input__wrap">
@@ -201,7 +201,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-5">
+      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-5">
           <div class="var-input__controller">
             <div class="var-input__icon"></div>
             <div class="var-input__wrap">
@@ -237,7 +237,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-19">
+      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-19">
           <div class="var-input__controller">
             <div class="var-input__icon"></div>
             <div class="var-input__wrap">
@@ -267,7 +267,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative" for="var-input-26">
+      <div class="var-input var-input--standard var--box" var-pagination-cover=""><label class="var--relative var--block" for="var-input-26">
           <div class="var-input__controller">
             <div class="var-input__icon"></div>
             <div class="var-input__wrap">
@@ -303,7 +303,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple var-pagination__item--disabled">
-      <div class="var-input var-input--standard var--box var-input--disabled" var-pagination-cover=""><label class="var--relative" for="var-input-40">
+      <div class="var-input var-input--standard var--box var-input--disabled" var-pagination-cover=""><label class="var--relative var--block" for="var-input-40">
           <div class="var-input__controller var-input--disabled">
             <div class="var-input__icon"></div>
             <div class="var-input__wrap">

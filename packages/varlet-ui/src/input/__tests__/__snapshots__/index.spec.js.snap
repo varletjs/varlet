@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test input clear 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-118">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-118">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -20,7 +20,7 @@ exports[`test input clear 1`] = `
 `;
 
 exports[`test input events test input focus & blur 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-92">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-92">
     <div class="var-input__controller var-input--focus">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -41,7 +41,7 @@ exports[`test input events test input focus & blur 1`] = `
 `;
 
 exports[`test input events test input focus & blur 2`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-92">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-92">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -62,7 +62,7 @@ exports[`test input events test input focus & blur 2`] = `
 `;
 
 exports[`test input events test input focus & blur 3`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-96">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-96">
     <div class="var-input__controller var-input--focus">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -84,7 +84,7 @@ exports[`test input events test input focus & blur 3`] = `
 `;
 
 exports[`test input events test input focus & blur 4`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-96">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-96">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -108,7 +108,7 @@ exports[`test input events test input focus & blur 4`] = `
 exports[`test input example 1`] = `
 "<div class="app-type pb">基本使用</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-3">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-3">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -128,7 +128,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-6">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-6">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -153,7 +153,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">小尺寸</div>
 <div class="pb">
-  <div class="var-input var-input--standard var-input--small var--box"><label class="var--relative" for="var-input-10">
+  <div class="var-input var-input--standard var-input--small var--box"><label class="var--relative var--block" for="var-input-10">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -173,7 +173,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var-input--small var--box"><label class="var--relative" for="var-input-13">
+  <div class="var-input var-input--outlined var-input--small var--box"><label class="var--relative var--block" for="var-input-13">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -198,7 +198,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">朴素模式</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-17">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-17">
       <div class="var-input__controller">
         <div class="var-input__icon var-input--non-hint"></div>
         <div class="var-input__wrap var-input--wrap-non-hint">
@@ -217,7 +217,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">文本域</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-21">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-21">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -238,7 +238,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-24">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-24">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -264,7 +264,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">最大长度</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-28">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-28">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -295,7 +295,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-33">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-33">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -331,7 +331,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">禁用</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box var-input--disabled"><label class="var--relative" for="var-input-39">
+  <div class="var-input var-input--standard var--box var-input--disabled"><label class="var--relative var--block" for="var-input-39">
       <div class="var-input__controller var-input--disabled">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -351,7 +351,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box var-input--disabled"><label class="var--relative" for="var-input-42">
+  <div class="var-input var-input--outlined var--box var-input--disabled"><label class="var--relative var--block" for="var-input-42">
       <div class="var-input__controller var-input--disabled">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -372,7 +372,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">只读</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-46">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-46">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -392,7 +392,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-49">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-49">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -417,7 +417,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">可清除</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-53">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-53">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -435,7 +435,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-57">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-57">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -458,7 +458,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">显示图标</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-62">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-62">
       <div class="var-input__controller">
         <div class="var-input__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
         <div class="var-input__wrap">
@@ -476,7 +476,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-67">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-67">
       <div class="var-input__controller">
         <div class="var-input__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
         <div class="var-input__wrap">
@@ -499,7 +499,7 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type">字段校验</div>
 <div class="pb">
-  <div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-73">
+  <div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-73">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -519,7 +519,7 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div>
-  <div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-76">
+  <div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-76">
       <div class="var-input__controller">
         <div class="var-input__icon"></div>
         <div class="var-input__wrap">
@@ -546,7 +546,7 @@ exports[`test input example 1`] = `
 `;
 
 exports[`test input hint to be false 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-114">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-114">
     <div class="var-input__controller">
       <div class="var-input__icon var-input--non-hint"></div>
       <div class="var-input__wrap var-input--wrap-non-hint">
@@ -567,7 +567,7 @@ exports[`test input hint to be false 1`] = `
 `;
 
 exports[`test input maxlength 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-108">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-108">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -599,7 +599,7 @@ exports[`test input maxlength 1`] = `
 `;
 
 exports[`test input size 1`] = `
-"<div class="var-input var-input--standard var-input--small var--box"><label class="var--relative" for="var-input-88">
+"<div class="var-input var-input--standard var-input--small var--box"><label class="var--relative var--block" for="var-input-88">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -620,7 +620,7 @@ exports[`test input size 1`] = `
 `;
 
 exports[`test input validation 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-133">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-133">
     <div class="var-input__controller var-input--error">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -652,7 +652,7 @@ exports[`test input validation 1`] = `
 `;
 
 exports[`test input validation 2`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-133">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-133">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -673,7 +673,7 @@ exports[`test input validation 2`] = `
 `;
 
 exports[`test input validation 3`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-133">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-133">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -694,7 +694,7 @@ exports[`test input validation 3`] = `
 `;
 
 exports[`test input variant 1`] = `
-"<div class="var-input var-input--standard var--box"><label class="var--relative" for="var-input-80">
+"<div class="var-input var-input--standard var--box"><label class="var--relative var--block" for="var-input-80">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">
@@ -715,7 +715,7 @@ exports[`test input variant 1`] = `
 `;
 
 exports[`test input variant 2`] = `
-"<div class="var-input var-input--outlined var--box"><label class="var--relative" for="var-input-84">
+"<div class="var-input var-input--outlined var--box"><label class="var--relative var--block" for="var-input-84">
     <div class="var-input__controller">
       <div class="var-input__icon"></div>
       <div class="var-input__wrap">

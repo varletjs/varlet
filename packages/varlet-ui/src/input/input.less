@@ -217,20 +217,20 @@
     .var-input__placeholder {
       top: 50%;
       transform-origin: left;
-      transition: top 0.3s, transform 0.3s, translate 0.3s, width 0.3s, margin 0.3s, color 0.25s;
+      transition: top 0.3s, transform 0.3s, width 0.3s, margin 0.3s, color 0.25s;
       transform: translateY(-50%);
     }
 
     .var-input__textarea-placeholder {
       top: var(--input-input-padding-top);
       transform: scale(1);
-      transition: top 0.3s, transform 0.3s, translate 0.3s, width 0.3s, margin 0.3s, color 0.25s;
+      transition: top 0.3s, transform 0.3s, width 0.3s, margin 0.3s, color 0.25s;
     }
 
     .var-input--placeholder-hint {
       margin: 0 2px;
       top: 0;
-      transform: scale(0.75);
+      transform: translateY(-50%) scale(0.75);
     }
 
     .var-input__line {
@@ -251,6 +251,7 @@
         border-top-width: var(--input-line-size);
         border-bottom-width: var(--input-line-size);
         border-inline-start-width: var(--input-line-size);
+        transition: border 0.2s;
       }
 
       &__notch {
@@ -261,6 +262,10 @@
         border-top-width: var(--input-line-size);
         border-bottom-width: var(--input-line-size);
         transition: border 0.2s;
+      }
+
+      &__notch--hint {
+        border-top-width: 0 !important;
       }
 
       &__placeholder {
@@ -277,6 +282,7 @@
         border-top-width: var(--input-line-size);
         border-bottom-width: var(--input-line-size);
         border-inline-end-width: var(--input-line-size);
+        transition: border 0.2s;
       }
     }
 
@@ -309,10 +315,6 @@
 
     .var-input--line-error {
       border-color: var(--input-error-color) !important;
-    }
-
-    .var-input__line__notch--hint {
-      border-top-color: transparent !important;
     }
   }
 
