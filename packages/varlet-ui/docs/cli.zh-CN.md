@@ -14,6 +14,7 @@
 - 📦 &nbsp;开箱即用的单元测试工具
 - 📦 &nbsp;开箱即用的代码发布工具,同时发布到 `npm` 和 `github`, 并自动生成更新日志
 - 💪 &nbsp;支持 `VSCode` 插件开发
+- 💪 &nbsp;支持 `字体图标打包`
 - 💪 &nbsp;支持 `Typescript`
 - 💪 &nbsp;支持 `暗黑模式`
 - 🌍 &nbsp;支持 `国际化`
@@ -54,7 +55,8 @@ varlet-cli gen
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
 | `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
 | `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
-| `copy` | 复制文件配置 | _{ from: string, to: string, type: 'folder' | 'file' }[]_ | `-` |
+| `copy` | 复制文件配置 | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
+| `icons` | 字体图标打包相关配置 | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 
 ### 自定义页面
 
@@ -120,18 +122,25 @@ varlet-cli preview
 varlet-cli compile
 ```
 
-### 启动 VSCode 插件开发环境
+#### 启动 VSCode 插件开发环境
 
 ```shell
 # playground-ignore
 varlet-cli dev:extension
 ```
 
-### 构建 VSCode 插件
+#### 构建 VSCode 插件
 
 ```shell
 # playground-ignore
 varlet-cli build:extension
+```
+
+#### 打包字体图标
+
+```shell
+# playground-ignore
+varlet-cli build:icons
 ```
 
 #### 执行所有的单元测试

@@ -5,21 +5,14 @@
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "bin": {
-    "varlet-icons": "lib/index.js"
-  },
   "keywords": [
     "icons",
     "svg",
-    "builder",
     "varlet"
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
-  "files": [
-    "dist",
-    "lib"
-  ],
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/varletjs/varlet.git"
@@ -28,15 +21,9 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
-    "build": "varlet-icons build"
-  },
-  "dependencies": {
-    "commander": "^6.2.1",
-    "fs-extra": "^9.0.1",
-    "webfont": "^9.0.0",
-    "sharp": "0.31.3"
+    "build": "varlet-cli build:icons"
   },
   "devDependencies": {
-    "@types/node": "^18.7.20"
+    "@varlet/cli": "workspace:*"
   }
 }

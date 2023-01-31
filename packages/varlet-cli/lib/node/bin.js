@@ -47,6 +47,13 @@ program
     return extension('build');
 });
 program
+    .command('build:icons')
+    .description('Build icons')
+    .action(async () => {
+    const { icons } = await import('./commands/icons.js');
+    return icons();
+});
+program
     .command('preview')
     .description('Preview varlet site for production')
     .action(async () => {

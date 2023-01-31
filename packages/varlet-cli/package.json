@@ -50,6 +50,8 @@
     "@vue/babel-plugin-jsx": "1.1.1",
     "@vue/compiler-sfc": "3.2.25",
     "@vue/runtime-core": "3.2.25",
+    "webfont": "^9.0.0",
+    "sharp": "0.31.3",
     "babel-jest": "26.6.3",
     "chalk": "^4.1.0",
     "chokidar": "^3.5.2",
@@ -84,7 +86,8 @@
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^18.7.20",
     "@types/semver": "^7.3.9",
-    "@types/inquirer": "^9.0.2"
+    "@types/inquirer": "^9.0.2",
+    "@types/sharp": "0.31.1"
   },
   "peerDependencies": {
     "@varlet/icons": "workspace:*",

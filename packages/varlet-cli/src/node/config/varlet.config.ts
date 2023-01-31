@@ -8,6 +8,28 @@ import { type CopyOptions } from '@varlet/vite-plugins'
 
 const { pathExistsSync, statSync } = fse
 
+export interface VarletConfigIcons {
+  /**
+   * @default `varlet-icons`
+   * Font name.
+   */
+  name?: string
+  /**
+   * @default `var-icon`
+   * Font name prefix.
+   */
+  namespace?: string
+  /**
+   * @default `true`
+   * Output base64
+   */
+  base64?: boolean
+  publicPath?: string
+  fontFamilyClassName?: string
+  fontWeight?: string
+  fontStyle?: string
+}
+
 export interface VarletConfig {
   /**
    * @default `Varlet`
@@ -45,6 +67,7 @@ export interface VarletConfig {
   pc?: Record<string, any>
   mobile?: Record<string, any>
   copy?: CopyOptions['paths']
+  icons?: VarletConfigIcons
 }
 
 export function defineConfig(config: VarletConfig) {

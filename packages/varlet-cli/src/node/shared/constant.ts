@@ -49,6 +49,13 @@ export const HL_TAGS_JSON = resolve(HL_DIR, 'tags.json')
 export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
+// icons
+export const ICONS_DIST_DIR = resolve(CWD, 'dist')
+export const ICONS_CSS_DIR = resolve(ICONS_DIST_DIR, 'css')
+export const ICONS_PNG_DIR = resolve(ICONS_DIST_DIR, 'png')
+export const ICONS_FONTS_DIR = resolve(ICONS_DIST_DIR, 'fonts')
+export const ICONS_SVG_DIR = resolve(CWD, 'svg')
+
 // extension
 export const EXTENSION_ENTRY = resolve(CWD, 'src/extension.ts')
 

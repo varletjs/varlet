@@ -14,6 +14,7 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 📦 &nbsp;Out-of-the-box unit testing tools
 - 📦 &nbsp;Out-of-the-box code publishing tool, publishes to both `npm` and `github`, and automatically generates changelogs
 - 💪 &nbsp;Support for `VSCode` extension development
+- 💪 &nbsp;Support `build svg to web fonts`
 - 💪 &nbsp;Support for `Typescript`
 - 💪 &nbsp;Support `Dark Mode`
 - 🌍 &nbsp;Support `Internationalization`
@@ -54,7 +55,8 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `analysis` | Document statistics related | _{ baidu: string }_ | `-` |
 | `pc` | PC-side document structure configuration | _Record<string, any>_ | `-` |
 | `mobile` | Mobile side document structure configuration | _Record<string, any>_ | `-` |
-| `copy` | Copy file options | _{ from: string, to: string, type: 'folder' | 'file' }[]_ | `-` |
+| `copy` | Copy file options | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
+| `icons` | Font icon packaging related configuration | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 
 ### Custom pages
 
@@ -121,18 +123,25 @@ varlet-cli preview
 varlet-cli compile
 ```
 
-### Run VSCode extension development environment
+#### Run VSCode extension development environment
 
 ```shell
 # playground-ignore
 varlet-cli dev:extension
 ```
 
-### Build VSCode extension for production
+#### Build VSCode extension for production
 
 ```shell
 # playground-ignore
 varlet-cli build:extension
+```
+
+#### Build svg to web fonts
+
+```shell
+# playground-ignore
+varlet-cli build:icons
 ```
 
 #### Execute all unit tests

@@ -33,7 +33,7 @@ export async function runTask(taskName, task) {
 export async function runTaskQueue() {
   await runTask('shared', buildShared)
   await runTask('vite plugins', buildVitePlugins)
-  await runTask('icons', buildIcons)
   await runTask('cli', buildCli)
+  await runTask('icons', buildIcons)
   await runTask('ui', buildUI)
 }
