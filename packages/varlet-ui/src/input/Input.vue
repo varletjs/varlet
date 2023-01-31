@@ -3,7 +3,7 @@
     :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--box'), [disabled, n('--disabled')])"
     @click="handleClick"
   >
-    <label :class="classes(n('$--relative'))" :for="id">
+    <label :class="classes(n('$--relative'), n('$--block'))" :for="id">
       <div
         :class="
           classes(
@@ -236,18 +236,22 @@ export default defineComponent({
         return
       }
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        placeholderState.value = n('--placeholder-hint')
-
-        if (variant === 'outlined' && placeholderRef.value) {
-          const x = slots['prepend-icon'] && prependRef.value ? prependRef.value.clientWidth : 0
-          placeholderRef.value.style.translate = `-${x}px -50%`
+        if (!placeholderState.value) {
+          nextTick(() => {
+            if (variant === 'outlined' && slots['prepend-icon']) {
+              const x = prependRef.value!.clientWidth || 0
+              placeholderRef.value!.style.transform = `translate(-${x}px, -50%) scale(0.75)`
+            }
+          })
         }
+
+        placeholderState.value = n('--placeholder-hint')
         return
       }
-      placeholderState.value = ''
 
-      if (variant === 'outlined' && placeholderRef.value) {
-        placeholderRef.value.style.translate = ''
+      placeholderState.value = ''
+      if (variant === 'outlined' && placeholderRef.value?.style.transform) {
+        placeholderRef.value.style.transform = ''
       }
     })
 
