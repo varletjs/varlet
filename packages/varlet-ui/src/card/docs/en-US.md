@@ -123,7 +123,7 @@ const floating = ref(false)
       <var-button text type="warning">ACTION 2</var-button>
     </template>
 
-    <template #content>
+    <template #floating-content>
       <var-divider dashed />
 
       <div class="card-example-text">

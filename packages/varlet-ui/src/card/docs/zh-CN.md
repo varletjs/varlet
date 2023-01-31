@@ -128,7 +128,7 @@ const floating = ref(false)
       <var-button text type="warning">操作 2</var-button>
     </template>
 
-    <template #content>
+    <template #floating-content>
       <var-divider dashed />
       
       <div class="card-example-text">
