@@ -1,7 +1,7 @@
 import fse from 'fs-extra'
 import hash from 'hash-sum'
 import { parse, resolve } from 'path'
-import { parse as parseSFC, compileTemplate, compileStyle } from '@vue/compiler-sfc'
+import { parse as parseSFC, compileTemplate, compileStyle, compileScript as compileScriptSFC } from '@vue/compiler-sfc'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { compileScript, getScriptExtname } from './compileScript.js'
 import {
@@ -12,68 +12,85 @@ import {
   STYLE_IMPORT_RE,
 } from './compileStyle.js'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
-import logger from '../shared/logger.js'
 
 const { readFile, writeFileSync } = fse
 
-const NORMAL_EXPORT_START_RE = /export\s+default\s+{/
-const DEFINE_EXPORT_START_RE = /export\s+default\s+defineComponent\s*\(\s*{/
+const EXPORT = 'export default'
+const SFC = '__sfc__'
+const SFC_DECLARE = `const ${SFC} = `
+const RENDER = '__render__'
+
+export function replaceExportToDeclare(script: string) {
+  return script.replace(EXPORT, SFC_DECLARE)
+}
+
+export function injectExport(script: string) {
+  script += `\n${EXPORT} ${SFC}`
+
+  return script
+}
+
+export function injectScopeId(script: string, scopeId: string) {
+  script += `\n${SFC}.__scopeId = '${scopeId}'`
+
+  return script
+}
 
 export function injectRender(script: string, render: string): string {
-  if (DEFINE_EXPORT_START_RE.test(script.trim())) {
-    return script.trim().replace(
-      DEFINE_EXPORT_START_RE,
-      `${render}\nexport default defineComponent({
-  render,\
-    `
-    )
-  }
-  if (NORMAL_EXPORT_START_RE.test(script.trim())) {
-    return script.trim().replace(
-      NORMAL_EXPORT_START_RE,
-      `${render}\nexport default {
-  render,\
-    `
-    )
-  }
+  script = script.trim()
+  render = render.replace('export function render', `function ${RENDER}`)
+  script = script.replace(SFC_DECLARE, `${render}\n${SFC_DECLARE}`)
+  script += `\n${SFC}.render = ${RENDER}`
+
   return script
 }
 
 export async function compileSFC(sfc: string) {
   const sources: string = await readFile(sfc, 'utf-8')
+  const id = hash(sources)
   const { descriptor } = parseSFC(sources, { sourceMap: false })
   const { script, scriptSetup, template, styles } = descriptor
-  if (scriptSetup) {
-    logger.warning(
-      `\n Varlet Cli does not support compiling script setup syntax\
-       \n  The error in ${sfc}`
-    )
-    return
-  }
-  // scoped
-  const hasScope = styles.some((style) => style.scoped)
-  const id = hash(sources)
-  const scopeId = hasScope ? `data-v-${id}` : ''
-  if (script) {
-    // template
-    const render =
-      template &&
-      compileTemplate({
+
+  if (script || scriptSetup) {
+    let scriptContent: string
+    let bindingMetadata
+
+    if (scriptSetup) {
+      const { content, bindings } = compileScriptSFC(descriptor, { id })
+      scriptContent = content
+      bindingMetadata = bindings
+    } else {
+      // script only
+      scriptContent = script!.content
+    }
+
+    scriptContent = replaceExportToDeclare(scriptContent)
+
+    // scoped
+    const hasScope = styles.some((style) => style.scoped)
+    const scopeId = hasScope ? `data-v-${id}` : ''
+
+    if (template) {
+      const render = compileTemplate({
         id,
         source: template.content,
         filename: sfc,
         compilerOptions: {
           scopeId,
+          bindingMetadata,
         },
-      })
+      }).code
 
-    let { content } = script
-    if (render) {
-      const { code } = render
-      content = injectRender(content, code)
+      scriptContent = injectRender(scriptContent, render)
     }
-    // script
-    await compileScript(content, sfc)
+
+    if (scopeId) {
+      scriptContent = injectScopeId(scriptContent, scopeId)
+    }
+
+    scriptContent = injectExport(scriptContent)
+    await compileScript(scriptContent, sfc)
+
     // style
     for (let index = 0; index < styles.length; index++) {
       const style: SFCStyleBlock = styles[index]
