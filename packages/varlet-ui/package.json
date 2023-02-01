@@ -5,6 +5,9 @@
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
   "typings": "types/index.d.ts",
+  "style": "umd/style.css",
+  "unpkg": "umd/varlet.js",
+  "jsdelivr": "umd/varlet.js",
   "vetur": {
     "tags": "highlight/tags.json",
     "attributes": "highlight/attributes.json"
