@@ -20,6 +20,10 @@ const SFC = '__sfc__'
 const SFC_DECLARE = `const ${SFC} = `
 const RENDER = '__render__'
 
+export function declareEmptySFC() {
+  return `${SFC_DECLARE}{}\n`
+}
+
 export function replaceExportToDeclare(script: string) {
   return script.replace(EXPORT, SFC_DECLARE)
 }
@@ -51,10 +55,10 @@ export async function compileSFC(sfc: string) {
   const { descriptor } = parseSFC(sources, { sourceMap: false })
   const { script, scriptSetup, template, styles } = descriptor
 
-  if (script || scriptSetup) {
-    let scriptContent: string
-    let bindingMetadata
+  let scriptContent
+  let bindingMetadata
 
+  if (script || scriptSetup) {
     if (scriptSetup) {
       const { content, bindings } = compileScriptSFC(descriptor, { id })
       scriptContent = content
@@ -65,54 +69,58 @@ export async function compileSFC(sfc: string) {
     }
 
     scriptContent = replaceExportToDeclare(scriptContent)
+  }
 
-    // scoped
-    const hasScope = styles.some((style) => style.scoped)
-    const scopeId = hasScope ? `data-v-${id}` : ''
+  if (!scriptContent) {
+    scriptContent = declareEmptySFC()
+  }
 
-    if (template) {
-      const render = compileTemplate({
-        id,
-        source: template.content,
-        filename: sfc,
-        compilerOptions: {
-          scopeId,
-          bindingMetadata,
-        },
-      }).code
+  // scoped
+  const hasScope = styles.some((style) => style.scoped)
+  const scopeId = hasScope ? `data-v-${id}` : ''
 
-      scriptContent = injectRender(scriptContent, render)
-    }
+  if (template) {
+    const render = compileTemplate({
+      id,
+      source: template.content,
+      filename: sfc,
+      compilerOptions: {
+        scopeId,
+        bindingMetadata,
+      },
+    }).code
 
-    if (scopeId) {
-      scriptContent = injectScopeId(scriptContent, scopeId)
-    }
+    scriptContent = injectRender(scriptContent, render)
+  }
 
-    scriptContent = injectExport(scriptContent)
-    await compileScript(scriptContent, sfc)
+  if (scopeId) {
+    scriptContent = injectScopeId(scriptContent, scopeId)
+  }
 
-    // style
-    for (let index = 0; index < styles.length; index++) {
-      const style: SFCStyleBlock = styles[index]
-      const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
-      const { base, dir } = parse(file)
-      const dependencyPath = normalizeStyleDependency(base, STYLE_IMPORT_RE)
-      const cssFile = resolve(dir, `./style/index${getScriptExtname()}`)
+  scriptContent = injectExport(scriptContent)
+  await compileScript(scriptContent, sfc)
 
-      let { code } = compileStyle({
-        source: style.content,
-        filename: file,
-        id: scopeId,
-        scoped: style.scoped,
-      })
+  // style
+  for (let index = 0; index < styles.length; index++) {
+    const style: SFCStyleBlock = styles[index]
+    const file = replaceExt(sfc, `Sfc${index || ''}.${style.lang || 'css'}`)
+    const { base, dir } = parse(file)
+    const dependencyPath = normalizeStyleDependency(base, STYLE_IMPORT_RE)
+    const cssFile = resolve(dir, `./style/index${getScriptExtname()}`)
 
-      code = extractStyleDependencies(file, code, STYLE_IMPORT_RE)
-      writeFileSync(file, clearEmptyLine(code), 'utf-8')
-      smartAppendFileSync(cssFile, `import '${dependencyPath}.css'\n`)
+    let { code } = compileStyle({
+      source: style.content,
+      filename: file,
+      id: scopeId,
+      scoped: style.scoped,
+    })
 
-      if (style.lang === 'less') {
-        await compileLess(file)
-      }
+    code = extractStyleDependencies(file, code, STYLE_IMPORT_RE)
+    writeFileSync(file, clearEmptyLine(code), 'utf-8')
+    smartAppendFileSync(cssFile, `import '${dependencyPath}.css'\n`)
+
+    if (style.lang === 'less') {
+      await compileLess(file)
     }
   }
 }
