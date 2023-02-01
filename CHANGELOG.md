@@ -1,3 +1,20 @@
+## [2.7.3](https://github.com/varletjs/varlet/compare/v2.7.2...v2.7.3) (2023-02-01)
+
+
+### Bug Fixes
+
+* **cli:** fix generators ([dcc3ff7](https://github.com/varletjs/varlet/commit/dcc3ff787afcee8b3288be34a4b849ac780450a6))
+
+
+### Features
+
+* **cli:** support extension development ([dbe47a9](https://github.com/varletjs/varlet/commit/dbe47a9a89bb7ee791fe0408bcd94c66d36ac1e6))
+* **cli:** support icon builder ([1cf420c](https://github.com/varletjs/varlet/commit/1cf420ce0ba17d7f5a15104991c6fba2ad8755bb))
+* **cli:** support script setup ([229f4e1](https://github.com/varletjs/varlet/commit/229f4e1840eee539594430b5e21c27e09c5d7cad))
+* support sfc without script blocks ([44e009d](https://github.com/varletjs/varlet/commit/44e009ddd843601c2f4b1b412e4a1d8f1c59f4cc))
+
+
+
 ## [2.7.2](https://github.com/varletjs/varlet/compare/v2.7.1...v2.7.2) (2023-01-30)
 
 

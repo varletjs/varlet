@@ -1,6 +1,6 @@
 {
   "name": "@varlet/icons",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "description": "Icons of varlet",
   "type": "module",
   "main": "dist/index.js",
@@ -12,7 +12,9 @@
   ],
   "author": "haoziqaq <357229046@qq.com>",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/varletjs/varlet.git"
