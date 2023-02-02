@@ -67,6 +67,10 @@ export class Uploader extends VarComponent {
   resetValidation(): void
 
   reset(): void
+
+  chooseFile(): void
+
+  closePreview(): void
 }
 
 export class _UploaderComponent extends Uploader {}

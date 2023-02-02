@@ -345,6 +345,8 @@ const files = ref([
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
+| `chooseFile` | 触发选择文件动作，显示文件列表 | `-` | `-` |
+| `closePreview` | 关闭预览文件弹出层 | `-` | `-` |
 | `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `-` | `VarFile[]` |
 | `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `-` | `VarFile[]` |
 | `getError` |  获取 `state` 等于 `error` 的文件集合 | `-` | `VarFile[]` |

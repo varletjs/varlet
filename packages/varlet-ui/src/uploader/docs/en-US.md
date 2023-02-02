@@ -345,6 +345,8 @@ const files = ref([
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
+| `chooseFile` | Trigger the file selection action and display the file list | `-` | `-` |
+| `closePreview` | Close preview file popup | `-` | `-` |
 | `getLoading` | Gets a collection of files for `state` is `loading` | `-` | `VarFile[]` |
 | `getSuccess` | Gets a collection of files for `state` is `success` | `-` | `VarFile[]` |
 | `getError` |  Gets a collection of files for `state` is `error` | `-` | `VarFile[]` |

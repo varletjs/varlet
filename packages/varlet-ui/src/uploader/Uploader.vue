@@ -29,12 +29,12 @@
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
-        @click="triggerAction"
+        @click="chooseFile"
       >
         <input
           ref="input"
-          :class="n('action-input')"
           type="file"
+          :class="n('action-input')"
           :multiple="multiple"
           :accept="accept"
           :capture="capture"
@@ -144,10 +144,6 @@ export default defineComponent({
 
       return modelValue
     })
-
-    const triggerAction = () => {
-      input.value!.click()
-    }
 
     const preview = (varFile: VarFile) => {
       const { disabled, readonly, previewed } = props
@@ -298,6 +294,18 @@ export default defineComponent({
     // expose
     const getLoading = () => props.modelValue.filter((varFile) => varFile.state === 'loading')
 
+    // expose
+    const chooseFile = () => {
+      input.value!.click()
+    }
+
+    // expose
+    const closePreview = () => {
+      currentPreview.value = null
+      showPreview.value = false
+      ImagePreview.close()
+    }
+
     const varFileUtils: VarFileUtils = {
       getSuccess,
       getError,
@@ -354,7 +362,6 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       preview,
-      triggerAction,
       handleChange,
       handleRemove,
       getSuccess,
@@ -363,6 +370,8 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
+      chooseFile,
+      closePreview,
     }
   },
 })
