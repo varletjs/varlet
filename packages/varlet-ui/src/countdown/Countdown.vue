@@ -90,7 +90,7 @@ export default defineComponent({
 
     const countdown = () => {
       const { time, onEnd, autoStart } = props
-      const now = Date.now()
+      const now = performance.now()
 
       if (!endTime.value) endTime.value = now + toNumber(time)
 
