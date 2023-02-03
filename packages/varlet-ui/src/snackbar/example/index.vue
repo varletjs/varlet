@@ -4,7 +4,7 @@ import VarButton from '../../button'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, onBeforeUnmount } from 'vue'
 import { pack, use } from './locale'
 
 const shows = reactive({
@@ -65,6 +65,10 @@ function openMultiple() {
     snackbar1.clear()
   }, 1000)
 }
+
+onBeforeUnmount(() => {
+  Snackbar.allowMultiple(false)
+})
 
 watchLang(use)
 watchDarkMode(dark)
