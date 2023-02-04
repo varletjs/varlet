@@ -136,6 +136,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'ButtonGroup 按钮组',
+          'en-US': 'ButtonGroup',
+        },
+        doc: 'button-group',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Breadcrumbs 面包屑',
           'en-US': 'Breadcrumbs',
         },
