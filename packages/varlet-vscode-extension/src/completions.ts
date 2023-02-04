@@ -41,8 +41,8 @@ export function registerCompletions(context: ExtensionContext) {
       item.insertText = `<${item.label}${attrText}`
       item.insertText += descriptor.closeSelf ? '/>' : `>${tagSuffix}`
       item.command = {
-        title: 'move-cursor',
-        command: 'move-cursor',
+        title: 'varlet.move-cursor',
+        command: 'varlet.move-cursor',
         arguments: [characterDelta],
       }
 

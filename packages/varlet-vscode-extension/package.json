@@ -13,6 +13,32 @@
   "categories": [
     "Other"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "varlet.open-playground",
+        "title": "Varlet: Open Varlet UI Playground"
+      },
+      {
+        "command": "varlet.open-playground-and-wrap-template-tag",
+        "title": "Varlet: Open Varlet UI Playground And Wrap Template Tag"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "varlet.open-playground",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "varlet.open-playground-and-wrap-template-tag",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
+    }
+  },
   "activationEvents": [
     "onLanguage:vue",
     "onLanguage:javascript",

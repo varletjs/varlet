@@ -18,15 +18,12 @@ VsCode 插件市场搜索 [varlet-vscode-extension](https://marketplace.visualst
 
 输入组件名称时出现语法提示，选中后进行语法补全。
 
-<img src="https://varlet.gitee.io/varlet-ui/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varlet.gitee.io/varlet-ui/2.png?v=6" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 鼠标移动到组件名会显示组件的文档地址，可以点击进行跳转。
 
-<img src="https://varlet.gitee.io/varlet-ui/1.jpg" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varlet.gitee.io/varlet-ui/1.jpg?v=1" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 输入 `Icon` 组件的名称时出现可选的图标预览，选中后进行语法补全。
 
-<img src="https://varlet.gitee.io/varlet-ui/3.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
-
-
-
+<img src="https://varlet.gitee.io/varlet-ui/3.png?v=1" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
