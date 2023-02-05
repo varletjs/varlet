@@ -8,7 +8,7 @@
         n(`--${size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
-        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} ${n('$-elevation--2')}`],
+        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} ${n(`$-elevation--${boxShadow ? 0 : 2}`)}`],
         [text && disabled, n('--text-disabled')],
         [round, n('--round')],
         [outline, n('--outline')]
@@ -41,10 +41,12 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref, type Ref } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
+import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
+import type { ButtonProvider } from './provide'
 
 const { n, classes } = createNamespace('button')
 
@@ -57,7 +59,18 @@ export default defineComponent({
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
-
+    const { buttonGroup, bindButtonGroup } = useButtonGroup()
+    const boxShadow = computed(() => {
+      return buttonGroup ? buttonGroup.boxShadow.value : false
+    })
+    // const buttonProvider: ButtonProvider = {
+    //   sync: (values) => {
+    //     console.log(values,22)
+    //     value.value = values
+    //   },
+    // }
+    // call(bindButtonGroup, buttonProvider)
+    console.log(boxShadow.value, 111)
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
         pending.value = true
@@ -98,6 +111,7 @@ export default defineComponent({
       n,
       classes,
       pending,
+      boxShadow,
       handleClick,
       handleTouchstart,
     }
