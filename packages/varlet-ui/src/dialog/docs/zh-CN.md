@@ -211,6 +211,7 @@ const show = ref(false)
 | --- | --- | --- | --- |
 | `v-model:show` | 是否显示对话框 | _boolean_ | `false` |
 | `title` | 对话框标题 | _string_ | `提示` |
+| `width` | 对话框宽度 | _string \| number_ | `-` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `message-align` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirm-button` | 是否显示确认按钮 | _boolean_ | `true` |
@@ -243,6 +244,15 @@ const show = ref(false)
 | `cancel` | 取消时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
 
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `Dialog` | 显示对话框 | _options \| string_ | `-` |
+| `Dialog.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `Dialog.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+| `Dialog.close` | 关闭对话框 | _-_ | `-` |
+
 ### Dialog Options
 
 #### 函数式调用时传入的选项
@@ -250,6 +260,7 @@ const show = ref(false)
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `title` | 对话框标题 | _string_ | `提示` |
+| `width` | 对话框宽度 | _string \| number | `-` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `messageAlign` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | 是否显示确认按钮 | _boolean_ | `true` |
