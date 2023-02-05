@@ -43,7 +43,7 @@ export type UserDialogOptions = DialogOptions | string
 let singletonOptions: DialogOptions | null
 let defaultOptions: DialogOptions = {}
 
-function mergeOptions(options: UserDialogOptions) {
+function normalizeOptions(options: UserDialogOptions) {
   if (isString(options)) {
     return { ...defaultOptions, message: options }
   }
@@ -59,7 +59,7 @@ function Dialog(options: UserDialogOptions): Promise<DialogActions | void> {
   return new Promise((resolve) => {
     Dialog.close()
 
-    const dialogOptions: DialogOptions = mergeOptions(options)
+    const dialogOptions: DialogOptions = normalizeOptions(options)
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
     reactiveDialogOptions.teleport = 'body'
     singletonOptions = reactiveDialogOptions
