@@ -419,6 +419,11 @@ iframe {
         }
       }
 
+      strong {
+        font-size: 12px;
+        font-weight: normal;
+      }
+
       .card {
         border-radius: 4px;
         background: var(--site-config-color-bar);
