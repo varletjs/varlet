@@ -43,7 +43,7 @@ export type UserDialogOptions = DialogOptions | string
 let singletonOptions: DialogOptions | null
 let defaultOptions: DialogOptions = {}
 
-function normalizeOptions(options: UserDialogOptions) {
+function normalizeOptions(options: UserDialogOptions = {}) {
   if (isString(options)) {
     return { ...defaultOptions, message: options }
   }
@@ -51,7 +51,7 @@ function normalizeOptions(options: UserDialogOptions) {
   return { ...defaultOptions, ...options }
 }
 
-function Dialog(options: UserDialogOptions): Promise<DialogActions | void> {
+function Dialog(options?: UserDialogOptions): Promise<DialogActions | void> {
   if (!inBrowser()) {
     return Promise.resolve()
   }

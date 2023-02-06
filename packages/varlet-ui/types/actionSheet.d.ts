@@ -33,8 +33,7 @@ export interface ActionItem {
 }
 
 export interface ActionSheetOptions {
-  actions: ActionItem[]
-  show?: boolean
+  actions?: ActionItem[]
   title?: string
   overlay?: boolean
   overlayClass?: string
@@ -63,8 +62,13 @@ export class ActionSheetComponent extends VarComponent {
 export type ActionSheetActions = ActionItem | 'close'
 
 export interface IActionSheet {
-  (options: ActionSheetOptions): Promise<ActionSheetActions>
+  (options?: ActionSheetOptions): Promise<ActionSheetActions>
+
   Component: typeof ActionSheetComponent
+
+  setDefaultOptions(options: ActionSheetOptions): void
+
+  resetDefaultOptions(): void
 
   close(): void
 

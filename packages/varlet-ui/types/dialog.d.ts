@@ -80,7 +80,7 @@ export interface DialogOptions {
 }
 
 export interface IDialog {
-  (options: DialogOptions | string): Promise<DialogActions>
+  (options?: DialogOptions | string): Promise<DialogActions>
 
   Component: typeof DialogComponent
 
