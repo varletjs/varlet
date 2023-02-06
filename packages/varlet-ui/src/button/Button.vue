@@ -5,10 +5,14 @@
       classes(
         n(),
         n('$--box'),
-        n(`--${size}`),
+        n(`--${buttonSize}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
-        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} ${n(`$-elevation--${boxShadow ? 0 : 2}`)}`],
+        [
+          text,
+          `${n(`--text-${buttonType}`)} ${n('--text')}`,
+          `${n(`--${buttonType}`)} ${n(`$-elevation--${boxShadow ? 0 : 2}`)}`,
+        ],
         [text && disabled, n('--text-disabled')],
         [round, n('--round')],
         [outline, n('--outline')]
@@ -60,9 +64,10 @@ export default defineComponent({
   setup(props) {
     const pending: Ref<boolean> = ref(false)
     const { buttonGroup, bindButtonGroup } = useButtonGroup()
-    const boxShadow = computed(() => {
-      return buttonGroup ? buttonGroup.boxShadow.value : false
-    })
+    const boxShadow = buttonGroup ? buttonGroup.boxShadow.value : false
+    const buttonType = props.type ? props.type : buttonGroup ? buttonGroup.type.value : 'default'
+    const buttonSize = props.size ? props.size : buttonGroup ? buttonGroup.size.value : 'normal'
+
     // const buttonProvider: ButtonProvider = {
     //   sync: (values) => {
     //     console.log(values,22)
@@ -70,7 +75,6 @@ export default defineComponent({
     //   },
     // }
     // call(bindButtonGroup, buttonProvider)
-    console.log(boxShadow.value, 111)
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
         pending.value = true
@@ -112,6 +116,8 @@ export default defineComponent({
       classes,
       pending,
       boxShadow,
+      buttonType,
+      buttonSize,
       handleClick,
       handleTouchstart,
     }

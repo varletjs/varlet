@@ -17,7 +17,7 @@ function nativeTypeValidator(nativeType: string): boolean {
 export const props = {
   type: {
     type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
-    default: 'default',
+    default: '',
     validator: typeValidator,
   },
   nativeType: {
@@ -27,7 +27,7 @@ export const props = {
   },
   size: {
     type: String as PropType<'normal' | 'mini' | 'small' | 'large'>,
-    default: 'normal',
+    default: '',
     validator: sizeValidator,
   },
   loading: {

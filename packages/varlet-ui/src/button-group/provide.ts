@@ -4,6 +4,8 @@ import { ButtonProvider } from '../button/provide'
 
 export interface ButtonGroupProvider {
   boxShadow: ComputedRef<boolean>
+  type: ComputedRef<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>
+  size: ComputedRef<'normal' | 'mini' | 'small' | 'large'>
 }
 
 export const BUTTON_GROUP_BIND_BUTTON_KEY = Symbol('BUTTON_GROUP_BIND_BUTTON_KEY')

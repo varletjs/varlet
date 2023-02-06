@@ -19,12 +19,16 @@ export default defineComponent({
   setup(props) {
     const { length, buttons, bindButtons } = useButtons()
     const boxShadow: ComputedRef<boolean> = computed(() => props.boxShadow)
+    const type = computed(() => props.type)
+    const size = computed(() => props.size)
     // const syncButtons = () => buttons.forEach(({ sync }) => sync(props.boxShadow))
     //
     // watch(() => props.boxShadow, syncButtons)
 
     const buttonGroupProvider: ButtonGroupProvider = {
       boxShadow,
+      type,
+      size,
     }
 
     bindButtons(buttonGroupProvider)

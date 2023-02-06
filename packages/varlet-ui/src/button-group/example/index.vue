@@ -18,9 +18,9 @@ watchLang(use)
     <var-button type="info">信息按钮</var-button>
   </var-button-group>
 
-  <var-button-group>
-    <var-button>默认按钮</var-button>
-    <var-button type="primary">主要按钮</var-button>
-    <var-button type="info">信息按钮</var-button>
+  <var-button-group type="danger" size="small">
+    <var-button type="default">默认按钮</var-button>
+    <var-button size="large">主要按钮</var-button>
+    <var-button>信息按钮</var-button>
   </var-button-group>
 </template>
