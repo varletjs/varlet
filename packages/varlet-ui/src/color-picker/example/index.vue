@@ -22,9 +22,7 @@ const modes = ['rgba', 'hsla', 'hex']
   <app-type>{{ pack.modes }}</app-type>
   <var-color-picker v-model="color" />
   <var-select placeholder="请选择一个Mode" v-model="value">
-    <var-option label="hsla" />
-    <var-option label="rgba" />
-    <var-option label="hexa" />
+    <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
   <app-type>{{ pack.model }}</app-type>
   <var-color-picker v-model="color" disabled />
