@@ -2,7 +2,7 @@
 
 ### Props
 
-| 参数              | 说明      | 类型 | 默认值 |
+| Prop | Description | Type | Default | 
 |-----------------|---------| --- | -- |
-| `error-message` | 错误信息 | _string_ | `-` |
-| `extra-message` | 附加信息 | _string_ | `-` |
+| `error-message` | Error message | _string_ | `-` |
+| `extra-message` | Extra message | _string_ | `-` |
