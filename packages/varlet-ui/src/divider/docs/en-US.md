@@ -79,6 +79,7 @@ Used to separate parts of a list or layout.
 ## API
 
 ### Props
+
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
 | `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
@@ -89,6 +90,7 @@ Used to separate parts of a list or layout.
 | `margin` | Set `margin` of divider | _string_ | `-` |
 
 ### Slots
+
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Custom content of divider | `-` |

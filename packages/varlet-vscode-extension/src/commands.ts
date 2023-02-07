@@ -1,10 +1,11 @@
+import { PLAYGROUND } from './constant'
 import { commands, window, Selection, env, Uri, Range } from 'vscode'
 
 function openPlayground(wrapTemplate = false) {
   const { activeTextEditor } = window
 
   if (!activeTextEditor) {
-    env.openExternal(Uri.parse('https://varlet.gitee.io/varlet-ui-playground'))
+    env.openExternal(Uri.parse(PLAYGROUND))
     return
   }
 
@@ -12,7 +13,7 @@ function openPlayground(wrapTemplate = false) {
   let text = activeTextEditor.document.getText(range)
 
   if (!text.trim()) {
-    env.openExternal(Uri.parse('https://varlet.gitee.io/varlet-ui-playground'))
+    env.openExternal(Uri.parse(PLAYGROUND))
     return
   }
 
@@ -22,7 +23,7 @@ function openPlayground(wrapTemplate = false) {
 
   const file = { 'App.vue': text }
   const hash = btoa(unescape(encodeURIComponent(JSON.stringify(file))))
-  env.openExternal(Uri.parse(`https://varlet.gitee.io/varlet-ui-playground#${hash}`))
+  env.openExternal(Uri.parse(`${PLAYGROUND}#${hash}`))
 }
 
 export function registerCommands() {

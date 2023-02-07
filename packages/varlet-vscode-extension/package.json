@@ -60,7 +60,8 @@
   },
   "dependencies": {
     "@varlet/shared": "workspace:*",
-    "@varlet/icons": "workspace:*"
+    "@varlet/icons": "workspace:*",
+    "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",

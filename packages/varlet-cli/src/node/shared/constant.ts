@@ -40,13 +40,11 @@ export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')
 // template highlight
 export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/
 export const HL_API_RE = /##\s*API\n+/
-export const HL_TITLE_ATTRIBUTES_RE = /###\s*属性\s*\n+/
-export const HL_TITLE_EVENTS_RE = /###\s*事件\s*\n+/
-export const HL_TITLE_SLOTS_RE = /###\s*插槽\s*\n+/
-export const HL_MD = 'zh-CN.md'
+export const HL_TITLE_ATTRIBUTES_RE = /###\s*Props\s*\n+/
+export const HL_TITLE_EVENTS_RE = /###\s*Events\s*\n+/
+export const HL_TITLE_SLOTS_RE = /###\s*Slots\s*\n+/
+export const HL_MD = 'en-US.md'
 export const HL_DIR = resolve(CWD, 'highlight')
-export const HL_TAGS_JSON = resolve(HL_DIR, 'tags.json')
-export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
 export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
 
 // icons
