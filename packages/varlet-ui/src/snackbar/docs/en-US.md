@@ -292,6 +292,8 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `Snackbar.loading` | Show loading snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.clear` | Close snackbar | _-_ | `-` |
 | `Snackbar.allowMultiple` | Whether to allow multi instance patterns | _boolean_ | `-` |
+| `Snackbar.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `Snackbar.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### Snackbar Options
 

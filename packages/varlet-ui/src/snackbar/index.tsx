@@ -1,11 +1,11 @@
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
+import type { App, Component, TeleportProps } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
 import { call, mountInstance } from '../utils/components'
 import { isNumber, isPlainObject, isString, toNumber } from '@varlet/shared'
-import type { LoadingType, LoadingSize } from '../loading/props'
-import type { App, Component, TeleportProps } from 'vue'
+import type { LoadingSize, LoadingType } from '../loading/props'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -43,7 +43,7 @@ interface UniqSnackbarOptions {
 }
 
 interface Snackbar {
-  (options: SnackbarOptions | string): SnackbarHandel
+  (options?: SnackbarOptions | string | number): SnackbarHandel
 
   install(app: App): void
 
@@ -61,6 +61,10 @@ interface Snackbar {
 
   clear(): void
 
+  setDefaultOptions(options: SnackbarOptions): void
+
+  resetDefaultOptions(): void
+
   Component: Component
 }
 
@@ -68,9 +72,7 @@ let sid = 0
 let isMount = false
 let unmount: () => void
 let isAllowMultiple = false
-let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
-
-const defaultOption: Partial<Record<keyof SnackbarOptions, any>> = {
+const defaultOptionsValue: SnackbarOptions = {
   type: undefined,
   content: '',
   position: 'top',
@@ -87,6 +89,9 @@ const defaultOption: Partial<Record<keyof SnackbarOptions, any>> = {
   onClose: () => {},
   onClosed: () => {},
 }
+let uniqSnackbarOptions: Array<UniqSnackbarOptions> = reactive<UniqSnackbarOptions[]>([])
+
+let defaultOptions: SnackbarOptions = defaultOptionsValue
 
 const transitionGroupProps: any = {
   name: 'var-snackbar-fade',
@@ -142,10 +147,10 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = function (options: SnackbarOptions | string | number): SnackbarHandel {
-  const snackOptions: SnackbarOptions = isString(options) || isNumber(options) ? { content: String(options) } : options
+const Snackbar: Snackbar = function (options?: SnackbarOptions | string | number): SnackbarHandel {
+  const snackOptions: SnackbarOptions = normalizeOptions(options)
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
-    ...defaultOption,
+    ...defaultOptions,
     ...snackOptions,
   })
   reactiveSnackOptions.show = true
@@ -213,6 +218,14 @@ Snackbar.clear = function () {
   })
 }
 
+Snackbar.setDefaultOptions = function (options: SnackbarOptions) {
+  defaultOptions = options
+}
+
+Snackbar.resetDefaultOptions = function () {
+  defaultOptions = defaultOptionsValue
+}
+
 Snackbar.Component = VarSnackbar
 
 function opened(element: HTMLElement): void {
@@ -244,6 +257,10 @@ function removeUniqOption(element: HTMLElement): void {
 
 function addUniqOption(uniqSnackbarOptionItem: UniqSnackbarOptions) {
   uniqSnackbarOptions.push(uniqSnackbarOptionItem)
+}
+
+function normalizeOptions(options = {}): SnackbarOptions {
+  return isString(options) || isNumber(options) ? { content: String(options) } : options
 }
 
 function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string) {

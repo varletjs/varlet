@@ -290,6 +290,8 @@ function openMultiple() {
 | `Snackbar.loading` | 显示加载消息条 | _options \| string_ | `snackbar 实例` |
 | `Snackbar.clear` | 关闭消息条 | _-_ | `-` |
 | `Snackbar.allowMultiple` | 是否允许多例模式 | _boolean_ | `-` |
+| `Snackbar.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `Snackbar.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 
 ### Snackbar Options
 
