@@ -1,21 +1,6 @@
 :root {
   --input-input-height: 24px;
-  --input-input-text-color: #555;
-  --input-error-color: var(--color-danger);
-  --input-blur-color: #888;
-  --input-focus-color: var(--color-primary);
-  --input-placeholder-size: 16px;
   --input-textarea-height: auto;
-  --input-textarea-padding-top: 8px;
-  --input-input-padding-top: 16px;
-  --input-input-padding-bottom: 16px;
-  --input-input-padding-left: 14px;
-  --input-input-padding-right: 14px;
-  --input-icon-padding: 20px 0 0;
-  --input-icon-size: 20px;
-  --input-line-size: 1px;
-  --input-line-focus-size: 2px;
-  --input-disabled-color: var(--color-text-disabled);
 }
 
 .var {
@@ -32,49 +17,6 @@
 }
 
 .var-input {
-  width: 100%;
-  color: var(--input-input-text-color);
-
-  &__controller {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  &__wrap {
-    position: relative;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__icon {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-  }
-
-  &__placeholder {
-    max-width: 100%;
-    position: absolute;
-    font-size: var(--input-placeholder-size);
-    color: var(--input-blur-color);
-    line-height: 1em;
-    cursor: inherit;
-  }
-
-  &__textarea-placeholder {
-    position: absolute;
-    left: 0;
-    max-width: 100%;
-    transform-origin: left;
-    font-size: var(--input-placeholder-size);
-    line-height: 1em;
-    color: var(--input-blur-color);
-    cursor: inherit;
-  }
-
   &__autocomplete {
     width: 0;
     height: 0;
@@ -91,250 +33,22 @@
     outline: none;
     border: none;
     background: transparent;
-    color: var(--input-input-text-color);
+    color: var(--input-box-input-text-color);
     caret-color: var(--input-focus-color);
     transition: color 0.25s;
     font: inherit;
-  }
-
-  &__clear-icon[var-input-cover] {
-    display: flex;
-    margin-left: 4px;
   }
 
   &--textarea {
     height: var(--input-textarea-height);
   }
 
-  &--non-hint {
-    padding-top: 0;
-  }
-
-  &--placeholder-hidden {
-    visibility: hidden;
-  }
-
-  &--focus {
-    color: var(--input-focus-color);
-  }
-
   &--disabled {
-    color: var(--input-disabled-color);
+    color: var(--input-box-disabled-color);
     cursor: not-allowed;
   }
 
-  &--error {
-    color: var(--input-error-color);
-  }
-
   &--caret-error {
-    caret-color: var(--input-error-color);
-  }
-
-  &--standard {
-    --input-input-padding-top: 20px;
-    --input-input-padding-bottom: 4px;
-
-    .var-input__wrap {
-      padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom);
-    }
-
-    .var-input--wrap-non-hint {
-      padding: 4px 0;
-    }
-
-    .var-input__icon {
-      padding: var(--input-icon-padding);
-    }
-
-    .var-input__placeholder {
-      top: 50%;
-      left: 0;
-      transform-origin: left;
-      transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
-      transform: translate(0, 0) scale(1);
-    }
-
-    .var-input--textarea {
-      padding-top: var(--input-textarea-padding-top);
-    }
-
-    .var-input__textarea-placeholder {
-      top: 0;
-      transform: translate(0, calc(var(--input-textarea-padding-top) + var(--input-placeholder-size))) scale(1);
-      transition: transform 0.3s, width 0.3s, color 0.25s;
-    }
-
-    .var-input--placeholder-hint {
-      top: 0;
-      transform: translate(0, 0) scale(0.75);
-    }
-
-    .var-input--placeholder-non-hint {
-      transform: translate(0, -50%);
-    }
-
-    .var-input__line {
-      width: 100%;
-      height: var(--input-line-size);
-      background: var(--input-blur-color);
-      transition: background-color 0.25s;
-    }
-
-    .var-input--line-disabled {
-      background: var(--input-disabled-color);
-    }
-
-    .var-input__dot {
-      width: 100%;
-      height: var(--input-line-focus-size);
-      background: var(--input-focus-color);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
-    }
-
-    .var-input--line-focus {
-      transform: scaleX(1);
-    }
-
-    .var-input--line-error {
-      background: var(--input-error-color);
-    }
-  }
-
-  &--outlined {
-    .var-input__controller {
-      padding: 0 var(--input-input-padding-right) 0 var(--input-input-padding-left);
-      cursor: text;
-    }
-    .var-input__wrap {
-      padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom) 0;
-    }
-
-    .var-input__placeholder {
-      top: 50%;
-      transform-origin: left;
-      transition: top 0.3s, transform 0.3s, width 0.3s, margin 0.3s, color 0.25s;
-      transform: translateY(-50%);
-    }
-
-    .var-input__textarea-placeholder {
-      top: var(--input-input-padding-top);
-      transform: scale(1);
-      transition: top 0.3s, transform 0.3s, width 0.3s, margin 0.3s, color 0.25s;
-    }
-
-    .var-input--placeholder-hint {
-      margin: 0 2px;
-      top: 0;
-      transform: translateY(-50%) scale(0.75);
-    }
-
-    .var-input__line {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      pointer-events: none;
-
-      &__start {
-        flex: 0 0 12px;
-        height: 100%;
-        border-radius: 4px 0 0 4px;
-        border: 0 solid var(--input-blur-color);
-        border-top-width: var(--input-line-size);
-        border-bottom-width: var(--input-line-size);
-        border-inline-start-width: var(--input-line-size);
-        transition: border 0.2s;
-      }
-
-      &__notch {
-        max-width: 100%;
-        height: 100%;
-        font: inherit;
-        border: 0 solid var(--input-blur-color);
-        border-top-width: var(--input-line-size);
-        border-bottom-width: var(--input-line-size);
-        transition: border 0.2s;
-      }
-
-      &__notch--hint {
-        border-top-width: 0 !important;
-      }
-
-      &__placeholder {
-        visibility: hidden;
-        font-size: 0.75em;
-        margin: 0 4px;
-      }
-
-      &__end {
-        flex: 1;
-        height: 100%;
-        border-radius: 0 4px 4px 0;
-        border: 0 solid var(--input-blur-color);
-        border-top-width: var(--input-line-size);
-        border-bottom-width: var(--input-line-size);
-        border-inline-end-width: var(--input-line-size);
-        transition: border 0.2s;
-      }
-    }
-
-    .var-input--line-focus {
-      .var-input__line__start {
-        border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-focus-size);
-        border-bottom-width: var(--input-line-focus-size);
-        border-inline-start-width: var(--input-line-focus-size);
-      }
-
-      .var-input__line__notch {
-        border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-focus-size);
-        border-bottom-width: var(--input-line-focus-size);
-      }
-
-      .var-input__line__end {
-        border: 0 solid var(--input-focus-color);
-        border-top-width: var(--input-line-focus-size);
-        border-bottom-width: var(--input-line-focus-size);
-        border-inline-end-width: var(--input-line-focus-size);
-      }
-    }
-
-    .var-input--line-disabled {
-      border-radius: 4px;
-      border: var(--input-line-size) solid var(--input-disabled-color);
-    }
-
-    .var-input--line-error {
-      border-color: var(--input-error-color) !important;
-    }
-  }
-
-  &--small {
-    .var-input--standard& {
-      --input-input-padding-top: 16px;
-      --input-icon-padding: 16px 0 0;
-
-      .var-input__wrap {
-        padding: var(--input-input-padding-top) 0 var(--input-input-padding-bottom);
-      }
-    }
-
-    .var-input--outlined& {
-      --input-input-padding-top: 8px;
-      --input-input-padding-bottom: 8px;
-      --input-input-padding-left: 12px;
-      --input-input-padding-right: 12px;
-
-      .var-input--placeholder-hint {
-        margin: 0 4px;
-      }
-    }
+    caret-color: var(--input-box-error-color);
   }
 }

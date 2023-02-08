@@ -42,10 +42,18 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-select :placeholder="pack.placeholder" v-model="value">
-    <var-option :label="pack.eat" />
-    <var-option :label="pack.sleep" />
-  </var-select>
+  <div class="pb">
+    <var-select :placeholder="pack.placeholder" v-model="value">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
+  <div class="pb">
+    <var-select :placeholder="pack.placeholder" v-model="value" variant="outlined">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
 
   <app-type>{{ pack.plainMode }}</app-type>
   <var-select :hint="false" :line="false" :placeholder="pack.placeholder" v-model="value2">
@@ -167,5 +175,9 @@ watchDarkMode(dark)
 
 .arrow-icon-rotate {
   transform: rotate(180deg);
+}
+
+.pb {
+  padding-bottom: 10px;
 }
 </style>
