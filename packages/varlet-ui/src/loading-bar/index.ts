@@ -23,18 +23,38 @@ interface LoadingBar {
   finish(): void
 
   error(): void
+
+  setDefaultOptions(options: LoadingBarOptions): void
+
+  resetDefaultOptions(): void
 }
 
 let timer: number
 let isMount: boolean
-const props: LoadingBarOptions & InternalProps = reactive({
+let setOptions: LoadingBarOptions = {}
+
+const internalProps: InternalProps = {
   value: 0,
   opacity: 0,
   error: false,
-})
+}
+const props: LoadingBarOptions & InternalProps = reactive(internalProps)
 
 const mergeConfig = (options: LoadingBarOptions) => {
   Object.assign(props, options)
+}
+
+const setDefaultOptions = (options: LoadingBarOptions) => {
+  Object.assign(props, options)
+  setOptions = options
+}
+
+const resetDefaultOptions = () => {
+  Object.keys(setOptions).forEach((key) => {
+    if (props[key as keyof LoadingBarOptions] !== undefined) {
+      props[key as keyof LoadingBarOptions] = undefined
+    }
+  })
 }
 
 const changeValue = () => {
@@ -91,7 +111,10 @@ const LoadingBar: LoadingBar = {
   start,
   finish,
   error,
+  /** @deprecated Use setDefaultOptions to instead. */
   mergeConfig,
+  setDefaultOptions,
+  resetDefaultOptions,
 }
 
 export { props as loadingBarProps } from './props'
