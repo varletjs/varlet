@@ -28,7 +28,7 @@ function setStyle() {
 }
 
 // mobile only
-// LoadingBar.mergeConfig({
+// LoadingBar.setDefaultOptions({
 //   top: '48px'
 // })
 </script>
@@ -51,7 +51,6 @@ function setStyle() {
 
 | Method | Description | Arguments | Return |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | Set default option configuration(Deprecated and use setDefaultOptions to instead) | _options: Options_ | `-`  |
 | `LoadingBar.start`  | Start loading  | `-` | `-` |
 | `LoadingBar.finish` | Finish loading  | `-` | `-` |
 | `LoadingBar.error`  | Loading error  | `-` | `-` |

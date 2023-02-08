@@ -147,7 +147,7 @@ const TransitionGroupHost = {
   },
 }
 
-const Snackbar: Snackbar = function (options?: SnackbarOptions | string | number): SnackbarHandel {
+const Snackbar: Snackbar = function (options?: SnackbarOptions | string): SnackbarHandel {
   const snackOptions: SnackbarOptions = normalizeOptions(options)
   const reactiveSnackOptions: SnackbarOptions = reactive<SnackbarOptions>({
     ...defaultOptions,
@@ -260,7 +260,7 @@ function addUniqOption(uniqSnackbarOptionItem: UniqSnackbarOptions) {
 }
 
 function normalizeOptions(options = {}): SnackbarOptions {
-  return isString(options) || isNumber(options) ? { content: String(options) } : options
+  return isString(options) ? { content: options } : options
 }
 
 function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string) {

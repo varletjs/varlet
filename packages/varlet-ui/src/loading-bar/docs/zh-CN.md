@@ -28,7 +28,7 @@ function setStyle() {
 }
 
 // 移动端案例设置了偏移
-// LoadingBar.mergeConfig({
+// LoadingBar.setDefaultOptions({
 //   top: '48px'
 // })
 </script>
@@ -51,7 +51,6 @@ function setStyle() {
 
 | 方法名                 | 说明       | 参数 | 返回值     |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | 设置默认的选项配置（已废弃，使用`setDefaultOptions`替换） | _options: Options_ | `-`  |
 | `LoadingBar.start`  | 开始加载  | `-` | `-` |
 | `LoadingBar.finish` | 结束加载  | `-` | `-` |
 | `LoadingBar.error`  | 加载失败  | `-` | `-` |

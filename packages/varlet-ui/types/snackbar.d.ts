@@ -63,7 +63,7 @@ export interface SnackbarOptions {
 }
 
 export interface ISnackbar {
-  (options?: SnackbarOptions | string | number): SnackbarHandel
+  (options?: SnackbarOptions | string): SnackbarHandel
 
   Component: typeof SnackbarComponent
 
