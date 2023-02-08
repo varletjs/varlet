@@ -4,7 +4,7 @@ import context from '../context'
 import type { App, Component, TeleportProps } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
 import { call, mountInstance } from '../utils/components'
-import { isNumber, isPlainObject, isString, toNumber } from '@varlet/shared'
+import { isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingSize, LoadingType } from '../loading/props'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
@@ -131,12 +131,10 @@ const TransitionGroupHost = {
         )
       })
 
-      const zindex = context.zIndex // avoid stylelint value-keyword-case error
-
       return (
         <TransitionGroup
           {...transitionGroupProps}
-          style={{ zIndex: zindex }}
+          style={{ zIndex: context.zIndex }}
           onAfterEnter={opened}
           onAfterLeave={removeUniqOption}
         >
