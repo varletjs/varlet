@@ -5,13 +5,13 @@
       classes(
         n(),
         n('$--box'),
-        n(`--${buttonSize}`),
+        n(`--${getStyles.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
         [
           text,
-          `${n(`--text-${buttonType}`)} ${n('--text')}`,
-          `${n(`--${buttonType}`)} ${n(`$-elevation--${boxShadow ? 0 : 2}`)}`,
+          `${n(`--text-${getStyles.type}`)} ${n('--text')}`,
+          `${n(`--${getStyles.type}`)} ${n(`$-elevation--${getStyles.elevation}`)}`,
         ],
         [text && disabled, n('--text-disabled')],
         [round, n('--round')],
@@ -45,12 +45,14 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { computed, ComputedRef, defineComponent, ref, type Ref } from 'vue'
+import { computed, ComputedRef, defineComponent, reactive, ref, type Ref, unref } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
 import type { ButtonProvider } from './provide'
+
+type InitStyles<objType extends Record<string, unknown>> = Array<Extract<keyof objType, string>>
 
 const { n, classes } = createNamespace('button')
 
@@ -64,9 +66,44 @@ export default defineComponent({
   setup(props) {
     const pending: Ref<boolean> = ref(false)
     const { buttonGroup, bindButtonGroup } = useButtonGroup()
-    const boxShadow = buttonGroup ? buttonGroup.boxShadow.value : false
-    const buttonType = props.type ? props.type : buttonGroup ? buttonGroup.type.value : 'default'
-    const buttonSize = props.size ? props.size : buttonGroup ? buttonGroup.size.value : 'normal'
+    const getStyles = computed(() => {
+      const styles = {
+        elevation: 0,
+        type: 'default',
+        size: 'normal',
+      }
+      ;(Object.keys(styles) as InitStyles<typeof styles>).map((key) => {
+        // if (buttonGroup) {
+        //   styles[key] = unref(buttonGroup[key])
+        // }
+        // if(props[key]) {
+        //   styles[key] = props[key]
+        // }
+        return {}
+      })
+
+      // if (buttonGroup) {
+      // const { elevation, size, type } = buttonGroup
+      // styles.elevation = unref(elevation)
+      // if(buttonGroup.elevation) {
+      //   styles.elevation = buttonGroup.elevation?.value
+      // }
+      // if (buttonGroup.type) {
+      //   styles.type = buttonGroup.type
+      // }
+      // if (buttonGroup.size) {
+      //   styles.size = buttonGroup.size
+      // }
+      // }
+      // if (props.type) {
+      //   styles.type = props.type
+      // }
+      // if (props.size) {
+      //   styles.size = props.size
+      // }
+      console.log(styles)
+      return styles
+    })
 
     // const buttonProvider: ButtonProvider = {
     //   sync: (values) => {
@@ -115,9 +152,7 @@ export default defineComponent({
       n,
       classes,
       pending,
-      boxShadow,
-      buttonType,
-      buttonSize,
+      getStyles,
       handleClick,
       handleTouchstart,
     }

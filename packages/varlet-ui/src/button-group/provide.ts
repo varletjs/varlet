@@ -3,9 +3,37 @@ import { useAtChildrenCounter, useChildren } from '../utils/components'
 import { ButtonProvider } from '../button/provide'
 
 export interface ButtonGroupProvider {
-  boxShadow: ComputedRef<boolean>
-  type: ComputedRef<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>
-  size: ComputedRef<'normal' | 'mini' | 'small' | 'large'>
+  elevation?:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18
+    | 19
+    | 20
+    | 21
+    | 22
+    | 23
+    | 24
+  type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+  size?: 'normal' | 'mini' | 'small' | 'large'
+  color?: ComputedRef<string>
+  mode?: ComputedRef<'text' | 'outline'>
+  vertical?: ComputedRef<boolean>
 }
 
 export const BUTTON_GROUP_BIND_BUTTON_KEY = Symbol('BUTTON_GROUP_BIND_BUTTON_KEY')

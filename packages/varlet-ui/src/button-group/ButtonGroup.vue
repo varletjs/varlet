@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), n('$-elevation--2'))">
+  <div :class="classes(n(), n(`$-elevation--${elevation}`))">
     <slot />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
   props,
   setup(props) {
     const { length, buttons, bindButtons } = useButtons()
-    const boxShadow: ComputedRef<boolean> = computed(() => props.boxShadow)
+    const elevation = computed(() => props.elevation)
     const type = computed(() => props.type)
     const size = computed(() => props.size)
     // const syncButtons = () => buttons.forEach(({ sync }) => sync(props.boxShadow))
@@ -26,7 +26,7 @@ export default defineComponent({
     // watch(() => props.boxShadow, syncButtons)
 
     const buttonGroupProvider: ButtonGroupProvider = {
-      boxShadow,
+      elevation,
       type,
       size,
     }
