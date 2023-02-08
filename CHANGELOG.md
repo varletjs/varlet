@@ -1,3 +1,27 @@
+## [2.7.4](https://github.com/varletjs/varlet/compare/v2.7.3...v2.7.4) (2023-02-08)
+
+
+### Bug Fixes
+
+* **countdown:** replace Date to performance ([b54f31c](https://github.com/varletjs/varlet/commit/b54f31c2dbd8d089da6063926982f53b20adf326))
+* fix docs ([7b44984](https://github.com/varletjs/varlet/commit/7b449848e73bf9aaf09f9165a01a2efbada5689c))
+* **ui/input:** fix input overflow ([6370f62](https://github.com/varletjs/varlet/commit/6370f62cd09d8c2946165a2e704bf301d11d020a))
+* **ui/select:** fix select overflow ([879cdb1](https://github.com/varletjs/varlet/commit/879cdb111fd924b6a695d3baa6c16f82addba371))
+
+
+### Features
+
+* **extension:** support playground in editor context menu ([43852fb](https://github.com/varletjs/varlet/commit/43852fba2eea39355e2f3302f4e834aa41c96527))
+* **extension:** support props and events completions ([13198c5](https://github.com/varletjs/varlet/commit/13198c5de38bcff03d0ca147440b994aa42adb2f))
+* **extension:** support zh-CN and en-US toggle ([92abb5e](https://github.com/varletjs/varlet/commit/92abb5ea49c237b9f6fd335a8026f5d501266f73))
+* **loading-bar:** support setDefaultOptions and resetDefaultOptions ([8215585](https://github.com/varletjs/varlet/commit/82155853d030e00927c343f899e0aded299d329b))
+* **snackbar:** support setDefaultOptions and resetDefaultOptions ([e13c6a2](https://github.com/varletjs/varlet/commit/e13c6a29d46bab62b6034c7b038f0b75d103bba4))
+* **ui/action-sheet:** support setDefaultOptions and resetDefaultOptions ([92517c9](https://github.com/varletjs/varlet/commit/92517c9387db6da058b72759eeeb7f1f7fb2d262))
+* **ui/dialog:** support setDefaultOptions and resetDefaultOptions and close [#830](https://github.com/varletjs/varlet/issues/830) ([c0cd14e](https://github.com/varletjs/varlet/commit/c0cd14ea4aacf1fa41a06cae32bf8d2b1999d8f8))
+* **ui/uploader:** support closePreview and chooseFile and close [#843](https://github.com/varletjs/varlet/issues/843) ([7a86662](https://github.com/varletjs/varlet/commit/7a8666288000b3df8173ee5b068fe4688a71c768))
+
+
+
 ## [2.7.3](https://github.com/varletjs/varlet/compare/v2.7.2...v2.7.3) (2023-02-01)
 
 
