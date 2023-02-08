@@ -37,7 +37,18 @@
           "when": "editorHasSelection"
         }
       ]
-    }
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Varlet Extension Configuration",
+      "properties": {
+          "varlet.useChineseLanguage": {
+              "type": "boolean",
+              "default": false,
+              "description": "Use chinese language"
+          }
+      }
+  }
   },
   "activationEvents": [
     "onLanguage:vue",

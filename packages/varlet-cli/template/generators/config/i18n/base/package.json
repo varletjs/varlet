@@ -5,11 +5,7 @@
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
   "typings": "types/index.d.ts",
-  "vetur": {
-    "tags": "highlight/tags.json",
-    "attributes": "highlight/attributes.json"
-  },
-  "web-types": "highlight/web-types.json",
+  "web-types": "highlight/web-types.en-US.json",
   "keywords": [
     "Vue",
     "UI"

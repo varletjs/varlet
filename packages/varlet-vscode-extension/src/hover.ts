@@ -1,7 +1,8 @@
 import { bigCamelize, kebabCase } from '@varlet/shared'
 import { languages, Position, Hover, type TextDocument, type ExtensionContext } from 'vscode'
-import { componentMap } from './componentMap'
-import { TAG_BIG_CAMELIZE_RE, DOCUMENTATION, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
+import { componentsMap } from './componentsMap'
+import { TAG_BIG_CAMELIZE_RE, DOCUMENTATION_EN, DOCUMENTATION_ZH, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
+import { getLanguage } from './env'
 
 export function registerHover(context: ExtensionContext) {
   function provideHover(document: TextDocument, position: Position) {
@@ -12,12 +13,16 @@ export function registerHover(context: ExtensionContext) {
 
     if (components.length) {
       const contents = components
-        .filter((component) => componentMap[component])
+        .filter((component) => componentsMap[component])
         .map((component) => {
-          const { path } = componentMap[component]
-          const text = `Watch ${bigCamelize(component)} component documentation`
+          const { path } = componentsMap[component]
+          const language = getLanguage()
+          const name = bigCamelize(component)
 
-          return `[Varlet -> ${text}](${DOCUMENTATION}${path})`
+          const text = language === 'en-US' ? `Watch ${name} component documentation` : `查阅 ${name} 组件的官方文档`
+          const documentation = language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH
+
+          return `[Varlet -> ${text}](${documentation}${path})`
         })
       return new Hover(contents)
     }

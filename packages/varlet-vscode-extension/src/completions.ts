@@ -1,3 +1,5 @@
+import enWebTypes from '@varlet/ui/highlight/web-types.en-US.json'
+import zhWebTypes from '@varlet/ui/highlight/web-types.zh-CN.json'
 import icons, { pointCodes } from '@varlet/icons'
 import {
   languages,
@@ -9,13 +11,13 @@ import {
   type ExtensionContext,
   type CompletionItemProvider,
 } from 'vscode'
-import { componentMap, type ComponentDescriptor } from './componentMap'
+import { componentsMap, type ComponentDescriptor } from './componentsMap'
 import { bigCamelize, isString, kebabCase } from '@varlet/shared'
-import { ATTR_RE, DOCUMENTATION, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
-import webTypes from '@varlet/ui/highlight/web-types.json'
+import { ATTR_RE, DOCUMENTATION_EN, DOCUMENTATION_ZH, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
+import { getLanguage } from './env'
 
 export function getWebTypesTags() {
-  return webTypes.contributions.html.tags
+  return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
 export interface AttrProviderOptions {
@@ -28,7 +30,7 @@ export function registerCompletions(context: ExtensionContext) {
     provideCompletionItems() {
       const completionItems: CompletionItem[] = []
 
-      Object.keys(componentMap).forEach((key) => {
+      Object.keys(componentsMap).forEach((key) => {
         const name = `var-${key}`
 
         completionItems.push(
@@ -42,7 +44,7 @@ export function registerCompletions(context: ExtensionContext) {
 
     resolveCompletionItem(item: CompletionItem) {
       const name = kebabCase(item.label as string).slice(4)
-      const descriptor: ComponentDescriptor = componentMap[name]
+      const descriptor: ComponentDescriptor = componentsMap[name]
 
       const attrText = descriptor.attrs ? ' ' + descriptor.attrs.join(' ') : ''
       const tagSuffix = descriptor.closeSelf ? '' : `</${item.label}>`
@@ -80,7 +82,8 @@ export function registerCompletions(context: ExtensionContext) {
     resolveCompletionItem(completionItem) {
       const id = completionItem.label
       const url = `${ICONS_STATIC}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
-      const markdownString = new MarkdownString(`[icon: ${id}](${DOCUMENTATION}/icon)
+      const documentation = getLanguage() === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH
+      const markdownString = new MarkdownString(`[icon: ${id}](${documentation}/icon)
 <p align="center"><img height="80" src="${url}"></p>
 <br>
 `)

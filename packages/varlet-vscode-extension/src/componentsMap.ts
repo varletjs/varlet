@@ -5,7 +5,7 @@ export interface ComponentDescriptor {
   closeSelf?: boolean
 }
 
-export const componentMap: Record<string, ComponentDescriptor> = {
+export const componentsMap: Record<string, ComponentDescriptor> = {
   button: {
     path: '/button',
     attrs: ['type="primary"'],

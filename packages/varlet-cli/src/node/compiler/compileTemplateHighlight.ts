@@ -1,14 +1,19 @@
 import fse from 'fs-extra'
 import {
   SRC_DIR,
-  HL_MD,
+  HL_DIR,
   HL_API_RE,
   HL_COMPONENT_NAME_RE,
-  HL_TITLE_ATTRIBUTES_RE,
-  HL_TITLE_EVENTS_RE,
-  HL_TITLE_SLOTS_RE,
-  HL_WEB_TYPES_JSON,
-  HL_DIR,
+  HL_EN_MD,
+  HL_EN_TITLE_ATTRIBUTES_RE,
+  HL_EN_TITLE_EVENTS_RE,
+  HL_EN_TITLE_SLOTS_RE,
+  HL_EN_WEB_TYPES_JSON,
+  HL_ZH_MD,
+  HL_ZH_TITLE_ATTRIBUTES_RE,
+  HL_ZH_TITLE_EVENTS_RE,
+  HL_ZH_TITLE_SLOTS_RE,
+  HL_ZH_WEB_TYPES_JSON,
 } from '../shared/constant.js'
 import { resolve } from 'path'
 import { getCliVersion, isDir, isMD } from '../shared/fsUtils.js'
@@ -19,6 +24,14 @@ const { ensureDir, readdirSync, readFileSync, writeFileSync } = fse
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
+
+export interface TemplateHighlightCompilerOptions {
+  md: string
+  json: string
+  titleAttributes: RegExp
+  titleEvents: RegExp
+  titleSlots: RegExp
+}
 
 export const replaceDot = (s: string) => s.replace(/`/g, '')
 
@@ -100,16 +113,21 @@ export function compileWebTypes(
   })
 }
 
-export function compileMD(path: string, webTypes: Record<string, any>, varletConfig: Required<VarletConfig>) {
-  if (!path.endsWith(HL_MD)) {
+export function compileMD(
+  path: string,
+  webTypes: Record<string, any>,
+  varletConfig: Required<VarletConfig>,
+  options: TemplateHighlightCompilerOptions
+) {
+  if (!path.endsWith(options.md)) {
     return
   }
 
   const md = readFileSync(path, 'utf-8')
   const componentName = path.match(HL_COMPONENT_NAME_RE)![2]
-  const attributesTable = parseTable(compileTable(md, HL_TITLE_ATTRIBUTES_RE))
-  const eventsTable = parseTable(compileTable(md, HL_TITLE_EVENTS_RE))
-  const slotsTable = parseTable(compileTable(md, HL_TITLE_SLOTS_RE))
+  const attributesTable = parseTable(compileTable(md, options.titleAttributes))
+  const eventsTable = parseTable(compileTable(md, options.titleEvents))
+  const slotsTable = parseTable(compileTable(md, options.titleSlots))
 
   const table = {
     attributesTable,
@@ -120,21 +138,23 @@ export function compileMD(path: string, webTypes: Record<string, any>, varletCon
   compileWebTypes(table, webTypes, componentName, varletConfig)
 }
 
-export function compileDir(path: string, webTypes: Record<string, any>, varletConfig: VarletConfig) {
+export function compileDir(
+  path: string,
+  webTypes: Record<string, any>,
+  varletConfig: Required<VarletConfig>,
+  options: TemplateHighlightCompilerOptions
+) {
   const dir = readdirSync(path)
 
   dir.forEach((filename) => {
     const filePath = resolve(path, filename)
 
-    isDir(filePath) && compileDir(filePath, webTypes, varletConfig)
-    isMD(filePath) && compileMD(filePath, webTypes, varletConfig)
+    isDir(filePath) && compileDir(filePath, webTypes, varletConfig, options)
+    isMD(filePath) && compileMD(filePath, webTypes, varletConfig, options)
   })
 }
 
-export async function compileTemplateHighlight() {
-  await ensureDir(HL_DIR)
-
-  const varletConfig = await getVarletConfig()
+export function compileLanguageMD(varletConfig: Required<VarletConfig>, options: TemplateHighlightCompilerOptions) {
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
@@ -148,6 +168,26 @@ export async function compileTemplateHighlight() {
     },
   }
 
-  compileDir(SRC_DIR, webTypes, varletConfig)
-  writeFileSync(HL_WEB_TYPES_JSON, JSON.stringify(webTypes, null, 2))
+  compileDir(SRC_DIR, webTypes, varletConfig, options)
+  writeFileSync(options.json, JSON.stringify(webTypes, null, 2))
+}
+
+export async function compileTemplateHighlight() {
+  await ensureDir(HL_DIR)
+  const varletConfig = await getVarletConfig()
+
+  compileLanguageMD(varletConfig, {
+    md: HL_EN_MD,
+    json: HL_EN_WEB_TYPES_JSON,
+    titleAttributes: HL_EN_TITLE_ATTRIBUTES_RE,
+    titleEvents: HL_EN_TITLE_EVENTS_RE,
+    titleSlots: HL_EN_TITLE_SLOTS_RE,
+  })
+  compileLanguageMD(varletConfig, {
+    md: HL_ZH_MD,
+    json: HL_ZH_WEB_TYPES_JSON,
+    titleAttributes: HL_ZH_TITLE_ATTRIBUTES_RE,
+    titleEvents: HL_ZH_TITLE_EVENTS_RE,
+    titleSlots: HL_ZH_TITLE_SLOTS_RE,
+  })
 }
