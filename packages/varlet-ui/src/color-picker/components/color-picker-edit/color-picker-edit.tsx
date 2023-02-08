@@ -25,10 +25,10 @@ export default defineComponent({
           disabled: props.disabled,
           value: getValue(convertColor),
           onChange: (e: InputEvent) => {
-            console.log(e)
             const target = e.target as HTMLInputElement | null
+            console.log(getColor(convertColor, target.value))
             if (!target) return
-            call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
+            // call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
           },
         }
       })
