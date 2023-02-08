@@ -26,7 +26,7 @@ VsCode 插件市场搜索 [varlet-vscode-extension](https://marketplace.visualst
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
-在标签的属性输入范围按下空格、回车、属性关键字，显示属性补全提示和属性信息。
+在标签的属性输入范围按下空格或属性关键字，显示属性补全提示和属性信息。
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/3.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 

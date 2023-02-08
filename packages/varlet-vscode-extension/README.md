@@ -26,7 +26,7 @@ Moving the mouse to the component name will display the document address of the 
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
-Press space, enter, and attribute keywords in the attribute input range of the label to display attribute completion prompts and attribute information.
+Press space or attribute keywords in the attribute input range of the label to display attribute completion prompts and attribute information.
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/3.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
