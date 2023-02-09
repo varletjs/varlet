@@ -69,14 +69,15 @@ export default defineComponent({
       return classes
     }
 
-    watch([() => props.span, () => props.offset], () => {
-      row?.computePadding()
-    })
-    call(bindRow, colProvider)
-
     const handleClick = (e: Event) => {
       call(props.onClick, e)
     }
+
+    watch([() => props.span, () => props.offset], () => {
+      row?.computePadding()
+    })
+
+    call(bindRow, colProvider)
 
     return {
       n,

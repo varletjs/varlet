@@ -13,12 +13,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { defineComponent, computed, watch, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useCols } from './provide'
+import { useCols, type RowProvider } from './provide'
 import { toPxNum } from '../utils/elements'
-import type { ComputedRef } from 'vue'
-import type { RowProvider } from './provide'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('row')
@@ -39,16 +37,16 @@ export default defineComponent({
       })
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     const rowProvider: RowProvider = { computePadding }
 
     watch(() => length.value, computePadding)
     watch(() => props.gutter, computePadding)
 
     bindCols(rowProvider)
-
-    const handleClick = (e: Event) => {
-      call(props.onClick, e)
-    }
 
     return { n, classes, average, handleClick }
   },
