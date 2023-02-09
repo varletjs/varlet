@@ -6,7 +6,7 @@
       alignItems: align,
       margin: average ? `0 -${average}px` : undefined,
     }"
-    @click="onClick"
+    @click="handleClick"
   >
     <slot />
   </div>
@@ -19,7 +19,7 @@ import { useCols } from './provide'
 import { toPxNum } from '../utils/elements'
 import type { ComputedRef } from 'vue'
 import type { RowProvider } from './provide'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('row')
 
@@ -46,7 +46,11 @@ export default defineComponent({
 
     bindCols(rowProvider)
 
-    return { n, classes, average }
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
+    return { n, classes, average, handleClick }
   },
 })
 </script>

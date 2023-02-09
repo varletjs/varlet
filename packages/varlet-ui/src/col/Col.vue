@@ -18,7 +18,7 @@
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
     }"
-    @click="onClick"
+    @click="handleClick"
   >
     <slot />
   </div>
@@ -74,6 +74,10 @@ export default defineComponent({
     })
     call(bindRow, colProvider)
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     return {
       n,
       classes,
@@ -83,6 +87,7 @@ export default defineComponent({
       getSize,
       span,
       offset,
+      handleClick,
     }
   },
 })
