@@ -714,9 +714,10 @@ export function HSVtoHex(hsva: HSV): Hex {
   return RGBtoHex(HSVtoRGB(hsva))
 }
 export function HexToRGB(hex: Hex): RGB {
-  let [r, g, b, a] = chunk(hex, 2).map((c: string) => parseInt(c, 16))
+  // eslint-disable-next-line prefer-const
+  let [r, g, b, a] = chunk(hex.slice(1), 2).map((c: string) => parseInt(c, 16))
   a = a === undefined ? a : Math.round((a / 255) * 100) / 100
-
+  console.log(chunk(hex.slice(1), 2).map((c: string) => parseInt(c, 16)))
   return { r, g, b, a }
 }
 export function RGBtoHex({ r, g, b, a }: RGB): Hex {

@@ -1,7 +1,7 @@
 import { computed, defineComponent, toRefs } from 'vue'
 import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-types'
 import { call, createNamespace } from '../../../utils/components'
-import { modes as defaultModes } from '../../utils/color-utils'
+import { HexToHSV, modes as defaultModes } from '../../utils/color-utils'
 import './color-picker-edit.less'
 
 const { n, classes } = createNamespace('color-picker-edit')
@@ -13,12 +13,15 @@ export default defineComponent({
     const enabledModes = computed(() => {
       return modes.value.map((key) => ({ ...defaultModes[key], name: key }))
     })
+    console.log(enabledModes)
 
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
       if (!mode) return []
       const convertColor = color!.value ? mode.to(color!.value) : {}
       return mode.inputs?.map(({ getValue, getColor, ...inputProps }) => {
+        console.log(convertColor)
+        console.log(mode)
         return {
           ...mode.inputProps,
           ...inputProps,
@@ -26,9 +29,13 @@ export default defineComponent({
           value: getValue(convertColor),
           onChange: (e: InputEvent) => {
             const target = e.target as HTMLInputElement | null
-            console.log(getColor(convertColor, target.value))
+            // console.log(getColor(convertColor, target.value))
+            // console.log(mode.from(getColor(convertColor, target.value)))
             if (!target) return
-            // call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
+            console.log(mode.from(getColor(convertColor, target.value)))
+            console.log(getColor(convertColor, target.value))
+            console.log(HexToHSV(getColor(convertColor, target.value)))
+            call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
           },
         }
       })
