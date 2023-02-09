@@ -17,13 +17,14 @@
           color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
         }"
       >
-        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependRef">
+        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependEl">
           <slot name="prepend-icon" />
         </div>
 
         <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
           <slot />
           <div
+            ref="placeholderEl"
             :class="
               classes(
                 n('$--ellipsis'),
@@ -81,7 +82,7 @@
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
             >
-              <div :class="classes(n('line__placeholder'))">{{ placeholder }}</div>
+              <div :class="classes(n('$--ellipsis'), n('line__placeholder'))">{{ placeholder }}</div>
             </div>
             <div
               :class="classes(n('line__end'), [errorMessage, n('--line-error')])"
@@ -133,7 +134,8 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const prependRef: Ref<HTMLInputElement | null> = ref(null)
+    const prependEl: Ref<HTMLElement | null> = ref(null)
+    const placeholderEl: Ref<HTMLElement | null> = ref(null)
 
     const computePlaceholderState = () => {
       const { hint, value, isFocus } = props
@@ -158,7 +160,7 @@ export default defineComponent({
       const config = { attributes: true, subtree: true }
       observer = new MutationObserver(() => {
         console.log(1)
-        observer!.observe(prependRef.value!, config)
+        observer!.observe(prependEl.value!, config)
       })
     })
 
@@ -167,7 +169,8 @@ export default defineComponent({
     })
 
     return {
-      prependRef,
+      prependEl,
+      placeholderEl,
       computePlaceholderState,
       n,
       classes,

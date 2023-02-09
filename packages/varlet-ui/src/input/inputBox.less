@@ -58,6 +58,10 @@
     padding-top: 0;
   }
 
+  &--placeholder-hint {
+    font-size: 0.75em;
+  }
+
   &--placeholder-hidden {
     visibility: hidden;
   }
@@ -95,13 +99,13 @@
       top: 50%;
       left: 0;
       transform-origin: left;
-      transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
-      transform: translate(0, 0) scale(1);
+      transition: top 0.3s, transform 0.3s, font-size 0.3s, color 0.25s;
+      transform: translate(0, 0);
     }
 
     .var-input-box--placeholder-hint {
       top: 0;
-      transform: translate(0, 0) scale(0.75);
+      transform: translate(0, 0);
     }
 
     .var-input-box--placeholder-non-hint {
@@ -149,14 +153,14 @@
     .var-input-box__placeholder {
       top: 50%;
       transform-origin: left;
-      transition: top 0.3s, transform 0.3s, width 0.3s, margin 0.3s, color 0.25s;
+      transition: top 0.3s, transform 0.3s, font-size 0.3s, margin 0.3s, color 0.25s;
       transform: translateY(-50%);
     }
 
     .var-input-box--placeholder-hint {
       margin: 0 2px;
       top: 0;
-      transform: translateY(-50%) scale(0.75);
+      transform: translateY(-50%);
     }
 
     .var-input-box__line {
@@ -181,7 +185,7 @@
       }
 
       &__notch {
-        max-width: 100%;
+        max-width: calc(100% - 24px);
         height: 100%;
         font: inherit;
         border: 0 solid var(--input-box-blur-color);
@@ -195,6 +199,7 @@
       }
 
       &__placeholder {
+        max-width: 100%;
         visibility: hidden;
         font-size: 0.75em;
         margin: 0 4px;

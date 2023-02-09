@@ -32,7 +32,11 @@ watchDarkMode(dark)
     <var-input :placeholder="pack.placeholder" v-model="value" />
   </div>
   <div class="pb">
-    <var-input :placeholder="pack.placeholder" v-model="value" variant="outlined" />
+    <var-input
+      :placeholder="`${pack.placeholder}asnk农村萨卡哪卡锤skas买点卡可能开始查死你擦`"
+      v-model="value"
+      variant="outlined"
+    />
   </div>
 
   <app-type class="pb">{{ pack.smallSize }}</app-type>
