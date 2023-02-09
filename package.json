@@ -1,13 +1,14 @@
 {
   "private": true,
-  "version": "2.7.4",
+  "version": "2.7.5",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "lint": "varlet-cli lint",
     "changelog": "varlet-cli changelog",
-    "release": "node scripts/release.mjs"
+    "release": "node scripts/release.mjs",
+    "release:extension": "pnpm --dir ./packages/varlet-vscode-extension release"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
