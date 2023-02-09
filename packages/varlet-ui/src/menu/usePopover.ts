@@ -52,6 +52,7 @@ export function usePopover(options: UsePopoverOptions) {
   const { zIndex } = useZIndex(() => show.value, 1)
 
   let popoverInstance: Instance | null = null
+  let clickSelf = false
   let enterPopover = false
   let enterHost = false
 
@@ -116,9 +117,15 @@ export function usePopover(options: UsePopoverOptions) {
 
   const handleHostClick = () => {
     open()
+    clickSelf = true
   }
 
   const handlePopoverClose = () => {
+    if (clickSelf) {
+      clickSelf = false
+      return
+    }
+
     show.value = false
     call(options['onUpdate:show'], false)
   }
@@ -298,19 +305,20 @@ export function usePopover(options: UsePopoverOptions) {
     () => options.trigger,
     (newValue) => {
       if (newValue === 'click') {
-        document.addEventListener('click', handlePopoverClose, { capture: true })
+        document.addEventListener('click', handlePopoverClose)
       } else {
         document.removeEventListener('click', handlePopoverClose)
       }
     }
   )
+
   watch(() => options.disabled, close)
 
   onMounted(() => {
     popoverInstance = createPopper(host.value!, popover.value!, getPopperOptions())
 
     if (options.trigger === 'click') {
-      document.addEventListener('click', handlePopoverClose, { capture: true })
+      document.addEventListener('click', handlePopoverClose)
     }
   })
   onUnmounted(() => {
