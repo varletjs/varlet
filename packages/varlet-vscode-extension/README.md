@@ -1,5 +1,5 @@
 # Varlet VSCode Extension
-
+English | [中文](README.zh-CN.md)
 ### Intro
 
 For a better development experience, we built a `VSCode plugin`.
