@@ -368,7 +368,7 @@ function handleChange(_, [i1, i2, i3]) {
 | `columns` | Column content | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | title | _string_ | `Pick it` |
 | `text-key` | The attribute key of the text | _string_ | `text` |
-| `toolbar` | Whether to display the top toolbar | _string_ | `true` |
+| `toolbar` | Whether to display the top toolbar | _boolean_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `text-formatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
@@ -386,7 +386,7 @@ function handleChange(_, [i1, i2, i3]) {
 | `columns` | Column content | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | title | _string_ | `Pick it` |
 | `textKey` | The attribute key of the text | _string_ | `text` |
-| `toolbar` | Whether to display the top toolbar | _string_ | `true` |
+| `toolbar` | Whether to display the top toolbar | _boolean_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `textFormatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
