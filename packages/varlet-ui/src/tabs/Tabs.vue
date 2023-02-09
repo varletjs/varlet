@@ -120,12 +120,14 @@ export default defineComponent({
     const moveIndicator = ({ element }: TabProvider) => {
       const el = element.value
 
+      if (!el) return
+
       if (props.layoutDirection === 'horizontal') {
-        indicatorWidth.value = `${el?.offsetWidth}px`
-        indicatorX.value = `${el?.offsetLeft}px`
+        indicatorWidth.value = `${el.offsetWidth}px`
+        indicatorX.value = `${el.offsetLeft}px`
       } else {
-        indicatorHeight.value = `${el?.offsetHeight}px`
-        indicatorY.value = `${el?.offsetTop}px`
+        indicatorHeight.value = `${el.offsetHeight}px`
+        indicatorY.value = `${el.offsetTop}px`
       }
     }
 
