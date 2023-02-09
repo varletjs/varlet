@@ -216,6 +216,10 @@ export default defineComponent({
       call(props['onUpdate:floating'], false)
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     watch(
       () => props.floating,
       (value) => {
@@ -227,9 +231,6 @@ export default defineComponent({
       },
       { immediate: true }
     )
-    const handleClick = () => {
-      call(props.onClick, false)
-    }
 
     return {
       n,
