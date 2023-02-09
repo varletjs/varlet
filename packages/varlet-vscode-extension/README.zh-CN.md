@@ -1,5 +1,5 @@
 # Varlet VSCode Extension
-
+[English](README.md) | 中文
 ### 介绍
 
 为了更优秀的开发体验，我们构建了一个 `VSCode 插件`。
