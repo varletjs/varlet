@@ -1,98 +1,96 @@
 <template>
-  <var-input-box
-    v-bind="{
-      value: modelValue,
-      size,
-      variant,
-      placeholder,
-      line,
-      hint,
-      textColor,
-      focusColor,
-      blurColor,
-      isFocus,
-      errorMessage,
-      formDisabled,
-      disabled,
-      clearable,
-      onClick: handleClick,
-      onClear: handleClear,
-    }"
-  >
-    <template #prepend-icon>
-      <slot name="prepend-icon" />
-    </template>
+  <div :class="classes(n())">
+    <var-input-box
+      v-bind="{
+        value: modelValue,
+        size,
+        variant,
+        placeholder,
+        line,
+        hint,
+        textColor,
+        focusColor,
+        blurColor,
+        isFocus,
+        errorMessage,
+        formDisabled,
+        disabled,
+        clearable,
+        onClick: handleClick,
+        onClear: handleClear,
+      }"
+    >
+      <template #prepend-icon>
+        <slot name="prepend-icon" />
+      </template>
 
-    <div :class="classes(n('wrap'))" ref="wrapEl" @click="handleFocus">
-      <var-menu
-        var-select-cover
-        :class="classes(n('menu'))"
-        :offset-y="offsetY"
-        :disabled="formReadonly || readonly || formDisabled || disabled"
-        :default-style="false"
-        v-model:show="isFocus"
-        @close="handleBlur"
-      >
-        <div
-          :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
-          :style="{
-            textAlign,
-            color: textColor,
-          }"
+      <div :class="classes(n('wrap'))" ref="wrapEl" @click="handleFocus">
+        <var-menu
+          var-select-cover
+          :class="classes(n('menu'))"
+          :offset-y="offsetY"
+          :disabled="formReadonly || readonly || formDisabled || disabled"
+          :default-style="false"
+          v-model:show="isFocus"
+          @close="handleBlur"
         >
-          <div :class="n('label')">
-            <slot name="selected" v-if="!isEmptyModelValue">
-              <template v-if="multiple">
-                <div :class="n('chips')" v-if="chip">
-                  <var-chip
-                    :class="n('chip')"
-                    var-select-cover
-                    closable
-                    size="small"
-                    :type="errorMessage ? 'danger' : undefined"
-                    v-for="l in labels"
-                    :key="l"
-                    @click.stop
-                    @close="() => handleClose(l)"
-                  >
-                    {{ l }}
-                  </var-chip>
-                </div>
-                <div :class="n('values')" v-else>
-                  {{ labels.join(separator) }}
-                </div>
-              </template>
+          <div
+            :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
+            :style="{
+              textAlign,
+              color: textColor,
+            }"
+          >
+            <div :class="n('label')">
+              <slot name="selected" v-if="!isEmptyModelValue">
+                <template v-if="multiple">
+                  <div :class="n('chips')" v-if="chip">
+                    <var-chip
+                      :class="n('chip')"
+                      var-select-cover
+                      closable
+                      size="small"
+                      :type="errorMessage ? 'danger' : undefined"
+                      v-for="l in labels"
+                      :key="l"
+                      @click.stop
+                      @close="() => handleClose(l)"
+                    >
+                      {{ l }}
+                    </var-chip>
+                  </div>
+                  <div :class="n('values')" v-else>
+                    {{ labels.join(separator) }}
+                  </div>
+                </template>
 
-              <span v-else>{{ label }}</span>
+                <span v-else>{{ label }}</span>
+              </slot>
+            </div>
+
+            <slot name="arrow-icon" :focus="isFocus">
+              <var-icon
+                :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
+                var-select-cover
+                name="menu-down"
+                :transition="300"
+              />
             </slot>
           </div>
 
-          <slot name="arrow-icon" :focus="isFocus">
-            <var-icon
-              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
-              var-select-cover
-              name="menu-down"
-              :transition="300"
-            />
-          </slot>
-        </div>
-
-        <template #menu>
-          <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
-            <slot />
-          </div>
-        </template>
-      </var-menu>
-    </div>
-
-    <template #append-icon>
-      <slot name="append-icon" />
-    </template>
-
-    <template #form-details>
-      <var-form-details :error-message="errorMessage" />
-    </template>
-  </var-input-box>
+          <template #menu>
+            <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+              <slot />
+            </div>
+          </template>
+        </var-menu>
+      </div>
+      <template #append-icon>
+        <slot name="append-icon" />
+      </template>
+    </var-input-box>
+    <var-form-details :error-message="errorMessage" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -186,7 +184,7 @@ export default defineComponent({
     }
 
     const getWrapWidth = () => {
-      return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
+      return (wrapEl.value && window.getComputedStyle(wrapEl.value).width) || '0px'
     }
 
     const handleFocus = () => {

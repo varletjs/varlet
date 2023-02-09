@@ -19,8 +19,10 @@ const values = reactive({
   value9: undefined,
   value10: [],
   value11: undefined,
+  value12: undefined,
 })
-const { value, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11 } = toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12 } =
+  toRefs(values)
 
 watchLang((lang) => {
   use(lang)
@@ -35,6 +37,7 @@ watchLang((lang) => {
   values.value9 = undefined
   values.value10 = []
   values.value11 = undefined
+  values.value12 = undefined
 })
 
 watchDarkMode(dark)
@@ -50,6 +53,20 @@ watchDarkMode(dark)
   </div>
   <div class="pb">
     <var-select :placeholder="pack.placeholder" v-model="value" variant="outlined">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
+
+  <app-type>{{ pack.smallSize }}</app-type>
+  <div class="pb">
+    <var-select size="small" :placeholder="pack.placeholder" v-model="value12">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
+  <div class="pb">
+    <var-select size="small" :placeholder="pack.placeholder" v-model="value12" variant="outlined">
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />
     </var-select>
@@ -81,10 +98,18 @@ watchDarkMode(dark)
   </var-select>
 
   <app-type>{{ pack.clearable }}</app-type>
-  <var-select :placeholder="pack.placeholder" clearable v-model="value8">
-    <var-option :label="pack.eat" />
-    <var-option :label="pack.sleep" />
-  </var-select>
+  <div class="pb">
+    <var-select :placeholder="pack.placeholder" clearable v-model="value8">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
+  <div class="pb">
+    <var-select :placeholder="pack.placeholder" clearable v-model="value8" variant="outlined">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
+  </div>
 
   <app-type>{{ pack.customIcon }}</app-type>
   <var-select :placeholder="pack.placeholder" v-model="value11">

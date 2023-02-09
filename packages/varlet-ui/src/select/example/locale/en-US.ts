@@ -1,6 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   plainMode: 'Plain Mode',
+  smallSize: 'Small Size',
   disabled: 'Disabled',
   readonly: 'Readonly',
   clearable: 'Clearable',

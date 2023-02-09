@@ -1,6 +1,7 @@
 export default {
   basicUsage: '基本使用',
   plainMode: '朴素模式',
+  smallSize: '小尺寸',
   disabled: '禁用',
   readonly: '只读',
   clearable: '可清除',

@@ -113,8 +113,6 @@
         </div>
       </template>
     </label>
-
-    <slot name="form-details" />
   </div>
 </template>
 
