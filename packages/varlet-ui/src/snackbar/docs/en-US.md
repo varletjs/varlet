@@ -301,7 +301,6 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 | Option          | Description                                                                                     | Type | Default |
 |-----------------|-------------------------------------------------------------------------------------------------| -------- | ---------- |
-| `show`          | Whether to show `Snackbar`                                                                      | _boolean_ | `false` |
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |

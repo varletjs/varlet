@@ -25,7 +25,6 @@ interface SnackbarOptions {
   contentClass?: string
   duration?: number
   vertical?: boolean
-  show?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
@@ -33,6 +32,7 @@ interface SnackbarOptions {
   onClosed?: () => void
   // internal
   teleport?: TeleportProps['to']
+  show?: boolean
 }
 
 interface UniqSnackbarOptions {
@@ -43,7 +43,7 @@ interface UniqSnackbarOptions {
 }
 
 interface Snackbar {
-  (options?: SnackbarOptions | string | number): SnackbarHandel
+  (options?: SnackbarOptions | string): SnackbarHandel
 
   install(app: App): void
 

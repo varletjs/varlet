@@ -54,7 +54,6 @@ export interface SnackbarOptions {
   contentClass?: string
   duration?: number
   vertical?: boolean
-  show?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
