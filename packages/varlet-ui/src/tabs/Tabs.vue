@@ -138,9 +138,9 @@ export default defineComponent({
       const scroller: HTMLElement = scrollerEl.value as HTMLElement
       const el = element.value as HTMLElement
       const { offsetWidth: scrollWidth, offsetHeight: scrollerHeight } = scroller
-      const { offsetLeft: elLeft, offsetHeight: elTop, offsetHeight: elHeight } = el
+      const { offsetLeft: elLeft, offsetHeight: elTop, offsetWidth: elWidth, offsetHeight: elHeight } = el
       if (props.layoutDirection === 'horizontal') {
-        const left: number = elLeft + el.offsetWidth / 2 - scrollWidth / 2
+        const left: number = elLeft + elWidth / 2 - scrollWidth / 2
         scrollTo(scroller, {
           left,
           animation: linear,
