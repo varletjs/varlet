@@ -9,7 +9,7 @@ export function registerHover(context: ExtensionContext) {
     const line = document.lineAt(position)
     const linkComponents = line.text.match(TAG_LINK_RE) ?? []
     const bigCamelizeComponents = line.text.match(TAG_BIG_CAMELIZE_RE) ?? []
-    const components = [...new Set([...linkComponents, ...bigCamelizeComponents.map(kebabCase)])]
+    const components = [...new Set([...linkComponents, ...bigCamelizeComponents.map(kebabCase)])] as string[]
 
     if (components.length) {
       const contents = components
