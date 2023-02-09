@@ -205,13 +205,15 @@ export default defineComponent({
     }
 
     const findLabel = (modelValue: string | number | any[]) => {
-      let option = options.find(({ value }) => value.value === modelValue)
-
-      if (!option) {
-        option = options.find(({ label }) => label.value === modelValue)
+      let labelValue
+      for (let i = 0; i < options.length; i++) {
+        const { value, label } = options[i]
+        if (value.value === modelValue) {
+          return options[i]?.label.value ?? ''
+        }
+        if (!labelValue && label.value === modelValue) labelValue = options[i]
       }
-
-      return option?.label.value ?? ''
+      return labelValue?.label.value ?? ''
     }
 
     const computePlaceholderState = () => {

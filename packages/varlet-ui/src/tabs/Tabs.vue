@@ -119,13 +119,14 @@ export default defineComponent({
 
     const moveIndicator = ({ element }: TabProvider) => {
       const el = element.value
-
+      if (!el) return
+      const { offsetWidth, offsetLeft, offsetHeight, offsetTop } = el
       if (props.layoutDirection === 'horizontal') {
-        indicatorWidth.value = `${el?.offsetWidth}px`
-        indicatorX.value = `${el?.offsetLeft}px`
+        indicatorWidth.value = `${offsetWidth}px`
+        indicatorX.value = `${offsetLeft}px`
       } else {
-        indicatorHeight.value = `${el?.offsetHeight}px`
-        indicatorY.value = `${el?.offsetTop}px`
+        indicatorHeight.value = `${offsetHeight}px`
+        indicatorY.value = `${offsetTop}px`
       }
     }
 
@@ -136,15 +137,16 @@ export default defineComponent({
 
       const scroller: HTMLElement = scrollerEl.value as HTMLElement
       const el = element.value as HTMLElement
-
+      const { offsetWidth: scrollWidth, offsetHeight: scrollerHeight } = scroller
+      const { offsetLeft: elLeft, offsetHeight: elTop, offsetHeight: elHeight } = el
       if (props.layoutDirection === 'horizontal') {
-        const left: number = el.offsetLeft + el.offsetWidth / 2 - scroller.offsetWidth / 2
+        const left: number = elLeft + el.offsetWidth / 2 - scrollWidth / 2
         scrollTo(scroller, {
           left,
           animation: linear,
         })
       } else {
-        const top: number = el.offsetTop + el.offsetHeight / 2 - scroller.offsetHeight / 2
+        const top: number = elTop + elHeight / 2 - scrollerHeight / 2
         scrollTo(scroller, {
           top,
           animation: linear,

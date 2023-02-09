@@ -55,9 +55,11 @@ export default defineComponent({
     const getPositionClass = (): string | undefined => {
       const { position, dot } = props
 
-      if (dot && position.includes('right')) return n('dot--right')
+      if (!dot) return
 
-      if (dot && position.includes('left')) return n('dot--left')
+      if (position.includes('right')) return n('dot--right')
+
+      if (position.includes('left')) return n('dot--left')
     }
 
     return {
