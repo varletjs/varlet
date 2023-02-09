@@ -6,6 +6,7 @@ import {
   Range,
   CompletionItem,
   CompletionItemKind,
+  TextDocument,
   Position,
   MarkdownString,
   type ExtensionContext,
@@ -15,8 +16,9 @@ import { componentsMap, type ComponentDescriptor } from './componentsMap'
 import { bigCamelize, isString, kebabCase } from '@varlet/shared'
 import { ATTR_RE, DOCUMENTATION_EN, DOCUMENTATION_ZH, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
 import { getLanguage } from './env'
+import { HtmlTag } from '../types/web-types'
 
-export function getWebTypesTags() {
+export function getWebTypesTags(): HtmlTag[] {
   return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
@@ -79,7 +81,7 @@ export function registerCompletions(context: ExtensionContext) {
       return completionItems
     },
 
-    resolveCompletionItem(completionItem) {
+    resolveCompletionItem(completionItem: CompletionItem) {
       const id = completionItem.label
       const url = `${ICONS_STATIC}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
       const documentation = getLanguage() === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH
@@ -98,7 +100,7 @@ export function registerCompletions(context: ExtensionContext) {
   }
 
   const attrProvider: CompletionItemProvider = {
-    provideCompletionItems(document, position) {
+    provideCompletionItems(document: TextDocument, position: Position) {
       const text = document.getText(new Range(new Position(0, 0), new Position(position.line, position.character)))
 
       if (!Array.from(text.matchAll(ATTR_RE)).length) {
@@ -144,7 +146,7 @@ export function registerCompletions(context: ExtensionContext) {
 
         item.documentation = new MarkdownString(`\
 **Event**: ${event.name}
-        
+
 **Description**: ${event.description}`)
         item.insertText = hasAt ? event.name : `@${event.name}`
 
