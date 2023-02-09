@@ -9,7 +9,7 @@
 
       <slot name="right" />
 
-      <span v-if="closable" :class="n('--close')" @click="close">
+      <span v-if="closable" :class="n('--close')" @click="handleClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
       </span>
     </span>
@@ -59,7 +59,7 @@ export default defineComponent({
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
 
-    const close = (e: Event) => {
+    const handleClose = (e: Event) => {
       call(props.onClose, e)
     }
 
@@ -68,7 +68,7 @@ export default defineComponent({
       classes,
       chipStyles,
       contentClass,
-      close,
+      handleClose,
     }
   },
 })
