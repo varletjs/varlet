@@ -28,17 +28,19 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 
 
 ### Features
+
 - 🚀 &nbsp; Provide 50+ high quality general purpose components
 - 🚀 &nbsp; Components are very lightweight
 - 💪 &nbsp; Developed by Chinese, complete Chinese and English documentation and logistics support
 - 🛠️ &nbsp; Support on-demand introduction
 - 🛠️ &nbsp; Support theme customization
 - 🌍 &nbsp; Support internationalization
-- 💡 &nbsp; Support WebStorm, VS Code component syntax highlighting
+- 💡 &nbsp; Support WebStorm syntax highlighting
 - 💪 &nbsp; Support the SSR
 - 💡 &nbsp; Support the Typescript
 - 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
 - 🛠️ &nbsp; Support dark mode
+- 🛠️ &nbsp; Provide official VSCode extension
 
 ### Install
 
