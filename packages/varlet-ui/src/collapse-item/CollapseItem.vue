@@ -125,7 +125,10 @@ export default defineComponent({
 
     bindCollapse(collapseItemProvider)
 
-    watch(isShow, (value) => (value ? openPanel() : closePanel()))
+    watch(isShow, (value) => {
+      if (value) openPanel()
+      else closePanel()
+    })
 
     return {
       n,
