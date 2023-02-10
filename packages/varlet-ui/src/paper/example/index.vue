@@ -17,7 +17,7 @@ watchDarkMode(dark)
   <var-paper :elevation="2" ripple width="30vw" height="30vw" />
 
   <app-type>{{ pack.round }}</app-type>
-  <var-paper :elevation="2" width="30vw" height="30vw" />
+  <var-paper :elevation="2" width="30vw" height="30vw" round />
 
   <app-type>{{ pack.radius }}</app-type>
   <var-paper :elevation="2" :radius="8" width="30vw" height="30vw" />
