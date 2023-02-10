@@ -42,11 +42,13 @@
   &__placeholder {
     max-width: 100%;
     position: absolute;
+    top: calc(var(--input-box-padding-top) + (24px - var(--input-box-placeholder-size)) / 2);
     font-size: var(--input-box-placeholder-size);
     color: var(--input-box-blur-color);
     line-height: 1em;
     pointer-events: none;
     cursor: inherit;
+    transform: translate(0, 0);
   }
 
   &__clear-icon[var-input-box-cover] {
@@ -96,11 +98,9 @@
     }
 
     .var-input-box__placeholder {
-      top: 50%;
       left: 0;
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, color 0.25s;
-      transform: translate(0, 0);
     }
 
     .var-input-box--placeholder-hint {
@@ -151,10 +151,8 @@
     }
 
     .var-input-box__placeholder {
-      top: 50%;
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, margin 0.3s, color 0.25s;
-      transform: translateY(-50%);
     }
 
     .var-input-box--placeholder-hint {

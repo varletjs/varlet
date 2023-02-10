@@ -4,18 +4,19 @@ exports[`Size related props 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
-    <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-130\\">
-        <div class=\\"var-input__controller\\">
-          <div class=\\"var-input__icon\\"></div>
-          <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-130\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-130\\"></label>
+    <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-137\\">
+        <div class=\\"var-input-box__controller\\">
+          <div class=\\"var-input-box__icon\\"></div>
+          <div class=\\"var-input-box__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-137\\" type=\\"text\\">
+            <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
           </div>
-          <div class=\\"var-input__icon\\">
+          <div class=\\"var-input-box__icon\\">
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"var-input__line\\">
-          <div class=\\"var-input__dot\\"></div>
+        <div class=\\"var-input-box__line\\">
+          <div class=\\"var-input-box__dot\\"></div>
         </div>
       </label>
       <transition-stub>
@@ -40,18 +41,19 @@ exports[`Size related props 2`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
-    <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-130\\">
-        <div class=\\"var-input__controller\\">
-          <div class=\\"var-input__icon\\"></div>
-          <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-130\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-130\\"></label>
+    <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-137\\">
+        <div class=\\"var-input-box__controller\\">
+          <div class=\\"var-input-box__icon\\"></div>
+          <div class=\\"var-input-box__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-137\\" type=\\"text\\">
+            <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
           </div>
-          <div class=\\"var-input__icon\\">
+          <div class=\\"var-input-box__icon\\">
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"var-input__line\\">
-          <div class=\\"var-input__dot\\"></div>
+        <div class=\\"var-input-box__line\\">
+          <div class=\\"var-input-box__dot\\"></div>
         </div>
       </label>
       <transition-stub>
@@ -100,18 +102,19 @@ exports[`basic mode mount 1`] = `
       <!--teleport end-->
     </div>
   </li>
-  <li class=\\"var-pagination__quickly\\">前往 <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-90\\">
-        <div class=\\"var-input__controller\\">
-          <div class=\\"var-input__icon\\"></div>
-          <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-90\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-90\\"></label>
+  <li class=\\"var-pagination__quickly\\">前往 <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-96\\">
+        <div class=\\"var-input-box__controller\\">
+          <div class=\\"var-input-box__icon\\"></div>
+          <div class=\\"var-input-box__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-96\\" type=\\"text\\">
+            <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
           </div>
-          <div class=\\"var-input__icon\\">
+          <div class=\\"var-input-box__icon\\">
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"var-input__line\\">
-          <div class=\\"var-input__dot\\"></div>
+        <div class=\\"var-input-box__line\\">
+          <div class=\\"var-input-box__dot\\"></div>
         </div>
       </label>
       <transition-stub>
@@ -127,18 +130,19 @@ exports[`simple mode disabled prop 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
-    <div class=\\"var-input var-input--standard var--box var-input--disabled\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-68\\">
-        <div class=\\"var-input__controller var-input--disabled\\">
-          <div class=\\"var-input__icon\\"></div>
-          <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-68\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-68\\"></label>
+    <div class=\\"var-input-box var-input-box--standard var--box var-input-box--disabled var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-73\\">
+        <div class=\\"var-input-box__controller var-input-box--disabled\\">
+          <div class=\\"var-input-box__icon\\"></div>
+          <div class=\\"var-input-box__wrap\\">
+            <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" disabled=\\"\\" type=\\"text\\">
+            <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
           </div>
-          <div class=\\"var-input__icon\\">
+          <div class=\\"var-input-box__icon\\">
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"var-input__line var-input--line-disabled\\">
-          <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+        <div class=\\"var-input-box__line var-input-box--line-disabled\\">
+          <div class=\\"var-input-box__dot var-input-box--line-disabled\\"></div>
         </div>
       </label>
       <transition-stub>
@@ -163,18 +167,19 @@ exports[`simple mode mount 1`] = `
 "<ul class=\\"var-pagination\\">
   <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
   <li class=\\"var-pagination__simple\\">
-    <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-54\\">
-        <div class=\\"var-input__controller\\">
-          <div class=\\"var-input__icon\\"></div>
-          <div class=\\"var-input__wrap\\">
-            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-54\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-54\\"></label>
+    <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-58\\">
+        <div class=\\"var-input-box__controller\\">
+          <div class=\\"var-input-box__icon\\"></div>
+          <div class=\\"var-input-box__wrap\\">
+            <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-58\\" type=\\"text\\">
+            <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
           </div>
-          <div class=\\"var-input__icon\\">
+          <div class=\\"var-input-box__icon\\">
             <!--v-if-->
           </div>
         </div>
-        <div class=\\"var-input__line\\">
-          <div class=\\"var-input__dot\\"></div>
+        <div class=\\"var-input-box__line\\">
+          <div class=\\"var-input-box__dot\\"></div>
         </div>
       </label>
       <transition-stub>
@@ -201,18 +206,19 @@ exports[`test pagination example 1`] = `
   <ul class=\\"var-pagination\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
-      <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-5\\">
-          <div class=\\"var-input__controller\\">
-            <div class=\\"var-input__icon\\"></div>
-            <div class=\\"var-input__wrap\\">
-              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-5\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-5\\"></label>
+      <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-5\\">
+          <div class=\\"var-input-box__controller\\">
+            <div class=\\"var-input-box__icon\\"></div>
+            <div class=\\"var-input-box__wrap\\">
+              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-5\\" type=\\"text\\">
+              <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
             </div>
-            <div class=\\"var-input__icon\\">
+            <div class=\\"var-input-box__icon\\">
               <!--v-if-->
             </div>
           </div>
-          <div class=\\"var-input__line\\">
-            <div class=\\"var-input__dot\\"></div>
+          <div class=\\"var-input-box__line\\">
+            <div class=\\"var-input-box__dot\\"></div>
           </div>
         </label>
         <transition-stub>
@@ -237,18 +243,19 @@ exports[`test pagination example 1`] = `
   <ul class=\\"var-pagination\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
-      <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-19\\">
-          <div class=\\"var-input__controller\\">
-            <div class=\\"var-input__icon\\"></div>
-            <div class=\\"var-input__wrap\\">
-              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-19\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-19\\"></label>
+      <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-20\\">
+          <div class=\\"var-input-box__controller\\">
+            <div class=\\"var-input-box__icon\\"></div>
+            <div class=\\"var-input-box__wrap\\">
+              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-20\\" type=\\"text\\">
+              <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
             </div>
-            <div class=\\"var-input__icon\\">
+            <div class=\\"var-input-box__icon\\">
               <!--v-if-->
             </div>
           </div>
-          <div class=\\"var-input__line\\">
-            <div class=\\"var-input__dot\\"></div>
+          <div class=\\"var-input-box__line\\">
+            <div class=\\"var-input-box__dot\\"></div>
           </div>
         </label>
         <transition-stub>
@@ -267,18 +274,19 @@ exports[`test pagination example 1`] = `
   <ul class=\\"var-pagination\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple\\">
-      <div class=\\"var-input var-input--standard var--box\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-26\\">
-          <div class=\\"var-input__controller\\">
-            <div class=\\"var-input__icon\\"></div>
-            <div class=\\"var-input__wrap\\">
-              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-26\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-26\\"></label>
+      <div class=\\"var-input-box var-input-box--standard var--box var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-28\\">
+          <div class=\\"var-input-box__controller\\">
+            <div class=\\"var-input-box__icon\\"></div>
+            <div class=\\"var-input-box__wrap\\">
+              <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-28\\" type=\\"text\\">
+              <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
             </div>
-            <div class=\\"var-input__icon\\">
+            <div class=\\"var-input-box__icon\\">
               <!--v-if-->
             </div>
           </div>
-          <div class=\\"var-input__line\\">
-            <div class=\\"var-input__dot\\"></div>
+          <div class=\\"var-input-box__line\\">
+            <div class=\\"var-input-box__dot\\"></div>
           </div>
         </label>
         <transition-stub>
@@ -303,18 +311,19 @@ exports[`test pagination example 1`] = `
   <ul class=\\"var-pagination\\">
     <li class=\\"var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple\\"><i class=\\"var-icon var-icon--set var-icon-chevron-left\\" style=\\"transition: transform 0ms;\\"></i></li>
     <li class=\\"var-pagination__simple var-pagination__item--disabled\\">
-      <div class=\\"var-input var-input--standard var--box var-input--disabled\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-40\\">
-          <div class=\\"var-input__controller var-input--disabled\\">
-            <div class=\\"var-input__icon\\"></div>
-            <div class=\\"var-input__wrap\\">
-              <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-40\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-40\\"></label>
+      <div class=\\"var-input-box var-input-box--standard var--box var-input-box--disabled var-input\\" var-pagination-cover=\\"\\"><label class=\\"var--relative var--block\\" for=\\"var-input-43\\">
+          <div class=\\"var-input-box__controller var-input-box--disabled\\">
+            <div class=\\"var-input-box__icon\\"></div>
+            <div class=\\"var-input-box__wrap\\">
+              <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-43\\" disabled=\\"\\" type=\\"text\\">
+              <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
             </div>
-            <div class=\\"var-input__icon\\">
+            <div class=\\"var-input-box__icon\\">
               <!--v-if-->
             </div>
           </div>
-          <div class=\\"var-input__line var-input--line-disabled\\">
-            <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+          <div class=\\"var-input-box__line var-input-box--line-disabled\\">
+            <div class=\\"var-input-box__dot var-input-box--line-disabled\\"></div>
           </div>
         </label>
         <transition-stub>

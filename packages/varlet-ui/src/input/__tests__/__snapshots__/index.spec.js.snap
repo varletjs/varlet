@@ -1,16 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test input clear 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-118\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-118\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-118\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-146\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-146\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+      <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -20,18 +21,19 @@ exports[`test input clear 1`] = `
 `;
 
 exports[`test input events test input focus & blur 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-92\\">
-    <div class=\\"var-input__controller var-input--focus\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-92\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--focus var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-92\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-114\\">
+    <div class=\\"var-input-box__controller var-input-box--focus\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-114\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box--focus var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot var-input--line-focus\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot var-input-box--line-focus\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -41,18 +43,19 @@ exports[`test input events test input focus & blur 1`] = `
 `;
 
 exports[`test input events test input focus & blur 2`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-92\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-92\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-92\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-114\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-114\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -62,19 +65,20 @@ exports[`test input events test input focus & blur 2`] = `
 `;
 
 exports[`test input events test input focus & blur 3`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-96\\">
-    <div class=\\"var-input__controller var-input--focus\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-96\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-          </textarea><label class=\\"var--ellipsis var-input--focus var-input__textarea-placeholder var-input--placeholder-hint\\" for=\\"var-input-96\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-119\\">
+    <div class=\\"var-input-box__controller var-input-box--focus\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-119\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
+    </textarea>
+        <div class=\\"var--ellipsis var-input-box--focus var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot var-input--line-focus\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot var-input-box--line-focus\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -84,19 +88,20 @@ exports[`test input events test input focus & blur 3`] = `
 `;
 
 exports[`test input events test input focus & blur 4`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-96\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-96\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-          </textarea><label class=\\"var--ellipsis var-input__textarea-placeholder\\" for=\\"var-input-96\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-119\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-119\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
+    </textarea>
+        <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -108,18 +113,19 @@ exports[`test input events test input focus & blur 4`] = `
 exports[`test input example 1`] = `
 "<div class=\\"app-type pb\\">基本使用</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-3\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -128,22 +134,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-6\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-6\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-6\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-7\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-7\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -153,18 +160,19 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">小尺寸</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var-input--small var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-10\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-10\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-10\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var-input-box--small var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-12\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-12\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -173,22 +181,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var-input--small var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-13\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-13\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-13\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var-input-box--small var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-16\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-16\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -198,13 +207,14 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">朴素模式</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-17\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon var-input--non-hint\\"></div>
-        <div class=\\"var-input__wrap var-input--wrap-non-hint\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-17\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-non-hint\\" for=\\"var-input-17\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-21\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon var-input-box--non-hint\\"></div>
+        <div class=\\"var-input-box__wrap var-input-box--wrap-non-hint\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-21\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-non-hint\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon var-input--non-hint\\">
+        <div class=\\"var-input-box__icon var-input-box--non-hint\\">
           <!--v-if-->
         </div>
       </div>
@@ -217,19 +227,20 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">文本域</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-21\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-21\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-          </textarea><label class=\\"var--ellipsis var-input__textarea-placeholder\\" for=\\"var-input-21\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-26\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-26\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
+    </textarea>
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -238,23 +249,24 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-24\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-24\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-          </textarea><label class=\\"var--ellipsis var-input__textarea-placeholder\\" for=\\"var-input-24\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-30\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-30\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
+    </textarea>
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -264,18 +276,19 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">最大长度</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-28\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-28\\" type=\\"text\\" maxlength=\\"10\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-28\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-35\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-35\\" type=\\"text\\" maxlength=\\"10\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -295,22 +308,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-33\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-33\\" type=\\"text\\" maxlength=\\"10\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-33\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-41\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-41\\" type=\\"text\\" maxlength=\\"10\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -331,18 +345,19 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">禁用</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box var-input--disabled\\"><label class=\\"var--relative var--block\\" for=\\"var-input-39\\">
-      <div class=\\"var-input__controller var-input--disabled\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-39\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder\\" for=\\"var-input-39\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input-box--disabled var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-48\\">
+      <div class=\\"var-input-box__controller var-input-box--disabled\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-48\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line var-input--line-disabled\\">
-        <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+      <div class=\\"var-input-box__line var-input-box--line-disabled\\">
+        <div class=\\"var-input-box__dot var-input-box--line-disabled\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -351,17 +366,18 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box var-input--disabled\\"><label class=\\"var--relative var--block\\" for=\\"var-input-42\\">
-      <div class=\\"var-input__controller var-input--disabled\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-42\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder\\" for=\\"var-input-42\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input-box--disabled var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-52\\">
+      <div class=\\"var-input-box__controller var-input-box--disabled\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-52\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line var-input--line-disabled\\">
+      <div class=\\"var-input-box__line var-input-box--line-disabled\\">
         <!--v-if-->
       </div>
     </label>
@@ -372,18 +388,19 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">只读</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-46\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-46\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-46\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-57\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-57\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -392,22 +409,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-49\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-49\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-49\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-61\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-61\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -417,16 +435,17 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">可清除</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-53\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-53\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-53\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-66\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-66\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -435,20 +454,21 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-57\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-57\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-57\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-71\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-71\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-cover=\\"\\"></i></div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch var-input__line__notch--hint\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch var-input-box__line__notch--hint\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -458,16 +478,17 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type pb\\">显示图标</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-62\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-62\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-62\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-77\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-77\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -476,20 +497,21 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-67\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-67\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-67\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-83\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-plus prepend-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-83\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-minus append-icon\\" style=\\"transition: transform 0ms;\\"></i></div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -499,18 +521,19 @@ exports[`test input example 1`] = `
 </div>
 <div class=\\"app-type\\">字段校验</div>
 <div class=\\"pb\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-73\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-73\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-73\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-90\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-90\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -519,22 +542,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div>
-  <div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-76\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-76\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-76\\">请输入文本</label>
+  <div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-94\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-94\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__line__start\\"></div>
-        <div class=\\"var-input__line__notch\\">
-          <div class=\\"var-input__line__placeholder\\">请输入文本</div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__line__start\\"></div>
+        <div class=\\"var-input-box__line__notch\\">
+          <div class=\\"var--ellipsis var-input-box__line__placeholder\\">请输入文本</div>
         </div>
-        <div class=\\"var-input__line__end\\"></div>
+        <div class=\\"var-input-box__line__end\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -546,18 +570,19 @@ exports[`test input example 1`] = `
 `;
 
 exports[`test input hint to be false 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-114\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon var-input--non-hint\\"></div>
-      <div class=\\"var-input__wrap var-input--wrap-non-hint\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-114\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hidden var-input--placeholder-non-hint\\" for=\\"var-input-114\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-141\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon var-input-box--non-hint\\"></div>
+      <div class=\\"var-input-box__wrap var-input-box--wrap-non-hint\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-141\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hidden var-input-box--placeholder-non-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon var-input--non-hint\\">
+      <div class=\\"var-input-box__icon var-input-box--non-hint\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -567,18 +592,19 @@ exports[`test input hint to be false 1`] = `
 `;
 
 exports[`test input maxlength 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-108\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-108\\" type=\\"text\\" maxlength=\\"100\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-108\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-134\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-134\\" type=\\"text\\" maxlength=\\"100\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -599,18 +625,19 @@ exports[`test input maxlength 1`] = `
 `;
 
 exports[`test input size 1`] = `
-"<div class=\\"var-input var-input--standard var-input--small var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-88\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-88\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-88\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var-input-box--small var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-109\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-109\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -620,18 +647,19 @@ exports[`test input size 1`] = `
 `;
 
 exports[`test input validation 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-133\\">
-    <div class=\\"var-input__controller var-input--error\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-133\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--error var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-133\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-164\\">
+    <div class=\\"var-input-box__controller var-input-box--error\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-164\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box--error var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line var-input--line-error\\">
-      <div class=\\"var-input__dot var-input--line-error\\"></div>
+    <div class=\\"var-input-box__line var-input-box--line-error\\">
+      <div class=\\"var-input-box__dot var-input-box--line-error\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -652,18 +680,19 @@ exports[`test input validation 1`] = `
 `;
 
 exports[`test input validation 2`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-133\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-133\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-133\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-164\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-164\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -673,18 +702,19 @@ exports[`test input validation 2`] = `
 `;
 
 exports[`test input validation 3`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-133\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-133\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-133\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-164\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-164\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -694,18 +724,19 @@ exports[`test input validation 3`] = `
 `;
 
 exports[`test input variant 1`] = `
-"<div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-80\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-80\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-80\\"></label>
+"<div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-99\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-99\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__dot\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__dot\\"></div>
     </div>
   </label>
   <transition-stub>
@@ -715,22 +746,23 @@ exports[`test input variant 1`] = `
 `;
 
 exports[`test input variant 2`] = `
-"<div class=\\"var-input var-input--outlined var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-84\\">
-    <div class=\\"var-input__controller\\">
-      <div class=\\"var-input__icon\\"></div>
-      <div class=\\"var-input__wrap\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-84\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-84\\"></label>
+"<div class=\\"var-input-box var-input-box--outlined var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-104\\">
+    <div class=\\"var-input-box__controller\\">
+      <div class=\\"var-input-box__icon\\"></div>
+      <div class=\\"var-input-box__wrap\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-104\\" type=\\"text\\">
+        <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
       </div>
-      <div class=\\"var-input__icon\\">
+      <div class=\\"var-input-box__icon\\">
         <!--v-if-->
       </div>
     </div>
-    <div class=\\"var-input__line\\">
-      <div class=\\"var-input__line__start\\"></div>
-      <div class=\\"var-input__line__notch var-input__line__notch--hint\\">
-        <div class=\\"var-input__line__placeholder\\"></div>
+    <div class=\\"var-input-box__line\\">
+      <div class=\\"var-input-box__line__start\\"></div>
+      <div class=\\"var-input-box__line__notch var-input-box__line__notch--hint\\">
+        <div class=\\"var--ellipsis var-input-box__line__placeholder\\"></div>
       </div>
-      <div class=\\"var-input__line__end\\"></div>
+      <div class=\\"var-input-box__line__end\\"></div>
     </div>
   </label>
   <transition-stub>

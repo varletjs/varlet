@@ -1,89 +1,90 @@
 <template>
-  <div :class="classes(n())">
-    <var-input-box
-      v-bind="{
-        value: modelValue,
-        id,
-        size,
-        variant,
-        placeholder,
-        line,
-        hint,
-        textColor,
-        focusColor,
-        blurColor,
-        isFocus,
-        errorMessage,
-        formDisabled,
-        disabled,
-        clearable,
-        onClick: handleClick,
-        onClear: handleClear,
+  <var-input-box
+    :class="classes(n())"
+    v-bind="{
+      value: modelValue,
+      id,
+      size,
+      variant,
+      placeholder,
+      line,
+      hint,
+      textColor,
+      focusColor,
+      blurColor,
+      isFocus,
+      errorMessage,
+      formDisabled,
+      disabled,
+      clearable,
+      onClick: handleClick,
+      onClear: handleClear,
+    }"
+  >
+    <template #prepend-icon>
+      <slot name="prepend-icon" />
+    </template>
+
+    <input :class="n('autocomplete')" v-if="type === 'password'" />
+    <textarea
+      :class="
+        classes(
+          n('input'),
+          n('--textarea'),
+          [formDisabled || disabled, n('--disabled')],
+          [errorMessage, n('--caret-error')]
+        )
+      "
+      ref="el"
+      autocomplete="new-password"
+      :id="id"
+      :disabled="formDisabled || disabled || formReadonly || readonly"
+      :type="type"
+      :value="modelValue"
+      :maxlength="maxlength"
+      :rows="rows"
+      :style="{
+        color: textColor,
+        caretColor: !errorMessage ? focusColor : undefined,
+        resize: resize ? 'vertical' : 'none',
       }"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @input="handleInput"
+      @change="handleChange"
+      @touchstart="handleTouchstart"
+      v-if="textarea"
     >
-      <template #prepend-icon>
-        <slot name="prepend-icon" />
-      </template>
+    </textarea>
+    <input
+      :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
+      ref="el"
+      autocomplete="new-password"
+      :id="id"
+      :disabled="formDisabled || disabled || formReadonly || readonly"
+      :type="type"
+      :value="modelValue"
+      :maxlength="maxlength"
+      :style="{
+        color: textColor,
+        caretColor: !errorMessage ? focusColor : undefined,
+      }"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @input="handleInput"
+      @change="handleChange"
+      @touchstart="handleTouchstart"
+      v-else
+    />
 
-      <input :class="n('autocomplete')" v-if="type === 'password'" />
-      <textarea
-        :class="
-          classes(
-            n('input'),
-            n('--textarea'),
-            [formDisabled || disabled, n('--disabled')],
-            [errorMessage, n('--caret-error')]
-          )
-        "
-        ref="el"
-        autocomplete="new-password"
-        :id="id"
-        :disabled="formDisabled || disabled || formReadonly || readonly"
-        :type="type"
-        :value="modelValue"
-        :maxlength="maxlength"
-        :rows="rows"
-        :style="{
-          color: textColor,
-          caretColor: !errorMessage ? focusColor : undefined,
-          resize: resize ? 'vertical' : 'none',
-        }"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @input="handleInput"
-        @change="handleChange"
-        @touchstart="handleTouchstart"
-        v-if="textarea"
-      >
-      </textarea>
-      <input
-        :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
-        ref="el"
-        autocomplete="new-password"
-        :id="id"
-        :disabled="formDisabled || disabled || formReadonly || readonly"
-        :type="type"
-        :value="modelValue"
-        :maxlength="maxlength"
-        :style="{
-          color: textColor,
-          caretColor: !errorMessage ? focusColor : undefined,
-        }"
-        @focus="handleFocus"
-        @blur="handleBlur"
-        @input="handleInput"
-        @change="handleChange"
-        @touchstart="handleTouchstart"
-        v-else
-      />
+    <template #append-icon>
+      <slot name="append-icon" />
+    </template>
 
-      <template #append-icon>
-        <slot name="append-icon" />
-      </template>
-    </var-input-box>
-
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
-  </div>
+    <template #form-details>
+      <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
+    </template>
+  </var-input-box>
 </template>
 
 <script lang="ts">

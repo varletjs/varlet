@@ -25,17 +25,17 @@ test('test input variant', () => {
       },
     })
 
-    expect(wrapper.find('.var-input').classes()).toContain(`var-input--${variant}`)
+    expect(wrapper.find('.var-input').classes()).toContain(`var-input-box--${variant}`)
     switch (variant) {
       case 'standard': {
-        expect(wrapper.find('.var-input').classes()).toContain('var-input--standard')
-        expect(wrapper.find('.var-input__line').wrapperElement.querySelector('.var-input__dot')).toBeTruthy()
+        expect(wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__dot')).toBeTruthy()
         break
       }
 
       case 'outlined': {
-        expect(wrapper.find('.var-input').classes()).toContain('var-input--outlined')
-        expect(wrapper.find('.var-input__line').wrapperElement.querySelector('.var-input__line__start')).toBeTruthy()
+        expect(
+          wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__line__start')
+        ).toBeTruthy()
         break
       }
 
@@ -56,7 +56,7 @@ test('test input size', () => {
     },
   })
 
-  expect(wrapper.find('.var-input').classes()).toContain('var-input--small')
+  expect(wrapper.find('.var-input').classes()).toContain('var-input-box--small')
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -167,7 +167,7 @@ test('test input clear', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-input__clear-icon').trigger('click')
+  await wrapper.find('.var-input-box__clear-icon').trigger('click')
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
@@ -178,7 +178,7 @@ test('test input clear', async () => {
 const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input__clear-icon').trigger('click')
+  await wrapper.find('.var-input-box__clear-icon').trigger('click')
   await wrapper.trigger('click')
 }
 

@@ -18,6 +18,50 @@ test('test select plugin', () => {
   expect(app.component(Select.name)).toBeTruthy()
 })
 
+test('test select variant', () => {
+  ;['standard', 'outlined'].forEach((variant) => {
+    const wrapper = mount(VarSelect, {
+      props: {
+        value: '',
+        variant,
+      },
+    })
+
+    expect(wrapper.find('.var-select').classes()).toContain(`var-input-box--${variant}`)
+    switch (variant) {
+      case 'standard': {
+        expect(wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__dot')).toBeTruthy()
+        break
+      }
+
+      case 'outlined': {
+        expect(
+          wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__line__start')
+        ).toBeTruthy()
+        break
+      }
+
+      default:
+        break
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+})
+
+test('test select size', () => {
+  const wrapper = mount(VarSelect, {
+    props: {
+      value: '',
+      size: 'small',
+    },
+  })
+
+  expect(wrapper.find('.var-select').classes()).toContain('var-input-box--small')
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
 test('test option plugin', () => {
   const app = createApp({}).use(Option)
   expect(app.component(Option.name)).toBeTruthy()

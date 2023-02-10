@@ -17,7 +17,7 @@
           color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
         }"
       >
-        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependEl">
+        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
           <slot name="prepend-icon" />
         </div>
 
@@ -114,12 +114,14 @@
         </div>
       </template>
     </label>
+
+    <slot name="form-details" />
   </div>
 </template>
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { defineComponent, ref, watchEffect, nextTick } from 'vue'
 import { props } from './inputBoxProps'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
@@ -133,8 +135,8 @@ export default defineComponent({
     VarIcon,
   },
   props,
-  setup(props) {
-    const prependEl: Ref<HTMLElement | null> = ref(null)
+  setup(props, { slots }) {
+    const prependIconEl: Ref<HTMLElement | null> = ref(null)
     const placeholderEl: Ref<HTMLElement | null> = ref(null)
 
     const computePlaceholderState = () => {
@@ -155,21 +157,22 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    let observer: MutationObserver | null = null
-    onMounted(() => {
-      const config = { attributes: true, subtree: true }
-      observer = new MutationObserver(() => {
-        console.log(1)
-        observer!.observe(prependEl.value!, config)
-      })
-    })
-
-    onUnmounted(() => {
-      observer!.disconnect()
+    watchEffect(() => {
+      const { hint, value, isFocus, variant } = props
+      if (!placeholderEl.value || variant !== 'outlined' || !slots['prepend-icon']) {
+        return
+      }
+      if (hint && (!isEmpty(value) || isFocus)) {
+        placeholderEl.value.style.transform = `translate(-${
+          window.getComputedStyle(prependIconEl.value!)?.width || 0
+        }, -50%)`
+      } else {
+        placeholderEl.value.style.transform = ''
+      }
     })
 
     return {
-      prependEl,
+      prependIconEl,
       placeholderEl,
       computePlaceholderState,
       n,

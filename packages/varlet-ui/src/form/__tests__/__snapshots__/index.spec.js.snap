@@ -124,18 +124,19 @@ exports[`test form with counter 4`] = `
 
 exports[`test form with input 1`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
-      <div class=\\"var-input__controller var-input--disabled\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--disabled var-input__placeholder\\" for=\\"var-input-3\\"></label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
+      <div class=\\"var-input-box__controller var-input-box--disabled\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input var-input--disabled\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder\\"></div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line var-input--line-disabled\\">
-        <div class=\\"var-input__dot var-input--line-disabled\\"></div>
+      <div class=\\"var-input-box__line var-input-box--line-disabled\\">
+        <div class=\\"var-input-box__dot var-input-box--line-disabled\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -147,18 +148,19 @@ exports[`test form with input 1`] = `
 
 exports[`test form with input 2`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-3\\"></label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -170,18 +172,19 @@ exports[`test form with input 2`] = `
 
 exports[`test form with input 3`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
-      <div class=\\"var-input__controller var-input--error\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input--error var-input__placeholder\\" for=\\"var-input-3\\"></label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
+      <div class=\\"var-input-box__controller var-input-box--error\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input var-input--caret-error\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box--error var-input-box__placeholder\\"></div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line var-input--line-error\\">
-        <div class=\\"var-input__dot var-input--line-error\\"></div>
+      <div class=\\"var-input-box__line var-input-box--line-error\\">
+        <div class=\\"var-input-box__dot var-input-box--line-error\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -204,18 +207,19 @@ exports[`test form with input 3`] = `
 
 exports[`test form with input 4`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-input var-input--standard var--box\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
-      <div class=\\"var-input__controller\\">
-        <div class=\\"var-input__icon\\"></div>
-        <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder\\" for=\\"var-input-3\\"></label>
+  <div class=\\"var-input-box var-input-box--standard var--box var-input\\"><label class=\\"var--relative var--block\\" for=\\"var-input-3\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-3\\" disabled=\\"\\" type=\\"text\\">
+          <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
         </div>
-        <div class=\\"var-input__icon\\">
+        <div class=\\"var-input-box__icon\\">
           <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-input__line\\">
-        <div class=\\"var-input__dot\\"></div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
       </div>
     </label>
     <transition-stub>
@@ -356,27 +360,31 @@ exports[`test form with rate 3`] = `
 
 exports[`test form with select 1`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-select var--box var-select--disabled\\">
-    <div class=\\"var-select__controller var-select--disabled\\">
-      <div class=\\"var-select__icon\\"></div>
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-          <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
-            <div class=\\"var-select__label\\">
-              <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+  <div class=\\"var-input-box var-input-box--standard var--box var-select\\"><label class=\\"var--relative var--block\\" for=\\"\\">
+      <div class=\\"var-input-box__controller var-input-box--disabled\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <div class=\\"var-select__wrap\\">
+            <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
+              <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
+                <div class=\\"var-select__label\\">
+                  <div class=\\"var-select__chips\\">
+                    <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                  </div>
+                </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
-          </div><label class=\\"var-select__placeholder var--ellipsis var-select--disabled var-select--placeholder-hint\\"></label>
-          <!--teleport start-->
-          <!--teleport end-->
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class=\\"var--ellipsis var-input-box--disabled var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
         </div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
-    </div>
-    <div class=\\"var-select__line var-select--line-disabled\\">
-      <div class=\\"var-select__dot var-select--line-disabled\\"></div>
-    </div>
+      <div class=\\"var-input-box__line var-input-box--line-disabled\\">
+        <div class=\\"var-input-box__dot var-input-box--line-disabled\\"></div>
+      </div>
+    </label>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -386,27 +394,31 @@ exports[`test form with select 1`] = `
 
 exports[`test form with select 2`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-select var--box\\">
-    <div class=\\"var-select__controller\\">
-      <div class=\\"var-select__icon\\"></div>
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-          <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
-            <div class=\\"var-select__label\\">
-              <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+  <div class=\\"var-input-box var-input-box--standard var--box var-select\\"><label class=\\"var--relative var--block\\" for=\\"\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <div class=\\"var-select__wrap\\">
+            <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
+              <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
+                <div class=\\"var-select__label\\">
+                  <div class=\\"var-select__chips\\">
+                    <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                  </div>
+                </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
-          </div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hint\\"></label>
-          <!--teleport start-->
-          <!--teleport end-->
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class=\\"var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
         </div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
-    </div>
-    <div class=\\"var-select__line\\">
-      <div class=\\"var-select__dot\\"></div>
-    </div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
+      </div>
+    </label>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -416,27 +428,31 @@ exports[`test form with select 2`] = `
 
 exports[`test form with select 3`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-select var--box\\">
-    <div class=\\"var-select__controller var-select--error\\">
-      <div class=\\"var-select__icon\\"></div>
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-          <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
-            <div class=\\"var-select__label\\">
-              <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+  <div class=\\"var-input-box var-input-box--standard var--box var-select\\"><label class=\\"var--relative var--block\\" for=\\"\\">
+      <div class=\\"var-input-box__controller var-input-box--error\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <div class=\\"var-select__wrap\\">
+            <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
+              <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
+                <div class=\\"var-select__label\\">
+                  <div class=\\"var-select__chips\\">
+                    <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                  </div>
+                </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
-          </div><label class=\\"var-select__placeholder var--ellipsis var-select--error var-select--placeholder-hint\\"></label>
-          <!--teleport start-->
-          <!--teleport end-->
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class=\\"var--ellipsis var-input-box--error var-input-box__placeholder var-input-box--placeholder-hint\\"></div>
         </div>
+        <div class=\\"var-input-box__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\" var-input-box-cover=\\"\\"></i></div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
-    </div>
-    <div class=\\"var-select__line var-select--line-error\\">
-      <div class=\\"var-select__dot var-select--line-error\\"></div>
-    </div>
+      <div class=\\"var-input-box__line var-input-box--line-error\\">
+        <div class=\\"var-input-box__dot var-input-box--line-error\\"></div>
+      </div>
+    </label>
     <transition-stub>
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
@@ -457,25 +473,31 @@ exports[`test form with select 3`] = `
 
 exports[`test form with select 4`] = `
 "<div class=\\"var-form\\">
-  <div class=\\"var-select var--box\\">
-    <div class=\\"var-select__controller\\">
-      <div class=\\"var-select__icon\\"></div>
-      <div class=\\"var-select__wrap\\">
-        <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
-          <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
-            <div class=\\"var-select__label\\">
-              <!--v-if-->
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
-          </div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
-          <!--teleport start-->
-          <!--teleport end-->
+  <div class=\\"var-input-box var-input-box--standard var--box var-select\\"><label class=\\"var--relative var--block\\" for=\\"\\">
+      <div class=\\"var-input-box__controller\\">
+        <div class=\\"var-input-box__icon\\"></div>
+        <div class=\\"var-input-box__wrap\\">
+          <div class=\\"var-select__wrap\\">
+            <div class=\\"var-menu var-select__menu\\" var-select-cover=\\"\\">
+              <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
+                <div class=\\"var-select__label\\">
+                  <!--v-if-->
+                </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class=\\"var--ellipsis var-input-box__placeholder\\"></div>
+        </div>
+        <div class=\\"var-input-box__icon\\">
+          <!--v-if-->
         </div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
-    </div>
-    <div class=\\"var-select__line\\">
-      <div class=\\"var-select__dot\\"></div>
-    </div>
+      <div class=\\"var-input-box__line\\">
+        <div class=\\"var-input-box__dot\\"></div>
+      </div>
+    </label>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
