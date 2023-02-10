@@ -3,6 +3,7 @@
     :class="
       classes(
         n(),
+        n('$--box'),
         n(`$-elevation--${elevation}`),
         [onClick, n('--cursor')],
         [round, n('--round')],
