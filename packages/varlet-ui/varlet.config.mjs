@@ -215,6 +215,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Paper 纸张',
+          'en-US': 'Paper',
+        },
+        doc: 'paper',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Skeleton 骨架屏',
           'en-US': 'Skeleton',
         },

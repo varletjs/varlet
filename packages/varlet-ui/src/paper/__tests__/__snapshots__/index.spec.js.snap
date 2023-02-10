@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test paper elevation 1`] = `"<div class=\\"var-paper var-elevation--2\\"></div>"`;
+
+exports[`test paper inline 1`] = `"<div class=\\"var-paper var-elevation--undefined var--inline-flex\\"></div>"`;
+
+exports[`test paper radius 1`] = `"<div class=\\"var-paper var-elevation--undefined\\" style=\\"border-radius: 10px;\\"></div>"`;
+
+exports[`test paper round 1`] = `"<div class=\\"var-paper var-elevation--undefined var-paper--round\\"></div>"`;
+
+exports[`test paper size 1`] = `"<div class=\\"var-paper var-elevation--undefined\\" style=\\"width: 100px; height: 100px;\\"></div>"`;

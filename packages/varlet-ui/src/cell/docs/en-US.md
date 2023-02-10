@@ -40,6 +40,56 @@ The cell is a single display item in the list.
 </template>
 ```
 
+### Use As List Item
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const items = ref([
+  {
+    name: 'Vue2',
+    icon: 'star',
+    enabled: false,
+  },
+  {
+    name: 'Vue3',
+    icon: 'heart',
+    enabled: false,
+  },
+  {
+    name: 'React',
+    icon: 'close-circle',
+    enabled: false,
+  },
+])
+
+const handleClick = (item) => {
+  item.enabled = !item.enabled
+}
+</script>
+
+<template>
+  <var-paper :elevation="2">
+    <var-cell
+      v-for="(item, index) in items"
+      :key="item.name"
+      ripple
+      :icon="item.icon"
+      :border="index !== items.length - 1"
+      :border-offset="0"
+      @click="handleClick(item)"
+    >
+      {{ item.name }}
+
+      <template #extra>
+        <var-switch v-model="item.enabled" @click.stop />
+      </template>
+    </var-cell>
+  </var-paper>
+</template>
+```
+
 ## API
 
 ### Props
@@ -50,10 +100,18 @@ The cell is a single display item in the list.
 | `icon` | Icon name | _string_ | `-` |
 | `description` | Description | _string_ | `-` |
 | `border` | Whether to show border | _boolean_ | `false` |
+| `border-offset` | Border offset | _string \| number_ | `-` |
 | `icon-class` | Icon className | _string_ | `-` |
 | `title-class` | Title className | _string_ | `-` |
 | `description-class` | Description className | _string_ | `-` |
 | `extra-class` | Extra className | _string_ | `-` |
+| `ripple` | Whether to enable the water wave effect | _boolean_ | `false` |
+
+### Events
+
+| Event        | Description                                                                                          | Arguments      |
+| ------------ | ---------------------------------------------------------------------------------------------------- | -------------- |
+| `click`      | Triggered when the cell is clicked.  | `event: Event` |
 
 ### Slots
 
