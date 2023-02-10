@@ -1,13 +1,13 @@
 <template>
-  <div :class="classes(n(), n(`$-elevation--${elevation}`))">
+  <div :class="classes(n(), [vertical, n('--vertical')], n(`$-elevation--${elevation}`))">
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, watch } from 'vue'
+import { defineComponent } from 'vue'
 import { useButtons } from './provide'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
 import type { ButtonGroupProvider } from './provide'
 
@@ -17,18 +17,14 @@ export default defineComponent({
   name: 'VarButtonGroup',
   props,
   setup(props) {
-    const { length, buttons, bindButtons } = useButtons()
-    const elevation = computed(() => props.elevation)
-    const type = computed(() => props.type)
-    const size = computed(() => props.size)
-    // const syncButtons = () => buttons.forEach(({ sync }) => sync(props.boxShadow))
-    //
-    // watch(() => props.boxShadow, syncButtons)
+    const { bindButtons } = useButtons()
 
     const buttonGroupProvider: ButtonGroupProvider = {
-      elevation,
-      type,
-      size,
+      elevation: props.elevation,
+      type: props.type,
+      size: props.size,
+      color: props.color,
+      mode: props.mode,
     }
 
     bindButtons(buttonGroupProvider)

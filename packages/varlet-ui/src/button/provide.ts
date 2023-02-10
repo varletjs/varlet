@@ -7,14 +7,36 @@ import {
 } from '../button-group/provide'
 
 export interface ButtonProvider {
-  elevation?: ComputedRef<
-    0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24
-  >
-  type?: ComputedRef<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>
-  size?: ComputedRef<'normal' | 'mini' | 'small' | 'large'>
-  color?: ComputedRef<string>
-  mode?: ComputedRef<'text' | 'outline'>
-  vertical?: ComputedRef<boolean>
+  elevation?:
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18
+    | 19
+    | 20
+    | 21
+    | 22
+    | 23
+    | 24
+  type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+  size?: 'normal' | 'mini' | 'small' | 'large'
+  color?: string
+  mode?: 'text' | 'outline'
 }
 
 export function useButtonGroup() {

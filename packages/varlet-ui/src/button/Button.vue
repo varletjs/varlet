@@ -9,18 +9,18 @@
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
         [
-          text,
+          getStyles.text,
           `${n(`--text-${getStyles.type}`)} ${n('--text')}`,
           `${n(`--${getStyles.type}`)} ${n(`$-elevation--${getStyles.elevation}`)}`,
         ],
-        [text && disabled, n('--text-disabled')],
+        [getStyles.text && disabled, n('--text-disabled')],
         [round, n('--round')],
-        [outline, n('--outline')]
+        [getStyles.outline, n('--outline')]
       )
     "
     :style="{
       color: textColor,
-      background: color,
+      background: getStyles.color,
     }"
     :type="nativeType"
     :disabled="disabled"
@@ -50,9 +50,6 @@ import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
-import type { ButtonProvider } from './provide'
-
-type InitStyles<objType extends Record<string, unknown>> = Array<Extract<keyof objType, string>>
 
 const { n, classes } = createNamespace('button')
 
@@ -65,53 +62,33 @@ export default defineComponent({
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
-    const { buttonGroup, bindButtonGroup } = useButtonGroup()
-    const getStyles = computed(() => {
-      const styles = {
-        elevation: 0,
-        type: 'default',
-        size: 'normal',
-      }
-      ;(Object.keys(styles) as InitStyles<typeof styles>).map((key) => {
-        // if (buttonGroup) {
-        //   styles[key] = unref(buttonGroup[key])
-        // }
-        // if(props[key]) {
-        //   styles[key] = props[key]
-        // }
-        return {}
-      })
+    const { buttonGroup } = useButtonGroup()
+    const defaultStyles = {
+      elevation: 2,
+      type: 'default',
+      size: 'normal',
+    }
 
-      // if (buttonGroup) {
-      // const { elevation, size, type } = buttonGroup
-      // styles.elevation = unref(elevation)
-      // if(buttonGroup.elevation) {
-      //   styles.elevation = buttonGroup.elevation?.value
-      // }
-      // if (buttonGroup.type) {
-      //   styles.type = buttonGroup.type
-      // }
-      // if (buttonGroup.size) {
-      //   styles.size = buttonGroup.size
-      // }
-      // }
-      // if (props.type) {
-      //   styles.type = props.type
-      // }
-      // if (props.size) {
-      //   styles.size = props.size
-      // }
-      console.log(styles)
-      return styles
+    // const getGroupMode = computed(() => {
+    //   const modeArray = ['text', 'outline']
+    //   return {
+    //     text: props.text || modeArray.includes((buttonGroup || {}).mode || ''),
+    //     outline: props.outline || (buttonGroup || {}).mode === 'outline'
+    //   }
+    // })
+
+    const getStyles = computed(() => {
+      const modeArray = ['text', 'outline']
+      return {
+        elevation: (buttonGroup || {}).elevation ? 0 : defaultStyles.elevation,
+        type: props.type || (buttonGroup || {}).type || defaultStyles.type,
+        size: props.size || (buttonGroup || {}).size || defaultStyles.size,
+        color: props.color || (buttonGroup || {}).color,
+        text: props.text || modeArray.includes((buttonGroup || {}).mode || ''),
+        outline: props.outline || (buttonGroup || {}).mode === 'outline',
+      }
     })
 
-    // const buttonProvider: ButtonProvider = {
-    //   sync: (values) => {
-    //     console.log(values,22)
-    //     value.value = values
-    //   },
-    // }
-    // call(bindButtonGroup, buttonProvider)
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
         pending.value = true

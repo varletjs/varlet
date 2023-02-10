@@ -31,9 +31,9 @@ export interface ButtonGroupProvider {
     | 24
   type?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
   size?: 'normal' | 'mini' | 'small' | 'large'
-  color?: ComputedRef<string>
-  mode?: ComputedRef<'text' | 'outline'>
-  vertical?: ComputedRef<boolean>
+  color?: string
+  mode?: 'text' | 'outline'
+  vertical?: boolean
 }
 
 export const BUTTON_GROUP_BIND_BUTTON_KEY = Symbol('BUTTON_GROUP_BIND_BUTTON_KEY')
