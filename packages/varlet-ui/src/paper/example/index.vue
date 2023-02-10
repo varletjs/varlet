@@ -11,16 +11,16 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-paper :elevation="2" width="20vw" height="20vw" />
+  <var-paper :elevation="2" width="30vw" height="30vw" />
 
   <app-type>{{ pack.ripple }}</app-type>
-  <var-paper :elevation="2" ripple width="20vw" height="20vw" />
+  <var-paper :elevation="2" ripple width="30vw" height="30vw" />
 
   <app-type>{{ pack.round }}</app-type>
-  <var-paper :elevation="2" width="20vw" height="20vw" />
+  <var-paper :elevation="2" width="30vw" height="30vw" />
 
   <app-type>{{ pack.radius }}</app-type>
-  <var-paper :elevation="2" :radius="8" width="20vw" height="20vw" />
+  <var-paper :elevation="2" :radius="8" width="30vw" height="30vw" />
 
   <app-type>{{ pack.slot }}</app-type>
   <var-paper :elevation="2">
