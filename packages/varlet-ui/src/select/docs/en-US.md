@@ -21,6 +21,31 @@ const value = ref('')
     <var-option label="Eat" />
     <var-option label="Sleep" />
   </var-select>
+  <var-select variant="outlined" placeholder="Please select one the options" v-model="value">
+    <var-option label="Eat" />
+    <var-option label="Sleep" />
+  </var-select>
+</template>
+```
+
+### Small Size
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-select size="small" placeholder="Please select one the options" v-model="value">
+    <var-option label="Eat" />
+    <var-option label="Sleep" />
+  </var-select>
+  <var-select size="small" variant="outlined" placeholder="Please select one the options" v-model="value">
+    <var-option label="Eat" />
+    <var-option label="Sleep" />
+  </var-select>
 </template>
 ```
 
@@ -119,6 +144,15 @@ const value = ref('')
 <template>
   <var-select
     placeholder="Please select one the options"
+    clearable
+    v-model="value"
+  >
+    <var-option label="Eat" />
+    <var-option label="Sleep" />
+  </var-select>
+  <var-select
+    placeholder="Please select one the options"
+    variant="outlined"
     clearable
     v-model="value"
   >
@@ -356,23 +390,27 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--select-select-text-color` | `#555` |
-| `--select-select-min-height` | `22px` |
-| `--select-menu-margin-top` | `10px` |
-| `--select-error-color` | `var(--color-danger)` |
-| `--select-blur-color` | `#888` |
-| `--select-focus-color` | `var(--color-primary)` |
+| `--input-box-input-text-color` | `#555` |
+| `--input-box-error-color` | `var(--color-danger)` |
+| `--input-box-blur-color` | `#888` |
+| `--input-box-focus-color` | `var(--color-primary)` |
+| `--input-box-placeholder-size` | `16px` |
+| `--input-box-textarea-padding-top` | `8px` |
+| `--input-box-input-padding-top` | `16px` |
+| `--input-box-input-padding-bottom` | `16px` |
+| `--input-box-input-padding-left` | `14px` |
+| `--input-box-input-padding-right` | `14px` |
+| `--input-box-icon-padding` | `20px 0 0` |
+| `--input-box-icon-size` | `20px` |
+| `--input-box-line-size` | `1px` |
+| `--input-box-line-focus-size` | `2px` |
+| `--input-box-disabled-color` | `var(--color-text-disabled)` |
 | `--select-scroller-background` | `#fff` |
 | `--select-scroller-padding` | `6px 0` |
+| `--select-scroller-margin` | `0px` |
 | `--select-scroller-max-height` | `278px` |
-| `--select-placeholder-size` | `16px` |
-| `--select-icon-padding` | `16px 0 0` |
-| `--select-icon-size` | `20px` |
 | `--select-chip-margin` | `5px 5px 0` |
-| `--select-line-size` | `1px` |
-| `--select-line-spread-size` | `2px` |
 | `--select-arrow-size` | `20px` |
-| `--select-disabled-color` | `var(--color-text-disabled)` |
 
 #### Option Variables
 

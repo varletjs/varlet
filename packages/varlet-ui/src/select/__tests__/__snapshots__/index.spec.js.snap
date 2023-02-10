@@ -2,282 +2,469 @@
 
 exports[`test select example 1`] = `
 "<div class="app-type">基本使用</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="pb">
+  <div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
       </div>
-    </div>
-    <div class="var-select__icon">
+      <div class="var-input-box__line">
+        <div class="var-input-box__dot"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
-    </div>
+    </transition-stub>
   </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
+</div>
+<div class="pb">
+  <div class="var-input-box var-input-box--outlined var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-input-box__line">
+        <div class="var-input-box__line__start"></div>
+        <div class="var-input-box__line__notch">
+          <div class="var--ellipsis var-input-box__line__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__line__end"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
   </div>
-  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
+</div>
+<div class="app-type">小尺寸</div>
+<div class="pb">
+  <div class="var-input-box var-input-box--standard var-input-box--small var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-input-box__line">
+        <div class="var-input-box__dot"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</div>
+<div class="pb">
+  <div class="var-input-box var-input-box--outlined var-input-box--small var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-input-box__line">
+        <div class="var-input-box__line__start"></div>
+        <div class="var-input-box__line__notch">
+          <div class="var--ellipsis var-input-box__line__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__line__end"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
 </div>
 <div class="app-type">朴素模式</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon var-select--non-hint"></div>
-    <div class="var-select__wrap var-select--non-hint">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis var-select--placeholder-non-hint">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon var-input-box--non-hint"></div>
+      <div class="var-input-box__wrap var-input-box--wrap-non-hint">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-non-hint">请选择一个选项</div>
+      </div>
+      <div class="var-input-box__icon var-input-box--non-hint">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon var-select--non-hint">
-      <!--v-if-->
-    </div>
-  </div>
-  <!--v-if-->
+    <!--v-if-->
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">文本关联值</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="relation">当前选择的是: </div>
 <div class="app-type">禁用</div>
-<div class="var-select var--box var-select--disabled">
-  <div class="var-select__controller var-select--disabled">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select var-select--disabled" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis var-select--disabled">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-input-box--disabled var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller var-input-box--disabled">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select var-select--disabled" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box--disabled var-input-box__placeholder">请选择一个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line var-input-box--line-disabled">
+      <div class="var-input-box__dot var-input-box--line-disabled"></div>
     </div>
-  </div>
-  <div class="var-select__line var-select--line-disabled">
-    <div class="var-select__dot var-select--line-disabled"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">只读</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">可清除</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="pb">
+  <div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
       </div>
-    </div>
-    <div class="var-select__icon"><i class="var-icon var-icon--set var-icon-close-circle var-select__clear-icon" style="transition-duration: 0ms; font-size: 14px;"></i></div>
+      <div class="var-input-box__line">
+        <div class="var-input-box__dot"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
   </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
+</div>
+<div class="pb">
+  <div class="var-input-box var-input-box--outlined var--box var-select"><label class="var--relative var--block" for="">
+      <div class="var-input-box__controller">
+        <div class="var-input-box__icon"></div>
+        <div class="var-input-box__wrap">
+          <div class="var-select__wrap">
+            <div class="var-menu var-select__menu" var-select-cover="">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div>
+              <!--teleport start-->
+              <!--teleport end-->
+            </div>
+          </div>
+          <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-input-box__line">
+        <div class="var-input-box__line__start"></div>
+        <div class="var-input-box__line__notch">
+          <div class="var--ellipsis var-input-box__line__placeholder">请选择一个选项</div>
+        </div>
+        <div class="var-input-box__line__end"></div>
+      </div>
+    </label>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
   </div>
-  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-    <!--v-if-->
-  </transition-stub>
 </div>
 <div class="app-type">自定义图标</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-chevron-down" style="transition-duration: 300ms;"></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-chevron-down" style="transition-duration: 300ms;"></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
       </div>
+      <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
     </div>
-    <div class="var-select__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
+    </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">多选</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择多个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择多个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">纸片风格的多选</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择多个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择多个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">单选值校验</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择一个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择一个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
 </div>
 <div class="app-type">多选值校验</div>
-<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis">请选择多个选项</label>
-        <!--teleport start-->
-        <!--teleport end-->
+<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder">请选择多个选项</div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -286,27 +473,31 @@ exports[`test select example 1`] = `
 `;
 
 exports[`test select focus & blur methods 1`] = `
-"<div class="var-select var--box">
-  <div class="var-select__controller var-select--focus">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis var-select--focus var-select--placeholder-hint"></label>
-        <!--teleport start-->
-        <!--teleport end-->
+"<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller var-input-box--focus">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box--focus var-input-box__placeholder var-input-box--placeholder-hint"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot var-input-box--line-focus"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot var-select--spread"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -314,27 +505,31 @@ exports[`test select focus & blur methods 1`] = `
 `;
 
 exports[`test select focus & blur methods 2`] = `
-"<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis"></label>
-        <!--teleport start-->
-        <!--teleport end-->
+"<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -342,25 +537,61 @@ exports[`test select focus & blur methods 2`] = `
 `;
 
 exports[`test select hint to be false 1`] = `
-"<div class="var-select var--box">
-  <div class="var-select__controller">
-    <div class="var-select__icon var-select--non-hint"></div>
-    <div class="var-select__wrap var-select--non-hint">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select" style="text-align: left;">
-          <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis var-select--placeholder-hidden var-select--placeholder-non-hint"></label>
-        <!--teleport start-->
-        <!--teleport end-->
+"<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon var-input-box--non-hint"></div>
+      <div class="var-input-box__wrap var-input-box--wrap-non-hint">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hidden var-input-box--placeholder-non-hint"></div>
+      </div>
+      <div class="var-input-box__icon var-input-box--non-hint">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon var-select--non-hint">
-      <!--v-if-->
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
     </div>
-  </div>
-  <div class="var-select__line">
-    <div class="var-select__dot"></div>
-  </div>
+  </label>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test select size 1`] = `
+"<div class="var-input-box var-input-box--standard var-input-box--small var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
+    </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <!--v-if-->
   </transition-stub>
@@ -368,27 +599,31 @@ exports[`test select hint to be false 1`] = `
 `;
 
 exports[`test select validation 1`] = `
-"<div class="var-select var--box">
-  <div class="var-select__controller var-select--error">
-    <div class="var-select__icon"></div>
-    <div class="var-select__wrap">
-      <div class="var-menu var-select__menu" var-select-cover="">
-        <div class="var-select__select var-select--error" style="text-align: left;">
-          <div class="var-select__label">
-            <!--v-if-->
-          </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-        </div><label class="var-select__placeholder var--ellipsis var-select--error"></label>
-        <!--teleport start-->
-        <!--teleport end-->
+"<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller var-input-box--error">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select var-select--error" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box--error var-input-box__placeholder"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
       </div>
     </div>
-    <div class="var-select__icon">
-      <!--v-if-->
+    <div class="var-input-box__line var-input-box--line-error">
+      <div class="var-input-box__dot var-input-box--line-error"></div>
     </div>
-  </div>
-  <div class="var-select__line var-select--line-error">
-    <div class="var-select__dot var-select--line-error"></div>
-  </div>
+  </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
     <div class="var-form-details">
       <div class="var-form-details__error-message">
@@ -402,6 +637,74 @@ exports[`test select validation 1`] = `
         </transition-stub>
       </div>
     </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`test select variant 1`] = `
+"<div class="var-input-box var-input-box--standard var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-input-box__line">
+      <div class="var-input-box__dot"></div>
+    </div>
+  </label>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test select variant 2`] = `
+"<div class="var-input-box var-input-box--outlined var--box var-select"><label class="var--relative var--block" for="">
+    <div class="var-input-box__controller">
+      <div class="var-input-box__icon"></div>
+      <div class="var-input-box__wrap">
+        <div class="var-select__wrap">
+          <div class="var-menu var-select__menu" var-select-cover="">
+            <div class="var-select__select" style="text-align: left;">
+              <div class="var-select__label">
+                <!--v-if-->
+              </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+            </div>
+            <!--teleport start-->
+            <!--teleport end-->
+          </div>
+        </div>
+        <div class="var--ellipsis var-input-box__placeholder"></div>
+      </div>
+      <div class="var-input-box__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-input-box__line">
+      <div class="var-input-box__line__start"></div>
+      <div class="var-input-box__line__notch">
+        <div class="var--ellipsis var-input-box__line__placeholder"></div>
+      </div>
+      <div class="var-input-box__line__end"></div>
+    </div>
+  </label>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
   </transition-stub>
 </div>"
 `;

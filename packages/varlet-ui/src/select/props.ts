@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
-import { defineListenerProp } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
+import { props as inputBoxProps } from '../input/inputBoxProps'
 
 export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)
@@ -10,9 +11,6 @@ export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick
 export const props = {
   modelValue: {
     default: undefined,
-  },
-  placeholder: {
-    type: String,
   },
   multiple: {
     type: Boolean,
@@ -26,32 +24,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  line: {
-    type: Boolean,
-    default: true,
-  },
-  hint: {
-    type: Boolean,
-    default: true,
-  },
-  textColor: {
-    type: String,
-  },
-  focusColor: {
-    type: String,
-  },
-  blurColor: {
-    type: String,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
   readonly: {
-    type: Boolean,
-    default: false,
-  },
-  clearable: {
     type: Boolean,
     default: false,
   },
@@ -73,9 +46,22 @@ export const props = {
   },
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
-  onClick: defineListenerProp<(e: Event) => void>(),
-  onClear: defineListenerProp<(value: any) => void>(),
   onClose: defineListenerProp<(value: any) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
+  // dynamic internal
+  ...pickProps(inputBoxProps, [
+    'size',
+    'variant',
+    'placeholder',
+    'line',
+    'hint',
+    'textColor',
+    'focusColor',
+    'blurColor',
+    'disabled',
+    'clearable',
+    'onClick',
+    'onClear',
+  ]),
 }

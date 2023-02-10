@@ -1,135 +1,105 @@
 <template>
-  <div :class="classes(n(), n('$--box'), [formDisabled || disabled, n('--disabled')])" @click="handleClick">
-    <div
-      :class="
-        classes(
-          n('controller'),
-          [isFocus, n('--focus')],
-          [errorMessage, n('--error')],
-          [formDisabled || disabled, n('--disabled')]
-        )
-      "
-      :style="{
-        color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
-      }"
-    >
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="prepend-icon" />
-      </div>
+  <var-input-box
+    :class="classes(n())"
+    v-bind="{
+      value: modelValue,
+      size,
+      variant,
+      placeholder,
+      line,
+      hint,
+      textColor,
+      focusColor,
+      blurColor,
+      isFocus,
+      errorMessage,
+      formDisabled,
+      disabled,
+      clearable,
+      onClick: handleClick,
+      onClear: handleClear,
+    }"
+  >
+    <template #prepend-icon>
+      <slot name="prepend-icon" />
+    </template>
 
-      <div :class="classes(n('wrap'), [!hint, n('--non-hint')])" ref="wrapEl" @click="handleFocus">
-        <var-menu
-          var-select-cover
-          :class="classes(n('menu'))"
-          :offset-y="offsetY"
-          :disabled="formReadonly || readonly || formDisabled || disabled"
-          :default-style="false"
-          v-model:show="isFocus"
-          @close="handleBlur"
+    <div :class="classes(n('wrap'))" ref="wrapEl" @click="handleFocus">
+      <var-menu
+        var-select-cover
+        :class="classes(n('menu'))"
+        :offset-y="offsetY"
+        :disabled="formReadonly || readonly || formDisabled || disabled"
+        :default-style="false"
+        v-model:show="isFocus"
+        @close="handleBlur"
+      >
+        <div
+          :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
+          :style="{
+            textAlign,
+            color: textColor,
+          }"
         >
-          <div
-            :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
-            :style="{
-              textAlign,
-              color: textColor,
-            }"
-          >
-            <div :class="n('label')">
-              <slot name="selected" v-if="!isEmptyModelValue">
-                <template v-if="multiple">
-                  <div :class="n('chips')" v-if="chip">
-                    <var-chip
-                      :class="n('chip')"
-                      var-select-cover
-                      closable
-                      size="small"
-                      :type="errorMessage ? 'danger' : undefined"
-                      v-for="l in labels"
-                      :key="l"
-                      @click.stop
-                      @close="() => handleClose(l)"
-                    >
-                      {{ l }}
-                    </var-chip>
-                  </div>
-                  <div :class="n('values')" v-else>
-                    {{ labels.join(separator) }}
-                  </div>
-                </template>
+          <div :class="n('label')">
+            <slot name="selected" v-if="!isEmptyModelValue">
+              <template v-if="multiple">
+                <div :class="n('chips')" v-if="chip">
+                  <var-chip
+                    :class="n('chip')"
+                    var-select-cover
+                    closable
+                    size="small"
+                    :type="errorMessage ? 'danger' : undefined"
+                    v-for="l in labels"
+                    :key="l"
+                    @click.stop
+                    @close="() => handleClose(l)"
+                  >
+                    {{ l }}
+                  </var-chip>
+                </div>
+                <div :class="n('values')" v-else>
+                  {{ labels.join(separator) }}
+                </div>
+              </template>
 
-                <span v-else>{{ label }}</span>
-              </slot>
-            </div>
-
-            <slot name="arrow-icon" :focus="isFocus">
-              <var-icon
-                :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
-                var-select-cover
-                name="menu-down"
-                :transition="300"
-              />
+              <span v-else>{{ label }}</span>
             </slot>
           </div>
-          <label
-            :class="
-              classes(
-                n('placeholder'),
-                n('$--ellipsis'),
-                [isFocus, n('--focus')],
-                [errorMessage, n('--error')],
-                [formDisabled || disabled, n('--disabled')],
-                computePlaceholderState(),
-                [!hint, n('--placeholder-non-hint')]
-              )
-            "
-            :style="{
-              color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
-            }"
-          >
-            {{ placeholder }}
-          </label>
 
-          <template #menu>
-            <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
-              <slot />
-            </div>
-          </template>
-        </var-menu>
-      </div>
+          <slot name="arrow-icon" :focus="isFocus">
+            <var-icon
+              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
+              var-select-cover
+              name="menu-down"
+              :transition="300"
+            />
+          </slot>
+        </div>
 
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="append-icon">
-          <var-icon :class="n('clear-icon')" name="close-circle" size="14px" v-if="clearable" @click="handleClear" />
-        </slot>
-      </div>
+        <template #menu>
+          <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+            <slot />
+          </div>
+        </template>
+      </var-menu>
     </div>
+    <template #append-icon>
+      <slot name="append-icon" />
+    </template>
 
-    <div
-      :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
-      :style="{ background: !errorMessage ? blurColor : undefined }"
-      v-if="line"
-    >
-      <div
-        :class="
-          classes(
-            n('dot'),
-            [isFocus, n('--spread')],
-            [formDisabled || disabled, n('--line-disabled')],
-            [errorMessage, n('--line-error')]
-          )
-        "
-        :style="{ background: !errorMessage ? focusColor : undefined }"
-      ></div>
-    </div>
-
-    <var-form-details :error-message="errorMessage" />
-  </div>
+    <template #form-details>
+      <var-form-details :error-message="errorMessage" />
+    </template>
+  </var-input-box>
 </template>
 
 <script lang="ts">
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
+import VarInputBox from '../input/InputBox.vue'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '@varlet/shared'
@@ -151,6 +121,7 @@ export default defineComponent({
     VarIcon,
     VarMenu,
     VarChip,
+    VarInputBox,
     VarFormDetails,
   },
   props,
@@ -215,19 +186,8 @@ export default defineComponent({
       return option?.label.value ?? ''
     }
 
-    const computePlaceholderState = () => {
-      const { hint, modelValue } = props
-
-      if (!hint && !isEmpty(modelValue)) {
-        return n('--placeholder-hidden')
-      }
-      if (hint && (!isEmpty(modelValue) || isFocus.value)) {
-        return n('--placeholder-hint')
-      }
-    }
-
     const getWrapWidth = () => {
-      return (wrapEl.value && window.getComputedStyle(wrapEl.value as HTMLElement).width) || '0px'
+      return (wrapEl.value && window.getComputedStyle(wrapEl.value).width) || '0px'
     }
 
     const handleFocus = () => {
@@ -391,7 +351,6 @@ export default defineComponent({
       menuEl,
       n,
       classes,
-      computePlaceholderState,
       handleFocus,
       handleBlur,
       handleClear,

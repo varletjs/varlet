@@ -1,14 +1,11 @@
 import type { PropType } from 'vue'
-import { defineListenerProp } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
+import { props as inputBoxProps } from './inputBoxProps'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
 export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
-}
-
-export function variantValidator(variant: string) {
-  return ['outlined', 'standard'].includes(variant)
 }
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
@@ -26,15 +23,6 @@ export const props = {
     default: 'text',
     validator: typeValidator,
   },
-  size: {
-    type: String as PropType<'small'>,
-    validator: (size: string) => size === 'small',
-  },
-  variant: {
-    type: String as PropType<'outlined' | 'standard'>,
-    default: 'standard',
-    validator: variantValidator,
-  },
   textarea: {
     type: Boolean,
     default: false,
@@ -43,38 +31,10 @@ export const props = {
     type: [String, Number],
     default: 8,
   },
-  placeholder: {
-    type: String,
-  },
-  line: {
-    type: Boolean,
-    default: true,
-  },
-  hint: {
-    type: Boolean,
-    default: true,
-  },
-  textColor: {
-    type: String,
-  },
-  focusColor: {
-    type: String,
-  },
-  blurColor: {
-    type: String,
-  },
   maxlength: {
     type: [String, Number],
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
   readonly: {
-    type: Boolean,
-    default: false,
-  },
-  clearable: {
     type: Boolean,
     default: false,
   },
@@ -95,9 +55,22 @@ export const props = {
   },
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
-  onClick: defineListenerProp<(e: Event) => void>(),
-  onClear: defineListenerProp<(value: string) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
+  // dynamic internal
+  ...pickProps(inputBoxProps, [
+    'size',
+    'variant',
+    'placeholder',
+    'line',
+    'hint',
+    'textColor',
+    'focusColor',
+    'blurColor',
+    'disabled',
+    'clearable',
+    'onClick',
+    'onClear',
+  ]),
 }

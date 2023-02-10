@@ -17,6 +17,21 @@ const value = ref('')
 </template>
 ```
 
+### Small Size
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-input size="small" placeholder="Please enter text" v-model="value" />
+  <var-input size="small" placeholder="Please enter text" v-model="value" variant="outlined" />
+</template>
+```
+
 ### Plain Mode
 
 If you only need the basic functionality of the component, you can remove some styles through attributes.
@@ -228,20 +243,20 @@ const value = ref('')
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
+| `--input-box-input-text-color` | `#555` |
+| `--input-box-error-color` | `var(--color-danger)` |
+| `--input-box-blur-color` | `#888` |
+| `--input-box-focus-color` | `var(--color-primary)` |
+| `--input-box-placeholder-size` | `16px` |
+| `--input-box-textarea-padding-top` | `8px` |
+| `--input-box-input-padding-top` | `16px` |
+| `--input-box-input-padding-bottom` | `16px` |
+| `--input-box-input-padding-left` | `14px` |
+| `--input-box-input-padding-right` | `14px` |
+| `--input-box-icon-padding` | `20px 0 0` |
+| `--input-box-icon-size` | `20px` |
+| `--input-box-line-size` | `1px` |
+| `--input-box-line-focus-size` | `2px` |
+| `--input-box-disabled-color` | `var(--color-text-disabled)` |
 | `--input-input-height` | `24px` |
-| `--input-input-text-color` | `#555` |
-| `--input-error-color` | `var(--color-danger)` |
-| `--input-blur-color` | `#888` |
-| `--input-focus-color` | `var(--color-primary)` |
-| `--input-placeholder-size` | `16px` |
 | `--input-textarea-height` | `auto` |
-| `--input-textarea-padding-top` | `8px` |
-| `--input-input-padding-top` | `16px` |
-| `--input-input-padding-bottom` | `16px` |
-| `--input-input-padding-left` | `14px` |
-| `--input-input-padding-right` | `14px` |
-| `--input-icon-padding` | `20px 0 0` |
-| `--input-icon-size` | `20px` |
-| `--input-line-size` | `1px` |
-| `--input-line-focus-size` | `2px` |
-| `--input-disabled-color` | `var(--color-text-disabled)` |
