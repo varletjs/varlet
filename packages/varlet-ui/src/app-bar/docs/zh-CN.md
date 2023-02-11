@@ -26,7 +26,7 @@
     <template #left>
       <var-button
         color="transparent"
-        text-color="#ffffff"
+        text-color="#fff"
         round
         text
       >
@@ -35,10 +35,10 @@
     </template>
 
     <template #right>
-      <var-menu placement="bottom-start" :offset-y="12">
+      <var-menu>
         <var-button
           color="transparent"
-          text-color="#ffffff"
+          text-color="#fff"
           round
           text
         >
@@ -46,9 +46,9 @@
         </var-button>
 
         <template #menu>
-          <var-cell v-ripple>选项卡</var-cell>
-          <var-cell v-ripple>选项卡</var-cell>
-          <var-cell v-ripple>选项卡</var-cell>
+          <var-cell ripple>选项卡</var-cell>
+          <var-cell ripple>选项卡</var-cell>
+          <var-cell ripple>选项卡</var-cell>
         </template>
       </var-menu>
     </template>
@@ -73,8 +73,59 @@
   <var-app-bar
     title="标题" 
     title-position="center" 
-    color="linear-gradient(var(--color-primary), var(--color-info))"
+    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
   />
+</template>
+```
+
+### 扩展内容
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-app-bar
+    round
+    image="https://varlet.gitee.io/varlet-ui/tree.jpeg"
+    image-linear-gradient="to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%"
+  >
+    标题
+    <template #left>
+      <var-button round text color="transparent" text-color="#fff">
+        <var-icon name="menu" :size="24" />
+      </var-button>
+    </template>
+
+    <template #right>
+      <var-button round text color="transparent" text-color="#fff">
+        <var-icon name="map-marker-radius" :size="24" />
+      </var-button>
+      <var-button round text color="transparent" text-color="#fff">
+        <var-icon name="star" :size="24" />
+      </var-button>
+      <var-button round text color="transparent" text-color="#fff">
+        <var-icon name="heart" :size="24" />
+      </var-button>
+    </template>
+
+    <template #content>
+      <var-tabs
+        style="margin-top: 20vw"
+        color="transparent"
+        active-color="#fff"
+        inactive-color="#ddd"
+        v-model:active="active"
+      >
+        <var-tab>选项卡</var-tab>
+        <var-tab>选项卡</var-tab>
+        <var-tab>选项卡</var-tab>
+      </var-tabs>
+    </template>
+  </var-app-bar>
 </template>
 ```
 
@@ -90,6 +141,8 @@
 | `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left`  |
 | `elevation`      | 是否使用海拔                            | _boolean_ | `true`  |
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
+| `image`          | 背景图片                            | _string_ | `-` |
+| `image-linear-gradient` | 背景图片渐变色 | _string_ | `-` |
 
 ### 插槽
 
@@ -98,6 +151,7 @@
 | `default` | 自定义标题内容，会覆盖 `title` 的内容 | `-` |
 | `left` | 插入至导航栏左侧的内容 | `-` |
 | `right` | 插入至导航栏右侧的内容 | `-` |
+| `content` | 扩展内容 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

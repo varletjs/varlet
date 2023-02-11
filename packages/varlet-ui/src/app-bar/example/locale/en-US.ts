@@ -7,4 +7,5 @@ export default {
   option: 'OPTION',
   search: 'search',
   round: 'Use Border Radius',
+  custom: 'Custom Content',
 }

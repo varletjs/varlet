@@ -7,4 +7,5 @@ export default {
   option: '选项卡',
   search: '搜索',
   round: '开启圆角',
+  custom: '扩展内容',
 }

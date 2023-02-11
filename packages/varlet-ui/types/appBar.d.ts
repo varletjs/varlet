@@ -12,6 +12,8 @@ export interface AppBarProps extends BasicAttributes {
   titlePosition?: AppBarTitlePosition
   elevation?: boolean
   round?: boolean
+  image?: string
+  imageLinearGradient?: string
 }
 
 export class AppBar extends VarComponent {

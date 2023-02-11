@@ -12,15 +12,20 @@
 
 .var-app-bar {
   position: relative;
-  display: flex;
+  z-index: 0;
   width: 100%;
   font-size: var(--app-bar-font-size);
-  justify-content: center;
-  align-items: center;
-  height: var(--app-bar-height);
   background: var(--app-bar-color);
   color: var(--app-bar-text-color);
   transition: background-color 0.25s;
+
+  &__toolbar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--app-bar-height);
+  }
 
   &__title {
     font-size: var(--app-bar-title-font-size);

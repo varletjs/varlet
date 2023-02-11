@@ -26,4 +26,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  image: {
+    type: String,
+  },
+  imageLinearGradient: {
+    type: String,
+  },
 }
