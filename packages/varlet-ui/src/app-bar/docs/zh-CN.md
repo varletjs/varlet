@@ -114,7 +114,7 @@ const active = ref(0)
 
     <template #content>
       <var-tabs
-        style="margin-top: 20vw"
+        style="margin-top: 100px"
         color="transparent"
         active-color="#fff"
         inactive-color="#ddd"

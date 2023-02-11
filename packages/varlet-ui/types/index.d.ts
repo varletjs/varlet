@@ -43,6 +43,7 @@ export * from './menu'
 export * from './option'
 export * from './overlay'
 export * from './pagination'
+export * from './paper'
 export * from './picker'
 export * from './popup'
 export * from './progress'
@@ -119,6 +120,7 @@ declare module 'vue' {
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
+    VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
     VarProgress: typeof import('@varlet/ui')['_ProgressComponent']
