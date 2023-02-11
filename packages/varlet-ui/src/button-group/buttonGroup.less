@@ -11,6 +11,14 @@
   :not(:first-child):not(:last-child) {
     border-radius: 0;
   }
+  &--mode {
+    :first-child {
+      border-right: 0;
+    }
+    :last-child {
+      border-left: 0;
+    }
+  }
   &--vertical {
     flex-direction: column;
     :first-child {
@@ -22,6 +30,11 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-bottom-left-radius: var(--button-border-radius);
+      border-top: 0;
+    }
+    :not(:first-child):not(:last-child) {
+      border-top: 0;
+      //border-bottom: 0;
     }
   }
 }

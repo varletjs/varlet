@@ -24,12 +24,13 @@ watchLang(use)
   <!--    <var-button>信息按钮</var-button>-->
   <!--  </var-button-group>-->
 
-  <var-button-group size="large" type="primary" vertical mode="outline">
+  <var-button-group size="large" type="primary" mode="outline">
     <var-button>默认按钮</var-button>
     <var-button size="large">主要按钮</var-button>
     <var-button>信息按钮</var-button>
-    <var-button>默认按钮</var-button>
-    <var-button size="large">主要按钮</var-button>
-    <var-button>信息按钮</var-button>
+
+    <!--    <var-button>默认按钮</var-button>-->
+    <!--    <var-button size="large">主要按钮</var-button>-->
+    <!--    <var-button>信息按钮</var-button>-->
   </var-button-group>
 </template>
