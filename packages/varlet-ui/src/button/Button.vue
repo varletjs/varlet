@@ -69,14 +69,6 @@ export default defineComponent({
       size: 'normal',
     }
 
-    // const getGroupMode = computed(() => {
-    //   const modeArray = ['text', 'outline']
-    //   return {
-    //     text: props.text || modeArray.includes((buttonGroup || {}).mode || ''),
-    //     outline: props.outline || (buttonGroup || {}).mode === 'outline'
-    //   }
-    // })
-
     const getStyles = computed(() => {
       const modeArray = ['text', 'outline']
       return {
