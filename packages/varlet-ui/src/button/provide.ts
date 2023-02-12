@@ -37,6 +37,7 @@ export interface ButtonProvider {
   size?: 'normal' | 'mini' | 'small' | 'large'
   color?: string
   mode?: 'text' | 'outline'
+  element: ComputedRef<HTMLElement | null>
 }
 
 export function useButtonGroup() {

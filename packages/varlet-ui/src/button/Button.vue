@@ -1,6 +1,7 @@
 <template>
   <button
     v-ripple="{ disabled: disabled || !ripple }"
+    ref="buttonEl"
     :class="
       classes(
         n(),
@@ -45,7 +46,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { computed, ComputedRef, defineComponent, reactive, ref, type Ref, unref } from 'vue'
+import { computed, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useButtonGroup } from './provide'
