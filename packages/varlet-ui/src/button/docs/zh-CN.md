@@ -163,6 +163,126 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+### 主题色按钮组
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>默认按钮</var-button>
+      <var-button>默认按钮</var-button>
+      <var-button>默认按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary">
+      <var-button type="primary">主要按钮</var-button>
+      <var-button type="primary">主要按钮</var-button>
+      <var-button type="primary">主要按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="info">
+      <var-button type="info">信息按钮</var-button>
+      <var-button type="info">信息按钮</var-button>
+      <var-button type="info">信息按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="success">
+      <var-button type="success">成功按钮</var-button>
+      <var-button type="success">成功按钮</var-button>
+      <var-button type="success">成功按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="warning">
+      <var-button type="warning">警告按钮</var-button>
+      <var-button type="warning">警告按钮</var-button>
+      <var-button type="warning">警告按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="danger">
+      <var-button type="danger">危险按钮</var-button>
+      <var-button type="danger">危险按钮</var-button>
+      <var-button type="danger">危险按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 按钮组尺寸
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group size="normal" type="primary">
+      <var-button>常规按钮</var-button>
+      <var-button>常规按钮</var-button>
+      <var-button>常规按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="small" type="success">
+      <var-button>小型按钮</var-button>
+      <var-button>小型按钮</var-button>
+      <var-button>小型按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="mini" type="warning">
+      <var-button>迷你按钮</var-button>
+      <var-button>迷你按钮</var-button>
+      <var-button>迷你按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="large" type="danger">
+      <var-button>大型按钮</var-button>
+      <var-button>大型按钮</var-button>
+      <var-button>大型按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 文字按钮组
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group mode="text">
+      <var-button>文字按钮</var-button>
+      <var-button>文字按钮</var-button>
+      <var-button>文字按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" mode="outline">
+      <var-button>外边框按钮</var-button>
+      <var-button>外边框按钮</var-button>
+      <var-button>外边框按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 自定义按钮组颜色
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>自定义按钮组颜色</var-button>
+    <var-button>自定义按钮组颜色</var-button>
+    <var-button>自定义按钮组颜色</var-button>
+  </var-button-group>
+</template>
+```
+
+### 按钮组竖直排列
+
+```html
+<template>
+  <var-button-group type="primary" mode="outline" vertical>
+    <var-button>主要按钮</var-button>
+    <var-button>主要按钮</var-button>
+    <var-button>主要按钮</var-button>
+  </var-button-group>
+</template>
+```
+
 ## API
 
 ### 属性
