@@ -176,6 +176,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Avatar 头像',
+          'en-US': 'Avatar',
+        },
+        doc: 'avatar',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },

@@ -68,10 +68,10 @@ watchLang(use)
 
 <style scoped lang="less">
 .image-example-fit-item {
-  color: #888;
-  text-align: center;
   margin-right: 11px;
   margin-bottom: 11px;
+  text-align: center;
+  color: #888;
 
   .image-example-margin-bottom {
     margin-bottom: 5px;
