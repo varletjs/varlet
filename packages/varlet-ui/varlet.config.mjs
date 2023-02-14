@@ -15,7 +15,7 @@ export default defineConfig({
           ? 'http://localhost:3000'
           : 'https://varlet.gitee.io/varlet-ui-playground',
     },
-    menu: [
+    menu: [ 
       {
         text: {
           'zh-CN': '开发指南',
@@ -200,6 +200,22 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Ellipsis 文本省略',
+          'en-US': 'Ellipsis',
+        },
+        doc: 'ellipsis',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Paper 纸张',
+          'en-US': 'Paper',
+        },
+        doc: 'paper',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Elevation 海拔效果',
           'en-US': 'Elevation',
         },
@@ -212,14 +228,6 @@ export default defineConfig({
           'en-US': 'Display Components',
         },
         type: 1,
-      },
-      {
-        text: {
-          'zh-CN': 'Paper 纸张',
-          'en-US': 'Paper',
-        },
-        doc: 'paper',
-        type: 2,
       },
       {
         text: {

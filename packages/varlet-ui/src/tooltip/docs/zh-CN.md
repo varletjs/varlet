@@ -186,6 +186,7 @@ import { Snackbar } from '@varlet/ui'
 | `offset-x` | x 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `offset-y` | y 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `teleport` | 挂载的位置 | _TeleportProps['to']_ | `body`    |
+| `same-width` | 是否与触发元素同宽 | _boolean_ | `false`  |
 | `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
 

@@ -292,4 +292,10 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   tooltip: {
     path: '/tooltip',
   },
+  paper: {
+    path: '/paper',
+  },
+  ellipsis: {
+    path: '/ellipsis',
+  },
 }

@@ -19,7 +19,10 @@
           @mouseenter="handlePopoverMouseenter"
           @mouseleave="handlePopoverMouseleave"
         >
-          <div :style="{ background: color }" :class="classes(n('content-container'), n(`--${type}`))">
+          <div
+            :style="{ background: color, width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined }"
+            :class="classes(n('content-container'), n(`--${type}`))"
+          >
             <slot name="content">{{ content }}</slot>
           </div>
         </div>
@@ -31,6 +34,7 @@
 <script lang="ts">
 import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
+import { toSizeUnit } from '../utils/elements'
 import { usePopover } from '../menu/usePopover'
 import { props } from './props'
 
@@ -43,6 +47,7 @@ export default defineComponent({
     const {
       popover,
       host,
+      hostSize,
       show,
       zIndex,
       handleHostClick,
@@ -60,8 +65,10 @@ export default defineComponent({
     } = usePopover(props)
 
     return {
+      toSizeUnit,
       popover,
       host,
+      hostSize,
       show,
       zIndex,
       n,
@@ -81,6 +88,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import '../styles/common.less';
+@import '../styles/common';
 @import './tooltip';
 </style>

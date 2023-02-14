@@ -186,6 +186,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
 | `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to']_ | `body`    |
+| `same-width`    | Whether to same width as trigger element                   | _boolean_ | `false`           |
 | `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false`   |
 | `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `hover`   |
 
