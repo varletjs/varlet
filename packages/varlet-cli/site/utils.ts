@@ -5,6 +5,7 @@ export interface Menu {
   doc: string
   text: Record<string, string>
   type: MenuTypes
+  useRouteMobile: boolean
 }
 
 export enum MenuTypes {
