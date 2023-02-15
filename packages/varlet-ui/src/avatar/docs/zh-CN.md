@@ -8,7 +8,7 @@
 
 ```html
 <template>
-  <var-space align="end">
+  <var-space align="center">
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="small" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
@@ -34,51 +34,44 @@
 ```html
 <template>
   <var-space>
-    <div class="avatar-example-fit-item">
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <span>fill</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="cover" />
       <span>cover</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />
       <span>contain</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="none" />
       <span>none</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="scale-down" />
       <span>scale-down</span>
-    </div>
+    </var-space>
   </var-space>
 </template>
-
-<style lang="less">
-.avatar-example-fit-item {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  span {
-    margin-top: 5px;
-  }
-}
-</style>
 ```
 
 ### 字体大小
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const text = ref('VARLET')
+</script>
+
 <template>
   <var-space direction="column">
     <var-space>
-      <var-avatar> {{ text }} </var-avatar>
-      <var-avatar round> {{ text }} </var-avatar>
+      <var-avatar>{{ text }}</var-avatar>
+      <var-avatar :round="false">{{ text }}</var-avatar>
     </var-space>
     <var-input v-model="text" />
   </var-space>
@@ -90,10 +83,10 @@
 ```html
 <template>
   <var-space>
-    <var-avatar round color="#4a79f5">
-      {{ text }}
+    <var-avatar color="#4a79f5">
+      <var-icon name="fire" />
     </var-avatar>
-    <var-avatar round color="#eb5a3f">
+    <var-avatar :round="false" color="#eb5a3f">
       <var-icon name="fire" />
     </var-avatar>
   </var-space>
@@ -203,7 +196,7 @@ import logo from '../../assets/logo.png'
 | `src`         | 头像的地址 | _string_ | `-` |
 | `fit`         | 头像图片的填充模式，可选值 `fill contain cover none scale-down` | _string_ | `cover` |
 | `bordered`    | 头像是否带边框	| _boolean_ | `false` |
-| `borderColor` | 头像边框颜色	| _string_ | `-` |
+| `border-color` | 头像边框颜色	| _string_ | `-` |
 | `loading`     | 当开启懒加载时, 加载中显示的图片	| _string_ | `-` |
 | `error`       | 当开启懒加载时, 加载失败显示的图片	| _string_ | `-` |
 | `lazy`        | 是否开启懒加载	| _boolean_ | `false` |
@@ -247,14 +240,14 @@ import logo from '../../assets/logo.png'
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--avatar-default-color` |  `#f5f5f5`|
+| `--avatar-text-color` |  `#f5f5f5`|
 | `--avatar-border-radius` | `4px` |
 | `--avatar-mini-size` | `28px`|
 | `--avatar-small-size` |  `36px`|
 | `--avatar-normal-size` |  `48px`|
 | `--avatar-large-size` |  `64px`|
-| `--avatar-default-border-color` |  `#fff`|
-| `--avatar-default-background-color` |  `#ccc`|
+| `--avatar-border` |  `2px solid #fff`|
+| `--avatar-background-color` | `#bebebe`|
 
 #### AvatarGroup Variables
 

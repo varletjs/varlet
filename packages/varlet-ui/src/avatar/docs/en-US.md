@@ -8,7 +8,7 @@ Avatar Component
 
 ```html
 <template>
-  <var-space align="end">
+  <var-space align="center">
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="small" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
@@ -34,51 +34,44 @@ Avatar Component
 ```html
 <template>
   <var-space>
-    <div class="avatar-example-fit-item">
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <span>fill</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="cover" />
       <span>cover</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />
       <span>contain</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="none" />
       <span>none</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="scale-down" />
       <span>scale-down</span>
-    </div>
+    </var-space>
   </var-space>
 </template>
-
-<style lang="less">
-.avatar-example-fit-item {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  span {
-    margin-top: 5px;
-  }
-}
-</style>
 ```
 
 ### Font Size
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const text = ref('VARLET')
+</script>
+
 <template>
   <var-space direction="column">
     <var-space>
       <var-avatar> {{ text }} </var-avatar>
-      <var-avatar round> {{ text }} </var-avatar>
+      <var-avatar :round="false"> {{ text }} </var-avatar>
     </var-space>
     <var-input v-model="text" />
   </var-space>
@@ -90,10 +83,10 @@ Avatar Component
 ```html
 <template>
   <var-space>
-    <var-avatar round color="#4a79f5">
-      {{ text }}
+    <var-avatar color="#4a79f5">
+      <var-icon name="fire" />
     </var-avatar>
-    <var-avatar round color="#eb5a3f">
+    <var-avatar :round="false" color="#eb5a3f">
       <var-icon name="fire" />
     </var-avatar>
   </var-space>
@@ -204,7 +197,7 @@ import logo from '../../assets/logo.png'
 | `src`         | Address of avatar                                                   | _string_            | `-` |
 | `fit`         | Filling mode of avatar image, optional value `fill contain cover none scale-down` | _string_            | `cover` |
 | `bordered`    | Avatar with or without border                                                | _boolean_ | `false` |
-| `borderColor` | Avatar border color                                                  | _string_ | `-` |
+| `border-color`| Avatar border color                                                  | _string_ | `-` |
 | `loading`     | When lazy loading is enabled, the image displayed in the load                                 | _string_ | `-` |
 | `error`       | When lazy loading is enabled, the image displayed when loading fails                           | _string_ | `-` |
 | `lazy`        | Whether to enable lazy loading                                               | _boolean_ | `false` |
@@ -248,14 +241,14 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--avatar-default-color` |  `#f5f5f5`|
+| `--avatar-text-color` |  `#f5f5f5`|
 | `--avatar-border-radius` | `4px` |
 | `--avatar-mini-size` | `28px`|
 | `--avatar-small-size` |  `36px`|
 | `--avatar-normal-size` |  `48px`|
 | `--avatar-large-size` |  `64px`|
-| `--avatar-default-border-color` |  `#fff`|
-| `--avatar-default-background-color` |  `#ccc`|
+| `--avatar-border` |  `2px solid #fff`|
+| `--avatar-background-color` |  `#bebebe`|
 
 #### AvatarGroup Variables
 

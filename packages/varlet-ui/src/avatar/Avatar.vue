@@ -10,30 +10,21 @@
       borderColor,
       backgroundColor: color,
     }"
+    @click="handleClick"
   >
     <template v-if="src">
       <img
-        :class="n('image')"
-        :src="src"
-        :style="{ objectFit: fit }"
         v-if="lazy"
         v-lazy="src"
-        :lazy-loading="loading"
-        :lazy-error="loading"
-        @load="handleLoad"
-        @error="handleError"
-        @click="handleClick"
-      />
-
-      <img
         :class="n('image')"
         :src="src"
         :style="{ objectFit: fit }"
-        v-else
+        :lazy-loading="loading"
+        :lazy-error="error"
         @load="handleLoad"
-        @error="handleError"
-        @click="handleClick"
       />
+
+      <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
     </template>
 
     <div
@@ -50,11 +41,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUpdated } from 'vue'
+import { defineComponent, ref, onMounted, onUpdated, type Ref } from 'vue'
 import { props, internalSizeValidator, sizeValidator } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
-import type { Ref } from 'vue'
 import type { LazyHTMLElement } from '../lazy'
 
 const { n, classes } = createNamespace('avatar')
@@ -66,7 +56,6 @@ export default defineComponent({
   setup(props) {
     const avatarElement: Ref<HTMLDivElement | null> = ref(null)
     const textElement: Ref<HTMLDivElement | null> = ref(null)
-
     const scale: Ref<number> = ref(1)
 
     const getScale = () => {
@@ -98,9 +87,7 @@ export default defineComponent({
     }
 
     const handleError = (e: Event) => {
-      const { lazy, onError } = props
-
-      !lazy && call(onError, e)
+      call(props.onError, e)
     }
 
     const handleClick = (e: Event) => {
@@ -108,7 +95,6 @@ export default defineComponent({
     }
 
     onMounted(getScale)
-
     onUpdated(getScale)
 
     return {

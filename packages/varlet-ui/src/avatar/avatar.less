@@ -1,12 +1,12 @@
 :root {
-  --avatar-default-color: #f5f5f5;
+  --avatar-text-color: #f5f5f5;
   --avatar-border-radius: 4px;
   --avatar-mini-size: 28px;
   --avatar-small-size: 36px;
   --avatar-normal-size: 48px;
   --avatar-large-size: 64px;
-  --avatar-default-border-color: #fff;
-  --avatar-default-background-color: #ccc;
+  --avatar-border: 2px solid #fff;
+  --avatar-background-color: #bebebe;
 }
 
 .var-avatar {
@@ -14,9 +14,10 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  color: var(--avatar-default-color);
+  color: var(--avatar-text-color);
   border-radius: var(--avatar-border-radius);
-  background-color: var(--avatar-default-background-color);
+  background-color: var(--avatar-background-color);
+  transition: background-color 0.25s;
 
   img {
     width: 100%;
@@ -48,13 +49,11 @@
   }
 
   &--bordered {
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--avatar-default-border-color);
+    border: var(--avatar-border);
   }
 
   &__text {
-    padding: 0 3px;
+    padding: 0 4px;
     white-space: nowrap;
   }
 }

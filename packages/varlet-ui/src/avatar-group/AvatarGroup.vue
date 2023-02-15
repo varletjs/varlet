@@ -1,16 +1,15 @@
 <template>
   <div :class="classes(n(), [vertical, n('--column'), n('--row')])" :style="rootStyles">
-    <slot></slot>
-    <slot name="rest"></slot>
+    <slot />
+    <slot name="rest" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import type { ComputedRef, StyleValue } from 'vue'
 
 const { n, classes } = createNamespace('avatar-group')
 
@@ -41,5 +40,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './avatarGroup.less';
+@import './avatarGroup';
 </style>

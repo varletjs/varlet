@@ -5,13 +5,11 @@ import VarSpace from '../../space'
 import VarIcon from '../../icon'
 import VarInput from '../../input'
 import VarAvatarGroup from '../../avatar-group'
-import VarTooltip from '../../tooltip'
-import VarMenu from '../../menu'
 import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { watchDarkMode, watchLang, AppType } from '@varlet/cli/client'
 
-const text = ref('varlet')
+const text = ref('VARLET')
 
 watchLang(use)
 watchDarkMode(dark)
@@ -34,43 +32,43 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.fitMode }}</app-type>
   <var-space>
-    <div class="avatar-example-fit-item">
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <span>fill</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="cover" />
       <span>cover</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />
       <span>contain</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="none" />
       <span>none</span>
-    </div>
-    <div class="avatar-example-fit-item">
+    </var-space>
+    <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="scale-down" />
       <span>scale-down</span>
-    </div>
+    </var-space>
   </var-space>
 
   <app-type>{{ pack.fontSize }}</app-type>
   <var-space direction="column">
     <var-space>
-      <var-avatar> {{ text }} </var-avatar>
-      <var-avatar round> {{ text }} </var-avatar>
+      <var-avatar>{{ text }}</var-avatar>
+      <var-avatar :round="false">{{ text }}</var-avatar>
     </var-space>
     <var-input v-model="text" />
   </var-space>
 
   <app-type>{{ pack.backgroundColor }}</app-type>
   <var-space>
-    <var-avatar round color="#4a79f5">
-      {{ text }}
+    <var-avatar color="#4a79f5">
+      <var-icon name="fire" />
     </var-avatar>
-    <var-avatar round color="#eb5a3f">
+    <var-avatar :round="false" color="#eb5a3f">
       <var-icon name="fire" />
     </var-avatar>
   </var-space>
@@ -97,16 +95,3 @@ watchDarkMode(dark)
     </template>
   </var-avatar-group>
 </template>
-
-<style lang="less">
-.avatar-example-fit-item {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  span {
-    margin-top: 5px;
-  }
-}
-</style>
