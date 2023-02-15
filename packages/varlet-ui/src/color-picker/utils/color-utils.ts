@@ -178,6 +178,8 @@ export function HexToRGBA(hex: Hex): RGBA {
 
 export function HexToHSVA(hex: Hex): HSVA {
   const rgb = HexToRGBA(hex)
+  console.log(rgb)
+
   return RGBAtoHSVA(rgb)
 }
 
@@ -531,14 +533,12 @@ export function RGBtoRGBA(rgba: RGBA): RGBA {
   }
   return rgba
 }
-export function RGBtoHSV(rgb: RGB): HSV {
-  if (!rgb) {
-    return { h: 0, s: 1, v: 1 }
-  }
+export function RGBtoHSV(rgba: RGB): HSV {
+  if (!rgba) return { h: 0, s: 1, v: 1, a: 1 }
 
-  const r = rgb.r / 255
-  const g = rgb.g / 255
-  const b = rgb.b / 255
+  const r = rgba.r / 255
+  const g = rgba.g / 255
+  const b = rgba.b / 255
   const max = Math.max(r, g, b)
   const min = Math.min(r, g, b)
 
@@ -554,24 +554,14 @@ export function RGBtoHSV(rgb: RGB): HSV {
     }
   }
 
-  if (h < 0) {
-    h += 360
-  }
+  if (h < 0) h = h + 360
 
   const s = max === 0 ? 0 : (max - min) / max
   const hsv = [h, s, max]
 
-  return { h: hsv[0], s: +hsv[1].toFixed(2), v: +hsv[2].toFixed(2) }
+  return { h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a }
 }
-export function HSVtoHSL(hsv: HSV): HSL {
-  const { h, s, v } = hsv
 
-  const l = Number((v - (v * s) / 2).toFixed(2))
-
-  const sprime = l === 1 || l === 0 ? 0 : (v - l) / Math.min(l, 1 - l)
-
-  return { h, s: Number(sprime.toFixed(2)), l }
-}
 export type ColorPickerMode = {
   inputProps: Record<string, unknown>
   inputs: {
@@ -738,6 +728,16 @@ export function HSVtoRGB(hsva: HSV): RGB {
 
   return { r: rgb[0], g: rgb[1], b: rgb[2], a }
 }
+export function HSVtoHSL(hsva: HSV): HSL {
+  const { h, s, v, a } = hsva
+
+  const l = v - (v * s) / 2
+
+  const sprime = l === 1 || l === 0 ? 0 : (v - l) / Math.min(l, 1 - l)
+
+  return { h, s: sprime, l, a }
+}
+
 export function HSLtoHSV(hsl: HSL): HSV {
   const { h, s, l, a } = hsl
 
