@@ -58,6 +58,15 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `copy` | Copy file options | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
 | `icons` | Font icon packaging related configuration | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 
+#### Menu
+
+| 参数 | 说明 | 类型 | 默认值 |
+| -- | -------------- | -------- | ---------- |
+| `doc` | The document page corresponds to the matching file name, required | _string_ | `-` |
+| `type` | The type of menu, when the type is 1, it means the category menu, when the type is 2, the doc field matches the component file under src, when the type is 3, the doc field matches the md file under docs, required | _MenuTypes_ | `-` |
+| `text` | The text displayed in the menu, English display text can be configured when internationalization is set, required | _Record<string, string>_ | `-` |
+| `useRouteMobile` | Whether to display the mobile phone preview on the right side on the current document page, if not filled, the default value is useMobile in config  | _boolean_ | `-` |
+
 ### Custom pages
 
 If you want to insert other pages into the component library, you can create a `pages` folder in the project root directory to write a vue component to generate other pages.
