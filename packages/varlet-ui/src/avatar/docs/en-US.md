@@ -36,11 +36,11 @@ Avatar Component
   <var-space>
     <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-      <span>fill</span>
+      <span>cover</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="cover" />
-      <span>cover</span>
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="fill" />
+      <span>fill</span>
     </var-space>
     <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />
@@ -70,8 +70,8 @@ const text = ref('VARLET')
 <template>
   <var-space direction="column">
     <var-space>
-      <var-avatar> {{ text }} </var-avatar>
-      <var-avatar :round="false"> {{ text }} </var-avatar>
+      <var-avatar>{{ text }}</var-avatar>
+      <var-avatar :round="false">{{ text }}</var-avatar>
     </var-space>
     <var-input v-model="text" />
   </var-space>

@@ -15,6 +15,13 @@ test('test avatar group plugin', () => {
   expect(app.component(AvatarGroup.name)).toBeTruthy()
 })
 
+test('test avatar size', () => {
+  expect(mount(VarAvatar, { props: { size: 'mini' } }).html()).toMatchSnapshot()
+  expect(mount(VarAvatar, { props: { size: 'small' } }).html()).toMatchSnapshot()
+  expect(mount(VarAvatar, { props: { size: 'large' } }).html()).toMatchSnapshot()
+  expect(mount(VarAvatar, { props: { size: 76 } }).html()).toMatchSnapshot()
+})
+
 test('test avatar color', () => {
   expect(mount(VarAvatar, { props: { color: 'red' } }).html()).toMatchSnapshot()
 })

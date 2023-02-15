@@ -22,7 +22,7 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="small" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="large" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="78" />
+    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="21vw" />
   </var-space>
   <app-type>{{ pack.avatarShape }}</app-type>
   <var-space>
@@ -34,11 +34,11 @@ watchDarkMode(dark)
   <var-space>
     <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-      <span>fill</span>
+      <span>cover</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="cover" />
-      <span>cover</span>
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="fill" />
+      <span>fill</span>
     </var-space>
     <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />

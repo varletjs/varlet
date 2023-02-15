@@ -54,6 +54,30 @@ exports[`test avatar group vertical 1`] = `
 </div>"
 `;
 
+exports[`test avatar size 1`] = `
+"<div class=\\"var-avatar var--box var-avatar--mini var-avatar--round\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
+exports[`test avatar size 2`] = `
+"<div class=\\"var-avatar var--box var-avatar--small var-avatar--round\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
+exports[`test avatar size 3`] = `
+"<div class=\\"var-avatar var--box var-avatar--large var-avatar--round\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
+exports[`test avatar size 4`] = `
+"<div class=\\"var-avatar var--box var-avatar--round\\" style=\\"width: 76px; height: 76px;\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
 exports[`test avatar src 1`] = `"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\"><img class=\\"var-avatar__image\\" src=\\"https://1.png\\" style=\\"object-fit: cover;\\"></div>"`;
 
 exports[`test avatar src and fit 1`] = `"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\"><img class=\\"var-avatar__image\\" src=\\"https://1.png\\" style=\\"object-fit: fill;\\"></div>"`;
