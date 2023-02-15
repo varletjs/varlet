@@ -1,0 +1,20 @@
+.var-avatar-group {
+  display: flex;
+
+  &--row {
+    > * {
+      &:not(:first-child) {
+        margin-left: var(--offset);
+      }
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+    > * {
+      &:not(:first-child) {
+        margin-top: var(--offset);
+      }
+    }
+  }
+}
