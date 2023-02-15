@@ -65,7 +65,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `doc` | The document page corresponds to the matching file name, required | _string_ | `-` |
 | `type` | The type of menu, when the type is `1`, it means the category menu, when the type is `2`, the doc field matches the component file under src, when the type is `3`, the doc field matches the md file under docs, required | _MenuTypes_ | `-` |
 | `text` | The text displayed in the menu, English display text can be configured when internationalization is set, required | _Record<string, string>_ | `-` |
-| `useRouteMobile` | Whether to display the mobile phone preview on the right side on the current document page, if not filled, the default value is useMobile in config  | _boolean_ | `-` |
+| `useMobile` | Whether to display the mobile phone preview on the right side on the current document page, if not filled, the default value is useMobile in config  | _boolean_ | `-` |
 
 ### Custom pages
 

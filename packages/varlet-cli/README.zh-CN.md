@@ -66,7 +66,7 @@ varlet-cli gen
 | `doc` | 文档页面应匹配的文件名称, 必填 | _string_ | `-` |
 | `type` | menu 类型, 当 type 为 `1` 时表示分类 menu, 类型为 `2` 时 doc 字段匹配 src 下的组件文件, 类型为`3`时 doc 字段匹配 docs 下的 md 文件 | _MenuTypes_ | `-` |
 | `text` | menu 所展示的文字, 当设置国际化时可配置英文展示文字 | _Record<string, string>_ | `-` |
-| `useRouteMobile` | 是否在当前文档页显示右侧手机预览, 如不填写, 默认取 config 中的 useMobile | _boolean_ | `-` |
+| `useMobile` | 是否在当前文档页显示右侧手机预览, 如不填写, 默认取 config 中的 useMobile | _boolean_ | `-` |
 
 ### 自定义页面
 
