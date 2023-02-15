@@ -1,7 +1,6 @@
 <template>
   <div :class="classes(n(), [vertical, n('--column'), n('--row')])" :style="rootStyles">
     <slot />
-    <slot name="rest" />
   </div>
 </template>
 
@@ -15,7 +14,6 @@ const { n, classes } = createNamespace('avatar-group')
 
 export default defineComponent({
   name: 'VarAvatarGroup',
-  components: {},
   props,
   setup(props) {
     const rootStyles: ComputedRef<StyleValue> = computed(() => {

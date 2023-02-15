@@ -78,10 +78,7 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
   <app-type>{{ pack.avatarVerticalGroup }}</app-type>
@@ -89,9 +86,6 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>

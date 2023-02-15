@@ -101,10 +101,7 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -117,10 +114,7 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -231,7 +225,6 @@ import logo from '../../assets/logo.png'
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
 | `default` | 头像组头像 | `-` |
-| `rest`    | 头像组溢出容器 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
