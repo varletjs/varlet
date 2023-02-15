@@ -26,7 +26,6 @@ export default defineComponent({
           onChange: (e: InputEvent) => {
             const target = e.target as HTMLInputElement | null
             if (!target) return
-            console.log(getColor(convertColor, target.value))
             call(props['onUpdate:color'], mode.from(getColor(convertColor, target.value)))
           },
         }

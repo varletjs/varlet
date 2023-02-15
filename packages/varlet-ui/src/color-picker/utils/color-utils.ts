@@ -178,8 +178,6 @@ export function HexToRGBA(hex: Hex): RGBA {
 
 export function HexToHSVA(hex: Hex): HSVA {
   const rgb = HexToRGBA(hex)
-  console.log(rgb)
-
   return RGBAtoHSVA(rgb)
 }
 
@@ -707,7 +705,6 @@ export function HexToRGB(hex: Hex): RGB {
   // eslint-disable-next-line prefer-const
   let [r, g, b, a] = chunk(hex.slice(1), 2).map((c: string) => parseInt(c, 16))
   a = a === undefined ? a : Math.round((a / 255) * 100) / 100
-  console.log(chunk(hex.slice(1), 2).map((c: string) => parseInt(c, 16)))
   return { r, g, b, a }
 }
 export function RGBtoHex({ r, g, b, a }: RGB): Hex {
