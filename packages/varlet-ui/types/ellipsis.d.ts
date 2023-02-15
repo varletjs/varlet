@@ -1,7 +1,7 @@
 import { TooltipProps } from './tooltip'
 import { VarComponent, BasicAttributes } from './varComponent'
 
-export declare const EllipsisProps: Record<string, any>
+export declare const ellipsisProps: Record<string, any>
 
 export type EllipsisExpandTrigger = 'click'
 
