@@ -5,6 +5,8 @@ import { build, createServer, type ViteDevServer } from 'vite'
 export type ViteCommandMode = 'dev' | 'build'
 
 export async function vite(mode: ViteCommandMode) {
+  process.env.NODE_ENV = mode === 'dev' ? 'development' : 'production'
+
   const run = mode === 'build' ? build : createServer
 
   const result = await run({

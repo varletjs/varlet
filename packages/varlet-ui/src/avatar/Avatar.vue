@@ -47,8 +47,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUpdated, type Ref } from 'vue'
 import Lazy from '../lazy'
+import { defineComponent, ref, onMounted, onUpdated, type Ref } from 'vue'
 import { props, internalSizeValidator, sizeValidator } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
