@@ -1,3 +1,4 @@
+import { VNode } from 'vue'
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
 export declare const avatarProps: Record<string, any>
@@ -24,6 +25,10 @@ export interface AvatarProps extends BasicAttributes {
 
 export class Avatar extends VarComponent {
   $props: AvatarProps
+
+  $slots: {
+    default(): VNode[]
+  }
 }
 
 export class _AvatarComponent extends Avatar {}

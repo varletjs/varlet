@@ -101,10 +101,7 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -117,10 +114,7 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-
-    <template #rest>
-      <var-avatar bordered>+2</var-avatar>
-    </template>
+    <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -232,7 +226,6 @@ import logo from '../../assets/logo.png'
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Avatar group avatar | `-` |
-| `rest`    | Avatar group overflow container | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

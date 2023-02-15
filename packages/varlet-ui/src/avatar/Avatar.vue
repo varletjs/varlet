@@ -42,6 +42,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUpdated, type Ref } from 'vue'
+import Lazy from '../lazy'
 import { props, internalSizeValidator, sizeValidator } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
@@ -51,7 +52,7 @@ const { n, classes } = createNamespace('avatar')
 
 export default defineComponent({
   name: 'VarAvatar',
-  components: {},
+  directives: { Lazy },
   props,
   setup(props) {
     const avatarElement: Ref<HTMLDivElement | null> = ref(null)
