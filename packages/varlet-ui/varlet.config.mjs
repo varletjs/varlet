@@ -15,7 +15,7 @@ export default defineConfig({
           ? 'http://localhost:3000'
           : 'https://varlet.gitee.io/varlet-ui-playground',
     },
-    menu: [ 
+    menu: [
       {
         text: {
           'zh-CN': '开发指南',
@@ -172,6 +172,14 @@ export default defineConfig({
           'en-US': 'Image',
         },
         doc: 'image',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Avatar 头像',
+          'en-US': 'Avatar',
+        },
+        doc: 'avatar',
         type: 2,
       },
       {

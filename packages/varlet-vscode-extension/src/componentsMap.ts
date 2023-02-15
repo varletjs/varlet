@@ -292,10 +292,13 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   tooltip: {
     path: '/tooltip',
   },
-  paper: {
-    path: '/paper',
+  avatar: {
+    path: '/avatar',
+    attrs: ['src=""'],
+    closeSelf: true,
+    characterDelta: -3,
   },
-  ellipsis: {
-    path: '/ellipsis',
+  'avatar-group': {
+    path: '/avatar-group',
   },
 }

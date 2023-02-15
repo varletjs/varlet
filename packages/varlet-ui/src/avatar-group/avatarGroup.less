@@ -1,0 +1,24 @@
+:root {
+  --avatar-group-offset: -10px;
+}
+
+.var-avatar-group {
+  display: flex;
+
+  &--row {
+    > * {
+      &:not(:first-child) {
+        margin-left: var(--avatar-group-offset, -10px);
+      }
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+    > * {
+      &:not(:first-child) {
+        margin-top: var(--avatar-group-offset, -10px);
+      }
+    }
+  }
+}
