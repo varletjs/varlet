@@ -1,3 +1,24 @@
+# [2.8.0](https://github.com/varletjs/varlet/compare/v2.7.5...v2.8.0) (2023-02-15)
+
+
+### Bug Fixes
+
+* **cli:** fix vite command NODE_ENV ([e3d84ce](https://github.com/varletjs/varlet/commit/e3d84cefc25d229c9a16cefdd0aa646ab4dbbf23))
+* **extension:** fixed regex mismatch under CRLF ([#850](https://github.com/varletjs/varlet/issues/850)) ([0947726](https://github.com/varletjs/varlet/commit/0947726f2de7fd4e6088ee73b77af819d4488bbd))
+* fix umd format lose css ([cd2d606](https://github.com/varletjs/varlet/commit/cd2d60639a8d9819ef828882db3fdc6761ff9222))
+* **playground:** fix jump github and detect iframe ([deeb9ef](https://github.com/varletjs/varlet/commit/deeb9ef179bc4d612bebaf0322fcf1427b995872))
+
+
+### Features
+
+* added avatar component ([#857](https://github.com/varletjs/varlet/issues/857)) ([c3bc355](https://github.com/varletjs/varlet/commit/c3bc3555e4f103edfdcf71ebcda273cc5ea1e2cd))
+* new component ellipsis and tooltip supports props.sameWidth ([d979181](https://github.com/varletjs/varlet/commit/d979181ba42d7a780cd26572582d330ede230615))
+* new component paper and cell supports ripple, border-offset, onClick ([1626e82](https://github.com/varletjs/varlet/commit/1626e82b638e3e1469afc5ca29918ced82e4e89c))
+* support useRouteMobile ([#854](https://github.com/varletjs/varlet/issues/854)) ([2df95eb](https://github.com/varletjs/varlet/commit/2df95eb3f795439baa0aada74405acaa70f60222))
+* **ui/app-bar:** support props.image, props.imageLinearGradient, content slots ([2293683](https://github.com/varletjs/varlet/commit/229368393c18f10a97837016ff10604cd0d3e69e))
+
+
+
 ## [2.7.5](https://github.com/varletjs/varlet/compare/v2.7.4...v2.7.5) (2023-02-09)
 
 
