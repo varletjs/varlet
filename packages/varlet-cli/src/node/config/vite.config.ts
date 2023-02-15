@@ -111,7 +111,7 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
   const define =
     format === 'umd'
       ? {
-          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+          'process.env.NODE_ENV': JSON.stringify('production'),
         }
       : undefined
 
