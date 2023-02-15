@@ -111,6 +111,8 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
   return {
     logLevel: 'silent',
 
+    plugins,
+
     build: {
       minify: format === 'cjs' ? false : 'esbuild',
       emptyOutDir,
