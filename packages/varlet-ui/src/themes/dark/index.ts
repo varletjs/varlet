@@ -31,7 +31,7 @@ import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import menu from './menu'
 import breadcrumb from './breadcrumb'
-import paper from './paper'
+import avatar from './avatar'
 
 export default {
   // common
@@ -77,5 +77,5 @@ export default {
   ...menu,
   ...result,
   ...breadcrumb,
-  ...paper,
+  ...avatar,
 } as StyleVars
