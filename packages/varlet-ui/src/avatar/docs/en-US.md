@@ -58,7 +58,7 @@ Avatar Component
 </template>
 ```
 
-### Font Size
+### Text Adaptive
 
 ```html
 <script setup>
@@ -200,7 +200,7 @@ import logo from '../../assets/logo.png'
 
 | Prop              | Description                                        | Type   | Default          |
 |-------------------|-------------------------------------------|------|--------------|
-| `offset`          | Avatar Offset within Avatar Group	| _number \| string_ | `-10` |
+| `offset`          | Avatar Offset within Avatar Group	| _number \| string_ | `-` |
 | `vertical`        | Whether the group avatars are vertically aligned | _boolean_ | `false` |
 
 ### Events
@@ -219,13 +219,13 @@ import logo from '../../assets/logo.png'
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Customize avatar content | `-` |
+| `default` | Avatar content | `-` |
 
 #### AvatarGroup Slots
 
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
-| `default` | Avatar group avatar | `-` |
+| `default` | Avatar group content | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

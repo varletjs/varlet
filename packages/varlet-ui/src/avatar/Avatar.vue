@@ -2,7 +2,13 @@
   <div
     ref="avatarElement"
     :class="
-      classes(n(), [internalSizeValidator(size), n(`--${size}`)], [round, n('--round')], [bordered, n('--bordered')])
+      classes(
+        n(),
+        n('$--box'),
+        [internalSizeValidator(size), n(`--${size}`)],
+        [round, n('--round')],
+        [bordered, n('--bordered')]
+      )
     "
     :style="{
       width: !internalSizeValidator(size) ? toSizeUnit(size) : undefined,

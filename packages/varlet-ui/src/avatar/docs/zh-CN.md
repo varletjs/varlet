@@ -58,7 +58,7 @@
 </template>
 ```
 
-### 字体大小
+### 文字自适应
 
 ```html
 <script setup>
@@ -199,7 +199,7 @@ import logo from '../../assets/logo.png'
 
 | 参数                  | 说明                                        | 类型   | 默认值          |
 |---------------------|-------------------------------------------|------|--------------|
-| `offset`          | 头像组内的头像偏移量	| _number \| string_ | `-10` |
+| `offset`          | 头像组内的头像偏移量	| _number \| string_ | `-` |
 | `vertical`        | 组内头像是否垂直排列 | _boolean_ | `false` |
 
 ### 事件
@@ -218,13 +218,13 @@ import logo from '../../assets/logo.png'
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 自定义头像内容 | `-` |
+| `default` | 头像内容 | `-` |
 
 #### AvatarGroup Slots
 
 | 名称 | 说明 | 参数 |
 | ----- | -------------- | -------- |
-| `default` | 头像组头像 | `-` |
+| `default` | 头像组内容 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

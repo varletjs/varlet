@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test avatar borderColor 1`] = `
+"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round var-avatar--bordered\\" style=\\"border-color: red;\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
+exports[`test avatar color 1`] = `
+"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\" style=\\"background-color: red;\\">
+  <div class=\\"var-avatar__text\\"></div>
+</div>"
+`;
+
+exports[`test avatar group basic use 1`] = `
+"<div class=\\"var-avatar-group var-avatar-group--row\\">
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`test avatar group offset 1`] = `
+"<div class=\\"var-avatar-group var-avatar-group--row\\" style=\\"--avatar-group-offset: 10px;\\">
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`test avatar group vertical 1`] = `
+"<div class=\\"var-avatar-group var-avatar-group--column\\">
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+  <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
+    <div class=\\"var-avatar__text\\"></div>
+  </div>
+</div>"
+`;
+
+exports[`test avatar src 1`] = `"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\"><img class=\\"var-avatar__image\\" src=\\"https://1.png\\" style=\\"object-fit: cover;\\"></div>"`;
+
+exports[`test avatar src and fit 1`] = `"<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\"><img class=\\"var-avatar__image\\" src=\\"https://1.png\\" style=\\"object-fit: fill;\\"></div>"`;
