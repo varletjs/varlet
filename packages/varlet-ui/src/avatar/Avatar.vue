@@ -123,5 +123,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './avatar.less';
+@import './avatar';
 </style>
