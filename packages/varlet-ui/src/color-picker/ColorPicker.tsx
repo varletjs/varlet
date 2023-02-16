@@ -27,7 +27,6 @@ export default defineComponent({
     updateModelValueColor(modelValue.value)
     const currentMode = ref(DEFAULT_MODE)
     function updateColor(hsva: HSVA) {
-      console.log(hsva)
       updateModelValueColor(hsva)
     }
     function updateMode(mode: string) {

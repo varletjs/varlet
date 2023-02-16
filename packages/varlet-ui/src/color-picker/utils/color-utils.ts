@@ -552,7 +552,7 @@ export function RGBtoHSV(rgba: RGB): HSV {
     }
   }
 
-  if (h < 0) h = h + 360
+  if (h < 0) h += 360
 
   const s = max === 0 ? 0 : (max - min) / max
   const hsv = [h, s, max]

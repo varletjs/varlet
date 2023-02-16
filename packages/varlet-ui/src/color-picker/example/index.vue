@@ -7,7 +7,7 @@ import { use, pack } from './locale'
 import { ref } from 'vue'
 
 watchLang(use)
-const color = ref('')
+const color = ref('#BFFAFF')
 const value = ref('')
 const modes = ['rgba', 'hsla', 'hex']
 </script>
@@ -17,10 +17,10 @@ const modes = ['rgba', 'hsla', 'hex']
   <var-color-picker />
 
   <app-type>{{ pack.swatches }}</app-type>
-  <var-color-picker v-model="color" swatches-layout />
+  <var-color-picker swatches-layout />
 
   <app-type>{{ pack.modes }}</app-type>
-  <var-color-picker v-model="color" />
+  <var-color-picker />
   <var-select placeholder="请选择一个Mode" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
