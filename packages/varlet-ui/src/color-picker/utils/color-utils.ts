@@ -497,10 +497,10 @@ export function extractBaseColor(color: InitialColor, input: any) {
 
   return color
 }
-export function parseBaseColor(color: InitialColor): HSVA | null {
+export function parseBaseColor(color: any): HSVA | null {
   if (!color) return null
 
-  let hsva: HSV | null = null
+  let hsva: HSVA | null = null
 
   if (typeof color === 'string') {
     const hex = parseHex(color)
@@ -531,7 +531,7 @@ export function RGBtoRGBA(rgba: RGBA): RGBA {
   }
   return rgba
 }
-export function RGBtoHSV(rgba: RGB): HSV {
+export function RGBtoHSV(rgba: RGB): HSVA {
   if (!rgba) return { h: 0, s: 1, v: 1, a: 1 }
 
   const r = rgba.r / 255
