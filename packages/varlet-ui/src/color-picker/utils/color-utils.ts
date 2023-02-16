@@ -557,7 +557,7 @@ export function RGBtoHSV(rgba: RGB): HSV {
   const s = max === 0 ? 0 : (max - min) / max
   const hsv = [h, s, max]
 
-  return { h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a }
+  return { h: hsv[0], s: hsv[1], v: hsv[2], a: rgba.a ?? 1 }
 }
 
 export type ColorPickerMode = {
@@ -751,4 +751,24 @@ export function RGBtoCSS({ r, g, b, a }: RGB): string {
 
 export function HSVtoCSS(hsva: HSV): string {
   return RGBtoCSS(HSVtoRGB(hsva))
+}
+
+export function parseDefaultColors(colors: Record<string, Record<string, string>>) {
+  return Object.keys(colors).map((key) => {
+    const color = colors[key]
+    return color.base
+      ? [
+          color.base,
+          color.darken4,
+          color.darken3,
+          color.darken2,
+          color.darken1,
+          color.lighten1,
+          color.lighten2,
+          color.lighten3,
+          color.lighten4,
+          color.lighten5,
+        ]
+      : [color.black, color.white, color.transparent]
+  })
 }

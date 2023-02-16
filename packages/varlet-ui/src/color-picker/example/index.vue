@@ -14,16 +14,20 @@ const modes = ['rgba', 'hsla', 'hex']
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-color-picker v-model="color" />
-  <!-- <app-type>{{ pack.disabled }}</app-type>
-  <var-color-picker v-model="color" disabled />
+  <var-color-picker />
+
   <app-type>{{ pack.swatches }}</app-type>
   <var-color-picker v-model="color" swatches-layout />
+
   <app-type>{{ pack.modes }}</app-type>
   <var-color-picker v-model="color" />
   <var-select placeholder="请选择一个Mode" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
+
+  <app-type>{{ pack.disabled }}</app-type>
+  <var-color-picker disabled />
+
   <app-type>{{ pack.model }}</app-type>
-  <var-color-picker v-model="color" disabled /> -->
+  <var-color-picker v-model="color" />
 </template>

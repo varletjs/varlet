@@ -1,44 +1,18 @@
-import colors from '../../utils/color'
-import { parseBaseColor } from '../../utils/color-utils'
-import { defineComponent, PropType, toRefs } from 'vue'
+import { HexToHSV, parseBaseColor } from '../../utils/color-utils'
+import { defineComponent, toRefs } from 'vue'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
 import { changeColorValue } from '../../utils/composable'
 import { call, createNamespace } from '../../../utils/components'
+import { colorPickerSwatchesColorProps, ColorPickerSwatchesColorProps } from './color-picker-swatches-types'
 import './color-picker-swatches.less'
-
-function parseDefaultColors(colors: Record<string, Record<string, string>>) {
-  return Object.keys(colors).map((key) => {
-    const color = colors[key]
-    return color.base
-      ? [
-          color.base,
-          color.darken4,
-          color.darken3,
-          color.darken2,
-          color.darken1,
-          color.lighten1,
-          color.lighten2,
-          color.lighten3,
-          color.lighten4,
-          color.lighten5,
-        ]
-      : [color.black, color.white, color.transparent]
-  })
-}
 
 export default defineComponent({
   name: 'VarColorPickerSwatches',
-  props: {
-    swatches: {
-      type: Array as PropType<string[][]>,
-      default: () => parseDefaultColors(colors),
-    },
-    disabled: Boolean,
-    color: Object as PropType<null>,
-    maxHeight: [Number, String],
-  },
-  setup(props) {
+  props: colorPickerSwatchesColorProps,
+  setup(props: ColorPickerSwatchesColorProps) {
     const { color } = toRefs(props)
+    console.log(color.value)
+
     const { n } = createNamespace('color-picker-swatches')
     return () => {
       return (
@@ -52,12 +26,12 @@ export default defineComponent({
             {props.swatches.map((swatch) => (
               <div class={n('swatch')}>
                 {swatch.map((colorItem) => {
-                  const hsv = parseBaseColor(colorItem)
+                  const hsv = HexToHSV(colorItem)
                   const iconColor = changeColorValue(hsv!, 0.5)
                   return (
                     <div class={n('color')} onClick={() => call(props['onUpdate:color'], hsv)}>
                       <div style={{ background: colorItem }}>
-                        {color.value && deepEqual(color.value, hsv) ? (
+                        {color!.value && deepEqual(color!.value, hsv) ? (
                           <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />
                         ) : undefined}
                       </div>

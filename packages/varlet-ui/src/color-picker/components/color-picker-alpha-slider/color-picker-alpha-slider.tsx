@@ -43,7 +43,7 @@ export default defineComponent({
 
     const getCursorLeft = computed(() => {
       if (barElement.value && cursorElement.value) {
-        const alpha = props.color?.a
+        const alpha = props.color?.a ?? 1
         const rect = barElement.value.getBoundingClientRect()
         const { offsetWidth } = cursorElement.value
         return Math.round(alpha * (rect.width - offsetWidth) + offsetWidth / 2)

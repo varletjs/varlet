@@ -1,13 +1,18 @@
 import type { PropType, ExtractPropTypes } from 'vue'
-import type { ColorPickerColor } from '../../utils/color-utils-types'
+import colors from '../../utils/color'
+import { parseDefaultColors } from '../../utils/color-utils'
 
-export const colorPickerBasicColorProps = {
-  color: {
-    type: Object as PropType<ColorPickerColor>,
-  },
+export const colorPickerSwatchesColorProps = {
+  color: Object as PropType<null>,
+  disabled: Boolean,
+  maxHeight: [Number, String],
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
-} as const
+  swatches: {
+    type: Array as PropType<string[][]>,
+    default: () => parseDefaultColors(colors),
+  },
+}
 
-export type ColorPickerBasicColorProps = ExtractPropTypes<typeof colorPickerBasicColorProps>
+export type ColorPickerSwatchesColorProps = ExtractPropTypes<typeof colorPickerSwatchesColorProps>
