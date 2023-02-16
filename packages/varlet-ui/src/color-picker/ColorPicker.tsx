@@ -21,6 +21,7 @@ export default defineComponent({
     const initialColor = ref<any>()
     function updateModelValueColor(color: any) {
       initialColor.value = parseBaseColor(color) ?? nullColor
+      console.log(initialColor.value)
       const value = extractBaseColor(initialColor.value, props.modelValue)
       call(props['onUpdate:modelValue'], value)
     }

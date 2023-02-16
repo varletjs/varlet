@@ -504,7 +504,7 @@ export function parseBaseColor(color: InitialColor): HSVA | null {
 
   if (typeof color === 'string') {
     const hex = parseHex(color)
-    hsva = HexToHSV(hex)
+    hsva = HexToHSV(`#${hex}`)
   }
 
   if (typeof color === 'object') {
