@@ -160,7 +160,6 @@ import BasicExample from '../example/Responsive.vue'
   justify-content: center;
   align-items: center;
   height: 36px;
-  margin-bottom: 10px;
   color: #fff;
   text-align: center;
   background-clip: content-box !important;
@@ -225,7 +224,6 @@ import ObjectExample from '../example/ResponsiveObject.vue'
   justify-content: center;
   align-items: center;
   height: 36px;
-  margin-bottom: 10px;
   color: #fff;
   text-align: center;
   background-clip: content-box !important;
