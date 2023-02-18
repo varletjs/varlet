@@ -1,6 +1,13 @@
 <template>
   <div
-    :class="classes(n(), [mode && !vertical, n('--mode')], [vertical, n('--vertical')], n(`$-elevation--${elevation}`))"
+    :class="
+      classes(
+        n(),
+        [mode && !vertical, n('--mode')],
+        [vertical, n('--vertical'), n('--horizontal')],
+        n(`$-elevation--${elevation}`)
+      )
+    "
   >
     <slot />
   </div>

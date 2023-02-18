@@ -3,17 +3,21 @@
   border-radius: var(--button-border-radius);
   max-width: 100%;
   overflow-x: auto;
-  :first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+
+  &--horizontal {
+    :first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    :last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    :not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
   }
-  :last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  :not(:first-child):not(:last-child) {
-    border-radius: 0;
-  }
+
   &--mode {
     :first-child {
       border-right: 0;
@@ -22,6 +26,7 @@
       border-left: 0;
     }
   }
+
   &--vertical {
     flex-direction: column;
     :first-child {
