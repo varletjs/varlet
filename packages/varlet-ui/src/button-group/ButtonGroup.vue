@@ -3,9 +3,10 @@
     :class="
       classes(
         n(),
-        [mode && !vertical, n('--mode')],
+        n('$--box'),
+        [mode, `${n(`--mode-${mode}`)}`],
         [vertical, n('--vertical'), n('--horizontal')],
-        n(`$-elevation--${elevation}`)
+        [mode === 'normal', n(`$-elevation--${elevation}`)]
       )
     "
   >
@@ -14,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useButtons } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
@@ -29,11 +30,11 @@ export default defineComponent({
     const { bindButtons } = useButtons()
 
     const buttonGroupProvider: ButtonGroupProvider = {
-      elevation: props.elevation,
-      type: props.type,
-      size: props.size,
-      color: props.color,
-      mode: props.mode,
+      elevation: computed(() => props.elevation),
+      type: computed(() => props.type),
+      size: computed(() => props.size),
+      color: computed(() => props.color),
+      mode: computed(() => props.mode),
     }
 
     bindButtons(buttonGroupProvider)

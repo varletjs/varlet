@@ -6,22 +6,22 @@
       classes(
         n(),
         n('$--box'),
-        n(`--${getStyles.size}`),
+        n(`--${states.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
         [
-          getStyles.text,
-          `${n(`--text-${getStyles.type}`)} ${n('--text')}`,
-          `${n(`--${getStyles.type}`)} ${n(`$-elevation--${getStyles.elevation}`)}`,
+          states.text,
+          `${n(`--text-${states.type}`)} ${n('--text')}`,
+          `${n(`--${states.type}`)} ${n(`$-elevation--${states.elevation}`)}`,
         ],
-        [getStyles.text && disabled, n('--text-disabled')],
+        [states.text && disabled, n('--text-disabled')],
         [round, n('--round')],
-        [getStyles.outline, n('--outline')]
+        [states.outline, n('--outline')]
       )
     "
     :style="{
       color: textColor,
-      background: getStyles.color,
+      background: states.color,
     }"
     :type="nativeType"
     :disabled="disabled"
@@ -64,21 +64,26 @@ export default defineComponent({
   setup(props) {
     const pending: Ref<boolean> = ref(false)
     const { buttonGroup } = useButtonGroup()
-    const defaultStyles = {
-      elevation: 2,
-      type: 'default',
-      size: 'normal',
-    }
 
-    const getStyles = computed(() => {
-      const modeArray = ['text', 'outline']
+    const states = computed(() => {
+      if (!buttonGroup) {
+        return {
+          elevation: 2,
+          type: props.type != null ? props.type : 'default',
+          size: props.size != null ? props.size : 'normal',
+          color: props.color,
+          text: props.text,
+          outline: props.outline,
+        }
+      }
+      const { type, size, color, mode } = buttonGroup
       return {
-        elevation: (buttonGroup || {}).elevation ? 0 : defaultStyles.elevation,
-        type: props.type || (buttonGroup || {}).type || defaultStyles.type,
-        size: props.size || (buttonGroup || {}).size || defaultStyles.size,
-        color: props.color || (buttonGroup || {}).color,
-        text: props.text || modeArray.includes((buttonGroup || {}).mode || ''),
-        outline: props.outline || (buttonGroup || {}).mode === 'outline',
+        elevation: 0,
+        type: props.type != null ? props.type : type.value,
+        size: props.size != null ? props.size : size.value,
+        color: props.color != null ? props.color : color.value,
+        text: mode.value !== 'normal',
+        outline: mode.value === 'outline',
       }
     })
 
@@ -122,7 +127,7 @@ export default defineComponent({
       n,
       classes,
       pending,
-      getStyles,
+      states,
       handleClick,
       handleTouchstart,
     }

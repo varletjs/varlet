@@ -9,11 +9,7 @@ function sizeValidator(size: string): boolean {
 }
 
 function modeValidator(mode: string): boolean {
-  return ['text', 'outline'].includes(mode)
-}
-
-function elevationValidator(elevation: number): boolean {
-  return elevation >= 0 && elevation <= 24
+  return ['normal', 'text', 'outline'].includes(mode)
 }
 
 export const props = {
@@ -31,13 +27,13 @@ export const props = {
     type: String,
   },
   mode: {
-    type: String as PropType<'text' | 'outline'>,
+    type: String as PropType<'text' | 'outline' | 'normal'>,
+    default: 'normal',
     validator: modeValidator,
   },
   elevation: {
     type: [Number, String],
     default: 2,
-    validator: elevationValidator,
   },
   vertical: {
     type: Boolean,

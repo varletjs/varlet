@@ -117,30 +117,6 @@ watchDarkMode(dark)
       <var-button type="primary">{{ pack.primaryButton }}</var-button>
       <var-button type="primary">{{ pack.primaryButton }}</var-button>
     </var-button-group>
-
-    <var-button-group type="info">
-      <var-button type="info">{{ pack.infoButton }}</var-button>
-      <var-button type="info">{{ pack.infoButton }}</var-button>
-      <var-button type="info">{{ pack.infoButton }}</var-button>
-    </var-button-group>
-
-    <var-button-group type="success">
-      <var-button type="success">{{ pack.successButton }}</var-button>
-      <var-button type="success">{{ pack.successButton }}</var-button>
-      <var-button type="success">{{ pack.successButton }}</var-button>
-    </var-button-group>
-
-    <var-button-group type="warning">
-      <var-button type="warning">{{ pack.warningButton }}</var-button>
-      <var-button type="warning">{{ pack.warningButton }}</var-button>
-      <var-button type="warning">{{ pack.warningButton }}</var-button>
-    </var-button-group>
-
-    <var-button-group type="danger">
-      <var-button type="danger">{{ pack.dangerButton }}</var-button>
-      <var-button type="danger">{{ pack.dangerButton }}</var-button>
-      <var-button type="danger">{{ pack.dangerButton }}</var-button>
-    </var-button-group>
   </var-space>
 
   <app-type>{{ pack.buttonGroupSize }}</app-type>
@@ -156,23 +132,11 @@ watchDarkMode(dark)
       <var-button>{{ pack.smallButton }}</var-button>
       <var-button>{{ pack.smallButton }}</var-button>
     </var-button-group>
-
-    <var-button-group size="mini" type="warning">
-      <var-button>{{ pack.miniButton }}</var-button>
-      <var-button>{{ pack.miniButton }}</var-button>
-      <var-button>{{ pack.miniButton }}</var-button>
-    </var-button-group>
-
-    <var-button-group size="large" type="danger">
-      <var-button>{{ pack.largeButton }}</var-button>
-      <var-button>{{ pack.largeButton }}</var-button>
-      <var-button>{{ pack.largeButton }}</var-button>
-    </var-button-group>
   </var-space>
 
   <app-type>{{ pack.textButtonGroup }}</app-type>
   <var-space :size="[10, 10]">
-    <var-button-group mode="text">
+    <var-button-group type="primary">
       <var-button>{{ pack.textButton }}</var-button>
       <var-button>{{ pack.textButton }}</var-button>
       <var-button>{{ pack.textButton }}</var-button>
@@ -182,6 +146,12 @@ watchDarkMode(dark)
       <var-button>{{ pack.outlineButton }}</var-button>
       <var-button>{{ pack.outlineButton }}</var-button>
       <var-button>{{ pack.outlineButton }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="text">
+      <var-button>{{ pack.textButton }}</var-button>
+      <var-button>{{ pack.textButton }}</var-button>
+      <var-button>{{ pack.textButton }}</var-button>
     </var-button-group>
   </var-space>
 
@@ -193,9 +163,23 @@ watchDarkMode(dark)
   </var-button-group>
 
   <app-type>{{ pack.verticalButtonGroup }}</app-type>
-  <var-button-group type="primary" mode="outline" vertical>
-    <var-button>{{ pack.primaryButton }}</var-button>
-    <var-button>{{ pack.primaryButton }}</var-button>
-    <var-button>{{ pack.primaryButton }}</var-button>
-  </var-button-group>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" vertical>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+      <var-button>{{ pack.primaryButton }}</var-button>
+    </var-button-group>
+  </var-space>
 </template>
