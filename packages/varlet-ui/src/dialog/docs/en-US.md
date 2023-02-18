@@ -211,6 +211,7 @@ const show = ref(false)
 | --------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------- | --------- |
 | `v-model:show`              | Whether to display a Dialog                                                                                    | _boolean_             | `false`   |
 | `title`                     | Dialog title                                                                                                   | _string_              | `Hint`    |
+| `width`                     | Dialog width                                                                                                   | _string \| number_    | `-`  |
 | `message`                   | Dialog message content                                                                                         | _string_              | `-`       |
 | `message-align`             | Dialog message content text alignment, optional values `center`, `left`, `right`                               | _string_              | `left`    |
 | `confirm-button`            | Whether to display the confirm button                                                                          | _boolean_             | `true`    |
@@ -243,6 +244,15 @@ const show = ref(false)
 | `cancel`        | Trigger on cancel                                    | `-`                                                        |
 | `click-overlay` | Triggered when you click on overlay                  | `-`                                                        |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `Dialog` | Show dialog | _options \| string_ | `-` |
+| `Dialog.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `Dialog.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+| `Dialog.close` | Close dialog | _-_ | `-` |
+
 ### Dialog Options
 
 #### Options passed in for a functional call
@@ -250,6 +260,7 @@ const show = ref(false)
 | Option                     | Description                                                                                                    | Type                                                           | Default |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------- |
 | `title`                  | Dialog title                                                                                                   | _string_                                                       | `Hint`  |
+| `width`                  | Dialog width                                                                                                   | _string \| number_                                             | `-`  |
 | `message`                | Dialog message content                                                                                         | _string_                                                       | `-`     |
 | `messageAlign`           | Dialog message content text alignment, optional values `center` `left` `right`                                 | _string_                                                       | `left`  |
 | `confirmButton`          | Whether to display the confirm button                                                                          | _boolean_                                                      | `true`  |

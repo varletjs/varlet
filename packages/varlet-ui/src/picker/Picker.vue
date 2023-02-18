@@ -22,7 +22,7 @@
     var-picker-cover
   >
     <div :class="n()" v-bind="$attrs">
-      <div :class="n('toolbar')">
+      <div :class="n('toolbar')" v-if="toolbar">
         <slot name="cancel">
           <var-button
             :class="n('cancel-button')"

@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "2.7.3",
+  "version": "2.8.1",
   "description": "A material like components library",
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
@@ -8,11 +8,7 @@
   "style": "umd/style.css",
   "unpkg": "umd/varlet.js",
   "jsdelivr": "umd/varlet.js",
-  "vetur": {
-    "tags": "highlight/tags.json",
-    "attributes": "highlight/attributes.json"
-  },
-  "web-types": "highlight/web-types.json",
+  "web-types": "highlight/web-types.en-US.json",
   "keywords": [
     "Vue",
     "Material",

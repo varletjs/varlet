@@ -1,3 +1,72 @@
+## [2.8.1](https://github.com/varletjs/varlet/compare/v2.8.0...v2.8.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* **cli:** umd format set production env ([b7920de](https://github.com/varletjs/varlet/commit/b7920decb120e8a67b08dc0d81072443da387762))
+* **cli:** umd format should be replace NODE_ENV ([5f45a65](https://github.com/varletjs/varlet/commit/5f45a652dc576e549732efd73129c66e0bb55423))
+
+
+
+# [2.8.0](https://github.com/varletjs/varlet/compare/v2.7.5...v2.8.0) (2023-02-15)
+
+
+### Bug Fixes
+
+* **cli:** fix vite command NODE_ENV ([e3d84ce](https://github.com/varletjs/varlet/commit/e3d84cefc25d229c9a16cefdd0aa646ab4dbbf23))
+* **extension:** fixed regex mismatch under CRLF ([#850](https://github.com/varletjs/varlet/issues/850)) ([0947726](https://github.com/varletjs/varlet/commit/0947726f2de7fd4e6088ee73b77af819d4488bbd))
+* fix umd format lose css ([cd2d606](https://github.com/varletjs/varlet/commit/cd2d60639a8d9819ef828882db3fdc6761ff9222))
+* **playground:** fix jump github and detect iframe ([deeb9ef](https://github.com/varletjs/varlet/commit/deeb9ef179bc4d612bebaf0322fcf1427b995872))
+
+
+### Features
+
+* added avatar component ([#857](https://github.com/varletjs/varlet/issues/857)) ([c3bc355](https://github.com/varletjs/varlet/commit/c3bc3555e4f103edfdcf71ebcda273cc5ea1e2cd))
+* new component ellipsis and tooltip supports props.sameWidth ([d979181](https://github.com/varletjs/varlet/commit/d979181ba42d7a780cd26572582d330ede230615))
+* new component paper and cell supports ripple, border-offset, onClick ([1626e82](https://github.com/varletjs/varlet/commit/1626e82b638e3e1469afc5ca29918ced82e4e89c))
+* support useRouteMobile ([#854](https://github.com/varletjs/varlet/issues/854)) ([2df95eb](https://github.com/varletjs/varlet/commit/2df95eb3f795439baa0aada74405acaa70f60222))
+* **ui/app-bar:** support props.image, props.imageLinearGradient, content slots ([2293683](https://github.com/varletjs/varlet/commit/229368393c18f10a97837016ff10604cd0d3e69e))
+
+
+
+## [2.7.5](https://github.com/varletjs/varlet/compare/v2.7.4...v2.7.5) (2023-02-09)
+
+
+### Bug Fixes
+
+* **ui/picker:** fix props.toolbar useless ([5e57b4f](https://github.com/varletjs/varlet/commit/5e57b4ffbc6f9e2461f4d532374272611913ceba))
+
+
+### Reverts
+
+* **usePopover:** revert to bubble ([5cd3f56](https://github.com/varletjs/varlet/commit/5cd3f5620293aea97a44188a2ef3fca8de2921d0))
+
+
+
+## [2.7.4](https://github.com/varletjs/varlet/compare/v2.7.3...v2.7.4) (2023-02-08)
+
+
+### Bug Fixes
+
+* **countdown:** replace Date to performance ([b54f31c](https://github.com/varletjs/varlet/commit/b54f31c2dbd8d089da6063926982f53b20adf326))
+* fix docs ([7b44984](https://github.com/varletjs/varlet/commit/7b449848e73bf9aaf09f9165a01a2efbada5689c))
+* **ui/input:** fix input overflow ([6370f62](https://github.com/varletjs/varlet/commit/6370f62cd09d8c2946165a2e704bf301d11d020a))
+* **ui/select:** fix select overflow ([879cdb1](https://github.com/varletjs/varlet/commit/879cdb111fd924b6a695d3baa6c16f82addba371))
+
+
+### Features
+
+* **extension:** support playground in editor context menu ([43852fb](https://github.com/varletjs/varlet/commit/43852fba2eea39355e2f3302f4e834aa41c96527))
+* **extension:** support props and events completions ([13198c5](https://github.com/varletjs/varlet/commit/13198c5de38bcff03d0ca147440b994aa42adb2f))
+* **extension:** support zh-CN and en-US toggle ([92abb5e](https://github.com/varletjs/varlet/commit/92abb5ea49c237b9f6fd335a8026f5d501266f73))
+* **loading-bar:** support setDefaultOptions and resetDefaultOptions ([8215585](https://github.com/varletjs/varlet/commit/82155853d030e00927c343f899e0aded299d329b))
+* **snackbar:** support setDefaultOptions and resetDefaultOptions ([e13c6a2](https://github.com/varletjs/varlet/commit/e13c6a29d46bab62b6034c7b038f0b75d103bba4))
+* **ui/action-sheet:** support setDefaultOptions and resetDefaultOptions ([92517c9](https://github.com/varletjs/varlet/commit/92517c9387db6da058b72759eeeb7f1f7fb2d262))
+* **ui/dialog:** support setDefaultOptions and resetDefaultOptions and close [#830](https://github.com/varletjs/varlet/issues/830) ([c0cd14e](https://github.com/varletjs/varlet/commit/c0cd14ea4aacf1fa41a06cae32bf8d2b1999d8f8))
+* **ui/uploader:** support closePreview and chooseFile and close [#843](https://github.com/varletjs/varlet/issues/843) ([7a86662](https://github.com/varletjs/varlet/commit/7a8666288000b3df8173ee5b068fe4688a71c768))
+
+
+
 ## [2.7.3](https://github.com/varletjs/varlet/compare/v2.7.2...v2.7.3) (2023-02-01)
 
 

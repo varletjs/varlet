@@ -72,12 +72,13 @@ export default defineComponent({
 
     const matchIndex = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {
       if (props.accordion) {
-        return collapseItem.find(({ index, name }: CollapseItemProvider) =>
-          name.value === undefined ? props.modelValue === index.value : false
+        return collapseItem.find(
+          ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
         )
       }
-      return collapseItem.filter(({ index, name }: CollapseItemProvider) =>
-        name.value === undefined ? (props.modelValue as Array<string | number>).includes(index.value) : false
+      return collapseItem.filter(
+        ({ index, name }: CollapseItemProvider) =>
+          name.value === undefined && (props.modelValue as Array<string | number>).includes(index.value)
       )
     }
 

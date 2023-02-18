@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
-import type { App, TeleportProps, VNode } from 'vue'
+import { App, TeleportProps, VNode } from 'vue'
 
 export declare const dialogProps: Record<string, any>
 
@@ -80,8 +80,13 @@ export interface DialogOptions {
 }
 
 export interface IDialog {
-  (options: DialogOptions | string): Promise<DialogActions>
+  (options?: DialogOptions | string): Promise<DialogActions>
+
   Component: typeof DialogComponent
+
+  setDefaultOptions(options: DialogOptions): void
+
+  resetDefaultOptions(): void
 
   close(): void
 

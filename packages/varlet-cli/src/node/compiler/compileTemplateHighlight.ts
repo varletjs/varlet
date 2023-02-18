@@ -1,28 +1,41 @@
 import fse from 'fs-extra'
 import {
   SRC_DIR,
-  HL_MD,
+  HL_DIR,
   HL_API_RE,
   HL_COMPONENT_NAME_RE,
-  HL_TITLE_ATTRIBUTES_RE,
-  HL_TITLE_EVENTS_RE,
-  HL_TITLE_SLOTS_RE,
-  HL_WEB_TYPES_JSON,
-  HL_DIR,
-  HL_TAGS_JSON,
-  HL_ATTRIBUTES_JSON,
+  HL_EN_MD,
+  HL_EN_TITLE_ATTRIBUTES_RE,
+  HL_EN_TITLE_EVENTS_RE,
+  HL_EN_TITLE_SLOTS_RE,
+  HL_EN_WEB_TYPES_JSON,
+  HL_ZH_MD,
+  HL_ZH_TITLE_ATTRIBUTES_RE,
+  HL_ZH_TITLE_EVENTS_RE,
+  HL_ZH_TITLE_SLOTS_RE,
+  HL_ZH_WEB_TYPES_JSON,
 } from '../shared/constant.js'
 import { resolve } from 'path'
 import { getCliVersion, isDir, isMD } from '../shared/fsUtils.js'
 import { get } from 'lodash-es'
-import { getVarletConfig } from '../config/varlet.config.js'
+import { getVarletConfig, type VarletConfig } from '../config/varlet.config.js'
 
-const { ensureDir, readdirSync, readFileSync, writeFile } = fse
+const { ensureDir, readdirSync, readFileSync, writeFileSync } = fse
 
 const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
 
+export interface TemplateHighlightCompilerOptions {
+  md: string
+  json: string
+  titleAttributes: RegExp
+  titleEvents: RegExp
+  titleSlots: RegExp
+}
+
 export const replaceDot = (s: string) => s.replace(/`/g, '')
+
+export const replaceVersion = (s: string) => s.replace(/\*\*\*.+\*\*\*/g, '').trim()
 
 export const replaceUnderline = (s: string) => s.replace(/_/g, '')
 
@@ -64,42 +77,16 @@ export function compileTable(md: string, titleRe: RegExp): string {
   return md.replace(/\\\|/g, '__varlet_axis__').trim()
 }
 
-export function compileTags(
-  table: Record<string, any>,
-  tags: Record<string, any>,
-  componentName: string,
-  varletConfig: Record<string, any>
-) {
-  tags[`${get(varletConfig, 'namespace')}-${componentName}`] = {
-    attributes: table.attributesTable.map((row: any) => replaceDot(row[0])),
-  }
-}
-
-export function compileAttributes(
-  table: Record<string, any>,
-  attributes: Record<string, any>,
-  componentName: string,
-  varletConfig: Record<string, any>
-) {
-  table.attributesTable.forEach((row: any) => {
-    const attrNamespace = `${get(varletConfig, 'namespace')}-${componentName}/${replaceDot(row[0])}`
-    attributes[attrNamespace] = {
-      type: replaceUnderline(row[2]),
-      description: `${row[1]} 默认值：${replaceDot(row[3])}`,
-    }
-  })
-}
-
 export function compileWebTypes(
   table: Record<string, any>,
   webTypes: Record<string, any>,
   componentName: string,
-  varletConfig: Record<string, any>
+  varletConfig: Required<VarletConfig>
 ) {
   const { attributesTable, eventsTable, slotsTable } = table
 
   const attributes = attributesTable.map((row: any) => ({
-    name: replaceDot(row[0]),
+    name: replaceVersion(replaceDot(row[0])),
     description: row[1],
     default: replaceDot(row[3]),
     value: {
@@ -109,12 +96,12 @@ export function compileWebTypes(
   }))
 
   const events = eventsTable.map((row: any) => ({
-    name: replaceDot(row[0]),
+    name: replaceVersion(replaceDot(row[0])),
     description: row[1],
   }))
 
   const slots = slotsTable.map((row: any) => ({
-    name: replaceDot(row[0]),
+    name: replaceVersion(replaceDot(row[0])),
     description: row[1],
   }))
 
@@ -128,22 +115,19 @@ export function compileWebTypes(
 
 export function compileMD(
   path: string,
-  tags: Record<string, any>,
-  attributes: Record<string, any>,
   webTypes: Record<string, any>,
-  varletConfig: Record<string, any>
+  varletConfig: Required<VarletConfig>,
+  options: TemplateHighlightCompilerOptions
 ) {
-  if (!path.endsWith(HL_MD)) {
+  if (!path.endsWith(options.md)) {
     return
   }
 
   const md = readFileSync(path, 'utf-8')
-
   const componentName = path.match(HL_COMPONENT_NAME_RE)![2]
-
-  const attributesTable = parseTable(compileTable(md, HL_TITLE_ATTRIBUTES_RE))
-  const eventsTable = parseTable(compileTable(md, HL_TITLE_EVENTS_RE))
-  const slotsTable = parseTable(compileTable(md, HL_TITLE_SLOTS_RE))
+  const attributesTable = parseTable(compileTable(md, options.titleAttributes))
+  const eventsTable = parseTable(compileTable(md, options.titleEvents))
+  const slotsTable = parseTable(compileTable(md, options.titleSlots))
 
   const table = {
     attributesTable,
@@ -152,33 +136,25 @@ export function compileMD(
   }
 
   compileWebTypes(table, webTypes, componentName, varletConfig)
-  compileTags(table, tags, componentName, varletConfig)
-  compileAttributes(table, attributes, componentName, varletConfig)
 }
 
 export function compileDir(
   path: string,
-  tags: Record<string, any>,
-  attributes: Record<string, any>,
   webTypes: Record<string, any>,
-  varletConfig: Record<string, any>
+  varletConfig: Required<VarletConfig>,
+  options: TemplateHighlightCompilerOptions
 ) {
   const dir = readdirSync(path)
 
   dir.forEach((filename) => {
     const filePath = resolve(path, filename)
 
-    isDir(filePath) && compileDir(filePath, tags, attributes, webTypes, varletConfig)
-    isMD(filePath) && compileMD(filePath, tags, attributes, webTypes, varletConfig)
+    isDir(filePath) && compileDir(filePath, webTypes, varletConfig, options)
+    isMD(filePath) && compileMD(filePath, webTypes, varletConfig, options)
   })
 }
 
-export async function compileTemplateHighlight() {
-  await ensureDir(HL_DIR)
-
-  const varletConfig = await getVarletConfig()
-  const tags: Record<string, any> = {}
-  const attributes: Record<string, any> = {}
+export function compileLanguageMD(varletConfig: Required<VarletConfig>, options: TemplateHighlightCompilerOptions) {
   const webTypes: Record<string, any> = {
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
@@ -192,11 +168,26 @@ export async function compileTemplateHighlight() {
     },
   }
 
-  compileDir(SRC_DIR, tags, attributes, webTypes, varletConfig)
+  compileDir(SRC_DIR, webTypes, varletConfig, options)
+  writeFileSync(options.json, JSON.stringify(webTypes, null, 2))
+}
 
-  await Promise.all([
-    writeFile(HL_WEB_TYPES_JSON, JSON.stringify(webTypes, null, 2)),
-    writeFile(HL_TAGS_JSON, JSON.stringify(tags, null, 2)),
-    writeFile(HL_ATTRIBUTES_JSON, JSON.stringify(attributes, null, 2)),
-  ])
+export async function compileTemplateHighlight() {
+  await ensureDir(HL_DIR)
+  const varletConfig = await getVarletConfig()
+
+  compileLanguageMD(varletConfig, {
+    md: HL_EN_MD,
+    json: HL_EN_WEB_TYPES_JSON,
+    titleAttributes: HL_EN_TITLE_ATTRIBUTES_RE,
+    titleEvents: HL_EN_TITLE_EVENTS_RE,
+    titleSlots: HL_EN_TITLE_SLOTS_RE,
+  })
+  compileLanguageMD(varletConfig, {
+    md: HL_ZH_MD,
+    json: HL_ZH_WEB_TYPES_JSON,
+    titleAttributes: HL_ZH_TITLE_ATTRIBUTES_RE,
+    titleEvents: HL_ZH_TITLE_EVENTS_RE,
+    titleSlots: HL_ZH_TITLE_SLOTS_RE,
+  })
 }

@@ -176,6 +176,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Avatar 头像',
+          'en-US': 'Avatar',
+        },
+        doc: 'avatar',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -196,6 +204,22 @@ export default defineConfig({
           'en-US': 'Badge',
         },
         doc: 'badge',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Ellipsis 文本省略',
+          'en-US': 'Ellipsis',
+        },
+        doc: 'ellipsis',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Paper 纸张',
+          'en-US': 'Paper',
+        },
+        doc: 'paper',
         type: 2,
       },
       {
@@ -606,5 +630,5 @@ export default defineConfig({
   highlight: {
     style: null,
   },
-  copy: [{ from: '../varlet-icons/dist/png', to: './public/icons/png', type: 'folder' }]
+  copy: [{ from: '../varlet-icons/dist/png', to: './public/icons/png', type: 'folder' }],
 })

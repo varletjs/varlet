@@ -12,8 +12,8 @@
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
-    @click="onClick"
     v-ripple="{ disabled: !ripple || floater }"
+    @click="handleClick"
   >
     <div
       ref="cardFloater"
@@ -130,7 +130,7 @@ export default defineComponent({
     const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
-    const floaterPosition: Ref<string | undefined> = ref(undefined)
+    const floaterPosition: Ref<'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | undefined> = ref(undefined)
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
@@ -216,6 +216,10 @@ export default defineComponent({
       call(props['onUpdate:floating'], false)
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     watch(
       () => props.floating,
       (value) => {
@@ -250,6 +254,7 @@ export default defineComponent({
       close,
       showFloatingButtons,
       floated,
+      handleClick,
     }
   },
 })

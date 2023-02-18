@@ -9,7 +9,7 @@ import { downloadProject } from './download/download'
 import { onMounted, ref } from 'vue'
 import { Themes } from '@varlet/ui'
 
-const inIframe = ref(Boolean(window.parent))
+const inIframe = ref(window.self !== window.top)
 
 // eslint-disable-next-line no-undef
 const props = defineProps(['store'])
@@ -17,6 +17,10 @@ const props = defineProps(['store'])
 async function copyLink() {
   await navigator.clipboard.writeText(location.href)
   Snackbar.success('Sharable URL has been copied to clipboard.')
+}
+
+function openGithub() {
+  window.open('https://github.com/varletjs/varlet', '_blank')
 }
 
 function toggleDark() {
@@ -103,10 +107,8 @@ onMounted(() => {
       <button title="Download project files" class="download" @click="downloadProject(props.store)">
         <Download />
       </button>
-      <button title="View on GitHub" class="github">
-        <a href="https://github.com/varletjs/varlet" target="_blank">
-          <GitHub />
-        </a>
+      <button title="View on GitHub" class="github" @click="openGithub">
+        <GitHub />
       </button>
     </div>
   </nav>

@@ -366,7 +366,7 @@ function handleChange(_, [i1, i2, i3]) {
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | 标题 | _string_ | `提示` |
 | `text-key` | 文本的属性 key | _string_ | `text` |
-| `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
+| `toolbar` | 是否显示上方工具栏 | _boolean_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascade-initial-indexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `text-formatter` | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |
@@ -384,7 +384,7 @@ function handleChange(_, [i1, i2, i3]) {
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | 标题 | _string_ | `提示` |
 | `textKey` | 文本的属性 key | _string_ | `text` |
-| `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
+| `toolbar` | 是否显示上方工具栏 | _boolean_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascadeInitialIndexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `textFormatter` | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |

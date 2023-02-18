@@ -8,7 +8,12 @@ module.exports = () => {
       unitToConvert: 'px',
       selectorBlackList: ['.var-slider__track-background'],
       propList: ['*'],
-      exclude: [/site\/components\//, /site\/pc/],
+      exclude: [
+        /site\/components\//,
+        /site\/pc/,
+        /src\/row\/example\/Responsive.vue/,
+        /src\/row\/example\/ResponsiveObject.vue/,
+      ],
     }
   }
 

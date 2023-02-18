@@ -1,295 +1,310 @@
 export interface ComponentDescriptor {
-  site: string
+  path: string
   attrs?: string[]
   characterDelta?: number
   closeSelf?: boolean
 }
 
-export const componentMap: Record<string, ComponentDescriptor> = {
+export const componentsMap: Record<string, ComponentDescriptor> = {
   button: {
-    site: '/button',
+    path: '/button',
     attrs: ['type="primary"'],
   },
   link: {
-    site: '/link',
+    path: '/link',
     attrs: ['type="primary"'],
   },
   cell: {
-    site: '/cell',
+    path: '/cell',
   },
   icon: {
-    site: '/icon',
+    path: '/icon',
     attrs: ['name='],
     closeSelf: true,
     characterDelta: -2,
   },
   image: {
-    site: '/image',
+    path: '/image',
     attrs: ['src=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   input: {
-    site: '/input',
+    path: '/input',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   'back-top': {
-    site: '/back-top',
+    path: '/back-top',
     closeSelf: true,
     characterDelta: -2,
   },
   'app-bar': {
-    site: '/app-bar',
+    path: '/app-bar',
   },
   loading: {
-    site: '/loading',
+    path: '/loading',
     closeSelf: true,
     characterDelta: -2,
   },
   chip: {
-    site: '/chip',
+    path: '/chip',
   },
   badge: {
-    site: '/badge',
+    path: '/badge',
     attrs: ['type="primary"'],
   },
   skeleton: {
-    site: '/skeleton',
+    path: '/skeleton',
     attrs: ['loading=""'],
     characterDelta: -2,
   },
   collapse: {
-    site: '/collapse',
+    path: '/collapse',
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
   'collapse-item': {
-    site: '/collapse',
+    path: '/collapse',
     attrs: ['title=""'],
     characterDelta: -2,
   },
   row: {
-    site: '/row',
+    path: '/row',
   },
   col: {
-    site: '/row',
+    path: '/row',
     attrs: [':span=""'],
     characterDelta: -2,
   },
   sticky: {
-    site: '/sticky',
+    path: '/sticky',
   },
   progress: {
-    site: '/progress',
+    path: '/progress',
     attrs: [':value=""'],
     characterDelta: -3,
     closeSelf: true,
   },
   list: {
-    site: '/list',
+    path: '/list',
     attrs: ['@load=""'],
     characterDelta: -2,
   },
   swipe: {
-    site: '/swipe',
+    path: '/swipe',
   },
   'swipe-item': {
-    site: '/swipe',
+    path: '/swipe',
   },
   steps: {
-    site: '/steps',
+    path: '/steps',
     attrs: [':active=""'],
     characterDelta: -2,
   },
   step: {
-    site: '/steps',
+    path: '/steps',
   },
   tabs: {
-    site: '/tabs',
+    path: '/tabs',
   },
   tab: {
-    site: '/tabs',
+    path: '/tabs',
   },
   'tabs-items': {
-    site: '/tabs',
+    path: '/tabs',
   },
   'tab-item': {
-    site: '/tabs',
+    path: '/tabs',
   },
   counter: {
-    site: '/counter',
+    path: '/counter',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   countdown: {
-    site: '/countdown',
+    path: '/countdown',
     attrs: [':time=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   'date-picker': {
-    site: '/date-picker',
+    path: '/date-picker',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   'time-picker': {
-    site: '/time-picker',
+    path: '/time-picker',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   dialog: {
-    site: '/dialog',
+    path: '/dialog',
   },
   form: {
-    site: '/form',
+    path: '/form',
   },
   'form-details': {
-    site: '/form',
+    path: '/form',
     closeSelf: true,
   },
   'index-bar': {
-    site: '/index-bar',
+    path: '/index-bar',
   },
   'index-anchor': {
-    site: 'index-anchor',
+    path: 'index-anchor',
     attrs: [':index=""'],
     characterDelta: -2,
   },
   select: {
-    site: '/select',
+    path: '/select',
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
   option: {
-    site: '/select',
+    path: '/select',
     attrs: ['label=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   menu: {
-    site: '/menu',
+    path: '/menu',
   },
   'action-sheet': {
-    site: '/action-sheet',
+    path: '/action-sheet',
     attrs: [':actions=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   picker: {
-    site: '/picker',
+    path: '/picker',
     attrs: [':columns=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   overlay: {
-    site: '/overlay',
+    path: '/overlay',
   },
   popup: {
-    site: '/popup',
+    path: '/popup',
   },
   'pull-refresh': {
-    site: '/pull-refresh',
+    path: '/pull-refresh',
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
   radio: {
-    site: '/radio-group',
+    path: '/radio-group',
   },
   'radio-group': {
-    site: '/radio-group',
+    path: '/radio-group',
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
   checkbox: {
-    site: '/checkbox-group',
+    path: '/checkbox-group',
   },
   'checkbox-group': {
-    site: '/checkbox-group',
+    path: '/checkbox-group',
     attrs: ['v-model=""'],
     characterDelta: -2,
   },
   switch: {
-    site: '/switch',
+    path: '/switch',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   rate: {
-    site: '/rate',
+    path: '/rate',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   slider: {
-    site: '/slider',
+    path: '/slider',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   snackbar: {
-    site: '/snackbar',
+    path: '/snackbar',
     attrs: ['type=""'],
     characterDelta: -2,
   },
   uploader: {
-    site: '/uploader',
+    path: '/uploader',
     attrs: ['v-model=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   card: {
-    site: '/card',
+    path: '/card',
   },
   divider: {
-    site: '/divider',
+    path: '/divider',
     closeSelf: true,
   },
   'style-provider': {
-    site: '/style-provider',
+    path: '/style-provider',
     attrs: [':style-vars=""'],
     characterDelta: -2,
   },
   table: {
-    site: '/table',
+    path: '/table',
   },
   pagination: {
-    site: '/pagination',
+    path: '/pagination',
     closeSelf: true,
     characterDelta: -2,
   },
   'image-preview': {
-    site: '/image-preview',
+    path: '/image-preview',
     attrs: [':images=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   space: {
-    site: '/space',
+    path: '/space',
   },
   'bottom-navigation': {
-    site: '/bottom-navigation',
+    path: '/bottom-navigation',
   },
   'bottom-navigation-item': {
-    site: '/bottom-navigation',
+    path: '/bottom-navigation',
     attrs: ['label=""'],
     closeSelf: true,
     characterDelta: -3,
   },
   result: {
-    site: '/result',
+    path: '/result',
   },
   breadcrumbs: {
-    site: '/breadcrumbs',
+    path: '/breadcrumbs',
   },
   breadcrumb: {
-    site: '/breadcrumbs',
+    path: '/breadcrumbs',
   },
   tooltip: {
-    site: '/tooltip',
+    path: '/tooltip',
+  },
+  paper: {
+    path: '/paper',
+  },
+  ellipsis: {
+    path: '/ellipsis',
+  },
+  avatar: {
+    path: '/avatar',
+    attrs: ['src=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'avatar-group': {
+    path: '/avatar',
   },
 }

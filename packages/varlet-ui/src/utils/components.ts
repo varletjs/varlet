@@ -14,9 +14,15 @@ import {
   ref,
   onActivated,
   onDeactivated,
-  PropType,
+  type PropType,
+  type ExtractPropTypes,
+  type Component,
+  type VNode,
+  type ComputedRef,
+  type ComponentInternalInstance,
+  type Ref,
+  type ComponentPublicInstance,
 } from 'vue'
-import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
 import { isArray, removeItem } from '@varlet/shared'
 
 export interface MountInstance {
@@ -37,6 +43,8 @@ export interface BaseParentProvider<C> {
 
   clear(childProvider: C): void
 }
+
+export type ExtractPublicPropTypes<P> = Partial<ExtractPropTypes<P>>
 
 export function pickProps<T, U extends keyof T>(props: T, propsKey: U): T[U]
 export function pickProps<T, U extends keyof T>(props: T, propsKey: U[]): Pick<T, U>

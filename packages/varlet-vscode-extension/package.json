@@ -6,13 +6,50 @@
   "displayName": "varlet-vscode-extension",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
-  "version": "2.7.3",
+  "version": "2.8.1",
   "engines": {
     "vscode": "^1.56.0"
   },
   "categories": [
     "Other"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "varlet.open-playground",
+        "title": "Varlet: Open Varlet UI Playground"
+      },
+      {
+        "command": "varlet.open-playground-and-wrap-template-tag",
+        "title": "Varlet: Open Varlet UI Playground And Wrap Template Tag"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "varlet.open-playground",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "varlet.open-playground-and-wrap-template-tag",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Varlet Extension Configuration",
+      "properties": {
+        "varlet.useChineseLanguage": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use chinese language"
+        }
+      }
+    }
+  },
   "activationEvents": [
     "onLanguage:vue",
     "onLanguage:javascript",
@@ -34,7 +71,8 @@
   },
   "dependencies": {
     "@varlet/shared": "workspace:*",
-    "@varlet/icons": "workspace:*"
+    "@varlet/icons": "workspace:*",
+    "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",

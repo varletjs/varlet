@@ -292,6 +292,8 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `Snackbar.loading` | Show loading snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.clear` | Close snackbar | _-_ | `-` |
 | `Snackbar.allowMultiple` | Whether to allow multi instance patterns | _boolean_ | `-` |
+| `Snackbar.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `Snackbar.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### Snackbar Options
 
@@ -299,7 +301,6 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 | Option          | Description                                                                                     | Type | Default |
 |-----------------|-------------------------------------------------------------------------------------------------| -------- | ---------- |
-| `show`          | Whether to show `Snackbar`                                                                      | _boolean_ | `false` |
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |

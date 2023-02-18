@@ -5,6 +5,8 @@ export const install: (app: App) => void
 
 export * from './actionSheet'
 export * from './appBar'
+export * from './avatar'
+export * from './avatarGroup'
 export * from './backTop'
 export * from './badge'
 export * from './bottomNavigation'
@@ -25,6 +27,7 @@ export * from './counter'
 export * from './datePicker'
 export * from './dialog'
 export * from './divider'
+export * from './ellipsis'
 export * from './form'
 export * from './formDetails'
 export * from './icon'
@@ -43,6 +46,7 @@ export * from './menu'
 export * from './option'
 export * from './overlay'
 export * from './pagination'
+export * from './paper'
 export * from './picker'
 export * from './popup'
 export * from './progress'
@@ -81,6 +85,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     VarActionSheet: typeof import('@varlet/ui')['_ActionSheetComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
+    VarAvatar: typeof import('@varlet/ui')['_AvatarComponent']
+    VarAvatarGroup: typeof import('@varlet/ui')['_AvatarGroupComponent']
     VarBackTop: typeof import('@varlet/ui')['_BackTopComponent']
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
@@ -101,6 +107,7 @@ declare module 'vue' {
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
+    VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
@@ -119,6 +126,7 @@ declare module 'vue' {
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
+    VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
     VarProgress: typeof import('@varlet/ui')['_ProgressComponent']

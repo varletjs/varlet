@@ -1,10 +1,9 @@
 import VarDialog from './Dialog.vue'
-import { reactive, nextTick } from 'vue'
-import { inBrowser, isNumber, isString } from '@varlet/shared'
+import { reactive, nextTick, type App, type TeleportProps } from 'vue'
+import { inBrowser, isString } from '@varlet/shared'
 import { call, mountInstance } from '../utils/components'
-import type { App, TeleportProps } from 'vue'
 
-interface DialogOptions {
+export interface DialogOptions {
   show?: boolean
   width?: string | number
   title?: string
@@ -39,9 +38,20 @@ interface DialogOptions {
 
 export type DialogActions = 'confirm' | 'cancel' | 'close'
 
-let singletonOptions: DialogOptions | null
+export type UserDialogOptions = DialogOptions | string
 
-function Dialog(options: DialogOptions | string | number): Promise<DialogActions | void> {
+let singletonOptions: DialogOptions | null
+let defaultOptions: DialogOptions = {}
+
+function normalizeOptions(options: UserDialogOptions = {}) {
+  if (isString(options)) {
+    return { ...defaultOptions, message: options }
+  }
+
+  return { ...defaultOptions, ...options }
+}
+
+function Dialog(options?: UserDialogOptions): Promise<DialogActions | void> {
   if (!inBrowser()) {
     return Promise.resolve()
   }
@@ -49,7 +59,7 @@ function Dialog(options: DialogOptions | string | number): Promise<DialogActions
   return new Promise((resolve) => {
     Dialog.close()
 
-    const dialogOptions: DialogOptions = isString(options) || isNumber(options) ? { message: String(options) } : options
+    const dialogOptions: DialogOptions = normalizeOptions(options)
     const reactiveDialogOptions: DialogOptions = reactive(dialogOptions)
     reactiveDialogOptions.teleport = 'body'
     singletonOptions = reactiveDialogOptions
@@ -85,15 +95,15 @@ function Dialog(options: DialogOptions | string | number): Promise<DialogActions
   })
 }
 
-VarDialog.install = function (app: App) {
-  app.component(VarDialog.name, VarDialog)
+function setDefaultOptions(options: DialogOptions) {
+  defaultOptions = options
 }
 
-Dialog.install = function (app: App) {
-  app.component(VarDialog.name, VarDialog)
+function resetDefaultOptions() {
+  defaultOptions = {}
 }
 
-Dialog.close = () => {
+function close() {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null
@@ -102,6 +112,20 @@ Dialog.close = () => {
       prevSingletonOptions.show = false
     })
   }
+}
+
+Object.assign(Dialog, {
+  setDefaultOptions,
+  resetDefaultOptions,
+  close,
+})
+
+VarDialog.install = function (app: App) {
+  app.component(VarDialog.name, VarDialog)
+}
+
+Dialog.install = function (app: App) {
+  app.component(VarDialog.name, VarDialog)
 }
 
 Dialog.Component = VarDialog

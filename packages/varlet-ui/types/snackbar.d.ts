@@ -54,7 +54,6 @@ export interface SnackbarOptions {
   contentClass?: string
   duration?: number
   vertical?: boolean
-  show?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
@@ -63,7 +62,7 @@ export interface SnackbarOptions {
 }
 
 export interface ISnackbar {
-  (options: SnackbarOptions | string): SnackbarHandel
+  (options?: SnackbarOptions | string): SnackbarHandel
 
   Component: typeof SnackbarComponent
 
@@ -80,6 +79,10 @@ export interface ISnackbar {
   error(options: SnackbarOptions | string): SnackbarHandel
 
   loading(options: SnackbarOptions | string): SnackbarHandel
+
+  setDefaultOptions(options: SnackbarOptions): void
+
+  resetDefaultOptions(): void
 
   clear(): void
 }

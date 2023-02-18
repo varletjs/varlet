@@ -410,6 +410,15 @@ function handleSelect(action) {
 | `closed`        | Triggered when the action sheet close-animation ends | `-`              |
 | `click-overlay` | Triggered when you click on overlay                  | `-`              |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `ActionSheet` | Show action sheet | _options \| string_ | `-` |
+| `ActionSheet.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ActionSheet.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+| `ActionSheet.close` | Close action sheet | _-_ | `-` |
+
 ### ActionSheet Options
 
 #### Options passed in for a functional call

@@ -89,7 +89,7 @@ function createRipple(this: RippleHTMLElement, event: TouchEvent) {
     }, 20)
   }
 
-  _ripple.tasker = window.setTimeout(task, 60)
+  _ripple.tasker = window.setTimeout(task, 30)
 }
 
 function removeRipple(this: RippleHTMLElement) {
@@ -111,7 +111,7 @@ function removeRipple(this: RippleHTMLElement) {
     }, delay)
   }
 
-  _ripple.tasker ? setTimeout(task, 60) : task()
+  _ripple.tasker ? setTimeout(task, 30) : task()
 }
 
 function forbidRippleTask(this: RippleHTMLElement) {

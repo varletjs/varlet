@@ -14,7 +14,7 @@ export interface ActionItem {
   disabled?: boolean
 }
 
-interface ActionSheetOptions {
+export interface ActionSheetOptions {
   actions?: ActionItem[]
   show?: boolean
   title?: string
@@ -35,8 +35,13 @@ interface ActionSheetOptions {
 }
 
 let singletonOptions: ActionSheetOptions | null
+let defaultOptions: ActionSheetOptions = {}
 
-function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | void> {
+function normalizeOptions(options: ActionSheetOptions = {}) {
+  return { ...defaultOptions, ...options }
+}
+
+function ActionSheet(options?: ActionSheetOptions): Promise<ActionSheetActions | void> {
   if (!inBrowser()) {
     return Promise.resolve()
   }
@@ -44,7 +49,7 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
   return new Promise((resolve) => {
     ActionSheet.close()
 
-    const reactiveActionSheetOptions: ActionSheetOptions = reactive(options)
+    const reactiveActionSheetOptions: ActionSheetOptions = reactive(normalizeOptions(options))
     reactiveActionSheetOptions.teleport = 'body'
     singletonOptions = reactiveActionSheetOptions
 
@@ -75,13 +80,15 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
   })
 }
 
-ActionSheet.Component = VarActionSheet
-
-VarActionSheet.install = function (app: App) {
-  app.component(VarActionSheet.name, VarActionSheet)
+function setDefaultOptions(options: ActionSheetOptions) {
+  defaultOptions = options
 }
 
-ActionSheet.close = () => {
+function resetDefaultOptions() {
+  defaultOptions = {}
+}
+
+function close() {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null
@@ -92,9 +99,21 @@ ActionSheet.close = () => {
   }
 }
 
+ActionSheet.Component = VarActionSheet
+
+VarActionSheet.install = function (app: App) {
+  app.component(VarActionSheet.name, VarActionSheet)
+}
+
 ActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
+
+Object.assign(ActionSheet, {
+  setDefaultOptions,
+  resetDefaultOptions,
+  close,
+})
 
 export { props as actionSheetProps } from './props'
 

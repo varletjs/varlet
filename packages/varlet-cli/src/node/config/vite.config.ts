@@ -108,8 +108,19 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
     )
   }
 
+  const define =
+    format === 'umd'
+      ? {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }
+      : undefined
+
   return {
     logLevel: 'silent',
+
+    define,
+
+    plugins,
 
     build: {
       minify: format === 'cjs' ? false : 'esbuild',

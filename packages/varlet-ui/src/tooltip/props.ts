@@ -71,6 +71,10 @@ export const props = {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
   },
+  sameWidth: {
+    type: Boolean,
+    default: false,
+  },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
