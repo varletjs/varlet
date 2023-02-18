@@ -1,8 +1,8 @@
-import { defineComponent, ref, toRefs, onMounted } from 'vue'
+import { defineComponent, ref, toRefs, onMounted, watch } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVtoCSS, nullColor } from './utils/color-utils'
-import { HSVA } from './utils/color-utils-types'
+import { HSV } from './utils/color-utils-types'
 import VarColorPickerCanvas from './components/color-picker-canvas/color-picker-canvas'
 import VarColorPickerEdit from './components/color-picker-edit/color-picker-edit'
 import VarColorPickerSwatches from './components/color-picker-swatches/color-picker-swatches'
@@ -19,15 +19,16 @@ export default defineComponent({
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
-    function updateModelValueColor(color: any) {
+    function updateModelValueColor(color: any, flag = false) {
       initialColor.value = parseBaseColor(color) ?? nullColor
-      console.log(initialColor.value)
+      console.log(color)
+      if (flag) return
       const value = extractBaseColor(initialColor.value, props.modelValue)
       call(props['onUpdate:modelValue'], value)
     }
     updateModelValueColor(modelValue.value)
     const currentMode = ref(DEFAULT_MODE)
-    function updateColor(hsva: HSVA) {
+    function updateColor(hsva: HSV) {
       updateModelValueColor(hsva)
     }
     function updateMode(mode: string) {
@@ -36,6 +37,18 @@ export default defineComponent({
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
+    watch(
+      () => modelValue.value,
+      (newV) => {
+        updateModelValueColor(newV, true)
+      }
+    )
+    watch(
+      () => mode.value,
+      (newV) => {
+        updateMode(newV)
+      }
+    )
     return () => {
       return (
         <>

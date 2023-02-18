@@ -4,16 +4,13 @@ export type ColorModeType = 'hsl' | 'rgb' | 'hsv' | 'hsv' | 'hex'
 
 // Types
 export type ColorInt = number
-export type HSV = { h: number; s: number; v: number }
-export type HSVA = HSV & { a?: number }
+export type HSV = { h: number; s: number; v: number; a?: number }
 export type RGB = { r: number; g: number; b: number; a?: number }
-export type RGBA = RGB & { a: number }
-export type HSL = { h: number; s: number; l: number }
-export type HSLA = HSL & { a: number }
+export type HSL = { h: number; s: number; l: number; a?: number }
 export type Hex = string
 export type Hexa = string
 export type Color = string | number | { [key: string]: unknown }
-export type InitialColor = HSV | HSVA | RGB | RGBA | HSLA | HSL | Color | Hex | Hexa | null
+export type InitialColor = HSV | RGB | HSL | Color | Hex | Hexa | null
 export interface ProvideColorOptions {
   mode?: ColorModeType
   showAlpha?: boolean
@@ -28,14 +25,10 @@ export interface CssColorObject {
 export interface ColorPickerColor {
   alpha: number
   hex: Hex
-  hexa: Hexa
   hsl: HSL
-  hsla: HSLA
   hsv: HSV
-  hsva: HSVA
   hue: number
   rgb: RGB
-  rgba: RGBA
 }
 export interface position {
   left?: Ref<number>

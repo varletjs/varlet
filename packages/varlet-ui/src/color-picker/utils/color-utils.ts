@@ -1,26 +1,12 @@
 // Utilities
 import { ref } from 'vue'
 import { chunk, padEnd, has, keepDecimal } from './helpers'
-import {
-  ColorPickerColor,
-  InitialColor,
-  position,
-  ColorInt,
-  HSV,
-  HSVA,
-  RGB,
-  RGBA,
-  HSL,
-  HSLA,
-  Hex,
-  Hexa,
-  Color,
-} from './color-utils-types'
+import { ColorPickerColor, position, ColorInt, HSV, RGB, HSL, Hex, Hexa, Color } from './color-utils-types'
 
 export const nullColor = { h: 0, s: 0, v: 1, a: 1 }
 
 export function omit<T extends Record<string, unknown>, K extends keyof T>(obj: T, fields: K[]): Omit<T, K> {
-  const shallowCopy = Object.assign({}, obj)
+  const shallowCopy = { ...obj }
   for (let i = 0; i < fields.length; i += 1) {
     const key = fields[i]
     delete shallowCopy[key]
@@ -83,7 +69,7 @@ export function colorToHex(color: Color): string {
  *
  * @param color HSVA color as an array [0-360, 0-1, 0-1, 0-1]
  */
-export function HSVAtoRGBA(hsva: HSVA): RGBA {
+export function HSVAtoRGBA(hsva: HSV): RGB {
   const { h, s, v, a } = hsva
   const f = (n: number) => {
     const k = (n + h / 60) % 6
@@ -100,7 +86,7 @@ export function HSVAtoRGBA(hsva: HSVA): RGBA {
  *
  * @param color RGBA color as an array [0-255, 0-255, 0-255, 0-1]
  */
-export function RGBAtoHSVA(rgba: RGBA): HSVA {
+export function RGBAtoHSVA(rgba: RGB): HSV {
   if (!rgba) {
     return { h: 0, s: 1, v: 1, a: 1 }
   }
@@ -132,7 +118,7 @@ export function RGBAtoHSVA(rgba: RGBA): HSVA {
   return { h: Math.round(hsv[0]), s: hsv[1], v: hsv[2], a: rgba.a }
 }
 
-export function HSVAtoHSLA(hsva: HSVA): HSLA {
+export function HSVAtoHSLA(hsva: HSV): HSL {
   const { h, s, v, a } = hsva
 
   const l = v - (v * s) / 2
@@ -142,7 +128,7 @@ export function HSVAtoHSLA(hsva: HSVA): HSLA {
   return { h: Math.round(h), s: sprime, l, a }
 }
 
-export function HSLAtoHSVA(hsl: HSLA): HSVA {
+export function HSLAtoHSVA(hsl: HSL): HSV {
   const { h, s, l, a } = hsl
 
   const v = l + s * Math.min(l, 1 - l)
@@ -152,20 +138,23 @@ export function HSLAtoHSVA(hsl: HSLA): HSVA {
   return { h: Math.round(h), s: sprime, v, a }
 }
 
-export function RGBAtoCSS(rgba: RGBA): string {
+export function RGBAtoCSS(rgba: RGB): string {
   return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`
 }
 
-export function RGBAtoHex(rgba: RGBA): Hex {
+export function RGBAtoHex(rgba: RGB): Hex {
   const toHex = (v: number) => {
     const h = Math.round(v).toString(16)
     // return ('00'.substring(0, 2 - h.length) + h).toUpperCase()
     return '00'.substring(0, 2 - h.length) + h
   }
-  return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`
+  if (rgba.a) {
+    return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b), toHex(Math.round(rgba.a * 255))].join('')}`
+  }
+  return `#${[toHex(rgba.r), toHex(rgba.g), toHex(rgba.b)].join('')}`
 }
 
-export function HexToRGBA(hex: Hex): RGBA {
+export function HexToRGBA(hex: Hex): RGB {
   const rgba = chunk(hex.slice(1), 2).map((c: string) => parseInt(c, 16))
 
   return {
@@ -176,12 +165,12 @@ export function HexToRGBA(hex: Hex): RGBA {
   }
 }
 
-export function HexToHSVA(hex: Hex): HSVA {
+export function HexToHSVA(hex: Hex): HSV {
   const rgb = HexToRGBA(hex)
   return RGBAtoHSVA(rgb)
 }
 
-export function HSVAtoHex(hsva: HSVA): Hex {
+export function HSVAtoHex(hsva: HSV): Hex {
   return RGBAtoHex(HSVAtoRGBA(hsva!))
 }
 
@@ -208,26 +197,20 @@ export function parseHex(hex: string): Hex {
   return hex as Hex
 }
 
-export function RGBtoInt(rgba: RGBA): ColorInt {
+export function RGBtoInt(rgba: RGB): ColorInt {
   return (rgba.r << 16) + (rgba.g << 8) + rgba.b
 }
 
-export function fromHSVA(hsva: HSVA): Partial<ColorPickerColor> {
+export function fromHSVA(hsva: HSV): Partial<ColorPickerColor> {
   hsva = { ...hsva }
   const hexa = HSVAtoHex(hsva)
-  const hsla = HSVAtoHSLA(hsva)
-  const rgba = HSVAtoRGBA(hsva)
   return {
     alpha: hsva.a,
     hex: hexa.substring(0, 7),
-    hexa,
-    hsla,
-    hsva,
     hue: hsva.h,
-    rgba,
   }
 }
-export function fromRGBA(rgba: RGBA): Partial<ColorPickerColor> {
+export function fromRGBA(rgba: RGB): Partial<ColorPickerColor> {
   const hsva = RGBtoHSV(rgba)
 
   const hexa = RGBAtoHex(rgba)
@@ -237,41 +220,26 @@ export function fromRGBA(rgba: RGBA): Partial<ColorPickerColor> {
   return {
     alpha: hsva.a,
     hex: hexa.substring(0, 7),
-    hexa,
-    hsla,
-    hsva,
     hsv,
     hsl,
     hue: hsva.h,
-    rgba,
   }
 }
 export function fromHexa(hexa: Hexa): Partial<ColorPickerColor> {
   const hsva = HexToHSVA(hexa)
-  const hsla = HSVAtoHSLA(hsva)
-  const rgba = HSVAtoRGBA(hsva)
   return {
     alpha: hsva.a,
     hex: hexa.substring(0, 7),
-    hexa,
-    hsla,
-    hsva,
     hue: hsva.h,
-    rgba,
   }
 }
-export function fromHSLA(hsla: HSLA): Partial<ColorPickerColor> {
+export function fromHSLA(hsla: HSL): Partial<ColorPickerColor> {
   const hsva = HSLAtoHSVA(hsla)
   const hexa = HSVAtoHex(hsva)
-  const rgba = HSVAtoRGBA(hsva)
   return {
     alpha: hsva.a,
     hex: hexa.substring(0, 7),
-    hexa,
-    hsla,
-    hsva,
     hue: hsva.h,
-    rgba,
   }
 }
 export function fromHex(hex: Hex): Partial<ColorPickerColor> {
@@ -335,7 +303,7 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
       return fromHexa('#00000000')
     }
     const hex = parseHex(color)
-    if (oldColor && hex === oldColor.hexa) {
+    if (oldColor && hex === oldColor.hex) {
       return oldColor
     }
     return fromHexa(hex)
@@ -351,22 +319,22 @@ export function parseColor(color: Color, oldColor?: Partial<ColorPickerColor>): 
     const a = color.hasOwnProperty('a') ? parseFloat((color as { a: string }).a) : 1
 
     if (has(color, ['r', 'g', 'b'])) {
-      if (oldColor && color === oldColor.rgba) {
+      if (oldColor && color === oldColor.rgb) {
         return oldColor
       }
-      return fromRGBA({ ...color, a } as RGBA)
+      return fromRGBA({ ...color, a } as RGB)
     }
     if (has(color, ['h', 's', 'l'])) {
-      if (oldColor && color === oldColor.hsla) {
+      if (oldColor && color === oldColor.hsl) {
         return oldColor
       }
-      return fromHSLA({ ...color, a } as HSLA)
+      return fromHSLA({ ...color, a } as HSL)
     }
     if (has(color, ['h', 's', 'v'])) {
-      if (oldColor && color === oldColor.hsva) {
+      if (oldColor && color === oldColor.hsv) {
         return oldColor
       }
-      return fromHSVA({ ...color, a } as HSVA)
+      return fromHSVA({ ...color, a } as HSV)
     }
   }
 
@@ -386,34 +354,31 @@ export function extractColor(
   showAlpha: boolean
 ): string | ColorPickerColor | Record<string, unknown> | undefined {
   // 色相
-  const hue = keepDecimal(color.hsla.h, 2)
+  const hue = keepDecimal(color.hsl.h, 2)
 
   // 饱和度
-  const hslSaturation = keepDecimal(color.hsla.s, 2)
+  const hslSaturation = keepDecimal(color.hsl.s, 2)
   // 亮度
-  const lightness = keepDecimal(color.hsla.l, 2)
+  const lightness = keepDecimal(color.hsl.l, 2)
   // red
-  const red = keepDecimal(color.rgba.r)
+  const red = keepDecimal(color.rgb.r)
   // green
-  const green = keepDecimal(color.rgba.g)
+  const green = keepDecimal(color.rgb.g)
   // blue
-  const blue = keepDecimal(color.rgba.b)
+  const blue = keepDecimal(color.rgb.b)
   // HSV饱和度
-  const hsvSaturation = keepDecimal(color.hsva.s, 2)
+  const hsvSaturation = keepDecimal(color.hsv.s, 2)
   // value
-  const value = keepDecimal(color.hsva.v, 2)
+  const value = keepDecimal(color.hsv.v, 2)
   if (input == null) {
     return color
-  }
-  function isShowAlpha(curMode: string) {
-    return showAlpha ? curMode + 'a' : curMode
   }
   if (typeof input === 'string') {
     if (mode === 'hex') {
       return color.hex
     }
     if (mode === 'hexa') {
-      return color.hexa
+      return color.hex
     }
     if (mode === 'hsl') {
       return `${mode}(${hue}, ${hslSaturation}, ${lightness})`
@@ -433,19 +398,19 @@ export function extractColor(
     if (mode === 'hsva') {
       return `${mode}(${hue}, ${hsvSaturation}, ${value}, ${color.alpha})`
     }
-    return input.length === 7 ? color.hex : color.hexa
+    return input.length === 7 ? color.hex : color.hex
   }
 
   if (typeof input === 'object') {
     const shouldStrip = typeof input.a === 'number' && input.a === 0 ? !!input.a : !input.a
     if (has(input, ['r', 'g', 'b'])) {
-      return stripAlpha(color.rgba, shouldStrip)
+      return stripAlpha(color.rgb, shouldStrip)
     }
     if (has(input, ['h', 's', 'l'])) {
-      return stripAlpha(color.hsla, shouldStrip)
+      return stripAlpha(color.hsl, shouldStrip)
     }
     if (has(input, ['h', 's', 'v'])) {
-      return stripAlpha(color.hsva, shouldStrip)
+      return stripAlpha(color.hsv, shouldStrip)
     }
   }
 }
@@ -497,10 +462,10 @@ export function extractBaseColor(color: any, input: any) {
 
   return color
 }
-export function parseBaseColor(color: any): HSVA | null {
+export function parseBaseColor(color: any): HSV | null {
   if (!color) return null
 
-  let hsva: HSVA | null = null
+  let hsva: HSV | null = null
 
   if (typeof color === 'string') {
     const hex = parseHex(color)
@@ -519,7 +484,7 @@ export function parseBaseColor(color: any): HSVA | null {
 
   return hsva != null ? { ...hsva, a: hsva.a ?? 1 } : null
 }
-export function RGBtoRGBA(rgba: RGBA): RGBA {
+export function RGBtoRGBA(rgba: RGB): RGB {
   if (typeof rgba === 'string') {
     const strRgba = (/rgba?\((.*?)\)/.exec(rgba) || ['', '0,0,0,1'])[1].split(',')
     return {
@@ -531,7 +496,7 @@ export function RGBtoRGBA(rgba: RGBA): RGBA {
   }
   return rgba
 }
-export function RGBtoHSV(rgba: RGB): HSVA {
+export function RGBtoHSV(rgba: RGB): HSV {
   if (!rgba) return { h: 0, s: 1, v: 1, a: 1 }
 
   const r = rgba.r / 255
@@ -588,7 +553,7 @@ const rgba: ColorPickerMode = {
       label: 'G',
       max: 255,
       step: 1,
-      getValue: (c: RGBtoHSVRGB) => Math.round(c.g),
+      getValue: (c: RGB) => Math.round(c.g),
       getColor: (c: RGB, v: string): RGB => ({ ...c, g: Number(v) }),
     },
     {
@@ -714,7 +679,7 @@ function toHex(v: number) {
   const h = Math.round(v).toString(16)
   return ('00'.substr(0, 2 - h.length) + h).toUpperCase()
 }
-export function HSVtoRGB(hsva: HSVA): RGB {
+export function HSVtoRGB(hsva: HSV): RGB {
   const { h, s, v, a } = hsva
   const f = (n: number) => {
     const k = (n + h / 60) % 6
@@ -725,7 +690,7 @@ export function HSVtoRGB(hsva: HSVA): RGB {
 
   return { r: rgb[0], g: rgb[1], b: rgb[2], a }
 }
-export function HSVtoHSL(hsva: HSVA): HSL {
+export function HSVtoHSL(hsva: HSV): HSL {
   const { h, s, v, a } = hsva
 
   const l = v - (v * s) / 2
