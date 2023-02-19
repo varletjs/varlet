@@ -142,6 +142,127 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+
+### Theme Color Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>Default Button</var-button>
+      <var-button>Default Button</var-button>
+      <var-button>Default Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary">
+      <var-button type="primary">Primary Button</var-button>
+      <var-button type="primary">Primary Button</var-button>
+      <var-button type="primary">Primary Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="info">
+      <var-button type="info">Info Button</var-button>
+      <var-button type="info">Info Button</var-button>
+      <var-button type="info">Info Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="success">
+      <var-button type="success">Success Button</var-button>
+      <var-button type="success">Success Button</var-button>
+      <var-button type="success">Success Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="warning">
+      <var-button type="warning">Warning Button</var-button>
+      <var-button type="warning">Warning Button</var-button>
+      <var-button type="warning">Warning Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="danger">
+      <var-button type="danger">Danger Button</var-button>
+      <var-button type="danger">Danger Button</var-button>
+      <var-button type="danger">Danger Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Button Group Size
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group size="normal" type="primary">
+      <var-button>Normal Button</var-button>
+      <var-button>Normal Button</var-button>
+      <var-button>Normal Button</var-button>
+    </var-button-group>
+    
+    <var-button-group size="small" type="success">
+      <var-button>Small Button</var-button>
+      <var-button>Small Button</var-button>
+      <var-button>Small Button</var-button>
+    </var-button-group>
+    
+    <var-button-group size="mini" type="warning">
+      <var-button>Mini Button</var-button>
+      <var-button>Mini Button</var-button>
+      <var-button>Mini Button</var-button>
+    </var-button-group>
+    
+    <var-button-group size="large" type="danger">
+      <var-button>Large Button</var-button>
+      <var-button>Large Button</var-button>
+      <var-button>Large Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Text Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group mode="text">
+      <var-button>Text Button</var-button>
+      <var-button>Text Button</var-button>
+      <var-button>Text Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" mode="outline">
+      <var-button>Outline Button</var-button>
+      <var-button>Outline Button</var-button>
+      <var-button>Outline Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Custom Button Group Color
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>LinearGradient Color</var-button>
+    <var-button>LinearGradient Color</var-button>
+    <var-button>LinearGradient Color</var-button>
+  </var-button-group>
+</template>
+```
+
+### Vertical Button Group
+
+```html
+<template>
+  <var-button-group type="primary" mode="outline" vertical>
+    <var-button>Primary Button</var-button>
+    <var-button>Primary Button</var-button>
+    <var-button>Primary Button</var-button>
+  </var-button-group>
+</template>
+```
+
 ## API
 
 ### Props
@@ -165,6 +286,19 @@ function handleAutoLoadingClick() {
 | `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
 | `text-color`     | Button Text color                                                                       | _string_  | `-`            |
 | `color`          | Button background color                                                                 | _string_  | `-`            |
+
+## ButtonGroup API
+
+### Props
+
+| 参数           | 说明                                                                                 | 类型        | 默认值       |
+|--------------|------------------------------------------------------------------------------------|-----------|-----------|
+| `type`       | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
+| `size`       | Button size, Can be set to `normal` `mini` `small` `large`                         | _string_  | `normal`  |
+| `mode`       | Button mode, Can be set to `normal` `text` `outline`                               | _string_  | `normal`  |
+| `vertical`   | Whether to be vertical button                                                      | _boolean_ | `false`   |
+| `elevation`         | The shadow level of Card                                        | _string \ | number_  | `2`     |
+| `color`      | Button background color                                                            | _string_  | `-`       |
 
 ### Events
 

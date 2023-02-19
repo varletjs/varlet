@@ -163,6 +163,126 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+### 主题色按钮组
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>默认按钮</var-button>
+      <var-button>默认按钮</var-button>
+      <var-button>默认按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary">
+      <var-button type="primary">主要按钮</var-button>
+      <var-button type="primary">主要按钮</var-button>
+      <var-button type="primary">主要按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="info">
+      <var-button type="info">信息按钮</var-button>
+      <var-button type="info">信息按钮</var-button>
+      <var-button type="info">信息按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="success">
+      <var-button type="success">成功按钮</var-button>
+      <var-button type="success">成功按钮</var-button>
+      <var-button type="success">成功按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="warning">
+      <var-button type="warning">警告按钮</var-button>
+      <var-button type="warning">警告按钮</var-button>
+      <var-button type="warning">警告按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="danger">
+      <var-button type="danger">危险按钮</var-button>
+      <var-button type="danger">危险按钮</var-button>
+      <var-button type="danger">危险按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 按钮组尺寸
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group size="normal" type="primary">
+      <var-button>常规按钮</var-button>
+      <var-button>常规按钮</var-button>
+      <var-button>常规按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="small" type="success">
+      <var-button>小型按钮</var-button>
+      <var-button>小型按钮</var-button>
+      <var-button>小型按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="mini" type="warning">
+      <var-button>迷你按钮</var-button>
+      <var-button>迷你按钮</var-button>
+      <var-button>迷你按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group size="large" type="danger">
+      <var-button>大型按钮</var-button>
+      <var-button>大型按钮</var-button>
+      <var-button>大型按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 文字按钮组
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group mode="text">
+      <var-button>文字按钮</var-button>
+      <var-button>文字按钮</var-button>
+      <var-button>文字按钮</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" mode="outline">
+      <var-button>外边框按钮</var-button>
+      <var-button>外边框按钮</var-button>
+      <var-button>外边框按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 自定义按钮组颜色
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>自定义按钮组颜色</var-button>
+    <var-button>自定义按钮组颜色</var-button>
+    <var-button>自定义按钮组颜色</var-button>
+  </var-button-group>
+</template>
+```
+
+### 按钮组竖直排列
+
+```html
+<template>
+  <var-button-group type="primary" mode="outline" vertical>
+    <var-button>主要按钮</var-button>
+    <var-button>主要按钮</var-button>
+    <var-button>主要按钮</var-button>
+  </var-button-group>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -170,10 +290,10 @@ function handleAutoLoadingClick() {
 | 参数               | 说明                                                              | 类型        | 默认值            |
 |------------------|-----------------------------------------------------------------|-----------|----------------|
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `native-type`    | 原生类型，可选值为 `button` `submit` `reset` | _string_  | `button`       |
+| `native-type`    | 原生类型，可选值为 `button` `submit` `reset`                             | _string_  | `button`       |
 | `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`       |
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
-| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |
+| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \ | number_        | `-` |
 | `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_  | `circle`       |
 | `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_  | `normal`       |
 | `loading-color`  | loading 的颜色                                                     | _string_  | `currentColor` |
@@ -186,6 +306,20 @@ function handleAutoLoadingClick() {
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
 | `text-color`     | 文字颜色                                                            | _string_  | `-`            |
 | `color`          | 背景颜色                                                            | _string_  | `-`            |
+
+## 按钮组API
+
+### 属性
+
+| 参数           | 说明                                                              | 类型        | 默认值       |
+|--------------|-----------------------------------------------------------------|-----------|-----------|
+| `type`       | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
+| `size`       | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`  |
+| `mode`       | 模式，可选值为 `text` `outline`                                        | _string_  | `-`       |
+| `vertical`   | 是否竖直排列                                                          | _boolean_ | `false`   |
+| `elevation`  | 卡片阴影程度等级                                               | _string \ | number_  | `2`     |
+| `color`      | 背景颜色                                                            | _string_  | `-`       |
+
 
 ### 事件
 

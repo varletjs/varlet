@@ -1,5 +1,6 @@
 <script setup>
 import VarButton from '../index'
+import VarButtonGroup from '../../button-group'
 import VarIcon from '../../icon'
 import VarSpace from '../../space'
 import Snackbar from '../../snackbar'
@@ -101,5 +102,84 @@ watchDarkMode(dark)
     <var-button type="success" @click="handleClick">{{ pack.click }}</var-button>
     <var-button type="success" @touchstart="handleTouchstart">{{ pack.touchstart }}</var-button>
     <var-button type="success" @click="handleAutoLoadingClick" auto-loading>{{ pack.autoLoading }}</var-button>
+  </var-space>
+
+  <app-type>{{ pack.themeColorButtonGroup }}</app-type>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>{{ pack.default }}</var-button>
+      <var-button>{{ pack.default }}</var-button>
+      <var-button>{{ pack.default }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary">
+      <var-button type="primary">{{ pack.primary }}</var-button>
+      <var-button type="primary">{{ pack.primary }}</var-button>
+      <var-button type="primary">{{ pack.primary }}</var-button>
+    </var-button-group>
+  </var-space>
+
+  <app-type>{{ pack.buttonGroupSize }}</app-type>
+  <var-space :size="[10, 10]">
+    <var-button-group size="normal" type="primary">
+      <var-button>{{ pack.normal }}</var-button>
+      <var-button>{{ pack.normal }}</var-button>
+      <var-button>{{ pack.normal }}</var-button>
+    </var-button-group>
+
+    <var-button-group size="large" type="success">
+      <var-button>{{ pack.large }}</var-button>
+      <var-button>{{ pack.large }}</var-button>
+      <var-button>{{ pack.large }}</var-button>
+    </var-button-group>
+  </var-space>
+
+  <app-type>{{ pack.modeButtonGroup }}</app-type>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary">
+      <var-button>{{ pack.text }}</var-button>
+      <var-button>{{ pack.text }}</var-button>
+      <var-button>{{ pack.text }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="outline">
+      <var-button>{{ pack.outline }}</var-button>
+      <var-button>{{ pack.outline }}</var-button>
+      <var-button>{{ pack.outline }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="text">
+      <var-button>{{ pack.text }}</var-button>
+      <var-button>{{ pack.text }}</var-button>
+      <var-button>{{ pack.text }}</var-button>
+    </var-button-group>
+  </var-space>
+
+  <app-type>{{ pack.customButtonGroupColor }}</app-type>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>{{ pack.linearColor }}</var-button>
+    <var-button>{{ pack.linearColor }}</var-button>
+    <var-button>{{ pack.linearColor }}</var-button>
+  </var-button-group>
+
+  <app-type>{{ pack.verticalButtonGroup }}</app-type>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" vertical>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+    </var-button-group>
+
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+      <var-button>{{ pack.primary }}</var-button>
+    </var-button-group>
   </var-space>
 </template>
