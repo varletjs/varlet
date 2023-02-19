@@ -14,6 +14,7 @@ export * from './bottomNavigationItem'
 export * from './breadcrumb'
 export * from './breadcrumbs'
 export * from './button'
+export * from './buttonGroup'
 export * from './card'
 export * from './cell'
 export * from './checkbox'
@@ -94,6 +95,7 @@ declare module 'vue' {
     VarBreadcrumb: typeof import('@varlet/ui')['_BreadcrumbComponent']
     VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
+    VarButtonGroup: typeof import('@varlet/ui')['_ButtonGroupComponent']
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarCheckbox: typeof import('@varlet/ui')['_CheckboxComponent']
