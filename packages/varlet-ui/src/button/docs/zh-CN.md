@@ -287,16 +287,16 @@ function handleAutoLoadingClick() {
 
 ### 属性
 
-| 参数               | 说明                                                              | 类型        | 默认值            |
-|------------------|-----------------------------------------------------------------|-----------|----------------|
-| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `native-type`    | 原生类型，可选值为 `button` `submit` `reset`                             | _string_  | `button`       |
-| `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`       |
+| 参数               | 说明                                                              | 类型       | 默认值            |
+|------------------|-----------------------------------------------------------------|----------|----------------|
+| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default`      |
+| `native-type`    | 原生类型，可选值为 `button` `submit` `reset`                             | _string_ | `button`       |
+| `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_ | `normal`       |
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
-| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \ | number_        | `-` |
-| `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_  | `circle`       |
-| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_  | `normal`       |
-| `loading-color`  | loading 的颜色                                                     | _string_  | `currentColor` |
+| `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |
+| `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_ | `circle`       |
+| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_ | `normal`       |
+| `loading-color`  | loading 的颜色                                                     | _string_ | `currentColor` |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                          | _boolean_ | `false`        |
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |
 | `block`          | 是否是块级元素                                                         | _boolean_ | `false`        |
@@ -304,22 +304,22 @@ function handleAutoLoadingClick() {
 | `outline`        | 是否使用外边框                                                         | _boolean_ | `false`        |
 | `disabled`       | 禁用状态                                                            | _boolean_ | `false`        |
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
-| `text-color`     | 文字颜色                                                            | _string_  | `-`            |
-| `color`          | 背景颜色                                                            | _string_  | `-`            |
+| `text-color`     | 文字颜色                                                            | _string_ | `-`            |
+| `color`          | 背景颜色                                                            | _string_ | `-`            |
 
 ## 按钮组API
 
 ### 属性
 
-| 参数           | 说明                                                              | 类型        | 默认值       |
-|--------------|-----------------------------------------------------------------|-----------|-----------|
-| `type`       | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
-| `size`       | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`  |
-| `mode`       | 模式，可选值为 `text` `outline`                                        | _string_  | `-`       |
-| `vertical`   | 是否竖直排列                                                          | _boolean_ | `false`   |
-| `elevation`  | 卡片阴影程度等级                                               | _string \ | number_  | `2`     |
-| `color`      | 背景颜色                                                            | _string_  | `-`       |
-
+| 参数          | 说明                                                               | 类型       | 默认值       |
+|-------------|------------------------------------------------------------------|----------|-----------|
+| `type`      | 按钮组类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
+| `mode`      | 按钮组模式，可选值为 `text` `outline`                                      | _string_ | `-`       |
+| `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
+| `elevation` | 按钮组阴影程度等级                                                        | _string \| number_  | `2`     |
+| `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |
+| `text-color` | 按钮组文字颜色                                                          | _string_ | `-`       |
 
 ### 事件
 
