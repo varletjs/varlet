@@ -1,6 +1,6 @@
 export default {
   themeColorButton: '主题色按钮',
-  themeColorButtonGroup: '主题色按钮组',
+  themeColorButtonGroup: '按钮组主题色',
   defaultButton: '默认按钮',
   primaryButton: '主要按钮',
   infoButton: '信息按钮',

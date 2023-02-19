@@ -163,7 +163,7 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
-### 主题色按钮组
+### 按钮组主题色
 
 ```html
 <template>
@@ -203,7 +203,7 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
-### 文字按钮组
+### 按钮组模式
 
 ```html
 <template>
@@ -299,11 +299,13 @@ function handleAutoLoadingClick() {
 | `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
 | `mode`      | 按钮组模式，可选值为 `normal` `text` `outline`                               | _string_ | `normal`       |
 | `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
-| `elevation` | 按钮组阴影程度等级                                                        | _string \| number_  | `2`     |
+| `elevation` | 按钮组海拔等级                                                        | _string \| number_  | `2`     |
 | `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |
 | `text-color` | 按钮组文字颜色                                                          | _string_ | `-`       |
 
 ### 事件
+
+#### Button Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -312,12 +314,22 @@ function handleAutoLoadingClick() {
 
 ### 插槽
 
+#### Button Slots
+
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 按钮内容 | `-` |
 
+#### ButtonGroup Slots
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `default` | 按钮组内容 | `-` |
+
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+#### Button Variables
 
 | 变量名 | 默认值 |
 | --- | --- |

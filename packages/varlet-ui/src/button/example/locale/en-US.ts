@@ -1,6 +1,6 @@
 export default {
   themeColorButton: 'Theme Color Button',
-  themeColorButtonGroup: 'Theme Color Button Group',
+  themeColorButtonGroup: 'Button Group Theme Color',
   defaultButton: 'Default Button',
   default: 'Default',
   primaryButton: 'Primary Button',
