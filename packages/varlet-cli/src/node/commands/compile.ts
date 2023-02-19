@@ -1,6 +1,6 @@
-import ora from 'ora'
 import logger from '../shared/logger.js'
 import fse from 'fs-extra'
+import { createSpinner } from 'nanospinner'
 import { ES_DIR, HL_DIR, LIB_DIR, UMD_DIR } from '../shared/constant.js'
 import { compileBundle, compileModule } from '../compiler/compileModule.js'
 import { compileTemplateHighlight } from '../compiler/compileTemplateHighlight.js'
@@ -13,12 +13,12 @@ export function removeDir() {
 }
 
 export async function runTask(taskName: string, task: () => any) {
-  const s = ora().start(`Compiling ${taskName}`)
+  const s = createSpinner().start({ text: `Compiling ${taskName}` })
   try {
     await task()
-    s.succeed(`Compilation ${taskName} completed!`)
+    s.success({ text: `Compilation ${taskName} completed!` })
   } catch (e: any) {
-    s.fail(`Compilation ${taskName} failed!`)
+    s.error({ text: `Compilation ${taskName} failed!` })
     logger.error(e.toString())
   }
 }
