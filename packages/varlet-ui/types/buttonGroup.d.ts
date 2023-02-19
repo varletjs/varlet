@@ -1,16 +1,16 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize } from './varComponent'
+import { VarComponent, BasicAttributes, Type as ButtonGroupType, Size as ButtonGroupSize } from './varComponent'
 
 export declare const buttonGroupProps: Record<string, any>
 
-export type Mode = 'normal' | 'text' | 'outline'
+export type ButtonGroupMode = 'normal' | 'text' | 'outline'
 
 export interface ButtonGroupProps extends BasicAttributes {
-  type?: ButtonType
-  size?: ButtonSize
+  type?: ButtonGroupType
+  size?: ButtonGroupSize
   color?: string
   textColor?: string
-  mode?: Mode
+  mode?: ButtonGroupMode
   vertical?: boolean
 }
 
