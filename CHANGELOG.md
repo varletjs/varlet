@@ -1,3 +1,17 @@
+## [2.8.2](https://github.com/varletjs/varlet/compare/v2.8.1...v2.8.2) (2023-02-19)
+
+
+### Bug Fixes
+
+* paper elevation maybe undefined ([c9743fc](https://github.com/varletjs/varlet/commit/c9743fcedb5414813581b6cde49013090bed4fc0))
+
+
+### Features
+
+* new component button group ([66a6bed](https://github.com/varletjs/varlet/commit/66a6bed9a1be3dbc995f4cf7d74da0b1b626ed6e))
+
+
+
 ## [2.8.1](https://github.com/varletjs/varlet/compare/v2.8.0...v2.8.1) (2023-02-15)
 
 
