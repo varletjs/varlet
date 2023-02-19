@@ -16,10 +16,9 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useButtons } from './provide'
+import { useButtons, type ButtonGroupProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import type { ButtonGroupProvider } from './provide'
 
 const { n, classes } = createNamespace('button-group')
 
@@ -34,6 +33,7 @@ export default defineComponent({
       type: computed(() => props.type),
       size: computed(() => props.size),
       color: computed(() => props.color),
+      textColor: computed(() => props.textColor),
       mode: computed(() => props.mode),
     }
 
@@ -48,5 +48,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './buttonGroup.less';
+@import '../styles/common';
+@import './buttonGroup';
 </style>

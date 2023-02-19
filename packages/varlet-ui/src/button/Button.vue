@@ -20,7 +20,7 @@
       )
     "
     :style="{
-      color: textColor,
+      color: states.textColor,
       background: states.color,
     }"
     :type="nativeType"
@@ -73,15 +73,19 @@ export default defineComponent({
           size: props.size != null ? props.size : 'normal',
           color: props.color,
           text: props.text,
+          textColor: props.textColor,
           outline: props.outline,
         }
       }
-      const { type, size, color, mode } = buttonGroup
+
+      const { type, size, color, textColor, mode } = buttonGroup
+
       return {
         elevation: 0,
         type: props.type != null ? props.type : type.value,
         size: props.size != null ? props.size : size.value,
         color: props.color != null ? props.color : color.value,
+        textColor: props.textColor != null ? props.textColor : textColor.value,
         text: mode.value !== 'normal',
         outline: mode.value === 'outline',
       }

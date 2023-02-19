@@ -26,6 +26,9 @@ export const props = {
   color: {
     type: String,
   },
+  textColor: {
+    type: String,
+  },
   mode: {
     type: String as PropType<'text' | 'outline' | 'normal'>,
     default: 'normal',

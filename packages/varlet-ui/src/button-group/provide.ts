@@ -6,6 +6,7 @@ export interface ButtonGroupProvider {
   type: ComputedRef<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>
   size: ComputedRef<'normal' | 'mini' | 'small' | 'large'>
   color: ComputedRef<string | undefined>
+  textColor: ComputedRef<string | undefined>
   mode: ComputedRef<'text' | 'outline' | 'normal'>
 }
 
