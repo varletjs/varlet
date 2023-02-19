@@ -168,6 +168,11 @@ const floating = ref(false)
 | `floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
 | `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
 
+### 事件
+
+| 事件名  | 说明           | 参数           |
+| ------- | -------------- | -------------- |
+| `click` | 点击卡片时触发 | `event: Event` |
 
 ### 插槽
 
@@ -180,13 +185,6 @@ const floating = ref(false)
 | `floating-content`     | 漂浮时显示的正文内容 | `-`  |
 | `extra`       | 自定义底部内容 | `-`  |
 | `close-button` | 自定义关闭   | `-`  |
-
-
-### 事件
-
-| 事件名  | 说明           | 参数           |
-| ------- | -------------- | -------------- |
-| `click` | 点击卡片时触发 | `event: Event` |
 
 ### 样式变量
 

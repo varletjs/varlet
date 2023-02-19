@@ -163,6 +163,12 @@ const floating = ref(false)
 | `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
 
+### Events
+
+| Events  | Description                      | Arguments      |
+| ------- | -------------------------------- | -------------- |
+| `click` | Triggered when the Card is click | `event: Event` |
+
 ### Slots
 
 | Name | Description | SlotProps |
@@ -174,12 +180,6 @@ const floating = ref(false)
 | `floating-content`     | Content displayed when floating | `-`  |
 | `extra`         | Custom bottom content           | `-`       |
 | `close-button`  | Custom close button             | `-`  |
-
-### Events
-
-| Events  | Description                      | Arguments      |
-| ------- | -------------------------------- | -------------- |
-| `click` | Triggered when the Card is click | `event: Event` |
 
 ### Style Variables
 
