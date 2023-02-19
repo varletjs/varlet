@@ -1,7 +1,6 @@
 <template>
   <button
     v-ripple="{ disabled: disabled || !ripple }"
-    ref="buttonEl"
     :class="
       classes(
         n(),

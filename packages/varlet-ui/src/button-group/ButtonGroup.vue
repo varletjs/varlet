@@ -49,5 +49,6 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
 @import './buttonGroup';
 </style>

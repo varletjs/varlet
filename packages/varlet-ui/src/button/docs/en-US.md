@@ -168,13 +168,13 @@ function handleAutoLoadingClick() {
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button-group size="normal" type="primary">
+    <var-button-group type="primary" size="normal">
       <var-button>Button</var-button>
       <var-button>Button</var-button>
       <var-button>Button</var-button>
     </var-button-group>
   
-    <var-button-group size="large" type="primary">
+    <var-button-group type="primary" size="large">
       <var-button>Button</var-button>
       <var-button>Button</var-button>
       <var-button>Button</var-button>
@@ -225,23 +225,25 @@ function handleAutoLoadingClick() {
 
 ```html
 <template>
-  <var-button-group type="primary" mode="text" vertical>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-  </var-button-group>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
   
-  <var-button-group type="primary" mode="outline" vertical>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-  </var-button-group>
-  
-  <var-button-group type="primary" vertical>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-    <var-button>Button</var-button>
-  </var-button-group>
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
 </template>
 ```
 

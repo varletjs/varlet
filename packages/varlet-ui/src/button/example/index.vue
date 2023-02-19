@@ -105,7 +105,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.themeColorButtonGroup }}</app-type>
-  <var-space :size="[10, 10]">
+  <var-space :size="['2.666vw', '2.666vw']">
     <var-button-group type="default">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -120,7 +120,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.buttonGroupSize }}</app-type>
-  <var-space :size="[10, 10]">
+  <var-space :size="['2.666vw', '2.666vw']">
     <var-button-group size="normal" type="primary">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -135,7 +135,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.modeButtonGroup }}</app-type>
-  <var-space :size="[10, 10]">
+  <var-space :size="['2.666vw', '2.666vw']">
     <var-button-group type="primary" mode="text">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -163,7 +163,7 @@ watchDarkMode(dark)
   </var-button-group>
 
   <app-type>{{ pack.verticalButtonGroup }}</app-type>
-  <var-space :size="[10, 10]">
+  <var-space :size="['2.666vw', '2.666vw']">
     <var-button-group type="primary" mode="text" vertical>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
