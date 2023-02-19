@@ -1,6 +1,6 @@
-import ora from 'ora'
 import conventionalChangelog from 'conventional-changelog'
 import fse from 'fs-extra'
+import { createSpinner } from 'nanospinner'
 import { resolve as resolvePath } from 'path'
 import { CWD } from '../shared/constant.js'
 
@@ -12,7 +12,7 @@ export interface ChangelogCommandOptions {
 }
 
 export function changelog({ releaseCount = 0, file = 'CHANGELOG.md' }: ChangelogCommandOptions = {}): Promise<void> {
-  const s = ora().start(`Generating changelog`)
+  const s = createSpinner('Generating changelog').start()
 
   return new Promise((resolve) => {
     conventionalChangelog({
@@ -21,7 +21,7 @@ export function changelog({ releaseCount = 0, file = 'CHANGELOG.md' }: Changelog
     })
       .pipe(createWriteStream(resolvePath(CWD, file)))
       .on('close', () => {
-        s.succeed(`Changelog generated success!`)
+        s.success({ text: 'Changelog generated success!' })
         resolve()
       })
   })

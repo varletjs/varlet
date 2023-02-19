@@ -1,5 +1,5 @@
 import execa from 'execa'
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { resolve } from 'path'
 
 const CWD = process.cwd()
@@ -20,12 +20,12 @@ export const buildIcons = () => execa('pnpm', ['build'], { cwd: PKG_ICONS })
 export const buildUI = () => execa('pnpm', ['compile'], { cwd: PKG_UI })
 
 export async function runTask(taskName, task) {
-  const s = ora().start(`Building ${taskName}`)
+  const s = createSpinner(`Building ${taskName}`).start()
   try {
     await task()
-    s.succeed(`Build ${taskName} completed!`)
+    s.success({ text: `Build ${taskName} completed!` })
   } catch (e) {
-    s.fail(`Build ${taskName} failed!`)
+    s.error({ text: `Build ${taskName} failed!` })
     console.error(e.toString())
   }
 }

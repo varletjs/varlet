@@ -1,4 +1,4 @@
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import fse from 'fs-extra'
 import execa from 'execa'
 import logger from '../shared/logger.js'
@@ -21,7 +21,7 @@ async function isWorktreeEmpty() {
 }
 
 async function publish(preRelease: boolean) {
-  const s = ora().start('Publishing all packages')
+  const s = createSpinner('Publishing all packages').start()
   const args = ['-r', 'publish', '--no-git-checks', '--access', 'public']
 
   preRelease && args.push('--tag', 'alpha')
@@ -29,19 +29,19 @@ async function publish(preRelease: boolean) {
   if (ret.stderr && ret.stderr.includes('npm ERR!')) {
     throw new Error('\n' + ret.stderr)
   } else {
-    s.succeed('Publish all packages successfully')
+    s.success({ text: 'Publish all packages successfully' })
     ret.stdout && logger.info(ret.stdout)
   }
 }
 
 async function pushGit(version: string, remote = 'origin') {
-  const s = ora().start('Pushing to remote git repository')
+  const s = createSpinner('Pushing to remote git repository').start()
   await execa('git', ['add', '.'])
   await execa('git', ['commit', '-m', `v${version}`])
   await execa('git', ['tag', `v${version}`])
   await execa('git', ['push', remote, `v${version}`])
   const ret = await execa('git', ['push'])
-  s.succeed('Push remote repository successfully')
+  s.success({ text: 'Push remote repository successfully' })
 
   ret.stdout && logger.info(ret.stdout)
 }

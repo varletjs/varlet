@@ -1,25 +1,24 @@
 import execa from 'execa'
-import ora from 'ora'
+import { createSpinner } from 'nanospinner'
 import { CWD, ESLINT_EXTENSIONS } from '../shared/constant.js'
 import { isDir } from '../shared/fsUtils.js'
 import { resolve } from 'path'
-import type { Ora } from 'ora'
 
 export async function lint() {
-  let spinner: Ora
+  const spinner = createSpinner()
   try {
-    spinner = ora('prettier starting...').start()
+    spinner.start({ text: 'prettier starting...' })
     await execa('prettier', ['--write', '--cache', '.'])
-    spinner.succeed('prettier success')
+    spinner.success({ text: 'prettier success' })
 
-    spinner = ora('stylelint starting...').start()
+    spinner.start({ text: 'stylelint starting...' })
     const stylelintPattern = ['./src/**/*.vue', './src/**/*.css', './src/**/*.less']
     const hasPackages = isDir(resolve(CWD, 'packages'))
     hasPackages && stylelintPattern.push('./packages/**/*.vue', './packages/**/*.css', './packages/**/*.less')
     await execa('stylelint', [...stylelintPattern, '--fix', '--cache'])
-    spinner.succeed('stylelint success')
+    spinner.success({ text: 'stylelint success' })
 
-    spinner = ora('eslint starting...').start()
+    spinner.start({ text: 'eslint starting...' })
 
     const eslintPatterns: string[] = [
       './src',
@@ -38,11 +37,11 @@ export async function lint() {
       ESLINT_EXTENSIONS.join(),
     ])
 
-    const type = stdout ? 'warn' : 'succeed'
+    const type = stdout ? 'warn' : 'success'
 
-    spinner[type](stdout || 'eslint success')
+    spinner[type]({ text: stdout || 'eslint success' })
   } catch (e: any) {
-    spinner!.fail(e.toString())
+    spinner!.error({ text: e.toString() })
     process.exit(1)
   }
 }
