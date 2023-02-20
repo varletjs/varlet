@@ -33,14 +33,7 @@
       <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
     </template>
 
-    <div
-      ref="textElement"
-      :class="n('text')"
-      :style="{
-        scale,
-      }"
-      v-else
-    >
+    <div ref="textElement" :class="n('text')" :style="{ transform: `scale(${scale})` }" v-else>
       <slot />
     </div>
   </div>
