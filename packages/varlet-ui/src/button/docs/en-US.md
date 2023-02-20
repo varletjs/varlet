@@ -183,6 +183,27 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+### Split Button
+
+```html
+<template>
+  <var-menu placement="bottom" same-width :offset-y="6">
+    <var-button-group type="primary">
+      <var-button @click.stop>Split Button</var-button>
+      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+        <var-icon name="menu-down" :size="24" />
+      </var-button>
+    </var-button-group>
+
+    <template #menu>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### Button Group Mode
 
 ```html

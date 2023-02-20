@@ -36,4 +36,5 @@ export default {
   clickSuccess: 'Click Success',
   touchstartSuccess: 'Touchstart Success',
   button: 'Button',
+  splitButton: 'Split Button',
 }
