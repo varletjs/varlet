@@ -1,48 +1,58 @@
-import { isObject, isFunction } from '@varlet/shared'
+import { isFunction } from '@varlet/shared'
 import type { App, Directive, Plugin, DirectiveBinding, StyleValue } from 'vue'
 
-export type HoverOptions = StyleValue | ((isHovering: boolean) => boolean)
+export type HoverValue = StyleValue | ((isHovering: boolean) => void)
 
-export type HoverHTMLElement = HTMLElement & { _hover: { rawStyle: string; value: HoverOptions } }
-
-function createHover(this: HoverHTMLElement) {
-  const { value } = this._hover
-
-  if (isFunction(value)) {
-    value(true)
-  } else if (isObject(value)) {
-    Object.keys(value).forEach((key) => {
-      this.style[key as keyof StyleValue] = value[key as keyof StyleValue]
-    })
+export type HoverHTMLElement = HTMLElement & {
+  _hover: {
+    value: HoverValue
+    hovering: boolean
+    rawStyle: string | null
   }
 }
 
-function removeHover(this: HoverHTMLElement) {
-  const { rawStyle, value } = this._hover
+function updateStyle(element: HoverHTMLElement, styleValue: StyleValue) {
+  Object.keys(styleValue).forEach((key) => {
+    const value = styleValue[key as keyof StyleValue]
 
-  if (isFunction(value)) {
-    value(false)
-  } else if (isObject(value)) {
-    Object.keys(value).forEach((key) => {
-      this.style[key as keyof StyleValue] = ''
-    })
-  }
-
-  if (!rawStyle) return
-
-  const rawStyleList = rawStyle.split(';')
-
-  rawStyleList.forEach((item) => {
-    const [key, value] = item.split(':')
-
-    this.style[key as any] = value
+    if (value != null) {
+      element.style[key as keyof StyleValue] = styleValue[key as keyof StyleValue]
+    }
   })
 }
 
-function mounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverOptions>) {
+function restoreStyle(element: HoverHTMLElement) {
+  element._hover.rawStyle ? element.setAttribute('style', element._hover.rawStyle) : element.removeAttribute('style')
+}
+
+function createHover(this: HoverHTMLElement) {
+  const { value } = this._hover
+  this._hover.hovering = true
+
+  if (isFunction(value)) {
+    value(this._hover.hovering)
+    return
+  }
+
+  updateStyle(this, value)
+}
+
+function removeHover(this: HoverHTMLElement) {
+  this._hover.hovering = false
+
+  if (isFunction(this._hover.value)) {
+    this._hover.value(this._hover.hovering)
+    return
+  }
+
+  restoreStyle(this)
+}
+
+function mounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
   element._hover = {
-    rawStyle: element.getAttribute('style') || '',
     value: binding.value,
+    hovering: element._hover?.hovering ?? false,
+    rawStyle: element.getAttribute('style'),
   }
 
   element.addEventListener('mouseenter', createHover)
@@ -50,17 +60,31 @@ function mounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverOptio
 }
 
 function unmounted(element: HoverHTMLElement) {
+  restoreStyle(element)
   element.removeEventListener('mouseenter', createHover)
   element.removeEventListener('mouseleave', removeHover)
 }
 
-function updated(element: HoverHTMLElement, binding: DirectiveBinding<HoverOptions>) {
+function beforeUpdate(element: HoverHTMLElement) {
+  unmounted(element)
+}
+
+function shouldUpdateStyle(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
+  return !isFunction(binding.value) && element._hover.hovering
+}
+
+function updated(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
   mounted(element, binding)
+
+  if (shouldUpdateStyle(element, binding)) {
+    updateStyle(element, binding.value as StyleValue)
+  }
 }
 
 const Hover: Directive & Plugin = {
   mounted,
   unmounted,
+  beforeUpdate,
   updated,
   install(app: App) {
     app.directive('hover', this)
