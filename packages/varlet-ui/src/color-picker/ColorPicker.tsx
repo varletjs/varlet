@@ -37,7 +37,7 @@ export default defineComponent({
       // const value = extractBaseColor(initialColor.value, props.modelValue)
       // call(props['onUpdate:modelValue'], value)
     }
-    updateModelValueColor(modelValue.value)
+    // updateModelValueColor(modelValue.value)
     const currentMode = ref(DEFAULT_MODE)
     function updateColor(hsva: HSV) {
       updateModelValueColor(hsva)
