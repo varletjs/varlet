@@ -232,12 +232,7 @@ export default defineComponent({
       let { value } = target
 
       if (props.type === 'number') {
-        if (value === '-' || value[value.length - 1] === '.') {
-          value = value.slice(0, -1)
-        } else {
-          value = parseFloat(value).toString()
-        }
-        call(props['onUpdate:modelValue'], value)
+        call(props['onUpdate:modelValue'], toNumber(value).toString())
       }
 
       value = withMaxlength(withTrim(value))
@@ -275,11 +270,7 @@ export default defineComponent({
       const dotIndex = value.indexOf('.')
 
       if (minusIndex > -1) {
-        if (minusIndex !== 0) {
-          value = value.replace(/-/g, '')
-        } else {
-          value = '-' + value.replace(/-/g, '')
-        }
+        value = minusIndex === 0 ? '-' + value.replace(/-/g, '') : value.replace(/-/g, '')
       }
 
       if (dotIndex > -1) {
