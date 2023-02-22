@@ -15,9 +15,11 @@ const modes = ['rgba', 'hsla', 'hex']
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-color-picker />
+  <!-- {{ color }} -->
+  <var-button @click="color = '#bbaaff'">点击</var-button>
+  <var-color-picker v-model="color" />
 
-  <app-type>{{ pack.swatches }}</app-type>
+  <!-- <app-type>{{ pack.swatches }}</app-type>
   <var-color-picker swatches-layout />
 
   <app-type>{{ pack.modes }}</app-type>
@@ -31,5 +33,5 @@ const modes = ['rgba', 'hsla', 'hex']
 
   <app-type>{{ pack.model }}</app-type>
   <var-input v-model="color" />
-  <var-color-picker v-model="color" />
+  <var-color-picker v-model="color" /> -->
 </template>

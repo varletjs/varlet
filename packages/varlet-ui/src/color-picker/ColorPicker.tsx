@@ -1,4 +1,4 @@
-import { defineComponent, ref, toRefs, onMounted, watch } from 'vue'
+import { defineComponent, ref, toRefs, onMounted, watch, computed } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVtoCSS, nullColor } from './utils/color-utils'
@@ -19,12 +19,23 @@ export default defineComponent({
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
+    const currentValue = computed({
+      get() {
+        return parseBaseColor(modelValue.value) ?? nullColor
+      },
+      set(newV) {
+        const value = extractBaseColor(newV, props.modelValue)
+        if (value === parseBaseColor(modelValue.value)) return
+        call(props['onUpdate:modelValue'], value)
+      },
+    })
     function updateModelValueColor(color: any, flag = false) {
-      initialColor.value = parseBaseColor(color) ?? nullColor
-      console.log(color)
-      if (flag) return
-      const value = extractBaseColor(initialColor.value, props.modelValue)
-      call(props['onUpdate:modelValue'], value)
+      currentValue.value = color
+      // console.log(color)
+      // initialColor.value = parseBaseColor(color) ?? nullColor
+      // if (flag) return
+      // const value = extractBaseColor(initialColor.value, props.modelValue)
+      // call(props['onUpdate:modelValue'], value)
     }
     updateModelValueColor(modelValue.value)
     const currentMode = ref(DEFAULT_MODE)
@@ -38,12 +49,6 @@ export default defineComponent({
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
     watch(
-      () => modelValue.value,
-      (newV) => {
-        updateModelValueColor(newV, true)
-      }
-    )
-    watch(
       () => mode.value,
       (newV) => {
         updateMode(newV)
@@ -54,11 +59,12 @@ export default defineComponent({
         <>
           <div class={classes(n(), n('$-elevation--2'))}>
             <div></div>
+            {currentValue.value.h}
             {props.canvasLayout && (
               <VarColorPickerCanvas
                 width={props.width}
                 height={props.canvasHeight}
-                color={initialColor.value}
+                color={currentValue.value}
                 onUpdate:color={updateColor}
                 disabled={disabled.value}
               />
@@ -72,14 +78,14 @@ export default defineComponent({
                     </div>
                     <div class={n('preview__slider')}>
                       <VarColorPickerHueSlider
-                        color={initialColor.value}
+                        color={currentValue.value}
                         onUpdate:color={updateColor}
                         disabled={disabled.value}
                       />
 
                       {currentMode.value.endsWith('a') ? (
                         <VarColorPickerAlphaSlider
-                          color={initialColor.value}
+                          color={currentValue.value}
                           onUpdate:color={updateColor}
                           disabled={disabled.value}
                         />
@@ -89,7 +95,7 @@ export default defineComponent({
                 )}
                 {props.inputLayout && (
                   <VarColorPickerEdit
-                    color={initialColor.value}
+                    color={currentValue.value}
                     onUpdate:color={updateColor}
                     disabled={disabled.value}
                     modes={modes.value}
@@ -101,7 +107,7 @@ export default defineComponent({
             )}
             {props.swatchesLayout && (
               <VarColorPickerSwatches
-                color={initialColor.value}
+                color={currentValue.value}
                 onUpdate:color={updateColor}
                 disabled={disabled.value}
               />
