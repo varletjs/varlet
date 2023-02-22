@@ -31,6 +31,7 @@ export * from './divider'
 export * from './ellipsis'
 export * from './form'
 export * from './formDetails'
+export * from './hover'
 export * from './icon'
 export * from './image'
 export * from './imagePreview'
@@ -112,6 +113,7 @@ declare module 'vue' {
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
+    VarHover: typeof import('@varlet/ui')['_HoverComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']

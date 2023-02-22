@@ -135,7 +135,7 @@ import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
-import type { InputValidateTrigger } from './props'
+import type { InputType, InputValidateTrigger } from './props'
 import type { InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
@@ -151,6 +151,13 @@ export default defineComponent({
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
+    const type: ComputedRef<InputType> = computed(() => {
+      if (props.type === 'number') {
+        return 'text'
+      }
+
+      return props.type
+    })
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
 
@@ -208,6 +215,10 @@ export default defineComponent({
       const target = e.target as HTMLInputElement
       let { value } = target
 
+      if (props.type === 'number') {
+        value = formatNumber(value)
+      }
+
       value = withMaxlength(withTrim(value))
       target.value = value
 
@@ -219,6 +230,10 @@ export default defineComponent({
     const handleChange = (e: Event) => {
       const target = e.target as HTMLInputElement
       let { value } = target
+
+      if (props.type === 'number') {
+        call(props['onUpdate:modelValue'], toNumber(value).toString())
+      }
 
       value = withMaxlength(withTrim(value))
       target.value = value
@@ -248,6 +263,21 @@ export default defineComponent({
 
       call(onClick, e)
       validateWithTrigger('onClick')
+    }
+
+    const formatNumber = (value: string) => {
+      const minusIndex = value.indexOf('-')
+      const dotIndex = value.indexOf('.')
+
+      if (minusIndex > -1) {
+        value = minusIndex === 0 ? '-' + value.replace(/-/g, '') : value.replace(/-/g, '')
+      }
+
+      if (dotIndex > -1) {
+        value = value.slice(0, dotIndex + 1) + value.slice(dotIndex).replace(/\./g, '')
+      }
+
+      return value.replace(/[^-0-9.]/g, '')
     }
 
     const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
@@ -302,6 +332,7 @@ export default defineComponent({
       id,
       isFocus,
       errorMessage,
+      type,
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
