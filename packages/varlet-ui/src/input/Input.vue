@@ -96,7 +96,6 @@
             :class="n('clear-icon')"
             var-input-cover
             name="close-circle"
-            size="14px"
             v-if="clearable && !isEmpty(modelValue)"
             @click="handleClear"
           />
