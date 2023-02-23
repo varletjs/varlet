@@ -230,11 +230,6 @@ export default defineComponent({
       const target = e.target as HTMLInputElement
       let { value } = target
 
-      if (props.type === 'number') {
-        value = toNumber(value).toString()
-        call(props['onUpdate:modelValue'], value)
-      }
-
       value = withMaxlength(withTrim(value))
       target.value = value
 
