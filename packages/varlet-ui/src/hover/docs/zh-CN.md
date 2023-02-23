@@ -2,17 +2,20 @@
 
 ### 介绍
 
-悬停指令
+指针悬停在绑定元素上时进行样式绑定，也可以通过函数获得当前悬停的状态，支持在桌面端或移动端中选择性启用。
 
 ### 样式绑定
 
+指针悬停在绑定元素上时进行样式绑定, 离开元素时取消样式绑定。
+
 ```html
 <template>
-   <var-paper
+  <var-paper
+    class="paper"
+    ripple
     :elevation="2"
     :width="100"
     :height="100"
-    class="var-hover-example-paper"
     v-hover="{ color: '#fff', background: ' var(--color-primary)' }"
   >
     HOVER
@@ -20,11 +23,10 @@
 </template>
 
 <style>
-.var-hover-example-paper {
+.paper {
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
 }
 </style>
@@ -32,77 +34,63 @@
 
 ### 函数绑定
 
+指针悬停和离开时会触发函数，并携带当前的悬停状态。
+
 ```html
 <script setup>
 const translateY = ref('100%')
 
 function handleHover(hovering) {
-  translateY.value = hovering ? '0' : Math.random() > 0.5 ? '100%' : '-100%'
+  translateY.value = hovering ? '0' : '100%'
 }
 </script>
 
 <template>
-  <var-card
-    title="本草纲目"
-    subtitle="我表情悠哉 跳个大概"
-    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
-    class="var-hover-example-card"
-    v-hover="handleHover"
-  >
-    <template #image>
-      <div class="var-hover-example-card__image">
-        <img src="https://varlet.gitee.io/varlet-ui/tree.jpeg" />
-        <div
-          class="var-hover-example-card__image__mask"
-          :style="{
-            transform: `translateY(${translateY})`,
-          }"
-        >
-          HOVER
-        </div>
-      </div>
-    </template>
-  </var-card>
+  <div class="image-container" v-hover="handleHover">
+    <var-image src="https://varlet.gitee.io/varlet-ui/tree.jpeg" />
+    <div class="image-mask" :style="{ transform: `translateY(${translateY})` }">HOVER</div>
+  </div>
 </template>
 
 <style>
-.var-hover-example-card {
+.image-container {
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
+  border-radius: 10px;
+}
 
-  &__image {
-    position: relative;
-
-    overflow: hidden;
-
-    width: 100%;
-
-    font-size: 0;
-    line-height: 1;
-
-    img {
-      width: 100%;
-    }
-
-    &__mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-      height: 100%;
-
-      transition: all 0.3s;
-
-      color: #fff;
-      background-color: var(--color-primary);
-
-      font-size: 50px;
-    }
-  }
+.image-mask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s;
+  color: #fff;
+  background-color: var(--color-primary);
+  font-size: 50px;
 }
 </style>
+```
+
+### 针对不同设备选择性启用
+
+考虑到在不同平台的 `hover` 效果的差异性，悬停指令可以只启用于特定的平台。
+
+#### 只在桌面端启用
+
+```html
+// playground-ignore
+<var-paper v-hover:desktop="{ color: '#fff' }"">HOVER</var-paper>
+```
+
+#### 只在移动端启用
+
+```html
+// playground-ignore
+<var-paper v-hover:mobile="{ color: '#fff' }"">HOVER</var-paper>
 ```

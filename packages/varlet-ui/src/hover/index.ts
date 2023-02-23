@@ -127,14 +127,18 @@ function mounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue
   element.addEventListener('mouseleave', removeHover)
 }
 
-function unmounted(element: HoverHTMLElement) {
+function unmounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
+  if (shouldDisabled(binding.arg)) {
+    return
+  }
+
   restoreStyle(element)
   element.removeEventListener('mouseenter', createHover)
   element.removeEventListener('mouseleave', removeHover)
 }
 
-function beforeUpdate(element: HoverHTMLElement) {
-  unmounted(element)
+function beforeUpdate(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
+  unmounted(element, binding)
 }
 
 function shouldUpdateStyle(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
