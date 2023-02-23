@@ -1,14 +1,65 @@
-import { isFunction } from '@varlet/shared'
+import { isFunction, camelize } from '@varlet/shared'
 import type { App, Directive, Plugin, DirectiveBinding, StyleValue } from 'vue'
 
 export type HoverValue = StyleValue | ((isHovering: boolean) => void)
+
+function shouldDisabled(arg?: string) {
+  if (!arg) {
+    return false
+  }
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
+  if (arg === 'desktop' && isMobile) {
+    return true
+  }
+
+  if (arg === 'mobile' && !isMobile) {
+    return true
+  }
+
+  return false
+}
 
 export type HoverHTMLElement = HTMLElement & {
   _hover: {
     value: HoverValue
     hovering: boolean
-    rawStyle: string | null
+    rawStyle: StyleValue
   }
+}
+
+function getStyle(element: HoverHTMLElement) {
+  const style = element.getAttribute('style')
+
+  if (!style) return {}
+
+  return style
+    .split(';')
+    .filter(Boolean)
+    .reduce((style, item) => {
+      const [key, value] = item.split(':').map((item) => item.trim())
+
+      style[camelize(key) as keyof StyleValue] = value as keyof StyleValue
+
+      return style
+    }, {})
+}
+
+function updateRawStyle(element: HoverHTMLElement) {
+  const { value } = element._hover
+
+  const style = getStyle(element)
+
+  Object.keys(value).forEach((key) => {
+    const camelizedKey = camelize(key) as keyof StyleValue
+
+    const styleValue = value[camelizedKey]
+
+    if (styleValue != null && style[camelizedKey]) {
+      element._hover.rawStyle[camelizedKey] = style[camelizedKey]
+    }
+  })
 }
 
 function updateStyle(element: HoverHTMLElement, styleValue: StyleValue) {
@@ -16,13 +67,22 @@ function updateStyle(element: HoverHTMLElement, styleValue: StyleValue) {
     const value = styleValue[key as keyof StyleValue]
 
     if (value != null) {
-      element.style[key as keyof StyleValue] = styleValue[key as keyof StyleValue]
+      element.style[key as keyof StyleValue] = value
     }
   })
 }
 
+function clearStyle(element: HoverHTMLElement) {
+  Object.keys(element._hover.value).forEach((key) => {
+    element.style[key as keyof StyleValue] = ''
+  })
+}
+
 function restoreStyle(element: HoverHTMLElement) {
-  element._hover.rawStyle ? element.setAttribute('style', element._hover.rawStyle) : element.removeAttribute('style')
+  clearStyle(element)
+  updateStyle(element, element._hover.rawStyle)
+
+  element._hover.rawStyle = {}
 }
 
 function createHover(this: HoverHTMLElement) {
@@ -49,11 +109,19 @@ function removeHover(this: HoverHTMLElement) {
 }
 
 function mounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
-  element._hover = {
-    value: binding.value,
-    hovering: element._hover?.hovering ?? false,
-    rawStyle: element.getAttribute('style'),
+  const { arg, value } = binding
+
+  if (shouldDisabled(arg)) {
+    return
   }
+
+  element._hover = {
+    value,
+    hovering: element._hover?.hovering ?? false,
+    rawStyle: {},
+  }
+
+  updateRawStyle(element)
 
   element.addEventListener('mouseenter', createHover)
   element.addEventListener('mouseleave', removeHover)
