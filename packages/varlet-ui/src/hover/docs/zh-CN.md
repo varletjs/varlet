@@ -59,7 +59,7 @@ function handleHover(hovering) {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .image-mask {
