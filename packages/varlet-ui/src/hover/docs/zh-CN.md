@@ -96,3 +96,4 @@ function handleHover(hovering) {
 // playground-ignore
 <var-paper v-hover:mobile="{ color: '#fff' }"">HOVER</var-paper>
 ```
+
