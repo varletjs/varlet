@@ -10,24 +10,24 @@ The style binding is performed when the pointer hovers over the bound element, a
 
 ```html
 <template>
-   <var-paper
-     class="paper"
-     ripple
-     :elevation="2"
-     :width="100"
-     :height="100"
-     v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
-   >
-     HOVER
-   </var-paper>
+  <var-paper
+    class="paper"
+    ripple
+    :elevation="2"
+    :width="100"
+    :height="100"
+    v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
+  >
+    HOVER
+  </var-paper>
 </template>
 
 <style>
 .paper {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 </style>
 ```
@@ -38,10 +38,12 @@ The function is triggered when the pointer hovers and leaves, and carries the cu
 
 ```html
 <script setup>
+import { ref } from 'vue'
+
 const translateY = ref('100%')
 
 function handleHover(hovering) {
-   translateY.value = hovering ? '0' : '100%'
+  translateY.value = hovering ? '0' : '100%'
 }
 </script>
 
@@ -54,25 +56,25 @@ function handleHover(hovering) {
 
 <style>
 .image-container {
-   position: relative;
-   overflow: hidden;
-   cursor: pointer;
-   border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .image-mask {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   transition: all 0.3s;
-   color: #fff;
-   background-color: var(--color-primary);
-   font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s;
+  color: #fff;
+  background-color: var(--color-primary);
+  font-size: 50px;
 }
 </style>
 ```

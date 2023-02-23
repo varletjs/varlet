@@ -38,6 +38,8 @@
 
 ```html
 <script setup>
+import { ref } from 'vue'
+
 const translateY = ref('100%')
 
 function handleHover(hovering) {
