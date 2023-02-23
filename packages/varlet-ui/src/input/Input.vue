@@ -232,7 +232,8 @@ export default defineComponent({
       let { value } = target
 
       if (props.type === 'number') {
-        call(props['onUpdate:modelValue'], toNumber(value).toString())
+        value = toNumber(value).toString()
+        call(props['onUpdate:modelValue'], value)
       }
 
       value = withMaxlength(withTrim(value))

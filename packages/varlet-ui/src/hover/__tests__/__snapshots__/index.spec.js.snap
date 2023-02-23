@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test hover style binding 1`] = `"<div style=\\"color: rgb(1, 1, 1);\\"></div>"`;
+
+exports[`test hover style binding 2`] = `"<div style=\\"\\"></div>"`;
