@@ -5,6 +5,6 @@ export interface RippleValue {
   disabled?: boolean
 }
 
-export class Ripple extends VarDirective<RippleValue> {}
+export interface Ripple extends VarDirective<RippleValue> {}
 
-export class _RippleComponent extends Ripple {}
+export class _RippleComponent {}
