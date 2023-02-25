@@ -28,9 +28,10 @@ onMounted(() => {
 <template>
   <var-index-bar duration="300" @change="change">
     <div v-for="item in list" :key="item">
-      <var-index-anchor :index="item" class="var-index-anchor__example">
+      <var-index-anchor :index="item" class="anchor">
         标题 {{ item }}
       </var-index-anchor>
+
       <var-cell>{{ item }} 文本</var-cell>
       <var-cell>{{ item }} 文本</var-cell>
       <var-cell>{{ item }} 文本</var-cell>
@@ -39,14 +40,14 @@ onMounted(() => {
 </template>
 
 <style>
-.var-index-anchor__example {
+.anchor {
   height: 42px;
   display: flex;
   align-items: center;
   padding: 0 12px;
   transition: all 0.25s;
-  background: #e7edf7;
-  color: #2e67ba;
+  background: var(--color-primary);
+  color: #fff;
 }
 </style>
 ```
@@ -101,7 +102,7 @@ onMounted(() => {
 
 | 方法名 | 说明 | 参数 | 返回值                                 |
 | --- | --- | --- |-------------------------------------|
-| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: IndexBarScrollToOptions`` | `-` |
+| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: IndexBarScrollToOptions` | `-` |
 
 #### IndexBarScrollToOptions
 
