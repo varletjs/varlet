@@ -1,3 +1,19 @@
+## [2.8.4](https://github.com/varletjs/varlet/compare/v2.8.3...v2.8.4) (2023-02-27)
+
+
+### Bug Fixes
+
+* **cli:** fix resolve ([7856e60](https://github.com/varletjs/varlet/commit/7856e6018ec884cf39fb8230cce7fabab7dbda91))
+* **ui/space:** fix space inline mode className err ([bcbbcad](https://github.com/varletjs/varlet/commit/bcbbcaddef1e36903031c6d9cf079ab7a789731d))
+
+
+### Features
+
+* added hover directive ([#868](https://github.com/varletjs/varlet/issues/868)) ([44806ef](https://github.com/varletjs/varlet/commit/44806ef8c30436f62017b0250936511106226d14))
+* new directive hover and fix input number type bug ([#871](https://github.com/varletjs/varlet/issues/871)) ([8cd49bf](https://github.com/varletjs/varlet/commit/8cd49bf5d24d3e9fe837e185ae15553a9bc23fba))
+
+
+
 ## [2.8.3](https://github.com/varletjs/varlet/compare/v2.8.2...v2.8.3) (2023-02-20)
 
 
