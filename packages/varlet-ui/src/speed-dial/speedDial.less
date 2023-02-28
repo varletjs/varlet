@@ -1,0 +1,98 @@
+:root {
+  --speed-dial-padding: 10px;
+  --speed-dial-button-margin: 6px;
+  --speed-dial-z-index: 1;
+  --speed-dial-size: 16px;
+}
+
+.var-speed-dial {
+  position: relative;
+  z-index: var(--speed-dial-z-index);
+
+  &--absolute {
+    position: absolute;
+  }
+
+  &--fixed {
+    position: fixed;
+  }
+
+  &--fixed,
+  &--absolute {
+    z-index: 4;
+    & > .var-btn--floating {
+      margin: 0;
+    }
+  }
+  &--top {
+    top: var(--speed-dial-size);
+  }
+  &--bottom {
+    bottom: var(--speed-dial-size);
+  }
+  &--left {
+    left: var(--speed-dial-size);
+  }
+  &--right {
+    right: var(--speed-dial-size);
+  }
+  &--direction {
+    &-left,
+    &-right {
+      .var-speed-dial__list {
+        height: 100%;
+        top: 0;
+        padding: 0 var(--speed-dial-padding);
+      }
+    }
+    &-top,
+    &-bottom {
+      .var-speed-dial__list {
+        left: 0;
+        width: 100%;
+      }
+    }
+    &-top {
+      .var-speed-dial__list {
+        flex-direction: column-reverse;
+        bottom: 100%;
+      }
+    }
+    &-right {
+      .var-speed-dial__list {
+        flex-direction: row;
+        left: 100%;
+      }
+    }
+    &-bottom {
+      .var-speed-dial__list {
+        flex-direction: column;
+        top: 100%;
+      }
+    }
+    &-left {
+      .var-speed-dial__list {
+        flex-direction: row-reverse;
+        right: 100%;
+      }
+    }
+  }
+}
+
+/** Elements */
+.var-speed-dial__list {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: var(--speed-dial-padding) 0;
+  position: absolute;
+  button {
+    z-index: 33;
+    margin: var(--speed-dial-button-margin);
+  }
+}
+
+/** Modifiers */
+.var-speed-dial:not(.var-speed-dial--is-active) .var-speed-dial__list {
+  pointer-events: none;
+}

@@ -136,6 +136,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Buttons: 浮动动作按钮',
+          'en-US': 'Buttons: Floating Action Button',
+        },
+        doc: 'speed-dial',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Breadcrumbs 面包屑',
           'en-US': 'Breadcrumbs',
         },
