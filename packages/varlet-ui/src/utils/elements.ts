@@ -257,3 +257,7 @@ export function supportTouch() {
   const inBrowser = typeof window !== 'undefined'
   return inBrowser && 'ontouchstart' in window
 }
+
+export function padStartFlex(style: string | undefined) {
+  return style === 'start' || style === 'end' ? `flex-${style}` : style
+}
