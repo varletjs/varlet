@@ -47,7 +47,7 @@ export const props = {
   },
   direction: {
     type: String as PropType<'top' | 'right' | 'bottom' | 'left'>,
-    default: 'bottom',
+    default: 'top',
     validator: (val: string) => {
       return ['top', 'right', 'bottom', 'left'].includes(val)
     },

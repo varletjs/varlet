@@ -13,7 +13,6 @@ export default defineComponent({
   emits: ['update:modelValue'],
   setup(props, { emit }) {
     const internal = ref(props.modelValue)
-
     watch(
       () => props.modelValue,
       (val) => {

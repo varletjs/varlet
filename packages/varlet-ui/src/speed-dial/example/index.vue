@@ -29,13 +29,13 @@ watchDarkMode(dark)
   <div style="height: calc(100vh - 200px); position: relative">
     <app-type>{{ pack.basicUsage }}</app-type>
 
-    <app-type>trigger</app-type>
+    <app-type>{{ pack.trigger }}</app-type>
     <var-radio-group v-model="trigger">
       <var-radio checked-value="click">click</var-radio>
       <var-radio checked-value="hover">hover</var-radio>
     </var-radio-group>
 
-    <app-type>Speed dial direction</app-type>
+    <app-type>{{ pack.direction }}</app-type>
     <var-radio-group v-model="direction">
       <var-radio checked-value="top">top</var-radio>
       <var-radio checked-value="right">right</var-radio>
@@ -43,13 +43,13 @@ watchDarkMode(dark)
       <var-radio checked-value="left">left</var-radio>
     </var-radio-group>
 
-    <app-type>Speed dial location</app-type>
+    <app-type>{{ pack.location }}</app-type>
     <var-checkbox v-model="top">top</var-checkbox>
     <var-checkbox v-model="right">right</var-checkbox>
     <var-checkbox v-model="bottom">bottom</var-checkbox>
     <var-checkbox v-model="left">left</var-checkbox>
 
-    <app-type>Transition</app-type>
+    <app-type>{{ pack.transition }} </app-type>
     <var-radio-group v-model="transition">
       <var-radio checked-value="scale-transition">scale-transition</var-radio>
       <var-radio checked-value="slide-x-transition">slide-x-transition</var-radio>
@@ -77,14 +77,12 @@ watchDarkMode(dark)
       </template>
 
       <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" appear />
+        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
       </var-tooltip>
 
-      <var-tooltip content="Tooltip" placement="left">
-        <var-button type="primary" round appear>
-          <var-icon name="check" />
-        </var-button>
-      </var-tooltip>
+      <var-button type="primary" round>
+        <var-icon name="check" />
+      </var-button>
     </var-speed-dial>
   </div>
 </template>
