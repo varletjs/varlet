@@ -46,6 +46,8 @@
           @input="handleInput"
           @change="handleChange"
           @touchstart="handleTouchstart"
+          @compositionstart="handleCompositionStart"
+          @compositionend="handleCompositionEnd"
           v-if="textarea"
         >
         </textarea>
@@ -67,6 +69,8 @@
           @input="handleInput"
           @change="handleChange"
           @touchstart="handleTouchstart"
+          @compositionstart="handleCompositionStart"
+          @compositionend="handleCompositionEnd"
           v-else
         />
         <label
@@ -210,8 +214,9 @@ export default defineComponent({
       validateWithTrigger('onBlur')
     }
 
-    const handleInput = (e: Event) => {
+    const updateValue = (e: Event) => {
       const target = e.target as HTMLInputElement
+
       let { value } = target
 
       if (props.type === 'number') {
@@ -221,17 +226,40 @@ export default defineComponent({
       value = withMaxlength(withTrim(value))
       target.value = value
 
+      return value
+    }
+
+    const handleCompositionStart = (e: Event) => {
+      Object.assign(e.target!, { composing: true })
+    }
+
+    const handleCompositionEnd = (e: Event) => {
+      const target = e.target as EventTarget & { composing?: boolean }
+
+      if (target.composing) {
+        target.composing = false
+        target.dispatchEvent(new Event('input'))
+      }
+    }
+
+    const handleInput = (e: Event) => {
+      const { composing } = e.target as EventTarget & { composing?: boolean }
+
+      console.log(composing)
+
+      if (composing) {
+        return
+      }
+
+      const value = updateValue(e)
+
       call(props['onUpdate:modelValue'], value)
       call(props.onInput, value, e)
       validateWithTrigger('onInput')
     }
 
     const handleChange = (e: Event) => {
-      const target = e.target as HTMLInputElement
-      let { value } = target
-
-      value = withMaxlength(withTrim(value))
-      target.value = value
+      const value = updateValue(e)
 
       call(props.onChange, value, e)
       validateWithTrigger('onChange')
@@ -342,6 +370,8 @@ export default defineComponent({
       handleClear,
       handleClick,
       handleTouchstart,
+      handleCompositionStart,
+      handleCompositionEnd,
       validate,
       resetValidation,
       reset,
