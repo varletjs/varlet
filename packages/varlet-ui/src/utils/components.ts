@@ -96,7 +96,7 @@ export function mountInstance(
 }
 
 // o(n) flatFragment
-export function flatFragment(vNodes: VNodeChild[], filterCommentNode = true, result: VNode[] = []): VNode[] {
+export function flatFragment(vNodes: VNodeChild[] = [], filterCommentNode = true, result: VNode[] = []): VNode[] {
   vNodes.forEach((vNode) => {
     if (vNode === null) return
     if (typeof vNode !== 'object') {

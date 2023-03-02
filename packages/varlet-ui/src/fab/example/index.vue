@@ -4,17 +4,21 @@ import VarAvatar from '../../avatar'
 import VarTooltip from '../../tooltip'
 import VarRadioGroup from '../../radio-group'
 import VarRadio from '../../radio'
-
+import Snackbar from '../../snackbar'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 
+const isShow = ref(false)
 const fab = ref(false)
 const trigger = ref('click')
 const direction = ref('top')
 const position = ref('right-bottom')
-const transition = ref('slide-y-reverse-transition')
+
+function handleClick() {
+  Snackbar.success(pack.value.clickSuccess)
+}
 
 watchLang(use)
 watchDarkMode(dark)
@@ -24,6 +28,11 @@ watchDarkMode(dark)
   <div style="height: calc(100vh - 200px); position: relative">
     <app-type>{{ pack.basicUsage }}</app-type>
 
+    <var-button type="primary" size="large" @click="isShow = !isShow">
+      {{ pack.basicUsage }}
+    </var-button>
+
+    <app-type>{{ pack.combinedUsage }}</app-type>
     <app-type>{{ pack.trigger }}</app-type>
     <var-radio-group v-model="trigger">
       <var-radio checked-value="click">click</var-radio>
@@ -47,29 +56,25 @@ watchDarkMode(dark)
       <var-radio checked-value="right-bottom">right-bottom</var-radio>
     </var-radio-group>
 
-    <app-type>{{ pack.transition }} </app-type>
-    <var-radio-group v-model="transition">
-      <var-radio checked-value="scale-transition">scale-transition</var-radio>
-      <var-radio checked-value="slide-x-transition">slide-x-transition</var-radio>
-      <var-radio checked-value="slide-x-reverse-transition">slide-x-reverse-transition</var-radio>
-      <var-radio checked-value="slide-y-transition">slide-y-transition</var-radio>
-      <var-radio checked-value="slide-y-reverse-transition">slide-y-reverse-transition</var-radio>
-    </var-radio-group>
+    <var-fab v-model="fab" :position="position" :direction="direction" :trigger="trigger">
+      <var-button type="primary" round size="large">
+        <var-icon v-if="!fab" name="plus" />
+        <var-icon v-else name="window-close" />
+      </var-button>
+      <template #actions>
+        <var-tooltip content="Tooltip" placement="left">
+          <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+        </var-tooltip>
 
-    <var-fab v-model="fab" :position="position" :direction="direction" :transition="transition" :trigger="trigger">
-      <template #activator>
-        <var-button type="primary" round size="large">
-          <var-icon v-if="!fab" name="plus" />
-          <var-icon v-else name="window-close" />
+        <var-button type="primary" round>
+          <var-icon name="check" />
         </var-button>
       </template>
+    </var-fab>
 
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-
-      <var-button type="primary" round>
-        <var-icon name="check" />
+    <var-fab style="right: 50%">
+      <var-button type="primary" round size="large" v-show="!isShow" @click="handleClick">
+        <var-icon name="plus" />
       </var-button>
     </var-fab>
   </div>

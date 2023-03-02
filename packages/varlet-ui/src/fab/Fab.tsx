@@ -1,8 +1,6 @@
-import { computed, defineComponent, Ref, ref, watch } from 'vue'
+import { computed, defineComponent, Ref, ref, Transition, watch } from 'vue'
 import { createNamespace, flatFragment } from '../utils/components'
-import { MaybeTransition } from './provide'
 import { props } from './props'
-import '../styles/transitions.less'
 import './fab.less'
 
 const { classes, n } = createNamespace('fab')
@@ -12,14 +10,8 @@ export default defineComponent({
   props,
   emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
-    const { default: defaultSlot, activator } = slots
     const internal: Ref<boolean> = ref(props.modelValue)
-
-    const fabChildren = defaultSlot
-      ? flatFragment(defaultSlot()).filter((v) => {
-          return (v.type as any).name === 'VarButton' || (v.type as any).name === 'VarTooltip'
-        })
-      : []
+    const fabChildrens = flatFragment(slots.actions?.())
 
     watch(
       () => props.modelValue,
@@ -63,15 +55,17 @@ export default defineComponent({
             props.trigger === 'hover' && setIsActive(true)
           }}
         >
-          {activator && activator()}
-          {isActive.value && fabChildren.length ? (
-            <MaybeTransition transition={props.transition} appear>
+          <Transition name={n(`--active-transition`)} appear>
+            {slots.default?.()}
+          </Transition>
+          {isActive.value && fabChildrens.length ? (
+            <Transition name={n(`--actions-transition`)} appear>
               <div class={n('list')}>
-                {fabChildren.map((chilren, index) => {
+                {fabChildrens.map((chilren, index) => {
                   return <div style={{ transitionDelay: index * 0.05 + 's' }}>{chilren}</div>
                 })}
               </div>
-            </MaybeTransition>
+            </Transition>
           ) : null}
         </div>
       )
