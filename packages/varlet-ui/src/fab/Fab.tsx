@@ -1,5 +1,5 @@
 import { computed, defineComponent, Ref, ref, watch } from 'vue'
-import { createNamespace, flatten } from '../utils/components'
+import { createNamespace, flatFragment } from '../utils/components'
 import { MaybeTransition } from './provide'
 import { props } from './props'
 import '../styles/transitions.less'
@@ -16,7 +16,7 @@ export default defineComponent({
     const internal: Ref<boolean> = ref(props.modelValue)
 
     const fabChildren = defaultSlot
-      ? flatten(defaultSlot()).filter((v) => {
+      ? flatFragment(defaultSlot()).filter((v) => {
           return (v.type as any).name === 'VarButton' || (v.type as any).name === 'VarTooltip'
         })
       : []
