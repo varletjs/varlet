@@ -1,10 +1,9 @@
 <script setup>
-import VarSpeedDial from '../index'
+import VarFab from '../index'
 import VarAvatar from '../../avatar'
 import VarTooltip from '../../tooltip'
 import VarRadioGroup from '../../radio-group'
 import VarRadio from '../../radio'
-import VarCheckbox from '../../checkbox'
 
 import { ref } from 'vue'
 import { pack, use } from './locale'
@@ -14,12 +13,8 @@ import dark from '../../themes/dark'
 const fab = ref(false)
 const trigger = ref('click')
 const direction = ref('top')
+const position = ref('right-bottom')
 const transition = ref('slide-y-reverse-transition')
-
-const top = ref(false)
-const right = ref(true)
-const bottom = ref(true)
-const left = ref(false)
 
 watchLang(use)
 watchDarkMode(dark)
@@ -43,11 +38,14 @@ watchDarkMode(dark)
       <var-radio checked-value="left">left</var-radio>
     </var-radio-group>
 
-    <app-type>{{ pack.location }}</app-type>
-    <var-checkbox v-model="top">top</var-checkbox>
-    <var-checkbox v-model="right">right</var-checkbox>
-    <var-checkbox v-model="bottom">bottom</var-checkbox>
-    <var-checkbox v-model="left">left</var-checkbox>
+    <app-type>{{ pack.position }}</app-type>
+
+    <var-radio-group v-model="position">
+      <var-radio checked-value="left-top">left-top</var-radio>
+      <var-radio checked-value="right-top">right-top</var-radio>
+      <var-radio checked-value="left-bottom">left-bottom</var-radio>
+      <var-radio checked-value="right-bottom">right-bottom</var-radio>
+    </var-radio-group>
 
     <app-type>{{ pack.transition }} </app-type>
     <var-radio-group v-model="transition">
@@ -58,17 +56,7 @@ watchDarkMode(dark)
       <var-radio checked-value="slide-y-reverse-transition">slide-y-reverse-transition</var-radio>
     </var-radio-group>
 
-    <var-speed-dial
-      v-model="fab"
-      absolute
-      :bottom="bottom"
-      :right="right"
-      :top="top"
-      :left="left"
-      :direction="direction"
-      :transition="transition"
-      :trigger="trigger"
-    >
+    <var-fab v-model="fab" :position="position" :direction="direction" :transition="transition" :trigger="trigger">
       <template #activator>
         <var-button type="primary" round size="large">
           <var-icon v-if="!fab" name="plus" />
@@ -83,6 +71,6 @@ watchDarkMode(dark)
       <var-button type="primary" round>
         <var-icon name="check" />
       </var-button>
-    </var-speed-dial>
+    </var-fab>
   </div>
 </template>

@@ -12,24 +12,18 @@ import { ref } from 'vue'
 
 const fab = ref(false)
 const trigger = ref('click')
+const position = ref('right-bottom')
 const direction = ref('top')
 const transition = ref('slide-y-reverse-transition')
-const top = ref(false)
-const right = ref(true)
-const bottom = ref(true)
-const left = ref(false)
+
 </script>
 <template>
-  <var-speed-dial
+  <var-fab
     v-model="fab"
-    absolute
-    :bottom="bottom"
-    :right="right"
-    :top="top"
-    :left="left"
+    :trigger="trigger"
+    :position="position"
     :direction="direction"
     :transition="transition"
-    :trigger="trigger"
   >
     <template #activator>
       <var-button type="primary" round size="large">
@@ -43,7 +37,7 @@ const left = ref(false)
     <var-button type="primary" round>
       <var-icon name="check" />
     </var-button>
-  </var-speed-dial>
+  </var-fab>
 </template>
 ```
 
@@ -51,19 +45,19 @@ const left = ref(false)
 
 ### Props
 
-#### SpeedDial Props
+#### Fab Props
 
 | Prop              | Description                                                               | Type     | Default        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | Active state                                                       | _boolean_ | `false`        |
 | `trigger`        | Trigger type; optional value is `click` `hover`                    | _string_ | `click`         |
 | `direction`      | Direction type; optional value is `top` `right` `bottom` `left`    | _string_ | `top`           |
-| `position`       | This attribute is composite and must be filled in `absolute`, `fixed` optional `top` `right` `bottom` `left` | _boolean_ | `-` |
+| `position`       | Position type; optional value is `left-top` `right-top` `right-bottom` `left-bottom` | _string_ | `right-bottom` |
 | `transition`     | Built-in animation, optional value `slide-y-reverse-transition` `slide-y-transition` `slide-x-reverse-transition` `slide-x-transition` `scale-transition`                    | _string_ | `slide-y-reverse-transition`    |
 
 ### Slots
 
-#### SpeedDial Slots
+#### Fab Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
@@ -73,11 +67,12 @@ const left = ref(false)
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
-#### SpeedDial Variables
+#### Fab Variables
 
 | Variable | Default |
 | --- | --- |
-| `--speed-dial-padding` | `10px` |
-| `--speed-dial-button-margin` | `6px`|
-| `--speed-dial-z-index` |  `1`|
-| `--speed-dial-size` | `16px`|
+| `--fab-padding` | `10px` |
+| `--fab-button-margin` | `6px`|
+| `--fab-z-index` |  `1`|
+| `--fab-vertical-spacing` | `80px`|
+| `--fab-horizontal-spacing` | `32px`|

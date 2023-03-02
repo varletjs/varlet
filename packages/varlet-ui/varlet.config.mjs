@@ -136,10 +136,10 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Buttons: 浮动动作按钮',
-          'en-US': 'Buttons: Floating Action Button',
+          'zh-CN': 'Fab: 悬浮动作按钮',
+          'en-US': 'Fab: Floating Action Button',
         },
-        doc: 'speed-dial',
+        doc: 'fab',
         type: 2,
       },
       {
