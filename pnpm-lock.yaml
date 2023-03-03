@@ -186,6 +186,7 @@ importers:
       '@varlet/icons': workspace:*
       '@varlet/shared': workspace:*
       '@varlet/touch-emulator': workspace:*
+      '@varlet/use': workspace:*
       '@vue/runtime-core': 3.2.25
       '@vue/test-utils': ^2.0.2
       clipboard: ^2.0.6
@@ -201,6 +202,7 @@ importers:
       '@popperjs/core': 2.11.6
       '@varlet/icons': link:../varlet-icons
       '@varlet/shared': link:../varlet-shared
+      '@varlet/use': link:../varlet-use
       dayjs: 1.11.5
       decimal.js: 10.4.0
     devDependencies:
@@ -249,6 +251,17 @@ importers:
       unplugin-auto-import: 0.12.1
       unplugin-vue-components: 0.22.12_vue@3.2.29
       vite: 4.0.4_@types+node@18.7.6
+
+  packages/varlet-use:
+    specifiers:
+      '@varlet/shared': workspace:*
+      typescript: ^4.4.4
+      vue: 3.2.25
+    dependencies:
+      '@varlet/shared': link:../varlet-shared
+    devDependencies:
+      typescript: 4.7.4
+      vue: 3.2.25
 
   packages/varlet-vite-plugins:
     specifiers:
@@ -2678,7 +2691,7 @@ packages:
   /@vue/compiler-core/3.2.25:
     resolution: {integrity: sha512-FlffKezIqztTCTyG0klkYRwhdyL6b1PTTCIerPb4p2R9qQaczccTX5g9ysi9w6tpLQ48a1WiXnFDJhWD7XoqwA==}
     dependencies:
-      '@babel/parser': 7.18.11
+      '@babel/parser': 7.20.7
       '@vue/shared': 3.2.25
       estree-walker: 2.0.2
       source-map: 0.6.1

@@ -42,7 +42,7 @@
       "packages/varlet-ui-playground/public/**",
       "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
-      "packages/varlet-shared/es/**"
+      "packages/varlet-use/lib/**"
     ],
     "extends": [
       "@varlet"

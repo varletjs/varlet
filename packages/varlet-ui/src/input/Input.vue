@@ -245,8 +245,6 @@ export default defineComponent({
     const handleInput = (e: Event) => {
       const { composing } = e.target as EventTarget & { composing?: boolean }
 
-      console.log(composing)
-
       if (composing) {
         return
       }

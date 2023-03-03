@@ -8,12 +8,15 @@ const PKG_VITE_PLUGINS = resolve(CWD, './packages/varlet-vite-plugins')
 const PKG_ICONS = resolve(CWD, './packages/varlet-icons')
 const PKG_UI = resolve(CWD, './packages/varlet-ui')
 const PKG_SHARED = resolve(CWD, './packages/varlet-shared')
+const PKG_USE = resolve(CWD, './packages/varlet-use')
 
 export const buildCli = () => execa('pnpm', ['build'], { cwd: PKG_CLI })
 
 export const buildVitePlugins = () => execa('pnpm', ['build'], { cwd: PKG_VITE_PLUGINS })
 
 export const buildShared = () => execa('pnpm', ['build'], { cwd: PKG_SHARED })
+
+export const buildUse = () => execa('pnpm', ['build'], { cwd: PKG_USE })
 
 export const buildIcons = () => execa('pnpm', ['build'], { cwd: PKG_ICONS })
 
@@ -32,6 +35,7 @@ export async function runTask(taskName, task) {
 
 export async function runTaskQueue() {
   await runTask('shared', buildShared)
+  await runTask('use', buildUse)
   await runTask('vite plugins', buildVitePlugins)
   await runTask('cli', buildCli)
   await runTask('icons', buildIcons)

@@ -56,6 +56,7 @@
     "@popperjs/core": "^2.11.6",
     "@varlet/icons": "workspace:*",
     "@varlet/shared": "workspace:*",
+    "@varlet/use": "workspace:*",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
   },
