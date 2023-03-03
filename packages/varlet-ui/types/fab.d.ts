@@ -1,13 +1,17 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
-import type { Trigger, Direction, Position } from '../src/fab/props'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+
+export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
+export type FabTrigger = 'click' | 'hover'
+export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
 export declare const fabProps: Record<string, any>
-
 export interface FabProps extends BasicAttributes {
-  trigger?: Trigger
-  direction?: Direction
-  position?: Position
+  modelValue?: boolean
+  trigger?: FabTrigger
+  direction?: FabDirection
+  position?: FabPosition
+  'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
 }
 
 export class Fab extends VarComponent {

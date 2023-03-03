@@ -12,8 +12,9 @@ import { ref } from 'vue'
 
 const isShow = ref(false)
 </script>
+
 <template>
-  <var-fab style="right:50%;">
+  <var-fab>
     <var-button type="primary" round size="large" v-show="!isShow">
       <var-icon  name="plus" />
     </var-button>
@@ -32,6 +33,7 @@ const trigger = ref('click')
 const position = ref('right-bottom')
 const direction = ref('top')
 </script>
+
 <template>
   <var-fab 
     v-model="fab" 
@@ -63,9 +65,9 @@ const direction = ref('top')
 | 参数              | 说明                                                               | 类型     | 默认值        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | active状态                                                         | _boolean_ | `false`        |
-| `trigger`        | 触发类型，可选值为 `click` `hover`                                      | _string_ | `click`         |
-| `direction`      | 方向类型，可选值为 `top` `right` `bottom` `left`                        | _string_ | `top`           |
-| `position`       | 位置类型，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom` |
+| `trigger`        | 触发类型，可选值为 `click` `hover`                                    | _string_ | `click`         |
+| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`              | _string_ | `top`           |
+| `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom` |
 
 ### 插槽
 
@@ -73,7 +75,7 @@ const direction = ref('top')
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 按钮内容 | `default` |
+| `default` | 触发器 | `default` |
 | `actions` | 菜单内容 | `-` |
 
 

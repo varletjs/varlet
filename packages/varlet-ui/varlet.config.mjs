@@ -136,8 +136,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'Fab: 悬浮动作按钮',
-          'en-US': 'Fab: Floating Action Button',
+          'zh-CN': 'Fab 悬浮动作按钮',
+          'en-US': 'Fab',
         },
         doc: 'fab',
         type: 2,

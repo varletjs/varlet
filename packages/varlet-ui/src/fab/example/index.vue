@@ -28,7 +28,7 @@ watchDarkMode(dark)
   <div style="height: calc(100vh - 200px); position: relative">
     <app-type>{{ pack.basicUsage }}</app-type>
 
-    <var-button type="primary" size="large" @click="isShow = !isShow">
+    <var-button type="primary" @click="isShow = !isShow">
       {{ pack.basicUsage }}
     </var-button>
 

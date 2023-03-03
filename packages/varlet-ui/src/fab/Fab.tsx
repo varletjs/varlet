@@ -1,5 +1,5 @@
 import { computed, defineComponent, Ref, ref, Transition, watch } from 'vue'
-import { createNamespace, flatFragment } from '../utils/components'
+import { call, createNamespace, flatFragment } from '../utils/components'
 import { props } from './props'
 import './fab.less'
 
@@ -8,8 +8,7 @@ const { classes, n } = createNamespace('fab')
 export default defineComponent({
   name: 'VarFab',
   props,
-  emits: ['update:modelValue'],
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const internal: Ref<boolean> = ref(props.modelValue)
     const fabChildrens = flatFragment(slots.actions?.())
 
@@ -21,18 +20,14 @@ export default defineComponent({
     )
 
     const isActive = computed({
-      get(): any {
+      get(): boolean {
         return internal.value
       },
       set(newValue: boolean) {
         internal.value = newValue
-        emit(`update:modelValue`, newValue)
+        call(props['onUpdate:modelValue'], newValue)
       },
     })
-
-    const setIsActive = (value: boolean) => {
-      isActive.value = value
-    }
 
     const classesContainer: any = computed(() => {
       return classes(n(), n('--fixed'), n(`--${props.position}`), n(`--direction-${props.direction}`), [
@@ -41,23 +36,27 @@ export default defineComponent({
       ])
     })
 
+    const setIsActiveValue = (value: boolean) => {
+      isActive.value = value
+    }
+
+    const clickHandle = (value: boolean) => {
+      props.trigger === 'click' && setIsActiveValue(value)
+    }
+
+    const mouseHoverHandle = (value: boolean) => {
+      props.trigger === 'hover' && setIsActiveValue(value)
+    }
+
     return () => {
       return (
         <div
           class={classesContainer.value}
-          onClick={() => {
-            props.trigger === 'click' && setIsActive(!isActive.value)
-          }}
-          onMouseleave={() => {
-            props.trigger === 'hover' && setIsActive(false)
-          }}
-          onMouseenter={() => {
-            props.trigger === 'hover' && setIsActive(true)
-          }}
+          onClick={() => clickHandle(!isActive.value)}
+          onMouseleave={() => mouseHoverHandle(false)}
+          onMouseenter={() => mouseHoverHandle(true)}
         >
-          <Transition name={n(`--active-transition`)} appear>
-            {slots.default?.()}
-          </Transition>
+          <Transition name={n(`--active-transition`)}>{slots.default?.()}</Transition>
           {isActive.value && fabChildrens.length ? (
             <Transition name={n(`--actions-transition`)} appear>
               <div class={n('list')}>

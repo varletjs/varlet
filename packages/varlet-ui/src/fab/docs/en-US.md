@@ -12,10 +12,9 @@ Floating action button component for context menu.
 import { ref } from 'vue'
 
 const isShow = ref(false)
-
 </script>
 <template>
-  <var-fab style="right:50%;">
+  <var-fab>
     <var-button type="primary" round size="large" v-show="!isShow">
       <var-icon  name="plus" />
     </var-button>
@@ -33,7 +32,6 @@ const fab = ref(false)
 const trigger = ref('click')
 const position = ref('right-bottom')
 const direction = ref('top')
-
 </script>
 <template>
   <var-fab 
@@ -67,8 +65,8 @@ const direction = ref('top')
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | Active state                                                       | _boolean_ | `false`        |
 | `trigger`        | Trigger type; optional value is `click` `hover`                    | _string_ | `click`         |
-| `direction`      | Direction type; optional value is `top` `right` `bottom` `left`    | _string_ | `top`           |
-| `position`       | Position type; optional value is `left-top` `right-top` `right-bottom` `left-bottom` | _string_ | `right-bottom` |
+| `direction`      | Action menu pop up direction; optional value is `top` `right` `bottom` `left`    | _string_ | `top`           |
+| `position`       | Trigger position; optional value is `left-top` `right-top` `right-bottom` `left-bottom` | _string_ | `right-bottom` |
 
 ### Slots
 
@@ -76,7 +74,7 @@ const direction = ref('top')
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Button content | `default` |
+| `default` | trigger | `default` |
 | `actions` | Menu content | `-` |
 
 
