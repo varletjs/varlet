@@ -3,8 +3,8 @@ import {
   isRef,
   onActivated,
   onDeactivated,
+  onBeforeUnmount,
   onMounted,
-  onUnmounted,
   unref,
   watch,
   type Ref,
@@ -103,7 +103,7 @@ export function useEventListener(
   onActivated(() => {
     add(target)
   })
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     remove(target)
   })
   onDeactivated(() => {
