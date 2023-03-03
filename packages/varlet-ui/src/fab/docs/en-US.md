@@ -13,6 +13,7 @@ import { ref } from 'vue'
 
 const isShow = ref(false)
 </script>
+
 <template>
   <var-fab>
     <var-button type="primary" round size="large" v-show="!isShow">
@@ -33,6 +34,7 @@ const trigger = ref('click')
 const position = ref('right-bottom')
 const direction = ref('top')
 </script>
+
 <template>
   <var-fab 
     v-model="fab" 
