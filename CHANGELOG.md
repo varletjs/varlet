@@ -1,3 +1,17 @@
+## [2.8.5](https://github.com/varletjs/varlet/compare/v2.8.4...v2.8.5) (2023-02-28)
+
+
+### Bug Fixes
+
+* **ui/steps:** fix step shrink ([eb1cff7](https://github.com/varletjs/varlet/commit/eb1cff75746005b173e3f0b75c6625ac37708320))
+
+
+### Features
+
+* consistent flex-start, start, flex-end, end ([3836f30](https://github.com/varletjs/varlet/commit/3836f3040a80635da66001965022149190f59e0e))
+
+
+
 ## [2.8.4](https://github.com/varletjs/varlet/compare/v2.8.3...v2.8.4) (2023-02-27)
 
 

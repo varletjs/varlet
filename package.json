@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.8.4",
+  "version": "2.8.5",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -42,7 +42,7 @@
       "packages/varlet-ui-playground/public/**",
       "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
-      "packages/varlet-shared/es/**"
+      "packages/varlet-use/lib/**"
     ],
     "extends": [
       "@varlet"

@@ -1,12 +1,12 @@
 {
-  "name": "@varlet/shared",
+  "name": "@varlet/use",
   "version": "2.8.5",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "description": "shared utils of varlet",
+  "description": "composable utils of varlet",
   "keywords": [
-    "shared",
+    "composable",
     "utils",
     "varlet"
   ],
@@ -27,7 +27,14 @@
     "dev": "tsc --watch",
     "build": "tsc"
   },
+  "dependencies": {
+    "@varlet/shared": "workspace:*"
+  },
   "devDependencies": {
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "vue": "3.2.25"
+  },
+  "peerDependencies": {
+    "vue": "3.2.25"
   }
 }

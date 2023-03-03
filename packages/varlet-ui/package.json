@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "2.8.4",
+  "version": "2.8.5",
   "description": "A material like components library",
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
@@ -56,6 +56,7 @@
     "@popperjs/core": "^2.11.6",
     "@varlet/icons": "workspace:*",
     "@varlet/shared": "workspace:*",
+    "@varlet/use": "workspace:*",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
   },
