@@ -76,6 +76,21 @@ function toggle() {
     @click="toggle"
   />
 </template>
+<var-icon
+  color="#2979ff"
+  animation-class="fade"
+  :name="iconName"
+  :transition="300"
+  :size="30"
+  @click="toggle"
+/>
+
+<style>
+  .fade {
+    opacity: 0;
+    transition-property: opacity;
+  }
+</style>
 ```
 
 ### Custom Icons
@@ -128,6 +143,7 @@ You can use it this way:
 | `size`       | icon size                                      | _string \| number_ | `-`        |
 | `color`      | icon color, Only applies to font icons         | _string_           | `-`        |
 | `namespace`  | Icon namespace, extensible custom icon library | _string_           | `var-icon` |
+| `animation-class` | Name of the transition animation class |  _string_ | `var-icon--shrinking` |
 | `transition` | Transition animation time(ms)                  | _string \| number_ | `0`        |
 
 ### Events

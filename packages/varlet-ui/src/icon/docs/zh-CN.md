@@ -75,6 +75,21 @@ function toggle() {
     @click="toggle"
   />
 </template>
+<var-icon
+  color="#2979ff"
+  animation-class="fade"
+  :name="iconName"
+  :transition="300"
+  :size="30"
+  @click="toggle"
+/>
+
+<style>
+  .fade {
+    opacity: 0;
+    transition-property: opacity;
+  }
+</style>
 ```
 
 ### 自定义图标库
@@ -125,6 +140,7 @@ function toggle() {
 | `size` | 尺寸 | _string \| number_ | `-` |
 | `color` | 图标颜色, 只适用于字体图标 | _string_ | `-` |
 | `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
+| `animation-class` | 过渡动画类名 |  _string_ | `var-icon--shrinking` |
 | `transition` | 过渡动画时间（ms） |  _string \| number_ | `0` |
 
 ### 事件

@@ -7,6 +7,7 @@ export interface IconProps extends BasicAttributes {
   size?: string | number
   color?: string
   namespace?: string
+  animationClass?: string
   transition?: string | number
   onClick?: ListenerProp<(event: Event) => void>
 }

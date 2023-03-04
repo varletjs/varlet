@@ -63,6 +63,15 @@ watchDarkMode(dark, (theme) => {
     :name="iconName"
     @click="toggle"
   />
+  <var-icon
+    class="icon-example__animation-icon"
+    color="#2979ff"
+    :size="30"
+    :transition="300"
+    animation-class="fade"
+    :name="iconName"
+    @click="toggle"
+  />
 
   <app-type>{{ pack.iconList }}</app-type>
   <div class="icon-example__icons">
@@ -123,5 +132,10 @@ watchDarkMode(dark, (theme) => {
     white-space: nowrap;
     margin-top: 8px;
   }
+}
+
+.fade {
+  opacity: 0;
+  transition-property: opacity;
 }
 </style>
