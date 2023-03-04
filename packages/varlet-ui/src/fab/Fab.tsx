@@ -1,4 +1,5 @@
 import { computed, defineComponent, Ref, ref, Transition, watch } from 'vue'
+import { useClickOutside } from '@varlet/use'
 import { call, createNamespace, flatFragment } from '../utils/components'
 import { props } from './props'
 import './fab.less'
@@ -11,6 +12,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const internal: Ref<boolean> = ref(props.modelValue)
     const fabChildrens = flatFragment(slots.actions?.())
+    const host: Ref<null | HTMLElement> = ref(null)
 
     watch(
       () => props.modelValue,
@@ -40,21 +42,32 @@ export default defineComponent({
       isActive.value = value
     }
 
-    const clickHandle = (value: boolean) => {
+    const handleClick = (e: Event, value: boolean) => {
+      e.stopPropagation()
       props.trigger === 'click' && setIsActiveValue(value)
     }
 
-    const mouseHoverHandle = (value: boolean) => {
+    const handleMouse = (value: boolean) => {
       props.trigger === 'hover' && setIsActiveValue(value)
     }
+
+    const handleClickOutside = () => {
+      if (props.trigger !== 'click') {
+        return
+      }
+      setIsActiveValue(false)
+    }
+
+    useClickOutside(host, 'click', handleClickOutside)
 
     return () => {
       return (
         <div
+          ref={host}
           class={classesContainer.value}
-          onClick={() => clickHandle(!isActive.value)}
-          onMouseleave={() => mouseHoverHandle(false)}
-          onMouseenter={() => mouseHoverHandle(true)}
+          onClick={(e) => handleClick(e, !isActive.value)}
+          onMouseleave={() => handleMouse(false)}
+          onMouseenter={() => handleMouse(true)}
         >
           <Transition name={n(`--active-transition`)}>{slots.default?.()}</Transition>
           {isActive.value && fabChildrens.length ? (
