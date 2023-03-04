@@ -19,9 +19,19 @@
   </teleport>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  onActivated,
+  onDeactivated,
+  watch,
+  type Ref,
+  type TeleportProps,
+} from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -35,7 +45,6 @@ import {
   getTarget,
 } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
-import type { Ref, TeleportProps } from 'vue'
 
 const { n, classes } = createNamespace('back-top')
 
@@ -71,15 +80,39 @@ export default defineComponent({
 
     const throttleScroll = throttle(scroll, 200)
 
-    onMounted(() => {
+    const setTarget = () => {
       target = props.target ? getTarget(props.target, 'BackTop') : getParentScroller(backTopEl.value!)
+    }
+
+    const addTargetEventListener = () => {
       target.addEventListener('scroll', throttleScroll)
       disabled.value = false
+    }
+
+    const removeTargetEventListener = () => {
+      target.removeEventListener('scroll', throttleScroll)
+    }
+
+    watch(
+      () => props.target,
+      () => {
+        removeTargetEventListener()
+        setTarget()
+        addTargetEventListener()
+      }
+    )
+
+    onMounted(() => {
+      setTarget()
+      addTargetEventListener()
+    })
+    onActivated(() => {
+      setTarget()
+      addTargetEventListener()
     })
 
-    onBeforeUnmount(() => {
-      target.removeEventListener('scroll', throttleScroll)
-    })
+    onBeforeUnmount(removeTargetEventListener)
+    onDeactivated(removeTargetEventListener)
 
     return {
       disabled,
