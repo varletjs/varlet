@@ -91,7 +91,7 @@ export default defineComponent({
     }
 
     const countdown = () => {
-      const { time, onEnd, autoStart } = props
+      const { time, onEnd } = props
       const now = performance.now()
 
       if (!endTime) {
@@ -103,6 +103,8 @@ export default defineComponent({
         remainingTime = 0
       }
 
+      console.log(remainingTime)
+
       formatTime(remainingTime)
 
       if (remainingTime === 0) {
@@ -110,13 +112,17 @@ export default defineComponent({
         return
       }
 
-      if (autoStart || isStart) {
+      if (isStart) {
         handle = requestAnimationFrame(countdown)
       }
     }
 
     // expose
-    const start = () => {
+    const start = (resume = false) => {
+      if (isStart && !resume) {
+        return
+      }
+
       isStart = true
       endTime = performance.now() + (remainingTime || toNumber(props.time))
       countdown()
@@ -136,7 +142,17 @@ export default defineComponent({
       countdown()
     }
 
-    watch(() => props.time, reset, { immediate: true })
+    watch(
+      () => props.time,
+      () => {
+        reset()
+
+        if (props.autoStart) {
+          start()
+        }
+      },
+      { immediate: true }
+    )
 
     onActivated(() => {
       if (cacheIsStart == null) {
@@ -146,7 +162,7 @@ export default defineComponent({
       isStart = cacheIsStart
 
       if (isStart === true) {
-        start()
+        start(true)
       }
     })
 
