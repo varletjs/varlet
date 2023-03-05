@@ -27,11 +27,7 @@ export default defineComponent({
   name: 'VarCountdown',
   props,
   setup(props) {
-    const endTime: Ref<number> = ref(0)
-    const isStart: Ref<boolean> = ref(false)
     const showTime: Ref<string> = ref('')
-    const handle: Ref<number> = ref(0)
-    const pauseTime: Ref<number> = ref(0)
     const timeData: Ref<TimeData> = ref({
       days: 0,
       hours: 0,
@@ -40,6 +36,10 @@ export default defineComponent({
       milliseconds: 0,
     })
 
+    let endTime = 0
+    let isStart = false
+    let handle = 0
+    let remainingTime = 0
     let cacheIsStart: boolean
 
     const parseFormat = (format: string, time: TimeData): string => {
@@ -94,51 +94,45 @@ export default defineComponent({
       const { time, onEnd, autoStart } = props
       const now = performance.now()
 
-      if (!endTime.value) {
-        endTime.value = now + toNumber(time)
+      if (!endTime) {
+        endTime = now + toNumber(time)
       }
 
-      let durationTime = endTime.value - now
-      if (durationTime < 0) {
-        durationTime = 0
+      remainingTime = endTime - now
+      if (remainingTime < 0) {
+        remainingTime = 0
       }
 
-      pauseTime.value = durationTime
+      formatTime(remainingTime)
 
-      formatTime(durationTime)
-
-      if (durationTime === 0) {
+      if (remainingTime === 0) {
         call(onEnd)
         return
       }
 
-      if (autoStart || isStart.value) {
-        handle.value = requestAnimationFrame(countdown)
+      if (autoStart || isStart) {
+        handle = requestAnimationFrame(countdown)
       }
     }
 
     // expose
     const start = () => {
-      if (isStart.value) {
-        return
-      }
-
-      isStart.value = true
-      endTime.value = performance.now() + (pauseTime.value || toNumber(props.time))
+      isStart = true
+      endTime = performance.now() + (remainingTime || toNumber(props.time))
       countdown()
     }
 
     // expose
     const pause = () => {
-      isStart.value = false
-      cancelAnimationFrame(handle.value)
+      isStart = false
+      cancelAnimationFrame(handle)
     }
 
     // expose
     const reset = () => {
-      endTime.value = 0
-      isStart.value = false
-      cancelAnimationFrame(handle.value)
+      endTime = 0
+      isStart = false
+      cancelAnimationFrame(handle)
       countdown()
     }
 
@@ -149,15 +143,15 @@ export default defineComponent({
         return
       }
 
-      isStart.value = cacheIsStart
+      isStart = cacheIsStart
 
-      if (isStart.value === true) {
+      if (isStart === true) {
         countdown()
       }
     })
 
     onDeactivated(() => {
-      cacheIsStart = isStart.value
+      cacheIsStart = isStart
       pause()
     })
 
