@@ -40,6 +40,8 @@ export default defineComponent({
       milliseconds: 0,
     })
 
+    let cacheIsStart = false
+
     const parseFormat = (format: string, time: TimeData): string => {
       const scannedTimes = Object.values(time)
       const scannedFormats = ['DD', 'HH', 'mm', 'ss']
@@ -142,8 +144,19 @@ export default defineComponent({
 
     watch(() => props.time, reset, { immediate: true })
 
-    onActivated(start)
-    onDeactivated(pause)
+    onActivated(() => {
+      isStart.value = cacheIsStart
+
+      if (isStart.value === true) {
+        countdown()
+      }
+    })
+
+    onDeactivated(() => {
+      cacheIsStart = isStart.value
+      pause()
+    })
+
     onUnmounted(pause)
 
     return {
