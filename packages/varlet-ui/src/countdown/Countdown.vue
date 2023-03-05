@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch } from 'vue'
 import { props } from './props'
 import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
@@ -92,10 +92,15 @@ export default defineComponent({
       const { time, onEnd, autoStart } = props
       const now = performance.now()
 
-      if (!endTime.value) endTime.value = now + toNumber(time)
+      if (!endTime.value) {
+        endTime.value = now + toNumber(time)
+      }
 
       let durationTime = endTime.value - now
-      if (durationTime < 0) durationTime = 0
+      if (durationTime < 0) {
+        durationTime = 0
+      }
+
       pauseTime.value = durationTime
 
       formatTime(durationTime)
@@ -105,21 +110,26 @@ export default defineComponent({
         return
       }
 
-      if (autoStart || isStart.value) handle.value = requestAnimationFrame(countdown)
+      if (autoStart || isStart.value) {
+        handle.value = requestAnimationFrame(countdown)
+      }
     }
 
     // expose
     const start = () => {
-      if (isStart.value) return
+      if (isStart.value) {
+        return
+      }
 
       isStart.value = true
-      endTime.value = Date.now() + (pauseTime.value || toNumber(props.time))
+      endTime.value = performance.now() + (pauseTime.value || toNumber(props.time))
       countdown()
     }
 
     // expose
     const pause = () => {
       isStart.value = false
+      cancelAnimationFrame(handle.value)
     }
 
     // expose
@@ -130,11 +140,11 @@ export default defineComponent({
       countdown()
     }
 
-    watch(
-      () => props.time,
-      () => reset(),
-      { immediate: true }
-    )
+    watch(() => props.time, reset, { immediate: true })
+
+    onActivated(start)
+    onDeactivated(pause)
+    onUnmounted(pause)
 
     return {
       showTime,
