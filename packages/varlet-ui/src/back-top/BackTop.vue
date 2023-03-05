@@ -21,17 +21,7 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarIcon from '../icon'
-import {
-  defineComponent,
-  ref,
-  onMounted,
-  onBeforeUnmount,
-  onActivated,
-  onDeactivated,
-  watch,
-  type Ref,
-  type TeleportProps,
-} from 'vue'
+import { defineComponent, ref, onBeforeUnmount, onDeactivated, watch, type Ref, type TeleportProps } from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -45,6 +35,7 @@ import {
   getTarget,
 } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('back-top')
 
@@ -102,11 +93,7 @@ export default defineComponent({
       }
     )
 
-    onMounted(() => {
-      setTarget()
-      addTargetEventListener()
-    })
-    onActivated(() => {
+    useMounted(() => {
       setTarget()
       addTargetEventListener()
     })
