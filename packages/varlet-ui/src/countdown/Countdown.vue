@@ -146,7 +146,7 @@ export default defineComponent({
       isStart = cacheIsStart
 
       if (isStart === true) {
-        countdown()
+        start()
       }
     })
 
