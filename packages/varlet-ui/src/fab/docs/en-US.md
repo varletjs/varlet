@@ -177,6 +177,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--fab-padding` | `10px` |
 | `--fab-button-margin` | `6px`|
 | `--fab-z-index` |  `1`|
+| `--fab-size` |  `56px`|
+| `--fab-item-size` |  `40px`|
 | `--fab-vertical-spacing` | `80px`|
 | `--fab-horizontal-spacing` | `32px`|
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)`|
