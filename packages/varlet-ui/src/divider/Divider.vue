@@ -20,11 +20,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onMounted, onUpdated, toRefs } from 'vue'
+import { defineComponent, computed, reactive, onUpdated, toRefs } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { isBoolean, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('divider')
 
@@ -33,21 +34,21 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const state = reactive({ withText: false })
-
-    const isInset = computed(() => (isBoolean(props.inset) ? props.inset : true))
+    const isInset = computed(() => {
+      return isBoolean(props.inset) ? props.inset : true
+    })
 
     const style = computed(() => {
       const { inset, vertical, margin } = props
-      const baseStyle = {
-        margin,
+      const baseStyle = { margin }
+
+      if (isBoolean(inset) || inset === 0) {
+        return { ...baseStyle }
       }
 
-      if (isBoolean(inset) || inset === 0) return { ...baseStyle }
-
-      // -18px -> -18
       const _inset = toNumber(inset)
-      // -18px -> 18px
       const absInsetWithUnit = Math.abs(_inset) + (inset + '').replace(_inset + '', '')
+
       return vertical
         ? {
             ...baseStyle,
@@ -64,7 +65,7 @@ export default defineComponent({
       state.withText = Boolean(slots.default) || Boolean(props.description)
     }
 
-    onMounted(() => {
+    useMounted(() => {
       checkHasText()
     })
 

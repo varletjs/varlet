@@ -132,14 +132,13 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
-import { props } from './props'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
+import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { InputType, InputValidateTrigger } from './props'
-import type { InputProvider } from './provide'
+import { useMounted } from '@varlet/use'
+import { type InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
 
@@ -342,7 +341,7 @@ export default defineComponent({
 
     call(bindForm, inputProvider)
 
-    onMounted(() => {
+    useMounted(() => {
       if (props.autofocus) {
         focus()
       }

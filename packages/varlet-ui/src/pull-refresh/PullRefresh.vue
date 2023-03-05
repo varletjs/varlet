@@ -18,11 +18,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, onMounted, onBeforeUnmount, type Ref } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
+import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -156,6 +157,10 @@ export default defineComponent({
       controlPosition.value = -(width + width * 0.25)
     }
 
+    const setScroller = () => {
+      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
+    }
+
     const reset = () => {
       setTimeout(() => {
         refreshStatus.value = 'default'
@@ -179,17 +184,12 @@ export default defineComponent({
       }
     )
 
-    onMounted(() => {
-      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
-
+    useMounted(() => {
+      setScroller()
       setPosition()
-
-      freshNode.value?.addEventListener('touchmove', touchMove, { passive: false })
     })
 
-    onBeforeUnmount(() => {
-      freshNode.value?.removeEventListener('touchmove', touchMove)
-    })
+    useEventListener(freshNode, 'touchmove', touchMove)
 
     return {
       n,

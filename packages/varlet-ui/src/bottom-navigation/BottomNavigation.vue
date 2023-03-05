@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import VarButton from '../button'
-import { defineComponent, ref, computed, onMounted, onUpdated, watch } from 'vue'
+import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems } from './provide'
 import { createNamespace, call } from '../utils/components'
@@ -29,6 +29,7 @@ import { isNumber, isArray } from '@varlet/shared'
 import type { BottomNavigationProvider } from './provide'
 import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import type { Ref, ComputedRef } from 'vue'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -167,7 +168,7 @@ export default defineComponent({
       { immediate: true, deep: true }
     )
 
-    onMounted(() => {
+    useMounted(() => {
       if (!slots.fab) {
         return
       }
