@@ -7,4 +7,10 @@ export default {
   direction: 'Action Menu Pop Up Direction',
   position: 'Trigger Position',
   clickSuccess: 'Click Operation',
+  default: 'default',
+  primary: 'primary',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger',
 }

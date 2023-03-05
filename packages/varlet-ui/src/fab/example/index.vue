@@ -39,7 +39,7 @@ watchDarkMode(dark)
     <app-type>{{ pack.themeColor }}</app-type>
 
     <var-select :hint="false" v-model="themeColorValue">
-      <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+      <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="pack[item]" :value="item" />
     </var-select>
 
     <app-type>{{ pack.animationOnDisplay }}</app-type>

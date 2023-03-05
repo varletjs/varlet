@@ -7,4 +7,10 @@ export default {
   direction: '动作菜单弹出方向',
   position: '触发器位置',
   clickSuccess: '点击操作',
+  default: '默认',
+  primary: '主要',
+  info: '信息',
+  success: '成功',
+  warning: '警告',
+  danger: '危险',
 }
