@@ -21,7 +21,16 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarIcon from '../icon'
-import { defineComponent, ref, onBeforeUnmount, onDeactivated, onMounted, type Ref, type TeleportProps } from 'vue'
+import {
+  defineComponent,
+  ref,
+  onBeforeUnmount,
+  onDeactivated,
+  onMounted,
+  type Ref,
+  type TeleportProps,
+  onActivated,
+} from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -87,6 +96,7 @@ export default defineComponent({
       disabled.value = false
     })
 
+    onActivated(addScrollerEventListener)
     onBeforeUnmount(removeScrollerEventListener)
     onDeactivated(removeScrollerEventListener)
 
