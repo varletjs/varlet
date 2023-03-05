@@ -1,10 +1,9 @@
 export default {
-  basicUsage: 'Basic Usage',
+  animationOnDisplay: 'Animation on display',
   show: 'show',
   hidden: 'hidden',
-  combinedUsage: 'Combined Usage',
-  trigger: 'trigger mode',
-  direction: 'action menu pop up direction',
-  position: 'trigger position',
+  trigger: 'Trigger Mode',
+  direction: 'Action Menu Pop Up Direction',
+  position: 'Trigger Position',
   clickSuccess: 'Click Operation',
 }

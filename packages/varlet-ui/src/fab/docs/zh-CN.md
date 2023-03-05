@@ -4,7 +4,7 @@
 
 悬浮动作按钮组件，用于快捷菜单。
 
-### 基础用法
+### 显示时动画
 
 ```html
 <script setup>
@@ -15,33 +15,112 @@ const show = ref(true)
 
 <template>
   <var-fab>
-    <var-button type="primary" round size="large" v-show="show">
+    <var-button type="primary" round v-show="show">
       <var-icon  name="plus" />
     </var-button>
   </var-fab>
 </template>
 ```
 
-### 组合用法
+### 触发器位置
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const fab = ref(false)
-const trigger = ref('click')
 const position = ref('right-bottom')
+</script>
+
+<template>
+  <var-radio-group v-model="position">
+    <var-radio checked-value="left-top">left-top</var-radio>
+    <var-radio checked-value="right-top">right-top</var-radio>
+    <var-radio checked-value="left-bottom">left-bottom</var-radio>
+    <var-radio checked-value="right-bottom">right-bottom</var-radio>
+  </var-radio-group>
+  <var-fab :position="position">
+    <var-button type="primary" round>
+      <var-icon name="plus" />
+    </var-button>
+  </var-fab>
+</template>
+```
+
+### 触发方式
+
+通过`actions`插槽，自定义弹出菜单项的内容。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const trigger = ref('click')
+</script>
+
+<template>
+  <var-radio-group v-model="trigger">
+    <var-radio checked-value="click">click</var-radio>
+    <var-radio checked-value="hover">hover</var-radio>
+  </var-radio-group>
+  <var-fab :trigger="trigger">
+    <var-icon name="plus" />
+    <template #actions>
+      <var-tooltip content="Tooltip" placement="left">
+        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+      </var-tooltip>
+      <var-button type="primary" round>
+        <var-icon name="check" />
+      </var-button>
+    </template>
+  </var-fab>
+</template>
+```
+
+### 动作菜单弹出方向
+
+```html
+<script setup>
+import { ref } from 'vue'
+
 const direction = ref('top')
 </script>
 
 <template>
-  <var-fab 
-    v-model="fab" 
-    :position="position" 
-    :direction="direction" 
-    :trigger="trigger">
-    <var-button type="primary" round size="large">
-      <var-icon v-if="!fab" name="plus" />
+  <var-radio-group v-model="direction">
+    <var-radio checked-value="top">top</var-radio>
+    <var-radio checked-value="right">right</var-radio>
+    <var-radio checked-value="bottom">bottom</var-radio>
+    <var-radio checked-value="left">left</var-radio>
+  </var-radio-group>
+  <var-fab :direction="direction">
+    <var-icon name="plus" />
+    <template #actions>
+      <var-tooltip content="Tooltip" placement="left">
+        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+      </var-tooltip>
+      <var-button type="primary" round>
+        <var-icon name="check" />
+      </var-button>
+    </template>
+  </var-fab>
+</template>
+```
+
+
+### 双向绑定
+通过 `v-model` 进行双向绑定控制动作菜单弹是否展开和收起。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const unfold = ref(false)
+</script>
+
+<template>
+  <var-fab v-model="unfold">
+    <var-button type="primary" round>
+      <var-icon v-if="!unfold" name="plus" />
       <var-icon v-else name="window-close" />
     </var-button>
     <template #actions>
