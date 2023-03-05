@@ -4,13 +4,15 @@ import VarAvatar from '../../avatar'
 import VarTooltip from '../../tooltip'
 import VarRadioGroup from '../../radio-group'
 import VarRadio from '../../radio'
+import VarButton from '../../button'
+import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 
-const isShow = ref(false)
+const show = ref(true)
 const fab = ref(false)
 const trigger = ref('click')
 const direction = ref('top')
@@ -25,11 +27,11 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <div style="height: calc(100vh - 200px); position: relative">
+  <div>
     <app-type>{{ pack.basicUsage }}</app-type>
 
-    <var-button type="primary" @click="isShow = !isShow">
-      {{ pack.basicUsage }}
+    <var-button type="primary" @click="show = !show">
+      {{ show ? pack.hidden : pack.show }}
     </var-button>
 
     <app-type>{{ pack.combinedUsage }}</app-type>
@@ -57,7 +59,7 @@ watchDarkMode(dark)
     </var-radio-group>
 
     <var-fab v-model="fab" :position="position" :direction="direction" :trigger="trigger">
-      <var-button type="primary" round size="large">
+      <var-button type="primary" round>
         <var-icon v-if="!fab" name="plus" />
         <var-icon v-else name="window-close" />
       </var-button>
@@ -73,7 +75,7 @@ watchDarkMode(dark)
     </var-fab>
 
     <var-fab style="right: 50%">
-      <var-button type="primary" round size="large" v-show="!isShow" @click="handleClick">
+      <var-button type="primary" round v-show="show" @click="handleClick">
         <var-icon name="plus" />
       </var-button>
     </var-fab>

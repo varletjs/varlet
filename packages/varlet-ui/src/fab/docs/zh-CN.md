@@ -10,12 +10,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const isShow = ref(false)
+const show = ref(true)
 </script>
 
 <template>
   <var-fab>
-    <var-button type="primary" round size="large" v-show="!isShow">
+    <var-button type="primary" round size="large" v-show="show">
       <var-icon  name="plus" />
     </var-button>
   </var-fab>
@@ -65,7 +65,7 @@ const direction = ref('top')
 | 参数              | 说明                                                               | 类型     | 默认值        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | active状态                                                         | _boolean_ | `false`        |
-| `trigger`        | 触发类型，可选值为 `click` `hover`                                    | _string_ | `click`         |
+| `trigger`        | 触发方式，可选值为 `click` `hover`                                    | _string_ | `click`         |
 | `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`              | _string_ | `top`           |
 | `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom` |
 

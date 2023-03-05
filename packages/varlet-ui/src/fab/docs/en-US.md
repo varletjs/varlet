@@ -11,12 +11,12 @@ Floating action button component for context menu.
 <script setup>
 import { ref } from 'vue'
 
-const isShow = ref(false)
+const show = ref(true)
 </script>
 
 <template>
   <var-fab>
-    <var-button type="primary" round size="large" v-show="!isShow">
+    <var-button type="primary" round size="large" v-show="show">
       <var-icon  name="plus" />
     </var-button>
   </var-fab>
@@ -66,7 +66,7 @@ const direction = ref('top')
 | Prop              | Description                                                               | Type     | Default        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | Active state                                                       | _boolean_ | `false`        |
-| `trigger`        | Trigger type; optional value is `click` `hover`                    | _string_ | `click`         |
+| `trigger`        | Trigger mode; optional value is `click` `hover`                    | _string_ | `click`         |
 | `direction`      | Action menu pop up direction; optional value is `top` `right` `bottom` `left`    | _string_ | `top`           |
 | `position`       | Trigger position; optional value is `left-top` `right-top` `right-bottom` `left-bottom` | _string_ | `right-bottom` |
 
