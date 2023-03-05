@@ -85,10 +85,10 @@ function toggle() {
 />
 
 <style>
-  .fade {
-    opacity: 0;
-    transition-property: opacity;
-  }
+.fade {
+  opacity: 0;
+  transition-property: opacity;
+}
 </style>
 ```
 

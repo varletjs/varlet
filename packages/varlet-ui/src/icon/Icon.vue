@@ -7,7 +7,7 @@
         [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
-        [animateInProgress, animationClass || n('--shrinking')]
+        [animateInProgress, animationClass == null ? n('--shrinking') : animationClass]
       )
     "
     :style="{

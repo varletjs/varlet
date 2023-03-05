@@ -20,7 +20,6 @@ export const props = {
   },
   animationClass: {
     type: String,
-    default: '',
   },
   onClick: defineListenerProp<(event: Event) => void>(),
 }
