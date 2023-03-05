@@ -108,18 +108,22 @@ const direction = ref('top')
 
 
 ### 双向绑定
-通过 `v-model` 进行双向绑定控制动作菜单弹是否展开和收起。
+
+通过 `v-model` 进行双向绑定,控制动作菜单是否展开和收起。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const unfold = ref(false)
+function handleUnfold() {
+  unfold.value = !unfold.value
+}
 </script>
 
 <template>
   <var-fab v-model="unfold">
-    <var-button type="primary" round>
+    <var-button type="primary" round @click.stop="handleUnfold">
       <var-icon v-if="!unfold" name="plus" />
       <var-icon v-else name="window-close" />
     </var-button>

@@ -109,18 +109,22 @@ const direction = ref('top')
 
 
 ### v-model
-Two-way binding through `v-model` is used to control whether the action menu popup is expanded and folded.
+
+Two-way binding via `v-model` controls whether the action menu is expanded and closed.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const unfold = ref(false)
+function handleUnfold() {
+  unfold.value = !unfold.value
+}
 </script>
 
 <template>
   <var-fab v-model="unfold">
-    <var-button type="primary" round>
+    <var-button type="primary" round @click.stop="handleUnfold">
       <var-icon v-if="!unfold" name="plus" />
       <var-icon v-else name="window-close" />
     </var-button>
