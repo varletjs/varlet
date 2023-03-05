@@ -1,4 +1,5 @@
 export default {
+  themeColor: 'Theme color action buttons',
   animationOnDisplay: 'Animation on display',
   show: 'show',
   hidden: 'hidden',

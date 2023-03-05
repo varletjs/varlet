@@ -2,16 +2,22 @@ import { computed, defineComponent, Ref, ref, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
 import { call, createNamespace, flatFragment } from '../utils/components'
 import { props } from './props'
+import Button from '../button'
+import Icon from '../icon'
+
 import './fab.less'
 
 const { classes, n } = createNamespace('fab')
 
 export default defineComponent({
   name: 'VarFab',
+  components: {
+    [Button.name]: Button,
+    [Icon.name]: Icon,
+  },
   props,
   setup(props, { slots }) {
     const internal: Ref<boolean> = ref(props.modelValue)
-    const fabChildrens = flatFragment(slots.actions?.())
     const host: Ref<null | HTMLElement> = ref(null)
 
     watch(
@@ -61,6 +67,8 @@ export default defineComponent({
     useClickOutside(host, 'click', handleClickOutside)
 
     return () => {
+      const fabChildrens = flatFragment(slots.default?.())
+
       return (
         <div
           ref={host}
@@ -69,7 +77,15 @@ export default defineComponent({
           onMouseleave={() => handleMouse(false)}
           onMouseenter={() => handleMouse(true)}
         >
-          <Transition name={n(`--active-transition`)}>{slots.default?.()}</Transition>
+          <Transition name={n(`--active-transition`)}>
+            {slots.activator ? (
+              slots.activator?.()
+            ) : (
+              <var-button type={props.type} color={props.color} textColor={props.textColor} round>
+                <var-icon name={props.icon} size={props.iconSize} />
+              </var-button>
+            )}
+          </Transition>
           {isActive.value && fabChildrens.length ? (
             <Transition name={n(`--actions-transition`)} appear>
               <div class={n('list')}>

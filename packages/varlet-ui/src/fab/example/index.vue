@@ -6,10 +6,15 @@ import VarRadioGroup from '../../radio-group'
 import VarRadio from '../../radio'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
+import VarSelect from '../../select'
+import VarOption from '../../option'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+
+const themeColorOptions = ref(['default', 'primary', 'info', 'success', 'warning', 'danger'])
+const themeColorValue = ref('primary')
 
 const show = ref(true)
 const unfold = ref(false)
@@ -21,12 +26,22 @@ function handleShow() {
   show.value = !show.value
 }
 
+function handleUnfold() {
+  unfold.value = !unfold.value
+}
+
 watchLang(use)
 watchDarkMode(dark)
 </script>
 
 <template>
   <div>
+    <app-type>{{ pack.themeColor }}</app-type>
+
+    <var-select :hint="false" v-model="themeColorValue">
+      <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+    </var-select>
+
     <app-type>{{ pack.animationOnDisplay }}</app-type>
 
     <var-button type="primary" @click="handleShow">
@@ -56,19 +71,30 @@ watchDarkMode(dark)
       <var-radio checked-value="left">left</var-radio>
     </var-radio-group>
 
-    <var-fab v-model="unfold" :position="position" :direction="direction" :trigger="trigger">
-      <var-button type="primary" round v-show="show">
-        <var-icon v-if="!unfold" name="plus" />
-        <var-icon v-else name="window-close" />
+    <var-fab :type="themeColorValue" :position="position" :direction="direction" :trigger="trigger">
+      <var-tooltip content="Tooltip" placement="left">
+        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+      </var-tooltip>
+      <var-button type="danger" round>
+        <var-icon name="check" />
       </var-button>
-      <template #actions>
-        <var-tooltip content="Tooltip" placement="left">
-          <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-        </var-tooltip>
-        <var-button type="primary" round>
-          <var-icon name="check" />
+    </var-fab>
+
+    <var-fab v-model="unfold" style="right: 50%">
+      <template #activator>
+        <var-button type="success" v-show="show" round @click.stop="handleUnfold">
+          <var-icon v-if="!unfold" name="cog-outline" />
+          <var-icon v-else name="window-close" />
         </var-button>
       </template>
+      <var-tooltip content="camera" placement="left">
+        <var-button type="warning" round>
+          <var-icon name="camera-outline" />
+        </var-button>
+      </var-tooltip>
+      <var-button type="primary" round>
+        <var-icon name="phone-outline" />
+      </var-button>
     </var-fab>
   </div>
 </template>

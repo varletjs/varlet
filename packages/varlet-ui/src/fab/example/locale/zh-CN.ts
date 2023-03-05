@@ -1,4 +1,5 @@
 export default {
+  themeColor: '主题色动作按钮',
   animationOnDisplay: '显示时动画',
   show: '显示',
   hidden: '隐藏',

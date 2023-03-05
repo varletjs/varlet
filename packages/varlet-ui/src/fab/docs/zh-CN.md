@@ -4,7 +4,34 @@
 
 悬浮动作按钮组件，用于快捷菜单。
 
+### 主题色动作按钮
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const themeColorOptions = ref([
+  'default',
+  'primary',
+  'info',
+  'success',
+  'warning',
+  'danger'
+])
+const themeColorValue = ref('primary')
+</script>
+
+<template>
+  <var-select :hint="false" v-model="themeColorValue">
+    <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+  </var-select>
+  <var-fab :type="themeColorValue" />
+</template>
+```
+
 ### 显示时动画
+
+通过`activator`插槽，自定义触发器。
 
 ```html
 <script setup>
@@ -15,9 +42,11 @@ const show = ref(true)
 
 <template>
   <var-fab>
-    <var-button type="primary" round v-show="show">
-      <var-icon  name="plus" />
-    </var-button>
+    <template #activator>
+      <var-button type="primary" v-show="show" round>
+        <var-icon name="plus" />
+      </var-button>
+    </template>
   </var-fab>
 </template>
 ```
@@ -38,17 +67,13 @@ const position = ref('right-bottom')
     <var-radio checked-value="left-bottom">left-bottom</var-radio>
     <var-radio checked-value="right-bottom">right-bottom</var-radio>
   </var-radio-group>
-  <var-fab :position="position">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
-    </var-button>
-  </var-fab>
+  <var-fab :position="position" />
 </template>
 ```
 
 ### 触发方式
 
-通过`actions`插槽，自定义弹出菜单项的内容。
+菜单的内容为默认插槽
 
 ```html
 <script setup>
@@ -63,17 +88,12 @@ const trigger = ref('click')
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
   <var-fab :trigger="trigger">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
+    <var-tooltip content="Tooltip" placement="left">
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+    </var-tooltip>
+    <var-button type="danger" round>
+      <var-icon name="check" />
     </var-button>
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
-      </var-button>
-    </template>
   </var-fab>
 </template>
 ```
@@ -95,18 +115,12 @@ const direction = ref('top')
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
   <var-fab :direction="direction">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
+    <var-tooltip content="Tooltip" placement="left">
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+    </var-tooltip>
+    <var-button type="danger" round>
+      <var-icon name="check" />
     </var-button>
-    <var-icon name="plus" />
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
-      </var-button>
-    </template>
   </var-fab>
 </template>
 ```
@@ -128,18 +142,21 @@ function handleUnfold() {
 
 <template>
   <var-fab v-model="unfold">
-    <var-button type="primary" round @click.stop="handleUnfold">
-      <var-icon v-if="!unfold" name="plus" />
-      <var-icon v-else name="window-close" />
-    </var-button>
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
+    <template #activator>
+      <var-button type="success" round @click.stop="handleUnfold">
+        <var-icon v-if="!unfold" name="cog-outline" />
+        <var-icon v-else name="window-close" />
       </var-button>
     </template>
+    
+    <var-tooltip content="camera" placement="left">
+      <var-button type="warning" round>
+        <var-icon name="camera-outline" />
+      </var-button>
+    </var-tooltip>
+    <var-button type="primary" round>
+      <var-icon name="phone-outline" />
+    </var-button>
   </var-fab>
 </template>
 ```
@@ -152,10 +169,16 @@ function handleUnfold() {
 
 | 参数              | 说明                                                               | 类型     | 默认值        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
-| `v-model`        | active状态                                                         | _boolean_ | `false`        |
-| `trigger`        | 触发方式，可选值为 `click` `hover`                                    | _string_ | `click`         |
-| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`              | _string_ | `top`           |
-| `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom` |
+| `v-model`        | active状态                                                         | _boolean_ | `false`       |
+| `type`           | 同`Button`组件，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
+| `color`          | 背景颜色                                                            | _string_ | `-`           |
+| `text-color`     | 文字颜色                                                             | _string_ | `-`          |
+| `icon`           | 同`Icon`组件，图标名称                                               | _string_ | `-`           |
+| `icon-size`      | 同`Icon`组件，图标尺寸                                               | _string \| number_  | `24px`  |
+| `trigger`        | 触发方式，可选值为 `click` `hover`                                    | _string_ | `click`       |
+| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`              | _string_ | `top`          |
+| `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom`|
+
 
 ### 插槽
 
@@ -163,8 +186,8 @@ function handleUnfold() {
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 触发器 | `default` |
-| `actions` | 菜单内容 | `-` |
+| `default` | 菜单内容 |  `-` |
+| `activator` | 触发器 | `-` |
 
 
 ### 样式变量
@@ -177,8 +200,8 @@ function handleUnfold() {
 | `--fab-padding` | `10px` |
 | `--fab-button-margin` | `6px`|
 | `--fab-z-index` |  `1`|
-| `--fab-size` |  `56px`|
-| `--fab-item-size` |  `40px`|
+| `--fab-button-size` |  `56px`|
+| `--fab-button-item-size` |  `40px`|
 | `--fab-vertical-spacing` | `80px`|
 | `--fab-horizontal-spacing` | `32px`|
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)`|

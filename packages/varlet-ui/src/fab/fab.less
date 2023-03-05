@@ -2,8 +2,8 @@
   --fab-padding: 10px;
   --fab-button-margin: 6px;
   --fab-z-index: 1;
-  --fab-size: 56px;
-  --fab-item-size: 40px;
+  --fab-button-size: 56px;
+  --fab-button-item-size: 40px;
   --fab-vertical-spacing: 80px;
   --fab-horizontal-spacing: 32px;
   --fab-transition-standard-easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,14 +25,14 @@
 
 .var-fab {
   position: relative;
-  z-index: var(--speed-dial-z-index);
+  z-index: var(--fab-z-index);
 
   &--fixed {
     position: fixed;
     z-index: 4;
     & > button {
-      width: var(--fab-size);
-      height: var(--fab-size);
+      width: var(--fab-button-size);
+      height: var(--fab-button-size);
       margin: 0;
     }
   }
@@ -51,9 +51,8 @@
     position: absolute;
 
     & > div {
-      width: var(--fab-item-size);
-      height: var(--fab-item-size);
-      z-index: 3;
+      width: var(--fab-button-item-size);
+      height: var(--fab-button-item-size);
       border-radius: 50%;
       margin: var(--fab-button-margin);
 

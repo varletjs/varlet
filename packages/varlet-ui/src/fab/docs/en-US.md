@@ -5,7 +5,34 @@
 Floating action button component for context menu.
 
 
+### Theme color action buttons
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const themeColorOptions = ref([
+  'default',
+  'primary',
+  'info',
+  'success',
+  'warning',
+  'danger'
+])
+const themeColorValue = ref('primary')
+</script>
+
+<template>
+  <var-select :hint="false" v-model="themeColorValue">
+    <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+  </var-select>
+  <var-fab :type="themeColorValue" />
+</template>
+```
+
 ### Animation on display
+
+Through the `activator` slot, customize the trigger.
 
 ```html
 <script setup>
@@ -16,9 +43,11 @@ const show = ref(true)
 
 <template>
   <var-fab>
-    <var-button type="primary" round v-show="show">
-      <var-icon  name="plus" />
-    </var-button>
+    <template #activator>
+      <var-button type="primary" v-show="show" round>
+        <var-icon name="plus" />
+      </var-button>
+    </template>
   </var-fab>
 </template>
 ```
@@ -39,17 +68,13 @@ const position = ref('right-bottom')
     <var-radio checked-value="left-bottom">left-bottom</var-radio>
     <var-radio checked-value="right-bottom">right-bottom</var-radio>
   </var-radio-group>
-  <var-fab :position="position">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
-    </var-button>
-  </var-fab>
+  <var-fab :position="position" />
 </template>
 ```
 
 ### Trigger mode
 
-The `actions` slot allows you to customize the contents of the pop-up menu items.
+The contents of the menu are the default slots.
 
 ```html
 <script setup>
@@ -64,17 +89,12 @@ const trigger = ref('click')
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
   <var-fab :trigger="trigger">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
+    <var-tooltip content="Tooltip" placement="left">
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+    </var-tooltip>
+    <var-button type="danger" round>
+      <var-icon name="check" />
     </var-button>
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
-      </var-button>
-    </template>
   </var-fab>
 </template>
 ```
@@ -96,21 +116,15 @@ const direction = ref('top')
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
   <var-fab :direction="direction">
-    <var-button type="primary" round>
-      <var-icon name="plus" />
+    <var-tooltip content="Tooltip" placement="left">
+      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
+    </var-tooltip>
+    <var-button type="danger" round>
+      <var-icon name="check" />
     </var-button>
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
-      </var-button>
-    </template>
   </var-fab>
 </template>
 ```
-
 
 ### v-model
 
@@ -128,18 +142,21 @@ function handleUnfold() {
 
 <template>
   <var-fab v-model="unfold">
-    <var-button type="primary" round @click.stop="handleUnfold">
-      <var-icon v-if="!unfold" name="plus" />
-      <var-icon v-else name="window-close" />
-    </var-button>
-    <template #actions>
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="primary" round>
-        <var-icon name="check" />
+    <template #activator>
+      <var-button type="success" round @click.stop="handleUnfold">
+        <var-icon v-if="!unfold" name="cog-outline" />
+        <var-icon v-else name="window-close" />
       </var-button>
     </template>
+
+    <var-tooltip content="camera" placement="left">
+      <var-button type="warning" round>
+        <var-icon name="camera-outline" />
+      </var-button>
+    </var-tooltip>
+    <var-button type="primary" round>
+      <var-icon name="phone-outline" />
+    </var-button>
   </var-fab>
 </template>
 ```
@@ -153,6 +170,11 @@ function handleUnfold() {
 | Prop              | Description                                                               | Type     | Default        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
 | `v-model`        | Active state                                                       | _boolean_ | `false`        |
+| `type`           | Same as the `Button` component, optional value is `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
+| `color`          | Background color                                                   | _string_ | `-`           |
+| `text-color`     | Text color                                                         | _string_ | `-`          |
+| `icon`           | Same as `Icon` component, icon name                                | _string_ | `-`           |
+| `icon-size`      | Same as `Icon` component, icon size                                | _string \| number_  | `24px`  |
 | `trigger`        | Trigger mode; optional value is `click` `hover`                    | _string_ | `click`         |
 | `direction`      | Action menu pop up direction; optional value is `top` `right` `bottom` `left`    | _string_ | `top`           |
 | `position`       | Trigger position; optional value is `left-top` `right-top` `right-bottom` `left-bottom` | _string_ | `right-bottom` |
@@ -163,8 +185,8 @@ function handleUnfold() {
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | trigger | `default` |
-| `actions` | Menu content | `-` |
+| `default` | Menu content | `-` |
+| `activator` | Trigger | `-` |
 
 
 ### Style Variables
@@ -177,8 +199,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--fab-padding` | `10px` |
 | `--fab-button-margin` | `6px`|
 | `--fab-z-index` |  `1`|
-| `--fab-size` |  `56px`|
-| `--fab-item-size` |  `40px`|
+| `--fab-button-size` |  `56px`|
+| `--fab-button-item-size` |  `40px`|
 | `--fab-vertical-spacing` | `80px`|
 | `--fab-horizontal-spacing` | `32px`|
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)`|
