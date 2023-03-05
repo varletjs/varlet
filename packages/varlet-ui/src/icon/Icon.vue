@@ -7,12 +7,12 @@
         [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
-        [shrinking, n('--shrinking')]
+        [animateInProgress, animationClass == null ? n('--shrinking') : animationClass]
       )
     "
     :style="{
       color,
-      transition: `transform ${toNumber(transition)}ms`,
+      'transition-duration': `${toNumber(transition)}ms`,
       width: isURL(name) ? toSizeUnit(size) : null,
       height: isURL(name) ? toSizeUnit(size) : null,
       fontSize: toSizeUnit(size),
@@ -36,7 +36,7 @@ export default defineComponent({
   props,
   setup(props) {
     const nextName: Ref<string | undefined> = ref('')
-    const shrinking: Ref<boolean> = ref(false)
+    const animateInProgress: Ref<boolean> = ref(false)
 
     const handleNameChange = async (newName: string | undefined, oldName: string | undefined) => {
       const { transition } = props
@@ -46,11 +46,11 @@ export default defineComponent({
         return
       }
 
-      shrinking.value = true
+      animateInProgress.value = true
       await nextTick()
       setTimeout(() => {
         oldName != null && (nextName.value = newName)
-        shrinking.value = false
+        animateInProgress.value = false
       }, toNumber(transition))
     }
 
@@ -60,7 +60,7 @@ export default defineComponent({
       n,
       classes,
       nextName,
-      shrinking,
+      animateInProgress,
       isURL,
       toNumber,
       toSizeUnit,

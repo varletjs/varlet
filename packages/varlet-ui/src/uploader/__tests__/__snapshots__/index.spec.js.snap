@@ -3,7 +3,7 @@
 exports[`test uploader disabled 1`] = `
 "<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -24,11 +24,11 @@ exports[`test uploader disabled 2`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">cat.png</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
       <!--v-if-->
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -48,7 +48,7 @@ exports[`test uploader example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -67,15 +67,15 @@ exports[`test uploader example 1`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://www.runoob.com/try/demo_source/mov_bbb.mp4</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cover.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cover.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -94,20 +94,20 @@ exports[`test uploader example 1`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2 var-uploader--loading\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--success\\"></div>
     </div>
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -124,7 +124,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">文件数量限制</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
@@ -152,7 +152,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">文件大小限制</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -169,7 +169,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">上传预处理</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -186,7 +186,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">禁用</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -203,7 +203,7 @@ exports[`test uploader example 1`] = `
 <div class=\\"app-type\\">只读</div>
 <div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -222,10 +222,10 @@ exports[`test uploader example 1`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -264,10 +264,10 @@ exports[`test uploader example 1`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">https://varlet.gitee.io/varlet-ui/cat.jpg</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div><img class=\\"var-uploader__file-cover\\" src=\\"https://varlet.gitee.io/varlet-ui/cat.jpg\\">
       <div class=\\"var-uploader__file-indicator var-uploader--error\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -291,7 +291,7 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-uploader__file-list\\">
         <div class=\\"\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\" type=\\"button\\">
             <!--v-if-->
-            <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition: transform 0ms; font-size: 28px;\\"></i></div>
+            <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition-duration: 0ms; font-size: 28px;\\"></i></div>
           </button></div>
       </div>
       <transition-stub>
@@ -314,7 +314,7 @@ exports[`test uploader example 1`] = `
 exports[`test uploader hide file list 1`] = `
 "<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
@@ -333,7 +333,7 @@ exports[`test uploader hide file list 1`] = `
 exports[`test uploader length over maxlength in multiple mode 1`] = `
 "<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
@@ -363,7 +363,7 @@ exports[`test uploader length over maxlength in multiple mode 1`] = `
 exports[`test uploader validation 1`] = `
 "<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <div class=\\"var-form-details\\">
@@ -395,11 +395,11 @@ exports[`test uploader validation 2`] = `
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__file var-elevation--2\\">
       <div class=\\"var-uploader__file-name\\">cat.png</div>
-      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__file-close\\"><i class=\\"var-icon var-icon--set var-icon-delete var-uploader__file-close-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
       <!--v-if-->
       <div class=\\"var-uploader__file-indicator\\"></div>
     </div>
-    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+    <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i></div>
   </div>
   <transition-stub>
     <!--v-if-->
