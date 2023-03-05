@@ -70,7 +70,7 @@ export default defineComponent({
       return format
     }
 
-    const formatTime = (durationTime: number) => {
+    const displayTime = (durationTime: number) => {
       const days = Math.floor(durationTime / DAY)
       const hours = Math.floor((durationTime % DAY) / HOUR)
       const minutes = Math.floor((durationTime % HOUR) / MINUTE)
@@ -103,9 +103,7 @@ export default defineComponent({
         remainingTime = 0
       }
 
-      console.log(remainingTime)
-
-      formatTime(remainingTime)
+      displayTime(remainingTime)
 
       if (remainingTime === 0) {
         call(onEnd)
