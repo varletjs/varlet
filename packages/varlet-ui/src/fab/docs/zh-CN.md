@@ -63,7 +63,9 @@ const trigger = ref('click')
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
   <var-fab :trigger="trigger">
-    <var-icon name="plus" />
+    <var-button type="primary" round>
+      <var-icon name="plus" />
+    </var-button>
     <template #actions>
       <var-tooltip content="Tooltip" placement="left">
         <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
@@ -93,6 +95,9 @@ const direction = ref('top')
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
   <var-fab :direction="direction">
+    <var-button type="primary" round>
+      <var-icon name="plus" />
+    </var-button>
     <var-icon name="plus" />
     <template #actions>
       <var-tooltip content="Tooltip" placement="left">
