@@ -38,7 +38,7 @@ export default defineComponent({
     const nextName: Ref<string | undefined> = ref('')
     const animateInProgress: Ref<boolean> = ref(false)
 
-    const handleNameChange = async (newName: string | undefined, oldName: string | undefined) => {
+    const handleNameChange = async (newName?: string, oldName?: string) => {
       const { transition } = props
 
       if (oldName == null || toNumber(transition) === 0) {
@@ -47,9 +47,14 @@ export default defineComponent({
       }
 
       animateInProgress.value = true
+
       await nextTick()
+
       setTimeout(() => {
-        oldName != null && (nextName.value = newName)
+        if (oldName != null) {
+          nextName.value = newName
+        }
+
         animateInProgress.value = false
       }, toNumber(transition))
     }
