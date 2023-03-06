@@ -290,7 +290,7 @@ const active = ref(0)
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
 | `sticky-z-index`   | 粘性布局的层级                                | _number_  | `10`         |
 | `safe-area`        | 是否开启底部安全区适配                            | _boolean_ | `false`      |
-| `offset-top`       | 吸顶距离                                   | _string \ | number_      | `0`          |
+| `offset-top`       | 吸顶距离                                   | _string \| number_      | `0`          |
 
 #### Tab Props
 

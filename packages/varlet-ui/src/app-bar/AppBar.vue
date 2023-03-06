@@ -25,9 +25,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onMounted, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
+import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('app-bar')
 
@@ -62,7 +63,7 @@ export default defineComponent({
       }
     })
 
-    onMounted(computePadding)
+    useMounted(computePadding)
     onUpdated(computePadding)
 
     return {

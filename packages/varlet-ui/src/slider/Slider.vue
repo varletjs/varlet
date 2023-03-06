@@ -60,15 +60,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, computed, reactive, nextTick, watch } from 'vue'
+import VarFormDetails from '../form-details'
+import {
+  defineComponent,
+  ref,
+  computed,
+  reactive,
+  nextTick,
+  watch,
+  type Ref,
+  type ComputedRef,
+  type UnwrapRef,
+} from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
-import VarFormDetails from '../form-details'
-import type { Ref, ComputedRef, UnwrapRef } from 'vue'
-import type { SliderProvider } from './provide'
+import { useMounted } from '@varlet/use'
+import { type SliderProvider } from './provide'
 
 const { n, classes } = createNamespace('slider')
 
@@ -323,7 +333,7 @@ export default defineComponent({
 
     watch(maxWidth, () => setProps())
 
-    onMounted(() => {
+    useMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
       maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth

@@ -1,3 +1,4 @@
+import { useEventListener } from '@varlet/use'
 import {
   createApp,
   h,
@@ -299,14 +300,8 @@ export function useValidation() {
 }
 
 export function useRouteListener(cb: () => void) {
-  onMounted(() => {
-    window.addEventListener('hashchange', cb)
-    window.addEventListener('popstate', cb)
-  })
-  onUnmounted(() => {
-    window.removeEventListener('hashchange', cb)
-    window.removeEventListener('popstate', cb)
-  })
+  useEventListener(window, 'hashchange', cb)
+  useEventListener(window, 'popstate', cb)
 }
 
 export function useTeleport() {

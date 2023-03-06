@@ -1,3 +1,19 @@
+## [2.8.6](https://github.com/varletjs/varlet/compare/v2.8.5...v2.8.6) (2023-03-05)
+
+
+### Bug Fixes
+
+* **ui/backtop:** fix effect while the component in keepalive ([195bf9b](https://github.com/varletjs/varlet/commit/195bf9b7d9c535d31b9e02a8238d781f93b5bb1f))
+* **ui/coundown:** fix start method error ([f6626ea](https://github.com/varletjs/varlet/commit/f6626eac03517483f3906f6111c65dc4a8c2e83c))
+* **ui/input:** value update error while the target is composingand close [#877](https://github.com/varletjs/varlet/issues/877) ([5873fdf](https://github.com/varletjs/varlet/commit/5873fdf830ff6978fdb4195cf1fafaa2e2d30f1e))
+
+
+### Features
+
+* **use:** support useEventListener useClickOutside ([cb90734](https://github.com/varletjs/varlet/commit/cb907340ae67729bfe05f0df062463d63fb43166))
+
+
+
 ## [2.8.5](https://github.com/varletjs/varlet/compare/v2.8.4...v2.8.5) (2023-02-28)
 
 

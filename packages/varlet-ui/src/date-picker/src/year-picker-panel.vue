@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted } from 'vue'
 import dayjs from 'dayjs/esm'
+import { defineComponent, computed, type ComputedRef, type PropType } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
-import type { ComputedRef, PropType } from 'vue'
-import type { ComponentProps } from '../props'
+import { useMounted } from '@varlet/use'
+import { type ComponentProps } from '../props'
 
 const { n, classes } = createNamespace('year-picker')
 
@@ -73,7 +73,7 @@ export default defineComponent({
       emit('choose-year', year)
     }
 
-    onMounted(() => {
+    useMounted(() => {
       const activeEl = document.querySelector(`.${n('item--active')}`)
       activeEl?.scrollIntoView({
         block: 'center',

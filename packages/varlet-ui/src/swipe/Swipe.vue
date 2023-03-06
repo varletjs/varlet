@@ -32,13 +32,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onMounted, onUnmounted, type Ref, type ComputedRef } from 'vue'
+import {
+  defineComponent,
+  ref,
+  computed,
+  watch,
+  onUnmounted,
+  type Ref,
+  type ComputedRef,
+  onDeactivated,
+  onActivated,
+} from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { type SwipeItemProvider } from '../swipe-item/provide'
+import { useEventListener } from '@varlet/use'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -368,14 +379,11 @@ export default defineComponent({
       }
     )
 
-    onMounted(() => {
-      window.addEventListener('resize', resize)
-    })
+    onActivated(resize)
+    onDeactivated(stopAutoplay)
+    onUnmounted(stopAutoplay)
 
-    onUnmounted(() => {
-      window.removeEventListener('resize', resize)
-      stopAutoplay()
-    })
+    useEventListener(window, 'resize', resize)
 
     return {
       n,

@@ -1,15 +1,6 @@
 import { inBrowser } from '@varlet/shared'
-import {
-  isRef,
-  onActivated,
-  onDeactivated,
-  onBeforeUnmount,
-  onMounted,
-  unref,
-  watch,
-  type Ref,
-  type WatchStopHandle,
-} from 'vue'
+import { isRef, onDeactivated, onBeforeUnmount, unref, watch, type Ref, type WatchStopHandle } from 'vue'
+import { useMounted } from './useMounted.js'
 
 export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null>
 
@@ -97,12 +88,10 @@ export function useEventListener(
     cleaned = true
   }
 
-  onMounted(() => {
+  useMounted(() => {
     add(target)
   })
-  onActivated(() => {
-    add(target)
-  })
+
   onBeforeUnmount(() => {
     remove(target)
   })
