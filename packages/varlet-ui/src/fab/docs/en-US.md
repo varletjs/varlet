@@ -5,7 +5,7 @@
 Floating action button component for context menu.
 
 
-### Theme color action buttons
+### Theme Color Action Buttons
 
 ```html
 <script setup>
@@ -27,7 +27,7 @@ const type = ref('primary')
 </template>
 ```
 
-### Trigger position
+### Trigger Position
 
 ```html
 <script setup>
@@ -47,7 +47,7 @@ const position = ref('right-bottom')
 </template>
 ```
 
-### Trigger mode
+### Trigger Mode
 
 The contents of the menu are the default slots.
 
@@ -74,7 +74,7 @@ const trigger = ref('click')
 </template>
 ```
 
-### Action menu pop up direction
+### Action Menu Pop Up Direction
 
 ```html
 <script setup>
@@ -101,15 +101,16 @@ const direction = ref('top')
 </template>
 ```
 
-### Custom triggers
+### Custom Triggers
 
 Two-way binding via `v-model:active` controls whether the action menu is expanded and closed.
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const active = ref(false)
+const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
 function handleActive() {
   active.value = !active.value
 }
@@ -118,12 +119,10 @@ function handleActive() {
 <template>
   <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="success" round @click.stop="handleActive">
-        <var-icon v-if="!active" name="cog-outline" />
-        <var-icon v-else name="window-close" />
+      <var-button round @click.stop="handleActive">
+        <var-icon animation-class="fade" :name="iconName" :transition="200" />
       </var-button>
     </template>
-
     <var-tooltip content="camera" placement="left">
       <var-button type="warning" round>
         <var-icon name="camera-outline" />
@@ -134,28 +133,61 @@ function handleActive() {
     </var-button>
   </var-fab>
 </template>
+
+<style lang="less" scoped>
+.fade {
+  transform: scale(0.4);
+}
+</style>
 ```
 
-### Animation on display
+### Animation On Display
 
 Through the `activator` slot, customize the trigger.
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const show = ref(true)
+const active = ref(false)
+const show = ref(false)
+const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
+function handleActive() {
+  active.value = !active.value
+}
+function handleShow() {
+  show.value = !show.value
+  active.value = false
+}
 </script>
 
 <template>
-  <var-fab>
+  <var-button type="primary" @click="handleShow">
+    {{ show ? 'hidden' : 'show' }}
+  </var-button>
+
+  <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="primary" v-show="show" round>
-        <var-icon name="plus" />
+      <var-button v-show="show" round @click.stop="handleActive">
+        <var-icon animation-class="fade" :name="iconName" :transition="200" />
       </var-button>
     </template>
+    <var-tooltip content="camera" placement="left">
+      <var-button type="warning" round>
+        <var-icon name="camera-outline" />
+      </var-button>
+    </var-tooltip>
+    <var-button type="primary" round>
+      <var-icon name="phone-outline" />
+    </var-button>
   </var-fab>
 </template>
+
+<style lang="less" scoped>
+.fade {
+  transform: scale(0.4);
+}
+</style>
 ```
 
 ## API

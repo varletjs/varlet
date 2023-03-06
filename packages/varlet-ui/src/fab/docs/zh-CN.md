@@ -106,9 +106,10 @@ const direction = ref('top')
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const active = ref(false)
+const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
 function handleActive() {
   active.value = !active.value
 }
@@ -117,12 +118,10 @@ function handleActive() {
 <template>
   <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="success" round @click.stop="handleActive">
-        <var-icon v-if="!active" name="cog-outline" />
-        <var-icon v-else name="window-close" />
+      <var-button round @click.stop="handleActive">
+        <var-icon animation-class="fade" :name="iconName" :transition="200" />
       </var-button>
     </template>
-    
     <var-tooltip content="camera" placement="left">
       <var-button type="warning" round>
         <var-icon name="camera-outline" />
@@ -133,6 +132,12 @@ function handleActive() {
     </var-button>
   </var-fab>
 </template>
+
+<style lang="less" scoped>
+.fade {
+  transform: scale(0.4);
+}
+</style>
 ```
 
 ### 显示时动画
@@ -141,20 +146,47 @@ function handleActive() {
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const show = ref(true)
+const active = ref(false)
+const show = ref(false)
+const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
+function handleActive() {
+  active.value = !active.value
+}
+function handleShow() {
+  show.value = !show.value
+  active.value = false
+}
 </script>
 
 <template>
-  <var-fab>
+  <var-button type="primary" @click="handleShow">
+    {{ show ? 'hidden' : 'show' }}
+  </var-button>
+
+  <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="primary" v-show="show" round>
-        <var-icon name="plus" />
+      <var-button v-show="show" round @click.stop="handleActive">
+        <var-icon animation-class="fade" :name="iconName" :transition="200" />
       </var-button>
     </template>
+    <var-tooltip content="camera" placement="left">
+      <var-button type="warning" round>
+        <var-icon name="camera-outline" />
+      </var-button>
+    </var-tooltip>
+    <var-button type="primary" round>
+      <var-icon name="phone-outline" />
+    </var-button>
   </var-fab>
 </template>
+
+<style lang="less" scoped>
+.fade {
+  transform: scale(0.4);
+}
+</style>
 ```
 
 ## API
