@@ -109,7 +109,7 @@ const direction = ref('top')
 import { ref, computed } from 'vue'
 
 const active = ref(false)
-const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
+const iconName = computed(() => active.value ? 'window-close' : 'cog-outline')
 function handleActive() {
   active.value = !active.value
 }
@@ -150,7 +150,7 @@ import { ref, computed } from 'vue'
 
 const active = ref(false)
 const show = ref(false)
-const iconName:  = computed(() => active.value ? 'window-close' : 'cog-outline')
+const iconName = computed(() => active.value ? 'window-close' : 'cog-outline')
 function handleActive() {
   active.value = !active.value
 }
