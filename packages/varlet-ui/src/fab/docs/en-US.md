@@ -11,44 +11,19 @@ Floating action button component for context menu.
 <script setup>
 import { ref } from 'vue'
 
-const themeColorOptions = ref([
-  'default',
-  'primary',
-  'info',
-  'success',
-  'warning',
-  'danger'
-])
-const themeColorValue = ref('primary')
+const type = ref('primary')
 </script>
 
 <template>
-  <var-select :hint="false" v-model="themeColorValue">
-    <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+  <var-select :hint="false" v-model="type">
+    <var-option label="default" value="default"/>
+    <var-option label="primary" value="primary"/>
+    <var-option label="info" value="info"/>
+    <var-option label="success" value="success"/>
+    <var-option label="warning" value="warning"/>
+    <var-option label="danger" value="danger"/>
   </var-select>
-  <var-fab :type="themeColorValue" />
-</template>
-```
-
-### Animation on display
-
-Through the `activator` slot, customize the trigger.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(true)
-</script>
-
-<template>
-  <var-fab>
-    <template #activator>
-      <var-button type="primary" v-show="show" round>
-        <var-icon name="plus" />
-      </var-button>
-    </template>
-  </var-fab>
+  <var-fab :type="type" />
 </template>
 ```
 
@@ -126,25 +101,25 @@ const direction = ref('top')
 </template>
 ```
 
-### v-model
+### Custom triggers
 
-Two-way binding via `v-model` controls whether the action menu is expanded and closed.
+Two-way binding via `v-model:active` controls whether the action menu is expanded and closed.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const unfold = ref(false)
-function handleUnfold() {
-  unfold.value = !unfold.value
+const active = ref(false)
+function handleActive() {
+  active.value = !active.value
 }
 </script>
 
 <template>
-  <var-fab v-model="unfold">
+  <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="success" round @click.stop="handleUnfold">
-        <var-icon v-if="!unfold" name="cog-outline" />
+      <var-button type="success" round @click.stop="handleActive">
+        <var-icon v-if="!active" name="cog-outline" />
         <var-icon v-else name="window-close" />
       </var-button>
     </template>
@@ -161,15 +136,37 @@ function handleUnfold() {
 </template>
 ```
 
+### Animation on display
+
+Through the `activator` slot, customize the trigger.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+</script>
+
+<template>
+  <var-fab>
+    <template #activator>
+      <var-button type="primary" v-show="show" round>
+        <var-icon name="plus" />
+      </var-button>
+    </template>
+  </var-fab>
+</template>
+```
+
 ## API
 
 ### Props
 
 #### Fab Props
 
-| Prop              | Description                                                               | Type     | Default        |
+| Prop             | Description                                                        | Type     | Default        |
 |------------------|-----------------------------------------------------------------   |----------|----------------|
-| `v-model`        | Active state                                                       | _boolean_ | `false`        |
+| `v-model:active` | Trigger activity state                                             | _boolean_ | `false`        |
 | `type`           | Same as the `Button` component, optional value is `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
 | `color`          | Background color                                                   | _string_ | `-`           |
 | `text-color`     | Text color                                                         | _string_ | `-`          |

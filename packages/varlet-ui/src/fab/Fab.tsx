@@ -17,11 +17,11 @@ export default defineComponent({
   },
   props,
   setup(props, { slots }) {
-    const internal: Ref<boolean> = ref(props.modelValue)
+    const internal: Ref<boolean> = ref(props.active)
     const host: Ref<null | HTMLElement> = ref(null)
 
     watch(
-      () => props.modelValue,
+      () => props.active,
       (val) => {
         internal.value = val
       }
@@ -33,7 +33,7 @@ export default defineComponent({
       },
       set(newValue: boolean) {
         internal.value = newValue
-        call(props['onUpdate:modelValue'], newValue)
+        call(props['onUpdate:active'], newValue)
       },
     })
 
@@ -86,15 +86,13 @@ export default defineComponent({
               </var-button>
             )}
           </Transition>
-          {isActive.value && fabChildrens.length ? (
-            <Transition name={n(`--actions-transition`)} appear>
-              <div class={n('list')}>
-                {fabChildrens.map((chilren, index) => {
-                  return <div style={{ transitionDelay: index * 0.05 + 's' }}>{chilren}</div>
-                })}
-              </div>
-            </Transition>
-          ) : null}
+          <Transition name={n(`--actions-transition`)} appear>
+            <div v-show={isActive.value && fabChildrens.length} class={n('list')}>
+              {fabChildrens.map((chilren, index) => {
+                return <div style={{ transitionDelay: index * 0.05 + 's' }}>{chilren}</div>
+              })}
+            </div>
+          </Transition>
         </div>
       )
     }

@@ -8,16 +8,16 @@ import VarButton from '../../button'
 import VarIcon from '../../icon'
 import VarSelect from '../../select'
 import VarOption from '../../option'
+import VarSwitch from '../../switch'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 import dark from '../../themes/dark'
 
-const themeColorOptions = ref(['default', 'primary', 'info', 'success', 'warning', 'danger'])
-const themeColorValue = ref('primary')
-
+const open = ref(false)
 const show = ref(true)
-const unfold = ref(false)
+const active = ref(false)
+const type = ref('primary')
 const trigger = ref('click')
 const direction = ref('top')
 const position = ref('right-bottom')
@@ -26,8 +26,8 @@ function handleShow() {
   show.value = !show.value
 }
 
-function handleUnfold() {
-  unfold.value = !unfold.value
+function handleActive() {
+  active.value = !active.value
 }
 
 watchLang(use)
@@ -38,15 +38,14 @@ watchDarkMode(dark)
   <div>
     <app-type>{{ pack.themeColor }}</app-type>
 
-    <var-select :hint="false" v-model="themeColorValue">
-      <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="pack[item]" :value="item" />
+    <var-select :hint="false" v-model="type">
+      <var-option :label="pack.default" value="default" />
+      <var-option :label="pack.primary" value="primary" />
+      <var-option :label="pack.info" value="info" />
+      <var-option :label="pack.success" value="success" />
+      <var-option :label="pack.warning" value="warning" />
+      <var-option :label="pack.danger" value="danger" />
     </var-select>
-
-    <app-type>{{ pack.animationOnDisplay }}</app-type>
-
-    <var-button type="primary" @click="handleShow">
-      {{ show ? pack.hidden : pack.show }}
-    </var-button>
 
     <app-type>{{ pack.position }}</app-type>
 
@@ -71,7 +70,15 @@ watchDarkMode(dark)
       <var-radio checked-value="left">left</var-radio>
     </var-radio-group>
 
-    <var-fab :type="themeColorValue" :position="position" :direction="direction" :trigger="trigger">
+    <app-type>{{ pack.customSlots }}</app-type>
+    <var-switch v-model="open" />
+
+    <app-type>{{ pack.animationOnDisplay }}</app-type>
+    <var-button type="primary" @click="handleShow" :disabled="!open">
+      {{ show ? pack.hidden : pack.show }}
+    </var-button>
+
+    <var-fab v-if="!open" :type="type" :position="position" :direction="direction" :trigger="trigger">
       <var-tooltip content="Tooltip" placement="left">
         <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
       </var-tooltip>
@@ -80,10 +87,10 @@ watchDarkMode(dark)
       </var-button>
     </var-fab>
 
-    <var-fab v-model="unfold" style="right: 50%">
+    <var-fab v-else v-model:active="active" :position="position" :direction="direction" :trigger="trigger">
       <template #activator>
-        <var-button type="success" v-show="show" round @click.stop="handleUnfold">
-          <var-icon v-if="!unfold" name="cog-outline" />
+        <var-button :type="type" v-show="show" round @click.stop="handleActive">
+          <var-icon v-if="!active" name="cog-outline" />
           <var-icon v-else name="window-close" />
         </var-button>
       </template>

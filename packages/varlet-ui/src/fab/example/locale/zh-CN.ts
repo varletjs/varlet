@@ -6,7 +6,7 @@ export default {
   trigger: '触发方式',
   direction: '动作菜单弹出方向',
   position: '触发器位置',
-  clickSuccess: '点击操作',
+  customSlots: '自定义触发器',
   default: '默认',
   primary: '主要',
   info: '信息',

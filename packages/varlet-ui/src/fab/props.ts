@@ -7,7 +7,7 @@ type FabTrigger = 'click' | 'hover'
 type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
 export const props = {
-  modelValue: {
+  active: {
     type: Boolean,
     default: false,
   },

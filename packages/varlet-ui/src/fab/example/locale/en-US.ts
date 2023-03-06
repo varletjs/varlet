@@ -6,7 +6,7 @@ export default {
   trigger: 'Trigger Mode',
   direction: 'Action Menu Pop Up Direction',
   position: 'Trigger Position',
-  clickSuccess: 'Click Operation',
+  customSlots: 'Custom triggers',
   default: 'default',
   primary: 'primary',
   info: 'info',

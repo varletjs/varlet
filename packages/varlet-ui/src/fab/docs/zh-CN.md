@@ -10,44 +10,19 @@
 <script setup>
 import { ref } from 'vue'
 
-const themeColorOptions = ref([
-  'default',
-  'primary',
-  'info',
-  'success',
-  'warning',
-  'danger'
-])
-const themeColorValue = ref('primary')
+const type = ref('primary')
 </script>
 
 <template>
-  <var-select :hint="false" v-model="themeColorValue">
-    <var-option v-for="(item, index) in themeColorOptions" :key="index" :label="item" />
+  <var-select :hint="false" v-model="type">
+    <var-option label="默认" value="default"/>
+    <var-option label="主要" value="primary"/>
+    <var-option label="信息" value="info"/>
+    <var-option label="成功" value="success"/>
+    <var-option label="警告" value="warning"/>
+    <var-option label="危险" value="danger"/>
   </var-select>
-  <var-fab :type="themeColorValue" />
-</template>
-```
-
-### 显示时动画
-
-通过`activator`插槽，自定义触发器。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const show = ref(true)
-</script>
-
-<template>
-  <var-fab>
-    <template #activator>
-      <var-button type="primary" v-show="show" round>
-        <var-icon name="plus" />
-      </var-button>
-    </template>
-  </var-fab>
+  <var-fab :type="type" />
 </template>
 ```
 
@@ -125,26 +100,25 @@ const direction = ref('top')
 </template>
 ```
 
+### 自定义触发器
 
-### 双向绑定
-
-通过 `v-model` 进行双向绑定,控制动作菜单是否展开和收起。
+通过 `v-model:active` 进行双向绑定,控制动作菜单是否展开和收起。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const unfold = ref(false)
-function handleUnfold() {
-  unfold.value = !unfold.value
+const active = ref(false)
+function handleActive() {
+  active.value = !active.value
 }
 </script>
 
 <template>
-  <var-fab v-model="unfold">
+  <var-fab v-model:active="active">
     <template #activator>
-      <var-button type="success" round @click.stop="handleUnfold">
-        <var-icon v-if="!unfold" name="cog-outline" />
+      <var-button type="success" round @click.stop="handleActive">
+        <var-icon v-if="!active" name="cog-outline" />
         <var-icon v-else name="window-close" />
       </var-button>
     </template>
@@ -161,22 +135,44 @@ function handleUnfold() {
 </template>
 ```
 
+### 显示时动画
+
+通过 `activator` 插槽，自定义触发器。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+</script>
+
+<template>
+  <var-fab>
+    <template #activator>
+      <var-button type="primary" v-show="show" round>
+        <var-icon name="plus" />
+      </var-button>
+    </template>
+  </var-fab>
+</template>
+```
+
 ## API
 
 ### 属性
 
 #### Fab Props
 
-| 参数              | 说明                                                               | 类型     | 默认值        |
-|------------------|-----------------------------------------------------------------   |----------|----------------|
-| `v-model`        | active状态                                                         | _boolean_ | `false`       |
-| `type`           | 同`Button`组件，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
-| `color`          | 背景颜色                                                            | _string_ | `-`           |
-| `text-color`     | 文字颜色                                                             | _string_ | `-`          |
-| `icon`           | 同`Icon`组件，图标名称                                               | _string_ | `-`           |
-| `icon-size`      | 同`Icon`组件，图标尺寸                                               | _string \| number_  | `24px`  |
-| `trigger`        | 触发方式，可选值为 `click` `hover`                                    | _string_ | `click`       |
-| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`              | _string_ | `top`          |
+| 参数              | 说明                                                             | 类型     | 默认值        |
+|------------------|----------------------------------------------------------------- |----------|----------------|
+| `v-model:active` | 触发器活动状态                                                    | _boolean_ | `false`       |
+| `type`           | 同 `Button` 组件，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
+| `color`          | 背景颜色                                                          | _string_ | `-`           |
+| `text-color`     | 文字颜色                                                          | _string_ | `-`          |
+| `icon`           | 同 `Icon` 组件，图标名称                                           | _string_ | `-`           |
+| `icon-size`      | 同 `Icon` 组件，图标尺寸                                           | _string \| number_  | `24px`  |
+| `trigger`        | 触发方式，可选值为 `click` `hover`                                 | _string_ | `click`       |
+| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`            | _string_ | `top`          |
 | `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom`|
 
 
