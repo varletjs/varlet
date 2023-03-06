@@ -2,8 +2,8 @@
   <div
     :class="classes(n(), n('$--box'))"
     :style="{
-      justifyContent: justify,
-      alignItems: align,
+      justifyContent: padStartFlex(justify),
+      alignItems: padStartFlex(align),
       margin: average ? `0 -${average}px` : undefined,
     }"
     @click="handleClick"
@@ -16,7 +16,7 @@
 import { defineComponent, computed, watch, type ComputedRef } from 'vue'
 import { props } from './props'
 import { useCols, type RowProvider } from './provide'
-import { toPxNum } from '../utils/elements'
+import { toPxNum, padStartFlex } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('row')
@@ -48,7 +48,7 @@ export default defineComponent({
 
     bindCols(rowProvider)
 
-    return { n, classes, average, handleClick }
+    return { n, classes, average, handleClick, padStartFlex }
   },
 })
 </script>

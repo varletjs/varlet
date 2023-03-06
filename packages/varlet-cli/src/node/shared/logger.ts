@@ -1,19 +1,19 @@
-import chalk from 'chalk'
+import pico from 'picocolors'
 
 export default {
   info(text: string) {
     console.log(text)
   },
   success(text: string) {
-    console.log(chalk.hex('#00c48f')(text))
+    console.log(pico.green(text))
   },
   warning(text: string) {
-    console.log(chalk.hex('#ff9800')(text))
+    console.log(pico.yellow(text))
   },
   error(text: string) {
-    console.log(chalk.hex('#f44336')(text))
+    console.log(pico.red(text))
   },
   title(text: string) {
-    console.log(chalk.cyan(text))
+    console.log(pico.cyan(text))
   },
 }

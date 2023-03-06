@@ -1,5 +1,7 @@
 import { VarDirective } from './varDirective'
 
-export class Lazy extends VarDirective {}
+export interface ILazy extends VarDirective<string> {}
 
-export class _LazyComponent extends Lazy {}
+export declare const Lazy: ILazy
+
+export class _LazyComponent {}

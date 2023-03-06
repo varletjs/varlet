@@ -16,7 +16,7 @@ export function computeMargin(y: string, x: string, options: SpaceMarginOptions)
   let margin = '0'
 
   if (direction === 'row') {
-    if (justify === 'start' || justify === 'center' || justify === 'end') {
+    if (['flex-start', 'center', 'flex-end', 'start', 'end'].includes(justify)) {
       if (index !== lastIndex) {
         margin = `${half(y)} ${x} ${half(y)} 0`
       } else {

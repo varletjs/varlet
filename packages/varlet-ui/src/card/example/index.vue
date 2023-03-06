@@ -67,7 +67,6 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.floating }}</app-type>
   <var-card
-    outline
     v-model:floating="floating"
     @click="floating = true"
     :title="pack.title"

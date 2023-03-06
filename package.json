@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.8.1",
+  "version": "2.8.6",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -42,7 +42,7 @@
       "packages/varlet-ui-playground/public/**",
       "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
-      "packages/varlet-shared/es/**"
+      "packages/varlet-use/lib/**"
     ],
     "extends": [
       "@varlet"
@@ -80,7 +80,7 @@
     "eslint": "^7.30.0",
     "execa": "^5.0.0",
     "lint-staged": "^10.5.0",
-    "ora": "^5.4.0",
+    "nanospinner": "^1.1.0",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",

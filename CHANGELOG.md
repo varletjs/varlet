@@ -1,3 +1,77 @@
+## [2.8.6](https://github.com/varletjs/varlet/compare/v2.8.5...v2.8.6) (2023-03-05)
+
+
+### Bug Fixes
+
+* **ui/backtop:** fix effect while the component in keepalive ([195bf9b](https://github.com/varletjs/varlet/commit/195bf9b7d9c535d31b9e02a8238d781f93b5bb1f))
+* **ui/coundown:** fix start method error ([f6626ea](https://github.com/varletjs/varlet/commit/f6626eac03517483f3906f6111c65dc4a8c2e83c))
+* **ui/input:** value update error while the target is composingand close [#877](https://github.com/varletjs/varlet/issues/877) ([5873fdf](https://github.com/varletjs/varlet/commit/5873fdf830ff6978fdb4195cf1fafaa2e2d30f1e))
+
+
+### Features
+
+* **use:** support useEventListener useClickOutside ([cb90734](https://github.com/varletjs/varlet/commit/cb907340ae67729bfe05f0df062463d63fb43166))
+
+
+
+## [2.8.5](https://github.com/varletjs/varlet/compare/v2.8.4...v2.8.5) (2023-02-28)
+
+
+### Bug Fixes
+
+* **ui/steps:** fix step shrink ([eb1cff7](https://github.com/varletjs/varlet/commit/eb1cff75746005b173e3f0b75c6625ac37708320))
+
+
+### Features
+
+* consistent flex-start, start, flex-end, end ([3836f30](https://github.com/varletjs/varlet/commit/3836f3040a80635da66001965022149190f59e0e))
+
+
+
+## [2.8.4](https://github.com/varletjs/varlet/compare/v2.8.3...v2.8.4) (2023-02-27)
+
+
+### Bug Fixes
+
+* **cli:** fix resolve ([7856e60](https://github.com/varletjs/varlet/commit/7856e6018ec884cf39fb8230cce7fabab7dbda91))
+* **ui/space:** fix space inline mode className err ([bcbbcad](https://github.com/varletjs/varlet/commit/bcbbcaddef1e36903031c6d9cf079ab7a789731d))
+
+
+### Features
+
+* added hover directive ([#868](https://github.com/varletjs/varlet/issues/868)) ([44806ef](https://github.com/varletjs/varlet/commit/44806ef8c30436f62017b0250936511106226d14))
+* new directive hover and fix input number type bug ([#871](https://github.com/varletjs/varlet/issues/871)) ([8cd49bf](https://github.com/varletjs/varlet/commit/8cd49bf5d24d3e9fe837e185ae15553a9bc23fba))
+
+
+
+## [2.8.3](https://github.com/varletjs/varlet/compare/v2.8.2...v2.8.3) (2023-02-20)
+
+
+### Bug Fixes
+
+* fix avatar scale ([0e491ce](https://github.com/varletjs/varlet/commit/0e491ce736d6b9f4e264485f52a739a1effba4e9))
+
+
+### Features
+
+* **cli:** reduce dependencies size ([#866](https://github.com/varletjs/varlet/issues/866)) ([4965033](https://github.com/varletjs/varlet/commit/4965033bb79099d13576b08c0fdaf6c4969038fc))
+
+
+
+## [2.8.2](https://github.com/varletjs/varlet/compare/v2.8.1...v2.8.2) (2023-02-19)
+
+
+### Bug Fixes
+
+* paper elevation maybe undefined ([c9743fc](https://github.com/varletjs/varlet/commit/c9743fcedb5414813581b6cde49013090bed4fc0))
+
+
+### Features
+
+* new component button group ([66a6bed](https://github.com/varletjs/varlet/commit/66a6bed9a1be3dbc995f4cf7d74da0b1b626ed6e))
+
+
+
 ## [2.8.1](https://github.com/varletjs/varlet/compare/v2.8.0...v2.8.1) (2023-02-15)
 
 

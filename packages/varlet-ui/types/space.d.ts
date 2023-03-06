@@ -3,11 +3,11 @@ import { VNode } from 'vue'
 
 export declare const spaceProps: Record<string, any>
 
-export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'initial' | 'inherit'
+export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'flex-start' | 'flex-end'
 
 export type SpaceDirection = 'row' | 'column'
 
-export type SpaceJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between'
+export type SpaceJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-between' | 'flex-start' | 'flex-end'
 
 export type SpaceInternalSize = 'mini' | 'small' | 'normal' | 'large'
 

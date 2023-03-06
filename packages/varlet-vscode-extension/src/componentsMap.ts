@@ -10,6 +10,10 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     path: '/button',
     attrs: ['type="primary"'],
   },
+  'button-group': {
+    path: '/button',
+    attrs: ['type="primary"'],
+  },
   link: {
     path: '/link',
     attrs: ['type="primary"'],

@@ -413,6 +413,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Hover 悬停指令',
+          'en-US': 'Hover',
+        },
+        doc: 'hover',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '反馈组件',
           'en-US': 'Action Components',
         },

@@ -14,6 +14,7 @@ export * from './bottomNavigationItem'
 export * from './breadcrumb'
 export * from './breadcrumbs'
 export * from './button'
+export * from './buttonGroup'
 export * from './card'
 export * from './cell'
 export * from './checkbox'
@@ -30,6 +31,7 @@ export * from './divider'
 export * from './ellipsis'
 export * from './form'
 export * from './formDetails'
+export * from './hover'
 export * from './icon'
 export * from './image'
 export * from './imagePreview'
@@ -94,6 +96,7 @@ declare module 'vue' {
     VarBreadcrumb: typeof import('@varlet/ui')['_BreadcrumbComponent']
     VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
+    VarButtonGroup: typeof import('@varlet/ui')['_ButtonGroupComponent']
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarCheckbox: typeof import('@varlet/ui')['_CheckboxComponent']
@@ -110,6 +113,7 @@ declare module 'vue' {
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
+    VarHover: typeof import('@varlet/ui')['_HoverComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']

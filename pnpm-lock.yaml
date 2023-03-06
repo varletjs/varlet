@@ -11,7 +11,7 @@ importers:
       eslint: ^7.30.0
       execa: ^5.0.0
       lint-staged: ^10.5.0
-      ora: ^5.4.0
+      nanospinner: ^1.1.0
       prettier: ^2.7.1
       simple-git-hooks: ^2.8.0
       stylelint: ^13.13.1
@@ -24,7 +24,7 @@ importers:
       eslint: 7.32.0
       execa: 5.1.1
       lint-staged: 10.5.4
-      ora: 5.4.1
+      nanospinner: 1.1.0
       prettier: 2.7.1
       simple-git-hooks: 2.8.0
       stylelint: 13.13.1
@@ -57,7 +57,6 @@ importers:
       '@vue/runtime-core': 3.2.25
       '@vue/test-utils': ^2.0.2
       babel-jest: 26.6.3
-      chalk: ^4.1.0
       chokidar: ^3.5.2
       clipboard: ^2.0.6
       commander: ^8.3.0
@@ -72,7 +71,8 @@ importers:
       less: ^3.12.2
       live-server: ^1.2.1
       lodash-es: ^4.17.21
-      ora: ^5.4.0
+      nanospinner: ^1.1.0
+      picocolors: ^1.0.0
       semver: ^7.3.5
       sharp: 0.31.3
       slash: ^3.0.0
@@ -97,7 +97,6 @@ importers:
       '@vue/runtime-core': 3.2.25
       '@vue/test-utils': 2.0.2_vue@3.2.25
       babel-jest: 26.6.3_@babel+core@7.18.10
-      chalk: 4.1.2
       chokidar: 3.5.3
       clipboard: 2.0.11
       commander: 8.3.0
@@ -112,7 +111,8 @@ importers:
       less: 3.13.1
       live-server: 1.2.2
       lodash-es: 4.17.21
-      ora: 5.4.1
+      nanospinner: 1.1.0
+      picocolors: 1.0.0
       semver: 7.3.7
       sharp: 0.31.3
       slash: 3.0.0
@@ -186,6 +186,7 @@ importers:
       '@varlet/icons': workspace:*
       '@varlet/shared': workspace:*
       '@varlet/touch-emulator': workspace:*
+      '@varlet/use': workspace:*
       '@vue/runtime-core': 3.2.25
       '@vue/test-utils': ^2.0.2
       clipboard: ^2.0.6
@@ -201,6 +202,7 @@ importers:
       '@popperjs/core': 2.11.6
       '@varlet/icons': link:../varlet-icons
       '@varlet/shared': link:../varlet-shared
+      '@varlet/use': link:../varlet-use
       dayjs: 1.11.5
       decimal.js: 10.4.0
     devDependencies:
@@ -249,6 +251,17 @@ importers:
       unplugin-auto-import: 0.12.1
       unplugin-vue-components: 0.22.12_vue@3.2.29
       vite: 4.0.4_@types+node@18.7.6
+
+  packages/varlet-use:
+    specifiers:
+      '@varlet/shared': workspace:*
+      typescript: ^4.4.4
+      vue: 3.2.25
+    dependencies:
+      '@varlet/shared': link:../varlet-shared
+    devDependencies:
+      typescript: 4.7.4
+      vue: 3.2.25
 
   packages/varlet-vite-plugins:
     specifiers:
@@ -2678,7 +2691,7 @@ packages:
   /@vue/compiler-core/3.2.25:
     resolution: {integrity: sha512-FlffKezIqztTCTyG0klkYRwhdyL6b1PTTCIerPb4p2R9qQaczccTX5g9ysi9w6tpLQ48a1WiXnFDJhWD7XoqwA==}
     dependencies:
-      '@babel/parser': 7.18.11
+      '@babel/parser': 7.20.7
       '@vue/shared': 3.2.25
       estree-walker: 2.0.2
       source-map: 0.6.1
@@ -3627,6 +3640,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       restore-cursor: 3.1.0
+    dev: true
 
   /cli-cursor/4.0.0:
     resolution: {integrity: sha512-VGtlMu3x/4DOtIUwEkRezxUZ2lBacNJCHash0N0WeZDBS+7Ux1dm3XWAgWYxLJFMMdOeXMHXorshEFhbMSGelg==}
@@ -3638,6 +3652,7 @@ packages:
   /cli-spinners/2.7.0:
     resolution: {integrity: sha512-qu3pN8Y3qHNgE2AFweciB1IfMnmZ/fsNTEE+NOFjmGB2F/7rLhnhzppvpCnN4FovtP26k8lHyy9ptEbNwWFLzw==}
     engines: {node: '>=6'}
+    dev: false
 
   /cli-truncate/2.1.0:
     resolution: {integrity: sha512-n8fOixwDD6b/ObinzTrp1ZKFzbgvKZvuz/TvejnLn1aQfC6r52XEx85FmuC+3HI+JM7coBRXUvNqEU2PHVrHpg==}
@@ -3684,6 +3699,7 @@ packages:
   /clone/1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    dev: false
 
   /co/4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
@@ -4175,6 +4191,7 @@ packages:
     resolution: {integrity: sha512-s82itHOnYrN0Ib8r+z7laQz3sdE+4FP3d9Q7VLO7U+KRT+CR0GsWuyHxzdAY82I7cXv0G/twrqomTJLOssO5HA==}
     dependencies:
       clone: 1.0.4
+    dev: false
 
   /define-properties/1.1.4:
     resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==}
@@ -5838,10 +5855,6 @@ packages:
   /is-hexadecimal/1.0.4:
     resolution: {integrity: sha512-gyPJuv83bHMpocVYoqof5VDiZveEoGoFL8m3BXNb2VW8Xs+rz9kqO8LOQ5DH6EsuvilT1ApazU0pyl+ytbPtlw==}
 
-  /is-interactive/1.0.0:
-    resolution: {integrity: sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==}
-    engines: {node: '>=8'}
-
   /is-interactive/2.0.0:
     resolution: {integrity: sha512-qP1vozQRI+BMOPcjFzrjXuQvdak2pHNUMZoeG2eRbiSqyvbEf/wQtEOTOX1guk6E3t36RkaqiSt8A/6YElNxLQ==}
     engines: {node: '>=12'}
@@ -7229,6 +7242,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /nanospinner/1.1.0:
+    resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
+    dependencies:
+      picocolors: 1.0.0
+
   /napi-build-utils/1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
 
@@ -7485,20 +7503,6 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
       word-wrap: 1.2.3
-
-  /ora/5.4.1:
-    resolution: {integrity: sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      bl: 4.1.0
-      chalk: 4.1.2
-      cli-cursor: 3.1.0
-      cli-spinners: 2.7.0
-      is-interactive: 1.0.0
-      is-unicode-supported: 0.1.0
-      log-symbols: 4.1.0
-      strip-ansi: 6.0.1
-      wcwidth: 1.0.1
 
   /ora/6.1.2:
     resolution: {integrity: sha512-EJQ3NiP5Xo94wJXIzAyOtSb0QEIAUu7m8t6UZ9krbz0vAJqr92JpcK/lEXg91q6B9pEGqrykkd2EQplnifDSBw==}
@@ -8228,6 +8232,7 @@ packages:
     dependencies:
       onetime: 5.1.2
       signal-exit: 3.0.7
+    dev: true
 
   /restore-cursor/4.0.0:
     resolution: {integrity: sha512-I9fPXU9geO9bHOt9pHHOhOkYerIMsmVaWB0rA2AI9ERh/+x/i7MV5HKBNrg+ljO5eoPVgCcnFuRjJ9uH6I/3eg==}
@@ -9775,6 +9780,7 @@ packages:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
     dependencies:
       defaults: 1.0.3
+    dev: false
 
   /webfont/9.0.0_chokidar@3.5.3:
     resolution: {integrity: sha512-Sn8KnTXroWAbBHYKUXCUq2rKwqbluupUd7krYqluT+kFGV4dvMuKXaL84Fm/Kfv+5rz2S81jNRvcyQ6ySBiC2Q==}

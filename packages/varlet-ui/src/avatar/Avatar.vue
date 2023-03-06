@@ -33,26 +33,19 @@
       <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
     </template>
 
-    <div
-      ref="textElement"
-      :class="n('text')"
-      :style="{
-        scale,
-      }"
-      v-else
-    >
+    <div ref="textElement" :class="n('text')" :style="{ transform: `scale(${scale})` }" v-else>
       <slot />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Lazy from '../lazy'
-import { defineComponent, ref, onMounted, onUpdated, type Ref } from 'vue'
+import Lazy, { type LazyHTMLElement } from '../lazy'
+import { defineComponent, ref, onUpdated, type Ref } from 'vue'
 import { props, internalSizeValidator, sizeValidator } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
-import type { LazyHTMLElement } from '../lazy'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('avatar')
 
@@ -101,7 +94,7 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    onMounted(getScale)
+    useMounted(getScale)
     onUpdated(getScale)
 
     return {

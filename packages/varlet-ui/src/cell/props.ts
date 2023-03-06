@@ -33,5 +33,5 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onClick: defineListenerProp<(e: Event) => void>,
+  onClick: defineListenerProp<(e: Event) => void>(),
 }

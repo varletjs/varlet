@@ -142,9 +142,137 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+
+### Theme Color Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button type="primary">Button</var-button>
+      <var-button type="primary">Button</var-button>
+      <var-button type="primary">Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Button Group Size
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" size="normal">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" size="large">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Split Button
+
+```html
+<template>
+  <var-menu placement="bottom" same-width :offset-y="6">
+    <var-button-group type="primary">
+      <var-button @click.stop>Split Button</var-button>
+      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+        <var-icon name="menu-down" :size="24" />
+      </var-button>
+    </var-button-group>
+
+    <template #menu>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### Button Group Mode
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Custom Button Group Color
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>Button</var-button>
+    <var-button>Button</var-button>
+    <var-button>Button</var-button>
+  </var-button-group>
+</template>
+```
+
+### Vertical Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
+
+#### Button Props
 
 | Prop             | Description                                                                             | Type      | Default        |
 |------------------|-----------------------------------------------------------------------------------------|-----------|----------------|
@@ -166,7 +294,21 @@ function handleAutoLoadingClick() {
 | `text-color`     | Button Text color                                                                       | _string_  | `-`            |
 | `color`          | Button background color                                                                 | _string_  | `-`            |
 
+#### ButtonGroup Props
+
+| 参数           | 说明                                                                                       | 类型       | 默认值       |
+|--------------|------------------------------------------------------------------------------------------|----------|-----------|
+| `type`       | Button Group type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size`       | Button Group size, Can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
+| `mode`       | Button Group mode, Can be set to `normal` `text` `outline`                               | _string_ | `normal`  |
+| `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
+| `elevation`         | The elevation of Button Group                                                         | _string \| number_  | `2`     |
+| `color`      | Button Group background color                                                            | _string_ | `-`       |
+| `text-color`     | Button Group Text color                                                                  | _string_  | `-`            |
+
 ### Events
+
+#### Button Events
 
 | Event        | Description                                                                                          | Arguments      |
 | ------------ | ---------------------------------------------------------------------------------------------------- | -------------- |
@@ -175,13 +317,23 @@ function handleAutoLoadingClick() {
 
 ### Slots
 
+#### Button Slots
+
 | Name | Description | SlotProps |
 | --------- | -------------- | --------- |
 | `default` | Button content | `-`       |
 
+#### ButtonGroup Slots
+
+| Name | Description | SlotProps |
+| --------- | -------------- | --------- |
+| `default` | Button group content | `-`       |
+
 ### Style Variables
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+#### Button Variables
 
 | Variable                       | Default                      |
 | ------------------------------ | ---------------------------- |

@@ -4,7 +4,7 @@
       classes(
         n(),
         n('$--box'),
-        n(`$-elevation--${elevation}`),
+        [elevation != null, n(`$-elevation--${elevation}`)],
         [onClick, n('--cursor')],
         [round, n('--round')],
         [inline, n('$--inline-flex')]

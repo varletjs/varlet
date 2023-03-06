@@ -49,7 +49,7 @@ so that you can do flex layout more efficiently.
 
 ```html
 <template>
-  <var-space justify="end">
+  <var-space justify="flex-end">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
@@ -95,11 +95,11 @@ so that you can do flex layout more efficiently.
 
 | Prop        | Description                                                                                             | Type     | Default |
 |-------------|---------------------------------------------------------------------------------------------------------|----------|---------|
-| `align`     | Vertical arrangement, Can be set to `stretch` `center` `start` `end` `baseline`                         | _string_ | `-`     |
-| `justify`   | Horizontal arrangement, Can be set to `start` `end` `center` `space-around` `space-between`             | _string_ | `start` |
+| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_ | `row`   |
+| `justify`   | Main axis arrangement, Can be set to `flex-start` `flex-end` `center` `space-around` `space-between`             | _string_ | `flex-start` |
+| `align`     | Cross axis arrangement, Can be set to `stretch` `center` `flex-start` `flex-end` `baseline`                         | _string_ | `-`     |
 | `size`      | spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \| number \| [string \| number, string \| number]_ |`normal`|
 | `wrap`      | Whether to exceed the line break                                                                        | _boolean_ | `true`  |
-| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_ | `row`   |
 | `inline`    | Is it an inline element                                                                                 | _boolean_ | `false` |
 
 ### Slots

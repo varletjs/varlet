@@ -51,8 +51,7 @@ packages/varlet-cli/template/generators/**/highlight
 packages/varlet-cli/template/generators/**/coverage
 
 packages/varlet-shared/lib
-packages/varlet-shared/es
-
+packages/varlet-use/lib
 
 .eslintcache
 .stylelintcache

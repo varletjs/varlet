@@ -27,22 +27,12 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  onMounted,
-  onUnmounted,
-  onActivated,
-  onDeactivated,
-  computed,
-  watch,
-  type Ref,
-  type ComputedRef,
-} from 'vue'
+import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
+import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('sticky')
 
@@ -117,6 +107,10 @@ export default defineComponent({
     }
 
     const handleScroll = () => {
+      if (!scroller) {
+        return
+      }
+
       // returns undefined when disabled = true
       const fixedParams = computeFixedParams()
 
@@ -136,24 +130,20 @@ export default defineComponent({
       await doubleRaf()
       scroller = getParentScroller(stickyEl.value as HTMLElement)
       scroller !== window && scroller.addEventListener('scroll', handleScroll)
-      window.addEventListener('scroll', handleScroll)
       handleScroll()
     }
 
     const removeScrollListener = () => {
       scroller !== window && scroller.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('scroll', handleScroll)
     }
 
     watch(() => props.disabled, resize)
 
-    onActivated(addScrollListener)
-
+    useMounted(addScrollListener)
+    onUnmounted(removeScrollListener)
     onDeactivated(removeScrollListener)
 
-    onMounted(addScrollListener)
-
-    onUnmounted(removeScrollListener)
+    useEventListener(window, 'scroll', handleScroll)
 
     return {
       n,
