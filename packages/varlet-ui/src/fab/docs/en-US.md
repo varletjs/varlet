@@ -124,11 +124,11 @@ function handleActive() {
       </var-button>
     </template>
     <var-tooltip content="camera" placement="left">
-      <var-button type="warning" round>
+      <var-button type="warning" round @click.stop="handleActive">
         <var-icon name="camera-outline" />
       </var-button>
     </var-tooltip>
-    <var-button type="primary" round>
+    <var-button type="primary" round @click.stop="handleActive">
       <var-icon name="phone-outline" />
     </var-button>
   </var-fab>
@@ -173,11 +173,11 @@ function handleShow() {
       </var-button>
     </template>
     <var-tooltip content="camera" placement="left">
-      <var-button type="warning" round>
+      <var-button type="warning" round @click.stop="handleActive">
         <var-icon name="camera-outline" />
       </var-button>
     </var-tooltip>
-    <var-button type="primary" round>
+    <var-button type="primary" round @click.stop="handleActive">
       <var-icon name="phone-outline" />
     </var-button>
   </var-fab>
