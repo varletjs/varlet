@@ -26,6 +26,7 @@ const iconName = computed(() => (active.value ? 'window-close' : 'cog-outline'))
 
 function handleActive() {
   active.value = !active.value
+  if (trigger.value === 'hover') active.value = false
 }
 
 function handleActiveHidden() {
