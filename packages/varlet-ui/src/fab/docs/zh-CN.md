@@ -149,7 +149,7 @@ function handleActive() {
 import { ref, computed } from 'vue'
 
 const active = ref(false)
-const show = ref(false)
+const show = ref(true)
 const iconName = computed(() => active.value ? 'window-close' : 'cog-outline')
 function handleActive() {
   active.value = !active.value
@@ -162,7 +162,7 @@ function handleShow() {
 
 <template>
   <var-button type="primary" @click="handleShow">
-    {{ show ? 'hidden' : 'show' }}
+    {{ show ? '隐藏' : '显示' }}
   </var-button>
 
   <var-fab v-model:active="active">
