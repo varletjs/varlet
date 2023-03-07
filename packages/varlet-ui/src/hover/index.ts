@@ -74,15 +74,17 @@ function updateStyle(element: HoverHTMLElement, styleValue: StyleValue) {
 
 function clearStyle(element: HoverHTMLElement) {
   Object.keys(element._hover.value).forEach((key) => {
-    element.style[key as keyof StyleValue] = ''
+    const value = element._hover.value[key as keyof StyleValue]
+
+    if (value != null) {
+      element.style[key as keyof StyleValue] = ''
+    }
   })
 }
 
 function restoreStyle(element: HoverHTMLElement) {
   clearStyle(element)
   updateStyle(element, element._hover.rawStyle)
-
-  element._hover.rawStyle = {}
 }
 
 function createHover(this: HoverHTMLElement) {
