@@ -18,6 +18,7 @@
         [states.outline, n('--outline')]
       )
     "
+    v-hover:desktop="handleHover"
     :style="{
       color: states.textColor,
       background: states.color,
@@ -39,6 +40,7 @@
     <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
     </div>
+    <div :class="classes(n('overlay'), [hovering, n('--hovering')])"></div>
   </button>
 </template>
 
@@ -49,6 +51,7 @@ import { computed, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useButtonGroup } from './provide'
+import Hover from '../hover'
 import { isArray } from '@varlet/shared'
 
 const { n, classes } = createNamespace('button')
@@ -58,10 +61,11 @@ export default defineComponent({
   components: {
     VarLoading,
   },
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
+    const hovering: Ref<boolean> = ref(false)
     const { buttonGroup } = useButtonGroup()
 
     const states = computed(() => {
@@ -126,11 +130,17 @@ export default defineComponent({
       attemptAutoLoading(call(onTouchstart, e))
     }
 
+    const handleHover = (isHover: boolean) => {
+      hovering.value = isHover
+    }
+
     return {
       n,
       classes,
       pending,
       states,
+      hovering,
+      handleHover,
       handleClick,
       handleTouchstart,
     }

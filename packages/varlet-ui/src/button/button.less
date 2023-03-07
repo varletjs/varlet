@@ -56,6 +56,23 @@
     transform: translate(-50%, -50%);
   }
 
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity 0.25s;
+    will-change: opacity;
+  }
+
+  &--hovering {
+    opacity: 0.2;
+  }
+
   &--default {
     color: inherit;
     background-color: var(--button-default-color);
