@@ -96,30 +96,22 @@ export function mountInstance(
   return { unmountInstance: unmount }
 }
 
-// o(n) flatFragment
-export function flatFragment(vNodes: VNodeChild[] = [], filterCommentNode = true, result: VNode[] = []): VNode[] {
-  vNodes.forEach((vNode) => {
-    if (vNode === null) return
-    if (typeof vNode !== 'object') {
-      if (typeof vNode === 'string' || typeof vNode === 'number') {
-        result.push(createTextVNode(String(vNode)))
-      }
+export function flatFragment(vNodes: any) {
+  const result: VNode[] = []
+
+  vNodes.forEach((vNode: any) => {
+    if (vNode.type === Comment) return
+
+    if (vNode.type === Fragment && isArray(vNode.children)) {
+      vNode.children.forEach((item: VNode) => {
+        result.push(item)
+      })
       return
     }
-    if (Array.isArray(vNode)) {
-      flatFragment(vNode, filterCommentNode, result)
-      return
-    }
-    if (vNode.type === Fragment) {
-      if (vNode.children === null) return
-      if (Array.isArray(vNode.children)) {
-        flatFragment(vNode.children, filterCommentNode, result)
-      }
-      // rawSlot
-    } else if (vNode.type !== Comment) {
-      result.push(vNode)
-    }
+
+    result.push(vNode)
   })
+
   return result
 }
 

@@ -1,57 +1,95 @@
-import { PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
+import { typeValidator, type ButtonType } from '../button/props'
+import { type PropType, type TeleportProps } from 'vue'
 
-type Type = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
-type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
-type FabTrigger = 'click' | 'hover'
-type FabDirection = 'top' | 'right' | 'bottom' | 'left'
+export type FabType = ButtonType
+
+export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
+
+export type FabTrigger = 'click' | 'hover'
+
+export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
+
+export function positionValidator(position: string) {
+  return ['left-top', 'right-top', 'left-bottom', 'right-bottom'].includes(position)
+}
+
+export function directionValidator(direction: string) {
+  return ['top', 'right', 'bottom', 'left'].includes(direction)
+}
+
+export function triggerValidator(trigger: string) {
+  return ['click', 'hover'].includes(trigger)
+}
 
 export const props = {
   active: {
     type: Boolean,
     default: false,
   },
-  color: {
-    type: String,
-  },
-  textColor: {
-    type: String,
-  },
-  icon: {
-    type: String,
-    default: 'plus',
-  },
-  iconSize: {
-    type: [Number, String],
-    default: '24px',
-  },
   type: {
-    type: String as PropType<Type>,
+    type: String as PropType<FabType>,
     default: 'primary',
-    validator: (type: string): boolean => {
-      return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
-    },
-  },
-  direction: {
-    type: String as PropType<FabDirection>,
-    default: 'top',
-    validator: (val: string): boolean => {
-      return ['top', 'right', 'bottom', 'left'].includes(val)
-    },
+    validator: typeValidator,
   },
   position: {
     type: String as PropType<FabPosition>,
     default: 'right-bottom',
-    validator: (val: string): boolean => {
-      return ['left-top', 'right-top', 'left-bottom', 'right-bottom'].includes(val)
-    },
+    validator: positionValidator,
+  },
+  direction: {
+    type: String as PropType<FabDirection>,
+    default: 'top',
+    validator: directionValidator,
   },
   trigger: {
     type: String as PropType<FabTrigger>,
     default: 'click',
-    validator: (val: string): boolean => {
-      return ['click', 'hover'].includes(val)
-    },
+    validator: triggerValidator,
   },
-  'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  color: {
+    type: String,
+  },
+  inactiveIcon: {
+    type: String,
+    default: 'plus',
+  },
+  activeIcon: {
+    type: String,
+    default: 'window-close',
+  },
+  inactiveIconSize: {
+    type: [Number, String],
+  },
+  activeIconSize: {
+    type: [Number, String],
+  },
+  zIndex: {
+    type: [String, Number],
+    default: 90,
+  },
+  top: {
+    type: [Number, String],
+  },
+  bottom: {
+    type: [Number, String],
+  },
+  left: {
+    type: [Number, String],
+  },
+  right: {
+    type: [Number, String],
+  },
+  teleport: {
+    type: String as PropType<TeleportProps['to']>,
+  },
+  onOpen: defineListenerProp<() => void>(),
+  onOpened: defineListenerProp<() => void>(),
+  onClose: defineListenerProp<() => void>(),
+  onClosed: defineListenerProp<() => void>(),
+  'onUpdate:active': defineListenerProp<(value: boolean) => void>(),
 }

@@ -1,41 +1,25 @@
 <script setup>
 import VarFab from '../index'
 import VarAvatar from '../../avatar'
-import VarTooltip from '../../tooltip'
 import VarRadioGroup from '../../radio-group'
 import VarRadio from '../../radio'
 import VarButton from '../../button'
 import VarIcon from '../../icon'
 import VarSelect from '../../select'
 import VarOption from '../../option'
-import VarSwitch from '../../switch'
-import { ref, computed } from 'vue'
+import Snackbar from '../../snackbar'
+import dark from '../../themes/dark'
+import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
-import dark from '../../themes/dark'
 
-const open = ref(false)
-const show = ref(true)
-const active = ref(false)
 const type = ref('primary')
 const trigger = ref('click')
 const direction = ref('top')
 const position = ref('right-bottom')
 
-const iconName = computed(() => (active.value ? 'window-close' : 'cog-outline'))
-
-function handleActive() {
-  active.value = !active.value
-  if (trigger.value === 'hover') active.value = false
-}
-
-function handleActiveHidden() {
-  active.value = false
-}
-
-function handleShow() {
-  show.value = !show.value
-  handleActiveHidden()
+function log(v) {
+  console.log(v)
 }
 
 watchLang(use)
@@ -69,44 +53,33 @@ watchDarkMode(dark)
     </var-radio-group>
 
     <app-type>{{ pack.direction }}</app-type>
-    <var-radio-group v-model="direction" @change="handleActiveHidden">
+    <var-radio-group v-model="direction">
       <var-radio checked-value="top">top</var-radio>
       <var-radio checked-value="right">right</var-radio>
       <var-radio checked-value="bottom">bottom</var-radio>
       <var-radio checked-value="left">left</var-radio>
     </var-radio-group>
 
-    <app-type>{{ pack.customSlots }}</app-type>
-    <var-switch v-model="open" @change="handleActiveHidden" />
-
-    <app-type>{{ pack.animationOnDisplay }}</app-type>
-    <var-button type="primary" @click="handleShow" :disabled="!open">
-      {{ show ? pack.hidden : pack.show }}
-    </var-button>
-
-    <var-fab v-if="!open" :type="type" :position="position" :direction="direction" :trigger="trigger">
-      <var-tooltip content="Tooltip" placement="left">
-        <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-      </var-tooltip>
-      <var-button type="danger" round>
+    <var-fab
+      :type="type"
+      :position="position"
+      :direction="direction"
+      :trigger="trigger"
+      @open="Snackbar('open')"
+      @opened="Snackbar('opened')"
+      @close="Snackbar('close')"
+      @closed="Snackbar('closed')"
+    >
+      <var-button class="action" type="primary" round>
         <var-icon name="check" />
       </var-button>
-    </var-fab>
-
-    <var-fab v-else v-model:active="active" :position="position" :direction="direction" :trigger="trigger">
-      <template #activator>
-        <var-button :type="type" v-show="show" round @click.stop="handleActive">
-          <var-icon animation-class="fade" :name="iconName" :transition="200" />
-        </var-button>
-      </template>
-      <var-tooltip content="camera" placement="left">
-        <var-button type="warning" round @click.stop="handleActive">
-          <var-icon name="camera-outline" />
-        </var-button>
-      </var-tooltip>
-      <var-button type="primary" round @click.stop="handleActive">
-        <var-icon name="phone-outline" />
+      <var-button class="action" type="danger" round>
+        <var-icon name="check" />
       </var-button>
+      <var-button class="action" type="success" round>
+        <var-icon name="check" />
+      </var-button>
+      <var-avatar class="action" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     </var-fab>
   </div>
 </template>
@@ -114,5 +87,11 @@ watchDarkMode(dark)
 <style lang="less" scoped>
 .fade {
   transform: scale(0.4);
+}
+
+.action {
+  display: flex;
+  width: 40px;
+  height: 40px;
 }
 </style>
