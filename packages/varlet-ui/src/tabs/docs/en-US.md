@@ -290,7 +290,7 @@ const active = ref(0)
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
 | `sticky-z-index`   | Sticky layouts z-index                                                       | _number_  | `10`          |
 | `safe-area`        | Whether to enable bottom safe area adaptation                                | _boolean_ | `false`      |
-| `offset-top`       | Distance offset top                                                          | _string \ | number_      | `0`          |
+| `offset-top`       | Distance offset top                                                          | _string \| number_      | `0`          |
 
 #### Tab Props
 

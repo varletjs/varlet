@@ -31,16 +31,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, onMounted, computed } from 'vue'
 import VarLoading from '../loading'
 import VarIcon from '../icon'
+import { defineComponent, watch, ref, computed, type Ref, type ComputedRef } from 'vue'
 import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { SNACKBAR_TYPE } from './index'
-import type { Ref, ComputedRef } from 'vue'
-import type { SnackbarType } from './index'
+import { SNACKBAR_TYPE, type SnackbarType } from './index'
 import { call, createNamespace } from '../utils/components'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('snackbar')
 
@@ -103,7 +102,7 @@ export default defineComponent({
       }
     )
 
-    onMounted(() => {
+    useMounted(() => {
       if (props.show) {
         call(props.onOpen)
         updateAfterDuration()

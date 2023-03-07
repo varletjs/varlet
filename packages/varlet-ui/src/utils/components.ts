@@ -1,3 +1,4 @@
+import { useEventListener } from '@varlet/use'
 import {
   createApp,
   h,
@@ -8,12 +9,15 @@ import {
   provide,
   reactive,
   isVNode,
+  VNodeChild,
   onMounted,
   onBeforeUnmount,
   nextTick,
   ref,
   onActivated,
   onDeactivated,
+  createTextVNode,
+  Fragment,
   type PropType,
   type ExtractPropTypes,
   type Component,
@@ -90,6 +94,33 @@ export function mountInstance(
 
   const { unmount } = mount(Host)
   return { unmountInstance: unmount }
+}
+
+// o(n) flatFragment
+export function flatFragment(vNodes: VNodeChild[] = [], filterCommentNode = true, result: VNode[] = []): VNode[] {
+  vNodes.forEach((vNode) => {
+    if (vNode === null) return
+    if (typeof vNode !== 'object') {
+      if (typeof vNode === 'string' || typeof vNode === 'number') {
+        result.push(createTextVNode(String(vNode)))
+      }
+      return
+    }
+    if (Array.isArray(vNode)) {
+      flatFragment(vNode, filterCommentNode, result)
+      return
+    }
+    if (vNode.type === Fragment) {
+      if (vNode.children === null) return
+      if (Array.isArray(vNode.children)) {
+        flatFragment(vNode.children, filterCommentNode, result)
+      }
+      // rawSlot
+    } else if (vNode.type !== Comment) {
+      result.push(vNode)
+    }
+  })
+  return result
 }
 
 export function flatVNodes(subTree: any) {
@@ -269,14 +300,8 @@ export function useValidation() {
 }
 
 export function useRouteListener(cb: () => void) {
-  onMounted(() => {
-    window.addEventListener('hashchange', cb)
-    window.addEventListener('popstate', cb)
-  })
-  onUnmounted(() => {
-    window.removeEventListener('hashchange', cb)
-    window.removeEventListener('popstate', cb)
-  })
+  useEventListener(window, 'hashchange', cb)
+  useEventListener(window, 'popstate', cb)
 }
 
 export function useTeleport() {

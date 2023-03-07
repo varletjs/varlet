@@ -45,8 +45,8 @@ onMounted(() => {
   align-items: center;
   padding: 0 12px;
   transition: all 0.25s;
-  background: #e7edf7;
-  color: #2e67ba;
+  background: var(--color-primary);
+  color: #fff;
 }
 </style>
 ```
@@ -101,7 +101,7 @@ Use ref to get IndexBar instance and call instance methods.
 
 | Method | Description	 | arguments | Return |
 | ---- | ------- | -------- |---- |
-| `scrollTo` | scroll to target element	 | `index: number \| string, options?: IndexBarScrollToOptions`` | `-` |
+| `scrollTo` | scroll to target element	 | `index: number \| string, options?: IndexBarScrollToOptions` | `-` |
 
 #### IndexBarScrollToOptions
 

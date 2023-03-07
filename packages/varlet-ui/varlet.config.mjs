@@ -136,6 +136,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Fab 悬浮动作按钮',
+          'en-US': 'Fab',
+        },
+        doc: 'fab',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Breadcrumbs 面包屑',
           'en-US': 'Breadcrumbs',
         },
@@ -409,6 +417,14 @@ export default defineConfig({
           'en-US': 'Lazy',
         },
         doc: 'lazy',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Hover 悬停指令',
+          'en-US': 'Hover',
+        },
+        doc: 'hover',
         type: 2,
       },
       {

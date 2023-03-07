@@ -203,6 +203,27 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+### 按钮拆分
+
+```html
+<template>
+  <var-menu placement="bottom" same-width :offset-y="6">
+    <var-button-group type="primary">
+      <var-button @click.stop>按钮拆分</var-button>
+      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+        <var-icon name="menu-down" :size="24" />
+      </var-button>
+    </var-button-group>
+
+    <template #menu>
+      <var-cell ripple>按钮拆分</var-cell>
+      <var-cell ripple>按钮拆分</var-cell>
+      <var-cell ripple>按钮拆分</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### 按钮组模式
 
 ```html

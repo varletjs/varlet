@@ -2,7 +2,7 @@ import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
 import { internalSizeValidator, props, type SpaceSize } from './props'
 import { isArray } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { toSizeUnit } from '../utils/elements'
+import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
 import '../styles/common.less'
 import './space.less'
@@ -19,10 +19,6 @@ export default defineComponent({
         : isArray(size)
         ? (size.map(toSizeUnit) as string[])
         : ([toSizeUnit(size), toSizeUnit(size)] as string[])
-    }
-
-    const padStartFlex = (style: string | undefined) => {
-      return style === 'start' || style === 'end' ? `flex-${style}` : style
     }
 
     return () => {

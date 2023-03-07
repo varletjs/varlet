@@ -1,6 +1,8 @@
 import type { PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
+export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
+
 export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
 }
@@ -16,7 +18,7 @@ export const props = {
     default: () => ({}),
   },
   type: {
-    type: String as PropType<'text' | 'password' | 'number' | 'tel' | 'email'>,
+    type: String as PropType<InputType>,
     default: 'text',
     validator: typeValidator,
   },

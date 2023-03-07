@@ -1,0 +1,16 @@
+export default {
+  themeColor: 'Theme Color Action Buttons',
+  animationOnDisplay: 'Animation On Display',
+  show: 'show',
+  hidden: 'hidden',
+  trigger: 'Trigger Mode',
+  direction: 'Action Menu Pop Up Direction',
+  position: 'Trigger Position',
+  customSlots: 'Custom Triggers',
+  default: 'default',
+  primary: 'primary',
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger',
+}

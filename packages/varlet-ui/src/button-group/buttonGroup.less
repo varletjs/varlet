@@ -4,14 +4,14 @@
   max-width: 100%;
   overflow: auto;
 
-  > .var-button {
+  .var-button {
     &:active {
       box-shadow: none;
     }
   }
 
   &--horizontal {
-    > .var-button {
+    .var-button {
       &:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -29,7 +29,7 @@
   }
 
   &--horizontal&--mode-text {
-    > .var-button {
+    .var-button {
       border-right: thin solid currentColor;
 
       &:last-child {
@@ -39,7 +39,7 @@
   }
 
   &--horizontal&--mode-outline {
-    > .var-button {
+    .var-button {
       &:not(:first-child) {
         border-left: none;
       }
@@ -49,7 +49,7 @@
   &--vertical {
     flex-direction: column;
 
-    > .var-button {
+    .var-button {
       &:first-child {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -67,7 +67,7 @@
   }
 
   &--vertical&--mode-text {
-    > .var-button {
+    .var-button {
       border-bottom: thin solid currentColor;
 
       &:last-child {
@@ -77,7 +77,7 @@
   }
 
   &--vertical&--mode-outline {
-    > .var-button {
+    .var-button {
       &:not(:first-child) {
         border-top: none;
       }

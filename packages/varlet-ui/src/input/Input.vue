@@ -46,6 +46,8 @@
           @input="handleInput"
           @change="handleChange"
           @touchstart="handleTouchstart"
+          @compositionstart="handleCompositionStart"
+          @compositionend="handleCompositionEnd"
           v-if="textarea"
         >
         </textarea>
@@ -67,6 +69,8 @@
           @input="handleInput"
           @change="handleChange"
           @touchstart="handleTouchstart"
+          @compositionstart="handleCompositionStart"
+          @compositionend="handleCompositionEnd"
           v-else
         />
         <label
@@ -96,7 +100,6 @@
             :class="n('clear-icon')"
             var-input-cover
             name="close-circle"
-            size="14px"
             v-if="clearable && !isEmpty(modelValue)"
             @click="handleClear"
           />
@@ -129,14 +132,13 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
-import { props } from './props'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
+import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { InputValidateTrigger } from './props'
-import type { InputProvider } from './provide'
+import { useMounted } from '@varlet/use'
+import { type InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
 
@@ -151,6 +153,13 @@ export default defineComponent({
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
+    const type: ComputedRef<InputType> = computed(() => {
+      if (props.type === 'number') {
+        return 'text'
+      }
+
+      return props.type
+    })
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
 
@@ -204,12 +213,42 @@ export default defineComponent({
       validateWithTrigger('onBlur')
     }
 
-    const handleInput = (e: Event) => {
+    const updateValue = (e: Event) => {
       const target = e.target as HTMLInputElement
+
       let { value } = target
+
+      if (props.type === 'number') {
+        value = formatNumber(value)
+      }
 
       value = withMaxlength(withTrim(value))
       target.value = value
+
+      return value
+    }
+
+    const handleCompositionStart = (e: Event) => {
+      Object.assign(e.target!, { composing: true })
+    }
+
+    const handleCompositionEnd = (e: Event) => {
+      const target = e.target as EventTarget & { composing?: boolean }
+
+      if (target.composing) {
+        target.composing = false
+        target.dispatchEvent(new Event('input'))
+      }
+    }
+
+    const handleInput = (e: Event) => {
+      const { composing } = e.target as EventTarget & { composing?: boolean }
+
+      if (composing) {
+        return
+      }
+
+      const value = updateValue(e)
 
       call(props['onUpdate:modelValue'], value)
       call(props.onInput, value, e)
@@ -217,11 +256,7 @@ export default defineComponent({
     }
 
     const handleChange = (e: Event) => {
-      const target = e.target as HTMLInputElement
-      let { value } = target
-
-      value = withMaxlength(withTrim(value))
-      target.value = value
+      const value = updateValue(e)
 
       call(props.onChange, value, e)
       validateWithTrigger('onChange')
@@ -248,6 +283,21 @@ export default defineComponent({
 
       call(onClick, e)
       validateWithTrigger('onClick')
+    }
+
+    const formatNumber = (value: string) => {
+      const minusIndex = value.indexOf('-')
+      const dotIndex = value.indexOf('.')
+
+      if (minusIndex > -1) {
+        value = minusIndex === 0 ? '-' + value.replace(/-/g, '') : value.replace(/-/g, '')
+      }
+
+      if (dotIndex > -1) {
+        value = value.slice(0, dotIndex + 1) + value.slice(dotIndex).replace(/\./g, '')
+      }
+
+      return value.replace(/[^-0-9.]/g, '')
     }
 
     const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
@@ -291,7 +341,7 @@ export default defineComponent({
 
     call(bindForm, inputProvider)
 
-    onMounted(() => {
+    useMounted(() => {
       if (props.autofocus) {
         focus()
       }
@@ -302,6 +352,7 @@ export default defineComponent({
       id,
       isFocus,
       errorMessage,
+      type,
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
@@ -316,6 +367,8 @@ export default defineComponent({
       handleClear,
       handleClick,
       handleTouchstart,
+      handleCompositionStart,
+      handleCompositionEnd,
       validate,
       resetValidation,
       reset,

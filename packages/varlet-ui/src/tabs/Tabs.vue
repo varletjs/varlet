@@ -49,16 +49,15 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useTabList } from './provide'
+import { useTabList, type TabsProvider } from './provide'
+import { type TabProvider } from '../tab/provide'
 import { isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
-import type { Ref, ComputedRef } from 'vue'
-import type { TabsProvider } from './provide'
-import type { TabProvider } from '../tab/provide'
 import { createNamespace, call } from '../utils/components'
+import { useEventListener } from '@varlet/use'
 
 const { n, classes } = createNamespace('tabs')
 
@@ -194,9 +193,7 @@ export default defineComponent({
     )
 
     watch(() => props.active, resize)
-
-    onMounted(() => window.addEventListener('resize', resize))
-    onUnmounted(() => window.removeEventListener('resize', resize))
+    useEventListener(window, 'resize', resize)
 
     return {
       stickyComponent,

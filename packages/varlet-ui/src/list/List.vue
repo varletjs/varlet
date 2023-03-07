@@ -26,14 +26,14 @@
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, onMounted, onUnmounted, ref, nextTick } from 'vue'
+import { defineComponent, onUnmounted, ref, nextTick, type Ref } from 'vue'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
-import type { Ref } from 'vue'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('list')
 
@@ -77,7 +77,7 @@ export default defineComponent({
       }
     }
 
-    onMounted(() => {
+    useMounted(() => {
       scroller = getParentScroller(listEl.value as HTMLElement)
 
       props.immediateCheck && check()

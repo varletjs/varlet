@@ -23,6 +23,7 @@ export class AppBar extends VarComponent {
     default(): VNode[]
     left(): VNode[]
     right(): VNode[]
+    content(): VNode[]
   }
 }
 

@@ -2,26 +2,26 @@
 
 exports[`test avatar borderColor 1`] = `
 "<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round var-avatar--bordered\\" style=\\"border-color: red;\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 
 exports[`test avatar color 1`] = `
 "<div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\" style=\\"background-color: red;\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 
 exports[`test avatar group basic use 1`] = `
 "<div class=\\"var-avatar-group var-avatar-group--row\\">
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
 </div>"
 `;
@@ -29,13 +29,13 @@ exports[`test avatar group basic use 1`] = `
 exports[`test avatar group offset 1`] = `
 "<div class=\\"var-avatar-group var-avatar-group--row\\" style=\\"--avatar-group-offset: 10px;\\">
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
 </div>"
 `;
@@ -43,38 +43,38 @@ exports[`test avatar group offset 1`] = `
 exports[`test avatar group vertical 1`] = `
 "<div class=\\"var-avatar-group var-avatar-group--column\\">
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
   <div class=\\"var-avatar var--box var-avatar--normal var-avatar--round\\">
-    <div class=\\"var-avatar__text\\"></div>
+    <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
   </div>
 </div>"
 `;
 
 exports[`test avatar size 1`] = `
 "<div class=\\"var-avatar var--box var-avatar--mini var-avatar--round\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 
 exports[`test avatar size 2`] = `
 "<div class=\\"var-avatar var--box var-avatar--small var-avatar--round\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 
 exports[`test avatar size 3`] = `
 "<div class=\\"var-avatar var--box var-avatar--large var-avatar--round\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 
 exports[`test avatar size 4`] = `
 "<div class=\\"var-avatar var--box var-avatar--round\\" style=\\"width: 76px; height: 76px;\\">
-  <div class=\\"var-avatar__text\\"></div>
+  <div class=\\"var-avatar__text\\" style=\\"transform: scale(1);\\"></div>
 </div>"
 `;
 

@@ -34,4 +34,5 @@ export default {
   clickSuccess: '点击成功',
   touchstartSuccess: '触摸成功',
   button: '按钮',
+  splitButton: '按钮拆分',
 }
