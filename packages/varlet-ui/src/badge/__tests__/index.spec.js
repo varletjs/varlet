@@ -63,6 +63,18 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
+  test('test badge max length', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        maxLength: 3,
+        value: 'abcdefg',
+      },
+    })
+    expect(wrapper.find('.var-badge__content').html()).toContain('<span>abc...</span>')
+    await wrapper.setProps({ value: 'ab' })
+    expect(wrapper.find('.var-badge__content').html()).toContain(`<span>ab</span>`)
+  })
+
   test('test badge position', () => {
     ;['right-top', 'right-bottom', 'left-top', 'left-bottom'].forEach(async (position) => {
       const template = `

@@ -3,6 +3,7 @@ export default {
   dotBadge: 'Dot Badge',
   customContentBadge: 'Custom Content Badge',
   maximum: 'Maximum',
+  maxLength: 'Max Length',
   differentPositioningBadges: 'Different Positioning Badges',
   upperRight: 'The Upper Right',
   lowerRight: 'The Lower Right',

@@ -3,6 +3,7 @@ export default {
   dotBadge: '圆点徽标',
   customContentBadge: '自定义内容标签',
   maximum: '最大值',
+  maxLength: '最大长度',
   differentPositioningBadges: '不同定位徽标',
   upperRight: '右上',
   lowerRight: '右下',

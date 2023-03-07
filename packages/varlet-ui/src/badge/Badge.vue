@@ -43,11 +43,15 @@ export default defineComponent({
     })
 
     const values: ComputedRef<string | number> = computed(() => {
-      const { dot, value, maxValue } = props
+      const { dot, value, maxValue, maxLength } = props
 
       if (dot) return ''
 
       if (value !== undefined && maxValue !== undefined && toNumber(value) > maxValue) return `${maxValue}+`
+
+      if (value !== undefined && maxLength > 0 && typeof value === 'string' && value.length > maxLength) {
+        return `${value.slice(0, maxLength)}...`
+      }
 
       return value
     })

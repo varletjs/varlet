@@ -60,6 +60,28 @@ const maxValue = ref(99)
 </template>
 ```
 
+### Max Length
+
+Control the length of badge display values through `value` and `max-length` (effective when `value` exists and the type is `String`).
+
+If the `value` is a string type number, such as `'88'`, and `max-value` exists, the `max-value` limit will be met first.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('abcdefg')
+const maxLength1 = ref(3)
+const maxLength2 = ref(10)
+
+<template>
+  <var-space>
+    <var-badge type="danger" :value="value" :max-length="maxLength1" />
+    <var-badge type="danger" :value="value" :max-length="maxLength2" />
+  </var-space>
+</template>
+```
+
 ### Different Positioning Badges
 
 Set the position of the badge through the `position` property.

@@ -62,6 +62,29 @@ const maxValue = ref(99)
 </template>
 ```
 
+### 最大长度
+
+通过 `value` 和 `max-length` 控制徽标显示值的长度（当 `value` 存在且类型为`String`时生效）。
+
+如果 `value` 为字符串的数字，如`'88'`，且存在`max-value`时，会优先满足`max-value`的限制。
+
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('abcdefg')
+const maxLength1 = ref(3)
+const maxLength2 = ref(10)
+
+<template>
+  <var-space>
+    <var-badge type="danger" :value="value" :max-length="maxLength1" />
+    <var-badge type="danger" :value="value" :max-length="maxLength2" />
+  </var-space>
+</template>
+```
+
 ### 不同定位徽标
 
 通过 `position` 属性设置徽标的位置。
