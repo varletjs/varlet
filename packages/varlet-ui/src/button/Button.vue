@@ -18,7 +18,7 @@
         [states.outline, n('--outline')]
       )
     "
-    v-hover:desktop="hoverStyle"
+    v-hover:desktop="handleHover"
     :style="{
       color: states.textColor,
       background: states.color,
@@ -40,7 +40,7 @@
     <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
     </div>
-    <div v-show="hovering" :class="classes(n('hover'))"></div>
+    <div :class="classes(n('overlay'), [hovering, n('--hovering')])"></div>
   </button>
 </template>
 
@@ -130,7 +130,7 @@ export default defineComponent({
       attemptAutoLoading(call(onTouchstart, e))
     }
 
-    const hoverStyle = (isHover: boolean) => {
+    const handleHover = (isHover: boolean) => {
       hovering.value = isHover
     }
 
@@ -140,7 +140,7 @@ export default defineComponent({
       pending,
       states,
       hovering,
-      hoverStyle,
+      handleHover,
       handleClick,
       handleTouchstart,
     }
