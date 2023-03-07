@@ -1,0 +1,16 @@
+export default {
+  themeColor: '主题色动作按钮',
+  animationOnDisplay: '显示时动画',
+  show: '显示',
+  hidden: '隐藏',
+  trigger: '触发方式',
+  direction: '动作菜单弹出方向',
+  position: '触发器位置',
+  customSlots: '自定义触发器',
+  default: '默认',
+  primary: '主要',
+  info: '信息',
+  success: '成功',
+  warning: '警告',
+  danger: '危险',
+}

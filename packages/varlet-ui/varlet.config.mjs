@@ -136,6 +136,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Fab 悬浮动作按钮',
+          'en-US': 'Fab',
+        },
+        doc: 'fab',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Breadcrumbs 面包屑',
           'en-US': 'Breadcrumbs',
         },
