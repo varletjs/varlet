@@ -34,8 +34,7 @@ export const props = {
   },
   // 显示字符最大长度
   maxLength: {
-    type: Number,
-    default: 0,
+    type: [String, Number],
   },
   // 自定义徽标颜色
   color: {

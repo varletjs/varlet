@@ -13,9 +13,9 @@ const value1 = ref(188)
 const maxValue = ref(99)
 const hidden = ref(false)
 
-const value2 = ref('abcdefg')
-const maxLength1 = ref(3)
-const maxLength2 = ref(10)
+const value2 = ref('abcdefghigklmnopqrstuvwxyz')
+const maxLength1 = ref(50)
+const maxLength2 = ref('100')
 
 function handleChange() {
   hidden.value = !hidden.value

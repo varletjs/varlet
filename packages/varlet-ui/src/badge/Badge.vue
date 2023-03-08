@@ -8,7 +8,8 @@
         :style="{ background: color }"
       >
         <var-icon v-if="icon && !dot" :name="icon" size="10px" />
-        <span v-else>{{ values }}</span>
+        <span v-else-if="maxLength === undefined">{{ values }}</span>
+        <var-ellipsis v-else :style="{ maxWidth: `${maxLength}px` }">{{ values }}</var-ellipsis>
       </span>
     </transition>
     <slot />
@@ -17,6 +18,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
+import VarEllipsis from '../ellipsis'
 import { toNumber } from '@varlet/shared'
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
@@ -27,7 +29,7 @@ const { n, classes } = createNamespace('badge')
 
 export default defineComponent({
   name: 'VarBadge',
-  components: { VarIcon },
+  components: { VarIcon, VarEllipsis },
   inheritAttrs: false,
   props,
   setup(props, { slots }) {
@@ -43,15 +45,11 @@ export default defineComponent({
     })
 
     const values: ComputedRef<string | number> = computed(() => {
-      const { dot, value, maxValue, maxLength } = props
+      const { dot, value, maxValue } = props
 
       if (dot) return ''
 
       if (value !== undefined && maxValue !== undefined && toNumber(value) > maxValue) return `${maxValue}+`
-
-      if (value !== undefined && maxLength > 0 && typeof value === 'string' && value.length > maxLength) {
-        return `${value.slice(0, maxLength)}...`
-      }
 
       return value
     })

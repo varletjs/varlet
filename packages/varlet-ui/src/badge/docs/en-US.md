@@ -62,17 +62,17 @@ const maxValue = ref(99)
 
 ### Max Length
 
-Control the length of badge display values through `value` and `max-length` (effective when `value` exists and the type is `String`).
+Control the length of the badge display value through `value` and `max-length`. The excess part will be truncated and `...` will be displayed at the end (effective when both `value` and `maxLength` exist).
 
-If the `value` is a string type number, such as `'88'`, and `max-value` exists, the `max-value` limit will be met first.
+`maxLength` controls the length of the badge content area, not the total width of the badge, and the unit is `px`.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('abcdefg')
-const maxLength1 = ref(3)
-const maxLength2 = ref(10)
+const value = ref('abcdefghigklmnopqrstuvwxyz')
+const maxLength1 = ref(50)
+const maxLength2 = ref('100')
 
 <template>
   <var-space>

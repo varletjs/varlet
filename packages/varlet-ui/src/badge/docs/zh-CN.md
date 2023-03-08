@@ -64,18 +64,17 @@ const maxValue = ref(99)
 
 ### 最大长度
 
-通过 `value` 和 `max-length` 控制徽标显示值的长度（当 `value` 存在且类型为`String`时生效）。
+通过 `value` 和 `max-length` 控制徽标显示值的长度，超出部分会被截断，末尾会显示 '...'（当 `value` 与 `maxLength` 都存在时生效）。
 
-如果 `value` 为字符串的数字，如`'88'`，且存在`max-value`时，会优先满足`max-value`的限制。
-
+`maxLength` 控制的是徽标内容区域的长度，而不是徽标的总宽度，单位为 `px`。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('abcdefg')
-const maxLength1 = ref(3)
-const maxLength2 = ref(10)
+const value = ref('abcdefghigklmnopqrstuvwxyz')
+const maxLength1 = ref(50)
+const maxLength2 = ref('100')
 
 <template>
   <var-space>

@@ -66,13 +66,15 @@ describe('test badge component props', () => {
   test('test badge max length', async () => {
     const wrapper = mount(VarBadge, {
       props: {
-        maxLength: 3,
-        value: 'abcdefg',
+        maxLength: 50,
+        value: 'abcdefghijklmnopqrstuvwxyz',
       },
     })
-    expect(wrapper.find('.var-badge__content').html()).toContain('<span>abc...</span>')
-    await wrapper.setProps({ value: 'ab' })
-    expect(wrapper.find('.var-badge__content').html()).toContain(`<span>ab</span>`)
+    expect(wrapper.find('.var-ellipsis').exists()).toBe(true)
+    expect(wrapper.find('.var-tooltip').attributes('style')).toContain('max-width: 50px;')
+    await wrapper.setProps({ maxLength: 100 })
+    expect(wrapper.find('.var-tooltip').attributes('style')).toContain('max-width: 100px;')
+    wrapper.unmount()
   })
 
   test('test badge position', () => {
