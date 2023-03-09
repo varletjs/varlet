@@ -63,7 +63,20 @@ const trigger = ref('click')
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
 
-  <var-fab type="primary" :trigger="trigger" />
+  <var-fab type="primary" :trigger="trigger">
+    <var-button class="action" type="info" round>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button class="action" type="success" round>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button class="action" type="warning" round>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button class="action" type="danger" round>
+      <var-icon name="delete" />
+    </var-button>
+  </var-fab>
 </template>
 ```
 
@@ -131,7 +144,7 @@ const disabled = ref(false)
 <script setup>
 import { ref } from 'vue'
 
-const show = ref(false)
+const show = ref(true)
 
 function toggle() {
   show.value = !show.value
@@ -161,7 +174,7 @@ function toggle() {
 <template>
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
-  <var-fab v-model:active="active" type="primary" :direction="direction">
+  <var-fab v-model:active="active" type="primary">
     <var-button class="action" type="info" round>
       <var-icon name="account-circle" />
     </var-button>
