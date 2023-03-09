@@ -154,6 +154,7 @@ function handleChange() {
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
 | `default` |  徽标内容 | `-` |
+| `value` | 徽标中显示的值 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

@@ -112,3 +112,14 @@ test('test badge default slots', () => {
   expect(wrapper.find('.var-badge__content').element.textContent).toBe('0')
   wrapper.unmount()
 })
+
+test('test badge value slots', () => {
+  const wrapper = mount(VarBadge, {
+    slots: {
+      value: () => 'value',
+    },
+  })
+
+  expect(wrapper.find('.var-badge__content').element.textContent).toBe('value')
+  wrapper.unmount()
+})

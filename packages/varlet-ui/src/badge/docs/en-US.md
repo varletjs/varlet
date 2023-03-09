@@ -152,6 +152,7 @@ Set Badge Icon through `icon` property.
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` |  Badge content | `-` |
+| `value` | The value shown in the badge | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

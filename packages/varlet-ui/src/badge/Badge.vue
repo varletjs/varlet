@@ -8,7 +8,8 @@
         :style="{ background: color }"
       >
         <var-icon v-if="icon && !dot" :name="icon" size="10px" />
-        <span v-else>{{ values }}</span>
+        <span v-else-if="!$slots['value']">{{ values }}</span>
+        <slot name="value" />
       </span>
     </transition>
     <slot />
