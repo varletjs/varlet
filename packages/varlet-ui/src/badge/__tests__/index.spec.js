@@ -63,20 +63,6 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge max length', async () => {
-    const wrapper = mount(VarBadge, {
-      props: {
-        maxLength: 50,
-        value: 'abcdefghijklmnopqrstuvwxyz',
-      },
-    })
-    expect(wrapper.find('.var-ellipsis').exists()).toBe(true)
-    expect(wrapper.find('.var-tooltip').attributes('style')).toContain('max-width: 50px;')
-    await wrapper.setProps({ maxLength: 100 })
-    expect(wrapper.find('.var-tooltip').attributes('style')).toContain('max-width: 100px;')
-    wrapper.unmount()
-  })
-
   test('test badge position', () => {
     ;['right-top', 'right-bottom', 'left-top', 'left-bottom'].forEach(async (position) => {
       const template = `
@@ -124,5 +110,16 @@ test('test badge default slots', () => {
   })
 
   expect(wrapper.find('.var-badge__content').element.textContent).toBe('0')
+  wrapper.unmount()
+})
+
+test('test badge value slots', () => {
+  const wrapper = mount(VarBadge, {
+    slots: {
+      value: () => 'value',
+    },
+  })
+
+  expect(wrapper.find('.var-badge__content').element.textContent).toBe('value')
   wrapper.unmount()
 })

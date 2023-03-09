@@ -62,28 +62,6 @@ const maxValue = ref(99)
 </template>
 ```
 
-### 最大长度
-
-通过 `value` 和 `max-length` 控制徽标显示值的长度，超出部分会被截断，末尾会显示 '...'（当 `value` 与 `maxLength` 都存在时生效）。
-
-`maxLength` 控制的是徽标内容区域的长度，而不是徽标的总宽度，单位为 `px`。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('abcdefghigklmnopqrstuvwxyz')
-const maxLength1 = ref(50)
-const maxLength2 = ref('100')
-
-<template>
-  <var-space>
-    <var-badge type="danger" :value="value" :max-length="maxLength1" />
-    <var-badge type="danger" :value="value" :max-length="maxLength2" />
-  </var-space>
-</template>
-```
-
 ### 不同定位徽标
 
 通过 `position` 属性设置徽标的位置。
@@ -176,6 +154,7 @@ function handleChange() {
 | 名称 | 说明 | 参数 |
 | ---- | ---- | ----|
 | `default` |  徽标内容 | `-` |
+| `value` | 徽标中显示的值 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

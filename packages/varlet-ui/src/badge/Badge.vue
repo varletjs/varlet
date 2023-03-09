@@ -8,8 +8,8 @@
         :style="{ background: color }"
       >
         <var-icon v-if="icon && !dot" :name="icon" size="10px" />
-        <span v-else-if="maxLength === undefined">{{ values }}</span>
-        <var-ellipsis v-else :style="{ maxWidth: `${maxLength}px` }">{{ values }}</var-ellipsis>
+        <span v-else-if="!$slots['value']">{{ values }}</span>
+        <slot name="value" />
       </span>
     </transition>
     <slot />
@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import VarEllipsis from '../ellipsis'
 import { toNumber } from '@varlet/shared'
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
@@ -29,7 +28,7 @@ const { n, classes } = createNamespace('badge')
 
 export default defineComponent({
   name: 'VarBadge',
-  components: { VarIcon, VarEllipsis },
+  components: { VarIcon },
   inheritAttrs: false,
   props,
   setup(props, { slots }) {

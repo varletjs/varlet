@@ -32,10 +32,6 @@ export const props = {
   maxValue: {
     type: [String, Number],
   },
-  // 显示字符最大长度
-  maxLength: {
-    type: [String, Number],
-  },
   // 自定义徽标颜色
   color: {
     type: String,

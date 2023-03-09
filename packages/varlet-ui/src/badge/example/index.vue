@@ -13,10 +13,6 @@ const value1 = ref(188)
 const maxValue = ref(99)
 const hidden = ref(false)
 
-const value2 = ref('abcdefghigklmnopqrstuvwxyz')
-const maxLength1 = ref(50)
-const maxLength2 = ref('100')
-
 function handleChange() {
   hidden.value = !hidden.value
 }
@@ -51,12 +47,6 @@ watchDarkMode(dark)
     <var-space :size="['2.666vw', '4vw']">
       <var-badge type="danger" :value="value" :max-value="maxValue" />
       <var-badge type="danger" :value="value1" :max-value="maxValue" />
-    </var-space>
-
-    <app-type>{{ pack.maxLength }}</app-type>
-    <var-space :size="['2.666vw', '4vw']">
-      <var-badge type="danger" :value="value2" :max-length="maxLength1" />
-      <var-badge type="danger" :value="value2" :max-length="maxLength2" />
     </var-space>
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>

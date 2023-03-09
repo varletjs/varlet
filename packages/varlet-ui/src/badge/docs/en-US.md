@@ -60,28 +60,6 @@ const maxValue = ref(99)
 </template>
 ```
 
-### Max Length
-
-Control the length of the badge display value through `value` and `max-length`. The excess part will be truncated and `...` will be displayed at the end (effective when both `value` and `maxLength` exist).
-
-`maxLength` controls the length of the badge content area, not the total width of the badge, and the unit is `px`.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('abcdefghigklmnopqrstuvwxyz')
-const maxLength1 = ref(50)
-const maxLength2 = ref('100')
-
-<template>
-  <var-space>
-    <var-badge type="danger" :value="value" :max-length="maxLength1" />
-    <var-badge type="danger" :value="value" :max-length="maxLength2" />
-  </var-space>
-</template>
-```
-
 ### Different Positioning Badges
 
 Set the position of the badge through the `position` property.
@@ -174,6 +152,7 @@ Set Badge Icon through `icon` property.
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` |  Badge content | `-` |
+| `value` | The value shown in the badge | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
