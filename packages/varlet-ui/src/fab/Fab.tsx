@@ -8,6 +8,11 @@ import { toNumber } from '@varlet/shared'
 import { props } from './props'
 
 import '../styles/common.less'
+import '../styles/elevation.less'
+import '../ripple/ripple.less'
+import '../icon/icon.less'
+import '../loading/loading.less'
+import '../button/button.less'
 import './fab.less'
 
 const { classes, n } = createNamespace('fab')

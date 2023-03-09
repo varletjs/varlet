@@ -408,6 +408,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
 @import '../icon/icon';
 @import '../menu/menu';
 @import '../form-details/formDetails';

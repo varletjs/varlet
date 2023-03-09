@@ -47,11 +47,11 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
+import Hover from '../hover'
 import { computed, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useButtonGroup } from './provide'
-import Hover from '../hover'
 import { isArray } from '@varlet/shared'
 
 const { n, classes } = createNamespace('button')
