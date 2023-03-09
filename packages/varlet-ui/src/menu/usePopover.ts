@@ -1,13 +1,13 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
 import { useClickOutside } from '@varlet/use'
-import { Instance, Modifier } from '@popperjs/core/lib/types'
 import { doubleRaf, toPxNum } from '../utils/elements'
 import { call } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
-import type { Placement as PopperPlacement } from '@popperjs/core'
+import { type Instance, type Modifier } from '@popperjs/core/lib/types'
+import { type Placement as PopperPlacement } from '@popperjs/core'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -40,6 +40,7 @@ export interface UsePopoverOptions {
   disabled: boolean
   offsetX: string | number
   offsetY: string | number
+  reference?: string
   onOpen?(): void
   onClose?(): void
   'onUpdate:show'?(show: boolean): void
@@ -308,7 +309,9 @@ export function usePopover(options: UsePopoverOptions) {
   watch(() => options.disabled, close)
 
   onMounted(() => {
-    popoverInstance = createPopper(host.value!, popover.value!, getPopperOptions())
+    const reference = options.reference ? host.value?.querySelector(options.reference) : host.value
+
+    popoverInstance = createPopper(reference ?? host.value!, popover.value!, getPopperOptions())
   })
   onUnmounted(() => {
     popoverInstance!.destroy()

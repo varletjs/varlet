@@ -2,9 +2,9 @@
 
 ### 介绍
 
-悬浮动作按钮组件，用于快捷菜单。
+悬浮动作按钮组件，按下可显示一组动作按钮。
 
-### 主题色动作按钮
+### 主题色按钮
 
 ```html
 <script setup>
@@ -14,7 +14,7 @@ const type = ref('primary')
 </script>
 
 <template>
-  <var-select :hint="false" v-model="type">
+  <var-select v-model="type">
     <var-option label="默认" value="default"/>
     <var-option label="主要" value="primary"/>
     <var-option label="信息" value="info"/>
@@ -22,6 +22,7 @@ const type = ref('primary')
     <var-option label="警告" value="warning"/>
     <var-option label="危险" value="danger"/>
   </var-select>
+
   <var-fab :type="type" />
 </template>
 ```
@@ -42,13 +43,12 @@ const position = ref('right-bottom')
     <var-radio checked-value="left-bottom">left-bottom</var-radio>
     <var-radio checked-value="right-bottom">right-bottom</var-radio>
   </var-radio-group>
-  <var-fab :position="position" />
+
+  <var-fab type="primary" :position="position" />
 </template>
 ```
 
 ### 触发方式
-
-菜单的内容为默认插槽
 
 ```html
 <script setup>
@@ -62,14 +62,8 @@ const trigger = ref('click')
     <var-radio checked-value="click">click</var-radio>
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
-  <var-fab :trigger="trigger">
-    <var-tooltip content="Tooltip" placement="left">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-    </var-tooltip>
-    <var-button type="danger" round>
-      <var-icon name="check" />
-    </var-button>
-  </var-fab>
+
+  <var-fab type="primary" :trigger="trigger" />
 </template>
 ```
 
@@ -89,102 +83,153 @@ const direction = ref('top')
     <var-radio checked-value="bottom">bottom</var-radio>
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
-  <var-fab :direction="direction">
-    <var-tooltip content="Tooltip" placement="left">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-    </var-tooltip>
-    <var-button type="danger" round>
-      <var-icon name="check" />
+
+  <var-fab type="primary" :direction="direction">
+    <var-button class="action" type="info" round>
+      <var-icon name="account-circle" />
     </var-button>
-  </var-fab>
-</template>
-```
-
-### 自定义触发器
-
-通过 `v-model:active` 进行双向绑定,控制动作菜单是否展开和收起。
-
-```html
-<script setup>
-import { ref, computed } from 'vue'
-
-const active = ref(false)
-const iconName = computed(() => active.value ? 'window-close' : 'cog-outline')
-function handleActive() {
-  active.value = !active.value
-}
-</script>
-
-<template>
-  <var-fab v-model:active="active">
-    <template #activator>
-      <var-button round @click.stop="handleActive">
-        <var-icon animation-class="fade" :name="iconName" :transition="200" />
-      </var-button>
-    </template>
-    <var-tooltip content="camera" placement="left">
-      <var-button type="warning" round @click.stop="handleActive">
-        <var-icon name="camera-outline" />
-      </var-button>
-    </var-tooltip>
-    <var-button type="primary" round @click.stop="handleActive">
-      <var-icon name="phone-outline" />
+    <var-button class="action" type="success" round>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button class="action" type="warning" round>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button class="action" type="danger" round>
+      <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
 
-<style lang="less" scoped>
-.fade {
-  transform: scale(0.4);
+<style>
+.action {
+  display: flex;
+  width: 40px !important;
+  height: 40px !important;
 }
 </style>
 ```
 
-### 显示时动画
-
-通过 `activator` 插槽，自定义触发器。
+### 禁用
 
 ```html
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 
-const active = ref(false)
-const show = ref(true)
-const iconName = computed(() => active.value ? 'window-close' : 'cog-outline')
-function handleActive() {
-  active.value = !active.value
-}
-function handleShow() {
+const disabled = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="disabled" />
+
+  <var-fab type="primary" :disabled="disabled" />
+</template>
+```
+
+### 触发器显示/隐藏
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+
+function toggle() {
   show.value = !show.value
-  active.value = false
 }
 </script>
 
 <template>
-  <var-button type="primary" @click="handleShow">
-    {{ show ? '隐藏' : '显示' }}
-  </var-button>
+  <var-button type="primary" @click.stop="toggle">切换</var-button>
 
-  <var-fab v-model:active="active">
-    <template #activator>
-      <var-button v-show="show" round @click.stop="handleActive">
-        <var-icon animation-class="fade" :name="iconName" :transition="200" />
-      </var-button>
-    </template>
-    <var-tooltip content="camera" placement="left">
-      <var-button type="warning" round @click.stop="handleActive">
-        <var-icon name="camera-outline" />
-      </var-button>
-    </var-tooltip>
-    <var-button type="primary" round @click.stop="handleActive">
-      <var-icon name="phone-outline" />
+  <var-fab :show="show" type="primary" />
+</template>
+```
+
+### 动作菜单显示/隐藏
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(false)
+
+function toggle() {
+  active.value = !active.value
+}
+</script>
+
+<template>
+  <var-button type="primary" @click.stop="toggle">切换</var-button>
+
+  <var-fab v-model:active="active" type="primary" :direction="direction">
+    <var-button class="action" type="info" round>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button class="action" type="success" round>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button class="action" type="warning" round>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button class="action" type="danger" round>
+      <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
 
-<style lang="less" scoped>
+<style>
+.action {
+  display: flex;
+  width: 40px !important;
+  height: 40px !important;
+}
+</style>
+```
+
+### 自定义触发器
+
+```html
+<template>
+  <var-fab>
+    <var-button class="action" type="info" round>
+      <var-icon name="account-circle" :size="24" />
+    </var-button>
+    <var-button class="action" type="success" round>
+      <var-icon name="checkbox-marked-circle" :size="24" />
+    </var-button>
+    <var-button class="action" type="warning" round>
+      <var-icon name="bell" :size="24" />
+    </var-button>
+    <var-button class="action" type="danger" round>
+      <var-icon name="delete" :size="24" />
+    </var-button>
+
+    <template #trigger="{ active }">
+      <var-button class="trigger" type="primary" round>
+        <var-icon :name="active ? 'heart' : 'heart-half-full'" animation-class="fade" :transition="300" :size="24" />
+      </var-button>
+    </template>
+  </var-fab>
+</template>
+
+<style>
+.trigger {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 8px !important;
+}
+
+.action {
+  display: flex;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 6px !important;
+}
+
 .fade {
-  transform: scale(0.4);
+  transition-property: opacity, transform;
+  opacity: 0;
+  transform: rotate(90deg)
 }
 </style>
 ```
@@ -193,45 +238,59 @@ function handleShow() {
 
 ### 属性
 
-#### Fab Props
-
 | 参数              | 说明                                                             | 类型     | 默认值        |
 |------------------|----------------------------------------------------------------- |----------|----------------|
-| `v-model:active` | 触发器活动状态                                                    | _boolean_ | `false`       |
-| `type`           | 同 `Button` 组件，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
-| `color`          | 背景颜色                                                          | _string_ | `-`           |
-| `text-color`     | 文字颜色                                                          | _string_ | `-`          |
-| `icon`           | 同 `Icon` 组件，图标名称                                           | _string_ | `-`           |
-| `icon-size`      | 同 `Icon` 组件，图标尺寸                                           | _string \| number_  | `24px`  |
-| `trigger`        | 触发方式，可选值为 `click` `hover`                                 | _string_ | `click`       |
-| `direction`      | 动作菜单弹出方向，可选值为 `top` `right` `bottom` `left`            | _string_ | `top`          |
-| `position`       | 触发器位置，可选值为 `left-top` `right-top` `right-bottom` `left-bottom` | _boolean_ | `right-bottom`|
+| `v-model:active` | 是否激活动作菜单                                                    | _boolean_ | `false`       |
+| `show`           | 是否显示触发器 | _boolean_ | `true`    |
+| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
+| `position` | 触发器位置，可选值为 `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom`    |
+| `direction` | 动作菜单弹出方向，可选值为 `top` `bottom` `left` `right` | _string_ | `top`    |
+| `trigger` | 触发方式 `click` `hover` | _string_ | `click`    |
+| `disabled` | 是否禁用 | _boolean_ | `false`    |
+| `color` | 触发器颜色 | _string_ | `-`    |
+| `inactive-icon` | 未激活时触发器图标 | _string_ | `plus`    |
+| `active-icon` | 激活时触发器图标 | _string_ | `window-close`    |
+| `inactive-icon-size` | 未激活时触发器图标尺寸 | _string \| number_ | `-` |
+| `active-icon-size` | 激活时触发器图标尺寸 | _string \| number_ | `-` |
+| `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位 | _boolean_ | `true` |
+| `z-index` | 同 css z-index，用于自定义触发器层级 | _string \| number_ | `90` |
+| `top` | 同 css top，用于自定义触发器位置 | _string \| number_ | `-` |
+| `bottom` | 同 css bottom，用于自定义触发器位置 | _string \| number_ | `-` |
+| `left` | 同 css left，用于自定义触发器位置 | _string \| number_ | `-` |
+| `right` | 同 css right，用于自定义触发器位置 | _string \| number_ | `-` |
+| `teleport` | 组件挂载的元素 | _TeleportProps['to']_ | `-` |
 
+### 事件
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `click` | 点击触发器时触发，在 `disabled` 状态为 `true` 时不触发 | `active: boolean, event: Event` |
+| `open` | 在激活并打开动作菜单时触发 | `-` |
+| `opened` | 在激活并打开动作菜单的动画结束时触发 | `-` |
+| `close` | 在失活并关闭动作菜单时触发 | `-` |
+| `closed` | 在失活并关闭动作菜单的动画结束时触发 | `-` |
 
 ### 插槽
 
-#### Fab Slots
-
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 菜单内容 |  `-` |
-| `activator` | 触发器 | `-` |
+| `default` | 动作菜单 |  `-` |
+| `trigger` | 触发器 | `{ active: boolean }` |
 
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
-#### Fab Variables
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--fab-padding` | `10px` |
-| `--fab-button-margin` | `6px`|
-| `--fab-z-index` |  `1`|
-| `--fab-button-size` |  `56px`|
-| `--fab-button-item-size` |  `40px`|
-| `--fab-vertical-spacing` | `80px`|
-| `--fab-horizontal-spacing` | `32px`|
-| `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)`|
-| `--fab-transition-decelerated-easing` | `cubic-bezier(0, 0, 0.2, 1)`|
-| `--fab-transition-accelerated-easing` | `cubic-bezier(0.4, 0, 1, 1)`|
+| `--fab-top` | `70px` |
+| `--fab-bottom` | `16px` |
+| `--fab-left` | `16px` |
+| `--fab-right` | `16px` |
+| `--fab-trigger-size` | `56px` |
+| `--fab-trigger-inactive-icon-size` | `26px` |
+| `--fab-trigger-active-icon-size` | `22px` |
+| `--fab-actions-padding` | `10px 0` |
+| `--fab-action-margin` | `6px` |
+| `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` |

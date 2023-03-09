@@ -9,14 +9,13 @@ import {
   provide,
   reactive,
   isVNode,
-  VNodeChild,
   onMounted,
   onBeforeUnmount,
   nextTick,
   ref,
   onActivated,
   onDeactivated,
-  createTextVNode,
+  Comment,
   Fragment,
   type PropType,
   type ExtractPropTypes,
@@ -100,7 +99,9 @@ export function flatFragment(vNodes: any) {
   const result: VNode[] = []
 
   vNodes.forEach((vNode: any) => {
-    if (vNode.type === Comment) return
+    if (vNode.type === Comment) {
+      return
+    }
 
     if (vNode.type === Fragment && isArray(vNode.children)) {
       vNode.children.forEach((item: VNode) => {

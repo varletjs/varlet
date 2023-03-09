@@ -10,6 +10,7 @@ export interface SelectProvider extends Validation {
   wrapWidth: ComputedRef<string>
   multiple: ComputedRef<boolean>
   focusColor: ComputedRef<string | undefined>
+  computeLabel(): void
   onSelect(optionProvider: OptionProvider): void
 }
 

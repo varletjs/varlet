@@ -22,8 +22,6 @@
 }
 
 .var-fab {
-  position: fixed;
-
   &__trigger[var-fab-cover] {
     width: var(--fab-trigger-size);
     height: var(--fab-trigger-size);
@@ -118,12 +116,20 @@
     }
   }
 
+  &--fixed {
+    position: fixed;
+  }
+
+  &--absolute {
+    position: absolute;
+  }
+
   &--active-transition {
     .var-fab-transition-default();
 
     &-enter-from,
     &-leave-to {
-      transform: scale(0) rotate(-45deg);
+      transform: scale(0);
     }
   }
 

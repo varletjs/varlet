@@ -31,19 +31,25 @@ export default defineComponent({
       },
     })
 
-    const handleClick = (e: Event, value: boolean) => {
+    const handleClick = (e: Event, value: boolean, childrenLength: number) => {
       e.stopPropagation()
 
       if (props.trigger !== 'click' || props.disabled) {
         return
       }
 
+      if (childrenLength === 0) {
+        call(props.onClick, isActive.value, e)
+        return
+      }
+
       isActive.value = value
+      call(props.onClick, isActive.value, e)
       call(isActive.value ? props.onOpen : props.onClose)
     }
 
-    const handleMouse = (value: boolean) => {
-      if (props.trigger !== 'hover' || props.disabled) {
+    const handleMouse = (value: boolean, childrenLength: number) => {
+      if (props.trigger !== 'hover' || props.disabled || childrenLength === 0) {
         return
       }
 
@@ -62,12 +68,43 @@ export default defineComponent({
       }
     }
 
+    const renderTrigger = () => {
+      if (slots.trigger) {
+        return props.show ? slots.trigger({ active: isActive.value }) : null
+      }
+
+      return (
+        <Button
+          v-show={props.show}
+          var-fab-cover
+          class={n('trigger')}
+          type={props.type}
+          color={props.color}
+          disabled={props.disabled}
+          round
+        >
+          <Icon
+            var-fab-cover
+            class={classes([isActive.value, n('trigger-active-icon'), n('trigger-inactive-icon')])}
+            name={isActive.value ? props.activeIcon : props.inactiveIcon}
+            size={isActive.value ? props.inactiveIconSize : props.activeIconSize}
+            transition={200}
+            animationClass={n('--trigger-icon-animation')}
+          />
+        </Button>
+      )
+    }
+
     const renderFab = () => {
-      const children = flatFragment(slots.default?.())
+      const children = flatFragment(slots.default?.() ?? [])
 
       return (
         <div
-          class={classes(n(), n(`--position-${props.position}`), n(`--direction-${props.direction}`))}
+          class={classes(n(), n(`--position-${props.position}`), n(`--direction-${props.direction}`), [
+            props.fixed,
+            n('--fixed'),
+            n('--absolute'),
+          ])}
           style={{
             zIndex: toNumber(props.zIndex),
             top: toSizeUnit(props.top),
@@ -76,41 +113,23 @@ export default defineComponent({
             right: toSizeUnit(props.right),
           }}
           ref={host}
-          onClick={(e) => handleClick(e, !isActive.value)}
-          onMouseleave={() => handleMouse(false)}
-          onMouseenter={() => handleMouse(true)}
+          onClick={(e) => handleClick(e, !isActive.value, children.length)}
+          onMouseleave={() => handleMouse(false, children.length)}
+          onMouseenter={() => handleMouse(true, children.length)}
           {...attrs}
         >
-          <Transition name={n(`--active-transition`)}>
-            {slots.trigger ? (
-              slots.trigger?.()
-            ) : (
-              <Button
-                var-fab-cover
-                class={n('trigger')}
-                type={props.type}
-                color={props.color}
-                disabled={props.disabled}
-                round
-              >
-                <Icon
-                  var-fab-cover
-                  class={classes([isActive.value, n('trigger-active-icon'), n('trigger-inactive-icon')])}
-                  name={isActive.value ? props.activeIcon : props.inactiveIcon}
-                  size={isActive.value ? props.inactiveIconSize : props.activeIconSize}
-                  transition={200}
-                  animationClass={n('--trigger-icon-animation')}
-                />
-              </Button>
-            )}
-          </Transition>
+          <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
 
           <Transition
             name={n(`--actions-transition-${props.direction}`)}
             onAfterEnter={props.onOpened}
             onAfterLeave={props.onClosed}
           >
-            <div class={n('actions')} v-show={isActive.value && children.length} onClick={(e) => e.stopPropagation()}>
+            <div
+              class={n('actions')}
+              v-show={props.show && isActive.value && children.length}
+              onClick={(e) => e.stopPropagation()}
+            >
               {children.map((child) => {
                 return <div class={n('action')}>{child}</div>
               })}
@@ -130,6 +149,13 @@ export default defineComponent({
 
     watch(
       () => props.trigger,
+      () => {
+        isActive.value = false
+      }
+    )
+
+    watch(
+      () => props.disabled,
       () => {
         isActive.value = false
       }

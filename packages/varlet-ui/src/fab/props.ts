@@ -27,6 +27,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  show: {
+    type: Boolean,
+    default: true,
+  },
   type: {
     type: String as PropType<FabType>,
     default: 'primary',
@@ -68,8 +72,12 @@ export const props = {
   activeIconSize: {
     type: [Number, String],
   },
+  fixed: {
+    type: Boolean,
+    default: true,
+  },
   zIndex: {
-    type: [String, Number],
+    type: [Number, String],
     default: 90,
   },
   top: {
@@ -87,9 +95,10 @@ export const props = {
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },
+  onClick: defineListenerProp<(active: boolean, e: Event) => void>(),
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
-  'onUpdate:active': defineListenerProp<(value: boolean) => void>(),
+  'onUpdate:active': defineListenerProp<(active: boolean) => void>(),
 }

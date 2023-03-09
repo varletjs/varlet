@@ -45,6 +45,9 @@ export const props = {
     default: 'click',
     validator: triggerValidator,
   },
+  reference: {
+    type: String,
+  },
   placement: {
     type: String as PropType<Placement>,
     default: 'cover-top-start',

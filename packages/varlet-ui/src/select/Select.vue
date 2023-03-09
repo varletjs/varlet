@@ -367,6 +367,7 @@ export default defineComponent({
       wrapWidth: computed(() => wrapWidth.value),
       multiple,
       focusColor,
+      computeLabel,
       onSelect,
       reset,
       validate,
