@@ -1,5 +1,6 @@
 :root {
   --badge-content-padding: 2px 6px;
+  --badge-icon-size: 12px;
   --badge-default-color: #e0e0e0;
   --badge-primary-color: var(--color-primary);
   --badge-danger-color: var(--color-danger);
@@ -23,8 +24,20 @@
     display: inline-block;
   }
 
-  &__icon {
+  &__icon[var-badge-cover] {
+    font-size: var(--badge-icon-size);
+  }
+
+  &--icon {
     padding: 2px 4px;
+  }
+
+  &--dot {
+    box-sizing: content-box;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    padding: 0;
   }
 
   &--default {
@@ -77,22 +90,6 @@
     bottom: 0;
     left: 0;
     transform: translateY(50%) translateX(-50%);
-  }
-
-  &__dot {
-    box-sizing: content-box;
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
-    padding: 0;
-  }
-
-  &__dot--right {
-    right: 6px;
-  }
-
-  &__dot--left {
-    left: 6px;
   }
 
   &-fade-enter-active,

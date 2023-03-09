@@ -1,28 +1,38 @@
 <template>
   <div :class="classes(n(), n('$--box'))">
+    <slot />
+
     <transition :name="n('$-badge-fade')">
       <span
-        v-bind="$attrs"
-        v-show="!hidden"
-        :class="classes(n('content'), ...contentClass)"
+        :class="
+          classes(
+            n('content'),
+            n(`--${type}`),
+            [$slots.default, n(`--${position}`)],
+            [dot, n('--dot')],
+            [icon, n('--icon')]
+          )
+        "
         :style="{ background: color }"
+        v-show="!hidden"
+        v-bind="$attrs"
       >
-        <var-icon v-if="icon && !dot" :name="icon" size="10px" />
-        <span v-else-if="!$slots['value']">{{ values }}</span>
-        <slot name="value" />
+        <var-icon :class="n('icon')" var-badge-cover :name="icon" v-if="icon" />
+
+        <slot name="value">
+          <span :class="n('value')" v-if="!icon && !dot">{{ value }}</span>
+        </slot>
       </span>
     </transition>
-    <slot />
   </div>
 </template>
 
 <script lang="ts">
 import VarIcon from '../icon'
 import { toNumber } from '@varlet/shared'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, type ComputedRef } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import type { ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('badge')
 
@@ -31,43 +41,17 @@ export default defineComponent({
   components: { VarIcon },
   inheritAttrs: false,
   props,
-  setup(props, { slots }) {
-    const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
-      const { type, position, dot, icon } = props
+  setup(props) {
+    const value: ComputedRef<string | number> = computed(() => {
+      const { value, maxValue } = props
 
-      const positionBasic = slots.default && `${n('position')} ${n(`--${position}`)}`
-      const dotClass = dot ? n('dot') : null
-      const positionClass = getPositionClass()
-      const iconClass = icon ? n('icon') : null
-
-      return [n(`--${type}`), positionBasic, dotClass, positionClass, iconClass]
+      return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
-
-    const values: ComputedRef<string | number> = computed(() => {
-      const { dot, value, maxValue } = props
-
-      if (dot) return ''
-
-      if (value !== undefined && maxValue !== undefined && toNumber(value) > maxValue) return `${maxValue}+`
-
-      return value
-    })
-
-    const getPositionClass = (): string | undefined => {
-      const { position, dot } = props
-
-      if (!dot) return
-
-      if (position.includes('right')) return n('dot--right')
-
-      if (position.includes('left')) return n('dot--left')
-    }
 
     return {
       n,
       classes,
-      values,
-      contentClass,
+      value,
     }
   },
 })

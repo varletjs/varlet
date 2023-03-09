@@ -23,6 +23,7 @@ export class Badge extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    value(): VNode[]
   }
 }
 
