@@ -12,7 +12,7 @@ export interface TabProvider {
 export function useTabs() {
   const { parentProvider, bindParent, index } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 
-  if (!parentProvider || !bindParent || !index) {
+  if (!bindParent) {
     throw Error('<var-tab/> must in <var-tabs/>')
   }
 
