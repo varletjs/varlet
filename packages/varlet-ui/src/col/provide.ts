@@ -1,5 +1,5 @@
-import { useAtParentIndex, useParent } from '../utils/components'
-import { ROW_BIND_COL_KEY, ROW_COUNT_COL_KEY, RowProvider } from '../row/provide'
+import { useParent } from '@varlet/use'
+import { ROW_BIND_COL_KEY, RowProvider } from '../row/provide'
 
 export interface ColPadding {
   left: number
@@ -16,8 +16,7 @@ export interface ColProvider {
 }
 
 export function useRow() {
-  const { parentProvider, bindParent } = useParent<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
-  const { index } = useAtParentIndex(ROW_COUNT_COL_KEY)
+  const { parentProvider, index, bindParent } = useParent<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
 
   if (!parentProvider || !bindParent || !index) {
     console.warn('col must in row')

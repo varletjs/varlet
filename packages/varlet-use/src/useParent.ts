@@ -10,13 +10,13 @@ import {
 } from 'vue'
 import { type UseChildrenBaseProvider } from './useChildren.js'
 
-export function keyInProvides(key: symbol) {
+export function keyInProvides(key: symbol | string) {
   const instance = getCurrentInstance() as any
 
   return key in instance.provides
 }
 
-export function useParent<P, C>(key: symbol) {
+export function useParent<P, C>(key: symbol | string) {
   if (!keyInProvides(key)) {
     return {
       index: null,
