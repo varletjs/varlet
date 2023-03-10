@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import VarLoading from '..'
 import VarSpace from '../../space'
 import VarButton from '../../button'
 import VarCard from '../../card'
-import { pack, use } from './locale'
 import dark from '../../themes/dark/index'
+import { ref } from 'vue'
+import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
+import { pack, use } from './locale'
 
 const loading = ref(false)
 
