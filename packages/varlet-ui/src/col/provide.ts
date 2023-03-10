@@ -18,10 +18,6 @@ export interface ColProvider {
 export function useRow() {
   const { parentProvider, index, bindParent } = useParent<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
 
-  if (!parentProvider || !bindParent || !index) {
-    console.warn('col must in row')
-  }
-
   return {
     index,
     row: parentProvider,
