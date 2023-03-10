@@ -17,8 +17,10 @@ export default defineComponent({
   props: colorPickerProps,
   setup(props: ColorPickerProps) {
     const { modelValue, mode, disabled, modes } = toRefs(props)
+    const currentMode = ref(DEFAULT_MODE)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
+
     function updateModelValueColor(color: any, flag = false) {
       if (flag) {
         initialColor.value = parseBaseColor(color) ?? nullColor
@@ -27,16 +29,19 @@ export default defineComponent({
       const value = extractBaseColor(parseBaseColor(color) ?? nullColor, props.modelValue)
       call(props['onUpdate:modelValue'], value)
     }
-    const currentMode = ref(DEFAULT_MODE)
+
     function updateColor(hsva: HSV) {
       updateModelValueColor(hsva)
     }
+
     function updateMode(mode: string) {
       currentMode.value = mode
     }
+
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
+
     watch(
       () => modelValue.value,
       (newV) => {
@@ -46,12 +51,14 @@ export default defineComponent({
         immediate: true,
       }
     )
+
     watch(
       () => mode.value,
       (newV) => {
         updateMode(newV)
       }
     )
+
     return () => {
       return (
         <>

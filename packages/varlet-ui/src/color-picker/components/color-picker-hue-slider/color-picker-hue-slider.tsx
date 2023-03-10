@@ -1,7 +1,7 @@
 import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
-import { HSVA } from '../../utils/color-utils-types'
+import { HSV } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
 import './color-picker-hue-slider.less'
 import { nullColor } from '../../utils/color-utils'
@@ -16,6 +16,7 @@ export default defineComponent({
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
+
     const getCursorLeft = () => {
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
@@ -23,7 +24,7 @@ export default defineComponent({
         if (props.color?.h === 360) {
           return rect.width - offsetWidth / 2
         }
-        return (((props.color as HSVA).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        return (((props.color as HSV).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
       }
       return 0
     }
@@ -48,9 +49,9 @@ export default defineComponent({
       const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
       const hsv = {
         h: hue,
-        s: (props.color as HSVA).s,
-        v: (props.color as HSVA).v,
-        a: (props.color as HSVA).a,
+        s: (props.color as HSV).s,
+        v: (props.color as HSV).v,
+        a: (props.color as HSV).a,
       }
       call(props['onUpdate:color'], hsv ?? nullColor)
     }
@@ -77,6 +78,7 @@ export default defineComponent({
         DOMUtils.triggerDragEvent(barElement.value, dragConfig)
       }
     })
+
     return () => {
       return (
         <div class={[n(), props.disabled ? n('disabled') : null]}>

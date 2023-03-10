@@ -10,9 +10,11 @@ export default defineComponent({
   props: colorPickerEditProps,
   setup(props: ColorPickerEditProps) {
     const { color, modes } = toRefs(props)
+
     const enabledModes = computed(() => {
       return modes.value.map((key) => ({ ...defaultModes[key], name: key }))
     })
+
     const inputs = computed(() => {
       const mode = enabledModes.value.find((m) => m.name === props.mode)
       if (!mode) return []
@@ -31,6 +33,7 @@ export default defineComponent({
         }
       })
     })
+
     return () => {
       return (
         <div class={n()}>

@@ -21,12 +21,14 @@ export default defineComponent({
     const width = Number(props.width)
     const cursorTop = ref(0)
     const cursorLeft = ref(0)
+
     const getDotStyle = computed(() => {
       return {
         top: cursorTop.value + 'px',
         left: cursorLeft.value + 'px',
       }
     })
+
     function renderCanvas() {
       if (canvasElement.value) {
         const canvas = canvasElement.value.getContext('2d')
@@ -74,12 +76,14 @@ export default defineComponent({
         handleDrag(event as MouseEvent)
       }
     }
+
     function updatePosition() {
       if (paletteInstance) {
         cursorLeft.value = props.color!.s * parseInt(`${props.width}`, 10)
         cursorTop.value = (1 - props.color!.v) * parseInt(`${props.height}`, 10)
       }
     }
+
     onMounted(() => {
       renderCanvas()
       if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
@@ -97,7 +101,9 @@ export default defineComponent({
     })
 
     watch(() => props.color, updatePosition, { immediate: true, deep: true })
+
     watch(() => props.color?.h, renderCanvas, { immediate: true })
+
     return () => {
       return (
         <div
