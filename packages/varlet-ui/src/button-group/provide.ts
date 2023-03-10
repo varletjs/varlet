@@ -1,4 +1,4 @@
-import { useAtChildrenCounter, useChildren } from '../utils/components'
+import { useChildren } from '@varlet/use'
 import type { ComputedRef } from 'vue'
 
 export interface ButtonGroupProvider {
@@ -11,11 +11,9 @@ export interface ButtonGroupProvider {
 }
 
 export const BUTTON_GROUP_BIND_BUTTON_KEY = Symbol('BUTTON_GROUP_BIND_BUTTON_KEY')
-export const BUTTON_GROUP_COUNT_BUTTON_KEY = Symbol('BUTTON_GROUP_COUNT_BUTTON_KEY')
 
 export function useButtons() {
-  const { bindChildren, childProviders } = useChildren<ButtonGroupProvider, null>(BUTTON_GROUP_BIND_BUTTON_KEY)
-  const { length } = useAtChildrenCounter(BUTTON_GROUP_COUNT_BUTTON_KEY)
+  const { bindChildren, childProviders, length } = useChildren<ButtonGroupProvider, null>(BUTTON_GROUP_BIND_BUTTON_KEY)
 
   return {
     length,
