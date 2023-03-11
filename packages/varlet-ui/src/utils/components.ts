@@ -3,15 +3,7 @@ import {
   createApp,
   h,
   getCurrentInstance,
-  inject,
-  onUnmounted,
-  computed,
-  provide,
-  reactive,
   isVNode,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
   ref,
   onActivated,
   onDeactivated,
@@ -21,12 +13,11 @@ import {
   type ExtractPropTypes,
   type Component,
   type VNode,
-  type ComputedRef,
   type ComponentInternalInstance,
   type Ref,
   type ComponentPublicInstance,
 } from 'vue'
-import { isArray, removeItem } from '@varlet/shared'
+import { isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance
