@@ -1,5 +1,5 @@
-import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import { type ComputedRef } from 'vue'
+import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 import { useChildren } from '@varlet/use'
 
 export interface BottomNavigationProvider {
