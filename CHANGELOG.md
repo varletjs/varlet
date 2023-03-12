@@ -1,3 +1,30 @@
+# [2.9.0](https://github.com/varletjs/varlet/compare/v2.8.6...v2.9.0) (2023-03-12)
+
+
+### Bug Fixes
+
+* **ui/bottom-navigation:** fix css dep ([bd1303d](https://github.com/varletjs/varlet/commit/bd1303da392a3f95754e200830a7680e91a95c4c))
+* **ui/button:** fix css dep ([07af3e2](https://github.com/varletjs/varlet/commit/07af3e2915f4a3f1c7c7e7533356f7e04576cc31))
+* **ui/button:** fix css dep ([8bc573a](https://github.com/varletjs/varlet/commit/8bc573a9f776a16ac3cabb43a5ad0568da56a864))
+* **ui/hover:** fix wrong restore style ([ca3a455](https://github.com/varletjs/varlet/commit/ca3a455bcf3b29ff0f384930df6534f7dd82baf9))
+* **ui/loading-bar:** fix timer asynchronous issue ([374130b](https://github.com/varletjs/varlet/commit/374130b2155385ef23b5563a3724aaa4c6b05788))
+* **ui/loading:** fix loading display error and close [#884](https://github.com/varletjs/varlet/issues/884) ([910afa8](https://github.com/varletjs/varlet/commit/910afa8a9aea1e84f5ebacdc589bee67a80a8a7f))
+* **ui/select:** fix css dep ([fbb0100](https://github.com/varletjs/varlet/commit/fbb010064ab6258bcb2a6aa9ecff6cfbc0985014))
+
+
+### Features
+
+* **extension:** support fab ([cc2c039](https://github.com/varletjs/varlet/commit/cc2c03941a43c39b9241e5bde830d420e800cd9e))
+* refactor fab, support popover reference, fix option label lost reactivity ([a8051f3](https://github.com/varletjs/varlet/commit/a8051f34eb26c9a8b1b4ab2f72b58363626be034))
+* **ui/badge:** refactor dom structure ([f96ceda](https://github.com/varletjs/varlet/commit/f96cedac697064782a81fed0924339dfbee83fad))
+* **ui/badge:** support value slot ([#883](https://github.com/varletjs/varlet/issues/883)) ([765393a](https://github.com/varletjs/varlet/commit/765393ae34db3f4c05fc9f3aa67b5d6debbfdd55))
+* **ui/button:** optimize hover effect ([#881](https://github.com/varletjs/varlet/issues/881)) ([fd69f23](https://github.com/varletjs/varlet/commit/fd69f23206593ba2fa7748d4e9d8d69971f981e4))
+* **ui/fab:** new component fab ([#876](https://github.com/varletjs/varlet/issues/876)) ([1ae784a](https://github.com/varletjs/varlet/commit/1ae784a4bbb74f1bcc28e0ea9d7877cd00bf558f))
+* **ui/icon:** icon support animationClass ([#880](https://github.com/varletjs/varlet/issues/880)) ([c6c06d6](https://github.com/varletjs/varlet/commit/c6c06d6bd3d4ab2c4fad468bdb2f1b9215bbed2d))
+* **use:** useParent and useChildren support string key, refactor layout from @varlet/use ([6d8485a](https://github.com/varletjs/varlet/commit/6d8485a66b56959a596c89a02c1fcfaeaad2c929))
+
+
+
 ## [2.8.6](https://github.com/varletjs/varlet/compare/v2.8.5...v2.8.6) (2023-03-05)
 
 
