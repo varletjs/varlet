@@ -60,6 +60,13 @@ const resetDefaultOptions = () => {
   })
 }
 
+const mount = () => {
+  if (!isMount) {
+    isMount = true
+    mountInstance(LoadingBarComponent, props)
+  }
+}
+
 const tickValue = () => {
   valueTimer = window.setTimeout(() => {
     if (props.value >= 95) return
@@ -84,10 +91,7 @@ const start = () => {
   props.error = false
   props.value = 0
 
-  if (!isMount) {
-    isMount = true
-    mountInstance(LoadingBarComponent, props)
-  }
+  mount()
 
   opacityTimer = window.setTimeout(() => {
     props.opacity = 1
@@ -98,7 +102,6 @@ const start = () => {
 
 const finish = () => {
   clearTimer()
-
   props.value = 100
 
   opacityTimer = window.setTimeout(() => {
@@ -118,17 +121,14 @@ const error = () => {
     props.value = 0
   }
 
-  if (!isMount) {
-    isMount = true
-    mountInstance(LoadingBarComponent, props)
-  }
+  mount()
 
   opacityTimer = window.setTimeout(() => {
     props.opacity = 1
   }, 200)
 
   tickValue()
-  finishTimer = window.setTimeout(LoadingBar.finish, 300)
+  finishTimer = window.setTimeout(finish, 300)
 }
 
 const LoadingBar: LoadingBar = {
