@@ -29,7 +29,10 @@ interface LoadingBar {
   resetDefaultOptions(): void
 }
 
-let timer: number
+let valueTimer: number
+let errorTimer: number
+let opacityTimer: number
+let finishTimer: number
 let isMount: boolean
 let setOptions: LoadingBarOptions = {}
 
@@ -57,54 +60,75 @@ const resetDefaultOptions = () => {
   })
 }
 
-const changeValue = () => {
-  timer = window.setTimeout(() => {
+const tickValue = () => {
+  valueTimer = window.setTimeout(() => {
     if (props.value >= 95) return
     let num = Math.random()
 
     if (props.value < 70) num = Math.round(5 * Math.random())
 
     props.value += num
-    changeValue()
+    tickValue()
   }, 200)
 }
 
+const clearTimer = () => {
+  window.clearTimeout(errorTimer)
+  window.clearTimeout(valueTimer)
+  window.clearTimeout(opacityTimer)
+  window.clearTimeout(finishTimer)
+}
+
 const start = () => {
+  clearTimer()
+  props.error = false
+  props.value = 0
+
   if (!isMount) {
     isMount = true
     mountInstance(LoadingBarComponent, props)
   }
 
-  if (!props.error || props.value === 100) {
-    props.value = 0
-  }
-
-  setTimeout(() => {
+  opacityTimer = window.setTimeout(() => {
     props.opacity = 1
   }, 200)
-  changeValue()
+
+  tickValue()
 }
 
 const finish = () => {
+  clearTimer()
+
   props.value = 100
 
-  setTimeout(() => {
+  opacityTimer = window.setTimeout(() => {
     props.opacity = 0
 
-    setTimeout(() => {
+    errorTimer = window.setTimeout(() => {
       props.error = false
     }, 250)
   }, 300)
-
-  window.clearTimeout(timer)
 }
 
 const error = () => {
+  clearTimer()
   props.error = true
 
-  LoadingBar.start()
+  if (props.value === 100) {
+    props.value = 0
+  }
 
-  setTimeout(LoadingBar.finish, 300)
+  if (!isMount) {
+    isMount = true
+    mountInstance(LoadingBarComponent, props)
+  }
+
+  opacityTimer = window.setTimeout(() => {
+    props.opacity = 1
+  }, 200)
+
+  tickValue()
+  finishTimer = window.setTimeout(LoadingBar.finish, 300)
 }
 
 const LoadingBar: LoadingBar = {
