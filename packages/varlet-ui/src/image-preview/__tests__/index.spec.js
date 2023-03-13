@@ -65,3 +65,20 @@ test('test image preview closeable', async () => {
   await delay(300)
   expect(document.querySelector('.var-popup')).toBeFalsy()
 })
+
+test('test image preview setDefaultOptions and resetDefaultOptions', async () => {
+  ImagePreview.setDefaultOptions({ closeable: true })
+  await delay(16)
+  ImagePreview()
+  await delay(200)
+  await trigger(document.querySelector('.var-image-preview__close-icon'), 'click')
+  await delay(300)
+  expect(document.querySelector('.var-popup')).toBeFalsy()
+
+  ImagePreview.resetDefaultOptions()
+  await delay(16)
+  ImagePreview()
+  await delay(200)
+  expect(document.querySelector('.var-image-preview__close-icon')).toBeFalsy()
+  ImagePreview.close()
+})
