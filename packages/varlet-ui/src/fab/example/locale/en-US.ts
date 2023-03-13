@@ -1,7 +1,7 @@
 export default {
   type: 'Theme Color Button',
   trigger: 'Trigger Method',
-  direction: 'Action menu popup direction',
+  direction: 'Action Menu Popup Direction',
   position: 'Trigger Position',
   default: 'default',
   primary: 'primary',
@@ -10,7 +10,7 @@ export default {
   warning: 'warning',
   danger: 'danger',
   disabled: 'Disabled',
-  triggerToggle: 'Trigger show/hide',
-  actionsToggle: 'Action menu expand/collapse',
+  triggerToggle: 'Trigger Show/Hide',
+  actionsToggle: 'Action Menu Expand/Collapse',
   toggle: 'Toggle',
 }
