@@ -235,7 +235,8 @@ const actions = [
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
-| `ImagePreview.close` | 关闭image-preview | _-_ | `-` |
+| `ImagePreview` | 显示 image-preview | _options \| string \| string[]_ | `-` |
+| `ImagePreview.close` | 关闭 image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 

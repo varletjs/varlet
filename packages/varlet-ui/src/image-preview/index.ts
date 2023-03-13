@@ -29,9 +29,11 @@ function normalizeOptions(options: UserImagePreviewOptions = {}) {
   if (isString(options)) {
     return { ...defaultOptions, images: [options] }
   }
+
   if (isArray(options)) {
     return { ...defaultOptions, images: options }
   }
+
   return { ...defaultOptions, ...options }
 }
 

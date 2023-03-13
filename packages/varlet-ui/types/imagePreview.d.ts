@@ -21,7 +21,6 @@ export interface ImagePreviewProps extends BasicAttributes {
 }
 
 export interface ImagePreviewOptions {
-  show?: boolean
   current?: string
   images?: string[]
   zoom?: string | number
@@ -47,12 +46,14 @@ export class ImagePreviewComponent extends VarComponent {
 
 export interface IImagePreview {
   (options: string | string[] | ImagePreviewOptions): void
+
   Component: typeof ImagePreviewComponent
 
-  close(): void
-
   setDefaultOptions(options: ImagePreviewOptions): void
+
   resetDefaultOptions(): void
+
+  close(): void
 
   install(app: App): void
 }

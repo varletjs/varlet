@@ -237,6 +237,7 @@ const actions = [
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
+| `ImagePreview` | Open image-preview | _options \| string \| string[]_ | `-` |
 | `ImagePreview.close` | Close image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
