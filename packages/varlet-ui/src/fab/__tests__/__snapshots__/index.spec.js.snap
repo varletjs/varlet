@@ -4,7 +4,7 @@ exports[`test fab color 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" style=\\"background: yellow;\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -14,7 +14,7 @@ exports[`test fab custom icon 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-check var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms; font-size: 30px;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -28,7 +28,7 @@ exports[`test fab custom icon 2`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-fire var-fab__trigger-active-icon\\" style=\\"transition-duration: 200ms; font-size: 30px;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"\\">
     <div class=\\"var-fab__action\\">
@@ -42,7 +42,7 @@ exports[`test fab direction 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -52,7 +52,7 @@ exports[`test fab direction 2`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-right var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -62,7 +62,7 @@ exports[`test fab direction 3`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-bottom var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -72,7 +72,7 @@ exports[`test fab direction 4`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-left var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -82,7 +82,7 @@ exports[`test fab events and fragment default slots and click outside close 1`] 
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -102,7 +102,7 @@ exports[`test fab fixed equals false 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--absolute\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -112,7 +112,7 @@ exports[`test fab position 1`] = `
 "<div class=\\"var-fab var-fab--position-left-top var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -122,7 +122,7 @@ exports[`test fab position 2`] = `
 "<div class=\\"var-fab var-fab--position-right-top var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -132,7 +132,7 @@ exports[`test fab position 3`] = `
 "<div class=\\"var-fab var-fab--position-left-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -142,19 +142,19 @@ exports[`test fab position 4`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
 `;
 
-exports[`test fab teleport 1`] = `"<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\"><!--v-if--><div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div><div class=\\"var-button__overlay\\"></div></button><div class=\\"var-fab__actions\\" style=\\"display: none;\\"><div class=\\"var-fab__action\\"><div>action</div></div></div></div>"`;
+exports[`test fab teleport 1`] = `"<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\"><!--v-if--><div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div><div class=\\"var-hover-overlay\\"></div></button><div class=\\"var-fab__actions\\" style=\\"display: none;\\"><div class=\\"var-fab__action\\"><div>action</div></div></div></div>"`;
 
 exports[`test fab trigger equals click 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -168,7 +168,7 @@ exports[`test fab trigger equals click 2`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close var-fab__trigger-active-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"\\">
     <div class=\\"var-fab__action\\">
@@ -182,7 +182,7 @@ exports[`test fab trigger equals click 3`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -196,7 +196,7 @@ exports[`test fab trigger equals hover 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -210,7 +210,7 @@ exports[`test fab trigger equals hover 2`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-window-close var-fab__trigger-active-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"\\">
     <div class=\\"var-fab__action\\">
@@ -224,7 +224,7 @@ exports[`test fab trigger equals hover 3`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\">
     <div class=\\"var-fab__action\\">
@@ -245,7 +245,7 @@ exports[`test fab type 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -255,7 +255,7 @@ exports[`test fab type 2`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -265,7 +265,7 @@ exports[`test fab type 3`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--warning var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -275,7 +275,7 @@ exports[`test fab type 4`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--info var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -285,7 +285,7 @@ exports[`test fab type 5`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--danger var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -295,7 +295,7 @@ exports[`test fab type 6`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--success var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"
@@ -305,7 +305,7 @@ exports[`test fab zIndex and inset 1`] = `
 "<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 999; top: 10px; bottom: 10px; left: 10px; right: 10px;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
-    <div class=\\"var-button__overlay\\"></div>
+    <div class=\\"var-hover-overlay\\"></div>
   </button>
   <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
 </div>"

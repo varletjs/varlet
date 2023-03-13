@@ -245,7 +245,7 @@ exports[`test uploader example 1`] = `
     <div class=\\"\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2\\" type=\\"button\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">上传</div>
-        <div class=\\"var-button__overlay\\"></div>
+        <div class=\\"var-hover-overlay\\"></div>
       </button></div>
   </div>
   <transition-stub>
@@ -293,7 +293,7 @@ exports[`test uploader example 1`] = `
         <div class=\\"\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round\\" type=\\"button\\">
             <!--v-if-->
             <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-upload\\" style=\\"transition-duration: 0ms; font-size: 28px;\\"></i></div>
-            <div class=\\"var-button__overlay\\"></div>
+            <div class=\\"var-hover-overlay\\"></div>
           </button></div>
       </div>
       <transition-stub>
