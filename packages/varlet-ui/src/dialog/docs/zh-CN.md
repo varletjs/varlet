@@ -249,9 +249,9 @@ const show = ref(false)
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `Dialog` | 显示对话框 | _options \| string_ | `-` |
+| `Dialog.close` | 关闭对话框 | _-_ | `-` |
 | `Dialog.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `Dialog.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
-| `Dialog.close` | 关闭对话框 | _-_ | `-` |
 
 ### Dialog Options
 
