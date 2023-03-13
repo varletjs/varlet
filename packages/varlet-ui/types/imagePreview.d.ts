@@ -51,6 +51,9 @@ export interface IImagePreview {
 
   close(): void
 
+  setDefaultOptions(options: ImagePreviewOptions): void
+  resetDefaultOptions(): void
+
   install(app: App): void
 }
 

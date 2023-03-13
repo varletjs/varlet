@@ -232,6 +232,8 @@ const actions = [
 | `opened` | Triggered at the end of the open image-preview animation | `-` |
 | `close`  | Triggered when Image-Preview is off | `-` |
 | `closed` | Triggered when the animation that closes the image-preview ends | `-` |
+| `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### Slot
 

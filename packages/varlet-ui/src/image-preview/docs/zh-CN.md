@@ -230,6 +230,8 @@ const actions = [
 | `opened` | 打开 image-preview 动画结束时触发 | `-` |
 | `close`  | 关闭 image-preview 时触发 | `-` |
 | `closed` | 关闭 image-preview 动画结束时触发 | `-` |
+| `ImagePreview.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `ImagePreview.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 
 ### 插槽
 
