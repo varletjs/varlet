@@ -66,20 +66,19 @@
 
     &-ripple {
       position: absolute;
-      width: 0;
+      width: 36px;
+      height: 36px;
       z-index: -1;
-      height: 0;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       opacity: 0.3;
-      background: var(--slider-thumb-ripple-background);
+      background: transparent;
       transition: 0.3s var(--cubic-bezier);
 
       &--active {
-        width: 36px;
-        height: 36px;
+        background: var(--slider-thumb-ripple-background);
       }
     }
 
