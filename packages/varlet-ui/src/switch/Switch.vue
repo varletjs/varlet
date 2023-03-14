@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()">
+  <div :class="n()" v-hover:desktop="hover">
     <div
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
       @click="switchActive"
@@ -31,6 +31,8 @@
         >
           <var-loading v-if="loading" :radius="radius" color="currentColor" />
         </div>
+
+        <var-hover-overlay :hovering="hovering" />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
@@ -42,6 +44,8 @@ import { defineComponent, computed, nextTick } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
 import { props } from './props'
 import VarFormDetails from '../form-details'
 import VarLoading from '../loading'
@@ -65,12 +69,14 @@ export default defineComponent({
   components: {
     VarLoading,
     VarFormDetails,
+    VarHoverOverlay,
   },
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   props,
   setup(props) {
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { hovering, handleHovering } = useHoverOverlay()
 
     const validate = () => v(props.rules, props.modelValue)
 
@@ -133,6 +139,12 @@ export default defineComponent({
       validateWithTrigger()
     }
 
+    const hover = (value: boolean) => {
+      if (props.disabled || form?.disabled.value) return
+
+      handleHovering(value)
+    }
+
     const reset = () => {
       call(props['onUpdate:modelValue'], props.inactiveValue)
       resetValidation()
@@ -149,6 +161,8 @@ export default defineComponent({
       n,
       classes,
       switchActive,
+      hovering,
+      hover,
       radius,
       styleComputed,
       errorMessage,

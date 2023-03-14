@@ -562,6 +562,7 @@ exports[`test form with switch 1`] = `
         <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
@@ -580,6 +581,7 @@ exports[`test form with switch 2`] = `
         <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
@@ -609,6 +611,7 @@ exports[`test form with switch 3`] = `
         <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
