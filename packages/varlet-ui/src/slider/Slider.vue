@@ -38,6 +38,7 @@
           ></div>
           <div
             :class="classes(n('thumb-ripple'), [thumbsProps[item.enumValue].active, n('thumb-ripple--active')])"
+            v-hover:desktop="(value) => hover(value, item)"
             :style="{
               background: thumbsProps[item.enumValue].active ? thumbColor : undefined,
             }"

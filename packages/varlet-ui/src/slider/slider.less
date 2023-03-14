@@ -53,6 +53,7 @@
 
   &__thumb {
     position: absolute;
+    cursor: pointer;
 
     &-block {
       position: absolute;
@@ -61,6 +62,7 @@
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: background-color 0.25s;
+      z-index: 1;
       background-color: var(--slider-thumb-block-background);
     }
 
@@ -68,7 +70,6 @@
       position: absolute;
       width: 36px;
       height: 36px;
-      z-index: -1;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -128,7 +129,7 @@
         background-color: var(--slider-error-color) !important;
       }
 
-      &-ripple {
+      &-ripple--active {
         background-color: var(--slider-error-color) !important;
       }
 
