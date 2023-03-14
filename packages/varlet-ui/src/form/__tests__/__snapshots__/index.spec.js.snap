@@ -292,11 +292,21 @@ exports[`test form with rate 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -309,11 +319,21 @@ exports[`test form with rate 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -337,11 +357,21 @@ exports[`test form with rate 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->

@@ -4,10 +4,11 @@
       <div
         :key="val"
         v-for="val in toNumber(count)"
-        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         :style="getStyle(val)"
         :class="getClass(val)"
         @click="handleClick(val, $event)"
+        v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        v-hover:desktop="handleHover(val)"
       >
         <var-icon
           :class="n('content-icon')"
@@ -16,7 +17,9 @@
           :namespace="namespace"
           :name="getCurrentState(val).name"
           :style="{ fontSize: toSizeUnit(size) }"
-        />
+        >
+        </var-icon>
+        <var-hover-overlay :hovering="hovering && val <= hoverValue" />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
@@ -27,7 +30,9 @@
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import { defineComponent, nextTick } from 'vue'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
+import { defineComponent, nextTick, ref } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -42,12 +47,15 @@ export default defineComponent({
   components: {
     VarIcon,
     VarFormDetails,
+    VarHoverOverlay,
   },
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   props,
   setup(props) {
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { hovering, handleHovering } = useHoverOverlay()
+    const hoverValue = ref<number>(-1)
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -112,6 +120,13 @@ export default defineComponent({
       validateWithTrigger()
     }
 
+    const handleHover = (value: number) => {
+      return (isHover: boolean) => {
+        hoverValue.value = value
+        handleHovering(isHover)
+      }
+    }
+
     const reset = () => {
       call(props['onUpdate:modelValue'], 0)
       resetValidation()
@@ -133,6 +148,9 @@ export default defineComponent({
       getClass,
       getCurrentState,
       handleClick,
+      hovering,
+      hoverValue,
+      handleHover,
       reset,
       validate,
       resetValidation,
@@ -149,5 +167,6 @@ export default defineComponent({
 @import '../ripple/ripple';
 @import '../icon/icon';
 @import '../form-details/formDetails';
+@import '../hover-overlay/hoverOverlay';
 @import './rate';
 </style>
