@@ -13,7 +13,7 @@ export function useTabsItems() {
     TABS_ITEMS_BIND_TAB_ITEM_KEY
   )
 
-  if (!parentProvider || !bindParent || !index) {
+  if (!bindParent) {
     throw Error('<var-tab-item/> must in <var-tabs-items/>')
   }
 

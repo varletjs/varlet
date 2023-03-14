@@ -23,6 +23,7 @@ export interface MenuProps extends BasicAttributes {
   show?: boolean
   disabled?: boolean
   trigger?: MenuTrigger
+  reference?: string
   placement?: MenuPlacement
   offsetX?: string | number
   offsetY?: string | number

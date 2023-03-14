@@ -367,6 +367,7 @@ export default defineComponent({
       wrapWidth: computed(() => wrapWidth.value),
       multiple,
       focusColor,
+      computeLabel,
       onSelect,
       reset,
       validate,
@@ -407,6 +408,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
 @import '../icon/icon';
 @import '../menu/menu';
 @import '../form-details/formDetails';

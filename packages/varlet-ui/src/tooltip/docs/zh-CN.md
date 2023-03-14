@@ -189,6 +189,7 @@ import { Snackbar } from '@varlet/ui'
 | `same-width` | 是否与触发元素同宽 | _boolean_ | `false`  |
 | `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
+| `reference`       | 关联的触发元素选择器，用于指定特定子元素为触发元素 | _string_              | `-`           |
 
 ### Placement
 

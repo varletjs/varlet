@@ -296,7 +296,7 @@ function handleAutoLoadingClick() {
 
 #### ButtonGroup Props
 
-| 参数           | 说明                                                                                       | 类型       | 默认值       |
+| Prop             | Description                                                                             | Type      | Default        |
 |--------------|------------------------------------------------------------------------------------------|----------|-----------|
 | `type`       | Button Group type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`       | Button Group size, Can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |

@@ -264,5 +264,7 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../ripple/ripple';
+@import '../loading/loading';
+@import '../button/button';
 @import './card';
 </style>

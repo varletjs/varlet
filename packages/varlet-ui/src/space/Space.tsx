@@ -1,7 +1,7 @@
-import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
+import { defineComponent, VNodeChild } from 'vue'
 import { internalSizeValidator, props, type SpaceSize } from './props'
 import { isArray } from '@varlet/shared'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
 import '../styles/common.less'
@@ -27,26 +27,7 @@ export default defineComponent({
       const isInternalSize = internalSizeValidator(size)
       const [y, x] = getSize(size, isInternalSize)
 
-      const flatten = (vNodes: any) => {
-        const result: VNode[] = []
-
-        vNodes.forEach((vNode: any) => {
-          if (vNode.type === Comment) return
-
-          if (vNode.type === Fragment && isArray(vNode.children)) {
-            vNode.children.forEach((item: VNode) => {
-              result.push(item)
-            })
-            return
-          }
-
-          result.push(vNode)
-        })
-
-        return result
-      }
-
-      children = flatten(children)
+      children = flatFragment(children)
 
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {

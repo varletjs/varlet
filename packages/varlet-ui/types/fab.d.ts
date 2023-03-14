@@ -1,23 +1,46 @@
-import { VNode } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VNode, TeleportProps } from 'vue'
+import { VarComponent, BasicAttributes, ListenerProp, Type } from './varComponent'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
+
 export type FabTrigger = 'click' | 'hover'
+
 export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
-export type Type = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+
+export type FabType = Type
 
 export declare const fabProps: Record<string, any>
+
+export interface FabTriggerData {
+  active: boolean
+}
+
 export interface FabProps extends BasicAttributes {
-  modelValue?: boolean
-  color?: string
-  textColor?: string
-  icon?: string
-  iconSize?: number | string
-  type: Type
-  trigger?: FabTrigger
-  direction?: FabDirection
+  active?: boolean
+  show?: boolean
+  type?: FabType
+  fixed?: boolean
   position?: FabPosition
-  'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
+  direction?: FabDirection
+  trigger?: FabTrigger
+  disabled?: boolean
+  color?: string
+  inactiveIcon?: string
+  activeIcon?: string
+  inactiveIconSize?: string | number
+  activeIconSize?: string | number
+  zIndex?: string | number
+  top?: string | number
+  bottom?: string | number
+  left?: string | number
+  right?: string | number
+  teleport?: TeleportProps['to']
+  onClick?: ListenerProp<(active: boolean, e: Event) => void>
+  onOpen?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  'onUpdate:active'?: ListenerProp<(active: boolean) => void>
 }
 
 export class Fab extends VarComponent {
@@ -25,7 +48,7 @@ export class Fab extends VarComponent {
 
   $slots: {
     default(): VNode[]
-    activator(): VNode[]
+    trigger(data: FabTriggerData): VNode[]
   }
 }
 

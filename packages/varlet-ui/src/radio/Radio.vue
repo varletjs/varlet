@@ -51,14 +51,11 @@
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { props } from './props'
+import { computed, defineComponent, nextTick, ref, watch, type Ref, type ComputedRef } from 'vue'
+import { props, type ValidateTrigger } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
-import { useRadioGroup } from './provide'
+import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTrigger } from './props'
-import type { RadioProvider } from './provide'
 
 const { n, classes } = createNamespace('radio')
 export default defineComponent({

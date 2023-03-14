@@ -21,6 +21,21 @@ interface ImagePreviewOptions {
 }
 
 let singletonOptions: ImagePreviewOptions | null
+let defaultOptions: ImagePreviewOptions = {}
+
+export type UserImagePreviewOptions = ImagePreviewOptions | string | Array<string>
+
+function normalizeOptions(options: UserImagePreviewOptions = {}) {
+  if (isString(options)) {
+    return { ...defaultOptions, images: [options] }
+  }
+
+  if (isArray(options)) {
+    return { ...defaultOptions, images: options }
+  }
+
+  return { ...defaultOptions, ...options }
+}
 
 function ImagePreview(options: string | string[] | ImagePreviewOptions) {
   if (!inBrowser()) {
@@ -29,11 +44,7 @@ function ImagePreview(options: string | string[] | ImagePreviewOptions) {
 
   ImagePreview.close()
 
-  const imagePreviewOptions: ImagePreviewOptions = isString(options)
-    ? { images: [options] }
-    : isArray(options)
-    ? { images: options }
-    : options
+  const imagePreviewOptions: ImagePreviewOptions = normalizeOptions(options)
   const reactiveImagePreviewOptions: ImagePreviewOptions = reactive(imagePreviewOptions)
   reactiveImagePreviewOptions.teleport = 'body'
   singletonOptions = reactiveImagePreviewOptions
@@ -66,6 +77,14 @@ ImagePreview.close = () => {
       prevSingletonOptions.show = false
     })
   }
+}
+
+ImagePreview.setDefaultOptions = (options: ImagePreviewOptions) => {
+  defaultOptions = options
+}
+
+ImagePreview.resetDefaultOptions = () => {
+  defaultOptions = {}
 }
 
 VarImagePreview.install = function (app: App) {

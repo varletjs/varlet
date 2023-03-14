@@ -416,9 +416,9 @@ function handleSelect(action) {
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `ActionSheet` | 显示动作面板 | _options_ | `-` |
+| `ActionSheet.close` | 关闭动作面板 | _-_ | `-` |
 | `ActionSheet.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `ActionSheet.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
-| `ActionSheet.close` | 关闭动作面板 | _-_ | `-` |
 
 ### ActionSheet Options
 

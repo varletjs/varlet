@@ -3,31 +3,21 @@ import {
   createApp,
   h,
   getCurrentInstance,
-  inject,
-  onUnmounted,
-  computed,
-  provide,
-  reactive,
   isVNode,
-  VNodeChild,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
   ref,
   onActivated,
   onDeactivated,
-  createTextVNode,
+  Comment,
   Fragment,
   type PropType,
   type ExtractPropTypes,
   type Component,
   type VNode,
-  type ComputedRef,
   type ComponentInternalInstance,
   type Ref,
   type ComponentPublicInstance,
 } from 'vue'
-import { isArray, removeItem } from '@varlet/shared'
+import { isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance
@@ -96,30 +86,24 @@ export function mountInstance(
   return { unmountInstance: unmount }
 }
 
-// o(n) flatFragment
-export function flatFragment(vNodes: VNodeChild[] = [], filterCommentNode = true, result: VNode[] = []): VNode[] {
-  vNodes.forEach((vNode) => {
-    if (vNode === null) return
-    if (typeof vNode !== 'object') {
-      if (typeof vNode === 'string' || typeof vNode === 'number') {
-        result.push(createTextVNode(String(vNode)))
-      }
+export function flatFragment(vNodes: any) {
+  const result: VNode[] = []
+
+  vNodes.forEach((vNode: any) => {
+    if (vNode.type === Comment) {
       return
     }
-    if (Array.isArray(vNode)) {
-      flatFragment(vNode, filterCommentNode, result)
+
+    if (vNode.type === Fragment && isArray(vNode.children)) {
+      vNode.children.forEach((item: VNode) => {
+        result.push(item)
+      })
       return
     }
-    if (vNode.type === Fragment) {
-      if (vNode.children === null) return
-      if (Array.isArray(vNode.children)) {
-        flatFragment(vNode.children, filterCommentNode, result)
-      }
-      // rawSlot
-    } else if (vNode.type !== Comment) {
-      result.push(vNode)
-    }
+
+    result.push(vNode)
   })
+
   return result
 }
 
@@ -146,113 +130,6 @@ export function flatVNodes(subTree: any) {
   flat(subTree)
 
   return vNodes
-}
-
-export function useAtChildrenCounter(key: symbol) {
-  const instances: ComponentInternalInstance[] = reactive([])
-  const parentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
-
-  const sortInstances = () => {
-    const vNodes: any[] = flatVNodes(parentInstance.subTree)
-
-    instances.sort((a, b) => {
-      return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode)
-    })
-  }
-
-  const collect = (instance: ComponentInternalInstance) => {
-    instances.push(instance)
-    sortInstances()
-  }
-
-  const clear = (instance: ComponentInternalInstance) => {
-    removeItem(instances, instance)
-  }
-
-  provide<ChildrenCounter>(key, {
-    collect,
-    clear,
-    instances,
-  })
-
-  const length: ComputedRef<number> = computed(() => instances.length)
-
-  return {
-    length,
-  }
-}
-
-export function useAtParentIndex(key: symbol) {
-  if (!keyInProvides(key)) {
-    return { index: null }
-  }
-
-  const childrenCounter: ChildrenCounter = inject<ChildrenCounter>(key) as ChildrenCounter
-
-  const { collect, clear, instances } = childrenCounter
-
-  const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
-
-  onMounted(() => {
-    nextTick().then(() => collect(instance))
-  })
-  onUnmounted(() => {
-    nextTick().then(() => clear(instance))
-  })
-
-  const index = computed(() => instances.indexOf(instance))
-
-  return {
-    index,
-  }
-}
-
-export function useChildren<P, C>(key: symbol) {
-  const childProviders: C[] = []
-
-  const collect = (childProvider: C) => {
-    childProviders.push(childProvider)
-  }
-
-  const clear = (childProvider: C) => {
-    removeItem(childProviders, childProvider)
-  }
-
-  const bindChildren = (parentProvider: P) => {
-    provide<P & BaseParentProvider<C>>(key, {
-      collect,
-      clear,
-      ...parentProvider,
-    })
-  }
-
-  return {
-    childProviders,
-    bindChildren,
-  }
-}
-
-export function useParent<P, C>(key: symbol) {
-  if (!keyInProvides(key)) {
-    return {
-      parentProvider: null,
-      bindParent: null,
-    }
-  }
-
-  const rawParentProvider = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
-
-  const { collect, clear, ...parentProvider } = rawParentProvider
-
-  const bindParent = (childProvider: C) => {
-    onMounted(() => collect(childProvider))
-    onBeforeUnmount(() => clear(childProvider))
-  }
-
-  return {
-    parentProvider,
-    bindParent,
-  }
 }
 
 export function keyInProvides(key: symbol) {

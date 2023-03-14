@@ -6,7 +6,7 @@ export function useBreadcrumb() {
     BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY
   )
 
-  if (!parentProvider || !bindParent || !index) {
+  if (!bindParent) {
     throw Error('<var-breadcrumb/> must in <var-breadcrumbs/>')
   }
 

@@ -415,9 +415,9 @@ function handleSelect(action) {
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `ActionSheet` | Show action sheet | _options \| string_ | `-` |
+| `ActionSheet.close` | Close action sheet | _-_ | `-` |
 | `ActionSheet.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `ActionSheet.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
-| `ActionSheet.close` | Close action sheet | _-_ | `-` |
 
 ### ActionSheet Options
 

@@ -229,6 +229,7 @@ it is recommended to wrap a `block` element.
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
 | `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
+| `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 

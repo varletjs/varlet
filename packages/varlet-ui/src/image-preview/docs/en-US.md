@@ -233,6 +233,15 @@ const actions = [
 | `close`  | Triggered when Image-Preview is off | `-` |
 | `closed` | Triggered when the animation that closes the image-preview ends | `-` |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `ImagePreview` | Open image-preview | _options \| string \| string[]_ | `-` |
+| `ImagePreview.close` | Close image-preview | _-_ | `-` |
+| `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+
 ### Slot
 
 | Name | Description | SlotProps |

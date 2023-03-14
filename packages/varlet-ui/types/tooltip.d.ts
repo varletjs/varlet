@@ -19,6 +19,7 @@ export interface TooltipProps extends BasicAttributes {
   color?: string
   type?: TooltipType
   trigger?: TooltipTrigger
+  reference?: string
   placement?: TooltipPlacement
   offsetX?: string | number
   offsetY?: string | number

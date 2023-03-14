@@ -311,4 +311,9 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   'avatar-group': {
     path: '/avatar',
   },
+  fab: {
+    path: '/fab',
+    attrs: ['type="primary"'],
+    closeSelf: true,
+  },
 }

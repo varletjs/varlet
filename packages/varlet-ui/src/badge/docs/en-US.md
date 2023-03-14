@@ -33,9 +33,9 @@ Set the content of the badge through the `value` attribute.
 ```html
 <template>
   <var-space>
+    <var-badge type="danger" :value="66" />
     <var-badge type="danger" value="badge" />
     <var-badge type="danger" value="hot" />
-    <var-badge type="danger" value="66" />
   </var-space>
 </template>
 ```
@@ -44,18 +44,10 @@ Set the content of the badge through the `value` attribute.
 Control the range of badge display values through `value` and `max-value` (effective when both `value` and `max-value` exist).
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(88)
-const value1 = ref(188)
-const maxValue = ref(99)
-</script>
-
 <template>
   <var-space>
-    <var-badge type="danger" :value="value" :max-value="maxValue" />
-    <var-badge type="danger" :value="value1" :max-value="maxValue" />
+    <var-badge type="danger" :value="88" :max-value="99" />
+    <var-badge type="danger" :value="188" :max-value="99" />
   </var-space>
 </template>
 ```
@@ -66,8 +58,8 @@ Set the position of the badge through the `position` property.
 
 ```html
 <template>
-  <var-space :size="[8,20]">
-    <var-badge type="danger" position="right-top">
+  <var-space :size="[8, 20]">
+    <var-badge type="danger">
       <var-chip plain :round="false" color="#009688">The Upper Right</var-chip>
     </var-badge>
     <var-badge type="danger" position="right-bottom">
@@ -100,9 +92,10 @@ function handleChange() {
 
 <template>
   <var-space>
-    <var-badge type="danger" position="right-top" :hidden="hidden">
+    <var-badge type="danger" :hidden="hidden">
       <var-chip plain :round="false" color="#009688">Badge</var-chip>
     </var-badge>
+
     <var-button type="success" @click="handleChange">Click To Change The State</var-button>
   </var-space>
 </template>
@@ -114,7 +107,7 @@ Set the color of the badge through the `color` property.
 
 ```html
 <template>
-  <var-badge color="#6200ea" position="right-top">
+  <var-badge color="#6200ea">
     <var-chip plain :round="false" color="#009688">Badge</var-chip>
   </var-badge>
 </template>
@@ -126,8 +119,22 @@ Set Badge Icon through `icon` property.
 
 ```html
 <template>
-  <var-badge color="#6200ea" position="right-top" icon="notebook">
+  <var-badge color="#6200ea" icon="notebook">
     <var-chip plain :round="false" color="#009688">Badge</var-chip>
+  </var-badge>
+</template>
+```
+
+### Custom Badge Value
+
+```html
+<template>
+  <var-badge color="#6200ea">
+    <var-chip plain :round="false" color="#009688">Badge</var-chip>
+
+    <template #value>
+      <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>
+    </template>
   </var-badge>
 </template>
 ```
@@ -152,6 +159,7 @@ Set Badge Icon through `icon` property.
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` |  Badge content | `-` |
+| `value` | The value shown in the badge | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
@@ -159,6 +167,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--badge-content-padding` | `2px 6px` |
+| `--badge-icon-size` | `12px` |
 | `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|
 | `--badge-danger-color` |  `var(--color-danger)`|

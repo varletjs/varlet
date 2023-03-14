@@ -1,100 +1,185 @@
-import { computed, defineComponent, Ref, ref, Transition, watch } from 'vue'
-import { useClickOutside } from '@varlet/use'
-import { call, createNamespace, flatFragment } from '../utils/components'
-import { props } from './props'
 import Button from '../button'
 import Icon from '../icon'
+import { computed, defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
+import { useClickOutside } from '@varlet/use'
+import { call, createNamespace, flatFragment, useTeleport } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
+import { toNumber } from '@varlet/shared'
+import { props } from './props'
 
+import '../styles/common.less'
+import '../styles/elevation.less'
+import '../ripple/ripple.less'
+import '../icon/icon.less'
+import '../loading/loading.less'
+import '../button/button.less'
 import './fab.less'
 
 const { classes, n } = createNamespace('fab')
 
 export default defineComponent({
   name: 'VarFab',
-  components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon,
-  },
+  inheritAttrs: false,
   props,
-  setup(props, { slots }) {
-    const internal: Ref<boolean> = ref(props.active)
+  setup(props, { slots, attrs }) {
+    const localActive: Ref<boolean> = ref(false)
     const host: Ref<null | HTMLElement> = ref(null)
-
-    watch(
-      () => props.active,
-      (val) => {
-        internal.value = val
-      }
-    )
+    const { disabled } = useTeleport()
 
     const isActive = computed({
       get(): boolean {
-        return internal.value
+        return localActive.value
       },
-      set(newValue: boolean) {
-        internal.value = newValue
-        call(props['onUpdate:active'], newValue)
+      set(value: boolean) {
+        localActive.value = value
+        call(props['onUpdate:active'], value)
       },
     })
 
-    const classesContainer: any = computed(() => {
-      return classes(n(), n('--fixed'), n(`--${props.position}`), n(`--direction-${props.direction}`), [
-        isActive.value,
-        n(`--is-active`),
-      ])
-    })
-
-    const setIsActiveValue = (value: boolean) => {
-      isActive.value = value
-    }
-
-    const handleClick = (e: Event, value: boolean) => {
+    const handleClick = (e: Event, value: boolean, childrenLength: number) => {
       e.stopPropagation()
-      props.trigger === 'click' && setIsActiveValue(value)
+
+      if (props.trigger !== 'click' || props.disabled) {
+        return
+      }
+
+      if (childrenLength === 0) {
+        call(props.onClick, isActive.value, e)
+        return
+      }
+
+      isActive.value = value
+      call(props.onClick, isActive.value, e)
+      call(isActive.value ? props.onOpen : props.onClose)
     }
 
-    const handleMouse = (value: boolean) => {
-      props.trigger === 'hover' && setIsActiveValue(value)
+    const handleMouse = (value: boolean, childrenLength: number) => {
+      if (props.trigger !== 'hover' || props.disabled || childrenLength === 0) {
+        return
+      }
+
+      isActive.value = value
+      call(isActive.value ? props.onOpen : props.onClose)
     }
 
     const handleClickOutside = () => {
-      if (props.trigger !== 'click') {
+      if (props.trigger !== 'click' || props.disabled) {
         return
       }
-      setIsActiveValue(false)
+
+      if (isActive.value !== false) {
+        isActive.value = false
+        call(props.onClose)
+      }
     }
 
-    useClickOutside(host, 'click', handleClickOutside)
+    const renderTrigger = () => {
+      if (slots.trigger) {
+        return props.show ? slots.trigger({ active: isActive.value }) : null
+      }
 
-    return () => {
-      const fabChildrens = flatFragment(slots.default?.())
+      return (
+        <Button
+          v-show={props.show}
+          var-fab-cover
+          class={n('trigger')}
+          type={props.type}
+          color={props.color}
+          disabled={props.disabled}
+          round
+        >
+          <Icon
+            var-fab-cover
+            class={classes([isActive.value, n('trigger-active-icon'), n('trigger-inactive-icon')])}
+            name={isActive.value ? props.activeIcon : props.inactiveIcon}
+            size={isActive.value ? props.inactiveIconSize : props.activeIconSize}
+            transition={200}
+            animationClass={n('--trigger-icon-animation')}
+          />
+        </Button>
+      )
+    }
+
+    const renderFab = () => {
+      const children = flatFragment(slots.default?.() ?? [])
 
       return (
         <div
+          class={classes(n(), n(`--position-${props.position}`), n(`--direction-${props.direction}`), [
+            props.fixed,
+            n('--fixed'),
+            n('--absolute'),
+          ])}
+          style={{
+            zIndex: toNumber(props.zIndex),
+            top: toSizeUnit(props.top),
+            bottom: toSizeUnit(props.bottom),
+            left: toSizeUnit(props.left),
+            right: toSizeUnit(props.right),
+          }}
           ref={host}
-          class={classesContainer.value}
-          onClick={(e) => handleClick(e, !isActive.value)}
-          onMouseleave={() => handleMouse(false)}
-          onMouseenter={() => handleMouse(true)}
+          onClick={(e) => handleClick(e, !isActive.value, children.length)}
+          onMouseleave={() => handleMouse(false, children.length)}
+          onMouseenter={() => handleMouse(true, children.length)}
+          {...attrs}
         >
-          <Transition name={n(`--active-transition`)}>
-            {slots.activator ? (
-              slots.activator?.()
-            ) : (
-              <var-button type={props.type} color={props.color} textColor={props.textColor} round>
-                <var-icon name={props.icon} size={props.iconSize} />
-              </var-button>
-            )}
-          </Transition>
-          <Transition name={n(`--actions-transition`)} appear>
-            <div v-show={isActive.value && fabChildrens.length} class={n('list')}>
-              {fabChildrens.map((chilren, index) => {
-                return <div style={{ transitionDelay: index * 0.05 + 's' }}>{chilren}</div>
+          <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
+
+          <Transition
+            name={n(`--actions-transition-${props.direction}`)}
+            onAfterEnter={props.onOpened}
+            onAfterLeave={props.onClosed}
+          >
+            <div
+              class={n('actions')}
+              v-show={props.show && isActive.value && children.length}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {children.map((child) => {
+                return <div class={n('action')}>{child}</div>
               })}
             </div>
           </Transition>
         </div>
       )
+    }
+
+    watch(
+      () => props.active,
+      (value) => {
+        localActive.value = value
+      },
+      { immediate: true }
+    )
+
+    watch(
+      () => props.trigger,
+      () => {
+        isActive.value = false
+      }
+    )
+
+    watch(
+      () => props.disabled,
+      () => {
+        isActive.value = false
+      }
+    )
+
+    useClickOutside(host, 'click', handleClickOutside)
+
+    return () => {
+      const { teleport } = props
+
+      if (teleport) {
+        return (
+          <Teleport to={teleport} disabled={disabled.value}>
+            {renderFab()}
+          </Teleport>
+        )
+      }
+
+      return renderFab()
     }
   },
 })

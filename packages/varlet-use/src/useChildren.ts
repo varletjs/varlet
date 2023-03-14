@@ -43,7 +43,7 @@ export interface UseChildrenBaseProvider<C> {
   clear(instance: ComponentInternalInstance, childProvider: C): void
 }
 
-export function useChildren<P, C>(key: symbol) {
+export function useChildren<P, C>(key: symbol | string) {
   const parentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
   const childInstances: ComponentInternalInstance[] = reactive([])
   const childProviders: C[] = []

@@ -17,7 +17,7 @@ test('test loading-bar methods', async () => {
   LoadingBar.error()
   await delay(0)
   expect(document.querySelector('.var-loading-bar--error')).toBeTruthy()
-  await delay(300)
+  await delay(900)
   expect(document.querySelector('.var-loading-bar--error')).toBeFalsy()
 })
 

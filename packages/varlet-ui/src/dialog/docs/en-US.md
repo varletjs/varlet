@@ -249,9 +249,9 @@ const show = ref(false)
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `Dialog` | Show dialog | _options \| string_ | `-` |
+| `Dialog.close` | Close dialog | _-_ | `-` |
 | `Dialog.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `Dialog.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
-| `Dialog.close` | Close dialog | _-_ | `-` |
 
 ### Dialog Options
 
