@@ -2,26 +2,28 @@
   <div :class="n('wrap')">
     <div :class="n()">
       <div
-        :key="val"
-        v-for="val in toNumber(count)"
-        :style="getStyle(val)"
-        :class="getClass(val)"
-        @click="handleClick(val, $event)"
+        v-for="value in toNumber(count)"
+        :key="value"
+        :style="getStyle(value)"
+        :class="getClass(value)"
+        @click="handleClick(value, $event)"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        v-hover:desktop="handleHover(val)"
+        v-hover:desktop="createHoverHandler(value)"
       >
         <var-icon
           :class="n('content-icon')"
           var-rate-cover
           :transition="0"
           :namespace="namespace"
-          :name="getCurrentState(val).name"
+          :name="getCurrentState(value).name"
           :style="{ fontSize: toSizeUnit(size) }"
         >
         </var-icon>
-        <var-hover-overlay :hovering="hovering && val === hoverValue" />
+
+        <var-hover-overlay :hovering="hovering && value === currentHoveringValue && !disabled && !formDisabled" />
       </div>
     </div>
+
     <var-form-details :error-message="errorMessage" />
   </div>
 </template>
@@ -38,7 +40,7 @@ import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
-import type { RateProvider } from './provide'
+import { type RateProvider } from './provide'
 
 const { n } = createNamespace('rate')
 
@@ -54,8 +56,8 @@ export default defineComponent({
   setup(props) {
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
-    const { hovering, handleHovering } = useHoverOverlay()
-    const hoverValue = ref<number>(-1)
+    const { hovering } = useHoverOverlay()
+    const currentHoveringValue = ref<number>(-1)
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -120,10 +122,10 @@ export default defineComponent({
       validateWithTrigger()
     }
 
-    const handleHover = (value: number) => {
+    const createHoverHandler = (value: number) => {
       return (isHover: boolean) => {
-        hoverValue.value = value
-        handleHovering(isHover)
+        currentHoveringValue.value = value
+        hovering.value = isHover
       }
     }
 
@@ -149,8 +151,8 @@ export default defineComponent({
       getCurrentState,
       handleClick,
       hovering,
-      hoverValue,
-      handleHover,
+      currentHoveringValue,
+      createHoverHandler,
       reset,
       validate,
       resetValidation,
