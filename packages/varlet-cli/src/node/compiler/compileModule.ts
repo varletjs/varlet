@@ -91,13 +91,8 @@ export async function compileModule() {
     })
   )
 
-  console.log('-----------1-------------')
   const publicDirs = await getPublicDirs()
-  console.log('-----------2-------------')
   await compileESEntry(dest, publicDirs)
-  console.log('-----------3-------------')
   clearLessFiles(dest)
-  console.log('-----------4-------------')
   generateReference(dest)
-  console.log('-----------5-------------')
 }
