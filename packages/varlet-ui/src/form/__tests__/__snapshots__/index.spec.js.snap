@@ -4,9 +4,10 @@ exports[`test form with checkbox 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text var-checkbox--disabled\\"></div>
-      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -19,9 +20,10 @@ exports[`test form with checkbox 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text\\"></div>
-      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -34,9 +36,10 @@ exports[`test form with checkbox 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
-      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -60,9 +63,10 @@ exports[`test form with checkbox 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text\\"></div>
-      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
