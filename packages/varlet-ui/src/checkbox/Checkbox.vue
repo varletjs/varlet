@@ -1,6 +1,6 @@
 <template>
   <div :class="n('wrap')" @click="handleClick">
-    <div :class="n()">
+    <div :class="n()" v-hover:desktop="handleHovering">
       <div
         :class="
           classes(
@@ -42,6 +42,7 @@
       >
         <slot />
       </div>
+      <var-hover-overlay :hovering="!disabled && hovering" />
     </div>
 
     <var-form-details :error-message="errorMessage" />
@@ -52,6 +53,7 @@
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
+import Hover from '../hover'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { props } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
@@ -60,15 +62,17 @@ import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
 import type { ValidateTriggers } from './props'
 import type { CheckboxProvider } from './provide'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 
 const { n, classes } = createNamespace('checkbox')
 
 export default defineComponent({
   name: 'VarCheckbox',
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarIcon,
     VarFormDetails,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
@@ -77,6 +81,7 @@ export default defineComponent({
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
+    const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -186,6 +191,8 @@ export default defineComponent({
       checkboxGroupErrorMessage: checkboxGroup?.errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      hovering,
+      handleHovering,
       n,
       classes,
       handleClick,
