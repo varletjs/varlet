@@ -179,5 +179,6 @@ export default defineComponent({
 @import '../ripple/ripple';
 @import '../loading/loading';
 @import '../form-details/formDetails';
+@import '../hover-overlay/hoverOverlay';
 @import './switch';
 </style>

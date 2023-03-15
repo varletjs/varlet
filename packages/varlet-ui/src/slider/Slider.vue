@@ -34,7 +34,7 @@
             :style="{
               background: thumbColor,
             }"
-            v-hover:desktop="(value) => hover(value, item)"
+            v-hover:desktop="(value: boolean) => hover(value, item)"
           ></div>
           <div
             :class="classes(n('thumb-ripple'), [thumbsProps[item.enumValue].active, n('thumb-ripple--active')])"
@@ -400,5 +400,6 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../hover-overlay/hoverOverlay';
 @import './slider';
 </style>
