@@ -1,6 +1,6 @@
 <template>
   <div :class="n('wrap')">
-    <div :class="n()" @click="handleClick" v-bind="$attrs">
+    <div :class="n()" @click="handleClick" v-bind="$attrs" v-hover:desktop="handleHovering">
       <div
         :class="
           classes(
@@ -41,6 +41,7 @@
       >
         <slot />
       </div>
+      <var-hover-overlay :hovering="!disabled && hovering" />
     </div>
 
     <var-form-details :error-message="errorMessage" />
@@ -51,19 +52,22 @@
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
+import Hover from '../hover'
 import { computed, defineComponent, nextTick, ref, watch, type Ref, type ComputedRef } from 'vue'
 import { props, type ValidateTrigger } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 
 const { n, classes } = createNamespace('radio')
 export default defineComponent({
   name: 'VarRadio',
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarIcon,
     VarFormDetails,
+    VarHoverOverlay,
   },
   inheritAttrs: false,
   props,
@@ -72,6 +76,7 @@ export default defineComponent({
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
+    const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -170,6 +175,8 @@ export default defineComponent({
       radioGroupErrorMessage: radioGroup?.errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      hovering,
+      handleHovering,
       n,
       classes,
       handleClick,

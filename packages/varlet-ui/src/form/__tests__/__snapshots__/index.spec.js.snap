@@ -227,6 +227,7 @@ exports[`test form with radio 1`] = `
     <div class=\\"var-radio\\">
       <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i></div>
       <div class=\\"var-radio__text var-radio--disabled\\"></div>
+      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -241,6 +242,7 @@ exports[`test form with radio 2`] = `
     <div class=\\"var-radio\\">
       <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i></div>
       <div class=\\"var-radio__text\\"></div>
+      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -255,6 +257,7 @@ exports[`test form with radio 3`] = `
     <div class=\\"var-radio\\">
       <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i></div>
       <div class=\\"var-radio__text var-radio--error\\"></div>
+      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -280,6 +283,7 @@ exports[`test form with radio 4`] = `
     <div class=\\"var-radio\\">
       <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i></div>
       <div class=\\"var-radio__text\\"></div>
+      <div class=\\"var-hover-overlay\\"></div>
     </div>
     <transition-stub>
       <!--v-if-->
