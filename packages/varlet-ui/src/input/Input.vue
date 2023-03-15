@@ -222,10 +222,7 @@ export default defineComponent({
         value = formatNumber(value)
       }
 
-      value = withMaxlength(withTrim(value))
-      target.value = value
-
-      return value
+      return withMaxlength(withTrim(value))
     }
 
     const handleCompositionStart = (e: Event) => {
