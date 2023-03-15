@@ -12,7 +12,7 @@ module.exports = declare(() => ({
 
         return false
       },
-      plugins: ['@babel/plugin-transform-typescript'],
+      plugins: [require.resolve('@babel/plugin-transform-typescript')],
     },
   ],
 }))
