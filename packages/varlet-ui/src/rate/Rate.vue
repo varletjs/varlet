@@ -19,7 +19,7 @@
           :style="{ fontSize: toSizeUnit(size) }"
         >
         </var-icon>
-        <var-hover-overlay :hovering="hovering && val <= hoverValue" />
+        <var-hover-overlay :hovering="hovering && val === hoverValue" />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
