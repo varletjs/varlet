@@ -153,6 +153,7 @@ export default defineComponent({
     const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
+    const isComposing: Ref<boolean> = ref(false)
     const type: ComputedRef<InputType> = computed(() => {
       if (props.type === 'number') {
         return 'text'
@@ -191,9 +192,11 @@ export default defineComponent({
 
     const computePlaceholderState = () => {
       const { hint, modelValue } = props
-      if (!hint && !isEmpty(modelValue)) {
+
+      if (!hint && (!isEmpty(modelValue) || isComposing.value)) {
         return n('--placeholder-hidden')
       }
+
       if (hint && (!isEmpty(modelValue) || isFocus.value)) {
         return n('--placeholder-hint')
       }
@@ -225,23 +228,21 @@ export default defineComponent({
       return withMaxlength(withTrim(value))
     }
 
-    const handleCompositionStart = (e: Event) => {
-      Object.assign(e.target!, { composing: true })
+    const handleCompositionStart = () => {
+      isComposing.value = true
     }
 
     const handleCompositionEnd = (e: Event) => {
-      const target = e.target as EventTarget & { composing?: boolean }
-
-      if (target.composing) {
-        target.composing = false
-        target.dispatchEvent(new Event('input'))
+      if (!isComposing.value) {
+        return
       }
+
+      isComposing.value = false
+      e.target!.dispatchEvent(new Event('input'))
     }
 
     const handleInput = (e: Event) => {
-      const { composing } = e.target as EventTarget & { composing?: boolean }
-
-      if (composing) {
+      if (isComposing.value) {
         return
       }
 
@@ -348,6 +349,7 @@ export default defineComponent({
       el,
       id,
       isFocus,
+      isComposing,
       errorMessage,
       type,
       maxlengthText,
