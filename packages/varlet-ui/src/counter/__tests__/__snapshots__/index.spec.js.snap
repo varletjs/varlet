@@ -93,7 +93,7 @@ exports[`test counter example 1`] = `
 </div>
 <div class=\\"app-type\\">只读</div>
 <div class=\\"var-counter var--box\\">
-  <div class=\\"var-counter__controller var-elevation--2 var-counter--readonly\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+  <div class=\\"var-counter__controller var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
       <!--v-if-->
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>

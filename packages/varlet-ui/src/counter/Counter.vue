@@ -6,7 +6,6 @@
           n('controller'),
           n('$-elevation--2'),
           [disabled || formDisabled, n('--disabled')],
-          [readonly || formReadonly, n('--readonly')],
           [errorMessage, n('--error')]
         )
       "
