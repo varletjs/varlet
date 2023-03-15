@@ -1,6 +1,6 @@
 <template>
   <div :class="n('wrap')">
-    <div :class="n()" @click="handleClick" v-bind="$attrs" v-hover:desktop="handleHovering">
+    <div :class="n()" @click="handleClick" v-bind="$attrs">
       <div
         :class="
           classes(
@@ -11,6 +11,7 @@
           )
         "
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        v-hover:desktop="handleHovering"
         :style="{ color: checked ? checkedColor : uncheckedColor }"
       >
         <slot name="checked-icon" v-if="checked">
@@ -29,6 +30,7 @@
             :size="iconSize"
           />
         </slot>
+        <var-hover-overlay :hovering="!disabled && hovering" />
       </div>
       <div
         :class="
@@ -41,7 +43,6 @@
       >
         <slot />
       </div>
-      <var-hover-overlay :hovering="!disabled && hovering" />
     </div>
 
     <var-form-details :error-message="errorMessage" />

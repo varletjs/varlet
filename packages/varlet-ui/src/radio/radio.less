@@ -40,6 +40,8 @@
   &__action {
     display: flex;
     justify-content: center;
+    cursor: pointer;
+    position: relative;
     align-items: center;
     padding: var(--radio-action-padding);
     border-radius: 50%;
@@ -49,10 +51,6 @@
   &__icon[var-radio-cover] {
     display: block;
     font-size: var(--radio-icon-size);
-  }
-
-  &__text {
-    padding: var(--radio-text-padding);
   }
 
   &--with-animation[var-radio-cover] {
