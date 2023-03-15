@@ -70,7 +70,15 @@ exports[`test form with checkbox 4`] = `
 exports[`test form with counter 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button var-counter--not-allowed\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button var-counter--not-allowed\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button var-counter--not-allowed\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button var-counter--not-allowed\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -81,7 +89,15 @@ exports[`test form with counter 1`] = `
 exports[`test form with counter 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--readonly\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -92,7 +108,15 @@ exports[`test form with counter 2`] = `
 exports[`test form with counter 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--readonly var-counter--error\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
@@ -114,7 +138,15 @@ exports[`test form with counter 3`] = `
 exports[`test form with counter 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition-duration: 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--readonly\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
