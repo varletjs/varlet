@@ -30,7 +30,7 @@
             var-checkbox-cover
           />
         </slot>
-        <var-hover-overlay :hovering="!disabled && hovering" />
+        <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
       </div>
 
       <div
