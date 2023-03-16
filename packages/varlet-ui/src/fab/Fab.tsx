@@ -1,6 +1,6 @@
 import Button from '../button'
 import Icon from '../icon'
-import { computed, defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
+import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
 import { useClickOutside, useVModel } from '@varlet/use'
 import { call, createNamespace, flatFragment, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
