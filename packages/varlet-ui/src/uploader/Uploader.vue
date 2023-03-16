@@ -29,6 +29,7 @@
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
+        v-hover:desktop="handleHovering"
         @click="chooseFile"
       >
         <input
@@ -44,6 +45,7 @@
 
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
+          <var-hover-overlay :hovering="hovering && !disabled && !formDisabled" />
         </slot>
       </div>
     </div>
@@ -73,20 +75,20 @@
 </template>
 
 <script lang="ts">
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
-import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
-import { props } from './props'
+import Hover from '../hover'
+import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
+import { props, type VarFile, type ValidateTrigger } from './props'
 import { isNumber, toNumber, isString, isArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
-import type { ComputedRef, Ref } from 'vue'
-import type { UploaderProvider } from './provide'
-import type { VarFile, ValidateTrigger } from './props'
+import { type UploaderProvider } from './provide'
 
 const { n, classes } = createNamespace('uploader')
 
@@ -107,11 +109,12 @@ let fid = 0
 
 export default defineComponent({
   name: 'VarUploader',
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarIcon,
     VarPopup,
     VarFormDetails,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
@@ -134,6 +137,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const { hovering, handleHovering } = useHoverOverlay()
 
     const files = computed(() => {
       const { modelValue, hideList } = props
@@ -357,10 +361,12 @@ export default defineComponent({
       currentPreview,
       errorMessage,
       maxlengthText,
-      isHTMLSupportVideo,
-      isHTMLSupportImage,
+      hovering,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      handleHovering,
+      isHTMLSupportVideo,
+      isHTMLSupportImage,
       preview,
       handleChange,
       handleRemove,
