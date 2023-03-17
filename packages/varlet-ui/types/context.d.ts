@@ -1,4 +1,4 @@
-interface IContext {
+export interface IContext {
   locks: Record<any, number>
   zIndex: number
 }
