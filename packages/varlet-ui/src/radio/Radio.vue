@@ -196,4 +196,5 @@ export default defineComponent({
 @import '../icon/icon';
 @import '../form-details/formDetails';
 @import './radio';
+@import '../hover-overlay/hoverOverlay';
 </style>

@@ -212,4 +212,5 @@ export default defineComponent({
 @import '../form-details/formDetails';
 @import '../icon/icon';
 @import './checkbox';
+@import '../hover-overlay/hoverOverlay';
 </style>
