@@ -178,16 +178,16 @@ const isEven = ref(true)
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
-| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
+| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |''
 
 #### BottomNavigationItem Props
 
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
 | `name` | Identifier | _string_ | `-` |
-| `icon` | Icon name, equivalent to the [name](/varlet/#/en-US/icon) of Icon component | _string_ | `-` |
+| `icon` | Icon name, equivalent to the [name](#/en-US/icon) of Icon component | _string_ | `-` |
 | `label` | Label text content | _string_ | - |
-| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/varlet/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
+| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](#/en-US/icon)  of Icon component | _string_ | `var-icon` |
 | `badge` | Logo in the upper right corner of the icon | _boolean \| BadgeProps_ | `false` |
 
 ### Events
