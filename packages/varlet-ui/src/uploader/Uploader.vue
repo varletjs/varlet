@@ -391,4 +391,5 @@ export default defineComponent({
 @import '../popup/popup';
 @import '../image-preview/imagePreview';
 @import './uploader';
+@import '../hover-overlay/hoverOverlay';
 </style>
