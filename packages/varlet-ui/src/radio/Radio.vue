@@ -195,6 +195,6 @@ export default defineComponent({
 @import '../ripple/ripple';
 @import '../icon/icon';
 @import '../form-details/formDetails';
-@import './radio';
 @import '../hover-overlay/hoverOverlay';
+@import './radio';
 </style>

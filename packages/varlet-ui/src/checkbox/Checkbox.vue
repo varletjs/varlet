@@ -211,6 +211,6 @@ export default defineComponent({
 @import '../ripple/ripple';
 @import '../form-details/formDetails';
 @import '../icon/icon';
-@import './checkbox';
 @import '../hover-overlay/hoverOverlay';
+@import './checkbox';
 </style>

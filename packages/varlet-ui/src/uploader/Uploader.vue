@@ -390,6 +390,6 @@ export default defineComponent({
 @import '../icon/icon';
 @import '../popup/popup';
 @import '../image-preview/imagePreview';
-@import './uploader';
 @import '../hover-overlay/hoverOverlay';
+@import './uploader';
 </style>
