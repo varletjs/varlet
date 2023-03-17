@@ -178,7 +178,7 @@ const isEven = ref(true)
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
-| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |''
+| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props
 
