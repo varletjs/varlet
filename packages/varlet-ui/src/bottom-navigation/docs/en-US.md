@@ -172,7 +172,7 @@ const isEven = ref(true)
 | Prop            | Description                                         | Type | Default |
 |-----------------|-----------------------------------------------------| ---- | ---- |
 | `v-model:active` | Identifier of current tab                           | _number \| string_ | `0` |
-| `fixed`         | 	Whether to fixed bottom                            | _boolean_ | `false` |
+| `fixed`         |  Whether to fixed bottom                            | _boolean_ | `false` |
 | `border`        | Whether to show border                              | _boolean_ | `false` |
 | `safe-area`       | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
@@ -185,9 +185,9 @@ const isEven = ref(true)
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
 | `name` | Identifier | _string_ | `-` |
-| `icon` | Icon name, equivalent to the [name](/#/en-US/icon) of Icon component | _string_ | `-` |
+| `icon` | Icon name, equivalent to the [name](/varlet/#/en-US/icon) of Icon component | _string_ | `-` |
 | `label` | Label text content | _string_ | - |
-| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
+| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/varlet/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
 | `badge` | Logo in the upper right corner of the icon | _boolean \| BadgeProps_ | `false` |
 
 ### Events
@@ -223,6 +223,7 @@ const isEven = ref(true)
 | `icon` | Custom Icon | `active: boolean` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### BottomNavigation Variables
