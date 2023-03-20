@@ -1,84 +1,50 @@
-import { isDef, isFunction } from '@varlet/shared'
+import { isDef, call } from '@varlet/shared'
 import type { UnwrapRef } from 'vue'
-import { computed, getCurrentInstance, ref, watch } from 'vue'
-import type { CloneFn } from './useCloned'
-import { cloneFnJSON } from './useCloned'
+import { computed, ref, watch } from 'vue'
 
 export interface UseVModelOptions<T> {
   /**
    * When passive is set to `true`, it will use `watch` to sync with props and ref.
    * Instead of relying on the `v-model` or `.sync` to work.
    *
-   * @default false
+   * @default true
    */
   passive?: boolean
-  /**
-   * When eventName is set, it's value will be used to overwrite the emit event name.
-   *
-   * @default undefined
-   */
-  eventName?: string
-  /**
-   * Attempting to check for changes of properties in a deeply nested object or array.
-   * Apply only when `passive` option is set to `true`
-   *
-   * @default false
-   */
-  deep?: boolean
   /**
    * Defining default value for return ref when no value is passed.
    *
    * @default undefined
    */
   defaultValue?: T
-  /**
-   * Clone the props.
-   * Accepts a custom clone function.
-   * When setting to `true`, it will use `JSON.parse(JSON.stringify(value))` to clone.
-   *
-   * @default false
-   */
-  clone?: boolean | CloneFn<T>
 }
 
-export function useVModel<P extends Record<string, unknown>, K extends keyof P, Name extends string>(
+export function useVModel<P extends Record<string, any>, K extends keyof P>(
   props: P,
-  key?: K,
-  emit?: (name: Name, ...args: any[]) => void,
+  key: K,
   options: UseVModelOptions<P[K]> = {}
 ) {
-  const { clone = false, passive = false, eventName, deep = false, defaultValue } = options
+  const { passive = true, defaultValue } = options
 
-  const vm = getCurrentInstance()
-  // @ts-expect-error mis-alignment with @vue/composition-api
-  const _emit = emit || vm?.emit || vm?.$emit?.bind(vm) || vm?.proxy?.$emit?.bind(vm?.proxy)
-  let event: string | undefined = eventName
+  const _callBind = call.bind(props)
 
-  if (!key) key = 'modelValue' as K
+  const getValue = () => (isDef(props[key]) ? props[key] : defaultValue)
 
-  event = eventName || event || `update:${key!.toString()}`
-
-  const cloneFn = (val: P[K]) => (!clone ? val : isFunction(clone) ? clone(val) : cloneFnJSON(val))
-
-  const getValue = () => (isDef(props[key!]) ? cloneFn(props[key!]) : defaultValue)
+  const callbackName: string | undefined = `onUpdate:${key.toString()}`
 
   if (passive) {
     const initialValue = getValue()
     const proxy = ref<P[K]>(initialValue!)
 
     watch(
-      () => props[key!],
+      () => props[key],
       // eslint-disable-next-line no-return-assign
-      (v) => (proxy.value = cloneFn(v) as UnwrapRef<P[K]>)
+      (v) => (proxy.value = v as UnwrapRef<P[K]>),
+      { immediate: true }
     )
 
-    watch(
-      proxy,
-      (v) => {
-        if (v !== props[key!] || deep) _emit(event, v)
-      },
-      { deep }
-    )
+    watch(proxy, (newValue, oldValue) => {
+      if (newValue !== oldValue) _callBind(props[callbackName], newValue)
+    })
 
     return proxy
   }
@@ -88,7 +54,7 @@ export function useVModel<P extends Record<string, unknown>, K extends keyof P, 
       return getValue()!
     },
     set(value) {
-      _emit(event, value)
+      _callBind(props[callbackName], value)
     },
   })
 }
