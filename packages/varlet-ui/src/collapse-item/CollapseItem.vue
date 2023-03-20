@@ -82,7 +82,7 @@ export default defineComponent({
         const { offsetHeight } = contentEl.value as HTMLDivElement
         ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
 
-        requestAnimationFrame(() => {
+        nextTickFrame(() => {
           ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
 
           if (!isInitToTrigger) return
@@ -104,7 +104,7 @@ export default defineComponent({
       const { offsetHeight } = contentEl.value
       contentEl.value.style.height = offsetHeight + 'px'
 
-      requestAnimationFrame(() => {
+      nextTickFrame(() => {
         ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
       })
     }
