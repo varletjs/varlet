@@ -10,6 +10,10 @@ function scrollableValidator(scrollable: string) {
   return ['auto', 'always'].includes(scrollable)
 }
 
+function positionValidator(pos: string) {
+  return ['normal', 'reverse'].includes(pos)
+}
+
 export const props = {
   active: {
     type: [String, Number],
@@ -66,6 +70,11 @@ export const props = {
     type: String as PropType<'auto' | 'always'>,
     default: 'auto',
     validator: scrollableValidator,
+  },
+  indicatorPosition: {
+    type: String as PropType<'normal' | 'reverse'>,
+    default: 'normal',
+    validator: positionValidator,
   },
   onClick: defineListenerProp<(active: string | number) => void>(),
   onChange: defineListenerProp<(active: string | number) => void>(),

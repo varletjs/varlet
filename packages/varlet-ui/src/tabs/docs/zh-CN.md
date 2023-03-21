@@ -292,7 +292,7 @@ const active = ref(0)
 | `safe-area`        | 是否开启底部安全区适配                            | _boolean_ | `false`      |
 | `offset-top`       | 吸顶距离                                   | _string \| number_      | `0`          |
 | `scrollable`       | 是否开启滚动，可选值为 `auto` `always`           | _string_       | `auto`          |
-
+| `indicator-position` | 选项卡激活指示器的位置，可选值为 `normal` `reverse`  | _string_ | `normal`     |
 #### Tab Props
 
 | 参数       | 说明           | 类型               | 默认值  |
