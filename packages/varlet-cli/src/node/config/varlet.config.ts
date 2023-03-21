@@ -68,6 +68,11 @@ export interface VarletConfig {
   mobile?: Record<string, any>
   copy?: CopyOptions['paths']
   icons?: VarletConfigIcons
+  /**
+   * @default `[]`
+   * Directive folder name for component library.
+   */
+  directives?: string[]
 }
 
 export function defineConfig(config: VarletConfig) {

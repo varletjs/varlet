@@ -3,88 +3,88 @@ import type { App } from 'vue'
 export const version: string
 export const install: (app: App) => void
 
-export * from './actionSheet'
-export * from './appBar'
-export * from './avatar'
-export * from './avatarGroup'
-export * from './backTop'
-export * from './badge'
-export * from './bottomNavigation'
-export * from './bottomNavigationItem'
-export * from './breadcrumb'
-export * from './breadcrumbs'
-export * from './button'
-export * from './buttonGroup'
-export * from './card'
-export * from './cell'
-export * from './checkbox'
-export * from './checkboxGroup'
-export * from './chip'
-export * from './col'
-export * from './collapse'
-export * from './collapseItem'
-export * from './context'
-export * from './countdown'
-export * from './counter'
-export * from './datePicker'
-export * from './dialog'
-export * from './divider'
-export * from './ellipsis'
-export * from './fab'
-export * from './form'
-export * from './formDetails'
-export * from './hover'
-export * from './hoverOverlay'
-export * from './icon'
-export * from './image'
-export * from './imagePreview'
-export * from './indexAnchor'
-export * from './indexBar'
-export * from './input'
-export * from './lazy'
-export * from './link'
-export * from './list'
-export * from './loading'
-export * from './loadingBar'
-export * from './locale'
-export * from './menu'
-export * from './option'
-export * from './overlay'
-export * from './pagination'
-export * from './paper'
-export * from './picker'
-export * from './popup'
-export * from './progress'
-export * from './pullRefresh'
-export * from './radio'
-export * from './radioGroup'
-export * from './rate'
-export * from './result'
-export * from './ripple'
-export * from './row'
-export * from './select'
-export * from './skeleton'
-export * from './slider'
-export * from './snackbar'
-export * from './space'
-export * from './step'
-export * from './steps'
-export * from './sticky'
-export * from './styleProvider'
-export * from './swipe'
-export * from './swipeItem'
-export * from './switch'
-export * from './tab'
-export * from './tabItem'
-export * from './table'
-export * from './tabs'
-export * from './tabsItems'
-export * from './themes'
-export * from './timePicker'
-export * from './tooltip'
-export * from './uploader'
-export * from './varComponent'
-export * from './varDirective'
+export * from './actionSheet.d.ts'
+export * from './appBar.d.ts'
+export * from './avatar.d.ts'
+export * from './avatarGroup.d.ts'
+export * from './backTop.d.ts'
+export * from './badge.d.ts'
+export * from './bottomNavigation.d.ts'
+export * from './bottomNavigationItem.d.ts'
+export * from './breadcrumb.d.ts'
+export * from './breadcrumbs.d.ts'
+export * from './button.d.ts'
+export * from './buttonGroup.d.ts'
+export * from './card.d.ts'
+export * from './cell.d.ts'
+export * from './checkbox.d.ts'
+export * from './checkboxGroup.d.ts'
+export * from './chip.d.ts'
+export * from './col.d.ts'
+export * from './collapse.d.ts'
+export * from './collapseItem.d.ts'
+export * from './context.d.ts'
+export * from './countdown.d.ts'
+export * from './counter.d.ts'
+export * from './datePicker.d.ts'
+export * from './dialog.d.ts'
+export * from './divider.d.ts'
+export * from './ellipsis.d.ts'
+export * from './fab.d.ts'
+export * from './form.d.ts'
+export * from './formDetails.d.ts'
+export * from './hover.d.ts'
+export * from './hoverOverlay.d.ts'
+export * from './icon.d.ts'
+export * from './image.d.ts'
+export * from './imagePreview.d.ts'
+export * from './indexAnchor.d.ts'
+export * from './indexBar.d.ts'
+export * from './input.d.ts'
+export * from './lazy.d.ts'
+export * from './link.d.ts'
+export * from './list.d.ts'
+export * from './loading.d.ts'
+export * from './loadingBar.d.ts'
+export * from './locale.d.ts'
+export * from './menu.d.ts'
+export * from './option.d.ts'
+export * from './overlay.d.ts'
+export * from './pagination.d.ts'
+export * from './paper.d.ts'
+export * from './picker.d.ts'
+export * from './popup.d.ts'
+export * from './progress.d.ts'
+export * from './pullRefresh.d.ts'
+export * from './radio.d.ts'
+export * from './radioGroup.d.ts'
+export * from './rate.d.ts'
+export * from './result.d.ts'
+export * from './ripple.d.ts'
+export * from './row.d.ts'
+export * from './select.d.ts'
+export * from './skeleton.d.ts'
+export * from './slider.d.ts'
+export * from './snackbar.d.ts'
+export * from './space.d.ts'
+export * from './step.d.ts'
+export * from './steps.d.ts'
+export * from './sticky.d.ts'
+export * from './styleProvider.d.ts'
+export * from './swipe.d.ts'
+export * from './swipeItem.d.ts'
+export * from './switch.d.ts'
+export * from './tab.d.ts'
+export * from './tabItem.d.ts'
+export * from './table.d.ts'
+export * from './tabs.d.ts'
+export * from './tabsItems.d.ts'
+export * from './themes.d.ts'
+export * from './timePicker.d.ts'
+export * from './tooltip.d.ts'
+export * from './uploader.d.ts'
+export * from './varComponent.d.ts'
+export * from './varDirective.d.ts'
 
 declare module 'vue' {
   export interface GlobalComponents {
@@ -118,7 +118,6 @@ declare module 'vue' {
     VarFab: typeof import('@varlet/ui')['_FabComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
-    VarHover: typeof import('@varlet/ui')['_HoverComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
@@ -126,7 +125,6 @@ declare module 'vue' {
     VarIndexAnchor: typeof import('@varlet/ui')['_IndexAnchorComponent']
     VarIndexBar: typeof import('@varlet/ui')['_IndexBarComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
-    VarLazy: typeof import('@varlet/ui')['_LazyComponent']
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
@@ -145,7 +143,6 @@ declare module 'vue' {
     VarRadioGroup: typeof import('@varlet/ui')['_RadioGroupComponent']
     VarRate: typeof import('@varlet/ui')['_RateComponent']
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
-    VarRipple: typeof import('@varlet/ui')['_RippleComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
@@ -168,5 +165,11 @@ declare module 'vue' {
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+  }
+
+  export interface ComponentCustomProperties {
+    vHover: typeof import('@varlet/ui')['_HoverComponent']
+    vLazy: typeof import('@varlet/ui')['_LazyComponent']
+    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }

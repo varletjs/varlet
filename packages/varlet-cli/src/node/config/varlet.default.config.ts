@@ -272,4 +272,5 @@ export default defineConfig({
     fontFamilyClassName: 'var-icon--set',
     base64: true,
   },
+  directives: [],
 })

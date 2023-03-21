@@ -647,4 +647,5 @@ export default defineConfig({
     style: null,
   },
   copy: [{ from: '../varlet-icons/dist/png', to: './public/icons/png', type: 'folder' }],
+  directives: ['ripple', 'lazy', 'hover']
 })

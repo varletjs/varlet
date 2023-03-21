@@ -7,4 +7,4 @@ export interface IHover extends VarDirective<HoverValue> {}
 
 export declare const Hover: IHover
 
-export class _HoverComponent {}
+export declare const _HoverComponent: IHover
