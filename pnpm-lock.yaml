@@ -229,7 +229,7 @@ importers:
       '@types/node': '*'
       '@varlet/cli': 'workspace: *'
       '@varlet/ui': 'workspace: *'
-      '@vue/repl': 1.3.0
+      '@vue/repl': 1.3.3
       file-saver: ^2.0.5
       jszip: ^3.6.0
       live-server: ^1.2.1
@@ -240,7 +240,7 @@ importers:
       vue: 3.2.29
     dependencies:
       '@varlet/ui': link:../varlet-ui
-      '@vue/repl': 1.3.0_vue@3.2.29
+      '@vue/repl': 1.3.3_vue@3.2.29
       file-saver: 2.0.5
       jszip: 3.10.1
       vue: 3.2.29
@@ -2808,8 +2808,8 @@ packages:
     dependencies:
       '@vue/shared': 3.2.29
 
-  /@vue/repl/1.3.0_vue@3.2.29:
-    resolution: {integrity: sha512-L2Jr9+M6z2+gW6i5ZuUXwCMfXtyHDSSyw4fViL0QezXLLOctqTw+o6sYUsgvErkreb9oI0kcZPpWkkW7lGeuiA==}
+  /@vue/repl/1.3.3_vue@3.2.29:
+    resolution: {integrity: sha512-mrN3Gd4CIaiIiRdi7/pAOH9rPud8q8I5svLurSoyxLhxFXs9WdfaKZlirExSJIuecHYFiAAozTBtb8XQPNhCHw==}
     peerDependencies:
       vue: ^3.2.13
     dependencies:
@@ -5119,7 +5119,7 @@ packages:
       map-cache: 0.2.2
 
   /fresh/0.5.2:
-    resolution: {integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=}
+    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
 
   /from/0.1.7:
