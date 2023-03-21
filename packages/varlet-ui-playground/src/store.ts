@@ -150,6 +150,7 @@ export class ReplStore implements Store {
       errors: [],
       vueRuntimeURL: this.defaultVueRuntimeURL,
       vueServerRendererURL: '',
+      resetFlip: true,
     })
 
     this.initImportMap()
