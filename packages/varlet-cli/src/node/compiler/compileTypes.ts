@@ -34,7 +34,7 @@ export async function compileTypes() {
     const folder = filename.slice(0, filename.indexOf('.d.ts'))
     const name = bigCamelize(folder)
 
-    exports.push(`export * from './${filename}'`)
+    exports.push(`export * from './${folder}'`)
 
     if (filename.startsWith(namespace)) {
       // ignore prefix with namespace e.g. varComponent
