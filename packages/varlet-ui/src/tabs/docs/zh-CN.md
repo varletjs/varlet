@@ -291,6 +291,7 @@ const active = ref(0)
 | `sticky-z-index`   | 粘性布局的层级                                | _number_ | `10`         |
 | `safe-area`        | 是否开启底部安全区适配                            | _boolean_ | `false`      |
 | `offset-top`       | 吸顶距离                                   | _string \| number_      | `0`          |
+| `scrollable`       | 是否开启滚动，可选值为 `auto` `always`           | _string_       | `auto`          |
 
 #### Tab Props
 

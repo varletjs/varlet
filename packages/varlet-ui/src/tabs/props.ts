@@ -6,6 +6,10 @@ function directionValidator(direction: string) {
   return ['horizontal', 'vertical'].includes(direction)
 }
 
+function scrollableValidator(scrollable: string) {
+  return ['auto', 'always'].includes(scrollable)
+}
+
 export const props = {
   active: {
     type: [String, Number],
@@ -57,6 +61,11 @@ export const props = {
   safeArea: {
     type: Boolean,
     default: false,
+  },
+  scrollable: {
+    type: String as PropType<'auto' | 'always'>,
+    default: 'auto',
+    validator: scrollableValidator,
   },
   onClick: defineListenerProp<(active: string | number) => void>(),
   onChange: defineListenerProp<(active: string | number) => void>(),

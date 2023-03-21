@@ -291,7 +291,7 @@ const active = ref(0)
 | `sticky-z-index`   | Sticky layouts z-index                                                       | _number_ | `10`          |
 | `safe-area`        | Whether to enable bottom safe area adaptation                                | _boolean_ | `false`      |
 | `offset-top`       | Distance offset top                                                          | _string \| number_      | `0`          |
-
+| `scrollable`       | Whether to enable scrollable, optional value of `auto` `always`              | _string_ | `auto`      |
 #### Tab Props
 
 | Prop       | Description            | Type               | Default |

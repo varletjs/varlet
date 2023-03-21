@@ -113,7 +113,7 @@ export default defineComponent({
     }
 
     const watchScrollable = () => {
-      scrollable.value = tabList.length >= 5
+      scrollable.value = props.scrollable === 'always' || tabList.length >= 5
     }
 
     const moveIndicator = ({ element }: TabProvider) => {
