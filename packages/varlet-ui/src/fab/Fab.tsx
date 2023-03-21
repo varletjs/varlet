@@ -2,9 +2,9 @@ import Button from '../button'
 import Icon from '../icon'
 import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
 import { useClickOutside, useVModel } from '@varlet/use'
-import { createNamespace, flatFragment, useTeleport } from '../utils/components'
+import { call, createNamespace, flatFragment, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber, call } from '@varlet/shared'
+import { toNumber } from '@varlet/shared'
 import { props } from './props'
 
 import '../styles/common.less'
@@ -22,7 +22,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
-    const isActive = useVModel(props, 'active')
+    const isActive = useVModel(props, 'active', (event, value) => call(props['onUpdate:active'], value))
     const host: Ref<null | HTMLElement> = ref(null)
     const { disabled } = useTeleport()
 
