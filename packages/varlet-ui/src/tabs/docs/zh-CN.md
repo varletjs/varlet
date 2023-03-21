@@ -273,22 +273,22 @@ const active = ref(0)
 
 #### Tabs Props
 
-| 参数                 | 说明                                     | 类型        | 默认值          |
-|--------------------|----------------------------------------|-----------|--------------|
-| `v-model:active`   | 激活的选项卡标识, 优先匹配 name，其次是 index          | _string_  | `default`    |
-| `layout-direction` | 选项卡组的布局方向，可选值为 `horizontal` `vertical` | _string_  | `horizontal` |
-| `item-direction`   | 选项卡的布局方向，可选值为 `horizontal` `vertical`  | _string_  | `horizontal` |
+| 参数                 | 说明                                     | 类型       | 默认值          |
+|--------------------|----------------------------------------|----------|--------------|
+| `v-model:active`   | 激活的选项卡标识, 优先匹配 name，其次是 index          | _string_ | `default`    |
+| `layout-direction` | 选项卡组的布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
+| `item-direction`   | 选项卡的布局方向，可选值为 `horizontal` `vertical`  | _string_ | `horizontal` |
 | `fixed-bottom`     | 是否固定在窗口底部, 可用做底部导航                     | _boolean_ | `false`      |
-| `color`            | 选项卡的背景颜色                               | _string_  | `#fff`       |
-| `active-color`     | 选项卡激活的主要颜色                             | _string_  | `#2979ff`    |
-| `inactive-color`   | 选项卡未激活的主要颜色                            | _string_  | `#646566`    |
-| `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_  | `#e0e0e0`    |
-| `indicator-color`  | 选项卡激活指示器的颜色                            | _string_  | `#2979ff`    |
-| `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \ | number_      | `2px`        |
+| `color`            | 选项卡的背景颜色                               | _string_ | `#fff`       |
+| `active-color`     | 选项卡激活的主要颜色                             | _string_ | `#2979ff`    |
+| `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `#646566`    |
+| `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `#e0e0e0`    |
+| `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `#2979ff`    |
+| `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \| number_      | `2px`        |
 | `elevation`        | 是否启用阴影                                 | _boolean_ | `false`      |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
-| `sticky-z-index`   | 粘性布局的层级                                | _number_  | `10`         |
+| `sticky-z-index`   | 粘性布局的层级                                | _number_ | `10`         |
 | `safe-area`        | 是否开启底部安全区适配                            | _boolean_ | `false`      |
 | `offset-top`       | 吸顶距离                                   | _string \| number_      | `0`          |
 
