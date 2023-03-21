@@ -12,8 +12,6 @@ export const isObject = (val: unknown): val is Record<string, any> => typeof val
 // eslint-disable-next-line
 export const isFunction = (val: unknown): val is Function => typeof val === 'function'
 
-export const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
-
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const isURL = (val: string | undefined | null) => {
