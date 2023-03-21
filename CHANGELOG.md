@@ -1,3 +1,40 @@
+## [2.9.2](https://github.com/varletjs/varlet/compare/v2.9.1...v2.9.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* checkbox、radio、uploader adds a reference to the hover style ([#914](https://github.com/varletjs/varlet/issues/914)) ([844df38](https://github.com/varletjs/varlet/commit/844df38ca373168315a04fafc075ecc71741ff6b))
+
+
+
+## [2.9.1](https://github.com/varletjs/varlet/compare/v2.9.0...v2.9.1) (2023-03-16)
+
+
+### Bug Fixes
+
+* fix input cursor error in the ios ([aad8dac](https://github.com/varletjs/varlet/commit/aad8dac160be93354382333b7738a0666dc93ec8))
+* **slider:** add cursor ([dd82f92](https://github.com/varletjs/varlet/commit/dd82f92305d7d0cec01885f5bb41cf684bf0623b))
+* **ui/input:** fixed placeholders not being able to hide while composing ([54a0391](https://github.com/varletjs/varlet/commit/54a0391e7948ed00fa54028bc47bc529541507ef))
+
+
+### Features
+
+* **slider:** add hover overlay ([9adfdca](https://github.com/varletjs/varlet/commit/9adfdcae23a8d0a014a99b2b06936fcde4f8a7c4))
+* support hover effect and close [#902](https://github.com/varletjs/varlet/issues/902) ([53461da](https://github.com/varletjs/varlet/commit/53461dafe98cdf78e7566c4948d4ffe7152bc7d4))
+* **switch:** add hover overlay ([7a3f769](https://github.com/varletjs/varlet/commit/7a3f769cf46578972201125bc96c57f66686b623))
+* **ui/checkbox:** support hover effect ([#907](https://github.com/varletjs/varlet/issues/907)) ([d853427](https://github.com/varletjs/varlet/commit/d853427fa80641829f43fa3432f233ecd22b486f))
+* **ui/image-preview:** add setDefaultOptions and resetDefaultOptions ([#892](https://github.com/varletjs/varlet/issues/892)) ([ec56890](https://github.com/varletjs/varlet/commit/ec56890628eed7f07d63fe092c55e7a30cc89750))
+* **ui/radio:** support hover effect ([#908](https://github.com/varletjs/varlet/issues/908)) ([d0621ad](https://github.com/varletjs/varlet/commit/d0621ad084805436f83dbdecd6788974d5cd911f))
+* **ui/rate:** support hover effect ([#906](https://github.com/varletjs/varlet/issues/906)) ([6a6a2d0](https://github.com/varletjs/varlet/commit/6a6a2d01f0dfd4c7a50b31ec2b98f7a6dddcd51e))
+* **ui/uploader:** support hover effect and close [#901](https://github.com/varletjs/varlet/issues/901) ([ca5e63f](https://github.com/varletjs/varlet/commit/ca5e63fb7c7e401d02be14768d04f0c7df0e7de0))
+
+
+### Reverts
+
+* fix workflow ([cc4554c](https://github.com/varletjs/varlet/commit/cc4554cace2c89c0a6e357efe9c987e0423f0fb9))
+
+
+
 # [2.9.0](https://github.com/varletjs/varlet/compare/v2.8.6...v2.9.0) (2023-03-12)
 
 

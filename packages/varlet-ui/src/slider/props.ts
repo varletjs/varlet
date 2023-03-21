@@ -26,6 +26,8 @@ export interface ThumbsListProps {
   value: number | number[]
   enumValue: Thumbs
   text: number
+  hovering: boolean
+  handleHovering: (value: boolean) => void
 }
 
 export const props = {

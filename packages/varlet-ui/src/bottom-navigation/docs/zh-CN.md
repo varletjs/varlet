@@ -182,17 +182,15 @@ const isEven = ref(true)
 | `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
 | `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{type: "primary"}` |
 
-
 #### BottomNavigationItem Props
 
 |参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ---- |
 | `name` | 标签名称，作为匹配的标识符 | _string_ | `-` |
-| `icon` | 图标名称，等同于 Icon 组件的 [name](/#/zh-CN/icon) | _string_ | `-` |
+| `icon` | 图标名称，等同于 Icon 组件的 [name](#/zh-CN/icon) | _string_ | `-` |
 | `label` | 标签文字内容 | _string_ | - |
-| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace](/#/zh-CN/icon) | _string_ | `var-icon` |
+| `namespace` | 图标的命名空间, 可扩展自定义图标库，等同于 Icon 组件的 [namespace](#/zh-CN/icon) | _string_ | `var-icon` |
 | `badge` | 图标右上角徽标 | _boolean \| BadgeProps_ | `false` |
-
 
 ### 事件
 
@@ -227,6 +225,7 @@ const isEven = ref(true)
 | `icon` | 自定义图标 | `active: boolean` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 #### BottomNavigation Variables

@@ -23,6 +23,7 @@ export * from './chip'
 export * from './col'
 export * from './collapse'
 export * from './collapseItem'
+export * from './context'
 export * from './countdown'
 export * from './counter'
 export * from './datePicker'
@@ -107,6 +108,7 @@ declare module 'vue' {
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarCollapse: typeof import('@varlet/ui')['_CollapseComponent']
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']
+    VarContext: typeof import('@varlet/ui')['_ContextComponent']
     VarCountdown: typeof import('@varlet/ui')['_CountdownComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
