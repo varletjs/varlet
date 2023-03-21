@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, nextTick, watch, computed } from 'vue'
+import { defineComponent, ref, watch, computed } from 'vue'
 import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
 import { isArray } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
@@ -78,7 +78,7 @@ export default defineComponent({
       ;(contentEl.value as HTMLDivElement).style.height = ''
       show.value = true
 
-      nextTick(() => {
+      requestAnimationFrame(() => {
         const { offsetHeight } = contentEl.value as HTMLDivElement
         ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
 
