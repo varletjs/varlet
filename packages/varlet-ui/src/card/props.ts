@@ -50,7 +50,7 @@ export const props = {
   },
   elevation: {
     type: [Number, String, Boolean],
-    default: 1,
+    default: true,
   },
   ripple: {
     type: Boolean,

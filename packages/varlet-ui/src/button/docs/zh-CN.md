@@ -313,7 +313,7 @@ function handleAutoLoadingClick() {
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
 | `text-color`     | 文字颜色                                                            | _string_ | `-`            |
 | `color`          | 背景颜色                                                            | _string_ | `-`            |
-| `elevation`      | 海拔高度，可选值为`true`、`false`和`0-24`的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和`0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
 
 #### ButtonGroup Props
 

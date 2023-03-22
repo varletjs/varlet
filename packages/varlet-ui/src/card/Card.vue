@@ -1,7 +1,7 @@
 <template>
   <div
     ref="card"
-    :class="classes(n(), [isRow, n('--layout-row')], [outline, n('--outline')], formatElevation(elevation, 2))"
+    :class="classes(n(), [isRow, n('--layout-row')], [outline, n('--outline')], formatElevation(elevation, 1))"
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
