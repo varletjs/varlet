@@ -313,7 +313,7 @@ function handleAutoLoadingClick() {
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
 | `text-color`     | 文字颜色                                                            | _string_ | `-`            |
 | `color`          | 背景颜色                                                            | _string_ | `-`            |
-| `elevation`      | 海拔高度，可选值为 `true`、`false` 和`0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
 
 #### ButtonGroup Props
 
@@ -323,7 +323,7 @@ function handleAutoLoadingClick() {
 | `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
 | `mode`      | 按钮组模式，可选值为 `normal` `text` `outline`                               | _string_ | `normal`       |
 | `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
-| `elevation`      | 按钮组海拔高度，可选值为 `true`、`false` 和`0-24` 的等级 | _string \| number_ \| _boolean_ | `true`            |
+| `elevation`      | 按钮组海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number_ \| _boolean_ | `true`            |
 | `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |
 | `text-color` | 按钮组文字颜色                                                          | _string_ | `-`       |
 
