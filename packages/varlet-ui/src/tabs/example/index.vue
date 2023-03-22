@@ -167,6 +167,7 @@ watchDarkMode(dark, (mode) => {
 
   <app-type>{{ pack.indicatorPosition }}</app-type>
   <var-tabs
+    elevation
     indicator-position="reverse"
     color="var(--color-primary)"
     active-color="#fff"
@@ -181,6 +182,7 @@ watchDarkMode(dark, (mode) => {
   <app-type></app-type>
 
   <var-tabs
+    elevation
     class="vertical-tabs"
     indicator-position="reverse"
     layout-direction="vertical"
