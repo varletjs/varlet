@@ -8,6 +8,7 @@ import VarIcon from '../../icon'
 import VarSelect from '../../select'
 import VarOption from '../../option'
 import dark from '../../themes/dark'
+import VarSlider from '../../slider'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
@@ -19,6 +20,7 @@ const position = ref('right-bottom')
 const show = ref(true)
 const active = ref(false)
 const disabled = ref(false)
+const elevation = ref(2)
 
 function toggleTrigger() {
   show.value = !show.value
@@ -68,6 +70,9 @@ watchDarkMode(dark)
   <app-type>{{ pack.disabled }}</app-type>
   <var-switch v-model="disabled" />
 
+  <app-type>{{ pack.elevation }}</app-type>
+  <var-slider max="24" v-model="elevation"></var-slider>
+
   <app-type>{{ pack.triggerToggle }}</app-type>
   <var-button type="primary" @click.stop="toggleTrigger">{{ pack.toggle }}</var-button>
 
@@ -82,6 +87,7 @@ watchDarkMode(dark)
     :direction="direction"
     :trigger="trigger"
     :disabled="disabled"
+    :elevation="elevation"
   >
     <var-button class="action" type="info" round :disabled="disabled">
       <var-icon name="account-circle" />

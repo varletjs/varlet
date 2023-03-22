@@ -92,6 +92,10 @@ export const props = {
   right: {
     type: [Number, String],
   },
+  elevation: {
+    type: [Number, String, Boolean],
+    default: true,
+  },
   safeArea: {
     type: Boolean,
     default: false,
