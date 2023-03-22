@@ -2,10 +2,10 @@
 
 exports[`test paper elevation 1`] = `"<div class=\\"var-paper var--box var-elevation--2\\"></div>"`;
 
-exports[`test paper inline 1`] = `"<div class=\\"var-paper var--box var-elevation--2 var--inline-flex\\"></div>"`;
+exports[`test paper inline 1`] = `"<div class=\\"var-paper var--box var--inline-flex\\"></div>"`;
 
-exports[`test paper radius 1`] = `"<div class=\\"var-paper var--box var-elevation--2\\" style=\\"border-radius: 10px;\\"></div>"`;
+exports[`test paper radius 1`] = `"<div class=\\"var-paper var--box\\" style=\\"border-radius: 10px;\\"></div>"`;
 
-exports[`test paper round 1`] = `"<div class=\\"var-paper var--box var-elevation--2 var-paper--round\\"></div>"`;
+exports[`test paper round 1`] = `"<div class=\\"var-paper var--box var-paper--round\\"></div>"`;
 
-exports[`test paper size 1`] = `"<div class=\\"var-paper var--box var-elevation--2\\" style=\\"width: 100px; height: 100px;\\"></div>"`;
+exports[`test paper size 1`] = `"<div class=\\"var-paper var--box\\" style=\\"width: 100px; height: 100px;\\"></div>"`;
