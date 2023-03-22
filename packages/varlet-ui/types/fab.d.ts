@@ -36,6 +36,7 @@ export interface FabProps extends BasicAttributes {
   right?: string | number
   safeArea?: boolean
   teleport?: TeleportProps['to']
+  elevation?: boolean | number | string
   onClick?: ListenerProp<(active: boolean, e: Event) => void>
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

@@ -16,7 +16,7 @@ export interface CardProps extends BasicAttributes {
   title?: string
   subtitle?: string
   description?: string
-  elevation?: string | number
+  elevation?: boolean | number | string
   ripple?: boolean
   onClick?: ListenerProp<(e: Event) => void>
   layout?: CardLayout
