@@ -35,8 +35,8 @@ export const props = {
     validator: modeValidator,
   },
   elevation: {
-    type: [Number, String],
-    default: 2,
+    type: [Boolean, Number, String],
+    default: true,
   },
   vertical: {
     type: Boolean,

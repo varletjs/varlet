@@ -4,7 +4,7 @@
       classes(
         n(),
         n('$--box'),
-        [elevation != null, n(`$-elevation--${elevation}`)],
+        formatElevation(elevation, 2),
         [onClick, n('--cursor')],
         [round, n('--round')],
         [inline, n('$--inline-flex')]
@@ -25,7 +25,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import { defineComponent } from 'vue'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 
@@ -43,6 +43,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       toSizeUnit,
       handleClick,
     }

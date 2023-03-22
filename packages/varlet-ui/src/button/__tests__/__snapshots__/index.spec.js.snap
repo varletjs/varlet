@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test button group color and text-color 1`] = `
-"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
+"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" style=\\"color: red; background: yellow;\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
@@ -17,15 +17,15 @@ exports[`test button group color and text-color 1`] = `
 `;
 
 exports[`test button group default slots 1`] = `
-"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
@@ -33,15 +33,15 @@ exports[`test button group default slots 1`] = `
 `;
 
 exports[`test button group elevation 1`] = `
-"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--10\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--10\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
@@ -81,15 +81,15 @@ exports[`test button group text mode 1`] = `
 `;
 
 exports[`test button group type and size 1`] = `
-"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary var-elevation--0\\" type=\\"button\\">
+"<div class=\\"var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2\\"><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>
-  </button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary var-elevation--0\\" type=\\"button\\">
+  </button><button class=\\"var-button var--box var-button--large var--inline-flex var-button--primary\\" type=\\"button\\">
     <!--v-if-->
     <div class=\\"var-button__content\\"></div>
     <div class=\\"var-hover-overlay\\"></div>

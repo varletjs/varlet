@@ -4,7 +4,7 @@ import { VNode } from 'vue'
 export declare const paperProps: Record<string, any>
 
 export interface PaperProps extends BasicAttributes {
-  elevation?: string | number
+  elevation?: boolean | number | string
   ripple?: boolean
   radius?: string | number
   width?: string | number

@@ -77,6 +77,7 @@ export default defineComponent({
           color={props.color}
           disabled={props.disabled}
           round
+          elevation={props.elevation}
         >
           <Icon
             var-fab-cover

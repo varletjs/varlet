@@ -1,14 +1,7 @@
 <template>
   <div
     ref="card"
-    :class="
-      classes(
-        n(),
-        [isRow, n('--layout-row')],
-        [outline, n('--outline')],
-        [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')]
-      )
-    "
+    :class="classes(n(), [isRow, n('--layout-row')], [outline, n('--outline')], formatElevation(elevation, 1))"
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
@@ -104,7 +97,7 @@ import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { doubleRaf, toSizeUnit } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 import type { Ref } from 'vue'
@@ -254,6 +247,7 @@ export default defineComponent({
       close,
       showFloatingButtons,
       floated,
+      formatElevation,
       handleClick,
     }
   },
