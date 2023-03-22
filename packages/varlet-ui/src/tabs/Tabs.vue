@@ -75,7 +75,7 @@ export default defineComponent({
     const scrollerEl: Ref<HTMLElement | null> = ref(null)
     const active: ComputedRef<number | string> = computed(() => props.active)
     const indicatorPosition: ComputedRef<string> = computed(() =>
-      props.indicatorPosition === 'reverse' ? '--reverse' : ''
+      props.indicatorPosition === 'reverse' ? '-reverse' : ''
     )
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
@@ -196,6 +196,7 @@ export default defineComponent({
     )
 
     watch(() => props.active, resize)
+    watch(() => props.scrollable, resize)
     useEventListener(window, 'resize', resize)
 
     return {
