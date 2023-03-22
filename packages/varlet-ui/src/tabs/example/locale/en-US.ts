@@ -8,7 +8,7 @@ export default {
   viewRelation: 'View Relation',
   option: 'Option',
   stickyLayout: 'Sticky Layout',
-  indicatorPosition: 'Indicator Position',
+  indicatorPosition: 'Indicator Position Reverse',
   text:
     'The way she came into the place.\n' +
     'I knew right then and there.\n' +

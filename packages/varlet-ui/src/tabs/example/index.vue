@@ -179,9 +179,8 @@ watchDarkMode(dark, (mode) => {
     <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <app-type></app-type>
-
   <var-tabs
+    style="margin-top: 20px"
     elevation
     class="vertical-tabs"
     indicator-position="reverse"

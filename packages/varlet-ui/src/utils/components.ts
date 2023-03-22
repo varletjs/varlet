@@ -259,9 +259,13 @@ export function defineListenerProp<F>(fallback?: any) {
 }
 
 export function formatElevation(elevation: number | boolean | string, defaultLevel?: number) {
-  if (elevation === false) return null
+  if (elevation === false) {
+    return null
+  }
 
-  if (elevation === true && defaultLevel) elevation = defaultLevel
+  if (elevation === true && defaultLevel) {
+    elevation = defaultLevel
+  }
 
   return `var-elevation--${elevation}`
 }

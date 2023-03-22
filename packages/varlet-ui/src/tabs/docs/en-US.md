@@ -267,6 +267,54 @@ const active = ref(0)
 </style>
 ```
 
+### Indicator Position Reverse
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs
+    elevation
+    indicator-position="reverse"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    class="tabs-example-vertical"
+    elevation
+    indicator-position="reverse"
+    layout-direction="vertical"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active"
+  >
+    <var-tab>Option1</var-tab>
+    <var-tab>Option2</var-tab>
+    <var-tab>Option3</var-tab>
+  </var-tabs>
+</template>
+
+<style>
+.tabs-example-vertical {
+  width: 80px !important;
+  height: 120px !important;
+  margin-top: 20px;
+}
+</style>
+```
+
 ## API
 
 ### Props

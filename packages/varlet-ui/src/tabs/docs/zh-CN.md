@@ -267,6 +267,54 @@ const active = ref(0)
 </style>
 ```
 
+### 指示器位置反转
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-tabs
+    elevation
+    indicator-position="reverse"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    class="tabs-example-vertical"
+    elevation
+    indicator-position="reverse"
+    layout-direction="vertical"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active"
+  >
+    <var-tab>选项1</var-tab>
+    <var-tab>选项2</var-tab>
+    <var-tab>选项3</var-tab>
+  </var-tabs>
+</template>
+
+<style>
+.tabs-example-vertical {
+  width: 80px !important;
+  height: 120px !important;
+  margin-top: 20px;
+}
+</style>
+```
+
 ## API
 
 ### 属性
