@@ -21,7 +21,7 @@ import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { toNumber } from '@varlet/shared'
+import { isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { useEventListener, useMounted } from '@varlet/use'
 
@@ -43,7 +43,7 @@ export default defineComponent({
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const controlNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number> = ref(-999)
+    const distance: Ref<number | string> = ref('-125%')
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
@@ -59,7 +59,9 @@ export default defineComponent({
     )
 
     const controlStyle = computed(() => ({
-      transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
+      transform: `translate3d(0px, ${
+        isString(distance.value) ? distance.value : `${distance.value}px`
+      }, 0px) translate(-50%, 0)`,
       transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
@@ -85,6 +87,11 @@ export default defineComponent({
     }
 
     const touchStart = (event: TouchEvent) => {
+      if (controlPosition.value === 0) {
+        const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+        controlPosition.value = -(width + width * 0.25)
+      }
+
       startY = event.touches[0].clientY
       deltaY = 0
     }
@@ -150,13 +157,6 @@ export default defineComponent({
       }
     }
 
-    const setPosition = () => {
-      const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
-
-      distance.value = -(width + width * 0.25)
-      controlPosition.value = -(width + width * 0.25)
-    }
-
     const setScroller = () => {
       scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
     }
@@ -184,10 +184,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(() => {
-      setScroller()
-      setPosition()
-    })
+    useMounted(setScroller)
 
     useEventListener(freshNode, 'touchmove', touchMove)
 
