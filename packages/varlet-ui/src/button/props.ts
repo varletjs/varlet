@@ -66,6 +66,10 @@ export const props = {
   textColor: {
     type: String,
   },
+  elevation: {
+    type: [Number, Boolean, String],
+    default: true,
+  },
   autoLoading: {
     type: Boolean,
     default: false,

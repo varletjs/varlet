@@ -293,6 +293,8 @@ function handleAutoLoadingClick() {
 | `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
 | `text-color`     | Button Text color                                                                       | _string_  | `-`            |
 | `color`          | Button background color                                                                 | _string_  | `-`            |
+| `elevation` | Elevation-overlay level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+
 
 #### ButtonGroup Props
 
