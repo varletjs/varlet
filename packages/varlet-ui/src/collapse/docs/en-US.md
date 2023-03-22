@@ -129,7 +129,7 @@ const value = ref(['1'])
 | ----- |---------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Names of current active panels                                      | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
 | `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
-| `elevation` | Elevation-overlay level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `offset` | Whether to show margin                                              | _boolean_ | `true` |
 
 #### CollapseItem Props
