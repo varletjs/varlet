@@ -128,7 +128,7 @@ const value = ref(['1'])
 |-------------|--------------------------------------| -------- |------------------------------|
 | `v-model`   | 当前展开面板的 name                         | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \ | number[]_ | `-` |
 | `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
-| `elevation` | 阴影程度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `true`    |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `true`    |
 | `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
 
 #### CollapseItem Props
