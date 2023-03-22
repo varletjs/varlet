@@ -16,7 +16,13 @@
             zIndex,
             width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined,
           }"
-          :class="classes(n('menu'), [defaultStyle, `${n('--menu-background-color')} ${n('$-elevation--3')}`])"
+          :class="
+            classes(
+              n('menu'),
+              [defaultStyle, n('--menu-background-color')],
+              [defaultStyle, formatElevation(elevation, 3)]
+            )
+          "
           v-show="show"
           @click.stop
           @mouseenter="handlePopoverMouseenter"
@@ -30,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { usePopover } from './usePopover'
@@ -68,6 +74,7 @@ export default defineComponent({
       hostSize,
       show,
       zIndex,
+      formatElevation,
       toSizeUnit,
       n,
       classes,

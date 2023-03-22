@@ -47,7 +47,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-menu>
+  <var-menu elevation>
     <var-button type="primary">{{ pack.basicUsage }}</var-button>
     <template #menu>
       <var-cell>{{ pack.menuOption }}</var-cell>
