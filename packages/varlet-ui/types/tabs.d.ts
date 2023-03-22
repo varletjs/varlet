@@ -3,6 +3,10 @@ import { VNode } from 'vue'
 
 export declare const tabsProps: Record<string, any>
 
+export type TabsScrollable = 'auto' | 'always'
+
+export type TabsIndicatorPosition = 'normal' | 'reverse'
+
 export { TabsDirection }
 
 export interface TabsProps extends BasicAttributes {
@@ -22,6 +26,8 @@ export interface TabsProps extends BasicAttributes {
   stickyZIndex?: number
   offsetTop?: string | number
   safeArea?: boolean
+  scrollable?: TabsScrollable
+  indicatorPosition?: TabsIndicatorPosition
   onClick?: ListenerProp<(active: string | number) => void>
   onChange?: ListenerProp<(active: string | number) => void>
   'onUpdate:active'?: ListenerProp<(active: string | number) => void>
