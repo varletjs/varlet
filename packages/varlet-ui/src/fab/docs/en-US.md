@@ -273,7 +273,7 @@ function toggle() {
 | `right` | Same as css right, for custom trigger position | _string \| number_ | `-` |
 | `safe-area` | Whether to enable bottom safe area adaptation	 | _boolean_ | `false` |
 | `teleport` | element to which the component mounts | _TeleportProps['to']_ | `-` |
-| `elevation` | Elevation-overlay level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Events
 

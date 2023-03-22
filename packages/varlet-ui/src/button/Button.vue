@@ -83,7 +83,7 @@ export default defineComponent({
       const { type, size, color, textColor, mode } = buttonGroup
 
       return {
-        elevation: 0,
+        elevation: '',
         type: props.type != null ? props.type : type.value,
         size: props.size != null ? props.size : size.value,
         color: props.color != null ? props.color : color.value,

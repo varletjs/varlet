@@ -151,7 +151,7 @@ const floating = ref(false)
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |
- `elevation` | Elevation-overlay level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+ `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `src`               | The src of Image                                                | _string_ | `-`      |
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
