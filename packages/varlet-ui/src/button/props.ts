@@ -67,7 +67,7 @@ export const props = {
     type: String,
   },
   elevation: {
-    type: [Number, Boolean, String],
+    type: [Boolean, Number, String],
     default: true,
   },
   autoLoading: {

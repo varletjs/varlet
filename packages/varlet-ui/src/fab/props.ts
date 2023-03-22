@@ -93,7 +93,7 @@ export const props = {
     type: [Number, String],
   },
   elevation: {
-    type: [Number, String, Boolean],
+    type: [Boolean, Number, String],
     default: true,
   },
   safeArea: {

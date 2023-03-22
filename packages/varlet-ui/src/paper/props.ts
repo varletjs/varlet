@@ -2,7 +2,7 @@ import { defineListenerProp } from '../utils/components'
 
 export const props = {
   elevation: {
-    type: [Number, String, Boolean],
+    type: [Boolean, Number, String],
     default: true,
   },
   ripple: {

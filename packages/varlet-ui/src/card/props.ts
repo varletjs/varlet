@@ -49,7 +49,7 @@ export const props = {
     type: String,
   },
   elevation: {
-    type: [Number, String, Boolean],
+    type: [Boolean, Number, String],
     default: true,
   },
   ripple: {
