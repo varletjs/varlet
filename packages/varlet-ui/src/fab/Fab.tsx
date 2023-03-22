@@ -95,11 +95,13 @@ export default defineComponent({
 
       return (
         <div
-          class={classes(n(), n(`--position-${props.position}`), n(`--direction-${props.direction}`), [
-            props.fixed,
-            n('--fixed'),
-            n('--absolute'),
-          ])}
+          class={classes(
+            n(),
+            n(`--position-${props.position}`),
+            n(`--direction-${props.direction}`),
+            [props.fixed, n('--fixed'), n('--absolute')],
+            [props.safeArea, n('--safe-area')]
+          )}
           style={{
             zIndex: toNumber(props.zIndex),
             top: toSizeUnit(props.top),
