@@ -27,6 +27,7 @@ export default defineComponent({
       () => props.modelValue
     )
     const offset: ComputedRef<boolean> = computed(() => props.offset)
+    const elevation: ComputedRef<boolean | number | string> = computed(() => props.elevation)
 
     const checkValue = () => {
       if (!props.accordion && !isArray(props.modelValue)) {
@@ -109,6 +110,7 @@ export default defineComponent({
     const collapseProvider: CollapseProvider = {
       active,
       offset,
+      elevation,
       updateItem,
     }
 

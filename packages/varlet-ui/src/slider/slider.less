@@ -53,6 +53,7 @@
 
   &__thumb {
     position: absolute;
+    cursor: pointer;
 
     &-block {
       position: absolute;
@@ -61,25 +62,24 @@
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: background-color 0.25s;
+      z-index: 1;
       background-color: var(--slider-thumb-block-background);
     }
 
     &-ripple {
       position: absolute;
-      width: 0;
-      z-index: -1;
-      height: 0;
+      width: 36px;
+      height: 36px;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       opacity: 0.3;
-      background: var(--slider-thumb-ripple-background);
+      background: transparent;
       transition: 0.3s var(--cubic-bezier);
 
       &--active {
-        width: 36px;
-        height: 36px;
+        background: var(--slider-thumb-ripple-background);
       }
     }
 
@@ -129,7 +129,7 @@
         background-color: var(--slider-error-color) !important;
       }
 
-      &-ripple {
+      &-ripple--active {
         background-color: var(--slider-error-color) !important;
       }
 

@@ -55,6 +55,7 @@ varlet-cli gen
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
 | `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
 | `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
+| `directives` | 组件库指令文件夹名称 | _string[]_ | `[]` |
 | `copy` | 复制文件配置 | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
 | `icons` | 字体图标打包相关配置 | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 

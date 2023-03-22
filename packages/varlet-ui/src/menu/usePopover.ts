@@ -1,6 +1,6 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
-import { useClickOutside } from '@varlet/use'
+import { useClickOutside, useVModel } from '@varlet/use'
 import { doubleRaf, toPxNum } from '../utils/elements'
 import { call } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
@@ -49,8 +49,19 @@ export interface UsePopoverOptions {
 export function usePopover(options: UsePopoverOptions) {
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
-  const show: Ref<boolean> = ref(false)
   const hostSize: Ref<HostSize> = ref({ width: 0, height: 0 })
+  const show = useVModel(options, 'show', {
+    passive: true,
+    defaultValue: false,
+    emit(event, value) {
+      if (value) {
+        resize()
+        call(options.onOpen)
+      } else {
+        call(options.onClose)
+      }
+    },
+  })
   const { zIndex } = useZIndex(() => show.value, 1)
 
   let popoverInstance: Instance | null = null
@@ -282,30 +293,9 @@ export function usePopover(options: UsePopoverOptions) {
 
   useClickOutside(host, 'click', handleClickOutside)
 
-  watch(
-    () => options.show,
-    (newValue) => {
-      show.value = newValue ?? false
-    },
-    { immediate: true }
-  )
-
   watch(() => options.offsetX, resize)
   watch(() => options.offsetY, resize)
   watch(() => options.placement, resize)
-
-  watch(
-    () => show.value,
-    (newValue) => {
-      if (newValue) {
-        resize()
-        call(options.onOpen)
-      } else {
-        call(options.onClose)
-      }
-    }
-  )
-
   watch(() => options.disabled, close)
 
   onMounted(() => {

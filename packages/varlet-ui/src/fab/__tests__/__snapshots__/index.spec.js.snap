@@ -148,6 +148,16 @@ exports[`test fab position 4`] = `
 </div>"
 `;
 
+exports[`test fab safeArea 1`] = `
+"<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed var-fab--safe-area\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\">
+    <!--v-if-->
+    <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div>
+    <div class=\\"var-hover-overlay\\"></div>
+  </button>
+  <div class=\\"var-fab__actions\\" style=\\"display: none;\\"></div>
+</div>"
+`;
+
 exports[`test fab teleport 1`] = `"<div class=\\"var-fab var-fab--position-right-bottom var-fab--direction-top var-fab--fixed\\" style=\\"z-index: 90;\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 var-button--round var-fab__trigger\\" type=\\"button\\" var-fab-cover=\\"true\\"><!--v-if--><div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus var-fab__trigger-inactive-icon\\" style=\\"transition-duration: 200ms;\\" var-fab-cover=\\"true\\"></i></div><div class=\\"var-hover-overlay\\"></div></button><div class=\\"var-fab__actions\\" style=\\"display: none;\\"><div class=\\"var-fab__action\\"><div>action</div></div></div></div>"`;
 
 exports[`test fab trigger equals click 1`] = `

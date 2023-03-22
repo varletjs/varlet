@@ -92,6 +92,10 @@ export const props = {
   right: {
     type: [Number, String],
   },
+  safeArea: {
+    type: Boolean,
+    default: false,
+  },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },

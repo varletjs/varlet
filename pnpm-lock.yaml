@@ -34,6 +34,7 @@ importers:
     specifiers:
       '@babel/core': ^7.14.8
       '@babel/helper-plugin-utils': ^7.14.5
+      '@babel/plugin-transform-typescript': ^7.14.5
       '@babel/preset-env': ^7.14.8
       '@babel/preset-typescript': ^7.14.5
       '@types/babel__core': ^7.1.12
@@ -74,7 +75,7 @@ importers:
       nanospinner: ^1.1.0
       picocolors: ^1.0.0
       semver: ^7.3.5
-      sharp: 0.31.3
+      sharp: 0.31.1
       slash: ^3.0.0
       ts-jest: ^26.5.1
       typescript: ^4.4.4
@@ -86,6 +87,7 @@ importers:
     dependencies:
       '@babel/core': 7.18.10
       '@babel/helper-plugin-utils': 7.18.9
+      '@babel/plugin-transform-typescript': 7.20.7_@babel+core@7.18.10
       '@babel/preset-env': 7.18.10_@babel+core@7.18.10
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.10
       '@varlet/shared': link:../varlet-shared
@@ -114,7 +116,7 @@ importers:
       nanospinner: 1.1.0
       picocolors: 1.0.0
       semver: 7.3.7
-      sharp: 0.31.3
+      sharp: 0.31.1
       slash: 3.0.0
       ts-jest: 26.5.6_rnfpnlbz3wqspag7uftsmccrvy
       typescript: 4.7.4
@@ -227,7 +229,7 @@ importers:
       '@types/node': '*'
       '@varlet/cli': 'workspace: *'
       '@varlet/ui': 'workspace: *'
-      '@vue/repl': 1.3.0
+      '@vue/repl': 1.3.3
       file-saver: ^2.0.5
       jszip: ^3.6.0
       live-server: ^1.2.1
@@ -238,7 +240,7 @@ importers:
       vue: 3.2.29
     dependencies:
       '@varlet/ui': link:../varlet-ui
-      '@vue/repl': 1.3.0_vue@3.2.29
+      '@vue/repl': 1.3.3_vue@3.2.29
       file-saver: 2.0.5
       jszip: 3.10.1
       vue: 3.2.29
@@ -460,6 +462,25 @@ packages:
       '@babel/helper-member-expression-to-functions': 7.18.9
       '@babel/helper-optimise-call-expression': 7.18.6
       '@babel/helper-replace-supers': 7.18.9
+      '@babel/helper-split-export-declaration': 7.18.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@babel/helper-create-class-features-plugin/7.20.12_@babel+core@7.18.10:
+    resolution: {integrity: sha512-9OunRkbT0JQcednL0UFvbfXpAsUXiGjUk0a7sN8fUXX7Mue79cUSMjHGDRRi/Vz9vYlpIhLV5fMD5dKoMhhsNQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.18.10
+      '@babel/helper-annotate-as-pure': 7.18.6
+      '@babel/helper-environment-visitor': 7.18.9
+      '@babel/helper-function-name': 7.19.0
+      '@babel/helper-member-expression-to-functions': 7.20.7
+      '@babel/helper-optimise-call-expression': 7.18.6
+      '@babel/helper-replace-supers': 7.20.7
+      '@babel/helper-skip-transparent-expression-wrappers': 7.20.0
       '@babel/helper-split-export-declaration': 7.18.6
     transitivePeerDependencies:
       - supports-color
@@ -1144,14 +1165,14 @@ packages:
       '@babel/helper-plugin-utils': 7.18.9
     dev: false
 
-  /@babel/plugin-syntax-typescript/7.18.6_@babel+core@7.18.10:
-    resolution: {integrity: sha512-mAWAuq4rvOepWCBid55JuRNvpTNf2UGVgoz4JV0fXEKolsVZDzsa4NqCef758WZJj/GDu0gVGItjKFiClTAmZA==}
+  /@babel/plugin-syntax-typescript/7.20.0_@babel+core@7.18.10:
+    resolution: {integrity: sha512-rd9TkG+u1CExzS4SM1BlMEhMXwFLKVjOAFFCDx9PbX5ycJWDoWMcwdJH9RhkPu1dOgn5TrxLot/Gx6lWFuAUNQ==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.10
-      '@babel/helper-plugin-utils': 7.18.9
+      '@babel/helper-plugin-utils': 7.20.2
     dev: false
 
   /@babel/plugin-syntax-typescript/7.20.0_@babel+core@7.20.12:
@@ -1505,16 +1526,16 @@ packages:
       '@babel/helper-plugin-utils': 7.18.9
     dev: false
 
-  /@babel/plugin-transform-typescript/7.18.12_@babel+core@7.18.10:
-    resolution: {integrity: sha512-2vjjam0cum0miPkenUbQswKowuxs/NjMwIKEq0zwegRxXk12C9YOF9STXnaUptITOtOJHKHpzvvWYOjbm6tc0w==}
+  /@babel/plugin-transform-typescript/7.20.7_@babel+core@7.18.10:
+    resolution: {integrity: sha512-m3wVKEvf6SoszD8pu4NZz3PvfKRCMgk6D6d0Qi9hNnlM5M6CFS92EgF4EiHVLKbU0r/r7ty1hg7NPZwE7WRbYw==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.10
-      '@babel/helper-create-class-features-plugin': 7.18.9_@babel+core@7.18.10
-      '@babel/helper-plugin-utils': 7.18.9
-      '@babel/plugin-syntax-typescript': 7.18.6_@babel+core@7.18.10
+      '@babel/helper-create-class-features-plugin': 7.20.12_@babel+core@7.18.10
+      '@babel/helper-plugin-utils': 7.20.2
+      '@babel/plugin-syntax-typescript': 7.20.0_@babel+core@7.18.10
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1662,7 +1683,7 @@ packages:
       '@babel/core': 7.18.10
       '@babel/helper-plugin-utils': 7.18.9
       '@babel/helper-validator-option': 7.18.6
-      '@babel/plugin-transform-typescript': 7.18.12_@babel+core@7.18.10
+      '@babel/plugin-transform-typescript': 7.20.7_@babel+core@7.18.10
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2787,8 +2808,8 @@ packages:
     dependencies:
       '@vue/shared': 3.2.29
 
-  /@vue/repl/1.3.0_vue@3.2.29:
-    resolution: {integrity: sha512-L2Jr9+M6z2+gW6i5ZuUXwCMfXtyHDSSyw4fViL0QezXLLOctqTw+o6sYUsgvErkreb9oI0kcZPpWkkW7lGeuiA==}
+  /@vue/repl/1.3.3_vue@3.2.29:
+    resolution: {integrity: sha512-mrN3Gd4CIaiIiRdi7/pAOH9rPud8q8I5svLurSoyxLhxFXs9WdfaKZlirExSJIuecHYFiAAozTBtb8XQPNhCHw==}
     peerDependencies:
       vue: ^3.2.13
     dependencies:
@@ -5098,7 +5119,7 @@ packages:
       map-cache: 0.2.2
 
   /fresh/0.5.2:
-    resolution: {integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=}
+    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
 
   /from/0.1.7:
@@ -5281,7 +5302,7 @@ packages:
     dev: false
 
   /github-from-package/0.0.0:
-    resolution: {integrity: sha1-l/tdlr/eiXMxPyDoKI75oWf6ZM4=}
+    resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
 
   /glob-parent/3.1.0:
     resolution: {integrity: sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA==}
@@ -8433,8 +8454,8 @@ packages:
   /setprototypeof/1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  /sharp/0.31.3:
-    resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
+  /sharp/0.31.1:
+    resolution: {integrity: sha512-GR8M1wBwOiFKLkm9JPun27OQnNRZdHfSf9VwcdZX6UrRmM1/XnOrLFTF0GAil+y/YK4E6qcM/ugxs80QirsHxg==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:

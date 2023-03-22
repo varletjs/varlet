@@ -273,22 +273,22 @@ const active = ref(0)
 
 #### Tabs Props
 
-| Prop               | Description                                                                  | Type      | Default      |
-|--------------------|------------------------------------------------------------------------------|-----------|--------------|
-| `v-model:active`   | The `active` tab identifier matches `name` first, followed by `index`        | _string_  | `index`      |
-| `layout-direction` | The layout direction of the tabs, optional value of `horizontal` `vertical`  | _string_  | `horizontal` |
-| `item-direction`   | The layout direction of the tab, optional value of `horizontal` `vertical`   | _string_  | `horizontal` |
+| Prop               | Description                                                                  | Type     | Default      |
+|--------------------|------------------------------------------------------------------------------|----------|--------------|
+| `v-model:active`   | The `active` tab identifier matches `name` first, followed by `index`        | _string_ | `index`      |
+| `layout-direction` | The layout direction of the tabs, optional value of `horizontal` `vertical`  | _string_ | `horizontal` |
+| `item-direction`   | The layout direction of the tab, optional value of `horizontal` `vertical`   | _string_ | `horizontal` |
 | `fixed-bottom`     | Whether fixed to the bottom of the window, can be used for bottom navigation | _boolean_ | `false`      |
-| `color`            | The background color of the tabs                                             | _string_  | `#fff`       |
-| `active-color`     | The primary color that the tab is activates                                  | _string_  | `#2979ff`    |
-| `inactive-color`   | The primary color that the tab is not activated                              | _string_  | `#646566`    |
-| `disabled-color`   | The primary color that the tab is disabled                                   | _string_  | `#e0e0e0`    |
-| `indicator-color`  | The tab activates the color of the indicator                                 | _string_  | `#2979ff`    |
-| `indicator-size`   | Tab activates the size of the indicator                                      | _string \ | number_      | `2px`        |
+| `color`            | The background color of the tabs                                             | _string_ | `#fff`       |
+| `active-color`     | The primary color that the tab is activates                                  | _string_ | `#2979ff`    |
+| `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `#646566`    |
+| `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `#e0e0e0`    |
+| `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `#2979ff`    |
+| `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_      | `2px`        |
 | `elevation`        | Whether to enable shadows                                                    | _boolean_ | `false`      |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
-| `sticky-z-index`   | Sticky layouts z-index                                                       | _number_  | `10`          |
+| `sticky-z-index`   | Sticky layouts z-index                                                       | _number_ | `10`          |
 | `safe-area`        | Whether to enable bottom safe area adaptation                                | _boolean_ | `false`      |
 | `offset-top`       | Distance offset top                                                          | _string \| number_      | `0`          |
 

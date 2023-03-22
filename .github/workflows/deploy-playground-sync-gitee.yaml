@@ -26,7 +26,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile && node scripts/bootstrap.mjs
 
       - name: Build playground
-        run: cd packages/varlet-ui-playground && pnpm build
+        run: pnpm --dir ./packages/varlet-ui-playground build
 
       - name: Deploy site
         uses: JamesIves/github-pages-deploy-action@4.1.1

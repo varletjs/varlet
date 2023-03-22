@@ -1,7 +1,7 @@
 import Button from '../button'
 import Icon from '../icon'
-import { computed, defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
-import { useClickOutside } from '@varlet/use'
+import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
+import { useClickOutside, useVModel } from '@varlet/use'
 import { call, createNamespace, flatFragment, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
@@ -22,19 +22,9 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
-    const localActive: Ref<boolean> = ref(false)
+    const isActive = useVModel(props, 'active', { emit: (event, value) => call(props['onUpdate:active'], value) })
     const host: Ref<null | HTMLElement> = ref(null)
     const { disabled } = useTeleport()
-
-    const isActive = computed({
-      get(): boolean {
-        return localActive.value
-      },
-      set(value: boolean) {
-        localActive.value = value
-        call(props['onUpdate:active'], value)
-      },
-    })
 
     const handleClick = (e: Event, value: boolean, childrenLength: number) => {
       e.stopPropagation()
@@ -105,11 +95,13 @@ export default defineComponent({
 
       return (
         <div
-          class={classes(n(), n(`--position-${props.position}`), n(`--direction-${props.direction}`), [
-            props.fixed,
-            n('--fixed'),
-            n('--absolute'),
-          ])}
+          class={classes(
+            n(),
+            n(`--position-${props.position}`),
+            n(`--direction-${props.direction}`),
+            [props.fixed, n('--fixed'), n('--absolute')],
+            [props.safeArea, n('--safe-area')]
+          )}
           style={{
             zIndex: toNumber(props.zIndex),
             top: toSizeUnit(props.top),
@@ -143,14 +135,6 @@ export default defineComponent({
         </div>
       )
     }
-
-    watch(
-      () => props.active,
-      (value) => {
-        localActive.value = value
-      },
-      { immediate: true }
-    )
 
     watch(
       () => props.trigger,
