@@ -19,7 +19,7 @@ export const props = {
     validator: positionValidator,
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, String, Number],
     default: true,
   },
   round: {

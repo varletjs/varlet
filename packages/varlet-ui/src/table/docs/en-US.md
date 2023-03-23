@@ -109,6 +109,7 @@ function get(current, size) {
 | Prop         | Description | Type | Default |
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Slots
 

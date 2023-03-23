@@ -52,7 +52,7 @@ export const props = {
     type: [String, Number],
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, String, Number],
     default: false,
   },
   scrollable: {
