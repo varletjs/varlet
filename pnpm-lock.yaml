@@ -44,6 +44,7 @@ importers:
       '@types/hash-sum': ^1.0.0
       '@types/inquirer': ^9.0.2
       '@types/lodash-es': ^4.17.5
+      '@types/markdown-it': ^12.2.3
       '@types/node': ^18.7.20
       '@types/semver': ^7.3.9
       '@types/sharp': 0.31.1
@@ -72,6 +73,7 @@ importers:
       less: ^3.12.2
       live-server: ^1.2.1
       lodash-es: ^4.17.21
+      markdown-it: ^12.2.3
       nanospinner: ^1.1.0
       picocolors: ^1.0.0
       semver: ^7.3.5
@@ -113,6 +115,7 @@ importers:
       less: 3.13.1
       live-server: 1.2.2
       lodash-es: 4.17.21
+      markdown-it: 12.3.2
       nanospinner: 1.1.0
       picocolors: 1.0.0
       semver: 7.3.7
@@ -133,6 +136,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/inquirer': 9.0.2
       '@types/lodash-es': 4.17.6
+      '@types/markdown-it': 12.2.3
       '@types/node': 18.7.20
       '@types/semver': 7.3.12
       '@types/sharp': 0.31.1
@@ -5119,7 +5123,7 @@ packages:
       map-cache: 0.2.2
 
   /fresh/0.5.2:
-    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
+    resolution: {integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=}
     engines: {node: '>= 0.6'}
 
   /from/0.1.7:
