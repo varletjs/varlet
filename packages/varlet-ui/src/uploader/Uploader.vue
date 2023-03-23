@@ -2,7 +2,7 @@
   <div :class="classes(n(), n('$--box'))">
     <div :class="n('file-list')">
       <div
-        :class="classes(n('file'), n('$-elevation--2'), [f.state === 'loading', n('--loading')])"
+        :class="classes(n('file'), formatElevation(elevation, 2), [f.state === 'loading', n('--loading')])"
         :key="f.id"
         v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
@@ -23,7 +23,7 @@
       <div
         :class="
           classes(
-            [!$slots.default, `${n('action')} ${n('$-elevation--2')}`],
+            [!$slots.default, `${n('action')} ${formatElevation(elevation, 2)}`],
             [disabled || formDisabled, n('--disabled')]
           )
         "
@@ -86,7 +86,7 @@ import { defineComponent, nextTick, reactive, computed, watch, ref, type Compute
 import { props, type VarFile, type ValidateTrigger } from './props'
 import { isNumber, toNumber, isString, isArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
-import { call, useValidation, createNamespace } from '../utils/components'
+import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { type UploaderProvider } from './provide'
 
@@ -355,6 +355,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       input,
       files,
       showPreview,

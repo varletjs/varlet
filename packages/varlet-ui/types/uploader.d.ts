@@ -33,6 +33,7 @@ export interface UploaderProps extends BasicAttributes {
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean
+  elevation?: boolean | string | number
   removable?: boolean
   maxlength?: string | number
   maxsize?: string | number
