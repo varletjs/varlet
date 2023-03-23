@@ -109,7 +109,7 @@ function get(current, size) {
 | 参数           | 说明 | 类型 | 默认值 |
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
-| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `true`    |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 
 ### 插槽
 

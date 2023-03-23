@@ -333,7 +333,7 @@ const active = ref(0)
 | `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `#e0e0e0`    |
 | `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `#2979ff`    |
 | `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \| number_      | `2px`        |
-| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `false`    |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
 | `sticky-css-mode`  | 是否启用粘性布局的原生 css sticky 模式              | _boolean_ | `false`      |
 | `sticky-z-index`   | 粘性布局的层级                                | _number_ | `10`         |

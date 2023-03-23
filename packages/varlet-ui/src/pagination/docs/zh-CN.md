@@ -146,7 +146,7 @@
 | `v-model: size`     | 每页条数                                            | _string \| number_ | `10` |
 | `total`             | 总条数                                             | _string \| number_ | `0` |
 | `simple`            | 是否为简单模式                                         | _boolean_ | `true` |
-| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
+| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
 | `disabled`          | 禁用分页                                            | _boolean_ | `false` |
 | `show-size-changer` | 是否显示 `size` 切换器                                 | _boolean_ | `true` |
 | `show-quick-jumper` | 是否可以快速跳转至某页	                                    | _boolean_ | `false` |

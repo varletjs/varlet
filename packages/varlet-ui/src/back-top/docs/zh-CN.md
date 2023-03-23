@@ -29,7 +29,7 @@ const lists = [...Array(100).keys()]
 | `visibility-height` | 滚动高度达到此参数值才出现                             | _string \| number_      | `200` |
 | `bottom`            | `BackTop` 距离页面底部的距离                       | _string \| number_      | `40` |
 | `right`             | `BackTop` 距离页面右侧的距离                       | _string \| number_      | `40` |
-| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `true`    |
+| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `duration`          | 回到顶部所需时间（ms）                              | _number_ | `300`        |
 
 ### 事件
