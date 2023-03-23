@@ -306,18 +306,19 @@ const files = ref([
 ### Props
 
 | Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `v-model` | File list | _VarFile[]_ | `[]` |
-| `accept` | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
-| `capture` | Get the file, the same as the native property | _string_ | `-` |
+| --- | ----------------------------------------------------------------------- | --- | --- |
+| `v-model`  | File list | _VarFile[]_ | `[]` |
+| `accept`   | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
+| `capture`  | Get the file, the same as the native property | _string_ | `-` |
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
+| `elevation`| Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
-| `maxsize` | Maximum file size | _string \| number_ | `-` |
+| `maxsize`   | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
-| `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `ripple`    | Whether to open ripple | _boolean_ | `true` |
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
