@@ -333,7 +333,7 @@ const active = ref(0)
 | `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `#e0e0e0`    |
 | `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `#2979ff`    |
 | `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_      | `2px`        |
-| `elevation`        | Whether to enable shadows                                                    | _boolean_ | `false`      |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |
 | `sticky-css-mode`  | Whether to enable sticky layouts native css sticky mode                      | _boolean_ | `false`      |
 | `sticky-z-index`   | Sticky layouts z-index                                                       | _number_ | `10`          |

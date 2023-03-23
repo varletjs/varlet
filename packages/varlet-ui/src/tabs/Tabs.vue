@@ -13,7 +13,7 @@
           n('$--box'),
           n(`--item-${itemDirection}`),
           n(`--layout-${layoutDirection}-padding`),
-          [elevation, n('$-elevation--4')],
+          formatElevation(elevation, 4),
           [fixedBottom, n('--fixed-bottom')],
           [safeArea, n('--safe-area')]
         )
@@ -56,7 +56,7 @@ import { type TabProvider } from '../tab/provide'
 import { isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace, call, formatElevation } from '../utils/components'
 import { useEventListener } from '@varlet/use'
 
 const { n, classes } = createNamespace('tabs')
@@ -214,6 +214,7 @@ export default defineComponent({
       classes,
       resize,
       resizeSticky,
+      formatElevation,
     }
   },
 })

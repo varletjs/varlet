@@ -20,7 +20,7 @@ export interface TabsProps extends BasicAttributes {
   color?: string
   indicatorColor?: string
   indicatorSize?: string | number
-  elevation?: boolean
+  elevation?: boolean | string | number
   sticky?: boolean
   stickyCssMode?: boolean
   stickyZIndex?: number
