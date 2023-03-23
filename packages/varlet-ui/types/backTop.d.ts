@@ -8,6 +8,7 @@ export interface BackTopProps extends BasicAttributes {
   duration?: number
   target?: string | HTMLElement
   right?: number | string
+  elevation?: boolean | number | string
   bottom?: number | string
   onClick?: ListenerProp<(e: MouseEvent) => void>
 }
