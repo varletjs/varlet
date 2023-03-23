@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [round, n('--round')], [elevation, n('$-elevation--3')])" :style="rootStyles">
+  <div :class="classes(n(), [round, n('--round')], formatElevation(elevation, 3))" :style="rootStyles">
     <div :class="n('toolbar')">
       <div :class="n('left')">
         <slot name="left" />
@@ -27,7 +27,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('app-bar')
@@ -69,6 +69,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       rootStyles,
       paddingLeft,
       paddingRight,

@@ -139,7 +139,7 @@ const active = ref(0)
 | `text-color`     | 文字颜色                              | _string_ | `-`     |
 | `title`          | 标题                                | _string_ | -       |
 | `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left`  |
-| `elevation`      | 是否使用海拔                            | _boolean_ | `true`  |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级 | _string \| number \| boolean_|   `true`    |
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
 | `image`          | 背景图片                            | _string_ | `-` |
 | `image-linear-gradient` | 背景图片渐变色 | _string_ | `-` |

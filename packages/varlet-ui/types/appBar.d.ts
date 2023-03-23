@@ -10,7 +10,7 @@ export interface AppBarProps extends BasicAttributes {
   textColor?: string
   title?: string
   titlePosition?: AppBarTitlePosition
-  elevation?: boolean
+  elevation?: boolean | string | number
   round?: boolean
   image?: string
   imageLinearGradient?: string
