@@ -15,6 +15,10 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   maxPagerCount: {
     type: Number,
     default: 3,

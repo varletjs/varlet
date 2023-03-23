@@ -140,18 +140,19 @@
 
 ### 属性
 
-| 参数                  | 说明 | 类型 | 默认值 |
-|---------------------| -------------- | -------- | ---------- |
-| `v-model: current`  | 当前页数 | _string \| number_ | `1` |
-| `v-model: size`     | 每页条数 | _string \| number_ | `10` |
-| `total`             | 总条数 | _string \| number_ | `0` |
-| `simple`            | 是否为简单模式 | _boolean_ | `true` |
-| `disabled`          | 禁用分页 | _boolean_ | `false` |
-| `show-size-changer` | 是否显示 `size` 切换器 | _boolean_ | `true` |
-| `show-quick-jumper` | 是否可以快速跳转至某页	 | _boolean_ | `false` |
-| `max-pager-count`   | 省略号间显示的按钮数量	 | _number_ | `3` |
-| `size-option`       | 指定每页可以显示多少条	 | _number[]_ | `[10, 20, 50, 100]` |
-| `show-total`        | 用于显示数据总量和当前数据顺序	 | _function(total, range)_ | `-` |
+| 参数                  | 说明                                              | 类型 | 默认值 |
+|---------------------|-------------------------------------------------| -------- | ---------- |
+| `v-model: current`  | 当前页数                                            | _string \| number_ | `1` |
+| `v-model: size`     | 每页条数                                            | _string \| number_ | `10` |
+| `total`             | 总条数                                             | _string \| number_ | `0` |
+| `simple`            | 是否为简单模式                                         | _boolean_ | `true` |
+| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
+| `disabled`          | 禁用分页                                            | _boolean_ | `false` |
+| `show-size-changer` | 是否显示 `size` 切换器                                 | _boolean_ | `true` |
+| `show-quick-jumper` | 是否可以快速跳转至某页	                                    | _boolean_ | `false` |
+| `max-pager-count`   | 省略号间显示的按钮数量	                                    | _number_ | `3` |
+| `size-option`       | 指定每页可以显示多少条	                                    | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total`        | 用于显示数据总量和当前数据顺序	                                | _function(total, range)_ | `-` |
 
 ### 事件
 

@@ -7,7 +7,7 @@
           n('item'),
           n('prev'),
           [current <= 1 || disabled, n('item--disabled')],
-          [simple, n('item--simple'), n('$-elevation--2')]
+          [simple, n('item--simple'), formatElevation(elevation, 2)]
         )
       "
       @click="clickItem('prev')"
@@ -38,7 +38,7 @@
       :class="
         classes(
           n('item'),
-          n('$-elevation--2'),
+          formatElevation(elevation, 2),
           [item === current && !disabled, n('item--active')],
           [isHideEllipsis(item, index), n('item--hide')],
           [disabled, n('item--disabled')],
@@ -56,7 +56,7 @@
           n('item'),
           n('next'),
           [current >= pageCount || disabled, n('item--disabled')],
-          [simple, n('item--simple'), n('$-elevation--2')]
+          [simple, n('item--simple'), formatElevation(elevation, 2)]
         )
       "
       @click="clickItem('next')"
@@ -115,7 +115,7 @@ import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
 import type { Range } from './props'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
 
 const { n, classes } = createNamespace('pagination')
 
@@ -305,6 +305,7 @@ export default defineComponent({
       clickSize,
       setPage,
       toNumber,
+      formatElevation,
     }
   },
 })
