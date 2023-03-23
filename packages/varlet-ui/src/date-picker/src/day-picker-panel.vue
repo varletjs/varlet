@@ -21,6 +21,7 @@
                 var-day-picker-cover
                 round
                 :ripple="false"
+                :elevation="componentProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(day),
                 }"

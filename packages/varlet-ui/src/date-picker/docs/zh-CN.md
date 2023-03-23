@@ -138,7 +138,8 @@ function change(date) {
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `#2979ff` |
 | `header-color`      | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。              | _string_ | `#2979ff` |
-| `elevation`            | 是否添加阴影                                       | _boolean_ | `false` |
+| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24`的等级         | _string \| number \| boolean_|   `false`    |
+| `button-elevation`  | Button 的海拔高度                                 | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。                          | _string \| number_ | `0` |
 | `min`               | 允许的最小日期/月份（ISO 8601格式）                       | _string_ | `-` |
 | `max`               | 允许的最大日期/月份（ISO 8601格式）                       | _string_ | `-` |
