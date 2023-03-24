@@ -184,6 +184,13 @@ varlet-cli lint
 varlet-cli commit-lint
 ```
 
+#### 显示检查清单
+
+```shell
+# playground-ignore
+varlet-cli checklist
+```
+
 #### 生成更新日志
 
 ```shell

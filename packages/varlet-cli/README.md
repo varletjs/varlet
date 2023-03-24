@@ -184,6 +184,13 @@ varlet-cli lint
 varlet-cli commit-lint
 ```
 
+#### Show checklist
+
+```shell
+# playground-ignore
+varlet-cli checklist
+```
+
 #### Generate changelog
 
 ```shell
