@@ -270,3 +270,13 @@ test('test fab teleport', () => {
   expect(document.body.innerHTML).toMatchSnapshot()
   wrapper.unmount()
 })
+
+test('test fab safeArea', () => {
+  const wrapper = mount(VarFab, {
+    props: {
+      safeArea: true,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+})

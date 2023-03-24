@@ -120,18 +120,18 @@ function change(time) {
 
 ### Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Selected time（ISO 8601 format, `HH:mm` or `HH:mm:ss`）| _string_ | `-` |
-| `format` | Picker type, optional values `ampm, 24hr` | _string_ | `ampm` |
-| `color` | Picker color | _string_ | `#2979ff` |
+| Prop | Description                                                                                                       | Type | Default |
+| ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | Selected time（ISO 8601 format, `HH:mm` or `HH:mm:ss`）                                                             | _string_ | `-` |
+| `format` | Picker type, optional values `ampm, 24hr`                                                                         | _string_ | `ampm` |
+| `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `elevation` | Whether to enable shadows | _boolean_ | `false` |
-| `min` | Minimum allowed time (ISO 8601 format) | _string_ | `-` |
-| `max` | Maximum allowed time (ISO 8601 format) | _string_ | `-` |
-| `allowed-time` | Restricts which time can be selected | _AllowedTime_ | `-` |
-| `readonly` | Readonly | _boolean_ | `false` |
-| `use-seconds` | Whether to display seconds | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
+| `min` | Minimum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |
+| `max` | Maximum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |
+| `allowed-time` | Restricts which time can be selected                                                                              | _AllowedTime_ | `-` |
+| `readonly` | Readonly                                                                                                          | _boolean_ | `false` |
+| `use-seconds` | Whether to display seconds                                                                                        | _boolean_ | `false` |
 
 ### TimePicker AllowedTime
 

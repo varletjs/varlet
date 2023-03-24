@@ -8,6 +8,7 @@ export default {
   viewRelation: '视图联动',
   option: '选项',
   stickyLayout: '开启粘性布局',
+  indicatorPosition: '指示器位置反转',
   text:
     '呜啦啦啦火车笛，随着奔腾的马蹄。\n' +
     '小妹妹吹着口琴，夕阳下美了剪影。\n' +

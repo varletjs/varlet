@@ -11,7 +11,7 @@
       @click.stop="handleClick"
     >
       <slot>
-        <var-button type="primary" round var-back-top-cover>
+        <var-button :elevation="elevation" type="primary" round var-back-top-cover>
           <var-icon name="chevron-up" />
         </var-button>
       </slot>

@@ -40,6 +40,8 @@ const Wrapper = {
     'indicatorSize',
     'elevation',
     'safeArea',
+    'scrollable',
+    'indicatorPosition',
   ],
   data: () => ({
     active: 2,
@@ -217,6 +219,33 @@ describe('test tabs component props', () => {
     expect(wrapper.find('.var-tabs--safe-area').exists()).toBe(true)
     await wrapper.setProps({ safeArea: false })
     expect(wrapper.find('.var-tabs--safe-area').exists()).toBe(false)
+    wrapper.unmount()
+  })
+
+  test('test tabs scrollable', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        scrollable: 'auto',
+      },
+    })
+    await delay(100)
+    expect(wrapper.find('.var-tabs--layout-horizontal-scrollable').exists()).toBe(false)
+    wrapper.setProps({ scrollable: 'always' })
+    await delay(100)
+    expect(wrapper.find('.var-tabs--layout-horizontal-scrollable').exists()).toBe(true)
+    wrapper.unmount()
+  })
+
+  test('test tabs indicator-position', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        indicatorPosition: 'reverse',
+      },
+    })
+
+    expect(wrapper.find('.var-tabs--layout-horizontal-reverse-indicator').exists()).toBe(true)
+    await wrapper.setProps({ indicatorPosition: 'normal' })
+    expect(wrapper.find('.var-tabs--layout-horizontal-indicator').exists()).toBe(true)
     wrapper.unmount()
   })
 })

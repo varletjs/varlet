@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.9.2",
+  "version": "2.9.3",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -12,7 +12,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1 && pnpm exec varlet-cli checklist $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",

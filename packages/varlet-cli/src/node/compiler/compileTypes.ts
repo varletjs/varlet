@@ -17,34 +17,45 @@ export * from '${relative(moduleDir, TYPES_DIR)}'
 }
 
 export async function compileTypes() {
-  const varletConfig = await getVarletConfig()
-  const namespace = get(varletConfig, 'namespace')
-  const { name } = readJSONSync(UI_PACKAGE_JSON)
   await ensureDir(TYPES_DIR)
 
-  const dir = await readdir(TYPES_DIR)
-  const ignoreEntryDir = dir.filter((filename) => filename !== 'index.d.ts' && filename !== 'global.d.ts')
+  const varletConfig = await getVarletConfig()
+  const namespace = get(varletConfig, 'namespace')
+  const directives = get(varletConfig, 'directives')
+  const { name: libraryName } = readJSONSync(UI_PACKAGE_JSON)
+
+  const filenames = await readdir(TYPES_DIR)
+  const includeFilenames = filenames.filter((filename) => filename !== 'index.d.ts' && filename !== 'global.d.ts')
   const exports: string[] = []
-  const declares: string[] = []
+  const componentDeclares: string[] = []
+  const directiveDeclares: string[] = []
 
-  ignoreEntryDir.forEach((filename) => {
-    const componentName = filename.slice(0, filename.indexOf('.d.ts'))
+  includeFilenames.forEach((filename) => {
+    const folder = filename.slice(0, filename.indexOf('.d.ts'))
+    const name = bigCamelize(folder)
 
-    exports.push(`export * from './${componentName}'`)
+    exports.push(`export * from './${folder}'`)
 
-    if (!componentName.startsWith(namespace)) {
-      declares.push(
-        `${bigCamelize(namespace)}${bigCamelize(componentName)}: typeof import('${name}')['_${bigCamelize(
-          componentName
-        )}Component']`
-      )
+    if (filename.startsWith(namespace)) {
+      // ignore prefix with namespace e.g. varComponent
+      return
+    }
+
+    if (directives.includes(folder)) {
+      directiveDeclares.push(`v${name}: typeof import('${libraryName}')['_${name}Component']`)
+    } else {
+      componentDeclares.push(`${bigCamelize(namespace)}${name}: typeof import('${libraryName}')['_${name}Component']`)
     }
   })
 
-  const globalDeclares = `\
+  const vueDeclares = `\
 declare module 'vue' {
   export interface GlobalComponents {
-    ${declares.join('\n    ')}
+    ${componentDeclares.join('\n    ')}
+  }
+
+  export interface ComponentCustomProperties {
+    ${directiveDeclares.join('\n    ')}
   }
 }`
 
@@ -56,8 +67,8 @@ export const install: (app: App) => void
 
 ${exports.join('\n')}
 
-${globalDeclares}
+${vueDeclares}
 `
 
-  await Promise.all([writeFile(resolve(TYPES_DIR, 'index.d.ts'), template)])
+  await writeFile(resolve(TYPES_DIR, 'index.d.ts'), template)
 }

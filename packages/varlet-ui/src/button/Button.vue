@@ -7,11 +7,7 @@
         n(`--${states.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
-        [
-          states.text,
-          `${n(`--text-${states.type}`)} ${n('--text')}`,
-          `${n(`--${states.type}`)} ${n(`$-elevation--${states.elevation}`)}`,
-        ],
+        [states.text, `${n(`--text-${states.type}`)} ${n('--text')}`, `${n(`--${states.type}`)} ${states.elevation}`],
         [states.text && disabled, n('--text-disabled')],
         [round, n('--round')],
         [states.outline, n('--outline')]
@@ -52,7 +48,7 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { computed, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
 
@@ -74,7 +70,7 @@ export default defineComponent({
     const states = computed(() => {
       if (!buttonGroup) {
         return {
-          elevation: 2,
+          elevation: formatElevation(props.elevation, 2),
           type: props.type != null ? props.type : 'default',
           size: props.size != null ? props.size : 'normal',
           color: props.color,
@@ -87,7 +83,7 @@ export default defineComponent({
       const { type, size, color, textColor, mode } = buttonGroup
 
       return {
-        elevation: 0,
+        elevation: '',
         type: props.type != null ? props.type : type.value,
         size: props.size != null ? props.size : size.value,
         color: props.color != null ? props.color : color.value,

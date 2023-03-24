@@ -124,11 +124,12 @@ const value = ref(['1'])
 
 #### Collapse Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 当前展开面板的 name | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \| number[]_ | `-` |
-| `accordion` | 是否开启手风琴模式 | _boolean_ | `false` |
-| `offset` | 是否显示边距 | _boolean_ | `true` |
+| 参数          | 说明                                   | 类型 | 默认值                          |
+|-------------|--------------------------------------| -------- |------------------------------|
+| `v-model`   | 当前展开面板的 name                         | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \ | number[]_ | `-` |
+| `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
 
 #### CollapseItem Props
 

@@ -12,6 +12,7 @@ export interface PaginationProps extends BasicAttributes {
   maxPagerCount?: number
   disabled?: boolean
   simple?: boolean
+  elevation?: boolean | string | number
   showSizeChanger?: boolean
   showQuickJumper?: boolean
   sizeOption?: Array<number>

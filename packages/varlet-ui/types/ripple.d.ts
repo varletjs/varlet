@@ -9,4 +9,4 @@ export interface IRipple extends VarDirective<RippleValue> {}
 
 export declare const Ripple: IRipple
 
-export class _RippleComponent {}
+export declare const _RippleComponent: IRipple

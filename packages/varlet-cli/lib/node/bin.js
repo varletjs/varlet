@@ -131,6 +131,13 @@ program
     const { commitLint } = await import('./commands/commitLint.js');
     return commitLint(option);
 });
+program
+    .command('checklist <gitParams>')
+    .description('Display a checklist for confirmation')
+    .action(async (option) => {
+    const { checklist } = await import('./commands/checklist.js');
+    return checklist(option);
+});
 program.on('command:*', async ([cmd]) => {
     const { default: logger } = await import('./shared/logger.js');
     program.outputHelp();

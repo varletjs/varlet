@@ -125,11 +125,12 @@ const value = ref(['1'])
 
 #### Collapse Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Names of current active panels | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
-| `accordion` | Whether to be accordion mode | _boolean_ | `false` |
-| `offset` | Whether to show margin | _boolean_ | `true` |
+| Prop | Description                                                         | Type | Default |
+| ----- |---------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | Names of current active panels                                      | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
+| `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `offset` | Whether to show margin                                              | _boolean_ | `true` |
 
 #### CollapseItem Props
 

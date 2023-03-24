@@ -133,7 +133,7 @@ import { Snackbar } from '@varlet/ui'
 </script>
 
 <template>
-  <var-swipe class="swipe-example" @change="Snackbar">
+  <var-swipe class="swipe-example" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>

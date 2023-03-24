@@ -4,17 +4,21 @@ import fse from 'fs-extra'
 
 const { readFileSync } = fse
 
-function isVersion(message: string) {
+export const COMMIT_MESSAGE_RE =
+  /^(revert|fix|feat|docs|perf|test|types|style|build|chore|release|refactor)(\(.+\))?!?: (.|\n)+/
+
+export function isVersionCommitMessage(message: string) {
   return message.startsWith('v') && semver.valid(message.slice(1))
 }
 
+export function getCommitMessage(gitParams: string) {
+  return readFileSync(gitParams, 'utf-8').trim()
+}
+
 export function commitLint(gitParams: string) {
-  const message = readFileSync(gitParams, 'utf-8').trim()
+  const commitMessage = getCommitMessage(gitParams)
 
-  const COMMIT_MESSAGE_RE =
-    /^(revert|fix|feat|docs|perf|test|types|style|build|chore|release|refactor)(\(.+\))?!?: (.|\n)+/
-
-  if (!isVersion(message) && !COMMIT_MESSAGE_RE.test(message)) {
+  if (!isVersionCommitMessage(commitMessage) && !COMMIT_MESSAGE_RE.test(commitMessage)) {
     logger.error(`Commit message invalid`)
     logger.warning(`\
 The rules for commit messages are as follows

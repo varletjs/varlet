@@ -1,9 +1,17 @@
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as stickyProps } from '../sticky/props'
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 
 function directionValidator(direction: string) {
   return ['horizontal', 'vertical'].includes(direction)
+}
+
+function scrollableValidator(scrollable: string) {
+  return ['auto', 'always'].includes(scrollable)
+}
+
+function indicatorPositionValidator(indicatorPosition: string) {
+  return ['normal', 'reverse'].includes(indicatorPosition)
 }
 
 export const props = {
@@ -44,6 +52,20 @@ export const props = {
     type: [String, Number],
   },
   elevation: {
+    type: [Boolean, String, Number],
+    default: false,
+  },
+  scrollable: {
+    type: String as PropType<'auto' | 'always'>,
+    default: 'auto',
+    validator: scrollableValidator,
+  },
+  indicatorPosition: {
+    type: String as PropType<'normal' | 'reverse'>,
+    default: 'normal',
+    validator: indicatorPositionValidator,
+  },
+  safeArea: {
     type: Boolean,
     default: false,
   },
@@ -54,10 +76,6 @@ export const props = {
   stickyCssMode: pickProps(stickyProps, 'cssMode'),
   stickyZIndex: pickProps(stickyProps, 'zIndex'),
   offsetTop: pickProps(stickyProps, 'offsetTop'),
-  safeArea: {
-    type: Boolean,
-    default: false,
-  },
   onClick: defineListenerProp<(active: string | number) => void>(),
   onChange: defineListenerProp<(active: string | number) => void>(),
   'onUpdate:active': defineListenerProp<(active: string | number) => void>(),

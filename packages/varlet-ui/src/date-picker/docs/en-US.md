@@ -135,7 +135,8 @@ function change(date) {
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `elevation` | Whether to enable shadows                                                                                           | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
+| `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |

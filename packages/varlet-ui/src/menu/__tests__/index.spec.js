@@ -191,3 +191,26 @@ test('test menu same width', async () => {
 
   mockRestore()
 })
+
+test('test menu elevation', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarMenu, {
+    props: {
+      show: true,
+      elevation: false,
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+  expect(root.innerHTML).toMatchSnapshot()
+  await wrapper.setProps({
+    elevation: 10,
+  })
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})

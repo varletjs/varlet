@@ -16,6 +16,7 @@
               type="primary"
               var-month-picker-cover
               :ripple="false"
+              :elevation="componentProps.buttonElevation"
               v-bind="{
                 ...buttonProps(month.index),
               }"

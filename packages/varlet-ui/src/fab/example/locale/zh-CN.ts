@@ -10,6 +10,7 @@ export default {
   warning: '警告',
   danger: '危险',
   disabled: '禁用',
+  elevation: '海拔效果',
   triggerToggle: '触发器显示/隐藏',
   actionsToggle: '动作菜单展开/收起',
   toggle: '切换',

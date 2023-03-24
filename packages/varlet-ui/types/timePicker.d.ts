@@ -12,7 +12,7 @@ export type TimePickerFormat = 'ampm' | '24hr'
 
 export interface TimePickerProps extends BasicAttributes {
   modelValue?: string
-  elevation?: boolean
+  elevation?: boolean | string | number
   color?: string
   headerColor?: string
   allowedTime?: AllowedTime

@@ -44,6 +44,7 @@ importers:
       '@types/hash-sum': ^1.0.0
       '@types/inquirer': ^9.0.2
       '@types/lodash-es': ^4.17.5
+      '@types/markdown-it': ^12.2.3
       '@types/node': ^18.7.20
       '@types/semver': ^7.3.9
       '@types/sharp': 0.31.1
@@ -72,10 +73,11 @@ importers:
       less: ^3.12.2
       live-server: ^1.2.1
       lodash-es: ^4.17.21
+      markdown-it: ^12.2.3
       nanospinner: ^1.1.0
       picocolors: ^1.0.0
       semver: ^7.3.5
-      sharp: 0.31.3
+      sharp: 0.31.1
       slash: ^3.0.0
       ts-jest: ^26.5.1
       typescript: ^4.4.4
@@ -113,10 +115,11 @@ importers:
       less: 3.13.1
       live-server: 1.2.2
       lodash-es: 4.17.21
+      markdown-it: 12.3.2
       nanospinner: 1.1.0
       picocolors: 1.0.0
       semver: 7.3.7
-      sharp: 0.31.3
+      sharp: 0.31.1
       slash: 3.0.0
       ts-jest: 26.5.6_rnfpnlbz3wqspag7uftsmccrvy
       typescript: 4.7.4
@@ -133,6 +136,7 @@ importers:
       '@types/hash-sum': 1.0.0
       '@types/inquirer': 9.0.2
       '@types/lodash-es': 4.17.6
+      '@types/markdown-it': 12.2.3
       '@types/node': 18.7.20
       '@types/semver': 7.3.12
       '@types/sharp': 0.31.1
@@ -229,7 +233,7 @@ importers:
       '@types/node': '*'
       '@varlet/cli': 'workspace: *'
       '@varlet/ui': 'workspace: *'
-      '@vue/repl': 1.3.0
+      '@vue/repl': 1.3.3
       file-saver: ^2.0.5
       jszip: ^3.6.0
       live-server: ^1.2.1
@@ -240,7 +244,7 @@ importers:
       vue: 3.2.29
     dependencies:
       '@varlet/ui': link:../varlet-ui
-      '@vue/repl': 1.3.0_vue@3.2.29
+      '@vue/repl': 1.3.3_vue@3.2.29
       file-saver: 2.0.5
       jszip: 3.10.1
       vue: 3.2.29
@@ -2808,8 +2812,8 @@ packages:
     dependencies:
       '@vue/shared': 3.2.29
 
-  /@vue/repl/1.3.0_vue@3.2.29:
-    resolution: {integrity: sha512-L2Jr9+M6z2+gW6i5ZuUXwCMfXtyHDSSyw4fViL0QezXLLOctqTw+o6sYUsgvErkreb9oI0kcZPpWkkW7lGeuiA==}
+  /@vue/repl/1.3.3_vue@3.2.29:
+    resolution: {integrity: sha512-mrN3Gd4CIaiIiRdi7/pAOH9rPud8q8I5svLurSoyxLhxFXs9WdfaKZlirExSJIuecHYFiAAozTBtb8XQPNhCHw==}
     peerDependencies:
       vue: ^3.2.13
     dependencies:
@@ -5302,7 +5306,7 @@ packages:
     dev: false
 
   /github-from-package/0.0.0:
-    resolution: {integrity: sha1-l/tdlr/eiXMxPyDoKI75oWf6ZM4=}
+    resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
 
   /glob-parent/3.1.0:
     resolution: {integrity: sha512-E8Ak/2+dZY6fnzlR7+ueWvhsH1SjHr4jjss4YS/h4py44jY9MhK/VFdaZJAWDz6BbL21KeteKxFSFpq8OS5gVA==}
@@ -8454,8 +8458,8 @@ packages:
   /setprototypeof/1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  /sharp/0.31.3:
-    resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
+  /sharp/0.31.1:
+    resolution: {integrity: sha512-GR8M1wBwOiFKLkm9JPun27OQnNRZdHfSf9VwcdZX6UrRmM1/XnOrLFTF0GAil+y/YK4E6qcM/ugxs80QirsHxg==}
     engines: {node: '>=14.15.0'}
     requiresBuild: true
     dependencies:

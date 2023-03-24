@@ -8,7 +8,7 @@
 | `size`       | Button Group size, Can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
 | `mode`       | Button Group mode, Can be set to `normal` `text` `outline`                               | _string_ | `normal`  |
 | `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
-| `elevation`        | The shadow level of Button Group                                                         | _string \| number_  | `2`     |
+| `elevation` | Elevation of Button Group, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `color`      | Button Group background color                                                            | _string_ | `-`       |
 | `text-color`    | Button Group Text color                                                                  | _string_  | `-`            |
 

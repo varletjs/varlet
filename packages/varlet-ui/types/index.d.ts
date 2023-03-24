@@ -118,7 +118,6 @@ declare module 'vue' {
     VarFab: typeof import('@varlet/ui')['_FabComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
-    VarHover: typeof import('@varlet/ui')['_HoverComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
@@ -126,7 +125,6 @@ declare module 'vue' {
     VarIndexAnchor: typeof import('@varlet/ui')['_IndexAnchorComponent']
     VarIndexBar: typeof import('@varlet/ui')['_IndexBarComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
-    VarLazy: typeof import('@varlet/ui')['_LazyComponent']
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
@@ -145,7 +143,6 @@ declare module 'vue' {
     VarRadioGroup: typeof import('@varlet/ui')['_RadioGroupComponent']
     VarRate: typeof import('@varlet/ui')['_RateComponent']
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
-    VarRipple: typeof import('@varlet/ui')['_RippleComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
@@ -168,5 +165,11 @@ declare module 'vue' {
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+  }
+
+  export interface ComponentCustomProperties {
+    vHover: typeof import('@varlet/ui')['_HoverComponent']
+    vLazy: typeof import('@varlet/ui')['_LazyComponent']
+    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }
