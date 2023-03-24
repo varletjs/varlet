@@ -73,6 +73,10 @@ export async function checklist(gitParams: string) {
   const commonChildren = checkBlocks.find((checkBlock) => checkBlock.type === 'common')?.list ?? []
   const list = [...commonChildren, ...typeChildren]
 
+  if (!list.length) {
+    return
+  }
+
   logger.title('\nIt is recommended that you check the following information before pushing:\n')
   logger.warning(`${list.map((item) => `🔔 ${item}`).join('\n')}\n`)
   logger.title('If there are changes that need to be amended, please use git commit --amend to resolve.')
