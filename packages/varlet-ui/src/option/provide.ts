@@ -1,6 +1,6 @@
 import { type ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
-import { throwError } from '../utils/logger'
+import { error } from '../utils/logger'
 import { SELECT_BIND_OPTION_KEY, type SelectProvider } from '../select/provide'
 
 export interface OptionProvider {
@@ -14,7 +14,7 @@ export function useSelect() {
   const { index, parentProvider, bindParent } = useParent<SelectProvider, OptionProvider>(SELECT_BIND_OPTION_KEY)
 
   if (!bindParent) {
-    throwError('Option', '<var-option/> must in <var-select/>')
+    error('Option', '<var-option/> must in <var-select/>')
   }
 
   return {

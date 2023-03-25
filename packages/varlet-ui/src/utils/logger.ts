@@ -1,4 +1,4 @@
-export function throwError(source: string, message: string): never {
+export function error(source: string, message: string): never {
   throw Error(`Varlet [${source}]: ${message}`)
 }
 

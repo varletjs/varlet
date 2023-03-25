@@ -1,6 +1,6 @@
 import { type ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
-import { throwError } from '../utils/logger'
+import { error } from '../utils/logger'
 import { type SwipeProvider, SWIPE_BIND_SWIPE_ITEM_KEY } from '../swipe/provide'
 
 export interface SwipeItemProvider {
@@ -12,7 +12,7 @@ export function useSwipe() {
   const { bindParent, index, parentProvider } = useParent<SwipeProvider, SwipeItemProvider>(SWIPE_BIND_SWIPE_ITEM_KEY)
 
   if (!bindParent) {
-    throwError('SwipeItem', '<var-swipe-item/> must in <var-swipe/>')
+    error('SwipeItem', '<var-swipe-item/> must in <var-swipe/>')
   }
 
   return {

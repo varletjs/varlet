@@ -1,5 +1,5 @@
 import { useParent } from '@varlet/use'
-import { throwError } from '../utils/logger'
+import { error } from '../utils/logger'
 import { TABS_BIND_TAB_KEY, type TabsProvider } from '../tabs/provide'
 import type { ComputedRef } from 'vue'
 
@@ -14,7 +14,7 @@ export function useTabs() {
   const { parentProvider, bindParent, index } = useParent<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 
   if (!bindParent) {
-    throwError('Tab', '<var-tab/> must in <var-tabs/>')
+    error('Tab', '<var-tab/> must in <var-tabs/>')
   }
 
   return {
