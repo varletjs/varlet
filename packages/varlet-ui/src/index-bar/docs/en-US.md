@@ -31,7 +31,7 @@ onMounted(() => {
       <var-index-anchor :index="item" class="var-index-anchor__example">
         Title {{ item }}
       </var-index-anchor>
-      <var-cell>{{ item }} Text</var-cell>
+
       <var-cell>{{ item }} Text</var-cell>
       <var-cell>{{ item }} Text</var-cell>
     </div>

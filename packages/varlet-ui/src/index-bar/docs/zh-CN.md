@@ -34,7 +34,6 @@ onMounted(() => {
 
       <var-cell>{{ item }} 文本</var-cell>
       <var-cell>{{ item }} 文本</var-cell>
-      <var-cell>{{ item }} 文本</var-cell>
     </div>
   </var-index-bar>
 </template>
