@@ -81,6 +81,7 @@ import { useForm } from '../form/provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import { useMounted } from '@varlet/use'
@@ -298,11 +299,11 @@ export default defineComponent({
     const stepValidator = () => {
       const stepNumber = toNumber(props.step)
       if (isNaN(stepNumber)) {
-        console.warn('[Varlet] Slider: type of prop "step" should be Number')
+        warn('Slider', 'type of prop "step" should be Number')
         return false
       }
       if (stepNumber < 0) {
-        console.warn('[Varlet] Slider: "step" should be > 0')
+        warn('Slider', '"step" should be > 0')
         return false
       }
       return true

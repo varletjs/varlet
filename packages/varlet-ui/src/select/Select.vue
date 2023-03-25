@@ -138,6 +138,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useOptions } from './provide'
 import { useForm } from '../form/provide'
 import { toPxNum } from '../utils/elements'
+import { throwError } from '../utils/logger'
 import type { Ref, ComputedRef } from 'vue'
 import type { SelectValidateTrigger } from './props'
 import type { SelectProvider } from './provide'
@@ -354,7 +355,7 @@ export default defineComponent({
       () => {
         const { multiple, modelValue } = props
         if (multiple && !isArray(modelValue)) {
-          throw Error('The modelValue must be an array when multiple is true')
+          throwError('Select', 'The modelValue must be an array when multiple is true')
         }
       }
     )

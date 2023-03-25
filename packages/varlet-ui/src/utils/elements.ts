@@ -1,5 +1,6 @@
 import { isNumber, isObject, isString, kebabCase, toNumber } from '@varlet/shared'
 import { getGlobalThis } from './shared'
+import { throwError } from '../utils/logger'
 import type { StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
@@ -85,7 +86,7 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
     const el = document.querySelector(target)
 
     if (!el) {
-      throw Error(`[Varlet] ${componentName}: target element cannot found`)
+      throwError(`${componentName}`, 'target element cannot found')
     }
 
     return el as HTMLElement
@@ -93,7 +94,7 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
 
   if (isObject(target)) return target
 
-  throw Error(`[Varlet] ${componentName}: type of prop "target" should be a selector or an element object`)
+  throwError(`${componentName}`, 'type of prop "target" should be a selector or an element object')
 }
 
 // example 1rem

@@ -1,4 +1,5 @@
 import { useParent } from '@varlet/use'
+import { throwError } from '../utils/logger'
 import { COLLAPSE_BIND_COLLAPSE_ITEM_KEY, CollapseProvider } from '../collapse/provide'
 import { type ComputedRef } from 'vue'
 
@@ -14,7 +15,7 @@ export function useCollapse() {
   )
 
   if (!bindParent) {
-    throw Error('[Varlet] Collapse: <var-collapse-item/> must in <var-collapse>')
+    throwError('Collapse', '<var-collapse-item/> must in <var-collapse>')
   }
 
   return {
