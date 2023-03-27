@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, type Ref } from 'vue'
+import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
 import { isString, toNumber } from '@varlet/shared'
@@ -143,7 +143,9 @@ export default defineComponent({
         distance.value = maxDistance.value * 0.3
 
         call(props['onUpdate:modelValue'], true)
-        call(props.onRefresh)
+        nextTick(() => {
+          call(props.onRefresh)
+        })
         lockEvent('remove')
       } else {
         refreshStatus.value = 'loosing'
