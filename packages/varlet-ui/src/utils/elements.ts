@@ -97,6 +97,20 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
   error(componentName, 'type of prop "target" should be a selector or an element object')
 }
 
+export function getViewportSize() {
+  const { innerWidth, innerHeight } = window
+
+  return innerWidth > innerHeight
+    ? {
+        vMin: innerHeight,
+        vMax: innerWidth,
+      }
+    : {
+        vMin: innerWidth,
+        vMax: innerHeight,
+      }
+}
+
 // example 1rem
 export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
 
@@ -112,6 +126,12 @@ export const isVw = (value: unknown): value is string => isString(value) && valu
 
 // e.g. 1vh
 export const isVh = (value: unknown): value is string => isString(value) && value.endsWith('vh')
+
+// e.g. 1vmin
+export const isVMin = (value: unknown): value is string => isString(value) && value.endsWith('vmin')
+
+// e.g. 1vmax
+export const isVMax = (value: unknown): value is string => isString(value) && value.endsWith('vmax')
 
 // e.g. calc(1px + 1px)
 export const isCalc = (value: unknown): value is string => isString(value) && value.startsWith('calc(')
@@ -144,6 +164,14 @@ export const toPxNum = (value: unknown): number => {
     return num * parseFloat(rootFontSize)
   }
 
+  if (isVMin(value)) {
+    return getViewportSize().vMin
+  }
+
+  if (isVMax(value)) {
+    return getViewportSize().vMax
+  }
+
   if (isString(value)) {
     return toNumber(value)
   }
@@ -158,7 +186,16 @@ export const toSizeUnit = (value: unknown) => {
     return undefined
   }
 
-  if (isPercent(value) || isVw(value) || isVh(value) || isRem(value) || isCalc(value) || isVar(value)) {
+  if (
+    isPercent(value) ||
+    isVw(value) ||
+    isVh(value) ||
+    isRem(value) ||
+    isCalc(value) ||
+    isVar(value) ||
+    isVMin(value) ||
+    isVMax(value)
+  ) {
     return value
   }
 
