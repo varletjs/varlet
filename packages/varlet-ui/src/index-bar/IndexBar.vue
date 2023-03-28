@@ -98,11 +98,9 @@ export default defineComponent({
         const distance =
           index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
 
-        if (top >= 0 && top < distance && clickedName.value === '') {
-          if (index && !props.cssMode) {
-            indexAnchors[index - 1].setDisabled(true)
-          }
+        anchor.setDisabled(true)
 
+        if (top >= 0 && top < distance && clickedName.value === '') {
           anchor.setDisabled(false)
           emitEvent(anchor)
         }
