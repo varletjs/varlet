@@ -184,4 +184,38 @@ describe('test collapse and collapseItem props', () => {
     expect(wrapper.find('.var-icon-checkbox-marked-circle').exists()).toBe(true)
     wrapper.unmount()
   })
+
+  test('test collapse divider', async () => {
+    const template = `
+     <var-collapse v-model="value" :divider="divider" accordion>
+      <var-collapse-item title="test1" name="1">test1</var-collapse-item>
+      <var-collapse-item title="test2" name="2">test2</var-collapse-item>
+     </var-collapse>
+    `
+    const wrapper = mount({
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: '',
+          divider: true,
+        }
+      },
+      template,
+    })
+
+    expect(wrapper.find('.var-collapse-item').attributes('style')).toContain(
+      '--collapse-divider-top: var(--collapse-border-top);'
+    )
+
+    await wrapper.setData({
+      divider: false,
+    })
+
+    await delay(0)
+
+    expect(wrapper.find('.var-collapse-item').attributes('style')).toContain('--collapse-divider-top: none;')
+  })
 })

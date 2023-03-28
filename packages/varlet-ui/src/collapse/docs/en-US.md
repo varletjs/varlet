@@ -131,6 +131,7 @@ const value = ref(['1'])
 | `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `offset` | Whether to show margin                                              | _boolean_ | `true` |
+| `divider` | Whether to show divider                                              | _boolean_ | `true` |
 
 #### CollapseItem Props
 
@@ -178,4 +179,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--collapse-content-padding` | `0 12px 10px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
-| `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--collapse-divider-top` | `thin solid rgba(0, 0, 0, 0.12)` |

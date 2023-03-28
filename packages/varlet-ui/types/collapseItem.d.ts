@@ -8,6 +8,7 @@ export interface CollapseItemProps extends BasicAttributes {
   title?: string
   icon?: string
   disabled?: boolean
+  divider?: boolean
 }
 
 export class CollapseItem extends VarComponent {

@@ -13,4 +13,8 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  divider: {
+    type: Boolean,
+    default: true,
+  },
 }
