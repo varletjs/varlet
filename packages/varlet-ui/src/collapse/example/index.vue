@@ -17,7 +17,7 @@ const values = reactive({
   value2: [1],
   value3: ['1'],
   value4: ['2'],
-  value5: '',
+  value5: [],
 })
 
 function changeHandle(val) {
@@ -40,6 +40,14 @@ watchDarkMode(dark)
     <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
   </var-collapse>
+
+  <app-type>{{ pack.controlledDivider }}</app-type>
+  <var-collapse v-model="values.value5" :divider="divider" @change="changeHandle">
+    <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.title" name="3">{{ pack.text }}</var-collapse-item>
+  </var-collapse>
+  <var-button @click="divider = !divider">{{ divider ? pack.hideDivider : pack.showDivider }}</var-button>
 
   <app-type>{{ pack.accordionMode }}</app-type>
   <var-collapse v-model="values.value1" accordion :offset="false">
@@ -67,12 +75,4 @@ watchDarkMode(dark)
       {{ pack.slotContent }}
     </var-collapse-item>
   </var-collapse>
-
-  <app-type>{{ pack.controlledDivider }}</app-type>
-  <var-collapse v-model="values.value5" :divider="divider" @change="changeHandle">
-    <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
-    <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
-    <var-collapse-item :title="pack.title" name="3">{{ pack.text }}</var-collapse-item>
-  </var-collapse>
-  <var-button @click="divider = !divider">{{ divider ? pack.hideDivider : pack.showDivider }}</var-button>
 </template>
