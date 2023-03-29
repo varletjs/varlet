@@ -36,9 +36,6 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let scroller: HTMLElement | Window
-    let changing: Promise<void>
-
     const controlPosition: Ref<number> = ref(0)
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const controlNode: Ref<HTMLElement | null> = ref(null)
@@ -48,6 +45,9 @@ export default defineComponent({
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
 
+    let scroller: HTMLElement | Window
+    let eventTargetScroller: HTMLElement | Window | null
+    let changing: Promise<void>
     let startY = 0
     let deltaY = 0
 
@@ -94,15 +94,24 @@ export default defineComponent({
 
       startY = event.touches[0].clientY
       deltaY = 0
+      eventTargetScroller = getParentScroller(event.target as HTMLElement)
     }
 
     const touchMove = (event: TouchEvent) => {
-      if (!isTouchable.value) return
+      if (!isTouchable.value) {
+        return
+      }
+
+      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller) > 0) {
+        return
+      }
 
       const scrollTop = getScrollTop(scroller)
-      if (scrollTop > 0) return
-      const isReachTop = scrollTop === 0
+      if (scrollTop > 0) {
+        return
+      }
 
+      const isReachTop = scrollTop === 0
       const touch = event.touches[0]
       deltaY = touch.clientY - startY
 
@@ -157,6 +166,8 @@ export default defineComponent({
           lockEvent('remove')
         }, toNumber(props.animationDuration))
       }
+
+      eventTargetScroller = null
     }
 
     const setScroller = () => {
