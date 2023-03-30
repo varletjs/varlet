@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, type Ref, type ComputedRef, onActivated } from 'vue'
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
 import { type TabProvider } from '../tab/provide'
@@ -198,6 +198,7 @@ export default defineComponent({
     watch(() => props.active, resize)
     watch(() => props.scrollable, resize)
     useEventListener(window, 'resize', resize)
+    onActivated(resize)
 
     return {
       stickyComponent,
