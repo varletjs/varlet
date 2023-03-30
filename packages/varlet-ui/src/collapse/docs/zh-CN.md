@@ -154,6 +154,7 @@ const value = ref(['1'])
 | `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
+| `divider`   | 是否显示分割线                               | _boolean_ | `true`                       |
 
 #### CollapseItem Props
 
