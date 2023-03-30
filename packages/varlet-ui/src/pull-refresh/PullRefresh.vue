@@ -102,7 +102,7 @@ export default defineComponent({
         return
       }
 
-      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller) > 0) {
+      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller!) > 0) {
         return
       }
 
