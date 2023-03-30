@@ -57,15 +57,15 @@ onMounted(() => {
 
 #### IndexBar Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | --------- |
-| `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
+| Prop                | Description | Type | Default |
+|---------------------| -------------- | -------- | --------- |
+| `sticky`            | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number \| string_ | `0` |
-| `hide-list` | Whether to hide anchor list | _boolean_ | `false` |
-| `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
-| `z-index` | z-index | _string \| number_ | `1` |
-| `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
-| `duration` | Animation duration | _string \| number_ | `0` |
+| `hide-list`         | Whether to hide anchor list | _boolean_ | `false` |
+| `sticky-css-mode`   | Enable native `css sticky` mode | _boolean_ | `false` |
+| `z-index`           | z-index | _string \| number_ | `1` |
+| `highlight-color`   | Index character highlight color | _string_ | `#ee0a24` |
+| `duration`          | Animation duration | _string \| number_ | `0` |
 
 #### IndexAnchor Props
 

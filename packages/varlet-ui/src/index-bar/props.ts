@@ -19,7 +19,12 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
+  /** @deprecated Use stickyCssMode to instead. */
   cssMode: {
+    type: Boolean,
+    default: false,
+  },
+  stickyCssMode: {
     type: Boolean,
     default: false,
   },

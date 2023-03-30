@@ -49,7 +49,7 @@ export default defineComponent({
     const anchorNameList: Ref<Array<number | string>> = ref([])
     const active: Ref<number | string | undefined> = ref()
     const sticky: ComputedRef<boolean> = computed(() => props.sticky)
-    const cssMode: ComputedRef<boolean> = computed(() => props.cssMode)
+    const cssMode: ComputedRef<boolean> = computed(() => props.stickyCssMode || props.cssMode)
     const stickyOffsetTop: ComputedRef<number> = computed(() => toPxNum(props.stickyOffsetTop))
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
