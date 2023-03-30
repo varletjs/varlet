@@ -11,6 +11,5 @@ export default {
   slotContent: 'This is a content',
   hideDivider: 'Hide Divider',
   showDivider: 'Show Divider',
-  // 可控的分割线
   controlledDivider: 'Controlled Divider',
 }

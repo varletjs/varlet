@@ -42,12 +42,14 @@ watchDarkMode(dark)
   </var-collapse>
 
   <app-type>{{ pack.controlledDivider }}</app-type>
+  <var-button @click="divider = !divider" style="margin-bottom: 8px">{{
+    divider ? pack.hideDivider : pack.showDivider
+  }}</var-button>
   <var-collapse v-model="values.value5" :divider="divider" @change="changeHandle">
     <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="3">{{ pack.text }}</var-collapse-item>
   </var-collapse>
-  <var-button @click="divider = !divider">{{ divider ? pack.hideDivider : pack.showDivider }}</var-button>
 
   <app-type>{{ pack.accordionMode }}</app-type>
   <var-collapse v-model="values.value1" accordion :offset="false">

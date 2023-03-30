@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "isolatedModules": true,
-    "allowJs": true,
+    "allowJs": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
