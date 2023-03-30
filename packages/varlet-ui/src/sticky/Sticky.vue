@@ -144,6 +144,7 @@ export default defineComponent({
     onDeactivated(removeScrollListener)
 
     useEventListener(window, 'scroll', handleScroll)
+    useEventListener(window, 'resize', resize)
 
     return {
       n,
