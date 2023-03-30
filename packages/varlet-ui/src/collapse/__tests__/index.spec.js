@@ -187,7 +187,7 @@ describe('test collapse and collapseItem props', () => {
 
   test('test collapse divider', async () => {
     const template = `
-     <var-collapse v-model="value" :divider="divider" accordion>
+     <var-collapse v-model="value" :divider="divider">
       <var-collapse-item title="test1" name="1">test1</var-collapse-item>
       <var-collapse-item title="test2" name="2">test2</var-collapse-item>
      </var-collapse>
@@ -199,23 +199,18 @@ describe('test collapse and collapseItem props', () => {
       },
       data() {
         return {
-          value: '',
+          value: [],
           divider: true,
         }
       },
       template,
     })
 
-    expect(wrapper.find('.var-collapse-item').attributes('style')).toContain(
+    expect(wrapper.find('.var-collapse-item').attributes('style')).toBe(
       '--collapse-divider-top: var(--collapse-border-top);'
     )
 
-    await wrapper.setData({
-      divider: false,
-    })
-
-    await delay(0)
-
-    expect(wrapper.find('.var-collapse-item').attributes('style')).toContain('--collapse-divider-top: none;')
+    await wrapper.setData({ divider: false })
+    expect(wrapper.find('.var-collapse-item').attributes('style')).toBe('--collapse-divider-top: none;')
   })
 })
