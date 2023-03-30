@@ -143,6 +143,7 @@ const active = ref(0)
 | `round`          | Whether to use rounded border                        | _boolean_ | `false` |
 | `image`          | Background image                            | _string_ | `-` |
 | `image-linear-gradient` | Background image linear gradient | _string_ | `-` |
+| `safe-area-top` | Whether to enable top safe area adaptation | _boolean_ | `false` |
 
 ### Slots
 

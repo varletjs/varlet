@@ -143,6 +143,7 @@ const active = ref(0)
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
 | `image`          | 背景图片                            | _string_ | `-` |
 | `image-linear-gradient` | 背景图片渐变色 | _string_ | `-` |
+| `safe-area-top` | 是否开启顶部安全区适配 | _boolean_ | `false` |
 
 ### 插槽
 

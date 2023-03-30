@@ -32,4 +32,8 @@ export const props = {
   imageLinearGradient: {
     type: String,
   },
+  safeAreaTop: {
+    type: Boolean,
+    default: false,
+  },
 }

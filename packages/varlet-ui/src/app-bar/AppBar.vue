@@ -1,5 +1,16 @@
 <template>
-  <div :class="classes(n(), [round, n('--round')], formatElevation(elevation, 3))" :style="rootStyles">
+  <div
+    :class="
+      classes(
+        n(),
+        n('$--box'),
+        [safeAreaTop, n('--safe-area-top')],
+        [round, n('--round')],
+        formatElevation(elevation, 3)
+      )
+    "
+    :style="rootStyles"
+  >
     <div :class="n('toolbar')">
       <div :class="n('left')">
         <slot name="left" />

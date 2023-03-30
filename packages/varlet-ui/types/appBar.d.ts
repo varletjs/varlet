@@ -14,6 +14,7 @@ export interface AppBarProps extends BasicAttributes {
   round?: boolean
   image?: string
   imageLinearGradient?: string
+  safeAreaTop?: boolean
 }
 
 export class AppBar extends VarComponent {

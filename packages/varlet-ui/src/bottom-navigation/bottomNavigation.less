@@ -16,8 +16,9 @@
   -webkit-tap-highlight-color: transparent;
 
   &--safe-area {
-    margin-bottom: constant(safe-area-inset-bottom); // iOS < 11.2
-    margin-bottom: env(safe-area-inset-bottom); // iOS >= 11.2
+    padding-bottom: constant(safe-area-inset-bottom); // iOS < 11.2
+    padding-bottom: env(safe-area-inset-bottom); // iOS >= 11.2
+    box-sizing: content-box !important;
   }
 
   &--fixed {
