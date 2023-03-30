@@ -45,6 +45,30 @@ const value = ref(['2'])
 </template>
 ```
 
+### 可控的分割线
+
+使用 `divider` 属性隐藏边距。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const divider = ref(false)
+</script>
+
+<template>
+  <var-button @click="divider = !divider">
+    {{ divider ? '隐藏分割线' : '显示分割线' }}
+  </var-button>
+  <var-collapse v-model="value" :divider="divider">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="3">文本</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
 ### 手风琴模式
 
 使用 `accordion` 属性开启手风琴模式，此时 `value` 为字符串。
@@ -130,6 +154,7 @@ const value = ref(['1'])
 | `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
+| `divider`   | 是否显示分割线                               | _boolean_ | `true`                       |
 
 #### CollapseItem Props
 

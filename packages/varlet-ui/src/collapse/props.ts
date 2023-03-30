@@ -15,6 +15,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  divider: {
+    type: Boolean,
+    default: true,
+  },
   elevation: {
     type: [Boolean, String, Number],
     default: true,

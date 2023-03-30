@@ -46,6 +46,31 @@ const value = ref(['2'])
 </template>
 ```
 
+### Controlled Divider
+
+Use `divider` prop to hide the divider.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const divider = ref(false)
+</script>
+
+<template>
+  <var-button @click="divider = !divider">
+    {{ divider ? 'Hide Divider' : 'Show Divider' }}
+  </var-button>
+  <var-collapse v-model="value" :divider="divider">
+    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="3">Hello World</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
+
 ### Accordion Mode
 
 Use `accordion` prop to open accordion mode, In this case `value` is a String.
@@ -131,6 +156,7 @@ const value = ref(['1'])
 | `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `offset` | Whether to show margin                                              | _boolean_ | `true` |
+| `divider` | Whether to show divider                                              | _boolean_ | `true` |
 
 #### CollapseItem Props
 
@@ -178,4 +204,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--collapse-content-padding` | `0 12px 10px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
-| `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--collapse-divider-top` | `thin solid rgba(0, 0, 0, 0.12)` |

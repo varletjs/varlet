@@ -27,6 +27,7 @@ export default defineComponent({
       () => props.modelValue
     )
     const offset: ComputedRef<boolean> = computed(() => props.offset)
+    const divider: ComputedRef<boolean> = computed(() => props.divider)
     const elevation: ComputedRef<boolean | number | string> = computed(() => props.elevation)
 
     const checkValue = () => {
@@ -110,6 +111,7 @@ export default defineComponent({
     const collapseProvider: CollapseProvider = {
       active,
       offset,
+      divider,
       elevation,
       updateItem,
     }
@@ -128,6 +130,7 @@ export default defineComponent({
 
     return {
       n,
+      divider,
     }
   },
 })

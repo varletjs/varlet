@@ -1,5 +1,8 @@
 <template>
-  <div :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])">
+  <div
+    :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])"
+    :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
+  >
     <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
     <div :class="n('header')" @click="toggle()">
       <div :class="n('header-title')">
@@ -61,7 +64,7 @@ export default defineComponent({
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
     const showContent: Ref<boolean> = ref(false)
     const isShow: Ref<boolean> = ref(false)
-    const { active, offset, elevation, updateItem } = collapse
+    const { active, offset, divider, elevation, updateItem } = collapse
 
     const name: ComputedRef<number | string | undefined> = computed(() => props.name)
 
@@ -144,6 +147,7 @@ export default defineComponent({
       showContent,
       isShow,
       offset,
+      divider,
       elevation,
       toggle,
       contentEl,
