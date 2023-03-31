@@ -1,3 +1,24 @@
+## [2.9.4](https://github.com/varletjs/varlet/compare/v2.9.3...v2.9.4) (2023-03-31)
+
+
+### Bug Fixes
+
+* **cli/checklist:** empty line is shown while no matched checklist ([1ce1078](https://github.com/varletjs/varlet/commit/1ce10782e4f3e49b70c366e9c80991788befb530))
+* **index-bar:** cache scroll state ([f30c6f2](https://github.com/varletjs/varlet/commit/f30c6f2efc1db25c88aed9cc69250f3b4b75c720))
+* **index-bar:** index-anchor overlap and close [#936](https://github.com/varletjs/varlet/issues/936) ([969944f](https://github.com/varletjs/varlet/commit/969944f4d744585edb2bbf7f34e929c337467726))
+* **pullrefresh:** trigger timing of refresh event and close [#930](https://github.com/varletjs/varlet/issues/930) ([fa2f1bf](https://github.com/varletjs/varlet/commit/fa2f1bf0280b1840a30ddadd36283d8ce214d1a1))
+* **ui/bottom-navigation:** offset error while set safe-area in ios ([7783acf](https://github.com/varletjs/varlet/commit/7783acf1d8cfbeca7afb55d0f27bfbb37b8e3c50))
+* **ui/sticky:** resize sticky layout offset while the window resize ([5ac6f67](https://github.com/varletjs/varlet/commit/5ac6f673a2f5784675b39ffcd59fece828566a87))
+
+
+### Features
+
+* Collapse component add property divider ([#937](https://github.com/varletjs/varlet/issues/937)) ([afca9d8](https://github.com/varletjs/varlet/commit/afca9d8df296051a33bc2ba0d6700b14a92706cc))
+* support vmin and vmax and close [#931](https://github.com/varletjs/varlet/issues/931) ([3ef4f51](https://github.com/varletjs/varlet/commit/3ef4f51232433ef2e23c577f9974d8b87c166b5d))
+* **ui/app-bar:** support props.safeAreaTop ([9f00d43](https://github.com/varletjs/varlet/commit/9f00d43fe5ae0219a15be4e707880154e321fc51))
+
+
+
 ## [2.9.3](https://github.com/varletjs/varlet/compare/v2.9.2...v2.9.3) (2023-03-23)
 
 
