@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated } from 'vue'
+import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated, onActivated } from 'vue'
 import { isPlainObject, toNumber } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
 import {
@@ -54,6 +54,7 @@ export default defineComponent({
     const zIndex: ComputedRef<number | string> = computed(() => props.zIndex)
 
     let scroller: HTMLElement | Window | null = null
+    let isDeactivated = false
 
     const indexBarProvider: IndexBarProvider = {
       active,
@@ -112,7 +113,7 @@ export default defineComponent({
         call(props.onClick, anchorName)
       }
 
-      if (anchorName === active.value) {
+      if (anchorName === active.value && !isDeactivated) {
         return
       }
 
@@ -175,7 +176,21 @@ export default defineComponent({
     })
 
     onBeforeUnmount(removeScrollerListener)
-    onDeactivated(removeScrollerListener)
+
+    onDeactivated(() => {
+      isDeactivated = true
+      removeScrollerListener()
+    })
+
+    onActivated(() => {
+      if (!isDeactivated || active.value === undefined) return
+
+      anchorClick({
+        anchorName: active.value,
+        options: { event: false },
+      })
+      isDeactivated = false
+    })
 
     return {
       n,
