@@ -457,7 +457,7 @@ exports[`test form with select 1`] = `
           </div>
           <div class="var--ellipsis var-input-box--disabled var-input-box__placeholder var-input-box--placeholder-hint"></div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
       </div>
       <div class="var-input-box__line var-input-box--line-disabled">
         <div class="var-input-box__dot var-input-box--line-disabled"></div>
@@ -491,7 +491,7 @@ exports[`test form with select 2`] = `
           </div>
           <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
       </div>
       <div class="var-input-box__line">
         <div class="var-input-box__dot"></div>
@@ -525,7 +525,7 @@ exports[`test form with select 3`] = `
           </div>
           <div class="var--ellipsis var-input-box--error var-input-box__placeholder var-input-box--placeholder-hint"></div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
       </div>
       <div class="var-input-box__line var-input-box--line-error">
         <div class="var-input-box__dot var-input-box--line-error"></div>

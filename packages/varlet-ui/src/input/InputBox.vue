@@ -50,7 +50,6 @@
               :class="n('clear-icon')"
               var-input-box-cover
               name="close-circle"
-              size="14px"
               v-if="clearable && !isEmpty(value)"
               @click="handleClear"
             />
@@ -121,11 +120,10 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, nextTick } from 'vue'
+import { defineComponent, ref, watchEffect, type Ref } from 'vue'
 import { props } from './inputBoxProps'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
-import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('input-box')
 
@@ -140,11 +138,11 @@ export default defineComponent({
     const placeholderEl: Ref<HTMLElement | null> = ref(null)
 
     const computePlaceholderState = () => {
-      const { hint, value, isFocus } = props
-      if (!hint && !isEmpty(value)) {
+      const { hint, value, isFocus, hintPlaceholderState, noHintPlaceholderState } = props
+      if (!hint && (!isEmpty(value) || noHintPlaceholderState)) {
         return n('--placeholder-hidden')
       }
-      if (hint && (!isEmpty(value) || isFocus)) {
+      if (hint && (!isEmpty(value) || isFocus || hintPlaceholderState)) {
         return n('--placeholder-hint')
       }
     }

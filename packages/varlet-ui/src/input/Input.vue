@@ -17,6 +17,7 @@
       formDisabled,
       disabled,
       clearable,
+      noHintPlaceholderState: isComposing,
       onClick: handleClick,
       onClear: handleClear,
     }"
@@ -53,6 +54,8 @@
       @input="handleInput"
       @change="handleChange"
       @touchstart="handleTouchstart"
+      @compositionstart="handleCompositionStart"
+      @compositionend="handleCompositionEnd"
       v-if="textarea"
     >
     </textarea>
@@ -74,6 +77,8 @@
       @input="handleInput"
       @change="handleChange"
       @touchstart="handleTouchstart"
+      @compositionstart="handleCompositionStart"
+      @compositionend="handleCompositionEnd"
       v-else
     />
 
@@ -90,8 +95,8 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarInputBox from './InputBox.vue'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, onMounted } from 'vue'
-import { props } from './props'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
+import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'

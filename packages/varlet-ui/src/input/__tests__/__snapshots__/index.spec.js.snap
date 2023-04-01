@@ -8,7 +8,7 @@ exports[`test input clear 1`] = `
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-146" type="text">
         <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+      <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
     </div>
     <div class="var-input-box__line">
       <div class="var-input-box__dot"></div>
@@ -442,7 +442,7 @@ exports[`test input example 1`] = `
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text">
           <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
       </div>
       <div class="var-input-box__line">
         <div class="var-input-box__dot"></div>
@@ -461,7 +461,7 @@ exports[`test input example 1`] = `
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-71" type="text">
           <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms; font-size: 14px;" var-input-box-cover=""></i></div>
+        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
       </div>
       <div class="var-input-box__line">
         <div class="var-input-box__line__start"></div>

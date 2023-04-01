@@ -2,7 +2,7 @@
 
 ### Basic Usage
 
-The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting.
+The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type` rule when inputting.
 
 ```html
 <script setup>

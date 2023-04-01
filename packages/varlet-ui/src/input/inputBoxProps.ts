@@ -60,6 +60,14 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  hintPlaceholderState: {
+    type: Boolean,
+    default: false,
+  },
+  noHintPlaceholderState: {
+    type: Boolean,
+    default: false,
+  },
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
 }
