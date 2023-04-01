@@ -140,6 +140,11 @@ function unmounted(element: HoverHTMLElement, binding: DirectiveBinding<HoverVal
 }
 
 function beforeUpdate(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue>) {
+  if (!element._hover) {
+    // issue #942
+    return
+  }
+
   unmounted(element, binding)
 }
 
