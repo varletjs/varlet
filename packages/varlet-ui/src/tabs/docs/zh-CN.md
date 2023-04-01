@@ -433,6 +433,7 @@ const active = ref(0)
 | `--tabs-indicator-size`         | `2px`                  |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
+| `--tabs-indicator-inner-size`             | `100%`                 |
 
 #### Tab Variables
 

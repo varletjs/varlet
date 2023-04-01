@@ -179,7 +179,9 @@ describe('test tabs component props', () => {
     })
 
     await delay(100)
-    expect(wrapper.find('.var-tabs--layout-horizontal-indicator').attributes('style')).toContain('background: red;')
+    expect(wrapper.find('.var-tabs--layout-horizontal-indicator-inner').attributes('style')).toContain(
+      'background: red;'
+    )
     wrapper.unmount()
   })
 

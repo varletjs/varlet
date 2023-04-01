@@ -39,9 +39,13 @@
             width: layoutDirection === 'horizontal' ? indicatorWidth : toSizeUnit(indicatorSize),
             height: layoutDirection === 'horizontal' ? toSizeUnit(indicatorSize) : indicatorHeight,
             transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
-            background: indicatorColor || activeColor,
           }"
-        ></div>
+        >
+          <div
+            :class="classes(n('indicator-inner'), n(`--layout-${layoutDirection}-indicator-inner`))"
+            :style="{ background: indicatorColor || activeColor }"
+          ></div>
+        </div>
       </div>
     </div>
   </component>
