@@ -42,7 +42,10 @@
   &__placeholder {
     max-width: 100%;
     position: absolute;
-    top: calc(var(--input-box-padding-top) + (24px - var(--input-box-placeholder-size)) / 2);
+    top: calc(
+      var(--input-box-padding-top) +
+        (100% - var(--input-box-padding-top) - var(--input-box-padding-bottom) - var(--input-box-placeholder-size)) / 2
+    );
     font-size: var(--input-box-placeholder-size);
     color: var(--input-box-blur-color);
     line-height: 1em;
