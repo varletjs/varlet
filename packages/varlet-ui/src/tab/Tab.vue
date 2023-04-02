@@ -43,7 +43,11 @@ export default defineComponent({
     bindTabs(tabProvider)
 
     const shouldActive = () => {
-      return (props.name != null && active.value === props.name) || active.value === index?.value
+      if (props.name != null) {
+        return active.value === props.name
+      }
+
+      return active.value === index?.value
     }
 
     const computeColorStyle = () => {
