@@ -244,20 +244,20 @@ const value = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--input-box-input-text-color` | `#555` |
-| `--input-box-error-color` | `var(--color-danger)` |
-| `--input-box-blur-color` | `#888` |
-| `--input-box-focus-color` | `var(--color-primary)` |
-| `--input-box-placeholder-size` | `16px` |
-| `--input-box-textarea-padding-top` | `8px` |
-| `--input-box-input-padding-top` | `16px` |
-| `--input-box-input-padding-bottom` | `16px` |
-| `--input-box-input-padding-left` | `14px` |
-| `--input-box-input-padding-right` | `14px` |
-| `--input-box-icon-padding` | `20px 0 0` |
-| `--input-box-icon-size` | `20px` |
-| `--input-box-line-size` | `1px` |
-| `--input-box-line-focus-size` | `2px` |
-| `--input-box-disabled-color` | `var(--color-text-disabled)` |
+| `--input-decorator-input-text-color` | `#555` |
+| `--input-decorator-error-color` | `var(--color-danger)` |
+| `--input-decorator-blur-color` | `#888` |
+| `--input-decorator-focus-color` | `var(--color-primary)` |
+| `--input-decorator-placeholder-size` | `16px` |
+| `--input-decorator-textarea-padding-top` | `8px` |
+| `--input-decorator-input-padding-top` | `16px` |
+| `--input-decorator-input-padding-bottom` | `16px` |
+| `--input-decorator-input-padding-left` | `14px` |
+| `--input-decorator-input-padding-right` | `14px` |
+| `--input-decorator-icon-padding` | `20px 0 0` |
+| `--input-decorator-icon-size` | `20px` |
+| `--input-decorator-line-size` | `1px` |
+| `--input-decorator-line-focus-size` | `2px` |
+| `--input-decorator-disabled-color` | `var(--color-text-disabled)` |
 | `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |

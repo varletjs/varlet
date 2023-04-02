@@ -1,5 +1,5 @@
 <template>
-  <var-input-box
+  <var-input-decorator
     :class="classes(n())"
     v-bind="{
       value: modelValue,
@@ -92,14 +92,14 @@
     <template #form-details>
       <var-form-details :error-message="errorMessage" />
     </template>
-  </var-input-box>
+  </var-input-decorator>
 </template>
 
 <script lang="ts">
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
-import VarInputBox from '../input/InputBox.vue'
+import VarInputDecorator from '../input/InputDecorator.vue'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '@varlet/shared'
@@ -121,7 +121,7 @@ export default defineComponent({
     VarIcon,
     VarMenu,
     VarChip,
-    VarInputBox,
+    VarInputDecorator,
     VarFormDetails,
   },
   props,

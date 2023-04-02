@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as inputBoxProps } from './inputBoxProps'
+import { props as inputDecoratorProps } from './inputDecoratorProps'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
@@ -59,7 +59,7 @@ export const props = {
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   // dynamic internal
-  ...pickProps(inputBoxProps, [
+  ...pickProps(inputDecoratorProps, [
     'size',
     'variant',
     'placeholder',

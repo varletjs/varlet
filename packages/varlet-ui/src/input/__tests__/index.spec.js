@@ -25,16 +25,18 @@ test('test input variant', () => {
       },
     })
 
-    expect(wrapper.find('.var-input').classes()).toContain(`var-input-box--${variant}`)
+    expect(wrapper.find('.var-input').classes()).toContain(`var-input-decorator--${variant}`)
     switch (variant) {
       case 'standard': {
-        expect(wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__dot')).toBeTruthy()
+        expect(
+          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__dot')
+        ).toBeTruthy()
         break
       }
 
       case 'outlined': {
         expect(
-          wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__line__start')
+          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__line__start')
         ).toBeTruthy()
         break
       }
@@ -56,7 +58,7 @@ test('test input size', () => {
     },
   })
 
-  expect(wrapper.find('.var-input').classes()).toContain('var-input-box--small')
+  expect(wrapper.find('.var-input').classes()).toContain('var-input-decorator--small')
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -163,7 +165,7 @@ test('test input clear', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-input-box__clear-icon').trigger('click')
+  await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
@@ -174,7 +176,7 @@ test('test input clear', async () => {
 const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input-box__clear-icon').trigger('click')
+  await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
   await wrapper.trigger('click')
 }
 

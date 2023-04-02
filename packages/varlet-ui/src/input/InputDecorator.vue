@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--box'), [disabled, n('--disabled')])"
+    :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--decorator'), [disabled, n('--disabled')])"
     @click="handleClick"
   >
     <label :class="classes(n('$--relative'), n('$--block'))" :for="id">
@@ -33,6 +33,7 @@
                 [errorMessage, n('--error')],
                 n('placeholder'),
                 computePlaceholderState(),
+                [textarea, n('placeholder-textarea')],
                 [!hint, n('--placeholder-non-hint')]
               )
             "
@@ -48,7 +49,7 @@
           <slot name="append-icon">
             <var-icon
               :class="n('clear-icon')"
-              var-input-box-cover
+              var-input-decorator-cover
               name="close-circle"
               v-if="clearable && !isEmpty(value)"
               @click="handleClear"
@@ -121,14 +122,14 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, watchEffect, type Ref } from 'vue'
-import { props } from './inputBoxProps'
+import { props } from './inputDecoratorProps'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
 
-const { n, classes } = createNamespace('input-box')
+const { n, classes } = createNamespace('input-decorator')
 
 export default defineComponent({
-  name: 'VarInputBox',
+  name: 'VarInputDecorator',
   components: {
     VarIcon,
   },
@@ -188,5 +189,5 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../icon/icon';
-@import './inputBox';
+@import './inputDecorator.less';
 </style>

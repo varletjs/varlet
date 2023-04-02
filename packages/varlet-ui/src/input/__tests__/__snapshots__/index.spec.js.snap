@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test input clear 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-146">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-146">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-146" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
+      <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-decorator__clear-icon" style="transition-duration: 0ms;" var-input-decorator-cover=""></i></div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -21,19 +21,19 @@ exports[`test input clear 1`] = `
 `;
 
 exports[`test input events test input focus & blur 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-114">
-    <div class="var-input-box__controller var-input-box--focus">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-114">
+    <div class="var-input-decorator__controller var-input-decorator--focus">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-114" type="text">
-        <div class="var--ellipsis var-input-box--focus var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator--focus var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot var-input-box--line-focus"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot var-input-decorator--line-focus"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -43,19 +43,19 @@ exports[`test input events test input focus & blur 1`] = `
 `;
 
 exports[`test input events test input focus & blur 2`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-114">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-114">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-114" type="text">
-        <div class="var--ellipsis var-input-box__placeholder"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -65,20 +65,20 @@ exports[`test input events test input focus & blur 2`] = `
 `;
 
 exports[`test input events test input focus & blur 3`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-119">
-    <div class="var-input-box__controller var-input-box--focus">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-119">
+    <div class="var-input-decorator__controller var-input-decorator--focus">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-119" type="text" rows="8" style="resize: none;">
     </textarea>
-        <div class="var--ellipsis var-input-box--focus var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator--focus var-input-decorator__placeholder var-input-decorator--placeholder-hint var-input-decorator__placeholder-textarea"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot var-input-box--line-focus"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot var-input-decorator--line-focus"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -88,20 +88,20 @@ exports[`test input events test input focus & blur 3`] = `
 `;
 
 exports[`test input events test input focus & blur 4`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-119">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-119">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-119" type="text" rows="8" style="resize: none;">
     </textarea>
-        <div class="var--ellipsis var-input-box__placeholder"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator__placeholder-textarea"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -113,19 +113,19 @@ exports[`test input events test input focus & blur 4`] = `
 exports[`test input example 1`] = `
 "<div class="app-type pb">基本使用</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-3">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-3">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -134,23 +134,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-7">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-7">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-7" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -160,19 +160,19 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">小尺寸</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var-input-box--small var--box var-input"><label class="var--relative var--block" for="var-input-12">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-input"><label class="var--relative var--block" for="var-input-12">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-12" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -181,23 +181,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var-input-box--small var--box var-input"><label class="var--relative var--block" for="var-input-16">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var-input-decorator--small var--decorator var-input"><label class="var--relative var--block" for="var-input-16">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -207,14 +207,14 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">朴素模式</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-21">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon var-input-box--non-hint"></div>
-        <div class="var-input-box__wrap var-input-box--wrap-non-hint">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-21">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
+        <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-21" type="text">
-          <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-non-hint">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-non-hint">请输入文本</div>
         </div>
-        <div class="var-input-box__icon var-input-box--non-hint">
+        <div class="var-input-decorator__icon var-input-decorator--non-hint">
           <!--v-if-->
         </div>
       </div>
@@ -227,20 +227,20 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">文本域</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-26">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-26">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-26" type="text" rows="8" style="resize: none;">
     </textarea>
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator__placeholder-textarea">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -249,24 +249,24 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-30">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-30">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-30" type="text" rows="8" style="resize: none;">
     </textarea>
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator__placeholder-textarea">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -276,19 +276,19 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">最大长度</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-35">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-35">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-35" type="text" maxlength="10">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -308,23 +308,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-41">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-41">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text" maxlength="10">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -345,19 +345,19 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">禁用</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input-box--disabled var-input"><label class="var--relative var--block" for="var-input-48">
-      <div class="var-input-box__controller var-input-box--disabled">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input"><label class="var--relative var--block" for="var-input-48">
+      <div class="var-input-decorator__controller var-input-decorator--disabled">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-48" disabled="" type="text">
-          <div class="var--ellipsis var-input-box--disabled var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator--disabled var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line var-input-box--line-disabled">
-        <div class="var-input-box__dot var-input-box--line-disabled"></div>
+      <div class="var-input-decorator__line var-input-decorator--line-disabled">
+        <div class="var-input-decorator__dot var-input-decorator--line-disabled"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -366,18 +366,18 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input-box--disabled var-input"><label class="var--relative var--block" for="var-input-52">
-      <div class="var-input-box__controller var-input-box--disabled">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input-decorator--disabled var-input"><label class="var--relative var--block" for="var-input-52">
+      <div class="var-input-decorator__controller var-input-decorator--disabled">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-52" disabled="" type="text">
-          <div class="var--ellipsis var-input-box--disabled var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator--disabled var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line var-input-box--line-disabled">
+      <div class="var-input-decorator__line var-input-decorator--line-disabled">
         <!--v-if-->
       </div>
     </label>
@@ -388,19 +388,19 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">只读</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-57">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-57">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-57" disabled="" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -409,23 +409,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-61">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-61">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-61" disabled="" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -435,17 +435,17 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">可清除</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-66">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-66">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text">
-          <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-decorator__clear-icon" style="transition-duration: 0ms;" var-input-decorator-cover=""></i></div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -454,21 +454,21 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-71">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-71">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-71" type="text">
-          <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-box__clear-icon" style="transition-duration: 0ms;" var-input-box-cover=""></i></div>
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-decorator__clear-icon" style="transition-duration: 0ms;" var-input-decorator-cover=""></i></div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch var-input-box__line__notch--hint">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch var-input-decorator__line__notch--hint">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -478,17 +478,17 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type pb">显示图标</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-77">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-77">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-77" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -497,21 +497,21 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-83">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-83">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-83" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
+        <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -521,19 +521,19 @@ exports[`test input example 1`] = `
 </div>
 <div class="app-type">字段校验</div>
 <div class="pb">
-  <div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-90">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-90">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-90" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__dot"></div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__dot"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -542,23 +542,23 @@ exports[`test input example 1`] = `
   </div>
 </div>
 <div>
-  <div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-94">
-      <div class="var-input-box__controller">
-        <div class="var-input-box__icon"></div>
-        <div class="var-input-box__wrap">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-94">
+      <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__icon"></div>
+        <div class="var-input-decorator__wrap">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-94" type="text">
-          <div class="var--ellipsis var-input-box__placeholder">请输入文本</div>
+          <div class="var--ellipsis var-input-decorator__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__icon">
+        <div class="var-input-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-input-box__line">
-        <div class="var-input-box__line__start"></div>
-        <div class="var-input-box__line__notch">
-          <div class="var--ellipsis var-input-box__line__placeholder">请输入文本</div>
+      <div class="var-input-decorator__line">
+        <div class="var-input-decorator__line__start"></div>
+        <div class="var-input-decorator__line__notch">
+          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
         </div>
-        <div class="var-input-box__line__end"></div>
+        <div class="var-input-decorator__line__end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -570,19 +570,19 @@ exports[`test input example 1`] = `
 `;
 
 exports[`test input hint to be false 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-141">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon var-input-box--non-hint"></div>
-      <div class="var-input-box__wrap var-input-box--wrap-non-hint">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-141">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
+      <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-141" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hidden var-input-box--placeholder-non-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hidden var-input-decorator--placeholder-non-hint"></div>
       </div>
-      <div class="var-input-box__icon var-input-box--non-hint">
+      <div class="var-input-decorator__icon var-input-decorator--non-hint">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -592,19 +592,19 @@ exports[`test input hint to be false 1`] = `
 `;
 
 exports[`test input maxlength 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-134">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-134">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-134" type="text" maxlength="100">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -625,19 +625,19 @@ exports[`test input maxlength 1`] = `
 `;
 
 exports[`test input size 1`] = `
-"<div class="var-input-box var-input-box--standard var-input-box--small var--box var-input"><label class="var--relative var--block" for="var-input-109">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-input"><label class="var--relative var--block" for="var-input-109">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-109" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -647,19 +647,19 @@ exports[`test input size 1`] = `
 `;
 
 exports[`test input validation 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-164">
-    <div class="var-input-box__controller var-input-box--error">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-164">
+    <div class="var-input-decorator__controller var-input-decorator--error">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input var-input--caret-error" autocomplete="new-password" id="var-input-164" type="text">
-        <div class="var--ellipsis var-input-box--error var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator--error var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line var-input-box--line-error">
-      <div class="var-input-box__dot var-input-box--line-error"></div>
+    <div class="var-input-decorator__line var-input-decorator--line-error">
+      <div class="var-input-decorator__dot var-input-decorator--line-error"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -680,19 +680,19 @@ exports[`test input validation 1`] = `
 `;
 
 exports[`test input validation 2`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-164">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-164">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-164" type="text">
-        <div class="var--ellipsis var-input-box__placeholder"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -702,19 +702,19 @@ exports[`test input validation 2`] = `
 `;
 
 exports[`test input validation 3`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-164">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-164">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-164" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -724,19 +724,19 @@ exports[`test input validation 3`] = `
 `;
 
 exports[`test input variant 1`] = `
-"<div class="var-input-box var-input-box--standard var--box var-input"><label class="var--relative var--block" for="var-input-99">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-99">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-99" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__dot"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__dot"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -746,23 +746,23 @@ exports[`test input variant 1`] = `
 `;
 
 exports[`test input variant 2`] = `
-"<div class="var-input-box var-input-box--outlined var--box var-input"><label class="var--relative var--block" for="var-input-104">
-    <div class="var-input-box__controller">
-      <div class="var-input-box__icon"></div>
-      <div class="var-input-box__wrap">
+"<div class="var-input-decorator var-input-decorator--outlined var--decorator var-input"><label class="var--relative var--block" for="var-input-104">
+    <div class="var-input-decorator__controller">
+      <div class="var-input-decorator__icon"></div>
+      <div class="var-input-decorator__wrap">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-104" type="text">
-        <div class="var--ellipsis var-input-box__placeholder var-input-box--placeholder-hint"></div>
+        <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
       </div>
-      <div class="var-input-box__icon">
+      <div class="var-input-decorator__icon">
         <!--v-if-->
       </div>
     </div>
-    <div class="var-input-box__line">
-      <div class="var-input-box__line__start"></div>
-      <div class="var-input-box__line__notch var-input-box__line__notch--hint">
-        <div class="var--ellipsis var-input-box__line__placeholder"></div>
+    <div class="var-input-decorator__line">
+      <div class="var-input-decorator__line__start"></div>
+      <div class="var-input-decorator__line__notch var-input-decorator__line__notch--hint">
+        <div class="var--ellipsis var-input-decorator__line__placeholder"></div>
       </div>
-      <div class="var-input-box__line__end"></div>
+      <div class="var-input-decorator__line__end"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

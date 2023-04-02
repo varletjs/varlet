@@ -27,16 +27,18 @@ test('test select variant', () => {
       },
     })
 
-    expect(wrapper.find('.var-select').classes()).toContain(`var-input-box--${variant}`)
+    expect(wrapper.find('.var-select').classes()).toContain(`var-input-decorator--${variant}`)
     switch (variant) {
       case 'standard': {
-        expect(wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__dot')).toBeTruthy()
+        expect(
+          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__dot')
+        ).toBeTruthy()
         break
       }
 
       case 'outlined': {
         expect(
-          wrapper.find('.var-input-box__line').wrapperElement.querySelector('.var-input-box__line__start')
+          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__line__start')
         ).toBeTruthy()
         break
       }
@@ -58,7 +60,7 @@ test('test select size', () => {
     },
   })
 
-  expect(wrapper.find('.var-select').classes()).toContain('var-input-box--small')
+  expect(wrapper.find('.var-select').classes()).toContain('var-input-decorator--small')
   expect(wrapper.html()).toMatchSnapshot()
 })
 

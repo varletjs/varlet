@@ -68,6 +68,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  textarea: {
+    type: Boolean,
+    default: false,
+  },
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
 }

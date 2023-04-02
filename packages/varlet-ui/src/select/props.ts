@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as inputBoxProps } from '../input/inputBoxProps'
+import { props as inputDecoratorProps } from '../input/inputDecoratorProps'
 
 export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)
@@ -50,7 +50,7 @@ export const props = {
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
   // dynamic internal
-  ...pickProps(inputBoxProps, [
+  ...pickProps(inputDecoratorProps, [
     'size',
     'variant',
     'placeholder',

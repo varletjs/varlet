@@ -1,5 +1,5 @@
 <template>
-  <var-input-box
+  <var-input-decorator
     :class="classes(n())"
     v-bind="{
       value: modelValue,
@@ -18,6 +18,7 @@
       disabled,
       clearable,
       noHintPlaceholderState: isComposing,
+      textarea,
       onClick: handleClick,
       onClear: handleClear,
     }"
@@ -89,12 +90,12 @@
     <template #form-details>
       <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
     </template>
-  </var-input-box>
+  </var-input-decorator>
 </template>
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import VarInputBox from './InputBox.vue'
+import VarInputDecorator from './InputDecorator.vue'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
@@ -109,7 +110,7 @@ export default defineComponent({
   name: 'VarInput',
   components: {
     VarFormDetails,
-    VarInputBox,
+    VarInputDecorator,
   },
   props,
   setup(props) {
@@ -137,6 +138,7 @@ export default defineComponent({
 
       return `${String(modelValue).length}/${maxlength}`
     })
+
     const { bindForm, form } = useForm()
     const {
       errorMessage,
