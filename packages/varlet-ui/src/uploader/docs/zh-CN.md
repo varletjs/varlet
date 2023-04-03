@@ -11,7 +11,10 @@
 import { ref } from 'vue'
 
 const files = ref([])
-const handleAfterRead = file => console.log(file)
+
+function handleAfterRead(file) { 
+  console.log(file)
+}
 </script>
 
 <template>
@@ -70,7 +73,7 @@ const files = ref([
   }
 ])
 
-const handleAfterRead = (file) => {
+function handleAfterRead(file) {
   file.state = 'loading'
 
   setTimeout(() => {
@@ -108,14 +111,10 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
-
-const handleOversize = () => {
-  Snackbar.warning('文件大小超出限制')
-}
 </script>
 
 <template>
-  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+  <var-uploader v-model="files" :maxsize="1024" @oversize="Snackbar.warning('文件大小超出限制')" />
 </template>
 ```
 
@@ -130,7 +129,7 @@ import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
 
-const handleBeforeRead = (file) => {
+function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
     Snackbar.success('文件小于1M，上传成功')
     return true
@@ -190,7 +189,7 @@ const files = ref([
   }
 ])
 
-const handleBeforeRemove = async () => {
+async function handleBeforeRemove() {
   const action = await Dialog({
     title: '是否删除?',
     message: '删除后无法撤回'
@@ -314,6 +313,7 @@ const files = ref([
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
+| `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
 | `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
@@ -346,6 +346,8 @@ const files = ref([
 
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
+| `chooseFile` | 触发选择文件动作，显示文件列表 | `-` | `-` |
+| `closePreview` | 关闭预览文件弹出层 | `-` | `-` |
 | `getLoading` | 获取 `state` 等于 `loading` 的文件集合| `-` | `VarFile[]` |
 | `getSuccess` | 获取 `state` 等于 `success` 的文件集合| `-` | `VarFile[]` |
 | `getError` |  获取 `state` 等于 `error` 的文件集合 | `-` | `VarFile[]` |

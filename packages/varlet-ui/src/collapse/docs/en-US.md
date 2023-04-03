@@ -14,7 +14,7 @@ import { ref } from 'vue'
 
 const value = ref(['1'])
 
-const changeHandle = (val) => {
+function changeHandle(val) {
   console.log(val)
 }
 </script>
@@ -45,6 +45,31 @@ const value = ref(['2'])
   </var-collapse>
 </template>
 ```
+
+### Controlled Divider
+
+Use `divider` prop to hide the divider.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const divider = ref(false)
+</script>
+
+<template>
+  <var-button @click="divider = !divider">
+    {{ divider ? 'Hide Divider' : 'Show Divider' }}
+  </var-button>
+  <var-collapse v-model="value" :divider="divider">
+    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="3">Hello World</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
 
 ### Accordion Mode
 
@@ -125,11 +150,13 @@ const value = ref(['1'])
 
 #### Collapse Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | Names of current active panels | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
-| `accordion` | Whether to be accordion mode | _boolean_ | `false` |
-| `offset` | Whether to show margin | _boolean_ | `true` |
+| Prop | Description                                                         | Type | Default |
+| ----- |---------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | Names of current active panels                                      | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
+| `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `offset` | Whether to show margin                                              | _boolean_ | `true` |
+| `divider` | Whether to show divider                                              | _boolean_ | `true` |
 
 #### CollapseItem Props
 
@@ -177,4 +204,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--collapse-content-padding` | `0 12px 10px` |
 | `--collapse-item-margin-top` | `16px` |
 | `--collapse-disable-color` | `#bdbdbd` |
-| `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--collapse-divider-top` | `thin solid rgba(0, 0, 0, 0.12)` |

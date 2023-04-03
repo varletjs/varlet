@@ -1,9 +1,12 @@
 import type { App } from 'vue'
 
+export const version: string
 export const install: (app: App) => void
 
 export * from './actionSheet'
 export * from './appBar'
+export * from './avatar'
+export * from './avatarGroup'
 export * from './backTop'
 export * from './badge'
 export * from './bottomNavigation'
@@ -11,6 +14,7 @@ export * from './bottomNavigationItem'
 export * from './breadcrumb'
 export * from './breadcrumbs'
 export * from './button'
+export * from './buttonGroup'
 export * from './card'
 export * from './cell'
 export * from './checkbox'
@@ -19,13 +23,18 @@ export * from './chip'
 export * from './col'
 export * from './collapse'
 export * from './collapseItem'
+export * from './context'
 export * from './countdown'
 export * from './counter'
 export * from './datePicker'
 export * from './dialog'
 export * from './divider'
+export * from './ellipsis'
+export * from './fab'
 export * from './form'
 export * from './formDetails'
+export * from './hover'
+export * from './hoverOverlay'
 export * from './icon'
 export * from './image'
 export * from './imagePreview'
@@ -42,6 +51,7 @@ export * from './menu'
 export * from './option'
 export * from './overlay'
 export * from './pagination'
+export * from './paper'
 export * from './picker'
 export * from './popup'
 export * from './progress'
@@ -80,6 +90,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     VarActionSheet: typeof import('@varlet/ui')['_ActionSheetComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
+    VarAvatar: typeof import('@varlet/ui')['_AvatarComponent']
+    VarAvatarGroup: typeof import('@varlet/ui')['_AvatarGroupComponent']
     VarBackTop: typeof import('@varlet/ui')['_BackTopComponent']
     VarBadge: typeof import('@varlet/ui')['_BadgeComponent']
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
@@ -87,6 +99,7 @@ declare module 'vue' {
     VarBreadcrumb: typeof import('@varlet/ui')['_BreadcrumbComponent']
     VarBreadcrumbs: typeof import('@varlet/ui')['_BreadcrumbsComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
+    VarButtonGroup: typeof import('@varlet/ui')['_ButtonGroupComponent']
     VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarCheckbox: typeof import('@varlet/ui')['_CheckboxComponent']
@@ -95,20 +108,23 @@ declare module 'vue' {
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarCollapse: typeof import('@varlet/ui')['_CollapseComponent']
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']
+    VarContext: typeof import('@varlet/ui')['_ContextComponent']
     VarCountdown: typeof import('@varlet/ui')['_CountdownComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
+    VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
+    VarFab: typeof import('@varlet/ui')['_FabComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
+    VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
     VarImagePreview: typeof import('@varlet/ui')['_ImagePreviewComponent']
     VarIndexAnchor: typeof import('@varlet/ui')['_IndexAnchorComponent']
     VarIndexBar: typeof import('@varlet/ui')['_IndexBarComponent']
     VarInput: typeof import('@varlet/ui')['_InputComponent']
-    VarLazy: typeof import('@varlet/ui')['_LazyComponent']
     VarLink: typeof import('@varlet/ui')['_LinkComponent']
     VarList: typeof import('@varlet/ui')['_ListComponent']
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
@@ -118,6 +134,7 @@ declare module 'vue' {
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
+    VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarPicker: typeof import('@varlet/ui')['_PickerComponent']
     VarPopup: typeof import('@varlet/ui')['_PopupComponent']
     VarProgress: typeof import('@varlet/ui')['_ProgressComponent']
@@ -126,7 +143,6 @@ declare module 'vue' {
     VarRadioGroup: typeof import('@varlet/ui')['_RadioGroupComponent']
     VarRate: typeof import('@varlet/ui')['_RateComponent']
     VarResult: typeof import('@varlet/ui')['_ResultComponent']
-    VarRipple: typeof import('@varlet/ui')['_RippleComponent']
     VarRow: typeof import('@varlet/ui')['_RowComponent']
     VarSelect: typeof import('@varlet/ui')['_SelectComponent']
     VarSkeleton: typeof import('@varlet/ui')['_SkeletonComponent']
@@ -149,5 +165,11 @@ declare module 'vue' {
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+  }
+
+  export interface ComponentCustomProperties {
+    vHover: typeof import('@varlet/ui')['_HoverComponent']
+    vLazy: typeof import('@varlet/ui')['_LazyComponent']
+    vRipple: typeof import('@varlet/ui')['_RippleComponent']
   }
 }

@@ -1,12 +1,14 @@
 <script setup>
 import VarTable from '..'
 import VarPagination from '../../pagination'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 
-const gen = (current, size) => {
+const list = ref(gen(1, 10))
+
+function gen(current, size) {
   return Array.from({ length: size }).map((_, index) => {
     const id = (current - 1) * size + index + 1
 
@@ -18,9 +20,7 @@ const gen = (current, size) => {
   })
 }
 
-const list = ref(gen(1, 10))
-
-const get = (current, size) => {
+function get(current, size) {
   list.value = gen(current, size)
 }
 

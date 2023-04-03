@@ -1,23 +1,23 @@
+import { useEventListener } from '@varlet/use'
 import {
   createApp,
   h,
   getCurrentInstance,
-  inject,
-  onUnmounted,
-  computed,
-  provide,
-  reactive,
   isVNode,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
   ref,
   onActivated,
   onDeactivated,
-  PropType,
+  Comment,
+  Fragment,
+  type PropType,
+  type ExtractPropTypes,
+  type Component,
+  type VNode,
+  type ComponentInternalInstance,
+  type Ref,
+  type ComponentPublicInstance,
 } from 'vue'
-import type { Component, VNode, ComputedRef, ComponentInternalInstance, Ref, ComponentPublicInstance } from 'vue'
-import { isArray, removeItem } from '@varlet/shared'
+import { isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance
@@ -37,6 +37,8 @@ export interface BaseParentProvider<C> {
 
   clear(childProvider: C): void
 }
+
+export type ExtractPublicPropTypes<P> = Partial<ExtractPropTypes<P>>
 
 export function pickProps<T, U extends keyof T>(props: T, propsKey: U): T[U]
 export function pickProps<T, U extends keyof T>(props: T, propsKey: U[]): Pick<T, U>
@@ -84,6 +86,27 @@ export function mountInstance(
   return { unmountInstance: unmount }
 }
 
+export function flatFragment(vNodes: any) {
+  const result: VNode[] = []
+
+  vNodes.forEach((vNode: any) => {
+    if (vNode.type === Comment) {
+      return
+    }
+
+    if (vNode.type === Fragment && isArray(vNode.children)) {
+      vNode.children.forEach((item: VNode) => {
+        result.push(item)
+      })
+      return
+    }
+
+    result.push(vNode)
+  })
+
+  return result
+}
+
 export function flatVNodes(subTree: any) {
   const vNodes: VNode[] = []
 
@@ -107,113 +130,6 @@ export function flatVNodes(subTree: any) {
   flat(subTree)
 
   return vNodes
-}
-
-export function useAtChildrenCounter(key: symbol) {
-  const instances: ComponentInternalInstance[] = reactive([])
-  const parentInstance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
-
-  const sortInstances = () => {
-    const vNodes: any[] = flatVNodes(parentInstance.subTree)
-
-    instances.sort((a, b) => {
-      return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode)
-    })
-  }
-
-  const collect = (instance: ComponentInternalInstance) => {
-    instances.push(instance)
-    sortInstances()
-  }
-
-  const clear = (instance: ComponentInternalInstance) => {
-    removeItem(instances, instance)
-  }
-
-  provide<ChildrenCounter>(key, {
-    collect,
-    clear,
-    instances,
-  })
-
-  const length: ComputedRef<number> = computed(() => instances.length)
-
-  return {
-    length,
-  }
-}
-
-export function useAtParentIndex(key: symbol) {
-  if (!keyInProvides(key)) {
-    return { index: null }
-  }
-
-  const childrenCounter: ChildrenCounter = inject<ChildrenCounter>(key) as ChildrenCounter
-
-  const { collect, clear, instances } = childrenCounter
-
-  const instance: ComponentInternalInstance = getCurrentInstance() as ComponentInternalInstance
-
-  onMounted(() => {
-    nextTick().then(() => collect(instance))
-  })
-  onUnmounted(() => {
-    nextTick().then(() => clear(instance))
-  })
-
-  const index = computed(() => instances.indexOf(instance))
-
-  return {
-    index,
-  }
-}
-
-export function useChildren<P, C>(key: symbol) {
-  const childProviders: C[] = []
-
-  const collect = (childProvider: C) => {
-    childProviders.push(childProvider)
-  }
-
-  const clear = (childProvider: C) => {
-    removeItem(childProviders, childProvider)
-  }
-
-  const bindChildren = (parentProvider: P) => {
-    provide<P & BaseParentProvider<C>>(key, {
-      collect,
-      clear,
-      ...parentProvider,
-    })
-  }
-
-  return {
-    childProviders,
-    bindChildren,
-  }
-}
-
-export function useParent<P, C>(key: symbol) {
-  if (!keyInProvides(key)) {
-    return {
-      parentProvider: null,
-      bindParent: null,
-    }
-  }
-
-  const rawParentProvider = inject<P & BaseParentProvider<C>>(key) as P & BaseParentProvider<C>
-
-  const { collect, clear, ...parentProvider } = rawParentProvider
-
-  const bindParent = (childProvider: C) => {
-    onMounted(() => collect(childProvider))
-    onBeforeUnmount(() => clear(childProvider))
-  }
-
-  return {
-    parentProvider,
-    bindParent,
-  }
 }
 
 export function keyInProvides(key: symbol) {
@@ -261,14 +177,8 @@ export function useValidation() {
 }
 
 export function useRouteListener(cb: () => void) {
-  onMounted(() => {
-    window.addEventListener('hashchange', cb)
-    window.addEventListener('popstate', cb)
-  })
-  onUnmounted(() => {
-    window.removeEventListener('hashchange', cb)
-    window.removeEventListener('popstate', cb)
-  })
+  useEventListener(window, 'hashchange', cb)
+  useEventListener(window, 'popstate', cb)
 }
 
 export function useTeleport() {
@@ -346,4 +256,16 @@ export function defineListenerProp<F>(fallback?: any) {
     type: [Function, Array] as PropType<F | F[]>,
     default: fallback,
   }
+}
+
+export function formatElevation(elevation: number | boolean | string, defaultLevel?: number) {
+  if (elevation === false) {
+    return null
+  }
+
+  if (elevation === true && defaultLevel) {
+    elevation = defaultLevel
+  }
+
+  return `var-elevation--${elevation}`
 }

@@ -70,4 +70,26 @@ test('test action sheet functional disabled', async () => {
   await delay(300)
 
   ActionSheet.close()
+  await delay(300)
+})
+
+test('test setDefaultOptions and resetDefaultOptions', async () => {
+  const onSelect = jest.fn()
+  ActionSheet.setDefaultOptions({ onSelect })
+
+  ActionSheet({
+    actions: [{ name: 'Item 01' }],
+  })
+  await delay(16)
+  await trigger(document.querySelector('.var-action-sheet__action-item'), 'click')
+  expect(onSelect).toHaveBeenCalledTimes(1)
+  await delay(300)
+
+  ActionSheet.resetDefaultOptions()
+  ActionSheet({
+    actions: [{ name: 'Item 01' }],
+  })
+  await delay(16)
+  await trigger(document.querySelector('.var-action-sheet__action-item'), 'click')
+  expect(onSelect).toHaveBeenCalledTimes(1)
 })

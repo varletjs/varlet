@@ -1,21 +1,22 @@
 
 ### Intro
 
-Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by partners in the community.
+Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by `varletjs` community team.
 
 ### Features
 
-- 🚀 &nbsp; Provide 50 high quality general purpose components
+- 🚀 &nbsp; Provide 60+ high quality general purpose components
 - 🚀 &nbsp; Components are very lightweight
 - 💪 &nbsp; Developed by Chinese, complete Chinese and English documentation and logistics support
 - 🛠️ &nbsp; Support on-demand introduction
 - 🛠️ &nbsp; Support theme customization
 - 🌍 &nbsp; Support internationalization
-- 💡 &nbsp; Support WebStorm, VS Code component syntax highlighting
+- 💡 &nbsp; Support WebStorm syntax highlighting
 - 💪 &nbsp; Support the SSR
 - 💡 &nbsp; Support the Typescript
 - 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
 - 🛠️ &nbsp; Support dark mode
+- 🛠️ &nbsp; Provide official VSCode extension
 
 
 ### Official Ecosystem
@@ -28,6 +29,7 @@ The following projects are maintained by the official team for a long time.
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Case collection of Varlet component library and various ecosystem integration` |
 
 ### Community Ecosystem
 
@@ -45,12 +47,3 @@ we will deal with it as soon as possible. You can also give us [PR](https://gith
 
 ### Open source licenses
 Component library based on `MIT` licenses.
-
-### Material Design Introduction
-Material Design, Is a new design language from Google that aims to provide a more consistent and broader 
-"look and feel" for phones, tablets, desktops and "other platforms".
-
-### Special thanks
-
-Special thanks to `Yu Tiezhu-eddieyc@163.com` for the visual support of our component library documentation site, 
-to help us continue to evolve.

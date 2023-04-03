@@ -13,9 +13,9 @@ export const TYPES_DIR = resolve(CWD, 'types')
 export const ROOT_DOCS_DIR = resolve(CWD, 'docs')
 export const ROOT_PAGES_DIR = resolve(CWD, 'pages')
 
-export const ESLINT_EXTENSIONS = ['.vue', '.ts', '.js', '.mjs', '.tsx', '.jsx']
-export const VITE_RESOLVE_EXTENSIONS = ['.vue', '.tsx', '.ts', '.jsx', '.js', '.less', '.css']
-export const SCRIPTS_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js']
+export const ESLINT_EXTENSIONS = ['.vue', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs']
+export const VITE_RESOLVE_EXTENSIONS = ['.vue', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs', '.less', '.css']
+export const SCRIPTS_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs']
 export const PUBLIC_DIR_INDEXES = ['index.vue', 'index.tsx', 'index.ts', 'index.jsx', 'index.js']
 export const STYLE_DIR_NAME = 'style'
 export const EXAMPLE_DIR_NAME = 'example'
@@ -26,6 +26,7 @@ export const TESTS_DIR_NAME = '__tests__'
 export const GENERATORS_DIR = resolve(dirname, '../../../template/generators')
 export const UI_PACKAGE_JSON = resolve(CWD, 'package.json')
 export const CLI_PACKAGE_JSON = resolve(dirname, '../../../package.json')
+export const CHECKLIST_FILE = resolve(CWD, 'CHECKLIST.md')
 
 // site
 export const SITE = resolve(dirname, '../../../site')
@@ -38,16 +39,31 @@ export const SITE_MOBILE_ROUTES = resolve(CWD, '.varlet/mobile.routes.ts')
 export const SITE_CONFIG = resolve(CWD, '.varlet/site.config.json')
 
 // template highlight
-export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/
-export const HL_API_RE = /##\s*API\n+/
-export const HL_TITLE_ATTRIBUTES_RE = /###\s*属性\s*\n+/
-export const HL_TITLE_EVENTS_RE = /###\s*事件\s*\n+/
-export const HL_TITLE_SLOTS_RE = /###\s*插槽\s*\n+/
-export const HL_MD = 'zh-CN.md'
 export const HL_DIR = resolve(CWD, 'highlight')
-export const HL_TAGS_JSON = resolve(HL_DIR, 'tags.json')
-export const HL_ATTRIBUTES_JSON = resolve(HL_DIR, 'attributes.json')
-export const HL_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.json')
+export const HL_COMPONENT_NAME_RE = /.*(\/|\\)(.+)(\/|\\)docs(\/|\\)/
+export const HL_API_RE = /##\s*API(?:\r\n|\n)+/
+
+export const HL_EN_TITLE_ATTRIBUTES_RE = /###\s*Props(?:\r\n|\n)+/
+export const HL_EN_TITLE_EVENTS_RE = /###\s*Events(?:\r\n|\n)+/
+export const HL_EN_TITLE_SLOTS_RE = /###\s*Slots(?:\r\n|\n)+/
+export const HL_EN_MD = 'en-US.md'
+export const HL_EN_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.en-US.json')
+
+export const HL_ZH_TITLE_ATTRIBUTES_RE = /###\s*属性(?:\r\n|\n)+/
+export const HL_ZH_TITLE_EVENTS_RE = /###\s*事件(?:\r\n|\n)+/
+export const HL_ZH_TITLE_SLOTS_RE = /###\s*插槽(?:\r\n|\n)+/
+export const HL_ZH_MD = 'zh-CN.md'
+export const HL_ZH_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.zh-CN.json')
+
+// icons
+export const ICONS_DIST_DIR = resolve(CWD, 'dist')
+export const ICONS_CSS_DIR = resolve(ICONS_DIST_DIR, 'css')
+export const ICONS_PNG_DIR = resolve(ICONS_DIST_DIR, 'png')
+export const ICONS_FONTS_DIR = resolve(ICONS_DIST_DIR, 'fonts')
+export const ICONS_SVG_DIR = resolve(CWD, 'svg')
+
+// extension
+export const EXTENSION_ENTRY = resolve(CWD, 'src/extension.ts')
 
 // jest
 export const JEST_CONFIG = resolve(dirname, '../../../cjs/jest.config.cjs')

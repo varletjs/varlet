@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const tabProps: Record<string, any>
+
 export interface TabProps extends BasicAttributes {
   name?: string | number
   disabled?: boolean

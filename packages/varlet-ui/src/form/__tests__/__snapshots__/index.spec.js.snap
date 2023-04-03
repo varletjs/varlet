@@ -4,7 +4,9 @@ exports[`test form with checkbox 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--disabled\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text var-checkbox--disabled\\"></div>
     </div>
     <transition-stub>
@@ -18,7 +20,9 @@ exports[`test form with checkbox 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text\\"></div>
     </div>
     <transition-stub>
@@ -32,7 +36,9 @@ exports[`test form with checkbox 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked var-checkbox--error\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
     </div>
     <transition-stub>
@@ -57,7 +63,9 @@ exports[`test form with checkbox 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-checkbox__wrap\\">
     <div class=\\"var-checkbox\\">
-      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition: transform 0ms;\\" var-checkbox-cover=\\"\\"></i></div>
+      <div class=\\"var-checkbox__action var-checkbox--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon\\" style=\\"transition-duration: 0ms;\\" var-checkbox-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-checkbox__text\\"></div>
     </div>
     <transition-stub>
@@ -70,7 +78,15 @@ exports[`test form with checkbox 4`] = `
 exports[`test form with counter 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button var-counter--not-allowed\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--disabled\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button var-counter--not-allowed\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input var-counter--not-allowed\\" inputmode=\\"numeric\\" disabled=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button var-counter--not-allowed\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -81,7 +97,15 @@ exports[`test form with counter 1`] = `
 exports[`test form with counter 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -92,7 +116,15 @@ exports[`test form with counter 2`] = `
 exports[`test form with counter 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
@@ -114,7 +146,15 @@ exports[`test form with counter 3`] = `
 exports[`test form with counter 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-counter var--box\\">
-    <div class=\\"var-counter__controller var-elevation--2\\"><i class=\\"var-icon var-icon--set var-icon-minus var-counter__decrement-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-counter__increment-button\\" style=\\"transition: transform 0ms;\\" var-counter-cover=\\"\\"></i></div>
+    <div class=\\"var-counter__controller var-elevation--2\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\" readonly=\\"\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
+        <!--v-if-->
+        <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+        <div class=\\"var-hover-overlay\\"></div>
+      </button></div>
     <transition-stub>
       <!--v-if-->
     </transition-stub>
@@ -225,7 +265,9 @@ exports[`test form with radio 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-radio__wrap\\">
     <div class=\\"var-radio\\">
-      <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+      <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-radio__text var-radio--disabled\\"></div>
     </div>
     <transition-stub>
@@ -239,7 +281,9 @@ exports[`test form with radio 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-radio__wrap\\">
     <div class=\\"var-radio\\">
-      <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+      <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-radio__text\\"></div>
     </div>
     <transition-stub>
@@ -253,7 +297,9 @@ exports[`test form with radio 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-radio__wrap\\">
     <div class=\\"var-radio\\">
-      <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+      <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-radio__text var-radio--error\\"></div>
     </div>
     <transition-stub>
@@ -278,7 +324,9 @@ exports[`test form with radio 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-radio__wrap\\">
     <div class=\\"var-radio\\">
-      <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+      <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
       <div class=\\"var-radio__text\\"></div>
     </div>
     <transition-stub>
@@ -292,11 +340,21 @@ exports[`test form with rate 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--disabled\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -309,11 +367,21 @@ exports[`test form with rate 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content var-rate--error\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -337,11 +405,21 @@ exports[`test form with rate 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-rate__wrap\\">
     <div class=\\"var-rate\\">
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
-      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition: transform 0ms;\\" var-rate-cover=\\"\\"></i></div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
+      <div style=\\"margin-right: 0px;\\" class=\\"var-rate__content\\"><i class=\\"var-icon var-icon--set var-icon-star-outline var-rate__content-icon\\" style=\\"transition-duration: 0ms;\\" var-rate-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -360,15 +438,15 @@ exports[`test form with select 1`] = `
           <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--disabled var-select--placeholder-hint\\"></label>
           <!--teleport start-->
           <!--teleport end-->
         </div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
+      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition-duration: 0ms; font-size: 14px;\\"></i></div>
     </div>
     <div class=\\"var-select__line var-select--line-disabled\\">
       <div class=\\"var-select__dot var-select--line-disabled\\"></div>
@@ -390,15 +468,15 @@ exports[`test form with select 2`] = `
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hint\\"></label>
           <!--teleport start-->
           <!--teleport end-->
         </div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
+      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition-duration: 0ms; font-size: 14px;\\"></i></div>
     </div>
     <div class=\\"var-select__line\\">
       <div class=\\"var-select__dot\\"></div>
@@ -420,15 +498,15 @@ exports[`test form with select 3`] = `
           <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition: transform 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--error var-select--placeholder-hint\\"></label>
           <!--teleport start-->
           <!--teleport end-->
         </div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
+      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition-duration: 0ms; font-size: 14px;\\"></i></div>
     </div>
     <div class=\\"var-select__line var-select--line-error\\">
       <div class=\\"var-select__dot var-select--line-error\\"></div>
@@ -461,13 +539,13 @@ exports[`test form with select 4`] = `
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <!--v-if-->
-            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition: transform 300ms;\\" var-select-cover=\\"\\"></i>
+            </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis\\"></label>
           <!--teleport start-->
           <!--teleport end-->
         </div>
       </div>
-      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition: transform 0ms; font-size: 14px;\\"></i></div>
+      <div class=\\"var-select__icon\\"><i class=\\"var-icon var-icon--set var-icon-close-circle var-select__clear-icon\\" style=\\"transition-duration: 0ms; font-size: 14px;\\"></i></div>
     </div>
     <div class=\\"var-select__line\\">
       <div class=\\"var-select__dot\\"></div>
@@ -489,7 +567,9 @@ exports[`test form with slider 1`] = `
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\">
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
     </div>
@@ -510,7 +590,9 @@ exports[`test form with slider 2`] = `
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 5%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\">
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
     </div>
@@ -542,7 +624,9 @@ exports[`test form with slider 3`] = `
       </div>
       <div class=\\"var-slider__thumb\\" style=\\"left: 0%;\\">
         <div class=\\"var-slider__thumb-block\\"></div>
-        <div class=\\"var-slider__thumb-ripple\\"></div>
+        <div class=\\"var-slider__thumb-ripple\\">
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-slider__thumb-label\\"><span>0</span></div>
       </div>
     </div>
@@ -562,6 +646,7 @@ exports[`test form with switch 1`] = `
         <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
@@ -580,6 +665,7 @@ exports[`test form with switch 2`] = `
         <div class=\\"var-switch__handle var-elevation--2 var-switch__handle--error\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
@@ -609,6 +695,7 @@ exports[`test form with switch 3`] = `
         <div class=\\"var-switch__handle var-elevation--2\\">
           <!--v-if-->
         </div>
+        <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
     <transition-stub>
@@ -622,7 +709,9 @@ exports[`test form with uploader 1`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2 var-uploader--disabled\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -643,7 +732,9 @@ exports[`test form with uploader 2`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->
@@ -664,7 +755,9 @@ exports[`test form with uploader 3`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <div class=\\"var-form-details\\">
@@ -696,7 +789,9 @@ exports[`test form with uploader 4`] = `
 "<div class=\\"var-form\\">
   <div class=\\"var-uploader var--box\\">
     <div class=\\"var-uploader__file-list\\">
-      <div class=\\"var-uploader__action var-elevation--2\\"><input class=\\"var-uploader__action-input\\" type=\\"file\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition: transform 0ms;\\" var-uploader-cover=\\"\\"></i></div>
+      <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\" disabled=\\"\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i>
+        <div class=\\"var-hover-overlay\\"></div>
+      </div>
     </div>
     <transition-stub>
       <!--v-if-->

@@ -78,16 +78,33 @@ describe('test icon component props', () => {
     })
 
     expect(wrapper.find('.var-icon-check').exists()).toBeTruthy()
-    expect(wrapper.element.style.transition).toEqual('transform 0ms')
+    expect(wrapper.element.style['transition-duration']).toEqual('0ms')
 
     await wrapper.setProps({
       transition: 300,
       name: 'error',
     })
+
+    await delay(150)
+    expect(wrapper.find('i').classes()).toContain('var-icon--shrinking')
     await delay(400)
 
     expect(wrapper.find('.var-icon-error').exists()).toBeTruthy()
-    expect(wrapper.element.style.transition).toEqual('transform 300ms')
+    expect(wrapper.element.style['transition-duration']).toEqual('300ms')
+
+    await wrapper.setProps({
+      animationClass: 'fade',
+      transition: 300,
+      name: 'check',
+    })
+
+    await delay(150)
+    expect(wrapper.find('i').classes()).toContain('fade')
+    await delay(400)
+
+    expect(wrapper.find('.var-icon-check').exists()).toBeTruthy()
+    expect(wrapper.element.style['transition-duration']).toEqual('300ms')
+
     wrapper.unmount()
   })
 })

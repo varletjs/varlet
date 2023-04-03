@@ -1,17 +1,55 @@
 {
   "name": "varlet-vscode-extension",
   "private": true,
+  "main": "./dist/extension.js",
+  "icon": "src/assets/icon.png",
   "displayName": "varlet-vscode-extension",
-  "icon": "src/icon.png",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
-  "version": "2.5.5",
+  "version": "2.9.4",
   "engines": {
     "vscode": "^1.56.0"
   },
   "categories": [
     "Other"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "varlet.open-playground",
+        "title": "Varlet: Open Varlet UI Playground"
+      },
+      {
+        "command": "varlet.open-playground-and-wrap-template-tag",
+        "title": "Varlet: Open Varlet UI Playground And Wrap Template Tag"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "varlet.open-playground",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "varlet.open-playground-and-wrap-template-tag",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Varlet Extension Configuration",
+      "properties": {
+        "varlet.useChineseLanguage": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use chinese language"
+        }
+      }
+    }
+  },
   "activationEvents": [
     "onLanguage:vue",
     "onLanguage:javascript",
@@ -19,7 +57,6 @@
     "onLanguage:javascriptreact",
     "onLanguage:typescriptreact"
   ],
-  "main": "./dist/extension.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/varletjs/varlet.git"
@@ -28,21 +65,20 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "build": "vsce package",
-    "publish": "pnpm compile & pnpm build & vsce publish"
+    "dev": "varlet-cli dev:extension",
+    "build": "varlet-cli build:extension",
+    "release": "pnpm build && vsce package --no-dependencies && vsce publish --no-dependencies"
+  },
+  "dependencies": {
+    "@varlet/shared": "workspace:*",
+    "@varlet/icons": "workspace:*",
+    "@varlet/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.3",
+    "@varlet/cli": "workspace:*",
+    "@vscode/vsce": "^2.17.0",
     "@types/node": "14.x",
     "@types/vscode": "^1.56.0",
-    "glob": "^7.1.6",
-    "ts-loader": "^8.0.14",
-    "typescript": "^4.1.3",
-    "vsce": "^2.13.0",
-    "webpack": "^5.23.0",
-    "webpack-cli": "^4.4.0"
+    "typescript": "^4.4.4"
   }
 }

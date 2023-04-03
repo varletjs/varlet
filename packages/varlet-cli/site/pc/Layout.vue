@@ -87,6 +87,7 @@ watch(
     componentName.value = getComponentNameByMenuName(_menuName)
     menuName.value = _menuName
     language.value = lang
+    useMobile.value = menu.value.find(item => item.doc === _menuName)?.useMobile ?? get(config, 'useMobile')
     document.title = get(config, 'pc.title')[lang] as string
   },
   { immediate: true }
@@ -417,6 +418,11 @@ iframe {
           font-size: 13px;
           @doc-active();
         }
+      }
+
+      strong {
+        font-size: 12px;
+        font-weight: normal;
       }
 
       .card {

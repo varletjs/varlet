@@ -1,17 +1,18 @@
 {
   "private": true,
-  "version": "2.5.5",
+  "version": "2.9.4",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "lint": "varlet-cli lint",
     "changelog": "varlet-cli changelog",
-    "release": "node scripts/publish.mjs && varlet-cli release"
+    "release": "node scripts/release.mjs",
+    "release:extension": "pnpm --dir ./packages/varlet-vscode-extension release"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1 && pnpm exec varlet-cli checklist $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -26,6 +27,7 @@
       "packages/varlet-cli/template/**",
       "packages/varlet-cli/client.js",
       "packages/varlet-cli/client.d.ts",
+      "packages/varlet-vite-plugins/lib/**",
       "packages/varlet-vscode-extension/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",
@@ -40,7 +42,7 @@
       "packages/varlet-ui-playground/public/**",
       "packages/varlet-ui-playground/site/**",
       "packages/varlet-shared/lib/**",
-      "packages/varlet-shared/es/**"
+      "packages/varlet-use/lib/**"
     ],
     "extends": [
       "@varlet"
@@ -56,6 +58,7 @@
       "packages/varlet-cli/template/**",
       "packages/varlet-cli/client.js",
       "packages/varlet-cli/client.d.ts",
+      "packages/varlet-vite-plugins/lib/**",
       "packages/varlet-icons/dist/**",
       "packages/varlet-ui/lib/**",
       "packages/varlet-ui/es/**",
@@ -77,7 +80,7 @@
     "eslint": "^7.30.0",
     "execa": "^5.0.0",
     "lint-staged": "^10.5.0",
-    "ora": "^5.4.0",
+    "nanospinner": "^1.1.0",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",

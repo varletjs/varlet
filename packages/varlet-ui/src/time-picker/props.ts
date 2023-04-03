@@ -28,7 +28,7 @@ export const props = {
     type: String,
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, Number, String],
     default: false,
   },
   color: {

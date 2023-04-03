@@ -7,7 +7,7 @@
           n('item'),
           n('prev'),
           [current <= 1 || disabled, n('item--disabled')],
-          [simple, n('item--simple'), n('$-elevation--2')]
+          [simple, n('item--simple'), formatElevation(elevation, 2)]
         )
       "
       @click="clickItem('prev')"
@@ -38,7 +38,7 @@
       :class="
         classes(
           n('item'),
-          n('$-elevation--2'),
+          formatElevation(elevation, 2),
           [item === current && !disabled, n('item--active')],
           [isHideEllipsis(item, index), n('item--hide')],
           [disabled, n('item--disabled')],
@@ -56,7 +56,7 @@
           n('item'),
           n('next'),
           [current >= pageCount || disabled, n('item--disabled')],
-          [simple, n('item--simple'), n('$-elevation--2')]
+          [simple, n('item--simple'), formatElevation(elevation, 2)]
         )
       "
       @click="clickItem('next')"
@@ -110,12 +110,12 @@ import VarIcon from '../icon'
 import VarCell from '../cell'
 import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './porps'
+import { props } from './props'
 import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
 import type { ComputedRef, Ref } from 'vue'
-import type { Range } from './porps'
-import { call, createNamespace } from '../utils/components'
+import type { Range } from './props'
+import { call, createNamespace, formatElevation } from '../utils/components'
 
 const { n, classes } = createNamespace('pagination')
 
@@ -219,21 +219,16 @@ export default defineComponent({
     })
 
     watch(
-      [current, size],
-      ([newCurrent, newSize], [oldCurrent, oldSize]) => {
-        if (newCurrent > pageCount.value) {
-          current.value = pageCount.value
-          return
-        }
-
+      [current, size, pageCount],
+      ([newCurrent, newSize, newCount], [oldCurrent, oldSize]) => {
         let list = []
         const { maxPagerCount, total, onChange } = props
         const oldCount = Math.ceil(toNumber(total) / toNumber(oldSize))
-        const rEllipseSign = pageCount.value - (maxPagerCount - activePosition.value) - 1
+        const rEllipseSign = newCount - (maxPagerCount - activePosition.value) - 1
         simpleValue.value = `${newCurrent}`
 
-        if (pageCount.value - 2 > maxPagerCount) {
-          if (oldCurrent === undefined || pageCount.value !== oldCount) {
+        if (newCount - 2 > maxPagerCount) {
+          if (oldCurrent === undefined || newCount !== oldCount) {
             for (let i = 2; i < maxPagerCount + 2; i++) list.push(i)
           }
 
@@ -265,21 +260,21 @@ export default defineComponent({
             list = []
 
             for (let i = 1; i < maxPagerCount + 1; i++) {
-              list.push(pageCount.value - (maxPagerCount - i) - 1)
+              list.push(newCount - (maxPagerCount - i) - 1)
             }
 
             isHideEllipsisHead.value = false
             isHideEllipsisTail.value = true
           }
 
-          list = [1, '...', ...list, '...', pageCount.value]
+          list = [1, '...', ...list, '...', newCount]
         } else {
-          for (let i = 1; i <= pageCount.value; i++) list.push(i)
+          for (let i = 1; i <= newCount; i++) list.push(i)
         }
 
         pageList.value = list
 
-        if (oldCurrent !== undefined && pageCount.value > 0) {
+        if (oldCurrent !== undefined && newCount > 0) {
           call(onChange, newCurrent, newSize)
         }
 
@@ -310,6 +305,7 @@ export default defineComponent({
       clickSize,
       setPage,
       toNumber,
+      formatElevation,
     }
   },
 })

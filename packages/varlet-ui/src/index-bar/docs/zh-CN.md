@@ -14,7 +14,7 @@ import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
-const change = (value) => {
+function change(value) {
   console.log(value)
 }
 
@@ -28,10 +28,10 @@ onMounted(() => {
 <template>
   <var-index-bar duration="300" @change="change">
     <div v-for="item in list" :key="item">
-      <var-index-anchor :index="item" class="var-index-anchor__example">
+      <var-index-anchor :index="item" class="anchor">
         标题 {{ item }}
       </var-index-anchor>
-      <var-cell>{{ item }} 文本</var-cell>
+
       <var-cell>{{ item }} 文本</var-cell>
       <var-cell>{{ item }} 文本</var-cell>
     </div>
@@ -39,14 +39,14 @@ onMounted(() => {
 </template>
 
 <style>
-.var-index-anchor__example {
+.anchor {
   height: 42px;
   display: flex;
   align-items: center;
   padding: 0 12px;
   transition: all 0.25s;
-  background: #e7edf7;
-  color: #2e67ba;
+  background: var(--color-primary);
+  color: #fff;
 }
 </style>
 ```
@@ -57,15 +57,15 @@ onMounted(() => {
 
 #### IndexBar Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | --------- |
-| `sticky` | 是否开启锚点吸顶 | _boolean_ | `true` |
+| 参数                  | 说明 | 类型 | 默认值 |
+|---------------------| -------------- | -------- | --------- |
+| `sticky`            | 是否开启锚点吸顶 | _boolean_ | `true` |
 | `sticky-offset-top` | 锚点吸顶时与顶部的距离 | _number \| string_ | `0` |
-| `hide-list` | 是否隐藏锚点列表 | _boolean_ | `false` |
-| `css-mode` | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
-| `z-index` | z-index 层级 | _number \| string_ | `1` |
-| `highlight-color` | 索引字符高亮颜色 | _string_ | `#ee0a24` |
-| `duration` | 动画持续时间 | _string \| number_ | `0` |
+| `hide-list`         | 是否隐藏锚点列表 | _boolean_ | `false` |
+| `sticky-css-mode`   | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
+| `z-index`           | z-index 层级 | _number \| string_ | `1` |
+| `highlight-color`   | 索引字符高亮颜色 | _string_ | `#ee0a24` |
+| `duration`          | 动画持续时间 | _string \| number_ | `0` |
 
 #### IndexAnchor Props
 
@@ -99,9 +99,16 @@ onMounted(() => {
 ### 方法
 通过 ref 可以获取到 IndexBar 实例并调用实例方法
 
-| 方法名 | 说明 | 参数 | 返回值 |
+| 方法名 | 说明 | 参数 | 返回值                                 |
+| --- | --- | --- |-------------------------------------|
+| `scrollTo` | 滚动到指定锚点	 | `index: number \| string, options?: IndexBarScrollToOptions` | `-` |
+
+#### IndexBarScrollToOptions
+
+| 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `scrollTo` | 滚动到指定锚点	 | `index: number \| string` | `-` |
+| `event` | 值为 `false` 时阻止触发 `change` 事件 | _boolean_ | `-` |
+
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

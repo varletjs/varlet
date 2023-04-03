@@ -2,23 +2,28 @@
   <div :class="n('wrap')">
     <div :class="n()">
       <div
-        :key="val"
-        v-for="val in toNumber(count)"
+        v-for="value in toNumber(count)"
+        :key="value"
+        :style="getStyle(value)"
+        :class="getClass(value)"
+        @click="handleClick(value, $event)"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
-        :style="getStyle(val)"
-        :class="getClass(val)"
-        @click="handleClick(val, $event)"
+        v-hover:desktop="createHoverHandler(value)"
       >
         <var-icon
           :class="n('content-icon')"
           var-rate-cover
           :transition="0"
           :namespace="namespace"
-          :name="getCurrentState(val).name"
+          :name="getCurrentState(value).name"
           :style="{ fontSize: toSizeUnit(size) }"
-        />
+        >
+        </var-icon>
+
+        <var-hover-overlay :hovering="hovering && value === currentHoveringValue && !disabled && !formDisabled" />
       </div>
     </div>
+
     <var-form-details :error-message="errorMessage" />
   </div>
 </template>
@@ -27,13 +32,15 @@
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import { defineComponent, nextTick } from 'vue'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
+import { defineComponent, nextTick, ref } from 'vue'
 import { useForm } from '../form/provide'
 import { useValidation, call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
-import type { RateProvider } from './provide'
+import { type RateProvider } from './provide'
 
 const { n } = createNamespace('rate')
 
@@ -42,12 +49,15 @@ export default defineComponent({
   components: {
     VarIcon,
     VarFormDetails,
+    VarHoverOverlay,
   },
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   props,
   setup(props) {
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
+    const { hovering } = useHoverOverlay()
+    const currentHoveringValue = ref<number>(-1)
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -112,6 +122,13 @@ export default defineComponent({
       validateWithTrigger()
     }
 
+    const createHoverHandler = (value: number) => {
+      return (isHover: boolean) => {
+        currentHoveringValue.value = value
+        hovering.value = isHover
+      }
+    }
+
     const reset = () => {
       call(props['onUpdate:modelValue'], 0)
       resetValidation()
@@ -133,6 +150,9 @@ export default defineComponent({
       getClass,
       getCurrentState,
       handleClick,
+      hovering,
+      currentHoveringValue,
+      createHoverHandler,
       reset,
       validate,
       resetValidation,
@@ -149,5 +169,6 @@ export default defineComponent({
 @import '../ripple/ripple';
 @import '../icon/icon';
 @import '../form-details/formDetails';
+@import '../hover-overlay/hoverOverlay';
 @import './rate';
 </style>

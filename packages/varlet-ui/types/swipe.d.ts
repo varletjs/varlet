@@ -1,6 +1,12 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const swipeProps: Record<string, any>
+
+export interface SwipeToOptions {
+  event?: boolean
+}
+
 export interface SwipeProps extends BasicAttributes {
   loop?: boolean
   autoplay?: string | number
@@ -28,11 +34,11 @@ export class Swipe extends VarComponent {
 
   resize(): void
 
-  prev(): void
+  prev(options?: SwipeToOptions): void
 
-  next(): void
+  next(options?: SwipeToOptions): void
 
-  to(index: number): void
+  to(index: number, options?: SwipeToOptions): void
 }
 
 export class _SwipeComponent extends Swipe {}

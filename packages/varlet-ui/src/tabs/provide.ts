@@ -1,6 +1,6 @@
+import { useChildren } from '@varlet/use'
 import type { ComputedRef } from 'vue'
 import type { TabProvider } from '../tab/provide'
-import { useAtChildrenCounter, useChildren } from '../utils/components'
 
 export interface TabsProvider {
   active: ComputedRef<number | string>
@@ -13,11 +13,9 @@ export interface TabsProvider {
 }
 
 export const TABS_BIND_TAB_KEY = Symbol('TABS_BIND_TAB_KEY')
-export const TABS_COUNT_TAB_KEY = Symbol('TABS_COUNT_TAB_KEY')
 
 export function useTabList() {
-  const { childProviders, bindChildren } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
-  const { length } = useAtChildrenCounter(TABS_COUNT_TAB_KEY)
+  const { childProviders, bindChildren, length } = useChildren<TabsProvider, TabProvider>(TABS_BIND_TAB_KEY)
 
   return {
     length,

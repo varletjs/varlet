@@ -13,18 +13,22 @@ import { LoadingBar } from '@varlet/ui'
 
 const hasCustomStyle = ref(false)
 
-const setStyle = () => {
-  LoadingBar.mergeConfig({
-    errorColor: hasCustomStyle.value ? undefined : '#ff8800',
-    color: hasCustomStyle.value ? undefined : '#10afef',
-    height: hasCustomStyle.value ? undefined : '5px'
-  })
+function setStyle() {
+  if (hasCustomStyle.value) {
+    LoadingBar.resetDefaultOptions()
+  } else {
+    LoadingBar.setDefaultOptions({
+      errorColor: '#ff8800',
+      color: '#10afef',
+      height: '5px',
+    })
+  }
 
   hasCustomStyle.value = !hasCustomStyle.value
 }
 
 // mobile only
-// LoadingBar.mergeConfig({
+// LoadingBar.setDefaultOptions({
 //   top: '48px'
 // })
 </script>
@@ -47,10 +51,11 @@ const setStyle = () => {
 
 | Method | Description | Arguments | Return |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | Merge config of loading bar | _options: Options_ | `-`  |
 | `LoadingBar.start`  | Start loading  | `-` | `-` |
 | `LoadingBar.finish` | Finish loading  | `-` | `-` |
 | `LoadingBar.error`  | Loading error  | `-` | `-` |
+| `LoadingBar.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `LoadingBar.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### LoadingBar Options
 

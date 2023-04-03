@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const uploaderProps: Record<string, any>
+
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'
@@ -31,6 +33,7 @@ export interface UploaderProps extends BasicAttributes {
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean
+  elevation?: boolean | string | number
   removable?: boolean
   maxlength?: string | number
   maxsize?: string | number
@@ -65,6 +68,10 @@ export class Uploader extends VarComponent {
   resetValidation(): void
 
   reset(): void
+
+  chooseFile(): void
+
+  closePreview(): void
 }
 
 export class _UploaderComponent extends Uploader {}

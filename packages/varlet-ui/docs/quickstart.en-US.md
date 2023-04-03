@@ -12,7 +12,7 @@ Here are the most basic ways to access component libraries in common development
 ```html
 <!-- playground-ignore -->
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
@@ -43,7 +43,7 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
@@ -54,3 +54,12 @@ We provide a web version of the component editor,
 which is convenient for you to quickly get started with each component of the component library,
 edit it online, share it with others, or download the code package to run locally.
 You can click the `{...}` icon in the upper right corner of the page or [go here](https://varlet.gitee.io/varlet-ui-playground).
+
+### File path note
+
+In `@varlet/ui@2.7.0` and later versions, we recommend using the following file import method with omitting the suffix to be compatible with `js` and `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
+```

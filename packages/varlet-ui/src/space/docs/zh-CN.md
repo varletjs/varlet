@@ -47,7 +47,7 @@
 
 ```html
 <template>
-  <var-space justify="end">
+  <var-space justify="flex-end">
     <var-button>Button1</var-button>
     <var-button>Button2</var-button>
   </var-space>
@@ -94,11 +94,11 @@
 
 | 参数          | 说明                                                                | 类型       | 默认值     |
 |-------------|-------------------------------------------------------------------|----------|---------|
-| `align`     | 垂直排列方式 可选值为 `stretch` `center` `start` `end` `baseline`           | _string_ | `-`     |
-| `justify`   | 水平排列方式 可选值为 `start` `end` `center` `space-around` `space-between` | _string_ | `start` |
+| `direction` | 布局方向 可选值为 `row` `column`                                          | _string_ | `row`   |
+| `justify`   | 主轴排列方式 可选值为 `flex-start` `flex-end` `center` `space-around` `space-between` | _string_ | `flex-start` |
+| `align`     | 交叉轴排列方式 可选值为 `stretch` `center` `flex-start` `flex-end` `baseline`           | _string_ | `-`     |
 | `size`      | 间距，可选值为 `mini` `small` `normal` `large` 或 `[垂直间距, 水平间距]` (支持长度单位) | _string \| number \| [string \| number, string \| number]_ |`normal`|
 | `wrap`      | 是否超出换行                                                            | _boolean_ | `true`  |
-| `direction` | 布局方向 可选值为 `row` `column`                                          | _string_ | `row`   |
 | `inline`    | 是否为行内元素                                                           | _boolean_ | `false` |
 
 ### 插槽

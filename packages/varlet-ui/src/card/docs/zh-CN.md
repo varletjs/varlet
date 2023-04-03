@@ -128,7 +128,7 @@ const floating = ref(false)
       <var-button text type="warning">操作 2</var-button>
     </template>
 
-    <template #content>
+    <template #floating-content>
       <var-divider dashed />
       
       <div class="card-example-text">
@@ -151,23 +151,28 @@ const floating = ref(false)
 
 ### 属性
 
-| 参数                  | 说明                                                     | 类型        | 默认值      |
-|---------------------|--------------------------------------------------------|-----------|----------|
-| `title`             | 卡片标题                                                   | _string_  | `-`      |
-| `subtitle`          | 卡片副标题                                                  | _string_  | `-`      |
-| `description`       | 卡片描述                                                   | _string_  | `-`      |
-| `elevation`         | 卡片阴影程度等级                                               | _string \ | number_  | `2`     |
-| `src`               | 图片地址                                                   | _string_  | `-`      |
-| `layout`            | 排列方式，可选值为 `row` `column`                               | _string_  | `column` |
-| `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_  | `cover`  |
+| 参数                  | 说明                                                     | 类型       | 默认值      |
+|---------------------|--------------------------------------------------------|----------|----------|
+| `title`             | 卡片标题                                                   | _string_ | `-`      |
+| `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
+| `description`       | 卡片描述                                                   | _string_ | `-`      |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
+| `src`               | 图片地址                                                   | _string_ | `-`      |
+| `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
+| `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
-| `alt`               | 替代文本                                                   | _string_  | `-`      |
-| `image-height`      | 图片高度                                                   | _string \ | number_  | `-`     |
-| `image-width`       | 图片宽度                                                   | _string \ | number_  | `-`     |
+| `alt`               | 替代文本                                                   | _string_ | `-`      |
+| `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
+| `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
 | `floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
-| `floating-duration` | 开关全屏所需时间（ms）                                           | _number_  | `250`    |
+| `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
 
+### 事件
+
+| 事件名  | 说明           | 参数           |
+| ------- | -------------- | -------------- |
+| `click` | 点击卡片时触发 | `event: Event` |
 
 ### 插槽
 
@@ -180,13 +185,6 @@ const floating = ref(false)
 | `floating-content`     | 漂浮时显示的正文内容 | `-`  |
 | `extra`       | 自定义底部内容 | `-`  |
 | `close-button` | 自定义关闭   | `-`  |
-
-
-### 事件
-
-| 事件名  | 说明           | 参数           |
-| ------- | -------------- | -------------- |
-| `click` | 点击卡片时触发 | `event: Event` |
 
 ### 样式变量
 

@@ -1,0 +1,17 @@
+export default {
+  type: '主题色按钮',
+  trigger: '触发方式',
+  direction: '动作菜单弹出方向',
+  position: '触发器位置',
+  default: '默认',
+  primary: '主要',
+  info: '信息',
+  success: '成功',
+  warning: '警告',
+  danger: '危险',
+  disabled: '禁用',
+  elevation: '海拔效果',
+  triggerToggle: '触发器显示/隐藏',
+  actionsToggle: '动作菜单展开/收起',
+  toggle: '切换',
+}

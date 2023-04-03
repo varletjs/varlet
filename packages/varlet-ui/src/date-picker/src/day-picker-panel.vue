@@ -21,6 +21,7 @@
                 var-day-picker-cover
                 round
                 :ripple="false"
+                :elevation="componentProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(day),
                 }"
@@ -42,11 +43,12 @@ import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
-import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
+import { defineComponent, ref, computed, watch, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
+import { useMounted } from '@varlet/use'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
@@ -269,7 +271,7 @@ export default defineComponent({
       headerEl.value!.checkDate(checkType)
     }
 
-    onMounted(() => {
+    useMounted(() => {
       initDate()
       initHeader()
     })

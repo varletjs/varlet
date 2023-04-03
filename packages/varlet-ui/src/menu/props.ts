@@ -45,6 +45,9 @@ export const props = {
     default: 'click',
     validator: triggerValidator,
   },
+  reference: {
+    type: String,
+  },
   placement: {
     type: String as PropType<Placement>,
     default: 'cover-top-start',
@@ -65,6 +68,10 @@ export const props = {
   sameWidth: {
     type: Boolean,
     default: false,
+  },
+  elevation: {
+    type: [Boolean, String, Number],
+    default: true,
   },
   defaultStyle: {
     type: Boolean,

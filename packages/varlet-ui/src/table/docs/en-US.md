@@ -37,10 +37,12 @@ A minimal table, when you need to display some data in the form of a table, you 
 You can insert something in the tail slot, the most common is to insert a `Pagination`.
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 
-const gen = (current, size) => {
+const list = ref(gen(1, 10))
+
+function gen(current, size) {
   return Array.from({ length: size }).map((_, index) => {
     const id = (current - 1) * size + index + 1
 
@@ -51,9 +53,8 @@ const gen = (current, size) => {
     }
   })
 }
-const list = ref(gen(1, 10))
 
-const get = (current, size) => {
+function get(current, size) {
   list.value = gen(current, size)
 }
 </script>
@@ -108,6 +109,7 @@ const get = (current, size) => {
 | Prop         | Description | Type | Default |
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Slots
 

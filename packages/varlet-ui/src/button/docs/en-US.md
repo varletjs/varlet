@@ -142,30 +142,175 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+
+### Theme Color Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button type="primary">Button</var-button>
+      <var-button type="primary">Button</var-button>
+      <var-button type="primary">Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Button Group Size
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" size="normal">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" size="large">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Split Button
+
+```html
+<template>
+  <var-menu placement="bottom" same-width :offset-y="6">
+    <var-button-group type="primary">
+      <var-button @click.stop>Split Button</var-button>
+      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+        <var-icon name="menu-down" :size="24" />
+      </var-button>
+    </var-button-group>
+
+    <template #menu>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+      <var-cell ripple>Split Button</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### Button Group Mode
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### Custom Button Group Color
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>Button</var-button>
+    <var-button>Button</var-button>
+    <var-button>Button</var-button>
+  </var-button-group>
+</template>
+```
+
+### Vertical Button Group
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+    
+    <var-button-group type="primary" vertical>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+      <var-button>Button</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
 
-| Prop             | Description                                                                        | Type      | Default        |
-|------------------|------------------------------------------------------------------------------------|-----------|----------------|
-| `type`           | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `size`           | Button size, Can be set to `normal` `mini` `small` `large`                         | _string_  | `normal`       |
-| `loading`        | Loading status                                                                     | _boolean_ | `false`        |
-| `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                      | _string  \| number_        | `-`      |
-| `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`              | _string_  | `circle`       |
-| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                        | _string_  | `normal`       |
-| `loading-color`  | Loading color                                                                      | _string_  | `currentColor` |
-| `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                              | _boolean_ | `false`        |
-| `round`          | Whether to be round button                                                         | _boolean_ | `false`        |
-| `block`          | Whether to be block button                                                         | _boolean_ | `false`        |
-| `text`           | Whether to be text button                                                          | _boolean_ | `false`        |
-| `outline`        | Whether to be outline button                                                       | _boolean_ | `false`        |
-| `disabled`       | Whether to disable button                                                          | _boolean_ | `false`        |
-| `ripple`         | Whether to be ripple button                                                        | _boolean_ | `true`         |
-| `text-color`     | Button Text color                                                                  | _string_  | `-`            |
-| `color`          | Button background color                                                            | _string_  | `-`            |
+#### Button Props
+
+| Prop             | Description                                                                             | Type      | Default        |
+|------------------|-----------------------------------------------------------------------------------------|-----------|----------------|
+| `type`           | Button type, Can be set to `default` `primary` `info` `success` `warning` `danger`      | _string_  | `default`      |
+| `native-type`    | Native button type, Can be set to `button` `submit` `reset` | _string_  | `button`       |
+| `size`           | Button size, Can be set to `normal` `mini` `small` `large`                              | _string_  | `normal`       |
+| `loading`        | Loading status                                                                          | _boolean_ | `false`        |
+| `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                           | _string  \| number_        | `-`      |
+| `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`                   | _string_  | `circle`       |
+| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                             | _string_  | `normal`       |
+| `loading-color`  | Loading color                                                                           | _string_  | `currentColor` |
+| `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                                   | _boolean_ | `false`        |
+| `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
+| `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
+| `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
+| `outline`        | Whether to be outline button                                                            | _boolean_ | `false`        |
+| `disabled`       | Whether to disable button                                                               | _boolean_ | `false`        |
+| `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
+| `text-color`     | Button Text color                                                                       | _string_  | `-`            |
+| `color`          | Button background color                                                                 | _string_  | `-`            |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+
+
+#### ButtonGroup Props
+
+| Prop             | Description                                                                             | Type      | Default        |
+|--------------|------------------------------------------------------------------------------------------|----------|-----------|
+| `type`       | Button Group type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size`       | Button Group size, Can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
+| `mode`       | Button Group mode, Can be set to `normal` `text` `outline`                               | _string_ | `normal`  |
+| `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
+| `elevation` | Elevation of Button Group, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `color`      | Button Group background color                                                            | _string_ | `-`       |
+| `text-color`     | Button Group Text color                                                                  | _string_  | `-`            |
 
 ### Events
+
+#### Button Events
 
 | Event        | Description                                                                                          | Arguments      |
 | ------------ | ---------------------------------------------------------------------------------------------------- | -------------- |
@@ -174,13 +319,23 @@ function handleAutoLoadingClick() {
 
 ### Slots
 
+#### Button Slots
+
 | Name | Description | SlotProps |
 | --------- | -------------- | --------- |
 | `default` | Button content | `-`       |
 
+#### ButtonGroup Slots
+
+| Name | Description | SlotProps |
+| --------- | -------------- | --------- |
+| `default` | Button group content | `-`       |
+
 ### Style Variables
 
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+#### Button Variables
 
 | Variable                       | Default                      |
 | ------------------------------ | ---------------------------- |

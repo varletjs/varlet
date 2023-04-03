@@ -1,15 +1,9 @@
 {
   "name": "@varlet/shared",
-  "version": "2.5.5",
+  "version": "2.9.4",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./lib/index.js"
-    }
-  },
   "description": "shared utils of varlet",
   "keywords": [
     "shared",

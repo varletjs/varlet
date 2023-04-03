@@ -1,4 +1,4 @@
-# Components Library Tools(@varlet/cli)
+# Components Library Tools
 
 ### Intro
 
@@ -13,6 +13,8 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 📦 &nbsp;Out-of-the-box code inspection tool
 - 📦 &nbsp;Out-of-the-box unit testing tools
 - 📦 &nbsp;Out-of-the-box code publishing tool, publishes to both `npm` and `github`, and automatically generates changelogs
+- 💪 &nbsp;Support for `VSCode` extension development
+- 💪 &nbsp;Support `build svg to web fonts`
 - 💪 &nbsp;Support for `Typescript`
 - 💪 &nbsp;Support `Dark Mode`
 - 🌍 &nbsp;Support `Internationalization`
@@ -53,14 +55,25 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `analysis` | Document statistics related | _{ baidu: string }_ | `-` |
 | `pc` | PC-side document structure configuration | _Record<string, any>_ | `-` |
 | `mobile` | Mobile side document structure configuration | _Record<string, any>_ | `-` |
-| `moduleCompatible` | Module Compatible Configurations | _Record<string, string>_ | `-` |
+| `directives` | Directive folder names | _string[]_ | `[]` |
+| `copy` | Copy file options | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
+| `icons` | Font icon packaging related configuration | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
+
+#### Menu
+
+| 参数 | 说明 | 类型 | 默认值 |
+| -- | -------------- | -------- | ---------- |
+| `doc` | The document page corresponds to the matching file name, required | _string_ | `-` |
+| `type` | The type of menu, when the type is `1`, it means the category menu, when the type is `2`, the doc field matches the component file under src, when the type is `3`, the doc field matches the md file under docs, required | _MenuTypes_ | `-` |
+| `text` | The text displayed in the menu, English display text can be configured when internationalization is set, required | _Record<string, string>_ | `-` |
+| `useMobile` | Whether to display the mobile phone preview on the right side on the current document page, if not filled, the default value is useMobile in config  | _boolean_ | `-` |
 
 ### Custom pages
 
 If you want to insert other pages into the component library, you can create a `pages` folder in the project root directory to write a vue component to generate other pages.
 The directory structure is as follows:
 
-```js
+```text
 // playground-ignore
 |-- varlet-ui
   |-- src
@@ -120,6 +133,27 @@ varlet-cli preview
 varlet-cli compile
 ```
 
+#### Run VSCode extension development environment
+
+```shell
+# playground-ignore
+varlet-cli dev:extension
+```
+
+#### Build VSCode extension for production
+
+```shell
+# playground-ignore
+varlet-cli build:extension
+```
+
+#### Build svg to web fonts
+
+```shell
+# playground-ignore
+varlet-cli build:icons
+```
+
 #### Execute all unit tests
 
 ```shell
@@ -148,6 +182,13 @@ varlet-cli lint
 ```shell
 # playground-ignore
 varlet-cli commit-lint
+```
+
+#### Show checklist
+
+```shell
+# playground-ignore
+varlet-cli checklist
 ```
 
 #### Generate changelog
@@ -210,33 +251,3 @@ varlet-cli create
 
 - 1.`npm` repository registry must set to `npm` official mirror
 - 2.Execute `npm login` to log in
-
-### Module Compatible
-
-Some external dependencies may need to be compatible with module syntax to achieve the purpose of compiling correctly to `commonjs` and `esmodule`. For example, the wording of `esmodule` of `dayjs` is:
-
-```js
-// playground-ignore
-import dayjs from 'dayjs/esm'
-```
-
-In order to build `commonjs`, the writing method is:
-
-```js
-// playground-ignore
-import * as dayjs from 'dayjs'
-```
-
-In the project, we embrace the first way of writing the `esmodule` module, and make the following configuration for adaptation:
-
-```js
-// playground-ignore
-// varlet.config.mjs
-import { defineConfig } from '@varlet/cli'
-
-export default defineConfig({
-  moduleCompatible: {
-    "import dayjs from 'dayjs/esm'\n": "import * as dayjs from 'dayjs'\n"
-  }
-})
-```

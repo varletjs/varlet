@@ -21,13 +21,13 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --ignore-scripts && node scripts/bootstrap.mjs
+        run: pnpm install --no-frozen-lockfile && node scripts/bootstrap.mjs
 
       - name: Run linter
         run: pnpm lint
 
       - name: Run test cases
-        run: cd packages/varlet-ui && pnpm test
+        run: pnpm --dir ./packages/varlet-ui test
 
       - name: Report coverage to Codecov
         uses: codecov/codecov-action@v1

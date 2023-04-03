@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const countdownProps: Record<string, any>
+
 export interface CountdownTimeData {
   days: number
   hours: number

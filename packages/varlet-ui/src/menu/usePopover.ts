@@ -1,12 +1,13 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
-import { Instance, Modifier } from '@popperjs/core/lib/types'
+import { useClickOutside, useVModel } from '@varlet/use'
 import { doubleRaf, toPxNum } from '../utils/elements'
 import { call } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
-import type { Placement as PopperPlacement } from '@popperjs/core'
+import { type Instance, type Modifier } from '@popperjs/core/lib/types'
+import { type Placement as PopperPlacement } from '@popperjs/core'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -39,6 +40,7 @@ export interface UsePopoverOptions {
   disabled: boolean
   offsetX: string | number
   offsetY: string | number
+  reference?: string
   onOpen?(): void
   onClose?(): void
   'onUpdate:show'?(show: boolean): void
@@ -47,12 +49,22 @@ export interface UsePopoverOptions {
 export function usePopover(options: UsePopoverOptions) {
   const host: Ref<null | HTMLElement> = ref(null)
   const popover: Ref<null | HTMLElement> = ref(null)
-  const show: Ref<boolean> = ref(false)
   const hostSize: Ref<HostSize> = ref({ width: 0, height: 0 })
+  const show = useVModel(options, 'show', {
+    passive: true,
+    defaultValue: false,
+    emit(event, value) {
+      if (value) {
+        resize()
+        call(options.onOpen)
+      } else {
+        call(options.onClose)
+      }
+    },
+  })
   const { zIndex } = useZIndex(() => show.value, 1)
 
   let popoverInstance: Instance | null = null
-  let clickSelf = false
   let enterPopover = false
   let enterHost = false
 
@@ -117,17 +129,19 @@ export function usePopover(options: UsePopoverOptions) {
 
   const handleHostClick = () => {
     open()
-    clickSelf = true
   }
 
   const handlePopoverClose = () => {
-    if (clickSelf) {
-      clickSelf = false
+    show.value = false
+    call(options['onUpdate:show'], false)
+  }
+
+  const handleClickOutside = () => {
+    if (options.trigger !== 'click') {
       return
     }
 
-    show.value = false
-    call(options['onUpdate:show'], false)
+    handlePopoverClose()
   }
 
   const getPosition = (): Position => {
@@ -277,52 +291,19 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
-  watch(
-    () => options.show,
-    (newValue) => {
-      show.value = newValue ?? false
-    },
-    { immediate: true }
-  )
+  useClickOutside(host, 'click', handleClickOutside)
 
   watch(() => options.offsetX, resize)
   watch(() => options.offsetY, resize)
   watch(() => options.placement, resize)
-
-  watch(
-    () => show.value,
-    (newValue) => {
-      if (newValue) {
-        resize()
-        call(options.onOpen)
-      } else {
-        call(options.onClose)
-      }
-    }
-  )
-
-  watch(
-    () => options.trigger,
-    (newValue) => {
-      if (newValue === 'click') {
-        document.addEventListener('click', handlePopoverClose)
-      } else {
-        document.removeEventListener('click', handlePopoverClose)
-      }
-    }
-  )
-
   watch(() => options.disabled, close)
 
   onMounted(() => {
-    popoverInstance = createPopper(host.value!, popover.value!, getPopperOptions())
+    const reference = options.reference ? host.value?.querySelector(options.reference) : host.value
 
-    if (options.trigger === 'click') {
-      document.addEventListener('click', handlePopoverClose)
-    }
+    popoverInstance = createPopper(reference ?? host.value!, popover.value!, getPopperOptions())
   })
   onUnmounted(() => {
-    document.removeEventListener('click', handlePopoverClose)
     popoverInstance!.destroy()
   })
 

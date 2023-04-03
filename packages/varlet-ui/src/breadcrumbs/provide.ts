@@ -1,5 +1,5 @@
+import { useChildren } from '@varlet/use'
 import type { ComputedRef } from 'vue'
-import { useAtChildrenCounter, useChildren } from '../utils/components'
 
 export interface BreadcrumbsProvider {
   length: ComputedRef<number>
@@ -7,11 +7,11 @@ export interface BreadcrumbsProvider {
 }
 
 export const BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMBS_BIND_BREADCRUMB_KEY')
-export const BREADCRUMBS_COUNT_BREADCRUMB_ITEM_KEY = Symbol('BREADCRUMBS_COUNT_BREADCRUMB_KEY')
 
 export function useBreadcrumbsList() {
-  const { childProviders, bindChildren } = useChildren<BreadcrumbsProvider, null>(BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY)
-  const { length } = useAtChildrenCounter(BREADCRUMBS_COUNT_BREADCRUMB_ITEM_KEY)
+  const { childProviders, bindChildren, length } = useChildren<BreadcrumbsProvider, null>(
+    BREADCRUMBS_BIND_BREADCRUMB_ITEM_KEY
+  )
 
   return {
     length,

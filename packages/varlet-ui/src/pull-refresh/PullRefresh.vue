@@ -1,5 +1,5 @@
 <template>
-  <div ref="freshNode" :class="n()" @touchmove="touchMove" @touchend="touchEnd" @touchcancel="touchEnd">
+  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -18,13 +18,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, onMounted } from 'vue'
+import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
-import { props } from './props'
-import { toNumber } from '@varlet/shared'
+import { props, type RefreshStatus } from './props'
+import { isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
-import type { RefreshStatus } from './props'
+import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -37,17 +36,20 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let scroller: HTMLElement | Window
-    let changing: Promise<void>
-
     const controlPosition: Ref<number> = ref(0)
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const controlNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number> = ref(-999)
+    const distance: Ref<number | string> = ref('-125%')
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
+
+    let scroller: HTMLElement | Window
+    let eventTargetScroller: HTMLElement | Window | null
+    let changing: Promise<void>
+    let startY = 0
+    let deltaY = 0
 
     // https://github.com/varletjs/varlet/issues/509
     const iconHasChanged: Ref<boolean> = ref(true)
@@ -57,7 +59,9 @@ export default defineComponent({
     )
 
     const controlStyle = computed(() => ({
-      transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
+      transform: `translate3d(0px, ${
+        isString(distance.value) ? distance.value : `${distance.value}px`
+      }, 0px) translate(-50%, 0)`,
       transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
@@ -82,16 +86,47 @@ export default defineComponent({
       el.classList[action](`${n()}--lock`)
     }
 
+    const touchStart = (event: TouchEvent) => {
+      if (controlPosition.value === 0) {
+        const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+        controlPosition.value = -(width + width * 0.25)
+      }
+
+      startY = event.touches[0].clientY
+      deltaY = 0
+      eventTargetScroller = getParentScroller(event.target as HTMLElement)
+    }
+
     const touchMove = (event: TouchEvent) => {
+      if (!isTouchable.value) {
+        return
+      }
+
+      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller!) > 0) {
+        return
+      }
+
       const scrollTop = getScrollTop(scroller)
-      if (scrollTop > 0 || !isTouchable.value) return
+      if (scrollTop > 0) {
+        return
+      }
+
+      const isReachTop = scrollTop === 0
+      const touch = event.touches[0]
+      deltaY = touch.clientY - startY
+
+      if (isReachTop && deltaY >= 0) {
+        event.preventDefault()
+      }
 
       if (refreshStatus.value !== 'pulling') {
         refreshStatus.value = 'pulling'
         startPosition.value = event.touches[0].clientY
       }
 
-      if (scrollTop === 0 && distance.value > controlPosition.value) lockEvent('add')
+      if (isReachTop && distance.value > controlPosition.value) {
+        lockEvent('add')
+      }
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
 
@@ -117,7 +152,9 @@ export default defineComponent({
         distance.value = maxDistance.value * 0.3
 
         call(props['onUpdate:modelValue'], true)
-        call(props.onRefresh)
+        nextTick(() => {
+          call(props.onRefresh)
+        })
         lockEvent('remove')
       } else {
         refreshStatus.value = 'loosing'
@@ -129,13 +166,12 @@ export default defineComponent({
           lockEvent('remove')
         }, toNumber(props.animationDuration))
       }
+
+      eventTargetScroller = null
     }
 
-    const setPosition = () => {
-      const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
-
-      distance.value = -(width + width * 0.25)
-      controlPosition.value = -(width + width * 0.25)
+    const setScroller = () => {
+      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
     }
 
     const reset = () => {
@@ -161,11 +197,9 @@ export default defineComponent({
       }
     )
 
-    onMounted(() => {
-      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
+    useMounted(setScroller)
 
-      setPosition()
-    })
+    useEventListener(freshNode, 'touchmove', touchMove)
 
     return {
       n,
@@ -175,6 +209,7 @@ export default defineComponent({
       refreshStatus,
       freshNode,
       controlNode,
+      touchStart,
       touchMove,
       touchEnd,
       iconName,

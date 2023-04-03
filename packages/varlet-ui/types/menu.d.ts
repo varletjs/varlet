@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 
+export declare const menuProps: Record<string, any>
+
 type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
 export type MenuPlacement =
@@ -21,11 +23,13 @@ export interface MenuProps extends BasicAttributes {
   show?: boolean
   disabled?: boolean
   trigger?: MenuTrigger
+  reference?: string
   placement?: MenuPlacement
   offsetX?: string | number
   offsetY?: string | number
   teleport?: TeleportProps['to']
   sameWidth?: boolean
+  elevation?: boolean | number | string
   defaultStyle?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

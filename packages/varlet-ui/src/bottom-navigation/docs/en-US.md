@@ -88,7 +88,8 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const active = ref(0)
-const handleChange = (active) => {
+
+function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
 </script>
@@ -111,17 +112,18 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const active = ref(0)
-const handleClick = (active) => {
+
+function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
 </script>
 
 <template>
   <var-bottom-navigation v-model:active="active">
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="home" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="magnify" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="heart" />
-    <var-bottom-navigation-item @click="handleClick" label="label" icon="account-circle" />
+    <var-bottom-navigation-item label="label" icon="home" @click="handleClick" />
+    <var-bottom-navigation-item label="label" icon="magnify" @click="handleClick" />
+    <var-bottom-navigation-item label="label" icon="heart" @click="handleClick"/>
+    <var-bottom-navigation-item label="label" icon="account-circle" @click="handleClick"/>
   </var-bottom-navigation>
 </template>
 ```
@@ -142,14 +144,15 @@ const isEven = ref(true)
     v-model:active="active"
     @fab-click="isEven = !isEven"
   >
-    <template #fab>
-      <var-icon name="heart" />
-    </template>
     <var-bottom-navigation-item label="label" icon="home" />
     <var-bottom-navigation-item label="label" icon="magnify" />
     <var-bottom-navigation-item label="label" icon="heart" />
     <var-bottom-navigation-item label="label" icon="bell" />
     <var-bottom-navigation-item v-if="!isEven" label="label" icon="account-circle" />
+
+    <template #fab>
+      <var-icon name="heart" />
+    </template>
   </var-bottom-navigation>
 </template>
 
@@ -169,7 +172,7 @@ const isEven = ref(true)
 | Prop            | Description                                         | Type | Default |
 |-----------------|-----------------------------------------------------| ---- | ---- |
 | `v-model:active` | Identifier of current tab                           | _number \| string_ | `0` |
-| `fixed`         | 	Whether to fixed bottom                            | _boolean_ | `false` |
+| `fixed`         |  Whether to fixed bottom                            | _boolean_ | `false` |
 | `border`        | Whether to show border                              | _boolean_ | `false` |
 | `safe-area`       | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
@@ -182,9 +185,9 @@ const isEven = ref(true)
 |Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
 | `name` | Identifier | _string_ | `-` |
-| `icon` | Icon name, equivalent to the [name](/#/en-US/icon) of Icon component | _string_ | `-` |
+| `icon` | Icon name, equivalent to the [name](#/en-US/icon) of Icon component | _string_ | `-` |
 | `label` | Label text content | _string_ | - |
-| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](/#/en-US/icon)  of Icon component | _string_ | `var-icon` |
+| `namespace` | Icon namespace, extensible custom icon library, equivalent to the [namespace](#/en-US/icon)  of Icon component | _string_ | `var-icon` |
 | `badge` | Logo in the upper right corner of the icon | _boolean \| BadgeProps_ | `false` |
 
 ### Events
@@ -220,6 +223,7 @@ const isEven = ref(true)
 | `icon` | Custom Icon | `active: boolean` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### BottomNavigation Variables

@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [elevation, n('$-elevation--2')])">
+  <div :class="classes(n(), formatElevation(elevation, 2))">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
         <slot name="year" :year="chooseYear">
@@ -81,7 +81,7 @@ import DayPickerPanel from './src/day-picker-panel.vue'
 import { props, MONTH_LIST, WEEK_HEADER } from './props'
 import { isArray, toNumber } from '@varlet/shared'
 import { nextTickFrame } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
@@ -131,6 +131,7 @@ export default defineComponent({
       showCurrent: props.showCurrent,
       multiple: props.multiple,
       range: props.range,
+      buttonElevation: props.buttonElevation,
     })
 
     const getChoose: ComputedRef<Choose> = computed(() => ({
@@ -494,6 +495,7 @@ export default defineComponent({
       getChooseMonth,
       getChooseYear,
       checkPreview,
+      formatElevation,
     }
   },
 })

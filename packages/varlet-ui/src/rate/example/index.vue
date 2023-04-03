@@ -1,8 +1,8 @@
 <script setup>
 import VarRate from '..'
-import VarSnackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
 
@@ -21,8 +21,8 @@ const scores = reactive({
   score11: 3,
 })
 
-const handleChange = (score) => {
-  VarSnackbar({
+function handleChange(score) {
+  Snackbar({
     content: `click ${score}`,
     position: 'top',
   })

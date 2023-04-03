@@ -1,23 +1,25 @@
 <template>
   <button
-    v-ripple="{ disabled: disabled || !ripple }"
     :class="
       classes(
         n(),
         n('$--box'),
-        n(`--${size}`),
+        n(`--${states.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
         [disabled, n('--disabled')],
-        [text, `${n(`--text-${type}`)} ${n('--text')}`, `${n(`--${type}`)} ${n('$-elevation--2')}`],
-        [text && disabled, n('--text-disabled')],
+        [states.text, `${n(`--text-${states.type}`)} ${n('--text')}`, `${n(`--${states.type}`)} ${states.elevation}`],
+        [states.text && disabled, n('--text-disabled')],
         [round, n('--round')],
-        [outline, n('--outline')]
+        [states.outline, n('--outline')]
       )
     "
+    v-ripple="{ disabled: disabled || !ripple }"
+    v-hover:desktop="handleHovering"
     :style="{
-      color: textColor,
-      background: color,
+      color: states.textColor,
+      background: states.color,
     }"
+    :type="nativeType"
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
@@ -34,15 +36,20 @@
     <div :class="classes(n('content'), [loading || pending, n('--hidden')])">
       <slot />
     </div>
+
+    <var-hover-overlay :hovering="hovering" />
   </button>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
 import VarLoading from '../loading'
-import { defineComponent, ref, type Ref } from 'vue'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
+import { computed, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
+import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
 
 const { n, classes } = createNamespace('button')
@@ -51,11 +58,40 @@ export default defineComponent({
   name: 'VarButton',
   components: {
     VarLoading,
+    VarHoverOverlay,
   },
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   props,
   setup(props) {
     const pending: Ref<boolean> = ref(false)
+    const { buttonGroup } = useButtonGroup()
+    const { hovering, handleHovering } = useHoverOverlay()
+
+    const states = computed(() => {
+      if (!buttonGroup) {
+        return {
+          elevation: formatElevation(props.elevation, 2),
+          type: props.type != null ? props.type : 'default',
+          size: props.size != null ? props.size : 'normal',
+          color: props.color,
+          text: props.text,
+          textColor: props.textColor,
+          outline: props.outline,
+        }
+      }
+
+      const { type, size, color, textColor, mode } = buttonGroup
+
+      return {
+        elevation: '',
+        type: props.type != null ? props.type : type.value,
+        size: props.size != null ? props.size : size.value,
+        color: props.color != null ? props.color : color.value,
+        textColor: props.textColor != null ? props.textColor : textColor.value,
+        text: mode.value !== 'normal',
+        outline: mode.value === 'outline',
+      }
+    })
 
     const attemptAutoLoading = (result: any) => {
       if (props.autoLoading) {
@@ -97,6 +133,9 @@ export default defineComponent({
       n,
       classes,
       pending,
+      states,
+      hovering,
+      handleHovering,
       handleClick,
       handleTouchstart,
     }
@@ -107,6 +146,7 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
+@import '../hover-overlay/hoverOverlay';
 @import '../ripple/ripple';
 @import '../loading/loading';
 @import './button';

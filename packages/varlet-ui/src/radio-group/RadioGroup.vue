@@ -10,14 +10,11 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import { computed, defineComponent, nextTick, watch } from 'vue'
-import { props } from './props'
+import { computed, defineComponent, nextTick, watch, type ComputedRef } from 'vue'
+import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
-import { useRadios } from './provide'
+import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import type { ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
-import type { RadioGroupProvider } from './provide'
 
 const { n, classes } = createNamespace('radio-group')
 export default defineComponent({

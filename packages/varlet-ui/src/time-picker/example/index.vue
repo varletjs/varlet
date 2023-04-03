@@ -20,7 +20,7 @@ const allowedTime = {
   seconds: (second) => second % 2 !== 0,
 }
 
-const change = (time) => {
+function change(time) {
   console.log(time)
 }
 

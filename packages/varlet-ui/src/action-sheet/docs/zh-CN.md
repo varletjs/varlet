@@ -137,7 +137,7 @@ async function handleSelect(){
       },
     ], 
     closeOnClickAction: false,
-    onSelect: action => Snackbar(`Your selected is:${action.name}`), 
+    onSelect: action => Snackbar(`您选择的是:${action.name}`), 
   })
 }
 </script>
@@ -326,7 +326,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -368,7 +368,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -411,12 +411,22 @@ function handleSelect() {
 | `closed` | 关闭动作面板动画结束时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
 
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `ActionSheet` | 显示动作面板 | _options_ | `-` |
+| `ActionSheet.close` | 关闭动作面板 | _-_ | `-` |
+| `ActionSheet.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `ActionSheet.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+
 ### ActionSheet Options
 
 #### 函数式调用时传入的选项
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| `actions` | 选项列表 | _Actions_ | `[]` |
 | `title` | 动作面板标题 | _string_ | `请选择` |
 | `overlay` | 是否显示遮罩层 | _boolean_ | `true` |
 | `overlayClass` | 自定义遮罩层的 class | _string_ | `-` |

@@ -8,10 +8,10 @@
         bottom: toSizeUnit(bottom),
       }"
       v-bind="$attrs"
-      @click.stop="click"
+      @click.stop="handleClick"
     >
       <slot>
-        <var-button type="primary" round var-back-top-cover>
+        <var-button :elevation="elevation" type="primary" round var-back-top-cover>
           <var-icon name="chevron-up" />
         </var-button>
       </slot>
@@ -19,9 +19,18 @@
   </teleport>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted, onBeforeUnmount } from 'vue'
 import VarButton from '../button'
 import VarIcon from '../icon'
+import {
+  defineComponent,
+  ref,
+  onBeforeUnmount,
+  onDeactivated,
+  onMounted,
+  type Ref,
+  type TeleportProps,
+  onActivated,
+} from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -35,7 +44,6 @@ import {
   getTarget,
 } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
-import type { Ref, TeleportProps } from 'vue'
 
 const { n, classes } = createNamespace('back-top')
 
@@ -52,34 +60,45 @@ export default defineComponent({
     const backTopEl: Ref<HTMLDivElement | null> = ref(null)
     const disabled: Ref<TeleportProps['disabled']> = ref(true)
 
-    let target: HTMLElement | Window
+    let scroller: HTMLElement | Window
 
-    const click = (event: MouseEvent) => {
+    const handleClick = (event: MouseEvent) => {
       call(props.onClick, event)
-      const left = getScrollLeft(target)
 
-      scrollTo(target, {
+      const left = getScrollLeft(scroller)
+
+      scrollTo(scroller, {
         left,
         duration: props.duration,
         animation: easeInOutCubic,
       })
     }
 
-    const scroll = () => {
-      show.value = getScrollTop(target) >= toPxNum(props.visibilityHeight)
+    const handleScroll = throttle(() => {
+      show.value = getScrollTop(scroller) >= toPxNum(props.visibilityHeight)
+    }, 200)
+
+    const setScroller = () => {
+      scroller = props.target ? getTarget(props.target, 'BackTop') : getParentScroller(backTopEl.value!)
     }
 
-    const throttleScroll = throttle(scroll, 200)
+    const addScrollerEventListener = () => {
+      scroller.addEventListener('scroll', handleScroll)
+    }
+
+    const removeScrollerEventListener = () => {
+      scroller.removeEventListener('scroll', handleScroll)
+    }
 
     onMounted(() => {
-      target = props.target ? getTarget(props.target, 'BackTop') : getParentScroller(backTopEl.value!)
-      target.addEventListener('scroll', throttleScroll)
+      setScroller()
+      addScrollerEventListener()
       disabled.value = false
     })
 
-    onBeforeUnmount(() => {
-      target.removeEventListener('scroll', throttleScroll)
-    })
+    onActivated(addScrollerEventListener)
+    onBeforeUnmount(removeScrollerEventListener)
+    onDeactivated(removeScrollerEventListener)
 
     return {
       disabled,
@@ -88,7 +107,7 @@ export default defineComponent({
       toSizeUnit,
       n,
       classes,
-      click,
+      handleClick,
     }
   },
 })

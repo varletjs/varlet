@@ -2,6 +2,8 @@ packages/varlet-cli/lib/**
 packages/varlet-cli/site/**
 packages/varlet-cli/template/**
 
+packages/varlet-vite-plugins/lib/**
+
 packages/varlet-icons/dist/**
 
 packages/varlet-ui/es/**
@@ -20,6 +22,7 @@ packages/varlet-ui-playground/public/**
 packages/varlet-ui-playground/*.d.ts
 packages/varlet-shared/lib/**
 packages/varlet-shared/es/**
+packages/varlet-use/lib/**
 
 **/package.json
 *.md

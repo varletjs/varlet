@@ -164,6 +164,7 @@ const value = ref(0)
 | `input-width` | The width of the input box | _string \| number_ | `-` |
 | `input-text-size` | The text size of the input box | _string \| number_ | `-` |
 | `button-size` | Button size | _string_ | `true` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `disable-increment` | Whether to disable increments | _boolean_ | `false` |

@@ -1,11 +1,14 @@
 import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize, ListenerProp } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
-import { VNode } from 'vue'
+import { ButtonHTMLAttributes, VNode } from 'vue'
 
 export { ButtonType, ButtonSize }
 
+export declare const buttonProps: Record<string, any>
+
 export interface ButtonProps extends BasicAttributes {
   type?: ButtonType
+  nativeType?: ButtonHTMLAttributes['type']
   size?: ButtonSize
   loading?: boolean
   round?: boolean
@@ -21,6 +24,7 @@ export interface ButtonProps extends BasicAttributes {
   loadingType?: LoadingType
   loadingSize?: LoadingSize
   loadingColor?: string
+  elevation?: boolean | number | string
   onClick?: ListenerProp<(e: Event) => void>
   onTouchstart?: ListenerProp<(e: Event) => void>
 }

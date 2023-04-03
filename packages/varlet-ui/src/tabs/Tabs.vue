@@ -13,7 +13,7 @@
           n('$--box'),
           n(`--item-${itemDirection}`),
           n(`--layout-${layoutDirection}-padding`),
-          [elevation, n('$-elevation--4')],
+          formatElevation(elevation, 4),
           [fixedBottom, n('--fixed-bottom')],
           [safeArea, n('--safe-area')]
         )
@@ -26,7 +26,7 @@
         :class="
           classes(
             n('tab-wrap'),
-            [scrollable, n(`--layout-${layoutDirection}-scrollable`)],
+            [localScrollable, n(`--layout-${layoutDirection}-scrollable`)],
             n(`--layout-${layoutDirection}`)
           )
         "
@@ -34,14 +34,18 @@
         <slot />
 
         <div
-          :class="classes(n('indicator'), n(`--layout-${layoutDirection}-indicator`))"
+          :class="classes(n('indicator'), n(`--layout-${layoutDirection}${indicatorPosition}-indicator`))"
           :style="{
             width: layoutDirection === 'horizontal' ? indicatorWidth : toSizeUnit(indicatorSize),
             height: layoutDirection === 'horizontal' ? toSizeUnit(indicatorSize) : indicatorHeight,
             transform: layoutDirection === 'horizontal' ? `translateX(${indicatorX})` : `translateY(${indicatorY})`,
-            background: indicatorColor || activeColor,
           }"
-        ></div>
+        >
+          <div
+            :class="classes(n('indicator-inner'), n(`--layout-${layoutDirection}-indicator-inner`))"
+            :style="{ background: indicatorColor || activeColor }"
+          ></div>
+        </div>
       </div>
     </div>
   </component>
@@ -49,16 +53,15 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, onMounted, onUnmounted } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, type Ref, type ComputedRef, onActivated } from 'vue'
 import { props } from './props'
-import { useTabList } from './provide'
+import { useTabList, type TabsProvider } from './provide'
+import { type TabProvider } from '../tab/provide'
 import { isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
-import type { Ref, ComputedRef } from 'vue'
-import type { TabsProvider } from './provide'
-import type { TabProvider } from '../tab/provide'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace, call, formatElevation } from '../utils/components'
+import { useEventListener } from '@varlet/use'
 
 const { n, classes } = createNamespace('tabs')
 
@@ -72,9 +75,12 @@ export default defineComponent({
     const indicatorHeight: Ref<string> = ref('0px')
     const indicatorX: Ref<string> = ref('0px')
     const indicatorY: Ref<string> = ref('0px')
-    const scrollable: Ref<boolean> = ref(false)
+    const localScrollable: Ref<boolean> = ref(false)
     const scrollerEl: Ref<HTMLElement | null> = ref(null)
     const active: ComputedRef<number | string> = computed(() => props.active)
+    const indicatorPosition: ComputedRef<string> = computed(() =>
+      props.indicatorPosition === 'reverse' ? '-reverse' : ''
+    )
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
@@ -114,23 +120,25 @@ export default defineComponent({
     }
 
     const watchScrollable = () => {
-      scrollable.value = tabList.length >= 5
+      localScrollable.value = props.scrollable === 'always' || tabList.length >= 5
     }
 
     const moveIndicator = ({ element }: TabProvider) => {
       const el = element.value
 
+      if (!el) return
+
       if (props.layoutDirection === 'horizontal') {
-        indicatorWidth.value = `${el?.offsetWidth}px`
-        indicatorX.value = `${el?.offsetLeft}px`
+        indicatorWidth.value = `${el.offsetWidth}px`
+        indicatorX.value = `${el.offsetLeft}px`
       } else {
-        indicatorHeight.value = `${el?.offsetHeight}px`
-        indicatorY.value = `${el?.offsetTop}px`
+        indicatorHeight.value = `${el.offsetHeight}px`
+        indicatorY.value = `${el.offsetTop}px`
       }
     }
 
     const scrollToCenter = ({ element }: TabProvider) => {
-      if (!scrollable.value) {
+      if (!localScrollable.value) {
         return
       }
 
@@ -192,9 +200,9 @@ export default defineComponent({
     )
 
     watch(() => props.active, resize)
-
-    onMounted(() => window.addEventListener('resize', resize))
-    onUnmounted(() => window.removeEventListener('resize', resize))
+    watch(() => props.scrollable, resize)
+    useEventListener(window, 'resize', resize)
+    onActivated(resize)
 
     return {
       stickyComponent,
@@ -202,7 +210,8 @@ export default defineComponent({
       indicatorHeight,
       indicatorX,
       indicatorY,
-      scrollable,
+      indicatorPosition,
+      localScrollable,
       scrollerEl,
       Transition,
       toSizeUnit,
@@ -210,6 +219,7 @@ export default defineComponent({
       classes,
       resize,
       resizeSticky,
+      formatElevation,
     }
   },
 })

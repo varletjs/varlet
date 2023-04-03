@@ -1,19 +1,12 @@
 <template>
   <div
     ref="card"
-    :class="
-      classes(
-        n(),
-        [isRow, n('--layout-row')],
-        [outline, n('--outline')],
-        [elevation, n(`$-elevation--${elevation}`), n('$-elevation--1')]
-      )
-    "
+    :class="classes(n(), [isRow, n('--layout-row')], [outline, n('--outline')], formatElevation(elevation, 1))"
     :style="{
       zIndex: floated ? zIndex : undefined,
     }"
-    @click="onClick"
     v-ripple="{ disabled: !ripple || floater }"
+    @click="handleClick"
   >
     <div
       ref="cardFloater"
@@ -104,7 +97,7 @@ import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { doubleRaf, toSizeUnit } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 import type { Ref } from 'vue'
@@ -130,7 +123,7 @@ export default defineComponent({
     const floaterHeight: Ref<string> = ref('100%')
     const floaterTop: Ref<string> = ref('auto')
     const floaterLeft: Ref<string> = ref('auto')
-    const floaterPosition: Ref<string | undefined> = ref(undefined)
+    const floaterPosition: Ref<'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | undefined> = ref(undefined)
     const floaterOverflow: Ref<string> = ref('hidden')
     const contentHeight: Ref<string> = ref('0px')
     const opacity: Ref<string> = ref('0')
@@ -216,6 +209,10 @@ export default defineComponent({
       call(props['onUpdate:floating'], false)
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     watch(
       () => props.floating,
       (value) => {
@@ -250,6 +247,8 @@ export default defineComponent({
       close,
       showFloatingButtons,
       floated,
+      formatElevation,
+      handleClick,
     }
   },
 })
@@ -259,5 +258,7 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../ripple/ripple';
+@import '../loading/loading';
+@import '../button/button';
 @import './card';
 </style>

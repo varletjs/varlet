@@ -165,10 +165,10 @@ const event = ref(false)
 
   <var-popup
     v-model:show="event"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,

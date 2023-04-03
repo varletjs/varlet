@@ -1,42 +1,35 @@
 <script setup>
-import { ref } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarBottomNavigation from '..'
 import VarBottomNavigationItem from '../../bottom-navigation-item'
 import VarIcon from '../../icon'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
+import { ref } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const basicUsage = ref(0)
-
 const matchByName = ref('home')
-
 const showBadge = ref(0)
 const badgeProps = {
   type: 'primary',
   value: '66',
 }
-
 const customColor = ref(0)
-
 const changeEvent = ref(0)
+const clickEvent = ref(0)
+const fab = ref(0)
+const isEven = ref(true)
 
 function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
 
-const clickEvent = ref(0)
-
 function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
 
-const fab = ref(0)
-const isEven = ref(true)
-
 watchLang(use)
-
 watchDarkMode(dark)
 </script>
 

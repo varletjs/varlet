@@ -23,12 +23,13 @@ export default defineComponent({
     const readonly: ComputedRef<boolean> = computed(() => props.readonly)
     const { formItems, bindFormItems } = useFormItems()
 
-    const scroll = (errorIndex: number, formItemElement: HTMLElement) => {
+    const scroll = (formItemElement: HTMLElement) => {
       // wait form-details animation end
       setTimeout(() => {
         const scroller = getParentScroller(formItemElement)
         const scrollerTop = scroller === window ? 0 : getTop(scroller as HTMLElement)
         const top = getTop(formItemElement) - scrollerTop - toPxNum(props.scrollToErrorOffsetY)
+
         scrollTo(scroller, {
           top,
           animation: linear,
@@ -46,7 +47,7 @@ export default defineComponent({
 
         if (hasError) {
           const formItemElement = formItems[errorIndex].instance.proxy?.$el
-          scroll(errorIndex, formItemElement)
+          scroll(formItemElement)
         }
 
         return !hasError

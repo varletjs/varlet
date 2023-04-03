@@ -14,7 +14,7 @@ import { ref } from 'vue'
 
 const value = ref(['1'])
 
-const changeHandle = (val) => {
+function changeHandle(val) {
   console.log(val)
 }
 </script>
@@ -41,6 +41,30 @@ const value = ref(['2'])
   <var-collapse v-model="value" :offset="false">
     <var-collapse-item title="标题" name="1">文本</var-collapse-item>
     <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
+### 可控的分割线
+
+使用 `divider` 属性隐藏边距。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const divider = ref(false)
+</script>
+
+<template>
+  <var-button @click="divider = !divider">
+    {{ divider ? '隐藏分割线' : '显示分割线' }}
+  </var-button>
+  <var-collapse v-model="value" :divider="divider">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="3">文本</var-collapse-item>
   </var-collapse>
 </template>
 ```
@@ -124,11 +148,13 @@ const value = ref(['1'])
 
 #### Collapse Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `v-model` | 当前展开面板的 name | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \| number[]_ | `-` |
-| `accordion` | 是否开启手风琴模式 | _boolean_ | `false` |
-| `offset` | 是否显示边距 | _boolean_ | `true` |
+| 参数          | 说明                                   | 类型 | 默认值                          |
+|-------------|--------------------------------------| -------- |------------------------------|
+| `v-model`   | 当前展开面板的 name                         | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \ | number[]_ | `-` |
+| `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
+| `divider`   | 是否显示分割线                               | _boolean_ | `true`                       |
 
 #### CollapseItem Props
 

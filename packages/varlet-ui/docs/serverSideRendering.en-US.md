@@ -2,59 +2,57 @@
 
 ### Intro
 
-Here is the basic way to introduce `Varlet` in `Nuxt`. You can introduce the entire `Varlet` or just a few components as needed. Let's start with how to introduce the full `Varlet`.
+Here is the basic way to install `Varlet` in `Nuxt`. 
 
 ### Create Nuxt project
 
-`Nuxt.js`  is a server rendering application framework based on `Vue.js`，For more details, please go [Nuxt](https://v3.nuxtjs.org/).
+`Nuxt.js` is a server-side rendering application framework based on `Vue.js`, please go to [Nuxt](https://nuxt.com) for a detailed tutorial.
 
-### Transpile Library
+### Import On Demand
+
+via plugin
+[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) and
+[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
+Realize the automatic on-demand import of components.
+
+```shell
+# playground-ignore
+# Install the plugin
+
+# npm
+npm i unplugin-vue-components unplugin-auto-import -D
+
+#yarn
+yarn add unplugin-vue-components unplugin-auto-import -D
+
+#pnpm
+pnpm add unplugin-vue-components unplugin-auto-import -D
+```
 
 ```ts
-import { defineNuxtConfig } from 'nuxt'
+// nuxt.config.ts
+import components from 'unplugin-vue-components/vite'
+import autoImport from 'unplugin-auto-import/vite'
+import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  build: {
-    transpile: ['@varlet/ui', 'dayjs']
+  vite: {
+    ssr: {
+      noExternal: ['@varlet/ui']
+    },
+    plugins: [
+      components({
+        resolvers: [VarletUIResolver()]
+      }),
+      autoImport({
+        resolvers: [VarletUIResolver({ autoImport: true })],
+      })
+    ]
   }
 })
 ```
 
-### Fully Import
+### Example Repository
 
-`Nuxt` will automatically read the files in your `plugins` directory and load them.
-So you can create a new `varlet.ts` in the `plugins` directory and write the following:
-
-```js
-// playground-ignore
-import { defineNuxtPlugin } from '#app'
-import Varlet from '@varlet/ui'
-import '@varlet/ui/es/style.js'
-
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Varlet)
-})
-```
-
-The above imports `Varlet` entirely. Note that CSS file needs to be imported separately.
-
-### On Demand
-
-The on-demand import avoids the full import of components and can effectively reduce the size of the distribution package.
-Each component is a `Vue plugin` and is composed of `component logic` and `style files`.
-It is manually install and used as follows.
-
-```js
-// playground-ignore
-import { defineNuxtPlugin } from '#app'
-import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Button)
-})
-```
-
-### Example Repo
-
-[varlet-nuxt3-example](https://github.com/varletjs/varlet-nuxt3-example)
+[varlet-install-example/nuxt](https://github.com/varletjs/varlet-install-example/tree/main/nuxt)

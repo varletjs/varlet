@@ -144,19 +144,14 @@ the optional values are `click` and `hover`
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.success('opened')
-const close = () => Snackbar.warning('close')
-const closed = () => Snackbar.error('closed')
 </script>
 
 <template>
   <var-menu
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">Events</var-button>
     
@@ -196,7 +191,10 @@ Two-way binding control menu show and hide via `v-model:show`.
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeMenu = () => { show.value = false }
+
+function closeMenu() { 
+  show.value = false 
+}
 </script>
 
 <template>
@@ -231,6 +229,8 @@ it is recommended to wrap a `block` element.
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
 | `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
+| `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 

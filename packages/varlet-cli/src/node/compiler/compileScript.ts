@@ -1,75 +1,121 @@
 import fse from 'fs-extra'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
-import { replaceExt } from '../shared/fsUtils.js'
-import {
-  extractStyleDependencies,
-  IMPORT_CSS_RE,
-  IMPORT_LESS_RE,
-  REQUIRE_CSS_RE,
-  REQUIRE_LESS_RE,
-} from './compileStyle.js'
-import { resolve } from 'path'
+import { getVersion, isDir, replaceExt } from '../shared/fsUtils.js'
+import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
+import { resolve, extname, dirname } from 'path'
 import type { BabelFileResult } from '@babel/core'
-import { get } from 'lodash-es'
-import { getVarletConfig } from '../config/varlet.config.js'
 
-const { writeFileSync, readFileSync, removeSync, writeFile } = fse
+const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExistsSync } = fse
 
-export const IMPORT_VUE_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]);?(?!\s*['"`])/g
-export const IMPORT_TS_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]);?(?!\s*['"`])/g
-export const IMPORT_JSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]);?(?!\s*['"`])/g
-export const IMPORT_TSX_PATH_RE = /((?<!['"`])import\s+.+from\s+['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]);?(?!\s*['"`])/g
-export const REQUIRE_VUE_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.vue(\s*['"`]\))(?!\s*['"`])/g
-export const REQUIRE_TS_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.ts(\s*['"`]\))(?!\s*['"`])/g
-export const REQUIRE_JSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.jsx(\s*['"`]\))(?!\s*['"`])/g
-export const REQUIRE_TSX_PATH_RE = /(?<!['"`]\s*)(require\s*\(\s*['"]\s*\.{1,2}\/.+)\.tsx(\s*['"`]\))(?!\s*['"`])/g
+// https://regexr.com/765a4
+export const IMPORT_FROM_DEPENDENCE_RE = /import\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
+// https://regexr.com/767e6
+export const EXPORT_FROM_DEPENDENCE_RE = /export\s+?[\w\s{},$*]+\s+from\s+?(".*?"|'.*?')/g
+// https://regexr.com/764ve
+export const IMPORT_DEPENDENCE_RE = /import\s+(".*?"|'.*?')/g
 
-const scriptReplacer = (_: any, p1: string, p2: string): string => `${p1}.js${p2}`
+export const scriptExtNames = ['.vue', '.ts', '.tsx', '.mjs', '.js', '.jsx']
 
-export const replaceVueExt = (script: string): string =>
-  script.replace(IMPORT_VUE_PATH_RE, scriptReplacer).replace(REQUIRE_VUE_PATH_RE, scriptReplacer)
+export const styleExtNames = ['.less', '.css']
 
-export const replaceTSExt = (script: string): string =>
-  script.replace(IMPORT_TS_PATH_RE, scriptReplacer).replace(REQUIRE_TS_PATH_RE, scriptReplacer)
+export const scriptIndexes = ['index.mjs', 'index.vue', 'index.ts', 'index.tsx', 'index.js', 'index.jsx']
 
-export const replaceJSXExt = (script: string): string =>
-  script.replace(IMPORT_JSX_PATH_RE, scriptReplacer).replace(REQUIRE_JSX_PATH_RE, scriptReplacer)
+export const styleIndexes = ['index.less', 'index.css']
 
-export const replaceTSXExt = (script: string): string =>
-  script.replace(IMPORT_TSX_PATH_RE, scriptReplacer).replace(REQUIRE_TSX_PATH_RE, scriptReplacer)
+export const tryMatchExtname = (file: string, extname: string[]) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const ext of extname) {
+    const matched = `${file}${ext}`
 
-export const moduleCompatible = async (script: string): Promise<string> => {
-  const moduleCompatible = get(await getVarletConfig(), 'moduleCompatible', {} as Record<string, string>)
+    if (pathExistsSync(matched)) {
+      return ext
+    }
+  }
+}
 
-  Object.keys(moduleCompatible).forEach((esm) => {
-    const commonjs = moduleCompatible[esm]
-    script = script.replace(esm, commonjs)
-  })
+export const resolveDependence = (file: string, script: string) => {
+  const replacer = (source: string, dependence: string) => {
+    dependence = dependence.slice(1, dependence.length - 1)
+
+    const ext = extname(dependence)
+    const targetDependenceFile = resolve(dirname(file), dependence)
+    const scriptExtname = getScriptExtname()
+    const inNodeModules = !dependence.startsWith('.')
+    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
+
+    if (inNodeModules) {
+      // e.g. @varlet/shared
+      return source
+    }
+
+    if (ext) {
+      if (scriptExtNames.includes(ext)) {
+        // e.g. './a.vue' -> './a.mjs'
+        return done(dependence.replace(ext, scriptExtname))
+      }
+
+      if (styleExtNames.includes(ext)) {
+        // e.g. './a.css' -> './a.css' './a.less' -> './a.less'
+        return source
+      }
+    }
+
+    if (!ext) {
+      // e.g. ../button/props -> ../button/props.mjs
+      const matchedScript = tryMatchExtname(targetDependenceFile, scriptExtNames)
+
+      if (matchedScript) {
+        return done(`${dependence}${scriptExtname}`)
+      }
+
+      const matchedStyle = tryMatchExtname(targetDependenceFile, styleExtNames)
+
+      if (matchedStyle) {
+        return done(`${dependence}${matchedStyle}`)
+      }
+    }
+
+    if (!ext && isDir(targetDependenceFile)) {
+      // e.g. ../button
+      const files = readdirSync(targetDependenceFile)
+
+      const hasScriptIndex = files.some((file) => scriptIndexes.some((name) => file.endsWith(name)))
+
+      if (hasScriptIndex) {
+        // e.g. -> ../button/index.mjs
+        return done(`${dependence}/index${scriptExtname}`)
+      }
+
+      const hasStyleIndex = files.some((file) => styleIndexes.some((name) => file.endsWith(name)))
+
+      if (hasStyleIndex) {
+        // e.g. -> ../button/index.css
+        return done(`${dependence}/index.css`)
+      }
+    }
+
+    return ''
+  }
 
   return script
+    .replace(IMPORT_FROM_DEPENDENCE_RE, replacer)
+    .replace(EXPORT_FROM_DEPENDENCE_RE, replacer)
+    .replace(IMPORT_DEPENDENCE_RE, replacer)
 }
 
 export async function compileScript(script: string, file: string) {
-  const modules = process.env.BABEL_MODULE
-
-  if (modules === 'commonjs') {
-    script = await moduleCompatible(script)
-  }
-
   let { code } = (await transformAsync(script, {
     filename: file,
   })) as BabelFileResult
 
-  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_CSS_RE : IMPORT_CSS_RE)
-  code = extractStyleDependencies(file, code as string, modules === 'commonjs' ? REQUIRE_LESS_RE : IMPORT_LESS_RE)
-  code = replaceVueExt(code as string)
-  code = replaceTSXExt(code as string)
-  code = replaceJSXExt(code as string)
-  code = replaceTSExt(code as string)
-
-  removeSync(file)
-  writeFileSync(replaceExt(file, '.js'), code, 'utf8')
+  if (code) {
+    code = resolveDependence(file, code)
+    code = extractStyleDependencies(file, code, IMPORT_CSS_RE)
+    code = extractStyleDependencies(file, code, IMPORT_LESS_RE)
+    removeSync(file)
+    writeFileSync(replaceExt(file, getScriptExtname()), code, 'utf8')
+  }
 }
 
 export async function compileScriptFile(file: string) {
@@ -78,23 +124,27 @@ export async function compileScriptFile(file: string) {
   await compileScript(sources, file)
 }
 
+export function getScriptExtname() {
+  return '.mjs'
+}
+
 export async function compileESEntry(dir: string, publicDirs: string[]) {
   const imports: string[] = []
   const plugins: string[] = []
-  const constInternalComponents: string[] = []
+  const exports: string[] = []
   const cssImports: string[] = []
   const publicComponents: string[] = []
+  const scriptExtname = getScriptExtname()
 
   publicDirs.forEach((dirname: string) => {
     const publicComponent = bigCamelize(dirname)
+    const module = `'./${dirname}/index${scriptExtname}'`
 
     publicComponents.push(publicComponent)
-    imports.push(`import ${publicComponent}, * as ${publicComponent}Module from './${dirname}'`)
-    constInternalComponents.push(
-      `export const _${publicComponent}Component = ${publicComponent}Module._${publicComponent}Component || {}`
-    )
+    imports.push(`import ${publicComponent} from ${module}`)
+    exports.push(`export * from ${module}`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssImports.push(`import './${dirname}/style'`)
+    cssImports.push(`import './${dirname}/style/index${scriptExtname}'`)
   })
 
   const install = `
@@ -103,16 +153,21 @@ function install(app) {
 }
 `
 
+  const version = `const version = '${getVersion()}'`
+
   const indexTemplate = `\
 ${imports.join('\n')}\n
-${constInternalComponents.join('\n')}\n
+${exports.join('\n')}\n
+${version}
 ${install}
 export {
+  version,
   install,
   ${publicComponents.join(',\n  ')}
 }
 
 export default {
+  version,
   install,
   ${publicComponents.join(',\n  ')}
 }
@@ -122,65 +177,28 @@ export default {
 ${cssImports.join('\n')}
 `
 
-  const umdTemplate = `\
+  const bundleTemplate = `\
 ${imports.join('\n')}\n
+${exports.join('\n')}\n
 ${cssImports.join('\n')}\n
+${version}
 ${install}
 export {
+  version,
   install,
   ${publicComponents.join(',\n  ')}
 }
 
 export default {
+  version,
   install,
   ${publicComponents.join(',\n  ')}
 }
 `
 
   await Promise.all([
-    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'umdIndex.js'), umdTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
-  ])
-}
-
-export async function compileCommonJSEntry(dir: string, publicDirs: string[]) {
-  const requires: string[] = []
-  const plugins: string[] = []
-  const cssRequires: string[] = []
-  const publicComponents: string[] = []
-
-  publicDirs.forEach((dirname: string) => {
-    const publicComponent = bigCamelize(dirname)
-
-    publicComponents.push(publicComponent)
-    requires.push(`var ${publicComponent} = require('./${dirname}')['default']`)
-    plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssRequires.push(`require('./${dirname}/style')`)
-  })
-
-  const install = `
-function install(app) {
-  ${plugins.join('\n  ')}
-}
-`
-
-  const indexTemplate = `\
-${requires.join('\n')}\n
-${install}
-
-module.exports = {
-  install,
-  ${publicComponents.join(',\n  ')}
-}
-`
-
-  const styleTemplate = `\
-${cssRequires.join('\n')}
-`
-
-  await Promise.all([
-    writeFile(resolve(dir, 'index.js'), indexTemplate, 'utf-8'),
-    writeFile(resolve(dir, 'style.js'), styleTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'index.mjs'), indexTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'index.bundle.mjs'), bundleTemplate, 'utf-8'),
+    writeFile(resolve(dir, 'style.mjs'), styleTemplate, 'utf-8'),
   ])
 }

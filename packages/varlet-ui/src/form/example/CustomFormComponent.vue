@@ -38,21 +38,21 @@ const {
 } = useValidation()
 const { bindForm, form } = useForm()
 
-const reset = () => {
+const validate = () => _validate(props.rules, props.modelValue)
+
+function reset() {
   emit('update:modelValue', false)
   resetValidation()
 }
 
-const validate = () => _validate(props.rules, props.modelValue)
-
-const validateWithTrigger = (trigger) => {
+function validateWithTrigger(trigger) {
   nextTick(() => {
     const { validateTrigger, rules, modelValue } = props
     _validateWithTrigger(validateTrigger, trigger, rules, modelValue)
   })
 }
 
-const handleClick = () => {
+function handleClick() {
   if (props.readonly || props.disabled || form?.readonly.value || form?.disabled.value) {
     return
   }

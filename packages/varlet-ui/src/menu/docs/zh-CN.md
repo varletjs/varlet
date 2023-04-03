@@ -142,19 +142,14 @@ const placementOptions = [
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.success('opened')
-const close = () => Snackbar.warning('close')
-const closed = () => Snackbar.error('closed')
 </script>
 
 <template>
   <var-menu
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">注册事件</var-button>
     
@@ -194,7 +189,10 @@ const closed = () => Snackbar.error('closed')
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeMenu = () => { show.value = false }
+
+function closeMenu() {
+  show.value = false
+}
 </script>
 
 <template>
@@ -227,6 +225,8 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to']_ | `body`            |
 | `disabled`      | 是否禁用菜单                                                      | _boolean_             | `false`           |
 | `trigger`       | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click`           |
+| `reference`       | 菜单关联的触发元素选择器，用于指定菜单的特定子元素为触发元素 | _string_              | `-`           |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 

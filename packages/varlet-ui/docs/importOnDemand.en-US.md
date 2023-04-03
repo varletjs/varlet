@@ -1,47 +1,20 @@
 # Import On Demand
 
-### Introduce
+### Intro
 
 On-demand import avoids the full import of components, which can effectively reduce the size of the release package.
-
-### Manual import
-
-Each component is a `Vue plugin` and consists of `component logic` and `style files`, which are manually imported and used as follows.
-
-````js
-// playground-ignore
-import { createApp } from 'vue'
-import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-
-createApp().use(Button)
-````
-
-OR
-
-```html
-// playground-ignore
-<script setup>
-import { Button as VarButton } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-</script>
-
-<template>
-  <var-button>Say Hello</var-button>
-</template>
-````
 
 ### Automatic Import
 
 via plugin
 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) and
 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
-Implement components to automatically import on demand
+Implement components to automatically import on demand, This is our most recommended way.
+
+#### Install Plugin
 
 ```shell
 # playground-ignore
-# install plugin
-
 # npm
 npm i unplugin-vue-components unplugin-auto-import -D
 
@@ -50,28 +23,6 @@ yarn add unplugin-vue-components unplugin-auto-import -D
 
 # pnpm
 pnpm add unplugin-vue-components unplugin-auto-import -D
-````
-
-#### Vue CLI
-````js
-// playground-ignore
-// vue.config.js
-const Components = require('unplugin-vue-components/webpack')
-const AutoImport = require('unplugin-auto-import/webpack')
-const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
-
-module.exports = {
-  configureWebpack: {
-    plugins: [
-      Components({
-        resolvers: [VarletUIResolver()]
-      }),
-      AutoImport({
-        resolvers: [VarletUIResolver({ autoImport: true })]
-      })
-    ]
-  }
-}
 ````
 
 #### Vite
@@ -98,6 +49,28 @@ export default defineConfig({
 })
 ````
 
+#### Vue CLI
+````js
+// playground-ignore
+// vue.config.js
+const Components = require('unplugin-vue-components/webpack')
+const AutoImport = require('unplugin-auto-import/webpack')
+const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
+
+module.exports = {
+  configureWebpack: {
+    plugins: [
+      Components({
+        resolvers: [VarletUIResolver()]
+      }),
+      AutoImport({
+        resolvers: [VarletUIResolver({ autoImport: true })]
+      })
+    ]
+  }
+}
+````
+
 #### Typescript configuration note
 
 In order to get good IDE syntax highlighting, 
@@ -111,16 +84,43 @@ which can be configured as follows in `tsconfig.json`:
 }
 ````
 
+### Manual import
+
+Each component is a `Vue plugin` and consists of `component logic` and `style files`, which are manually imported and used as follows.
+
+````js
+// playground-ignore
+import { createApp } from 'vue'
+import { Button } from '@varlet/ui'
+import '@varlet/ui/es/button/style/index'
+
+createApp().use(Button)
+````
+
+OR
+
+```html
+// playground-ignore
+<script setup>
+import { Button as VarButton } from '@varlet/ui'
+import '@varlet/ui/es/button/style/index'
+</script>
+
+<template>
+  <var-button>Say Hello</var-button>
+</template>
+````
+
 ### Manual import and automatic import comparison
 
-Manual introduction.
+Manual import
 
 ```html
 // playground-ignore
 <script setup>
 import { Button as VarButton, Snackbar } from '@varlet/ui'
-import '@varlet/ui/es/button/style/index.js'
-import '@varlet/ui/es/snackbar/style/index.js'
+import '@varlet/ui/es/button/style/index'
+import '@varlet/ui/es/snackbar/style/index'
 
 function handleClick() {
   Snackbar('Hello!')
@@ -132,7 +132,7 @@ function handleClick() {
 </template>
 ````
 
-Automatic introduction.
+Automatic import
 
 ```html
 // playground-ignore
@@ -146,3 +146,12 @@ function handleClick() {
   <var-button @click="handleClick">Say Hello</var-button>
 </template>
 ````
+
+### File path note
+
+In `@varlet/ui@2.7.0` and later versions, we recommend using the following file import method with omitting the suffix to be compatible with `js` and `mjs`
+
+```js
+// playground-ignore
+import '@varlet/ui/es/style'
+```

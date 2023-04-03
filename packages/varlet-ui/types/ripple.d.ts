@@ -1,5 +1,12 @@
 import { VarDirective } from './varDirective'
 
-export class Ripple extends VarDirective {}
+export interface RippleValue {
+  color?: string
+  disabled?: boolean
+}
 
-export class _RippleComponent extends Ripple {}
+export interface IRipple extends VarDirective<RippleValue> {}
+
+export declare const Ripple: IRipple
+
+export declare const _RippleComponent: IRipple

@@ -4,7 +4,9 @@ exports[`test radio example 1`] = `
 "<div class=\\"app-type\\">基本使用</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -14,7 +16,9 @@ exports[`test radio example 1`] = `
 <div class=\\"app-type\\">设置状态值</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\">当前的值: 0</div>
   </div>
   <transition-stub>
@@ -24,7 +28,9 @@ exports[`test radio example 1`] = `
 <div class=\\"app-type\\">修改图标和颜色</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition: transform 0ms; font-size: 24px;\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\" style=\\"color: rgb(233, 158, 180);\\"><i class=\\"var-icon var-icon--set var-icon-heart-half-full\\" style=\\"transition-duration: 0ms; font-size: 24px;\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -34,7 +40,9 @@ exports[`test radio example 1`] = `
 <div class=\\"app-type\\">禁用</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked var-radio--disabled\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text var-radio--disabled\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -44,7 +52,9 @@ exports[`test radio example 1`] = `
 <div class=\\"app-type\\">只读</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -56,7 +66,9 @@ exports[`test radio example 1`] = `
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\">吃饭</div>
       </div>
       <transition-stub>
@@ -65,7 +77,9 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\">睡觉</div>
       </div>
       <transition-stub>
@@ -81,7 +95,9 @@ exports[`test radio example 1`] = `
 <div class=\\"app-type\\">单选框字段校验</div>
 <div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
   <transition-stub>
@@ -93,7 +109,9 @@ exports[`test radio example 1`] = `
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\">吃饭</div>
       </div>
       <transition-stub>
@@ -102,7 +120,9 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\">睡觉</div>
       </div>
       <transition-stub>
@@ -123,7 +143,9 @@ exports[`test radio group layout direction 1`] = `
   <div class=\\"var-radio-group var-radio-group--vertical\\">
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
       <transition-stub>
@@ -132,7 +154,9 @@ exports[`test radio group layout direction 1`] = `
     </div>
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
       <transition-stub>
@@ -151,7 +175,9 @@ exports[`test radio group validation 1`] = `
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text var-radio--error\\"></div>
       </div>
       <transition-stub>
@@ -160,7 +186,9 @@ exports[`test radio group validation 1`] = `
     </div>
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--checked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--checked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text var-radio--error\\"></div>
       </div>
       <transition-stub>
@@ -190,7 +218,9 @@ exports[`test radio group validation 2`] = `
   <div class=\\"var-radio-group var-radio-group--horizontal\\">
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--checked\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon var-radio--with-animation\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--checked\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon var-radio--with-animation\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
       <transition-stub>
@@ -199,7 +229,9 @@ exports[`test radio group validation 2`] = `
     </div>
     <div class=\\"var-radio__wrap\\">
       <div class=\\"var-radio\\">
-        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+        <div class=\\"var-radio__action var-radio--unchecked\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+          <div class=\\"var-hover-overlay\\"></div>
+        </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
       <transition-stub>
@@ -216,7 +248,9 @@ exports[`test radio group validation 2`] = `
 exports[`test radio validation 1`] = `
 "<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--unchecked var-radio--error\\"><i class=\\"var-icon var-icon--set var-icon-radio-blank var-radio__icon\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text var-radio--error\\"></div>
   </div>
   <transition-stub>
@@ -239,7 +273,9 @@ exports[`test radio validation 1`] = `
 exports[`test radio validation 2`] = `
 "<div class=\\"var-radio__wrap\\">
   <div class=\\"var-radio\\">
-    <div class=\\"var-radio__action var-radio--checked\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon var-radio--with-animation\\" style=\\"transition: transform 0ms;\\" var-radio-cover=\\"\\"></i></div>
+    <div class=\\"var-radio__action var-radio--checked\\"><i class=\\"var-icon var-icon--set var-icon-radio-marked var-radio__icon var-radio--with-animation\\" style=\\"transition-duration: 0ms;\\" var-radio-cover=\\"\\"></i>
+      <div class=\\"var-hover-overlay\\"></div>
+    </div>
     <div class=\\"var-radio__text\\"></div>
   </div>
   <transition-stub>

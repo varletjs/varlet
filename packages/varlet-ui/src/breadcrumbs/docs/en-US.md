@@ -84,7 +84,7 @@ import { Snackbar } from '@varlet/ui'
 
 ## API
 
-### Attributes
+### Props
 
 #### Breadcrumbs Props
 

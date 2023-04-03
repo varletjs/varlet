@@ -1,15 +1,14 @@
 {
   "name": "@varlet/ui",
-  "version": "2.5.5",
+  "version": "2.9.4",
   "description": "A material like components library",
-  "module": "es/index.js",
-  "main": "lib/index.js",
+  "main": "lib/varlet.cjs.js",
+  "module": "es/index.mjs",
   "typings": "types/index.d.ts",
-  "vetur": {
-    "tags": "highlight/tags.json",
-    "attributes": "highlight/attributes.json"
-  },
-  "web-types": "highlight/web-types.json",
+  "style": "umd/style.css",
+  "unpkg": "umd/varlet.js",
+  "jsdelivr": "umd/varlet.js",
+  "web-types": "highlight/web-types.en-US.json",
   "keywords": [
     "Vue",
     "Material",
@@ -36,7 +35,7 @@
   "sideEffects": [
     "es/**/style/*",
     "lib/**/style/*",
-    "es/style.js",
+    "es/style.mjs",
     "lib/style.js",
     "*.css"
   ],
@@ -57,6 +56,7 @@
     "@popperjs/core": "^2.11.6",
     "@varlet/icons": "workspace:*",
     "@varlet/shared": "workspace:*",
+    "@varlet/use": "workspace:*",
     "dayjs": "^1.10.4",
     "decimal.js": "^10.2.1"
   },

@@ -1,7 +1,7 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarDatePicker from '..'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
 
@@ -14,16 +14,15 @@ const dates = reactive({
   date5: '2021-05',
 })
 
-const allowedDates = (date) => {
-  return parseInt(date.split('-')[1], 10) % 2 === 1
-}
-const allowedDates1 = (date) => {
-  return parseInt(date.split('-')[2], 10) % 2 === 1
-}
-const change = (date) => {
+const allowedDates = (date) => parseInt(date.split('-')[1], 10) % 2 === 1
+
+const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
+
+function change(date) {
   console.log(date)
 }
-const preview = (year, month) => {
+
+function preview(year, month) {
   console.log(year, month)
 }
 

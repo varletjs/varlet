@@ -1,8 +1,8 @@
 <script setup>
 import VarSwipe from '..'
 import VarSwipeItem from '../../swipe-item'
-import { AppType, watchLang } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
+import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)
@@ -10,7 +10,7 @@ watchLang(use)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-swipe class="swipe" ref="swipe">
+  <var-swipe class="swipe">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
     </var-swipe-item>
@@ -62,7 +62,7 @@ watchLang(use)
   </var-swipe>
 
   <app-type>{{ pack.handleChange }}</app-type>
-  <var-swipe class="swipe" @change="Snackbar">
+  <var-swipe class="swipe" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
     </var-swipe-item>
@@ -76,17 +76,15 @@ watchLang(use)
 
   <app-type>{{ pack.customIndicator }}</app-type>
   <var-swipe class="swipe">
-    <template #default>
-      <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
-      </var-swipe-item>
-      <var-swipe-item>
-        <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
-      </var-swipe-item>
-    </template>
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+    </var-swipe-item>
 
     <template #indicator="{ index, length }">
       <div class="indicators">{{ index + 1 }} / {{ length }}</div>

@@ -1,10 +1,10 @@
 <script setup>
 import ActionSheet from '../index'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarButton from '../../button'
 import VarSpace from '../../space'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref, reactive } from 'vue'
 import { pack, use } from './locale'
 

@@ -3,33 +3,51 @@ import Picker from '../index'
 import Snackbar from '../../snackbar/index'
 import VarSpace from '../../space'
 import VarButton from '../../button'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import area from '../../../json/area.json'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 
 const VarPicker = Picker.Component
 
 const columns = ref([Array.from({ length: 20 }).map((_, index) => index)])
-
 const columns2 = ref([
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
   Array.from({ length: 20 }).map((_, index) => index),
 ])
-
 const columns3 = ref(area)
-
 const months = genCounts(12)
-
 const leapYearFebruaryDates = genCounts(29)
-
 const februaryDates = genCounts(28)
-
 const oddMonthDates = genCounts(31)
-
 const evenMonthDates = genCounts(30)
+const columns4 = ref(genColumns(1970, 2100))
+const rawColumns = [
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+  [
+    { label: '灰烬之灵', id: 1 },
+    { label: '风暴之灵', id: 2 },
+    { label: '大地之灵', id: 3 },
+    { label: '虚空之灵', id: 4 },
+  ],
+]
+const normalizedRawColumns = rawColumns.map((column) => {
+  return column.map((option) => option.label)
+})
+const columns5 = ref(normalizedRawColumns)
 
 function isOddMonth(month) {
   return [1, 3, 5, 7, 8, 10, 12].includes(month)
@@ -78,42 +96,13 @@ function genColumns(startYear, endYear) {
   return columns
 }
 
-const columns4 = ref(genColumns(1970, 2100))
-
-const formatter = (text, columnIndex) => {
+function formatter(text, columnIndex) {
   if (columnIndex === 0) return `${text}年`
   if (columnIndex === 1) return `${text}月`
   if (columnIndex === 2) return `${text}日`
 }
 
-const rawColumns = [
-  [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
-  ],
-  [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
-  ],
-  [
-    { label: '灰烬之灵', id: 1 },
-    { label: '风暴之灵', id: 2 },
-    { label: '大地之灵', id: 3 },
-    { label: '虚空之灵', id: 4 },
-  ],
-]
-
-const normalizedRawColumns = rawColumns.map((column) => {
-  return column.map((option) => option.label)
-})
-
-const columns5 = ref(normalizedRawColumns)
-
-const handleChange = (_, [i1, i2, i3]) => {
+function handleChange(_, [i1, i2, i3]) {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar({
@@ -121,24 +110,24 @@ const handleChange = (_, [i1, i2, i3]) => {
   })
 }
 
-const picker = async () => {
+async function picker() {
   await Picker({
     columns: columns.value,
   })
 }
 
-const picker2 = async () => {
+async function picker2() {
   await Picker(columns2.value)
 }
 
-const picker3 = async () => {
+async function picker3() {
   await Picker({
     cascade: true,
     columns: columns3.value,
   })
 }
 
-const picker4 = async () => {
+async function picker4() {
   await Picker({
     cascade: true,
     columns: columns4.value,
@@ -146,7 +135,7 @@ const picker4 = async () => {
   })
 }
 
-const picker5 = async () => {
+async function picker5() {
   await Picker({
     columns: columns5.value,
     onChange: handleChange,

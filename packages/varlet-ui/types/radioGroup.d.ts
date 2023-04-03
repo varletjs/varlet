@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Direction as RadioGroupDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const radioGroupProps: Record<string, any>
+
 export type RadioGroupValidateTrigger = 'onChange'
 
 export { RadioGroupDirection }

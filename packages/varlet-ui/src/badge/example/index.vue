@@ -1,10 +1,11 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarBadge from '..'
 import VarButton from '../../button'
 import VarChip from '../../chip'
 import VarSpace from '../../space'
+import VarEllipsis from '../../ellipsis'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -13,7 +14,7 @@ const value1 = ref(188)
 const maxValue = ref(99)
 const hidden = ref(false)
 
-const handleChange = () => {
+function handleChange() {
   hidden.value = !hidden.value
 }
 
@@ -67,7 +68,7 @@ watchDarkMode(dark)
 
     <app-type>{{ pack.hidden }}</app-type>
     <var-space :size="['2.666vw', '6vw']">
-      <var-badge type="danger" position="right-top" :hidden="hidden">
+      <var-badge type="danger" :hidden="hidden">
         <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
       </var-badge>
 
@@ -77,13 +78,22 @@ watchDarkMode(dark)
     </var-space>
 
     <app-type>{{ pack.customBadgeColors }}</app-type>
-    <var-badge color="#6200ea" position="right-top">
+    <var-badge color="#6200ea">
       <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
     </var-badge>
 
     <app-type>{{ pack.customBadgeIcons }}</app-type>
-    <var-badge color="#6200ea" position="right-top" icon="notebook">
+    <var-badge color="#6200ea" icon="notebook">
       <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+    </var-badge>
+
+    <app-type>{{ pack.customBadgeValue }}</app-type>
+    <var-badge color="#6200ea">
+      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+
+      <template #value>
+        <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>
+      </template>
     </var-badge>
   </div>
 </template>

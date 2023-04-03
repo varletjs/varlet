@@ -13,7 +13,7 @@ import { Picker } from '@varlet/ui'
 
 const columns = [Array.from({ length: 20 }).map((_, index) => index)]
 
-const picker = async () => {
+async function picker() {
   await Picker(columns)
 }
 </script>
@@ -38,7 +38,7 @@ const columns = [
   Array.from({ length: 20 }).map((_, index) => index)
 ]
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker(columns)
 }
 </script>
@@ -58,7 +58,7 @@ Picker 传入一个 `cascade` 属性开启级联滚动。
 import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns
@@ -82,18 +82,22 @@ Picker 传入一个 `textFormatter` 属性可对文本进行自定义。
 import { Picker } from '@varlet/ui'
 
 const genCounts = length => Array.from({ length }, (_, index) => index + 1)
-
 const months = genCounts(12)
 const leapYearFebruaryDates = genCounts(29)
 const februaryDates = genCounts(28)
 const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
+const columns = genColumns(1970, 2100)
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) { 
+  return [1, 3, 5, 7, 8, 10, 12].includes(month) 
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
-const genDates = (year, month) => {
+function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -109,7 +113,7 @@ const genDates = (year, month) => {
   return evenMonthDates
 }
 
-const genColumns = (startYear, endYear) => {
+function genColumns(startYear, endYear) {
   const columns = []
   
   for (let year = startYear; year < endYear; year++) {
@@ -127,15 +131,13 @@ const genColumns = (startYear, endYear) => {
   return columns
 }
 
-const columns = genColumns(1970, 2100)
-
-const textFormatter = (text, columnIndex) => {
+function textFormatter(text, columnIndex) {
   if (columnIndex === 0) return `${text}年`
   else if (columnIndex === 1) return `${text}月`
   else if (columnIndex === 2) return `${text}日`
 }
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
@@ -175,16 +177,15 @@ const rawColumns = [
     { label: '虚空之灵', id: 4 },
   ]
 ]
-
 const normalizedColumns = rawColumns.map((column) => column.map(option => option.label))
 
-const handleChange = (_, [i1, i2, i3]) => {
+function handleChange(_, [i1, i2, i3]) {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar(ids.toString())
 }
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     columns: normalizedColumns,
     onChange: handleChange
@@ -253,18 +254,22 @@ const columns = ref(area)
 import { ref } from 'vue'
 
 const genCounts = length => Array.from({ length }, (_, index) => index + 1)
-
 const months = genCounts(12)
 const leapYearFebruaryDates = genCounts(29)
 const februaryDates = genCounts(28)
 const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
+const columns = ref(genColumns(1970, 2100))
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
-const genDates = (year, month) => {
+function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -280,7 +285,7 @@ const genDates = (year, month) => {
   return evenMonthDates
 }
 
-const genColumns = (startYear, endYear) => {   
+function genColumns(startYear, endYear) {   
   const columns = []
 
   for (let year = startYear; year < endYear; year++) {
@@ -298,9 +303,7 @@ const genColumns = (startYear, endYear) => {
   return columns
 }
 
-const columns = ref(genColumns(1970, 2100))
-
-const textFormatter = (text, columnIndex) => {
+function textFormatter(text, columnIndex) {
   if (columnIndex === 0) return `${text}年`
   else if (columnIndex === 1) return `${text}月`
   else if (columnIndex === 2) return `${text}日`
@@ -339,12 +342,10 @@ const rawColumns = [
     { label: '虚空之灵', id: 4 },
   ]
 ]
-
 const normalizedColumns = rawColumns.map(column => column.map(option => option.label))
-
 const columns = ref(normalizedColumns)
 
-const handleChange = (_, [i1, i2, i3]) => {
+function handleChange(_, [i1, i2, i3]) {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar(ids.toString())
@@ -365,7 +366,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | 标题 | _string_ | `提示` |
 | `text-key` | 文本的属性 key | _string_ | `text` |
-| `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
+| `toolbar` | 是否显示上方工具栏 | _boolean_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascade-initial-indexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `text-formatter` | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |
@@ -383,7 +384,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | 标题 | _string_ | `提示` |
 | `textKey` | 文本的属性 key | _string_ | `text` |
-| `toolbar` | 是否显示上方工具栏 | _string_ | `true` |
+| `toolbar` | 是否显示上方工具栏 | _boolean_ | `true` |
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `cascadeInitialIndexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
 | `textFormatter` | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |

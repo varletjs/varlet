@@ -18,5 +18,8 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
+  animationClass: {
+    type: String,
+  },
   onClick: defineListenerProp<(event: Event) => void>(),
 }

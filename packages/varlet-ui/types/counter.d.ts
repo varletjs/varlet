@@ -1,5 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
+export declare const counterProps: Record<string, any>
+
 export type CounterValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
 export interface CounterProps extends BasicAttributes {
@@ -11,6 +13,7 @@ export interface CounterProps extends BasicAttributes {
   inputWidth?: string | number
   inputTextSize?: string | number
   buttonSize?: string | number
+  elevation?: boolean | string | number
   decimalLength?: string | number
   disabled?: boolean
   readonly?: boolean

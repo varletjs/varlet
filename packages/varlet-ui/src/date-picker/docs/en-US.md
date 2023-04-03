@@ -27,6 +27,7 @@ import { ref } from 'vue'
 
 const date = ref('2021-04-08')
 </script>
+
 <template>
   <var-date-picker type="month" v-model="date" elevation />
 </template>
@@ -42,6 +43,7 @@ import { ref } from 'vue'
 
 const date = ref([])
 </script>
+
 <template>
   <var-date-picker v-model="date" multiple />
 </template>
@@ -56,6 +58,7 @@ import { ref } from 'vue'
 
 const date = ref(['2021-04-08', '2021-04-20'])
 </script>
+
 <template>
   <var-date-picker type="date" v-model="date" range />
 </template>
@@ -70,9 +73,7 @@ import { ref } from 'vue'
 
 const date = ref('2020-11-11')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[2], 10) % 2 === 1
-}
+const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 </script>
 
 <template>
@@ -92,11 +93,9 @@ import { ref } from 'vue'
 
 const date = ref('2021-05')
 
-const allowedDates = (val) => {
-  return parseInt(val.split('-')[1], 10) % 2 === 1
-}
+const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
 
-const change = (date) => {
+function change(date) {
   console.log(date)
 }
 </script>
@@ -136,7 +135,8 @@ const change = (date) => {
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `elevation` | Whether to enable shadows                                                                                           | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
+| `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |

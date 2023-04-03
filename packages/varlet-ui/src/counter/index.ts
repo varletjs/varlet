@@ -5,6 +5,8 @@ Counter.install = function (app: App) {
   app.component(Counter.name, Counter)
 }
 
+export { props as counterProps } from './props'
+
 export const _CounterComponent = Counter
 
 export default Counter

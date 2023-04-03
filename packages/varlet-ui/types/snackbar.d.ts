@@ -6,6 +6,8 @@ export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
+export declare const snackbarProps: Record<string, any>
+
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
   content?: string
@@ -52,7 +54,6 @@ export interface SnackbarOptions {
   contentClass?: string
   duration?: number
   vertical?: boolean
-  show?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
@@ -61,7 +62,7 @@ export interface SnackbarOptions {
 }
 
 export interface ISnackbar {
-  (options: SnackbarOptions | string): SnackbarHandel
+  (options?: SnackbarOptions | string): SnackbarHandel
 
   Component: typeof SnackbarComponent
 
@@ -79,9 +80,13 @@ export interface ISnackbar {
 
   loading(options: SnackbarOptions | string): SnackbarHandel
 
+  setDefaultOptions(options: SnackbarOptions): void
+
+  resetDefaultOptions(): void
+
   clear(): void
 }
 
-export const Snackbar: ISnackbar
+export declare const Snackbar: ISnackbar
 
 export class _SnackbarComponent extends SnackbarComponent {}

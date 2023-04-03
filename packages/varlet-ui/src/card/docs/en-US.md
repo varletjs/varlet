@@ -123,7 +123,7 @@ const floating = ref(false)
       <var-button text type="warning">ACTION 2</var-button>
     </template>
 
-    <template #content>
+    <template #floating-content>
       <var-divider dashed />
 
       <div class="card-example-text">
@@ -146,22 +146,28 @@ const floating = ref(false)
 
 ### Props
 
-| Prop                | Description                                                     | Type      | Default  |
-|---------------------|-----------------------------------------------------------------|-----------|----------|
-| `title`             | The title of Card                                               | _string_  | `-`      |
-| `subtitle`          | The subtitle of Card                                            | _string_  | `-`      |
-| `description`       | The description of Card                                         | _string_  | `-`      |
-| `elevation`         | The shadow level of Card                                        | _string \ | number_  | `2`     |
-| `src`               | The src of Image                                                | _string_  | `-`      |
-| `layout`            | Arrangement mode, options `row` `column`                        | _string_  | `column` |
-| `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_  | `cover`  |
+| Prop                | Description                                                     | Type     | Default  |
+|---------------------|-----------------------------------------------------------------|----------|----------|
+| `title`             | The title of Card                                               | _string_ | `-`      |
+| `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
+| `description`       | The description of Card                                         | _string_ | `-`      |
+ `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `src`               | The src of Image                                                | _string_ | `-`      |
+| `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
+| `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
-| `alt`               | Alt text                                                        | _string_  | `-`      |
-| `image-height`      | height of Image                                                 | _string \ | number_  | `-`     |
-| `image-width`       | width of Image                                                  | _string \ | number_  | `-`     |
+| `alt`               | Alt text                                                        | _string_ | `-`      |
+| `image-height`      | height of Image                                                 | _string \| number_  | `-`     |
+| `image-width`       | width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
 | `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
-| `floating-duration` | Time to full screen(ms)                                         | _number_  | `250`    |
+| `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
+
+### Events
+
+| Events  | Description                      | Arguments      |
+| ------- | -------------------------------- | -------------- |
+| `click` | Triggered when the Card is click | `event: Event` |
 
 ### Slots
 
@@ -174,12 +180,6 @@ const floating = ref(false)
 | `floating-content`     | Content displayed when floating | `-`  |
 | `extra`         | Custom bottom content           | `-`       |
 | `close-button`  | Custom close button             | `-`  |
-
-### Events
-
-| Events  | Description                      | Arguments      |
-| ------- | -------------------------------- | -------------- |
-| `click` | Triggered when the Card is click | `event: Event` |
 
 ### Style Variables
 

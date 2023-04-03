@@ -15,10 +15,12 @@
     "
     :style="{
       flexDirection: direction,
+      justifyContent: padStartFlex(justify),
+      alignItems: padStartFlex(align),
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
     }"
-    @click="onClick"
+    @click="handleClick"
   >
     <slot />
   </div>
@@ -29,7 +31,7 @@ import { defineComponent, ref, computed, watch } from 'vue'
 import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { useRow } from './provide'
-import { toSizeUnit } from '../utils/elements'
+import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
 import type { Ref, ComputedRef } from 'vue'
 import type { ColPadding, ColProvider, ColSizeDescriptor } from './provide'
@@ -69,9 +71,14 @@ export default defineComponent({
       return classes
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     watch([() => props.span, () => props.offset], () => {
       row?.computePadding()
     })
+
     call(bindRow, colProvider)
 
     return {
@@ -83,6 +90,8 @@ export default defineComponent({
       getSize,
       span,
       offset,
+      handleClick,
+      padStartFlex,
     }
   },
 })

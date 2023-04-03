@@ -1,5 +1,9 @@
 import { defineListenerProp } from '../utils/components'
 
+export interface SwipeToOptions {
+  event?: boolean
+}
+
 export const props = {
   loop: {
     type: Boolean,

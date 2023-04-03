@@ -17,16 +17,14 @@ test('test loading-bar methods', async () => {
   LoadingBar.error()
   await delay(0)
   expect(document.querySelector('.var-loading-bar--error')).toBeTruthy()
-  await delay(300)
+  await delay(900)
   expect(document.querySelector('.var-loading-bar--error')).toBeFalsy()
 })
 
-test('test loading-bar custom style', async () => {
-  LoadingBar.mergeConfig({
+test('test setDefaultOptions and resetDefaultOptions', async () => {
+  LoadingBar.setDefaultOptions({
     color: 'white',
     errorColor: 'black',
-    height: '10px',
-    top: '20px',
   })
 
   LoadingBar.start()
@@ -35,12 +33,19 @@ test('test loading-bar custom style', async () => {
   const el = document.querySelector('.var-loading-bar')
 
   expect(el.style.backgroundColor).toBe('white')
-  expect(el.style.height).toBe('10px')
-  expect(el.style.top).toBe('20px')
 
   LoadingBar.error()
   await delay(200)
   expect(el.style.backgroundColor).toBe('black')
+
+  LoadingBar.resetDefaultOptions()
+
+  await delay(200)
+  expect(el.style.backgroundColor).toBe('')
+
+  LoadingBar.error()
+  await delay(200)
+  expect(el.style.backgroundColor).toBe('')
 
   el.remove()
 })

@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { App, TeleportProps, VNode } from 'vue'
 
+export declare const imagePreviewProps: Record<string, any>
+
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
   current?: string
@@ -19,7 +21,6 @@ export interface ImagePreviewProps extends BasicAttributes {
 }
 
 export interface ImagePreviewOptions {
-  show?: boolean
   current?: string
   images?: string[]
   zoom?: string | number
@@ -45,13 +46,18 @@ export class ImagePreviewComponent extends VarComponent {
 
 export interface IImagePreview {
   (options: string | string[] | ImagePreviewOptions): void
+
   Component: typeof ImagePreviewComponent
+
+  setDefaultOptions(options: ImagePreviewOptions): void
+
+  resetDefaultOptions(): void
 
   close(): void
 
   install(app: App): void
 }
 
-export const ImagePreview: IImagePreview
+export declare const ImagePreview: IImagePreview
 
 export class _ImagePreviewComponent extends ImagePreviewComponent {}

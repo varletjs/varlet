@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ellipsis expandTrigger equals click 1`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--line var-ellipsis--cursor\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis expandTrigger equals click 2`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--line var-ellipsis--cursor var-ellipsis--expand\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis expandTrigger equals undefined 1`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--line\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis expandTrigger equals undefined 2`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--line\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis lineClamp 1`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--clamp\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis single line 1`] = `
+"<div class=\\"var-tooltip\\"><span class=\\"var-ellipsis var-ellipsis--line\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;

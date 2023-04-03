@@ -14,7 +14,7 @@ import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
-const change = (value) => {
+function change(value) {
   console.log(value)
 }
 
@@ -31,7 +31,7 @@ onMounted(() => {
       <var-index-anchor :index="item" class="var-index-anchor__example">
         Title {{ item }}
       </var-index-anchor>
-      <var-cell>{{ item }} Text</var-cell>
+
       <var-cell>{{ item }} Text</var-cell>
       <var-cell>{{ item }} Text</var-cell>
     </div>
@@ -45,8 +45,8 @@ onMounted(() => {
   align-items: center;
   padding: 0 12px;
   transition: all 0.25s;
-  background: #e7edf7;
-  color: #2e67ba;
+  background: var(--color-primary);
+  color: #fff;
 }
 </style>
 ```
@@ -57,15 +57,15 @@ onMounted(() => {
 
 #### IndexBar Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | --------- |
-| `sticky` | Whether to enable anchor sticky top | _boolean_ | `true` |
+| Prop                | Description | Type | Default |
+|---------------------| -------------- | -------- | --------- |
+| `sticky`            | Whether to enable anchor sticky top | _boolean_ | `true` |
 | `sticky-offset-top` | Anchor offset top when sticky | _number \| string_ | `0` |
-| `hide-list` | Whether to hide anchor list | _boolean_ | `false` |
-| `css-mode` | Enable native `css sticky` mode | _boolean_ | `false` |
-| `z-index` | z-index | _string \| number_ | `1` |
-| `highlight-color` | Index character highlight color | _string_ | `#ee0a24` |
-| `duration` | Animation duration | _string \| number_ | `0` |
+| `hide-list`         | Whether to hide anchor list | _boolean_ | `false` |
+| `sticky-css-mode`   | Enable native `css sticky` mode | _boolean_ | `false` |
+| `z-index`           | z-index | _string \| number_ | `1` |
+| `highlight-color`   | Index character highlight color | _string_ | `#ee0a24` |
+| `duration`          | Animation duration | _string \| number_ | `0` |
 
 #### IndexAnchor Props
 
@@ -101,7 +101,14 @@ Use ref to get IndexBar instance and call instance methods.
 
 | Method | Description	 | arguments | Return |
 | ---- | ------- | -------- |---- |
-| `scrollTo` | scroll to target element	 | `index: number \| string` | `-` |
+| `scrollTo` | scroll to target element	 | `index: number \| string, options?: IndexBarScrollToOptions` | `-` |
+
+#### IndexBarScrollToOptions
+
+| Option              | Description                      | Type               | Default |
+| --- | --- | --- | --- |
+| `event` | prevent `change` emit event when `false` | _boolean_ | `-` |
+
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

@@ -37,10 +37,12 @@
 可以在尾部插槽中插入一些东西，最常见的是插入分页组件。
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 
-const gen = (current, size) => {
+const list = ref(gen(1, 10))
+
+function gen(current, size) {
   return Array.from({ length: size }).map((_, index) => {
     const id = (current - 1) * size + index + 1
 
@@ -52,9 +54,7 @@ const gen = (current, size) => {
   })
 }
 
-const list = ref(gen(1, 10))
-
-const get = (current, size) => {
+function get(current, size) {
   list.value = gen(current, size)
 }
 </script>
@@ -109,6 +109,7 @@ const get = (current, size) => {
 | 参数           | 说明 | 类型 | 默认值 |
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | `table` 的宽度(包含可滚动部分)	| _string \| number_ | `100%` |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 
 ### 插槽
 

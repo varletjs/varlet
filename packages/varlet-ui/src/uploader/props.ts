@@ -38,6 +38,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   removable: {
     type: Boolean,
     default: true,

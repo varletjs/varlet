@@ -3,6 +3,8 @@ import { VNode } from 'vue'
 
 type Range = [number, number]
 
+export declare const paginationProps: Record<string, any>
+
 export interface PaginationProps extends BasicAttributes {
   current?: string | number
   size?: string | number
@@ -10,6 +12,7 @@ export interface PaginationProps extends BasicAttributes {
   maxPagerCount?: number
   disabled?: boolean
   simple?: boolean
+  elevation?: boolean | string | number
   showSizeChanger?: boolean
   showQuickJumper?: boolean
   sizeOption?: Array<number>

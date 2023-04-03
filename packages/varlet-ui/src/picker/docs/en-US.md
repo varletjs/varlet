@@ -13,7 +13,7 @@ import { Picker } from '@varlet/ui'
 
 const columns = [Array.from({ length: 20 }).map((_, index) => index)]
 
-const picker = async () => {
+async function picker() {
   await Picker(columns)
 }
 </script>
@@ -38,7 +38,7 @@ const columns = [
   Array.from({ length: 20 }).map((_, index) => index)
 ]
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker(columns)
 }
 </script>
@@ -58,7 +58,7 @@ Built-in component library provides a three-level linkage between provinces and 
 import { Picker } from '@varlet/ui'
 import columns from '@varlet/ui/json/area.json'
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns
@@ -83,18 +83,22 @@ The following is the case of year month day selection
 import { Picker } from '@varlet/ui'
 
 const genCounts = length => Array.from({ length }, (_, index) => index + 1)
-
 const months = genCounts(12)
 const leapYearFebruaryDates = genCounts(29)
 const februaryDates = genCounts(28)
 const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
+const columns = genColumns(1970, 2100)
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
-const genDates = (year, month) => {
+function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -110,7 +114,7 @@ const genDates = (year, month) => {
   return evenMonthDates
 }
 
-const genColumns = (startYear, endYear) => {
+function genColumns(startYear, endYear) {
   const columns = []
 
   for (let year = startYear; year < endYear; year++) {
@@ -128,15 +132,13 @@ const genColumns = (startYear, endYear) => {
   return columns
 }
 
-const columns = genColumns(1970, 2100)
-
-const textFormatter = (text, columnIndex) => {
+function textFormatter(text, columnIndex) {
   if (columnIndex === 0) return `${text} YEAR`
   else if (columnIndex === 1) return `${text} MONTH`
   else if (columnIndex === 2) return `${text} DATE`
 }
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
@@ -176,16 +178,15 @@ const rawColumns = [
     { label: 'Void Spirit', id: 4 },
   ],
 ]
-
 const normalizedColumns = rawColumns.map((column) => column.map(option => option.label))
 
-const handleChange = (_, [i1, i2, i3]) => {
+function handleChange(_, [i1, i2, i3]) {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar(ids.toString())
 }
 
-const picker = async () => {
+async function picker() {
   const { state, texts, indexes } = await Picker({
     columns: normalizedColumns,
     onChange: handleChange
@@ -254,18 +255,22 @@ const columns = ref(area)
 import { ref } from 'vue'
 
 const genCounts = length => Array.from({ length }, (_, index) => index + 1)
-
 const months = genCounts(12)
 const leapYearFebruaryDates = genCounts(29)
 const februaryDates = genCounts(28)
 const oddMonthDates = genCounts(31)
 const evenMonthDates = genCounts(30)
+const columns = ref(genColumns(1970, 2100))
 
-const isOddMonth = month => [1, 3, 5, 7, 8, 10, 12].includes(month)
+function isOddMonth(month) {
+  return [1, 3, 5, 7, 8, 10, 12].includes(month)
+}
 
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
 
-const genDates = (year, month) => {
+function genDates(year, month) {
   if (isLeapYear(year) && month === 2) {
     return leapYearFebruaryDates
   }
@@ -281,7 +286,7 @@ const genDates = (year, month) => {
   return evenMonthDates
 }
 
-const genColumns = (startYear, endYear) => {
+function genColumns(startYear, endYear) {
   const columns = []
 
   for (let year = startYear; year < endYear; year++) {
@@ -299,9 +304,7 @@ const genColumns = (startYear, endYear) => {
   return columns
 }
 
-const columns = ref(genColumns(1970, 2100))
-
-const textFormatter = (text, columnIndex) => {
+function textFormatter(text, columnIndex) {
   if (columnIndex === 0) return `${text} YEAR`
   else if (columnIndex === 1) return `${text} MONTH`
   else if (columnIndex === 2) return `${text} DATE`
@@ -340,12 +343,11 @@ const rawColumns = [
     { label: 'Void Spirit', id: 4 },
   ]
 ]
-
 const normalizedColumns = rawColumns.map(column => column.map(option => option.label))
 
 const columns = ref(normalizedColumns)
 
-const handleChange = (_, [i1, i2, i3]) => {
+function handleChange(_, [i1, i2, i3]) {
   const [c1, c2, c3] = rawColumns
   const ids = [c1[i1].id, c2[i2].id, c3[i3].id]
   Snackbar(ids.toString())
@@ -366,7 +368,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `columns` | Column content | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | title | _string_ | `Pick it` |
 | `text-key` | The attribute key of the text | _string_ | `text` |
-| `toolbar` | Whether to display the top toolbar | _string_ | `true` |
+| `toolbar` | Whether to display the top toolbar | _boolean_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascade-initial-indexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `text-formatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
@@ -384,7 +386,7 @@ const handleChange = (_, [i1, i2, i3]) => {
 | `columns` | Column content | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
 | `title` | title | _string_ | `Pick it` |
 | `textKey` | The attribute key of the text | _string_ | `text` |
-| `toolbar` | Whether to display the top toolbar | _string_ | `true` |
+| `toolbar` | Whether to display the top toolbar | _boolean_ | `true` |
 | `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
 | `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
 | `textFormatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |

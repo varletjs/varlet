@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const collapseItemProps: Record<string, any>
+
 export interface CollapseItemProps extends BasicAttributes {
   name?: string | number
   title?: string

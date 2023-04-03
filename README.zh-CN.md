@@ -25,20 +25,22 @@
 
 ### 介绍
 
-Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由社区建立起来的组件库团队进行维护。
+Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由 `varletjs` 社区团队进行维护。
 
 ### 特性
-- 🚀 &nbsp; 提供50+个高质量通用组件 
+
+- 🚀 &nbsp; 提供 60+ 个高质量通用组件
 - 🚀 &nbsp; 组件十分轻量
 - 💪 &nbsp; 由国人开发，完善的中英文文档和后勤保障
 - 🛠️ &nbsp; 支持按需引入
 - 🛠️ &nbsp; 支持主题定制
 - 🌍 &nbsp; 支持国际化
-- 💡 &nbsp; 支持 webstorm，vscode 组件属性高亮
+- 💡 &nbsp; 支持 webstorm 组件属性高亮
 - 💪 &nbsp; 支持 SSR
-- 💡 &nbsp; 支持 Typescript 
-- 💪 &nbsp; 确保90%以上单元测试覆盖率，提供稳定性保证
+- 💡 &nbsp; 支持 Typescript
+- 💪 &nbsp; 确保 90% 以上单元测试覆盖率，提供稳定性保证
 - 🛠️ &nbsp; 支持暗黑模式
+- 🛠️ &nbsp; 提供官方的 VSCode 插件
 
 ### 安装
 
@@ -47,7 +49,9 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ```html
 <div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+ <!-- 桌面端兼容 -->
+<script src="https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
 <script>
   const app = Vue.createApp({
@@ -75,7 +79,7 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```

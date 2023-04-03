@@ -12,12 +12,10 @@
 ```html
 <script setup>
 import { Dialog } from '@varlet/ui'
-
-const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
 </script>
 
 <template>
-  <var-button type="primary" block @click="createBasic">基本使用</var-button>
+  <var-button type="primary" block @click="Dialog('兰亭临帖 行书如行云流水')">基本使用</var-button>
 </template>
 ```
 
@@ -27,7 +25,7 @@ const createBasic = () => Dialog('兰亭临帖 行书如行云流水')
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const modifyTitle = () => {
+function modifyTitle() {
   Dialog({
     title: '兰亭序',
     message: '兰亭临帖 行书如行云流水',
@@ -46,7 +44,7 @@ const modifyTitle = () => {
 <script setup>
 import { Dialog } from '@varlet/ui'
 
-const hideButton = () => {
+function hideButton() {
   Dialog({
     message: '兰亭临帖 行书如行云流水',
     confirmButton: false,
@@ -75,7 +73,9 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const createAction = async () => actions[await Dialog('兰亭临帖 行书如行云流水')]()
+async function createAction() {
+  actions[await Dialog('兰亭临帖 行书如行云流水')]()
+}
 </script>
 
 <template>
@@ -97,15 +97,16 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('正在异步关闭')
+  
   setTimeout(() => {
     actions[action]()
     done()
   }, 1000)
 }
 
-const createAction = async () => {
+function createAction() {
   Dialog({
     message: '兰亭临帖 行书如行云流水',
     onBeforeClose
@@ -158,7 +159,7 @@ const actions = {
   close: () => Snackbar.info('close'),
 }
 
-const onBeforeClose = (action, done) => {
+function onBeforeClose(action, done) {
   Snackbar.loading('Asynchronous shutdown in progress')
 
   setTimeout(() => {
@@ -210,6 +211,7 @@ const show = ref(false)
 | --- | --- | --- | --- |
 | `v-model:show` | 是否显示对话框 | _boolean_ | `false` |
 | `title` | 对话框标题 | _string_ | `提示` |
+| `width` | 对话框宽度 | _string \| number_ | `-` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `message-align` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirm-button` | 是否显示确认按钮 | _boolean_ | `true` |
@@ -242,6 +244,15 @@ const show = ref(false)
 | `cancel` | 取消时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
 
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `Dialog` | 显示对话框 | _options \| string_ | `-` |
+| `Dialog.close` | 关闭对话框 | _-_ | `-` |
+| `Dialog.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `Dialog.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+
 ### Dialog Options
 
 #### 函数式调用时传入的选项
@@ -249,6 +260,7 @@ const show = ref(false)
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `title` | 对话框标题 | _string_ | `提示` |
+| `width` | 对话框宽度 | _string \| number_ | `-` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `messageAlign` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | 是否显示确认按钮 | _boolean_ | `true` |

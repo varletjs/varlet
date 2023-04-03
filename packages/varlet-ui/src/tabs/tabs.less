@@ -6,6 +6,7 @@
   --tabs-indicator-size: 2px;
   --tabs-indicator-background: var(--color-primary);
   --tabs-background: #fff;
+  --tabs-indicator-inner-size: 100%;
 }
 
 .var-tabs {
@@ -21,10 +22,17 @@
   }
 
   &__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     transition-property: width, transform;
     transition-duration: 0.3s;
+  }
+
+  &__indicator-inner {
+    background: var(--tabs-indicator-background);
   }
 
   &--layout-horizontal {
@@ -47,7 +55,17 @@
       left: 0;
       bottom: 0;
       height: var(--tabs-indicator-size);
-      background: var(--tabs-indicator-background);
+    }
+
+    &-reverse-indicator {
+      left: 0;
+      top: 0;
+      height: var(--tabs-indicator-size);
+    }
+
+    &-indicator-inner {
+      width: var(--tabs-indicator-inner-size);
+      height: 100%;
     }
   }
 
@@ -71,7 +89,17 @@
       left: 0;
       top: 0;
       width: var(--tabs-indicator-size);
-      background: var(--tabs-indicator-background);
+    }
+
+    &-reverse-indicator {
+      right: 0;
+      top: 0;
+      width: var(--tabs-indicator-size);
+    }
+
+    &-indicator-inner {
+      width: 100%;
+      height: var(--tabs-indicator-inner-size);
     }
   }
 

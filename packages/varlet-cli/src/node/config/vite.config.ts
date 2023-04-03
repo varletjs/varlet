@@ -1,28 +1,21 @@
 import vue from '@vitejs/plugin-vue'
-import md from '@varlet/markdown-vite-plugin'
 import jsx from '@vitejs/plugin-vue-jsx'
-import fse from 'fs-extra'
-import { injectHtml } from 'vite-plugin-html'
+import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import {
-  CWD,
   ES_DIR,
-  LIB_DIR,
   SITE_CONFIG,
   SITE_DIR,
   SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
   SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
-  UMD_DIR,
   VITE_RESOLVE_EXTENSIONS,
+  EXTENSION_ENTRY,
 } from '../shared/constant.js'
-import { InlineConfig, PluginOption } from 'vite'
+import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
-import { kebabCase } from '@varlet/shared'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config'
-
-const { copyFileSync, pathExistsSync, readFileSync, removeSync, writeFileSync } = fse
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -33,6 +26,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
     resolve: {
       extensions: VITE_RESOLVE_EXTENSIONS,
+
       alias: {
         '@config': SITE_CONFIG,
         '@pc-routes': SITE_PC_ROUTES,
@@ -51,14 +45,19 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
       vue({
         include: [/\.vue$/, /\.md$/],
       }),
-      md({ style: get(varletConfig, 'highlight.style') }),
+
       jsx(),
-      injectHtml({
+
+      markdown({ style: get(varletConfig, 'highlight.style') }),
+
+      copy({ paths: get(varletConfig, 'copy', []) }),
+
+      html({
         data: {
-          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
-          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           logo: get(varletConfig, `logo`),
           baidu: get(varletConfig, `analysis.baidu`, ''),
+          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
+          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
         },
       }),
     ],
@@ -88,58 +87,55 @@ export function getBuildConfig(varletConfig: Required<VarletConfig>): InlineConf
   }
 }
 
-function inlineCSS(fileName: string, dir: string): PluginOption {
-  return {
-    name: 'varlet-inline-css-vite-plugin',
-    apply: 'build',
-    closeBundle() {
-      const cssFile = resolve(dir, 'style.css')
-      if (!pathExistsSync(cssFile)) {
-        return
-      }
-
-      const jsFile = resolve(dir, fileName)
-      const cssCode = readFileSync(cssFile, 'utf-8')
-      const jsCode = readFileSync(jsFile, 'utf-8')
-      const injectCode = `;(function(){var style=document.createElement('style');style.type='text/css';\
-style.rel='stylesheet';style.appendChild(document.createTextNode(\`${cssCode.replace(/\\/g, '\\\\')}\`));\
-var head=document.querySelector('head');head.appendChild(style)})();`
-      writeFileSync(jsFile, `${injectCode}${jsCode}`)
-      copyFileSync(cssFile, resolve(LIB_DIR, 'style.css'))
-      removeSync(cssFile)
-    },
-  }
+export interface BundleBuildOptions {
+  fileName: string
+  output: string
+  format: 'es' | 'cjs' | 'umd'
+  emptyOutDir: boolean
 }
 
-function clear(): PluginOption {
-  return {
-    name: 'varlet-clear-vite-plugin',
-    apply: 'build',
-    closeBundle() {
-      removeSync(resolve(CWD, 'dist'))
-    },
-  }
-}
-
-export function getESMBundleConfig(varletConfig: Required<VarletConfig>): InlineConfig {
+export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
+  const plugins = []
   const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.esm.js`
+  const { fileName, output, format, emptyOutDir } = buildOptions
+
+  if (format === 'umd') {
+    plugins.push(
+      inlineCss({
+        jsFile: resolve(output, fileName),
+        cssFile: resolve(output, 'style.css'),
+      })
+    )
+  }
+
+  const define =
+    format === 'umd'
+      ? {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }
+      : undefined
 
   return {
     logLevel: 'silent',
 
+    define,
+
+    plugins,
+
     build: {
-      emptyOutDir: true,
+      minify: format === 'cjs' ? false : 'esbuild',
+      emptyOutDir,
+      copyPublicDir: false,
       lib: {
         name,
-        formats: ['es'],
+        formats: [format],
         fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
+        entry: resolve(ES_DIR, 'index.bundle.mjs'),
       },
       rollupOptions: {
         external: ['vue'],
         output: {
-          dir: ES_DIR,
+          dir: output,
           exports: 'named',
           globals: {
             vue: 'Vue',
@@ -147,38 +143,27 @@ export function getESMBundleConfig(varletConfig: Required<VarletConfig>): Inline
         },
       },
     },
-
-    plugins: [clear()],
   }
 }
 
-export function getUMDConfig(varletConfig: Required<VarletConfig>): InlineConfig {
-  const name = get(varletConfig, 'name')
-  const fileName = `${kebabCase(name)}.js`
+export type ExtensionMode = 'dev' | 'build'
 
+export function getExtensionConfig(mode: ExtensionMode): InlineConfig {
   return {
-    logLevel: 'silent',
-
     build: {
-      emptyOutDir: true,
+      sourcemap: mode === 'dev' ? 'inline' : false,
+
+      watch: mode === 'dev' ? {} : null,
+
       lib: {
-        name,
-        formats: ['umd'],
-        fileName: () => fileName,
-        entry: resolve(ES_DIR, 'umdIndex.js'),
+        entry: EXTENSION_ENTRY,
+        fileName: 'extension',
+        formats: ['cjs'],
       },
+
       rollupOptions: {
-        external: ['vue'],
-        output: {
-          dir: UMD_DIR,
-          exports: 'named',
-          globals: {
-            vue: 'Vue',
-          },
-        },
+        external: ['vscode'],
       },
     },
-
-    plugins: [inlineCSS(fileName, UMD_DIR), clear()],
   }
 }

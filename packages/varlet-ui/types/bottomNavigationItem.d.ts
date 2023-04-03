@@ -2,6 +2,8 @@ import { VarComponent, BasicAttributes } from './varComponent'
 import { BadgeProps } from './badge'
 import { VNode } from 'vue'
 
+export declare const bottomNavigationItemProps: Record<string, any>
+
 export interface BottomNavigationItemProps extends BasicAttributes {
   name?: string
   icon?: string

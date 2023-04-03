@@ -209,7 +209,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -247,7 +247,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -287,7 +287,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -325,7 +325,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -367,7 +367,7 @@ const actions = ref([
   },
 ])
 
-function handleSelect() {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -409,6 +409,15 @@ function handleSelect() {
 | `close`         | Triggered when the action sheet is close             | `-`              |
 | `closed`        | Triggered when the action sheet close-animation ends | `-`              |
 | `click-overlay` | Triggered when you click on overlay                  | `-`              |
+
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `ActionSheet` | Show action sheet | _options \| string_ | `-` |
+| `ActionSheet.close` | Close action sheet | _-_ | `-` |
+| `ActionSheet.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ActionSheet.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### ActionSheet Options
 

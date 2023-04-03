@@ -2,6 +2,8 @@ import type { App } from 'vue'
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const pickerProps: Record<string, any>
+
 export interface NormalColumn extends BasicAttributes {
   texts: Texts
   initialIndex?: number

@@ -163,19 +163,147 @@ function handleAutoLoadingClick() {
 </template>
 ```
 
+### 按钮组主题色
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="default">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button type="primary">按钮</var-button>
+      <var-button type="primary">按钮</var-button>
+      <var-button type="primary">按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 按钮组尺寸
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" size="normal">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" size="large">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 按钮拆分
+
+```html
+<template>
+  <var-menu placement="bottom" same-width :offset-y="6">
+    <var-button-group type="primary">
+      <var-button @click.stop>按钮拆分</var-button>
+      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+        <var-icon name="menu-down" :size="24" />
+      </var-button>
+    </var-button-group>
+
+    <template #menu>
+      <var-cell ripple>按钮拆分</var-cell>
+      <var-cell ripple>按钮拆分</var-cell>
+      <var-cell ripple>按钮拆分</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### 按钮组模式
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary">
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
+### 自定义按钮组颜色
+
+```html
+<template>
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+    <var-button>按钮</var-button>
+    <var-button>按钮</var-button>
+    <var-button>按钮</var-button>
+  </var-button-group>
+</template>
+```
+
+### 按钮组竖直排列
+
+```html
+<template>
+  <var-space :size="[10, 10]">
+    <var-button-group type="primary" mode="text" vertical>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" mode="outline" vertical>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  
+    <var-button-group type="primary" vertical>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+      <var-button>按钮</var-button>
+    </var-button-group>
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
 
-| 参数               | 说明                                                              | 类型        | 默认值            |
-|------------------|-----------------------------------------------------------------|-----------|----------------|
-| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default`      |
-| `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_  | `normal`       |
+#### Button Props
+
+| 参数               | 说明                                                              | 类型       | 默认值            |
+|------------------|-----------------------------------------------------------------|----------|----------------|
+| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default`      |
+| `native-type`    | 原生类型，可选值为 `button` `submit` `reset`                             | _string_ | `button`       |
+| `size`           | 尺寸，可选值为 `normal` `mini` `small` `large`                         | _string_ | `normal`       |
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
 | `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |
-| `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_  | `circle`       |
-| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_  | `normal`       |
-| `loading-color`  | loading 的颜色                                                     | _string_  | `currentColor` |
+| `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_ | `circle`       |
+| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_ | `normal`       |
+| `loading-color`  | loading 的颜色                                                     | _string_ | `currentColor` |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                          | _boolean_ | `false`        |
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |
 | `block`          | 是否是块级元素                                                         | _boolean_ | `false`        |
@@ -183,10 +311,25 @@ function handleAutoLoadingClick() {
 | `outline`        | 是否使用外边框                                                         | _boolean_ | `false`        |
 | `disabled`       | 禁用状态                                                            | _boolean_ | `false`        |
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
-| `text-color`     | 文字颜色                                                            | _string_  | `-`            |
-| `color`          | 背景颜色                                                            | _string_  | `-`            |
+| `text-color`     | 文字颜色                                                            | _string_ | `-`            |
+| `color`          | 背景颜色                                                            | _string_ | `-`            |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
+
+#### ButtonGroup Props
+
+| 参数          | 说明                                                               | 类型       | 默认值       |
+|-------------|------------------------------------------------------------------|----------|-----------|
+| `type`      | 按钮组类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
+| `mode`      | 按钮组模式，可选值为 `normal` `text` `outline`                               | _string_ | `normal`       |
+| `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
+| `elevation`      | 按钮组海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number_ \| _boolean_ | `true`            |
+| `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |
+| `text-color` | 按钮组文字颜色                                                          | _string_ | `-`       |
 
 ### 事件
+
+#### Button Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -195,12 +338,22 @@ function handleAutoLoadingClick() {
 
 ### 插槽
 
+#### Button Slots
+
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 按钮内容 | `-` |
 
+#### ButtonGroup Slots
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `default` | 按钮组内容 | `-` |
+
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+#### Button Variables
 
 | 变量名 | 默认值 |
 | --- | --- |

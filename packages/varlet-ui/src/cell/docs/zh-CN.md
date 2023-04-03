@@ -8,7 +8,7 @@
 
 ```html
 <template>
-  <var-cell> 这是单元格 </var-cell>
+  <var-cell>这是单元格</var-cell>
 </template>
 ```
 
@@ -36,7 +36,57 @@
 
 ```html
 <template>
-  <var-cell border> 这是单元格 </var-cell>
+  <var-cell border>这是单元格</var-cell>
+</template>
+```
+
+### 用作列表项
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const items = ref([
+  {
+    name: 'Vue2',
+    icon: 'star',
+    enabled: false,
+  },
+  {
+    name: 'Vue3',
+    icon: 'heart',
+    enabled: false,
+  },
+  {
+    name: 'React',
+    icon: 'close-circle',
+    enabled: false,
+  },
+])
+
+const handleClick = (item) => {
+  item.enabled = !item.enabled
+}
+</script>
+
+<template>
+  <var-paper :elevation="2">
+    <var-cell
+      v-for="(item, index) in items"
+      :key="item.name"
+      ripple
+      :icon="item.icon"
+      :border="index !== items.length - 1"
+      :border-offset="0"
+      @click="handleClick(item)"
+    >
+      {{ item.name }}
+
+      <template #extra>
+        <var-switch v-model="item.enabled" @click.stop />
+      </template>
+    </var-cell>
+  </var-paper>
 </template>
 ```
 
@@ -50,10 +100,18 @@
 | `icon` | 左侧图标名称 | _string_ | `-` |
 | `description` | 单元格描述 | _string_ | `-` |
 | `border` | 是否显示边框 | _boolean_ | `false` |
+| `border-offset` | 边框偏移量 | _string \| number_ | `-` |
 | `icon-class` | 图标额外类名 | _string_ | `-` |
 | `title-class` | 标题额外类名 | _string_ | `-` |
 | `description-class` | 描述额外类名 | _string_ | `-` |
 | `extra-class` | 右侧内容额外类名 | _string_ | `-` |
+| `ripple` | 是否启用水波效果 | _boolean_ | `false` |
+
+### 事件
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `click` | 点击时触发 | `event: Event` |
 
 ### 插槽
 

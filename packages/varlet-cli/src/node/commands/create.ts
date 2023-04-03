@@ -14,7 +14,7 @@ const { prompt } = inquirer
 
 type CodingStyle = 'tsx' | 'vue'
 
-interface CreateCommandOptions {
+export interface CreateCommandOptions {
   name?: string
   locale?: boolean
   sfc?: boolean

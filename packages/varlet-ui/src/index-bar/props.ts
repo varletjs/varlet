@@ -1,5 +1,15 @@
 import { defineListenerProp } from '../utils/components'
 
+export interface IndexBarScrollToOptions {
+  event?: boolean
+}
+
+export interface ClickOptions {
+  anchorName: string | number
+  manualCall?: boolean
+  options?: IndexBarScrollToOptions
+}
+
 export const props = {
   sticky: {
     type: Boolean,
@@ -9,7 +19,12 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
+  /** @deprecated Use stickyCssMode to instead. */
   cssMode: {
+    type: Boolean,
+    default: false,
+  },
+  stickyCssMode: {
     type: Boolean,
     default: false,
   },

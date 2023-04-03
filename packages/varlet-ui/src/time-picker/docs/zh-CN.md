@@ -99,7 +99,7 @@ import { ref } from 'vue'
 
 const date = ref('05:10')
 
-const change = (time) => {
+function change(time) {
   console.log(time)
 }
 </script>
@@ -126,7 +126,7 @@ const change = (time) => {
 | `format` | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
 | `color` | 选择器的颜色                                   | _string_ | `#2979ff` |
 | `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。          | _string_ | `#2979ff` |
-| `elevation` | 是否添加阴影                                   | _boolean_ | `false` |
+| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级     | _string \| number \| boolean_|   `false`    |
 | `min` | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
 | `max` | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
 | `allowed-time` | 限制可以选择的时间                                | _AllowedTime_ | `-` |

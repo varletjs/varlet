@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-import fse from 'fs-extra'
 import { Command } from 'commander'
-import { CLI_PACKAGE_JSON } from './shared/constant.js'
-
-const { readJSONSync } = fse
+import { getCliVersion } from './shared/fsUtils.js'
 
 const program = new Command()
 
-program.version(`varlet-cli ${readJSONSync(CLI_PACKAGE_JSON).version}`).usage('<command> [options]')
+program.version(`varlet-cli ${getCliVersion()}`).usage('<command> [options]')
 
 program
   .command('dev')
@@ -29,6 +26,15 @@ program
   })
 
 program
+  .command('dev:vite')
+  .description('Use vite start server for development')
+  .action(async () => {
+    const { vite } = await import('./commands/vite.js')
+
+    return vite('dev')
+  })
+
+program
   .command('build:vite')
   .description('Use vite build app for production')
   .action(async () => {
@@ -38,12 +44,30 @@ program
   })
 
 program
-  .command('dev:vite')
-  .description('Use vite start server for development')
+  .command('dev:extension')
+  .description('Run VSCode extension development environment')
   .action(async () => {
-    const { vite } = await import('./commands/vite.js')
+    const { extension } = await import('./commands/extension.js')
 
-    return vite('dev')
+    return extension('dev')
+  })
+
+program
+  .command('build:extension')
+  .description('Build VSCode extension for production')
+  .action(async () => {
+    const { extension } = await import('./commands/extension.js')
+
+    return extension('build')
+  })
+
+program
+  .command('build:icons')
+  .description('Build icons')
+  .action(async () => {
+    const { icons } = await import('./commands/icons.js')
+
+    return icons()
   })
 
 program
@@ -58,11 +82,10 @@ program
 program
   .command('compile')
   .description('Compile varlet components library code')
-  .option('-nu, --noUmd', 'Do not compile umd target code')
-  .action(async (options) => {
+  .action(async () => {
     const { compile } = await import('./commands/compile.js')
 
-    return compile(options)
+    return compile()
   })
 
 program
@@ -141,6 +164,15 @@ program
     const { commitLint } = await import('./commands/commitLint.js')
 
     return commitLint(option)
+  })
+
+program
+  .command('checklist <gitParams>')
+  .description('Display a checklist for confirmation')
+  .action(async (option) => {
+    const { checklist } = await import('./commands/checklist.js')
+
+    return checklist(option)
   })
 
 program.on('command:*', async ([cmd]) => {

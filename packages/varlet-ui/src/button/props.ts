@@ -1,24 +1,35 @@
 import { props as loadingProps } from '../loading/props'
 import { defineListenerProp, pickProps } from '../utils/components'
-import type { PropType } from 'vue'
+import type { ButtonHTMLAttributes, PropType } from 'vue'
 
-function typeValidator(type: string): boolean {
+export function typeValidator(type: string): boolean {
   return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
 }
 
-function sizeValidator(size: string): boolean {
+export function sizeValidator(size: string): boolean {
   return ['normal', 'mini', 'small', 'large'].includes(size)
 }
 
+export function nativeTypeValidator(nativeType: string): boolean {
+  return ['button', 'reset', 'submit'].includes(nativeType)
+}
+
+export type ButtonType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+
+export type ButtonSize = 'normal' | 'mini' | 'small' | 'large'
+
 export const props = {
   type: {
-    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
-    default: 'default',
+    type: String as PropType<ButtonType>,
     validator: typeValidator,
   },
+  nativeType: {
+    type: String as PropType<ButtonHTMLAttributes['type']>,
+    default: 'button',
+    validator: nativeTypeValidator,
+  },
   size: {
-    type: String as PropType<'normal' | 'mini' | 'small' | 'large'>,
-    default: 'normal',
+    type: String as PropType<ButtonSize>,
     validator: sizeValidator,
   },
   loading: {
@@ -54,6 +65,10 @@ export const props = {
   },
   textColor: {
     type: String,
+  },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
   },
   autoLoading: {
     type: Boolean,

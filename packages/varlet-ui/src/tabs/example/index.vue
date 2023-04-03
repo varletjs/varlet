@@ -17,9 +17,10 @@ const actives = reactive({
   active5: 0,
   active6: 0,
   active7: 0,
+  active8: 0,
   activeRelation: 0,
 })
-const { active, active2, active3, active4, active5, active6, active7, activeRelation } = toRefs(actives)
+const { active, active2, active3, active4, active5, active6, active7, active8, activeRelation } = toRefs(actives)
 
 const theme = ref('lightTheme')
 const tabItemStyle = computed(() => ({
@@ -158,6 +159,36 @@ watchDarkMode(dark, (mode) => {
     inactive-color="hsla(0, 0%, 100%, .6)"
     offset-top="14.4vw"
     v-model:active="active7"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
+
+  <app-type>{{ pack.indicatorPosition }}</app-type>
+  <var-tabs
+    elevation
+    indicator-position="reverse"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active8"
+  >
+    <var-tab>{{ pack.option }}1</var-tab>
+    <var-tab>{{ pack.option }}2</var-tab>
+    <var-tab>{{ pack.option }}3</var-tab>
+  </var-tabs>
+
+  <var-tabs
+    style="margin-top: 20px"
+    elevation
+    class="vertical-tabs"
+    indicator-position="reverse"
+    layout-direction="vertical"
+    color="var(--color-primary)"
+    active-color="#fff"
+    inactive-color="hsla(0, 0%, 100%, .6)"
+    v-model:active="active8"
   >
     <var-tab>{{ pack.option }}1</var-tab>
     <var-tab>{{ pack.option }}2</var-tab>

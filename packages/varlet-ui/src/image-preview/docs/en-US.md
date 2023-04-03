@@ -12,7 +12,7 @@ Image-Preview, Support double-click magnification, Support function call and com
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
 }
 </script>
@@ -27,7 +27,7 @@ const preview = () => {
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview({
     images: [
       'https://varlet.gitee.io/varlet-ui/cat.jpg',
@@ -143,7 +143,6 @@ const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
 ])
-const handleCloseEvent = () => Snackbar('The shutdown event was triggered.');
 </script>
 
 <template>
@@ -157,7 +156,7 @@ const handleCloseEvent = () => Snackbar('The shutdown event was triggered.');
   <var-image-preview 
     :images="images"
     v-model:show="show"
-    @close="handleCloseEvent" 
+    @close="Snackbar('The shutdown event was triggered.')" 
   />
 </template>
 ```
@@ -233,6 +232,15 @@ const actions = [
 | `opened` | Triggered at the end of the open image-preview animation | `-` |
 | `close`  | Triggered when Image-Preview is off | `-` |
 | `closed` | Triggered when the animation that closes the image-preview ends | `-` |
+
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `ImagePreview` | Open image-preview | _options \| string \| string[]_ | `-` |
+| `ImagePreview.close` | Close image-preview | _-_ | `-` |
+| `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### Slot
 

@@ -145,20 +145,15 @@ const placementOptions = [
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.success('opened')
-const close = () => Snackbar.warning('close')
-const closed = () => Snackbar.error('closed')
 </script>
 
 <template>
   <var-tooltip
     content="Tooltip"
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">注册事件</var-button>
   </var-tooltip>
@@ -191,8 +186,10 @@ const closed = () => Snackbar.error('closed')
 | `offset-x` | x 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `offset-y` | y 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `teleport` | 挂载的位置 | _TeleportProps['to']_ | `body`    |
+| `same-width` | 是否与触发元素同宽 | _boolean_ | `false`  |
 | `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
+| `reference`       | 关联的触发元素选择器，用于指定特定子元素为触发元素 | _string_              | `-`           |
 
 ### Placement
 

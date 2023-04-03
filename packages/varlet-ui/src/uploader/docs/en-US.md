@@ -11,7 +11,10 @@ Get the file upload server by listening for `after-read` events.
 import { ref } from 'vue'
 
 const files = ref([])
-const handleAfterRead = file => console.log(file)
+
+function handleAfterRead(file) {
+  console.log(file)
+}
 </script>
 
 <template>
@@ -70,7 +73,7 @@ const files = ref([
   }
 ])
 
-const handleAfterRead = (file) => {
+function handleAfterRead(file) {
   file.state = 'loading'
 
   setTimeout(() => {
@@ -108,14 +111,10 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
-
-const handleOversize = () => {
-  Snackbar.warning('file size exceeds limit')
-}
 </script>
 
 <template>
-  <var-uploader v-model="files" :maxsize="1024" @oversize="handleOversize" />
+  <var-uploader v-model="files" :maxsize="1024" @oversize="Snackbar.warning('file size exceeds limit')" />
 </template>
 ```
 
@@ -130,7 +129,7 @@ import { Snackbar } from '@varlet/ui'
 
 const files = ref([])
 
-const handleBeforeRead = (file) => {
+function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
     Snackbar.success('the file is less than 1M, the upload is successful')
     return true
@@ -190,7 +189,7 @@ const files = ref([
   }
 ])
 
-const handleBeforeRemove = async () => {
+async function handleBeforeRemove() {
   const action = await Dialog({
     title: 'Delete or not?',
     message: 'Cannot be withdrawn after deletion'
@@ -307,18 +306,19 @@ const files = ref([
 ### Props
 
 | Prop | Description | Type | Default |
-| --- | --- | --- | --- |
-| `v-model` | File list | _VarFile[]_ | `[]` |
-| `accept` | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
-| `capture` | Get the file, the same as the native property | _string_ | `-` |
+| --- | ----------------------------------------------------------------------- | --- | --- |
+| `v-model`  | File list | _VarFile[]_ | `[]` |
+| `accept`   | Accepted file type, consistent with the native attribute | _string_ | `image/*` |
+| `capture`  | Get the file, the same as the native property | _string_ | `-` |
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
+| `elevation`| Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
-| `maxsize` | Maximum file size | _string \| number_ | `-` |
+| `maxsize`   | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
-| `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `ripple`    | Whether to open ripple | _boolean_ | `true` |
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
@@ -346,6 +346,8 @@ const files = ref([
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
+| `chooseFile` | Trigger the file selection action and display the file list | `-` | `-` |
+| `closePreview` | Close preview file popup | `-` | `-` |
 | `getLoading` | Gets a collection of files for `state` is `loading` | `-` | `VarFile[]` |
 | `getSuccess` | Gets a collection of files for `state` is `success` | `-` | `VarFile[]` |
 | `getError` |  Gets a collection of files for `state` is `error` | `-` | `VarFile[]` |

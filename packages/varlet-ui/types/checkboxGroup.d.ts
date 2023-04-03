@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const checkboxGroupProps: Record<string, any>
+
 export type CheckboxGroupValidateTrigger = 'onChange'
 
 export { CheckboxGroupDirection }
