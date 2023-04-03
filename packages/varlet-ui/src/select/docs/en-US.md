@@ -390,21 +390,21 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--input-box-input-text-color` | `#555` |
-| `--input-box-error-color` | `var(--color-danger)` |
-| `--input-box-blur-color` | `#888` |
-| `--input-box-focus-color` | `var(--color-primary)` |
-| `--input-box-placeholder-size` | `16px` |
-| `--input-box-textarea-padding-top` | `8px` |
-| `--input-box-input-padding-top` | `16px` |
-| `--input-box-input-padding-bottom` | `16px` |
-| `--input-box-input-padding-left` | `14px` |
-| `--input-box-input-padding-right` | `14px` |
-| `--input-box-icon-padding` | `20px 0 0` |
-| `--input-box-icon-size` | `20px` |
-| `--input-box-line-size` | `1px` |
-| `--input-box-line-focus-size` | `2px` |
-| `--input-box-disabled-color` | `var(--color-text-disabled)` |
+| `--input-decorator-text-color` | `#555` |
+| `--input-decorator-error-color` | `var(--color-danger)` |
+| `--input-decorator-blur-color` | `#888` |
+| `--input-decorator-focus-color` | `var(--color-primary)` |
+| `--input-decorator-placeholder-size` | `16px` |
+| `--input-decorator-padding-top` | `16px` |
+| `--input-decorator-padding-bottom` | `16px` |
+| `--input-decorator-outlined-padding-left` | `16px` |
+| `--input-decorator-outlined-padding-right` | `16px` |
+| `--input-decorator-outlined-placeholder-space` | `4px` |
+| `--input-decorator-icon-padding` | `16px 0 16px` |
+| `--input-decorator-icon-size` | `20px` |
+| `--input-decorator-line-size` | `1px` |
+| `--input-decorator-line-focus-size` | `2px` |
+| `--input-decorator-disabled-color` | `var(--color-text-disabled)` |
 | `--select-scroller-background` | `#fff` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-margin` | `0px` |

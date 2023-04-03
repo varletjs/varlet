@@ -36,7 +36,7 @@ test('test input variant', () => {
 
       case 'outlined': {
         expect(
-          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__line__start')
+          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__line-start')
         ).toBeTruthy()
         break
       }

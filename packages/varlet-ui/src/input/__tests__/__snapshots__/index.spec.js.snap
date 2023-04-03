@@ -146,11 +146,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -193,11 +193,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -262,11 +262,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -320,11 +320,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -421,11 +421,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -464,11 +464,11 @@ exports[`test input example 1`] = `
         <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-input-decorator__clear-icon" style="transition-duration: 0ms;" var-input-decorator-cover=""></i></div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch var-input-decorator__line__notch--hint">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch var-input-decorator__line-notch--hint">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -507,11 +507,11 @@ exports[`test input example 1`] = `
         <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -554,11 +554,11 @@ exports[`test input example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请输入文本</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请输入文本</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -758,11 +758,11 @@ exports[`test input variant 2`] = `
       </div>
     </div>
     <div class="var-input-decorator__line">
-      <div class="var-input-decorator__line__start"></div>
-      <div class="var-input-decorator__line__notch var-input-decorator__line__notch--hint">
-        <div class="var--ellipsis var-input-decorator__line__placeholder"></div>
+      <div class="var-input-decorator__line-start"></div>
+      <div class="var-input-decorator__line-notch var-input-decorator__line-notch--hint">
+        <div class="var--ellipsis var-input-decorator__line-placeholder"></div>
       </div>
-      <div class="var-input-decorator__line__end"></div>
+      <div class="var-input-decorator__line-end"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

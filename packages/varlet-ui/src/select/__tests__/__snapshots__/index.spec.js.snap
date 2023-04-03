@@ -56,11 +56,11 @@ exports[`test select example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请选择一个选项</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -123,11 +123,11 @@ exports[`test select example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请选择一个选项</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -309,11 +309,11 @@ exports[`test select example 1`] = `
         </div>
       </div>
       <div class="var-input-decorator__line">
-        <div class="var-input-decorator__line__start"></div>
-        <div class="var-input-decorator__line__notch">
-          <div class="var--ellipsis var-input-decorator__line__placeholder">请选择一个选项</div>
+        <div class="var-input-decorator__line-start"></div>
+        <div class="var-input-decorator__line-notch">
+          <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
         </div>
-        <div class="var-input-decorator__line__end"></div>
+        <div class="var-input-decorator__line-end"></div>
       </div>
     </label>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -696,11 +696,11 @@ exports[`test select variant 2`] = `
       </div>
     </div>
     <div class="var-input-decorator__line">
-      <div class="var-input-decorator__line__start"></div>
-      <div class="var-input-decorator__line__notch">
-        <div class="var--ellipsis var-input-decorator__line__placeholder"></div>
+      <div class="var-input-decorator__line-start"></div>
+      <div class="var-input-decorator__line-notch">
+        <div class="var--ellipsis var-input-decorator__line-placeholder"></div>
       </div>
-      <div class="var-input-decorator__line__end"></div>
+      <div class="var-input-decorator__line-end"></div>
     </div>
   </label>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

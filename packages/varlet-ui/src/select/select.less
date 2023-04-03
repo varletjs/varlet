@@ -55,10 +55,15 @@
     outline: none;
     border: none;
     font-size: inherit;
-    color: var(--input-decorator-input-text-color);
+    color: var(--input-decorator-text-color);
     word-break: break-all;
     overflow-x: hidden;
     transition: color 0.25s;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
   }
 
   &__arrow[var-select-cover] {

@@ -65,7 +65,7 @@
         >
           <template v-if="!(formDisabled || disabled)">
             <div
-              :class="classes(n('line__start'), [errorMessage, n('--line-error')])"
+              :class="classes(n('line-start'), [errorMessage, n('--line-error')])"
               :style="{
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
@@ -73,8 +73,8 @@
             <div
               :class="
                 classes(
-                  n('line__notch'),
-                  [hint && (!isEmpty(value) || isFocus), n('line__notch--hint')],
+                  n('line-notch'),
+                  [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
                   [errorMessage, n('--line-error')]
                 )
               "
@@ -82,10 +82,10 @@
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
             >
-              <div :class="classes(n('$--ellipsis'), n('line__placeholder'))">{{ placeholder }}</div>
+              <div :class="classes(n('$--ellipsis'), n('line-placeholder'))">{{ placeholder }}</div>
             </div>
             <div
-              :class="classes(n('line__end'), [errorMessage, n('--line-error')])"
+              :class="classes(n('line-end'), [errorMessage, n('--line-error')])"
               :style="{
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
