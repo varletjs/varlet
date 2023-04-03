@@ -1,6 +1,10 @@
 import type { PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
+export function sizeValidator(size: string) {
+  return ['small', 'normal'].includes(size)
+}
+
 export function variantValidator(variant: string) {
   return ['outlined', 'standard'].includes(variant)
 }
@@ -15,8 +19,9 @@ export const props = {
     default: '',
   },
   size: {
-    type: String as PropType<'small'>,
-    validator: (size: string) => size === 'small',
+    type: String as PropType<'small' | 'normal'>,
+    default: 'small',
+    validator: sizeValidator,
   },
   variant: {
     type: String as PropType<'outlined' | 'standard'>,

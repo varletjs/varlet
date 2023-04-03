@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Variant as SelectVariant } from './varComponent'
 import { VNode } from 'vue'
 
 export declare const selectProps: Record<string, any>
@@ -7,8 +7,12 @@ export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick
 
 export type SelectTextAlign = 'left' | 'right' | 'center'
 
+export type SelectSize = 'small' | 'normal'
+
 export interface SelectProps extends BasicAttributes {
   modelValue?: any
+  variant?: SelectVariant
+  size?: SelectSize
   placeholder?: string
   multiple?: boolean
   offsetY?: number | string

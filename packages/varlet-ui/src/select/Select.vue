@@ -24,10 +24,10 @@
       <slot name="prepend-icon" />
     </template>
 
-    <div :class="classes(n('wrap'))" ref="wrapEl" @click="handleFocus">
+    <div :class="n('wrap')" ref="wrapEl" @click="handleFocus">
       <var-menu
         var-select-cover
-        :class="classes(n('menu'))"
+        :class="n('menu')"
         :offset-y="offsetY"
         :disabled="formReadonly || readonly || formDisabled || disabled"
         :default-style="false"
