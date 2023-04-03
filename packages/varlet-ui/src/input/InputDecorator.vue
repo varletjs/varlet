@@ -1,6 +1,8 @@
 <template>
   <div
-    :class="classes(n(), n(`--${variant}`), [size, n('--small')], n('$--decorator'), [disabled, n('--disabled')])"
+    :class="
+      classes(n(), n(`--${variant}`), [size === 'small', n('--small')], n('$--decorator'), [disabled, n('--disabled')])
+    "
     @click="handleClick"
   >
     <label :class="classes(n('$--relative'), n('$--block'))" :for="id">

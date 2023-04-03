@@ -249,15 +249,27 @@ const value = ref('')
 | `--input-decorator-blur-color` | `#888` |
 | `--input-decorator-focus-color` | `var(--color-primary)` |
 | `--input-decorator-placeholder-size` | `16px` |
-| `--input-decorator-padding-top` | `16px` |
-| `--input-decorator-padding-bottom` | `16px` |
-| `--input-decorator-outlined-padding-left` | `16px` |
-| `--input-decorator-outlined-padding-right` | `16px` |
-| `--input-decorator-outlined-placeholder-space` | `4px` |
-| `--input-decorator-icon-padding` | `16px 0 16px` |
 | `--input-decorator-icon-size` | `20px` |
 | `--input-decorator-line-size` | `1px` |
 | `--input-decorator-line-focus-size` | `2px` |
 | `--input-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--input-decorator-standard-padding-top` | `20px` |
+| `--input-decorator-standard-padding-bottom` | `4px` |
+| `--input-decorator-standard-icon-padding` | `20px 0 4px` |
+| `--input-decorator-outlined-padding-top` | `16px` |
+| `--input-decorator-outlined-padding-bottom` | `16px` |
+| `--input-decorator-outlined-padding-left` | `16px` |
+| `--input-decorator-outlined-padding-right` | `16px` |
+| `--input-decorator-outlined-placeholder-space` | `4px` |
+| `--input-decorator-outlined-icon-padding` | `16px 0 16px` |
+| `--input-decorator-mini-standard-padding-top` | `16px` |
+| `--input-decorator-mini-standard-padding-bottom` | `4px` |
+| `--input-decorator-mini-standard-icon-padding` | `16px 0 4px` |
+| `--input-decorator-mini-outlined-padding-top` | `8px` |
+| `--input-decorator-mini-outlined-padding-bottom` | `8px` |
+| `--input-decorator-mini-outlined-padding-left` | `12px` |
+| `--input-decorator-mini-outlined-padding-right` | `12px` |
+| `--input-decorator-mini-outlined-placeholder-space` | `2px` |
+| `--input-decorator-mini-outlined-icon-padding` | `8px 0 8px` |
 | `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |

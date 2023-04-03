@@ -20,7 +20,7 @@ export const props = {
   },
   size: {
     type: String as PropType<'small' | 'normal'>,
-    default: 'small',
+    default: 'normal',
     validator: sizeValidator,
   },
   variant: {
