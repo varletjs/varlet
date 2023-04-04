@@ -8,24 +8,24 @@
   --input-decorator-line-size: 1px;
   --input-decorator-line-focus-size: 2px;
   --input-decorator-disabled-color: var(--color-text-disabled);
-  --input-decorator-standard-padding-top: 20px;
-  --input-decorator-standard-padding-bottom: 4px;
-  --input-decorator-standard-icon-padding: 20px 0 4px;
-  --input-decorator-outlined-padding-top: 16px;
-  --input-decorator-outlined-padding-bottom: 16px;
-  --input-decorator-outlined-padding-left: 16px;
-  --input-decorator-outlined-padding-right: 16px;
-  --input-decorator-outlined-placeholder-space: 4px;
-  --input-decorator-outlined-icon-padding: 16px 0 16px;
-  --input-decorator-mini-standard-padding-top: 16px;
-  --input-decorator-mini-standard-padding-bottom: 4px;
-  --input-decorator-mini-standard-icon-padding: 16px 0 4px;
-  --input-decorator-mini-outlined-padding-top: 8px;
-  --input-decorator-mini-outlined-padding-bottom: 8px;
-  --input-decorator-mini-outlined-padding-left: 12px;
-  --input-decorator-mini-outlined-padding-right: 12px;
-  --input-decorator-mini-outlined-placeholder-space: 2px;
-  --input-decorator-mini-outlined-icon-padding: 8px 0 8px;
+  --input-decorator-normal-standard-padding-top: 20px;
+  --input-decorator-normal-standard-padding-bottom: 4px;
+  --input-decorator-normal-standard-icon-padding: 20px 0 4px;
+  --input-decorator-normal-outlined-padding-top: 16px;
+  --input-decorator-normal-outlined-padding-bottom: 16px;
+  --input-decorator-normal-outlined-padding-left: 16px;
+  --input-decorator-normal-outlined-padding-right: 16px;
+  --input-decorator-normal-outlined-placeholder-space: 4px;
+  --input-decorator-normal-outlined-icon-padding: 16px 0 16px;
+  --input-decorator-small-standard-padding-top: 16px;
+  --input-decorator-small-standard-padding-bottom: 4px;
+  --input-decorator-small-standard-icon-padding: 16px 0 4px;
+  --input-decorator-small-outlined-padding-top: 8px;
+  --input-decorator-small-outlined-padding-bottom: 8px;
+  --input-decorator-small-outlined-padding-left: 12px;
+  --input-decorator-small-outlined-padding-right: 12px;
+  --input-decorator-small-outlined-placeholder-space: 2px;
+  --input-decorator-small-outlined-icon-padding: 8px 0 8px;
 }
 
 .var-input-decorator {
@@ -97,11 +97,12 @@
 
   &--standard {
     .var-input-decorator__wrap {
-      padding: var(--input-decorator-standard-padding-top) 0 var(--input-decorator-standard-padding-bottom);
+      padding: var(--input-decorator-normal-standard-padding-top) 0
+        var(--input-decorator-normal-standard-padding-bottom);
     }
 
     .var-input-decorator__icon {
-      padding: var(--input-decorator-standard-icon-padding);
+      padding: var(--input-decorator-normal-standard-icon-padding);
     }
 
     .var-input-decorator--wrap-non-hint {
@@ -113,16 +114,16 @@
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, color 0.25s;
       top: calc(
-        var(--input-decorator-standard-padding-top) +
+        var(--input-decorator-normal-standard-padding-top) +
           (
-            100% - var(--input-decorator-standard-padding-top) - var(--input-decorator-standard-padding-bottom) -
-              var(--input-decorator-placeholder-size)
+            100% - var(--input-decorator-normal-standard-padding-top) -
+              var(--input-decorator-normal-standard-padding-bottom) - var(--input-decorator-placeholder-size)
           ) / 2
       );
     }
 
     .var-input-decorator__placeholder-textarea {
-      top: var(--input-decorator-standard-padding-top);
+      top: var(--input-decorator-normal-standard-padding-top);
     }
 
     .var-input-decorator--placeholder-hint {
@@ -166,31 +167,33 @@
 
   &--outlined {
     .var-input-decorator__controller {
-      padding: 0 var(--input-decorator-outlined-padding-right) 0 var(--input-decorator-outlined-padding-left);
+      padding: 0 var(--input-decorator-normal-outlined-padding-right) 0
+        var(--input-decorator-normal-outlined-padding-left);
       cursor: text;
     }
     .var-input-decorator__wrap {
-      padding: var(--input-decorator-outlined-padding-top) 0 var(--input-decorator-outlined-padding-bottom) 0;
+      padding: var(--input-decorator-normal-outlined-padding-top) 0
+        var(--input-decorator-normal-outlined-padding-bottom) 0;
     }
 
     .var-input-decorator__icon {
-      padding: var(--input-decorator-outlined-icon-padding);
+      padding: var(--input-decorator-normal-outlined-icon-padding);
     }
 
     .var-input-decorator__placeholder {
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, margin 0.3s, color 0.25s;
       top: calc(
-        var(--input-decorator-outlined-padding-top) +
+        var(--input-decorator-normal-outlined-padding-top) +
           (
-            100% - var(--input-decorator-outlined-padding-top) - var(--input-decorator-outlined-padding-bottom) -
-              var(--input-decorator-placeholder-size)
+            100% - var(--input-decorator-normal-outlined-padding-top) -
+              var(--input-decorator-normal-outlined-padding-bottom) - var(--input-decorator-placeholder-size)
           ) / 2
       );
     }
 
     .var-input-decorator__placeholder-textarea {
-      top: var(--input-decorator-outlined-padding-top);
+      top: var(--input-decorator-normal-outlined-padding-top);
     }
 
     .var-input-decorator--placeholder-hint {
@@ -209,7 +212,11 @@
       pointer-events: none;
 
       &-start {
-        flex: 0 0 calc(var(--input-decorator-outlined-padding-left) - var(--input-decorator-outlined-placeholder-space));
+        flex: 0 0
+          calc(
+            var(--input-decorator-normal-outlined-padding-left) -
+              var(--input-decorator-normal-outlined-placeholder-space)
+          );
         height: 100%;
         border-radius: 4px 0 0 4px;
         border: 0 solid var(--input-decorator-blur-color);
@@ -221,8 +228,15 @@
 
       &-notch {
         max-width: calc(
-          100% - (var(--input-decorator-outlined-padding-left) - var(--input-decorator-outlined-placeholder-space)) -
-            (var(--input-decorator-outlined-padding-right) - var(--input-decorator-outlined-placeholder-space))
+          100% -
+            (
+              var(--input-decorator-normal-outlined-padding-left) -
+                var(--input-decorator-normal-outlined-placeholder-space)
+            ) -
+            (
+              var(--input-decorator-normal-outlined-padding-right) -
+                var(--input-decorator-normal-outlined-placeholder-space)
+            )
         );
         height: 100%;
         font: inherit;
@@ -240,7 +254,7 @@
         max-width: 100%;
         visibility: hidden;
         font-size: 0.75em;
-        margin: 0 var(--input-decorator-outlined-placeholder-space);
+        margin: 0 var(--input-decorator-normal-outlined-placeholder-space);
       }
 
       &-end {
@@ -289,18 +303,18 @@
 
   &--small {
     .var-input-decorator--standard& {
-      --input-decorator-standard-padding-top: var(--input-decorator-mini-standard-padding-top);
-      --input-decorator-standard-padding-bottom: var(--input-decorator-mini-standard-padding-bottom);
-      --input-decorator-standard-icon-padding: var(--input-decorator-mini-standard-icon-padding);
+      --input-decorator-normal-standard-padding-top: var(--input-decorator-small-standard-padding-top);
+      --input-decorator-normal-standard-padding-bottom: var(--input-decorator-small-standard-padding-bottom);
+      --input-decorator-normal-standard-icon-padding: var(--input-decorator-small-standard-icon-padding);
     }
 
     .var-input-decorator--outlined& {
-      --input-decorator-outlined-padding-top: var(--input-decorator-mini-outlined-padding-top);
-      --input-decorator-outlined-padding-bottom: var(--input-decorator-mini-outlined-padding-bottom);
-      --input-decorator-outlined-padding-left: var(--input-decorator-mini-outlined-padding-left);
-      --input-decorator-outlined-padding-right: var(--input-decorator-mini-outlined-padding-right);
-      --input-decorator-outlined-icon-padding: var(--input-decorator-mini-outlined-icon-padding);
-      --input-decorator-outlined-placeholder-space: var(--input-decorator-mini-outlined-placeholder-space);
+      --input-decorator-normal-outlined-padding-top: var(--input-decorator-small-outlined-padding-top);
+      --input-decorator-normal-outlined-padding-bottom: var(--input-decorator-small-outlined-padding-bottom);
+      --input-decorator-normal-outlined-padding-left: var(--input-decorator-small-outlined-padding-left);
+      --input-decorator-normal-outlined-padding-right: var(--input-decorator-small-outlined-padding-right);
+      --input-decorator-normal-outlined-icon-padding: var(--input-decorator-mini-outlined-icon-padding);
+      --input-decorator-normal-outlined-placeholder-space: var(--input-decorator-small-outlined-placeholder-space);
     }
   }
 }
