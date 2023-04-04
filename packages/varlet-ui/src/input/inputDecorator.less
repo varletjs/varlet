@@ -31,6 +31,11 @@
 .var-input-decorator {
   width: 100%;
   color: var(--input-decorator-text-color);
+  cursor: inherit;
+
+  &__label {
+    cursor: inherit;
+  }
 
   &__controller {
     width: 100%;
@@ -169,7 +174,6 @@
     .var-input-decorator__controller {
       padding: 0 var(--input-decorator-normal-outlined-padding-right) 0
         var(--input-decorator-normal-outlined-padding-left);
-      cursor: text;
     }
     .var-input-decorator__wrap {
       padding: var(--input-decorator-normal-outlined-padding-top) 0

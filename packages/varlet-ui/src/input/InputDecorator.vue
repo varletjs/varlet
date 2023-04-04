@@ -5,7 +5,7 @@
     "
     @click="handleClick"
   >
-    <label :class="classes(n('$--relative'), n('$--block'))" :for="id">
+    <label :class="classes(n('label'), n('$--relative'), n('$--block'))" :for="id">
       <div
         :class="
           classes(
@@ -181,8 +181,6 @@ export default defineComponent({
       isEmpty,
       handleClear,
       handleClick,
-      focus,
-      blur,
     }
   },
 })

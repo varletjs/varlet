@@ -1,6 +1,6 @@
 <template>
   <var-input-decorator
-    :class="classes(n())"
+    :class="n()"
     v-bind="{
       value: modelValue,
       size,

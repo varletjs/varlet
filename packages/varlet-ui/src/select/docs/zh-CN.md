@@ -430,4 +430,4 @@ const value = ref([])
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
-| `--option-selected-background` | `var(--select-focus-color)` |
+| `--option-selected-background` | `var(--input-decorator-focus-color)` |

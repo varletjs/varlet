@@ -3,7 +3,7 @@
 exports[`test select example 1`] = `
 "<div class="app-type">基本使用</div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -34,7 +34,7 @@ exports[`test select example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -70,7 +70,7 @@ exports[`test select example 1`] = `
 </div>
 <div class="app-type">小尺寸</div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -101,7 +101,7 @@ exports[`test select example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--outlined var-input-decorator--small var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--outlined var-input-decorator--small var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -136,7 +136,7 @@ exports[`test select example 1`] = `
   </div>
 </div>
 <div class="app-type">朴素模式</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
       <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
@@ -164,7 +164,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">文本关联值</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -195,7 +195,7 @@ exports[`test select example 1`] = `
 </div>
 <div class="relation">当前选择的是: </div>
 <div class="app-type">禁用</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller var-input-decorator--disabled">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -225,7 +225,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">只读</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -256,7 +256,7 @@ exports[`test select example 1`] = `
 </div>
 <div class="app-type">可清除</div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -287,7 +287,7 @@ exports[`test select example 1`] = `
   </div>
 </div>
 <div class="pb">
-  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -322,7 +322,7 @@ exports[`test select example 1`] = `
   </div>
 </div>
 <div class="app-type">自定义图标</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
       <div class="var-input-decorator__wrap">
@@ -350,7 +350,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">多选</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -380,7 +380,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">纸片风格的多选</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -410,7 +410,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">单选值校验</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -440,7 +440,7 @@ exports[`test select example 1`] = `
   </transition-stub>
 </div>
 <div class="app-type">多选值校验</div>
-<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -473,7 +473,7 @@ exports[`test select example 1`] = `
 `;
 
 exports[`test select focus & blur methods 1`] = `
-"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller var-input-decorator--focus">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -505,7 +505,7 @@ exports[`test select focus & blur methods 1`] = `
 `;
 
 exports[`test select focus & blur methods 2`] = `
-"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -537,7 +537,7 @@ exports[`test select focus & blur methods 2`] = `
 `;
 
 exports[`test select hint to be false 1`] = `
-"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
       <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
@@ -567,7 +567,7 @@ exports[`test select hint to be false 1`] = `
 `;
 
 exports[`test select size 1`] = `
-"<div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -599,7 +599,7 @@ exports[`test select size 1`] = `
 `;
 
 exports[`test select validation 1`] = `
-"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller var-input-decorator--error">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -642,7 +642,7 @@ exports[`test select validation 1`] = `
 `;
 
 exports[`test select variant 1`] = `
-"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">
@@ -674,7 +674,7 @@ exports[`test select variant 1`] = `
 `;
 
 exports[`test select variant 2`] = `
-"<div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var--relative var--block" for="">
+"<div class="var-input-decorator var-input-decorator--outlined var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
     <div class="var-input-decorator__controller">
       <div class="var-input-decorator__icon"></div>
       <div class="var-input-decorator__wrap">

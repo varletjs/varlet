@@ -4,7 +4,7 @@ exports[`Size related props 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-127">
+    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-127">
         <div class="var-input-decorator__controller">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
@@ -41,7 +41,7 @@ exports[`Size related props 2`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-127">
+    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-127">
         <div class="var-input-decorator__controller">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
@@ -102,7 +102,7 @@ exports[`basic mode mount 1`] = `
       <!--teleport end-->
     </div>
   </li>
-  <li class="var-pagination__quickly">前往 <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-96">
+  <li class="var-pagination__quickly">前往 <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-96">
         <div class="var-input-decorator__controller">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
@@ -130,7 +130,7 @@ exports[`simple mode disabled prop 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple var-pagination__item--disabled">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-73">
+    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-73">
         <div class="var-input-decorator__controller var-input-decorator--disabled">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
@@ -167,7 +167,7 @@ exports[`simple mode mount 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-58">
+    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-58">
         <div class="var-input-decorator__controller">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
@@ -206,7 +206,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-5">
+      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-5">
           <div class="var-input-decorator__controller">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
@@ -243,7 +243,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-20">
+      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-20">
           <div class="var-input-decorator__controller">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
@@ -274,7 +274,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-28">
+      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-28">
           <div class="var-input-decorator__controller">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
@@ -311,7 +311,7 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple var-pagination__item--disabled">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var--relative var--block" for="var-input-43">
+      <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-43">
           <div class="var-input-decorator__controller var-input-decorator--disabled">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">

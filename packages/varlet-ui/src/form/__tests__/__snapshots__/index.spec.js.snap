@@ -164,7 +164,7 @@ exports[`test form with counter 4`] = `
 
 exports[`test form with input 1`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-3">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var-input-decorator__label var--relative var--block" for="var-input-3">
       <div class="var-input-decorator__controller var-input-decorator--disabled">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -188,7 +188,7 @@ exports[`test form with input 1`] = `
 
 exports[`test form with input 2`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-3">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var-input-decorator__label var--relative var--block" for="var-input-3">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -212,7 +212,7 @@ exports[`test form with input 2`] = `
 
 exports[`test form with input 3`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-3">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var-input-decorator__label var--relative var--block" for="var-input-3">
       <div class="var-input-decorator__controller var-input-decorator--error">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -247,7 +247,7 @@ exports[`test form with input 3`] = `
 
 exports[`test form with input 4`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var--relative var--block" for="var-input-3">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-input"><label class="var-input-decorator__label var--relative var--block" for="var-input-3">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -438,7 +438,7 @@ exports[`test form with rate 3`] = `
 
 exports[`test form with select 1`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller var-input-decorator--disabled">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -472,7 +472,7 @@ exports[`test form with select 1`] = `
 
 exports[`test form with select 2`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -506,7 +506,7 @@ exports[`test form with select 2`] = `
 
 exports[`test form with select 3`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller var-input-decorator--error">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
@@ -551,7 +551,7 @@ exports[`test form with select 3`] = `
 
 exports[`test form with select 4`] = `
 "<div class="var-form">
-  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var--relative var--block" for="">
+  <div class="var-input-decorator var-input-decorator--standard var--decorator var-select"><label class="var-input-decorator__label var--relative var--block" for="">
       <div class="var-input-decorator__controller">
         <div class="var-input-decorator__icon"></div>
         <div class="var-input-decorator__wrap">
