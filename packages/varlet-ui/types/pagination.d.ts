@@ -18,8 +18,8 @@ export interface PaginationProps extends BasicAttributes {
   sizeOption?: Array<number>
   showTotal?: (total: number, range: Range) => string
   onChange?: ListenerProp<(current: number, size: number) => void>
-  'onUpdate:current': ListenerProp<(current: number) => void>
-  'onUpdate:size': ListenerProp<(size: number) => void>
+  'onUpdate:current'?: ListenerProp<(current: number) => void>
+  'onUpdate:size'?: ListenerProp<(size: number) => void>
 }
 
 export class Pagination extends VarComponent {
