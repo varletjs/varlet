@@ -32,9 +32,9 @@
   },
   "devDependencies": {
     "typescript": "^4.4.4",
-    "vue": "3.2.25"
+    "vue": "3.2.47"
   },
   "peerDependencies": {
-    "vue": "3.2.25"
+    "vue": "^3.2.0"
   }
 }

@@ -73,8 +73,8 @@
     "lodash-es": "^4.17.21",
     "postcss-px-to-viewport": "^1.1.1",
     "typescript": "^4.4.4",
-    "vue": "3.2.25",
-    "vue-router": "4.0.12"
+    "vue": "3.2.47",
+    "vue-router": "4.1.6"
   },
   "browserslist": [
     "Chrome >= 54",
