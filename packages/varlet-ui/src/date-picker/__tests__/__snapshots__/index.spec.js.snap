@@ -5,13 +5,13 @@ exports[`test allowedDates prop 1`] = `
   <div class=\\"var-date-picker__title\\">
     <div class=\\"var-date-picker__title-year\\">2021</div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
-      <transition-stub>
+      <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>03-01 星期一</div>
       </transition-stub>
     </div>
   </div>
   <div class=\\"var-date-picker__body\\">
-    <transition-stub>
+    <transition-stub name=\\"var-date-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-day-picker\\">
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -20,7 +20,7 @@ exports[`test allowedDates prop 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
             <div class=\\"var-picker-header__value\\">
-              <transition-stub>
+              <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div>2021 三月</div>
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -29,7 +29,7 @@ exports[`test allowedDates prop 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
           </div>
-          <transition-stub>
+          <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>
               <ul class=\\"var-day-picker__head\\">
                 <li>日</li>
@@ -55,13 +55,13 @@ exports[`test datePicker style and type 1`] = `
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
     <div class=\\"var-date-picker__title-year\\">2021</div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
-      <transition-stub>
+      <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>五月</div>
       </transition-stub>
     </div>
   </div>
   <div class=\\"var-date-picker__body\\">
-    <transition-stub>
+    <transition-stub name=\\"var-date-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-month-picker\\">
         <div class=\\"var-month-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -70,7 +70,7 @@ exports[`test datePicker style and type 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
             <div class=\\"var-picker-header__value\\">
-              <transition-stub>
+              <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div>2021</div>
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -79,7 +79,7 @@ exports[`test datePicker style and type 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
           </div>
-          <transition-stub>
+          <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <ul>
               <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-month-picker__button\\" type=\\"button\\" var-month-picker-cover=\\"\\" var-date-picker-color-cover=\\"true\\">
                   <!--v-if-->
@@ -155,13 +155,13 @@ exports[`test datePicker style and type 2`] = `
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
     <div class=\\"var-date-picker__title-year\\">2021</div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
-      <transition-stub>
+      <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>05-19 星期三</div>
       </transition-stub>
     </div>
   </div>
   <div class=\\"var-date-picker__body\\">
-    <transition-stub>
+    <transition-stub name=\\"var-date-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-day-picker\\">
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -170,7 +170,7 @@ exports[`test datePicker style and type 2`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
             <div class=\\"var-picker-header__value\\">
-              <transition-stub>
+              <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div>2021 五月</div>
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -179,7 +179,7 @@ exports[`test datePicker style and type 2`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
           </div>
-          <transition-stub>
+          <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>
               <ul class=\\"var-day-picker__head\\">
                 <li>日</li>
@@ -391,13 +391,13 @@ exports[`test datePicker style and type test datePicker style and date 1`] = `
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
     <div class=\\"var-date-picker__title-year\\">2021</div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
-      <transition-stub>
+      <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>04-08 星期四</div>
       </transition-stub>
     </div>
   </div>
   <div class=\\"var-date-picker__body\\">
-    <transition-stub>
+    <transition-stub name=\\"var-date-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-day-picker\\">
         <div class=\\"var-day-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -406,7 +406,7 @@ exports[`test datePicker style and type test datePicker style and date 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
             <div class=\\"var-picker-header__value\\">
-              <transition-stub>
+              <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div>2021 四月</div>
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -415,7 +415,7 @@ exports[`test datePicker style and type test datePicker style and date 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
           </div>
-          <transition-stub>
+          <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>
               <ul class=\\"var-day-picker__head\\">
                 <li>日</li>
@@ -612,13 +612,13 @@ exports[`test datePicker style and type test datePicker style and month 1`] = `
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
     <div class=\\"var-date-picker__title-year\\">2021</div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
-      <transition-stub>
+      <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>四月</div>
       </transition-stub>
     </div>
   </div>
   <div class=\\"var-date-picker__body\\">
-    <transition-stub>
+    <transition-stub name=\\"var-date-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-month-picker\\">
         <div class=\\"var-month-picker__content\\">
           <div class=\\"var-picker-header\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -627,7 +627,7 @@ exports[`test datePicker style and type test datePicker style and month 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
             <div class=\\"var-picker-header__value\\">
-              <transition-stub>
+              <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
                 <div>2021</div>
               </transition-stub>
             </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--round\\" style=\\"filter: opacity(0.54);\\" type=\\"button\\">
@@ -636,7 +636,7 @@ exports[`test datePicker style and type test datePicker style and month 1`] = `
               <div class=\\"var-hover-overlay\\"></div>
             </button>
           </div>
-          <transition-stub>
+          <transition-stub name=\\"var-date-picker-translatex\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <ul>
               <li><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-primary var-button--text var-month-picker__button\\" type=\\"button\\" var-month-picker-cover=\\"\\" var-date-picker-color-cover=\\"true\\">
                   <!--v-if-->

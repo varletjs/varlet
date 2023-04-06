@@ -12,7 +12,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -27,7 +27,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -42,7 +42,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -57,7 +57,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -72,7 +72,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -87,7 +87,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -102,7 +102,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -117,7 +117,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -132,7 +132,7 @@ exports[`test counter example 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -150,15 +150,15 @@ exports[`test counter validation 1`] = `
       <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
       <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>必须大于0</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>

@@ -9,7 +9,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -21,7 +21,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text\\">当前的值: 0</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -33,7 +33,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -45,7 +45,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text var-checkbox--disabled\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -57,7 +57,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -71,7 +71,7 @@ exports[`test checkbox example 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -82,7 +82,7 @@ exports[`test checkbox example 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--primary var-elevation--2 button\\" type=\\"button\\">
@@ -95,7 +95,7 @@ exports[`test checkbox example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </button>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -108,7 +108,7 @@ exports[`test checkbox example 1`] = `
     </div>
     <div class=\\"var-checkbox__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -122,7 +122,7 @@ exports[`test checkbox example 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\">吃饭</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -133,12 +133,12 @@ exports[`test checkbox example 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\">睡觉</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -156,7 +156,7 @@ exports[`test checkbox group layout direction 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -167,12 +167,12 @@ exports[`test checkbox group layout direction 1`] = `
         </div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -188,7 +188,7 @@ exports[`test checkbox group validation 1`] = `
         </div>
         <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -199,20 +199,20 @@ exports[`test checkbox group validation 1`] = `
         </div>
         <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>至少选一个</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
@@ -231,7 +231,7 @@ exports[`test checkbox group validation 2`] = `
         </div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -242,12 +242,12 @@ exports[`test checkbox group validation 2`] = `
         </div>
         <div class=\\"var-checkbox__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -261,15 +261,15 @@ exports[`test checkbox validation 1`] = `
     </div>
     <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>您必须勾选</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
@@ -286,7 +286,7 @@ exports[`test checkbox validation 2`] = `
     </div>
     <div class=\\"var-checkbox__text\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"

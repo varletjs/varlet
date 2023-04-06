@@ -12,7 +12,7 @@ exports[`test input clear 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -32,7 +32,7 @@ exports[`test input events test input focus & blur 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot var-input--spread\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -52,7 +52,7 @@ exports[`test input events test input focus & blur 2`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -73,7 +73,7 @@ exports[`test input events test input focus & blur 3`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot var-input--spread\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -94,7 +94,7 @@ exports[`test input events test input focus & blur 4`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -115,7 +115,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -131,7 +131,7 @@ exports[`test input example 1`] = `
     </div>
   </div>
   <!--v-if-->
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -150,7 +150,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -168,15 +168,15 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>0 / 10</div>
         </transition-stub>
       </div>
@@ -197,7 +197,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line var-input--line-disabled\\">
     <div class=\\"var-input__dot var-input--line-disabled\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -215,7 +215,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -231,7 +231,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -247,7 +247,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -265,7 +265,7 @@ exports[`test input example 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -286,7 +286,7 @@ exports[`test input hint to be false 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -306,15 +306,15 @@ exports[`test input maxlength 1`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>4/100</div>
         </transition-stub>
       </div>
@@ -337,15 +337,15 @@ exports[`test input validation 1`] = `
   <div class=\\"var-input__line var-input--line-error\\">
     <div class=\\"var-input__dot var-input--line-error\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>长度必须大于3</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
@@ -368,7 +368,7 @@ exports[`test input validation 2`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -388,7 +388,7 @@ exports[`test input validation 3`] = `
   <div class=\\"var-input__line\\">
     <div class=\\"var-input__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"

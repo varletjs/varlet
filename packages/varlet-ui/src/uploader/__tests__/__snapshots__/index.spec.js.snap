@@ -7,13 +7,13 @@ exports[`test uploader disabled 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -34,13 +34,13 @@ exports[`test uploader disabled 2`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -56,13 +56,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -85,13 +85,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -119,13 +119,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -138,24 +138,24 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>0 / 1</div>
         </transition-stub>
       </div>
     </div>
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -168,13 +168,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -187,13 +187,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -206,13 +206,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -225,13 +225,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -249,13 +249,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -270,13 +270,13 @@ exports[`test uploader example 1`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -294,13 +294,13 @@ exports[`test uploader example 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -320,13 +320,13 @@ exports[`test uploader example 1`] = `
             <div class=\\"var-hover-overlay\\"></div>
           </button></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
-      <transition-stub>
+      <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
           <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-          <transition-stub>
+          <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!---->
           </transition-stub>
         </div>
@@ -344,13 +344,13 @@ exports[`test uploader hide file list 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -365,24 +365,24 @@ exports[`test uploader length over maxlength in multiple mode 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>0 / 1</div>
         </transition-stub>
       </div>
     </div>
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -397,24 +397,24 @@ exports[`test uploader validation 1`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>您至少上传一个</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
     </div>
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>
@@ -435,13 +435,13 @@ exports[`test uploader validation 2`] = `
       <div class=\\"var-hover-overlay\\"></div>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub>
+  <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
       <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-      <transition-stub>
+      <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!---->
       </transition-stub>
     </div>

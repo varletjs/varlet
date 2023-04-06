@@ -23,7 +23,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -47,7 +47,7 @@ exports[`test select example 1`] = `
     </div>
   </div>
   <!--v-if-->
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -73,7 +73,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -100,7 +100,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line var-select--line-disabled\\">
     <div class=\\"var-select__dot var-select--line-disabled\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -126,7 +126,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -150,7 +150,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -174,7 +174,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -200,7 +200,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -226,7 +226,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -252,7 +252,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -278,7 +278,7 @@ exports[`test select example 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -307,7 +307,7 @@ exports[`test select focus & blur methods 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot var-select--spread\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -335,7 +335,7 @@ exports[`test select focus & blur methods 2`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -361,7 +361,7 @@ exports[`test select hint to be false 1`] = `
   <div class=\\"var-select__line\\">
     <div class=\\"var-select__dot\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -389,15 +389,15 @@ exports[`test select validation 1`] = `
   <div class=\\"var-select__line var-select--line-error\\">
     <div class=\\"var-select__dot var-select--line-error\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>您必须选择一个</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>

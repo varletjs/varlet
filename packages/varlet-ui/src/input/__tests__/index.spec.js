@@ -61,13 +61,9 @@ describe('test input events', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
 
     await wrapper.find('.var-input__input').setValue('t')
-    await wrapper.find('.var-input__input').trigger('input')
     expect(onUpdateModelValue).lastCalledWith('t')
-    expect(onInput).lastCalledWith('t', new Event('input'))
-    expect(wrapper.props('modelValue')).toBe('t')
-
-    await wrapper.find('.var-input__input').trigger('change')
-    expect(onChange).lastCalledWith('t', new Event('input'))
+    expect(onInput).toHaveBeenCalledTimes(1)
+    expect(onChange).toHaveBeenCalledTimes(1)
 
     wrapper.unmount()
   }

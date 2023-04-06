@@ -9,7 +9,7 @@ exports[`test form with checkbox 1`] = `
       </div>
       <div class=\\"var-checkbox__text var-checkbox--disabled\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -25,7 +25,7 @@ exports[`test form with checkbox 2`] = `
       </div>
       <div class=\\"var-checkbox__text\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -41,15 +41,15 @@ exports[`test form with checkbox 3`] = `
       </div>
       <div class=\\"var-checkbox__text var-checkbox--error\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>必须勾选</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -68,7 +68,7 @@ exports[`test form with checkbox 4`] = `
       </div>
       <div class=\\"var-checkbox__text\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -87,7 +87,7 @@ exports[`test form with counter 1`] = `
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -106,7 +106,7 @@ exports[`test form with counter 2`] = `
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -125,15 +125,15 @@ exports[`test form with counter 3`] = `
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>必须大于0</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -155,7 +155,7 @@ exports[`test form with counter 4`] = `
         <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -177,7 +177,7 @@ exports[`test form with input 1`] = `
     <div class=\\"var-input__line var-input--line-disabled\\">
       <div class=\\"var-input__dot var-input--line-disabled\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -199,7 +199,7 @@ exports[`test form with input 2`] = `
     <div class=\\"var-input__line\\">
       <div class=\\"var-input__dot\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -221,15 +221,15 @@ exports[`test form with input 3`] = `
     <div class=\\"var-input__line var-input--line-error\\">
       <div class=\\"var-input__dot var-input--line-error\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>不能为空</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -254,7 +254,7 @@ exports[`test form with input 4`] = `
     <div class=\\"var-input__line\\">
       <div class=\\"var-input__dot\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -270,7 +270,7 @@ exports[`test form with radio 1`] = `
       </div>
       <div class=\\"var-radio__text var-radio--disabled\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -286,7 +286,7 @@ exports[`test form with radio 2`] = `
       </div>
       <div class=\\"var-radio__text\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -302,15 +302,15 @@ exports[`test form with radio 3`] = `
       </div>
       <div class=\\"var-radio__text var-radio--error\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>必须勾选</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -329,7 +329,7 @@ exports[`test form with radio 4`] = `
       </div>
       <div class=\\"var-radio__text\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -356,7 +356,7 @@ exports[`test form with rate 1`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -383,15 +383,15 @@ exports[`test form with rate 2`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>必须大于0</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -421,7 +421,7 @@ exports[`test form with rate 3`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -438,7 +438,7 @@ exports[`test form with select 1`] = `
           <div class=\\"var-select__select var-select--disabled\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--disabled var-select--placeholder-hint\\"></label>
@@ -451,7 +451,7 @@ exports[`test form with select 1`] = `
     <div class=\\"var-select__line var-select--line-disabled\\">
       <div class=\\"var-select__dot var-select--line-disabled\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -468,7 +468,7 @@ exports[`test form with select 2`] = `
           <div class=\\"var-select__select\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--placeholder-hint\\"></label>
@@ -481,7 +481,7 @@ exports[`test form with select 2`] = `
     <div class=\\"var-select__line\\">
       <div class=\\"var-select__dot\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -498,7 +498,7 @@ exports[`test form with select 3`] = `
           <div class=\\"var-select__select var-select--error\\" style=\\"text-align: left;\\">
             <div class=\\"var-select__label\\">
               <div class=\\"var-select__chips\\">
-                <transition-stub><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
+                <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip\\" var-select-cover=\\"\\"><span class=\\"var-chip__text-small\\">选项1</span><span class=\\"var-chip--close\\"><i class=\\"var-icon var-icon--set var-icon-close-circle\\" style=\\"transition-duration: 0ms;\\"></i></span></span></transition-stub>
               </div>
             </div><i class=\\"var-icon var-icon--set var-icon-menu-down var-select__arrow\\" style=\\"transition-duration: 300ms;\\" var-select-cover=\\"\\"></i>
           </div><label class=\\"var-select__placeholder var--ellipsis var-select--error var-select--placeholder-hint\\"></label>
@@ -511,15 +511,15 @@ exports[`test form with select 3`] = `
     <div class=\\"var-select__line var-select--line-error\\">
       <div class=\\"var-select__dot var-select--line-error\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>选择必须多于1个</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -550,7 +550,7 @@ exports[`test form with select 4`] = `
     <div class=\\"var-select__line\\">
       <div class=\\"var-select__dot\\"></div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -573,7 +573,7 @@ exports[`test form with slider 1`] = `
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -596,15 +596,15 @@ exports[`test form with slider 2`] = `
         <div class=\\"var-slider__thumb-label\\"><span>5</span></div>
       </div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>必须大于10</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -630,7 +630,7 @@ exports[`test form with slider 3`] = `
         <div class=\\"var-slider__thumb-label\\"><span>0</span></div>
       </div>
     </div>
-    <transition-stub class=\\"var-slider__form\\" var-slider-cover=\\"\\">
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" class=\\"var-slider__form\\" var-slider-cover=\\"\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -649,7 +649,7 @@ exports[`test form with switch 1`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -668,15 +668,15 @@ exports[`test form with switch 2`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>您必须开启</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
@@ -698,7 +698,7 @@ exports[`test form with switch 3`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
   </div>
@@ -713,13 +713,13 @@ exports[`test form with uploader 1`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
-    <transition-stub>
+    <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
         <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-        <transition-stub>
+        <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!---->
         </transition-stub>
       </div>
@@ -736,13 +736,13 @@ exports[`test form with uploader 2`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
-    <transition-stub>
+    <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
         <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-        <transition-stub>
+        <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!---->
         </transition-stub>
       </div>
@@ -759,24 +759,24 @@ exports[`test form with uploader 3`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var-form-details\\">
         <div class=\\"var-form-details__error-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <div>至少上传一个</div>
           </transition-stub>
         </div>
         <div class=\\"var-form-details__extra-message\\">
-          <transition-stub>
+          <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
             <!--v-if-->
           </transition-stub>
         </div>
       </div>
     </transition-stub>
-    <transition-stub>
+    <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
         <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-        <transition-stub>
+        <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!---->
         </transition-stub>
       </div>
@@ -793,13 +793,13 @@ exports[`test form with uploader 4`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </div>
     </div>
-    <transition-stub>
+    <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <!--v-if-->
     </transition-stub>
-    <transition-stub>
+    <transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
       <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
         <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-        <transition-stub>
+        <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!---->
         </transition-stub>
       </div>
