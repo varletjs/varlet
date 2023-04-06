@@ -1,4 +1,5 @@
 export interface LoadingBarOptions {
+  value?: number
   color?: string
   errorColor?: string
   height?: string | number

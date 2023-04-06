@@ -61,6 +61,7 @@ function setStyle() {
 
 | 参数           | 说明           | 类型        | 默认值    |
 |--------------|--------------|-----------|--------|
+| `value`      | 加载条的进度        | _number_  | `0`    |
 | `color`      | 加载条颜色        | _string_  | `-`    |
 | `errorColor` | 加载失败时的颜色     | _string_  | `-`    |
 | `height`     | 加载条的高度       | _string\|number_ | `-` |

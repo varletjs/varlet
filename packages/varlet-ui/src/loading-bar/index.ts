@@ -89,7 +89,7 @@ const clearTimer = () => {
 const start = () => {
   clearTimer()
   props.error = false
-  props.value = 0
+  // props.value = 0
 
   mount()
 

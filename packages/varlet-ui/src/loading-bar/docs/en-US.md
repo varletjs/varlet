@@ -61,6 +61,7 @@ function setStyle() {
 
 | Option       | Description            | Type | Default |
 |--------------|------------------------|-----------|--------|
+| `value`      | LoadingBar progress    | _number_  | `0`    |
 | `color`      | LoadingBar color       | _string_  | `-`    |
 | `errorColor` | LoadingBar error color | _string_  | `-`    |
 | `height`     | LoadingBar height      | _string\|number_ | `-` |
