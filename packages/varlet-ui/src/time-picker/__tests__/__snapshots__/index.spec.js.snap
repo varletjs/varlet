@@ -16,7 +16,7 @@ exports[`test max and min 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
           <div class=\\"var-time-picker__clock-item var-time-picker__clock-item--disable\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -55,7 +55,7 @@ exports[`test max and min 2`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -95,7 +95,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -129,7 +129,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(90deg); height: calc(50% - 40px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -175,7 +175,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 40px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -225,7 +225,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -258,7 +258,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(210deg); height: calc(50% - 4px); background-color: rgb(189, 189, 189); border-color: #bdbdbd;\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -308,7 +308,7 @@ exports[`test timePicker example 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -347,7 +347,7 @@ exports[`test timePicker style and format 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -383,7 +383,7 @@ exports[`test timePicker style and format 2`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(150deg); height: calc(50% - 4px); background-color: rgb(123, 184, 114); border-color: #7bb872;\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>
@@ -434,7 +434,7 @@ exports[`test useSeconds prop 1`] = `
   </div>
   <div class=\\"var-time-picker__body\\">
     <div class=\\"var-time-picker__clock-container\\">
-      <transition-stub>
+      <transition-stub name=\\"var-time-picker-panel-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div class=\\"var-time-picker__clock\\">
           <div class=\\"var-time-picker__clock-hand\\" style=\\"transform: rotate(330deg); height: calc(50% - 4px);\\"></div>
           <div class=\\"var-time-picker__clock-item\\" style=\\"left: 50%; top: 0%;\\">12</div>

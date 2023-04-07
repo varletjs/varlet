@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test cascade initial indexes 1`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->
@@ -43,7 +43,7 @@ exports[`test cascade initial indexes 1`] = `
 `;
 
 exports[`test cascade mode 1`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->
@@ -85,7 +85,7 @@ exports[`test cascade mode 1`] = `
 `;
 
 exports[`test scroll down & onCancel 1`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->
@@ -120,7 +120,7 @@ exports[`test scroll down & onCancel 1`] = `
 `;
 
 exports[`test scroll down & onCancel 2`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->
@@ -155,7 +155,7 @@ exports[`test scroll down & onCancel 2`] = `
 `;
 
 exports[`test scroll up & onConfirm 1`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->
@@ -190,7 +190,7 @@ exports[`test scroll up & onConfirm 1`] = `
 `;
 
 exports[`test scroll up & onConfirm 2`] = `
-"<transition-stub>
+"<transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\" var-picker-cover=\\"\\">
   <div class=\\"var-picker\\">
     <div class=\\"var-picker__toolbar\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-picker__cancel-button\\" type=\\"button\\" var-picker-cover=\\"\\">
         <!--v-if-->

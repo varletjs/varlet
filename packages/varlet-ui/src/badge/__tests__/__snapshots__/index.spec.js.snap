@@ -1,36 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test badge component props test badge default slots 1`] = `
-"<div class=\\"var-badge var--box\\">default slots<transition-stub><span class=\\"var-badge__content var-badge--default var-badge--right-top\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props test badge position 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props test badge position 2`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props test badge position 3`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props test badge position 4`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props test badge value slots 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub><span class=\\"var-badge__content var-badge--default\\"><!--v-if-->value</span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if-->value</span></transition-stub>
 </div>"
 `;

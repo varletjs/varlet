@@ -4,7 +4,7 @@ exports[`test menu click trigger 1`] = `"<div data-v-app=\\"\\"><div class=\\"va
 
 exports[`test menu click trigger 2`] = `"<div data-v-app=\\"\\"><div class=\\"var-menu\\"><!--teleport start--><!--teleport end--></div></div><div style=\\"z-index: 2001; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px); display: none;\\" class=\\"var-menu__menu var-menu--menu-background-color var-elevation--3\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 
-exports[`test menu default style 1`] = `"<transition-stub><div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu\\" data-popper-placement=\\"bottom-start\\"></div></transition-stub>"`;
+exports[`test menu default style 1`] = `"<transition-stub name=\\"var-menu\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><div style=\\"z-index: 2002; display: none; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu\\" data-popper-placement=\\"bottom-start\\"></div></transition-stub>"`;
 
 exports[`test menu elevation 1`] = `"<div style=\\"z-index: 2005; position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);\\" class=\\"var-menu__menu var-menu--menu-background-color\\" data-popper-placement=\\"bottom-start\\"></div>"`;
 

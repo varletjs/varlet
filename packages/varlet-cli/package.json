@@ -95,12 +95,12 @@
   "peerDependencies": {
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@vue/runtime-core": "3.2.16",
-    "@vue/test-utils": "^2.0.2",
+    "@vue/runtime-core": "3.2.47",
+    "@vue/test-utils": "^2.3.2",
     "clipboard": "^2.0.6",
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
-    "vue": "3.2.25",
-    "vue-router": "4.0.12"
+    "vue": "3.2.47",
+    "vue-router": "4.1.6"
   }
 }

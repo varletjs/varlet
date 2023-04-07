@@ -17,7 +17,7 @@ import {
   type Ref,
   type ComponentPublicInstance,
 } from 'vue'
-import { isArray } from '@varlet/shared'
+import { inBrowser, isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance
@@ -177,6 +177,10 @@ export function useValidation() {
 }
 
 export function useRouteListener(cb: () => void) {
+  if (!inBrowser()) {
+    return
+  }
+
   useEventListener(window, 'hashchange', cb)
   useEventListener(window, 'popstate', cb)
 }

@@ -9,7 +9,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -21,7 +21,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text\\">当前的值: 0</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -33,7 +33,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -45,7 +45,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text var-radio--disabled\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -57,7 +57,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -71,7 +71,7 @@ exports[`test radio example 1`] = `
         </div>
         <div class=\\"var-radio__text\\">吃饭</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -82,12 +82,12 @@ exports[`test radio example 1`] = `
         </div>
         <div class=\\"var-radio__text\\">睡觉</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -100,7 +100,7 @@ exports[`test radio example 1`] = `
     </div>
     <div class=\\"var-radio__text\\">当前的值: false</div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -114,7 +114,7 @@ exports[`test radio example 1`] = `
         </div>
         <div class=\\"var-radio__text\\">吃饭</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -125,12 +125,12 @@ exports[`test radio example 1`] = `
         </div>
         <div class=\\"var-radio__text\\">睡觉</div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>
@@ -148,7 +148,7 @@ exports[`test radio group layout direction 1`] = `
         </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -159,12 +159,12 @@ exports[`test radio group layout direction 1`] = `
         </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -180,7 +180,7 @@ exports[`test radio group validation 1`] = `
         </div>
         <div class=\\"var-radio__text var-radio--error\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -191,20 +191,20 @@ exports[`test radio group validation 1`] = `
         </div>
         <div class=\\"var-radio__text var-radio--error\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>必须选第一个</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
@@ -223,7 +223,7 @@ exports[`test radio group validation 2`] = `
         </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -234,12 +234,12 @@ exports[`test radio group validation 2`] = `
         </div>
         <div class=\\"var-radio__text\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"
@@ -253,15 +253,15 @@ exports[`test radio validation 1`] = `
     </div>
     <div class=\\"var-radio__text var-radio--error\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-form-details\\">
       <div class=\\"var-form-details__error-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>您必须勾选</div>
         </transition-stub>
       </div>
       <div class=\\"var-form-details__extra-message\\">
-        <transition-stub>
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>
@@ -278,7 +278,7 @@ exports[`test radio validation 2`] = `
     </div>
     <div class=\\"var-radio__text\\"></div>
   </div>
-  <transition-stub>
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
 </div>"

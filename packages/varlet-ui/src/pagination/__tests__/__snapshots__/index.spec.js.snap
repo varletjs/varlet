@@ -8,7 +8,7 @@ exports[`Size related props 1`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-130\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-130\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -17,7 +17,7 @@ exports[`Size related props 1`] = `
       <div class=\\"var-input__line\\">
         <div class=\\"var-input__dot\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div><span> / 6 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -43,7 +43,7 @@ exports[`Size related props 2`] = `
       <div class=\\"var-input__controller\\">
         <div class=\\"var-input__icon\\"></div>
         <div class=\\"var-input__wrap\\">
-          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-130\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-130\\"></label>
+          <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-120\\" type=\\"text\\"><label class=\\"var--ellipsis var-input__placeholder var-input--placeholder-hint\\" for=\\"var-input-120\\"></label>
         </div>
         <div class=\\"var-input__icon\\">
           <!--v-if-->
@@ -52,7 +52,7 @@ exports[`Size related props 2`] = `
       <div class=\\"var-input__line\\">
         <div class=\\"var-input__dot\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div><span> / 6 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -111,7 +111,7 @@ exports[`basic mode mount 1`] = `
       <div class=\\"var-input__line\\">
         <div class=\\"var-input__dot\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div>
@@ -137,7 +137,7 @@ exports[`simple mode disabled prop 1`] = `
       <div class=\\"var-input__line var-input--line-disabled\\">
         <div class=\\"var-input__dot var-input--line-disabled\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div><span> / 0 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -172,7 +172,7 @@ exports[`simple mode mount 1`] = `
       <div class=\\"var-input__line\\">
         <div class=\\"var-input__dot\\"></div>
       </div>
-      <transition-stub>
+      <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <!--v-if-->
       </transition-stub>
     </div><span> / 13 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -209,7 +209,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__line\\">
           <div class=\\"var-input__dot\\"></div>
         </div>
-        <transition-stub>
+        <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div><span> / 12 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -244,7 +244,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__line\\">
           <div class=\\"var-input__dot\\"></div>
         </div>
-        <transition-stub>
+        <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div><span> / 12 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -273,7 +273,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__line\\">
           <div class=\\"var-input__dot\\"></div>
         </div>
-        <transition-stub>
+        <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div><span> / 12 <div class=\\"var-pagination__simple-line\\"></div></span>
@@ -308,7 +308,7 @@ exports[`test pagination example 1`] = `
         <div class=\\"var-input__line var-input--line-disabled\\">
           <div class=\\"var-input__dot var-input--line-disabled\\"></div>
         </div>
-        <transition-stub>
+        <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div><span> / 12 <div class=\\"var-pagination__simple-line\\"></div></span>
