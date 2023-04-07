@@ -142,8 +142,8 @@
 
 | 参数                  | 说明                                              | 类型 | 默认值 |
 |---------------------|-------------------------------------------------| -------- | ---------- |
-| `v-model: current`  | 当前页数                                            | _string \| number_ | `1` |
-| `v-model: size`     | 每页条数                                            | _string \| number_ | `10` |
+| `v-model:current`  | 当前页数                                            | _string \| number_ | `1` |
+| `v-model:size`     | 每页条数                                            | _string \| number_ | `10` |
 | `total`             | 总条数                                             | _string \| number_ | `0` |
 | `simple`            | 是否为简单模式                                         | _boolean_ | `true` |
 | `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
