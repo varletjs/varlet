@@ -5,7 +5,7 @@ exports[`Size related props 1`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-127">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text">
@@ -42,7 +42,7 @@ exports[`Size related props 2`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-127">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text">
@@ -103,7 +103,7 @@ exports[`basic mode mount 1`] = `
     </div>
   </li>
   <li class="var-pagination__quickly">前往 <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-96">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-96" type="text">
@@ -131,7 +131,7 @@ exports[`simple mode disabled prop 1`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple var-pagination__item--disabled">
     <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-73">
-        <div class="var-input-decorator__controller var-input-decorator--disabled">
+        <div class="var-input-decorator__controller var--box var-input-decorator--disabled">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-73" disabled="" type="text">
@@ -168,7 +168,7 @@ exports[`simple mode mount 1`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-58">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-58" type="text">
@@ -207,7 +207,7 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-5">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-5" type="text">
@@ -244,7 +244,7 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-20">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-20" type="text">
@@ -275,7 +275,7 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input-decorator var-input-decorator--standard var--decorator var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-28">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-28" type="text">
@@ -312,7 +312,7 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple var-pagination__item--disabled">
       <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled var-input" var-pagination-cover=""><label class="var-input-decorator__label var--relative var--block" for="var-input-43">
-          <div class="var-input-decorator__controller var-input-decorator--disabled">
+          <div class="var-input-decorator__controller var--box var-input-decorator--disabled">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-43" disabled="" type="text">

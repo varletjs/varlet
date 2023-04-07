@@ -6,7 +6,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -37,7 +37,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -52,11 +52,11 @@ exports[`test select example 1`] = `
             </div>
           </div>
           <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start"></div>
-            <div class="var-input-decorator__line-notch">
+            <div class="var-input-decorator__line-start var--box"></div>
+            <div class="var-input-decorator__line-notch var--box">
               <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end"></div>
+            <div class="var-input-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -73,7 +73,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -104,7 +104,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--outlined var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -119,11 +119,11 @@ exports[`test select example 1`] = `
             </div>
           </div>
           <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start"></div>
-            <div class="var-input-decorator__line-notch">
+            <div class="var-input-decorator__line-start var--box"></div>
+            <div class="var-input-decorator__line-notch var--box">
               <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end"></div>
+            <div class="var-input-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -139,7 +139,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
           <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
             <div class="var-select__select" style="text-align: left;">
@@ -167,7 +167,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -198,7 +198,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var-input-decorator--disabled">
+        <div class="var-input-decorator__controller var--box var-input-decorator--disabled">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select var-select--disabled" style="text-align: left;">
@@ -228,7 +228,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -259,7 +259,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -290,7 +290,7 @@ exports[`test select example 1`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller">
+          <div class="var-input-decorator__controller var--box">
             <div class="var-input-decorator__icon"></div>
             <div class="var-input-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
@@ -305,11 +305,11 @@ exports[`test select example 1`] = `
             </div>
           </div>
           <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start"></div>
-            <div class="var-input-decorator__line-notch">
+            <div class="var-input-decorator__line-start var--box"></div>
+            <div class="var-input-decorator__line-notch var--box">
               <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end"></div>
+            <div class="var-input-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -325,7 +325,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -353,7 +353,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -383,7 +383,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -413,7 +413,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -443,7 +443,7 @@ exports[`test select example 1`] = `
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -476,7 +476,7 @@ exports[`test select focus & blur methods 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var-input-decorator--focus">
+        <div class="var-input-decorator__controller var--box var-input-decorator--focus">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -508,7 +508,7 @@ exports[`test select focus & blur methods 2`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -540,7 +540,7 @@ exports[`test select hint to be false 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
           <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
             <div class="var-select__select" style="text-align: left;">
@@ -570,7 +570,7 @@ exports[`test select size 1`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -602,7 +602,7 @@ exports[`test select validation 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var-input-decorator--error">
+        <div class="var-input-decorator__controller var--box var-input-decorator--error">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select var-select--error" style="text-align: left;">
@@ -645,7 +645,7 @@ exports[`test select variant 1`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -677,7 +677,7 @@ exports[`test select variant 2`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
     <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller">
+        <div class="var-input-decorator__controller var--box">
           <div class="var-input-decorator__icon"></div>
           <div class="var-input-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
@@ -692,11 +692,11 @@ exports[`test select variant 2`] = `
           </div>
         </div>
         <div class="var-input-decorator__line">
-          <div class="var-input-decorator__line-start"></div>
-          <div class="var-input-decorator__line-notch">
+          <div class="var-input-decorator__line-start var--box"></div>
+          <div class="var-input-decorator__line-notch var--box">
             <div class="var--ellipsis var-input-decorator__line-placeholder"></div>
           </div>
-          <div class="var-input-decorator__line-end"></div>
+          <div class="var-input-decorator__line-end var--box"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

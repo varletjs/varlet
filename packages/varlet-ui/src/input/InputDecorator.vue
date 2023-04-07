@@ -10,6 +10,7 @@
         :class="
           classes(
             n('controller'),
+            n('$--box'),
             [isFocus, n('--focus')],
             [errorMessage, n('--error')],
             [formDisabled || disabled, n('--disabled')]
@@ -67,7 +68,7 @@
         >
           <template v-if="!(formDisabled || disabled)">
             <div
-              :class="classes(n('line-start'), [errorMessage, n('--line-error')])"
+              :class="classes(n('line-start'), n('$--box'), [errorMessage, n('--line-error')])"
               :style="{
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
@@ -76,6 +77,7 @@
               :class="
                 classes(
                   n('line-notch'),
+                  n('$--box'),
                   [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
                   [errorMessage, n('--line-error')]
                 )
@@ -87,7 +89,7 @@
               <div :class="classes(n('$--ellipsis'), n('line-placeholder'))">{{ placeholder }}</div>
             </div>
             <div
-              :class="classes(n('line-end'), [errorMessage, n('--line-error')])"
+              :class="classes(n('line-end'), n('$--box'), [errorMessage, n('--line-error')])"
               :style="{
                 borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
               }"
