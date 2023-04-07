@@ -419,10 +419,11 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--input-decorator-mini-outlined-icon-padding` | `8px 0 8px` |
 | `--select-scroller-background` | `#fff` |
 | `--select-scroller-padding` | `6px 0` |
-| `--select-scroller-margin` | `0px` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
+| `--select-standard-scroller-margin` | `calc(var(--input-decorator-placeholder-size) * 0.75 + 8px) 0 0 0` |
+| `--select-outlined-scroller-margin` | `0` |
 
 #### Option Variables
 

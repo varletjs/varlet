@@ -1,39 +1,40 @@
 <template>
-  <var-input-decorator
-    :class="n()"
-    v-bind="{
-      value: modelValue,
-      size,
-      variant,
-      placeholder,
-      line,
-      hint,
-      textColor,
-      focusColor,
-      blurColor,
-      isFocus,
-      errorMessage,
-      formDisabled,
-      disabled,
-      clearable,
-      onClick: handleClick,
-      onClear: handleClear,
-    }"
-  >
-    <template #prepend-icon>
-      <slot name="prepend-icon" />
-    </template>
-
-    <div :class="n('wrap')" ref="wrapEl" @click="handleFocus">
-      <var-menu
-        var-select-cover
-        :class="n('menu')"
-        :offset-y="offsetY"
-        :disabled="formReadonly || readonly || formDisabled || disabled"
-        :default-style="false"
-        v-model:show="isFocus"
-        @close="handleBlur"
+  <div :class="n()" ref="wrapEl" @click="handleFocus">
+    <var-menu
+      :class="n('menu')"
+      var-select-cover
+      :offset-y="offsetY"
+      :disabled="formReadonly || readonly || formDisabled || disabled"
+      :placement="placement"
+      :default-style="false"
+      v-model:show="isFocus"
+      @close="handleBlur"
+    >
+      <var-input-decorator
+        ref="inputDecorator"
+        v-bind="{
+          value: modelValue,
+          size,
+          variant,
+          placeholder,
+          line,
+          hint,
+          textColor,
+          focusColor,
+          blurColor,
+          isFocus,
+          errorMessage,
+          formDisabled,
+          disabled,
+          clearable,
+          onClick: handleClick,
+          onClear: handleClear,
+        }"
       >
+        <template #prepend-icon>
+          <slot name="prepend-icon" />
+        </template>
+
         <div
           :class="classes(n('select'), [errorMessage, n('--error')], [formDisabled || disabled, n('--disabled')])"
           :style="{
@@ -78,21 +79,22 @@
           </slot>
         </div>
 
-        <template #menu>
-          <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
-            <slot />
-          </div>
+        <template #append-icon>
+          <slot name="append-icon" />
         </template>
-      </var-menu>
-    </div>
-    <template #append-icon>
-      <slot name="append-icon" />
-    </template>
 
-    <template #form-details>
-      <var-form-details :error-message="errorMessage" />
-    </template>
-  </var-input-decorator>
+        <template #form-details>
+          <var-form-details :error-message="errorMessage" />
+        </template>
+      </var-input-decorator>
+
+      <template #menu>
+        <div ref="menuEl" :class="classes(n('scroller'), n(`scroller-${variant}`), n('$-elevation--3'))">
+          <slot />
+        </div>
+      </template>
+    </var-menu>
+  </div>
 </template>
 
 <script lang="ts">
@@ -127,6 +129,7 @@ export default defineComponent({
   props,
   setup(props) {
     const wrapEl: Ref<HTMLElement | null> = ref(null)
+    const inputDecorator: Ref<InstanceType<typeof VarInputDecorator> | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
@@ -145,6 +148,8 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
     const menuEl: Ref<HTMLElement | null> = ref(null)
+
+    const placement = computed(() => (props.variant === 'outlined' ? 'bottom-start' : 'cover-top-start'))
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -340,6 +345,7 @@ export default defineComponent({
 
     return {
       wrapEl,
+      inputDecorator,
       offsetY,
       isFocus,
       errorMessage,
@@ -349,6 +355,7 @@ export default defineComponent({
       labels,
       isEmptyModelValue,
       menuEl,
+      placement,
       n,
       classes,
       handleFocus,

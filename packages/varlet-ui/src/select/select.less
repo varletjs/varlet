@@ -1,15 +1,16 @@
 :root {
   --select-scroller-background: #fff;
   --select-scroller-padding: 6px 0;
-  --select-scroller-margin: 0;
   --select-scroller-max-height: 278px;
   --select-chip-margin: 5px 5px 0;
   --select-arrow-size: 20px;
+  --select-standard-scroller-margin: calc(var(--input-decorator-placeholder-size) * 0.75 + 8px) 0 0 0;
+  --select-outlined-scroller-margin: 0;
 }
 
 .var-select {
   &__menu[var-select-cover] {
-    flex-grow: 1;
+    width: 100%;
     background: transparent;
   }
 
@@ -22,8 +23,15 @@
     background: var(--select-scroller-background);
     padding: var(--select-scroller-padding);
     overflow-y: auto;
-    margin: var(--select-scroller-margin);
     transition: background-color 0.25s;
+
+    &.var-select__scroller-standard {
+      margin: var(--select-standard-scroller-margin);
+    }
+
+    &.var-select__scroller-outline {
+      margin: var(--select-outline-scroller-margin);
+    }
   }
 
   &__wrap {
