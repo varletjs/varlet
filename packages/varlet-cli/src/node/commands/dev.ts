@@ -38,6 +38,10 @@ async function startServer(options: DevCommandOptions) {
   }
 
   logger.success(`\n${isRestart ? 'Res' : 'S'}tart successfully!!!`)
+
+  if (options.draft) {
+    logger.title('Server in draft mode!!!')
+  }
 }
 
 interface DevCommandOptions {
