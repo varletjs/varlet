@@ -1,27 +1,35 @@
-import { computed, getCurrentInstance, ref, watch } from 'vue'
+import { isFunction } from '@varlet/shared'
+import { computed, getCurrentInstance, ref, UnwrapRef, watch } from 'vue'
+import { cloneFnJSON } from './useCloned'
+import type { CloneFn } from './useCloned'
 
-export interface UseVModelOptions<P, K extends keyof P> {
+const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
+export interface UseVModelOptions<T> {
+  clone?: boolean | CloneFn<T>
   passive?: boolean
+  deep?: boolean
   eventName?: string
-  defaultValue?: P[K]
-  emit?: (event: string, value: P[K]) => void
+  defaultValue?: T
+  emit?: (event: string, value: T) => void
 }
 
 export function useVModel<P extends Record<string, any>, K extends keyof P>(
   props: P,
   key: K,
-  options: UseVModelOptions<P, K> = {}
+  options: UseVModelOptions<P[K]> = {}
 ) {
   const vm = getCurrentInstance()!
-  const { passive = true, eventName, defaultValue, emit = vm?.emit } = options
+  const { clone = false, passive = true, deep = false, eventName, defaultValue, emit = vm?.emit } = options
   const event = eventName ?? `update:${key.toString()}`
 
-  const getValue = () => (props[key] != null ? props[key] : defaultValue)!
+  const cloneFn = (val: P[K]) => (!clone ? val : isFunction(clone) ? clone(val) : cloneFnJSON(val))
+
+  const getValue = () => (isDef(props[key]) ? cloneFn(props[key]) : defaultValue)
 
   if (!passive) {
     return computed<P[K]>({
       get() {
-        return getValue()
+        return getValue()!
       },
       set(value) {
         emit(event, value)
@@ -29,12 +37,12 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
     })
   }
 
-  const proxy = ref<P[K]>(getValue())
+  const proxy = ref<P[K]>(getValue()!)
 
   watch(
     () => props[key],
-    () => {
-      proxy.value = getValue()
+    (v) => {
+      proxy.value = cloneFn(v) as UnwrapRef<P[K]>
     }
   )
 
@@ -42,7 +50,8 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
     () => proxy.value,
     (newValue: P[K]) => {
       emit(event, newValue)
-    }
+    },
+    { deep }
   )
 
   return proxy
