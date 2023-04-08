@@ -109,7 +109,7 @@ Picker.install = function (app: App) {
   app.component(VarPicker.name, VarPicker)
 }
 
-Picker.close = () => {
+Picker.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null

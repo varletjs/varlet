@@ -80,15 +80,15 @@ function ActionSheet(options?: ActionSheetOptions): Promise<ActionSheetActions |
   })
 }
 
-function setDefaultOptions(options: ActionSheetOptions) {
+ActionSheet.setDefaultOptions = function (options: ActionSheetOptions) {
   defaultOptions = options
 }
 
-function resetDefaultOptions() {
+ActionSheet.resetDefaultOptions = function () {
   defaultOptions = {}
 }
 
-function close() {
+ActionSheet.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null
@@ -108,12 +108,6 @@ VarActionSheet.install = function (app: App) {
 ActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
-
-Object.assign(ActionSheet, {
-  setDefaultOptions,
-  resetDefaultOptions,
-  close,
-})
 
 export { props as actionSheetProps } from './props'
 

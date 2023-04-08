@@ -95,15 +95,15 @@ function Dialog(options?: UserDialogOptions): Promise<DialogActions | void> {
   })
 }
 
-function setDefaultOptions(options: DialogOptions) {
+Dialog.setDefaultOptions = function (options: DialogOptions) {
   defaultOptions = options
 }
 
-function resetDefaultOptions() {
+Dialog.resetDefaultOptions = function () {
   defaultOptions = {}
 }
 
-function close() {
+Dialog.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null
@@ -113,12 +113,6 @@ function close() {
     })
   }
 }
-
-Object.assign(Dialog, {
-  setDefaultOptions,
-  resetDefaultOptions,
-  close,
-})
 
 VarDialog.install = function (app: App) {
   app.component(VarDialog.name, VarDialog)
