@@ -18,11 +18,11 @@
     </li>
     <li v-if="simple" :class="classes(n('simple'), [disabled, n('item--disabled')])">
       <var-input
-        v-model="simpleValue"
+        v-model="simpleCurrentValue"
         :disabled="disabled"
         var-pagination-cover
-        @blur="setPage('simple', simpleValue, $event)"
-        @keydown.enter="setPage('simple', simpleValue, $event)"
+        @blur="setPage('simple', simpleCurrentValue, $event)"
+        @keydown.enter="setPage('simple', simpleCurrentValue, $event)"
       />
       <span>
         / {{ pageCount }}
@@ -92,11 +92,11 @@
     <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, 'item--disabled'])">
       {{ pack.paginationJump }}
       <var-input
-        v-model="inputValue"
+        v-model="quickJumperValue"
         :disabled="disabled"
         var-pagination-cover
-        @blur="setPage('quick', inputValue, $event)"
-        @keydown.enter="setPage('quick', inputValue, $event)"
+        @blur="setPage('quick', quickJumperValue, $event)"
+        @keydown.enter="setPage('quick', quickJumperValue, $event)"
       />
     </li>
 
@@ -112,12 +112,10 @@ import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarCell from '../cell'
 import VarInput from '../input'
-import { defineComponent, ref, computed, watch } from 'vue'
-import { props } from './props'
+import { defineComponent, ref, computed, watch, type ComputedRef, type Ref } from 'vue'
+import { props, type Range } from './props'
 import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
-import type { ComputedRef, Ref } from 'vue'
-import type { Range } from './props'
 import { call, createNamespace, formatElevation } from '../utils/components'
 
 const { n, classes } = createNamespace('pagination')
@@ -134,22 +132,23 @@ export default defineComponent({
   props,
   setup(props) {
     const menuVisible: Ref<boolean> = ref(false)
-    const inputValue: Ref<string> = ref('')
-    const simpleValue: Ref<string> = ref('1')
+    const quickJumperValue: Ref<string> = ref('')
+    const simpleCurrentValue: Ref<string> = ref('1')
     const isHideEllipsisHead: Ref<boolean> = ref(false)
     const isHideEllipsisTail: Ref<boolean> = ref(false)
     const current: Ref<number> = ref(toNumber(props.current) || 1)
     const size: Ref<number> = ref(toNumber(props.size) || 10)
     const pageList: Ref<Array<string | number>> = ref([])
-
     const activePosition: ComputedRef<number> = computed(() => Math.ceil(props.maxPagerCount / 2))
     const pageCount: ComputedRef<number> = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
+
     const range: ComputedRef<Range> = computed(() => {
       const start = size.value * (current.value - 1) + 1
       const end = Math.min(size.value * current.value, toNumber(props.total))
 
       return [start, end]
     })
+
     const totalText: ComputedRef<string> = computed(() => {
       if (!props.showTotal) return ''
 
@@ -169,51 +168,72 @@ export default defineComponent({
     }
 
     const clickItem = (item: string | number, index?: number) => {
-      if (item === current.value || props.disabled) return
+      if (item === current.value || props.disabled) {
+        return
+      }
 
-      if (isNumber(item)) current.value = item
-      else if (item === 'prev') current.value > 1 && (current.value -= 1)
-      else if (item === 'next') current.value < pageCount.value && (current.value += 1)
-      else if (item === '...') {
-        if (index === 1) {
-          current.value = Math.max(current.value - props.maxPagerCount, 1)
-        } else {
-          current.value = Math.min(current.value + props.maxPagerCount, pageCount.value)
-        }
+      if (item === '...') {
+        current.value =
+          index === 1
+            ? Math.max(current.value - props.maxPagerCount, 1)
+            : Math.min(current.value + props.maxPagerCount, pageCount.value)
+        return
+      }
+
+      if (item === 'prev') {
+        current.value = ensureCurrentBoundary(current.value - 1)
+        return
+      }
+
+      if (item === 'next') {
+        current.value = ensureCurrentBoundary(current.value + 1)
+        return
+      }
+
+      if (isNumber(item)) {
+        current.value = item
       }
     }
 
     const showMenu = () => {
-      if (props.disabled) return
+      if (props.disabled) {
+        return
+      }
+
       menuVisible.value = true
     }
 
     const clickSize = (option: number) => {
       size.value = option
       menuVisible.value = false
+
+      const targetCurrent = ensureCurrentBoundary(current.value)
+      simpleCurrentValue.value = String(targetCurrent)
+      current.value = targetCurrent
     }
 
-    const isValidatePage = (value: string) => {
-      const pattern = /^[1-9][0-9]*$/
-      return pattern.test(value)
-    }
-
-    const setPage = (type: 'simple' | 'quick', value: string, event: KeyboardEvent | FocusEvent) => {
-      ;(event.target as HTMLInputElement).blur()
-      if (isValidatePage(value)) {
-        let valueNum = toNumber(value)
-
-        if (valueNum > pageCount.value) {
-          valueNum = pageCount.value
-          simpleValue.value = `${valueNum}`
-        }
-
-        if (valueNum !== current.value) current.value = valueNum
+    const ensureCurrentBoundary = (targetCurrent: number) => {
+      if (targetCurrent > pageCount.value) {
+        return pageCount.value
       }
 
-      if (type === 'quick') inputValue.value = ''
+      if (targetCurrent < 1) {
+        return 1
+      }
 
-      if (type === 'simple' && !isValidatePage(value)) simpleValue.value = `${current.value}`
+      return targetCurrent
+    }
+
+    const setPage = (type: 'simple' | 'quick', page: string, event: KeyboardEvent | FocusEvent) => {
+      ;(event.target as HTMLInputElement).blur()
+
+      const targetCurrent = ensureCurrentBoundary(toNumber(page))
+      simpleCurrentValue.value = String(targetCurrent)
+      current.value = targetCurrent
+
+      if (type === 'quick') {
+        quickJumperValue.value = ''
+      }
     }
 
     watch([() => props.current, () => props.size], ([newCurrent, newSize]) => {
@@ -228,7 +248,7 @@ export default defineComponent({
         const { maxPagerCount, total, onChange } = props
         const oldCount = Math.ceil(toNumber(total) / toNumber(oldSize))
         const rEllipseSign = newCount - (maxPagerCount - activePosition.value) - 1
-        simpleValue.value = `${newCurrent}`
+        simpleCurrentValue.value = `${newCurrent}`
 
         if (newCount - 2 > maxPagerCount) {
           if (oldCurrent === undefined || newCount !== oldCount) {
@@ -277,7 +297,7 @@ export default defineComponent({
 
         pageList.value = list
 
-        if (oldCurrent !== undefined && newCount > 0) {
+        if (oldCurrent != null && newCount > 0) {
           call(onChange, newCurrent, newSize)
         }
 
@@ -298,8 +318,8 @@ export default defineComponent({
       size,
       pageCount,
       pageList,
-      inputValue,
-      simpleValue,
+      quickJumperValue,
+      simpleCurrentValue,
       totalText,
       getMode,
       isHideEllipsis,
