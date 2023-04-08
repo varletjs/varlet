@@ -13,7 +13,7 @@ const { ensureDirSync, pathExistsSync } = fse
 let server: ViteDevServer
 let watcher: FSWatcher
 
-async function startServer(force: boolean | undefined) {
+async function startServer(options: DevCommandOptions) {
   const isRestart = Boolean(server)
   logger.info(`${isRestart ? 'Res' : 'S'}tarting server...`)
 
@@ -22,10 +22,10 @@ async function startServer(force: boolean | undefined) {
   watcher && (await watcher.close())
 
   // build all config
-  await buildSiteEntry()
+  await buildSiteEntry(options.draft ?? false)
   const varletConfig = await getVarletConfig()
   const devConfig = getDevConfig(varletConfig)
-  const inlineConfig = merge(devConfig, force ? { optimizeDeps: { force: true } } : {})
+  const inlineConfig = merge(devConfig, options.force ? { optimizeDeps: { force: true } } : {})
 
   // create all instance
   server = await createServer(inlineConfig)
@@ -34,7 +34,7 @@ async function startServer(force: boolean | undefined) {
 
   if (pathExistsSync(VARLET_CONFIG)) {
     watcher = chokidar.watch(VARLET_CONFIG)
-    watcher.on('change', () => startServer(force))
+    watcher.on('change', () => startServer(options))
   }
 
   logger.success(`\n${isRestart ? 'Res' : 'S'}tart successfully!!!`)
@@ -42,6 +42,7 @@ async function startServer(force: boolean | undefined) {
 
 interface DevCommandOptions {
   force?: boolean
+  draft?: boolean
 }
 
 export async function dev(options: DevCommandOptions) {
@@ -49,5 +50,5 @@ export async function dev(options: DevCommandOptions) {
 
   ensureDirSync(SRC_DIR)
 
-  await startServer(options.force)
+  await startServer(options)
 }

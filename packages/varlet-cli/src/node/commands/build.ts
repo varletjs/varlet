@@ -11,7 +11,7 @@ export async function build() {
   process.env.NODE_ENV = 'production'
 
   ensureDirSync(SRC_DIR)
-  await buildSiteEntry()
+  await buildSiteEntry(false)
   const varletConfig = await getVarletConfig()
   const buildConfig = getBuildConfig(varletConfig)
 
