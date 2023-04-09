@@ -110,6 +110,10 @@ varlet-cli gen
 ```shell
 # playground-ignore
 varlet-cli dev
+# force mode
+varlet-cli dev -f
+# draft mode
+varlet-cli dev -d
 ```
 
 #### 构建文档站点
