@@ -89,7 +89,12 @@
       </var-input-decorator>
 
       <template #menu>
-        <div ref="menuEl" :class="classes(n('scroller'), n(`scroller-${variant}`), n('$-elevation--3'))">
+        <div
+          ref="menuEl"
+          :class="
+            classes(n('scroller'), n(`scroller-${variant}`), [!hint, n('scroller-non-hint')], n('$-elevation--3'))
+          "
+        >
           <slot />
         </div>
       </template>
