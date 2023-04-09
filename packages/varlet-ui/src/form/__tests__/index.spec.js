@@ -83,7 +83,7 @@ test('test form with input', async () => {
   const triggerEvents = async () => {
     await wrapper.find('.var-input__input').trigger('input')
     await wrapper.find('.var-input__input').trigger('change')
-    await wrapper.find('.var-input').trigger('click')
+    await wrapper.find('.var-input-decorator').trigger('click')
   }
 
   expect(wrapper.html()).toMatchSnapshot()

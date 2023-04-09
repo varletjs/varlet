@@ -25,7 +25,7 @@ test('test input variant', () => {
       },
     })
 
-    expect(wrapper.find('.var-input').classes()).toContain(`var-input-decorator--${variant}`)
+    expect(wrapper.find(`var-input-decorator--${variant}`)).toBeTruthy()
     switch (variant) {
       case 'standard': {
         expect(
@@ -58,7 +58,7 @@ test('test input size', () => {
     },
   })
 
-  expect(wrapper.find('.var-input').classes()).toContain('var-input-decorator--small')
+  expect(wrapper.find('.var-input-decorator--small')).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -103,7 +103,7 @@ describe('test input events', () => {
       },
     })
 
-    await wrapper.trigger('click')
+    await wrapper.find('.var-input-decorator').trigger('click')
     expect(onClick).toHaveBeenCalledTimes(1)
 
     await wrapper.find('.var-input__input').setValue('t')
@@ -177,7 +177,7 @@ const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
   await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
-  await wrapper.trigger('click')
+  await wrapper.find('.var-input-decorator').trigger('click')
 }
 
 test('test input disabled', async () => {

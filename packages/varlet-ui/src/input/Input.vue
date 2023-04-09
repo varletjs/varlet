@@ -1,96 +1,97 @@
 <template>
-  <var-input-decorator
-    :class="n()"
-    v-bind="{
-      value: modelValue,
-      id,
-      size,
-      variant,
-      placeholder,
-      line,
-      hint,
-      textColor,
-      focusColor,
-      blurColor,
-      isFocus,
-      errorMessage,
-      formDisabled,
-      disabled,
-      clearable,
-      noHintPlaceholderState: isComposing,
-      textarea,
-      onClick: handleClick,
-      onClear: handleClear,
-    }"
-  >
-    <template #prepend-icon>
-      <slot name="prepend-icon" />
-    </template>
-
-    <input :class="n('autocomplete')" v-if="type === 'password'" />
-    <textarea
-      :class="
-        classes(
-          n('input'),
-          n('--textarea'),
-          [formDisabled || disabled, n('--disabled')],
-          [errorMessage, n('--caret-error')]
-        )
-      "
-      ref="el"
-      autocomplete="new-password"
-      :id="id"
-      :disabled="formDisabled || disabled || formReadonly || readonly"
-      :type="type"
-      :value="modelValue"
-      :maxlength="maxlength"
-      :rows="rows"
-      :style="{
-        color: textColor,
-        caretColor: !errorMessage ? focusColor : undefined,
-        resize: resize ? 'vertical' : 'none',
+  <div :class="n()" @mousedown="handleInputMousedown">
+    <var-input-decorator
+      v-bind="{
+        value: modelValue,
+        id,
+        size,
+        variant,
+        placeholder,
+        line,
+        hint,
+        textColor,
+        focusColor,
+        blurColor,
+        isFocus,
+        errorMessage,
+        formDisabled,
+        disabled,
+        clearable,
+        noHintPlaceholderState: isComposing,
+        textarea,
+        onClick: handleClick,
+        onClear: handleClear,
       }"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @input="handleInput"
-      @change="handleChange"
-      @touchstart="handleTouchstart"
-      @compositionstart="handleCompositionStart"
-      @compositionend="handleCompositionEnd"
-      v-if="textarea"
     >
-    </textarea>
-    <input
-      :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
-      ref="el"
-      autocomplete="new-password"
-      :id="id"
-      :disabled="formDisabled || disabled || formReadonly || readonly"
-      :type="type"
-      :value="modelValue"
-      :maxlength="maxlength"
-      :style="{
-        color: textColor,
-        caretColor: !errorMessage ? focusColor : undefined,
-      }"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @input="handleInput"
-      @change="handleChange"
-      @touchstart="handleTouchstart"
-      @compositionstart="handleCompositionStart"
-      @compositionend="handleCompositionEnd"
-      v-else
-    />
+      <template #prepend-icon>
+        <slot name="prepend-icon" />
+      </template>
 
-    <template #append-icon>
-      <slot name="append-icon" />
-    </template>
+      <input :class="n('autocomplete')" v-if="type === 'password'" />
+      <textarea
+        :class="
+          classes(
+            n('input'),
+            n('--textarea'),
+            [formDisabled || disabled, n('--disabled')],
+            [errorMessage, n('--caret-error')]
+          )
+        "
+        ref="el"
+        autocomplete="new-password"
+        :id="id"
+        :disabled="formDisabled || disabled || formReadonly || readonly"
+        :type="type"
+        :value="modelValue"
+        :maxlength="maxlength"
+        :rows="rows"
+        :style="{
+          color: textColor,
+          caretColor: !errorMessage ? focusColor : undefined,
+          resize: resize ? 'vertical' : 'none',
+        }"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @input="handleInput"
+        @change="handleChange"
+        @touchstart="handleTouchstart"
+        @compositionstart="handleCompositionStart"
+        @compositionend="handleCompositionEnd"
+        v-if="textarea"
+      >
+      </textarea>
+      <input
+        :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
+        ref="el"
+        autocomplete="new-password"
+        :id="id"
+        :disabled="formDisabled || disabled || formReadonly || readonly"
+        :type="type"
+        :value="modelValue"
+        :maxlength="maxlength"
+        :style="{
+          color: textColor,
+          caretColor: !errorMessage ? focusColor : undefined,
+        }"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @input="handleInput"
+        @change="handleChange"
+        @touchstart="handleTouchstart"
+        @compositionstart="handleCompositionStart"
+        @compositionend="handleCompositionEnd"
+        v-else
+      />
 
-    <template #form-details>
-      <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
-    </template>
-  </var-input-decorator>
+      <template #append-icon>
+        <slot name="append-icon" />
+      </template>
+
+      <template #form-details>
+        <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
+      </template>
+    </var-input-decorator>
+  </div>
 </template>
 
 <script lang="ts">
@@ -265,6 +266,17 @@ export default defineComponent({
       e.stopPropagation()
     }
 
+    function handleInputMousedown(e: MouseEvent) {
+      const { disabled } = props
+
+      if (form?.disabled.value || disabled || e.target === el.value) {
+        return
+      }
+
+      focus()
+      e.preventDefault()
+    }
+
     // expose
     const reset = () => {
       call(props['onUpdate:modelValue'], '')
@@ -322,6 +334,7 @@ export default defineComponent({
       handleCompositionEnd,
       validate,
       resetValidation,
+      handleInputMousedown,
       reset,
       focus,
       blur,
