@@ -1,9 +1,13 @@
 import { isFunction } from '@varlet/shared'
 import { computed, getCurrentInstance, ref, UnwrapRef, watch } from 'vue'
-import { cloneFnJSON } from './useCloned'
-import type { CloneFn } from './useCloned'
 
 const isDef = <T = any>(val?: T): val is T => typeof val !== 'undefined'
+
+type CloneFn<F, T = F> = (x: F) => T
+
+function cloneFnJSON<T>(source: T): T {
+  return JSON.parse(JSON.stringify(source))
+}
 export interface UseVModelOptions<T> {
   clone?: boolean | CloneFn<T>
   passive?: boolean
