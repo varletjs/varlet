@@ -102,6 +102,13 @@ export function registerCompletions(context: ExtensionContext) {
   const attrProvider: CompletionItemProvider = {
     provideCompletionItems(document: TextDocument, position: Position) {
       const text = document.getText(new Range(new Position(0, 0), new Position(position.line, position.character)))
+      const offset = document.offsetAt(position)
+      const lastText = document.getText().substring(offset)
+      const nextCharacter = lastText.charAt(0)
+
+      if (nextCharacter !== ' ' && nextCharacter !== '/' && nextCharacter !== '>') {
+        return null
+      }
 
       if (!Array.from(text.matchAll(ATTR_RE)).length) {
         return null
