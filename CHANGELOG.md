@@ -1,3 +1,23 @@
+## [2.9.5](https://github.com/varletjs/varlet/compare/v2.9.4...v2.9.5) (2023-04-07)
+
+
+### Bug Fixes
+
+* fix useRouteListener for ssr ([6b75dd5](https://github.com/varletjs/varlet/commit/6b75dd5b0a628c673961f276a5a42b61df17abaa))
+* **tabs:** fix tab active color computed error ([d6bef90](https://github.com/varletjs/varlet/commit/d6bef90b34f52572de7fe9faaa61ec7ec5f5a886))
+* **ui/hover:** fix and close [#942](https://github.com/varletjs/varlet/issues/942) ([58b2ef4](https://github.com/varletjs/varlet/commit/58b2ef4825b485e2b406ba69dbe30a1a8f03501a))
+* **ui/pagination:** fix pagination disabled exception ([#943](https://github.com/varletjs/varlet/issues/943)) ([4f7b046](https://github.com/varletjs/varlet/commit/4f7b0461ea5dcb6f7fbee07b1e76f2d92a67c972))
+* **ui/pagination:** fix pagination not require props ([#946](https://github.com/varletjs/varlet/issues/946)) ([20885d3](https://github.com/varletjs/varlet/commit/20885d3dea8819ba8c682dab0a3a2cecbfaf905d))
+* **ui/tabs:** fix tab active color error while the name's type is number ([d2bf6ad](https://github.com/varletjs/varlet/commit/d2bf6ad2b86c1ebe1db7adda1ffe64a2047cdc2e))
+
+
+### Features
+
+* **ui/context:** support enableRipple option ([8591899](https://github.com/varletjs/varlet/commit/859189930c5d8437376b9fd53afbb8cb497da833))
+* **ui/tabs:** support custom indicator inner size ([83a049d](https://github.com/varletjs/varlet/commit/83a049daedde8e4f3b587d0f1ab375704b12ef9d))
+
+
+
 ## [2.9.4](https://github.com/varletjs/varlet/compare/v2.9.3...v2.9.4) (2023-03-31)
 
 

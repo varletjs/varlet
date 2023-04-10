@@ -61,10 +61,9 @@
 import VarPopup from '../popup'
 import VarButton from '../button'
 import { props } from './props'
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, type Ref } from 'vue'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
-import type { Ref } from 'vue'
 import { call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 
@@ -94,7 +93,7 @@ export default defineComponent({
       }
 
       if (onBeforeClose != null) {
-        onBeforeClose('close', done)
+        call(onBeforeClose, 'close', done)
         return
       }
 
@@ -107,7 +106,7 @@ export default defineComponent({
       call(onConfirm)
 
       if (onBeforeClose != null) {
-        onBeforeClose('confirm', done)
+        call(onBeforeClose, 'confirm', done)
         return
       }
 
@@ -120,7 +119,7 @@ export default defineComponent({
       call(onCancel)
 
       if (onBeforeClose != null) {
-        onBeforeClose('cancel', done)
+        call(onBeforeClose, 'cancel', done)
         return
       }
 

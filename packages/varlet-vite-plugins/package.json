@@ -1,6 +1,6 @@
 {
   "name": "@varlet/vite-plugins",
-  "version": "2.9.4",
+  "version": "2.9.5",
   "type": "module",
   "description": "vite plugins of varlet",
   "main": "lib/index.js",

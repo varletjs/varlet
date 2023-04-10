@@ -21,7 +21,6 @@ export const STYLE_DIR_NAME = 'style'
 export const EXAMPLE_DIR_NAME = 'example'
 export const LOCALE_DIR_NAME = 'locale'
 export const DOCS_DIR_NAME = 'docs'
-export const DIR_INDEX = 'index.vue'
 export const TESTS_DIR_NAME = '__tests__'
 export const GENERATORS_DIR = resolve(dirname, '../../../template/generators')
 export const UI_PACKAGE_JSON = resolve(CWD, 'package.json')

@@ -110,6 +110,10 @@ The resulting route is as follows:
 ```shell
 # playground-ignore
 varlet-cli dev
+# force mode
+varlet-cli dev -f
+# draft mode
+varlet-cli dev -d
 ```
 
 #### Build a documentation site

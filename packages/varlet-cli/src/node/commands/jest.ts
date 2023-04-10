@@ -24,7 +24,7 @@ export async function jest(cmd: JestCommandOptions) {
     testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,
   }
 
-  await buildSiteEntry()
+  await buildSiteEntry(false)
 
   try {
     const response = await runCLI(config as any, [CWD])
