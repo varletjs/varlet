@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test popup show 1`] = `
-"<transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
-    <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-    <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 1998; display: none;">
+    <div class="var-popup__overlay" style="z-index: 1999;"></div>
+    <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
       <!---->
     </transition-stub>
   </div>
@@ -12,21 +12,21 @@ exports[`test popup show 1`] = `
 `;
 
 exports[`test popup show 2`] = `
-"<transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <div class=\\"var--box var-popup\\" style=\\"z-index: 2001;\\">
-    <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-    <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-      <div class=\\"var-popup__content var-popup--center var-popup--content-background-color var-elevation--3\\" style=\\"z-index: 2003;\\"> default slot content </div>
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 2001;">
+    <div class="var-popup__overlay" style="z-index: 2002;"></div>
+    <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3" style="z-index: 2003;"> default slot content </div>
     </transition-stub>
   </div>
 </transition-stub>"
 `;
 
 exports[`test popup show 3`] = `
-"<transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <div class=\\"var--box var-popup\\" style=\\"z-index: 2001; display: none;\\">
-    <div class=\\"var-popup__overlay\\" style=\\"z-index: 2002;\\"></div>
-    <transition-stub name=\\"var-pop-center\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 2001; display: none;">
+    <div class="var-popup__overlay" style="z-index: 2002;"></div>
+    <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
       <!---->
     </transition-stub>
   </div>
