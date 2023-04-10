@@ -18,7 +18,7 @@ function getRootConfig() {
 module.exports = {
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
-    customExportConditions: ['node', "node-addons"],
+    customExportConditions: ['node', 'node-addons'],
   },
   moduleNameMapper: {
     '^@config$': '<rootDir>/.varlet/site.config.json',
