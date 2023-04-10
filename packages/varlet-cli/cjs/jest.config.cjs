@@ -16,13 +16,17 @@ function getRootConfig() {
 }
 
 module.exports = {
+  testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    customExportConditions: ['node', "node-addons"],
+  },
   moduleNameMapper: {
     '^@config$': '<rootDir>/.varlet/site.config.json',
     '\\.(css|less)$': JEST_STYLE_MOCK,
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': JEST_MEDIA_MOCK,
   },
   transform: {
-    '\\.(vue)$': 'vue-jest',
+    '\\.(vue)$': '@vue/vue3-jest',
     '\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   collectCoverage: true,
