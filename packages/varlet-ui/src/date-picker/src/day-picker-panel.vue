@@ -251,6 +251,7 @@ export default defineComponent({
         textColor: isCover ? '' : textColorOrCover(),
         [`${nDate()}-color-cover`]: isCover,
         class: classes(n('button'), n('button--usable'), [disabled, n('button--disabled')]),
+        disabled,
       }
     }
 
@@ -260,7 +261,7 @@ export default defineComponent({
       emit('check-preview', 'month', checkType)
     }
 
-    const chooseDay = (day: number, event: MouseEvent) => {
+    const chooseDay = (day: number, event: Event) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
       if (buttonEl.classList.contains(n('button--disabled'))) return
 
