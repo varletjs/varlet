@@ -186,6 +186,7 @@ export default defineComponent({
           outline: false,
           textColor: '',
           class: n('button'),
+          disabled: true,
         }
       }
 
