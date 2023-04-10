@@ -25,7 +25,7 @@
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="(event) => chooseDay(day, event)"
+                @click="(event: Event) => chooseDay(day, event)"
               >
                 {{ filterDay(day) }}
               </var-button>

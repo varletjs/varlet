@@ -92,9 +92,9 @@ describe('test chip component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-chip').attributes('closeable')).toContain(true)
+    expect(wrapper.find('.var-chip').attributes('closeable')).toContain('true')
     await wrapper.setProps({ closeable: false })
-    expect(wrapper.find('.var-chip').attributes('closeable')).toContain(false)
+    expect(wrapper.find('.var-chip').attributes('closeable')).toContain('false')
     wrapper.unmount()
   })
 
@@ -107,9 +107,9 @@ describe('test chip component props', () => {
     })
 
     expect(wrapper.find('.var-chip').attributes('closename')).toBe('This is close name')
-    expect(wrapper.find('.var-chip').attributes('closeable')).toContain(true)
+    expect(wrapper.find('.var-chip').attributes('closeable')).toContain('true')
     await wrapper.setProps({ closeable: false })
-    expect(wrapper.find('.var-chip').attributes('closeable')).toContain(false)
+    expect(wrapper.find('.var-chip').attributes('closeable')).toContain('false')
     wrapper.unmount()
   })
 

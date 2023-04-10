@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test action-sheet styles 1`] = `
-"<transition-stub name=\\"var-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-  <div class=\\"var--box var-popup\\" style=\\"z-index: 1998; display: none;\\">
-    <div class=\\"var-popup__overlay\\" style=\\"z-index: 1999;\\"></div>
-    <transition-stub name=\\"var-pop-bottom\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 1998; display: none;">
+    <div class="var-popup__overlay" style="z-index: 1999;"></div>
+    <transition-stub name="var-pop-bottom" appear="false" persisted="false" css="true">
       <!---->
     </transition-stub>
   </div>
