@@ -18,7 +18,6 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import Snackbar from '../snackbar'
 import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
 import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
