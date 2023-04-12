@@ -5,23 +5,23 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__dot"></div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -36,27 +36,27 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--outlined var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start var--box"></div>
-            <div class="var-input-decorator__line-notch var--box">
-              <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__line-start var--box"></div>
+            <div class="var-field-decorator__line-notch var--box">
+              <div class="var--ellipsis var-field-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end var--box"></div>
+            <div class="var-field-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -72,23 +72,23 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--standard var-field-decorator--small var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__dot"></div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -103,27 +103,27 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--outlined var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--outlined var-field-decorator--small var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start var--box"></div>
-            <div class="var-input-decorator__line-notch var--box">
-              <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__line-start var--box"></div>
+            <div class="var-field-decorator__line-notch var--box">
+              <div class="var--ellipsis var-field-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end var--box"></div>
+            <div class="var-field-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -138,18 +138,18 @@ exports[`test select example 1`] = `
 <div class="app-type">朴素模式</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
-          <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon var-field-decorator--non-hint"></div>
+          <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-non-hint">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder var-field-decorator--placeholder-non-hint">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon var-input-decorator--non-hint">
+          <div class="var-field-decorator__icon var-field-decorator--non-hint">
             <!--v-if-->
           </div>
         </div>
@@ -166,23 +166,23 @@ exports[`test select example 1`] = `
 <div class="app-type">文本关联值</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -197,23 +197,23 @@ exports[`test select example 1`] = `
 <div class="app-type">禁用</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator var-input-decorator--disabled"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box var-input-decorator--disabled">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator var-field-decorator--disabled"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box var-field-decorator--disabled">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select var-select--disabled" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator--disabled var-input-decorator__placeholder">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator--disabled var-field-decorator__placeholder">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line var-input-decorator--line-disabled">
-          <div class="var-input-decorator__dot var-input-decorator--line-disabled"></div>
+        <div class="var-field-decorator__line var-field-decorator--line-disabled">
+          <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -227,23 +227,23 @@ exports[`test select example 1`] = `
 <div class="app-type">只读</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -258,23 +258,23 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__dot"></div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -289,27 +289,27 @@ exports[`test select example 1`] = `
 <div class="pb">
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
-      <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-          <div class="var-input-decorator__controller var--box">
-            <div class="var-input-decorator__icon"></div>
-            <div class="var-input-decorator__wrap">
+      <div class="var-field-decorator var-field-decorator--outlined var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+          <div class="var-field-decorator__controller var--box">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
               <div class="var-select__select" style="text-align: left;">
                 <div class="var-select__label">
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div>
-              <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+              <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__icon">
+            <div class="var-field-decorator__icon">
               <!--v-if-->
             </div>
           </div>
-          <div class="var-input-decorator__line">
-            <div class="var-input-decorator__line-start var--box"></div>
-            <div class="var-input-decorator__line-notch var--box">
-              <div class="var--ellipsis var-input-decorator__line-placeholder">请选择一个选项</div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__line-start var--box"></div>
+            <div class="var-field-decorator__line-notch var--box">
+              <div class="var--ellipsis var-field-decorator__line-placeholder">请选择一个选项</div>
             </div>
-            <div class="var-input-decorator__line-end var--box"></div>
+            <div class="var-field-decorator__line-end var--box"></div>
           </div>
         </label>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -324,21 +324,21 @@ exports[`test select example 1`] = `
 <div class="app-type">自定义图标</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-plus prepend-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-chevron-down" style="transition-duration: 300ms;"></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
+          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-minus append-icon" style="transition-duration: 0ms;"></i></div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -352,23 +352,23 @@ exports[`test select example 1`] = `
 <div class="app-type">多选</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择多个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择多个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -382,23 +382,23 @@ exports[`test select example 1`] = `
 <div class="app-type">纸片风格的多选</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择多个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择多个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -412,23 +412,23 @@ exports[`test select example 1`] = `
 <div class="app-type">单选值校验</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择一个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择一个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -442,23 +442,23 @@ exports[`test select example 1`] = `
 <div class="app-type">多选值校验</div>
 <div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder">请选择多个选项</div>
+            <div class="var--ellipsis var-field-decorator__placeholder">请选择多个选项</div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -475,23 +475,23 @@ exports[`test select example 1`] = `
 exports[`test select focus & blur methods 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box var-input-decorator--focus">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box var-field-decorator--focus">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator--focus var-input-decorator__placeholder var-input-decorator--placeholder-hint"></div>
+            <div class="var--ellipsis var-field-decorator--focus var-field-decorator__placeholder var-field-decorator--placeholder-hint"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot var-input-decorator--line-focus"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot var-field-decorator--line-focus"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -507,23 +507,23 @@ exports[`test select focus & blur methods 1`] = `
 exports[`test select focus & blur methods 2`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder"></div>
+            <div class="var--ellipsis var-field-decorator__placeholder"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -539,21 +539,21 @@ exports[`test select focus & blur methods 2`] = `
 exports[`test select hint to be false 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon var-input-decorator--non-hint"></div>
-          <div class="var-input-decorator__wrap var-input-decorator--wrap-non-hint">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon var-field-decorator--non-hint"></div>
+          <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder var-input-decorator--placeholder-hidden var-input-decorator--placeholder-non-hint"></div>
+            <div class="var--ellipsis var-field-decorator__placeholder var-field-decorator--placeholder-hidden var-field-decorator--placeholder-non-hint"></div>
           </div>
-          <div class="var-input-decorator__icon var-input-decorator--non-hint">
+          <div class="var-field-decorator__icon var-field-decorator--non-hint">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -569,23 +569,23 @@ exports[`test select hint to be false 1`] = `
 exports[`test select size 1`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var-input-decorator--small var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var-field-decorator--small var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder"></div>
+            <div class="var--ellipsis var-field-decorator__placeholder"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -601,23 +601,23 @@ exports[`test select size 1`] = `
 exports[`test select validation 1`] = `
 "<div class="var-select">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box var-input-decorator--error">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box var-field-decorator--error">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select var-select--error" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator--error var-input-decorator__placeholder"></div>
+            <div class="var--ellipsis var-field-decorator--error var-field-decorator__placeholder"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line var-input-decorator--line-error">
-          <div class="var-input-decorator__dot var-input-decorator--line-error"></div>
+        <div class="var-field-decorator__line var-field-decorator--line-error">
+          <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -644,23 +644,23 @@ exports[`test select validation 1`] = `
 exports[`test select variant 1`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--standard var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--standard var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder"></div>
+            <div class="var--ellipsis var-field-decorator__placeholder"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__dot"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
@@ -676,27 +676,27 @@ exports[`test select variant 1`] = `
 exports[`test select variant 2`] = `
 "<div class="var-select" value="">
   <div class="var-menu var-select__menu" var-select-cover="">
-    <div class="var-input-decorator var-input-decorator--outlined var--decorator"><label class="var-input-decorator__label var--relative var--block" for="">
-        <div class="var-input-decorator__controller var--box">
-          <div class="var-input-decorator__icon"></div>
-          <div class="var-input-decorator__wrap">
+    <div class="var-field-decorator var-field-decorator--outlined var--decorator"><label class="var-field-decorator__label var--relative var--block" for="">
+        <div class="var-field-decorator__controller var--box">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-            <div class="var--ellipsis var-input-decorator__placeholder"></div>
+            <div class="var--ellipsis var-field-decorator__placeholder"></div>
           </div>
-          <div class="var-input-decorator__icon">
+          <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
         </div>
-        <div class="var-input-decorator__line">
-          <div class="var-input-decorator__line-start var--box"></div>
-          <div class="var-input-decorator__line-notch var--box">
-            <div class="var--ellipsis var-input-decorator__line-placeholder"></div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__line-start var--box"></div>
+          <div class="var-field-decorator__line-notch var--box">
+            <div class="var--ellipsis var-field-decorator__line-placeholder"></div>
           </div>
-          <div class="var-input-decorator__line-end var--box"></div>
+          <div class="var-field-decorator__line-end var--box"></div>
         </div>
       </label>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

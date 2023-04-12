@@ -83,7 +83,7 @@ test('test form with input', async () => {
   const triggerEvents = async () => {
     await wrapper.find('.var-input__input').trigger('input')
     await wrapper.find('.var-input__input').trigger('change')
-    await wrapper.find('.var-input-decorator').trigger('click')
+    await wrapper.find('.var-field-decorator').trigger('click')
   }
 
   expect(wrapper.html()).toMatchSnapshot()
@@ -149,8 +149,8 @@ test('test form with select', async () => {
 
   const triggerEvents = async () => {
     await wrapper.find('.var-chip--close').trigger('click')
-    await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
-    await wrapper.find('.var-input-decorator').trigger('click')
+    await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
+    await wrapper.find('.var-field-decorator').trigger('click')
   }
 
   await triggerEvents()

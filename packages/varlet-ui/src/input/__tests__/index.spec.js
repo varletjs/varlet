@@ -25,18 +25,18 @@ test('test input variant', () => {
       },
     })
 
-    expect(wrapper.find(`var-input-decorator--${variant}`)).toBeTruthy()
+    expect(wrapper.find(`var-field-decorator--${variant}`)).toBeTruthy()
     switch (variant) {
       case 'standard': {
         expect(
-          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__dot')
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
         ).toBeTruthy()
         break
       }
 
       case 'outlined': {
         expect(
-          wrapper.find('.var-input-decorator__line').wrapperElement.querySelector('.var-input-decorator__line-start')
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__line-start')
         ).toBeTruthy()
         break
       }
@@ -58,7 +58,7 @@ test('test input size', () => {
     },
   })
 
-  expect(wrapper.find('.var-input-decorator--small')).toBeTruthy()
+  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
 })
 
@@ -103,7 +103,7 @@ describe('test input events', () => {
       },
     })
 
-    await wrapper.find('.var-input-decorator').trigger('click')
+    await wrapper.find('.var-field-decorator').trigger('click')
     expect(onClick).toHaveBeenCalledTimes(1)
 
     await wrapper.find('.var-input__input').setValue('t')
@@ -165,7 +165,7 @@ test('test input clear', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
@@ -176,8 +176,8 @@ test('test input clear', async () => {
 const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input-decorator__clear-icon').trigger('click')
-  await wrapper.find('.var-input-decorator').trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator').trigger('click')
 }
 
 test('test input disabled', async () => {
