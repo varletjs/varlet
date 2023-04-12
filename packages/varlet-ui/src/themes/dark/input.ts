@@ -1,4 +1,4 @@
 export default {
-  '--input-decorator-text-color': '#fff',
-  '--input-decorator-blur-color': 'rgb(255, 255, 255, .7)',
+  '--field-decorator-text-color': '#fff',
+  '--field-decorator-blur-color': 'rgb(255, 255, 255, .7)',
 }

@@ -244,32 +244,32 @@ const value = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--input-decorator-text-color` | `#555` |
-| `--input-decorator-error-color` | `var(--color-danger)` |
-| `--input-decorator-blur-color` | `#888` |
-| `--input-decorator-focus-color` | `var(--color-primary)` |
-| `--input-decorator-placeholder-size` | `16px` |
-| `--input-decorator-icon-size` | `20px` |
-| `--input-decorator-line-size` | `1px` |
-| `--input-decorator-line-focus-size` | `2px` |
-| `--input-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--input-decorator-normal-standard-padding-top` | `20px` |
-| `--input-decorator-normal-standard-padding-bottom` | `4px` |
-| `--input-decorator-normal-standard-icon-padding` | `20px 0 4px` |
-| `--input-decorator-normal-outlined-padding-top` | `16px` |
-| `--input-decorator-normal-outlined-padding-bottom` | `16px` |
-| `--input-decorator-normal-outlined-padding-left` | `16px` |
-| `--input-decorator-normal-outlined-padding-right` | `16px` |
-| `--input-decorator-normal-outlined-placeholder-space` | `4px` |
-| `--input-decorator-normal-outlined-icon-padding` | `16px 0 16px` |
-| `--input-decorator-small-standard-padding-top` | `16px` |
-| `--input-decorator-small-standard-padding-bottom` | `4px` |
-| `--input-decorator-small-standard-icon-padding` | `16px 0 4px` |
-| `--input-decorator-small-outlined-padding-top` | `8px` |
-| `--input-decorator-small-outlined-padding-bottom` | `8px` |
-| `--input-decorator-small-outlined-padding-left` | `12px` |
-| `--input-decorator-small-outlined-padding-right` | `12px` |
-| `--input-decorator-small-outlined-placeholder-space` | `2px` |
-| `--input-decorator-mini-outlined-icon-padding` | `8px 0 8px` |
+| `--field-decorator-text-color` | `#555` |
+| `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-blur-color` | `#888` |
+| `--field-decorator-focus-color` | `var(--color-primary)` |
+| `--field-decorator-placeholder-size` | `16px` |
+| `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-line-size` | `1px` |
+| `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--field-decorator-standard-normal-padding-top` | `20px` |
+| `--field-decorator-standard-normal-padding-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-outlined-normal-padding-top` | `16px` |
+| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-outlined-normal-padding-left` | `16px` |
+| `--field-decorator-outlined-normal-padding-right` | `16px` |
+| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
+| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
+| `--field-decorator-standard-small-padding-top` | `16px` |
+| `--field-decorator-standard-small-padding-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-outlined-small-padding-top` | `8px` |
+| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-small-padding-left` | `12px` |
+| `--field-decorator-outlined-small-padding-right` | `12px` |
+| `--field-decorator-outlined-small-placeholder-space` | `2px` |
+| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
 | `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |

@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as inputDecoratorProps } from '../input/inputDecoratorProps'
+import { props as fieldDecoratorProps } from '../field-decorator/props'
 
 export function textAlignValidator(textAlign: string) {
   return ['left', 'right', 'center'].includes(textAlign)
@@ -48,9 +48,10 @@ export const props = {
   onBlur: defineListenerProp<() => void>(),
   onClose: defineListenerProp<(value: any) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
+  onClear: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
   // dynamic internal
-  ...pickProps(inputDecoratorProps, [
+  ...pickProps(fieldDecoratorProps, [
     'size',
     'variant',
     'placeholder',
@@ -62,6 +63,5 @@ export const props = {
     'disabled',
     'clearable',
     'onClick',
-    'onClear',
   ]),
 }

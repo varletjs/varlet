@@ -4,9 +4,6 @@
 }
 
 .var-input {
-  width: 100%;
-  cursor: text;
-
   &__autocomplete {
     width: 0;
     height: 0;
@@ -23,7 +20,7 @@
     outline: none;
     border: none;
     background: transparent;
-    color: var(--input-decorator-text-color);
+    color: var(--field-decorator-text-color);
     caret-color: var(--input-focus-color);
     transition: color 0.25s;
     font: inherit;
@@ -34,11 +31,11 @@
   }
 
   &--disabled {
-    color: var(--input-decorator-disabled-color);
+    color: var(--field-decorator-disabled-color);
     cursor: not-allowed;
   }
 
   &--caret-error {
-    caret-color: var(--input-decorator-error-color);
+    caret-color: var(--field-decorator-error-color);
   }
 }

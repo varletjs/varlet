@@ -17,7 +17,8 @@
           )
         "
         :style="{
-          color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+          color,
+          cursor,
         }"
       >
         <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
@@ -35,13 +36,13 @@
                 [formDisabled || disabled, n('--disabled')],
                 [errorMessage, n('--error')],
                 n('placeholder'),
-                computePlaceholderState(),
                 [textarea, n('placeholder-textarea')],
+                computePlaceholderState(),
                 [!hint, n('--placeholder-non-hint')]
               )
             "
             :style="{
-              color: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+              color,
             }"
           >
             {{ placeholder }}
@@ -52,7 +53,7 @@
           <slot name="append-icon">
             <var-icon
               :class="n('clear-icon')"
-              var-input-decorator-cover
+              var-field-decorator-cover
               name="close-circle"
               v-if="clearable && !isEmpty(value)"
               @click="handleClear"
@@ -70,7 +71,7 @@
             <div
               :class="classes(n('line-start'), n('$--box'), [errorMessage, n('--line-error')])"
               :style="{
-                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+                borderColor: color,
               }"
             />
             <div
@@ -83,7 +84,7 @@
                 )
               "
               :style="{
-                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+                borderColor: color,
               }"
             >
               <div :class="classes(n('$--ellipsis'), n('line-placeholder'))">{{ placeholder }}</div>
@@ -91,7 +92,7 @@
             <div
               :class="classes(n('line-end'), n('$--box'), [errorMessage, n('--line-error')])"
               :style="{
-                borderColor: !errorMessage ? (isFocus ? focusColor : blurColor) : undefined,
+                borderColor: color,
               }"
             />
           </template>
@@ -125,15 +126,15 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, type Ref } from 'vue'
-import { props } from './inputDecoratorProps'
+import { defineComponent, ref, watchEffect, type Ref, computed, type ComputedRef } from 'vue'
+import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
 
-const { n, classes } = createNamespace('input-decorator')
+const { n, classes } = createNamespace('field-decorator')
 
 export default defineComponent({
-  name: 'VarInputDecorator',
+  name: 'VarFieldDecorator',
   components: {
     VarIcon,
   },
@@ -141,6 +142,10 @@ export default defineComponent({
   setup(props, { slots }) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
     const placeholderEl: Ref<HTMLElement | null> = ref(null)
+
+    const color: ComputedRef<string | undefined> = computed(() =>
+      !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
+    )
 
     const computePlaceholderState = () => {
       const { hint, value, isFocus, hintPlaceholderState, noHintPlaceholderState } = props
@@ -177,6 +182,7 @@ export default defineComponent({
     return {
       prependIconEl,
       placeholderEl,
+      color,
       computePlaceholderState,
       n,
       classes,
@@ -191,5 +197,5 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../icon/icon';
-@import './inputDecorator.less';
+@import './fieldDecorator.less';
 </style>

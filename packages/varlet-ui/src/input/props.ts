@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as inputDecoratorProps } from './inputDecoratorProps'
+import { props as fieldDecoratorProps } from '../field-decorator/props'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
@@ -57,9 +57,10 @@ export const props = {
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
+  onClear: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   // dynamic internal
-  ...pickProps(inputDecoratorProps, [
+  ...pickProps(fieldDecoratorProps, [
     'size',
     'variant',
     'placeholder',
@@ -71,6 +72,5 @@ export const props = {
     'disabled',
     'clearable',
     'onClick',
-    'onClear',
   ]),
 }

@@ -10,8 +10,8 @@
       v-model:show="isFocus"
       @close="handleBlur"
     >
-      <var-input-decorator
-        ref="inputDecorator"
+      <var-field-decorator
+        ref="fieldDecorator"
         v-bind="{
           value: modelValue,
           size,
@@ -86,7 +86,7 @@
         <template #form-details>
           <var-form-details :error-message="errorMessage" />
         </template>
-      </var-input-decorator>
+      </var-field-decorator>
 
       <template #menu>
         <div
@@ -106,7 +106,7 @@
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
-import VarInputDecorator from '../input/InputDecorator.vue'
+import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '@varlet/shared'
@@ -128,13 +128,13 @@ export default defineComponent({
     VarIcon,
     VarMenu,
     VarChip,
-    VarInputDecorator,
+    VarFieldDecorator,
     VarFormDetails,
   },
   props,
   setup(props) {
     const wrapEl: Ref<HTMLElement | null> = ref(null)
-    const inputDecorator: Ref<InstanceType<typeof VarInputDecorator> | null> = ref(null)
+    const fieldDecorator: Ref<InstanceType<typeof VarFieldDecorator> | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
@@ -350,7 +350,7 @@ export default defineComponent({
 
     return {
       wrapEl,
-      inputDecorator,
+      fieldDecorator,
       offsetY,
       isFocus,
       errorMessage,

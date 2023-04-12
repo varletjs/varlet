@@ -1,6 +1,6 @@
 <template>
   <div :class="n()" @mousedown="handleInputMousedown">
-    <var-input-decorator
+    <var-field-decorator
       v-bind="{
         value: modelValue,
         id,
@@ -19,6 +19,7 @@
         clearable,
         noHintPlaceholderState: isComposing,
         textarea,
+        cursor,
         onClick: handleClick,
         onClear: handleClear,
       }"
@@ -90,13 +91,13 @@
       <template #form-details>
         <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
       </template>
-    </var-input-decorator>
+    </var-field-decorator>
   </div>
 </template>
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import VarInputDecorator from './InputDecorator.vue'
+import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
 import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
@@ -111,7 +112,7 @@ export default defineComponent({
   name: 'VarInput',
   components: {
     VarFormDetails,
-    VarInputDecorator,
+    VarFieldDecorator,
   },
   props,
   setup(props) {
@@ -139,6 +140,7 @@ export default defineComponent({
 
       return `${String(modelValue).length}/${maxlength}`
     })
+    const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
 
     const { bindForm, form } = useForm()
     const {
@@ -317,6 +319,7 @@ export default defineComponent({
       isComposing,
       errorMessage,
       type,
+      cursor,
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,

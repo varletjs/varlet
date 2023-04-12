@@ -77,6 +77,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  cursor: {
+    type: String,
+  },
   onClick: defineListenerProp<(e: Event) => void>(),
-  onClear: defineListenerProp<(value: string) => void>(),
+  onClear: defineListenerProp<(value: Event) => void>(),
 }

@@ -4,7 +4,7 @@
   --select-scroller-max-height: 278px;
   --select-chip-margin: 5px 5px 0;
   --select-arrow-size: 20px;
-  --select-standard-scroller-margin: calc(var(--input-decorator-placeholder-size) * 0.75 + 8px) 0 0 0;
+  --select-standard-scroller-margin: calc(var(--field-decorator-placeholder-size) * 0.75 + 8px) 0 0 0;
   --select-outlined-scroller-margin: 0;
 }
 
@@ -54,7 +54,7 @@
     outline: none;
     border: none;
     font-size: inherit;
-    color: var(--input-decorator-text-color);
+    color: var(--field-decorator-text-color);
     word-break: break-all;
     overflow-x: hidden;
     transition: color 0.25s;
@@ -71,12 +71,12 @@
   }
 
   &--disabled {
-    color: var(--input-decorator-disabled-color);
+    color: var(--field-decorator-disabled-color);
     cursor: not-allowed;
   }
 
   &--error {
-    color: var(--input-decorator-error-color);
+    color: var(--field-decorator-error-color);
   }
 
   &--arrow-rotate {
