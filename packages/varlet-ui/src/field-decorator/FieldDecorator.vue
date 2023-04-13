@@ -1,13 +1,12 @@
 <template>
   <div
-    :class="classes(n(), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
+    :class="classes(n(), n('$--box'), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
     @click="handleClick"
   >
     <div
       :class="
         classes(
           n('controller'),
-          n('$--box'),
           [isFocus, n('--focus')],
           [errorMessage, n('--error')],
           [formDisabled || disabled, n('--disabled')]
@@ -26,7 +25,7 @@
         <slot />
 
         <label
-          v-if="hint || usePlaceholderOnNoHint"
+          v-if="hint || alwaysCustomPlaceholder"
           :class="
             classes(
               n('placeholder'),
@@ -35,8 +34,8 @@
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],
-              computePlaceholderState(),
-              [!hint, n('--placeholder-non-hint')]
+              [!hint, n('--placeholder-non-hint')],
+              computePlaceholderState()
             )
           "
           :style="{
@@ -69,7 +68,7 @@
       >
         <template v-if="!(formDisabled || disabled)">
           <div
-            :class="classes(n('line-start'), n('$--box'), [errorMessage, n('--line-error')])"
+            :class="classes(n('line-start'), [errorMessage, n('--line-error')])"
             :style="{
               borderColor: color,
             }"
@@ -78,7 +77,6 @@
             :class="
               classes(
                 n('line-notch'),
-                n('$--box'),
                 [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
                 [errorMessage, n('--line-error')]
               )
@@ -90,7 +88,7 @@
             <div :class="classes(n('line-placeholder'), n('$--ellipsis'))">{{ placeholder }}</div>
           </div>
           <div
-            :class="classes(n('line-end'), n('$--box'), [errorMessage, n('--line-error')])"
+            :class="classes(n('line-end'), [errorMessage, n('--line-error')])"
             :style="{
               borderColor: color,
             }"
@@ -137,17 +135,18 @@ export default defineComponent({
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
     const placeholderTransform: Ref<string> = ref('')
-
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
 
     const computePlaceholderState = () => {
-      const { hint, value, isFocus, hintPlaceholderState, noHintPlaceholderState } = props
-      if (!hint && (!isEmpty(value) || noHintPlaceholderState)) {
+      const { hint, value, isFocus, composing } = props
+
+      if (!hint && (!isEmpty(value) || composing)) {
         return n('--placeholder-hidden')
       }
-      if (hint && (!isEmpty(value) || isFocus || hintPlaceholderState)) {
+
+      if (hint && (!isEmpty(value) || isFocus)) {
         return n('--placeholder-hint')
       }
     }
@@ -161,18 +160,19 @@ export default defineComponent({
     }
 
     watchEffect(() => {
+      const { hint, value, isFocus, variant } = props
+
       if (!prependIconEl.value) {
         return
       }
 
-      const { hint, value, isFocus, variant } = props
       if (hint && (!isEmpty(value) || isFocus)) {
-        placeholderTransform.value = `translate(-${window.getComputedStyle(prependIconEl.value)?.width || 0}, ${
-          variant === 'outlined' ? '-50%' : 0
-        })`
-      } else {
-        placeholderTransform.value = ''
+        const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
+        placeholderTransform.value = `translate(-${prependIconWidth}, ${variant === 'outlined' ? '-50%' : 0})`
+        return
       }
+
+      placeholderTransform.value = ''
     })
 
     return {
@@ -193,5 +193,5 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../icon/icon';
-@import './fieldDecorator.less';
+@import './fieldDecorator';
 </style>

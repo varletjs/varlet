@@ -4,9 +4,9 @@ exports[`Size related props 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input" var-pagination-cover="">
-      <div class="var-field-decorator var-field-decorator--standard">
-        <div class="var-field-decorator__controller var--box" style="cursor: text;">
+    <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
@@ -41,9 +41,9 @@ exports[`Size related props 2`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input" var-pagination-cover="">
-      <div class="var-field-decorator var-field-decorator--standard">
-        <div class="var-field-decorator__controller var--box" style="cursor: text;">
+    <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
@@ -102,9 +102,9 @@ exports[`basic mode mount 1`] = `
       <!--teleport end-->
     </div>
   </li>
-  <li class="var-pagination__quickly">前往 <div class="var-input" var-pagination-cover="">
-      <div class="var-field-decorator var-field-decorator--standard">
-        <div class="var-field-decorator__controller var--box" style="cursor: text;">
+  <li class="var-pagination__quickly">前往 <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-96" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-96"></label>
@@ -130,9 +130,9 @@ exports[`simple mode disabled prop 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple var-pagination__item--disabled">
-    <div class="var-input" var-pagination-cover="">
-      <div class="var-field-decorator var-field-decorator--standard var-field-decorator--disabled">
-        <div class="var-field-decorator__controller var--box var-field-decorator--disabled">
+    <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
+        <div class="var-field-decorator__controller var-field-decorator--disabled">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-73" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-73"></label>
@@ -167,9 +167,9 @@ exports[`simple mode mount 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
-    <div class="var-input" var-pagination-cover="">
-      <div class="var-field-decorator var-field-decorator--standard">
-        <div class="var-field-decorator__controller var--box" style="cursor: text;">
+    <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-58" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-58"></label>
@@ -206,9 +206,9 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input" var-pagination-cover="">
-        <div class="var-field-decorator var-field-decorator--standard">
-          <div class="var-field-decorator__controller var--box" style="cursor: text;">
+      <div class="var-input var--box" var-pagination-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-5" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-5"></label>
@@ -243,9 +243,9 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input" var-pagination-cover="">
-        <div class="var-field-decorator var-field-decorator--standard">
-          <div class="var-field-decorator__controller var--box" style="cursor: text;">
+      <div class="var-input var--box" var-pagination-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-20" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-20"></label>
@@ -274,9 +274,9 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
-      <div class="var-input" var-pagination-cover="">
-        <div class="var-field-decorator var-field-decorator--standard">
-          <div class="var-field-decorator__controller var--box" style="cursor: text;">
+      <div class="var-input var--box" var-pagination-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__wrap">
               <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-28" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-28"></label>
@@ -311,9 +311,9 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple var-pagination__item--disabled">
-      <div class="var-input" var-pagination-cover="">
-        <div class="var-field-decorator var-field-decorator--standard var-field-decorator--disabled">
-          <div class="var-field-decorator__controller var--box var-field-decorator--disabled">
+      <div class="var-input var--box" var-pagination-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
+          <div class="var-field-decorator__controller var-field-decorator--disabled">
             <div class="var-field-decorator__icon"></div>
             <div class="var-field-decorator__wrap">
               <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-43" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-43"></label>

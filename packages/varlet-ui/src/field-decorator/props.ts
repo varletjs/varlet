@@ -18,6 +18,9 @@ export const props = {
     type: String,
     default: '',
   },
+  isFocus: {
+    type: Boolean,
+  },
   size: {
     type: String as PropType<'small' | 'normal'>,
     default: 'normal',
@@ -48,9 +51,6 @@ export const props = {
   blurColor: {
     type: String,
   },
-  isFocus: {
-    type: Boolean,
-  },
   errorMessage: {
     type: String,
   },
@@ -65,14 +65,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  hintPlaceholderState: {
-    type: Boolean,
-    default: false,
-  },
-  noHintPlaceholderState: {
-    type: Boolean,
-    default: false,
-  },
   textarea: {
     type: Boolean,
     default: false,
@@ -80,7 +72,11 @@ export const props = {
   cursor: {
     type: String,
   },
-  usePlaceholderOnNoHint: {
+  composing: {
+    type: Boolean,
+    default: false,
+  },
+  alwaysCustomPlaceholder: {
     type: Boolean,
     default: true,
   },

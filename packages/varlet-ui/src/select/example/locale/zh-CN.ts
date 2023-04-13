@@ -1,6 +1,6 @@
 export default {
-  basicUsage: '基本使用',
-  plainMode: '朴素模式',
+  standard: '标准外观',
+  outlined: '外边框外观',
   smallSize: '小尺寸',
   disabled: '禁用',
   readonly: '只读',

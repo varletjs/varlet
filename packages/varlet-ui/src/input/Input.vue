@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" @mousedown="handleInputMousedown">
+  <div :class="classes(n(), n('$--box'))" @mousedown="handleInputMousedown">
     <var-field-decorator
       v-bind="{
         value: modelValue,
@@ -17,10 +17,10 @@
         formDisabled,
         disabled,
         clearable,
-        noHintPlaceholderState: isComposing,
-        usePlaceholderOnNoHint: false,
         textarea,
         cursor,
+        composing: isComposing,
+        alwaysCustomPlaceholder: false,
         onClick: handleClick,
         onClear: handleClear,
       }"
@@ -43,6 +43,7 @@
             n('input'),
             n('--textarea'),
             [formDisabled || disabled, n('--disabled')],
+            [errorMessage, n('--error')],
             [errorMessage, n('--caret-error')]
           )
         "
@@ -56,7 +57,7 @@
         :maxlength="maxlength"
         :rows="rows"
         :style="{
-          color: textColor,
+          color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
           resize: resize ? 'vertical' : 'none',
           '--input-placeholder-color': placeholderColor,
@@ -72,7 +73,14 @@
       >
       </textarea>
       <input
-        :class="classes(n('input'), [formDisabled || disabled, n('--disabled')], [errorMessage, n('--caret-error')])"
+        :class="
+          classes(
+            n('input'),
+            [formDisabled || disabled, n('--disabled')],
+            [errorMessage, n('--error')],
+            [errorMessage, n('--caret-error')]
+          )
+        "
         ref="el"
         autocomplete="new-password"
         :id="id"
@@ -82,7 +90,7 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :style="{
-          color: textColor,
+          color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
           '--input-placeholder-color': placeholderColor,
         }"
@@ -153,6 +161,7 @@ export default defineComponent({
     const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
     const placeholderColor: ComputedRef<string | undefined> = computed(() => {
       const { hint, blurColor, focusColor } = props
+
       if (hint) {
         return undefined
       }
@@ -162,10 +171,10 @@ export default defineComponent({
       }
 
       if (isFocus.value) {
-        return blurColor || 'var(--field-decorator-focus-color)'
+        return focusColor || 'var(--field-decorator-focus-color)'
       }
 
-      return focusColor || 'var(--field-decorator-blur-color)'
+      return blurColor || 'var(--field-decorator-blur-color)'
     })
 
     const { bindForm, form } = useForm()
@@ -376,5 +385,7 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../icon/icon';
+@import '../field-decorator/fieldDecorator';
 @import './input';
 </style>

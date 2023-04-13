@@ -1,5 +1,6 @@
 export default {
-  basicUsage: '基本使用',
+  standard: '标准外观',
+  outlined: '外边框外观',
   smallSize: '小尺寸',
   plainMode: '朴素模式',
   textarea: '文本域',

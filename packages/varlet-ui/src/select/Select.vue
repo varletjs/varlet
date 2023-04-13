@@ -1,8 +1,9 @@
 <template>
-  <div :class="n()" ref="wrapEl" @click="handleFocus">
+  <div :class="n()" @click="handleFocus">
     <var-menu
       :class="n('menu')"
       var-select-cover
+      same-width
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
@@ -26,6 +27,7 @@
           formDisabled,
           disabled,
           clearable,
+          cursor,
           onClick: handleClick,
           onClear: handleClear,
         }"
@@ -105,18 +107,15 @@ import VarMenu from '../menu'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
 import VarFormDetails from '../form-details'
-import { computed, defineComponent, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, ref, watch, nextTick, type Ref, type ComputedRef } from 'vue'
 import { isArray, isEmpty } from '@varlet/shared'
-import { props } from './props'
+import { props, type SelectValidateTrigger } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
-import { useOptions } from './provide'
+import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
 import { toPxNum } from '../utils/elements'
 import { error } from '../utils/logger'
-import type { Ref, ComputedRef } from 'vue'
-import type { SelectValidateTrigger } from './props'
-import type { SelectProvider } from './provide'
-import type { OptionProvider } from '../option/provide'
+import { type OptionProvider } from '../option/provide'
 
 const { n, classes } = createNamespace('select')
 export default defineComponent({
@@ -130,14 +129,13 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const wrapEl: Ref<HTMLElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
     const labels: Ref<(string | number)[]> = ref([])
     const isEmptyModelValue: ComputedRef<boolean> = computed(() => isEmpty(props.modelValue))
-    const wrapWidth = ref<string>('0px')
+    const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
@@ -192,10 +190,6 @@ export default defineComponent({
       return option?.label.value ?? ''
     }
 
-    const getWrapWidth = () => {
-      return (wrapEl.value && window.getComputedStyle(wrapEl.value).width) || '0px'
-    }
-
     const handleFocus = () => {
       const { disabled, readonly, onFocus } = props
 
@@ -203,9 +197,7 @@ export default defineComponent({
         return
       }
 
-      wrapWidth.value = getWrapWidth()
       offsetY.value = toPxNum(props.offsetY)
-
       isFocus.value = true
 
       call(onFocus)
@@ -297,7 +289,6 @@ export default defineComponent({
 
     // expose
     const focus = () => {
-      wrapWidth.value = getWrapWidth()
       offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
     }
@@ -331,7 +322,6 @@ export default defineComponent({
     watch(() => length.value, syncOptions)
 
     const selectProvider: SelectProvider = {
-      wrapWidth: computed(() => wrapWidth.value),
       multiple,
       focusColor,
       computeLabel,
@@ -345,7 +335,6 @@ export default defineComponent({
     call(bindForm, selectProvider)
 
     return {
-      wrapEl,
       offsetY,
       isFocus,
       errorMessage,
@@ -356,6 +345,7 @@ export default defineComponent({
       isEmptyModelValue,
       menuEl,
       placement,
+      cursor,
       n,
       classes,
       handleFocus,
@@ -380,5 +370,6 @@ export default defineComponent({
 @import '../menu/menu';
 @import '../form-details/formDetails';
 @import '../chip/chip';
+@import '../field-decorator/fieldDecorator';
 @import './select';
 </style>

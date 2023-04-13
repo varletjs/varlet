@@ -1,6 +1,6 @@
 export default {
-  basicUsage: 'Basic Usage',
-  plainMode: 'Plain Mode',
+  standard: 'Standard Variant',
+  outlined: 'Outlined Variant',
   smallSize: 'Small Size',
   disabled: 'Disabled',
   readonly: 'Readonly',

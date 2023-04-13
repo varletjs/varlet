@@ -1,7 +1,6 @@
 :root {
   --input-input-height: 24px;
   --input-textarea-height: auto;
-  --input-placeholder-color: var(--field-decorator-blur-color);
 }
 
 .var-input {
@@ -22,7 +21,7 @@
     border: none;
     background: transparent;
     color: var(--field-decorator-text-color);
-    caret-color: var(--input-focus-color);
+    caret-color: var(--field-decorator-focus-color);
     transition: color 0.25s;
     font: inherit;
 
@@ -38,6 +37,10 @@
   &--disabled {
     color: var(--field-decorator-disabled-color);
     cursor: not-allowed;
+  }
+
+  &--error {
+    color: var(--field-decorator-error-color);
   }
 
   &--caret-error {
