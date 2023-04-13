@@ -18,6 +18,7 @@
         disabled,
         clearable,
         noHintPlaceholderState: isComposing,
+        usePlaceholderOnNoHint: false,
         textarea,
         cursor,
         onClick: handleClick,
@@ -28,7 +29,14 @@
         <slot name="prepend-icon" />
       </template>
 
-      <input :class="n('autocomplete')" v-if="type === 'password'" />
+      <input
+        :class="n('autocomplete')"
+        :placeholder="!hint ? placeholder : undefined"
+        v-if="type === 'password'"
+        :style="{
+          '--input-placeholder-color': placeholderColor,
+        }"
+      />
       <textarea
         :class="
           classes(
@@ -44,12 +52,14 @@
         :disabled="formDisabled || disabled || formReadonly || readonly"
         :type="type"
         :value="modelValue"
+        :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :rows="rows"
         :style="{
           color: textColor,
           caretColor: !errorMessage ? focusColor : undefined,
           resize: resize ? 'vertical' : 'none',
+          '--input-placeholder-color': placeholderColor,
         }"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -69,10 +79,12 @@
         :disabled="formDisabled || disabled || formReadonly || readonly"
         :type="type"
         :value="modelValue"
+        :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :style="{
           color: textColor,
           caretColor: !errorMessage ? focusColor : undefined,
+          '--input-placeholder-color': placeholderColor,
         }"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -87,11 +99,9 @@
       <template #append-icon>
         <slot name="append-icon" />
       </template>
-
-      <template #form-details>
-        <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
-      </template>
     </var-field-decorator>
+
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
   </div>
 </template>
 
@@ -141,6 +151,22 @@ export default defineComponent({
       return `${String(modelValue).length}/${maxlength}`
     })
     const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
+    const placeholderColor: ComputedRef<string | undefined> = computed(() => {
+      const { hint, blurColor, focusColor } = props
+      if (hint) {
+        return undefined
+      }
+
+      if (errorMessage.value) {
+        return 'var(--field-decorator-error-color)'
+      }
+
+      if (isFocus.value) {
+        return blurColor || 'var(--field-decorator-focus-color)'
+      }
+
+      return focusColor || 'var(--field-decorator-blur-color)'
+    })
 
     const { bindForm, form } = useForm()
     const {
@@ -318,6 +344,7 @@ export default defineComponent({
       isFocus,
       isComposing,
       errorMessage,
+      placeholderColor,
       type,
       cursor,
       maxlengthText,

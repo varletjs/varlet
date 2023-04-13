@@ -11,7 +11,6 @@
       @close="handleBlur"
     >
       <var-field-decorator
-        ref="fieldDecorator"
         v-bind="{
           value: modelValue,
           size,
@@ -82,10 +81,6 @@
         <template #append-icon>
           <slot name="append-icon" />
         </template>
-
-        <template #form-details>
-          <var-form-details :error-message="errorMessage" />
-        </template>
       </var-field-decorator>
 
       <template #menu>
@@ -99,6 +94,8 @@
         </div>
       </template>
     </var-menu>
+
+    <var-form-details :error-message="errorMessage" />
   </div>
 </template>
 
@@ -134,7 +131,6 @@ export default defineComponent({
   props,
   setup(props) {
     const wrapEl: Ref<HTMLElement | null> = ref(null)
-    const fieldDecorator: Ref<InstanceType<typeof VarFieldDecorator> | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
@@ -350,7 +346,6 @@ export default defineComponent({
 
     return {
       wrapEl,
-      fieldDecorator,
       offsetY,
       isFocus,
       errorMessage,

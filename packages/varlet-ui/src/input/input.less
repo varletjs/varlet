@@ -1,6 +1,7 @@
 :root {
   --input-input-height: 24px;
   --input-textarea-height: auto;
+  --input-placeholder-color: var(--field-decorator-blur-color);
 }
 
 .var-input {
@@ -24,6 +25,10 @@
     caret-color: var(--input-focus-color);
     transition: color 0.25s;
     font: inherit;
+
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
   }
 
   &--textarea {

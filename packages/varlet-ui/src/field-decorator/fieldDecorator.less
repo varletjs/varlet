@@ -31,6 +31,7 @@
 .var-field-decorator {
   width: 100%;
   color: var(--field-decorator-text-color);
+  position: relative;
 
   &__controller {
     width: 100%;
@@ -76,6 +77,7 @@
 
   &--placeholder-hint {
     font-size: 0.75em;
+    top: 0 !important;
   }
 
   &--placeholder-hidden {
@@ -127,7 +129,6 @@
     }
 
     .var-field-decorator--placeholder-hint {
-      top: 0;
       transform: translate(0, 0);
     }
 
@@ -196,7 +197,6 @@
     }
 
     .var-field-decorator--placeholder-hint {
-      top: 0;
       transform: translateY(-50%);
     }
 
@@ -302,18 +302,81 @@
 
   &--small {
     .var-field-decorator--standard& {
-      --field-decorator-standard-normal-padding-top: var(--field-decorator-standard-small-padding-top);
-      --field-decorator-standard-normal-padding-bottom: var(--field-decorator-standard-small-padding-bottom);
-      --field-decorator-standard-normal-icon-padding: var(--field-decorator-standard-small-icon-padding);
+      .var-field-decorator__wrap {
+        padding: var(--field-decorator-standard-small-padding-top) 0
+          var(--field-decorator-standard-small-padding-bottom);
+      }
+
+      .var-field-decorator__placeholder {
+        top: calc(
+          var(--field-decorator-standard-small-padding-top) +
+            (
+              100% - var(--field-decorator-standard-small-padding-top) -
+                var(--field-decorator-standard-small-padding-bottom) - var(--field-decorator-placeholder-size)
+            ) / 2
+        );
+      }
+
+      .var-field-decorator__placeholder-textarea {
+        top: var(--field-decorator-standard-small-padding-top);
+      }
     }
 
     .var-field-decorator--outlined& {
-      --field-decorator-outlined-normal-padding-top: var(--field-decorator-outlined-small-padding-top);
-      --field-decorator-outlined-normal-padding-bottom: var(--field-decorator-outlined-small-padding-bottom);
-      --field-decorator-outlined-normal-padding-left: var(--field-decorator-outlined-small-padding-left);
-      --field-decorator-outlined-normal-padding-right: var(--field-decorator-outlined-small-padding-right);
-      --field-decorator-outlined-normal-icon-padding: var(--field-decorator-mini-outlined-icon-padding);
-      --field-decorator-outlined-normal-placeholder-space: var(--field-decorator-outlined-small-placeholder-space);
+      .var-field-decorator__controller {
+        padding: 0 var(--field-decorator-outlined-small-padding-right) 0
+          var(--field-decorator-outlined-small-padding-left);
+      }
+      .var-field-decorator__wrap {
+        padding: var(--field-decorator-outlined-small-padding-top) 0
+          var(--field-decorator-outlined-small-padding-bottom) 0;
+      }
+
+      .var-field-decorator__icon {
+        padding: var(--field-decorator-outlined-small-icon-padding);
+      }
+
+      .var-field-decorator__placeholder {
+        top: calc(
+          var(--field-decorator-outlined-small-padding-top) +
+            (
+              100% - var(--field-decorator-outlined-small-padding-top) -
+                var(--field-decorator-outlined-small-padding-bottom) - var(--field-decorator-placeholder-size)
+            ) / 2
+        );
+      }
+
+      .var-field-decorator__placeholder-textarea {
+        top: var(--field-decorator-outlined-small-padding-top);
+      }
+
+      .var-field-decorator__line {
+        &-start {
+          flex: 0 0
+            calc(
+              var(--field-decorator-outlined-small-padding-left) -
+                var(--field-decorator-outlined-small-placeholder-space)
+            );
+        }
+
+        &-notch {
+          max-width: calc(
+            100% -
+              (
+                var(--field-decorator-outlined-small-padding-left) -
+                  var(--field-decorator-outlined-small-placeholder-space)
+              ) -
+              (
+                var(--field-decorator-outlined-small-padding-right) -
+                  var(--field-decorator-outlined-small-placeholder-space)
+              )
+          );
+        }
+
+        &-placeholder {
+          margin: 0 var(--field-decorator-outlined-small-placeholder-space);
+        }
+      }
     }
   }
 }

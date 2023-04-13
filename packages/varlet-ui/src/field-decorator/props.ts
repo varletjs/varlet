@@ -80,6 +80,10 @@ export const props = {
   cursor: {
     type: String,
   },
+  usePlaceholderOnNoHint: {
+    type: Boolean,
+    default: true,
+  },
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: Event) => void>(),
 }

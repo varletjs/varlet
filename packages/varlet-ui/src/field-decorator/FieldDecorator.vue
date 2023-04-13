@@ -1,126 +1,121 @@
 <template>
   <div
-    :class="
-      classes(n(), n(`--${variant}`), [size === 'small', n('--small')], n('$--decorator'), [disabled, n('--disabled')])
-    "
+    :class="classes(n(), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
     @click="handleClick"
   >
-    <label :class="classes(n('label'), n('$--relative'), n('$--block'))" :for="id">
-      <div
-        :class="
-          classes(
-            n('controller'),
-            n('$--box'),
-            [isFocus, n('--focus')],
-            [errorMessage, n('--error')],
-            [formDisabled || disabled, n('--disabled')]
-          )
-        "
-        :style="{
-          color,
-          cursor,
-        }"
-      >
-        <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
-          <slot name="prepend-icon" />
-        </div>
-
-        <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
-          <slot />
-          <div
-            ref="placeholderEl"
-            :class="
-              classes(
-                n('$--ellipsis'),
-                [isFocus, n('--focus')],
-                [formDisabled || disabled, n('--disabled')],
-                [errorMessage, n('--error')],
-                n('placeholder'),
-                [textarea, n('placeholder-textarea')],
-                computePlaceholderState(),
-                [!hint, n('--placeholder-non-hint')]
-              )
-            "
-            :style="{
-              color,
-            }"
-          >
-            {{ placeholder }}
-          </div>
-        </div>
-
-        <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-          <slot name="append-icon">
-            <var-icon
-              :class="n('clear-icon')"
-              var-field-decorator-cover
-              name="close-circle"
-              v-if="clearable && !isEmpty(value)"
-              @click="handleClear"
-            />
-          </slot>
-        </div>
+    <div
+      :class="
+        classes(
+          n('controller'),
+          n('$--box'),
+          [isFocus, n('--focus')],
+          [errorMessage, n('--error')],
+          [formDisabled || disabled, n('--disabled')]
+        )
+      "
+      :style="{
+        color,
+        cursor,
+      }"
+    >
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
+        <slot name="prepend-icon" />
       </div>
 
-      <template v-if="line">
-        <div
-          v-if="variant === 'outlined'"
-          :class="classes(n('line'), [isFocus, n('--line-focus')], [formDisabled || disabled, n('--line-disabled')])"
-        >
-          <template v-if="!(formDisabled || disabled)">
-            <div
-              :class="classes(n('line-start'), n('$--box'), [errorMessage, n('--line-error')])"
-              :style="{
-                borderColor: color,
-              }"
-            />
-            <div
-              :class="
-                classes(
-                  n('line-notch'),
-                  n('$--box'),
-                  [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
-                  [errorMessage, n('--line-error')]
-                )
-              "
-              :style="{
-                borderColor: color,
-              }"
-            >
-              <div :class="classes(n('$--ellipsis'), n('line-placeholder'))">{{ placeholder }}</div>
-            </div>
-            <div
-              :class="classes(n('line-end'), n('$--box'), [errorMessage, n('--line-error')])"
-              :style="{
-                borderColor: color,
-              }"
-            />
-          </template>
-        </div>
+      <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
+        <slot />
 
-        <div
+        <label
+          v-if="hint || usePlaceholderOnNoHint"
           :class="
-            classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])
+            classes(
+              n('placeholder'),
+              n('$--ellipsis'),
+              [textarea, n('placeholder-textarea')],
+              [isFocus, n('--focus')],
+              [formDisabled || disabled, n('--disabled')],
+              [errorMessage, n('--error')],
+              computePlaceholderState(),
+              [!hint, n('--placeholder-non-hint')]
+            )
           "
-          :style="{ background: !errorMessage ? blurColor : undefined }"
-          v-else
+          :style="{
+            color,
+            transform: placeholderTransform,
+          }"
+          :for="id"
         >
+          {{ placeholder }}
+        </label>
+      </div>
+
+      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
+        <slot name="append-icon">
+          <var-icon
+            :class="n('clear-icon')"
+            var-field-decorator-cover
+            name="close-circle"
+            v-if="clearable && !isEmpty(value)"
+            @click="handleClear"
+          />
+        </slot>
+      </div>
+    </div>
+
+    <template v-if="line">
+      <div
+        v-if="variant === 'outlined'"
+        :class="classes(n('line'), [isFocus, n('--line-focus')], [formDisabled || disabled, n('--line-disabled')])"
+      >
+        <template v-if="!(formDisabled || disabled)">
+          <div
+            :class="classes(n('line-start'), n('$--box'), [errorMessage, n('--line-error')])"
+            :style="{
+              borderColor: color,
+            }"
+          />
           <div
             :class="
               classes(
-                n('dot'),
-                [isFocus, n('--line-focus')],
-                [formDisabled || disabled, n('--line-disabled')],
+                n('line-notch'),
+                n('$--box'),
+                [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
                 [errorMessage, n('--line-error')]
               )
             "
-            :style="{ background: !errorMessage ? focusColor : undefined }"
+            :style="{
+              borderColor: color,
+            }"
+          >
+            <div :class="classes(n('line-placeholder'), n('$--ellipsis'))">{{ placeholder }}</div>
+          </div>
+          <div
+            :class="classes(n('line-end'), n('$--box'), [errorMessage, n('--line-error')])"
+            :style="{
+              borderColor: color,
+            }"
           />
-        </div>
-      </template>
-    </label>
+        </template>
+      </div>
 
-    <slot name="form-details" />
+      <div
+        :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
+        :style="{ background: !errorMessage ? blurColor : undefined }"
+        v-else
+      >
+        <div
+          :class="
+            classes(
+              n('dot'),
+              [isFocus, n('--line-focus')],
+              [formDisabled || disabled, n('--line-disabled')],
+              [errorMessage, n('--line-error')]
+            )
+          "
+          :style="{ background: !errorMessage ? focusColor : undefined }"
+        />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -139,9 +134,9 @@ export default defineComponent({
     VarIcon,
   },
   props,
-  setup(props, { slots }) {
+  setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
-    const placeholderEl: Ref<HTMLElement | null> = ref(null)
+    const placeholderTransform: Ref<string> = ref('')
 
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -166,22 +161,23 @@ export default defineComponent({
     }
 
     watchEffect(() => {
-      const { hint, value, isFocus, variant } = props
-      if (!placeholderEl.value || variant !== 'outlined' || !slots['prepend-icon']) {
+      if (!prependIconEl.value) {
         return
       }
+
+      const { hint, value, isFocus, variant } = props
       if (hint && (!isEmpty(value) || isFocus)) {
-        placeholderEl.value.style.transform = `translate(-${
-          window.getComputedStyle(prependIconEl.value!)?.width || 0
-        }, -50%)`
+        placeholderTransform.value = `translate(-${window.getComputedStyle(prependIconEl.value)?.width || 0}, ${
+          variant === 'outlined' ? '-50%' : 0
+        })`
       } else {
-        placeholderEl.value.style.transform = ''
+        placeholderTransform.value = ''
       }
     })
 
     return {
       prependIconEl,
-      placeholderEl,
+      placeholderTransform,
       color,
       computePlaceholderState,
       n,
