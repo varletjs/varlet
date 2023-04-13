@@ -8,30 +8,54 @@ import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 
-const standardValue = ref('')
-const standardValue2 = ref('')
-const standardValue3 = ref('')
-const standardValue4 = ref('')
-const standardValue5 = ref('')
-const standardValue6 = ref('')
-const standardValue7 = ref('')
-const standardValue8 = ref('')
-const standardValue9 = ref('')
-const standardValue10 = ref('')
+const standardValue = ref(undefined)
+const standardValue2 = ref(undefined)
+const standardValue3 = ref(undefined)
+const standardValue4 = ref(undefined)
+const standardValue5 = ref(undefined)
+const standardValue6 = ref(undefined)
+const standardValue7 = ref([])
+const standardValue8 = ref([])
+const standardValue9 = ref([])
+const standardValue10 = ref(undefined)
 
-const outlinedValue = ref('')
-const outlinedValue2 = ref('')
-const outlinedValue3 = ref('')
-const outlinedValue4 = ref('')
-const outlinedValue5 = ref('')
-const outlinedValue6 = ref('')
-const outlinedValue7 = ref('')
-const outlinedValue8 = ref('')
-const outlinedValue9 = ref('')
-const outlinedValue10 = ref('')
+const outlinedValue = ref(undefined)
+const outlinedValue2 = ref(undefined)
+const outlinedValue3 = ref(undefined)
+const outlinedValue4 = ref(undefined)
+const outlinedValue5 = ref(undefined)
+const outlinedValue6 = ref(undefined)
+const outlinedValue7 = ref([])
+const outlinedValue8 = ref([])
+const outlinedValue9 = ref([])
+const outlinedValue10 = ref(undefined)
 
 watchDarkMode(dark)
-watchLang(use)
+watchLang((lang) => {
+  standardValue.value = undefined
+  standardValue2.value = undefined
+  standardValue3.value = undefined
+  standardValue4.value = undefined
+  standardValue5.value = undefined
+  standardValue6.value = undefined
+  standardValue7.value = []
+  standardValue8.value = []
+  standardValue9.value = []
+  standardValue10.value = undefined
+
+  outlinedValue.value = undefined
+  outlinedValue2.value = undefined
+  outlinedValue3.value = undefined
+  outlinedValue4.value = undefined
+  outlinedValue5.value = undefined
+  outlinedValue6.value = undefined
+  outlinedValue7.value = []
+  outlinedValue8.value = []
+  outlinedValue9.value = []
+  outlinedValue10.value = undefined
+
+  use(lang)
+})
 </script>
 
 <template>
@@ -181,7 +205,7 @@ watchLang(use)
       variant="outlined"
       :placeholder="pack.validate"
       :rules="[(v) => v === pack.rest || pack.mustSelectRest]"
-      v-model="standardValue5"
+      v-model="outlinedValue5"
     >
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />

@@ -97,7 +97,7 @@
       </template>
     </var-menu>
 
-    <var-form-details :error-message="errorMessage" />
+    <var-form-details :error-message="errorMessage" @click.stop />
   </div>
 </template>
 
@@ -118,6 +118,7 @@ import { error } from '../utils/logger'
 import { type OptionProvider } from '../option/provide'
 
 const { n, classes } = createNamespace('select')
+
 export default defineComponent({
   name: 'VarSelect',
   components: {

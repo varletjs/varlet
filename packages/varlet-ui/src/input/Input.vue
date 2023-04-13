@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), n('$--box'))" @mousedown="handleInputMousedown">
+  <div :class="classes(n(), n('$--box'))" @mousedown="handleMousedown">
     <var-field-decorator
       v-bind="{
         value: modelValue,
@@ -109,7 +109,7 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop />
   </div>
 </template>
 
@@ -303,7 +303,7 @@ export default defineComponent({
       e.stopPropagation()
     }
 
-    function handleInputMousedown(e: MouseEvent) {
+    function handleMousedown(e: MouseEvent) {
       const { disabled } = props
 
       if (form?.disabled.value || disabled || e.target === el.value) {
@@ -371,9 +371,9 @@ export default defineComponent({
       handleTouchstart,
       handleCompositionStart,
       handleCompositionEnd,
+      handleMousedown,
       validate,
       resetValidation,
-      handleInputMousedown,
       reset,
       focus,
       blur,

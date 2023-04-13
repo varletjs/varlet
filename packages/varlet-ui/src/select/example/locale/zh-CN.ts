@@ -22,9 +22,4 @@ export default {
   currentSelect: '当前选择的是:',
   mustSelectRest: '您一定得选择摸鱼',
   mustSelectMoreThan: '您至少选择两个选项',
-  offsetY: '垂直偏移',
-  emberSprit: '火猫',
-  earthSprit: '土猫',
-  stormSpirit: '蓝猫',
-  voidSpirit: '紫猫',
 }

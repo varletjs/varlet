@@ -1,187 +1,114 @@
 # Input
 
-### Basic Usage
+### Intro
 
 The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type` rule when inputting.
 
+### Standard Variant
+
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input placeholder="Please enter text" v-model="value" />
-  <var-input placeholder="Please enter text" v-model="value" variant="outlined" />
+  <var-space direction="column" size="large">
+    <var-input placeholder="Please enter text" v-model="value" />
+    <var-input placeholder="Readonly" readonly v-model="value2" />
+    <var-input placeholder="Disabled" disabled v-model="value3" />
+    <var-input placeholder="Clearable" clearable v-model="value4" />
+    <var-input
+      placeholder="Validate"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="value5"
+    />
+    <var-input placeholder="Display Icon" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input placeholder="Maxlength" :maxlength="10" v-model="value7" />
+    <var-input placeholder="Textarea" textarea v-model="value8" />
+    <var-input placeholder="Small Size" size="small" v-model="value9" />
+  </var-space>
 </template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
-### Small Size
+### Outlined Variant
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input size="small" placeholder="Please enter text" v-model="value" />
-  <var-input size="small" placeholder="Please enter text" v-model="value" variant="outlined" />
+  <var-space direction="column" size="large">
+    <var-input variant="outlined" placeholder="Please enter text" v-model="value" />
+    <var-input variant="outlined" placeholder="Readonly" readonly v-model="value2" />
+    <var-input variant="outlined" placeholder="Disabled" disabled v-model="value3" />
+    <var-input variant="outlined" placeholder="Clearable" clearable v-model="value4" />
+    <var-input
+      variant="outlined"
+      placeholder="Validate"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="value5"
+    />
+    <var-input variant="outlined" placeholder="Display Icon" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input variant="outlined" placeholder="Maxlength" :maxlength="10" v-model="value7" />
+    <var-input variant="outlined" placeholder="Textarea" textarea v-model="value8" />
+    <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value9" />
+  </var-space>
 </template>
-```
 
-### Plain Mode
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
 
-If you only need the basic functionality of the component, you can remove some styles through attributes.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input 
-    :hint="false" 
-    :line="false" 
-    placeholder="Please enter text"
-    v-model="value"
-  />
-</template>
-```
-
-### Textarea
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" textarea v-model="value" />
-  <var-input placeholder="Please enter text" textarea v-model="value" variant="outlined" />
-</template>
-```
-
-### Maxlength
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
-  <var-input placeholder="Please enter text" :maxlength="10" v-model="value" variant="outlined" />
-</template>
-```
-
-### Disabled
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" disabled v-model="value" />
-  <var-input placeholder="Please enter text" disabled v-model="value" variant="outlined" />
-</template>
-```
-
-### Readonly
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" readonly v-model="value" />
-  <var-input placeholder="Please enter text" readonly v-model="value" variant="outlined" />
-</template>
-```
-
-### Clearable
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" clearable v-model="value" />
-  <var-input placeholder="Please enter text" clearable v-model="value" variant="outlined" />
-</template>
-```
-
-### Display Icon
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-  </var-input>
-  <var-input placeholder="Please enter text" v-model="value" variant="outlined">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-  </var-input>
-</template>
-```
-
-### Validate
-
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
-Other values are converted to text as a user prompt.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input
-    placeholder="Please enter text"
-    :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
-    v-model="value"
-  />
-  <var-input
-    placeholder="Please enter text"
-    :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
-    v-model="value"
-    variant="outlined"
-  />
-</template>
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
 ## API
@@ -243,6 +170,7 @@ const value = ref('')
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
+| --- | --- |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -255,15 +183,15 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-standard-normal-padding-top` | `20px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
 | `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-standard-small-padding-top` | `16px` |
+| `--field-decorator-standard-small-padding-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
 | `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-standard-small-padding-top` | `16px` |
-| `--field-decorator-standard-small-padding-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
 | `--field-decorator-outlined-small-padding-top` | `8px` |
 | `--field-decorator-outlined-small-padding-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |

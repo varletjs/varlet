@@ -4,198 +4,105 @@
 
 Display and select the content through the drop-down menu.
 
-### Basic Usage
-
-The component uses the option's `label` as the displayed text.
-The component uses the `value` of the option first as the value of the option, followed by the `label`.
+### Standard Variant
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref([])
+const value8 = ref([])
+const value9 = ref('')
+const value10 = ref([])
 </script>
 
 <template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-  <var-select variant="outlined" placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Small Size
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select size="small" placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-  <var-select size="small" variant="outlined" placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Plain Mode
-
-If you only need the basic functionality of the component, you can remove some styles through attributes.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    :hint="false"
-    :line="false"
-    placeholder="Please select one the options"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Label relation value
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat" :value="1" />
-    <var-option label="Sleep" :value="2" />
-  </var-select>
-</template>
-```
-
-### Disabled
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    disabled
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Readonly
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    readonly
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Clearable
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select one the options"
-    clearable
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-  <var-select
-    placeholder="Please select one the options"
-    variant="outlined"
-    clearable
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-  </var-select>
-</template>
-```
-
-### Custom Icon
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-select placeholder="Please select one the options" v-model="value">
-    <var-option label="Eat">
-      <var-icon class="selected-icon" name="cake-variant" />
-      <span>Eat</span>
-    </var-option>
-    <var-option label="Sleep">
-      <var-icon class="selected-icon" name="weather-night" />
-      <span>Sleep</span>
-    </var-option>
-    
-    <template #selected>
-      <var-icon class="selected-icon" :name="value === 'Eat' ? 'cake-variant' : 'weather-night'" />
-      <span>{{ value }}</span>
-    </template>
-    <template #prepend-icon>
-      <var-icon class="prepend-icon" name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon class="append-icon" name="minus"/>
-    </template>
-    <template #arrow-icon="{ focus }">
-      <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
-    </template>
-  </var-select>
+  <var-space direction="column" size="large">
+    <var-select placeholder="" v-model="value">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Label relation value" v-model="value2">
+      <var-option label="Eat" :value="1" />
+      <var-option label="Sleep" :value="2" />
+    </var-select>
+    <div class="relation">The current selection is: {{ value2 }}</div>
+    <var-select placeholder="Readonly" readonly v-model="value3">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Disabled" disabled v-model="value4">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Clearable" clearable v-model="value5">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Custom Icon" v-model="value6">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :name="value6 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value6 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+    <var-select placeholder="Multiple Selection" multiple v-model="value7">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select
+      placeholder="Validate"
+      :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
+      v-model="value9"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
+      multiple
+      placeholder="Multiple Validate"
+      :rules="[(v) => v.length >= 2 || 'You select at least two options']"
+      v-model="value10"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+  </var-space>
 </template>
 
 <style>
@@ -204,11 +111,11 @@ const value = ref('')
 }
 
 .prepend-icon {
-  margin-right: 2px;
+  margin-right: 6px;
 }
 
 .append-icon {
-  margin-left: 2px;
+  margin-left: 6px;
 }
 
 .arrow-icon-rotate {
@@ -217,97 +124,126 @@ const value = ref('')
 </style>
 ```
 
-### Multiple Selection
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    multiple
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
-```
-
-### Multiple choice of paper style
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref([])
-</script>
-
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    chip
-    multiple
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
-```
-
-### Validate
+### Outlined Variant
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref([])
+const value8 = ref([])
+const value9 = ref('')
+const value10 = ref([])
 </script>
 
 <template>
-  <var-select
-    placeholder="Please select one the options"
-    :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Rest" />
-  </var-select>
+  <var-space direction="column" size="large">
+    <var-select variant="outlined" placeholder="" v-model="value">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select variant="outlined" placeholder="Label relation value" v-model="value2">
+      <var-option label="Eat" :value="1" />
+      <var-option label="Sleep" :value="2" />
+    </var-select>
+    <div class="relation">The current selection is: {{ value2 }}</div>
+    <var-select variant="outlined" placeholder="Readonly" readonly v-model="value3">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select variant="outlined" placeholder="Disabled" disabled v-model="value4">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select variant="outlined" placeholder="Clearable" clearable v-model="value5">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
+    <var-select variant="outlined" placeholder="Custom Icon" v-model="value6">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :name="value6 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value6 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value7">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select
+      variant="outlined"
+      placeholder="Validate"
+      :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
+      v-model="value9"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
+      variant="outlined"
+      multiple
+      placeholder="Multiple Validate"
+      :rules="[(v) => v.length >= 2 || 'You select at least two options']"
+      v-model="value10"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+  </var-space>
 </template>
-```
 
-### Multiple Validate
+<style>
+.selected-icon {
+  margin-right: 6px;
+}
 
-```html
-<script setup>
-import { ref } from 'vue'
+.prepend-icon {
+  margin-right: 6px;
+}
 
-const value = ref([])
-</script>
+.append-icon {
+  margin-left: 6px;
+}
 
-<template>
-  <var-select
-    placeholder="Please select multiple options"
-    multiple
-    :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-    v-model="value"
-  >
-    <var-option label="Eat" />
-    <var-option label="Sleep" />
-    <var-option label="Play game" />
-    <var-option label="Coding" />
-  </var-select>
-</template>
+.arrow-icon-rotate {
+  transform: rotate(180deg);
+}
+</style>
 ```
 
 ## API
@@ -402,15 +338,15 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-standard-normal-padding-top` | `20px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
 | `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-standard-small-padding-top` | `16px` |
+| `--field-decorator-standard-small-padding-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
 | `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-standard-small-padding-top` | `16px` |
-| `--field-decorator-standard-small-padding-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
 | `--field-decorator-outlined-small-padding-top` | `8px` |
 | `--field-decorator-outlined-small-padding-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
