@@ -265,7 +265,7 @@ exports[`test select example 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div style="margin: 0px;">
+  <div style="margin: 0px 0px 3vw 0px;">
     <div class="var-select">
       <div class="var-menu var-select__menu" var-select-cover="">
         <div class="var-field-decorator var--box var-field-decorator--standard">
@@ -277,6 +277,35 @@ exports[`test select example 1`] = `
                   <!--v-if-->
                 </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
               </div><label class="var-field-decorator__placeholder var--ellipsis" for="">多选值校验</label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
+          </div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
+          </div>
+        </div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </div>
+  <div style="margin: 0px;">
+    <div class="var-select">
+      <div class="var-menu var-select__menu" var-select-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: pointer;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div><label class="var-field-decorator__placeholder var--ellipsis" for="">小尺寸</label>
             </div>
             <div class="var-field-decorator__icon">
               <!--v-if-->
@@ -591,7 +620,7 @@ exports[`test select example 1`] = `
       </transition-stub>
     </div>
   </div>
-  <div style="margin: 0px;">
+  <div style="margin: 0px 0px 6vw 0px;">
     <div class="var-select">
       <div class="var-menu var-select__menu" var-select-cover="">
         <div class="var-field-decorator var--box var-field-decorator--outlined">
@@ -612,6 +641,39 @@ exports[`test select example 1`] = `
             <div class="var-field-decorator__line-start"></div>
             <div class="var-field-decorator__line-notch">
               <div class="var-field-decorator__line-placeholder var--ellipsis">多选值校验</div>
+            </div>
+            <div class="var-field-decorator__line-end"></div>
+          </div>
+        </div>
+        <!--teleport start-->
+        <!--teleport end-->
+      </div>
+      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </div>
+  <div style="margin: 0px;">
+    <div class="var-select">
+      <div class="var-menu var-select__menu" var-select-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--outlined var-field-decorator--small">
+          <div class="var-field-decorator__controller" style="cursor: pointer;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <div class="var-select__select" style="text-align: left;">
+                <div class="var-select__label">
+                  <!--v-if-->
+                </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              </div><label class="var-field-decorator__placeholder var--ellipsis" for="">小尺寸</label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
+          </div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__line-start"></div>
+            <div class="var-field-decorator__line-notch">
+              <div class="var-field-decorator__line-placeholder var--ellipsis">小尺寸</div>
             </div>
             <div class="var-field-decorator__line-end"></div>
           </div>
