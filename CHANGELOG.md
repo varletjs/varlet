@@ -1,3 +1,21 @@
+## [2.9.6](https://github.com/varletjs/varlet/compare/v2.9.5...v2.9.6) (2023-04-14)
+
+
+### Bug Fixes
+
+* **DatePicker:** fix Fixed hover effect bug ([#956](https://github.com/varletjs/varlet/issues/956)) ([4d72694](https://github.com/varletjs/varlet/commit/4d726942a4e0ee14889bd9105f7948a694f4d262))
+* **pagination:** add disabled prop & close [#950](https://github.com/varletjs/varlet/issues/950) ([fb98f46](https://github.com/varletjs/varlet/commit/fb98f46ee2b657664d416b3fc18c6a76f6bb8693))
+* **pull-refresh:** fix icon name error while fast touchmove ([fe1be23](https://github.com/varletjs/varlet/commit/fe1be23e6b2ea77b99759ad7977ca99e6308c961))
+* **ui/checkbox, radio:** fix shrink error and close [#952](https://github.com/varletjs/varlet/issues/952) ([fa879ad](https://github.com/varletjs/varlet/commit/fa879ad5b6a1bd72e4a64a494192387e4710e371))
+* **ui/dialog:** fix onBeforeClose cannot use call ([62c7c89](https://github.com/varletjs/varlet/commit/62c7c89bf553f21421df7f1bbf74c79fc068efa0))
+
+
+### Features
+
+* **cli:** support draft mode ([569b651](https://github.com/varletjs/varlet/commit/569b651417d7dfd9b4a73cd81f4922dd93502d6f))
+
+
+
 ## [2.9.5](https://github.com/varletjs/varlet/compare/v2.9.4...v2.9.5) (2023-04-07)
 
 
