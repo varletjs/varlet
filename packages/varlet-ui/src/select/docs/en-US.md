@@ -10,16 +10,17 @@ Display and select the content through the drop-down menu.
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const value4 = ref('')
-const value5 = ref('')
-const value6 = ref('')
+const value = ref()
+const value2 = ref()
+const value3 = ref()
+const value4 = ref()
+const value5 = ref()
+const value6 = ref()
 const value7 = ref([])
 const value8 = ref([])
-const value9 = ref('')
+const value9 = ref()
 const value10 = ref([])
+const value11 = ref()
 </script>
 
 <template>
@@ -102,6 +103,10 @@ const value10 = ref([])
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
+    <var-select size="small" placeholder="Small Size" v-model="value11">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+    </var-select>
   </var-space>
 </template>
 
@@ -130,16 +135,17 @@ const value10 = ref([])
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const value4 = ref('')
-const value5 = ref('')
-const value6 = ref('')
+const value = ref()
+const value2 = ref()
+const value3 = ref()
+const value4 = ref()
+const value5 = ref()
+const value6 = ref()
 const value7 = ref([])
 const value8 = ref([])
-const value9 = ref('')
+const value9 = ref()
 const value10 = ref([])
+const value11 = ref()
 </script>
 
 <template>
@@ -223,6 +229,10 @@ const value10 = ref([])
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
+    </var-select>
+    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value11">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
     </var-select>
   </var-space>
 </template>

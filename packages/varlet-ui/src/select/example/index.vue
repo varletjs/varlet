@@ -18,6 +18,7 @@ const standardValue7 = ref([])
 const standardValue8 = ref([])
 const standardValue9 = ref([])
 const standardValue10 = ref(undefined)
+const standardValue11 = ref(undefined)
 
 const outlinedValue = ref(undefined)
 const outlinedValue2 = ref(undefined)
@@ -29,6 +30,7 @@ const outlinedValue7 = ref([])
 const outlinedValue8 = ref([])
 const outlinedValue9 = ref([])
 const outlinedValue10 = ref(undefined)
+const outlinedValue11 = ref(undefined)
 
 watchDarkMode(dark)
 watchLang((lang) => {
@@ -42,6 +44,7 @@ watchLang((lang) => {
   standardValue8.value = []
   standardValue9.value = []
   standardValue10.value = undefined
+  standardValue11.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -53,6 +56,7 @@ watchLang((lang) => {
   outlinedValue8.value = []
   outlinedValue9.value = []
   outlinedValue10.value = undefined
+  outlinedValue11.value = undefined
 
   use(lang)
 })
@@ -139,6 +143,10 @@ watchLang((lang) => {
       <var-option :label="pack.play" />
       <var-option :label="pack.coding" />
     </var-select>
+    <var-select :placeholder="pack.smallSize" v-model="standardValue11">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
+    </var-select>
   </var-space>
 
   <app-type style="margin-top: 10vw">{{ pack.outlined }}</app-type>
@@ -222,6 +230,10 @@ watchLang((lang) => {
       <var-option :label="pack.sleep" />
       <var-option :label="pack.play" />
       <var-option :label="pack.coding" />
+    </var-select>
+    <var-select variant="outlined" size="small" :placeholder="pack.smallSize" v-model="outlinedValue11">
+      <var-option :label="pack.eat" />
+      <var-option :label="pack.sleep" />
     </var-select>
   </var-space>
 

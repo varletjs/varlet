@@ -10,16 +10,17 @@
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const value4 = ref('')
-const value5 = ref('')
-const value6 = ref('')
+const value = ref()
+const value2 = ref()
+const value3 = ref()
+const value4 = ref()
+const value5 = ref()
+const value6 = ref()
 const value7 = ref([])
 const value8 = ref([])
-const value9 = ref('')
+const value9 = ref()
 const value10 = ref([])
+const value11 = ref()
 </script>
 
 <template>
@@ -102,6 +103,10 @@ const value10 = ref([])
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
+    <var-select placeholder="小尺寸" v-model="value11">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+    </var-select>
   </var-space>
 </template>
 
@@ -130,16 +135,17 @@ const value10 = ref([])
 <script setup>
 import { ref } from 'vue'
 
-const value = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const value4 = ref('')
-const value5 = ref('')
-const value6 = ref('')
+const value = ref()
+const value2 = ref()
+const value3 = ref()
+const value4 = ref()
+const value5 = ref()
+const value6 = ref()
 const value7 = ref([])
 const value8 = ref([])
-const value9 = ref('')
+const value9 = ref()
 const value10 = ref([])
+const value11 = ref()
 </script>
 
 <template>
@@ -223,6 +229,10 @@ const value10 = ref([])
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
+    </var-select>
+    <var-select variant="outlined" size="small" placeholder="小尺寸" v-model="value11">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
     </var-select>
   </var-space>
 </template>
