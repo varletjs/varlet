@@ -16,6 +16,10 @@
   "contributes": {
     "commands": [
       {
+        "command": "varlet.open-doc",
+        "title": "Varlet: Open Varlet UI Doc"
+      },
+      {
         "command": "varlet.open-playground",
         "title": "Varlet: Open Varlet UI Playground"
       },
@@ -23,32 +27,7 @@
         "command": "varlet.open-playground-and-wrap-template-tag",
         "title": "Varlet: Open Varlet UI Playground And Wrap Template Tag"
       }
-    ],
-    "menus": {
-      "editor/context": [
-        {
-          "command": "varlet.open-playground",
-          "group": "navigation",
-          "when": "editorHasSelection"
-        },
-        {
-          "command": "varlet.open-playground-and-wrap-template-tag",
-          "group": "navigation",
-          "when": "editorHasSelection"
-        }
-      ]
-    },
-    "configuration": {
-      "type": "object",
-      "title": "Varlet Extension Configuration",
-      "properties": {
-        "varlet.useChineseLanguage": {
-          "type": "boolean",
-          "default": false,
-          "description": "Use chinese language"
-        }
-      }
-    }
+    ]
   },
   "activationEvents": [
     "onLanguage:vue",
