@@ -5,17 +5,19 @@ exports[`Size related props 1`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
-      <div class="var-input__controller">
-        <div class="var-input__icon"></div>
-        <div class="var-input__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-120" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-120"></label>
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
+          </div>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
         </div>
-        <div class="var-input__icon">
-          <!--v-if-->
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
-      </div>
-      <div class="var-input__line">
-        <div class="var-input__dot"></div>
       </div>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
@@ -40,17 +42,19 @@ exports[`Size related props 2`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
-      <div class="var-input__controller">
-        <div class="var-input__icon"></div>
-        <div class="var-input__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-120" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-120"></label>
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
+          </div>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
         </div>
-        <div class="var-input__icon">
-          <!--v-if-->
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
-      </div>
-      <div class="var-input__line">
-        <div class="var-input__dot"></div>
       </div>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
@@ -99,17 +103,19 @@ exports[`basic mode mount 1`] = `
     </div>
   </li>
   <li class="var-pagination__quickly">前往 <div class="var-input var--box" var-pagination-cover="">
-      <div class="var-input__controller">
-        <div class="var-input__icon"></div>
-        <div class="var-input__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-90" type="text"><label class="var--ellipsis var-input__placeholder" for="var-input-90"></label>
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-96" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-96"></label>
+          </div>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
         </div>
-        <div class="var-input__icon">
-          <!--v-if-->
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
-      </div>
-      <div class="var-input__line">
-        <div class="var-input__dot"></div>
       </div>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
@@ -124,18 +130,20 @@ exports[`simple mode disabled prop 1`] = `
 "<ul class="var-pagination">
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple var-pagination__item--disabled">
-    <div class="var-input var--box var-input--disabled" var-pagination-cover="">
-      <div class="var-input__controller var-input--disabled">
-        <div class="var-input__icon"></div>
-        <div class="var-input__wrap">
-          <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-68" disabled="" type="text"><label class="var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint" for="var-input-68"></label>
+    <div class="var-input var--box" var-pagination-cover="">
+      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
+        <div class="var-field-decorator__controller var-field-decorator--disabled">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
+            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-73" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-73"></label>
+          </div>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
         </div>
-        <div class="var-input__icon">
-          <!--v-if-->
+        <div class="var-field-decorator__line var-field-decorator--line-disabled">
+          <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
         </div>
-      </div>
-      <div class="var-input__line var-input--line-disabled">
-        <div class="var-input__dot var-input--line-disabled"></div>
       </div>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
@@ -160,17 +168,19 @@ exports[`simple mode mount 1`] = `
   <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
-      <div class="var-input__controller">
-        <div class="var-input__icon"></div>
-        <div class="var-input__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-54" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-54"></label>
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__wrap">
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-58" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-58"></label>
+          </div>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
         </div>
-        <div class="var-input__icon">
-          <!--v-if-->
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
         </div>
-      </div>
-      <div class="var-input__line">
-        <div class="var-input__dot"></div>
       </div>
       <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
         <!--v-if-->
@@ -197,17 +207,19 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-input__controller">
-          <div class="var-input__icon"></div>
-          <div class="var-input__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-5" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-5"></label>
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-5" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-5"></label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
           </div>
-          <div class="var-input__icon">
-            <!--v-if-->
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
-        </div>
-        <div class="var-input__line">
-          <div class="var-input__dot"></div>
         </div>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
           <!--v-if-->
@@ -232,17 +244,19 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-input__controller">
-          <div class="var-input__icon"></div>
-          <div class="var-input__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-19" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-19"></label>
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-20" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-20"></label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
           </div>
-          <div class="var-input__icon">
-            <!--v-if-->
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
-        </div>
-        <div class="var-input__line">
-          <div class="var-input__dot"></div>
         </div>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
           <!--v-if-->
@@ -261,17 +275,19 @@ exports[`test pagination example 1`] = `
     <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple">
       <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-input__controller">
-          <div class="var-input__icon"></div>
-          <div class="var-input__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-26" type="text"><label class="var--ellipsis var-input__placeholder var-input--placeholder-hint" for="var-input-26"></label>
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-28" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-28"></label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
           </div>
-          <div class="var-input__icon">
-            <!--v-if-->
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
           </div>
-        </div>
-        <div class="var-input__line">
-          <div class="var-input__dot"></div>
         </div>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
           <!--v-if-->
@@ -295,18 +311,20 @@ exports[`test pagination example 1`] = `
   <ul class="var-pagination">
     <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
     <li class="var-pagination__simple var-pagination__item--disabled">
-      <div class="var-input var--box var-input--disabled" var-pagination-cover="">
-        <div class="var-input__controller var-input--disabled">
-          <div class="var-input__icon"></div>
-          <div class="var-input__wrap">
-            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-40" disabled="" type="text"><label class="var--ellipsis var-input--disabled var-input__placeholder var-input--placeholder-hint" for="var-input-40"></label>
+      <div class="var-input var--box" var-pagination-cover="">
+        <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
+          <div class="var-field-decorator__controller var-field-decorator--disabled">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__wrap">
+              <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-43" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-43"></label>
+            </div>
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
           </div>
-          <div class="var-input__icon">
-            <!--v-if-->
+          <div class="var-field-decorator__line var-field-decorator--line-disabled">
+            <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
           </div>
-        </div>
-        <div class="var-input__line var-input--line-disabled">
-          <div class="var-input__dot var-input--line-disabled"></div>
         </div>
         <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
           <!--v-if-->

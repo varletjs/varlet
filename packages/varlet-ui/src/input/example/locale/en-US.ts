@@ -1,5 +1,7 @@
 export default {
-  basicUsage: 'Basic Usage',
+  standard: 'Standard Variant',
+  outlined: 'Outlined Variant',
+  smallSize: 'Small Size',
   plainMode: 'Plain Mode',
   textarea: 'Textarea',
   maxlength: 'Maxlength',

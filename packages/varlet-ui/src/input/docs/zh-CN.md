@@ -1,153 +1,114 @@
 # 输入框
 
-### 基本使用
+### 介绍
 
-输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串。
+输入框的行为和基本原生一致，用户输入时始终获得一个符合 `type` 规则的字符串，可选择 `standard` 和 `outlined` 两种风格，默认为 `standard`。
+
+### 标准外观
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input placeholder="请输入文本" v-model="value" />
+  <var-space direction="column" size="large">
+    <var-input placeholder="请输入文本" v-model="value" />
+    <var-input placeholder="只读" readonly v-model="value2" />
+    <var-input placeholder="禁用" disabled v-model="value3" />
+    <var-input placeholder="可清除" clearable v-model="value4" />
+    <var-input
+      placeholder="字段校验"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="value5"
+    />
+    <var-input placeholder="显示图标" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input placeholder="最大长度" :maxlength="10" v-model="value7" />
+    <var-input placeholder="文本域" textarea v-model="value8" />
+    <var-input placeholder="小尺寸" size="small" v-model="value9" />
+  </var-space>
 </template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
-
-### 朴素模式
-
-如果只需要组件的基本功能，可以通过属性去除部分样式。
+### 外边框外观
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input
-    :hint="false"
-    :line="false"
-    placeholder="请输入文本"
-    v-model="value"
-  />
+  <var-space direction="column" size="large">
+    <var-input variant="outlined" placeholder="请输入文本" v-model="value" />
+    <var-input variant="outlined" placeholder="只读" readonly v-model="value2" />
+    <var-input variant="outlined" placeholder="禁用" disabled v-model="value3" />
+    <var-input variant="outlined" placeholder="可清除" clearable v-model="value4" />
+    <var-input
+      variant="outlined"
+      placeholder="字段校验"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="value5"
+    />
+    <var-input variant="outlined" placeholder="显示图标" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input variant="outlined" placeholder="最大长度" :maxlength="10" v-model="value7" />
+    <var-input variant="outlined" placeholder="文本域" textarea v-model="value8" />
+    <var-input variant="outlined" placeholder="小尺寸" size="small" v-model="value9" />
+  </var-space>
 </template>
-```
 
-### 文本域
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
 
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" textarea v-model="value" />
-</template>
-```
-
-### 最大长度
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" :maxlength="10" v-model="value" />
-</template>
-```
-
-### 禁用
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" disabled v-model="value" />
-</template>
-```
-
-### 只读
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" readonly v-model="value" />
-</template>
-```
-
-### 可清除
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" clearable v-model="value" />
-</template>
-```
-
-### 显示图标
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="请输入文本" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-  </var-input>
-</template>
-```
-
-### 字段校验
-
-通过传入一个校验器数组可以对值进行校验，校验器返回 `true` 则为校验通过。
-以外的值将转换为文本作为用户提示。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input
-    placeholder="请输入文本"
-    :rules="[v => v.length > 6 || '文本长度必须大于6']"
-    v-model="value"
-  />
-</template>
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
 ## API
@@ -159,6 +120,8 @@ const value = ref('')
 | `v-model` | 绑定的值                                                                     | _string_ | `-` |
 | `placeholder` | 占位符                                                                      | _string_ | `-` |
 | `type` | 输入框类型, 可选值为 `text` `password` `number` `tel`                             | _string_ | `text` |
+| `size` | 输入框尺寸，可选值 `small`                                                          | _string_ | `-` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | 最大长度                                                                     | _string \| number_ | `-` |
 | `textarea` | 是否是文本域                                                                   | _boolean_ | `false` |
 | `rows` | 文本域的显示行数                                                                 | _string \| number_ | `8` |
@@ -208,15 +171,32 @@ const value = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--input-input-text-color` | `#555` |
-| `--input-error-color` | `var(--color-danger)` |
-| `--input-blur-color` | `#888` |
-| `--input-focus-color` | `var(--color-primary)` |
-| `--input-placeholder-size` | `16px` |
+| `--field-decorator-text-color` | `#555` |
+| `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-blur-color` | `#888` |
+| `--field-decorator-focus-color` | `var(--color-primary)` |
+| `--field-decorator-placeholder-size` | `16px` |
+| `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-line-size` | `1px` |
+| `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--field-decorator-standard-normal-padding-top` | `20px` |
+| `--field-decorator-standard-normal-padding-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-standard-small-padding-top` | `16px` |
+| `--field-decorator-standard-small-padding-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-outlined-normal-padding-top` | `16px` |
+| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-outlined-normal-padding-left` | `16px` |
+| `--field-decorator-outlined-normal-padding-right` | `16px` |
+| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
+| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
+| `--field-decorator-outlined-small-padding-top` | `8px` |
+| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-small-padding-left` | `12px` |
+| `--field-decorator-outlined-small-padding-right` | `12px` |
+| `--field-decorator-outlined-small-placeholder-space` | `2px` |
+| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
+| `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |
-| `--input-textarea-padding-top` | `8px` |
-| `--input-icon-padding` | `16px 0 0` |
-| `--input-icon-size` | `20px` |
-| `--input-line-size` | `1px` |
-| `--input-line-spread-size` | `2px` |
-| `--input-disabled-color` | `var(--color-text-disabled)` |
