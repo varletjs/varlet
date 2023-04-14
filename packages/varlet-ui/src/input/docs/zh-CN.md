@@ -29,7 +29,7 @@ const value9 = ref('')
     <var-input placeholder="可清除" clearable v-model="value4" />
     <var-input
       placeholder="字段校验"
-      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
       v-model="value5"
     />
     <var-input placeholder="显示图标" v-model="value6">
@@ -83,7 +83,7 @@ const value9 = ref('')
     <var-input
       variant="outlined"
       placeholder="字段校验"
-      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
       v-model="value5"
     />
     <var-input variant="outlined" placeholder="显示图标" v-model="value6">

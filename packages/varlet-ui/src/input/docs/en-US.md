@@ -29,7 +29,7 @@ const value9 = ref('')
     <var-input placeholder="Clearable" clearable v-model="value4" />
     <var-input
       placeholder="Validate"
-      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
       v-model="value5"
     />
     <var-input placeholder="Display Icon" v-model="value6">
@@ -83,7 +83,7 @@ const value9 = ref('')
     <var-input
       variant="outlined"
       placeholder="Validate"
-      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
       v-model="value5"
     />
     <var-input variant="outlined" placeholder="Display Icon" v-model="value6">

@@ -24,7 +24,7 @@ const value10 = ref([])
 
 <template>
   <var-space direction="column" size="large">
-    <var-select placeholder="" v-model="value">
+    <var-select placeholder="请选择一个选项" v-model="value">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
@@ -144,7 +144,7 @@ const value10 = ref([])
 
 <template>
   <var-space direction="column" size="large">
-    <var-select variant="outlined" placeholder="" v-model="value">
+    <var-select variant="outlined" placeholder="请选择一个选项" v-model="value">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
