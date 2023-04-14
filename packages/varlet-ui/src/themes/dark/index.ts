@@ -10,7 +10,7 @@ import collapse from './collapse'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
-import input from './input'
+import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
 import popup from './popup'
@@ -66,7 +66,7 @@ export default {
   ...steps,
   ...pagination,
   ...table,
-  ...input,
+  ...fieldDecorator,
   ...select,
   ...radio,
   ...checkbox,
