@@ -1,78 +1,95 @@
 <script setup>
 import VarInput from '..'
 import VarIcon from '../../icon'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import VarSpace from '../../space'
 import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { ref } from 'vue'
 import { use, pack } from './locale'
 
-const values = reactive({
-  value: '',
-  value2: '',
-  value3: '',
-  value4: '',
-  value5: '',
-  value6: '',
-  value7: '',
-  value8: '',
-  value9: '',
-})
-const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
-watchLang((lang) => {
-  use(lang)
-  values.value5 = pack.value.clearableText
-})
+const standardValue = ref('')
+const standardValue2 = ref('')
+const standardValue3 = ref('')
+const standardValue4 = ref('')
+const standardValue5 = ref('')
+const standardValue6 = ref('')
+const standardValue7 = ref('')
+const standardValue8 = ref('')
+const standardValue9 = ref('')
+
+const outlinedValue = ref('')
+const outlinedValue2 = ref('')
+const outlinedValue3 = ref('')
+const outlinedValue4 = ref('')
+const outlinedValue5 = ref('')
+const outlinedValue6 = ref('')
+const outlinedValue7 = ref('')
+const outlinedValue8 = ref('')
+const outlinedValue9 = ref('')
+
+watchLang(use)
 watchDarkMode(dark)
 </script>
 
 <template>
-  <app-type class="pb">{{ pack.basicUsage }}</app-type>
-  <var-input :placeholder="pack.placeholder" v-model="value" />
+  <app-type>{{ pack.standard }}</app-type>
+  <var-space direction="column" :size="['3vw', 0]">
+    <var-input :placeholder="pack.placeholder" v-model="standardValue2" />
+    <var-input :placeholder="pack.readonly" readonly v-model="standardValue3" />
+    <var-input :placeholder="pack.disabled" disabled v-model="standardValue4" />
+    <var-input :placeholder="pack.clearable" clearable v-model="standardValue5" />
+    <var-input
+      :placeholder="pack.validate"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="standardValue6"
+    />
+    <var-input :placeholder="pack.displayIcon" v-model="standardValue7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input :placeholder="pack.maxlength" :maxlength="10" v-model="standardValue8" />
+    <var-input :placeholder="pack.textarea" textarea v-model="standardValue9" />
+    <var-input :placeholder="pack.smallSize" size="small" v-model="standardValue" />
+  </var-space>
 
-  <app-type class="pb">{{ pack.plainMode }}</app-type>
-  <var-input :hint="false" :line="false" :placeholder="pack.placeholder" v-model="value7" />
-
-  <app-type class="pb">{{ pack.textarea }}</app-type>
-  <var-input :placeholder="pack.placeholder" textarea v-model="value2" />
-
-  <app-type class="pb">{{ pack.maxlength }}</app-type>
-  <var-input :placeholder="pack.placeholder" :maxlength="10" v-model="value8" />
-
-  <app-type class="pb">{{ pack.disabled }}</app-type>
-  <var-input :placeholder="pack.placeholder" disabled v-model="value3" />
-
-  <app-type class="pb">{{ pack.readonly }}</app-type>
-  <var-input :placeholder="pack.placeholder" readonly v-model="value4" />
-
-  <app-type class="pb">{{ pack.clearable }}</app-type>
-  <var-input :placeholder="pack.placeholder" clearable v-model="value5" />
-
-  <app-type class="pb">{{ pack.displayIcon }}</app-type>
-  <var-input :placeholder="pack.placeholder" v-model="value6">
-    <template #prepend-icon>
-      <var-icon class="prepend-icon" name="plus" />
-    </template>
-    <template #append-icon>
-      <var-icon class="append-icon" name="minus" />
-    </template>
-  </var-input>
-
-  <app-type>{{ pack.validate }}</app-type>
-  <var-input :placeholder="pack.placeholder" :rules="[(v) => v.length > 6 || pack.maxMessage]" v-model="value9" />
+  <app-type style="margin-top: 10vw">{{ pack.outlined }}</app-type>
+  <var-space direction="column" :size="['6vw', 0]">
+    <var-input variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue2" />
+    <var-input variant="outlined" :placeholder="pack.readonly" readonly v-model="outlinedValue3" />
+    <var-input variant="outlined" :placeholder="pack.disabled" disabled v-model="outlinedValue4" />
+    <var-input variant="outlined" :placeholder="pack.clearable" clearable v-model="outlinedValue5" />
+    <var-input
+      variant="outlined"
+      :placeholder="pack.validate"
+      :rules="[(v) => v.length > 6 || pack.maxMessage]"
+      v-model="outlinedValue6"
+    />
+    <var-input variant="outlined" :placeholder="pack.displayIcon" v-model="outlinedValue7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input variant="outlined" :placeholder="pack.maxlength" :maxlength="10" v-model="outlinedValue8" />
+    <var-input variant="outlined" :placeholder="pack.textarea" textarea v-model="outlinedValue9" />
+    <var-input variant="outlined" :placeholder="pack.smallSize" size="small" v-model="outlinedValue" />
+  </var-space>
 
   <div style="height: 40px"></div>
 </template>
 
 <style scoped lang="less">
 .prepend-icon {
-  margin-right: 2px;
+  margin-right: 6px;
 }
 
 .append-icon {
-  margin-left: 2px;
-}
-
-.pb {
-  padding-bottom: 10px;
+  margin-left: 6px;
 }
 </style>

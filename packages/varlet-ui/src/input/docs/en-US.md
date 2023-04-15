@@ -1,152 +1,114 @@
 # Input
 
-### Basic Usage
+### Intro
 
-The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type rule when inputting.
+The behavior of the input box is consistent with the basic content, and the user can always get a string that conforms to the `type` rule when inputting.
+
+### Standard Variant
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input placeholder="Please enter text" v-model="value" />
+  <var-space direction="column" size="large">
+    <var-input placeholder="Please enter text" v-model="value" />
+    <var-input placeholder="Readonly" readonly v-model="value2" />
+    <var-input placeholder="Disabled" disabled v-model="value3" />
+    <var-input placeholder="Clearable" clearable v-model="value4" />
+    <var-input
+      placeholder="Validate"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      v-model="value5"
+    />
+    <var-input placeholder="Display Icon" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input placeholder="Maxlength" :maxlength="10" v-model="value7" />
+    <var-input placeholder="Textarea" textarea v-model="value8" />
+    <var-input placeholder="Small Size" size="small" v-model="value9" />
+  </var-space>
 </template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
-### Plain Mode
-
-If you only need the basic functionality of the component, you can remove some styles through attributes.
+### Outlined Variant
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const value = ref('')
+const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
+const value5 = ref('')
+const value6 = ref('')
+const value7 = ref('')
+const value8 = ref('')
+const value9 = ref('')
 </script>
 
 <template>
-  <var-input 
-    :hint="false" 
-    :line="false" 
-    placeholder="Please enter text"
-    v-model="value"
-  />
+  <var-space direction="column" size="large">
+    <var-input variant="outlined" placeholder="Please enter text" v-model="value" />
+    <var-input variant="outlined" placeholder="Readonly" readonly v-model="value2" />
+    <var-input variant="outlined" placeholder="Disabled" disabled v-model="value3" />
+    <var-input variant="outlined" placeholder="Clearable" clearable v-model="value4" />
+    <var-input
+      variant="outlined"
+      placeholder="Validate"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      v-model="value5"
+    />
+    <var-input variant="outlined" placeholder="Display Icon" v-model="value6">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input variant="outlined" placeholder="Maxlength" :maxlength="10" v-model="value7" />
+    <var-input variant="outlined" placeholder="Textarea" textarea v-model="value8" />
+    <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value9" />
+  </var-space>
 </template>
-```
 
-### Textarea
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
 
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" textarea v-model="value" />
-</template>
-```
-
-### Maxlength
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" :maxlength="10" v-model="value" />
-</template>
-```
-
-### Disabled
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" disabled v-model="value" />
-</template>
-```
-
-### Readonly
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" readonly v-model="value" />
-</template>
-```
-
-### Clearable
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" clearable v-model="value" />
-</template>
-```
-
-### Display Icon
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input placeholder="Please enter text" v-model="value">
-    <template #prepend-icon>
-      <var-icon name="plus"/>
-    </template>
-    <template #append-icon>
-      <var-icon name="minus"/>
-    </template>
-  </var-input>
-</template>
-```
-
-### Validate
-
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
-Other values are converted to text as a user prompt.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-input
-    placeholder="Please enter text"
-    :rules="[v => v.length > 6 || 'Text length must be greater than 6']"
-    v-model="value"
-  />
-</template>
+.append-icon {
+  margin-left: 6px;
+}
+</style>
 ```
 
 ## API
@@ -158,6 +120,8 @@ const value = ref('')
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
 | `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
+| `size` | Input size, The optional value is `small`                                                          | _string_ | `-` |
+| `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |
 | `textarea` | Is it a textarea                                                                                                                       | _boolean_ | `false` |  
 | `rows` | Number of lines to display in the textarea                                                                                             | _string \| number_ | `8` |  
@@ -207,15 +171,32 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--input-input-text-color` | `#555` |
-| `--input-error-color` | `var(--color-danger)` |
-| `--input-blur-color` | `#888` |
-| `--input-focus-color` | `var(--color-primary)` |
-| `--input-placeholder-size` | `16px` |
+| `--field-decorator-text-color` | `#555` |
+| `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-blur-color` | `#888` |
+| `--field-decorator-focus-color` | `var(--color-primary)` |
+| `--field-decorator-placeholder-size` | `16px` |
+| `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-line-size` | `1px` |
+| `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--field-decorator-standard-normal-padding-top` | `20px` |
+| `--field-decorator-standard-normal-padding-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-standard-small-padding-top` | `16px` |
+| `--field-decorator-standard-small-padding-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-outlined-normal-padding-top` | `16px` |
+| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-outlined-normal-padding-left` | `16px` |
+| `--field-decorator-outlined-normal-padding-right` | `16px` |
+| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
+| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
+| `--field-decorator-outlined-small-padding-top` | `8px` |
+| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-small-padding-left` | `12px` |
+| `--field-decorator-outlined-small-padding-right` | `12px` |
+| `--field-decorator-outlined-small-placeholder-space` | `2px` |
+| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
+| `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |
-| `--input-textarea-padding-top` | `8px` |
-| `--input-icon-padding` | `16px 0 0` |
-| `--input-icon-size` | `20px` |
-| `--input-line-size` | `1px` |
-| `--input-line-spread-size` | `2px` |
-| `--input-disabled-color` | `var(--color-text-disabled)` |

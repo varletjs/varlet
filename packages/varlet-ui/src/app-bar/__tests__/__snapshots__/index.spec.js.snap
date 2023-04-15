@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test app bar component props test app bar image and image-linear-gradient 1`] = `
-"<div class=\\"var-app-bar var--box var-elevation--3\\" style=\\"background-position: center center; background-size: cover;\\">
-  <div class=\\"var-app-bar__toolbar\\">
-    <div class=\\"var-app-bar__left\\">
-      <div class=\\"var-app-bar__title\\"></div>
+"<div class="var-app-bar var--box var-elevation--3" style="background-position: center center; background-size: cover;">
+  <div class="var-app-bar__toolbar">
+    <div class="var-app-bar__left">
+      <div class="var-app-bar__title"></div>
     </div>
     <!--v-if-->
-    <div class=\\"var-app-bar__right\\">
+    <div class="var-app-bar__right">
       <!--v-if-->
     </div>
   </div>
@@ -15,13 +15,13 @@ exports[`test app bar component props test app bar image and image-linear-gradie
 `;
 
 exports[`test app bar slots test app bar content slot 1`] = `
-"<div class=\\"var-app-bar var--box var-elevation--3\\">
-  <div class=\\"var-app-bar__toolbar\\">
-    <div class=\\"var-app-bar__left\\">
-      <div class=\\"var-app-bar__title\\"></div>
+"<div class="var-app-bar var--box var-elevation--3">
+  <div class="var-app-bar__toolbar">
+    <div class="var-app-bar__left">
+      <div class="var-app-bar__title"></div>
     </div>
     <!--v-if-->
-    <div class=\\"var-app-bar__right\\">
+    <div class="var-app-bar__right">
       <!--v-if-->
     </div>
   </div>This is content slot

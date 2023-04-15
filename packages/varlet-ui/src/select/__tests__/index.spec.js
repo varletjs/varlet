@@ -18,6 +18,52 @@ test('test select plugin', () => {
   expect(app.component(Select.name)).toBeTruthy()
 })
 
+test('test select variant', () => {
+  ;['standard', 'outlined'].forEach((variant) => {
+    const wrapper = mount(VarSelect, {
+      props: {
+        value: '',
+        variant,
+      },
+    })
+
+    expect(wrapper.find(`var-field-decorator--${variant}`)).toBeTruthy()
+    switch (variant) {
+      case 'standard': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
+        ).toBeTruthy()
+        break
+      }
+
+      case 'outlined': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__line-start')
+        ).toBeTruthy()
+        break
+      }
+
+      default:
+        break
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+})
+
+test('test select size', () => {
+  const wrapper = mount(VarSelect, {
+    props: {
+      value: '',
+      size: 'small',
+    },
+  })
+
+  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
 test('test option plugin', () => {
   const app = createApp({}).use(Option)
   expect(app.component(Option.name)).toBeTruthy()
@@ -156,17 +202,17 @@ test('test select disabled', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   expect(onFocus).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ disabled: false })
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   await wrapper.setData({ disabled: true })
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ disabled: false })
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   await wrapper.setData({ disabled: true })
   await trigger(document.querySelector('.var-option'), 'click')
   expect(wrapper.vm.value).toBe('睡觉')
@@ -209,17 +255,17 @@ test('test select readonly', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   expect(onFocus).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ readonly: false })
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   await wrapper.setData({ readonly: true })
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ readonly: false })
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   await wrapper.setData({ readonly: true })
   await trigger(document.querySelector('.var-option'), 'click')
   expect(wrapper.vm.value).toBe('睡觉')
@@ -270,7 +316,7 @@ test('test select multiple value', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
   expect(wrapper.vm.value).toStrictEqual(['吃饭', '睡觉'])
@@ -295,7 +341,7 @@ test('test select multiple value in chips', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
   expect(wrapper.vm.value).toStrictEqual(['吃饭', '睡觉'])
@@ -331,7 +377,7 @@ test('test select validation', async () => {
   expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须选择一个')
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-select__wrap').trigger('click')
+  await wrapper.trigger('click')
   await trigger(document.querySelector('.var-option'), 'click')
   await delay(16)
   expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()

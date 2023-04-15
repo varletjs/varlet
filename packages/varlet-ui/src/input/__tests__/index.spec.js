@@ -16,6 +16,52 @@ test('test input plugin', () => {
   expect(app.component(Input.name)).toBeTruthy()
 })
 
+test('test input variant', () => {
+  ;['standard', 'outlined'].forEach((variant) => {
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: 'text',
+        variant,
+      },
+    })
+
+    expect(wrapper.find(`var-field-decorator--${variant}`)).toBeTruthy()
+    switch (variant) {
+      case 'standard': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
+        ).toBeTruthy()
+        break
+      }
+
+      case 'outlined': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__line-start')
+        ).toBeTruthy()
+        break
+      }
+
+      default:
+        break
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+})
+
+test('test input size', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'text',
+      size: 'small',
+    },
+  })
+
+  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
 describe('test input events', () => {
   async function expectFocusAndBlur(props = {}) {
     const onFocus = jest.fn()
@@ -57,7 +103,7 @@ describe('test input events', () => {
       },
     })
 
-    await wrapper.trigger('click')
+    await wrapper.find('.var-field-decorator').trigger('click')
     expect(onClick).toHaveBeenCalledTimes(1)
 
     await wrapper.find('.var-input__input').setValue('t')
@@ -119,7 +165,7 @@ test('test input clear', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-input__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
@@ -130,8 +176,8 @@ test('test input clear', async () => {
 const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input__clear-icon').trigger('click')
-  await wrapper.trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator').trigger('click')
 }
 
 test('test input disabled', async () => {

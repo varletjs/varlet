@@ -1,6 +1,7 @@
 export default {
-  basicUsage: '基本使用',
-  plainMode: '朴素模式',
+  standard: '标准外观',
+  outlined: '外边框外观',
+  smallSize: '小尺寸',
   disabled: '禁用',
   readonly: '只读',
   clearable: '可清除',
@@ -21,9 +22,4 @@ export default {
   currentSelect: '当前选择的是:',
   mustSelectRest: '您一定得选择摸鱼',
   mustSelectMoreThan: '您至少选择两个选项',
-  offsetY: '垂直偏移',
-  emberSprit: '火猫',
-  earthSprit: '土猫',
-  stormSpirit: '蓝猫',
-  voidSpirit: '紫猫',
 }

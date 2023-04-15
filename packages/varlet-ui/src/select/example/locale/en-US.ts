@@ -1,6 +1,7 @@
 export default {
-  basicUsage: 'Basic Usage',
-  plainMode: 'Plain Mode',
+  standard: 'Standard Variant',
+  outlined: 'Outlined Variant',
+  smallSize: 'Small Size',
   disabled: 'Disabled',
   readonly: 'Readonly',
   clearable: 'Clearable',
@@ -21,9 +22,4 @@ export default {
   currentSelect: 'The current selection is:',
   mustSelectRest: 'You must choose to rest',
   mustSelectMoreThan: 'You select at least two options',
-  offsetY: 'offsetY',
-  emberSprit: 'Ember Sprit',
-  earthSprit: 'Earth Sprit',
-  stormSpirit: 'Storm Spirit',
-  voidSpirit: 'Void Spirit',
 }

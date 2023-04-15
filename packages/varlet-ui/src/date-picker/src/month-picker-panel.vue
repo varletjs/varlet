@@ -20,7 +20,7 @@
               v-bind="{
                 ...buttonProps(month.index),
               }"
-              @click="(event) => chooseMonth(month, event)"
+              @click="(event: Event) => chooseMonth(month, event)"
             >
               {{ getMonthAbbr(month.index) }}
             </var-button>
