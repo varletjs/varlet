@@ -2,10 +2,9 @@ import { StatusBarAlignment, window, commands, env, Uri, type ExtensionContext }
 import { DOCUMENTATION_EN, DOCUMENTATION_ZH, PLAYGROUND } from './constant'
 import { getLanguage } from './env'
 
-export function registerBtns(context: ExtensionContext) {
+export function registerStatusBarItems(context: ExtensionContext) {
   const language = getLanguage()
-  console.log(language === 'en-US')
-  const BtnList = [
+  const statusBarList = [
     {
       name: 'Varlet Documentation',
       url: language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH,
@@ -21,7 +20,7 @@ export function registerBtns(context: ExtensionContext) {
       tooltip: 'Open Varlet Playground',
     },
   ]
-  BtnList.forEach((item) => {
+  statusBarList.forEach((item) => {
     const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, item.priority)
     statusBar.command = item.command
     statusBar.text = item.name

@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "varlet.open-documentation",
-        "title": "Varlet: Open Varlet UI Doc"
+        "title": "Varlet: Open Varlet UI Documentation"
       },
       {
         "command": "varlet.open-playground",
