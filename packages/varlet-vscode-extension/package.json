@@ -16,7 +16,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "varlet.open-doc",
+        "command": "varlet.open-documentation",
         "title": "Varlet: Open Varlet UI Doc"
       },
       {
@@ -31,7 +31,7 @@
     "menus": {
       "editor/context": [
         {
-          "command": "varlet.open-doc",
+          "command": "varlet.open-documentation",
           "group": "navigation",
           "when": "editorHasSelection"
         },

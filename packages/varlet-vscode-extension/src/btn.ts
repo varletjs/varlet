@@ -7,18 +7,18 @@ export function registerBtns(context: ExtensionContext) {
   console.log(language === 'en-US')
   const BtnList = [
     {
-      name: language === 'en-US' ? 'Varlet Docs' : 'Varlet 文档',
+      name: 'Varlet Documentation',
       url: language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH,
       priority: 0,
-      command: 'varlet.open-doc',
-      tooltip: language === 'en-US' ? '打开 Varlet 官方文档' : 'Open Varlet Doc',
+      command: 'varlet.open-documentation',
+      tooltip: 'Open Varlet Documentation',
     },
     {
-      name: language === 'en-US' ? 'Varlet Playground' : 'Varlet 演示',
+      name: 'Open Varlet Playground',
       url: PLAYGROUND,
       priority: 0,
       command: 'varlet.open-playground',
-      tooltip: language === 'en-US' ? 'Open Varlet Playground' : '打开 Varlet 演示',
+      tooltip: 'Open Varlet Playground',
     },
   ]
   BtnList.forEach((item) => {
