@@ -1,20 +1,15 @@
-import { StatusBarAlignment, window, commands, env, Uri, type ExtensionContext } from 'vscode'
-import { DOCUMENTATION_EN, DOCUMENTATION_ZH, PLAYGROUND } from './constant'
-import { getLanguage } from './env'
+import { StatusBarAlignment, window } from 'vscode'
 
-export function registerStatusBarItems(context: ExtensionContext) {
-  const language = getLanguage()
+export function registerStatusBarItems() {
   const statusBarList = [
     {
       name: 'Varlet Documentation',
-      url: language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH,
       priority: 0,
       command: 'varlet.open-documentation',
       tooltip: 'Open Varlet Documentation',
     },
     {
       name: 'Varlet Playground',
-      url: PLAYGROUND,
       priority: 0,
       command: 'varlet.open-playground',
       tooltip: 'Open Varlet Playground',
@@ -26,9 +21,5 @@ export function registerStatusBarItems(context: ExtensionContext) {
     statusBar.text = item.name
     statusBar.tooltip = item.tooltip
     statusBar.show()
-    const disposable = commands.registerCommand(item.command, () => {
-      env.openExternal(Uri.parse(item.url))
-    })
-    context.subscriptions.push(disposable)
   })
 }

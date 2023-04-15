@@ -8,7 +8,7 @@ export function activate(context: ExtensionContext) {
   registerCommands()
   registerCompletions(context)
   registerHover(context)
-  registerStatusBarItems(context)
+  registerStatusBarItems()
 }
 
 export function deactivate() {}
