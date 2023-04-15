@@ -14,7 +14,7 @@ export function registerBtns(context: ExtensionContext) {
       tooltip: 'Open Varlet Documentation',
     },
     {
-      name: 'Open Varlet Playground',
+      name: 'Varlet Playground',
       url: PLAYGROUND,
       priority: 0,
       command: 'varlet.open-playground',
