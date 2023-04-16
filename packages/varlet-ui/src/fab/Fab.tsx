@@ -22,7 +22,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
-    const isActive = useVModel(props, 'active', { emit: (event, value) => call(props['onUpdate:active'], value) })
+    const isActive = useVModel(props, 'active')
     const host: Ref<null | HTMLElement> = ref(null)
     const { disabled } = useTeleport()
 
