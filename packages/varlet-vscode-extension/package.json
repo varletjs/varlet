@@ -24,24 +24,23 @@
         "title": "Varlet: Open Varlet UI Playground"
       },
       {
-        "command": "varlet.open-playground-and-wrap-template-tag",
-        "title": "Varlet: Open Varlet UI Playground And Wrap Template Tag"
+        "command": "varlet.open-playground-by-selection",
+        "title": "Varlet: Open Varlet UI Playground By Selection"
+      },
+      {
+        "command": "varlet.open-playground-by-selection-and-wrap-template-tag",
+        "title": "Varlet: Open Varlet UI Playground By Selection And Wrap Template Tag"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "varlet.open-documentation",
+          "command": "varlet.open-playground-by-selection",
           "group": "navigation",
           "when": "editorHasSelection"
         },
         {
-          "command": "varlet.open-playground",
-          "group": "navigation",
-          "when": "editorHasSelection"
-        },
-        {
-          "command": "varlet.open-playground-and-wrap-template-tag",
+          "command": "varlet.open-playground-by-selection-and-wrap-template-tag",
           "group": "navigation",
           "when": "editorHasSelection"
         }

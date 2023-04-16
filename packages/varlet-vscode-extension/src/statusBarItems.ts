@@ -1,7 +1,7 @@
 import { StatusBarAlignment, window } from 'vscode'
 
 export function registerStatusBarItems() {
-  const statusBarList = [
+  ;[
     {
       name: 'Varlet Documentation',
       priority: 0,
@@ -14,12 +14,11 @@ export function registerStatusBarItems() {
       command: 'varlet.open-playground',
       tooltip: 'Open Varlet Playground',
     },
-  ]
-  statusBarList.forEach((item) => {
-    const statusBar = window.createStatusBarItem(StatusBarAlignment.Left, item.priority)
-    statusBar.command = item.command
-    statusBar.text = item.name
-    statusBar.tooltip = item.tooltip
-    statusBar.show()
+  ].forEach((item) => {
+    const statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, item.priority)
+    statusBarItem.command = item.command
+    statusBarItem.text = item.name
+    statusBarItem.tooltip = item.tooltip
+    statusBarItem.show()
   })
 }
