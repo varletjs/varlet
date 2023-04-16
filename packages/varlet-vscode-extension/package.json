@@ -16,6 +16,10 @@
   "contributes": {
     "commands": [
       {
+        "command": "varlet.open-documentation",
+        "title": "Varlet: Open Varlet UI Documentation"
+      },
+      {
         "command": "varlet.open-playground",
         "title": "Varlet: Open Varlet UI Playground"
       },
@@ -26,6 +30,11 @@
     ],
     "menus": {
       "editor/context": [
+        {
+          "command": "varlet.open-documentation",
+          "group": "navigation",
+          "when": "editorHasSelection"
+        },
         {
           "command": "varlet.open-playground",
           "group": "navigation",

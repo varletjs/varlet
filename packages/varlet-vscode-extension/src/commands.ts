@@ -1,5 +1,6 @@
-import { PLAYGROUND } from './constant'
+import { PLAYGROUND, DOCUMENTATION_EN, DOCUMENTATION_ZH } from './constant'
 import { commands, window, Selection, env, Uri, Range } from 'vscode'
+import { getLanguage } from './env'
 
 function openPlayground(wrapTemplate = false) {
   const { activeTextEditor } = window
@@ -26,6 +27,11 @@ function openPlayground(wrapTemplate = false) {
   env.openExternal(Uri.parse(`${PLAYGROUND}#${hash}`))
 }
 
+function openDocumentation() {
+  const language = getLanguage()
+  env.openExternal(Uri.parse(language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH))
+}
+
 export function registerCommands() {
   commands.registerCommand('varlet.move-cursor', (characterDelta: number) => {
     const active = window.activeTextEditor!.selection.active!
@@ -35,6 +41,10 @@ export function registerCommands() {
 
   commands.registerCommand('varlet.open-playground', () => {
     openPlayground()
+  })
+
+  commands.registerCommand('varlet.open-documentation', () => {
+    openDocumentation()
   })
 
   commands.registerCommand('varlet.open-playground-and-wrap-template-tag', () => {
