@@ -5,7 +5,7 @@ import VarSpace from '../../space'
 import VarIcon from '../../icon'
 import dark from '../../themes/dark'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { reactive, toRefs, onBeforeUnmount, h, ref } from 'vue'
+import { reactive, toRefs, onBeforeUnmount, h } from 'vue'
 import { pack, use } from './locale'
 
 const shows = reactive({
