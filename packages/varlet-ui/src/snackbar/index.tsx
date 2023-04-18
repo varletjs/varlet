@@ -2,9 +2,9 @@ import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import type { App, Component, TeleportProps, VNode } from 'vue'
-import { reactive, TransitionGroup } from 'vue'
+import { reactive, TransitionGroup, computed } from 'vue'
 import { call, mountInstance } from '../utils/components'
-import { isPlainObject, isString, toNumber } from '@varlet/shared'
+import { isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingSize, LoadingType } from '../loading/props'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
@@ -18,8 +18,8 @@ interface SnackbarHandel {
 interface SnackbarOptions {
   type?: SnackbarType
   content?: string
-  icon?: string | VNode
-  action?: string | VNode
+  icon?: string | (() => VNode)
+  action?: string | (() => VNode)
   position?: 'top' | 'center' | 'bottom'
   loadingType?: LoadingType
   loadingSize?: LoadingSize
@@ -123,10 +123,14 @@ const TransitionGroupHost = {
           ...getTop(reactiveSnackOptions.position),
         }
 
-        const slots = {
-          icon: () => reactiveSnackOptions.icon,
-          action: () => reactiveSnackOptions.action,
-        }
+        const slots = computed(() => {
+          const { icon, action } = reactiveSnackOptions
+
+          return {
+            icon: () => (isFunction(icon) ? icon() : icon),
+            action: () => (isFunction(action) ? action() : action),
+          }
+        })
 
         return (
           <VarSnackbarCore
@@ -136,7 +140,7 @@ const TransitionGroupHost = {
             data-id={id}
             _update={_update}
             v-model={[reactiveSnackOptions.show, 'show']}
-            v-slots={slots}
+            v-slots={slots.value}
           />
         )
       })

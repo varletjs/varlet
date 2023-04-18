@@ -11,8 +11,8 @@ export declare const snackbarProps: Record<string, any>
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
   content?: string
-  icon?: string | VNode
-  action?: string | VNode
+  icon?: string | (() => VNode)
+  action?: string | (() => VNode)
   position?: SnackbarPosition
   loadingType?: LoadingType
   loadingSize?: LoadingSize
