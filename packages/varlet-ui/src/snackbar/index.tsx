@@ -1,7 +1,7 @@
 import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
-import type { App, Component, TeleportProps } from 'vue'
+import type { App, Component, TeleportProps, VNode } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
 import { call, mountInstance } from '../utils/components'
 import { isPlainObject, isString, toNumber } from '@varlet/shared'
@@ -18,6 +18,8 @@ interface SnackbarHandel {
 interface SnackbarOptions {
   type?: SnackbarType
   content?: string
+  icon?: string | VNode
+  action?: string | VNode
   position?: 'top' | 'center' | 'bottom'
   loadingType?: LoadingType
   loadingSize?: LoadingSize
@@ -75,6 +77,8 @@ let isAllowMultiple = false
 const defaultOptionsValue: SnackbarOptions = {
   type: undefined,
   content: '',
+  icon: '',
+  action: '',
   position: 'top',
   duration: 3000,
   vertical: false,
@@ -119,6 +123,11 @@ const TransitionGroupHost = {
           ...getTop(reactiveSnackOptions.position),
         }
 
+        const slots = {
+          icon: () => reactiveSnackOptions.icon,
+          action: () => reactiveSnackOptions.action,
+        }
+
         return (
           <VarSnackbarCore
             {...reactiveSnackOptions}
@@ -127,6 +136,7 @@ const TransitionGroupHost = {
             data-id={id}
             _update={_update}
             v-model={[reactiveSnackOptions.show, 'show']}
+            v-slots={slots}
           />
         )
       })
