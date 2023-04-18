@@ -41,7 +41,7 @@ function createSnackbar(type) {
   if (type === 'time') {
     Snackbar({
       content: pack.value.text,
-      duration: 10000,
+      duration: 1000,
     })
   }
 
