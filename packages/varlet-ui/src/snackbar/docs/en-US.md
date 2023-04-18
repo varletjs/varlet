@@ -349,9 +349,9 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `content`       | Custom content                                                                                  | _string_ | `-` |
-| `icon`          | Custom icon                                                                                     | _string \| () => VNode_ | `-`               |
-| `action`        | Custom action of right                                                                       | _string \| () => VNode_ | `-`               |
+| `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
+| `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |
+| `action`        | Custom action of right                                                                          | _string \| VNode \| (() => VNode)_ | `-`               |
 | `contentClass`  | Class of custom content                                                                         | _string_ | `-` |
 | `vertical`      | Whether to use multi-line                                                                       | _boolean_ | `false` |
 | `loadingType`   | Loading type (see `Loading` component)                                                          | _string_ | `circle` |

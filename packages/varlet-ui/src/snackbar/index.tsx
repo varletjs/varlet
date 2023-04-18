@@ -2,7 +2,7 @@ import VarSnackbarCore from './core.vue'
 import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import type { App, Component, TeleportProps, VNode } from 'vue'
-import { reactive, TransitionGroup, computed } from 'vue'
+import { reactive, TransitionGroup } from 'vue'
 import { call, mountInstance } from '../utils/components'
 import { isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingSize, LoadingType } from '../loading/props'
@@ -11,15 +11,17 @@ export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
 export const SNACKBAR_TYPE: Array<SnackbarType> = ['loading', 'success', 'warning', 'info', 'error']
 
+export type SlotType = string | VNode | (() => VNode)
+
 interface SnackbarHandel {
   clear: () => void
 }
 
 interface SnackbarOptions {
   type?: SnackbarType
-  content?: string
-  icon?: string | (() => VNode)
-  action?: string | (() => VNode)
+  content?: SlotType
+  icon?: SlotType
+  action?: SlotType
   position?: 'top' | 'center' | 'bottom'
   loadingType?: LoadingType
   loadingSize?: LoadingSize
@@ -103,6 +105,8 @@ const transitionGroupProps: any = {
   class: 'var-transition-group',
 }
 
+const getSlotValue = (value?: SlotType) => () => isFunction(value) ? value() : value
+
 const TransitionGroupHost = {
   setup() {
     return () => {
@@ -123,14 +127,13 @@ const TransitionGroupHost = {
           ...getTop(reactiveSnackOptions.position),
         }
 
-        const slots = computed(() => {
-          const { icon, action } = reactiveSnackOptions
+        const { content, icon, action } = reactiveSnackOptions
 
-          return {
-            icon: () => (isFunction(icon) ? icon() : icon),
-            action: () => (isFunction(action) ? action() : action),
-          }
-        })
+        const slots = {
+          default: getSlotValue(content),
+          icon: getSlotValue(icon),
+          action: getSlotValue(action),
+        }
 
         return (
           <VarSnackbarCore
@@ -140,7 +143,7 @@ const TransitionGroupHost = {
             data-id={id}
             _update={_update}
             v-model={[reactiveSnackOptions.show, 'show']}
-            v-slots={slots.value}
+            v-slots={slots}
           />
         )
       })

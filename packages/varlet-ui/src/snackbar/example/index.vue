@@ -62,7 +62,7 @@ function createSnackbar(type) {
 
   if (type === 'custom') {
     Snackbar({
-      content: 'Hello, World',
+      content: 'Hello, Vue',
       icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
       action: () => h(VarButton, { size: 'small', type: 'primary' }, 'Varlet'),
     })

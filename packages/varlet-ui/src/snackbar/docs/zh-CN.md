@@ -347,9 +347,9 @@ function openMultiple() {
 | `type`          | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-`            |
 | `position`      | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top`          |
 | `duration`      | 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭)                   | _number_ | `3000`         |
-| `content`       | 自定义内容                                                   | _string_ | `-`            |
-| `icon`          | 自定义图标                                                   | _string \| () => VNode_ | `-`            |
-| `action`        | 自定义右边动作区                                                   | _string \| () => VNode_ | `-`            |
+| `content`       | 自定义内容                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
+| `icon`          | 自定义图标                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
+| `action`        | 自定义右边动作区                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `contentClass`  | 自定义内容的类名                                                | _string_ | `-`            |
 | `vertical`      | 是否启用竖直排列方式                                              | _boolean_ | `false`        |
 | `loadingType`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
