@@ -190,10 +190,10 @@ function createSnackbar() {
 import { Snackbar } from '@varlet/ui'
 
 function createSnackbar() {
-  Snackbar({
-    content: 'Hello, World',
-    icon: h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
-    action: h(VarButton, { size: 'small', type: 'primary' }, 'Varlet'),
+  const customSnackbar = Snackbar({
+    content: 'Hello, Varlet',
+    icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
+    action: () => h(VarButton, { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() }, 'Close'),
   })
 }
 </script>
