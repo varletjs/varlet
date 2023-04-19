@@ -49,22 +49,15 @@ function createSnackbar(type) {
     Snackbar({
       content: pack.value.text,
       position: 'bottom',
-      action: h(VarButton, { size: 'small', type: 'primary' }, pack.value.close),
-    })
-  }
-
-  if (type === 'position') {
-    Snackbar({
-      content: pack.value.text,
-      position: 'bottom',
     })
   }
 
   if (type === 'custom') {
-    Snackbar({
-      content: 'Hello, Vue',
+    const customSnackbar = Snackbar({
+      content: 'Hello, Varlet',
       icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
-      action: () => h(VarButton, { size: 'small', type: 'primary' }, 'Varlet'),
+      action: () =>
+        h(VarButton, { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() }, pack.value.close),
     })
   }
 
