@@ -185,13 +185,27 @@ function createSnackbar() {
 
 ```html
 <script setup>
-import { Snackbar } from '@varlet/ui'
+import { h } from 'vue'
+import { Snackbar, Icon, Button } from '@varlet/ui'
 
 function createSnackbar() {
   const customSnackbar = Snackbar({
-    content: 'Hello, Varlet',
-    icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
-    action: () => h(VarButton, { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() }, '关闭'),
+  content: 'Hello, Varlet',
+  icon: () =>
+    h(Icon, {
+      name: 'heart',
+      style: { paddingRight: '12px' },
+    }),
+  action: () =>
+    h(
+      Button,
+      {
+        size: 'small',
+        type: 'primary',
+        onClick: () => customSnackbar.clear(),
+      },
+      { default: () => '关闭' }
+    )
   })
 }
 </script>

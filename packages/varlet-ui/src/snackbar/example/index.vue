@@ -57,7 +57,11 @@ function createSnackbar(type) {
       content: 'Hello, Varlet',
       icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
       action: () =>
-        h(VarButton, { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() }, pack.value.close),
+        h(
+          VarButton,
+          { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() },
+          { default: () => pack.value.close }
+        ),
     })
   }
 
