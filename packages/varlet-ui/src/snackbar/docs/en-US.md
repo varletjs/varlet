@@ -36,7 +36,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" @click="show = !show">Close</var-button>
+      <var-button type="primary" size="small" @click="show = !show">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = true">Multi-Line</var-button>
@@ -58,7 +58,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" @click="show = false">Close</var-button>
+      <var-button type="primary" size="small" @click="show = false">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = true">Bottom Display</var-button>
@@ -82,6 +82,30 @@ const show = ref(false)
   </var-snackbar>
   <var-button type="primary" block @click="show = true">
     Display Duration
+  </var-button>
+</template>
+```
+
+### Custom Icon
+
+Use `icon` slot realization custom icons.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+</script>
+
+<template>
+  <var-snackbar v-model:show="show">
+    Hello, I'm a snackbar
+    <template #icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-snackbar>
+  <var-button type="primary" block @click="show = true">
+    Custom Icon
   </var-button>
 </template>
 ```
@@ -156,6 +180,26 @@ function createSnackbar() {
 
 <template>
   <var-button type="warning" block @click="createSnackbar">Bottom Display</var-button>
+</template>
+```
+
+### Custom
+
+```html
+<script setup>
+import { Snackbar } from '@varlet/ui'
+
+function createSnackbar() {
+  Snackbar({
+    content: 'Hello, World',
+    icon: h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
+    action: h(VarButton, { size: 'small', type: 'primary' }, 'Varlet'),
+  })
+}
+</script>
+
+<template>
+  <var-button type="warning" block @click="createSnackbar">Custom</var-button>
 </template>
 ```
 
@@ -276,6 +320,7 @@ function openMultiple() {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | `Snackbar` content message | `-` |
+| `icon` | `Snackbar` icon | `-` |
 | `action` | `Snackbar` action of right | `-` |
 
 ### Methods
@@ -304,7 +349,9 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `content`       | Custom content                                                                                  | _string_ | `-` |
+| `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
+| `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |
+| `action`        | Custom action of right                                                                          | _string \| VNode \| (() => VNode)_ | `-`               |
 | `contentClass`  | Class of custom content                                                                         | _string_ | `-` |
 | `vertical`      | Whether to use multi-line                                                                       | _boolean_ | `false` |
 | `loadingType`   | Loading type (see `Loading` component)                                                          | _string_ | `circle` |
