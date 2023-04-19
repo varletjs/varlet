@@ -6,7 +6,7 @@ exports[`test input clear 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-134" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-134"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-48" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-48"></label>
       </div>
       <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
     </div>
@@ -26,7 +26,7 @@ exports[`test input events test input focus & blur 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-102" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-102" style="transform: translate(-0, 0);"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-16" style="transform: translate(-0, 0);"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -48,7 +48,7 @@ exports[`test input events test input focus & blur 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-102" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-102" style=""></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-16" style=""></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -70,8 +70,8 @@ exports[`test input events test input focus & blur 3`] = `
     <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-107" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-107" style="transform: translate(-0, 0);"></label>
+        <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-21" type="text" rows="8" style="resize: none;">
+      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-21" style="transform: translate(-0, 0);"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -93,8 +93,8 @@ exports[`test input events test input focus & blur 4`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-107" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea" for="var-input-107" style=""></label>
+        <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-21" type="text" rows="8" style="resize: none;">
+      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea" for="var-input-21" style=""></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -110,453 +110,13 @@ exports[`test input events test input focus & blur 4`] = `
 </div>"
 `;
 
-exports[`test input example 1`] = `
-"<div class="app-type">标准外观</div>
-<div class="var-space var--box" style="flex-direction: column; justify-content: flex-start; flex-wrap: wrap;">
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-4" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-4">请输入文本</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-8" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-8">只读</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
-        <div class="var-field-decorator__controller var-field-decorator--disabled">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-12" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-12">禁用</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line var-field-decorator--line-disabled">
-          <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-16">可清除</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-20" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-20">字段校验</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-github prepend-icon" style="transition-duration: 0ms;"></i></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-24" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-24">显示图标</label>
-          </div>
-          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-github append-icon" style="transition-duration: 0ms;"></i></div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-30" type="text" maxlength="10"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-30">最大长度</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <div class="var-form-details">
-          <div class="var-form-details__error-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-              <!--v-if-->
-            </transition-stub>
-          </div>
-          <div class="var-form-details__extra-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-              <div>0 / 10</div>
-            </transition-stub>
-          </div>
-        </div>
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 3vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-36" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea" for="var-input-36">文本域</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--small">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-40" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-40">小尺寸</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__dot"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-</div>
-<div class="app-type" style="margin-top: 10vw;">外边框外观</div>
-<div class="var-space var--box" style="flex-direction: column; justify-content: flex-start; flex-wrap: wrap;">
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-46" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-46">请输入文本</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">请输入文本</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-50" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-50">只读</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">只读</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined var-field-decorator--disabled">
-        <div class="var-field-decorator__controller var-field-decorator--disabled">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-54" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-54">禁用</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line var-field-decorator--line-disabled">
-          <!--v-if-->
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-58" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-58">可清除</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">可清除</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-62" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-62">字段校验</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">字段校验</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-github prepend-icon" style="transition-duration: 0ms;"></i></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-66">显示图标</label>
-          </div>
-          <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-github append-icon" style="transition-duration: 0ms;"></i></div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">显示图标</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text" maxlength="10"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-72">最大长度</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">最大长度</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <div class="var-form-details">
-          <div class="var-form-details__error-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-              <!--v-if-->
-            </transition-stub>
-          </div>
-          <div class="var-form-details__extra-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-              <div>0 / 10</div>
-            </transition-stub>
-          </div>
-        </div>
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px 0px 6vw 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-78" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator__placeholder-textarea" for="var-input-78">文本域</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">文本域</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-  <div style="margin: 0px;">
-    <div class="var-input var--box">
-      <div class="var-field-decorator var--box var-field-decorator--outlined var-field-decorator--small">
-        <div class="var-field-decorator__controller" style="cursor: text;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-82" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-82">小尺寸</label>
-          </div>
-          <div class="var-field-decorator__icon">
-            <!--v-if-->
-          </div>
-        </div>
-        <div class="var-field-decorator__line">
-          <div class="var-field-decorator__line-start"></div>
-          <div class="var-field-decorator__line-notch">
-            <div class="var-field-decorator__line-placeholder var--ellipsis">小尺寸</div>
-          </div>
-          <div class="var-field-decorator__line-end"></div>
-        </div>
-      </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
-    </div>
-  </div>
-</div>
-<div style="height: 40px;"></div>"
-`;
-
 exports[`test input hint to be false 1`] = `
 "<div class="var-input var--box">
   <div class="var-field-decorator var--box var-field-decorator--standard">
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon var-field-decorator--non-hint"></div>
       <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-129" type="text" style="--input-placeholder-color: var(--field-decorator-blur-color);">
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-43" type="text" style="--input-placeholder-color: var(--field-decorator-blur-color);">
         <!--v-if-->
       </div>
       <div class="var-field-decorator__icon var-field-decorator--non-hint">
@@ -579,7 +139,7 @@ exports[`test input maxlength 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-122" type="text" maxlength="100"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-122"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-36" type="text" maxlength="100"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-36"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -612,7 +172,7 @@ exports[`test input size 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-97" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-97"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-11" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-11"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -634,7 +194,7 @@ exports[`test input validation 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-152" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="var-input-152" style="transform: translate(-0, 0);"></label>
+        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0);"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -667,7 +227,7 @@ exports[`test input validation 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-152" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-152" style=""></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-66" style=""></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -689,7 +249,7 @@ exports[`test input validation 3`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-152" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-152" style="transform: translate(-0, 0);"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0);"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -711,7 +271,7 @@ exports[`test input variant 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-87" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-87"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-1" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-1"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -733,7 +293,7 @@ exports[`test input variant 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-92" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-92"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-6" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-6"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
