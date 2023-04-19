@@ -106,7 +106,7 @@ export function registerCompletions(context: ExtensionContext) {
       const lastText = document.getText().substring(offset)
       const nextCharacter = lastText.charAt(0)
 
-      if (nextCharacter !== ' ' && nextCharacter !== '/' && nextCharacter !== '>') {
+      if (nextCharacter !== ' ' && nextCharacter !== '\n' && nextCharacter !== '/' && nextCharacter !== '>') {
         return null
       }
 
