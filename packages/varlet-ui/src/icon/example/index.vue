@@ -99,7 +99,13 @@ watchDarkMode(dark, (theme) => {
 
   <app-type>{{ pack.iconList }}</app-type>
 
-  <var-input placeholder="搜索Icon" size="small" variant="outlined" v-model="searchText" class="icon-example__search">
+  <var-input
+    placeholder="search Icon"
+    size="small"
+    variant="outlined"
+    v-model="searchText"
+    class="icon-example__search"
+  >
     <template #append-icon>
       <var-icon name="close-circle" v-if="searchText.length > 0" @click="clear" />
       <var-icon name="magnify" />
