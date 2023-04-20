@@ -17,6 +17,7 @@ function getRootConfig() {
 
 module.exports = {
   testEnvironment: 'jsdom',
+  coverageProvider: 'v8',
   testEnvironmentOptions: {
     customExportConditions: ['node', 'node-addons'],
   },

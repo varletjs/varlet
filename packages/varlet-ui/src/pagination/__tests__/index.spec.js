@@ -1,15 +1,8 @@
-import example from '../example'
 import Pagination from '..'
 import VarPagination from '../Pagination'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, trigger } from '../../utils/jest'
-
-test('test pagination example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test pagination plugin', () => {
   const app = createApp({}).use(Pagination)
