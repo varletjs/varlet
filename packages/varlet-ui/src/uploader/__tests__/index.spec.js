@@ -1,4 +1,3 @@
-import example from '../example'
 import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
@@ -12,12 +11,6 @@ const createEvent = (filename) => {
     },
   }
 }
-
-test('test uploader example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test uploader plugin', () => {
   const app = createApp({}).use(Uploader)

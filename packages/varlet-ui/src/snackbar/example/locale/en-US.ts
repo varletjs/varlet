@@ -15,6 +15,8 @@ export default {
   multiLine: 'Multi-Line',
   bottomDisplay: 'Bottom Display',
   hiddenTime: 'Display Duration',
+  customIcon: 'Custom Icon',
   forbidClick: 'Forbid Click',
   multiple: 'Multiple',
+  custom: 'Custom',
 }

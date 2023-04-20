@@ -36,10 +36,10 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" @click="show = !show">关闭</var-button>
+      <var-button type="primary" size="small" @click="show = !show">关闭</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">垂直排列</var-button>
+  <var-button type="primary" block @click="show = !show">垂直排列</var-button>
 </template>
 ```
 
@@ -58,10 +58,10 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" @click="show = false">关闭</var-button>
+      <var-button type="primary" size="small" @click="show = false">关闭</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">底部显示</var-button>
+  <var-button type="primary" block @click="show = !show">底部显示</var-button>
 </template>
 ```
 
@@ -78,8 +78,32 @@ const show = ref(false)
 
 <template>
   <var-snackbar v-model:show="show" :duration="1000"> 这是一个消息条！！</var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     显示时长
+  </var-button>
+</template>
+```
+
+### 自定义图标
+
+通过 `icon` 插槽实现自定义图标。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+</script>
+
+<template>
+  <var-snackbar v-model:show="show">
+    这是一个消息条！！
+    <template #icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-snackbar>
+  <var-button type="primary" block @click="show = !show">
+    自定义图标
   </var-button>
 </template>
 ```
@@ -115,7 +139,7 @@ import { Snackbar } from '@varlet/ui'
 </script>
 
 <template>
-  <var-button type="warning" block @click="Snackbar("这是一个消息条")">基本使用</var-button>
+  <var-button type="warning" block @click="Snackbar("这是一个消息条！！")">基本使用</var-button>
 </template>
 ```
 
@@ -127,8 +151,8 @@ import { Snackbar } from '@varlet/ui'
 
 function createSnackbar() {
   Snackbar({
-    content: "这是一个消息条!!",
-    duration: 1000
+    content: "这是一个消息条！！",
+    duration: 1000,
   })
 }
 </script>
@@ -154,6 +178,40 @@ function createSnackbar() {
 
 <template>
   <var-button type="warning" block @click="createSnackbar">底部显示</var-button>
+</template>
+```
+
+### 自定义
+
+```html
+<script setup>
+import { h } from 'vue'
+import { Snackbar, Icon, Button } from '@varlet/ui'
+
+function createSnackbar() {
+  const customSnackbar = Snackbar({
+  content: 'Hello, Varlet',
+  icon: () =>
+    h(Icon, {
+      name: 'heart',
+      style: { paddingRight: '12px' },
+    }),
+  action: () =>
+    h(
+      Button,
+      {
+        size: 'small',
+        type: 'primary',
+        onClick: () => customSnackbar.clear(),
+      },
+      { default: () => '关闭' }
+    )
+  })
+}
+</script>
+
+<template>
+  <var-button type="warning" block @click="createSnackbar">自定义</var-button>
 </template>
 ```
 
@@ -274,6 +332,7 @@ function openMultiple() {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | `Snackbar` 内容 | `-` |
+| `icon` | `Snackbar` 图标 | `-` |
 | `action` | `Snackbar` 右边动作区 | `-` |
 
 ### 方法
@@ -302,7 +361,9 @@ function openMultiple() {
 | `type`          | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-`            |
 | `position`      | `Snackbar` 位置，可选值为 `top center bottom`                  | _string_ | `top`          |
 | `duration`      | 显示时长(当 `type` 属性为 `loading` 时，需要手动关闭)                   | _number_ | `3000`         |
-| `content`       | 自定义内容                                                   | _string_ | `-`            |
+| `content`       | 自定义内容                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
+| `icon`          | 自定义图标                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
+| `action`        | 自定义右边动作区                                                   | _string \| VNode \| (() => VNode)_ | `-`            |
 | `contentClass`  | 自定义内容的类名                                                | _string_ | `-`            |
 | `vertical`      | 是否启用竖直排列方式                                              | _boolean_ | `false`        |
 | `loadingType`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |

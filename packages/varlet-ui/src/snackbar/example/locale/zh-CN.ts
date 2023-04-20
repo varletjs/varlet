@@ -15,6 +15,8 @@ export default {
   multiLine: '垂直排列',
   bottomDisplay: '底部显示',
   hiddenTime: '显示时长',
+  customIcon: '自定义图标',
   forbidClick: '禁止穿透点击',
   multiple: '多例模式',
+  custom: '自定义',
 }
