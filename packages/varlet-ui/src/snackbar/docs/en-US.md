@@ -39,7 +39,7 @@ const show = ref(false)
       <var-button type="primary" size="small" @click="show = !show">Close</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">Multi-Line</var-button>
+  <var-button type="primary" block @click="show = !show">Multi-Line</var-button>
 </template>
 ```
 
@@ -61,7 +61,7 @@ const show = ref(false)
       <var-button type="primary" size="small" @click="show = false">Close</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">Bottom Display</var-button>
+  <var-button type="primary" block @click="show = !show">Bottom Display</var-button>
 </template>
 ```
 
@@ -80,7 +80,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :duration="10000">
     Hello, I'm a snackbar
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     Display Duration
   </var-button>
 </template>
@@ -104,7 +104,7 @@ const show = ref(false)
       <var-icon name="heart-outline" />
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     Custom Icon
   </var-button>
 </template>
