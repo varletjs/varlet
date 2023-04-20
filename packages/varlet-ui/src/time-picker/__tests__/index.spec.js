@@ -1,15 +1,8 @@
-import example from '../example'
 import TimePicker from '..'
 import VarTimePicker from '../TimePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/jest'
-
-test('test timePicker example', () => {
-  const wrapper = mount(example)
-
-  expect(wrapper.html()).toMatchSnapshot()
-})
 
 test('test timePicker plugin', () => {
   const app = createApp({}).use(TimePicker)

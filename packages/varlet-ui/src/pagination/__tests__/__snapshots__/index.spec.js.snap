@@ -9,7 +9,7 @@ exports[`Size related props 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0);"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -46,7 +46,7 @@ exports[`Size related props 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-127" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-127" style="transform: translate(-0, 0);"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0);"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -107,7 +107,7 @@ exports[`basic mode mount 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-96" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-96"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-41"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -135,7 +135,7 @@ exports[`simple mode disabled prop 1`] = `
         <div class="var-field-decorator__controller var-field-decorator--disabled">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-73" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-73"></label>
+            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-18" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-18"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -172,7 +172,7 @@ exports[`simple mode mount 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-58" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-58"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-3"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -198,149 +198,4 @@ exports[`simple mode mount 1`] = `
   <!--v-if-->
   <li class="var-pagination__total">1-10 of 123 items</li>
 </ul>"
-`;
-
-exports[`test pagination example 1`] = `
-"<div class="app-type">基本使用</div>
-<div class="transformer">
-  <ul class="var-pagination">
-    <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__simple">
-      <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-field-decorator var--box var-field-decorator--standard">
-          <div class="var-field-decorator__controller" style="cursor: text;">
-            <div class="var-field-decorator__icon"></div>
-            <div class="var-field-decorator__wrap">
-              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-5" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-5"></label>
-            </div>
-            <div class="var-field-decorator__icon">
-              <!--v-if-->
-            </div>
-          </div>
-          <div class="var-field-decorator__line">
-            <div class="var-field-decorator__dot"></div>
-          </div>
-        </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
-      </div><span> / 12 <div class="var-pagination__simple-line"></div></span>
-    </li>
-    <li class="var-pagination__item var-pagination__next var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__size">
-      <div class="var-menu">
-        <div class="var-pagination__size--open"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
-      </div>
-    </li>
-    <!--v-if-->
-    <!--v-if-->
-  </ul>
-</div>
-<div class="app-type">隐藏 size 切换器</div>
-<div class="transformer">
-  <ul class="var-pagination">
-    <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__simple">
-      <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-field-decorator var--box var-field-decorator--standard">
-          <div class="var-field-decorator__controller" style="cursor: text;">
-            <div class="var-field-decorator__icon"></div>
-            <div class="var-field-decorator__wrap">
-              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-20" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-20"></label>
-            </div>
-            <div class="var-field-decorator__icon">
-              <!--v-if-->
-            </div>
-          </div>
-          <div class="var-field-decorator__line">
-            <div class="var-field-decorator__dot"></div>
-          </div>
-        </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
-      </div><span> / 12 <div class="var-pagination__simple-line"></div></span>
-    </li>
-    <li class="var-pagination__item var-pagination__next var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-    <!--v-if-->
-    <!--v-if-->
-    <!--v-if-->
-  </ul>
-</div>
-<div class="app-type">显示总数</div>
-<div class="transformer">
-  <ul class="var-pagination">
-    <li class="var-pagination__item var-pagination__prev var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__simple">
-      <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-field-decorator var--box var-field-decorator--standard">
-          <div class="var-field-decorator__controller" style="cursor: text;">
-            <div class="var-field-decorator__icon"></div>
-            <div class="var-field-decorator__wrap">
-              <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-28" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-28"></label>
-            </div>
-            <div class="var-field-decorator__icon">
-              <!--v-if-->
-            </div>
-          </div>
-          <div class="var-field-decorator__line">
-            <div class="var-field-decorator__dot"></div>
-          </div>
-        </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
-      </div><span> / 12 <div class="var-pagination__simple-line"></div></span>
-    </li>
-    <li class="var-pagination__item var-pagination__next var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__size">
-      <div class="var-menu">
-        <div class="var-pagination__size--open"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
-      </div>
-    </li>
-    <!--v-if-->
-    <li class="var-pagination__total">共 120 条</li>
-  </ul>
-</div>
-<div class="app-type">禁用</div>
-<div class="transformer">
-  <ul class="var-pagination">
-    <li class="var-pagination__item var-pagination__prev var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-left" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__simple var-pagination__item--disabled">
-      <div class="var-input var--box" var-pagination-cover="">
-        <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
-          <div class="var-field-decorator__controller var-field-decorator--disabled">
-            <div class="var-field-decorator__icon"></div>
-            <div class="var-field-decorator__wrap">
-              <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-43" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="var-input-43"></label>
-            </div>
-            <div class="var-field-decorator__icon">
-              <!--v-if-->
-            </div>
-          </div>
-          <div class="var-field-decorator__line var-field-decorator--line-disabled">
-            <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
-          </div>
-        </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
-      </div><span> / 12 <div class="var-pagination__simple-line"></div></span>
-    </li>
-    <li class="var-pagination__item var-pagination__next var-pagination__item--disabled var-pagination__item--simple"><i class="var-icon var-icon--set var-icon-chevron-right" style="transition-duration: 0ms;"></i></li>
-    <li class="var-pagination__size var-pagination__item--disabled">
-      <div class="var-menu">
-        <div class="var-pagination__size--open var-pagination__size--open--disabled"><span>10条 / 页</span><i class="var-icon var-icon--set var-icon-menu-down var-pagination__size--open-icon" style="transition-duration: 0ms;" var-pagination-cover=""></i></div>
-        <!--teleport start-->
-        <!--teleport end-->
-      </div>
-    </li>
-    <!--v-if-->
-    <!--v-if-->
-  </ul>
-</div>"
 `;

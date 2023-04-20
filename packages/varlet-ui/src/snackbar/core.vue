@@ -15,6 +15,9 @@
       <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
+      <div :class="[n('icon')]">
+        <slot name="icon" />
+      </div>
       <div :class="n('action')">
         <var-icon v-if="iconName" :name="iconName" />
         <var-loading
