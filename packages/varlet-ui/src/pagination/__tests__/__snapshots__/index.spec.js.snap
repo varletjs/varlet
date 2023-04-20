@@ -9,8 +9,8 @@ exports[`Size related props 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text">
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-72"></label>
+          </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
@@ -46,8 +46,8 @@ exports[`Size related props 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text">
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-72"></label>
+          </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
@@ -108,8 +108,8 @@ exports[`basic mode mount 1`] = `
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text">
+            <!--v-if-->
           </div>
-          <!--v-if-->
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
@@ -137,8 +137,8 @@ exports[`simple mode disabled prop 1`] = `
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-18" disabled="" type="text">
+            <!--v-if-->
           </div>
-          <!--v-if-->
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
@@ -175,8 +175,8 @@ exports[`simple mode mount 1`] = `
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" type="text">
+            <!--v-if-->
           </div>
-          <!--v-if-->
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>

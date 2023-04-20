@@ -11,8 +11,8 @@ exports[`test select focus & blur methods 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div>
-        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for=""></label>
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for=""></label>
+        </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -41,8 +41,8 @@ exports[`test select focus & blur methods 2`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div>
-        </div><label class="var-field-decorator__placeholder var--ellipsis" for="" style="max-width: 0px; transform: translate(0, 0);"></label>
+          </div><label class="var-field-decorator__placeholder var--ellipsis" style="--field-decorator-placeholder-max-width: 100%;" for=""></label>
+        </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -70,8 +70,8 @@ exports[`test select hint to be false 1`] = `
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
         <div class="var-field-decorator__icon var-field-decorator--non-hint">
           <!--v-if-->
         </div>
@@ -101,8 +101,8 @@ exports[`test select size 1`] = `
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -131,8 +131,8 @@ exports[`test select validation 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div>
-        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" style="max-width: 0px; transform: translate(0, 0);" for=""></label>
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" style="--field-decorator-placeholder-max-width: 100%;" for=""></label>
+        </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -173,8 +173,8 @@ exports[`test select variant 1`] = `
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -204,8 +204,8 @@ exports[`test select variant 2`] = `
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>

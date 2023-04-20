@@ -40,6 +40,7 @@
   }
 
   &__wrap {
+    position: relative;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -52,6 +53,7 @@
   }
 
   &__placeholder {
+    max-width: var(--field-decorator-placeholder-max-width);
     position: absolute;
     font-size: var(--field-decorator-placeholder-size);
     line-height: 1em;
@@ -73,6 +75,10 @@
   }
 
   &--placeholder-hint {
+    max-width: calc(
+      var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-normal-padding-right) -
+        var(--field-decorator-outlined-normal-padding-left)
+    );
     font-size: calc(var(--field-decorator-placeholder-size) * 0.75);
     top: 0 !important;
   }
@@ -109,7 +115,6 @@
     }
 
     .var-field-decorator__placeholder {
-      max-width: 100%;
       left: 0;
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, color 0.25s;
@@ -180,10 +185,6 @@
     }
 
     .var-field-decorator__placeholder {
-      max-width: calc(
-        100% - var(--field-decorator-outlined-normal-padding-right) -
-          var(--field-decorator-outlined-normal-padding-left)
-      );
       transform-origin: left;
       transition: top 0.3s, transform 0.3s, font-size 0.3s, margin 0.3s, color 0.25s;
       top: calc(
@@ -279,6 +280,12 @@
   }
 
   &--small {
+    .var-field-decorator--placeholder-hint {
+      max-width: calc(
+        var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-small-padding-right) -
+          var(--field-decorator-outlined-small-padding-left)
+      );
+    }
     .var-field-decorator--standard& {
       .var-field-decorator__wrap {
         padding: var(--field-decorator-standard-small-padding-top) 0
@@ -315,10 +322,6 @@
       }
 
       .var-field-decorator__placeholder {
-        max-width: calc(
-          100% - var(--field-decorator-outlined-small-padding-right) -
-            var(--field-decorator-outlined-small-padding-left)
-        );
         top: calc(
           var(--field-decorator-outlined-small-padding-top) +
             (

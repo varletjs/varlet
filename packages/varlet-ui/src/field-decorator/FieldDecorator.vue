@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="decoratorEl"
     :class="classes(n(), n('$--box'), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
     @click="handleClick"
   >
@@ -21,33 +22,33 @@
         <slot name="prepend-icon" />
       </div>
 
-      <div ref="wrapEl" :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
+      <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
         <slot />
-      </div>
 
-      <label
-        v-if="wrapEl && (hint || alwaysCustomPlaceholder)"
-        :class="
-          classes(
-            n('placeholder'),
-            n('$--ellipsis'),
-            [textarea, n('placeholder-textarea')],
-            [isFocus, n('--focus')],
-            [formDisabled || disabled, n('--disabled')],
-            [errorMessage, n('--error')],
-            [!hint, n('--placeholder-non-hint')],
-            computePlaceholderState()
-          )
-        "
-        :style="{
-          maxWidth: placeholderMaxWidth,
-          transform: placeholderTransform,
-          color,
-        }"
-        :for="id"
-      >
-        {{ placeholder }}
-      </label>
+        <label
+          v-if="decoratorEl && (hint || alwaysCustomPlaceholder)"
+          :class="
+            classes(
+              n('placeholder'),
+              n('$--ellipsis'),
+              [textarea, n('placeholder-textarea')],
+              [isFocus, n('--focus')],
+              [formDisabled || disabled, n('--disabled')],
+              [errorMessage, n('--error')],
+              [!hint, n('--placeholder-non-hint')],
+              computePlaceholderState()
+            )
+          "
+          :style="{
+            '--field-decorator-placeholder-max-width': placeholderMaxWidth,
+            transform: placeholderTransform,
+            color,
+          }"
+          :for="id"
+        >
+          {{ placeholder }}
+        </label>
+      </div>
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
         <var-icon
@@ -120,7 +121,7 @@ export default defineComponent({
   props,
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
-    const wrapEl: Ref<HTMLElement | null> = ref(null)
+    const decoratorEl: Ref<HTMLElement | null> = ref(null)
     const placeholderMaxWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
@@ -148,26 +149,26 @@ export default defineComponent({
     }
 
     watchEffect(() => {
-      const { hint, value, isFocus } = props
+      const { hint, value, isFocus, variant } = props
 
-      if (!prependIconEl.value || !wrapEl.value) {
+      if (!prependIconEl.value || !decoratorEl.value) {
         return
       }
 
       if (hint && (!isEmpty(value) || isFocus)) {
-        placeholderTransform.value = ''
-        placeholderMaxWidth.value = ''
+        const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
+        placeholderTransform.value = `translate(-${prependIconWidth}, ${variant === 'outlined' ? '-50%' : 0})`
+        placeholderMaxWidth.value = `${decoratorEl.value.getBoundingClientRect().width}px`
         return
       }
 
-      placeholderMaxWidth.value = `${wrapEl.value.getBoundingClientRect().width}px`
-      const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-      placeholderTransform.value = `translate(${prependIconWidth}, 0)`
+      placeholderMaxWidth.value = '100%'
+      placeholderTransform.value = ''
     })
 
     return {
       prependIconEl,
-      wrapEl,
+      decoratorEl,
       placeholderMaxWidth,
       placeholderTransform,
       color,
