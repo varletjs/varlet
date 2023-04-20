@@ -1,32 +1,22 @@
 <script setup>
 import VarIcon from '..'
+import VarInput from '../../input'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
-import { reactive, onMounted, ref, watch, computed } from 'vue'
+import { reactive, onMounted, ref, computed } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
-import VarInput from '../../input'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
 const searchText = ref('')
-
-const iconArr = computed(() => {
-  return searchText.value
-    ? Object.entries(iconNames).reduce((obj, [key, value]) => {
-        if (typeof value === 'string' && value.includes(searchText.value)) {
-          obj[key] = value
-        }
-        return obj
-      }, {})
-    : iconNames
+const searchIcons = computed(() => {
+  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
 })
-
-watch(iconArr, () => {}, { deep: true })
 
 const clear = () => {
   searchText.value = ''
@@ -100,11 +90,11 @@ watchDarkMode(dark, (theme) => {
   <app-type>{{ pack.iconList }}</app-type>
 
   <var-input
-    placeholder="search Icon"
+    class="icon-example__search"
     size="small"
     variant="outlined"
-    v-model="searchText"
-    class="icon-example__search"
+    :placeholder="pack.searchIcon"
+    v-model.trim="searchText"
   >
     <template #append-icon>
       <var-icon name="close-circle" v-if="searchText.length > 0" @click="clear" />
@@ -118,7 +108,7 @@ watchDarkMode(dark, (theme) => {
       :style="{ background }"
       :data-clipboard-text="name"
       :key="name"
-      v-for="name in iconArr"
+      v-for="name in searchIcons"
       v-ripple
     >
       <var-icon :name="name" />
@@ -162,7 +152,7 @@ watchDarkMode(dark, (theme) => {
   }
 
   &__search {
-    margin: 8px 8px 24px;
+    margin: 6px 8px 22px;
     .var-icon-close-circle {
       margin-right: 8px;
     }
