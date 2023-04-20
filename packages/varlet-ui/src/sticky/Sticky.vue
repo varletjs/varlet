@@ -39,6 +39,8 @@ const { n, classes } = createNamespace('sticky')
 export interface StickyFixedParams {
   offsetTop: number
   isFixed: boolean
+  remainOffsetTop: number
+  parentScrollTop: number
 }
 
 export default defineComponent({
@@ -81,6 +83,13 @@ export default defineComponent({
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
 
+      const fixedParams = {
+        offsetTop: currentOffsetTop,
+        isFixed: false,
+        remainOffsetTop: currentOffsetTop - offsetTop.value,
+        parentScrollTop: (scroller as HTMLElement).scrollTop ?? (scroller as Window).scrollY,
+      }
+
       if (currentOffsetTop <= offsetTop.value) {
         if (!cssMode) {
           fixedWidth.value = `${sticky.offsetWidth}px`
@@ -92,18 +101,14 @@ export default defineComponent({
           isFixed.value = true
         }
 
-        return {
-          offsetTop: offsetTop.value,
-          isFixed: true,
-        }
+        fixedParams.offsetTop = offsetTop.value
+        fixedParams.remainOffsetTop = 0
+        fixedParams.isFixed = true
+      } else {
+        isFixed.value = false
       }
 
-      isFixed.value = false
-
-      return {
-        offsetTop: currentOffsetTop,
-        isFixed: false,
-      }
+      return fixedParams
     }
 
     const handleScroll = () => {
@@ -115,7 +120,13 @@ export default defineComponent({
       const fixedParams = computeFixedParams()
 
       if (fixedParams) {
-        call(props.onScroll, fixedParams.offsetTop, fixedParams.isFixed)
+        call(
+          props.onScroll,
+          fixedParams.offsetTop,
+          fixedParams.isFixed,
+          fixedParams.remainOffsetTop,
+          fixedParams.parentScrollTop
+        )
       }
     }
 

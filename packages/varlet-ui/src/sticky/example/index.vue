@@ -30,6 +30,7 @@ watchLang(use)
 
   .scroller {
     height: 200px;
+    padding-top: 100px;
     overflow: auto;
     background: var(--site-config-color-app-bar);
     border-radius: 4px;

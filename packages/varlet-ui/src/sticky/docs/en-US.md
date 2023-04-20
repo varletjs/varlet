@@ -44,6 +44,7 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 
 .sticky-example-scroller {
   height: 200px;
+  padding-top: 100px;
   overflow: auto;
   background: #2979ff;
 }
@@ -78,7 +79,7 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` |
+| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` <br> `remainOffsetTop: number` <br> `parentScrollTop: number` |
 
 ### Slots
 

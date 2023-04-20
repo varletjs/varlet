@@ -17,5 +17,8 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onScroll: defineListenerProp<(offsetTop: number, isFixed: boolean) => void>(),
+  onScroll:
+    defineListenerProp<
+      (offsetTop: number, isFixed: boolean, remainOffsetTop: number, parentScrollTop: number) => void
+    >(),
 }
