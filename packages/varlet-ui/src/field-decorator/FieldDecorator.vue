@@ -21,43 +21,43 @@
         <slot name="prepend-icon" />
       </div>
 
-      <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
+      <div ref="wrapEl" :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
         <slot />
-
-        <label
-          v-if="hint || alwaysCustomPlaceholder"
-          :class="
-            classes(
-              n('placeholder'),
-              n('$--ellipsis'),
-              [textarea, n('placeholder-textarea')],
-              [isFocus, n('--focus')],
-              [formDisabled || disabled, n('--disabled')],
-              [errorMessage, n('--error')],
-              [!hint, n('--placeholder-non-hint')],
-              computePlaceholderState()
-            )
-          "
-          :style="{
-            color,
-            transform: placeholderTransform,
-          }"
-          :for="id"
-        >
-          {{ placeholder }}
-        </label>
       </div>
 
+      <label
+        v-if="wrapEl && (hint || alwaysCustomPlaceholder)"
+        :class="
+          classes(
+            n('placeholder'),
+            n('$--ellipsis'),
+            [textarea, n('placeholder-textarea')],
+            [isFocus, n('--focus')],
+            [formDisabled || disabled, n('--disabled')],
+            [errorMessage, n('--error')],
+            [!hint, n('--placeholder-non-hint')],
+            computePlaceholderState()
+          )
+        "
+        :style="{
+          maxWidth: placeholderMaxWidth,
+          transform: placeholderTransform,
+          color,
+        }"
+        :for="id"
+      >
+        {{ placeholder }}
+      </label>
+
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="append-icon">
-          <var-icon
-            :class="n('clear-icon')"
-            var-field-decorator-cover
-            name="close-circle"
-            v-if="clearable && !isEmpty(value)"
-            @click="handleClear"
-          />
-        </slot>
+        <var-icon
+          :class="n('clear-icon')"
+          var-field-decorator-cover
+          name="close-circle"
+          v-if="clearable && !isEmpty(value)"
+          @click="handleClear"
+        />
+        <slot name="append-icon" />
       </div>
     </div>
 
@@ -120,6 +120,8 @@ export default defineComponent({
   props,
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
+    const wrapEl: Ref<HTMLElement | null> = ref(null)
+    const placeholderMaxWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -146,23 +148,27 @@ export default defineComponent({
     }
 
     watchEffect(() => {
-      const { hint, value, isFocus, variant } = props
+      const { hint, value, isFocus } = props
 
-      if (!prependIconEl.value) {
+      if (!prependIconEl.value || !wrapEl.value) {
         return
       }
 
       if (hint && (!isEmpty(value) || isFocus)) {
-        const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${variant === 'outlined' ? '-50%' : 0})`
+        placeholderTransform.value = ''
+        placeholderMaxWidth.value = ''
         return
       }
 
-      placeholderTransform.value = ''
+      placeholderMaxWidth.value = `${wrapEl.value.getBoundingClientRect().width}px`
+      const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
+      placeholderTransform.value = `translate(${prependIconWidth}, 0)`
     })
 
     return {
       prependIconEl,
+      wrapEl,
+      placeholderMaxWidth,
       placeholderTransform,
       color,
       computePlaceholderState,

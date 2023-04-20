@@ -18,10 +18,6 @@ const searchIcons = computed(() => {
   return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
 })
 
-const clear = () => {
-  searchText.value = ''
-}
-
 function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
 }
@@ -95,9 +91,9 @@ watchDarkMode(dark, (theme) => {
     variant="outlined"
     :placeholder="pack.searchIcon"
     v-model.trim="searchText"
+    clearable
   >
     <template #append-icon>
-      <var-icon name="close-circle" v-if="searchText.length > 0" @click="clear" />
       <var-icon name="magnify" />
     </template>
   </var-input>
@@ -153,9 +149,6 @@ watchDarkMode(dark, (theme) => {
 
   &__search {
     margin: 6px 8px 22px;
-    .var-icon-close-circle {
-      margin-right: 8px;
-    }
   }
 
   &__icon-name {

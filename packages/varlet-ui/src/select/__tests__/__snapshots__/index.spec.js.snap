@@ -11,8 +11,8 @@ exports[`test select focus & blur methods 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0);"></label>
-        </div>
+          </div>
+        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for=""></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -41,8 +41,8 @@ exports[`test select focus & blur methods 2`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" for="" style=""></label>
-        </div>
+          </div>
+        </div><label class="var-field-decorator__placeholder var--ellipsis" for="" style="max-width: 0px; transform: translate(0, 0);"></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -69,8 +69,9 @@ exports[`test select hint to be false 1`] = `
         <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-non-hint var-field-decorator--placeholder-hidden" for=""></label>
+          </div>
         </div>
+        <!--v-if-->
         <div class="var-field-decorator__icon var-field-decorator--non-hint">
           <!--v-if-->
         </div>
@@ -99,8 +100,9 @@ exports[`test select size 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" for=""></label>
+          </div>
         </div>
+        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -129,8 +131,8 @@ exports[`test select validation 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" for=""></label>
-        </div>
+          </div>
+        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" style="max-width: 0px; transform: translate(0, 0);" for=""></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -170,8 +172,9 @@ exports[`test select variant 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" for=""></label>
+          </div>
         </div>
+        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -200,19 +203,16 @@ exports[`test select variant 2`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" for=""></label>
+          </div>
         </div>
+        <!--v-if-->
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
       </div>
-      <div class="var-field-decorator__line">
-        <div class="var-field-decorator__line-start"></div>
-        <div class="var-field-decorator__line-notch">
-          <div class="var-field-decorator__line-placeholder var--ellipsis"></div>
-        </div>
-        <div class="var-field-decorator__line-end"></div>
-      </div>
+      <fieldset class="var-field-decorator__line var--box">
+        <legend class="var-field-decorator__line-legend"><span class="var-field-decorator__line-legend-placeholder"></span></legend>
+      </fieldset>
     </div>
     <!--teleport start-->
     <!--teleport end-->
