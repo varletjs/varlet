@@ -5,13 +5,32 @@ import Snackbar from '../../snackbar'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
-import { reactive, onMounted, ref } from 'vue'
+import { reactive, onMounted, ref, watch, computed } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
+import VarInput from '../../input'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
+const searchText = ref('')
+
+const iconArr = computed(() => {
+  return searchText.value
+    ? Object.entries(iconNames).reduce((obj, [key, value]) => {
+        if (typeof value === 'string' && value.includes(searchText.value)) {
+          obj[key] = value
+        }
+        return obj
+      }, {})
+    : iconNames
+})
+
+watch(iconArr, () => {}, { deep: true })
+
+const clear = () => {
+  searchText.value = ''
+}
 
 function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
@@ -79,13 +98,27 @@ watchDarkMode(dark, (theme) => {
   />
 
   <app-type>{{ pack.iconList }}</app-type>
+
+  <var-input
+    placeholder="search Icon"
+    size="small"
+    variant="outlined"
+    v-model="searchText"
+    class="icon-example__search"
+  >
+    <template #append-icon>
+      <var-icon name="close-circle" v-if="searchText.length > 0" @click="clear" />
+      <var-icon name="magnify" />
+    </template>
+  </var-input>
+
   <div class="icon-example__icons">
     <div
       class="icon-example__icon var-elevation--2"
       :style="{ background }"
       :data-clipboard-text="name"
       :key="name"
-      v-for="name in iconNames"
+      v-for="name in iconArr"
       v-ripple
     >
       <var-icon :name="name" />
@@ -126,6 +159,13 @@ watchDarkMode(dark, (theme) => {
     user-select: none;
     border-bottom: 2px solid var(--color-primary);
     transition: background-color 0.25s;
+  }
+
+  &__search {
+    margin: 8px 8px 24px;
+    .var-icon-close-circle {
+      margin-right: 8px;
+    }
   }
 
   &__icon-name {
