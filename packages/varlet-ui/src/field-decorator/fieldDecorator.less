@@ -203,91 +203,66 @@
 
     .var-field-decorator__line {
       width: 100%;
-      height: 100%;
+      height: calc(100% + (var(--field-decorator-placeholder-size) * 0.75 / 2));
       position: absolute;
-      top: 0;
+      top: calc(var(--field-decorator-placeholder-size) * 0.75 / 2 * -1);
       left: 0;
-      display: flex;
-      align-items: center;
       pointer-events: none;
-
-      &-start {
-        flex: 0 0
-          calc(
-            var(--field-decorator-outlined-normal-padding-left) -
-              var(--field-decorator-outlined-normal-placeholder-space)
-          );
-        height: 100%;
-        border-radius: 4px 0 0 4px;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        border-inline-start-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
-      }
-
-      &-notch {
-        max-width: calc(
-          100% -
-            (
-              var(--field-decorator-outlined-normal-padding-left) -
-                var(--field-decorator-outlined-normal-placeholder-space)
-            ) -
-            (
-              var(--field-decorator-outlined-normal-padding-right) -
-                var(--field-decorator-outlined-normal-placeholder-space)
-            )
+      border-radius: 4px;
+      border: var(--field-decorator-line-size) solid var(--field-decorator-blur-color);
+      overflow: hidden;
+      padding: 0
+        calc(
+          var(--field-decorator-outlined-normal-padding-right) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-size)
+        )
+        0
+        calc(
+          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
+            var(--field-decorator-line-size)
         );
-        height: 100%;
-        font: inherit;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
-      }
+      margin: 0;
 
-      &-notch--hint {
-        border-top-width: 0 !important;
-      }
-
-      &-placeholder {
-        max-width: 100%;
+      &-legend {
+        max-width: 0;
+        height: calc(var(--field-decorator-placeholder-size) * 0.75);
         visibility: hidden;
-        font-size: 0.75em;
-        margin: 0 var(--field-decorator-outlined-normal-placeholder-space);
+        padding: 0;
+        transition: max-width 0.1s var(--cubic-bezier);
+        overflow: hidden;
+        display: flex;
       }
 
-      &-end {
-        flex: 1;
-        height: 100%;
-        border-radius: 0 4px 4px 0;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        border-inline-end-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
+      &-legend--hint {
+        max-width: 100%;
+      }
+
+      &-legend-placeholder {
+        font-size: calc(var(--field-decorator-placeholder-size) * 0.75);
+        line-height: 1em;
+        opacity: 0;
+        visibility: visible;
+        padding: 0 var(--field-decorator-outlined-normal-placeholder-space);
       }
     }
 
     .var-field-decorator--line-focus {
-      .var-field-decorator__line-start {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-        border-inline-start-width: var(--field-decorator-line-focus-size);
-      }
+      border-width: var(--field-decorator-line-focus-size);
+      border-color: var(--field-decorator-focus-color);
+      padding: 0
+        calc(
+          var(--field-decorator-outlined-normal-padding-right) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-focus-size)
+        )
+        0
+        calc(
+          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
+            var(--field-decorator-line-focus-size)
+        );
 
-      .var-field-decorator__line-notch {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-      }
-
-      .var-field-decorator__line-end {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-        border-inline-end-width: var(--field-decorator-line-focus-size);
+      .var-field-decorator__line-legend {
+        max-width: 100%;
+        transition: max-width 0.1s var(--cubic-bezier) 0.1s;
       }
     }
 
@@ -352,31 +327,33 @@
       }
 
       .var-field-decorator__line {
-        &-start {
-          flex: 0 0
-            calc(
-              var(--field-decorator-outlined-small-padding-left) -
-                var(--field-decorator-outlined-small-placeholder-space)
-            );
-        }
-
-        &-notch {
-          max-width: calc(
-            100% -
-              (
-                var(--field-decorator-outlined-small-padding-left) -
-                  var(--field-decorator-outlined-small-placeholder-space)
-              ) -
-              (
-                var(--field-decorator-outlined-small-padding-right) -
-                  var(--field-decorator-outlined-small-placeholder-space)
-              )
+        padding: 0
+          calc(
+            var(--field-decorator-outlined-small-padding-right) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-size)
+          )
+          0
+          calc(
+            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
+              var(--field-decorator-line-size)
           );
-        }
 
-        &-placeholder {
-          margin: 0 var(--field-decorator-outlined-small-placeholder-space);
+        .var-field-decorator__line-legend-placeholder {
+          padding: 0 var(--field-decorator-outlined-small-placeholder-space);
         }
+      }
+
+      .var-field-decorator--line-focus {
+        padding: 0
+          calc(
+            var(--field-decorator-outlined-small-padding-right) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-focus-size)
+          )
+          0
+          calc(
+            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
+              var(--field-decorator-line-focus-size)
+          );
       }
     }
   }

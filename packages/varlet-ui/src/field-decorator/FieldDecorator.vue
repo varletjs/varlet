@@ -62,39 +62,25 @@
     </div>
 
     <template v-if="line">
-      <div
-        v-if="variant === 'outlined'"
-        :class="classes(n('line'), [isFocus, n('--line-focus')], [formDisabled || disabled, n('--line-disabled')])"
-      >
-        <template v-if="!(formDisabled || disabled)">
-          <div
-            :class="classes(n('line-start'), [errorMessage, n('--line-error')])"
-            :style="{
-              borderColor: color,
-            }"
-          />
-          <div
-            :class="
-              classes(
-                n('line-notch'),
-                [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
-                [errorMessage, n('--line-error')]
-              )
-            "
-            :style="{
-              borderColor: color,
-            }"
-          >
-            <div :class="classes(n('line-placeholder'), n('$--ellipsis'))">{{ placeholder }}</div>
-          </div>
-          <div
-            :class="classes(n('line-end'), [errorMessage, n('--line-error')])"
-            :style="{
-              borderColor: color,
-            }"
-          />
-        </template>
-      </div>
+      <template v-if="variant === 'outlined'">
+        <fieldset
+          :class="
+            classes(
+              n('line'),
+              n('$--box'),
+              [isFocus, n('--line-focus')],
+              [errorMessage, n('--line-error')],
+              [formDisabled || disabled, n('--line-disabled')]
+            )
+          "
+        >
+          <legend :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])">
+            <span :class="classes(n('line-legend-placeholder'))">
+              {{ placeholder }}
+            </span>
+          </legend>
+        </fieldset>
+      </template>
 
       <div
         :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
