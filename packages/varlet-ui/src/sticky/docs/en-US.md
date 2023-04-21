@@ -79,7 +79,7 @@ If necessary, you can switch to the `css sticky` layout mode to improve performa
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` <br> `remainOffsetTop: number` <br> `parentScrollTop: number` |
+| `scroll` | Triggered when the scroll container rolls | `offsetTop: number` <br> `isFixed: boolean` <br> `scrollData: { scrollTop: number, scrollRatio: number }` |
 
 ### Slots
 

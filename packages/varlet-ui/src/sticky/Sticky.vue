@@ -29,18 +29,22 @@
 <script lang="ts">
 import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
+import { doubleRaf, getParentScroller, getScrollTop, raf, toPxNum } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('sticky')
 
+export interface ScrollData {
+  scrollTop: number
+  scrollRatio: number
+}
+
 export interface StickyFixedParams {
   offsetTop: number
   isFixed: boolean
-  remainOffsetTop: number
-  parentScrollTop: number
+  scrollData: ScrollData
 }
 
 export default defineComponent({
@@ -78,16 +82,24 @@ export default defineComponent({
         scrollerTop = top
       }
 
+      const scrollTop = getScrollTop(scroller)
+
       const wrapper = wrapperEl.value as HTMLElement
       const sticky = stickyEl.value as HTMLElement
       const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
       const currentOffsetTop = stickyTop - scrollerTop
 
+      const max = scrollTop + currentOffsetTop - offsetTop.value
+      const ratio = max === 0 ? 1 : scrollTop / max
+      const boundaryRatio = ratio > 1 ? 1 : ratio
+
       const fixedParams = {
         offsetTop: currentOffsetTop,
         isFixed: false,
-        remainOffsetTop: currentOffsetTop - offsetTop.value,
-        parentScrollTop: (scroller as HTMLElement).scrollTop ?? (scroller as Window).scrollY,
+        scrollData: {
+          scrollTop,
+          scrollRatio: boundaryRatio,
+        },
       }
 
       if (currentOffsetTop <= offsetTop.value) {
@@ -102,7 +114,6 @@ export default defineComponent({
         }
 
         fixedParams.offsetTop = offsetTop.value
-        fixedParams.remainOffsetTop = 0
         fixedParams.isFixed = true
       } else {
         isFixed.value = false
@@ -120,13 +131,7 @@ export default defineComponent({
       const fixedParams = computeFixedParams()
 
       if (fixedParams) {
-        call(
-          props.onScroll,
-          fixedParams.offsetTop,
-          fixedParams.isFixed,
-          fixedParams.remainOffsetTop,
-          fixedParams.parentScrollTop
-        )
+        call(props.onScroll, fixedParams.offsetTop, fixedParams.isFixed, fixedParams.scrollData)
       }
     }
 

@@ -1,4 +1,7 @@
 import { defineListenerProp } from '../utils/components'
+import { ScrollData } from './Sticky.vue'
+
+export type HandleScroll = (offsetTop: number, isFixed: boolean, scrollData: ScrollData) => void
 
 export const props = {
   offsetTop: {
@@ -17,8 +20,5 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onScroll:
-    defineListenerProp<
-      (offsetTop: number, isFixed: boolean, remainOffsetTop: number, parentScrollTop: number) => void
-    >(),
+  onScroll: defineListenerProp<HandleScroll>(),
 }

@@ -78,7 +78,7 @@
 
 | 事件名 | 说明 | 参数                                                          |
 | --- | --- |-------------------------------------------------------------|
-| `scroll` | 当滚动容器滚动时触发 | `offsetTop: number` 距离顶部的 px 值 <br> `isFixed: boolean` 是否吸顶 <br> `remainOffsetTop: number` 距离被吸附的剩余 px 值 <br> `parentScrollTop: number` 当前滚动元素的scrollTop值(滚动元素为window时为scrollY) |
+| `scroll` | 当滚动容器滚动时触发 | `offsetTop: number` 距离顶部的 px 值 <br> `isFixed: boolean` 是否吸顶 <br> `scrollData: { scrollTop: number, scrollRatio: number }` 滚动条元素相关属性 |
 
 ### 插槽
 
