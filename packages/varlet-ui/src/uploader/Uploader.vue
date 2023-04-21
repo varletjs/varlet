@@ -84,7 +84,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, isArray } from '@varlet/shared'
+import { isNumber, toNumber, isString, isArray, normalizeToArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -216,11 +216,10 @@ export default defineComponent({
             })
           }
 
-          let results = call(onBeforeRead, reactive(varFile))
-          results = isArray(results) ? results : [results]
+          const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
           Promise.all(results).then((values) => {
             resolve({
-              valid: !values.some((value) => !value),
+              valid: values.every(Boolean),
               varFile,
             })
           })
@@ -275,9 +274,7 @@ export default defineComponent({
       }
 
       if (onBeforeRemove) {
-        let results = call(onBeforeRemove, reactive(removedVarFile))
-        results = isArray(results) ? results : [results]
-
+        const results = normalizeToArray(call(onBeforeRemove, reactive(removedVarFile)))
         if ((await Promise.all(results)).some((result) => !result)) {
           return
         }
