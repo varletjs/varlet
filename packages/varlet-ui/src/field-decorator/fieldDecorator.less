@@ -66,9 +66,9 @@
     color: var(--field-decorator-blur-color);
     pointer-events: none;
     cursor: inherit;
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.3s, font-size 0.3s, color 0.25s;
+    transition: transform 0.3s, color 0.25s;
   }
 
   &__clear-icon[var-field-decorator-cover] {
@@ -87,7 +87,6 @@
       var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-normal-padding-right) -
         var(--field-decorator-outlined-normal-padding-left)
     );
-    font-size: calc(var(--field-decorator-placeholder-size) * 0.75);
   }
 
   &--placeholder-hidden {

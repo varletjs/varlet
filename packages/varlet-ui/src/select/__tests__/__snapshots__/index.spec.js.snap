@@ -11,7 +11,7 @@ exports[`test select focus & blur methods 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for=""></label>
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0) scale(0.75);" for=""></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->

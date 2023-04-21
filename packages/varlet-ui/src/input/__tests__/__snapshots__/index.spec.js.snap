@@ -27,7 +27,7 @@ exports[`test input events test input focus & blur 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-16"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0) scale(0.75);" for="var-input-16"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -72,7 +72,7 @@ exports[`test input events test input focus & blur 3`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-21" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-21"></label>
+      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0) scale(0.75);" for="var-input-21"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -197,7 +197,7 @@ exports[`test input validation 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-66"></label>
+        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0) scale(0.75);" for="var-input-66"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -252,7 +252,7 @@ exports[`test input validation 3`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0);" for="var-input-66"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" style="--field-decorator-placeholder-max-width: 0px; transform: translate(-0, 0) scale(0.75);" for="var-input-66"></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->

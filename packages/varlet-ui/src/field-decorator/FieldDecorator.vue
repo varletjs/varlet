@@ -156,7 +156,9 @@ export default defineComponent({
 
       if (hint && (!isEmpty(value) || isFocus)) {
         const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${variant === 'outlined' ? '-50%' : 0})`
+        placeholderTransform.value = `translate(-${prependIconWidth}, ${
+          variant === 'outlined' ? '-50%' : 0
+        }) scale(0.75)`
         placeholderMaxWidth.value = `${decoratorEl.value.getBoundingClientRect().width}px`
         return
       }
