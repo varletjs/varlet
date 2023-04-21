@@ -4,7 +4,15 @@ import { kebabCase } from '@varlet/shared'
 import type { Plugin } from 'vite'
 
 function htmlWrapper(html: string) {
-  const hGroup = html.replace(/<h3/g, ':::<h3').replace(/<h2/g, ':::<h2').split(':::')
+  const matches = html.matchAll(/<h3>(.*?)<\/h3>/g)
+  const hGroup = html
+    .replace(/<h3>/g, () => {
+      const content = matches.next().value[1]
+
+      return `:::<h3 id="${content}"><router-link to="#${content}">#</router-link>`
+    })
+    .replace(/<h2/g, ':::<h2')
+    .split(':::')
 
   const cardGroup = hGroup
     .map((fragment) => (fragment.includes('<h3') ? `<div class="card">${fragment}</div>` : fragment))
