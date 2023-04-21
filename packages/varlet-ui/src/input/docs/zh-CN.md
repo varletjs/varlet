@@ -184,9 +184,9 @@ const value9 = ref('')
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
 | `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
 | `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
-| `--field-decorator-standard-small-padding-top` | `16px` |
-| `--field-decorator-standard-small-padding-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-standard-small-padding-top` | `18px` |
+| `--field-decorator-standard-small-padding-bottom` | `2px` |
+| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
 | `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |

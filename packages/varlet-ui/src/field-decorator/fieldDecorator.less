@@ -12,9 +12,9 @@
   --field-decorator-standard-normal-padding-bottom: 4px;
   --field-decorator-standard-normal-icon-padding: 20px 0 4px;
   --field-decorator-standard-normal-placeholder-translate-y: var(--field-decorator-standard-normal-padding-top);
-  --field-decorator-standard-small-padding-top: 16px;
-  --field-decorator-standard-small-padding-bottom: 4px;
-  --field-decorator-standard-small-icon-padding: 16px 0 4px;
+  --field-decorator-standard-small-padding-top: 18px;
+  --field-decorator-standard-small-padding-bottom: 2px;
+  --field-decorator-standard-small-icon-padding: 18px 0 2px;
   --field-decorator-standard-small-placeholder-translate-y: var(--field-decorator-standard-small-padding-top);
   --field-decorator-outlined-normal-padding-top: 16px;
   --field-decorator-outlined-normal-padding-bottom: 16px;
@@ -57,7 +57,7 @@
   }
 
   &__placeholder {
-    max-width: var(--field-decorator-placeholder-max-width);
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -68,13 +68,13 @@
     cursor: inherit;
     transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier) 0.02s, color 0.25s;
+    transition: transform 0.28s var(--cubic-bezier) 0.02s, color 0.25s, width 0.28s;
   }
 
   &__clear-icon[var-field-decorator-cover] {
     display: flex;
-    font-size: 24px;
-    margin: 0 4px;
+    font-size: 20px;
+    margin-left: 6px;
     cursor: pointer;
   }
 
@@ -83,10 +83,7 @@
   }
 
   &--placeholder-hint {
-    max-width: calc(
-      var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-normal-padding-right) -
-        var(--field-decorator-outlined-normal-padding-left)
-    );
+    width: 133%;
   }
 
   &--placeholder-hidden {

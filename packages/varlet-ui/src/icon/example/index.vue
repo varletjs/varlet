@@ -94,7 +94,7 @@ watchDarkMode(dark, (theme) => {
     clearable
   >
     <template #append-icon>
-      <var-icon name="magnify" />
+      <var-icon class="search-icon" name="magnify" />
     </template>
   </var-input>
 
@@ -160,6 +160,12 @@ watchDarkMode(dark, (theme) => {
     white-space: nowrap;
     margin-top: 8px;
   }
+}
+
+.search-icon {
+  margin-left: 6px;
+  font-size: 21px;
+  margin-top: 1px;
 }
 
 .fade {

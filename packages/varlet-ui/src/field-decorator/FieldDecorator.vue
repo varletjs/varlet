@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="decoratorEl"
     :class="classes(n(), n('$--box'), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
     @click="handleClick"
   >
@@ -26,7 +25,7 @@
         <slot />
 
         <label
-          v-if="decoratorEl && (hint || alwaysCustomPlaceholder)"
+          v-if="hint || alwaysCustomPlaceholder"
           :class="
             classes(
               n('placeholder'),
@@ -39,7 +38,6 @@
             )
           "
           :style="{
-            '--field-decorator-placeholder-max-width': placeholderMaxWidth,
             transform: placeholderTransform,
             color,
           }"
@@ -75,7 +73,7 @@
           "
         >
           <legend :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])">
-            <span :class="classes(n('line-legend-placeholder'))">
+            <span :class="n('line-legend-placeholder')">
               {{ placeholder }}
             </span>
           </legend>
@@ -121,7 +119,6 @@ export default defineComponent({
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
     const decoratorEl: Ref<HTMLElement | null> = ref(null)
-    const placeholderMaxWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -150,27 +147,23 @@ export default defineComponent({
     watchEffect(() => {
       const { hint, value, isFocus, variant } = props
 
-      if (!prependIconEl.value || !decoratorEl.value) {
+      if (!prependIconEl.value) {
         return
       }
 
       if (hint && (!isEmpty(value) || isFocus)) {
         const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${
-          variant === 'outlined' ? '-50%' : 0
-        }) scale(0.75)`
-        placeholderMaxWidth.value = `${decoratorEl.value.getBoundingClientRect().width}px`
+        const translateY = variant === 'outlined' ? '-50%' : 0
+        placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
         return
       }
 
-      placeholderMaxWidth.value = '100%'
       placeholderTransform.value = ''
     })
 
     return {
       prependIconEl,
       decoratorEl,
-      placeholderMaxWidth,
       placeholderTransform,
       color,
       computePlaceholderState,
