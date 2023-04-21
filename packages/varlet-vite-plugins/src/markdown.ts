@@ -3,8 +3,11 @@ import hljs from 'highlight.js'
 import { kebabCase } from '@varlet/shared'
 import type { Plugin } from 'vite'
 
-function htmlWrapper(html: string) {
-  const hGroup = html.replace(/<h3/g, ':::<h3').replace(/<h2/g, ':::<h2').split(':::')
+function htmlWrapper(html: string, prefix: string) {
+  const hGroup = html
+    .replace(/<h3/g, (str, index) => `:::<h3 id="${prefix}_${index}"`)
+    .replace(/<h2/g, ':::<h2')
+    .split(':::')
 
   const cardGroup = hGroup
     .map((fragment) => (fragment.includes('<h3') ? `<div class="card">${fragment}</div>` : fragment))
@@ -81,13 +84,13 @@ function highlight(str: string, lang: string, style?: string) {
   return ''
 }
 
-function markdownToVue(source: string, options: MarkdownOptions) {
+function markdownToVue(source: string, options: MarkdownOptions, prefix: string) {
   const { source: vueSource, imports, components } = extractComponents(source)
   const md = markdownIt({
     html: true,
     highlight: (str, lang) => highlight(str, lang, options.style),
   })
-  let templateString = htmlWrapper(md.render(vueSource))
+  let templateString = htmlWrapper(md.render(vueSource), prefix)
   templateString = templateString.replace(/process.env/g, '<span>process.env</span>')
   templateString = injectCodeExample(templateString)
 
@@ -106,6 +109,20 @@ export default {
   `
 }
 
+function getPrefix(path: string): string {
+  const isComponentDoc = path.includes('/varlet-ui/src/')
+  const componentRE = /\/src\/(.*)\/docs\/(.*)\.md$/
+  const basicRE = /\/docs\/(.*)\.md$/
+
+  if (isComponentDoc) {
+    const [, name, lang] = path.match(componentRE) ?? []
+
+    return `${name}_${lang}`
+  }
+
+  return (path.match(basicRE) ?? [])[1]?.replace('.', '_')
+}
+
 export interface MarkdownOptions {
   style?: string
 }
@@ -122,7 +139,7 @@ export function markdown(options: MarkdownOptions): Plugin {
       }
 
       try {
-        return markdownToVue(source, options)
+        return markdownToVue(source, options, getPrefix(id))
       } catch (e: any) {
         this.error(e)
         return ''
@@ -134,7 +151,7 @@ export function markdown(options: MarkdownOptions): Plugin {
 
       const readSource = ctx.read
       ctx.read = async function () {
-        return markdownToVue(await readSource(), options)
+        return markdownToVue(await readSource(), options, getPrefix(ctx.file))
       }
     },
   }
