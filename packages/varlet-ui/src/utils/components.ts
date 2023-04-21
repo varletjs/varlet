@@ -178,13 +178,9 @@ export function useValidation() {
   }
 }
 
-export function useRouteListener(cb: () => void) {
-  if (!inBrowser()) {
-    return
-  }
-
-  useEventListener(window, 'hashchange', cb)
-  useEventListener(window, 'popstate', cb)
+export function useRouteListener(listener: () => void) {
+  useEventListener(() => window, 'hashchange', listener)
+  useEventListener(() => window, 'popstate', listener)
 }
 
 export function useTeleport() {

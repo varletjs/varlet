@@ -30,7 +30,7 @@
 import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
-import { toNumber } from '@varlet/shared'
+import { inBrowser, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { useEventListener, useMounted } from '@varlet/use'
 
@@ -142,9 +142,8 @@ export default defineComponent({
     useMounted(addScrollListener)
     onUnmounted(removeScrollListener)
     onDeactivated(removeScrollListener)
-
-    useEventListener(window, 'scroll', handleScroll)
-    useEventListener(window, 'resize', resize)
+    useEventListener(() => window, 'scroll', handleScroll)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       n,

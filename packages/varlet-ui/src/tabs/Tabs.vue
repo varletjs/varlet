@@ -57,7 +57,7 @@ import { defineComponent, watch, ref, computed, Transition, type Ref, type Compu
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
 import { type TabProvider } from '../tab/provide'
-import { isNumber } from '@varlet/shared'
+import { inBrowser, isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
 import { createNamespace, call, formatElevation } from '../utils/components'
@@ -201,8 +201,8 @@ export default defineComponent({
 
     watch(() => props.active, resize)
     watch(() => props.scrollable, resize)
-    useEventListener(window, 'resize', resize)
     onActivated(resize)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       stickyComponent,
