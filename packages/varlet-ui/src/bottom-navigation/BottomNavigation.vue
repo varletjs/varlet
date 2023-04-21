@@ -25,7 +25,7 @@ import { defineComponent, ref, computed, onUpdated, watch, type Ref, type Comput
 import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
-import { isNumber, isArray, normalizeToArray } from '@varlet/shared'
+import { isNumber, normalizeToArray } from '@varlet/shared'
 import { useMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
