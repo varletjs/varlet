@@ -38,7 +38,7 @@ export function StyleProvider(styleVars: StyleVars | null = {}) {
 
 export function getPCLocationInfo(): PCLocationInfo {
   const [, language, path] = window.location.hash.split('/')
-  const [menuName, hash = ''] = path.split('#')
+  const [menuName, hash = ''] = path?.split('#') ?? []
 
   return {
     language,
