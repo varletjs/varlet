@@ -42,7 +42,7 @@ const router = createRouter({
       return {
         el: to.hash,
         behavior: 'smooth',
-        top: 60
+        top: 100
       };
     }
 

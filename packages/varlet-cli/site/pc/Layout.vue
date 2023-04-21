@@ -287,10 +287,14 @@ iframe {
 
     &-doc {
       h3 {
+        display: flex;
+        align-items: center;
+
         .router-link-active {
           font-size: 20px;
           margin-right: 8px;
           user-select: none;
+          text-decoration: none;
         }
       }
 
