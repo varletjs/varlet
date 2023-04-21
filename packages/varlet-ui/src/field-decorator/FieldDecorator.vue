@@ -118,7 +118,6 @@ export default defineComponent({
   props,
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
-    const decoratorEl: Ref<HTMLElement | null> = ref(null)
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -163,7 +162,6 @@ export default defineComponent({
 
     return {
       prependIconEl,
-      decoratorEl,
       placeholderTransform,
       color,
       computePlaceholderState,
