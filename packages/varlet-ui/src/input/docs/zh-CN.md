@@ -183,20 +183,24 @@ const value9 = ref('')
 | `--field-decorator-standard-normal-padding-top` | `20px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
 | `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
+| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
 | `--field-decorator-standard-small-padding-top` | `16px` |
 | `--field-decorator-standard-small-padding-bottom` | `4px` |
 | `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
 | `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
+| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
 | `--field-decorator-outlined-small-padding-top` | `8px` |
 | `--field-decorator-outlined-small-padding-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
 | `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
+| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
 | `--input-input-height` | `24px` |
 | `--input-textarea-height` | `auto` |

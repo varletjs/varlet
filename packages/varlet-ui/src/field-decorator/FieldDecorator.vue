@@ -31,7 +31,6 @@
             classes(
               n('placeholder'),
               n('$--ellipsis'),
-              [textarea, n('placeholder-textarea')],
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],

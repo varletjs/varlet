@@ -17,7 +17,6 @@
         formDisabled,
         disabled,
         clearable,
-        textarea,
         cursor,
         composing: isComposing,
         alwaysCustomPlaceholder: false,
