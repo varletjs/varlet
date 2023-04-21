@@ -46,7 +46,7 @@ import {
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
-import { inBrowser, isNumber, toNumber } from '@varlet/shared'
+import { isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { type SwipeItemProvider } from '../swipe-item/provide'
 import { useEventListener } from '@varlet/use'
