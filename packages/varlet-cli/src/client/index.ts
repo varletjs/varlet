@@ -7,6 +7,7 @@ import { get } from 'lodash-es'
 interface PCLocationInfo {
   language: string
   menuName: string
+  hash: string
 }
 
 export type Theme = 'lightTheme' | 'darkTheme'
@@ -36,12 +37,13 @@ export function StyleProvider(styleVars: StyleVars | null = {}) {
 }
 
 export function getPCLocationInfo(): PCLocationInfo {
-  const [, language, hash] = window.location.hash.split('/')
-  const menuName = hash.split('#')[0]
+  const [, language, path] = window.location.hash.split('/')
+  const [menuName, hash = ''] = path.split('#')
 
   return {
     language,
     menuName,
+    hash,
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="varlet-site-mobile varlet-site-mobile--375">
     <div class="varlet-site-mobile-content">
-      <iframe id="mobile" :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}`"></iframe>
+      <iframe id="mobile" :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}${hash ? `#${hash}` : ''}`"></iframe>
     </div>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
       type: String
     },
     replace: {
+      type: String
+    },
+    hash: {
       type: String
     }
   }
