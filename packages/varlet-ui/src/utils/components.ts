@@ -19,7 +19,7 @@ import {
   type Ref,
   type ComponentPublicInstance,
 } from 'vue'
-import { inBrowser, isArray } from '@varlet/shared'
+import { isArray } from '@varlet/shared'
 
 export interface MountInstance {
   instance: ComponentPublicInstance
