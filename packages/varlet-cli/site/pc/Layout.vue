@@ -282,6 +282,15 @@ iframe {
     }
 
     &-doc {
+      h3 {
+        .router-link-active {
+          font-size: 20px;
+          margin-right: 8px;
+          user-select: none;
+        }
+      }
+
+
       a {
         color: var(--site-config-color-link);
         -webkit-font-smoothing: antialiased;
