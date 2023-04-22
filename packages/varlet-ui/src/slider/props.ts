@@ -12,7 +12,7 @@ export enum Thumbs {
 
 export interface ThumbProps {
   startPosition: number
-  currentLeft: number
+  currentOffset: number
   percentValue: number
   active: boolean
 }
@@ -99,6 +99,11 @@ export const props = {
   readonly: {
     type: Boolean,
     default: false,
+  },
+
+  direction: {
+    type: String as PropType<'horizontal' | 'vertical'>,
+    default: 'horizontal',
   },
 
   rules: {

@@ -1,28 +1,26 @@
 <template>
-  <div :class="n()">
+  <div :class="n(direction)">
     <div
-      :class="classes(n('block'), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
+      :class="classes(n(`${direction}__block`), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
       ref="sliderEl"
       @click="click"
     >
-      <div :class="n('track')">
+      <div :class="n(`${direction}__track`)">
         <div
-          :class="n('track-background')"
+          :class="n(`${direction}__track-background`)"
           :style="{
             background: trackColor,
-            height: multiplySizeUnit(trackHeight),
+            height: vertical ? '100%' : multiplySizeUnit(trackHeight),
+            width: vertical ? multiplySizeUnit(trackHeight) : '100%',
           }"
         ></div>
-        <div :class="n('track-fill')" :style="getFillStyle"></div>
+        <div :class="n(`${direction}__track-fill`)" :style="getFillStyle"></div>
       </div>
       <div
         v-for="item in thumbList"
-        :class="n('thumb')"
+        :class="n(`${direction}__thumb`)"
         :key="item.enumValue"
-        :style="{
-          left: `${item.value}%`,
-          zIndex: thumbsProps[item.enumValue].active ? 1 : undefined,
-        }"
+        :style="syncThumbStyle(item)"
         @touchstart.stop="start($event, item.enumValue)"
         @touchmove.stop="move($event, item.enumValue)"
         @touchend="end(item.enumValue)"
@@ -30,14 +28,19 @@
       >
         <slot name="button" :current-value="item.text">
           <div
-            :class="n('thumb-block')"
+            :class="n(`${direction}__thumb-block`)"
             :style="{
               background: thumbColor,
             }"
-            v-hover:desktop="(value) => hover(value, item)"
+            v-hover:desktop="(value: boolean) => hover(value, item)"
           ></div>
           <div
-            :class="classes(n('thumb-ripple'), [thumbsProps[item.enumValue].active, n('thumb-ripple--active')])"
+            :class="
+              classes(n(`${direction}__thumb-ripple`), [
+                thumbsProps[item.enumValue].active,
+                n(`${direction}__thumb-ripple--active`),
+              ])
+            "
             :style="{
               background: thumbsProps[item.enumValue].active ? thumbColor : undefined,
             }"
@@ -45,7 +48,12 @@
             <var-hover-overlay :hovering="item.hovering" />
           </div>
           <div
-            :class="classes(n('thumb-label'), [showLabel(item.enumValue), n('thumb-label--active')])"
+            :class="
+              classes(n(`${direction}__thumb-label`), [
+                showLabel(item.enumValue),
+                n(`${direction}__thumb-label--active`),
+              ])
+            "
             :style="{
               background: labelColor,
               color: labelTextColor,
@@ -80,7 +88,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { getLeft, getClientTop, multiplySizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
@@ -107,7 +115,7 @@ export default defineComponent({
 
     const getThumbProps = (): ThumbProps => ({
       startPosition: 0,
-      currentLeft: 0,
+      currentOffset: 0,
       active: false,
       percentValue: 0,
     })
@@ -115,7 +123,7 @@ export default defineComponent({
     const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
 
     const sliderEl: Ref<HTMLDivElement | null> = ref(null)
-    const maxWidth = ref(0)
+    const maxDistance = ref(0)
     const isScroll: Ref<boolean> = ref(false)
 
     const thumbsProps: UnwrapRef<ThumbsProps> = reactive({
@@ -124,7 +132,7 @@ export default defineComponent({
     })
 
     const scope: ComputedRef<number> = computed(() => toNumber(props.max) - toNumber(props.min))
-    const unitWidth: ComputedRef<number> = computed(() => (maxWidth.value / scope.value) * toNumber(props.step))
+    const unitWidth: ComputedRef<number> = computed(() => (maxDistance.value / scope.value) * toNumber(props.step))
     const thumbList: ComputedRef<Array<ThumbsListProps>> = computed(() => {
       const { modelValue, range } = props
       let list: ThumbsListProps[] = []
@@ -164,23 +172,58 @@ export default defineComponent({
     const getFillStyle: ComputedRef<Record<string, string | undefined>> = computed(() => {
       const { activeColor, range, modelValue } = props
 
-      const left = range && isArray(modelValue) ? getValue(Math.min(modelValue[0], modelValue[1])) : 0
+      const gap = range && isArray(modelValue) ? getValue(Math.min(modelValue[0], modelValue[1])) : 0
 
-      const width =
+      const fillLength =
         range && isArray(modelValue)
-          ? getValue(Math.max(modelValue[0], modelValue[1])) - left
+          ? getValue(Math.max(modelValue[0], modelValue[1])) - gap
           : getValue(modelValue as number)
 
-      return {
-        width: `${width}%`,
-        left: `${left}%`,
-        background: activeColor,
-      }
+      return vertical.value
+        ? {
+            left: '0px',
+            height: `${fillLength}%`,
+            bottom: `${gap}%`,
+            background: activeColor,
+          }
+        : {
+            top: '0px',
+            width: `${fillLength}%`,
+            left: `${gap}%`,
+            background: activeColor,
+          }
     })
 
     const isDisabled: ComputedRef<boolean | undefined> = computed(() => props.disabled || form?.disabled.value)
 
     const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
+
+    const vertical: ComputedRef<boolean | undefined> = computed(() => props.direction === 'vertical')
+
+    const getOffset = (e: MouseEvent) => {
+      const { direction } = props
+      const currentTarget = e.currentTarget as HTMLElement
+
+      if (!currentTarget) return 0
+
+      if (direction === 'horizontal') {
+        return e.clientX - getLeft(currentTarget)
+      }
+      // 用元素实际的高度减去鼠标与元素顶部的距离差
+      return maxDistance.value - (e.clientY - getClientTop(currentTarget as HTMLElement))
+    }
+
+    const syncThumbStyle = (thumb: ThumbsListProps) => {
+      return vertical.value
+        ? {
+            bottom: `${thumb.value}%`,
+            zIndex: thumbsProps[thumb.enumValue].active ? 1 : undefined,
+          }
+        : {
+            left: `${thumb.value}%`,
+            zIndex: thumbsProps[thumb.enumValue].active ? 1 : undefined,
+          }
+    }
 
     const showLabel = (type: keyof ThumbsProps): boolean => {
       if (props.labelVisible === 'always') return true
@@ -247,22 +290,25 @@ export default defineComponent({
     }
 
     const start = (event: TouchEvent, type: keyof ThumbsProps) => {
-      if (!maxWidth.value) maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
+      if (!maxDistance.value) maxDistance.value = (sliderEl.value as HTMLDivElement).offsetWidth
       if (!isDisabled.value) {
         thumbsProps[type].active = true
       }
       if (isDisabled.value || isReadonly.value) return
       call(props.onStart)
       isScroll.value = true
-      thumbsProps[type].startPosition = event.touches[0].clientX
+      thumbsProps[type].startPosition = event.touches[0][vertical.value ? 'clientY' : 'clientX']
     }
 
     const move = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (isDisabled.value || isReadonly.value || !isScroll.value) return
-      let moveDistance = event.touches[0].clientX - thumbsProps[type].startPosition + thumbsProps[type].currentLeft
+      let moveDistance =
+        (vertical.value
+          ? thumbsProps[type].startPosition - event.touches[0].clientY
+          : event.touches[0].clientX - thumbsProps[type].startPosition) + thumbsProps[type].currentOffset
 
       if (moveDistance <= 0) moveDistance = 0
-      else if (moveDistance >= maxWidth.value) moveDistance = maxWidth.value
+      else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
 
       setPercent(moveDistance, type)
     }
@@ -275,7 +321,7 @@ export default defineComponent({
       if (isDisabled.value || isReadonly.value) return
       let rangeValue: Array<number> = []
 
-      thumbsProps[type].currentLeft = thumbsProps[type].percentValue * unitWidth.value
+      thumbsProps[type].currentOffset = thumbsProps[type].percentValue * unitWidth.value
 
       const curValue = thumbsProps[type].percentValue * toNumber(step) + toNumber(min)
 
@@ -290,7 +336,7 @@ export default defineComponent({
     const click = (event: MouseEvent) => {
       if (isDisabled.value || isReadonly.value) return
       if ((event.target as HTMLDivElement).closest(`.${n('thumb')}`)) return
-      const offset = event.clientX - getLeft(event.currentTarget as HTMLDivElement)
+      const offset = getOffset(event)
       const type = getType(offset)
       setPercent(offset, type)
       end(type)
@@ -338,12 +384,12 @@ export default defineComponent({
 
       if (props.range && isArray(modelValue)) {
         thumbsProps[Thumbs.First].percentValue = getPercent(modelValue[0])
-        thumbsProps[Thumbs.First].currentLeft = thumbsProps[Thumbs.First].percentValue * unitWidth.value
+        thumbsProps[Thumbs.First].currentOffset = thumbsProps[Thumbs.First].percentValue * unitWidth.value
 
         thumbsProps[Thumbs.Second].percentValue = getPercent(modelValue[1])
-        thumbsProps[Thumbs.Second].currentLeft = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
+        thumbsProps[Thumbs.Second].currentOffset = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       } else if (isNumber(modelValue)) {
-        thumbsProps[Thumbs.First].currentLeft = getPercent(modelValue) * unitWidth.value
+        thumbsProps[Thumbs.First].currentOffset = getPercent(modelValue) * unitWidth.value
       }
     }
 
@@ -366,12 +412,12 @@ export default defineComponent({
       setProps(modelValue as number | number[], toNumber(step))
     })
 
-    watch(maxWidth, () => setProps())
+    watch(maxDistance, () => setProps())
 
     useMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
-      maxWidth.value = (sliderEl.value as HTMLDivElement).offsetWidth
+      maxDistance.value = (sliderEl.value as HTMLDivElement)[vertical.value ? 'offsetHeight' : 'offsetWidth']
     })
 
     return {
@@ -381,6 +427,8 @@ export default defineComponent({
       sliderEl,
       getFillStyle,
       isDisabled,
+      vertical,
+      syncThumbStyle,
       errorMessage,
       thumbsProps,
       thumbList,
