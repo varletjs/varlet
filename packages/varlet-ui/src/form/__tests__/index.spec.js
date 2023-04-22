@@ -503,7 +503,7 @@ test('test form with slider', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const el = wrapper.find('.var-slider__thumb-label')
+  const el = wrapper.find('.var-slider__horizontal__thumb-label')
   await trigger(el, 'touchstart', 0, 0)
   await trigger(el, 'touchmove', 20, 0)
   await trigger(el, 'touchend', 40, 0)

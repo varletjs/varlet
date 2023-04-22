@@ -577,18 +577,18 @@ exports[`test form with select 4`] = `
 
 exports[`test form with slider 1`] = `
 "<div class="var-form">
-  <div class="var-slider">
-    <div class="var-slider__block var-slider--disabled">
-      <div class="var-slider__track">
-        <div class="var-slider__track-background"></div>
-        <div class="var-slider__track-fill" style="width: 5%; left: 0%;"></div>
+  <div class="var-slider__horizontal">
+    <div class="var-slider__horizontal__block var-slider--disabled">
+      <div class="var-slider__horizontal__track">
+        <div class="var-slider__horizontal__track-background" style="width: 100%;"></div>
+        <div class="var-slider__horizontal__track-fill" style="top: 0px; width: 5%; left: 0%;"></div>
       </div>
-      <div class="var-slider__thumb" style="left: 5%;">
-        <div class="var-slider__thumb-block"></div>
-        <div class="var-slider__thumb-ripple">
+      <div class="var-slider__horizontal__thumb" style="left: 5%;">
+        <div class="var-slider__horizontal__thumb-block"></div>
+        <div class="var-slider__horizontal__thumb-ripple">
           <div class="var-hover-overlay"></div>
         </div>
-        <div class="var-slider__thumb-label"><span>5</span></div>
+        <div class="var-slider__horizontal__thumb-label"><span>5</span></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true" class="var-slider__form" var-slider-cover="">
@@ -600,18 +600,18 @@ exports[`test form with slider 1`] = `
 
 exports[`test form with slider 2`] = `
 "<div class="var-form">
-  <div class="var-slider">
-    <div class="var-slider__block var-slider--error">
-      <div class="var-slider__track">
-        <div class="var-slider__track-background"></div>
-        <div class="var-slider__track-fill" style="width: 5%; left: 0%;"></div>
+  <div class="var-slider__horizontal">
+    <div class="var-slider__horizontal__block var-slider--error">
+      <div class="var-slider__horizontal__track">
+        <div class="var-slider__horizontal__track-background" style="width: 100%;"></div>
+        <div class="var-slider__horizontal__track-fill" style="top: 0px; width: 5%; left: 0%;"></div>
       </div>
-      <div class="var-slider__thumb" style="left: 5%;">
-        <div class="var-slider__thumb-block"></div>
-        <div class="var-slider__thumb-ripple">
+      <div class="var-slider__horizontal__thumb" style="left: 5%;">
+        <div class="var-slider__horizontal__thumb-block"></div>
+        <div class="var-slider__horizontal__thumb-ripple">
           <div class="var-hover-overlay"></div>
         </div>
-        <div class="var-slider__thumb-label"><span>5</span></div>
+        <div class="var-slider__horizontal__thumb-label"><span>5</span></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true" class="var-slider__form" var-slider-cover="">
@@ -634,18 +634,18 @@ exports[`test form with slider 2`] = `
 
 exports[`test form with slider 3`] = `
 "<div class="var-form">
-  <div class="var-slider">
-    <div class="var-slider__block">
-      <div class="var-slider__track">
-        <div class="var-slider__track-background"></div>
-        <div class="var-slider__track-fill" style="width: 0%; left: 0%;"></div>
+  <div class="var-slider__horizontal">
+    <div class="var-slider__horizontal__block">
+      <div class="var-slider__horizontal__track">
+        <div class="var-slider__horizontal__track-background" style="width: 100%;"></div>
+        <div class="var-slider__horizontal__track-fill" style="top: 0px; width: 0%; left: 0%;"></div>
       </div>
-      <div class="var-slider__thumb" style="left: 0%;">
-        <div class="var-slider__thumb-block"></div>
-        <div class="var-slider__thumb-ripple">
+      <div class="var-slider__horizontal__thumb" style="left: 0%;">
+        <div class="var-slider__horizontal__thumb-block"></div>
+        <div class="var-slider__horizontal__thumb-ripple">
           <div class="var-hover-overlay"></div>
         </div>
-        <div class="var-slider__thumb-label"><span>0</span></div>
+        <div class="var-slider__horizontal__thumb-label"><span>0</span></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true" class="var-slider__form" var-slider-cover="">
