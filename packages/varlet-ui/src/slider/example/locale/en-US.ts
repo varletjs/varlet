@@ -10,4 +10,5 @@ export default {
   showLabel: 'Show Label',
   customBtn: 'Custom Button',
   validateValue: 'Validate Value',
+  vertical: 'Vertical Direction',
 }

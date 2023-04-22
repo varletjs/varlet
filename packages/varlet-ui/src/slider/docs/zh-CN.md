@@ -207,6 +207,45 @@ const value = ref(20)
 </template>
 ```
 
+### 垂直方向
+
+通过设置 `direction` 属性值为 `vertical` 来让滑块垂直显示。同时对其他属性也是兼容的。
+
+```html
+<script>
+import { ref } from 'vue'
+const value1 = ref(50)
+const value2 = ref([7, 64])
+const value3= ref(20)
+</script>
+
+<template>
+  <var-slider 
+    v-model="values.value12" 
+    direction="vertical"
+  />
+  
+  <var-slider
+    v-model="values.value13"
+    track-height="1.5vw"
+    thumb-size="20px"
+    range
+    label-color="purple"
+    active-color="#e0732c"
+    track-color="#3a68b4"
+    thumb-color="#e25241"
+    label-text-color="#ededed"
+    direction="vertical"
+  />
+  
+  <var-slider v-model="values.value14" 
+    :rules="[(v) => v > 35 || 'error message']" 
+    direction="vertical"
+  />
+</template>
+
+```
+
 ## API
 
 ### 属性
@@ -228,14 +267,14 @@ const value = ref(20)
 | `thumb-color`      | 滑块的背景颜色                          | _string_ | `-`               |
 | `disabled`         | 是否禁用                             | _boolean_ | `false`           |
 | `readonly`         | 是否只读                             | _boolean_ | `false`           |
+| `direction` | 显示方向，可选值为 `vertical` | _string_ | `horizontal` |
 | `rules`            | 校验规则                             | _array_ | `-`               |
-
 
 ### 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------- | -------- |
-| `change` | 	值改变时触发| value: 当前进度|
+| `change` |  值改变时触发| value: 当前进度|
 | `start` | 开始拖动时触发 | `-` |
 | `end` | 结束拖动时触发 | value: 当前进度 |
 

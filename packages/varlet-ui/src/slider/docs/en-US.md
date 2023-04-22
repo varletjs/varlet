@@ -207,6 +207,45 @@ const value = ref(20)
 </template>
 ```
 
+### Vertical direction
+
+Set the `direction` attribute value to `vertical` to make the slider display vertically. At the same time, other attributes are also compatible.
+
+```html
+<script>
+import { ref } from 'vue'
+const value1 = ref(50)
+const value2 = ref([7, 64])
+const value3= ref(20)
+</script>
+
+<template>
+  <var-slider 
+    v-model="values.value12" 
+    direction="vertical"
+  />
+  
+  <var-slider
+    v-model="values.value13"
+    track-height="1.5vw"
+    thumb-size="20px"
+    range
+    label-color="purple"
+    active-color="#e0732c"
+    track-color="#3a68b4"
+    thumb-color="#e25241"
+    label-text-color="#ededed"
+    direction="vertical"
+  />
+  
+  <var-slider v-model="values.value14" 
+    :rules="[(v) => v > 35 || 'error message']" 
+    direction="vertical"
+  />
+</template>
+
+```
+
 ## API
 
 ### Props
@@ -226,16 +265,16 @@ const value = ref(20)
 | `track-height` | Height of track                                                  | _string \| number_ | `2` |
 | `thumb-size` | Size of thumb                                                    | _string \| number_ | `12` |
 | `thumb-color`   | Background color of thumb                           | _string_ | `-`               |
-| `disabled`| 	Whether to disable slider                                       | _boolean_  | `false` |
-| `readonly`| 	Whether to readonly slider                                      | _boolean_  | `false` |
+| `disabled`|  Whether to disable slider                                       | _boolean_  | `false` |
+| `readonly`|  Whether to readonly slider                                      | _boolean_  | `false` |
+| `direction` | Direction of slider, Can be set to `vertical` | _string_ | `horizontal` |
 | `rules`| Validation rules                                                 | _array_  | `-` |
-
 
 ### Events
 
 | Event | Description | arguments |
 | ----- | -------- | -------- |
-| `change` | 	Emitted after slider changed | value: current value |
+| `change` |  Emitted after slider changed | value: current value |
 | `start` | Emitted when start dragged | `-` |
 | `end` | Emitted when end dragged | value: current value |
 
