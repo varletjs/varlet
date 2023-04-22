@@ -31,7 +31,7 @@ export const props = {
   },
   onChange: defineListenerProp<(active: number | string) => void>(),
   'onUpdate:active': defineListenerProp<(active: string | number) => void>(),
-  onBeforeChange: defineListenerProp<(active: number | string) => boolean | Promise<any>>(),
+  onBeforeChange: defineListenerProp<(active: number | string) => any | Promise<any>>(),
   onFabClick: defineListenerProp<() => void>(),
   fabProps: {
     type: Object as PropType<Partial<ButtonProps>>,

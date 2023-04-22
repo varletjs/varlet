@@ -30,7 +30,6 @@
             classes(
               n('placeholder'),
               n('$--ellipsis'),
-              [textarea, n('placeholder-textarea')],
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],
@@ -39,8 +38,8 @@
             )
           "
           :style="{
-            color,
             transform: placeholderTransform,
+            color,
           }"
           :for="id"
         >
@@ -49,52 +48,37 @@
       </div>
 
       <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
-        <slot name="append-icon">
-          <var-icon
-            :class="n('clear-icon')"
-            var-field-decorator-cover
-            name="close-circle"
-            v-if="clearable && !isEmpty(value)"
-            @click="handleClear"
-          />
-        </slot>
+        <var-icon
+          :class="n('clear-icon')"
+          var-field-decorator-cover
+          name="close-circle"
+          v-if="clearable && !isEmpty(value)"
+          @click="handleClear"
+        />
+        <slot name="append-icon" />
       </div>
     </div>
 
     <template v-if="line">
-      <div
-        v-if="variant === 'outlined'"
-        :class="classes(n('line'), [isFocus, n('--line-focus')], [formDisabled || disabled, n('--line-disabled')])"
-      >
-        <template v-if="!(formDisabled || disabled)">
-          <div
-            :class="classes(n('line-start'), [errorMessage, n('--line-error')])"
-            :style="{
-              borderColor: color,
-            }"
-          />
-          <div
-            :class="
-              classes(
-                n('line-notch'),
-                [hint && (!isEmpty(value) || isFocus), n('line-notch--hint')],
-                [errorMessage, n('--line-error')]
-              )
-            "
-            :style="{
-              borderColor: color,
-            }"
-          >
-            <div :class="classes(n('line-placeholder'), n('$--ellipsis'))">{{ placeholder }}</div>
-          </div>
-          <div
-            :class="classes(n('line-end'), [errorMessage, n('--line-error')])"
-            :style="{
-              borderColor: color,
-            }"
-          />
-        </template>
-      </div>
+      <template v-if="variant === 'outlined'">
+        <fieldset
+          :class="
+            classes(
+              n('line'),
+              n('$--box'),
+              [isFocus, n('--line-focus')],
+              [errorMessage, n('--line-error')],
+              [formDisabled || disabled, n('--line-disabled')]
+            )
+          "
+        >
+          <legend :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])">
+            <span :class="n('line-legend-placeholder')">
+              {{ placeholder }}
+            </span>
+          </legend>
+        </fieldset>
+      </template>
 
       <div
         :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
@@ -168,7 +152,8 @@ export default defineComponent({
 
       if (hint && (!isEmpty(value) || isFocus)) {
         const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${variant === 'outlined' ? '-50%' : 0})`
+        const translateY = variant === 'outlined' ? '-50%' : 0
+        placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
         return
       }
 

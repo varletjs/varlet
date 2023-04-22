@@ -9,7 +9,7 @@ exports[`Size related props 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0);"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0) scale(0.75);"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
@@ -46,7 +46,7 @@ exports[`Size related props 2`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__wrap">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0);"></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-72" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-72" style="transform: translate(-0, 0) scale(0.75);"></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->

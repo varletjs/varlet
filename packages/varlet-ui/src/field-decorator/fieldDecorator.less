@@ -11,21 +11,25 @@
   --field-decorator-standard-normal-padding-top: 20px;
   --field-decorator-standard-normal-padding-bottom: 4px;
   --field-decorator-standard-normal-icon-padding: 20px 0 4px;
-  --field-decorator-standard-small-padding-top: 16px;
-  --field-decorator-standard-small-padding-bottom: 4px;
-  --field-decorator-standard-small-icon-padding: 16px 0 4px;
+  --field-decorator-standard-normal-placeholder-translate-y: var(--field-decorator-standard-normal-padding-top);
+  --field-decorator-standard-small-padding-top: 18px;
+  --field-decorator-standard-small-padding-bottom: 2px;
+  --field-decorator-standard-small-icon-padding: 18px 0 2px;
+  --field-decorator-standard-small-placeholder-translate-y: var(--field-decorator-standard-small-padding-top);
   --field-decorator-outlined-normal-padding-top: 16px;
   --field-decorator-outlined-normal-padding-bottom: 16px;
   --field-decorator-outlined-normal-padding-left: 16px;
   --field-decorator-outlined-normal-padding-right: 16px;
   --field-decorator-outlined-normal-placeholder-space: 4px;
   --field-decorator-outlined-normal-icon-padding: 16px 0 16px;
+  --field-decorator-outlined-normal-placeholder-translate-y: var(--field-decorator-outlined-normal-padding-top);
   --field-decorator-outlined-small-padding-top: 8px;
   --field-decorator-outlined-small-padding-bottom: 8px;
   --field-decorator-outlined-small-padding-left: 12px;
   --field-decorator-outlined-small-padding-right: 12px;
   --field-decorator-outlined-small-placeholder-space: 2px;
   --field-decorator-outlined-small-icon-padding: 8px 0 8px;
+  --field-decorator-outlined-small-placeholder-translate-y: var(--field-decorator-outlined-small-padding-top);
 }
 
 .var-field-decorator {
@@ -53,21 +57,24 @@
   }
 
   &__placeholder {
-    max-width: 100%;
+    width: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
     font-size: var(--field-decorator-placeholder-size);
-    line-height: 1em;
+    line-height: 1.5em;
     color: var(--field-decorator-blur-color);
     pointer-events: none;
     cursor: inherit;
-    transform: translate(0, 0);
-    vertical-align: middle;
+    transform: translate(0, 0) scale(1);
+    transform-origin: left;
+    transition: transform 0.28s var(--cubic-bezier) 0.02s, color 0.25s, width 0.28s;
   }
 
   &__clear-icon[var-field-decorator-cover] {
     display: flex;
-    font-size: 15px;
-    margin-left: 4px;
+    font-size: 20px;
+    margin-left: 6px;
     cursor: pointer;
   }
 
@@ -76,8 +83,7 @@
   }
 
   &--placeholder-hint {
-    font-size: 0.75em;
-    top: 0 !important;
+    width: 133%;
   }
 
   &--placeholder-hidden {
@@ -112,20 +118,7 @@
     }
 
     .var-field-decorator__placeholder {
-      left: 0;
-      transform-origin: left;
-      transition: top 0.3s, transform 0.3s, font-size 0.3s, color 0.25s;
-      top: calc(
-        var(--field-decorator-standard-normal-padding-top) +
-          (
-            100% - var(--field-decorator-standard-normal-padding-top) -
-              var(--field-decorator-standard-normal-padding-bottom) - var(--field-decorator-placeholder-size)
-          ) / 2
-      );
-    }
-
-    .var-field-decorator__placeholder-textarea {
-      top: var(--field-decorator-standard-normal-padding-top);
+      transform: translate(0, var(--field-decorator-standard-normal-placeholder-translate-y));
     }
 
     .var-field-decorator--placeholder-hint {
@@ -182,112 +175,75 @@
     }
 
     .var-field-decorator__placeholder {
-      transform-origin: left;
-      transition: top 0.3s, transform 0.3s, font-size 0.3s, margin 0.3s, color 0.25s;
-      top: calc(
-        var(--field-decorator-outlined-normal-padding-top) +
-          (
-            100% - var(--field-decorator-outlined-normal-padding-top) -
-              var(--field-decorator-outlined-normal-padding-bottom) - var(--field-decorator-placeholder-size)
-          ) / 2
-      );
-    }
-
-    .var-field-decorator__placeholder-textarea {
-      top: var(--field-decorator-outlined-normal-padding-top);
-    }
-
-    .var-field-decorator--placeholder-hint {
-      transform: translateY(-50%);
+      transform: translate(0, var(--field-decorator-outlined-normal-placeholder-translate-y));
     }
 
     .var-field-decorator__line {
       width: 100%;
-      height: 100%;
+      height: calc(100% + (var(--field-decorator-placeholder-size) * 0.75 / 2));
       position: absolute;
-      top: 0;
+      top: calc(var(--field-decorator-placeholder-size) * 0.75 / 2 * -1);
       left: 0;
-      display: flex;
-      align-items: center;
       pointer-events: none;
-
-      &-start {
-        flex: 0 0
-          calc(
-            var(--field-decorator-outlined-normal-padding-left) -
-              var(--field-decorator-outlined-normal-placeholder-space)
-          );
-        height: 100%;
-        border-radius: 4px 0 0 4px;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        border-inline-start-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
-      }
-
-      &-notch {
-        max-width: calc(
-          100% -
-            (
-              var(--field-decorator-outlined-normal-padding-left) -
-                var(--field-decorator-outlined-normal-placeholder-space)
-            ) -
-            (
-              var(--field-decorator-outlined-normal-padding-right) -
-                var(--field-decorator-outlined-normal-placeholder-space)
-            )
+      border-radius: 4px;
+      border: var(--field-decorator-line-size) solid var(--field-decorator-blur-color);
+      overflow: hidden;
+      padding: 0
+        calc(
+          var(--field-decorator-outlined-normal-padding-right) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-size)
+        )
+        0
+        calc(
+          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
+            var(--field-decorator-line-size)
         );
-        height: 100%;
-        font: inherit;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
-      }
+      margin: 0;
 
-      &-notch--hint {
-        border-top-width: 0 !important;
-      }
-
-      &-placeholder {
-        max-width: 100%;
+      &-legend {
+        max-width: 0.01px;
+        height: calc(var(--field-decorator-placeholder-size) * 0.75);
         visibility: hidden;
-        font-size: 0.75em;
-        margin: 0 var(--field-decorator-outlined-normal-placeholder-space);
+        padding: 0;
+        transition: max-width 0.05s var(--cubic-bezier);
+        overflow: hidden;
+        display: block;
+        white-space: nowrap;
       }
 
-      &-end {
-        flex: 1;
-        height: 100%;
-        border-radius: 0 4px 4px 0;
-        border: 0 solid var(--field-decorator-blur-color);
-        border-top-width: var(--field-decorator-line-size);
-        border-bottom-width: var(--field-decorator-line-size);
-        border-inline-end-width: var(--field-decorator-line-size);
-        transition: border 0.1s;
+      &-legend--hint {
+        max-width: 100%;
+      }
+
+      &-legend-placeholder {
+        font-size: calc(var(--field-decorator-placeholder-size) * 0.75);
+        opacity: 0;
+        visibility: visible;
+        padding: 0 var(--field-decorator-outlined-normal-placeholder-space);
       }
     }
 
     .var-field-decorator--line-focus {
-      .var-field-decorator__line-start {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-        border-inline-start-width: var(--field-decorator-line-focus-size);
+      border-width: var(--field-decorator-line-focus-size);
+      border-color: var(--field-decorator-focus-color);
+      padding: 0
+        calc(
+          var(--field-decorator-outlined-normal-padding-right) -
+            var(--field-decorator-outlined-normal-placeholder-space) - var(--field-decorator-line-focus-size)
+        )
+        0
+        calc(
+          var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
+            var(--field-decorator-line-focus-size)
+        );
+
+      .var-field-decorator__placeholder {
+        transition: transform 0.3s var(--cubic-bezier), color 0.25s;
       }
 
-      .var-field-decorator__line-notch {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-      }
-
-      .var-field-decorator__line-end {
-        border: 0 solid var(--field-decorator-focus-color);
-        border-top-width: var(--field-decorator-line-focus-size);
-        border-bottom-width: var(--field-decorator-line-focus-size);
-        border-inline-end-width: var(--field-decorator-line-focus-size);
+      .var-field-decorator__line-legend {
+        max-width: 100%;
+        transition: max-width 0.1s var(--cubic-bezier) 0.05s;
       }
     }
 
@@ -302,6 +258,12 @@
   }
 
   &--small {
+    .var-field-decorator--placeholder-hint {
+      max-width: calc(
+        var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-small-padding-right) -
+          var(--field-decorator-outlined-small-padding-left)
+      );
+    }
     .var-field-decorator--standard& {
       .var-field-decorator__wrap {
         padding: var(--field-decorator-standard-small-padding-top) 0
@@ -309,17 +271,7 @@
       }
 
       .var-field-decorator__placeholder {
-        top: calc(
-          var(--field-decorator-standard-small-padding-top) +
-            (
-              100% - var(--field-decorator-standard-small-padding-top) -
-                var(--field-decorator-standard-small-padding-bottom) - var(--field-decorator-placeholder-size)
-            ) / 2
-        );
-      }
-
-      .var-field-decorator__placeholder-textarea {
-        top: var(--field-decorator-standard-small-padding-top);
+        transform: translate(0, var(--field-decorator-standard-small-placeholder-translate-y));
       }
     }
 
@@ -338,45 +290,37 @@
       }
 
       .var-field-decorator__placeholder {
-        top: calc(
-          var(--field-decorator-outlined-small-padding-top) +
-            (
-              100% - var(--field-decorator-outlined-small-padding-top) -
-                var(--field-decorator-outlined-small-padding-bottom) - var(--field-decorator-placeholder-size)
-            ) / 2
-        );
-      }
-
-      .var-field-decorator__placeholder-textarea {
-        top: var(--field-decorator-outlined-small-padding-top);
+        transform: translate(0, var(--field-decorator-outlined-small-placeholder-translate-y));
       }
 
       .var-field-decorator__line {
-        &-start {
-          flex: 0 0
-            calc(
-              var(--field-decorator-outlined-small-padding-left) -
-                var(--field-decorator-outlined-small-placeholder-space)
-            );
-        }
-
-        &-notch {
-          max-width: calc(
-            100% -
-              (
-                var(--field-decorator-outlined-small-padding-left) -
-                  var(--field-decorator-outlined-small-placeholder-space)
-              ) -
-              (
-                var(--field-decorator-outlined-small-padding-right) -
-                  var(--field-decorator-outlined-small-placeholder-space)
-              )
+        padding: 0
+          calc(
+            var(--field-decorator-outlined-small-padding-right) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-size)
+          )
+          0
+          calc(
+            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
+              var(--field-decorator-line-size)
           );
-        }
 
-        &-placeholder {
-          margin: 0 var(--field-decorator-outlined-small-placeholder-space);
+        .var-field-decorator__line-legend-placeholder {
+          padding: 0 var(--field-decorator-outlined-small-placeholder-space);
         }
+      }
+
+      .var-field-decorator--line-focus {
+        padding: 0
+          calc(
+            var(--field-decorator-outlined-small-padding-right) -
+              var(--field-decorator-outlined-small-placeholder-space) - var(--field-decorator-line-focus-size)
+          )
+          0
+          calc(
+            var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
+              var(--field-decorator-line-focus-size)
+          );
       }
     }
   }

@@ -28,9 +28,7 @@ test('test input variant', () => {
       }
 
       case 'outlined': {
-        expect(
-          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__line-start')
-        ).toBeTruthy()
+        expect(wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('legend')).toBeTruthy()
         break
       }
 

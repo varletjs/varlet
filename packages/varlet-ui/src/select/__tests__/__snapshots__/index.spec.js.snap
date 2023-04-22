@@ -11,7 +11,7 @@ exports[`test select focus & blur methods 1`] = `
             <div class="var-select__label">
               <!--v-if-->
             </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0);"></label>
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
@@ -206,13 +206,9 @@ exports[`test select variant 2`] = `
           <!--v-if-->
         </div>
       </div>
-      <div class="var-field-decorator__line">
-        <div class="var-field-decorator__line-start"></div>
-        <div class="var-field-decorator__line-notch">
-          <div class="var-field-decorator__line-placeholder var--ellipsis"></div>
-        </div>
-        <div class="var-field-decorator__line-end"></div>
-      </div>
+      <fieldset class="var-field-decorator__line var--box">
+        <legend class="var-field-decorator__line-legend"><span class="var-field-decorator__line-legend-placeholder"></span></legend>
+      </fieldset>
     </div>
     <!--teleport start-->
     <!--teleport end-->

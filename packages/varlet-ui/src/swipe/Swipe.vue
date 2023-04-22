@@ -382,8 +382,7 @@ export default defineComponent({
     onActivated(resize)
     onDeactivated(stopAutoplay)
     onUnmounted(stopAutoplay)
-
-    useEventListener(window, 'resize', resize)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       n,
