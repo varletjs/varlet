@@ -33,7 +33,6 @@
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],
-              [!hint, n('--placeholder-non-hint')],
               computePlaceholderState()
             )
           "
