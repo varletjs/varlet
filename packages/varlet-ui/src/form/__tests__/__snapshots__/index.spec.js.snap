@@ -169,7 +169,7 @@ exports[`test form with input 1`] = `
       <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__wrap">
-          <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-3"><span></span></label>
+          <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
@@ -193,7 +193,7 @@ exports[`test form with input 2`] = `
       <div class="var-field-decorator__controller" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span></span></label>
+          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
@@ -217,7 +217,7 @@ exports[`test form with input 3`] = `
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__wrap">
-          <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" for="var-input-3"><span></span></label>
+          <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
@@ -252,7 +252,7 @@ exports[`test form with input 4`] = `
       <div class="var-field-decorator__controller" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__wrap">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span></span></label>
+          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
           <!--v-if-->
@@ -450,7 +450,7 @@ exports[`test form with select 1`] = `
                   <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small">选项1</span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
+            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span class="var-field-decorator__placeholder-text"></span></label>
           </div>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
@@ -482,7 +482,7 @@ exports[`test form with select 2`] = `
                   <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small">选项1</span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
+            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span class="var-field-decorator__placeholder-text"></span></label>
           </div>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
@@ -514,7 +514,7 @@ exports[`test form with select 3`] = `
                   <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small">选项1</span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
+            </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="" style="transform: translate(-0, 0) scale(0.75);"><span class="var-field-decorator__placeholder-text"></span></label>
           </div>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
@@ -555,7 +555,7 @@ exports[`test form with select 4`] = `
               <div class="var-select__label">
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
-            </div><label class="var-field-decorator__placeholder var--ellipsis" for="" style=""><span></span></label>
+            </div><label class="var-field-decorator__placeholder var--ellipsis" for="" style=""><span class="var-field-decorator__placeholder-text"></span></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->

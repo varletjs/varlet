@@ -369,8 +369,8 @@ export default defineComponent({
 @import '../styles/elevation';
 @import '../icon/icon';
 @import '../menu/menu';
+@import '../field-decorator/fieldDecorator';
 @import '../form-details/formDetails';
 @import '../chip/chip';
-@import '../field-decorator/fieldDecorator';
 @import './select';
 </style>
