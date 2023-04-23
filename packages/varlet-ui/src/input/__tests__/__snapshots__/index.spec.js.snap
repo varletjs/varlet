@@ -6,7 +6,7 @@ exports[`test input clear 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-48" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-48"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-48" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-48"><span></span></label>
       </div>
       <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
     </div>
@@ -26,7 +26,7 @@ exports[`test input events test input focus & blur 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-16" style="transform: translate(-0, 0) scale(0.75);"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-16" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -48,7 +48,7 @@ exports[`test input events test input focus & blur 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-16" style=""></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-16" style=""><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -71,7 +71,7 @@ exports[`test input events test input focus & blur 3`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-21" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-21" style="transform: translate(-0, 0) scale(0.75);"></label>
+      </textarea><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-21" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -94,7 +94,7 @@ exports[`test input events test input focus & blur 4`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-21" type="text" rows="8" style="resize: none;">
-      </textarea><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-21" style=""></label>
+      </textarea><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-21" style=""><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -139,7 +139,7 @@ exports[`test input maxlength 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-36" type="text" maxlength="100"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-36"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-36" type="text" maxlength="100"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-36"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -172,7 +172,7 @@ exports[`test input size 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-11" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-11"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-11" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-11"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -194,7 +194,7 @@ exports[`test input validation 1`] = `
     <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0) scale(0.75);"></label>
+        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -227,7 +227,7 @@ exports[`test input validation 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-66" style=""></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-66" style=""><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -249,7 +249,7 @@ exports[`test input validation 3`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0) scale(0.75);"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-66" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-66" style="transform: translate(-0, 0) scale(0.75);"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -271,7 +271,7 @@ exports[`test input variant 1`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-1" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-1"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-1" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-1"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->
@@ -293,7 +293,7 @@ exports[`test input variant 2`] = `
     <div class="var-field-decorator__controller" style="cursor: text;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__wrap">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-6" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-6"></label>
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-6" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-6"><span></span></label>
       </div>
       <div class="var-field-decorator__icon">
         <!--v-if-->

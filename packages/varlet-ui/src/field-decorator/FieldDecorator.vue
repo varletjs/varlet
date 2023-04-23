@@ -43,7 +43,7 @@
           }"
           :for="id"
         >
-          {{ placeholder }}
+          <span ref="placeholderEl">{{ placeholder }}</span>
         </label>
       </div>
 
@@ -72,7 +72,10 @@
             )
           "
         >
-          <legend :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])">
+          <legend
+            :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])"
+            :style="{ width: legendWidth }"
+          >
             <span :class="n('line-legend-placeholder')">
               {{ placeholder }}
             </span>
@@ -103,7 +106,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watchEffect, type Ref, computed, type ComputedRef, onMounted } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
@@ -118,6 +121,8 @@ export default defineComponent({
   props,
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
+    const placeholderEl: Ref<HTMLElement | null> = ref(null)
+    const legendWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -160,10 +165,23 @@ export default defineComponent({
       placeholderTransform.value = ''
     })
 
+    onMounted(() => {
+      if (!placeholderEl.value) return
+
+      const { width } = placeholderEl.value.getBoundingClientRect()
+      const space = window
+        .getComputedStyle(placeholderEl.value)
+        .getPropertyValue('--field-decorator-outlined-normal-placeholder-space')
+
+      legendWidth.value = `calc(${width * 0.75}px + 2 * ${space})`
+    })
+
     return {
       prependIconEl,
+      placeholderEl,
       placeholderTransform,
       color,
+      legendWidth,
       computePlaceholderState,
       n,
       classes,
