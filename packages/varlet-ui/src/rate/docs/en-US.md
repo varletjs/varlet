@@ -7,12 +7,13 @@ Default display style.
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
 <template>
   <var-rate v-model="score"/>
+  <var-rate v-model="score" icon="heart" empty-icon="heart-outline"/>
+  <var-rate v-model="score" icon="thumb-up" empty-icon="thumb-up-outline"/>
 </template>
 ```
 
@@ -23,7 +24,6 @@ Set the total rating through the `count` attribute.
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
@@ -32,87 +32,47 @@ const score = ref(3)
 </template>
 ```
 
-### Customize the rating icon color
+### Customize the score icon style
 
-Set the colors of selected and unselected through the `color` and `empty-color` properties.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
-  <var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
-  <var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
-  <var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
-</template>
-```
-
-### Customize the rating icon style
-
-Set the icon style when it is selected or not through the `icon` and `empty-icon` attributes.
+Set the icon style when selected and unselected through the `icon` and `empty-icon` properties.
+Set the selected and unselected colors through the `color` and `empty-color` properties.
 
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"/>
+   <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red" empty-color="red"/>
 </template>
 ```
 
-### Customize the rating icon size
 
-Set the size of the rating icon through the `size` attribute.
+### Customize the score icon size and spacing
+
+Use the `size` property to set the size of the score icon.
+Set the interval between scores via the `gap` property.
 
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" :size="14"/>
-  <var-rate v-model="score" :size="16"/>
-  <var-rate v-model="score" :size="18"/>
-  <var-rate v-model="score" :size="20"/>
+  <var-rate v-model="score" :size="20" :gap="8"/>
 </template>
 ```
 
-### Custom Icon Interval
-
-Set the interval between ratings by the `gap` attribute.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score"/>
-  <var-rate v-model="score" :gap="2"/>
-  <var-rate v-model="score" :gap="4"/>
-  <var-rate v-model="score" :gap="8"/>
-</template>
-```
-
-### allows half ICONS
+### Allows half Icons
 
 The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective.
+ps:👍🏻 Half Star is temporarily unavailable
 
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3.5)
 </script>
 
@@ -130,53 +90,22 @@ const score = ref(3.5)
 </template>
 ```
 
-### Disables rating
+### Disable and read only
 
-The `disabled` attribute is used to set the rating to the status of no clicking, and the `disabled-color` is used to set the color of the icon when it is disabled.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" disabled/>
-</template>
-```
-
-### Read only rating
-
-Set the rating to read-only status through the `readonly` attribute.
+The `disabled` property sets the score to the no-click state, and `disabled-color` sets the icon color when disabled.
+The score is set to read-only via the `readonly` property.
 
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" readonly/>
+<var-rate v-model="score" disabled/>
+<var-rate v-model="score" readonly/>
 </template>
-```
-
-### Use water ripples
-
-Set the `ripple` attribute to `false` to prohibit the use of water ripples.
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :ripple="false"/>
-</template>
-```
+` ` `
 
 ### listens for the change event
 
@@ -186,7 +115,6 @@ Other interaction logic is completed by calling the `change` event.
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
-
 const score = ref(3)
 
 function handleChange(score) {
@@ -211,7 +139,6 @@ Other values are converted to text as a user prompt.
 ```html
 <script setup>
 import { ref } from 'vue'
-
 const score = ref(3)
 </script>
 
