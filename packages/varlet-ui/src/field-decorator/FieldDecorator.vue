@@ -17,7 +17,7 @@
         cursor,
       }"
     >
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
+      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])" ref="prependIconEl">
         <slot name="prepend-icon" />
       </div>
 
@@ -33,6 +33,7 @@
               [isFocus, n('--focus')],
               [formDisabled || disabled, n('--disabled')],
               [errorMessage, n('--error')],
+              [!hint, n('--placeholder-non-hint')],
               computePlaceholderState()
             )
           "
@@ -46,7 +47,7 @@
         </label>
       </div>
 
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
+      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <var-icon
           :class="n('clear-icon')"
           var-field-decorator-cover
@@ -64,7 +65,6 @@
           :class="
             classes(
               n('line'),
-              n('$--box'),
               [isFocus, n('--line-focus')],
               [errorMessage, n('--line-error')],
               [formDisabled || disabled, n('--line-disabled')]

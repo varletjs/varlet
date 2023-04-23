@@ -350,10 +350,12 @@ const value11 = ref()
 | `--field-decorator-standard-normal-padding-top` | `22px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
 | `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
+| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
 | `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
 | `--field-decorator-standard-small-padding-top` | `18px` |
 | `--field-decorator-standard-small-padding-bottom` | `2px` |
 | `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
+| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
 | `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |
@@ -372,9 +374,10 @@ const value11 = ref()
 | `--select-scroller-background` | `#fff` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
+| `--select-scroller-border-radius` | `4px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--input-decorator-placeholder-size) * 0.75 + 8px) 0 0 0` |
+| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 | `--select-outlined-scroller-margin` | `0` |
 
 #### Option Variables

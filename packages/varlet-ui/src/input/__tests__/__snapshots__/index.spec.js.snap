@@ -114,12 +114,12 @@ exports[`test input hint to be false 1`] = `
 "<div class="var-input var--box">
   <div class="var-field-decorator var--box var-field-decorator--standard">
     <div class="var-field-decorator__controller" style="cursor: text;">
-      <div class="var-field-decorator__icon var-field-decorator--non-hint"></div>
+      <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
       <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-43" type="text" style="--input-placeholder-color: var(--field-decorator-blur-color);">
         <!--v-if-->
       </div>
-      <div class="var-field-decorator__icon var-field-decorator--non-hint">
+      <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
         <!--v-if-->
       </div>
     </div>
@@ -299,7 +299,7 @@ exports[`test input variant 2`] = `
         <!--v-if-->
       </div>
     </div>
-    <fieldset class="var-field-decorator__line var--box">
+    <fieldset class="var-field-decorator__line">
       <legend class="var-field-decorator__line-legend var-field-decorator__line-legend--hint"></legend>
     </fieldset>
   </div>

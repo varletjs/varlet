@@ -185,7 +185,7 @@ watchLang((lang) => {
       </template>
       <template #selected>
         <var-icon class="selected-icon" :name="outlinedValue6 === pack.eat ? 'cake-variant' : 'weather-night'" />
-        <span>{{ standardValue6 }}</span>
+        <span>{{ outlinedValue6 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />

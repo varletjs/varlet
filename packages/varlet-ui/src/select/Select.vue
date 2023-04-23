@@ -89,7 +89,7 @@
         <div
           ref="menuEl"
           :class="
-            classes(n('scroller'), n(`scroller-${variant}`), [!hint, n('scroller-non-hint')], n('$-elevation--3'))
+            classes(n('scroller'), n(`--scroller-${variant}`), n('$-elevation--3'), [!hint, n('--scroller-non-hint')])
           "
         >
           <slot />
@@ -158,9 +158,11 @@ export default defineComponent({
         const rawModelValue = modelValue as unknown as any[]
         labels.value = rawModelValue.map(findLabel)
       }
+
       if (!multiple && !isEmpty(modelValue)) {
         label.value = findLabel(modelValue as any)
       }
+
       if (!multiple && isEmpty(modelValue)) {
         label.value = ''
       }
