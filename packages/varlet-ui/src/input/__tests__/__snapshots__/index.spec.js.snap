@@ -300,7 +300,7 @@ exports[`test input variant 2`] = `
       </div>
     </div>
     <fieldset class="var-field-decorator__line var--box">
-      <legend class="var-field-decorator__line-legend var-field-decorator__line-legend--hint"><span class="var-field-decorator__line-legend-placeholder"></span></legend>
+      <legend class="var-field-decorator__line-legend var-field-decorator__line-legend--hint"></legend>
     </fieldset>
   </div>
   <transition-stub name="var-form-details" appear="false" persisted="false" css="true">

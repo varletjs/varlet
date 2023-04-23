@@ -74,11 +74,7 @@
           <legend
             :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])"
             :style="{ width: legendWidth }"
-          >
-            <span :class="n('line-legend-placeholder')">
-              {{ placeholder }}
-            </span>
-          </legend>
+          ></legend>
         </fieldset>
       </template>
 

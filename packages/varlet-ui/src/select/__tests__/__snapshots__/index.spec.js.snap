@@ -207,7 +207,7 @@ exports[`test select variant 2`] = `
         </div>
       </div>
       <fieldset class="var-field-decorator__line var--box">
-        <legend class="var-field-decorator__line-legend"><span class="var-field-decorator__line-legend-placeholder"></span></legend>
+        <legend class="var-field-decorator__line-legend"></legend>
       </fieldset>
     </div>
     <!--teleport start-->
