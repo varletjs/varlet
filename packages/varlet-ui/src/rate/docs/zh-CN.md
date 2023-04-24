@@ -7,6 +7,7 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -24,6 +25,7 @@ const score = ref(3)
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -41,6 +43,7 @@ const score = ref(3)
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -57,6 +60,7 @@ const score = ref(3)
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -73,6 +77,7 @@ ps:👍🏻暂无半星
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3.5)
 </script>
 
@@ -98,6 +103,7 @@ const score = ref(3.5)
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -116,6 +122,7 @@ const score = ref(3)
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
+
 const score = ref(3)
 
 function handleChange(score) {
@@ -140,6 +147,7 @@ function handleChange(score) {
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 

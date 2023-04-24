@@ -7,6 +7,7 @@ Default display style.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -24,6 +25,7 @@ Set the total rating through the `count` attribute.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -40,6 +42,7 @@ Set the selected and unselected colors through the `color` and `empty-color` pro
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -57,6 +60,7 @@ Set the interval between scores via the `gap` property.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -73,6 +77,7 @@ ps:👍🏻 Half Star is temporarily unavailable
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3.5)
 </script>
 
@@ -98,6 +103,7 @@ The score is set to read-only via the `readonly` property.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
@@ -115,6 +121,7 @@ Other interaction logic is completed by calling the `change` event.
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
+
 const score = ref(3)
 
 function handleChange(score) {
@@ -139,6 +146,7 @@ Other values are converted to text as a user prompt.
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const score = ref(3)
 </script>
 
