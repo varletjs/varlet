@@ -168,7 +168,7 @@ exports[`test form with input 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
@@ -192,7 +192,7 @@ exports[`test form with input 2`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
@@ -216,7 +216,7 @@ exports[`test form with input 3`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
@@ -251,7 +251,7 @@ exports[`test form with input 4`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: text;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span class="var-field-decorator__placeholder-text"></span></label>
         </div>
         <div class="var-field-decorator__icon">
@@ -443,7 +443,7 @@ exports[`test form with select 1`] = `
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer;">
           <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
+          <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--disabled" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
@@ -475,7 +475,7 @@ exports[`test form with select 2`] = `
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer;">
           <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
+          <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
@@ -507,7 +507,7 @@ exports[`test form with select 3`] = `
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer;">
           <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
+          <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--error" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
@@ -550,7 +550,7 @@ exports[`test form with select 4`] = `
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer;">
           <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__wrap">
+          <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <!--v-if-->
