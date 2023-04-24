@@ -62,7 +62,7 @@
 
 ```html
 <template>
-  <var-pagination current="6" total="115" :simple="false"/>
+  <var-pagination :current="6" :total="115" :simple="false"/>
 </template>
 ```
 

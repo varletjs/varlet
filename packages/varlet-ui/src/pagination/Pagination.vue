@@ -34,7 +34,7 @@
       v-else
       v-ripple="{ disabled }"
       v-for="(item, index) in pageList"
-      :key="toNumber(item) + index"
+      :key="index"
       :item-mode="getMode(item, index)"
       :class="
         classes(
