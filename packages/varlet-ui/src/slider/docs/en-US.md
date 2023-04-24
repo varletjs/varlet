@@ -214,34 +214,13 @@ Set the `direction` attribute value to `vertical` to make the slider display ver
 ```html
 <script>
 import { ref } from 'vue'
-const value1 = ref(50)
-const value2 = ref([7, 64])
-const value3= ref(20)
+const value = ref(50)
 </script>
 
 <template>
-  <var-slider 
-    v-model="values.value12" 
-    direction="vertical"
-  />
-  
-  <var-slider
-    v-model="values.value13"
-    track-height="1.5vw"
-    thumb-size="20px"
-    range
-    label-color="purple"
-    active-color="#e0732c"
-    track-color="#3a68b4"
-    thumb-color="#e25241"
-    label-text-color="#ededed"
-    direction="vertical"
-  />
-  
-  <var-slider v-model="values.value14" 
-    :rules="[(v) => v > 35 || 'error message']" 
-    direction="vertical"
-  />
+  <div style="height: 300px">
+    <var-slider v-model="value" label-visible="always" direction="vertical" />
+  </div>
 </template>
 
 ```

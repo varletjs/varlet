@@ -1,6 +1,5 @@
 <script setup>
 import VarSlider from '..'
-import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
@@ -80,22 +79,9 @@ watchDarkMode(dark)
   <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
 
   <app-type>{{ pack.vertical }}</app-type>
-  <var-space direction="column">
+  <div style="height: 300px">
     <var-slider v-model="values.value12" label-visible="always" direction="vertical" />
-    <var-slider
-      v-model="values.value13"
-      track-height="1.5vw"
-      thumb-size="20px"
-      range
-      label-color="purple"
-      active-color="#e0732c"
-      track-color="#3a68b4"
-      thumb-color="#e25241"
-      label-text-color="#ededed"
-      direction="vertical"
-    />
-    <var-slider v-model="values.value14" :rules="[(v) => v > 35 || 'error message']" direction="vertical" />
-  </var-space>
+  </div>
 </template>
 
 <style>
