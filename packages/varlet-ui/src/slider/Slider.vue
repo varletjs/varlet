@@ -198,7 +198,7 @@ export default defineComponent({
 
     const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
 
-    const vertical: ComputedRef<boolean | undefined> = computed(() => props.direction === 'vertical')
+    const vertical: ComputedRef<boolean> = computed(() => props.direction === 'vertical')
 
     const getOffset = (e: MouseEvent) => {
       const { direction } = props
