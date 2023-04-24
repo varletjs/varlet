@@ -1,8 +1,6 @@
 # 评分
 
-### 基础评分
-
-默认显示样式。
+### 基本使用
 
 ```html
 <script setup>
@@ -13,7 +11,6 @@ const score = ref(3)
 
 <template>
   <var-rate v-model="score"/>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline"/>
   <var-rate v-model="score" icon="thumb-up" empty-icon="thumb-up-outline"/>
 </template>
 ```
@@ -48,7 +45,13 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red" empty-color="red"/>
+  <var-rate 
+    icon="heart" 
+    empty-icon="heart-outline" 
+    color="red" 
+    empty-color="red"
+    v-model="score"
+  />
 </template>
 ```
 
@@ -65,14 +68,13 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" :size="20" :gap="8"/>
+  <var-rate v-model="score" :size="28" :gap="8"/>
 </template>
 ```
 
-### 允许半图标
+### 使用半星
 
 通过 `half` 属性将评分设置为可半选，`half-icon` 属性设置半选时的样式。
-ps:👍🏻暂无半星
 
 ```html
 <script setup>
@@ -82,15 +84,15 @@ const score = ref(3.5)
 </script>
 
 <template>
-  <var-rate v-model="score" :count="8" half/>
-  <var-rate 
-    v-model="score" 
-    :count="8" 
-    icon="heart" 
-    half-icon="heart-half-full" 
-    empty-icon="heart-outline"
-    color="red" 
+  <var-rate half :count="8" v-model="score" />
+  <var-rate
     half
+    icon="heart"
+    half-icon="heart-half-full"
+    empty-icon="heart-outline"
+    color="red"
+    :count="8"
+    v-model="score"
   />
 </template>
 ```
@@ -114,7 +116,7 @@ const score = ref(3)
 ```
 
 
-### 监听 change 事件
+### 监听事件
 
 通过调用 `change` 事件完成其他交互逻辑。
 

@@ -35,7 +35,6 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.baseRating }}</app-type>
   <var-rate v-model="scores.score" />
-  <var-rate v-model="scores.score" icon="heart" empty-icon="heart-outline" />
   <var-rate v-model="scores.score" icon="thumb-up" empty-icon="thumb-up-outline" />
 
   <app-type>{{ pack.customizeTheTotalNumberOfRatingICONS }}</app-type>
@@ -45,7 +44,7 @@ watchDarkMode(dark)
   <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" empty-color="red" />
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate v-model="scores.score4" size="8vw" gap="3vw" />
+  <var-rate v-model="scores.score4" size="8vw" gap="1vw" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
   <var-rate v-model="scores.score6" :count="8" half />
@@ -64,7 +63,7 @@ watchDarkMode(dark)
   <var-rate v-model="scores.score7" disabled />
   <var-rate v-model="scores.score8" readonly />
 
-  <app-type>{{ pack.listeningForClickEvents }}</app-type>
+  <app-type>{{ pack.listeningEvents }}</app-type>
   <var-rate v-model="scores.score10" @change="handleChange" />
 
   <app-type>{{ pack.validate }}</app-type>

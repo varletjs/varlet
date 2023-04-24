@@ -1,11 +1,11 @@
 export default {
-  baseRating: 'Base Rating',
-  customizeTheTotalNumberOfRatingICONS: 'Customize The Total Number Of Rating ICONS',
+  baseRating: 'Basic Usage',
+  customizeTheTotalNumberOfRatingICONS: 'Customize the total rating',
   customizeRatingIconStyles: 'Customize Rating Icon Styles',
-  customizeRatingIconSize: 'Customize scoring icon size and interval',
-  useHalfAStar: 'Use Half A Star',
-  disableTheRating: 'Disable and read-only',
-  listeningForClickEvents: 'Listening For Click Events',
+  customizeRatingIconSize: 'Customize scoring icon size and gap',
+  useHalfAStar: 'Allows half rating',
+  disableTheRating: 'Disable and Readonly',
+  listeningEvents: 'Listen Events',
   validate: 'Validate',
   rateMessage: 'It has to be greater than 2',
 }

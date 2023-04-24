@@ -1,8 +1,6 @@
 # Rate
 
-### Base Rate
-
-Default display style.
+### Basic Usage
 
 ```html
 <script setup>
@@ -13,7 +11,6 @@ const score = ref(3)
 
 <template>
   <var-rate v-model="score"/>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline"/>
   <var-rate v-model="score" icon="thumb-up" empty-icon="thumb-up-outline"/>
 </template>
 ```
@@ -47,12 +44,17 @@ const score = ref(3)
 </script>
 
 <template>
-   <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red" empty-color="red"/>
+  <var-rate
+    icon="heart" 
+    empty-icon="heart-outline" 
+    color="red" 
+    empty-color="red"
+    v-model="score"
+  />
 </template>
 ```
 
-
-### Customize the score icon size and spacing
+### Customize the score icon size and gap
 
 Use the `size` property to set the size of the score icon.
 Set the interval between scores via the `gap` property.
@@ -65,14 +67,13 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" :size="20" :gap="8"/>
+  <var-rate v-model="score" :size="28" :gap="8"/>
 </template>
 ```
 
-### Allows half Icons
+### Allows half rating
 
 The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective.
-ps:👍🏻 Half Star is temporarily unavailable
 
 ```html
 <script setup>
@@ -82,20 +83,20 @@ const score = ref(3.5)
 </script>
 
 <template>
-  <var-rate v-model="score" :count="8" half/>
+  <var-rate half :count="8" v-model="score" />
   <var-rate
-    v-model="score"
-    :count="8"
+    half
     icon="heart"
     half-icon="heart-half-full"
     empty-icon="heart-outline"
     color="red"
-    half
+    :count="8"
+    v-model="score"
   />
 </template>
 ```
 
-### Disable and read only
+### Disable and Readonly
 
 The `disabled` property sets the score to the no-click state, and `disabled-color` sets the icon color when disabled.
 The score is set to read-only via the `readonly` property.
@@ -111,9 +112,9 @@ const score = ref(3)
 <var-rate v-model="score" disabled/>
 <var-rate v-model="score" readonly/>
 </template>
-` ` `
+```
 
-### listens for the change event
+### Listen Events
 
 Other interaction logic is completed by calling the `change` event.
 
@@ -137,7 +138,7 @@ function handleChange(score) {
 </template>
 ```
 
-### Validate Value
+### Validate
 
 The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
