@@ -111,3 +111,5 @@ export const find = <T>(
 
   return [null, -1]
 }
+
+export const normalizeToArray = <T>(value: T | T[]) => (isArray(value) ? value : [value])

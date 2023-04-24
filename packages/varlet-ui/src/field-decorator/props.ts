@@ -65,10 +65,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  textarea: {
-    type: Boolean,
-    default: false,
-  },
   cursor: {
     type: String,
   },

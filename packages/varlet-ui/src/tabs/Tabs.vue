@@ -201,8 +201,8 @@ export default defineComponent({
 
     watch(() => props.active, resize)
     watch(() => props.scrollable, resize)
-    useEventListener(window, 'resize', resize)
     onActivated(resize)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       stickyComponent,
