@@ -171,6 +171,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |

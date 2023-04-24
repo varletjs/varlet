@@ -171,6 +171,7 @@ const value9 = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |

@@ -164,8 +164,6 @@ watchDarkMode(dark, (theme) => {
 
 .search-icon {
   margin-left: 6px;
-  font-size: 21px;
-  margin-top: 1px;
 }
 
 .fade {
