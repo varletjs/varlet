@@ -35,30 +35,17 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.baseRating }}</app-type>
   <var-rate v-model="scores.score" />
+  <var-rate v-model="scores.score" icon="heart" empty-icon="heart-outline" />
+  <var-rate v-model="scores.score" icon="thumb-up" empty-icon="thumb-up-outline" />
 
   <app-type>{{ pack.customizeTheTotalNumberOfRatingICONS }}</app-type>
   <var-rate v-model="scores.score1" :count="8" />
 
-  <app-type>{{ pack.customizeTheIconColor }}</app-type>
-  <var-rate v-model="scores.score2" color="#9c27b0" empty-color="#d199da" />
-  <var-rate v-model="scores.score2" color="#e91e63" empty-color="#f48fb1" />
-  <var-rate v-model="scores.score2" color="#4caf50" empty-color="#a5d6a7" />
-  <var-rate v-model="scores.score2" color="#3f51b5" empty-color="#9fa8da" />
-
   <app-type>{{ pack.customizeRatingIconStyles }}</app-type>
-  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" />
+  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" empty-color="red" />
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate v-model="scores.score4" size="5.6vw" />
-  <var-rate v-model="scores.score4" />
-  <var-rate v-model="scores.score4" size="7.2vw" />
-  <var-rate v-model="scores.score4" size="8vw" />
-
-  <app-type>{{ pack.customIconSpacing }}</app-type>
-  <var-rate v-model="scores.score5" />
-  <var-rate v-model="scores.score5" gap="1vw" />
-  <var-rate v-model="scores.score5" gap="2vw" />
-  <var-rate v-model="scores.score5" gap="3vw" />
+  <var-rate v-model="scores.score4" size="8vw" gap="3vw" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
   <var-rate v-model="scores.score6" :count="8" half />
@@ -75,12 +62,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.disableTheRating }}</app-type>
   <var-rate v-model="scores.score7" disabled />
-
-  <app-type>{{ pack.readonlyRating }}</app-type>
   <var-rate v-model="scores.score8" readonly />
-
-  <app-type>{{ pack.waterRippleIsProhibited }}</app-type>
-  <var-rate v-model="scores.score9" :ripple="false" />
 
   <app-type>{{ pack.listeningForClickEvents }}</app-type>
   <var-rate v-model="scores.score10" @change="handleChange" />
