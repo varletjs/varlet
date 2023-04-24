@@ -17,7 +17,7 @@
         cursor,
       }"
     >
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])" ref="prependIconEl">
+      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])" ref="prependIconEl">
         <slot name="prepend-icon" />
       </div>
 
@@ -43,11 +43,11 @@
           }"
           :for="id"
         >
-          {{ placeholder }}
+          <span :class="n('placeholder-text')" ref="placeholderTextEl">{{ placeholder }}</span>
         </label>
       </div>
 
-      <div :class="classes(n('icon'), [!hint, n('--non-hint')])">
+      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <var-icon
           :class="n('clear-icon')"
           var-field-decorator-cover
@@ -65,18 +65,16 @@
           :class="
             classes(
               n('line'),
-              n('$--box'),
               [isFocus, n('--line-focus')],
               [errorMessage, n('--line-error')],
               [formDisabled || disabled, n('--line-disabled')]
             )
           "
         >
-          <legend :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])">
-            <span :class="n('line-legend-placeholder')">
-              {{ placeholder }}
-            </span>
-          </legend>
+          <legend
+            :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])"
+            :style="{ width: legendWidth }"
+          ></legend>
         </fieldset>
       </template>
 
@@ -103,10 +101,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watchEffect, nextTick, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
+import { useEventListener } from '@varlet/use'
 
 const { n, classes } = createNamespace('field-decorator')
 
@@ -118,6 +117,8 @@ export default defineComponent({
   props,
   setup(props) {
     const prependIconEl: Ref<HTMLElement | null> = ref(null)
+    const placeholderTextEl: Ref<HTMLElement | null> = ref(null)
+    const legendWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -135,6 +136,44 @@ export default defineComponent({
       }
     }
 
+    const computedLegendWidth = () => {
+      const { size, placeholder } = props
+
+      nextTick().then(() => {
+        if (!placeholderTextEl.value || !placeholder) {
+          legendWidth.value = '0'
+          return
+        }
+
+        const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value)?.width
+        const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
+        legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
+      })
+    }
+
+    const computedPlaceholderTransform = () => {
+      const { hint, value, isFocus, variant } = props
+
+      nextTick().then(() => {
+        if (!prependIconEl.value) {
+          return
+        }
+
+        if (hint && (!isEmpty(value) || isFocus)) {
+          const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || '0'
+          const translateY = variant === 'outlined' ? '-50%' : '0'
+          placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
+        } else {
+          placeholderTransform.value = ''
+        }
+      })
+    }
+
+    const resize = () => {
+      computedLegendWidth()
+      computedPlaceholderTransform()
+    }
+
     const handleClear = (e: Event) => {
       call(props.onClear, e)
     }
@@ -143,27 +182,15 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    watchEffect(() => {
-      const { hint, value, isFocus, variant } = props
-
-      if (!prependIconEl.value) {
-        return
-      }
-
-      if (hint && (!isEmpty(value) || isFocus)) {
-        const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || 0
-        const translateY = variant === 'outlined' ? '-50%' : 0
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
-        return
-      }
-
-      placeholderTransform.value = ''
-    })
+    watchEffect(resize)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       prependIconEl,
+      placeholderTextEl,
       placeholderTransform,
       color,
+      legendWidth,
       computePlaceholderState,
       n,
       classes,

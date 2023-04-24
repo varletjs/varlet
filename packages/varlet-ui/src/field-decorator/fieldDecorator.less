@@ -8,13 +8,15 @@
   --field-decorator-line-size: 1px;
   --field-decorator-line-focus-size: 2px;
   --field-decorator-disabled-color: var(--color-text-disabled);
-  --field-decorator-standard-normal-padding-top: 20px;
+  --field-decorator-standard-normal-padding-top: 22px;
   --field-decorator-standard-normal-padding-bottom: 4px;
-  --field-decorator-standard-normal-icon-padding: 20px 0 4px;
+  --field-decorator-standard-normal-icon-padding: 22px 0 4px;
+  --field-decorator-standard-normal-non-hint-padding-top: 4px;
   --field-decorator-standard-normal-placeholder-translate-y: var(--field-decorator-standard-normal-padding-top);
   --field-decorator-standard-small-padding-top: 18px;
   --field-decorator-standard-small-padding-bottom: 2px;
   --field-decorator-standard-small-icon-padding: 18px 0 2px;
+  --field-decorator-standard-small-non-hint-padding-top: 2px;
   --field-decorator-standard-small-placeholder-translate-y: var(--field-decorator-standard-small-padding-top);
   --field-decorator-outlined-normal-padding-top: 16px;
   --field-decorator-outlined-normal-padding-bottom: 16px;
@@ -33,9 +35,9 @@
 }
 
 .var-field-decorator {
+  position: relative;
   width: 100%;
   color: var(--field-decorator-text-color);
-  position: relative;
 
   &__controller {
     width: 100%;
@@ -68,7 +70,11 @@
     cursor: inherit;
     transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier) 0s, color 0.25s, width 0.28s;
+    transition: transform 0.28s var(--cubic-bezier), color 0.25s, width 0.28s;
+  }
+
+  &__placeholder-text {
+    display: inline-block;
   }
 
   &__clear-icon[var-field-decorator-cover] {
@@ -76,10 +82,6 @@
     font-size: 20px;
     margin-left: 6px;
     cursor: pointer;
-  }
-
-  &--non-hint {
-    padding-top: 0;
   }
 
   &--placeholder-hint {
@@ -113,21 +115,8 @@
       padding: var(--field-decorator-standard-normal-icon-padding);
     }
 
-    .var-field-decorator--wrap-non-hint {
-      padding: 4px 0;
-    }
-
     .var-field-decorator__placeholder {
       transform: translate(0, var(--field-decorator-standard-normal-placeholder-translate-y));
-    }
-
-    .var-field-decorator--placeholder-hint {
-      transform: translate(0, 0);
-    }
-
-    .var-field-decorator--placeholder-non-hint {
-      top: 50%;
-      transform: translate(0, -50%);
     }
 
     .var-field-decorator__line {
@@ -148,6 +137,16 @@
       transform: scaleX(0);
       transform-origin: center;
       transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
+    }
+
+    .var-field-decorator--wrap-non-hint,
+    .var-field-decorator--icon-non-hint {
+      padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
+    }
+
+    .var-field-decorator--placeholder-non-hint {
+      transform: translate(0, -50%);
+      top: 50%;
     }
 
     .var-field-decorator--line-focus {
@@ -201,11 +200,10 @@
       margin: 0;
 
       &-legend {
-        max-width: 0.01px;
+        max-width: 0;
         height: calc(var(--field-decorator-placeholder-size) * 0.75);
         visibility: hidden;
         padding: 0;
-        transition: max-width 0.05s var(--cubic-bezier);
         overflow: hidden;
         display: block;
         white-space: nowrap;
@@ -213,13 +211,6 @@
 
       &-legend--hint {
         max-width: 100%;
-      }
-
-      &-legend-placeholder {
-        font-size: calc(var(--field-decorator-placeholder-size) * 0.75);
-        opacity: 0;
-        visibility: visible;
-        padding: 0 var(--field-decorator-outlined-normal-placeholder-space);
       }
     }
 
@@ -236,15 +227,6 @@
           var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-placeholder-space) -
             var(--field-decorator-line-focus-size)
         );
-
-      .var-field-decorator__placeholder {
-        transition: transform 0.3s var(--cubic-bezier), color 0.25s;
-      }
-
-      .var-field-decorator__line-legend {
-        max-width: 100%;
-        transition: max-width 0.1s var(--cubic-bezier) 0s;
-      }
     }
 
     .var-field-decorator--line-disabled {
@@ -258,12 +240,6 @@
   }
 
   &--small {
-    .var-field-decorator--placeholder-hint {
-      max-width: calc(
-        var(--field-decorator-placeholder-max-width) - var(--field-decorator-outlined-small-padding-right) -
-          var(--field-decorator-outlined-small-padding-left)
-      );
-    }
     .var-field-decorator--standard& {
       .var-field-decorator__wrap {
         padding: var(--field-decorator-standard-small-padding-top) 0
@@ -273,6 +249,11 @@
       .var-field-decorator__placeholder {
         transform: translate(0, var(--field-decorator-standard-small-placeholder-translate-y));
       }
+
+      .var-field-decorator--wrap-non-hint,
+      .var-field-decorator--icon-non-hint {
+        padding-top: var(--field-decorator-standard-small-non-hint-padding-top);
+      }
     }
 
     .var-field-decorator--outlined& {
@@ -280,6 +261,7 @@
         padding: 0 var(--field-decorator-outlined-small-padding-right) 0
           var(--field-decorator-outlined-small-padding-left);
       }
+
       .var-field-decorator__wrap {
         padding: var(--field-decorator-outlined-small-padding-top) 0
           var(--field-decorator-outlined-small-padding-bottom) 0;
@@ -304,10 +286,6 @@
             var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-placeholder-space) -
               var(--field-decorator-line-size)
           );
-
-        .var-field-decorator__line-legend-placeholder {
-          padding: 0 var(--field-decorator-outlined-small-placeholder-space);
-        }
       }
 
       .var-field-decorator--line-focus {
