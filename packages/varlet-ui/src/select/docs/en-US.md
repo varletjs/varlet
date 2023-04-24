@@ -16,11 +16,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -46,6 +47,7 @@ const value11 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+
     <var-select placeholder="Custom Icon" v-model="value6">
       <template #default>
         <var-option label="Eat">
@@ -71,13 +73,39 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select placeholder="Multiple Selection" multiple v-model="value7">
+    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select placeholder="Multiple Selection" multiple v-model="value8">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -86,7 +114,7 @@ const value11 = ref()
     <var-select
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -96,14 +124,14 @@ const value11 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select size="small" placeholder="Small Size" v-model="value11">
+    <var-select size="small" placeholder="Small Size" v-model="value12">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -141,11 +169,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -171,6 +200,7 @@ const value11 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+
     <var-select variant="outlined" placeholder="Custom Icon" v-model="value6">
       <template #default>
         <var-option label="Eat">
@@ -196,13 +226,39 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value7">
+    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value8">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -212,7 +268,7 @@ const value11 = ref()
       variant="outlined"
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -223,14 +279,14 @@ const value11 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value11">
+    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value12">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -336,6 +392,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |

@@ -16,6 +16,7 @@ const standardValue6 = ref('')
 const standardValue7 = ref('')
 const standardValue8 = ref('')
 const standardValue9 = ref('')
+const standardValue10 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -26,6 +27,7 @@ const outlinedValue6 = ref('')
 const outlinedValue7 = ref('')
 const outlinedValue8 = ref('')
 const outlinedValue9 = ref('')
+const outlinedValue10 = ref('')
 
 watchLang(use)
 watchDarkMode(dark)
@@ -51,6 +53,19 @@ watchDarkMode(dark)
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
+
+    <var-input
+      style="--field-decorator-middle-offset-y: 2.6vw"
+      :placeholder="pack.customIconSize"
+      v-model="standardValue10"
+    >
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vw" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vw" />
+      </template>
+    </var-input>
     <var-input :placeholder="pack.maxlength" :maxlength="10" v-model="standardValue8" />
     <var-input :placeholder="pack.textarea" textarea v-model="standardValue9" />
     <var-input :placeholder="pack.smallSize" size="small" v-model="standardValue" />
@@ -74,6 +89,19 @@ watchDarkMode(dark)
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
+      </template>
+    </var-input>
+    <var-input
+      variant="outlined"
+      style="--field-decorator-middle-offset-y: 2.6vw"
+      :placeholder="pack.customIconSize"
+      v-model="outlinedValue10"
+    >
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vw" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vw" />
       </template>
     </var-input>
     <var-input variant="outlined" :placeholder="pack.maxlength" :maxlength="10" v-model="outlinedValue8" />
