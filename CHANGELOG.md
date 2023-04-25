@@ -1,3 +1,26 @@
+# [2.10.0](https://github.com/varletjs/varlet/compare/v2.9.6...v2.10.0) (2023-04-24)
+
+
+### Bug Fixes
+
+* **extension:** newline not parsed ([28ad42c](https://github.com/varletjs/varlet/commit/28ad42c7147c1e14de27f5d9e23cfd259e06ef01))
+* **input:** placeholder style ([4a00a63](https://github.com/varletjs/varlet/commit/4a00a6352c494c59ebd73b3303c1b4e1fed61178))
+* **input:** remove transition delay ([2528f60](https://github.com/varletjs/varlet/commit/2528f60a25743935bffbc0f3a853c88ae9d62d37))
+* **ui/list:** clear list scroller listener on deactivated ([3640121](https://github.com/varletjs/varlet/commit/364012188a37abff256a24dadefff02e4f0f2181))
+* **ui/pagination:** fix error key ([cf7793a](https://github.com/varletjs/varlet/commit/cf7793aedbaf5564d737419b7721aeeded99e974))
+
+
+### Features
+
+* **icon:** add view icons ([cebb99d](https://github.com/varletjs/varlet/commit/cebb99d8f0f9245de17319605085101637a54234))
+* **markdown:** add id attribute for h3 tag & close [#976](https://github.com/varletjs/varlet/issues/976) ([#983](https://github.com/varletjs/varlet/issues/983)) ([78c1b1d](https://github.com/varletjs/varlet/commit/78c1b1d7a9ccee7de9e16ae0495102043341210b))
+* new icons and refactor rate component docs ([#990](https://github.com/varletjs/varlet/issues/990)) ([62787c7](https://github.com/varletjs/varlet/commit/62787c7e08bb288daba7aede615e46a5fddf14f2))
+* **ui/input, select:** new outlined variant ([#941](https://github.com/varletjs/varlet/issues/941)) ([c054e21](https://github.com/varletjs/varlet/commit/c054e2111e1f6ff1749ddca7b18282d0ba7d06e6))
+* **ui/Snackbar:** support icon and action in functional mode ([1f35aeb](https://github.com/varletjs/varlet/commit/1f35aeb7c08f2f57278eec431c86280491c14d47))
+* **vscode-extension:** add `varlet documentation` and  `varlet playground`  btns ([#962](https://github.com/varletjs/varlet/issues/962)) ([d36e532](https://github.com/varletjs/varlet/commit/d36e532e919a34a587e80f447b07abdf536eb756))
+
+
+
 ## [2.9.6](https://github.com/varletjs/varlet/compare/v2.9.5...v2.9.6) (2023-04-14)
 
 

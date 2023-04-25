@@ -16,7 +16,7 @@
     :elevation="2"
     :width="100"
     :height="100"
-    v-hover="{ color: '#fff', background: ' var(--color-primary)' }"
+    v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
   >
     HOVER
   </var-paper>

@@ -60,7 +60,7 @@ Set `simple` to `false` when you use medium and large screen devices, preview se
 
 ```html
 <template>
-  <var-pagination current="6" total="115" :simple="false"/>
+  <var-pagination :current="6" :total="115" :simple="false"/>
 </template>
 ```
 

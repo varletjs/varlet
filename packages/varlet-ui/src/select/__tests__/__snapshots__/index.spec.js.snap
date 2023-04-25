@@ -6,7 +6,7 @@ exports[`test select focus & blur methods 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->
@@ -36,7 +36,7 @@ exports[`test select focus & blur methods 2`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->
@@ -66,7 +66,7 @@ exports[`test select hint to be false 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer;">
         <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
-        <div class="var-field-decorator__wrap var-field-decorator--wrap-non-hint">
+        <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-non-hint var-field-decorator--placeholder-hidden" for=""><span class="var-field-decorator__placeholder-text"></span></label>
@@ -94,7 +94,7 @@ exports[`test select size 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--small">
       <div class="var-field-decorator__controller" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->
@@ -124,7 +124,7 @@ exports[`test select validation 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select var-select--error" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->
@@ -165,7 +165,7 @@ exports[`test select variant 1`] = `
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->
@@ -195,7 +195,7 @@ exports[`test select variant 2`] = `
     <div class="var-field-decorator var--box var-field-decorator--outlined">
       <div class="var-field-decorator__controller" style="cursor: pointer;">
         <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__wrap">
+        <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label">
               <!--v-if-->

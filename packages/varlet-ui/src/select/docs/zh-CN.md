@@ -16,11 +16,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -46,6 +47,7 @@ const value11 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
+
     <var-select placeholder="自定义图标" v-model="value6">
       <template #default>
         <var-option label="吃饭">
@@ -71,13 +73,40 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select placeholder="多选" multiple v-model="value7">
+
+    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+      <template #default>
+        <var-option label="吃饭">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>吃饭</span>
+        </var-option>
+        <var-option label="睡觉">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>睡觉</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select placeholder="多选" multiple v-model="value8">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select placeholder="纸片风格的多选" chip multiple v-model="value8">
+    <var-select placeholder="纸片风格的多选" chip multiple v-model="value9">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
@@ -86,7 +115,7 @@ const value11 = ref()
     <var-select
       placeholder="单选值校验"
       :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
@@ -96,14 +125,14 @@ const value11 = ref()
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select placeholder="小尺寸" v-model="value11">
+    <var-select placeholder="小尺寸" v-model="value12">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
@@ -141,11 +170,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -171,6 +201,7 @@ const value11 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
+
     <var-select variant="outlined" placeholder="自定义图标" v-model="value6">
       <template #default>
         <var-option label="吃饭">
@@ -196,13 +227,39 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="多选" multiple v-model="value7">
+    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+      <template #default>
+        <var-option label="吃饭">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>吃饭</span>
+        </var-option>
+        <var-option label="睡觉">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>睡觉</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select variant="outlined" placeholder="多选" multiple v-model="value8">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select variant="outlined" placeholder="纸片风格的多选" chip multiple v-model="value8">
+    <var-select variant="outlined" placeholder="纸片风格的多选" chip multiple v-model="value9">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
@@ -212,7 +269,7 @@ const value11 = ref()
       variant="outlined"
       placeholder="单选值校验"
       :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
@@ -223,14 +280,14 @@ const value11 = ref()
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="小尺寸" v-model="value11">
+    <var-select variant="outlined" size="small" placeholder="小尺寸" v-model="value12">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
@@ -338,6 +395,7 @@ const value11 = ref()
 
 | 变量名 | 默认值 |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |

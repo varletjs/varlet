@@ -6,6 +6,7 @@ export default {
   readonly: 'Readonly',
   clearable: 'Clearable',
   customIcon: 'Custom Icon',
+  customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   multipleValidate: 'Multiple Validate',
   placeholder: 'Please select one the options',

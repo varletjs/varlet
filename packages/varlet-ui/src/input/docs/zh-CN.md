@@ -19,6 +19,7 @@ const value6 = ref('')
 const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
+const value10 = ref('')
 </script>
 
 <template>
@@ -40,9 +41,17 @@ const value9 = ref('')
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input placeholder="最大长度" :maxlength="10" v-model="value7" />
-    <var-input placeholder="文本域" textarea v-model="value8" />
-    <var-input placeholder="小尺寸" size="small" v-model="value9" />
+    <var-input placeholder="自定义图标尺寸" style="--field-decorator-middle-offset-y: 8px" v-model="value7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-input>
+    <var-input placeholder="最大长度" :maxlength="10" v-model="value8" />
+    <var-input placeholder="文本域" textarea v-model="value9" />
+    <var-input placeholder="小尺寸" size="small" v-model="value10" />
   </var-space>
 </template>
 
@@ -72,6 +81,7 @@ const value6 = ref('')
 const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
+const value10 = ref('')
 </script>
 
 <template>
@@ -94,9 +104,22 @@ const value9 = ref('')
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input variant="outlined" placeholder="最大长度" :maxlength="10" v-model="value7" />
-    <var-input variant="outlined" placeholder="文本域" textarea v-model="value8" />
-    <var-input variant="outlined" placeholder="小尺寸" size="small" v-model="value9" />
+    <var-input 
+      variant="outlined" 
+      placeholder="自定义图标尺寸" 
+      style="--field-decorator-middle-offset-y: 8px" 
+      v-model="value7"
+    >
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-input>
+    <var-input variant="outlined" placeholder="最大长度" :maxlength="10" v-model="value8" />
+    <var-input variant="outlined" placeholder="文本域" textarea v-model="value9" />
+    <var-input variant="outlined" placeholder="小尺寸" size="small" v-model="value10" />
   </var-space>
 </template>
 
@@ -171,6 +194,7 @@ const value9 = ref('')
 
 | 变量名 | 默认值 |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -187,8 +211,8 @@ const value9 = ref('')
 | `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
 | `--field-decorator-standard-small-padding-top` | `18px` |
 | `--field-decorator-standard-small-padding-bottom` | `2px` |
-| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
-| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
+| `--field-decorator-standard-small-icon-padding` | `18px 0 4px` |
+| `--field-decorator-standard-small-non-hint-padding-top` | `4px` |
 | `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |

@@ -6,6 +6,7 @@ export default {
   readonly: '只读',
   clearable: '可清除',
   customIcon: '自定义图标',
+  customIconSize: '自定义图标尺寸',
   validate: '单选值校验',
   multipleValidate: '多选值校验',
   placeholder: '请选择一个选项',

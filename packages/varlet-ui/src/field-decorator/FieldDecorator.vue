@@ -21,7 +21,7 @@
         <slot name="prepend-icon" />
       </div>
 
-      <div :class="classes(n('wrap'), [!hint, n('--wrap-non-hint')])">
+      <div :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
         <slot />
 
         <label
