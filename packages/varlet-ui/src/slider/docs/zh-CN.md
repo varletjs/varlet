@@ -214,13 +214,29 @@ const value = ref(20)
 ```html
 <script>
 import { ref } from 'vue'
-const value = ref(50)
+const value1 = ref(50)
+const value2 = ref([7, 64])
 </script>
 
 <template>
-  <div style="height: 300px">
-    <var-slider v-model="value" label-visible="always" direction="vertical" />
-  </div>
+  <var-space justify="space-around">
+    <div style="height: 300px">
+      <var-slider v-model="values.value1" label-visible="always" direction="vertical" />
+    </div>
+    <div style="height: 300px">
+      <var-slider
+        v-model="values.value2"
+        thumb-size="20px"
+        range
+        label-color="purple"
+        active-color="#e0732c"
+        track-color="#3a68b4"
+        thumb-color="#e25241"
+        label-text-color="#ededed"
+        direction="vertical"
+      />
+    </div>
+  </var-space>
 </template>
 
 ```
