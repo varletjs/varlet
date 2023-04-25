@@ -226,7 +226,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
