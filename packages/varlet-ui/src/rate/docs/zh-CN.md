@@ -117,11 +117,7 @@ const score = ref(3)
 ```
 
 
-<<<<<<< HEAD
-### 监听 change 事件
-=======
 ### 监听事件
->>>>>>> upstream/dev
 
 通过调用 `change` 事件完成其他交互逻辑。
 

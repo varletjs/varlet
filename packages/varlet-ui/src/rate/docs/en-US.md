@@ -115,7 +115,7 @@ const score = ref(3)
 </template>
 ` ` `
 
-### listens for the change event
+### Listen Events
 
 Other interaction logic is completed by calling the `change` event.
 
