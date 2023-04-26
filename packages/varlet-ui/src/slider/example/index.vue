@@ -81,20 +81,10 @@ watchDarkMode(dark)
   <app-type>{{ pack.vertical }}</app-type>
   <var-space justify="space-around">
     <div style="height: 300px">
-      <var-slider v-model="values.value12" label-visible="always" direction="vertical" />
+      <var-slider v-model="values.value12" direction="vertical" />
     </div>
     <div style="height: 300px">
-      <var-slider
-        v-model="values.value13"
-        thumb-size="20px"
-        range
-        label-color="purple"
-        active-color="#e0732c"
-        track-color="#3a68b4"
-        thumb-color="#e25241"
-        label-text-color="#ededed"
-        direction="vertical"
-      />
+      <var-slider v-model="values.value13" range label-visible="always" direction="vertical" />
     </div>
   </var-space>
 </template>
