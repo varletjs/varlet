@@ -200,7 +200,7 @@ export default defineComponent({
         fileReader.onload = () => {
           const base64 = fileReader.result as string
 
-          varFile.cover = base64
+          varFile.file!.type.startsWith('image') && (varFile.cover = base64)
           varFile.url = base64
 
           resolve(varFile)
