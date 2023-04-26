@@ -76,7 +76,6 @@ const score = ref(3)
 ### 使用半星
 
 通过 `half` 属性将评分设置为可半选，`half-icon` 属性设置半选时的样式。
-ps:👍🏻暂无半星
 
 ```html
 <script setup>
