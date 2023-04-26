@@ -161,6 +161,11 @@ watchDarkMode(dark)
     </var-uploader>
   </var-space>
 
+  <app-type>{{ pack.progressBar }}</app-type>
+  <var-space>
+    <var-uploader v-model="values.files" @after-read="handleAfterRead2" :progress="true" accept="*/*" />
+  </var-space>
+
   <div class="space"></div>
 </template>
 

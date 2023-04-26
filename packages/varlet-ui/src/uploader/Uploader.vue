@@ -17,7 +17,9 @@
           :class="
             classes(n('file-indicator'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
           "
-        ></div>
+        >
+          <div :style="{ width: toSizeUnit(f.progress) }" v-if="progress"></div>
+        </div>
       </div>
 
       <div
@@ -89,6 +91,7 @@ import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { type UploaderProvider } from './provide'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('uploader')
 
@@ -187,12 +190,17 @@ export default defineComponent({
 
     const resolver = (varFile: VarFile): Promise<VarFile> => {
       return new Promise((resolve) => {
+        if (!varFile.file!.type.startsWith('image')) {
+          resolve(varFile)
+          return
+        }
+
         const fileReader = new FileReader()
 
         fileReader.onload = () => {
           const base64 = fileReader.result as string
 
-          varFile.file!.type.startsWith('image') && (varFile.cover = base64)
+          varFile.cover = base64
           varFile.url = base64
 
           resolve(varFile)
@@ -348,9 +356,10 @@ export default defineComponent({
       },
       { deep: true }
     )
-
+    const progress: boolean = computed(() => props.progress)
     return {
       n,
+      progress,
       classes,
       formatElevation,
       input,
@@ -376,6 +385,7 @@ export default defineComponent({
       reset,
       chooseFile,
       closePreview,
+      toSizeUnit,
     }
   },
 })
