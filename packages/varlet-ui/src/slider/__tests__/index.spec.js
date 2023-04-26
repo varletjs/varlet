@@ -40,7 +40,7 @@ describe('test slider props', () => {
     await wrapper.setData({ step: -1 })
     await wrapper.setData({ step: 3, value: 0 })
 
-    const el = wrapper.find('.var-slider__thumb')
+    const el = wrapper.find('.var-slider__horizontal__thumb')
 
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 50, 0)
@@ -61,7 +61,7 @@ describe('test slider props', () => {
       },
     })
 
-    expect(wrapper.findAll('.var-slider__thumb').length).toBe(2)
+    expect(wrapper.findAll('.var-slider__horizontal__thumb').length).toBe(2)
 
     wrapper.unmount()
   })
@@ -73,25 +73,25 @@ describe('test slider props', () => {
         labelVisible: 'never',
       },
     })
-    const el = wrapper.find('.var-slider__thumb-label')
-    expect(el.classes()).not.toContain('var-slider__thumb-label--active')
+    const el = wrapper.find('.var-slider__horizontal__thumb-label')
+    expect(el.classes()).not.toContain('var-slider__horizontal__thumb-label--active')
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 0, 0)
-    expect(el.classes()).not.toContain('var-slider__thumb-label--active')
+    expect(el.classes()).not.toContain('var-slider__horizontal__thumb-label--active')
     await trigger(el, 'touchend', 0, 0)
 
     await wrapper.setProps({ labelVisible: 'normal' })
-    expect(el.classes()).not.toContain('var-slider__thumb-label--active')
+    expect(el.classes()).not.toContain('var-slider__horizontal__thumb-label--active')
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 0, 0)
-    expect(el.classes()).toContain('var-slider__thumb-label--active')
+    expect(el.classes()).toContain('var-slider__horizontal__thumb-label--active')
     await trigger(el, 'touchend', 0, 0)
-    expect(el.classes()).not.toContain('var-slider__thumb-label--active')
+    expect(el.classes()).not.toContain('var-slider__horizontal__thumb-label--active')
 
     await wrapper.setProps({ labelVisible: 'always' })
-    expect(el.classes()).toContain('var-slider__thumb-label--active')
+    expect(el.classes()).toContain('var-slider__horizontal__thumb-label--active')
     await trigger(el, 'touchend', 0, 0)
-    expect(el.classes()).toContain('var-slider__thumb-label--active')
+    expect(el.classes()).toContain('var-slider__horizontal__thumb-label--active')
 
     wrapper.unmount()
   })
@@ -105,7 +105,7 @@ describe('test slider props', () => {
         },
       })
 
-      expect(wrapper.find('.var-slider__track-fill').attributes('style')).toContain('background: red;')
+      expect(wrapper.find('.var-slider__horizontal__track-fill').attributes('style')).toContain('background: red;')
 
       wrapper.unmount()
     })
@@ -118,7 +118,9 @@ describe('test slider props', () => {
         },
       })
 
-      expect(wrapper.find('.var-slider__track-background').attributes('style')).toContain('background: red;')
+      expect(wrapper.find('.var-slider__horizontal__track-background').attributes('style')).toContain(
+        'background: red;'
+      )
 
       wrapper.unmount()
     })
@@ -131,7 +133,7 @@ describe('test slider props', () => {
         },
       })
 
-      expect(wrapper.find('.var-slider__thumb-block').attributes('style')).toContain('background: red;')
+      expect(wrapper.find('.var-slider__horizontal__thumb-block').attributes('style')).toContain('background: red;')
 
       wrapper.unmount()
     })
@@ -145,8 +147,8 @@ describe('test slider props', () => {
         },
       })
 
-      expect(wrapper.find('.var-slider__thumb-label').attributes('style')).toContain('background: red;')
-      expect(wrapper.find('.var-slider__thumb-label').attributes('style')).toContain('color: blue;')
+      expect(wrapper.find('.var-slider__horizontal__thumb-label').attributes('style')).toContain('background: red;')
+      expect(wrapper.find('.var-slider__horizontal__thumb-label').attributes('style')).toContain('color: blue;')
 
       wrapper.unmount()
     })
@@ -160,7 +162,7 @@ describe('test slider props', () => {
       },
     })
 
-    expect(wrapper.find('.var-slider__track-background').attributes('style')).toContain('height: 4px;')
+    expect(wrapper.find('.var-slider__horizontal__track-background').attributes('style')).toContain('height: 4px;')
 
     wrapper.unmount()
   })
@@ -177,7 +179,7 @@ describe('test slider props', () => {
         <var-slider v-model="value" max="50" min="-50"/>`,
     })
 
-    const el = wrapper.find('.var-slider__thumb')
+    const el = wrapper.find('.var-slider__horizontal__thumb')
 
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 200, 0)
@@ -201,7 +203,7 @@ describe('test slider props', () => {
       },
     })
 
-    expect(wrapper.find('.var-slider__thumb-label--active').attributes('style')).toContain('height: 40px;')
+    expect(wrapper.find('.var-slider__horizontal__thumb-label--active').attributes('style')).toContain('height: 40px;')
     wrapper.unmount()
   })
 
@@ -232,7 +234,7 @@ describe('test slider props', () => {
       template,
     })
 
-    const el = wrapper.find('.var-slider__thumb')
+    const el = wrapper.find('.var-slider__horizontal__thumb')
 
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 0, 50)
@@ -288,7 +290,7 @@ describe('test slider props', () => {
       template: `<var-slider v-model="value" :rules="[(v) => v > 10 || 'error message']" />`,
     })
 
-    const el = wrapper.find('.var-slider__thumb')
+    const el = wrapper.find('.var-slider__horizontal__thumb')
 
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 5, 0)
@@ -332,8 +334,8 @@ test('test slider events', async () => {
     template,
   })
 
-  const el = wrapper.find('.var-slider__thumb')
-  const blockEl = wrapper.find('.var-slider__block')
+  const el = wrapper.find('.var-slider__horizontal__thumb')
+  const blockEl = wrapper.find('.var-slider__horizontal__block')
 
   await trigger(el, 'touchstart', 0, 0)
 
@@ -351,7 +353,7 @@ test('test slider events', async () => {
     value: [20, 30],
   })
 
-  const el1 = wrapper.findAll('.var-slider__thumb')[1]
+  const el1 = wrapper.findAll('.var-slider__horizontal__thumb')[1]
 
   await trigger(el1, 'touchstart', 0, 0)
   await trigger(el1, 'touchmove', 50, 0)
