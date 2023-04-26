@@ -10,8 +10,8 @@
           :class="n(`${direction}__track-background`)"
           :style="{
             background: trackColor,
-            height: vertical ? '100%' : multiplySizeUnit(trackHeight),
-            width: vertical ? multiplySizeUnit(trackHeight) : '100%',
+            height: isVertical ? '100%' : multiplySizeUnit(trackHeight),
+            width: isVertical ? multiplySizeUnit(trackHeight) : '100%',
           }"
         ></div>
         <div :class="n(`${direction}__track-fill`)" :style="getFillStyle"></div>
@@ -20,7 +20,7 @@
         v-for="item in thumbList"
         :class="n(`${direction}__thumb`)"
         :key="item.enumValue"
-        :style="syncThumbStyle(item)"
+        :style="thumbStyle(item)"
         @touchstart.stop="start($event, item.enumValue)"
         @touchmove.stop="move($event, item.enumValue)"
         @touchend="end(item.enumValue)"
@@ -88,7 +88,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { getLeft, getClientTop, multiplySizeUnit } from '../utils/elements'
+import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
@@ -179,7 +179,7 @@ export default defineComponent({
           ? getValue(Math.max(modelValue[0], modelValue[1])) - gap
           : getValue(modelValue as number)
 
-      return vertical.value
+      return isVertical.value
         ? {
             left: '0px',
             height: `${fillLength}%`,
@@ -198,31 +198,27 @@ export default defineComponent({
 
     const isReadonly: ComputedRef<boolean | undefined> = computed(() => props.readonly || form?.readonly.value)
 
-    const vertical: ComputedRef<boolean> = computed(() => props.direction === 'vertical')
+    const isVertical: ComputedRef<boolean> = computed(() => props.direction === 'vertical')
 
     const getOffset = (e: MouseEvent) => {
-      const { direction } = props
       const currentTarget = e.currentTarget as HTMLElement
 
       if (!currentTarget) return 0
 
-      if (direction === 'horizontal') {
+      if (!isVertical.value) {
         return e.clientX - getLeft(currentTarget)
       }
-      // 用元素实际的高度减去鼠标与元素顶部的距离差
-      return maxDistance.value - (e.clientY - getClientTop(currentTarget as HTMLElement))
+
+      return maxDistance.value - (e.clientY - currentTarget.getBoundingClientRect().top)
     }
 
-    const syncThumbStyle = (thumb: ThumbsListProps) => {
-      return vertical.value
-        ? {
-            bottom: `${thumb.value}%`,
-            zIndex: thumbsProps[thumb.enumValue].active ? 1 : undefined,
-          }
-        : {
-            left: `${thumb.value}%`,
-            zIndex: thumbsProps[thumb.enumValue].active ? 1 : undefined,
-          }
+    const thumbStyle = (thumb: ThumbsListProps) => {
+      const key = isVertical.value ? 'bottom' : 'left'
+
+      return {
+        [key]: `${thumb.value}%`,
+        zIndex: thumbsProps[thumb.enumValue].active ? 1 : undefined,
+      }
     }
 
     const showLabel = (type: keyof ThumbsProps): boolean => {
@@ -297,15 +293,15 @@ export default defineComponent({
       if (isDisabled.value || isReadonly.value) return
       call(props.onStart)
       isScroll.value = true
-      thumbsProps[type].startPosition = event.touches[0][vertical.value ? 'clientY' : 'clientX']
+      thumbsProps[type].startPosition = event.touches[0][isVertical.value ? 'clientY' : 'clientX']
     }
 
     const move = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (isDisabled.value || isReadonly.value || !isScroll.value) return
-      let moveDistance =
-        (vertical.value
-          ? thumbsProps[type].startPosition - event.touches[0].clientY
-          : event.touches[0].clientX - thumbsProps[type].startPosition) + thumbsProps[type].currentOffset
+
+      const { startPosition, currentOffset } = thumbsProps[type]
+      const { clientX, clientY } = event.touches[0]
+      let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
 
       if (moveDistance <= 0) moveDistance = 0
       else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
@@ -417,7 +413,7 @@ export default defineComponent({
     useMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
-      maxDistance.value = (sliderEl.value as HTMLDivElement)[vertical.value ? 'offsetHeight' : 'offsetWidth']
+      maxDistance.value = (sliderEl.value as HTMLDivElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']
     })
 
     return {
@@ -427,8 +423,8 @@ export default defineComponent({
       sliderEl,
       getFillStyle,
       isDisabled,
-      vertical,
-      syncThumbStyle,
+      isVertical,
+      thumbStyle,
       errorMessage,
       thumbsProps,
       thumbList,

@@ -15,10 +15,6 @@ export function getTop(element: HTMLElement): number {
   return top + (document.body.scrollTop || document.documentElement.scrollTop)
 }
 
-export function getClientTop(element: HTMLElement): number {
-  return element.getBoundingClientRect().top
-}
-
 export function getScrollTop(element: Element | Window): number {
   const top = 'scrollTop' in element ? element.scrollTop : element.pageYOffset
 

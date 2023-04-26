@@ -209,7 +209,7 @@ const value = ref(20)
 
 ### 垂直方向
 
-通过设置 `direction` 属性值为 `vertical` 来让滑块垂直显示。同时对其他属性也是兼容的。
+通过设置 `direction` 属性值为 `vertical` 来让滑块垂直显示。
 
 ```html
 <script>
@@ -245,25 +245,25 @@ const value2 = ref([7, 64])
 
 ### 属性
 
-| 参数                 | 说明                               | 类型 | 默认值               |
-|--------------------|----------------------------------| ------ |-------------------|
-| `v-model`          | 当前进度值                            | _number \| [number, number]_ | `0` |
-| `step`             | 步长，取值必须大于 0                      | _string \| number_           | `1` |
-| `range`            | 是否启用双滑块                          | _boolean_ | `false`           |
-| `max`              | 最大值                              | _string \| number_ | `100`           |
-| `min`              | 最小值                              | _string \| number_ | `0`           |
+| 参数                 | 说明                                | 类型 | 默认值               |
+|--------------------|-----------------------------------| ------ |-------------------|
+| `v-model`          | 当前进度值                             | _number \| [number, number]_ | `0` |
+| `step`             | 步长，取值必须大于 0                       | _string \| number_           | `1` |
+| `range`            | 是否启用双滑块                           | _boolean_ | `false`           |
+| `max`              | 最大值                               | _string \| number_ | `100`           |
+| `min`              | 最小值                               | _string \| number_ | `0`           |
 | `label-visible`    | 是否显示标签，可选值为 `always normal never` | _string_ | `normal`          |
-| `label-text-color` | 标签文字颜色                           | _string_ | `#fff`            |
-| `label-color`      | 标签颜色                             | _string_ | `-`               |
-| `active-color`     | 已激活的轨道背景颜色                       | _string_ | `-`               |
-| `track-color`      | 轨道背景颜色                           | _string_ | `-`               |
-| `track-height`     | 轨道的高度                            | _string \| number_           | `2` |
-| `thumb-size`       | 滑块的大小                            | _string \| number_           | `12` |
-| `thumb-color`      | 滑块的背景颜色                          | _string_ | `-`               |
-| `disabled`         | 是否禁用                             | _boolean_ | `false`           |
-| `readonly`         | 是否只读                             | _boolean_ | `false`           |
-| `direction` | 显示方向，可选值为 `vertical` | _string_ | `horizontal` |
-| `rules`            | 校验规则                             | _array_ | `-`               |
+| `label-text-color` | 标签文字颜色                            | _string_ | `#fff`            |
+| `label-color`      | 标签颜色                              | _string_ | `-`               |
+| `active-color`     | 已激活的轨道背景颜色                        | _string_ | `-`               |
+| `track-color`      | 轨道背景颜色                            | _string_ | `-`               |
+| `track-height`     | 轨道的高度                             | _string \| number_           | `2` |
+| `thumb-size`       | 滑块的大小                             | _string \| number_           | `12` |
+| `thumb-color`      | 滑块的背景颜色                           | _string_ | `-`               |
+| `disabled`         | 是否禁用                              | _boolean_ | `false`           |
+| `readonly`         | 是否只读                              | _boolean_ | `false`           |
+| `direction` | 显示方向，可选值为 `vertical horizontal`             | _string_ | `horizontal` |
+| `rules`            | 校验规则                              | _array_ | `-`               |
 
 ### 事件
 

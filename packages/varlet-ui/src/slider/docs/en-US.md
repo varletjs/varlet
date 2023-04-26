@@ -207,9 +207,9 @@ const value = ref(20)
 </template>
 ```
 
-### Vertical direction
+### Vertical
 
-Set the `direction` attribute value to `vertical` to make the slider display vertically. At the same time, other attributes are also compatible.
+Set the `direction` attribute value to `vertical` to make the slider display vertically.
 
 ```html
 <script>
@@ -244,25 +244,25 @@ const value2 = ref([7, 64])
 
 ### Props
 
-| Prop | Description                                                      | Type | Default |
-| ----- |------------------------------------------------------------------| -------- | ---------- |
-| `v-model` | The value of slider                                              | _number \| [number, number]_ | `0` |
-| `step`| Step size. The value must greater than 0                         | _string \| number_ | `1` |
-| `range`| Whether open the dual thumb mode                                 | _boolean_ | `false` |
-| `max` | The maximum value the slider can slide to                        | _string \| number_ | `100`           |
-| `min` | The minimum value the slider can slide to                        | _string \| number_ | `0`           |
+| Prop | Description                                                              | Type | Default |
+| ----- |--------------------------------------------------------------------------| -------- | ---------- |
+| `v-model` | The value of slider                                                      | _number \| [number, number]_ | `0` |
+| `step`| Step size. The value must greater than 0                                 | _string \| number_ | `1` |
+| `range`| Whether open the dual thumb mode                                         | _boolean_ | `false` |
+| `max` | The maximum value the slider can slide to                                | _string \| number_ | `100`           |
+| `min` | The minimum value the slider can slide to                                | _string \| number_ | `0`           |
 | `label-visible` | Whether to display labels, the optional value is `always, normal, never` | _string_ | `normal` |
-| `label-text-color` | Color of label text                                              | _string_ | `#fff` |
-| `label-color`  | Background color of label                                        | _string_ | `-`               |
-| `active-color` | Background color of actived track                                | _string_ | `-`               |
-| `track-color`  | Background color of track                                        | _string_ | `-`               |
-| `track-height` | Height of track                                                  | _string \| number_ | `2` |
-| `thumb-size` | Size of thumb                                                    | _string \| number_ | `12` |
-| `thumb-color`   | Background color of thumb                           | _string_ | `-`               |
-| `disabled`|  Whether to disable slider                                       | _boolean_  | `false` |
-| `readonly`|  Whether to readonly slider                                      | _boolean_  | `false` |
-| `direction` | Direction of slider, Can be set to `vertical` | _string_ | `horizontal` |
-| `rules`| Validation rules                                                 | _array_  | `-` |
+| `label-text-color` | Color of label text                                                      | _string_ | `#fff` |
+| `label-color`  | Background color of label                                                | _string_ | `-`               |
+| `active-color` | Background color of actived track                                        | _string_ | `-`               |
+| `track-color`  | Background color of track                                                | _string_ | `-`               |
+| `track-height` | Height of track                                                          | _string \| number_ | `2` |
+| `thumb-size` | Size of thumb                                                            | _string \| number_ | `12` |
+| `thumb-color`   | Background color of thumb                                                | _string_ | `-`               |
+| `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
+| `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
+| `direction` | Direction of slider, Can be set to `vertical horizontal`                           | _string_ | `horizontal` |
+| `rules`| Validation rules                                                         | _array_  | `-` |
 
 ### Events
 
