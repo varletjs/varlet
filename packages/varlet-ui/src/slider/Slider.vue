@@ -1,24 +1,24 @@
 <template>
   <div :class="n(direction)">
     <div
-      :class="classes(n(`${direction}__block`), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
+      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
       ref="sliderEl"
       @click="click"
     >
-      <div :class="n(`${direction}__track`)">
+      <div :class="n(`${direction}-track`)">
         <div
-          :class="n(`${direction}__track-background`)"
+          :class="n(`${direction}-track-background`)"
           :style="{
             background: trackColor,
             height: isVertical ? '100%' : multiplySizeUnit(trackHeight),
             width: isVertical ? multiplySizeUnit(trackHeight) : '100%',
           }"
         ></div>
-        <div :class="n(`${direction}__track-fill`)" :style="getFillStyle"></div>
+        <div :class="n(`${direction}-track-fill`)" :style="getFillStyle"></div>
       </div>
       <div
         v-for="item in thumbList"
-        :class="n(`${direction}__thumb`)"
+        :class="n(`${direction}-thumb`)"
         :key="item.enumValue"
         :style="thumbStyle(item)"
         @touchstart.stop="start($event, item.enumValue)"
@@ -28,7 +28,7 @@
       >
         <slot name="button" :current-value="item.text">
           <div
-            :class="n(`${direction}__thumb-block`)"
+            :class="n(`${direction}-thumb-block`)"
             :style="{
               background: thumbColor,
             }"
@@ -36,9 +36,9 @@
           ></div>
           <div
             :class="
-              classes(n(`${direction}__thumb-ripple`), [
+              classes(n(`${direction}-thumb-ripple`), [
                 thumbsProps[item.enumValue].active,
-                n(`${direction}__thumb-ripple--active`),
+                n(`${direction}-thumb-ripple--active`),
               ])
             "
             :style="{
@@ -49,10 +49,7 @@
           </div>
           <div
             :class="
-              classes(n(`${direction}__thumb-label`), [
-                showLabel(item.enumValue),
-                n(`${direction}__thumb-label--active`),
-              ])
+              classes(n(`${direction}-thumb-label`), [showLabel(item.enumValue), n(`${direction}-thumb-label--active`)])
             "
             :style="{
               background: labelColor,
