@@ -1,5 +1,6 @@
 <script setup>
 import VarSlider from '..'
+import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { reactive } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
@@ -18,6 +19,8 @@ const values = reactive({
   value9: [5, 38],
   value10: [7, 64],
   value11: 0,
+  value12: 50,
+  value13: [7, 64],
 })
 
 function handleChange(v) {
@@ -74,6 +77,16 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.validateValue }}</app-type>
   <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
+
+  <app-type>{{ pack.vertical }}</app-type>
+  <var-space justify="space-around">
+    <div style="height: 300px">
+      <var-slider v-model="values.value12" direction="vertical" />
+    </div>
+    <div style="height: 300px">
+      <var-slider v-model="values.value13" range label-visible="always" direction="vertical" />
+    </div>
+  </var-space>
 </template>
 
 <style>
