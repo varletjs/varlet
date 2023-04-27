@@ -24,6 +24,10 @@ export function declareEmptySFC() {
   return `${SFC_DECLARE}{}\n`
 }
 
+export function isTS(lang = '') {
+  return /tsx?$/.test(lang)
+}
+
 export function replaceExportToDeclare(script: string) {
   return script.replace(EXPORT, SFC_DECLARE)
 }
@@ -85,6 +89,7 @@ export async function compileSFC(sfc: string) {
       source: template.content,
       filename: sfc,
       compilerOptions: {
+        expressionPlugins: isTS(descriptor.script?.lang) ? ['typescript'] : undefined,
         scopeId,
         bindingMetadata,
       },

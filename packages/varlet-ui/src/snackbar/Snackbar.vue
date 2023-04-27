@@ -14,7 +14,7 @@
   </teleport>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue'
 import VarSnackbarCore from './core'
 import { createNamespace, useTeleport } from '../utils/components'
