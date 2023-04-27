@@ -113,7 +113,7 @@ const score = ref(3)
 <var-rate v-model="score" disabled/>
 <var-rate v-model="score" readonly/>
 </template>
-` ` `
+```
 
 ### Listen Events
 
