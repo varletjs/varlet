@@ -18,7 +18,14 @@
             classes(n('file-indicator'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
           "
         >
-          <div :style="{ width: toSizeUnit(f.progress) }" v-if="progress"></div>
+          <div :class="classes(n('progress-container'))" v-if="progress">
+            <div
+              :class="
+                classes(n('progress'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
+              "
+              :style="{ width: Math.floor(f.progress) + '%' }"
+            ></div>
+          </div>
         </div>
       </div>
 
@@ -132,6 +139,7 @@ export default defineComponent({
 
       return isNumber(maxlength) ? `${length} / ${maxlength}` : ''
     })
+    const progress: Ref<boolean> = computed(() => props.progress)
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -148,7 +156,6 @@ export default defineComponent({
       if (hideList) {
         return []
       }
-
       return modelValue
     })
 
@@ -356,11 +363,11 @@ export default defineComponent({
       },
       { deep: true }
     )
-    const progress: boolean = computed(() => props.progress)
+
     return {
       n,
-      progress,
       classes,
+      progress,
       formatElevation,
       input,
       files,

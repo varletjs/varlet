@@ -186,4 +186,17 @@
     color: var(--uploader-disabled-text-color);
     cursor: not-allowed;
   }
+
+  &__progress-container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--uploader-file-cover-background);
+  }
+
+  &__progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--uploader-file-indicator-success-color);
+    transition: width 0.3s ease-in-out;
+  }
 }
