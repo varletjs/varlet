@@ -79,7 +79,7 @@
           ref="fieldsetEl"
         >
           <legend
-            :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])"
+            :class="classes(n('line-legend'), [isFloating(), n('line-legend--hint')])"
             :style="{ width: legendWidth, maxWidth: legendMaxWidth }"
           ></legend>
         </fieldset>
@@ -108,11 +108,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, nextTick, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watchEffect, watch, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
-import { useEventListener } from '@varlet/use'
+import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('field-decorator')
 
@@ -154,42 +154,28 @@ export default defineComponent({
       controllerWidth.value = ''
     }
 
+    const isFloating = () => props.hint && (!isEmpty(props.value) || props.isFocus)
+
     const resize = () => {
-      const { size, placeholder, hint, value, isFocus, variant } = props
+      const { size, placeholder, variant } = props
 
-      nextTick().then(() => {
-        if (!placeholderTextEl.value || !controllerEl.value || !prependIconEl.value) {
-          return
-        }
+      if (!isFloating() || !placeholder) {
+        resetSize()
+        return
+      }
 
-        if (variant === 'outlined' && !fieldsetEl.value) {
-          return
-        }
+      const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
+      const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value!)?.width
+      const prependIconWidth = window.getComputedStyle(prependIconEl.value!)?.width
+      const translateY = variant === 'outlined' ? '-50%' : '0'
+      placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
+      controllerWidth.value = window.getComputedStyle(controllerEl.value!).width
 
-        const shouldRunAnimation = hint && (!isEmpty(value) || isFocus)
-
-        if (!shouldRunAnimation || !placeholder) {
-          resetSize()
-          return
-        }
-
-        const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-        const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value)?.width
-        const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width
-        const translateY = variant === 'outlined' ? '-50%' : '0'
-        placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
-        controllerWidth.value = window.getComputedStyle(controllerEl.value).width
-
-        if (variant === 'outlined') {
-          const {
-            width: fieldsetWidth,
-            paddingLeft: fieldsetWidthPaddingLeft,
-            paddingRight: fieldsetWidthPaddingRight,
-          } = window.getComputedStyle(fieldsetEl.value!)
-          legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
-          legendMaxWidth.value = `calc(${fieldsetWidth} - ${fieldsetWidthPaddingLeft} - ${fieldsetWidthPaddingRight})`
-        }
-      })
+      if (variant === 'outlined') {
+        const { width, paddingLeft, paddingRight } = window.getComputedStyle(fieldsetEl.value!)
+        legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
+        legendMaxWidth.value = `calc(${width} - ${paddingLeft} - ${paddingRight})`
+      }
     }
 
     const handleClear = (e: Event) => {
@@ -200,7 +186,8 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    watchEffect(resize)
+    watch(() => [props.size, props.placeholder, props.hint, props.value, props.isFocus, props.variant], resize)
+    useMounted(resize)
     useEventListener(() => window, 'resize', resize)
 
     return {
@@ -213,6 +200,7 @@ export default defineComponent({
       legendWidth,
       legendMaxWidth,
       controllerWidth,
+      isFloating,
       computePlaceholderState,
       n,
       classes,
