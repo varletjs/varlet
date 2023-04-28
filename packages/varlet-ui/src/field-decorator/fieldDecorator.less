@@ -75,11 +75,13 @@
     cursor: inherit;
     transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier), color 0.25s, width 0.28s;
+    transition: transform 0.28s var(--cubic-bezier), color 0.25s;
   }
 
   &__placeholder-text {
     display: inline-block;
+    pointer-events: none;
+    opacity: 0;
   }
 
   &__clear-icon[var-field-decorator-cover] {
@@ -89,7 +91,7 @@
   }
 
   &--placeholder-hint {
-    width: 133%;
+    width: calc(1.33 * var(--field-decorator-legend-max-width, var(--filed-decorator-controller-width)));
   }
 
   &--placeholder-hidden {
@@ -222,10 +224,6 @@
         overflow: hidden;
         display: block;
         white-space: nowrap;
-      }
-
-      &-legend--hint {
-        max-width: 100%;
       }
     }
 

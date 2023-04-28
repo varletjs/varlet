@@ -1,6 +1,10 @@
 <template>
   <div
     :class="classes(n(), n('$--box'), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
+    :style="{
+      '--field-decorator-legend-max-width': legendMaxWidth,
+      '--filed-decorator-controller-width': controllerWidth,
+    }"
     @click="handleClick"
   >
     <div
@@ -12,6 +16,7 @@
           [formDisabled || disabled, n('--disabled')]
         )
       "
+      ref="controllerEl"
       :style="{
         color,
         cursor,
@@ -43,6 +48,7 @@
           }"
           :for="id"
         >
+          {{ placeholder }}
           <span :class="n('placeholder-text')" ref="placeholderTextEl">{{ placeholder }}</span>
         </label>
       </div>
@@ -70,10 +76,11 @@
               [formDisabled || disabled, n('--line-disabled')]
             )
           "
+          ref="fieldsetEl"
         >
           <legend
             :class="classes(n('line-legend'), [hint && (!isEmpty(value) || isFocus), n('line-legend--hint')])"
-            :style="{ width: legendWidth }"
+            :style="{ width: legendWidth, maxWidth: legendMaxWidth }"
           ></legend>
         </fieldset>
       </template>
@@ -116,9 +123,13 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const prependIconEl: Ref<HTMLElement | null> = ref(null)
+    const fieldsetEl: Ref<HTMLElement | null> = ref(null)
+    const controllerEl: Ref<HTMLElement | null> = ref(null)
     const placeholderTextEl: Ref<HTMLElement | null> = ref(null)
+    const prependIconEl: Ref<HTMLElement | null> = ref(null)
+    const legendMaxWidth: Ref<string> = ref('')
     const legendWidth: Ref<string> = ref('')
+    const controllerWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
@@ -136,42 +147,51 @@ export default defineComponent({
       }
     }
 
-    const computedLegendWidth = () => {
-      const { size, placeholder } = props
+    const resize = () => {
+      const { size, placeholder, hint, value, isFocus, variant } = props
 
       nextTick().then(() => {
-        if (!placeholderTextEl.value || !placeholder) {
-          legendWidth.value = '0'
+        if (!placeholderTextEl.value || !controllerEl.value || !prependIconEl.value) {
           return
         }
 
-        const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value)?.width
-        const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-        legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
-      })
-    }
-
-    const computedPlaceholderTransform = () => {
-      const { hint, value, isFocus, variant } = props
-
-      nextTick().then(() => {
-        if (!prependIconEl.value) {
+        if (variant === 'outlined' && !fieldsetEl.value) {
           return
         }
 
-        if (hint && (!isEmpty(value) || isFocus)) {
-          const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width || '0'
+        if (!placeholder) {
+          legendWidth.value = ''
+          legendMaxWidth.value = ''
+          placeholderTransform.value = ''
+          return
+        }
+
+        const shouldRunAnimation = hint && (!isEmpty(value) || isFocus)
+
+        if (shouldRunAnimation) {
+          const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
+          const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value)?.width
+          const prependIconWidth = window.getComputedStyle(prependIconEl.value)?.width
+
+          if (variant === 'outlined') {
+            const {
+              width: fieldsetWidth,
+              paddingLeft: fieldsetWidthPaddingLeft,
+              paddingRight: fieldsetWidthPaddingRight,
+            } = window.getComputedStyle(fieldsetEl.value!)
+            legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
+            legendMaxWidth.value = `calc(${fieldsetWidth} - ${fieldsetWidthPaddingLeft} - ${fieldsetWidthPaddingRight})`
+          }
+
           const translateY = variant === 'outlined' ? '-50%' : '0'
           placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
+          controllerWidth.value = window.getComputedStyle(controllerEl.value).width
         } else {
           placeholderTransform.value = ''
+          legendWidth.value = ''
+          legendMaxWidth.value = ''
         }
       })
-    }
-
-    const resize = () => {
-      computedLegendWidth()
-      computedPlaceholderTransform()
     }
 
     const handleClear = (e: Event) => {
@@ -186,11 +206,15 @@ export default defineComponent({
     useEventListener(() => window, 'resize', resize)
 
     return {
-      prependIconEl,
+      fieldsetEl,
+      controllerEl,
       placeholderTextEl,
+      prependIconEl,
       placeholderTransform,
       color,
       legendWidth,
+      legendMaxWidth,
+      controllerWidth,
       computePlaceholderState,
       n,
       classes,

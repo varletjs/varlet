@@ -109,7 +109,7 @@ exports[`basic mode mount 1`] = `
         <div class="var-field-decorator__controller" style="cursor: text;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-41"><span class="var-field-decorator__placeholder-text"></span></label>
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text"><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-41"> <span class="var-field-decorator__placeholder-text"></span></label>
           </div>
           <div class="var-field-decorator__icon">
             <!--v-if-->
