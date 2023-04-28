@@ -7,7 +7,7 @@ import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { reactive } from 'vue'
+import { reactive, ref, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
 const values = reactive({
@@ -75,6 +75,14 @@ const values = reactive({
       state: 'error',
     },
   ],
+  files13: [
+    {
+      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+      state: 'success',
+      progress: 100,
+    },
+  ],
 })
 
 function handleAfterRead(file) {
@@ -84,10 +92,34 @@ function handleAfterRead(file) {
 function handleAfterRead2(file) {
   file.state = 'loading'
 
-  setTimeout(() => {
+  setInterval(() => {
     file.state = 'success'
   }, 1000)
 }
+
+const timer = ref(0)
+const clearTimer = () => {
+  if (timer.value) {
+    clearTimeout(timer.value)
+    timer.value = null
+  }
+}
+
+function handleAfterRead3(file) {
+  file.state = 'loading'
+  file.progress = 0
+  timer.value = window.setInterval(() => {
+    file.progress += 10
+    if (file.progress === 100) {
+      file.state = 'success'
+      clearTimer()
+    }
+  }, 100)
+}
+
+onUnmounted(() => {
+  window.clearInterval(timer.value)
+})
 
 function handleOversize() {
   Snackbar.warning(pack.value.fileSizeExceedsLimit)
@@ -159,6 +191,11 @@ watchDarkMode(dark)
         <var-icon :size="28" name="upload" />
       </var-button>
     </var-uploader>
+  </var-space>
+
+  <app-type>{{ pack.progressBar }}</app-type>
+  <var-space>
+    <var-uploader v-model="values.files13" @after-read="handleAfterRead3" progress />
   </var-space>
 
   <div class="space"></div>
