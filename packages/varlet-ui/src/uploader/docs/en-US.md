@@ -434,6 +434,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--uploader-file-indicator-normal-color`  | `var(--color-disabled)`                                                                      |
 | `--uploader-file-indicator-success-color` | `var(--color-success)`                                                                       |
 | `--uploader-file-indicator-error-color`   | `var(--color-danger)`                                                                        |
+| `--uploader-file-progress-color`   | `var(--color-primary)`                                                                        |
 | `--uploader-disabled-color`               | `#ddd`              |
 | `--uploader-disabled-text-color`          | `var(--color-text-disabled)`      |
 | `--uploader-loading-background`           | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |
