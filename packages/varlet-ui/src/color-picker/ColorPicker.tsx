@@ -1,4 +1,4 @@
-import { defineComponent, ref, toRefs, onMounted, watch } from 'vue'
+import { defineComponent, ref, toRefs, onMounted, watch, computed } from 'vue'
 import { colorPickerProps, ColorPickerProps } from './props'
 import { createNamespace, call } from '../utils/components'
 import { parseBaseColor, extractBaseColor, HSVtoCSS, nullColor } from './utils/color-utils'
@@ -38,6 +38,21 @@ export default defineComponent({
       currentMode.value = mode
     }
 
+    const containerStyle = computed(() => {
+      return {
+        width: `${props.width}px`,
+        maxWidth: `${props.width}px`,
+      }
+    })
+
+    const dotStyle = computed(() => {
+      const defaultColor = HSVtoCSS(initialColor.value ?? nullColor)
+      return {
+        background: defaultColor,
+        border: `1px solid ${defaultColor}`,
+      }
+    })
+
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
@@ -62,7 +77,7 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class={classes(n(), n('$-elevation--2'))}>
+          <div class={classes(n(), n('$-elevation--2'))} style={containerStyle.value}>
             <div></div>
             {props.canvasLayout && (
               <VarColorPickerCanvas
@@ -78,7 +93,7 @@ export default defineComponent({
                 {props.sliderLayout && (
                   <div class={n('preview')}>
                     <div class={n('preview__dots')}>
-                      <div style={{ background: HSVtoCSS(initialColor.value ?? nullColor) }} />
+                      <div style={dotStyle.value} />
                     </div>
                     <div class={n('preview__slider')}>
                       <VarColorPickerHueSlider
