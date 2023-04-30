@@ -2,7 +2,7 @@
 
 ### 介绍
 
-加载组件，用于数据加载时执行动画
+加载组件，用于数据加载时执行动画。
 
 ### Loading 类型
 
@@ -58,7 +58,7 @@ const loading = ref(false)
   <var-button @click="loading = !loading" style="margin-bottom: 8px">
     {{ loading ? '关闭' : '打开' }}
   </var-button>
-  <var-loading description="loading...." type="circle" :loading="loading">
+  <var-loading description="LOADING" :loading="loading">
     <var-card 
       title="介绍" 
       description="Varlet 是一个基于Vue3开发的 Material 风格移动端组件库，全面拥抱Vue3生态，由社区的小伙伴开发和维护。" 
@@ -88,7 +88,7 @@ const loading = ref(false)
 | `description`    | `loading` 的描述文字 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名                     | 默认值 |
 |-------------------------| -- |

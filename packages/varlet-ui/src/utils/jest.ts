@@ -230,3 +230,25 @@ export function mockScrollTo(Element: any) {
     }
   }
 }
+
+export function mockUserAgent(userAgent: string) {
+  const originUserAgent = navigator.userAgent
+
+  Object.defineProperty(window.navigator, 'userAgent', {
+    configurable: true,
+    get() {
+      return userAgent
+    },
+  })
+
+  return {
+    restore() {
+      Object.defineProperty(window.navigator, 'userAgent', {
+        configurable: true,
+        get() {
+          return originUserAgent
+        },
+      })
+    },
+  }
+}

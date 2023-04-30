@@ -21,10 +21,11 @@
                 var-day-picker-cover
                 round
                 :ripple="false"
+                :elevation="componentProps.buttonElevation"
                 v-bind="{
                   ...buttonProps(day),
                 }"
-                @click="(event) => chooseDay(day, event)"
+                @click="(event: Event) => chooseDay(day, event)"
               >
                 {{ filterDay(day) }}
               </var-button>
@@ -42,11 +43,12 @@ import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
-import { defineComponent, ref, computed, watch, onMounted, reactive } from 'vue'
+import { defineComponent, ref, computed, watch, reactive } from 'vue'
 import { WEEK_HEADER } from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
+import { useMounted } from '@varlet/use'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
@@ -184,6 +186,7 @@ export default defineComponent({
           outline: false,
           textColor: '',
           class: n('button'),
+          disabled: true,
         }
       }
 
@@ -248,6 +251,7 @@ export default defineComponent({
         textColor: isCover ? '' : textColorOrCover(),
         [`${nDate()}-color-cover`]: isCover,
         class: classes(n('button'), n('button--usable'), [disabled, n('button--disabled')]),
+        disabled,
       }
     }
 
@@ -257,7 +261,7 @@ export default defineComponent({
       emit('check-preview', 'month', checkType)
     }
 
-    const chooseDay = (day: number, event: MouseEvent) => {
+    const chooseDay = (day: number, event: Event) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
       if (buttonEl.classList.contains(n('button--disabled'))) return
 
@@ -269,7 +273,7 @@ export default defineComponent({
       headerEl.value!.checkDate(checkType)
     }
 
-    onMounted(() => {
+    useMounted(() => {
       initDate()
       initHeader()
     })

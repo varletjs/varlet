@@ -1,35 +1,24 @@
-import { defineComponent, VNodeChild, Fragment, VNode, Comment } from 'vue'
-import { internalSizeValidator, props } from './props'
-import type { SpaceInternalSize, SpaceSize } from './props'
-import { toPxNum } from '../utils/elements'
+import { defineComponent, VNodeChild } from 'vue'
+import { internalSizeValidator, props, type SpaceSize } from './props'
 import { isArray } from '@varlet/shared'
+import { call, createNamespace, flatFragment } from '../utils/components'
+import { padStartFlex, toSizeUnit } from '../utils/elements'
+import { computeMargin } from './margin'
 import '../styles/common.less'
 import './space.less'
-import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('space')
-
-const internalSizes: Record<SpaceInternalSize, number[]> = {
-  mini: [4, 4],
-  small: [6, 6],
-  normal: [8, 12],
-  large: [12, 20],
-}
 
 export default defineComponent({
   name: 'VarSpace',
   props,
   setup(props, { slots }) {
-    const getSize = (size: SpaceSize, isInternalSize: boolean) => {
+    const getSize = (size: SpaceSize, isInternalSize: boolean): string[] => {
       return isInternalSize
-        ? internalSizes[size as SpaceInternalSize]
+        ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
         : isArray(size)
-        ? size.map(toPxNum)
-        : [toPxNum(size), toPxNum(size)]
-    }
-
-    const padStartFlex = (style: string | undefined) => {
-      return style === 'start' || style === 'end' ? `flex-${style}` : style
+        ? (size.map(toSizeUnit) as string[])
+        : ([toSizeUnit(size), toSizeUnit(size)] as string[])
     }
 
     return () => {
@@ -38,54 +27,16 @@ export default defineComponent({
       const isInternalSize = internalSizeValidator(size)
       const [y, x] = getSize(size, isInternalSize)
 
-      const flatten = (vNodes: any) => {
-        const result: VNode[] = []
-
-        vNodes.forEach((vNode: any) => {
-          if (vNode.type === Comment) return
-
-          if (vNode.type === Fragment && isArray(vNode.children)) {
-            vNode.children.forEach((item: VNode) => {
-              result.push(item)
-            })
-            return
-          }
-
-          result.push(vNode)
-        })
-
-        return result
-      }
-
-      children = flatten(children)
+      children = flatFragment(children)
 
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
-        let margin = '0'
-
-        if (direction === 'row') {
-          if (justify === 'start' || justify === 'center' || justify === 'end') {
-            if (index !== lastIndex) {
-              margin = `${y / 2}px ${x}px ${y / 2}px 0`
-            } else {
-              margin = `${y / 2}px 0`
-            }
-          } else if (justify === 'space-around') {
-            margin = `${y / 2}px ${x / 2}px`
-          } else if (justify === 'space-between') {
-            if (index === 0) {
-              margin = `${y / 2}px ${x / 2}px ${y / 2}px 0`
-            } else if (index === lastIndex) {
-              margin = `${y / 2}px 0 ${y / 2}px ${x / 2}px`
-            } else {
-              margin = `${y / 2}px ${x / 2}px`
-            }
-          }
-        }
-
-        if (direction === 'column' && index !== lastIndex) {
-          margin = `0 0 ${y}px 0`
-        }
+        const margin = computeMargin(y, x, {
+          direction,
+          justify,
+          index,
+          lastIndex,
+        })
 
         return <div style={{ margin }}>{child}</div>
       })
@@ -98,7 +49,7 @@ export default defineComponent({
             justifyContent: padStartFlex(justify),
             alignItems: padStartFlex(align),
             flexWrap: wrap ? 'wrap' : 'nowrap',
-            margin: direction === 'row' ? `-${y / 2}px 0` : undefined,
+            margin: direction === 'row' ? `calc(-1 * ${y} / 2) 0` : undefined,
           }}
         >
           {spacers}

@@ -2,7 +2,7 @@
 
 ### Intro
 
-Load when the image is visible
+Load when the image is visible.
 
 ### Basic Use
 

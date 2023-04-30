@@ -1,5 +1,4 @@
-import type { PropType } from 'vue'
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as iconProps } from '../icon/props'
 
 function typeValidator(type: string): boolean {
@@ -44,7 +43,5 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onClose: {
-    type: Function as PropType<(e: Event) => void>,
-  },
+  onClose: defineListenerProp<(e: Event) => void>(),
 }

@@ -14,7 +14,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
         with:
-          version: 7
+          version: 8
 
       - name: Set node version to 16
         uses: actions/setup-node@v3
@@ -23,10 +23,10 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --ignore-scripts && node scripts/bootstrap.mjs
+        run: pnpm install --no-frozen-lockfile && node scripts/bootstrap.mjs
 
       - name: Build playground
-        run: cd packages/varlet-ui-playground && pnpm build
+        run: pnpm --dir ./packages/varlet-ui-playground build
 
       - name: Deploy site
         uses: JamesIves/github-pages-deploy-action@4.1.1

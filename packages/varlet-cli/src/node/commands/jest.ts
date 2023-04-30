@@ -3,7 +3,7 @@ import jestModule from 'jest'
 import { CWD, JEST_CONFIG } from '../shared/constant.js'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 
-interface JestCommandOptions {
+export interface JestCommandOptions {
   watch?: boolean
   watchAll?: boolean
   component?: string
@@ -24,7 +24,7 @@ export async function jest(cmd: JestCommandOptions) {
     testRegex: cmd.component && `${cmd.component}/__tests__/.*.spec.[jt]s?$`,
   }
 
-  await buildSiteEntry()
+  await buildSiteEntry(false)
 
   try {
     const response = await runCLI(config as any, [CWD])

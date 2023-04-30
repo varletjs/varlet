@@ -13,7 +13,7 @@ import { StyleProvider, Themes } from '@varlet/ui'
 
 let currentTheme = null
 
-const toggleTheme = () => {
+function toggleTheme() {
   currentTheme = currentTheme ? null : Themes.dark
   StyleProvider(currentTheme)
 }
@@ -24,7 +24,7 @@ const toggleTheme = () => {
 </template>
 ```
 
-注入组件库推荐的 `文字颜色` 和 `背景颜色` 变量来控制整体颜色
+注入组件库推荐的 `文字颜色` 和 `背景颜色` 变量来控制整体颜色。
 
 ```css
 /* playground-ignore */

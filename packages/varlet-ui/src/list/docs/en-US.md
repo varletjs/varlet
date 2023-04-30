@@ -18,7 +18,7 @@ const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
     
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -59,7 +59,7 @@ const loading = ref(false)
 const error = ref(false)
 const list = ref([])
     
-const load = () => {
+function load() {
   setTimeout(() => {
     if (list.value.length === 40) {
       error.value = true
@@ -99,7 +99,7 @@ const loading = ref(false)
 const finished = ref(false)
 const list = ref([])
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -132,7 +132,7 @@ const load = () => {
 
 ### Combine
 
-Combined with the `PullRefresh` component to implement the function of pull-up loading and pull-down refresh, ensuring the height of the `PullRefresh` is not `0` .
+Combined with the `PullRefresh` component to implement the function of pull-up loading and pull-down refresh, ensuring the height of the `PullRefresh` is not `0`.
 
 ```html
 <script setup>
@@ -142,14 +142,14 @@ const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     console.log('refresh')
     refreshing.value = false
   }, 2000)
 }
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -193,9 +193,9 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Methods
 
-| Method  | Description                                             | Arguments |
-| ------- | ------------------------------------------------------- | --------- |
-| `check` | Trigger position check, touch bottom trigger load event | `-`       |
+| Method  | Description                                             | Arguments | Return |
+| ------- | ------------------------------------------------------- | --------- | --- |
+| `check` | Trigger position check, touch bottom trigger load event | `-`       | `-` |
 
 ### Events
 
@@ -214,7 +214,7 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                    | Default               |
 | --------------------------- | --------------------- |

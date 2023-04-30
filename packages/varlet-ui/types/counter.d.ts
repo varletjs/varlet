@@ -1,4 +1,6 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+
+export declare const counterProps: Record<string, any>
 
 export type CounterValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
@@ -11,6 +13,7 @@ export interface CounterProps extends BasicAttributes {
   inputWidth?: string | number
   inputTextSize?: string | number
   buttonSize?: string | number
+  elevation?: boolean | string | number
   decimalLength?: string | number
   disabled?: boolean
   readonly?: boolean
@@ -24,11 +27,11 @@ export interface CounterProps extends BasicAttributes {
   ripple?: boolean
   validateTrigger?: Array<CounterValidateTrigger>
   rules?: Array<(v: number) => any>
-  onBeforeChange?: (value: number, change: (value: string | number) => void) => void
-  onChange?: (value: number) => void
-  onIncrement?: (value: number) => void
-  onDecrement?: (value: number) => void
-  'onUpdate:modelValue'?: (value: number) => void
+  onBeforeChange?: ListenerProp<(value: number, change: (value: string | number) => void) => void>
+  onChange?: ListenerProp<(value: number) => void>
+  onIncrement?: ListenerProp<(value: number) => void>
+  onDecrement?: ListenerProp<(value: number) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: number) => void>
 }
 
 export class Counter extends VarComponent {

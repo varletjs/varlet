@@ -1,15 +1,8 @@
-import example from '../example'
 import Counter from '..'
 import VarCounter from '../Counter'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/jest'
-
-test('test counter example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test counter plugin', () => {
   const app = createApp({}).use(Counter)

@@ -1,4 +1,6 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+
+export declare const timePickerProps: Record<string, any>
 
 export type AllowedTime = {
   hours?: (hour: number) => boolean
@@ -10,7 +12,7 @@ export type TimePickerFormat = 'ampm' | '24hr'
 
 export interface TimePickerProps extends BasicAttributes {
   modelValue?: string
-  elevation?: boolean
+  elevation?: boolean | string | number
   color?: string
   headerColor?: string
   allowedTime?: AllowedTime
@@ -19,8 +21,8 @@ export interface TimePickerProps extends BasicAttributes {
   max?: string
   useSeconds?: boolean
   readonly?: boolean
-  onChange?: (value: string) => void
-  'onUpdate:modelValue'?: (value: string) => void
+  onChange?: ListenerProp<(value: string) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
 
 export class TimePicker extends VarComponent {

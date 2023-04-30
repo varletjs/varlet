@@ -19,10 +19,20 @@ export const props = {
     validator: positionValidator,
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, String, Number],
     default: true,
   },
   round: {
+    type: Boolean,
+    default: false,
+  },
+  image: {
+    type: String,
+  },
+  imageLinearGradient: {
+    type: String,
+  },
+  safeAreaTop: {
     type: Boolean,
     default: false,
   },

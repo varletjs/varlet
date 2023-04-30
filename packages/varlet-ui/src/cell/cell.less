@@ -3,6 +3,7 @@
   --cell-font-size: var(--font-size-md);
   --cell-description-font-size: var(--font-size-sm);
   --cell-description-color: rgba(0, 0, 0, 0.6);
+  --cell-description-margin-top: 4px;
   --cell-padding: 10px 12px;
   --cell-min-height: 40px;
   --cell-border-color: #bcc2cb;
@@ -30,8 +31,8 @@
       box-sizing: border-box;
       content: ' ';
       pointer-events: none;
-      right: var(--cell-border-right);
       bottom: 0;
+      right: var(--cell-border-right);
       left: var(--cell-border-left);
       border-bottom: 1px solid var(--cell-border-color);
       transform: scaleY(0.5);
@@ -57,10 +58,15 @@
   &__description {
     font-size: var(--cell-description-font-size);
     color: var(--cell-description-color);
+    margin-top: var(--cell-description-margin-top);
   }
 
   &__extra {
     flex: 0;
     margin-left: var(--cell-extra-left);
+  }
+
+  &--cursor {
+    cursor: pointer;
   }
 }

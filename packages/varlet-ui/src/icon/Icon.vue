@@ -4,14 +4,15 @@
     :class="
       classes(
         n(),
+        [namespace !== n(), namespace],
         `${namespace}--set`,
         [isURL(name), n('image'), `${namespace}-${nextName}`],
-        [shrinking, n('--shrinking')]
+        [animateInProgress, animationClass == null ? n('--shrinking') : animationClass]
       )
     "
     :style="{
       color,
-      transition: `transform ${toNumber(transition)}ms`,
+      'transition-duration': `${toNumber(transition)}ms`,
       width: isURL(name) ? toSizeUnit(size) : null,
       height: isURL(name) ? toSizeUnit(size) : null,
       fontSize: toSizeUnit(size),
@@ -22,11 +23,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, nextTick } from 'vue'
+import { defineComponent, watch, ref, nextTick, type Ref } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import type { Ref } from 'vue'
 import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('icon')
@@ -36,9 +36,9 @@ export default defineComponent({
   props,
   setup(props) {
     const nextName: Ref<string | undefined> = ref('')
-    const shrinking: Ref<boolean> = ref(false)
+    const animateInProgress: Ref<boolean> = ref(false)
 
-    const handleNameChange = async (newName: string | undefined, oldName: string | undefined) => {
+    const handleNameChange = async (newName?: string, oldName?: string) => {
       const { transition } = props
 
       if (oldName == null || toNumber(transition) === 0) {
@@ -46,11 +46,16 @@ export default defineComponent({
         return
       }
 
-      shrinking.value = true
+      animateInProgress.value = true
+
       await nextTick()
+
       setTimeout(() => {
-        oldName != null && (nextName.value = newName)
-        shrinking.value = false
+        if (oldName != null) {
+          nextName.value = newName
+        }
+
+        animateInProgress.value = false
       }, toNumber(transition))
     }
 
@@ -60,7 +65,7 @@ export default defineComponent({
       n,
       classes,
       nextName,
-      shrinking,
+      animateInProgress,
       isURL,
       toNumber,
       toSizeUnit,

@@ -2,7 +2,6 @@
   <div
     :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')])"
     :style="{
-      width: wrapWidth,
       color: optionSelected ? focusColor : undefined,
     }"
     v-ripple
@@ -56,7 +55,7 @@ export default defineComponent({
     const label: ComputedRef = computed(() => props.label)
     const value: ComputedRef = computed(() => props.value)
     const { select, bindSelect } = useSelect()
-    const { wrapWidth, multiple, focusColor, onSelect } = select
+    const { multiple, focusColor, onSelect, computeLabel } = select
 
     const handleClick = () => {
       optionSelected.value = !optionSelected.value
@@ -76,15 +75,7 @@ export default defineComponent({
       sync,
     }
 
-    watch(
-      [() => props.label, () => props.value],
-      () => {
-        if (props.label == null && props.value == null) {
-          throw Error("Props label and value can't both be undefined\n")
-        }
-      },
-      { immediate: true }
-    )
+    watch([() => props.label, () => props.value], computeLabel)
 
     bindSelect(optionProvider)
 
@@ -92,7 +83,6 @@ export default defineComponent({
       n,
       classes,
       optionSelected,
-      wrapWidth,
       multiple,
       focusColor,
       handleClick,

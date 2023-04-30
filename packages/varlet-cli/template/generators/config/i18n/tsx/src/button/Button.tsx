@@ -15,7 +15,9 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-    const handleClick = (e: Event) => props.onClick?.(e)
+    const handleClick = (e: Event) => {
+      props.onClick?.(e)
+    }
 
     return () => {
       const { color } = props

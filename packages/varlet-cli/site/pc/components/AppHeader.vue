@@ -122,7 +122,7 @@ export default defineComponent({
         class="varlet-site-header__versions"
         @mouseenter="isOpenVersionsMenu = true"
         @mouseleave="isOpenVersionsMenu = false"
-        v-if="versionItems"
+        v-if="nonEmptyVersions && Object.keys(nonEmptyVersions).length"
       >
         <span style="font-size: 14px;">{{ currentVersion }}</span>
         <var-icon name="chevron-down"/>

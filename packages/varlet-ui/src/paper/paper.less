@@ -1,0 +1,17 @@
+:root {
+  --paper-background: #fff;
+}
+
+.var-paper {
+  background: var(--paper-background);
+  transition: background-color 0.25s;
+  overflow: hidden;
+
+  &--round {
+    border-radius: 50%;
+  }
+
+  &--cursor {
+    cursor: pointer;
+  }
+}

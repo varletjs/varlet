@@ -1,5 +1,9 @@
 <template>
-  <div :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])">
+  <div
+    :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])"
+    :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
+  >
+    <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
     <div :class="n('header')" @click="toggle()">
       <div :class="n('header-title')">
         <slot name="title">{{ title }}</slot>
@@ -20,7 +24,13 @@
         </slot>
       </div>
     </div>
-    <div :class="n('content')" v-show="show" ref="contentEl" @transitionend="transitionend" @transitionstart="start">
+    <div
+      :class="n('content')"
+      v-show="showContent"
+      ref="contentEl"
+      @transitionend="transitionend"
+      @transitionstart="start"
+    >
       <div :class="n('content-wrap')">
         <slot />
       </div>
@@ -29,10 +39,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, nextTick, watch, computed } from 'vue'
+import { defineComponent, ref, watch, computed } from 'vue'
 import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
 import { isArray } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { useCollapse } from './provide'
 import { props } from './props'
 import VarIcon from '../icon'
@@ -52,9 +62,9 @@ export default defineComponent({
 
     let isInitToTrigger = true // ensure to trigger transitionend
     const contentEl: Ref<HTMLDivElement | null> = ref(null)
-    const show: Ref<boolean> = ref(false)
+    const showContent: Ref<boolean> = ref(false)
     const isShow: Ref<boolean> = ref(false)
-    const { active, offset, updateItem } = collapse
+    const { active, offset, divider, elevation, updateItem } = collapse
 
     const name: ComputedRef<number | string | undefined> = computed(() => props.name)
 
@@ -76,9 +86,9 @@ export default defineComponent({
     const openPanel = () => {
       if (!contentEl.value) return
       ;(contentEl.value as HTMLDivElement).style.height = ''
-      show.value = true
+      showContent.value = true
 
-      nextTick(() => {
+      requestAnimationFrame(() => {
         const { offsetHeight } = contentEl.value as HTMLDivElement
         ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
 
@@ -111,7 +121,7 @@ export default defineComponent({
 
     const transitionend = () => {
       if (!isShow.value) {
-        show.value = false
+        showContent.value = false
       }
 
       ;(contentEl.value as HTMLDivElement).style.height = ''
@@ -134,12 +144,15 @@ export default defineComponent({
       n,
       start,
       classes,
-      show,
+      showContent,
       isShow,
       offset,
+      divider,
+      elevation,
       toggle,
       contentEl,
       transitionend,
+      formatElevation,
     }
   },
 })

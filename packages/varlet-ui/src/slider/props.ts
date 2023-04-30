@@ -1,7 +1,33 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function labelValidator(label: string) {
   return ['always', 'normal', 'never'].includes(label)
+}
+
+export enum Thumbs {
+  First = '1',
+  Second = '2',
+}
+
+export interface ThumbProps {
+  startPosition: number
+  currentLeft: number
+  percentValue: number
+  active: boolean
+}
+
+export type ThumbsProps = {
+  [Thumbs.First]: ThumbProps
+  [Thumbs.Second]: ThumbProps
+}
+
+export interface ThumbsListProps {
+  value: number | number[]
+  enumValue: Thumbs
+  text: number
+  hovering: boolean
+  handleHovering: (value: boolean) => void
 }
 
 export const props = {
@@ -79,19 +105,11 @@ export const props = {
     type: Array as PropType<Array<(v: any) => any>>,
   },
 
-  onChange: {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  onChange: defineListenerProp<(value: number | Array<number>) => void>(),
 
-  onStart: {
-    type: Function as PropType<() => void>,
-  },
+  onStart: defineListenerProp<() => void>(),
 
-  onEnd: {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  onEnd: defineListenerProp<(value: number | Array<number>) => void>(),
 
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: number | Array<number>) => void>,
-  },
+  'onUpdate:modelValue': defineListenerProp<(value: number | Array<number>) => void>(),
 }

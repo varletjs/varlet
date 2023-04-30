@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps, VNode } from 'vue'
 
@@ -6,9 +6,15 @@ export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
+export declare const snackbarProps: Record<string, any>
+
+export type SlotType = string | VNode | (() => VNode)
+
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
-  content?: string
+  content?: SlotType
+  icon?: SlotType
+  action?: SlotType
   position?: SnackbarPosition
   loadingType?: LoadingType
   loadingSize?: LoadingSize
@@ -21,11 +27,11 @@ export interface SnackbarProps extends BasicAttributes {
   vertical?: boolean
   show?: boolean
   forbidClick?: boolean
-  onOpen?: () => void
-  onClose?: () => void
-  onOpened?: () => void
-  onClosed?: () => void
-  'onUpdate:show'?: (show: boolean) => void
+  onOpen?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onOpened?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export class SnackbarComponent extends VarComponent {
@@ -33,6 +39,7 @@ export class SnackbarComponent extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    icon(): VNode[]
     action(): VNode[]
   }
 }
@@ -52,7 +59,6 @@ export interface SnackbarOptions {
   contentClass?: string
   duration?: number
   vertical?: boolean
-  show?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
@@ -61,7 +67,7 @@ export interface SnackbarOptions {
 }
 
 export interface ISnackbar {
-  (options: SnackbarOptions | string): SnackbarHandel
+  (options?: SnackbarOptions | string): SnackbarHandel
 
   Component: typeof SnackbarComponent
 
@@ -79,9 +85,13 @@ export interface ISnackbar {
 
   loading(options: SnackbarOptions | string): SnackbarHandel
 
+  setDefaultOptions(options: SnackbarOptions): void
+
+  resetDefaultOptions(): void
+
   clear(): void
 }
 
-export const Snackbar: ISnackbar
+export declare const Snackbar: ISnackbar
 
 export class _SnackbarComponent extends SnackbarComponent {}

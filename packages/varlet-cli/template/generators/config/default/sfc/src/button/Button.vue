@@ -1,5 +1,5 @@
 <template>
-  <button class="var-button" :style="{ background: color }">
+  <button class="var-button" :style="{ background: color }" @click="handleClick">
     <slot />
   </button>
 </template>
@@ -18,7 +18,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const handleClick = (e: Event) => props.onClick?.(e)
+    const handleClick = (e: Event) => {
+      props.onClick?.(e)
+    }
+    
     return {
       handleClick,
     }

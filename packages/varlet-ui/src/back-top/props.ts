@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   visibilityHeight: {
@@ -12,13 +13,15 @@ export const props = {
   right: {
     type: [Number, String],
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   bottom: {
     type: [Number, String],
   },
   target: {
     type: [String, Object] as PropType<string | HTMLElement>,
   },
-  onClick: {
-    type: Function as PropType<(event: MouseEvent) => void>,
-  },
+  onClick: defineListenerProp<(event: MouseEvent) => void>(),
 }

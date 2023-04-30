@@ -1,7 +1,8 @@
-import { createApp } from 'vue'
 import '@vue/repl/style.css'
-import '@varlet/ui/es/snackbar/style'
-
+import { createApp } from 'vue'
 import App from './App.vue'
+
+Locale.add('en-US', Locale.enUS)
+Locale.use('en-US')
 
 createApp(App).mount('#app')

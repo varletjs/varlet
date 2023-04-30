@@ -1,7 +1,7 @@
-import type { ComputedRef } from 'vue'
 import { Validation } from '../form/provide'
-import { useAtChildrenCounter, useChildren } from '../utils/components'
+import { useChildren } from '@varlet/use'
 import { CheckboxProvider } from '../checkbox/provide'
+import { type ComputedRef } from 'vue'
 
 export interface CheckboxGroupProvider extends Validation {
   checkedCount: ComputedRef<number>
@@ -12,13 +12,11 @@ export interface CheckboxGroupProvider extends Validation {
 }
 
 export const CHECKBOX_GROUP_BIND_CHECKBOX_KEY = Symbol('CHECKBOX_GROUP_BIND_CHECKBOX_KEY')
-export const CHECKBOX_GROUP_COUNT_CHECKBOX_KEY = Symbol('CHECKBOX_GROUP_COUNT_CHECKBOX_KEY')
 
 export function useCheckboxes() {
-  const { bindChildren, childProviders } = useChildren<CheckboxGroupProvider, CheckboxProvider>(
+  const { bindChildren, childProviders, length } = useChildren<CheckboxGroupProvider, CheckboxProvider>(
     CHECKBOX_GROUP_BIND_CHECKBOX_KEY
   )
-  const { length } = useAtChildrenCounter(CHECKBOX_GROUP_COUNT_CHECKBOX_KEY)
 
   return {
     length,

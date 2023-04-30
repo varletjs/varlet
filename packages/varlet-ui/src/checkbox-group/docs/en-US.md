@@ -2,7 +2,7 @@
 
 ### Intro
 
-A group of options for multiple choices
+A group of options for multiple choices.
 
 ### Basic Usage
 
@@ -250,7 +250,7 @@ const value = ref([])
 | `default` | Displayed text | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

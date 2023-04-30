@@ -1,4 +1,5 @@
 import { PropType, TeleportProps } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   show: {
@@ -9,13 +10,9 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onClick: {
-    type: Function as PropType<() => void>,
-  },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onClick: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 }

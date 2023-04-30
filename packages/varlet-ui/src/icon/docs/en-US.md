@@ -18,8 +18,8 @@ Font icons are from [Material Design Icon](https://materialdesignicons.com/).
 
 ```html
 <template>
-  <var-icon name="checkbox-marked-circle" color="#2979ff" />
-  <var-icon name="checkbox-marked-circle" color="#2979ff" :size="26"/>
+  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" />
+  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" :size="26"/>
 </template>
 ```
 
@@ -44,7 +44,7 @@ import { Snackbar } from '@varlet/ui'
 <template>
   <var-icon 
     name="checkbox-marked-circle"
-    color="#2979ff"
+    color="var(--color-primary)"
     @click="() => Snackbar.success('Click success')"
   />
 </template>
@@ -60,7 +60,7 @@ import { ref } from 'vue'
 
 const name = ref('information')
 
-const toggle = () => {
+function toggle() {
   name.value = name.value === 'information' 
     ? 'checkbox-marked-circle' 
     : 'information'
@@ -69,13 +69,29 @@ const toggle = () => {
 
 <template>
   <var-icon 
-    color="#2979ff" 
+    color="var(--color-primary)" 
     :name="name" 
     :transition="300" 
     :size="30" 
     @click="toggle"
   />
+
+  <var-icon
+    color="var(--color-primary)"
+    animation-class="fade"
+    :name="iconName"
+    :transition="300"
+    :size="30"
+    @click="toggle"
+  />
 </template>
+
+<style>
+.fade {
+  opacity: 0;
+  transition-property: opacity;
+}
+</style>
 ```
 
 ### Custom Icons
@@ -88,25 +104,18 @@ Let's assume that we extend a font named `my-icons`.
 /* Set the font */
 @font-face {
   font-family: "my-icons";
-  src: url("https://xxx.my-icons.eot");
-  src: url("https://xxx.my-icons.eot") format("embedded-opentype"), 
-    url("https://xxx.my-icons.woff2") format("woff2"), 
-    url("https://xxx.my-icons.woff") format("woff"), 
-    url("https://xxx.my-icons.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("https://xxx.my-icons.ttf") format("truetype");
 }
 
-/* Font style */
-.my-icon--set,
-.my-icon--set::before {
-  position: relative;
-  display: inline-block;
-  font: normal normal normal 14px/1 "my-icons";
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+/* Set namespace */
+.my-icon {
+  font-family: "my-icons";
 }
+/* OR */
+.my-icon--set {
+  font-family: "my-icons";
+}
+/* Set namespace end */
 
 /* Font names map code points */
 .my-icon-hot::before {
@@ -135,6 +144,7 @@ You can use it this way:
 | `size`       | icon size                                      | _string \| number_ | `-`        |
 | `color`      | icon color, Only applies to font icons         | _string_           | `-`        |
 | `namespace`  | Icon namespace, extensible custom icon library | _string_           | `var-icon` |
+| `animation-class` | Name of the transition animation class |  _string_ | `-` |
 | `transition` | Transition animation time(ms)                  | _string \| number_ | `0`        |
 
 ### Events
@@ -145,7 +155,7 @@ You can use it this way:
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable      | Default |
 | ------------- | ------- |

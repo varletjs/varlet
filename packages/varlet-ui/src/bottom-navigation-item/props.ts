@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import type { BadgeProps } from '../../types'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   name: {
@@ -19,7 +20,5 @@ export const props = {
     type: [Boolean, Object] as PropType<boolean | Partial<BadgeProps>>,
     default: false,
   },
-  onClick: {
-    type: Function as PropType<(active: number | string) => void>,
-  },
+  onClick: defineListenerProp<(active: number | string) => void>(),
 }

@@ -1,5 +1,6 @@
 import type { PropType } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
+import { defineListenerProp } from '../utils/components'
 
 function typeValidator(type: string): boolean {
   return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
@@ -43,7 +44,5 @@ export const props = {
   textColor: {
     type: String,
   },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }

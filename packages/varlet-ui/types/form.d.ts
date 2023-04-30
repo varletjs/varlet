@@ -1,11 +1,15 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { ComputedRef, VNode, Ref } from 'vue'
 
+export declare const formProps: Record<string, any>
+
 export interface FormValidation {
   validate(): Promise<boolean>
   resetValidation(): void
   reset(): void
 }
+
+export type FormScrollToError = 'start' | 'end'
 
 export interface FormProvider {
   disabled: ComputedRef<boolean>
@@ -15,6 +19,8 @@ export interface FormProvider {
 export interface FormProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
+  scrollToError?: FormScrollToError
+  scrollToErrorOffsetY?: number | string
 }
 
 export class Form extends VarComponent {

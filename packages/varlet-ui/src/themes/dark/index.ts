@@ -11,7 +11,7 @@ import colorpicker from './colorpicker'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
-import input from './input'
+import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
 import popup from './popup'
@@ -31,6 +31,9 @@ import appBar from './appBar'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import menu from './menu'
+import breadcrumb from './breadcrumb'
+import paper from './paper'
+import avatar from './avatar'
 
 export default {
   // common
@@ -64,7 +67,7 @@ export default {
   ...steps,
   ...pagination,
   ...table,
-  ...input,
+  ...fieldDecorator,
   ...select,
   ...radio,
   ...checkbox,
@@ -76,4 +79,7 @@ export default {
   ...menu,
   ...result,
   ...colorpicker,
+  ...breadcrumb,
+  ...paper,
+  ...avatar,
 } as StyleVars

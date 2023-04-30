@@ -1,7 +1,7 @@
 :root {
   --option-height: 38px;
   --option-padding: 0 12px;
-  --option-selected-background: var(--select-focus-color);
+  --option-selected-background: var(--field-decorator-focus-color);
 }
 
 .var-option {
@@ -21,6 +21,11 @@
     bottom: 0;
     opacity: 0.2;
     background: transparent;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
   }
 
   &--selected-background {

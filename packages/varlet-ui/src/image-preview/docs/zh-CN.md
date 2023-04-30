@@ -12,7 +12,7 @@
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
 }
 </script>
@@ -28,7 +28,7 @@ const preview = () => {
 <script setup>
 import { ImagePreview } from '@varlet/ui'
 
-const preview = () => {
+function preview() {
   ImagePreview({
     images: [
       'https://varlet.gitee.io/varlet-ui/cat.jpg',
@@ -143,7 +143,6 @@ const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
 ])
-const handleCloseEvent = () => Snackbar('触发了关闭事件。');
 </script>
 
 <template>
@@ -157,7 +156,7 @@ const handleCloseEvent = () => Snackbar('触发了关闭事件。');
   <var-image-preview
     :images="images"
     v-model:show="show"
-    @close="handleCloseEvent"
+    @close="Snackbar('触发了关闭事件。')"
   />
 </template>
 ```
@@ -232,6 +231,15 @@ const actions = [
 | `close`  | 关闭 image-preview 时触发 | `-` |
 | `closed` | 关闭 image-preview 动画结束时触发 | `-` |
 
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `ImagePreview` | 显示 image-preview | _options \| string \| string[]_ | `-` |
+| `ImagePreview.close` | 关闭 image-preview | _-_ | `-` |
+| `ImagePreview.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
+| `ImagePreview.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
@@ -258,7 +266,7 @@ const actions = [
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名                                           | 默认值   |
 |-----------------------------------------------| -------- |

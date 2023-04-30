@@ -1,3 +1,5 @@
+import { defineListenerProp } from '../utils/components'
+
 export const props = {
   title: {
     type: [Number, String],
@@ -12,6 +14,9 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  borderOffset: {
+    type: [Number, String],
+  },
   iconClass: {
     type: String,
   },
@@ -24,4 +29,9 @@ export const props = {
   extraClass: {
     type: String,
   },
+  ripple: {
+    type: Boolean,
+    default: false,
+  },
+  onClick: defineListenerProp<(e: Event) => void>(),
 }

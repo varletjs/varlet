@@ -1,7 +1,7 @@
 # 菜单
 
 ### 介绍
-当元素点击时显示一个菜单，通过控制对齐方式和偏移量改变菜单的显示位置。
+当元素点击时显示一个菜单，通过控制弹出位置和偏移量改变菜单的显示位置。
 
 ### 基本使用
 
@@ -85,7 +85,7 @@ const placementOptions = [
 
 ### 偏移量
 
-可以用 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量
+通过 `offset-x` 和 `offset-y` 设置 Menu 弹出的偏移量。
 
 ```html
 <template>
@@ -101,9 +101,27 @@ const placementOptions = [
 </template>
 ```
 
+### 与触发元素同宽
+
+通过 `same-width` 使弹出的菜单和触发元素的宽度相同。
+
+```html
+<template>
+  <var-menu same-width>
+    <var-button type="primary">与触发元素同宽</var-button>
+    
+    <template #menu>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+      <var-cell>菜单项</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
 ### 触发方式
 
-通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`
+通过 `trigger` 改变菜单显示的触发方式，可选值为 `click` 和 `hover`。
 
 ```html
 <template>
@@ -124,19 +142,14 @@ const placementOptions = [
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.info('opened')
-const close = () => Snackbar.info('close')
-const closed = () => Snackbar.info('closed')
 </script>
 
 <template>
   <var-menu
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">注册事件</var-button>
     
@@ -156,7 +169,7 @@ const closed = () => Snackbar.info('closed')
 ```html
 <template>
   <var-menu disabled>
-    <var-button type="primary">禁用</var-button>
+    <var-button type="primary" disabled>禁用</var-button>
     
     <template #menu>
       <var-cell>菜单项</var-cell>
@@ -169,14 +182,17 @@ const closed = () => Snackbar.info('closed')
 
 ### 双向绑定
 
-通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏
+通过 `v-model:show` 进行双向绑定控制菜单的显示和隐藏。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeMenu = () => { show.value = false }
+
+function closeMenu() {
+  show.value = false
+}
 </script>
 
 <template>
@@ -200,16 +216,19 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 ### 属性
 
-| 参数 | 说明 | 类型                    | 默认值 |
-| ------- | --- |-----------------------| --- |
-| `v-model:show` | 是否显示菜单 | _string_              | `default` |
-| `placement` | 菜单弹出位置 | _Placement_           | `cover-top-start` |
-| `offset-x` | x 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
-| `offset-y` | y 轴偏移量， 相对于菜单对齐后的位置 | _number \| string_ | `0` |
-| `teleport` | 菜单挂载的位置 | _TeleportProps['to']_ | `body` |
-| `disabled` | 是否禁用菜单 | _boolean_             | `false` |
-| `trigger` | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click` |
-| `default-style` | 是否启用默认样式 | _boolean_             | `true` |
+| 参数              | 说明                                                          | 类型                    | 默认值               |
+|-----------------|-------------------------------------------------------------|-----------------------|-------------------|
+| `v-model:show`  | 是否显示菜单                                                      | _string_              | `default`         |
+| `placement`     | 菜单弹出位置                                                      | _Placement_           | `cover-top-start` |
+| `offset-x`      | x 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
+| `offset-y`      | y 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
+| `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to']_ | `body`            |
+| `disabled`      | 是否禁用菜单                                                      | _boolean_             | `false`           |
+| `trigger`       | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click`           |
+| `reference`       | 菜单关联的触发元素选择器，用于指定菜单的特定子元素为触发元素 | _string_              | `-`           |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
+| `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 
 ### Placement
 
@@ -261,7 +280,7 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

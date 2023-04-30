@@ -92,6 +92,17 @@ describe('test app bar component props', () => {
 
     wrapper.unmount()
   })
+
+  test('test app bar image and image-linear-gradient', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        image: 'https://1.png',
+        imageLinearGradient: 'to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
 
 describe('test app bar slots', () => {
@@ -127,6 +138,18 @@ describe('test app bar slots', () => {
     })
 
     expect(wrapper.find('.var-app-bar__right').text()).toBe('This is right slot')
+
+    wrapper.unmount()
+  })
+
+  test('test app bar content slot', () => {
+    const wrapper = mount(VarAppBar, {
+      slots: {
+        content: () => 'This is content slot',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.unmount()
   })

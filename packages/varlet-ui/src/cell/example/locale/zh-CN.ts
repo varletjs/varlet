@@ -5,4 +5,5 @@ export default {
   showBorder: '显示边框',
   content: '这是单元格',
   description: '描述',
+  list: '用作列表项',
 }

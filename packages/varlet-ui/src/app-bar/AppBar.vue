@@ -1,35 +1,45 @@
 <template>
   <div
-    :class="classes(n(), [round, n('--round')], [elevation, n('$-elevation--3')])"
-    :style="{
-      background: color,
-      color: textColor,
-    }"
+    :class="
+      classes(
+        n(),
+        n('$--box'),
+        [safeAreaTop, n('--safe-area-top')],
+        [round, n('--round')],
+        formatElevation(elevation, 3)
+      )
+    "
+    :style="rootStyles"
   >
-    <div :class="n('left')">
-      <slot name="left" />
-      <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
+    <div :class="n('toolbar')">
+      <div :class="n('left')">
+        <slot name="left" />
+        <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
+          <slot>{{ title }}</slot>
+        </div>
+      </div>
+
+      <div :class="n('title')" v-if="titlePosition === 'center'">
         <slot>{{ title }}</slot>
+      </div>
+
+      <div :class="n('right')">
+        <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
+          <slot>{{ title }}</slot>
+        </div>
+        <slot name="right" />
       </div>
     </div>
 
-    <div :class="n('title')" v-if="titlePosition === 'center'">
-      <slot>{{ title }}</slot>
-    </div>
-
-    <div :class="n('right')">
-      <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
-        <slot>{{ title }}</slot>
-      </div>
-      <slot name="right" />
-    </div>
+    <slot name="content" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onMounted, onUpdated } from 'vue'
+import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
+import { useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('app-bar')
 
@@ -45,12 +55,33 @@ export default defineComponent({
       paddingRight.value = slots.right ? 0 : undefined
     }
 
-    onMounted(computePadding)
+    const rootStyles: ComputedRef<StyleValue> = computed(() => {
+      const { image, color, textColor, imageLinearGradient } = props
+
+      if (image != null) {
+        const gradient = imageLinearGradient ? `linear-gradient(${imageLinearGradient}), ` : ''
+
+        return {
+          'background-image': `${gradient}url(${image})`,
+          'background-position': 'center center',
+          'background-size': 'cover',
+        }
+      }
+
+      return {
+        background: color,
+        color: textColor,
+      }
+    })
+
+    useMounted(computePadding)
     onUpdated(computePadding)
 
     return {
       n,
       classes,
+      formatElevation,
+      rootStyles,
       paddingLeft,
       paddingRight,
     }

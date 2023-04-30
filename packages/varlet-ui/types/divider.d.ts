@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const dividerProps: Record<string, any>
+
 export interface DividerProps extends BasicAttributes {
   inset?: boolean | number
   vertical?: boolean

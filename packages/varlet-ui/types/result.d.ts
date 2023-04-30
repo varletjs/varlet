@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const resultProps: Record<string, any>
+
 export type ResultType = 'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'
 
 export interface ResultProps extends BasicAttributes {

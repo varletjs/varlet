@@ -1,7 +1,9 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export type SliderLabelVisible = 'always' | 'normal' | 'never'
+
+export declare const sliderProps: Record<string, any>
 
 export interface SliderProps extends BasicAttributes {
   modelValue?: number | Array<number>
@@ -20,10 +22,10 @@ export interface SliderProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
   rules?: Array<(value: any) => any>
-  onChange?: (value: number | Array<number>) => void
-  onStart?: () => void
-  onEnd?: (value: number | Array<number>) => void
-  'onUpdate:modelValue'?: (value: number | Array<number>) => void
+  onChange?: ListenerProp<(value: number | Array<number>) => void>
+  onStart?: ListenerProp<() => void>
+  onEnd?: ListenerProp<(value: number | Array<number>) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: number | Array<number>) => void>
 }
 
 export interface SliderButton {

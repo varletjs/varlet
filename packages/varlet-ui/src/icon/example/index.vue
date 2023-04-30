@@ -1,19 +1,24 @@
 <script setup>
 import VarIcon from '..'
+import VarInput from '../../input'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
-import { reactive, onMounted, ref } from 'vue'
+import { reactive, onMounted, ref, computed } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
+const searchText = ref('')
+const searchIcons = computed(() => {
+  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
+})
 
-const toggle = () => {
+function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
 }
 
@@ -28,6 +33,7 @@ onMounted(() => {
 })
 
 watchLang(use)
+
 watchDarkMode(dark, (theme) => {
   background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })
@@ -39,8 +45,13 @@ watchDarkMode(dark, (theme) => {
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" :size="26" />
 
   <app-type>{{ pack.iconColor }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="#2979ff" />
-  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="#2979ff" :size="26" />
+  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-primary)" />
+  <var-icon
+    class="icon-example__animation-icon"
+    name="checkbox-marked-circle"
+    color="var(--color-primary)"
+    :size="26"
+  />
 
   <app-type>{{ pack.useImage }}</app-type>
   <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
@@ -49,28 +60,51 @@ watchDarkMode(dark, (theme) => {
   <var-icon
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"
-    color="#2979ff"
+    color="var(--color-primary)"
     @click="() => Snackbar.success(pack.clickSuccess)"
   />
 
   <app-type>{{ pack.iconAnimation }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
-    color="#2979ff"
+    color="var(--color-primary)"
     :size="30"
     :transition="300"
     :name="iconName"
     @click="toggle"
   />
+  <var-icon
+    class="icon-example__animation-icon"
+    color="var(--color-primary)"
+    :size="30"
+    :transition="300"
+    animation-class="fade"
+    :name="iconName"
+    @click="toggle"
+  />
 
   <app-type>{{ pack.iconList }}</app-type>
+
+  <var-input
+    class="icon-example__search"
+    size="small"
+    variant="outlined"
+    :placeholder="pack.searchIcon"
+    v-model.trim="searchText"
+    clearable
+  >
+    <template #append-icon>
+      <var-icon class="search-icon" name="magnify" />
+    </template>
+  </var-input>
+
   <div class="icon-example__icons">
     <div
       class="icon-example__icon var-elevation--2"
       :style="{ background }"
       :data-clipboard-text="name"
       :key="name"
-      v-for="name in iconNames"
+      v-for="name in searchIcons"
       v-ripple
     >
       <var-icon :name="name" />
@@ -113,6 +147,10 @@ watchDarkMode(dark, (theme) => {
     transition: background-color 0.25s;
   }
 
+  &__search {
+    margin: 6px 8px 22px;
+  }
+
   &__icon-name {
     width: 100%;
     font-size: 12px;
@@ -122,5 +160,14 @@ watchDarkMode(dark, (theme) => {
     white-space: nowrap;
     margin-top: 8px;
   }
+}
+
+.search-icon {
+  margin-left: 6px;
+}
+
+.fade {
+  opacity: 0;
+  transition-property: opacity;
 }
 </style>

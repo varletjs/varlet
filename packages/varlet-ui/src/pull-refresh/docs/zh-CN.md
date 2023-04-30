@@ -12,13 +12,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
-
+const data1 = Array(30).fill('List Item')
+const data2 = Array(30).fill('This is new List Item')
 const isRefresh = ref(false)
 const data = ref(data1)
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     data.value = data.value[0] === 'List Item' ? data2 : data1
     isRefresh.value = false
@@ -41,7 +40,7 @@ const refresh = () => {
 
 ### 组合
 
-与 `List` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证 `PullRefresh` 容器高度不为 `0` 。
+与 `List` 组件结合使用即可实现上拉加载和下拉刷新的功能，需保证 `PullRefresh` 容器高度不为 `0`。
 
 ```html
 <script setup>
@@ -51,14 +50,14 @@ const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     console.log('refresh')
     refreshing.value = false
   }, 2000)
 }
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -105,6 +104,7 @@ const load = () => {
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | 是否处于加载中状态| _boolean_ | `-` |
 | `disabled` | 是否禁用下拉刷新 | _boolean_ | `false` |
+| `target`  | 触发滚动的对象，如果为 undefined 会监听距离最近的一个可滚动的祖先节点	 | _string \| HTMLElement_ | `-` |
 | `animation-duration` | 加载结束后回到初始位置的动画时长（ms） | _string \| number_ | `300` |
 | `success-duration` | 成功提示展示时长（ms） | _string \| number_ | `2000` |
 | `bg-color` | control 的背景颜色 | _string_ | `#005CAF` |
@@ -125,7 +125,7 @@ const load = () => {
 | `default` | 默认插槽 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

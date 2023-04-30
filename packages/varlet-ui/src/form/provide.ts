@@ -1,5 +1,5 @@
-import type { ComputedRef } from 'vue'
-import { useChildren, useParent } from '../utils/components'
+import { useChildren, useParent } from '@varlet/use'
+import { getCurrentInstance, type ComputedRef, type ComponentInternalInstance } from 'vue'
 
 export interface Validation {
   validate(): Promise<boolean>
@@ -15,18 +15,33 @@ export interface FormProvider {
 export const FORM_BIND_FORM_ITEM_KEY = Symbol('FORM_BIND_FORM_ITEM_KEY')
 
 export function useForm<C = Validation>() {
-  const { bindParent, parentProvider } = useParent<FormProvider, C>(FORM_BIND_FORM_ITEM_KEY)
+  const { parentProvider, index, bindParent } = useParent<FormProvider, C>(FORM_BIND_FORM_ITEM_KEY)
+
+  const instance = getCurrentInstance()!
+
+  const bindForm = bindParent
+    ? (formItemProvider: C) => {
+        bindParent({ ...formItemProvider, instance })
+      }
+    : null
 
   return {
-    bindForm: bindParent,
+    index,
     form: parentProvider,
+    bindForm,
   }
 }
 
 export function useFormItems() {
-  const { bindChildren, childProviders } = useChildren<FormProvider, Validation>(FORM_BIND_FORM_ITEM_KEY)
+  const { childProviders, length, bindChildren } = useChildren<
+    FormProvider,
+    Validation & {
+      instance: ComponentInternalInstance
+    }
+  >(FORM_BIND_FORM_ITEM_KEY)
 
   return {
+    length,
     formItems: childProviders,
     bindFormItems: bindChildren,
   }

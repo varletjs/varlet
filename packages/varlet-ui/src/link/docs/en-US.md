@@ -2,7 +2,7 @@
 
 ### Intro
 
-Link component for hyperlink to web pages
+Link component for hyperlink to web pages.
 
 ### Theme Color Link
 
@@ -111,7 +111,7 @@ Link component for hyperlink to web pages
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                       | Default                      |
 | --- |------------------------------|

@@ -165,10 +165,10 @@ const event = ref(false)
 
   <var-popup
     v-model:show="event"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -221,7 +221,7 @@ const event = ref(false)
 | `default` | 弹出层内容 | `-` |
 
 ### 样式变量
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

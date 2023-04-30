@@ -1,47 +1,73 @@
 <template>
-  <div :class="classes(n(), [border, n('--border')])">
-    <div :class="classes(n('icon'), [iconClass, iconClass])" v-if="$slots.icon || icon">
-      <slot name="icon">
+  <div
+    :class="classes(n(), [border, n('--border')], [onClick, n('--cursor')])"
+    :style="borderOffsetStyles"
+    v-ripple="{ disabled: !ripple }"
+    @click="handleClick"
+  >
+    <slot name="icon">
+      <div :class="classes(n('icon'), iconClass)" v-if="icon">
         <var-icon :name="icon" />
+      </div>
+    </slot>
+
+    <div :class="n('content')">
+      <slot>
+        <div :class="classes(n('title'), titleClass)" v-if="title">
+          {{ title }}
+        </div>
+      </slot>
+
+      <slot name="description">
+        <div :class="classes(n('description'), descriptionClass)" v-if="description">
+          {{ description }}
+        </div>
       </slot>
     </div>
-    <div :class="n('content')">
-      <div :class="classes(n('title'), [titleClass, titleClass])">
-        <slot>{{ title }}</slot>
-      </div>
-      <div
-        :class="classes(n('description'), [descriptionClass, descriptionClass])"
-        v-if="$slots.description || description"
-      >
-        <slot name="description">
-          {{ description }}
-        </slot>
-      </div>
-    </div>
-    <div :class="classes(n('extra'), [extraClass, extraClass])" v-if="$slots.extra">
+
+    <div :class="classes(n('extra'), extraClass)" v-if="$slots.extra">
       <slot name="extra" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { props } from './props'
 import VarIcon from '../icon'
-import { createNamespace } from '../utils/components'
+import Ripple from '../ripple'
+import { computed, defineComponent, type StyleValue, type ComputedRef } from 'vue'
+import { props } from './props'
+import { call, createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('cell')
 
 export default defineComponent({
   name: 'VarCell',
-  components: {
-    VarIcon,
-  },
+  components: { VarIcon },
+  directives: { Ripple },
   props,
-  setup() {
+  setup(props) {
+    const borderOffsetStyles: ComputedRef<StyleValue> = computed(() => {
+      if (props.borderOffset == null) {
+        return {}
+      }
+
+      return {
+        '--cell-border-left': toSizeUnit(props.borderOffset),
+        '--cell-border-right': toSizeUnit(props.borderOffset),
+      } as StyleValue
+    })
+
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     return {
       n,
       classes,
+      toSizeUnit,
+      borderOffsetStyles,
+      handleClick,
     }
   },
 })

@@ -1,12 +1,13 @@
-import VarMenu from '..'
+import Menu from '..'
+import VarMenu from '../Menu'
 import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
 import { doubleRaf } from '../../utils/elements'
 
 test('test menu plugin', () => {
-  const app = createApp({}).use(VarMenu)
-  expect(app.component(VarMenu.name)).toBeTruthy()
+  const app = createApp({}).use(Menu)
+  expect(app.component(Menu.name)).toBeTruthy()
 })
 
 test('test menu placement', async () => {
@@ -166,6 +167,49 @@ test('test menu hover the menu list', async () => {
   await trigger(root.querySelector('.var-menu__menu'), 'mouseenter')
   await trigger(root.querySelector('.var-menu__menu'), 'mouseleave')
   await delay(300)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
+test('test menu same width', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  mount(VarMenu, {
+    props: {
+      show: true,
+      sameWidth: true,
+      trigger: 'hover',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
+test('test menu elevation', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarMenu, {
+    props: {
+      show: true,
+      elevation: false,
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+  expect(root.innerHTML).toMatchSnapshot()
+  await wrapper.setProps({
+    elevation: 10,
+  })
   expect(root.innerHTML).toMatchSnapshot()
 
   mockRestore()

@@ -9,11 +9,11 @@ export default defineConfig({
     header: {
       version: {
         current: 'Vue 3',
-        items: {
-          'Vue 2': 'https://varlet.gitee.io/varlet-ui-vue2/',
-        },
       },
-      playground: process.env.NODE_ENV === 'development' ? 'http://localhost:3000': 'https://varlet.gitee.io/varlet-ui-playground',
+      playground:
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:3000'
+          : 'https://varlet.gitee.io/varlet-ui-playground',
     },
     menu: [
       {
@@ -49,27 +49,27 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '暗黑模式',
-          'en-US': 'Dark Mode',
-        },
-        doc: 'themes',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': '服务端渲染',
-          'en-US': 'Server side rendering',
-        },
-        doc: 'serverSideRendering',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '浏览器适配',
           'en-US': 'Browser Adaptation',
         },
         doc: 'browserAdaptation',
         type: 3,
+      },
+      {
+        text: {
+          'zh-CN': 'VSCode 插件',
+          'en-US': 'VSCode Extension',
+        },
+        doc: 'extension',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '暗黑模式',
+          'en-US': 'Dark Mode',
+        },
+        doc: 'themes',
+        type: 2,
       },
       {
         text: {
@@ -81,10 +81,10 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '开发工具支持',
-          'en-US': 'IDE Code Support',
+          'zh-CN': '服务端渲染',
+          'en-US': 'Server side rendering',
         },
-        doc: 'ide',
+        doc: 'serverSideRendering',
         type: 3,
       },
       {
@@ -136,6 +136,22 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Fab 悬浮动作按钮',
+          'en-US': 'Fab',
+        },
+        doc: 'fab',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Breadcrumbs 面包屑',
+          'en-US': 'Breadcrumbs',
+        },
+        doc: 'breadcrumbs',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Link 链接',
           'en-US': 'Link',
         },
@@ -168,6 +184,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Avatar 头像',
+          'en-US': 'Avatar',
+        },
+        doc: 'avatar',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Loading 加载',
           'en-US': 'Loading',
         },
@@ -188,6 +212,22 @@ export default defineConfig({
           'en-US': 'Badge',
         },
         doc: 'badge',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Ellipsis 文本省略',
+          'en-US': 'Ellipsis',
+        },
+        doc: 'ellipsis',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Paper 纸张',
+          'en-US': 'Paper',
+        },
+        doc: 'paper',
         type: 2,
       },
       {
@@ -381,6 +421,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Hover 悬停指令',
+          'en-US': 'Hover',
+        },
+        doc: 'hover',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '反馈组件',
           'en-US': 'Action Components',
         },
@@ -421,7 +469,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': 'Overlay 遮罩层',
-          'en-US': 'Overlay'
+          'en-US': 'Overlay',
         },
         doc: 'overlay',
         type: 2,
@@ -448,6 +496,14 @@ export default defineConfig({
           'en-US': 'Menu',
         },
         doc: 'menu',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'Tooltip 提示',
+          'en-US': 'Tooltip',
+        },
+        doc: 'tooltip',
         type: 2,
       },
       {
@@ -598,11 +654,6 @@ export default defineConfig({
   highlight: {
     style: null,
   },
-  moduleCompatible: {
-    "import dayjs from 'dayjs/esm'\n": "import dayjs from 'dayjs'\n",
-    "import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'\n":
-      "import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'\n",
-    "import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'\n":
-      "import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'\n",
-  },
+  copy: [{ from: '../varlet-icons/dist/png', to: './public/icons/png', type: 'folder' }],
+  directives: ['ripple', 'lazy', 'hover'],
 })

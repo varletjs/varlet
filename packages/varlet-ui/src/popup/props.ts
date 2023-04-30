@@ -1,4 +1,5 @@
 import type { PropType, TeleportProps } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 function positionValidator(position: string): boolean {
   return ['top', 'bottom', 'right', 'left', 'center'].includes(position)
@@ -42,26 +43,12 @@ export const props = {
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },
-  onOpen: {
-    type: Function as PropType<() => void>,
-  },
-  onOpened: {
-    type: Function as PropType<() => void>,
-  },
-  onClose: {
-    type: Function as PropType<() => void>,
-  },
-  onClosed: {
-    type: Function as PropType<() => void>,
-  },
-  onClickOverlay: {
-    type: Function as PropType<() => void>,
-  },
+  onOpen: defineListenerProp<() => void>(),
+  onOpened: defineListenerProp<() => void>(),
+  onClose: defineListenerProp<() => void>(),
+  onClosed: defineListenerProp<() => void>(),
+  onClickOverlay: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   // internal for Dialog
-  onRouteChange: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onRouteChange: defineListenerProp<() => void>(),
 }

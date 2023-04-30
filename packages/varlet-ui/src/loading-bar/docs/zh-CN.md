@@ -13,18 +13,22 @@ import { LoadingBar } from '@varlet/ui'
 
 const hasCustomStyle = ref(false)
 
-const setStyle = () => {
-  LoadingBar.mergeConfig({
-    errorColor: hasCustomStyle.value ? undefined : '#ff8800',
-    color: hasCustomStyle.value ? undefined : '#10afef',
-    height: hasCustomStyle.value ? undefined : '5px'
-  })
+function setStyle() {
+  if (hasCustomStyle.value) {
+    LoadingBar.resetDefaultOptions()
+  } else {
+    LoadingBar.setDefaultOptions({
+      errorColor: '#ff8800',
+      color: '#10afef',
+      height: '5px',
+    })
+  }
 
   hasCustomStyle.value = !hasCustomStyle.value
 }
 
 // 移动端案例设置了偏移
-// LoadingBar.mergeConfig({
+// LoadingBar.setDefaultOptions({
 //   top: '48px'
 // })
 </script>
@@ -47,10 +51,11 @@ const setStyle = () => {
 
 | 方法名                 | 说明       | 参数 | 返回值     |
 |---------------------|----------|--|---------|
-| `LoadingBar.mergeConfig` | 合并覆盖加载条的默认样式 | _options: Options_ | `-`  |
 | `LoadingBar.start`  | 开始加载  | `-` | `-` |
 | `LoadingBar.finish` | 结束加载  | `-` | `-` |
 | `LoadingBar.error`  | 加载失败  | `-` | `-` |
+| `LoadingBar.setDefaultOptions` | 设置默认的选项配置 | _options: Options_ | `-` |
+| `LoadingBar.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 
 ### LoadingBar Options
 
@@ -63,7 +68,7 @@ const setStyle = () => {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值                    |
 | --- |------------------------|

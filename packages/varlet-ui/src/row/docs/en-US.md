@@ -160,7 +160,6 @@ import BasicExample from '../example/Responsive.vue'
   justify-content: center;
   align-items: center;
   height: 36px;
-  margin-bottom: 10px;
   color: #fff;
   text-align: center;
   background-clip: content-box !important;
@@ -225,7 +224,6 @@ import ObjectExample from '../example/ResponsiveObject.vue'
   justify-content: center;
   align-items: center;
   height: 36px;
-  margin-bottom: 10px;
   color: #fff;
   text-align: center;
   background-clip: content-box !important;
@@ -253,6 +251,8 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `span`   | Number of grids occupied by columns                 | _string \| number_                                                          | `24`    |
 | `offset` | Number of grids for column offsets                  | _string \| number_                                                          | `0`     |
 | `direction` | The optional value of layout direction is `row` `column` |  _string_ | `row` |
+| `justify`   | Main axis arrangement, Can be set to `flex-start` `flex-end` `center` `space-around` `space-between`             | _string_ | `-` |
+| `align`     | Cross axis arrangement, Can be set to `stretch` `center` `flex-start` `flex-end` `baseline`                         | _string_ | `-`     |
 | `xs`     | `<768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
 | `sm`     | `≥768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
 | `md`     | `≥992px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |

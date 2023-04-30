@@ -1,5 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const countdownProps: Record<string, any>
 
 export interface CountdownTimeData {
   days: number
@@ -13,8 +15,8 @@ export interface CountdownProps extends BasicAttributes {
   time?: string | number
   format?: string
   autoStart?: boolean
-  onEnd?: () => void
-  onChange?: (value: CountdownTimeData) => void
+  onEnd?: ListenerProp<() => void>
+  onChange?: ListenerProp<(value: CountdownTimeData) => void>
 }
 
 export class Countdown extends VarComponent {

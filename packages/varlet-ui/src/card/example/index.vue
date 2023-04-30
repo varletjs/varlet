@@ -17,8 +17,13 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-card :title="pack.title" :description="pack.description" />
+
   <app-type>{{ pack.showSubtitle }}</app-type>
   <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" />
+
+  <app-type>{{ pack.outline }}</app-type>
+  <var-card :title="pack.title" :subtitle="pack.subtitle" outline elevation="0" :description="pack.description" />
+
   <app-type>{{ pack.showImage }}</app-type>
   <var-card
     :title="pack.title"

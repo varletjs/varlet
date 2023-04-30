@@ -27,7 +27,7 @@ const values = reactive({
 const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
   toRefs(values)
 
-const load = () => {
+function load() {
   if (values.current !== 0) {
     values.loading = false
     return
@@ -46,7 +46,7 @@ const load = () => {
   }, 1000)
 }
 
-const load2 = () => {
+function load2() {
   if (values.current !== 1) {
     values.loading2 = false
     return
@@ -67,7 +67,7 @@ const load2 = () => {
   }, 1000)
 }
 
-const load3 = () => {
+function load3() {
   if (values.current !== 2) {
     values.loading3 = false
     return

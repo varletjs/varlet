@@ -1,6 +1,8 @@
 import { VarComponent, BasicAttributes, Size as LoadingSize } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const loadingProps: Record<string, any>
+
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
 export { LoadingSize }
@@ -11,7 +13,7 @@ export interface LoadingProps extends BasicAttributes {
   size?: LoadingSize
   color?: string
   description?: string
-  show?: boolean
+  loading?: boolean
 }
 
 export class Loading extends VarComponent {

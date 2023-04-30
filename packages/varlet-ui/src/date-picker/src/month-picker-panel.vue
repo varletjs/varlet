@@ -16,10 +16,11 @@
               type="primary"
               var-month-picker-cover
               :ripple="false"
+              :elevation="componentProps.buttonElevation"
               v-bind="{
                 ...buttonProps(month.index),
               }"
-              @click="(event) => chooseMonth(month, event)"
+              @click="(event: Event) => chooseMonth(month, event)"
             >
               {{ getMonthAbbr(month.index) }}
             </var-button>
@@ -192,10 +193,11 @@ export default defineComponent({
         textColor: isCover ? '' : textColorOrCover(),
         [`${nDate()}-color-cover`]: isCover,
         class: classes(n('button'), [disabled, n('button--disabled')]),
+        disabled,
       }
     }
 
-    const chooseMonth = (month: MonthDict, event: MouseEvent) => {
+    const chooseMonth = (month: MonthDict, event: Event) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
       if (buttonEl.classList.contains(n('button--disabled'))) return
 

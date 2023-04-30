@@ -1,10 +1,10 @@
-# result
+# Result
 
 ### Intro
 
 It is used to show the results to users.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <template>
@@ -26,7 +26,7 @@ Result type, optional values are `info`，`success`，`warning`，`error`，`que
 
 ```html
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 const success = ref(false)
 const error = ref(false)
@@ -154,7 +154,7 @@ Please try not to modify the background color to be transparent or translucent, 
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                           | Default                    |
 |------------------------------------|----------------------------|

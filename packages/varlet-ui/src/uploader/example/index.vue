@@ -5,8 +5,8 @@ import VarSpace from '../../space'
 import VarIcon from '../../icon'
 import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { use, pack } from './locale'
 
@@ -77,9 +77,11 @@ const values = reactive({
   ],
 })
 
-const handleAfterRead = (file) => console.log(file)
+function handleAfterRead(file) {
+  console.log(file)
+}
 
-const handleAfterRead2 = (file) => {
+function handleAfterRead2(file) {
   file.state = 'loading'
 
   setTimeout(() => {
@@ -87,11 +89,11 @@ const handleAfterRead2 = (file) => {
   }, 1000)
 }
 
-const handleOversize = () => {
+function handleOversize() {
   Snackbar.warning(pack.value.fileSizeExceedsLimit)
 }
 
-const handleBeforeRead = (file) => {
+function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
     Snackbar.success(pack.value.fileLessThen)
     return true
@@ -100,7 +102,7 @@ const handleBeforeRead = (file) => {
   return false
 }
 
-const handleBeforeRemove = async () => {
+async function handleBeforeRemove() {
   const action = await Dialog({
     title: pack.value.removeTitle,
     message: pack.value.removeMessage,

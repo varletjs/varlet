@@ -5,6 +5,7 @@
   --radio-error-color: var(--color-danger);
   --radio-icon-size: 24px;
   --radio-action-padding: 6px;
+  --radio-text-padding: 6px 6px 6px 0;
 }
 
 @keyframes var-vibrate-animation {
@@ -37,9 +38,11 @@
   }
 
   &__action {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     padding: var(--radio-action-padding);
     border-radius: 50%;
     transition: background-color 0.25s, color 0.25s;

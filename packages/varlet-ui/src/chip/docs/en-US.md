@@ -2,7 +2,7 @@
 
 ### Intro
 
-Chip component, used to display some items, and supports closing items
+Chip component, used to display some items, and supports closing items.
 
 
 ### Chip Type
@@ -169,7 +169,7 @@ Set the chip color through the `color` and `text-color` attributes.
 | `close` | Triggered when the Close button is clicked and can only be used when the Close button is displayed | `event: Event` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

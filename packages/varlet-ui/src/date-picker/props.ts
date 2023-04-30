@@ -1,4 +1,5 @@
 import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 type AllowedDates = (val: string) => boolean
 
@@ -24,6 +25,7 @@ export type ComponentProps = {
   showCurrent: boolean
   multiple: boolean
   range: boolean
+  buttonElevation: boolean | string | number
 }
 
 export type MonthDict = {
@@ -136,8 +138,12 @@ export const props = {
     type: String,
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, Number, String],
     default: false,
+  },
+  buttonElevation: {
+    type: [Boolean, Number, String],
+    default: true,
   },
   firstDayOfWeek: {
     type: [String, Number],
@@ -169,13 +175,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onPreview: {
-    type: Function as PropType<(year: number, month: number) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string | string[]) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string | string[]) => void>,
-  },
+  onPreview: defineListenerProp<(year: number, month: number) => void>(),
+  onChange: defineListenerProp<(value: string | string[]) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),
 }

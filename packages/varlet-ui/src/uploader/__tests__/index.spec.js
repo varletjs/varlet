@@ -1,7 +1,5 @@
-import example from '../example'
 import Uploader from '..'
 import VarUploader from '../Uploader'
-import ImagePreview from '../../image-preview'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockFileReader, mockStubs } from '../../utils/jest'
@@ -13,12 +11,6 @@ const createEvent = (filename) => {
     },
   }
 }
-
-test('test uploader example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test uploader plugin', () => {
   const app = createApp({}).use(Uploader)
@@ -77,7 +69,7 @@ test('test uploader preview', async () => {
   await delay(100)
 
   expect(document.querySelector('.var-popup').style.display).toBe('')
-  ImagePreview.close()
+  wrapper.vm.closePreview()
   await delay(300)
 
   mockRestoreStubs()

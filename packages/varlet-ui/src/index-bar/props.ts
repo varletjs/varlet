@@ -1,4 +1,14 @@
-import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
+
+export interface IndexBarScrollToOptions {
+  event?: boolean
+}
+
+export interface ClickOptions {
+  anchorName: string | number
+  manualCall?: boolean
+  options?: IndexBarScrollToOptions
+}
 
 export const props = {
   sticky: {
@@ -9,7 +19,12 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
+  /** @deprecated Use stickyCssMode to instead. */
   cssMode: {
+    type: Boolean,
+    default: false,
+  },
+  stickyCssMode: {
     type: Boolean,
     default: false,
   },
@@ -28,10 +43,6 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  onClick: {
-    type: Function as PropType<(value: string | number) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string | number) => void>,
-  },
+  onClick: defineListenerProp<(value: string | number) => void>(),
+  onChange: defineListenerProp<(value: string | number) => void>(),
 }

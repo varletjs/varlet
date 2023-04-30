@@ -18,8 +18,8 @@
 
 ```html
 <template>
-  <var-icon name="checkbox-marked-circle" color="#2979ff" />
-  <var-icon name="checkbox-marked-circle" color="#2979ff" :size="26"/>
+  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" />
+  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" :size="26"/>
 </template>
 ```
 
@@ -43,7 +43,7 @@ import { Snackbar } from '@varlet/ui'
 <template>
   <var-icon 
     name="checkbox-marked-circle"
-    color="#2979ff"
+    color="var(--color-primary)"
     @click="() => Snackbar.success('点击成功')"
   />
 </template>
@@ -59,7 +59,7 @@ import { ref } from 'vue'
 
 const name = ref('information')
 
-const toggle = () => {
+function toggle() {
   name.value = name.value === 'information' 
     ? 'checkbox-marked-circle' 
     : 'information'
@@ -68,13 +68,29 @@ const toggle = () => {
 
 <template>
   <var-icon 
-    color="#2979ff" 
+    color="var(--color-primary)" 
     :name="name" 
     :transition="300" 
     :size="30" 
     @click="toggle"
   />
+
+  <var-icon
+    color="var(--color-primary)"
+    animation-class="fade"
+    :name="iconName"
+    :transition="300"
+    :size="30"
+    @click="toggle"
+  />
 </template>
+
+<style>
+.fade {
+  opacity: 0;
+  transition-property: opacity;
+}
+</style>
 ```
 
 ### 自定义图标库
@@ -87,25 +103,18 @@ const toggle = () => {
 /* 设置字体 */
 @font-face {
   font-family: "my-icons";
-  src: url("https://xxx.my-icons.eot");
-  src: url("https://xxx.my-icons.eot") format("embedded-opentype"),
-    url("https://xxx.my-icons.woff2") format("woff2"),
-    url("https://xxx.my-icons.woff") format("woff"),
-    url("https://xxx.my-icons.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  src: url("https://xxx.my-icons.ttf") format("truetype");
 }
 
-/* 字体样式 */
-.my-icon--set,
-.my-icon--set::before {
-  position: relative;
-  display: inline-block;
-  font: normal normal normal 14px/1 "my-icons";
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
+/* 设置命名空间 */
+.my-icon {
+  font-family: "my-icons";
 }
+/* 或 */
+.my-icon--set {
+  font-family: "my-icons";
+}
+/* 设置命名空间结束 */
 
 /* 字体名称映射码点 */
 .my-icon-hot::before {
@@ -132,6 +141,7 @@ const toggle = () => {
 | `size` | 尺寸 | _string \| number_ | `-` |
 | `color` | 图标颜色, 只适用于字体图标 | _string_ | `-` |
 | `namespace` | 图标的命名空间, 可扩展自定义图标库 |  _string_ | `var-icon` |
+| `animation-class` | 过渡动画类名 |  _string_ | `-` |
 | `transition` | 过渡动画时间（ms） |  _string \| number_ | `0` |
 
 ### 事件
@@ -142,7 +152,7 @@ const toggle = () => {
 
 ### 样式变量
 
-以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |

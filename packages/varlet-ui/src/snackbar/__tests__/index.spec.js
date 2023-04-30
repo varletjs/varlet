@@ -109,3 +109,19 @@ test('test snackbar and clear', async () => {
   expect(document.body.querySelector('.var-snackbar__wrapper-success')).toBeFalsy()
   expect(document.body.querySelector('.var-snackbar__wrapper-warning')).toBeFalsy()
 })
+
+test('test setDefaultOptions and resetDefaultOptions', async () => {
+  Snackbar.setDefaultOptions({ content: 'snackbar content', duration: 300 })
+
+  Snackbar()
+  await delay(16)
+  expect(document.body.querySelector('.var-snackbar__content').textContent).toBe('snackbar content')
+
+  await delay(500)
+
+  Snackbar.resetDefaultOptions()
+  Snackbar()
+  await delay(16)
+
+  expect(document.body.querySelector('.var-snackbar__content').textContent).toBe('')
+})

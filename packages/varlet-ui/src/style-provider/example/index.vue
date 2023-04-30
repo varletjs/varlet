@@ -3,8 +3,8 @@ import StyleProvider from '../index'
 import VarRate from '../../rate'
 import VarSwitch from '../../switch'
 import VarButton from '../../button'
-import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
@@ -17,6 +17,8 @@ const state = reactive({
 
 const styleVars = ref(null)
 
+let rootStyleVars = null
+
 const successTheme = {
   '--rate-primary-color': 'var(--color-success)',
   '--button-primary-color': 'var(--color-success)',
@@ -24,17 +26,15 @@ const successTheme = {
   '--switch-track-active-background': 'var(--color-success)',
 }
 
-const toggleTheme = () => {
-  styleVars.value = styleVars.value ? null : successTheme
-}
-
-let rootStyleVars = null
-
 const darkTheme = {
   '--color-primary': '#3f51b5',
 }
 
-const toggleRootTheme = () => {
+function toggleTheme() {
+  styleVars.value = styleVars.value ? null : successTheme
+}
+
+function toggleRootTheme() {
   rootStyleVars = rootStyleVars ? null : darkTheme
   StyleProvider(rootStyleVars)
 }

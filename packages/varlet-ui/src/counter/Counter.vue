@@ -4,7 +4,7 @@
       :class="
         classes(
           n('controller'),
-          n('$-elevation--2'),
+          formatElevation(elevation, 2),
           [disabled || formDisabled, n('--disabled')],
           [errorMessage, n('--error')]
         )
@@ -12,9 +12,7 @@
       :style="{ background: color ? color : undefined }"
       v-bind="$attrs"
     >
-      <var-icon
-        var-counter-cover
-        name="minus"
+      <var-button
         :class="
           classes(
             n('decrement-button'),
@@ -26,22 +24,26 @@
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
         }"
-        v-ripple="{
-          disabled:
-            !ripple ||
-            disabled ||
-            formDisabled ||
-            readonly ||
-            formReadonly ||
-            disableDecrement ||
-            !decrementButton ||
-            isMin,
-        }"
+        round
+        var-counter-cover
+        :ripple="
+          ripple &&
+          decrementButton &&
+          !disabled &&
+          !formDisabled &&
+          !readonly &&
+          !formReadonly &&
+          !disableDecrement &&
+          !isMin
+        "
         @click="decrement"
         @touchstart="pressDecrement"
         @touchend="releaseDecrement"
         @touchcancel="releaseDecrement"
-      />
+      >
+        <var-icon name="minus" />
+      </var-button>
+
       <input
         :class="classes(n('input'), [disabled || formDisabled, n('--not-allowed')])"
         :style="{
@@ -54,9 +56,8 @@
         v-model="inputValue"
         @change="handleChange"
       />
-      <var-icon
-        var-counter-cover
-        name="plus"
+
+      <var-button
         :class="
           classes(
             n('increment-button'),
@@ -68,22 +69,25 @@
           width: toSizeUnit(buttonSize),
           height: toSizeUnit(buttonSize),
         }"
-        v-ripple="{
-          disabled:
-            !ripple ||
-            disabled ||
-            readonly ||
-            formDisabled ||
-            formReadonly ||
-            disableIncrement ||
-            !incrementButton ||
-            isMax,
-        }"
+        round
+        var-counter-cover
+        :ripple="
+          ripple &&
+          incrementButton &&
+          !disabled &&
+          !formDisabled &&
+          !readonly &&
+          !formReadonly &&
+          !disableIncrement &&
+          !isMax
+        "
         @click="increment"
         @touchstart="pressIncrement"
         @touchend="releaseIncrement"
         @touchcancel="releaseIncrement"
-      />
+      >
+        <var-icon name="plus" />
+      </var-button>
     </div>
 
     <var-form-details :error-message="errorMessage"></var-form-details>
@@ -91,19 +95,18 @@
 </template>
 
 <script lang="ts">
+import VarButton from '../button'
 import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import { defineComponent, ref, watch, computed, nextTick } from 'vue'
+import { defineComponent, ref, watch, computed, nextTick, type Ref, type ComputedRef } from 'vue'
 import { Decimal } from 'decimal.js'
-import { props } from './props'
+import { props, type ValidateTrigger } from './props'
 import { toNumber } from '@varlet/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { useValidation, createNamespace, call } from '../utils/components'
-import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTrigger } from './props'
-import type { CounterProvider } from './provide'
+import { useValidation, createNamespace, call, formatElevation } from '../utils/components'
+import { type CounterProvider } from './provide'
 
 const { n, classes } = createNamespace('counter')
 const SPEED = 100
@@ -112,6 +115,7 @@ const DELAY = 600
 export default defineComponent({
   name: 'VarCounter',
   components: {
+    VarButton,
     VarIcon,
     VarFormDetails,
   },
@@ -120,10 +124,6 @@ export default defineComponent({
   props,
   setup(props) {
     const inputValue: Ref<string | number> = ref('')
-    let incrementTimer: number
-    let decrementTimer: number
-    let incrementDelayTimer: number
-    let decrementDelayTimer: number
     const { bindForm, form } = useForm()
     const {
       errorMessage,
@@ -133,6 +133,11 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
     const { readonly: formReadonly, disabled: formDisabled } = form ?? {}
+
+    let incrementTimer: number
+    let decrementTimer: number
+    let incrementDelayTimer: number
+    let decrementDelayTimer: number
 
     // expose
     const validate = () => v(props.rules, props.modelValue)
@@ -345,6 +350,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       inputValue,
       errorMessage,
       formDisabled,
@@ -372,6 +378,8 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../icon/icon';
+@import '../loading/loading';
+@import '../button/button';
 @import '../form-details/formDetails';
 @import '../ripple/ripple';
 @import './counter';

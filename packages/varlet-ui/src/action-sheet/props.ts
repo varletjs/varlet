@@ -1,4 +1,4 @@
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
 import type { PropType } from 'vue'
 import { ActionItem } from './index'
@@ -19,12 +19,8 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onSelect: {
-    type: Function as PropType<(actionItem: ActionItem) => void>,
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onSelect: defineListenerProp<(actionItem: ActionItem) => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   ...pickProps(popupProps, [
     'overlay',
     'overlayClass',

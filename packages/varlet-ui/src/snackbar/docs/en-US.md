@@ -36,10 +36,10 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" @click="show = !show">Close</var-button>
+      <var-button type="primary" size="small" @click="show = !show">Close</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">Multi-Line</var-button>
+  <var-button type="primary" block @click="show = !show">Multi-Line</var-button>
 </template>
 ```
 
@@ -58,10 +58,10 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" @click="show = false">Close</var-button>
+      <var-button type="primary" size="small" @click="show = false">Close</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">Bottom Display</var-button>
+  <var-button type="primary" block @click="show = !show">Bottom Display</var-button>
 </template>
 ```
 
@@ -80,8 +80,32 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :duration="10000">
     Hello, I'm a snackbar
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     Display Duration
+  </var-button>
+</template>
+```
+
+### Custom Icon
+
+Use `icon` slot realization custom icons.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(false)
+</script>
+
+<template>
+  <var-snackbar v-model:show="show">
+    Hello, I'm a snackbar
+    <template #icon>
+      <var-icon name="heart-outline" />
+    </template>
+  </var-snackbar>
+  <var-button type="primary" block @click="show = !show">
+    Custom Icon
   </var-button>
 </template>
 ```
@@ -114,14 +138,10 @@ const show = ref(false)
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const createSnackbar = () => {
-  Snackbar("Hello, I'm a snackbar")
-}
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Basic Usage</var-button>
+  <var-button type="warning" block @click="Snackbar("Hello, I'm a snackbar")">Basic Usage</var-button>
 </template>
 ```
 
@@ -131,7 +151,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "Hello, I'm a snackbar",
     duration: 1000
@@ -140,7 +160,7 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Display Duration</var-button>
+  <var-button type="warning" block @click="createSnackbar">Display Duration</var-button>
 </template>
 ```
 
@@ -150,7 +170,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = () => {
+function createSnackbar() {
   Snackbar({
     content: "Hello, I'm a snackbar",
     position: 'bottom'
@@ -159,7 +179,41 @@ const createSnackbar = () => {
 </script>
 
 <template>
-  <var-button type="warning" block @click="createSnackbar()">Bottom Display</var-button>
+  <var-button type="warning" block @click="createSnackbar">Bottom Display</var-button>
+</template>
+```
+
+### Custom
+
+```html
+<script setup>
+import { h } from 'vue'
+import { Snackbar, Icon, Button } from '@varlet/ui'
+
+function createSnackbar() {
+  const customSnackbar = Snackbar({
+  content: 'Hello, Varlet',
+  icon: () =>
+    h(Icon, {
+      name: 'heart',
+      style: { paddingRight: '12px' },
+    }),
+  action: () =>
+    h(
+      Button,
+      {
+        size: 'small',
+        type: 'primary',
+        onClick: () => customSnackbar.clear(),
+      },
+      { default: () => 'Close' }
+    )
+  })
+}
+</script>
+
+<template>
+  <var-button type="warning" block @click="createSnackbar">Custom</var-button>
 </template>
 ```
 
@@ -169,7 +223,7 @@ const createSnackbar = () => {
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const createSnackbar = (type) => {
+function createSnackbar(type) {
   Snackbar[type]("Hello, I'm a snackbar")
   if (type === 'loading') {
     setTimeout(() => {
@@ -228,7 +282,7 @@ When using functional calls, Snackbar use singleton mode by default, if you need
 <script setup>
 import { Snackbar } from '@varlet/ui'
 
-const openMultiple = () => {
+function openMultiple() {
   Snackbar.allowMultiple(true)
 
   const snackbar1 = Snackbar('Snackbar 1');
@@ -280,13 +334,14 @@ const openMultiple = () => {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | `Snackbar` content message | `-` |
+| `icon` | `Snackbar` icon | `-` |
 | `action` | `Snackbar` action of right | `-` |
 
 ### Methods
 
 The `clear` method on the instance can close the current instance, and the `clear` method on the Snackbar can close all message bars.
 
-| Method | Description | Arguments | Return value |
+| Method | Description | Arguments | Return |
 | ---- | ---- | ---- | ---- |
 | `Snackbar` | Show snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.success` | Show success snackbar | _options \| string_ | `snackbar instance` |
@@ -296,6 +351,8 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `Snackbar.loading` | Show loading snackbar | _options \| string_ | `snackbar instance` |
 | `Snackbar.clear` | Close snackbar | _-_ | `-` |
 | `Snackbar.allowMultiple` | Whether to allow multi instance patterns | _boolean_ | `-` |
+| `Snackbar.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `Snackbar.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### Snackbar Options
 
@@ -303,11 +360,12 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 | Option          | Description                                                                                     | Type | Default |
 |-----------------|-------------------------------------------------------------------------------------------------| -------- | ---------- |
-| `show`          | Whether to show `Snackbar`                                                                      | _boolean_ | `false` |
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `content`       | Custom content                                                                                  | _string_ | `-` |
+| `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
+| `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |
+| `action`        | Custom action of right                                                                          | _string \| VNode \| (() => VNode)_ | `-`               |
 | `contentClass`  | Class of custom content                                                                         | _string_ | `-` |
 | `vertical`      | Whether to use multi-line                                                                       | _boolean_ | `false` |
 | `loadingType`   | Loading type (see `Loading` component)                                                          | _string_ | `circle` |
@@ -323,7 +381,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

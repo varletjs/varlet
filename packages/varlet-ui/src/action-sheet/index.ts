@@ -1,8 +1,7 @@
 import VarActionSheet from './ActionSheet.vue'
-import type { App, TeleportProps } from 'vue'
-import { nextTick, reactive } from 'vue'
+import { nextTick, reactive, type App, type TeleportProps } from 'vue'
 import { inBrowser } from '@varlet/shared'
-import { mountInstance } from '../utils/components'
+import { call, mountInstance } from '../utils/components'
 
 export type ActionSheetActions = ActionItem | 'close'
 
@@ -15,7 +14,7 @@ export interface ActionItem {
   disabled?: boolean
 }
 
-interface ActionSheetOptions {
+export interface ActionSheetOptions {
   actions?: ActionItem[]
   show?: boolean
   title?: string
@@ -36,8 +35,13 @@ interface ActionSheetOptions {
 }
 
 let singletonOptions: ActionSheetOptions | null
+let defaultOptions: ActionSheetOptions = {}
 
-function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | void> {
+function normalizeOptions(options: ActionSheetOptions = {}) {
+  return { ...defaultOptions, ...options }
+}
+
+function ActionSheet(options?: ActionSheetOptions): Promise<ActionSheetActions | void> {
   if (!inBrowser()) {
     return Promise.resolve()
   }
@@ -45,21 +49,21 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
   return new Promise((resolve) => {
     ActionSheet.close()
 
-    const reactiveActionSheetOptions: ActionSheetOptions = reactive(options)
+    const reactiveActionSheetOptions: ActionSheetOptions = reactive(normalizeOptions(options))
     reactiveActionSheetOptions.teleport = 'body'
     singletonOptions = reactiveActionSheetOptions
 
     const { unmountInstance } = mountInstance(VarActionSheet, reactiveActionSheetOptions, {
       onSelect: (action: ActionItem) => {
-        reactiveActionSheetOptions.onSelect?.(action)
+        call(reactiveActionSheetOptions.onSelect, action)
         resolve(action)
       },
       onClose: () => {
-        reactiveActionSheetOptions.onClose?.()
+        call(reactiveActionSheetOptions.onClose)
         resolve('close')
       },
       onClosed: () => {
-        reactiveActionSheetOptions.onClosed?.()
+        call(reactiveActionSheetOptions.onClosed)
         unmountInstance()
         singletonOptions === reactiveActionSheetOptions && (singletonOptions = null)
       },
@@ -76,13 +80,15 @@ function ActionSheet(options: ActionSheetOptions): Promise<ActionSheetActions | 
   })
 }
 
-ActionSheet.Component = VarActionSheet
-
-VarActionSheet.install = function (app: App) {
-  app.component(VarActionSheet.name, VarActionSheet)
+ActionSheet.setDefaultOptions = function (options: ActionSheetOptions) {
+  defaultOptions = options
 }
 
-ActionSheet.close = () => {
+ActionSheet.resetDefaultOptions = function () {
+  defaultOptions = {}
+}
+
+ActionSheet.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null
@@ -93,9 +99,17 @@ ActionSheet.close = () => {
   }
 }
 
+ActionSheet.Component = VarActionSheet
+
+VarActionSheet.install = function (app: App) {
+  app.component(VarActionSheet.name, VarActionSheet)
+}
+
 ActionSheet.install = function (app: App) {
   app.component(VarActionSheet.name, VarActionSheet)
 }
+
+export { props as actionSheetProps } from './props'
 
 export const _ActionSheetComponent = VarActionSheet
 

@@ -115,7 +115,7 @@ describe('test cell component slots', () => {
       },
     })
 
-    expect(wrapper.find('.var-cell__title').element.textContent).toBe('This is cell')
+    expect(wrapper.find('.var-cell__content').text()).toBe('This is cell')
     wrapper.unmount()
   })
 
@@ -137,7 +137,19 @@ describe('test cell component slots', () => {
       },
     })
 
-    expect(wrapper.find('.var-cell__description').text()).toBe('This is desc')
+    expect(wrapper.find('.var-cell__content').text()).toBe('This is desc')
+    wrapper.unmount()
+  })
+
+  test('test cell default and description slots', () => {
+    const wrapper = mount(VarCell, {
+      slots: {
+        default: () => 'This is default ',
+        description: () => 'This is desc',
+      },
+    })
+
+    expect(wrapper.find('.var-cell__content').text()).toBe('This is default This is desc')
     wrapper.unmount()
   })
 

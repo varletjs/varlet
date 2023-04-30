@@ -54,13 +54,13 @@ Use `showTatol` prop to show custom total text.
 
 ### Intro
 
-Set `simple` to `false` when you use medium and large screen devices, preview see `playground`
+Set `simple` to `false` when you use medium and large screen devices, preview see `playground`.
 
 ### Basic Usage
 
 ```html
 <template>
-  <var-pagination current="6" total="115" :simple="false"/>
+  <var-pagination :current="6" :total="115" :simple="false"/>
 </template>
 ```
 
@@ -137,18 +137,19 @@ Use `show-size-changer` hide size changer and use `size-option` prop set the num
 
 ### Props
 
-| Prop                | Description | Type | Default |
-|---------------------| -------------- | -------- | ---------- |
-| `v-model: current`  | Current page number | _string \| number_ | `1` |
-| `v-model: size`     | Number of data items per page | _string \| number_ | `10` |
-| `total`             | Total number of data items | _string \| number_ | `0` |
-| `simple`            | Whether to use simple mode | _boolean_ | `true` |
-| `disabled`          | Disable pagination | _boolean_ | `false` |
-| `show-size-changer` | Whether to show `size` select | _boolean_ | `true` |
-| `show-quick-jumper` | Whether you can jump to pages directly	 | _boolean_ | `false` |
-| `max-pager-count`   | Number of buttons displayed between ellipses	| _number_ | `3` |
-| `size-option`       | Specify the sizeChanger options	 | _number[]_ | `[10, 20, 50, 100]` |
-| `show-total`        | Show page item's title	 | _function(total, range)_ | `-` |
+| Prop                | Description                                                                     | Type | Default |
+|---------------------|---------------------------------------------------------------------------------| -------- | ---------- |
+| `v-model:current`  | Current page number                                                             | _string \| number_ | `1` |
+| `v-model:size`     | Number of data items per page                                                   | _string \| number_ | `10` |
+| `total`             | Total number of data items                                                      | _string \| number_ | `0` |
+| `simple`            | Whether to use simple mode                                                      | _boolean_ | `true` |
+| `elevation`         | Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|   `true`    |
+| `disabled`          | Disable pagination                                                              | _boolean_ | `false` |
+| `show-size-changer` | Whether to show `size` select                                                   | _boolean_ | `true` |
+| `show-quick-jumper` | Whether you can jump to pages directly	                                         | _boolean_ | `false` |
+| `max-pager-count`   | Number of buttons displayed between ellipses	                                   | _number_ | `3` |
+| `size-option`       | Specify the sizeChanger options	                                                | _number[]_ | `[10, 20, 50, 100]` |
+| `show-total`        | Show page item's title	                                                         | _function(total, range)_ | `-` |
 
 ### Events
 
@@ -165,7 +166,7 @@ Use `show-size-changer` hide size changer and use `size-option` prop set the num
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

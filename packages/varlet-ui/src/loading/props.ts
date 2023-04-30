@@ -13,7 +13,6 @@ export function sizeValidator(size: string): boolean {
 }
 
 export const props = {
-  // loading类型
   type: {
     type: String as PropType<LoadingType>,
     default: 'circle',
@@ -22,13 +21,11 @@ export const props = {
   radius: {
     type: [String, Number],
   },
-  // loading尺寸
   size: {
     type: String as PropType<LoadingSize>,
     default: 'normal',
     validator: sizeValidator,
   },
-  // loading颜色
   color: {
     type: String,
   },

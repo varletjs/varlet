@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [elevation, n('$-elevation--2')])" ref="picker">
+  <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
     <div :class="n('title')" :style="{ background: headerColor || color }">
       <div :class="n('title-time')">
         <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
@@ -59,7 +59,7 @@ import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
 import { props, hoursAmpm, hours24 } from './props'
 import { toNumber } from '@varlet/shared'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
@@ -347,6 +347,7 @@ export default defineComponent({
       end,
       update,
       changePreventUpdate,
+      formatElevation,
     }
   },
 })

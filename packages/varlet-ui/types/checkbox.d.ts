@@ -1,5 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const checkboxProps: Record<string, any>
 
 export type CheckboxValidateTriggers = 'onChange'
 
@@ -15,9 +17,9 @@ export interface CheckboxProps extends BasicAttributes {
   ripple?: boolean
   validateTrigger?: Array<CheckboxValidateTriggers>
   rules?: Array<(value: any) => any>
-  onClick?: (e: Event) => void
-  onChange?: (value: any) => void
-  'onUpdate:modelValue'?: (value: any) => void
+  onClick?: ListenerProp<(e: Event) => void>
+  onChange?: ListenerProp<(value: any) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }
 
 export class Checkbox extends VarComponent {

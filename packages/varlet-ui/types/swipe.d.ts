@@ -1,5 +1,11 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const swipeProps: Record<string, any>
+
+export interface SwipeToOptions {
+  event?: boolean
+}
 
 export interface SwipeProps extends BasicAttributes {
   loop?: boolean
@@ -10,7 +16,7 @@ export interface SwipeProps extends BasicAttributes {
   indicatorColor?: string
   vertical?: boolean
   touchable?: boolean
-  onChange?: (index: number) => void
+  onChange?: ListenerProp<(index: number) => void>
 }
 
 export interface SwipeIndicatorData {
@@ -28,11 +34,11 @@ export class Swipe extends VarComponent {
 
   resize(): void
 
-  prev(): void
+  prev(options?: SwipeToOptions): void
 
-  next(): void
+  next(options?: SwipeToOptions): void
 
-  to(index: number): void
+  to(index: number, options?: SwipeToOptions): void
 }
 
 export class _SwipeComponent extends Swipe {}

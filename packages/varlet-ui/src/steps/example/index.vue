@@ -2,14 +2,14 @@
 import VarSteps from '..'
 import VarStep from '../../step'
 import VarButton from '../../button'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
 const active = ref(0)
 
-const next = () => {
+function next() {
   active.value = (active.value + 1) % 4
 }
 

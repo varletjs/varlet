@@ -1,12 +1,11 @@
 <script setup>
 import VarOverlay from '../Overlay'
 import VarButton from '../../button'
-import VarSpace from '../../space'
 import Snackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
-import { pack, use } from './local'
+import { pack, use } from './locale'
 
 const values = reactive({
   baseOverlay: false,
@@ -22,42 +21,31 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.overlayBase }}</app-type>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="baseOverlay = true">
-      {{ pack.showOverlay }}
-    </var-button>
-  </var-space>
-
-  <var-overlay v-model:show="baseOverlay" />
+  <var-button type="primary" block @click="baseOverlay = true">
+    {{ pack.showOverlay }}
+  </var-button>
 
   <app-type>{{ pack.overlayContent }}</app-type>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="contentOverlay = true">
-      {{ pack.overlayContent }}
-    </var-button>
-  </var-space>
+  <var-button type="primary" block @click="contentOverlay = true">
+    {{ pack.overlayContent }}
+  </var-button>
 
+  <app-type>{{ pack.event }}</app-type>
+  <var-button type="primary" block @click="clickOverlay = true">
+    {{ pack.clickOverlay }}
+  </var-button>
+
+  <var-overlay v-model:show="baseOverlay" />
   <var-overlay v-model:show="contentOverlay">
-    <div class="popup-example-block" @click.stop>
+    <div class="overlay-content" @click.stop>
       {{ pack.text }}
     </div>
   </var-overlay>
-
-  <app-type>{{ pack.event }}</app-type>
-  <var-space direction="column" :size="[10, 0]">
-    <var-button type="primary" block @click="clickOverlay = true">
-      {{ pack.clickOverlay }}
-    </var-button>
-  </var-space>
-
-  <var-overlay v-model:show="clickOverlay" @click="() => Snackbar.success('click')" />
+  <var-overlay v-model:show="clickOverlay" @click="Snackbar.success('click')" />
 </template>
 
-<style>
-.popup-example-custom-overlay {
-  background: rgba(0, 0, 0, 0.3) !important;
-}
-.popup-example-block {
+<style lang="less" scoped>
+.overlay-content {
   padding: 20px 24px;
   width: 250px;
   background: var(--button-default-color);

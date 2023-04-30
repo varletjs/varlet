@@ -1,5 +1,7 @@
-import { VarComponent, BasicAttributes, Type as ChipType, Size as ChipSize } from './varComponent'
+import { VarComponent, BasicAttributes, Type as ChipType, Size as ChipSize, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const chipProps: Record<string, any>
 
 export { ChipType, ChipSize }
 
@@ -13,7 +15,7 @@ export interface ChipProps extends BasicAttributes {
   round?: boolean
   block?: boolean
   closable?: boolean
-  onClose?: (e: Event) => void
+  onClose?: ListenerProp<(e: Event) => void>
 }
 
 export class Chip extends VarComponent {

@@ -11,6 +11,8 @@ Form.useValidation = useValidation
 
 Form.useForm = useForm
 
+export { props as formProps } from './props'
+
 export const _FormComponent = Form
 
 export default Form

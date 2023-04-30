@@ -19,7 +19,7 @@
       v-lazy="src"
       @load="handleLoad"
       @error="handleError"
-      @click="onClick"
+      @click="handleClick"
     />
 
     <img
@@ -31,7 +31,7 @@
       v-else
       @load="handleLoad"
       @error="handleError"
-      @click="onClick"
+      @click="handleClick"
     />
   </div>
 </template>
@@ -73,12 +73,17 @@ export default defineComponent({
       !lazy && call(onError, e)
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     return {
       n,
       classes,
       toSizeUnit,
       handleLoad,
       handleError,
+      handleClick,
     }
   },
 })

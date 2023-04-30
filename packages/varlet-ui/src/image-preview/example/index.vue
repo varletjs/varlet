@@ -1,13 +1,13 @@
 <script setup>
 import ImagePreview from '../index'
 import VarButton from '../../button'
+import VarIcon from '../../icon'
 import ActionSheet from '../../action-sheet'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
+import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import { ref, computed } from 'vue'
 import { pack, use } from './locale'
-import VarIcon from '../../icon'
 
 const VarImagePreview = ImagePreview.Component
 const VarActionSheet = ActionSheet.Component
@@ -31,16 +31,18 @@ const actions = computed(() => [
   },
 ])
 
-const handleCloseEvent = () => {
+function handleCloseEvent() {
   Snackbar({
     content: pack.value.shutdownEvent,
     duration: 1000,
   })
 }
-const preview = () => {
+
+function preview() {
   ImagePreview(image.value)
 }
-const previewCallback = () => {
+
+function previewCallback() {
   ImagePreview({
     images,
     onChange: (index) => {

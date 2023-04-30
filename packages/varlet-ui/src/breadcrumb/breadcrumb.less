@@ -1,0 +1,27 @@
+:root {
+  --breadcrumb-active-color: var(--color-primary);
+  --breadcrumb-inactive-color: #888;
+  --breadcrumb-separator-margin: 0 10px;
+  --breadcrumb-separator-font-size: 14px;
+}
+
+.var-breadcrumb {
+  display: flex;
+  align-items: center;
+  color: var(--breadcrumb-inactive-color);
+
+  &__separator {
+    margin: var(--breadcrumb-separator-margin);
+    font-size: var(--breadcrumb-separator-font-size);
+  }
+
+  &--active {
+    color: var(--breadcrumb-active-color);
+    transition: opacity 0.25s;
+
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+}

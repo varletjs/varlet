@@ -43,7 +43,7 @@ Component provides' `component call` and `function call` and two invocation mode
 ### Component Call
 
 Component calls can have a scope of custom component styles, Scope contamination is avoided.
-Note that some elements sent outside the StyleProvider using the `teleport` will not work
+Note that some elements sent outside the StyleProvider using the `teleport` will not work.
 
 ```html
 <script setup>
@@ -63,7 +63,7 @@ const successTheme = {
 
 const styleVars = ref(null)
 
-const toggleTheme = () => {
+function toggleTheme() {
   styleVars.value = styleVars.value ? null : successTheme
 }
 </script>
@@ -86,7 +86,7 @@ const toggleTheme = () => {
 
 ### Function Call
 
-A functional call is to update variables directly on `:root`, which is suitable for situations where a global update style is required
+A functional call is to update variables directly on `:root`, which is suitable for situations where a global update style is required.
 
 ```html
 <script setup>
@@ -98,7 +98,7 @@ const darkTheme = {
   '--color-primary': '#3f51b5'
 }
 
-const toggleRootTheme = () => {
+function toggleRootTheme() {
   rootStyleVars = rootStyleVars ? null : darkTheme
   StyleProvider(rootStyleVars)
 }

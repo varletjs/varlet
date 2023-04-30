@@ -264,4 +264,13 @@ export default defineConfig({
     'color-hl-group-h': '#14a6e9',
     'color-hl-group-i': '#ed4648',
   },
+  icons: {
+    name: 'varlet-icons',
+    namespace: 'var-icon',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontFamilyClassName: 'var-icon--set',
+    base64: true,
+  },
+  directives: [],
 })

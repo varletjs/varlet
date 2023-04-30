@@ -86,12 +86,30 @@ const placementOptions = [
 
 ### Offset
 
-The offset of the Menu popup can be set with `offset-x` and `offset-y`
+The offset of the Menu popup can be set with `offset-x` and `offset-y`.
 
 ```html
 <template>
   <var-menu offset-x="36px" offset-y="18px">
     <var-button type="primary">Offset</var-button>
+    
+    <template #menu>
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+      <var-cell>Menu Option</var-cell>
+    </template>
+  </var-menu>
+</template>
+```
+
+### Same width as trigger element
+
+Use `same-width` to make the popup menu and trigger the same width.
+
+```html
+<template>
+  <var-menu same-width>
+    <var-button type="primary">Same width as trigger element</var-button>
     
     <template #menu>
       <var-cell>Menu Option</var-cell>
@@ -126,19 +144,14 @@ the optional values are `click` and `hover`
 ```html
 <script setup>
 import { Snackbar } from '@varlet/ui'
-
-const open = () => Snackbar.info('open')
-const opened = () => Snackbar.info('opened')
-const close = () => Snackbar.info('close')
-const closed = () => Snackbar.info('closed')
 </script>
 
 <template>
   <var-menu
-    @open="open"
-    @opened="opened"
-    @close="close"
-    @closed="closed"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <var-button type="primary">Events</var-button>
     
@@ -158,7 +171,7 @@ In the `disabled` state, the menu will no longer be opened.
 ```html
 <template>
   <var-menu disabled>
-    <var-button type="primary">Disabled</var-button>
+    <var-button type="primary" disabled>Disabled</var-button>
     
     <template #menu>
       <var-cell>Menu Option</var-cell>
@@ -171,14 +184,17 @@ In the `disabled` state, the menu will no longer be opened.
 
 ### Two-way binding
 
-Two-way binding control menu show and hide via `v-model:show`
+Two-way binding control menu show and hide via `v-model:show`.
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
 const show = ref(false)
-const closeMenu = () => { show.value = false }
+
+function closeMenu() { 
+  show.value = false 
+}
 </script>
 
 <template>
@@ -204,16 +220,19 @@ it is recommended to wrap a `block` element.
 
 ### Props
 
-| Prop              | Description                                                 | Type              | Default |
-| ------- |-------------------------------------------------------------|----------------------| --- |
-| `v-model:show` | whether to show the menu                                    | _string_             | `default` |
-| `placement` | menu popup placement                                        | _Placement_          | `cover-top-start` |
-| `offset-x` | The x-axis offset, relative to the menu-aligned position    | _number \| string_ | `0` |
-| `offset-y` | The y-axis offset, relative to the menu-aligned position    | _number \| string_ | `0` |
-| `teleport` | The location of the menu mount                                                     | _TeleportProps['to']_ | `body` |
-| `disabled` | whether to disable the menu                                                      | _boolean_            | `false` |
-| `trigger` | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click` |
-| `default-style` | Whether to enable default styles  | _boolean_ | `true` |
+| Prop            | Description                                                                                                                  | Type              | Default           |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------|-------------------|
+| `v-model:show`  | whether to show the menu                                                                                                     | _string_             | `default`         |
+| `placement`     | menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
+| `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
+| `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
+| `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
+| `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
+| `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
+| `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
+| `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 
 ### Placement
 
@@ -265,7 +284,7 @@ it is recommended to wrap a `block` element.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

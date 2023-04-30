@@ -1,11 +1,13 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const uploaderProps: Record<string, any>
 
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'
 
-export interface VarFile extends BasicAttributes {
+export interface VarFile {
   file?: File
   name?: string
   url?: string
@@ -24,13 +26,14 @@ export type UploaderVarFileUtils = {
 
 export type UploaderCapture = boolean | 'user' | 'environment'
 
-interface UploaderProps {
+export interface UploaderProps extends BasicAttributes {
   modelValue?: VarFile[]
   accept?: string
   capture?: UploaderCapture
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean
+  elevation?: boolean | string | number
   removable?: boolean
   maxlength?: string | number
   maxsize?: string | number
@@ -39,12 +42,12 @@ interface UploaderProps {
   ripple?: boolean
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
-  onBeforeRead?: (file: VarFile) => Promise<boolean> | boolean
-  onAfterRead?: (file: VarFile) => any
-  onOversize?: (file: VarFile) => any
-  onBeforeRemove?: (file: VarFile) => any
-  onRemove?: (file: VarFile) => any
-  'onUpdate:modelValue'?: (files: VarFile[]) => any
+  onBeforeRead?: ListenerProp<(file: VarFile) => Promise<any> | any>
+  onAfterRead?: ListenerProp<(file: VarFile) => any>
+  onOversize?: ListenerProp<(file: VarFile) => any>
+  onBeforeRemove?: ListenerProp<(file: VarFile) => any>
+  onRemove?: ListenerProp<(file: VarFile) => any>
+  'onUpdate:modelValue'?: ListenerProp<(files: VarFile[]) => any>
 }
 
 export class Uploader extends VarComponent {
@@ -65,6 +68,10 @@ export class Uploader extends VarComponent {
   resetValidation(): void
 
   reset(): void
+
+  chooseFile(): void
+
+  closePreview(): void
 }
 
 export class _UploaderComponent extends Uploader {}

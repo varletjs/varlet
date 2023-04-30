@@ -59,12 +59,12 @@ Use `slot` to set custom countdown style.
 ```html
 <template>
   <var-countdown :time="108000000">
-    <template #default="timeData">
-      <span class="countdown-example-block">{{ timeData.hours }}</span>
+    <template #default="{ hours, minutes, seconds }">
+      <span class="countdown-example-block">{{ hours }}</span>
       <span class="countdown-example-colon">:</span>
-      <span class="countdown-example-block">{{ timeData.minutes }}</span>
+      <span class="countdown-example-block">{{ minutes }}</span>
       <span class="countdown-example-colon">:</span>
-      <span class="countdown-example-block">{{ timeData.seconds }}</span>
+      <span class="countdown-example-block">{{ seconds }}</span>
      </template>
   </var-countdown>
 </template>
@@ -100,11 +100,11 @@ import { Snackbar } from '@varlet/ui'
 
 const countdown = ref(null)
 
-const end = () => {
+function end() {
   Snackbar.info('end!')
 }
 
-const change = () => {
+function change() {
   console.log('change')
 }
 </script>
@@ -175,8 +175,8 @@ const change = () => {
 
 Use ref to get CountDown instance and call instance methods.
 
-| Method  | Description     | arguments |
-| ------- | --------------- | --------- |
-| `start` | Start countdown | `-`       |
-| `pause` | Pause countdown | `-`       |
-| `reset` | Reset countdown | `-`       |
+| Method | Description	 | arguments | Return |
+| ---- | ------- | -------- |--------|
+| `start` | Start countdown | `-`       | `-` |
+| `pause` | Pause countdown | `-`       | `-` |
+| `reset` | Reset countdown | `-`       | `-` |

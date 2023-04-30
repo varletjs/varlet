@@ -5,6 +5,8 @@ TabItem.install = function (app: App) {
   app.component(TabItem.name, TabItem)
 }
 
+export { props as tabItemProps } from './props'
+
 export const _TabItemComponent = TabItem
 
 export default TabItem

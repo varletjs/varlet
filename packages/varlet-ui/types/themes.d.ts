@@ -4,6 +4,6 @@ interface Themes {
   dark: StyleVars
 }
 
-export const Themes: Themes
+export declare const Themes: Themes
 
 export class _ThemesComponent {}

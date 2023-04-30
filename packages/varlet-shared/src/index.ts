@@ -9,6 +9,9 @@ export const isPlainObject = (val: unknown): val is Record<string, any> =>
 
 export const isObject = (val: unknown): val is Record<string, any> => typeof val === 'object' && val !== null
 
+// eslint-disable-next-line
+export const isFunction = (val: unknown): val is Function => typeof val === 'function'
+
 export const isArray = (val: unknown): val is Array<any> => Array.isArray(val)
 
 export const isURL = (val: string | undefined | null) => {
@@ -88,3 +91,25 @@ export const kebabCase = (s: string): string => {
   const ret = s.replace(/([A-Z])/g, ' $1').trim()
   return ret.split(' ').join('-').toLowerCase()
 }
+
+export const find = <T>(
+  arr: Array<T>,
+  callback: (item: T, index: number, array: Array<T>) => any,
+  from: 'start' | 'end' = 'start'
+): [T, number] | [null, -1] => {
+  let i = from === 'start' ? 0 : arr.length - 1
+
+  while (arr.length > 0 && i >= 0 && i <= arr.length - 1) {
+    const flag = callback(arr[i], i, arr)
+
+    if (flag) {
+      return [arr[i], i]
+    }
+
+    from === 'start' ? i++ : i--
+  }
+
+  return [null, -1]
+}
+
+export const normalizeToArray = <T>(value: T | T[]) => (isArray(value) ? value : [value])

@@ -2,6 +2,8 @@ import type { App } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
 import { VNode } from 'vue'
 
+export declare const styleProviderProps: Record<string, any>
+
 export type StyleVars = Record<string, string>
 
 export interface StyleProviderProps extends BasicAttributes {

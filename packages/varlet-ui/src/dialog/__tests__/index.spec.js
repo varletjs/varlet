@@ -59,4 +59,23 @@ test('test dialog functional confirm & cancel', async () => {
   expect(onCancel).toHaveBeenCalledTimes(1)
 
   Dialog.close()
+  await delay(300)
+})
+
+test('test dialog setDefaultOptions and resetDefaultOptions', async () => {
+  const onConfirm = jest.fn()
+
+  Dialog.setDefaultOptions({ onConfirm })
+  Dialog('test confirm')
+  await delay(16)
+  await trigger(document.querySelector('.var-dialog__confirm-button'), 'click')
+  expect(onConfirm).toHaveBeenCalledTimes(1)
+  await delay(300)
+
+  Dialog.resetDefaultOptions()
+  Dialog('test confirm')
+  await delay(16)
+  await trigger(document.querySelector('.var-dialog__confirm-button'), 'click')
+  expect(onConfirm).toHaveBeenCalledTimes(1)
+  Dialog.close()
 })

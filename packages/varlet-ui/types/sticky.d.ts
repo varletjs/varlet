@@ -1,12 +1,14 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const stickyProps: Record<string, any>
 
 export interface StickyProps extends BasicAttributes {
   offsetTop?: string | number
   zIndex?: string | number
   cssMode?: boolean
   disabled?: boolean
-  onScroll?: (offsetTop: number, isFixed: boolean) => void
+  onScroll?: ListenerProp<(offsetTop: number, isFixed: boolean) => void>
 }
 
 export class Sticky extends VarComponent {
@@ -15,6 +17,8 @@ export class Sticky extends VarComponent {
   $slots: {
     default(): VNode[]
   }
+
+  resize(): Promise<void>
 }
 
 export class _StickyComponent extends Sticky {}

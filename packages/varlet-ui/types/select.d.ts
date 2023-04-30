@@ -1,12 +1,18 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Variant as SelectVariant } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const selectProps: Record<string, any>
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
 export type SelectTextAlign = 'left' | 'right' | 'center'
 
+export type SelectSize = 'small' | 'normal'
+
 export interface SelectProps extends BasicAttributes {
   modelValue?: any
+  variant?: SelectVariant
+  size?: SelectSize
   placeholder?: string
   multiple?: boolean
   offsetY?: number | string
@@ -23,13 +29,13 @@ export interface SelectProps extends BasicAttributes {
   textAlign?: SelectTextAlign
   validateTrigger?: Array<SelectValidateTrigger>
   rules?: Array<(v: any) => any>
-  onFocus?: (e: Event) => void
-  onBlur?: (e: Event) => void
-  onClick?: (e: Event) => void
-  onClear?: (value: any) => void
-  onClose?: (value: any) => void
-  onChange?: (value: any) => void
-  'onUpdate:modelValue'?: (value: any) => void
+  onFocus?: ListenerProp<(e: Event) => void>
+  onBlur?: ListenerProp<(e: Event) => void>
+  onClick?: ListenerProp<(e: Event) => void>
+  onClear?: ListenerProp<(value: any) => void>
+  onClose?: ListenerProp<(value: any) => void>
+  onChange?: ListenerProp<(value: any) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }
 
 export interface SelectArrowIconData {
@@ -40,6 +46,7 @@ export class Select extends VarComponent {
   $props: SelectProps
 
   $slots: {
+    'selected'(): VNode[]
     'prepend-icon'(): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]

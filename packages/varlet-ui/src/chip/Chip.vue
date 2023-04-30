@@ -9,7 +9,7 @@
 
       <slot name="right" />
 
-      <span v-if="closable" :class="n('--close')" @click="onClose">
+      <span v-if="closable" :class="n('--close')" @click="handleClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
       </span>
     </span>
@@ -21,7 +21,7 @@ import VarIcon from '../icon'
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import type { ComputedRef } from 'vue'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('chip')
 
@@ -59,11 +59,16 @@ export default defineComponent({
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
 
+    const handleClose = (e: Event) => {
+      call(props.onClose, e)
+    }
+
     return {
       n,
       classes,
       chipStyles,
       contentClass,
+      handleClose,
     }
   },
 })

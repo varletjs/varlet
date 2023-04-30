@@ -1,14 +1,16 @@
-import { VarComponent, BasicAttributes, Direction as StepsDirection } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as StepsDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
 
 export { StepsDirection }
+
+export declare const stepsProps: Record<string, any>
 
 export interface StepsProps extends BasicAttributes {
   active?: string | number
   direction?: StepsDirection
   activeColor?: string
   inactiveColor?: string
-  onClickStep?: (index: number) => void
+  onClickStep?: ListenerProp<(index: number) => void>
 }
 
 export class Steps extends VarComponent {

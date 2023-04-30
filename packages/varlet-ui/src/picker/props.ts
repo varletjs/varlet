@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
 import { Texts } from '.'
 
@@ -62,19 +62,13 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  onChange: {
-    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
-  },
-  onConfirm: {
-    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
-  },
-  onCancel: {
-    type: Function as PropType<(texts: Texts, indexes: number[]) => void>,
-  },
   textFormatter: {
     type: Function as PropType<(text: any, columnIndex: number) => any>,
     default: (text: any) => text,
   },
+  onChange: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
+  onConfirm: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
+  onCancel: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
   // dynamic internal
   ...pickProps(popupProps, [
     'show',

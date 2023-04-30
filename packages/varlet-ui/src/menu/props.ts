@@ -1,19 +1,6 @@
-import type { PropType } from 'vue'
-import type { Placement as PopperPlacement } from '@popperjs/core'
-import { TeleportProps } from 'vue'
-
-export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
-
-export type Placement =
-  | NeededPopperPlacement
-  | 'cover-top'
-  | 'cover-top-start'
-  | 'cover-top-end'
-  | 'cover-bottom'
-  | 'cover-bottom-start'
-  | 'cover-bottom-end'
-  | 'cover-left'
-  | 'cover-right'
+import type { PropType, TeleportProps } from 'vue'
+import type { Placement } from './usePopover'
+import { defineListenerProp } from '../utils/components'
 
 function triggerValidator(trigger: string) {
   return ['click', 'hover'].includes(trigger)
@@ -58,6 +45,9 @@ export const props = {
     default: 'click',
     validator: triggerValidator,
   },
+  reference: {
+    type: String,
+  },
   placement: {
     type: String as PropType<Placement>,
     default: 'cover-top-start',
@@ -75,23 +65,21 @@ export const props = {
     type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
   },
+  sameWidth: {
+    type: Boolean,
+    default: false,
+  },
+  elevation: {
+    type: [Boolean, String, Number],
+    default: true,
+  },
   defaultStyle: {
     type: Boolean,
     default: true,
   },
-  onOpen: {
-    type: Function as PropType<() => void>,
-  },
-  onOpened: {
-    type: Function as PropType<() => void>,
-  },
-  onClose: {
-    type: Function as PropType<() => void>,
-  },
-  onClosed: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onOpen: defineListenerProp<() => void>(),
+  onOpened: defineListenerProp<() => void>(),
+  onClose: defineListenerProp<() => void>(),
+  onClosed: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 }

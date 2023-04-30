@@ -9,12 +9,16 @@ import { use, pack } from './locale'
 
 const hasCustomStyle = ref(false)
 
-const setStyle = () => {
-  LoadingBar.mergeConfig({
-    errorColor: hasCustomStyle.value ? undefined : '#ff8800',
-    color: hasCustomStyle.value ? undefined : '#10afef',
-    height: hasCustomStyle.value ? undefined : '5px',
-  })
+function setStyle() {
+  if (hasCustomStyle.value) {
+    LoadingBar.resetDefaultOptions()
+  } else {
+    LoadingBar.setDefaultOptions({
+      errorColor: '#ff8800',
+      color: '#10afef',
+      height: '5px',
+    })
+  }
 
   hasCustomStyle.value = !hasCustomStyle.value
 }
@@ -22,7 +26,7 @@ const setStyle = () => {
 watchDarkMode(dark)
 watchLang(use)
 
-LoadingBar.mergeConfig({
+LoadingBar.setDefaultOptions({
   top: '14.5vw',
 })
 </script>

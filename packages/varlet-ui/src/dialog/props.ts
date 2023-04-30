@@ -1,7 +1,7 @@
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
-import type { PropType } from 'vue'
 import { DialogActions } from './index'
+import type { PropType } from 'vue'
 
 function messageAlignValidator(messageAlign: string): boolean {
   return ['left', 'center', 'right'].includes(messageAlign)
@@ -52,24 +52,16 @@ export const props = {
   cancelButtonColor: {
     type: String,
   },
-  onBeforeClose: {
-    type: Function as PropType<(action: DialogActions, done: () => void) => void>,
-  },
-  onConfirm: {
-    type: Function as PropType<() => void>,
-  },
-  onCancel: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
   dialogClass: {
     type: String,
   },
   dialogStyle: {
     type: Object,
   },
+  onBeforeClose: defineListenerProp<(action: DialogActions, done: () => void) => void>(),
+  onConfirm: defineListenerProp<() => void>(),
+  onCancel: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   ...pickProps(popupProps, [
     'overlay',
     'overlayClass',

@@ -13,14 +13,14 @@ import { Locale } from '@varlet/ui'
 Locale.add('en-US', Locale.enUS)
 ```
 
-使用 `Locale.use` 进行切换语言
+使用 `Locale.use` 进行切换语言。
 
 ```js
 // playground-ignore
 Locale.use('en-US')
 ```
 
-使用 `Locale.merge` 进行语言合并
+使用 `Locale.merge` 进行语言合并。
 
 ```js
 // playground-ignore

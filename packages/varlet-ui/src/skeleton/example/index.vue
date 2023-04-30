@@ -1,15 +1,15 @@
 <script setup>
 import VarSkeleton from '..'
 import VarButton from '../../button'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 
 const loading = ref(true)
 const fullscreenLoading = ref(false)
 
-const fullscreen = () => {
+function fullscreen() {
   fullscreenLoading.value = true
 
   setTimeout(() => {

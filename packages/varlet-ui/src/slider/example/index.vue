@@ -1,8 +1,8 @@
 <script setup>
-import { reactive } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarSlider from '..'
 import dark from '../../themes/dark'
+import { reactive } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 const values = reactive({
@@ -20,7 +20,7 @@ const values = reactive({
   value11: 0,
 })
 
-const handleChange = (v) => {
+function handleChange(v) {
   console.log(v)
 }
 

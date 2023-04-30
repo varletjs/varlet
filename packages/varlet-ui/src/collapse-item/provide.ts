@@ -1,10 +1,7 @@
-import type { ComputedRef } from 'vue'
-import { useAtParentIndex, useParent } from '../utils/components'
-import {
-  COLLAPSE_BIND_COLLAPSE_ITEM_KEY,
-  COLLAPSE_COUNT_COLLAPSE_ITEM_KEY,
-  CollapseProvider,
-} from '../collapse/provide'
+import { useParent } from '@varlet/use'
+import { error } from '../utils/logger'
+import { COLLAPSE_BIND_COLLAPSE_ITEM_KEY, CollapseProvider } from '../collapse/provide'
+import { type ComputedRef } from 'vue'
 
 export interface CollapseItemProvider {
   index: ComputedRef<number>
@@ -13,13 +10,12 @@ export interface CollapseItemProvider {
 }
 
 export function useCollapse() {
-  const { parentProvider, bindParent } = useParent<CollapseProvider, CollapseItemProvider>(
+  const { parentProvider, index, bindParent } = useParent<CollapseProvider, CollapseItemProvider>(
     COLLAPSE_BIND_COLLAPSE_ITEM_KEY
   )
-  const { index } = useAtParentIndex(COLLAPSE_COUNT_COLLAPSE_ITEM_KEY)
 
-  if (!parentProvider || !bindParent || !index) {
-    throw Error('[Varlet] Collapse: <var-collapse-item/> must in <var-collapse>')
+  if (!bindParent) {
+    error('Collapse', '<var-collapse-item/> must in <var-collapse>')
   }
 
   return {

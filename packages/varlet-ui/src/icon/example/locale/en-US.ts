@@ -8,4 +8,5 @@ export default {
   iconList: 'Icon List (click copy)',
   copySuccess: 'copy success',
   clickSuccess: 'Click success',
+  searchIcon: 'Search Icon',
 }

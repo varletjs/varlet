@@ -13,13 +13,12 @@ indicates that loading is under way, and setting `v-model` to `false` after comp
 <script setup>
 import { ref } from 'vue'
 
-const data1 = Array(10).fill('List Item')
-const data2 = Array(10).fill('This is new List Item')
-
+const data1 = Array(30).fill('List Item')
+const data2 = Array(30).fill('This is new List Item')
 const isRefresh = ref(false)
 const data = ref(data1)
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     data.value = data.value[0] === 'List Item' ? data2 : data1
     isRefresh.value = false
@@ -52,14 +51,14 @@ const refreshing = ref(false)
 const loading = ref(false)
 const list = ref([])
 
-const refresh = () => {
+function refresh() {
   setTimeout(() => {
     console.log('refresh')
     refreshing.value = false
   }, 2000)
 }
 
-const load = () => {
+function load() {
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       list.value.push(list.value.length + 1)
@@ -106,6 +105,7 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Loading status | _boolean_ | `-` |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
+| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent. | _string \| HTMLElement_     | `-` |
 | `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _string \| number_ | `300` |
 | `success-duration` | Success text display duration(ms) | _string \| number_ | `2000` |
 | `bg-color` | BackgroundColor of control | _string_ | `#005CAF` |
@@ -126,7 +126,7 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
 | `default` | Default slot | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

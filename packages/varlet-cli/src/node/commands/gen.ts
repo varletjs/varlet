@@ -9,7 +9,7 @@ const { prompt } = inquirer
 
 type CodeStyle = 'tsx' | 'sfc'
 
-interface GenCommandOptions {
+export interface GenCommandOptions {
   name?: string
   i18n?: boolean
   sfc?: boolean

@@ -37,7 +37,7 @@ const placementOptions = ref([
   'cover-right',
 ])
 
-const closeMenu = () => {
+function closeMenu() {
   show.value = false
 }
 
@@ -83,6 +83,17 @@ watchDarkMode(dark)
     </template>
   </var-menu>
 
+  <app-type>{{ pack.sameWidth }}</app-type>
+  <var-menu same-width>
+    <var-button type="primary">{{ pack.sameWidth }}</var-button>
+
+    <template #menu>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+      <var-cell>{{ pack.menuOption }}</var-cell>
+    </template>
+  </var-menu>
+
   <app-type>{{ pack.trigger }}</app-type>
   <var-select :hint="false" v-model="trigger">
     <var-option label="click" />
@@ -117,7 +128,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.disabled }}</app-type>
   <var-space justify="space-between">
     <var-menu disabled>
-      <var-button type="primary">{{ pack.disabled }}</var-button>
+      <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
 
       <template #menu>
         <var-cell>{{ pack.menuOption }}</var-cell>

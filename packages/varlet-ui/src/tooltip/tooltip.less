@@ -1,0 +1,94 @@
+:root {
+  --tooltip-opacity: 0.9;
+  --tooltip-border-radius: 4px;
+  --tooltip-font-size: 14px;
+  --tooltip-padding: 8px 16px;
+  --tooltip-default-color: #616161;
+  --tooltip-offset: 10px;
+  --tooltip-primary-color: var(--color-primary);
+  --tooltip-info-color: var(--color-info);
+  --tooltip-success-color: var(--color-success);
+  --tooltip-warning-color: var(--color-warning);
+  --tooltip-danger-color: var(--color-danger);
+}
+
+.var {
+  &-tooltip-enter-from,
+  &-tooltip-leave-to {
+    opacity: 0;
+  }
+
+  &-tooltip-enter-active,
+  &-tooltip-leave-active {
+    transition-property: opacity;
+    transition-duration: 0.25s;
+  }
+}
+
+.var-tooltip {
+  display: inline-block;
+
+  &__content-container {
+    display: inline-block;
+    text-align: center;
+    border-radius: var(--tooltip-border-radius);
+    font-size: var(--tooltip-font-size);
+    padding: var(--tooltip-padding);
+    opacity: var(--tooltip-opacity);
+    transition: opacity 0.25s, background-color 0.25s;
+  }
+
+  &--default {
+    color: #fff;
+    background: var(--tooltip-default-color);
+  }
+
+  &--primary {
+    color: #fff;
+    background-color: var(--tooltip-primary-color);
+  }
+
+  &--info {
+    color: #fff;
+    background-color: var(--tooltip-info-color);
+  }
+
+  &--success {
+    color: #fff;
+    background-color: var(--tooltip-success-color);
+  }
+
+  &--warning {
+    color: #fff;
+    background-color: var(--tooltip-warning-color);
+  }
+
+  &--danger {
+    color: #fff;
+    background-color: var(--tooltip-danger-color);
+  }
+
+  &__tooltip[data-popper-placement='top'] &__content-container,
+  &__tooltip[data-popper-placement='top-start'] &__content-container,
+  &__tooltip[data-popper-placement='top-end'] &__content-container {
+    margin-bottom: var(--tooltip-offset);
+  }
+
+  &__tooltip[data-popper-placement='bottom'] &__content-container,
+  &__tooltip[data-popper-placement='bottom-start'] &__content-container,
+  &__tooltip[data-popper-placement='bottom-end'] &__content-container {
+    margin-top: var(--tooltip-offset);
+  }
+
+  &__tooltip[data-popper-placement='right'] &__content-container,
+  &__tooltip[data-popper-placement='right-start'] &__content-container,
+  &__tooltip[data-popper-placement='right-end'] &__content-container {
+    margin-left: var(--tooltip-offset);
+  }
+
+  &__tooltip[data-popper-placement='left'] &__content-container,
+  &__tooltip[data-popper-placement='left-start'] &__content-container,
+  &__tooltip[data-popper-placement='left-end'] &__content-container {
+    margin-right: var(--tooltip-offset);
+  }
+}

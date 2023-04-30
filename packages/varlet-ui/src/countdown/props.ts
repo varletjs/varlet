@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type TimeData = {
   days: number
@@ -21,10 +21,6 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onEnd: {
-    type: Function as PropType<() => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: TimeData) => void>,
-  },
+  onEnd: defineListenerProp<() => void>(),
+  onChange: defineListenerProp<(value: TimeData) => void>(),
 }

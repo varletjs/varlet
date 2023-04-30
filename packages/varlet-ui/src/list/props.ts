@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   loading: {
@@ -30,13 +30,7 @@ export const props = {
   errorText: {
     type: String,
   },
-  onLoad: {
-    type: Function as PropType<() => void>,
-  },
-  'onUpdate:loading': {
-    type: Function as PropType<(loading: boolean) => void>,
-  },
-  'onUpdate:error': {
-    type: Function as PropType<(error: boolean) => void>,
-  },
+  onLoad: defineListenerProp<() => void>(),
+  'onUpdate:loading': defineListenerProp<(loading: boolean) => void>(),
+  'onUpdate:error': defineListenerProp<(error: boolean) => void>(),
 }

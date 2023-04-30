@@ -1,7 +1,8 @@
-import { pickProps } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
 import { SNACKBAR_TYPE, SnackbarType } from './index'
 import type { PropType, TeleportProps } from 'vue'
+import type { SlotType } from '.'
 
 export function positionValidator(position: string): boolean {
   const validPositions = ['top', 'center', 'bottom']
@@ -25,7 +26,7 @@ export const props = {
   },
   // content内容
   content: {
-    type: String,
+    type: [String, Function, Object] as PropType<SlotType>,
   },
   // 为snackbar content添加自定义类名
   contentClass: {
@@ -69,28 +70,14 @@ export const props = {
     default: false,
   },
   // 打开时的回调函数
-  onOpen: {
-    type: Function as PropType<() => void>,
-    default: () => {},
-  },
+  onOpen: defineListenerProp<() => void>(),
   // 打开动画结束时的回调
-  onOpened: {
-    type: Function as PropType<() => void>,
-    default: () => {},
-  },
+  onOpened: defineListenerProp<() => void>(),
   // 关闭时的回调函数
-  onClose: {
-    type: Function as PropType<() => void>,
-    default: () => {},
-  },
+  onClose: defineListenerProp<() => void>(),
   // 关闭动画结束时的回调
-  onClosed: {
-    type: Function as PropType<() => void>,
-    default: () => {},
-  },
-  'onUpdate:show': {
-    type: Function as PropType<(show: boolean) => void>,
-  },
+  onClosed: defineListenerProp<() => void>(),
+  'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   _update: {
     type: String,
   },

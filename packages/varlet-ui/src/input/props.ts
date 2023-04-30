@@ -1,4 +1,8 @@
 import type { PropType } from 'vue'
+import { defineListenerProp, pickProps } from '../utils/components'
+import { props as fieldDecoratorProps } from '../field-decorator/props'
+
+export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
 export function typeValidator(type: string) {
   return ['text', 'password', 'number'].includes(type)
@@ -15,7 +19,7 @@ export const props = {
     default: () => ({}),
   },
   type: {
-    type: String as PropType<'text' | 'password' | 'number' | 'tel' | 'email'>,
+    type: String as PropType<InputType>,
     default: 'text',
     validator: typeValidator,
   },
@@ -27,38 +31,10 @@ export const props = {
     type: [String, Number],
     default: 8,
   },
-  placeholder: {
-    type: String,
-  },
-  line: {
-    type: Boolean,
-    default: true,
-  },
-  hint: {
-    type: Boolean,
-    default: true,
-  },
-  textColor: {
-    type: String,
-  },
-  focusColor: {
-    type: String,
-  },
-  blurColor: {
-    type: String,
-  },
   maxlength: {
     type: [String, Number],
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
   readonly: {
-    type: Boolean,
-    default: false,
-  },
-  clearable: {
     type: Boolean,
     default: false,
   },
@@ -77,25 +53,24 @@ export const props = {
   rules: {
     type: Array as PropType<Array<(v: string) => any>>,
   },
-  onFocus: {
-    type: Function as PropType<(e: FocusEvent) => void>,
-  },
-  onBlur: {
-    type: Function as PropType<(e: FocusEvent) => void>,
-  },
-  onClick: {
-    type: Function as PropType<(e: Event) => void>,
-  },
-  onClear: {
-    type: Function as PropType<(value: string) => void>,
-  },
-  onInput: {
-    type: Function as PropType<(value: string, e: Event) => void>,
-  },
-  onChange: {
-    type: Function as PropType<(value: string, e: Event) => void>,
-  },
-  'onUpdate:modelValue': {
-    type: Function as PropType<(value: string) => void>,
-  },
+  onFocus: defineListenerProp<(e: FocusEvent) => void>(),
+  onBlur: defineListenerProp<(e: FocusEvent) => void>(),
+  onInput: defineListenerProp<(value: string, e: Event) => void>(),
+  onChange: defineListenerProp<(value: string, e: Event) => void>(),
+  onClear: defineListenerProp<(value: string) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
+  // dynamic internal
+  ...pickProps(fieldDecoratorProps, [
+    'size',
+    'variant',
+    'placeholder',
+    'line',
+    'hint',
+    'textColor',
+    'focusColor',
+    'blurColor',
+    'disabled',
+    'clearable',
+    'onClick',
+  ]),
 }

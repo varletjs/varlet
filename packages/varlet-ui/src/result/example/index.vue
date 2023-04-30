@@ -98,18 +98,4 @@ watchDarkMode(dark)
 .result {
   width: 75vw;
 }
-
-.music {
-  width: 40vw;
-  animation: rotate 6s linear infinite;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 </style>

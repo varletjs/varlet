@@ -14,7 +14,7 @@ import { StyleProvider, Themes } from '@varlet/ui'
 
 let currentTheme = null
 
-const toggleTheme = () => {
+function toggleTheme() {
   currentTheme = currentTheme ? null : Themes.dark
   StyleProvider(currentTheme)
 }
@@ -25,7 +25,7 @@ const toggleTheme = () => {
 </template>
 ```
 
-Inject the `text color` and `background color` variables recommended by the component library to control the overall color
+Inject the `text color` and `background color` variables recommended by the component library to control the overall color.
 
 ```css
 /* playground-ignore */

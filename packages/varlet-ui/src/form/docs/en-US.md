@@ -30,7 +30,12 @@ const readonly = ref(false)
 </script>
 
 <template>
-  <var-form ref="form" :disabled="disabled" :readonly="readonly">
+  <var-form
+    ref="form"
+    :disabled="disabled"
+    :readonly="readonly"
+    scroll-to-error="start"
+  >
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="Please input username"
@@ -254,13 +259,15 @@ bindForm?.(apis)
 | --- | --- | --- | --- | 
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
+| `scroll-to-error` | Whether to scroll to the failed form item when the validation fails, the optional value is `start` `end` | _string_ | `-` |
+| `scroll-to-error-offset-y` | Scroll to the position offset of the form item that fails validation | _number \| string_ | `0` |
 
 #### FormDetails Props
 
-| 参数              | 说明      | 类型 | 默认值 |
+| Prop | Description | Type | Default | 
 |-----------------|---------| --- | -- |
-| `error-message` | 错误信息 | _string_ | `-` |
-| `extra-message` | 附加信息 | _string_ | `-` |
+| `error-message` | Error message | _string_ | `-` |
+| `extra-message` | Extra message | _string_ | `-` |
 
 ### Methods
 
@@ -281,7 +288,7 @@ bindForm?.(apis)
 | `default` | Form content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### FormDetails Variables
 

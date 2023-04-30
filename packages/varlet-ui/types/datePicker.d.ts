@@ -1,5 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export declare const datePickerProps: Record<string, any>
 
 export type DatePickerType = 'date' | 'month'
 
@@ -9,7 +11,8 @@ export interface DatePickerProps extends BasicAttributes {
   allowedDates?: (val: string) => boolean
   color?: string
   headerColor?: string
-  elevation?: boolean
+  elevation?: boolean | string | number
+  buttonElevation?: boolean | string | number
   firstDayOfWeek?: string | number
   min?: string
   max?: string
@@ -18,9 +21,9 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
-  onPreview?: (year: number, month: number) => void
-  onChange?: (value: string | string[]) => void
-  'onUpdate:modelValue'?: (value: string | string[]) => void
+  onPreview?: ListenerProp<(year: number, month: number) => void>
+  onChange?: ListenerProp<(value: string | string[]) => void>
+  'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>
 }
 
 export interface DatePickerYear {

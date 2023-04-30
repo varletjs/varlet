@@ -1,17 +1,14 @@
 <template>
-  <div
-    ref="freshNode"
-    :class="n()"
-    @touchstart="touchStart"
-    @touchmove="touchMove"
-    @touchend="touchEnd"
-    @touchcancel="touchEnd"
-  >
-    <div :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])" :style="controlStyle">
+  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
+    <div
+      ref="controlNode"
+      :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
+      :style="controlStyle"
+    >
       <var-icon
         :name="iconName"
         :transition="ICON_TRANSITION"
-        :class="classes(n('icon'), [refreshStatus === 'loading' && iconHasChanged, n('animation')])"
+        :class="classes(n('icon'), [refreshStatus === 'loading', n('animation')])"
         var-pull-refresh-cover
       />
     </div>
@@ -21,18 +18,15 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, onMounted } from 'vue'
-import { getParentScroller, getScrollTop } from '../utils/elements'
-import { props } from './props'
-import { toNumber } from '@varlet/shared'
-import { createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
-import type { RefreshStatus } from './props'
+import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
+import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
+import { props, type RefreshStatus } from './props'
+import { isString, toNumber } from '@varlet/shared'
+import { call, createNamespace } from '../utils/components'
+import { useEventListener, useMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
-const MAX_DISTANCE = 100
-const CONTROL_POSITION = -50
 const ICON_TRANSITION = 150
 
 export default defineComponent({
@@ -42,88 +36,135 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let scroller: HTMLElement | Window
-    let changing: Promise<void>
-
+    const controlPosition: Ref<number> = ref(0)
     const freshNode: Ref<HTMLElement | null> = ref(null)
+    const controlNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number> = ref(CONTROL_POSITION)
+    const distance: Ref<number | string> = ref('-125%')
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
 
-    // https://github.com/varletjs/varlet/issues/509
-    const iconHasChanged: Ref<boolean> = ref(true)
+    let scroller: HTMLElement | Window
+    let eventTargetScroller: HTMLElement | Window | null
+    let startY = 0
+    let deltaY = 0
+
+    const startIconTransition = async (name: string) => {
+      if (iconName.value === name) {
+        return
+      }
+
+      iconName.value = name
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, ICON_TRANSITION)
+      })
+    }
 
     const isTouchable = computed(
       () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
     )
 
     const controlStyle = computed(() => ({
-      transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
+      transform: `translate3d(0px, ${
+        isString(distance.value) ? distance.value : `${distance.value}px`
+      }, 0px) translate(-50%, 0)`,
       transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
     }))
 
+    const maxDistance = computed(() => Math.abs(2 * controlPosition.value))
+
     const isSuccess = computed(() => refreshStatus.value === 'success')
 
-    const changeIcon = (): Promise<void> => {
-      return new Promise((resolve) => {
-        window.setTimeout(() => {
-          iconHasChanged.value = true
-          resolve()
-        }, ICON_TRANSITION)
-      })
+    const lockEvent = (action: 'add' | 'remove') => {
+      const el = 'classList' in scroller ? scroller : document.body
+
+      el.classList[action](`${n()}--lock`)
     }
 
     const touchStart = (event: TouchEvent) => {
-      if (!isTouchable.value) return
+      if (controlPosition.value === 0) {
+        const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+        controlPosition.value = -(width + width * 0.25)
+      }
 
-      refreshStatus.value = 'pulling'
-      startPosition.value = event.touches[0].clientY
+      startY = event.touches[0].clientY
+      deltaY = 0
+      eventTargetScroller = getParentScroller(event.target as HTMLElement)
     }
 
     const touchMove = (event: TouchEvent) => {
-      const scrollTop = getScrollTop(scroller)
-      if (scrollTop > 0 || !isTouchable.value) return
-
-      if (scrollTop === 0 && distance.value > CONTROL_POSITION) event.cancelable && event.preventDefault()
-
-      const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + CONTROL_POSITION
-
-      distance.value = moveDistance >= MAX_DISTANCE ? MAX_DISTANCE : moveDistance
-
-      if (distance.value >= MAX_DISTANCE * 0.2) {
-        iconHasChanged.value = false
-        iconName.value = 'refresh'
-        changing = changeIcon()
-      } else {
-        iconName.value = 'arrow-down'
+      if (!isTouchable.value) {
+        return
       }
+
+      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller!) > 0) {
+        return
+      }
+
+      const scrollTop = getScrollTop(scroller)
+      if (scrollTop > 0) {
+        return
+      }
+
+      const isReachTop = scrollTop === 0
+      const touch = event.touches[0]
+      deltaY = touch.clientY - startY
+
+      if (isReachTop && deltaY >= 0) {
+        event.preventDefault()
+      }
+
+      if (refreshStatus.value !== 'pulling') {
+        refreshStatus.value = 'pulling'
+        startPosition.value = event.touches[0].clientY
+      }
+
+      if (isReachTop && distance.value > controlPosition.value) {
+        lockEvent('add')
+      }
+
+      const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
+
+      distance.value = moveDistance >= maxDistance.value ? maxDistance.value : moveDistance
+      startIconTransition(distance.value >= maxDistance.value * 0.2 ? 'refresh' : 'arrow-down')
     }
 
     const touchEnd = async () => {
-      if (!isTouchable.value) return
+      if (!isTouchable.value) {
+        return
+      }
 
       isEnd.value = true
 
-      if (distance.value >= MAX_DISTANCE * 0.2) {
-        await changing
+      if (distance.value >= maxDistance.value * 0.2) {
+        await startIconTransition('refresh')
         refreshStatus.value = 'loading'
-        distance.value = MAX_DISTANCE * 0.3
+        distance.value = maxDistance.value * 0.3
 
-        props['onUpdate:modelValue']?.(true)
-        props.onRefresh?.()
+        call(props['onUpdate:modelValue'], true)
+        nextTick(() => {
+          call(props.onRefresh)
+        })
+        lockEvent('remove')
       } else {
         refreshStatus.value = 'loosing'
         iconName.value = 'arrow-down'
-        distance.value = CONTROL_POSITION
+        distance.value = controlPosition.value
 
         setTimeout(() => {
           isEnd.value = false
+          lockEvent('remove')
         }, toNumber(props.animationDuration))
       }
+
+      eventTargetScroller = null
+    }
+
+    const setScroller = () => {
+      scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
     }
 
     const reset = () => {
@@ -142,24 +183,23 @@ export default defineComponent({
           refreshStatus.value = 'success'
           iconName.value = 'checkbox-marked-circle'
           setTimeout(() => {
-            distance.value = CONTROL_POSITION
+            distance.value = controlPosition.value
             reset()
           }, toNumber(props.successDuration))
         }
       }
     )
 
-    onMounted(() => {
-      scroller = getParentScroller(freshNode.value as HTMLElement)
-    })
+    useMounted(setScroller)
+    useEventListener(freshNode, 'touchmove', touchMove)
 
     return {
       n,
       classes,
-      iconHasChanged,
       ICON_TRANSITION,
       refreshStatus,
       freshNode,
+      controlNode,
       touchStart,
       touchMove,
       touchEnd,

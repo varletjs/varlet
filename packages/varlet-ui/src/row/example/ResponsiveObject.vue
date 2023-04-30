@@ -53,7 +53,6 @@ import VarCol from '../../col'
   height: 36px;
   background: var(--site-config-color-app-bar);
   background-clip: content-box;
-  margin-bottom: 10px;
   color: #fff;
 }
 </style>

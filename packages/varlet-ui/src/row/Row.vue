@@ -2,24 +2,22 @@
   <div
     :class="classes(n(), n('$--box'))"
     :style="{
-      justifyContent: justify,
-      alignItems: align,
+      justifyContent: padStartFlex(justify),
+      alignItems: padStartFlex(align),
       margin: average ? `0 -${average}px` : undefined,
     }"
-    @click="onClick"
+    @click="handleClick"
   >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { defineComponent, computed, watch, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useCols } from './provide'
-import { toPxNum } from '../utils/elements'
-import type { ComputedRef } from 'vue'
-import type { RowProvider } from './provide'
-import { createNamespace } from '../utils/components'
+import { useCols, type RowProvider } from './provide'
+import { toPxNum, padStartFlex } from '../utils/elements'
+import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('row')
 
@@ -39,6 +37,10 @@ export default defineComponent({
       })
     }
 
+    const handleClick = (e: Event) => {
+      call(props.onClick, e)
+    }
+
     const rowProvider: RowProvider = { computePadding }
 
     watch(() => length.value, computePadding)
@@ -46,7 +48,7 @@ export default defineComponent({
 
     bindCols(rowProvider)
 
-    return { n, classes, average }
+    return { n, classes, average, handleClick, padStartFlex }
   },
 })
 </script>

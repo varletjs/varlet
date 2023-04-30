@@ -1,14 +1,15 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarCollapse from '..'
 import VarCollapseItem from '../../collapse-item'
 import VarButton from '../../button'
 import VarSpace from '../../space'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
 import { pack, use } from './locale'
 
 const disabled = ref(false)
+const divider = ref(false)
 
 const values = reactive({
   value: ['1'],
@@ -16,9 +17,10 @@ const values = reactive({
   value2: [1],
   value3: ['1'],
   value4: ['2'],
+  value5: [],
 })
 
-const changeHandle = (val) => {
+function changeHandle(val) {
   console.log(val)
 }
 
@@ -37,6 +39,16 @@ watchDarkMode(dark)
   <var-collapse v-model="values.value4" :offset="false">
     <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
+  </var-collapse>
+
+  <app-type>{{ pack.controlledDivider }}</app-type>
+  <var-button @click="divider = !divider" style="margin-bottom: 8px">{{
+    divider ? pack.hideDivider : pack.showDivider
+  }}</var-button>
+  <var-collapse v-model="values.value5" :divider="divider" @change="changeHandle">
+    <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.title" name="3">{{ pack.text }}</var-collapse-item>
   </var-collapse>
 
   <app-type>{{ pack.accordionMode }}</app-type>

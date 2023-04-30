@@ -2,7 +2,7 @@
   <div :class="classes(n(), n('$--box'))">
     <div :class="n('file-list')">
       <div
-        :class="classes(n('file'), n('$-elevation--2'), [f.state === 'loading', n('--loading')])"
+        :class="classes(n('file'), formatElevation(elevation, 2), [f.state === 'loading', n('--loading')])"
         :key="f.id"
         v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
@@ -23,18 +23,19 @@
       <div
         :class="
           classes(
-            [!$slots.default, `${n('action')} ${n('$-elevation--2')}`],
+            [!$slots.default, `${n('action')} ${formatElevation(elevation, 2)}`],
             [disabled || formDisabled, n('--disabled')]
           )
         "
         v-if="!maxlength || modelValue.length < maxlength"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
-        @click="triggerAction"
+        v-hover:desktop="handleHovering"
+        @click="chooseFile"
       >
         <input
           ref="input"
-          :class="n('action-input')"
           type="file"
+          :class="n('action-input')"
           :multiple="multiple"
           :accept="accept"
           :capture="capture"
@@ -44,6 +45,7 @@
 
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
+          <var-hover-overlay :hovering="hovering && !disabled && !formDisabled" />
         </slot>
       </div>
     </div>
@@ -73,20 +75,20 @@
 </template>
 
 <script lang="ts">
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import VarFormDetails from '../form-details'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
-import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
-import { props } from './props'
-import { isNumber, toNumber, isString } from '@varlet/shared'
+import Hover from '../hover'
+import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
+import { props, type VarFile, type ValidateTrigger } from './props'
+import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
-import { call, useValidation, createNamespace } from '../utils/components'
+import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
-import type { ComputedRef, Ref } from 'vue'
-import type { UploaderProvider } from './provide'
-import type { VarFile, ValidateTrigger } from './props'
+import { type UploaderProvider } from './provide'
 
 const { n, classes } = createNamespace('uploader')
 
@@ -107,11 +109,12 @@ let fid = 0
 
 export default defineComponent({
   name: 'VarUploader',
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarIcon,
     VarPopup,
     VarFormDetails,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
@@ -134,6 +137,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const { hovering, handleHovering } = useHoverOverlay()
 
     const files = computed(() => {
       const { modelValue, hideList } = props
@@ -144,10 +148,6 @@ export default defineComponent({
 
       return modelValue
     })
-
-    const triggerAction = () => {
-      input.value!.click()
-    }
 
     const preview = (varFile: VarFile) => {
       const { disabled, readonly, previewed } = props
@@ -209,13 +209,20 @@ export default defineComponent({
 
       return varFiles.map((varFile) => {
         return new Promise((resolve) => {
-          const valid = onBeforeRead ? onBeforeRead(reactive(varFile)) : true
-          Promise.resolve(valid).then((valid) =>
+          if (!onBeforeRead) {
             resolve({
-              valid,
+              valid: true,
               varFile,
             })
-          )
+          }
+
+          const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
+          Promise.all(results).then((values) => {
+            resolve({
+              valid: values.every(Boolean),
+              varFile,
+            })
+          })
         })
       })
     }
@@ -266,12 +273,15 @@ export default defineComponent({
         return
       }
 
-      if (onBeforeRemove && !(await onBeforeRemove(removedVarFile))) {
-        return
+      if (onBeforeRemove) {
+        const results = normalizeToArray(call(onBeforeRemove, reactive(removedVarFile)))
+        if ((await Promise.all(results)).some((result) => !result)) {
+          return
+        }
       }
 
       const expectedFiles: VarFile[] = modelValue.filter((varFile) => varFile !== removedVarFile)
-      call(onRemove, removedVarFile)
+      call(onRemove, reactive(removedVarFile))
       validateWithTrigger('onRemove')
       call(props['onUpdate:modelValue'], expectedFiles)
     }
@@ -284,6 +294,18 @@ export default defineComponent({
 
     // expose
     const getLoading = () => props.modelValue.filter((varFile) => varFile.state === 'loading')
+
+    // expose
+    const chooseFile = () => {
+      input.value!.click()
+    }
+
+    // expose
+    const closePreview = () => {
+      currentPreview.value = null
+      showPreview.value = false
+      ImagePreview.close()
+    }
 
     const varFileUtils: VarFileUtils = {
       getSuccess,
@@ -330,18 +352,20 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       input,
       files,
       showPreview,
       currentPreview,
       errorMessage,
       maxlengthText,
-      isHTMLSupportVideo,
-      isHTMLSupportImage,
+      hovering,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      handleHovering,
+      isHTMLSupportVideo,
+      isHTMLSupportImage,
       preview,
-      triggerAction,
       handleChange,
       handleRemove,
       getSuccess,
@@ -350,6 +374,8 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
+      chooseFile,
+      closePreview,
     }
   },
 })
@@ -362,5 +388,6 @@ export default defineComponent({
 @import '../icon/icon';
 @import '../popup/popup';
 @import '../image-preview/imagePreview';
+@import '../hover-overlay/hoverOverlay';
 @import './uploader';
 </style>

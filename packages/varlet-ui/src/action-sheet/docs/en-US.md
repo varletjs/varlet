@@ -14,7 +14,7 @@ The function returns a `Promise`，on selection return `action`，Click modal cl
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const createBasic = async () => {
+async function createBasic() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -47,7 +47,7 @@ const createBasic = async () => {
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -77,13 +77,13 @@ const handleSelect = async () => {
 
 ### Action Disabled
 
-The option is passed `disabled` to leave the action in the disabled state
+The option is passed `disabled` to leave the action in the disabled state.
 
 ```html
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({
     actions: [
       {
@@ -113,13 +113,13 @@ const handleSelect = async () => {
 
 ### Disable Close On Click Action
 
-Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing automatically when the option is selected. The user can select the action multiple times. Because `Promise` is only resolved once, it is recommended to use `onSelect` to listen for the action of the user
+Passing in `CloseOnClickAction` disallows the action of `ActionSheet` closing automatically when the option is selected. The user can select the action multiple times. Because `Promise` is only resolved once, it is recommended to use `onSelect` to listen for the action of the user.
 
 ```html
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   await ActionSheet({ 
     actions: [
       {
@@ -148,13 +148,13 @@ const handleSelect = async () => {
 
 ### Custom Action Styles
 
-Options provide parameters to configure the style. See the `Action` data structure for options
+Options provide parameters to configure the style. See the `Action` data structure for options.
 
 ```html
 <script setup>
 import { Snackbar, ActionSheet } from '@varlet/ui'
 
-const handleSelect = async () => {
+async function handleSelect() {
   const action = await ActionSheet({ 
     actions: [
       {
@@ -209,7 +209,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -247,7 +247,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -287,7 +287,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -325,7 +325,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -367,7 +367,7 @@ const actions = ref([
   },
 ])
 
-const handleSelect = (action) => {
+function handleSelect(action) {
   Snackbar(`${action.name}`)
 }
 </script>
@@ -410,6 +410,15 @@ const handleSelect = (action) => {
 | `closed`        | Triggered when the action sheet close-animation ends | `-`              |
 | `click-overlay` | Triggered when you click on overlay                  | `-`              |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `ActionSheet` | Show action sheet | _options \| string_ | `-` |
+| `ActionSheet.close` | Close action sheet | _-_ | `-` |
+| `ActionSheet.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `ActionSheet.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+
 ### ActionSheet Options
 
 #### Options passed in for a functional call
@@ -449,7 +458,7 @@ const handleSelect = (action) => {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                                    | Default                      |
 | ------------------------------------------- | ---------------------------- |
