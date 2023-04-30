@@ -87,7 +87,7 @@ function handleAfterRead(file) {
 </template>
 ```
 
-### Use The Progress Bar
+### Use Progress
 
 ```html
 <script setup>
@@ -98,7 +98,6 @@ let timer
 
 function handleAfterRead(file) {
   file.state = 'loading'
-  file.progress = 0
 
   timer = window.setInterval(() => {
     if (file.progress === 100) {
@@ -106,6 +105,7 @@ function handleAfterRead(file) {
       file.state = 'success'
       return
     }
+
     file.progress += 10
   }, 250)
 }
@@ -346,7 +346,6 @@ const files = ref([
 | `multiple` | Whether to select multiple files | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
-| `progress` | Whether the progress | _boolean_ | `false` |
 | `elevation`| Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
@@ -367,6 +366,7 @@ const files = ref([
 | `cover` | File cover image | _string_ | `-` |
 | `fit` | Cover image fill mode, Optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
 | `state` | File upload state, Optional value is `loading` `success` `error` | _string_ | `-` |
+| `state` | File upload progress, range [0, 100] | _number_ | `-` |
 
 ### VarFileUtils
 

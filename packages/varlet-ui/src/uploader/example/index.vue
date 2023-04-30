@@ -7,7 +7,7 @@ import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
 import dark from '../../themes/dark'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { reactive, ref, onUnmounted } from 'vue'
+import { reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
 const values = reactive({

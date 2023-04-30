@@ -180,6 +180,7 @@ export default defineComponent({
         cover: '',
         name: file.name,
         file,
+        progress: 0,
       }
     }
 

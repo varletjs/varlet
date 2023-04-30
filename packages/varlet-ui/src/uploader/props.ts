@@ -7,7 +7,7 @@ export interface VarFile {
   name?: string
   url?: string
   cover?: string
-  progress?: 0
+  progress?: number
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   state?: 'loading' | 'success' | 'error'
 }

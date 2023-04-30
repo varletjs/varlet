@@ -87,7 +87,7 @@ function handleAfterRead(file) {
 </template>
 ```
 
-### 使用进度条
+### 使用进度
 
 ```html
 <script setup>
@@ -98,7 +98,6 @@ let timer
 
 function handleAfterRead(file) {
   file.state = 'loading'
-  file.progress = 0
 
   timer = window.setInterval(() => {
     if (file.progress === 100) {
@@ -106,6 +105,7 @@ function handleAfterRead(file) {
       file.state = 'success'
       return
     }
+
     file.progress += 10
   }, 250)
 }
@@ -346,7 +346,6 @@ const files = ref([
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
-| `progress` | 是否开启进度条 | _boolean_ | `false` |
 | `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
 | `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
@@ -367,6 +366,7 @@ const files = ref([
 | `cover` | 封面图 | _string_ | `-` |
 | `fit` | 封面图填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
 | `state` | 文件上传状态，可选值为 `loading` `success` `error` | _string_ | `-` |
+| `progress` | 文件上传进度，范围 [0, 100] | _number_ | `-` |
 
 ### VarFileUtils
 
