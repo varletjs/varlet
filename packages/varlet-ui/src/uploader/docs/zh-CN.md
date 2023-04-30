@@ -87,7 +87,7 @@ function handleAfterRead(file) {
 </template>
 ```
 
-### 使用进度
+### 使用进度条
 
 ```html
 <script setup>
