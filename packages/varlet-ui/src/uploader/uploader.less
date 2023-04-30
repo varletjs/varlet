@@ -22,6 +22,7 @@
   --uploader-file-indicator-normal-color: var(--color-disabled);
   --uploader-file-indicator-success-color: var(--color-success);
   --uploader-file-indicator-error-color: var(--color-danger);
+  --uploader-file-progress-color: var(--color-primary);
   --uploader-disabled-color: var(--color-disabled);
   --uploader-disabled-text-color: var(--color-text-disabled);
   --uploader-loading-background: linear-gradient(
@@ -156,6 +157,13 @@
   &__preview-video {
     width: var(--uploader-preview-video-width);
     height: var(--uploader-preview-video-height);
+  }
+
+  &__progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--uploader-file-progress-color);
+    transition: width 0.25s ease-in-out;
   }
 
   &--loading {
