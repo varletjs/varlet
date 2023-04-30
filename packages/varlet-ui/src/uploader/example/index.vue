@@ -97,13 +97,12 @@ function handleAfterRead3(file) {
   file.progress = 0
 
   timer = window.setInterval(() => {
-    if (file.progress === 80) {
+    if (file.progress === 100) {
       window.clearInterval(timer)
       file.state = 'success'
       return
     }
-
-    file.progress += 20
+    file.progress += 10
   }, 250)
 }
 
@@ -186,7 +185,7 @@ onUnmounted(() => {
     </var-uploader>
   </var-space>
 
-  <div class="space"></div>
+  <var-space></var-space>
 </template>
 
 <style scoped lang="less">

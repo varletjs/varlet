@@ -87,6 +87,39 @@ function handleAfterRead(file) {
 </template>
 ```
 
+### Use The Progress Bar
+
+```html
+<script setup>
+import { ref, onUnmounted } from 'vue'
+
+const files = ref([])
+let timer
+
+function handleAfterRead(file) {
+  file.state = 'loading'
+  file.progress = 0
+
+  timer = window.setInterval(() => {
+    if (file.progress === 100) {
+      window.clearInterval(timer)
+      file.state = 'success'
+      return
+    }
+    file.progress += 10
+  }, 250)
+}
+
+onUnmounted(() => {
+  window.clearInterval(timer)
+})
+</script>
+
+<template>
+  <var-uploader v-model="files" @after-read="handleAfterRead"/>
+</template>
+```
+
 ### File Maxlength
 
 ```html

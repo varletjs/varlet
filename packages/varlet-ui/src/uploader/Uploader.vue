@@ -133,7 +133,7 @@ export default defineComponent({
 
       return isNumber(maxlength) ? `${length} / ${maxlength}` : ''
     })
-    const progress: Ref<boolean> = computed(() => props.progress)
+
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -362,7 +362,6 @@ export default defineComponent({
     return {
       n,
       classes,
-      progress,
       formatElevation,
       input,
       files,
