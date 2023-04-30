@@ -7,6 +7,7 @@ export interface VarFile {
   name?: string
   url?: string
   cover?: string
+  progress?: number
   fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
   state?: 'loading' | 'success' | 'error'
 }
@@ -68,10 +69,6 @@ export const props = {
     type: Array as PropType<Array<(v: VarFile) => any>>,
   },
   hideList: {
-    type: Boolean,
-    default: false,
-  },
-  progress: {
     type: Boolean,
     default: false,
   },

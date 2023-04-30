@@ -26,9 +26,10 @@ exports[`test uploader disabled 2`] = `
   <div class="var-uploader__file-list">
     <div class="var-uploader__file var-elevation--2">
       <div class="var-uploader__file-name">cat.png</div>
-      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div>
-      <!--v-if-->
-      <div class="var-uploader__file-indicator"></div>
+      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
+      <div class="var-uploader__file-indicator">
+        <div class="var-uploader__progress"></div>
+      </div>
     </div>
     <div class="var-uploader__action var-elevation--2 var-uploader--disabled"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
       <div class="var-hover-overlay"></div>
@@ -101,6 +102,35 @@ exports[`test uploader length over maxlength in multiple mode 1`] = `
 </div>"
 `;
 
+exports[`test uploader progress 1`] = `
+"<div class="var-uploader var--box">
+  <div class="var-uploader__file-list">
+    <div class="var-uploader__file var-elevation--2 var-uploader--loading">
+      <div class="var-uploader__file-name">progress</div>
+      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div>
+      <!--v-if-->
+      <div class="var-uploader__file-indicator">
+        <div class="var-uploader__progress" style="width: 40%;"></div>
+      </div>
+    </div>
+    <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*"><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-hover-overlay"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+  <transition-stub name="var-fade" appear="false" persisted="false" css="true">
+    <div class="var--box var-popup" style="z-index: 2001; display: none;">
+      <div class="var-popup__overlay" style="z-index: 2002;"></div>
+      <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
+        <!---->
+      </transition-stub>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
 exports[`test uploader validation 1`] = `
 "<div class="var-uploader var--box">
   <div class="var-uploader__file-list">
@@ -138,9 +168,10 @@ exports[`test uploader validation 2`] = `
   <div class="var-uploader__file-list">
     <div class="var-uploader__file var-elevation--2">
       <div class="var-uploader__file-name">cat.png</div>
-      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div>
-      <!--v-if-->
-      <div class="var-uploader__file-indicator"></div>
+      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
+      <div class="var-uploader__file-indicator">
+        <div class="var-uploader__progress"></div>
+      </div>
     </div>
     <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*"><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
       <div class="var-hover-overlay"></div>

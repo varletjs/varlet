@@ -75,14 +75,7 @@ const values = reactive({
       state: 'error',
     },
   ],
-  files13: [
-    {
-      url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      state: 'success',
-      progress: 100,
-    },
-  ],
+  files13: [],
 })
 
 function handleAfterRead(file) {
@@ -97,29 +90,22 @@ function handleAfterRead2(file) {
   }, 1000)
 }
 
-const timer = ref(0)
-const clearTimer = () => {
-  if (timer.value) {
-    clearTimeout(timer.value)
-    timer.value = null
-  }
-}
+let timer
 
 function handleAfterRead3(file) {
   file.state = 'loading'
   file.progress = 0
-  timer.value = window.setInterval(() => {
-    file.progress += 10
-    if (file.progress === 100) {
-      file.state = 'success'
-      clearTimer()
-    }
-  }, 100)
-}
 
-onUnmounted(() => {
-  window.clearInterval(timer.value)
-})
+  timer = window.setInterval(() => {
+    if (file.progress === 80) {
+      window.clearInterval(timer)
+      file.state = 'success'
+      return
+    }
+
+    file.progress += 20
+  }, 250)
+}
 
 function handleOversize() {
   Snackbar.warning(pack.value.fileSizeExceedsLimit)
@@ -145,6 +131,10 @@ async function handleBeforeRemove() {
 
 watchLang(use)
 watchDarkMode(dark)
+
+onUnmounted(() => {
+  window.clearInterval(timer)
+})
 </script>
 
 <template>
@@ -156,6 +146,9 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.state }}</app-type>
   <var-uploader v-model="values.files3" @after-read="handleAfterRead2" />
+
+  <app-type>{{ pack.useProgress }}</app-type>
+  <var-uploader v-model="values.files13" @after-read="handleAfterRead3" />
 
   <app-type>{{ pack.maxlength }}</app-type>
   <var-uploader v-model="values.files4" :maxlength="1" />
@@ -191,11 +184,6 @@ watchDarkMode(dark)
         <var-icon :size="28" name="upload" />
       </var-button>
     </var-uploader>
-  </var-space>
-
-  <app-type>{{ pack.progressBar }}</app-type>
-  <var-space>
-    <var-uploader v-model="values.files13" @after-read="handleAfterRead3" progress />
   </var-space>
 
   <div class="space"></div>

@@ -13,14 +13,13 @@
           <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
         <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
-        <div
-          :class="
-            classes(n('file-indicator'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
-          "
-        >
-          <div :class="classes(n('progress-container'))" v-if="progress">
-            <div :class="classes(n('progress'))" :style="{ width: Math.floor(f.progress) + '%' }"></div>
-          </div>
+        <div :class="n('file-indicator')">
+          <div
+            :class="
+              classes(n('progress'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
+            "
+            :style="{ width: f.state === 'success' || f.state === 'error' ? '100%' : `${f.progress}%` }"
+          ></div>
         </div>
       </div>
 
@@ -192,6 +191,7 @@ export default defineComponent({
 
     const resolver = (varFile: VarFile): Promise<VarFile> => {
       return new Promise((resolve) => {
+        // For performance, only file reader processing is performed on images
         if (!varFile.file!.type.startsWith('image')) {
           resolve(varFile)
           return
@@ -202,7 +202,7 @@ export default defineComponent({
         fileReader.onload = () => {
           const base64 = fileReader.result as string
 
-          varFile.file!.type.startsWith('image') && (varFile.cover = base64)
+          varFile.cover = base64
           varFile.url = base64
 
           resolve(varFile)
