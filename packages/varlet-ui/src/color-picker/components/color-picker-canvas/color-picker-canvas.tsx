@@ -62,6 +62,7 @@ export default defineComponent({
       top = clamp(top, 0, height)
       cursorLeft.value = left
       cursorTop.value = top
+      if (left > rect.width || top > rect.height) return
       const hsv = {
         h: props.color?.h ?? 0,
         s: clamp(event.clientX - rect.left, 0, width) / width,
@@ -87,18 +88,19 @@ export default defineComponent({
     onMounted(() => {
       renderCanvas()
       if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
-        DOMUtils.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, {
+        const dragConfig = {
           drag: (event: Event) => {
             clickTransform.value = null
             handleDrag(event as MouseEvent)
             call(props.dragger, true)
           },
-          end: (event) => {
+          end: (event: Event) => {
             clickTransform.value = DEFAULT_TRANSITION
             handleDrag(event as MouseEvent)
             call(props.dragger, false)
           },
-        })
+        }
+        DOMUtils.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, dragConfig)
       }
     })
 

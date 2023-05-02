@@ -26,7 +26,7 @@ export default defineComponent({
         if (props.color?.h === 360) {
           return rect.width - offsetWidth / 2
         }
-        const left = (((moveColor.value as HSV)?.h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        const left = (((props.color as HSV)?.h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
         const targetLeft = isNaN(left) ? offsetWidth / 2 : left
 
         if (targetLeft <= rect.width) {
@@ -39,10 +39,9 @@ export default defineComponent({
 
     const getCursorStyle = computed(() => {
       const left = getCursorLeft()
-      console.log(left)
 
       return {
-        left: left + 'px',
+        left: `${left}px`,
         top: 0,
         ...clickTransform.value,
       }
