@@ -16,16 +16,14 @@ export default defineComponent({
   name: 'VarColorPicker',
   props: colorPickerProps,
   setup(props: ColorPickerProps) {
+    const dragTransferFlag = ref<boolean>(false)
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const currentMode = ref(DEFAULT_MODE)
     const { n, classes } = createNamespace('color-picker')
     const initialColor = ref<any>()
 
-    function updateModelValueColor(color: any, flag = false) {
-      if (flag) {
-        initialColor.value = parseBaseColor(color) ?? nullColor
-        return
-      }
+    function updateModelValueColor(color: any) {
+      initialColor.value = parseBaseColor(color) ?? nullColor
       const value = extractBaseColor(parseBaseColor(color) ?? nullColor, props.modelValue)
       call(props['onUpdate:modelValue'], value)
     }
@@ -36,6 +34,10 @@ export default defineComponent({
 
     function updateMode(mode: string) {
       currentMode.value = mode
+    }
+
+    function handleDragger(flag: boolean) {
+      dragTransferFlag.value = flag
     }
 
     const containerStyle = computed(() => {
@@ -53,14 +55,24 @@ export default defineComponent({
       }
     })
 
+    const dotContainerStyle = computed(() => {
+      const defaultColor = HSVtoCSS(initialColor.value ?? nullColor)
+      return {
+        border: `13px solid ${defaultColor}`,
+      }
+    })
+
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
+      updateModelValueColor(modelValue.value)
     })
 
     watch(
       () => modelValue.value,
-      (newV) => {
-        updateModelValueColor(newV, true)
+      (newV, oldV) => {
+        if (oldV !== newV && !dragTransferFlag.value) {
+          updateModelValueColor(newV)
+        }
       },
       {
         immediate: true,
@@ -85,6 +97,7 @@ export default defineComponent({
                 height={props.canvasHeight}
                 color={initialColor.value}
                 onUpdate:color={updateColor}
+                dragger={handleDragger}
                 disabled={disabled.value}
               />
             )}
@@ -92,7 +105,7 @@ export default defineComponent({
               <div class={n('control')}>
                 {props.sliderLayout && (
                   <div class={n('preview')}>
-                    <div class={n('preview__dots')}>
+                    <div class={n('preview__dots')} style={dotContainerStyle.value}>
                       <div style={dotStyle.value} />
                     </div>
                     <div class={n('preview__slider')}>

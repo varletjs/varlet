@@ -16,21 +16,31 @@ export default defineComponent({
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
-
+    const moveColor = ref<HSV | null>(null)
     const getCursorLeft = () => {
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()
+
         const { offsetWidth } = cursorElement.value
+
         if (props.color?.h === 360) {
           return rect.width - offsetWidth / 2
         }
-        return (((props.color as HSV).h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        const left = (((moveColor.value as HSV)?.h % 360) * (rect.width - offsetWidth)) / 360 + offsetWidth / 2
+        const targetLeft = isNaN(left) ? offsetWidth / 2 : left
+
+        if (targetLeft <= rect.width) {
+          return targetLeft
+        }
+        return rect.width
       }
       return 0
     }
 
     const getCursorStyle = computed(() => {
       const left = getCursorLeft()
+      console.log(left)
+
       return {
         left: left + 'px',
         top: 0,
@@ -47,13 +57,13 @@ export default defineComponent({
       left = Math.min(left, rect.width - offsetWidth / 2)
       left = Math.max(offsetWidth / 2, left)
       const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
-      const hsv = {
+      moveColor.value = {
         h: hue,
         s: (props.color as HSV).s,
         v: (props.color as HSV).v,
         a: (props.color as HSV).a,
       }
-      call(props['onUpdate:color'], hsv ?? nullColor)
+      call(props['onUpdate:color'], moveColor.value ?? nullColor)
     }
 
     const onClickSlider = (event: Event) => {
@@ -75,7 +85,7 @@ export default defineComponent({
       }
 
       if (barElement.value && cursorElement.value) {
-        DOMUtils.triggerDragEvent(barElement.value, dragConfig)
+        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
       }
     })
 

@@ -91,10 +91,12 @@ export default defineComponent({
           drag: (event: Event) => {
             clickTransform.value = null
             handleDrag(event as MouseEvent)
+            call(props.dragger, true)
           },
           end: (event) => {
             clickTransform.value = DEFAULT_TRANSITION
             handleDrag(event as MouseEvent)
+            call(props.dragger, false)
           },
         })
       }

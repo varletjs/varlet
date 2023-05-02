@@ -10,6 +10,9 @@ export const colorPickerPaletteProps = {
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
+  dragger: {
+    type: Function as PropType<(value: any) => void>,
+  },
   disabled: {
     type: Boolean,
     default: false,
