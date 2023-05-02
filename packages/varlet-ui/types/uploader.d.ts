@@ -14,6 +14,7 @@ export interface VarFile {
   cover?: string
   fit?: VarFileFit
   state?: VarFileState
+  progress?: number
 }
 
 export type UploaderValidateTrigger = 'onChange' | 'onRemove'

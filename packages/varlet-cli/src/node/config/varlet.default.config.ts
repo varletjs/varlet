@@ -1,5 +1,22 @@
 import { defineConfig } from './varlet.config.js'
 
+const title = {
+  'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
+  'en-US': 'Material design mobile components built for Vue3',
+}
+
+const description = {
+  'zh-CN':
+    'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验',
+  'en-US':
+    'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience',
+}
+
+const keywords = {
+  'zh-CN': 'Varlet,Vue3 移动端组件库,Material Design',
+  'en-US': 'Varlet,Vue3 Mobile Components Library,Material Design',
+}
+
 export default defineConfig({
   name: 'Varlet',
   namespace: 'var',
@@ -19,15 +36,13 @@ export default defineConfig({
   },
   useMobile: false,
   pc: {
+    title,
+    description,
+    keywords,
     menu: [],
     redirect: '/index',
     indexPage: {
-      description: {
-        'zh-CN':
-          'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验',
-        'en-US':
-          'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience',
-      },
+      description,
       started: {
         'zh-CN': '起步',
         'en-US': 'GET STARTED',
@@ -143,10 +158,6 @@ export default defineConfig({
         'en-US': 'Copyright © 2022 varletjs member and varlet contributors.',
       },
     },
-    title: {
-      'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
-      'en-US': 'Material design mobile components built for Vue3',
-    },
     header: {
       i18n: {
         'zh-CN': '中文',
@@ -167,11 +178,10 @@ export default defineConfig({
     },
   },
   mobile: {
+    title,
+    description,
+    keywords,
     redirect: '/home',
-    title: {
-      'zh-CN': '面向 Vue3 的 Material 风格移动端组件库',
-      'en-US': 'Material design mobile components built for Vue3',
-    },
     header: {
       i18n: {
         'zh-CN': '中文',

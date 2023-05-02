@@ -7,7 +7,7 @@ This section mainly introduces the main changes of the `2.x` version compared to
 
 ### Component refactoring
 
-- The Menu component has been reworked, the api has been optimized to make it easier to use, and it has better boundary detection capabilities and performance on the desktop side. For specific usage, please refer to [Menu documentation](./zh-CN/menu),
+- The Menu component has been reworked, the api has been optimized to make it easier to use, and it has better boundary detection capabilities and performance on the desktop side. For specific usage, please refer to [Menu documentation](#/en-US/menu),
 - The drop-down menu of the Select component is replaced by the new Menu component
 - The drop-down menu of the Pagination component is replaced by the new Menu component
 - Default color of Loading component changed from `currentColor` to `var(--color-primary)`

@@ -1,5 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, Direction as SliderDirection, ListenerProp } from './varComponent'
 import { VNode } from 'vue'
+
+export { SliderDirection }
 
 export type SliderLabelVisible = 'always' | 'normal' | 'never'
 
@@ -21,6 +23,7 @@ export interface SliderProps extends BasicAttributes {
   max?: string | number
   disabled?: boolean
   readonly?: boolean
+  direction?: SliderDirection
   rules?: Array<(value: any) => any>
   onChange?: ListenerProp<(value: number | Array<number>) => void>
   onStart?: ListenerProp<() => void>
