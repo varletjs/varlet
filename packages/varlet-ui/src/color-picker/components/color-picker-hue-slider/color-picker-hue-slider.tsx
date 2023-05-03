@@ -3,8 +3,8 @@ import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-pi
 import { DOMUtils } from '../../utils/dom-dragger'
 import { HSV } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
-import './color-picker-hue-slider.less'
 import { nullColor } from '../../utils/color-utils'
+import './color-picker-hue-slider.less'
 
 type DefaultTransition = { transition: string }
 export default defineComponent({

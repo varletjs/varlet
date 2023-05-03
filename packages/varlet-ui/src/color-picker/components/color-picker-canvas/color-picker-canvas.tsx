@@ -29,6 +29,14 @@ export default defineComponent({
       }
     })
 
+    const canvasStyle = computed(() => {
+      return {
+        width: convertToUnit(props.width),
+        height: convertToUnit(props.height),
+        cursor: props.disabled ? 'not-allowed' : 'default',
+      }
+    })
+
     function renderCanvas() {
       if (canvasElement.value) {
         const canvas = canvasElement.value.getContext('2d')
@@ -110,15 +118,7 @@ export default defineComponent({
 
     return () => {
       return (
-        <div
-          class={n()}
-          style={{
-            width: convertToUnit(props.width),
-            height: convertToUnit(props.height),
-          }}
-          ref={paletteElement}
-          onClick={clickPalette}
-        >
+        <div class={n()} style={canvasStyle.value} ref={paletteElement} onClick={clickPalette}>
           <canvas ref={canvasElement}></canvas>
           <div style={getDotStyle.value} class={n('dot')} ref={handlerElement}></div>
         </div>

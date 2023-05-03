@@ -1,5 +1,5 @@
 import { Ref, ref, watch } from 'vue'
-import { ColorPickerColor, CssColorObject, HSV } from './color-utils-types'
+import { CssColorObject, HSV } from './color-utils-types'
 
 export function useReactive<T>(source: () => T): Ref<T | undefined> {
   const model = ref<T>()

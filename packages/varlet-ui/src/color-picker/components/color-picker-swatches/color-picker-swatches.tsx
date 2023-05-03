@@ -1,4 +1,4 @@
-import { HexToHSV, parseBaseColor } from '../../utils/color-utils'
+import { HexToHSV } from '../../utils/color-utils'
 import { defineComponent, toRefs } from 'vue'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
 import { changeColorValue } from '../../utils/composable'

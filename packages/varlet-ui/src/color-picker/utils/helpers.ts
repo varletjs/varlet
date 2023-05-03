@@ -51,7 +51,7 @@ export function keepDecimal(value: number, digits = 0): number {
   return Math.round(value * COUNT_VALUE) / COUNT_VALUE
 }
 export function has<T extends Record<string, unknown>>(obj: T, key: string[]): boolean {
-  return key.every((k) => obj.hasOwnProperty(k))
+  return key.every((k) => Object.prototype.hasOwnProperty.call(obj, k))
 }
 
 export function deepEqual(a: any, b: any): boolean {

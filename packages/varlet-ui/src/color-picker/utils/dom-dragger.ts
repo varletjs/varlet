@@ -290,7 +290,7 @@ export class DOMUtils {
     // 获得中心点和鼠标坐标连线，与y轴正半轴之间的夹角
     const x = Math.abs(originX - event.clientX)
     const y = Math.abs(originY - event.clientY)
-    const z = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+    const z = Math.sqrt(x ** 2 + y ** 2)
     const cos = y / z
     const rad = Math.acos(cos) // 用反三角函数求弧度
     let angle = Math.floor(180 / (Math.PI / rad)) // 将弧度转换成角度

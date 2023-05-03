@@ -1,9 +1,9 @@
 import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
-import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import { DOMUtils } from '../../utils/dom-dragger'
 import { HSVtoHex, nullColor } from '../../utils/color-utils'
 import { HSV } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
+import { colorPickerAlphaSliderProps } from './color-picker-alpha-slider-types'
 import './color-picker-alpha-slider.less'
 
 export default defineComponent({

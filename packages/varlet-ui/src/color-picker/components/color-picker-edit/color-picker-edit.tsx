@@ -1,7 +1,7 @@
 import { computed, defineComponent, toRefs } from 'vue'
-import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-types'
 import { call, createNamespace } from '../../../utils/components'
 import { modes as defaultModes } from '../../utils/color-utils'
+import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-types'
 import './color-picker-edit.less'
 
 const { n, classes } = createNamespace('color-picker-edit')
