@@ -73,7 +73,7 @@ export default defineComponent({
         },
       }
       if (barElement.value && cursorElement.value && !props.disabled) {
-        DOMUtils.triggerDragEvent(barElement.value, dragConfig)
+        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
       }
     })
 

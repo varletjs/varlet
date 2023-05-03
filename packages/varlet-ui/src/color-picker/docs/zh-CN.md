@@ -22,13 +22,12 @@
 
 ### 切换颜色模式
 
-使用 v-model 来控制显示的颜色
+选择不同颜色模式
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const color = ref('#BFFAFF')
 const value = ref('')
 const modes = ['rgba', 'hsla', 'hex']
 </script>
@@ -46,18 +45,25 @@ const modes = ['rgba', 'hsla', 'hex']
 使用 `disabled` 属性禁用当前面板。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-
-const disabled = ref(false)  
-</script>
-
 <template>
-  <var-color-picker :disabled="disabled" />
+  <var-color-picker :disabled="false" />
 </template>
 ```
 
+### v-model
+
+使用 `v-model` 输出
+
+```html
+<script setup>
+  import { ref } from 'vue'
+  const color = ref('#AAFFBB')
+</script>
+<template>
+  <var-input v-model="color" style="margin-bottom: 12px" />
+  <var-color-picker v-model="color" />
+</template>
+```
 ## API
 
 ### 属性

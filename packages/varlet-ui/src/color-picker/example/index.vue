@@ -3,11 +3,13 @@ import VarColorPicker from '../index'
 import VarSelect from '../../select'
 import VarInput from '../../input'
 import VarOption from '../../option'
-import { watchLang, AppType } from '@varlet/cli/client'
+import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
 watchLang(use)
+watchDarkMode(dark)
 const color = ref('#AAFFBB')
 const value = ref('')
 const modes = ['rgba', 'hsla', 'hex']
@@ -15,16 +17,14 @@ const modes = ['rgba', 'hsla', 'hex']
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  {{ color }}
-  <var-button @click="color = '#bbaaff'">点击</var-button>
-  <var-color-picker v-model="color" />
+  <var-color-picker />
 
-  <!-- <app-type>{{ pack.swatches }}</app-type>
+  <app-type>{{ pack.swatches }}</app-type>
   <var-color-picker swatches-layout />
 
   <app-type>{{ pack.modes }}</app-type>
   <var-color-picker :mode="value" />
-  <var-select placeholder="请选择一个Mode" v-model="value">
+  <var-select :placeholder="pack.placeholder" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
 
@@ -32,6 +32,6 @@ const modes = ['rgba', 'hsla', 'hex']
   <var-color-picker disabled />
 
   <app-type>{{ pack.model }}</app-type>
-  <var-input v-model="color" />
-  <var-color-picker v-model="color" /> -->
+  <var-input v-model="color" style="margin-bottom: 12px" />
+  <var-color-picker v-model="color" />
 </template>

@@ -23,13 +23,12 @@ Show color swatches
 
 ### Toggle color mode
 
-Use v-model to control the color displayed
+Choose different color modes
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const color = ref('#BFFAFF')
 const value = ref('')
 const modes = ['rgba', 'hsla', 'hex']
 </script>
@@ -47,17 +46,27 @@ const modes = ['rgba', 'hsla', 'hex']
 Use the `disabled` attribute to disable the current panel.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-
-const disabled = ref(false)  
-</script>
-
 <template>
-  <var-color-picker :disabled="disabled" />
+  <var-color-picker :disabled="false" />
 </template>
 ```
+
+### v-model
+
+Use `v-model` to output colors
+
+```html
+<script setup>
+  import { ref } from 'vue'
+  const color = ref('#AAFFBB')
+</script>
+<template>
+  <var-input v-model="color" style="margin-bottom: 12px" />
+  <var-color-picker v-model="color" />
+</template>
+```
+
+
 
 ## API
 

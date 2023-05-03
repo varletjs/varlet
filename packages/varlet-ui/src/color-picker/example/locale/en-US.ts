@@ -3,5 +3,6 @@ export default {
   disabled: 'Disabled',
   swatches: 'Swatches',
   modes: ' users with the modes prop.',
-  model: ' uses the v-model prop to control the color displayed',
+  model: ' use v-model ',
+  placeholder: 'Please select a mode',
 }

@@ -58,13 +58,12 @@ export default defineComponent({
     const dotContainerStyle = computed(() => {
       const defaultColor = HSVtoCSS(initialColor.value ?? nullColor)
       return {
-        border: `13px solid ${defaultColor}`,
+        border: `14px solid ${defaultColor}`,
       }
     })
 
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
-      updateModelValueColor(modelValue.value)
     })
 
     watch(

@@ -24,8 +24,8 @@ export default defineComponent({
 
     const getDotStyle = computed(() => {
       return {
-        top: cursorTop.value + 'px',
-        left: cursorLeft.value + 'px',
+        top: `${cursorTop.value}px`,
+        left: `${cursorLeft.value}px`,
       }
     })
 

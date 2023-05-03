@@ -3,5 +3,6 @@ export default {
   disabled: '禁止使用',
   swatches: '颜色样本选择',
   modes: '切换颜色模式',
-  model: '使用 v-model 显示颜色',
+  model: '使用 v-model',
+  placeholder: '请选择一个模式',
 }
