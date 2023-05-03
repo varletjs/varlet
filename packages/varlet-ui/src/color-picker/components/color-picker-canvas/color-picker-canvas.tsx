@@ -12,6 +12,7 @@ export default defineComponent({
   setup(props: ColorPickerPaletteProps) {
     const { n } = createNamespace('color-picker-canvas')
     const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
+
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const paletteElement = ref<HTMLElement | null>(null)
     const canvasElement = ref<HTMLCanvasElement | null>(null)
@@ -19,8 +20,8 @@ export default defineComponent({
     const paletteInstance = getCurrentInstance()
     const height = Number(props.height)
     const width = Number(props.width)
-    const cursorTop = ref(0)
-    const cursorLeft = ref(0)
+    const cursorTop = ref<number>(0)
+    const cursorLeft = ref<number>(0)
 
     const getDotStyle = computed(() => {
       return {

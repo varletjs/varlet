@@ -16,10 +16,11 @@ export default defineComponent({
   name: 'VarColorPicker',
   props: colorPickerProps,
   setup(props: ColorPickerProps) {
-    const dragTransferFlag = ref<boolean>(false)
+    const { n, classes } = createNamespace('color-picker')
+
     const { modelValue, mode, disabled, modes } = toRefs(props)
     const currentMode = ref(DEFAULT_MODE)
-    const { n, classes } = createNamespace('color-picker')
+    const dragTransferFlag = ref<boolean>(false)
     const initialColor = ref<any>()
 
     function updateModelValueColor(color: any) {

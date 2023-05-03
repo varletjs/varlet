@@ -11,12 +11,14 @@ export default defineComponent({
   name: 'ColorHueSlider',
   props: colorPickerHueSliderProps,
   setup(props: ColorPickerHueSliderProps) {
-    const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
     const { n } = createNamespace('color-picker-hue-slider')
+    const DEFAULT_TRANSITION: DefaultTransition = { transition: 'all 0.3s ease' }
+
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
     const moveColor = ref<HSV | null>(null)
+
     const getCursorLeft = () => {
       if (barElement.value && cursorElement.value) {
         const rect = barElement.value.getBoundingClientRect()

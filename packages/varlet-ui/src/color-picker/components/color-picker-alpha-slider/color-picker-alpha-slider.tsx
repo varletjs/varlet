@@ -13,6 +13,7 @@ export default defineComponent({
   setup(props: colorPickerAlphaSliderProps) {
     const DEFAULT_TRANSITION = { transition: 'all 0.3s ease' }
     const { n } = createNamespace('color-picker-alpha-slider')
+
     const clickTransform = ref<{ transition: string } | null>(DEFAULT_TRANSITION)
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)

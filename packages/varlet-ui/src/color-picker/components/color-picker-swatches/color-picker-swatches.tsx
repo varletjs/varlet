@@ -10,8 +10,10 @@ export default defineComponent({
   name: 'VarColorPickerSwatches',
   props: colorPickerSwatchesColorProps,
   setup(props: ColorPickerSwatchesColorProps) {
-    const { color } = toRefs(props)
     const { n } = createNamespace('color-picker-swatches')
+
+    const { color } = toRefs(props)
+
     return () => {
       return (
         <div
