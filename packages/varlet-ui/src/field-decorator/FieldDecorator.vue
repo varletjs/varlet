@@ -108,7 +108,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watchEffect, watch, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watch, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
