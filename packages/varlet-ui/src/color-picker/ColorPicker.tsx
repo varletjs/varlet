@@ -29,6 +29,10 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], value)
     }
 
+    function updateBaseColor(color: any) {
+      initialColor.value = parseBaseColor(color) ?? nullColor
+    }
+
     function updateColor(hsva: HSV) {
       updateModelValueColor(hsva)
     }
@@ -56,22 +60,15 @@ export default defineComponent({
       }
     })
 
-    const dotContainerStyle = computed(() => {
-      const defaultColor = HSVtoCSS(initialColor.value ?? nullColor)
-      return {
-        // border: `14px solid ${defaultColor}`,
-      }
-    })
-
     onMounted(() => {
       if (!props.modes.includes(mode.value)) mode.value = props.modes[0]
     })
 
     watch(
       () => modelValue.value,
-      (newV, oldV) => {
-        if (oldV !== newV && !dragTransferFlag.value) {
-          updateModelValueColor(newV)
+      (newV) => {
+        if (!dragTransferFlag.value) {
+          updateBaseColor(newV)
         }
       },
       {
@@ -111,15 +108,17 @@ export default defineComponent({
                     <div class={n('preview__slider')}>
                       <VarColorPickerHueSlider
                         color={initialColor.value}
-                        onUpdate:color={updateColor}
                         disabled={disabled.value}
+                        onUpdate:color={updateColor}
+                        dragger={handleDragger}
                       />
 
                       {currentMode.value.endsWith('a') ? (
                         <VarColorPickerAlphaSlider
                           color={initialColor.value}
-                          onUpdate:color={updateColor}
                           disabled={disabled.value}
+                          onUpdate:color={updateColor}
+                          dragger={handleDragger}
                         />
                       ) : null}
                     </div>

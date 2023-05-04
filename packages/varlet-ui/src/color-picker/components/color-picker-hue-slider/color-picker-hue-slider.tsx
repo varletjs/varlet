@@ -78,10 +78,12 @@ export default defineComponent({
         drag: (event: Event) => {
           clickTransform.value = null
           onMoveBar(event as MouseEvent)
+          call(props.dragger, true)
         },
         end: (event: Event) => {
           clickTransform.value = DEFAULT_TRANSITION
           onMoveBar(event as MouseEvent)
+          call(props.dragger, false)
         },
       }
 

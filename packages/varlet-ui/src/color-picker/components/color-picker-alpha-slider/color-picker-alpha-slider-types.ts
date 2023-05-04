@@ -6,6 +6,9 @@ export const colorPickerAlphaSliderProps = {
     type: Object as PropType<HSV>,
     default: { a: 1, h: 0, s: 1, v: 1 },
   },
+  dragger: {
+    type: Function as PropType<(value: any) => void>,
+  },
   'onUpdate:color': {
     type: Function as PropType<(value: any) => void>,
   },
