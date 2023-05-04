@@ -12,14 +12,14 @@ export default defineComponent({
   setup(props: ColorPickerSwatchesColorProps) {
     const { n } = createNamespace('color-picker-swatches')
 
-    const { color } = toRefs(props)
+    const { color, maxHeight } = toRefs(props)
 
     return () => {
       return (
         <div
           class={n()}
           style={{
-            maxHeight: convertToUnit(props.maxHeight),
+            maxHeight: convertToUnit(maxHeight!.value),
           }}
         >
           <div class={n('colorful')}>
