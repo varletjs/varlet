@@ -5,9 +5,9 @@ import VarSpace from '../../space'
 import VarIcon from '../../icon'
 import Dialog from '../../dialog'
 import Snackbar from '../../snackbar'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
-import { reactive } from 'vue'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
 const values = reactive({
@@ -75,6 +75,7 @@ const values = reactive({
       state: 'error',
     },
   ],
+  files13: [],
 })
 
 function handleAfterRead(file) {
@@ -84,9 +85,25 @@ function handleAfterRead(file) {
 function handleAfterRead2(file) {
   file.state = 'loading'
 
-  setTimeout(() => {
+  setInterval(() => {
     file.state = 'success'
   }, 1000)
+}
+
+let timer
+
+function handleAfterRead3(file) {
+  file.state = 'loading'
+  file.progress = 0
+
+  timer = window.setInterval(() => {
+    if (file.progress === 100) {
+      window.clearInterval(timer)
+      file.state = 'success'
+      return
+    }
+    file.progress += 10
+  }, 250)
 }
 
 function handleOversize() {
@@ -113,6 +130,10 @@ async function handleBeforeRemove() {
 
 watchLang(use)
 watchDarkMode(dark)
+
+onUnmounted(() => {
+  window.clearInterval(timer)
+})
 </script>
 
 <template>
@@ -124,6 +145,9 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.state }}</app-type>
   <var-uploader v-model="values.files3" @after-read="handleAfterRead2" />
+
+  <app-type>{{ pack.useProgress }}</app-type>
+  <var-uploader v-model="values.files13" @after-read="handleAfterRead3" />
 
   <app-type>{{ pack.maxlength }}</app-type>
   <var-uploader v-model="values.files4" :maxlength="1" />
@@ -161,7 +185,7 @@ watchDarkMode(dark)
     </var-uploader>
   </var-space>
 
-  <div class="space"></div>
+  <var-space></var-space>
 </template>
 
 <style scoped lang="less">

@@ -191,7 +191,6 @@ export default defineComponent({
     )
 
     useMounted(setScroller)
-
     useEventListener(freshNode, 'touchmove', touchMove)
 
     return {

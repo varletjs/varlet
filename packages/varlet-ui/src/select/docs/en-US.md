@@ -16,11 +16,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -46,6 +47,7 @@ const value11 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+
     <var-select placeholder="Custom Icon" v-model="value6">
       <template #default>
         <var-option label="Eat">
@@ -71,13 +73,39 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select placeholder="Multiple Selection" multiple v-model="value7">
+    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select placeholder="Multiple Selection" multiple v-model="value8">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -86,7 +114,7 @@ const value11 = ref()
     <var-select
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -96,14 +124,14 @@ const value11 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select size="small" placeholder="Small Size" v-model="value11">
+    <var-select size="small" placeholder="Small Size" v-model="value12">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -141,11 +169,12 @@ const value3 = ref()
 const value4 = ref()
 const value5 = ref()
 const value6 = ref()
-const value7 = ref([])
+const value7 = ref()
 const value8 = ref([])
-const value9 = ref()
-const value10 = ref([])
-const value11 = ref()
+const value9 = ref([])
+const value10 = ref()
+const value11 = ref([])
+const value12 = ref()
 </script>
 
 <template>
@@ -171,6 +200,7 @@ const value11 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+
     <var-select variant="outlined" placeholder="Custom Icon" v-model="value6">
       <template #default>
         <var-option label="Eat">
@@ -196,13 +226,39 @@ const value11 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value7">
+    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+      <template #default>
+        <var-option label="Eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>Eat</span>
+        </var-option>
+        <var-option label="Sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>Sleep</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+
+    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value8">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value8">
+    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -212,7 +268,7 @@ const value11 = ref()
       variant="outlined"
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value9"
+      v-model="value10"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -223,14 +279,14 @@ const value11 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value11">
+    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value12">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -336,6 +392,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
+| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -345,30 +402,37 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-padding-top` | `20px` |
+| `--field-decorator-standard-normal-padding-top` | `22px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-padding` | `20px 0 4px` |
-| `--field-decorator-standard-small-padding-top` | `16px` |
-| `--field-decorator-standard-small-padding-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-padding` | `16px 0 4px` |
+| `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
+| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
+| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
+| `--field-decorator-standard-small-padding-top` | `18px` |
+| `--field-decorator-standard-small-padding-bottom` | `2px` |
+| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
+| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
+| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
 | `--field-decorator-outlined-normal-padding-top` | `16px` |
 | `--field-decorator-outlined-normal-padding-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
 | `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
+| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
 | `--field-decorator-outlined-small-padding-top` | `8px` |
 | `--field-decorator-outlined-small-padding-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
 | `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
+| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
 | `--select-scroller-background` | `#fff` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
+| `--select-scroller-border-radius` | `2px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--input-decorator-placeholder-size) * 0.75 + 8px) 0 0 0` |
+| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 | `--select-outlined-scroller-margin` | `0` |
 
 #### Option Variables

@@ -19,6 +19,7 @@ const standardValue8 = ref([])
 const standardValue9 = ref([])
 const standardValue10 = ref(undefined)
 const standardValue11 = ref(undefined)
+const standardValue12 = ref(undefined)
 
 const outlinedValue = ref(undefined)
 const outlinedValue2 = ref(undefined)
@@ -31,6 +32,7 @@ const outlinedValue8 = ref([])
 const outlinedValue9 = ref([])
 const outlinedValue10 = ref(undefined)
 const outlinedValue11 = ref(undefined)
+const outlinedValue12 = ref(undefined)
 
 watchDarkMode(dark)
 watchLang((lang) => {
@@ -45,6 +47,7 @@ watchLang((lang) => {
   standardValue9.value = []
   standardValue10.value = undefined
   standardValue11.value = undefined
+  standardValue12.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -57,6 +60,7 @@ watchLang((lang) => {
   outlinedValue9.value = []
   outlinedValue10.value = undefined
   outlinedValue11.value = undefined
+  outlinedValue12.value = undefined
 
   use(lang)
 })
@@ -99,13 +103,46 @@ watchLang((lang) => {
       </template>
       <template #selected>
         <var-icon class="selected-icon" :name="standardValue6 === pack.eat ? 'cake-variant' : 'weather-night'" />
-        <span>{{ standardValue5 }}</span>
+        <span>{{ standardValue6 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+    <var-select
+      style="--field-decorator-middle-offset-y: 2.6vw"
+      :placeholder="pack.customIconSize"
+      v-model="standardValue12"
+    >
+      <template #default>
+        <var-option :label="pack.eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>{{ pack.eat }}</span>
+        </var-option>
+        <var-option :label="pack.sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>{{ pack.sleep }}</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon
+          class="selected-icon"
+          :name="standardValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
+          size="8vw"
+        />
+        <span>{{ standardValue12 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vw" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vw" />
       </template>
       <template #arrow-icon="{ focus }">
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
@@ -185,13 +222,47 @@ watchLang((lang) => {
       </template>
       <template #selected>
         <var-icon class="selected-icon" :name="outlinedValue6 === pack.eat ? 'cake-variant' : 'weather-night'" />
-        <span>{{ outlinedValue5 }}</span>
+        <span>{{ outlinedValue6 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
+      </template>
+      <template #arrow-icon="{ focus }">
+        <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
+      </template>
+    </var-select>
+    <var-select
+      variant="outlined"
+      style="--field-decorator-middle-offset-y: 2.6vw"
+      :placeholder="pack.customIconSize"
+      v-model="standardValue12"
+    >
+      <template #default>
+        <var-option :label="pack.eat">
+          <var-icon class="selected-icon" name="cake-variant" />
+          <span>{{ pack.eat }}</span>
+        </var-option>
+        <var-option :label="pack.sleep">
+          <var-icon class="selected-icon" name="weather-night" />
+          <span>{{ pack.sleep }}</span>
+        </var-option>
+      </template>
+      <template #selected>
+        <var-icon
+          class="selected-icon"
+          :name="standardValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
+          size="8vw"
+        />
+        <span>{{ standardValue12 }}</span>
+      </template>
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vw" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vw" />
       </template>
       <template #arrow-icon="{ focus }">
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />

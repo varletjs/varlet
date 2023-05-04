@@ -36,14 +36,24 @@ redirect &&
 
 const router = createRouter({
   history: createWebHashHistory(),
-  scrollBehavior: () => ({ top: 0 }),
   routes,
+  scrollBehavior(to: any) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 100
+      };
+    }
+
+    return { top: 0 };
+  },
 })
 
 let isEnd = true
 
 router.beforeEach((to: any, from: any) => {
-  if (to.path === from.path) {
+  if (to.fullPath === from.fullPath) {
     return false
   }
 
@@ -65,13 +75,13 @@ router.afterEach(() => {
 })
 
 Object.defineProperty(window, 'onMobileRouteChange', {
-  value: (path: string, language: string, replace: string) => {
+  value: (path: string, language: string, replace: string, hash: string) => {
     if (path === mobileRedirect) {
-      router.replace(`/${language}/${replace}`)
+      router.replace(`/${language}/${replace}${hash}`)
       return
     }
 
-    router.replace(`/${language}${path}`)
+    router.replace(`/${language}${path}${hash}`)
   }
 })
 

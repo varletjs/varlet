@@ -9,6 +9,7 @@ export default {
   readonly: '只读',
   clearable: '可清除',
   displayIcon: '显示图标',
+  customIconSize: '自定义图标尺寸',
   validate: '字段校验',
   placeholder: '请输入文本',
   maxMessage: '文本长度必须大于6',

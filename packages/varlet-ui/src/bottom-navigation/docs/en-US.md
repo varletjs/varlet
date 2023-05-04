@@ -196,7 +196,7 @@ const isEven = ref(true)
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
-| `before-change` | The callback function before switching labels, which returns false to prevent switching, supports the return of promise | `active: number \| string` |
+| `before-change` | The callback function before switching labels, which returns falsy value to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
 | `fab-click` | Triggered when fab button click | `-` |
 

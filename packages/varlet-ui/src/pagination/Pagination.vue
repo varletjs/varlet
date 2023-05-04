@@ -18,9 +18,10 @@
     </li>
     <li v-if="simple" :class="classes(n('simple'), [disabled, n('item--disabled')])">
       <var-input
-        v-model="simpleCurrentValue"
-        :disabled="disabled"
         var-pagination-cover
+        :hint="false"
+        :disabled="disabled"
+        v-model="simpleCurrentValue"
         @blur="setPage('simple', simpleCurrentValue, $event)"
         @keydown.enter="setPage('simple', simpleCurrentValue, $event)"
       />
@@ -33,7 +34,7 @@
       v-else
       v-ripple="{ disabled }"
       v-for="(item, index) in pageList"
-      :key="toNumber(item) + index"
+      :key="index"
       :item-mode="getMode(item, index)"
       :class="
         classes(
@@ -338,8 +339,10 @@ export default defineComponent({
 @import '../styles/common';
 @import '../menu/menu';
 @import '../cell/cell';
-@import '../input/input';
 @import '../ripple/ripple';
 @import '../icon/icon';
+@import '../field-decorator/fieldDecorator';
+@import '../form-details/formDetails';
+@import '../input/input';
 @import './pagination';
 </style>

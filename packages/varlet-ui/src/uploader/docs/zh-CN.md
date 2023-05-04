@@ -87,6 +87,39 @@ function handleAfterRead(file) {
 </template>
 ```
 
+### 使用进度条
+
+```html
+<script setup>
+import { ref, onUnmounted } from 'vue'
+
+const files = ref([])
+let timer
+
+function handleAfterRead(file) {
+  file.state = 'loading'
+
+  timer = window.setInterval(() => {
+    if (file.progress === 100) {
+      window.clearInterval(timer)
+      file.state = 'success'
+      return
+    }
+
+    file.progress += 10
+  }, 250)
+}
+
+onUnmounted(() => {
+  window.clearInterval(timer)
+})
+</script>
+
+<template>
+  <var-uploader v-model="files" @after-read="handleAfterRead"/>
+</template>
+```
+
 ### 文件数量限制
 
 ```html
@@ -333,6 +366,7 @@ const files = ref([
 | `cover` | 封面图 | _string_ | `-` |
 | `fit` | 封面图填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
 | `state` | 文件上传状态，可选值为 `loading` `success` `error` | _string_ | `-` |
+| `progress` | 文件上传进度，范围 [0, 100] | _number_ | `-` |
 
 ### VarFileUtils
 
@@ -400,6 +434,7 @@ const files = ref([
 | `--uploader-file-indicator-normal-color`  | `var(--color-disabled)`                                                                      |
 | `--uploader-file-indicator-success-color` | `var(--color-success)`                                                                       |
 | `--uploader-file-indicator-error-color`   | `var(--color-danger)`                                                                        |
+| `--uploader-file-progress-color`   | `var(--color-primary)`                                                                        |
 | `--uploader-disabled-color`               | `#ddd`                                                                                       |
 | `--uploader-disabled-text-color`          | `var(--color-text-disabled)`                                                                                       |
 | `--uploader-loading-background`           | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |

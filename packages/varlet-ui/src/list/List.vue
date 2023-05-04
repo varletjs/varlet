@@ -26,7 +26,7 @@
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, onUnmounted, ref, nextTick, type Ref } from 'vue'
+import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated } from 'vue'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
@@ -66,6 +66,10 @@ export default defineComponent({
       return Math.floor(detectorBottom) - toPxNum(props.offset) <= containerBottom
     }
 
+    const removeScrollerListener = () => {
+      scroller.removeEventListener('scroll', check)
+    }
+
     // expose
     const check = async () => {
       await nextTick()
@@ -79,15 +83,12 @@ export default defineComponent({
 
     useMounted(() => {
       scroller = getParentScroller(listEl.value as HTMLElement)
-
-      props.immediateCheck && check()
-
       scroller.addEventListener('scroll', check)
+      props.immediateCheck && check()
     })
 
-    onUnmounted(() => {
-      scroller.removeEventListener('scroll', check)
-    })
+    onDeactivated(removeScrollerListener)
+    onUnmounted(removeScrollerListener)
 
     return {
       pack,

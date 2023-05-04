@@ -1,8 +1,8 @@
-import { inBrowser } from '@varlet/shared'
+import { inBrowser, isFunction } from '@varlet/shared'
 import { isRef, onDeactivated, onBeforeUnmount, unref, watch, type Ref, type WatchStopHandle } from 'vue'
 import { useMounted } from './useMounted.js'
 
-export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null>
+export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null> | (() => EventTarget)
 
 export interface UseEventListenerOptions {
   capture?: boolean
@@ -37,12 +37,16 @@ export function useEventListener(
   let listening = false
   let cleaned = false
 
+  const getElement = (target: UseEventListenerTarget | null | undefined) => {
+    return isFunction(target) ? target() : unref(target)
+  }
+
   const add = (target?: UseEventListenerTarget | null) => {
     if (listening || cleaned) {
       return
     }
 
-    const element = unref(target)
+    const element = getElement(target)
 
     if (element) {
       element.addEventListener(type, listener, {
@@ -59,7 +63,7 @@ export function useEventListener(
       return
     }
 
-    const element = unref(target)
+    const element = getElement(target)
 
     if (element) {
       element.removeEventListener(type, listener, {

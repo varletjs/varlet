@@ -39,7 +39,7 @@ const show = ref(false)
       <var-button type="primary" size="small" @click="show = !show">关闭</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">垂直排列</var-button>
+  <var-button type="primary" block @click="show = !show">垂直排列</var-button>
 </template>
 ```
 
@@ -61,7 +61,7 @@ const show = ref(false)
       <var-button type="primary" size="small" @click="show = false">关闭</var-button>
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">底部显示</var-button>
+  <var-button type="primary" block @click="show = !show">底部显示</var-button>
 </template>
 ```
 
@@ -78,7 +78,7 @@ const show = ref(false)
 
 <template>
   <var-snackbar v-model:show="show" :duration="1000"> 这是一个消息条！！</var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     显示时长
   </var-button>
 </template>
@@ -102,7 +102,7 @@ const show = ref(false)
       <var-icon name="heart-outline" />
     </template>
   </var-snackbar>
-  <var-button type="primary" block @click="show = true">
+  <var-button type="primary" block @click="show = !show">
     自定义图标
   </var-button>
 </template>

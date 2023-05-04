@@ -18,6 +18,7 @@ const mobileRedirect = get(config, 'mobile.redirect')
 const language: Ref<string> = ref('')
 const componentName: Ref<null | string> = ref(null)
 const menuName: Ref<string> = ref('')
+const hash: Ref<string> = ref('')
 const doc: Ref<HTMLElement | null> = ref(null)
 const route = useRoute()
 
@@ -48,6 +49,7 @@ const handleSidebarChange = (menu: Menu) => {
   doc.value!.scrollTop = 0
   componentName.value = getComponentNameByMenuName(menu.doc)
   menuName.value = menu.doc
+  hash.value = ''
 }
 
 const confirmClose = () => {
@@ -79,13 +81,14 @@ onMounted(() => {
 watch(
   () => route.path,
   () => {
-    const { language: lang, menuName: _menuName } = getPCLocationInfo()
+    const { language: lang, menuName: _menuName, hash: _hash } = getPCLocationInfo()
     if (!lang || !_menuName) {
       return
     }
 
     componentName.value = getComponentNameByMenuName(_menuName)
     menuName.value = _menuName
+    hash.value = _hash
     language.value = lang
     useMobile.value = menu.value.find(item => item.doc === _menuName)?.useMobile ?? get(config, 'useMobile')
     document.title = get(config, 'pc.title')[lang] as string
@@ -118,6 +121,7 @@ watch(
         :component-name="componentName"
         :language="language"
         :replace="menuName"
+        :hash="hash"
         v-show="useMobile"
       />
     </div>
@@ -282,6 +286,19 @@ iframe {
     }
 
     &-doc {
+      h3 {
+        display: flex;
+        align-items: center;
+
+        .router-link-active {
+          font-size: 20px;
+          margin-right: 8px;
+          user-select: none;
+          text-decoration: none;
+        }
+      }
+
+
       a {
         color: var(--site-config-color-link);
         -webkit-font-smoothing: antialiased;
