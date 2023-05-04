@@ -19,30 +19,6 @@ export default defineComponent({
     const cursorElement = ref<HTMLElement | null>(null)
     const { color } = toRefs(props)
 
-    const onMoveBar = (event: MouseEvent) => {
-      event.stopPropagation()
-      if (props.disabled || !barElement.value || !cursorElement.value) return
-      const rect = barElement.value.getBoundingClientRect()
-      const { offsetWidth } = cursorElement.value
-      let left = event.clientX - rect.left
-      left = Math.max(offsetWidth / 2, left)
-      left = Math.min(left, rect.width - offsetWidth / 2)
-      const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
-      const hsv = {
-        h: props.color?.h,
-        s: (props.color as HSV).s,
-        v: (props.color as HSV).v,
-        a: alpha / 100,
-      }
-      call(props['onUpdate:color'], hsv ?? nullColor)
-    }
-
-    const onClickSlider = (event: Event) => {
-      if (event.target !== barElement.value) {
-        onMoveBar(event as MouseEvent)
-      }
-    }
-
     const getCursorLeft = computed(() => {
       if (barElement.value && cursorElement.value) {
         const alpha = props.color?.a ?? 1
@@ -62,24 +38,6 @@ export default defineComponent({
       }
     })
 
-    onMounted(() => {
-      const dragConfig = {
-        drag: (event: Event) => {
-          clickTransform.value = null
-          onMoveBar(event as MouseEvent)
-          call(props.dragger, true)
-        },
-        end: (event: Event) => {
-          clickTransform.value = DEFAULT_TRANSITION
-          onMoveBar(event as MouseEvent)
-          call(props.dragger, false)
-        },
-      }
-      if (barElement.value && cursorElement.value && !props.disabled) {
-        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
-      }
-    })
-
     const alphaClass = computed(() => {
       return [n(), 'transparent']
     })
@@ -88,6 +46,48 @@ export default defineComponent({
       return { '--color-picker-alpha-slider': HSVtoHex(color.value) }
     })
 
+    onMounted(() => {
+      const dragConfig = {
+        drag: (event: Event) => {
+          clickTransform.value = null
+          handleMoveBar(event as MouseEvent)
+          call(props.dragger, true)
+        },
+        end: (event: Event) => {
+          clickTransform.value = DEFAULT_TRANSITION
+          handleMoveBar(event as MouseEvent)
+          call(props.dragger, false)
+        },
+      }
+      if (barElement.value && cursorElement.value && !props.disabled) {
+        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
+      }
+    })
+
+    function handleMoveBar(event: MouseEvent) {
+      event.stopPropagation()
+      if (props.disabled || !barElement.value || !cursorElement.value) return
+      const rect = barElement.value.getBoundingClientRect()
+      const { offsetWidth } = cursorElement.value
+      let left = event.clientX - rect.left
+      left = Math.max(offsetWidth / 2, left)
+      left = Math.min(left, rect.width - offsetWidth / 2)
+      const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
+      const hsv = {
+        h: props.color?.h,
+        s: (props.color as HSV).s,
+        v: (props.color as HSV).v,
+        a: alpha / 100,
+      }
+      call(props['onUpdate:color'], hsv ?? nullColor)
+    }
+
+    function handleClickSlider(event: Event) {
+      if (event.target !== barElement.value) {
+        handleMoveBar(event as MouseEvent)
+      }
+    }
+
     return () => {
       return (
         <div class={alphaClass.value}>
@@ -95,7 +95,7 @@ export default defineComponent({
             ref={barElement}
             class={[n('bar'), props.disabled ? n('disabled') : null]}
             style={barStyle.value}
-            onClick={onClickSlider}
+            onClick={handleClickSlider}
           >
             <div class={n('bar-pointer')} ref={cursorElement} style={getCursorStyle.value}>
               <div class={n('bar-handle')}></div>

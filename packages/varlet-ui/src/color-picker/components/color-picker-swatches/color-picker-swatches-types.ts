@@ -1,5 +1,5 @@
-import { HSV } from '../../utils/color-utils-types'
 import type { PropType, ExtractPropTypes } from 'vue'
+import { HSV } from '../../utils/color-utils-types'
 import colors from '../../utils/color'
 import { parseDefaultColors } from '../../utils/color-utils'
 

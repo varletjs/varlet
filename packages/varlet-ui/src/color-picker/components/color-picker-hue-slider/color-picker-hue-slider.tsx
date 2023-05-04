@@ -49,7 +49,26 @@ export default defineComponent({
       }
     })
 
-    const onMoveBar = (event: MouseEvent) => {
+    onMounted(() => {
+      const dragConfig = {
+        drag: (event: Event) => {
+          clickTransform.value = null
+          handleMoveBar(event as MouseEvent)
+          call(props.dragger, true)
+        },
+        end: (event: Event) => {
+          clickTransform.value = DEFAULT_TRANSITION
+          handleMoveBar(event as MouseEvent)
+          call(props.dragger, false)
+        },
+      }
+
+      if (barElement.value && cursorElement.value) {
+        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
+      }
+    })
+
+    function handleMoveBar(event: MouseEvent) {
       event.stopPropagation()
       if (props.disabled || !barElement.value || !cursorElement.value) return
       const rect = barElement.value.getBoundingClientRect()
@@ -67,35 +86,16 @@ export default defineComponent({
       call(props['onUpdate:color'], moveColor.value ?? nullColor)
     }
 
-    const onClickSlider = (event: Event) => {
+    function handleClickSlider(event: Event) {
       if (event.target !== barElement.value) {
-        onMoveBar(event as MouseEvent)
+        handleMoveBar(event as MouseEvent)
       }
     }
-
-    onMounted(() => {
-      const dragConfig = {
-        drag: (event: Event) => {
-          clickTransform.value = null
-          onMoveBar(event as MouseEvent)
-          call(props.dragger, true)
-        },
-        end: (event: Event) => {
-          clickTransform.value = DEFAULT_TRANSITION
-          onMoveBar(event as MouseEvent)
-          call(props.dragger, false)
-        },
-      }
-
-      if (barElement.value && cursorElement.value) {
-        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
-      }
-    })
 
     return () => {
       return (
         <div class={[n(), props.disabled ? n('disabled') : null]}>
-          <div ref={barElement} class={n('bar')} onClick={onClickSlider}>
+          <div ref={barElement} class={n('bar')} onClick={handleClickSlider}>
             <div class={n('bar-pointer')} ref={cursorElement} style={getCursorStyle.value}>
               <div class={n('bar-handle')}></div>
             </div>

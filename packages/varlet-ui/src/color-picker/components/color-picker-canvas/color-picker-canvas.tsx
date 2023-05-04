@@ -38,6 +38,29 @@ export default defineComponent({
       }
     })
 
+    watch(() => props.color, updatePosition, { immediate: true, deep: true })
+
+    watch(() => props.color?.h, renderCanvas, { immediate: true })
+
+    onMounted(() => {
+      renderCanvas()
+      if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
+        const dragConfig = {
+          drag: (event: Event) => {
+            clickTransform.value = null
+            handleDrag(event as MouseEvent)
+            call(props.dragger, true)
+          },
+          end: (event: Event) => {
+            clickTransform.value = DEFAULT_TRANSITION
+            handleDrag(event as MouseEvent)
+            call(props.dragger, false)
+          },
+        }
+        DOMUtils.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, dragConfig)
+      }
+    })
+
     function renderCanvas() {
       if (canvasElement.value) {
         const canvas = canvasElement.value.getContext('2d')
@@ -93,29 +116,6 @@ export default defineComponent({
         cursorTop.value = (1 - props.color!.v) * parseInt(`${props.height}`, 10)
       }
     }
-
-    onMounted(() => {
-      renderCanvas()
-      if (paletteInstance && paletteInstance.vnode.el && handlerElement.value) {
-        const dragConfig = {
-          drag: (event: Event) => {
-            clickTransform.value = null
-            handleDrag(event as MouseEvent)
-            call(props.dragger, true)
-          },
-          end: (event: Event) => {
-            clickTransform.value = DEFAULT_TRANSITION
-            handleDrag(event as MouseEvent)
-            call(props.dragger, false)
-          },
-        }
-        DOMUtils.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, dragConfig)
-      }
-    })
-
-    watch(() => props.color, updatePosition, { immediate: true, deep: true })
-
-    watch(() => props.color?.h, renderCanvas, { immediate: true })
 
     return () => {
       return (

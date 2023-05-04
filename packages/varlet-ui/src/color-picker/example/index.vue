@@ -11,7 +11,7 @@ import { ref } from 'vue'
 watchLang(use)
 watchDarkMode(dark)
 const color = ref('#AAFFBB')
-const value = ref('')
+const value = ref('hex')
 const modes = ['rgba', 'hsla', 'hex']
 </script>
 
@@ -23,10 +23,10 @@ const modes = ['rgba', 'hsla', 'hex']
   <var-color-picker swatches-layout />
 
   <app-type>{{ pack.modes }}</app-type>
-  <var-color-picker :mode="value" />
   <var-select :placeholder="pack.placeholder" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
+  <var-color-picker :mode="value" />
 
   <app-type>{{ pack.disabled }}</app-type>
   <var-color-picker disabled />

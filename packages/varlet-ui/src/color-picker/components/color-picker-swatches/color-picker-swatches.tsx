@@ -1,5 +1,5 @@
-import { HexToHSV } from '../../utils/color-utils'
 import { defineComponent, toRefs } from 'vue'
+import { HexToHSV } from '../../utils/color-utils'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
 import { changeColorValue } from '../../utils/composable'
 import { call, createNamespace } from '../../../utils/components'
