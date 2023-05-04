@@ -59,7 +59,7 @@ export default defineComponent({
     const dotContainerStyle = computed(() => {
       const defaultColor = HSVtoCSS(initialColor.value ?? nullColor)
       return {
-        border: `14px solid ${defaultColor}`,
+        // border: `14px solid ${defaultColor}`,
       }
     })
 
@@ -105,7 +105,7 @@ export default defineComponent({
               <div class={n('control')}>
                 {props.sliderLayout && (
                   <div class={n('preview')}>
-                    <div class={n('preview__dots')} style={dotContainerStyle.value}>
+                    <div class={n('preview__dots')}>
                       <div style={dotStyle.value} />
                     </div>
                     <div class={n('preview__slider')}>
