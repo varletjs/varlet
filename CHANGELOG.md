@@ -1,3 +1,23 @@
+## [2.10.1](https://github.com/varletjs/varlet/compare/v2.10.0...v2.10.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* **cli/compile:** support typescript and close [#998](https://github.com/varletjs/varlet/issues/998) ([0b83869](https://github.com/varletjs/varlet/commit/0b8386924c157aef1f8c093e2fa11d4c85cbb1da))
+* **select:** fix select dropdown border radius ([22d656e](https://github.com/varletjs/varlet/commit/22d656e713a21661fc3aca33fc8231f328c97521))
+* **ui/input, select:** fix text overflow error ([929765a](https://github.com/varletjs/varlet/commit/929765a94c6b86d1d28d9b86a3899cd31113c57b))
+* **ui/slider:** optimize slider style and classes ([#1000](https://github.com/varletjs/varlet/issues/1000)) ([7695457](https://github.com/varletjs/varlet/commit/7695457def220ff979225e6211b4841da17a88dd))
+* **ui/swipe:** to and next methods conflict with initialIndex ([140af1f](https://github.com/varletjs/varlet/commit/140af1fd84dc748fbf67e0b8928d7ccf9e95bd47))
+
+
+### Features
+
+* **cli:** support meta description and keywords ([d0ce672](https://github.com/varletjs/varlet/commit/d0ce67249903fb5223521c86a4fc9be761b246ef))
+* **slider:** support vertical mode ([43acba6](https://github.com/varletjs/varlet/commit/43acba6981663ce54f2b4201d82d90328f717bf8))
+* **ui/uploader:** support progress ([b991f6f](https://github.com/varletjs/varlet/commit/b991f6f0329c12cc21042174f275e6ac5396b674))
+
+
+
 # [2.10.0](https://github.com/varletjs/varlet/compare/v2.9.6...v2.10.0) (2023-04-24)
 
 
