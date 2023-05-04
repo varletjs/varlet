@@ -1,7 +1,7 @@
 import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, nextTick } from 'vue'
 import { delay, mockFileReader, mockStubs } from '../../utils/jest'
 
 const createEvent = (filename, type) => {
@@ -28,6 +28,25 @@ test('test uploader onAfterRead', async () => {
 
   await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onAfterRead).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+})
+
+test('test uploader onBeforeFilter', async () => {
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      onBeforeFilter: (files) => files.filter((file) => file.name.endsWith('jpg')),
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  expect(wrapper.vm.modelValue).toHaveLength(0)
+
+  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
+  expect(wrapper.vm.modelValue).toHaveLength(1)
 
   wrapper.unmount()
 })

@@ -334,6 +334,29 @@ const files = ref([
 </style>
 ```
 
+### Custom render file
+
+The file can be filtered through the `before-filter` event, and the `VarFile` array is returned to operate on the uploaded file, and operations such as conditional filtering and appending files can be performed.
+
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+const handleBeforeFilter = (files) => {
+  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" multiple @before-filter=" handleBeforeFilter " />
+</template>
+
+```
+
+
 ## API
 
 ### Props
@@ -393,6 +416,7 @@ const files = ref([
 
 | Event | Description | Arguments |
 | --- | --- | --- |
+| `before-filter` | Triggered before the file is read, follow-up operations are performed based on the returned data | `files: VarFile[]` |
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |

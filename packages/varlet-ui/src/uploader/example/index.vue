@@ -76,6 +76,7 @@ const values = reactive({
     },
   ],
   files13: [],
+  files14: [],
 })
 
 function handleAfterRead(file) {
@@ -126,6 +127,10 @@ async function handleBeforeRemove() {
   })
 
   return action === 'confirm'
+}
+
+function handleBeforeFilter(files) {
+  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
 }
 
 watchLang(use)
@@ -184,6 +189,9 @@ onUnmounted(() => {
       </var-button>
     </var-uploader>
   </var-space>
+
+  <app-type>{{ pack.beforeFilter }}</app-type>
+  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
 
   <var-space></var-space>
 </template>

@@ -72,6 +72,7 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  onBeforeFilter: defineListenerProp<(files: VarFile[]) => any>(),
   onBeforeRead: defineListenerProp<(file: VarFile) => Promise<any> | any>(),
   onAfterRead: defineListenerProp<(file: VarFile) => any>(),
   onBeforeRemove: defineListenerProp<(file: VarFile) => any>(),

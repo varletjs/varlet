@@ -87,7 +87,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
+import { isNumber, toNumber, isString, normalizeToArray, isArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -216,9 +216,17 @@ export default defineComponent({
     const getResolvers = (varFiles: VarFile[]) => varFiles.map(resolver)
 
     const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
-      const { onBeforeRead } = props
+      const { onBeforeRead, onBeforeFilter } = props
 
-      return varFiles.map((varFile) => {
+      let filterFiles = varFiles
+      if (onBeforeFilter) {
+        filterFiles = call(onBeforeFilter, varFiles)
+        if (!isArray(filterFiles)) {
+          throw new Error('before-filter return value must be an array')
+        }
+      }
+
+      return filterFiles.map((varFile) => {
         return new Promise((resolve) => {
           if (!onBeforeRead) {
             resolve({

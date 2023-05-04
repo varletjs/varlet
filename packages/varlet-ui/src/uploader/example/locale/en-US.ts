@@ -19,4 +19,5 @@ export default {
   fileLargeThen: 'the file is larger than 1M and cannot be uploaded',
   customRender: 'Custom render file list',
   useProgress: 'Use Progress',
+  beforeFilter: 'File Filter',
 }
