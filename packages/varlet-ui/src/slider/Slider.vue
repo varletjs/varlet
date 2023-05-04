@@ -197,6 +197,24 @@ export default defineComponent({
 
     const isVertical: ComputedRef<boolean> = computed(() => props.direction === 'vertical')
 
+    let startX: number
+    let startY: number
+
+    const getMoveDirection = (e: TouchEvent) => {
+      const { clientX, clientY } = e.touches[0]
+
+      const offsetX = Math.abs(clientX - startX)
+      const offsetY = Math.abs(clientY - startY)
+
+      if (offsetX > offsetY && offsetX > 10) {
+        return 'horizontal'
+      }
+      if (offsetY > offsetX && offsetY > 10) {
+        return 'vertical'
+      }
+      return props.direction
+    }
+
     const getOffset = (e: MouseEvent) => {
       const currentTarget = e.currentTarget as HTMLElement
 
@@ -290,7 +308,10 @@ export default defineComponent({
       if (isDisabled.value || isReadonly.value) return
       call(props.onStart)
       isScroll.value = true
-      thumbsProps[type].startPosition = event.touches[0][isVertical.value ? 'clientY' : 'clientX']
+      const { clientX, clientY } = event.touches[0]
+      startX = clientX
+      startY = clientY
+      thumbsProps[type].startPosition = isVertical.value ? clientY : clientX
     }
 
     const move = (event: TouchEvent, type: keyof ThumbsProps) => {
@@ -298,12 +319,18 @@ export default defineComponent({
 
       const { startPosition, currentOffset } = thumbsProps[type]
       const { clientX, clientY } = event.touches[0]
-      let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
+      const moveDirection = getMoveDirection(event)
+      if (moveDirection === props.direction) {
+        // need to prevent default scroll event when the actual sliding direction is consistent with the defined sliding direction
+        event.preventDefault()
 
-      if (moveDistance <= 0) moveDistance = 0
-      else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
+        let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
 
-      setPercent(moveDistance, type)
+        if (moveDistance <= 0) moveDistance = 0
+        else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
+
+        setPercent(moveDistance, type)
+      }
     }
 
     const end = (type: keyof ThumbsProps) => {
