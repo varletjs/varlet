@@ -43,8 +43,8 @@ describe('test slider props', () => {
     const el = wrapper.find('.var-slider__horizontal-thumb')
 
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 50, 0)
-    await trigger(el, 'touchend', 50, 0)
+    await trigger(document, 'touchmove', 50, 0)
+    await trigger(document, 'touchend', 50, 0)
 
     expect(wrapper.vm.value).not.toBe(0)
     expect(wrapper.vm.value % 3).toBe(0)
@@ -76,21 +76,21 @@ describe('test slider props', () => {
     const el = wrapper.find('.var-slider__horizontal-thumb-label')
     expect(el.classes()).not.toContain('var-slider__horizontal-thumb-label--active')
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 0, 0)
+    await trigger(document, 'touchmove', 0, 0)
     expect(el.classes()).not.toContain('var-slider__horizontal-thumb-label--active')
-    await trigger(el, 'touchend', 0, 0)
+    await trigger(document, 'touchend', 0, 0)
 
     await wrapper.setProps({ labelVisible: 'normal' })
     expect(el.classes()).not.toContain('var-slider__horizontal-thumb-label--active')
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 0, 0)
+    await trigger(document, 'touchmove', 0, 0)
     expect(el.classes()).toContain('var-slider__horizontal-thumb-label--active')
-    await trigger(el, 'touchend', 0, 0)
+    await trigger(document, 'touchend', 0, 0)
     expect(el.classes()).not.toContain('var-slider__horizontal-thumb-label--active')
 
     await wrapper.setProps({ labelVisible: 'always' })
     expect(el.classes()).toContain('var-slider__horizontal-thumb-label--active')
-    await trigger(el, 'touchend', 0, 0)
+    await trigger(document, 'touchend', 0, 0)
     expect(el.classes()).toContain('var-slider__horizontal-thumb-label--active')
 
     wrapper.unmount()
@@ -178,15 +178,14 @@ describe('test slider props', () => {
     })
 
     const el = wrapper.find('.var-slider__horizontal-thumb')
-
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 200, 0)
-    await trigger(el, 'touchend', 200, 0)
+    await trigger(document, 'touchmove', 200, 0)
+    await trigger(document, 'touchend', 200, 0)
     expect(wrapper.vm.value).toBe(50)
 
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', -200, 0)
-    await trigger(el, 'touchend', -200, 0)
+    await trigger(document, 'touchmove', -200, 0)
+    await trigger(document, 'touchend', -200, 0)
     expect(wrapper.vm.value).toBe(-50)
 
     wrapper.unmount()
@@ -291,14 +290,14 @@ describe('test slider props', () => {
     const el = wrapper.find('.var-slider__horizontal-thumb')
 
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 5, 0)
-    await trigger(el, 'touchend', 5, 0)
+    await trigger(document, 'touchmove', 5, 0)
+    await trigger(document, 'touchend', 5, 0)
     await delay(100)
     expect(wrapper.find('.var-slider--error').exists()).toBeTruthy()
 
     await trigger(el, 'touchstart', 0, 0)
-    await trigger(el, 'touchmove', 200, 0)
-    await trigger(el, 'touchend', 200, 0)
+    await trigger(document, 'touchmove', 200, 0)
+    await trigger(document, 'touchend', 200, 0)
     await delay(100)
     expect(wrapper.find('.var-slider--error').exists()).toBeFalsy()
 
@@ -339,8 +338,8 @@ test('test slider events', async () => {
 
   expect(startFn).toHaveBeenCalledTimes(1)
 
-  await trigger(el, 'touchmove', 50, 0)
-  await trigger(el, 'touchend', 50, 0)
+  await trigger(document, 'touchmove', 50, 0)
+  await trigger(document, 'touchend', 50, 0)
 
   expect(changeFn).toHaveBeenCalled()
   expect(endFn).toHaveBeenCalledTimes(1)
@@ -354,8 +353,8 @@ test('test slider events', async () => {
   const el1 = wrapper.findAll('.var-slider__horizontal-thumb')[1]
 
   await trigger(el1, 'touchstart', 0, 0)
-  await trigger(el1, 'touchmove', 50, 0)
-  await trigger(el1, 'touchend', 50, 0)
+  await trigger(document, 'touchmove', 50, 0)
+  await trigger(document, 'touchend', 50, 0)
 
   expect(wrapper.vm.value[1]).not.toBe(30)
 

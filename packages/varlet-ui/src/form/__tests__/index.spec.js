@@ -505,14 +505,14 @@ test('test form with slider', async () => {
 
   const el = wrapper.find('.var-slider__horizontal-thumb-label')
   await trigger(el, 'touchstart', 0, 0)
-  await trigger(el, 'touchmove', 20, 0)
-  await trigger(el, 'touchend', 40, 0)
+  await trigger(document, 'touchmove', 20, 0)
+  await trigger(document, 'touchend', 40, 0)
   expect(wrapper.vm.value).toBe(5)
 
   await wrapper.setData({ disabled: false, readonly: true })
   await trigger(el, 'touchstart', 20, 0)
-  await trigger(el, 'touchmove', 10, 0)
-  await trigger(el, 'touchend', 70, 0)
+  await trigger(document, 'touchmove', 10, 0)
+  await trigger(document, 'touchend', 70, 0)
   expect(wrapper.vm.value).toBe(5)
 
   expect(onChange).toHaveBeenCalledTimes(0)
@@ -525,8 +525,8 @@ test('test form with slider', async () => {
 
   await wrapper.setData({ disabled: false, readonly: false })
   await trigger(el, 'touchstart', 20, 0)
-  await trigger(el, 'touchmove', 10, 0)
-  await trigger(el, 'touchend', 70, 0)
+  await trigger(document, 'touchmove', 10, 0)
+  await trigger(document, 'touchend', 70, 0)
   expect(wrapper.vm.value).not.toBe(5)
 
   expect(onChange).toHaveBeenCalled()

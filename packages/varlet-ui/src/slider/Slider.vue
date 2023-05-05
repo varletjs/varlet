@@ -22,9 +22,6 @@
         :key="item.enumValue"
         :style="thumbStyle(item)"
         @touchstart.stop="start($event, item.enumValue)"
-        @touchmove.stop="move($event, item.enumValue)"
-        @touchend="end(item.enumValue)"
-        @touchcancel="end(item.enumValue)"
       >
         <slot name="button" :current-value="item.text">
           <div
@@ -72,6 +69,7 @@ import VarFormDetails from '../form-details'
 import {
   defineComponent,
   ref,
+  onBeforeUnmount,
   computed,
   reactive,
   nextTick,
@@ -197,24 +195,7 @@ export default defineComponent({
 
     const isVertical: ComputedRef<boolean> = computed(() => props.direction === 'vertical')
 
-    let startX: number
-    let startY: number
-
-    const getMoveDirection = (e: TouchEvent) => {
-      const { clientX, clientY } = e.touches[0]
-
-      const offsetX = Math.abs(clientX - startX)
-      const offsetY = Math.abs(clientY - startY)
-
-      if (offsetX > offsetY && offsetX > 10) {
-        return 'horizontal'
-      }
-      if (offsetY > offsetX && offsetY > 10) {
-        return 'vertical'
-      }
-      return props.direction
-    }
-
+    let activeThumb: Thumbs
     const getOffset = (e: MouseEvent) => {
       const currentTarget = e.currentTarget as HTMLElement
 
@@ -300,53 +281,66 @@ export default defineComponent({
       return offsetToThumb1 <= offsetToThumb2 ? Thumbs.First : Thumbs.Second
     }
 
+    const addDocumentEvents = () => {
+      document.addEventListener('touchmove', move, { passive: false })
+      document.addEventListener('touchend', end)
+      document.addEventListener('touchcancel', end)
+    }
+
+    const removeDocumentEvents = () => {
+      document.removeEventListener('touchmove', move)
+      document.removeEventListener('touchend', end)
+      document.removeEventListener('touchcancel', end)
+    }
+
     const start = (event: TouchEvent, type: keyof ThumbsProps) => {
       if (!maxDistance.value) maxDistance.value = (sliderEl.value as HTMLDivElement).offsetWidth
       if (!isDisabled.value) {
         thumbsProps[type].active = true
       }
+
+      activeThumb = type
+      addDocumentEvents()
+
       if (isDisabled.value || isReadonly.value) return
       call(props.onStart)
       isScroll.value = true
       const { clientX, clientY } = event.touches[0]
-      startX = clientX
-      startY = clientY
       thumbsProps[type].startPosition = isVertical.value ? clientY : clientX
     }
 
-    const move = (event: TouchEvent, type: keyof ThumbsProps) => {
+    const move = (event: TouchEvent) => {
+      event.preventDefault()
+
       if (isDisabled.value || isReadonly.value || !isScroll.value) return
 
-      const { startPosition, currentOffset } = thumbsProps[type]
+      const { startPosition, currentOffset } = thumbsProps[activeThumb]
       const { clientX, clientY } = event.touches[0]
-      const moveDirection = getMoveDirection(event)
-      if (moveDirection === props.direction) {
-        // need to prevent default scroll event when the actual sliding direction is consistent with the defined sliding direction
-        event.preventDefault()
 
-        let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
+      let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
 
-        if (moveDistance <= 0) moveDistance = 0
-        else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
+      if (moveDistance <= 0) moveDistance = 0
+      else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
 
-        setPercent(moveDistance, type)
-      }
+      setPercent(moveDistance, activeThumb)
     }
 
-    const end = (type: keyof ThumbsProps) => {
+    const end = () => {
+      removeDocumentEvents()
+
       const { range, modelValue, onEnd, step, min } = props
       if (!isDisabled.value) {
-        thumbsProps[type].active = false
+        thumbsProps[activeThumb].active = false
       }
       if (isDisabled.value || isReadonly.value) return
       let rangeValue: Array<number> = []
 
-      thumbsProps[type].currentOffset = thumbsProps[type].percentValue * unitWidth.value
+      thumbsProps[activeThumb].currentOffset = thumbsProps[activeThumb].percentValue * unitWidth.value
 
-      const curValue = thumbsProps[type].percentValue * toNumber(step) + toNumber(min)
+      const curValue = thumbsProps[activeThumb].percentValue * toNumber(step) + toNumber(min)
 
       if (range && isArray(modelValue)) {
-        rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
+        rangeValue = activeThumb === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
 
       call(onEnd, range ? rangeValue : curValue)
@@ -358,8 +352,9 @@ export default defineComponent({
       if ((event.target as HTMLDivElement).closest(`.${n('thumb')}`)) return
       const offset = getOffset(event)
       const type = getType(offset)
+      activeThumb = type
       setPercent(offset, type)
-      end(type)
+      end()
     }
 
     const stepValidator = () => {
@@ -438,6 +433,10 @@ export default defineComponent({
       if (!stepValidator() || !valueValidator()) return
 
       maxDistance.value = (sliderEl.value as HTMLDivElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']
+    })
+
+    onBeforeUnmount(() => {
+      removeDocumentEvents()
     })
 
     return {
