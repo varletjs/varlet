@@ -13,6 +13,7 @@
             closeOnClickOverlay,
             teleport,
             show,
+            safeArea,
             'onUpdate:show': handlePopupUpdateShow,
             position: 'bottom',
             class: n('popup'),

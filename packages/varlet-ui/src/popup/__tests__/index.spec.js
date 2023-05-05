@@ -115,3 +115,16 @@ test('test popup default style', async () => {
 
   wrapper.unmount()
 })
+
+test('test popup safe area', async () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      safeArea: true,
+      safeAreaTop: true,
+    },
+  })
+
+  await wrapper.setData({ show: true })
+
+  expect(wrapper.html()).toMatchSnapshot()
+})

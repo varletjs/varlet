@@ -66,7 +66,9 @@ export default defineComponent({
             n('content'),
             n(`--${props.position}`),
             [props.defaultStyle, n('--content-background-color')],
-            [props.defaultStyle, n('$-elevation--3')]
+            [props.defaultStyle, n('$-elevation--3')],
+            [props.safeArea, n('--safe-area')],
+            [props.safeAreaTop, n('--safe-area-top')]
           )}
           style={{ zIndex: zIndex.value }}
           {...attrs}

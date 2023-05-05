@@ -9,11 +9,8 @@ test('test action-sheet component plugin', () => {
 })
 
 test('test action-sheet styles', () => {
-  const Wrapper = {
-    components: {
-      [VarActionSheet.name]: VarActionSheet,
-    },
-    data: () => ({
+  const wrapper = mount(VarActionSheet, {
+    props: {
       actions: [
         {
           name: 'Item 01',
@@ -28,12 +25,10 @@ test('test action-sheet styles', () => {
           disabled: true,
         },
       ],
-    }),
-    template: `
-      <var-action-sheet :actions="actions" />
-    `,
-  }
-  const wrapper = mount(Wrapper)
+      show: true,
+      safeArea: true,
+    },
+  })
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
 })
