@@ -5,7 +5,7 @@ import { props as fieldDecoratorProps } from '../field-decorator/props'
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
 export function typeValidator(type: string) {
-  return ['text', 'password', 'number'].includes(type)
+  return ['text', 'password', 'number', 'tel', 'email'].includes(type)
 }
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
@@ -52,6 +52,9 @@ export const props = {
   },
   rules: {
     type: Array as PropType<Array<(v: string) => any>>,
+  },
+  enterkeyhint: {
+    type: String,
   },
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
