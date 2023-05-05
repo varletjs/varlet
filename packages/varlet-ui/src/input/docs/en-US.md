@@ -160,6 +160,7 @@ const value10 = ref('')
 | `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
 | `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
+| `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
 ### Methods
 
