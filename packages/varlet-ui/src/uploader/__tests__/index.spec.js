@@ -1,7 +1,7 @@
 import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
-import { createApp, nextTick } from 'vue'
+import { createApp } from 'vue'
 import { delay, mockFileReader, mockStubs } from '../../utils/jest'
 
 const createEvent = (filename, type) => {
@@ -47,6 +47,33 @@ test('test uploader onBeforeFilter', async () => {
 
   await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
   expect(wrapper.vm.modelValue).toHaveLength(1)
+
+  await wrapper.setProps({
+    modelValue: [],
+    'onUpdate:modelValue': onUpdateModelValue,
+    onBeforeFilter: (files) => {
+      return files.map((file) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (file.name.endsWith('jpg')) {
+              resolve(file)
+            } else {
+              reject()
+            }
+          }, 1000)
+        })
+      })
+    },
+  })
+
+  const event = {
+    target: {
+      files: [new File([], 'cat.jpg'), new File([], 'dog.png'), new File([], 'dog.jpg')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.vm.modelValue).toHaveLength(2)
 
   wrapper.unmount()
 })

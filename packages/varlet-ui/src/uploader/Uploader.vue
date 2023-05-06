@@ -216,17 +216,9 @@ export default defineComponent({
     const getResolvers = (varFiles: VarFile[]) => varFiles.map(resolver)
 
     const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
-      const { onBeforeRead, onBeforeFilter } = props
+      const { onBeforeRead } = props
 
-      let filterFiles = varFiles
-      if (onBeforeFilter) {
-        filterFiles = call(onBeforeFilter, varFiles)
-        if (!isArray(filterFiles)) {
-          throw new Error('before-filter return value must be an array')
-        }
-      }
-
-      return filterFiles.map((varFile) => {
+      return varFiles.map((varFile) => {
         return new Promise((resolve) => {
           if (!onBeforeRead) {
             resolve({
@@ -247,7 +239,7 @@ export default defineComponent({
     }
 
     const handleChange = async (event: Event) => {
-      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, readonly, disabled } = props
+      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, onBeforeFilter, readonly, disabled } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
@@ -269,9 +261,30 @@ export default defineComponent({
         return varFiles.slice(0, limit)
       }
 
+      const getFilterVarFiles = async (varFiles: VarFile[]): Promise<VarFile[]> => {
+        if (!onBeforeFilter) {
+          return varFiles
+        }
+        const filterFiles: VarFile[] = []
+        await Promise.allSettled(call(onBeforeFilter, varFiles)).then((res) => {
+          res.forEach((item) => {
+            if (item.status === 'fulfilled') {
+              filterFiles.push(item.value)
+            }
+          })
+        })
+        return filterFiles
+      }
+
       // limit
       const files = getFiles(event)
       let varFiles: VarFile[] = files.map(createVarFile)
+
+      varFiles = onBeforeFilter !== undefined ? await getFilterVarFiles(varFiles) : varFiles
+      if (!isArray(varFiles)) {
+        throw new Error('before-filter return value must be an array')
+      }
+
       varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles
       varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles
 
