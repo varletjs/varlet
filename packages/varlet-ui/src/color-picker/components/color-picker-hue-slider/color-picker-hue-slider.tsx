@@ -17,7 +17,6 @@ export default defineComponent({
     const barElement = ref<HTMLElement | null>(null)
     const cursorElement = ref<HTMLElement | null>(null)
     const clickTransform = ref<DefaultTransition | null>(DEFAULT_TRANSITION)
-    const moveColor = ref<HSV | null>(null)
 
     const getCursorLeft = () => {
       if (barElement.value && cursorElement.value) {
@@ -77,13 +76,13 @@ export default defineComponent({
       left = Math.min(left, rect.width - offsetWidth / 2)
       left = Math.max(offsetWidth / 2, left)
       const hue = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 360)
-      moveColor.value = {
+      const hsv: HSV = {
         h: hue,
         s: (props.color as HSV).s,
         v: (props.color as HSV).v,
         a: (props.color as HSV).a,
       }
-      call(props['onUpdate:color'], moveColor.value ?? nullColor)
+      call(props['onUpdate:color'], hsv ?? nullColor)
     }
 
     function handleClickSlider(event: Event) {

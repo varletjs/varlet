@@ -73,6 +73,7 @@ export default defineComponent({
       left = Math.max(offsetWidth / 2, left)
       left = Math.min(left, rect.width - offsetWidth / 2)
       const alpha = Math.round(((left - offsetWidth / 2) / (rect.width - offsetWidth)) * 100)
+
       const hsv = {
         h: props.color?.h,
         s: (props.color as HSV).s,
