@@ -191,18 +191,21 @@ const event = ref(false)
 
 ### 属性
 
-| 参数                       | 说明                                              | 类型                    | 默认值      |
-|--------------------------|-------------------------------------------------|-----------------------|----------|
-| `v-model:show`           | 是否显示弹出层                                         | _boolean_             | `false`  |
+| 参数                       | 说明                                               | 类型                    | 默认值      |
+|--------------------------|--------------------------------------------------|-----------------------|----------|
+| `v-model:show`           | 是否显示弹出层                                          | _boolean_             | `false`  |
 | `position`               | 弹出位置，可选值为 `top` `bottom` `right` `left` `center` | _string_              | `center` |
-| `overlay`                | 是否显示遮罩层                                         | _boolean_             | `true`   |
-| `overlay-class`          | 自定义遮罩层的 class                                   | _string_              | `-`      |
-| `overlay-style`          | 自定义遮罩层的 style                                   | _object_              | `-`      |
-| `default-style`          | 是否启用默认样式                                        | _boolean_             | `true`   |
-| `transition`             | 过度动画的名称                                         | _string_              | `-`      |
-| `lock-scroll`            | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动                  | _boolean_             | `true`   |
-| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层                                    | _boolean_             | `true`   |
-| `teleport`               | 弹出层挂载的位置                                        | _TeleportProps['to']_ | `-`      |
+| `overlay`                | 是否显示遮罩层                                          | _boolean_             | `true`   |
+| `overlay-class`          | 自定义遮罩层的 class                                    | _string_              | `-`      |
+| `overlay-style`          | 自定义遮罩层的 style                                    | _object_              | `-`      |
+| `default-style`          | 是否启用默认样式                                         | _boolean_             | `true`   |
+| `transition`             | 过度动画的名称                                          | _string_              | `-`      |
+| `lock-scroll`            | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动                   | _boolean_             | `true`   |
+| `close-on-click-overlay` | 是否点击遮罩层关闭弹出层                                     | _boolean_             | `true`   |
+| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
+| `safe-area`              | 是否开启底部安全区适配	                                     | _boolean_             | `false`  |
+| `safe-area-top`          | 是否开启顶部安全区适配	                                     | _boolean_             | `false`  |
+| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
 
 ### 事件
 

@@ -397,6 +397,7 @@ function handleSelect(action) {
 | `lock-scroll`            | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_             | `true`       |
 | `close-on-click-action`  | Whether to close the actions sheet when clicking action                                                        | _boolean_             | `true`       |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet                                                         | _boolean_             | `true`       |
+| `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to']_ | `-`          |
 
 ### Events
@@ -431,6 +432,7 @@ function handleSelect(action) {
 | `overlayStyle`        | Custom overlay style                                                                                                 | _object_                   | `-`          |
 | `lockScroll`          | Whether to disable scrolling penetration, scrolling the action sheet when disabled will not cause the body to scroll | _boolean_                  | `true`       |
 | `closeOnClickOverlay` | Whether to click the overlay to close the action sheet                                                               | _boolean_                  | `true`       |
+| `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `onOpen`              | Action sheet open callback                                                                                           | _() => void_               | `-`          |
 | `onOpened`            | Action sheet open-animation ends callback                                                                            | _() => void_               | `-`          |
 | `onClose`             | Action sheet close callback                                                                                          | _() => void_               | `-`          |

@@ -29,6 +29,7 @@ export interface InputProps extends BasicAttributes {
   autofocus?: boolean
   validateTrigger?: InputValidateTrigger[]
   rules?: Array<(v: string) => any>
+  enterkeyhint?: string
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>

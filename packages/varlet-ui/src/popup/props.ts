@@ -40,6 +40,14 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  safeArea: {
+    type: Boolean,
+    default: false,
+  },
+  safeAreaTop: {
+    type: Boolean,
+    default: false,
+  },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
   },

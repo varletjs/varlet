@@ -381,28 +381,29 @@ function handleChange(_, [i1, i2, i3]) {
 
 ### Picker Options
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `columns` | Column content | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
-| `title` | title | _string_ | `Pick it` |
-| `textKey` | The attribute key of the text | _string_ | `text` |
-| `toolbar` | Whether to display the top toolbar | _boolean_ | `true` |
-| `cascade` | Whether to enable cascading mode | _boolean_ | `true` |
-| `cascadeInitialIndexes` | List of initialization indices for cascade mode | _number[]_ | `-` |
-| `textFormatter` | Text formatter | _(text: any, columnIndex: number) => any_ | `text => text` |
-| `optionHeight` | Option height | _string \| number_ | `44` |
-| `optionCount` | Number of options visible | _string \| number_ | `6` |
-| `confirmButtonText` | Confirm button text | _string_ | `Confirm` |
-| `cancelButtonText` | Cancel button text | _string_ | `Cancel` |
-| `confirmButtonTextColor` | Confirm the button text color | _string_ | `-` |
-| `cancelButtonTextColor` | Cancel button text color | _string_ | `-` |
-| `onOpen` | Popup open callback | _() => void_ | `-` |
-| `onOpened` | Popup open-animation ends callback  | _() => void_ | `-` |
-| `onClose` | Popup close callback | _() => void_ | `-` |
-| `onClosed` | Close pop-up layer callback when animation ends | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onChange` | Pick callbacks when content changes | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onConfirm` | Pick callbacks when confirm | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onCancel` | Pick callbacks when cancel | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| Prop                     | Description                                     | Type | Default | 
+|--------------------------|-------------------------------------------------| --- | --- | 
+| `columns`                | Column content                                  | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
+| `title`                  | title                                           | _string_ | `Pick it` |
+| `textKey`                | The attribute key of the text                   | _string_ | `text` |
+| `toolbar`                | Whether to display the top toolbar              | _boolean_ | `true` |
+| `cascade`                | Whether to enable cascading mode                | _boolean_ | `true` |
+| `cascadeInitialIndexes`  | List of initialization indices for cascade mode | _number[]_ | `-` |
+| `textFormatter`          | Text formatter                                  | _(text: any, columnIndex: number) => any_ | `text => text` |
+| `optionHeight`           | Option height                                   | _string \| number_ | `44` |
+| `optionCount`            | Number of options visible                       | _string \| number_ | `6` |
+| `confirmButtonText`      | Confirm button text                             | _string_ | `Confirm` |
+| `cancelButtonText`       | Cancel button text                              | _string_ | `Cancel` |
+| `confirmButtonTextColor` | Confirm the button text color                   | _string_ | `-` |
+| `cancelButtonTextColor`  | Cancel button text color                        | _string_ | `-` |
+| `safeArea`               | Whether to enable bottom safety zone adaptation | _boolean_             | `false`  |
+| `onOpen`                 | Popup open callback                             | _() => void_ | `-` |
+| `onOpened`               | Popup open-animation ends callback              | _() => void_ | `-` |
+| `onClose`                | Popup close callback                            | _() => void_ | `-` |
+| `onClosed`               | Close pop-up layer callback when animation ends | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onChange`               | Pick callbacks when content changes             | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onConfirm`              | Pick callbacks when confirm                     | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onCancel`               | Pick callbacks when cancel                      | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
 
 ### Picker NormalColumn
 

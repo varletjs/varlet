@@ -92,4 +92,16 @@ test('test setDefaultOptions and resetDefaultOptions', async () => {
   await delay(16)
   await trigger(document.querySelector('.var-action-sheet__action-item'), 'click')
   expect(onSelect).toHaveBeenCalledTimes(1)
+
+  ActionSheet.close()
+  await delay(300)
+})
+
+test('test safe area', async () => {
+  ActionSheet({
+    actions: [{ name: 'Item 01' }],
+    safeArea: true,
+  })
+  await delay(16)
+  expect(document.body.innerHTML).toMatchSnapshot()
 })

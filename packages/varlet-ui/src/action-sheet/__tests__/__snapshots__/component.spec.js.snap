@@ -2,10 +2,20 @@
 
 exports[`test action-sheet styles 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
-  <div class="var--box var-popup" style="z-index: 1998; display: none;">
-    <div class="var-popup__overlay" style="z-index: 1999;"></div>
+  <div class="var--box var-popup" style="z-index: 2001;">
+    <div class="var-popup__overlay" style="z-index: 2002;"></div>
     <transition-stub name="var-pop-bottom" appear="false" persisted="false" css="true">
-      <!---->
+      <div class="var-popup__content var-popup--bottom var-popup--content-background-color var-elevation--3 var-popup--safe-area var-action-sheet__popup-radius" style="z-index: 2003;">
+        <div class="var-action-sheet var--box">
+          <div class="var-action-sheet__title">请选择</div>
+          <div class="var-action-sheet__action-item customClass" style="color: rgb(76, 175, 80);"><i class="var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon" style="transition-duration: 0ms; font-size: 30px;" var-action-sheet-cover=""></i>
+            <div class="var-action-sheet__action-name">Item 01</div>
+          </div>
+          <div class="var-action-sheet__action-item var-action-sheet--disabled"><i class="var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon" style="transition-duration: 0ms;" var-action-sheet-cover=""></i>
+            <div class="var-action-sheet__action-name">Item 02</div>
+          </div>
+        </div>
+      </div>
     </transition-stub>
   </div>
 </transition-stub>"

@@ -64,7 +64,7 @@
   }
 
   &__placeholder {
-    width: 100%;
+    max-width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -75,7 +75,7 @@
     cursor: inherit;
     transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier), color 0.25s;
+    transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.28s;
   }
 
   &__placeholder-text {
@@ -93,7 +93,7 @@
   }
 
   &--placeholder-hint {
-    width: calc(1.33 * var(--field-decorator-legend-max-width, var(--filed-decorator-controller-width)));
+    max-width: calc(1.33 * var(--field-decorator-legend-max-width, var(--filed-decorator-controller-width)));
   }
 
   &--placeholder-hidden {

@@ -20,6 +20,7 @@ interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
+  safeArea?: boolean
   teleport?: TeleportProps['to']
   dynamic?: boolean
   textFormatter?: (text: any, columnIndex: number) => any

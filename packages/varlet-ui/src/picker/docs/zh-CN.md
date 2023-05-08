@@ -379,28 +379,30 @@ function handleChange(_, [i1, i2, i3]) {
 
 ### Picker Options
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `columns` | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
-| `title` | 标题 | _string_ | `提示` |
-| `textKey` | 文本的属性 key | _string_ | `text` |
-| `toolbar` | 是否显示上方工具栏 | _boolean_ | `true` |
-| `cascade` | 是否开启级联模式 | _boolean_ | `true` |
-| `cascadeInitialIndexes` | 级联模式的初始化索引列表 | _number[]_ | `-` |
-| `textFormatter` | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |
-| `optionHeight` | 选项的高度 | _string \| number_ | `44` |
-| `optionCount` | 可见的选项个数 | _string \| number_ | `6` |
-| `confirmButtonText` | 确认按钮文字 | _string_ | `确认` |
-| `cancelButtonText` | 取消按钮文字 | _string_ | `取消` |
+| 参数                       | 说明 | 类型 | 默认值 |
+|--------------------------| --- | --- | --- |
+| `columns`                | 列内容 | _NormalColumn[] \| CascadeColumn[] \| Texts_ | `[]` |
+| `title`                  | 标题 | _string_ | `提示` |
+| `textKey`                | 文本的属性 key | _string_ | `text` |
+| `toolbar`                | 是否显示上方工具栏 | _boolean_ | `true` |
+| `cascade`                | 是否开启级联模式 | _boolean_ | `true` |
+| `cascadeInitialIndexes`  | 级联模式的初始化索引列表 | _number[]_ | `-` |
+| `textFormatter`          | 文本格式化 | _(text: any, columnIndex: number) => any_ | `text => text` |
+| `optionHeight`           | 选项的高度 | _string \| number_ | `44` |
+| `optionCount`            | 可见的选项个数 | _string \| number_ | `6` |
+| `confirmButtonText`      | 确认按钮文字 | _string_ | `确认` |
+| `cancelButtonText`       | 取消按钮文字 | _string_ | `取消` |
 | `confirmButtonTextColor` | 确认按钮文字颜色 | _string_ | `-` |
-| `cancelButtonTextColor` | 取消按钮文字颜色 | _string_ | `-` |
-| `onOpen` | 弹出层开启回调 | _() => void_ | `-` |
-| `onOpened` | 弹出层开启动画结束回调 | _() => void_ | `-` |
-| `onClose` | 弹出层关闭回调 | _() => void_ | `-` |
-| `onClosed` | 关闭弹出层动画结束时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onChange` | 选择内容变化时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onConfirm` | 点击确认按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
-| `onCancel` | 点击取消按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `cancelButtonTextColor`  | 取消按钮文字颜色 | _string_ | `-` |
+| `cancelButtonTextColor`  | 取消按钮文字颜色 | _string_ | `-` |
+| `safeArea`               | 是否开启底部安全区适配      | _boolean_             | `false`  |
+| `onOpen`                 | 弹出层开启回调 | _() => void_ | `-` |
+| `onOpened`               | 弹出层开启动画结束回调 | _() => void_ | `-` |
+| `onClose`                | 弹出层关闭回调 | _() => void_ | `-` |
+| `onClosed`               | 关闭弹出层动画结束时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onChange`               | 选择内容变化时回调 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onConfirm`              | 点击确认按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
+| `onCancel`               | 点击取消按钮时触发 | _(texts: Texts, indexes: number[]) => void_ | `() => void` |
 
 ### Picker NormalColumn
 

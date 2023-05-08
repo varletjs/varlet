@@ -189,18 +189,20 @@ const event = ref(false)
 
 ### Props
 
-| Prop | Description | Type | Default | 
-| --- | --- | --- | --- | 
-| `v-model:show` | Whether to display the Popup | _boolean_ | `false` |
-| `position` | Popup position with optional value of `top` `bottom` `right` `left` `center` | _string_ | `center` |
-| `overlay` | Whether to display the overlay | _boolean_ | `true` |  
-| `overlay-class` | Custom overlay class | _string_ | `-` |
-| `overlay-style` | Custom overlay style | _object_ | `-` |
-| `default-style`  | Whether to enable the default style  | _boolean_   | `true`   |
-| `transition` | Transition animation name | _string_ | `-` |
+| Prop | Description                                                                                                   | Type | Default | 
+| --- |---------------------------------------------------------------------------------------------------------------| --- | --- | 
+| `v-model:show` | Whether to display the Popup                                                                                  | _boolean_ | `false` |
+| `position` | Popup position with optional value of `top` `bottom` `right` `left` `center`                                  | _string_ | `center` |
+| `overlay` | Whether to display the overlay                                                                                | _boolean_ | `true` |  
+| `overlay-class` | Custom overlay class                                                                                          | _string_ | `-` |
+| `overlay-style` | Custom overlay style                                                                                          | _object_ | `-` |
+| `default-style`  | Whether to enable the default style                                                                           | _boolean_   | `true`   |
+| `transition` | Transition animation name                                                                                     | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
-| `close-on-click-overlay` | Whether to click the overlay to close the Popup | _boolean_ | `true` | 
-| `teleport` | The location of the Popup to mount | _TeleportProps['to']_ | `-` |
+| `close-on-click-overlay` | Whether to click the overlay to close the Popup                                                               | _boolean_ | `true` | 
+| `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to']_ | `-` |
+| `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
+| `safe-area-top`          | Whether to enable top safety zone adaptation	                                                                 | _boolean_             | `false`  |
 
 ### Events
 

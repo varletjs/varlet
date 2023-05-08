@@ -27,6 +27,7 @@ export const props = {
     'overlayStyle',
     'lockScroll',
     'closeOnClickOverlay',
+    'safeArea',
     'teleport',
     'onOpen',
     'onClose',
