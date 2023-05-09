@@ -107,7 +107,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, onBeforeUnmount, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watch, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
@@ -146,7 +146,7 @@ export default defineComponent({
     let middleRect: DOMRect | null = null
     let controllerComputedStyle: CSSStyleDeclaration | null = null
     let placeholderTextComputedStyle: CSSStyleDeclaration | null = null
-    const updateLayoutVariables = () => {
+    const updateSize = () => {
       controllerRect = controllerEl.value!.getBoundingClientRect()
       middleRect = middleEl.value!.getBoundingClientRect()
       controllerComputedStyle = window.getComputedStyle(controllerEl.value!)
@@ -155,7 +155,7 @@ export default defineComponent({
       }
     }
 
-    const updateLayout = () => {
+    const handleFloating = () => {
       const { size, hint, placeholder, variant } = props
 
       if (!isFloating.value || !placeholder) {
@@ -190,21 +190,14 @@ export default defineComponent({
     }
 
     const resize = () => {
-      updateLayoutVariables()
-      updateLayout()
+      updateSize()
+      handleFloating()
     }
     watch(() => [props.size, props.placeholder, props.hint, props.value, props.variant], resize)
     useMounted(resize)
     useEventListener(() => window, 'resize', resize)
 
-    watch(isFloating, updateLayout)
-
-    onBeforeUnmount(() => {
-      controllerRect = null
-      middleRect = null
-      controllerComputedStyle = null
-      placeholderTextComputedStyle = null
-    })
+    watch(isFloating, handleFloating)
 
     return {
       controllerEl,
