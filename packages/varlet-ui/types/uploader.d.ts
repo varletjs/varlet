@@ -43,6 +43,7 @@ export interface UploaderProps extends BasicAttributes {
   ripple?: boolean
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
+  onBeforeFilter?: ListenerProp<(file: VarFile[]) => Promise<any> | any>
   onBeforeRead?: ListenerProp<(file: VarFile) => Promise<any> | any>
   onAfterRead?: ListenerProp<(file: VarFile) => any>
   onOversize?: ListenerProp<(file: VarFile) => any>
