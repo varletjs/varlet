@@ -281,6 +281,7 @@ watchLang((lang) => {
       <var-option :label="pack.coding" />
     </var-select>
     <var-select
+      variant="outlined"
       :placeholder="pack.validate"
       :rules="[(v) => v === pack.rest || pack.mustSelectRest]"
       v-model="outlinedValue5"
