@@ -28,7 +28,7 @@
       </div>
 
       <label
-        v-if="placeholderTransform && (hint || alwaysCustomPlaceholder)"
+        v-if="hint ? placeholderTransform : alwaysCustomPlaceholder"
         :class="
           classes(
             n('placeholder'),
