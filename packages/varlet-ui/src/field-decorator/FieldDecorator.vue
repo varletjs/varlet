@@ -76,6 +76,7 @@
               [formDisabled || disabled, n('--line-disabled')]
             )
           "
+          :style="{ borderColor: color }"
         >
           <legend
             :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
@@ -129,7 +130,6 @@ export default defineComponent({
     const legendWidth: Ref<string> = ref('')
     const placeholderTransform: Ref<string> = ref('')
     const placeholderMaxWidth: Ref<string> = ref('')
-
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
