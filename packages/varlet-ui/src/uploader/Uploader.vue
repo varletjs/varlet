@@ -265,15 +265,23 @@ export default defineComponent({
         if (!onBeforeFilter) {
           return varFiles
         }
-        const filterFiles: VarFile[] = []
-        await Promise.allSettled(call(onBeforeFilter, varFiles)).then((res) => {
-          res.forEach((item) => {
-            if (item.status === 'fulfilled') {
-              filterFiles.push(item.value)
+        const events = normalizeToArray(onBeforeFilter)
+        let targets = varFiles
+        for (let i = 0; i < events.length; i++) {
+          const event = events[i]
+          const results = normalizeToArray(call(event, targets))
+          targets = []
+          for (let i = 0; i < results.length; i++) {
+            try {
+              const file = await results[i]
+              targets.push(file)
+            } catch (error) {
+              // 当前文件被过滤 英文
+              console.error(error || 'The current file is filtered')
             }
-          })
-        })
-        return filterFiles
+          }
+        }
+        return targets
       }
 
       // limit
