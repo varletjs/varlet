@@ -107,11 +107,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, nextTick, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watch, nextTick, type Ref, computed, type ComputedRef, onUpdated } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
 import { useEventListener, useMounted } from '@varlet/use'
+import { doubleRaf, getRect, getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('field-decorator')
 
@@ -144,23 +145,26 @@ export default defineComponent({
 
     const resize = () => {
       const { size, hint, placeholder, variant } = props
+
       if (!isFloating.value || !placeholder) {
-        const controllerRect = controllerEl.value!.getBoundingClientRect()
-        const middleRect = middleEl.value!.getBoundingClientRect()
-        const translateX = `${middleRect!.left - controllerRect!.left}px`
+        const controllerRect = getRect(controllerEl.value!)
+        const middleRect = getRect(middleEl.value!)
+        const translateX = `${middleRect.left - controllerRect.left}px`
         placeholderTransform.value = hint
           ? `translate(${translateX}, calc(var(--field-decorator-${variant}-${size}-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1)`
           : `translate(${translateX}, -50%)`
         placeholderMaxWidth.value = `${middleRect!.width}px`
         return
       }
-      const controllerComputedStyle = window.getComputedStyle(controllerEl.value!)
+
+      const controllerStyle = getStyle(controllerEl.value!)
       const translateY = variant === 'outlined' ? '-50%' : '0'
-      placeholderTransform.value = `translate(${controllerComputedStyle!.paddingLeft}, ${translateY}) scale(0.75)`
+      placeholderTransform.value = `translate(${controllerStyle!.paddingLeft}, ${translateY}) scale(0.75)`
+
       if (variant === 'outlined') {
-        const placeholderTextComputedStyle = window.getComputedStyle(placeholderTextEl.value!)
+        const placeholderTextStyle = getStyle(placeholderTextEl.value!)
         const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-        legendWidth.value = `calc(${placeholderTextComputedStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
+        legendWidth.value = `calc(${placeholderTextStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
         placeholderMaxWidth.value = `calc((100% - var(--field-decorator-outlined-${size}-padding-left) - var(--field-decorator-outlined-${size}-padding-right)) * 1.33)`
       } else {
         placeholderMaxWidth.value = '133%'
@@ -175,12 +179,7 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    watch(
-      () => [props.size, props.placeholder, props.hint, props.value, props.variant, isFloating.value],
-      () => {
-        nextTick(resize)
-      }
-    )
+    onUpdated(resize)
     useMounted(resize)
     useEventListener(() => window, 'resize', resize)
 
