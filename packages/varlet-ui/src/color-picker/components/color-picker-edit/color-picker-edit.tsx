@@ -1,4 +1,6 @@
 import { computed, defineComponent, toRefs } from 'vue'
+import VarButton from '../../../button'
+import VarIcon from '../../../icon'
 import { call, createNamespace } from '../../../utils/components'
 import { modes as defaultModes } from '../../utils/color-utils'
 import { colorPickerEditProps, ColorPickerEditProps } from './color-picker-edit-types'
@@ -41,7 +43,7 @@ export default defineComponent({
             <VarColorPickerInput {...props} />
           ))}
           {enabledModes.value.length > 1 && (
-            <var-button
+            <VarButton
               round
               text
               onClick={() => {
@@ -50,9 +52,9 @@ export default defineComponent({
               }}
             >
               <div class={n('icon')}>
-                <var-icon size={20} name="unfold-more-horizontal" />
+                <VarIcon size={20} name="unfold-more-horizontal" />
               </div>
-            </var-button>
+            </VarButton>
           )}
         </div>
       )

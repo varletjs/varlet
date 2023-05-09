@@ -567,7 +567,7 @@ const rgba: ColorPickerMode = {
       label: 'A',
       max: 1,
       step: 0.01,
-      getValue: ({ a }: RGB) => Math.round(a! * 100) / 100,
+      getValue: ({ a }: RGB) => (a != null ? Math.round(a * 100) / 100 : 1),
       getColor: (c: RGB, v: string): RGB => ({ ...c, a: Number(v) }),
     },
   ],
