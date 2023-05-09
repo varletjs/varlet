@@ -27,7 +27,7 @@
 import VarLoading from '../loading'
 import Ripple from '../ripple'
 import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated } from 'vue'
-import { getParentScroller, toPxNum } from '../utils/elements'
+import { getParentScroller, getRect, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
 import { dt } from '../utils/shared'
@@ -56,10 +56,8 @@ export default defineComponent({
     }
 
     const isReachBottom = () => {
-      const containerBottom =
-        scroller === window ? window.innerHeight : (scroller as HTMLElement).getBoundingClientRect().bottom
-
-      const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
+      const { bottom: containerBottom } = getRect(scroller)
+      const { bottom: detectorBottom } = getRect(detectorEl.value!)
 
       // The fractional part of the detectorBottom when bottoming out overflows
       // https://github.com/varletjs/varlet/issues/310
