@@ -72,7 +72,8 @@ exports[`test select hint to be false 1`] = `
           <div class="var-select__select" style="text-align: left;">
             <div class="var-select__label"><span></span></div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
-        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-non-hint var-field-decorator--placeholder-hidden" for=""><span></span></label>
+        </div>
+        <!--v-if-->
         <!--v-if-->
         <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
           <!--v-if-->

@@ -77,6 +77,10 @@
     transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.2s;
   }
 
+  &--placeholder-non-hint {
+    top: 50%;
+  }
+
   &__clear-icon[var-field-decorator-cover] {
     font-size: var(--field-decorator-icon-size);
     margin-left: 6px;
@@ -145,11 +149,6 @@
 
     .var-field-decorator--icon-non-hint {
       padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
-    }
-
-    .var-field-decorator--placeholder-non-hint {
-      transform: translate(0, -50%);
-      top: 50%;
     }
 
     .var-field-decorator--line-focus {
