@@ -107,7 +107,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, watch, nextTick, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
@@ -193,7 +193,12 @@ export default defineComponent({
       updateSize()
       handleFloating()
     }
-    watch(() => [props.size, props.placeholder, props.hint, props.value, props.variant], resize)
+    watch(
+      () => [props.size, props.placeholder, props.hint, props.value, props.variant],
+      () => {
+        nextTick(resize)
+      }
+    )
     useMounted(resize)
     useEventListener(() => window, 'resize', resize)
 
