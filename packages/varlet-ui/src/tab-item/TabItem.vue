@@ -1,6 +1,6 @@
 <template>
   <var-swipe-item :class="classes(n(), [!current, n('--inactive')])" var-tab-item-cover>
-    <slot v-if="initSlot" />
+    <slot />
   </var-swipe-item>
 </template>
 
@@ -23,15 +23,10 @@ export default defineComponent({
   props,
   setup(props) {
     const current: Ref<boolean> = ref(false)
-    const initSlot: Ref<boolean> = ref(false)
     const name: ComputedRef<string | number | undefined> = computed(() => props.name)
     const { index, bindTabsItems } = useTabsItems()
 
     const setCurrent = (value: boolean) => {
-      if (!initSlot.value && value) {
-        initSlot.value = true
-      }
-
       current.value = value
     }
 
@@ -47,7 +42,6 @@ export default defineComponent({
       n,
       classes,
       current,
-      initSlot,
     }
   },
 })
