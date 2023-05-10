@@ -6,7 +6,7 @@ import VarTab from '../../tab'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import dark from '../../themes/dark'
-import { reactive, toRefs, watch } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
@@ -25,15 +25,10 @@ const values = reactive({
   actives: new Set(),
 })
 
-const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current, actives } =
+const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
   toRefs(values)
 
 function load() {
-  if (values.current !== 0) {
-    values.loading = false
-    return
-  }
-
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       values.list.push(values.list.length + 1)
@@ -48,11 +43,6 @@ function load() {
 }
 
 function load2() {
-  if (values.current !== 1) {
-    values.loading2 = false
-    return
-  }
-
   setTimeout(() => {
     if (values.list2.length === 40) {
       values.error = true
@@ -69,11 +59,6 @@ function load2() {
 }
 
 function load3() {
-  if (values.current !== 2) {
-    values.loading3 = false
-    return
-  }
-
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       values.list3.push(values.list3.length + 1)
@@ -89,14 +74,6 @@ function load3() {
 
 watchLang(use)
 watchDarkMode(dark)
-
-watch(
-  () => values.current,
-  (newValue) => {
-    values.actives.add(newValue)
-  },
-  { immediate: true }
-)
 </script>
 
 <template>
@@ -108,18 +85,12 @@ watch(
 
   <var-tabs-items v-model:active="current">
     <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load" v-if="actives.has(0)">
+      <var-list :finished="finished" v-model:loading="loading" @load="load">
         <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
-      <var-list
-        :finished="finished2"
-        v-model:error="error"
-        v-model:loading="loading2"
-        @load="load2"
-        v-if="actives.has(1)"
-      >
+      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
         <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
@@ -131,7 +102,6 @@ watch(
         :finished="finished3"
         v-model:loading="loading3"
         @load="load3"
-        v-if="actives.has(2)"
       >
         <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>

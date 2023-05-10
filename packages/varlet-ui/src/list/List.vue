@@ -26,7 +26,7 @@
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated } from 'vue'
+import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated, watch } from 'vue'
 import { getParentScroller, getRect, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
@@ -34,6 +34,7 @@ import { dt } from '../utils/shared'
 import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
 import { useMounted } from '@varlet/use'
+import { useTabItem } from './provide'
 
 const { n, classes } = createNamespace('list')
 
@@ -45,6 +46,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const { tabItem, bindTabItem } = useTabItem()
     const listEl: Ref<HTMLElement | null> = ref(null)
     const detectorEl: Ref<HTMLElement | null> = ref(null)
     let scroller: HTMLElement | Window
@@ -72,17 +74,28 @@ export default defineComponent({
     const check = async () => {
       await nextTick()
 
-      const { loading, finished, error } = props
-
-      if (!loading && !finished && !error && isReachBottom()) {
-        load()
+      if (props.loading || props.finished || props.error || tabItem?.current.value === false || !isReachBottom()) {
+        return
       }
+
+      load()
     }
 
+    call(bindTabItem, {})
+
+    if (tabItem) {
+      watch(() => tabItem.current.value, check)
+    }
+
+    watch(() => [props.loading, props.error, props.finished], check)
+
     useMounted(() => {
-      scroller = getParentScroller(listEl.value as HTMLElement)
+      scroller = getParentScroller(listEl.value!)
       scroller.addEventListener('scroll', check)
-      props.immediateCheck && check()
+
+      if (props.immediateCheck) {
+        check()
+      }
     })
 
     onDeactivated(removeScrollerListener)
