@@ -6,7 +6,7 @@ import VarTab from '../../tab'
 import VarTabsItems from '../../tabs-items'
 import VarTabItem from '../../tab-item'
 import dark from '../../themes/dark'
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, watch } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
@@ -22,9 +22,10 @@ const values = reactive({
   list2: [],
   list3: [],
   current: 0,
+  actives: [],
 })
 
-const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
+const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current, actives } =
   toRefs(values)
 
 function load() {
@@ -88,6 +89,14 @@ function load3() {
 
 watchLang(use)
 watchDarkMode(dark)
+
+watch(
+  () => values.current,
+  (newValue) => {
+    values.actives.push(newValue)
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -99,12 +108,18 @@ watchDarkMode(dark)
 
   <var-tabs-items v-model:active="current">
     <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load">
+      <var-list :finished="finished" v-model:loading="loading" @load="load" v-if="actives.includes(0)">
         <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
-      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
+      <var-list
+        :finished="finished2"
+        v-model:error="error"
+        v-model:loading="loading2"
+        @load="load2"
+        v-if="actives.includes(1)"
+      >
         <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
@@ -116,6 +131,7 @@ watchDarkMode(dark)
         :finished="finished3"
         v-model:loading="loading3"
         @load="load3"
+        v-if="actives.includes(2)"
       >
         <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
