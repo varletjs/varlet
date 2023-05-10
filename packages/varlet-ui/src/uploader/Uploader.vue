@@ -266,22 +266,11 @@ export default defineComponent({
           return varFiles
         }
         const events = normalizeToArray(onBeforeFilter)
-        let targets = varFiles
-        for (let i = 0; i < events.length; i++) {
-          const event = events[i]
-          const results = normalizeToArray(call(event, targets))
-          targets = []
-          for (let i = 0; i < results.length; i++) {
-            try {
-              const file = await results[i]
-              targets.push(file)
-            } catch (error) {
-              // 当前文件被过滤 英文
-              console.error(error || 'The current file is filtered')
-            }
-          }
+        // eslint-disable-next-line no-restricted-syntax
+        for (const event of events) {
+          varFiles = await call(event, varFiles)
         }
-        return targets
+        return varFiles
       }
 
       // limit

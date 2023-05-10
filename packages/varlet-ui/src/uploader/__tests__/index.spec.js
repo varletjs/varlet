@@ -52,16 +52,10 @@ test('test uploader onBeforeFilter', async () => {
     modelValue: [],
     'onUpdate:modelValue': onUpdateModelValue,
     onBeforeFilter: (files) => {
-      return files.map((file) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            if (file.name.endsWith('jpg')) {
-              resolve(file)
-            } else {
-              reject()
-            }
-          }, 1000)
-        })
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(files.filter((file) => file.name.endsWith('jpg')))
+        }, 1000)
       })
     },
   })
