@@ -22,7 +22,6 @@ const values = reactive({
   list2: [],
   list3: [],
   current: 0,
-  actives: new Set(),
 })
 
 const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
