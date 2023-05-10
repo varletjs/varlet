@@ -22,7 +22,7 @@ const values = reactive({
   list2: [],
   list3: [],
   current: 0,
-  actives: [],
+  actives: new Set(),
 })
 
 const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current, actives } =
@@ -93,7 +93,7 @@ watchDarkMode(dark)
 watch(
   () => values.current,
   (newValue) => {
-    values.actives.push(newValue)
+    values.actives.add(newValue)
   },
   { immediate: true }
 )
@@ -108,7 +108,7 @@ watch(
 
   <var-tabs-items v-model:active="current">
     <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load" v-if="actives.includes(0)">
+      <var-list :finished="finished" v-model:loading="loading" @load="load" v-if="actives.has(0)">
         <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
     </var-tab-item>
@@ -118,7 +118,7 @@ watch(
         v-model:error="error"
         v-model:loading="loading2"
         @load="load2"
-        v-if="actives.includes(1)"
+        v-if="actives.has(1)"
       >
         <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
@@ -131,7 +131,7 @@ watch(
         :finished="finished3"
         v-model:loading="loading3"
         @load="load3"
-        v-if="actives.includes(2)"
+        v-if="actives.has(2)"
       >
         <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
       </var-list>
