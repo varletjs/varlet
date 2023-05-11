@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace: *",
-    "vite": "^4.0.4",
+    "vite": "4.3.5",
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
     "live-server": "^1.2.1",

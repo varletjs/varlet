@@ -25,6 +25,8 @@ export const isURL = (val: string | undefined | null) => {
 export const isEmpty = (val: unknown) =>
   val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)
 
+export const isWindow = (val: unknown): val is Window => val === window
+
 export const toNumber = (val: number | string | boolean | undefined | null): number => {
   if (val == null) return 0
 
