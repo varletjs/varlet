@@ -130,7 +130,7 @@ async function handleBeforeRemove() {
 }
 
 function handleBeforeFilter(files) {
-  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+  return files.filter((file) => file.name.endsWith('png'))
 }
 
 watchLang(use)
