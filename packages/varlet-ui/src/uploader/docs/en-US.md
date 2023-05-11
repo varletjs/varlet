@@ -151,6 +151,28 @@ const files = ref([])
 </template>
 ```
 
+### File List Filter
+
+The file can be filtered through the `before-filter` event, and the `VarFile` array is returned to operate on the uploaded file, and operations such as conditional filtering and appending files can be performed.
+
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+function handleBeforeFilter(files) {
+  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" multiple @before-filter="handleBeforeFilter" />
+</template>
+
+```
+
 ### Upload Preprocessing
 
 Operate on a file by registering a `before-read` event that returns a false value to prevent the file from being read.
@@ -334,28 +356,6 @@ const files = ref([
 </style>
 ```
 
-### Custom render file
-
-The file can be filtered through the `before-filter` event, and the `VarFile` array is returned to operate on the uploaded file, and operations such as conditional filtering and appending files can be performed.
-
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([])
-
-const handleBeforeFilter = (files) => {
-  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
-}
-</script>
-
-<template>
-  <var-uploader v-model="files" multiple @before-filter=" handleBeforeFilter " />
-</template>
-
-```
-
 
 ## API
 
@@ -416,7 +416,7 @@ const handleBeforeFilter = (files) => {
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `before-filter` | Triggered before the file is read, follow-up operations are performed based on the returned data | `files: VarFile[]` |
+| `before-filter` | Triggered before the event `before-read` to filter the file list | `files: VarFile[]` |
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |

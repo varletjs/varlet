@@ -87,7 +87,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray, isArray } from '@varlet/shared'
+import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -265,11 +265,14 @@ export default defineComponent({
         if (!onBeforeFilter) {
           return varFiles
         }
+
         const events = normalizeToArray(onBeforeFilter)
+
         // eslint-disable-next-line no-restricted-syntax
         for (const event of events) {
-          varFiles = await call(event, varFiles)
+          varFiles = await event(varFiles)
         }
+
         return varFiles
       }
 
@@ -277,11 +280,7 @@ export default defineComponent({
       const files = getFiles(event)
       let varFiles: VarFile[] = files.map(createVarFile)
 
-      varFiles = onBeforeFilter !== undefined ? await getFilterVarFiles(varFiles) : varFiles
-      if (!isArray(varFiles)) {
-        throw new Error('before-filter return value must be an array')
-      }
-
+      varFiles = await getFilterVarFiles(varFiles)
       varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles
       varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles
 

@@ -50,8 +50,9 @@ test('test uploader onBeforeFilter', async () => {
 
   await wrapper.setProps({
     modelValue: [],
+    multiple: true,
     'onUpdate:modelValue': onUpdateModelValue,
-    onBeforeFilter: (files) => {
+    onBeforeFilter: async function (files) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve(files.filter((file) => file.name.endsWith('jpg')))

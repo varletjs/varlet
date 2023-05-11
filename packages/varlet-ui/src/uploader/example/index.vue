@@ -160,6 +160,9 @@ onUnmounted(() => {
   <app-type>{{ pack.maxsize }}</app-type>
   <var-uploader v-model="values.files5" :maxsize="1024" @oversize="handleOversize" />
 
+  <app-type>{{ pack.beforeFilter }}</app-type>
+  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
+
   <app-type>{{ pack.beforeRead }}</app-type>
   <var-uploader v-model="values.files7" @before-read="handleBeforeRead" />
 
@@ -189,9 +192,6 @@ onUnmounted(() => {
       </var-button>
     </var-uploader>
   </var-space>
-
-  <app-type>{{ pack.beforeFilter }}</app-type>
-  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
 
   <var-space></var-space>
 </template>

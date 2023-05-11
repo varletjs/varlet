@@ -151,6 +151,27 @@ const files = ref([])
 </template>
 ```
 
+### 文件列表过滤
+
+通过 `before-filter` 事件可以对文件进行过滤，返回`VarFile`数组对上传文件操作，可以进行条件过滤、追加文件等操作。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+function handleBeforeFilter(files) {
+  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+}
+</script>
+
+<template>
+  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
+</template>
+
+```
+
 ### 上传预处理
 
 通过注册 `before-read` 事件对文件进行操作，返回假值阻止文件读取。
@@ -334,33 +355,6 @@ const files = ref([
 </style>
 ```
 
-### 自定义文件操作
-
-通过 `before-filter` 事件可以对文件进行过滤，返回`VarFile`数组对上传文件操作，可以进行条件过滤、追加文件等操作。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const files = ref([
-  {
-    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-    state: 'error',
-  },
-])
-
-const handleBeforeFilter = (files) => {
-  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
-}
-</script>
-
-<template>
-  <var-uploader v-model=" values.files14" multiple @before-filter=" handleBeforeFilter " />
-</template>
-
-```
-
 ## API
 
 ### 属性
@@ -420,7 +414,7 @@ const handleBeforeFilter = (files) => {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `before-filter` | 文件读取前触发，根据返回数据进行后续操作 | `file: VarFile[]` |
+| `before-filter` | `before-read` 前触发，对文件列表进行过滤 | `files: VarFile[]` |
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持 promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
