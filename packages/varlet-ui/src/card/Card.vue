@@ -96,7 +96,7 @@ import VarIcon from '../icon'
 import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
-import { doubleRaf, toSizeUnit } from '../utils/elements'
+import { doubleRaf, toSizeUnit, getRect } from '../utils/elements'
 import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
@@ -150,7 +150,7 @@ export default defineComponent({
 
       floater.value = setTimeout(
         async () => {
-          const { width, height, left, top } = card.value!.getBoundingClientRect()
+          const { width, height, left, top } = getRect(card.value!)
           holderWidth.value = <string>toSizeUnit(width)
           holderHeight.value = <string>toSizeUnit(height)
           floaterWidth.value = holderWidth.value
