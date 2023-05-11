@@ -51,14 +51,6 @@ const placementOptions = [
 </script>
 
 <template>
-  <var-select :hint="false" v-model="placement">
-    <var-option 
-      v-for="(item, index) in placementOptions" 
-      :key="index"
-      :label="item" 
-    />
-  </var-select>
-  
   <div class="placement-container">
     <var-menu :placement="placement">
       <var-button type="primary">
@@ -71,6 +63,14 @@ const placementOptions = [
       </template>
     </var-menu>
   </div>
+
+  <var-select :hint="false" v-model="placement">
+    <var-option 
+      v-for="(item, index) in placementOptions" 
+      :key="index"
+      :label="item" 
+    />
+  </var-select>
 </template>
 
 <style>

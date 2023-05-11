@@ -11,7 +11,7 @@ import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale/index'
 
-const show = ref(false)
+const shows = ref([false, false])
 const trigger = ref('click')
 const placementValue = ref('cover-top-start')
 const placementOptions = ref([
@@ -38,7 +38,7 @@ const placementOptions = ref([
 ])
 
 function closeMenu() {
-  show.value = false
+  shows.value[1] = false
 }
 
 watchLang(use)
@@ -57,11 +57,8 @@ watchDarkMode(dark)
   </var-menu>
 
   <app-type>{{ pack.placement }}</app-type>
-  <var-select :hint="false" v-model="placementValue">
-    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
-  </var-select>
   <div class="placement-container">
-    <var-menu :placement="placementValue">
+    <var-menu v-model:show="shows[0]" :placement="placementValue">
       <var-button type="primary">
         <var-icon name="star" />
       </var-button>
@@ -72,6 +69,9 @@ watchDarkMode(dark)
       </template>
     </var-menu>
   </div>
+  <var-select :hint="false" v-model="placementValue" @change="() => (shows[0] = true)">
+    <var-option v-for="(item, index) in placementOptions" :key="index" :label="item" />
+  </var-select>
 
   <app-type>{{ pack.offset }}</app-type>
   <var-menu offset-x="36px" offset-y="18px">
@@ -139,7 +139,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.twoWayBinding }}</app-type>
-  <var-menu v-model:show="show">
+  <var-menu v-model:show="shows[1]">
     <var-button type="primary">{{ pack.twoWayBinding }}</var-button>
 
     <template #menu>
