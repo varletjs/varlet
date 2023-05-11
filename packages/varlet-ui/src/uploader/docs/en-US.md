@@ -153,8 +153,7 @@ const files = ref([])
 
 ### File List Filter
 
-The file can be filtered through the `before-filter` event, and the `VarFile` array is returned to operate on the uploaded file, and operations such as conditional filtering and appending files can be performed.
-
+Filter files through the `before-filter` event, and return a `VarFile` array after filtering.
 
 ```html
 <script setup>

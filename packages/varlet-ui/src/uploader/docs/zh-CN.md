@@ -153,7 +153,7 @@ const files = ref([])
 
 ### 文件列表过滤
 
-通过 `before-filter` 事件可以对文件进行过滤，返回`VarFile`数组对上传文件操作，可以进行条件过滤、追加文件等操作。
+通过 `before-filter` 事件对文件进行过滤，返回一个被过滤之后的 `VarFile` 数组。
 
 ```html
 <script setup>
@@ -162,7 +162,7 @@ import { ref } from 'vue'
 const files = ref([])
 
 function handleBeforeFilter(files) {
-  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+  return files.filter(file => file.file.size <= 3 * 1024 * 1024)
 }
 </script>
 
