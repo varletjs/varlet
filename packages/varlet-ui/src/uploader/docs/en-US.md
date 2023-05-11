@@ -162,7 +162,7 @@ import { ref } from 'vue'
 const files = ref([])
 
 function handleBeforeFilter(files) {
-  return files.filter((file) => file.file.size <= 3 * 1024 * 1024)
+  return files.filter(file => file.file.size <= 3 * 1024 * 1024)
 }
 </script>
 
