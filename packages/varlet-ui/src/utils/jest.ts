@@ -3,6 +3,7 @@ import type { ComponentPublicInstance } from 'vue'
 import { config } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
 import { isPlainObject } from '@varlet/shared'
+import { getStyle } from '../utils/elements'
 
 export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
 
@@ -83,32 +84,32 @@ export function mockOffset({
   Object.defineProperties(HTMLElement.prototype, {
     offsetWidth: {
       get() {
-        return offsetWidth ?? (parseFloat(window.getComputedStyle(this).width) || 0)
+        return offsetWidth ?? (parseFloat(getStyle(this).width) || 0)
       },
     },
     offsetHeight: {
       get() {
-        return offsetHeight ?? (parseFloat(window.getComputedStyle(this).height) || 0)
+        return offsetHeight ?? (parseFloat(getStyle(this).height) || 0)
       },
     },
     clientWidth: {
       get() {
-        return clientWidth ?? (parseFloat(window.getComputedStyle(this).width) || 0)
+        return clientWidth ?? (parseFloat(getStyle(this).width) || 0)
       },
     },
     clientHeight: {
       get() {
-        return clientHeight ?? (parseFloat(window.getComputedStyle(this).height) || 0)
+        return clientHeight ?? (parseFloat(getStyle(this).height) || 0)
       },
     },
     offsetLeft: {
       get() {
-        return offsetLeft ?? (parseFloat(window.getComputedStyle(this).marginLeft) || 0)
+        return offsetLeft ?? (parseFloat(getStyle(this).marginLeft) || 0)
       },
     },
     offsetTop: {
       get() {
-        return offsetTop ?? (parseFloat(window.getComputedStyle(this).marginTop) || 0)
+        return offsetTop ?? (parseFloat(getStyle(this).marginTop) || 0)
       },
     },
     offsetParent: {
