@@ -293,13 +293,13 @@ describe('test slider props', () => {
     await trigger(document, 'touchmove', 5, 0)
     await trigger(document, 'touchend', 5, 0)
     await delay(100)
-    expect(wrapper.find('.var-slider--error').exists()).toBeTruthy()
+    expect(wrapper.find('.var-slider__horizontal--error').exists()).toBeTruthy()
 
     await trigger(el, 'touchstart', 0, 0)
     await trigger(document, 'touchmove', 200, 0)
     await trigger(document, 'touchend', 200, 0)
     await delay(100)
-    expect(wrapper.find('.var-slider--error').exists()).toBeFalsy()
+    expect(wrapper.find('.var-slider__horizontal--error').exists()).toBeFalsy()
 
     wrapper.unmount()
   })

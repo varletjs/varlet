@@ -1,7 +1,7 @@
 <template>
   <div :class="n(direction)">
     <div
-      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
+      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n(`${direction}--error`)])"
       ref="sliderEl"
       @click="click"
     >
