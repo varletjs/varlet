@@ -1,6 +1,6 @@
 import { isNumber, isObject, isString, kebabCase, toNumber, isWindow } from '@varlet/shared'
 import { getGlobalThis } from './shared'
-import { error } from '../utils/logger'
+import { error } from './logger'
 import type { StyleVars } from '../style-provider'
 
 // shorthand only

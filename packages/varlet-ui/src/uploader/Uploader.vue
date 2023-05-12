@@ -239,7 +239,7 @@ export default defineComponent({
     }
 
     const handleChange = async (event: Event) => {
-      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, readonly, disabled } = props
+      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, onBeforeFilter, readonly, disabled } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
@@ -261,9 +261,26 @@ export default defineComponent({
         return varFiles.slice(0, limit)
       }
 
+      const getFilterVarFiles = async (varFiles: VarFile[]): Promise<VarFile[]> => {
+        if (!onBeforeFilter) {
+          return varFiles
+        }
+
+        const events = normalizeToArray(onBeforeFilter)
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const event of events) {
+          varFiles = await event(varFiles)
+        }
+
+        return varFiles
+      }
+
       // limit
       const files = getFiles(event)
       let varFiles: VarFile[] = files.map(createVarFile)
+
+      varFiles = await getFilterVarFiles(varFiles)
       varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles
       varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles
 
