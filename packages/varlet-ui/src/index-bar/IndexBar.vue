@@ -28,6 +28,7 @@ import {
   requestAnimationFrame,
   scrollTo as varScrollTo,
   toPxNum,
+  getRect,
 } from '../utils/elements'
 import { useIndexAnchors } from './provide'
 import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
@@ -81,9 +82,11 @@ export default defineComponent({
         return 0
       }
 
-      const { top: parentTop } = scroller.getBoundingClientRect()
+      const { top: parentTop } = getRect(scroller)
+
       const { scrollTop } = scroller
-      const { top: targetTop } = barEl.value!.getBoundingClientRect()
+
+      const { top: targetTop } = getRect(barEl.value!)
 
       return scrollTop - parentTop + targetTop
     }
