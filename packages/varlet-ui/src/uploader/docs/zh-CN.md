@@ -151,6 +151,27 @@ const files = ref([])
 </template>
 ```
 
+### 文件列表过滤
+
+通过 `before-filter` 事件对文件进行过滤，返回一个被过滤之后的 `VarFile` 数组。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+function handleBeforeFilter(files) {
+  return files.filter(file => file.name.endsWith('png'))
+}
+</script>
+
+<template>
+  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
+</template>
+
+```
+
 ### 上传预处理
 
 通过注册 `before-read` 事件对文件进行操作，返回假值阻止文件读取。
@@ -393,6 +414,7 @@ const files = ref([
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
+| `before-filter` | `before-read` 前触发，对文件列表进行过滤 | `files: VarFile[]` |
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持 promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
