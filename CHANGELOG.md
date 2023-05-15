@@ -1,3 +1,25 @@
+# [2.11.0](https://github.com/varletjs/varlet/compare/v2.10.2...v2.11.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **collapse:** remove flex layout of content ([5ae606b](https://github.com/varletjs/varlet/commit/5ae606ba59c7a891901f665a5a5075216f95415a))
+* **loading:** add max-height to loading container and close [#1029](https://github.com/varletjs/varlet/issues/1029) ([2d17414](https://github.com/varletjs/varlet/commit/2d1741492d3956f942c854e1c7432eab454e6fc1))
+* **ui/field-decorator:** fix fieldset color display error ([7b3ea2a](https://github.com/varletjs/varlet/commit/7b3ea2a7019def6fe61052040d73a1044561c9e8))
+* **ui/fieldDecorator:** access DOM data in nextTick ([#1021](https://github.com/varletjs/varlet/issues/1021)) ([c9b0bd0](https://github.com/varletjs/varlet/commit/c9b0bd09f309aa512c68ec1d08c192405fc1a073))
+* **ui/fieldDecorator:** placeholder width exceeds container size ([#1015](https://github.com/varletjs/varlet/issues/1015)) ([93ae09f](https://github.com/varletjs/varlet/commit/93ae09f418a77722788f31b8067ca979535cbfe6))
+* **ui/image-preview:** fix flickering when swiping quickly and optimize swipe initialIndex behavior and close [#1020](https://github.com/varletjs/varlet/issues/1020) ([bf1fde4](https://github.com/varletjs/varlet/commit/bf1fde40091e1e3bdb1f3fac98d6388156a01b97))
+* **ui/slider:** fix the style of validation fails ([#1035](https://github.com/varletjs/varlet/issues/1035)) ([4c85f88](https://github.com/varletjs/varlet/commit/4c85f883a19eef95eebf11189da31214781f2fa3))
+
+
+### Features
+
+* **cli:** support vue 3.3.x ([#1033](https://github.com/varletjs/varlet/issues/1033)) ([18fda4c](https://github.com/varletjs/varlet/commit/18fda4c7cf5ba6baecca09166eec4c6ed615f8d9))
+* **ui/tabs-items:** render more content on the server side ([8b6245e](https://github.com/varletjs/varlet/commit/8b6245e73631003f5e4067b7d964ab8fc166c2af))
+* **ui/uploader:** support before-filter event ([#1010](https://github.com/varletjs/varlet/issues/1010)) ([14575dc](https://github.com/varletjs/varlet/commit/14575dc1269848deb7a20cf1c635ae2193345f01))
+
+
+
 ## [2.10.2](https://github.com/varletjs/varlet/compare/v2.10.1...v2.10.2) (2023-05-06)
 
 
