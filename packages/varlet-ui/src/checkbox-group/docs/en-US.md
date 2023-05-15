@@ -179,7 +179,7 @@ const value = ref([])
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
-| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string \| number_ | `horizontal` |
+| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string_ | `horizontal` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `horizontal` |
 
 #### Checkbox Props
