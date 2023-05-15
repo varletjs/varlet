@@ -610,7 +610,7 @@ exports[`test form with slider 1`] = `
 exports[`test form with slider 2`] = `
 "<div class="var-form">
   <div class="var-slider__horizontal">
-    <div class="var-slider__horizontal-block var-slider--error">
+    <div class="var-slider__horizontal-block var-slider__horizontal--error">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
         <div class="var-slider__horizontal-track-fill" style="top: 0px; width: 5%; left: 0%;"></div>
