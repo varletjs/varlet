@@ -321,8 +321,8 @@ importers:
         specifier: 'workspace: *'
         version: link:../varlet-ui
       '@vue/repl':
-        specifier: 1.3.3
-        version: 1.3.3(vue@3.3.2)
+        specifier: 1.4.1
+        version: 1.4.1(vue@3.3.2)
       file-saver:
         specifier: ^2.0.5
         version: 2.0.5
@@ -3018,6 +3018,7 @@ packages:
       '@vue/shared': 3.3.1
       estree-walker: 2.0.2
       source-map-js: 1.0.2
+    dev: false
 
   /@vue/compiler-core@3.3.2:
     resolution: {integrity: sha512-CKZWo1dzsQYTNTft7whzjL0HsrEpMfiK7pjZ2WFE3bC1NA7caUjWioHSK+49y/LK7Bsm4poJZzAMnvZMQ7OTeg==}
@@ -3032,6 +3033,7 @@ packages:
     dependencies:
       '@vue/compiler-core': 3.3.1
       '@vue/shared': 3.3.1
+    dev: false
 
   /@vue/compiler-dom@3.3.2:
     resolution: {integrity: sha512-6gS3auANuKXLw0XH6QxkWqyPYPunziS2xb6VRenM3JY7gVfZcJvkCBHkb5RuNY1FCbBO3lkIi0CdXUCW1c7SXw==}
@@ -3073,6 +3075,7 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.3.1
       '@vue/shared': 3.3.1
+    dev: false
 
   /@vue/compiler-ssr@3.3.2:
     resolution: {integrity: sha512-K8OfY5FQtZaSOJHHe8xhEfIfLrefL/Y9frv4k4NsyQL3+0lRKxr9QuJhfdBDjkl7Fhz8CzKh63mULvmOfx3l2w==}
@@ -3112,8 +3115,8 @@ packages:
     dependencies:
       '@vue/shared': 3.3.2
 
-  /@vue/repl@1.3.3(vue@3.3.2):
-    resolution: {integrity: sha512-mrN3Gd4CIaiIiRdi7/pAOH9rPud8q8I5svLurSoyxLhxFXs9WdfaKZlirExSJIuecHYFiAAozTBtb8XQPNhCHw==}
+  /@vue/repl@1.4.1(vue@3.3.2):
+    resolution: {integrity: sha512-7ONz/o1OtS611jW6SdAOZXn4HdN8gfyatcOzcEu+3bDMvgbyr7ZUcbRV6Y4xdkxDARKDBzs+sb3/oz1Na5hAeQ==}
     peerDependencies:
       vue: ^3.2.13
     dependencies:
@@ -3139,17 +3142,6 @@ packages:
       '@vue/shared': 3.3.2
       csstype: 3.1.2
 
-  /@vue/server-renderer@3.3.1(vue@3.3.2):
-    resolution: {integrity: sha512-sod8ggOwbkQXw3lBjfzrbdxRS9lw/lNHoMaXghHawNYowf+4WoaLWD5ouz6fPZadUqNKAsqK95p8DYb1vcVfPA==}
-    requiresBuild: true
-    peerDependencies:
-      vue: 3.3.1
-    dependencies:
-      '@vue/compiler-ssr': 3.3.1
-      '@vue/shared': 3.3.1
-      vue: 3.3.2
-    optional: true
-
   /@vue/server-renderer@3.3.2(vue@3.3.2):
     resolution: {integrity: sha512-QCwh6OGwJg6GDLE0fbQhRTR6tnU+XDJ1iCsTYHXBiezCXAhqMygFRij7BiLF4ytvvHcg5kX9joX5R5vP85++wg==}
     peerDependencies:
@@ -3173,8 +3165,8 @@ packages:
       js-beautify: 1.14.6
       vue: 3.3.2
     optionalDependencies:
-      '@vue/compiler-dom': 3.3.1
-      '@vue/server-renderer': 3.3.1(vue@3.3.2)
+      '@vue/compiler-dom': 3.3.2
+      '@vue/server-renderer': 3.3.2(vue@3.3.2)
 
   /@vue/vue3-jest@29.2.3(@babel/core@7.18.10)(babel-jest@29.5.0)(jest@29.5.0)(typescript@4.7.4)(vue@3.3.2):
     resolution: {integrity: sha512-wbit0rGgy9ARUBtc5dZ6PGCrxazCPs5pZ6ycB0qYMoEPmkRj8lIVUfJmTz03ryIAeVQOcTKnEWdcqgrTErl3vg==}
