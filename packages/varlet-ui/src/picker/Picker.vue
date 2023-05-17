@@ -131,11 +131,6 @@ export interface ScrollColumn {
   scrollEl: HTMLElement | null
 }
 
-export interface ScrollToOptions {
-  duration?: number
-  emitChange?: boolean
-}
-
 const { n, classes } = createNamespace('picker')
 
 const MOMENTUM_RECORD_TIME = 300
