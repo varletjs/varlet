@@ -44,6 +44,28 @@ test('test scroll up & onConfirm', async () => {
   wrapper.unmount()
 })
 
+// test('test click & onConfirm', async () => {
+//   const { mockRestore } = mockTranslate()
+//   const onConfirm = jest.fn()
+
+//   const wrapper = mount(VarPicker, {
+//     props: {
+//       columns,
+//       onConfirm,
+//     },
+//   })
+//   expect(wrapper.html()).toMatchSnapshot()
+//   // const { element } = wrapper.find('.var-picker__scroller')
+
+//   await wrapper.find('.var-picker__option:nth-of-type(2)').trigger('click')
+
+//   expect(wrapper.html()).toMatchSnapshot()
+//   expect(onConfirm).lastCalledWith(['B'], [1])
+
+//   mockRestore()
+//   wrapper.unmount()
+// })
+
 test('test scroll down & onCancel', async () => {
   const { mockRestore } = mockTranslate()
   const onCancel = jest.fn()

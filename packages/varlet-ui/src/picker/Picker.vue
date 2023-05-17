@@ -58,6 +58,7 @@
           @touchstart="handleTouchstart($event, c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
+          @click="handleClick($event, c)"
         >
           <div
             :class="n('scroller')"
@@ -227,6 +228,17 @@ export default defineComponent({
         scrollColumn.momentumTime = now
         scrollColumn.momentumPrevY = scrollColumn.translate
       }
+    }
+
+    const handleClick = (event: MouseEvent, scrollColumn: ScrollColumn) => {
+      scrollColumn.scrolling = true
+      scrollColumn.prevY = undefined
+      const target: EventTarget = event.target as EventTarget
+      const offsetTop: number = (target as HTMLDivElement)?.offsetTop
+
+      const targetIndex = Math.floor(offsetTop / optionHeight.value)
+      scrollColumn.index = targetIndex
+      scrollTo(scrollColumn, targetIndex, 200)
     }
 
     const handleTouchend = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -417,6 +429,7 @@ export default defineComponent({
       confirm,
       cancel,
       dt,
+      handleClick,
     }
   },
 })
