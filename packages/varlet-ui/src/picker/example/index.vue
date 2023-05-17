@@ -142,6 +142,10 @@ async function picker5() {
   })
 }
 
+function handleChangeT(texts) {
+  console.log(texts)
+}
+
 watchLang(use)
 watchDarkMode(dark)
 </script>
@@ -162,7 +166,7 @@ watchDarkMode(dark)
   <var-picker :columns="columns" />
 
   <app-type>{{ pack.multiplePicker }}</app-type>
-  <var-picker :columns="columns2" />
+  <var-picker :columns="columns2" @change="handleChangeT" @confirm="handleChangeT" @cancel="handleChangeT" />
 
   <app-type>{{ pack.cascadePicker }}</app-type>
   <var-picker cascade :columns="columns3" />

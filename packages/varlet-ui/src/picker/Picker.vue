@@ -61,7 +61,7 @@
         >
           <div
             :class="n('scroller')"
-            :ref="(el) => getScrollEl(el, c)"
+            :ref="(el) => setScrollEl(el, c)"
             :style="{
               transform: `translateY(${c.translate}px)`,
               transitionDuration: `${c.duration}ms`,
@@ -96,16 +96,24 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarPopup from '../popup'
-import { defineComponent, watch, ref, computed, Transition, toRaw, TransitionGroup } from 'vue'
-import { props } from './props'
+import {
+  defineComponent,
+  watch,
+  ref,
+  computed,
+  Transition,
+  toRaw,
+  type Ref,
+  type ComputedRef,
+  type ComponentPublicInstance,
+} from 'vue'
+import { props, type CascadeColumn, type NormalColumn } from './props'
 import { isArray } from '@varlet/shared'
 import { dt } from '../utils/shared'
-import { toPxNum, getTranslateY } from '../utils/elements'
+import { toPxNum, getTranslateY, requestAnimationFrame } from '../utils/elements'
 import { pack } from '../locale'
-import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
-import type { CascadeColumn, NormalColumn } from './props'
-import type { Texts } from './index'
 import { createNamespace, call } from '../utils/components'
+import { type Texts } from './index'
 
 export interface ScrollColumn {
   id: number
@@ -154,8 +162,9 @@ export default defineComponent({
     )
     const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
+    let dragging = false
 
-    const getScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
+    const setScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
       scrollColumn.scrollEl = el as HTMLElement
     }
 
@@ -170,6 +179,7 @@ export default defineComponent({
       if (scrollColumn.translate >= startTranslate) {
         scrollColumn.translate = startTranslate
       }
+
       if (scrollColumn.translate <= endTranslate) {
         scrollColumn.translate = endTranslate
       }
@@ -184,10 +194,15 @@ export default defineComponent({
       return index
     }
 
-    const getViewIndex = (scrollColumn: ScrollColumn) => {
-      const index = Math.round((center.value - scrollColumn.translate) / optionHeight.value)
+    const getTargetIndex = (scrollColumn: ScrollColumn, viewTranslate: number) => {
+      const index = Math.round((center.value - viewTranslate) / optionHeight.value)
 
       return boundaryIndex(scrollColumn, index)
+    }
+
+    const updateTranslate = (scrollColumn: ScrollColumn) => {
+      scrollColumn.translate = center.value - scrollColumn.index * optionHeight.value
+      return scrollColumn.translate
     }
 
     const getPicked = () => {
@@ -200,17 +215,23 @@ export default defineComponent({
       }
     }
 
-    const scrollTo = (scrollColumn: ScrollColumn, options: ScrollToOptions = {}) => {
-      const { duration = 0, emitChange = false } = options
-      const translate = center.value - boundaryIndex(scrollColumn, scrollColumn.index) * optionHeight.value
-
-      scrollColumn.translate = translate
+    const scrollTo = (scrollColumn: ScrollColumn, duration = 0) => {
+      updateTranslate(scrollColumn)
       scrollColumn.duration = duration
-      emitChange && change(scrollColumn)
     }
 
     const momentum = (scrollColumn: ScrollColumn, distance: number, duration: number) => {
       scrollColumn.translate += (Math.abs(distance / duration) / 0.003) * (distance < 0 ? -1 : 1)
+    }
+
+    const handleClick = (scrollColumn: ScrollColumn, index: number) => {
+      if (dragging) {
+        return
+      }
+
+      scrollColumn.index = index
+      scrollColumn.scrolling = true
+      scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
     const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -224,6 +245,8 @@ export default defineComponent({
       if (!scrollColumn.touching) {
         return
       }
+
+      dragging = true
 
       const { clientY } = event.touches[0]
       const deltaY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
@@ -239,24 +262,31 @@ export default defineComponent({
       }
     }
 
-    const handleClick = (scrollColumn: ScrollColumn, index: number) => {
-      console.log('11111111', scrollColumn, index)
-      scrollColumn.index = index
-      scrollTo(scrollColumn, { duration: TRANSITION_DURATION, emitChange: true })
-    }
-
     const handleTouchend = (event: TouchEvent, scrollColumn: ScrollColumn) => {
       scrollColumn.touching = false
-      scrollColumn.scrolling = true
       scrollColumn.prevY = undefined
       const distance = scrollColumn.translate - (scrollColumn.momentumPrevY as number)
       const duration = performance.now() - scrollColumn.momentumTime
       const shouldMomentum = Math.abs(distance) >= MOMENTUM_ALLOW_DISTANCE && duration <= MOMENTUM_RECORD_TIME
 
-      shouldMomentum && momentum(scrollColumn, distance, duration)
+      if (shouldMomentum) {
+        momentum(scrollColumn, distance, duration)
+      }
 
-      scrollColumn.index = getViewIndex(scrollColumn)
-      scrollTo(scrollColumn, { duration: shouldMomentum ? MOMENTUM_TRANSITION_DURATION : TRANSITION_DURATION })
+      scrollColumn.index = getTargetIndex(scrollColumn, scrollColumn.translate)
+      const oldTranslate = scrollColumn.translate
+      const newTranslate = updateTranslate(scrollColumn)
+      scrollColumn.scrolling = newTranslate !== oldTranslate
+      scrollTo(scrollColumn, shouldMomentum ? MOMENTUM_TRANSITION_DURATION : TRANSITION_DURATION)
+
+      // Can't trigger transition end when not scrolling, change needs to be triggered manually.
+      if (!scrollColumn.scrolling) {
+        change(scrollColumn)
+      }
+
+      requestAnimationFrame(() => {
+        dragging = false
+      })
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
@@ -343,7 +373,10 @@ export default defineComponent({
 
     const change = (scrollColumn: ScrollColumn) => {
       const { cascade, onChange } = props
-      cascade && rebuildChildren(scrollColumn)
+
+      if (cascade) {
+        rebuildChildren(scrollColumn)
+      }
 
       const hasScrolling = scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)
       if (hasScrolling) {
@@ -358,24 +391,22 @@ export default defineComponent({
       }
 
       prevIndexes = [...indexes]
-      console.log('333', texts, indexes)
       call(onChange, texts, indexes)
     }
 
     const stopScroll = () => {
       if (props.cascade) {
         const currentScrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
+
         if (currentScrollColumn) {
-          currentScrollColumn.translate = getTranslateY(currentScrollColumn.scrollEl as HTMLElement)
-          currentScrollColumn.index = getViewIndex(currentScrollColumn)
-          scrollTo(currentScrollColumn)
+          currentScrollColumn.index = getTargetIndex(currentScrollColumn, getTranslateY(currentScrollColumn.scrollEl!))
           currentScrollColumn.scrolling = false
+          scrollTo(currentScrollColumn)
           rebuildChildren(currentScrollColumn)
         }
       } else {
         scrollColumns.value.forEach((scrollColumn) => {
-          scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
-          scrollColumn.index = getViewIndex(scrollColumn)
+          scrollColumn.index = getTargetIndex(scrollColumn, getTranslateY(scrollColumn.scrollEl!))
           scrollTo(scrollColumn)
         })
       }
@@ -425,7 +456,7 @@ export default defineComponent({
       columnHeight,
       center,
       Transition,
-      getScrollEl,
+      setScrollEl,
       handlePopupUpdateShow,
       handleTouchstart,
       handleTouchmove,
