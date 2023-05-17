@@ -167,7 +167,7 @@ function handleBeforeFilter(files) {
 </script>
 
 <template>
-  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
+  <var-uploader v-model="files" multiple @before-filter="handleBeforeFilter" />
 </template>
 
 ```

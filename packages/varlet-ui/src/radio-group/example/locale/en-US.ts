@@ -10,6 +10,7 @@ export default {
   checkAll: 'Check All',
   inverseAll: 'Inverse All',
   radioGroup: 'RadioGroup',
+  vertical: 'Vertical direction',
   radioValidate: 'Radio validation',
   radioGroupValidate: 'RadioGroup validate',
   radioValidateMessage: 'Please check your choice',

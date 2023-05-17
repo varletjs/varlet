@@ -1,6 +1,6 @@
 {
   "name": "@varlet/use",
-  "version": "2.10.2",
+  "version": "2.11.0",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "typescript": "^4.4.4",
-    "vue": "3.2.47"
+    "vue": "3.3.2"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

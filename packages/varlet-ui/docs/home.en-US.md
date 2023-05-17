@@ -47,3 +47,6 @@ we will deal with it as soon as possible. You can also give us [PR](https://gith
 
 ### Open source licenses
 Component library based on `MIT` licenses.
+
+### Contribution Guide
+see [Varlet Contribution](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).

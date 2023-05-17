@@ -94,7 +94,7 @@ const value = ref(false)
 </template>
 ```
 
-### CheckboxGroup/Actions
+### CheckboxGroup
 
 In the checkbox group, you must set the `checked-value` to identify the `checkbox`,
 The checkbox group collects all checked identifiers.
@@ -126,6 +126,23 @@ const value = ref([])
   >
     Inverse All
   </var-button>
+</template>
+```
+
+### Vertical direction
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" direction="vertical">
+    <var-checkbox :checked-value="0">Eat</var-checkbox>
+    <var-checkbox :checked-value="1">Sleep</var-checkbox>
+  </var-checkbox-group>
 </template>
 ```
 
@@ -179,7 +196,7 @@ const value = ref([])
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
-| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string \| number_ | `horizontal` |
+| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string_ | `horizontal` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `horizontal` |
 
 #### Checkbox Props
