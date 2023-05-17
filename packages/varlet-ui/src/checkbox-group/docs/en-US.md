@@ -94,7 +94,7 @@ const value = ref(false)
 </template>
 ```
 
-### CheckboxGroup/Actions
+### CheckboxGroup
 
 In the checkbox group, you must set the `checked-value` to identify the `checkbox`,
 The checkbox group collects all checked identifiers.
