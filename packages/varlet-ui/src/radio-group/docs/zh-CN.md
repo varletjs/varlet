@@ -94,6 +94,23 @@ const value = ref(false)
 </template>
 ```
 
+### 垂直布局
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio-group v-model="value" direction="vertical">
+    <var-radio :checked-value="0">吃饭</var-radio>
+    <var-radio :checked-value="1">睡觉</var-radio>
+  </var-radio-group>
+</template>
+```
+
 ### 单选框组
 
 在单选框组中，需要给 `radio` 设置 `checked-value` 用来标识，

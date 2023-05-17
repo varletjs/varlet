@@ -16,8 +16,9 @@ const values = reactive({
   value6: 0,
   value7: false,
   value8: 0,
+  value9: 0,
 })
-const { value, value2, value3, value4, value5, value6, value7, value8 } = toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
 
 watchLang(use)
 watchDarkMode(dark)
@@ -46,6 +47,13 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.readonly }}</app-type>
   <var-radio readonly v-model="value5">{{ pack.currentValue }} {{ value5 }}</var-radio>
+
+  <app-type>{{ pack.vertical }}</app-type>
+  <var-radio-group v-model="value9" direction="vertical">
+    <var-radio :checked-value="0">{{ pack.eat }}</var-radio>
+    <var-radio :checked-value="1">{{ pack.sleep }}</var-radio>
+  </var-radio-group>
+  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
 
   <app-type>{{ pack.radioGroup }}</app-type>
   <var-radio-group v-model="value6">
