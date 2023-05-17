@@ -139,7 +139,7 @@ const value = ref([])
 </script>
 
 <template>
-  <var-checkbox-group ref="group" v-model="value" direction="vertical">
+  <var-checkbox-group v-model="value" direction="vertical">
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>
   </var-checkbox-group>

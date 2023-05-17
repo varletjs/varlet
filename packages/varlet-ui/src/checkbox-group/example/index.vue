@@ -62,7 +62,7 @@ watchDarkMode(dark)
   <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
 
   <app-type>{{ pack.vertical }}</app-type>
-  <var-checkbox-group ref="group" v-model="value9" direction="vertical">
+  <var-checkbox-group v-model="value9" direction="vertical">
     <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
   </var-checkbox-group>
