@@ -114,6 +114,23 @@ const value = ref(0)
 </template>
 ```
 
+### Vertical direction
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-radio-group v-model="value" direction="vertical">
+    <var-radio :checked-value="0">Eat</var-radio>
+    <var-radio :checked-value="1">Sleep</var-radio>
+  </var-radio-group>
+</template>
+```
+
 ### Radio validation
 
 ```html
