@@ -54,7 +54,6 @@ test('test click & onConfirm', async () => {
       onChange,
     },
   })
-  expect(wrapper.html()).toMatchSnapshot()
 
   const options = wrapper.findAll('.var-picker__option')
   expect(options.length).toBe(3)
@@ -62,9 +61,7 @@ test('test click & onConfirm', async () => {
   await options[1].trigger('click')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
-
-  // expect(onChange).toHaveBeenLastCalledWith(['B'], [1])
+  expect(onChange).toHaveBeenLastCalledWith(['B'], [1])
 
   mockRestore()
   wrapper.unmount()

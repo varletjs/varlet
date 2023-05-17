@@ -67,7 +67,7 @@ export function inViewport(element: HTMLElement): boolean {
   return xInViewport && yInViewport
 }
 
-export function getTranslate(el: HTMLElement) {
+export function getTranslateY(el: HTMLElement) {
   const { transform } = getStyle(el)
   return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
 }
