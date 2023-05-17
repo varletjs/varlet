@@ -94,23 +94,6 @@ const value = ref(false)
 </template>
 ```
 
-### Vertical direction
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(false)
-</script>
-
-<template>
-  <var-radio-group v-model="value" direction="vertical">
-    <var-radio :checked-value="0">Eat</var-radio>
-    <var-radio :checked-value="1">Sleep</var-radio>
-  </var-radio-group>
-</template>
-```
-
 ### RadioGroup
 
 In the radio group, you must set the `checked-value` to identify the `radio`,
@@ -125,6 +108,23 @@ const value = ref(0)
 
 <template>
   <var-radio-group v-model="value">
+    <var-radio :checked-value="0">Eat</var-radio>
+    <var-radio :checked-value="1">Sleep</var-radio>
+  </var-radio-group>
+</template>
+```
+
+### Vertical direction
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-radio-group v-model="value" direction="vertical">
     <var-radio :checked-value="0">Eat</var-radio>
     <var-radio :checked-value="1">Sleep</var-radio>
   </var-radio-group>

@@ -48,19 +48,19 @@ watchDarkMode(dark)
   <app-type>{{ pack.readonly }}</app-type>
   <var-radio readonly v-model="value5">{{ pack.currentValue }} {{ value5 }}</var-radio>
 
-  <app-type>{{ pack.vertical }}</app-type>
-  <var-radio-group v-model="value9" direction="vertical">
-    <var-radio :checked-value="0">{{ pack.eat }}</var-radio>
-    <var-radio :checked-value="1">{{ pack.sleep }}</var-radio>
-  </var-radio-group>
-  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
-
   <app-type>{{ pack.radioGroup }}</app-type>
   <var-radio-group v-model="value6">
     <var-radio :checked-value="0">{{ pack.eat }}</var-radio>
     <var-radio :checked-value="1">{{ pack.sleep }}</var-radio>
   </var-radio-group>
   <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
+
+  <app-type>{{ pack.vertical }}</app-type>
+  <var-radio-group v-model="value9" direction="vertical">
+    <var-radio :checked-value="0">{{ pack.eat }}</var-radio>
+    <var-radio :checked-value="1">{{ pack.sleep }}</var-radio>
+  </var-radio-group>
+  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
 
   <app-type>{{ pack.radioValidate }}</app-type>
   <var-radio v-model="value7" :rules="[(v) => v || pack.radioValidateMessage]">
