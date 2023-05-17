@@ -17,10 +17,11 @@ const values = reactive({
   value6: [],
   value7: false,
   value8: [],
+  value9: [],
   group: null,
 })
 
-const { value, value2, value3, value4, value5, value6, value7, value8, group } = toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, group } = toRefs(values)
 watchLang(use)
 watchDarkMode(dark)
 </script>
@@ -59,6 +60,13 @@ watchDarkMode(dark)
     <var-button class="button" type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
   </var-checkbox-group>
   <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
+
+  <app-type>{{ pack.vertical }}</app-type>
+  <var-checkbox-group ref="group" v-model="value9" direction="vertical">
+    <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
+  </var-checkbox-group>
+  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
 
   <app-type>{{ pack.checkboxValidate }}</app-type>
   <var-checkbox v-model="value7" :rules="[(v) => v || pack.checkboxValidateMessage]">
