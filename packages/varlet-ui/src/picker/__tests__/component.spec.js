@@ -44,6 +44,29 @@ test('test scroll up & onConfirm', async () => {
   wrapper.unmount()
 })
 
+test('test click & onConfirm', async () => {
+  const { mockRestore } = mockTranslate()
+  const onChange = jest.fn()
+
+  const wrapper = mount(VarPicker, {
+    props: {
+      columns: [['A', 'B', 'C']],
+      onChange,
+    },
+  })
+
+  const options = wrapper.findAll('.var-picker__option')
+  expect(options.length).toBe(3)
+
+  await options[1].trigger('click')
+  await delay(300)
+
+  expect(onChange).toHaveBeenLastCalledWith(['B'], [1])
+
+  mockRestore()
+  wrapper.unmount()
+})
+
 test('test scroll down & onCancel', async () => {
   const { mockRestore } = mockTranslate()
   const onCancel = jest.fn()

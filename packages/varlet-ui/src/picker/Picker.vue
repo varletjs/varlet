@@ -69,7 +69,13 @@
             }"
             @transitionend="handleTransitionend(c)"
           >
-            <div :class="n('option')" :style="{ height: `${optionHeight}px` }" v-for="t in c.column.texts" :key="t">
+            <div
+              :class="n('option')"
+              :style="{ height: `${optionHeight}px` }"
+              v-for="(t, i) in c.column.texts"
+              :key="t"
+              @click="handleClick(c, i)"
+            >
               <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
             </div>
           </div>
@@ -90,11 +96,11 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarPopup from '../popup'
-import { defineComponent, watch, ref, computed, Transition, toRaw } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, toRaw, TransitionGroup } from 'vue'
 import { props } from './props'
 import { isArray } from '@varlet/shared'
 import { dt } from '../utils/shared'
-import { toPxNum, getTranslate } from '../utils/elements'
+import { toPxNum, getTranslateY } from '../utils/elements'
 import { pack } from '../locale'
 import type { Ref, ComputedRef, ComponentPublicInstance } from 'vue'
 import type { CascadeColumn, NormalColumn } from './props'
@@ -117,10 +123,17 @@ export interface ScrollColumn {
   scrollEl: HTMLElement | null
 }
 
+export interface ScrollToOptions {
+  duration?: number
+  emitChange?: boolean
+}
+
 const { n, classes } = createNamespace('picker')
 
 const MOMENTUM_RECORD_TIME = 300
 const MOMENTUM_ALLOW_DISTANCE = 15
+const TRANSITION_DURATION = 200
+const MOMENTUM_TRANSITION_DURATION = 1000
 
 let sid = 0
 
@@ -150,15 +163,15 @@ export default defineComponent({
       call(props['onUpdate:show'], value)
     }
 
-    const limitTranslate = (scrollColumn: ScrollColumn) => {
-      const START_LIMIT = optionHeight.value + center.value
-      const END_LIMIT = center.value - scrollColumn.column.texts.length * optionHeight.value
+    const boundaryTranslate = (scrollColumn: ScrollColumn) => {
+      const startTranslate = optionHeight.value + center.value
+      const endTranslate = center.value - scrollColumn.column.texts.length * optionHeight.value
 
-      if (scrollColumn.translate >= START_LIMIT) {
-        scrollColumn.translate = START_LIMIT
+      if (scrollColumn.translate >= startTranslate) {
+        scrollColumn.translate = startTranslate
       }
-      if (scrollColumn.translate <= END_LIMIT) {
-        scrollColumn.translate = END_LIMIT
+      if (scrollColumn.translate <= endTranslate) {
+        scrollColumn.translate = endTranslate
       }
     }
 
@@ -171,7 +184,7 @@ export default defineComponent({
       return index
     }
 
-    const getIndex = (scrollColumn: ScrollColumn) => {
+    const getViewIndex = (scrollColumn: ScrollColumn) => {
       const index = Math.round((center.value - scrollColumn.translate) / optionHeight.value)
 
       return boundaryIndex(scrollColumn, index)
@@ -187,16 +200,13 @@ export default defineComponent({
       }
     }
 
-    const scrollTo = (scrollColumn: ScrollColumn, index: number, duration: number, noEmit = false) => {
-      const translate = center.value - boundaryIndex(scrollColumn, index) * optionHeight.value
-
-      if (translate === scrollColumn.translate) {
-        scrollColumn.scrolling = false
-        !noEmit && change(scrollColumn)
-      }
+    const scrollTo = (scrollColumn: ScrollColumn, options: ScrollToOptions = {}) => {
+      const { duration = 0, emitChange = false } = options
+      const translate = center.value - boundaryIndex(scrollColumn, scrollColumn.index) * optionHeight.value
 
       scrollColumn.translate = translate
       scrollColumn.duration = duration
+      emitChange && change(scrollColumn)
     }
 
     const momentum = (scrollColumn: ScrollColumn, distance: number, duration: number) => {
@@ -207,7 +217,7 @@ export default defineComponent({
       scrollColumn.touching = true
       scrollColumn.scrolling = false
       scrollColumn.duration = 0
-      scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
+      scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
     }
 
     const handleTouchmove = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -216,17 +226,23 @@ export default defineComponent({
       }
 
       const { clientY } = event.touches[0]
-      const moveY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
+      const deltaY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
       scrollColumn.prevY = clientY
-      scrollColumn.translate += moveY
+      scrollColumn.translate += deltaY
 
-      limitTranslate(scrollColumn)
+      boundaryTranslate(scrollColumn)
 
       const now = performance.now()
       if (now - scrollColumn.momentumTime > MOMENTUM_RECORD_TIME) {
         scrollColumn.momentumTime = now
         scrollColumn.momentumPrevY = scrollColumn.translate
       }
+    }
+
+    const handleClick = (scrollColumn: ScrollColumn, index: number) => {
+      console.log('11111111', scrollColumn, index)
+      scrollColumn.index = index
+      scrollTo(scrollColumn, { duration: TRANSITION_DURATION, emitChange: true })
     }
 
     const handleTouchend = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -239,8 +255,8 @@ export default defineComponent({
 
       shouldMomentum && momentum(scrollColumn, distance, duration)
 
-      scrollColumn.index = getIndex(scrollColumn)
-      scrollTo(scrollColumn, scrollColumn.index, shouldMomentum ? 1000 : 200)
+      scrollColumn.index = getViewIndex(scrollColumn)
+      scrollTo(scrollColumn, { duration: shouldMomentum ? MOMENTUM_TRANSITION_DURATION : TRANSITION_DURATION })
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
@@ -265,7 +281,7 @@ export default defineComponent({
           scrollEl: null,
           scrolling: false,
         }
-        scrollTo(scrollColumn, scrollColumn.index, 0, true)
+        scrollTo(scrollColumn)
         return scrollColumn
       })
     }
@@ -306,7 +322,7 @@ export default defineComponent({
         }
 
         scrollColumns.push(scrollColumn)
-        scrollTo(scrollColumn, scrollColumn.index, 0, true)
+        scrollTo(scrollColumn)
         createChildren(
           scrollColumns,
           (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
@@ -342,6 +358,7 @@ export default defineComponent({
       }
 
       prevIndexes = [...indexes]
+      console.log('333', texts, indexes)
       call(onChange, texts, indexes)
     }
 
@@ -349,17 +366,17 @@ export default defineComponent({
       if (props.cascade) {
         const currentScrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
         if (currentScrollColumn) {
-          currentScrollColumn.translate = getTranslate(currentScrollColumn.scrollEl as HTMLElement)
-          currentScrollColumn.index = getIndex(currentScrollColumn)
-          scrollTo(currentScrollColumn, currentScrollColumn.index, 0, true)
+          currentScrollColumn.translate = getTranslateY(currentScrollColumn.scrollEl as HTMLElement)
+          currentScrollColumn.index = getViewIndex(currentScrollColumn)
+          scrollTo(currentScrollColumn)
           currentScrollColumn.scrolling = false
           rebuildChildren(currentScrollColumn)
         }
       } else {
         scrollColumns.value.forEach((scrollColumn) => {
-          scrollColumn.translate = getTranslate(scrollColumn.scrollEl as HTMLElement)
-          scrollColumn.index = getIndex(scrollColumn)
-          scrollTo(scrollColumn, scrollColumn.index, 0)
+          scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
+          scrollColumn.index = getViewIndex(scrollColumn)
+          scrollTo(scrollColumn)
         })
       }
     }
@@ -417,6 +434,7 @@ export default defineComponent({
       confirm,
       cancel,
       dt,
+      handleClick,
     }
   },
 })
