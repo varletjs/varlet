@@ -64,10 +64,9 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
-import type { Ref, ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('image-preview')
@@ -109,7 +108,7 @@ export default defineComponent({
     const canSwipe: Ref<boolean> = ref(true)
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
-    let checker: number | null = null
+    let closeRunner: number | null = null
 
     const getDistance = (touch: VarTouch, target: VarTouch): number => {
       const { clientX: touchX, clientY: touchY } = touch
@@ -121,7 +120,7 @@ export default defineComponent({
     const createVarTouch = (touches: Touch, target: HTMLElement): VarTouch => ({
       clientX: touches.clientX,
       clientY: touches.clientY,
-      timestamp: Date.now(),
+      timestamp: performance.now(),
       target,
     })
 
@@ -165,23 +164,23 @@ export default defineComponent({
 
       return (
         getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
-        Date.now() - prevTouch.timestamp < TAP_DELAY &&
+        performance.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
     }
 
     const handleTouchend = (event: Event) => {
-      const isTapEvent = isTapTouch(event.target as HTMLElement)
-      checker = window.setTimeout(() => {
-        isTapEvent && close()
+      const isTap = isTapTouch(event.target as HTMLElement)
+
+      closeRunner = window.setTimeout(() => {
+        isTap && close()
         startTouch = null
       }, EVENT_DELAY)
     }
 
     const handleTouchstart = (event: TouchEvent) => {
-      checker && window.clearTimeout(checker)
-      const { touches } = event
-      const currentTouch: VarTouch = createVarTouch(touches[0], event.currentTarget as HTMLElement)
+      closeRunner && window.clearTimeout(closeRunner)
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
 
       if (isDoubleTouch(currentTouch)) {
@@ -207,19 +206,25 @@ export default defineComponent({
 
     const getLimitX = (target: HTMLElement) => {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
+
       if (!imageRadio) {
         return 0
       }
+
       const displayWidth = imageRadio > rootRadio ? height / imageRadio : width
+
       return Math.max(0, (zoom * displayWidth - width) / 2) / zoom
     }
 
     const getLimitY = (target: HTMLElement) => {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
+
       if (!imageRadio) {
         return 0
       }
+
       const displayHeight = imageRadio > rootRadio ? height : width * imageRadio
+
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 
@@ -241,8 +246,7 @@ export default defineComponent({
       }
 
       const target = event.currentTarget as HTMLElement
-      const { touches } = event
-      const currentTouch: VarTouch = createVarTouch(touches[0], target)
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
 
       if (scale.value > 1) {
         const moveX = currentTouch.clientX - prevTouch.clientX
@@ -264,6 +268,7 @@ export default defineComponent({
         setTimeout(() => call(props['onUpdate:show'], false), ANIMATION_DURATION)
         return
       }
+
       call(props['onUpdate:show'], false)
     }
 
