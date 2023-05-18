@@ -171,8 +171,9 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: Event) => {
+      const isTapEvent = isTapTouch(event.target as HTMLElement)
       checker = window.setTimeout(() => {
-        isTapTouch(event.target as HTMLElement) && close()
+        isTapEvent && close()
         startTouch = null
       }, EVENT_DELAY)
     }
