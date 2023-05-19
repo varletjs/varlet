@@ -231,8 +231,6 @@ export default defineComponent({
 
     const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
       scrollColumn.touching = true
-      scrollColumn.scrolling = false
-      scrollColumn.duration = 0
       scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
     }
 
@@ -242,6 +240,8 @@ export default defineComponent({
       }
 
       dragging = true
+      scrollColumn.scrolling = false
+      scrollColumn.duration = 0
 
       const { clientY } = event.touches[0]
       const deltaY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
@@ -279,7 +279,7 @@ export default defineComponent({
         change(scrollColumn)
       }
 
-      requestAnimationFrame(() => {
+      window.setTimeout(() => {
         dragging = false
       })
     }
@@ -368,20 +368,20 @@ export default defineComponent({
 
     const change = (scrollColumn: ScrollColumn) => {
       const { cascade, onChange } = props
+      const { texts, indexes } = getPicked()
+      const samePicked = indexes.every((index, idx) => index === prevIndexes[idx])
+
+      if (samePicked) {
+        return
+      }
 
       if (cascade) {
         rebuildChildren(scrollColumn)
       }
 
       const hasScrolling = scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)
+
       if (hasScrolling) {
-        return
-      }
-
-      const { texts, indexes } = getPicked()
-
-      const samePicked = indexes.every((index, idx) => index === prevIndexes[idx])
-      if (samePicked) {
         return
       }
 
