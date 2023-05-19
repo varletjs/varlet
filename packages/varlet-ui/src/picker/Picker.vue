@@ -375,7 +375,6 @@ export default defineComponent({
       const { cascade, onChange } = props
 
       if (isSamePicked()) {
-        console.log(1)
         return
       }
 
