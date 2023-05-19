@@ -8,6 +8,8 @@ export default {
   displayCloseButton: 'Display the close button',
   listenCloseEvents: 'Listen for close event',
   shutdownEvent: 'The shutdown event was triggered.',
+  preventLongTapDefault: 'Prevent long press default behavior',
+  preventDefaultEvent: 'This image is copyrighted!!',
   showExtraSlots: 'Show extra slots',
   operate: 'Operate',
 }

@@ -25,7 +25,7 @@
       v-bind="$attrs"
     >
       <template #default>
-        <var-swipe-item :class="n('swipe-item')" var-image-preview-cover v-for="image in images" :key="image">
+        <var-swipe-item :class="n('swipe-item')" var-image-preview-cover v-for="(image, idx) in images" :key="image">
           <div
             :class="n('zoom-container')"
             :style="{
@@ -33,7 +33,7 @@
               transitionTimingFunction,
               transitionDuration,
             }"
-            @touchstart="handleTouchstart"
+            @touchstart="handleTouchstart($event, idx)"
             @touchmove="handleTouchmove"
             @touchend="handleTouchend"
           >
@@ -64,7 +64,7 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, toRef } from 'vue'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
@@ -82,6 +82,7 @@ const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
 const TAP_DELAY = 350
 const ANIMATION_DURATION = 200
+const LONG_PRESS_DELAY = 500
 
 export default defineComponent({
   name: 'VarImagePreview',
@@ -93,7 +94,9 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props,
-  setup(props) {
+  emits: ['long-press'],
+  setup(props, context) {
+    const imagePreventDefault = toRef(props, 'imagePreventDefault')
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
       const { images, current } = props
@@ -109,6 +112,8 @@ export default defineComponent({
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
     let closeRunner: number | null = null
+    let longTapTimer: number | null = null
+    let isLongTapEvent = false
 
     const getDistance = (touch: VarTouch, target: VarTouch): number => {
       const { clientX: touchX, clientY: touchY } = touch
@@ -170,18 +175,33 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: Event) => {
-      const isTap = isTapTouch(event.target as HTMLElement)
+      if (longTapTimer) {
+        window.clearTimeout(longTapTimer)
+      }
 
+      // avoid triggering tap event sometimes
+      if (isLongTapEvent) {
+        isLongTapEvent = false
+        return
+      }
+
+      const isTap = isTapTouch(event.target as HTMLElement)
       closeRunner = window.setTimeout(() => {
         isTap && close()
         startTouch = null
       }, EVENT_DELAY)
     }
 
-    const handleTouchstart = (event: TouchEvent) => {
+    const handleTouchstart = (event: TouchEvent, idx: number) => {
       closeRunner && window.clearTimeout(closeRunner)
+      longTapTimer && window.clearTimeout(longTapTimer)
       const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
+
+      longTapTimer = window.setTimeout(() => {
+        isLongTapEvent = true
+        context.emit('long-press', idx)
+      }, LONG_PRESS_DELAY)
 
       if (isDoubleTouch(currentTouch)) {
         scale.value > 1 ? zoomOut() : zoomIn()
@@ -248,6 +268,10 @@ export default defineComponent({
       const target = event.currentTarget as HTMLElement
       const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
 
+      if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
+        longTapTimer && window.clearTimeout(longTapTimer)
+      }
+
       if (scale.value > 1) {
         const moveX = currentTouch.clientX - prevTouch.clientX
         const moveY = currentTouch.clientY - prevTouch.clientY
@@ -272,10 +296,19 @@ export default defineComponent({
       call(props['onUpdate:show'], false)
     }
 
+    const preventImageDefault = (event: Event) => {
+      event.preventDefault()
+    }
+
     watch(
       () => props.show,
       (newValue) => {
         popupShow.value = newValue
+
+        if (imagePreventDefault.value) {
+          newValue && document.addEventListener('contextmenu', preventImageDefault)
+          !newValue && document.removeEventListener('contextmenu', preventImageDefault)
+        }
       },
       { immediate: true }
     )

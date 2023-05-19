@@ -160,6 +160,36 @@ const images = ref([
   />
 </template>
 ```
+
+### 阻止长按默认行为
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const show = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+</script>
+
+<template>
+  <var-button
+    block
+    type="warning"
+    @click="show = true"
+  >
+    阻止长按默认行为
+  </var-button>
+  <var-image-preview
+    :images="images"
+    v-model:show="show"
+    @long-press="Snackbar('该图片享有版权！！')"
+  />
+</template>
+```
+
 ### 展示额外插槽
 
 ```html

@@ -161,6 +161,35 @@ const images = ref([
 </template>
 ```
 
+### Prevent long press default behavior
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const show = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+</script>
+
+<template>
+  <var-button
+    block
+    type="warning"
+    @click="show = true"
+  >
+    Prevent long press default behavior
+  </var-button>
+  <var-image-preview
+    :images="images"
+    v-model:show="show"
+    @long-press="Snackbar('This image is copyrighted!!')"
+  />
+</template>
+```
+
 ### Show extra slots
 
 ```html
