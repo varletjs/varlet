@@ -74,7 +74,7 @@
               :style="{ height: `${optionHeight}px` }"
               v-for="(t, i) in c.column.texts"
               :key="t"
-              @click="handleClick(c, i)"
+              @touchend="handleClick(c, i)"
             >
               <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
             </div>
