@@ -27,9 +27,9 @@ import {
   onBeforeUnmount,
   onDeactivated,
   onMounted,
+  onActivated,
   type Ref,
   type TeleportProps,
-  onActivated,
 } from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
