@@ -208,19 +208,30 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
 
 type ClassName = string | undefined | null
 type Classes = (ClassName | [any, ClassName, ClassName?])[]
+type BEM<T extends string | undefined, namespace extends string, componentName extends string> = T extends undefined
+  ? componentName
+  : T extends `$--${infer U}`
+  ? `${namespace}--${U}`
+  : T extends `--${infer R}`
+  ? `${componentName}--${R}`
+  : `${componentName}__${T}`
 
-export function createNamespace(name: string) {
-  const namespace = `var`
-  const componentName = `${namespace}-${name}`
+export function createNamespace<T extends string>(name: T) {
+  const namespace = `var` as const
+  const componentName = `${namespace}-${name}` as const
 
-  const createBEM = (suffix?: string): string => {
-    if (!suffix) return componentName
-
-    if (suffix[0] === '$') {
-      return suffix.replace('$', namespace)
+  const createBEM = <T extends string | undefined = undefined>(
+    suffix?: T
+  ): BEM<T, typeof namespace, typeof componentName> => {
+    if (!suffix) {
+      return componentName as any
     }
 
-    return suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`
+    if (suffix[0] === '$') {
+      return suffix.replace('$', namespace) as any
+    }
+
+    return (suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`) as any
   }
 
   const classes = (...classes: Classes): any[] => {
