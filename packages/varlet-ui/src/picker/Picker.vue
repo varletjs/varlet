@@ -55,7 +55,7 @@
           :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
-          @touchstart="handleTouchstart($event, c)"
+          @touchstart="handleTouchstart(c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
         >
@@ -229,7 +229,7 @@ export default defineComponent({
       scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
-    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+    const handleTouchstart = (scrollColumn: ScrollColumn) => {
       scrollColumn.touching = true
       scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
     }
@@ -279,7 +279,7 @@ export default defineComponent({
         change(scrollColumn)
       }
 
-      window.setTimeout(() => {
+      requestAnimationFrame(() => {
         dragging = false
       })
     }
@@ -366,12 +366,16 @@ export default defineComponent({
       )
     }
 
+    const isSamePicked = () => {
+      const { indexes } = getPicked()
+      return indexes.every((index, idx) => index === prevIndexes[idx])
+    }
+
     const change = (scrollColumn: ScrollColumn) => {
       const { cascade, onChange } = props
-      const { texts, indexes } = getPicked()
-      const samePicked = indexes.every((index, idx) => index === prevIndexes[idx])
 
-      if (samePicked) {
+      if (isSamePicked()) {
+        console.log(1)
         return
       }
 
@@ -385,6 +389,8 @@ export default defineComponent({
         return
       }
 
+      // rebuild will update the value of picked, so need to get the latest value again.
+      const { texts, indexes } = getPicked()
       prevIndexes = [...indexes]
       call(onChange, texts, indexes)
     }
