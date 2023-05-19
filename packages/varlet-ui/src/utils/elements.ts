@@ -1,4 +1,4 @@
-import { isNumber, isObject, isString, kebabCase, toNumber, isWindow } from '@varlet/shared'
+import { isNumber, isObject, isString, kebabCase, toNumber, isWindow, inBrowser } from '@varlet/shared'
 import { getGlobalThis } from './shared'
 import { error } from './logger'
 import type { StyleVars } from '../style-provider'
@@ -142,6 +142,10 @@ export function getViewportSize() {
 // example 1rem
 export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
 
+// example 1em
+export const isEm = (value: unknown): value is string =>
+  isString(value) && value.endsWith('em') && !value.endsWith('rem')
+
 // e.g. 1 || 1px
 export const isPx = (value: unknown): value is string | number =>
   (isString(value) && value.endsWith('px')) || isNumber(value)
@@ -175,6 +179,10 @@ export const toPxNum = (value: unknown): number => {
 
   if (isPx(value)) {
     return +(value as string).replace('px', '')
+  }
+
+  if (!inBrowser()) {
+    return 0
   }
 
   const { width, height } = getRect(window)
@@ -220,6 +228,7 @@ export const toSizeUnit = (value: unknown) => {
     isPercent(value) ||
     isVw(value) ||
     isVh(value) ||
+    isEm(value) ||
     isRem(value) ||
     isCalc(value) ||
     isVar(value) ||
