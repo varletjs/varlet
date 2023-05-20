@@ -168,6 +168,7 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
+const imagePreventDefault = ref(true)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -184,6 +185,7 @@ const images = ref([
   </var-button>
   <var-image-preview
     :images="images"
+    :image-prevent-default="imagePreventDefault"
     v-model:show="show"
     @long-press="Snackbar('This image is copyrighted!!')"
   />
@@ -251,6 +253,7 @@ const actions = [
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
 | `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
+| `image-prevent-default` | whether to prohibit the default behavior of long pressing on images |  _boolean_ | `false` |
 
 ### Events
 
@@ -261,6 +264,7 @@ const actions = [
 | `opened` | Triggered at the end of the open image-preview animation | `-` |
 | `close`  | Triggered when Image-Preview is off | `-` |
 | `closed` | Triggered when the animation that closes the image-preview ends | `-` |
+| `long-press` | The callback function when long pressing an image, the callback parameter is the current index | `index: number` Image indexing | 
 
 ### Methods
 
