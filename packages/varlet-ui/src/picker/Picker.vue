@@ -55,7 +55,7 @@
           :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
-          @touchstart="handleTouchstart(c)"
+          @touchstart.passive="handleTouchstart(c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
         >
