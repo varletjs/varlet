@@ -14,7 +14,7 @@ import { doubleRaf } from '../utils/elements'
 import { type TabItemProvider } from '../tab-item/provide'
 
 const { n } = createNamespace('tabs-items')
-const tabItem: TabItemProvider | undefined = undefined
+
 type ActiveType = number | string | undefined
 
 export default defineComponent({
