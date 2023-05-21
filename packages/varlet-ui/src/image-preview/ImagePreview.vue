@@ -65,7 +65,17 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, toRef } from 'vue'
+import {
+  defineComponent,
+  ref,
+  computed,
+  watch,
+  onUnmounted,
+  onDeactivated,
+  toRef,
+  type Ref,
+  type ComputedRef,
+} from 'vue'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
@@ -304,6 +314,14 @@ export default defineComponent({
     const preventImageDefault = (event: Event) => {
       event.preventDefault()
     }
+
+    onUnmounted(() => {
+      document.removeEventListener('contextmenu', preventImageDefault)
+    })
+
+    onDeactivated(() => {
+      document.removeEventListener('contextmenu', preventImageDefault)
+    })
 
     watch(
       () => props.show,
