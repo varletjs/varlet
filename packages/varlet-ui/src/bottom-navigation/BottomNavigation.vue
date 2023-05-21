@@ -46,6 +46,7 @@ interface BottomNavigationType {
 }
 
 type ChangedValueType = number | string
+type ColorTye = string | undefined
 
 export default defineComponent({
   name: 'VarBottomNavigation',
@@ -54,8 +55,8 @@ export default defineComponent({
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
     const active: ComputedRef<ChangedValueType | undefined> = computed(() => props.active)
-    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-    const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
+    const activeColor: ComputedRef<ColorTye> = computed(() => props.activeColor)
+    const inactiveColor: ComputedRef<ColorTye> = computed(() => props.inactiveColor)
     const fabProps = ref({})
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
@@ -68,9 +69,7 @@ export default defineComponent({
     }
 
     const matchName = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => {
-        return active.value === name.value
-      })
+      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => active.value === name.value)
     }
 
     const matchIndex = (): BottomNavigationItemProvider | undefined => {
