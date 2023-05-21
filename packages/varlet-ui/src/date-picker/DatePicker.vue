@@ -88,6 +88,7 @@ import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
 import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
 
 const { n, classes } = createNamespace('date-picker')
+const YEAR_NUMBERS = 12
 
 export default defineComponent({
   name: 'VarDatePicker',
@@ -357,10 +358,10 @@ export default defineComponent({
 
         if (checkIndex < 1) {
           previewYear.value = `${toNumber(previewYear.value) - 1}`
-          checkIndex = 12
+          checkIndex = YEAR_NUMBERS
         }
 
-        if (checkIndex > 12) {
+        if (checkIndex > YEAR_NUMBERS) {
           previewYear.value = `${toNumber(previewYear.value) + 1}`
           checkIndex = 1
         }

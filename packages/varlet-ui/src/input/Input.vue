@@ -142,13 +142,7 @@ export default defineComponent({
     const el: Ref<HTMLInputElement | null> = ref(null)
     const isFocus: Ref<boolean> = ref(false)
     const isComposing: Ref<boolean> = ref(false)
-    const normalizedType: ComputedRef<InputType> = computed(() => {
-      if (props.type === 'number') {
-        return 'text'
-      }
-
-      return props.type
-    })
+    const normalizedType: ComputedRef<InputType> = computed(() => (props.type === 'number' ? 'text' : props.type))
     const maxlengthText: ComputedRef<string> = computed(() => {
       const { maxlength, modelValue } = props
 
@@ -156,11 +150,9 @@ export default defineComponent({
         return ''
       }
 
-      if (isEmpty(modelValue)) {
-        return `0 / ${maxlength}`
-      }
+      const valueLength = String(modelValue).length
 
-      return `${String(modelValue).length}/${maxlength}`
+      return `${valueLength}/${maxlength}`
     })
     const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
     const placeholderColor: ComputedRef<string | undefined> = computed(() => {

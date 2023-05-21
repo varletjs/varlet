@@ -17,15 +17,15 @@ import type { CollapseModelValue } from './props'
 
 const { n } = createNamespace('collapse')
 
+type ActiveType = number | string | Array<number | string> | undefined | null
+
 export default defineComponent({
   name: 'VarCollapse',
   props,
   setup(props) {
     const { length, collapseItem, bindCollapseItem } = useCollapseItem()
 
-    const active: ComputedRef<number | string | Array<number | string> | undefined | null> = computed(
-      () => props.modelValue
-    )
+    const active: ComputedRef<ActiveType> = computed(() => props.modelValue)
     const offset: ComputedRef<boolean> = computed(() => props.offset)
     const divider: ComputedRef<boolean> = computed(() => props.divider)
     const elevation: ComputedRef<boolean | number | string> = computed(() => props.elevation)
@@ -73,38 +73,32 @@ export default defineComponent({
     }
 
     const matchIndex = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {
-      if (props.accordion) {
-        return collapseItem.find(
-          ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
-        )
-      }
-      return collapseItem.filter(
-        ({ index, name }: CollapseItemProvider) =>
-          name.value === undefined && (props.modelValue as Array<string | number>).includes(index.value)
-      )
+      const { accordion, modelValue } = props
+      return collapseItem.filter(({ index, name }) => {
+        if (name.value !== undefined) return false
+        if (accordion) return modelValue === index.value
+        return (modelValue as Array<string | number>).includes(index.value)
+      })[0]
     }
 
     const resize = () => {
       if (!checkValue()) return
 
       const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
+      const { accordion } = props
+      const matchProvidersArr = matchProviders as Array<CollapseItemProvider>
 
-      if (
-        (props.accordion && !matchProviders) ||
-        (!props.accordion && !(matchProviders as Array<CollapseItemProvider>).length)
-      ) {
+      if ((accordion && !matchProviders) || (!accordion && !matchProvidersArr?.length)) {
         collapseItem.forEach((provider) => {
-          provider.init(props.accordion, false)
+          provider.init(accordion, false)
         })
         return
       }
 
       collapseItem.forEach((provider) => {
-        const isShow = props.accordion
-          ? matchProviders === provider
-          : (matchProviders as Array<CollapseItemProvider>).includes(provider)
+        const isShow = accordion ? matchProviders === provider : matchProvidersArr.includes(provider)
 
-        provider.init(props.accordion, isShow)
+        provider.init(accordion, isShow)
       })
     }
 
