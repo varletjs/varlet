@@ -19,8 +19,10 @@
     @opened="onOpened"
     @route-change="onRouteChange"
   >
+    <!-- 根据 n() 和 n('$--box') 生成 CSS 类名，并将其应用于 div 元素，同时将绑定到这个组件的所有非 prop 属性传递给内部的 div 元素。 -->
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
+        <!-- dt是一个Vue过滤器，用于处理多语言文本（本例中使用了中文），title和pack.actionSheetTitle则是用于获取文本内容的变量 -->
         <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
       </slot>
 
