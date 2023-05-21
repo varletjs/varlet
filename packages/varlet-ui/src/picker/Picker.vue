@@ -55,7 +55,7 @@
           :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
-          @touchstart="handleTouchstart(c)"
+          @touchstart.passive="handleTouchstart(c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
         >
@@ -74,7 +74,7 @@
               :style="{ height: `${optionHeight}px` }"
               v-for="(t, i) in c.column.texts"
               :key="t"
-              @touchend="handleClick(c, i)"
+              @click="handleClick(c, i)"
             >
               <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
             </div>

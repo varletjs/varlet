@@ -44,7 +44,7 @@ test('test scroll up & onConfirm', async () => {
   wrapper.unmount()
 })
 
-test('test touch option & onConfirm', async () => {
+test('test click option & onConfirm', async () => {
   const { mockRestore } = mockTranslate()
   const onConfirm = jest.fn()
 
@@ -56,7 +56,7 @@ test('test touch option & onConfirm', async () => {
   })
 
   const options = wrapper.findAll('.var-picker__option')
-  await options[1].trigger('touchend')
+  await options[1].trigger('click')
   await delay(300)
 
   await wrapper.find('.var-picker__confirm-button').trigger('click')

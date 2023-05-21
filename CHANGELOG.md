@@ -1,3 +1,20 @@
+## [2.11.1](https://github.com/varletjs/varlet/compare/v2.11.0...v2.11.1) (2023-05-20)
+
+
+### Bug Fixes
+
+* cascade column the click event doesn't work sometime ([#1047](https://github.com/varletjs/varlet/issues/1047)) ([fae3f5d](https://github.com/varletjs/varlet/commit/fae3f5dde74de11821eedfd98fcb29a0c9db0a45))
+* **ui/image-preview:** click can't trigger a close event sometimes ([#1044](https://github.com/varletjs/varlet/issues/1044)) ([c0d6902](https://github.com/varletjs/varlet/commit/c0d6902b236a29ee3d9580d0ac43a1f0bffd802a))
+* **ui/picker:** clicking on the parent column causes the child column to restructure when the options are unchanged ([3924744](https://github.com/varletjs/varlet/commit/3924744d63b8a93a44f9a1087d889a38a33cc80b))
+* **utils:** elements utils supports ssr and close [#1045](https://github.com/varletjs/varlet/issues/1045) ([9f3da12](https://github.com/varletjs/varlet/commit/9f3da1291b63ab04b34624cff739f4692b101fd2))
+
+
+### Features
+
+* **ui/picker:** support scroll while click the option and refactor code ([#1039](https://github.com/varletjs/varlet/issues/1039)) ([59a8d4c](https://github.com/varletjs/varlet/commit/59a8d4cab0fac71a03edce9d2b2190e004ea7c72))
+
+
+
 # [2.11.0](https://github.com/varletjs/varlet/compare/v2.10.2...v2.11.0) (2023-05-15)
 
 
