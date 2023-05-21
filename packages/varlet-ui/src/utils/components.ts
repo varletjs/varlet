@@ -234,11 +234,6 @@ export function createNamespace<C extends string>(name: C) {
     return (suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`) as any
   }
 
-  /**
-   * 该函数接受任意数量的参数，并返回一个数组。每个参数可以是一个字符串或者一个数组。
-   * 当参数是一个字符串时，该字符串会直接被返回。
-   * 当参数是一个数组时，数组中的第一个元素被视为条件，第二个元素被视为条件成立时返回的值，第三个元素(可选)被视为条件不成立时返回的值。如果没有提供第三个元素，则当条件不成立时返回 `null`。
-   */
   const classes = (...classes: Classes): any[] => {
     return classes.map((className) => {
       if (isArray(className)) {
