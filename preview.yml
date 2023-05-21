@@ -1,3 +1,7 @@
+#  `preview.yml` 文件是一个配置文件，用于在 GitHub 上的 Pull Request 时，自动化地生成和显示代码变更的预览。它会在代码变更后，自动构建和部署预览应用程序，并将应用程序的 URL 显示在 Pull Request 页面上，以方便代码审查人员查看变更后的效果。
+
+# 这个配置文件基于 [Preview Environment](https://github.blog/2021-02-18-create-environments-for-your-pull-requests/) 功能，它可以让开发者在 Pull Request 时，自动化地创建一个临时的环境来展示代码变更的效果。
+
 apps:
   - port: 8080
     run: pnpm bootstrap && cd packages/varlet-ui && pnpm dev --

@@ -1,3 +1,5 @@
+# 用于配置 Prettier 忽略格式化的文件
+
 packages/varlet-cli/lib/**
 packages/varlet-cli/site/**
 packages/varlet-cli/template/**
