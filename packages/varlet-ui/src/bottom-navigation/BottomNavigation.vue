@@ -45,13 +45,15 @@ interface BottomNavigationType {
   itemsNum: number
 }
 
+type ChangedValueType = number | string
+
 export default defineComponent({
   name: 'VarBottomNavigation',
   components: { VarButton },
   props,
   setup(props, { slots }) {
     const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
-    const active: ComputedRef<number | string | undefined> = computed(() => props.active)
+    const active: ComputedRef<ChangedValueType | undefined> = computed(() => props.active)
     const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const fabProps = ref({})
@@ -72,9 +74,7 @@ export default defineComponent({
     }
 
     const matchIndex = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => {
-        return active.value === index.value
-      })
+      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => active.value === index.value)
     }
 
     const handleActiveIndex = () => {
@@ -89,7 +89,7 @@ export default defineComponent({
       }
     }
 
-    const onToggle = (changedValue: number | string) => {
+    const onToggle = (changedValue: ChangedValueType) => {
       if (active.value === changedValue) {
         return
       }
@@ -97,17 +97,15 @@ export default defineComponent({
       props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
     }
 
-    const handleBeforeChange = (changedValue: number | string) => {
+    const handleBeforeChange = (changedValue: ChangedValueType) => {
       const results = normalizeToArray(call(props.onBeforeChange, changedValue))
 
       Promise.all(results).then((results) => {
-        if (results.every(Boolean)) {
-          handleChange(changedValue)
-        }
+        results.every(Boolean) && handleChange(changedValue)
       })
     }
 
-    const handleChange = (changedValue: number | string) => {
+    const handleChange = (changedValue: ChangedValueType) => {
       call(props['onUpdate:active'], changedValue)
       call(props.onChange, changedValue)
     }
@@ -138,12 +136,10 @@ export default defineComponent({
       }
 
       const halfLength = itemsNum / 2
-      const isFabLeft = index === halfLength - 1
-      const isFabRight = index === halfLength
 
-      if (isFabLeft) {
+      if (index === halfLength - 1) {
         itemDom.classList.add(RIGHT_HALF_SPACE_CLASS)
-      } else if (isFabRight) {
+      } else if (index === halfLength) {
         itemDom.classList.add(LEFT_HALF_SPACE_CLASS)
       }
     }

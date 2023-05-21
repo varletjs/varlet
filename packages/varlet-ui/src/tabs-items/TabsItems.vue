@@ -14,6 +14,8 @@ import { doubleRaf } from '../utils/elements'
 import { type TabItemProvider } from '../tab-item/provide'
 
 const { n } = createNamespace('tabs-items')
+const tabItem: TabItemProvider | undefined = undefined
+type ActiveType = number | string | undefined
 
 export default defineComponent({
   name: 'VarTabsItems',
@@ -24,19 +26,11 @@ export default defineComponent({
     const active: ComputedRef<number | string> = computed(() => props.active)
     const { tabItemList, bindTabItem, length } = useTabItem()
 
-    const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
+    const matchActive = (active: ActiveType): TabItemProvider | undefined => {
+      return tabItemList.find(({ name, index }: TabItemProvider) => active === name.value || active === index.value)
     }
 
-    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
-    }
-
-    const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
-      return matchName(active) || matchIndex(active)
-    }
-
-    const handleActiveChange = (newValue: number | string | undefined) => {
+    const handleActiveChange = (newValue: ActiveType) => {
       const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
       if (!newActiveTabItemProvider) {
         return
