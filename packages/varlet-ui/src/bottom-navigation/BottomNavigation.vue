@@ -39,6 +39,12 @@ const defaultFabProps = {
   type: 'primary',
 }
 
+interface BottomNavigationType {
+  itemDom: Element
+  index: number
+  itemsNum: number
+}
+
 export default defineComponent({
   name: 'VarBottomNavigation',
   components: { VarButton },
@@ -119,23 +125,26 @@ export default defineComponent({
       const isEven = length % 2 === 0
 
       bottomNavigationItems.forEach((bottomNavigationItem: Element, i: number) => {
-        handleMarginClass(isEven, bottomNavigationItem, i, itemsNum)
+        handleMarginClass(isEven, { itemDom: bottomNavigationItem, index: i, itemsNum })
       })
     }
 
-    const handleMarginClass = (isEven: boolean, dom: Element, i: number, length: number) => {
-      const isLast = i === length - 1
+    const handleMarginClass = (isEven: boolean, options: BottomNavigationType) => {
+      const { itemDom, index, itemsNum } = options
+      const isLast = index === itemsNum - 1
       if (!isEven && isLast) {
-        dom.classList.add(RIGHT_SPACE_CLASS)
+        itemDom.classList.add(RIGHT_SPACE_CLASS)
         return
       }
 
-      const isFabLeft = i === length / 2 - 1
-      const isFabRight = i === length / 2
+      const halfLength = itemsNum / 2
+      const isFabLeft = index === halfLength - 1
+      const isFabRight = index === halfLength
+
       if (isFabLeft) {
-        dom.classList.add(RIGHT_HALF_SPACE_CLASS)
+        itemDom.classList.add(RIGHT_HALF_SPACE_CLASS)
       } else if (isFabRight) {
-        dom.classList.add(LEFT_HALF_SPACE_CLASS)
+        itemDom.classList.add(LEFT_HALF_SPACE_CLASS)
       }
     }
 
