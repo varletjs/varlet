@@ -168,7 +168,6 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
-const imagePreventDefault = ref(true)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -184,8 +183,8 @@ const images = ref([
     Prevent long press default behavior
   </var-button>
   <var-image-preview
+    image-prevent-default
     :images="images"
-    :image-prevent-default="imagePreventDefault"
     v-model:show="show"
     @long-press="Snackbar('This image is copyrighted!!')"
   />
@@ -253,7 +252,7 @@ const actions = [
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
 | `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
-| `image-prevent-default` | whether to prohibit the default behavior of long pressing on images |  _boolean_ | `false` |
+| `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
 
 ### Events
 

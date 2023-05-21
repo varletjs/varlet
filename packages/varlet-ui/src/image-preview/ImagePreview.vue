@@ -112,8 +112,8 @@ export default defineComponent({
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
     let closeRunner: number | null = null
-    let longTapTimer: number | null = null
-    let isLongTapEvent = false
+    let longPressRunner: number | null = null
+    let isLongPress = false
 
     const getDistance = (touch: VarTouch, target: VarTouch): number => {
       const { clientX: touchX, clientY: touchY } = touch
@@ -175,13 +175,11 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: Event) => {
-      if (longTapTimer) {
-        window.clearTimeout(longTapTimer)
-      }
+      window.clearTimeout(longPressRunner as number)
 
       // avoid triggering tap event sometimes
-      if (isLongTapEvent) {
-        isLongTapEvent = false
+      if (isLongPress) {
+        isLongPress = false
         return
       }
 
@@ -194,12 +192,12 @@ export default defineComponent({
 
     const handleTouchstart = (event: TouchEvent, idx: number) => {
       closeRunner && window.clearTimeout(closeRunner)
-      longTapTimer && window.clearTimeout(longTapTimer)
+      longPressRunner && window.clearTimeout(longPressRunner)
       const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
 
-      longTapTimer = window.setTimeout(() => {
-        isLongTapEvent = true
+      longPressRunner = window.setTimeout(() => {
+        isLongPress = true
         context.emit('long-press', idx)
       }, LONG_PRESS_DELAY)
 
@@ -269,7 +267,7 @@ export default defineComponent({
       const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
 
       if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
-        longTapTimer && window.clearTimeout(longTapTimer)
+        longPressRunner && window.clearTimeout(longPressRunner)
       }
 
       if (scale.value > 1) {

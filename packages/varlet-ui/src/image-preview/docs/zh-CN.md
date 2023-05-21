@@ -168,7 +168,6 @@ import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
-const imagePreventDefault = ref(true)
 const images = ref([
   'https://varlet.gitee.io/varlet-ui/cat.jpg',
   'https://varlet.gitee.io/varlet-ui/cat2.jpg',
@@ -184,10 +183,10 @@ const images = ref([
     阻止长按默认行为
   </var-button>
   <var-image-preview
+    image-prevent-default
     :images="images"
-    :image-prevent-default="imagePreventDefault"
     v-model:show="show"
-    @long-press="Snackbar('该图片享有版权！！')"
+    @long-press="Snackbar({'该图片享有版权！！'})"
   />
 </template>
 ```
@@ -252,7 +251,7 @@ const actions = [
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lock-scroll` | 锁定滚动 | _boolean_ | `true` |
 | `teleport`   | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
-| `image-prevent-default` | 是否禁止长按图片默认行为 |  _boolean_ | `false` |
+| `image-prevent-default` | 是否禁止图片默认行为 |  _boolean_ | `false` |
 
 ### 事件
 
@@ -263,7 +262,7 @@ const actions = [
 | `opened` | 打开 image-preview 动画结束时触发 | `-` |
 | `close`  | 关闭 image-preview 时触发 | `-` |
 | `closed` | 关闭 image-preview 动画结束时触发 | `-` |
-| `long-press` |  长按图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 | 
+| `long-press` | 长按图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 | 
 
 ### 方法
 
