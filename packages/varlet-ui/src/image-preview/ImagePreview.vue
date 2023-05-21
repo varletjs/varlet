@@ -36,6 +36,7 @@
             @touchstart="handleTouchstart($event, idx)"
             @touchmove="handleTouchmove"
             @touchend="handleTouchend"
+            @touchcancel="handleTouchcancel"
           >
             <img :class="n('image')" :src="image" :alt="image" />
           </div>
@@ -94,8 +95,7 @@ export default defineComponent({
   },
   inheritAttrs: false,
   props,
-  emits: ['long-press'],
-  setup(props, context) {
+  setup(props) {
     const imagePreventDefault = toRef(props, 'imagePreventDefault')
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
@@ -174,6 +174,12 @@ export default defineComponent({
       )
     }
 
+    const handleTouchcancel = () => {
+      window.clearTimeout(longPressRunner as number)
+      isLongPress = false
+      startTouch = null
+    }
+
     const handleTouchend = (event: Event) => {
       window.clearTimeout(longPressRunner as number)
 
@@ -197,8 +203,9 @@ export default defineComponent({
       startTouch = currentTouch
 
       longPressRunner = window.setTimeout(() => {
+        const { onLongPress } = props
         isLongPress = true
-        context.emit('long-press', idx)
+        call(onLongPress, idx)
       }, LONG_PRESS_DELAY)
 
       if (isDoubleTouch(currentTouch)) {
@@ -325,6 +332,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      handleTouchcancel,
       close,
     }
   },
