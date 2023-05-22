@@ -38,7 +38,7 @@
             @touchend="handleTouchend"
             @touchcancel="handleTouchcancel"
           >
-            <img :class="n('image')" :src="image" :alt="image" />
+            <img :class="classes(n('image'), [isPreventDefault, n('--prevent')])" :src="image" :alt="image" />
           </div>
         </var-swipe-item>
       </template>
@@ -65,19 +65,10 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import {
-  defineComponent,
-  ref,
-  computed,
-  watch,
-  onUnmounted,
-  onDeactivated,
-  toRef,
-  type Ref,
-  type ComputedRef,
-} from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('image-preview')
@@ -106,7 +97,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const imagePreventDefault = toRef(props, 'imagePreventDefault')
+    const isPreventDefault: Ref<boolean> = ref(false)
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
       const { images, current } = props
@@ -207,8 +198,8 @@ export default defineComponent({
     }
 
     const handleTouchstart = (event: TouchEvent, idx: number) => {
-      closeRunner && window.clearTimeout(closeRunner)
-      longPressRunner && window.clearTimeout(longPressRunner)
+      window.clearTimeout(closeRunner as number)
+      window.clearTimeout(longPressRunner as number)
       const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
 
@@ -284,7 +275,7 @@ export default defineComponent({
       const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
 
       if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
-        longPressRunner && window.clearTimeout(longPressRunner)
+        window.clearTimeout(longPressRunner as number)
       }
 
       if (scale.value > 1) {
@@ -312,26 +303,22 @@ export default defineComponent({
     }
 
     const preventImageDefault = (event: Event) => {
-      event.preventDefault()
+      props.imagePreventDefault && props.show && event.preventDefault()
     }
 
-    onUnmounted(() => {
-      document.removeEventListener('contextmenu', preventImageDefault)
-    })
+    useEventListener(() => document, 'contextmenu', preventImageDefault)
 
-    onDeactivated(() => {
-      document.removeEventListener('contextmenu', preventImageDefault)
-    })
+    watch(
+      () => [props.imagePreventDefault, props.show],
+      ([newImagePreventDefault, newShow]) => {
+        isPreventDefault.value = !!(newShow && newImagePreventDefault)
+      }
+    )
 
     watch(
       () => props.show,
       (newValue) => {
         popupShow.value = newValue
-
-        if (imagePreventDefault.value) {
-          newValue && document.addEventListener('contextmenu', preventImageDefault)
-          !newValue && document.removeEventListener('contextmenu', preventImageDefault)
-        }
       },
       { immediate: true }
     )
@@ -339,6 +326,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      isPreventDefault,
       initialIndex,
       popupShow,
       scale,
