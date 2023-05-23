@@ -311,14 +311,8 @@ export default defineComponent({
     watch(
       () => [props.imagePreventDefault, props.show],
       ([newImagePreventDefault, newShow]) => {
+        popupShow.value = newShow
         isPreventDefault.value = !!(newShow && newImagePreventDefault)
-      }
-    )
-
-    watch(
-      () => props.show,
-      (newValue) => {
-        popupShow.value = newValue
       },
       { immediate: true }
     )
