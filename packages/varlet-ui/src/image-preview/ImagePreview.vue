@@ -97,7 +97,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const isPreventDefault: Ref<boolean> = ref(false)
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
       const { images, current } = props
@@ -308,11 +307,15 @@ export default defineComponent({
 
     useEventListener(() => document, 'contextmenu', preventImageDefault)
 
+    const isPreventDefault = computed(() => {
+      const { imagePreventDefault, show } = props
+      return show && imagePreventDefault
+    })
+
     watch(
-      () => [props.imagePreventDefault, props.show],
-      ([newImagePreventDefault, newShow]) => {
+      () => props.show,
+      (newShow) => {
         popupShow.value = newShow
-        isPreventDefault.value = !!(newShow && newImagePreventDefault)
       },
       { immediate: true }
     )

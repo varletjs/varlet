@@ -108,3 +108,39 @@ test('test image preview zoom move', async () => {
 
   wrapper.unmount()
 })
+
+test('test image preview imagePreventDefault', async () => {
+  const wrapper = mount(VarImagePreview, {
+    props: {
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+      imagePreventDefault: true,
+      show: true,
+    },
+  })
+
+  await delay(200)
+  await trigger(wrapper.find('.var-image-preview__zoom-container'), 'long-press')
+  await delay(550)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-image-preview--prevent').isVisible()).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('test image preview onLongPress', async () => {
+  const onLongPress = jest.fn()
+  const wrapper = mount(VarImagePreview, {
+    props: {
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+      onLongPress,
+      show: true,
+    },
+  })
+
+  const zoomContainer = wrapper.find('.var-image-preview__zoom-container')
+  await trigger(zoomContainer, 'touchstart')
+  await delay(550)
+  await trigger(zoomContainer, 'touchend')
+  expect(onLongPress).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
+})

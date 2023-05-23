@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test image preview imagePreventDefault 1`] = `
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 2010;">
+    <!---->
+    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2012;" var-image-preview-cover="">
+        <div class="var-swipe var-image-preview__swipe" var-image-preview-cover="">
+          <div class="var-swipe__track" style="width: 375px; transform: translateX(0px); transition-duration: 300ms;">
+            <div class="var-swipe-item var-image-preview__swipe-item" style="width: 375px; transform: translateX(0px);" var-image-preview-cover="">
+              <div class="var-image-preview__zoom-container" style="transform: scale(1) translate(0px, 0px);"><img class="var-image-preview__image var-image-preview--prevent" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="https://varlet.gitee.io/varlet-ui/cat.jpg"></div>
+            </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+        <div class="var-image-preview__extra"></div>
+      </div>
+    </transition-stub>
+  </div>
+</transition-stub>"
+`;
