@@ -59,9 +59,6 @@ export default defineComponent({
       return swipe.value
     }
 
-    const tabsItemsProvider = { active: 0 }
-    bindTabItem(tabsItemsProvider)
-
     watch(() => props.active, handleActiveChange)
 
     watch(
