@@ -161,6 +161,39 @@ const images = ref([
 </template>
 ```
 
+### Listen for long press event
+
+The `image-prevent-default` attribute prohibits the default behavior of images, and the `long-press` event can be customized to achieve long press requirements.
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const show = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+</script>
+
+<template>
+  <var-button
+    block
+    type="warning"
+    @click="show = true"
+  >
+    Listen for long press event
+  </var-button>
+  <var-image-preview
+    image-prevent-default
+    :images="images"
+    v-model:show="show"
+    @long-press="Snackbar('This image is copyrighted!!')"
+  />
+</template>
+```
+
 ### Show extra slots
 
 ```html
@@ -222,6 +255,7 @@ const actions = [
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
 | `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
+| `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
 
 ### Events
 
@@ -232,6 +266,7 @@ const actions = [
 | `opened` | Triggered at the end of the open image-preview animation | `-` |
 | `close`  | Triggered when Image-Preview is off | `-` |
 | `closed` | Triggered when the animation that closes the image-preview ends | `-` |
+| `long-press` | The callback function when long pressing an image, the callback parameter is the current index | `index: number` Image indexing | 
 
 ### Methods
 
@@ -261,11 +296,13 @@ const actions = [
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lockScroll` | Lock scroll | _boolean_ | `true` |
+| `imagePreventDefault` | whether to disable the default behavior of images |  _boolean_ | `false` |
 | `onChange`   | The callback function when switching images, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 | `onOpen`   | Callback when image-preview is turned on |  _() => void_ | `-` |
 | `onOpened` | Callback at the end of the animation that opened image-preview |   _() => void_ | `-` |
 | `onClose`  | Callback when image-preview is closed |  _() => void_ |  `-` |
 | `onClosed` | Callback at the end of the animation that closes the image-preview |  _() => void_ | `-` |
+| `onLongPress` | The callback function when long pressing an image, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

@@ -55,6 +55,12 @@
     -webkit-user-drag: none;
   }
 
+  // fix IOS & weChat long press image default behavior
+  &--prevent {
+    -webkit-touch-callout: none;
+    pointer-events: none;
+  }
+
   &__zoom-container {
     display: flex;
     justify-content: center;

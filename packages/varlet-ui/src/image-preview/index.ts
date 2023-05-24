@@ -11,11 +11,13 @@ interface ImagePreviewOptions {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
+  imagePreventDefault?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
+  onLongPress?: (index: number) => void
   // internal
   teleport?: TeleportProps['to']
 }
