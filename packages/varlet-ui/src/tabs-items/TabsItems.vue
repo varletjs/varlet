@@ -6,13 +6,12 @@
 
 <script lang="ts">
 import VarSwipe from '../swipe'
-import { defineComponent, watch, ref } from 'vue'
-import { useTabItem, type TabsItemsProvider } from './provide'
+import { defineComponent, watch, ref, type Ref } from 'vue'
+import { useTabItem } from './provide'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
-import type { Ref } from 'vue'
-import type { TabItemProvider } from '../tab-item/provide'
 import { doubleRaf } from '../utils/elements'
+import { type TabItemProvider } from '../tab-item/provide'
 
 const { n } = createNamespace('tabs-items')
 
@@ -59,8 +58,7 @@ export default defineComponent({
       return swipe.value
     }
 
-    const tabsItemsProvider: TabsItemsProvider = {}
-    bindTabItem(tabsItemsProvider)
+    bindTabItem({})
 
     watch(() => props.active, handleActiveChange)
 

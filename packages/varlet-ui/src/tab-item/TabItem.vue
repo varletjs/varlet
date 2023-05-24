@@ -21,10 +21,10 @@ export default defineComponent({
   props,
   setup(props) {
     const current: Ref<boolean> = ref(false)
-
     const name: ComputedRef<string | number | undefined> = computed(() => props.name)
     const { index, bindTabsItems } = useTabsItems()
     const { bindLists } = useLists()
+
     const setCurrent = (value: boolean) => {
       current.value = value
     }
@@ -38,6 +38,7 @@ export default defineComponent({
 
     bindTabsItems(tabItemProvider)
     bindLists(tabItemProvider)
+
     return {
       n,
       classes,
