@@ -181,34 +181,28 @@ const Snackbar: Snackbar = function (options?: SnackbarOptions | string): Snackb
     reactiveSnackOptions,
   }
 
-  if (length === 0 || isAllowMultiple) {
-    addUniqOption(uniqSnackbarOptionItem)
-  } else {
-    const _update = `update-${sid}`
-    updateUniqOption(reactiveSnackOptions, _update)
-  }
+  length === 0 || isAllowMultiple
+    ? addUniqOption(uniqSnackbarOptionItem)
+    : updateUniqOption(reactiveSnackOptions, `update-${sid}`)
 
   return {
     clear() {
-      if (!isAllowMultiple && uniqSnackbarOptions.length) {
-        uniqSnackbarOptions[0].reactiveSnackOptions.show = false
-      } else {
-        reactiveSnackOptions.show = false
-      }
+      !isAllowMultiple && uniqSnackbarOptions.length
+        ? (uniqSnackbarOptions[0].reactiveSnackOptions.show = false)
+        : (reactiveSnackOptions.show = false)
     },
   }
 } as Snackbar
 
 SNACKBAR_TYPE.forEach((type) => {
   Snackbar[type] = (options: SnackbarOptions | string): SnackbarHandel => {
-    if (isPlainObject(options)) {
-      options.type = type
-    } else {
-      options = {
-        content: options,
-        type,
-      }
-    }
+    isPlainObject(options)
+      ? (options.type = type)
+      : (options = {
+          content: options,
+          type,
+        })
+
     return Snackbar(options)
   }
 })
@@ -218,13 +212,11 @@ Snackbar.install = function (app: App) {
 }
 
 Snackbar.allowMultiple = function (bool = false) {
-  if (bool !== isAllowMultiple) {
-    uniqSnackbarOptions.forEach((option: UniqSnackbarOptions) => {
-      option.reactiveSnackOptions.show = false
-    })
-
-    isAllowMultiple = bool
-  }
+  if (bool === isAllowMultiple) return
+  uniqSnackbarOptions.forEach(({ reactiveSnackOptions }) => {
+    reactiveSnackOptions.show = false
+  })
+  isAllowMultiple = bool
 }
 
 Snackbar.clear = function () {
@@ -246,9 +238,8 @@ Snackbar.Component = VarSnackbar
 function opened(element: HTMLElement): void {
   const id = element.getAttribute('data-id')
   const option = uniqSnackbarOptions.find((option) => option.id === toNumber(id))
-  if (option) {
-    call(option.reactiveSnackOptions.onOpened)
-  }
+
+  option && call(option.reactiveSnackOptions.onOpened)
 }
 
 function removeUniqOption(element: HTMLElement): void {

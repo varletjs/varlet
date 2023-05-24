@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import VarSnackbarCore from './core'
+import VarSnackbarCore from './core.vue'
 import { createNamespace, useTeleport } from '../utils/components'
 import { props } from './props'
 
