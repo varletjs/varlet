@@ -161,7 +161,7 @@ const images = ref([
 </template>
 ```
 
-### Prevent long press default behavior
+### Listen for long press event
 
 The `image-prevent-default` attribute prohibits the default behavior of images, and the `long-press` event can be customized to achieve long press requirements.
 
@@ -183,7 +183,7 @@ const images = ref([
     type="warning"
     @click="show = true"
   >
-    Prevent long press default behavior
+    Listen for long press event
   </var-button>
   <var-image-preview
     image-prevent-default
@@ -296,13 +296,13 @@ const actions = [
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lockScroll` | Lock scroll | _boolean_ | `true` |
-| `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
+| `imagePreventDefault` | whether to disable the default behavior of images |  _boolean_ | `false` |
 | `onChange`   | The callback function when switching images, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 | `onOpen`   | Callback when image-preview is turned on |  _() => void_ | `-` |
 | `onOpened` | Callback at the end of the animation that opened image-preview |   _() => void_ | `-` |
 | `onClose`  | Callback when image-preview is closed |  _() => void_ |  `-` |
 | `onClosed` | Callback at the end of the animation that closes the image-preview |  _() => void_ | `-` |
-| `onLongPress` | The callback function when long pressing an image, the callback parameter is the current index | `index: number` Image indexing | 
+| `onLongPress` | The callback function when long pressing an image, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).

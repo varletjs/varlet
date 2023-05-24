@@ -115,6 +115,11 @@ export default defineComponent({
     let longPressRunner: number | null = null
     let isLongPress = false
 
+    const isPreventDefault = computed(() => {
+      const { imagePreventDefault, show } = props
+      return show && imagePreventDefault
+    })
+
     const getDistance = (touch: VarTouch, target: VarTouch): number => {
       const { clientX: touchX, clientY: touchY } = touch
       const { clientX: targetX, clientY: targetY } = target
@@ -306,11 +311,6 @@ export default defineComponent({
     }
 
     useEventListener(() => document, 'contextmenu', preventImageDefault)
-
-    const isPreventDefault = computed(() => {
-      const { imagePreventDefault, show } = props
-      return show && imagePreventDefault
-    })
 
     watch(
       () => props.show,

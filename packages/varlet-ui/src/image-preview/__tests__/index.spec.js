@@ -88,9 +88,8 @@ test('test image preview imagePreventDefault', async () => {
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
     imagePreventDefault: true,
   })
+
   await delay(200)
-  await trigger(document.querySelector('.var-image-preview__image'), 'long-press')
-  await delay(550)
   expect(document.querySelector('.var-image-preview--prevent')).toBeTruthy()
 
   ImagePreview.close()
@@ -108,7 +107,8 @@ test('test image preview onLongPress callback', async () => {
   await trigger(document.querySelector('.var-image-preview__zoom-container'), 'touchstart')
   await delay(550)
   await trigger(document.querySelector('.var-image-preview__zoom-container'), 'touchend')
-  expect(onLongPress).toHaveBeenCalledTimes(1)
+  expect(onLongPress).toBeCalledTimes(1)
+  expect(onLongPress).toHaveBeenCalledWith(0)
 
   ImagePreview.close()
 })

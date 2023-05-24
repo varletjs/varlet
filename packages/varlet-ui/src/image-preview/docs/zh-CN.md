@@ -161,7 +161,7 @@ const images = ref([
 </template>
 ```
 
-### 阻止长按默认行为
+### 监听长按事件
 
 通过 `image-prevent-default` 属性禁止图片默认行为，可自定义 `long-press` 事件来实现长按需求。
 
@@ -183,7 +183,7 @@ const images = ref([
     type="warning"
     @click="show = true"
   >
-    阻止长按默认行为
+    监听长按事件
   </var-button>
   <var-image-preview
     image-prevent-default
@@ -295,13 +295,13 @@ const actions = [
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lockScroll` | 锁定滚动 | _boolean_ | `true` |
-| `image-prevent-default` | 是否禁止图片默认行为 |  _boolean_ | `false` |
+| `imagePreventDefault` | 是否禁止图片默认行为 |  _boolean_ | `false` |
 | `onChange`   | 切换图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
 | `onOpen`   | image-preview 开启时候的回调 |  _() => void_ | `-` |
 | `onOpened` | image-preview 动画结束时候的回调 |   _() => void_ | `-` |
 | `onClose`  | image-preview 时关闭时候的回调 |  _() => void_ |  `-` |
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
-| `onLongPress` | 长按图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 | 
+| `onLongPress` | 长按图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

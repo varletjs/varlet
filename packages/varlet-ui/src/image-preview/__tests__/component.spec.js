@@ -119,8 +119,6 @@ test('test image preview imagePreventDefault', async () => {
   })
 
   await delay(200)
-  await trigger(wrapper.find('.var-image-preview__zoom-container'), 'long-press')
-  await delay(550)
   expect(wrapper.html()).toMatchSnapshot()
   expect(wrapper.find('.var-image-preview--prevent').isVisible()).toBe(true)
 
@@ -141,6 +139,8 @@ test('test image preview onLongPress', async () => {
   await trigger(zoomContainer, 'touchstart')
   await delay(550)
   await trigger(zoomContainer, 'touchend')
-  expect(onLongPress).toHaveBeenCalledTimes(1)
+  expect(onLongPress).toBeCalledTimes(1)
+  expect(onLongPress).toHaveBeenCalledWith(0)
+
   wrapper.unmount()
 })
