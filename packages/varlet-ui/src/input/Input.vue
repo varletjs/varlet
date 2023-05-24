@@ -150,7 +150,7 @@ export default defineComponent({
         return ''
       }
 
-      const {length} = String(modelValue)
+      const { length } = String(modelValue)
       return `${length}/${maxlength}`
     })
     const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
