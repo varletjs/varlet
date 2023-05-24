@@ -8,6 +8,7 @@ export interface TabItemProvider {
   index: ComputedRef<number>
   name: ComputedRef<string | number | undefined>
   current: ComputedRef<boolean>
+  setCurrent: (value: boolean) => void
 }
 
 export const TAB_ITEM_BIND_LIST_KEY = Symbol('TAB_ITEM_BIND_LIST_KEY')
