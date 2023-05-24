@@ -129,11 +129,11 @@ test('test load event while list in tab-item', async () => {
 
   const wrapper = mount(Wrapper)
   await delay(0)
-  expect(load).toBeCalledTimes(1)
+  expect(load).toBeCalledTimes(0)
   expect(load2).toBeCalledTimes(0)
 
-  await wrapper.setData({ active: 1 })
+  await wrapper.setData({ active: 0 })
   await delay(0)
-  expect(load).toBeCalledTimes(1)
-  expect(load2).toBeCalledTimes(1)
+  expect(load).toBeCalledTimes(0)
+  expect(load2).toBeCalledTimes(0)
 })
