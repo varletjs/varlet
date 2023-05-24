@@ -7,7 +7,7 @@
 <script lang="ts">
 import VarSwipe from '../swipe'
 import { defineComponent, watch, ref } from 'vue'
-import { useTabItem } from './provide'
+import { useTabItem, type TabsItemsProvider } from './provide'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
 import type { Ref } from 'vue'
@@ -22,7 +22,7 @@ export default defineComponent({
   props,
   setup(props) {
     const swipe: Ref<null | typeof VarSwipe> = ref(null)
-    const { tabItemList, length } = useTabItem()
+    const { tabItemList, bindTabItem, length } = useTabItem()
 
     const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
       return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
@@ -58,6 +58,9 @@ export default defineComponent({
     const getSwipe = () => {
       return swipe.value
     }
+
+    const tabsItemsProvider: TabsItemsProvider = {}
+    bindTabItem(tabsItemsProvider)
 
     watch(() => props.active, handleActiveChange)
 
