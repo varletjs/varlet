@@ -22,7 +22,7 @@ export default defineComponent({
   props,
   setup(props) {
     const swipe: Ref<null | typeof VarSwipe> = ref(null)
-    const { tabItemList, bindTabItem, length } = useTabItem()
+    const { tabItemList, length } = useTabItem()
 
     const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
       return tabItemList.find(({ name }: TabItemProvider) => active === name.value)

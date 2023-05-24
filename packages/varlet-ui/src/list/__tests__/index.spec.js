@@ -128,7 +128,7 @@ test('test load event while list in tab-item', async () => {
   }
 
   const wrapper = mount(Wrapper)
-  await delay(0)
+  await delay(60)
   expect(load).toBeCalledTimes(1)
   expect(load2).toBeCalledTimes(0)
 

@@ -7,6 +7,7 @@ import { type ListProvider } from '../list/provide'
 export interface TabItemProvider {
   index: ComputedRef<number>
   name: ComputedRef<string | number | undefined>
+  current: ComputedRef<boolean>
   setCurrent: (value: boolean) => void
 }
 
