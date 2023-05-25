@@ -35,7 +35,7 @@ function openPlayground(options: OpenPlaygroundOptions = {}) {
 
 function openDocumentation() {
   const language = getLanguage()
-  env.openExternal(Uri.parse(language === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH))
+  env.openExternal(Uri.parse(language === 'en-US' ? `${DOCUMENTATION_EN}/home` : `${DOCUMENTATION_ZH}/home`))
 }
 
 export function registerCommands() {
