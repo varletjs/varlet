@@ -1,3 +1,17 @@
+## [2.11.2](https://github.com/varletjs/varlet/compare/v2.11.1...v2.11.2) (2023-05-27)
+
+
+### Bug Fixes
+
+* **ui/tabs-items:** Fixed the tabs-items cannot match name ([#1056](https://github.com/varletjs/varlet/issues/1056)) ([4bb18d8](https://github.com/varletjs/varlet/commit/4bb18d8a0f05718e2a276745b08a86a5de1d3de0))
+
+
+### Features
+
+* **ui/image-preview:** add long press event & image-prevent-default prop ([#1049](https://github.com/varletjs/varlet/issues/1049)) ([46e8dfc](https://github.com/varletjs/varlet/commit/46e8dfc8544063e32f59f397f71b2f62e25cedfb))
+
+
+
 ## [2.11.1](https://github.com/varletjs/varlet/compare/v2.11.0...v2.11.1) (2023-05-20)
 
 
