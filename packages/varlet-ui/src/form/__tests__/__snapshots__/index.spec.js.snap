@@ -170,9 +170,7 @@ exports[`test form with input 1`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div>
-        <!--v-if-->
-        <!--v-if-->
+        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" for="var-input-3"><span></span></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -196,8 +194,7 @@ exports[`test form with input 2`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div><label class="var-field-decorator__placeholder var--ellipsis" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for="var-input-3"><span></span></label>
-        <!--v-if-->
+        </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span></span></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -221,8 +218,7 @@ exports[`test form with input 3`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for="var-input-3"><span></span></label>
-        <!--v-if-->
+        </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" for="var-input-3"><span></span></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -257,8 +253,7 @@ exports[`test form with input 4`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div><label class="var-field-decorator__placeholder var--ellipsis" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for="var-input-3"><span></span></label>
-        <!--v-if-->
+        </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-3"><span></span></label>
         <div class="var-field-decorator__icon">
           <!--v-if-->
         </div>
@@ -456,8 +451,7 @@ exports[`test form with select 1`] = `
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for=""><span></span></label>
-          <!--v-if-->
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--disabled var-field-decorator--placeholder-hint" for=""><span></span></label>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
         <div class="var-field-decorator__line var-field-decorator--line-disabled">
@@ -489,8 +483,7 @@ exports[`test form with select 2`] = `
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for=""><span></span></label>
-          <!--v-if-->
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for=""><span></span></label>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
         <div class="var-field-decorator__line">
@@ -522,8 +515,7 @@ exports[`test form with select 3`] = `
                 </div>
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for=""><span></span></label>
-          <!--v-if-->
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for=""><span></span></label>
           <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
         </div>
         <div class="var-field-decorator__line var-field-decorator--line-error">
@@ -556,7 +548,7 @@ exports[`test form with select 4`] = `
   <div class="var-select">
     <div class="var-menu var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
@@ -564,8 +556,7 @@ exports[`test form with select 4`] = `
                 <!--v-if-->
               </div><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
-          </div><label class="var-field-decorator__placeholder var--ellipsis" style="transform: translate(0px, calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))) scale(1); max-width: 0px;" for=""><span></span></label>
-          <!--v-if-->
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for=""><span></span></label>
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>
