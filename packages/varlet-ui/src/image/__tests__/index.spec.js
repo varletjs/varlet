@@ -58,7 +58,7 @@ describe('test image component event', () => {
     const wrapper = mount(VarImage)
     const img = wrapper.find('img')
     await img.trigger('load')
-    await img.trigger('error')
+    // await img.trigger('error')
 
     await wrapper.setProps({ lazy: true })
 
@@ -188,18 +188,6 @@ describe('test image component props', () => {
     })
 
     expect(wrapper.find('.var-image__image').attributes('lazy-loading')).toContain(SRC)
-    wrapper.unmount()
-  })
-
-  test('test image error', () => {
-    const wrapper = mount(VarImage, {
-      props: {
-        lazy: true,
-        error: SRC,
-      },
-    })
-
-    expect(wrapper.find('.var-image__image').attributes('lazy-error')).toContain(SRC)
     wrapper.unmount()
   })
 

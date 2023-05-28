@@ -121,6 +121,20 @@
 </template>
 ```
 
+### 加载失败提示
+
+```html
+<template>
+   <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+    <template #error>
+      <div style="width: 100px; height: 100px; background: #A1A1A1; text-align: center; line-height: 100px">
+        加载失败
+      </div>
+    </template>
+  </var-image>
+</template>
+```
+
 ### 使用本地路径
 
 在 `.vue` 文件中，`Vue组件` 不会如同原生 img 一样被构建工具自动处理模块请求，所以需要手动导入图片资源。
@@ -192,7 +206,6 @@ import logo from '../../assets/logo.png'
 | `radius`  | 图片圆角                                            | _string \| number_ | `-` |
 | `lazy`    | 是否开启懒加载                                         | _boolean_ | `false` |
 | `loading` | 当开启懒加载时, 加载中显示的图片                               | _string_ | `-` |
-| `error`   | 当开启懒加载时, 加载失败显示的图片                              | _string_ | `-` |
 | `ripple`  | 是否开启水波                                          | _boolean_ | `false` |
 | `block`   | 是否是块级元素                                         | _boolean_ | `true` |
 
@@ -203,3 +216,9 @@ import logo from '../../assets/logo.png'
 | `click` | 点击图片时触发 | `event: Event` |
 | `load` | 图片成功加载时触发(懒加载模式下失败时会多次尝试加载图片，只会在成功加载时触发) | `event: Event` |
 | `error` | 图片失败加载时触发(懒加载模式下失败时会多次尝试加载图片，只会在尝试次数结束时触发) | `event: Event` |
+
+### 插槽
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `error` | 自定义加载失败后的提示内容 | `-` |

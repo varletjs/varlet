@@ -4,4 +4,5 @@ export default {
   setRadius: 'Set Radius',
   useRipple: 'Use Ripple',
   useLazyLoad: 'Use LazyLoad',
+  customFailedPrompt: 'Load failure prompt',
 }

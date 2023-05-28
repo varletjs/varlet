@@ -12,10 +12,9 @@
       :class="n('image')"
       :alt="alt"
       :title="title"
-      :lazy-error="error"
       :lazy-loading="loading"
       :style="{ objectFit: fit }"
-      v-if="lazy"
+      v-if="lazy && !isError"
       v-lazy="src"
       @load="handleLoad"
       @error="handleError"
@@ -28,18 +27,21 @@
       :title="title"
       :style="{ objectFit: fit }"
       :src="src"
-      v-else
+      v-if="!lazy && !isError"
       @load="handleLoad"
       @error="handleError"
       @click="handleClick"
     />
+    <slot v-if="isError" name="error">
+      <img :class="n('image')" :alt="alt" :title="title" :style="{ objectFit: fit }" :src="src" />
+    </slot>
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
 import Lazy from '../lazy'
-import { defineComponent } from 'vue'
+import { type Ref, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
@@ -55,22 +57,26 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const isError: Ref<boolean> = ref(false)
+
     const handleLoad = (e: Event) => {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
       const { lazy, onLoad, onError } = props
 
       if (lazy) {
         el._lazy.state === 'success' && call(onLoad, e)
-        el._lazy.state === 'error' && call(onError, e)
+        if (el._lazy.state === 'error') {
+          call(onError, e)
+          isError.value = true
+        }
       } else {
         call(onLoad, e)
       }
     }
 
     const handleError = (e: Event) => {
-      const { lazy, onError } = props
-
-      !lazy && call(onError, e)
+      isError.value = true
+      call(props.onError, e)
     }
 
     const handleClick = (e: Event) => {
@@ -80,6 +86,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      isError,
       toSizeUnit,
       handleLoad,
       handleError,

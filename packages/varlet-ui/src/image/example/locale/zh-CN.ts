@@ -4,4 +4,5 @@ export default {
   setRadius: '设置圆角',
   useRipple: '开启水波',
   useLazyLoad: '开启懒加载',
+  customFailedPrompt: '加载失败提示',
 }
