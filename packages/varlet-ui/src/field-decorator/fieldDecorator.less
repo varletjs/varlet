@@ -72,7 +72,6 @@
     color: var(--field-decorator-blur-color);
     pointer-events: none;
     cursor: inherit;
-    transform: translate(0, 0) scale(1);
     transform-origin: left;
     transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.2s;
   }
@@ -111,6 +110,7 @@
     }
 
     .var-field-decorator__placeholder {
+      max-width: 100%;
       transform: translate(
         0,
         calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))
@@ -118,6 +118,7 @@
     }
 
     .var-field-decorator--placeholder-hint {
+      max-width: 133%;
       transform: translate(0, 0) scale(0.75) !important;
     }
 
@@ -188,6 +189,10 @@
     }
 
     .var-field-decorator--placeholder-hint {
+      max-width: calc(
+        133% - var(--field-decorator-outlined-normal-padding-left) -
+          var(--field-decorator-outlined-normal-padding-right)
+      );
       transform: translate(calc(var(--field-decorator-outlined-normal-padding-left)), -50%) scale(0.75);
     }
 
@@ -269,6 +274,10 @@
       }
 
       .var-field-decorator--middle-non-hint {
+        max-width: calc(
+          133% - var(--field-decorator-outlined-small-padding-left) -
+            var(--field-decorator-outlined-small-padding-right)
+        );
         padding-top: calc(
           var(--field-decorator-standard-small-non-hint-padding-top) + var(--field-decorator-middle-offset-y)
         );

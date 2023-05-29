@@ -56,6 +56,18 @@
     align-items: center;
   }
 
+  &__placeholder {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: var(--field-decorator-placeholder-size);
+    line-height: 1.5em;
+    color: var(--field-decorator-blur-color);
+    pointer-events: none;
+    cursor: inherit;
+  }
+
   &__arrow[var-select-cover] {
     flex-shrink: 0;
     font-size: var(--select-arrow-size);
