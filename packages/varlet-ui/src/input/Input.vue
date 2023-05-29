@@ -19,7 +19,6 @@
         clearable,
         cursor,
         composing: isComposing,
-        alwaysCustomPlaceholder: false,
         onClick: handleClick,
         onClear: handleClear,
       }"

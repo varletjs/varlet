@@ -54,11 +54,7 @@ watchDarkMode(dark)
       </template>
     </var-input>
 
-    <var-input
-      style="--field-decorator-middle-offset-y: 2.6vw"
-      :placeholder="pack.customIconSize"
-      v-model="standardValue10"
-    >
+    <var-input :placeholder="pack.customIconSize" v-model="standardValue10">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vw" />
       </template>
@@ -91,12 +87,7 @@ watchDarkMode(dark)
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input
-      variant="outlined"
-      style="--field-decorator-middle-offset-y: 2.6vw"
-      :placeholder="pack.customIconSize"
-      v-model="outlinedValue10"
-    >
+    <var-input variant="outlined" :placeholder="pack.customIconSize" v-model="outlinedValue10">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vw" />
       </template>
