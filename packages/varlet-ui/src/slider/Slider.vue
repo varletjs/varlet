@@ -83,7 +83,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { getLeft, multiplySizeUnit, getRect } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
@@ -205,7 +205,7 @@ export default defineComponent({
         return e.clientX - getLeft(currentTarget)
       }
 
-      return maxDistance.value - (e.clientY - currentTarget.getBoundingClientRect().top)
+      return maxDistance.value - (e.clientY - getRect(currentTarget).top)
     }
 
     const thumbStyle = (thumb: ThumbsListProps) => {

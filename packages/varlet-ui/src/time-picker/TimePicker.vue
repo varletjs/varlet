@@ -64,6 +64,7 @@ import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
 import type { Time, AmPm } from './props'
+import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 
@@ -255,7 +256,7 @@ export default defineComponent({
     }
 
     const setCenterAndRange = () => {
-      const { left, top, width, height } = (container.value as HTMLDivElement).getBoundingClientRect()
+      const { left, top, width, height } = getRect(container.value as HTMLDivElement)
 
       center.x = left + width / 2
       center.y = top + height / 2

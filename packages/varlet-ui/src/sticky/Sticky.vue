@@ -29,7 +29,7 @@
 <script lang="ts">
 import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
+import { doubleRaf, getParentScroller, raf, toPxNum, getRect } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { useEventListener, useMounted } from '@varlet/use'
@@ -72,13 +72,13 @@ export default defineComponent({
       let scrollerTop = 0
 
       if (scroller !== window) {
-        const { top } = (scroller as HTMLElement).getBoundingClientRect()
+        const { top } = getRect(scroller as HTMLElement)
         scrollerTop = top
       }
 
       const wrapper = wrapperEl.value as HTMLElement
       const sticky = stickyEl.value as HTMLElement
-      const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
+      const { top: stickyTop, left: stickyLeft } = getRect(sticky)
       const currentOffsetTop = stickyTop - scrollerTop
 
       if (currentOffsetTop <= offsetTop.value) {
