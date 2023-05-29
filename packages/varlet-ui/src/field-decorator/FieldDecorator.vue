@@ -114,7 +114,7 @@ import { defineComponent, ref, type Ref, computed, type ComputedRef, watch } fro
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { useEventListener, useMounted } from '@varlet/use'
 import { getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('field-decorator')
@@ -145,7 +145,7 @@ export default defineComponent({
       }
     }
 
-    const getLegendWidth = () => {
+    const resize = () => {
       const { size, hint, variant } = props
       if (!hint || variant !== 'outlined') {
         legendWidth.value = ''
@@ -165,8 +165,9 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    useMounted(getLegendWidth)
-    watch(() => [props.size, props.hint, props.variant], getLegendWidth)
+    useMounted(resize)
+    watch(() => [props.size, props.hint, props.variant], resize)
+    useEventListener(() => window, 'resize', resize)
 
     return {
       placeholderTextEl,
