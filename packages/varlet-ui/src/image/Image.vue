@@ -64,12 +64,16 @@ export default defineComponent({
       const { lazy, onLoad, onError } = props
 
       if (lazy) {
-        el._lazy.state === 'success' && call(onLoad, e)
+        if (el._lazy.state === 'success') {
+          isError.value = false
+          call(onLoad, e)
+        }
         if (el._lazy.state === 'error') {
-          call(onError, e)
           isError.value = true
+          call(onError, e)
         }
       } else {
+        isError.value = false
         call(onLoad, e)
       }
     }
