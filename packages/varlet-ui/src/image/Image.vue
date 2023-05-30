@@ -76,8 +76,12 @@ export default defineComponent({
     }
 
     const handleError = (e: Event) => {
-      isError.value = true
-      call(props.onError, e)
+      const { lazy, onError } = props
+
+      if (!lazy) {
+        isError.value = true
+        call(onError, e)
+      }
     }
 
     const handleClick = (e: Event) => {
