@@ -57,7 +57,7 @@ import { defineComponent, watch, ref, computed, Transition, type Ref, type Compu
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
 import { type TabProvider } from '../tab/provide'
-import { isNumber } from '@varlet/shared'
+import { clamp, isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
 import { createNamespace, call, formatElevation } from '../utils/components'
@@ -113,7 +113,7 @@ export default defineComponent({
       const { active } = props
 
       if (isNumber(active)) {
-        const activeIndex = active > length.value - 1 ? length.value - 1 : 0
+        const activeIndex = clamp(active, 0, length.value - 1)
         call(props['onUpdate:active'], activeIndex)
         return matchIndex(activeIndex)
       }
