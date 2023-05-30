@@ -108,7 +108,7 @@ import {
   type ComponentPublicInstance,
 } from 'vue'
 import { props, type CascadeColumn, type NormalColumn } from './props'
-import { isArray } from '@varlet/shared'
+import { clamp, clampArrayRange, isArray } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { toPxNum, getTranslateY, requestAnimationFrame } from '../utils/elements'
 import { pack } from '../locale'
@@ -167,32 +167,16 @@ export default defineComponent({
       call(props['onUpdate:show'], value)
     }
 
-    const boundaryTranslate = (scrollColumn: ScrollColumn) => {
-      const startTranslate = optionHeight.value + center.value
-      const endTranslate = center.value - scrollColumn.column.texts.length * optionHeight.value
-
-      if (scrollColumn.translate >= startTranslate) {
-        scrollColumn.translate = startTranslate
-      }
-
-      if (scrollColumn.translate <= endTranslate) {
-        scrollColumn.translate = endTranslate
-      }
-    }
-
-    const boundaryIndex = (scrollColumn: ScrollColumn, index: number) => {
-      const { length } = scrollColumn.column.texts
-
-      index = index >= length ? length - 1 : index
-      index = index <= 0 ? 0 : index
-
-      return index
+    const clampTranslate = (scrollColumn: ScrollColumn) => {
+      const minTranslate = center.value - scrollColumn.column.texts.length * optionHeight.value
+      const maxTranslate = optionHeight.value + center.value
+      scrollColumn.translate = clamp(scrollColumn.translate, minTranslate, maxTranslate)
     }
 
     const getTargetIndex = (scrollColumn: ScrollColumn, viewTranslate: number) => {
       const index = Math.round((center.value - viewTranslate) / optionHeight.value)
 
-      return boundaryIndex(scrollColumn, index)
+      return clampArrayRange(index, scrollColumn.column.texts)
     }
 
     const updateTranslate = (scrollColumn: ScrollColumn) => {
@@ -248,7 +232,7 @@ export default defineComponent({
       scrollColumn.prevY = clientY
       scrollColumn.translate += deltaY
 
-      boundaryTranslate(scrollColumn)
+      clampTranslate(scrollColumn)
 
       const now = performance.now()
       if (now - scrollColumn.momentumTime > MOMENTUM_RECORD_TIME) {
