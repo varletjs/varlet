@@ -48,12 +48,23 @@
     word-break: break-all;
     overflow-x: hidden;
     transition: color 0.25s;
-    transform: translateY(calc(-1 * var(--field-decorator-middle-offset-y) / 2));
   }
 
   &__label {
     display: flex;
     align-items: center;
+  }
+
+  &__placeholder {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: var(--field-decorator-placeholder-size);
+    line-height: 1.5em;
+    color: var(--field-decorator-blur-color);
+    pointer-events: none;
+    cursor: inherit;
   }
 
   &__arrow[var-select-cover] {

@@ -41,7 +41,7 @@ const value10 = ref('')
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input placeholder="Custom Icon Size" style="--field-decorator-middle-offset-y: 8px" v-model="value7">
+    <var-input placeholder="Custom Icon Size" v-model="value7">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
       </template>
@@ -106,8 +106,7 @@ const value10 = ref('')
     </var-input>
     <var-input 
       variant="outlined" 
-      placeholder="Custom Icon Size" 
-      style="--field-decorator-middle-offset-y: 8px" 
+      placeholder="Custom Icon Size"
       v-model="value7"
     >
       <template #prepend-icon>
@@ -195,7 +194,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |

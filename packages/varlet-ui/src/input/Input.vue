@@ -19,25 +19,25 @@
         clearable,
         cursor,
         composing: isComposing,
-        alwaysCustomPlaceholder: false,
         onClick: handleClick,
         onClear: handleClear,
       }"
     >
-      <template #prepend-icon>
+      <template v-if="$slots['prepend-icon']" #prepend-icon>
         <slot name="prepend-icon" />
       </template>
 
       <input
+        v-if="normalizedType === 'password'"
         :class="n('autocomplete')"
         :placeholder="!hint ? placeholder : undefined"
-        v-if="normalizedType === 'password'"
         :style="{
           '--input-placeholder-color': placeholderColor,
         }"
         :enterkeyhint="enterkeyhint"
       />
       <textarea
+        v-if="textarea"
         :class="
           classes(
             n('input'),
@@ -71,10 +71,10 @@
         @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-        v-if="textarea"
       >
       </textarea>
       <input
+        v-else
         :class="
           classes(
             n('input'),
@@ -105,7 +105,6 @@
         @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-        v-else
       />
 
       <template #append-icon>

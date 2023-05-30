@@ -32,7 +32,7 @@
           onClear: handleClear,
         }"
       >
-        <template #prepend-icon>
+        <template v-if="$slots['prepend-icon']" #prepend-icon>
           <slot name="prepend-icon" />
         </template>
 
@@ -69,6 +69,16 @@
               <span v-else>{{ label }}</span>
             </slot>
           </div>
+
+          <span
+            v-if="useCustomPlaceholder"
+            :class="classes(n('placeholder'), n('$--ellipsis'))"
+            :style="{
+              color: placeholderColor,
+            }"
+          >
+            {{ placeholder }}
+          </span>
 
           <slot name="arrow-icon" :focus="isFocus">
             <var-icon
@@ -150,6 +160,25 @@ export default defineComponent({
     const menuEl: Ref<HTMLElement | null> = ref(null)
 
     const placement = computed(() => (props.variant === 'outlined' ? 'bottom-start' : 'cover-top-start'))
+
+    const placeholderColor: ComputedRef<string | undefined> = computed(() => {
+      const { hint, blurColor, focusColor } = props
+
+      if (hint) {
+        return undefined
+      }
+
+      if (errorMessage.value) {
+        return 'var(--field-decorator-error-color)'
+      }
+
+      if (isFocus.value) {
+        return focusColor || 'var(--field-decorator-focus-color)'
+      }
+
+      return blurColor || 'var(--field-decorator-blur-color)'
+    })
+    const useCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue) && !isFocus.value)
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -349,6 +378,8 @@ export default defineComponent({
       menuEl,
       placement,
       cursor,
+      placeholderColor,
+      useCustomPlaceholder,
       n,
       classes,
       handleFocus,
