@@ -127,20 +127,10 @@
 <template>
    <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
-      <div class="error">加载失败</div>
+      <var-result type="error" title="加载失败" />
     </template>
   </var-image>
 </template>
-
-<style>
-  .error {
-    width: 100px; 
-    height: 100px; 
-    line-height: 100px;
-    background: #A1A1A1; 
-    text-align: center; 
-  }
-</style>
 ```
 
 ### 使用本地路径

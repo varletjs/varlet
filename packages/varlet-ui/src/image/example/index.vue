@@ -1,10 +1,13 @@
 <script setup>
 import VarImage from '..'
-import { AppType, watchLang } from '@varlet/cli/client'
 import VarRow from '../../row'
+import VarResult from '../../result'
+import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <template>
@@ -68,7 +71,7 @@ watchLang(use)
   <app-type>{{ pack.useFailureSlot }}</app-type>
   <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
-      <div class="image-example-error">{{ pack.failureText }}</div>
+      <var-result type="error" :title="pack.failureText" />
     </template>
   </var-image>
 </template>
@@ -83,13 +86,5 @@ watchLang(use)
   .image-example-margin-bottom {
     margin-bottom: 5px;
   }
-}
-
-.image-example-error {
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  background: #a1a1a1;
-  text-align: center;
 }
 </style>

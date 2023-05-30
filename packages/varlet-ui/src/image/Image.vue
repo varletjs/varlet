@@ -4,7 +4,7 @@
     :style="{
       width: toSizeUnit(width),
       height: toSizeUnit(height),
-      'border-radius': toSizeUnit(radius),
+      borderRadius: toSizeUnit(radius),
     }"
     v-ripple="{ disabled: !ripple }"
   >
@@ -32,18 +32,18 @@
       @error="handleError"
       @click="handleClick"
     />
-    <slot v-if="showErrorSlot" name="error" />
+
+    <slot name="error" v-if="showErrorSlot" />
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
-import Lazy from '../lazy'
+import Lazy, { type LazyHTMLElement } from '../lazy'
 import { watch, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
-import type { LazyHTMLElement } from '../lazy'
 
 const { n, classes } = createNamespace('image')
 
@@ -57,30 +57,27 @@ export default defineComponent({
   setup(props, { slots }) {
     const showErrorSlot: Ref<boolean> = ref(false)
 
-    const handleLoad = (e: Event) => {
-      const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
-      const { lazy, onLoad, onError } = props
-
-      if (lazy) {
-        el._lazy.state === 'success' && call(onLoad, e)
-        if (el._lazy.state === 'error') {
-          if (slots?.error) {
-            // if you set error slot, the error image will not work
-            showErrorSlot.value = true
-          }
-
-          call(onError, e)
-        }
-      } else {
-        call(onLoad, e)
-      }
+    const handleError = (e: Event) => {
+      // the value of showErrorSlot depends on whether there is an error slot
+      showErrorSlot.value = !!slots.error
+      call(props.onError, e)
     }
 
-    const handleError = (e: Event) => {
-      // this event is triggered by error event in default mode(not lazy)
-      // the value of showErrorSlot depends on whether there is an error slot
-      showErrorSlot.value = !!slots?.error
-      call(props.onError, e)
+    const handleLoad = (e: Event) => {
+      const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
+
+      if (props.lazy) {
+        if (el._lazy.state === 'success') {
+          call(props.onLoad, e)
+          return
+        }
+
+        if (el._lazy.state === 'error') {
+          handleError(e)
+        }
+      } else {
+        call(props.onLoad, e)
+      }
     }
 
     const handleClick = (e: Event) => {
