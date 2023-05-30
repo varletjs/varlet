@@ -12,13 +12,12 @@
       :class="n('image')"
       :alt="alt"
       :title="title"
-      :lazy-error="error"
       :lazy-loading="loading"
+      :lazy-error="error"
       :style="{ objectFit: fit }"
-      v-if="lazy"
+      v-if="lazy && !showErrorSlot"
       v-lazy="src"
       @load="handleLoad"
-      @error="handleError"
       @click="handleClick"
     />
 
@@ -28,18 +27,19 @@
       :title="title"
       :style="{ objectFit: fit }"
       :src="src"
-      v-else
+      v-if="!lazy && !showErrorSlot"
       @load="handleLoad"
       @error="handleError"
       @click="handleClick"
     />
+    <slot v-if="showErrorSlot" name="error" />
   </div>
 </template>
 
 <script lang="ts">
 import Ripple from '../ripple'
 import Lazy from '../lazy'
-import { defineComponent } from 'vue'
+import { watch, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
@@ -54,32 +54,50 @@ export default defineComponent({
     Ripple,
   },
   props,
-  setup(props) {
+  setup(props, { slots }) {
+    const showErrorSlot: Ref<boolean> = ref(false)
+
     const handleLoad = (e: Event) => {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
       const { lazy, onLoad, onError } = props
 
       if (lazy) {
         el._lazy.state === 'success' && call(onLoad, e)
-        el._lazy.state === 'error' && call(onError, e)
+        if (el._lazy.state === 'error') {
+          if (slots?.error) {
+            // if you set error slot, the error image will not work
+            showErrorSlot.value = true
+          }
+
+          call(onError, e)
+        }
       } else {
         call(onLoad, e)
       }
     }
 
     const handleError = (e: Event) => {
-      const { lazy, onError } = props
-
-      !lazy && call(onError, e)
+      // this event is triggered by error event in default mode(not lazy)
+      // the value of showErrorSlot depends on whether there is an error slot
+      showErrorSlot.value = !!slots?.error
+      call(props.onError, e)
     }
 
     const handleClick = (e: Event) => {
       call(props.onClick, e)
     }
 
+    watch(
+      () => props.src,
+      () => {
+        showErrorSlot.value = false
+      }
+    )
+
     return {
       n,
       classes,
+      showErrorSlot,
       toSizeUnit,
       handleLoad,
       handleError,

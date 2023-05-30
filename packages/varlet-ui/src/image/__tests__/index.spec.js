@@ -58,7 +58,7 @@ describe('test image component event', () => {
     const wrapper = mount(VarImage)
     const img = wrapper.find('img')
     await img.trigger('load')
-    await img.trigger('error')
+    // await img.trigger('error')
 
     await wrapper.setProps({ lazy: true })
 

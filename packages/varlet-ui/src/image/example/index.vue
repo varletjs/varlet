@@ -64,6 +64,13 @@ watchLang(use)
 
   <app-type>{{ pack.useLazyLoad }}</app-type>
   <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+
+  <app-type>{{ pack.useFailureSlot }}</app-type>
+  <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+    <template #error>
+      <div class="image-example-error">{{ pack.failureText }}</div>
+    </template>
+  </var-image>
 </template>
 
 <style scoped lang="less">
@@ -76,5 +83,13 @@ watchLang(use)
   .image-example-margin-bottom {
     margin-bottom: 5px;
   }
+}
+
+.image-example-error {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: #a1a1a1;
+  text-align: center;
 }
 </style>
