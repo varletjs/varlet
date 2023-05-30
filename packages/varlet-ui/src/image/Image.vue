@@ -13,6 +13,7 @@
       :alt="alt"
       :title="title"
       :lazy-loading="loading"
+      :lazy-error="error"
       :style="{ objectFit: fit }"
       v-if="lazy && !isError"
       v-lazy="src"
@@ -61,12 +62,12 @@ export default defineComponent({
 
     const handleLoad = (e: Event) => {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
-      const { lazy, onLoad, onError } = props
+      const { lazy, error, onLoad, onError } = props
 
       if (lazy) {
         el._lazy.state === 'success' && call(onLoad, e)
         if (el._lazy.state === 'error') {
-          isError.value = true
+          isError.value = !error
           call(onError, e)
         }
       } else {

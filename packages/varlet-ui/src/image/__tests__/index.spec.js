@@ -191,6 +191,18 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
+  test('test image error', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        lazy: true,
+        error: SRC,
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('lazy-error')).toContain(SRC)
+    wrapper.unmount()
+  })
+
   test('test image ripple', async () => {
     const wrapper = mount(VarImage, {
       props: {

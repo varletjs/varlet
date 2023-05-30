@@ -121,18 +121,26 @@
 </template>
 ```
 
-### 加载失败提示
+### 加载失败插槽
 
 ```html
 <template>
    <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
-      <div style="width: 100px; height: 100px; background: #A1A1A1; text-align: center; line-height: 100px">
-        加载失败
-      </div>
+      <div class="error">加载失败</div>
     </template>
   </var-image>
 </template>
+
+<style>
+  .error {
+    width: 100px; 
+    height: 100px; 
+    line-height: 100px;
+    background: #A1A1A1; 
+    text-align: center; 
+  }
+</style>
 ```
 
 ### 使用本地路径
@@ -221,4 +229,4 @@ import logo from '../../assets/logo.png'
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `error` | 自定义加载失败后的提示内容 | `-` |
+| `error` | 加载失败插槽 | `-` |

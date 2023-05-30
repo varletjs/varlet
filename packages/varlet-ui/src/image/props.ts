@@ -33,6 +33,9 @@ export const props = {
   loading: {
     type: String,
   },
+  error: {
+    type: String,
+  },
   lazy: {
     type: Boolean,
     default: false,

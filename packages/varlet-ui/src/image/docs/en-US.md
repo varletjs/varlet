@@ -121,18 +121,26 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
-### Load failure prompt
+### Load failure slot
 
 ```html
 <template>
    <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
-      <div style="width: 100px; height: 100px; background: #A1A1A1; text-align: center; line-height: 100px">
-        load failure
-      </div>
+      <div class="error">load failure</div>
     </template>
   </var-image>
 </template>
+
+<style>
+  .error {
+    width: 100px; 
+    height: 100px; 
+    line-height: 100px;
+    background: #A1A1A1; 
+    text-align: center; 
+  }
+</style>
 ```
 
 ### Use local paths
@@ -218,8 +226,8 @@ import logo from '../../assets/logo.png'
 | `load` | Triggered when the image is successfully loaded (when the image fails in lazy loading mode, it will only be triggered when the image is successfully loaded) | `event: Event` |
 | `error` | Triggered when an image fails to load (when an image fails in lazy loading mode, it will only be triggered when the number of attempts ends) | `event: Event` |
 
-### Slot
+### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `error` | Custom prompt content after loading failure | `-` |
+| `error` | Load failure slot | `-` |
