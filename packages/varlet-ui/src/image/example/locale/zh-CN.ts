@@ -5,4 +5,5 @@ export default {
   useRipple: '开启水波',
   useLazyLoad: '开启懒加载',
   useFailureSlot: '加载失败插槽',
+  failureText: '加载失败',
 }

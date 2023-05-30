@@ -214,6 +214,7 @@ import logo from '../../assets/logo.png'
 | `radius`  | 图片圆角                                            | _string \| number_ | `-` |
 | `lazy`    | 是否开启懒加载                                         | _boolean_ | `false` |
 | `loading` | 当开启懒加载时, 加载中显示的图片                               | _string_ | `-` |
+| `error`   | 当开启懒加载时, 加载失败显示的图片                              | _string_ | `-` |
 | `ripple`  | 是否开启水波                                          | _boolean_ | `false` |
 | `block`   | 是否是块级元素                                         | _boolean_ | `true` |
 

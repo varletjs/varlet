@@ -68,7 +68,7 @@ watchLang(use)
   <app-type>{{ pack.useFailureSlot }}</app-type>
   <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
-      <div class="image-example-error">加载失败</div>
+      <div class="image-example-error">{{ pack.failureText }}</div>
     </template>
   </var-image>
 </template>

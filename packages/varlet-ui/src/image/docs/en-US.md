@@ -215,6 +215,7 @@ import logo from '../../assets/logo.png'
 | `radius` | Image radius                                                                   | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |
+| `error` | When lazy loading is enabled, the image displayed in error                        | _string_ | `-` |
 | `ripple` | Whether to enable ripple                                                       | _boolean_ | `false` |
 | `block` | Whether it is a block element                                                  | _boolean_ | `true` |
 
