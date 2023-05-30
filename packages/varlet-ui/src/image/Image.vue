@@ -41,7 +41,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import Lazy from '../lazy'
-import { type Ref, defineComponent, ref } from 'vue'
+import { watch, defineComponent, ref, type Ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
@@ -64,16 +64,12 @@ export default defineComponent({
       const { lazy, onLoad, onError } = props
 
       if (lazy) {
-        if (el._lazy.state === 'success') {
-          isError.value = false
-          call(onLoad, e)
-        }
+        el._lazy.state === 'success' && call(onLoad, e)
         if (el._lazy.state === 'error') {
           isError.value = true
           call(onError, e)
         }
       } else {
-        isError.value = false
         call(onLoad, e)
       }
     }
@@ -86,6 +82,13 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       call(props.onClick, e)
     }
+
+    watch(
+      () => props.src,
+      () => {
+        isError.value = false
+      }
+    )
 
     return {
       n,
