@@ -22,7 +22,7 @@ Grammatical hints appear when you enter the keyword of the component name, and y
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/1.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
-Moving the mouse to the component name will display the document address of the component, which can be clicked to jump.
+Moving the mouse to the component name will display the document address of the component, which can be clicked to jump, and it also directly displays the properties, events and slots of the component in the form of a table.
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
