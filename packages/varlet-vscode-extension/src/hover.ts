@@ -103,10 +103,12 @@ export function registerHover(context: ExtensionContext) {
           }
         })
         .forEach((item) => {
-          hoverContents.push(new MarkdownString(item.link))
-          hoverContents.push(new MarkdownString(item.propsTableStr))
-          hoverContents.push(new MarkdownString(item.eventsTableStr))
-          hoverContents.push(new MarkdownString(item.slotsTableStr))
+          hoverContents.push(
+            new MarkdownString(item.link),
+            new MarkdownString(item.propsTableStr),
+            new MarkdownString(item.eventsTableStr),
+            new MarkdownString(item.slotsTableStr)
+          )
         })
 
       return new Hover(hoverContents)
