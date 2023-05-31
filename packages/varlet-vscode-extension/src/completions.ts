@@ -22,6 +22,22 @@ export function getWebTypesTags(): HtmlTag[] {
   return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
+export function disableProvide(document: TextDocument, position: Position) {
+  if (document.languageId !== 'vue') {
+    return false
+  }
+
+  const offset = document.offsetAt(position)
+  const lastText = document.getText().substring(offset)
+
+  // Suppress hinting within a single tag of an element
+  if (lastText.indexOf('>') >= lastText.indexOf('<')) {
+    return false
+  }
+
+  return lastText.includes('</template>')
+}
+
 export interface AttrProviderOptions {
   props: boolean
   events: boolean
@@ -29,7 +45,11 @@ export interface AttrProviderOptions {
 
 export function registerCompletions(context: ExtensionContext) {
   const componentsProvider: CompletionItemProvider = {
-    provideCompletionItems() {
+    provideCompletionItems(document: TextDocument, position: Position) {
+      if (disableProvide(document, position)) {
+        return null
+      }
+
       const completionItems: CompletionItem[] = []
 
       Object.keys(componentsMap).forEach((key) => {
