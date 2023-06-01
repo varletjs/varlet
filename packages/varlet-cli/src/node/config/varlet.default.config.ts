@@ -54,8 +54,8 @@ export default defineConfig({
             'en-US': 'Rich components',
           },
           description: {
-            'zh-CN': '提供 50 个高质量通用组件',
-            'en-US': 'Provide 50 high quality general purpose components',
+            'zh-CN': '提供 60+ 个高质量通用组件',
+            'en-US': 'Provide 60+ high quality general purpose components',
           },
         },
         {
