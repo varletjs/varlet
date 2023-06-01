@@ -22,7 +22,7 @@ export function getWebTypesTags(): HtmlTag[] {
   return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
-export function disableProvide(document: TextDocument, position: Position) {
+export function shouldDisableProvide(document: TextDocument, position: Position) {
   if (document.languageId !== 'vue') {
     return false
   }
@@ -30,12 +30,10 @@ export function disableProvide(document: TextDocument, position: Position) {
   const offset = document.offsetAt(position)
   const lastText = document.getText().substring(offset)
 
-  // Suppress hinting within a single tag of an element
-  if (lastText.indexOf('>') >= lastText.indexOf('<')) {
-    return false
-  }
+  const inAttrRange = lastText.indexOf('>') < lastText.indexOf('<')
+  const inTemplate = lastText.includes('</template>')
 
-  return lastText.includes('</template>')
+  return inAttrRange && inTemplate
 }
 
 export interface AttrProviderOptions {
@@ -46,7 +44,7 @@ export interface AttrProviderOptions {
 export function registerCompletions(context: ExtensionContext) {
   const componentsProvider: CompletionItemProvider = {
     provideCompletionItems(document: TextDocument, position: Position) {
-      if (disableProvide(document, position)) {
+      if (shouldDisableProvide(document, position)) {
         return null
       }
 
