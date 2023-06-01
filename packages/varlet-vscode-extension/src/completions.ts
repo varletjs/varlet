@@ -1,5 +1,3 @@
-import enWebTypes from '@varlet/ui/highlight/web-types.en-US.json'
-import zhWebTypes from '@varlet/ui/highlight/web-types.zh-CN.json'
 import icons, { pointCodes } from '@varlet/icons'
 import {
   languages,
@@ -14,13 +12,8 @@ import {
 } from 'vscode'
 import { componentsMap, type ComponentDescriptor } from './componentsMap'
 import { bigCamelize, isString, kebabCase } from '@varlet/shared'
-import { ATTR_RE, DOCUMENTATION_EN, DOCUMENTATION_ZH, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
-import { getLanguage } from './env'
-import { type HtmlTag } from './webTypes'
-
-export function getWebTypesTags(): HtmlTag[] {
-  return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
-}
+import { ATTR_RE, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
+import { getWebTypesTags, t } from './env'
 
 export function shouldDisableProvide(document: TextDocument, position: Position) {
   if (document.languageId !== 'vue') {
@@ -102,8 +95,7 @@ export function registerCompletions(context: ExtensionContext) {
     resolveCompletionItem(completionItem: CompletionItem) {
       const id = completionItem.label
       const url = `${ICONS_STATIC}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
-      const documentation = getLanguage() === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH
-      const markdownString = new MarkdownString(`[icon: ${id}](${documentation}/icon)
+      const markdownString = new MarkdownString(`[icon: ${id}](${t('documentation')}/icon)
 <p align="center"><img height="80" src="${url}"></p>
 <br>
 `)

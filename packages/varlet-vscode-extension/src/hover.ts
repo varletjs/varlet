@@ -1,118 +1,155 @@
-import { kebabCase, bigCamelize } from '@varlet/shared'
+import { kebabCase, bigCamelize, uniq } from '@varlet/shared'
 import { languages, Position, Hover, MarkdownString, type TextDocument, type ExtensionContext } from 'vscode'
 import { componentsMap } from './componentsMap'
-import {
-  TAG_BIG_CAMELIZE_RE,
-  DOCUMENTATION_EN,
-  DOCUMENTATION_ZH,
-  LANGUAGE_IDS,
-  TAG_LINK_RE,
-  LANGUAGES_TEXT,
-} from './constant'
-import { getLanguage } from './env'
-import { getWebTypesTags } from './completions'
+import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
+import { t, getWebTypesTags } from './env'
+
+export interface TableDataProp {
+  name?: string
+  description?: string
+  defaultValue?: string
+}
+
+export interface TableDataEvent {
+  name?: string
+  description?: string
+}
+
+export interface TableDataSlot {
+  name?: string
+  description?: string
+}
+
+export interface TableData {
+  link: string
+  props: TableDataProp[]
+  events: TableDataEvent[]
+  slots: TableDataSlot[]
+}
+
+export function getComponentTableData(component: string) {
+  const name = `var-${component}`
+  const bigCamelName = bigCamelize(name)
+  const tags = getWebTypesTags()
+  const tag = tags.find((tag) => tag.name === name)
+  const link = `[Varlet: ${bigCamelName} -> ${t('linkText')}](${t('documentation')}${componentsMap[component].path})`
+
+  if (!tag) {
+    return {
+      link,
+      props: [],
+      events: [],
+      slots: [],
+    }
+  }
+
+  const props = tag.attributes.map((attr) => {
+    return {
+      name: attr.name,
+      description: attr.description,
+      defaultValue: attr.default,
+    }
+  })
+
+  const events = tag.events.map((event) => {
+    return {
+      name: event.name,
+      description: event.description,
+    }
+  })
+
+  const slots =
+    tag.slots?.map((slot) => {
+      return {
+        name: slot.name,
+        description: slot.description,
+      }
+    }) ?? []
+
+  return {
+    link,
+    props,
+    events,
+    slots,
+  }
+}
+
+export function getComponentTableTemplate(component: string) {
+  const { link, props, events, slots } = getComponentTableData(component)
+
+  const propsTable = props.length
+    ? props.reduce(
+        (propsTable, prop) => {
+          propsTable += `| ${prop.name} | ${prop.description} | ${prop.defaultValue} | \n`
+          return propsTable
+        },
+        `\
+| ${t('prop')} | ${t('description')} | ${t('default')} |
+| :--- | :--- | :--- |
+`
+      )
+    : ''
+
+  const eventsTable = events.length
+    ? events.reduce(
+        (eventsTable, event) => {
+          eventsTable += `| ${event.name} | ${event.description} | \n`
+          return eventsTable
+        },
+        `\
+| ${t('event')} | ${t('description')} |
+| :--- | :--- |
+`
+      )
+    : ''
+
+  const slotsTable = slots.length
+    ? slots.reduce(
+        (slotsTable, slot) => {
+          slotsTable += `| ${slot.name} | ${slot.description} | \n`
+          return slotsTable
+        },
+        `\
+| ${t('slot')} | ${t('description')} |
+| :--- | :--- |
+`
+      )
+    : ''
+
+  return {
+    link,
+    propsTable,
+    eventsTable,
+    slotsTable,
+  }
+}
 
 export function registerHover(context: ExtensionContext) {
   function provideHover(document: TextDocument, position: Position) {
     const line = document.lineAt(position)
     const linkComponents = line.text.match(TAG_LINK_RE) ?? []
     const bigCamelizeComponents = line.text.match(TAG_BIG_CAMELIZE_RE) ?? []
-    const components = [...new Set([...linkComponents, ...bigCamelizeComponents.map(kebabCase)])] as string[]
-    const isEnglish = getLanguage() === 'en-US'
-    const languageText = LANGUAGES_TEXT[getLanguage()]
-    const tags = getWebTypesTags()
+    const components = uniq([...linkComponents, ...bigCamelizeComponents.map(kebabCase)]) as string[]
 
-    if (components.length) {
-      const contents = components
-        .filter((component) => componentsMap[component])
-        .map((component) => {
-          const name = `var-${component}`
-          const tag = tags.find((tag) => tag.name === name)
-          const { path } = componentsMap[component]
-          const bigCamelName = bigCamelize(name)
-          const text = `${languageText.hover.linkText}:${bigCamelName}`
-          const documentation = isEnglish ? DOCUMENTATION_EN : DOCUMENTATION_ZH
-          const link = `[Varlet -> ${text}](${documentation}${path})`
-
-          if (!tag) {
-            return {
-              link,
-              props: [],
-              events: [],
-              slots: [],
-            }
-          }
-
-          const props = tag.attributes.map((attr) => {
-            return {
-              name: attr.name,
-              description: attr.description,
-              defaultValue: attr.default,
-            }
-          })
-
-          const events = tag.events.map((event) => {
-            return {
-              name: event.name,
-              description: event.description,
-            }
-          })
-
-          const slots = tag.slots
-            ? tag.slots.map((slot) => {
-                return {
-                  name: slot.name,
-                  description: slot.description,
-                }
-              })
-            : []
-
-          return {
-            link,
-            props,
-            events,
-            slots,
-          }
-        })
-
-      const hoverContents: MarkdownString[] = []
-      contents
-        .map((item) => {
-          const { link, props, events, slots } = item
-          const { hover: hoverText } = languageText
-          let propsTableStr = `| ${hoverText.propname} | ${hoverText.description} | ${hoverText.default} | \n`
-          let eventsTableStr = `| ${hoverText.eventname} | ${hoverText.description} | \n`
-          let slotsTableStr = `| ${hoverText.slotname} | ${hoverText.description} | \n`
-          propsTableStr += `| :--- | :--- | :--- | \n`
-          eventsTableStr += `| :--- | :--- | \n`
-          slotsTableStr += `| :--- | :--- | \n`
-          props.forEach((prop) => {
-            propsTableStr += `| ${prop.name} | ${prop.description} | ${prop.defaultValue} | \n`
-          })
-          events.forEach((event) => {
-            eventsTableStr += `| ${event.name} | ${event.description} | \n`
-          })
-          slots.forEach((slot) => {
-            slotsTableStr += `| ${slot.name} | ${slot.description} | \n`
-          })
-          return {
-            link,
-            propsTableStr,
-            eventsTableStr,
-            slotsTableStr,
-          }
-        })
-        .forEach((item) => {
-          hoverContents.push(
-            new MarkdownString(item.link),
-            new MarkdownString(item.propsTableStr),
-            new MarkdownString(item.eventsTableStr),
-            new MarkdownString(item.slotsTableStr)
-          )
-        })
-
-      return new Hover(hoverContents)
+    if (!components.length) {
+      return
     }
+
+    const hoverContents = components
+      .filter((component: string) => componentsMap[component])
+      .map(getComponentTableTemplate)
+      .reduce((hoverContents, item) => {
+        hoverContents.push(
+          new MarkdownString(item.link),
+          new MarkdownString(item.propsTable),
+          new MarkdownString(item.eventsTable),
+          new MarkdownString(item.slotsTable)
+        )
+
+        return hoverContents
+      }, [] as MarkdownString[])
+
+    return new Hover(hoverContents)
   }
 
   context.subscriptions.push(
