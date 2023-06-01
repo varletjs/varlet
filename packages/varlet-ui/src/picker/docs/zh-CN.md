@@ -453,5 +453,8 @@ function handleChange(_, [i1, i2, i3]) {
 | `--picker-cancel-button-text-color` | `#888` |
 | `--picker-picked-border` | `1px solid rgba(0, 0, 0, 0.12)` |
 | `--picker-title-font-size` | `16px` |
+| `--picker-title-text-color` | `#555` |
+| `--picker-option-font-size` | `16px` |
+| `--picker-option-text-color` | `#555` |
 | `--picker-toolbar-padding` | `0 4px` |
 | `--picker-mask-background-image` | `linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)),linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4))` |
