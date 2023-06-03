@@ -7,7 +7,8 @@ exports[`test input clear 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-73" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-73"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon"><i class="var-icon var-icon--set var-icon-close-circle var-field-decorator__clear-icon" style="transition-duration: 0ms;" var-field-decorator-cover=""></i></div>
     </div>
     <div class="var-field-decorator__line">
@@ -27,7 +28,8 @@ exports[`test input events test input focus & blur 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-41"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -49,7 +51,8 @@ exports[`test input events test input focus & blur 2`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-41"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -72,7 +75,8 @@ exports[`test input events test input focus & blur 3`] = `
       <div class="var-field-decorator__middle">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-46" type="text" rows="8" style="resize: none;">
       </textarea>
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--focus var-field-decorator--placeholder-hint" for="var-input-46"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -95,7 +99,8 @@ exports[`test input events test input focus & blur 4`] = `
       <div class="var-field-decorator__middle">
         <!--v-if--><textarea class="var-input__input var-input--textarea" autocomplete="new-password" id="var-input-46" type="text" rows="8" style="resize: none;">
       </textarea>
-      </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-46"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -140,7 +145,8 @@ exports[`test input maxlength 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-61" type="text" maxlength="100">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-61"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -173,7 +179,8 @@ exports[`test input size 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-11" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-11"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -195,7 +202,8 @@ exports[`test input type 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-16" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-16"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -215,7 +223,8 @@ exports[`test input type 2`] = `
   <div class="var-field-decorator var--box var-field-decorator--standard">
     <div class="var-field-decorator__controller" style="cursor: text; overflow: visible;">
       <div class="var-field-decorator__icon"></div>
-      <div class="var-field-decorator__middle"><input class="var-input__autocomplete"><input class="var-input__input" autocomplete="new-password" id="var-input-21" type="password"></div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-21"><span></span></label>
+      <div class="var-field-decorator__middle"><input class="var-input__autocomplete"><input class="var-input__input" autocomplete="new-password" id="var-input-21" type="password"></div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -237,7 +246,8 @@ exports[`test input type 3`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-26" type="text" inputmode="numeric">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-26"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -259,7 +269,8 @@ exports[`test input type 4`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-31" type="tel">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-31"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -281,7 +292,8 @@ exports[`test input type 5`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-36" type="email">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-36"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -303,7 +315,8 @@ exports[`test input validation 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-91" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--error var-field-decorator--placeholder-hint" for="var-input-91"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -336,7 +349,8 @@ exports[`test input validation 2`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-91" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-91"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -358,7 +372,8 @@ exports[`test input validation 3`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-91" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-91"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -380,7 +395,8 @@ exports[`test input variant 1`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-1" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-1"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
@@ -402,15 +418,15 @@ exports[`test input variant 2`] = `
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-6" type="text">
-      </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--placeholder-hint" for="var-input-6"><span></span></label>
+      </div>
+      <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->
       </div>
     </div>
     <fieldset class="var-field-decorator__line">
       <legend class="var-field-decorator__line-legend var-field-decorator__line-legend--hint">
-        <!--teleport start-->
-        <!--teleport end-->
+        <!--v-if-->
       </legend>
     </fieldset>
   </div>
