@@ -1,3 +1,13 @@
+## [2.11.4](https://github.com/varletjs/varlet/compare/v2.11.3...v2.11.4) (2023-06-04)
+
+
+### Bug Fixes
+
+* **ui/pagination:** fix css var error ([f4a3a9f](https://github.com/varletjs/varlet/commit/f4a3a9f6cb0c01c1ed84e821e47d621139343f90))
+* **ui/pagination:** fix disabled style error and refactor css var ([2a78f52](https://github.com/varletjs/varlet/commit/2a78f527b7e2f5cb0568983f60c5dda7ebbeba86))
+
+
+
 ## [2.11.3](https://github.com/varletjs/varlet/compare/v2.11.2...v2.11.3) (2023-06-04)
 
 
