@@ -1,3 +1,22 @@
+## [2.11.3](https://github.com/varletjs/varlet/compare/v2.11.2...v2.11.3) (2023-06-04)
+
+
+### Bug Fixes
+
+* **ui/field-decorator:** fix calculation error when the filed decorato… ([#1061](https://github.com/varletjs/varlet/issues/1061)) ([a23fa95](https://github.com/varletjs/varlet/commit/a23fa9512d4ba0107188bcbe09bdce6943f62884))
+* **ui/field-decorator:** fix style error when placeholder is empty ([#1078](https://github.com/varletjs/varlet/issues/1078)) ([5040bd2](https://github.com/varletjs/varlet/commit/5040bd23452678996b3494c9d1629cc061d6aac7))
+* **ui/pagination:** fix a style bug([#1077](https://github.com/varletjs/varlet/issues/1077)) ([d7d6b0d](https://github.com/varletjs/varlet/commit/d7d6b0dc8e2baaecfaf0576ba5bd6a94a5e981e5))
+
+
+### Features
+
+* **extension:** Filter component fill prompt when entering information inside an element ([#1066](https://github.com/varletjs/varlet/issues/1066)) ([1e67c51](https://github.com/varletjs/varlet/commit/1e67c510b1b921256fdc8ba2bb5aabb8bd585079))
+* **extension:** show document when hover ([#1065](https://github.com/varletjs/varlet/issues/1065)) ([0294701](https://github.com/varletjs/varlet/commit/02947016752f4c685ec4f4aff577e5200ce5d883))
+* **ui/image:** add generic error slot ([#1060](https://github.com/varletjs/varlet/issues/1060)) ([0cedc08](https://github.com/varletjs/varlet/commit/0cedc0811e70105ae8ea67cc0e455b323fb6c3bc))
+* **ui/picker:** add more css var ([4930457](https://github.com/varletjs/varlet/commit/493045757e80081cead829f1c6010980f71d7a5c))
+
+
+
 ## [2.11.2](https://github.com/varletjs/varlet/compare/v2.11.1...v2.11.2) (2023-05-27)
 
 
