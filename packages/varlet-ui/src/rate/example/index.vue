@@ -48,7 +48,7 @@ watchDarkMode(dark)
   <var-rate v-model="scores.score4" size="8vw" gap="1vw" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
-  <var-rate v-model="scores.score7" :count="8" half />
+  <var-rate v-model="scores.score6" :count="8" half />
   <var-rate
     v-model="scores.score6"
     :count="8"
