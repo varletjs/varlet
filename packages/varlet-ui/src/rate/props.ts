@@ -56,6 +56,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  clearable: {
+    type: Boolean,
+    default: false,
+  },
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },

@@ -58,6 +58,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
     const currentHoveringValue = ref<number>(-1)
+    const lastScore = ref<number>(Number(props.modelValue))
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -97,11 +98,24 @@ export default defineComponent({
     }
 
     const changeValue = (score: number, event: MouseEvent) => {
-      if (props.half) {
+      const { half, clearable } = props
+
+      if (half) {
         const { offsetWidth } = event.target as HTMLDivElement
 
-        if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
+        if (event.offsetX <= Math.floor(offsetWidth / 2)) {
+          score -= 0.5
+        }
       }
+
+      // set score to 0 when last score is equal to current score
+      // and the value of clearable is true
+      if (lastScore.value === score && clearable) {
+        score = 0
+      }
+
+      // update last score
+      lastScore.value = score
 
       call(props['onUpdate:modelValue'], score)
     }

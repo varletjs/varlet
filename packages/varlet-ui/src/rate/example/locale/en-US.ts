@@ -8,4 +8,5 @@ export default {
   listeningEvents: 'Listen Events',
   validate: 'Validate',
   rateMessage: 'It has to be greater than 2',
+  clearable: 'Can be cleared',
 }
