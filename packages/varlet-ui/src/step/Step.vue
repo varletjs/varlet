@@ -19,7 +19,7 @@
           <slot />
         </div>
       </div>
-      <div :class="n(`${direction}-line`)" v-if="!isLastChild" :style="{ margin: lineMargin }"></div>
+      <div :class="n(`${direction}-line`)" v-if="!isLastChild"></div>
     </div>
   </div>
 </template>
@@ -43,7 +43,6 @@ export default defineComponent({
   props,
   setup() {
     const main: Ref<HTMLDivElement | null> = ref(null)
-    const lineMargin: Ref<string> = ref('')
     const isLastChild: Ref<boolean> = ref(false)
 
     const { index, steps, bindSteps } = useSteps()
@@ -69,10 +68,6 @@ export default defineComponent({
 
     watch(length, (newLength) => {
       isLastChild.value = newLength - 1 === index.value
-      if (main.value) {
-        const margin = (main.value as HTMLDivElement).offsetWidth / 2 - 14
-        lineMargin.value = `0 -${margin}px`
-      }
     })
 
     return {
@@ -83,7 +78,6 @@ export default defineComponent({
       isActive,
       isCurrent,
       direction,
-      lineMargin,
       activeColor,
       inactiveColor,
       isLastChild,
