@@ -103,16 +103,12 @@ export default defineComponent({
       if (half) {
         const { offsetWidth } = event.target as HTMLDivElement
 
-        if (event.offsetX <= Math.floor(offsetWidth / 2)) {
-          score -= 0.5
-        }
+        if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
       }
 
       // set score to 0 when last score is equal to current score
       // and the value of clearable is true
-      if (lastScore.value === score && clearable) {
-        score = 0
-      }
+      if (lastScore.value === score && clearable) score = 0
 
       // update last score
       lastScore.value = score
