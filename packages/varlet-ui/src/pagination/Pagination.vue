@@ -68,7 +68,7 @@
     </li>
 
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
-      <var-menu :disabled="disabled" v-model:show="menuVisible" :offset-x="-4">
+      <var-menu placement="cover-top" :disabled="disabled" v-model:show="menuVisible">
         <div
           :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])"
           @click.stop="showMenu"
