@@ -47,6 +47,16 @@
   flex: 1;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+  &:last-child {
+    .var-step__horizontal-line {
+      width: 0;
+    }
+
+    .var-step__vertical-line {
+      height: 0;
+    }
+  }
+
   &__horizontal {
     display: flex;
     flex-direction: column;
@@ -116,15 +126,5 @@
 
   &__icon[var-step-cover] {
     font-size: var(--step-tag-icon-size);
-  }
-}
-
-.var-step:last-child {
-  .var-step__horizontal-line {
-    width: 0;
-  }
-
-  .var-step__vertical-line {
-    height: 0;
   }
 }
