@@ -1,8 +1,9 @@
 <template>
   <div :class="n()">
     <div :class="n(direction)">
-      <div :class="n(`${direction}-main`)" :ref="getRef">
+      <div :class="n(`${direction}-main`)">
         <div
+          :ref="getRef"
           :class="classes(n(`${direction}-tag`), [isActive || isCurrent, n(`${direction}-tag--active`)])"
           :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
           @click="click"
@@ -56,7 +57,7 @@ export default defineComponent({
     const stepProvider: StepProvider = {
       index,
     }
-
+    const { size } = steps
     const click = () => clickStep(index.value)
 
     const getRef = (el: Element | ComponentPublicInstance | null) => {
@@ -64,14 +65,14 @@ export default defineComponent({
         main.value = el as HTMLDivElement
       }
     }
-
     bindSteps(stepProvider)
 
     watch(length, (newLength) => {
       isLastChild.value = newLength - 1 === index.value
+    })
+    watch(size, (newWidth) => {
       if (main.value) {
-        const margin = (main.value as HTMLDivElement).offsetWidth / 2 - 14
-        lineMargin.value = `0 -${margin}px`
+        lineMargin.value = `0 -${(newWidth - (main.value?.offsetWidth + main.value?.offsetWidth / 2)) / 2}px`
       }
     })
 

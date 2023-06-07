@@ -1,4 +1,4 @@
-import { type ComputedRef } from 'vue'
+import { type ComputedRef, Ref } from 'vue'
 import { useChildren } from '@varlet/use'
 import { type StepProvider } from '../step/provide'
 
@@ -9,6 +9,7 @@ export interface StepsProvider {
   length: ComputedRef<number>
   direction: ComputedRef<string>
   clickStep: (index: number) => void
+  size: Ref<number>
 }
 
 export const STEPS_BIND_STEP_KEY = Symbol('STEPS_BIND_STEP_KEY')
