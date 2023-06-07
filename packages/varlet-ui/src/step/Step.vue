@@ -66,7 +66,6 @@ export default defineComponent({
       }
     }
     bindSteps(stepProvider)
-
     watch(length, (newLength) => {
       isLastChild.value = newLength - 1 === index.value
     })
