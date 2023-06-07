@@ -43,5 +43,5 @@ watchDarkMode(dark)
     <var-step>{{ pack.fourth }}</var-step>
   </var-steps>
 
-  <var-button type="primary" block @click="next" style="margin-top: 20px">{{ pack.next }}</var-button>
+  <var-button type="primary" block @click="next">{{ pack.next }}</var-button>
 </template>
