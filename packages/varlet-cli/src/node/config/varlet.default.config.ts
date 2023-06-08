@@ -231,7 +231,7 @@ export default defineConfig({
     'color-hl-group-f': '#ff9422',
     'color-hl-group-g': '#ff9422',
     'color-hl-group-h': '#06a6e9',
-    'color-hl-group-i': '#f23733',
+    'color-hl-group-i': '#2196f3',
   },
   darkTheme: {
     'color-body': '#121212',
@@ -272,7 +272,7 @@ export default defineConfig({
     'color-hl-group-f': '#ff7b1e',
     'color-hl-group-g': '#ff7b1e',
     'color-hl-group-h': '#14a6e9',
-    'color-hl-group-i': '#ed4648',
+    'color-hl-group-i': '#96cbfe',
   },
   icons: {
     name: 'varlet-icons',
