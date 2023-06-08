@@ -114,6 +114,22 @@ const score = ref(3)
 </template>
 ```
 
+### Can be cleared
+
+The `clearable` property Allows users to clear score.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const score = ref(3.5)
+</script>
+
+<template>
+  <var-rate v-model="score" clearable half/>
+</template>
+```
+
 ### Listen Events
 
 Other interaction logic is completed by calling the `change` event.
@@ -176,6 +192,7 @@ const score = ref(3)
 | `disabled`       | Whether or not rating is prohibited | _boolean_ | `false` |
 | `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#aaa` |
 | `readonly`       | Whether to use rating read-only | _boolean_ | `false` |
+| `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |
 | `rules`          | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
 

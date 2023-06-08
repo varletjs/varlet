@@ -114,6 +114,22 @@ const score = ref(3)
   <var-rate v-model="score" readonly/>
 </template>
 ```
+### 可清空
+
+通过 `clearable` 属性允许用户清空评分。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const score = ref(3.5)
+</script>
+
+<template>
+  <var-rate v-model="score" clearable half/>
+</template>
+```
+
 
 
 ### 监听事件
@@ -178,6 +194,7 @@ const score = ref(3)
 | `disabled`       | 是否禁止评分 | _boolean_ | `false`|
 | `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
 | `readonly`       | 是否使用评分只读 | _boolean_ | `false` |
+| `clearable`       | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
 | `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
 
