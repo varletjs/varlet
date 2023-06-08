@@ -8,4 +8,5 @@ export default {
   listeningEvents: '监听事件',
   validate: '字段校验',
   rateMessage: '必须大于2',
+  clearable: '可清空',
 }

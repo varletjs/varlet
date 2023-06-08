@@ -19,6 +19,7 @@ const scores = reactive({
   score9: 3,
   score10: 3,
   score11: 3,
+  score12: 3.5,
 })
 
 function handleChange(score) {
@@ -62,6 +63,9 @@ watchDarkMode(dark)
   <app-type>{{ pack.disableTheRating }}</app-type>
   <var-rate v-model="scores.score7" disabled />
   <var-rate v-model="scores.score8" readonly />
+
+  <app-type>{{ pack.clearable }}</app-type>
+  <var-rate v-model="scores.score12" clearable half />
 
   <app-type>{{ pack.listeningEvents }}</app-type>
   <var-rate v-model="scores.score10" @change="handleChange" />
