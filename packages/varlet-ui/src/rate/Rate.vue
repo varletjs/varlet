@@ -58,7 +58,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
     const currentHoveringValue = ref<number>(-1)
-    const lastScore = ref<number>(Number(props.modelValue))
+    let lastScore = Number(props.modelValue)
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -108,10 +108,10 @@ export default defineComponent({
 
       // set score to 0 when last score is equal to current score
       // and the value of clearable is true
-      if (lastScore.value === score && clearable) score = 0
+      if (lastScore === score && clearable) score = 0
 
       // update last score
-      lastScore.value = score
+      lastScore = score
 
       call(props['onUpdate:modelValue'], score)
     }
