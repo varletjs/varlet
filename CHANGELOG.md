@@ -1,3 +1,17 @@
+## [2.11.5](https://github.com/varletjs/varlet/compare/v2.11.4...v2.11.5) (2023-06-09)
+
+
+### Bug Fixes
+
+* **steps:** reimplement the connection line style ([#1082](https://github.com/varletjs/varlet/issues/1082)) ([132b0b8](https://github.com/varletjs/varlet/commit/132b0b8d7b234d275a6dddc60a5574b914baf8a8))
+
+
+### Features
+
+* **ui/rate:** allow to clear score ([#1080](https://github.com/varletjs/varlet/issues/1080)) ([b206b19](https://github.com/varletjs/varlet/commit/b206b19d4abd97e605321e76f7b1e691c3af2c60))
+
+
+
 ## [2.11.4](https://github.com/varletjs/varlet/compare/v2.11.3...v2.11.4) (2023-06-04)
 
 
