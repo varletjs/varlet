@@ -48,8 +48,8 @@ import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
+import { useWindowResize } from '@varlet/use'
 import { type SwipeItemProvider } from '../swipe-item/provide'
-import { useEventListener } from '@varlet/use'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -393,7 +393,7 @@ export default defineComponent({
     onActivated(resize)
     onDeactivated(stopAutoplay)
     onUnmounted(stopAutoplay)
-    useEventListener(() => window, 'resize', resize)
+    useWindowResize(resize)
 
     return {
       n,
