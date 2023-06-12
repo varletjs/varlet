@@ -1,6 +1,6 @@
 import { inBrowser, isFunction } from '@varlet/shared'
 import { isRef, onDeactivated, onBeforeUnmount, unref, watch, type Ref, type WatchStopHandle } from 'vue'
-import { useMounted } from './useMounted.js'
+import { useMounted } from './useMounted'
 
 export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null> | (() => EventTarget)
 
