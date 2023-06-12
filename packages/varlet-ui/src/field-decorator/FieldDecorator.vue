@@ -27,7 +27,7 @@
       </div>
 
       <label
-        v-if="hint"
+        v-if="placeholder && hint"
         :class="
           classes(
             n('placeholder'),
@@ -75,7 +75,7 @@
           :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
           :style="{ width: legendWidth }"
         >
-          <teleport to="body" v-if="hint">
+          <teleport to="body" v-if="placeholder && hint">
             <span
               ref="placeholderTextEl"
               :class="
@@ -110,7 +110,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, type Ref, computed, type ComputedRef, watch } from 'vue'
+import { defineComponent, ref, type Ref, computed, type ComputedRef, onUpdated } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
@@ -146,8 +146,8 @@ export default defineComponent({
     }
 
     const resize = () => {
-      const { size, hint, variant } = props
-      if (!hint || variant !== 'outlined') {
+      const { size, hint, variant, placeholder } = props
+      if (!placeholder || !hint || variant !== 'outlined') {
         legendWidth.value = ''
         return
       }
@@ -166,7 +166,7 @@ export default defineComponent({
     }
 
     useMounted(resize)
-    watch(() => [props.size, props.hint, props.variant], resize)
+    onUpdated(resize)
     useEventListener(() => window, 'resize', resize)
 
     return {

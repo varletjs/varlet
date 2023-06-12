@@ -121,4 +121,52 @@ describe('test rate component props', () => {
 
     wrapper.unmount()
   })
+
+  test('test rate clearable', async () => {
+    const onChange = jest.fn()
+    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+
+    const wrapper = mount(VarRate, {
+      props: {
+        modelValue: 1,
+        onChange,
+        clearable: true,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await wrapper.find('.var-rate__content').trigger('click')
+    expect(onChange).toHaveBeenCalledTimes(1)
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+    expect(wrapper.props('modelValue')).toBe(0)
+
+    wrapper.unmount()
+  })
+
+  test('test rate half clearable', async () => {
+    const onChange = jest.fn()
+    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+
+    const wrapper = mount(VarRate, {
+      props: {
+        half: true,
+        clearable: true,
+        modelValue: 0,
+        onChange,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    await trigger(wrapper.find('.var-rate__content'), 'click')
+    expect(onChange).toHaveBeenCalledTimes(1)
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+    expect(wrapper.props('modelValue')).toBe(0.5)
+
+    await trigger(wrapper.find('.var-rate__content'), 'click')
+    expect(onChange).toHaveBeenCalledTimes(2)
+    expect(onUpdateModelValue).toHaveBeenCalledTimes(2)
+    expect(wrapper.props('modelValue')).toBe(0)
+
+    wrapper.unmount()
+  })
 })

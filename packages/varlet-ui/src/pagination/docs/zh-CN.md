@@ -173,10 +173,11 @@
 
 | 变量名 | 默认值 |
 | --- | --- |
+| `--pagination-text-color` | `#555` |
 | `--pagination-font-size` | `var(--font-size-md)` |
 | `--pagination-active-color` | `#fff` |
 | `--pagination-active-bg-color` | `var(--color-primary)` |
-| `--pagination-hover-bg-color` | `#edf5ff` |
+| `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
 | `--pagination-total-margin` | `0 12px` |
 | `--pagination-total-line-height` | `24px` |
 | `--pagination-item-width` | `32px` |

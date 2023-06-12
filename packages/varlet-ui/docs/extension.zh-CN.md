@@ -22,7 +22,7 @@ VsCode 插件市场搜索 [varlet-vscode-extension](https://marketplace.visualst
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/1.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
-鼠标移动到组件名会显示组件的文档地址，可以点击进行跳转。
+鼠标移动到组件名会显示组件的文档地址用来点击跳转，也直接以表格的形式展示组件的属性、事件和插槽。
 
 <img src="https://varlet.gitee.io/varlet-ui/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 

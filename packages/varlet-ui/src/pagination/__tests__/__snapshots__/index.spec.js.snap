@@ -110,7 +110,8 @@ exports[`basic mode mount 1`] = `
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-41" type="text">
-          </div><label class="var-field-decorator__placeholder var--ellipsis" for="var-input-41"><span></span></label>
+          </div>
+          <!--v-if-->
           <div class="var-field-decorator__icon">
             <!--v-if-->
           </div>

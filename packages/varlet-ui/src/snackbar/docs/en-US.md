@@ -397,4 +397,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--snackbar-error-background` | `var(--color-danger)` |
 | `--snackbar-warning-background` | `var(--color-warning)` |
 | `--snackbar-content-padding` | `14px 16px` |
-| `--snackbar-action-margin` | `0 16px 0 0` |
+| `--snackbar-action-margin` | `0 8px 0` |
+| `--snackbar-vertical-action-margin` | `0 8px 8px 0` |
