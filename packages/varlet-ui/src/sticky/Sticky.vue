@@ -32,7 +32,7 @@ import { props } from './props'
 import { doubleRaf, getParentScroller, raf, toPxNum, getRect } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, useMounted, useWindowResize } from '@varlet/use'
 
 const { n, classes } = createNamespace('sticky')
 
@@ -142,8 +142,8 @@ export default defineComponent({
     useMounted(addScrollListener)
     onUnmounted(removeScrollListener)
     onDeactivated(removeScrollListener)
+    useWindowResize(resize)
     useEventListener(() => window, 'scroll', handleScroll)
-    useEventListener(() => window, 'resize', resize)
 
     return {
       n,
