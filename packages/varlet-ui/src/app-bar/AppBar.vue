@@ -39,7 +39,7 @@
 import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('app-bar')
 
@@ -74,7 +74,7 @@ export default defineComponent({
       }
     })
 
-    useMounted(computePadding)
+    onSmartMounted(computePadding)
     onUpdated(computePadding)
 
     return {

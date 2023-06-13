@@ -17,6 +17,7 @@ import {
   type VNode,
   type ComponentInternalInstance,
   type Ref,
+  type WritableComputedRef,
   type ComponentPublicInstance,
 } from 'vue'
 import { isArray } from '@varlet/shared'
@@ -294,7 +295,7 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   props: P,
   key: K,
   options: UseVModelOptions<P, K> = {}
-) {
+): WritableComputedRef<P[K]> | Ref<P[K]> {
   const { passive = true, eventName, defaultValue, emit } = options
   const event = eventName ?? `onUpdate:${key.toString()}`
 

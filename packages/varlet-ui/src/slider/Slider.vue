@@ -87,7 +87,7 @@ import { getLeft, multiplySizeUnit, getRect } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type SliderProvider } from './provide'
 
 const { n, classes } = createNamespace('slider')
@@ -429,7 +429,7 @@ export default defineComponent({
 
     watch(maxDistance, () => setProps())
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
       maxDistance.value = (sliderEl.value as HTMLDivElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']

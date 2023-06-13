@@ -25,7 +25,7 @@ import { toSizeUnit } from '../utils/elements'
 import { isBoolean, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('divider')
 
@@ -65,7 +65,7 @@ export default defineComponent({
       state.withText = Boolean(slots.default) || Boolean(props.description)
     }
 
-    useMounted(() => {
+    onSmartMounted(() => {
       checkHasText()
     })
 

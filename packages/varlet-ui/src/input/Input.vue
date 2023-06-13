@@ -124,7 +124,7 @@ import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
@@ -344,7 +344,7 @@ export default defineComponent({
 
     call(bindForm, inputProvider)
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (props.autofocus) {
         focus()
       }
