@@ -1,4 +1,5 @@
 :root {
+  --link-default-color: #555;
   --link-primary-color: var(--color-primary);
   --link-danger-color: var(--color-danger);
   --link-success-color: var(--color-success);
@@ -16,7 +17,7 @@
   cursor: pointer;
   font-family: inherit;
   white-space: nowrap;
-  color: inherit;
+  color: var(--link-default-color);
   text-decoration: none;
   font-size: var(--link-font-size);
 
@@ -31,7 +32,7 @@
   }
 
   &--default {
-    color: inherit;
+    color: var(--link-default-color);
   }
 
   &--primary {
