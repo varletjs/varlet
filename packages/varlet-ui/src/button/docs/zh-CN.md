@@ -358,6 +358,7 @@ function handleAutoLoadingClick() {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--button-default-color` | `#f5f5f5` |
+| `--button-default-text-color` | `#555` |
 | `--button-primary-color` | `var(--color-primary)`|
 | `--button-danger-color` |  `var(--color-danger)`|
 | `--button-success-color` | `var(--color-success)`|
