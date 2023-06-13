@@ -114,6 +114,7 @@
 
 | 变量名 | 默认值                          |
 | --- |------------------------------|
+| `--link-default-color` | `#555`                       |
 | `--link-primary-color` | `var(--color-primary)`       |
 | `--link-danger-color` | `var(--color-danger)`        |
 | `--link-success-color` | `var(--color-success)`       |
