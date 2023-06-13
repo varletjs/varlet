@@ -33,6 +33,7 @@ import menu from './menu'
 import breadcrumb from './breadcrumb'
 import paper from './paper'
 import avatar from './avatar'
+import link from './link'
 
 export default {
   // common
@@ -80,4 +81,5 @@ export default {
   ...breadcrumb,
   ...paper,
   ...avatar,
+  ...link,
 } as StyleVars

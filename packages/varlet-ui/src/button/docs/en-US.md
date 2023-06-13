@@ -340,7 +340,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable                       | Default                      |
 | ------------------------------ | ---------------------------- |
 | `--button-default-color`       | `#f5f5f5`                    |
-| `--button-default-color-text`  | `#555`                       |
+| `--button-default-text-color`  | `#555`                       |
 | `--button-primary-color`       | `var(--color-primary)`       |
 | `--button-danger-color`        | `var(--color-danger)`        |
 | `--button-success-color`       | `var(--color-success)`       |
