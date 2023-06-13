@@ -31,8 +31,6 @@ import VarletUI, { Context } from '@varlet/ui'
 import '@varlet/touch-emulator'
 import { getCurrentInstance } from 'vue'
 
-Context.touchmoveForbid = false
-
 await appendStyle()
 
 export function installVarletUI() {

@@ -87,6 +87,39 @@ function handleAfterRead(file) {
 </template>
 ```
 
+### 使用进度条
+
+```html
+<script setup>
+import { ref, onUnmounted } from 'vue'
+
+const files = ref([])
+let timer
+
+function handleAfterRead(file) {
+  file.state = 'loading'
+
+  timer = window.setInterval(() => {
+    if (file.progress === 100) {
+      window.clearInterval(timer)
+      file.state = 'success'
+      return
+    }
+
+    file.progress += 10
+  }, 250)
+}
+
+onUnmounted(() => {
+  window.clearInterval(timer)
+})
+</script>
+
+<template>
+  <var-uploader v-model="files" @after-read="handleAfterRead"/>
+</template>
+```
+
 ### 文件数量限制
 
 ```html
@@ -116,6 +149,27 @@ const files = ref([])
 <template>
   <var-uploader v-model="files" :maxsize="1024" @oversize="Snackbar.warning('文件大小超出限制')" />
 </template>
+```
+
+### 文件列表过滤
+
+通过 `before-filter` 事件对文件进行过滤，返回一个被过滤之后的 `VarFile` 数组。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+function handleBeforeFilter(files) {
+  return files.filter(file => file.name.endsWith('png'))
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" multiple @before-filter="handleBeforeFilter" />
+</template>
+
 ```
 
 ### 上传预处理
@@ -313,6 +367,7 @@ const files = ref([
 | `multiple` | 是否多选文件 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
+| `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
 | `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
@@ -332,6 +387,7 @@ const files = ref([
 | `cover` | 封面图 | _string_ | `-` |
 | `fit` | 封面图填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `-` |
 | `state` | 文件上传状态，可选值为 `loading` `success` `error` | _string_ | `-` |
+| `progress` | 文件上传进度，范围 [0, 100] | _number_ | `-` |
 
 ### VarFileUtils
 
@@ -358,6 +414,7 @@ const files = ref([
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
+| `before-filter` | `before-read` 前触发，对文件列表进行过滤 | `files: VarFile[]` |
 | `before-read` | 文件读取前触发，返回假值阻止文件读取(支持 promise) | `file: VarFile` |
 | `after-read` | 文件读取后触发 | `file: VarFile` |
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
@@ -399,6 +456,7 @@ const files = ref([
 | `--uploader-file-indicator-normal-color`  | `var(--color-disabled)`                                                                      |
 | `--uploader-file-indicator-success-color` | `var(--color-success)`                                                                       |
 | `--uploader-file-indicator-error-color`   | `var(--color-danger)`                                                                        |
+| `--uploader-file-progress-color`   | `var(--color-primary)`                                                                        |
 | `--uploader-disabled-color`               | `#ddd`                                                                                       |
 | `--uploader-disabled-text-color`          | `var(--color-text-disabled)`                                                                                       |
 | `--uploader-loading-background`           | `linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0))` |

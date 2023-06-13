@@ -29,6 +29,7 @@ export interface MenuProps extends BasicAttributes {
   offsetY?: string | number
   teleport?: TeleportProps['to']
   sameWidth?: boolean
+  elevation?: boolean | number | string
   defaultStyle?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

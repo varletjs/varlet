@@ -1,10 +1,13 @@
 <script setup>
 import VarImage from '..'
-import { AppType, watchLang } from '@varlet/cli/client'
 import VarRow from '../../row'
+import VarResult from '../../result'
+import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)
+watchDarkMode(dark)
 </script>
 
 <template>
@@ -64,6 +67,13 @@ watchLang(use)
 
   <app-type>{{ pack.useLazyLoad }}</app-type>
   <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+
+  <app-type>{{ pack.useFailureSlot }}</app-type>
+  <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+    <template #error>
+      <var-result type="error" :title="pack.failureText" />
+    </template>
+  </var-image>
 </template>
 
 <style scoped lang="less">

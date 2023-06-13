@@ -47,7 +47,7 @@ function preview() {
 ```
 
 
-## 组件使用
+## 组件调用
 
 ### 基本使用
 
@@ -160,6 +160,40 @@ const images = ref([
   />
 </template>
 ```
+
+### 监听长按事件
+
+通过 `image-prevent-default` 属性禁止图片默认行为，可自定义 `long-press` 事件来实现长按需求。
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const show = ref(false)
+const images = ref([
+  'https://varlet.gitee.io/varlet-ui/cat.jpg',
+  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+])
+</script>
+
+<template>
+  <var-button
+    block
+    type="warning"
+    @click="show = true"
+  >
+    监听长按事件
+  </var-button>
+  <var-image-preview
+    image-prevent-default
+    :images="images"
+    v-model:show="show"
+    @long-press="Snackbar('该图片享有版权！！')"
+  />
+</template>
+```
+
 ### 展示额外插槽
 
 ```html
@@ -220,6 +254,7 @@ const actions = [
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lock-scroll` | 锁定滚动 | _boolean_ | `true` |
 | `teleport`   | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
+| `image-prevent-default` | 是否禁止图片默认行为 |  _boolean_ | `false` |
 
 ### 事件
 
@@ -230,6 +265,7 @@ const actions = [
 | `opened` | 打开 image-preview 动画结束时触发 | `-` |
 | `close`  | 关闭 image-preview 时触发 | `-` |
 | `closed` | 关闭 image-preview 动画结束时触发 | `-` |
+| `long-press` | 长按图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 | 
 
 ### 方法
 
@@ -259,11 +295,13 @@ const actions = [
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lockScroll` | 锁定滚动 | _boolean_ | `true` |
+| `imagePreventDefault` | 是否禁止图片默认行为 |  _boolean_ | `false` |
 | `onChange`   | 切换图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
 | `onOpen`   | image-preview 开启时候的回调 |  _() => void_ | `-` |
 | `onOpened` | image-preview 动画结束时候的回调 |   _() => void_ | `-` |
 | `onClose`  | image-preview 时关闭时候的回调 |  _() => void_ |  `-` |
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
+| `onLongPress` | 长按图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

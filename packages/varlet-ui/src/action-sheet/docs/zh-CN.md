@@ -398,6 +398,7 @@ function handleSelect(action) {
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
+| `safe-area`   | 是否开启底部安全区适配      | _boolean_             | `false`  |
 | `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
 
 ### 事件
@@ -433,6 +434,7 @@ function handleSelect(action) {
 | `overlayStyle` | 自定义遮罩层的 style | _object_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
+| `safe-area`              | 是否开启底部安全区适配	                                     | _boolean_             | `false`  |
 | `onOpen` | 动作面板开启回调 | _() => void_ | `-` |
 | `onOpened` | 动作面板开启动画结束回调 | _() => void_ | `-` |
 | `onClose` | 动作面板关闭回调 | _() => void_ | `-` |

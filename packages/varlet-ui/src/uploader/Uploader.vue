@@ -2,7 +2,7 @@
   <div :class="classes(n(), n('$--box'))">
     <div :class="n('file-list')">
       <div
-        :class="classes(n('file'), n('$-elevation--2'), [f.state === 'loading', n('--loading')])"
+        :class="classes(n('file'), formatElevation(elevation, 2), [f.state === 'loading', n('--loading')])"
         :key="f.id"
         v-for="f in files"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
@@ -13,17 +13,20 @@
           <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
         <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
-        <div
-          :class="
-            classes(n('file-indicator'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
-          "
-        ></div>
+        <div :class="n('file-indicator')">
+          <div
+            :class="
+              classes(n('progress'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
+            "
+            :style="{ width: f.state === 'success' || f.state === 'error' ? '100%' : `${f.progress}%` }"
+          ></div>
+        </div>
       </div>
 
       <div
         :class="
           classes(
-            [!$slots.default, `${n('action')} ${n('$-elevation--2')}`],
+            [!$slots.default, `${n('action')} ${formatElevation(elevation, 2)}`],
             [disabled || formDisabled, n('--disabled')]
           )
         "
@@ -84,11 +87,12 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, isArray } from '@varlet/shared'
+import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
-import { call, useValidation, createNamespace } from '../utils/components'
+import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { type UploaderProvider } from './provide'
+import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('uploader')
 
@@ -129,6 +133,7 @@ export default defineComponent({
 
       return isNumber(maxlength) ? `${length} / ${maxlength}` : ''
     })
+
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -145,7 +150,6 @@ export default defineComponent({
       if (hideList) {
         return []
       }
-
       return modelValue
     })
 
@@ -176,6 +180,7 @@ export default defineComponent({
         cover: '',
         name: file.name,
         file,
+        progress: 0,
       }
     }
 
@@ -187,12 +192,18 @@ export default defineComponent({
 
     const resolver = (varFile: VarFile): Promise<VarFile> => {
       return new Promise((resolve) => {
+        // For performance, only file reader processing is performed on images
+        if (!varFile.file!.type.startsWith('image')) {
+          resolve(varFile)
+          return
+        }
+
         const fileReader = new FileReader()
 
         fileReader.onload = () => {
           const base64 = fileReader.result as string
 
-          varFile.file!.type.startsWith('image') && (varFile.cover = base64)
+          varFile.cover = base64
           varFile.url = base64
 
           resolve(varFile)
@@ -216,11 +227,10 @@ export default defineComponent({
             })
           }
 
-          let results = call(onBeforeRead, reactive(varFile))
-          results = isArray(results) ? results : [results]
+          const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
           Promise.all(results).then((values) => {
             resolve({
-              valid: !values.some((value) => !value),
+              valid: values.every(Boolean),
               varFile,
             })
           })
@@ -229,7 +239,7 @@ export default defineComponent({
     }
 
     const handleChange = async (event: Event) => {
-      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, readonly, disabled } = props
+      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, onBeforeFilter, readonly, disabled } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
@@ -251,9 +261,26 @@ export default defineComponent({
         return varFiles.slice(0, limit)
       }
 
+      const getFilterVarFiles = async (varFiles: VarFile[]): Promise<VarFile[]> => {
+        if (!onBeforeFilter) {
+          return varFiles
+        }
+
+        const events = normalizeToArray(onBeforeFilter)
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const event of events) {
+          varFiles = await event(varFiles)
+        }
+
+        return varFiles
+      }
+
       // limit
       const files = getFiles(event)
       let varFiles: VarFile[] = files.map(createVarFile)
+
+      varFiles = await getFilterVarFiles(varFiles)
       varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles
       varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles
 
@@ -275,9 +302,7 @@ export default defineComponent({
       }
 
       if (onBeforeRemove) {
-        let results = call(onBeforeRemove, reactive(removedVarFile))
-        results = isArray(results) ? results : [results]
-
+        const results = normalizeToArray(call(onBeforeRemove, reactive(removedVarFile)))
         if ((await Promise.all(results)).some((result) => !result)) {
           return
         }
@@ -355,6 +380,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       input,
       files,
       showPreview,
@@ -378,6 +404,7 @@ export default defineComponent({
       reset,
       chooseFile,
       closePreview,
+      toSizeUnit,
     }
   },
 })

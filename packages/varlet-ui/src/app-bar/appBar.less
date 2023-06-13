@@ -61,4 +61,10 @@
   &--round {
     border-radius: var(--app-bar-border-radius);
   }
+
+  &--safe-area-top {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+    box-sizing: content-box !important;
+  }
 }

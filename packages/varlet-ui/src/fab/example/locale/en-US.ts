@@ -10,6 +10,7 @@ export default {
   warning: 'warning',
   danger: 'danger',
   disabled: 'Disabled',
+  elevation: 'Elevation Effect',
   triggerToggle: 'Trigger Show/Hide',
   actionsToggle: 'Action Menu Expand/Collapse',
   toggle: 'Toggle',

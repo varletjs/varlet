@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VNode } from 'vue'
 
 export declare const imageProps: Record<string, any>
 
@@ -24,6 +25,10 @@ export interface ImageProps extends BasicAttributes {
 
 export class Image extends VarComponent {
   $props: ImageProps
+
+  $slots: {
+    error(): VNode[]
+  }
 }
 
 export class _ImageComponent extends Image {}

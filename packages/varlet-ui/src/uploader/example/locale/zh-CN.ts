@@ -18,4 +18,6 @@ export default {
   fileLessThen: '文件小于1M，上传成功',
   fileLargeThen: '文件大于1M，不能上传',
   customRender: '自定义渲染文件列表',
+  useProgress: '使用进度条',
+  beforeFilter: '文件列表过滤',
 }

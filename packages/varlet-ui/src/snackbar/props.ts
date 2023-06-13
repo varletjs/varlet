@@ -2,6 +2,7 @@ import { defineListenerProp, pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
 import { SNACKBAR_TYPE, SnackbarType } from './index'
 import type { PropType, TeleportProps } from 'vue'
+import type { SlotType } from '.'
 
 export function positionValidator(position: string): boolean {
   const validPositions = ['top', 'center', 'bottom']
@@ -25,7 +26,7 @@ export const props = {
   },
   // content内容
   content: {
-    type: String,
+    type: [String, Function, Object] as PropType<SlotType>,
   },
   // 为snackbar content添加自定义类名
   contentClass: {

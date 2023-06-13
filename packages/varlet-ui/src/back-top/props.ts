@@ -13,6 +13,10 @@ export const props = {
   right: {
     type: [Number, String],
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   bottom: {
     type: [Number, String],
   },

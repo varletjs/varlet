@@ -9,4 +9,7 @@ export default {
   text: 'Hello World',
   slotTitle: 'This is a Title',
   slotContent: 'This is a content',
+  hideDivider: 'Hide Divider',
+  showDivider: 'Show Divider',
+  controlledDivider: 'Controlled Divider',
 }

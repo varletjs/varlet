@@ -4,7 +4,7 @@
       :class="
         classes(
           n('controller'),
-          n('$-elevation--2'),
+          formatElevation(elevation, 2),
           [disabled || formDisabled, n('--disabled')],
           [errorMessage, n('--error')]
         )
@@ -105,7 +105,7 @@ import { props, type ValidateTrigger } from './props'
 import { toNumber } from '@varlet/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace, call, formatElevation } from '../utils/components'
 import { type CounterProvider } from './provide'
 
 const { n, classes } = createNamespace('counter')
@@ -350,6 +350,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      formatElevation,
       inputValue,
       errorMessage,
       formDisabled,

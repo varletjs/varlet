@@ -142,7 +142,8 @@ const active = ref(0)
 | `--step-content-color` | `rgba(0, 0, 0, 0.38)` |
 | `--step-content-active-color` | `#000` |
 | `--step-line-background` | `#000` |
-| `--step-vertical-min-height` | `30px` |
+| `--step-line-gap` | `8px` |
+| `--step-min-size` | `calc(var(--step-tag-size) + var(--step-line-gap))` |
+| `--step-line-size` | `calc(100% - var(--step-min-size))` |
 | `--step-vertical-tag-margin` | `0 4px` |
-| `--step-vertical-line-height` | `calc(100% - 30px)` |
-| `--step-vertical-line-min-height` | `20px` |
+| `--step-vertical-min-height` | `50px` |

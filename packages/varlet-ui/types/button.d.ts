@@ -24,6 +24,7 @@ export interface ButtonProps extends BasicAttributes {
   loadingType?: LoadingType
   loadingSize?: LoadingSize
   loadingColor?: string
+  elevation?: boolean | number | string
   onClick?: ListenerProp<(e: Event) => void>
   onTouchstart?: ListenerProp<(e: Event) => void>
 }

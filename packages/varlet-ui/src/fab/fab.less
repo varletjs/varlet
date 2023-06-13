@@ -178,4 +178,9 @@
     opacity: 0;
     transition-property: transform, opacity;
   }
+
+  &--safe-area {
+    margin-bottom: constant(safe-area-inset-bottom); // iOS < 11.2
+    margin-bottom: env(safe-area-inset-bottom); // iOS >= 11.2
+  }
 }

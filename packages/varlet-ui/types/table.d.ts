@@ -5,6 +5,7 @@ export declare const tableProps: Record<string, any>
 
 export interface TableProps extends BasicAttributes {
   fullWidth?: string | number
+  elevation?: boolean | string | number
 }
 
 export class Table extends VarComponent {

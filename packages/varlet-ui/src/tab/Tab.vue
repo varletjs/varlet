@@ -14,12 +14,10 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
-import { useTabs } from './provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { TabProvider } from './provide'
+import { useTabs, type TabProvider } from './provide'
 
 const { n, classes } = createNamespace('tab')
 
@@ -44,24 +42,20 @@ export default defineComponent({
 
     bindTabs(tabProvider)
 
-    const computeColorStyle = () => {
-      const { disabled, name } = props
+    const shouldActive = () => {
+      if (props.name != null) {
+        return active.value === props.name
+      }
 
-      return disabled
-        ? disabledColor.value
-        : active.value === name || active.value === index?.value
-        ? activeColor.value
-        : inactiveColor.value
+      return active.value === index?.value
+    }
+
+    const computeColorStyle = () => {
+      return props.disabled ? disabledColor.value : shouldActive() ? activeColor.value : inactiveColor.value
     }
 
     const computeColorClass = () => {
-      const { disabled, name } = props
-
-      return disabled
-        ? n('$-tab--disabled')
-        : active.value === name || active.value === index?.value
-        ? n('$-tab--active')
-        : n('$-tab--inactive')
+      return props.disabled ? n('$-tab--disabled') : shouldActive() ? n('$-tab--active') : n('$-tab--inactive')
     }
 
     const handleClick = (event: Event) => {

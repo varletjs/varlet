@@ -260,7 +260,7 @@ const show = ref(false)
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `title` | 对话框标题 | _string_ | `提示` |
-| `width` | 对话框宽度 | _string \| number | `-` |
+| `width` | 对话框宽度 | _string \| number_ | `-` |
 | `message` | 对话框内容 | _string_ | `-` |
 | `messageAlign` | 对话框内容文字对齐方式，可选值 `center` `left` `right` | _string_ | `left` |
 | `confirmButton` | 是否显示确认按钮 | _boolean_ | `true` |

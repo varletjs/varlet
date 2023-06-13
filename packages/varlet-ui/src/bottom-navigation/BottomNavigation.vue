@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
+    :class="classes(n(), n('$--box'), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >
@@ -21,15 +21,13 @@
 
 <script lang="ts">
 import VarButton from '../button'
-import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
+import { defineComponent, ref, computed, onUpdated, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useBottomNavigationItems } from './provide'
+import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
-import { isNumber, isArray } from '@varlet/shared'
-import type { BottomNavigationProvider } from './provide'
-import type { BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
-import type { Ref, ComputedRef } from 'vue'
-import { useMounted } from '@varlet/use'
+import { isNumber, normalizeToArray } from '@varlet/shared'
+import { onSmartMounted } from '@varlet/use'
+import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
 const { n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -94,10 +92,10 @@ export default defineComponent({
     }
 
     const handleBeforeChange = (changedValue: number | string) => {
-      let results = call(props.onBeforeChange, changedValue)
-      results = isArray(results) ? results : [results]
+      const results = normalizeToArray(call(props.onBeforeChange, changedValue))
+
       Promise.all(results).then((results) => {
-        if (!results.some((result) => !result)) {
+        if (results.every(Boolean)) {
           handleChange(changedValue)
         }
       })
@@ -168,7 +166,7 @@ export default defineComponent({
       { immediate: true, deep: true }
     )
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (!slots.fab) {
         return
       }

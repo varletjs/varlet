@@ -1,6 +1,6 @@
 {
   "name": "@varlet/vite-plugins",
-  "version": "2.9.2",
+  "version": "2.11.5",
   "type": "module",
   "description": "vite plugins of varlet",
   "main": "lib/index.js",
@@ -32,7 +32,7 @@
     "markdown-it": "^12.2.3"
   },
   "devDependencies": {
-    "vite": "^4.0.4",
+    "vite": "4.3.5",
     "typescript": "^4.4.4",
     "@types/node": "^18.7.20",
     "@types/ejs": "^3.1.1",

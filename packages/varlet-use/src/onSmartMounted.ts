@@ -1,6 +1,6 @@
 import { onMounted, nextTick, onActivated } from 'vue'
 
-export function useMounted(hook: () => void) {
+export function onSmartMounted(hook: () => void) {
   let isMounted = false
 
   onMounted(() => {

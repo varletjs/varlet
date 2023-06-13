@@ -135,7 +135,8 @@ function change(date) {
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
-| `elevation` | Whether to enable shadows                                                                                           | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
+| `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
 | `min` | Minimum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
 | `max` | Maximum allowed date/month (ISO 8601 format)                                                                      | _string_ | `-` |
@@ -167,42 +168,42 @@ function change(date) {
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
-| Variable | Default |
-| --- | --- |
-| `--date-picker-border-radius` | `4px` |
-| `--date-picker-font-size` | `var(--font-size-md)` |
-| `--date-picker-min-width` | `290px` |
-| `--date-picker-height` | `385px` |
-| `--date-picker-main-color` | `rgba(0, 0, 0, .87)` |
-| `--date-picker-title-padding` | `16px` |
+| Variable | Default                |
+| --- |------------------------|
+| `--date-picker-border-radius` | `4px`                  |
+| `--date-picker-font-size` | `var(--font-size-md)`  |
+| `--date-picker-min-width` | `290px`                |
+| `--date-picker-height` | `385px`                |
+| `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-padding` | `16px`                 |
 | `--date-picker-title-background` | `var(--color-primary)` |
-| `--date-picker-title-color` | `#fff` |
-| `--date-picker-title-year-font-size` | `var(--font-size-md)` |
-| `--date-picker-title-year-font-weight` | `500` |
-| `--date-picker-title-year-margin-bottom` | `8px` |
-| `--date-picker-title-date-height` | `48px` |
-| `--date-picker-title-date-font-size` | `34px` |
-| `--date-picker-title-date-font-weight` | `500` |
-| `--date-picker-title-date-range-font-size` | `20px` |
-| `--date-picker-body-background-color` | `transparent` |
-| `--picker-header-padding` | `4px 16px` |
-| `--picker-header-padding` | `4px 16px` |
-| `--month-picker-padding` | `0 12px` |
-| `--month-picker-item-width` | `33%` |
-| `--month-picker-item-height` | `56px` |
-| `--month-picker-item-button-max-width` | `140px` |
-| `--year-picker-font-weight` | `400` |
-| `--year-picker-item-padding` | `8px 0` |
-| `--year-picker-item-active-font-size` | `26px` |
-| `--year-picker-item-active-font-weight` | `500` |
-| `--year-picker-item-active-font-padding` | `10px 0` |
+| `--date-picker-title-color` | `#fff`                 |
+| `--date-picker-title-year-font-size` | `var(--font-size-md)`  |
+| `--date-picker-title-year-font-weight` | `500`                  |
+| `--date-picker-title-year-margin-bottom` | `8px`                  |
+| `--date-picker-title-date-height` | `48px`                 |
+| `--date-picker-title-date-font-size` | `34px`                 |
+| `--date-picker-title-date-font-weight` | `500`                  |
+| `--date-picker-title-date-range-font-size` | `20px`                 |
+| `--date-picker-body-background-color` | `#fff`                 |
+| `--picker-header-padding` | `4px 16px`             |
+| `--picker-header-padding` | `4px 16px`             |
+| `--month-picker-padding` | `0 12px`               |
+| `--month-picker-item-width` | `33%`                  |
+| `--month-picker-item-height` | `56px`                 |
+| `--month-picker-item-button-max-width` | `140px`                |
+| `--year-picker-font-weight` | `400`                  |
+| `--year-picker-item-padding` | `8px 0`                |
+| `--year-picker-item-active-font-size` | `26px`                 |
+| `--year-picker-item-active-font-weight` | `500`                  |
+| `--year-picker-item-active-font-padding` | `10px 0`               |
 | `--year-picker-item-active-color` | `var(--color-primary)` |
-| `--day-picker-content-item-width` | `14.28%` |
-| `--day-picker-content-item-font-size` | `var(--font-size-sm)` |
-| `--day-picker-content-item-padding` | `2px 0` |
-| `--day-picker-content-item-button-width` | `32px` |
-| `--day-picker-content-item-button-height` | `32px` |
-| `--day-picker-content-item-button-font-size` | `var(--font-size-sm)` |
-| `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)` |
-| `--day-picker-head-item-padding` | `8px 0` |
-| `--day-picker-head-item-font-weight` | `600` |
+| `--day-picker-content-item-width` | `14.28%`               |
+| `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
+| `--day-picker-content-item-padding` | `2px 0`                |
+| `--day-picker-content-item-button-width` | `32px`                 |
+| `--day-picker-content-item-button-height` | `32px`                 |
+| `--day-picker-content-item-button-font-size` | `var(--font-size-sm)`  |
+| `--day-picker-head-item-color` | `rgba(0, 0, 0, 0.38)`  |
+| `--day-picker-head-item-padding` | `8px 0`                |
+| `--day-picker-head-item-font-weight` | `600`                  |

@@ -2,13 +2,14 @@
   <var-popup
     :class="n('popup-radius')"
     position="bottom"
+    :show="popupShow"
     :overlay="overlay"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"
     :lock-scroll="lockScroll"
     :close-on-click-overlay="closeOnClickOverlay"
     :teleport="teleport"
-    :show="popupShow"
+    :safe-area="safeArea"
     v-bind="{
       'onUpdate:show': handlePopupUpdateShow,
     }"

@@ -14,6 +14,8 @@ export interface PopupProps extends BasicAttributes {
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
   defaultStyle?: boolean
+  safeArea?: boolean
+  safeAreaTop?: boolean
   teleport?: TeleportProps['to']
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

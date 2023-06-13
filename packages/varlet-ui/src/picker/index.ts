@@ -20,6 +20,7 @@ interface PickerOptions {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
+  safeArea?: boolean
   teleport?: TeleportProps['to']
   dynamic?: boolean
   textFormatter?: (text: any, columnIndex: number) => any
@@ -109,7 +110,7 @@ Picker.install = function (app: App) {
   app.component(VarPicker.name, VarPicker)
 }
 
-Picker.close = () => {
+Picker.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
     singletonOptions = null

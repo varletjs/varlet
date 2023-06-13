@@ -230,6 +230,7 @@ it is recommended to wrap a `block` element.
 | `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 

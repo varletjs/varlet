@@ -110,6 +110,10 @@ varlet-cli gen
 ```shell
 # playground-ignore
 varlet-cli dev
+# force mode
+varlet-cli dev -f
+# draft mode
+varlet-cli dev -d
 ```
 
 #### 构建文档站点
@@ -182,6 +186,13 @@ varlet-cli lint
 ```shell
 # playground-ignore
 varlet-cli commit-lint
+```
+
+#### 显示检查清单
+
+```shell
+# playground-ignore
+varlet-cli checklist
 ```
 
 #### 生成更新日志

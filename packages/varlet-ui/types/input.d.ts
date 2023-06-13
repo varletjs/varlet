@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Variant as InputVariant } from './varComponent'
 import { VNode } from 'vue'
 
 export declare const inputProps: Record<string, any>
@@ -7,9 +7,13 @@ export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick'
 
 export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
+export type InputSize = 'small' | 'normal'
+
 export interface InputProps extends BasicAttributes {
   modelValue?: string
   type?: InputType
+  size?: InputSize
+  variant?: InputVariant
   textarea?: boolean
   rows?: string | number
   placeholder?: string
@@ -25,6 +29,7 @@ export interface InputProps extends BasicAttributes {
   autofocus?: boolean
   validateTrigger?: InputValidateTrigger[]
   rules?: Array<(v: string) => any>
+  enterkeyhint?: string
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>

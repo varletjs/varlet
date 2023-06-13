@@ -1,8 +1,6 @@
 # 评分
 
-### 基础评分
-
-默认显示样式。
+### 基本使用
 
 ```html
 <script setup>
@@ -13,6 +11,7 @@ const score = ref(3)
 
 <template>
   <var-rate v-model="score"/>
+  <var-rate v-model="score" icon="thumb-up" empty-icon="thumb-up-outline"/>
 </template>
 ```
 
@@ -32,8 +31,10 @@ const score = ref(3)
 </template>
 ```
 
-### 自定义评分图标颜色
 
+### 自定义评分图标样式
+
+通过 `icon` 和 `empty-icon` 属性设置选中和未选时的图标样式。
 通过 `color` 和 `empty-color` 属性设置选中和未选中时的颜色。
 
 ```html
@@ -44,50 +45,19 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" color="#9c27b0" empty-color="#d199da"/>
-  <var-rate v-model="score" color="#e91e63" empty-color="#f48fb1"/>
-  <var-rate v-model="score" color="#4caf50" empty-color="#a5d6a7"/>
-  <var-rate v-model="score" color="#3f51b5" empty-color="#9fa8da"/>
+  <var-rate 
+    icon="heart" 
+    empty-icon="heart-outline" 
+    color="red" 
+    empty-color="red"
+    v-model="score"
+  />
 </template>
 ```
 
-### 自定义评分图标样式
-
-通过 `icon` 和 `empty-icon` 属性设置选中和未选时的图标样式。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" icon="heart" empty-icon="heart-outline" color="red"/>
-</template>
-```
-
-### 自定义评分图标尺寸
+### 自定义评分图标尺寸与间隔
 
 通过 `size` 属性设置评分图标的尺寸。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" :size="14"/>
-  <var-rate v-model="score" :size="16"/>
-  <var-rate v-model="score" :size="18"/>
-  <var-rate v-model="score" :size="20"/>
-</template>
-```
-
-### 自定义图标间隔
-
 通过 `gap` 属性设置评分之间的间隔。
 
 ```html
@@ -98,14 +68,11 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate v-model="score" />
-  <var-rate v-model="score" :gap="2"/>
-  <var-rate v-model="score" :gap="4"/>
-  <var-rate v-model="score" :gap="8"/>
+  <var-rate v-model="score" :size="28" :gap="8"/>
 </template>
 ```
 
-### 允许半图标
+### 使用半星
 
 通过 `half` 属性将评分设置为可半选，`half-icon` 属性设置半选时的样式。
 
@@ -117,37 +84,22 @@ const score = ref(3.5)
 </script>
 
 <template>
-  <var-rate v-model="score" :count="8" half/>
-  <var-rate 
-    v-model="score" 
-    :count="8" 
-    icon="heart" 
-    half-icon="heart-half-full" 
-    empty-icon="heart-outline"
-    color="red" 
+  <var-rate half :count="8" v-model="score" />
+  <var-rate
     half
+    icon="heart"
+    half-icon="heart-half-full"
+    empty-icon="heart-outline"
+    color="red"
+    :count="8"
+    v-model="score"
   />
 </template>
 ```
 
-### 禁用评分
+### 禁用与只读
 
 通过 `disabled` 属性将评分设置为禁止点击状态，`disabled-color` 设置禁用时图标的颜色。
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const score = ref(3)
-</script>
-
-<template>
-  <var-rate v-model="score" disabled/>
-</template>
-```
-
-### 只读评分
-
 通过 `readonly` 属性将评分设置为只读状态。
 
 ```html
@@ -158,27 +110,29 @@ const score = ref(3)
 </script>
 
 <template>
+  <var-rate v-model="score" disabled/>
   <var-rate v-model="score" readonly/>
 </template>
 ```
+### 可清空
 
-### 禁止使用水波纹
-
-通过把 `ripple` 属性设置为 `false` 来禁止使用水波纹。
+通过 `clearable` 属性允许用户清空评分。
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const score = ref(3)
+const score = ref(3.5)
 </script>
 
 <template>
-  <var-rate v-model="score" :ripple="false"/>
+  <var-rate v-model="score" clearable half/>
 </template>
 ```
 
-### 监听 change 事件
+
+
+### 监听事件
 
 通过调用 `change` 事件完成其他交互逻辑。
 
@@ -240,6 +194,7 @@ const score = ref(3)
 | `disabled`       | 是否禁止评分 | _boolean_ | `false`|
 | `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
 | `readonly`       | 是否使用评分只读 | _boolean_ | `false` |
+| `clearable`       | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
 | `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
 

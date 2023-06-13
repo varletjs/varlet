@@ -12,6 +12,7 @@ export interface ButtonGroupProps extends BasicAttributes {
   textColor?: string
   mode?: ButtonGroupMode
   vertical?: boolean
+  elevation?: boolean | number | string
 }
 
 export class ButtonGroup extends VarComponent {

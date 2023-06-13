@@ -85,6 +85,7 @@ export async function compileSFC(sfc: string) {
       source: template.content,
       filename: sfc,
       compilerOptions: {
+        expressionPlugins: descriptor.script?.lang === 'ts' ? ['typescript'] : undefined,
         scopeId,
         bindingMetadata,
       },

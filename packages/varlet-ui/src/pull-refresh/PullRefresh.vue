@@ -8,7 +8,7 @@
       <var-icon
         :name="iconName"
         :transition="ICON_TRANSITION"
-        :class="classes(n('icon'), [refreshStatus === 'loading' && iconHasChanged, n('animation')])"
+        :class="classes(n('icon'), [refreshStatus === 'loading', n('animation')])"
         var-pull-refresh-cover
       />
     </div>
@@ -18,12 +18,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, type Ref } from 'vue'
-import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
+import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
+import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { toNumber } from '@varlet/shared'
+import { isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -36,30 +36,39 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    let scroller: HTMLElement | Window
-    let changing: Promise<void>
-
     const controlPosition: Ref<number> = ref(0)
     const freshNode: Ref<HTMLElement | null> = ref(null)
     const controlNode: Ref<HTMLElement | null> = ref(null)
     const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number> = ref(-999)
+    const distance: Ref<number | string> = ref('-125%')
     const iconName: Ref<string> = ref('arrow-down')
     const refreshStatus: Ref<RefreshStatus> = ref('default')
     const isEnd: Ref<boolean> = ref(false)
 
+    let scroller: HTMLElement | Window
+    let eventTargetScroller: HTMLElement | Window | null
     let startY = 0
     let deltaY = 0
 
-    // https://github.com/varletjs/varlet/issues/509
-    const iconHasChanged: Ref<boolean> = ref(true)
+    const startIconTransition = async (name: string) => {
+      if (iconName.value === name) {
+        return
+      }
+
+      iconName.value = name
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, ICON_TRANSITION)
+      })
+    }
 
     const isTouchable = computed(
       () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
     )
 
     const controlStyle = computed(() => ({
-      transform: `translate3d(0px, ${distance.value}px, 0px) translate(-50%, 0)`,
+      transform: `translate3d(0px, ${
+        isString(distance.value) ? distance.value : `${distance.value}px`
+      }, 0px) translate(-50%, 0)`,
       transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
@@ -69,15 +78,6 @@ export default defineComponent({
 
     const isSuccess = computed(() => refreshStatus.value === 'success')
 
-    const changeIcon = (): Promise<void> => {
-      return new Promise((resolve) => {
-        window.setTimeout(() => {
-          iconHasChanged.value = true
-          resolve()
-        }, ICON_TRANSITION)
-      })
-    }
-
     const lockEvent = (action: 'add' | 'remove') => {
       const el = 'classList' in scroller ? scroller : document.body
 
@@ -85,17 +85,31 @@ export default defineComponent({
     }
 
     const touchStart = (event: TouchEvent) => {
+      if (controlPosition.value === 0) {
+        const { width } = getRect(controlNode.value as HTMLElement)
+        controlPosition.value = -(width + width * 0.25)
+      }
+
       startY = event.touches[0].clientY
       deltaY = 0
+      eventTargetScroller = getParentScroller(event.target as HTMLElement)
     }
 
     const touchMove = (event: TouchEvent) => {
-      if (!isTouchable.value) return
+      if (!isTouchable.value) {
+        return
+      }
+
+      if (eventTargetScroller !== scroller && getScrollTop(eventTargetScroller!) > 0) {
+        return
+      }
 
       const scrollTop = getScrollTop(scroller)
-      if (scrollTop > 0) return
-      const isReachTop = scrollTop === 0
+      if (scrollTop > 0) {
+        return
+      }
 
+      const isReachTop = scrollTop === 0
       const touch = event.touches[0]
       deltaY = touch.clientY - startY
 
@@ -115,28 +129,25 @@ export default defineComponent({
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
 
       distance.value = moveDistance >= maxDistance.value ? maxDistance.value : moveDistance
-
-      if (distance.value >= maxDistance.value * 0.2) {
-        iconHasChanged.value = false
-        iconName.value = 'refresh'
-        changing = changeIcon()
-      } else {
-        iconName.value = 'arrow-down'
-      }
+      startIconTransition(distance.value >= maxDistance.value * 0.2 ? 'refresh' : 'arrow-down')
     }
 
     const touchEnd = async () => {
-      if (!isTouchable.value) return
+      if (!isTouchable.value) {
+        return
+      }
 
       isEnd.value = true
 
       if (distance.value >= maxDistance.value * 0.2) {
-        await changing
+        await startIconTransition('refresh')
         refreshStatus.value = 'loading'
         distance.value = maxDistance.value * 0.3
 
         call(props['onUpdate:modelValue'], true)
-        call(props.onRefresh)
+        nextTick(() => {
+          call(props.onRefresh)
+        })
         lockEvent('remove')
       } else {
         refreshStatus.value = 'loosing'
@@ -148,13 +159,8 @@ export default defineComponent({
           lockEvent('remove')
         }, toNumber(props.animationDuration))
       }
-    }
 
-    const setPosition = () => {
-      const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
-
-      distance.value = -(width + width * 0.25)
-      controlPosition.value = -(width + width * 0.25)
+      eventTargetScroller = null
     }
 
     const setScroller = () => {
@@ -184,17 +190,12 @@ export default defineComponent({
       }
     )
 
-    useMounted(() => {
-      setScroller()
-      setPosition()
-    })
-
+    onSmartMounted(setScroller)
     useEventListener(freshNode, 'touchmove', touchMove)
 
     return {
       n,
       classes,
-      iconHasChanged,
       ICON_TRANSITION,
       refreshStatus,
       freshNode,

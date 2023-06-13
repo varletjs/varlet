@@ -37,9 +37,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to: any) => {
-  const language = to.query.language ?? defaultLanguage
-  const path = to.path
-  const replace = to.query.replace
+  const { path, hash, query } = to
+  const language = query.language ?? defaultLanguage
+  const replace = query.replace
 
   if (!isPhone() && !inIframe()) {
     window.location.href = `./#/${language}${path}`
@@ -48,7 +48,7 @@ router.beforeEach((to: any) => {
   if (!isPhone() && inIframe()) {
     try {
       // @ts-ignore
-      window.parent.onMobileRouteChange(path, language, replace)
+      window.parent.onMobileRouteChange(path, language, replace, hash)
     } catch (e) {
       console.log(e)
     }

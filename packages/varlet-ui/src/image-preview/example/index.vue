@@ -16,6 +16,8 @@ const show = ref(false)
 const currentShow = ref(false)
 const closeShow = ref(false)
 const closeEventShow = ref(false)
+const preventEventShow = ref(false)
+const imagePreventDefault = ref(true)
 const extraSlotsShow = ref(false)
 const menuShow = ref(false)
 const images = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'])
@@ -34,6 +36,13 @@ const actions = computed(() => [
 function handleCloseEvent() {
   Snackbar({
     content: pack.value.shutdownEvent,
+    duration: 1000,
+  })
+}
+
+function handleLongPressEvent() {
+  Snackbar({
+    content: pack.value.preventDefaultEvent,
     duration: 1000,
   })
 }
@@ -79,6 +88,14 @@ watchDarkMode(dark)
 
     <var-button type="warning" block @click="closeEventShow = true">{{ pack.listenCloseEvents }}</var-button>
     <var-image-preview :images="images" v-model:show="closeEventShow" @close="handleCloseEvent" />
+
+    <var-button type="warning" block @click="preventEventShow = true">{{ pack.preventLongTapDefault }}</var-button>
+    <var-image-preview
+      :images="images"
+      v-model:show="preventEventShow"
+      :image-prevent-default="imagePreventDefault"
+      @long-press="handleLongPressEvent"
+    ></var-image-preview>
 
     <var-button type="warning" block @click="extraSlotsShow = true">{{ pack.showExtraSlots }}</var-button>
     <var-image-preview :images="images" v-model:show="extraSlotsShow">

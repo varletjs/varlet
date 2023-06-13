@@ -9,6 +9,8 @@ export interface CollapseProps extends BasicAttributes {
   modelValue?: CollapseModelValue
   accordion?: boolean
   offset?: boolean
+  divider?: boolean
+  elevation?: boolean | string | number
   onChange?: ListenerProp<(value: CollapseModelValue) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: CollapseModelValue) => void>
 }

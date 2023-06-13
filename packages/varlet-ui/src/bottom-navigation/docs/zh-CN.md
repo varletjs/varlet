@@ -198,7 +198,7 @@ const isEven = ref(true)
 
 |事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| `before-change` | 切换标签前的回调函数，返回 false 可阻止切换，支持返回 Promise | `active: number \| string` |
+| `before-change` | 切换标签前的回调函数，返回假值可阻止切换，支持返回 Promise | `active: number \| string` |
 | `change` | 切换标签时触发 | `active: number \| string` |
 | `fab-click` | 悬浮按钮点击时触发 | `-` |
 

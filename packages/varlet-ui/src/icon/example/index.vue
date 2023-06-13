@@ -1,17 +1,22 @@
 <script setup>
 import VarIcon from '..'
+import VarInput from '../../input'
 import vRipple from '../../ripple'
 import Snackbar from '../../snackbar'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
 import dark from '../../themes/dark'
-import { reactive, onMounted, ref } from 'vue'
+import { reactive, onMounted, ref, computed } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
+const searchText = ref('')
+const searchIcons = computed(() => {
+  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
+})
 
 function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
@@ -79,13 +84,27 @@ watchDarkMode(dark, (theme) => {
   />
 
   <app-type>{{ pack.iconList }}</app-type>
+
+  <var-input
+    class="icon-example__search"
+    size="small"
+    variant="outlined"
+    :placeholder="pack.searchIcon"
+    v-model.trim="searchText"
+    clearable
+  >
+    <template #append-icon>
+      <var-icon class="search-icon" name="magnify" />
+    </template>
+  </var-input>
+
   <div class="icon-example__icons">
     <div
       class="icon-example__icon var-elevation--2"
       :style="{ background }"
       :data-clipboard-text="name"
       :key="name"
-      v-for="name in iconNames"
+      v-for="name in searchIcons"
       v-ripple
     >
       <var-icon :name="name" />
@@ -128,6 +147,10 @@ watchDarkMode(dark, (theme) => {
     transition: background-color 0.25s;
   }
 
+  &__search {
+    margin: 6px 8px 22px;
+  }
+
   &__icon-name {
     width: 100%;
     font-size: 12px;
@@ -137,6 +160,10 @@ watchDarkMode(dark, (theme) => {
     white-space: nowrap;
     margin-top: 8px;
   }
+}
+
+.search-icon {
+  margin-left: 6px;
 }
 
 .fade {

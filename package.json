@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "2.9.2",
+  "version": "2.11.5",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -12,7 +12,7 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
-    "commit-msg": "pnpm exec varlet-cli commit-lint $1"
+    "commit-msg": "pnpm exec varlet-cli commit-lint $1 && pnpm exec varlet-cli checklist $1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
@@ -86,8 +86,8 @@
     "stylelint": "^13.13.1",
     "typescript": "^4.4.4"
   },
-  "packageManager": "pnpm@7.9.0",
+  "packageManager": "pnpm@8.0.0",
   "engines": {
-    "pnpm": ">=7.9"
+    "pnpm": ">=8.0"
   }
 }

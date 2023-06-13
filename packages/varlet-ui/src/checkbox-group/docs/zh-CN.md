@@ -94,7 +94,7 @@ const value = ref(false)
 </template>
 ```
 
-### 复选框组/复选框操作
+### 复选框组
 
 在复选框组中，必须给 `checkbox` 设置 `checked-value` 用来标识，
 复选框组会收集所有选择的标识。
@@ -126,6 +126,23 @@ const value = ref([])
   >
     反选
   </var-button>
+</template>
+```
+
+### 垂直布局
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" direction="vertical">
+    <var-checkbox :checked-value="0">吃饭</var-checkbox>
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>   
+  </var-checkbox-group>
 </template>
 ```
 
@@ -179,7 +196,7 @@ const value = ref([])
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
-| `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string \| number_ | `horizontal` |
+| `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `horizontal` |
 
 #### Checkbox Props

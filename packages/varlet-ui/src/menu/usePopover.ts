@@ -1,8 +1,8 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
-import { useClickOutside, useVModel } from '@varlet/use'
-import { doubleRaf, toPxNum } from '../utils/elements'
-import { call } from '../utils/components'
+import { useClickOutside } from '@varlet/use'
+import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
+import { call, useVModel } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
@@ -69,7 +69,7 @@ export function usePopover(options: UsePopoverOptions) {
   let enterHost = false
 
   const computeHostSize = () => {
-    const { width, height } = window.getComputedStyle(host.value!)
+    const { width, height } = getStyle(host.value!)
 
     hostSize.value = {
       width: toPxNum(width),

@@ -6,6 +6,7 @@ program.version(`varlet-cli ${getCliVersion()}`).usage('<command> [options]');
 program
     .command('dev')
     .option('-f --force', 'Force dep pre-optimization regardless of whether deps have changed')
+    .option('-d --draft', 'Start the service in draft mode')
     .description('Run varlet development environment')
     .action(async (options) => {
     const { dev } = await import('./commands/dev.js');
@@ -130,6 +131,13 @@ program
     .action(async (option) => {
     const { commitLint } = await import('./commands/commitLint.js');
     return commitLint(option);
+});
+program
+    .command('checklist <gitParams>')
+    .description('Display a checklist for confirmation')
+    .action(async (option) => {
+    const { checklist } = await import('./commands/checklist.js');
+    return checklist(option);
 });
 program.on('command:*', async ([cmd]) => {
     const { default: logger } = await import('./shared/logger.js');

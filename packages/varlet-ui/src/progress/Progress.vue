@@ -61,6 +61,7 @@ import { toSizeUnit, multiplySizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('progress')
+const ONE_HUNDRED = 100
 
 export default defineComponent({
   name: 'VarProgress',
@@ -68,8 +69,8 @@ export default defineComponent({
   setup(props) {
     const linearProps = computed(() => {
       const value = toNumber(props.value)
-      const width = value > 100 ? 100 : value
-      const roundValue = value > 100 ? 100 : Math.round(value)
+      const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
+      const roundValue = value > ONE_HUNDRED ? ONE_HUNDRED : Math.round(value)
 
       return {
         width: `${width}%`,
@@ -80,10 +81,10 @@ export default defineComponent({
     const circleProps = computed(() => {
       const { size, lineWidth, value } = props
       const viewBox = `0 0 ${toPxNum(size)} ${toPxNum(size)}`
-      const roundValue = toNumber(value) > 100 ? 100 : Math.round(toNumber(value))
+      const roundValue = toNumber(value) > ONE_HUNDRED ? ONE_HUNDRED : Math.round(toNumber(value))
       const radius = (toPxNum(size) - toPxNum(lineWidth)) / 2
       const perimeter = 2 * Math.PI * radius
-      const strokeDasharray = `${(roundValue / 100) * perimeter}, ${perimeter}`
+      const strokeDasharray = `${(roundValue / ONE_HUNDRED) * perimeter}, ${perimeter}`
 
       return {
         viewBox,

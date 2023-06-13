@@ -1,23 +1,16 @@
-import example from '../example'
 import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockFileReader, mockStubs } from '../../utils/jest'
 
-const createEvent = (filename) => {
+const createEvent = (filename, type) => {
   return {
     target: {
-      files: [new File([], filename)],
+      files: [new File([], filename, { type })],
     },
   }
 }
-
-test('test uploader example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
 
 test('test uploader plugin', () => {
   const app = createApp({}).use(Uploader)
@@ -33,8 +26,49 @@ test('test uploader onAfterRead', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onAfterRead).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+})
+
+test('test uploader onBeforeFilter', async () => {
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      onBeforeFilter: (files) => files.filter((file) => file.name.endsWith('jpg')),
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  expect(wrapper.vm.modelValue).toHaveLength(0)
+
+  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
+  expect(wrapper.vm.modelValue).toHaveLength(1)
+
+  await wrapper.setProps({
+    modelValue: [],
+    multiple: true,
+    'onUpdate:modelValue': onUpdateModelValue,
+    onBeforeFilter: async function (files) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(files.filter((file) => file.name.endsWith('jpg')))
+        }, 1000)
+      })
+    },
+  })
+
+  const event = {
+    target: {
+      files: [new File([], 'cat.jpg'), new File([], 'dog.png'), new File([], 'dog.jpg')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.vm.modelValue).toHaveLength(2)
 
   wrapper.unmount()
 })
@@ -49,10 +83,10 @@ test('test uploader onBeforeRead', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onAfterRead).toHaveBeenCalledTimes(0)
 
-  await wrapper.vm.handleChange(createEvent('cat.jpg'))
+  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/png'))
   expect(onAfterRead).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
@@ -70,7 +104,7 @@ test('test uploader preview', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.jpg'))
+  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
   await delay(16)
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(100)
@@ -94,7 +128,7 @@ test('test uploader onOversize', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onOversize).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
@@ -113,7 +147,7 @@ test('test uploader onRemove', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 
   await wrapper.find('.var-uploader__file-close').trigger('click')
@@ -140,7 +174,7 @@ test('test uploader onBeforeRemove', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 
   await wrapper.find('.var-uploader__file-close').trigger('click')
@@ -170,7 +204,7 @@ test('test uploader validation', async () => {
   expect(wrapper.html()).toMatchSnapshot()
   expect(wrapper.find('.var-form-details__error-message').text()).toBe('您至少上传一个')
 
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   await delay(16)
   expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
   expect(wrapper.html()).toMatchSnapshot()
@@ -201,7 +235,7 @@ test('test uploader disabled', async () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
-  await wrapper.vm.handleChange(createEvent('cat.png'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   expect(onAfterRead).toHaveBeenCalledTimes(1)
 
   await wrapper.setProps({ disabled: true })
@@ -297,4 +331,23 @@ test('test uploader file utils', async () => {
   expect(wrapper.vm.getLoading()).toStrictEqual([modelValue[0]])
   expect(wrapper.vm.getSuccess()).toStrictEqual([modelValue[1]])
   expect(wrapper.vm.getError()).toStrictEqual([modelValue[2]])
+})
+
+test('test uploader progress', () => {
+  const modelValue = [
+    {
+      id: 1,
+      name: 'progress',
+      state: 'loading',
+      progress: 40,
+    },
+  ]
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
 })

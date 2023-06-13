@@ -1,8 +1,9 @@
 :root {
+  --pagination-text-color: #555;
   --pagination-font-size: var(--font-size-md);
   --pagination-active-color: #fff;
   --pagination-active-bg-color: var(--color-primary);
-  --pagination-hover-bg-color: #edf5ff;
+  --pagination-hover-bg-color: rgba(85, 85, 85, 0.15);
   --pagination-total-margin: 0 12px;
   --pagination-total-line-height: 24px;
   --pagination-item-width: 32px;
@@ -10,6 +11,7 @@
   --pagination-item-margin: 0 6px;
   --pagination-item-background: #fff;
   --pagination-item-border-radius: 4px;
+  --pagination-item-simple-border-radius: 50%;
   --pagination-list-bg-color: #fff;
   --pagination-list-active-bg-color: #edf5ff;
   --pagination-list-active-color: var(--color-primary);
@@ -33,6 +35,7 @@
   margin: 0;
   font-size: var(--pagination-font-size);
   padding: 0;
+  color: var(--pagination-text-color);
 
   &__item {
     display: inline-flex;
@@ -63,10 +66,11 @@
 
     &--simple {
       background: transparent;
+      border-radius: var(--pagination-item-simple-border-radius);
     }
 
     &--disabled {
-      cursor: default;
+      cursor: not-allowed;
       color: var(--pagination-disabled-color);
       background-color: unset;
 
@@ -113,7 +117,7 @@
       cursor: pointer;
 
       &--disabled {
-        cursor: default;
+        cursor: inherit;
       }
     }
   }
@@ -125,7 +129,7 @@
 
     &:hover {
       color: var(--pagination-list-active-color);
-      background-color: var(--pagination-hover-bg-color);
+      background-color: var(--pagination-list-active-bg-color);
     }
 
     &--active {
@@ -140,11 +144,9 @@
 
     [var-pagination-cover] {
       width: var(--pagination-input-width);
-
-      .var-input__wrap {
+      .var-field-decorator__middle {
         padding: 0;
       }
-
       .var-input__input {
         height: auto;
         text-align: center;

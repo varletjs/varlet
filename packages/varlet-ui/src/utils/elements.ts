@@ -1,15 +1,45 @@
-import { isNumber, isObject, isString, kebabCase, toNumber } from '@varlet/shared'
+import { isNumber, isObject, isString, kebabCase, toNumber, isWindow, inBrowser } from '@varlet/shared'
 import { getGlobalThis } from './shared'
+import { error } from './logger'
 import type { StyleVars } from '../style-provider'
 
+// shorthand only
+export function getStyle(element: Element) {
+  return window.getComputedStyle(element)
+}
+
+export function getRect(element: Element | Window): DOMRect {
+  if (isWindow(element)) {
+    const width = element.innerWidth
+    const height = element.innerHeight
+    const rect = {
+      x: 0,
+      y: 0,
+      top: 0,
+      left: 0,
+      right: width,
+      bottom: height,
+      width,
+      height,
+    }
+
+    return {
+      ...rect,
+      toJSON: () => rect,
+    }
+  }
+
+  return element.getBoundingClientRect()
+}
+
 export function getLeft(element: HTMLElement): number {
-  const { left } = element.getBoundingClientRect()
+  const { left } = getRect(element)
 
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
 export function getTop(element: HTMLElement): number {
-  const { top } = element.getBoundingClientRect()
+  const { top } = getRect(element)
 
   return top + (document.body.scrollTop || document.documentElement.scrollTop)
 }
@@ -27,19 +57,18 @@ export function getScrollLeft(element: Element | Window): number {
   return Math.max(left, 0)
 }
 
-export async function inViewport(element: HTMLElement): Promise<boolean> {
-  await doubleRaf()
-  const { top, bottom, left, right } = element.getBoundingClientRect()
-  const { innerWidth, innerHeight } = window
+export function inViewport(element: HTMLElement): boolean {
+  const { top, bottom, left, right } = getRect(element)
+  const { width, height } = getRect(window)
 
-  const xInViewport = left <= innerWidth && right >= 0
-  const yInViewport = top <= innerHeight && bottom >= 0
+  const xInViewport = left <= width && right >= 0
+  const yInViewport = top <= height && bottom >= 0
 
   return xInViewport && yInViewport
 }
 
-export function getTranslate(el: HTMLElement) {
-  const { transform } = window.getComputedStyle(el)
+export function getTranslateY(el: HTMLElement) {
+  const { transform } = getStyle(el)
   return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
 }
 
@@ -58,7 +87,7 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
     }
 
     const scrollRE = /(scroll|auto)/
-    const { overflowY, overflow } = window.getComputedStyle(element)
+    const { overflowY, overflow } = getStyle(element)
 
     if (scrollRE.test(overflowY) || scrollRE.test(overflow)) {
       return element
@@ -72,8 +101,8 @@ export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Windo
   const allParentScroller: Array<HTMLElement | Window> = []
   let element: HTMLElement | Window = el
 
-  while (element !== window) {
-    element = getParentScroller(element as HTMLElement)
+  while (!isWindow(element)) {
+    element = getParentScroller(element)
     allParentScroller.push(element)
   }
 
@@ -85,7 +114,7 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
     const el = document.querySelector(target)
 
     if (!el) {
-      throw Error(`[Varlet] ${componentName}: target element cannot found`)
+      error(componentName, 'target element cannot found')
     }
 
     return el as HTMLElement
@@ -93,11 +122,29 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
 
   if (isObject(target)) return target
 
-  throw Error(`[Varlet] ${componentName}: type of prop "target" should be a selector or an element object`)
+  error(componentName, 'type of prop "target" should be a selector or an element object')
+}
+
+export function getViewportSize() {
+  const { width, height } = getRect(window)
+
+  return width > height
+    ? {
+        vMin: height,
+        vMax: width,
+      }
+    : {
+        vMin: width,
+        vMax: height,
+      }
 }
 
 // example 1rem
 export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
+
+// example 1em
+export const isEm = (value: unknown): value is string =>
+  isString(value) && value.endsWith('em') && !value.endsWith('rem')
 
 // e.g. 1 || 1px
 export const isPx = (value: unknown): value is string | number =>
@@ -111,6 +158,12 @@ export const isVw = (value: unknown): value is string => isString(value) && valu
 
 // e.g. 1vh
 export const isVh = (value: unknown): value is string => isString(value) && value.endsWith('vh')
+
+// e.g. 1vmin
+export const isVMin = (value: unknown): value is string => isString(value) && value.endsWith('vmin')
+
+// e.g. 1vmax
+export const isVMax = (value: unknown): value is string => isString(value) && value.endsWith('vmax')
 
 // e.g. calc(1px + 1px)
 export const isCalc = (value: unknown): value is string => isString(value) && value.startsWith('calc(')
@@ -128,19 +181,33 @@ export const toPxNum = (value: unknown): number => {
     return +(value as string).replace('px', '')
   }
 
+  if (!inBrowser()) {
+    return 0
+  }
+
+  const { width, height } = getRect(window)
+
   if (isVw(value)) {
-    return (+(value as string).replace('vw', '') * window.innerWidth) / 100
+    return (+(value as string).replace('vw', '') * width) / 100
   }
 
   if (isVh(value)) {
-    return (+(value as string).replace('vh', '') * window.innerHeight) / 100
+    return (+(value as string).replace('vh', '') * height) / 100
   }
 
   if (isRem(value)) {
     const num = +(value as string).replace('rem', '')
-    const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
+    const rootFontSize = getStyle(document.documentElement).fontSize
 
     return num * parseFloat(rootFontSize)
+  }
+
+  if (isVMin(value)) {
+    return getViewportSize().vMin
+  }
+
+  if (isVMax(value)) {
+    return getViewportSize().vMax
   }
 
   if (isString(value)) {
@@ -157,7 +224,17 @@ export const toSizeUnit = (value: unknown) => {
     return undefined
   }
 
-  if (isPercent(value) || isVw(value) || isVh(value) || isRem(value) || isCalc(value) || isVar(value)) {
+  if (
+    isPercent(value) ||
+    isVw(value) ||
+    isVh(value) ||
+    isEm(value) ||
+    isRem(value) ||
+    isCalc(value) ||
+    isVar(value) ||
+    isVMin(value) ||
+    isVMax(value)
+  ) {
     return value
   }
 

@@ -18,4 +18,6 @@ export default {
   fileLessThen: 'the file is less than 1M, the upload is successful',
   fileLargeThen: 'the file is larger than 1M and cannot be uploaded',
   customRender: 'Custom render file list',
+  useProgress: 'Use Progress',
+  beforeFilter: 'File List Filter',
 }

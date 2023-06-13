@@ -69,6 +69,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  elevation: {
+    type: [Boolean, String, Number],
+    default: true,
+  },
   defaultStyle: {
     type: Boolean,
     default: true,

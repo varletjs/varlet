@@ -25,6 +25,7 @@ export type ComponentProps = {
   showCurrent: boolean
   multiple: boolean
   range: boolean
+  buttonElevation: boolean | string | number
 }
 
 export type MonthDict = {
@@ -137,8 +138,12 @@ export const props = {
     type: String,
   },
   elevation: {
-    type: Boolean,
+    type: [Boolean, Number, String],
     default: false,
+  },
+  buttonElevation: {
+    type: [Boolean, Number, String],
+    default: true,
   },
   firstDayOfWeek: {
     type: [String, Number],

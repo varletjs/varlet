@@ -156,7 +156,7 @@ const floating = ref(false)
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |
-| `elevation`         | 卡片阴影程度等级                                               | _string \| number_  | `2`     |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
 | `src`               | 图片地址                                                   | _string_ | `-`      |
 | `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
 | `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |

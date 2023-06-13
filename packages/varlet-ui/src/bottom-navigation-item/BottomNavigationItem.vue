@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="classes(n(), [active === index || active === name, n('--active')])"
+    :class="classes(n(), n('$--box'), [active === index || active === name, n('--active')])"
     v-ripple
     :style="{
       color: computeColorStyle(),

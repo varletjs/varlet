@@ -1,83 +1,9 @@
 :root {
-  --input-input-text-color: #555;
-  --input-error-color: var(--color-danger);
-  --input-blur-color: #888;
-  --input-focus-color: var(--color-primary);
-  --input-placeholder-size: 16px;
+  --input-input-height: 24px;
   --input-textarea-height: auto;
-  --input-textarea-padding-top: 8px;
-  --input-icon-padding: 16px 0 0;
-  --input-icon-size: 20px;
-  --input-line-size: 1px;
-  --input-line-spread-size: 2px;
-  --input-disabled-color: var(--color-text-disabled);
-}
-
-.var {
-  &-input-footer-margin-enter-from,
-  &-input-footer-margin-leave-to {
-    opacity: 0;
-    margin-top: 2px !important;
-  }
-
-  &-input-footer-margin-enter-active,
-  &-input-footer-margin-leave-active {
-    transition: 0.2s all var(--cubic-bezier);
-  }
 }
 
 .var-input {
-  width: 100%;
-  color: var(--input-input-text-color);
-  overflow: hidden;
-
-  &__controller {
-    width: 100%;
-    display: flex;
-    position: relative;
-  }
-
-  &__wrap {
-    position: relative;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding-top: var(--input-placeholder-size);
-  }
-
-  &__icon {
-    display: flex;
-    align-items: center;
-    padding: var(--input-icon-padding);
-    font-size: 20px;
-  }
-
-  &__placeholder {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform-origin: left;
-    transition: top 0.3s, transform 0.3s, width 0.3s, color 0.25s;
-    transform: translate(0, calc(-50% + var(--input-placeholder-size) / 2)) scale(1);
-    font-size: var(--input-placeholder-size);
-    color: var(--input-blur-color);
-    cursor: inherit;
-  }
-
-  &__textarea-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transform-origin: left;
-    transition: transform 0.3s, width 0.3s, color 0.25s;
-    transform: translate(0, calc(var(--input-textarea-padding-top) + var(--input-placeholder-size))) scale(1);
-    font-size: var(--input-placeholder-size);
-    color: var(--input-blur-color);
-    cursor: inherit;
-  }
-
   &__autocomplete {
     width: 0;
     height: 0;
@@ -89,89 +15,36 @@
 
   &__input {
     width: 100%;
-    height: 32px;
+    height: var(--input-input-height);
     padding: 0;
     outline: none;
     border: none;
     background: transparent;
-    color: var(--input-input-text-color);
-    caret-color: var(--input-focus-color);
+    color: var(--field-decorator-text-color);
+    caret-color: var(--field-decorator-focus-color);
     transition: color 0.25s;
     font: inherit;
-  }
 
-  &__line {
-    width: 100%;
-    height: var(--input-line-size);
-    background: var(--input-blur-color);
-    transition: background-color 0.25s;
-  }
-
-  &__dot {
-    width: 100%;
-    height: var(--input-line-spread-size);
-    background: var(--input-focus-color);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s var(--cubic-bezier), background-color 0.25s;
-  }
-
-  &__clear-icon[var-input-cover] {
-    display: flex;
-    font-size: 15px;
-    margin-left: 4px;
+    &::placeholder {
+      color: var(--input-placeholder-color);
+    }
   }
 
   &--textarea {
-    padding-top: var(--input-textarea-padding-top);
     height: var(--input-textarea-height);
-  }
-
-  &--placeholder-hint {
-    top: 0;
-    width: 133.33%;
-    transform: translate(0, 0) scale(0.75);
-  }
-
-  &--placeholder-non-hint {
-    top: 50%;
-    transform: translate(0, -50%) scale(1);
-  }
-
-  &--non-hint {
-    padding-top: 0;
-  }
-
-  &--placeholder-hidden {
-    visibility: hidden;
-  }
-
-  &--focus {
-    color: var(--input-focus-color);
-  }
-
-  &--spread {
-    transform: scaleX(1);
+    min-height: var(--input-input-height);
   }
 
   &--disabled {
-    color: var(--input-disabled-color);
+    color: var(--field-decorator-disabled-color);
     cursor: not-allowed;
   }
 
   &--error {
-    color: var(--input-error-color);
-  }
-
-  &--line-disabled {
-    background: var(--input-disabled-color);
-  }
-
-  &--line-error {
-    background: var(--input-error-color);
+    color: var(--field-decorator-error-color);
   }
 
   &--caret-error {
-    caret-color: var(--input-error-color);
+    caret-color: var(--field-decorator-error-color);
   }
 }

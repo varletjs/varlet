@@ -97,14 +97,6 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '开源指南',
-          'en-US': 'Open Source Guide',
-        },
-        doc: 'openSourceGuide',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '从 1.x 迁移',
           'en-US': 'Migrating from 1.x',
         },
@@ -647,5 +639,5 @@ export default defineConfig({
     style: null,
   },
   copy: [{ from: '../varlet-icons/dist/png', to: './public/icons/png', type: 'folder' }],
-  directives: ['ripple', 'lazy', 'hover']
+  directives: ['ripple', 'lazy', 'hover'],
 })

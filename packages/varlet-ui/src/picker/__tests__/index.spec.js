@@ -94,3 +94,18 @@ test('test picker functional textFormatter', async () => {
   await delay(16)
   await delay(300)
 })
+
+test('test safe area', async () => {
+  Picker({
+    columns,
+    safeArea: true,
+  })
+  await delay(16)
+  await delay(300)
+
+  expect(document.body.innerHTML).toMatchSnapshot()
+
+  await trigger(document.querySelector('.var-picker__cancel-button'), 'click')
+  await delay(16)
+  await delay(300)
+})

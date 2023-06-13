@@ -1,19 +1,90 @@
-import example from '../example'
 import Input from '..'
 import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
 
-test('test input example', () => {
-  const wrapper = mount(example)
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
   expect(app.component(Input.name)).toBeTruthy()
+})
+
+test('test input variant', () => {
+  ;['standard', 'outlined'].forEach((variant) => {
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: 'text',
+        variant,
+      },
+    })
+
+    expect(wrapper.find(`var-field-decorator--${variant}`)).toBeTruthy()
+    switch (variant) {
+      case 'standard': {
+        expect(
+          wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('.var-field-decorator__dot')
+        ).toBeTruthy()
+        break
+      }
+
+      case 'outlined': {
+        expect(wrapper.find('.var-field-decorator__line').wrapperElement.querySelector('legend')).toBeTruthy()
+        break
+      }
+
+      default:
+        break
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+})
+
+test('test input size', () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: 'text',
+      size: 'small',
+    },
+  })
+
+  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
+  expect(wrapper.html()).toMatchSnapshot()
+})
+
+test('test input type', () => {
+  ;['text', 'password', 'number', 'tel', 'email'].forEach((type) => {
+    const wrapper = mount(VarInput, {
+      props: {
+        modelValue: 'text',
+        type,
+      },
+    })
+
+    switch (type) {
+      case 'number': {
+        expect(wrapper.find('input').attributes('type')).toBe('text')
+        expect(wrapper.find('input').attributes('inputmode')).toBe('numeric')
+        break
+      }
+
+      case 'password': {
+        expect(wrapper.find('input').attributes('type')).toBeUndefined()
+        expect(wrapper.find('input').attributes('inputmode')).toBeUndefined()
+        break
+      }
+
+      default: {
+        expect(wrapper.find('input').attributes('type')).toBe(type)
+        expect(wrapper.find('input').attributes('inputmode')).toBeUndefined()
+        break
+      }
+    }
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })
 
 describe('test input events', () => {
@@ -57,17 +128,13 @@ describe('test input events', () => {
       },
     })
 
-    await wrapper.trigger('click')
+    await wrapper.find('.var-field-decorator').trigger('click')
     expect(onClick).toHaveBeenCalledTimes(1)
 
     await wrapper.find('.var-input__input').setValue('t')
-    await wrapper.find('.var-input__input').trigger('input')
     expect(onUpdateModelValue).lastCalledWith('t')
-    expect(onInput).lastCalledWith('t', new Event('input'))
-    expect(wrapper.props('modelValue')).toBe('t')
-
-    await wrapper.find('.var-input__input').trigger('change')
-    expect(onChange).lastCalledWith('t', new Event('input'))
+    expect(onInput).toHaveBeenCalledTimes(1)
+    expect(onChange).toHaveBeenCalledTimes(1)
 
     wrapper.unmount()
   }
@@ -123,7 +190,7 @@ test('test input clear', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  await wrapper.find('.var-input__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
   expect(onUpdateModelValue).lastCalledWith('')
   expect(onClear).lastCalledWith('')
   expect(wrapper.props('modelValue')).toBe('')
@@ -134,8 +201,8 @@ test('test input clear', async () => {
 const triggerEvents = async (wrapper) => {
   await wrapper.find('.var-input__input').trigger('input')
   await wrapper.find('.var-input__input').trigger('change')
-  await wrapper.find('.var-input__clear-icon').trigger('click')
-  await wrapper.trigger('click')
+  await wrapper.find('.var-field-decorator__clear-icon').trigger('click')
+  await wrapper.find('.var-field-decorator').trigger('click')
 }
 
 test('test input disabled', async () => {

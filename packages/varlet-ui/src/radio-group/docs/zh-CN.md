@@ -114,6 +114,23 @@ const value = ref(0)
 </template>
 ```
 
+### 垂直布局
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-radio-group v-model="value" direction="vertical">
+    <var-radio :checked-value="0">吃饭</var-radio>
+    <var-radio :checked-value="1">睡觉</var-radio>
+  </var-radio-group>
+</template>
+```
+
 ### 单选框字段校验
 
 ```html

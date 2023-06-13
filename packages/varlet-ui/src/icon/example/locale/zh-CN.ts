@@ -8,4 +8,5 @@ export default {
   iconList: '图标列表 (点击复制)',
   copySuccess: '复制成功',
   clickSuccess: '点击成功',
+  searchIcon: '搜索图标',
 }

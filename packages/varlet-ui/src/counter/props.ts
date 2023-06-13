@@ -30,6 +30,10 @@ export const props = {
   buttonSize: {
     type: [String, Number],
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   decimalLength: {
     type: [String, Number],
   },

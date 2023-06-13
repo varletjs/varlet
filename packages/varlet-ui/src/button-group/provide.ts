@@ -2,7 +2,7 @@ import { useChildren } from '@varlet/use'
 import type { ComputedRef } from 'vue'
 
 export interface ButtonGroupProvider {
-  elevation: ComputedRef<string | number>
+  elevation: ComputedRef<string | number | boolean>
   type: ComputedRef<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>
   size: ComputedRef<'normal' | 'mini' | 'small' | 'large'>
   color: ComputedRef<string | undefined>
