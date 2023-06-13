@@ -26,14 +26,14 @@
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated, watch } from 'vue'
+import { defineComponent, ref, nextTick, type Ref, watch } from 'vue'
 import { getParentScroller, getRect, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 import { useTabItem } from './provide'
 
 const { n, classes } = createNamespace('list')
@@ -89,7 +89,7 @@ export default defineComponent({
 
     watch(() => [props.loading, props.error, props.finished], check)
 
-    useMounted(() => {
+    onSmartMounted(() => {
       scroller = getParentScroller(listEl.value!)
       scroller.addEventListener('scroll', check)
 
@@ -98,8 +98,7 @@ export default defineComponent({
       }
     })
 
-    onDeactivated(removeScrollerListener)
-    onUnmounted(removeScrollerListener)
+    onSmartUnmounted(removeScrollerListener)
 
     return {
       pack,

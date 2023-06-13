@@ -61,7 +61,7 @@ import { clamp, isNumber } from '@varlet/shared'
 import { linear } from '../utils/shared'
 import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
 import { createNamespace, call, formatElevation } from '../utils/components'
-import { useWindowResize } from '@varlet/use'
+import { onWindowResize } from '@varlet/use'
 
 const { n, classes } = createNamespace('tabs')
 
@@ -202,7 +202,7 @@ export default defineComponent({
     watch(() => props.active, resize)
     watch(() => props.scrollable, resize)
     onActivated(resize)
-    useWindowResize(resize)
+    onWindowResize(resize)
 
     return {
       stickyComponent,

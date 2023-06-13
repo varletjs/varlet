@@ -36,7 +36,7 @@ import type { Ref, ComputedRef } from 'vue'
 import type { IndexBarProvider } from './provide'
 import type { IndexAnchorProvider } from '../index-anchor/provide'
 import { createNamespace, call } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('index-bar')
 
@@ -169,7 +169,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(async () => {
+    onSmartMounted(async () => {
       await setScroller()
       addScrollerListener()
     })

@@ -42,7 +42,7 @@ import { props } from './props'
 import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE, type SnackbarType } from './index'
 import { call, createNamespace } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('snackbar')
 
@@ -105,7 +105,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (props.show) {
         call(props.onOpen)
         updateAfterDuration()

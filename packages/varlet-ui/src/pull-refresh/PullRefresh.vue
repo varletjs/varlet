@@ -23,7 +23,7 @@ import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/el
 import { props, type RefreshStatus } from './props'
 import { isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -190,7 +190,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(setScroller)
+    onSmartMounted(setScroller)
     useEventListener(freshNode, 'touchmove', touchMove)
 
     return {
