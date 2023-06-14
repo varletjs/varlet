@@ -43,7 +43,6 @@ watchDarkMode(dark)
   </var-space>
   <app-type>{{ pack.loading }}</app-type>
   <var-space :size="['3vw', '9vw']" align="center">
-    <var-switch :model-value="true" loading />
     <var-switch :model-value="true" size="6.4vw" loading loading-color="#ff9f00" />
   </var-space>
   <app-type>{{ pack.validateValue }}</app-type>
