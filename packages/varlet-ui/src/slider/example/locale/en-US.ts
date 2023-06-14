@@ -10,5 +10,6 @@ export default {
   showLabel: 'Show Label',
   customBtn: 'Custom Button',
   validateValue: 'Validate Value',
+  errMsg: 'error message',
   vertical: 'Vertical',
 }

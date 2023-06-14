@@ -76,7 +76,7 @@ watchDarkMode(dark)
   <var-slider v-model="values.value7" label-visible="always" />
 
   <app-type>{{ pack.validateValue }}</app-type>
-  <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
+  <var-slider v-model="values.value8" :rules="[(v) => v > 35 || pack.errMsg]" />
 
   <app-type>{{ pack.vertical }}</app-type>
   <var-space justify="space-around">

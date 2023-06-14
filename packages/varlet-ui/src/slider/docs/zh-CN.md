@@ -203,7 +203,7 @@ const value = ref(20)
 </script>
 
 <template>
-  <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
+  <var-slider v-model="value" :rules="[(v) => v > 35 || '错误信息']" />
 </template>
 ```
 
