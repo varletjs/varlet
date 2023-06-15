@@ -2,6 +2,7 @@
   --progress-font-size: var(--font-size-sm);
   --progress-ripple-color: #fff;
   --progress-track-color: #d8d8d8;
+  --progress-label-color: #555;
   --progress-background: var(--color-primary);
 }
 
@@ -53,6 +54,7 @@
     &-label {
       margin-left: 8px;
       flex: 0;
+      color: var(--progress-label-color);
     }
 
     @keyframes ripple {
@@ -91,6 +93,7 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      color: var(--progress-label-color);
     }
   }
 }
