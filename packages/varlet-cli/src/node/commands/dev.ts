@@ -22,9 +22,9 @@ async function startServer(options: DevCommandOptions) {
   watcher && (await watcher.close())
 
   // build all config
-  await buildSiteEntry(options.draft ?? false)
+  await buildSiteEntry()
   const varletConfig = await getVarletConfig()
-  const devConfig = getDevConfig(varletConfig)
+  const devConfig = getDevConfig(merge(varletConfig, options.draft ? { draft: true } : {}))
   const inlineConfig = merge(devConfig, options.force ? { optimizeDeps: { force: true } } : {})
 
   // create all instance

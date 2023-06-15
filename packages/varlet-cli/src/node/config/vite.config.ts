@@ -1,37 +1,38 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
+import Inspect from 'vite-plugin-inspect'
+import { markdown, html, inlineCss, copy, virtual } from '@varlet/vite-plugins'
 import {
   ES_DIR,
-  SITE_CONFIG,
   SITE_DIR,
-  SITE_MOBILE_ROUTES,
   SITE_OUTPUT_PATH,
-  SITE_PC_ROUTES,
   SITE_PUBLIC_PATH,
   VITE_RESOLVE_EXTENSIONS,
   EXTENSION_ENTRY,
+  SITE_PC_DIR,
+  SRC_DIR,
+  DOCS_DIR_NAME,
+  ROOT_DOCS_DIR,
+  EXAMPLE_DIR_NAME,
 } from '../shared/constant.js'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
-import { VarletConfig } from './varlet.config'
+import { VarletConfig, getVarletConfig } from './varlet.config.js'
+import { COMPONENT_DOCS_RE, EXAMPLE_INDEX_RE, ROOT_DOCS_RE } from '../compiler/compileSiteEntry.js'
 
-export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
+export async function getDevConfig(varletConfig: Required<VarletConfig>): Promise<InlineConfig> {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
   const host = get(varletConfig, 'host')
+  const pcCompRe = COMPONENT_DOCS_RE
+  const pcDocsRe = ROOT_DOCS_RE
+  const mobileRe = EXAMPLE_INDEX_RE
 
   return {
     root: SITE_DIR,
 
     resolve: {
       extensions: VITE_RESOLVE_EXTENSIONS,
-
-      alias: {
-        '@config': SITE_CONFIG,
-        '@pc-routes': SITE_PC_ROUTES,
-        '@mobile-routes': SITE_MOBILE_ROUTES,
-      },
     },
 
     server: {
@@ -42,6 +43,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     publicDir: SITE_PUBLIC_PATH,
 
     plugins: [
+      Inspect(),
       vue({
         include: [/\.vue$/, /\.md$/],
       }),
@@ -64,6 +66,28 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
           mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
         },
       }),
+      virtual([
+        { name: '@config', content: JSON.stringify(varletConfig, null, 2) },
+        {
+          name: '@pc-routes',
+          routes: [
+            { path: '/en-US/index', component: SITE_PC_DIR + '/pages/index/index.vue' },
+            { path: '/zh-CN/index', component: SITE_PC_DIR + '/pages/index/index.vue' },
+            {
+              path: '/layout',
+              component: SITE_PC_DIR + '/Layout.vue',
+              child: [
+                { scanDir: `${SRC_DIR}/**/${DOCS_DIR_NAME}/*.md`, pathReg: pcCompRe },
+                { scanDir: `${ROOT_DOCS_DIR}/*.md`, pathReg: pcDocsRe },
+              ],
+            },
+          ],
+        },
+        {
+          name: '@mobile-routes',
+          routes: { scanDir: `${SRC_DIR}/**/${EXAMPLE_DIR_NAME}/index.vue`, pathReg: mobileRe },
+        },
+      ]),
     ],
   }
 }
