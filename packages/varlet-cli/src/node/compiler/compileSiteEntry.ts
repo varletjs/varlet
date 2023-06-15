@@ -8,21 +8,19 @@ import {
   ROOT_PAGES_DIR,
   SITE,
   SITE_DIR,
-  SITE_MOBILE_ROUTES,
   SITE_PC_DIR,
-  SITE_PC_ROUTES,
   SRC_DIR,
 } from '../shared/constant.js'
-import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils.js'
+import { glob, isDir } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash-es'
 
 const { copy } = fse
 
-const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)(?:.draft)?\.md/
 const PAGE_LOCALE_RE = /\/pages\/([-\w]+)\/locale\/([-\w]+)\.ts/
-const EXAMPLE_INDEX_RE = /\/([-\w]+)\/example\/index(?:.draft)?\.vue/
-const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)(?:.draft)?\.md/
+export const ROOT_DOCS_RE = /\/docs\/([-\w]+)\.([-\w]+)(?:.draft)?\.md/
+export const EXAMPLE_INDEX_RE = /\/([-\w]+)\/example\/index(?:.draft)?\.vue/
+export const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)(?:.draft)?\.md/
 
 export function getExampleRoutePath(examplePath: string): string {
   return '/' + examplePath.match(EXAMPLE_INDEX_RE)?.[1] // eslint-disable-line
@@ -84,7 +82,6 @@ export function filterDraftDocs(docs: string[], draftMode: boolean) {
 
 export async function findComponentDocs(draftMode: boolean): Promise<string[]> {
   const componentDocs = await glob(`${SRC_DIR}/**/${DOCS_DIR_NAME}/*.md`)
-
   return filterDraftDocs(componentDocs, draftMode)
 }
 
@@ -128,79 +125,11 @@ export async function findPageLocales(): Promise<string[]> {
   return Promise.resolve(Array.from(filterMap.values()))
 }
 
-export async function buildMobileSiteRoutes(draftMode: boolean) {
-  const examples: string[] = await findExamples(draftMode)
-  const routes = examples.map(
-    (example) => `
-  {
-    path: '${getExampleRoutePath(example)}',
-    // @ts-ignore
-    component: () => import('${example}')
-  }`
-  )
-  const source = `export default [\
-    ${routes.join(',')}
-]`
-
-  await outputFileSyncOnChange(SITE_MOBILE_ROUTES, source)
-}
-
-export async function buildPcSiteRoutes(draftMode: boolean) {
-  const [componentDocs, rootDocs, rootLocales] = await Promise.all([
-    findComponentDocs(draftMode),
-    findRootDocs(draftMode),
-    findPageLocales(),
-  ])
-
-  const pageRoutes = rootLocales.map(
-    (locale) => `
-  {
-    path: '${getPageRoutePath(locale)}',
-    // @ts-ignore
-    component: () => import('${getPageFilePath(locale)}')
-  }\
-`
-  )
-
-  const componentDocsRoutes = componentDocs.map(
-    (componentDoc) => `
-      {
-        path: '${getComponentDocRoutePath(componentDoc)}',
-        // @ts-ignore
-        component: () => import('${componentDoc}')
-      }`
-  )
-
-  const rootDocsRoutes = rootDocs.map(
-    (rootDoc) => `
-      {
-        path: '${getRootDocRoutePath(rootDoc)}',
-        // @ts-ignore
-        component: () => import('${rootDoc}')
-      }`
-  )
-
-  const layoutRoutes = `{
-    path: '/layout',
-    // @ts-ignore
-    component:()=> import('${slash(SITE_PC_DIR)}/Layout.vue'),
-    children: [
-      ${[...componentDocsRoutes, rootDocsRoutes].join(',')},
-    ]
-  }`
-
-  const source = `export default [\
-  ${pageRoutes.join(',')},
-  ${layoutRoutes}
-]`
-  outputFileSyncOnChange(SITE_PC_ROUTES, source)
-}
-
 export async function buildSiteSource() {
   return copy(SITE, SITE_DIR)
 }
 
-export async function buildSiteEntry(draftMode: boolean) {
-  await getVarletConfig(true)
-  await Promise.all([buildMobileSiteRoutes(draftMode), buildPcSiteRoutes(draftMode), buildSiteSource()])
+export async function buildSiteEntry() {
+  await getVarletConfig()
+  await Promise.all([buildSiteSource()])
 }
