@@ -89,6 +89,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': '设计资源',
+          'en-US': 'Design Resources',
+        },
+        doc: 'designResources',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '组件库快速成型工具',
           'en-US': 'Components Library Tools',
         },
