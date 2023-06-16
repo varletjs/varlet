@@ -750,7 +750,9 @@ exports[`test form with uploader 1`] = `
       <div class="var--box var-popup" style="z-index: 1998; display: none;">
         <div class="var-popup__overlay" style="z-index: 1999;"></div>
         <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
+          <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-uploader__preview" style="z-index: 2000; display: none;" var-uploader-cover="">
+            <!---->
+          </div>
         </transition-stub>
       </div>
     </transition-stub>
@@ -773,7 +775,9 @@ exports[`test form with uploader 2`] = `
       <div class="var--box var-popup" style="z-index: 1998; display: none;">
         <div class="var-popup__overlay" style="z-index: 1999;"></div>
         <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
+          <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-uploader__preview" style="z-index: 2000; display: none;" var-uploader-cover="">
+            <!---->
+          </div>
         </transition-stub>
       </div>
     </transition-stub>
@@ -807,7 +811,9 @@ exports[`test form with uploader 3`] = `
       <div class="var--box var-popup" style="z-index: 1998; display: none;">
         <div class="var-popup__overlay" style="z-index: 1999;"></div>
         <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
+          <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-uploader__preview" style="z-index: 2000; display: none;" var-uploader-cover="">
+            <!---->
+          </div>
         </transition-stub>
       </div>
     </transition-stub>
@@ -830,7 +836,9 @@ exports[`test form with uploader 4`] = `
       <div class="var--box var-popup" style="z-index: 1998; display: none;">
         <div class="var-popup__overlay" style="z-index: 1999;"></div>
         <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
+          <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-uploader__preview" style="z-index: 2000; display: none;" var-uploader-cover="">
+            <!---->
+          </div>
         </transition-stub>
       </div>
     </transition-stub>
