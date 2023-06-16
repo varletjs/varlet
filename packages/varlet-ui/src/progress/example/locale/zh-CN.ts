@@ -4,4 +4,5 @@ export default {
   basicUsage: '基本使用',
   showLabel: '显示标签',
   hideTrack: '隐藏轨道',
+  themeColor: '主题色',
 }

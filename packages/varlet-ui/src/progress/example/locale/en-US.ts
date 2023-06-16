@@ -4,4 +4,5 @@ export default {
   style: 'Custom Style',
   showLabel: 'Show Label',
   hideTrack: 'Hide Track',
+  themeColor: 'Theme Color',
 }

@@ -32,6 +32,12 @@ onUnmounted(() => {
     <var-progress :value="100" :track="false" />
   </var-space>
 
+  <app-type>{{ pack.themeColor }}</app-type>
+  <var-space direction="column" :size="['3vh', '3vh']">
+    <var-progress type="success" :value="20" />
+    <var-progress type="success" mode="circle" size="18vw" line-width="5" :value="20" />
+  </var-space>
+
   <app-type>{{ pack.showLabel }}</app-type>
   <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="30" label />

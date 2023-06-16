@@ -36,6 +36,19 @@ Set the current progress through the `value` attribute.
 </template>
 ```
 
+### Theme Color
+
+Set different theme colors through `type` attribute.
+
+```html
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress type="success" :value="20" />
+    <var-progress type="success" mode="circle" size="18vw" line-width="5" :value="20" />
+  </var-space>
+</template>
+```
+
 ### Show Label
 
 The label is displayed through the `label` attribute. The label is the percentage of progress by default. You can use the slot to insert custom content.
@@ -134,6 +147,7 @@ Use `track` prop to hide track.
 | prop          | Description                                                | Type     | Default   |
 |---------------|------------------------------------------------------------|----------|-----------|
 | `mode`        | Mode of Progress. Optional value is `linear, circle`       | _string_ | `linear`  |
+| `type`           | Progress type, Can be set to `default` `primary` `info` `success` `warning` `danger`  | _string_  | `primary` |
 | `value`       | Completion value                                           | _string \| number_   |  `0`  |
 | `line-width`  | Width of the progress bar                                  | _string \| number_   | `4` |
 | `color`       | Color of the progress bar                                  | _string_ | `#005CAF` |
@@ -161,3 +175,9 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--progress-track-color` | `#d8d8d8` |
 | `--progress-label-color` | `#555` |
 | `--progress-background` | `var(--color-primary)` |
+| `--progress-default-color` | `#f5f5f5` |
+| `--progress-primary-color` | `var(--color-primary)`|
+| `--progress-danger-color` |  `var(--color-danger)`|
+| `--progress-success-color` | `var(--color-success)`|
+| `--progress-warning-color` |  `var(--color-warning)`|
+| `--progress-info-color` | `var(--color-info)`|

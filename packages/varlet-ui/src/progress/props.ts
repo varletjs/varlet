@@ -4,7 +4,13 @@ function modeValidator(mode: string): boolean {
   return ['linear', 'circle'].includes(mode)
 }
 
+function typeValidator(type: string): boolean {
+  return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
+}
+
 type ProgressMode = 'linear' | 'circle'
+
+type ProgressType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
 export const props = {
   mode: {
@@ -48,5 +54,10 @@ export const props = {
   track: {
     type: Boolean,
     default: true,
+  },
+  type: {
+    type: String as PropType<ProgressType>,
+    default: 'primary',
+    validator: typeValidator,
   },
 }

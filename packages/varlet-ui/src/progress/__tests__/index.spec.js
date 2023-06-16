@@ -31,6 +31,16 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
+  test('test progress type', () => {
+    ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
+      const wrapper = mount(VarProgress, {
+        props: { type, mode: 'linear' },
+      })
+
+      expect(wrapper.find(`.var-progress__linear-${type}`).exists()).toBe(true)
+    })
+  })
+
   test('test progress line-width', () => {
     const wrapper = mount(VarProgress, {
       props: {

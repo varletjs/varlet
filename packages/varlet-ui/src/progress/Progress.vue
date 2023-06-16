@@ -4,7 +4,7 @@
       <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
         <div :class="n('linear-background')" v-if="track" :style="{ background: trackColor }"></div>
         <div
-          :class="classes(n('linear-certain'), [ripple, n('linear-ripple')])"
+          :class="classes(n('linear-certain'), n(`linear-${linearProps.type}`), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
         ></div>
       </div>
@@ -31,7 +31,7 @@
           }"
         ></circle>
         <circle
-          :class="n('circle-certain')"
+          :class="classes(n('circle-certain'), n(`circle-${circleProps.type}`))"
           :cx="multiplySizeUnit(size, 0.5)"
           :cy="multiplySizeUnit(size, 0.5)"
           :r="circleProps.radius"
@@ -73,13 +73,14 @@ export default defineComponent({
       const roundValue = value > ONE_HUNDRED ? ONE_HUNDRED : Math.round(value)
 
       return {
+        type: props.type,
         width: `${width}%`,
         roundValue: `${roundValue}%`,
       }
     })
 
     const circleProps = computed(() => {
-      const { size, lineWidth, value } = props
+      const { size, lineWidth, value, type } = props
       const viewBox = `0 0 ${toPxNum(size)} ${toPxNum(size)}`
       const roundValue = toNumber(value) > ONE_HUNDRED ? ONE_HUNDRED : Math.round(toNumber(value))
       const radius = (toPxNum(size) - toPxNum(lineWidth)) / 2
@@ -87,6 +88,7 @@ export default defineComponent({
       const strokeDasharray = `${(roundValue / ONE_HUNDRED) * perimeter}, ${perimeter}`
 
       return {
+        type,
         viewBox,
         radius,
         strokeDasharray,

@@ -4,6 +4,12 @@
   --progress-track-color: #d8d8d8;
   --progress-label-color: #555;
   --progress-background: var(--color-primary);
+  --progress-default-color: #f5f5f5;
+  --progress-primary-color: var(--color-primary);
+  --progress-danger-color: var(--color-danger);
+  --progress-success-color: var(--color-success);
+  --progress-warning-color: var(--color-warning);
+  --progress-info-color: var(--color-info);
 }
 
 .var-progress {
@@ -57,6 +63,30 @@
       color: var(--progress-label-color);
     }
 
+    &-success {
+      background-color: var(--progress-success-color);
+    }
+
+    &-default {
+      background-color: var(--progress-default-color);
+    }
+
+    &-primary {
+      background-color: var(--progress-primary-color);
+    }
+
+    &-warning {
+      background-color: var(--progress-warning-color);
+    }
+
+    &-danger {
+      background-color: var(--progress-danger-color);
+    }
+
+    &-info {
+      background-color: var(--progress-info-color);
+    }
+
     @keyframes ripple {
       0% {
         width: 0;
@@ -94,6 +124,30 @@
       top: 50%;
       transform: translate(-50%, -50%);
       color: var(--progress-label-color);
+    }
+
+    &-success {
+      stroke: var(--progress-success-color);
+    }
+
+    &-default {
+      stroke: var(--progress-default-color);
+    }
+
+    &-primary {
+      stroke: var(--progress-primary-color);
+    }
+
+    &-warning {
+      stroke: var(--progress-warning-color);
+    }
+
+    &-danger {
+      stroke: var(--progress-danger-color);
+    }
+
+    &-info {
+      stroke: var(--progress-info-color);
     }
   }
 }

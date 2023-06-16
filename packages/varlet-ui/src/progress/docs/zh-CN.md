@@ -36,6 +36,19 @@ onUnmounted(() => {
 </template>
 ```
 
+### 主题色
+
+通过 `type` 属性设置不同的主题色。
+
+```html
+<template>
+  <var-space direction="column" :size="[12, 12]">
+    <var-progress type="success" :value="20" />
+    <var-progress type="success" mode="circle" size="18vw" line-width="5" :value="20" />
+  </var-space>
+</template>
+```
+
 ### 显示标签
 
 通过 `label` 属性将 label 显示，label 默认为进度的百分比，可以使用插槽插入自定义内容。
@@ -134,6 +147,7 @@ onUnmounted(() => {
 | 参数            | 说明                                    | 类型       | 默认值       |
 |---------------|---------------------------------------|----------|-----------|
 | `mode`        | `progress` 的模式，可选值为 `linear, circle`  | _string_ | `linear`  |
+| `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`      |
 | `value`       | `progress` 的进度                        | _string \| number_   |  `0`  |
 | `line-width`  | `progress` 的线宽                        | _string \| number_   | `4` |
 | `color`       | `progress` 的颜色                        | _string_ | `#005CAF` |
@@ -161,3 +175,9 @@ onUnmounted(() => {
 | `--progress-track-color` | `#d8d8d8` |
 | `--progress-label-color` | `#555` |
 | `--progress-background` | `var(--color-primary)` |
+| `--progress-default-color` | `#f5f5f5` |
+| `--progress-primary-color` | `var(--color-primary)`|
+| `--progress-danger-color` |  `var(--color-danger)`|
+| `--progress-success-color` | `var(--color-success)`|
+| `--progress-warning-color` |  `var(--color-warning)`|
+| `--progress-info-color` | `var(--color-info)`|
