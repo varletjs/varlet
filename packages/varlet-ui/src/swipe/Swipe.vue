@@ -40,6 +40,7 @@ import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { onSmartUnmounted, onWindowResize } from '@varlet/use'
 import { type SwipeItemProvider } from '../swipe-item/provide'
+import { usePopup } from '../popup/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -58,6 +59,7 @@ export default defineComponent({
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
+    const { popup } = usePopup()
     let initializedIndex = false
     let touching = false
     let timer = -1
@@ -379,6 +381,21 @@ export default defineComponent({
         resize()
       }
     )
+
+    if (popup) {
+      // watch popup show again
+      watch(
+        () => popup.show.value,
+        async (show) => {
+          if (show) {
+            await doubleRaf()
+            resize()
+          } else {
+            stopAutoplay()
+          }
+        }
+      )
+    }
 
     onActivated(resize)
     onSmartUnmounted(stopAutoplay)
