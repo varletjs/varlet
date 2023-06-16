@@ -59,7 +59,7 @@ export default defineComponent({
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
-    const { popup } = usePopup()
+    const { popup, bindPopup } = usePopup()
     let initializedIndex = false
     let touching = false
     let timer = -1
@@ -370,6 +370,7 @@ export default defineComponent({
     }
 
     bindSwipeItems(swipeProvider)
+    call(bindPopup, null)
 
     watch(
       () => length.value,
