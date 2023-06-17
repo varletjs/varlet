@@ -214,6 +214,7 @@ Set the `direction` attribute value to `vertical` to make the slider display ver
 ```html
 <script>
 import { ref } from 'vue'
+
 const value1 = ref(50)
 const value2 = ref([7, 64])
 </script>
@@ -221,10 +222,10 @@ const value2 = ref([7, 64])
 <template>
   <var-space justify="space-around">
     <div style="height: 300px">
-      <var-slider v-model="values.value1" direction="vertical" />
+      <var-slider v-model="value1" direction="vertical" />
     </div>
     <div style="height: 300px">
-      <var-slider v-model="values.value2" range label-visible="always" direction="vertical" />
+      <var-slider v-model="value2" range label-visible="always" direction="vertical" />
     </div>
   </var-space>
 </template>
