@@ -189,7 +189,7 @@ const images = ref([
     image-prevent-default
     :images="images"
     v-model:show="show"
-    @long-press="Snackbar('This image is copyrighted!!')"
+    @long-press="Snackbar('Long press event is triggered')"
   />
 </template>
 ```
