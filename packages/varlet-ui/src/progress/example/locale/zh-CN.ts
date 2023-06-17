@@ -5,4 +5,5 @@ export default {
   showLabel: '显示标签',
   hideTrack: '隐藏轨道',
   themeColor: '主题色',
+  indeterminateProgress: '不确定的进度',
 }

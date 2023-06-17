@@ -5,4 +5,5 @@ export default {
   showLabel: 'Show Label',
   hideTrack: 'Hide Track',
   themeColor: 'Theme Color',
+  indeterminateProgress: 'Indeterminate Progress',
 }

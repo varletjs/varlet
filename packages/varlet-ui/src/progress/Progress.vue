@@ -3,7 +3,12 @@
     <div :class="n('linear')" v-if="mode === 'linear'">
       <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
         <div :class="n('linear-background')" v-if="track" :style="{ background: trackColor }"></div>
+        <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
+          <div class="long" :class="classes(n(`linear-${linearProps.type}`))" :style="{ background: color }"></div>
+          <div class="short" :class="classes(n(`linear-${linearProps.type}`))" :style="{ background: color }"></div>
+        </div>
         <div
+          v-else
           :class="classes(n('linear-certain'), n(`linear-${linearProps.type}`), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
         ></div>
@@ -68,19 +73,21 @@ export default defineComponent({
   props,
   setup(props) {
     const linearProps = computed(() => {
+      const { type, indeterminate } = props
       const value = toNumber(props.value)
       const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
       const roundValue = value > ONE_HUNDRED ? ONE_HUNDRED : Math.round(value)
 
       return {
-        type: props.type,
+        indeterminate,
+        type,
         width: `${width}%`,
         roundValue: `${roundValue}%`,
       }
     })
 
     const circleProps = computed(() => {
-      const { size, lineWidth, value, type } = props
+      const { size, lineWidth, value, type, indeterminate } = props
       const viewBox = `0 0 ${toPxNum(size)} ${toPxNum(size)}`
       const roundValue = toNumber(value) > ONE_HUNDRED ? ONE_HUNDRED : Math.round(toNumber(value))
       const radius = (toPxNum(size) - toPxNum(lineWidth)) / 2
@@ -88,6 +95,7 @@ export default defineComponent({
       const strokeDasharray = `${(roundValue / ONE_HUNDRED) * perimeter}, ${perimeter}`
 
       return {
+        indeterminate,
         type,
         viewBox,
         radius,

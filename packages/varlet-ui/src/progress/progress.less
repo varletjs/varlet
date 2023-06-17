@@ -87,6 +87,60 @@
       background-color: var(--progress-info-color);
     }
 
+    &-indeterminate {
+      .long,
+      .short {
+        bottom: 0;
+        height: inherit;
+        left: 0;
+        position: absolute;
+        right: auto;
+        top: 0;
+        width: auto;
+        will-change: left, right;
+      }
+
+      .long {
+        animation: progress-linear-long 2.2s infinite;
+      }
+
+      .short {
+        animation: progress-linear-short 2.2s infinite;
+      }
+    }
+
+    @keyframes progress-linear-long {
+      0% {
+        left: -90%;
+        right: 100%;
+      }
+
+      60% {
+        left: -90%;
+        right: 100%;
+      }
+      100% {
+        left: 100%;
+        right: -35%;
+      }
+    }
+
+    @keyframes progress-linear-short {
+      0% {
+        left: -200%;
+        right: 100%;
+      }
+
+      60% {
+        left: 107%;
+        right: -8%;
+      }
+      100% {
+        left: 107%;
+        right: -8%;
+      }
+    }
+
     @keyframes ripple {
       0% {
         width: 0;

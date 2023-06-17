@@ -55,6 +55,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
   type: {
     type: String as PropType<ProgressType>,
     default: 'primary',
