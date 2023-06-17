@@ -212,7 +212,7 @@ const value = ref(20)
 Set the `direction` attribute value to `vertical` to make the slider display vertically.
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
 
 const value1 = ref(50)
