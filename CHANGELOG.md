@@ -1,3 +1,12 @@
+## [2.11.8](https://github.com/varletjs/varlet/compare/v2.11.7...v2.11.8) (2023-06-17)
+
+
+### Bug Fixes
+
+* patch js ext ([a56e16a](https://github.com/varletjs/varlet/commit/a56e16aa2eece4f4d6f0d9fdf023e58ac9739cc5))
+
+
+
 ## [2.11.7](https://github.com/varletjs/varlet/compare/v2.11.6...v2.11.7) (2023-06-17)
 
 
