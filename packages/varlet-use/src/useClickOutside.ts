@@ -1,4 +1,4 @@
-import { useEventListener } from './useEventListener'
+import { useEventListener } from './useEventListener.js'
 import { inBrowser } from '@varlet/shared'
 import { unref, type Ref } from 'vue'
 
