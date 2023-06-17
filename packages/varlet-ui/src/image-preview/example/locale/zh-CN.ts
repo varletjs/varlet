@@ -9,7 +9,7 @@ export default {
   listenCloseEvents: '监听关闭事件',
   shutdownEvent: '触发了关闭事件。',
   preventLongTapDefault: '监听长按事件',
-  preventDefaultEvent: '该图片享有版权！！',
+  preventDefaultEvent: '触发了长按事件',
   showExtraSlots: '展示额外插槽',
   operate: '操作',
 }

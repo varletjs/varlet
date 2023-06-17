@@ -189,7 +189,7 @@ const images = ref([
     image-prevent-default
     :images="images"
     v-model:show="show"
-    @long-press="Snackbar('该图片享有版权！！')"
+    @long-press="Snackbar('触发了长按事件')"
   />
 </template>
 ```
