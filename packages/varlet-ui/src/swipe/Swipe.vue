@@ -32,24 +32,15 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  computed,
-  watch,
-  onUnmounted,
-  type Ref,
-  type ComputedRef,
-  onDeactivated,
-  onActivated,
-} from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
+import { onSmartUnmounted, onWindowResize } from '@varlet/use'
 import { type SwipeItemProvider } from '../swipe-item/provide'
-import { useEventListener } from '@varlet/use'
+import { usePopup } from '../popup/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -68,6 +59,7 @@ export default defineComponent({
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
+    const { popup, bindPopup } = usePopup()
     let initializedIndex = false
     let touching = false
     let timer = -1
@@ -378,6 +370,7 @@ export default defineComponent({
     }
 
     bindSwipeItems(swipeProvider)
+    call(bindPopup, null)
 
     watch(
       () => length.value,
@@ -390,10 +383,24 @@ export default defineComponent({
       }
     )
 
+    if (popup) {
+      // watch popup show again
+      watch(
+        () => popup.show.value,
+        async (show) => {
+          if (show) {
+            await doubleRaf()
+            resize()
+          } else {
+            stopAutoplay()
+          }
+        }
+      )
+    }
+
     onActivated(resize)
-    onDeactivated(stopAutoplay)
-    onUnmounted(stopAutoplay)
-    useEventListener(() => window, 'resize', resize)
+    onSmartUnmounted(stopAutoplay)
+    onWindowResize(resize)
 
     return {
       n,

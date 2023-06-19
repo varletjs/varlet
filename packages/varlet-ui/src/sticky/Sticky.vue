@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { doubleRaf, getParentScroller, raf, toPxNum, getRect } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted, onWindowResize, onSmartUnmounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('sticky')
 
@@ -139,11 +139,10 @@ export default defineComponent({
 
     watch(() => props.disabled, resize)
 
-    useMounted(addScrollListener)
-    onUnmounted(removeScrollListener)
-    onDeactivated(removeScrollListener)
+    onSmartMounted(addScrollListener)
+    onSmartUnmounted(removeScrollListener)
+    onWindowResize(resize)
     useEventListener(() => window, 'scroll', handleScroll)
-    useEventListener(() => window, 'resize', resize)
 
     return {
       n,

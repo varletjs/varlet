@@ -112,10 +112,8 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string> = computed(() => {
-      const { size = '5.333vw' } = props
-
-      return multiplySizeUnit(size, 0.4) as string
+    const radius: ComputedRef<string | undefined> = computed(() => {
+      return multiplySizeUnit(props.size || 0, 0.4)
     })
 
     const switchActive = (event: MouseEvent) => {

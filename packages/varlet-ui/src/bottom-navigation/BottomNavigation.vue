@@ -26,7 +26,7 @@ import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
 import { isNumber, normalizeToArray } from '@varlet/shared'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
 const { n, classes } = createNamespace('bottom-navigation')
@@ -166,7 +166,7 @@ export default defineComponent({
       { immediate: true, deep: true }
     )
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (!slots.fab) {
         return
       }

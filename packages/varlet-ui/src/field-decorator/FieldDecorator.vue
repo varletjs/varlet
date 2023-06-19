@@ -114,7 +114,7 @@ import { defineComponent, ref, type Ref, computed, type ComputedRef, onUpdated }
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { onWindowResize, onSmartMounted } from '@varlet/use'
 import { getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('field-decorator')
@@ -165,9 +165,9 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    useMounted(resize)
+    onWindowResize(resize)
+    onSmartMounted(resize)
     onUpdated(resize)
-    useEventListener(() => window, 'resize', resize)
 
     return {
       placeholderTextEl,

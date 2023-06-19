@@ -1,3 +1,40 @@
+## [2.11.8](https://github.com/varletjs/varlet/compare/v2.11.7...v2.11.8) (2023-06-17)
+
+
+### Bug Fixes
+
+* patch js ext ([a56e16a](https://github.com/varletjs/varlet/commit/a56e16aa2eece4f4d6f0d9fdf023e58ac9739cc5))
+
+
+
+## [2.11.7](https://github.com/varletjs/varlet/compare/v2.11.6...v2.11.7) (2023-06-17)
+
+
+### Bug Fixes
+
+* **ui/popup:** fix slots rerender ([4ee6487](https://github.com/varletjs/varlet/commit/4ee6487b7d7ed47e2713bccac6a06e8fdb1031ce))
+* **ui/progress:** fix css color inherit ([#1096](https://github.com/varletjs/varlet/issues/1096)) ([704ffc7](https://github.com/varletjs/varlet/commit/704ffc73d31560b1bebfaf0bf12410958da1105a))
+
+
+
+## [2.11.6](https://github.com/varletjs/varlet/compare/v2.11.5...v2.11.6) (2023-06-15)
+
+
+### Bug Fixes
+
+* **rate:** add flex to constraint icon size and close [#1090](https://github.com/varletjs/varlet/issues/1090) ([455ff1e](https://github.com/varletjs/varlet/commit/455ff1ec108809f61dc4ee9145ca34cd217ebde9))
+* **switch:** remove default loading size and close [#1092](https://github.com/varletjs/varlet/issues/1092) ([ae3b562](https://github.com/varletjs/varlet/commit/ae3b562c67f0469be1229b5158e6412802caa9af))
+* **ui/button,link:** fix css color inherit ([#1094](https://github.com/varletjs/varlet/issues/1094)) ([2b63723](https://github.com/varletjs/varlet/commit/2b637233897dc3ce68725d994e1587abe53a8316))
+* **ui/dialog:** fix css color inherit ([#1097](https://github.com/varletjs/varlet/issues/1097)) ([97c0937](https://github.com/varletjs/varlet/commit/97c0937b69680288f02c2d58d0323127171c9e86))
+* **ui/table:** fix css color inherit ([#1098](https://github.com/varletjs/varlet/issues/1098)) ([06d07a0](https://github.com/varletjs/varlet/commit/06d07a0529512fba248e26e96a0b88f515e1580e))
+
+
+### Features
+
+* **ui/counter:** support --counter-button-text-color and complete design docs ([30fd9fa](https://github.com/varletjs/varlet/commit/30fd9fa0c38508c4fbf95a387c919bd10da0efa7))
+
+
+
 ## [2.11.5](https://github.com/varletjs/varlet/compare/v2.11.4...v2.11.5) (2023-06-09)
 
 

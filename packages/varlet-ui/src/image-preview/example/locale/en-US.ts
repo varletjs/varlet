@@ -9,7 +9,7 @@ export default {
   listenCloseEvents: 'Listen for close event',
   shutdownEvent: 'The shutdown event was triggered.',
   preventLongTapDefault: 'Listen for long press event',
-  preventDefaultEvent: 'This image is copyrighted!!',
+  preventDefaultEvent: 'Long press event is triggered',
   showExtraSlots: 'Show extra slots',
   operate: 'Operate',
 }
