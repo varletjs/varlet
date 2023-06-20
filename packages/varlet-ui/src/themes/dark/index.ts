@@ -36,6 +36,7 @@ import avatar from './avatar'
 import link from './link'
 import progress from './progress'
 import option from './option'
+import countdown from './countdown'
 
 export default {
   // common
@@ -86,4 +87,5 @@ export default {
   ...link,
   ...progress,
   ...option,
+  ...countdown,
 } as StyleVars
