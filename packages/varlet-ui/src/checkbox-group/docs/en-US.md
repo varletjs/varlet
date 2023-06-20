@@ -276,4 +276,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--checkbox-disabled-color` | `var(--color-text-disabled)` |
 | `--checkbox-error-color` | `var(--color-danger)` |
 | `--checkbox-action-padding` | `6px` |
+| `--checkbox-text-padding` | `6px 6px 6px 0` |
+| `--checkbox-text-color` | `#555` |
 | `--checkbox-icon-size` | `24px` |
