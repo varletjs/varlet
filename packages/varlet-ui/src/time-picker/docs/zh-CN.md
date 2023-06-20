@@ -187,6 +187,7 @@ function change(time) {
 | `--time-picker-clock-item-active-background` | `var(--color-primary)` |
 | `--time-picker-clock-item-active-color` | `#fff`                |
 | `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)` |
+| `--time-picker-clock-item-text-color` | `#555` |
 | `--time-picker-inner-left` | `36px`                |
 | `--time-picker-inner-right` | `36px`                |
 | `--time-picker-inner-top` | `36px`                |
