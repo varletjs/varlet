@@ -79,7 +79,54 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Playground
+
+See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
+
+### Contribution
+
+See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
+
+### Start On Cloud IDE
+
+See [Cloud IDE](https://idegithub.com/varletjs/varlet).
+
+### Community
+
+We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
+
+* Wechat group 
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/community.png" />
+
+* Join the [Discord](https://discord.gg/Dmb8ydBHkw)
+
+### Thanks to contributors
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
+</a>
+
+### Thanks to the following sponsors
+
+<a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+  <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+</a>
+
+### Sponsor this project
+
+Sponsor this project to support our better creation. It is recommended to use afdian to subscribe, and your avatar will appear in this project.
+
+#### Afdian
+
+<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+
+#### Wechat / Alipay
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/wechat.jpg" />
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/alipay.jpg" />
