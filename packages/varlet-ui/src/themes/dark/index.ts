@@ -35,6 +35,7 @@ import paper from './paper'
 import avatar from './avatar'
 import link from './link'
 import progress from './progress'
+import option from './option'
 
 export default {
   // common
@@ -84,4 +85,5 @@ export default {
   ...avatar,
   ...link,
   ...progress,
+  ...option,
 } as StyleVars

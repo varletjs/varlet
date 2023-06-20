@@ -444,3 +444,4 @@ const value12 = ref()
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--options-text-color` | `#555` |
