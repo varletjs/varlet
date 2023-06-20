@@ -261,3 +261,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--radio-error-color` | `var(--color-danger)` |
 | `--radio-action-padding` | `6px` |
 | `--radio-icon-size` | `24px` |
+| `--radio-text-color` | `#555` |
