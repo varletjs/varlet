@@ -79,7 +79,55 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### 游乐场
+
+在 [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground) 对组件进行在线编辑。
+
+### 贡献
+
+请参考 [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。
+
+### 在 Cloud IDE 中进行在线开发和调试
+
+在 [Cloud IDE](https://idegithub.com/varletjs/varlet) 对源码进行在线调试。
+
+
+### 反馈和交流
+
+我们推荐使用`issue`列表进行最直接有效的反馈，也可以下面的方式
+
+* 微信
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/community.png" />
+
+* 加入 [Discord](https://discord.gg/Dmb8ydBHkw) 社区交流
+
+### 感谢贡献者们做出的努力
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
+</a>
+
+### 感谢以下赞助者
+
+<a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+  <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+</a>
+
+### 赞助本项目
+
+赞助本项目，支持我们更好的创作。推荐使用爱发电进行订阅，您的头像将出现在本项目中。
+
+#### 爱发电
+
+<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+
+#### 微信 / 支付宝
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/wechat.jpg" />
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/alipay.jpg" />
