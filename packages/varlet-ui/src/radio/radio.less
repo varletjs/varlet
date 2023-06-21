@@ -6,6 +6,7 @@
   --radio-icon-size: 24px;
   --radio-action-padding: 6px;
   --radio-text-padding: 6px 6px 6px 0;
+  --radio-text-color: #555;
 }
 
 @keyframes var-vibrate-animation {
@@ -51,6 +52,10 @@
   &__icon[var-radio-cover] {
     display: block;
     font-size: var(--radio-icon-size);
+  }
+
+  &__text {
+    color: var(--radio-text-color);
   }
 
   &--with-animation[var-radio-cover] {

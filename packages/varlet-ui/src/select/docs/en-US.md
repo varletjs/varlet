@@ -441,3 +441,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--options-text-color` | `#555` |

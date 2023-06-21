@@ -185,4 +185,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import './countdown';
 </style>
