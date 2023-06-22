@@ -77,7 +77,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  closeOnClickHost: {
+  closeOnClickReference: {
     type: Boolean,
     default: false,
   },

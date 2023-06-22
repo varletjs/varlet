@@ -3,7 +3,7 @@
     <var-menu
       var-select-cover
       same-width
-      close-on-click-host
+      close-on-click-reference
       v-model:show="showMenu"
       :class="n('menu')"
       :offset-y="offsetY"

@@ -41,7 +41,7 @@ export interface UsePopoverOptions {
   offsetX: string | number
   offsetY: string | number
   reference?: string
-  closeOnClickHost?: boolean
+  closeOnClickReference?: boolean
   onOpen?: () => void | (() => void)[]
   onClose?: () => void | (() => void)[]
   onClickOutside?: (event: Event) => void | ((event: Event) => void)[]
@@ -130,7 +130,7 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   const handleHostClick = () => {
-    if (options.closeOnClickHost && show.value) {
+    if (options.closeOnClickReference && show.value) {
       close()
     } else {
       open()

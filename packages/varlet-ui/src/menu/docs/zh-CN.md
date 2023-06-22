@@ -229,7 +229,7 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
-| `close-on-click-host` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
+| `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
 
 ### Placement
 
