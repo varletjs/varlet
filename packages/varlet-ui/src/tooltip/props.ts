@@ -78,9 +78,14 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  closeOnClickHost: {
+    type: Boolean,
+    default: false,
+  },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
+  onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 }

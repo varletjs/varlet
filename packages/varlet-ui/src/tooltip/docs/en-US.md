@@ -190,6 +190,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false`   |
 | `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `hover`   |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
+| `close-on-click-host` | Whether to close the menu when clicking the host element | _boolean_ | `false` |
 
 ### Placement
 
@@ -223,6 +224,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `opened` | Triggered when the open `Tooltip` animation ends    | `-` |
 | `close` | Triggered when the `Tooltip` is closed              | `-` |
 | `closed` | Triggered when the closing `Tooltip` animation ends | `-` |
+| `click-outside` | Triggered when clicking outside the menu | `event: Event` |
 
 ### Slots
 

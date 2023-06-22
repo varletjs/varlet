@@ -190,6 +190,7 @@ import { Snackbar } from '@varlet/ui'
 | `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
 | `reference`       | 关联的触发元素选择器，用于指定特定子元素为触发元素 | _string_              | `-`           |
+| `close-on-click-host` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
 
 ### Placement
 
@@ -214,6 +215,7 @@ import { Snackbar } from '@varlet/ui'
 | `open` | 打开 `Tooltip` | `-` | `-` |
 | `close` | 关闭 `Tooltip` | `-` | `-` |
 | `resize` | `Tooltip` 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `click-outside` | 点击菜单外部时触发 | `event: Event` |
 
 ### 事件
 
