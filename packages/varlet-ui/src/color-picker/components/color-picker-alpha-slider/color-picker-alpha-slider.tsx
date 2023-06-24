@@ -1,5 +1,5 @@
 import { computed, defineComponent, ref, onMounted, toRefs } from 'vue'
-import { DOMUtils } from '../../utils/dom-dragger'
+import { Dragger } from '../../utils/dom-dragger'
 import { HSVtoHex, nullColor } from '../../utils/color-utils'
 import { HSV } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
@@ -60,7 +60,7 @@ export default defineComponent({
         },
       }
       if (barElement.value && cursorElement.value && !props.disabled) {
-        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
+        Dragger.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
       }
     })
 

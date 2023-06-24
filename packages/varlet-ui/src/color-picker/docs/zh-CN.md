@@ -7,7 +7,7 @@
 
 ```html
 <template>
-  <v-color-picker></v-color-picker>
+  <var-color-picker></var-color-picker>
 </template>
 ```
 ### 颜色样本选择

@@ -8,7 +8,7 @@ You can select a color in the panel
 
 ```html
 <template>
-  <v-color-picker></v-color-picker>
+  <var-color-picker></var-color-picker>
 </template>
 ```
 ### Color sample selection
