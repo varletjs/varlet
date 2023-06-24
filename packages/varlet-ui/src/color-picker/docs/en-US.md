@@ -8,7 +8,7 @@ You can select a color in the panel
 
 ```html
 <template>
-  <var-color-picker></var-color-picker>
+  <var-color-picker />
 </template>
 ```
 ### Color sample selection
@@ -34,7 +34,7 @@ const modes = ['rgba', 'hsla', 'hex']
 </script>
 
 <template>
-  <var-color-picker />
+  <var-color-picker :mode="value" />
   <var-select placeholder="Please select a Mode" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
@@ -61,7 +61,7 @@ Use `v-model` to output colors
   const color = ref('#AAFFBB')
 </script>
 <template>
-  <var-input v-model="color" style="margin-bottom: 12px" />
+  <var-input v-model="color" />
   <var-color-picker v-model="color" />
 </template>
 ```
@@ -76,7 +76,7 @@ Use `v-model` to output colors
 | ----------------- | ----------------------------------------------------------- | ---------------------- | ------------- |
 | `v-model`         | Color Selector value                                        | _string_               | `undefined`   |
 | `mode`            | You can use mode to specify which input modes users can use | _rgba ｜ hsla ｜ hexa_ | `rgba`        |
-| `swatches`        | Set available color swatches for selection                  | _string[]_             | `undefined`   |
+| `swatches`        | Set available color swatches for selection                  | _string[[]]_             | `[[]]`   |
 | `disabled`        | Disable the Color Selector                                  | _boolean_              | `false`       |
 | `swatches-layout` | Whether to display color samples                            | _boolean_              | `true`        |
 | `canvas-layout`   | Whether to display color samples                            | _boolean_              | `false`       |

@@ -7,7 +7,7 @@
 
 ```html
 <template>
-  <var-color-picker></var-color-picker>
+  <var-color-picker />
 </template>
 ```
 ### 颜色样本选择
@@ -33,7 +33,7 @@ const modes = ['rgba', 'hsla', 'hex']
 </script>
 
 <template>
-  <var-color-picker />
+  <var-color-picker :mode="value" />
   <var-select placeholder="请选择一个Mode" v-model="value">
     <var-option v-for="item in modes" :key="item" :label="item" />
   </var-select>
@@ -60,7 +60,7 @@ const modes = ['rgba', 'hsla', 'hex']
   const color = ref('#AAFFBB')
 </script>
 <template>
-  <var-input v-model="color" style="margin-bottom: 12px" />
+  <var-input v-model="color" />
   <var-color-picker v-model="color" />
 </template>
 ```
@@ -72,7 +72,7 @@ const modes = ['rgba', 'hsla', 'hex']
 | ----------------- | -------------------------------------------- | ---------------------- | ----------- |
 | `v-model`         | 颜色选择器值                                 | _string_               | `undefined` |
 | `mode`            | 您可以使用 mode 指定用户可以使用哪些输入模式 | _rgba ｜ hsla ｜ hexa_ | `rgba`      |
-| `swatches`        | 设置可用的颜色样本以供选择                   | _string[]_             | `undefined` |
+| `swatches`        | 设置可用的颜色样本以供选择                   | _string[[]]_             | `[[]]` |
 | `disabled`        | 禁用颜色选择器                               | _boolean_              | `false`     |
 | `swatches-layout` | 是否展示颜色样本                             | _boolean_              | `true`      |
 | `canvas-layout`   | 是否展示颜色样本                             | _boolean_              | `false`     |

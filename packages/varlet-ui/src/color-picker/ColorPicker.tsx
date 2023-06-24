@@ -139,6 +139,7 @@ export default defineComponent({
               <VarColorPickerSwatches
                 color={initialColor.value}
                 onUpdate:color={handleUpdateColor}
+                swatches={props.swatches}
                 disabled={disabled.value}
               />
             )}
