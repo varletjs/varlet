@@ -76,6 +76,7 @@ const values = reactive({
     },
   ],
   files13: [],
+  files14: [],
 })
 
 function handleAfterRead(file) {
@@ -128,6 +129,10 @@ async function handleBeforeRemove() {
   return action === 'confirm'
 }
 
+function handleBeforeFilter(files) {
+  return files.filter((file) => file.name.endsWith('png'))
+}
+
 watchLang(use)
 watchDarkMode(dark)
 
@@ -154,6 +159,9 @@ onUnmounted(() => {
 
   <app-type>{{ pack.maxsize }}</app-type>
   <var-uploader v-model="values.files5" :maxsize="1024" @oversize="handleOversize" />
+
+  <app-type>{{ pack.beforeFilter }}</app-type>
+  <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
 
   <app-type>{{ pack.beforeRead }}</app-type>
   <var-uploader v-model="values.files7" @before-read="handleBeforeRead" />

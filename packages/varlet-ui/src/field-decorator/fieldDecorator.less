@@ -1,5 +1,4 @@
 :root {
-  --field-decorator-middle-offset-y: 0.01px;
   --field-decorator-text-color: #555;
   --field-decorator-error-color: var(--color-danger);
   --field-decorator-blur-color: #888;
@@ -51,6 +50,8 @@
     position: relative;
     flex-grow: 1;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__icon {
@@ -64,7 +65,6 @@
   }
 
   &__placeholder {
-    max-width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -73,27 +73,14 @@
     color: var(--field-decorator-blur-color);
     pointer-events: none;
     cursor: inherit;
-    transform: translate(0, 0) scale(1);
     transform-origin: left;
-    transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.28s;
-  }
-
-  &__placeholder-text {
-    position: absolute;
-    z-index: -1;
-    display: inline-block;
-    pointer-events: none;
-    opacity: 0;
+    transition: transform 0.28s var(--cubic-bezier), color 0.25s, max-width 0.2s;
   }
 
   &__clear-icon[var-field-decorator-cover] {
     font-size: var(--field-decorator-icon-size);
     margin-left: 6px;
     cursor: pointer;
-  }
-
-  &--placeholder-hint {
-    max-width: calc(1.33 * var(--field-decorator-legend-max-width, var(--filed-decorator-controller-width)));
   }
 
   &--placeholder-hidden {
@@ -115,7 +102,7 @@
 
   &--standard {
     .var-field-decorator__middle {
-      padding: calc(var(--field-decorator-standard-normal-padding-top) + var(--field-decorator-middle-offset-y)) 0
+      padding: var(--field-decorator-standard-normal-padding-top) 0
         var(--field-decorator-standard-normal-padding-bottom);
     }
 
@@ -124,10 +111,13 @@
     }
 
     .var-field-decorator__placeholder {
-      transform: translate(
-        0,
-        calc(var(--field-decorator-standard-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))
-      );
+      max-width: 100%;
+      transform: translate(0, var(--field-decorator-standard-normal-placeholder-translate-y));
+    }
+
+    .var-field-decorator--placeholder-hint {
+      max-width: 133%;
+      transform: translate(0, 0) scale(0.75) !important;
     }
 
     .var-field-decorator__line {
@@ -151,18 +141,11 @@
     }
 
     .var-field-decorator--middle-non-hint {
-      padding-top: calc(
-        var(--field-decorator-standard-normal-non-hint-padding-top) + var(--field-decorator-middle-offset-y)
-      );
+      padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
     }
 
     .var-field-decorator--icon-non-hint {
       padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
-    }
-
-    .var-field-decorator--placeholder-non-hint {
-      transform: translate(0, -50%);
-      top: 50%;
     }
 
     .var-field-decorator--line-focus {
@@ -181,7 +164,7 @@
     }
 
     .var-field-decorator__middle {
-      padding: calc(var(--field-decorator-outlined-normal-padding-top) + var(--field-decorator-middle-offset-y)) 0
+      padding: var(--field-decorator-outlined-normal-padding-top) 0
         var(--field-decorator-outlined-normal-padding-bottom) 0;
     }
 
@@ -190,13 +173,27 @@
     }
 
     .var-field-decorator__placeholder {
-      transform: translate(
-        0,
-        calc(var(--field-decorator-outlined-normal-placeholder-translate-y) + var(--field-decorator-middle-offset-y))
+      max-width: calc(
+        100% - var(--field-decorator-outlined-normal-padding-left) -
+          var(--field-decorator-outlined-normal-padding-right)
       );
+      transform: translate(
+          var(--field-decorator-outlined-normal-padding-left),
+          var(--field-decorator-outlined-normal-placeholder-translate-y)
+        )
+        scale(1);
+    }
+
+    .var-field-decorator--placeholder-hint {
+      max-width: calc(
+        133% - var(--field-decorator-outlined-normal-padding-left) -
+          var(--field-decorator-outlined-normal-padding-right)
+      );
+      transform: translate(calc(var(--field-decorator-outlined-normal-padding-left)), -50%) scale(0.75);
     }
 
     .var-field-decorator__line {
+      min-width: 0; // for fieldset
       width: 100%;
       height: calc(100% + (var(--field-decorator-placeholder-size) * 0.75 / 2));
       position: absolute;
@@ -226,6 +223,10 @@
         overflow: hidden;
         display: block;
         white-space: nowrap;
+      }
+
+      &-legend--hint {
+        max-width: 100%;
       }
     }
 
@@ -257,21 +258,20 @@
   &--small {
     .var-field-decorator--standard& {
       .var-field-decorator__middle {
-        padding: calc(var(--field-decorator-standard-small-padding-top) + var(--field-decorator-middle-offset-y)) 0
+        padding: var(--field-decorator-standard-small-padding-top) 0
           var(--field-decorator-standard-small-padding-bottom);
       }
 
       .var-field-decorator__placeholder {
-        transform: translate(
-          0,
-          calc(var(--field-decorator-standard-small-placeholder-translate-y) + var(--field-decorator-middle-offset-y))
-        );
+        transform: translate(0, var(--field-decorator-standard-small-placeholder-translate-y));
       }
 
       .var-field-decorator--middle-non-hint {
-        padding-top: calc(
-          var(--field-decorator-standard-small-non-hint-padding-top) + var(--field-decorator-middle-offset-y)
+        max-width: calc(
+          133% - var(--field-decorator-outlined-small-padding-left) -
+            var(--field-decorator-outlined-small-padding-right)
         );
+        padding-top: var(--field-decorator-standard-small-non-hint-padding-top);
       }
 
       .var-field-decorator--icon-non-hint {
@@ -286,7 +286,7 @@
       }
 
       .var-field-decorator__middle {
-        padding: calc(var(--field-decorator-outlined-small-padding-top) + var(--field-decorator-middle-offset-y)) 0
+        padding: var(--field-decorator-outlined-small-padding-top) 0
           var(--field-decorator-outlined-small-padding-bottom) 0;
       }
 
@@ -295,10 +295,19 @@
       }
 
       .var-field-decorator__placeholder {
-        transform: translate(
-          0,
-          calc(var(--field-decorator-outlined-small-placeholder-translate-y) + var(--field-decorator-middle-offset-y))
+        max-width: calc(
+          100% - var(--field-decorator-outlined-small-padding-left) -
+            var(--field-decorator-outlined-small-padding-right)
         );
+        transform: translate(
+            var(--field-decorator-outlined-small-padding-left),
+            var(--field-decorator-outlined-small-placeholder-translate-y)
+          )
+          scale(1);
+      }
+
+      .var-field-decorator--placeholder-hint {
+        transform: translate(calc(var(--field-decorator-outlined-small-padding-left)), -50%) scale(0.75);
       }
 
       .var-field-decorator__line {
@@ -328,4 +337,21 @@
       }
     }
   }
+}
+
+.var-field-decorator__placeholder-text {
+  max-width: calc(
+    133% - var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-padding-right)
+  );
+  position: absolute;
+  z-index: -1;
+  display: inline-block;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.var-field-decorator__placeholder-text--small {
+  max-width: calc(
+    133% - var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-padding-right)
+  );
 }

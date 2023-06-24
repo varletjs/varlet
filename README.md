@@ -102,7 +102,7 @@ We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for
 
 * Wechat group 
 
-<img style="width: 25%" src="https://github.com/varletjs/varlet/blob/dev/sponsor/community.png?raw=true" />
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/community.png" />
 
 * Join the [Discord](https://discord.gg/Dmb8ydBHkw)
 
@@ -111,3 +111,22 @@ We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for
 <a href="https://github.com/varletjs/varlet/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
 </a>
+
+### Thanks to the following sponsors
+
+<a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+  <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+</a>
+
+### Sponsor this project
+
+Sponsor this project to support our better creation. It is recommended to use afdian to subscribe, and your avatar will appear in this project.
+
+#### Afdian
+
+<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+
+#### Wechat / Alipay
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/wechat.jpg" />
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/alipay.jpg" />

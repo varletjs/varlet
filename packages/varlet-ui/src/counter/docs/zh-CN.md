@@ -207,6 +207,7 @@ const value = ref(0)
 | `--counter-input-margin`        | `0 4px`                      |
 | `--counter-input-font-size`     | `14px`                       |
 | `--counter-button-size`         | `28px`                       |
+| `--counter-button-text-color`         | `#fff`                       |
 | `--counter-button-icon-size`    | `100%`                       |
 | `--counter-disabled-color`      | `var(--color-disabled)`      |
 | `--counter-disabled-opacity`    | `var(--opacity-disabled)`    |

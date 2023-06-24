@@ -1,8 +1,10 @@
-import { defineComponent, watch, Transition, Teleport } from 'vue'
+import { defineComponent, watch, Transition, Teleport, computed } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
 import { useRouteListener, useTeleport, createNamespace, call } from '../utils/components'
+import { usePopupItems } from './provide'
+import { useInitialized } from '@varlet/use'
 
 import '../styles/common.less'
 import './popup.less'
@@ -14,8 +16,10 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
+    const rendered = useInitialized(() => props.show, true)
     const { zIndex } = useZIndex(() => props.show, 3)
     const { disabled } = useTeleport()
+    const { bindPopupItems } = usePopupItems()
 
     const hidePopup = () => {
       const { closeOnClickOverlay, onClickOverlay } = props
@@ -28,21 +32,6 @@ export default defineComponent({
 
       call(props['onUpdate:show'], false)
     }
-
-    useLock(
-      () => props.show,
-      () => props.lockScroll
-    )
-
-    watch(
-      () => props.show,
-      (newValue: boolean) => {
-        newValue ? call(props.onOpen) : call(props.onClose)
-      }
-    )
-
-    // internal for Dialog
-    useRouteListener(() => call(props.onRouteChange))
 
     const renderOverlay = () => {
       const { overlayClass = '', overlayStyle } = props
@@ -72,24 +61,40 @@ export default defineComponent({
           )}
           style={{ zIndex: zIndex.value }}
           {...attrs}
+          v-show={props.show}
         >
-          {call(slots.default)}
+          {rendered.value && call(slots.default)}
         </div>
       )
     }
 
     const renderPopup = () => {
-      const { onOpened, onClosed, show, overlay, transition, position } = props
-
       return (
-        <Transition name={n('$-fade')} onAfterEnter={onOpened} onAfterLeave={onClosed}>
-          <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
-            {overlay && renderOverlay()}
-            <Transition name={transition || n(`$-pop-${position}`)}>{show && renderContent()}</Transition>
+        <Transition name={n('$-fade')} onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
+          <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={props.show}>
+            {props.overlay && renderOverlay()}
+            <Transition name={props.transition || n(`$-pop-${props.position}`)}>{renderContent()}</Transition>
           </div>
         </Transition>
       )
     }
+
+    useLock(
+      () => props.show,
+      () => props.lockScroll
+    )
+
+    watch(
+      () => props.show,
+      (newValue: boolean) => {
+        newValue ? call(props.onOpen) : call(props.onClose)
+      }
+    )
+
+    bindPopupItems({ show: computed(() => props.show) })
+
+    // internal for Dialog
+    useRouteListener(() => call(props.onRouteChange))
 
     return () => {
       const { teleport } = props

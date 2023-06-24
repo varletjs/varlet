@@ -19,25 +19,25 @@
         clearable,
         cursor,
         composing: isComposing,
-        alwaysCustomPlaceholder: false,
         onClick: handleClick,
         onClear: handleClear,
       }"
     >
-      <template #prepend-icon>
+      <template v-if="$slots['prepend-icon']" #prepend-icon>
         <slot name="prepend-icon" />
       </template>
 
       <input
+        v-if="normalizedType === 'password'"
         :class="n('autocomplete')"
         :placeholder="!hint ? placeholder : undefined"
-        v-if="normalizedType === 'password'"
         :style="{
           '--input-placeholder-color': placeholderColor,
         }"
         :enterkeyhint="enterkeyhint"
       />
       <textarea
+        v-if="textarea"
         :class="
           classes(
             n('input'),
@@ -71,10 +71,10 @@
         @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-        v-if="textarea"
       >
       </textarea>
       <input
+        v-else
         :class="
           classes(
             n('input'),
@@ -105,7 +105,6 @@
         @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-        v-else
       />
 
       <template #append-icon>
@@ -125,7 +124,7 @@ import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type InputProvider } from './provide'
 
 const { n, classes } = createNamespace('input')
@@ -345,7 +344,7 @@ export default defineComponent({
 
     call(bindForm, inputProvider)
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (props.autofocus) {
         focus()
       }

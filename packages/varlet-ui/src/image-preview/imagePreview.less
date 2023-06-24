@@ -13,7 +13,7 @@
 .var-image-preview {
   &__popup[var-image-preview-cover] {
     height: 100%;
-    background: transparent;
+    background: var(--image-preview-zoom-container-background);
   }
 
   &__swipe[var-image-preview-cover] {
@@ -55,6 +55,12 @@
     -webkit-user-drag: none;
   }
 
+  // fix IOS & weChat long press image default behavior
+  &--prevent {
+    -webkit-touch-callout: none;
+    pointer-events: none;
+  }
+
   &__zoom-container {
     display: flex;
     justify-content: center;
@@ -62,6 +68,5 @@
     width: 100vw;
     height: 100%;
     transition: transform 0.2s;
-    background: var(--image-preview-zoom-container-background);
   }
 }

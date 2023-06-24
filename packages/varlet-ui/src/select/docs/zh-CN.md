@@ -74,7 +74,7 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+    <var-select placeholder="自定义图标尺寸" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -227,7 +227,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+    <var-select variant="outlined" placeholder="自定义图标尺寸" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -395,7 +395,6 @@ const value12 = ref()
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -445,3 +444,4 @@ const value12 = ref()
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--options-text-color` | `#555` |

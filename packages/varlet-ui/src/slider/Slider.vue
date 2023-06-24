@@ -1,7 +1,7 @@
 <template>
   <div :class="n(direction)">
     <div
-      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n('--error')])"
+      :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n(`${direction}--error`)])"
       ref="sliderEl"
       @click="click"
     >
@@ -83,11 +83,11 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { getLeft, multiplySizeUnit, getRect } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type SliderProvider } from './provide'
 
 const { n, classes } = createNamespace('slider')
@@ -205,7 +205,7 @@ export default defineComponent({
         return e.clientX - getLeft(currentTarget)
       }
 
-      return maxDistance.value - (e.clientY - currentTarget.getBoundingClientRect().top)
+      return maxDistance.value - (e.clientY - getRect(currentTarget).top)
     }
 
     const thumbStyle = (thumb: ThumbsListProps) => {
@@ -429,7 +429,7 @@ export default defineComponent({
 
     watch(maxDistance, () => setProps())
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
       maxDistance.value = (sliderEl.value as HTMLDivElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']

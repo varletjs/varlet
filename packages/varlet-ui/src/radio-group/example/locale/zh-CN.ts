@@ -10,6 +10,7 @@ export default {
   checkAll: '全选',
   inverseAll: '反选',
   radioGroup: '单选框组',
+  vertical: '垂直布局',
   radioValidate: '单选框字段校验',
   radioGroupValidate: '单选框组字段校验',
   radioValidateMessage: '请勾选',

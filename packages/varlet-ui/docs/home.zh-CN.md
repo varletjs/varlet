@@ -45,3 +45,6 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ### 开源协议
 组件库基于 `MIT` 协议。
+
+### 贡献指南
+详情见 [Varlet 贡献指南](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。

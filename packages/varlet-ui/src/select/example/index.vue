@@ -115,11 +115,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select
-      style="--field-decorator-middle-offset-y: 2.6vw"
-      :placeholder="pack.customIconSize"
-      v-model="standardValue12"
-    >
+    <var-select :placeholder="pack.customIconSize" v-model="standardValue12">
       <template #default>
         <var-option :label="pack.eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -234,12 +230,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select
-      variant="outlined"
-      style="--field-decorator-middle-offset-y: 2.6vw"
-      :placeholder="pack.customIconSize"
-      v-model="standardValue12"
-    >
+    <var-select variant="outlined" :placeholder="pack.customIconSize" v-model="outlinedValue12">
       <template #default>
         <var-option :label="pack.eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -253,10 +244,10 @@ watchLang((lang) => {
       <template #selected>
         <var-icon
           class="selected-icon"
-          :name="standardValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
+          :name="outlinedValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
           size="8vw"
         />
-        <span>{{ standardValue12 }}</span>
+        <span>{{ outlinedValue12 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vw" />

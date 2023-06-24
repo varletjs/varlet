@@ -1,5 +1,7 @@
 import List from '..'
 import VarList from '../List'
+import TabsItems from '../../tabs-items'
+import TabItem from '../../tab-item'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/jest'
@@ -90,4 +92,48 @@ describe('test list component props', () => {
     wrapper.unmount()
     mockGetBoundingClientRect.mockRestore()
   })
+})
+
+test('test load event while list in tab-item', async () => {
+  const load = jest.fn()
+  const load2 = jest.fn()
+
+  const Wrapper = {
+    components: {
+      [List.name]: List,
+      [TabsItems.name]: TabsItems,
+      [TabItem.name]: TabItem,
+    },
+    data: () => ({
+      loading: false,
+      loading2: false,
+      active: 0,
+    }),
+    methods: {
+      load,
+      load2,
+    },
+    template: `
+    <var-tabs-items v-model:active="active">
+      <var-tab-item>
+        <var-list v-model:loading="loading" @load="load">
+        </var-list>
+      </var-tab-item>
+      <var-tab-item>
+        <var-list v-model:loading="loading2" @load="load2">
+        </var-list>
+      </var-tab-item>
+    </var-tabs-items>
+    `,
+  }
+
+  const wrapper = mount(Wrapper)
+  await delay(60)
+  expect(load).toBeCalledTimes(1)
+  expect(load2).toBeCalledTimes(0)
+
+  await wrapper.setData({ active: 1 })
+  await delay(0)
+  expect(load).toBeCalledTimes(1)
+  expect(load2).toBeCalledTimes(1)
 })

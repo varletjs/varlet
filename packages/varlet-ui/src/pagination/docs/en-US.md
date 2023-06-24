@@ -170,20 +170,21 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--pagination-font-size` | `var(--font-size-md)` |  
-| `--pagination-active-color` | `#fff` |  
-| `--pagination-active-bg-color` | `var(--color-primary)` |  
-| `--pagination-hover-bg-color` | `#edf5ff` |  
-| `--pagination-total-margin` | `0 12px` |  
-| `--pagination-total-line-height` | `24px` |  
-| `--pagination-item-width` | `32px` |  
-| `--pagination-item-height` | `32px` |  
-| `--pagination-item-margin` | `0 6px` |  
-| `--pagination-item-border-radius` | `4px` |  
-| `--pagination-list-bg-color` | `#fff` |  
-| `--pagination-list-active-bg-color` | `#edf5ff` |  
-| `--pagination-list-active-color` | `var(--color-primary)` |  
+| `--pagination-text-color` | `#555` |
+| `--pagination-font-size` | `var(--font-size-md)` |
+| `--pagination-active-color` | `#fff` |
+| `--pagination-active-bg-color` | `var(--color-primary)` |
+| `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
+| `--pagination-total-margin` | `0 12px` |
+| `--pagination-total-line-height` | `24px` |
+| `--pagination-item-width` | `32px` |
+| `--pagination-item-height` | `32px` |
+| `--pagination-item-margin` | `0 6px` |
+| `--pagination-item-border-radius` | `4px` |
+| `--pagination-list-bg-color` | `#fff` |
+| `--pagination-list-active-bg-color` | `#edf5ff` |
+| `--pagination-list-active-color` | `var(--color-primary)` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
-| `--pagination-size-line-height` | `24px` | 
+| `--pagination-size-line-height` | `24px` |

@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onUnmounted, onDeactivated, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { doubleRaf, getParentScroller, raf, toPxNum } from '../utils/elements'
+import { doubleRaf, getParentScroller, raf, toPxNum, getRect } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted, onWindowResize, onSmartUnmounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('sticky')
 
@@ -72,13 +72,13 @@ export default defineComponent({
       let scrollerTop = 0
 
       if (scroller !== window) {
-        const { top } = (scroller as HTMLElement).getBoundingClientRect()
+        const { top } = getRect(scroller as HTMLElement)
         scrollerTop = top
       }
 
       const wrapper = wrapperEl.value as HTMLElement
       const sticky = stickyEl.value as HTMLElement
-      const { top: stickyTop, left: stickyLeft } = sticky.getBoundingClientRect()
+      const { top: stickyTop, left: stickyLeft } = getRect(sticky)
       const currentOffsetTop = stickyTop - scrollerTop
 
       if (currentOffsetTop <= offsetTop.value) {
@@ -139,11 +139,10 @@ export default defineComponent({
 
     watch(() => props.disabled, resize)
 
-    useMounted(addScrollListener)
-    onUnmounted(removeScrollListener)
-    onDeactivated(removeScrollListener)
+    onSmartMounted(addScrollListener)
+    onSmartUnmounted(removeScrollListener)
+    onWindowResize(resize)
     useEventListener(() => window, 'scroll', handleScroll)
-    useEventListener(() => window, 'resize', resize)
 
     return {
       n,

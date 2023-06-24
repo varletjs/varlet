@@ -311,5 +311,6 @@ const show = ref(false)
 | `--dialog-message-font-size` | `var(--font-size-md)` |
 | `--dialog-actions-padding` | `0 12px 12px` |
 | `--dialog-button-margin-left` | `6px` |
+| `--dialog-title-color`          | `#555`                 |
 | `--dialog-confirm-button-color` | `var(--color-primary)` |
 | `--dialog-cancel-button-color` | `var(--color-primary)` |

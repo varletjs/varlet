@@ -1,4 +1,4 @@
-import { getAllParentScroller, inViewport } from '../utils/elements'
+import { doubleRaf, getAllParentScroller, inViewport } from '../utils/elements'
 import { removeItem, throttle } from '@varlet/shared'
 import { createCache } from '../utils/shared'
 import type { App, Directive, Plugin, DirectiveBinding } from 'vue'
@@ -159,7 +159,11 @@ function attemptLoad(el: LazyHTMLElement) {
 }
 
 async function check(el: LazyHTMLElement) {
-  ;(await inViewport(el)) && attemptLoad(el)
+  await doubleRaf()
+
+  if (inViewport(el)) {
+    attemptLoad(el)
+  }
 }
 
 function checkAll() {

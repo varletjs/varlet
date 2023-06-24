@@ -12,11 +12,13 @@ export interface ImagePreviewProps extends BasicAttributes {
   indicator?: boolean
   closeable?: boolean
   teleport?: TeleportProps['to']
+  imagePreventDefault?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onChange?: ListenerProp<(index: number) => void>
+  onLongPress?: ListenerProp<(index: number) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
@@ -27,11 +29,13 @@ export interface ImagePreviewOptions {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
+  imagePreventDefault?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
+  onLongPress?: (index: number) => void
 }
 
 export class ImagePreviewComponent extends VarComponent {

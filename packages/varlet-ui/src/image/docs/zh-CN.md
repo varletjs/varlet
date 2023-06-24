@@ -121,6 +121,28 @@
 </template>
 ```
 
+### 加载失败插槽
+
+```html
+<template>
+  <var-image 
+    width="22.666vw" 
+    height="22.666vw" 
+    src="https://varlet.gitee.io/varlet-ui/ca.jpg"
+  >
+    <template #error>
+      <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+        <path
+          fill="currentColor"
+          d="M21,5V11.59L18,8.58L14,12.59L10,8.59L6,12.59L3,9.58V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5M18,11.42L21,14.43V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V12.42L6,15.41L10,11.41L14,15.41"
+        >
+        </path>
+      </svg>
+    </template>
+  </var-image>
+</template>
+```
+
 ### 使用本地路径
 
 在 `.vue` 文件中，`Vue组件` 不会如同原生 img 一样被构建工具自动处理模块请求，所以需要手动导入图片资源。
@@ -203,3 +225,9 @@ import logo from '../../assets/logo.png'
 | `click` | 点击图片时触发 | `event: Event` |
 | `load` | 图片成功加载时触发(懒加载模式下失败时会多次尝试加载图片，只会在成功加载时触发) | `event: Event` |
 | `error` | 图片失败加载时触发(懒加载模式下失败时会多次尝试加载图片，只会在尝试次数结束时触发) | `event: Event` |
+
+### 插槽
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `error` | 加载失败插槽 | `-` |

@@ -8,6 +8,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  imagePreventDefault: {
+    type: Boolean,
+    default: false,
+  },
   images: {
     type: Array as PropType<string[]>,
     default: () => [],
@@ -24,6 +28,7 @@ export const props = {
     default: false,
   },
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
+  onLongPress: defineListenerProp<(index: number) => void>(),
   ...pickProps(swipeProps, ['loop', 'indicator', 'onChange']),
   ...pickProps(popupProps, [
     'lockScroll',

@@ -10,6 +10,7 @@ export default {
   checkAll: '全选',
   inverseAll: '反选',
   checkboxGroup: '复选框组',
+  vertical: '垂直布局',
   checkboxValidate: '复选框字段校验',
   checkboxGroupValidate: '复选框组字段校验',
   checkboxValidateMessage: '请勾选',

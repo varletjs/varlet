@@ -19,11 +19,11 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
-import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
+import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
 import { isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -86,7 +86,7 @@ export default defineComponent({
 
     const touchStart = (event: TouchEvent) => {
       if (controlPosition.value === 0) {
-        const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+        const { width } = getRect(controlNode.value as HTMLElement)
         controlPosition.value = -(width + width * 0.25)
       }
 
@@ -190,7 +190,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(setScroller)
+    onSmartMounted(setScroller)
     useEventListener(freshNode, 'touchmove', touchMove)
 
     return {

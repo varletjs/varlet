@@ -8,3 +8,23 @@ export const DOCUMENTATION_EN = 'https://varlet.gitee.io/varlet-ui/#/en-US'
 export const DOCUMENTATION_ZH = 'https://varlet.gitee.io/varlet-ui/#/zh-CN'
 export const PLAYGROUND = 'https://varlet.gitee.io/varlet-ui-playground'
 export const ICONS_STATIC = 'https://varlet.gitee.io/varlet-ui/icons/png'
+export const LANGUAGE_TEXTS = {
+  'zh-CN': {
+    documentation: DOCUMENTATION_ZH,
+    linkText: '查看组件的官方文档',
+    prop: '属性',
+    event: '事件',
+    slot: '插槽',
+    description: '描述',
+    default: '默认值',
+  },
+  'en-US': {
+    documentation: DOCUMENTATION_EN,
+    linkText: 'Watch the documentation of the component',
+    prop: 'Prop',
+    event: 'Event',
+    slot: 'Slot',
+    description: 'Description',
+    default: 'Default',
+  },
+}

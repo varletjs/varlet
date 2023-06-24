@@ -180,3 +180,10 @@ Use ref to get CountDown instance and call instance methods.
 | `start` | Start countdown | `-`       | `-` |
 | `pause` | Pause countdown | `-`       | `-` |
 | `reset` | Reset countdown | `-`       | `-` |
+
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+| Variable | Default |
+| --- | --- |
+| `--countdown-text-color` | `#555` |

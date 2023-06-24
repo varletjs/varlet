@@ -72,10 +72,6 @@ export const props = {
     type: Boolean,
     default: false,
   },
-  alwaysCustomPlaceholder: {
-    type: Boolean,
-    default: true,
-  },
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: Event) => void>(),
 }

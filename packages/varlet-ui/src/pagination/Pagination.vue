@@ -68,7 +68,7 @@
     </li>
 
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
-      <var-menu :disabled="disabled" v-model:show="menuVisible" :offset-x="-4">
+      <var-menu placement="cover-top" :disabled="disabled" v-model:show="menuVisible">
         <div
           :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])"
           @click.stop="showMenu"
@@ -90,7 +90,7 @@
         </template>
       </var-menu>
     </li>
-    <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, 'item--disabled'])">
+    <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, n('item--disabled')])">
       {{ pack.paginationJump }}
       <var-input
         v-model="quickJumperValue"
@@ -101,7 +101,7 @@
       />
     </li>
 
-    <li v-if="totalText" :class="n('total')">
+    <li v-if="totalText" :class="classes(n('total'), [disabled, n('item--disabled')])">
       {{ totalText }}
     </li>
   </ul>

@@ -43,7 +43,7 @@
     "@varlet/stylelint-config": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@varlet/shared": "workspace:*",
-    "@vue/test-utils": "^2.3.2",
+    "@vue/test-utils": "2.3.2",
     "clipboard": "^2.0.6",
     "eslint": "^7.30.0",
     "lint-staged": "^10.5.0",
@@ -53,8 +53,8 @@
     "simple-git-hooks": "^2.8.0",
     "stylelint": "^13.13.1",
     "typescript": "^4.4.4",
-    "vue": "3.2.47",
-    "vue-router": "4.1.6"
+    "vue": "3.3.2",
+    "vue-router": "4.2.0"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",

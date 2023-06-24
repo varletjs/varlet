@@ -32,24 +32,15 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  computed,
-  watch,
-  onUnmounted,
-  type Ref,
-  type ComputedRef,
-  onDeactivated,
-  onActivated,
-} from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
-import { isNumber, toNumber } from '@varlet/shared'
+import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
+import { onSmartUnmounted, onWindowResize } from '@varlet/use'
 import { type SwipeItemProvider } from '../swipe-item/provide'
-import { useEventListener } from '@varlet/use'
+import { usePopup } from '../popup/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -68,7 +59,8 @@ export default defineComponent({
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
-    let isCalledPrevOrNext = false
+    const { popup, bindPopup } = usePopup()
+    let initializedIndex = false
     let touching = false
     let timer = -1
     let startX: number
@@ -130,18 +122,20 @@ export default defineComponent({
       return swipeIndex
     }
 
-    const boundaryIndex = (index: number) => {
-      const { loop } = props
+    const clampIndex = (index: number) => {
+      if (props.loop) {
+        if (index < 0) {
+          return length.value + index
+        }
 
-      if (index < 0) {
-        return loop ? length.value - 1 : 0
+        if (index >= length.value) {
+          return index - length.value
+        }
+
+        return index
       }
 
-      if (index > length.value - 1) {
-        return loop ? 0 : length.value - 1
-      }
-
-      return index
+      return clamp(index, 0, length.value - 1)
     }
 
     const fixPosition = (fn?: () => void) => {
@@ -166,7 +160,12 @@ export default defineComponent({
     }
 
     const initialIndex = () => {
-      index.value = boundaryIndex(toNumber(props.initialIndex))
+      if (initializedIndex) {
+        return
+      }
+
+      index.value = clampIndex(toNumber(props.initialIndex))
+      initializedIndex = true
     }
 
     const startAutoplay = () => {
@@ -298,11 +297,11 @@ export default defineComponent({
         return
       }
 
-      isCalledPrevOrNext = true
+      initialIndex()
 
       const { loop, onChange } = props
       const currentIndex = index.value
-      index.value = boundaryIndex(currentIndex + 1)
+      index.value = clampIndex(currentIndex + 1)
 
       if (options?.event !== false) {
         call(onChange, index.value)
@@ -326,11 +325,11 @@ export default defineComponent({
         return
       }
 
-      isCalledPrevOrNext = true
+      initialIndex()
 
       const { loop, onChange } = props
       const currentIndex = index.value
-      index.value = boundaryIndex(currentIndex - 1)
+      index.value = clampIndex(currentIndex - 1)
 
       if (options?.event !== false) {
         call(onChange, index.value)
@@ -371,23 +370,37 @@ export default defineComponent({
     }
 
     bindSwipeItems(swipeProvider)
+    call(bindPopup, null)
 
     watch(
       () => length.value,
       async () => {
-        isCalledPrevOrNext = false
         // In nuxt, the size of the swipe cannot got when the route is change, need double raf
         await doubleRaf()
-        // When double raf prev or next is called will block initialIndex
-        !isCalledPrevOrNext && initialIndex()
+
+        initialIndex()
         resize()
       }
     )
 
+    if (popup) {
+      // watch popup show again
+      watch(
+        () => popup.show.value,
+        async (show) => {
+          if (show) {
+            await doubleRaf()
+            resize()
+          } else {
+            stopAutoplay()
+          }
+        }
+      )
+    }
+
     onActivated(resize)
-    onDeactivated(stopAutoplay)
-    onUnmounted(stopAutoplay)
-    useEventListener(() => window, 'resize', resize)
+    onSmartUnmounted(stopAutoplay)
+    onWindowResize(resize)
 
     return {
       n,
