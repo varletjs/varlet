@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { BadgeProps } from './badge'
 import { VNode } from 'vue'
 
@@ -10,7 +10,7 @@ export interface BottomNavigationItemProps extends BasicAttributes {
   label?: string
   namespace?: string
   badge?: boolean | BadgeProps
-  onClick?: (active: string | number) => void
+  onClick?: ListenerProp<(active: string | number) => void>
 }
 
 export interface BottomNavigationItemIcon {

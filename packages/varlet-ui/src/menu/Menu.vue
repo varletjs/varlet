@@ -39,7 +39,7 @@
 import { createNamespace, formatElevation } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
-import { type UsePopoverOptions, usePopover } from './usePopover'
+import { usePopover } from './usePopover'
 import { toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('menu')
@@ -66,7 +66,7 @@ export default defineComponent({
       close,
       // expose
       resize,
-    } = usePopover(props as UsePopoverOptions)
+    } = usePopover(props)
 
     return {
       popover,

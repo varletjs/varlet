@@ -22,6 +22,8 @@ import {
 } from 'vue'
 import { isArray } from '@varlet/shared'
 
+export type ListenerProp<F> = F | F[]
+
 export interface MountInstance {
   instance: ComponentPublicInstance
   unmount: () => void
