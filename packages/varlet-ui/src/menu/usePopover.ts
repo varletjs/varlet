@@ -274,6 +274,8 @@ export function usePopover(options: UsePopoverOptions) {
     }
   }
 
+  const getReference = () => (options.reference ? host.value!.querySelector(options.reference)! : host.value!)
+
   // expose
   const resize = () => {
     popoverInstance!.setOptions(getPopperOptions())
@@ -297,7 +299,7 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
-  useClickOutside(host, 'click', handleClickOutside)
+  useClickOutside(getReference, 'click', handleClickOutside)
 
   watch(() => options.offsetX, resize)
   watch(() => options.offsetY, resize)
@@ -305,9 +307,7 @@ export function usePopover(options: UsePopoverOptions) {
   watch(() => options.disabled, close)
 
   onMounted(() => {
-    const reference = options.reference ? host.value?.querySelector(options.reference) : host.value
-
-    popoverInstance = createPopper(reference ?? host.value!, popover.value!, getPopperOptions())
+    popoverInstance = createPopper(getReference() ?? host.value!, popover.value!, getPopperOptions())
   })
   onUnmounted(() => {
     popoverInstance!.destroy()

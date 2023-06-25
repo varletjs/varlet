@@ -1,8 +1,8 @@
 import { useEventListener } from './useEventListener.js'
-import { inBrowser } from '@varlet/shared'
+import { inBrowser, isFunction } from '@varlet/shared'
 import { unref, type Ref } from 'vue'
 
-export type UseClickOutsideTarget = Element | Ref<Element | undefined | null>
+export type UseClickOutsideTarget = Element | Ref<Element | undefined | null> | (() => Element)
 
 export function useClickOutside(target: UseClickOutsideTarget, type: string, listener: EventListener) {
   if (!inBrowser()) {
@@ -10,7 +10,7 @@ export function useClickOutside(target: UseClickOutsideTarget, type: string, lis
   }
 
   const handler = (event: Event) => {
-    const element = unref(target)
+    const element = isFunction(target) ? target() : unref(target)
 
     if (element && !element.contains(event.target as Node)) {
       listener(event)
