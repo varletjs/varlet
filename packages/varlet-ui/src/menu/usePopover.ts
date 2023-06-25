@@ -2,7 +2,7 @@ import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
 import { useClickOutside } from '@varlet/use'
 import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
-import { call, useVModel } from '../utils/components'
+import { call, useVModel, type ListenerProp } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
@@ -42,10 +42,10 @@ export interface UsePopoverOptions {
   offsetY: string | number
   reference?: string
   closeOnClickReference?: boolean
-  onOpen?: () => void | (() => void)[]
-  onClose?: () => void | (() => void)[]
-  onClickOutside?: (event: Event) => void | ((event: Event) => void)[]
-  'onUpdate:show'?(show: boolean): void
+  onOpen?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClickOutside?: ListenerProp<(event: Event) => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export function usePopover(options: UsePopoverOptions) {

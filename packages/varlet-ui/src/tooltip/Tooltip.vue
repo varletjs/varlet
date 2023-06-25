@@ -35,7 +35,7 @@
 import { createNamespace } from '../utils/components'
 import { defineComponent } from 'vue'
 import { toSizeUnit } from '../utils/elements'
-import { type UsePopoverOptions, usePopover } from '../menu/usePopover'
+import { usePopover } from '../menu/usePopover'
 import { props } from './props'
 
 const { n, classes } = createNamespace('tooltip')
@@ -62,7 +62,7 @@ export default defineComponent({
       close,
       // expose
       resize,
-    } = usePopover(props as UsePopoverOptions)
+    } = usePopover(props)
 
     return {
       toSizeUnit,

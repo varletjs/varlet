@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { ButtonProps } from './button'
 import { VNode } from 'vue'
 
@@ -13,10 +13,10 @@ export interface BottomNavigationProps extends BasicAttributes {
   activeColor?: string
   inactiveColor?: string
   fabProps?: Partial<ButtonProps>
-  onChange?: (active: string | number) => void
-  'onUpdate:active'?: (active: string | number) => void
-  onBeforeChange?: (active: string | number) => any | Promise<any>
-  onFabClick?: () => void
+  onChange?: ListenerProp<(active: string | number) => void>
+  onBeforeChange?: ListenerProp<(active: string | number) => any | Promise<any>>
+  onFabClick?: ListenerProp<() => void>
+  'onUpdate:active'?: ListenerProp<(active: string | number) => void>
 }
 
 export class BottomNavigation extends VarComponent {
