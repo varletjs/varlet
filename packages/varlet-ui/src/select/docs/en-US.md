@@ -429,6 +429,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
 | `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
@@ -440,5 +441,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
+| `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
 | `--options-text-color` | `#555` |

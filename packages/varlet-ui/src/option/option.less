@@ -1,6 +1,7 @@
 :root {
   --option-height: 38px;
   --option-padding: 0 12px;
+  --option-font-size: 16px;
   --option-selected-background: var(--field-decorator-focus-color);
   --options-text-color: #555;
 }
@@ -28,6 +29,7 @@
   &__text {
     display: flex;
     align-items: center;
+    font-size: var(--option-font-size);
   }
 
   &--selected-background {

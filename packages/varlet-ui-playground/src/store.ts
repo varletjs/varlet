@@ -1,19 +1,16 @@
-import { reactive, watchEffect, version } from 'vue'
-import { compileFile, File } from '@vue/repl'
+import { reactive, watchEffect } from 'vue'
+import { compileFile, File, StoreOptions } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 
-const publicPath = './'
-const defaultMainFile = 'App.vue'
-const varletReplPlugin = 'varlet-repl-plugin.js'
 const varletImports = {
-  '@varlet/ui': `${publicPath}varlet.esm.js`,
-  '@varlet/touch-emulator': `${publicPath}varlet-touch-emulator.js`,
-  '@varlet/ui/json/area.json': `${publicPath}varlet-area.js`,
+  '@varlet/ui': import.meta.env.DEV ? './varlet.esm.js' : 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.esm.js',
+  '@varlet/ui/json/area.json': './varlet-area.js',
 }
-const varletCss = `${publicPath}varlet.css`
 
+const appFile = 'src/App.vue'
+const varletReplPlugin = 'src/varlet-repl-plugin.js'
 const welcomeCode = `\
 <script setup lang='ts'>
 import { ref } from 'vue'
@@ -25,10 +22,52 @@ const msg = ref('Hello Varlet!')
   <var-button type="primary">{{ msg }}</var-button>
 </template>
 `
+const appWrapperFile = 'src/AppWrapper.vue'
+const appWrapperCode = `\
+<script setup>
+import App from './${stripSrcPrefix(appFile)}'
+import { installVarletUI } from './${stripSrcPrefix(varletReplPlugin)}'
 
-const varletReplPluginCode = `\
+installVarletUI()
+</script>
+
+<template>
+  <App />
+</template>
+`
+
+const importMapFile = 'import-map.json'
+const tsconfigFile = 'tsconfig.json'
+const tsconfig = {
+  compilerOptions: {
+    allowJs: true,
+    checkJs: true,
+    jsx: 'Preserve',
+    target: 'ESNext',
+    module: 'ESNext',
+    moduleResolution: 'Bundler',
+    allowImportingTsExtensions: true,
+  },
+  vueCompilerOptions: {
+    target: 3.3,
+  },
+}
+
+function getVarletReplPluginCode(version?: string) {
+  let varletCss = version
+    ? `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/style.css`
+    : `https://cdn.jsdelivr.net/npm/@varlet/ui/es/style.css`
+  let varletTouchEmulator = version
+    ? `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator@${version}/iife.js`
+    : `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js`
+
+  if (version === 'local') {
+    varletCss = './varlet.css'
+    varletTouchEmulator = './varlet-touch-emulator.js'
+  }
+
+  return `\
 import VarletUI, { Context } from '@varlet/ui'
-import '@varlet/touch-emulator'
 import { getCurrentInstance } from 'vue'
 
 await appendStyle()
@@ -52,7 +91,11 @@ export function installVarletUI() {
   \`
   document.head.appendChild(style)
 
-  if (parent.document.documentElement.classList.contains('dark')) {
+  const script = document.createElement('script')
+  script.src = '${varletTouchEmulator}'
+  document.body.appendChild(script)
+
+  if (parent.document.documentElement.classList.contains('varlet-dark')) {
     VarletUI.StyleProvider(VarletUI.Themes.dark)
   }
 
@@ -73,26 +116,17 @@ export function appendStyle() {
     link.href = '${varletCss}'
     link.onload = resolve
     link.onerror = reject
-    document.body.appendChild(link)
+    document.head.appendChild(link)
   })
+}`
 }
-`
-const MAIN_CONTAINER = 'Playground.vue'
-const containerCode = `\
-<script setup>
-import App from './${defaultMainFile}'
-import { installVarletUI } from './${varletReplPlugin}'
-
-installVarletUI()
-</script>
-
-<template>
-  <App />
-</template>
-`
 
 export class ReplStore implements Store {
   state: StoreState
+
+  vueVersion?: string
+
+  varletVersion?: string
 
   compiler = defaultCompiler
 
@@ -102,129 +136,181 @@ export class ReplStore implements Store {
 
   initialOutputMode: OutputModes = 'preview'
 
-  private readonly defaultVueRuntimeURL: string
+  private defaultVueRuntimeURL: string
+
+  private defaultVueServerRendererURL: string
+
+  private pendingCompiler: Promise<any> | null = null
 
   constructor({
     serializedState = '',
-    defaultVueRuntimeURL = `https://unpkg.com/@vue/runtime-dom@${version}/dist/runtime-dom.esm-browser.js`,
+    defaultVueRuntimeURL = `https://cdn.jsdelivr.net/npm/@vue/runtime-dom/dist/runtime-dom.esm-browser.js`,
+    defaultVueServerRendererURL = `https://cdn.jsdelivr.net/npm/@vue/server-renderer/dist/server-renderer.esm-browser.js`,
     showOutput = false,
     outputMode = 'preview',
-  }: {
-    serializedState?: string
-    showOutput?: boolean
-    // loose type to allow getting from the URL without inducing a typing error
-    outputMode?: OutputModes | string
-    defaultVueRuntimeURL?: string
-  }) {
-    let files: StoreState['files'] = {}
+  }: StoreOptions = {}) {
+    const files: StoreState['files'] = {}
 
     if (serializedState) {
       const saved = JSON.parse(atou(serializedState))
-      // eslint-disable-next-line no-restricted-syntax
-      for (const filename of Object.keys(saved)) {
-        files[filename] = new File(filename, saved[filename])
+      // eslint-disable-next-line no-restricted-syntax, guard-for-in
+      for (const filename in saved) {
+        setFile(files, filename, saved[filename])
       }
     } else {
-      files = {
-        [defaultMainFile]: new File(defaultMainFile, welcomeCode),
-      }
+      setFile(files, appFile, welcomeCode)
     }
 
     this.defaultVueRuntimeURL = defaultVueRuntimeURL
+    this.defaultVueServerRendererURL = defaultVueServerRendererURL
     this.initialShowOutput = showOutput
     this.initialOutputMode = outputMode as OutputModes
 
-    let mainFile = defaultMainFile
-    if (!files[mainFile]) {
-      mainFile = Object.keys(files)[0]
-    }
-
-    files[MAIN_CONTAINER] = new File(MAIN_CONTAINER, containerCode, true)
+    setFile(files, varletReplPlugin, getVarletReplPluginCode(), !import.meta.env.DEV)
+    setFile(files, appWrapperFile, appWrapperCode, !import.meta.env.DEV)
 
     this.state = reactive({
-      mainFile: MAIN_CONTAINER,
       files,
-      activeFile: files[mainFile],
+      mainFile: appWrapperFile,
+      activeFile: files[appFile],
       errors: [],
       vueRuntimeURL: this.defaultVueRuntimeURL,
-      vueServerRendererURL: '',
+      vueServerRendererURL: this.defaultVueServerRendererURL,
       resetFlip: true,
     })
 
     this.initImportMap()
+    this.initTsConfig()
+  }
 
-    // varlet inject
-    // @ts-ignore
-    this.state.files[varletReplPlugin] = new File(varletReplPlugin, varletReplPluginCode, !import.meta.env.DEV)
+  init() {
+    // eslint-disable-next-line no-return-assign
+    watchEffect(() => compileFile(this, this.state.activeFile).then((errs) => (this.state.errors = errs)))
 
-    watchEffect(() => compileFile(this, this.state.activeFile))
-
+    this.state.errors = []
     // eslint-disable-next-line no-restricted-syntax
     for (const file in this.state.files) {
-      if (file !== defaultMainFile) {
-        compileFile(this, this.state.files[file])
+      if (file !== appFile) {
+        compileFile(this, this.state.files[file]).then((errs) => this.state.errors.push(...errs))
       }
     }
   }
 
-  init() {}
+  private initTsConfig() {
+    if (!this.state.files[tsconfigFile]) {
+      this.setTsConfig(tsconfig)
+    }
+  }
+
+  setTsConfig(config: any) {
+    this.state.files[tsconfigFile] = new File(tsconfigFile, JSON.stringify(config, undefined, 2))
+  }
+
+  getTsConfig() {
+    try {
+      return JSON.parse(this.state.files[tsconfigFile].code)
+    } catch {
+      return {}
+    }
+  }
 
   setActive(filename: string) {
     this.state.activeFile = this.state.files[filename]
   }
 
-  addFile(fileOrFilename: string | File) {
+  addFile(fileOrFilename: string | File): void {
     const file = typeof fileOrFilename === 'string' ? new File(fileOrFilename) : fileOrFilename
     this.state.files[file.filename] = file
     if (!file.hidden) this.setActive(file.filename)
   }
 
   deleteFile(filename: string) {
-    if (filename === varletReplPlugin) {
-      Snackbar.warning('Varlet depends on this file')
+    if (filename === varletReplPlugin || filename === appWrapperFile) {
+      Snackbar.warning('You cannot delete this file because the varlet depends on it')
       return
     }
 
-    Dialog(`Are you sure you want to delete ${filename}?`).then((action) => {
+    Dialog(`Are you sure you want to delete ${stripSrcPrefix(filename)}?`).then((action) => {
       if (action === 'confirm') {
         if (this.state.activeFile.filename === filename) {
-          this.state.activeFile = this.state.files[defaultMainFile]
+          this.state.activeFile = this.state.files[this.state.mainFile]
         }
         delete this.state.files[filename]
       }
     })
   }
 
+  renameFile(oldFilename: string, newFilename: string) {
+    const { files } = this.state
+    const file = files[oldFilename]
+
+    if (!file) {
+      this.state.errors = [`Could not rename "${oldFilename}", file not found`]
+      return
+    }
+
+    if (!newFilename || oldFilename === newFilename) {
+      this.state.errors = [`Cannot rename "${oldFilename}" to "${newFilename}"`]
+      return
+    }
+
+    file.filename = newFilename
+
+    const newFiles: Record<string, File> = {}
+
+    // Preserve iteration order for files
+    // eslint-disable-next-line no-restricted-syntax
+    for (const name in files) {
+      if (name === oldFilename) {
+        newFiles[newFilename] = file
+      } else {
+        newFiles[name] = files[name]
+      }
+    }
+
+    this.state.files = newFiles
+
+    if (this.state.mainFile === oldFilename) {
+      this.state.mainFile = newFilename
+    }
+
+    // eslint-disable-next-line no-return-assign
+    compileFile(this, file).then((errs) => (this.state.errors = errs))
+  }
+
   serialize() {
-    return '#' + utoa(JSON.stringify(this.getFiles()))
+    const files = this.getFiles()
+    const importMap = files[importMapFile]
+    if (importMap) {
+      const { imports } = JSON.parse(importMap)
+      if (imports.vue === this.defaultVueRuntimeURL) {
+        delete imports.vue
+      }
+      if (imports['vue/server-renderer'] === this.defaultVueServerRendererURL) {
+        delete imports['vue/server-renderer']
+      }
+      if (!Object.keys(imports).length) {
+        delete files[importMapFile]
+      } else {
+        files[importMapFile] = JSON.stringify({ imports }, null, 2)
+      }
+    }
+    return '#' + utoa(JSON.stringify(files))
   }
 
   getFiles() {
     const exported: Record<string, string> = {}
-    // eslint-disable-next-line guard-for-in,no-restricted-syntax
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const filename in this.state.files) {
-      exported[filename] = this.state.files[filename].code
+      const normalized = filename === importMapFile ? filename : filename.replace(/^src\//, '')
+      exported[normalized] = this.state.files[filename].code
     }
+
     return exported
   }
 
-  async setFiles(newFiles: Record<string, string>, mainFile = defaultMainFile) {
-    const files: Record<string, File> = {}
-    if (mainFile === defaultMainFile && !newFiles[mainFile]) {
-      files[mainFile] = new File(mainFile, welcomeCode)
-    }
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [filename, file] of Object.entries(newFiles)) {
-      files[filename] = new File(filename, file)
-    }
-    // eslint-disable-next-line no-restricted-syntax
-    for (const file of Object.values(files)) {
-      await compileFile(this, file)
-    }
-    this.state.mainFile = mainFile
-    this.state.files = files
-    this.initImportMap()
-    this.setActive(mainFile)
+  private forceSandboxReset() {
+    this.state.resetFlip = !this.state.resetFlip
   }
 
   private initImportMap() {
@@ -237,6 +323,7 @@ export class ReplStore implements Store {
             imports: {
               vue: this.defaultVueRuntimeURL,
               ...varletImports,
+              'vue/server-renderer': this.defaultVueServerRendererURL,
             },
           },
           null,
@@ -248,8 +335,15 @@ export class ReplStore implements Store {
         const json = JSON.parse(map.code)
         if (!json.imports.vue) {
           json.imports.vue = this.defaultVueRuntimeURL
-          map.code = JSON.stringify(json, null, 2)
+        } else {
+          json.imports.vue = fixURL(json.imports.vue)
         }
+        if (!json.imports['vue/server-renderer']) {
+          json.imports['vue/server-renderer'] = this.defaultVueServerRendererURL
+        } else {
+          json.imports['vue/server-renderer'] = fixURL(json.imports['vue/server-renderer'])
+        }
+        map.code = JSON.stringify(json, null, 2)
         // eslint-disable-next-line no-empty
       } catch (e) {}
     }
@@ -257,10 +351,80 @@ export class ReplStore implements Store {
 
   getImportMap() {
     try {
-      return JSON.parse(this.state.files['import-map.json'].code)
+      return JSON.parse(this.state.files[importMapFile].code)
     } catch (e) {
       this.state.errors = [`Syntax error in import-map.json: ${(e as Error).message}`]
       return {}
     }
   }
+
+  setImportMap(map: { imports: Record<string, string>; scopes?: Record<string, Record<string, string>> }) {
+    this.state.files[importMapFile]!.code = JSON.stringify(map, null, 2)
+  }
+
+  setVarletVersion(version: string) {
+    this.varletVersion = version
+    const importMap = this.getImportMap()
+    const imports = importMap.imports || (importMap.imports = {})
+    imports['@varlet/ui'] =
+      version === 'local' ? `./varlet.esm.js` : `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/varlet.esm.js`
+    setFile(this.state.files, varletReplPlugin, getVarletReplPluginCode(version), !import.meta.env.DEV)
+    compileFile(this, this.state.files[varletReplPlugin]).then((errs) => this.state.errors.push(...errs))
+    this.setImportMap(importMap)
+    this.forceSandboxReset()
+
+    console.info(`[varlet] Now using Varlet version: ${version}`)
+  }
+
+  async setVueVersion(version: string) {
+    this.vueVersion = version
+    const compilerUrl = `https://cdn.jsdelivr.net/npm/@vue/compiler-sfc@${version}/dist/compiler-sfc.esm-browser.js`
+    const runtimeUrl = `https://cdn.jsdelivr.net/npm/@vue/runtime-dom@${version}/dist/runtime-dom.esm-browser.js`
+    const ssrUrl = `https://cdn.jsdelivr.net/npm/@vue/server-renderer@${version}/dist/server-renderer.esm-browser.js`
+    this.pendingCompiler = import(/* @vite-ignore */ compilerUrl)
+    this.compiler = await this.pendingCompiler
+    this.pendingCompiler = null
+    this.state.vueRuntimeURL = runtimeUrl
+    this.state.vueServerRendererURL = ssrUrl
+    const importMap = this.getImportMap()
+    const imports = importMap.imports || (importMap.imports = {})
+    imports.vue = runtimeUrl
+    imports['vue/server-renderer'] = ssrUrl
+    this.setImportMap(importMap)
+    this.forceSandboxReset()
+
+    console.info(`[@vue/repl] Now using Vue version: ${version}`)
+  }
+
+  resetVueVersion() {
+    this.vueVersion = undefined
+    this.compiler = defaultCompiler
+    this.state.vueRuntimeURL = this.defaultVueRuntimeURL
+    this.state.vueServerRendererURL = this.defaultVueServerRendererURL
+    const importMap = this.getImportMap()
+    const imports = importMap.imports || (importMap.imports = {})
+    imports.vue = this.defaultVueRuntimeURL
+    imports['vue/server-renderer'] = this.defaultVueServerRendererURL
+    this.setImportMap(importMap)
+    this.forceSandboxReset()
+    console.info(`[@vue/repl] Now using default Vue version`)
+  }
+}
+
+function setFile(files: Record<string, File>, filename: string, content: string, hidden = false) {
+  // prefix user files with src/
+  // for cleaner Volar path completion when using Monaco editor
+  const normalized =
+    filename !== importMapFile && filename !== tsconfigFile && !filename.startsWith('src/')
+      ? `src/${filename}`
+      : filename
+  files[normalized] = new File(normalized, content, hidden)
+}
+
+function fixURL(url: string) {
+  return url.replace('https://sfc.vuejs', 'https://play.vuejs')
+}
+
+function stripSrcPrefix(file: string) {
+  return file.replace(/^src\//, '')
 }

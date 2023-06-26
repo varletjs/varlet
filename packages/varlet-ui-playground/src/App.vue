@@ -3,6 +3,8 @@ import Header from './Header.vue'
 import { ReplStore } from './store'
 import { watchEffect } from 'vue'
 import { Repl } from '@vue/repl'
+// @ts-ignore
+import Monaco from '@vue/repl/monaco-editor'
 
 const setVH = () => {
   document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
@@ -13,16 +15,7 @@ setVH()
 
 const store = new ReplStore({
   serializedState: location.hash.slice(1),
-  // @ts-ignore
-  defaultVueRuntimeURL: import.meta.env.PROD ? undefined : `${location.origin}/src/vue-dev-proxy`,
 })
-
-// enable experimental features
-const sfcOptions = {
-  script: {
-    reactivityTransform: true,
-  },
-}
 
 // persist state
 watchEffect(() => history.replaceState({}, '', store.serialize()))
@@ -31,13 +24,13 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 <template>
   <Header :store="store" />
   <Repl
-    @keydown.ctrl.s.prevent
-    @keydown.meta.s.prevent
+    :editor="Monaco"
     :store="store"
     :show-compile-output="true"
     :auto-resize="true"
-    :sfc-options="sfcOptions"
     :clear-console="false"
+    @keydown.ctrl.s.prevent
+    @keydown.meta.s.prevent
   />
 </template>
 
@@ -47,13 +40,12 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 }
 
 body {
-  font-size: 13px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
     'Helvetica Neue', sans-serif;
   margin: 0;
 
   --base: #444;
-  --nav-height: 50px;
+  --nav-height: 66px;
 
   color: var(--color-text);
 }
@@ -62,7 +54,7 @@ body {
   --color-branding: #5580f8 !important;
   --color-branding-dark: #5580f8 !important;
 
-  height: calc(var(--vh) - var(--nav-height));
+  height: calc(var(--vh) - var(--nav-height)) !important;
 }
 
 button {

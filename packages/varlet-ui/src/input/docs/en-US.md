@@ -228,4 +228,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
 | `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
 | `--input-input-height` | `24px` |
+| `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |

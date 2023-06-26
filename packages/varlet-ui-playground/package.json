@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "@varlet/ui": "workspace: *",
-    "@vue/repl": "1.4.1",
+    "@varlet/touch-emulator": "workspace: *",
+    "@vue/repl": "^2.3.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
     "vue": "3.3.2"

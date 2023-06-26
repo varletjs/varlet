@@ -6,17 +6,21 @@ import Share from './icons/Share.vue'
 import Download from './icons/Download.vue'
 import Close from './icons/Close.vue'
 import { downloadProject } from './download/download'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { Themes } from '@varlet/ui'
 
-const inIframe = ref(window.self !== window.top)
-
-// eslint-disable-next-line no-undef
+// eslint-disable-next-line vue/require-prop-types
 const props = defineProps(['store'])
+const inIframe = ref(window.self !== window.top)
+const isDark = ref(localStorage.getItem('varlet-ui-playground-prefer-dark') !== 'false')
+const currentVueVersion = ref('')
+const currentVarletVersion = ref('')
+const vueVersions = ref<string[]>([])
+const varletVersions = ref<string[]>([])
 
 async function copyLink() {
   await navigator.clipboard.writeText(location.href)
-  Snackbar.success('Sharable URL has been copied to clipboard.')
+  Snackbar('Sharable URL has been copied to clipboard')
 }
 
 function openGithub() {
@@ -24,22 +28,14 @@ function openGithub() {
 }
 
 function toggleDark() {
-  const cls = document.documentElement.classList
-  cls.toggle('dark')
-  const saved = String(cls.contains('dark'))
-  localStorage.setItem('varlet-ui-playground-prefer-dark', saved)
-
-  StyleProvider(saved === 'true' ? Themes.dark : null)
-
-  notifyEmulatorThemeChange()
-  notifyParentThemeChange()
+  isDark.value = !isDark.value
 }
 
 function notifyEmulatorThemeChange() {
   setTimeout(() => {
     window[0].postMessage({
       action: 'theme-change',
-      value: document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+      value: isDark.value ? 'dark' : 'light',
     })
   })
 }
@@ -53,7 +49,7 @@ function notifyParentThemeChange() {
   window.parent.postMessage(
     {
       action: 'theme-change',
-      data: document.documentElement.classList.contains('dark') ? 'darkTheme' : 'lightTheme',
+      data: isDark.value ? 'darkTheme' : 'lightTheme',
       from: 'playground',
     },
     '*'
@@ -64,29 +60,66 @@ function handleClose() {
   window.parent.postMessage({ action: 'playground-close' }, '*')
 }
 
-function getURLInitialTheme() {
+function getInitialTheme() {
   const search = new URLSearchParams(window.location.search)
 
   return search.get('initialTheme')
 }
 
-onMounted(() => {
-  const cls = document.documentElement.classList
+function syncTheme() {
+  localStorage.setItem('varlet-ui-playground-prefer-dark', String(isDark.value))
+  StyleProvider(Themes.dark)
 
-  const initialTheme = getURLInitialTheme()
-
-  if (initialTheme) {
-    localStorage.setItem('varlet-ui-playground-prefer-dark', initialTheme === 'light' ? 'false' : 'true')
-  }
-
-  const saved = localStorage.getItem('varlet-ui-playground-prefer-dark')
-  if (saved !== 'false') {
-    cls.add('dark')
-    StyleProvider(Themes.dark)
-  }
-
+  isDark.value
+    ? document.documentElement.classList.add('varlet-dark')
+    : document.documentElement.classList.remove('varlet-dark')
   notifyEmulatorThemeChange()
+  notifyParentThemeChange()
+}
+
+async function fetchVueVersions() {
+  const res = await fetch(`https://api.github.com/repos/vuejs/core/releases?per_page=100`)
+  const releases: any[] = await res.json()
+  const versions = releases.map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
+  vueVersions.value = versions
+}
+
+async function fetchVarletVersions() {
+  const res = await fetch(`https://api.github.com/repos/varletjs/varlet/releases?per_page=100`)
+  const releases: any[] = await res.json()
+  const versions = releases.map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
+
+  if (import.meta.env.DEV) {
+    versions.unshift('local')
+  }
+
+  varletVersions.value = versions
+}
+
+async function setVueVersion(v: string) {
+  await props.store.setVueVersion(v)
+}
+
+async function setVarletVersion(v: string) {
+  await props.store.setVarletVersion(v)
+}
+
+onMounted(() => {
+  document.documentElement.classList.add('dark')
+
+  const initialTheme = getInitialTheme()
+  if (initialTheme) {
+    isDark.value = initialTheme !== 'light'
+  }
+
+  syncTheme()
+  fetchVueVersions()
+  fetchVarletVersions()
 })
+
+watch(() => isDark.value, syncTheme)
+watch(() => currentVueVersion.value, setVueVersion)
+watch(() => currentVarletVersion.value, setVarletVersion)
 </script>
 
 <template>
@@ -96,21 +129,51 @@ onMounted(() => {
       <img alt="logo" src="./logo.svg" />
       <span>Varlet UI Playground</span>
     </h1>
-    <div class="links">
-      <button title="Toggle dark mode" class="toggle-dark" @click="toggleDark">
-        <Sun class="light" />
-        <Moon class="dark" />
-      </button>
-      <button title="Copy sharable URL" class="share" @click="copyLink">
-        <Share />
-      </button>
-      <button title="Download project files" class="download" @click="downloadProject(props.store)">
-        <Download />
-      </button>
-      <button title="View on GitHub" class="github" @click="openGithub">
-        <GitHub />
-      </button>
-    </div>
+    <var-space align="center">
+      <var-select
+        style="width: 200px"
+        variant="outlined"
+        size="small"
+        placeholder="Select Varlet Version"
+        v-model="currentVarletVersion"
+      >
+        <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'local' ? '' : 'v'}${v}`" :value="v" />
+      </var-select>
+      <var-select
+        style="width: 200px"
+        variant="outlined"
+        size="small"
+        placeholder="Select Vue Version"
+        v-model="currentVueVersion"
+      >
+        <var-option v-for="v in vueVersions" :key="v" :label="`v${v}`" :value="v" />
+      </var-select>
+
+      <var-tooltip content="Toggle Theme">
+        <var-button class="link-button" text round @click="toggleDark">
+          <Moon v-if="isDark" />
+          <Sun v-else />
+        </var-button>
+      </var-tooltip>
+
+      <var-tooltip content="Copy Link">
+        <var-button class="link-button" text round @click="copyLink">
+          <Share />
+        </var-button>
+      </var-tooltip>
+
+      <var-tooltip content="Download Project">
+        <var-button class="link-button" text round @click="downloadProject(store)">
+          <Download />
+        </var-button>
+      </var-tooltip>
+
+      <var-tooltip content="Open Github" placement="bottom-end">
+        <var-button class="link-button" text round @click="openGithub">
+          <GitHub />
+        </var-button>
+      </var-tooltip>
+    </var-space>
   </nav>
 </template>
 
@@ -147,50 +210,37 @@ h1 {
   margin: 0;
   line-height: var(--nav-height);
   font-weight: 500;
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
 }
 
 h1 img {
-  height: 24px;
+  width: 32px;
+  height: 32px;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-right: 12px;
   position: relative;
-  top: -2px;
 }
 
-@media (max-width: 560px) {
-  h1 span {
-    font-size: 0.9em;
-  }
-}
-
-@media (max-width: 520px) {
+@media (max-width: 1000px) {
   h1 span {
     display: none;
   }
 }
 
-.links {
-  display: flex;
+@media (max-width: 700px) {
+  .var-select {
+    display: none;
+  }
 }
 
 .close {
   cursor: pointer;
 }
 
-.toggle-dark svg {
-  width: 18px;
-  height: 18px;
+.link-button svg {
+  width: 22px;
+  height: 22px;
   fill: #666;
-}
-
-.toggle-dark .dark,
-.dark .toggle-dark .light {
-  display: none;
-}
-
-.dark .toggle-dark .dark {
-  display: inline-block;
 }
 </style>

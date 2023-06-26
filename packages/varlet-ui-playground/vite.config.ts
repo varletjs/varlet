@@ -15,7 +15,7 @@ function copyVarletDependencies(): Plugin {
 
     buildStart() {
       fs.copyFileSync(toPath('../varlet-ui/es/varlet.esm.js'), toPath('./public/varlet.esm.js'))
-      fs.copyFileSync(toPath('../varlet-touch-emulator/index.js'), toPath('./public/varlet-touch-emulator.js'))
+      fs.copyFileSync(toPath('../varlet-touch-emulator/iife.js'), toPath('./public/varlet-touch-emulator.js'))
       fs.copyFileSync(toPath('../varlet-ui/es/style.css'), toPath('./public/varlet.css'))
       fs.writeFileSync(
         toPath('./public/varlet-area.js'),
@@ -31,6 +31,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+  },
+
+  optimizeDeps: {
+    exclude: ['@vue/repl'],
   },
 
   build: {
