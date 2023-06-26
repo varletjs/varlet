@@ -142,7 +142,7 @@ watch(
 <style>
 .varlet-site-playground-container {
   width: calc(100vw - 256px);
-  max-width: 1360px;
+  max-width: 1660px;
   height: 100vh;
 }
 
