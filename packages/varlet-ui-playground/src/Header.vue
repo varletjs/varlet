@@ -87,7 +87,9 @@ async function fetchVueVersions() {
 async function fetchVarletVersions() {
   const res = await fetch(`https://api.github.com/repos/varletjs/varlet/releases?per_page=100`)
   const releases: any[] = await res.json()
-  const versions = releases.map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
+  const versions = releases
+    .map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
+    .filter((version) => !version.startsWith('1'))
 
   if (import.meta.env.DEV) {
     versions.unshift('local')
@@ -239,8 +241,8 @@ h1 img {
 }
 
 .link-button svg {
-  width: 22px;
-  height: 22px;
+  width: 23px;
+  height: 23px;
   fill: #666;
 }
 </style>

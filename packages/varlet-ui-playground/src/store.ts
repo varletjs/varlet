@@ -12,7 +12,7 @@ const varletImports = {
 const appFile = 'src/App.vue'
 const varletReplPlugin = 'src/varlet-repl-plugin.js'
 const welcomeCode = `\
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const msg = ref('Hello Varlet!')
@@ -67,7 +67,7 @@ function getVarletReplPluginCode(version?: string) {
   }
 
   return `\
-import VarletUI, { Context } from '@varlet/ui'
+import VarletUI from '@varlet/ui'
 import { getCurrentInstance } from 'vue'
 
 await appendStyle()
