@@ -4,6 +4,7 @@ import glob from 'glob'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
 import { getScriptExtname } from './compileScript.js'
+import { CWD } from '../shared/constant.js'
 
 const { render } = less
 const { readFileSync, writeFileSync, unlinkSync } = fse
@@ -41,7 +42,10 @@ export function extractStyleDependencies(file: string, code: string, styleReg: R
 
 export async function compileLess(file: string) {
   const source = readFileSync(file, 'utf-8')
-  const { css } = await render(source, { filename: file })
+  const { css } = await render(source, {
+    filename: file,
+    paths: [resolve(CWD, 'node_modules')],
+  })
 
   writeFileSync(replaceExt(file, '.css'), clearEmptyLine(css), 'utf-8')
 }
