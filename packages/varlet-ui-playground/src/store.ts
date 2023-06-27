@@ -53,22 +53,27 @@ const tsconfig = {
   },
 }
 
-function getVarletReplPluginCode(version?: string) {
-  let varletCss = version
-    ? `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/style.css`
-    : `https://cdn.jsdelivr.net/npm/@varlet/ui/es/style.css`
-  let varletTouchEmulator = version
-    ? `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator@${version}/iife.js`
-    : `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js`
+function getVarletReplPluginCode(version: string | 'latest' | 'local') {
+  let varletCss
+  let varletTouchEmulator
 
-  if (version === 'local') {
+  if (version === 'latest') {
+    varletCss = 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/style.css'
+    varletTouchEmulator = 'https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js'
+  } else if (version === 'local') {
     varletCss = './varlet.css'
     varletTouchEmulator = './varlet-touch-emulator.js'
+  } else {
+    varletCss = `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/style.css`
+    varletTouchEmulator = `https://cdn.jsdelivr.net/npm/@varlet/touch-emulator@${version}/iife.js`
   }
 
   return `\
 import VarletUI from '@varlet/ui'
 import { getCurrentInstance } from 'vue'
+
+const varletCss = '${varletCss}'
+const varletTouchEmulator = '${varletTouchEmulator}'
 
 await appendStyle()
 
@@ -92,7 +97,7 @@ export function installVarletUI() {
   document.head.appendChild(style)
 
   const script = document.createElement('script')
-  script.src = '${varletTouchEmulator}'
+  script.src = varletTouchEmulator
   document.body.appendChild(script)
 
   if (parent.document.documentElement.classList.contains('varlet-dark')) {
@@ -117,7 +122,7 @@ export function appendStyle() {
   return new Promise((resolve, reject) => {
     const link = document.createElement('link')
     link.rel = 'stylesheet'
-    link.href = '${varletCss}'
+    link.href = varletCss
     link.onload = resolve
     link.onerror = reject
     document.head.appendChild(link)
@@ -163,15 +168,19 @@ export class ReplStore implements Store {
       }
     } else {
       setFile(files, appFile, welcomeCode)
+      setFile(files, appWrapperFile, appWrapperCode, !import.meta.env.DEV)
+      setFile(
+        files,
+        varletReplPlugin,
+        getVarletReplPluginCode(import.meta.env.DEV ? 'local' : 'latest'),
+        !import.meta.env.DEV
+      )
     }
 
     this.defaultVueRuntimeURL = defaultVueRuntimeURL
     this.defaultVueServerRendererURL = defaultVueServerRendererURL
     this.initialShowOutput = showOutput
     this.initialOutputMode = outputMode as OutputModes
-
-    setFile(files, varletReplPlugin, getVarletReplPluginCode(), !import.meta.env.DEV)
-    setFile(files, appWrapperFile, appWrapperCode, !import.meta.env.DEV)
 
     this.state = reactive({
       files,
