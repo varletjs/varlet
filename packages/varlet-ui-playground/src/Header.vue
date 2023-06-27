@@ -245,6 +245,6 @@ h1 img {
 .link-button svg {
   width: 23px;
   height: 23px;
-  fill: #666;
+  fill: rgb(255, 255, 255, 0.7);
 }
 </style>
