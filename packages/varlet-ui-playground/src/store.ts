@@ -105,6 +105,10 @@ export function installVarletUI() {
     }
   })
 
+  document.addEventListener('click', () => {
+    window.parent.document.dispatchEvent(new Event('click'))
+  })
+
   const instance = getCurrentInstance()
   instance.appContext.app.use(VarletUI)
 }
