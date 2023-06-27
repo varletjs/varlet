@@ -133,19 +133,19 @@ watch(() => currentVarletVersion.value, setVarletVersion)
     </h1>
     <var-space align="center">
       <var-select
-        style="width: 200px"
+        style="width: 150px"
         variant="outlined"
         size="small"
-        placeholder="Select Varlet Version"
+        placeholder="Varlet Version"
         v-model="currentVarletVersion"
       >
         <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'local' ? '' : 'v'}${v}`" :value="v" />
       </var-select>
       <var-select
-        style="width: 200px"
+        style="width: 150px"
         variant="outlined"
         size="small"
-        placeholder="Select Vue Version"
+        placeholder="Vue Version"
         v-model="currentVueVersion"
       >
         <var-option v-for="v in vueVersions" :key="v" :label="`v${v}`" :value="v" />
