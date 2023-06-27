@@ -134,6 +134,7 @@ watch(() => currentVarletVersion.value, setVarletVersion)
     <var-space align="center">
       <var-select
         style="width: 150px"
+        :offset-y="6"
         variant="outlined"
         size="small"
         placeholder="Varlet Version"
@@ -143,6 +144,7 @@ watch(() => currentVarletVersion.value, setVarletVersion)
       </var-select>
       <var-select
         style="width: 150px"
+        :offset-y="6"
         variant="outlined"
         size="small"
         placeholder="Vue Version"

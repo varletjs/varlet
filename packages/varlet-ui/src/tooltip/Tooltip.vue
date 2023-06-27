@@ -1,7 +1,7 @@
 <template>
   <div
     ref="host"
-    :class="n()"
+    :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
     @mouseleave="handleHostMouseleave"
@@ -12,7 +12,7 @@
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
-          :class="n('tooltip')"
+          :class="classes(n('tooltip'), n('$--box'))"
           :style="{ zIndex }"
           v-show="show"
           @click.stop

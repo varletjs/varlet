@@ -1,7 +1,7 @@
 <template>
   <div
     ref="host"
-    :class="n()"
+    :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
     @mouseleave="handleHostMouseleave"
@@ -19,6 +19,7 @@
           :class="
             classes(
               n('menu'),
+              n('$--box'),
               [defaultStyle, n('--menu-background-color')],
               [defaultStyle, formatElevation(elevation, 3)]
             )
