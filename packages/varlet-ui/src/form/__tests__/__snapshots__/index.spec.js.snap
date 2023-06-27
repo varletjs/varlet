@@ -443,7 +443,7 @@ exports[`test form with rate 3`] = `
 exports[`test form with select 1`] = `
 "<div class="var-form">
   <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible;">
           <div class="var-field-decorator__icon"></div>
@@ -477,7 +477,7 @@ exports[`test form with select 1`] = `
 exports[`test form with select 2`] = `
 "<div class="var-form">
   <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible;">
           <div class="var-field-decorator__icon"></div>
@@ -511,7 +511,7 @@ exports[`test form with select 2`] = `
 exports[`test form with select 3`] = `
 "<div class="var-form">
   <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible;">
           <div class="var-field-decorator__icon"></div>
@@ -556,7 +556,7 @@ exports[`test form with select 3`] = `
 exports[`test form with select 4`] = `
 "<div class="var-form">
   <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden;">
           <div class="var-field-decorator__icon"></div>
