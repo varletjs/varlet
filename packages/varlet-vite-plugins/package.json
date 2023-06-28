@@ -15,7 +15,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "rimraf ./lib && tsc"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "vite": "4.3.5",
     "typescript": "^5.1.5",
+    "rimraf": "^5.0.1",
     "@types/node": "^18.7.20",
     "@types/ejs": "^3.1.1",
     "@types/markdown-it": "^12.2.3",

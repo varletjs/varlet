@@ -36,7 +36,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "rimraf ./lib && tsc"
   },
   "dependencies": {
     "@babel/core": "^7.22.5",
@@ -89,6 +89,7 @@
     "@types/node": "^18.7.20",
     "@types/semver": "^7.3.9",
     "@types/sharp": "0.31.1",
+    "rimraf": "^5.0.1",
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*"
   },
