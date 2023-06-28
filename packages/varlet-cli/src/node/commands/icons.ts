@@ -16,35 +16,36 @@ async function removeDir() {
 
 async function buildPNG(svgFiles: string[]) {
   await Promise.all(
-    svgFiles.map((svg) => {
-      return new Promise<void>((done) => {
-        const { name } = parse(svg)
-        sharp(resolve(ICONS_SVG_DIR, svg))
-          .resize({ height: 100 })
-          .toBuffer()
-          .then((buffer) => {
-            sharp({
-              create: {
-                width: 100,
-                height: 100,
-                channels: 4,
-                background: '#4a7afe',
-              },
-            })
-              .composite([
-                {
-                  input: buffer,
-                  blend: 'dest-in',
+    svgFiles.map(
+      (svg) =>
+        new Promise<void>((done) => {
+          const { name } = parse(svg)
+          sharp(resolve(ICONS_SVG_DIR, svg))
+            .resize({ height: 100 })
+            .toBuffer()
+            .then((buffer) => {
+              sharp({
+                create: {
+                  width: 100,
+                  height: 100,
+                  channels: 4,
+                  background: '#4a7afe',
                 },
-              ])
-              .png()
-              .toFile(resolve(ICONS_PNG_DIR, `${name}.png`))
-              .then(() => {
-                done()
               })
-          })
-      })
-    })
+                .composite([
+                  {
+                    input: buffer,
+                    blend: 'dest-in',
+                  },
+                ])
+                .png()
+                .toFile(resolve(ICONS_PNG_DIR, `${name}.png`))
+                .then(() => {
+                  done()
+                })
+            })
+        })
+    )
   )
 }
 
@@ -103,11 +104,11 @@ ${iconNames.join(',\n')}
 }
 
 ${icons
-  .map((icon) => {
-    return `.${namespace}-${icon.name}::before {
+  .map(
+    (icon) => `.${namespace}-${icon.name}::before {
   content: "\\${icon.pointCode}";
 }`
-  })
+  )
   .join('\n\n')}
 `
 

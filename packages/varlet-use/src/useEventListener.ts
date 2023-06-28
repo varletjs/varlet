@@ -37,9 +37,8 @@ export function useEventListener(
   let listening = false
   let cleaned = false
 
-  const getElement = (target: UseEventListenerTarget | null | undefined) => {
-    return isFunction(target) ? target() : unref(target)
-  }
+  const getElement = (target: UseEventListenerTarget | null | undefined) =>
+    isFunction(target) ? target() : unref(target)
 
   const add = (target?: UseEventListenerTarget | null) => {
     if (listening || cleaned) {

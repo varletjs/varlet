@@ -14,9 +14,9 @@ const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
 const searchText = ref('')
-const searchIcons = computed(() => {
-  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
-})
+const searchIcons = computed(() =>
+  searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
+)
 
 function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'

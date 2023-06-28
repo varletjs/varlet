@@ -44,9 +44,7 @@ const rawColumns = [
     { label: '虚空之灵', id: 4 },
   ],
 ]
-const normalizedRawColumns = rawColumns.map((column) => {
-  return column.map((option) => option.label)
-})
+const normalizedRawColumns = rawColumns.map((column) => column.map((option) => option.label))
 const columns5 = ref(normalizedRawColumns)
 
 function isOddMonth(month) {
@@ -82,14 +80,10 @@ function genColumns(startYear, endYear) {
   for (let year = startYear; year < endYear; year++) {
     columns.push({
       text: year,
-      children: months.map((month) => {
-        return {
-          text: month,
-          children: genDates(year, month).map((date) => {
-            return { text: date }
-          }),
-        }
-      }),
+      children: months.map((month) => ({
+        text: month,
+        children: genDates(year, month).map((date) => ({ text: date })),
+      })),
     })
   }
 

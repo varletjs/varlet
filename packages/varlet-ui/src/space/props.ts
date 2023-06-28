@@ -13,17 +13,14 @@ export type SpaceSize = SpaceInternalSize | number | string | [number | string, 
 
 export const internalSizeValidator = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
 
-export const sizeValidator = (size: any) => {
-  return internalSizeValidator(size) || isArray(size) || isNumber(size) || isString(size)
-}
+export const sizeValidator = (size: any) =>
+  internalSizeValidator(size) || isArray(size) || isNumber(size) || isString(size)
 
-const justifyValidator = (justify: string) => {
-  return ['start', 'end', 'center', 'space-around', 'space-between', 'flex-start', 'flex-end'].includes(justify)
-}
+const justifyValidator = (justify: string) =>
+  ['start', 'end', 'center', 'space-around', 'space-between', 'flex-start', 'flex-end'].includes(justify)
 
-const alignValidator = (align: string) => {
-  return ['stretch', 'center', 'start', 'end', 'baseline', 'flex-start', 'flex-end'].includes(align)
-}
+const alignValidator = (align: string) =>
+  ['stretch', 'center', 'start', 'end', 'baseline', 'flex-start', 'flex-end'].includes(align)
 
 export const props = {
   size: {

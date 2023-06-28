@@ -34,9 +34,7 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const state = reactive({ withText: false })
-    const isInset = computed(() => {
-      return isBoolean(props.inset) ? props.inset : true
-    })
+    const isInset = computed(() => (isBoolean(props.inset) ? props.inset : true))
 
     const style = computed(() => {
       const { inset, vertical, margin } = props

@@ -34,14 +34,14 @@ export function getCheckBlocks(html: string) {
       return
     }
 
-    const list = children.map((child) => {
-      return child
+    const list = children.map((child) =>
+      child
         .replaceAll('<li>', '')
         .replaceAll('</li>', '')
         .replaceAll('<p>', '')
         .replaceAll('</p>', '')
         .replaceAll('\n', '')
-    })
+    )
 
     checkBlocks.push({
       type,

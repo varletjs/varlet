@@ -52,9 +52,7 @@ export function useChildren<P, C>(key: symbol | string) {
   const sortInstances = () => {
     const vNodes: any[] = flatVNodes(parentInstance.subTree)
 
-    childInstances.sort((a, b) => {
-      return vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode)
-    })
+    childInstances.sort((a, b) => vNodes.indexOf(a.vnode) - vNodes.indexOf(b.vnode))
   }
 
   const collect = (childInstance: ComponentInternalInstance, childProvider: C) => {

@@ -27,20 +27,18 @@ export default defineComponent({
       () => props.lockScroll
     )
 
-    const renderOverlay = () => {
-      return (
-        <div
-          class={n()}
-          style={{
-            zIndex: zIndex.value - 1,
-          }}
-          {...attrs}
-          onClick={handleClickOverlay}
-        >
-          {call(slots.default)}
-        </div>
-      )
-    }
+    const renderOverlay = () => (
+      <div
+        class={n()}
+        style={{
+          zIndex: zIndex.value - 1,
+        }}
+        {...attrs}
+        onClick={handleClickOverlay}
+      >
+        {call(slots.default)}
+      </div>
+    )
 
     const renderTransitionOverlay = () => {
       const { show } = props
