@@ -5,7 +5,10 @@ import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
 import { isPlainObject } from '@varlet/shared'
 import { getStyle } from './elements'
 
-export const delay = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
+export const delay = (time: number) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, time)
+  })
 
 export function getTouch(el: Element | Window, x: number, y: number) {
   return {

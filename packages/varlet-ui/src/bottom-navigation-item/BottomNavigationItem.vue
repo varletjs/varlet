@@ -63,9 +63,8 @@ export default defineComponent({
       index,
     }
 
-    const computeColorStyle = () => {
-      return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
-    }
+    const computeColorStyle = () =>
+      active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
 
     const handleClick = () => {
       const active = name.value ?? index.value

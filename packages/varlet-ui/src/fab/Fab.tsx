@@ -128,9 +128,9 @@ export default defineComponent({
               v-show={props.show && isActive.value && children.length}
               onClick={(e) => e.stopPropagation()}
             >
-              {children.map((child) => {
-                return <div class={n('action')}>{child}</div>
-              })}
+              {children.map((child) => (
+                <div class={n('action')}>{child}</div>
+              ))}
             </div>
           </Transition>
         </div>

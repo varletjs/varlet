@@ -117,9 +117,7 @@ export default defineComponent({
       call(props.onChange, newTime)
     }
 
-    const rad2deg = (rad: number): number => {
-      return rad * 57.29577951308232
-    }
+    const rad2deg = (rad: number): number => rad * 57.29577951308232
 
     const checkPanel = (panelType: keyof Time) => {
       isChosenUsableHour.value = false

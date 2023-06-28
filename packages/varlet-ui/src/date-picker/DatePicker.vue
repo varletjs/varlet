@@ -196,9 +196,9 @@ export default defineComponent({
       return ''
     })
 
-    const isUntouchable: ComputedRef<boolean> = computed(() => {
-      return !props.touchable || ['', 'year'].includes(getPanelType.value)
-    })
+    const isUntouchable: ComputedRef<boolean> = computed(
+      () => !props.touchable || ['', 'year'].includes(getPanelType.value)
+    )
 
     const slotProps: ComputedRef<Record<string, string>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
@@ -236,9 +236,7 @@ export default defineComponent({
       startY = clientY
     }
 
-    const getDirection = (x: number, y: number): TouchDirection => {
-      return x >= y && x > 20 ? 'x' : 'y'
-    }
+    const getDirection = (x: number, y: number): TouchDirection => (x >= y && x > 20 ? 'x' : 'y')
 
     const handleTouchmove = (event: TouchEvent) => {
       if (isUntouchable.value) return

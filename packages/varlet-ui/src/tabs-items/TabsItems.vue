@@ -23,17 +23,14 @@ export default defineComponent({
     const swipe: Ref<null | typeof VarSwipe> = ref(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
 
-    const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
-    }
+    const matchName = (active: number | string | undefined): TabItemProvider | undefined =>
+      tabItemList.find(({ name }: TabItemProvider) => active === name.value)
 
-    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
-    }
+    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined =>
+      tabItemList.find(({ index }: TabItemProvider) => active === index.value)
 
-    const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
-      return matchName(active) || matchIndex(active)
-    }
+    const matchActive = (active: number | string | undefined): TabItemProvider | undefined =>
+      matchName(active) || matchIndex(active)
 
     const handleActiveChange = (newValue: number | string | undefined) => {
       const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
@@ -54,9 +51,7 @@ export default defineComponent({
     }
 
     // expose
-    const getSwipe = () => {
-      return swipe.value
-    }
+    const getSwipe = () => swipe.value
 
     bindTabItem({})
 

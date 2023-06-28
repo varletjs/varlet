@@ -132,11 +132,9 @@ export default defineComponent({
       validateWithTrigger()
     }
 
-    const createHoverHandler = (value: number) => {
-      return (isHover: boolean) => {
-        currentHoveringValue.value = value
-        hovering.value = isHover
-      }
+    const createHoverHandler = (value: number) => (isHover: boolean) => {
+      currentHoveringValue.value = value
+      hovering.value = isHover
     }
 
     const reset = () => {

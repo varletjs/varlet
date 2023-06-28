@@ -74,6 +74,7 @@ export const getGlobalThis = (): typeof globalThis => {
   return typeof global !== 'undefined' ? global : self
 }
 
+// eslint-disable-next-line default-param-last
 export const padStart = (str = '', maxLength: number, fillString = ''): string => {
   if (str.length >= maxLength) return str
 

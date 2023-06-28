@@ -23,7 +23,7 @@ export const EXAMPLE_INDEX_RE = /\/([-\w]+)\/example\/index(?:.draft)?\.vue/
 export const COMPONENT_DOCS_RE = /\/([-\w]+)\/docs\/([-\w]+)(?:.draft)?\.md/
 
 export function getExampleRoutePath(examplePath: string): string {
-  return '/' + examplePath.match(EXAMPLE_INDEX_RE)?.[1]
+  return '/' + examplePath.match(EXAMPLE_INDEX_RE)?.[1] // eslint-disable-line
 }
 
 export function getComponentDocRoutePath(componentDocsPath: string): string {
@@ -71,15 +71,13 @@ export async function findExamples(draftMode: boolean): Promise<string[]> {
   ])
   const mergedExamples = [...examples, ...draftExamples]
 
-  return mergedExamples.filter((example) => {
-    return draftMode ? isDraftExample(example) || !hasDraftExample(mergedExamples, example) : !isDraftExample(example)
-  })
+  return mergedExamples.filter((example) =>
+    draftMode ? isDraftExample(example) || !hasDraftExample(mergedExamples, example) : !isDraftExample(example)
+  )
 }
 
 export function filterDraftDocs(docs: string[], draftMode: boolean) {
-  return docs.filter((doc) => {
-    return draftMode ? isDraftDoc(doc) || !hasDraftDoc(docs, doc) : !isDraftDoc(doc)
-  })
+  return docs.filter((doc) => (draftMode ? isDraftDoc(doc) || !hasDraftDoc(docs, doc) : !isDraftDoc(doc)))
 }
 
 export async function findComponentDocs(draftMode: boolean): Promise<string[]> {

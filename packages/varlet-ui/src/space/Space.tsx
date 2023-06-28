@@ -13,13 +13,12 @@ export default defineComponent({
   name: 'VarSpace',
   props,
   setup(props, { slots }) {
-    const getSize = (size: SpaceSize, isInternalSize: boolean): string[] => {
-      return isInternalSize
+    const getSize = (size: SpaceSize, isInternalSize: boolean): string[] =>
+      isInternalSize
         ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
         : isArray(size)
         ? (size.map(toSizeUnit) as string[])
         : ([toSizeUnit(size), toSizeUnit(size)] as string[])
-    }
 
     return () => {
       const { inline, justify, align, wrap, direction, size } = props

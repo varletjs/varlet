@@ -43,28 +43,22 @@ export function getComponentTableData(component: string) {
     }
   }
 
-  const props = tag.attributes.map((attr) => {
-    return {
-      name: attr.name,
-      description: attr.description,
-      defaultValue: attr.default,
-    }
-  })
+  const props = tag.attributes.map((attr) => ({
+    name: attr.name,
+    description: attr.description,
+    defaultValue: attr.default,
+  }))
 
-  const events = tag.events.map((event) => {
-    return {
-      name: event.name,
-      description: event.description,
-    }
-  })
+  const events = tag.events.map((event) => ({
+    name: event.name,
+    description: event.description,
+  }))
 
   const slots =
-    tag.slots?.map((slot) => {
-      return {
-        name: slot.name,
-        description: slot.description,
-      }
-    }) ?? []
+    tag.slots?.map((slot) => ({
+      name: slot.name,
+      description: slot.description,
+    })) ?? []
 
   return {
     link,
