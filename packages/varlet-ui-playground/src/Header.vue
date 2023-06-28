@@ -6,13 +6,13 @@ import Share from './icons/Share.vue'
 import Download from './icons/Download.vue'
 import Close from './icons/Close.vue'
 import { downloadProject } from './download/download'
-import { onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { Themes } from '@varlet/ui'
 
 // eslint-disable-next-line vue/require-prop-types
-const props = defineProps(['store'])
+const props = defineProps(['store', 'dark'])
+const emit = defineEmits(['update:dark'])
 const inIframe = ref(window.self !== window.top)
-const isDark = ref(localStorage.getItem('varlet-ui-playground-prefer-dark') !== 'false')
 const currentVueVersion = ref('')
 const currentVarletVersion = ref('')
 const vueVersions = ref<string[]>([])
@@ -28,14 +28,14 @@ function openGithub() {
 }
 
 function toggleDark() {
-  isDark.value = !isDark.value
+  emit('update:dark', !props.dark)
 }
 
 function notifyEmulatorThemeChange() {
   setTimeout(() => {
     window[0].postMessage({
       action: 'theme-change',
-      value: isDark.value ? 'dark' : 'light',
+      value: props.dark ? 'dark' : 'light',
     })
   })
 }
@@ -49,7 +49,7 @@ function notifyParentThemeChange() {
   window.parent.postMessage(
     {
       action: 'theme-change',
-      data: isDark.value ? 'darkTheme' : 'lightTheme',
+      data: props.dark ? 'darkTheme' : 'lightTheme',
       from: 'playground',
     },
     '*'
@@ -67,25 +67,23 @@ function getInitialTheme() {
 }
 
 function syncTheme() {
-  localStorage.setItem('varlet-ui-playground-prefer-dark', String(isDark.value))
-  StyleProvider(Themes.dark)
+  localStorage.setItem('varlet-ui-playground-prefer-dark', String(props.dark))
+  StyleProvider(props.dark ? Themes.dark : null)
 
-  isDark.value
-    ? document.documentElement.classList.add('varlet-dark')
-    : document.documentElement.classList.remove('varlet-dark')
+  props.dark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark')
   notifyEmulatorThemeChange()
   notifyParentThemeChange()
 }
 
 async function fetchVueVersions() {
-  const res = await fetch(`https://api.github.com/repos/vuejs/core/releases?per_page=100`)
+  const res = await fetch('https://api.github.com/repos/vuejs/core/releases?per_page=100')
   const releases: any[] = await res.json()
   const versions = releases.map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
   vueVersions.value = versions
 }
 
 async function fetchVarletVersions() {
-  const res = await fetch(`https://api.github.com/repos/varletjs/varlet/releases?per_page=100`)
+  const res = await fetch('https://api.github.com/repos/varletjs/varlet/releases?per_page=100')
   const releases: any[] = await res.json()
   const versions = releases
     .map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
@@ -111,15 +109,15 @@ onMounted(() => {
 
   const initialTheme = getInitialTheme()
   if (initialTheme) {
-    isDark.value = initialTheme !== 'light'
+    emit('update:dark', initialTheme !== 'light')
   }
 
-  syncTheme()
   fetchVueVersions()
   fetchVarletVersions()
+  nextTick().then(syncTheme)
 })
 
-watch(() => isDark.value, syncTheme)
+watch(() => props.dark, syncTheme)
 watch(() => currentVueVersion.value, setVueVersion)
 watch(() => currentVarletVersion.value, setVarletVersion)
 </script>
@@ -155,7 +153,7 @@ watch(() => currentVarletVersion.value, setVarletVersion)
 
       <var-tooltip content="Toggle Theme">
         <var-button class="link-button" text round @click="toggleDark">
-          <Moon v-if="isDark" />
+          <Moon v-if="dark" />
           <Sun v-else />
         </var-button>
       </var-tooltip>
@@ -245,6 +243,6 @@ h1 img {
 .link-button svg {
   width: 23px;
   height: 23px;
-  fill: rgb(255, 255, 255, 0.7);
+  fill: var(--color-text);
 }
 </style>

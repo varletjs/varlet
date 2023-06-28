@@ -1,6 +1,6 @@
 <template>
   <svg width="1.7em" height="1.7em" viewBox="0 0 24 24">
-    <g fill="rgb(255, 255, 255, .7)">
+    <g fill="var(--color-text)">
       <rect x="4" y="18" width="16" height="2" rx="1" ry="1" />
       <rect x="3" y="17" width="4" height="2" rx="1" ry="1" transform="rotate(-90 5 18)" />
       <rect x="17" y="17" width="4" height="2" rx="1" ry="1" transform="rotate(-90 19 18)" />

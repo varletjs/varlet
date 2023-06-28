@@ -1,6 +1,6 @@
 <template>
   <svg width="1.4em" height="1.4em" viewBox="0 0 24 24">
-    <g fill="none" stroke="rgb(255, 255, 255, .7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g fill="none" stroke="var(--color-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="18" cy="5" r="3" />
       <circle cx="6" cy="12" r="3" />
       <circle cx="18" cy="19" r="3" />

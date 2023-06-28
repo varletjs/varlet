@@ -1,31 +1,33 @@
 <script setup lang="ts">
 import Header from './Header.vue'
 import { ReplStore } from './store'
-import { watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { Repl } from '@vue/repl'
 // @ts-ignore
 import Monaco from '@vue/repl/monaco-editor'
 
-const setVH = () => {
+const store = new ReplStore({
+  serializedState: location.hash.slice(1),
+})
+const dark = ref(localStorage.getItem('varlet-ui-playground-prefer-dark') !== 'false')
+
+function setVH() {
   document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
 }
 
 window.addEventListener('resize', setVH)
 setVH()
 
-const store = new ReplStore({
-  serializedState: location.hash.slice(1),
-})
-
 // persist state
 watchEffect(() => history.replaceState({}, '', store.serialize()))
 </script>
 
 <template>
-  <Header :store="store" />
+  <Header :store="store" v-model:dark="dark" />
   <Repl
     :editor="Monaco"
     :store="store"
+    :theme="dark ? 'dark' : 'light'"
     :show-compile-output="true"
     :auto-resize="true"
     :clear-console="false"
