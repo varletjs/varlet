@@ -100,7 +100,7 @@ export function installVarletUI() {
   script.src = varletTouchEmulator
   document.body.appendChild(script)
 
-  if (parent.document.documentElement.classList.contains('varlet-dark')) {
+  if (parent.document.documentElement.classList.contains('dark')) {
     VarletUI.StyleProvider(VarletUI.Themes.dark)
   }
 
@@ -168,7 +168,13 @@ export class ReplStore implements Store {
       }
     } else {
       setFile(files, appFile, welcomeCode)
+    }
+
+    if (!files[appWrapperFile]) {
       setFile(files, appWrapperFile, appWrapperCode, !import.meta.env.DEV)
+    }
+
+    if (!files[varletReplPlugin]) {
       setFile(
         files,
         varletReplPlugin,
