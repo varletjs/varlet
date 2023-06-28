@@ -15,7 +15,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "rimraf ./lib && tsc"
   },
   "repository": {
     "type": "git",
