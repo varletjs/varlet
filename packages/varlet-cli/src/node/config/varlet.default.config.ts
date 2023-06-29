@@ -149,6 +149,14 @@ export default defineConfig({
         link: 'https://github.com/varletjs/varlet/graphs/contributors',
         image: 'https://contrib.rocks/image?repo=varletjs/varlet',
       },
+      sponsors: {
+        label: {
+          'zh-CN': '赞助者',
+          'en-US': 'Sponsors',
+        },
+        link: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
+        image: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
+      },
       license: {
         'zh-CN': '组件库基于 MIT 协议，您可以自由的使用和分享',
         'en-US': 'Released under the MIT License, You can use and share freely.',
