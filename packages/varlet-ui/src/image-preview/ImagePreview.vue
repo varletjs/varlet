@@ -99,7 +99,10 @@ export default defineComponent({
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
-      const { images, current } = props
+      const { images, current, initialIndex } = props
+      if (initialIndex !== undefined) {
+        return toNumber(initialIndex)
+      }
       const index = images.findIndex((image: string) => image === current)
       return index >= 0 ? index : 0
     })

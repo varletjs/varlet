@@ -95,7 +95,7 @@ const images = ref([
     Specify initial position
   </var-button>
   <var-image-preview
-    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :initial-index="1"
     :images="images"
     v-model:show="show" 
   />
@@ -249,6 +249,7 @@ const actions = [
 | `show`       | Whether or display | _boolean_ | `false` |
 | `images`     | Need to preview the image URL | _string[]_ | `[]` |
 | `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initial-index`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |

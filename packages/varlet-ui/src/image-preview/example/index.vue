@@ -77,11 +77,7 @@ watchDarkMode(dark)
     <var-image-preview :images="image" v-model:show="show" />
 
     <var-button type="warning" block @click="currentShow = true">{{ pack.specifyInitialPosition }}</var-button>
-    <var-image-preview
-      :images="images"
-      v-model:show="currentShow"
-      current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
-    />
+    <var-image-preview :images="images" v-model:show="currentShow" :initial-index="1" />
 
     <var-button type="warning" block @click="closeShow = true">{{ pack.displayCloseButton }}</var-button>
     <var-image-preview :images="images" v-model:show="closeShow" :closeable="true" />

@@ -23,7 +23,7 @@ export interface ImagePreviewProps extends BasicAttributes {
 }
 
 export interface ImagePreviewOptions {
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
@@ -36,6 +36,9 @@ export interface ImagePreviewOptions {
   onClosed?: () => void
   onChange?: (index: number) => void
   onLongPress?: (index: number) => void
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 export class ImagePreviewComponent extends VarComponent {
