@@ -247,7 +247,6 @@ const actions = [
 | ------------ | ------------ | ------------------ | ------------ |
 | `show`       | 是否显示     | _boolean_ | `false` |
 | `images`     | 需要预览的图片 URL 数组 | _string[]_ | `[]` |
-| `current`    | 图片预览起始的 URL | _string_ | `-` |
 | `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数 | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |

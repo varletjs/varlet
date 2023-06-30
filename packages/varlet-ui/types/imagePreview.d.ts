@@ -5,7 +5,7 @@ export declare const imagePreviewProps: Record<string, any>
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
@@ -20,6 +20,9 @@ export interface ImagePreviewProps extends BasicAttributes {
   onChange?: ListenerProp<(index: number) => void>
   onLongPress?: ListenerProp<(index: number) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 export interface ImagePreviewOptions {
