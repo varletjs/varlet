@@ -128,15 +128,12 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
 export function getViewportSize() {
   const { width, height } = getRect(window)
 
-  return width > height
-    ? {
-        vMin: height,
-        vMax: width,
-      }
-    : {
-        vMin: width,
-        vMax: height,
-      }
+  return {
+    vw: width,
+    vh: height,
+    vMin: Math.min(width, height),
+    vMax: Math.max(width, height),
+  }
 }
 
 // example 1rem
@@ -185,14 +182,22 @@ export const toPxNum = (value: unknown): number => {
     return 0
   }
 
-  const { width, height } = getRect(window)
+  const { vw, vh, vMin, vMax } = getViewportSize()
 
   if (isVw(value)) {
-    return (+(value as string).replace('vw', '') * width) / 100
+    return (+(value as string).replace('vw', '') * vw) / 100
   }
 
   if (isVh(value)) {
-    return (+(value as string).replace('vh', '') * height) / 100
+    return (+(value as string).replace('vh', '') * vh) / 100
+  }
+
+  if (isVMin(value)) {
+    return (+(value as string).replace('vmin', '') * vMin) / 100
+  }
+
+  if (isVMax(value)) {
+    return (+(value as string).replace('vmax', '') * vMax) / 100
   }
 
   if (isRem(value)) {
@@ -200,14 +205,6 @@ export const toPxNum = (value: unknown): number => {
     const rootFontSize = getStyle(document.documentElement).fontSize
 
     return num * parseFloat(rootFontSize)
-  }
-
-  if (isVMin(value)) {
-    return getViewportSize().vMin
-  }
-
-  if (isVMax(value)) {
-    return getViewportSize().vMax
   }
 
   if (isString(value)) {
