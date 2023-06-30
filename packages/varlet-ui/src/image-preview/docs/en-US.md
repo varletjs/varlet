@@ -293,7 +293,7 @@ const actions = [
 | Prop   | Description  |  Type  | Default |
 | ------ | ----------- | ------ | -------- |
 | `images`     | The image URL array or the URL of a single image to be previewed | _string[] \| string_ | `[]` |
-| `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initial-index`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |

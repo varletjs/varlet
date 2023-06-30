@@ -73,12 +73,6 @@ export interface IImagePreview {
   close(): void
 
   install(app: App): void
-
-  prev(options?: SwipeToOptions): void
-
-  next(options?: SwipeToOptions): void
-
-  to(index: number, options?: SwipeToOptions): void
 }
 
 export declare const ImagePreview: IImagePreview
