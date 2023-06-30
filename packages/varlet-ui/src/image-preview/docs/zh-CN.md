@@ -275,6 +275,9 @@ const actions = [
 | `ImagePreview.close` | 关闭 image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+| `prev` | 上一页 | `options?: SwipeToOptions` | `-` |
+| `next` | 下一页 | `options?: SwipeToOptions` | `-` |
+| `to` | 跳转到指定下标 | `index: number, options?: SwipeToOptions` | `-` |
 
 ### 插槽
 

@@ -276,6 +276,9 @@ const actions = [
 | `ImagePreview.close` | Close image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+| `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
+| `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
+| `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
 
 ### Slot
 
