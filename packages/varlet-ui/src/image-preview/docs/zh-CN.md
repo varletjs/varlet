@@ -95,7 +95,7 @@ const images = ref([
     指定初始位置
   </var-button>
   <var-image-preview
-    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :initial-index="1"
     :images="images"
     v-model:show="show"
   />
@@ -247,7 +247,7 @@ const actions = [
 | ------------ | ------------ | ------------------ | ------------ |
 | `show`       | 是否显示     | _boolean_ | `false` |
 | `images`     | 需要预览的图片 URL 数组 | _string[]_ | `[]` |
-| `current`    | 图片预览起始的 URL | _string_ | `-` |
+| `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数 | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
@@ -275,6 +275,9 @@ const actions = [
 | `ImagePreview.close` | 关闭 image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | 设置默认的选项配置 | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
+| `prev` | 上一页 | `options?: SwipeToOptions` | `-` |
+| `next` | 下一页 | `options?: SwipeToOptions` | `-` |
+| `to` | 跳转到指定下标 | `index: number, options?: SwipeToOptions` | `-` |
 
 ### 插槽
 
@@ -289,7 +292,7 @@ const actions = [
 | 参数   | 说明  |  类型  | 默认值 |
 | ------ | ----------- | ------ | -------- |
 | `images`     | 需要预览的图片 URL 数组或者单个图片的 URL  | _string[] \| string_ | `[]` |
-| `current`    | 图片预览起始的 URL | _string_ | `-` |
+| `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
