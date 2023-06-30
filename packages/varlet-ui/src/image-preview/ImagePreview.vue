@@ -104,10 +104,13 @@ export default defineComponent({
       // For compatibility with current, temporarily keep this computed method
       // Current will be replaced by initialIndex in the future
       const { images, current, initialIndex } = props
+
       if (initialIndex != null) {
         return toNumber(initialIndex)
       }
+
       const index = images.findIndex((image: string) => image === current)
+
       return index >= 0 ? index : 0
     })
     const scale: Ref<number> = ref(1)
