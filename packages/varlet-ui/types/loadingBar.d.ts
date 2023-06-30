@@ -23,3 +23,5 @@ export interface ILoadingBar {
 }
 
 export declare const LoadingBar: ILoadingBar
+
+export class _LoadingBarComponent {}
