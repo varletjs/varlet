@@ -47,7 +47,7 @@ body {
   margin: 0;
 
   --base: #444;
-  --nav-height: 66px;
+  --nav-height: 60px;
 
   color: var(--color-text);
 }
