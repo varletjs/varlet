@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { SwipeToOptions } from './swipe'
 import { App, TeleportProps, VNode } from 'vue'
 
 export declare const imagePreviewProps: Record<string, any>
@@ -52,6 +53,12 @@ export class ImagePreviewComponent extends VarComponent {
     extra(): VNode[]
     'close-icon'(): VNode[]
   }
+
+  prev(options?: SwipeToOptions): void
+
+  next(options?: SwipeToOptions): void
+
+  to(index: number, options?: SwipeToOptions): void
 }
 
 export interface IImagePreview {
@@ -66,6 +73,12 @@ export interface IImagePreview {
   close(): void
 
   install(app: App): void
+
+  prev(options?: SwipeToOptions): void
+
+  next(options?: SwipeToOptions): void
+
+  to(index: number, options?: SwipeToOptions): void
 }
 
 export declare const ImagePreview: IImagePreview
