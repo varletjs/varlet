@@ -92,7 +92,7 @@ export default defineComponent({
     }
 
     const renderFab = () => {
-      const children = flatFragment(slots.default?.() ?? [])
+      const children = flatFragment(call(slots.default) ?? [])
 
       return (
         <div

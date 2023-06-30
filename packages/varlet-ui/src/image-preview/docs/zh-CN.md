@@ -292,7 +292,7 @@ const actions = [
 | 参数   | 说明  |  类型  | 默认值 |
 | ------ | ----------- | ------ | -------- |
 | `images`     | 需要预览的图片 URL 数组或者单个图片的 URL  | _string[] \| string_ | `[]` |
-| `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
+| `initialIndex` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
