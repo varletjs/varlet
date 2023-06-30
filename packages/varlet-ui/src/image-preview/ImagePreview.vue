@@ -101,6 +101,8 @@ export default defineComponent({
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
+      // For compatibility with current, temporarily keep this computed method
+      // Current will be replaced by initialIndex in the future
       const { images, current, initialIndex } = props
       if (initialIndex != null) {
         return toNumber(initialIndex)
