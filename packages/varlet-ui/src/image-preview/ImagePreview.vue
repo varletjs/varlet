@@ -349,6 +349,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      swipeRef,
       isPreventDefault,
       initialIndex,
       popupShow,
