@@ -1,3 +1,25 @@
+# [2.12.0](https://github.com/varletjs/varlet/compare/v2.11.8...v2.12.0) (2023-07-01)
+
+
+### Bug Fixes
+
+* **cli/template:** fix tsconfig.json ([438c365](https://github.com/varletjs/varlet/commit/438c365a7751a6c422d15f121547a0d94a69566f))
+* **cli:** fix less render paths ([da5bf3d](https://github.com/varletjs/varlet/commit/da5bf3d27691ae068a5329c97611898a46ee3d25))
+* fix vmin vmax compute error ([2ddf751](https://github.com/varletjs/varlet/commit/2ddf7515b7f76f8c3ce912d0c927dff5075b61ec))
+* **popover:** fix box sizing ([24da2a5](https://github.com/varletjs/varlet/commit/24da2a5b7a9eb599e004478f705150c964dc730a))
+* **popover:** fix reference getter ([a035f10](https://github.com/varletjs/varlet/commit/a035f10392a482ac2f79f7227325a619b9db1dc9))
+
+
+### Features
+
+* **cli:** support sponsors option ([8aca9e7](https://github.com/varletjs/varlet/commit/8aca9e73338e7bff98483aa923e89286661ee271))
+* **image-preview:** support initialIndex and prev, next, to methods ([#1104](https://github.com/varletjs/varlet/issues/1104)) ([12fff90](https://github.com/varletjs/varlet/commit/12fff9033c7c20ce6d2d0b770ddf168cfa23626e))
+* **playground:** support light theme ([e7368db](https://github.com/varletjs/varlet/commit/e7368db5322f817afdb4b4b35b3002b1a8cdd531))
+* **playground:** support monaco and select varlet and vue version ([aed4817](https://github.com/varletjs/varlet/commit/aed4817ed043eb28e274b7bd3a1f72dce729dd89))
+* **ui/select:** support click reference element to collapse the menu ([#1103](https://github.com/varletjs/varlet/issues/1103)) ([159a5b4](https://github.com/varletjs/varlet/commit/159a5b4b74b9120c76415723a8d0640aa619adcd))
+
+
+
 ## [2.11.8](https://github.com/varletjs/varlet/compare/v2.11.7...v2.11.8) (2023-06-17)
 
 
