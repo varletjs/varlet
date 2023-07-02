@@ -17,7 +17,7 @@ const Wrapper = {
     show: false,
   }),
   template: `
-    <var-popup v-model:show="show" v-bind="$props">
+    <var-popup v-model:show="show" v-bind="$props" :teleport="null">
       default slot content
     </var-popup>
   `,

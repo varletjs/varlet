@@ -50,6 +50,7 @@ export const props = {
   },
   teleport: {
     type: String as PropType<TeleportProps['to']>,
+    default: 'body',
   },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
