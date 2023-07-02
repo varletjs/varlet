@@ -41,6 +41,7 @@ onUnmounted(() => {
   <app-type>{{ pack.indeterminateProgress }}</app-type>
   <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress indeterminate />
+    <var-progress mode="circle" indeterminate size="30vw" />
   </var-space>
 
   <app-type>{{ pack.showLabel }}</app-type>

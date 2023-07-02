@@ -10,6 +10,7 @@ export declare const progressProps: Record<string, any>
 export interface ProgressProps extends BasicAttributes {
   mode?: ProgressMode
   type?: ProgressType
+  indeterminate?: boolean
   lineWidth?: string | number
   color?: string
   trackColor?: string

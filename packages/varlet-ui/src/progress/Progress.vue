@@ -20,7 +20,11 @@
       </div>
     </div>
 
-    <div :class="n('circle')" v-if="mode === 'circle'" :style="{ width: toSizeUnit(size), height: toSizeUnit(size) }">
+    <div
+      :class="classes(n('circle'), [indeterminate, n('circle-indeterminate')])"
+      v-if="mode === 'circle'"
+      :style="{ width: toSizeUnit(size), height: toSizeUnit(size) }"
+    >
       <svg :class="n('circle-svg')" :style="{ transform: `rotate(${rotate - 90}deg)` }" :viewBox="circleProps.viewBox">
         <circle
           v-if="track"
@@ -36,7 +40,7 @@
           }"
         ></circle>
         <circle
-          :class="classes(n('circle-certain'), n(`circle-${circleProps.type}`))"
+          :class="classes(n('circle-certain'), n(`circle-${circleProps.type}`), [indeterminate, n('circle-overlay')])"
           :cx="multiplySizeUnit(size, 0.5)"
           :cy="multiplySizeUnit(size, 0.5)"
           :r="circleProps.radius"

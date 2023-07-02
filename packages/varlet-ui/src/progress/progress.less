@@ -203,5 +203,40 @@
     &-info {
       stroke: var(--progress-info-color);
     }
+
+    &-indeterminate > svg {
+      animation: progress-circle-rotate 1.4s linear infinite;
+      transform-origin: center center;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &-indeterminate &-overlay {
+      animation: progress-circle-dash 1.4s ease-in-out infinite, progress-circle-rotate 1.4s linear infinite;
+      stroke-dasharray: 25, 200;
+      stroke-dashoffset: 0;
+      transform-origin: center center;
+      transform: rotate(-90deg);
+    }
+
+    @keyframes progress-circle-dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0px;
+      }
+      50% {
+        stroke-dasharray: 100, 200;
+        stroke-dashoffset: -15px;
+      }
+      100% {
+        stroke-dasharray: 100, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+
+    @keyframes progress-circle-rotate {
+      100% {
+        transform: rotate(270deg);
+      }
+    }
   }
 }
