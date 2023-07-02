@@ -113,7 +113,7 @@ test('test image preview onLongPress callback', async () => {
   ImagePreview.close()
 })
 
-test('test image preview ', async () => {
+test('test image preview initialIndex', async () => {
   ImagePreview({
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
     initialIndex: 1,

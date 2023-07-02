@@ -160,3 +160,45 @@ test('test image preview initialIndex', async () => {
 
   wrapper.unmount()
 })
+
+test('test image preview next & prev & to method', async () => {
+  const onChange = jest.fn()
+  const Wrapper = {
+    components: {
+      [VarImagePreview.name]: VarImagePreview,
+    },
+    template: `
+      <var-image-preview ref="imagePreviewRef">
+      </var-image-preview>
+    `,
+  }
+  const wrapper = mount(Wrapper, {
+    props: {
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+      show: true,
+    },
+  })
+
+  await delay(50)
+  const {
+    imagePreviewRef: { prev, next, to },
+  } = wrapper.vm.$refs
+
+  to(1)
+  await delay(100)
+  expect(wrapper.find('.var-image-preview__indicators').text()).toBe('2 / 2')
+
+  prev()
+  await delay(100)
+  expect(wrapper.find('.var-image-preview__indicators').text()).toBe('1 / 2')
+
+  next()
+  await delay(100)
+  expect(wrapper.find('.var-image-preview__indicators').text()).toBe('2 / 2')
+
+  to(0)
+  await delay(100)
+  expect(wrapper.find('.var-image-preview__indicators').text()).toBe('1 / 2')
+
+  wrapper.unmount()
+})
