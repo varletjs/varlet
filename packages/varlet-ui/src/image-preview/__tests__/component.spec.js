@@ -162,7 +162,6 @@ test('test image preview initialIndex', async () => {
 })
 
 test('test image preview next & prev & to method', async () => {
-  const onChange = jest.fn()
   const Wrapper = {
     components: {
       [VarImagePreview.name]: VarImagePreview,
