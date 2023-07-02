@@ -202,10 +202,9 @@ const event = ref(false)
 | `transition`             | 过度动画的名称                                          | _string_              | `-`      |
 | `lock-scroll`            | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动                   | _boolean_             | `true`   |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层                                     | _boolean_             | `true`   |
-| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
+| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `body`      |
 | `safe-area`              | 是否开启底部安全区适配	                                     | _boolean_             | `false`  |
 | `safe-area-top`          | 是否开启顶部安全区适配	                                     | _boolean_             | `false`  |
-| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
 
 ### 事件
 
