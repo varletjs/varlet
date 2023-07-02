@@ -22,19 +22,6 @@ exports[`test image preview imagePreventDefault 1`] = `
 </transition-stub>"
 `;
 
-exports[`test image preview imagePreventDefault 2`] = `
-"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
-  <div class="var--box var-popup" style="z-index: 2013; display: none;">
-    <!---->
-    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2015; display: none;" var-image-preview-cover="">
-        <!---->
-      </div>
-    </transition-stub>
-  </div>
-</transition-stub>"
-`;
-
 exports[`test image preview initialIndex 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 2016;">
