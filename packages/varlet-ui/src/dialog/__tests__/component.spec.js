@@ -17,7 +17,7 @@ const Wrapper = {
     show: false,
   }),
   template: `
-    <var-dialog v-model:show="show" v-bind="$props" />
+    <var-dialog v-model:show="show" v-bind="$props" :teleport="null" />
   `,
 }
 

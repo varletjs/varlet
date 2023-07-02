@@ -30,7 +30,7 @@
             [disabled || formDisabled, n('--disabled')]
           )
         "
-        v-if="!maxlength || modelValue.length < maxlength"
+        v-if="!maxlength || modelValue.length < toNumber(maxlength)"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
         v-hover:desktop="handleHovering"
         @click="chooseFile"
@@ -387,6 +387,7 @@ export default defineComponent({
       hovering,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      toNumber,
       handleHovering,
       isHTMLSupportVideo,
       isHTMLSupportImage,

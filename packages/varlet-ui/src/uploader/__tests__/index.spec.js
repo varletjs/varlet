@@ -109,7 +109,7 @@ test('test uploader preview', async () => {
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(100)
 
-  expect(document.querySelector('.var-popup').style.display).toBe('')
+  expect(document.querySelectorAll('.var-popup')[1].style.display).toBe('')
   wrapper.vm.closePreview()
   await delay(300)
 
