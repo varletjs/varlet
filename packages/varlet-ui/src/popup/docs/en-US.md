@@ -200,7 +200,7 @@ const event = ref(false)
 | `transition` | Transition animation name                                                                                     | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the Popup                                                               | _boolean_ | `true` | 
-| `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to']_ | `-` |
+| `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to']_ | `body` |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `safe-area-top`          | Whether to enable top safety zone adaptation	                                                                 | _boolean_             | `false`  |
 
