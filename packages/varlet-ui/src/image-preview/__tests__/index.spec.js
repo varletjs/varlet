@@ -112,3 +112,15 @@ test('test image preview onLongPress callback', async () => {
 
   ImagePreview.close()
 })
+
+test('test image preview ', async () => {
+  ImagePreview({
+    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+    initialIndex: 1,
+  })
+
+  await delay(200)
+  expect(document.querySelector('.var-image-preview__indicators').textContent).toBe('2 / 2')
+
+  ImagePreview.close()
+})

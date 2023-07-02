@@ -144,3 +144,19 @@ test('test image preview onLongPress', async () => {
 
   wrapper.unmount()
 })
+
+test('test image preview initialIndex', async () => {
+  const wrapper = mount(VarImagePreview, {
+    props: {
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+      initialIndex: 1,
+      show: true,
+    },
+  })
+
+  await delay(200)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-image-preview__indicators').text()).toBe('2 / 2')
+
+  wrapper.unmount()
+})
