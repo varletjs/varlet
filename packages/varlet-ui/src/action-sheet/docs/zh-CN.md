@@ -399,7 +399,7 @@ function handleSelect(action) {
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
 | `safe-area`   | 是否开启底部安全区适配      | _boolean_             | `false`  |
-| `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
+| `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `body` |
 
 ### 事件
 

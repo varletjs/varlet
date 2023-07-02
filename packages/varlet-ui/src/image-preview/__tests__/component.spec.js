@@ -35,6 +35,7 @@ test('test image preview tap', async () => {
   const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       show: true,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
       'onUpdate:show': onUpdateShow,
@@ -51,6 +52,7 @@ test('test image preview zoom', async () => {
   const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       show: true,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
       'onUpdate:show': onUpdateShow,
@@ -80,6 +82,7 @@ test('test image preview zoom', async () => {
 test('test image preview zoom move', async () => {
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       show: true,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
     },
@@ -95,16 +98,6 @@ test('test image preview zoom move', async () => {
   // move to left limit
   await triggerDrag(zoomContainer, 100, 0)
   expect(zoomContainer.element.style.transform).toBe('scale(2) translate(93.75px, 0px)')
-  // // move to center
-  // await triggerDrag(zoomContainer, -93.75, 0)
-  // // move to top limit
-  // await triggerDrag(zoomContainer, 0, 100)
-  // expect(zoomContainer.element.style.transform).toBe('scale(2) translate(0px, 0px)')
-  // // move to center
-  // await triggerDrag(zoomContainer, 0, 100)
-  // // move to bottom limit
-  // await triggerDrag(zoomContainer, 0, -100)
-  // expect(zoomContainer.element.style.transform).toBe('scale(2) translate(0px, 0px)')
 
   wrapper.unmount()
 })
@@ -112,6 +105,7 @@ test('test image preview zoom move', async () => {
 test('test image preview imagePreventDefault', async () => {
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
       imagePreventDefault: true,
       show: true,
@@ -129,6 +123,7 @@ test('test image preview onLongPress', async () => {
   const onLongPress = jest.fn()
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
       onLongPress,
       show: true,
@@ -148,6 +143,7 @@ test('test image preview onLongPress', async () => {
 test('test image preview initialIndex', async () => {
   const wrapper = mount(VarImagePreview, {
     props: {
+      teleport: null,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
       initialIndex: 1,
       show: true,
@@ -173,6 +169,7 @@ test('test image preview next & prev & to method', async () => {
   }
   const wrapper = mount(Wrapper, {
     props: {
+      teleport: null,
       images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
       show: true,
     },
