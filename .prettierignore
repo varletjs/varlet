@@ -26,6 +26,8 @@ packages/varlet-use/lib/**
 
 **/package.json
 *.md
+.github/**
+.history/**
 
 pnpm-lock.yaml
 pnpm-workspace.yaml

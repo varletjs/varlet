@@ -1,15 +1,16 @@
 <template>
   <div :class="n()" @click="handleFocus">
     <var-menu
-      :class="n('menu')"
       var-select-cover
       same-width
+      close-on-click-reference
+      v-model:show="showMenu"
+      :class="n('menu')"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
-      v-model:show="isFocus"
-      @close="handleBlur"
+      @click-outside="handleBlur"
     >
       <var-field-decorator
         v-bind="{
@@ -80,9 +81,9 @@
             {{ placeholder }}
           </span>
 
-          <slot name="arrow-icon" :focus="isFocus">
+          <slot name="arrow-icon" :focus="showMenu">
             <var-icon
-              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
+              :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
               var-select-cover
               name="menu-down"
               :transition="300"
@@ -141,6 +142,7 @@ export default defineComponent({
   props,
   setup(props) {
     const isFocus: Ref<boolean> = ref(false)
+    const showMenu: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
@@ -243,6 +245,7 @@ export default defineComponent({
         return
       }
 
+      blur()
       call(onBlur)
       validateWithTrigger('onBlur')
     }
@@ -262,7 +265,9 @@ export default defineComponent({
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
 
-      !multiple && (isFocus.value = false)
+      if (!multiple) {
+        blur()
+      }
     }
 
     const handleClear = () => {
@@ -323,11 +328,13 @@ export default defineComponent({
     const focus = () => {
       offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
+      showMenu.value = true
     }
 
     // expose
     const blur = () => {
       isFocus.value = false
+      showMenu.value = false
     }
 
     // expose
@@ -369,6 +376,7 @@ export default defineComponent({
     return {
       offsetY,
       isFocus,
+      showMenu,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,

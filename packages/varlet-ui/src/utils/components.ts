@@ -22,6 +22,8 @@ import {
 } from 'vue'
 import { isArray } from '@varlet/shared'
 
+export type ListenerProp<F> = F | F[]
+
 export interface MountInstance {
   instance: ComponentPublicInstance
   unmount: () => void
@@ -235,8 +237,8 @@ export function createNamespace<C extends string>(name: C) {
     return (suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`) as any
   }
 
-  const classes = (...classes: Classes): any[] => {
-    return classes.map((className) => {
+  const classes = (...classes: Classes): any[] =>
+    classes.map((className) => {
       if (isArray(className)) {
         const [condition, truthy, falsy = null] = className
         return condition ? truthy : falsy
@@ -244,7 +246,6 @@ export function createNamespace<C extends string>(name: C) {
 
       return className
     })
-  }
 
   return {
     n: createBEM,

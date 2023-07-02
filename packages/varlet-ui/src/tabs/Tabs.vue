@@ -97,13 +97,11 @@ export default defineComponent({
       currentActive !== active && call(onChange, currentActive)
     }
 
-    const matchName = (): TabProvider | undefined => {
-      return tabList.find(({ name }: TabProvider) => props.active === name.value)
-    }
+    const matchName = (): TabProvider | undefined =>
+      tabList.find(({ name }: TabProvider) => props.active === name.value)
 
-    const matchIndex = (activeIndex?: number): TabProvider | undefined => {
-      return tabList.find(({ index }: TabProvider) => (activeIndex ?? props.active) === index.value)
-    }
+    const matchIndex = (activeIndex?: number): TabProvider | undefined =>
+      tabList.find(({ index }: TabProvider) => (activeIndex ?? props.active) === index.value)
 
     const matchBoundary = (): TabProvider | undefined => {
       if (length.value === 0) {

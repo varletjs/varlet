@@ -85,9 +85,9 @@ export function registerCompletions(context: ExtensionContext) {
         return null
       }
 
-      const completionItems: CompletionItem[] = icons.map((icon: string) => {
-        return new CompletionItem(icon, CompletionItemKind.Field)
-      })
+      const completionItems: CompletionItem[] = icons.map(
+        (icon: string) => new CompletionItem(icon, CompletionItemKind.Field)
+      )
 
       return completionItems
     },

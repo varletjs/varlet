@@ -12,6 +12,7 @@ otechie: # Replace with a single Otechie username
 lfx_crowdfunding: # Replace with a single LFX Crowdfunding project-name e.g., cloud-foundry
 custom:
   [
-    'https://github.com/varletjs/varlet/blob/dev/sponsor/wechat.jpg?raw=true',
-    'https://github.com/varletjs/varlet/blob/dev/sponsor/alipay.jpg?raw=true',
+    'https://afdian.net/a/haoziqaq',
+    'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/alipay.jpg',
+    'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/wechat.jpg',
   ]

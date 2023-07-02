@@ -273,8 +273,8 @@ export default defineComponent({
       change(scrollColumn)
     }
 
-    const normalizeNormalColumns = (normalColumns: NormalColumn[]) => {
-      return normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
+    const normalizeNormalColumns = (normalColumns: NormalColumn[]) =>
+      normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -293,7 +293,6 @@ export default defineComponent({
         scrollTo(scrollColumn)
         return scrollColumn
       })
-    }
 
     const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
       const scrollColumns: ScrollColumn[] = []

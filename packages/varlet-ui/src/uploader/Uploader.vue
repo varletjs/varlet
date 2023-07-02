@@ -173,16 +173,14 @@ export default defineComponent({
       }
     }
 
-    const createVarFile = (file: File): VarFile => {
-      return {
-        id: fid++,
-        url: '',
-        cover: '',
-        name: file.name,
-        file,
-        progress: 0,
-      }
-    }
+    const createVarFile = (file: File): VarFile => ({
+      id: fid++,
+      url: '',
+      cover: '',
+      name: file.name,
+      file,
+      progress: 0,
+    })
 
     const getFiles = (event: Event): File[] => {
       const el = event.target as HTMLInputElement
@@ -190,8 +188,8 @@ export default defineComponent({
       return Array.from<File>(fileList as ArrayLike<File>)
     }
 
-    const resolver = (varFile: VarFile): Promise<VarFile> => {
-      return new Promise((resolve) => {
+    const resolver = (varFile: VarFile): Promise<VarFile> =>
+      new Promise((resolve) => {
         // For performance, only file reader processing is performed on images
         if (!varFile.file!.type.startsWith('image')) {
           resolve(varFile)
@@ -211,31 +209,31 @@ export default defineComponent({
 
         fileReader.readAsDataURL(varFile.file as File)
       })
-    }
 
     const getResolvers = (varFiles: VarFile[]) => varFiles.map(resolver)
 
     const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
       const { onBeforeRead } = props
 
-      return varFiles.map((varFile) => {
-        return new Promise((resolve) => {
-          if (!onBeforeRead) {
-            resolve({
-              valid: true,
-              varFile,
-            })
-          }
+      return varFiles.map(
+        (varFile) =>
+          new Promise((resolve) => {
+            if (!onBeforeRead) {
+              resolve({
+                valid: true,
+                varFile,
+              })
+            }
 
-          const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
-          Promise.all(results).then((values) => {
-            resolve({
-              valid: values.every(Boolean),
-              varFile,
+            const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
+            Promise.all(results).then((values) => {
+              resolve({
+                valid: values.every(Boolean),
+                varFile,
+              })
             })
           })
-        })
-      })
+      )
     }
 
     const handleChange = async (event: Event) => {
@@ -245,8 +243,8 @@ export default defineComponent({
         return
       }
 
-      const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] => {
-        return varFiles.filter((varFile) => {
+      const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] =>
+        varFiles.filter((varFile) => {
           if (varFile.file!.size > toNumber(maxsize)) {
             call(onOversize, reactive(varFile))
             return false
@@ -254,7 +252,6 @@ export default defineComponent({
 
           return true
         })
-      }
 
       const getValidLengthVarFiles = (varFiles: VarFile[]): VarFile[] => {
         const limit = Math.min(varFiles.length, toNumber(maxlength) - modelValue.length)

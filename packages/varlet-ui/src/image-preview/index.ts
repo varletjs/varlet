@@ -5,7 +5,7 @@ import { call, mountInstance } from '../utils/components'
 
 interface ImagePreviewOptions {
   show?: boolean
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
@@ -20,6 +20,9 @@ interface ImagePreviewOptions {
   onLongPress?: (index: number) => void
   // internal
   teleport?: TeleportProps['to']
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 let singletonOptions: ImagePreviewOptions | null

@@ -95,7 +95,7 @@ const images = ref([
     Specify initial position
   </var-button>
   <var-image-preview
-    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :initial-index="1"
     :images="images"
     v-model:show="show" 
   />
@@ -248,7 +248,7 @@ const actions = [
 | ------------ | ------------ | ------------------ | ------------ |
 | `show`       | Whether or display | _boolean_ | `false` |
 | `images`     | Need to preview the image URL | _string[]_ | `[]` |
-| `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initial-index`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
@@ -276,6 +276,9 @@ const actions = [
 | `ImagePreview.close` | Close image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+| `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
+| `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
+| `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
 
 ### Slot
 
@@ -290,7 +293,7 @@ const actions = [
 | Prop   | Description  |  Type  | Default |
 | ------ | ----------- | ------ | -------- |
 | `images`     | The image URL array or the URL of a single image to be previewed | _string[] \| string_ | `[]` |
-| `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initialIndex`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |

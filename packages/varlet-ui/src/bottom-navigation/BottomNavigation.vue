@@ -59,17 +59,11 @@ export default defineComponent({
       handleActiveIndex()
     }
 
-    const matchName = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => {
-        return active.value === name.value
-      })
-    }
+    const matchName = (): BottomNavigationItemProvider | undefined =>
+      bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => active.value === name.value)
 
-    const matchIndex = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => {
-        return active.value === index.value
-      })
-    }
+    const matchIndex = (): BottomNavigationItemProvider | undefined =>
+      bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => active.value === index.value)
 
     const handleActiveIndex = () => {
       if (!isNumber(active.value)) {
@@ -139,9 +133,7 @@ export default defineComponent({
       }
     }
 
-    const getBottomNavigationItems = () => {
-      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
-    }
+    const getBottomNavigationItems = () => Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
 
     const handleFabClick = () => {
       call(props.onFabClick)

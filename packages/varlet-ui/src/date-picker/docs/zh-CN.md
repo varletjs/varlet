@@ -189,6 +189,7 @@ function change(date) {
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--picker-header-padding` | `4px 16px`             |
+| `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |
@@ -199,6 +200,7 @@ function change(date) {
 | `--year-picker-item-active-font-weight` | `500`                  |
 | `--year-picker-item-active-font-padding` | `10px 0`               |
 | `--year-picker-item-active-color` | `var(--color-primary)` |
+| `--year-picker-item-color` | `#555` |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |

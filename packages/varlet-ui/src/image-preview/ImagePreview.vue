@@ -15,6 +15,7 @@
     @route-change="onRouteChange"
   >
     <var-swipe
+      ref="swipeRef"
       :class="n('swipe')"
       var-image-preview-cover
       :touchable="canSwipe"
@@ -70,6 +71,7 @@ import { props } from './props'
 import { toNumber } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { call, createNamespace } from '../utils/components'
+import { type SwipeToOptions } from '../swipe/props'
 
 const { n, classes } = createNamespace('image-preview')
 
@@ -99,8 +101,16 @@ export default defineComponent({
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
-      const { images, current } = props
+      // For compatibility with current, temporarily keep this computed method
+      // Current will be replaced by initialIndex in the future
+      const { images, current, initialIndex } = props
+
+      if (initialIndex != null) {
+        return toNumber(initialIndex)
+      }
+
       const index = images.findIndex((image: string) => image === current)
+
       return index >= 0 ? index : 0
     })
     const scale: Ref<number> = ref(1)
@@ -109,6 +119,7 @@ export default defineComponent({
     const transitionTimingFunction: Ref<string | undefined> = ref(undefined)
     const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
+    const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
     let closeRunner: number | null = null
@@ -306,6 +317,21 @@ export default defineComponent({
       call(props['onUpdate:show'], false)
     }
 
+    // expose
+    const prev = (options?: SwipeToOptions) => {
+      swipeRef.value?.prev(options)
+    }
+
+    // expose
+    const next = (options?: SwipeToOptions) => {
+      swipeRef.value?.next(options)
+    }
+
+    // expose
+    const to = (idx: number, options?: SwipeToOptions) => {
+      swipeRef.value?.to(idx, options)
+    }
+
     const preventImageDefault = (event: Event) => {
       props.imagePreventDefault && props.show && event.preventDefault()
     }
@@ -323,6 +349,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      swipeRef,
       isPreventDefault,
       initialIndex,
       popupShow,
@@ -337,6 +364,9 @@ export default defineComponent({
       handleTouchend,
       handleTouchcancel,
       close,
+      prev,
+      next,
+      to,
     }
   },
 })

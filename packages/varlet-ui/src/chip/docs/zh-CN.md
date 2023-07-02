@@ -171,6 +171,7 @@ const show1= ref(true)
 
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
+| `--chip-default-text-color` | `#555` |
 | `--chip-default-color`      | `#e0e0e0` |
 | `--chip-primary-color`      | `var(--color-primary)`|
 | `--chip-danger-color`       |  `var(--color-danger)`|

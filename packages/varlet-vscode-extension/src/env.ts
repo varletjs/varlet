@@ -13,4 +13,4 @@ export function getWebTypesTags(): HtmlTag[] {
   return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
-export const t = (key: keyof typeof LANGUAGE_TEXTS['zh-CN']) => LANGUAGE_TEXTS[getLanguage()][key]
+export const t = (key: keyof (typeof LANGUAGE_TEXTS)['zh-CN']) => LANGUAGE_TEXTS[getLanguage()][key]

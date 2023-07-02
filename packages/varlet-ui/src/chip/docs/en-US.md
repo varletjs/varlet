@@ -173,6 +173,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
+| `--chip-default-text-color` | `#555` |
 | `--chip-default-color` | `#f5f5f5` |
 | `--chip-primary-color` | `var(--color-primary)`|
 | `--chip-danger-color` |  `var(--color-danger)`|

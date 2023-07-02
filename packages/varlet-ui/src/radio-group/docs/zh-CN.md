@@ -261,3 +261,4 @@ const value = ref(0)
 | `--radio-error-color` | `var(color-danger)` |
 | `--radio-action-padding` | `6px` |
 | `--radio-icon-size` | `24px` |
+| `--radio-text-color` | `#555` |
