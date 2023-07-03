@@ -140,6 +140,20 @@ onUnmounted(() => {
   <var-progress mode="circle" :value="50" :size="56" :track="false" />
 </template>
 ```
+
+### 不间断动画
+
+当加载进度未知时，通过 `indeterminate` 属性开启不间断动画。
+
+```html
+<template>
+  <var-space direction="column" :size="['20', '20']">
+    <var-progress indeterminate />
+    <var-progress mode="circle" indeterminate :size="56" />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -158,6 +172,7 @@ onUnmounted(() => {
 | `ripple`      | 水波纹加载效果（仅支持线性进度条）                     | _boolean_ | `false`   |
 | `size`        | `progress` 的尺寸（仅支持环形进度条）              | _string \| number_   | `40` |
 | `rotate`      | `progress` 的原点（仅支持环形进度条）              | _number_ | `0`       |
+| `indeterminate`       | 当加载进度未知时设置不间断动画              | _boolean_ | `false`    |
 
 ### 插槽
 

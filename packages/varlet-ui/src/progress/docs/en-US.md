@@ -140,6 +140,20 @@ Use `track` prop to hide track.
   <var-progress mode="circle" :value="50" :size="56" :track="false" />
 </template>
 ```
+
+### Indeterminate animation
+
+Enable indeterminate animation through the `indeterminate` attribute when loading progress is unknown.
+
+```html
+<template>
+  <var-space direction="column" :size="['20', '20']">
+    <var-progress indeterminate />
+    <var-progress mode="circle" indeterminate :size="56" />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
@@ -158,6 +172,7 @@ Use `track` prop to hide track.
 | `ripple`      | Loading style for progress (only supports linear progress) | _boolean_ | `false`   |
 | `size`        | Size of progress (only supports circle progress)           | _string \| number_   | `40` |
 | `rotate`      | Origin of progress (only supports circle progress)         | _number_ | `0`       |
+| `indeterminate`       | Set up indeterminate animation when loading progress is unknown              | _boolean_ | `false`    |
 
 ### Slots
 

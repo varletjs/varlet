@@ -28,6 +28,7 @@ export const props = {
   trackColor: {
     type: String,
   },
+  /** @deprecated This attribute will be discarded. */
   ripple: {
     type: Boolean,
     default: false,

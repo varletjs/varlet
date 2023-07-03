@@ -14,13 +14,15 @@ export interface ProgressProps extends BasicAttributes {
   lineWidth?: string | number
   color?: string
   trackColor?: string
-  ripple?: boolean
   label?: boolean
   labelClass?: string
   track?: boolean
   value?: number | string
   size?: number
   rotate?: number
+
+  /** @deprecated This attribute will be discarded. */
+  ripple?: boolean
 }
 
 export class Progress extends VarComponent {
