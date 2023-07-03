@@ -38,6 +38,7 @@ describe('test progress component props', () => {
       })
 
       expect(wrapper.find(`.var-progress__linear-${type}`).exists()).toBe(true)
+      wrapper.unmount()
     })
   })
 
@@ -50,6 +51,20 @@ describe('test progress component props', () => {
 
     expect(wrapper.find('.var-progress__linear-block').attributes('style')).toContain('height: 5px;')
     wrapper.unmount()
+  })
+
+  test('test progress indeterminate', () => {
+    ;['linear', 'circle'].forEach((mode) => {
+      const wrapper = mount(VarProgress, {
+        props: {
+          mode,
+          indeterminate: true,
+        },
+      })
+
+      expect(wrapper.find(`.var-progress__${mode}-indeterminate`).exists()).toBe(true)
+      wrapper.unmount()
+    })
   })
 
   test('test progress color', () => {
@@ -100,18 +115,18 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  // test('test progress ripple', async () => {
-  //   const wrapper = mount(VarProgress, {
-  //     props: {
-  //       ripple: true,
-  //     },
-  //   })
+  test('test progress ripple', async () => {
+    const wrapper = mount(VarProgress, {
+      props: {
+        ripple: true,
+      },
+    })
 
-  //   expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(true)
-  //   await wrapper.setProps({ ripple: false })
-  //   expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(false)
-  //   wrapper.unmount()
-  // })
+    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(true)
+    await wrapper.setProps({ ripple: false })
+    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(false)
+    wrapper.unmount()
+  })
 
   test('test progress size', () => {
     const wrapper = mount(VarProgress, {
