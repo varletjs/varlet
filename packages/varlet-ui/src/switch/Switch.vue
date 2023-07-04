@@ -29,7 +29,19 @@
             )
           "
         >
-          <var-loading v-if="loading" :radius="radius" color="currentColor" />
+          <span
+            v-if="loading"
+            :class="n('circle-block')"
+            :style="{
+              width: (radius && radius[0] === '0') || !radius ? '90%' : multiplySizeUnit(radius, 2),
+              height: (radius && radius[0] === '0') || !radius ? '90%' : multiplySizeUnit(radius, 2),
+              color,
+            }"
+          >
+            <svg viewBox="25 25 50 50">
+              <circle cx="50" cy="50" r="20" fill="none"></circle>
+            </svg>
+          </span>
         </div>
 
         <var-hover-overlay :hovering="hovering" />
@@ -67,7 +79,6 @@ type StyleProps = {
 export default defineComponent({
   name: 'VarSwitch',
   components: {
-    VarLoading,
     VarFormDetails,
     VarHoverOverlay,
   },
@@ -156,6 +167,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      multiplySizeUnit,
       switchActive,
       hovering,
       hover,
