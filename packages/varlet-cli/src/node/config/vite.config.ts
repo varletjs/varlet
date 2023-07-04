@@ -48,7 +48,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
       jsx(),
 
-      markdown({ style: get(varletConfig, 'highlight.style') }),
+      markdown({ style: get(varletConfig, 'highlight.style'), menu: get(varletConfig, 'pc.menu') }),
 
       copy({ paths: get(varletConfig, 'copy', []) }),
 
