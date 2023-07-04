@@ -33,8 +33,8 @@
             v-if="loading"
             :class="n('circle-block')"
             :style="{
-              width: (radius && radius[0] === '0') || !radius ? '90%' : multiplySizeUnit(radius, 2),
-              height: (radius && radius[0] === '0') || !radius ? '90%' : multiplySizeUnit(radius, 2),
+              width: (radius && radius[0] === '0') || !radius ? '16px' : multiplySizeUnit(radius, 2),
+              height: (radius && radius[0] === '0') || !radius ? '16px' : multiplySizeUnit(radius, 2),
               color,
             }"
           >
@@ -60,7 +60,6 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { props } from './props'
 import VarFormDetails from '../form-details'
-import VarLoading from '../loading'
 import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
