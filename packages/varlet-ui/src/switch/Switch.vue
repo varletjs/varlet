@@ -31,11 +31,10 @@
         >
           <span
             v-if="loading"
-            :class="n('circle-block')"
+            :class="n('loading')"
             :style="{
-              width: (radius && radius[0] === '0') || !radius ? '16px' : multiplySizeUnit(radius, 2),
-              height: (radius && radius[0] === '0') || !radius ? '16px' : multiplySizeUnit(radius, 2),
-              color,
+              width: multiplySizeUnit(radius, 2),
+              height: multiplySizeUnit(radius, 2),
             }"
           >
             <svg viewBox="25 25 50 50">
@@ -122,7 +121,7 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size || 0, 0.4))
+    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.4))
 
     const switchActive = (event: MouseEvent) => {
       const {
