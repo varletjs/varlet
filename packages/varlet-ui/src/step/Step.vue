@@ -27,6 +27,7 @@ import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { useSteps } from './provide'
 import VarIcon from '../icon'
+import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import type { ComputedRef } from 'vue'
 import type { StepProvider } from './provide'
@@ -45,7 +46,7 @@ export default defineComponent({
     const { active, activeColor, inactiveColor, direction, clickStep } = steps
 
     const isCurrent: ComputedRef<boolean> = computed(() => active.value === index.value)
-    const isActive: ComputedRef<boolean> = computed(() => index.value !== -1 && active.value > index.value)
+    const isActive: ComputedRef<boolean> = computed(() => index.value !== -1 && toNumber(active.value) > index.value)
 
     const stepProvider: StepProvider = {
       index,

@@ -98,7 +98,7 @@ export default defineComponent({
       const viewBox = `0 0 ${diameter} ${diameter}`
       const roundValue = toNumber(value) > ONE_HUNDRED ? ONE_HUNDRED : Math.round(toNumber(value))
       const strokeOffset = `${((ONE_HUNDRED - roundValue) / ONE_HUNDRED) * CIRCUMFERENCE}`
-      const strokeWidth = (lineWidth / toPxNum(size)) * diameter
+      const strokeWidth = (toPxNum(lineWidth) / toPxNum(size)) * diameter
 
       return {
         strokeWidth,
