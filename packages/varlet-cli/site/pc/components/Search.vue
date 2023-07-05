@@ -62,7 +62,7 @@ export default defineComponent({
             miniSearch.value = MiniSearch.loadJSON(
                 sections,
                 {
-                    fields: ['name','cmp','title', 'content', 'words'], // fields to index for full-text search
+                    fields: ['name', 'cmp', 'title', 'content', 'words'], // fields to index for full-text search
                     storeFields: ['title', 'anchor', 'name', 'content', 'words'],// fields to return with search results
                     searchOptions: {
                         fuzzy: 0.2,
@@ -186,6 +186,11 @@ export default defineComponent({
             background: var(--site-config-color-pc-language-active-background);
             color: var(--site-config-color-pc-language-active);
             cursor: pointer;
+
+            
+        }
+        &:hover &__title span {
+            color:  var(--site-config-color-pc-language-active);
         }
 
         &__content {
@@ -200,6 +205,7 @@ export default defineComponent({
         &__title span,
         &__content span {
             background: yellow;
+            color: #000;
         }
 
     }
