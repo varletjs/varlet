@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
+import { markdown, html, inlineCss, copy, localSearch } from '@varlet/vite-plugins'
 import {
   ES_DIR,
   SITE_CONFIG,
@@ -48,7 +48,9 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
       jsx(),
 
-      markdown({ style: get(varletConfig, 'highlight.style'), menu: get(varletConfig, 'pc.menu') }),
+      markdown({ style: get(varletConfig, 'highlight.style') }),
+
+      localSearch({ menu: get(varletConfig, 'pc.menu') }),
 
       copy({ paths: get(varletConfig, 'copy', []) }),
 
