@@ -37,7 +37,7 @@ describe('test progress component props', () => {
         props: { type, mode: 'linear' },
       })
 
-      expect(wrapper.find(`.var-progress__linear-${type}`).exists()).toBe(true)
+      expect(wrapper.find(`.var-progress__linear--${type}`).exists()).toBe(true)
     })
   })
 
