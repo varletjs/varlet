@@ -4,12 +4,12 @@
       <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
         <div v-if="track" :class="n('linear-background')" :style="{ background: trackColor }"></div>
         <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
-          <div :class="classes(n(`linear--${linearProps.type}`))" :style="{ background: color }"></div>
-          <div :class="classes(n(`linear--${linearProps.type}`))" :style="{ background: color }"></div>
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
         </div>
         <div
           v-else
-          :class="classes(n('linear-certain'), n(`linear--${linearProps.type}`), [ripple, n('linear-ripple')])"
+          :class="classes(n('linear-certain'), n(`linear--${type}`), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
         ></div>
       </div>
@@ -40,7 +40,7 @@
           }"
         ></circle>
         <circle
-          :class="classes(n('circle-certain'), n(`circle--${circleProps.type}`), [indeterminate, n('circle-overlay')])"
+          :class="classes(n('circle-certain'), n(`circle--${type}`), [indeterminate, n('circle-overlay')])"
           cx="50%"
           cy="50%"
           :r="RADIUS"
@@ -81,21 +81,18 @@ export default defineComponent({
     const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
     const linearProps = computed(() => {
-      const { type, indeterminate } = props
       const value = toNumber(props.value)
       const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
       const roundValue = value > ONE_HUNDRED ? ONE_HUNDRED : Math.round(value)
 
       return {
-        indeterminate,
-        type,
         width: `${width}%`,
         roundValue: `${roundValue}%`,
       }
     })
 
     const circleProps = computed(() => {
-      const { size, lineWidth, value, type } = props
+      const { size, lineWidth, value } = props
 
       const diameter = (RADIUS / (1 - toPxNum(lineWidth) / toPxNum(size))) * 2
       const viewBox = `0 0 ${diameter} ${diameter}`
@@ -105,7 +102,6 @@ export default defineComponent({
 
       return {
         strokeWidth,
-        type,
         viewBox,
         strokeOffset,
         roundValue: `${roundValue}%`,
