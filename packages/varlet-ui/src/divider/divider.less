@@ -19,11 +19,17 @@
 
   &--vertical {
     width: 0;
-    height: 80%;
-    margin: auto var(--divider-text-margin);
+    max-width: 0;
+    height: inherit;
+    max-height: 100%;
+    margin: 0 var(--divider-text-margin);
     padding: var(--divider-text-margin);
     border-top: none;
     border-left: 1px solid var(--divider-color);
+
+    // fix layout failure when parent elements sets align-items
+    align-items: stretch;
+    display: inline-flex;
   }
 
   &--inset {
@@ -34,7 +40,7 @@
   &--vertical&--inset {
     width: 0;
     left: unset;
-    height: calc(80% - var(--divider-vertical-inset));
+    height: calc(100% - var(--divider-vertical-inset));
   }
 
   &__text {

@@ -50,7 +50,7 @@ export default defineComponent({
       return vertical
         ? {
             ...baseStyle,
-            height: `calc(80% - ${toSizeUnit(absInsetWithUnit)})`,
+            height: `calc(100% - ${toSizeUnit(absInsetWithUnit)})`,
           }
         : {
             ...baseStyle,
