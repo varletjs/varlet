@@ -1,3 +1,19 @@
+## [2.12.3](https://github.com/varletjs/varlet/compare/v2.12.2...v2.12.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* **input:** fix auto complete tab index ([#1114](https://github.com/varletjs/varlet/issues/1114)) ([fb5e3ac](https://github.com/varletjs/varlet/commit/fb5e3ac7312df0e34e987a1290b50a0e2ddfc17a))
+* **pullRefresh:** ensure element is not null and fix types ([3f594f5](https://github.com/varletjs/varlet/commit/3f594f520f90796fc6cd72e345c6fc18723ce7ba))
+* **switch:** fix load animation without displaying when the radius isn't setting ([#1110](https://github.com/varletjs/varlet/issues/1110)) ([f286f12](https://github.com/varletjs/varlet/commit/f286f1244d1e8e631e0e07a15c76c3aa0cbe52ab))
+
+
+### Features
+
+* **progress:** add type attribute to set different theme colors ([8ccfafd](https://github.com/varletjs/varlet/commit/8ccfafd268432a40aece12ccb3673169a70832bd))
+
+
+
 ## [2.12.2](https://github.com/varletjs/varlet/compare/v2.12.1...v2.12.2) (2023-07-02)
 
 
