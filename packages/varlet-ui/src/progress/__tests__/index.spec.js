@@ -136,6 +136,21 @@ describe('test progress component props', () => {
     expect(wrapper.find('.var-progress__circle-svg').attributes('style')).toContain('transform: rotate(-80deg);')
     wrapper.unmount()
   })
+
+  test('test progress indeterminate', async () => {
+    const wrapper = mount(VarProgress, {
+      props: {
+        mode: 'linear',
+        indeterminate: true,
+      },
+    })
+
+    expect(wrapper.find('.var-progress__linear-indeterminate').exists()).toBe(true)
+    await wrapper.setProps({ mode: 'circle' })
+    expect(wrapper.find('.var-progress__circle-indeterminate').exists()).toBe(true)
+    expect(wrapper.find('.var-progress__circle-overlay').exists()).toBe(true)
+    wrapper.unmount()
+  })
 })
 
 test('test progress component default slots', () => {
