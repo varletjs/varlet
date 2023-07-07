@@ -71,9 +71,9 @@ Set the line width, progress bar color and track color through the attributes of
 
 <template>
   <var-space :size="[20, 20]">
-    <var-progress mode="circle" :value="75" size="56" :track="false" />
-    <var-progress mode="circle" label :value="value" line-width="5" size="56" />
-    <var-progress mode="circle" type="success" label :value="100" line-width="5" size="56">
+    <var-progress mode="circle" :value="75" :size="60" :track="false" />
+    <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
+    <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
       success
     </var-progress>
   </var-space>
@@ -86,13 +86,13 @@ Enable indeterminate animation through the `indeterminate` attribute when loadin
 
 ```html
 <template>
-  <var-space direction="column" :size="[20', '20']">
+  <var-space direction="column" :size="[20, 20]">
     <var-progress indeterminate />
     <var-progress indeterminate type="info" />
 
     <var-space justify="space-between">
-      <var-progress mode="circle" indeterminate size="56" />
-      <var-progress mode="circle" type="info" indeterminate size="56" />
+      <var-progress mode="circle" indeterminate :size="60" />
+      <var-progress mode="circle" type="info" indeterminate :size="60" />
     </var-space>
   </var-space>
 </template>

@@ -18,7 +18,7 @@ export interface ProgressProps extends BasicAttributes {
   labelClass?: string
   track?: boolean
   value?: number | string
-  size?: number
+  size?: number | string
   rotate?: number
 
   /** @deprecated  Use indeterminate to instead. */
