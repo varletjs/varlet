@@ -223,7 +223,7 @@ exports[`test input type 2`] = `
   <div class="var-field-decorator var--box var-field-decorator--standard">
     <div class="var-field-decorator__controller" style="cursor: text; overflow: visible;">
       <div class="var-field-decorator__icon"></div>
-      <div class="var-field-decorator__middle"><input class="var-input__autocomplete"><input class="var-input__input" autocomplete="new-password" id="var-input-21" type="password"></div>
+      <div class="var-field-decorator__middle"><input tabindex="-1" class="var-input__autocomplete"><input class="var-input__input" autocomplete="new-password" id="var-input-21" type="password"></div>
       <!--v-if-->
       <div class="var-field-decorator__icon">
         <!--v-if-->

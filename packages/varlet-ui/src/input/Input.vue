@@ -29,6 +29,7 @@
 
       <input
         v-if="normalizedType === 'password'"
+        tabindex="-1"
         :class="n('autocomplete')"
         :placeholder="!hint ? placeholder : undefined"
         :style="{
