@@ -358,7 +358,7 @@ test('test uploader extra slot', async () => {
       maxlength: 3,
     },
     slots: {
-      extra: () => '还能上传3个文件',
+      'extra-message': () => '还能上传3个文件',
     },
   })
 

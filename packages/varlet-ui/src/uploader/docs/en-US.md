@@ -427,7 +427,7 @@ const files = ref([
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Upload action content | `-` |
-| `extra` | Extra message | `-` |
+| `extra-message` | Extra message | `-` |
 
 ### Style Variables
 

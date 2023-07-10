@@ -335,7 +335,7 @@ test('test input extra slot', async () => {
       maxlength: 10,
     },
     slots: {
-      extra: () => '还能输入10个字符',
+      'extra-message': () => '还能输入10个字符',
     },
   })
 

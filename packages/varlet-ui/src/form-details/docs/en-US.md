@@ -11,4 +11,4 @@
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `extra-message` | Extra message slots | `-` |
+| `extra-message` | Extra message | `-` |

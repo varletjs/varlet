@@ -55,7 +55,7 @@
 
     <var-form-details :error-message="errorMessage" :extra-message="maxlengthText">
       <template #extra-message>
-        <slot name="extra"></slot>
+        <slot name="extra-message"></slot>
       </template>
     </var-form-details>
 

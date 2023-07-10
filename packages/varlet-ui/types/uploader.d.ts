@@ -57,7 +57,7 @@ export class Uploader extends VarComponent {
 
   $slots: {
     default(): VNode[]
-    extra(): VNode[]
+    'extra-message'(): VNode[]
   }
 
   getLoading(): VarFile[]
