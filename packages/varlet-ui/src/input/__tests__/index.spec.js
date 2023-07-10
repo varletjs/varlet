@@ -328,3 +328,19 @@ test('test input autofocus', async () => {
 
   wrapper.unmount()
 })
+
+test('test input extra slot', async () => {
+  const wrapper = mount(VarInput, {
+    props: {
+      maxlength: 10,
+    },
+    slots: {
+      'extra-message': () => '还能输入10个字符',
+    },
+  })
+
+  await delay(100)
+  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
+
+  wrapper.unmount()
+})

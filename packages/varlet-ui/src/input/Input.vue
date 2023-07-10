@@ -113,7 +113,11 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop>
+      <template #extra-message>
+        <slot name="extra-message"></slot>
+      </template>
+    </var-form-details>
   </div>
 </template>
 
