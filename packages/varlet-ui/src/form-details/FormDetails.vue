@@ -10,9 +10,11 @@
       </div>
       <div :class="n('extra-message')">
         <transition :name="n('message')">
-          <div v-if="extraMessage">
-            {{ extraMessage }}
-          </div>
+          <slot name="extra-message">
+            <div v-if="extraMessage">
+              {{ extraMessage }}
+            </div>
+          </slot>
         </transition>
       </div>
     </div>
