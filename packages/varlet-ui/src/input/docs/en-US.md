@@ -188,6 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
+| `extra` | Extra message slots | `-` |
 
 ### Style Variables
 Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
