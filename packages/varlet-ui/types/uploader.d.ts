@@ -57,6 +57,7 @@ export class Uploader extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    extra(): VNode[]
   }
 
   getLoading(): VarFile[]

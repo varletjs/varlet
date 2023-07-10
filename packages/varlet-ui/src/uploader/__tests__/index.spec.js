@@ -351,3 +351,19 @@ test('test uploader progress', () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 })
+
+test('test uploader extra slot', async () => {
+  const wrapper = mount(VarUploader, {
+    props: {
+      maxlength: 3,
+    },
+    slots: {
+      extra: () => '还能上传3个文件',
+    },
+  })
+
+  await delay(100)
+  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能上传3个文件')
+
+  wrapper.unmount()
+})
