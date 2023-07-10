@@ -54,8 +54,8 @@
     </div>
 
     <var-form-details :error-message="errorMessage" :extra-message="maxlengthText">
-      <template #extra-message>
-        <slot name="extra-message"></slot>
+      <template v-if="$slots['extra-message']" #extra-message>
+        <slot name="extra-message" />
       </template>
     </var-form-details>
 

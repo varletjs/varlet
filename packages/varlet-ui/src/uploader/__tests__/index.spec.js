@@ -354,9 +354,6 @@ test('test uploader progress', () => {
 
 test('test uploader extra slot', async () => {
   const wrapper = mount(VarUploader, {
-    props: {
-      maxlength: 3,
-    },
     slots: {
       'extra-message': () => '还能上传3个文件',
     },

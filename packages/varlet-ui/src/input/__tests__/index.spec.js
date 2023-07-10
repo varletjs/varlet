@@ -331,9 +331,6 @@ test('test input autofocus', async () => {
 
 test('test input extra slot', async () => {
   const wrapper = mount(VarInput, {
-    props: {
-      maxlength: 10,
-    },
     slots: {
       'extra-message': () => '还能输入10个字符',
     },
