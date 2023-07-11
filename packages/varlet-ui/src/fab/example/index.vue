@@ -35,7 +35,7 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <app-type :style="{ marginTop: position.includes('top') ? '20vw' : undefined }">{{ pack.type }}</app-type>
+  <app-type :style="{ marginTop: position.includes('top') ? '20vmin' : undefined }">{{ pack.type }}</app-type>
   <var-select :hint="false" v-model="type">
     <var-option :label="pack.default" value="default" />
     <var-option :label="pack.primary" value="primary" />

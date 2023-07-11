@@ -68,7 +68,7 @@ watchLang((lang) => {
 
 <template>
   <app-type>{{ pack.standard }}</app-type>
-  <var-space direction="column" :size="['3vw', 0]">
+  <var-space direction="column" :size="['3vmin', 0]">
     <var-select :placeholder="pack.placeholder" v-model="standardValue">
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />
@@ -130,15 +130,15 @@ watchLang((lang) => {
         <var-icon
           class="selected-icon"
           :name="standardValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
-          size="8vw"
+          size="8vmin"
         />
         <span>{{ standardValue12 }}</span>
       </template>
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vw" />
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vw" />
+        <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
       <template #arrow-icon="{ focus }">
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
@@ -182,8 +182,8 @@ watchLang((lang) => {
     </var-select>
   </var-space>
 
-  <app-type style="margin-top: 10vw">{{ pack.outlined }}</app-type>
-  <var-space direction="column" :size="['6vw', 0]">
+  <app-type style="margin-top: 10vmin">{{ pack.outlined }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
     <var-select variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue">
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />
@@ -245,15 +245,15 @@ watchLang((lang) => {
         <var-icon
           class="selected-icon"
           :name="outlinedValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
-          size="8vw"
+          size="8vmin"
         />
         <span>{{ outlinedValue12 }}</span>
       </template>
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vw" />
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vw" />
+        <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
       <template #arrow-icon="{ focus }">
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />

@@ -96,6 +96,6 @@ watchDarkMode(dark)
 
 <style scoped>
 .result {
-  width: 75vw;
+  width: 75vmin;
 }
 </style>

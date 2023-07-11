@@ -157,7 +157,7 @@ watchDarkMode(dark, (mode) => {
     color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
-    offset-top="14.4vw"
+    offset-top="14.4vmin"
     v-model:active="active7"
   >
     <var-tab>{{ pack.option }}1</var-tab>

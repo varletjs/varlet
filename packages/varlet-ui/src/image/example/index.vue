@@ -16,27 +16,32 @@ watchDarkMode(dark)
   <app-type>{{ pack.fitMode }}</app-type>
   <var-row>
     <div class="image-example-fit-item">
-      <var-image width="22.666vw" height="22.666vw" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <div class="image-example-margin-bottom">fill</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vw" height="22.666vw" fit="cover" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="cover" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <div class="image-example-margin-bottom">cover</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vw" height="22.666vw" fit="contain" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="contain" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <div class="image-example-margin-bottom">contain</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vw" height="22.666vw" fit="none" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="none" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
       <div class="image-example-margin-bottom">none</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vw" height="22.666vw" fit="scale-down" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image
+        width="22.666vmin"
+        height="22.666vmin"
+        fit="scale-down"
+        src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      />
       <div class="image-example-margin-bottom">scale-down</div>
     </div>
   </var-row>
@@ -44,8 +49,8 @@ watchDarkMode(dark)
   <app-type>{{ pack.setRadius }}</app-type>
   <var-row>
     <var-image
-      width="22.666vw"
-      height="22.666vw"
+      width="22.666vmin"
+      height="22.666vmin"
       fit="cover"
       :radius="10"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
@@ -53,8 +58,8 @@ watchDarkMode(dark)
     />
 
     <var-image
-      width="22.666vw"
-      height="22.666vw"
+      width="22.666vmin"
+      height="22.666vmin"
       fit="cover"
       radius="50%"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
@@ -68,7 +73,7 @@ watchDarkMode(dark)
   <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
   <app-type>{{ pack.useFailureSlot }}</app-type>
-  <var-image width="22.666vw" height="22.666vw" src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+  <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
       <svg viewBox="0 0 24 24" style="width: 100%; height: 100%">
         <path

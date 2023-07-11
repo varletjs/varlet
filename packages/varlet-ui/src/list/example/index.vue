@@ -76,7 +76,7 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <var-tabs v-model:active="current" sticky offset-top="14.4vw" style="margin-bottom: 10px">
+  <var-tabs v-model:active="current" sticky offset-top="14.4vmin" style="margin-bottom: 10px">
     <var-tab>{{ pack.basicUsage }}</var-tab>
     <var-tab>{{ pack.loadFail }}</var-tab>
     <var-tab>{{ pack.tipText }}</var-tab>
