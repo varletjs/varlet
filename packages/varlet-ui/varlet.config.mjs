@@ -556,6 +556,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Drag 拖拽',
+          'en-US': 'Drag',
+        },
+        doc: 'drag',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '表单组件',
           'en-US': 'Form Components',
         },
