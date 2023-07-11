@@ -10,7 +10,7 @@ watchLang(use)
 <template>
   <div class="example">
     <app-type>{{ pack.basicUsage }}</app-type>
-    <var-sticky offset-top="14.4vw">
+    <var-sticky offset-top="14.4vmin">
       <var-button type="primary">{{ pack.basicUsage }}</var-button>
     </var-sticky>
 

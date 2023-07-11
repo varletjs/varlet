@@ -45,7 +45,7 @@ watchDarkMode(dark)
   <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" empty-color="red" />
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate v-model="scores.score4" size="8vw" gap="1vw" />
+  <var-rate v-model="scores.score4" size="8vmin" gap="1vmin" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
   <var-rate v-model="scores.score6" :count="8" half />

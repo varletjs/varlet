@@ -91,7 +91,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="primary" block @click="changeValue('show1')">{{ pack.basicUsage }}</var-button>
     <var-button type="primary" block @click="changeValue('show3')">{{ pack.multiLine }}</var-button>
     <var-button type="primary" block @click="changeValue('show2')">{{ pack.bottomDisplay }}</var-button>
@@ -101,7 +101,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="warning" block @click="createSnackbar()">{{ pack.basicUsage }}</var-button>
     <var-button type="warning" block @click="createSnackbar('time')">{{ pack.hiddenTime }}</var-button>
     <var-button type="warning" block @click="createSnackbar('position')">{{ pack.bottomDisplay }}</var-button>
@@ -109,7 +109,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.type }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="success" block @click="create('success')">{{ pack.success }}</var-button>
     <var-button type="warning" block @click="create('warning')">{{ pack.warning }}</var-button>
     <var-button type="info" block @click="create('info')">{{ pack.info }}</var-button>

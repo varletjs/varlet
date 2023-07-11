@@ -40,10 +40,10 @@ onUnmounted(() => {
   </var-space>
 
   <app-type>{{ pack.circle }}</app-type>
-  <var-space :size="['8vw', '8vw']">
-    <var-progress mode="circle" :value="75" size="18vw" :track="false" />
-    <var-progress mode="circle" label :value="value" line-width="5" size="18vw" />
-    <var-progress mode="circle" type="success" label :value="100" line-width="5" size="18vw"> success </var-progress>
+  <var-space :size="['8vmin', '8vmin']">
+    <var-progress mode="circle" :value="75" size="18vmin" :track="false" />
+    <var-progress mode="circle" label :value="value" line-width="5" size="18vmin" />
+    <var-progress mode="circle" type="success" label :value="100" line-width="5" size="18vmin"> success </var-progress>
   </var-space>
 
   <app-type>{{ pack.indeterminateProgress }}</app-type>
@@ -52,8 +52,8 @@ onUnmounted(() => {
     <var-progress indeterminate type="info" />
 
     <var-space justify="space-between">
-      <var-progress mode="circle" indeterminate size="18vw" />
-      <var-progress mode="circle" type="info" indeterminate size="18vw" />
+      <var-progress mode="circle" indeterminate size="18vmin" />
+      <var-progress mode="circle" type="info" indeterminate size="18vmin" />
     </var-space>
   </var-space>
 </template>
