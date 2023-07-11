@@ -13,7 +13,7 @@ watchDarkMode(dark, (theme) => {
 </script>
 
 <template>
-  <var-space class="elevation-example-list" :size="['6vw', '6vw']">
+  <var-space class="elevation-example-list" :size="['6vmin', '6vmin']">
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e}`"
@@ -32,15 +32,15 @@ watchDarkMode(dark, (theme) => {
 
 <style>
 .elevation-example-list {
-  margin-top: 6vw !important;
+  margin-top: 6vmin !important;
 }
 
 .elevation-example-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24vw;
-  height: 24vw;
+  width: 24vmin;
+  height: 24vmin;
   transition: 0.25s background-color;
 }
 </style>

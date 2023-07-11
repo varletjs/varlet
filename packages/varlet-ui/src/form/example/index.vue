@@ -54,9 +54,9 @@ watchDarkMode(dark)
     :disabled="disabled"
     :readonly="readonly"
     scroll-to-error="start"
-    scroll-to-error-offset-y="14.4vw"
+    scroll-to-error-offset-y="14.4vmin"
   >
-    <var-space direction="column" :size="['4vw', 0]">
+    <var-space direction="column" :size="['4vmin', 0]">
       <var-input
         :placeholder="pack.username"
         :rules="[(v) => !!v || pack.usernameMessage]"
@@ -115,7 +115,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.controller }}</app-type>
 
-  <var-space direction="column" :size="['4vw', 0]">
+  <var-space direction="column" :size="['4vmin', 0]">
     <var-button block type="danger" @click="form.reset()">{{ pack.reset }}</var-button>
     <var-button block type="warning" @click="form.resetValidation()">{{ pack.resetValidation }}</var-button>
     <var-button block type="success" @click="form.validate()">{{ pack.validate }}</var-button>
