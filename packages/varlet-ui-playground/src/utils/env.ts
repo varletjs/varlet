@@ -1,1 +1,1 @@
-export const usePreviewVersion = import.meta.env.DEV || import.meta.env.ENABLE_PREVIEW
+export const usePreviewVersion = import.meta.env.DEV || __APP_ENABLE_PREVIEW__
