@@ -120,12 +120,6 @@
 .var-slider__horizontal {
   .var-slider();
 
-  box-sizing: border-box;
-
-  * {
-    box-sizing: border-box;
-  }
-
   &--error {
     .var-slider__horizontal-track {
       &-background {
@@ -162,12 +156,6 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
-
-  box-sizing: border-box;
-
-  & * {
-    box-sizing: border-box;
-  }
 
   &-block {
     width: 36px;
@@ -237,4 +225,9 @@
       }
     }
   }
+}
+
+.var-slider__box,
+.var-slider__box * {
+  box-sizing: border-box;
 }
