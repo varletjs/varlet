@@ -70,6 +70,12 @@ Make the element draggable freely.
 | `z-index`  | Drag element z-index | _string \| number_ | `90` |
 | `teleport`  | The location where the dragged element is mounted | _TeleportProps['to']_ | `body` |
 
+### Methods
+
+| Method   | Description                                                          | Arguments       | Return |
+| -------- | -------------------------------------------------------------------- | --------------- | ------ |
+| `resize` | You can call this method to redraw when a drag element changes position size | `-`             | `-`    |
+
 ### Slots
 
 | Name | Description | SlotProps |
