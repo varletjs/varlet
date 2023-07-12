@@ -41,6 +41,10 @@ export default defineConfig({
     outDir: 'site',
   },
 
+  define: {
+    __APP_ENABLE_PREVIEW__: process.env.ENABLE_PREVIEW,
+  },
+
   plugins: [
     copyVarletDependencies(),
     components({
