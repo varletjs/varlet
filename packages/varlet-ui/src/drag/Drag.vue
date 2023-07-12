@@ -113,10 +113,11 @@ export default defineComponent({
       const y2 = offset.parentHeight - boundary.bottom - offset.height
 
       return {
-        minX: Math.min(x1, x2),
-        maxX: Math.max(x1, x2),
-        minY: Math.min(y1, y2),
-        maxY: Math.max(y1, y2),
+        minX: x1,
+        minY: y1,
+        // fallback the drag element overflows boundary
+        maxX: x1 < x2 ? x2 : x1,
+        maxY: y1 < y2 ? y2 : y1,
       }
     }
 
