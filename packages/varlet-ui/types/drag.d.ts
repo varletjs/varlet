@@ -29,6 +29,8 @@ export class Drag extends VarComponent {
   $slots: {
     default(): VNode[]
   }
+
+  resize(): void
 }
 
 export class _DragComponent extends Drag {}
