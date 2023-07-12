@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(direction), n('box'))">
+  <div :class="n(direction)">
     <div
       :class="classes(n(`${direction}-block`), [isDisabled, n('--disabled')], [errorMessage, n(`${direction}--error`)])"
       ref="sliderEl"
