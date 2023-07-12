@@ -589,7 +589,7 @@ exports[`test form with select 4`] = `
 
 exports[`test form with slider 1`] = `
 "<div class="var-form">
-  <div class="var-slider__horizontal">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block var-slider--disabled">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
@@ -612,7 +612,7 @@ exports[`test form with slider 1`] = `
 
 exports[`test form with slider 2`] = `
 "<div class="var-form">
-  <div class="var-slider__horizontal">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block var-slider__horizontal--error">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
@@ -646,7 +646,7 @@ exports[`test form with slider 2`] = `
 
 exports[`test form with slider 3`] = `
 "<div class="var-form">
-  <div class="var-slider__horizontal">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
