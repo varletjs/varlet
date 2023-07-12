@@ -8,6 +8,7 @@ import Close from './icons/Close.vue'
 import { downloadProject } from './download/download'
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { Themes } from '@varlet/ui'
+import { usePreviewVersion } from './utils/env'
 
 // eslint-disable-next-line vue/require-prop-types
 const props = defineProps(['store', 'dark'])
@@ -89,8 +90,8 @@ async function fetchVarletVersions() {
     .map((r) => (/^v/.test(r.tag_name) ? r.tag_name.slice(1) : r.tag_name))
     .filter((version) => !version.startsWith('1'))
 
-  if (import.meta.env.DEV) {
-    versions.unshift('local')
+  if (usePreviewVersion) {
+    versions.unshift('preview')
   }
 
   varletVersions.value = versions
@@ -138,7 +139,7 @@ watch(() => currentVarletVersion.value, setVarletVersion)
         placeholder="Varlet Version"
         v-model="currentVarletVersion"
       >
-        <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'local' ? '' : 'v'}${v}`" :value="v" />
+        <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'preview' ? '' : 'v'}${v}`" :value="v" />
       </var-select>
       <var-select
         style="width: 150px"
