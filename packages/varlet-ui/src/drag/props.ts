@@ -12,21 +12,13 @@ export interface DragBoundary {
 }
 
 export const props = {
-  fixed: {
-    type: Boolean,
-    default: true,
-  },
-  zIndex: {
-    type: [Number, String],
-    default: 90,
-  },
   direction: {
     type: String as PropType<DragDirection>,
     default: 'xy',
   },
   attraction: {
     type: String as PropType<DragAttraction>,
-    default: 'xy',
+    default: 'none',
   },
   disabled: {
     type: Boolean,
@@ -40,6 +32,10 @@ export const props = {
       left: 0,
       right: 0,
     }),
+  },
+  zIndex: {
+    type: [Number, String],
+    default: 90,
   },
   teleport: {
     type: String as PropType<TeleportProps['to']>,

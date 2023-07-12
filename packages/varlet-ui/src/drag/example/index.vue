@@ -7,19 +7,34 @@ import { pack, use } from './locale'
 
 watchLang(use)
 watchDarkMode(dark)
-
-watchLang(use)
 </script>
 
 <template>
-  <app-type>Mobile phone example code</app-type>
-  <var-drag style="left: 40px; top: 80px" :boundary="{ top: 54 }">
-    <var-button type="primary">Drag Me</var-button>
+  <app-type style="height: 50px">{{ pack.basicUse }}</app-type>
+  <var-drag style="left: 15px; top: 105px" :boundary="{ top: 54 }">
+    <var-button type="primary">{{ pack.basicUse }}</var-button>
   </var-drag>
 
-  <div style="position: relative; width: 200px; height: 200px; background-color: blueviolet">
-    <var-drag :fixed="false" style="left: 50px; top: 50px">
-      <var-button style="width: 140px" type="primary">Drag Me</var-button>
-    </var-drag>
-  </div>
+  <app-type style="height: 50px; margin-top: 40px">{{ pack.direction }}</app-type>
+  <var-drag style="left: 15px; top: 195px" direction="x" :boundary="{ top: 54 }">
+    <var-button type="primary">{{ pack.direction }}</var-button>
+  </var-drag>
+
+  <app-type style="height: 50px; margin-top: 40px">{{ pack.attraction }}</app-type>
+  <var-drag style="left: 15px; top: 285px" attraction="x" :boundary="{ top: 54 }">
+    <var-button type="primary">{{ pack.xAttraction }}</var-button>
+  </var-drag>
+  <var-drag style="left: 132px; top: 285px" attraction="y" :boundary="{ top: 54 }">
+    <var-button type="primary">{{ pack.yAttraction }}</var-button>
+  </var-drag>
+
+  <app-type style="height: 50px; margin-top: 40px">{{ pack.disabled }}</app-type>
+  <var-drag style="left: 15px; top: 375px" disabled attraction="x" :boundary="{ top: 54 }">
+    <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
+  </var-drag>
+
+  <app-type style="height: 50px; margin-top: 40px">{{ pack.boundary }}</app-type>
+  <var-drag style="left: 15px; top: 465px" attraction="x" :boundary="{ top: 465, bottom: 15, left: 15, right: 15 }">
+    <var-button type="primary">{{ pack.boundary }}</var-button>
+  </var-drag>
 </template>

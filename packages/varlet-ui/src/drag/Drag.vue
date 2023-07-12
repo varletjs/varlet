@@ -1,14 +1,13 @@
 <template>
-  <Teleport :to="teleport" :disabled="!fixed">
+  <Teleport :to="teleport">
     <div
       ref="drag"
-      :class="classes(n(), n('$--box'), [fixed, n('--fixed'), n('--absolute')])"
+      :class="classes(n(), n('$--box'), [enableTransition, n('--transition')])"
       :style="{
-        transform: `translate(${x}px, ${y}px)`,
         'z-index': zIndex,
       }"
       @touchstart="handleTouchstart"
-      @touchmove="handleTouchmove"
+      @touchmove.prevent="handleTouchmove"
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
       v-bind="getAttrs()"
@@ -22,7 +21,7 @@
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import { getRect, getRelatedParent, toPxNum } from '../utils/elements'
+import { getRect, toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { clamp } from '@varlet/shared'
 
@@ -33,7 +32,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props, { attrs }) {
-    const touched = ref(false)
     const drag: Ref<HTMLElement | null> = ref(null)
     const x = ref(0)
     const y = ref(0)
@@ -43,20 +41,30 @@ export default defineComponent({
       left: 0,
       right: 0,
     })
+    const mounted = ref(false)
+    const enableTransition = ref(false)
+
     let touching = false
     let prevX = 0
     let prevY = 0
 
-    const handleTouchstart = (event: TouchEvent) => {
+    const saveXY = () => {
       const offset = getOffset()
-      const { clientX, clientY } = event.touches[0]
-
       x.value = offset.left
       y.value = offset.top
+    }
+
+    const handleTouchstart = (event: TouchEvent) => {
+      if (props.disabled) {
+        return
+      }
+
+      const { clientX, clientY } = event.touches[0]
+
+      saveXY()
       prevX = clientX
       prevY = clientY
       touching = true
-      touched.value = true
     }
 
     const handleTouchmove = async (event: TouchEvent) => {
@@ -64,53 +72,67 @@ export default defineComponent({
         return
       }
 
+      enableTransition.value = false
+
       const { clientX, clientY } = event.touches[0]
       const deltaX = clientX - prevX
       const deltaY = clientY - prevY
       prevX = clientX
       prevY = clientY
 
-      const { minX, minY, maxX, maxY } = getRange()
-
       if (props.direction.includes('x')) {
-        x.value = clamp(x.value + deltaX, minX, maxX)
+        x.value += deltaX
       }
 
       if (props.direction.includes('y')) {
-        y.value = clamp(y.value + deltaY, minY, maxY)
+        y.value += deltaY
       }
+
+      clampToBoundary()
     }
 
     const handleTouchend = () => {
+      if (props.disabled) {
+        return
+      }
+
       touching = false
+      enableTransition.value = true
+      attract()
     }
 
     const getOffset = () => {
       const dragRect = getRect(drag.value!)
-      const relatedParentRect = getRect(getRelatedParent(drag.value!))
-      const top = dragRect.top - relatedParentRect.top
-      const bottom = relatedParentRect.bottom - dragRect.bottom
-      const left = dragRect.left - relatedParentRect.left
-      const right = relatedParentRect.right - dragRect.right
+      const windowRect = getRect(window)
+      const top = dragRect.top - windowRect.top
+      const bottom = windowRect.bottom - dragRect.bottom
+      const left = dragRect.left - windowRect.left
+      const right = windowRect.right - dragRect.right
+      const { width } = dragRect
+      const { height } = dragRect
+      const windowWidth = windowRect.width
+      const windowHeight = windowRect.height
 
       return {
         top,
         bottom,
         left,
         right,
-        width: dragRect.width,
-        height: dragRect.height,
-        parentWidth: relatedParentRect.width,
-        parentHeight: relatedParentRect.height,
+        width,
+        height,
+        halfWidth: width / 2,
+        halfHeight: height / 2,
+        windowWidth,
+        windowHeight,
       }
     }
 
     const getRange = () => {
       const offset = getOffset()
       const x1 = boundary.left
-      const x2 = offset.parentWidth - boundary.right - offset.width
+      const x2 = offset.windowWidth - boundary.right - offset.width
       const y1 = boundary.top
-      const y2 = offset.parentHeight - boundary.bottom - offset.height
+      const y2 = offset.windowHeight - boundary.bottom - offset.height
 
       return {
         minX: x1,
@@ -119,6 +141,37 @@ export default defineComponent({
         maxX: x1 < x2 ? x2 : x1,
         maxY: y1 < y2 ? y2 : y1,
       }
+    }
+
+    const attract = () => {
+      const { halfWidth, halfHeight, top, bottom, left, right } = getOffset()
+      const { minX, minY, maxX, maxY } = getRange()
+
+      const leftDistance = left + halfWidth - boundary.left
+      const rightDistance = right + halfWidth - boundary.right
+      const topDistance = top + halfHeight - boundary.top
+      const bottomDistance = bottom + halfHeight - boundary.bottom
+
+      const nearLeft = leftDistance <= rightDistance
+      const nearTop = topDistance <= bottomDistance
+
+      if (props.attraction.includes('x')) {
+        x.value = nearLeft ? minX : maxX
+      }
+
+      if (props.attraction.includes('y')) {
+        y.value = nearTop ? minY : maxY
+      }
+    }
+
+    const clampToBoundary = () => {
+      if (props.disabled) {
+        return
+      }
+
+      const { minX, minY, maxX, maxY } = getRange()
+      x.value = clamp(x.value, minX, maxX)
+      y.value = clamp(y.value, minY, maxY)
     }
 
     const toPxBoundary = () => {
@@ -137,23 +190,36 @@ export default defineComponent({
         ...attrs,
         style: {
           ...style,
-          // when the drag element is touched for the first time, the inset should be cleared to avoid affecting translateX and translateY.
-          top: touched.value ? 0 : style.top,
-          left: touched.value ? 0 : style.left,
-          right: touched.value ? 'auto' : style.right,
-          bottom: touched.value ? 'auto' : style.bottom,
+          // when the drag element is mounted for the first time, the inset should be cleared to avoid affecting translateX and translateY.
+          top: mounted.value ? 0 : style.top,
+          left: mounted.value ? 0 : style.left,
+          right: mounted.value ? 'auto' : style.right,
+          bottom: mounted.value ? 'auto' : style.bottom,
+          transform: mounted.value ? `translate(${x.value}px, ${y.value}px)` : style.transform,
         },
       }
     }
 
-    watch(() => props.boundary, toPxBoundary)
-    onSmartMounted(toPxBoundary)
-    onWindowResize(toPxBoundary)
+    // expose
+    const resize = () => {
+      toPxBoundary()
+      saveXY()
+      clampToBoundary()
+    }
+
+    watch(() => props.boundary, resize)
+    onWindowResize(resize)
+
+    onSmartMounted(() => {
+      resize()
+      mounted.value = true
+    })
 
     return {
       drag,
       x,
       y,
+      enableTransition,
       n,
       classes,
       getAttrs,

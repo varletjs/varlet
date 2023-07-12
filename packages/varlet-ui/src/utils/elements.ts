@@ -97,32 +97,6 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
   return window
 }
 
-export function getRelatedParent(el: HTMLElement): HTMLElement | Window {
-  const { position } = getStyle(el)
-
-  if (position !== 'absolute') {
-    return window
-  }
-
-  let element = el
-
-  while (element) {
-    if (!element.parentNode) {
-      break
-    }
-
-    element = element.parentNode as HTMLElement
-
-    const { position } = getStyle(element)
-
-    if (position !== 'static') {
-      return element
-    }
-  }
-
-  return window
-}
-
 export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Window> {
   const allParentScroller: Array<HTMLElement | Window> = []
   let element: HTMLElement | Window = el
