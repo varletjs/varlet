@@ -226,6 +226,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      resize,
     }
   },
 })
