@@ -51,7 +51,7 @@ Make the element draggable freely.
 
 ```html
 <template>
-  <var-drag :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }"">
+  <var-drag :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }">
     <var-button type="primary">Boundary</var-button>
   </var-drag>
 </template>

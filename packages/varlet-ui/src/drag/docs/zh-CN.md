@@ -51,7 +51,7 @@
 
 ```html
 <template>
-  <var-drag :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }"">
+  <var-drag :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }">
     <var-button type="primary">拖拽区域</var-button>
   </var-drag>
 </template>
