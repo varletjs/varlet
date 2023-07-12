@@ -120,6 +120,12 @@
 .var-slider__horizontal {
   .var-slider();
 
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+
   &--error {
     .var-slider__horizontal-track {
       &-background {
@@ -156,6 +162,12 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
+
+  box-sizing: border-box;
+
+  & * {
+    box-sizing: border-box;
+  }
 
   &-block {
     width: 36px;
@@ -225,14 +237,4 @@
       }
     }
   }
-}
-
-.var-slider__horizontal,
-.var-slider__horizontal * {
-  box-sizing: border-box;
-}
-
-.var-slider__vertical,
-.var-slider__vertical * {
-  box-sizing: border-box;
 }
