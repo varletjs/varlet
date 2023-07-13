@@ -65,7 +65,7 @@ Make the element draggable freely.
 |---------------------|-------------|------|--------------|
 | `direction`  | Drag direction, optional value is `x`, `y`, `xy`	 | _string_ | `xy` |
 | `attraction`  | Attraction direction, optional value is `x`, `y`, `xy`, `none`	 | _string_ | `none` |
-| `disabled`  | Whether to disable | _string_ | `false` |
+| `disabled`  | Whether to disable | _boolean_ | `false` |
 | `boundary`  | Drag boundary | _{ top?: number \| string, bottom?: number \| string, left?: number \| string, right?: number \| string }_ | `{ top: 0, bottom: 0, left: 0, right: 0 }` |
 | `z-index`  | Drag element z-index | _string \| number_ | `90` |
 | `teleport`  | The location where the dragged element is mounted | _TeleportProps['to']_ | `body` |

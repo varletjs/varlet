@@ -2,7 +2,7 @@ import { type TeleportProps, type PropType } from 'vue'
 
 export type DragDirection = 'x' | 'y' | 'xy'
 
-export type DragAttraction = 'x' | 'y' | 'xy' | 'none'
+export type DragAttraction = 'x' | 'y' | 'xy'
 
 export interface DragBoundary {
   top?: number | string
@@ -18,7 +18,6 @@ export const props = {
   },
   attraction: {
     type: String as PropType<DragAttraction>,
-    default: 'none',
   },
   disabled: {
     type: Boolean,

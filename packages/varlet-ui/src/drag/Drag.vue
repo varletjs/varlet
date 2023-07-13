@@ -110,8 +110,7 @@ export default defineComponent({
       const right = windowRect.right - dragRect.right
       const { width } = dragRect
       const { height } = dragRect
-      const windowWidth = windowRect.width
-      const windowHeight = windowRect.height
+      const { width: windowWidth, height: windowHeight } = windowRect
 
       return {
         top,
@@ -144,6 +143,10 @@ export default defineComponent({
     }
 
     const attract = () => {
+      if (props.attraction == null) {
+        return
+      }
+
       const { halfWidth, halfHeight, top, bottom, left, right } = getOffset()
       const { minX, minY, maxX, maxY } = getRange()
 
