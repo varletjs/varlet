@@ -37,7 +37,7 @@ export const props = {
     default: 90,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
   },
 }

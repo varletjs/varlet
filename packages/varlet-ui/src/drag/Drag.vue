@@ -7,7 +7,7 @@
         'z-index': zIndex,
       }"
       @touchstart="handleTouchstart"
-      @touchmove.prevent="handleTouchmove"
+      @touchmove="handleTouchmove"
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
       v-bind="getAttrs()"
@@ -72,6 +72,7 @@ export default defineComponent({
         return
       }
 
+      event.preventDefault()
       enableTransition.value = false
 
       const { clientX, clientY } = event.touches[0]
@@ -97,7 +98,6 @@ export default defineComponent({
       }
 
       touching = false
-      enableTransition.value = true
       attract()
     }
 
@@ -146,6 +146,8 @@ export default defineComponent({
       if (props.attraction == null) {
         return
       }
+
+      enableTransition.value = true
 
       const { halfWidth, halfHeight, top, bottom, left, right } = getOffset()
       const { minX, minY, maxX, maxY } = getRange()
