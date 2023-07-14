@@ -4,7 +4,6 @@
   --divider-text-margin: 8px 0;
   --divider-text-padding: 0 8px;
   --divider-inset: 72px;
-  --divider-vertical-inset: 8px;
 }
 
 .var-divider {
@@ -19,9 +18,9 @@
 
   &--vertical {
     width: 0;
-    height: 80%;
-    margin: auto var(--divider-text-margin);
-    padding: var(--divider-text-margin);
+    height: 100%;
+    margin: 0 var(--divider-text-margin);
+    padding: var(--divider-text-padding);
     border-top: none;
     border-left: 1px solid var(--divider-color);
   }
@@ -29,12 +28,6 @@
   &--inset {
     width: calc(100% - var(--divider-inset));
     left: var(--divider-inset);
-  }
-
-  &--vertical&--inset {
-    width: 0;
-    left: unset;
-    height: calc(80% - var(--divider-vertical-inset));
   }
 
   &__text {
