@@ -49,7 +49,7 @@ export const props = {
     default: false,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object] as PropType<TeleportProps['to']>,
     default: 'body',
   },
   onOpen: defineListenerProp<() => void>(),
