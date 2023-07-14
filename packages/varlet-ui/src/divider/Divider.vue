@@ -59,7 +59,9 @@ export default defineComponent({
     })
 
     const checkHasText = () => {
-      state.withText = Boolean(slots.default) || Boolean(props.description)
+      // the default slot or description is only effective in horizontal mode
+      const { description, vertical } = props
+      state.withText = (Boolean(slots.default) || Boolean(description)) && !vertical
     }
 
     onSmartMounted(() => {
