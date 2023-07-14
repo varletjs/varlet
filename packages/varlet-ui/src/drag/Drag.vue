@@ -49,9 +49,9 @@ export default defineComponent({
     let prevY = 0
 
     const saveXY = () => {
-      const offset = getOffset()
-      x.value = offset.left
-      y.value = offset.top
+      const { left, top } = getOffset()
+      x.value = left
+      y.value = top
     }
 
     const handleTouchstart = (event: TouchEvent) => {
