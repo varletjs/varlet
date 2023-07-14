@@ -104,12 +104,13 @@ export default defineComponent({
     const getOffset = () => {
       const dragRect = getRect(drag.value!)
       const windowRect = getRect(window)
+
       const top = dragRect.top - windowRect.top
       const bottom = windowRect.bottom - dragRect.bottom
       const left = dragRect.left - windowRect.left
       const right = windowRect.right - dragRect.right
-      const { width } = dragRect
-      const { height } = dragRect
+
+      const { width, height } = dragRect
       const { width: windowWidth, height: windowHeight } = windowRect
 
       return {
