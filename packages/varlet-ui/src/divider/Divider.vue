@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onUpdated, toRefs } from 'vue'
+import { defineComponent, computed, ref, onUpdated, type Ref } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
@@ -33,7 +33,7 @@ export default defineComponent({
   name: 'VarDivider',
   props,
   setup(props, { slots }) {
-    const state = reactive({ withText: false })
+    const withText: Ref<boolean> = ref(false)
 
     const validInset = computed(() => {
       // the inset is only effective in horizontal mode
@@ -61,7 +61,7 @@ export default defineComponent({
     const checkHasText = () => {
       // the default slot or description is only effective in horizontal mode
       const { description, vertical } = props
-      state.withText = (Boolean(slots.default) || Boolean(description)) && !vertical
+      withText.value = (slots.default || description != null) && !vertical
     }
 
     onSmartMounted(() => {
@@ -75,7 +75,7 @@ export default defineComponent({
     return {
       n,
       classes,
-      ...toRefs(state),
+      withText,
       style,
       validInset,
     }
