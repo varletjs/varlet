@@ -13,7 +13,7 @@
     "
     :style="style"
   >
-    <slot v-if="$slots.default && !vertical">
+    <slot v-if="!vertical">
       <span :class="n('text')" v-if="description && !vertical">{{ description }}</span>
     </slot>
   </div>

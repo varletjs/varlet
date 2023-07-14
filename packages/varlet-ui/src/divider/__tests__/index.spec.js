@@ -20,7 +20,7 @@ describe('test divider components props', () => {
     await wrapper.setProps({ inset: false })
     expect(wrapper.find('.var-divider--inset').exists()).toBe(false)
     await wrapper.setProps({ inset: 36 })
-    expect(wrapper.find('.var-divider--inset').attributes('style')).toContain('left: 36px;')
+    expect(wrapper.find('.var-divider').attributes('style')).toContain('left: 36px;')
     wrapper.unmount()
   })
 
@@ -55,6 +55,7 @@ describe('test divider components props', () => {
     const wrapper = mount(VarDivider, {
       props: {
         description: 'This is description',
+        vertical: false,
       },
     })
 
