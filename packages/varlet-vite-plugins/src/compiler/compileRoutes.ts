@@ -4,7 +4,6 @@ import { RouteOptions } from '../virtual'
 
 export function getComponentDocRoutePath(filePaths: string, pathReg: RegExp) {
   const [, routePath, language] = filePaths.match(pathReg) ?? []
-  // /后面的值为undefined的时候，就不需要这段path
   return `{
     path: '${language ? `/${language}` : ''}${routePath ? `/${routePath}` : ''}',
     component: () => import('${filePaths}')

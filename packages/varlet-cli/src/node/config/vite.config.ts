@@ -1,6 +1,5 @@
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
-import Inspect from 'vite-plugin-inspect'
 import { markdown, html, inlineCss, copy, virtual } from '@varlet/vite-plugins'
 import {
   ES_DIR,
@@ -18,7 +17,7 @@ import {
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
-import { VarletConfig, getVarletConfig } from './varlet.config.js'
+import { VarletConfig } from './varlet.config.js'
 import { COMPONENT_DOCS_RE, EXAMPLE_INDEX_RE, ROOT_DOCS_RE } from '../compiler/compileSiteEntry.js'
 
 export async function getDevConfig(varletConfig: Required<VarletConfig>): Promise<InlineConfig> {
@@ -43,7 +42,6 @@ export async function getDevConfig(varletConfig: Required<VarletConfig>): Promis
     publicDir: SITE_PUBLIC_PATH,
 
     plugins: [
-      Inspect(),
       vue({
         include: [/\.vue$/, /\.md$/],
       }),
@@ -66,8 +64,8 @@ export async function getDevConfig(varletConfig: Required<VarletConfig>): Promis
           mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
         },
       }),
-      virtual([
-        { name: '@config', content: JSON.stringify(varletConfig, null, 2) },
+      await virtual([
+        { name: '@config', content: `export default ${JSON.stringify(varletConfig, null, 2)}` },
         {
           name: '@pc-routes',
           routes: [
