@@ -64,7 +64,7 @@
 | 参数   | 说明  | 类型  | 默认值  |
 | --------------------- | ------------- | ------ | --------------|
 | `direction`  | 拖拽方向，可选值 `x`, `y`, `xy`	 | _string_ | `xy` |
-| `attraction`  | 吸附方向，可选值 `x`, `y`, `xy`, `none`	 | _string_ | `none` |
+| `attraction`  | 吸附方向，可选值 `x`, `y`, `xy`	 | _string_ | `-` |
 | `disabled`  | 是否禁用 | _boolean_ | `false` |
 | `boundary`  | 拖拽范围 | _{ top?: number \| string, bottom?: number \| string, left?: number \| string, right?: number \| string }_ | `{ top: 0, bottom: 0, left: 0, right: 0 }` |
 | `z-index`  | 拖拽元素的层级 | _string \| number_ | `90` |

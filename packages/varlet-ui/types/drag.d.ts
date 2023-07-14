@@ -3,7 +3,7 @@ import { TeleportProps, VNode } from 'vue'
 
 export type DragDirection = 'x' | 'y' | 'xy'
 
-export type DragAttraction = 'x' | 'y' | 'xy' | 'none'
+export type DragAttraction = 'x' | 'y' | 'xy'
 
 export interface DragBoundary {
   top?: number | string
