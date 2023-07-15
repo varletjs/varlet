@@ -41,7 +41,7 @@ export default defineComponent({
       left: 0,
       right: 0,
     })
-    const mounted = ref(false)
+    const dragged = ref(false)
     const enableTransition = ref(false)
 
     let touching = false
@@ -74,6 +74,7 @@ export default defineComponent({
 
       event.preventDefault()
       enableTransition.value = false
+      dragged.value = true
 
       const { clientX, clientY } = event.touches[0]
       const deltaX = clientX - prevX
@@ -98,6 +99,7 @@ export default defineComponent({
       }
 
       touching = false
+      enableTransition.value = true
       attract()
     }
 
@@ -148,8 +150,6 @@ export default defineComponent({
         return
       }
 
-      enableTransition.value = true
-
       const { halfWidth, halfHeight, top, bottom, left, right } = getOffset()
       const { minX, minY, maxX, maxY } = getRange()
 
@@ -171,10 +171,6 @@ export default defineComponent({
     }
 
     const clampToBoundary = () => {
-      if (props.disabled) {
-        return
-      }
-
       const { minX, minY, maxX, maxY } = getRange()
       x.value = clamp(x.value, minX, maxX)
       y.value = clamp(y.value, minY, maxY)
@@ -196,12 +192,12 @@ export default defineComponent({
         ...attrs,
         style: {
           ...style,
-          // when the drag element is mounted for the first time, the inset should be cleared to avoid affecting translateX and translateY.
-          top: mounted.value ? 0 : style.top,
-          left: mounted.value ? 0 : style.left,
-          right: mounted.value ? 'auto' : style.right,
-          bottom: mounted.value ? 'auto' : style.bottom,
-          transform: mounted.value ? `translate(${x.value}px, ${y.value}px)` : style.transform,
+          // when the drag element is dragged for the first time, the inset should be cleared to avoid affecting translateX and translateY.
+          top: dragged.value ? 0 : style.top,
+          left: dragged.value ? 0 : style.left,
+          right: dragged.value ? 'auto' : style.right,
+          bottom: dragged.value ? 'auto' : style.bottom,
+          transform: dragged.value ? `translate(${x.value}px, ${y.value}px)` : style.transform,
         },
       }
     }
@@ -213,13 +209,17 @@ export default defineComponent({
       clampToBoundary()
     }
 
+    // expose
+    const reset = () => {
+      enableTransition.value = false
+      dragged.value = false
+      x.value = 0
+      y.value = 0
+    }
+
     watch(() => props.boundary, resize)
     onWindowResize(resize)
-
-    onSmartMounted(() => {
-      resize()
-      mounted.value = true
-    })
+    onSmartMounted(resize)
 
     return {
       drag,
@@ -233,6 +233,7 @@ export default defineComponent({
       handleTouchmove,
       handleTouchend,
       resize,
+      reset,
     }
   },
 })

@@ -57,6 +57,28 @@
 </template>
 ```
 
+### 重置位置
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(null)
+
+function reset() {
+  drag.value.reset()
+}
+</script>
+
+<template>
+  <var-drag ref="drag" style="top: 100px">
+    <var-button type="primary">拖拽元素</var-button>
+  </var-drag>
+
+  <var-button type="primary" @click="reset">重置位置</var-button>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -75,6 +97,7 @@
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `resize` | 产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `reset` | 重置初始化时的位置信息 | `-` | `-` |
 
 ### 插槽
 

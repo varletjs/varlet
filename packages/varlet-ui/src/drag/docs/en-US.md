@@ -57,6 +57,28 @@ Make the element draggable freely.
 </template>
 ```
 
+### Reset Position
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(null)
+
+function reset() {
+  drag.value.reset()
+}
+</script>
+
+<template>
+  <var-drag ref="drag" style="top: 100px">
+    <var-button type="primary">Drag Element</var-button>
+  </var-drag>
+
+  <var-button type="primary" @click="reset">Reset Position</var-button>
+</template>
+```
+
 ## API
 
 ### Props
@@ -75,6 +97,7 @@ Make the element draggable freely.
 | Method   | Description                                                          | Arguments       | Return |
 | -------- | -------------------------------------------------------------------- | --------------- | ------ |
 | `resize` | You can call this method to redraw when a drag element changes position size | `-`             | `-`    |
+| `reset` | Reset initialized position information | `-` | `-` |
 
 ### Slots
 

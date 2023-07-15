@@ -1,7 +1,7 @@
 import Drag from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, trigger } from '../../utils/jest'
+import { triggerDrag, trigger, delay } from '../../utils/jest'
 
 test('test drag plugin', () => {
   const app = createApp({}).use(Drag)
@@ -83,6 +83,24 @@ test('test drag boundary', async () => {
   await trigger(el, 'touchstart', 0, 0)
   await trigger(el, 'touchmove', 1, 1)
   await trigger(el, 'touchend', 1, 1)
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test drag reset', async () => {
+  const container = document.createElement('div')
+  const wrapper = mount(Drag, {
+    props: {
+      teleport: container,
+    },
+  })
+
+  await triggerDrag(container.childNodes[0], 10, 10)
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.vm.reset()
+  await delay()
   expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.unmount()

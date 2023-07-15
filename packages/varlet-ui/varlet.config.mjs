@@ -436,6 +436,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Drag 拖拽',
+          'en-US': 'Drag',
+        },
+        doc: 'drag',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Snackbar 消息条',
           'en-US': 'Snackbar',
         },
@@ -552,14 +560,6 @@ export default defineConfig({
           'en-US': 'TimePicker',
         },
         doc: 'time-picker',
-        type: 2,
-      },
-      {
-        text: {
-          'zh-CN': 'Drag 拖拽',
-          'en-US': 'Drag',
-        },
-        doc: 'drag',
         type: 2,
       },
       {

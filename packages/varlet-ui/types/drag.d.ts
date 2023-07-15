@@ -31,6 +31,8 @@ export class Drag extends VarComponent {
   }
 
   resize(): void
+
+  reset(): void
 }
 
 export class _DragComponent extends Drag {}

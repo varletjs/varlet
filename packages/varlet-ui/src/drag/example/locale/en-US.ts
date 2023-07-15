@@ -6,4 +6,5 @@ export default {
   yAttraction: 'Y Attraction',
   disabled: 'Disabled',
   boundary: 'Boundary',
+  reset: 'Reset Position',
 }

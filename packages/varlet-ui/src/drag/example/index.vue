@@ -13,6 +13,15 @@ const drag4 = ref(null)
 const drag5 = ref(null)
 const drag6 = ref(null)
 
+function reset() {
+  drag.value.reset()
+  drag2.value.reset()
+  drag3.value.reset()
+  drag4.value.reset()
+  drag5.value.reset()
+  drag6.value.reset()
+}
+
 watchLang((lang) => {
   use(lang)
   nextTick(() => {
@@ -60,4 +69,7 @@ watchDarkMode(dark)
   >
     <var-button type="primary">{{ pack.boundary }}</var-button>
   </var-drag>
+
+  <app-type style="height: 50px; margin-top: 40px">{{ pack.reset }}</app-type>
+  <var-button type="primary" @click="reset">{{ pack.reset }}</var-button>
 </template>
