@@ -48,12 +48,6 @@ export default defineComponent({
     let prevX = 0
     let prevY = 0
 
-    const saveXY = () => {
-      const { left, top } = getOffset()
-      x.value = left
-      y.value = top
-    }
-
     const handleTouchstart = (event: TouchEvent) => {
       if (props.disabled) {
         return
@@ -101,6 +95,12 @@ export default defineComponent({
       touching = false
       enableTransition.value = true
       attract()
+    }
+
+    const saveXY = () => {
+      const { left, top } = getOffset()
+      x.value = left
+      y.value = top
     }
 
     const getOffset = () => {
@@ -204,7 +204,10 @@ export default defineComponent({
 
     // expose
     const resize = () => {
-      toPxBoundary()
+      if (!dragged.value) {
+        return
+      }
+
       saveXY()
       clampToBoundary()
     }
@@ -217,9 +220,12 @@ export default defineComponent({
       y.value = 0
     }
 
-    watch(() => props.boundary, resize)
+    watch(() => props.boundary, toPxBoundary)
     onWindowResize(resize)
-    onSmartMounted(resize)
+    onSmartMounted(() => {
+      toPxBoundary()
+      resize()
+    })
 
     return {
       drag,
