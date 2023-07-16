@@ -1,3 +1,21 @@
+# [2.13.0](https://github.com/varletjs/varlet/compare/v2.12.3...v2.13.0) (2023-07-16)
+
+
+### Bug Fixes
+
+* **cli:** fix md table syntax ([c202ddf](https://github.com/varletjs/varlet/commit/c202ddfe5f27d1e850682d6216da23a4e719fb1b))
+* **slider:** fix bubble size of the Slider component is abnormal ([#1120](https://github.com/varletjs/varlet/issues/1120)) ([49a0b1f](https://github.com/varletjs/varlet/commit/49a0b1f6337ede3dcd36d649b346f1e7c832fa65))
+
+
+### Features
+
+* **drag:** support reset and refactor animation ([6dddee3](https://github.com/varletjs/varlet/commit/6dddee30b0d243e1c2db464623e21e9dc2fce3c9))
+* **input,uploader:** add extra message slot ([#1117](https://github.com/varletjs/varlet/issues/1117)) ([979229e](https://github.com/varletjs/varlet/commit/979229ecfcda6c3af840a0912300a9d59c96388c))
+* new component drag ([#1124](https://github.com/varletjs/varlet/issues/1124)) ([d86d5a1](https://github.com/varletjs/varlet/commit/d86d5a1d491f6c84068b32e1ff0c5ac2ed95c065))
+* **playground:** support preview mode ([d5101b2](https://github.com/varletjs/varlet/commit/d5101b26473a011a89cc6366a03dc8ad286bd8bd))
+
+
+
 ## [2.12.3](https://github.com/varletjs/varlet/compare/v2.12.2...v2.12.3) (2023-07-07)
 
 
