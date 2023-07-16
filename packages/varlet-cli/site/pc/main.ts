@@ -11,6 +11,7 @@ import Popup from '../components/popup'
 import CodeExample from '../components/code-example'
 import Snackbar from '../components/snackbar'
 import LoadingBar from '../components/loading-bar'
+import Menu from '../components/menu'
 
 import '../components/styles/common.less'
 import '../components/styles/elevation.less'
@@ -117,4 +118,6 @@ createApp(App)
   .use(Popup)
   // @ts-ignore
   .use(Button)
+  // @ts-ignore
+  .use(Menu)
   .mount('#app')

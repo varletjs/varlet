@@ -1,6 +1,11 @@
 import { isNumber, isString, toNumber, kebabCase } from '@varlet/shared'
 import type { StyleVars } from '@varlet/cli/client'
 
+// shorthand only
+export function getStyle(element: Element) {
+  return window.getComputedStyle(element)
+}
+
 export function getLeft(element: HTMLElement): number {
   const { left } = element.getBoundingClientRect()
 
