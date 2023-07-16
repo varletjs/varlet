@@ -1,8 +1,8 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import VarDivider from '..'
 import VarIcon from '../../icon'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 watchLang(use)
