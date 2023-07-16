@@ -42,7 +42,7 @@
 ```html
 <template>
   <var-drag disabled>
-    <var-button type="primary">禁用</var-button>
+    <var-button type="primary" disabled>禁用</var-button>
   </var-drag>
 </template>
 ```
@@ -51,7 +51,7 @@
 
 ```html
 <template>
-  <var-drag :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }">
+  <var-drag style="top: 80px; left: 80px" :boundary="{ top: 80, bottom: 80, left: 80, right: 80 }">
     <var-button type="primary">拖拽区域</var-button>
   </var-drag>
 </template>
