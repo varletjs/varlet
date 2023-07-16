@@ -2,7 +2,7 @@
 import config from '@config'
 import AnimationBox from './AnimationBox.vue'
 import Search from './Search.vue'
-import { ref, computed, defineComponent, toRefs } from 'vue'
+import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
 import { setTheme } from '../../utils'
@@ -18,8 +18,7 @@ export default defineComponent({
       type: String,
     }
   },
-  setup(props) {
-    const {language} = toRefs(props)
+  setup() {
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
@@ -93,7 +92,6 @@ export default defineComponent({
       logo,
       title,
       currentVersion,
-      language,
       languages,
       versionItems,
       nonEmptyLanguages,
