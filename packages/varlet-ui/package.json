@@ -75,8 +75,7 @@
     "postcss-px-to-viewport": "^1.1.1",
     "typescript": "^5.1.5",
     "vue": "3.3.4",
-    "vue-router": "4.2.0",
-    "vue3-popper": "^1.5.0"
+    "vue-router": "4.2.0"
   },
   "browserslist": [
     "Chrome >= 54",
