@@ -3,7 +3,7 @@ import type { Plugin } from 'vite'
 import Segment from 'segment'
 import fse from 'fs-extra'
 import MiniSearch from 'minisearch'
-import { markdownToVue } from './markdown.js'
+import markdownIt from 'markdown-it'
 
 const { readFileSync } = fse
 
@@ -18,7 +18,6 @@ type Section = {
   anchor: string
   title: string
   content: string
-  words: string
   cmp: string
   name: string
   id: string
@@ -52,12 +51,12 @@ function processContent(str: string): string {
   return unescape(str.replace(/<.*?>/g, ' ').replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())
 }
 
-function parsePageSectionsFromVueCode(vueCode: string, cmp: string, name: string): Section[] {
-  const template = String(vueCode).match(/<template>(.*?)<\/template>/s)?.[1] || ''
-
-  const list = template.split(/<h(\d).*?to="#(.*?)".*?link>(.*?)<\/h\1>/g)
+function parsePageSectionsFromHtml(
+  html: string,
+  { cmp, name, locale }: { cmp?: string; name?: string; locale: 'zh-CN' | 'en-US' }
+): Section[] {
+  const list = html.split(/<h(\d).*?to="#(.*?)".*?link>(.*?)<\/h\1>/g)
   list.shift()
-
   const sections = list.reduce((acc: Section[], cur: string, i: number, arr: string[]) => {
     if (i % 4 !== 0) {
       return acc
@@ -71,15 +70,17 @@ function parsePageSectionsFromVueCode(vueCode: string, cmp: string, name: string
         level,
         anchor,
         title,
-        content: processedContent,
-        words: segment
-          .doSegment(title + ' ' + processedContent, {
-            simple: true,
-          })
-          .join(' '),
-        cmp,
-        name,
-        id: cmp + i,
+        content:
+          locale === 'zh-CN'
+            ? segment
+                .doSegment(title + ' ' + processedContent, {
+                  simple: true,
+                })
+                .join(' ')
+            : processedContent,
+        cmp: cmp || '',
+        name: name || '',
+        id: (cmp || '') + i,
       }
 
       acc.push(section)
@@ -108,23 +109,43 @@ function getDocsFromMenu(menu: Menu[]) {
   return docs
 }
 
+function htmlWrapper(html: string) {
+  const matches = html.matchAll(/<h3>(.*?)<\/h3>/g)
+  const hGroup = html
+    .replace(/<h3>/g, () => {
+      const content = matches.next().value[1]
+
+      return `:::<h3 id="${content}"><router-link to="#${content}">#</router-link>`
+    })
+    .replace(/<h2/g, ':::<h2')
+    .split(':::')
+
+  const cardGroup = hGroup
+    .map((fragment) => (fragment.includes('<h3') ? `<div class="card">${fragment}</div>` : fragment))
+    .join('')
+
+  return cardGroup.replace(/<code>/g, '<code v-pre>')
+}
+
 async function scanDocs(options: LocalSearchOptions) {
   localeSections = {}
   const docs = getDocsFromMenu(options.menu || [])
 
-  docs.forEach((it) => {
-    const md = readFileSync(it.path).toString()
-    const vueCode = markdownToVue(md, {})
-    const { cmp = '', locale = '', name = '' } = it
+  const md = markdownIt({
+    html: true,
+  })
 
+  docs.forEach((it) => {
+    const mdContent = readFileSync(it.path).toString()
+    const html = htmlWrapper(md.render(mdContent))
+    const { locale = '' } = it
     if (!localeSections[locale]) {
       localeSections[locale] = new MiniSearch<Section>({
-        fields: ['name', 'cmp', 'title', 'content', 'words'], // fields to index for full-text search
-        storeFields: ['title', 'anchor', 'name', 'content', 'words', 'cmp'], // fields to return with search results
+        fields: ['name', 'title', 'content'], // fields to index for full-text search
+        storeFields: ['title', 'name', 'content', 'cmp', 'anchor'], // fields to return with search results
       })
     }
-
-    localeSections[locale].addAllAsync(parsePageSectionsFromVueCode(vueCode, cmp, name))
+    localeSections[locale].addAllAsync(parsePageSectionsFromHtml(html, it))
   })
 }
 
@@ -133,10 +154,6 @@ export function localSearch(options: LocalSearchOptions): Plugin {
     name: 'vite-plugin-varlet-markdown',
 
     enforce: 'pre',
-
-    // TODO
-    // async handleHotUpdate(ctx) {
-    // },
 
     async configureServer() {
       await scanDocs(options)
