@@ -3,7 +3,7 @@ import type { Plugin } from 'vite'
 import Segment from 'segment'
 import fse from 'fs-extra'
 import MiniSearch from 'minisearch'
-import { markdownToVue } from './markdown'
+import { markdownToVue } from './markdown.js'
 
 const { readFileSync } = fse
 
