@@ -6,7 +6,7 @@
       close-on-click-reference
       v-model:show="showMenu"
       :class="n('menu')"
-      :popover-class="variant === 'standard' && hint ? n('--menu-margin') : undefined"
+      :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
