@@ -48,7 +48,6 @@ type Section = {
   anchor: string
   title: string
   content: string
-  words: string
   cmp: string
   name: string
   score: string
@@ -196,12 +195,12 @@ export default defineComponent({
         const sections: string = (await localeSections?.[props.language]?.())?.default
 
         miniSearch.value = MiniSearch.loadJSON(sections, {
-          fields: ['name', 'cmp', 'title', 'content', 'words'], // fields to index for full-text search
-          storeFields: ['title', 'anchor', 'name', 'content', 'words'], // fields to return with search results
+          fields: ['name', 'title', 'content'], // fields to index for full-text search
+          storeFields: ['title', 'name', 'content', 'cmp','anchor',], // fields to return with search results
           searchOptions: {
             fuzzy: 0.2,
             prefix: true,
-            boost: { title: 10, content: 5, words: 3, name: 20 }
+            boost: {name: 20, title: 10, content: 5, words: 3}
           }
         })
       },
@@ -229,16 +228,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-:root {
-  --popper-theme-background-color: var(--site-config-color-bar);
-  --popper-theme-background-color-hover: var(--site-config-color-bar);
-  --popper-theme-text-color: var(--site-config-color-text);
-  --popper-theme-border-radius: 2px;
-  --popper-theme-padding: 0;
-  --popper-theme-box-shadow: 0 3px 5px -1px var(--site-shadow-key-umbra-opacity),
-    0 5px 8px 0 var(--site-shadow-key-penumbra-opacity),
-    0 1px 14px 0 var(--site-shadow-key-ambient-opacity);
-}
 
 .varlet-site-search {
   margin-right: 6px;
