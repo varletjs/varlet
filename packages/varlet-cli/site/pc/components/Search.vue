@@ -3,16 +3,21 @@
     <var-menu :show="showMenu" placement="bottom-end">
       <div class="varlet-site-search__input">
         <var-icon name="magnify" size="24px" />
-        <input @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
+        <input ref="inputRef" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
       </div>
 
       <template #menu>
-        <div v-if="searchResults.length > 0 && inputText.length > 0" class="varlet-site-search__result-list">
+        <div
+          v-if="searchResults.length > 0 && inputText.length > 0"
+          class="varlet-site-search__result-list"
+        >
           <div
             class="varlet-site-search__result-item"
             v-for="result in searchResults"
             :key="result.id"
             @click="linkToSection(result.cmp, result.anchor)"
+            @mouseenter="hoveredSection = result"
+            @mouseleave="handleMouseLeave"
           >
             <div
               class="varlet-site-search__result-item__title"
@@ -21,8 +26,11 @@
             <div class="varlet-site-search__result-item__content" v-html="result.content"></div>
           </div>
         </div>
-        <div v-if="searchResults.length === 0 && inputText.length > 0" class="varlet-site-search__no-result">
-           {{ onResultPrompt }}
+        <div
+          v-if="searchResults.length === 0 && inputText.length > 0"
+          class="varlet-site-search__no-result"
+        >
+          {{ onResultPrompt }}
         </div>
       </template>
     </var-menu>
@@ -32,6 +40,7 @@
 <script lang="ts">
 import { defineComponent, ref, watch, type Ref, computed } from 'vue'
 import MiniSearch from 'minisearch'
+import { useEventListener } from '@varlet/use'
 import localeSections from '@localSearchIndex'
 
 type Section = {
@@ -42,8 +51,7 @@ type Section = {
   words: string
   cmp: string
   name: string
-  score?: string
-  terms: string[]
+  score: string
   id: string
 }
 
@@ -63,6 +71,18 @@ export default defineComponent({
     const showResult: Ref<boolean> = ref(false)
     const searchResults: Ref<Section[]> = ref([])
     const inputText: Ref<string> = ref('')
+    const inputRef: Ref<HTMLElement | null> = ref(null)
+    const hoveredSection: Ref<Section> = ref({
+      level: '',
+      anchor: '',
+      title: '',
+      content: '',
+      words: '',
+      cmp: '',
+      name: '',
+      score: '',
+      id: ''
+    })
 
     const highlightKeywords = (text: string, keywords: string) => {
       return keywords
@@ -111,16 +131,17 @@ export default defineComponent({
           .trim()
       }
 
-      const rawSearchResult = miniSearch.value?.search?.(searchText) 
+      const rawSearchResult = miniSearch.value?.search?.(searchText)
 
-      searchResults.value = rawSearchResult?.map((result: Section) => ({
-        ...result,
-        cmp: result.cmp,
-        name: highlightKeywords(result.name, searchText),
-        title: highlightKeywords(result.title, searchText),
-        content: highlightKeywords(formatContent(result.content, searchText), searchText),
-        anchor: result.anchor
-      })) || []
+      searchResults.value =
+        rawSearchResult?.map((result: Section) => ({
+          ...result,
+          cmp: result.cmp,
+          name: highlightKeywords(result.name, searchText),
+          title: highlightKeywords(result.title, searchText),
+          content: highlightKeywords(formatContent(result.content, searchText), searchText),
+          anchor: result.anchor
+        })) || []
     }
 
     const handleBlur = () => {
@@ -130,12 +151,39 @@ export default defineComponent({
       showResult.value = true
     }
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const { cmp, anchor, id } = hoveredSection.value
+      if (event.key === 'Enter' && id) {
+        linkToSection(cmp, anchor)
+      }
+
+      if (event.metaKey && event.key === 'k' && inputRef.value) {
+        inputRef.value.focus()
+      }
+    }
+
+    const handleMouseLeave = () => {
+      hoveredSection.value = {
+        level: '',
+        anchor: '',
+        title: '',
+        content: '',
+        words: '',
+        cmp: '',
+        name: '',
+        score: '',
+        id: ''
+      }
+    }
+
+    useEventListener(() => document, 'keydown', handleKeyDown)
+
     const showMenu = computed(() => {
       return showResult.value && inputText.value.length > 0
     })
 
     const onResultPrompt = computed(() => {
-      if(props.language === 'zh-CN'){
+      if (props.language === 'zh-CN') {
         return '无匹配结果'
       }
 
@@ -164,6 +212,8 @@ export default defineComponent({
 
     return {
       searchResults,
+      inputRef,
+      hoveredSection,
       showResult,
       inputText,
       showMenu,
@@ -171,6 +221,7 @@ export default defineComponent({
       handleInput,
       handleBlur,
       handleFocus,
+      handleMouseLeave,
       linkToSection
     }
   }
