@@ -3,7 +3,7 @@ import type { Plugin } from 'vite'
 import Segment from 'segment'
 import fse from 'fs-extra'
 import MiniSearch from 'minisearch'
-import { markdownToVue } from './markdown.js' // ?
+import { markdownToVue } from './markdown'
 
 const { readFileSync } = fse
 
@@ -48,7 +48,7 @@ function unescape(s: string) {
     .replace(/&quot;/g, '"')
 }
 
-function processString(str: string): string {
+function processContent(str: string): string {
   return unescape(str.replace(/<.*?>/g, ' ').replace(/\n/g, ' ').replace(/\s+/g, ' ').trim())
 }
 
@@ -62,8 +62,10 @@ function parsePageSectionsFromVueCode(vueCode: string, cmp: string, name: string
     if (i % 4 !== 0) {
       return acc
     }
+
     const [level, anchor, title, content] = arr.slice(i, i + 4)
-    const processedContent = processString(content)
+    const processedContent = processContent(content)
+
     if (title && processedContent) {
       const section: Section = {
         level,
@@ -79,12 +81,16 @@ function parsePageSectionsFromVueCode(vueCode: string, cmp: string, name: string
         name,
         id: cmp + i,
       }
+
       acc.push(section)
     }
+
     return acc
   }, [])
+
   return sections
 }
+
 function getDocsFromMenu(menu: Menu[]) {
   const LANG: ('zh-CN' | 'en-US')[] = ['zh-CN', 'en-US']
 
@@ -98,6 +104,7 @@ function getDocsFromMenu(menu: Menu[]) {
         path: it.type === 2 || it.doc === 'locale' ? `src/${it.doc}/docs/${lang}.md` : `docs/${it.doc}.${lang}.md`,
       }))
     )
+
   return docs
 }
 
@@ -109,12 +116,14 @@ async function scanDocs(options: LocalSearchOptions) {
     const md = readFileSync(it.path).toString()
     const vueCode = markdownToVue(md, {})
     const { cmp = '', locale = '', name = '' } = it
+
     if (!localeSections[locale]) {
       localeSections[locale] = new MiniSearch<Section>({
         fields: ['name', 'cmp', 'title', 'content', 'words'], // fields to index for full-text search
         storeFields: ['title', 'anchor', 'name', 'content', 'words', 'cmp'], // fields to return with search results
       })
     }
+
     localeSections[locale].addAllAsync(parsePageSectionsFromVueCode(vueCode, cmp, name))
   })
 }
@@ -144,12 +153,15 @@ export function localSearch(options: LocalSearchOptions): Plugin {
         if (process.env.NODE_ENV === 'production') {
           await scanDocs(options)
         }
+
         const records: string[] = []
         Object.keys(localeSections).forEach((locale) => {
           records.push(`${JSON.stringify(locale)}: () => import('@localSearchIndex${locale}')`)
         })
+
         return `export default {${records.join(',')}}`
       }
+
       if (id.startsWith(LOCAL_SEARCH_INDEX_REQUEST_PATH)) {
         return `export default ${JSON.stringify(
           JSON.stringify(localeSections[id.replace(LOCAL_SEARCH_INDEX_REQUEST_PATH, '')] ?? {})

@@ -7,7 +7,7 @@
       </div>
 
       <template #menu>
-        <div class="varlet-site-search__result-list">
+        <div v-if="searchResults.length > 0 && inputText.length > 0" class="varlet-site-search__result-list">
           <div
             class="varlet-site-search__result-item"
             v-for="result in searchResults"
@@ -20,6 +20,9 @@
             ></div>
             <div class="varlet-site-search__result-item__content" v-html="result.content"></div>
           </div>
+        </div>
+        <div v-if="searchResults.length === 0 && inputText.length > 0" class="varlet-site-search__no-result">
+           {{ onResultPrompt }}
         </div>
       </template>
     </var-menu>
@@ -59,6 +62,7 @@ export default defineComponent({
     const miniSearch: Ref<MiniSearch<Section>> = ref()
     const showResult: Ref<boolean> = ref(false)
     const searchResults: Ref<Section[]> = ref([])
+    const inputText: Ref<string> = ref('')
 
     const highlightKeywords = (text: string, keywords: string) => {
       return keywords
@@ -95,6 +99,7 @@ export default defineComponent({
 
     const handleInput = (event: Event) => {
       let searchText = (event.target as HTMLInputElement)?.value || ''
+      inputText.value = searchText.trim()
 
       if (Intl) {
         searchText = Array.from(
@@ -108,14 +113,14 @@ export default defineComponent({
 
       const rawSearchResult = miniSearch.value?.search?.(searchText) 
 
-      searchResults.value = rawSearchResult?.map((result: any) => ({
+      searchResults.value = rawSearchResult?.map((result: Section) => ({
         ...result,
         cmp: result.cmp,
         name: highlightKeywords(result.name, searchText),
         title: highlightKeywords(result.title, searchText),
         content: highlightKeywords(formatContent(result.content, searchText), searchText),
         anchor: result.anchor
-      }))
+      })) || []
     }
 
     const handleBlur = () => {
@@ -126,7 +131,15 @@ export default defineComponent({
     }
 
     const showMenu = computed(() => {
-      return showResult.value && searchResults.value && searchResults.value.length > 0
+      return showResult.value && inputText.value.length > 0
+    })
+
+    const onResultPrompt = computed(() => {
+      if(props.language === 'zh-CN'){
+        return '无匹配结果'
+      }
+
+      return 'No Results'
     })
 
     watch(
@@ -152,7 +165,9 @@ export default defineComponent({
     return {
       searchResults,
       showResult,
+      inputText,
       showMenu,
+      onResultPrompt,
       handleInput,
       handleBlur,
       handleFocus,
@@ -197,6 +212,7 @@ export default defineComponent({
   &__result-list {
     max-height: calc(100vh - 180px);
     overflow-y: scroll;
+    background-color: var(--site-config-color-bar);
   }
 
   &__result-item {
@@ -227,6 +243,15 @@ export default defineComponent({
       background: yellow;
       color: #000;
     }
+  }
+
+  &__no-result {
+    width: 300px;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: var(--site-config-color-bar);
+    border: 1px solid #888;
   }
 }
 </style>
