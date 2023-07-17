@@ -8,7 +8,7 @@
   >
     <slot />
 
-    <teleport :to="teleport">
+    <Teleport :to="teleport">
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
@@ -20,6 +20,7 @@
             classes(
               n('menu'),
               n('$--box'),
+              popoverClass,
               [defaultStyle, n('--menu-background-color')],
               [defaultStyle, formatElevation(elevation, 3)]
             )
@@ -32,7 +33,7 @@
           <slot name="menu" />
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 

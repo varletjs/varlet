@@ -435,8 +435,7 @@ const value12 = ref()
 | `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
-| `--select-outlined-scroller-margin` | `0` |
+| `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
 #### Option Variables
 

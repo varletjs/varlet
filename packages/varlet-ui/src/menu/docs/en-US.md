@@ -233,6 +233,7 @@ it is recommended to wrap a `block` element.
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
+| `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
 
 ### Placement

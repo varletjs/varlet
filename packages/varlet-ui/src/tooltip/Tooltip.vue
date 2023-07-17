@@ -8,7 +8,7 @@
   >
     <slot />
 
-    <teleport :to="teleport">
+    <Teleport :to="teleport">
       <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
         <div
           ref="popover"
@@ -27,7 +27,7 @@
           </div>
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 

@@ -31,6 +31,7 @@ export interface MenuProps extends BasicAttributes {
   sameWidth?: boolean
   elevation?: boolean | number | string
   defaultStyle?: boolean
+  popoverClass?: string
   closeOnClickReference?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

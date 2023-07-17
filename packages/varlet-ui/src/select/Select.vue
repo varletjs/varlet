@@ -6,6 +6,7 @@
       close-on-click-reference
       v-model:show="showMenu"
       :class="n('menu')"
+      :popover-class="variant === 'standard' && hint ? n('--menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
@@ -72,7 +73,7 @@
           </div>
 
           <span
-            v-if="useCustomPlaceholder"
+            v-if="enableCustomPlaceholder"
             :class="classes(n('placeholder'), n('$--ellipsis'))"
             :style="{
               color: placeholderColor,
@@ -97,12 +98,7 @@
       </var-field-decorator>
 
       <template #menu>
-        <div
-          ref="menuEl"
-          :class="
-            classes(n('scroller'), n(`--scroller-${variant}`), n('$-elevation--3'), [!hint, n('--scroller-non-hint')])
-          "
-        >
+        <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
           <slot />
         </div>
       </template>
@@ -180,7 +176,8 @@ export default defineComponent({
 
       return blurColor || 'var(--field-decorator-blur-color)'
     })
-    const useCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue) && !isFocus.value)
+
+    const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -387,7 +384,7 @@ export default defineComponent({
       placement,
       cursor,
       placeholderColor,
-      useCustomPlaceholder,
+      enableCustomPlaceholder,
       n,
       classes,
       handleFocus,
