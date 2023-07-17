@@ -49,6 +49,7 @@ type Section = {
   title: string
   content: string
   cmp: string
+  words: string
   name: string
   score: string
   id: string
@@ -112,8 +113,12 @@ export default defineComponent({
     }
 
     const linkToSection = (cmp: string, anchor: string) => {
-      const url = encodeURI(`${location.origin}/#/${props.language}/${cmp}#${anchor}`)
-      window.location.assign(url)
+      inputRef.value?.blur()
+
+      setTimeout(() => {
+        const url = encodeURI(`${location.origin}/#/${props.language}/${cmp}#${anchor}`)
+        window.location.assign(url)
+      }, 350)
     }
 
     const handleInput = (event: Event) => {
