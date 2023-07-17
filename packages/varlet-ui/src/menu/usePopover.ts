@@ -1,5 +1,6 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
+import computeStyles from '@popperjs/core/lib/modifiers/computeStyles'
 import { useClickOutside } from '@varlet/use'
 import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
 import { call, useVModel, type ListenerProp } from '../utils/components'
@@ -265,6 +266,10 @@ export function usePopover(options: UsePopoverOptions) {
         options: {
           offset: [skidding, distance],
         },
+      },
+      {
+        ...computeStyles,
+        enabled: show.value,
       },
     ]
 
