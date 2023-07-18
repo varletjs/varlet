@@ -13,10 +13,11 @@
         >
           <div
             class="varlet-site-search__result-item"
-            v-for="result in searchResults"
+            v-for="(result, index) in searchResults"
             :key="result.id"
+            :style="index === hoveredIndex ? hoveredStyle : undefined"
             @click="linkToSection(result.cmp, result.anchor)"
-            @mouseenter="hoveredSection = result"
+            @mouseenter="handleMouseEnter(result, index)"
             @mouseleave="handleMouseLeave"
           >
             <div
@@ -30,7 +31,7 @@
           v-if="searchResults.length === 0 && inputText.length > 0"
           class="varlet-site-search__no-result"
         >
-          {{ onResultPrompt }}
+          {{ noResultPrompt }}
         </div>
       </template>
     </var-menu>
@@ -72,6 +73,7 @@ export default defineComponent({
     const searchResults: Ref<Section[]> = ref([])
     const inputText: Ref<string> = ref('')
     const inputRef: Ref<HTMLElement | null> = ref(null)
+    const hoveredIndex: Ref<number> = ref(-1)
     const hoveredSection: Ref<Section> = ref({
       level: '',
       anchor: '',
@@ -161,9 +163,22 @@ export default defineComponent({
         linkToSection(cmp, anchor)
       }
 
-      if (event.metaKey && event.key === 'k' && inputRef.value) {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k' && inputRef.value) {
         inputRef.value.focus()
       }
+
+      if(event.key === 'ArrowUp'){
+        hoveredIndex.value = Math.max(hoveredIndex.value - 1, 0)
+      }
+
+      if(event.key === 'ArrowDown'){
+        hoveredIndex.value = Math.min(hoveredIndex.value + 1, searchResults.value.length)
+      }
+    }
+
+    const handleMouseEnter = (result: Section, index: number) => {
+      hoveredSection.value = result
+      hoveredIndex.value = index
     }
 
     const handleMouseLeave = () => {
@@ -178,6 +193,8 @@ export default defineComponent({
         score: '',
         id: ''
       }
+
+      hoveredIndex.value = -1
     }
 
     useEventListener(() => document, 'keydown', handleKeyDown)
@@ -186,12 +203,20 @@ export default defineComponent({
       return showResult.value && inputText.value.length > 0
     })
 
-    const onResultPrompt = computed(() => {
+    const noResultPrompt = computed(() => {
       if (props.language === 'zh-CN') {
         return '无匹配结果'
       }
 
       return 'No Results'
+    })
+
+    const hoveredStyle = computed(() => {
+      return {
+        'background': 'var(--site-config-color-pc-language-active-background)',
+        'color': 'var(--site-config-color-pc-language-active)',
+        'cursor': 'pointer'
+      }
     })
 
     watch(
@@ -217,15 +242,18 @@ export default defineComponent({
     return {
       searchResults,
       inputRef,
+      hoveredStyle,
+      hoveredIndex,
       hoveredSection,
       showResult,
       inputText,
       showMenu,
-      onResultPrompt,
+      noResultPrompt,
       handleInput,
       handleBlur,
       handleFocus,
       handleMouseLeave,
+      handleMouseEnter,
       linkToSection
     }
   }
@@ -233,7 +261,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-
 .varlet-site-search {
   margin-right: 6px;
 
@@ -263,16 +290,6 @@ export default defineComponent({
   &__result-item {
     border-radius: 3px;
     padding: 10px 12px;
-
-    &:hover {
-      background: var(--site-config-color-pc-language-active-background);
-      color: var(--site-config-color-pc-language-active);
-      cursor: pointer;
-    }
-
-    &:hover &__title span {
-      color: var(--site-config-color-pc-language-active);
-    }
 
     &__content {
       width: 400px;
