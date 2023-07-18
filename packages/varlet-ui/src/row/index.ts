@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Row from './Row.vue'
+import { withInstall } from '../utils/components'
 
-Row.install = function (app: App) {
-  app.component(Row.name, Row)
-}
+withInstall(Row)
 
 export { props as rowProps } from './props'
 

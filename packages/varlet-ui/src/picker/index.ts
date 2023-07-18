@@ -2,7 +2,7 @@ import VarPicker from './Picker.vue'
 import { nextTick, reactive, type App, type Component, type TeleportProps } from 'vue'
 import { NormalColumn, CascadeColumn } from './props'
 import { isArray } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
+import { call, mountInstance, withInstall } from '../utils/components'
 
 export type Texts = any[]
 
@@ -100,16 +100,6 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
   })
 }
 
-VarPicker.install = function (app: App) {
-  app.component(VarPicker.name, VarPicker)
-}
-
-Picker.Component = VarPicker as Component
-
-Picker.install = function (app: App) {
-  app.component(VarPicker.name, VarPicker)
-}
-
 Picker.close = function () {
   if (singletonOptions != null) {
     const prevSingletonOptions = singletonOptions
@@ -120,6 +110,10 @@ Picker.close = function () {
     })
   }
 }
+
+Picker.Component = VarPicker as Component
+withInstall(VarPicker)
+withInstall(VarPicker, Picker)
 
 export { props as pickerProps } from './props'
 

@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Radio from './Radio.vue'
+import { withInstall } from '../utils/components'
 
-Radio.install = function (app: App) {
-  app.component(Radio.name, Radio)
-}
+withInstall(Radio)
 
 export { props as radioProps } from './props'
 

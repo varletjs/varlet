@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Button from './Button.vue'
+import { withInstall } from '../utils/components'
 
-Button.install = function (app: App) {
-  app.component(Button.name, Button)
-}
+withInstall(Button)
 
 export { props as buttonProps } from './props'
 

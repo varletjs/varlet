@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Chip from './Chip.vue'
+import { withInstall } from '../utils/components'
 
-Chip.install = function (app: App) {
-  app.component(Chip.name, Chip)
-}
+withInstall(Chip)
 
 export { props as chipProps } from './props'
 

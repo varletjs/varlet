@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Countdown from './Countdown.vue'
+import { withInstall } from '../utils/components'
 
-Countdown.install = function (app: App) {
-  app.component(Countdown.name, Countdown)
-}
+withInstall(Countdown)
 
 export { props as countdownProps } from './props'
 

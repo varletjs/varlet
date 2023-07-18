@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Divider from './Divider.vue'
+import { withInstall } from '../utils/components'
 
-Divider.install = function (app: App) {
-  app.component(Divider.name, Divider)
-}
+withInstall(Divider)
 
 export { props as dividerProps } from './props'
 

@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Drag from './Drag.vue'
+import { withInstall } from '../utils/components'
 
-Drag.install = function (app: App) {
-  app.component(Drag.name, Drag)
-}
+withInstall(Drag)
 
 export { props as dragProps } from './props'
 

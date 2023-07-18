@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Input from './Input.vue'
+import { withInstall } from '../utils/components'
 
-Input.install = function (app: App) {
-  app.component(Input.name, Input)
-}
+withInstall(Input)
 
 export { props as inputProps } from './props'
 

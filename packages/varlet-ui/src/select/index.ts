@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Select from './Select.vue'
+import { withInstall } from '../utils/components'
 
-Select.install = function (app: App) {
-  app.component(Select.name, Select)
-}
+withInstall(Select)
 
 export { props as selectProps } from './props'
 

@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import DatePicker from './DatePicker.vue'
+import { withInstall } from '../utils/components'
 
-DatePicker.install = function (app: App) {
-  app.component(DatePicker.name, DatePicker)
-}
+withInstall(DatePicker)
 
 export { props as datePickerProps } from './props'
 

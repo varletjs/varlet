@@ -3,7 +3,7 @@ import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import type { App, Component, TeleportProps, VNode } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
-import { call, mountInstance } from '../utils/components'
+import { call, mountInstance, withInstall } from '../utils/components'
 import { isFunction, isPlainObject, isString, toNumber } from '@varlet/shared'
 import type { LoadingSize, LoadingType } from '../loading/props'
 
@@ -213,10 +213,6 @@ SNACKBAR_TYPE.forEach((type) => {
   }
 })
 
-Snackbar.install = function (app: App) {
-  app.component(VarSnackbar.name, VarSnackbar)
-}
-
 Snackbar.allowMultiple = function (bool = false) {
   if (bool !== isAllowMultiple) {
     uniqSnackbarOptions.forEach((option: UniqSnackbarOptions) => {
@@ -240,8 +236,6 @@ Snackbar.setDefaultOptions = function (options: SnackbarOptions) {
 Snackbar.resetDefaultOptions = function () {
   defaultOptions = defaultOptionsValue
 }
-
-Snackbar.Component = VarSnackbar
 
 function opened(element: HTMLElement): void {
   const id = element.getAttribute('data-id')
@@ -295,9 +289,9 @@ function getTop(position = 'top') {
   return { top: position === 'top' ? '5%' : '45%' }
 }
 
-VarSnackbar.install = function (app: App) {
-  app.component(VarSnackbar.name, VarSnackbar)
-}
+Snackbar.Component = VarSnackbar
+withInstall(VarSnackbar)
+withInstall(VarSnackbar, Snackbar)
 
 export { props as snackbarProps } from './props'
 
