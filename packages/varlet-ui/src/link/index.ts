@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Link from './Link.vue'
+import { withInstall } from '../utils/components'
 
-Link.install = function (app: App) {
-  app.component(Link.name, Link)
-}
+withInstall(Link)
 
 export { props as linkProps } from './props'
 

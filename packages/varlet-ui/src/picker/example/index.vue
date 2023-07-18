@@ -142,7 +142,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="primary" block @click="picker">{{ pack.singlePicker }}</var-button>
     <var-button type="primary" block @click="picker2">{{ pack.multiplePicker }}</var-button>
     <var-button type="primary" block @click="picker3">{{ pack.cascadePicker }}</var-button>

@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Badge from './Badge.vue'
+import { withInstall } from '../utils/components'
 
-Badge.install = function (app: App) {
-  app.component(Badge.name, Badge)
-}
+withInstall(Badge)
 
 export { props as badgeProps } from './props'
 

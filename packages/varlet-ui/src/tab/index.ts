@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Tab from './Tab.vue'
+import { withInstall } from '../utils/components'
 
-Tab.install = function (app: App) {
-  app.component(Tab.name, Tab)
-}
+withInstall(Tab)
 
 export { props as tabProps } from './props'
 

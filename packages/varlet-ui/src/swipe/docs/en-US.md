@@ -226,7 +226,7 @@ import { Snackbar } from '@varlet/ui'
 
 | Method   | Description                                                          | Arguments       | Return |
 | -------- | -------------------------------------------------------------------- | --------------- | ------ |
-| `resize` | You can call this method to redraw when a tabs changes position size | `-`             | `-`    |
+| `resize` | You can call this method to redraw when a swipe changes position size | `-`             | `-`    |
 | `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
 | `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
 | `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |

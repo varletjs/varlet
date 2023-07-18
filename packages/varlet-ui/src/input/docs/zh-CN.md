@@ -188,6 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
+| `extra-message` | 附加信息 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

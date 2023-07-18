@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import BackTop from './BackTop.vue'
+import { withInstall } from '../utils/components'
 
-BackTop.install = function (app: App) {
-  app.component(BackTop.name, BackTop)
-}
+withInstall(BackTop)
 
 export { props as backTopProps } from './props'
 

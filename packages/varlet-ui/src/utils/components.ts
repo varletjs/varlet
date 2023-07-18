@@ -19,6 +19,8 @@ import {
   type Ref,
   type WritableComputedRef,
   type ComponentPublicInstance,
+  type Plugin,
+  type App,
 } from 'vue'
 import { isArray } from '@varlet/shared'
 
@@ -54,6 +56,22 @@ export function pickProps(props: any, propsKey: any): any {
         return pickedProps
       }, {})
     : props[propsKey]
+}
+
+export type ComponentWithInstall<T> = T & Plugin
+
+export function withInstall<T = Component>(component: Component, target?: T): ComponentWithInstall<T> {
+  const componentWithInstall = target ?? component
+
+  ;(componentWithInstall as ComponentWithInstall<T>).install = function (app: App) {
+    const { name } = component
+
+    if (name) {
+      app.component(name, component)
+    }
+  }
+
+  return componentWithInstall as ComponentWithInstall<T>
 }
 
 export function mount(component: Component): MountInstance {

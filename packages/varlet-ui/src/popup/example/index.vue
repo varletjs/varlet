@@ -27,7 +27,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.popupPosition }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="primary" block @click="center = true">{{ pack.centerPopup }}</var-button>
     <var-button type="primary" block @click="bottom = true">{{ pack.belowPopup }}</var-button>
     <var-button type="primary" block @click="top = true">{{ pack.abovePopup }}</var-button>
@@ -53,7 +53,7 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.overlayStyle }}</app-type>
 
-  <var-space direction="column" :size="['3vw', '4vw']">
+  <var-space direction="column" :size="['3vmin', '4vmin']">
     <var-button type="primary" block @click="overlayClass = true">{{ pack.overlayClass }}</var-button>
     <var-button type="primary" block @click="overlayStyle = true">{{ pack.overlayStyles }}</var-button>
   </var-space>

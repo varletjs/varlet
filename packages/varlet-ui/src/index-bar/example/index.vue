@@ -45,7 +45,7 @@ watchDarkMode(dark, (theme) => {
 <style lang="less">
 .index-bar-example-container {
   overflow: auto;
-  height: calc(100vh - 20vw);
+  height: calc(100vh - 20vmin);
 }
 
 .index-bar-example-anchor {

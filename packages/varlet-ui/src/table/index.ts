@@ -1,9 +1,7 @@
 import Table from './Table.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-Table.install = function (app: App) {
-  app.component(Table.name, Table)
-}
+withInstall(Table)
 
 export { props as tableProps } from './props'
 

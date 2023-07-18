@@ -8,8 +8,8 @@
   >
     <slot />
 
-    <teleport :to="teleport">
-      <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
+    <Teleport :to="teleport">
+      <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
           :class="classes(n('tooltip'), n('$--box'))"
@@ -27,7 +27,7 @@
           </div>
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 
@@ -56,6 +56,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       // expose
       open,
       // expose
@@ -79,6 +80,7 @@ export default defineComponent({
       handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
+      handleClosed,
       resize,
       open,
       close,

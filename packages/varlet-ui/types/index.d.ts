@@ -29,6 +29,7 @@ export * from './counter'
 export * from './datePicker'
 export * from './dialog'
 export * from './divider'
+export * from './drag'
 export * from './ellipsis'
 export * from './fab'
 export * from './form'
@@ -114,6 +115,7 @@ declare module 'vue' {
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
+    VarDrag: typeof import('@varlet/ui')['_DragComponent']
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarFab: typeof import('@varlet/ui')['_FabComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']

@@ -58,7 +58,9 @@ export default defineComponent({
     const { multiple, focusColor, onSelect, computeLabel } = select
 
     const handleClick = () => {
-      optionSelected.value = !optionSelected.value
+      if (multiple.value) {
+        optionSelected.value = !optionSelected.value
+      }
       onSelect(optionProvider)
     }
 

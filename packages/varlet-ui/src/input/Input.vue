@@ -29,6 +29,7 @@
 
       <input
         v-if="normalizedType === 'password'"
+        tabindex="-1"
         :class="n('autocomplete')"
         :placeholder="!hint ? placeholder : undefined"
         :style="{
@@ -112,7 +113,11 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop>
+      <template v-if="$slots['extra-message']" #extra-message>
+        <slot name="extra-message" />
+      </template>
+    </var-form-details>
   </div>
 </template>
 

@@ -6,8 +6,6 @@ Display the current progress of an operation flow.
 
 ### Basic Usage
 
-Set the current progress through the `value` attribute.
-
 ```html
 <script setup>
   import { ref, onMounted, onUnmounted } from 'vue'
@@ -29,61 +27,23 @@ Set the current progress through the `value` attribute.
 
 <template>
   <var-space direction="column" :size="[12, 12]">
-    <var-progress :value="20" :track="false" />
-    <var-progress :value="value" :track="false" />
-    <var-progress :value="100" :track="false" />
+    <var-progress :value="20" />
+    <var-progress :value="value" :track="false" label />
+    <var-progress :value="100" label>success</var-progress>
   </var-space>
 </template>
 ```
 
-### Show Label
+### Other Style
 
-The label is displayed through the `label` attribute. The label is the percentage of progress by default. You can use the slot to insert custom content.
-
-```html
-<script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
-
-  const value = ref(0)
-  const interval = ref(0)
-
-  onMounted(() => {
-    interval.value = window.setInterval(() => {
-      if (value.value >= 100) value.value = 0
-      else value.value += 20
-    }, 1000)
-  })
-
-  onUnmounted(() => {
-    window.clearInterval(interval.value)
-  })
-</script>
-
-<template>
-  <var-space direction="column" :size="[12, 12]">
-    <var-progress label :value="30" />
-    <var-progress label :value="value" />
-    <var-progress label :value="100">success</var-progress>
-  </var-space>
-</template>
-```
-
-### Custom Style
-
-Set the line width, progress bar color, track color and ripple loading effect through the attributes of `line-width`, `color`, `track-color` and `ripple`.
+Set the line width, progress bar color and track color through the attributes of `type`, `line-width`, `color`, `track-color`.
 
 ```html
 <template>
   <var-space direction="column" :size="[12, 12]">
-    <var-progress :value="30" line-width="8" color="#ff9f00" />
-    <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
-    <var-progress 
-      :value="80"
-      ripple 
-      line-width="8"
-      color="#ff9f00" 
-      track-color="#f5cb90" 
-    />
+    <var-progress type="info" :value="40" />
+    <var-progress type="success" :value="60" />
+    <var-progress value="80" line-width="8" color="#ff9f00" track-color="#f5cb90" />
   </var-space>
 </template>
 ```
@@ -111,39 +71,51 @@ Set the line width, progress bar color, track color and ripple loading effect th
 
 <template>
   <var-space :size="[20, 20]">
-    <var-progress mode="circle" :value="30" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+    <var-progress mode="circle" :value="75" :size="60" :track="false" />
+    <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
+    <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
+      success
+    </var-progress>
   </var-space>
 </template>
 ```
 
-### Hide Track
+### Indeterminate animation
 
-Use `track` prop to hide track.
+Enable indeterminate animation through the `indeterminate` attribute when loading progress is unknown.
 
 ```html
 <template>
-  <var-progress mode="circle" :value="50" :size="56" :track="false" />
+  <var-space direction="column" :size="[20, 20]">
+    <var-progress indeterminate />
+    <var-progress indeterminate type="info" />
+
+    <var-space justify="space-between">
+      <var-progress mode="circle" indeterminate :size="60" />
+      <var-progress mode="circle" type="info" indeterminate :size="60" />
+    </var-space>
+  </var-space>
 </template>
 ```
+
 ## API
 
 ### Props
 
-| prop          | Description                                                | Type     | Default   |
-|---------------|------------------------------------------------------------|----------|-----------|
-| `mode`        | Mode of Progress. Optional value is `linear, circle`       | _string_ | `linear`  |
-| `value`       | Completion value                                           | _string \| number_   |  `0`  |
-| `line-width`  | Width of the progress bar                                  | _string \| number_   | `4` |
-| `color`       | Color of the progress bar                                  | _string_ | `#005CAF` |
-| `track-color` | Color of the progress track                                | _string_ | `#d8d8d8` |
-| `label`       | Whether the label is visible or not                        | _boolean_ | `false`   |
-| `label-class` | Custom label class name                                    | _string_ | `-`       |
-| `track`       | Whether the progress track is visible or not               | _boolean_ | `true`    |
-| `ripple`      | Loading style for progress (only supports linear progress) | _boolean_ | `false`   |
-| `size`        | Size of progress (only supports circle progress)           | _string \| number_   | `40` |
-| `rotate`      | Origin of progress (only supports circle progress)         | _number_ | `0`       |
+| prop          | Description                                                                         | Type     | Default   |
+|---------------|-------------------------------------------------------------------------------------|----------|-----------|
+| `mode`        | Mode of Progress. Optional value is `linear, circle`                                | _string_ | `linear`  |
+| `type`        | Progress type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `primary` |
+| `value`       | Completion value                                                                    | _string \| number_   |  `0`  |
+| `line-width`  | Width of the progress bar                                                           | _string \| number_   | `4` |
+| `color`       | Color of the progress bar                                                           | _string_ | `#005CAF` |
+| `track-color` | Color of the progress track                                                         | _string_ | `#d8d8d8` |
+| `label`       | Whether the label is visible or not                                                 | _boolean_ | `false`   |
+| `label-class` | Custom label class name                                                             | _string_ | `-`       |
+| `track`       | Whether the progress track is visible or not                                        | _boolean_ | `true`    |
+| `indeterminate` | Whether the indeterminate animation is visible or not                                     | _boolean_ | `false` |
+| `size`        | Size of progress (only supports circle progress)                                    | _string \| number_   | `40` |
+| `rotate`      | Origin of progress (only supports circle progress)                                  | _number_ | `0`       |
 
 ### Slots
 
@@ -161,3 +133,9 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--progress-track-color` | `#d8d8d8` |
 | `--progress-label-color` | `#555` |
 | `--progress-background` | `var(--color-primary)` |
+| `--progress-default-color` | `#f5f5f5` |
+| `--progress-primary-color` | `var(--color-primary)`|
+| `--progress-danger-color` |  `var(--color-danger)`|
+| `--progress-success-color` | `var(--color-success)`|
+| `--progress-warning-color` |  `var(--color-warning)`|
+| `--progress-info-color` | `var(--color-info)`|

@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Cell from './Cell.vue'
+import { withInstall } from '../utils/components'
 
-Cell.install = function (app: App) {
-  app.component(Cell.name, Cell)
-}
+withInstall(Cell)
 
 export { props as cellProps } from './props'
 

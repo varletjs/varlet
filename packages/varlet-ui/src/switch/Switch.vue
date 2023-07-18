@@ -29,7 +29,18 @@
             )
           "
         >
-          <var-loading v-if="loading" :radius="radius" color="currentColor" />
+          <span
+            v-if="loading"
+            :class="n('loading')"
+            :style="{
+              width: multiplySizeUnit(radius, 2),
+              height: multiplySizeUnit(radius, 2),
+            }"
+          >
+            <svg viewBox="25 25 50 50">
+              <circle cx="50" cy="50" r="20" fill="none"></circle>
+            </svg>
+          </span>
         </div>
 
         <var-hover-overlay :hovering="hovering" />
@@ -48,7 +59,6 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { props } from './props'
 import VarFormDetails from '../form-details'
-import VarLoading from '../loading'
 import Ripple from '../ripple'
 import type { ComputedRef } from 'vue'
 import type { SwitchProvider } from './provide'
@@ -67,7 +77,6 @@ type StyleProps = {
 export default defineComponent({
   name: 'VarSwitch',
   components: {
-    VarLoading,
     VarFormDetails,
     VarHoverOverlay,
   },
@@ -112,7 +121,7 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size || 0, 0.4))
+    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.4))
 
     const switchActive = (event: MouseEvent) => {
       const {
@@ -156,6 +165,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      multiplySizeUnit,
       switchActive,
       hovering,
       hover,

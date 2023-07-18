@@ -1,7 +1,7 @@
 import VarImagePreview from './ImagePreview.vue'
-import { nextTick, reactive, type App, type TeleportProps } from 'vue'
+import { nextTick, reactive, type TeleportProps } from 'vue'
 import { inBrowser, isArray, isString } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
+import { call, mountInstance, withInstall } from '../utils/components'
 
 interface ImagePreviewOptions {
   show?: boolean
@@ -92,15 +92,9 @@ ImagePreview.resetDefaultOptions = () => {
   defaultOptions = {}
 }
 
-VarImagePreview.install = function (app: App) {
-  app.component(VarImagePreview.name, VarImagePreview)
-}
-
-ImagePreview.install = function (app: App) {
-  app.component(VarImagePreview.name, VarImagePreview)
-}
-
 ImagePreview.Component = VarImagePreview
+withInstall(VarImagePreview)
+withInstall(VarImagePreview, ImagePreview)
 
 export { props as imagePreviewProps } from './props'
 

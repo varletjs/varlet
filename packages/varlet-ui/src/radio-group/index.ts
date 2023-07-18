@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import RadioGroup from './RadioGroup.vue'
+import { withInstall } from '../utils/components'
 
-RadioGroup.install = function (app: App) {
-  app.component(RadioGroup.name, RadioGroup)
-}
+withInstall(RadioGroup)
 
 export { props as radioGroupProps } from './props'
 

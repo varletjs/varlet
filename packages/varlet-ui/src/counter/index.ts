@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Counter from './Counter.vue'
+import { withInstall } from '../utils/components'
 
-Counter.install = function (app: App) {
-  app.component(Counter.name, Counter)
-}
+withInstall(Counter)
 
 export { props as counterProps } from './props'
 

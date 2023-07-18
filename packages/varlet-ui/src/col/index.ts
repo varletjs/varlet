@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Col from './Col.vue'
+import { withInstall } from '../utils/components'
 
-Col.install = function (app: App) {
-  app.component(Col.name, Col)
-}
+withInstall(Col)
 
 export { props as colProps } from './props'
 
