@@ -157,7 +157,7 @@ export default defineComponent({
     } = useValidation()
     const menuEl: Ref<HTMLElement | null> = ref(null)
 
-    const placement = computed(() => (props.variant === 'outlined' ? 'bottom-start' : 'cover-top-start'))
+    const placement = computed(() => (props.variant === 'outlined' ? 'bottom' : 'cover-top'))
 
     const placeholderColor: ComputedRef<string | undefined> = computed(() => {
       const { hint, blurColor, focusColor } = props

@@ -81,6 +81,46 @@ export function usePopover(options: UsePopoverOptions) {
     }
   }
 
+  const getTransformOrigin = () => {
+    switch (options.placement) {
+      case 'top':
+      case 'cover-bottom':
+        return 'bottom'
+
+      case 'top-start':
+      case 'right-end':
+      case 'cover-bottom-start':
+        return 'bottom left'
+
+      case 'top-end':
+      case 'left-end':
+      case 'cover-bottom-end':
+        return 'bottom right'
+
+      case 'bottom':
+      case 'cover-top':
+        return 'top'
+
+      case 'bottom-start':
+      case 'right-start':
+      case 'cover-top-start':
+        return 'top left'
+
+      case 'bottom-end':
+      case 'left-start':
+      case 'cover-top-end':
+        return 'top right'
+
+      case 'left':
+      case 'cover-right':
+        return 'right'
+
+      case 'right':
+      case 'cover-left':
+        return 'left'
+    }
+  }
+
   const handleHostMouseenter = () => {
     if (options.trigger !== 'hover') {
       return
@@ -275,7 +315,19 @@ export function usePopover(options: UsePopoverOptions) {
       },
       {
         ...computeStyles,
+        options: {
+          adaptive: false,
+          gpuAcceleration: false,
+        },
         enabled: show.value,
+      },
+      {
+        name: 'applyTransformOrigin',
+        enabled: show.value,
+        phase: 'beforeWrite',
+        fn({ state }) {
+          state.styles.popper.transformOrigin = getTransformOrigin()
+        },
       },
     ]
 
