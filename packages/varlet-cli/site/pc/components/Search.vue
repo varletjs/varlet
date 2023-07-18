@@ -15,6 +15,7 @@
             class="varlet-site-search__result-item"
             v-for="(result, index) in searchResults"
             :key="result.id"
+            :id="result.id"
             :style="index === hoveredIndex ? hoveredStyle : undefined"
             @click="linkToSection(result.cmp, result.anchor)"
             @mouseenter="handleMouseEnter(result, index)"
@@ -168,11 +169,27 @@ export default defineComponent({
       }
 
       if(event.key === 'ArrowUp'){
-        hoveredIndex.value = Math.max(hoveredIndex.value - 1, 0)
+        const index =  Math.max(hoveredIndex.value - 1, 0)
+        hoveredIndex.value = index
+        hoveredSection.value = searchResults.value[index]
+
+        document.getElementById(`${searchResults.value[index].id}`)?.scrollIntoView({
+          block: 'nearest',
+          inline: 'nearest',
+          behavior: 'smooth'
+        })
       }
 
       if(event.key === 'ArrowDown'){
-        hoveredIndex.value = Math.min(hoveredIndex.value + 1, searchResults.value.length)
+        const index = Math.min(hoveredIndex.value + 1, searchResults.value.length - 1)
+        hoveredIndex.value = index
+        hoveredSection.value = searchResults.value[index]
+
+        document.getElementById(`${searchResults.value[index].id}`)?.scrollIntoView({
+          block: 'nearest',
+          inline: 'nearest',
+          behavior: 'smooth'
+        })
       }
     }
 
