@@ -9,7 +9,7 @@
     <slot />
 
     <Teleport :to="teleport">
-      <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
+      <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
           :style="{
@@ -62,6 +62,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       // expose
       open,
       // expose
@@ -86,6 +87,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       resize,
       open,
       close,

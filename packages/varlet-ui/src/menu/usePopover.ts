@@ -45,6 +45,7 @@ export interface UsePopoverOptions {
   closeOnClickReference?: boolean
   onOpen?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
   onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
@@ -149,6 +150,11 @@ export function usePopover(options: UsePopoverOptions) {
 
     handlePopoverClose()
     call(options.onClickOutside, e)
+  }
+
+  const handleClosed = () => {
+    resize()
+    call(options.onClosed)
   }
 
   const getPosition = (): Position => {
@@ -330,6 +336,7 @@ export function usePopover(options: UsePopoverOptions) {
     handlePopoverClose,
     handlePopoverMouseenter,
     handlePopoverMouseleave,
+    handleClosed,
     resize,
     open,
     close,
