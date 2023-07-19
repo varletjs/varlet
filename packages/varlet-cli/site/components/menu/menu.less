@@ -1,26 +1,26 @@
 :root {
-  --menu-background-color: #fff;
+  --site-menu-background-color: #fff;
 }
   
-.var {
-   &-menu-enter-from,
-   &-menu-leave-to {
-     opacity: 0;
-   }
-  
-    &-menu-enter-active,
-    &-menu-leave-active {
-      transition-property: opacity;
-      transition-duration: 0.25s;
-    }
+.var-site-menu {
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
   }
   
-  .var-menu {
-    display: inline-block;
-  
-    &--menu-background-color {
-      background: var(--menu-background-color);
-      transition: opacity 0.25s, background-color 0.25s;
-    }
+  &-enter-active,
+  &-leave-active {
+    transition-property: opacity;
+    transition-duration: 0.25s;
   }
+}
+  
+.var-site-menu {
+  display: inline-block;
+  
+  &--menu-background-color {
+    background: var(--site--menu-background-color);
+    transition: opacity 0.25s, background-color 0.25s;
+  }
+}
   
