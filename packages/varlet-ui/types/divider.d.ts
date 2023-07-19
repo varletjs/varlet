@@ -4,7 +4,7 @@ import { VNode } from 'vue'
 export declare const dividerProps: Record<string, any>
 
 export interface DividerProps extends BasicAttributes {
-  inset?: boolean | number
+  inset?: boolean | number | string
   vertical?: boolean
   description?: string
   margin?: string

@@ -16,7 +16,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.chipType }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
+  <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip>{{ pack.defaultChip }}</var-chip>
     <var-chip type="primary">{{ pack.primaryChip }}</var-chip>
     <var-chip type="success">{{ pack.successChip }}</var-chip>
@@ -32,7 +32,7 @@ watchDarkMode(dark)
   <var-chip :round="false" type="primary">{{ pack.nonRoundChip }}</var-chip>
 
   <app-type>{{ pack.chipSize }}</app-type>
-  <var-space align="center" :size="['2.666vw', '2.666vw']">
+  <var-space align="center" :size="['2.666vmin', '2.666vmin']">
     <var-chip type="primary">{{ pack.normalChip }}</var-chip>
     <var-chip type="success" size="small">{{ pack.smallChip }}</var-chip>
     <var-chip type="warning" size="mini">{{ pack.miniChip }}</var-chip>
@@ -43,13 +43,13 @@ watchDarkMode(dark)
   <var-chip type="primary" block>{{ pack.blockChip }}</var-chip>
 
   <app-type>{{ pack.canCloseChip }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
+  <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip closable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
     <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
   </var-space>
 
   <app-type>{{ pack.customColor }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
+  <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip color="#009688" text-color="#fff">{{ pack.chip }}</var-chip>
     <var-chip color="#009688" plain>{{ pack.chip }}</var-chip>
     <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ pack.chip }}</var-chip>
@@ -57,7 +57,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.addSlot }}</app-type>
-  <var-space :size="['2.666vw', '2.666vw']">
+  <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip>
       {{ pack.leftSlot }}
 

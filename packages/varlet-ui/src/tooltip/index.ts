@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Tooltip from './Tooltip.vue'
+import { withInstall } from '../utils/components'
 
-Tooltip.install = function (app: App) {
-  app.component(Tooltip.name, Tooltip)
-}
+withInstall(Tooltip)
 
 export { props as tooltipProps } from './props'
 

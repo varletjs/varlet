@@ -77,6 +77,9 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  popoverClass: {
+    type: String,
+  },
   closeOnClickReference: {
     type: Boolean,
     default: false,

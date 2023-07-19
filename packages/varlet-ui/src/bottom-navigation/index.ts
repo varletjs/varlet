@@ -1,9 +1,7 @@
 import BottomNavigation from './BottomNavigation.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-BottomNavigation.install = function (app: App) {
-  app.component(BottomNavigation.name, BottomNavigation)
-}
+withInstall(BottomNavigation)
 
 export { props as bottomNavigationProps } from './props'
 

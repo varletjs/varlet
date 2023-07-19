@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import List from './List.vue'
+import { withInstall } from '../utils/components'
 
-List.install = function (app: App) {
-  app.component(List.name, List)
-}
+withInstall(List)
 
 export { props as listProps } from './props'
 

@@ -5,8 +5,7 @@
   --select-scroller-border-radius: 2px;
   --select-chip-margin: 5px 5px 0;
   --select-arrow-size: 20px;
-  --select-standard-scroller-margin: calc(var(--field-decorator-placeholder-size) * 0.75 + 12px) 0 0 0;
-  --select-outlined-scroller-margin: 0;
+  --select-standard-menu-margin: calc(var(--field-decorator-placeholder-size) * 0.75 + 12px) 0 0 0;
   --select-label-font-size: 16px;
 }
 
@@ -76,16 +75,8 @@
     font-size: var(--select-arrow-size);
   }
 
-  &--scroller-standard {
-    margin: var(--select-standard-scroller-margin);
-  }
-
-  &--scroller-outlined {
-    margin: 0;
-  }
-
-  &--scroller-non-hint {
-    margin: 0;
+  &--standard-menu-margin {
+    margin: var(--select-standard-menu-margin) !important;
   }
 
   &--disabled {

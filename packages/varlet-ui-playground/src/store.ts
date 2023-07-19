@@ -1,11 +1,12 @@
 import { reactive, watchEffect } from 'vue'
 import { compileFile, File, StoreOptions } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
+import { usePreviewVersion } from './utils/env'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 
 const varletImports = {
-  '@varlet/ui': import.meta.env.DEV ? './varlet.esm.js' : 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.esm.js',
+  '@varlet/ui': usePreviewVersion ? './varlet.esm.js' : 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.esm.js',
   '@varlet/ui/json/area.json': './varlet-area.js',
 }
 
@@ -53,14 +54,14 @@ const tsconfig = {
   },
 }
 
-function getVarletReplPluginCode(version: string | 'latest' | 'local') {
+function getVarletReplPluginCode(version: string | 'latest' | 'preview') {
   let varletCss
   let varletTouchEmulator
 
   if (version === 'latest') {
     varletCss = 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/style.css'
     varletTouchEmulator = 'https://cdn.jsdelivr.net/npm/@varlet/touch-emulator/iife.js'
-  } else if (version === 'local') {
+  } else if (version === 'preview') {
     varletCss = './varlet.css'
     varletTouchEmulator = './varlet-touch-emulator.js'
   } else {
@@ -164,7 +165,12 @@ export class ReplStore implements Store {
       const saved = JSON.parse(atou(serializedState))
       // eslint-disable-next-line no-restricted-syntax, guard-for-in
       for (const filename in saved) {
-        setFile(files, filename, saved[filename])
+        setFile(
+          files,
+          filename,
+          saved[filename],
+          !import.meta.env.DEV && (`src/${filename}` === varletReplPlugin || `src/${filename}` === appWrapperFile)
+        )
       }
     } else {
       setFile(files, appFile, welcomeCode)
@@ -178,7 +184,7 @@ export class ReplStore implements Store {
       setFile(
         files,
         varletReplPlugin,
-        getVarletReplPluginCode(import.meta.env.DEV ? 'local' : 'latest'),
+        getVarletReplPluginCode(usePreviewVersion ? 'preview' : 'latest'),
         !import.meta.env.DEV
       )
     }
@@ -386,7 +392,7 @@ export class ReplStore implements Store {
     const importMap = this.getImportMap()
     const imports = importMap.imports || (importMap.imports = {})
     imports['@varlet/ui'] =
-      version === 'local' ? `./varlet.esm.js` : `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/varlet.esm.js`
+      version === 'preview' ? `./varlet.esm.js` : `https://cdn.jsdelivr.net/npm/@varlet/ui@${version}/es/varlet.esm.js`
     setFile(this.state.files, varletReplPlugin, getVarletReplPluginCode(version), !import.meta.env.DEV)
     compileFile(this, this.state.files[varletReplPlugin]).then((errs) => this.state.errors.push(...errs))
     this.setImportMap(importMap)

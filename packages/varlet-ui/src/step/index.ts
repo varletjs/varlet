@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Step from './Step.vue'
+import { withInstall } from '../utils/components'
 
-Step.install = function (app: App) {
-  app.component(Step.name, Step)
-}
+withInstall(Step)
 
 export { props as stepProps } from './props'
 

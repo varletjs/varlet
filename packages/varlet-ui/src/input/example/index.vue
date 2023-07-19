@@ -35,7 +35,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.standard }}</app-type>
-  <var-space direction="column" :size="['3vw', 0]">
+  <var-space direction="column" :size="['3vmin', 0]">
     <var-input :placeholder="pack.placeholder" v-model="standardValue2" />
     <var-input :placeholder="pack.readonly" readonly v-model="standardValue3" />
     <var-input :placeholder="pack.disabled" disabled v-model="standardValue4" />
@@ -56,10 +56,10 @@ watchDarkMode(dark)
 
     <var-input :placeholder="pack.customIconSize" v-model="standardValue10">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vw" />
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vw" />
+        <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
     </var-input>
     <var-input :placeholder="pack.maxlength" :maxlength="10" v-model="standardValue8" />
@@ -67,8 +67,8 @@ watchDarkMode(dark)
     <var-input :placeholder="pack.smallSize" size="small" v-model="standardValue" />
   </var-space>
 
-  <app-type style="margin-top: 10vw">{{ pack.outlined }}</app-type>
-  <var-space direction="column" :size="['6vw', 0]">
+  <app-type style="margin-top: 10vmin">{{ pack.outlined }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
     <var-input variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue2" />
     <var-input variant="outlined" :placeholder="pack.readonly" readonly v-model="outlinedValue3" />
     <var-input variant="outlined" :placeholder="pack.disabled" disabled v-model="outlinedValue4" />
@@ -89,10 +89,10 @@ watchDarkMode(dark)
     </var-input>
     <var-input variant="outlined" :placeholder="pack.customIconSize" v-model="outlinedValue10">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" size="8vw" />
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
       <template #append-icon>
-        <var-icon class="append-icon" name="github" size="12vw" />
+        <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
     </var-input>
     <var-input variant="outlined" :placeholder="pack.maxlength" :maxlength="10" v-model="outlinedValue8" />

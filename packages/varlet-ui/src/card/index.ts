@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Card from './Card.vue'
+import { withInstall } from '../utils/components'
 
-Card.install = function (app: App) {
-  app.component(Card.name, Card)
-}
+withInstall(Card)
 
 export { props as cardProps } from './props'
 

@@ -1,9 +1,7 @@
 import Result from './Result.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-Result.install = function (app: App) {
-  app.component(Result.name, Result)
-}
+withInstall(Result)
 
 export { props as resultProps } from './props'
 

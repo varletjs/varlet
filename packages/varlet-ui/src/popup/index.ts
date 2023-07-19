@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Popup from './Popup'
+import { withInstall } from '../utils/components'
 
-Popup.install = function (app: App) {
-  app.component(Popup.name, Popup)
-}
+withInstall(Popup)
 
 export { props as popupProps } from './props'
 

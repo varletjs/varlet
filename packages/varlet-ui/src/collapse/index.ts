@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Collapse from './Collapse.vue'
+import { withInstall } from '../utils/components'
 
-Collapse.install = function (app: App) {
-  app.component(Collapse.name, Collapse)
-}
+withInstall(Collapse)
 
 export { props as collapseProps } from './props'
 

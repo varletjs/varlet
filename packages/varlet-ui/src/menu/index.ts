@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Menu from './Menu.vue'
+import { withInstall } from '../utils/components'
 
-Menu.install = function (app: App) {
-  app.component(Menu.name, Menu)
-}
+withInstall(Menu)
 
 export { props as menuProps } from './props'
 

@@ -84,7 +84,7 @@ watchDarkMode(dark)
 
     <template #content>
       <var-tabs
-        style="margin-top: 20vw"
+        style="margin-top: 20vmin"
         color="transparent"
         active-color="#fff"
         inactive-color="#ddd"

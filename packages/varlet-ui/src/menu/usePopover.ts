@@ -1,5 +1,6 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
+import computeStyles from '@popperjs/core/lib/modifiers/computeStyles'
 import { useClickOutside } from '@varlet/use'
 import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
 import { call, useVModel, type ListenerProp } from '../utils/components'
@@ -44,6 +45,7 @@ export interface UsePopoverOptions {
   closeOnClickReference?: boolean
   onOpen?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
   onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
@@ -148,6 +150,11 @@ export function usePopover(options: UsePopoverOptions) {
 
     handlePopoverClose()
     call(options.onClickOutside, e)
+  }
+
+  const handleClosed = () => {
+    resize()
+    call(options.onClosed)
   }
 
   const getPosition = (): Position => {
@@ -266,6 +273,10 @@ export function usePopover(options: UsePopoverOptions) {
           offset: [skidding, distance],
         },
       },
+      {
+        ...computeStyles,
+        enabled: show.value,
+      },
     ]
 
     return {
@@ -325,6 +336,7 @@ export function usePopover(options: UsePopoverOptions) {
     handlePopoverClose,
     handlePopoverMouseenter,
     handlePopoverMouseleave,
+    handleClosed,
     resize,
     open,
     close,
