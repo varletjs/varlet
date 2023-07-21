@@ -314,7 +314,7 @@ function openMultiple() {
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
 | `loading-type` | Loading type (see `Loading` component)                                             | _string_ | `circle` |
 | `loading-size` | Loading size (see `Loading` component)                                             | _string_ | `normal` |
-| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`current_color`|
+| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`currentColor`|
 | `loading-radius` | Loading radius (see `Loading` component)                                           | _string \| number_  | `-` |
 | `lock-scroll`| Whether to disable rolling penetration                                             | _boolean_  | `false` |
 | `forbid-click`| whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |

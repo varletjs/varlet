@@ -312,7 +312,7 @@ function openMultiple() {
 | `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |
 | `loading-type`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
 | `loading-size`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
-| `loading-color`  | loading颜色(见`_loading`组件)                                |_string_|`current_color`|
+| `loading-color`  | loading颜色(见 `loading`组件)                                |_string_|`currentColor`|
 | `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
 | `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
 | `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
