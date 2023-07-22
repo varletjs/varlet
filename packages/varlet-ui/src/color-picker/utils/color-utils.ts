@@ -1,6 +1,6 @@
 // Utilities
 import { ref } from 'vue'
-import { chunk, padEnd, has, keepDecimal } from './helpers'
+import { chunk, padEnd, has } from './helpers'
 import { ColorPickerColor, position, ColorInt, HSV, RGB, HSL, Hex, Hexa, Color } from './color-utils-types'
 
 export const nullColor = { h: 0, s: 0, v: 1, a: 1 }
@@ -347,73 +347,6 @@ function stripAlpha(color: Record<string, unknown>, curStripAlpha: boolean) {
 
   return color
 }
-export function extractColor(
-  color: ColorPickerColor,
-  input: Color,
-  mode: string,
-  showAlpha: boolean
-): string | ColorPickerColor | Record<string, unknown> | undefined {
-  // 色相
-  const hue = keepDecimal(color.hsl.h, 2)
-
-  // 饱和度
-  const hslSaturation = keepDecimal(color.hsl.s, 2)
-  // 亮度
-  const lightness = keepDecimal(color.hsl.l, 2)
-  // red
-  const red = keepDecimal(color.rgb.r)
-  // green
-  const green = keepDecimal(color.rgb.g)
-  // blue
-  const blue = keepDecimal(color.rgb.b)
-  // HSV饱和度
-  const hsvSaturation = keepDecimal(color.hsv.s, 2)
-  // value
-  const value = keepDecimal(color.hsv.v, 2)
-  if (input == null) {
-    return color
-  }
-  if (typeof input === 'string') {
-    if (mode === 'hex') {
-      return color.hex
-    }
-    if (mode === 'hexa') {
-      return color.hex
-    }
-    if (mode === 'hsl') {
-      return `${mode}(${hue}, ${hslSaturation}, ${lightness})`
-    }
-    if (mode === 'hsla') {
-      return `${mode}(${hue}, ${hslSaturation}, ${lightness}, ${color.alpha})`
-    }
-    if (mode === 'rgb') {
-      return `${mode}(${red}, ${green}, ${blue})`
-    }
-    if (mode === 'rgba') {
-      return `${mode}(${red}, ${green}, ${blue}, ${color.alpha})`
-    }
-    if (mode === 'hsv') {
-      return `${mode}(${hue}, ${hsvSaturation}, ${value})`
-    }
-    if (mode === 'hsva') {
-      return `${mode}(${hue}, ${hsvSaturation}, ${value}, ${color.alpha})`
-    }
-    return input.length === 7 ? color.hex : color.hex
-  }
-
-  if (typeof input === 'object') {
-    const shouldStrip = typeof input.a === 'number' && input.a === 0 ? !!input.a : !input.a
-    if (has(input, ['r', 'g', 'b'])) {
-      return stripAlpha(color.rgb, shouldStrip)
-    }
-    if (has(input, ['h', 's', 'l'])) {
-      return stripAlpha(color.hsl, shouldStrip)
-    }
-    if (has(input, ['h', 's', 'v'])) {
-      return stripAlpha(color.hsv, shouldStrip)
-    }
-  }
-}
 
 export function hasAlpha(color: Color): boolean {
   if (!color) {
@@ -434,8 +367,8 @@ export const elementResize = (parentElement: HTMLElement): position => {
   const left = ref(0)
   const top = ref(0)
   window.addEventListener('resize', () => {
-    left.value = parentElement?.getBoundingClientRect().left
-    top.value = parentElement?.getBoundingClientRect().top + parentElement?.getBoundingClientRect().height
+    left.value = parentElement.getBoundingClientRect().left
+    top.value = parentElement.getBoundingClientRect().top + parentElement.getBoundingClientRect().height
   })
   return {
     left,

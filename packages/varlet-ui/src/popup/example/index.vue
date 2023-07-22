@@ -27,43 +27,20 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.popupPosition }}</app-type>
-  <var-space
-    direction="column"
-    :size="['3vmin', '4vmin']"
-  >
-    <var-button
-      type="primary"
-      block
-      @click="center = true"
-    >
+  <var-space direction="column" :size="['3vmin', '4vmin']">
+    <var-button type="primary" block @click="center = true">
       {{ pack.centerPopup }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="bottom = true"
-    >
+    <var-button type="primary" block @click="bottom = true">
       {{ pack.belowPopup }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="top = true"
-    >
+    <var-button type="primary" block @click="top = true">
       {{ pack.abovePopup }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="left = true"
-    >
+    <var-button type="primary" block @click="left = true">
       {{ pack.leftPopup }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="right = true"
-    >
+    <var-button type="primary" block @click="right = true">
       {{ pack.rightPopup }}
     </var-button>
   </var-space>
@@ -73,34 +50,22 @@ watchDarkMode(dark)
       {{ pack.text }}
     </div>
   </var-popup>
-  <var-popup
-    position="bottom"
-    v-model:show="bottom"
-  >
+  <var-popup position="bottom" v-model:show="bottom">
     <div class="block">
       {{ pack.text }}
     </div>
   </var-popup>
-  <var-popup
-    position="top"
-    v-model:show="top"
-  >
+  <var-popup position="top" v-model:show="top">
     <div class="block">
       {{ pack.text }}
     </div>
   </var-popup>
-  <var-popup
-    position="left"
-    v-model:show="left"
-  >
+  <var-popup position="left" v-model:show="left">
     <div class="block">
       {{ pack.text }}
     </div>
   </var-popup>
-  <var-popup
-    position="right"
-    v-model:show="right"
-  >
+  <var-popup position="right" v-model:show="right">
     <div class="block">
       {{ pack.text }}
     </div>
@@ -108,30 +73,16 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.overlayStyle }}</app-type>
 
-  <var-space
-    direction="column"
-    :size="['3vmin', '4vmin']"
-  >
-    <var-button
-      type="primary"
-      block
-      @click="overlayClass = true"
-    >
+  <var-space direction="column" :size="['3vmin', '4vmin']">
+    <var-button type="primary" block @click="overlayClass = true">
       {{ pack.overlayClass }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="overlayStyle = true"
-    >
+    <var-button type="primary" block @click="overlayStyle = true">
       {{ pack.overlayStyles }}
     </var-button>
   </var-space>
 
-  <var-popup
-    overlay-class="custom-overlay"
-    v-model:show="overlayClass"
-  >
+  <var-popup overlay-class="custom-overlay" v-model:show="overlayClass">
     <div class="block">
       {{ pack.text }}
     </div>
@@ -148,11 +99,7 @@ watchDarkMode(dark)
   </var-popup>
 
   <app-type>{{ pack.event }}</app-type>
-  <var-button
-    type="primary"
-    block
-    @click="event = true"
-  >
+  <var-button type="primary" block @click="event = true">
     {{ pack.event }}
   </var-button>
   <var-popup

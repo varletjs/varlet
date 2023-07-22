@@ -125,16 +125,9 @@ watch(() => currentVarletVersion.value, setVarletVersion)
 
 <template>
   <nav>
-    <Close
-      class="close"
-      v-if="inIframe"
-      @click="handleClose"
-    />
+    <Close class="close" v-if="inIframe" @click="handleClose" />
     <h1 v-else>
-      <img
-        alt="logo"
-        src="./logo.svg"
-      >
+      <img alt="logo" src="./logo.svg" />
       <span>Varlet UI Playground</span>
     </h1>
     <var-space align="center">
@@ -146,12 +139,7 @@ watch(() => currentVarletVersion.value, setVarletVersion)
         placeholder="Varlet Version"
         v-model="currentVarletVersion"
       >
-        <var-option
-          v-for="v in varletVersions"
-          :key="v"
-          :label="`${v === 'preview' ? '' : 'v'}${v}`"
-          :value="v"
-        />
+        <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'preview' ? '' : 'v'}${v}`" :value="v" />
       </var-select>
       <var-select
         style="width: 150px"
@@ -161,58 +149,30 @@ watch(() => currentVarletVersion.value, setVarletVersion)
         placeholder="Vue Version"
         v-model="currentVueVersion"
       >
-        <var-option
-          v-for="v in vueVersions"
-          :key="v"
-          :label="`v${v}`"
-          :value="v"
-        />
+        <var-option v-for="v in vueVersions" :key="v" :label="`v${v}`" :value="v" />
       </var-select>
 
       <var-tooltip content="Toggle Theme">
-        <var-button
-          class="link-button"
-          text
-          round
-          @click="toggleDark"
-        >
+        <var-button class="link-button" text round @click="toggleDark">
           <Moon v-if="dark" />
           <Sun v-else />
         </var-button>
       </var-tooltip>
 
       <var-tooltip content="Copy Link">
-        <var-button
-          class="link-button"
-          text
-          round
-          @click="copyLink"
-        >
+        <var-button class="link-button" text round @click="copyLink">
           <Share />
         </var-button>
       </var-tooltip>
 
       <var-tooltip content="Download Project">
-        <var-button
-          class="link-button"
-          text
-          round
-          @click="downloadProject(store)"
-        >
+        <var-button class="link-button" text round @click="downloadProject(store)">
           <Download />
         </var-button>
       </var-tooltip>
 
-      <var-tooltip
-        content="Open Github"
-        placement="bottom-end"
-      >
-        <var-button
-          class="link-button"
-          text
-          round
-          @click="openGithub"
-        >
+      <var-tooltip content="Open Github" placement="bottom-end">
+        <var-button class="link-button" text round @click="openGithub">
           <GitHub />
         </var-button>
       </var-tooltip>

@@ -1,12 +1,5 @@
 <template>
-  <var-swipe
-    :class="n()"
-    ref="swipe"
-    :loop="loop"
-    :touchable="canSwipe"
-    :indicator="false"
-    @change="handleSwipeChange"
-  >
+  <var-swipe :class="n()" ref="swipe" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
     <slot />
   </var-swipe>
 </template>

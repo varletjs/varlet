@@ -98,24 +98,15 @@ watchDarkMode(dark, (mode) => {
     v-model:active="active5"
   >
     <var-tab>
-      <var-icon
-        class="icon"
-        name="information"
-      />
+      <var-icon class="icon" name="information" />
       <div>{{ pack.option }}1</div>
     </var-tab>
     <var-tab>
-      <var-icon
-        class="icon"
-        name="warning"
-      />
+      <var-icon class="icon" name="warning" />
       <div>{{ pack.option }}2</div>
     </var-tab>
     <var-tab>
-      <var-icon
-        class="icon"
-        name="error"
-      />
+      <var-icon class="icon" name="error" />
       <div>{{ pack.option }}3</div>
     </var-tab>
   </var-tabs>
@@ -149,10 +140,7 @@ watchDarkMode(dark, (mode) => {
     <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <var-tabs-items
-    style="margin: 8px 0"
-    v-model:active="activeRelation"
-  >
+  <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
     <var-tab-item :style="tabItemStyle">
       {{ pack.text }}
     </var-tab-item>

@@ -27,63 +27,27 @@ watchDarkMode(dark)
   </var-space>
   <app-type>{{ pack.notAvailable }}</app-type>
   <var-space :size="['3vmin', '9vmin']">
-    <var-switch
-      v-model="value1"
-      disabled
-    />
-    <var-switch
-      v-model="value1"
-      readonly
-    />
+    <var-switch v-model="value1" disabled />
+    <var-switch v-model="value1" readonly />
   </var-space>
   <app-type>{{ pack.customColor }}</app-type>
   <var-space :size="['3vmin', '9vmin']">
-    <var-switch
-      v-model="value2"
-      :ripple="false"
-    />
-    <var-switch
-      v-model="value2"
-      color="#ff9f00"
-      close-color="#f5cb90"
-    />
+    <var-switch v-model="value2" :ripple="false" />
+    <var-switch v-model="value2" color="#ff9f00" close-color="#f5cb90" />
   </var-space>
   <app-type>{{ pack.size }}</app-type>
-  <var-space
-    :size="['3vmin', '11vmin']"
-    align="center"
-  >
-    <var-switch
-      v-model="value3"
-      size="4.266vmin"
-    />
+  <var-space :size="['3vmin', '11vmin']" align="center">
+    <var-switch v-model="value3" size="4.266vmin" />
     <var-switch v-model="value3" />
-    <var-switch
-      v-model="value3"
-      size="6.4vmin"
-    />
+    <var-switch v-model="value3" size="6.4vmin" />
   </var-space>
   <app-type>{{ pack.loading }}</app-type>
-  <var-space
-    :size="['3vmin', '9vmin']"
-    align="center"
-  >
-    <var-switch
-      :model-value="true"
-      loading
-    />
-    <var-switch
-      :model-value="true"
-      size="6.4vmin"
-      loading
-      loading-color="#ff9f00"
-    />
+  <var-space :size="['3vmin', '9vmin']" align="center">
+    <var-switch :model-value="true" loading />
+    <var-switch :model-value="true" size="6.4vmin" loading loading-color="#ff9f00" />
   </var-space>
   <app-type>{{ pack.validateValue }}</app-type>
   <var-space :size="['3vmin', '9vmin']">
-    <var-switch
-      v-model="value4"
-      :rules="[(v) => v === true || pack.state]"
-    />
+    <var-switch v-model="value4" :rules="[(v) => v === true || pack.state]" />
   </var-space>
 </template>

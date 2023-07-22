@@ -9,11 +9,7 @@
     <slot />
 
     <Teleport :to="teleport">
-      <transition
-        :name="n()"
-        @after-enter="onOpened"
-        @after-leave="handleClosed"
-      >
+      <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
           :style="{

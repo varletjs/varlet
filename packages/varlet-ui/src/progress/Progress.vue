@@ -1,30 +1,11 @@
 <template>
   <div :class="n()">
-    <div
-      :class="n('linear')"
-      v-if="mode === 'linear'"
-    >
-      <div
-        :class="n('linear-block')"
-        :style="{ height: toSizeUnit(lineWidth) }"
-      >
-        <div
-          v-if="track"
-          :class="n('linear-background')"
-          :style="{ background: trackColor }"
-        />
-        <div
-          v-if="indeterminate"
-          :class="classes([indeterminate, n('linear-indeterminate')])"
-        >
-          <div
-            :class="classes(n(`linear--${type}`))"
-            :style="{ background: color }"
-          />
-          <div
-            :class="classes(n(`linear--${type}`))"
-            :style="{ background: color }"
-          />
+    <div :class="n('linear')" v-if="mode === 'linear'">
+      <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
+        <div v-if="track" :class="n('linear-background')" :style="{ background: trackColor }" />
+        <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }" />
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }" />
         </div>
         <div
           v-else
@@ -32,10 +13,7 @@
           :style="{ background: color, width: linearProps.width }"
         />
       </div>
-      <div
-        :class="classes(n('linear-label'), [labelClass, labelClass])"
-        v-if="label"
-      >
+      <div :class="classes(n('linear-label'), [labelClass, labelClass])" v-if="label">
         <slot>
           {{ linearProps.roundValue }}
         </slot>
@@ -47,11 +25,7 @@
       :class="classes(n('circle'), [indeterminate, n('circle-indeterminate')])"
       :style="{ width: toSizeUnit(size), height: toSizeUnit(size) }"
     >
-      <svg
-        :class="n('circle-svg')"
-        :style="{ transform: `rotate(${rotate - 90}deg)` }"
-        :viewBox="circleProps.viewBox"
-      >
+      <svg :class="n('circle-svg')" :style="{ transform: `rotate(${rotate - 90}deg)` }" :viewBox="circleProps.viewBox">
         <circle
           v-if="track"
           :class="n('circle-background')"
@@ -80,10 +54,7 @@
         />
       </svg>
 
-      <div
-        :class="classes(n('circle-label'), [labelClass, labelClass])"
-        v-if="label"
-      >
+      <div :class="classes(n('circle-label'), [labelClass, labelClass])" v-if="label">
         <slot>
           {{ circleProps.roundValue }}
         </slot>

@@ -1,8 +1,5 @@
 <template>
-  <var-swipe-item
-    :class="classes(n(), [!current, n('--inactive')])"
-    var-tab-item-cover
-  >
+  <var-swipe-item :class="classes(n(), [!current, n('--inactive')])" var-tab-item-cover>
     <slot />
   </var-swipe-item>
 </template>

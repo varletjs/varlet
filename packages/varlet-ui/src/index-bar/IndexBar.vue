@@ -1,13 +1,7 @@
 <template>
-  <div
-    :class="n()"
-    ref="barEl"
-  >
+  <div :class="n()" ref="barEl">
     <slot />
-    <ul
-      :class="n('anchor-list')"
-      :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }"
-    >
+    <ul :class="n('anchor-list')" :style="{ zIndex: toNumber(zIndex) + 2, display: hideList ? 'none' : 'block' }">
       <li
         v-for="anchorName in anchorNameList"
         :key="anchorName"

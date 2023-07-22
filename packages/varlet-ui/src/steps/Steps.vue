@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="n()"
-    :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }"
-  >
+  <div :class="n()" :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }">
     <slot />
   </div>
 </template>

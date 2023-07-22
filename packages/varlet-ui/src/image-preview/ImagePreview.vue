@@ -26,12 +26,7 @@
       v-bind="$attrs"
     >
       <template #default>
-        <var-swipe-item
-          :class="n('swipe-item')"
-          var-image-preview-cover
-          v-for="(image, idx) in images"
-          :key="image"
-        >
+        <var-swipe-item :class="n('swipe-item')" var-image-preview-cover v-for="(image, idx) in images" :key="image">
           <div
             :class="n('zoom-container')"
             :style="{
@@ -44,39 +39,20 @@
             @touchend="handleTouchend"
             @touchcancel="handleTouchcancel"
           >
-            <img
-              :class="classes(n('image'), [isPreventDefault, n('--prevent')])"
-              :src="image"
-              :alt="image"
-            >
+            <img :class="classes(n('image'), [isPreventDefault, n('--prevent')])" :src="image" :alt="image" />
           </div>
         </var-swipe-item>
       </template>
 
       <template #indicator="{ index, length }">
-        <slot
-          name="indicator"
-          :index="index"
-          :length="length"
-        >
-          <div
-            :class="n('indicators')"
-            v-if="indicator && images.length > 1"
-          >
-            {{ index + 1 }} / {{ length }}
-          </div>
+        <slot name="indicator" :index="index" :length="length">
+          <div :class="n('indicators')" v-if="indicator && images.length > 1">{{ index + 1 }} / {{ length }}</div>
         </slot>
       </template>
     </var-swipe>
 
     <slot name="close-icon">
-      <var-icon
-        :class="n('close-icon')"
-        name="close-circle"
-        var-image-preview-cover
-        v-if="closeable"
-        @click="close"
-      />
+      <var-icon :class="n('close-icon')" name="close-circle" var-image-preview-cover v-if="closeable" @click="close" />
     </slot>
 
     <div :class="n('extra')">

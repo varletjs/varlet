@@ -36,101 +36,58 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.plainChip }}</app-type>
-  <var-chip
-    plain
-    type="primary"
-  >
+  <var-chip plain type="primary">
     {{ pack.plainChip }}
   </var-chip>
 
   <app-type>{{ pack.nonRoundChip }}</app-type>
-  <var-chip
-    :round="false"
-    type="primary"
-  >
+  <var-chip :round="false" type="primary">
     {{ pack.nonRoundChip }}
   </var-chip>
 
   <app-type>{{ pack.chipSize }}</app-type>
-  <var-space
-    align="center"
-    :size="['2.666vmin', '2.666vmin']"
-  >
+  <var-space align="center" :size="['2.666vmin', '2.666vmin']">
     <var-chip type="primary">
       {{ pack.normalChip }}
     </var-chip>
-    <var-chip
-      type="success"
-      size="small"
-    >
+    <var-chip type="success" size="small">
       {{ pack.smallChip }}
     </var-chip>
-    <var-chip
-      type="warning"
-      size="mini"
-    >
+    <var-chip type="warning" size="mini">
       {{ pack.miniChip }}
     </var-chip>
-    <var-chip
-      type="danger"
-      size="large"
-    >
+    <var-chip type="danger" size="large">
       {{ pack.largeChip }}
     </var-chip>
   </var-space>
 
   <app-type>{{ pack.blockChip }}</app-type>
-  <var-chip
-    type="primary"
-    block
-  >
+  <var-chip type="primary" block>
     {{ pack.blockChip }}
   </var-chip>
 
   <app-type>{{ pack.canCloseChip }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip
-      closable
-      v-if="show"
-      @close="show = false"
-    >
+    <var-chip closable v-if="show" @close="show = false">
       {{ pack.canCloseChip }}
     </var-chip>
-    <var-chip
-      closable
-      icon-name="delete"
-      v-if="show1"
-      @close="show1 = false"
-    >
+    <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false">
       {{ pack.customCloseIcon }}
     </var-chip>
   </var-space>
 
   <app-type>{{ pack.customColor }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip
-      color="#009688"
-      text-color="#fff"
-    >
+    <var-chip color="#009688" text-color="#fff">
       {{ pack.chip }}
     </var-chip>
-    <var-chip
-      color="#009688"
-      plain
-    >
+    <var-chip color="#009688" plain>
       {{ pack.chip }}
     </var-chip>
-    <var-chip
-      color="#faecd8"
-      text-color="#e6a23c"
-      plain
-    >
+    <var-chip color="#faecd8" text-color="#e6a23c" plain>
       {{ pack.chip }}
     </var-chip>
-    <var-chip
-      color="#faecd8"
-      text-color="#e6a23c"
-    >
+    <var-chip color="#faecd8" text-color="#e6a23c">
       {{ pack.chip }}
     </var-chip>
   </var-space>

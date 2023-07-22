@@ -36,40 +36,19 @@ watchDarkMode(dark)
 <template>
   <app-type>{{ pack.baseRating }}</app-type>
   <var-rate v-model="scores.score" />
-  <var-rate
-    v-model="scores.score"
-    icon="thumb-up"
-    empty-icon="thumb-up-outline"
-  />
+  <var-rate v-model="scores.score" icon="thumb-up" empty-icon="thumb-up-outline" />
 
   <app-type>{{ pack.customizeTheTotalNumberOfRatingICONS }}</app-type>
-  <var-rate
-    v-model="scores.score1"
-    :count="8"
-  />
+  <var-rate v-model="scores.score1" :count="8" />
 
   <app-type>{{ pack.customizeRatingIconStyles }}</app-type>
-  <var-rate
-    v-model="scores.score3"
-    icon="heart"
-    empty-icon="heart-outline"
-    color="red"
-    empty-color="red"
-  />
+  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" empty-color="red" />
 
   <app-type>{{ pack.customizeRatingIconSize }}</app-type>
-  <var-rate
-    v-model="scores.score4"
-    size="8vmin"
-    gap="1vmin"
-  />
+  <var-rate v-model="scores.score4" size="8vmin" gap="1vmin" />
 
   <app-type>{{ pack.useHalfAStar }}</app-type>
-  <var-rate
-    v-model="scores.score6"
-    :count="8"
-    half
-  />
+  <var-rate v-model="scores.score6" :count="8" half />
   <var-rate
     v-model="scores.score6"
     :count="8"
@@ -82,31 +61,15 @@ watchDarkMode(dark)
   />
 
   <app-type>{{ pack.disableTheRating }}</app-type>
-  <var-rate
-    v-model="scores.score7"
-    disabled
-  />
-  <var-rate
-    v-model="scores.score8"
-    readonly
-  />
+  <var-rate v-model="scores.score7" disabled />
+  <var-rate v-model="scores.score8" readonly />
 
   <app-type>{{ pack.clearable }}</app-type>
-  <var-rate
-    v-model="scores.score12"
-    clearable
-    half
-  />
+  <var-rate v-model="scores.score12" clearable half />
 
   <app-type>{{ pack.listeningEvents }}</app-type>
-  <var-rate
-    v-model="scores.score10"
-    @change="handleChange"
-  />
+  <var-rate v-model="scores.score10" @change="handleChange" />
 
   <app-type>{{ pack.validate }}</app-type>
-  <var-rate
-    :rules="[(v) => v >= 3 || pack.rateMessage]"
-    v-model="scores.score11"
-  />
+  <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="scores.score11" />
 </template>

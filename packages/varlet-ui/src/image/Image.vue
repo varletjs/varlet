@@ -19,7 +19,7 @@
       v-lazy="src"
       @load="handleLoad"
       @click="handleClick"
-    >
+    />
 
     <img
       :class="n('image')"
@@ -31,12 +31,9 @@
       @load="handleLoad"
       @error="handleError"
       @click="handleClick"
-    >
-
-    <slot
-      name="error"
-      v-if="showErrorSlot"
     />
+
+    <slot name="error" v-if="showErrorSlot" />
   </div>
 </template>
 

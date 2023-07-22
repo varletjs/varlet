@@ -1,11 +1,5 @@
 <template>
-  <div
-    ref="freshNode"
-    :class="n()"
-    @touchstart="touchStart"
-    @touchend="touchEnd"
-    @touchcancel="touchEnd"
-  >
+  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"

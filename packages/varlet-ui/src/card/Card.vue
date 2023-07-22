@@ -34,38 +34,26 @@
           :src="src"
           :alt="alt"
           v-if="src"
-        >
+        />
       </slot>
 
       <div :class="n('container')">
         <slot name="title">
-          <div
-            :class="n('title')"
-            v-if="title"
-          >
+          <div :class="n('title')" v-if="title">
             {{ title }}
           </div>
         </slot>
         <slot name="subtitle">
-          <div
-            :class="n('subtitle')"
-            v-if="subtitle"
-          >
+          <div :class="n('subtitle')" v-if="subtitle">
             {{ subtitle }}
           </div>
         </slot>
         <slot name="description">
-          <div
-            :class="n('description')"
-            v-if="description"
-          >
+          <div :class="n('description')" v-if="description">
             {{ description }}
           </div>
         </slot>
-        <div
-          :class="n('footer')"
-          v-if="$slots.extra"
-        >
+        <div :class="n('footer')" v-if="$slots.extra">
           <slot name="extra" />
         </div>
         <div
@@ -91,17 +79,8 @@
         v-if="showFloatingButtons"
       >
         <slot name="close-button">
-          <var-button
-            var-card-cover
-            round
-            :class="classes(n('close-button'), n('$-elevation--6'))"
-            @click.stop="close"
-          >
-            <var-icon
-              var-card-cover
-              name="window-close"
-              :class="n('close-button-icon')"
-            />
+          <var-button var-card-cover round :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
+            <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
           </var-button>
         </slot>
       </div>

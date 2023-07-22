@@ -12,18 +12,12 @@
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul :class="n('head')">
-            <li
-              v-for="week in sortWeekList"
-              :key="week.index"
-            >
+            <li v-for="week in sortWeekList" :key="week.index">
               {{ getDayAbbr(week.index) }}
             </li>
           </ul>
           <ul :class="n('body')">
-            <li
-              v-for="(day, index) in days"
-              :key="index"
-            >
+            <li v-for="(day, index) in days" :key="index">
               <var-button
                 type="primary"
                 var-day-picker-cover

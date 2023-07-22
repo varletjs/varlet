@@ -75,16 +75,14 @@
           :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
           :style="{ width: legendWidth }"
         >
-          <teleport
-            to="body"
-            v-if="placeholder && hint"
-          >
+          <teleport to="body" v-if="placeholder && hint">
             <span
               ref="placeholderTextEl"
               :class="
                 classes(n('placeholder-text'), n('$--ellipsis'), [size === 'small', n('placeholder-text--small')])
               "
-            >{{ placeholder }}</span>
+              >{{ placeholder }}</span
+            >
           </teleport>
         </legend>
       </fieldset>

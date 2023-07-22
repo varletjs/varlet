@@ -4,32 +4,26 @@
     v-bind="
       dynamic
         ? {
-          onOpen,
-          onOpened,
-          onClose,
-          onClosed,
-          onClickOverlay,
-          onRouteChange,
-          closeOnClickOverlay,
-          teleport,
-          show,
-          safeArea,
-          'onUpdate:show': handlePopupUpdateShow,
-          position: 'bottom',
-          class: n('popup'),
-        }
+            onOpen,
+            onOpened,
+            onClose,
+            onClosed,
+            onClickOverlay,
+            onRouteChange,
+            closeOnClickOverlay,
+            teleport,
+            show,
+            safeArea,
+            'onUpdate:show': handlePopupUpdateShow,
+            position: 'bottom',
+            class: n('popup'),
+          }
         : null
     "
     var-picker-cover
   >
-    <div
-      :class="n()"
-      v-bind="$attrs"
-    >
-      <div
-        :class="n('toolbar')"
-        v-if="toolbar"
-      >
+    <div :class="n()" v-bind="$attrs">
+      <div :class="n('toolbar')" v-if="toolbar">
         <slot name="cancel">
           <var-button
             :class="n('cancel-button')"
@@ -58,10 +52,7 @@
           </var-button>
         </slot>
       </div>
-      <div
-        :class="n('columns')"
-        :style="{ height: `${columnHeight}px` }"
-      >
+      <div :class="n('columns')" :style="{ height: `${columnHeight}px` }">
         <div
           :class="n('column')"
           v-for="c in scrollColumns"
@@ -100,10 +91,7 @@
             height: `${optionHeight}px`,
           }"
         />
-        <div
-          :class="n('mask')"
-          :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }"
-        />
+        <div :class="n('mask')" :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }" />
       </div>
     </div>
   </component>

@@ -40,11 +40,7 @@ watchDarkMode(dark)
   <app-type style="height: 50px">
     {{ pack.basicUse }}
   </app-type>
-  <var-drag
-    ref="drag"
-    style="left: 15px; top: 105px"
-    :boundary="{ top: 54 }"
-  >
+  <var-drag ref="drag" style="left: 15px; top: 105px" :boundary="{ top: 54 }">
     <var-button type="primary">
       {{ pack.basicUse }}
     </var-button>
@@ -53,12 +49,7 @@ watchDarkMode(dark)
   <app-type style="height: 50px; margin-top: 40px">
     {{ pack.direction }}
   </app-type>
-  <var-drag
-    ref="drag2"
-    style="left: 15px; top: 195px"
-    direction="x"
-    :boundary="{ top: 54 }"
-  >
+  <var-drag ref="drag2" style="left: 15px; top: 195px" direction="x" :boundary="{ top: 54 }">
     <var-button type="primary">
       {{ pack.direction }}
     </var-button>
@@ -67,22 +58,12 @@ watchDarkMode(dark)
   <app-type style="height: 50px; margin-top: 40px">
     {{ pack.attraction }}
   </app-type>
-  <var-drag
-    ref="drag3"
-    style="left: 15px; top: 285px"
-    attraction="x"
-    :boundary="{ top: 54 }"
-  >
+  <var-drag ref="drag3" style="left: 15px; top: 285px" attraction="x" :boundary="{ top: 54 }">
     <var-button type="primary">
       {{ pack.xAttraction }}
     </var-button>
   </var-drag>
-  <var-drag
-    ref="drag4"
-    style="left: 132px; top: 285px"
-    attraction="y"
-    :boundary="{ top: 54 }"
-  >
+  <var-drag ref="drag4" style="left: 132px; top: 285px" attraction="y" :boundary="{ top: 54 }">
     <var-button type="primary">
       {{ pack.yAttraction }}
     </var-button>
@@ -91,17 +72,8 @@ watchDarkMode(dark)
   <app-type style="height: 50px; margin-top: 40px">
     {{ pack.disabled }}
   </app-type>
-  <var-drag
-    ref="drag5"
-    style="left: 15px; top: 375px"
-    disabled
-    attraction="x"
-    :boundary="{ top: 54 }"
-  >
-    <var-button
-      type="primary"
-      disabled
-    >
+  <var-drag ref="drag5" style="left: 15px; top: 375px" disabled attraction="x" :boundary="{ top: 54 }">
+    <var-button type="primary" disabled>
       {{ pack.disabled }}
     </var-button>
   </var-drag>
@@ -123,10 +95,7 @@ watchDarkMode(dark)
   <app-type style="height: 50px; margin-top: 40px">
     {{ pack.reset }}
   </app-type>
-  <var-button
-    type="primary"
-    @click="reset"
-  >
+  <var-button type="primary" @click="reset">
     {{ pack.reset }}
   </var-button>
 </template>

@@ -1,8 +1,5 @@
 <template>
-  <teleport
-    to="body"
-    :disabled="disabled"
-  >
+  <teleport to="body" :disabled="disabled">
     <div
       :class="classes(n(), [show, n('--active')])"
       ref="backTopEl"
@@ -14,12 +11,7 @@
       @click.stop="handleClick"
     >
       <slot>
-        <var-button
-          :elevation="elevation"
-          type="primary"
-          round
-          var-back-top-cover
-        >
+        <var-button :elevation="elevation" type="primary" round var-back-top-cover>
           <var-icon name="chevron-up" />
         </var-button>
       </slot>

@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="n()"
-    v-hover:desktop="hover"
-  >
+  <div :class="n()" v-hover:desktop="hover">
     <div
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
       @click="switchActive"
@@ -41,12 +38,7 @@
             }"
           >
             <svg viewBox="25 25 50 50">
-              <circle
-                cx="50"
-                cy="50"
-                r="20"
-                fill="none"
-              />
+              <circle cx="50" cy="50" r="20" fill="none" />
             </svg>
           </span>
         </div>

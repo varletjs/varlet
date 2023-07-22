@@ -14,10 +14,7 @@
     :style="style"
   >
     <slot v-if="!vertical">
-      <span
-        :class="n('text')"
-        v-if="description"
-      >{{ description }}</span>
+      <span :class="n('text')" v-if="description">{{ description }}</span>
     </slot>
   </div>
 </template>

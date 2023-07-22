@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="n()"
-    @click="handleFocus"
-  >
+  <div :class="n()" @click="handleFocus">
     <var-menu
       var-select-cover
       same-width
@@ -37,10 +34,7 @@
           onClear: handleClear,
         }"
       >
-        <template
-          v-if="$slots['prepend-icon']"
-          #prepend-icon
-        >
+        <template v-if="$slots['prepend-icon']" #prepend-icon>
           <slot name="prepend-icon" />
         </template>
 
@@ -52,15 +46,9 @@
           }"
         >
           <div :class="n('label')">
-            <slot
-              name="selected"
-              v-if="!isEmptyModelValue"
-            >
+            <slot name="selected" v-if="!isEmptyModelValue">
               <template v-if="multiple">
-                <div
-                  :class="n('chips')"
-                  v-if="chip"
-                >
+                <div :class="n('chips')" v-if="chip">
                   <var-chip
                     :class="n('chip')"
                     var-select-cover
@@ -75,10 +63,7 @@
                     {{ l }}
                   </var-chip>
                 </div>
-                <div
-                  :class="n('values')"
-                  v-else
-                >
+                <div :class="n('values')" v-else>
                   {{ labels.join(separator) }}
                 </div>
               </template>
@@ -97,10 +82,7 @@
             {{ placeholder }}
           </span>
 
-          <slot
-            name="arrow-icon"
-            :focus="showMenu"
-          >
+          <slot name="arrow-icon" :focus="showMenu">
             <var-icon
               :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
               var-select-cover
@@ -116,19 +98,13 @@
       </var-field-decorator>
 
       <template #menu>
-        <div
-          ref="menuEl"
-          :class="classes(n('scroller'), n('$-elevation--3'))"
-        >
+        <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
           <slot />
         </div>
       </template>
     </var-menu>
 
-    <var-form-details
-      :error-message="errorMessage"
-      @click.stop
-    />
+    <var-form-details :error-message="errorMessage" @click.stop />
   </div>
 </template>
 

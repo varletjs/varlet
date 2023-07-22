@@ -33,36 +33,17 @@ LoadingBar.setDefaultOptions({
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-space
-    direction="column"
-    :size="['3vmin', '4vmin']"
-  >
-    <var-button
-      type="primary"
-      block
-      @click="LoadingBar.start()"
-    >
+  <var-space direction="column" :size="['3vmin', '4vmin']">
+    <var-button type="primary" block @click="LoadingBar.start()">
       {{ pack.start }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="LoadingBar.finish()"
-    >
+    <var-button type="primary" block @click="LoadingBar.finish()">
       {{ pack.finish }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="LoadingBar.error()"
-    >
+    <var-button type="primary" block @click="LoadingBar.error()">
       {{ pack.error }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="setStyle"
-    >
+    <var-button type="primary" block @click="setStyle">
       {{ hasCustomStyle ? pack.clear : pack.custom }}
     </var-button>
   </var-space>

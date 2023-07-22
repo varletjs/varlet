@@ -51,17 +51,10 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.textButton }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button
-      text
-      outline
-      type="primary"
-    >
+    <var-button text outline type="primary">
       {{ pack.outlineButton }}
     </var-button>
-    <var-button
-      text
-      type="primary"
-    >
+    <var-button text type="primary">
       {{ pack.plainTextButton }}
     </var-button>
   </var-space>
@@ -71,164 +64,92 @@ watchDarkMode(dark)
     <var-button disabled>
       {{ pack.disabledStatus }}
     </var-button>
-    <var-button
-      disabled
-      text
-      outline
-    >
+    <var-button disabled text outline>
       {{ pack.disabledStatus }}
     </var-button>
-    <var-button
-      disabled
-      text
-    >
+    <var-button disabled text>
       {{ pack.disabledStatus }}
     </var-button>
   </var-space>
 
   <app-type>{{ pack.loadingStatus }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button
-      loading
-      type="primary"
-    >
+    <var-button loading type="primary">
       {{ pack.loadingStatus }}
     </var-button>
-    <var-button
-      loading
-      type="info"
-      loading-type="rect"
-    >
+    <var-button loading type="info" loading-type="rect">
       {{ pack.loadingStatus }}
     </var-button>
-    <var-button
-      loading
-      type="success"
-      loading-type="disappear"
-    >
+    <var-button loading type="success" loading-type="disappear">
       {{ pack.loadingStatus }}
     </var-button>
-    <var-button
-      loading
-      type="danger"
-      loading-type="cube"
-    >
+    <var-button loading type="danger" loading-type="cube">
       {{ pack.loadingStatus }}
     </var-button>
-    <var-button
-      loading
-      type="warning"
-      loading-type="wave"
-    >
+    <var-button loading type="warning" loading-type="wave">
       {{ pack.loadingStatus }}
     </var-button>
   </var-space>
 
   <app-type>{{ pack.buttonSize }}</app-type>
-  <var-space
-    align="center"
-    :size="['2.666vmin', '2.666vmin']"
-  >
+  <var-space align="center" :size="['2.666vmin', '2.666vmin']">
     <var-button type="primary">
       {{ pack.normalButton }}
     </var-button>
-    <var-button
-      type="success"
-      size="small"
-    >
+    <var-button type="success" size="small">
       {{ pack.smallButton }}
     </var-button>
-    <var-button
-      type="warning"
-      size="mini"
-    >
+    <var-button type="warning" size="mini">
       {{ pack.miniButton }}
     </var-button>
-    <var-button
-      type="danger"
-      size="large"
-    >
+    <var-button type="danger" size="large">
       {{ pack.largeButton }}
     </var-button>
   </var-space>
 
   <app-type>{{ pack.blockButton }}</app-type>
-  <var-button
-    block
-    type="primary"
-  >
+  <var-button block type="primary">
     {{ pack.blockButton }}
   </var-button>
 
   <app-type>{{ pack.customColor }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button
-      color="#66bb6a"
-      text-color="#fff"
-    >
+    <var-button color="#66bb6a" text-color="#fff">
       {{ pack.backgroundTextColor }}
     </var-button>
-    <var-button
-      color="linear-gradient(to right, #69dbaa, #3a7afe)"
-      text-color="#fff"
-    >
+    <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff">
       {{ pack.linearGradientColor }}
     </var-button>
   </var-space>
 
   <app-type>{{ pack.roundButton }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button
-      type="primary"
-      round
-    >
+    <var-button type="primary" round>
       <var-icon name="plus" />
     </var-button>
-    <var-button
-      type="info"
-      round
-    >
+    <var-button type="info" round>
       <var-icon name="information" />
     </var-button>
-    <var-button
-      type="success"
-      round
-    >
+    <var-button type="success" round>
       <var-icon name="check" />
     </var-button>
-    <var-button
-      type="warning"
-      round
-    >
+    <var-button type="warning" round>
       <var-icon name="warning" />
     </var-button>
-    <var-button
-      type="danger"
-      round
-    >
+    <var-button type="danger" round>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
 
   <app-type>{{ pack.event }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button
-      type="success"
-      @click="handleClick"
-    >
+    <var-button type="success" @click="handleClick">
       {{ pack.click }}
     </var-button>
-    <var-button
-      type="success"
-      @touchstart="handleTouchstart"
-    >
+    <var-button type="success" @touchstart="handleTouchstart">
       {{ pack.touchstart }}
     </var-button>
-    <var-button
-      type="success"
-      @click="handleAutoLoadingClick"
-      auto-loading
-    >
+    <var-button type="success" @click="handleAutoLoadingClick" auto-loading>
       {{ pack.autoLoading }}
     </var-button>
   </var-space>
@@ -256,19 +177,13 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.buttonGroupSize }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button-group
-      size="normal"
-      type="primary"
-    >
+    <var-button-group size="normal" type="primary">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
     </var-button-group>
 
-    <var-button-group
-      size="large"
-      type="primary"
-    >
+    <var-button-group size="large" type="primary">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -276,20 +191,13 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.splitButton }}</app-type>
-  <var-menu
-    placement="bottom"
-    same-width
-    :offset-y="6"
-  >
+  <var-menu placement="bottom" same-width :offset-y="6">
     <var-button-group type="primary">
       <var-button @click.stop>
         {{ pack.splitButton }}
       </var-button>
       <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
-        <var-icon
-          name="menu-down"
-          :size="24"
-        />
+        <var-icon name="menu-down" :size="24" />
       </var-button>
     </var-button-group>
 
@@ -308,19 +216,13 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.modeButtonGroup }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button-group
-      type="primary"
-      mode="text"
-    >
+    <var-button-group type="primary" mode="text">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
     </var-button-group>
 
-    <var-button-group
-      type="primary"
-      mode="outline"
-    >
+    <var-button-group type="primary" mode="outline">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -334,10 +236,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.customButtonGroupColor }}</app-type>
-  <var-button-group
-    type="primary"
-    color="linear-gradient(to right, #69dbaa, #3a7afe)"
-  >
+  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
     <var-button>{{ pack.button }}</var-button>
     <var-button>{{ pack.button }}</var-button>
     <var-button>{{ pack.button }}</var-button>
@@ -345,30 +244,19 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.verticalButtonGroup }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button-group
-      type="primary"
-      mode="text"
-      vertical
-    >
+    <var-button-group type="primary" mode="text" vertical>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
     </var-button-group>
 
-    <var-button-group
-      type="primary"
-      mode="outline"
-      vertical
-    >
+    <var-button-group type="primary" mode="outline" vertical>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
     </var-button-group>
 
-    <var-button-group
-      type="primary"
-      vertical
-    >
+    <var-button-group type="primary" vertical>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>

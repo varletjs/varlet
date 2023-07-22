@@ -142,43 +142,20 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-space
-    direction="column"
-    :size="['3vmin', '4vmin']"
-  >
-    <var-button
-      type="primary"
-      block
-      @click="picker"
-    >
+  <var-space direction="column" :size="['3vmin', '4vmin']">
+    <var-button type="primary" block @click="picker">
       {{ pack.singlePicker }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="picker2"
-    >
+    <var-button type="primary" block @click="picker2">
       {{ pack.multiplePicker }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="picker3"
-    >
+    <var-button type="primary" block @click="picker3">
       {{ pack.cascadePicker }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="picker4"
-    >
+    <var-button type="primary" block @click="picker4">
       {{ pack.textFormatter }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="picker5"
-    >
+    <var-button type="primary" block @click="picker5">
       {{ pack.extension }}
     </var-button>
   </var-space>
@@ -192,21 +169,11 @@ watchDarkMode(dark)
   <var-picker :columns="columns2" />
 
   <app-type>{{ pack.cascadePicker }}</app-type>
-  <var-picker
-    cascade
-    :columns="columns3"
-  />
+  <var-picker cascade :columns="columns3" />
 
   <app-type>{{ pack.textFormatter }}</app-type>
-  <var-picker
-    cascade
-    :columns="columns4"
-    :text-formatter="formatter"
-  />
+  <var-picker cascade :columns="columns4" :text-formatter="formatter" />
 
   <app-type>{{ pack.extension }}</app-type>
-  <var-picker
-    :columns="columns5"
-    @change="handleChange"
-  />
+  <var-picker :columns="columns5" @change="handleChange" />
 </template>

@@ -14,16 +14,8 @@
       :class="n('icon')"
       var-bottom-navigation-item-cover
     />
-    <slot
-      name="icon"
-      :active="active === index || active === name"
-    />
-    <var-badge
-      v-if="badge"
-      v-bind="badgeProps"
-      :class="n('badge')"
-      var-bottom-navigation-item-cover
-    />
+    <slot name="icon" :active="active === index || active === name" />
+    <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover />
     <span :class="n('label')">
       <template v-if="!$slots.default">
         {{ label }}

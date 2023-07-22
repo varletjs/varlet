@@ -33,17 +33,10 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.mode }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-link
-      type="primary"
-      :href="pack.hrefLink"
-      target="_blank"
-    >
+    <var-link type="primary" :href="pack.hrefLink" target="_blank">
       {{ pack.withHref }}
     </var-link>
-    <var-link
-      type="primary"
-      :to="pack.toLink"
-    >
+    <var-link type="primary" :to="pack.toLink">
       {{ pack.withRouterLink }}
     </var-link>
   </var-space>
@@ -53,16 +46,10 @@ watchDarkMode(dark)
     <var-link type="primary">
       {{ pack.useUnderlineAlways }}
     </var-link>
-    <var-link
-      type="primary"
-      underline="hover"
-    >
+    <var-link type="primary" underline="hover">
       {{ pack.useUnderlineHove }}
     </var-link>
-    <var-link
-      type="primary"
-      underline="none"
-    >
+    <var-link type="primary" underline="none">
       {{ pack.notUseUnderline }}
     </var-link>
   </var-space>
@@ -83,11 +70,7 @@ watchDarkMode(dark)
   </var-space>
 
   <app-type>{{ pack.slots }}</app-type>
-  <var-link
-    :href="pack.hrefLink"
-    target="_blank"
-    underline="none"
-  >
+  <var-link :href="pack.hrefLink" target="_blank" underline="none">
     <var-button type="primary">
       {{ pack.buttonText }}
     </var-button>

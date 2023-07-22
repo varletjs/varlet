@@ -14,14 +14,8 @@ function download() {
 </script>
 
 <template>
-  <var-button
-    type="primary"
-    @click="download"
-  >
+  <var-button type="primary" @click="download">
     {{ pack.downloadResources }}
-    <var-icon
-      name="download"
-      style="margin: 2px 0 0 6px"
-    />
+    <var-icon name="download" style="margin: 2px 0 0 6px" />
   </var-button>
 </template>

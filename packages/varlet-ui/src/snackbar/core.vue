@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="n()"
-    :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }"
-    v-show="show"
-  >
+  <div :class="n()" :style="{ pointerEvents: isForbidClick ? 'auto' : 'none', zIndex }" v-show="show">
     <div
       :class="
         classes(
@@ -20,10 +16,7 @@
         <slot>{{ content }}</slot>
       </div>
       <div :class="[n('icon')]">
-        <var-icon
-          v-if="iconName"
-          :name="iconName"
-        />
+        <var-icon v-if="iconName" :name="iconName" />
         <var-loading
           v-if="type === 'loading'"
           :type="loadingType"

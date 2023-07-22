@@ -23,10 +23,7 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 </script>
 
 <template>
-  <Header
-    :store="store"
-    v-model:dark="dark"
-  />
+  <Header :store="store" v-model:dark="dark" />
   <Repl
     :editor="Monaco"
     :store="store"

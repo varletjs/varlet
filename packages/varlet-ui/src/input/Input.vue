@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="classes(n(), n('$--box'))"
-    @mousedown="handleMousedown"
-  >
+  <div :class="classes(n(), n('$--box'))" @mousedown="handleMousedown">
     <var-field-decorator
       v-bind="{
         value: modelValue,
@@ -26,10 +23,7 @@
         onClear: handleClear,
       }"
     >
-      <template
-        v-if="$slots['prepend-icon']"
-        #prepend-icon
-      >
+      <template v-if="$slots['prepend-icon']" #prepend-icon>
         <slot name="prepend-icon" />
       </template>
 
@@ -42,7 +36,7 @@
           '--input-placeholder-color': placeholderColor,
         }"
         :enterkeyhint="enterkeyhint"
-      >
+      />
       <textarea
         v-if="textarea"
         :class="
@@ -111,22 +105,15 @@
         @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-      >
+      />
 
       <template #append-icon>
         <slot name="append-icon" />
       </template>
     </var-field-decorator>
 
-    <var-form-details
-      :error-message="errorMessage"
-      :extra-message="maxlengthText"
-      @mousedown.stop
-    >
-      <template
-        v-if="$slots['extra-message']"
-        #extra-message
-      >
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop>
+      <template v-if="$slots['extra-message']" #extra-message>
         <slot name="extra-message" />
       </template>
     </var-form-details>

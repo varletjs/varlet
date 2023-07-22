@@ -67,80 +67,37 @@ watchDarkMode(dark)
 <template>
   <div class="image-preview-demo">
     <app-type>{{ pack.functionCall }}</app-type>
-    <var-button
-      type="primary"
-      block
-      @click="preview"
-    >
+    <var-button type="primary" block @click="preview">
       {{ pack.preview }}
     </var-button>
-    <var-button
-      type="primary"
-      block
-      @click="previewCallback"
-    >
+    <var-button type="primary" block @click="previewCallback">
       {{ pack.callBack }}
     </var-button>
   </div>
 
   <div class="image-preview-demo">
     <app-type>{{ pack.componentCall }}</app-type>
-    <var-button
-      type="warning"
-      block
-      @click="show = true"
-    >
+    <var-button type="warning" block @click="show = true">
       {{ pack.basicUse }}
     </var-button>
-    <var-image-preview
-      :images="image"
-      v-model:show="show"
-    />
+    <var-image-preview :images="image" v-model:show="show" />
 
-    <var-button
-      type="warning"
-      block
-      @click="currentShow = true"
-    >
+    <var-button type="warning" block @click="currentShow = true">
       {{ pack.specifyInitialPosition }}
     </var-button>
-    <var-image-preview
-      :images="images"
-      v-model:show="currentShow"
-      :initial-index="1"
-    />
+    <var-image-preview :images="images" v-model:show="currentShow" :initial-index="1" />
 
-    <var-button
-      type="warning"
-      block
-      @click="closeShow = true"
-    >
+    <var-button type="warning" block @click="closeShow = true">
       {{ pack.displayCloseButton }}
     </var-button>
-    <var-image-preview
-      :images="images"
-      v-model:show="closeShow"
-      :closeable="true"
-    />
+    <var-image-preview :images="images" v-model:show="closeShow" :closeable="true" />
 
-    <var-button
-      type="warning"
-      block
-      @click="closeEventShow = true"
-    >
+    <var-button type="warning" block @click="closeEventShow = true">
       {{ pack.listenCloseEvents }}
     </var-button>
-    <var-image-preview
-      :images="images"
-      v-model:show="closeEventShow"
-      @close="handleCloseEvent"
-    />
+    <var-image-preview :images="images" v-model:show="closeEventShow" @close="handleCloseEvent" />
 
-    <var-button
-      type="warning"
-      block
-      @click="preventEventShow = true"
-    >
+    <var-button type="warning" block @click="preventEventShow = true">
       {{ pack.preventLongTapDefault }}
     </var-button>
     <var-image-preview
@@ -150,28 +107,13 @@ watchDarkMode(dark)
       @long-press="handleLongPressEvent"
     />
 
-    <var-button
-      type="warning"
-      block
-      @click="extraSlotsShow = true"
-    >
+    <var-button type="warning" block @click="extraSlotsShow = true">
       {{ pack.showExtraSlots }}
     </var-button>
-    <var-image-preview
-      :images="images"
-      v-model:show="extraSlotsShow"
-    >
+    <var-image-preview :images="images" v-model:show="extraSlotsShow">
       <template #extra>
-        <var-icon
-          name="menu"
-          :size="22"
-          color="#fff"
-          @click="menuShow = true"
-        />
-        <var-action-sheet
-          :actions="actions"
-          v-model:show="menuShow"
-        />
+        <var-icon name="menu" :size="22" color="#fff" @click="menuShow = true" />
+        <var-action-sheet :actions="actions" v-model:show="menuShow" />
       </template>
     </var-image-preview>
   </div>

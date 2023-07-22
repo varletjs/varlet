@@ -11,24 +11,10 @@
         <div :class="n('file-name')">
           {{ f.name || f.url }}
         </div>
-        <div
-          :class="n('file-close')"
-          v-if="removable"
-          @click.stop="handleRemove(f)"
-        >
-          <var-icon
-            :class="n('file-close-icon')"
-            var-uploader-cover
-            name="delete"
-          />
+        <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
+          <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
-        <img
-          :class="n('file-cover')"
-          :style="{ objectFit: f.fit }"
-          :src="f.cover"
-          :alt="f.name"
-          v-if="f.cover"
-        >
+        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
         <div :class="n('file-indicator')">
           <div
             :class="
@@ -60,27 +46,17 @@
           :capture="capture"
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
-        >
+        />
 
         <slot>
-          <var-icon
-            :class="n('action-icon')"
-            var-uploader-cover
-            name="plus"
-          />
+          <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
           <var-hover-overlay :hovering="hovering && !disabled && !formDisabled" />
         </slot>
       </div>
     </div>
 
-    <var-form-details
-      :error-message="errorMessage"
-      :extra-message="maxlengthText"
-    >
-      <template
-        v-if="$slots['extra-message']"
-        #extra-message
-      >
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText">
+      <template v-if="$slots['extra-message']" #extra-message>
         <slot name="extra-message" />
       </template>
     </var-form-details>

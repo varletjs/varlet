@@ -1,9 +1,6 @@
 <template>
   <div :class="n('clock')">
-    <div
-      :class="n('clock-hand')"
-      :style="handStyle"
-    />
+    <div :class="n('clock-hand')" :style="handStyle" />
     <div
       :class="
         classes(
@@ -18,11 +15,7 @@
     >
       {{ timeScale }}
     </div>
-    <div
-      :class="n('clock-inner')"
-      ref="inner"
-      v-if="format === '24hr' && type === 'hour'"
-    >
+    <div :class="n('clock-inner')" ref="inner" v-if="format === '24hr' && type === 'hour'">
       <div
         :class="
           classes(
