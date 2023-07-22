@@ -40,63 +40,28 @@
     "@varlet/cli": "workspace:*",
     "@varlet/eslint-config": "workspace:*",
     "@varlet/icons": "workspace:*",
-    "@varlet/stylelint-config": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@varlet/shared": "workspace:*",
-    "@vue/test-utils": "^2.3.2",
+    "@vue/test-utils": "2.3.2",
+    "@vue/runtime-core": "3.3.4",
     "clipboard": "^2.0.6",
-    "eslint": "^7.30.0",
+    "eslint": "^8.43.0",
     "lint-staged": "^10.5.0",
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
-    "prettier": "^2.3.2",
+    "prettier": "^2.8.8",
     "simple-git-hooks": "^2.8.0",
-    "stylelint": "^13.13.1",
-    "typescript": "^4.4.4",
-    "vue": "3.2.47",
-    "vue-router": "4.1.6"
+    "typescript": "^5.1.5",
+    "vue": "3.3.4",
+    "vue-router": "4.2.0"
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css,less}": "stylelint --fix"
+    "*.{ts,tsx,js,vue}": "eslint --fix"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
     "commit-msg": "pnpm exec varlet-cli commit-lint $1"
-  },
-  "eslintConfig": {
-    "root": true,
-    "ignorePatterns": [
-      "lib/**",
-      "es/**",
-      "umd/**",
-      "site/**",
-      "public/**",
-      "src/*/__tests__/**",
-      "coverage/**",
-      "highlight/**",
-      "types/index.d.ts",
-      ".varlet/**"
-    ],
-    "extends": [
-      "@varlet"
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "@varlet/stylelint-config"
-    ],
-    "ignoreFiles": [
-      "lib/**",
-      "es/**",
-      "umd/**",
-      "site/**",
-      "coverage/**",
-      "public/**",
-      "highlight/**",
-      ".varlet/**"
-    ]
   },
   "browserslist": [
     "Chrome >= 54",

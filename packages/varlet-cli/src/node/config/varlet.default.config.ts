@@ -54,8 +54,8 @@ export default defineConfig({
             'en-US': 'Rich components',
           },
           description: {
-            'zh-CN': '提供 50 个高质量通用组件',
-            'en-US': 'Provide 50 high quality general purpose components',
+            'zh-CN': '提供 60+ 个高质量通用组件',
+            'en-US': 'Provide 60+ high quality general purpose components',
           },
         },
         {
@@ -149,6 +149,14 @@ export default defineConfig({
         link: 'https://github.com/varletjs/varlet/graphs/contributors',
         image: 'https://contrib.rocks/image?repo=varletjs/varlet',
       },
+      sponsors: {
+        label: {
+          'zh-CN': '赞助者',
+          'en-US': 'Sponsors',
+        },
+        link: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
+        image: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
+      },
       license: {
         'zh-CN': '组件库基于 MIT 协议，您可以自由的使用和分享',
         'en-US': 'Released under the MIT License, You can use and share freely.',
@@ -231,7 +239,7 @@ export default defineConfig({
     'color-hl-group-f': '#ff9422',
     'color-hl-group-g': '#ff9422',
     'color-hl-group-h': '#06a6e9',
-    'color-hl-group-i': '#f23733',
+    'color-hl-group-i': '#2196f3',
   },
   darkTheme: {
     'color-body': '#121212',
@@ -272,7 +280,7 @@ export default defineConfig({
     'color-hl-group-f': '#ff7b1e',
     'color-hl-group-g': '#ff7b1e',
     'color-hl-group-h': '#14a6e9',
-    'color-hl-group-i': '#ed4648',
+    'color-hl-group-i': '#96cbfe',
   },
   icons: {
     name: 'varlet-icons',

@@ -1,8 +1,17 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
-    <div :class="n('title')" :style="{ background: headerColor || color }">
+  <div
+    :class="classes(n(), formatElevation(elevation, 2))"
+    ref="picker"
+  >
+    <div
+      :class="n('title')"
+      :style="{ background: headerColor || color }"
+    >
       <div :class="n('title-time')">
-        <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
+        <div
+          :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])"
+          @click="checkPanel('hour')"
+        >
           {{ time.hour }}
         </div>
         <span>:</span>
@@ -21,13 +30,32 @@
           {{ time.second }}
         </div>
       </div>
-      <div :class="n('title-ampm')" v-if="format === 'ampm'">
-        <div :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])" @click="checkAmpm('am')">AM</div>
-        <div :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])" @click="checkAmpm('pm')">PM</div>
+      <div
+        :class="n('title-ampm')"
+        v-if="format === 'ampm'"
+      >
+        <div
+          :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])"
+          @click="checkAmpm('am')"
+        >
+          AM
+        </div>
+        <div
+          :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])"
+          @click="checkAmpm('pm')"
+        >
+          PM
+        </div>
       </div>
     </div>
     <div :class="n('body')">
-      <div :class="n('clock-container')" @touchstart="moveHand" @touchmove="moveHand" @touchend="end" ref="container">
+      <div
+        :class="n('clock-container')"
+        @touchstart="moveHand"
+        @touchmove="moveHand"
+        @touchend="end"
+        ref="container"
+      >
         <transition :name="`${n()}-panel-fade`">
           <clock
             :key="type"
@@ -64,6 +92,7 @@ import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
 import type { Time, AmPm } from './props'
+import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 
@@ -116,9 +145,7 @@ export default defineComponent({
       call(props.onChange, newTime)
     }
 
-    const rad2deg = (rad: number): number => {
-      return rad * 57.29577951308232
-    }
+    const rad2deg = (rad: number): number => rad * 57.29577951308232
 
     const checkPanel = (panelType: keyof Time) => {
       isChosenUsableHour.value = false
@@ -255,7 +282,7 @@ export default defineComponent({
     }
 
     const setCenterAndRange = () => {
-      const { left, top, width, height } = (container.value as HTMLDivElement).getBoundingClientRect()
+      const { left, top, width, height } = getRect(container.value as HTMLDivElement)
 
       center.x = left + width / 2
       center.y = top + height / 2

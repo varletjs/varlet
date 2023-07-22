@@ -32,6 +32,47 @@ test('test uploader onAfterRead', async () => {
   wrapper.unmount()
 })
 
+test('test uploader onBeforeFilter', async () => {
+  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      onBeforeFilter: (files) => files.filter((file) => file.name.endsWith('jpg')),
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  expect(wrapper.vm.modelValue).toHaveLength(0)
+
+  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
+  expect(wrapper.vm.modelValue).toHaveLength(1)
+
+  await wrapper.setProps({
+    modelValue: [],
+    multiple: true,
+    'onUpdate:modelValue': onUpdateModelValue,
+    onBeforeFilter: async function (files) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(files.filter((file) => file.name.endsWith('jpg')))
+        }, 1000)
+      })
+    },
+  })
+
+  const event = {
+    target: {
+      files: [new File([], 'cat.jpg'), new File([], 'dog.png'), new File([], 'dog.jpg')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.vm.modelValue).toHaveLength(2)
+
+  wrapper.unmount()
+})
+
 test('test uploader onBeforeRead', async () => {
   const onAfterRead = jest.fn()
 
@@ -68,7 +109,7 @@ test('test uploader preview', async () => {
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(100)
 
-  expect(document.querySelector('.var-popup').style.display).toBe('')
+  expect(document.querySelectorAll('.var-popup')[1].style.display).toBe('')
   wrapper.vm.closePreview()
   await delay(300)
 
@@ -309,4 +350,17 @@ test('test uploader progress', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+})
+
+test('test uploader extra slot', async () => {
+  const wrapper = mount(VarUploader, {
+    slots: {
+      'extra-message': () => '还能上传3个文件',
+    },
+  })
+
+  await delay(100)
+  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能上传3个文件')
+
+  wrapper.unmount()
 })

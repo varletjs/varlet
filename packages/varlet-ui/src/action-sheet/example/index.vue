@@ -125,28 +125,114 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.functionCall }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
-    <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
-    <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
-    <var-button type="primary" block @click="disableAction">{{ pack.disabled }}</var-button>
-    <var-button type="primary" block @click="disableCloseOnClickAction"
-      >{{ pack.disableCloseOnClickAction }}
+  <var-space
+    direction="column"
+    :size="['3vmin', '4vmin']"
+  >
+    <var-button
+      type="primary"
+      block
+      @click="createBasic"
+    >
+      {{ pack.basicUsage }}
     </var-button>
-    <var-button type="primary" block @click="customActionStyles">{{ pack.customActionStyles }}</var-button>
+    <var-button
+      type="primary"
+      block
+      @click="modifyTitle"
+    >
+      {{ pack.modifyTitle }}
+    </var-button>
+    <var-button
+      type="primary"
+      block
+      @click="disableAction"
+    >
+      {{ pack.disabled }}
+    </var-button>
+    <var-button
+      type="primary"
+      block
+      @click="disableCloseOnClickAction"
+    >
+      {{ pack.disableCloseOnClickAction }}
+    </var-button>
+    <var-button
+      type="primary"
+      block
+      @click="customActionStyles"
+    >
+      {{ pack.customActionStyles }}
+    </var-button>
   </var-space>
 
   <app-type>{{ pack.componentCall }}</app-type>
-  <var-space direction="column" :size="['3vw', '4vw']">
-    <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
-    <var-button type="warning" block @click="show1 = true">{{ pack.modifyTitle }}</var-button>
-    <var-button type="warning" block @click="show2 = true">{{ pack.disabled }}</var-button>
-    <var-button type="warning" block @click="show3 = true">{{ pack.disableCloseOnClickAction }}</var-button>
-    <var-button type="warning" block @click="show4 = true">{{ pack.customActionStyles }}</var-button>
+  <var-space
+    direction="column"
+    :size="['3vmin', '4vmin']"
+  >
+    <var-button
+      type="warning"
+      block
+      @click="show = true"
+    >
+      {{ pack.basicUsage }}
+    </var-button>
+    <var-button
+      type="warning"
+      block
+      @click="show1 = true"
+    >
+      {{ pack.modifyTitle }}
+    </var-button>
+    <var-button
+      type="warning"
+      block
+      @click="show2 = true"
+    >
+      {{ pack.disabled }}
+    </var-button>
+    <var-button
+      type="warning"
+      block
+      @click="show3 = true"
+    >
+      {{ pack.disableCloseOnClickAction }}
+    </var-button>
+    <var-button
+      type="warning"
+      block
+      @click="show4 = true"
+    >
+      {{ pack.customActionStyles }}
+    </var-button>
   </var-space>
 
-  <var-action-sheet :actions="actions" v-model:show="show" @select="handleSelect" />
-  <var-action-sheet :title="pack.customTitle" :actions="actions" v-model:show="show1" @select="handleSelect" />
-  <var-action-sheet :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
-  <var-action-sheet :close-on-click-action="false" :actions="actions" v-model:show="show3" @select="handleSelect" />
-  <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />
+  <var-action-sheet
+    :actions="actions"
+    v-model:show="show"
+    @select="handleSelect"
+  />
+  <var-action-sheet
+    :title="pack.customTitle"
+    :actions="actions"
+    v-model:show="show1"
+    @select="handleSelect"
+  />
+  <var-action-sheet
+    :actions="disabledActions"
+    v-model:show="show2"
+    @select="handleSelect"
+  />
+  <var-action-sheet
+    :close-on-click-action="false"
+    :actions="actions"
+    v-model:show="show3"
+    @select="handleSelect"
+  />
+  <var-action-sheet
+    :actions="customStyleActions"
+    v-model:show="show4"
+    @select="handleSelect"
+  />
 </template>

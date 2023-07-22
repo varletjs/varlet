@@ -1,5 +1,11 @@
 <template>
-  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
+  <div
+    ref="freshNode"
+    :class="n()"
+    @touchstart="touchStart"
+    @touchend="touchEnd"
+    @touchcancel="touchEnd"
+  >
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -19,11 +25,11 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
-import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
+import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isString, toNumber } from '@varlet/shared'
+import { isNumber, isString, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('pull-refresh')
 
@@ -86,7 +92,7 @@ export default defineComponent({
 
     const touchStart = (event: TouchEvent) => {
       if (controlPosition.value === 0) {
-        const { width } = (controlNode.value as HTMLElement).getBoundingClientRect()
+        const { width } = getRect(controlNode.value as HTMLElement)
         controlPosition.value = -(width + width * 0.25)
       }
 
@@ -96,7 +102,7 @@ export default defineComponent({
     }
 
     const touchMove = (event: TouchEvent) => {
-      if (!isTouchable.value) {
+      if (!isTouchable.value || !eventTargetScroller) {
         return
       }
 
@@ -122,7 +128,7 @@ export default defineComponent({
         startPosition.value = event.touches[0].clientY
       }
 
-      if (isReachTop && distance.value > controlPosition.value) {
+      if (isReachTop && isNumber(distance.value) && distance.value > controlPosition.value) {
         lockEvent('add')
       }
 
@@ -139,7 +145,7 @@ export default defineComponent({
 
       isEnd.value = true
 
-      if (distance.value >= maxDistance.value * 0.2) {
+      if (toNumber(distance.value) >= maxDistance.value * 0.2) {
         await startIconTransition('refresh')
         refreshStatus.value = 'loading'
         distance.value = maxDistance.value * 0.3
@@ -190,7 +196,7 @@ export default defineComponent({
       }
     )
 
-    useMounted(setScroller)
+    onSmartMounted(setScroller)
     useEventListener(freshNode, 'touchmove', touchMove)
 
     return {

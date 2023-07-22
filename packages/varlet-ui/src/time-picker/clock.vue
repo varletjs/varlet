@@ -1,6 +1,9 @@
 <template>
   <div :class="n('clock')">
-    <div :class="n('clock-hand')" :style="handStyle"></div>
+    <div
+      :class="n('clock-hand')"
+      :style="handStyle"
+    />
     <div
       :class="
         classes(
@@ -15,7 +18,11 @@
     >
       {{ timeScale }}
     </div>
-    <div :class="n('clock-inner')" ref="inner" v-if="format === '24hr' && type === 'hour'">
+    <div
+      :class="n('clock-inner')"
+      ref="inner"
+      v-if="format === '24hr' && type === 'hour'"
+    >
       <div
         :class="
           classes(
@@ -44,6 +51,7 @@ import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
 import type { ComputedRef, Ref, PropType } from 'vue'
 import type { Time, AmPm, Format, AllowedTime } from './props'
+import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 
@@ -205,7 +213,7 @@ export default defineComponent({
     }
 
     const getSize = () => {
-      const { width, height } = (inner.value as HTMLDivElement).getBoundingClientRect()
+      const { width, height } = getRect(inner.value as HTMLDivElement)
 
       return {
         width,

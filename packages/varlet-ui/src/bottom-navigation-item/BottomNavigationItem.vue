@@ -14,13 +14,21 @@
       :class="n('icon')"
       var-bottom-navigation-item-cover
     />
-    <slot name="icon" :active="active === index || active === name"></slot>
-    <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover />
+    <slot
+      name="icon"
+      :active="active === index || active === name"
+    />
+    <var-badge
+      v-if="badge"
+      v-bind="badgeProps"
+      :class="n('badge')"
+      var-bottom-navigation-item-cover
+    />
     <span :class="n('label')">
       <template v-if="!$slots.default">
         {{ label }}
       </template>
-      <slot></slot>
+      <slot />
     </span>
   </button>
 </template>
@@ -63,9 +71,8 @@ export default defineComponent({
       index,
     }
 
-    const computeColorStyle = () => {
-      return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
-    }
+    const computeColorStyle = () =>
+      active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
 
     const handleClick = () => {
       const active = name.value ?? index.value

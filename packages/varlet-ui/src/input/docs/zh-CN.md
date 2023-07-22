@@ -41,7 +41,7 @@ const value10 = ref('')
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input placeholder="自定义图标尺寸" style="--field-decorator-middle-offset-y: 8px" v-model="value7">
+    <var-input placeholder="自定义图标尺寸" v-model="value7">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
       </template>
@@ -106,8 +106,7 @@ const value10 = ref('')
     </var-input>
     <var-input 
       variant="outlined" 
-      placeholder="自定义图标尺寸" 
-      style="--field-decorator-middle-offset-y: 8px" 
+      placeholder="自定义图标尺寸"
       v-model="value7"
     >
       <template #prepend-icon>
@@ -189,13 +188,13 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
+| `extra-message` | 附加信息 | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -230,4 +229,5 @@ const value10 = ref('')
 | `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
 | `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
 | `--input-input-height` | `24px` |
+| `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |

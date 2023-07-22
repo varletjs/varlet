@@ -34,20 +34,38 @@
           :src="src"
           :alt="alt"
           v-if="src"
-        />
+        >
       </slot>
 
       <div :class="n('container')">
         <slot name="title">
-          <div :class="n('title')" v-if="title">{{ title }}</div>
+          <div
+            :class="n('title')"
+            v-if="title"
+          >
+            {{ title }}
+          </div>
         </slot>
         <slot name="subtitle">
-          <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
+          <div
+            :class="n('subtitle')"
+            v-if="subtitle"
+          >
+            {{ subtitle }}
+          </div>
         </slot>
         <slot name="description">
-          <div :class="n('description')" v-if="description">{{ description }}</div>
+          <div
+            :class="n('description')"
+            v-if="description"
+          >
+            {{ description }}
+          </div>
         </slot>
-        <div :class="n('footer')" v-if="$slots.extra">
+        <div
+          :class="n('footer')"
+          v-if="$slots.extra"
+        >
           <slot name="extra" />
         </div>
         <div
@@ -73,8 +91,17 @@
         v-if="showFloatingButtons"
       >
         <slot name="close-button">
-          <var-button var-card-cover round :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
-            <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
+          <var-button
+            var-card-cover
+            round
+            :class="classes(n('close-button'), n('$-elevation--6'))"
+            @click.stop="close"
+          >
+            <var-icon
+              var-card-cover
+              name="window-close"
+              :class="n('close-button-icon')"
+            />
           </var-button>
         </slot>
       </div>
@@ -86,7 +113,7 @@
         width: holderWidth,
         height: holderHeight,
       }"
-    ></div>
+    />
   </div>
 </template>
 
@@ -96,7 +123,7 @@ import VarIcon from '../icon'
 import VarButton from '../button'
 import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
-import { doubleRaf, toSizeUnit } from '../utils/elements'
+import { doubleRaf, toSizeUnit, getRect } from '../utils/elements'
 import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
@@ -150,7 +177,7 @@ export default defineComponent({
 
       floater.value = setTimeout(
         async () => {
-          const { width, height, left, top } = card.value!.getBoundingClientRect()
+          const { width, height, left, top } = getRect(card.value!)
           holderWidth.value = <string>toSizeUnit(width)
           holderHeight.value = <string>toSizeUnit(height)
           floaterWidth.value = holderWidth.value

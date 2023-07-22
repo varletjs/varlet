@@ -50,13 +50,11 @@ export default defineComponent({
       return active.value === index?.value
     }
 
-    const computeColorStyle = () => {
-      return props.disabled ? disabledColor.value : shouldActive() ? activeColor.value : inactiveColor.value
-    }
+    const computeColorStyle = () =>
+      props.disabled ? disabledColor.value : shouldActive() ? activeColor.value : inactiveColor.value
 
-    const computeColorClass = () => {
-      return props.disabled ? n('$-tab--disabled') : shouldActive() ? n('$-tab--active') : n('$-tab--inactive')
-    }
+    const computeColorClass = () =>
+      props.disabled ? n('$-tab--disabled') : shouldActive() ? n('$-tab--active') : n('$-tab--inactive')
 
     const handleClick = (event: Event) => {
       const { disabled, name, onClick } = props

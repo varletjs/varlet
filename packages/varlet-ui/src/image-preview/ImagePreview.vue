@@ -15,6 +15,7 @@
     @route-change="onRouteChange"
   >
     <var-swipe
+      ref="swipeRef"
       :class="n('swipe')"
       var-image-preview-cover
       :touchable="canSwipe"
@@ -25,7 +26,12 @@
       v-bind="$attrs"
     >
       <template #default>
-        <var-swipe-item :class="n('swipe-item')" var-image-preview-cover v-for="image in images" :key="image">
+        <var-swipe-item
+          :class="n('swipe-item')"
+          var-image-preview-cover
+          v-for="(image, idx) in images"
+          :key="image"
+        >
           <div
             :class="n('zoom-container')"
             :style="{
@@ -33,24 +39,44 @@
               transitionTimingFunction,
               transitionDuration,
             }"
-            @touchstart="handleTouchstart"
+            @touchstart="handleTouchstart($event, idx)"
             @touchmove="handleTouchmove"
             @touchend="handleTouchend"
+            @touchcancel="handleTouchcancel"
           >
-            <img :class="n('image')" :src="image" :alt="image" />
+            <img
+              :class="classes(n('image'), [isPreventDefault, n('--prevent')])"
+              :src="image"
+              :alt="image"
+            >
           </div>
         </var-swipe-item>
       </template>
 
       <template #indicator="{ index, length }">
-        <slot name="indicator" :index="index" :length="length">
-          <div :class="n('indicators')" v-if="indicator && images.length > 1">{{ index + 1 }} / {{ length }}</div>
+        <slot
+          name="indicator"
+          :index="index"
+          :length="length"
+        >
+          <div
+            :class="n('indicators')"
+            v-if="indicator && images.length > 1"
+          >
+            {{ index + 1 }} / {{ length }}
+          </div>
         </slot>
       </template>
     </var-swipe>
 
     <slot name="close-icon">
-      <var-icon :class="n('close-icon')" name="close-circle" var-image-preview-cover v-if="closeable" @click="close" />
+      <var-icon
+        :class="n('close-icon')"
+        name="close-circle"
+        var-image-preview-cover
+        v-if="closeable"
+        @click="close"
+      />
     </slot>
 
     <div :class="n('extra')">
@@ -64,11 +90,12 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
 import { toNumber } from '@varlet/shared'
-import type { Ref, ComputedRef } from 'vue'
+import { useEventListener } from '@varlet/use'
 import { call, createNamespace } from '../utils/components'
+import { type SwipeToOptions } from '../swipe/props'
 
 const { n, classes } = createNamespace('image-preview')
 
@@ -83,6 +110,7 @@ const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
 const TAP_DELAY = 350
 const ANIMATION_DURATION = 200
+const LONG_PRESS_DELAY = 500
 
 export default defineComponent({
   name: 'VarImagePreview',
@@ -97,8 +125,16 @@ export default defineComponent({
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
     const initialIndex: ComputedRef<number> = computed(() => {
-      const { images, current } = props
+      // For compatibility with current, temporarily keep this computed method
+      // Current will be replaced by initialIndex in the future
+      const { images, current, initialIndex } = props
+
+      if (initialIndex != null) {
+        return toNumber(initialIndex)
+      }
+
       const index = images.findIndex((image: string) => image === current)
+
       return index >= 0 ? index : 0
     })
     const scale: Ref<number> = ref(1)
@@ -107,9 +143,17 @@ export default defineComponent({
     const transitionTimingFunction: Ref<string | undefined> = ref(undefined)
     const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
+    const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
-    let checker: number | null = null
+    let closeRunner: number | null = null
+    let longPressRunner: number | null = null
+    let isLongPress = false
+
+    const isPreventDefault = computed(() => {
+      const { imagePreventDefault, show } = props
+      return show && imagePreventDefault
+    })
 
     const getDistance = (touch: VarTouch, target: VarTouch): number => {
       const { clientX: touchX, clientY: touchY } = touch
@@ -121,7 +165,7 @@ export default defineComponent({
     const createVarTouch = (touches: Touch, target: HTMLElement): VarTouch => ({
       clientX: touches.clientX,
       clientY: touches.clientY,
-      timestamp: Date.now(),
+      timestamp: performance.now(),
       target,
     })
 
@@ -165,23 +209,44 @@ export default defineComponent({
 
       return (
         getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
-        Date.now() - prevTouch.timestamp < TAP_DELAY &&
+        performance.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
     }
 
+    const handleTouchcancel = () => {
+      window.clearTimeout(longPressRunner as number)
+      isLongPress = false
+      startTouch = null
+    }
+
     const handleTouchend = (event: Event) => {
-      checker = window.setTimeout(() => {
-        isTapTouch(event.target as HTMLElement) && close()
+      window.clearTimeout(longPressRunner as number)
+
+      // avoid triggering tap event sometimes
+      if (isLongPress) {
+        isLongPress = false
+        return
+      }
+
+      const isTap = isTapTouch(event.target as HTMLElement)
+      closeRunner = window.setTimeout(() => {
+        isTap && close()
         startTouch = null
       }, EVENT_DELAY)
     }
 
-    const handleTouchstart = (event: TouchEvent) => {
-      checker && window.clearTimeout(checker)
-      const { touches } = event
-      const currentTouch: VarTouch = createVarTouch(touches[0], event.currentTarget as HTMLElement)
+    const handleTouchstart = (event: TouchEvent, idx: number) => {
+      window.clearTimeout(closeRunner as number)
+      window.clearTimeout(longPressRunner as number)
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
+
+      longPressRunner = window.setTimeout(() => {
+        const { onLongPress } = props
+        isLongPress = true
+        call(onLongPress, idx)
+      }, LONG_PRESS_DELAY)
 
       if (isDoubleTouch(currentTouch)) {
         scale.value > 1 ? zoomOut() : zoomIn()
@@ -206,19 +271,25 @@ export default defineComponent({
 
     const getLimitX = (target: HTMLElement) => {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
+
       if (!imageRadio) {
         return 0
       }
+
       const displayWidth = imageRadio > rootRadio ? height / imageRadio : width
+
       return Math.max(0, (zoom * displayWidth - width) / 2) / zoom
     }
 
     const getLimitY = (target: HTMLElement) => {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
+
       if (!imageRadio) {
         return 0
       }
+
       const displayHeight = imageRadio > rootRadio ? height : width * imageRadio
+
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 
@@ -240,8 +311,11 @@ export default defineComponent({
       }
 
       const target = event.currentTarget as HTMLElement
-      const { touches } = event
-      const currentTouch: VarTouch = createVarTouch(touches[0], target)
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
+
+      if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
+        window.clearTimeout(longPressRunner as number)
+      }
 
       if (scale.value > 1) {
         const moveX = currentTouch.clientX - prevTouch.clientX
@@ -263,13 +337,35 @@ export default defineComponent({
         setTimeout(() => call(props['onUpdate:show'], false), ANIMATION_DURATION)
         return
       }
+
       call(props['onUpdate:show'], false)
     }
 
+    // expose
+    const prev = (options?: SwipeToOptions) => {
+      swipeRef.value?.prev(options)
+    }
+
+    // expose
+    const next = (options?: SwipeToOptions) => {
+      swipeRef.value?.next(options)
+    }
+
+    // expose
+    const to = (idx: number, options?: SwipeToOptions) => {
+      swipeRef.value?.to(idx, options)
+    }
+
+    const preventImageDefault = (event: Event) => {
+      props.imagePreventDefault && props.show && event.preventDefault()
+    }
+
+    useEventListener(() => document, 'contextmenu', preventImageDefault)
+
     watch(
       () => props.show,
-      (newValue) => {
-        popupShow.value = newValue
+      (newShow) => {
+        popupShow.value = newShow
       },
       { immediate: true }
     )
@@ -277,6 +373,8 @@ export default defineComponent({
     return {
       n,
       classes,
+      swipeRef,
+      isPreventDefault,
       initialIndex,
       popupShow,
       scale,
@@ -288,7 +386,11 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      handleTouchcancel,
       close,
+      prev,
+      next,
+      to,
     }
   },
 })

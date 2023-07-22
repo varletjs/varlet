@@ -11,6 +11,7 @@ test('test action-sheet component plugin', () => {
 test('test action-sheet styles', () => {
   const wrapper = mount(VarActionSheet, {
     props: {
+      teleport: null,
       actions: [
         {
           name: 'Item 01',

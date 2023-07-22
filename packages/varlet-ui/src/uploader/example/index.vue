@@ -76,6 +76,7 @@ const values = reactive({
     },
   ],
   files13: [],
+  files14: [],
 })
 
 function handleAfterRead(file) {
@@ -128,6 +129,10 @@ async function handleBeforeRemove() {
   return action === 'confirm'
 }
 
+function handleBeforeFilter(files) {
+  return files.filter((file) => file.name.endsWith('png'))
+}
+
 watchLang(use)
 watchDarkMode(dark)
 
@@ -138,54 +143,108 @@ onUnmounted(() => {
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-uploader v-model="values.files" @after-read="handleAfterRead" />
+  <var-uploader
+    v-model="values.files"
+    @after-read="handleAfterRead"
+  />
 
   <app-type>{{ pack.preview }}</app-type>
   <var-uploader v-model="values.files2" />
 
   <app-type>{{ pack.state }}</app-type>
-  <var-uploader v-model="values.files3" @after-read="handleAfterRead2" />
+  <var-uploader
+    v-model="values.files3"
+    @after-read="handleAfterRead2"
+  />
 
   <app-type>{{ pack.useProgress }}</app-type>
-  <var-uploader v-model="values.files13" @after-read="handleAfterRead3" />
+  <var-uploader
+    v-model="values.files13"
+    @after-read="handleAfterRead3"
+  />
 
   <app-type>{{ pack.maxlength }}</app-type>
-  <var-uploader v-model="values.files4" :maxlength="1" />
+  <var-uploader
+    v-model="values.files4"
+    :maxlength="1"
+  />
 
   <app-type>{{ pack.maxsize }}</app-type>
-  <var-uploader v-model="values.files5" :maxsize="1024" @oversize="handleOversize" />
+  <var-uploader
+    v-model="values.files5"
+    :maxsize="1024"
+    @oversize="handleOversize"
+  />
+
+  <app-type>{{ pack.beforeFilter }}</app-type>
+  <var-uploader
+    v-model="values.files14"
+    multiple
+    @before-filter="handleBeforeFilter"
+  />
 
   <app-type>{{ pack.beforeRead }}</app-type>
-  <var-uploader v-model="values.files7" @before-read="handleBeforeRead" />
+  <var-uploader
+    v-model="values.files7"
+    @before-read="handleBeforeRead"
+  />
 
   <app-type>{{ pack.disabled }}</app-type>
-  <var-uploader disabled v-model="values.files8" />
+  <var-uploader
+    disabled
+    v-model="values.files8"
+  />
 
   <app-type>{{ pack.readonly }}</app-type>
-  <var-uploader readonly v-model="values.files9" />
+  <var-uploader
+    readonly
+    v-model="values.files9"
+  />
 
   <app-type>{{ pack.beforeRemove }}</app-type>
-  <var-uploader v-model="values.files11" @before-remove="handleBeforeRemove" />
+  <var-uploader
+    v-model="values.files11"
+    @before-remove="handleBeforeRemove"
+  />
 
   <app-type>{{ pack.style }}</app-type>
   <var-uploader v-model="values.files6">
-    <var-button type="primary">{{ pack.upload }}</var-button>
+    <var-button type="primary">
+      {{ pack.upload }}
+    </var-button>
   </var-uploader>
 
   <app-type>{{ pack.validate }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError().length === 0 || pack.validateMessage]" v-model="values.files10" />
+  <var-uploader
+    :rules="[(v, u) => u.getError().length === 0 || pack.validateMessage]"
+    v-model="values.files10"
+  />
 
   <app-type>{{ pack.customRender }}</app-type>
   <var-space>
-    <img class="custom-uploader-file" v-for="f in values.files12" :key="f.id" :src="f.cover" />
-    <var-uploader hide-list v-model="values.files12">
-      <var-button round type="primary">
-        <var-icon :size="28" name="upload" />
+    <img
+      class="custom-uploader-file"
+      v-for="f in values.files12"
+      :key="f.id"
+      :src="f.cover"
+    >
+    <var-uploader
+      hide-list
+      v-model="values.files12"
+    >
+      <var-button
+        round
+        type="primary"
+      >
+        <var-icon
+          :size="28"
+          name="upload"
+        />
       </var-button>
     </var-uploader>
   </var-space>
 
-  <var-space></var-space>
+  <var-space />
 </template>
 
 <style scoped lang="less">

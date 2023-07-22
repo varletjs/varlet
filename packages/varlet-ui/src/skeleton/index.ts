@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Skeleton from './Skeleton.vue'
+import { withInstall } from '../utils/components'
 
-Skeleton.install = function (app: App) {
-  app.component(Skeleton.name, Skeleton)
-}
+withInstall(Skeleton)
 
 export { props as skeletonProps } from './props'
 

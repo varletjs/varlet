@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Progress from './Progress.vue'
+import { withInstall } from '../utils/components'
 
-Progress.install = function (app: App) {
-  app.component(Progress.name, Progress)
-}
+withInstall(Progress)
 
 export { props as progressProps } from './props'
 

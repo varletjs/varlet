@@ -193,11 +193,11 @@ test('test select disabled', async () => {
     { attachTo: document.body }
   )
 
-  await wrapper.trigger('click')
+  await trigger(document.querySelector('.var-select__menu'), 'click')
   expect(onFocus).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ disabled: false })
-  await wrapper.trigger('click')
+  await trigger(document.querySelector('.var-select__menu'), 'click')
   await wrapper.setData({ disabled: true })
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(0)
@@ -250,13 +250,13 @@ test('test select readonly', async () => {
   expect(onFocus).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ readonly: false })
-  await wrapper.trigger('click')
+  await trigger(document.querySelector('.var-select__menu'), 'click')
   await wrapper.setData({ readonly: true })
   await wrapper.find('.container').trigger('click')
   expect(onBlur).toHaveBeenCalledTimes(0)
 
   await wrapper.setData({ readonly: false })
-  await wrapper.trigger('click')
+  await trigger(document.querySelector('.var-select__menu'), 'click')
   await wrapper.setData({ readonly: true })
   await trigger(document.querySelector('.var-option'), 'click')
   expect(wrapper.vm.value).toBe('睡觉')

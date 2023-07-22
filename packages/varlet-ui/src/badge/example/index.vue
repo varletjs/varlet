@@ -25,7 +25,7 @@ watchDarkMode(dark)
 <template>
   <div class="example">
     <app-type>{{ pack.themeColorBadge }}</app-type>
-    <var-space :size="['2.666vw', '4vw']">
+    <var-space :size="['2.666vmin', '4vmin']">
       <var-badge />
       <var-badge type="primary" />
       <var-badge type="info" />
@@ -35,64 +35,158 @@ watchDarkMode(dark)
     </var-space>
 
     <app-type>{{ pack.dotBadge }}</app-type>
-    <var-badge dot type="danger" />
+    <var-badge
+      dot
+      type="danger"
+    />
 
     <app-type>{{ pack.customContentBadge }}</app-type>
-    <var-space :size="['2.666vw', '4vw']">
-      <var-badge type="danger" value="badge" />
-      <var-badge type="danger" value="hot" />
-      <var-badge type="danger" value="66" />
+    <var-space :size="['2.666vmin', '4vmin']">
+      <var-badge
+        type="danger"
+        value="badge"
+      />
+      <var-badge
+        type="danger"
+        value="hot"
+      />
+      <var-badge
+        type="danger"
+        value="66"
+      />
     </var-space>
 
     <app-type>{{ pack.maximum }}</app-type>
-    <var-space :size="['2.666vw', '4vw']">
-      <var-badge type="danger" :value="value" :max-value="maxValue" />
-      <var-badge type="danger" :value="value1" :max-value="maxValue" />
+    <var-space :size="['2.666vmin', '4vmin']">
+      <var-badge
+        type="danger"
+        :value="value"
+        :max-value="maxValue"
+      />
+      <var-badge
+        type="danger"
+        :value="value1"
+        :max-value="maxValue"
+      />
     </var-space>
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
-    <var-space :size="['2.666vw', '6vw']">
-      <var-badge type="danger" position="right-top">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
+    <var-space :size="['2.666vmin', '6vmin']">
+      <var-badge
+        type="danger"
+        position="right-top"
+      >
+        <var-chip
+          plain
+          :round="false"
+          color="#009688"
+        >
+          {{ pack.upperRight }}
+        </var-chip>
       </var-badge>
-      <var-badge type="danger" position="right-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerRight }}</var-chip>
+      <var-badge
+        type="danger"
+        position="right-bottom"
+      >
+        <var-chip
+          plain
+          :round="false"
+          color="#009688"
+        >
+          {{ pack.lowerRight }}
+        </var-chip>
       </var-badge>
-      <var-badge type="danger" position="left-top">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperLeft }}</var-chip>
+      <var-badge
+        type="danger"
+        position="left-top"
+      >
+        <var-chip
+          plain
+          :round="false"
+          color="#009688"
+        >
+          {{ pack.upperLeft }}
+        </var-chip>
       </var-badge>
-      <var-badge type="danger" position="left-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerLeft }}</var-chip>
+      <var-badge
+        type="danger"
+        position="left-bottom"
+      >
+        <var-chip
+          plain
+          :round="false"
+          color="#009688"
+        >
+          {{ pack.lowerLeft }}
+        </var-chip>
       </var-badge>
     </var-space>
 
     <app-type>{{ pack.hidden }}</app-type>
-    <var-space :size="['2.666vw', '6vw']">
-      <var-badge type="danger" :hidden="hidden">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+    <var-space :size="['2.666vmin', '6vmin']">
+      <var-badge
+        type="danger"
+        :hidden="hidden"
+      >
+        <var-chip
+          plain
+          :round="false"
+          color="#009688"
+        >
+          {{ pack.badge }}
+        </var-chip>
       </var-badge>
 
-      <var-button type="success" @click="handleChange">
+      <var-button
+        type="success"
+        @click="handleChange"
+      >
         {{ pack.clickToChangeTheState }}
       </var-button>
     </var-space>
 
     <app-type>{{ pack.customBadgeColors }}</app-type>
     <var-badge color="#6200ea">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      <var-chip
+        plain
+        :round="false"
+        color="#009688"
+      >
+        {{ pack.badge }}
+      </var-chip>
     </var-badge>
 
     <app-type>{{ pack.customBadgeIcons }}</app-type>
-    <var-badge color="#6200ea" icon="notebook">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+    <var-badge
+      color="#6200ea"
+      icon="notebook"
+    >
+      <var-chip
+        plain
+        :round="false"
+        color="#009688"
+      >
+        {{ pack.badge }}
+      </var-chip>
     </var-badge>
 
     <app-type>{{ pack.customBadgeValue }}</app-type>
     <var-badge color="#6200ea">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      <var-chip
+        plain
+        :round="false"
+        color="#009688"
+      >
+        {{ pack.badge }}
+      </var-chip>
 
       <template #value>
-        <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>
+        <var-ellipsis
+          style="max-width: 40px"
+          :tooltip="{ sameWidth: false }"
+        >
+          100000000
+        </var-ellipsis>
       </template>
     </var-badge>
   </div>

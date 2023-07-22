@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "2.10.2",
+  "version": "2.13.1",
   "description": "A material like components library",
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
@@ -61,20 +61,20 @@
     "decimal.js": "^10.2.1"
   },
   "devDependencies": {
+    "@varlet/cli": "workspace:*",
+    "@varlet/touch-emulator": "workspace:*",
+    "@vue/runtime-core": "3.3.4",
+    "@vue/test-utils": "2.3.2",
     "@types/jest": "^26.0.15",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.7.18",
-    "@varlet/cli": "workspace:*",
-    "@varlet/touch-emulator": "workspace:*",
-    "@vue/runtime-core": "3.2.25",
-    "@vue/test-utils": "^2.3.2",
     "clipboard": "^2.0.6",
     "live-server": "^1.2.1",
     "lodash-es": "^4.17.21",
     "postcss-px-to-viewport": "^1.1.1",
-    "typescript": "^4.4.4",
-    "vue": "3.2.47",
-    "vue-router": "4.1.6"
+    "typescript": "^5.1.5",
+    "vue": "3.3.4",
+    "vue-router": "4.2.0"
   },
   "browserslist": [
     "Chrome >= 54",

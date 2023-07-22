@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Overlay from './Overlay'
+import { withInstall } from '../utils/components'
 
-Overlay.install = function (app: App) {
-  app.component(Overlay.name, Overlay)
-}
+withInstall(Overlay)
 
 export { props as overlayProps } from './props'
 

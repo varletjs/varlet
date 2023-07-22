@@ -17,9 +17,14 @@ import {
   type VNode,
   type ComponentInternalInstance,
   type Ref,
+  type WritableComputedRef,
   type ComponentPublicInstance,
+  type Plugin,
+  type App,
 } from 'vue'
 import { isArray } from '@varlet/shared'
+
+export type ListenerProp<F> = F | F[]
 
 export interface MountInstance {
   instance: ComponentPublicInstance
@@ -51,6 +56,22 @@ export function pickProps(props: any, propsKey: any): any {
         return pickedProps
       }, {})
     : props[propsKey]
+}
+
+export type ComponentWithInstall<T> = T & Plugin
+
+export function withInstall<T = Component>(component: Component, target?: T): ComponentWithInstall<T> {
+  const componentWithInstall = target ?? component
+
+  ;(componentWithInstall as ComponentWithInstall<T>).install = function (app: App) {
+    const { name } = component
+
+    if (name) {
+      app.component(name, component)
+    }
+  }
+
+  return componentWithInstall as ComponentWithInstall<T>
 }
 
 export function mount(component: Component): MountInstance {
@@ -208,23 +229,34 @@ export function exposeApis<T = Record<string, any>>(apis: T) {
 
 type ClassName = string | undefined | null
 type Classes = (ClassName | [any, ClassName, ClassName?])[]
+type BEM<S extends string | undefined, N extends string, NC extends string> = S extends undefined
+  ? NC
+  : S extends `$--${infer CM}`
+  ? `${N}--${CM}`
+  : S extends `--${infer M}`
+  ? `${NC}--${M}`
+  : `${NC}__${S}`
 
-export function createNamespace(name: string) {
-  const namespace = `var`
-  const componentName = `${namespace}-${name}`
+export function createNamespace<C extends string>(name: C) {
+  const namespace = `var` as const
+  const componentName = `${namespace}-${name}` as const
 
-  const createBEM = (suffix?: string): string => {
-    if (!suffix) return componentName
-
-    if (suffix[0] === '$') {
-      return suffix.replace('$', namespace)
+  const createBEM = <S extends string | undefined = undefined>(
+    suffix?: S
+  ): BEM<S, typeof namespace, typeof componentName> => {
+    if (!suffix) {
+      return componentName as any
     }
 
-    return suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`
+    if (suffix[0] === '$') {
+      return suffix.replace('$', namespace) as any
+    }
+
+    return (suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`) as any
   }
 
-  const classes = (...classes: Classes): any[] => {
-    return classes.map((className) => {
+  const classes = (...classes: Classes): any[] =>
+    classes.map((className) => {
       if (isArray(className)) {
         const [condition, truthy, falsy = null] = className
         return condition ? truthy : falsy
@@ -232,7 +264,6 @@ export function createNamespace(name: string) {
 
       return className
     })
-  }
 
   return {
     n: createBEM,
@@ -283,7 +314,7 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   props: P,
   key: K,
   options: UseVModelOptions<P, K> = {}
-) {
+): WritableComputedRef<P[K]> | Ref<P[K]> {
   const { passive = true, eventName, defaultValue, emit } = options
   const event = eventName ?? `onUpdate:${key.toString()}`
 

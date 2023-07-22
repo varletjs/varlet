@@ -4,7 +4,7 @@
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >
-    <slot></slot>
+    <slot />
 
     <var-button
       v-if="$slots.fab"
@@ -14,7 +14,7 @@
       v-bind="fabProps"
       round
     >
-      <slot name="fab"></slot>
+      <slot name="fab" />
     </var-button>
   </div>
 </template>
@@ -26,7 +26,7 @@ import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
 import { isNumber, normalizeToArray } from '@varlet/shared'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
 const { n, classes } = createNamespace('bottom-navigation')
@@ -59,17 +59,11 @@ export default defineComponent({
       handleActiveIndex()
     }
 
-    const matchName = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => {
-        return active.value === name.value
-      })
-    }
+    const matchName = (): BottomNavigationItemProvider | undefined =>
+      bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => active.value === name.value)
 
-    const matchIndex = (): BottomNavigationItemProvider | undefined => {
-      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => {
-        return active.value === index.value
-      })
-    }
+    const matchIndex = (): BottomNavigationItemProvider | undefined =>
+      bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => active.value === index.value)
 
     const handleActiveIndex = () => {
       if (!isNumber(active.value)) {
@@ -139,9 +133,7 @@ export default defineComponent({
       }
     }
 
-    const getBottomNavigationItems = () => {
-      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
-    }
+    const getBottomNavigationItems = () => Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
 
     const handleFabClick = () => {
       call(props.onFabClick)
@@ -166,7 +158,7 @@ export default defineComponent({
       { immediate: true, deep: true }
     )
 
-    useMounted(() => {
+    onSmartMounted(() => {
       if (!slots.fab) {
         return
       }

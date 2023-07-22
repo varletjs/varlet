@@ -34,6 +34,10 @@ import menu from './menu'
 import breadcrumb from './breadcrumb'
 import paper from './paper'
 import avatar from './avatar'
+import link from './link'
+import progress from './progress'
+import option from './option'
+import countdown from './countdown'
 
 export default {
   // common
@@ -82,4 +86,8 @@ export default {
   ...breadcrumb,
   ...paper,
   ...avatar,
+  ...link,
+  ...progress,
+  ...option,
+  ...countdown,
 } as StyleVars

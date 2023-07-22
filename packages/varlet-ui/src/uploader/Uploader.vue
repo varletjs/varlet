@@ -8,18 +8,34 @@
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple }"
         @click="preview(f)"
       >
-        <div :class="n('file-name')">{{ f.name || f.url }}</div>
-        <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
-          <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
+        <div :class="n('file-name')">
+          {{ f.name || f.url }}
         </div>
-        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
+        <div
+          :class="n('file-close')"
+          v-if="removable"
+          @click.stop="handleRemove(f)"
+        >
+          <var-icon
+            :class="n('file-close-icon')"
+            var-uploader-cover
+            name="delete"
+          />
+        </div>
+        <img
+          :class="n('file-cover')"
+          :style="{ objectFit: f.fit }"
+          :src="f.cover"
+          :alt="f.name"
+          v-if="f.cover"
+        >
         <div :class="n('file-indicator')">
           <div
             :class="
               classes(n('progress'), [f.state === 'success', n('--success')], [f.state === 'error', n('--error')])
             "
             :style="{ width: f.state === 'success' || f.state === 'error' ? '100%' : `${f.progress}%` }"
-          ></div>
+          />
         </div>
       </div>
 
@@ -30,7 +46,7 @@
             [disabled || formDisabled, n('--disabled')]
           )
         "
-        v-if="!maxlength || modelValue.length < maxlength"
+        v-if="!maxlength || modelValue.length < toNumber(maxlength)"
         v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
         v-hover:desktop="handleHovering"
         @click="chooseFile"
@@ -44,16 +60,30 @@
           :capture="capture"
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
-        />
+        >
 
         <slot>
-          <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
+          <var-icon
+            :class="n('action-icon')"
+            var-uploader-cover
+            name="plus"
+          />
           <var-hover-overlay :hovering="hovering && !disabled && !formDisabled" />
         </slot>
       </div>
     </div>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
+    <var-form-details
+      :error-message="errorMessage"
+      :extra-message="maxlengthText"
+    >
+      <template
+        v-if="$slots['extra-message']"
+        #extra-message
+      >
+        <slot name="extra-message" />
+      </template>
+    </var-form-details>
 
     <var-popup
       :class="n('preview')"
@@ -72,7 +102,7 @@
         controls
         :src="currentPreview?.url"
         v-if="currentPreview && isHTMLSupportVideo(currentPreview?.url)"
-      ></video>
+      />
     </var-popup>
   </div>
 </template>
@@ -173,16 +203,14 @@ export default defineComponent({
       }
     }
 
-    const createVarFile = (file: File): VarFile => {
-      return {
-        id: fid++,
-        url: '',
-        cover: '',
-        name: file.name,
-        file,
-        progress: 0,
-      }
-    }
+    const createVarFile = (file: File): VarFile => ({
+      id: fid++,
+      url: '',
+      cover: '',
+      name: file.name,
+      file,
+      progress: 0,
+    })
 
     const getFiles = (event: Event): File[] => {
       const el = event.target as HTMLInputElement
@@ -190,8 +218,8 @@ export default defineComponent({
       return Array.from<File>(fileList as ArrayLike<File>)
     }
 
-    const resolver = (varFile: VarFile): Promise<VarFile> => {
-      return new Promise((resolve) => {
+    const resolver = (varFile: VarFile): Promise<VarFile> =>
+      new Promise((resolve) => {
         // For performance, only file reader processing is performed on images
         if (!varFile.file!.type.startsWith('image')) {
           resolve(varFile)
@@ -211,42 +239,42 @@ export default defineComponent({
 
         fileReader.readAsDataURL(varFile.file as File)
       })
-    }
 
     const getResolvers = (varFiles: VarFile[]) => varFiles.map(resolver)
 
     const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
       const { onBeforeRead } = props
 
-      return varFiles.map((varFile) => {
-        return new Promise((resolve) => {
-          if (!onBeforeRead) {
-            resolve({
-              valid: true,
-              varFile,
-            })
-          }
+      return varFiles.map(
+        (varFile) =>
+          new Promise((resolve) => {
+            if (!onBeforeRead) {
+              resolve({
+                valid: true,
+                varFile,
+              })
+            }
 
-          const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
-          Promise.all(results).then((values) => {
-            resolve({
-              valid: values.every(Boolean),
-              varFile,
+            const results = normalizeToArray(call(onBeforeRead, reactive(varFile)))
+            Promise.all(results).then((values) => {
+              resolve({
+                valid: values.every(Boolean),
+                varFile,
+              })
             })
           })
-        })
-      })
+      )
     }
 
     const handleChange = async (event: Event) => {
-      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, readonly, disabled } = props
+      const { maxsize, maxlength, modelValue, onOversize, onAfterRead, onBeforeFilter, readonly, disabled } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
-      const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] => {
-        return varFiles.filter((varFile) => {
+      const getValidSizeVarFile = (varFiles: VarFile[]): VarFile[] =>
+        varFiles.filter((varFile) => {
           if (varFile.file!.size > toNumber(maxsize)) {
             call(onOversize, reactive(varFile))
             return false
@@ -254,16 +282,32 @@ export default defineComponent({
 
           return true
         })
-      }
 
       const getValidLengthVarFiles = (varFiles: VarFile[]): VarFile[] => {
         const limit = Math.min(varFiles.length, toNumber(maxlength) - modelValue.length)
         return varFiles.slice(0, limit)
       }
 
+      const getFilterVarFiles = async (varFiles: VarFile[]): Promise<VarFile[]> => {
+        if (!onBeforeFilter) {
+          return varFiles
+        }
+
+        const events = normalizeToArray(onBeforeFilter)
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const event of events) {
+          varFiles = await event(varFiles)
+        }
+
+        return varFiles
+      }
+
       // limit
       const files = getFiles(event)
       let varFiles: VarFile[] = files.map(createVarFile)
+
+      varFiles = await getFilterVarFiles(varFiles)
       varFiles = maxsize != null ? getValidSizeVarFile(varFiles) : varFiles
       varFiles = maxlength != null ? getValidLengthVarFiles(varFiles) : varFiles
 
@@ -373,6 +417,7 @@ export default defineComponent({
       hovering,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      toNumber,
       handleHovering,
       isHTMLSupportVideo,
       isHTMLSupportImage,

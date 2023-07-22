@@ -1,5 +1,3 @@
-import enWebTypes from '@varlet/ui/highlight/web-types.en-US.json'
-import zhWebTypes from '@varlet/ui/highlight/web-types.zh-CN.json'
 import icons, { pointCodes } from '@varlet/icons'
 import {
   languages,
@@ -14,12 +12,21 @@ import {
 } from 'vscode'
 import { componentsMap, type ComponentDescriptor } from './componentsMap'
 import { bigCamelize, isString, kebabCase } from '@varlet/shared'
-import { ATTR_RE, DOCUMENTATION_EN, DOCUMENTATION_ZH, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
-import { getLanguage } from './env'
-import { type HtmlTag } from './webTypes'
+import { ATTR_RE, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
+import { getWebTypesTags, t } from './env'
 
-export function getWebTypesTags(): HtmlTag[] {
-  return (getLanguage() === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
+export function shouldDisableProvide(document: TextDocument, position: Position) {
+  if (document.languageId !== 'vue') {
+    return false
+  }
+
+  const offset = document.offsetAt(position)
+  const lastText = document.getText().substring(offset)
+
+  const inAttrRange = lastText.indexOf('>') < lastText.indexOf('<')
+  const inTemplate = lastText.includes('</template>')
+
+  return inAttrRange && inTemplate
 }
 
 export interface AttrProviderOptions {
@@ -29,7 +36,11 @@ export interface AttrProviderOptions {
 
 export function registerCompletions(context: ExtensionContext) {
   const componentsProvider: CompletionItemProvider = {
-    provideCompletionItems() {
+    provideCompletionItems(document: TextDocument, position: Position) {
+      if (shouldDisableProvide(document, position)) {
+        return null
+      }
+
       const completionItems: CompletionItem[] = []
 
       Object.keys(componentsMap).forEach((key) => {
@@ -74,9 +85,9 @@ export function registerCompletions(context: ExtensionContext) {
         return null
       }
 
-      const completionItems: CompletionItem[] = icons.map((icon: string) => {
-        return new CompletionItem(icon, CompletionItemKind.Field)
-      })
+      const completionItems: CompletionItem[] = icons.map(
+        (icon: string) => new CompletionItem(icon, CompletionItemKind.Field)
+      )
 
       return completionItems
     },
@@ -84,8 +95,7 @@ export function registerCompletions(context: ExtensionContext) {
     resolveCompletionItem(completionItem: CompletionItem) {
       const id = completionItem.label
       const url = `${ICONS_STATIC}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
-      const documentation = getLanguage() === 'en-US' ? DOCUMENTATION_EN : DOCUMENTATION_ZH
-      const markdownString = new MarkdownString(`[icon: ${id}](${documentation}/icon)
+      const markdownString = new MarkdownString(`[icon: ${id}](${t('documentation')}/icon)
 <p align="center"><img height="80" src="${url}"></p>
 <br>
 `)

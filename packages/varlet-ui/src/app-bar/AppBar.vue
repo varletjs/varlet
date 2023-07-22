@@ -14,17 +14,28 @@
     <div :class="n('toolbar')">
       <div :class="n('left')">
         <slot name="left" />
-        <div :class="n('title')" :style="{ paddingLeft }" v-if="titlePosition === 'left'">
+        <div
+          :class="n('title')"
+          :style="{ paddingLeft }"
+          v-if="titlePosition === 'left'"
+        >
           <slot>{{ title }}</slot>
         </div>
       </div>
 
-      <div :class="n('title')" v-if="titlePosition === 'center'">
+      <div
+        :class="n('title')"
+        v-if="titlePosition === 'center'"
+      >
         <slot>{{ title }}</slot>
       </div>
 
       <div :class="n('right')">
-        <div :class="n('title')" :style="{ paddingRight }" v-if="titlePosition === 'right'">
+        <div
+          :class="n('title')"
+          :style="{ paddingRight }"
+          v-if="titlePosition === 'right'"
+        >
           <slot>{{ title }}</slot>
         </div>
         <slot name="right" />
@@ -39,7 +50,7 @@
 import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('app-bar')
 
@@ -74,7 +85,7 @@ export default defineComponent({
       }
     })
 
-    useMounted(computePadding)
+    onSmartMounted(computePadding)
     onUpdated(computePadding)
 
     return {

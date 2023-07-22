@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Space from './Space'
+import { withInstall } from '../utils/components'
 
-Space.install = function (app: App) {
-  app.component(Space.name, Space)
-}
+withInstall(Space)
 
 export { props as spaceProps } from './props'
 

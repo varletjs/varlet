@@ -12,10 +12,18 @@
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul :class="n('head')">
-            <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
+            <li
+              v-for="week in sortWeekList"
+              :key="week.index"
+            >
+              {{ getDayAbbr(week.index) }}
+            </li>
           </ul>
           <ul :class="n('body')">
-            <li v-for="(day, index) in days" :key="index">
+            <li
+              v-for="(day, index) in days"
+              :key="index"
+            >
               <var-button
                 type="primary"
                 var-day-picker-cover
@@ -48,7 +56,7 @@ import { WEEK_HEADER } from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
@@ -273,7 +281,7 @@ export default defineComponent({
       headerEl.value!.checkDate(checkType)
     }
 
-    useMounted(() => {
+    onSmartMounted(() => {
       initDate()
       initHeader()
     })

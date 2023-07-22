@@ -1,10 +1,6 @@
 <template>
   <div
     :class="classes(n(), n('$--box'), n(`--${variant}`), [size === 'small', n('--small')], [disabled, n('--disabled')])"
-    :style="{
-      '--field-decorator-legend-max-width': legendMaxWidth,
-      '--filed-decorator-controller-width': controllerWidth,
-    }"
     @click="handleClick"
   >
     <div
@@ -16,42 +12,39 @@
           [formDisabled || disabled, n('--disabled')]
         )
       "
-      ref="controllerEl"
       :style="{
         color,
         cursor,
+        overflow: isFloating ? 'visible' : 'hidden',
       }"
     >
-      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])" ref="prependIconEl">
+      <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <slot name="prepend-icon" />
       </div>
 
       <div :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
         <slot />
-
-        <label
-          v-if="hint || alwaysCustomPlaceholder"
-          :class="
-            classes(
-              n('placeholder'),
-              n('$--ellipsis'),
-              [isFocus, n('--focus')],
-              [formDisabled || disabled, n('--disabled')],
-              [errorMessage, n('--error')],
-              [!hint, n('--placeholder-non-hint')],
-              computePlaceholderState()
-            )
-          "
-          :style="{
-            transform: placeholderTransform,
-            color,
-          }"
-          :for="id"
-        >
-          <span>{{ placeholder }}</span>
-          <span :class="n('placeholder-text')" ref="placeholderTextEl">{{ placeholder }}</span>
-        </label>
       </div>
+
+      <label
+        v-if="placeholder && hint"
+        :class="
+          classes(
+            n('placeholder'),
+            n('$--ellipsis'),
+            [isFocus, n('--focus')],
+            [formDisabled || disabled, n('--disabled')],
+            [errorMessage, n('--error')],
+            computePlaceholderState()
+          )
+        "
+        :style="{
+          color,
+        }"
+        :for="id"
+      >
+        <span>{{ placeholder }}</span>
+      </label>
 
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <var-icon
@@ -66,24 +59,35 @@
     </div>
 
     <template v-if="line">
-      <template v-if="variant === 'outlined'">
-        <fieldset
-          :class="
-            classes(
-              n('line'),
-              [isFocus, n('--line-focus')],
-              [errorMessage, n('--line-error')],
-              [formDisabled || disabled, n('--line-disabled')]
-            )
-          "
-          ref="fieldsetEl"
+      <fieldset
+        v-if="variant === 'outlined'"
+        :class="
+          classes(
+            n('line'),
+            [isFocus, n('--line-focus')],
+            [errorMessage, n('--line-error')],
+            [formDisabled || disabled, n('--line-disabled')]
+          )
+        "
+        :style="{ borderColor: color }"
+      >
+        <legend
+          :class="classes(n('line-legend'), [isFloating, n('line-legend--hint')])"
+          :style="{ width: legendWidth }"
         >
-          <legend
-            :class="classes(n('line-legend'), [isFloating(), n('line-legend--hint')])"
-            :style="{ width: legendWidth, maxWidth: legendMaxWidth }"
-          ></legend>
-        </fieldset>
-      </template>
+          <teleport
+            to="body"
+            v-if="placeholder && hint"
+          >
+            <span
+              ref="placeholderTextEl"
+              :class="
+                classes(n('placeholder-text'), n('$--ellipsis'), [size === 'small', n('placeholder-text--small')])
+              "
+            >{{ placeholder }}</span>
+          </teleport>
+        </legend>
+      </fieldset>
 
       <div
         :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
@@ -108,11 +112,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, type Ref, computed, type ComputedRef, onUpdated } from 'vue'
 import { props } from './props'
 import { isEmpty } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
-import { useEventListener, useMounted } from '@varlet/use'
+import { onWindowResize, onSmartMounted } from '@varlet/use'
+import { getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('field-decorator')
 
@@ -122,60 +127,36 @@ export default defineComponent({
     VarIcon,
   },
   props,
-  setup(props) {
-    const fieldsetEl: Ref<HTMLElement | null> = ref(null)
-    const controllerEl: Ref<HTMLElement | null> = ref(null)
+  setup(props, { slots }) {
     const placeholderTextEl: Ref<HTMLElement | null> = ref(null)
-    const prependIconEl: Ref<HTMLElement | null> = ref(null)
-    const legendMaxWidth: Ref<string> = ref('')
     const legendWidth: Ref<string> = ref('')
-    const controllerWidth: Ref<string> = ref('')
-    const placeholderTransform: Ref<string> = ref('')
     const color: ComputedRef<string | undefined> = computed(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
+    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus || slots['prepend-icon']))
 
     const computePlaceholderState = () => {
-      const { hint, value, isFocus, composing } = props
+      const { hint, value, composing } = props
 
       if (!hint && (!isEmpty(value) || composing)) {
         return n('--placeholder-hidden')
       }
 
-      if (hint && (!isEmpty(value) || isFocus)) {
+      if (isFloating.value) {
         return n('--placeholder-hint')
       }
     }
 
-    const resetSize = () => {
-      legendWidth.value = ''
-      legendMaxWidth.value = ''
-      placeholderTransform.value = ''
-      controllerWidth.value = ''
-    }
-
-    const isFloating = () => props.hint && (!isEmpty(props.value) || props.isFocus)
-
     const resize = () => {
-      const { size, placeholder, variant } = props
-
-      if (!isFloating() || !placeholder) {
-        resetSize()
+      const { size, hint, variant, placeholder } = props
+      if (!placeholder || !hint || variant !== 'outlined') {
+        legendWidth.value = ''
         return
       }
 
+      const placeholderTextStyle = getStyle(placeholderTextEl.value!)
       const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-      const placeholderTextWidth = window.getComputedStyle(placeholderTextEl.value!)?.width
-      const prependIconWidth = window.getComputedStyle(prependIconEl.value!)?.width
-      const translateY = variant === 'outlined' ? '-50%' : '0'
-      placeholderTransform.value = `translate(-${prependIconWidth}, ${translateY}) scale(0.75)`
-      controllerWidth.value = window.getComputedStyle(controllerEl.value!).width
-
-      if (variant === 'outlined') {
-        const { width, paddingLeft, paddingRight } = window.getComputedStyle(fieldsetEl.value!)
-        legendWidth.value = `calc(${placeholderTextWidth} * 0.75 + 2 * ${placeholderSpace})`
-        legendMaxWidth.value = `calc(${width} - ${paddingLeft} - ${paddingRight})`
-      }
+      legendWidth.value = `calc(${placeholderTextStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
     }
 
     const handleClear = (e: Event) => {
@@ -186,20 +167,14 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    watch(() => [props.size, props.placeholder, props.hint, props.value, props.isFocus, props.variant], resize)
-    useMounted(resize)
-    useEventListener(() => window, 'resize', resize)
+    onWindowResize(resize)
+    onSmartMounted(resize)
+    onUpdated(resize)
 
     return {
-      fieldsetEl,
-      controllerEl,
       placeholderTextEl,
-      prependIconEl,
-      placeholderTransform,
       color,
       legendWidth,
-      legendMaxWidth,
-      controllerWidth,
       isFloating,
       computePlaceholderState,
       n,

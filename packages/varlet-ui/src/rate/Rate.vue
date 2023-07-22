@@ -17,8 +17,7 @@
           :namespace="namespace"
           :name="getCurrentState(value).name"
           :style="{ fontSize: toSizeUnit(size) }"
-        >
-        </var-icon>
+        />
 
         <var-hover-overlay :hovering="hovering && value === currentHoveringValue && !disabled && !formDisabled" />
       </div>
@@ -58,6 +57,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
     const currentHoveringValue = ref<number>(-1)
+    let lastScore = Number(props.modelValue)
 
     const getStyle = (val: number) => {
       const { count, gap } = props
@@ -97,11 +97,20 @@ export default defineComponent({
     }
 
     const changeValue = (score: number, event: MouseEvent) => {
-      if (props.half) {
+      const { half, clearable } = props
+
+      if (half) {
         const { offsetWidth } = event.target as HTMLDivElement
 
         if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
       }
+
+      // set score to 0 when last score is equal to current score
+      // and the value of clearable is true
+      if (lastScore === score && clearable) score = 0
+
+      // update last score
+      lastScore = score
 
       call(props['onUpdate:modelValue'], score)
     }
@@ -122,11 +131,9 @@ export default defineComponent({
       validateWithTrigger()
     }
 
-    const createHoverHandler = (value: number) => {
-      return (isHover: boolean) => {
-        currentHoveringValue.value = value
-        hovering.value = isHover
-      }
+    const createHoverHandler = (value: number) => (isHover: boolean) => {
+      currentHoveringValue.value = value
+      hovering.value = isHover
     }
 
     const reset = () => {

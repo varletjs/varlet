@@ -8,12 +8,21 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  imagePreventDefault: {
+    type: Boolean,
+    default: false,
+  },
   images: {
     type: Array as PropType<string[]>,
     default: () => [],
   },
+  /** @deprecated Use initialIndex to instead. */
   current: {
     type: String,
+  },
+  initialIndex: {
+    type: [String, Number],
+    default: 0,
   },
   zoom: {
     type: [String, Number],
@@ -24,6 +33,7 @@ export const props = {
     default: false,
   },
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
+  onLongPress: defineListenerProp<(index: number) => void>(),
   ...pickProps(swipeProps, ['loop', 'indicator', 'onChange']),
   ...pickProps(popupProps, [
     'lockScroll',

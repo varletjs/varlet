@@ -115,6 +115,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable                       | Default                      |
 | --- |------------------------------|
+| `--link-default-color` | `#555`                       |
 | `--link-primary-color` | `var(--color-primary)`       |
 | `--link-danger-color` | `var(--color-danger)`        |
 | `--link-success-color` | `var(--color-success)`       |

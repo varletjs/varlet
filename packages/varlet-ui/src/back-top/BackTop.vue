@@ -1,5 +1,8 @@
 <template>
-  <teleport to="body" :disabled="disabled">
+  <teleport
+    to="body"
+    :disabled="disabled"
+  >
     <div
       :class="classes(n(), [show, n('--active')])"
       ref="backTopEl"
@@ -11,7 +14,12 @@
       @click.stop="handleClick"
     >
       <slot>
-        <var-button :elevation="elevation" type="primary" round var-back-top-cover>
+        <var-button
+          :elevation="elevation"
+          type="primary"
+          round
+          var-back-top-cover
+        >
           <var-icon name="chevron-up" />
         </var-button>
       </slot>
@@ -21,16 +29,7 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarIcon from '../icon'
-import {
-  defineComponent,
-  ref,
-  onBeforeUnmount,
-  onDeactivated,
-  onMounted,
-  type Ref,
-  type TeleportProps,
-  onActivated,
-} from 'vue'
+import { defineComponent, ref, onMounted, onActivated, type Ref, type TeleportProps } from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -44,6 +43,7 @@ import {
   getTarget,
 } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
+import { onSmartUnmounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('back-top')
 
@@ -97,8 +97,8 @@ export default defineComponent({
     })
 
     onActivated(addScrollerEventListener)
-    onBeforeUnmount(removeScrollerEventListener)
-    onDeactivated(removeScrollerEventListener)
+
+    onSmartUnmounted(removeScrollerEventListener)
 
     return {
       disabled,

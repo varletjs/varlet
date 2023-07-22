@@ -1,5 +1,8 @@
 <template>
-  <div :class="n()" :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }">
+  <div
+    :class="n()"
+    :style="{ flexDirection: direction === 'horizontal' ? 'row' : 'column' }"
+  >
     <slot />
   </div>
 </template>
@@ -23,7 +26,7 @@ export default defineComponent({
     const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
     const direction: ComputedRef<string> = computed(() => props.direction)
 
-    const { length, bindStep } = useStep()
+    const { bindStep } = useStep()
 
     const clickStep = (index: number) => {
       call(props.onClickStep, index)
@@ -31,7 +34,6 @@ export default defineComponent({
 
     const stepsProvider: StepsProvider = {
       active,
-      length,
       direction,
       activeColor,
       inactiveColor,

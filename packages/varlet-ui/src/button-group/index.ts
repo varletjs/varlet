@@ -1,10 +1,7 @@
-// Component entry, the folder where the file exists will be exposed to the user
 import ButtonGroup from './ButtonGroup.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-ButtonGroup.install = function (app: App) {
-  app.component(ButtonGroup.name, ButtonGroup)
-}
+withInstall(ButtonGroup)
 
 export const _ButtonGroupComponent = ButtonGroup
 

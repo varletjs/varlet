@@ -1,18 +1,22 @@
 <template>
   <div
     ref="host"
-    :class="n()"
+    :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
     @mouseleave="handleHostMouseleave"
   >
     <slot />
 
-    <teleport :to="teleport">
-      <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
+    <Teleport :to="teleport">
+      <transition
+        :name="n()"
+        @after-enter="onOpened"
+        @after-leave="handleClosed"
+      >
         <div
           ref="popover"
-          :class="n('tooltip')"
+          :class="classes(n('tooltip'), n('$--box'))"
           :style="{ zIndex }"
           v-show="show"
           @click.stop
@@ -23,11 +27,13 @@
             :style="{ background: color, width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined }"
             :class="classes(n('content-container'), n(`--${type}`))"
           >
-            <slot name="content">{{ content }}</slot>
+            <slot name="content">
+              {{ content }}
+            </slot>
           </div>
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 
@@ -56,6 +62,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       // expose
       open,
       // expose
@@ -79,6 +86,7 @@ export default defineComponent({
       handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
+      handleClosed,
       resize,
       open,
       close,

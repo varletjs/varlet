@@ -131,6 +131,7 @@ function get(current, size) {
 | `--table-thead-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
 | `--table-tbody-tr-hover-background` | `#eee` |
 | `--table-tbody-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-tbody-td-text-color` | `#555` | 
 | `--table-tbody-td-font-size` | `16px` |
 | `--table-row-height` | `46px` |
 | `--table-row-padding` | `0 16px` |

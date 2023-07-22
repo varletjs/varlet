@@ -107,7 +107,7 @@ const TransitionGroupHost = {
 
         if (isAllowMultiple) reactiveSnackOptions.position = 'top'
 
-        const position = isAllowMultiple ? 'relative' : 'absolute' // avoid stylelint value-keyword-case error
+        const position = isAllowMultiple ? 'relative' : 'absolute'
 
         const style = {
           position,
@@ -126,7 +126,7 @@ const TransitionGroupHost = {
         )
       })
 
-      const zindex = context.zIndex // avoid stylelint value-keyword-case error
+      const zindex = context.zIndex
 
       return (
         <TransitionGroup

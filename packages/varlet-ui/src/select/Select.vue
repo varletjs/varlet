@@ -1,15 +1,20 @@
 <template>
-  <div :class="n()" @click="handleFocus">
+  <div
+    :class="n()"
+    @click="handleFocus"
+  >
     <var-menu
-      :class="n('menu')"
       var-select-cover
       same-width
+      close-on-click-reference
+      v-model:show="showMenu"
+      :class="n('menu')"
+      :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
-      v-model:show="isFocus"
-      @close="handleBlur"
+      @click-outside="handleBlur"
     >
       <var-field-decorator
         v-bind="{
@@ -32,7 +37,10 @@
           onClear: handleClear,
         }"
       >
-        <template #prepend-icon>
+        <template
+          v-if="$slots['prepend-icon']"
+          #prepend-icon
+        >
           <slot name="prepend-icon" />
         </template>
 
@@ -44,9 +52,15 @@
           }"
         >
           <div :class="n('label')">
-            <slot name="selected" v-if="!isEmptyModelValue">
+            <slot
+              name="selected"
+              v-if="!isEmptyModelValue"
+            >
               <template v-if="multiple">
-                <div :class="n('chips')" v-if="chip">
+                <div
+                  :class="n('chips')"
+                  v-if="chip"
+                >
                   <var-chip
                     :class="n('chip')"
                     var-select-cover
@@ -61,7 +75,10 @@
                     {{ l }}
                   </var-chip>
                 </div>
-                <div :class="n('values')" v-else>
+                <div
+                  :class="n('values')"
+                  v-else
+                >
                   {{ labels.join(separator) }}
                 </div>
               </template>
@@ -70,9 +87,22 @@
             </slot>
           </div>
 
-          <slot name="arrow-icon" :focus="isFocus">
+          <span
+            v-if="enableCustomPlaceholder"
+            :class="classes(n('placeholder'), n('$--ellipsis'))"
+            :style="{
+              color: placeholderColor,
+            }"
+          >
+            {{ placeholder }}
+          </span>
+
+          <slot
+            name="arrow-icon"
+            :focus="showMenu"
+          >
             <var-icon
-              :class="classes(n('arrow'), [isFocus, n('--arrow-rotate')])"
+              :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
               var-select-cover
               name="menu-down"
               :transition="300"
@@ -88,16 +118,17 @@
       <template #menu>
         <div
           ref="menuEl"
-          :class="
-            classes(n('scroller'), n(`--scroller-${variant}`), n('$-elevation--3'), [!hint, n('--scroller-non-hint')])
-          "
+          :class="classes(n('scroller'), n('$-elevation--3'))"
         >
           <slot />
         </div>
       </template>
     </var-menu>
 
-    <var-form-details :error-message="errorMessage" @click.stop />
+    <var-form-details
+      :error-message="errorMessage"
+      @click.stop
+    />
   </div>
 </template>
 
@@ -131,6 +162,7 @@ export default defineComponent({
   props,
   setup(props) {
     const isFocus: Ref<boolean> = ref(false)
+    const showMenu: Ref<boolean> = ref(false)
     const multiple: ComputedRef<boolean> = computed(() => props.multiple)
     const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
     const label: Ref<string | number> = ref('')
@@ -149,7 +181,27 @@ export default defineComponent({
     } = useValidation()
     const menuEl: Ref<HTMLElement | null> = ref(null)
 
-    const placement = computed(() => (props.variant === 'outlined' ? 'bottom-start' : 'cover-top-start'))
+    const placement = computed(() => (props.variant === 'outlined' ? 'bottom' : 'cover-top'))
+
+    const placeholderColor: ComputedRef<string | undefined> = computed(() => {
+      const { hint, blurColor, focusColor } = props
+
+      if (hint) {
+        return undefined
+      }
+
+      if (errorMessage.value) {
+        return 'var(--field-decorator-error-color)'
+      }
+
+      if (isFocus.value) {
+        return focusColor || 'var(--field-decorator-focus-color)'
+      }
+
+      return blurColor || 'var(--field-decorator-blur-color)'
+    })
+
+    const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
 
     const computeLabel = () => {
       const { multiple, modelValue } = props
@@ -214,6 +266,7 @@ export default defineComponent({
         return
       }
 
+      blur()
       call(onBlur)
       validateWithTrigger('onBlur')
     }
@@ -233,7 +286,9 @@ export default defineComponent({
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
 
-      !multiple && (isFocus.value = false)
+      if (!multiple) {
+        blur()
+      }
     }
 
     const handleClear = () => {
@@ -294,11 +349,13 @@ export default defineComponent({
     const focus = () => {
       offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
+      showMenu.value = true
     }
 
     // expose
     const blur = () => {
       isFocus.value = false
+      showMenu.value = false
     }
 
     // expose
@@ -340,6 +397,7 @@ export default defineComponent({
     return {
       offsetY,
       isFocus,
+      showMenu,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
@@ -349,6 +407,8 @@ export default defineComponent({
       menuEl,
       placement,
       cursor,
+      placeholderColor,
+      enableCustomPlaceholder,
       n,
       classes,
       handleFocus,

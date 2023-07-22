@@ -28,11 +28,6 @@ const { list, list2, list3, loading, loading2, loading3, finished, finished2, fi
   toRefs(values)
 
 function load() {
-  if (values.current !== 0) {
-    values.loading = false
-    return
-  }
-
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       values.list.push(values.list.length + 1)
@@ -47,11 +42,6 @@ function load() {
 }
 
 function load2() {
-  if (values.current !== 1) {
-    values.loading2 = false
-    return
-  }
-
   setTimeout(() => {
     if (values.list2.length === 40) {
       values.error = true
@@ -68,11 +58,6 @@ function load2() {
 }
 
 function load3() {
-  if (values.current !== 2) {
-    values.loading3 = false
-    return
-  }
-
   setTimeout(() => {
     for (let i = 0; i < 20; i++) {
       values.list3.push(values.list3.length + 1)
@@ -91,7 +76,12 @@ watchDarkMode(dark)
 </script>
 
 <template>
-  <var-tabs v-model:active="current" sticky offset-top="14.4vw" style="margin-bottom: 10px">
+  <var-tabs
+    v-model:active="current"
+    sticky
+    offset-top="14.4vmin"
+    style="margin-bottom: 10px"
+  >
     <var-tab>{{ pack.basicUsage }}</var-tab>
     <var-tab>{{ pack.loadFail }}</var-tab>
     <var-tab>{{ pack.tipText }}</var-tab>
@@ -99,13 +89,32 @@ watchDarkMode(dark)
 
   <var-tabs-items v-model:active="current">
     <var-tab-item>
-      <var-list :finished="finished" v-model:loading="loading" @load="load">
-        <var-cell :key="d" v-for="d in list"> {{ pack.listItem }}: {{ d }} </var-cell>
+      <var-list
+        :finished="finished"
+        v-model:loading="loading"
+        @load="load"
+      >
+        <var-cell
+          :key="d"
+          v-for="d in list"
+        >
+          {{ pack.listItem }}: {{ d }}
+        </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
-      <var-list :finished="finished2" v-model:error="error" v-model:loading="loading2" @load="load2">
-        <var-cell :key="d" v-for="d in list2"> {{ pack.listItem }}: {{ d }} </var-cell>
+      <var-list
+        :finished="finished2"
+        v-model:error="error"
+        v-model:loading="loading2"
+        @load="load2"
+      >
+        <var-cell
+          :key="d"
+          v-for="d in list2"
+        >
+          {{ pack.listItem }}: {{ d }}
+        </var-cell>
       </var-list>
     </var-tab-item>
     <var-tab-item>
@@ -117,7 +126,12 @@ watchDarkMode(dark)
         v-model:loading="loading3"
         @load="load3"
       >
-        <var-cell :key="d" v-for="d in list3"> {{ pack.listItem }}: {{ d }} </var-cell>
+        <var-cell
+          :key="d"
+          v-for="d in list3"
+        >
+          {{ pack.listItem }}: {{ d }}
+        </var-cell>
       </var-list>
     </var-tab-item>
   </var-tabs-items>

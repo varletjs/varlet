@@ -1,4 +1,5 @@
 import '@vue/repl/style.css'
+import '@varlet/touch-emulator'
 import { createApp } from 'vue'
 import App from './App.vue'
 

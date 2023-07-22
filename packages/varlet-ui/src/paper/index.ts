@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Paper from './Paper.vue'
+import { withInstall } from '../utils/components'
 
-Paper.install = function (app: App) {
-  app.component(Paper.name, Paper)
-}
+withInstall(Paper)
 
 export { props as paperProps } from './props'
 

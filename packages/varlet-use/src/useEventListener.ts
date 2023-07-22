@@ -1,6 +1,6 @@
 import { inBrowser, isFunction } from '@varlet/shared'
 import { isRef, onDeactivated, onBeforeUnmount, unref, watch, type Ref, type WatchStopHandle } from 'vue'
-import { useMounted } from './useMounted.js'
+import { onSmartMounted } from './onSmartMounted.js'
 
 export type UseEventListenerTarget = EventTarget | Ref<EventTarget | undefined | null> | (() => EventTarget)
 
@@ -37,9 +37,8 @@ export function useEventListener(
   let listening = false
   let cleaned = false
 
-  const getElement = (target: UseEventListenerTarget | null | undefined) => {
-    return isFunction(target) ? target() : unref(target)
-  }
+  const getElement = (target: UseEventListenerTarget | null | undefined) =>
+    isFunction(target) ? target() : unref(target)
 
   const add = (target?: UseEventListenerTarget | null) => {
     if (listening || cleaned) {
@@ -92,7 +91,7 @@ export function useEventListener(
     cleaned = true
   }
 
-  useMounted(() => {
+  onSmartMounted(() => {
     add(target)
   })
 

@@ -229,7 +229,7 @@ const show = ref(false)
 | `overlay-style`             | Custom overlay style                                                                                           | _string_              | `-`       |
 | `lock-scroll`               | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_             | `true`    |
 | `close-on-click-overlay`    | Whether to click the overlay to close the Dialog                                                               | _boolean_             | `true`    |
-| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to']_ | `-`       |
+| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to']_ | `body`       |
 
 ### Events
 
@@ -311,5 +311,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--dialog-message-font-size`    | `var(--font-size-md)`  |
 | `--dialog-actions-padding`      | `0 12px 12px`          |
 | `--dialog-button-margin-left`   | `6px`                  |
+| `--dialog-title-color`          | `#555`                 |
 | `--dialog-confirm-button-color` | `var(--color-primary)` |
 | `--dialog-cancel-button-color`  | `var(--color-primary)` |

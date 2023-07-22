@@ -1,39 +1,66 @@
 <template>
-  <div :class="classes(n(), n('$--box'))" ref="listEl">
+  <div
+    :class="classes(n(), n('$--box'))"
+    ref="listEl"
+  >
     <slot />
 
-    <slot name="loading" v-if="loading">
+    <slot
+      name="loading"
+      v-if="loading"
+    >
       <div :class="n('loading')">
-        <div :class="n('loading-text')">{{ dt(loadingText, pack.listLoadingText) }}</div>
-        <var-loading size="mini" :radius="10" />
+        <div :class="n('loading-text')">
+          {{ dt(loadingText, pack.listLoadingText) }}
+        </div>
+        <var-loading
+          size="mini"
+          :radius="10"
+        />
       </div>
     </slot>
 
-    <slot name="finished" v-if="finished">
-      <div :class="n('finished')">{{ dt(finishedText, pack.listFinishedText) }}</div>
+    <slot
+      name="finished"
+      v-if="finished"
+    >
+      <div :class="n('finished')">
+        {{ dt(finishedText, pack.listFinishedText) }}
+      </div>
     </slot>
 
-    <slot name="error" v-if="error">
-      <div :class="n('error')" v-ripple @click="load">
+    <slot
+      name="error"
+      v-if="error"
+    >
+      <div
+        :class="n('error')"
+        v-ripple
+        @click="load"
+      >
         {{ dt(errorText, pack.listErrorText) }}
       </div>
     </slot>
 
-    <div :class="n('detector')" ref="detectorEl"></div>
+    <div
+      :class="n('detector')"
+      ref="detectorEl"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, onUnmounted, ref, nextTick, type Ref, onDeactivated } from 'vue'
-import { getParentScroller, toPxNum } from '../utils/elements'
+import { defineComponent, ref, nextTick, type Ref, watch } from 'vue'
+import { getParentScroller, getRect, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
+import { useTabItem } from './provide'
 
 const { n, classes } = createNamespace('list')
 
@@ -45,6 +72,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const { tabItem, bindTabItem } = useTabItem()
     const listEl: Ref<HTMLElement | null> = ref(null)
     const detectorEl: Ref<HTMLElement | null> = ref(null)
     let scroller: HTMLElement | Window
@@ -56,10 +84,8 @@ export default defineComponent({
     }
 
     const isReachBottom = () => {
-      const containerBottom =
-        scroller === window ? window.innerHeight : (scroller as HTMLElement).getBoundingClientRect().bottom
-
-      const { bottom: detectorBottom } = (detectorEl.value as HTMLElement).getBoundingClientRect()
+      const { bottom: containerBottom } = getRect(scroller)
+      const { bottom: detectorBottom } = getRect(detectorEl.value!)
 
       // The fractional part of the detectorBottom when bottoming out overflows
       // https://github.com/varletjs/varlet/issues/310
@@ -74,21 +100,31 @@ export default defineComponent({
     const check = async () => {
       await nextTick()
 
-      const { loading, finished, error } = props
-
-      if (!loading && !finished && !error && isReachBottom()) {
-        load()
+      if (props.loading || props.finished || props.error || tabItem?.current.value === false || !isReachBottom()) {
+        return
       }
+
+      load()
     }
 
-    useMounted(() => {
-      scroller = getParentScroller(listEl.value as HTMLElement)
+    call(bindTabItem, {})
+
+    if (tabItem) {
+      watch(() => tabItem.current.value, check)
+    }
+
+    watch(() => [props.loading, props.error, props.finished], check)
+
+    onSmartMounted(() => {
+      scroller = getParentScroller(listEl.value!)
       scroller.addEventListener('scroll', check)
-      props.immediateCheck && check()
+
+      if (props.immediateCheck) {
+        check()
+      }
     })
 
-    onDeactivated(removeScrollerListener)
-    onUnmounted(removeScrollerListener)
+    onSmartUnmounted(removeScrollerListener)
 
     return {
       pack,

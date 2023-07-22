@@ -1,19 +1,24 @@
 <template>
-  <var-swipe :class="n()" ref="swipe" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
+  <var-swipe
+    :class="n()"
+    ref="swipe"
+    :loop="loop"
+    :touchable="canSwipe"
+    :indicator="false"
+    @change="handleSwipeChange"
+  >
     <slot />
   </var-swipe>
 </template>
 
 <script lang="ts">
 import VarSwipe from '../swipe'
-import { defineComponent, watch, ref } from 'vue'
+import { defineComponent, watch, ref, type Ref } from 'vue'
 import { useTabItem } from './provide'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
-import type { Ref } from 'vue'
-import type { TabsItemsProvider } from './provide'
-import type { TabItemProvider } from '../tab-item/provide'
 import { doubleRaf } from '../utils/elements'
+import { type TabItemProvider } from '../tab-item/provide'
 
 const { n } = createNamespace('tabs-items')
 
@@ -25,17 +30,14 @@ export default defineComponent({
     const swipe: Ref<null | typeof VarSwipe> = ref(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
 
-    const matchName = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
-    }
+    const matchName = (active: number | string | undefined): TabItemProvider | undefined =>
+      tabItemList.find(({ name }: TabItemProvider) => active === name.value)
 
-    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined => {
-      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
-    }
+    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined =>
+      tabItemList.find(({ index }: TabItemProvider) => active === index.value)
 
-    const matchActive = (active: number | string | undefined): TabItemProvider | undefined => {
-      return matchName(active) || matchIndex(active)
-    }
+    const matchActive = (active: number | string | undefined): TabItemProvider | undefined =>
+      matchName(active) || matchIndex(active)
 
     const handleActiveChange = (newValue: number | string | undefined) => {
       const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
@@ -56,12 +58,9 @@ export default defineComponent({
     }
 
     // expose
-    const getSwipe = () => {
-      return swipe.value
-    }
+    const getSwipe = () => swipe.value
 
-    const tabsItemsProvider: TabsItemsProvider = {}
-    bindTabItem(tabsItemsProvider)
+    bindTabItem({})
 
     watch(() => props.active, handleActiveChange)
 

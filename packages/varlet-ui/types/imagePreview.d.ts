@@ -1,37 +1,48 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { SwipeToOptions } from './swipe'
 import { App, TeleportProps, VNode } from 'vue'
 
 export declare const imagePreviewProps: Record<string, any>
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
   teleport?: TeleportProps['to']
+  imagePreventDefault?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onChange?: ListenerProp<(index: number) => void>
+  onLongPress?: ListenerProp<(index: number) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 export interface ImagePreviewOptions {
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
+  imagePreventDefault?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
+  onLongPress?: (index: number) => void
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 export class ImagePreviewComponent extends VarComponent {
@@ -42,6 +53,12 @@ export class ImagePreviewComponent extends VarComponent {
     extra(): VNode[]
     'close-icon'(): VNode[]
   }
+
+  prev(options?: SwipeToOptions): void
+
+  next(options?: SwipeToOptions): void
+
+  to(index: number, options?: SwipeToOptions): void
 }
 
 export interface IImagePreview {

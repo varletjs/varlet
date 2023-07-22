@@ -36,22 +36,45 @@ watchDarkMode(dark)
   <var-slider v-model="values.value" />
 
   <app-type>{{ pack.stepSize }}</app-type>
-  <var-slider v-model="values.value2" step="10" />
+  <var-slider
+    v-model="values.value2"
+    step="10"
+  />
 
   <app-type>{{ pack.dualThumb }}</app-type>
-  <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
+  <var-slider
+    v-model="values.value1"
+    range
+    @change="handleChange"
+    label-visible="always"
+  />
 
   <app-type>{{ pack.range }}</app-type>
-  <var-slider v-model="values.value11" max="210" min="-50" label-visible="always" />
+  <var-slider
+    v-model="values.value11"
+    max="210"
+    min="-50"
+    label-visible="always"
+  />
 
   <app-type>{{ pack.disable }}</app-type>
-  <var-slider v-model="values.value3" disabled />
+  <var-slider
+    v-model="values.value3"
+    disabled
+  />
 
   <app-type>{{ pack.readonly }}</app-type>
-  <var-slider v-model="values.value3" readonly />
+  <var-slider
+    v-model="values.value3"
+    readonly
+  />
 
   <app-type>{{ pack.sliderSize }}</app-type>
-  <var-slider v-model="values.value10" track-height="1.5vw" range />
+  <var-slider
+    v-model="values.value10"
+    track-height="1.5vmin"
+    range
+  />
 
   <app-type>{{ pack.customStyle }}</app-type>
   <var-slider
@@ -64,27 +87,50 @@ watchDarkMode(dark)
   />
 
   <app-type>{{ pack.customBtn }}</app-type>
-  <var-slider v-model="values.value9" range active-color="#52af77">
+  <var-slider
+    v-model="values.value9"
+    range
+    active-color="#52af77"
+  >
     <template #button="{ currentValue }">
-      <div class="slider-example__block">{{ currentValue }}</div>
+      <div class="slider-example__block">
+        {{ currentValue }}
+      </div>
     </template>
   </var-slider>
 
   <app-type>{{ pack.showLabel }}</app-type>
-  <var-slider v-model="values.value5" label-visible="never" />
+  <var-slider
+    v-model="values.value5"
+    label-visible="never"
+  />
   <var-slider v-model="values.value6" />
-  <var-slider v-model="values.value7" label-visible="always" />
+  <var-slider
+    v-model="values.value7"
+    label-visible="always"
+  />
 
   <app-type>{{ pack.validateValue }}</app-type>
-  <var-slider v-model="values.value8" :rules="[(v) => v > 35 || 'error message']" />
+  <var-slider
+    v-model="values.value8"
+    :rules="[(v) => v > 35 || pack.errMsg]"
+  />
 
   <app-type>{{ pack.vertical }}</app-type>
   <var-space justify="space-around">
     <div style="height: 300px">
-      <var-slider v-model="values.value12" direction="vertical" />
+      <var-slider
+        v-model="values.value12"
+        direction="vertical"
+      />
     </div>
     <div style="height: 300px">
-      <var-slider v-model="values.value13" range label-visible="always" direction="vertical" />
+      <var-slider
+        v-model="values.value13"
+        range
+        label-visible="always"
+        direction="vertical"
+      />
     </div>
   </var-space>
 </template>

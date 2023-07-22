@@ -1,5 +1,5 @@
 import context from '../context'
-import { supportTouch } from '../utils/elements'
+import { supportTouch, getStyle, getRect } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 import { type Directive, type Plugin, type App, type DirectiveBinding } from 'vue'
 
@@ -30,7 +30,7 @@ interface RippleHTMLElement extends HTMLElement {
 const ANIMATION_DURATION = 250
 
 function setStyles(element: RippleHTMLElement) {
-  const { zIndex, position } = window.getComputedStyle(element)
+  const { zIndex, position } = getStyle(element)
 
   element.style.overflow = 'hidden'
   element.style.overflowX = 'hidden'
@@ -40,7 +40,7 @@ function setStyles(element: RippleHTMLElement) {
 }
 
 function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): RippleStyles {
-  const { top, left }: DOMRect = element.getBoundingClientRect()
+  const { top, left }: DOMRect = getRect(element)
   const { clientWidth, clientHeight } = element
 
   const radius: number = Math.sqrt(clientWidth ** 2 + clientHeight ** 2) / 2

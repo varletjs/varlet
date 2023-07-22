@@ -1,6 +1,9 @@
 <template>
   <transition :name="n()">
-    <div :class="n()" v-if="errorMessage || extraMessage">
+    <div
+      :class="n()"
+      v-if="errorMessage || extraMessage || $slots['extra-message']"
+    >
       <div :class="n('error-message')">
         <transition :name="n('message')">
           <div v-if="errorMessage">
@@ -10,9 +13,11 @@
       </div>
       <div :class="n('extra-message')">
         <transition :name="n('message')">
-          <div v-if="extraMessage">
-            {{ extraMessage }}
-          </div>
+          <slot name="extra-message">
+            <div v-if="extraMessage">
+              {{ extraMessage }}
+            </div>
+          </slot>
         </transition>
       </div>
     </div>

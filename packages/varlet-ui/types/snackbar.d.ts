@@ -8,13 +8,9 @@ export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
 export declare const snackbarProps: Record<string, any>
 
-export type SlotType = string | VNode | (() => VNode)
-
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
-  content?: SlotType
-  icon?: SlotType
-  action?: SlotType
+  content?: string
   position?: SnackbarPosition
   loadingType?: LoadingType
   loadingSize?: LoadingSize
@@ -50,15 +46,18 @@ export interface SnackbarHandel {
 
 export interface SnackbarOptions {
   type?: SnackbarType
-  content?: string
   position?: SnackbarPosition
+  content?: string | VNode | (() => VNode)
+  icon?: string | VNode | (() => VNode)
+  action?: string | VNode | (() => VNode)
+  duration?: number
+  contentClass?: string
+  vertical?: boolean
   loadingType?: string
   loadingSize?: string
-  teleport?: string
+  loadingColor?: string
+  loadingRadius?: string
   lockScroll?: boolean
-  contentClass?: string
-  duration?: number
-  vertical?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void

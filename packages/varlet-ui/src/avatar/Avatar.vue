@@ -28,12 +28,24 @@
         :lazy-loading="loading"
         :lazy-error="error"
         @load="handleLoad"
-      />
+      >
 
-      <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
+      <img
+        v-else
+        :class="n('image')"
+        :src="src"
+        :style="{ objectFit: fit }"
+        @load="handleLoad"
+        @error="handleError"
+      >
     </template>
 
-    <div ref="textElement" :class="n('text')" :style="{ transform: `scale(${scale})` }" v-else>
+    <div
+      ref="textElement"
+      :class="n('text')"
+      :style="{ transform: `scale(${scale})` }"
+      v-else
+    >
       <slot />
     </div>
   </div>
@@ -45,7 +57,7 @@ import { defineComponent, ref, onUpdated, type Ref } from 'vue'
 import { props, internalSizeValidator, sizeValidator } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
-import { useMounted } from '@varlet/use'
+import { onSmartMounted } from '@varlet/use'
 
 const { n, classes } = createNamespace('avatar')
 
@@ -94,7 +106,7 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    useMounted(getScale)
+    onSmartMounted(getScale)
     onUpdated(getScale)
 
     return {

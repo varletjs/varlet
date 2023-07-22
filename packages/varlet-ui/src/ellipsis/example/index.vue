@@ -9,18 +9,33 @@ watchLang(use)
 
 <template>
   <app-type>{{ pack.line }}</app-type>
-  <var-ellipsis style="max-width: 50vw">{{ pack.text }}</var-ellipsis>
+  <var-ellipsis style="max-width: 50vmin">
+    {{ pack.text }}
+  </var-ellipsis>
 
   <app-type>{{ pack.multipleLine }}</app-type>
-  <var-ellipsis style="max-width: 50vw" :line-clamp="3">{{ pack.text }}</var-ellipsis>
+  <var-ellipsis
+    style="max-width: 50vmin"
+    :line-clamp="3"
+  >
+    {{ pack.text }}
+  </var-ellipsis>
 
   <app-type>{{ pack.expand }}</app-type>
-  <var-ellipsis style="max-width: 50vw" :line-clamp="3" expand-trigger="click" :tooltip="false">{{
-    pack.text
-  }}</var-ellipsis>
+  <var-ellipsis
+    style="max-width: 50vmin"
+    :line-clamp="3"
+    expand-trigger="click"
+    :tooltip="false"
+  >
+    {{ pack.text }}
+  </var-ellipsis>
 
   <app-type>{{ pack.tooltip }}</app-type>
-  <var-ellipsis style="max-width: 50vw" :tooltip="{ type: 'primary', sameWidth: false }">
+  <var-ellipsis
+    style="max-width: 50vmin"
+    :tooltip="{ type: 'primary', sameWidth: false }"
+  >
     {{ pack.text }}
 
     <template #tooltip-content>

@@ -45,3 +45,22 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 
 ### 开源协议
 组件库基于 `MIT` 协议。
+
+### 贡献指南
+详情见 [Varlet 贡献指南](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。
+
+### 感谢贡献者们做出的努力
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors" style="width: 100%; display: block; margin-top: 16px">
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet" style="width: 100%; display: block; border-radius: 4px;" />
+</a>
+
+### 感谢以下赞助者
+
+<a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; margin-top: 16px">
+  <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; border-radius: 4px;">
+</a>
+
+### 赞助本项目
+
+赞助本项目，支持我们更好的创作。推荐使用[爱发电](https://afdian.net/a/haoziqaq)进行订阅，您的头像将出现在本项目中。

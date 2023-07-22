@@ -73,7 +73,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+    <var-select placeholder="Custom Icon Size" v-model="value7">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -226,7 +226,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="Custom Icon Size" v-model="value7">
+    <var-select variant="outlined" placeholder="Custom Icon Size" v-model="value7">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -392,7 +392,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -430,10 +429,10 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
-| `--select-outlined-scroller-margin` | `0` |
+| `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
 #### Option Variables
 
@@ -441,4 +440,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
+| `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--options-text-color` | `#555` |

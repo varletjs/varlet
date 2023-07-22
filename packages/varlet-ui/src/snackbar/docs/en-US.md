@@ -314,7 +314,7 @@ function openMultiple() {
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
 | `loading-type` | Loading type (see `Loading` component)                                             | _string_ | `circle` |
 | `loading-size` | Loading size (see `Loading` component)                                             | _string_ | `normal` |
-| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`current_color`|
+| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`currentColor`|
 | `loading-radius` | Loading radius (see `Loading` component)                                           | _string \| number_  | `-` |
 | `lock-scroll`| Whether to disable rolling penetration                                             | _boolean_  | `false` |
 | `forbid-click`| whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
@@ -397,4 +397,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--snackbar-error-background` | `var(--color-danger)` |
 | `--snackbar-warning-background` | `var(--color-warning)` |
 | `--snackbar-content-padding` | `14px 16px` |
-| `--snackbar-action-margin` | `0 16px 0 0` |
+| `--snackbar-action-margin` | `0 8px 0` |
+| `--snackbar-vertical-action-margin` | `0 8px 8px 0` |

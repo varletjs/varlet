@@ -65,7 +65,9 @@ watchDarkMode(dark, (mode) => {
   >
     <var-tab>{{ pack.option }}1</var-tab>
     <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab disabled>{{ pack.disabled }}</var-tab>
+    <var-tab disabled>
+      {{ pack.disabled }}
+    </var-tab>
   </var-tabs>
 
   <app-type>{{ pack.enableScroll }}</app-type>
@@ -96,15 +98,24 @@ watchDarkMode(dark, (mode) => {
     v-model:active="active5"
   >
     <var-tab>
-      <var-icon class="icon" name="information" />
+      <var-icon
+        class="icon"
+        name="information"
+      />
       <div>{{ pack.option }}1</div>
     </var-tab>
     <var-tab>
-      <var-icon class="icon" name="warning" />
+      <var-icon
+        class="icon"
+        name="warning"
+      />
       <div>{{ pack.option }}2</div>
     </var-tab>
     <var-tab>
-      <var-icon class="icon" name="error" />
+      <var-icon
+        class="icon"
+        name="error"
+      />
       <div>{{ pack.option }}3</div>
     </var-tab>
   </var-tabs>
@@ -138,7 +149,10 @@ watchDarkMode(dark, (mode) => {
     <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
+  <var-tabs-items
+    style="margin: 8px 0"
+    v-model:active="activeRelation"
+  >
     <var-tab-item :style="tabItemStyle">
       {{ pack.text }}
     </var-tab-item>
@@ -157,7 +171,7 @@ watchDarkMode(dark, (mode) => {
     color="var(--color-primary)"
     active-color="#fff"
     inactive-color="hsla(0, 0%, 100%, .6)"
-    offset-top="14.4vw"
+    offset-top="14.4vmin"
     v-model:active="active7"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -195,7 +209,7 @@ watchDarkMode(dark, (mode) => {
     <var-tab>{{ pack.option }}3</var-tab>
   </var-tabs>
 
-  <div style="height: 120vh"></div>
+  <div style="height: 120vh" />
 </template>
 
 <style lang="less" scoped>

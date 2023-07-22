@@ -1,8 +1,9 @@
 import flip from '@popperjs/core/lib/modifiers/flip'
 import offset from '@popperjs/core/lib/modifiers/offset'
+import computeStyles from '@popperjs/core/lib/modifiers/computeStyles'
 import { useClickOutside } from '@varlet/use'
-import { doubleRaf, toPxNum } from '../utils/elements'
-import { call, useVModel } from '../utils/components'
+import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
+import { call, useVModel, type ListenerProp } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
@@ -41,9 +42,12 @@ export interface UsePopoverOptions {
   offsetX: string | number
   offsetY: string | number
   reference?: string
-  onOpen?(): void
-  onClose?(): void
-  'onUpdate:show'?(show: boolean): void
+  closeOnClickReference?: boolean
+  onOpen?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onClickOutside?: ListenerProp<(event: Event) => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
 export function usePopover(options: UsePopoverOptions) {
@@ -69,11 +73,51 @@ export function usePopover(options: UsePopoverOptions) {
   let enterHost = false
 
   const computeHostSize = () => {
-    const { width, height } = window.getComputedStyle(host.value!)
+    const { width, height } = getStyle(host.value!)
 
     hostSize.value = {
       width: toPxNum(width),
       height: toPxNum(height),
+    }
+  }
+
+  const getTransformOrigin = () => {
+    switch (options.placement) {
+      case 'top':
+      case 'cover-bottom':
+        return 'bottom'
+
+      case 'top-start':
+      case 'right-end':
+      case 'cover-bottom-start':
+        return 'bottom left'
+
+      case 'top-end':
+      case 'left-end':
+      case 'cover-bottom-end':
+        return 'bottom right'
+
+      case 'bottom':
+      case 'cover-top':
+        return 'top'
+
+      case 'bottom-start':
+      case 'right-start':
+      case 'cover-top-start':
+        return 'top left'
+
+      case 'bottom-end':
+      case 'left-start':
+      case 'cover-top-end':
+        return 'top right'
+
+      case 'left':
+      case 'cover-right':
+        return 'right'
+
+      case 'right':
+      case 'cover-left':
+        return 'left'
     }
   }
 
@@ -128,20 +172,29 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   const handleHostClick = () => {
-    open()
+    if (options.closeOnClickReference && show.value) {
+      close()
+    } else {
+      open()
+    }
   }
 
   const handlePopoverClose = () => {
-    show.value = false
-    call(options['onUpdate:show'], false)
+    close()
   }
 
-  const handleClickOutside = () => {
+  const handleClickOutside = (e: Event) => {
     if (options.trigger !== 'click') {
       return
     }
 
     handlePopoverClose()
+    call(options.onClickOutside, e)
+  }
+
+  const handleClosed = () => {
+    resize()
+    call(options.onClosed)
   }
 
   const getPosition = (): Position => {
@@ -260,6 +313,22 @@ export function usePopover(options: UsePopoverOptions) {
           offset: [skidding, distance],
         },
       },
+      {
+        ...computeStyles,
+        options: {
+          adaptive: false,
+          gpuAcceleration: false,
+        },
+        enabled: show.value,
+      },
+      {
+        name: 'applyTransformOrigin',
+        enabled: show.value,
+        phase: 'beforeWrite',
+        fn({ state }) {
+          state.styles.popper.transformOrigin = getTransformOrigin()
+        },
+      },
     ]
 
     return {
@@ -267,6 +336,8 @@ export function usePopover(options: UsePopoverOptions) {
       modifiers,
     }
   }
+
+  const getReference = () => (options.reference ? host.value!.querySelector(options.reference)! : host.value!)
 
   // expose
   const resize = () => {
@@ -291,7 +362,7 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
-  useClickOutside(host, 'click', handleClickOutside)
+  useClickOutside(getReference, 'click', handleClickOutside)
 
   watch(() => options.offsetX, resize)
   watch(() => options.offsetY, resize)
@@ -299,9 +370,7 @@ export function usePopover(options: UsePopoverOptions) {
   watch(() => options.disabled, close)
 
   onMounted(() => {
-    const reference = options.reference ? host.value?.querySelector(options.reference) : host.value
-
-    popoverInstance = createPopper(reference ?? host.value!, popover.value!, getPopperOptions())
+    popoverInstance = createPopper(getReference() ?? host.value!, popover.value!, getPopperOptions())
   })
   onUnmounted(() => {
     popoverInstance!.destroy()
@@ -319,6 +388,7 @@ export function usePopover(options: UsePopoverOptions) {
     handlePopoverClose,
     handlePopoverMouseenter,
     handlePopoverMouseleave,
+    handleClosed,
     resize,
     open,
     close,

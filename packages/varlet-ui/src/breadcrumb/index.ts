@@ -1,9 +1,7 @@
 import Breadcrumb from './Breadcrumb.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-Breadcrumb.install = function (app: App) {
-  app.component(Breadcrumb.name, Breadcrumb)
-}
+withInstall(Breadcrumb)
 
 export { props as breadcrumbProps } from './props'
 

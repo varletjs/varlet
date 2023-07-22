@@ -1,8 +1,17 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))">
-    <div :class="n('title')" :style="{ background: headerColor || color }">
-      <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
-        <slot name="year" :year="chooseYear">
+    <div
+      :class="n('title')"
+      :style="{ background: headerColor || color }"
+    >
+      <div
+        :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
+        @click="clickEl('year')"
+      >
+        <slot
+          name="year"
+          :year="chooseYear"
+        >
           {{ chooseYear }}
         </slot>
       </div>
@@ -12,32 +21,68 @@
         @click="clickEl('date')"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
-          <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
-            <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
+          <div
+            :key="`${chooseYear}${chooseMonth?.index}`"
+            v-if="type === 'month'"
+          >
+            <slot
+              name="range"
+              :choose="getChoose.chooseRangeMonth"
+              v-if="range"
+            >
               {{ getMonthTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
+            <slot
+              name="multiple"
+              :choose="getChoose.chooseMonths"
+              v-else-if="multiple"
+            >
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="chooseMonth?.index" :year="chooseYear" v-else>
+            <slot
+              name="month"
+              :month="chooseMonth?.index"
+              :year="chooseYear"
+              v-else
+            >
               {{ getMonthTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth?.index}${chooseDay}`" v-else>
-            <slot name="range" :choose="formatRange" v-if="range">
+          <div
+            :key="`${chooseYear}${chooseMonth?.index}${chooseDay}`"
+            v-else
+          >
+            <slot
+              name="range"
+              :choose="formatRange"
+              v-if="range"
+            >
               {{ getDateTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseDays" v-else-if="multiple">
+            <slot
+              name="multiple"
+              :choose="getChoose.chooseDays"
+              v-else-if="multiple"
+            >
               {{ getDateTitle }}
             </slot>
-            <slot name="date" v-bind="slotProps" v-else>
+            <slot
+              name="date"
+              v-bind="slotProps"
+              v-else
+            >
               {{ getDateTitle }}
             </slot>
           </div>
         </transition>
       </div>
     </div>
-    <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
+    <div
+      :class="n('body')"
+      @touchstart="handleTouchstart"
+      @touchmove="handleTouchmove"
+      @touchend="handleTouchend"
+    >
       <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
           :component-props="componentProps"
@@ -196,9 +241,9 @@ export default defineComponent({
       return ''
     })
 
-    const isUntouchable: ComputedRef<boolean> = computed(() => {
-      return !props.touchable || ['', 'year'].includes(getPanelType.value)
-    })
+    const isUntouchable: ComputedRef<boolean> = computed(
+      () => !props.touchable || ['', 'year'].includes(getPanelType.value)
+    )
 
     const slotProps: ComputedRef<Record<string, string>> = computed(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
@@ -236,9 +281,7 @@ export default defineComponent({
       startY = clientY
     }
 
-    const getDirection = (x: number, y: number): TouchDirection => {
-      return x >= y && x > 20 ? 'x' : 'y'
-    }
+    const getDirection = (x: number, y: number): TouchDirection => (x >= y && x > 20 ? 'x' : 'y')
 
     const handleTouchmove = (event: TouchEvent) => {
       if (isUntouchable.value) return

@@ -14,9 +14,9 @@ const iconNames = reactive(icons)
 const iconName = ref('information')
 const background = ref('#fff')
 const searchText = ref('')
-const searchIcons = computed(() => {
-  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
-})
+const searchIcons = computed(() =>
+  searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
+)
 
 function toggle() {
   iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
@@ -41,11 +41,22 @@ watchDarkMode(dark, (theme) => {
 
 <template>
   <app-type>{{ pack.iconSize }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" />
-  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" :size="26" />
+  <var-icon
+    class="icon-example__animation-icon"
+    name="checkbox-marked-circle"
+  />
+  <var-icon
+    class="icon-example__animation-icon"
+    name="checkbox-marked-circle"
+    :size="26"
+  />
 
   <app-type>{{ pack.iconColor }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-primary)" />
+  <var-icon
+    class="icon-example__animation-icon"
+    name="checkbox-marked-circle"
+    color="var(--color-primary)"
+  />
   <var-icon
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"
@@ -54,7 +65,11 @@ watchDarkMode(dark, (theme) => {
   />
 
   <app-type>{{ pack.useImage }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
+  <var-icon
+    class="icon-example__animation-icon"
+    name="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    :size="32"
+  />
 
   <app-type>{{ pack.events }}</app-type>
   <var-icon
@@ -94,7 +109,10 @@ watchDarkMode(dark, (theme) => {
     clearable
   >
     <template #append-icon>
-      <var-icon class="search-icon" name="magnify" />
+      <var-icon
+        class="search-icon"
+        name="magnify"
+      />
     </template>
   </var-input>
 
@@ -108,7 +126,9 @@ watchDarkMode(dark, (theme) => {
       v-ripple
     >
       <var-icon :name="name" />
-      <div class="icon-example__icon-name">{{ name }}</div>
+      <div class="icon-example__icon-name">
+        {{ name }}
+      </div>
     </div>
   </div>
 </template>

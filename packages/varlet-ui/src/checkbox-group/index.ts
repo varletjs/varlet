@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import CheckboxGroup from './CheckboxGroup.vue'
+import { withInstall } from '../utils/components'
 
-CheckboxGroup.install = function (app: App) {
-  app.component(CheckboxGroup.name, CheckboxGroup)
-}
+withInstall(CheckboxGroup)
 
 export { props as checkboxGroupProps } from './props'
 

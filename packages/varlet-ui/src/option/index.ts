@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Option from './Option.vue'
+import { withInstall } from '../utils/components'
 
-Option.install = function (app: App) {
-  app.component(Option.name, Option)
-}
+withInstall(Option)
 
 export { props as optionProps } from './props'
 

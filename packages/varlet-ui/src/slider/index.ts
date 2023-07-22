@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import Slider from './Slider.vue'
+import { withInstall } from '../utils/components'
 
-Slider.install = function (app: App) {
-  app.component(Slider.name, Slider)
-}
+withInstall(Slider)
 
 export { props as sliderProps } from './props'
 

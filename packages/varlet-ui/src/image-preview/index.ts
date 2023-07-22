@@ -1,23 +1,28 @@
 import VarImagePreview from './ImagePreview.vue'
-import { nextTick, reactive, type App, type TeleportProps } from 'vue'
+import { nextTick, reactive, type TeleportProps } from 'vue'
 import { inBrowser, isArray, isString } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
+import { call, mountInstance, withInstall } from '../utils/components'
 
 interface ImagePreviewOptions {
   show?: boolean
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
+  imagePreventDefault?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onChange?: (index: number) => void
+  onLongPress?: (index: number) => void
   // internal
   teleport?: TeleportProps['to']
+
+  /** @deprecated Use initialIndex to instead. */
+  current?: string
 }
 
 let singletonOptions: ImagePreviewOptions | null
@@ -87,15 +92,9 @@ ImagePreview.resetDefaultOptions = () => {
   defaultOptions = {}
 }
 
-VarImagePreview.install = function (app: App) {
-  app.component(VarImagePreview.name, VarImagePreview)
-}
-
-ImagePreview.install = function (app: App) {
-  app.component(VarImagePreview.name, VarImagePreview)
-}
-
 ImagePreview.Component = VarImagePreview
+withInstall(VarImagePreview)
+withInstall(VarImagePreview, ImagePreview)
 
 export { props as imagePreviewProps } from './props'
 

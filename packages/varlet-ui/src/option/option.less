@@ -1,7 +1,9 @@
 :root {
   --option-height: 38px;
   --option-padding: 0 12px;
+  --option-font-size: 16px;
   --option-selected-background: var(--field-decorator-focus-color);
+  --options-text-color: #555;
 }
 
 .var-option {
@@ -12,6 +14,7 @@
   padding: var(--option-padding);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: var(--options-text-color);
 
   &__cover {
     position: absolute;
@@ -26,6 +29,7 @@
   &__text {
     display: flex;
     align-items: center;
+    font-size: var(--option-font-size);
   }
 
   &--selected-background {

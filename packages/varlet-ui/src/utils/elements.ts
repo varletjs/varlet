@@ -1,16 +1,45 @@
-import { isNumber, isObject, isString, kebabCase, toNumber } from '@varlet/shared'
+import { isNumber, isObject, isString, kebabCase, toNumber, isWindow, inBrowser } from '@varlet/shared'
 import { getGlobalThis } from './shared'
-import { error } from '../utils/logger'
+import { error } from './logger'
 import type { StyleVars } from '../style-provider'
 
+// shorthand only
+export function getStyle(element: Element) {
+  return window.getComputedStyle(element)
+}
+
+export function getRect(element: Element | Window): DOMRect {
+  if (isWindow(element)) {
+    const width = element.innerWidth
+    const height = element.innerHeight
+    const rect = {
+      x: 0,
+      y: 0,
+      top: 0,
+      left: 0,
+      right: width,
+      bottom: height,
+      width,
+      height,
+    }
+
+    return {
+      ...rect,
+      toJSON: () => rect,
+    }
+  }
+
+  return element.getBoundingClientRect()
+}
+
 export function getLeft(element: HTMLElement): number {
-  const { left } = element.getBoundingClientRect()
+  const { left } = getRect(element)
 
   return left + (document.body.scrollLeft || document.documentElement.scrollLeft)
 }
 
 export function getTop(element: HTMLElement): number {
-  const { top } = element.getBoundingClientRect()
+  const { top } = getRect(element)
 
   return top + (document.body.scrollTop || document.documentElement.scrollTop)
 }
@@ -28,19 +57,18 @@ export function getScrollLeft(element: Element | Window): number {
   return Math.max(left, 0)
 }
 
-export async function inViewport(element: HTMLElement): Promise<boolean> {
-  await doubleRaf()
-  const { top, bottom, left, right } = element.getBoundingClientRect()
-  const { innerWidth, innerHeight } = window
+export function inViewport(element: HTMLElement): boolean {
+  const { top, bottom, left, right } = getRect(element)
+  const { width, height } = getRect(window)
 
-  const xInViewport = left <= innerWidth && right >= 0
-  const yInViewport = top <= innerHeight && bottom >= 0
+  const xInViewport = left <= width && right >= 0
+  const yInViewport = top <= height && bottom >= 0
 
   return xInViewport && yInViewport
 }
 
-export function getTranslate(el: HTMLElement) {
-  const { transform } = window.getComputedStyle(el)
+export function getTranslateY(el: HTMLElement) {
+  const { transform } = getStyle(el)
   return +transform.slice(transform.lastIndexOf(',') + 2, transform.length - 1)
 }
 
@@ -59,7 +87,7 @@ export function getParentScroller(el: HTMLElement): HTMLElement | Window {
     }
 
     const scrollRE = /(scroll|auto)/
-    const { overflowY, overflow } = window.getComputedStyle(element)
+    const { overflowY, overflow } = getStyle(element)
 
     if (scrollRE.test(overflowY) || scrollRE.test(overflow)) {
       return element
@@ -73,8 +101,8 @@ export function getAllParentScroller(el: HTMLElement): Array<HTMLElement | Windo
   const allParentScroller: Array<HTMLElement | Window> = []
   let element: HTMLElement | Window = el
 
-  while (element !== window) {
-    element = getParentScroller(element as HTMLElement)
+  while (!isWindow(element)) {
+    element = getParentScroller(element)
     allParentScroller.push(element)
   }
 
@@ -98,21 +126,22 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
 }
 
 export function getViewportSize() {
-  const { innerWidth, innerHeight } = window
+  const { width, height } = getRect(window)
 
-  return innerWidth > innerHeight
-    ? {
-        vMin: innerHeight,
-        vMax: innerWidth,
-      }
-    : {
-        vMin: innerWidth,
-        vMax: innerHeight,
-      }
+  return {
+    vw: width,
+    vh: height,
+    vMin: Math.min(width, height),
+    vMax: Math.max(width, height),
+  }
 }
 
 // example 1rem
 export const isRem = (value: unknown): value is string => isString(value) && value.endsWith('rem')
+
+// example 1em
+export const isEm = (value: unknown): value is string =>
+  isString(value) && value.endsWith('em') && !value.endsWith('rem')
 
 // e.g. 1 || 1px
 export const isPx = (value: unknown): value is string | number =>
@@ -149,27 +178,33 @@ export const toPxNum = (value: unknown): number => {
     return +(value as string).replace('px', '')
   }
 
+  if (!inBrowser()) {
+    return 0
+  }
+
+  const { vw, vh, vMin, vMax } = getViewportSize()
+
   if (isVw(value)) {
-    return (+(value as string).replace('vw', '') * window.innerWidth) / 100
+    return (+(value as string).replace('vw', '') * vw) / 100
   }
 
   if (isVh(value)) {
-    return (+(value as string).replace('vh', '') * window.innerHeight) / 100
+    return (+(value as string).replace('vh', '') * vh) / 100
+  }
+
+  if (isVMin(value)) {
+    return (+(value as string).replace('vmin', '') * vMin) / 100
+  }
+
+  if (isVMax(value)) {
+    return (+(value as string).replace('vmax', '') * vMax) / 100
   }
 
   if (isRem(value)) {
     const num = +(value as string).replace('rem', '')
-    const rootFontSize = window.getComputedStyle(document.documentElement).fontSize
+    const rootFontSize = getStyle(document.documentElement).fontSize
 
     return num * parseFloat(rootFontSize)
-  }
-
-  if (isVMin(value)) {
-    return getViewportSize().vMin
-  }
-
-  if (isVMax(value)) {
-    return getViewportSize().vMax
   }
 
   if (isString(value)) {
@@ -190,6 +225,7 @@ export const toSizeUnit = (value: unknown) => {
     isPercent(value) ||
     isVw(value) ||
     isVh(value) ||
+    isEm(value) ||
     isRem(value) ||
     isCalc(value) ||
     isVar(value) ||

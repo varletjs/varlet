@@ -1,9 +1,7 @@
 import Ellipsis from './Ellipsis.vue'
-import type { App } from 'vue'
+import { withInstall } from '../utils/components'
 
-Ellipsis.install = function (app: App) {
-  app.component(Ellipsis.name, Ellipsis)
-}
+withInstall(Ellipsis)
 
 export const _EllipsisComponent = Ellipsis
 

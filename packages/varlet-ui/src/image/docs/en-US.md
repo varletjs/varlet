@@ -121,6 +121,28 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
+### Load failure slot
+
+```html
+<template>
+  <var-image 
+    width="22.666vw" 
+    height="22.666vw" 
+    src="https://varlet.gitee.io/varlet-ui/ca.jpg"
+  >
+    <template #error>
+      <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+        <path
+          fill="currentColor"
+          d="M21,5V11.59L18,8.58L14,12.59L10,8.59L6,12.59L3,9.58V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5M18,11.42L21,14.43V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V12.42L6,15.41L10,11.41L14,15.41"
+        >
+        </path>
+      </svg>
+    </template>
+  </var-image>
+</template>
+```
+
 ### Use local paths
 
 In the file `.vue`,
@@ -193,7 +215,7 @@ import logo from '../../assets/logo.png'
 | `radius` | Image radius                                                                   | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |
-| `error` | When lazy loading is enabled, the image displayed in error                     | _string_ | `-` |
+| `error` | When lazy loading is enabled, the image displayed in error                        | _string_ | `-` |
 | `ripple` | Whether to enable ripple                                                       | _boolean_ | `false` |
 | `block` | Whether it is a block element                                                  | _boolean_ | `true` |
 
@@ -204,3 +226,9 @@ import logo from '../../assets/logo.png'
 | `click` | Triggered when you click on Image | `event: Event` |
 | `load` | Triggered when the image is successfully loaded (when the image fails in lazy loading mode, it will only be triggered when the image is successfully loaded) | `event: Event` |
 | `error` | Triggered when an image fails to load (when an image fails in lazy loading mode, it will only be triggered when the number of attempts ends) | `event: Event` |
+
+### Slots
+
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| `error` | Load failure slot | `-` |

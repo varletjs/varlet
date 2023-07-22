@@ -16,7 +16,10 @@
         <var-icon name="chevron-left" />
       </slot>
     </li>
-    <li v-if="simple" :class="classes(n('simple'), [disabled, n('item--disabled')])">
+    <li
+      v-if="simple"
+      :class="classes(n('simple'), [disabled, n('item--disabled')])"
+    >
       <var-input
         var-pagination-cover
         :hint="false"
@@ -27,7 +30,7 @@
       />
       <span>
         / {{ pageCount }}
-        <div :class="n('simple-line')"></div>
+        <div :class="n('simple-line')" />
       </span>
     </li>
     <li
@@ -67,14 +70,25 @@
       </slot>
     </li>
 
-    <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
-      <var-menu :disabled="disabled" v-model:show="menuVisible" :offset-x="-4">
+    <li
+      v-if="showSizeChanger"
+      :class="classes(n('size'), [disabled, n('item--disabled')])"
+    >
+      <var-menu
+        placement="cover-top"
+        :disabled="disabled"
+        v-model:show="menuVisible"
+      >
         <div
           :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])"
           @click.stop="showMenu"
         >
           <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
-          <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
+          <var-icon
+            :class="n('size--open-icon')"
+            var-pagination-cover
+            name="menu-down"
+          />
         </div>
 
         <template #menu>
@@ -90,7 +104,10 @@
         </template>
       </var-menu>
     </li>
-    <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, 'item--disabled'])">
+    <li
+      v-if="showQuickJumper && !simple"
+      :class="classes(n('quickly'), [disabled, n('item--disabled')])"
+    >
       {{ pack.paginationJump }}
       <var-input
         v-model="quickJumperValue"
@@ -101,7 +118,10 @@
       />
     </li>
 
-    <li v-if="totalText" :class="n('total')">
+    <li
+      v-if="totalText"
+      :class="classes(n('total'), [disabled, n('item--disabled')])"
+    >
       {{ totalText }}
     </li>
   </ul>

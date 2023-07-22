@@ -74,7 +74,7 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+    <var-select placeholder="自定义图标尺寸" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -227,7 +227,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" style="--field-decorator-middle-offset-y: 8px" placeholder="自定义图标尺寸" v-model="value7">
+    <var-select variant="outlined" placeholder="自定义图标尺寸" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -395,7 +395,6 @@ const value12 = ref()
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--field-decorator-middle-offset-y` | `0px` |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
 | `--field-decorator-blur-color` | `#888` |
@@ -433,10 +432,10 @@ const value12 = ref()
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
-| `--select-outlined-scroller-margin` | `0` |
+| `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
 #### Option Variables
 
@@ -444,4 +443,6 @@ const value12 = ref()
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
+| `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--options-text-color` | `#555` |

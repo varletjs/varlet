@@ -1,9 +1,7 @@
-import type { App } from 'vue'
 import AppBar from './AppBar.vue'
+import { withInstall } from '../utils/components'
 
-AppBar.install = function (app: App) {
-  app.component(AppBar.name, AppBar)
-}
+withInstall(AppBar)
 
 export { props as appBarProps } from './props'
 

@@ -316,4 +316,7 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     attrs: ['type="primary"'],
     closeSelf: true,
   },
+  drag: {
+    path: '/drag',
+  },
 }

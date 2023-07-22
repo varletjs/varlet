@@ -89,18 +89,18 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '组件库快速成型工具',
-          'en-US': 'Components Library Tools',
+          'zh-CN': '设计资源',
+          'en-US': 'Design Resources',
         },
-        doc: 'cli',
+        doc: 'designResources',
         type: 3,
       },
       {
         text: {
-          'zh-CN': '开源指南',
-          'en-US': 'Open Source Guide',
+          'zh-CN': '组件库快速成型工具',
+          'en-US': 'Components Library Tools',
         },
-        doc: 'openSourceGuide',
+        doc: 'cli',
         type: 3,
       },
       {
@@ -433,6 +433,14 @@ export default defineConfig({
           'en-US': 'Action Components',
         },
         type: 1,
+      },
+      {
+        text: {
+          'zh-CN': 'Drag 拖拽',
+          'en-US': 'Drag',
+        },
+        doc: 'drag',
+        type: 2,
       },
       {
         text: {

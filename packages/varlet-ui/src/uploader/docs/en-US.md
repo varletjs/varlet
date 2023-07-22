@@ -151,6 +151,27 @@ const files = ref([])
 </template>
 ```
 
+### File List Filter
+
+Filter files through the `before-filter` event, and return a `VarFile` array after filtering.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const files = ref([])
+
+function handleBeforeFilter(files) {
+  return files.filter(file => file.name.endsWith('png'))
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" multiple @before-filter="handleBeforeFilter" />
+</template>
+
+```
+
 ### Upload Preprocessing
 
 Operate on a file by registering a `before-read` event that returns a false value to prevent the file from being read.
@@ -334,6 +355,7 @@ const files = ref([
 </style>
 ```
 
+
 ## API
 
 ### Props
@@ -393,6 +415,7 @@ const files = ref([
 
 | Event | Description | Arguments |
 | --- | --- | --- |
+| `before-filter` | Triggered before the event `before-read` to filter the file list | `files: VarFile[]` |
 | `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
@@ -404,6 +427,7 @@ const files = ref([
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Upload action content | `-` |
+| `extra-message` | Extra message | `-` |
 
 ### Style Variables
 

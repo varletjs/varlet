@@ -12,20 +12,18 @@ export default defineComponent({
   name: 'VarLoadingBar',
   props,
   setup(props) {
-    return () => {
-      return (
-        <div
-          class={classes(n(), [props.error, n('--error')])}
-          style={{
-            zIndex: context.zIndex + 10,
-            width: `${props.value}%`,
-            opacity: props.opacity,
-            height: toSizeUnit(props.height),
-            backgroundColor: props.error ? props.errorColor : props.color,
-            top: toSizeUnit(props.top),
-          }}
-        ></div>
-      )
-    }
+    return () => (
+      <div
+        class={classes(n(), [props.error, n('--error')])}
+        style={{
+          zIndex: context.zIndex + 10,
+          width: `${props.value}%`,
+          opacity: props.opacity,
+          height: toSizeUnit(props.height),
+          backgroundColor: props.error ? props.errorColor : props.color,
+          top: toSizeUnit(props.top),
+        }}
+      ></div>
+    )
   },
 })

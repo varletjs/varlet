@@ -16,6 +16,8 @@ const show = ref(false)
 const currentShow = ref(false)
 const closeShow = ref(false)
 const closeEventShow = ref(false)
+const preventEventShow = ref(false)
+const imagePreventDefault = ref(true)
 const extraSlotsShow = ref(false)
 const menuShow = ref(false)
 const images = ref(['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'])
@@ -34,6 +36,13 @@ const actions = computed(() => [
 function handleCloseEvent() {
   Snackbar({
     content: pack.value.shutdownEvent,
+    duration: 1000,
+  })
+}
+
+function handleLongPressEvent() {
+  Snackbar({
+    content: pack.value.preventDefaultEvent,
     duration: 1000,
   })
 }
@@ -58,33 +67,111 @@ watchDarkMode(dark)
 <template>
   <div class="image-preview-demo">
     <app-type>{{ pack.functionCall }}</app-type>
-    <var-button type="primary" block @click="preview">{{ pack.preview }}</var-button>
-    <var-button type="primary" block @click="previewCallback">{{ pack.callBack }}</var-button>
+    <var-button
+      type="primary"
+      block
+      @click="preview"
+    >
+      {{ pack.preview }}
+    </var-button>
+    <var-button
+      type="primary"
+      block
+      @click="previewCallback"
+    >
+      {{ pack.callBack }}
+    </var-button>
   </div>
 
   <div class="image-preview-demo">
     <app-type>{{ pack.componentCall }}</app-type>
-    <var-button type="warning" block @click="show = true">{{ pack.basicUse }}</var-button>
-    <var-image-preview :images="image" v-model:show="show" />
+    <var-button
+      type="warning"
+      block
+      @click="show = true"
+    >
+      {{ pack.basicUse }}
+    </var-button>
+    <var-image-preview
+      :images="image"
+      v-model:show="show"
+    />
 
-    <var-button type="warning" block @click="currentShow = true">{{ pack.specifyInitialPosition }}</var-button>
+    <var-button
+      type="warning"
+      block
+      @click="currentShow = true"
+    >
+      {{ pack.specifyInitialPosition }}
+    </var-button>
     <var-image-preview
       :images="images"
       v-model:show="currentShow"
-      current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+      :initial-index="1"
     />
 
-    <var-button type="warning" block @click="closeShow = true">{{ pack.displayCloseButton }}</var-button>
-    <var-image-preview :images="images" v-model:show="closeShow" :closeable="true" />
+    <var-button
+      type="warning"
+      block
+      @click="closeShow = true"
+    >
+      {{ pack.displayCloseButton }}
+    </var-button>
+    <var-image-preview
+      :images="images"
+      v-model:show="closeShow"
+      :closeable="true"
+    />
 
-    <var-button type="warning" block @click="closeEventShow = true">{{ pack.listenCloseEvents }}</var-button>
-    <var-image-preview :images="images" v-model:show="closeEventShow" @close="handleCloseEvent" />
+    <var-button
+      type="warning"
+      block
+      @click="closeEventShow = true"
+    >
+      {{ pack.listenCloseEvents }}
+    </var-button>
+    <var-image-preview
+      :images="images"
+      v-model:show="closeEventShow"
+      @close="handleCloseEvent"
+    />
 
-    <var-button type="warning" block @click="extraSlotsShow = true">{{ pack.showExtraSlots }}</var-button>
-    <var-image-preview :images="images" v-model:show="extraSlotsShow">
+    <var-button
+      type="warning"
+      block
+      @click="preventEventShow = true"
+    >
+      {{ pack.preventLongTapDefault }}
+    </var-button>
+    <var-image-preview
+      :images="images"
+      v-model:show="preventEventShow"
+      :image-prevent-default="imagePreventDefault"
+      @long-press="handleLongPressEvent"
+    />
+
+    <var-button
+      type="warning"
+      block
+      @click="extraSlotsShow = true"
+    >
+      {{ pack.showExtraSlots }}
+    </var-button>
+    <var-image-preview
+      :images="images"
+      v-model:show="extraSlotsShow"
+    >
       <template #extra>
-        <var-icon name="menu" :size="22" color="#fff" @click="menuShow = true" />
-        <var-action-sheet :actions="actions" v-model:show="menuShow" />
+        <var-icon
+          name="menu"
+          :size="22"
+          color="#fff"
+          @click="menuShow = true"
+        />
+        <var-action-sheet
+          :actions="actions"
+          v-model:show="menuShow"
+        />
       </template>
     </var-image-preview>
   </div>

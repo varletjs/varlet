@@ -1,6 +1,6 @@
 {
   "name": "@varlet/shared",
-  "version": "2.10.2",
+  "version": "2.13.1",
   "type": "module",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -25,9 +25,10 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "rimraf ./lib && tsc"
   },
   "devDependencies": {
-    "typescript": "^4.4.4"
+    "typescript": "^5.1.5",
+    "rimraf": "^5.0.1"
   }
 }
