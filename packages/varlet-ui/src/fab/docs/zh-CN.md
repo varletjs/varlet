@@ -122,6 +122,22 @@ const direction = ref('top')
 </style>
 ```
 
+### 开启拖拽
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const draggable = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="draggable" />
+
+  <var-fab type="primary" :disabled="draggable" />
+</template>
+```
+
 ### 禁用
 
 ```html
@@ -255,6 +271,7 @@ function toggle() {
 |------------------|----------------------------------------------------------------- |----------|----------------|
 | `v-model:active` | 是否激活动作菜单                                                    | _boolean_ | `false`       |
 | `show`           | 是否显示触发器 | _boolean_ | `true`    |
+| `draggable`      | 是否开启拖拽 | _boolean_ | `false`    |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
 | `position` | 触发器位置，可选值为 `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom`    |
 | `direction` | 动作菜单弹出方向，可选值为 `top` `bottom` `left` `right` | _string_ | `top`    |

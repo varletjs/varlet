@@ -19,6 +19,7 @@ const direction = ref('top')
 const position = ref('right-bottom')
 const show = ref(true)
 const active = ref(false)
+const draggable = ref(false)
 const disabled = ref(false)
 const elevation = ref(2)
 
@@ -67,6 +68,9 @@ watchDarkMode(dark)
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
 
+  <app-type>{{ pack.draggable }}</app-type>
+  <var-switch v-model="draggable" />
+
   <app-type>{{ pack.disabled }}</app-type>
   <var-switch v-model="disabled" />
 
@@ -86,6 +90,7 @@ watchDarkMode(dark)
     :position="position"
     :direction="direction"
     :trigger="trigger"
+    :draggable="draggable"
     :disabled="disabled"
     :elevation="elevation"
   >

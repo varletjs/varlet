@@ -122,6 +122,22 @@ const direction = ref('top')
 </style>
 ```
 
+### Draggable
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const draggable = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="draggable" />
+
+  <var-fab type="primary" :draggable="draggable" />
+</template>
+```
+
 ### Disabled
 
 ```html
@@ -255,6 +271,7 @@ function toggle() {
 | ------- | ---- | ----- | ---- |
 | `v-model:active` | Whether to activate the action menu | _boolean_ | `false` |
 | `show` | Whether to show trigger | _boolean_ | `true` |
+| `draggable`      | Whether to enable drag | _boolean_ | `false`    |
 | `type` | type, optional values are `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary` |
 | `position` | trigger position, optional values are `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom` |
 | `direction` | Action menu popup direction, optional values are `top` `bottom` `left` `right` | _string_ | `top` |

@@ -9,6 +9,7 @@ export default {
   success: 'success',
   warning: 'warning',
   danger: 'danger',
+  draggable: 'Draggable',
   disabled: 'Disabled',
   elevation: 'Elevation Effect',
   triggerToggle: 'Trigger Show/Hide',

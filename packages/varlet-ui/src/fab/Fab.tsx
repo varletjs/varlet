@@ -40,9 +40,8 @@ export default defineComponent({
         return
       }
 
-      console.log(hasMoved.value)
       // avoid trigger open function after dragging
-      if (hasMoved.value) {
+      if (hasMoved.value && props.draggable) {
         hasMoved.value = false
         return
       }
@@ -134,7 +133,7 @@ export default defineComponent({
       }
 
       return (
-        <Drag disabled={props.draggable} style={style}>
+        <Drag disabled={!props.draggable} style={style}>
           <div
             class={classes(
               n(),

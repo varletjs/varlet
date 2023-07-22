@@ -9,6 +9,7 @@ export default {
   success: '成功',
   warning: '警告',
   danger: '危险',
+  draggable: '拖拽',
   disabled: '禁用',
   elevation: '海拔效果',
   triggerToggle: '触发器显示/隐藏',
