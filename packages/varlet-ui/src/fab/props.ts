@@ -31,6 +31,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  draggable: {
+    type: Boolean,
+    default: false,
+  },
   type: {
     type: String as PropType<FabType>,
     default: 'primary',

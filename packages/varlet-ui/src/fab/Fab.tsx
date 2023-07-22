@@ -1,5 +1,6 @@
 import Button from '../button'
 import Icon from '../icon'
+import Drag from '../drag'
 import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
 import { call, createNamespace, flatFragment, useTeleport, useVModel } from '../utils/components'
@@ -24,6 +25,7 @@ export default defineComponent({
   setup(props, { slots, attrs }) {
     const isActive = useVModel(props, 'active')
     const host: Ref<null | HTMLElement> = ref(null)
+    const hasMoved: Ref<boolean> = ref(false)
     const { disabled } = useTeleport()
 
     const handleClick = (e: Event, value: boolean, childrenLength: number) => {
@@ -35,6 +37,13 @@ export default defineComponent({
 
       if (childrenLength === 0) {
         call(props.onClick, isActive.value, e)
+        return
+      }
+
+      console.log(hasMoved.value)
+      // avoid trigger open function after dragging
+      if (hasMoved.value) {
+        hasMoved.value = false
         return
       }
 
@@ -94,46 +103,80 @@ export default defineComponent({
     const renderFab = () => {
       const children = flatFragment(call(slots.default) ?? [])
 
-      return (
-        <div
-          class={classes(
-            n(),
-            n(`--position-${props.position}`),
-            n(`--direction-${props.direction}`),
-            [props.fixed, n('--fixed'), n('--absolute')],
-            [props.safeArea, n('--safe-area')]
-          )}
-          style={{
-            zIndex: toNumber(props.zIndex),
-            top: toSizeUnit(props.top),
-            bottom: toSizeUnit(props.bottom),
-            left: toSizeUnit(props.left),
-            right: toSizeUnit(props.right),
-          }}
-          ref={host}
-          onClick={(e) => handleClick(e, !isActive.value, children.length)}
-          onMouseleave={() => handleMouse(false, children.length)}
-          onMouseenter={() => handleMouse(true, children.length)}
-          {...attrs}
-        >
-          <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
+      const style: {
+        top?: number | string
+        bottom?: number | string
+        left?: number | string
+        right?: number | string
+      } = {}
 
-          <Transition
-            name={n(`--actions-transition-${props.direction}`)}
-            onAfterEnter={props.onOpened}
-            onAfterLeave={props.onClosed}
+      switch (props.position) {
+        case 'left-bottom':
+          style.left = 'var(--fab-left)'
+          style.bottom = 'var(--fab-bottom)'
+          break
+        case 'left-top':
+          style.left = 'var(--fab-left)'
+          style.top = 'var(--fab-top)'
+          break
+        case 'right-bottom':
+          style.right = 'var(--fab-right)'
+          style.bottom = 'var(--fab-bottom)'
+          break
+        case 'right-top':
+          style.right = 'var(--fab-right)'
+          style.top = 'var(--fab-top)'
+          break
+        default:
+          style.left = 'var(--fab-left)'
+          style.bottom = 'var(--fab-bottom)'
+          break
+      }
+
+      return (
+        <Drag disabled={props.draggable} style={style}>
+          <div
+            class={classes(
+              n(),
+              n(`--direction-${props.direction}`),
+              [!props.fixed, n('--absolute')],
+              [props.safeArea, n('--safe-area')]
+            )}
+            style={{
+              zIndex: toNumber(props.zIndex),
+              top: toSizeUnit(props.top),
+              bottom: toSizeUnit(props.bottom),
+              left: toSizeUnit(props.left),
+              right: toSizeUnit(props.right),
+            }}
+            ref={host}
+            onTouchmove={() => {
+              hasMoved.value = true
+            }}
+            onClick={(e) => handleClick(e, !isActive.value, children.length)}
+            onMouseleave={() => handleMouse(false, children.length)}
+            onMouseenter={() => handleMouse(true, children.length)}
+            {...attrs}
           >
-            <div
-              class={n('actions')}
-              v-show={props.show && isActive.value && children.length}
-              onClick={(e) => e.stopPropagation()}
+            <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
+
+            <Transition
+              name={n(`--actions-transition-${props.direction}`)}
+              onAfterEnter={props.onOpened}
+              onAfterLeave={props.onClosed}
             >
-              {children.map((child) => (
-                <div class={n('action')}>{child}</div>
-              ))}
-            </div>
-          </Transition>
-        </div>
+              <div
+                class={n('actions')}
+                v-show={props.show && isActive.value && children.length}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {children.map((child) => (
+                  <div class={n('action')}>{child}</div>
+                ))}
+              </div>
+            </Transition>
+          </div>
+        </Drag>
       )
     }
 
