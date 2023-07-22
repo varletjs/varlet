@@ -1,6 +1,6 @@
 import { computed, defineComponent, ref, onMounted } from 'vue'
 import { colorPickerHueSliderProps, ColorPickerHueSliderProps } from './color-picker-hue-slider-types'
-import { DOMUtils } from '../../utils/dom-dragger'
+import { Dragger } from '../../utils/dom-dragger'
 import { HSV } from '../../utils/color-utils-types'
 import { call, createNamespace } from '../../../utils/components'
 import { nullColor } from '../../utils/color-utils'
@@ -63,7 +63,7 @@ export default defineComponent({
       }
 
       if (barElement.value && cursorElement.value) {
-        DOMUtils.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
+        Dragger.triggerDragEvent(barElement.value as HTMLElement, dragConfig)
       }
     })
 

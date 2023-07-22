@@ -1,5 +1,6 @@
 import type { PropType, ExtractPropTypes } from 'vue'
-import { modes } from './utils/color-utils'
+import { modes, parseDefaultColors } from './utils/color-utils'
+import colors from './utils/color'
 
 export const colorPickerProps = {
   modelValue: {
@@ -43,6 +44,10 @@ export const colorPickerProps = {
   inputLayout: {
     type: Boolean,
     default: true,
+  },
+  swatches: {
+    type: Array as PropType<string[][]>,
+    default: () => parseDefaultColors(colors),
   },
   'onUpdate:modelValue': {
     type: Function as PropType<(value: any) => void>,

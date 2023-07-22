@@ -1,6 +1,6 @@
 import { defineComponent, ref, onMounted, computed, getCurrentInstance, watch } from 'vue'
 import { createNamespace, call } from '../../../utils/components'
-import { DOMUtils } from '../../utils/dom-dragger'
+import { Dragger } from '../../utils/dom-dragger'
 import { clamp, convertToUnit } from '../../utils/helpers'
 import { colorPickerPaletteProps, ColorPickerPaletteProps } from './color-picker-canvas-types'
 import './color-picker-canvas.less'
@@ -57,7 +57,7 @@ export default defineComponent({
             call(props.dragger, false)
           },
         }
-        DOMUtils.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, dragConfig)
+        Dragger.triggerDragEvent(paletteInstance.vnode.el as HTMLElement, dragConfig)
       }
     })
 
