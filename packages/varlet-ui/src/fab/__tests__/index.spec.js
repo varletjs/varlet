@@ -1,13 +1,30 @@
 import Fab from '..'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/jest'
+import { triggerDrag, delay, mockStubs, trigger } from '../../utils/jest'
 
 mockStubs()
 
 test('test fab plugin', () => {
   const app = createApp({}).use(Fab)
   expect(app.component(Fab.name)).toBeTruthy()
+})
+
+test('test fab draggable', async () => {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
+    props: {
+      teleport: container,
+      draggable: true,
+    },
+  })
+
+  expect(container.innerHTML).toMatchSnapshot()
+
+  await triggerDrag(container.childNodes[0], 10, 10)
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab type', () => {
