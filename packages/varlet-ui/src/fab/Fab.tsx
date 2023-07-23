@@ -163,50 +163,36 @@ export default defineComponent({
     }
 
     const renderFab = () => {
-      const { top, left, right, bottom, position } = props
+      const {
+        top,
+        left,
+        right,
+        bottom,
+        position,
+        draggable,
+        disabled,
+        teleport,
+        zIndex,
+        direction,
+        safeArea,
+        fixed,
+        show,
+        onOpened,
+        onClosed,
+      } = props
       const children = flatFragment(call(slots.default) ?? [])
 
-      const style: {
-        top?: number | string
-        bottom?: number | string
-        left?: number | string
-        right?: number | string
-      } = {}
-
-      switch (position) {
-        case 'left-bottom':
-          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
-          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
-          break
-        case 'left-top':
-          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
-          style.top = toSizeUnit(top) ?? 'var(--fab-top)'
-          break
-        case 'right-bottom':
-          style.right = toSizeUnit(right) ?? 'var(--fab-right)'
-          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
-          break
-        case 'right-top':
-          style.right = toSizeUnit(right) ?? 'var(--fab-right)'
-          style.top = toSizeUnit(top) ?? 'var(--fab-top)'
-          break
-        default:
-          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
-          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
-          break
-      }
-
       return (
-        <Drag teleport={props.teleport} disabled={!props.draggable} style={style}>
+        <Drag
+          class={n(`--position-${position}`)}
+          teleport={teleport}
+          disabled={!draggable || disabled}
+          style={{ top: toSizeUnit(top), bottom: toSizeUnit(bottom), left: toSizeUnit(left), right: toSizeUnit(right) }}
+        >
           <div
-            class={classes(
-              n(),
-              n(`--direction-${props.direction}`),
-              [!props.fixed, n('--absolute')],
-              [props.safeArea, n('--safe-area')]
-            )}
+            class={classes(n(), n(`--direction-${direction}`), [!fixed, n('--absolute')], [safeArea, n('--safe-area')])}
             style={{
-              zIndex: toNumber(props.zIndex),
+              zIndex: toNumber(zIndex),
             }}
             ref={host}
             onTouchstart={(e) => handleTouchStart(e)}
@@ -219,14 +205,10 @@ export default defineComponent({
           >
             <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
 
-            <Transition
-              name={n(`--actions-transition-${props.direction}`)}
-              onAfterEnter={props.onOpened}
-              onAfterLeave={props.onClosed}
-            >
+            <Transition name={n(`--actions-transition-${direction}`)} onAfterEnter={onOpened} onAfterLeave={onClosed}>
               <div
                 class={n('actions')}
-                v-show={props.show && isActive.value && children.length}
+                v-show={show && isActive.value && children.length}
                 onClick={(e) => e.stopPropagation()}
               >
                 {children.map((child) => (
