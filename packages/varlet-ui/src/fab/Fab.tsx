@@ -258,6 +258,6 @@ export default defineComponent({
 
     useClickOutside(host, 'click', handleClickOutside)
 
-    return renderFab()
+    return () => renderFab()
   },
 })
