@@ -1,9 +1,9 @@
 import Button from '../button'
 import Icon from '../icon'
 import Drag from '../drag'
-import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
+import { defineComponent, Ref, ref, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
-import { call, createNamespace, flatFragment, useTeleport, useVModel } from '../utils/components'
+import { call, createNamespace, flatFragment, useVModel } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
@@ -37,7 +37,6 @@ export default defineComponent({
     const isActive = useVModel(props, 'active')
     const host: Ref<null | HTMLElement> = ref(null)
     const hasMoved: Ref<boolean> = ref(false)
-    const { disabled } = useTeleport()
     let startTouch: VarTouch | null = null
     let prevTouch: VarTouch | null = null
     let closeRunner: number | null = null
@@ -197,7 +196,7 @@ export default defineComponent({
       }
 
       return (
-        <Drag disabled={!props.draggable} style={style}>
+        <Drag teleport={props.teleport} disabled={!props.draggable} style={style}>
           <div
             class={classes(
               n(),
@@ -259,18 +258,6 @@ export default defineComponent({
 
     useClickOutside(host, 'click', handleClickOutside)
 
-    return () => {
-      const { teleport } = props
-
-      if (teleport) {
-        return (
-          <Teleport to={teleport} disabled={disabled.value}>
-            {renderFab()}
-          </Teleport>
-        )
-      }
-
-      return renderFab()
-    }
+    return renderFab()
   },
 })
