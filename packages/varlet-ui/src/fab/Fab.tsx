@@ -163,6 +163,7 @@ export default defineComponent({
     }
 
     const renderFab = () => {
+      const { top, left, right, bottom, position } = props
       const children = flatFragment(call(slots.default) ?? [])
 
       const style: {
@@ -172,26 +173,26 @@ export default defineComponent({
         right?: number | string
       } = {}
 
-      switch (props.position) {
+      switch (position) {
         case 'left-bottom':
-          style.left = 'var(--fab-left)'
-          style.bottom = 'var(--fab-bottom)'
+          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
+          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
           break
         case 'left-top':
-          style.left = 'var(--fab-left)'
-          style.top = 'var(--fab-top)'
+          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
+          style.top = toSizeUnit(top) ?? 'var(--fab-top)'
           break
         case 'right-bottom':
-          style.right = 'var(--fab-right)'
-          style.bottom = 'var(--fab-bottom)'
+          style.right = toSizeUnit(right) ?? 'var(--fab-right)'
+          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
           break
         case 'right-top':
-          style.right = 'var(--fab-right)'
-          style.top = 'var(--fab-top)'
+          style.right = toSizeUnit(right) ?? 'var(--fab-right)'
+          style.top = toSizeUnit(top) ?? 'var(--fab-top)'
           break
         default:
-          style.left = 'var(--fab-left)'
-          style.bottom = 'var(--fab-bottom)'
+          style.left = toSizeUnit(left) ?? 'var(--fab-left)'
+          style.bottom = toSizeUnit(bottom) ?? 'var(--fab-bottom)'
           break
       }
 
@@ -206,10 +207,6 @@ export default defineComponent({
             )}
             style={{
               zIndex: toNumber(props.zIndex),
-              top: toSizeUnit(props.top),
-              bottom: toSizeUnit(props.bottom),
-              left: toSizeUnit(props.left),
-              right: toSizeUnit(props.right),
             }}
             ref={host}
             onTouchstart={(e) => handleTouchStart(e)}
