@@ -18,6 +18,17 @@ import './fab.less'
 
 const { classes, n } = createNamespace('fab')
 
+type VarTouch = {
+  clientX: number
+  clientY: number
+  timestamp: number
+  target: HTMLElement
+}
+
+const DISTANCE_OFFSET = 12
+const EVENT_DELAY = 200
+const TAP_DELAY = 350
+
 export default defineComponent({
   name: 'VarFab',
   inheritAttrs: false,
@@ -27,6 +38,9 @@ export default defineComponent({
     const host: Ref<null | HTMLElement> = ref(null)
     const hasMoved: Ref<boolean> = ref(false)
     const { disabled } = useTeleport()
+    let startTouch: VarTouch | null = null
+    let prevTouch: VarTouch | null = null
+    let closeRunner: number | null = null
 
     const handleClick = (e: Event, value: boolean, childrenLength: number) => {
       e.stopPropagation()
@@ -41,7 +55,7 @@ export default defineComponent({
       }
 
       // avoid trigger open function after dragging
-      if (hasMoved.value && props.draggable) {
+      if (hasMoved.value) {
         hasMoved.value = false
         return
       }
@@ -69,6 +83,56 @@ export default defineComponent({
         isActive.value = false
         call(props.onClose)
       }
+    }
+
+    const createVarTouch = (touches: Touch, target: HTMLElement): VarTouch => ({
+      clientX: touches.clientX,
+      clientY: touches.clientY,
+      timestamp: performance.now(),
+      target,
+    })
+
+    const getDistance = (touch: VarTouch, target: VarTouch): number => {
+      const { clientX: touchX, clientY: touchY } = touch
+      const { clientX: targetX, clientY: targetY } = target
+
+      return Math.abs(Math.sqrt((targetX - touchX) ** 2 + (targetY - touchY) ** 2))
+    }
+
+    const isTapTouch = (target: HTMLElement) => {
+      if (!target || !startTouch || !prevTouch) {
+        return false
+      }
+
+      return (
+        getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && performance.now() - prevTouch.timestamp < TAP_DELAY
+      )
+    }
+
+    const handleTouchStart = (event: TouchEvent) => {
+      window.clearTimeout(closeRunner as number)
+
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
+      startTouch = currentTouch
+      prevTouch = currentTouch
+    }
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (!prevTouch) {
+        return
+      }
+
+      const target = event.currentTarget as HTMLElement
+      const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
+      prevTouch = currentTouch
+    }
+
+    const handleTouchend = (event: Event) => {
+      const isTap = isTapTouch(event.target as HTMLElement)
+      hasMoved.value = !isTap
+      closeRunner = window.setTimeout(() => {
+        startTouch = null
+      }, EVENT_DELAY)
     }
 
     const renderTrigger = () => {
@@ -149,9 +213,9 @@ export default defineComponent({
               right: toSizeUnit(props.right),
             }}
             ref={host}
-            onTouchmove={() => {
-              hasMoved.value = true
-            }}
+            onTouchstart={(e) => handleTouchStart(e)}
+            onTouchmove={(e) => handleTouchMove(e)}
+            onTouchend={(e) => handleTouchend(e)}
             onClick={(e) => handleClick(e, !isActive.value, children.length)}
             onMouseleave={() => handleMouse(false, children.length)}
             onMouseenter={() => handleMouse(true, children.length)}
