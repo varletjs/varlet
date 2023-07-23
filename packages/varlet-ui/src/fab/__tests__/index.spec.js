@@ -1,5 +1,4 @@
 import Fab from '..'
-import VarFab from '../Fab'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/jest'
@@ -13,53 +12,71 @@ test('test fab plugin', () => {
 
 test('test fab type', () => {
   ;['default', 'primary', 'warning', 'info', 'danger', 'success'].forEach((type) => {
-    const wrapper = mount(VarFab, {
+    const container = document.createElement('div')
+    const wrapper = mount(Fab, {
       props: {
+        teleport: container,
         type,
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 })
 
 test('test fab position', () => {
   ;['left-top', 'right-top', 'left-bottom', 'right-bottom'].forEach((position) => {
-    const wrapper = mount(VarFab, {
+    const container = document.createElement('div')
+    const wrapper = mount(Fab, {
       props: {
+        teleport: container,
         position,
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 })
 
 test('test fab direction', () => {
   ;['top', 'right', 'bottom', 'left'].forEach((direction) => {
-    const wrapper = mount(VarFab, {
+    const container = document.createElement('div')
+    const wrapper = mount(Fab, {
       props: {
+        teleport: container,
         direction,
       },
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(container.innerHTML).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 })
 
 test('test fab fixed equals false', () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       fixed: false,
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab zIndex and inset', () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       zIndex: 999,
       top: 10,
       bottom: 10,
@@ -68,45 +85,62 @@ test('test fab zIndex and inset', () => {
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab color', () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       color: 'yellow',
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab trigger equals click', async () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
+    props: {
+      teleport: container,
+    },
     slots: {
       default: () => h('div', 'action'),
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  const actions = container.querySelector('.var-fab__actions')
+  const button = container.querySelector('.var-button')
 
-  await wrapper.trigger('click')
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('none')
+
+  await trigger(button, 'click')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeTruthy()
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('')
 
-  await wrapper.trigger('click')
+  await trigger(button, 'click')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('none')
+
+  wrapper.unmount()
 })
 
 test('test fab trigger equals hover', async () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       trigger: 'hover',
     },
     slots: {
@@ -114,25 +148,30 @@ test('test fab trigger equals hover', async () => {
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  const actions = container.querySelector('.var-fab__actions')
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('none')
 
-  await wrapper.trigger('mouseenter')
+  await trigger(actions, 'mouseenter')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeTruthy()
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('')
 
-  await wrapper.trigger('mouseleave')
+  await trigger(actions, 'mouseleave')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  expect(container.innerHTML).toMatchSnapshot()
+  expect(actions.style.display).toBe('none')
+
+  wrapper.unmount()
 })
 
 test('test fab custom icon', async () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       inactiveIcon: 'check',
       activeIcon: 'fire',
       inactiveIconSize: 30,
@@ -143,19 +182,25 @@ test('test fab custom icon', async () => {
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  const button = container.querySelector('.var-button')
 
-  await wrapper.trigger('click')
+  expect(container.innerHTML).toMatchSnapshot()
+
+  await trigger(button, 'click')
   await delay(300)
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab disabled with trigger equals click', async () => {
   const onOpen = jest.fn()
+  const container = document.createElement('div')
 
-  const wrapper = mount(VarFab, {
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       disabled: true,
       onOpen,
     },
@@ -164,17 +209,24 @@ test('test fab disabled with trigger equals click', async () => {
     },
   })
 
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
-  await wrapper.trigger('click')
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  const actions = container.querySelector('.var-fab__actions')
+  const button = container.querySelector('.var-button')
+
+  expect(actions.style.display).toBe('none')
+  await trigger(button, 'click')
+  expect(actions.style.display).toBe('none')
   expect(onOpen).toBeCalledTimes(0)
+
+  wrapper.unmount()
 })
 
 test('test fab disabled with trigger equals hover', async () => {
   const onOpen = jest.fn()
+  const container = document.createElement('div')
 
-  const wrapper = mount(VarFab, {
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       trigger: 'hover',
       disabled: true,
       onOpen,
@@ -184,10 +236,16 @@ test('test fab disabled with trigger equals hover', async () => {
     },
   })
 
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
-  await wrapper.trigger('mouseenter')
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  const actions = container.querySelector('.var-fab__actions')
+
+  expect(actions.style.display).toBe('none')
+
+  await trigger(actions, 'mouseenter')
+
+  expect(actions.style.display).toBe('none')
   expect(onOpen).toBeCalledTimes(0)
+
+  wrapper.unmount()
 })
 
 test('test fab events and fragment default slots and click outside close', async () => {
@@ -196,9 +254,11 @@ test('test fab events and fragment default slots and click outside close', async
   const onClose = jest.fn()
   const onClosed = jest.fn()
   const onUpdateActive = jest.fn()
+  const container = document.createElement('div')
 
-  const wrapper = mount(VarFab, {
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       onOpen,
       onOpened,
       onClose,
@@ -210,8 +270,9 @@ test('test fab events and fragment default slots and click outside close', async
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  await wrapper.trigger('click')
+  const button = container.querySelector('.var-button')
+  expect(container.innerHTML).toMatchSnapshot()
+  await trigger(button, 'click')
 
   expect(onOpen).toBeCalledTimes(1)
   expect(onUpdateActive).toBeCalledWith(true)
@@ -223,11 +284,15 @@ test('test fab events and fragment default slots and click outside close', async
   expect(onUpdateActive).toBeCalledWith(false)
   await delay(300)
   expect(onClosed).toBeCalledTimes(1)
+
+  wrapper.unmount()
 })
 
 test('test fab trigger and disabled change', async () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       active: true,
     },
     slots: {
@@ -235,30 +300,40 @@ test('test fab trigger and disabled change', async () => {
     },
   })
 
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeTruthy()
+  const actions = container.querySelector('.var-fab__actions')
+
+  expect(actions.style.display).toBe('')
   await wrapper.setProps({ trigger: 'hover' })
   await delay(300)
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  expect(actions.style.display).toBe('none')
   await wrapper.setProps({ active: false })
   await wrapper.setProps({ active: true })
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeTruthy()
+  expect(actions.style.display).toBe('')
   await wrapper.setProps({ disabled: true })
   await delay(300)
-  expect(wrapper.find('.var-fab__actions').isVisible()).toBeFalsy()
+  expect(actions.style.display).toBe('none')
+
+  wrapper.unmount()
 })
 
 test('test fab trigger slot', () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
+    props: {
+      teleport: container,
+    },
     slots: {
       trigger: () => h('div', 'trigger'),
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test fab teleport', () => {
-  const wrapper = mount(VarFab, {
+  const wrapper = mount(Fab, {
     props: {
       teleport: 'body',
     },
@@ -272,11 +347,15 @@ test('test fab teleport', () => {
 })
 
 test('test fab safeArea', () => {
-  const wrapper = mount(VarFab, {
+  const container = document.createElement('div')
+  const wrapper = mount(Fab, {
     props: {
+      teleport: container,
       safeArea: true,
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
 })

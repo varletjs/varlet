@@ -105,7 +105,7 @@ export const props = {
     default: false,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object] as PropType<TeleportProps['to']>,
   },
   onClick: defineListenerProp<(active: boolean, e: Event) => void>(),
   onOpen: defineListenerProp<() => void>(),
