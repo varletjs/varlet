@@ -244,8 +244,7 @@ export const multiplySizeUnit = (value: unknown, quantity = 1) => {
   }
 
   const legalSize = toSizeUnit(value) as string
-
-  const unit = legalSize.match(/(vh|%|rem|px|vw)$/)![0]
+  const unit = legalSize.match(/(vh|%|rem|px|vw|vmin|vmax)$/)![0]
 
   return `${parseFloat(legalSize) * quantity}${unit}`
 }

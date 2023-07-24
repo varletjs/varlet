@@ -51,17 +51,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, nextTick } from 'vue'
+import VarFormDetails from '../form-details'
+import Ripple from '../ripple'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
+import { defineComponent, computed, nextTick, type ComputedRef } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
 import { props } from './props'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import type { ComputedRef } from 'vue'
-import type { SwitchProvider } from './provide'
+import { type SwitchProvider } from './provide'
 
 const { n, classes } = createNamespace('switch')
 
