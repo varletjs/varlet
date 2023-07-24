@@ -118,56 +118,12 @@ export default defineComponent({
       const children = flatFragment(call(slots.default) ?? [])
 
       // absolute positioning prohibited from dragging
-      if (!fixed) {
-        return (
-          <div
-            class={classes(
-              n(),
-              n(`--position-${props.position}`),
-              n(`--direction-${props.direction}`),
-              n('--absolute'),
-              [props.safeArea, n('--safe-area')]
-            )}
-            style={{
-              zIndex: toNumber(props.zIndex),
-              top: toSizeUnit(props.top),
-              bottom: toSizeUnit(props.bottom),
-              left: toSizeUnit(props.left),
-              right: toSizeUnit(props.right),
-            }}
-            ref={host}
-            onClick={(e) => handleClick(e, !isActive.value, children.length)}
-            onMouseleave={() => handleMouse(false, children.length)}
-            onMouseenter={() => handleMouse(true, children.length)}
-            {...attrs}
-          >
-            <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
-
-            <Transition
-              name={n(`--actions-transition-${props.direction}`)}
-              onAfterEnter={props.onOpened}
-              onAfterLeave={props.onClosed}
-            >
-              <div
-                class={n('actions')}
-                v-show={props.show && isActive.value && children.length}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {children.map((child) => (
-                  <div class={n('action')}>{child}</div>
-                ))}
-              </div>
-            </Transition>
-          </div>
-        )
-      }
-
       return (
         <Drag
           ref={dragRef}
-          class={n(`--position-${position}`)}
+          class={classes(n(`--position-${position}`), [!fixed, n('--absolute')])}
           teleport={teleport}
-          disabled={!drag || disabled}
+          disabled={!drag || disabled || !fixed}
           style={{
             top: toSizeUnit(top),
             bottom: toSizeUnit(bottom),
@@ -215,6 +171,13 @@ export default defineComponent({
       () => props.disabled,
       () => {
         isActive.value = false
+      }
+    )
+
+    watch(
+      () => [props.position, props.fixed, props.top, props.bottom, props.left, props.right],
+      () => {
+        dragRef.value && dragRef.value.reset()
       }
     )
 

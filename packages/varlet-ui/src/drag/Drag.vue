@@ -104,7 +104,7 @@ export default defineComponent({
 
       draggingRunner = window.setTimeout(() => {
         dragging.value = false
-      }, 0)
+      })
     }
 
     const saveXY = () => {
@@ -226,8 +226,13 @@ export default defineComponent({
     const reset = () => {
       enableTransition.value = false
       dragged.value = false
+      dragging.value = false
       x.value = 0
       y.value = 0
+
+      touching = false
+      prevX = 0
+      prevY = 0
     }
 
     watch(() => props.boundary, toPxBoundary)
