@@ -169,7 +169,7 @@ export default defineComponent({
         right,
         bottom,
         position,
-        draggable,
+        drag,
         disabled,
         teleport,
         zIndex,
@@ -182,15 +182,65 @@ export default defineComponent({
       } = props
       const children = flatFragment(call(slots.default) ?? [])
 
+      // absolute positioning prohibited from dragging
+      if (!fixed) {
+        return (
+          <div
+            class={classes(
+              n(),
+              n(`--position-${props.position}`),
+              n(`--direction-${props.direction}`),
+              n('--absolute'),
+              [props.safeArea, n('--safe-area')]
+            )}
+            style={{
+              zIndex: toNumber(props.zIndex),
+              top: toSizeUnit(props.top),
+              bottom: toSizeUnit(props.bottom),
+              left: toSizeUnit(props.left),
+              right: toSizeUnit(props.right),
+            }}
+            ref={host}
+            onClick={(e) => handleClick(e, !isActive.value, children.length)}
+            onMouseleave={() => handleMouse(false, children.length)}
+            onMouseenter={() => handleMouse(true, children.length)}
+            {...attrs}
+          >
+            <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
+
+            <Transition
+              name={n(`--actions-transition-${props.direction}`)}
+              onAfterEnter={props.onOpened}
+              onAfterLeave={props.onClosed}
+            >
+              <div
+                class={n('actions')}
+                v-show={props.show && isActive.value && children.length}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {children.map((child) => (
+                  <div class={n('action')}>{child}</div>
+                ))}
+              </div>
+            </Transition>
+          </div>
+        )
+      }
+
       return (
         <Drag
           class={n(`--position-${position}`)}
           teleport={teleport}
-          disabled={!draggable || disabled}
-          style={{ top: toSizeUnit(top), bottom: toSizeUnit(bottom), left: toSizeUnit(left), right: toSizeUnit(right) }}
+          disabled={!drag || disabled}
+          style={{
+            top: toSizeUnit(top),
+            bottom: toSizeUnit(bottom),
+            left: toSizeUnit(left),
+            right: toSizeUnit(right),
+          }}
         >
           <div
-            class={classes(n(), n(`--direction-${direction}`), [!fixed, n('--absolute')], [safeArea, n('--safe-area')])}
+            class={classes(n(), n(`--direction-${direction}`), [safeArea, n('--safe-area')])}
             style={{
               zIndex: toNumber(zIndex),
             }}

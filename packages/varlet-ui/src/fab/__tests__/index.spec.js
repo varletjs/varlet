@@ -10,12 +10,12 @@ test('test fab plugin', () => {
   expect(app.component(Fab.name)).toBeTruthy()
 })
 
-test('test fab draggable', async () => {
+test('test fab drag', async () => {
   const container = document.createElement('div')
   const wrapper = mount(Fab, {
     props: {
       teleport: container,
-      draggable: true,
+      drag: true,
     },
   })
 

@@ -31,7 +31,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  draggable: {
+  drag: {
     type: Boolean,
     default: false,
   },
