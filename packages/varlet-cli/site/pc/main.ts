@@ -10,13 +10,11 @@ import Button from '../components/button'
 import Popup from '../components/popup'
 import CodeExample from '../components/code-example'
 import Snackbar from '../components/snackbar'
-import LoadingBar from '../components/loading-bar'
 
 import '../components/styles/common.less'
 import '../components/styles/elevation.less'
 
 import { createApp } from 'vue'
-import { getBrowserTheme, Theme, watchTheme } from '@varlet/cli/client'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { get } from 'lodash-es'
 
@@ -25,8 +23,6 @@ const redirect = get(config, 'pc.redirect')
 const mobileRedirect = get(config, 'mobile.redirect')
 
 Snackbar.allowMultiple(true)
-
-setLoadingBar()
 
 redirect &&
   routes.push({
@@ -50,15 +46,10 @@ const router = createRouter({
   },
 })
 
-let isEnd = true
-
 router.beforeEach((to: any, from: any) => {
   if (to.fullPath === from.fullPath) {
     return false
   }
-
-  isEnd = false
-  setTimeout(() => !isEnd && LoadingBar.start(), 200)
 
   // @ts-ignore
   if (window._hmt) {
@@ -69,10 +60,6 @@ router.beforeEach((to: any, from: any) => {
   }
 })
 
-router.afterEach(() => {
-  isEnd = true
-  LoadingBar.finish()
-})
 
 Object.defineProperty(window, 'onMobileRouteChange', {
   value: (path: string, language: string, replace: string, hash: string) => {
@@ -94,14 +81,6 @@ Object.defineProperty(window, 'scrollToMenu', {
     })
   }
 })
-
-function setLoadingBar() {
-  const getColor = (theme?: Theme) =>  get(config, `${theme ?? getBrowserTheme()}.color-loading-bar`)
-
-  watchTheme((theme) => {
-    LoadingBar({ color: getColor(theme) })
-  }, false)
-}
 
 createApp(App)
   .use(router)

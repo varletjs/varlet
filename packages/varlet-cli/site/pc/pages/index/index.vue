@@ -115,11 +115,11 @@ watch(() => route.path, setLocale, { immediate: true })
         </a>
       </div>
 
-      <div class="varlet-doc-index__contributors" v-if="indexPage.sponsors">
-        <div class="varlet-doc-index__contributors-title">{{ indexPage.sponsors.label[language] }}</div>
+      <div class="varlet-doc-index__sponsors" v-if="indexPage.sponsors">
+        <div class="varlet-doc-index__sponsors-title">{{ indexPage.sponsors.label[language] }}</div>
 
-        <a class="varlet-doc-index__contributors-link" :href="indexPage.sponsors.link">
-          <img class="varlet-doc-index__contributors-image" :src="indexPage.sponsors.image">
+        <a class="varlet-doc-index__sponsors-link" :href="indexPage.sponsors.link">
+          <img class="varlet-doc-index__sponsors-image" :src="indexPage.sponsors.image">
         </a>
       </div>
 

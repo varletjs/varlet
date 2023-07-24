@@ -115,11 +115,15 @@ export function useRouteListener(cb: () => void) {
 export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
     const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-
-    StyleProvider(theme === 'darkTheme' ? { ...siteStyleVars, ...dark } : siteStyleVars)
-
+    const darkStyleVars = { ...siteStyleVars, ...dark }
+    StyleProvider(theme === 'darkTheme' ? darkStyleVars : siteStyleVars)
+    setColorScheme(theme)
     cb?.(theme)
   })
+}
+
+export function setColorScheme(theme: Theme) {
+  document.documentElement.style.setProperty('color-scheme', theme === 'darkTheme' ? 'dark' : 'light')
 }
 
 export function watchTheme(
