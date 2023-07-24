@@ -39,7 +39,6 @@ export default defineComponent({
       }
 
       // avoid trigger open function after dragging
-      console.log(dragRef.value)
       if (dragRef.value?.dragging) {
         return
       }
