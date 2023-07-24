@@ -271,6 +271,7 @@ export function usePopover(options: UsePopoverOptions) {
     return {
       placement,
       modifiers,
+      strategy: 'fixed',
     }
   }
 
