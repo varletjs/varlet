@@ -18,6 +18,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
+  drag?: boolean
   type?: FabType
   fixed?: boolean
   position?: FabPosition

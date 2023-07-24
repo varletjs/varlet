@@ -122,6 +122,22 @@ const direction = ref('top')
 </style>
 ```
 
+### Drag
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="drag" />
+
+  <var-fab type="primary" :drag="drag" />
+</template>
+```
+
 ### Disabled
 
 ```html
@@ -255,6 +271,7 @@ function toggle() {
 | ------- | ---- | ----- | ---- |
 | `v-model:active` | Whether to activate the action menu | _boolean_ | `false` |
 | `show` | Whether to show trigger | _boolean_ | `true` |
+| `drag` | Whether to enable drag | _boolean_ | `false`    |
 | `type` | type, optional values are `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary` |
 | `position` | trigger position, optional values are `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom` |
 | `direction` | Action menu popup direction, optional values are `top` `bottom` `left` `right` | _string_ | `top` |
@@ -265,7 +282,7 @@ function toggle() {
 | `active-icon` | trigger icon when active | _string_ | `window-close` |
 | `inactive-icon-size` | Inactive trigger icon size | _string \| number_ | `-` |
 | `active-icon-size` | Trigger icon size when active | _string \| number_ | `-` |
-| `fixed` | Whether to use fixed positioning, set to `false` to enable absolute positioning | _boolean_ | `true` |
+| `fixed` | Whether to use fixed positioning, set to `false` to enable absolute positioning (absolute positioning prohibited from dragging) | _boolean_ | `true` |
 | `z-index` | Same as css z-index, used for custom trigger level | _string \| number_ | `90` |
 | `top` | Same as css top, for custom trigger position | _string \| number_ | `-` |
 | `bottom` | Same as css bottom, for custom trigger position | _string \| number_ | `-` |

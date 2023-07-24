@@ -122,6 +122,22 @@ const direction = ref('top')
 </style>
 ```
 
+### 开启拖拽
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="drag" />
+
+  <var-fab type="primary" :drag="drag" />
+</template>
+```
+
 ### 禁用
 
 ```html
@@ -255,6 +271,7 @@ function toggle() {
 |------------------|----------------------------------------------------------------- |----------|----------------|
 | `v-model:active` | 是否激活动作菜单                                                    | _boolean_ | `false`       |
 | `show`           | 是否显示触发器 | _boolean_ | `true`    |
+| `drag`      | 是否开启拖拽 | _boolean_ | `false`    |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
 | `position` | 触发器位置，可选值为 `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom`    |
 | `direction` | 动作菜单弹出方向，可选值为 `top` `bottom` `left` `right` | _string_ | `top`    |
@@ -265,7 +282,7 @@ function toggle() {
 | `active-icon` | 激活时触发器图标 | _string_ | `window-close`    |
 | `inactive-icon-size` | 未激活时触发器图标尺寸 | _string \| number_ | `-` |
 | `active-icon-size` | 激活时触发器图标尺寸 | _string \| number_ | `-` |
-| `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位 | _boolean_ | `true` |
+| `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位（绝对定位无法使用拖拽） | _boolean_ | `true` |
 | `z-index` | 同 css z-index，用于自定义触发器层级 | _string \| number_ | `90` |
 | `top` | 同 css top，用于自定义触发器位置 | _string \| number_ | `-` |
 | `bottom` | 同 css bottom，用于自定义触发器位置 | _string \| number_ | `-` |

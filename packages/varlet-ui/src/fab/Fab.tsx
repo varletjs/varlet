@@ -1,8 +1,9 @@
 import Button from '../button'
 import Icon from '../icon'
-import { defineComponent, Ref, ref, Teleport, Transition, watch } from 'vue'
+import Drag from '../drag'
+import { defineComponent, Ref, ref, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
-import { call, createNamespace, flatFragment, useTeleport, useVModel } from '../utils/components'
+import { call, createNamespace, flatFragment, useVModel } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { props } from './props'
@@ -24,7 +25,7 @@ export default defineComponent({
   setup(props, { slots, attrs }) {
     const isActive = useVModel(props, 'active')
     const host: Ref<null | HTMLElement> = ref(null)
-    const { disabled } = useTeleport()
+    const dragRef: Ref<InstanceType<typeof Drag> | null> = ref(null)
 
     const handleClick = (e: Event, value: boolean, childrenLength: number) => {
       e.stopPropagation()
@@ -35,6 +36,11 @@ export default defineComponent({
 
       if (childrenLength === 0) {
         call(props.onClick, isActive.value, e)
+        return
+      }
+
+      // avoid trigger open function after dragging
+      if (dragRef.value && dragRef.value.dragging) {
         return
       }
 
@@ -92,48 +98,63 @@ export default defineComponent({
     }
 
     const renderFab = () => {
+      const {
+        top,
+        left,
+        right,
+        bottom,
+        position,
+        drag,
+        disabled,
+        teleport,
+        zIndex,
+        direction,
+        safeArea,
+        fixed,
+        show,
+        onOpened,
+        onClosed,
+      } = props
       const children = flatFragment(call(slots.default) ?? [])
 
+      // absolute positioning prohibited from dragging
       return (
-        <div
-          class={classes(
-            n(),
-            n(`--position-${props.position}`),
-            n(`--direction-${props.direction}`),
-            [props.fixed, n('--fixed'), n('--absolute')],
-            [props.safeArea, n('--safe-area')]
-          )}
+        <Drag
+          ref={dragRef}
+          zIndex={toNumber(zIndex)}
+          class={classes(n(`--position-${position}`), [!fixed, n('--absolute')])}
+          teleport={teleport}
+          disabled={!drag || disabled || !fixed}
           style={{
-            zIndex: toNumber(props.zIndex),
-            top: toSizeUnit(props.top),
-            bottom: toSizeUnit(props.bottom),
-            left: toSizeUnit(props.left),
-            right: toSizeUnit(props.right),
+            top: toSizeUnit(top),
+            bottom: toSizeUnit(bottom),
+            left: toSizeUnit(left),
+            right: toSizeUnit(right),
           }}
-          ref={host}
-          onClick={(e) => handleClick(e, !isActive.value, children.length)}
-          onMouseleave={() => handleMouse(false, children.length)}
-          onMouseenter={() => handleMouse(true, children.length)}
-          {...attrs}
         >
-          <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
-
-          <Transition
-            name={n(`--actions-transition-${props.direction}`)}
-            onAfterEnter={props.onOpened}
-            onAfterLeave={props.onClosed}
+          <div
+            class={classes(n(), n(`--direction-${direction}`), [safeArea, n('--safe-area')])}
+            ref={host}
+            onClick={(e) => handleClick(e, !isActive.value, children.length)}
+            onMouseleave={() => handleMouse(false, children.length)}
+            onMouseenter={() => handleMouse(true, children.length)}
+            {...attrs}
           >
-            <div
-              class={n('actions')}
-              v-show={props.show && isActive.value && children.length}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {children.map((child) => (
-                <div class={n('action')}>{child}</div>
-              ))}
-            </div>
-          </Transition>
-        </div>
+            <Transition name={n(`--active-transition`)}>{renderTrigger()}</Transition>
+
+            <Transition name={n(`--actions-transition-${direction}`)} onAfterEnter={onOpened} onAfterLeave={onClosed}>
+              <div
+                class={n('actions')}
+                v-show={show && isActive.value && children.length}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {children.map((child) => (
+                  <div class={n('action')}>{child}</div>
+                ))}
+              </div>
+            </Transition>
+          </div>
+        </Drag>
       )
     }
 
@@ -151,20 +172,15 @@ export default defineComponent({
       }
     )
 
+    watch(
+      () => [props.position, props.fixed, props.top, props.bottom, props.left, props.right],
+      () => {
+        dragRef.value && dragRef.value.reset()
+      }
+    )
+
     useClickOutside(host, 'click', handleClickOutside)
 
-    return () => {
-      const { teleport } = props
-
-      if (teleport) {
-        return (
-          <Teleport to={teleport} disabled={disabled.value}>
-            {renderFab()}
-          </Teleport>
-        )
-      }
-
-      return renderFab()
-    }
+    return () => renderFab()
   },
 })
