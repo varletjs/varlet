@@ -121,6 +121,7 @@ export default defineComponent({
       return (
         <Drag
           ref={dragRef}
+          zIndex={toNumber(zIndex)}
           class={classes(n(`--position-${position}`), [!fixed, n('--absolute')])}
           teleport={teleport}
           disabled={!drag || disabled || !fixed}
@@ -133,9 +134,6 @@ export default defineComponent({
         >
           <div
             class={classes(n(), n(`--direction-${direction}`), [safeArea, n('--safe-area')])}
-            style={{
-              zIndex: toNumber(zIndex),
-            }}
             ref={host}
             onClick={(e) => handleClick(e, !isActive.value, children.length)}
             onMouseleave={() => handleMouse(false, children.length)}
