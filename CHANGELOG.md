@@ -1,3 +1,19 @@
+## [2.13.3](https://github.com/varletjs/varlet/compare/v2.13.2...v2.13.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **switch, slider:** fix props.size cannot handle vmin and vmax ([8657077](https://github.com/varletjs/varlet/commit/865707711282f9e6fa815f4d17ffaf14e85ce4ff))
+* **switch, slider:** support em unit ([5d5d3ab](https://github.com/varletjs/varlet/commit/5d5d3abcd5e6d4a22a1f7d4a069a73a63d76254b))
+
+
+### Features
+
+* **fab:** support drag ([#1133](https://github.com/varletjs/varlet/issues/1133)) ([203c1a8](https://github.com/varletjs/varlet/commit/203c1a84f45bbdee13a28b7e208979c9ccae7bfd))
+* **site:** support color scheme ([a03da2a](https://github.com/varletjs/varlet/commit/a03da2a3c3c7598ff459abb506b6148dd2fb0e8f))
+
+
+
 ## [2.13.2](https://github.com/varletjs/varlet/compare/v2.13.1...v2.13.2) (2023-07-24)
 
 
