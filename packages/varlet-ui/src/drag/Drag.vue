@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport">
+  <Teleport :to="teleport" :disabled="teleportDisabled">
     <div
       ref="drag"
       :class="classes(n(), n('$--box'), [enableTransition, n('--transition')])"
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { getRect, toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { clamp } from '@varlet/shared'
@@ -44,6 +44,7 @@ export default defineComponent({
     const dragged = ref(false)
     const enableTransition = ref(false)
     const dragging = ref(false)
+    const { disabled: teleportDisabled } = useTeleport()
 
     let touching = false
     let prevX = 0
@@ -248,6 +249,7 @@ export default defineComponent({
       y,
       enableTransition,
       dragging,
+      teleportDisabled,
       n,
       classes,
       getAttrs,

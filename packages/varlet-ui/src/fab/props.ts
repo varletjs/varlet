@@ -106,6 +106,7 @@ export const props = {
   },
   teleport: {
     type: [String, Object] as PropType<TeleportProps['to']>,
+    default: 'body',
   },
   onClick: defineListenerProp<(active: boolean, e: Event) => void>(),
   onOpen: defineListenerProp<() => void>(),
