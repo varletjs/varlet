@@ -1,3 +1,13 @@
+## [2.13.4](https://github.com/varletjs/varlet/compare/v2.13.3...v2.13.4) (2023-07-25)
+
+
+### Bug Fixes
+
+* **fab:** drag style mission ([cc6c913](https://github.com/varletjs/varlet/commit/cc6c913e1a28c46b0325e0af9d94cc936851924b))
+* **fab:** fix fab teleport defaults to body ([59de630](https://github.com/varletjs/varlet/commit/59de63096842a8804d2e8fdaf4b670b99339c2a3))
+
+
+
 ## [2.13.3](https://github.com/varletjs/varlet/compare/v2.13.2...v2.13.3) (2023-07-24)
 
 
