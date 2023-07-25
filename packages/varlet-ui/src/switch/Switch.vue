@@ -33,8 +33,8 @@
             v-if="loading"
             :class="n('loading')"
             :style="{
-              width: multiplySizeUnit(radius, 2),
-              height: multiplySizeUnit(radius, 2),
+              width: radius,
+              height: radius,
             }"
           >
             <svg viewBox="25 25 50 50">
@@ -120,7 +120,7 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.4))
+    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.8))
 
     const switchActive = (event: MouseEvent) => {
       const {
