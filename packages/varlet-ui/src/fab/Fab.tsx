@@ -13,6 +13,7 @@ import '../ripple/ripple.less'
 import '../icon/icon.less'
 import '../loading/loading.less'
 import '../button/button.less'
+import '../drag/drag.less'
 import './fab.less'
 
 const { classes, n } = createNamespace('fab')
