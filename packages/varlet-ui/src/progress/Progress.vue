@@ -1,8 +1,10 @@
 <template>
   <div :class="n()">
     <div :class="n('linear')" v-if="mode === 'linear'">
-      <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
-        <div v-if="track" :class="n('linear-background')" :style="{ background: trackColor }"></div>
+      <div
+        :class="classes(n('linear-block'), [track, n('linear-background')])"
+        :style="{ height: toSizeUnit(lineWidth), background: trackColor }"
+      >
         <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
           <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
           <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
