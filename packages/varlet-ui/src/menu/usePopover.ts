@@ -8,7 +8,7 @@ import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { createPopper } from '@popperjs/core/lib/popper-lite'
 import { useZIndex } from '../context/zIndex'
 import { type Instance, type Modifier } from '@popperjs/core/lib/types'
-import { type Placement as PopperPlacement } from '@popperjs/core'
+import { type Placement as PopperPlacement, type PositioningStrategy } from '@popperjs/core'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -38,6 +38,7 @@ export interface UsePopoverOptions {
   show: boolean
   trigger: 'hover' | 'click'
   placement: Placement
+  strategy: PositioningStrategy
   disabled: boolean
   offsetX: string | number
   offsetY: string | number
@@ -198,14 +199,16 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   const getPosition = (): Position => {
+    const { offsetX, offsetY, placement } = options
+
     computeHostSize()
 
     const offset = {
-      x: toPxNum(options.offsetX),
-      y: toPxNum(options.offsetY),
+      x: toPxNum(offsetX),
+      y: toPxNum(offsetY),
     }
 
-    switch (options.placement) {
+    switch (placement) {
       case 'cover-top':
         return {
           placement: 'bottom',
@@ -266,7 +269,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'left-start':
       case 'left-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.y,
           distance: -offset.x,
         }
@@ -275,7 +278,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'top-start':
       case 'top-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.x,
           distance: -offset.y,
         }
@@ -284,7 +287,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'bottom-start':
       case 'bottom-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.x,
           distance: offset.y,
         }
@@ -293,7 +296,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'right-start':
       case 'right-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.y,
           distance: offset.x,
         }
@@ -334,6 +337,7 @@ export function usePopover(options: UsePopoverOptions) {
     return {
       placement,
       modifiers,
+      strategy: options.strategy,
     }
   }
 
@@ -367,6 +371,7 @@ export function usePopover(options: UsePopoverOptions) {
   watch(() => options.offsetX, resize)
   watch(() => options.offsetY, resize)
   watch(() => options.placement, resize)
+  watch(() => options.strategy, resize)
   watch(() => options.disabled, close)
 
   onMounted(() => {

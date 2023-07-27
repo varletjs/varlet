@@ -1,6 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
+import { type PositioningStrategy } from '@popperjs/core'
 
 export declare const menuProps: Record<string, any>
 
@@ -25,6 +26,7 @@ export interface MenuProps extends BasicAttributes {
   trigger?: MenuTrigger
   reference?: string
   placement?: MenuPlacement
+  strategy?: PositioningStrategy
   offsetX?: string | number
   offsetY?: string | number
   teleport?: TeleportProps['to']
