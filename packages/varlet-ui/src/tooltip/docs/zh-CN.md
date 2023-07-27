@@ -183,6 +183,7 @@ import { Snackbar } from '@varlet/ui'
 | `color` | 背景颜色 | _string_       | `-`       |
 | `type`  | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
 | `placement` | 弹出位置 | _Placement_    | `top`     |
+| `strategy`  | 定位方式，可选值为 `absolute` `fixed` | _string_    | `absolute`    |
 | `offset-x` | x 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `offset-y` | y 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `teleport` | 挂载的位置 | _TeleportProps['to']_ | `body`    |
