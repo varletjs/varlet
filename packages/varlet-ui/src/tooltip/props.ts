@@ -1,7 +1,7 @@
 import { defineListenerProp } from '../utils/components'
 import type { PropType, TeleportProps } from 'vue'
 import type { NeededPopperPlacement } from '../menu/usePopover'
-import { PositioningStrategy } from '@popperjs/core'
+import type { PositioningStrategy } from '@popperjs/core'
 
 export type Placement = NeededPopperPlacement
 

@@ -1,7 +1,7 @@
 import type { PropType, TeleportProps } from 'vue'
 import type { Placement } from './usePopover'
+import type { PositioningStrategy } from '@popperjs/core'
 import { defineListenerProp } from '../utils/components'
-import { PositioningStrategy } from '@popperjs/core'
 
 function triggerValidator(trigger: string) {
   return ['click', 'hover'].includes(trigger)
