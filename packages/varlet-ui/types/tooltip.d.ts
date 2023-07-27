@@ -1,6 +1,7 @@
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
+import { PositioningStrategy } from '@popperjs/core'
 
 export declare const tooltipProps: Record<string, any>
 
@@ -12,6 +13,8 @@ export type TooltipTrigger = 'click' | 'hover'
 
 export type TooltipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
+export type TooltipStrategy = PositioningStrategy
+
 export interface TooltipProps extends BasicAttributes {
   show?: boolean
   disabled?: boolean
@@ -21,6 +24,7 @@ export interface TooltipProps extends BasicAttributes {
   trigger?: TooltipTrigger
   reference?: string
   placement?: TooltipPlacement
+  strategy?: TooltipStrategy
   offsetX?: string | number
   offsetY?: string | number
   teleport?: TeleportProps['to']

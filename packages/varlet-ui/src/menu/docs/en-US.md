@@ -224,6 +224,7 @@ it is recommended to wrap a `block` element.
 |-----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------|-------------------|
 | `v-model:show`  | whether to show the menu                                                                                                     | _string_             | `default`         |
 | `placement`     | menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
+| `strategy`       | menu position strategy，optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
