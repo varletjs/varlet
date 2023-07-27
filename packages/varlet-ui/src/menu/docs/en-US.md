@@ -227,7 +227,7 @@ it is recommended to wrap a `block` element.
 | `strategy`       | menu position strategy，optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
-| `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to']_ | `body`            |
+| `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
 | `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |

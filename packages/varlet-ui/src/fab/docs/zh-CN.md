@@ -289,7 +289,7 @@ function toggle() {
 | `left` | 同 css left，用于自定义触发器位置 | _string \| number_ | `-` |
 | `right` | 同 css right，用于自定义触发器位置 | _string \| number_ | `-` |
 | `safe-area` | 是否开启底部安全区适配	 | _boolean_ | `false` |
-| `teleport` | 组件挂载的元素 | _TeleportProps['to']_ | `body` |
+| `teleport` | 组件挂载的元素 | _TeleportProps['to'] \| false_ | `body` |
 | `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number_ \| _boolean_ | `true`            |
 
 ### 事件

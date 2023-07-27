@@ -27,7 +27,7 @@ export interface TooltipProps extends BasicAttributes {
   strategy?: TooltipStrategy
   offsetX?: string | number
   offsetY?: string | number
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   sameWidth?: boolean
   closeOnClickReference?: boolean
   onOpen?: ListenerProp<() => void>

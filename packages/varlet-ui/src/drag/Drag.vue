@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport" :disabled="teleportDisabled">
+  <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
     <div
       ref="drag"
       :class="classes(n(), n('$--box'), [enableTransition, n('--transition')])"

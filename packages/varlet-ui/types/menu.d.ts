@@ -31,7 +31,7 @@ export interface MenuProps extends BasicAttributes {
   strategy?: MenuStrategy
   offsetX?: string | number
   offsetY?: string | number
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   sameWidth?: boolean
   elevation?: boolean | number | string
   defaultStyle?: boolean

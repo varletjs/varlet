@@ -8,7 +8,7 @@
   >
     <slot />
 
-    <Teleport :to="teleport" :disabled="teleportDisabled">
+    <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
       <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"

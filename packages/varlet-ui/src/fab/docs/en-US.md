@@ -289,7 +289,7 @@ function toggle() {
 | `left` | Same as css left, for custom trigger position | _string \| number_ | `-` |
 | `right` | Same as css right, for custom trigger position | _string \| number_ | `-` |
 | `safe-area` | Whether to enable bottom safe area adaptation	 | _boolean_ | `false` |
-| `teleport` | element to which the component mounts | _TeleportProps['to']_ | `body` |
+| `teleport` | element to which the component mounts | _TeleportProps['to'] \| false_ | `body` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Events
