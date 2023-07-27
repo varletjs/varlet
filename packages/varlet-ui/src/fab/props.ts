@@ -1,6 +1,7 @@
-import { defineListenerProp } from '../utils/components'
+import { ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
 import { typeValidator, type ButtonType } from '../button/props'
 import { type PropType, type TeleportProps } from 'vue'
+import { props as dragProps } from '../drag/props'
 
 export type FabType = ButtonType
 
@@ -32,7 +33,7 @@ export const props = {
     default: true,
   },
   drag: {
-    type: Boolean,
+    type: [Object, Boolean] as PropType<ExtractPublicPropTypes<typeof dragProps> | boolean>,
     default: false,
   },
   type: {

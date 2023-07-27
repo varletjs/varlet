@@ -3,6 +3,7 @@ import Icon from '../icon'
 import Drag from '../drag'
 import { defineComponent, Ref, ref, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
+import { isBoolean } from '@varlet/shared'
 import { call, createNamespace, flatFragment, useVModel } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { props } from './props'
@@ -123,6 +124,8 @@ export default defineComponent({
     return () => {
       const children = flatFragment(call(slots.default) ?? [])
 
+      const dragProps = isBoolean(props.drag) ? {} : props.drag
+
       return (
         <Drag
           ref={dragRef}
@@ -136,6 +139,7 @@ export default defineComponent({
           zIndex={props.zIndex}
           teleport={props.teleport}
           disabled={props.disabled || !props.drag || !props.fixed}
+          {...dragProps}
           {...attrs}
         >
           <div

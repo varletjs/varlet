@@ -1,5 +1,6 @@
 import { VNode, TeleportProps } from 'vue'
 import { VarComponent, BasicAttributes, ListenerProp, Type } from './varComponent'
+import { DragProps } from './drag'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
 
@@ -18,7 +19,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
-  drag?: boolean
+  drag?: boolean | DragProps
   type?: FabType
   fixed?: boolean
   position?: FabPosition
