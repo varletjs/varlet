@@ -368,10 +368,7 @@ export function usePopover(options: UsePopoverOptions) {
 
   useClickOutside(getReference, 'click', handleClickOutside)
 
-  watch(() => options.offsetX, resize)
-  watch(() => options.offsetY, resize)
-  watch(() => options.placement, resize)
-  watch(() => options.strategy, resize)
+  watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
 
   onMounted(() => {
