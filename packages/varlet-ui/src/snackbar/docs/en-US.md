@@ -318,7 +318,7 @@ function openMultiple() {
 | `loading-radius` | Loading radius (see `Loading` component)                                           | _string \| number_  | `-` |
 | `lock-scroll`| Whether to disable rolling penetration                                             | _boolean_  | `false` |
 | `forbid-click`| whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
-| `teleport`| The location of the Snackbar to mount                                              | _TeleportProps['to']_  | `body` |
+| `teleport`| The location of the Snackbar to mount                                              | _TeleportProps['to'] \| false_  | `body` |
 
 ### Events
 

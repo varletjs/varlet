@@ -254,7 +254,7 @@ const actions = [
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
-| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `body` |
+| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to'] \| false_ | `body` |
 | `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
 
 ### Events
