@@ -33,7 +33,9 @@ export const props = {
     default: true,
   },
   drag: {
-    type: [Object, Boolean] as PropType<ExtractPublicPropTypes<typeof dragProps> | boolean>,
+    type: [Object, Boolean] as PropType<
+      Pick<ExtractPublicPropTypes<typeof dragProps>, 'direction' | 'attraction' | 'boundary'> | boolean
+    >,
     default: false,
   },
   type: {

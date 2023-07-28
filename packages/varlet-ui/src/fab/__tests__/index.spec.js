@@ -15,12 +15,13 @@ test('test fab drag', async () => {
   const wrapper = mount(Fab, {
     props: {
       teleport: container,
-      drag: true,
+      drag: false,
     },
   })
 
   expect(container.innerHTML).toMatchSnapshot()
 
+  await wrapper.setProps({ drag: true })
   await triggerDrag(container.childNodes[0], 10, 10)
   expect(container.innerHTML).toMatchSnapshot()
 

@@ -139,7 +139,9 @@ export default defineComponent({
           zIndex={props.zIndex}
           teleport={props.teleport}
           disabled={props.disabled || !props.drag || !props.fixed}
-          {...dragProps}
+          direction={dragProps.direction}
+          attraction={dragProps.attraction}
+          boundary={dragProps.boundary}
           {...attrs}
         >
           <div

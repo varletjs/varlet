@@ -19,7 +19,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
-  drag?: boolean | DragProps
+  drag?: boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
   type?: FabType
   fixed?: boolean
   position?: FabPosition

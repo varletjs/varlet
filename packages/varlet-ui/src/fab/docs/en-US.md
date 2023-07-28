@@ -271,7 +271,7 @@ function toggle() {
 | ------- | ---- | ----- | ---- |
 | `v-model:active` | Whether to activate the action menu | _boolean_ | `false` |
 | `show` | Whether to show trigger | _boolean_ | `true` |
-| `drag` | Drag component props, for deep customization. | _boolean \| DragProps_ | `false` |
+| `drag` | Drag component props, for deep customization( support `direction` `attraction` `boundary` ）) | _boolean \| DragProps_ | `false` |
 | `type` | type, optional values are `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary` |
 | `position` | trigger position, optional values are `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom` |
 | `direction` | Action menu popup direction, optional values are `top` `bottom` `left` `right` | _string_ | `top` |
