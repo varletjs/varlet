@@ -271,7 +271,7 @@ function toggle() {
 |------------------|----------------------------------------------------------------- |----------|----------------|
 | `v-model:active` | 是否激活动作菜单                                                    | _boolean_ | `false`       |
 | `show`           | 是否显示触发器 | _boolean_ | `true`    |
-| `drag`      | Drag 组件配置，用于深度定制（ 支持 `direction` `attraction` `boundary` ） | _boolean \| DragProps_  | `false`    |
+| `drag`      | Drag 组件配置，用于深度定制（支持 `direction` `attraction` `boundary`） | _boolean \| DragProps_  | `false`    |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
 | `position` | 触发器位置，可选值为 `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom`    |
 | `direction` | 动作菜单弹出方向，可选值为 `top` `bottom` `left` `right` | _string_ | `top`    |
