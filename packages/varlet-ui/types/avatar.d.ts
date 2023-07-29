@@ -12,6 +12,7 @@ export interface AvatarProps extends BasicAttributes {
   size?: AvatarSize
   color?: string
   src?: string
+  alt?: string
   fit?: AvatarFit
   bordered?: boolean
   borderColor?: string

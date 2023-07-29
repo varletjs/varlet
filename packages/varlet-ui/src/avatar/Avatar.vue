@@ -24,13 +24,22 @@
         v-lazy="src"
         :class="n('image')"
         :src="src"
+        :alt="alt"
         :style="{ objectFit: fit }"
         :lazy-loading="loading"
         :lazy-error="error"
         @load="handleLoad"
       />
 
-      <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
+      <img
+        v-else
+        :class="n('image')"
+        :src="src"
+        :alt="alt"
+        :style="{ objectFit: fit }"
+        @load="handleLoad"
+        @error="handleError"
+      />
     </template>
 
     <div ref="textElement" :class="n('text')" :style="{ transform: `scale(${scale})` }" v-else>

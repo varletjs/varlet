@@ -188,6 +188,7 @@ import logo from '../../assets/logo.png'
 | `size`        | 头像的尺寸，可选值为 `mini small normal large` | _string \| number_ | `normal` |
 | `color`       | 头像的背景颜色 | _string_      | `-` |
 | `src`         | 头像的地址 | _string_ | `-` |
+| `alt`     | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
 | `fit`         | 头像图片的填充模式，可选值 `fill contain cover none scale-down` | _string_ | `cover` |
 | `bordered`    | 头像是否带边框	| _boolean_ | `false` |
 | `border-color` | 头像边框颜色	| _string_ | `-` |
