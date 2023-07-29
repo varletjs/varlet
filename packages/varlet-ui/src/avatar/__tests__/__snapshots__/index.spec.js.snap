@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`test avatar alt 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img class="var-avatar__image" src="https://1.png" alt="avatar" style="object-fit: cover;"></div>"`;
+
 exports[`test avatar borderColor 1`] = `
 "<div class="var-avatar var--box var-avatar--normal var-avatar--round var-avatar--bordered" style="border-color: red;">
   <div class="var-avatar__text" style="transform: scale(1);"></div>

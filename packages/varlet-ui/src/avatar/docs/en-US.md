@@ -189,6 +189,7 @@ import logo from '../../assets/logo.png'
 | `size`        | The size of the avatar, with optional values of `mini small normal large`                 | _string \| number_ | `normal` |
 | `color`       | Background color of the avatar                                                | _string_           | `-` |
 | `src`         | Address of avatar                                                   | _string_            | `-` |
+| `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
 | `fit`         | Filling mode of avatar image, optional value `fill contain cover none scale-down` | _string_            | `cover` |
 | `bordered`    | Avatar with or without border                                                | _boolean_ | `false` |
 | `border-color`| Avatar border color                                                  | _string_ | `-` |
