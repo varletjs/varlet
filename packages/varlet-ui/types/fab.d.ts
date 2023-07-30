@@ -10,6 +10,8 @@ export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
 export type FabType = Type
 
+export type FabDrag = boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
+
 export declare const fabProps: Record<string, any>
 
 export interface FabTriggerData {
@@ -19,7 +21,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
-  drag?: boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
+  drag?: FabDrag
   type?: FabType
   fixed?: boolean
   position?: FabPosition
