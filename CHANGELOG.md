@@ -1,3 +1,16 @@
+## [2.13.5](https://github.com/varletjs/varlet/compare/v2.13.4...v2.13.5) (2023-07-30)
+
+
+### Features
+
+* **avatar:** support alt ([#1141](https://github.com/varletjs/varlet/issues/1141)) ([b76f84e](https://github.com/varletjs/varlet/commit/b76f84e82580d16fb5757f1d11da4a1c2218a2d1))
+* **fab:** support drag props ([#1138](https://github.com/varletjs/varlet/issues/1138)) ([344fb86](https://github.com/varletjs/varlet/commit/344fb86db493c4ebaac36b81b8cf9ae2f2118fb8))
+* **icons:** support lock icon ([ab406bd](https://github.com/varletjs/varlet/commit/ab406bd1da7ac568fe6d194e8483b3b0fd4febe2))
+* **popover:** add position strategy ([#1137](https://github.com/varletjs/varlet/issues/1137)) ([87bed1a](https://github.com/varletjs/varlet/commit/87bed1a7d11c31fc0e9bf2c77984ecdfc21f1ba3))
+* **progress:** add css variable to set border radius when the mode is linear ([#1136](https://github.com/varletjs/varlet/issues/1136)) ([83da939](https://github.com/varletjs/varlet/commit/83da939c2d2c9cae4ae53105f194994885541ba0))
+
+
+
 ## [2.13.4](https://github.com/varletjs/varlet/compare/v2.13.3...v2.13.4) (2023-07-25)
 
 
