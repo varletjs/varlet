@@ -359,6 +359,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'WaterMark 水印',
+          'en-US': 'WaterMark',
+        },
+        doc: 'water-mark',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
