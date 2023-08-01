@@ -316,7 +316,7 @@ function openMultiple() {
 | `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
 | `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
 | `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
-| `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to']_  | `body` |
+| `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to'] \| false_  | `body` |
 
 ### 事件
 

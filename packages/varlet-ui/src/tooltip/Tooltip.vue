@@ -8,7 +8,7 @@
   >
     <slot />
 
-    <Teleport :to="teleport">
+    <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
       <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { createNamespace } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { usePopover } from '../menu/usePopover'
@@ -46,6 +46,7 @@ export default defineComponent({
   name: 'VarTooltip',
   props,
   setup(props) {
+    const { disabled: teleportDisabled } = useTeleport()
     const {
       popover,
       host,
@@ -74,6 +75,7 @@ export default defineComponent({
       hostSize,
       show,
       zIndex,
+      teleportDisabled,
       n,
       classes,
       handleHostClick,

@@ -22,6 +22,9 @@ export const props = {
     validator: sizeValidator,
     default: 'normal',
   },
+  alt: {
+    type: String,
+  },
   color: {
     type: String,
   },

@@ -26,7 +26,7 @@ export interface DialogProps extends BasicAttributes {
   dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onBeforeClose?: ListenerProp<(action: DialogActions, done: () => void) => void>

@@ -90,7 +90,7 @@ function reset() {
 | `disabled`  | 是否禁用 | _boolean_ | `false` |
 | `boundary`  | 拖拽范围 | _{ top?: number \| string, bottom?: number \| string, left?: number \| string, right?: number \| string }_ | `{ top: 0, bottom: 0, left: 0, right: 0 }` |
 | `z-index`  | 拖拽元素的层级 | _string \| number_ | `90` |
-| `teleport`  | 拖拽元素挂载的位置 | _TeleportProps['to']_ | `body` |
+| `teleport`  | 拖拽元素挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
 ### 方法
 

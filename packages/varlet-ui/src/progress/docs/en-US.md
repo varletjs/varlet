@@ -139,3 +139,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--progress-success-color` | `var(--color-success)`|
 | `--progress-warning-color` |  `var(--color-warning)`|
 | `--progress-info-color` | `var(--color-info)`|
+| `--progress-linear-border-radius` | `0px`|

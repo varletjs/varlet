@@ -1,5 +1,6 @@
 import { VNode, TeleportProps } from 'vue'
 import { VarComponent, BasicAttributes, ListenerProp, Type } from './varComponent'
+import { DragProps } from './drag'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
 
@@ -8,6 +9,8 @@ export type FabTrigger = 'click' | 'hover'
 export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
 export type FabType = Type
+
+export type FabDrag = boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
 
 export declare const fabProps: Record<string, any>
 
@@ -18,6 +21,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
+  drag?: FabDrag
   type?: FabType
   fixed?: boolean
   position?: FabPosition
@@ -35,7 +39,7 @@ export interface FabProps extends BasicAttributes {
   left?: string | number
   right?: string | number
   safeArea?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   elevation?: boolean | number | string
   onClick?: ListenerProp<(active: boolean, e: Event) => void>
   onOpen?: ListenerProp<() => void>

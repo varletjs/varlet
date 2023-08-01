@@ -14,7 +14,7 @@ export interface ActionSheetProps extends BasicAttributes {
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
   safeArea?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>

@@ -12,7 +12,7 @@ export interface ImagePreviewProps extends BasicAttributes {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   imagePreventDefault?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>

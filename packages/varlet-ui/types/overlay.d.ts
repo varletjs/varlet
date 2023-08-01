@@ -5,7 +5,7 @@ export declare const overlayProps: Record<string, any>
 
 export interface OverlayProps extends BasicAttributes {
   lockScroll?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   onClick?: ListenerProp<() => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }

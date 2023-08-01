@@ -33,8 +33,8 @@
             v-if="loading"
             :class="n('loading')"
             :style="{
-              width: multiplySizeUnit(radius, 2),
-              height: multiplySizeUnit(radius, 2),
+              width: radius,
+              height: radius,
             }"
           >
             <svg viewBox="25 25 50 50">
@@ -51,17 +51,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, nextTick } from 'vue'
+import VarFormDetails from '../form-details'
+import Ripple from '../ripple'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
+import { defineComponent, computed, nextTick, type ComputedRef } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
 import { props } from './props'
-import VarFormDetails from '../form-details'
-import Ripple from '../ripple'
-import type { ComputedRef } from 'vue'
-import type { SwitchProvider } from './provide'
+import { type SwitchProvider } from './provide'
 
 const { n, classes } = createNamespace('switch')
 
@@ -121,7 +120,7 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.4))
+    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.8))
 
     const switchActive = (event: MouseEvent) => {
       const {

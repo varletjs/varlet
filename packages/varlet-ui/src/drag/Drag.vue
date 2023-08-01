@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="teleport">
+  <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
     <div
       ref="drag"
       :class="classes(n(), n('$--box'), [enableTransition, n('--transition')])"
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { getRect, toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { clamp } from '@varlet/shared'
@@ -43,15 +43,20 @@ export default defineComponent({
     })
     const dragged = ref(false)
     const enableTransition = ref(false)
+    const dragging = ref(false)
+    const { disabled: teleportDisabled } = useTeleport()
 
     let touching = false
     let prevX = 0
     let prevY = 0
+    let draggingRunner: number | null = null
 
     const handleTouchstart = (event: TouchEvent) => {
       if (props.disabled) {
         return
       }
+
+      draggingRunner && window.clearTimeout(draggingRunner)
 
       const { clientX, clientY } = event.touches[0]
 
@@ -59,6 +64,7 @@ export default defineComponent({
       prevX = clientX
       prevY = clientY
       touching = true
+      dragging.value = false
     }
 
     const handleTouchmove = async (event: TouchEvent) => {
@@ -69,6 +75,7 @@ export default defineComponent({
       event.preventDefault()
       enableTransition.value = false
       dragged.value = true
+      dragging.value = true
 
       const { clientX, clientY } = event.touches[0]
       const deltaX = clientX - prevX
@@ -95,6 +102,10 @@ export default defineComponent({
       touching = false
       enableTransition.value = true
       attract()
+
+      draggingRunner = window.setTimeout(() => {
+        dragging.value = false
+      })
     }
 
     const saveXY = () => {
@@ -216,8 +227,13 @@ export default defineComponent({
     const reset = () => {
       enableTransition.value = false
       dragged.value = false
+      dragging.value = false
       x.value = 0
       y.value = 0
+
+      touching = false
+      prevX = 0
+      prevY = 0
     }
 
     watch(() => props.boundary, toPxBoundary)
@@ -232,6 +248,8 @@ export default defineComponent({
       x,
       y,
       enableTransition,
+      dragging,
+      teleportDisabled,
       n,
       classes,
       getAttrs,

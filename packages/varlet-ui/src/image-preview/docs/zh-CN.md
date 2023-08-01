@@ -253,7 +253,7 @@ const actions = [
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lock-scroll` | 锁定滚动 | _boolean_ | `true` |
-| `teleport`   | 弹出层挂载的位置 | _TeleportProps['to']_ | `body` |
+| `teleport`   | 弹出层挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 | `image-prevent-default` | 是否禁止图片默认行为 |  _boolean_ | `false` |
 
 ### 事件

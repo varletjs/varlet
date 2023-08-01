@@ -398,7 +398,7 @@ function handleSelect(action) {
 | `close-on-click-action`  | Whether to close the actions sheet when clicking action                                                        | _boolean_             | `true`       |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet                                                         | _boolean_             | `true`       |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
-| `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to']_ | `body`          |
+| `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to'] \| false_ | `body`          |
 
 ### Events
 

@@ -1,6 +1,7 @@
-import { defineListenerProp } from '../utils/components'
+import { ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
 import { typeValidator, type ButtonType } from '../button/props'
 import { type PropType, type TeleportProps } from 'vue'
+import { props as dragProps } from '../drag/props'
 
 export type FabType = ButtonType
 
@@ -30,6 +31,12 @@ export const props = {
   show: {
     type: Boolean,
     default: true,
+  },
+  drag: {
+    type: [Object, Boolean] as PropType<
+      Pick<ExtractPublicPropTypes<typeof dragProps>, 'direction' | 'attraction' | 'boundary'> | boolean
+    >,
+    default: false,
   },
   type: {
     type: String as PropType<FabType>,
@@ -101,7 +108,8 @@ export const props = {
     default: false,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
+    default: 'body',
   },
   onClick: defineListenerProp<(active: boolean, e: Event) => void>(),
   onOpen: defineListenerProp<() => void>(),

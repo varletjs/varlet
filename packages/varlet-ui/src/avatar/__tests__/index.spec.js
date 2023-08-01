@@ -34,6 +34,10 @@ test('test avatar src', () => {
   expect(mount(VarAvatar, { props: { src: 'https://1.png' } }).html()).toMatchSnapshot()
 })
 
+test('test avatar alt', () => {
+  expect(mount(VarAvatar, { props: { src: 'https://1.png', alt: 'avatar' } }).html()).toMatchSnapshot()
+})
+
 test('test avatar src and fit', () => {
   expect(mount(VarAvatar, { props: { src: 'https://1.png', fit: 'fill' } }).html()).toMatchSnapshot()
 })

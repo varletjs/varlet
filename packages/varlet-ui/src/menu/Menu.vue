@@ -8,7 +8,7 @@
   >
     <slot />
 
-    <Teleport :to="teleport">
+    <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
       <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { usePopover } from './usePopover'
@@ -50,6 +50,7 @@ export default defineComponent({
   name: 'VarMenu',
   props,
   setup(props) {
+    const { disabled: teleportDisabled } = useTeleport()
     const {
       popover,
       host,
@@ -77,6 +78,7 @@ export default defineComponent({
       hostSize,
       show,
       zIndex,
+      teleportDisabled,
       formatElevation,
       toSizeUnit,
       n,

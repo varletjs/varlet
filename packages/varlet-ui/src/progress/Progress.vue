@@ -1,17 +1,19 @@
 <template>
   <div :class="n()">
     <div :class="n('linear')" v-if="mode === 'linear'">
-      <div :class="n('linear-block')" :style="{ height: toSizeUnit(lineWidth) }">
-        <div v-if="track" :class="n('linear-background')" :style="{ background: trackColor }" />
+      <div
+        :class="classes(n('linear-block'), [track, n('linear-background')])"
+        :style="{ height: toSizeUnit(lineWidth), background: trackColor }"
+      >
         <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
-          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }" />
-          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }" />
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
+          <div :class="classes(n(`linear--${type}`))" :style="{ background: color }"></div>
         </div>
         <div
           v-else
           :class="classes(n('linear-certain'), n(`linear--${type}`), [ripple, n('linear-ripple')])"
           :style="{ background: color, width: linearProps.width }"
-        />
+        ></div>
       </div>
       <div :class="classes(n('linear-label'), [labelClass, labelClass])" v-if="label">
         <slot>
@@ -38,7 +40,7 @@
           :style="{
             stroke: trackColor,
           }"
-        />
+        ></circle>
         <circle
           :class="classes(n('circle-certain'), n(`circle--${type}`), [indeterminate, n('circle-overlay')])"
           cx="50%"
@@ -51,7 +53,7 @@
           :style="{
             stroke: color,
           }"
-        />
+        ></circle>
       </svg>
 
       <div :class="classes(n('circle-label'), [labelClass, labelClass])" v-if="label">

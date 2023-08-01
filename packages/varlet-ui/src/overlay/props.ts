@@ -11,7 +11,7 @@ export const props = {
     default: true,
   },
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: String as PropType<TeleportProps['to'] | false>,
   },
   onClick: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),

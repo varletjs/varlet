@@ -1,5 +1,6 @@
 import type { PropType, TeleportProps } from 'vue'
 import type { Placement } from './usePopover'
+import type { PositioningStrategy } from '@popperjs/core'
 import { defineListenerProp } from '../utils/components'
 
 function triggerValidator(trigger: string) {
@@ -31,6 +32,10 @@ function placementValidator(alignment: string) {
   ].includes(alignment)
 }
 
+function strategyValidator(strategy: string) {
+  return ['absolute', 'fixed'].includes(strategy)
+}
+
 export const props = {
   show: {
     type: Boolean,
@@ -53,6 +58,11 @@ export const props = {
     default: 'cover-top-start',
     validator: placementValidator,
   },
+  strategy: {
+    type: String as PropType<PositioningStrategy>,
+    default: 'absolute',
+    validator: strategyValidator,
+  },
   offsetX: {
     type: [Number, String],
     default: 0,
@@ -62,7 +72,7 @@ export const props = {
     default: 0,
   },
   teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
+    type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
   sameWidth: {

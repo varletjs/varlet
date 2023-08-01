@@ -139,3 +139,4 @@ onUnmounted(() => {
 | `--progress-success-color` | `var(--color-success)`|
 | `--progress-warning-color` |  `var(--color-warning)`|
 | `--progress-info-color` | `var(--color-info)`|
+| `--progress-linear-border-radius` | `0px`|

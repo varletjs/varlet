@@ -20,7 +20,7 @@ export interface DragProps extends BasicAttributes {
   disabled?: boolean
   boundary?: DragBoundary
   zIndex?: string | number
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
 }
 
 export class Drag extends VarComponent {

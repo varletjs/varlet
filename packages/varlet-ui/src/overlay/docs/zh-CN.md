@@ -78,7 +78,7 @@ const show = ref(false)
 |----------------|-------------------------------|-----------------------|---------|
 | `v-model:show` | 是否显示遮罩层                       | _boolean_             | `false` |
 | `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动遮罩层不会引发 body 的滚动 | _boolean_             | `true`  |
-| `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to']_ | `-`     |
+| `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to'] \| false_ | `-`     |
 
 ### 事件
 
