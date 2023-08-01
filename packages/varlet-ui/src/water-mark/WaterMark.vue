@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue'
+import { defineComponent, ref, watchEffect, type Ref } from 'vue'
 import { toNumber } from '@varlet/shared'
-import { onSmartMounted } from '@varlet/use'
 import { createNamespace } from '../utils/components'
 import { props, Font } from './props'
 
@@ -33,9 +32,10 @@ export default defineComponent({
       opacity: string | number,
       font: Font
     ) => {
-      ctx.globalAlpha = toNumber(opacity)
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.translate(canvas.width / 2, canvas.height / 2)
       ctx.rotate((toNumber(rotate) * Math.PI) / 180)
+      ctx.globalAlpha = toNumber(opacity)
       ctx.textAlign = 'center'
       ctx.font = `${font.fontStyle} ${font.fontWeight} ${font.fontSize} ${font.fontFamily}`
       ctx.fillStyle = `${font.fontColor}`
@@ -43,8 +43,19 @@ export default defineComponent({
       waterMarkUrl.value = canvas.toDataURL()
     }
 
-    const canvasToBase64 = () => {
+    const drawImage = (
+      canvas: HTMLCanvasElement,
+      ctx: CanvasRenderingContext2D,
+      img: HTMLImageElement,
+      rotate: string | number
+    ) => {
       const ratio = getPixelRatio()
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.rotate((toNumber(rotate) * Math.PI) / 180)
+      ctx.drawImage(img, 0, 0, canvas.width * ratio, canvas.height * ratio)
+    }
+
+    const canvasToBase64 = () => {
       const {
         width,
         height,
@@ -77,11 +88,7 @@ export default defineComponent({
           img.crossOrigin = 'anonymous'
           img.referrerPolicy = 'no-referrer'
           img.onload = () => {
-            // canvas.width = img.naturalWidth
-            // canvas.height = img.naturalHeight
-            ctx.translate(canvas.width / 2, canvas.height / 2)
-            ctx.rotate((toNumber(rotate) * Math.PI) / 180)
-            ctx.drawImage(img, 0, 0, canvas.width * ratio, canvas.height * ratio)
+            drawImage(canvas, ctx, img, rotate)
             waterMarkUrl.value = canvas.toDataURL()
           }
           img.onerror = () => {
@@ -92,7 +99,11 @@ export default defineComponent({
       }
     }
 
-    onSmartMounted(canvasToBase64)
+    watchEffect(() => {
+      if (props.image || props.content) {
+        canvasToBase64()
+      }
+    })
 
     return {
       waterMarkUrl,

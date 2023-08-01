@@ -4,7 +4,7 @@ import { watchLang, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
-const fullScreen = ref(true)
+const fullScreen = ref(false)
 
 const toggle = () => {
   fullScreen.value = !fullScreen.value
