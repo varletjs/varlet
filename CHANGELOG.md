@@ -1,3 +1,17 @@
+## [2.13.6](https://github.com/varletjs/varlet/compare/v2.13.5...v2.13.6) (2023-08-02)
+
+
+### Bug Fixes
+
+* **cell:** fix cell overflow hidden ([0850d94](https://github.com/varletjs/varlet/commit/0850d940eca1e61522eef48afb6d8ec7ef5e91fa))
+
+
+### Features
+
+* **icons:** support email icon ([c23c7c1](https://github.com/varletjs/varlet/commit/c23c7c12554bec087a6e58e7afda01cd25e38b7c))
+
+
+
 ## [2.13.5](https://github.com/varletjs/varlet/compare/v2.13.4...v2.13.5) (2023-07-30)
 
 
