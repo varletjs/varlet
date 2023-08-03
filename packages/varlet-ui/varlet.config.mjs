@@ -359,10 +359,10 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'WaterMark 水印',
-          'en-US': 'WaterMark',
+          'zh-CN': 'Watermark 水印',
+          'en-US': 'Watermark',
         },
-        doc: 'water-mark',
+        doc: 'watermark',
         type: 2,
       },
       {

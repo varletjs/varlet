@@ -1,8 +1,8 @@
 import type { PropType } from 'vue'
 
 export interface Font {
-  fontColor?: string
-  fontSize?: string
+  fontSize?: number | string
+  fontVariant?: string
   fontWeight?: 'normal' | 'light' | 'weight' | number
   fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
   fontFamily?: string
@@ -20,12 +20,23 @@ export const props = {
   content: {
     type: String,
   },
+  color: {
+    type: String,
+  },
   image: {
     type: String,
   },
   rotate: {
-    type: [Number, String],
+    type: Number,
     default: -22,
+  },
+  offsetX: {
+    type: Number,
+    default: 0,
+  },
+  offsetY: {
+    type: Number,
+    default: 0,
   },
   gapX: {
     type: Number,
@@ -37,11 +48,11 @@ export const props = {
   },
   zIndex: {
     type: [Number, String],
-    default: 100,
+    default: 10,
   },
   opacity: {
     type: [Number, String],
-    default: 1,
+    default: 0.5,
   },
   fullScreen: {
     type: Boolean,
@@ -49,5 +60,12 @@ export const props = {
   },
   font: {
     type: Object as PropType<Font>,
+    default: {
+      fontStyle: 'normal',
+      fontVariant: 'normal',
+      fontFamily: 'sans-serif',
+      fontWeight: 'normal',
+      fontSize: 14,
+    },
   },
 }
