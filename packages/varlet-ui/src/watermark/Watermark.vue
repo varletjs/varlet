@@ -21,7 +21,7 @@
           }"
         >
           <foreignObject
-            v-if="content"
+            v-if="showContent"
             x="0"
             y="0"
             :width="width"
@@ -40,17 +40,19 @@
                 transformOrigin: 'center',
               }"
             >
-              <span :style="{ color, ...fontStyle }">{{ content }}</span>
+              <slot name="content">
+                <span :style="{ color, ...fontStyle }">{{ content }}</span>
+              </slot>
             </div>
           </foreignObject>
           <image
-            v-if="image && isImageLoaded"
+            v-if="showImage"
             :href="imageUrl"
             :xlink:href="imageUrl"
             :x="offsetX"
             :y="offsetY"
-            :width="width * 0.3"
-            :height="height * 0.3"
+            :width="width"
+            :height="height"
             :style="{
               transformOrigin: 'center',
               transform: `rotate(${rotate}deg)`,
@@ -73,7 +75,7 @@ const { n, classes } = createNamespace('watermark')
 export default defineComponent({
   name: 'VarWatermark',
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const WatermarkUrl: Ref<string> = ref('')
     const imageUrl: Ref<string> = ref('')
     const svgRef: Ref<SVGElement | null> = ref(null)
@@ -117,6 +119,32 @@ export default defineComponent({
       })
     )
 
+    const showImage = computed(() => {
+      // show slot content first
+      if (slots.content) {
+        return false
+      }
+
+      if (props.image && isImageLoaded.value) {
+        return true
+      }
+
+      return false
+    })
+
+    const showContent = computed(() => {
+      if (slots.content) {
+        return true
+      }
+
+      // if image loading failed and content isn't empty, content will take effect
+      if (props.content && (!props.image || !isImageLoaded.value)) {
+        return true
+      }
+
+      return false
+    })
+
     watch(
       () => [imageUrl.value, props.content, props.height, props.width, props.rotate, props.gapX, props.gapY],
       () => {
@@ -145,11 +173,13 @@ export default defineComponent({
     })
 
     return {
+      svgRef,
       WatermarkUrl,
       imageUrl,
-      svgRef,
       isImageLoaded,
       fontStyle,
+      showImage,
+      showContent,
       n,
       classes,
     }

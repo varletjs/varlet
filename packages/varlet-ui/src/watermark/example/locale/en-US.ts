@@ -5,5 +5,6 @@ export default {
   customOffset: 'Custom Offset',
   customRotate: 'Custom Rotate',
   fullScreen: 'Full Screen',
+  customContentSlot: 'Watermark Content Slot',
   switch: 'Switch',
 }

@@ -20,7 +20,7 @@ watchLang(use)
   </var-watermark>
 
   <app-type>{{ pack.imageWatermark }}</app-type>
-  <var-watermark image="./varlet_icon.png" :offset-x="20" :offset-y="20">
+  <var-watermark image="./varlet_icon.png">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
@@ -44,6 +44,14 @@ watchLang(use)
     <div class="watermark-wrapper">
       <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
     </div>
+  </var-watermark>
+
+  <app-type>{{ pack.customContentSlot }}</app-type>
+  <var-watermark :offset-x="10" :offset-y="10">
+    <div class="watermark-wrapper"></div>
+    <template #content>
+      <span style="font-size: 20px; color: #fefefe; text-shadow: 0 0 0.5em #4a7afe, 0 0 0.2em #5c5c5c">Varlet UI</span>
+    </template>
   </var-watermark>
 </template>
 

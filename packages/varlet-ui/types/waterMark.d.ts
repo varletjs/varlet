@@ -1,3 +1,4 @@
+import { VNode } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
 
 export declare const WatermarkProps: Record<string, any>
@@ -29,6 +30,10 @@ export interface WatermarkProps extends BasicAttributes {
 
 export class Watermark extends VarComponent {
   $props: WatermarkProps
+
+  $slots: {
+    content(): VNode[]
+  }
 }
 
 export class _WatermarkComponent extends Watermark {}
