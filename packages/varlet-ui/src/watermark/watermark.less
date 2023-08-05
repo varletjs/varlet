@@ -1,7 +1,11 @@
+:root {
+  --watermark-content-color: rgba(128, 128, 128, 0.3);
+}
+
 .var-watermark {
   position: relative;
 
-  &__wrapper {
+  &__container {
     position: absolute;
     left: 0;
     top: 0;
@@ -13,5 +17,13 @@
 
   &__full {
     position: fixed;
+  }
+
+  &__content {
+    position: relative;
+
+    &-color {
+      color: var(--watermark-content-color);
+    }
   }
 }

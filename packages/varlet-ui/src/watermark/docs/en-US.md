@@ -89,7 +89,7 @@ Adding text or image watermarks to a certain area of the page can be used to ide
 </style>
 ```
 
-### Full Screen
+### Fullscreen
 
 ```html
 <script setup>
@@ -146,7 +146,6 @@ const toggle = () => {
 | `width`    | Watermark width       | _number_       | `100`   |
 | `height`   | Watermark height       | _number_       | `100`   |
 | `content`  | Watermark text content    | _string_       | `-`   |
-| `color`    | Watermark text color    | _string_       | `-`   |
 | `image`    | The path of the image watermark has a higher priority than `content`    | _string_       | `-`   |
 | `rotate`   | Watermark rotation angle           | _number_       | `-22`   |
 | `offset-x` | Offset of the watermark from the container's x-axis    | _number_       | `0`   |
@@ -155,14 +154,14 @@ const toggle = () => {
 | `gap-y`    | Spacing in the vertical direction of the watermark        | _number_       | `0`   |
 | `z-index`  | Watermark z-index      | _number \| string_       | `10`   |
 | `opacity`  | Watermark opacity         | _number \| string_      | `0.5`   |
-| `full-screen`    | Whether to display the watermark in full screen        | _boolean_       | `false`   |
+| `fullscreen`    | Whether to display watermark in fullscreen mode        | _boolean_       | `false`   |
 | `font`    | Watermark text style    | _Font_ | `Font` |
 
 ### Font 
 
 | Prop              | Description                                                 | Type              | Default   |
 | --- |----------------------| --- | --- |
-| `font-size`    |    font size    | _number \| string_      | `14`   |
+| `font-size`    |    font size    | _number_      | `14`   |
 | `font-variant`  |    font variant    | _string_      | `normal`   |
 | `font-weight`    |    font weight   | _normal \| light \| weight \| number_      | `normal`   |
 | `font-style`   |    font style   | _none \| normal \| italic \| \| oblique \| string_      | `normal`   |

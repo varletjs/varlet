@@ -147,7 +147,6 @@ const toggle = () => {
 | `width`    | 水印的宽度       | _number_       | `100`   |
 | `height`   | 水印的高度       | _number_       | `100`   |
 | `content`  | 文字水印的内容    | _string_       | `-`   |
-| `color`    | 文字水印的颜色    | _string_       | `-`   |
 | `image`    | 图片水印的路径，优先级比 `content` 高    | _string_       | `-`   |
 | `rotate`   | 水印的旋转角度           | _number_       | `-22`   |
 | `offset-x` | 水印距离容器x轴的偏移量    | _number_       | `0`   |
@@ -156,14 +155,14 @@ const toggle = () => {
 | `gap-y`    | 水印垂直方向的间距        | _number_       | `0`   |
 | `z-index`  | 水印的z-index       | _number \| string_       | `10`   |
 | `opacity`  | 水印的透明度         | _number \| string_      | `0.5`   |
-| `full-screen`    | 水印是否全屏显示        | _boolean_       | `false`   |
+| `fullscreen`    | 水印是否全屏显示        | _boolean_       | `false`   |
 | `font`    | 文字水印的字体样式    | _Font_ | `Font` |
 
 ### Font 
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `font-size`    |    字体大小    | _number \| string_      | `14`   |
+| `font-size`    |    字体大小    | _number_      | `14`   |
 | `font-variant`  |    设置小型大写字母的字体显示文本    | _string_      | `normal`   |
 | `font-weight`    |    字体粗细   | _normal \| light \| weight \| number_      | `normal`   |
 | `font-style`   |    字体样式   | _none \| normal \| italic \| \| oblique \| string_      | `normal`   |

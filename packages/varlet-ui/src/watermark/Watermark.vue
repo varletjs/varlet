@@ -2,7 +2,7 @@
   <div :class="n()">
     <slot />
     <div
-      :class="classes(n('wrapper'), [fullScreen, n('full')])"
+      :class="classes(n('container'), [fullscreen, n('full')])"
       :style="{
         backgroundImage: `url(${WatermarkUrl})`,
         zIndex: zIndex,
@@ -20,16 +20,7 @@
             opacity: opacity,
           }"
         >
-          <foreignObject
-            v-if="showContent"
-            x="0"
-            y="0"
-            :width="width"
-            :height="height"
-            :style="{
-              position: 'relative',
-            }"
-          >
+          <foreignObject v-if="showContent" x="0" y="0" :width="width" :height="height" :class="n('content')">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               :style="{
@@ -41,12 +32,14 @@
               }"
             >
               <slot name="content">
-                <span :style="{ color, ...fontStyle }">{{ content }}</span>
+                <span :class="n('content-color')" :style="{ ...font, fontSize: `${font.fontSize}px` }">{{
+                  content
+                }}</span>
               </slot>
             </div>
           </foreignObject>
           <image
-            v-if="showImage"
+            v-if="!$slots.content && image"
             :href="imageUrl"
             :xlink:href="imageUrl"
             :x="offsetX"
@@ -66,7 +59,6 @@
 
 <script lang="ts">
 import { defineComponent, ref, watchEffect, onUnmounted, type Ref, watch, nextTick, computed } from 'vue'
-import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
@@ -79,7 +71,6 @@ export default defineComponent({
     const WatermarkUrl: Ref<string> = ref('')
     const imageUrl: Ref<string> = ref('')
     const svgRef: Ref<SVGElement | null> = ref(null)
-    const isImageLoaded: Ref<boolean> = ref(false)
 
     const imageToBase64 = () => {
       const canvas = document.createElement('canvas')
@@ -96,11 +87,6 @@ export default defineComponent({
           canvas.height = img.height
           ctx.drawImage(img, 0, 0)
           imageUrl.value = canvas.toDataURL()
-          isImageLoaded.value = true
-        }
-
-        img.onerror = () => {
-          isImageLoaded.value = false
         }
       }
     }
@@ -113,32 +99,14 @@ export default defineComponent({
       return URL.createObjectURL(svgBlob)
     }
 
-    const fontStyle = computed(() =>
-      Object.assign(props.font, {
-        fontSize: `${toNumber(props.font.fontSize)}px`,
-      })
-    )
-
-    const showImage = computed(() => {
+    const showContent = computed(() => {
       // show slot content first
       if (slots.content) {
-        return false
-      }
-
-      if (props.image && isImageLoaded.value) {
         return true
       }
 
-      return false
-    })
-
-    const showContent = computed(() => {
-      if (slots.content) {
-        return true
-      }
-
-      // if image loading failed and content isn't empty, content will take effect
-      if (props.content && (!props.image || !isImageLoaded.value)) {
+      // if image isn't set, content will take effect
+      if (props.content && !props.image) {
         return true
       }
 
@@ -146,7 +114,19 @@ export default defineComponent({
     })
 
     watch(
-      () => [imageUrl.value, props.content, props.height, props.width, props.rotate, props.gapX, props.gapY],
+      () => [
+        imageUrl.value,
+        props.font,
+        props.content,
+        props.height,
+        props.width,
+        props.rotate,
+        props.gapX,
+        props.gapY,
+        props.offsetX,
+        props.offsetY,
+        props.opacity,
+      ],
       () => {
         nextTick(() => {
           if (svgRef.value) {
@@ -157,13 +137,12 @@ export default defineComponent({
       },
       {
         immediate: true,
+        deep: true,
       }
     )
 
     watchEffect(() => {
-      if (props.image) {
-        imageToBase64()
-      }
+      props.image && imageToBase64()
     })
 
     onUnmounted(() => {
@@ -176,9 +155,6 @@ export default defineComponent({
       svgRef,
       WatermarkUrl,
       imageUrl,
-      isImageLoaded,
-      fontStyle,
-      showImage,
       showContent,
       n,
       classes,

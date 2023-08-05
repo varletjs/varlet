@@ -1,7 +1,7 @@
 import type { PropType } from 'vue'
 
 export interface Font {
-  fontSize?: number | string
+  fontSize?: number
   fontVariant?: string
   fontWeight?: 'normal' | 'light' | 'weight' | number
   fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
@@ -18,9 +18,6 @@ export const props = {
     default: 100,
   },
   content: {
-    type: String,
-  },
-  color: {
     type: String,
   },
   image: {
@@ -54,7 +51,7 @@ export const props = {
     type: [Number, String],
     default: 0.5,
   },
-  fullScreen: {
+  fullscreen: {
     type: Boolean,
     default: false,
   },

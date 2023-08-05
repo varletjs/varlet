@@ -4,7 +4,7 @@ export default {
   customGap: 'Custom Gap',
   customOffset: 'Custom Offset',
   customRotate: 'Custom Rotate',
-  fullScreen: 'Full Screen',
+  fullscreen: 'Fullscreen',
   customContentSlot: 'Watermark Content Slot',
   switch: 'Switch',
 }

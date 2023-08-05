@@ -4,7 +4,7 @@ export default {
   customGap: '自定义间距',
   customOffset: '自定义偏移量',
   customRotate: '自定义旋转角度',
-  fullScreen: '全屏',
+  fullscreen: '全屏',
   customContentSlot: '自定义水印内容',
   switch: '切换',
 }

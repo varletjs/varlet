@@ -4,10 +4,10 @@ import { watchLang, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
-const fullScreen = ref(false)
+const fullscreen = ref(false)
 
 const toggle = () => {
-  fullScreen.value = !fullScreen.value
+  fullscreen.value = !fullscreen.value
 }
 
 watchLang(use)
@@ -39,8 +39,8 @@ watchLang(use)
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.fullScreen }}</app-type>
-  <var-watermark content="Varlet UI" :full-screen="fullScreen" opacity="0.1" :offset-x="10" :offset-y="10">
+  <app-type>{{ pack.fullscreen }}</app-type>
+  <var-watermark content="Varlet UI" :fullscreen="fullscreen" opacity="0.1" :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper">
       <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
     </div>

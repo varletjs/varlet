@@ -4,7 +4,7 @@ import { VarComponent, BasicAttributes } from './varComponent'
 export declare const WatermarkProps: Record<string, any>
 
 export interface Font {
-  fontSize?: string | number
+  fontSize?: number
   fontVariant?: string
   fontWeight?: 'normal' | 'light' | 'weight' | number
   fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
@@ -15,7 +15,6 @@ export interface WatermarkProps extends BasicAttributes {
   width?: number
   height?: number
   content?: string
-  color?: string
   image?: string
   rotate?: number
   offsetX?: number
@@ -24,7 +23,7 @@ export interface WatermarkProps extends BasicAttributes {
   gapY?: number
   zIndex?: number | string
   opacity?: number | string
-  fullScreen?: boolean
+  fullscreen?: boolean
   font?: Font
 }
 
