@@ -10,9 +10,9 @@ export default {
   checkAll: 'Check All',
   inverseAll: 'Inverse All',
   checkboxGroup: 'CheckboxGroup',
-  vertical: 'Vertical direction',
+  vertical: 'Vertical Direction',
   checkboxValidate: 'Checkbox Validation',
-  checkboxGroupValidate: 'CheckboxGroup validate',
+  checkboxGroupValidate: 'CheckboxGroup Validate',
   checkboxValidateMessage: 'Please check your choices',
   checkboxGroupValidateMessage: 'Please check all',
 }

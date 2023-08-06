@@ -6,5 +6,5 @@ export default {
   changeEvent: 'Change Event',
   clickEvent: 'Click Event',
   fab: 'Fab',
-  label: 'Label',
+  label: 'label',
 }

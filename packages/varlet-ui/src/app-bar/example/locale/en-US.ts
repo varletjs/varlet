@@ -4,8 +4,8 @@ export default {
   addSlotsAtTitle: 'Add Slots At Title',
   title: 'Title',
   addLeftAndRightSlot: 'Add Left And Right Slot',
-  option: 'Option',
-  search: 'Search',
+  option: 'OPTION',
+  search: 'search',
   round: 'Use Border Radius',
   custom: 'Custom Content',
 }

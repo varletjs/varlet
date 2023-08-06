@@ -19,5 +19,4 @@ export default {
   warningTooltip: 'Warning',
   dangerTooltip: 'Danger',
   customColor: 'Custom Color',
-  countDown: 'Closed After Seconds',
 }
