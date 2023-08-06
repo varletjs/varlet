@@ -1,5 +1,5 @@
 export default {
-  baseUse: 'Basic use',
+  baseUse: 'Basic usage',
   vertical: 'Vertical',
   space: 'Space Size',
   rightAlign: 'Right Align',

@@ -1,7 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   stepSize: 'Step Size',
-  dualThumb: 'Dual thumb',
+  dualThumb: 'Dual Thumb',
   disable: 'Disable',
   readonly: 'Readonly',
   range: 'Range',
