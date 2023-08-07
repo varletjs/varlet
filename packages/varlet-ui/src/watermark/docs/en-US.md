@@ -167,8 +167,21 @@ const toggle = () => {
 | `font-style`   |    font style   | _none \| normal \| italic \| \| oblique \| string_      | `normal`   |
 | `font-family`  |    font family    | _string_      | `sans-serif`   |
 
+### Methods
+
+| Method | Description | Arguments | Return |
+| --- | --- | --- | --- |
+| `resize` | This method can be called for redrawing when the watermark attribute changes | `-` | `-` |
+
 ### Slots
 
 | Name | Description | SlotProps |
 | --- |----------------------| --- |
 | `content` | The content of HTML `Watermark`. only supports inline styles, does not support passing in self closing tags, priority higher than `content` or `image` attributes | `-` |
+
+### Style Variables
+Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+| Variable | Default |
+| ------ | -------- |
+| `--watermark-content-color` | `#808080`  |

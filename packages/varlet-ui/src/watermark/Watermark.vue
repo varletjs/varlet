@@ -113,6 +113,14 @@ export default defineComponent({
       return false
     })
 
+    // expose
+    const resize = () => {
+      if (svgRef.value) {
+        WatermarkUrl.value && URL.revokeObjectURL(WatermarkUrl.value)
+        WatermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
+      }
+    }
+
     watch(
       () => [
         imageUrl.value,
@@ -152,12 +160,13 @@ export default defineComponent({
     })
 
     return {
+      n,
+      classes,
       svgRef,
       WatermarkUrl,
       imageUrl,
       showContent,
-      n,
-      classes,
+      resize,
     }
   },
 })

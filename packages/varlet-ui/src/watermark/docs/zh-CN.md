@@ -168,8 +168,21 @@ const toggle = () => {
 | `font-style`   |    字体样式   | _none \| normal \| italic \| \| oblique \| string_      | `normal`   |
 | `font-family`  |    字体类型    | _string_      | `sans-serif`   |
 
+### 方法
+
+| 方法名 | 说明 | 参数 | 返回值 |
+| --- | --- | --- | --- |
+| `resize` | 水印属性变化时可以调用此方法进行重绘 | `-` | `-` |
+
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `content` | `Watermark` 内容，仅支持行内样式，不支持传入自闭合标签，优先级高于 `content` 或 `image` 属性 | `-` |
+
+### 样式变量
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+| 变量名                                           | 默认值   |
+|-----------------------------------------------| -------- |
+| `--watermark-content-color` | `#808080`  |

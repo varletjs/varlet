@@ -33,6 +33,8 @@ export class Watermark extends VarComponent {
   $slots: {
     content(): VNode[]
   }
+
+  resize(): void
 }
 
 export class _WatermarkComponent extends Watermark {}
