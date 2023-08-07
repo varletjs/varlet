@@ -302,7 +302,7 @@ function handleSelect(action) {
 </template>
 ```
 
-### Disable close on click action
+### Disable Close On Click Action
 
 ```html
 <script setup>

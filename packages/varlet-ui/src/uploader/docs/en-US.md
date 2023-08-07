@@ -258,7 +258,7 @@ async function handleBeforeRemove() {
 </template>
 ```
 
-### Customize upload styles
+### Customize Upload Styles
 
 ```html
 <script setup>
@@ -301,7 +301,7 @@ const files = ref([
 </template>
 ```
 
-### Custom render file list
+### Custom Render File List
 
 You can use the `hide-list` to hide component files list, then you can render this list by custom.
 

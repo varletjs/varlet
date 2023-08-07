@@ -33,7 +33,7 @@ const value = ref(true)
 </template>
 ```
 
-### Custom color
+### Custom Color
 
 ```html
 <script setup>
@@ -81,7 +81,7 @@ const value = ref(true)
 </template>
 ```
 
-### Validate value
+### Validate Value
 
 The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.

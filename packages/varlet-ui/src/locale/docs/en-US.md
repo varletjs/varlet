@@ -4,7 +4,7 @@
 Component library uses Chinese as the default language, support multi-language switch,
 built-in support for `Chinese`, `English`.
 
-### Multi-language switch
+### Multi-language Switch
 The `Locale` component is introduced to realize multi-language switching, and `Locale.add` is used for language extension.
 
 ```js

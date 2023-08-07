@@ -6,7 +6,7 @@ Component libraries organize styles through [CSS variables](https://developer.mo
 Each component has a corresponding style variable, you can directly replace the style variable on the root node by overriding it with a CSS file.
 Or use StyleProvider components.
 
-### Basic style variable
+### Basic Style Variable
 
 Here are some basic style variables for the component library
 
@@ -34,7 +34,7 @@ Here are some basic style variables for the component library
 }
 ```
 
-### Modify styles at runtime
+### Modify Styles At Runtime
 
 Maybe you have a need to replace the style while the program is runtime，like a one-click skin change or something.
 The component library provides a StyleProvider component to assist in managing styles,

@@ -80,7 +80,7 @@ const trigger = ref('click')
 </template>
 ```
 
-### Action menu popup direction
+### Action Menu Popup Direction
 
 ```html
 <script setup>
@@ -154,7 +154,7 @@ const disabled = ref(false)
 </template>
 ```
 
-### Trigger show/hide
+### Trigger Show/Hide
 
 ```html
 <script setup>
@@ -174,7 +174,7 @@ function toggle() {
 </template>
 ```
 
-### Action menu expand/collapse
+### Action Menu Expand/Collapse
 
 ```html
 <script setup>
