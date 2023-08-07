@@ -280,7 +280,7 @@ const actions = [
 | `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
 | `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
 
-### Slot
+### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
