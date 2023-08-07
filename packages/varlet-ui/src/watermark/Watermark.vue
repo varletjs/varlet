@@ -173,5 +173,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './Watermark.less';
+@import './watermark.less';
 </style>
