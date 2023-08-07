@@ -18,7 +18,7 @@ const value = ref(false)
 </template>
 ```
 
-### Set State value
+### Set State Value
 
 ```html
 <script setup>
@@ -38,7 +38,7 @@ const value = ref(0)
 </template>
 ```
 
-### Modify the icon and color
+### Modify The Icon And Color
 
 ```html
 <script setup>
@@ -129,7 +129,7 @@ const value = ref([])
 </template>
 ```
 
-### Vertical direction
+### Vertical Direction
 
 ```html
 <script setup>
@@ -146,7 +146,7 @@ const value = ref([])
 </template>
 ```
 
-### Checkbox validation
+### Checkbox Validation
 
 ```html
 <script setup>
@@ -165,7 +165,7 @@ const value = ref([])
 </template>
 ```
 
-### CheckboxGroup validate
+### CheckboxGroup Validate
 
 ```html
 <script setup>

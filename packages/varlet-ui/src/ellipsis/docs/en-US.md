@@ -24,7 +24,7 @@ Mainly used to omit single-line text and multi-line text.
 </template>
 ```
 
-### Click on the text to expand
+### Click On Text To Expand
 
 ```html
 <template>

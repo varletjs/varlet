@@ -18,7 +18,7 @@ const value = ref(3)
 </template>
 ```
 
-### Step size
+### Step Size
 
 Set step increment by `step`.
 
@@ -34,7 +34,7 @@ const value = ref(25)
 </template>
 ```
 
-### Dual thumb
+### Dual Thumbs
 
 Open the double slider mode through the `range` attribute. Make sure the `value` is an **array**.
 
@@ -96,7 +96,7 @@ const value = ref(40)
 </template>
 ```
 
-### Slider size
+### Slider Size
 
 Control the size of slider through `track-height` and `thumb-size`.
 
@@ -112,7 +112,7 @@ const value = ref([7, 64])
 </template>
 ```
 
-### Custom style
+### Custom Style
 
 ```html
 <script setup>
@@ -170,7 +170,7 @@ const value = ref([5, 38])
 </style>
 ```
 
-### Show label
+### Show Label
 Control the display of labels through the `label-visible` attribute.
 
 ```html
@@ -189,7 +189,7 @@ const value2 = ref(50)
 </template>
 ```
 
-### Validate value
+### Validate Value
 
 Verify the value through the `rules` attribute.
 
