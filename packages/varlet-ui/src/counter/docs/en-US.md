@@ -14,7 +14,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set the value range
+### Set Value Range
 
 ```html
 <script setup>
@@ -28,7 +28,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set step
+### Set Step
 
 ```html
 <script setup>
@@ -42,7 +42,7 @@ const value = ref(0)
 </template>
 ```
 
-### Decimal length
+### Decimal Length
 
 ```html
 <script setup>
@@ -56,7 +56,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set size
+### Set Size
 
 ```html
 <script setup>
@@ -103,7 +103,7 @@ const value = ref(0)
 </template>
 ```
 
-### Asynchronous change
+### Asynchronous Change
 
 In some scenarios, you may need to wait for the server to return successfully before making changes.
 `lazy-change` prevents binding value updates on the component itself.

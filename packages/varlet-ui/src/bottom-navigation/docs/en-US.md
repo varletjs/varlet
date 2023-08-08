@@ -19,7 +19,7 @@ const active = ref(0)
 </template>
 ```
 
-### Match by name
+### Match By Name
 
 ```html
 <script setup>

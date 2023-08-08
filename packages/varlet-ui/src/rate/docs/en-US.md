@@ -15,7 +15,7 @@ const score = ref(3)
 </template>
 ```
 
-### Customize the total rating
+### Customize Total Rating
 
 Set the total rating through the `count` attribute.
 
@@ -31,7 +31,7 @@ const score = ref(3)
 </template>
 ```
 
-### Customize the score icon style
+### Customize Score Icon Style
 
 Set the icon style when selected and unselected through the `icon` and `empty-icon` properties.
 Set the selected and unselected colors through the `color` and `empty-color` properties.
@@ -54,7 +54,7 @@ const score = ref(3)
 </template>
 ```
 
-### Customize the score icon size and gap
+### Customize Score Icon Size And Gap
 
 Use the `size` property to set the size of the score icon.
 Set the interval between scores via the `gap` property.
@@ -71,7 +71,7 @@ const score = ref(3)
 </template>
 ```
 
-### Allows half rating
+### Allows Half Rating
 
 The `half` attribute is used to set the rating to semi selective, and the `half-icon` attribute is used to set the style of semi selective.
 
@@ -96,7 +96,7 @@ const score = ref(3.5)
 </template>
 ```
 
-### Disable and Readonly
+### Disable And Readonly
 
 The `disabled` property sets the score to the no-click state, and `disabled-color` sets the icon color when disabled.
 The score is set to read-only via the `readonly` property.
@@ -114,7 +114,7 @@ const score = ref(3)
 </template>
 ```
 
-### Can be cleared
+### Can Be Cleared
 
 The `clearable` property Allows users to clear score.
 

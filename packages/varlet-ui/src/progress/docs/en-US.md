@@ -34,7 +34,7 @@ Display the current progress of an operation flow.
 </template>
 ```
 
-### Other Style
+### Other Styles
 
 Set the line width, progress bar color and track color through the attributes of `type`, `line-width`, `color`, `track-color`.
 
@@ -48,7 +48,7 @@ Set the line width, progress bar color and track color through the attributes of
 </template>
 ```
 
-### Progress circle
+### Progress Circle
 
 ```html
 <script setup>
@@ -80,7 +80,7 @@ Set the line width, progress bar color and track color through the attributes of
 </template>
 ```
 
-### Indeterminate animation
+### Indeterminate Animation
 
 Enable indeterminate animation through the `indeterminate` attribute when loading progress is unknown.
 

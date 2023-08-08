@@ -73,7 +73,7 @@ const images = ref([
 </template>
 ```
 
-### Specify initial position
+### Specify Initial Position
 
 ```html
 <script setup>
@@ -102,7 +102,7 @@ const images = ref([
 </template>
 ```
 
-### Display the close button
+### Display The Close Button
 
 ```html
 <script setup>
@@ -131,7 +131,7 @@ const images = ref([
 </template>
 ```
 
-### Listen for close event
+### Listen For Close Event
 
 ```html
 <script setup>
@@ -161,7 +161,7 @@ const images = ref([
 </template>
 ```
 
-### Listen for long press event
+### Listen For Long Press Event
 
 The `image-prevent-default` attribute prohibits the default behavior of images, and the `long-press` event can be customized to achieve long press requirements.
 
@@ -194,7 +194,7 @@ const images = ref([
 </template>
 ```
 
-### Show extra slots
+### Show Extra Slots
 
 ```html
 <script setup>
@@ -280,7 +280,7 @@ const actions = [
 | `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
 | `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
 
-### Slot
+### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |

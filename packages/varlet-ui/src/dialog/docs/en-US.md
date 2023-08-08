@@ -58,7 +58,7 @@ function hideButton() {
 </template>
 ```
 
-### Handling user behavior
+### Handling User Behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
 Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
@@ -83,7 +83,7 @@ async function createAction() {
 </template>
 ```
 
-### Asynchronous closing
+### Asynchronous Closing
 
 You can use `onBeforeClose` to intercept before closing, and you can get the user behavior from the parameters, and the callback function that triggers the shutdown.
 
@@ -144,7 +144,7 @@ const show = ref(false)
 </template>
 ```
 
-### Asynchronous closing
+### Asynchronous Closing
 
 ```html
 <script setup>

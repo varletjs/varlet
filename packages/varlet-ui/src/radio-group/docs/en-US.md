@@ -18,7 +18,7 @@ const value = ref(false)
 </template>
 ```
 
-### Set State value
+### Set State Value
 
 ```html
 <script setup>
@@ -38,7 +38,7 @@ const value = ref(0)
 </template>
 ```
 
-### Modify the icon and color
+### Modify Icon And Color
 
 ```html
 <script setup>
@@ -114,7 +114,7 @@ const value = ref(0)
 </template>
 ```
 
-### Vertical direction
+### Vertical Direction
 
 ```html
 <script setup>
@@ -131,7 +131,7 @@ const value = ref(0)
 </template>
 ```
 
-### Radio validation
+### Radio Validation
 
 ```html
 <script setup>
@@ -150,7 +150,7 @@ const value = ref(false)
 </template>
 ```
 
-### RadioGroup validate
+### RadioGroup Validate
 
 ```html
 <script setup>

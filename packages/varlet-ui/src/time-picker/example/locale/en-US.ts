@@ -4,5 +4,5 @@ export default {
   readonly: 'Readonly',
   timeLimit: 'Time Limit',
   custom: 'Custom',
-  showSecond: 'show-seconds',
+  showSecond: 'Show Seconds',
 }

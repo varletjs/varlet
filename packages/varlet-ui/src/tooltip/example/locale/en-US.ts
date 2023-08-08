@@ -10,7 +10,7 @@ export default {
   disabled: 'Disabled',
   placement: 'Placement',
   trigger: 'Trigger',
-  twoWayBinding: 'Two-way binding',
+  twoWayBinding: 'Two-way Binding',
   themeColorTooltip: 'Theme Color Tooltip',
   defaultTooltip: 'Default',
   primaryTooltip: 'Primary',
@@ -19,5 +19,4 @@ export default {
   warningTooltip: 'Warning',
   dangerTooltip: 'Danger',
   customColor: 'Custom Color',
-  countDown: 's closed',
 }

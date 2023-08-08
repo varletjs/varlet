@@ -152,7 +152,7 @@ async function picker() {
 </template>
 ```
 
-### Mapping of values
+### Mapping Of Values
 
 ```html
 <script setup>
@@ -316,7 +316,7 @@ function textFormatter(text, columnIndex) {
 </template>
 ```
 
-### Mapping of values
+### Mapping Of Values
 
 ```html
 <script setup>

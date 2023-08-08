@@ -119,7 +119,7 @@ const text = ref('VARLET')
 </template>
 ```
 
-### Use local paths
+### Use Local Paths
 
 In the file `.vue`,
 the `Vue component` will not be automatically processed by the build tool like the native img module,

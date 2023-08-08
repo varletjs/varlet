@@ -19,5 +19,4 @@ export default {
   warningTooltip: '警告',
   dangerTooltip: '危险',
   customColor: '自定义颜色',
-  countDown: '秒后关闭',
 }

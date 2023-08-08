@@ -127,7 +127,7 @@ const empty = ref(false)
 </style>
 ```
 
-### Note when modifying the background color
+### Note When Modifying The Background Color
 
 Please try not to modify the background color to be transparent or translucent, which may affect the animation effect of the success type.
 

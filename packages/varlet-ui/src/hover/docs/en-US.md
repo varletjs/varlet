@@ -79,18 +79,18 @@ function handleHover(hovering) {
 </style>
 ```
 
-### Selectively enable for different devices
+### Selectively Enable For Different Devices
 
 Considering the differences in `hover` effects on different platforms, the hover command can only be enabled on specific platforms.
 
-#### Only enabled on desktop
+#### Only Enabled On Desktop
 
 ```html
 // playground-ignore
 <var-paper v-hover:desktop="{ color: '#fff' }"">HOVER</var-paper>
 ```
 
-#### Only enabled on mobile
+#### Only Enabled On Mobile
 
 ```html
 // playground-ignore
