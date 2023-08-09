@@ -18,7 +18,7 @@ test('test watermark content', () => {
     },
   })
 
-  expect(wrapper.find('.var-watermark__content-color').text()).toBe('Varlet')
+  expect(wrapper.find('svg span').text()).toBe('Varlet')
   wrapper.unmount()
 })
 
@@ -89,11 +89,11 @@ test('test watermark content rotate', async () => {
     },
   })
 
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('transform: rotate(20deg)')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: rotate(20deg)')
   await wrapper.setProps({
     rotate: 30,
   })
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('transform: rotate(30deg)')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: rotate(30deg)')
   wrapper.unmount()
 })
 
@@ -181,11 +181,11 @@ test('test watermark content offsetX', async () => {
     },
   })
 
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('left: 20px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('left: 20px')
   await wrapper.setProps({
     offsetX: 30,
   })
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('left: 30px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('left: 30px')
   wrapper.unmount()
 })
 
@@ -197,11 +197,11 @@ test('test watermark content offsetY', async () => {
     },
   })
 
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('top: 20px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('top: 20px')
   await wrapper.setProps({
     offsetY: 30,
   })
-  expect(wrapper.find('.var-watermark__content div').attributes('style')).toContain('top: 30px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('top: 30px')
   wrapper.unmount()
 })
 
@@ -244,6 +244,6 @@ test('test watermark content slot', () => {
     },
   })
 
-  expect(wrapper.find('.var-watermark__content div').text()).toBe('Varlet UI')
+  expect(wrapper.find('svg div').text()).toBe('Varlet UI')
   wrapper.unmount()
 })

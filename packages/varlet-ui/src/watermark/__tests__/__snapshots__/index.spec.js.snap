@@ -4,8 +4,8 @@ exports[`test watermark font 1`] = `
 "<div class="var-watermark">
   <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
     <div style="display: none;"><svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
-        <foreignObject x="0" y="0" width="100" height="100" class="var-watermark__content">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="position: absolute; top: 0px; left: 0px; transform: rotate(-22deg); transform-origin: center;"><span class="var-watermark__content-color" style="font-size: 15px; font-weight: 700;">Varlet</span></div>
+        <foreignObject x="0" y="0" width="100" height="100">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="position: absolute; top: 0px; left: 0px; transform: rotate(-22deg); transform-origin: center;"><span style="font-size: 15px; font-weight: 700;">Varlet</span></div>
         </foreignObject>
         <!--v-if-->
       </svg></div>
