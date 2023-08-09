@@ -36,11 +36,6 @@ onMounted(() => {
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.imageWatermark }}</app-type>
-  <var-watermark image="./varlet_icon.png">
-    <div class="watermark-wrapper"></div>
-  </var-watermark>
-
   <app-type>{{ pack.customGap }}</app-type>
   <var-watermark content="Varlet" :gap-x="40" :gap-y="40" ref="watermarkRef2">
     <div class="watermark-wrapper"></div>
@@ -53,6 +48,19 @@ onMounted(() => {
 
   <app-type>{{ pack.customRotate }}</app-type>
   <var-watermark content="Varlet" :rotate="22" :offset-x="20" :offset-y="20" ref="watermarkRef4">
+    <div class="watermark-wrapper"></div>
+  </var-watermark>
+
+  <app-type>{{ pack.imageWatermark }}</app-type>
+  <var-watermark
+    :width="40"
+    :height="40"
+    :gap-x="40"
+    :gap-y="40"
+    :offset-x="10"
+    :offset-y="10"
+    image="./varlet_icon.png"
+  >
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
