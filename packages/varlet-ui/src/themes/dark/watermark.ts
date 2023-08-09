@@ -1,3 +1,3 @@
 export default {
-  '--watermark-content-color': 'red',
+  '--watermark-content-color': '#ffffff',
 }
