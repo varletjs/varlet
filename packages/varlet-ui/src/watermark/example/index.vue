@@ -1,21 +1,30 @@
 <script setup>
-import VarWatermark from '../index'
-import { watchLang, AppType } from '@varlet/cli/client'
+import { onMounted, ref } from 'vue'
+import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
+
 import { use, pack } from './locale'
-import { ref } from 'vue'
+import VarWatermark from '../index'
+import dark from '../../themes/dark'
 
 const fullscreen = ref(false)
+const watermarkRef = ref(null)
 
 const toggle = () => {
   fullscreen.value = !fullscreen.value
 }
 
 watchLang(use)
+
+onMounted(() => {
+  watchDarkMode(dark, () => {
+    watermarkRef.value.resize()
+  })
+})
 </script>
 
 <template>
   <app-type>{{ pack.textWatermark }}</app-type>
-  <var-watermark content="Varlet">
+  <var-watermark content="Varlet" ref="watermarkRef">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
@@ -25,22 +34,29 @@ watchLang(use)
   </var-watermark>
 
   <app-type>{{ pack.customGap }}</app-type>
-  <var-watermark content="Varlet" :gap-x="40" :gap-y="40">
+  <var-watermark content="Varlet" :gap-x="40" :gap-y="40" ref="watermarkRef">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ pack.customOffset }}</app-type>
-  <var-watermark content="Varlet" :offset-x="20" :offset-y="20">
+  <var-watermark content="Varlet" :offset-x="20" :offset-y="20" ref="watermarkRef">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ pack.customRotate }}</app-type>
-  <var-watermark content="Varlet" :rotate="22" :offset-x="20" :offset-y="20">
+  <var-watermark content="Varlet" :rotate="22" :offset-x="20" :offset-y="20" ref="watermarkRef">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ pack.fullscreen }}</app-type>
-  <var-watermark content="Varlet UI" :fullscreen="fullscreen" opacity="0.1" :offset-x="10" :offset-y="10">
+  <var-watermark
+    content="Varlet UI"
+    :fullscreen="fullscreen"
+    opacity="0.1"
+    :offset-x="10"
+    :offset-y="10"
+    ref="watermarkRef"
+  >
     <div class="watermark-wrapper">
       <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
     </div>

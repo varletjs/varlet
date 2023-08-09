@@ -2,9 +2,10 @@
   <div :class="n()">
     <slot />
     <div
+      ref="containerRef"
       :class="classes(n('container'), [fullscreen, n('full')])"
       :style="{
-        backgroundImage: `url(${WatermarkUrl})`,
+        backgroundImage: `url(${watermarkUrl})`,
         zIndex: zIndex,
       }"
     >
@@ -20,7 +21,7 @@
             opacity: opacity,
           }"
         >
-          <foreignObject v-if="showContent" x="0" y="0" :width="width" :height="height" :class="n('content')">
+          <foreignObject v-if="showContent" x="0" y="0" :width="width" :height="height">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               :style="{
@@ -32,9 +33,7 @@
               }"
             >
               <slot name="content">
-                <span :class="n('content-color')" :style="{ ...font, fontSize: `${font.fontSize}px` }">{{
-                  content
-                }}</span>
+                <span :style="{ ...font, fontSize: `${font.fontSize}px`, color: textColor }">{{ content }}</span>
               </slot>
             </div>
           </foreignObject>
@@ -58,9 +57,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watchEffect, onUnmounted, type Ref, watch, nextTick, computed } from 'vue'
+import { defineComponent, ref, watchEffect, type Ref, watch, nextTick, computed } from 'vue'
+import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
+
 import { createNamespace } from '../utils/components'
 import { props } from './props'
+import { getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('watermark')
 
@@ -68,9 +70,11 @@ export default defineComponent({
   name: 'VarWatermark',
   props,
   setup(props, { slots }) {
-    const WatermarkUrl: Ref<string> = ref('')
+    const watermarkUrl: Ref<string> = ref('')
     const imageUrl: Ref<string> = ref('')
     const svgRef: Ref<SVGElement | null> = ref(null)
+    const containerRef: Ref<Element | null> = ref(null)
+    const textColor: Ref<string> = ref('')
 
     const imageToBase64 = () => {
       const canvas = document.createElement('canvas')
@@ -115,10 +119,15 @@ export default defineComponent({
 
     // expose
     const resize = () => {
-      if (svgRef.value) {
-        WatermarkUrl.value && URL.revokeObjectURL(WatermarkUrl.value)
-        WatermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
+      if (containerRef.value) {
+        textColor.value = getStyle(containerRef.value).color
       }
+      nextTick(() => {
+        if (svgRef.value) {
+          watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
+          watermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
+        }
+      })
     }
 
     watch(
@@ -138,8 +147,8 @@ export default defineComponent({
       () => {
         nextTick(() => {
           if (svgRef.value) {
-            WatermarkUrl.value && URL.revokeObjectURL(WatermarkUrl.value)
-            WatermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
+            watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
+            watermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
           }
         })
       },
@@ -153,9 +162,15 @@ export default defineComponent({
       props.image && imageToBase64()
     })
 
-    onUnmounted(() => {
-      if (WatermarkUrl.value) {
-        URL.revokeObjectURL(WatermarkUrl.value)
+    onSmartMounted(() => {
+      if (containerRef.value) {
+        textColor.value = getStyle(containerRef.value).color
+      }
+    })
+
+    onSmartUnmounted(() => {
+      if (watermarkUrl.value) {
+        URL.revokeObjectURL(watermarkUrl.value)
       }
     })
 
@@ -163,9 +178,11 @@ export default defineComponent({
       n,
       classes,
       svgRef,
-      WatermarkUrl,
+      containerRef,
+      watermarkUrl,
       imageUrl,
       showContent,
+      textColor,
       resize,
     }
   },
@@ -173,5 +190,5 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './watermark.less';
+@import './watermark';
 </style>
