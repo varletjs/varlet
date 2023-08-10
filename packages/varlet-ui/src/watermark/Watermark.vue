@@ -3,7 +3,7 @@
     <slot />
     <div
       ref="containerRef"
-      :class="classes(n('container'), [fullscreen, n('full')])"
+      :class="classes(n('container'), [fullscreen, n('--fullscreen')])"
       :style="{
         backgroundImage: `url(${watermarkUrl})`,
         zIndex: zIndex,
@@ -25,10 +25,7 @@
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               :style="{
-                position: 'absolute',
-                top: `${offsetY}px`,
-                left: `${offsetX}px`,
-                transform: `rotate(${rotate}deg)`,
+                transform: `translate(${offsetY}px, ${offsetX}px) rotate(${rotate}deg)`,
                 transformOrigin: 'center',
               }"
             >
@@ -57,8 +54,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref, watch, nextTick, onUnmounted } from 'vue'
-import { onSmartMounted } from '@varlet/use'
+import { defineComponent, ref, type Ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
 
 import { createNamespace } from '../utils/components'
 import { props } from './props'
@@ -117,6 +113,10 @@ export default defineComponent({
       return URL.createObjectURL(svgBlob)
     }
 
+    const revokeWatermarkUrl = () => {
+      watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
+    }
+
     // expose
     const resize = () => {
       imageToBase64()
@@ -127,7 +127,7 @@ export default defineComponent({
 
       nextTick(() => {
         if (svgRef.value) {
-          watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
+          revokeWatermarkUrl()
           watermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
         }
       })
@@ -149,22 +149,13 @@ export default defineComponent({
       ],
       resize,
       {
-        immediate: true,
         deep: true,
       }
     )
 
-    onSmartMounted(() => {
-      if (containerRef.value) {
-        textColor.value = getStyle(containerRef.value).color
-      }
-    })
+    onMounted(resize)
 
-    onUnmounted(() => {
-      if (watermarkUrl.value) {
-        URL.revokeObjectURL(watermarkUrl.value)
-      }
-    })
+    onUnmounted(revokeWatermarkUrl)
 
     return {
       n,

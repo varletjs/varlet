@@ -3,7 +3,7 @@ import { VarComponent, BasicAttributes } from './varComponent'
 
 export declare const WatermarkProps: Record<string, any>
 
-export interface Font {
+export interface WatermarkFont {
   fontSize?: number
   fontVariant?: string
   fontWeight?: 'normal' | 'light' | 'weight' | number
@@ -24,7 +24,7 @@ export interface WatermarkProps extends BasicAttributes {
   zIndex?: number | string
   opacity?: number | string
   fullscreen?: boolean
-  font?: Font
+  font?: WatermarkFont
 }
 
 export class Watermark extends VarComponent {

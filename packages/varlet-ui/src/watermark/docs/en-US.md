@@ -155,9 +155,9 @@ const toggle = () => {
 | `z-index`  | Watermark z-index      | _number \| string_       | `10`   |
 | `opacity`  | Watermark opacity         | _number \| string_      | `0.5`   |
 | `fullscreen`    | Whether to display watermark in fullscreen mode        | _boolean_       | `false`   |
-| `font`    | Watermark text style    | _Font_ | `Font` |
+| `font`    | Watermark text style    | _WatermarkFont_ | `WatermarkFont` |
 
-### Font 
+### WatermarkFont 
 
 | Prop              | Description                                                 | Type              | Default   |
 | --- |----------------------| --- | --- |

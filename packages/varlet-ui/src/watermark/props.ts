@@ -1,6 +1,6 @@
 import type { PropType } from 'vue'
 
-export interface Font {
+export interface WatermarkFont {
   fontSize?: number
   fontVariant?: string
   fontWeight?: 'normal' | 'light' | 'weight' | number
@@ -56,13 +56,13 @@ export const props = {
     default: false,
   },
   font: {
-    type: Object as PropType<Font>,
-    default: {
+    type: Object as PropType<WatermarkFont>,
+    default: () => ({
       fontStyle: 'normal',
       fontVariant: 'normal',
       fontFamily: 'sans-serif',
       fontWeight: 'normal',
       fontSize: 14,
-    },
+    }),
   },
 }

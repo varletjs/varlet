@@ -156,9 +156,9 @@ const toggle = () => {
 | `z-index`  | 水印的z-index       | _number \| string_       | `10`   |
 | `opacity`  | 水印的透明度         | _number \| string_      | `0.5`   |
 | `fullscreen`    | 水印是否全屏显示        | _boolean_       | `false`   |
-| `font`    | 文字水印的字体样式    | _Font_ | `Font` |
+| `font`    | 文字水印的字体样式    | _WatermarkFont_ | `WatermarkFont` |
 
-### Font 
+### WatermarkFont 
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
