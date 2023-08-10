@@ -21,7 +21,7 @@
             opacity: opacity,
           }"
         >
-          <foreignObject v-if="showContent" x="0" y="0" :width="width" :height="height">
+          <foreignObject v-if="showContent()" x="0" y="0" :width="width" :height="height">
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               :style="{
@@ -57,8 +57,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watchEffect, type Ref, watch, nextTick, computed } from 'vue'
-import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
+import { defineComponent, ref, type Ref, watch, nextTick, onUnmounted } from 'vue'
+import { onSmartMounted } from '@varlet/use'
 
 import { createNamespace } from '../utils/components'
 import { props } from './props'
@@ -75,6 +75,20 @@ export default defineComponent({
     const svgRef: Ref<SVGElement | null> = ref(null)
     const containerRef: Ref<Element | null> = ref(null)
     const textColor: Ref<string> = ref('')
+
+    const showContent = () => {
+      // show slot content first
+      if (slots.content) {
+        return true
+      }
+
+      // if image isn't set, content will take effect
+      if (props.content && !props.image) {
+        return true
+      }
+
+      return false
+    }
 
     const imageToBase64 = () => {
       const canvas = document.createElement('canvas')
@@ -103,25 +117,14 @@ export default defineComponent({
       return URL.createObjectURL(svgBlob)
     }
 
-    const showContent = computed(() => {
-      // show slot content first
-      if (slots.content) {
-        return true
-      }
-
-      // if image isn't set, content will take effect
-      if (props.content && !props.image) {
-        return true
-      }
-
-      return false
-    })
-
     // expose
     const resize = () => {
+      imageToBase64()
+
       if (containerRef.value) {
         textColor.value = getStyle(containerRef.value).color
       }
+
       nextTick(() => {
         if (svgRef.value) {
           watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
@@ -132,7 +135,7 @@ export default defineComponent({
 
     watch(
       () => [
-        imageUrl.value,
+        props.image,
         props.font,
         props.content,
         props.height,
@@ -144,23 +147,12 @@ export default defineComponent({
         props.offsetY,
         props.opacity,
       ],
-      () => {
-        nextTick(() => {
-          if (svgRef.value) {
-            watermarkUrl.value && URL.revokeObjectURL(watermarkUrl.value)
-            watermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
-          }
-        })
-      },
+      resize,
       {
         immediate: true,
         deep: true,
       }
     )
-
-    watchEffect(() => {
-      props.image && imageToBase64()
-    })
 
     onSmartMounted(() => {
       if (containerRef.value) {
@@ -168,7 +160,7 @@ export default defineComponent({
       }
     })
 
-    onSmartUnmounted(() => {
+    onUnmounted(() => {
       if (watermarkUrl.value) {
         URL.revokeObjectURL(watermarkUrl.value)
       }
@@ -181,8 +173,8 @@ export default defineComponent({
       containerRef,
       watermarkUrl,
       imageUrl,
-      showContent,
       textColor,
+      showContent,
       resize,
     }
   },
