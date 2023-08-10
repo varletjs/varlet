@@ -89,11 +89,11 @@ test('test watermark content rotate', async () => {
     },
   })
 
-  expect(wrapper.find('svg div').attributes('style')).toContain('transform: rotate(20deg)')
+  expect(wrapper.find('svg div').attributes('style').includes('rotate(20deg)')).toBeTruthy()
   await wrapper.setProps({
     rotate: 30,
   })
-  expect(wrapper.find('svg div').attributes('style')).toContain('transform: rotate(30deg)')
+  expect(wrapper.find('svg div').attributes('style').includes('rotate(30deg)')).toBeTruthy()
   wrapper.unmount()
 })
 
@@ -105,11 +105,11 @@ test('test watermark image rotate', async () => {
     },
   })
 
-  expect(wrapper.find('svg image').attributes('style')).toContain('transform: rotate(20deg)')
+  expect(wrapper.find('svg image').attributes('style').includes('rotate(20deg)')).toBeTruthy()
   await wrapper.setProps({
     rotate: 30,
   })
-  expect(wrapper.find('svg image').attributes('style')).toContain('transform: rotate(30deg)')
+  expect(wrapper.find('svg image').attributes('style').includes('rotate(30deg)')).toBeTruthy()
   wrapper.unmount()
 })
 
@@ -181,11 +181,11 @@ test('test watermark content offsetX', async () => {
     },
   })
 
-  expect(wrapper.find('svg div').attributes('style')).toContain('left: 20px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: translate(20px, 0px)')
   await wrapper.setProps({
     offsetX: 30,
   })
-  expect(wrapper.find('svg div').attributes('style')).toContain('left: 30px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: translate(30px, 0px)')
   wrapper.unmount()
 })
 
@@ -197,11 +197,11 @@ test('test watermark content offsetY', async () => {
     },
   })
 
-  expect(wrapper.find('svg div').attributes('style')).toContain('top: 20px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: translate(0px, 20px)')
   await wrapper.setProps({
     offsetY: 30,
   })
-  expect(wrapper.find('svg div').attributes('style')).toContain('top: 30px')
+  expect(wrapper.find('svg div').attributes('style')).toContain('transform: translate(0px, 30px)')
   wrapper.unmount()
 })
 
@@ -244,6 +244,34 @@ test('test watermark content slot', () => {
     },
   })
 
+  expect(wrapper.find('svg div').text()).toBe('Varlet UI')
+  wrapper.unmount()
+})
+
+test('test watermark priority between image and content', () => {
+  const wrapper = mount(VarWatermark, {
+    props: {
+      image: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
+      content: 'Varlet UI',
+    },
+  })
+
+  expect(wrapper.find('svg image').exists()).toBeTruthy()
+  expect(wrapper.find('svg span').exists()).toBe(false)
+  wrapper.unmount()
+})
+
+test('test watermark priority between image and content slot', () => {
+  const wrapper = mount(VarWatermark, {
+    props: {
+      image: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
+    },
+    slots: {
+      content: () => 'Varlet UI',
+    },
+  })
+
+  expect(wrapper.find('svg image').exists()).toBe(false)
   expect(wrapper.find('svg div').text()).toBe('Varlet UI')
   wrapper.unmount()
 })

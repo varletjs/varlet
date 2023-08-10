@@ -25,7 +25,7 @@
             <div
               xmlns="http://www.w3.org/1999/xhtml"
               :style="{
-                transform: `translate(${offsetY}px, ${offsetX}px) rotate(${rotate}deg)`,
+                transform: `translate(${offsetX}px, ${offsetY}px) rotate(${rotate}deg)`,
                 transformOrigin: 'center',
               }"
             >
@@ -90,7 +90,7 @@ export default defineComponent({
       const canvas = document.createElement('canvas')
       const ctx = canvas.getContext('2d')
 
-      if (ctx && props.image) {
+      if (ctx) {
         const img = new Image()
         img.crossOrigin = 'anonymous'
         img.referrerPolicy = 'no-referrer'
@@ -119,7 +119,7 @@ export default defineComponent({
 
     // expose
     const resize = () => {
-      imageToBase64()
+      props.image && imageToBase64()
 
       if (containerRef.value) {
         textColor.value = getStyle(containerRef.value).color
@@ -135,7 +135,7 @@ export default defineComponent({
 
     watch(
       () => [
-        props.image,
+        imageUrl.value,
         props.font,
         props.content,
         props.height,
