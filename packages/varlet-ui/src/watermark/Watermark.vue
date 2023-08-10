@@ -86,24 +86,25 @@ export default defineComponent({
       return false
     }
 
-    const imageToBase64 = () => {
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
+    const imageToBase64 = async (): Promise<string> =>
+      new Promise((resolve) => {
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
 
-      if (ctx) {
-        const img = new Image()
-        img.crossOrigin = 'anonymous'
-        img.referrerPolicy = 'no-referrer'
-        img.src = props.image
+        if (ctx) {
+          const img = new Image()
+          img.crossOrigin = 'anonymous'
+          img.referrerPolicy = 'no-referrer'
+          img.src = props.image
 
-        img.onload = () => {
-          canvas.width = img.width
-          canvas.height = img.height
-          ctx.drawImage(img, 0, 0)
-          imageUrl.value = canvas.toDataURL()
+          img.onload = () => {
+            canvas.width = img.width
+            canvas.height = img.height
+            ctx.drawImage(img, 0, 0)
+            resolve(canvas.toDataURL())
+          }
         }
-      }
-    }
+      })
 
     const svgToBlobUrl = (svgStr: string) => {
       const svgBlob = new Blob([svgStr], {
@@ -118,14 +119,16 @@ export default defineComponent({
     }
 
     // expose
-    const resize = () => {
-      props.image && imageToBase64()
-
+    const resize = async () => {
       if (containerRef.value) {
         textColor.value = getStyle(containerRef.value).color
       }
 
-      nextTick(() => {
+      if (props.image) {
+        imageUrl.value = await imageToBase64()
+      }
+
+      await nextTick(() => {
         if (svgRef.value) {
           revokeWatermarkUrl()
           watermarkUrl.value = svgToBlobUrl(svgRef.value.innerHTML)
@@ -135,7 +138,7 @@ export default defineComponent({
 
     watch(
       () => [
-        imageUrl.value,
+        props.image,
         props.font,
         props.content,
         props.height,
