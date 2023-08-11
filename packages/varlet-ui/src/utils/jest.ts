@@ -257,19 +257,20 @@ export function mockUserAgent(userAgent: string) {
   }
 }
 
-export function mockCreateElement() {
-  const createElement = document.createElement.bind(document)
-  document.createElement = (tagName: string) => {
-    if (tagName === 'canvas') {
-      return {
-        ...createElement(tagName),
-        getContext: () => {
-          ;() => {}
-        },
-        toDataURL: () => 'base64Url',
-      }
-    }
+export function mockCanvas() {
+  Object.defineProperties(HTMLCanvasElement.prototype, {
+    getContext: {
+      value() {
+        return {
+          drawImage() {},
+        }
+      },
+    },
 
-    return createElement(tagName)
-  }
+    toDataURL: {
+      value() {
+        return 'mock data url'
+      },
+    },
+  })
 }

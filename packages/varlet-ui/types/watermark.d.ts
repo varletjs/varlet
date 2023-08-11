@@ -1,13 +1,13 @@
 import { VNode } from 'vue'
 import { VarComponent, BasicAttributes } from './varComponent'
 
-export declare const WatermarkProps: Record<string, any>
+export declare const watermarkProps: Record<string, any>
 
 export interface WatermarkFont {
   fontSize?: number
   fontVariant?: string
-  fontWeight?: 'normal' | 'light' | 'weight' | number
-  fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
+  fontWeight?: string
+  fontStyle?: string
   fontFamily?: string
 }
 

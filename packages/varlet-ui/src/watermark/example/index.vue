@@ -1,10 +1,9 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
-
-import { use, pack } from './locale'
 import VarWatermark from '../index'
 import dark from '../../themes/dark'
+import { nextTick, ref } from 'vue'
+import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
+import { use, pack } from './locale'
 
 const fullscreen = ref(false)
 const watermarkRef = ref(null)
@@ -19,8 +18,8 @@ const toggle = () => {
 
 watchLang(use)
 
-onMounted(() => {
-  watchDarkMode(dark, () => {
+watchDarkMode(dark, () => {
+  nextTick(() => {
     watermarkRef.value.resize()
     watermarkRef2.value.resize()
     watermarkRef3.value.resize()
@@ -47,31 +46,24 @@ onMounted(() => {
   </var-watermark>
 
   <app-type>{{ pack.customRotate }}</app-type>
-  <var-watermark content="Varlet" :rotate="22" :offset-x="20" :offset-y="20" ref="watermarkRef4">
+  <var-watermark content="Varlet" :rotate="22" :offset-y="20" ref="watermarkRef4">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ pack.imageWatermark }}</app-type>
-  <var-watermark
-    :width="40"
-    :height="40"
-    :gap-x="40"
-    :gap-y="40"
-    :offset-x="10"
-    :offset-y="10"
-    image="./varlet_icon.png"
-  >
+  <var-watermark image="./logo.svg" :width="40" :height="40" :gap-x="40" :gap-y="40" :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
   <app-type>{{ pack.fullscreen }}</app-type>
+
   <var-watermark
+    ref="watermarkRef5"
     content="Varlet UI"
     :fullscreen="fullscreen"
-    opacity="0.1"
+    z-index="99"
     :offset-x="10"
     :offset-y="10"
-    ref="watermarkRef5"
   >
     <div class="watermark-wrapper">
       <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
@@ -82,7 +74,7 @@ onMounted(() => {
   <var-watermark :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper"></div>
     <template #content>
-      <span style="font-size: 20px; color: #fefefe; text-shadow: 0 0 0.5em #4a7afe, 0 0 0.2em #5c5c5c">Varlet UI</span>
+      <span style="font-size: 20px; color: #7986cb">Varlet UI</span>
     </template>
   </var-watermark>
 </template>

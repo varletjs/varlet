@@ -59,7 +59,7 @@ Adding text or image watermarks to a certain area of the page can be used to ide
 
 ```html
 <template>
-  <var-watermark content="Varlet" :rotate="22" :offset-x="20" :offset-y="20">
+  <var-watermark content="Varlet" :rotate="22" :offset-y="20">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 </template>
@@ -76,7 +76,15 @@ Adding text or image watermarks to a certain area of the page can be used to ide
 
 ```html
 <template>
-  <var-watermark :width="40" :height="40" :gap-x="40" :gap-y="40" :offset-x="10" :offset-y="10" image="./varlet_icon.png">
+  <var-watermark 
+    image="./logo.svg"
+    :width="40" 
+    :height="40" 
+    :gap-x="40" 
+    :gap-y="40" 
+    :offset-x="10" 
+    :offset-y="10" 
+  >
     <div class="watermark-wrapper"></div>
   </var-watermark>
 </template>
@@ -94,17 +102,24 @@ Adding text or image watermarks to a certain area of the page can be used to ide
 ```html
 <script setup>
 import { ref } from 'vue'
-const fullScreen = ref(false)
+
+const fullscreen = ref(false)
 
 const toggle = () => {
-  fullScreen.value = !fullScreen.value
+  fullscreen.value = !fullscreen.value
 }
 </script>
 
 <template>
-  <var-watermark content="Varlet UI" :full-screen="fullScreen" opacity="0.1" :offset-x="10" :offset-y="10">
+  <var-watermark 
+    content="Varlet UI"
+    :opacity="0.2"
+    :fullscreen="fullscreen"  
+    :offset-x="10" 
+    :offset-y="10"
+  >
     <div class="watermark-wrapper">
-      <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
+      <var-button type="primary" @click="toggle">切换</var-button>
     </div>
   </var-watermark>
 </template>
@@ -124,7 +139,7 @@ const toggle = () => {
   <var-watermark :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper"></div>
     <template #content>
-      <span style="font-size: 20px; color: #fefefe; text-shadow: 0 0 0.5em #4a7afe, 0 0 0.2em #5c5c5c">Varlet UI</span>
+      <span style="font-size: 20px; color: #7986cb">Varlet UI</span>
     </template>
   </var-watermark>
 </template>
@@ -141,7 +156,7 @@ const toggle = () => {
 
 ### Props
 
-| Prop              | Description                                                 | Type              | Default   |
+| Prop       | Description   | Type   | Default   |
 | ------- | --- |----------------|-----------|
 | `width`    | Watermark width       | _number_       | `100`   |
 | `height`   | Watermark height       | _number_       | `100`   |
@@ -155,17 +170,17 @@ const toggle = () => {
 | `z-index`  | Watermark z-index      | _number \| string_       | `10`   |
 | `opacity`  | Watermark opacity         | _number \| string_      | `0.5`   |
 | `fullscreen`    | Whether to display watermark in fullscreen mode        | _boolean_       | `false`   |
-| `font`    | Watermark text style    | _WatermarkFont_ | `WatermarkFont` |
+| `font`    | Watermark text style    | _WatermarkFont_ | `-` |
 
 ### WatermarkFont 
 
-| Prop              | Description                                                 | Type              | Default   |
+| Prop              | Description       | Type     | Default   |
 | --- |----------------------| --- | --- |
 | `font-size`    |    font size    | _number_      | `14`   |
 | `font-variant`  |    font variant    | _string_      | `normal`   |
-| `font-weight`    |    font weight   | _normal \| light \| weight \| number_      | `normal`   |
-| `font-style`   |    font style   | _none \| normal \| italic \| \| oblique \| string_      | `normal`   |
-| `font-family`  |    font family    | _string_      | `sans-serif`   |
+| `font-weight`    |    font weight   | _string_      | `normal`   |
+| `font-style`   |    font style   | _string_      | `normal`   |
+| `font-family`  |    font family    | _string_      | `-`   |
 
 ### Methods
 

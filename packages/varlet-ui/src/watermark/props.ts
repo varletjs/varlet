@@ -3,8 +3,8 @@ import type { PropType } from 'vue'
 export interface WatermarkFont {
   fontSize?: number
   fontVariant?: string
-  fontWeight?: 'normal' | 'light' | 'weight' | number
-  fontStyle?: 'none' | 'normal' | 'italic' | 'oblique'
+  fontWeight?: string
+  fontStyle?: string
   fontFamily?: string
 }
 
@@ -60,7 +60,6 @@ export const props = {
     default: () => ({
       fontStyle: 'normal',
       fontVariant: 'normal',
-      fontFamily: 'sans-serif',
       fontWeight: 'normal',
       fontSize: 14,
     }),

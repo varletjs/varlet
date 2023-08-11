@@ -86,6 +86,7 @@ export * from './tooltip'
 export * from './uploader'
 export * from './varComponent'
 export * from './varDirective'
+export * from './watermark'
 
 declare module 'vue' {
   export interface GlobalComponents {
@@ -167,6 +168,7 @@ declare module 'vue' {
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+    VarWatermark: typeof import('@varlet/ui')['_WatermarkComponent']
   }
 
   export interface ComponentCustomProperties {

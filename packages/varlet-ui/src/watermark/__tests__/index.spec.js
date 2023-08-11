@@ -2,12 +2,12 @@ import Watermark from '..'
 import VarWatermark from '../Watermark'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { mockCreateElement } from '../../utils/jest'
+import { mockCanvas } from '../../utils/jest'
 
-// simulate URL.createObjectURL() method
 global.URL.createObjectURL = jest.fn()
+global.URL.revokeObjectURL = jest.fn()
 
-mockCreateElement()
+mockCanvas()
 
 test('test watermark plugin', () => {
   const app = createApp({}).use(Watermark)
@@ -65,8 +65,7 @@ test('test watermark fullscreen', async () => {
   })
 
   await wrapper.vm.$nextTick()
-
-  expect(wrapper.find('.var-watermark__full')).toBeTruthy()
+  expect(document.querySelector('.var-watermark--fullscreen')).toBeTruthy()
   wrapper.unmount()
 })
 

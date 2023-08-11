@@ -319,4 +319,7 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   drag: {
     path: '/drag',
   },
+  watermark: {
+    path: '/watermark',
+  },
 }
