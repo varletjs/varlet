@@ -256,3 +256,20 @@ export function mockUserAgent(userAgent: string) {
     },
   }
 }
+
+export function mockCreateElement() {
+  const createElement = document.createElement.bind(document)
+  document.createElement = (tagName: string) => {
+    if (tagName === 'canvas') {
+      return {
+        ...createElement(tagName),
+        getContext: () => {
+          ;() => {}
+        },
+        toDataURL: () => 'base64Url',
+      }
+    }
+
+    return createElement(tagName)
+  }
+}
