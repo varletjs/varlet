@@ -26,7 +26,7 @@ exports[`test watermark height 1`] = `
 
 exports[`test watermark height 2`] = `
 "<div class="var-watermark">
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(undefined); z-index: 10;">
     <div style="display: none;"><svg viewBox="0 0 100 200" width="100" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->
@@ -103,7 +103,7 @@ exports[`test watermark width 1`] = `
 
 exports[`test watermark width 2`] = `
 "<div class="var-watermark">
-  <div class="var-watermark__container" style="background-image: url(); z-index: 10;">
+  <div class="var-watermark__container" style="background-image: url(undefined); z-index: 10;">
     <div style="display: none;"><svg viewBox="0 0 200 100" width="200" height="100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="padding: 0px 0px 0px 0px; opacity: 0.5;">
         <!--v-if-->
         <!--v-if-->
