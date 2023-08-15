@@ -1,3 +1,12 @@
+# [2.14.0](https://github.com/varletjs/varlet/compare/v2.13.6...v2.14.0) (2023-08-15)
+
+
+### Features
+
+* add new component watermark ([#1143](https://github.com/varletjs/varlet/issues/1143)) ([a0af434](https://github.com/varletjs/varlet/commit/a0af434296215705c8c97667df267ac6f8575e86))
+
+
+
 ## [2.13.6](https://github.com/varletjs/varlet/compare/v2.13.5...v2.13.6) (2023-08-02)
 
 
