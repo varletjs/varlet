@@ -6,5 +6,5 @@ export default {
   customRotate: '自定义旋转角度',
   fullscreen: '全屏',
   customContentSlot: '自定义水印内容',
-  switch: '切换',
+  toggle: '切换',
 }

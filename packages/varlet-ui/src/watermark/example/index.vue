@@ -66,7 +66,7 @@ watchDarkMode(dark, () => {
     :offset-y="10"
   >
     <div class="watermark-wrapper">
-      <var-button type="primary" @click="toggle">{{ pack.switch }}</var-button>
+      <var-button type="primary" @click="toggle">{{ pack.toggle }}</var-button>
     </div>
   </var-watermark>
 

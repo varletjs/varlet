@@ -1,6 +1,6 @@
 # Watermark
 
-### Introduction
+### Intro
 
 Adding text or image watermarks to a certain area of the page can be used to identify copyright and prevent information theft.
 
@@ -119,7 +119,7 @@ const toggle = () => {
     :offset-y="10"
   >
     <div class="watermark-wrapper">
-      <var-button type="primary" @click="toggle">切换</var-button>
+      <var-button type="primary" @click="toggle">Toggle</var-button>
     </div>
   </var-watermark>
 </template>

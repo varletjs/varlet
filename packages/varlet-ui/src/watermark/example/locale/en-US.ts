@@ -6,5 +6,5 @@ export default {
   customRotate: 'Custom Rotate',
   fullscreen: 'Fullscreen',
   customContentSlot: 'Watermark Content Slot',
-  switch: 'Switch',
+  toggle: 'Toggle',
 }
