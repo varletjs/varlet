@@ -14,6 +14,7 @@ export class Step extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    opposite(): VNode[]
   }
 }
 

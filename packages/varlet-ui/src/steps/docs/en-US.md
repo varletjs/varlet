@@ -83,6 +83,35 @@ const active = ref(0)
 </template>
 ```
 
+### Opposite Slot
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<var-steps direction="vertical" :active="active">
+  <var-step>
+    <template #opposite> 08: 00 ~ 12:00 </template>
+    <span> Node! </span>
+  </var-step>
+  <var-step>
+    <template #opposite> 14: 00 ~ 18:00 </template>
+    <span> Vue3! </span>
+  </var-step>
+  <var-step>
+    <template #opposite> 19: 30 ~ 21:00 </template>
+    <span> JavaScript! </span>
+  </var-step>
+  <var-step>
+    <template #opposite> 21: 00 ~ 22:00 </template>
+    <span> Less! </span>
+  </var-step>
+</var-steps>
+```
+
 ## API
 
 ### Props
@@ -125,6 +154,7 @@ const active = ref(0)
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Content of step | `-`|
+| `opposite` | Opposite content of step | `-`|
 
 ### Style Variables
 

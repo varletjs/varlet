@@ -13,3 +13,4 @@
 | Name | Description | SlotProps |
 | ----- | -------------- | -------- |
 | `default` | Content of step | `-`|
+| `opposite` | Opposite content of step | `-`|
