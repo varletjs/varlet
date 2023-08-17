@@ -130,3 +130,28 @@ describe('test steps and step components props', () => {
     wrapper.unmount()
   })
 })
+
+test('test step component opposite slot', async () => {
+  const Wrapper = {
+    components: {
+      [VarSteps.name]: VarSteps,
+      [VarStep.name]: VarStep,
+    },
+    template: `
+      <var-steps @clickStep="clickStep" direction="vertical">
+        <var-step>step 1 <template #opposite>opposite content 1</template></var-step>
+        <var-step>step 2</template></var-step>
+        <var-step>step 3</template></var-step>
+        <var-step>step 4</template></var-step>
+      </var-steps>
+    `,
+    methods: {
+      clickStep,
+    },
+  }
+
+  const wrapper = mount(Wrapper)
+  expect(wrapper.findAll('.var-step')[0].findAll('.var-step__vertical-content').length).toBe(2)
+  expect(wrapper.findAll('.var-step')[0].findAll('.var-step__vertical-content')[0].text()).toBe('opposite content 1')
+  wrapper.unmount()
+})
