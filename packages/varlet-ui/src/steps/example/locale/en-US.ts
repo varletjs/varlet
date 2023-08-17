@@ -12,4 +12,5 @@ export default {
   placeholder: 'Change the number of steps',
   step: 'Step',
   text: 'do something...',
+  oppositeSlot: 'Opposite Slot',
 }

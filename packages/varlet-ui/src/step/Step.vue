@@ -2,14 +2,23 @@
   <div :class="n()">
     <div :class="n(direction)">
       <div
-        :class="classes(n(`${direction}-tag`), [isActive || isCurrent, n(`${direction}-tag--active`)])"
-        :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
+        :class="classes(n(`${direction}-content`), [isActive || isCurrent, n(`${direction}-content--active`)])"
         @click="click"
       >
-        <var-icon :class="n('icon')" var-step-cover :name="activeIcon" v-if="isActive" />
-        <var-icon :class="n('icon')" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-        <var-icon :class="n('icon')" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
-        <span v-else>{{ index + 1 }}</span>
+        <slot name="opposite"></slot>
+      </div>
+      <div :class="n(`${direction}-divider`)">
+        <div
+          :class="classes(n(`${direction}-tag`), [isActive || isCurrent, n(`${direction}-tag--active`)])"
+          :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
+          @click="click"
+        >
+          <var-icon :class="n('icon')" var-step-cover :name="activeIcon" v-if="isActive" />
+          <var-icon :class="n('icon')" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
+          <var-icon :class="n('icon')" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
+          <span v-else>{{ index + 1 }}</span>
+        </div>
+        <div :class="n(`${direction}-line`)"></div>
       </div>
       <div
         :class="classes(n(`${direction}-content`), [isActive || isCurrent, n(`${direction}-content--active`)])"
@@ -17,7 +26,6 @@
       >
         <slot />
       </div>
-      <div :class="n(`${direction}-line`)"></div>
     </div>
   </div>
 </template>

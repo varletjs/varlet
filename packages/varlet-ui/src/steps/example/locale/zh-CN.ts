@@ -12,4 +12,5 @@ export default {
   placeholder: '改变step的数量',
   step: '步骤',
   text: '接下来...',
+  oppositeSlot: '反面插槽',
 }

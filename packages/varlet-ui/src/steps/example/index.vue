@@ -43,5 +43,7 @@ watchDarkMode(dark)
     <var-step>{{ pack.fourth }}</var-step>
   </var-steps>
 
+  <app-type>{{ pack.oppositeSlot }}</app-type>
+
   <var-button type="primary" block @click="next">{{ pack.next }}</var-button>
 </template>

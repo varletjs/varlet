@@ -43,7 +43,6 @@
 }
 
 .var-step {
-  position: relative;
   flex: 1;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -60,7 +59,11 @@
   &__horizontal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
+    &-divider {
+      display: flex;
+      align-items: center;
+    }
 
     &-tag {
       margin: var(--step-tag-margin);
@@ -80,10 +83,8 @@
     }
 
     &-line {
-      position: absolute;
-      top: calc(var(--step-min-size) / 2);
-      left: calc(50% + var(--step-min-size) / 2);
       width: var(--step-line-size);
+      margin-left: calc(var(--step-line-gap) / 2);
       height: 1px;
       transform: scaleY(0.5);
       background: var(--step-line-background);
@@ -94,6 +95,12 @@
     display: flex;
     height: 100%;
     min-height: var(--step-vertical-min-height);
+
+    &-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     &-tag {
       flex-shrink: 0;
@@ -114,10 +121,8 @@
     }
 
     &-line {
-      position: absolute;
       height: var(--step-line-size);
-      left: calc(var(--step-min-size) / 2);
-      top: calc(var(--step-min-size) - var(--step-line-gap) / 2);
+      margin-top: calc(var(--step-line-gap) / 2);
       width: 1px;
       transform: scaleX(0.5);
       background: var(--step-line-background);
