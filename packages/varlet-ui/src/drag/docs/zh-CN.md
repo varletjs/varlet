@@ -92,6 +92,12 @@ function reset() {
 | `z-index`  | 拖拽元素的层级 | _string \| number_ | `90` |
 | `teleport`  | 拖拽元素挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
+### 事件
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `click` | 点击组件时触发 | `event: Event` |
+
 ### 方法
 
 | 方法名 | 说明 | 参数 | 返回值 |

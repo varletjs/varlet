@@ -92,6 +92,12 @@ function reset() {
 | `z-index`  | Drag element z-index | _string \| number_ | `90` |
 | `teleport`  | The location where the dragged element is mounted | _TeleportProps['to'] \| false_ | `body` |
 
+### Events
+
+| Event    | Description                 | Arguments                   |
+| -------- | --------------------------- | --------------------------- |
+| `click` | Triggered when click drag component  | `event: Event` |
+
 ### Methods
 
 | Method   | Description                                                          | Arguments       | Return |

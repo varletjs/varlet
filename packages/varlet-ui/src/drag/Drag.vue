@@ -10,6 +10,7 @@
       @touchmove="handleTouchmove"
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
+      @click="handleClick"
       v-bind="getAttrs()"
     >
       <slot />
@@ -20,7 +21,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace, useTeleport } from '../utils/components'
+import { createNamespace, useTeleport, call } from '../utils/components'
 import { getRect, toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { clamp } from '@varlet/shared'
@@ -106,6 +107,14 @@ export default defineComponent({
       draggingRunner = window.setTimeout(() => {
         dragging.value = false
       })
+    }
+
+    const handleClick = (event: Event) => {
+      if (dragging.value) {
+        return
+      }
+
+      call(props.onClick, event)
     }
 
     const saveXY = () => {
@@ -256,6 +265,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      handleClick,
       resize,
       reset,
     }

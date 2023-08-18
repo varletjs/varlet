@@ -105,3 +105,20 @@ test('test drag reset', async () => {
 
   wrapper.unmount()
 })
+
+test('test drag click method', async () => {
+  const container = document.createElement('div')
+  const onClick = jest.fn()
+
+  const wrapper = mount(Drag, {
+    props: {
+      teleport: container,
+      onClick,
+    },
+  })
+
+  await trigger(container.childNodes[0], 'click')
+  expect(onClick).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+})
