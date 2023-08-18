@@ -137,8 +137,8 @@ export default defineComponent({
           direction={dragProps.direction}
           attraction={dragProps.attraction}
           boundary={dragProps.boundary}
-          {...attrs}
           onClick={(e) => handleClick(e, !isActive.value, children.length)}
+          {...attrs}
         >
           <div
             class={classes(n(), n(`--direction-${props.direction}`), [props.safeArea, n('--safe-area')])}
