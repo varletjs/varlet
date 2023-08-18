@@ -20,12 +20,22 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace, useTeleport } from '../utils/components'
+import { createNamespace, useTeleport, call } from '../utils/components'
 import { getRect, toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { clamp } from '@varlet/shared'
 
 const { n, classes } = createNamespace('drag')
+
+type VarTouch = {
+  clientX: number
+  clientY: number
+  timestamp: number
+}
+
+const DISTANCE_OFFSET = 12
+const EVENT_DELAY = 200
+const TAP_DELAY = 350
 
 export default defineComponent({
   name: 'VarDrag',
@@ -50,6 +60,9 @@ export default defineComponent({
     let prevX = 0
     let prevY = 0
     let draggingRunner: number | null = null
+    let startTouch: VarTouch | null = null
+    let prevTouch: VarTouch | null = null
+    let closeRunner: number | null = null
 
     const handleTouchstart = (event: TouchEvent) => {
       if (props.disabled) {
@@ -57,8 +70,13 @@ export default defineComponent({
       }
 
       draggingRunner && window.clearTimeout(draggingRunner)
+      closeRunner && window.clearTimeout(closeRunner)
 
-      const { clientX, clientY } = event.touches[0]
+      const currentTouch: VarTouch = createVarTouch(event.touches[0])
+      startTouch = currentTouch
+      prevTouch = currentTouch
+
+      const { clientX, clientY } = currentTouch
 
       saveXY()
       prevX = clientX
@@ -72,12 +90,15 @@ export default defineComponent({
         return
       }
 
+      const currentTouch: VarTouch = createVarTouch(event.touches[0])
+      prevTouch = currentTouch
+
       event.preventDefault()
       enableTransition.value = false
       dragged.value = true
       dragging.value = true
 
-      const { clientX, clientY } = event.touches[0]
+      const { clientX, clientY } = currentTouch
       const deltaX = clientX - prevX
       const deltaY = clientY - prevY
       prevX = clientX
@@ -94,7 +115,7 @@ export default defineComponent({
       clampToBoundary()
     }
 
-    const handleTouchend = () => {
+    const handleTouchend = (event: Event) => {
       if (props.disabled) {
         return
       }
@@ -106,6 +127,12 @@ export default defineComponent({
       draggingRunner = window.setTimeout(() => {
         dragging.value = false
       })
+
+      const isTap = isTapTouch()
+      closeRunner = window.setTimeout(() => {
+        isTap && call(props.onClick, event)
+        startTouch = null
+      }, EVENT_DELAY)
     }
 
     const saveXY = () => {
@@ -211,6 +238,29 @@ export default defineComponent({
           transform: dragged.value ? `translate(${x.value}px, ${y.value}px)` : style.transform,
         },
       }
+    }
+
+    const createVarTouch = (touch: Touch): VarTouch => ({
+      clientX: touch.clientX,
+      clientY: touch.clientY,
+      timestamp: performance.now(),
+    })
+
+    const getDistance = (touch: VarTouch, target: VarTouch): number => {
+      const { clientX: touchX, clientY: touchY } = touch
+      const { clientX: targetX, clientY: targetY } = target
+
+      return Math.abs(Math.sqrt((targetX - touchX) ** 2 + (targetY - touchY) ** 2))
+    }
+
+    const isTapTouch = () => {
+      if (!startTouch || !prevTouch) {
+        return false
+      }
+
+      return (
+        getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET && performance.now() - prevTouch.timestamp < TAP_DELAY
+      )
     }
 
     // expose

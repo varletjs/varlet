@@ -1,4 +1,5 @@
 import { type TeleportProps, type PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type DragDirection = 'x' | 'y' | 'xy'
 
@@ -40,4 +41,5 @@ export const props = {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
+  onClick: defineListenerProp<(event: Event) => void>(),
 }
