@@ -138,9 +138,9 @@ export default defineComponent({
       return Math.abs(Math.sqrt((targetX - touchX) ** 2 + (targetY - touchY) ** 2))
     }
 
-    const createVarTouch = (touches: Touch, target: HTMLElement): VarTouch => ({
-      clientX: touches.clientX,
-      clientY: touches.clientY,
+    const createVarTouch = (touch: Touch, target: HTMLElement): VarTouch => ({
+      clientX: touch.clientX,
+      clientY: touch.clientY,
       timestamp: performance.now(),
       target,
     })
