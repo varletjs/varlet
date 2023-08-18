@@ -1,3 +1,12 @@
+## [2.14.2](https://github.com/varletjs/varlet/compare/v2.14.1...v2.14.2) (2023-08-18)
+
+
+### Features
+
+* **drag:** support click event ([#1150](https://github.com/varletjs/varlet/issues/1150)) ([62ad9c3](https://github.com/varletjs/varlet/commit/62ad9c312f1cfb1716a50042f27dcb7c7b1486ef))
+
+
+
 ## [2.14.1](https://github.com/varletjs/varlet/compare/v2.14.0...v2.14.1) (2023-08-15)
 
 
