@@ -40,11 +40,6 @@ export default defineComponent({
         return
       }
 
-      // avoid trigger open function after dragging
-      if (dragRef.value?.dragging) {
-        return
-      }
-
       isActive.value = value
       call(props.onClick, isActive.value, e)
       call(isActive.value ? props.onOpen : props.onClose)
@@ -143,11 +138,11 @@ export default defineComponent({
           attraction={dragProps.attraction}
           boundary={dragProps.boundary}
           {...attrs}
+          onClick={(e) => handleClick(e, !isActive.value, children.length)}
         >
           <div
             class={classes(n(), n(`--direction-${props.direction}`), [props.safeArea, n('--safe-area')])}
             ref={host}
-            onClick={(e) => handleClick(e, !isActive.value, children.length)}
             onMouseleave={() => handleMouse(false, children.length)}
             onMouseenter={() => handleMouse(true, children.length)}
           >
