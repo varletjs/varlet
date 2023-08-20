@@ -178,7 +178,7 @@ In the `disabled` state, the tooltip will not be opened.
 
 | Prop              | Description                                                 | Type              | Default   |
 | ------- |-------------------------------------------------------------|----------------------|-----------|
-| `v-model:show` | whether to show the tooltip                                    | _string_             | `false`   |
+| `v-model:show` | whether to show the tooltip                                    | _boolean_             | `false`   |
 | `content` | display content | _string_              | `-`       |
 | `color`          | Tooltip background color                                                            | _string_  | `-`       |
 | `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
