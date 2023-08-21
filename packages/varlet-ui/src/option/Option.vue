@@ -5,6 +5,7 @@
       color: optionSelected ? focusColor : undefined,
     }"
     v-ripple
+    v-hover:desktop="handleHovering"
     @click="handleClick"
   >
     <div
@@ -27,6 +28,8 @@
         {{ label }}
       </slot>
     </div>
+
+    <var-hover-overlay :hovering="hovering" />
   </div>
 </template>
 
@@ -39,14 +42,17 @@ import { createNamespace } from '../utils/components'
 import { props } from './props'
 import type { Ref, ComputedRef } from 'vue'
 import type { OptionProvider } from './provide'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 
 const { n, classes } = createNamespace('option')
 
 export default defineComponent({
   name: 'VarOption',
-  directives: { Ripple },
+  directives: { Ripple, Hover },
   components: {
     VarCheckbox,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
@@ -56,6 +62,7 @@ export default defineComponent({
     const value: ComputedRef = computed(() => props.value)
     const { select, bindSelect } = useSelect()
     const { multiple, focusColor, onSelect, computeLabel } = select
+    const { hovering, handleHovering } = useHoverOverlay()
 
     const handleClick = () => {
       if (multiple.value) {
@@ -87,6 +94,8 @@ export default defineComponent({
       optionSelected,
       multiple,
       focusColor,
+      hovering,
+      handleHovering,
       handleClick,
       handleSelect,
     }
