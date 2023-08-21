@@ -197,7 +197,9 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: Event) => {
-      window.clearTimeout(longPressRunner as number)
+      if (longPressRunner) {
+        window.clearTimeout(longPressRunner)
+      }
 
       // avoid triggering tap event sometimes
       if (isLongPress) {
@@ -214,15 +216,19 @@ export default defineComponent({
 
     const handleTouchstart = (event: TouchEvent, idx: number) => {
       window.clearTimeout(closeRunner as number)
-      window.clearTimeout(longPressRunner as number)
       const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
       startTouch = currentTouch
 
-      longPressRunner = window.setTimeout(() => {
-        const { onLongPress } = props
-        isLongPress = true
-        call(onLongPress, idx)
-      }, LONG_PRESS_DELAY)
+      if (longPressRunner) {
+        window.clearTimeout(longPressRunner)
+      }
+
+      if (event.touches.length === 1) {
+        longPressRunner = window.setTimeout(() => {
+          isLongPress = true
+          call(props.onLongPress, idx)
+        }, LONG_PRESS_DELAY)
+      }
 
       if (isDoubleTouch(currentTouch)) {
         scale.value > 1 ? zoomOut() : zoomIn()
@@ -289,8 +295,8 @@ export default defineComponent({
       const target = event.currentTarget as HTMLElement
       const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
 
-      if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
-        window.clearTimeout(longPressRunner as number)
+      if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET && longPressRunner) {
+        window.clearTimeout(longPressRunner)
       }
 
       if (scale.value > 1) {
