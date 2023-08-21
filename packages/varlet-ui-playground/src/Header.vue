@@ -132,8 +132,8 @@ watch(() => currentVarletVersion.value, setVarletVersion)
     </h1>
     <var-space align="center">
       <var-select
-        style="width: 150px"
-        :offset-y="6"
+        style="width: 210px"
+        :offset-y="8"
         variant="outlined"
         size="small"
         placeholder="Varlet Version"
@@ -142,8 +142,8 @@ watch(() => currentVarletVersion.value, setVarletVersion)
         <var-option v-for="v in varletVersions" :key="v" :label="`${v === 'preview' ? '' : 'v'}${v}`" :value="v" />
       </var-select>
       <var-select
-        style="width: 150px"
-        :offset-y="6"
+        style="width: 210px"
+        :offset-y="8"
         variant="outlined"
         size="small"
         placeholder="Vue Version"
