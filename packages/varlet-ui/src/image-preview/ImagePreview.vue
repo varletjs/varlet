@@ -62,22 +62,21 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { toNumber, clamp } from '@varlet/shared'
+import { useEventListener, useTouch } from '@varlet/use'
+
 import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { props } from './props'
-import { toNumber } from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
 import { call, createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
 
 const { n, classes } = createNamespace('image-preview')
 
 type VarTouch = {
-  clientX: number
-  clientY: number
   timestamp: number
   target: HTMLElement
 }
@@ -100,19 +99,6 @@ export default defineComponent({
   props,
   setup(props) {
     const popupShow: Ref<boolean> = ref(false)
-    const initialIndex: ComputedRef<number> = computed(() => {
-      // For compatibility with current, temporarily keep this computed method
-      // Current will be replaced by initialIndex in the future
-      const { images, current, initialIndex } = props
-
-      if (initialIndex != null) {
-        return toNumber(initialIndex)
-      }
-
-      const index = images.findIndex((image: string) => image === current)
-
-      return index >= 0 ? index : 0
-    })
     const scale: Ref<number> = ref(1)
     const translateX: Ref<number> = ref(0)
     const translateY: Ref<number> = ref(0)
@@ -126,21 +112,36 @@ export default defineComponent({
     let longPressRunner: number | null = null
     let isLongPress = false
 
-    const isPreventDefault = computed(() => {
+    const { moveX, moveY, offsetX, offsetY, startTouch: start, moveTouch: move } = useTouch()
+
+    const initialIndex: ComputedRef<number> = computed(() => {
+      // For compatibility with current, temporarily keep this computed method
+      // Current will be replaced by initialIndex in the future
+      const { images, current, initialIndex } = props
+
+      if (initialIndex != null) {
+        return toNumber(initialIndex)
+      }
+
+      const index = images.findIndex((image: string) => image === current)
+
+      return Math.max(index, 0)
+    })
+
+    const isPreventDefault: ComputedRef<boolean> = computed(() => {
       const { imagePreventDefault, show } = props
       return show && imagePreventDefault
     })
 
-    const getDistance = (touch: VarTouch, target: VarTouch): number => {
-      const { clientX: touchX, clientY: touchY } = touch
-      const { clientX: targetX, clientY: targetY } = target
+    const getDistance = (isDoubleTap = false): number => {
+      if (isDoubleTap) {
+        return Math.sqrt(moveX.value ** 2 + moveY.value ** 2)
+      }
 
-      return Math.abs(Math.sqrt((targetX - touchX) ** 2 + (targetY - touchY) ** 2))
+      return Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
     }
 
-    const createVarTouch = (touch: Touch, target: HTMLElement): VarTouch => ({
-      clientX: touch.clientX,
-      clientY: touch.clientY,
+    const createVarTouch = (target: HTMLElement): VarTouch => ({
       timestamp: performance.now(),
       target,
     })
@@ -172,7 +173,7 @@ export default defineComponent({
       }
 
       return (
-        getDistance(prevTouch, currentTouch) <= DISTANCE_OFFSET &&
+        getDistance(true) <= DISTANCE_OFFSET &&
         currentTouch.timestamp - prevTouch.timestamp <= EVENT_DELAY &&
         prevTouch.target === currentTouch.target
       )
@@ -184,7 +185,7 @@ export default defineComponent({
       }
 
       return (
-        getDistance(startTouch, prevTouch) <= DISTANCE_OFFSET &&
+        getDistance() <= DISTANCE_OFFSET &&
         performance.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
@@ -215,13 +216,13 @@ export default defineComponent({
     const handleTouchstart = (event: TouchEvent, idx: number) => {
       window.clearTimeout(closeRunner as number)
       window.clearTimeout(longPressRunner as number)
-      const currentTouch: VarTouch = createVarTouch(event.touches[0], event.currentTarget as HTMLElement)
+
+      const currentTouch: VarTouch = createVarTouch(event.currentTarget as HTMLElement)
       startTouch = currentTouch
 
       longPressRunner = window.setTimeout(() => {
-        const { onLongPress } = props
         isLongPress = true
-        call(onLongPress, idx)
+        call(props.onLongPress, idx)
       }, LONG_PRESS_DELAY)
 
       if (isDoubleTouch(currentTouch)) {
@@ -229,6 +230,7 @@ export default defineComponent({
         return
       }
 
+      start(event)
       prevTouch = currentTouch
     }
 
@@ -269,39 +271,29 @@ export default defineComponent({
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 
-    const getMoveTranslate = (current: number, move: number, limit: number): number => {
-      if (current + move >= limit) {
-        return limit
-      }
-
-      if (current + move <= -limit) {
-        return -limit
-      }
-
-      return current + move
-    }
+    const getMoveTranslate = (current: number, move: number, limit: number): number =>
+      clamp(current + move, -limit, limit)
 
     const handleTouchmove = (event: TouchEvent) => {
       if (!prevTouch) {
         return
       }
 
-      const target = event.currentTarget as HTMLElement
-      const currentTouch: VarTouch = createVarTouch(event.touches[0], target)
+      move(event)
 
-      if (getDistance(currentTouch, prevTouch) > DISTANCE_OFFSET) {
+      const target = event.currentTarget as HTMLElement
+      const currentTouch: VarTouch = createVarTouch(target)
+
+      if (getDistance() > DISTANCE_OFFSET) {
         window.clearTimeout(longPressRunner as number)
       }
 
       if (scale.value > 1) {
-        const moveX = currentTouch.clientX - prevTouch.clientX
-        const moveY = currentTouch.clientY - prevTouch.clientY
+        const limitX = getLimitX(target)
+        const limitY = getLimitY(target)
 
-        const limitX = getLimitX(target as HTMLElement)
-        const limitY = getLimitY(target as HTMLElement)
-
-        translateX.value = getMoveTranslate(translateX.value, moveX, limitX)
-        translateY.value = getMoveTranslate(translateY.value, moveY, limitY)
+        translateX.value = getMoveTranslate(translateX.value, moveX.value, limitX)
+        translateY.value = getMoveTranslate(translateY.value, moveY.value, limitY)
       }
 
       prevTouch = currentTouch
