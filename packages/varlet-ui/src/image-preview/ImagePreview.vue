@@ -133,19 +133,6 @@ export default defineComponent({
       return show && imagePreventDefault
     })
 
-    const getDistance = (isDoubleTap = false): number => {
-      if (isDoubleTap) {
-        return Math.sqrt(moveX.value ** 2 + moveY.value ** 2)
-      }
-
-      return Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
-    }
-
-    const createVarTouch = (target: HTMLElement): VarTouch => ({
-      timestamp: performance.now(),
-      target,
-    })
-
     const zoomIn = () => {
       scale.value = toNumber(props.zoom)
       canSwipe.value = false
@@ -172,8 +159,10 @@ export default defineComponent({
         return false
       }
 
+      const distance = Math.sqrt(moveX.value ** 2 + moveY.value ** 2)
+
       return (
-        getDistance(true) <= DISTANCE_OFFSET &&
+        distance <= DISTANCE_OFFSET &&
         currentTouch.timestamp - prevTouch.timestamp <= EVENT_DELAY &&
         prevTouch.target === currentTouch.target
       )
@@ -184,8 +173,10 @@ export default defineComponent({
         return false
       }
 
+      const distance = Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
+
       return (
-        getDistance() <= DISTANCE_OFFSET &&
+        distance <= DISTANCE_OFFSET &&
         performance.now() - prevTouch.timestamp < TAP_DELAY &&
         (target === startTouch.target || target.parentNode === startTouch.target)
       )
@@ -217,7 +208,10 @@ export default defineComponent({
       window.clearTimeout(closeRunner as number)
       window.clearTimeout(longPressRunner as number)
 
-      const currentTouch: VarTouch = createVarTouch(event.currentTarget as HTMLElement)
+      const currentTouch: VarTouch = {
+        timestamp: performance.now(),
+        target: event.currentTarget as HTMLElement,
+      }
       startTouch = currentTouch
 
       longPressRunner = window.setTimeout(() => {
@@ -271,9 +265,6 @@ export default defineComponent({
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 
-    const getMoveTranslate = (current: number, move: number, limit: number): number =>
-      clamp(current + move, -limit, limit)
-
     const handleTouchmove = (event: TouchEvent) => {
       if (!prevTouch) {
         return
@@ -282,9 +273,13 @@ export default defineComponent({
       move(event)
 
       const target = event.currentTarget as HTMLElement
-      const currentTouch: VarTouch = createVarTouch(target)
+      const currentTouch: VarTouch = {
+        timestamp: performance.now(),
+        target,
+      }
 
-      if (getDistance() > DISTANCE_OFFSET) {
+      const distance = Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
+      if (distance > DISTANCE_OFFSET) {
         window.clearTimeout(longPressRunner as number)
       }
 
@@ -292,8 +287,8 @@ export default defineComponent({
         const limitX = getLimitX(target)
         const limitY = getLimitY(target)
 
-        translateX.value = getMoveTranslate(translateX.value, moveX.value, limitX)
-        translateY.value = getMoveTranslate(translateY.value, moveY.value, limitY)
+        translateX.value = clamp(translateX.value + moveX.value, -limitX, limitX)
+        translateY.value = clamp(translateY.value + moveY.value, -limitY, limitY)
       }
 
       prevTouch = currentTouch
