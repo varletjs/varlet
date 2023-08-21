@@ -178,7 +178,7 @@ import { Snackbar } from '@varlet/ui'
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `v-model:show` | 是否显示 | _string_       | `false`   |
+| `v-model:show` | 是否显示 | _boolean_       | `false`   |
 | `content` | 显示的内容 | _string_    | `-`       |
 | `color` | 背景颜色 | _string_       | `-`       |
 | `type`  | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
