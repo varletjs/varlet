@@ -23,7 +23,7 @@ import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
 import { createNamespace, useTeleport, call } from '../utils/components'
 import { getRect, toPxNum } from '../utils/elements'
-import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
 import { clamp } from '@varlet/shared'
 
 const { n, classes } = createNamespace('drag')
@@ -45,11 +45,9 @@ export default defineComponent({
     const dragged = ref(false)
     const enableTransition = ref(false)
     const dragging = ref(false)
+    const { touching, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
     const { disabled: teleportDisabled } = useTeleport()
 
-    let touching = false
-    let prevX = 0
-    let prevY = 0
     let draggingRunner: number | null = null
 
     const handleTouchstart = (event: TouchEvent) => {
@@ -57,19 +55,17 @@ export default defineComponent({
         return
       }
 
-      draggingRunner && window.clearTimeout(draggingRunner)
-
-      const { clientX, clientY } = event.touches[0]
+      if (draggingRunner) {
+        window.clearTimeout(draggingRunner)
+      }
 
       saveXY()
-      prevX = clientX
-      prevY = clientY
-      touching = true
+      startTouch(event)
       dragging.value = false
     }
 
     const handleTouchmove = async (event: TouchEvent) => {
-      if (!touching || props.disabled) {
+      if (!touching.value || props.disabled) {
         return
       }
 
@@ -77,19 +73,14 @@ export default defineComponent({
       enableTransition.value = false
       dragged.value = true
       dragging.value = true
-
-      const { clientX, clientY } = event.touches[0]
-      const deltaX = clientX - prevX
-      const deltaY = clientY - prevY
-      prevX = clientX
-      prevY = clientY
+      moveTouch(event)
 
       if (props.direction.includes('x')) {
-        x.value += deltaX
+        x.value += moveX.value
       }
 
       if (props.direction.includes('y')) {
-        y.value += deltaY
+        y.value += moveY.value
       }
 
       clampToBoundary()
@@ -100,7 +91,7 @@ export default defineComponent({
         return
       }
 
-      touching = false
+      endTouch()
       enableTransition.value = true
       attract()
 
@@ -240,13 +231,13 @@ export default defineComponent({
       x.value = 0
       y.value = 0
 
-      touching = false
-      prevX = 0
-      prevY = 0
+      resetTouch()
     }
 
     watch(() => props.boundary, toPxBoundary)
+
     onWindowResize(resize)
+
     onSmartMounted(() => {
       toPxBoundary()
       resize()
