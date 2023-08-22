@@ -25,6 +25,8 @@ export function useTouch() {
   const moveY = ref(0)
   const direction = ref<TouchDirection | undefined>()
   const touching = ref(false)
+  const startTime = ref(0)
+  const distance = ref(0)
 
   const resetTouch = () => {
     startX.value = 0
@@ -39,6 +41,8 @@ export function useTouch() {
     moveY.value = 0
     direction.value = undefined
     touching.value = false
+    startTime.value = 0
+    distance.value = 0
   }
 
   const startTouch = (event: TouchEvent) => {
@@ -51,6 +55,7 @@ export function useTouch() {
     prevX.value = x
     prevY.value = y
     touching.value = true
+    startTime.value = performance.now()
   }
 
   const moveTouch = (event: TouchEvent) => {
@@ -60,6 +65,7 @@ export function useTouch() {
     deltaY.value = y - startY.value
     offsetX.value = Math.abs(deltaX.value)
     offsetY.value = Math.abs(deltaY.value)
+    distance.value = Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
     moveX.value = x - prevX.value
     moveY.value = y - prevY.value
 
@@ -86,6 +92,8 @@ export function useTouch() {
     moveY,
     direction,
     touching,
+    startTime,
+    distance,
     resetTouch,
     startTouch,
     moveTouch,
