@@ -64,7 +64,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { toNumber, clamp } from '@varlet/shared'
-import { useEventListener, useTouch } from '@varlet/use'
+import { useEventListener } from '@varlet/use'
+import { useTouch } from '../../../varlet-use/src/useTouch'
 
 import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
@@ -75,11 +76,6 @@ import { call, createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
 
 const { n, classes } = createNamespace('image-preview')
-
-type VarTouch = {
-  timestamp: number
-  target: HTMLElement
-}
 
 const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
@@ -106,13 +102,13 @@ export default defineComponent({
     const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
     const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
-    let startTouch: VarTouch | null = null
-    let prevTouch: VarTouch | null = null
+    let startTouch: HTMLElement | null = null
+    let prevTouch: HTMLElement | null = null
     let closeRunner: number | null = null
     let longPressRunner: number | null = null
     let isLongPress = false
 
-    const { moveX, moveY, offsetX, offsetY, startTouch: start, moveTouch: move } = useTouch()
+    const { moveX, moveY, distance, startTime, startTouch: start, moveTouch: move } = useTouch()
 
     const initialIndex: ComputedRef<number> = computed(() => {
       // For compatibility with current, temporarily keep this computed method
@@ -154,17 +150,15 @@ export default defineComponent({
       transitionDuration.value = undefined
     }
 
-    const isDoubleTouch = (currentTouch: VarTouch) => {
+    const isDoubleTouch = (currentTouch: HTMLElement) => {
       if (!prevTouch) {
         return false
       }
 
-      const distance = Math.sqrt(moveX.value ** 2 + moveY.value ** 2)
-
       return (
-        distance <= DISTANCE_OFFSET &&
-        currentTouch.timestamp - prevTouch.timestamp <= EVENT_DELAY &&
-        prevTouch.target === currentTouch.target
+        distance.value <= DISTANCE_OFFSET &&
+        performance.now() - startTime.value <= EVENT_DELAY &&
+        prevTouch === currentTouch
       )
     }
 
@@ -173,12 +167,10 @@ export default defineComponent({
         return false
       }
 
-      const distance = Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
-
       return (
-        distance <= DISTANCE_OFFSET &&
-        performance.now() - prevTouch.timestamp < TAP_DELAY &&
-        (target === startTouch.target || target.parentNode === startTouch.target)
+        distance.value <= DISTANCE_OFFSET &&
+        performance.now() - startTime.value < TAP_DELAY &&
+        (target === startTouch || target.parentNode === startTouch)
       )
     }
 
@@ -188,7 +180,7 @@ export default defineComponent({
       startTouch = null
     }
 
-    const handleTouchend = (event: Event) => {
+    const handleTouchend = (event: TouchEvent) => {
       window.clearTimeout(longPressRunner as number)
 
       // avoid triggering tap event sometimes
@@ -208,10 +200,7 @@ export default defineComponent({
       window.clearTimeout(closeRunner as number)
       window.clearTimeout(longPressRunner as number)
 
-      const currentTouch: VarTouch = {
-        timestamp: performance.now(),
-        target: event.currentTarget as HTMLElement,
-      }
+      const currentTouch = event.currentTarget as HTMLElement
       startTouch = currentTouch
 
       longPressRunner = window.setTimeout(() => {
@@ -273,13 +262,9 @@ export default defineComponent({
       move(event)
 
       const target = event.currentTarget as HTMLElement
-      const currentTouch: VarTouch = {
-        timestamp: performance.now(),
-        target,
-      }
+      const currentTouch = target
 
-      const distance = Math.sqrt(offsetX.value ** 2 + offsetY.value ** 2)
-      if (distance > DISTANCE_OFFSET) {
+      if (distance.value > DISTANCE_OFFSET) {
         window.clearTimeout(longPressRunner as number)
       }
 
