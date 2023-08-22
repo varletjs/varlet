@@ -64,8 +64,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { toNumber, clamp } from '@varlet/shared'
-import { useEventListener } from '@varlet/use'
-import { useTouch } from '../../../varlet-use/src/useTouch'
+import { useEventListener, useTouch } from '@varlet/use'
 
 import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
