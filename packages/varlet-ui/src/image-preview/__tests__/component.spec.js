@@ -89,13 +89,19 @@ test('test image preview zoom move', async () => {
   })
 
   const zoomContainer = wrapper.find('.var-image-preview__zoom-container')
-  await doubleTouch(zoomContainer)
+
   // move to right limit
+  await doubleTouch(zoomContainer)
   await triggerDrag(zoomContainer, -100, 0)
   expect(zoomContainer.element.style.transform).toBe('scale(2) translate(-93.75px, 0px)')
-  // move to center
-  await triggerDrag(zoomContainer, 93.75, 0)
+
+  // tap touch
+  await trigger(zoomContainer, 'touchstart')
+  await trigger(zoomContainer, 'touchend')
+  expect(zoomContainer.element.style.transform).toBe('scale(1) translate(0px, 0px)')
+
   // move to left limit
+  await doubleTouch(zoomContainer)
   await triggerDrag(zoomContainer, 100, 0)
   expect(zoomContainer.element.style.transform).toBe('scale(2) translate(93.75px, 0px)')
 
