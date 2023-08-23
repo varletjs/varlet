@@ -34,7 +34,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
-import { doubleRaf, nextTickFrame, raf } from '../utils/elements'
+import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
@@ -233,7 +233,7 @@ export default defineComponent({
       setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
     }
 
-    const handleTouchend = async () => {
+    const handleTouchend = () => {
       if (!touching.value) {
         return
       }
