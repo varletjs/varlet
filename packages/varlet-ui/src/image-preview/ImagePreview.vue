@@ -100,7 +100,7 @@ export default defineComponent({
     const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
     const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
-    const { moveX, moveY, distance, startTime, startTouch, moveTouch } = useTouch()
+    const { moveX, moveY, distance, startTime, startTouch, moveTouch, endTouch } = useTouch()
     const targets: Record<string, HTMLElement | null> = {
       start: null,
       prev: null,
@@ -174,6 +174,8 @@ export default defineComponent({
     }
 
     const handleTouchcancel = () => {
+      endTouch()
+
       window.clearTimeout(longPressRunner as number)
       isLongPress = false
       targets.start = null
@@ -181,6 +183,7 @@ export default defineComponent({
 
     const handleTouchend = (event: TouchEvent) => {
       window.clearTimeout(longPressRunner as number)
+      endTouch()
 
       // avoid triggering tap event sometimes
       if (isLongPress) {
