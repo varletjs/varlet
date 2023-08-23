@@ -62,13 +62,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
-import { toNumber, clamp } from '@varlet/shared'
-import { useEventListener, useTouch } from '@varlet/use'
 import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { toNumber, clamp } from '@varlet/shared'
+import { useEventListener, useTouch } from '@varlet/use'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
@@ -101,7 +101,6 @@ export default defineComponent({
     const canSwipe: Ref<boolean> = ref(true)
     const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
     const { moveX, moveY, distance, startTime, startTouch, moveTouch } = useTouch()
-
     const targets: Record<string, HTMLElement | null> = {
       start: null,
       prev: null,
