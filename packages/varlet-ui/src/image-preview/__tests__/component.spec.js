@@ -67,12 +67,12 @@ test('test image preview zoom', async () => {
   expect(zoomContainer.element.style.transitionTimingFunction).toBe('linear')
   expect(zoomContainer.element.style.transitionDuration).toBe('0s')
 
-  //   // double touch
+  // double touch
   await doubleTouch(zoomContainer)
   expect(zoomContainer.element.style.transform).toBe('scale(1) translate(0px, 0px)')
   expect(zoomContainer.element.style.transitionDuration).toBeFalsy()
 
-  //   // zoom in
+  // zoom in
   await doubleTouch(zoomContainer)
   await delay(250)
   await expectTap(zoomContainer, wrapper)
