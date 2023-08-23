@@ -65,7 +65,6 @@
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { toNumber, clamp } from '@varlet/shared'
 import { useEventListener, useTouch } from '@varlet/use'
-
 import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
@@ -101,13 +100,15 @@ export default defineComponent({
     const transitionDuration: Ref<string | undefined> = ref(undefined)
     const canSwipe: Ref<boolean> = ref(true)
     const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
-    let startTouch: HTMLElement | null = null
-    let prevTouch: HTMLElement | null = null
+    const { moveX, moveY, distance, startTime, startTouch, moveTouch } = useTouch()
+
+    const targets: Record<string, HTMLElement | null> = {
+      start: null,
+      prev: null,
+    }
     let closeRunner: number | null = null
     let longPressRunner: number | null = null
     let isLongPress = false
-
-    const { moveX, moveY, distance, startTime, startTouch: start, moveTouch: move } = useTouch()
 
     const initialIndex: ComputedRef<number> = computed(() => {
       // For compatibility with current, temporarily keep this computed method
@@ -131,7 +132,7 @@ export default defineComponent({
     const zoomIn = () => {
       scale.value = toNumber(props.zoom)
       canSwipe.value = false
-      prevTouch = null
+      targets.prev = null
 
       window.setTimeout(() => {
         transitionTimingFunction.value = 'linear'
@@ -144,39 +145,39 @@ export default defineComponent({
       translateX.value = 0
       translateY.value = 0
       canSwipe.value = true
-      prevTouch = null
+      targets.prev = null
       transitionTimingFunction.value = undefined
       transitionDuration.value = undefined
     }
 
     const isDoubleTouch = (currentTouch: HTMLElement) => {
-      if (!prevTouch) {
+      if (!targets.prev) {
         return false
       }
 
       return (
         distance.value <= DISTANCE_OFFSET &&
         performance.now() - startTime.value <= EVENT_DELAY &&
-        prevTouch === currentTouch
+        targets.prev === currentTouch
       )
     }
 
     const isTapTouch = (target: HTMLElement) => {
-      if (!target || !startTouch || !prevTouch) {
+      if (!target || !targets.start || !targets.prev) {
         return false
       }
 
       return (
         distance.value <= DISTANCE_OFFSET &&
         performance.now() - startTime.value < TAP_DELAY &&
-        (target === startTouch || target.parentNode === startTouch)
+        (target === targets.start || target.parentNode === targets.start)
       )
     }
 
     const handleTouchcancel = () => {
       window.clearTimeout(longPressRunner as number)
       isLongPress = false
-      startTouch = null
+      targets.start = null
     }
 
     const handleTouchend = (event: TouchEvent) => {
@@ -191,7 +192,7 @@ export default defineComponent({
       const isTap = isTapTouch(event.target as HTMLElement)
       closeRunner = window.setTimeout(() => {
         isTap && close()
-        startTouch = null
+        targets.start = null
       }, EVENT_DELAY)
     }
 
@@ -200,7 +201,7 @@ export default defineComponent({
       window.clearTimeout(longPressRunner as number)
 
       const currentTouch = event.currentTarget as HTMLElement
-      startTouch = currentTouch
+      targets.start = currentTouch
 
       longPressRunner = window.setTimeout(() => {
         isLongPress = true
@@ -212,8 +213,8 @@ export default defineComponent({
         return
       }
 
-      start(event)
-      prevTouch = currentTouch
+      startTouch(event)
+      targets.prev = currentTouch
     }
 
     const getZoom = (target: HTMLElement) => {
@@ -254,11 +255,11 @@ export default defineComponent({
     }
 
     const handleTouchmove = (event: TouchEvent) => {
-      if (!prevTouch) {
+      if (!targets.prev) {
         return
       }
 
-      move(event)
+      moveTouch(event)
 
       const target = event.currentTarget as HTMLElement
       const currentTouch = target
@@ -275,7 +276,7 @@ export default defineComponent({
         translateY.value = clamp(translateY.value + moveY.value, -limitY, limitY)
       }
 
-      prevTouch = currentTouch
+      targets.prev = currentTouch
     }
 
     const close = () => {
