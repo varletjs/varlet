@@ -182,8 +182,9 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: TouchEvent) => {
-      window.clearTimeout(longPressRunner as number)
       endTouch()
+
+      window.clearTimeout(longPressRunner as number)
 
       // avoid triggering tap event sometimes
       if (isLongPress) {
