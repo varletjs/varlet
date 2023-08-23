@@ -13,6 +13,7 @@ export interface CheckboxProps extends BasicAttributes {
   uncheckedColor?: string
   disabled?: boolean
   readonly?: boolean
+  indeterminate?: boolean
   iconSize?: string | number
   ripple?: boolean
   validateTrigger?: Array<CheckboxValidateTriggers>

@@ -30,6 +30,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
   iconSize: {
     type: [String, Number],
   },

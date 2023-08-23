@@ -5,16 +5,16 @@
         :class="
           classes(
             n('action'),
-            [checked, n('--checked'), n('--unchecked')],
+            [checked || isIndeterminate, n('--checked'), n('--unchecked')],
             [errorMessage || checkboxGroupErrorMessage, n('--error')],
             [formDisabled || disabled, n('--disabled')]
           )
         "
-        :style="{ color: checked ? checkedColor : uncheckedColor }"
+        :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
-        <slot name="checked-icon" v-if="checked">
+        <slot name="checked-icon" v-if="checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-marked"
@@ -22,7 +22,7 @@
             var-checkbox-cover
           />
         </slot>
-        <slot name="unchecked-icon" v-else>
+        <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-blank-outline"
@@ -30,6 +30,13 @@
             var-checkbox-cover
           />
         </slot>
+        <var-icon
+          v-if="isIndeterminate"
+          :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
+          name="minus-box"
+          :size="iconSize"
+          var-checkbox-cover
+        />
         <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
       </div>
 
@@ -81,6 +88,7 @@ export default defineComponent({
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
+    const isIndeterminate: Ref<boolean> = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -101,6 +109,7 @@ export default defineComponent({
 
     const change = (changedValue: any) => {
       value.value = changedValue
+      isIndeterminate.value = false
 
       const { checkedValue, onChange } = props
 
@@ -172,6 +181,14 @@ export default defineComponent({
       { immediate: true }
     )
 
+    watch(
+      () => props.indeterminate,
+      (newValue) => {
+        isIndeterminate.value = newValue
+      },
+      { immediate: true }
+    )
+
     const checkboxProvider: CheckboxProvider = {
       checkedValue,
       checked,
@@ -186,6 +203,7 @@ export default defineComponent({
     call(bindForm, checkboxProvider)
 
     return {
+      isIndeterminate,
       withAnimation,
       checked,
       errorMessage,

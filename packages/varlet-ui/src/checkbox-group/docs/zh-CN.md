@@ -94,6 +94,20 @@ const value = ref(false)
 </template>
 ```
 
+### 不确定状态
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox intermediate v-model="value"></var-checkbox>
+</template>
+```
+
 ### 复选框组
 
 在复选框组中，必须给 `checkbox` 设置 `checked-value` 用来标识，

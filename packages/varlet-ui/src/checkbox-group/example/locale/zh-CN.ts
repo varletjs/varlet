@@ -15,4 +15,6 @@ export default {
   checkboxGroupValidate: '复选框组字段校验',
   checkboxValidateMessage: '请勾选',
   checkboxGroupValidateMessage: '请全选',
+  indeterminate: '不确定状态',
+  toggle: '切换',
 }

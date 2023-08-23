@@ -94,6 +94,20 @@ const value = ref(false)
 </template>
 ```
 
+### Intermediate
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-checkbox intermediate v-model="value"></var-checkbox>
+</template>
+```
+
 ### CheckboxGroup
 
 In the checkbox group, you must set the `checked-value` to identify the `checkbox`,
