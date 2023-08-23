@@ -150,7 +150,7 @@ export default defineComponent({
       transitionDuration.value = undefined
     }
 
-    const isDoubleTouch = (currentTouch: HTMLElement) => {
+    const isDoubleTouch = (target: HTMLElement) => {
       if (!targets.prev) {
         return false
       }
@@ -158,7 +158,7 @@ export default defineComponent({
       return (
         distance.value <= DISTANCE_OFFSET &&
         performance.now() - startTime.value <= EVENT_DELAY &&
-        targets.prev === currentTouch
+        targets.prev === target
       )
     }
 
@@ -200,21 +200,21 @@ export default defineComponent({
       window.clearTimeout(closeRunner as number)
       window.clearTimeout(longPressRunner as number)
 
-      const currentTouch = event.currentTarget as HTMLElement
-      targets.start = currentTouch
+      const target = event.currentTarget as HTMLElement
+      targets.start = target
 
       longPressRunner = window.setTimeout(() => {
         isLongPress = true
         call(props.onLongPress, idx)
       }, LONG_PRESS_DELAY)
 
-      if (isDoubleTouch(currentTouch)) {
+      if (isDoubleTouch(target)) {
         scale.value > 1 ? zoomOut() : zoomIn()
         return
       }
 
       startTouch(event)
-      targets.prev = currentTouch
+      targets.prev = target
     }
 
     const getZoom = (target: HTMLElement) => {
@@ -262,7 +262,6 @@ export default defineComponent({
       moveTouch(event)
 
       const target = event.currentTarget as HTMLElement
-      const currentTouch = target
 
       if (distance.value > DISTANCE_OFFSET) {
         window.clearTimeout(longPressRunner as number)
@@ -276,7 +275,7 @@ export default defineComponent({
         translateY.value = clamp(translateY.value + moveY.value, -limitY, limitY)
       }
 
-      targets.prev = currentTouch
+      targets.prev = target
     }
 
     const close = () => {
