@@ -5,7 +5,7 @@
       :style="{
         width: !vertical ? `${trackSize}px` : undefined,
         height: vertical ? `${trackSize}px` : undefined,
-        transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
+        transform: `translate${vertical ? 'Y' : 'X'}(${trackTranslate}px)`,
         transitionDuration: lockDuration ? `0ms` : `${toNumber(duration)}ms`,
       }"
       @touchstart="handleTouchstart"
@@ -34,7 +34,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
-import { doubleRaf, nextTickFrame } from '../utils/elements'
+import { doubleRaf, nextTickFrame, raf } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
@@ -43,7 +43,7 @@ import { usePopup } from '../popup/provide'
 import { type SwipeItemProvider } from '../swipe-item/provide'
 
 const SWIPE_DELAY = 250
-const SWIPE_DISTANCE = 20
+const SWIPE_OFFSET = 20
 
 const { n, classes } = createNamespace('swipe')
 
@@ -55,32 +55,45 @@ export default defineComponent({
     const size: Ref<number> = ref(0)
     const vertical: ComputedRef<boolean> = computed(() => props.vertical)
     const trackSize: Ref<number> = ref(0)
-    const translate: Ref<number> = ref(0)
+    const trackTranslate: Ref<number> = ref(0)
     const lockDuration: Ref<boolean> = ref(false)
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
     const { popup, bindPopup } = usePopup()
-    const { moveX, moveY, touching, direction, startTime, distance, startTouch, moveTouch, endTouch } = useTouch()
+    const {
+      deltaX,
+      deltaY,
+      moveX,
+      moveY,
+      offsetX,
+      offsetY,
+      touching,
+      direction,
+      startTime,
+      startTouch,
+      moveTouch,
+      endTouch,
+    } = useTouch()
 
     let initializedIndex = false
     let timer = -1
 
     const findSwipeItem = (idx: number) => swipeItems.find(({ index }) => index.value === idx) as SwipeItemProvider
 
-    const dispatchBorrower = () => {
+    const dispatchSwipeItems = () => {
       if (!props.loop) {
         return
       }
       // track out of bounds from left
-      if (translate.value >= 0) {
+      if (trackTranslate.value >= 0) {
         findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
       }
       // track out of bounds from right
-      if (translate.value <= -(trackSize.value - size.value)) {
+      if (trackTranslate.value <= -(trackSize.value - size.value)) {
         findSwipeItem(0).setTranslate(trackSize.value)
       }
       // track not out of bounds
-      if (translate.value > -(trackSize.value - size.value) && translate.value < 0) {
+      if (trackTranslate.value > -(trackSize.value - size.value) && trackTranslate.value < 0) {
         findSwipeItem(length.value - 1).setTranslate(0)
         findSwipeItem(0).setTranslate(0)
       }
@@ -89,7 +102,7 @@ export default defineComponent({
     const getSwipeIndex = (targetSwipeIndex?: number) => {
       const swipeIndex = isNumber(targetSwipeIndex)
         ? targetSwipeIndex
-        : Math.floor((translate.value - size.value / 2) / -size.value)
+        : Math.floor((trackTranslate.value - size.value / 2) / -size.value)
 
       const { loop } = props
 
@@ -135,16 +148,16 @@ export default defineComponent({
     }
 
     const fixPosition = (fn?: () => void) => {
-      const overLeft = translate.value >= size.value
-      const overRight = translate.value <= -trackSize.value
+      const overLeft = trackTranslate.value >= size.value
+      const overRight = trackTranslate.value <= -trackSize.value
       const leftTranslate = 0
       const rightTranslate = -(trackSize.value - size.value)
 
       lockDuration.value = true
-      // 检测是否有越界情况 越界修正
+
       if (overLeft || overRight) {
         lockDuration.value = true
-        translate.value = overRight ? leftTranslate : rightTranslate
+        trackTranslate.value = overRight ? leftTranslate : rightTranslate
         findSwipeItem(0).setTranslate(0)
         findSwipeItem(length.value - 1).setTranslate(0)
       }
@@ -183,6 +196,11 @@ export default defineComponent({
       timer && clearTimeout(timer)
     }
 
+    const setTrackTranslate = (value: number) => {
+      trackTranslate.value = value
+      dispatchSwipeItems()
+    }
+
     const handleTouchstart = (event: TouchEvent) => {
       if (length.value <= 1 || !props.touchable) {
         return
@@ -212,11 +230,10 @@ export default defineComponent({
       }
 
       event.preventDefault()
-      translate.value += vertical ? moveY.value : moveX.value
-      dispatchBorrower()
+      setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
     }
 
-    const handleTouchend = () => {
+    const handleTouchend = async () => {
       if (!touching.value) {
         return
       }
@@ -225,8 +242,9 @@ export default defineComponent({
 
       endTouch()
 
-      const positive = vertical ? moveY.value < 0 : moveX.value < 0
-      const quickSwiping = performance.now() - startTime.value <= SWIPE_DELAY && distance.value >= SWIPE_DISTANCE
+      const positive = vertical ? deltaY.value < 0 : deltaX.value < 0
+      const offset = vertical ? offsetY.value : offsetX.value
+      const quickSwiping = performance.now() - startTime.value <= SWIPE_DELAY && offset >= SWIPE_OFFSET
       const swipeIndex = quickSwiping
         ? positive
           ? getSwipeIndex(index.value + 1)
@@ -234,12 +252,15 @@ export default defineComponent({
         : getSwipeIndex()
 
       lockDuration.value = false
+      setTrackTranslate(swipeIndex * -size.value)
 
-      translate.value = swipeIndex * -size.value
       const prevIndex = index.value
       index.value = swipeIndexToIndex(swipeIndex)
       startAutoplay()
-      prevIndex !== index.value && call(onChange, index.value)
+
+      if (prevIndex !== index.value) {
+        call(onChange, index.value)
+      }
     }
 
     // expose
@@ -252,7 +273,7 @@ export default defineComponent({
 
       size.value = props.vertical ? swipeEl.value.offsetHeight : swipeEl.value.offsetWidth
       trackSize.value = size.value * length.value
-      translate.value = index.value * -size.value
+      trackTranslate.value = index.value * -size.value
 
       swipeItems.forEach((swipeItem) => {
         swipeItem.setTranslate(0)
@@ -283,12 +304,12 @@ export default defineComponent({
       fixPosition(() => {
         if (currentIndex === length.value - 1 && loop) {
           findSwipeItem(0).setTranslate(trackSize.value)
-          translate.value = length.value * -size.value
+          trackTranslate.value = length.value * -size.value
           return
         }
 
         if (currentIndex !== length.value - 1) {
-          translate.value = index.value * -size.value
+          trackTranslate.value = index.value * -size.value
         }
       })
     }
@@ -311,12 +332,12 @@ export default defineComponent({
       fixPosition(() => {
         if (currentIndex === 0 && loop) {
           findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
-          translate.value = size.value
+          trackTranslate.value = size.value
           return
         }
 
         if (currentIndex !== 0) {
-          translate.value = index.value * -size.value
+          trackTranslate.value = index.value * -size.value
         }
       })
     }
@@ -382,7 +403,7 @@ export default defineComponent({
       index,
       swipeEl,
       trackSize,
-      translate,
+      trackTranslate,
       lockDuration,
       handleTouchstart,
       handleTouchmove,
