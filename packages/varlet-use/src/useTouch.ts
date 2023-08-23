@@ -61,7 +61,7 @@ export function useTouch() {
   const moveTouch = (event: TouchEvent) => {
     const { clientX: x, clientY: y } = event.touches[0]
 
-    deltaX.value = Math.max(x, 0) - startX.value
+    deltaX.value = x - startX.value
     deltaY.value = y - startY.value
     offsetX.value = Math.abs(deltaX.value)
     offsetY.value = Math.abs(deltaY.value)
@@ -88,6 +88,8 @@ export function useTouch() {
     deltaY,
     offsetX,
     offsetY,
+    prevX,
+    prevY,
     moveX,
     moveY,
     direction,

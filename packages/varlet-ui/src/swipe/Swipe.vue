@@ -38,9 +38,9 @@ import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { onSmartUnmounted, onWindowResize } from '@varlet/use'
-import { type SwipeItemProvider } from '../swipe-item/provide'
+import { onSmartUnmounted, onWindowResize, useTouch } from '@varlet/use'
 import { usePopup } from '../popup/provide'
+import { type SwipeItemProvider } from '../swipe-item/provide'
 
 const SWIPE_DELAY = 250
 const SWIPE_DISTANCE = 20
@@ -60,14 +60,10 @@ export default defineComponent({
     const index: Ref<number> = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
     const { popup, bindPopup } = usePopup()
+    const { moveX, moveY, touching, direction, startTime, distance, startTouch, moveTouch, endTouch } = useTouch()
+
     let initializedIndex = false
-    let touching = false
     let timer = -1
-    let startX: number
-    let startY: number
-    let startTime: number
-    let prevX: number | undefined
-    let prevY: number | undefined
 
     const findSwipeItem = (idx: number) => swipeItems.find(({ index }) => index.value === idx) as SwipeItemProvider
 
@@ -187,25 +183,12 @@ export default defineComponent({
       timer && clearTimeout(timer)
     }
 
-    const getDirection = (x: number, y: number) => {
-      if (x > y && x > 10) {
-        return 'horizontal'
-      }
-      if (y > x && y > 10) {
-        return 'vertical'
-      }
-    }
-
     const handleTouchstart = (event: TouchEvent) => {
       if (length.value <= 1 || !props.touchable) {
         return
       }
 
-      const { clientX, clientY } = event.touches[0]
-      startX = clientX
-      startY = clientY
-      startTime = performance.now()
-      touching = true
+      startTouch(event)
       stopAutoplay()
 
       fixPosition(() => {
@@ -216,56 +199,46 @@ export default defineComponent({
     const handleTouchmove = (event: TouchEvent) => {
       const { touchable, vertical } = props
 
-      if (!touching || !touchable) {
+      if (!touching.value || !touchable) {
         return
       }
 
-      const { clientX, clientY } = event.touches[0]
-      const deltaX = Math.abs(clientX - startX)
-      const deltaY = Math.abs(clientY - startY)
-      const direction = getDirection(deltaX, deltaY)
+      moveTouch(event)
+
       const expectDirection = vertical ? 'vertical' : 'horizontal'
 
-      if (direction === expectDirection) {
-        event.preventDefault()
-
-        const moveX = prevX !== undefined ? clientX - prevX : 0
-        const moveY = prevY !== undefined ? clientY - prevY : 0
-        prevX = clientX
-        prevY = clientY
-
-        translate.value += vertical ? moveY : moveX
-
-        dispatchBorrower()
+      if (direction.value !== expectDirection) {
+        return
       }
+
+      event.preventDefault()
+      translate.value += vertical ? moveY.value : moveX.value
+      dispatchBorrower()
     }
 
     const handleTouchend = () => {
-      if (!touching) {
+      if (!touching.value) {
         return
       }
 
       const { vertical, onChange } = props
 
-      const positive = vertical ? (prevY as number) < startY : (prevX as number) < startX
-      const distance = vertical ? Math.abs(startY - (prevY as number)) : Math.abs(startX - (prevX as number))
-      const quickSwiping = performance.now() - startTime <= SWIPE_DELAY && distance >= SWIPE_DISTANCE
+      endTouch()
+
+      const positive = vertical ? moveY.value < 0 : moveX.value < 0
+      const quickSwiping = performance.now() - startTime.value <= SWIPE_DELAY && distance.value >= SWIPE_DISTANCE
       const swipeIndex = quickSwiping
         ? positive
           ? getSwipeIndex(index.value + 1)
           : getSwipeIndex(index.value - 1)
         : getSwipeIndex()
 
-      touching = false
       lockDuration.value = false
-      prevX = undefined
-      prevY = undefined
 
       translate.value = swipeIndex * -size.value
       const prevIndex = index.value
       index.value = swipeIndexToIndex(swipeIndex)
       startAutoplay()
-
       prevIndex !== index.value && call(onChange, index.value)
     }
 
