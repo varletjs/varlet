@@ -1,4 +1,4 @@
-import { StyleValue, computed, defineComponent, ref, watch, watchEffect } from 'vue'
+import { StyleValue, computed, defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import Badge from '../badge'
