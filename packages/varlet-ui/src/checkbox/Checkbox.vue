@@ -64,7 +64,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { props } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace, call, useVModel } from '../utils/components'
 import { useCheckboxGroup } from './provide'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -88,7 +88,6 @@ export default defineComponent({
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
-    const isIndeterminate: Ref<boolean> = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -99,6 +98,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const isIndeterminate = useVModel(props, 'indeterminate')
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
       nextTick(() => {
@@ -109,7 +109,10 @@ export default defineComponent({
 
     const change = (changedValue: any) => {
       value.value = changedValue
-      isIndeterminate.value = false
+
+      if (isIndeterminate.value) {
+        isIndeterminate.value = false
+      }
 
       const { checkedValue, onChange } = props
 
@@ -177,14 +180,6 @@ export default defineComponent({
       () => props.modelValue,
       (newValue) => {
         value.value = newValue
-      },
-      { immediate: true }
-    )
-
-    watch(
-      () => props.indeterminate,
-      (newValue) => {
-        isIndeterminate.value = newValue
       },
       { immediate: true }
     )
