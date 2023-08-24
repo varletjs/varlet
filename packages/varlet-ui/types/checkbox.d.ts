@@ -21,6 +21,7 @@ export interface CheckboxProps extends BasicAttributes {
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
+  'onUpdate:indeterminate'?: ListenerProp<(value: boolean) => void>
 }
 
 export class Checkbox extends VarComponent {

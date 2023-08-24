@@ -51,4 +51,5 @@ export const props = {
   onClick: defineListenerProp<(e: Event) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
+  'onUpdate:indeterminate': defineListenerProp<(value: boolean) => void>(),
 }
