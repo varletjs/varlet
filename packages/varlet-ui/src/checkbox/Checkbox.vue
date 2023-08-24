@@ -63,15 +63,12 @@ import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import Hover from '../hover'
-import { defineComponent, ref, computed, watch, nextTick } from 'vue'
-import { props } from './props'
-import { useValidation, createNamespace, call, useVModel } from '../utils/components'
-import { useCheckboxGroup } from './provide'
-import { useForm } from '../form/provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
-import type { CheckboxProvider } from './provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { defineComponent, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
+import { props, type ValidateTriggers } from './props'
+import { useValidation, createNamespace, call, useVModel } from '../utils/components'
+import { useCheckboxGroup, type CheckboxProvider } from './provide'
+import { useForm } from '../form/provide'
 
 const { n, classes } = createNamespace('checkbox')
 
@@ -85,7 +82,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const value: Ref = ref(false)
+    const value: Ref = useVModel(props, 'modelValue')
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
@@ -109,15 +106,13 @@ export default defineComponent({
     }
 
     const change = (changedValue: any) => {
+      const { checkedValue, onChange } = props
+
       value.value = changedValue
       isIndeterminate.value = false
 
-      const { checkedValue, onChange } = props
-
-      call(props['onUpdate:modelValue'], value.value)
       call(onChange, value.value)
       validateWithTrigger('onChange')
-
       changedValue === checkedValue ? checkboxGroup?.onChecked(checkedValue) : checkboxGroup?.onUnchecked(checkedValue)
     }
 
@@ -155,7 +150,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      call(props['onUpdate:modelValue'], props.uncheckedValue)
+      value.value = props.uncheckedValue
       resetValidation()
     }
 
@@ -173,14 +168,6 @@ export default defineComponent({
 
     // expose
     const validate = () => v(props.rules, props.modelValue)
-
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        value.value = newValue
-      },
-      { immediate: true }
-    )
 
     const checkboxProvider: CheckboxProvider = {
       checkedValue,

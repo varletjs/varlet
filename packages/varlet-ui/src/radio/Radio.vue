@@ -54,14 +54,15 @@ import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { computed, defineComponent, nextTick, ref, watch, type Ref, type ComputedRef } from 'vue'
 import { props, type ValidateTrigger } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace, call, useVModel } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 
 const { n, classes } = createNamespace('radio')
+
 export default defineComponent({
   name: 'VarRadio',
   directives: { Ripple, Hover },
@@ -73,7 +74,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const value: Ref = ref(false)
+    const value: Ref = useVModel(props, 'modelValue')
     const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
     const withAnimation: Ref<boolean> = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
@@ -103,7 +104,6 @@ export default defineComponent({
 
       value.value = changedValue
 
-      call(props['onUpdate:modelValue'], value.value)
       call(onChange, value.value)
       radioGroup?.onToggle(checkedValue)
       validateWithTrigger('onChange')
@@ -132,7 +132,7 @@ export default defineComponent({
 
     // expose
     const reset = () => {
-      call(props['onUpdate:modelValue'], props.uncheckedValue)
+      value.value = props.uncheckedValue
       resetValidation()
     }
 
@@ -150,14 +150,6 @@ export default defineComponent({
 
       change(changedValue)
     }
-
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        value.value = newValue
-      },
-      { immediate: true }
-    )
 
     const radioProvider: RadioProvider = {
       sync,
