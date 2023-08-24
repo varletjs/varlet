@@ -2,8 +2,8 @@
 import VarRadioGroup from '..'
 import VarRadio from '../../radio'
 import VarIcon from '../../icon'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import dark from '../../themes/dark'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { toRefs, reactive } from 'vue'
 import { use, pack } from './locale'
 
