@@ -57,9 +57,9 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.indeterminate }}</app-type>
   <div class="indeterminate-container">
-    <var-checkbox v-model="value10" v-model:indeterminate="indeterminate"
-      >{{ pack.indeterminateValue }} {{ indeterminate }}</var-checkbox
-    >
+    <var-checkbox v-model="value10" v-model:indeterminate="indeterminate">
+      {{ pack.indeterminateValue }} {{ indeterminate }}
+    </var-checkbox>
     <var-button class="button" type="primary" @click="indeterminate = !indeterminate">{{ pack.toggle }}</var-button>
   </div>
 
