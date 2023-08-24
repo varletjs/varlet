@@ -1,4 +1,4 @@
-import { StyleValue, computed, defineComponent, ref, watchEffect } from 'vue'
+import { StyleValue, computed, defineComponent, ref, watch, watchEffect } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import Badge from '../badge'
@@ -10,6 +10,7 @@ import '../badge/badge.less'
 import '../icon/icon.less'
 import './gridItem.less'
 import '../ripple/ripple.less'
+import { toNumber } from 'lodash-es'
 
 const { n, classes } = createNamespace('grid-item')
 
@@ -27,7 +28,9 @@ export default defineComponent({
     const IconComp = computed(() => {
       const defaultContent = [slots.icon?.(), slots.text?.(), <span>{props.text}</span>, slots.default?.()]
       if (props.icon) {
-        defaultContent.unshift(<Icon name={props.icon} size={iconSize.value} class={n('icon')} />)
+        defaultContent.unshift(
+          <Icon name={props.icon} size={iconSize.value} color={props.iconColor} class={n('icon')} />
+        )
       }
       return defaultContent.map((item) => item)
     })
@@ -45,7 +48,7 @@ export default defineComponent({
 
     const customStyle = computed(() => {
       const style: StyleValue = {
-        flex: `0 0 ${(100 / column.value).toFixed(2)}%`,
+        flex: `0 0 ${toNumber((100 / column.value).toFixed(2))}%`,
       }
 
       if (gutter) {
@@ -61,21 +64,25 @@ export default defineComponent({
     }
     bindGrid(gridItemProvide)
 
-    watchEffect(() => {
-      if (square.value) {
-        const width = gridElement.value?.offsetWidth
-        if (width) {
-          gridElement.value!.style.height = `${width}px`
+    watch(
+      () => [square.value, gridElement.value],
+      () => {
+        if (square.value && gridElement.value) {
+          const width = gridElement.value.offsetWidth
+          gridElement.value.style.height = `${width}px`
         }
+      },
+      {
+        immediate: true,
       }
-    })
+    )
 
     const handleClick = (e: Event) => {
       call(props.onClick, e)
     }
 
     return () => (
-      <div ref={gridElement} style={customStyle.value} class={classes(n())}>
+      <div ref={gridElement} style={customStyle.value} class={classes(n())} onClick={handleClick}>
         <div
           v-ripple={{ disabled: !ripple.value }}
           class={classes(
@@ -85,7 +92,6 @@ export default defineComponent({
             [border.value, n('content-border')],
             [square.value, n('content-square')]
           )}
-          onClick={handleClick}
         >
           {BadgeComp.value}
         </div>

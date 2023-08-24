@@ -5,6 +5,10 @@ import { watchLang, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)
+
+const onClick = () => {
+  console.log('click')
+}
 </script>
 
 <template>
@@ -65,6 +69,6 @@ watchLang(use)
     <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary' }" text="文字" />
     <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom' }" text=" 文字" />
     <var-grid-item icon="image-outline" text="文字" />
-    <var-grid-item icon="image-outline" text="文字" />
+    <var-grid-item icon="image-outline" text="文字" @click="onClick" />
   </var-grid>
 </template>
