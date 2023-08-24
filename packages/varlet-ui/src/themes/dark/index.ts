@@ -38,6 +38,7 @@ import progress from './progress'
 import option from './option'
 import countdown from './countdown'
 import watermark from './watermark'
+import grid from './grid'
 
 export default {
   // common
@@ -90,4 +91,5 @@ export default {
   ...option,
   ...countdown,
   ...watermark,
+  ...grid,
 } as StyleVars

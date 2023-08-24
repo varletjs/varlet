@@ -367,6 +367,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Grid 网格',
+          'en-US': 'Grid',
+        },
+        doc: 'grid',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },

@@ -1,0 +1,42 @@
+:root {
+  --grid-item-border: thin solid rgba(0, 0, 0, 0.12);
+}
+
+.var-grid-item {
+  overflow: auto;
+  margin: 0 -1px -1px 0;
+
+  &__content {
+    width: 100%;
+    background-color: var(--site-config-color-bar);
+    display: flex;
+    padding: 16px 8px;
+    overflow: hidden;
+
+    &-center {
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-border {
+      border: var(--grid-item-border);
+    }
+
+    &-square {
+      height: 100%;
+      padding: 0;
+    }
+  }
+
+  &__content--horizontal,
+  &__content--horizontal > .var-badge {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__content--vertical,
+  &__content--vertical > .var-badge {
+    display: flex;
+    flex-direction: column;
+  }
+}
