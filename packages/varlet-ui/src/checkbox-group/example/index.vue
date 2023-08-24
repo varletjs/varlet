@@ -56,7 +56,9 @@ watchDarkMode(dark)
   <var-checkbox readonly v-model="value5">{{ pack.currentValue }} {{ value5 }}</var-checkbox>
 
   <app-type>{{ pack.indeterminate }}</app-type>
-  <var-checkbox v-model="value10" :indeterminate="indeterminate"></var-checkbox>
+  <var-checkbox v-model="value10" :indeterminate="indeterminate"
+    >{{ pack.currentValue }} {{ indeterminate }}</var-checkbox
+  >
   <var-button type="primary" @click="indeterminate = !indeterminate">{{ pack.toggle }}</var-button>
 
   <app-type>{{ pack.checkboxGroup }}</app-type>

@@ -14,6 +14,14 @@
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
+        <slot name="indeterminate-icon" v-if="isIndeterminate">
+          <var-icon
+            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
+            name="minus-box"
+            :size="iconSize"
+            var-checkbox-cover
+          />
+        </slot>
         <slot name="checked-icon" v-if="checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
@@ -30,13 +38,6 @@
             var-checkbox-cover
           />
         </slot>
-        <var-icon
-          v-if="isIndeterminate"
-          :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
-          name="minus-box"
-          :size="iconSize"
-          var-checkbox-cover
-        />
         <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
       </div>
 
@@ -109,10 +110,7 @@ export default defineComponent({
 
     const change = (changedValue: any) => {
       value.value = changedValue
-
-      if (isIndeterminate.value) {
-        isIndeterminate.value = false
-      }
+      isIndeterminate.value = false
 
       const { checkedValue, onChange } = props
 

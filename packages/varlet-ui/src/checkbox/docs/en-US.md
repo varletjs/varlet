@@ -29,4 +29,5 @@
 | --- | --- | --- |
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |
+| `indeterminate-icon` | Indeterminate icon | `-` |
 | `default` | Displayed text | `-` |

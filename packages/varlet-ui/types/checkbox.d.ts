@@ -30,6 +30,7 @@ export class Checkbox extends VarComponent {
     default(): VNode[]
     'checked-icon'(): VNode[]
     'unchecked-icon'(): VNode[]
+    'indeterminate-icon'(): VNode[]
   }
 
   validate(): Promise<boolean>

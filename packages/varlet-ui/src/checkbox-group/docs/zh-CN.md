@@ -279,6 +279,7 @@ const value = ref([])
 | --- | --- | --- |
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
+| `indeterminate-icon` | 不确定状态图标 | `-` |
 | `default` | 显示的文本 | `-` |
 
 ### 样式变量
