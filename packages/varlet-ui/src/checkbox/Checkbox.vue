@@ -5,16 +5,24 @@
         :class="
           classes(
             n('action'),
-            [checked, n('--checked'), n('--unchecked')],
+            [checked || isIndeterminate, n('--checked'), n('--unchecked')],
             [errorMessage || checkboxGroupErrorMessage, n('--error')],
             [formDisabled || disabled, n('--disabled')]
           )
         "
-        :style="{ color: checked ? checkedColor : uncheckedColor }"
+        :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
-        <slot name="checked-icon" v-if="checked">
+        <slot name="indeterminate-icon" v-if="isIndeterminate">
+          <var-icon
+            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
+            name="minus-box"
+            :size="iconSize"
+            var-checkbox-cover
+          />
+        </slot>
+        <slot name="checked-icon" v-if="checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-marked"
@@ -22,7 +30,7 @@
             var-checkbox-cover
           />
         </slot>
-        <slot name="unchecked-icon" v-else>
+        <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-blank-outline"
@@ -57,7 +65,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { props } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace, call, useVModel } from '../utils/components'
 import { useCheckboxGroup } from './provide'
 import { useForm } from '../form/provide'
 import type { Ref, ComputedRef } from 'vue'
@@ -91,6 +99,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const isIndeterminate = useVModel(props, 'indeterminate')
 
     const validateWithTrigger = (trigger: ValidateTriggers) => {
       nextTick(() => {
@@ -101,6 +110,7 @@ export default defineComponent({
 
     const change = (changedValue: any) => {
       value.value = changedValue
+      isIndeterminate.value = false
 
       const { checkedValue, onChange } = props
 
@@ -186,6 +196,7 @@ export default defineComponent({
     call(bindForm, checkboxProvider)
 
     return {
+      isIndeterminate,
       withAnimation,
       checked,
       errorMessage,

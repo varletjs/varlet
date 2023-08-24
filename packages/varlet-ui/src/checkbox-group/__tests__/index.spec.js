@@ -144,6 +144,19 @@ test('test checkbox readonly', async () => {
   wrapper.unmount()
 })
 
+test('test checkbox indeterminate', () => {
+  const wrapper = mount(VarCheckbox, {
+    props: {
+      modelValue: false,
+      indeterminate: true,
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
 test('test checkbox with checkbox group', async () => {
   const wrapper = mount({
     components: {

@@ -30,6 +30,10 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
   iconSize: {
     type: [String, Number],
   },
@@ -47,4 +51,5 @@ export const props = {
   onClick: defineListenerProp<(e: Event) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
+  'onUpdate:indeterminate': defineListenerProp<(value: boolean) => void>(),
 }

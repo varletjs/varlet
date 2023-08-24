@@ -94,6 +94,21 @@ const value = ref(false)
 </template>
 ```
 
+### Intermediate
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+const intermediate = ref(true)
+</script>
+
+<template>
+  <var-checkbox v-model:intermediate="intermediate" v-model="value"></var-checkbox>
+</template>
+```
+
 ### CheckboxGroup
 
 In the checkbox group, you must set the `checked-value` to identify the `checkbox`,
@@ -209,8 +224,9 @@ const value = ref([])
 | `checked-color` | Checked color | _any_ | `-` |
 | `unchecked-color` | Unchecked color | _any_ | `-` |
 | `icon-size` | Icon size | _string |\ number_ | `-` |
-| `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
+| `readonly` | Whether the readonly | _boolean_ | `false` |
+| `indeterminate` | Whether indeterminate status(style has the highest priority) | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
@@ -264,6 +280,7 @@ const value = ref([])
 | --- | --- | --- |
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |
+| `indeterminate-icon` | Indeterminate icon | `-` |
 | `default` | Displayed text | `-` |
 
 ### Style Variables
