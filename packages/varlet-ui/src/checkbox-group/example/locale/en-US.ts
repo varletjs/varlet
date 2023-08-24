@@ -16,5 +16,6 @@ export default {
   checkboxValidateMessage: 'Please check your choices',
   checkboxGroupValidateMessage: 'Please check all',
   indeterminate: 'Indeterminate',
+  indeterminateValue: 'Current value:',
   toggle: 'Toggle',
 }
