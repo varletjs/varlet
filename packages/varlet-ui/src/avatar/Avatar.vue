@@ -5,14 +5,14 @@
       classes(
         n(),
         n('$--box'),
-        [internalSizeValidator(size), n(`--${size}`)],
+        [isInternalSize(size), n(`--${size}`)],
         [round, n('--round')],
         [bordered, n('--bordered')]
       )
     "
     :style="{
-      width: !internalSizeValidator(size) ? toSizeUnit(size) : undefined,
-      height: !internalSizeValidator(size) ? toSizeUnit(size) : undefined,
+      width: !isInternalSize(size) ? toSizeUnit(size) : undefined,
+      height: !isInternalSize(size) ? toSizeUnit(size) : undefined,
       borderColor,
       backgroundColor: color,
     }"
@@ -51,10 +51,12 @@
 <script lang="ts">
 import Lazy, { type LazyHTMLElement } from '../lazy'
 import { defineComponent, ref, onUpdated, type Ref } from 'vue'
-import { props, internalSizeValidator, sizeValidator } from './props'
+import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
+
+const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
 
 const { n, classes } = createNamespace('avatar')
 
@@ -107,8 +109,7 @@ export default defineComponent({
     onUpdated(getScale)
 
     return {
-      internalSizeValidator,
-      sizeValidator,
+      isInternalSize,
       toSizeUnit,
       n,
       classes,

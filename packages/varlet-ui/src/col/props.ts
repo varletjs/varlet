@@ -1,20 +1,6 @@
-import type { PropType } from 'vue'
-import { ColSizeDescriptor } from './provide'
+import { type PropType } from 'vue'
+import { type ColSizeDescriptor } from './provide'
 import { defineListenerProp } from '../utils/components'
-
-function directionValidator(direction: string) {
-  return ['row', 'column'].includes(direction)
-}
-
-function justifyValidator(justify: string) {
-  return ['start', 'end', 'center', 'space-around', 'space-between', 'flex-start', 'flex-end'].includes(justify)
-}
-
-function alignValidator(align: string) {
-  return ['stretch', 'center', 'start', 'end', 'baseline', 'initial', 'inherit', 'flex-start', 'flex-end'].includes(
-    align
-  )
-}
 
 export type ColAlign =
   | 'stretch'
@@ -31,6 +17,8 @@ export type ColJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-be
 
 export type ColDirection = 'row' | 'column'
 
+export type ColBreakpoint = string | number | ColSizeDescriptor | undefined
+
 export const props = {
   span: {
     type: [String, Number],
@@ -43,30 +31,13 @@ export const props = {
   direction: {
     type: String as PropType<ColDirection>,
     default: 'row',
-    validator: directionValidator,
   },
-  justify: {
-    type: String as PropType<ColJustify>,
-    validator: justifyValidator,
-  },
-  align: {
-    type: String as PropType<ColDirection>,
-    validator: alignValidator,
-  },
-  xs: {
-    type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
-  },
-  sm: {
-    type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
-  },
-  md: {
-    type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
-  },
-  lg: {
-    type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
-  },
-  xl: {
-    type: [Object as ColSizeDescriptor, Number, String] as PropType<string | number | ColSizeDescriptor | undefined>,
-  },
+  justify: String as PropType<ColJustify>,
+  align: String as PropType<ColDirection>,
+  xs: [Object as ColSizeDescriptor, Number, String] as PropType<ColBreakpoint>,
+  sm: [Object as ColSizeDescriptor, Number, String] as PropType<ColBreakpoint>,
+  md: [Object as ColSizeDescriptor, Number, String] as PropType<ColBreakpoint>,
+  lg: [Object as ColSizeDescriptor, Number, String] as PropType<ColBreakpoint>,
+  xl: [Object as ColSizeDescriptor, Number, String] as PropType<ColBreakpoint>,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

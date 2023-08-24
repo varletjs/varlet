@@ -16,38 +16,21 @@ export const props = {
     type: [String, Number, Boolean, Object, Array] as PropType<any>,
     default: false,
   },
-  checkedColor: {
-    type: String,
-  },
-  uncheckedColor: {
-    type: String,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  indeterminate: {
-    type: Boolean,
-    default: false,
-  },
-  iconSize: {
-    type: [String, Number],
-  },
+  checkedColor: String,
+  uncheckedColor: String,
+  disabled: Boolean,
+  readonly: Boolean,
+  indeterminate: Boolean,
+  iconSize: [String, Number],
   ripple: {
     type: Boolean,
     default: true,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
-    default: ['onChange'],
+    default: () => ['onChange'],
   },
-  rules: {
-    type: Array as PropType<Array<(value: any) => any>>,
-  },
+  rules: Array as PropType<Array<(value: any) => any>>,
   onClick: defineListenerProp<(e: Event) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),

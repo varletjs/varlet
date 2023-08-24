@@ -10,18 +10,12 @@ export const props = {
     type: Number,
     default: 300,
   },
-  right: {
-    type: [Number, String],
-  },
+  right: [Number, String],
   elevation: {
     type: [Boolean, Number, String],
     default: true,
   },
-  bottom: {
-    type: [Number, String],
-  },
-  target: {
-    type: [String, Object] as PropType<string | HTMLElement>,
-  },
+  bottom: [Number, String],
+  target: [String, Object] as PropType<string | HTMLElement>,
   onClick: defineListenerProp<(event: MouseEvent) => void>(),
 }
