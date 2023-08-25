@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 
 export interface WatermarkFont {
   fontSize?: number
@@ -17,12 +17,8 @@ export const props = {
     type: Number,
     default: 100,
   },
-  content: {
-    type: String,
-  },
-  image: {
-    type: String,
-  },
+  content: String,
+  image: String,
   rotate: {
     type: Number,
     default: -22,
@@ -51,10 +47,7 @@ export const props = {
     type: [Number, String],
     default: 0.5,
   },
-  fullscreen: {
-    type: Boolean,
-    default: false,
-  },
+  fullscreen: Boolean,
   font: {
     type: Object as PropType<WatermarkFont>,
     default: () => ({

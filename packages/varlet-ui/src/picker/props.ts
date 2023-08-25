@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
 import { Texts } from '.'
@@ -18,9 +18,7 @@ export const props = {
     type: Array as PropType<NormalColumn[] | CascadeColumn[] | Texts>,
     default: () => [],
   },
-  title: {
-    type: String,
-  },
+  title: String,
   textKey: {
     type: String,
     default: 'text',
@@ -29,10 +27,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  cascade: {
-    type: Boolean,
-    default: false,
-  },
+  cascade: Boolean,
   cascadeInitialIndexes: {
     type: Array as PropType<number[]>,
     default: () => [],
@@ -45,23 +40,12 @@ export const props = {
     type: [Number, String],
     default: 6,
   },
-  confirmButtonText: {
-    type: String,
-  },
-  cancelButtonText: {
-    type: String,
-  },
-  confirmButtonTextColor: {
-    type: String,
-  },
-  cancelButtonTextColor: {
-    type: String,
-  },
+  confirmButtonText: String,
+  cancelButtonText: String,
+  confirmButtonTextColor: String,
+  cancelButtonTextColor: String,
   // dynamic internal
-  dynamic: {
-    type: Boolean,
-    default: false,
-  },
+  dynamic: Boolean,
   textFormatter: {
     type: Function as PropType<(text: any, columnIndex: number) => any>,
     default: (text: any) => text,

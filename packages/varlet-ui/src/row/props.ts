@@ -1,13 +1,9 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-function justifyValidator(justify: string) {
-  return ['flex-start', 'flex-end', 'start', 'end', 'center', 'space-between', 'space-around'].includes(justify)
-}
+export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'start' | 'end'
 
-function alignValidator(align: string) {
-  return ['flex-start', 'center', 'flex-end', 'start', 'end'].includes(align)
-}
+export type RowAlign = 'flex-start' | 'center' | 'flex-end' | 'start' | 'end'
 
 export const props = {
   gutter: {
@@ -15,14 +11,12 @@ export const props = {
     default: 0,
   },
   justify: {
-    type: String as PropType<'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'start' | 'end'>,
+    type: String as PropType<RowJustify>,
     default: 'flex-start',
-    validator: justifyValidator,
   },
   align: {
-    type: String as PropType<'flex-start' | 'center' | 'flex-end' | 'start' | 'end'>,
+    type: String as PropType<RowAlign>,
     default: 'flex-start',
-    validator: alignValidator,
   },
   onClick: defineListenerProp<(e: Event) => void>(),
 }

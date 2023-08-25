@@ -7,20 +7,9 @@ export const props = {
     type: Number,
     default: 0,
   },
-  error: {
-    type: Boolean,
-    default: false,
-  },
-  color: {
-    type: String,
-  },
-  errorColor: {
-    type: String,
-  },
-  height: {
-    type: [Number, String],
-  },
-  top: {
-    type: [Number, String],
-  },
+  error: Boolean,
+  color: String,
+  errorColor: String,
+  height: [Number, String],
+  top: [Number, String],
 }

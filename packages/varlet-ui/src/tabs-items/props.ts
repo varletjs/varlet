@@ -9,9 +9,6 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  loop: {
-    type: Boolean,
-    default: false,
-  },
+  loop: Boolean,
   'onUpdate:active': defineListenerProp<(active: string | number) => void>(),
 }

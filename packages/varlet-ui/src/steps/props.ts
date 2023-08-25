@@ -1,9 +1,7 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-function directionValidator(direction: string): boolean {
-  return ['horizontal', 'vertical'].includes(direction)
-}
+export type StepsDirection = 'horizontal' | 'vertical'
 
 export const props = {
   active: {
@@ -11,15 +9,10 @@ export const props = {
     default: 0,
   },
   direction: {
-    type: String as PropType<'horizontal' | 'vertical'>,
+    type: String as PropType<StepsDirection>,
     default: 'horizontal',
-    validator: directionValidator,
   },
-  activeColor: {
-    type: String,
-  },
-  inactiveColor: {
-    type: String,
-  },
+  activeColor: String,
+  inactiveColor: String,
   onClickStep: defineListenerProp<(index: number) => void>(),
 }

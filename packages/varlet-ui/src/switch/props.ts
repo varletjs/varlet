@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export const props = {
@@ -11,30 +11,13 @@ export const props = {
   inactiveValue: {
     default: false,
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  color: {
-    type: String,
-  },
-  loadingColor: {
-    type: String,
-  },
-  closeColor: {
-    type: String,
-  },
-  size: {
-    type: [String, Number],
-  },
+  disabled: Boolean,
+  readonly: Boolean,
+  loading: Boolean,
+  color: String,
+  loadingColor: String,
+  closeColor: String,
+  size: [String, Number],
   rules: {
     type: Array as PropType<Array<(v: boolean) => any>>,
   },

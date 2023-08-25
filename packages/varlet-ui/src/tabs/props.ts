@@ -2,17 +2,11 @@ import { defineListenerProp, pickProps } from '../utils/components'
 import { props as stickyProps } from '../sticky/props'
 import { type PropType } from 'vue'
 
-function directionValidator(direction: string) {
-  return ['horizontal', 'vertical'].includes(direction)
-}
+export type TabsDirection = 'horizontal' | 'vertical'
 
-function scrollableValidator(scrollable: string) {
-  return ['auto', 'always'].includes(scrollable)
-}
+export type TabsScrollable = 'auto' | 'always'
 
-function indicatorPositionValidator(indicatorPosition: string) {
-  return ['normal', 'reverse'].includes(indicatorPosition)
-}
+export type TabsIndicatorPosition = 'normal' | 'reverse'
 
 export const props = {
   active: {
@@ -20,59 +14,34 @@ export const props = {
     default: 0,
   },
   layoutDirection: {
-    type: String as PropType<'horizontal' | 'vertical'>,
+    type: String as PropType<TabsDirection>,
     default: 'horizontal',
-    validator: directionValidator,
   },
   itemDirection: {
-    type: String as PropType<'horizontal' | 'vertical'>,
+    type: String as PropType<TabsDirection>,
     default: 'horizontal',
-    validator: directionValidator,
   },
-  fixedBottom: {
-    type: Boolean,
-    default: false,
-  },
-  activeColor: {
-    type: String,
-  },
-  inactiveColor: {
-    type: String,
-  },
-  disabledColor: {
-    type: String,
-  },
-  color: {
-    type: String,
-  },
-  indicatorColor: {
-    type: String,
-  },
-  indicatorSize: {
-    type: [String, Number],
-  },
+  fixedBottom: Boolean,
+  activeColor: String,
+  inactiveColor: String,
+  disabledColor: String,
+  color: String,
+  indicatorColor: String,
+  indicatorSize: [String, Number],
   elevation: {
     type: [Boolean, String, Number],
     default: false,
   },
   scrollable: {
-    type: String as PropType<'auto' | 'always'>,
+    type: String as PropType<TabsScrollable>,
     default: 'auto',
-    validator: scrollableValidator,
   },
   indicatorPosition: {
-    type: String as PropType<'normal' | 'reverse'>,
+    type: String as PropType<TabsIndicatorPosition>,
     default: 'normal',
-    validator: indicatorPositionValidator,
   },
-  safeArea: {
-    type: Boolean,
-    default: false,
-  },
-  sticky: {
-    type: Boolean,
-    default: false,
-  },
+  safeArea: Boolean,
+  sticky: Boolean,
   stickyCssMode: pickProps(stickyProps, 'cssMode'),
   stickyZIndex: pickProps(stickyProps, 'zIndex'),
   offsetTop: pickProps(stickyProps, 'offsetTop'),

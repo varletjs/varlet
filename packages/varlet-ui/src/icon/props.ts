@@ -1,15 +1,9 @@
 import { defineListenerProp } from '../utils/components'
 
 export const props = {
-  name: {
-    type: String,
-  },
-  size: {
-    type: [Number, String],
-  },
-  color: {
-    type: String,
-  },
+  name: String,
+  size: [Number, String],
+  color: String,
   namespace: {
     type: String,
     default: 'var-icon',
@@ -18,8 +12,6 @@ export const props = {
     type: [Number, String],
     default: 0,
   },
-  animationClass: {
-    type: String,
-  },
+  animationClass: String,
   onClick: defineListenerProp<(event: Event) => void>(),
 }

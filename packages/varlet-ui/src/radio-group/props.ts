@@ -1,11 +1,9 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type ValidateTriggers = 'onChange'
 
-export function directionValidator(direction: string) {
-  return ['horizontal', 'vertical'].includes(direction)
-}
+export type RadioGroupDirection = 'horizontal' | 'vertical'
 
 export const props = {
   modelValue: {
@@ -13,17 +11,14 @@ export const props = {
     default: undefined,
   },
   direction: {
-    type: String as PropType<'horizontal' | 'vertical'>,
+    type: String as PropType<RadioGroupDirection>,
     default: 'horizontal',
-    validator: directionValidator,
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,
     default: () => ['onChange'],
   },
-  rules: {
-    type: Array as PropType<Array<(value: any) => any>>,
-  },
+  rules: Array as PropType<Array<(value: any) => any>>,
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
 }
