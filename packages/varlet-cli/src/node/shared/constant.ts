@@ -5,6 +5,7 @@ export const dirname = getDirname(import.meta.url)
 
 export const CWD = process.cwd()
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.mjs')
+export const VITEST_CONFIG = resolve(dirname, '../config/vitest.config.js')
 export const SRC_DIR = resolve(CWD, 'src')
 export const ES_DIR = resolve(CWD, 'es')
 export const LIB_DIR = resolve(CWD, 'lib')
@@ -63,6 +64,3 @@ export const ICONS_SVG_DIR = resolve(CWD, 'svg')
 
 // extension
 export const EXTENSION_ENTRY = resolve(CWD, 'src/extension.ts')
-
-// jest
-export const JEST_CONFIG = resolve(dirname, '../../../cjs/jest.config.cjs')

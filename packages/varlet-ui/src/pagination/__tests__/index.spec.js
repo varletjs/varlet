@@ -2,7 +2,7 @@ import Pagination from '..'
 import VarPagination from '../Pagination'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test pagination plugin', () => {
   const app = createApp({}).use(Pagination)
@@ -66,7 +66,7 @@ describe('basic mode', () => {
   })
 
   test('click ellipsis', async () => {
-    const change = jest.fn()
+    const change = vi.fn()
     const template = `
       <var-pagination
         current="10"
@@ -165,7 +165,7 @@ test('change current and size', async () => {
 })
 
 test('change event', async () => {
-  const change = jest.fn()
+  const change = vi.fn()
   const template = `<var-pagination current="2" :size="20" total="325" @change="change" />`
 
   const wrapper = mount({

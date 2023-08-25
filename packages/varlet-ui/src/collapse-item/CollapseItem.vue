@@ -84,21 +84,36 @@ export default defineComponent({
     }
 
     const openPanel = () => {
-      if (!contentEl.value) return
-      ;(contentEl.value as HTMLDivElement).style.height = ''
+      if (!contentEl.value) {
+        return
+      }
+
+      contentEl.value.style.height = ''
       showContent.value = true
 
       requestAnimationFrame(() => {
-        const { offsetHeight } = contentEl.value as HTMLDivElement
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
+        if (!contentEl.value) {
+          return
+        }
+
+        const { offsetHeight } = contentEl.value
+        contentEl.value.style.height = 0 + 'px'
 
         requestAnimationFrame(() => {
-          ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
+          if (!contentEl.value) {
+            return
+          }
 
-          if (!isInitToTrigger) return
+          contentEl.value.style.height = offsetHeight + 'px'
+
+          if (!isInitToTrigger) {
+            return
+          }
 
           nextTickFrame(() => {
-            if (isInitToTrigger) transitionend()
+            if (isInitToTrigger) {
+              transitionend()
+            }
           })
         })
       })
@@ -124,7 +139,7 @@ export default defineComponent({
         showContent.value = false
       }
 
-      ;(contentEl.value as HTMLDivElement).style.height = ''
+      contentEl.value!.style.height = ''
     }
 
     const collapseItemProvider: CollapseItemProvider = {

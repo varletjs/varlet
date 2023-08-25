@@ -2,7 +2,7 @@ import Countdown from '..'
 import VarCountdown from '../Countdown'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
 
 test('test countdown plugin', () => {
   const app = createApp({}).use(Countdown)
@@ -42,8 +42,8 @@ describe('test countdown props', () => {
 })
 
 describe('test countdown events', () => {
-  const onEnd = jest.fn()
-  const onChange = jest.fn()
+  const onEnd = vi.fn()
+  const onChange = vi.fn()
 
   test('test onChange event', async () => {
     const wrapper = mount(VarCountdown, {

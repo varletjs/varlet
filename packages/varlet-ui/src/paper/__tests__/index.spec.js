@@ -29,7 +29,7 @@ test('test paper radius', () => {
 })
 
 test('test paper onClick', () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(VarPaper, {
     props: {

@@ -2,10 +2,10 @@ import Watermark from '..'
 import VarWatermark from '../Watermark'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { mockCanvas } from '../../utils/jest'
+import { mockCanvas } from '../../utils/test'
 
-global.URL.createObjectURL = jest.fn()
-global.URL.revokeObjectURL = jest.fn()
+global.URL.createObjectURL = vi.fn()
+global.URL.revokeObjectURL = vi.fn()
 
 mockCanvas()
 

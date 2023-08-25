@@ -4,7 +4,7 @@ import VarButton from '../Button.vue'
 import VarButtonGroup from '../../button-group/ButtonGroup.vue'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)
@@ -25,8 +25,8 @@ describe('test button component event', () => {
   })
 
   test('test button onClick & onTouchstart', async () => {
-    const onClick = jest.fn()
-    const onTouchstart = jest.fn()
+    const onClick = vi.fn()
+    const onTouchstart = vi.fn()
 
     const wrapper = mount(VarButton, {
       props: {
@@ -67,8 +67,8 @@ describe('test button component props', () => {
   })
 
   test('test button loading', async () => {
-    const onClick = jest.fn()
-    const onTouchstart = jest.fn()
+    const onClick = vi.fn()
+    const onTouchstart = vi.fn()
 
     const wrapper = mount(VarButton, {
       props: {
@@ -86,8 +86,8 @@ describe('test button component props', () => {
 
   test('test button loading type', () => {
     ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach(async (type) => {
-      const onClick = jest.fn()
-      const onTouchstart = jest.fn()
+      const onClick = vi.fn()
+      const onTouchstart = vi.fn()
       const wrapper = mount(VarButton, {
         props: {
           loading: true,
@@ -107,8 +107,8 @@ describe('test button component props', () => {
   test('test button loading size', () => {
     ;['large', 'normal', 'small', 'mini'].forEach((size) => {
       ;['circle', 'wave', 'cube', 'rect', 'disappear'].forEach(async (type) => {
-        const onClick = jest.fn()
-        const onTouchstart = jest.fn()
+        const onClick = vi.fn()
+        const onTouchstart = vi.fn()
         const wrapper = mount(VarButton, {
           props: {
             loading: true,
@@ -215,8 +215,8 @@ describe('test button component props', () => {
   })
 
   test('test button disabled', async () => {
-    const onClick = jest.fn()
-    const onTouchstart = jest.fn()
+    const onClick = vi.fn()
+    const onTouchstart = vi.fn()
 
     const wrapper = mount(VarButton, {
       props: {
@@ -235,7 +235,7 @@ describe('test button component props', () => {
   })
 
   test('test button ripple', async () => {
-    const onTouchstart = jest.fn()
+    const onTouchstart = vi.fn()
     const wrapper = mount(VarButton, {
       props: {
         ripple: true,

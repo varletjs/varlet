@@ -1,25 +1,25 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test counter validation 1`] = `
-"<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+"<div class=\\"var-counter var--box\\">
+  <div class=\\"var-counter__controller var-elevation--2 var-counter--error\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button\\" type=\\"button\\" var-counter-cover=\\"\\">
       <!--v-if-->
-      <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
-      <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-minus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+      <div class=\\"var-hover-overlay\\"></div>
+    </button><input class=\\"var-counter__input\\" inputmode=\\"numeric\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button\\" type=\\"button\\" var-counter-cover=\\"\\">
       <!--v-if-->
-      <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
-      <div class="var-hover-overlay"></div>
+      <div class=\\"var-button__content\\"><i class=\\"var-icon var-icon--set var-icon-plus\\" style=\\"transition-duration: 0ms;\\"></i></div>
+      <div class=\\"var-hover-overlay\\"></div>
     </button></div>
-  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-    <div class="var-form-details">
-      <div class="var-form-details__error-message">
-        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+  <transition-stub name=\\"var-form-details\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <div class=\\"var-form-details\\">
+      <div class=\\"var-form-details__error-message\\">
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <div>必须大于0</div>
         </transition-stub>
       </div>
-      <div class="var-form-details__extra-message">
-        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+      <div class=\\"var-form-details__extra-message\\">
+        <transition-stub name=\\"var-form-details__message\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!--v-if-->
         </transition-stub>
       </div>

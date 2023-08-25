@@ -1,6 +1,6 @@
 import Sticky from '..'
 import VarSticky from '../Sticky'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 

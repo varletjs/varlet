@@ -1,6 +1,6 @@
 import enUS from '../en-US'
 import { useLocale } from '..'
-import { mockConsole } from '../../utils/jest'
+import { mockConsole } from '../../utils/test'
 
 test('test add lang', () => {
   const { add, use, pack, packs } = useLocale()
@@ -18,7 +18,7 @@ test('test add lang', () => {
 })
 
 test('test merge lang', () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const { mockRestore } = mockConsole('warn', fn)
   const { add, use, merge, pack } = useLocale()
 

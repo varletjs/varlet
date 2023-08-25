@@ -43,28 +43,28 @@ test('test avatar src and fit', () => {
 })
 
 test('test avatar onClick', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
   const wrapper = mount(VarAvatar, { props: { onClick } })
   await wrapper.trigger('click')
   expect(onClick).toBeCalledTimes(1)
 })
 
 test('test avatar onLoad', async () => {
-  const onLoad = jest.fn()
+  const onLoad = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', onLoad } })
   await wrapper.find('img').trigger('load')
   expect(onLoad).toBeCalledTimes(1)
 })
 
 test('test avatar onError', async () => {
-  const onError = jest.fn()
+  const onError = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', onError } })
   await wrapper.find('img').trigger('error')
   expect(onError).toBeCalledTimes(1)
 })
 
 test('test avatar lazy onLoad', async () => {
-  const onLoad = jest.fn()
+  const onLoad = vi.fn()
   const wrapper = mount(VarAvatar, { props: { src: 'https://1.png', lazy: true, onLoad } })
   wrapper.find('img').element._lazy.state = 'success'
   await wrapper.find('img').trigger('load')

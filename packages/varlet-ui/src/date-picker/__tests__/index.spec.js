@@ -2,7 +2,7 @@ import DatePicker from '..'
 import VarDatePicker from '../DatePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole, triggerDrag } from '../../utils/jest'
+import { delay, mockConsole, triggerDrag } from '../../utils/test'
 import dayjs from 'dayjs/esm'
 
 const [currentYear, currentMonth] = dayjs().format('YYYY-MM').split('-')
@@ -226,7 +226,7 @@ test('test datePicker multiple prop', async () => {
 })
 
 test('test datePicker range prop', async () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const { mockRestore } = mockConsole('error', fn)
 
   const template = `<var-date-picker range :type="type" v-model="date" />`
@@ -316,7 +316,7 @@ test('test datePicker touchable prop', async () => {
 })
 
 test('test value legal', async () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const { mockRestore } = mockConsole('error', fn)
   const template = `<var-date-picker v-model="date" :multiple="multiple" />`
 

@@ -112,16 +112,15 @@ program
   })
 
 program
-  .command('jest')
-  .description('Run Jest in work directory')
+  .command('test')
+  .description('Run test in work directory')
   .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
-  .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
   .option('-c, --component <componentName>', 'Test a specific component')
-  .option('-cc --clearCache', 'Clear test cache')
-  .action(async (option) => {
-    const { jest } = await import('./commands/jest.js')
+  .option('-cov, --coverage', 'Generate the coverage')
+  .action(async (options) => {
+    const { test } = await import('./commands/test.js')
 
-    return jest(option)
+    return test(options)
   })
 
 program
@@ -131,10 +130,10 @@ program
   .option('-s, --sfc', 'Generate files in sfc format')
   .option('-t, --tsx', 'Generate files in tsx format')
   .option('-l, --locale', 'Generator internationalized files')
-  .action(async (option) => {
+  .action(async (options) => {
     const { gen } = await import('./commands/gen.js')
 
-    return gen(option)
+    return gen(options)
   })
 
 program
@@ -142,38 +141,38 @@ program
   .option('-rc --releaseCount <releaseCount>', 'Release count')
   .option('-f --file <file>', 'Changelog filename')
   .description('Generate changelog')
-  .action(async (option) => {
+  .action(async (options) => {
     const { changelog } = await import('./commands/changelog.js')
 
-    return changelog(option)
+    return changelog(options)
   })
 
 program
   .command('release')
   .option('-r --remote <remote>', 'Remote name')
   .description('Release all packages and generate changelogs')
-  .action(async (option) => {
+  .action(async (options) => {
     const { release } = await import('./commands/release.js')
 
-    return release(option)
+    return release(options)
   })
 
 program
   .command('commit-lint <gitParams>')
   .description('Lint commit message')
-  .action(async (option) => {
+  .action(async (options) => {
     const { commitLint } = await import('./commands/commitLint.js')
 
-    return commitLint(option)
+    return commitLint(options)
   })
 
 program
   .command('checklist <gitParams>')
   .description('Display a checklist for confirmation')
-  .action(async (option) => {
+  .action(async (options) => {
     const { checklist } = await import('./commands/checklist.js')
 
-    return checklist(option)
+    return checklist(options)
   })
 
 program.on('command:*', async ([cmd]) => {

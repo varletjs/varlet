@@ -4,7 +4,7 @@ import VarCheckboxGroup from '../CheckboxGroup'
 import VarCheckbox from '../../checkbox/Checkbox'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
 
 test('test checkbox group plugin', () => {
   const app = createApp({}).use(CheckboxGroup)
@@ -17,7 +17,7 @@ test('test checkbox plugin', () => {
 })
 
 test('test checkbox check value', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -38,7 +38,7 @@ test('test checkbox check value', async () => {
 })
 
 test('test checkbox check value with custom value', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -57,8 +57,8 @@ test('test checkbox check value with custom value', async () => {
 })
 
 test('test checkbox onClick & onChange', async () => {
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -76,7 +76,7 @@ test('test checkbox onClick & onChange', async () => {
 })
 
 test('test checkbox toggle method', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -95,9 +95,9 @@ test('test checkbox toggle method', async () => {
 })
 
 test('test checkbox disabled', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -120,9 +120,9 @@ test('test checkbox disabled', async () => {
 })
 
 test('test checkbox readonly', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarCheckbox, {
     props: {
@@ -183,7 +183,7 @@ test('test checkbox with checkbox group', async () => {
 })
 
 test('test checkbox validation', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarCheckbox, {
     props: {

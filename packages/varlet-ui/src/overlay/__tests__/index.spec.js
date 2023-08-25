@@ -38,7 +38,7 @@ test('test overlay show', async () => {
 })
 
 test('test overlay click on clickOverlay', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {

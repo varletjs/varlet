@@ -2,7 +2,7 @@ import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockFileReader, mockStubs } from '../../utils/jest'
+import { delay, mockFileReader, mockStubs } from '../../utils/test'
 
 const createEvent = (filename, type) => {
   return {
@@ -18,7 +18,7 @@ test('test uploader plugin', () => {
 })
 
 test('test uploader onAfterRead', async () => {
-  const onAfterRead = jest.fn()
+  const onAfterRead = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -33,7 +33,7 @@ test('test uploader onAfterRead', async () => {
 })
 
 test('test uploader onBeforeFilter', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: [],
@@ -74,7 +74,7 @@ test('test uploader onBeforeFilter', async () => {
 })
 
 test('test uploader onBeforeRead', async () => {
-  const onAfterRead = jest.fn()
+  const onAfterRead = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -95,7 +95,7 @@ test('test uploader onBeforeRead', async () => {
 test('test uploader preview', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -119,7 +119,7 @@ test('test uploader preview', async () => {
 })
 
 test('test uploader onOversize', async () => {
-  const onOversize = jest.fn()
+  const onOversize = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -136,8 +136,8 @@ test('test uploader onOversize', async () => {
 
 test('test uploader onRemove', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onRemove = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onRemove = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -161,9 +161,9 @@ test('test uploader onRemove', async () => {
 
 test('test uploader onBeforeRemove', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onBeforeRemove = jest.fn(() => false)
-  const onRemove = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onBeforeRemove = vi.fn(() => false)
+  const onRemove = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -189,7 +189,7 @@ test('test uploader onBeforeRemove', async () => {
 
 test('test uploader validation', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -220,9 +220,9 @@ test('test uploader validation', async () => {
 
 test('test uploader disabled', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onRemove = jest.fn()
-  const onAfterRead = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onRemove = vi.fn()
+  const onAfterRead = vi.fn()
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -251,7 +251,7 @@ test('test uploader disabled', async () => {
 
 test('test uploader length over maxlength in multiple mode', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -278,7 +278,7 @@ test('test uploader length over maxlength in multiple mode', async () => {
 
 test('test uploader hide file list', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarUploader, {
     props: {

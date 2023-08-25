@@ -4,7 +4,7 @@ import VarSwipe from '../Swipe'
 import VarSwipeItem from '../../swipe-item/SwipeItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset, triggerDrag } from '../../utils/jest'
+import { delay, mockOffset, triggerDrag } from '../../utils/test'
 
 mockOffset()
 
@@ -30,7 +30,7 @@ test('test swipe & swipe-item use', () => {
 })
 
 test('test swipe next & prev & to method', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
       onChange,
@@ -77,7 +77,7 @@ test('test swipe next & prev & to method', async () => {
 
 describe('test swipe component props', () => {
   test('test swipe loop', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         loop: false,
@@ -99,7 +99,7 @@ describe('test swipe component props', () => {
   })
 
   test('test swipe autoplay', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         autoplay: 100,
@@ -181,7 +181,7 @@ describe('test swipe component props', () => {
   })
 
   test('test touch touchable', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         touchable: false,

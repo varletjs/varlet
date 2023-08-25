@@ -1,8 +1,8 @@
 import Picker from '..'
 import VarPicker from '../Picker'
-import { createApp } from 'vue'
+import { createApp, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockTranslate, trigger } from '../../utils/jest'
+import { delay, mockTranslate, trigger } from '../../utils/test'
 
 test('test picker component plugin', () => {
   const app = createApp({}).use(Picker.Component)
@@ -23,7 +23,7 @@ const triggerDrag = async (element, x, y) => {
 
 test('test scroll up & onConfirm', async () => {
   const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -46,7 +46,7 @@ test('test scroll up & onConfirm', async () => {
 
 test('test click option & onConfirm', async () => {
   const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -68,7 +68,7 @@ test('test click option & onConfirm', async () => {
 
 test('test scroll down & onCancel', async () => {
   const { mockRestore } = mockTranslate()
-  const onCancel = jest.fn()
+  const onCancel = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -91,8 +91,8 @@ test('test scroll down & onCancel', async () => {
 
 test('test confirm & cancel method', async () => {
   const { mockRestore } = mockTranslate()
-  const onCancel = jest.fn()
-  const onConfirm = jest.fn()
+  const onCancel = vi.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -114,7 +114,7 @@ test('test confirm & cancel method', async () => {
 
 test('test cascade mode', async () => {
   const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -168,8 +168,8 @@ test('test cascade mode', async () => {
 })
 
 test('test cascade initial indexes', async () => {
-  const onConfirm = jest.fn()
-  const onCancel = jest.fn()
+  const onConfirm = vi.fn()
+  const onCancel = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -215,7 +215,7 @@ test('test cascade initial indexes', async () => {
 })
 
 test('test picker component textFormatter', async () => {
-  const textFormatter = jest.fn().mockReturnValue('text')
+  const textFormatter = vi.fn().mockReturnValue('text')
 
   const wrapper = mount(VarPicker, {
     props: {

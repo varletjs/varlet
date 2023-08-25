@@ -1,7 +1,7 @@
 import Drag from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, trigger, delay } from '../../utils/jest'
+import { triggerDrag, trigger, delay } from '../../utils/test'
 
 test('test drag plugin', () => {
   const app = createApp({}).use(Drag)
@@ -108,7 +108,7 @@ test('test drag reset', async () => {
 
 test('test drag click method', async () => {
   const container = document.createElement('div')
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(Drag, {
     props: {

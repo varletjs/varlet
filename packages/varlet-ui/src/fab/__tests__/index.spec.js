@@ -1,7 +1,7 @@
 import Fab from '..'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, delay, mockStubs, trigger } from '../../utils/jest'
+import { triggerDrag, delay, mockStubs, trigger } from '../../utils/test'
 
 mockStubs()
 
@@ -199,7 +199,7 @@ test('test fab custom icon', async () => {
       default: () => h('div', 'action'),
     },
   })
-
+  await delay(0)
   const button = container.querySelector('.var-button')
 
   expect(container.innerHTML).toMatchSnapshot()
@@ -213,7 +213,7 @@ test('test fab custom icon', async () => {
 })
 
 test('test fab disabled with trigger equals click', async () => {
-  const onOpen = jest.fn()
+  const onOpen = vi.fn()
   const container = document.createElement('div')
 
   const wrapper = mount(Fab, {
@@ -239,7 +239,7 @@ test('test fab disabled with trigger equals click', async () => {
 })
 
 test('test fab disabled with trigger equals hover', async () => {
-  const onOpen = jest.fn()
+  const onOpen = vi.fn()
   const container = document.createElement('div')
 
   const wrapper = mount(Fab, {
@@ -267,11 +267,11 @@ test('test fab disabled with trigger equals hover', async () => {
 })
 
 test('test fab events and fragment default slots and click outside close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
-  const onUpdateActive = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
+  const onUpdateActive = vi.fn()
   const container = document.createElement('div')
 
   const wrapper = mount(Fab, {

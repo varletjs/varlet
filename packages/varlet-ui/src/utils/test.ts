@@ -1,7 +1,5 @@
-import { nextTick } from 'vue'
-import type { ComponentPublicInstance } from 'vue'
-import { config } from '@vue/test-utils'
-import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
+import { nextTick, type ComponentPublicInstance } from 'vue'
+import { type VueWrapper, type DOMWrapper, config } from '@vue/test-utils'
 import { isPlainObject } from '@varlet/shared'
 import { getStyle } from './elements'
 
@@ -154,14 +152,14 @@ export async function triggerDrag(
 export function mockTranslate() {
   const originMethod = window.getComputedStyle
 
-  const XRE = /translateX\((\d+)px\)/
-  const YRE = /translateY\((\d+)px\)/
+  const XRE = /translateX\((-?\d+)px\)/
+  const YRE = /translateY\(-?(\d+)px\)/
 
   Object.assign(window, {
     getComputedStyle: (el: HTMLElement) => {
       const styles = originMethod.call(window, el)
-      const x = styles.transform.match(XRE)?.[1] ?? 0
-      const y = styles.transform.match(YRE)?.[1] ?? 0
+      const x = el.style.transform.match(XRE)?.[1] ?? 0
+      const y = el.style.transform.match(YRE)?.[1] ?? 0
       styles.transform = `matrix(1, 0, 0, 1, ${x}, ${y})`
       return styles
     },
