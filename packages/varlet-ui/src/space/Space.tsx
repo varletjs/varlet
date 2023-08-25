@@ -1,11 +1,13 @@
 import { defineComponent, VNodeChild } from 'vue'
-import { internalSizeValidator, props, type SpaceSize } from './props'
+import { props, type SpaceSize } from './props'
 import { isArray } from '@varlet/shared'
 import { call, createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
 import '../styles/common.less'
 import './space.less'
+
+const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
 
 const { n, classes } = createNamespace('space')
 
@@ -23,8 +25,7 @@ export default defineComponent({
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
       let children: VNodeChild[] = call(slots.default) ?? []
-      const isInternalSize = internalSizeValidator(size)
-      const [y, x] = getSize(size, isInternalSize)
+      const [y, x] = getSize(size, isInternalSize(size))
 
       children = flatFragment(children)
 
