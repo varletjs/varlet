@@ -7,7 +7,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  teleport: String as PropType<TeleportProps['to'] | false>,
+  teleport: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
   onClick: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 }

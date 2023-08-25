@@ -18,9 +18,7 @@ export const props = {
   loadingColor: String,
   closeColor: String,
   size: [String, Number],
-  rules: {
-    type: Array as PropType<Array<(v: boolean) => any>>,
-  },
+  rules: Array as PropType<Array<(v: boolean) => any>>,
   ripple: {
     type: Boolean,
     default: true,
