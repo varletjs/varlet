@@ -17,13 +17,8 @@ export const props = {
     type: String as PropType<DragDirection>,
     default: 'xy',
   },
-  attraction: {
-    type: String as PropType<DragAttraction>,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  attraction: String as PropType<DragAttraction>,
+  disabled: Boolean,
   boundary: {
     type: Object as PropType<DragBoundary>,
     default: () => ({

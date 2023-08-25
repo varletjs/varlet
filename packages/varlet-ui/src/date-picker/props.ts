@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 type AllowedDates = (val: string) => boolean
@@ -10,10 +10,6 @@ export type TouchDirection = 'x' | 'y'
 export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10' | '11' | '12'
 
 export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
-
-function typeValidator(type: string): boolean {
-  return ['date', 'month'].includes(type)
-}
 
 export type ComponentProps = {
   type: string
@@ -120,23 +116,14 @@ export const WEEK_HEADER: Array<WeekDict> = [
 ]
 
 export const props = {
-  modelValue: {
-    type: [String, Array] as PropType<string | Array<string>>,
-  },
+  modelValue: [String, Array] as PropType<string | Array<string>>,
   type: {
     type: String as PropType<DatePickerType>,
     default: 'date',
-    validator: typeValidator,
   },
-  allowedDates: {
-    type: Function as PropType<AllowedDates>,
-  },
-  color: {
-    type: String,
-  },
-  headerColor: {
-    type: String,
-  },
+  allowedDates: Function as PropType<AllowedDates>,
+  color: String,
+  headerColor: String,
   elevation: {
     type: [Boolean, Number, String],
     default: false,
@@ -149,28 +136,15 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
-  min: {
-    type: String,
-  },
-  max: {
-    type: String,
-  },
+  min: String,
+  max: String,
   showCurrent: {
     type: Boolean,
     default: true,
   },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  multiple: {
-    type: Boolean,
-    default: false,
-  },
-  range: {
-    type: Boolean,
-    default: false,
-  },
+  readonly: Boolean,
+  multiple: Boolean,
+  range: Boolean,
   touchable: {
     type: Boolean,
     default: true,

@@ -1,16 +1,9 @@
 export const props = {
-  name: {
-    type: [String, Number],
-  },
-  title: {
-    type: String,
-  },
+  name: [String, Number],
+  title: String,
   icon: {
     type: String,
     default: 'chevron-down',
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  disabled: Boolean,
 }

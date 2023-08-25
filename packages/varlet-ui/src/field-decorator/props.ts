@@ -1,13 +1,9 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-export function sizeValidator(size: string) {
-  return ['small', 'normal'].includes(size)
-}
+export type FieldDecoratorSize = 'small' | 'normal'
 
-export function variantValidator(variant: string) {
-  return ['outlined', 'standard'].includes(variant)
-}
+export type FieldDecoratorVariant = 'outlined' | 'standard'
 
 export const props = {
   value: {
@@ -18,22 +14,16 @@ export const props = {
     type: String,
     default: '',
   },
-  isFocus: {
-    type: Boolean,
-  },
+  isFocus: Boolean,
   size: {
-    type: String as PropType<'small' | 'normal'>,
+    type: String as PropType<FieldDecoratorSize>,
     default: 'normal',
-    validator: sizeValidator,
   },
   variant: {
-    type: String as PropType<'outlined' | 'standard'>,
+    type: String as PropType<FieldDecoratorVariant>,
     default: 'standard',
-    validator: variantValidator,
   },
-  placeholder: {
-    type: String,
-  },
+  placeholder: String,
   line: {
     type: Boolean,
     default: true,
@@ -42,36 +32,15 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  textColor: {
-    type: String,
-  },
-  focusColor: {
-    type: String,
-  },
-  blurColor: {
-    type: String,
-  },
-  errorMessage: {
-    type: String,
-  },
-  formDisabled: {
-    type: Boolean,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  clearable: {
-    type: Boolean,
-    default: false,
-  },
-  cursor: {
-    type: String,
-  },
-  composing: {
-    type: Boolean,
-    default: false,
-  },
+  textColor: String,
+  focusColor: String,
+  blurColor: String,
+  errorMessage: String,
+  formDisabled: Boolean,
+  disabled: Boolean,
+  clearable: Boolean,
+  cursor: String,
+  composing: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
   onClear: defineListenerProp<(value: Event) => void>(),
 }

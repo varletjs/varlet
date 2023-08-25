@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export interface VarFile {
@@ -27,18 +27,9 @@ export const props = {
     type: [String, Boolean] as PropType<boolean | 'user' | 'environment'>,
     default: undefined,
   },
-  multiple: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  multiple: Boolean,
+  readonly: Boolean,
+  disabled: Boolean,
   elevation: {
     type: [Boolean, Number, String],
     default: true,
@@ -47,12 +38,8 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  maxlength: {
-    type: [Number, String],
-  },
-  maxsize: {
-    type: [Number, String],
-  },
+  maxlength: [Number, String],
+  maxsize: [Number, String],
   previewed: {
     type: Boolean,
     default: true,
@@ -65,13 +52,8 @@ export const props = {
     type: Array as PropType<Array<ValidateTrigger>>,
     default: () => ['onChange', 'onRemove'],
   },
-  rules: {
-    type: Array as PropType<Array<(v: VarFile) => any>>,
-  },
-  hideList: {
-    type: Boolean,
-    default: false,
-  },
+  rules: Array as PropType<Array<(v: VarFile) => any>>,
+  hideList: Boolean,
   onBeforeFilter: defineListenerProp<(files: VarFile[]) => Promise<VarFile[]> | VarFile[]>(),
   onBeforeRead: defineListenerProp<(file: VarFile) => Promise<any> | any>(),
   onAfterRead: defineListenerProp<(file: VarFile) => any>(),

@@ -3,10 +3,6 @@ export const props = {
     type: String,
     default: 'check',
   },
-  currentIcon: {
-    type: String,
-  },
-  inactiveIcon: {
-    type: String,
-  },
+  currentIcon: String,
+  inactiveIcon: String,
 }

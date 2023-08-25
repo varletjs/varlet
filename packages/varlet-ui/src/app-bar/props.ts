@@ -1,9 +1,13 @@
+import { type PropType } from 'vue'
+
+export type AppBarTitlePosition = 'left' | 'center' | 'right'
+
 export const props = {
   color: String,
   textColor: String,
   title: String,
   titlePosition: {
-    type: String,
+    type: String as PropType<AppBarTitlePosition>,
     default: 'left',
   },
   elevation: {

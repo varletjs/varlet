@@ -1,48 +1,26 @@
-import type { PropType } from 'vue'
-import type { RouteLocationRaw } from 'vue-router'
+import { type PropType } from 'vue'
+import { type RouteLocationRaw } from 'vue-router'
 import { defineListenerProp } from '../utils/components'
 
-function typeValidator(type: string): boolean {
-  return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
-}
+export type LinkType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
-function underlineValidator(status: string): boolean {
-  return ['always', 'hover', 'none'].includes(status)
-}
+export type LinkUnderline = 'always' | 'hover' | 'none'
 
 export const props = {
   type: {
-    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
+    type: String as PropType<LinkType>,
     default: 'default',
-    validator: typeValidator,
   },
-  href: {
-    type: String,
-  },
-  target: {
-    type: String,
-  },
-  to: {
-    type: [String, Object] as PropType<RouteLocationRaw>,
-  },
-  replace: {
-    type: Boolean,
-    default: false,
-  },
+  href: String,
+  target: String,
+  to: [String, Object] as PropType<RouteLocationRaw>,
+  replace: Boolean,
   underline: {
-    type: String as PropType<'always' | 'hover' | 'none'>,
+    type: String as PropType<LinkUnderline>,
     default: 'always',
-    validator: underlineValidator,
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  textSize: {
-    type: [String, Number],
-  },
-  textColor: {
-    type: String,
-  },
+  disabled: Boolean,
+  textSize: [String, Number],
+  textColor: String,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

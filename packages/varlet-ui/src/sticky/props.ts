@@ -9,13 +9,7 @@ export const props = {
     type: [String, Number],
     default: 10,
   },
-  cssMode: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  cssMode: Boolean,
+  disabled: Boolean,
   onScroll: defineListenerProp<(offsetTop: number, isFixed: boolean) => void>(),
 }

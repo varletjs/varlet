@@ -1,16 +1,11 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type CollapseModelValue = null | string | number | Array<string | number>
 
 export const props = {
-  modelValue: {
-    type: [Array, String, Number] as PropType<null | string | number | Array<string | number>>,
-  },
-  accordion: {
-    type: Boolean,
-    default: false,
-  },
+  modelValue: [Array, String, Number] as PropType<CollapseModelValue>,
+  accordion: Boolean,
   offset: {
     type: Boolean,
     default: true,

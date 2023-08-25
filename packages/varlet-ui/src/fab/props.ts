@@ -55,7 +55,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  zIndex: [Number, String],
+  zIndex: {
+    type: [Number, String],
+    default: 90,
+  },
   top: [Number, String],
   bottom: [Number, String],
   left: [Number, String],
