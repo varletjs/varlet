@@ -11,6 +11,8 @@ export type FabTrigger = 'click' | 'hover'
 
 export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
+export type FabDrag = Pick<ExtractPublicPropTypes<typeof dragProps>, 'direction' | 'attraction' | 'boundary'> | boolean
+
 export const props = {
   active: Boolean,
   show: {
@@ -18,9 +20,7 @@ export const props = {
     default: true,
   },
   drag: {
-    type: [Object, Boolean] as PropType<
-      Pick<ExtractPublicPropTypes<typeof dragProps>, 'direction' | 'attraction' | 'boundary'> | boolean
-    >,
+    type: [Object, Boolean] as PropType<FabDrag>,
     default: false,
   },
   type: {
