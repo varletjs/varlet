@@ -84,7 +84,9 @@ export default defineComponent({
       const { modelValue, disabled, disabledColor, color, half, emptyColor, icon, halfIcon, emptyIcon } = props
       let iconColor = color
 
-      if (disabled || form?.disabled.value) iconColor = disabledColor
+      if (disabled || form?.disabled.value) {
+        iconColor = disabledColor
+      }
 
       if (index <= toNumber(modelValue)) {
         return { color: iconColor, name: icon }
@@ -99,16 +101,16 @@ export default defineComponent({
 
     const changeValue = (score: number, event: MouseEvent) => {
       const { half, clearable } = props
+      const { offsetWidth } = event.target as HTMLDivElement
 
-      if (half) {
-        const { offsetWidth } = event.target as HTMLDivElement
-
-        if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
+      if (half && event.offsetX <= Math.floor(offsetWidth / 2)) {
+        score -= 0.5
       }
 
-      // set score to 0 when last score is equal to current score
-      // and the value of clearable is true
-      if (lastScore === score && clearable) score = 0
+      // set score to 0 when last score is equal to current score and clearable is true
+      if (lastScore === score && clearable) {
+        score = 0
+      }
 
       // update last score
       lastScore = score
