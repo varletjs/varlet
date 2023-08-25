@@ -1,13 +1,18 @@
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as iconProps } from '../icon/props'
+import { type PropType } from 'vue'
+
+export type ChipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+
+export type ChipSize = 'normal' | 'mini' | 'small' | 'large'
 
 export const props = {
   type: {
-    type: String,
+    type: String as PropType<ChipType>,
     default: 'default',
   },
   size: {
-    type: String,
+    type: String as PropType<ChipSize>,
     default: 'normal',
   },
   color: String,
