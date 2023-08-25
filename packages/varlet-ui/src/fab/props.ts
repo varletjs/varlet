@@ -1,7 +1,7 @@
 import { ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
+import { props as dragProps } from '../drag/props'
 import { type ButtonType } from '../button/props'
 import { type PropType, type TeleportProps } from 'vue'
-import { props as dragProps } from '../drag/props'
 
 export type FabType = ButtonType
 
