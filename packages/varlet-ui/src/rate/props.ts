@@ -10,56 +10,32 @@ export const props = {
     type: [String, Number],
     default: 5,
   },
-  color: {
-    type: String,
-  },
+  color: String,
   icon: {
     type: String,
     default: 'star',
   },
-  emptyColor: {
-    type: String,
-  },
+  emptyColor: String,
   emptyIcon: {
     type: String,
     default: 'star-outline',
   },
-  size: {
-    type: [String, Number],
-  },
-  gap: {
-    type: [String, Number],
-  },
-  namespace: {
-    type: String,
-  },
-  half: {
-    type: Boolean,
-    default: false,
-  },
+  size: [String, Number],
+  gap: [String, Number],
+  namespace: String,
+  half: Boolean,
   halfIcon: {
     type: String,
     default: 'star-half-full',
   },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  disabledColor: {
-    type: String,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
+  disabled: Boolean,
+  disabledColor: String,
+  readonly: Boolean,
   ripple: {
     type: Boolean,
     default: true,
   },
-  clearable: {
-    type: Boolean,
-    default: false,
-  },
+  clearable: Boolean,
   rules: {
     type: Array as PropType<Array<(value: any) => any>>,
   },
