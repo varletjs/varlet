@@ -11,6 +11,7 @@ export interface GridProvider {
   square: ComputedRef<boolean>
   ripple: ComputedRef<boolean>
   direction: ComputedRef<'horizontal' | 'vertical'>
+  elevation: ComputedRef<number>
 }
 
 export const GRID_BING_ITEM_KEY = Symbol('GRID_BING_ITEM_KEY')

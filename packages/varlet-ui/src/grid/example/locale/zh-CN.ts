@@ -5,4 +5,6 @@ export default {
   gutter: '设置间距',
   direction: '内容横排',
   badge: '徽章',
+  text: '文字',
+  custom: '自定义内容',
 }

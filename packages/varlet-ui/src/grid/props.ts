@@ -34,6 +34,14 @@ export const props = {
     type: Boolean,
     default: false,
   },
+  elevation: {
+    type: [String, Number],
+    default: 0,
+    validator(value: string | number) {
+      const val = toNumber(value)
+      return val >= 0 && val <= 24
+    },
+  },
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'vertical',

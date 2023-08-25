@@ -50,6 +50,22 @@ The basic components used for layout are convenient for developers to carry out 
 </template>
 ```
 
+### Gutter
+
+```html
+<template>
+  <var-grid column="2" gutter="8px" :border="false">
+    <var-grid-item icon="image-outline" text="Text" />
+    <var-grid-item icon="image-outline" text="Text" />
+    <var-grid-item icon="image-outline" text="Text" />
+    <var-grid-item icon="image-outline" text="Text" />
+    <var-grid-item icon="image-outline" text="Text" />
+    <var-grid-item icon="image-outline" text="Text" />
+  </var-grid>
+</template>
+
+```
+
 ### Direction
 
 ```html
@@ -70,17 +86,34 @@ The basic components used for layout are convenient for developers to carry out 
 
 ```html
 <template>
-    <var-grid column="4">
+  <var-grid column="4">
     <var-grid-item icon="image-outline" dot text="文字" />
     <var-grid-item icon="image-outline" badge="66" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props=" { type: 'primary' } " text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props=" { position: 'right-bottom' } "text=" 文字" />
+    <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary'}" text="文字" />
+    <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom'}" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
   </var-grid>
 </template>
 ```
 
+### Custom Content
+
+```html
+<template>
+  <var-grid column="2" gutter="12px" :border=" false ">
+    <var-grid-item>
+      <var-image size="40px" :src=" cat " />
+    </var-grid-item>
+    <var-grid-item>
+      <var-image size="40px" :src=" cat2 " />
+    </var-grid-item>
+    <var-grid-item>
+      <var-image size="40px" :src=" cat3 " />
+    </var-grid-item>
+  </var-grid>
+</template>
+```
 
 
 ## API
@@ -136,3 +169,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable                                           | Default   |
 |-----------------------------------------------| -------- |
 | `--grid-item-border` | `thin solid rgba(0, 0, 0, 0.12)`  |
+| `--grid-item-border-radius` | `4px`  |
+| `--grid-item-padding` | `16px 8px`  |

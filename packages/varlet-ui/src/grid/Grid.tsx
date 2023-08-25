@@ -15,26 +15,19 @@ export default defineComponent({
   setup(props, { slots }) {
     const { bindItem } = useGridItem()
 
-    const iconSize = computed(() => props.iconSize || 24)
-    const center = computed(() => props.center)
     const gutter = computed(() => toPxNum(props.gutter))
-    const border = computed(() => props.border)
-    const column = computed(() => toNumber(props.column) || 4)
-    const square = computed(() => props.square)
-    const ripple = computed(() => props.ripple)
-    const direction = computed(() => props.direction)
 
     const gridProvide: GridProvider = {
-      iconSize,
-      center,
+      iconSize: computed(() => props.iconSize || 24),
+      center: computed(() => props.center),
       gutter,
-      border,
-      column,
-      square,
-      ripple,
-      direction,
+      border: computed(() => props.border),
+      column: computed(() => toNumber(props.column) || 4),
+      square: computed(() => props.square),
+      ripple: computed(() => props.ripple),
+      direction: computed(() => props.direction),
+      elevation: computed(() => toNumber(props.elevation) || 0),
     }
-
     bindItem(gridProvide)
 
     const customStyle = computed(() => {

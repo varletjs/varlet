@@ -1,4 +1,4 @@
-import GridItem from './GridItem.tsx'
+import GridItem from './GridItem'
 import { withInstall } from '../utils/components'
 
 withInstall(GridItem)

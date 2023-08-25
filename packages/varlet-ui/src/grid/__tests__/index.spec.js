@@ -29,20 +29,24 @@ test('test grid grid plugin', () => {
 
 describe('test grid component props', () => {
   test('test grid Grid column', async () => {
+    let gutter = 0
     const wrapper = mount(Wrapper, {
       props: {
         column: 3,
+        gutter,
       },
     })
+
     const gridItems = wrapper.findAll('.var-grid-item')
     expect(gridItems.length).toBe(6)
-    expect(gridItems[0].attributes('style')).toContain('flex: 0 0 33.33%')
+    expect(gridItems[0].attributes('style')).toContain(`flex: 0 calc(33.33% - ${gutter}px)`)
 
-    wrapper.setProps({ column: 4 })
+    gutter = 10
+    wrapper.setProps({ column: 4, gutter })
     await delay(100)
     const curGridItems = wrapper.findAll('.var-grid-item')
     expect(curGridItems.length).toBe(6)
-    expect(curGridItems[0].attributes('style')).toContain('flex: 0 0 25%')
+    expect(curGridItems[0].attributes('style')).toContain(`flex: 0 calc(25% - ${gutter}px)`)
 
     wrapper.unmount()
   })
@@ -101,7 +105,7 @@ describe('test grid component props', () => {
     await nextTick()
     const gridItems = wrapper.find('.var-grid-item')
 
-    expect(gridItems.find('.var-grid-item__content').classes()).toContain('var-grid-item__content-square')
+    expect(gridItems.classes()).toContain('var-grid-item__square')
   })
 
   test('test grid gutter', () => {
@@ -110,7 +114,7 @@ describe('test grid component props', () => {
         gutter: '10px',
       },
     })
-    expect(wrapper.find('.var-grid-item').attributes('style')).toContain('padding: 5px')
+    expect(wrapper.find('.var-grid-item').attributes('style')).toContain('margin: 5px')
   })
 
   test('test grid border and content center', async () => {
@@ -120,15 +124,15 @@ describe('test grid component props', () => {
         center: false,
       },
     })
-    const prefix = 'var-grid-item__content'
+    const prefix = 'var-grid-item'
 
-    expect(wrapper.find(`.${prefix}`).classes()).not.toContain(`${prefix}-border`)
-    expect(wrapper.find(`.${prefix}`).classes()).not.toContain(`${prefix}-center`)
+    expect(wrapper.find(`.${prefix}`).classes()).not.toContain(`${prefix}__border`)
+    expect(wrapper.find(`.${prefix}`).classes()).not.toContain(`${prefix}__center`)
 
     wrapper.setProps({ border: true, center: true })
     await delay(100)
-    expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}-border`)
-    expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}-center`)
+    expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}__border`)
+    expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}__center`)
   })
 
   test('test grid grid item badge', () => {

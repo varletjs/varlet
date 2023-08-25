@@ -5,4 +5,6 @@ export default {
   gutter: 'Gutter',
   direction: 'Direction',
   badge: 'Badge',
+  text: 'Text',
+  custom: 'Custom Content',
 }

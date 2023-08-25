@@ -54,7 +54,7 @@
 
 ```html
 <template>
-  <var-grid column="4" gutter="8px">
+  <var-grid column="2" gutter="8px" :border="false">
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
@@ -87,14 +87,31 @@
 
 ```html
 <template>
-    <var-grid column="4">
+  <var-grid column="4">
     <var-grid-item icon="image-outline" dot text="文字" />
     <var-grid-item icon="image-outline" badge="66" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props=" { type: 'primary' } " text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props=" { position: 'right-bottom' } "
-      text=" 文字" />
+    <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary' }" text="文字" />
+    <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom' }" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
+  </var-grid>
+</template>
+```
+
+### 自定义内容
+
+```html
+<template>
+  <var-grid column="2" gutter="12px" :border=" false ">
+    <var-grid-item>
+      <var-image size="40px" :src=" cat " />
+    </var-grid-item>
+    <var-grid-item>
+      <var-image size="40px" :src=" cat2 " />
+    </var-grid-item>
+    <var-grid-item>
+      <var-image size="40px" :src=" cat3 " />
+    </var-grid-item>
   </var-grid>
 </template>
 ```
@@ -154,3 +171,5 @@
 | 变量名                                           | 默认值   |
 |-----------------------------------------------| -------- |
 | `--grid-item-border` | `thin solid rgba(0, 0, 0, 0.12)`  |
+| `--grid-item-border-radius` | `4px`  |
+| `--grid-item-padding` | `16px 8px`  |
