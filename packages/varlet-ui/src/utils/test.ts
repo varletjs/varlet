@@ -221,16 +221,19 @@ export function mockConsole(method: keyof Console, fn: any = () => {}) {
   }
 }
 
-export function mockScrollTo(Element: any) {
-  Element.prototype.scrollTo = function (x: ScrollToOptions | number, y?: number) {
-    if (isPlainObject(x)) {
-      this.scrollLeft = x.left
-      this.scrollTop = x.top
-    } else {
-      this.scrollLeft = x
-      this.scrollTop = y
-    }
-  }
+export function mockScrollTo() {
+  Object.assign(window, { scrollTo() {} })
+  Object.defineProperty(Element.prototype, 'scrollTo', {
+    value(x: ScrollToOptions | number, y?: number) {
+      if (isPlainObject(x)) {
+        this.scrollLeft = x.left
+        this.scrollTop = x.top
+      } else {
+        this.scrollLeft = x
+        this.scrollTop = y
+      }
+    },
+  })
 }
 
 export function mockUserAgent(userAgent: string) {

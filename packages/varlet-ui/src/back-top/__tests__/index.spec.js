@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
 
-mockScrollTo(HTMLDivElement)
+mockScrollTo()
 
 const clickHandle = vi.fn()
 const Wrapper = {

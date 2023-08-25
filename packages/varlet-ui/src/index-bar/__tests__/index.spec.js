@@ -6,7 +6,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
 
-mockScrollTo(HTMLElement)
+mockScrollTo()
 
 function mockIndexBarOwnTop() {
   const originForEach = Array.prototype.forEach

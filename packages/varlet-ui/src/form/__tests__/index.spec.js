@@ -12,7 +12,9 @@ import VarSwitch from '../../switch/Switch'
 import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger, mockScrollTo } from '../../utils/test'
+
+mockScrollTo()
 
 test('test form plugin', () => {
   const app = createApp({}).use(Form)
@@ -20,8 +22,8 @@ test('test form plugin', () => {
 })
 
 const expectValidate = async (form, wrapper, message) => {
-  form.validate()
-  await delay(16)
+  await form.validate()
+  await delay(10)
   expect(wrapper.find('.var-form-details__error-message').text()).toBe(message)
   expect(wrapper.html()).toMatchSnapshot()
 }
@@ -67,7 +69,7 @@ test('test form with input', async () => {
       onChange,
     },
     template: `
-      <var-form ref="form" :disabled="disabled" :readonly="readonly">
+      <var-form ref="form" scroll-to-error="start" :disabled="disabled" :readonly="readonly">
         <var-input
           clearable
           :rules="[v => !!v || '不能为空']"

@@ -4,15 +4,9 @@ import TabsItems from '../../tabs-items'
 import TabItem from '../../tab-item'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { delay, mockOffset } from '../../utils/test'
+import { delay, mockOffset, mockScrollTo } from '../../utils/test'
 
-let originScrollTo
-
-vi.fn()
-
-originScrollTo = Element.prototype.scrollTo
-Element.prototype.scrollTo = vi.fn()
-
+mockScrollTo()
 mockOffset()
 
 const Wrapper = {

@@ -87,6 +87,26 @@ test('test input type', () => {
   })
 })
 
+test('test input format number', async () => {
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      type: 'number',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-input__input').setValue('10')
+  expect(onUpdateModelValue).lastCalledWith('10')
+  await wrapper.find('.var-input__input').setValue('aa111')
+  expect(onUpdateModelValue).lastCalledWith('111')
+  await wrapper.find('.var-input__input').setValue('1.')
+  expect(onUpdateModelValue).lastCalledWith('1.')
+  await wrapper.find('.var-input__input').setValue('1.01')
+  expect(onUpdateModelValue).lastCalledWith('1.01')
+})
+
 describe('test input events', () => {
   async function expectFocusAndBlur(props = {}) {
     const onFocus = vi.fn()
@@ -323,8 +343,8 @@ test('test input autofocus', async () => {
     },
   })
 
-  await delay(100)
-  expect(wrapper.find('.var-input--focus')).toBeTruthy()
+  await wrapper.find('.var-input__input').trigger('focus')
+  expect(wrapper.find('.var-field-decorator--focus').exists()).toBe(true)
 
   wrapper.unmount()
 })
@@ -339,5 +359,27 @@ test('test input extra slot', async () => {
   await delay(100)
   expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
 
+  wrapper.unmount()
+})
+
+test('test input icon slot', async () => {
+  const wrapper = mount(VarInput, {
+    slots: {
+      'prepend-icon': () => 'prepend-icon',
+      'append-icon': () => 'append-icon',
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test input focus on mousedown', async () => {
+  let wrapper = mount(VarInput)
+
+  await wrapper.trigger('mousedown')
+  await wrapper.find('.var-input__input').trigger('focus')
+  expect(wrapper.find('.var-field-decorator--focus').exists()).toBe(true)
   wrapper.unmount()
 })

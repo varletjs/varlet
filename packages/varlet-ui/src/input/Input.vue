@@ -103,7 +103,6 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
-        @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       />
@@ -301,17 +300,7 @@ export default defineComponent({
 
     const withMaxlength = (value: string) => (props.maxlength ? value.slice(0, toNumber(props.maxlength)) : value)
 
-    const handleTouchstart = (e: Event) => {
-      const { disabled, readonly } = props
-
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
-        return
-      }
-
-      e.stopPropagation()
-    }
-
-    function handleMousedown(e: MouseEvent) {
+    const handleMousedown = (e: MouseEvent) => {
       const { disabled } = props
 
       if (form?.disabled.value || disabled || e.target === el.value) {
@@ -376,7 +365,6 @@ export default defineComponent({
       handleChange,
       handleClear,
       handleClick,
-      handleTouchstart,
       handleCompositionStart,
       handleCompositionEnd,
       handleMousedown,
