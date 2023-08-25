@@ -69,7 +69,6 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
-        @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       >
