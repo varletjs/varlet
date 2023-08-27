@@ -9,15 +9,12 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import { defineComponent, computed, watch, nextTick } from 'vue'
-import { props } from './props'
+import { defineComponent, computed, watch, nextTick, type ComputedRef } from 'vue'
+import { props, type CheckboxGroupValidateTrigger } from './props'
 import { useValidation, createNamespace, call } from '../utils/components'
-import { useCheckboxes } from './provide'
+import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
 import { uniq } from '@varlet/shared'
-import type { ComputedRef } from 'vue'
-import type { CheckBoxGroupValidateTrigger } from './props'
-import type { CheckboxGroupProvider } from './provide'
 
 const { n, classes } = createNamespace('checkbox-group')
 export default defineComponent({
@@ -38,7 +35,7 @@ export default defineComponent({
     } = useValidation()
     const checkboxGroupErrorMessage: ComputedRef<string> = computed(() => errorMessage.value)
 
-    const validateWithTrigger = (trigger: CheckBoxGroupValidateTrigger) => {
+    const validateWithTrigger = (trigger: CheckboxGroupValidateTrigger) => {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
