@@ -51,14 +51,14 @@ export default defineComponent({
     })
 
     const linkProps = computed(() => {
-      const { disabled, href, target, to, replace } = props
+      const { disabled, href, target, to, replace, rel } = props
 
       if (disabled) {
         return {}
       }
 
       if (href) {
-        return { href, target }
+        return { href, target, rel }
       }
 
       if (to) {
@@ -69,13 +69,11 @@ export default defineComponent({
     })
 
     const handleClick = (e: Event) => {
-      const { disabled, onClick } = props
-
-      if (disabled) {
+      if (props.disabled) {
         return
       }
 
-      call(onClick, e)
+      call(props.onClick, e)
     }
 
     return { n, classes, tag, linkProps, handleClick, toSizeUnit }
