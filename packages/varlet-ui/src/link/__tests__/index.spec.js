@@ -43,6 +43,20 @@ describe('test link component props', () => {
     })
   })
 
+  test('test link rel', () => {
+    const wrapper = mount(VarLink, {
+      props: {
+        href: HREF,
+        target: TARGET,
+        rel: 'noopener noreferrer',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
   test('test link href target', () => {
     const wrapper = mount(VarLink, {
       props: {

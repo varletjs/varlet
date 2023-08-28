@@ -13,6 +13,7 @@ export const props = {
   },
   href: String,
   target: String,
+  rel: String,
   to: [String, Object] as PropType<RouteLocationRaw>,
   replace: Boolean,
   underline: {
