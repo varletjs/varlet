@@ -93,7 +93,7 @@
 | `text-color` | 文字颜色                                                            | _string_ | `-`      |
 | `text-size`  | 文字尺寸                                                            | _string \| number_  | `-`            |
 | `href`       | 原生 `href` 属性，优先级高于 `to`                                         | _string_ | `-`      |
-| `rel`  | 原生 `rel` 属性                                            | _string_ | `-`      |
+| `rel`        | 原生 `rel` 属性                                            | _string_ | `-`      |
 | `target`     | 原生 `target` 属性                                                  | _string_ | `-`      |
 | `to`         | `router-link` `to` 属性，将会渲染为 `<router-link />`                   | _string \| object_  | `-`        |
 | `replace`    | `router-link` `replace` 属性                                      | _boolean_ | `false`  |

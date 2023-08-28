@@ -93,7 +93,7 @@ Link component for hyperlink to web pages.
 | `text-color` | Link text color                                                                   | _string_ | `-`      |
 | `text-size`  | Link font size                                                                    | _string \| number_  | `-`            |
 | `href`       | Same as native hyperlink's `href`, Have higher priority than `to`                 | _string_ | `-`      |
-| `rel`  | Same as the native `rel` attribute                                            | _string_ | `-`      |
+| `rel`        | Same as the native `rel` attribute                                            | _string_ | `-`      |
 | `target`     | Same as the native `target` attribute                                             | _string_ | `-`      |
 | `to`         | `router-link` `to`, will render as `<router-link />`                              | _string \| object_  | `-`        |
 | `replace`    | `router-link` `replace`                                                           | _boolean_ | `false`  |
