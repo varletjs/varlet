@@ -28,9 +28,9 @@ test('test merge lang', () => {
   }
 
   add(LANG, enUS)
-  use('zh_HK')
+  use('zh-HK')
   use(LANG)
-  merge('zh_HK', PACK)
+  merge('zh-HK', PACK)
   merge(LANG, PACK)
 
   expect(pack.value.dialogTitle).toBe('Custom Dialog Title')
