@@ -2,7 +2,7 @@ import Grid from '..'
 import GridItem from '../../grid-item'
 import { createApp, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
 
 const Wrapper = {
   components: {
@@ -166,7 +166,7 @@ describe('test grid component props', () => {
 
 describe('test grid component events', () => {
   test('test grid grid item click', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
 
     const Wrapper = {
       components: {
