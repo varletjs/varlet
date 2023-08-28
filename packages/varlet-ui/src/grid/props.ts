@@ -18,7 +18,6 @@ export const props = {
   },
   square: {
     type: Boolean,
-    default: false,
   },
   gutter: {
     type: [String, Number],
@@ -34,7 +33,6 @@ export const props = {
   },
   ripple: {
     type: Boolean,
-    default: false,
   },
   elevation: {
     type: [String, Number],

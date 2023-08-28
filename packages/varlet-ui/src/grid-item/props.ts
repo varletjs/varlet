@@ -21,7 +21,6 @@ export const props = {
   },
   dot: {
     type: Boolean,
-    default: false,
   },
   badgeProps: {
     type: Object as PropType<BadgeProps>,
