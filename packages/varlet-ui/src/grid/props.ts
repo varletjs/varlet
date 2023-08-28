@@ -1,6 +1,8 @@
 import { toNumber } from '@varlet/shared'
 import { PropType } from 'vue'
 
+type GridDirection = 'horizontal' | 'vertical'
+
 export const props = {
   column: {
     type: [String, Number],
@@ -43,10 +45,7 @@ export const props = {
     },
   },
   direction: {
-    type: String as PropType<'horizontal' | 'vertical'>,
+    type: String as PropType<GridDirection>,
     default: 'vertical',
-    validator(value: string) {
-      return ['horizontal', 'vertical'].includes(value)
-    },
   },
 }
