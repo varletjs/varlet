@@ -162,8 +162,14 @@ import { Snackbar } from '@varlet/ui'
 ### 自定义指示器
 
 ```html
+<script setup>
+import { ref } from 'vue' 
+
+const swipeRef = ref(null)
+</script>
+
 <template>
-  <var-swipe class="swipe-example">
+  <var-swipe ref="swipeRef" class="swipe-example">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
@@ -173,11 +179,9 @@ import { Snackbar } from '@varlet/ui'
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
-
     <template #indicator="{ index, length }">
-      <div class="swipe-example-indicators">
-        {{ index + 1 }} / {{ length }}
-      </div>
+      <div class="swipe-example-indicators-left" :class="index === 0 ? 'swipe-example-active-indicator' : 'swipe-example-inactive-indicator'" @click="index !== 0 && swipeRef.prev()"><var-icon name="chevron-left" /></div>
+      <div class="swipe-example-indicators-right" :class="index === length - 1 ? 'swipe-example-active-indicator' : 'swipe-example-inactive-indicator'" @click="index !== length - 1 && swipeRef.next()"><var-icon name="chevron-right" /></div>
     </template>
   </var-swipe>
 </template>
@@ -194,17 +198,36 @@ import { Snackbar } from '@varlet/ui'
   pointer-events: none;
 }
 
-.swipe-example-indicators {
+.swipe-example-indicators-left {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   text-align: center;
   padding: 4px 0;
   color: #fff;
-  font-size: 14px;
   background: rgba(0, 0, 0, 0.6);
 }
-</style>
+
+.swipe-example-indicators-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 4px 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.swipe-example-active-indicator {
+  color: #5d5d5d;
+}
+
+.swipe-example-inactive-indicator {
+  color: #e5e5e5;
+}
+</style> 
 ```
 
 ## API

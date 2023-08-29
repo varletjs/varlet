@@ -2,8 +2,11 @@
 import VarSwipe from '..'
 import VarSwipeItem from '../../swipe-item'
 import Snackbar from '../../snackbar'
+import { ref } from 'vue'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
+
+const swipeRef = ref(null)
 
 watchLang(use)
 </script>
@@ -75,19 +78,31 @@ watchLang(use)
   </var-swipe>
 
   <app-type>{{ pack.customIndicator }}</app-type>
-  <var-swipe class="swipe">
+  <var-swipe ref="swipeRef" class="swipe">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
     </var-swipe-item>
-
     <template #indicator="{ index, length }">
-      <div class="indicators">{{ index + 1 }} / {{ length }}</div>
+      <div
+        class="swipe-indicators-left"
+        :class="index === 0 ? 'swipe-active-indicator' : 'swipe-inactive-indicator'"
+        @click="index !== 0 && swipeRef.prev()"
+      >
+        <var-icon name="chevron-left" />
+      </div>
+      <div
+        class="swipe-indicators-right"
+        :class="index === length - 1 ? 'swipe-active-indicator' : 'swipe-inactive-indicator'"
+        @click="index !== length - 1 && swipeRef.next()"
+      >
+        <var-icon name="chevron-right" />
+      </div>
     </template>
   </var-swipe>
 
@@ -110,14 +125,33 @@ watchLang(use)
   height: 20px;
 }
 
-.indicators {
+.swipe-indicators-left {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
   text-align: center;
   padding: 4px 0;
   color: #fff;
-  font-size: 14px;
   background: rgba(0, 0, 0, 0.6);
+}
+
+.swipe-indicators-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 4px 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.swipe-active-indicator {
+  color: #5d5d5d;
+}
+
+.swipe-inactive-indicator {
+  color: #e5e5e5;
 }
 </style>
