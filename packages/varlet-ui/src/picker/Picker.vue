@@ -55,7 +55,7 @@
           :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
-          @touchstart.passive="handleTouchstart(c)"
+          @touchstart.passive="handleTouchstart($event, c)"
           @touchmove.prevent="handleTouchmove($event, c)"
           @touchend="handleTouchend($event, c)"
         >
@@ -108,6 +108,7 @@ import {
   type ComponentPublicInstance,
 } from 'vue'
 import { props, type CascadeColumn, type NormalColumn } from './props'
+import { useTouch } from '@varlet/use'
 import { clamp, clampArrayRange, isArray } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { toPxNum, getTranslateY, requestAnimationFrame } from '../utils/elements'
@@ -157,7 +158,7 @@ export default defineComponent({
     )
     const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
-    let dragging = false
+    const { prevY, moveY, touching, startTouch, moveTouch, endTouch } = useTouch()
 
     const setScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
       scrollColumn.scrollEl = el as HTMLElement
@@ -204,7 +205,7 @@ export default defineComponent({
     }
 
     const handleClick = (scrollColumn: ScrollColumn, index: number) => {
-      if (dragging) {
+      if (touching.value) {
         return
       }
 
@@ -213,9 +214,10 @@ export default defineComponent({
       scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
-    const handleTouchstart = (scrollColumn: ScrollColumn) => {
+    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
       scrollColumn.touching = true
       scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
+      startTouch(event)
     }
 
     const handleTouchmove = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -223,13 +225,14 @@ export default defineComponent({
         return
       }
 
-      dragging = true
+      moveTouch(event)
+
       scrollColumn.scrolling = false
       scrollColumn.duration = 0
 
-      const { clientY } = event.touches[0]
-      const deltaY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
-      scrollColumn.prevY = clientY
+      const deltaY = scrollColumn.prevY !== undefined ? moveY.value : 0
+
+      scrollColumn.prevY = prevY.value
       scrollColumn.translate += deltaY
 
       clampTranslate(scrollColumn)
@@ -242,6 +245,8 @@ export default defineComponent({
     }
 
     const handleTouchend = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+      endTouch()
+
       scrollColumn.touching = false
       scrollColumn.prevY = undefined
       const distance = scrollColumn.translate - (scrollColumn.momentumPrevY as number)
@@ -262,10 +267,6 @@ export default defineComponent({
       if (!scrollColumn.scrolling) {
         change(scrollColumn)
       }
-
-      requestAnimationFrame(() => {
-        dragging = false
-      })
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
