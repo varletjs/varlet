@@ -132,6 +132,7 @@ You can also use form events to handle form behavior.
 ```html
 <script setup>
 import { reactive } from 'vue'
+import { Snackbar } from '@varlet/ui'
 
 const formData = reactive({
   username: '',
