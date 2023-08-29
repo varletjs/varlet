@@ -1,4 +1,4 @@
-import GridItem from './GridItem'
+import GridItem from './GridItem.vue'
 import { withInstall } from '../utils/components'
 
 withInstall(GridItem)

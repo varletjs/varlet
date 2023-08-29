@@ -38,7 +38,7 @@
 
 ```html
 <template>
-  <var-grid column="4" square>
+  <var-grid column="3" square>
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
     <var-grid-item icon="image-outline" text="文字" />
@@ -88,12 +88,10 @@
 ```html
 <template>
   <var-grid column="4">
-    <var-grid-item icon="image-outline" dot text="文字" />
-    <var-grid-item icon="image-outline" badge="66" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary' }" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom' }" text="文字" />
-    <var-grid-item icon="image-outline" text="文字" />
-    <var-grid-item icon="image-outline" text="文字" />
+    <var-grid-item icon="image-outline" badge text="文字" />
+    <var-grid-item icon="image-outline" :badge="{ value: 1, type: 'danger' }" text="文字" />
+    <var-grid-item icon="image-outline" :badge="{ value: 2, type: 'info' }" text="文字" />
+    <var-grid-item icon="image-outline" :badge="{ value: 3, position: 'right-bottom', type: 'danger' }" text=" 文字" />
   </var-grid>
 </template>
 ```
@@ -139,12 +137,10 @@
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `text`  | 内容 | _string_ | `` |
-| `icon`  | 图标名 | _string_ | `` |
-| `iconColor`  | 图标颜色 | _string_ | `` |
-| `badge`  | 徽标内容 | _string \| number_ | `` |
-| `dot`  | 圆点徽标 | _boolean_ | `false` |
-| `badgeProps`  | 徽标参数配置 | _BadgeProps_ | `` |
+| `text`  | 内容 | _string_ |  |
+| `icon`  | 图标名 | _string_ |  |
+| `iconColor`  | 图标颜色 | _string_ |  |
+| `badge`  | 徽标内容 | _boolean_ \| _BadgeProps_ | `false` |
 
 
 

@@ -8,8 +8,12 @@
   overflow: auto;
   width: 100%;
   background-color: var(--site-config-color-bar);
-  display: flex;
+  box-sizing: border-box;
   padding: var(--grid-item-padding);
+
+  &__content {
+    display: flex;
+  }
 
   &__center {
     align-items: center;

@@ -1,29 +1,20 @@
 import { PropType } from 'vue'
-import { BadgeProps } from '../../types'
-import { defineListenerProp } from '../utils/components'
+import { badgeProps } from '../badge'
+import { ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
 
 export const props = {
   text: {
     type: String,
-    default: '',
   },
   icon: {
     type: String,
-    default: '',
   },
   iconColor: {
     type: String,
-    default: '',
   },
   badge: {
-    type: [String, Number],
-    default: '',
-  },
-  dot: {
-    type: Boolean,
-  },
-  badgeProps: {
-    type: Object as PropType<BadgeProps>,
+    type: [Boolean, Object] as PropType<boolean | ExtractPublicPropTypes<typeof badgeProps>>,
+    default: false,
   },
   onClick: defineListenerProp<(e: Event) => void>(),
 }

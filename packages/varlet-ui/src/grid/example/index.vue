@@ -12,10 +12,6 @@ watchDarkMode(dark)
 const cat = 'https://varlet.gitee.io/varlet-ui/cat.jpg'
 const cat2 = 'https://varlet.gitee.io/varlet-ui/cat2.jpg'
 const cat3 = 'https://varlet.gitee.io/varlet-ui/cat3.jpg'
-
-const onClick = () => {
-  console.log('click')
-}
 </script>
 
 <template>
@@ -40,7 +36,7 @@ const onClick = () => {
   </var-grid>
 
   <app-type>{{ pack.square }}</app-type>
-  <var-grid column="3" square>
+  <var-grid column="3">
     <var-grid-item icon="image-outline" :text="pack.text" />
     <var-grid-item icon="image-outline" :text="pack.text" />
     <var-grid-item icon="image-outline" :text="pack.text" />
@@ -71,12 +67,14 @@ const onClick = () => {
 
   <app-type>{{ pack.badge }}</app-type>
   <var-grid column="4">
-    <var-grid-item icon="image-outline" dot :text="pack.text" />
-    <var-grid-item icon="image-outline" badge="66" :text="pack.text" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary' }" :text="pack.text" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom' }" text=" 文字" />
-    <var-grid-item icon="image-outline" :text="pack.text" />
-    <var-grid-item icon="image-outline" :text="pack.text" @click="onClick" />
+    <var-grid-item badge :text="pack.text" />
+    <var-grid-item icon="image-outline" :badge="{ value: 1, type: 'danger' }" :text="pack.text" />
+    <var-grid-item icon="image-outline" :badge="{ value: 2, type: 'info' }" :text="pack.text" />
+    <var-grid-item
+      icon="image-outline"
+      :badge="{ value: 3, position: 'right-bottom', type: 'danger' }"
+      :text="pack.text"
+    />
   </var-grid>
 
   <app-type>{{ pack.custom }}</app-type>

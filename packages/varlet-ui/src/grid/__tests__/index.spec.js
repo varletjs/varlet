@@ -39,14 +39,14 @@ describe('test grid component props', () => {
 
     const gridItems = wrapper.findAll('.var-grid-item')
     expect(gridItems.length).toBe(6)
-    expect(gridItems[0].attributes('style')).toContain(`flex: 0 calc(33.33% - ${gutter}px)`)
+    expect(gridItems[0].attributes('style')).toContain(`flex-basis: calc(33.33% - ${gutter}px)`)
 
     gutter = 10
     wrapper.setProps({ column: 4, gutter })
     await delay(100)
     const curGridItems = wrapper.findAll('.var-grid-item')
     expect(curGridItems.length).toBe(6)
-    expect(curGridItems[0].attributes('style')).toContain(`flex: 0 calc(25% - ${gutter}px)`)
+    expect(curGridItems[0].attributes('style')).toContain(`flex-basis: calc(25% - ${gutter}px)`)
 
     wrapper.unmount()
   })
@@ -143,10 +143,10 @@ describe('test grid component props', () => {
       },
       template: `
         <var-grid>
-          <var-grid-item icon="image-outline" dot text="文字" />
-          <var-grid-item icon="image-outline" badge="66" text="文字" />
-          <var-grid-item icon="image-outline" badge="1" :badge-props=" { type: 'primary' } " text="文字" />
-          <var-grid-item icon="image-outline" badge="1" :badge-props=" { position: 'right-bottom' } " text=" 文字" />
+          <var-grid-item icon="image-outline" badge text="文字" />
+          <var-grid-item icon="image-outline" :badge="{value: 66}" text="文字" />
+          <var-grid-item icon="image-outline" :badge="{value: 1, type: 'primary' }" text="文字" />
+          <var-grid-item icon="image-outline" :badge="{value: 1, position: 'right-bottom' }" text=" 文字" />
           <var-grid-item text="文字" />
         </var-grid>
       `,

@@ -1,4 +1,4 @@
-import Grid from './Grid'
+import Grid from './Grid.vue'
 import { withInstall } from '../utils/components'
 
 withInstall(Grid)

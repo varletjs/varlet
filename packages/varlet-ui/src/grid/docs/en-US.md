@@ -39,7 +39,7 @@ The basic components used for layout are convenient for developers to carry out 
 
 ```html
 <template>
-  <var-grid column="4" square>
+  <var-grid column="3" square>
     <var-grid-item icon="image-outline" text="Text" />
     <var-grid-item icon="image-outline" text="Text" />
     <var-grid-item icon="image-outline" text="Text" />
@@ -87,12 +87,10 @@ The basic components used for layout are convenient for developers to carry out 
 ```html
 <template>
   <var-grid column="4">
-    <var-grid-item icon="image-outline" dot text="文字" />
-    <var-grid-item icon="image-outline" badge="66" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ type: 'primary'}" text="文字" />
-    <var-grid-item icon="image-outline" badge="1" :badge-props="{ position: 'right-bottom'}" text="文字" />
-    <var-grid-item icon="image-outline" text="文字" />
-    <var-grid-item icon="image-outline" text="文字" />
+    <var-grid-item icon="image-outline" badge text="Text" />
+    <var-grid-item icon="image-outline" :badge="{ value: 1, type: 'danger' }" text="Text" />
+    <var-grid-item icon="image-outline" :badge="{ value: 2, type: 'info' }" text="Text" />
+    <var-grid-item icon="image-outline" :badge="{ value: 3, position: 'right-bottom', type: 'danger' }" text="Text" />
   </var-grid>
 </template>
 ```
@@ -137,12 +135,10 @@ The basic components used for layout are convenient for developers to carry out 
 
 | Prop | Description | Type             | Default       |
 | ------- | --- |----------------|-----------|
-| `text`  | Text | _string_ | `` |
-| `icon`  | Icon | _string_ | `` |
-| `iconColor`  | Set Icon color | _string_ | `` |
-| `badge`  | Set Badge value | _string \| number_ | `` |
-| `dot`  | Set Dot | _boolean_ | `false` |
-| `badgeProps`  | Badge Configuration | _BadgeProps_ | `` |
+| `text`  | Text | _string_ | `-` |
+| `icon`  | Icon | _string_ | `-` |
+| `iconColor`  | Set Icon color | _string_ | `-` |
+| `badge`  | Badge Configuration | _boolean_ \| _BadgeProps_ | `false` |
 
 
 
