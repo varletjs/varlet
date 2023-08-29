@@ -7,7 +7,7 @@ import { toNumber } from '@varlet/shared'
 import Icon from '../icon'
 import Badge from '../badge'
 import Ripple from '../ripple'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
 import type { BadgeProps } from '../../types'
 
 const { n, classes } = createNamespace('grid-item')
@@ -63,6 +63,8 @@ export default defineComponent({
         gridElement.value.style.height = square.value ? `${gridElement.value.offsetWidth}px` : 'unset'
       }
     }
+
+    onWindowResize(watchSquare)
 
     onSmartMounted(watchSquare)
 

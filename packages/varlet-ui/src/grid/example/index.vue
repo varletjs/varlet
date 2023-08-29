@@ -36,7 +36,7 @@ const cat3 = 'https://varlet.gitee.io/varlet-ui/cat3.jpg'
   </var-grid>
 
   <app-type>{{ pack.square }}</app-type>
-  <var-grid column="3">
+  <var-grid column="3" square>
     <var-grid-item icon="image-outline" :text="pack.text" />
     <var-grid-item icon="image-outline" :text="pack.text" />
     <var-grid-item icon="image-outline" :text="pack.text" />
