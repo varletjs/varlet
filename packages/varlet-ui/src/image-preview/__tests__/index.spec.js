@@ -2,6 +2,7 @@ import ImagePreview from '../index'
 import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
 import { delay, trigger, triggerDrag } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test image preview plugin', () => {
   const app = createApp({}).use(ImagePreview)

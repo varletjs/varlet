@@ -1,14 +1,14 @@
 <template>
-  <div :class="n()">
+  <form :class="n()" @submit="handleSubmit" @reset="handleReset">
     <slot />
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, type ComputedRef } from 'vue'
 import { props } from './props'
 import { useFormItems, type FormProvider } from './provide'
-import { createNamespace } from '../utils/components'
+import { call, createNamespace } from '../utils/components'
 import { find } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
@@ -35,6 +35,18 @@ export default defineComponent({
           animation: linear,
         })
       }, 300)
+    }
+
+    const handleSubmit = async (event: Event) => {
+      event.preventDefault()
+      const valid = await validate()
+      call(props.onSubmit, valid)
+    }
+
+    const handleReset = (event: Event) => {
+      event.preventDefault()
+      reset()
+      call(props.onReset)
     }
 
     // expose
@@ -71,6 +83,8 @@ export default defineComponent({
 
     return {
       n,
+      handleSubmit,
+      handleReset,
       validate,
       reset,
       resetValidation,

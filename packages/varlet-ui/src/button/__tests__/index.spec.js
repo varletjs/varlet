@@ -5,6 +5,7 @@ import VarButtonGroup from '../../button-group/ButtonGroup.vue'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)

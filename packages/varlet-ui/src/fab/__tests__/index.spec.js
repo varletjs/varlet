@@ -2,6 +2,7 @@ import Fab from '..'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
 import { triggerDrag, delay, mockStubs, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockStubs()
 

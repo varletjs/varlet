@@ -2,6 +2,7 @@ import ActionSheet from '../index'
 import VarActionSheet from '../ActionSheet'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test action sheet plugin', () => {
   const app = createApp({}).use(ActionSheet)

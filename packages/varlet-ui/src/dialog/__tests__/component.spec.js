@@ -2,6 +2,7 @@ import Dialog from '..'
 import VarDialog from '../Dialog'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)

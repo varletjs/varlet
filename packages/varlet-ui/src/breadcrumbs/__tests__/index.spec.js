@@ -4,6 +4,7 @@ import VarBreadcrumb from '../../breadcrumb/Breadcrumb.vue'
 import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 function renderBasicUsage(props) {
   return h(

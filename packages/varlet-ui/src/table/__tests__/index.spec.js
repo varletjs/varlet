@@ -2,6 +2,7 @@ import Table from '..'
 import VarTable from '../Table'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect } from 'vitest'
 
 test('test table use', () => {
   const app = createApp({}).use(Table)

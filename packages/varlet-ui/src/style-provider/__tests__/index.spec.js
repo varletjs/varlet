@@ -3,6 +3,7 @@ import VarStyleProvider from '../StyleProvider'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay } from '../../utils/test'
+import { expect } from 'vitest'
 
 test('test styleProvider component plugin', () => {
   const app = createApp({}).use(StyleProvider)

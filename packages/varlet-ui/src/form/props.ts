@@ -1,4 +1,5 @@
 import { type PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
 export type FormScrollToError = 'start' | 'end'
 
@@ -10,4 +11,6 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
+  onSubmit: defineListenerProp<(valid: boolean) => void>(),
+  onReset: defineListenerProp<() => void>(),
 }

@@ -5,6 +5,7 @@ import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test select plugin', () => {
   const app = createApp({}).use(Select)

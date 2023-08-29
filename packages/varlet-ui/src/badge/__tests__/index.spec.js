@@ -2,6 +2,7 @@ import Badge from '..'
 import VarBadge from '../Badge'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test badge plugin', () => {
   const app = createApp({}).use(Badge)

@@ -5,6 +5,7 @@ import VarCol from '../../col/Col'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay, mockConsole } from '../../utils/test'
+import { expect } from 'vitest'
 
 test('test row and col use', () => {
   const app = createApp({}).use(Row).use(Col)

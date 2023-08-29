@@ -2,6 +2,7 @@ import Hover from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { mockUserAgent } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test hover use', () => {
   const app = createApp({}).use(Hover)

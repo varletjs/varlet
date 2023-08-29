@@ -5,6 +5,7 @@ import VarSwipeItem from '../../swipe-item/SwipeItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockOffset, triggerDrag } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockOffset()
 

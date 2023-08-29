@@ -3,6 +3,7 @@ import VarSnackbar from '../Snackbar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockStubs } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test snackbar component plugin', () => {
   const app = createApp({}).use(Snackbar.Component)

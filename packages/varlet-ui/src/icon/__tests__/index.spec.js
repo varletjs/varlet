@@ -3,6 +3,7 @@ import VarIcon from '../Icon'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test icon plugin', () => {
   const app = createApp({}).use(Icon)

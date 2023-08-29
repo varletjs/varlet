@@ -5,6 +5,7 @@ import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockScrollTo()
 

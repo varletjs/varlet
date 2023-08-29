@@ -13,6 +13,7 @@ import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, mockScrollTo } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockScrollTo()
 
@@ -534,4 +535,42 @@ test('test form with slider', async () => {
   expect(onChange).toHaveBeenCalled()
   expect(onStart).toHaveBeenCalledTimes(1)
   expect(onEnd).toHaveBeenCalledTimes(1)
+})
+
+test('test form events', async () => {
+  const onSubmit = vi.fn()
+  const onReset = vi.fn()
+
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: undefined,
+    }),
+    methods: {
+      onSubmit,
+      onReset,
+    },
+    template: `
+      <var-form @submit="onSubmit" @reset="onReset">
+        <var-input
+          clearable
+          :rules="[v => !!v || '不能为空']"
+          v-model="value"
+        />
+      </var-form>
+    `,
+  })
+
+  await delay(16)
+
+  await wrapper.trigger('submit')
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(onSubmit).toHaveBeenCalledTimes(1)
+  expect(onSubmit).toHaveBeenLastCalledWith(false)
+
+  await wrapper.trigger('reset')
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(onReset).toHaveBeenCalledTimes(1)
 })

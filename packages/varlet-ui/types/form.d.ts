@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 import { ComputedRef, VNode, Ref } from 'vue'
 
 export declare const formProps: Record<string, any>
@@ -21,6 +21,8 @@ export interface FormProps extends BasicAttributes {
   readonly?: boolean
   scrollToError?: FormScrollToError
   scrollToErrorOffsetY?: number | string
+  onSubmit?: ListenerProp<(valid: boolean) => void>
+  onReset?: ListenerProp<() => void>
 }
 
 export class Form extends VarComponent {

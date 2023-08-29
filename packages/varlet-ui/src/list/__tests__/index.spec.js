@@ -5,6 +5,7 @@ import TabItem from '../../tab-item'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test list use', () => {
   const app = createApp({}).use(List)

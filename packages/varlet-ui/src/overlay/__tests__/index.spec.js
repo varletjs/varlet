@@ -2,6 +2,7 @@ import Overlay from '..'
 import VarOverlay from '../Overlay'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test overlay plugin', () => {
   const app = createApp({}).use(Overlay)

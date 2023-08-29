@@ -3,6 +3,7 @@ import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockFileReader, mockStubs } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 const createEvent = (filename, type) => {
   return {

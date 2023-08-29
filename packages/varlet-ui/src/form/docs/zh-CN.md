@@ -102,26 +102,77 @@ const readonly = ref(false)
         :rules="[v => v.length >= 1 || '至少上传一张图片']"
         v-model="formData.files"
       />
+
+      <var-space direction="column" :size="[14, 0]">
+        <var-button block type="danger" @click="form.reset()">
+          清空表单
+        </var-button>
+        <var-button block type="warning" @click="form.resetValidation()">
+          清空验证
+        </var-button>
+        <var-button block type="success" @click="form.validate()">
+          触发验证
+        </var-button>
+        <var-button block type="info" @click="disabled = !disabled">
+          表单禁用
+        </var-button>
+        <var-button block type="primary" @click="readonly = !readonly">
+          表单只读
+        </var-button>
+      </var-space>
     </var-space>
   </var-form>
-  
-  <var-space direction="column" :size="[14, 0]">
-    <var-button block type="danger" @click="form.reset()">
-      清空表单
-    </var-button>
-    <var-button block type="warning" @click="form.resetValidation()">
-      清空验证
-    </var-button>
-    <var-button block type="success" @click="form.validate()">
-      触发验证
-    </var-button>
-    <var-button block type="info" @click="disabled = !disabled">
-      表单禁用
-    </var-button>
-    <var-button block type="primary" @click="readonly = !readonly">
-      表单只读
-    </var-button>
-  </var-space>
+</template>
+```
+
+### 表单事件
+
+您也可以使用表单事件去处理表单行为
+
+```html
+<script setup>
+import { reactive } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const formData = reactive({
+  username: '',
+  password: '',
+})
+
+function handleSubmit(valid) {
+  Snackbar(`onSubmit: ${valid}`)
+}
+
+function handleReset() {
+  Snackbar(`onReset`)
+}
+</script>
+
+<template>
+  <var-form @submit="handleSubmit">
+    <var-space direction="column" :size="[14, 0]">
+      <var-input
+        placeholder="请输入用户名"
+        :rules="[v => !!v || '用户名不能为空']"
+        v-model="formData.username"
+      />
+      <var-input
+        type="password"
+        placeholder="请输入密码"
+        :rules="[v => !!v || '密码不能为空']"
+        v-model="formData.password"
+      />
+
+      <var-space>
+        <var-button type="primary" native-type="submit">
+          提交
+        </var-button>
+        <var-button type="primary" native-type="reset">
+          清空
+        </var-button>
+      </var-space>
+    </var-space>
+  </var-form>
 </template>
 ```
 
@@ -278,6 +329,15 @@ bindForm?.(apis)
 | `validate` | 触发所有表单组件的校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空所有表单组件的校验信息 | `-` | `-` |
 | `reset` | 清空所有表单组件绑定的值和校验信息 | `-` | `-` |
+
+### 事件
+
+#### Form Events
+
+| 事件名 | 说明 | 参数 |
+| --- | --- | --- |
+| `submit` | 表单提交时触发 | `valid: boolean` 是否通过表单验证 |
+| `reset` | 表单清空时触发 | `-` |
 
 ### 插槽
 

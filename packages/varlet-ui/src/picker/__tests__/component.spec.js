@@ -3,6 +3,7 @@ import VarPicker from '../Picker'
 import { createApp, nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockTranslate, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test picker component plugin', () => {
   const app = createApp({}).use(Picker.Component)

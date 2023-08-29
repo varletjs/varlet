@@ -3,6 +3,7 @@ import VarCounter from '../Counter'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test counter plugin', () => {
   const app = createApp({}).use(Counter)

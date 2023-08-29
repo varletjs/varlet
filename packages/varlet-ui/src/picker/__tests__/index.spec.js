@@ -2,6 +2,7 @@ import Picker from '..'
 import VarPicker from '../Picker'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test picker plugin', () => {
   const app = createApp({}).use(Picker)

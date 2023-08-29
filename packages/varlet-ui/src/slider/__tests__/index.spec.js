@@ -3,6 +3,7 @@ import VarSlider from '../Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, mockConsole } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
 beforeAll(() => {

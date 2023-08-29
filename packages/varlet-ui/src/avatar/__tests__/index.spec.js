@@ -4,6 +4,7 @@ import AvatarGroup from '../../avatar-group'
 import VarAvatarGroup from '../../avatar-group/AvatarGroup.vue'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test avatar plugin', () => {
   const app = createApp({}).use(Avatar)
