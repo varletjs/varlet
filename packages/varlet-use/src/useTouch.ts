@@ -25,8 +25,11 @@ export function useTouch() {
   const moveY = ref(0)
   const direction = ref<TouchDirection | undefined>()
   const touching = ref(false)
+  const dragging = ref(false)
   const startTime = ref(0)
   const distance = ref(0)
+
+  let draggingAnimationFrame: number | null = null
 
   const resetTouch = () => {
     startX.value = 0
@@ -41,6 +44,7 @@ export function useTouch() {
     moveY.value = 0
     direction.value = undefined
     touching.value = false
+    dragging.value = false
     startTime.value = 0
     distance.value = 0
   }
@@ -56,11 +60,17 @@ export function useTouch() {
     prevY.value = y
     touching.value = true
     startTime.value = performance.now()
+    dragging.value = false
+
+    if (draggingAnimationFrame) {
+      window.cancelAnimationFrame(draggingAnimationFrame)
+    }
   }
 
   const moveTouch = (event: TouchEvent) => {
     const { clientX: x, clientY: y } = event.touches[0]
 
+    dragging.value = true
     deltaX.value = x - startX.value
     deltaY.value = y - startY.value
     offsetX.value = Math.abs(deltaX.value)
@@ -79,6 +89,10 @@ export function useTouch() {
 
   const endTouch = () => {
     touching.value = false
+
+    draggingAnimationFrame = window.requestAnimationFrame(() => {
+      dragging.value = false
+    })
   }
 
   return {
@@ -94,6 +108,7 @@ export function useTouch() {
     moveY,
     direction,
     touching,
+    dragging,
     startTime,
     distance,
     resetTouch,

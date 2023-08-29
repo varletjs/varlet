@@ -44,24 +44,16 @@ export default defineComponent({
     })
     const dragged = ref(false)
     const enableTransition = ref(false)
-    const dragging = ref(false)
-    const { touching, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
+    const { touching, dragging, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
     const { disabled: teleportDisabled } = useTeleport()
-
-    let draggingRunner: number | null = null
 
     const handleTouchstart = (event: TouchEvent) => {
       if (props.disabled) {
         return
       }
 
-      if (draggingRunner) {
-        window.clearTimeout(draggingRunner)
-      }
-
-      saveXY()
       startTouch(event)
-      dragging.value = false
+      saveXY()
     }
 
     const handleTouchmove = async (event: TouchEvent) => {
@@ -69,11 +61,10 @@ export default defineComponent({
         return
       }
 
+      moveTouch(event)
       event.preventDefault()
       enableTransition.value = false
       dragged.value = true
-      dragging.value = true
-      moveTouch(event)
 
       if (props.direction.includes('x')) {
         x.value += moveX.value
@@ -94,10 +85,6 @@ export default defineComponent({
       endTouch()
       enableTransition.value = true
       attract()
-
-      draggingRunner = window.setTimeout(() => {
-        dragging.value = false
-      })
     }
 
     const handleClick = (event: Event) => {
@@ -225,13 +212,11 @@ export default defineComponent({
 
     // expose
     const reset = () => {
+      resetTouch()
       enableTransition.value = false
       dragged.value = false
-      dragging.value = false
       x.value = 0
       y.value = 0
-
-      resetTouch()
     }
 
     watch(() => props.boundary, toPxBoundary)
