@@ -149,7 +149,7 @@ function handleReset() {
 </script>
 
 <template>
-  <var-form @submit="handleSubmit">
+  <var-form @submit="handleSubmit" @reset="handleReset">
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="请输入用户名"
