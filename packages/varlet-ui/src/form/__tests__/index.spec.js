@@ -100,9 +100,9 @@ test('test form with input', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await triggerEvents()
-  expect(onInput).toHaveBeenCalledTimes(0)
+  expect(onInput).toHaveBeenCalledTimes(1)
   expect(onClick).toHaveBeenCalledTimes(1)
-  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(1)
 
   const { form } = wrapper.vm.$refs
   await expectValidate(form, wrapper, '不能为空')

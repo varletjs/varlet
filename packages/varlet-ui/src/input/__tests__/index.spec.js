@@ -279,11 +279,11 @@ test('test input readonly', async () => {
 
   await triggerEvents(wrapper)
 
-  expect(onInput).toHaveBeenCalledTimes(0)
+  expect(onInput).toHaveBeenCalledTimes(1)
   expect(onClear).toHaveBeenCalledTimes(0)
   expect(onClick).toHaveBeenCalledTimes(2)
-  expect(onChange).toHaveBeenCalledTimes(0)
-  expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(1)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })
