@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "2.14.2",
+  "version": "2.15.0",
   "type": "module",
   "description": "cli of varlet",
   "bin": {
@@ -95,7 +95,7 @@
     "@varlet/touch-emulator": "workspace:*",
     "@vue/runtime-core": "3.3.4",
     "@vue/test-utils": "2.4.1",
-    "@vitest/coverage-istanbul":"0.34.3",
+    "@vitest/coverage-istanbul": "0.34.3",
     "vitest": "0.34.3",
     "jsdom": "22.1.0",
     "clipboard": "^2.0.6",
