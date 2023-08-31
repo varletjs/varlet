@@ -137,7 +137,7 @@ export const getGlobalThis = () => {
 export const requestAnimationFrame = (fn: FrameRequestCallback): number => {
   const globalThis = getGlobalThis()
 
-  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
+  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn)
 }
 
 export const cancelAnimationFrame = (handle: number) => {
