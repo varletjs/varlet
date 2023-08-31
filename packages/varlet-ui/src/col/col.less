@@ -10,6 +10,7 @@
 .create-col(@i) when (@i =< 24) {
   .var-col--span-@{i} {
     flex: 0 0 @i * (100% / 24);
+    max-width: @i * (100% / 24);
   }
 
   .var-col--offset-@{i} {
@@ -22,6 +23,7 @@
 .create-responsive-col(@i, @mode) when (@i =< 24) {
   .var-col--span-@{mode}-@{i} {
     flex: 0 0 @i * (100% / 24);
+    max-width: @i * (100% / 24);
   }
 
   .var-col--offset-@{mode}-@{i} {
