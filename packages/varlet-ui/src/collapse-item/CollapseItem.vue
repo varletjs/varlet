@@ -39,15 +39,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue'
-import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
-import { isArray } from '@varlet/shared'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useCollapse } from './provide'
-import { props } from './props'
 import VarIcon from '../icon'
-import type { Ref, ComputedRef } from 'vue'
-import type { CollapseItemProvider } from './provide'
+import { defineComponent, ref, watch, computed, type Ref, type ComputedRef } from 'vue'
+import { isArray, doubleRaf, raf } from '@varlet/shared'
+import { createNamespace, formatElevation } from '../utils/components'
+import { useCollapse, type CollapseItemProvider } from './provide'
+import { props } from './props'
 
 const { n, classes } = createNamespace('collapse-item')
 
@@ -83,55 +80,53 @@ export default defineComponent({
       }
     }
 
-    const openPanel = () => {
+    const openPanel = async () => {
       if (!contentEl.value) {
         return
       }
 
       contentEl.value.style.height = ''
       showContent.value = true
+      await raf()
 
-      requestAnimationFrame(() => {
-        if (!contentEl.value) {
-          return
-        }
+      if (!contentEl.value) {
+        return
+      }
 
-        const { offsetHeight } = contentEl.value
-        contentEl.value.style.height = 0 + 'px'
+      const { offsetHeight } = contentEl.value
+      contentEl.value.style.height = 0 + 'px'
+      await raf()
 
-        requestAnimationFrame(() => {
-          if (!contentEl.value) {
-            return
-          }
+      if (!contentEl.value) {
+        return
+      }
 
-          contentEl.value.style.height = offsetHeight + 'px'
+      contentEl.value.style.height = offsetHeight + 'px'
 
-          if (!isInitToTrigger) {
-            return
-          }
+      if (!isInitToTrigger) {
+        return
+      }
 
-          nextTickFrame(() => {
-            if (isInitToTrigger) {
-              transitionend()
-            }
-          })
-        })
-      })
+      await doubleRaf()
+
+      if (isInitToTrigger) {
+        transitionend()
+      }
     }
 
     const start = () => {
       isInitToTrigger = false
     }
 
-    const closePanel = () => {
-      if (!contentEl.value) return
+    const closePanel = async () => {
+      if (!contentEl.value) {
+        return
+      }
 
       const { offsetHeight } = contentEl.value
       contentEl.value.style.height = offsetHeight + 'px'
-
-      requestAnimationFrame(() => {
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
-      })
+      await raf()
+      contentEl.value.style.height = 0 + 'px'
     }
 
     const transitionend = () => {
@@ -151,8 +146,7 @@ export default defineComponent({
     bindCollapse(collapseItemProvider)
 
     watch(isShow, (value) => {
-      if (value) openPanel()
-      else closePanel()
+      value ? openPanel() : closePanel()
     })
 
     return {

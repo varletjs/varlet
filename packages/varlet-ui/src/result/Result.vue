@@ -27,17 +27,17 @@
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent } from 'vue'
-import { toNumber } from '@varlet/shared'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
-import { toPxNum, toSizeUnit } from '../utils/elements'
 import Info from './Info.vue'
 import Error from './Error.vue'
 import Warning from './Warning.vue'
 import Success from './Success.vue'
 import Question from './Question.vue'
 import Empty from './Empty.vue'
+import { computed, ComputedRef, defineComponent } from 'vue'
+import { toNumber } from '@varlet/shared'
+import { props } from './props'
+import { createNamespace } from '../utils/components'
+import { toPxNum, toSizeUnit } from '../utils/elements'
 
 const { n, classes } = createNamespace('result')
 

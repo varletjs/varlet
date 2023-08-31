@@ -66,14 +66,6 @@ export const easeInOutCubic = (value: number): number =>
 
 export const dt = (value: unknown, defaultText: string | undefined) => (value == null ? defaultText : value)
 
-export const getGlobalThis = (): typeof globalThis => {
-  if (typeof globalThis !== 'undefined') return globalThis
-
-  if (typeof window !== 'undefined') return window
-
-  return typeof global !== 'undefined' ? global : self
-}
-
 // eslint-disable-next-line default-param-last
 export const padStart = (str = '', maxLength: number, fillString = ''): string => {
   if (str.length >= maxLength) return str

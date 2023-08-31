@@ -4,6 +4,7 @@ import { isArray } from '@varlet/shared'
 import { call, createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
+
 import '../styles/common.less'
 import './space.less'
 

@@ -59,7 +59,7 @@
 import { defineComponent, ref, type Ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { getStyle } from '../utils/elements'
+import { getStyle } from '@varlet/shared'
 
 const { n, classes } = createNamespace('watermark')
 

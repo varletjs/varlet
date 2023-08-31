@@ -94,13 +94,13 @@
 import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarButton from '../button'
-import { ref, defineComponent, watch, computed, nextTick } from 'vue'
+import { ref, defineComponent, watch, computed, nextTick, type Ref } from 'vue'
 import { props } from './props'
-import { doubleRaf, toSizeUnit, getRect } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
+import { doubleRaf, getRect } from '@varlet/shared'
 import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
-import type { Ref } from 'vue'
 
 const { n, classes } = createNamespace('card')
 

@@ -110,12 +110,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, type Ref, computed, type ComputedRef, onUpdated } from 'vue'
+import { defineComponent, ref, onUpdated, type Ref, computed, type ComputedRef } from 'vue'
 import { props } from './props'
-import { isEmpty } from '@varlet/shared'
+import { isEmpty, getStyle } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
-import { getStyle } from '../utils/elements'
 
 const { n, classes } = createNamespace('field-decorator')
 

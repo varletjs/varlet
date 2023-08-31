@@ -12,11 +12,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useSwipe } from './provide'
+import { defineComponent, ref, type Ref } from 'vue'
+import { useSwipe, type SwipeItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
-import type { Ref } from 'vue'
-import type { SwipeItemProvider } from './provide'
 
 const { n } = createNamespace('swipe-item')
 

@@ -27,6 +27,8 @@ export const isEmpty = (val: unknown) =>
 
 export const isWindow = (val: unknown): val is Window => val === window
 
+export const supportTouch = () => inBrowser() && 'ontouchstart' in window
+
 export const toNumber = (val: number | string | boolean | undefined | null): number => {
   if (val == null) return 0
 
@@ -119,3 +121,76 @@ export const normalizeToArray = <T>(value: T | T[]) => (isArray(value) ? value :
 export const clamp = (num: number, min: number, max: number) => Math.min(max, Math.max(min, num))
 
 export const clampArrayRange = (index: number, arr: Array<unknown>) => clamp(index, 0, arr.length - 1)
+
+export function getGlobalThis(): typeof globalThis {
+  if (typeof globalThis !== 'undefined') {
+    return globalThis
+  }
+
+  if (inBrowser()) {
+    return window
+  }
+
+  return typeof global !== 'undefined' ? global : self
+}
+
+export const requestAnimationFrame = (fn: FrameRequestCallback): number => {
+  const globalThis = getGlobalThis()
+
+  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
+}
+
+export const cancelAnimationFrame = (handle: number) => {
+  const globalThis = getGlobalThis()
+
+  globalThis.cancelAnimationFrame ? globalThis.cancelAnimationFrame(handle) : globalThis.clearTimeout(handle)
+}
+
+export const raf = () =>
+  new Promise((resolve) => {
+    requestAnimationFrame(resolve)
+  })
+
+export const doubleRaf = () =>
+  new Promise((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(resolve)
+    })
+  })
+
+// shorthand only
+export const getStyle = (element: Element) => window.getComputedStyle(element)
+
+export const getRect = (element: Element | Window): DOMRect => {
+  if (isWindow(element)) {
+    const width = element.innerWidth
+    const height = element.innerHeight
+    const rect = {
+      x: 0,
+      y: 0,
+      top: 0,
+      left: 0,
+      right: width,
+      bottom: height,
+      width,
+      height,
+    }
+
+    return {
+      ...rect,
+      toJSON: () => rect,
+    }
+  }
+
+  return element.getBoundingClientRect()
+}
+
+export const inViewport = (element: HTMLElement) => {
+  const { top, bottom, left, right } = getRect(element)
+  const { width, height } = getRect(window)
+
+  const xInViewport = left <= width && right >= 0
+  const yInViewport = top <= height && bottom >= 0
+
+  return xInViewport && yInViewport
+}

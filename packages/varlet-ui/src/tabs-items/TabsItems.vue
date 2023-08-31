@@ -10,7 +10,7 @@ import { defineComponent, watch, ref, type Ref } from 'vue'
 import { useTabItem } from './provide'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
-import { doubleRaf } from '../utils/elements'
+import { doubleRaf } from '@varlet/shared'
 import { type TabItemProvider } from '../tab-item/provide'
 
 const { n } = createNamespace('tabs-items')

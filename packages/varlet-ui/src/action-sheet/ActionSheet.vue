@@ -51,13 +51,12 @@
 import Ripple from '../ripple'
 import VarPopup from '../popup'
 import VarIcon from '../icon'
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, type Ref } from 'vue'
 import { props } from './props'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
 import { createNamespace, call } from '../utils/components'
-import type { Ref } from 'vue'
-import type { ActionItem } from './index'
+import { type ActionItem } from './index'
 
 const { n, classes } = createNamespace('action-sheet')
 

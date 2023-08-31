@@ -16,27 +16,25 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated, onActivated } from 'vue'
-import { isPlainObject, isWindow, toNumber } from '@varlet/shared'
-import { easeInOutCubic } from '../utils/shared'
 import {
-  doubleRaf,
-  getParentScroller,
-  getScrollLeft,
-  getScrollTop,
-  nextTickFrame,
-  requestAnimationFrame,
-  scrollTo as varScrollTo,
-  toPxNum,
-  getRect,
-} from '../utils/elements'
-import { useIndexAnchors } from './provide'
+  computed,
+  defineComponent,
+  ref,
+  watch,
+  onBeforeUnmount,
+  onDeactivated,
+  onActivated,
+  type Ref,
+  type ComputedRef,
+} from 'vue'
+import { isPlainObject, isWindow, toNumber, doubleRaf, requestAnimationFrame, getRect } from '@varlet/shared'
+import { easeInOutCubic } from '../utils/shared'
+import { getParentScroller, getScrollLeft, getScrollTop, scrollTo as varScrollTo, toPxNum } from '../utils/elements'
+import { useIndexAnchors, type IndexBarProvider } from './provide'
 import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
-import type { Ref, ComputedRef } from 'vue'
-import type { IndexBarProvider } from './provide'
-import type { IndexAnchorProvider } from '../index-anchor/provide'
 import { createNamespace, call } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
+import { type IndexAnchorProvider } from '../index-anchor/provide'
 
 const { n, classes } = createNamespace('index-bar')
 
@@ -135,9 +133,8 @@ export default defineComponent({
         duration: toNumber(props.duration),
       })
 
-      nextTickFrame(() => {
-        clickedName.value = ''
-      })
+      await doubleRaf()
+      clickedName.value = ''
     }
 
     const setScroller = async () => {

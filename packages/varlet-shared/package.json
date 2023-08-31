@@ -28,6 +28,7 @@
     "build": "rimraf ./lib && tsc"
   },
   "devDependencies": {
+    "@types/node": "^18.7.18",
     "typescript": "^5.1.5",
     "rimraf": "^5.0.1"
   }

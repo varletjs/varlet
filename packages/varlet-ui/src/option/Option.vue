@@ -36,14 +36,12 @@
 <script lang="ts">
 import VarCheckbox from '../checkbox'
 import Ripple from '../ripple'
-import { defineComponent, computed, ref, watch } from 'vue'
-import { useSelect } from './provide'
-import { createNamespace } from '../utils/components'
-import { props } from './props'
-import type { Ref, ComputedRef } from 'vue'
-import type { OptionProvider } from './provide'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { defineComponent, computed, ref, watch, type Ref, type ComputedRef } from 'vue'
+import { useSelect, OptionProvider } from './provide'
+import { createNamespace } from '../utils/components'
+import { props } from './props'
 
 const { n, classes } = createNamespace('option')
 

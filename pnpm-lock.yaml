@@ -237,6 +237,9 @@ importers:
 
   packages/varlet-shared:
     devDependencies:
+      '@types/node':
+        specifier: ^18.7.18
+        version: 18.7.20
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -6368,6 +6371,7 @@ packages:
 
   /node-addon-api@4.3.0:
     resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -6864,6 +6868,7 @@ packages:
 
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+    requiresBuild: true
     optional: true
 
   /psl@1.9.0:

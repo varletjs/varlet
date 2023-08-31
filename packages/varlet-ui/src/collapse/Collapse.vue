@@ -5,15 +5,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, watch } from 'vue'
-import { useCollapseItem } from './provide'
-import { props } from './props'
+import { computed, defineComponent, nextTick, watch, type ComputedRef } from 'vue'
+import { useCollapseItem, type CollapseProvider } from './provide'
+import { props, type CollapseModelValue } from './props'
 import { call, createNamespace } from '../utils/components'
 import { isArray } from '@varlet/shared'
-import type { ComputedRef } from 'vue'
-import type { CollapseItemProvider } from '../collapse-item/provide'
-import type { CollapseProvider } from './provide'
-import type { CollapseModelValue } from './props'
+import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { n } = createNamespace('collapse')
 

@@ -66,6 +66,8 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
 import {
   defineComponent,
   ref,
@@ -81,11 +83,9 @@ import {
 } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
-import { getLeft, multiplySizeUnit, getRect } from '../utils/elements'
+import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
-import { isArray, isNumber, toNumber } from '@varlet/shared'
+import { isArray, isNumber, toNumber, getRect } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import { onSmartMounted } from '@varlet/use'
 import { type SliderProvider } from './provide'

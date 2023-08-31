@@ -19,9 +19,9 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
-import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/elements'
+import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isNumber, isString, toNumber } from '@varlet/shared'
+import { isNumber, isString, toNumber, getRect } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { useEventListener, onSmartMounted } from '@varlet/use'
 

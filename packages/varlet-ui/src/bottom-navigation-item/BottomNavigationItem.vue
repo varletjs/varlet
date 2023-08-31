@@ -29,13 +29,11 @@
 import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, computed, ref, watch, type ComputedRef } from 'vue'
 import { props } from './props'
-import { useBottomNavigation } from './provide'
+import { useBottomNavigation, type BottomNavigationItemProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
-import type { BottomNavigationItemProvider } from './provide'
-import type { ComputedRef } from 'vue'
-import type { BadgeProps } from '../../types'
+import { type BadgeProps } from '../../types'
 
 const { n, classes } = createNamespace('bottom-navigation-item')
 

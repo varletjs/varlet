@@ -23,14 +23,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { props } from './props'
-import { useSteps } from './provide'
 import VarIcon from '../icon'
+import { computed, defineComponent, type ComputedRef } from 'vue'
+import { props } from './props'
+import { useSteps, type StepProvider } from './provide'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
-import type { ComputedRef } from 'vue'
-import type { StepProvider } from './provide'
 
 const { n, classes } = createNamespace('step')
 

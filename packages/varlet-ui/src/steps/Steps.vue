@@ -5,11 +5,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useStep } from './provide'
+import { computed, defineComponent, type ComputedRef } from 'vue'
+import { useStep, type StepsProvider } from './provide'
 import { props } from './props'
-import type { ComputedRef } from 'vue'
-import type { StepsProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
 
 const { n } = createNamespace('steps')

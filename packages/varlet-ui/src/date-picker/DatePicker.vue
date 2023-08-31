@@ -73,19 +73,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, reactive, watch } from 'vue'
 import dayjs from 'dayjs/esm'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
-import { props, MONTH_LIST, WEEK_HEADER } from './props'
-import { isArray, toNumber } from '@varlet/shared'
-import { nextTickFrame } from '../utils/elements'
+import {
+  defineComponent,
+  ref,
+  computed,
+  reactive,
+  watch,
+  type Ref,
+  type ComputedRef,
+  type UnwrapRef,
+  type RendererNode,
+} from 'vue'
+import {
+  props,
+  MONTH_LIST,
+  WEEK_HEADER,
+  type MonthDict,
+  type Choose,
+  type Preview,
+  type WeekDict,
+  type ComponentProps,
+  type TouchDirection,
+} from './props'
+import { isArray, toNumber, doubleRaf } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { pack } from '../locale'
-import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
-import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
 
 const { n, classes } = createNamespace('date-picker')
 
@@ -249,14 +266,13 @@ export default defineComponent({
       checkType = x > 0 ? 'prev' : 'next'
     }
 
-    const handleTouchend = () => {
+    const handleTouchend = async () => {
       if (isUntouchable.value || touchDirection !== 'x') return
 
       const componentRef = getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
-      nextTickFrame(() => {
-        componentRef.value!.forwardRef(checkType)
-        resetState()
-      })
+      await doubleRaf()
+      componentRef.value!.forwardRef(checkType)
+      resetState()
     }
 
     const updateRange = (date: string, type: string) => {

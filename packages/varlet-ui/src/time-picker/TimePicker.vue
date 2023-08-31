@@ -54,17 +54,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, watch } from 'vue'
 import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
-import { props, hoursAmpm, hours24 } from './props'
-import { toNumber } from '@varlet/shared'
+import {
+  computed,
+  defineComponent,
+  reactive,
+  ref,
+  watch,
+  type ComputedRef,
+  type Ref,
+  type DefineComponent,
+  type UnwrapRef,
+} from 'vue'
+import { props, hoursAmpm, hours24, type Time, type AmPm } from './props'
+import { toNumber, getRect } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
-import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
-import type { Time, AmPm } from './props'
-import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 

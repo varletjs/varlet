@@ -3,7 +3,7 @@ import VarMenu from '../Menu'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/test'
-import { doubleRaf } from '../../utils/elements'
+import { doubleRaf } from '@varlet/shared'
 import { expect, vi } from 'vitest'
 
 test('test menu plugin', () => {

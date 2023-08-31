@@ -1,8 +1,7 @@
-import { ref } from 'vue'
-import type { Ref } from 'vue'
-import type { Month, Week } from '../date-picker/props'
 import zhCN from './zh-CN'
 import enUS from './en-US'
+import { ref, type Ref } from 'vue'
+import { type Month, type Week } from '../date-picker/props'
 
 export type Pack = {
   // Dialog

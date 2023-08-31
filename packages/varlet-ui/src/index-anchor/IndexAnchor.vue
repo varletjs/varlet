@@ -15,11 +15,9 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { computed, defineComponent, ref, Transition } from 'vue'
-import { useIndexBar } from './provide'
+import { computed, defineComponent, ref, Transition, type Ref, type ComputedRef, type RendererNode } from 'vue'
+import { useIndexBar, type IndexAnchorProvider } from './provide'
 import { props } from './props'
-import type { Ref, ComputedRef, RendererNode } from 'vue'
-import type { IndexAnchorProvider } from './provide'
 import { createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('index-anchor')

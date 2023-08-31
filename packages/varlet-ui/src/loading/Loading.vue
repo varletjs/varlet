@@ -42,11 +42,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, type ComputedRef } from 'vue'
 import { props } from './props'
 import { createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
-import type { ComputedRef } from 'vue'
 
 const { n, classes } = createNamespace('loading')
 

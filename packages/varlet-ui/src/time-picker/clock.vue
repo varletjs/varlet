@@ -35,16 +35,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
 import dayjs from 'dayjs/esm'
-import { hoursAmpm, hours24, minSec } from './props'
+import { computed, defineComponent, ref, watch, type ComputedRef, type Ref, type PropType } from 'vue'
+import { hoursAmpm, hours24, minSec, type Time, type AmPm, type Format, type AllowedTime } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
-import { toNumber } from '@varlet/shared'
+import { toNumber, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import type { ComputedRef, Ref, PropType } from 'vue'
-import type { Time, AmPm, Format, AllowedTime } from './props'
-import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 

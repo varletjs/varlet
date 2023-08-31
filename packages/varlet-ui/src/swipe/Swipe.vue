@@ -34,9 +34,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
-import { doubleRaf, nextTickFrame } from '../utils/elements'
 import { props, type SwipeToOptions } from './props'
-import { clamp, isNumber, toNumber } from '@varlet/shared'
+import { clamp, isNumber, toNumber, doubleRaf } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { onSmartUnmounted, onWindowResize, useTouch } from '@varlet/use'
 import { usePopup } from '../popup/provide'
@@ -147,7 +146,7 @@ export default defineComponent({
       return clamp(index, 0, length.value - 1)
     }
 
-    const fixPosition = (fn?: () => void) => {
+    const fixPosition = async () => {
       const overLeft = trackTranslate.value >= size.value
       const overRight = trackTranslate.value <= -trackSize.value
       const leftTranslate = 0
@@ -162,10 +161,8 @@ export default defineComponent({
         findSwipeItem(length.value - 1).setTranslate(0)
       }
 
-      nextTickFrame(() => {
-        lockDuration.value = false
-        call(fn)
-      })
+      await doubleRaf()
+      lockDuration.value = false
     }
 
     const initialIndex = () => {
@@ -201,17 +198,15 @@ export default defineComponent({
       dispatchSwipeItems()
     }
 
-    const handleTouchstart = (event: TouchEvent) => {
+    const handleTouchstart = async (event: TouchEvent) => {
       if (length.value <= 1 || !props.touchable) {
         return
       }
 
       startTouch(event)
       stopAutoplay()
-
-      fixPosition(() => {
-        lockDuration.value = true
-      })
+      await fixPosition()
+      lockDuration.value = true
     }
 
     const handleTouchmove = (event: TouchEvent) => {
@@ -286,7 +281,7 @@ export default defineComponent({
       })
     }
     // expose
-    const next = (options?: SwipeToOptions) => {
+    const next = async (options?: SwipeToOptions) => {
       if (length.value <= 1) {
         return
       }
@@ -301,20 +296,20 @@ export default defineComponent({
         call(onChange, index.value)
       }
 
-      fixPosition(() => {
-        if (currentIndex === length.value - 1 && loop) {
-          findSwipeItem(0).setTranslate(trackSize.value)
-          trackTranslate.value = length.value * -size.value
-          return
-        }
+      await fixPosition()
 
-        if (currentIndex !== length.value - 1) {
-          trackTranslate.value = index.value * -size.value
-        }
-      })
+      if (currentIndex === length.value - 1 && loop) {
+        findSwipeItem(0).setTranslate(trackSize.value)
+        trackTranslate.value = length.value * -size.value
+        return
+      }
+
+      if (currentIndex !== length.value - 1) {
+        trackTranslate.value = index.value * -size.value
+      }
     }
     // expose
-    const prev = (options?: SwipeToOptions) => {
+    const prev = async (options?: SwipeToOptions) => {
       if (length.value <= 1) {
         return
       }
@@ -329,17 +324,17 @@ export default defineComponent({
         call(onChange, index.value)
       }
 
-      fixPosition(() => {
-        if (currentIndex === 0 && loop) {
-          findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
-          trackTranslate.value = size.value
-          return
-        }
+      await fixPosition()
 
-        if (currentIndex !== 0) {
-          trackTranslate.value = index.value * -size.value
-        }
-      })
+      if (currentIndex === 0 && loop) {
+        findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
+        trackTranslate.value = size.value
+        return
+      }
+
+      if (currentIndex !== 0) {
+        trackTranslate.value = index.value * -size.value
+      }
     }
     // expose
     const to = (idx: number, options?: SwipeToOptions) => {

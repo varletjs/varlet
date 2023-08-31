@@ -7,14 +7,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch } from 'vue'
-import { props } from './props'
-import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
+import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch, type Ref } from 'vue'
+import { props, type TimeData } from './props'
 import { call, createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import { toNumber } from '@varlet/shared'
-import type { Ref } from 'vue'
-import type { TimeData } from './props'
+import { toNumber, requestAnimationFrame, cancelAnimationFrame } from '@varlet/shared'
 
 const { n } = createNamespace('countdown')
 

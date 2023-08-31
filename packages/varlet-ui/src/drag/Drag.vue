@@ -22,9 +22,9 @@
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
 import { createNamespace, useTeleport, call } from '../utils/components'
-import { getRect, toPxNum } from '../utils/elements'
+import { toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
-import { clamp } from '@varlet/shared'
+import { clamp, getRect } from '@varlet/shared'
 
 const { n, classes } = createNamespace('drag')
 

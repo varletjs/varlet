@@ -18,9 +18,8 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, type ComputedRef } from 'vue'
 import { props } from './props'
-import type { ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('chip')
