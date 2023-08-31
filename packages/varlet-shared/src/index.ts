@@ -122,7 +122,7 @@ export const clamp = (num: number, min: number, max: number) => Math.min(max, Ma
 
 export const clampArrayRange = (index: number, arr: Array<unknown>) => clamp(index, 0, arr.length - 1)
 
-export function getGlobalThis(): typeof globalThis {
+export const getGlobalThis = () => {
   if (typeof globalThis !== 'undefined') {
     return globalThis
   }
