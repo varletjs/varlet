@@ -164,7 +164,7 @@ import { Snackbar } from '@varlet/ui'
 
 ```html
 <script setup>
-import { ref } from 'vue' 
+import { ref } from 'vue'
 
 const swipeRef = ref(null)
 </script>
@@ -181,8 +181,15 @@ const swipeRef = ref(null)
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
     <template #indicator="{ index, length }">
-      <div class="swipe-example-indicators-left" :class="index === 0 ? 'swipe-example-active-indicator' : 'swipe-example-inactive-indicator'" @click="index !== 0 && swipeRef.prev()"><var-icon name="chevron-left" /></div>
-      <div class="swipe-example-indicators-right" :class="index === length - 1 ? 'swipe-example-active-indicator' : 'swipe-example-inactive-indicator'" @click="index !== length - 1 && swipeRef.next()"><var-icon name="chevron-right" /></div>
+      <div class="swipe-example-indicators">
+        <div 
+          class="swipe-example-indicator" 
+          :class="index === idx ? 'swipe-example-active-indicator' : ''" 
+          v-for="(l, idx) in length" 
+          :key="l"
+          @click="swipeRef.to(idx)">
+        </div>
+      </div>
     </template>
   </var-swipe>
 </template>
@@ -190,6 +197,7 @@ const swipeRef = ref(null)
 <style>
 .swipe-example {
   height: 160px;
+  position: relative;
 }
 
 .swipe-example-image {
@@ -199,34 +207,25 @@ const swipeRef = ref(null)
   pointer-events: none;
 }
 
-.swipe-example-indicators-left {
+.swipe-example-indicators {
   position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  text-align: center;
-  padding: 4px 0;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.swipe-example-indicators-right {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  padding: 4px 0;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
+.swipe-example-indicator {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 0.3;
+  margin: 0 4px;
+  transition: opacity 0.3s;
 }
 
 .swipe-example-active-indicator {
-  color: #5d5d5d;
-}
-
-.swipe-example-inactive-indicator {
-  color: #e5e5e5;
+  opacity: 1;
 }
 </style> 
 ```
