@@ -1,5 +1,6 @@
 import config from '@config'
 import AppType from './appType'
+import { Themes } from '@varlet/ui'
 import { onMounted, onUnmounted } from 'vue'
 import { kebabCase } from '@varlet/shared'
 import { get } from 'lodash-es'
@@ -115,7 +116,7 @@ export function useRouteListener(cb: () => void) {
 export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
     const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-    const darkStyleVars = { ...siteStyleVars, ...dark }
+    const darkStyleVars = { ...siteStyleVars, ...Themes.dark, ...dark }
     StyleProvider(theme === 'darkTheme' ? darkStyleVars : siteStyleVars)
     setColorScheme(theme)
     cb?.(theme)

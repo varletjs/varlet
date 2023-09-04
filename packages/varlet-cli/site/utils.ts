@@ -1,4 +1,5 @@
 import { get } from 'lodash-es'
+import { Themes } from '@varlet/ui'
 import { StyleProvider, type Theme, withSiteConfigNamespace, setColorScheme } from '@varlet/cli/client'
 
 export interface Menu {
@@ -32,8 +33,7 @@ export function inIframe() {
 
 export function setTheme(config: Record<string, any>, theme: Theme) {
   const styleVars = withSiteConfigNamespace(get(config, theme, {}))
-
-  StyleProvider(styleVars)
+  StyleProvider({ ...styleVars, ...(theme === 'darkTheme' ? Themes.dark : {}) })
   setColorScheme(theme)
 }
 
