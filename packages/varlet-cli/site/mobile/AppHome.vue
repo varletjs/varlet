@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="varlet-logo">
     <h1 class="varlet-home__title">
       <img class="varlet-home__image" :src="logo" />
       <span>{{ title }}</span>
@@ -19,12 +19,12 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import config from '@config'
 import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import { watchLang, watchPlatform } from '@varlet/cli/client'
-import { inIframe, isPhone } from '../../utils'
+import { inIframe, isPhone } from '../utils'
 
 export default {
   name: 'AppHome',
@@ -34,7 +34,7 @@ export default {
     const description = ref(config?.mobile?.title ?? {})
     const menu = ref(config?.pc?.menu ?? [])
     const configComponents = menu.value.filter((item: any) => item.type === 2)
-    const components = reactive(configComponents)
+    const components = reactive<any>(configComponents)
     const lang = ref('zh-CN')
     const platform = ref('mobile')
     const router = useRouter()
@@ -75,8 +75,8 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
-.logo {
+<style lang="less">
+.varlet-logo {
   height: 100px;
   padding-top: 30px;
   margin-bottom: 20px;

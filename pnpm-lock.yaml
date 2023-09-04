@@ -201,6 +201,9 @@ importers:
       '@varlet/touch-emulator':
         specifier: workspace:*
         version: link:../varlet-touch-emulator
+      '@varlet/ui':
+        specifier: workspace:*
+        version: link:../varlet-ui
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -282,6 +285,9 @@ importers:
       '@varlet/touch-emulator':
         specifier: workspace:*
         version: link:../varlet-touch-emulator
+      '@varlet/ui':
+        specifier: 'workspace: *'
+        version: 'link:'
       '@vitest/coverage-istanbul':
         specifier: 0.34.3
         version: 0.34.3(vitest@0.34.3)

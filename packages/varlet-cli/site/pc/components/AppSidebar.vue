@@ -38,7 +38,8 @@ export default defineComponent({
       type: String
     },
     language: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   emits: ['change'],
@@ -61,7 +62,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @keyframes indicator-fade-in {
   from {
     transform: scaleY(0);
@@ -77,7 +78,7 @@ export default defineComponent({
 .varlet-site-sidebar {
   padding: 0 0 15px;
   position: fixed;
-  width: 240px;
+  width: 246px;
   top: 60px;
   bottom: 0;
   left: 0;
@@ -91,16 +92,16 @@ export default defineComponent({
   }
 
   &__item {
-    margin: 0;
-    user-select: none;
-    padding: 10px 28px;
+    margin: 0 !important;
+    user-select: none !important;
+    padding: 10px 28px !important;
 
     &--title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--site-config-color-text);
-      line-height: 28px;
-      padding: 8px 0 8px;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      color: var(--site-config-color-text) !important;
+      line-height: 28px !important;
+      padding: 8px 0 8px !important;
     }
 
     &--active {
@@ -125,18 +126,18 @@ export default defineComponent({
   }
 
   &__link {
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--site-config-color-text);
-    transition: color 0.2s;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    color: var(--site-config-color-text) !important;
+    transition: color 0.2s !important;
 
     &:hover {
-      color: var(--site-config-color-side-bar);
+      color: var(--site-config-color-side-bar) !important;
     }
   }
 
   &__title {
-    margin-top: 10px;
+    margin-top: 10px !important;
   }
 }
 </style>

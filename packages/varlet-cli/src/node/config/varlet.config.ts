@@ -80,7 +80,9 @@ export function defineConfig(config: VarletConfig) {
 }
 
 export function mergeStrategy(value: any, srcValue: any, key: string) {
-  if (key === 'features' && isArray(srcValue)) {
+  const keys = ['features', 'members']
+
+  if (keys.includes(key) && isArray(srcValue)) {
     return srcValue
   }
 }

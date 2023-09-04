@@ -1,15 +1,11 @@
 <script lang="ts">
 import config from '@config'
-import LogoAnimation from './components/LogoAnimation.vue'
 import { defineComponent, onMounted, ref } from 'vue'
 import { getPCLocationInfo } from '@varlet/cli/client'
 import { isPhone } from '../utils'
 import { get } from 'lodash-es'
 
 export default defineComponent({
-  components: {
-    LogoAnimation
-  },
   setup() {
     const useMobile = ref(get(config, 'useMobile'))
     const defaultLanguage = get(config, 'defaultLanguage')
@@ -30,7 +26,6 @@ export default defineComponent({
 
 <template>
   <router-view></router-view>
-  <logo-animation />
 </template>
 
 <style lang="less">

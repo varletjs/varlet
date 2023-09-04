@@ -42,6 +42,7 @@
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@varlet/shared": "workspace:*",
+    "@varlet/ui": "workspace:*",
     "@vue/test-utils": "2.4.1",
     "@vue/runtime-core": "3.3.4",
     "@vitest/coverage-istanbul": "0.34.3",

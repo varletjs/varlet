@@ -34,28 +34,23 @@
 </template>
 
 <script lang="ts">
-import Icon from '../icon'
-import Button from '../button'
-import Snackbar from '../snackbar'
-import Clipboard from 'clipboard'
-import context from '../context'
 import config from '@config'
-import { defineComponent, nextTick, ref, onMounted } from 'vue'
-import { doubleRaf } from '../utils/elements'
+import Clipboard from 'clipboard'
+import { Context, Snackbar } from '@varlet/ui'
+import { defineComponent, nextTick, ref, onMounted, type Ref } from 'vue'
+import { doubleRaf } from '@varlet/shared'
 import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo } from '@varlet/cli/client'
-import { utoa } from '../../utils'
-import type { Ref } from 'vue'
+import { utoa } from '../../../utils'
+import { type SiteContext } from '../../../types'
+
+const context = Context as SiteContext
 
 let clipId = 0
 const offset = 10
 
 export default defineComponent({
   name: 'VarSiteCodeExample',
-  components: {
-    [Button.name]: Button,
-    [Icon.name]: Icon
-  },
   props: {
     playgroundIgnore: {
       type: Boolean,
@@ -97,9 +92,7 @@ export default defineComponent({
 
     const toPlayground = () => {
       const codeText = code.value?.innerText ?? ''
-
       const file = { 'App.vue': codeText }
-
       const initialTheme = getBrowserTheme().replace('Theme', '')
 
       context.showPlayground = true

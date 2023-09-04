@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "@varlet/cli": "workspace:*",
+    "@varlet/ui": "workspace: *",
     "@varlet/touch-emulator": "workspace:*",
     "@vue/runtime-core": "3.3.4",
     "@vue/test-utils": "2.4.1",

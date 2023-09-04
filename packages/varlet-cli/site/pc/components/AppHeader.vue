@@ -1,6 +1,85 @@
+<template>
+  <div class="varlet-site-header">
+    <div class="varlet-site-header__lead">
+      <img class="varlet-site-header__logo" :src="config.logo" @click="backRoot"/>
+      <div class="varlet-site-header__title" v-if="title" @click="backRoot">{{ title }}</div>
+    </div>
+
+    <div class="varlet-site-header__tail">
+      <div
+        class="varlet-site-header__versions"
+        @mouseenter="isOpenVersionsMenu = true"
+        @mouseleave="isOpenVersionsMenu = false"
+        v-if="nonEmptyVersions && Object.keys(nonEmptyVersions).length"
+      >
+        <span style="font-size: 14px;">{{ currentVersion }}</span>
+        <var-icon name="chevron-down"/>
+        <transition name="fade">
+          <div
+            class="varlet-site-header__animation-list varlet-site-header__animation-versions var-elevation--5"
+            v-show="isOpenVersionsMenu"
+            :style="{ pointerEvents: isOpenVersionsMenu ? 'auto' : 'none' }"
+          >
+            <var-cell
+              v-for="(value, key) in nonEmptyVersions"
+              v-ripple
+              :key="key"
+              :class="{ 'varlet-site-header__animation-list--active': currentVersion === key }"
+              @click="open(value)"
+            >{{ key }}
+            </var-cell>
+          </div>
+        </transition>
+      </div>
+
+      <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
+        <var-icon name="code-json" :size="24"/>
+      </a>
+      <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
+        <var-icon name="github" :size="28"/>
+      </a>
+      <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
+        <var-icon
+          size="26px"
+          :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
+          :style="{
+            marginBottom: currentTheme === 'darkTheme' && '2px',
+            marginTop: currentTheme === 'lightTheme' && '2px',
+          }"
+        />
+      </div>
+      <div
+        class="varlet-site-header__language"
+        @mouseenter="isOpenLanguageMenu = true"
+        @mouseleave="isOpenLanguageMenu = false"
+        v-if="languages"
+      >
+        <var-icon name="translate" :size="26"/>
+        <var-icon name="chevron-down"/>
+        <transition name="fade">
+          <div
+            class="varlet-site-header__animation-list var-elevation--5"
+            v-show="isOpenLanguageMenu"
+            :style="{ pointerEvents: isOpenLanguageMenu ? 'auto' : 'none' }"
+          >
+            <var-cell
+              v-for="(value, key) in nonEmptyLanguages"
+              v-ripple
+              :key="key"
+              :class="{ 'varlet-site-header__animation-list--active': language === key }"
+              @click="handleLanguageChange(key)"
+            >{{ value }}
+            </var-cell>
+          </div>
+        </transition>
+      </div>
+
+    </div>
+  </div>
+</template>
+
 <script lang="ts">
 import config from '@config'
-import AnimationBox from './AnimationBox.vue'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
@@ -11,7 +90,6 @@ import type { Ref, ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'AppHeader',
-  components: { AnimationBox },
   props: {
     language: {
       type: String,
@@ -89,6 +167,7 @@ export default defineComponent({
 
     return {
       logo,
+      config,
       title,
       currentVersion,
       languages,
@@ -110,119 +189,7 @@ export default defineComponent({
 })
 </script>
 
-<template>
-  <div class="varlet-site-header">
-    <div class="varlet-site-header__lead">
-      <animation-box class="varlet-site-header__logo" @click="backRoot"/>
-      <div class="varlet-site-header__title" v-if="title" @click="backRoot">{{ title }}</div>
-    </div>
-
-    <div class="varlet-site-header__tail">
-      <div
-        class="varlet-site-header__versions"
-        @mouseenter="isOpenVersionsMenu = true"
-        @mouseleave="isOpenVersionsMenu = false"
-        v-if="nonEmptyVersions && Object.keys(nonEmptyVersions).length"
-      >
-        <span style="font-size: 14px;">{{ currentVersion }}</span>
-        <var-icon name="chevron-down"/>
-        <transition name="fade">
-          <div
-            class="varlet-site-header__animation-list varlet-site-header__animation-versions var-site-elevation--5"
-            v-show="isOpenVersionsMenu"
-            :style="{ pointerEvents: isOpenVersionsMenu ? 'auto' : 'none' }"
-          >
-            <var-cell
-              v-for="(value, key) in nonEmptyVersions"
-              v-ripple
-              :key="key"
-              :class="{ 'varlet-site-header__animation-list--active': currentVersion === key }"
-              @click="open(value)"
-            >{{ key }}
-            </var-cell>
-          </div>
-        </transition>
-      </div>
-
-      <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
-        <var-icon name="code-json" :size="24"/>
-      </a>
-      <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
-        <var-icon name="github" :size="28"/>
-      </a>
-      <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
-        <var-icon
-          size="26px"
-          :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
-          :style="{
-            marginBottom: currentTheme === 'darkTheme' && '2px',
-            marginTop: currentTheme === 'lightTheme' && '2px',
-          }"
-        />
-      </div>
-      <div
-        class="varlet-site-header__language"
-        @mouseenter="isOpenLanguageMenu = true"
-        @mouseleave="isOpenLanguageMenu = false"
-        v-if="languages"
-      >
-        <var-icon name="translate" size="26px"/>
-        <var-icon name="chevron-down"/>
-        <transition name="fade">
-          <div
-            class="varlet-site-header__animation-list var-site-elevation--5"
-            v-show="isOpenLanguageMenu"
-            :style="{ pointerEvents: isOpenLanguageMenu ? 'auto' : 'none' }"
-          >
-            <var-cell
-              v-for="(value, key) in nonEmptyLanguages"
-              v-ripple
-              :key="key"
-              :class="{ 'varlet-site-header__animation-list--active': language === key }"
-              @click="handleLanguageChange(key)"
-            >{{ value }}
-            </var-cell>
-          </div>
-        </transition>
-      </div>
-
-    </div>
-  </div>
-</template>
-
-<style scoped lang="less">
-.fade-enter-active {
-  animation-name: fade-in;
-  animation-duration: 0.3s;
-}
-
-.fade-leave-active {
-  animation-name: fade-leave;
-  animation-duration: 0.3s;
-}
-
-@keyframes fade-in {
-  0% {
-    top: 30px;
-    opacity: 0;
-  }
-  100% {
-    top: 40px;
-    opacity: 1;
-  }
-}
-
-@keyframes fade-leave {
-  0% {
-    top: 40px;
-    opacity: 1;
-  }
-  100% {
-    top: 30px;
-    opacity: 0;
-  }
-}
-
+<style lang="less">
 .varlet-site-header {
   position: fixed;
   top: 0;
@@ -348,23 +315,57 @@ export default defineComponent({
     top: 40px;
     left: -20px;
 
-    .var-site-cell {
-      width: 100px;
+    .var-cell {
+      width: 100px !important;
+      color: var(--site-config-color-text);
 
-      &:hover {
-        background: var(--site-config-color-pc-language-active-background);
-        color: var(--site-config-color-pc-language-active);
+      &__content {
+        color: inherit !important;
       }
     }
 
     &--active {
-      background: var(--site-config-color-pc-language-active-background);
-      color: var(--site-config-color-pc-language-active);
+      background: var(--site-config-color-pc-language-active-background) !important;
+      color: var(--site-config-color-pc-language-active) !important;
     }
   }
 
   &__animation-versions {
     left: -7px;
+  }
+}
+</style>
+
+<style lang="less" scoped>
+.fade-enter-active {
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+}
+
+.fade-leave-active {
+  animation-name: fade-leave;
+  animation-duration: 0.3s;
+}
+
+@keyframes fade-in {
+  0% {
+    top: 30px;
+    opacity: 0;
+  }
+  100% {
+    top: 40px;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-leave {
+  0% {
+    top: 40px;
+    opacity: 1;
+  }
+  100% {
+    top: 30px;
+    opacity: 0;
   }
 }
 </style>
