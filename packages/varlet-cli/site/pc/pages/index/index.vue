@@ -271,7 +271,7 @@ watch(() => route.path, () => {
     color: var(--site-config-color-index-page-second-text-color);
     font-size: 14px;
     margin-top: 10px;
-    line-height: 1.5;
+    line-height: 1.7;
   }
 
   &__contributors, &__team-members {
@@ -285,7 +285,7 @@ watch(() => route.path, () => {
   &__contributors-title, &__team-members-title {
     padding-top: 24px;
     line-height: 32px;
-    font-size: 22px;
+    font-size: 24px;
     border-top: 2px solid var(--site-config-color-index-page-divider-color);
     color: var(--site-config-color-index-page-second-text-color);
     letter-spacing: 1px;
@@ -368,7 +368,7 @@ watch(() => route.path, () => {
   &__sponsors-title {
     padding-top: 24px;
     line-height: 32px;
-    font-size: 22px;
+    font-size: 24px;
     border-top: 2px solid var(--site-config-color-index-page-divider-color);
     color: var(--site-config-color-index-page-second-text-color);
     letter-spacing: 1px;
