@@ -1,7 +1,7 @@
 <script setup>
-import VarButton from '..'
+import VaButton from '..'
 </script>
 
 <template>
-  <var-button color="#03A9F4">起步</var-button>
+  <va-button color="#03A9F4">起步</va-button>
 </template>

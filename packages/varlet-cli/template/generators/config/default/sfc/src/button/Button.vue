@@ -1,5 +1,5 @@
 <template>
-  <button class="var-button" :style="{ background: color }" @click="handleClick">
+  <button class="va-button" :style="{ background: color }" @click="handleClick">
     <slot />
   </button>
 </template>
@@ -8,7 +8,7 @@
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-  name: 'VarButton',
+  name: 'VaButton',
   props: {
     color: {
       type: String,

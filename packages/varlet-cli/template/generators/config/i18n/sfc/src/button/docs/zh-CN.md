@@ -2,7 +2,7 @@
 
 ### 基本使用
 ```html
-<var-button>按钮起步</var-button>
+<va-button>按钮起步</va-button>
 ```
 
 ```vue
@@ -11,7 +11,7 @@ import BasicUse from '../example/BasicUse'
 
 ### 主题色按钮
 ```html
-<var-button color="#009688">按钮起步</var-button>
+<va-button color="#009688">按钮起步</va-button>
 ```
 
 ```vue

@@ -5,7 +5,7 @@ import './button.less'
 import { pack } from '../locale'
 
 export default defineComponent({
-  name: 'VarButton',
+  name: 'VaButton',
   props: {
     color: {
       type: String,
@@ -23,7 +23,7 @@ export default defineComponent({
       const { color } = props
 
       return (
-        <button class="var-button" style={{ background: color }} onClick={handleClick}>
+        <button class="va-button" style={{ background: color }} onClick={handleClick}>
           {pack.value.button}
           {slots.default?.()}
         </button>
