@@ -106,6 +106,7 @@ describe('test grid component props', () => {
     const gridItems = wrapper.find('.var-grid-item')
 
     expect(gridItems.classes()).toContain('var-grid-item__square')
+    wrapper.unmount()
   })
 
   test('test grid gutter', () => {
@@ -115,6 +116,7 @@ describe('test grid component props', () => {
       },
     })
     expect(wrapper.find('.var-grid-item').attributes('style')).toContain('margin: 5px')
+    wrapper.unmount()
   })
 
   test('test grid border and content center', async () => {
@@ -133,6 +135,7 @@ describe('test grid component props', () => {
     await delay(100)
     expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}__border`)
     expect(wrapper.find(`.${prefix}`).classes()).toContain(`${prefix}__center`)
+    wrapper.unmount()
   })
 
   test('test grid grid item badge', () => {
@@ -161,6 +164,7 @@ describe('test grid component props', () => {
     expect(gridItems[2].find('.var-badge--primary').exists()).toBe(true)
     expect(gridItems[3].find('.var-badge--right-bottom').exists()).toBe(true)
     expect(gridItems[4].find('.var-badge').exists()).toBe(false)
+    wrapper.unmount()
   })
 })
 
@@ -226,4 +230,5 @@ test('test grid component slots', () => {
   expect(gridItem.find('.text').text()).toBe('text')
   expect(gridItem.find('.default').exists()).toBe(true)
   expect(gridItem.find('.default').text()).toBe('default')
+  wrapper.unmount()
 })
