@@ -44,7 +44,6 @@
     "@babel/plugin-transform-typescript": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
-    "@varlet/ui": "workspace:*",
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue": "4.2.3",
