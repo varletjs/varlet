@@ -1,42 +1,26 @@
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as loadingProps } from '../loading/props'
-import { SNACKBAR_TYPE, SnackbarType } from './index'
-import type { PropType, TeleportProps } from 'vue'
+import { SnackbarType } from './index'
+import { type PropType, type TeleportProps } from 'vue'
 import type { SlotType } from '.'
 
-export function positionValidator(position: string): boolean {
-  const validPositions = ['top', 'center', 'bottom']
-  return validPositions.includes(position)
-}
-
-export function typeValidator(type: SnackbarType): boolean {
-  return SNACKBAR_TYPE.includes(type)
-}
+export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export const props = {
-  type: {
-    type: String as PropType<SnackbarType>,
-    validator: typeValidator,
-  },
+  type: String as PropType<SnackbarType>,
   position: {
-    type: String,
+    type: String as PropType<SnackbarPosition>,
     default: 'top',
-    validator: positionValidator,
   },
   content: {
     type: [String, Function, Object] as PropType<SlotType>,
   },
-  contentClass: {
-    type: String,
-  },
+  contentClass: String,
   duration: {
     type: Number,
     default: 3000,
   },
-  vertical: {
-    type: Boolean,
-    default: false,
-  },
+  vertical: Boolean,
   loadingType: pickProps(loadingProps, 'type'),
   loadingSize: pickProps(loadingProps, 'size'),
   loadingRadius: pickProps(loadingProps, 'radius'),
@@ -44,28 +28,17 @@ export const props = {
     ...pickProps(loadingProps, 'color'),
     default: 'currentColor',
   },
-  lockScroll: {
-    type: Boolean,
-    default: false,
-  },
-  show: {
-    type: Boolean,
-    default: false,
-  },
+  lockScroll: Boolean,
+  show: Boolean,
   teleport: {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
-  forbidClick: {
-    type: Boolean,
-    default: false,
-  },
+  forbidClick: Boolean,
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
-  _update: {
-    type: String,
-  },
+  _update: String,
 }

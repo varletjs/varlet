@@ -170,8 +170,13 @@ varlet-cli test
 ```shell
 # playground-ignore
 varlet-cli test -w
-or
-varlet-cli test -wa
+```
+
+#### 执行所有的单元测试并报告覆盖率
+
+```shell
+# playground-ignore
+varlet-cli test -cov
 ```
 
 #### 检查代码

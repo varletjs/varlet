@@ -1,5 +1,5 @@
 import { isFunction, camelize } from '@varlet/shared'
-import type { App, Directive, Plugin, DirectiveBinding, StyleValue } from 'vue'
+import { type App, type Directive, type Plugin, type DirectiveBinding, type StyleValue } from 'vue'
 
 export type HoverValue = StyleValue | ((isHovering: boolean) => void)
 

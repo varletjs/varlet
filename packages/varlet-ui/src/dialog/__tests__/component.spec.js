@@ -2,6 +2,7 @@ import Dialog from '..'
 import VarDialog from '../Dialog'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)
@@ -22,7 +23,7 @@ const Wrapper = {
 }
 
 test('test dialog component click overlay', async () => {
-  const onClickOverlay = jest.fn()
+  const onClickOverlay = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
@@ -45,7 +46,7 @@ test('test dialog component click overlay', async () => {
 })
 
 test('test dialog component onBeforeClose', async () => {
-  const onBeforeClose = jest.fn()
+  const onBeforeClose = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {

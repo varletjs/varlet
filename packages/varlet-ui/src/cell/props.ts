@@ -1,37 +1,15 @@
 import { defineListenerProp } from '../utils/components'
 
 export const props = {
-  title: {
-    type: [Number, String],
-  },
-  icon: {
-    type: String,
-  },
-  description: {
-    type: String,
-  },
-  border: {
-    type: Boolean,
-    default: false,
-  },
-  borderOffset: {
-    type: [Number, String],
-  },
-  iconClass: {
-    type: String,
-  },
-  titleClass: {
-    type: String,
-  },
-  descriptionClass: {
-    type: String,
-  },
-  extraClass: {
-    type: String,
-  },
-  ripple: {
-    type: Boolean,
-    default: false,
-  },
+  title: [Number, String],
+  icon: String,
+  description: String,
+  border: Boolean,
+  borderOffset: [Number, String],
+  iconClass: String,
+  titleClass: String,
+  descriptionClass: String,
+  extraClass: String,
+  ripple: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

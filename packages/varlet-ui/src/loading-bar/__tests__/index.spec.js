@@ -1,5 +1,6 @@
 import LoadingBar from '..'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect } from 'vitest'
 
 test('test loading-bar methods', async () => {
   LoadingBar.start()

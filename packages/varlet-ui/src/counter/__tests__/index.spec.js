@@ -2,7 +2,8 @@ import Counter from '..'
 import VarCounter from '../Counter'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test counter plugin', () => {
   const app = createApp({}).use(Counter)
@@ -59,7 +60,7 @@ test('test counter initial value less min', async () => {
 })
 
 test('test counter onChange', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,

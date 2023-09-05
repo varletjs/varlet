@@ -1,8 +1,17 @@
 <template>
-  <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
-    <div :class="n('title')" :style="{ background: headerColor || color }">
+  <div
+    :class="classes(n(), formatElevation(elevation, 2))"
+    ref="picker"
+  >
+    <div
+      :class="n('title')"
+      :style="{ background: headerColor || color }"
+    >
       <div :class="n('title-time')">
-        <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
+        <div
+          :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])"
+          @click="checkPanel('hour')"
+        >
           {{ time.hour }}
         </div>
         <span>:</span>
@@ -21,13 +30,32 @@
           {{ time.second }}
         </div>
       </div>
-      <div :class="n('title-ampm')" v-if="format === 'ampm'">
-        <div :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])" @click="checkAmpm('am')">AM</div>
-        <div :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])" @click="checkAmpm('pm')">PM</div>
+      <div
+        :class="n('title-ampm')"
+        v-if="format === 'ampm'"
+      >
+        <div
+          :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])"
+          @click="checkAmpm('am')"
+        >
+          AM
+        </div>
+        <div
+          :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])"
+          @click="checkAmpm('pm')"
+        >
+          PM
+        </div>
       </div>
     </div>
     <div :class="n('body')">
-      <div :class="n('clock-container')" @touchstart="moveHand" @touchmove="moveHand" @touchend="end" ref="container">
+      <div
+        :class="n('clock-container')"
+        @touchstart="moveHand"
+        @touchmove="moveHand"
+        @touchend="end"
+        ref="container"
+      >
         <transition :name="`${n()}-panel-fade`">
           <clock
             :key="type"
@@ -54,17 +82,24 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, watch } from 'vue'
 import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
-import { props, hoursAmpm, hours24 } from './props'
-import { toNumber } from '@varlet/shared'
+import {
+  computed,
+  defineComponent,
+  reactive,
+  ref,
+  watch,
+  type ComputedRef,
+  type Ref,
+  type DefineComponent,
+  type UnwrapRef,
+} from 'vue'
+import { props, hoursAmpm, hours24, type Time, type AmPm } from './props'
+import { toNumber, getRect } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
-import type { ComputedRef, Ref, DefineComponent, UnwrapRef } from 'vue'
-import type { Time, AmPm } from './props'
-import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 

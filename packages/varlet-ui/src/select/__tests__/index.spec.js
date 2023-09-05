@@ -4,7 +4,8 @@ import Option from '../../option'
 import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test select plugin', () => {
   const app = createApp({}).use(Select)
@@ -129,8 +130,8 @@ test('test select hint to be false', () => {
 })
 
 test('test select onFocus & onBlur', async () => {
-  const onFocus = jest.fn()
-  const onBlur = jest.fn()
+  const onFocus = vi.fn()
+  const onBlur = vi.fn()
 
   const wrapper = mount(
     {
@@ -162,8 +163,8 @@ test('test select onFocus & onBlur', async () => {
 })
 
 test('test select disabled', async () => {
-  const onFocus = jest.fn()
-  const onBlur = jest.fn()
+  const onFocus = vi.fn()
+  const onBlur = vi.fn()
 
   const wrapper = mount(
     {
@@ -215,8 +216,8 @@ test('test select disabled', async () => {
 })
 
 test('test select readonly', async () => {
-  const onFocus = jest.fn()
-  const onBlur = jest.fn()
+  const onFocus = vi.fn()
+  const onBlur = vi.fn()
 
   const wrapper = mount(
     {

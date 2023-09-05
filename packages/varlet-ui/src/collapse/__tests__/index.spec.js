@@ -4,7 +4,8 @@ import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole } from '../../utils/jest'
+import { delay, mockConsole } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test collapse and collapseItem use', () => {
   const app = createApp({}).use(Collapse).use(CollapseItem)
@@ -22,7 +23,7 @@ test('test collapse and collapseItem onChange', async () => {
     </var-collapse>
   `
 
-  const changeHandle = jest.fn()
+  const changeHandle = vi.fn()
 
   const wrapper = mount(
     {
@@ -66,7 +67,7 @@ test('test collapse and collapseItem onChange', async () => {
 
 describe('test collapse and collapseItem props', () => {
   test('test invalid modelValue', async () => {
-    const errorFn = jest.fn()
+    const errorFn = vi.fn()
     const { mockRestore } = mockConsole('error', errorFn)
     const template = `
        <var-collapse v-model="value" :accordion="accordion">
@@ -206,11 +207,14 @@ describe('test collapse and collapseItem props', () => {
       template,
     })
 
+    await delay()
+
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe(
       '--collapse-divider-top: var(--collapse-border-top);'
     )
 
     await wrapper.setData({ divider: false })
+    await delay()
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe('--collapse-divider-top: none;')
   })
 })

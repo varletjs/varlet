@@ -1,36 +1,16 @@
-import { isNumber, isObject, isString, kebabCase, toNumber, isWindow, inBrowser } from '@varlet/shared'
-import { getGlobalThis } from './shared'
+import {
+  isNumber,
+  isObject,
+  isString,
+  kebabCase,
+  toNumber,
+  isWindow,
+  inBrowser,
+  getRect,
+  getStyle,
+} from '@varlet/shared'
 import { error } from './logger'
-import type { StyleVars } from '../style-provider'
-
-// shorthand only
-export function getStyle(element: Element) {
-  return window.getComputedStyle(element)
-}
-
-export function getRect(element: Element | Window): DOMRect {
-  if (isWindow(element)) {
-    const width = element.innerWidth
-    const height = element.innerHeight
-    const rect = {
-      x: 0,
-      y: 0,
-      top: 0,
-      left: 0,
-      right: width,
-      bottom: height,
-      width,
-      height,
-    }
-
-    return {
-      ...rect,
-      toJSON: () => rect,
-    }
-  }
-
-  return element.getBoundingClientRect()
-}
+import { type StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = getRect(element)
@@ -55,16 +35,6 @@ export function getScrollLeft(element: Element | Window): number {
   const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
 
   return Math.max(left, 0)
-}
-
-export function inViewport(element: HTMLElement): boolean {
-  const { top, bottom, left, right } = getRect(element)
-  const { width, height } = getRect(window)
-
-  const xInViewport = left <= width && right >= 0
-  const yInViewport = top <= height && bottom >= 0
-
-  return xInViewport && yInViewport
 }
 
 export function getTranslateY(el: HTMLElement) {
@@ -250,38 +220,6 @@ export const multiplySizeUnit = (value: unknown, quantity = 1) => {
   return `${parseFloat(legalSize) * quantity}${unit}`
 }
 
-export function requestAnimationFrame(fn: FrameRequestCallback): number {
-  const globalThis = getGlobalThis()
-
-  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
-}
-
-export function cancelAnimationFrame(handle: number): void {
-  const globalThis = getGlobalThis()
-
-  globalThis.cancelAnimationFrame ? globalThis.cancelAnimationFrame(handle) : globalThis.clearTimeout(handle)
-}
-
-export function nextTickFrame(fn: FrameRequestCallback) {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(fn)
-  })
-}
-
-export function doubleRaf() {
-  return new Promise((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(resolve)
-    })
-  })
-}
-
-export function raf() {
-  return new Promise((resolve) => {
-    requestAnimationFrame(resolve)
-  })
-}
-
 interface ScrollToOptions {
   top?: number
   left?: number
@@ -325,11 +263,6 @@ export function formatStyleVars(styleVars: StyleVars | null) {
 
     return styles
   }, {} as StyleVars)
-}
-
-export function supportTouch() {
-  const inBrowser = typeof window !== 'undefined'
-  return inBrowser && 'ontouchstart' in window
 }
 
 export function padStartFlex(style: string | undefined) {

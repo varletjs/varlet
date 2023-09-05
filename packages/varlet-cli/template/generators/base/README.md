@@ -48,8 +48,12 @@ pnpm test
 
 ```shell
 pnpm test:watch 
-or
-pnpm test:watchAll 
+```
+
+#### Run unit test and report coverage
+
+```shell
+pnpm test:coverage 
 ```
 
 #### Mount Git Hooks

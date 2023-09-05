@@ -1,19 +1,14 @@
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
-import type { PropType } from 'vue'
 import { ActionItem } from './index'
+import { type PropType } from 'vue'
 
 export const props = {
-  show: {
-    type: Boolean,
-    default: false,
-  },
+  show: Boolean,
+  title: String,
   actions: {
     type: Array as PropType<ActionItem[]>,
     default: () => [],
-  },
-  title: {
-    type: String,
   },
   closeOnClickAction: {
     type: Boolean,

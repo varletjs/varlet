@@ -12,12 +12,18 @@
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul :class="n('head')">
-            <li v-for="week in sortWeekList" :key="week.index">
+            <li
+              v-for="week in sortWeekList"
+              :key="week.index"
+            >
               {{ getDayAbbr(week.index) }}
             </li>
           </ul>
           <ul :class="n('body')">
-            <li v-for="(day, index) in days" :key="index">
+            <li
+              v-for="(day, index) in days"
+              :key="index"
+            >
               <var-button
                 type="primary"
                 var-day-picker-cover
@@ -45,17 +51,35 @@ import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
 import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
-import { defineComponent, ref, computed, watch, reactive } from 'vue'
-import { WEEK_HEADER } from '../props'
+import {
+  defineComponent,
+  ref,
+  computed,
+  watch,
+  reactive,
+  type Ref,
+  type ComputedRef,
+  type UnwrapRef,
+  type PropType,
+  type RendererNode,
+} from 'vue'
+import {
+  WEEK_HEADER,
+  type Choose,
+  type Preview,
+  type ComponentProps,
+  type Week,
+  type WeekDict,
+  type PanelBtnDisabled,
+} from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import { onSmartMounted } from '@varlet/use'
-import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
-import type { Choose, Preview, ComponentProps, Week, WeekDict, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
+
 const { n, classes } = createNamespace('day-picker')
 const { n: nDate } = createNamespace('date-picker')
 

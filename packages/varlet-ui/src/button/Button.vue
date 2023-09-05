@@ -37,7 +37,7 @@
       <slot />
     </div>
 
-    <var-hover-overlay :hovering="hovering" />
+    <var-hover-overlay :hovering="disabled ? false : hovering" />
   </button>
 </template>
 

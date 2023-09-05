@@ -1,49 +1,26 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-function fitValidator(fit: string) {
-  return ['fill', 'contain', 'cover', 'none', 'scale-down'].includes(fit)
-}
+export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export const props = {
-  src: {
-    type: String,
-  },
+  src: String,
   fit: {
-    type: String as PropType<'fill' | 'contain' | 'cover' | 'none' | 'scale-down'>,
-    validator: fitValidator,
+    type: String as PropType<ImageFit>,
     default: 'fill',
   },
-  alt: {
-    type: String,
-  },
-  title: {
-    type: String,
-  },
-  width: {
-    type: [String, Number],
-  },
-  height: {
-    type: [String, Number],
-  },
+  alt: String,
+  title: String,
+  width: [String, Number],
+  height: [String, Number],
   radius: {
     type: [String, Number],
     default: 0,
   },
-  loading: {
-    type: String,
-  },
-  error: {
-    type: String,
-  },
-  lazy: {
-    type: Boolean,
-    default: false,
-  },
-  ripple: {
-    type: Boolean,
-    default: false,
-  },
+  loading: String,
+  error: String,
+  lazy: Boolean,
+  ripple: Boolean,
   block: {
     type: Boolean,
     default: true,

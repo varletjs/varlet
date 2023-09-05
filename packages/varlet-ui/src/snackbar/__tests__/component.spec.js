@@ -2,7 +2,8 @@ import Snackbar from '..'
 import VarSnackbar from '../Snackbar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockStubs } from '../../utils/jest'
+import { delay, mockStubs } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test snackbar component plugin', () => {
   const app = createApp({}).use(Snackbar.Component)
@@ -45,10 +46,10 @@ test('test snackbar style', async () => {
 })
 
 test('test snackbar event', async () => {
-  const open = jest.fn()
-  const opened = jest.fn()
-  const close = jest.fn()
-  const closed = jest.fn()
+  const open = vi.fn()
+  const opened = vi.fn()
+  const close = vi.fn()
+  const closed = vi.fn()
   const { mockRestore } = mockStubs()
 
   const template = `

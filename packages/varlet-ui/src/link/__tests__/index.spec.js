@@ -2,7 +2,8 @@ import Link from '..'
 import VarLink from '../Link'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { trigger } from '../../utils/jest'
+import { trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 const HREF = 'https://varlet.gitee.io/varlet-ui/'
 
@@ -17,7 +18,7 @@ test('test link plugin', () => {
 
 describe('test link component event', () => {
   test('test link onClick', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
 
     const wrapper = mount(VarLink, {
       props: {
@@ -41,6 +42,20 @@ describe('test link component props', () => {
       expect(wrapper.find('a').classes()).toContain('var-link--' + type)
       wrapper.unmount()
     })
+  })
+
+  test('test link rel', () => {
+    const wrapper = mount(VarLink, {
+      props: {
+        href: HREF,
+        target: TARGET,
+        rel: 'noopener noreferrer',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 
   test('test link href target', () => {
@@ -96,7 +111,7 @@ describe('test link component props', () => {
   })
 
   test('test link disabled', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
 
     const wrapper = mount(VarLink, {
       props: {

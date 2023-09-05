@@ -1,49 +1,35 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as fieldDecoratorProps } from '../field-decorator/props'
 
-export function textAlignValidator(textAlign: string) {
-  return ['left', 'right', 'center'].includes(textAlign)
-}
-
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
+
+export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export const props = {
   modelValue: {
     default: undefined,
   },
-  multiple: {
-    type: Boolean,
-    default: false,
-  },
+  multiple: Boolean,
   offsetY: {
     type: [String, Number],
     default: 0,
   },
-  chip: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
+  chip: Boolean,
+  readonly: Boolean,
   separator: {
     type: String,
     default: ',',
   },
   textAlign: {
-    type: String as PropType<'left' | 'right' | 'center'>,
+    type: String as PropType<SelectTextAlign>,
     default: 'left',
-    validator: textAlignValidator,
   },
   validateTrigger: {
     type: Array as PropType<Array<SelectValidateTrigger>>,
     default: () => ['onChange', 'onClear', 'onClose'],
   },
-  rules: {
-    type: Array as PropType<Array<(v: any) => any>>,
-  },
+  rules: Array as PropType<Array<(v: any) => any>>,
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onClose: defineListenerProp<(value: any) => void>(),

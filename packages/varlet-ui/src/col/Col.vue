@@ -27,14 +27,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
 import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
-import { useRow } from './provide'
+import { useRow, type ColPadding, type ColProvider, type ColSizeDescriptor } from './provide'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
-import type { Ref, ComputedRef } from 'vue'
-import type { ColPadding, ColProvider, ColSizeDescriptor } from './provide'
 
 const { n, classes } = createNamespace('col')
 

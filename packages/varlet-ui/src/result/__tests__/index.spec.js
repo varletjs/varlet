@@ -2,6 +2,7 @@ import Result from '..'
 import VarResult from '../Result'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect } from 'vitest'
 
 test('test result plugin', () => {
   const app = createApp({}).use(Result)

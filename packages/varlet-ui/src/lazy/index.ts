@@ -1,9 +1,8 @@
-import { doubleRaf, getAllParentScroller, inViewport } from '../utils/elements'
-import { removeItem, throttle } from '@varlet/shared'
-import { createCache } from '../utils/shared'
-import type { App, Directive, Plugin, DirectiveBinding } from 'vue'
-import type { CacheInstance } from '../utils/shared'
+import { getAllParentScroller } from '../utils/elements'
+import { removeItem, throttle, doubleRaf, inViewport } from '@varlet/shared'
+import { createCache, type CacheInstance } from '../utils/shared'
 import { call } from '../utils/components'
+import { type App, type Directive, type Plugin, type DirectiveBinding } from 'vue'
 
 interface LazyOptions {
   loading?: string

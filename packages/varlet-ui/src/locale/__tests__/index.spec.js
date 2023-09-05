@@ -1,6 +1,7 @@
 import enUS from '../en-US'
 import { useLocale } from '..'
-import { mockConsole } from '../../utils/jest'
+import { mockConsole } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test add lang', () => {
   const { add, use, pack, packs } = useLocale()
@@ -18,7 +19,7 @@ test('test add lang', () => {
 })
 
 test('test merge lang', () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const { mockRestore } = mockConsole('warn', fn)
   const { add, use, merge, pack } = useLocale()
 
@@ -28,9 +29,9 @@ test('test merge lang', () => {
   }
 
   add(LANG, enUS)
-  use('zh_HK')
+  use('zh-HK')
   use(LANG)
-  merge('zh_HK', PACK)
+  merge('zh-HK', PACK)
   merge(LANG, PACK)
 
   expect(pack.value.dialogTitle).toBe('Custom Dialog Title')

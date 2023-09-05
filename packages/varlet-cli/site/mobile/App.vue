@@ -3,46 +3,47 @@
     <header>
       <var-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
-          <var-button v-if="showBackIcon" text round @click="back" color="transparent" text-color="#fff">
+          <var-button v-if="showBackIcon" style="margin-right: 6px;" text round @click="back" color="transparent" text-color="#fff">
             <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px"/>
           </var-button>
           <var-button
             v-if="!showBackIcon && github"
-            style="margin-left: 2px"
+            style="margin-left: 2px; margin-right: 6px;"
             text
             round
-            @click="toGithub"
             color="transparent"
             text-color="#fff"
+            @click="toGithub"
           >
-            <var-icon name="github" class="github" style="margin-top: 1px"/>
+            <var-icon name="github" class="github" style="margin-top: 1px;"/>
           </var-button>
         </template>
         <template #right>
           <var-button
+            v-if="darkMode"
             text
             round
             color="transparent"
             text-color="#fff"
             :style="{
-              transform: languages ? 'translateX(2px)' : 'translateX(-4px)',
+              transform: languages ? 'translateX(-4px)' : 'translateX(-6px)',
             }"
-            v-if="darkMode"
             @click="toggleTheme"
           >
             <var-icon
               class="theme"
               color="#fff"
+              :size="24"
               :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
             />
           </var-button>
           <var-button
+            v-if="languages"
             class="i18n-button"
             text
             color="transparent"
             text-color="#fff"
             @click.stop="showMenu = true"
-            v-if="languages"
           >
             <var-icon name="translate" class="i18n"/>
             <var-icon name="chevron-down" class="arrow-down"/>
@@ -55,7 +56,7 @@
     </div>
 
     <transition name="site-menu">
-      <div class="settings var-site-elevation--3" v-if="showMenu">
+      <div class="settings var-elevation--3" v-if="showMenu">
         <var-cell
           v-for="(value, key) in nonEmptyLanguages"
           :key="key"
@@ -206,17 +207,24 @@ body {
   transition: background-color 0.25s, color 0.25s;
 }
 
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}
+
+.app-type {
+  width: 100%;
+  padding: 15px 0;
+  color: var(--site-config-color-sub-text);
+  font-size: 14px;
+}
+
 header {
   position: fixed;
   z-index: 99;
   width: 100%;
   font-weight: bold;
-}
-
-::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  background: transparent;
 }
 
 .site {
@@ -248,7 +256,7 @@ header {
 .mobile-language-cell {
   color: var(--site-config-color-text) !important;
   background: var(--site-config-color-bar) !important;
-  cursor: pointer;
+  cursor: pointer !important;
 
   &--active {
     color: var(--site-config-color-mobile-language-active) !important;
@@ -278,13 +286,8 @@ header {
 
 .i18n-button {
   padding-right: 6px !important;
-}
-
-.app-type {
-  width: 100%;
-  padding: 15px 0;
-  color: var(--site-config-color-sub-text);
-  font-size: 14px;
+  margin-right: 4px;
+  padding-left: 12px !important;
 }
 
 .app-bar {

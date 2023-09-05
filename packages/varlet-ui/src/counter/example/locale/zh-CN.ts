@@ -8,5 +8,5 @@ export default {
   lazyChange: '异步变更',
   size: '设置尺寸',
   validate: '字段校验',
-  validateMessage: '请选择大于5的值',
+  validateMessage: '请设置大于5的值',
 }

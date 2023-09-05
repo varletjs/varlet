@@ -6,9 +6,24 @@
         :style="{ backgroundColor: isActive || isCurrent ? activeColor : inactiveColor }"
         @click="click"
       >
-        <var-icon :class="n('icon')" var-step-cover :name="activeIcon" v-if="isActive" />
-        <var-icon :class="n('icon')" var-step-cover :name="currentIcon" v-else-if="isCurrent && currentIcon" />
-        <var-icon :class="n('icon')" var-step-cover :name="inactiveIcon" v-else-if="inactiveIcon" />
+        <var-icon
+          :class="n('icon')"
+          var-step-cover
+          :name="activeIcon"
+          v-if="isActive"
+        />
+        <var-icon
+          :class="n('icon')"
+          var-step-cover
+          :name="currentIcon"
+          v-else-if="isCurrent && currentIcon"
+        />
+        <var-icon
+          :class="n('icon')"
+          var-step-cover
+          :name="inactiveIcon"
+          v-else-if="inactiveIcon"
+        />
         <span v-else>{{ index + 1 }}</span>
       </div>
       <div
@@ -23,14 +38,12 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { props } from './props'
-import { useSteps } from './provide'
 import VarIcon from '../icon'
+import { computed, defineComponent, type ComputedRef } from 'vue'
+import { props } from './props'
+import { useSteps, type StepProvider } from './provide'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
-import type { ComputedRef } from 'vue'
-import type { StepProvider } from './provide'
 
 const { n, classes } = createNamespace('step')
 

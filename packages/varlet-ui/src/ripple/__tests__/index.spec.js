@@ -1,7 +1,8 @@
 import Ripple from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset, trigger, triggerDrag } from '../../utils/jest'
+import { delay, mockOffset, trigger, triggerDrag } from '../../utils/test'
+import { expect } from 'vitest'
 
 mockOffset()
 

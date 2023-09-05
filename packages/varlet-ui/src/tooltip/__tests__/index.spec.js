@@ -1,8 +1,9 @@
 import VarTooltip from '..'
 import { createApp, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/jest'
-import { doubleRaf } from '../../utils/elements'
+import { delay, mockStubs, trigger } from '../../utils/test'
+import { doubleRaf } from '@varlet/shared'
+import { expect, vi } from 'vitest'
 
 test('test tooltip plugin', () => {
   const app = createApp({}).use(VarTooltip)
@@ -66,10 +67,10 @@ test('test tooltip click trigger', async () => {
 test('test tooltip hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   const root = document.createElement('div')
 

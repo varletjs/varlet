@@ -1,8 +1,17 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))">
-    <div :class="n('title')" :style="{ background: headerColor || color }">
-      <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
-        <slot name="year" :year="chooseYear">
+    <div
+      :class="n('title')"
+      :style="{ background: headerColor || color }"
+    >
+      <div
+        :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
+        @click="clickEl('year')"
+      >
+        <slot
+          name="year"
+          :year="chooseYear"
+        >
           {{ chooseYear }}
         </slot>
       </div>
@@ -12,32 +21,68 @@
         @click="clickEl('date')"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
-          <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
-            <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
+          <div
+            :key="`${chooseYear}${chooseMonth?.index}`"
+            v-if="type === 'month'"
+          >
+            <slot
+              name="range"
+              :choose="getChoose.chooseRangeMonth"
+              v-if="range"
+            >
               {{ getMonthTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
+            <slot
+              name="multiple"
+              :choose="getChoose.chooseMonths"
+              v-else-if="multiple"
+            >
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="chooseMonth?.index" :year="chooseYear" v-else>
+            <slot
+              name="month"
+              :month="chooseMonth?.index"
+              :year="chooseYear"
+              v-else
+            >
               {{ getMonthTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth?.index}${chooseDay}`" v-else>
-            <slot name="range" :choose="formatRange" v-if="range">
+          <div
+            :key="`${chooseYear}${chooseMonth?.index}${chooseDay}`"
+            v-else
+          >
+            <slot
+              name="range"
+              :choose="formatRange"
+              v-if="range"
+            >
               {{ getDateTitle }}
             </slot>
-            <slot name="multiple" :choose="getChoose.chooseDays" v-else-if="multiple">
+            <slot
+              name="multiple"
+              :choose="getChoose.chooseDays"
+              v-else-if="multiple"
+            >
               {{ getDateTitle }}
             </slot>
-            <slot name="date" v-bind="slotProps" v-else>
+            <slot
+              name="date"
+              v-bind="slotProps"
+              v-else
+            >
               {{ getDateTitle }}
             </slot>
           </div>
         </transition>
       </div>
     </div>
-    <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
+    <div
+      :class="n('body')"
+      @touchstart="handleTouchstart"
+      @touchmove="handleTouchmove"
+      @touchend="handleTouchend"
+    >
       <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
           :component-props="componentProps"
@@ -73,19 +118,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, reactive, watch } from 'vue'
 import dayjs from 'dayjs/esm'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
-import { props, MONTH_LIST, WEEK_HEADER } from './props'
-import { isArray, toNumber } from '@varlet/shared'
-import { nextTickFrame } from '../utils/elements'
+import {
+  defineComponent,
+  ref,
+  computed,
+  reactive,
+  watch,
+  type Ref,
+  type ComputedRef,
+  type UnwrapRef,
+  type RendererNode,
+} from 'vue'
+import {
+  props,
+  MONTH_LIST,
+  WEEK_HEADER,
+  type MonthDict,
+  type Choose,
+  type Preview,
+  type WeekDict,
+  type ComponentProps,
+  type TouchDirection,
+} from './props'
+import { isArray, toNumber, doubleRaf } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { pack } from '../locale'
-import type { Ref, ComputedRef, UnwrapRef, RendererNode } from 'vue'
-import type { MonthDict, Choose, Preview, WeekDict, ComponentProps, TouchDirection } from './props'
 
 const { n, classes } = createNamespace('date-picker')
 
@@ -249,14 +311,13 @@ export default defineComponent({
       checkType = x > 0 ? 'prev' : 'next'
     }
 
-    const handleTouchend = () => {
+    const handleTouchend = async () => {
       if (isUntouchable.value || touchDirection !== 'x') return
 
       const componentRef = getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
-      nextTickFrame(() => {
-        componentRef.value!.forwardRef(checkType)
-        resetState()
-      })
+      await doubleRaf()
+      componentRef.value!.forwardRef(checkType)
+      resetState()
     }
 
     const updateRange = (date: string, type: string) => {

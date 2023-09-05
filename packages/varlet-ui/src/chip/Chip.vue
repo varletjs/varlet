@@ -1,6 +1,10 @@
 <template>
   <transition :name="n('$-fade')">
-    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyles" v-bind="$attrs">
+    <span
+      :class="classes(n(), n('$--box'), ...contentClass)"
+      :style="chipStyles"
+      v-bind="$attrs"
+    >
       <slot name="left" />
 
       <span :class="n(`text-${size}`)">
@@ -9,7 +13,11 @@
 
       <slot name="right" />
 
-      <span v-if="closable" :class="n('--close')" @click="handleClose">
+      <span
+        v-if="closable"
+        :class="n('--close')"
+        @click="handleClose"
+      >
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
       </span>
     </span>
@@ -18,9 +26,8 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, type ComputedRef } from 'vue'
 import { props } from './props'
-import type { ComputedRef } from 'vue'
 import { call, createNamespace } from '../utils/components'
 
 const { n, classes } = createNamespace('chip')

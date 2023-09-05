@@ -2,6 +2,7 @@ import Progress from '..'
 import VarProgress from '../Progress'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test progress use', () => {
   const app = createApp({}).use(Progress)

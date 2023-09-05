@@ -4,26 +4,32 @@
     v-bind="
       dynamic
         ? {
-            onOpen,
-            onOpened,
-            onClose,
-            onClosed,
-            onClickOverlay,
-            onRouteChange,
-            closeOnClickOverlay,
-            teleport,
-            show,
-            safeArea,
-            'onUpdate:show': handlePopupUpdateShow,
-            position: 'bottom',
-            class: n('popup'),
-          }
+          onOpen,
+          onOpened,
+          onClose,
+          onClosed,
+          onClickOverlay,
+          onRouteChange,
+          closeOnClickOverlay,
+          teleport,
+          show,
+          safeArea,
+          'onUpdate:show': handlePopupUpdateShow,
+          position: 'bottom',
+          class: n('popup'),
+        }
         : null
     "
     var-picker-cover
   >
-    <div :class="n()" v-bind="$attrs">
-      <div :class="n('toolbar')" v-if="toolbar">
+    <div
+      :class="n()"
+      v-bind="$attrs"
+    >
+      <div
+        :class="n('toolbar')"
+        v-if="toolbar"
+      >
         <slot name="cancel">
           <var-button
             :class="n('cancel-button')"
@@ -52,14 +58,17 @@
           </var-button>
         </slot>
       </div>
-      <div :class="n('columns')" :style="{ height: `${columnHeight}px` }">
+      <div
+        :class="n('columns')"
+        :style="{ height: `${columnHeight}px` }"
+      >
         <div
           :class="n('column')"
           v-for="c in scrollColumns"
           :key="c.id"
-          @touchstart.passive="handleTouchstart(c)"
+          @touchstart.passive="handleTouchstart($event, c)"
           @touchmove.prevent="handleTouchmove($event, c)"
-          @touchend="handleTouchend($event, c)"
+          @touchend="handleTouchend(c)"
         >
           <div
             :class="n('scroller')"
@@ -91,7 +100,10 @@
             height: `${optionHeight}px`,
           }"
         />
-        <div :class="n('mask')" :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }" />
+        <div
+          :class="n('mask')"
+          :style="{ backgroundSize: `100% ${(columnHeight - optionHeight) / 2}px` }"
+        />
       </div>
     </div>
   </component>
@@ -112,9 +124,10 @@ import {
   type ComponentPublicInstance,
 } from 'vue'
 import { props, type CascadeColumn, type NormalColumn } from './props'
+import { useTouch } from '@varlet/use'
 import { clamp, clampArrayRange, isArray } from '@varlet/shared'
 import { dt } from '../utils/shared'
-import { toPxNum, getTranslateY, requestAnimationFrame } from '../utils/elements'
+import { toPxNum, getTranslateY } from '../utils/elements'
 import { pack } from '../locale'
 import { createNamespace, call } from '../utils/components'
 import { type Texts } from './index'
@@ -124,8 +137,8 @@ export interface ScrollColumn {
   touching: boolean
   index: number
   columnIndex: number
-  prevY: number | undefined
-  momentumPrevY: number | undefined
+  prevY: number
+  momentumPrevY: number
   momentumTime: number
   translate: number
   duration: number
@@ -161,7 +174,7 @@ export default defineComponent({
     )
     const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
     let prevIndexes: number[] = []
-    let dragging = false
+    const { prevY, moveY, dragging, startTouch, moveTouch, endTouch } = useTouch()
 
     const setScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
       scrollColumn.scrollEl = el as HTMLElement
@@ -208,7 +221,7 @@ export default defineComponent({
     }
 
     const handleClick = (scrollColumn: ScrollColumn, index: number) => {
-      if (dragging) {
+      if (dragging.value) {
         return
       }
 
@@ -217,9 +230,10 @@ export default defineComponent({
       scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
-    const handleTouchstart = (scrollColumn: ScrollColumn) => {
+    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
       scrollColumn.touching = true
       scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
+      startTouch(event)
     }
 
     const handleTouchmove = (event: TouchEvent, scrollColumn: ScrollColumn) => {
@@ -227,14 +241,11 @@ export default defineComponent({
         return
       }
 
-      dragging = true
+      moveTouch(event)
       scrollColumn.scrolling = false
       scrollColumn.duration = 0
-
-      const { clientY } = event.touches[0]
-      const deltaY = scrollColumn.prevY !== undefined ? clientY - scrollColumn.prevY : 0
-      scrollColumn.prevY = clientY
-      scrollColumn.translate += deltaY
+      scrollColumn.prevY = prevY.value
+      scrollColumn.translate += moveY.value
 
       clampTranslate(scrollColumn)
 
@@ -245,10 +256,12 @@ export default defineComponent({
       }
     }
 
-    const handleTouchend = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+    const handleTouchend = (scrollColumn: ScrollColumn) => {
+      endTouch()
+
       scrollColumn.touching = false
-      scrollColumn.prevY = undefined
-      const distance = scrollColumn.translate - (scrollColumn.momentumPrevY as number)
+      scrollColumn.prevY = 0
+      const distance = scrollColumn.translate - scrollColumn.momentumPrevY
       const duration = performance.now() - scrollColumn.momentumTime
       const shouldMomentum = Math.abs(distance) >= MOMENTUM_ALLOW_DISTANCE && duration <= MOMENTUM_RECORD_TIME
 
@@ -266,10 +279,6 @@ export default defineComponent({
       if (!scrollColumn.scrolling) {
         change(scrollColumn)
       }
-
-      requestAnimationFrame(() => {
-        dragging = false
-      })
     }
 
     const handleTransitionend = (scrollColumn: ScrollColumn) => {
@@ -282,8 +291,8 @@ export default defineComponent({
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
           id: sid++,
-          prevY: undefined,
-          momentumPrevY: undefined,
+          prevY: 0,
+          momentumPrevY: 0,
           touching: false,
           translate: center.value,
           index: normalColumn.initialIndex ?? 0,
@@ -317,8 +326,8 @@ export default defineComponent({
 
         const scrollColumn: ScrollColumn = {
           id: sid++,
-          prevY: undefined,
-          momentumPrevY: undefined,
+          prevY: 0,
+          momentumPrevY: 0,
           touching: false,
           translate: center.value,
           index,

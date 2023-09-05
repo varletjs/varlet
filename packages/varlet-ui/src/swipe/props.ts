@@ -9,9 +9,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  autoplay: {
-    type: [String, Number],
-  },
+  autoplay: [String, Number],
   duration: {
     type: [String, Number],
     default: 300,
@@ -24,13 +22,8 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  indicatorColor: {
-    type: String,
-  },
-  vertical: {
-    type: Boolean,
-    default: false,
-  },
+  indicatorColor: String,
+  vertical: Boolean,
   touchable: {
     type: Boolean,
     default: true,

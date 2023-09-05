@@ -3,7 +3,8 @@ import VarBreadcrumbs from '../Breadcrumbs.vue'
 import VarBreadcrumb from '../../breadcrumb/Breadcrumb.vue'
 import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 function renderBasicUsage(props) {
   return h(
@@ -64,7 +65,7 @@ test('test breadcrumbs parent and child separator', async () => {
 })
 
 test('test breadcrumbs events', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(VarBreadcrumbs, {
     props: {

@@ -1,39 +1,21 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 
 export const props = {
   loading: {
     type: Boolean,
     default: true,
   },
-  title: {
-    type: Boolean,
-    default: false,
-  },
-  card: {
-    type: Boolean,
-    default: false,
-  },
-  avatar: {
-    type: Boolean,
-    default: false,
-  },
-  fullscreen: {
-    type: Boolean,
-    default: false,
-  },
+  title: Boolean,
+  card: Boolean,
+  avatar: Boolean,
+  fullscreen: Boolean,
   fullscreenZIndex: {
     type: [Number, String],
     default: 100,
   },
-  titleWidth: {
-    type: [Number, String],
-  },
-  cardHeight: {
-    type: [Number, String],
-  },
-  avatarSize: {
-    type: [Number, String],
-  },
+  titleWidth: [Number, String],
+  cardHeight: [Number, String],
+  avatarSize: [Number, String],
   rows: {
     type: [Number, String],
     default: 3,

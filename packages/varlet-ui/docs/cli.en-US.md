@@ -170,8 +170,13 @@ varlet-cli test
 ```shell
 # playground-ignore
 varlet-cli test -w
-or
-varlet-cli test -wa
+```
+
+#### Execute unit tests and report coverage
+
+```shell
+# playground-ignore
+varlet-cli test -cov
 ```
 
 #### Lint the code

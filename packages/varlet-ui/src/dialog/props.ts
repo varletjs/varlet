@@ -1,30 +1,18 @@
+import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
 import { DialogActions } from './index'
-import type { PropType } from 'vue'
 
-function messageAlignValidator(messageAlign: string): boolean {
-  return ['left', 'center', 'right'].includes(messageAlign)
-}
+export type DialogMessageAlign = 'left' | 'center' | 'right'
 
 export const props = {
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  width: {
-    type: [Number, String],
-  },
-  title: {
-    type: String,
-  },
-  message: {
-    type: String,
-  },
+  show: Boolean,
+  width: [Number, String],
+  title: String,
+  message: String,
   messageAlign: {
-    type: String as PropType<'left' | 'center' | 'right'>,
+    type: String as PropType<DialogMessageAlign>,
     default: 'left',
-    validator: messageAlignValidator,
   },
   confirmButton: {
     type: Boolean,
@@ -34,30 +22,14 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  confirmButtonText: {
-    type: String,
-  },
-  cancelButtonText: {
-    type: String,
-  },
-  confirmButtonTextColor: {
-    type: String,
-  },
-  cancelButtonTextColor: {
-    type: String,
-  },
-  confirmButtonColor: {
-    type: String,
-  },
-  cancelButtonColor: {
-    type: String,
-  },
-  dialogClass: {
-    type: String,
-  },
-  dialogStyle: {
-    type: Object,
-  },
+  confirmButtonText: String,
+  cancelButtonText: String,
+  confirmButtonTextColor: String,
+  cancelButtonTextColor: String,
+  confirmButtonColor: String,
+  cancelButtonColor: String,
+  dialogClass: String,
+  dialogStyle: Object,
   onBeforeClose: defineListenerProp<(action: DialogActions, done: () => void) => void>(),
   onConfirm: defineListenerProp<() => void>(),
   onCancel: defineListenerProp<() => void>(),

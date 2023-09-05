@@ -3,10 +3,15 @@
     :class="classes(n(), [offset && isShow, n('--active')], [disabled, n('--disable')])"
     :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
   >
-    <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
-    <div :class="n('header')" @click="toggle()">
+    <div :class="classes(n('shadow'), formatElevation(elevation, 2))" />
+    <div
+      :class="n('header')"
+      @click="toggle()"
+    >
       <div :class="n('header-title')">
-        <slot name="title">{{ title }}</slot>
+        <slot name="title">
+          {{ title }}
+        </slot>
       </div>
       <div :class="n('header-icon')">
         <slot name="icon">
@@ -39,15 +44,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue'
-import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
-import { isArray } from '@varlet/shared'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useCollapse } from './provide'
-import { props } from './props'
 import VarIcon from '../icon'
-import type { Ref, ComputedRef } from 'vue'
-import type { CollapseItemProvider } from './provide'
+import { defineComponent, ref, watch, computed, type Ref, type ComputedRef } from 'vue'
+import { isArray, doubleRaf, raf } from '@varlet/shared'
+import { createNamespace, formatElevation } from '../utils/components'
+import { useCollapse, type CollapseItemProvider } from './provide'
+import { props } from './props'
 
 const { n, classes } = createNamespace('collapse-item')
 
@@ -83,40 +85,53 @@ export default defineComponent({
       }
     }
 
-    const openPanel = () => {
-      if (!contentEl.value) return
-      ;(contentEl.value as HTMLDivElement).style.height = ''
+    const openPanel = async () => {
+      if (!contentEl.value) {
+        return
+      }
+
+      contentEl.value.style.height = ''
       showContent.value = true
+      await raf()
 
-      requestAnimationFrame(() => {
-        const { offsetHeight } = contentEl.value as HTMLDivElement
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
+      if (!contentEl.value) {
+        return
+      }
 
-        requestAnimationFrame(() => {
-          ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
+      const { offsetHeight } = contentEl.value
+      contentEl.value.style.height = 0 + 'px'
+      await raf()
 
-          if (!isInitToTrigger) return
+      if (!contentEl.value) {
+        return
+      }
 
-          nextTickFrame(() => {
-            if (isInitToTrigger) transitionend()
-          })
-        })
-      })
+      contentEl.value.style.height = offsetHeight + 'px'
+
+      if (!isInitToTrigger) {
+        return
+      }
+
+      await doubleRaf()
+
+      if (isInitToTrigger) {
+        transitionend()
+      }
     }
 
     const start = () => {
       isInitToTrigger = false
     }
 
-    const closePanel = () => {
-      if (!contentEl.value) return
+    const closePanel = async () => {
+      if (!contentEl.value) {
+        return
+      }
 
       const { offsetHeight } = contentEl.value
       contentEl.value.style.height = offsetHeight + 'px'
-
-      requestAnimationFrame(() => {
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
-      })
+      await raf()
+      contentEl.value.style.height = 0 + 'px'
     }
 
     const transitionend = () => {
@@ -124,7 +139,7 @@ export default defineComponent({
         showContent.value = false
       }
 
-      ;(contentEl.value as HTMLDivElement).style.height = ''
+      contentEl.value!.style.height = ''
     }
 
     const collapseItemProvider: CollapseItemProvider = {
@@ -136,8 +151,7 @@ export default defineComponent({
     bindCollapse(collapseItemProvider)
 
     watch(isShow, (value) => {
-      if (value) openPanel()
-      else closePanel()
+      value ? openPanel() : closePanel()
     })
 
     return {

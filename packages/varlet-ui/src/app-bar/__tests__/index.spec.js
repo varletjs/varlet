@@ -2,6 +2,7 @@ import AppBar from '..'
 import VarAppBar from '../AppBar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test app bar use', () => {
   const app = createApp({}).use(AppBar)

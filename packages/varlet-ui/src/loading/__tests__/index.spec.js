@@ -2,6 +2,7 @@ import Loading from '..'
 import VarLoading from '../Loading'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test loading use', () => {
   const app = createApp({}).use(Loading)

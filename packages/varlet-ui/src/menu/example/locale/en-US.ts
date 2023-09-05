@@ -5,10 +5,10 @@ export default {
   menuOption: 'Menu Option',
   bottomAlignment: 'Bottom Alignment',
   offset: 'Offset',
-  sameWidth: 'Same width as trigger element',
+  sameWidth: 'Same Width As Trigger Element',
   events: 'Events',
   disabled: 'Disabled',
   placement: 'Placement',
   trigger: 'Trigger',
-  twoWayBinding: 'Two-way binding',
+  twoWayBinding: 'Two-way Binding',
 }

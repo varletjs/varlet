@@ -2,6 +2,7 @@ import Popup from '..'
 import VarPopup from '../Popup'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test popup plugin', () => {
   const app = createApp({}).use(Popup)
@@ -40,8 +41,8 @@ test('test popup show', async () => {
 })
 
 test('test popup onOpen & onClose', async () => {
-  const onOpen = jest.fn()
-  const onClose = jest.fn()
+  const onOpen = vi.fn()
+  const onClose = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
@@ -59,8 +60,8 @@ test('test popup onOpen & onClose', async () => {
 })
 
 test('test popup close on clickOverlay', async () => {
-  const onClose = jest.fn()
-  const onClickOverlay = jest.fn()
+  const onClose = vi.fn()
+  const onClickOverlay = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {

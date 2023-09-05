@@ -2,6 +2,7 @@ import Overlay from '..'
 import VarOverlay from '../Overlay'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test overlay plugin', () => {
   const app = createApp({}).use(Overlay)
@@ -38,7 +39,7 @@ test('test overlay show', async () => {
 })
 
 test('test overlay click on clickOverlay', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {

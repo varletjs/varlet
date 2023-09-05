@@ -1,76 +1,35 @@
 import { defineListenerProp } from '../utils/components'
-import type { PropType, TeleportProps } from 'vue'
+import { type PropType, type TeleportProps } from 'vue'
 import type { NeededPopperPlacement } from '../menu/usePopover'
 import type { PositioningStrategy } from '@popperjs/core'
 
 export type Placement = NeededPopperPlacement
 
-function triggerValidator(trigger: string) {
-  return ['click', 'hover'].includes(trigger)
-}
+export type TooltipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
-function placementValidator(alignment: string) {
-  return [
-    'top',
-    'top-start',
-    'top-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'right',
-    'right-start',
-    'right-end',
-    'left',
-    'left-start',
-    'left-end',
-  ].includes(alignment)
-}
-
-function typeValidator(type: string): boolean {
-  return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
-}
-
-function strategyValidator(strategy: string) {
-  return ['absolute', 'fixed'].includes(strategy)
-}
+export type TooltipTrigger = 'click' | 'hover'
 
 export const props = {
   type: {
-    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
+    type: String as PropType<TooltipType>,
     default: 'default',
-    validator: typeValidator,
   },
-  color: {
-    type: String,
-  },
-  content: {
-    type: String,
-  },
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  color: String,
+  content: String,
+  show: Boolean,
+  disabled: Boolean,
   trigger: {
-    type: String as PropType<'click' | 'hover'>,
+    type: String as PropType<TooltipTrigger>,
     default: 'hover',
-    validator: triggerValidator,
   },
-  reference: {
-    type: String,
-  },
+  reference: String,
   placement: {
     type: String as PropType<Placement>,
     default: 'bottom',
-    validator: placementValidator,
   },
   strategy: {
     type: String as PropType<PositioningStrategy>,
     default: 'absolute',
-    validator: strategyValidator,
   },
   offsetX: {
     type: [Number, String],
@@ -84,14 +43,8 @@ export const props = {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
-  sameWidth: {
-    type: Boolean,
-    default: false,
-  },
-  closeOnClickReference: {
-    type: Boolean,
-    default: false,
-  },
+  sameWidth: Boolean,
+  closeOnClickReference: Boolean,
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),

@@ -2,7 +2,8 @@ import ImagePreview from '../index'
 import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/jest'
+import { delay, mockImageNaturalSize, mockOffset, trigger, triggerDrag } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockImageNaturalSize(1440, 1080)
 mockOffset({ offsetWidth: 375, offsetHeight: 815 })
@@ -32,7 +33,7 @@ test('test image preview component plugin', () => {
 })
 
 test('test image preview tap', async () => {
-  const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
+  const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
       teleport: null,
@@ -49,7 +50,7 @@ test('test image preview tap', async () => {
 })
 
 test('test image preview zoom', async () => {
-  const onUpdateShow = jest.fn((value) => wrapper.setProps({ show: value }))
+  const onUpdateShow = vi.fn((value) => wrapper.setProps({ show: value }))
   const wrapper = mount(VarImagePreview, {
     props: {
       teleport: null,
@@ -89,14 +90,23 @@ test('test image preview zoom move', async () => {
   })
 
   const zoomContainer = wrapper.find('.var-image-preview__zoom-container')
-  await doubleTouch(zoomContainer)
+
   // move to right limit
+  await doubleTouch(zoomContainer)
   await triggerDrag(zoomContainer, -100, 0)
+  await delay(220)
   expect(zoomContainer.element.style.transform).toBe('scale(2) translate(-93.75px, 0px)')
-  // move to center
-  await triggerDrag(zoomContainer, 93.75, 0)
+
+  // tap touch
+  await trigger(zoomContainer, 'touchstart')
+  await trigger(zoomContainer, 'touchend')
+  await delay(220)
+  expect(zoomContainer.element.style.transform).toBe('scale(1) translate(0px, 0px)')
+
   // move to left limit
+  await doubleTouch(zoomContainer)
   await triggerDrag(zoomContainer, 100, 0)
+  await delay(220)
   expect(zoomContainer.element.style.transform).toBe('scale(2) translate(93.75px, 0px)')
 
   wrapper.unmount()
@@ -120,7 +130,7 @@ test('test image preview imagePreventDefault', async () => {
 })
 
 test('test image preview onLongPress', async () => {
-  const onLongPress = jest.fn()
+  const onLongPress = vi.fn()
   const wrapper = mount(VarImagePreview, {
     props: {
       teleport: null,

@@ -1,25 +1,17 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as swipeProps } from '../swipe/props'
 import { props as popupProps } from '../popup/props'
 
 export const props = {
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  imagePreventDefault: {
-    type: Boolean,
-    default: false,
-  },
+  show: Boolean,
+  imagePreventDefault: Boolean,
   images: {
     type: Array as PropType<string[]>,
     default: () => [],
   },
   /** @deprecated Use initialIndex to instead. */
-  current: {
-    type: String,
-  },
+  current: String,
   initialIndex: {
     type: [String, Number],
     default: 0,
@@ -28,10 +20,7 @@ export const props = {
     type: [String, Number],
     default: 2,
   },
-  closeable: {
-    type: Boolean,
-    default: false,
-  },
+  closeable: Boolean,
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   onLongPress: defineListenerProp<(index: number) => void>(),
   ...pickProps(swipeProps, ['loop', 'indicator', 'onChange']),

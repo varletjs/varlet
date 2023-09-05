@@ -19,46 +19,23 @@ export const hoursAmpm = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10
 export const hours24 = ['00', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
 export const minSec = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55']
 
-function formatValidator(type: string): boolean {
-  return ['ampm', '24hr'].includes(type)
-}
-
 export const props = {
-  modelValue: {
-    type: String,
-  },
+  modelValue: String,
   elevation: {
     type: [Boolean, Number, String],
     default: false,
   },
-  color: {
-    type: String,
-  },
-  headerColor: {
-    type: String,
-  },
+  color: String,
+  headerColor: String,
   format: {
     type: String as PropType<Format>,
     default: 'ampm',
-    validator: formatValidator,
   },
-  allowedTime: {
-    type: Object as PropType<AllowedTime>,
-  },
-  min: {
-    type: String,
-  },
-  max: {
-    type: String,
-  },
-  useSeconds: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
+  allowedTime: Object as PropType<AllowedTime>,
+  min: String,
+  max: String,
+  useSeconds: Boolean,
+  readonly: Boolean,
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   onChange: defineListenerProp<(value: string) => void>(),
 }

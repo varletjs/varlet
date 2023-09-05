@@ -4,7 +4,8 @@ import VarRadioGroup from '../RadioGroup'
 import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)
@@ -17,7 +18,7 @@ test('test radio plugin', () => {
 })
 
 test('test radio check value', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -38,7 +39,7 @@ test('test radio check value', async () => {
 })
 
 test('test radio check value with custom value', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -57,8 +58,8 @@ test('test radio check value with custom value', async () => {
 })
 
 test('test radio onClick & onChange', async () => {
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -76,7 +77,7 @@ test('test radio onClick & onChange', async () => {
 })
 
 test('test radio toggle method', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -95,9 +96,9 @@ test('test radio toggle method', async () => {
 })
 
 test('test radio disabled', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -120,9 +121,9 @@ test('test radio disabled', async () => {
 })
 
 test('test radio readonly', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClick = jest.fn()
-  const onChange = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClick = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount(VarRadio, {
     props: {
@@ -171,7 +172,7 @@ test('test radio with radio group', async () => {
 })
 
 test('test radio validation', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarRadio, {
     props: {

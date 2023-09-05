@@ -105,7 +105,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
-### Set the lazy loading state
+### Set Lazy Loading State
 
 ```html
 <!-- playground-ignore -->
@@ -121,7 +121,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
-### Load failure slot
+### Load Failure Slot
 
 ```html
 <template>

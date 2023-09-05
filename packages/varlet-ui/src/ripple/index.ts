@@ -1,5 +1,5 @@
 import context from '../context'
-import { supportTouch, getStyle, getRect } from '../utils/elements'
+import { supportTouch, getStyle, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { type Directive, type Plugin, type App, type DirectiveBinding } from 'vue'
 

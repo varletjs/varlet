@@ -13,6 +13,7 @@ export interface CheckboxProps extends BasicAttributes {
   uncheckedColor?: string
   disabled?: boolean
   readonly?: boolean
+  indeterminate?: boolean
   iconSize?: string | number
   ripple?: boolean
   validateTrigger?: Array<CheckboxValidateTriggers>
@@ -20,6 +21,7 @@ export interface CheckboxProps extends BasicAttributes {
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
+  'onUpdate:indeterminate'?: ListenerProp<(value: boolean) => void>
 }
 
 export class Checkbox extends VarComponent {
@@ -29,6 +31,7 @@ export class Checkbox extends VarComponent {
     default(): VNode[]
     'checked-icon'(): VNode[]
     'unchecked-icon'(): VNode[]
+    'indeterminate-icon'(): VNode[]
   }
 
   validate(): Promise<boolean>

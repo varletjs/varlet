@@ -57,9 +57,9 @@ import { defineComponent, watch, ref, computed, Transition, type Ref, type Compu
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
 import { type TabProvider } from '../tab/provide'
-import { clamp, isNumber } from '@varlet/shared'
+import { clamp, isNumber, doubleRaf } from '@varlet/shared'
 import { linear } from '../utils/shared'
-import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
+import { toSizeUnit, scrollTo } from '../utils/elements'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { onWindowResize } from '@varlet/use'
 

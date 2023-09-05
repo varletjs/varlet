@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'AppMobile',
   props: {
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .varlet-site-mobile {
   position: sticky;
   flex: 0 0 330px;
@@ -58,6 +58,13 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
 }
 </style>

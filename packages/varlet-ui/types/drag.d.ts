@@ -21,6 +21,7 @@ export interface DragProps extends BasicAttributes {
   boundary?: DragBoundary
   zIndex?: string | number
   teleport?: TeleportProps['to'] | false
+  onClick?: ListenerProp<(event: Event) => void>
 }
 
 export class Drag extends VarComponent {

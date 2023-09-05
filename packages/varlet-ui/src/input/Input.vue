@@ -1,5 +1,8 @@
 <template>
-  <div :class="classes(n(), n('$--box'))" @mousedown="handleMousedown">
+  <div
+    :class="classes(n(), n('$--box'))"
+    @mousedown="handleMousedown"
+  >
     <var-field-decorator
       v-bind="{
         value: modelValue,
@@ -23,7 +26,10 @@
         onClear: handleClear,
       }"
     >
-      <template v-if="$slots['prepend-icon']" #prepend-icon>
+      <template
+        v-if="$slots['prepend-icon']"
+        #prepend-icon
+      >
         <slot name="prepend-icon" />
       </template>
 
@@ -36,7 +42,7 @@
           '--input-placeholder-color': placeholderColor,
         }"
         :enterkeyhint="enterkeyhint"
-      />
+      >
       <textarea
         v-if="textarea"
         :class="
@@ -51,7 +57,8 @@
         ref="el"
         autocomplete="new-password"
         :id="id"
-        :disabled="formDisabled || disabled || formReadonly || readonly"
+        :disabled="formDisabled || disabled"
+        :readonly="formReadonly || readonly"
         :type="normalizedType"
         :value="modelValue"
         :placeholder="!hint ? placeholder : undefined"
@@ -69,7 +76,6 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
-        @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
       />
@@ -86,7 +92,8 @@
         ref="el"
         autocomplete="new-password"
         :id="id"
-        :disabled="formDisabled || disabled || formReadonly || readonly"
+        :disabled="formDisabled || disabled"
+        :readonly="formReadonly || readonly"
         :type="normalizedType"
         :value="modelValue"
         :placeholder="!hint ? placeholder : undefined"
@@ -102,18 +109,24 @@
         @blur="handleBlur"
         @input="handleInput"
         @change="handleChange"
-        @touchstart="handleTouchstart"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-      />
+      >
 
       <template #append-icon>
         <slot name="append-icon" />
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop>
-      <template v-if="$slots['extra-message']" #extra-message>
+    <var-form-details
+      :error-message="errorMessage"
+      :extra-message="maxlengthText"
+      @mousedown.stop
+    >
+      <template
+        v-if="$slots['extra-message']"
+        #extra-message
+      >
         <slot name="extra-message" />
       </template>
     </var-form-details>
@@ -300,17 +313,7 @@ export default defineComponent({
 
     const withMaxlength = (value: string) => (props.maxlength ? value.slice(0, toNumber(props.maxlength)) : value)
 
-    const handleTouchstart = (e: Event) => {
-      const { disabled, readonly } = props
-
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
-        return
-      }
-
-      e.stopPropagation()
-    }
-
-    function handleMousedown(e: MouseEvent) {
+    const handleMousedown = (e: MouseEvent) => {
       const { disabled } = props
 
       if (form?.disabled.value || disabled || e.target === el.value) {
@@ -375,7 +378,6 @@ export default defineComponent({
       handleChange,
       handleClear,
       handleClick,
-      handleTouchstart,
       handleCompositionStart,
       handleCompositionEnd,
       handleMousedown,

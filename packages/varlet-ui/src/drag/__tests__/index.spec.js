@@ -1,7 +1,8 @@
 import Drag from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { triggerDrag, trigger, delay } from '../../utils/jest'
+import { triggerDrag, trigger, delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test drag plugin', () => {
   const app = createApp({}).use(Drag)
@@ -102,6 +103,23 @@ test('test drag reset', async () => {
   wrapper.vm.reset()
   await delay()
   expect(container.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test drag click method', async () => {
+  const container = document.createElement('div')
+  const onClick = vi.fn()
+
+  const wrapper = mount(Drag, {
+    props: {
+      teleport: container,
+      onClick,
+    },
+  })
+
+  await trigger(container.childNodes[0], 'click')
+  expect(onClick).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })

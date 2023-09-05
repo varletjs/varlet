@@ -4,9 +4,10 @@ import VarIndexBar from '../IndexBar'
 import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockScrollTo } from '../../utils/jest'
+import { delay, mockScrollTo } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
-mockScrollTo(HTMLElement)
+mockScrollTo()
 
 function mockIndexBarOwnTop() {
   const originForEach = Array.prototype.forEach
@@ -45,8 +46,8 @@ const Wrapper = {
   `,
 }
 
-const clickHandle = jest.fn()
-const changeHandle = jest.fn()
+const clickHandle = vi.fn()
+const changeHandle = vi.fn()
 const Wrapper2 = {
   template: `
     <div style="height: 50px; overflow: auto">
@@ -161,7 +162,7 @@ describe('test index-bar component props', () => {
 
 describe('test index-bar events', () => {
   test('test index-bar click event', async () => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
 
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
@@ -194,7 +195,7 @@ describe('test index-bar events', () => {
   })
 
   test('test indexBar scroll to trigger change event', async () => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
 
     const { mockRestore } = mockIndexBarOwnTop()
     const wrapper = mount(Wrapper2, { attachTo: document.body })

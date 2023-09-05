@@ -1,29 +1,51 @@
 <template>
-  <div :class="classes(n(), n('$--box'))" ref="listEl">
+  <div
+    :class="classes(n(), n('$--box'))"
+    ref="listEl"
+  >
     <slot />
 
-    <slot name="loading" v-if="loading">
+    <slot
+      name="loading"
+      v-if="loading"
+    >
       <div :class="n('loading')">
         <div :class="n('loading-text')">
           {{ dt(loadingText, pack.listLoadingText) }}
         </div>
-        <var-loading size="mini" :radius="10" />
+        <var-loading
+          size="mini"
+          :radius="10"
+        />
       </div>
     </slot>
 
-    <slot name="finished" v-if="finished">
+    <slot
+      name="finished"
+      v-if="finished"
+    >
       <div :class="n('finished')">
         {{ dt(finishedText, pack.listFinishedText) }}
       </div>
     </slot>
 
-    <slot name="error" v-if="error">
-      <div :class="n('error')" v-ripple @click="load">
+    <slot
+      name="error"
+      v-if="error"
+    >
+      <div
+        :class="n('error')"
+        v-ripple
+        @click="load"
+      >
         {{ dt(errorText, pack.listErrorText) }}
       </div>
     </slot>
 
-    <div :class="n('detector')" ref="detectorEl" />
+    <div
+      :class="n('detector')"
+      ref="detectorEl"
+    />
   </div>
 </template>
 
@@ -31,9 +53,9 @@
 import VarLoading from '../loading'
 import Ripple from '../ripple'
 import { defineComponent, ref, nextTick, type Ref, watch } from 'vue'
-import { getParentScroller, getRect, toPxNum } from '../utils/elements'
+import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
-import { isNumber } from '@varlet/shared'
+import { isNumber, getRect } from '@varlet/shared'
 import { dt } from '../utils/shared'
 import { createNamespace, call } from '../utils/components'
 import { pack } from '../locale'

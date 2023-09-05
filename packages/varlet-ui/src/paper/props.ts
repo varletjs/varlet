@@ -5,26 +5,11 @@ export const props = {
     type: [Boolean, Number, String],
     default: false,
   },
-  ripple: {
-    type: Boolean,
-    default: false,
-  },
-  radius: {
-    type: [Number, String],
-  },
-  width: {
-    type: [Number, String],
-  },
-  height: {
-    type: [Number, String],
-  },
-  round: {
-    type: Boolean,
-    default: false,
-  },
-  inline: {
-    type: Boolean,
-    default: false,
-  },
+  ripple: Boolean,
+  radius: [Number, String],
+  width: [Number, String],
+  height: [Number, String],
+  round: Boolean,
+  inline: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
 }

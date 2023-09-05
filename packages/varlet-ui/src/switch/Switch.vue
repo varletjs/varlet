@@ -1,5 +1,8 @@
 <template>
-  <div :class="n()" v-hover:desktop="hover">
+  <div
+    :class="n()"
+    v-hover:desktop="hover"
+  >
     <div
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
       @click="switchActive"
@@ -38,7 +41,12 @@
             }"
           >
             <svg viewBox="25 25 50 50">
-              <circle cx="50" cy="50" r="20" fill="none" />
+              <circle
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+              />
             </svg>
           </span>
         </div>
@@ -53,8 +61,8 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, nextTick, type ComputedRef } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
@@ -136,15 +144,22 @@ export default defineComponent({
       } = props
 
       call(onClick, event)
-      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
+
+      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) {
+        return
+      }
+
       const newValue = modelValue === activeValue ? inactiveValue : activeValue
+
       call(onChange, newValue)
       call(updateModelValue, newValue)
       validateWithTrigger()
     }
 
     const hover = (value: boolean) => {
-      if (props.disabled || form?.disabled.value) return
+      if (props.disabled || form?.disabled.value) {
+        return
+      }
 
       handleHovering(value)
     }
@@ -159,20 +174,21 @@ export default defineComponent({
       validate,
       resetValidation,
     }
+
     call(bindForm, switchProvider)
 
     return {
       n,
       classes,
-      multiplySizeUnit,
-      switchActive,
       hovering,
-      hover,
       radius,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      multiplySizeUnit,
+      switchActive,
+      hover,
     }
   },
 })

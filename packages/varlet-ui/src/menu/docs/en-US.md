@@ -102,7 +102,7 @@ The offset of the Menu popup can be set with `offset-x` and `offset-y`.
 </template>
 ```
 
-### Same width as trigger element
+### Same Width As Trigger Element
 
 Use `same-width` to make the popup menu and trigger the same width.
 
@@ -182,7 +182,7 @@ In the `disabled` state, the menu will no longer be opened.
 </template>
 ```
 
-### Two-way binding
+### Two-way Binding
 
 Two-way binding control menu show and hide via `v-model:show`.
 

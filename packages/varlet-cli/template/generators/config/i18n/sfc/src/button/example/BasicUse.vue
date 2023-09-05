@@ -1,5 +1,5 @@
 <script setup>
-import VarButton from '..'
+import VaButton from '..'
 import { watchLang } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
@@ -7,5 +7,5 @@ watchLang(use, 'pc')
 </script>
 
 <template>
-  <var-button>{{ pack.start }}</var-button>
+  <va-button>{{ pack.start }}</va-button>
 </template>

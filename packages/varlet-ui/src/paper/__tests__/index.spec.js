@@ -2,6 +2,7 @@ import Paper from '..'
 import VarPaper from '../Paper'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
 
 test('test paper use', () => {
   const app = createApp({}).use(Paper)
@@ -29,7 +30,7 @@ test('test paper radius', () => {
 })
 
 test('test paper onClick', () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(VarPaper, {
     props: {

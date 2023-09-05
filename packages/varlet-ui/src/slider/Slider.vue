@@ -14,7 +14,10 @@
             width: isVertical ? multiplySizeUnit(trackHeight) : '100%',
           }"
         />
-        <div :class="n(`${direction}-track-fill`)" :style="getFillStyle" />
+        <div
+          :class="n(`${direction}-track-fill`)"
+          :style="getFillStyle"
+        />
       </div>
       <div
         v-for="item in thumbList"
@@ -23,7 +26,10 @@
         :style="thumbStyle(item)"
         @touchstart.stop="start($event, item.enumValue)"
       >
-        <slot name="button" :current-value="item.text">
+        <slot
+          name="button"
+          :current-value="item.text"
+        >
           <div
             :class="n(`${direction}-thumb-block`)"
             :style="{
@@ -60,12 +66,18 @@
         </slot>
       </div>
     </div>
-    <var-form-details :error-message="errorMessage" :class="n('form')" var-slider-cover />
+    <var-form-details
+      :error-message="errorMessage"
+      :class="n('form')"
+      var-slider-cover
+    />
   </div>
 </template>
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import Hover from '../hover'
 import {
   defineComponent,
   ref,
@@ -81,11 +93,9 @@ import {
 } from 'vue'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
-import { getLeft, multiplySizeUnit, getRect } from '../utils/elements'
+import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
-import { isArray, isNumber, toNumber } from '@varlet/shared'
+import { isArray, isNumber, toNumber, getRect } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import { onSmartMounted } from '@varlet/use'
 import { type SliderProvider } from './provide'

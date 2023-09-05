@@ -2,7 +2,7 @@
 
 ### Basic Use
 ```html
-<var-button>start</var-button>
+<va-button>start</va-button>
 ```
 
 ```vue
@@ -11,7 +11,7 @@ import BasicUse from '../example/BasicUse'
 
 ### Theme Color Button
 ```html
-<var-button color="#009688">start</var-button>
+<va-button color="#009688">start</va-button>
 ```
 
 ```vue

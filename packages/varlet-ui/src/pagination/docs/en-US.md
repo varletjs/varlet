@@ -64,7 +64,7 @@ Set `simple` to `false` when you use medium and large screen devices, preview se
 </template>
 ```
 
-### Enable page number to jump quickly
+### Enable Page Number To Jump Quickly
 
 Use `show-quick-jumper` prop to enable page number to jump quickly.
 

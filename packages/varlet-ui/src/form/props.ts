@@ -1,24 +1,16 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
+import { defineListenerProp } from '../utils/components'
 
-function scrollToErrorValidator(status: string): boolean {
-  return ['start', 'end'].includes(status)
-}
+export type FormScrollToError = 'start' | 'end'
 
 export const props = {
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  scrollToError: {
-    type: String as PropType<'start' | 'end'>,
-    validator: scrollToErrorValidator,
-  },
+  disabled: Boolean,
+  readonly: Boolean,
+  scrollToError: String as PropType<FormScrollToError>,
   scrollToErrorOffsetY: {
     type: [String, Number],
     default: 0,
   },
+  onSubmit: defineListenerProp<(valid: boolean) => void>(),
+  onReset: defineListenerProp<() => void>(),
 }

@@ -1,3 +1,72 @@
+## [2.15.1](https://github.com/varletjs/varlet/compare/v2.15.0...v2.15.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* **layout, table:** fix col width overflow and optimize table hover effect ([695b75d](https://github.com/varletjs/varlet/commit/695b75dae1863fa5ef0f5908691d6d3aca1230e5))
+
+
+
+# [2.15.0](https://github.com/varletjs/varlet/compare/v2.14.2...v2.15.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* **input:** fix it can't trigger click event in `readonly` ([#1170](https://github.com/varletjs/varlet/issues/1170)) ([6ba487d](https://github.com/varletjs/varlet/commit/6ba487d5904f7c7a9e58c9f1bbe32c20074a4478))
+* **swipe:** fix swipe occasionally cross the boundary ([1788fd4](https://github.com/varletjs/varlet/commit/1788fd4a8cf0a71456eed5740755414d3a9fa604))
+
+
+### Features
+
+* **checkbox:** support indeterminate prop and slot ([#1159](https://github.com/varletjs/varlet/issues/1159)) ([41cd712](https://github.com/varletjs/varlet/commit/41cd7126d4787285f8a3cce2a18f903b66d16719))
+* **cli:** unit testing tools migrated to vitest ([9911f4b](https://github.com/varletjs/varlet/commit/9911f4b0a157cbff84d72b4fa19e5db66ebbf9a6))
+* **form:** support submit and reset events and improve test case ([55b3d62](https://github.com/varletjs/varlet/commit/55b3d62c2208204b1caac1bfb12ecfb0a550c4e2))
+* **link:** support rel prop ([#1163](https://github.com/varletjs/varlet/issues/1163)) ([05baa4a](https://github.com/varletjs/varlet/commit/05baa4a0d971b2f63e952c24e92e30f4acac9036))
+* **option:** support hover effect ([#1157](https://github.com/varletjs/varlet/issues/1157)) ([56cdff8](https://github.com/varletjs/varlet/commit/56cdff83e1aa610bd5d4cae1130060cfaf9b4e39))
+
+
+
+## [2.14.2](https://github.com/varletjs/varlet/compare/v2.14.1...v2.14.2) (2023-08-18)
+
+
+### Features
+
+* **drag:** support click event ([#1150](https://github.com/varletjs/varlet/issues/1150)) ([62ad9c3](https://github.com/varletjs/varlet/commit/62ad9c312f1cfb1716a50042f27dcb7c7b1486ef))
+
+
+
+## [2.14.1](https://github.com/varletjs/varlet/compare/v2.14.0...v2.14.1) (2023-08-15)
+
+
+### Bug Fixes
+
+* **watermarker:** fix missing style dependencies ([22fc711](https://github.com/varletjs/varlet/commit/22fc7112bc0cce43a8fc4813a940274e481c9222))
+
+
+
+# [2.14.0](https://github.com/varletjs/varlet/compare/v2.13.6...v2.14.0) (2023-08-15)
+
+
+### Features
+
+* add new component watermark ([#1143](https://github.com/varletjs/varlet/issues/1143)) ([a0af434](https://github.com/varletjs/varlet/commit/a0af434296215705c8c97667df267ac6f8575e86))
+
+
+
+## [2.13.6](https://github.com/varletjs/varlet/compare/v2.13.5...v2.13.6) (2023-08-02)
+
+
+### Bug Fixes
+
+* **cell:** fix cell overflow hidden ([0850d94](https://github.com/varletjs/varlet/commit/0850d940eca1e61522eef48afb6d8ec7ef5e91fa))
+
+
+### Features
+
+* **icons:** support email icon ([c23c7c1](https://github.com/varletjs/varlet/commit/c23c7c12554bec087a6e58e7afda01cd25e38b7c))
+
+
+
 ## [2.13.5](https://github.com/varletjs/varlet/compare/v2.13.4...v2.13.5) (2023-07-30)
 
 

@@ -94,6 +94,21 @@ const value = ref(false)
 </template>
 ```
 
+### 不确定状态
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+const intermediate = ref(true)
+</script>
+
+<template>
+  <var-checkbox v-model:intermediate="intermediate" v-model="value"></var-checkbox>
+</template>
+```
+
 ### 复选框组
 
 在复选框组中，必须给 `checkbox` 设置 `checked-value` 用来标识，
@@ -211,6 +226,7 @@ const value = ref([])
 | `icon-size` | 图标尺寸 | _string \| number_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
+| `indeterminate` | 是否为不确定状态（样式优先级最高） | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
@@ -264,6 +280,7 @@ const value = ref([])
 | --- | --- | --- |
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
+| `indeterminate-icon` | 不确定状态图标 | `-` |
 | `default` | 显示的文本 | `-` |
 
 ### 样式变量

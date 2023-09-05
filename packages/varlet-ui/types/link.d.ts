@@ -11,6 +11,7 @@ export { LinkType }
 export interface LinkProps extends BasicAttributes {
   type?: LinkType
   href?: string
+  rel?: string
   target?: string
   to?: RouteLocationRaw
   replace?: boolean

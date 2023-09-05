@@ -18,59 +18,123 @@ const values = reactive({
   value7: false,
   value8: [],
   value9: [],
+  value10: false,
   group: null,
+  indeterminate: true,
 })
 
-const { value, value2, value3, value4, value5, value6, value7, value8, value9, group } = toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, group, value10, indeterminate } =
+  toRefs(values)
 watchLang(use)
 watchDarkMode(dark)
 </script>
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-checkbox v-model="value"> {{ pack.currentValue }} {{ value }} </var-checkbox>
+  <var-checkbox v-model="value">
+    {{ pack.currentValue }} {{ value }}
+  </var-checkbox>
 
   <app-type>{{ pack.setState }}</app-type>
-  <var-checkbox :unchecked-value="0" :checked-value="1" v-model="value2">
+  <var-checkbox
+    :unchecked-value="0"
+    :checked-value="1"
+    v-model="value2"
+  >
     {{ pack.currentValue }} {{ value2 }}
   </var-checkbox>
 
   <app-type>{{ pack.setStyle }}</app-type>
-  <var-checkbox unchecked-color="#e99eb4" checked-color="#f44336" v-model="value3">
+  <var-checkbox
+    unchecked-color="#e99eb4"
+    checked-color="#f44336"
+    v-model="value3"
+  >
     <template #unchecked-icon>
-      <var-icon name="heart-half-full" size="24px" />
+      <var-icon
+        name="heart-half-full"
+        size="24px"
+      />
     </template>
     <template #checked-icon>
-      <var-icon name="heart" size="24px" />
+      <var-icon
+        name="heart"
+        size="24px"
+      />
     </template>
-    <template #default> {{ pack.currentValue }} {{ value3 }} </template>
+    <template #default>
+      {{ pack.currentValue }} {{ value3 }}
+    </template>
   </var-checkbox>
 
   <app-type>{{ pack.disabled }}</app-type>
-  <var-checkbox disabled v-model="value4"> {{ pack.currentValue }} {{ value4 }} </var-checkbox>
+  <var-checkbox
+    disabled
+    v-model="value4"
+  >
+    {{ pack.currentValue }} {{ value4 }}
+  </var-checkbox>
 
   <app-type>{{ pack.readonly }}</app-type>
-  <var-checkbox readonly v-model="value5"> {{ pack.currentValue }} {{ value5 }} </var-checkbox>
+  <var-checkbox
+    readonly
+    v-model="value5"
+  >
+    {{ pack.currentValue }} {{ value5 }}
+  </var-checkbox>
+
+  <app-type>{{ pack.indeterminate }}</app-type>
+  <div class="indeterminate-container">
+    <var-checkbox
+      v-model="value10"
+      v-model:indeterminate="indeterminate"
+    >
+      {{ pack.indeterminateValue }} {{ indeterminate }}
+    </var-checkbox>
+    <var-button
+      class="button"
+      type="primary"
+      @click="indeterminate = !indeterminate"
+    >
+      {{ pack.toggle }}
+    </var-button>
+  </div>
 
   <app-type>{{ pack.checkboxGroup }}</app-type>
-  <var-checkbox-group ref="group" v-model="value6">
+  <var-checkbox-group
+    ref="group"
+    v-model="value6"
+  >
     <var-checkbox :checked-value="0">
       {{ pack.eat }}
     </var-checkbox>
     <var-checkbox :checked-value="1">
       {{ pack.sleep }}
     </var-checkbox>
-    <var-button class="button" type="primary" @click="$refs.group.checkAll()">
+    <var-button
+      class="button"
+      type="primary"
+      @click="$refs.group.checkAll()"
+    >
       {{ pack.checkAll }}
     </var-button>
-    <var-button class="button" type="primary" @click="$refs.group.inverseAll()">
+    <var-button
+      class="button"
+      type="primary"
+      @click="$refs.group.inverseAll()"
+    >
       {{ pack.inverseAll }}
     </var-button>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
+  <div class="relation">
+    {{ pack.currentValue }} {{ value6 }}
+  </div>
 
   <app-type>{{ pack.vertical }}</app-type>
-  <var-checkbox-group v-model="value9" direction="vertical">
+  <var-checkbox-group
+    v-model="value9"
+    direction="vertical"
+  >
     <var-checkbox :checked-value="0">
       {{ pack.eat }}
     </var-checkbox>
@@ -78,15 +142,23 @@ watchDarkMode(dark)
       {{ pack.sleep }}
     </var-checkbox>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
+  <div class="relation">
+    {{ pack.currentValue }} {{ value9 }}
+  </div>
 
   <app-type>{{ pack.checkboxValidate }}</app-type>
-  <var-checkbox v-model="value7" :rules="[(v) => v || pack.checkboxValidateMessage]">
+  <var-checkbox
+    v-model="value7"
+    :rules="[(v) => v || pack.checkboxValidateMessage]"
+  >
     {{ pack.currentValue }} {{ value7 }}
   </var-checkbox>
 
   <app-type>{{ pack.checkboxGroupValidate }}</app-type>
-  <var-checkbox-group v-model="value8" :rules="[(v) => v.length === 2 || pack.checkboxGroupValidateMessage]">
+  <var-checkbox-group
+    v-model="value8"
+    :rules="[(v) => v.length === 2 || pack.checkboxGroupValidateMessage]"
+  >
     <var-checkbox :checked-value="0">
       {{ pack.eat }}
     </var-checkbox>
@@ -94,12 +166,19 @@ watchDarkMode(dark)
       {{ pack.sleep }}
     </var-checkbox>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value8 }}</div>
+  <div class="relation">
+    {{ pack.currentValue }} {{ value8 }}
+  </div>
 
   <div class="space" />
 </template>
 
 <style scoped lang="less">
+.indeterminate-container {
+  display: flex;
+  align-items: center;
+}
+
 .relation {
   margin-top: 10px;
 }

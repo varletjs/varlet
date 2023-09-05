@@ -19,9 +19,14 @@
     @opened="onOpened"
     @route-change="onRouteChange"
   >
-    <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
+    <div
+      :class="classes(n(), n('$--box'))"
+      v-bind="$attrs"
+    >
       <slot name="title">
-        <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
+        <div :class="n('title')">
+          {{ dt(title, pack.actionSheetTitle) }}
+        </div>
       </slot>
 
       <slot name="actions">
@@ -40,7 +45,9 @@
             :size="action.iconSize"
             v-if="action.icon"
           />
-          <div :class="n('action-name')">{{ action.name }}</div>
+          <div :class="n('action-name')">
+            {{ action.name }}
+          </div>
         </div>
       </slot>
     </div>
@@ -51,13 +58,12 @@
 import Ripple from '../ripple'
 import VarPopup from '../popup'
 import VarIcon from '../icon'
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, type Ref } from 'vue'
 import { props } from './props'
 import { dt } from '../utils/shared'
 import { pack } from '../locale'
 import { createNamespace, call } from '../utils/components'
-import type { Ref } from 'vue'
-import type { ActionItem } from './index'
+import { type ActionItem } from './index'
 
 const { n, classes } = createNamespace('action-sheet')
 

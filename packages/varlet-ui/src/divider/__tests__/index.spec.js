@@ -2,6 +2,7 @@ import VarDivider from '../Divider'
 import Divider from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect } from 'vitest'
 
 test('test divider plugin', () => {
   const app = createApp({}).use(Divider)

@@ -1,5 +1,8 @@
 <template>
-  <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
+  <Teleport
+    :to="teleport === false ? undefined : teleport"
+    :disabled="teleportDisabled || teleport === false"
+  >
     <div
       ref="drag"
       :class="classes(n(), n('$--box'), [enableTransition, n('--transition')])"
@@ -10,6 +13,7 @@
       @touchmove="handleTouchmove"
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
+      @click="handleClick"
       v-bind="getAttrs()"
     >
       <slot />
@@ -20,10 +24,10 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
 import { props } from './props'
-import { createNamespace, useTeleport } from '../utils/components'
-import { getRect, toPxNum } from '../utils/elements'
-import { onSmartMounted, onWindowResize } from '@varlet/use'
-import { clamp } from '@varlet/shared'
+import { createNamespace, useTeleport, call } from '../utils/components'
+import { toPxNum } from '../utils/elements'
+import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
+import { clamp, getRect } from '@varlet/shared'
 
 const { n, classes } = createNamespace('drag')
 
@@ -43,52 +47,34 @@ export default defineComponent({
     })
     const dragged = ref(false)
     const enableTransition = ref(false)
-    const dragging = ref(false)
+    const { touching, dragging, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
     const { disabled: teleportDisabled } = useTeleport()
-
-    let touching = false
-    let prevX = 0
-    let prevY = 0
-    let draggingRunner: number | null = null
 
     const handleTouchstart = (event: TouchEvent) => {
       if (props.disabled) {
         return
       }
 
-      draggingRunner && window.clearTimeout(draggingRunner)
-
-      const { clientX, clientY } = event.touches[0]
-
+      startTouch(event)
       saveXY()
-      prevX = clientX
-      prevY = clientY
-      touching = true
-      dragging.value = false
     }
 
     const handleTouchmove = async (event: TouchEvent) => {
-      if (!touching || props.disabled) {
+      if (!touching.value || props.disabled) {
         return
       }
 
+      moveTouch(event)
       event.preventDefault()
       enableTransition.value = false
       dragged.value = true
-      dragging.value = true
-
-      const { clientX, clientY } = event.touches[0]
-      const deltaX = clientX - prevX
-      const deltaY = clientY - prevY
-      prevX = clientX
-      prevY = clientY
 
       if (props.direction.includes('x')) {
-        x.value += deltaX
+        x.value += moveX.value
       }
 
       if (props.direction.includes('y')) {
-        y.value += deltaY
+        y.value += moveY.value
       }
 
       clampToBoundary()
@@ -99,13 +85,17 @@ export default defineComponent({
         return
       }
 
-      touching = false
+      endTouch()
       enableTransition.value = true
       attract()
+    }
 
-      draggingRunner = window.setTimeout(() => {
-        dragging.value = false
-      })
+    const handleClick = (event: Event) => {
+      if (dragging.value) {
+        return
+      }
+
+      call(props.onClick, event)
     }
 
     const saveXY = () => {
@@ -225,19 +215,17 @@ export default defineComponent({
 
     // expose
     const reset = () => {
+      resetTouch()
       enableTransition.value = false
       dragged.value = false
-      dragging.value = false
       x.value = 0
       y.value = 0
-
-      touching = false
-      prevX = 0
-      prevY = 0
     }
 
     watch(() => props.boundary, toPxBoundary)
+
     onWindowResize(resize)
+
     onSmartMounted(() => {
       toPxBoundary()
       resize()
@@ -256,6 +244,7 @@ export default defineComponent({
       handleTouchstart,
       handleTouchmove,
       handleTouchend,
+      handleClick,
       resize,
       reset,
     }
