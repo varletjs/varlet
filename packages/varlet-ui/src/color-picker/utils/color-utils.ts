@@ -1,7 +1,18 @@
 // Utilities
 import { ref } from 'vue'
 import { chunk, padEnd, has } from './helpers'
-import { ColorPickerColor, position, ColorInt, HSV, RGB, HSL, Hex, Hexa, Color } from './color-utils-types'
+import {
+  ColorPickerColor,
+  CssColorObject,
+  position,
+  ColorInt,
+  HSV,
+  RGB,
+  HSL,
+  Hex,
+  Hexa,
+  Color,
+} from './color-utils-types'
 
 export const nullColor = { h: 0, s: 0, v: 1, a: 1 }
 
@@ -233,6 +244,12 @@ export function fromHexa(hexa: Hexa): Partial<ColorPickerColor> {
     hue: hsva.h,
   }
 }
+
+// 根据 value  饱和度 判断文本颜色
+export function changeColorValue(value: HSV, maxValue: number): CssColorObject {
+  return value.v > maxValue && value.s < maxValue ? { color: '#000' } : { color: '#fff' }
+}
+
 export function fromHSLA(hsla: HSL): Partial<ColorPickerColor> {
   const hsva = HSLAtoHSVA(hsla)
   const hexa = HSVAtoHex(hsva)

@@ -1,7 +1,6 @@
 import { defineComponent, toRefs } from 'vue'
-import { HexToHSV } from '../../utils/color-utils'
+import { HexToHSV, changeColorValue } from '../../utils/color-utils'
 import { convertToUnit, deepEqual } from '../../utils/helpers'
-import { changeColorValue } from '../../utils/composable'
 import { call, createNamespace } from '../../../utils/components'
 import { colorPickerSwatchesColorProps, ColorPickerSwatchesColorProps } from './color-picker-swatches-types'
 import './color-picker-swatches.less'
@@ -15,32 +14,32 @@ export default defineComponent({
     const { color, maxHeight } = toRefs(props)
 
     return () => (
-        <div
-          class={n()}
-          style={{
-            maxHeight: convertToUnit(maxHeight!.value),
-          }}
-        >
-          <div class={n('colorful')}>
-            {props.swatches.map((swatch) => (
-              <div class={n('swatch')}>
-                {swatch.map((colorItem) => {
-                  const hsv = HexToHSV(colorItem)
-                  const iconColor = changeColorValue(hsv!, 0.5)
-                  return (
-                    <div class={n('color')} onClick={() => call(props['onUpdate:color'], hsv)}>
-                      <div style={{ background: colorItem }}>
-                        {color!.value && deepEqual(color!.value, hsv) && (
-                          <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />
-                        )}
-                      </div>
+      <div
+        class={n()}
+        style={{
+          maxHeight: convertToUnit(maxHeight!.value),
+        }}
+      >
+        <div class={n('colorful')}>
+          {props.swatches.map((swatch) => (
+            <div class={n('swatch')}>
+              {swatch.map((colorItem) => {
+                const hsv = HexToHSV(colorItem)
+                const iconColor = changeColorValue(hsv!, 0.5)
+                return (
+                  <div class={n('color')} onClick={() => call(props['onUpdate:color'], hsv)}>
+                    <div style={{ background: colorItem }}>
+                      {color!.value && deepEqual(color!.value, hsv) && (
+                        <var-icon size="15" name="checkbox-marked-circle" color={iconColor.color} />
+                      )}
                     </div>
-                  )
-                })}
-              </div>
-            ))}
-          </div>
+                  </div>
+                )
+              })}
+            </div>
+          ))}
         </div>
-      )
+      </div>
+    )
   },
 })
