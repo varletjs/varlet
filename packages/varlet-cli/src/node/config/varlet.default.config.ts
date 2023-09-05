@@ -48,7 +48,7 @@ export default defineConfig({
         'en-US': 'Get Started',
       },
       viewOnGithub: {
-        'zh-CN': '查看仓库',
+        'zh-CN': '查看源码',
         'en-US': 'View On Github',
       },
       features: [
