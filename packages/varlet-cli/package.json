@@ -44,6 +44,7 @@
     "@babel/plugin-transform-typescript": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@varlet/ui": "workspace:*",
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue": "4.2.3",
@@ -76,7 +77,6 @@
   },
   "devDependencies": {
     "@varlet/icons": "workspace:*",
-    "@varlet/ui": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@types/babel__core": "^7.20.1",
     "@types/ejs": "^3.1.1",
@@ -92,6 +92,7 @@
     "rimraf": "^5.0.1"
   },
   "peerDependencies": {
+    "@varlet/ui": "workspace:*",
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@vue/runtime-core": "3.3.4",

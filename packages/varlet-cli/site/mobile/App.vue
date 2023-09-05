@@ -149,16 +149,15 @@ export default defineComponent({
     }
 
     const toggleTheme = () => {
-        setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
-        window.postMessage(getThemeMessage(), '*')
+      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+      window.postMessage(getThemeMessage(), '*')
 
-        if (!isPhone() && inIframe()) {
-          ;(window.top as any).postMessage(getThemeMessage(), '*')
-        }
+      if (!isPhone() && inIframe()) {
+        ;(window.top as any).postMessage(getThemeMessage(), '*')
       }
+    }
 
     ;(window as any).toggleTheme = toggleTheme
-
     setTheme(config, currentTheme.value)
     window.postMessage(getThemeMessage(), '*')
 

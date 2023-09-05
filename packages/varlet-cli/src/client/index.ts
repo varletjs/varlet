@@ -1,8 +1,7 @@
 import config from '@config'
 import AppType from './appType'
-import { Themes } from '@varlet/ui'
+import { Themes, StyleProvider } from '@varlet/ui'
 import { onMounted, onUnmounted } from 'vue'
-import { kebabCase } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 interface PCLocationInfo {
@@ -14,28 +13,6 @@ interface PCLocationInfo {
 export type Theme = 'lightTheme' | 'darkTheme'
 
 export type StyleVars = Record<string, string>
-
-const mountedVarKeys: string[] = []
-
-function formatStyleVars(styleVars: StyleVars | null) {
-  return Object.entries(styleVars ?? {}).reduce((styles, [key, value]) => {
-    const cssVar = key.startsWith('--') ? key : `--${kebabCase(key)}`
-    styles[cssVar] = value
-
-    return styles
-  }, {} as StyleVars)
-}
-
-export function StyleProvider(styleVars: StyleVars | null = {}) {
-  mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
-  mountedVarKeys.length = 0
-
-  const styles: StyleVars = formatStyleVars(styleVars)
-  Object.entries(styles).forEach(([key, value]) => {
-    document.documentElement.style.setProperty(key, value)
-    mountedVarKeys.push(key)
-  })
-}
 
 export function getPCLocationInfo(): PCLocationInfo {
   const [, language, path] = window.location.hash.split('/')
@@ -149,4 +126,4 @@ export function watchTheme(
   cb(getBrowserTheme(), 'default')
 }
 
-export { AppType }
+export { AppType, StyleProvider }
