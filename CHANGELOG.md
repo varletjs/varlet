@@ -1,3 +1,17 @@
+# [2.16.0](https://github.com/varletjs/varlet/compare/v2.15.1...v2.16.0) (2023-09-05)
+
+
+### Bug Fixes
+
+* **button:** fix hover effect while the component is disabled ([bc15462](https://github.com/varletjs/varlet/commit/bc154629eaac63923449f9532f778b96f3704c68))
+
+
+### Features
+
+* remake index page and add new icon ([6adee9c](https://github.com/varletjs/varlet/commit/6adee9c5c50e097c92318eeb29ef6c7247ce7f4d))
+
+
+
 ## [2.15.1](https://github.com/varletjs/varlet/compare/v2.15.0...v2.15.1) (2023-08-31)
 
 
