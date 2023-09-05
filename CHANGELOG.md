@@ -1,3 +1,12 @@
+## [2.16.1](https://github.com/varletjs/varlet/compare/v2.16.0...v2.16.1) (2023-09-05)
+
+
+### Bug Fixes
+
+* **swipe:** direction check on touchend ([11911ac](https://github.com/varletjs/varlet/commit/11911acd64e89cb476751c36226586bb14db256a))
+
+
+
 # [2.16.0](https://github.com/varletjs/varlet/compare/v2.15.1...v2.16.0) (2023-09-05)
 
 
