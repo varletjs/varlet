@@ -196,7 +196,6 @@ const swipeRef = ref(null)
 <style>
 .swipe-example {
   height: 160px;
-  position: relative;
 }
 
 .swipe-example-image {

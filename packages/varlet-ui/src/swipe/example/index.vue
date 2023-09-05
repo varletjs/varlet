@@ -111,7 +111,6 @@ watchLang(use)
 
 .swipe-example {
   height: 160px;
-  position: relative;
 }
 
 .swipe-item {
