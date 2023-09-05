@@ -75,6 +75,7 @@
     "webfont": "^9.0.0"
   },
   "devDependencies": {
+    "@varlet/ui": "workspace:*",
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
     "@types/babel__core": "^7.20.1",

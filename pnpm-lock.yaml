@@ -59,9 +59,6 @@ importers:
       '@varlet/shared':
         specifier: workspace:*
         version: link:../varlet-shared
-      '@varlet/ui':
-        specifier: workspace:*
-        version: link:../varlet-ui
       '@varlet/vite-plugins':
         specifier: workspace:*
         version: link:../varlet-vite-plugins
@@ -204,6 +201,9 @@ importers:
       '@varlet/touch-emulator':
         specifier: workspace:*
         version: link:../varlet-touch-emulator
+      '@varlet/ui':
+        specifier: workspace:*
+        version: link:../varlet-ui
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
