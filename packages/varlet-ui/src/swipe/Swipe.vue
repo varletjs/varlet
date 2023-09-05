@@ -73,6 +73,7 @@ export default defineComponent({
       moveTouch,
       endTouch,
     } = useTouch()
+    const isExpectDirection = computed(() => direction.value === (props.vertical ? 'vertical' : 'horizontal'))
 
     let initializedIndex = false
     let timer = -1
@@ -218,9 +219,7 @@ export default defineComponent({
 
       moveTouch(event)
 
-      const expectDirection = vertical ? 'vertical' : 'horizontal'
-
-      if (direction.value !== expectDirection) {
+      if (!isExpectDirection.value) {
         return
       }
 
@@ -233,9 +232,13 @@ export default defineComponent({
         return
       }
 
-      const { vertical, onChange } = props
-
       endTouch()
+
+      if (!isExpectDirection.value) {
+        return
+      }
+
+      const { vertical, onChange } = props
 
       const positive = vertical ? deltaY.value < 0 : deltaX.value < 0
       const offset = vertical ? offsetY.value : offsetX.value
