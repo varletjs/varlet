@@ -1,0 +1,109 @@
+:root {
+  --color-picker-preview-dots: '#000';
+  --color-picker-background: '#fff';
+}
+
+.var-color-picker {
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-picker-background);
+  &__control {
+    padding: 20px;
+    width: 100%;
+  }
+  &-color-value {
+    display: flex;
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: rgb(204, 15, 15);
+  }
+
+  &-container {
+    padding: 3px;
+    border: 1px solid rgb(224, 224, 230);
+    border-radius: 3px;
+
+    &-wrap {
+      width: 100%;
+      height: 26px;
+      box-sizing: content-box;
+      box-shadow: 3px 0 5px #00000014;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+
+      &-current-color {
+        top: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+      }
+
+      &-current-color-transparent {
+        top: 0;
+        right: 0;
+        left: 0;
+        overflow: hidden;
+        padding: 3px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+      }
+
+      &-transparent {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+        background-repeat: repeat;
+      }
+    }
+  }
+
+  &__preview {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 0 0 24px 0;
+    &__dots {
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      border-radius: 50%;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAACRJREFUKFNjPHTo0H8GJGBnZ8eIzGekgwJk+0BsdCtRHEQbBQBbbh0dIGKknQAAAABJRU5ErkJggg==);
+      background-repeat: repeat;
+      div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__slider {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
+
+.color-picker-transition-enter-from,
+.color-picker-transition-leave-to {
+  opacity: 0;
+}
+
+.color-picker-transition-enter-to,
+.color-picker-transition-leave-from {
+  opacity: 1;
+}
+
+.color-picker-transition-enter-active,
+.color-picker-transition-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
