@@ -33,16 +33,16 @@
 
     <var-image 
       width="85px"
-      height="85px" 
-      fit="contain"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+      height="85px"
+      fit="none"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
     <var-image 
       width="85px"
-      height="85px"
-      fit="none"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      height="85px" 
+      fit="contain"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
     <var-image 

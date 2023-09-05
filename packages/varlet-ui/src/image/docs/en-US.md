@@ -24,17 +24,11 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
+
     <var-image 
       width="85px" 
       height="85px"
       fit="cover" 
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-    />
-
-    <var-image 
-      width="85px"
-      height="85px" 
-      fit="contain"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
@@ -45,6 +39,13 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="contain"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+    />
+    
     <var-image 
       width="85px"
       height="85px" 
