@@ -12,6 +12,7 @@
     "dev:play": "pnpm --dir ./packages/varlet-ui-playground dev",
     "build:play": "pnpm --dir ./packages/varlet-ui-playground build",
     "preview": "pnpm --dir ./packages/varlet-ui preview",
+    "preview:play": "pnpm --dir ./packages/varlet-ui-playground preview",
     "compile": "pnpm --dir ./packages/varlet-ui compile",
     "create": "pnpm --dir ./packages/varlet-ui run create",
     "test": "pnpm --dir ./packages/varlet-ui test",
