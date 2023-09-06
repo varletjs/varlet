@@ -2,11 +2,8 @@
 import VarSwipe from '..'
 import VarSwipeItem from '../../swipe-item'
 import Snackbar from '../../snackbar'
-import { ref } from 'vue'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
-
-const swipeRef = ref(null)
 
 watchLang(use)
 </script>
@@ -78,7 +75,7 @@ watchLang(use)
   </var-swipe>
 
   <app-type>{{ pack.customIndicator }}</app-type>
-  <var-swipe ref="swipeRef" class="swipe-example">
+  <var-swipe class="swipe-example">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     </var-swipe-item>
@@ -88,14 +85,14 @@ watchLang(use)
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
     </var-swipe-item>
-    <template #indicator="{ index, length }">
+    <template #indicator="{ index, length, to }">
       <div class="swipe-indicators">
         <div
           class="swipe-indicator"
-          :class="index === idx ? 'swipe-active-indicator' : ''"
           :key="l"
           v-for="(l, idx) in length"
-          @click="swipeRef.to(idx)"
+          :class="{ 'swipe-active-indicator': idx === index }"
+          @click="to(idx)"
         ></div>
       </div>
     </template>

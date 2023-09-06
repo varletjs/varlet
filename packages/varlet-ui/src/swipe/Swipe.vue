@@ -15,7 +15,7 @@
       <slot />
     </div>
 
-    <slot name="indicator" :index="index" :length="length">
+    <slot name="indicator" :index="index" :length="length" :prev="prev" :next="next" :to="to">
       <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
         <div
           :class="

@@ -163,14 +163,8 @@ import { Snackbar } from '@varlet/ui'
 ### Custom Indicator
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const swipeRef = ref(null)
-</script>
-
 <template>
-  <var-swipe ref="swipeRef" class="swipe-example">
+  <var-swipe class="swipe-example">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
@@ -180,14 +174,16 @@ const swipeRef = ref(null)
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
-    <template #indicator="{ index, length }">
+    
+    <template #indicator="{ index, length, to }">
       <div class="swipe-example-indicators">
         <div 
           class="swipe-example-indicator" 
-          :class="index === idx ? 'swipe-example-active-indicator' : ''" 
           v-for="(l, idx) in length" 
           :key="l"
-          @click="swipeRef.to(idx)">
+          :class="{'swipe-example-active-indicator': idx === index}" 
+          @click="to(idx)"
+        >
         </div>
       </div>
     </template>
@@ -269,10 +265,10 @@ const swipeRef = ref(null)
 
 #### Swipe Slots
 
-| Prop              | Description                      | Type               | Default |
-| ----------------- | -------------------------------- | ------------------ | ------- |
+| Name | Description | SlotProps |
+| --- |--------------------| --- |
 | `default`   | Swipe content           | `-`                                   |
-| `indicator` | Swipe indicator content | `index: number` <br> `length: number` |
+| `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 
 #### SwipeItem Slots
 

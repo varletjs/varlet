@@ -162,14 +162,8 @@ import { Snackbar } from '@varlet/ui'
 ### 自定义指示器
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const swipeRef = ref(null)
-</script>
-
 <template>
-  <var-swipe ref="swipeRef" class="swipe-example">
+  <var-swipe class="swipe-example">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
@@ -179,14 +173,16 @@ const swipeRef = ref(null)
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
-    <template #indicator="{ index, length }">
+
+    <template #indicator="{ index, length, to }">
       <div class="swipe-example-indicators">
         <div 
           class="swipe-example-indicator" 
-          :class="index === idx ? 'swipe-example-active-indicator' : ''" 
           v-for="(l, idx) in length" 
           :key="l"
-          @click="swipeRef.to(idx)">
+          :class="{'swipe-example-active-indicator': idx === index}" 
+          @click="to(idx)"
+        >
         </div>
       </div>
     </template>
@@ -271,7 +267,7 @@ const swipeRef = ref(null)
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 |
+| `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 
 #### SwipeItem Slots
 
