@@ -19,6 +19,8 @@
       alignItems: padStartFlex(align),
       paddingLeft: toSizeUnit(padding.left),
       paddingRight: toSizeUnit(padding.right),
+      paddingTop: toSizeUnit(padding.top),
+      paddingBottom: toSizeUnit(padding.bottom),
     }"
     @click="handleClick"
   >
@@ -40,7 +42,7 @@ export default defineComponent({
   name: 'VarCol',
   props,
   setup(props) {
-    const padding: Ref<ColPadding> = ref({ left: 0, right: 0 })
+    const padding: Ref<ColPadding> = ref({ left: 0, right: 0, top: 0, bottom: 0 })
     const span: ComputedRef<number> = computed(() => toNumber(props.span))
     const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
     const { row, bindRow } = useRow()

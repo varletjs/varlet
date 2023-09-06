@@ -6,29 +6,40 @@
 
 ### 栅格系统
 
-`<var-row/>` 组件把一行平均划分为 24列 栅格( 24份 )，`<var-col/>` 提供 `span` 属性设置这一列所占的份数，`offset` 属性设置这一列偏移的份数。
+`<var-row/>` 组件把一行平均划分为 24列 栅格( 24份 )，`<var-col/>` 提供 `span` 属性设置一列所占的份数，`offset` 属性设置一列偏移的份数，
+`gutter` 属性设置列间距。
 
 ```html
 <template>
-  <var-row>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row :gutter="[10, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
 </template>
 
 <style>
-.var-col {
+.item {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -38,23 +49,29 @@
 
 ```html
 <template>
-  <var-row>
-    <var-col :span="16" :offset="8">offset: 8 span: 16</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row :gutter="[10, 10]">
+    <var-col :span="16" :offset="8">
+      <div class="item">offset: 8 span: 16</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
 </template>
 
 <style>
-.var-col {
+.item {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -66,65 +83,55 @@
 
 ```html
 <template>
-  <var-row>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row :gutter="[20, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
-  <var-row justify="center">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row justify="center" :gutter="[20, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
-  <var-row justify="flex-end">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row justify="flex-end" :gutter="[20, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
-  <var-row justify="space-around">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row justify="space-around" :gutter="[20, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
-  <var-row justify="space-between">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-  </var-row>
-</template>
-
-<style>
-.var-col {   
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
-  background: #3a7afe;
-}
-</style>
-```
-
-### 列间距
-
-```html
-<template>
-  <var-row :gutter="10">
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
-    <var-col :span="8">span: 8</var-col>
+  <var-row justify="space-between" :gutter="[20, 10]">
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
+    <var-col :span="8">
+      <div class="item">span: 8</div>
+    </var-col>
   </var-row>
 </template>
 
 <style>
-.var-col {
+.item {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 36px;
-  margin-bottom: 10px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -141,21 +148,28 @@ import BasicExample from '../example/Responsive.vue'
 ```html
 <template>
   <var-row :gutter="10">
-    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">1</var-col>
-    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">2</var-col>
-    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">3</var-col>
-    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">4</var-col>
+    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
+      <div class="item">1</div>
+    </var-col>
+    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
+      <div class="item">2</div>
+    </var-col>
+    <var-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
+      <div class="item">3</div>
+    </var-col>
+    <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
+      <div class="item">4</div>
+    </var-col>
   </var-row>
 </template>
 
 <style>
-.var-col {
+.item {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 36px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -177,7 +191,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
       :lg="{ span: 3, offset: 3 }"
       :xl="{ span: 2, offset: 2 }"
     >
-      1
+      <div class="item">1</div>
     </var-col>
     <var-col
       :xs="{ span: 12, offset: 6 }"
@@ -186,7 +200,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
       :lg="{ span: 3, offset: 3 }"
       :xl="{ span: 2, offset: 2 }"
     >
-      2
+      <div class="item">2</div>
     </var-col>
     <var-col
       :xs="{ span: 12, offset: 6 }"
@@ -195,7 +209,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
       :lg="{ span: 3, offset: 3 }"
       :xl="{ span: 2, offset: 2 }"
     >
-      3
+      <div class="item">3</div>
     </var-col>
     <var-col
       :xs="{ span: 12, offset: 6 }"
@@ -204,19 +218,18 @@ import ObjectExample from '../example/ResponsiveObject.vue'
       :lg="{ span: 3, offset: 3 }"
       :xl="{ span: 2, offset: 2 }"
     >
-      4
+      <div class="item">4</div>
     </var-col>
   </var-row>
 </template>
 
 <style>
-.var-col {
+.item {
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 36px;
-  color: #fff;
-  text-align: center;
-  background-clip: content-box !important;
   background: #3a7afe;
 }
 </style>
@@ -230,7 +243,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `gutter` | 列间距 | _string \| number_ | `0` |
+| `gutter` | 列间距，默认为水平间距。可设置为 [垂直间距, 水平间距] (支持长度单位) | _string \| number \| [string \| number, string \| number]_ | `0` |
 | `justify` | 主轴对齐方式, 可选值为 `flex-start` `flex-end` `center` `space-between` `space-around` | _string_ | `flex-start` |
 | `align` | 交叉轴对齐方式, 可选值为 `flex-start` `flex-end` `center` | _string_ | `flex-start` |
 

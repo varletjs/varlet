@@ -8,7 +8,7 @@ export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' 
 export type RowAlign = 'flex-start' | 'center' | 'flex-end' | 'start' | 'end'
 
 export interface RowProps extends BasicAttributes {
-  gutter?: string | number
+  gutter?: string | number | [number | string, number | string]
   justify?: RowJustify
   align?: RowAlign
   onClick?: ListenerProp<(e: Event) => void>

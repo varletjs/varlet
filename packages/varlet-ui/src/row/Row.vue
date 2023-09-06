@@ -4,7 +4,7 @@
     :style="{
       justifyContent: padStartFlex(justify),
       alignItems: padStartFlex(align),
-      margin: average ? `0 -${average}px` : undefined,
+      margin: `${-average[0]}px ${-average[1]}px`,
     }"
     @click="handleClick"
   >
@@ -15,6 +15,7 @@
 <script lang="ts">
 import { defineComponent, computed, watch, type ComputedRef } from 'vue'
 import { props } from './props'
+import { isArray } from '@varlet/shared'
 import { useCols, type RowProvider } from './provide'
 import { toPxNum, padStartFlex } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
@@ -26,14 +27,14 @@ export default defineComponent({
   props,
   setup(props) {
     const { cols, bindCols, length } = useCols()
-    const average: ComputedRef<number> = computed(() => {
-      const gutter: number = toPxNum(props.gutter)
-      return gutter / 2
-    })
+    const average: ComputedRef<number[]> = computed(() =>
+      isArray(props.gutter) ? props.gutter.map((numeric) => toPxNum(numeric) / 2) : [0, toPxNum(props.gutter) / 2]
+    )
 
     const computePadding = () => {
       cols.forEach((col) => {
-        col.setPadding({ left: average.value, right: average.value })
+        const [y, x] = average.value
+        col.setPadding({ left: x, right: x, top: y, bottom: y })
       })
     }
 

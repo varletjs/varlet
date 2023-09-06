@@ -28,10 +28,24 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
+  test('test row and col gutter array', () => {
+    const wrapper = mount(VarRow, {
+      props: {
+        gutter: [20, 20],
+      },
+      slots: {
+        default: () => [12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    expect(wrapper.find('.var-row').attributes('style')).toContain('margin: -10px -10px;')
+    wrapper.unmount()
+  })
+
   test('test row and col gutter computed', async () => {
     const wrapper = mount(VarRow, {
       props: {
-        gutter: 20,
+        gutter: [20, 20],
       },
       slots: {
         default: () => [12, 12].map((span) => h(VarCol, { span })),

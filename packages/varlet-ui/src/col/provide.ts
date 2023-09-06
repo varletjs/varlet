@@ -4,6 +4,8 @@ import { ROW_BIND_COL_KEY, RowProvider } from '../row/provide'
 export interface ColPadding {
   left: number
   right: number
+  top: number
+  bottom: number
 }
 
 export type ColSizeDescriptor = {
