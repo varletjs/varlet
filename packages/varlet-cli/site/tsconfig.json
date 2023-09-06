@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2017",
     "strict": true,
-    "downlevelIteration": true,
+    "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./lib"
   }
 }
