@@ -2,8 +2,11 @@
 import VarSwipe from '..'
 import VarSwipeItem from '../../swipe-item'
 import Snackbar from '../../snackbar'
+import { ref } from 'vue'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
+
+const swipeRef = ref(null)
 
 watchLang(use)
 </script>
@@ -75,19 +78,26 @@ watchLang(use)
   </var-swipe>
 
   <app-type>{{ pack.customIndicator }}</app-type>
-  <var-swipe class="swipe">
+  <var-swipe ref="swipeRef" class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
     </var-swipe-item>
-
     <template #indicator="{ index, length }">
-      <div class="indicators">{{ index + 1 }} / {{ length }}</div>
+      <div class="swipe-indicators">
+        <div
+          class="swipe-indicator"
+          :class="index === idx ? 'swipe-active-indicator' : ''"
+          :key="l"
+          v-for="(l, idx) in length"
+          @click="swipeRef.to(idx)"
+        ></div>
+      </div>
     </template>
   </var-swipe>
 
@@ -99,6 +109,10 @@ watchLang(use)
   height: 160px;
 }
 
+.swipe-example {
+  height: 160px;
+}
+
 .swipe-item {
   width: 100%;
   height: 100%;
@@ -106,18 +120,28 @@ watchLang(use)
   pointer-events: none;
 }
 
-.space {
-  height: 20px;
+.swipe-indicators {
+  position: absolute;
+  display: flex;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.indicators {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 4px 0;
-  color: #fff;
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.6);
+.swipe-indicator {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 0.3;
+  margin: 0 4px;
+  transition: opacity 0.3s;
+}
+
+.swipe-active-indicator {
+  opacity: 1;
+}
+
+.space {
+  height: 20px;
 }
 </style>
