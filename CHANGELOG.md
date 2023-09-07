@@ -1,3 +1,14 @@
+## [2.16.2](https://github.com/varletjs/varlet/compare/v2.16.1...v2.16.2) (2023-09-07)
+
+
+### Features
+
+* **layout:** support array for gutter and optimize scripts ([0a5252f](https://github.com/varletjs/varlet/commit/0a5252f0ba5ba8bfda7cd290257d3c5dd97f2b52))
+* **layout:** support array for gutter and optimize scripts ([55a2e97](https://github.com/varletjs/varlet/commit/55a2e9762342bf7bc62fd3414554a4df1c7b5838))
+* **swipe:** support prev next to for scoped slots data ([1031dd3](https://github.com/varletjs/varlet/commit/1031dd3a63e089303912f5e27cd51b7b763c3044))
+
+
+
 ## [2.16.1](https://github.com/varletjs/varlet/compare/v2.16.0...v2.16.1) (2023-09-05)
 
 
