@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
 import { toNumber, raf, doubleRaf, getRect } from '@varlet/shared'

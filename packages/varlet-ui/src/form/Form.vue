@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useFormItems, type FormProvider } from './provide'
 import { call, createNamespace } from '../utils/components'
