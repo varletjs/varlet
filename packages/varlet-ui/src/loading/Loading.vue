@@ -42,17 +42,25 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type ComputedRef } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { createNamespace, call } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('loading')
+const { name, n, classes } = createNamespace('loading')
 
 export default defineComponent({
-  name: 'VarLoading',
+  name,
   props,
   setup(props, { slots }) {
+    const isShow = computed(() => {
+      if (!call(slots.default)) {
+        return true
+      }
+
+      return props.loading
+    })
+
     const loadingTypeDict = {
       wave: 5,
       cube: 4,
@@ -60,18 +68,12 @@ export default defineComponent({
       disappear: 3,
     }
 
-    const isShow: ComputedRef<boolean> = computed(() => {
-      if (!call(slots.default)) return true
-
-      return props.loading
-    })
-
     return {
+      loadingTypeDict,
+      isShow,
       n,
       classes,
       multiplySizeUnit,
-      loadingTypeDict,
-      isShow,
     }
   },
 })

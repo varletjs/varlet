@@ -113,16 +113,16 @@ import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarCell from '../cell'
 import VarInput from '../input'
-import { defineComponent, ref, computed, watch, type ComputedRef, type Ref } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props, type Range } from './props'
 import { isNumber, toNumber } from '@varlet/shared'
 import { pack } from '../locale'
 import { call, createNamespace, formatElevation } from '../utils/components'
 
-const { n, classes } = createNamespace('pagination')
+const { name, n, classes } = createNamespace('pagination')
 
 export default defineComponent({
-  name: 'VarPagination',
+  name,
   components: {
     VarMenu,
     VarIcon,
@@ -132,110 +132,29 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const menuVisible: Ref<boolean> = ref(false)
-    const quickJumperValue: Ref<string> = ref('')
-    const simpleCurrentValue: Ref<string> = ref('1')
-    const isHideEllipsisHead: Ref<boolean> = ref(false)
-    const isHideEllipsisTail: Ref<boolean> = ref(false)
-    const current: Ref<number> = ref(toNumber(props.current) || 1)
-    const size: Ref<number> = ref(toNumber(props.size) || 10)
-    const pageList: Ref<Array<string | number>> = ref([])
-    const activePosition: ComputedRef<number> = computed(() => Math.ceil(props.maxPagerCount / 2))
-    const pageCount: ComputedRef<number> = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
-
-    const range: ComputedRef<Range> = computed(() => {
+    const menuVisible = ref(false)
+    const quickJumperValue = ref('')
+    const simpleCurrentValue = ref('1')
+    const isHideEllipsisHead = ref(false)
+    const isHideEllipsisTail = ref(false)
+    const current = ref(toNumber(props.current) || 1)
+    const size = ref(toNumber(props.size) || 10)
+    const pageList = ref<(string | number)[]>([])
+    const activePosition = computed(() => Math.ceil(props.maxPagerCount / 2))
+    const pageCount = computed(() => Math.ceil(toNumber(props.total) / toNumber(size.value)))
+    const range = computed<Range>(() => {
       const start = size.value * (current.value - 1) + 1
       const end = Math.min(size.value * current.value, toNumber(props.total))
 
       return [start, end]
     })
-
-    const totalText: ComputedRef<string> = computed(() => {
-      if (!props.showTotal) return ''
+    const totalText = computed(() => {
+      if (!props.showTotal) {
+        return ''
+      }
 
       return props.showTotal(toNumber(props.total), range.value)
     })
-
-    const isHideEllipsis = (item: string | number, index: number): boolean => {
-      if (isNumber(item)) return false
-
-      return index === 1 ? isHideEllipsisHead.value : isHideEllipsisTail.value
-    }
-
-    const getMode = (item: string | number, index: number) => {
-      if (isNumber(item)) return 'basic'
-
-      return index === 1 ? 'head' : 'tail'
-    }
-
-    const clickItem = (item: string | number, index?: number) => {
-      if (item === current.value || props.disabled) {
-        return
-      }
-
-      if (item === '...') {
-        current.value =
-          index === 1
-            ? Math.max(current.value - props.maxPagerCount, 1)
-            : Math.min(current.value + props.maxPagerCount, pageCount.value)
-        return
-      }
-
-      if (item === 'prev') {
-        current.value = ensureCurrentBoundary(current.value - 1)
-        return
-      }
-
-      if (item === 'next') {
-        current.value = ensureCurrentBoundary(current.value + 1)
-        return
-      }
-
-      if (isNumber(item)) {
-        current.value = item
-      }
-    }
-
-    const showMenu = () => {
-      if (props.disabled) {
-        return
-      }
-
-      menuVisible.value = true
-    }
-
-    const clickSize = (option: number) => {
-      size.value = option
-      menuVisible.value = false
-
-      const targetCurrent = ensureCurrentBoundary(current.value)
-      simpleCurrentValue.value = String(targetCurrent)
-      current.value = targetCurrent
-    }
-
-    const ensureCurrentBoundary = (targetCurrent: number) => {
-      if (targetCurrent > pageCount.value) {
-        return pageCount.value
-      }
-
-      if (targetCurrent < 1) {
-        return 1
-      }
-
-      return targetCurrent
-    }
-
-    const setPage = (type: 'simple' | 'quick', page: string, event: KeyboardEvent | FocusEvent) => {
-      ;(event.target as HTMLInputElement).blur()
-
-      const targetCurrent = ensureCurrentBoundary(toNumber(page))
-      simpleCurrentValue.value = String(targetCurrent)
-      current.value = targetCurrent
-
-      if (type === 'quick') {
-        quickJumperValue.value = ''
-      }
-    }
 
     watch([() => props.current, () => props.size], ([newCurrent, newSize]) => {
       current.value = toNumber(newCurrent) || 1
@@ -310,9 +229,88 @@ export default defineComponent({
       }
     )
 
+    function isHideEllipsis(item: string | number, index: number): boolean {
+      if (isNumber(item)) return false
+
+      return index === 1 ? isHideEllipsisHead.value : isHideEllipsisTail.value
+    }
+
+    function getMode(item: string | number, index: number) {
+      if (isNumber(item)) return 'basic'
+
+      return index === 1 ? 'head' : 'tail'
+    }
+
+    function clickItem(item: string | number, index?: number) {
+      if (item === current.value || props.disabled) {
+        return
+      }
+
+      if (item === '...') {
+        current.value =
+          index === 1
+            ? Math.max(current.value - props.maxPagerCount, 1)
+            : Math.min(current.value + props.maxPagerCount, pageCount.value)
+        return
+      }
+
+      if (item === 'prev') {
+        current.value = ensureCurrentBoundary(current.value - 1)
+        return
+      }
+
+      if (item === 'next') {
+        current.value = ensureCurrentBoundary(current.value + 1)
+        return
+      }
+
+      if (isNumber(item)) {
+        current.value = item
+      }
+    }
+
+    function showMenu() {
+      if (props.disabled) {
+        return
+      }
+
+      menuVisible.value = true
+    }
+
+    function clickSize(option: number) {
+      size.value = option
+      menuVisible.value = false
+
+      const targetCurrent = ensureCurrentBoundary(current.value)
+      simpleCurrentValue.value = String(targetCurrent)
+      current.value = targetCurrent
+    }
+
+    function ensureCurrentBoundary(targetCurrent: number) {
+      if (targetCurrent > pageCount.value) {
+        return pageCount.value
+      }
+
+      if (targetCurrent < 1) {
+        return 1
+      }
+
+      return targetCurrent
+    }
+
+    function setPage(type: 'simple' | 'quick', page: string, event: KeyboardEvent | FocusEvent) {
+      ;(event.target as HTMLInputElement).blur()
+
+      const targetCurrent = ensureCurrentBoundary(toNumber(page))
+      simpleCurrentValue.value = String(targetCurrent)
+      current.value = targetCurrent
+
+      if (type === 'quick') {
+        quickJumperValue.value = ''
+      }
+    }
+
     return {
-      n,
-      classes,
       pack,
       current,
       menuVisible,
@@ -322,6 +320,8 @@ export default defineComponent({
       quickJumperValue,
       simpleCurrentValue,
       totalText,
+      n,
+      classes,
       getMode,
       isHideEllipsis,
       clickItem,

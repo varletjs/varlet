@@ -72,16 +72,16 @@ import { toNumber } from '@varlet/shared'
 import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('progress')
+const ONE_HUNDRED = 100
+const RADIUS = 20
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS
+
+const { name, n, classes } = createNamespace('progress')
 
 export default defineComponent({
-  name: 'VarProgress',
+  name,
   props,
   setup(props) {
-    const ONE_HUNDRED = 100
-    const RADIUS = 20
-    const CIRCUMFERENCE = 2 * Math.PI * RADIUS
-
     const linearProps = computed(() => {
       const value = toNumber(props.value)
       const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
@@ -92,7 +92,6 @@ export default defineComponent({
         roundValue: `${roundValue}%`,
       }
     })
-
     const circleProps = computed(() => {
       const { size, lineWidth, value } = props
 
@@ -109,14 +108,15 @@ export default defineComponent({
         roundValue: `${roundValue}%`,
       }
     })
+
     return {
-      n,
-      classes,
-      toSizeUnit,
       linearProps,
       CIRCUMFERENCE,
       RADIUS,
       circleProps,
+      n,
+      classes,
+      toSizeUnit,
     }
   },
 })

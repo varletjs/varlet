@@ -132,28 +132,37 @@ import { useForm } from '../form/provide'
 import { onSmartMounted } from '@varlet/use'
 import { type InputProvider } from './provide'
 
-const { n, classes } = createNamespace('input')
+const { name, n, classes } = createNamespace('input')
 
 export default defineComponent({
-  name: 'VarInput',
+  name,
   components: {
     VarFormDetails,
     VarFieldDecorator,
   },
   props,
   setup(props) {
-    const id: Ref<string> = ref(`var-input-${getCurrentInstance()!.uid}`)
-    const el: Ref<HTMLInputElement | null> = ref(null)
-    const isFocus: Ref<boolean> = ref(false)
-    const isComposing: Ref<boolean> = ref(false)
-    const normalizedType: ComputedRef<InputType> = computed(() => {
+    const id = ref(`var-input-${getCurrentInstance()!.uid}`)
+    const el = ref<HTMLInputElement | null>(null)
+    const isFocus = ref(false)
+    const isComposing = ref(false)
+    const { bindForm, form } = useForm()
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
+    const cursor = computed(() => (props.disabled || props.readonly ? '' : 'text'))
+    const normalizedType = computed<InputType>(() => {
       if (props.type === 'number') {
         return 'text'
       }
 
       return props.type
     })
-    const maxlengthText: ComputedRef<string> = computed(() => {
+    const maxlengthText = computed(() => {
       const { maxlength, modelValue } = props
 
       if (!maxlength) {
@@ -166,8 +175,7 @@ export default defineComponent({
 
       return `${String(modelValue).length}/${maxlength}`
     })
-    const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'text'))
-    const placeholderColor: ComputedRef<string | undefined> = computed(() => {
+    const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props
 
       if (hint) {
@@ -185,37 +193,42 @@ export default defineComponent({
       return blurColor || 'var(--field-decorator-blur-color)'
     })
 
-    const { bindForm, form } = useForm()
-    const {
-      errorMessage,
-      validateWithTrigger: vt,
-      validate: v,
-      // expose
+    const inputProvider: InputProvider = {
+      reset,
+      validate,
       resetValidation,
-    } = useValidation()
+    }
 
-    const validateWithTrigger = (trigger: InputValidateTrigger) => {
+    call(bindForm, inputProvider)
+
+    onSmartMounted(() => {
+      if (props.autofocus) {
+        focus()
+      }
+    })
+
+    function validateWithTrigger(trigger: InputValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
     }
 
-    const handleFocus = (e: FocusEvent) => {
+    function handleFocus(e: FocusEvent) {
       isFocus.value = true
 
       call(props.onFocus, e)
       validateWithTrigger('onFocus')
     }
 
-    const handleBlur = (e: FocusEvent) => {
+    function handleBlur(e: FocusEvent) {
       isFocus.value = false
 
       call(props.onBlur, e)
       validateWithTrigger('onBlur')
     }
 
-    const updateValue = (e: Event) => {
+    function updateValue(e: Event) {
       const target = e.target as HTMLInputElement
 
       let { value } = target
@@ -227,11 +240,11 @@ export default defineComponent({
       return withMaxlength(withTrim(value))
     }
 
-    const handleCompositionStart = () => {
+    function handleCompositionStart() {
       isComposing.value = true
     }
 
-    const handleCompositionEnd = (e: Event) => {
+    function handleCompositionEnd(e: Event) {
       if (!isComposing.value) {
         return
       }
@@ -240,7 +253,7 @@ export default defineComponent({
       e.target!.dispatchEvent(new Event('input'))
     }
 
-    const handleInput = (e: Event) => {
+    function handleInput(e: Event) {
       if (isComposing.value) {
         return
       }
@@ -252,14 +265,14 @@ export default defineComponent({
       validateWithTrigger('onInput')
     }
 
-    const handleChange = (e: Event) => {
+    function handleChange(e: Event) {
       const value = updateValue(e)
 
       call(props.onChange, value, e)
       validateWithTrigger('onChange')
     }
 
-    const handleClear = () => {
+    function handleClear() {
       const { disabled, readonly, clearable, onClear } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {
@@ -271,7 +284,7 @@ export default defineComponent({
       validateWithTrigger('onClear')
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { disabled, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -282,7 +295,7 @@ export default defineComponent({
       validateWithTrigger('onClick')
     }
 
-    const formatNumber = (value: string) => {
+    function formatNumber(value: string) {
       const minusIndex = value.indexOf('-')
       const dotIndex = value.indexOf('.')
 
@@ -297,11 +310,15 @@ export default defineComponent({
       return value.replace(/[^-0-9.]/g, '')
     }
 
-    const withTrim = (value: string) => (props.modelModifiers.trim ? value.trim() : value)
+    function withTrim(value: string) {
+      return props.modelModifiers.trim ? value.trim() : value
+    }
 
-    const withMaxlength = (value: string) => (props.maxlength ? value.slice(0, toNumber(props.maxlength)) : value)
+    function withMaxlength(value: string) {
+      return props.maxlength ? value.slice(0, toNumber(props.maxlength)) : value
+    }
 
-    const handleMousedown = (e: MouseEvent) => {
+    function handleMousedown(e: MouseEvent) {
       const { disabled } = props
 
       if (form?.disabled.value || disabled || e.target === el.value) {
@@ -313,37 +330,25 @@ export default defineComponent({
     }
 
     // expose
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], '')
       resetValidation()
     }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
     // expose
-    const focus = () => {
+    function focus() {
       ;(el.value as HTMLInputElement)?.focus()
     }
 
     // expose
-    const blur = () => {
+    function blur() {
       ;(el.value as HTMLInputElement).blur()
     }
-
-    const inputProvider: InputProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    call(bindForm, inputProvider)
-
-    onSmartMounted(() => {
-      if (props.autofocus) {
-        focus()
-      }
-    })
 
     return {
       el,

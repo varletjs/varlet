@@ -7,42 +7,43 @@ import { createNamespace, useTeleport, call } from '../utils/components'
 import '../styles/common.less'
 import './overlay.less'
 
-const { n } = createNamespace('overlay')
+const { name, n } = createNamespace('overlay')
 
 export default defineComponent({
-  name: 'VarOverlay',
+  name,
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
     const { zIndex } = useZIndex(() => props.show, 1)
     const { disabled } = useTeleport()
 
-    const handleClickOverlay = () => {
-      call(props.onClick)
-      call(props['onUpdate:show'], false)
-    }
-
     useLock(
       () => props.show,
       () => props.lockScroll
     )
 
-    const renderOverlay = () => (
-      <div
-        class={n()}
-        style={{
-          zIndex: zIndex.value - 1,
-        }}
-        {...attrs}
-        onClick={handleClickOverlay}
-      >
-        {call(slots.default)}
-      </div>
-    )
+    function handleClickOverlay() {
+      call(props.onClick)
+      call(props['onUpdate:show'], false)
+    }
 
-    const renderTransitionOverlay = () => {
-      const { show } = props
-      return <Transition name={n('--fade')}>{show && renderOverlay()}</Transition>
+    function renderOverlay() {
+      return (
+        <div
+          class={n()}
+          style={{
+            zIndex: zIndex.value - 1,
+          }}
+          {...attrs}
+          onClick={handleClickOverlay}
+        >
+          {call(slots.default)}
+        </div>
+      )
+    }
+
+    function renderTransitionOverlay() {
+      return <Transition name={n('--fade')}>{props.show && renderOverlay()}</Transition>
     }
 
     return () => {

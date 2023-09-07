@@ -56,80 +56,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
+import { defineComponent, ref, watch, nextTick, onUnmounted, onMounted } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { getStyle } from '@varlet/shared'
 
-const { n, classes } = createNamespace('watermark')
+const { name, n, classes } = createNamespace('watermark')
 
 export default defineComponent({
-  name: 'VarWatermark',
+  name,
   props,
   setup(props, { slots }) {
-    const watermarkUrl: Ref<string> = ref('')
-    const imageUrl: Ref<string> = ref('')
-    const textColor: Ref<string> = ref('')
-    const svgRef: Ref<SVGElement | null> = ref(null)
-    const containerRef: Ref<Element | null> = ref(null)
-
-    const showContent = () => {
-      if (slots.content) {
-        return true
-      }
-
-      if (props.content && !props.image) {
-        return true
-      }
-
-      return false
-    }
-
-    const imageToBase64 = async (): Promise<string> =>
-      new Promise((resolve) => {
-        const canvas = document.createElement('canvas')
-        const ctx = canvas.getContext('2d')
-
-        const img = new Image()
-        img.crossOrigin = 'anonymous'
-        img.referrerPolicy = 'no-referrer'
-        img.src = props.image!
-
-        img.onload = () => {
-          canvas.width = img.width
-          canvas.height = img.height
-          ctx!.drawImage(img, 0, 0)
-          resolve(canvas.toDataURL())
-        }
-      })
-
-    const svgToBlobUrl = (svgStr: string) => {
-      const svgBlob = new Blob([svgStr], {
-        type: 'image/svg+xml',
-      })
-
-      return URL.createObjectURL(svgBlob)
-    }
-
-    const revokeWatermarkUrl = () => {
-      if (watermarkUrl.value) {
-        URL.revokeObjectURL(watermarkUrl.value)
-      }
-    }
-
-    // expose
-    const resize = async () => {
-      textColor.value = getStyle(containerRef.value!).color
-
-      if (props.image) {
-        imageUrl.value = await imageToBase64()
-      }
-
-      await nextTick()
-
-      revokeWatermarkUrl()
-      watermarkUrl.value = svgToBlobUrl(svgRef.value!.innerHTML)
-    }
+    const watermarkUrl = ref('')
+    const imageUrl = ref('')
+    const textColor = ref('')
+    const svgRef = ref<SVGElement | null>(null)
+    const containerRef = ref<Element | null>(null)
 
     watch(
       () => [
@@ -152,16 +94,76 @@ export default defineComponent({
     )
 
     onMounted(resize)
+
     onUnmounted(revokeWatermarkUrl)
 
+    function showContent() {
+      if (slots.content) {
+        return true
+      }
+
+      if (props.content && !props.image) {
+        return true
+      }
+
+      return false
+    }
+
+    async function imageToBase64(): Promise<string> {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+
+        const img = new Image()
+        img.crossOrigin = 'anonymous'
+        img.referrerPolicy = 'no-referrer'
+        img.src = props.image!
+
+        img.onload = () => {
+          canvas.width = img.width
+          canvas.height = img.height
+          ctx!.drawImage(img, 0, 0)
+          resolve(canvas.toDataURL())
+        }
+      })
+    }
+
+    function svgToBlobUrl(svgStr: string) {
+      const svgBlob = new Blob([svgStr], {
+        type: 'image/svg+xml',
+      })
+
+      return URL.createObjectURL(svgBlob)
+    }
+
+    function revokeWatermarkUrl() {
+      if (watermarkUrl.value) {
+        URL.revokeObjectURL(watermarkUrl.value)
+      }
+    }
+
+    // expose
+    async function resize() {
+      textColor.value = getStyle(containerRef.value!).color
+
+      if (props.image) {
+        imageUrl.value = await imageToBase64()
+      }
+
+      await nextTick()
+
+      revokeWatermarkUrl()
+      watermarkUrl.value = svgToBlobUrl(svgRef.value!.innerHTML)
+    }
+
     return {
-      n,
-      classes,
       svgRef,
       containerRef,
       watermarkUrl,
       imageUrl,
       textColor,
+      n,
+      classes,
       showContent,
       resize,
     }

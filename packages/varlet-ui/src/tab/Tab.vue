@@ -14,22 +14,22 @@
 
 <script lang="ts">
 import Ripple from '../ripple'
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { useTabs, type TabProvider } from './provide'
 
-const { n, classes } = createNamespace('tab')
+const { name, n, classes } = createNamespace('tab')
 
 export default defineComponent({
-  name: 'VarTab',
+  name,
   directives: { Ripple },
   props,
   setup(props) {
-    const tabEl: Ref<HTMLElement | null> = ref(null)
-    const name: ComputedRef<string | number | undefined> = computed(() => props.name)
-    const disabled: ComputedRef<boolean> = computed(() => props.disabled)
-    const element: ComputedRef<HTMLElement | null> = computed(() => tabEl.value)
+    const tabEl = ref<HTMLElement | null>(null)
+    const element = computed<HTMLElement | null>(() => tabEl.value)
+    const name = computed(() => props.name)
+    const disabled = computed(() => props.disabled)
     const { index, tabs, bindTabs } = useTabs()
     const { onTabClick, active, activeColor, inactiveColor, disabledColor, itemDirection, resize } = tabs
 
@@ -42,7 +42,9 @@ export default defineComponent({
 
     bindTabs(tabProvider)
 
-    const shouldActive = () => {
+    watch(() => [props.name, props.disabled], resize)
+
+    function shouldActive() {
       if (props.name != null) {
         return active.value === props.name
       }
@@ -50,13 +52,15 @@ export default defineComponent({
       return active.value === index?.value
     }
 
-    const computeColorStyle = () =>
-      props.disabled ? disabledColor.value : shouldActive() ? activeColor.value : inactiveColor.value
+    function computeColorStyle() {
+      return props.disabled ? disabledColor.value : shouldActive() ? activeColor.value : inactiveColor.value
+    }
 
-    const computeColorClass = () =>
-      props.disabled ? n('$-tab--disabled') : shouldActive() ? n('$-tab--active') : n('$-tab--inactive')
+    function computeColorClass() {
+      return props.disabled ? n('$-tab--disabled') : shouldActive() ? n('$-tab--active') : n('$-tab--inactive')
+    }
 
-    const handleClick = (event: Event) => {
+    function handleClick(event: Event) {
       const { disabled, name, onClick } = props
 
       if (disabled) {
@@ -67,17 +71,14 @@ export default defineComponent({
       onTabClick(tabProvider)
     }
 
-    watch(() => props.name, resize)
-    watch(() => props.disabled, resize)
-
     return {
-      n,
-      classes,
       tabEl,
       active,
       activeColor,
       inactiveColor,
       itemDirection,
+      n,
+      classes,
       computeColorStyle,
       computeColorClass,
       handleClick,

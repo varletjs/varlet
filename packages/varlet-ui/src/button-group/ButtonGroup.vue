@@ -20,10 +20,10 @@ import { useButtons, type ButtonGroupProvider } from './provide'
 import { createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
 
-const { n, classes } = createNamespace('button-group')
+const { name, n, classes } = createNamespace('button-group')
 
 export default defineComponent({
-  name: 'VarButtonGroup',
+  name,
   props,
   setup(props) {
     const { bindButtons } = useButtons()

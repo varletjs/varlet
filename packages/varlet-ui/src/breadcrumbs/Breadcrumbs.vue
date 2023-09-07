@@ -5,20 +5,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useBreadcrumbsList, type BreadcrumbsProvider } from './provide'
 import { createNamespace } from '../utils/components'
 
-const { n } = createNamespace('breadcrumbs')
+const { name, n } = createNamespace('breadcrumbs')
 
 export default defineComponent({
-  name: 'VarBreadcrumbs',
+  name,
   props,
   setup(props) {
-    const separator: ComputedRef<string> = computed(() => props.separator)
+    const separator = computed<string>(() => props.separator)
     const { bindBreadcrumbList, length } = useBreadcrumbsList()
-
     const breadcrumbsProvider: BreadcrumbsProvider = {
       length,
       separator,

@@ -34,20 +34,20 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, type StyleValue, type ComputedRef } from 'vue'
+import { computed, defineComponent, type StyleValue } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('cell')
+const { name, n, classes } = createNamespace('cell')
 
 export default defineComponent({
-  name: 'VarCell',
+  name,
   components: { VarIcon },
   directives: { Ripple },
   props,
   setup(props) {
-    const borderOffsetStyles: ComputedRef<StyleValue> = computed(() => {
+    const borderOffsetStyles = computed<StyleValue>(() => {
       if (props.borderOffset == null) {
         return {}
       }
@@ -58,15 +58,15 @@ export default defineComponent({
       } as StyleValue
     })
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
     return {
+      borderOffsetStyles,
       n,
       classes,
       toSizeUnit,
-      borderOffsetStyles,
       handleClick,
     }
   },

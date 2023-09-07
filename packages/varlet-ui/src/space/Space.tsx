@@ -10,19 +10,20 @@ import './space.less'
 
 const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
 
-const { n, classes } = createNamespace('space')
+const { name, n, classes } = createNamespace('space')
+
+function getSize(size: SpaceSize, isInternalSize: boolean): string[] {
+  return isInternalSize
+    ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
+    : isArray(size)
+    ? (size.map(toSizeUnit) as string[])
+    : ([toSizeUnit(size), toSizeUnit(size)] as string[])
+}
 
 export default defineComponent({
-  name: 'VarSpace',
+  name,
   props,
   setup(props, { slots }) {
-    const getSize = (size: SpaceSize, isInternalSize: boolean): string[] =>
-      isInternalSize
-        ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
-        : isArray(size)
-        ? (size.map(toSizeUnit) as string[])
-        : ([toSizeUnit(size), toSizeUnit(size)] as string[])
-
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
       let children: VNodeChild[] = call(slots.default) ?? []

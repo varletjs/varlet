@@ -29,14 +29,14 @@ import { call, createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('paper')
+const { name, n, classes } = createNamespace('paper')
 
 export default defineComponent({
-  name: 'VarPaper',
+  name,
   directives: { Ripple },
   props,
   setup(props) {
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 

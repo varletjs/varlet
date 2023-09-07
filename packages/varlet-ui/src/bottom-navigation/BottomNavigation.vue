@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import VarButton from '../button'
-import { defineComponent, ref, computed, onUpdated, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
@@ -29,7 +29,7 @@ import { isNumber, normalizeToArray } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
-const { n, classes } = createNamespace('bottom-navigation')
+const { name, n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
 
 const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
@@ -40,104 +40,16 @@ const defaultFabProps = {
 }
 
 export default defineComponent({
-  name: 'VarBottomNavigation',
+  name,
   components: { VarButton },
   props,
   setup(props, { slots }) {
-    const bottomNavigationDom: Ref<HTMLElement | null> = ref(null)
-    const active: ComputedRef<number | string | undefined> = computed(() => props.active)
-    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-    const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
+    const bottomNavigationDom = ref<HTMLElement | null>(null)
+    const active = computed<number | string | undefined>(() => props.active)
+    const activeColor = computed<string | undefined>(() => props.activeColor)
+    const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
     const fabProps = ref({})
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
-
-    const matchBoundary = (): void => {
-      if (length.value === 0 || matchName() || matchIndex()) {
-        return
-      }
-
-      handleActiveIndex()
-    }
-
-    const matchName = (): BottomNavigationItemProvider | undefined =>
-      bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => active.value === name.value)
-
-    const matchIndex = (): BottomNavigationItemProvider | undefined =>
-      bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => active.value === index.value)
-
-    const handleActiveIndex = () => {
-      if (!isNumber(active.value)) {
-        return
-      }
-
-      if (active.value < 0) {
-        call(props['onUpdate:active'], 0)
-      } else if (active.value > length.value - 1) {
-        call(props['onUpdate:active'], length.value - 1)
-      }
-    }
-
-    const onToggle = (changedValue: number | string) => {
-      if (active.value === changedValue) {
-        return
-      }
-
-      props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
-    }
-
-    const handleBeforeChange = (changedValue: number | string) => {
-      const results = normalizeToArray(call(props.onBeforeChange, changedValue))
-
-      Promise.all(results).then((results) => {
-        if (results.every(Boolean)) {
-          handleChange(changedValue)
-        }
-      })
-    }
-
-    const handleChange = (changedValue: number | string) => {
-      call(props['onUpdate:active'], changedValue)
-      call(props.onChange, changedValue)
-    }
-
-    const removeMarginClass = () => {
-      const bottomNavigationItems: Element[] = getBottomNavigationItems()
-      bottomNavigationItems.forEach((dom: Element) => {
-        dom.classList.remove(RIGHT_HALF_SPACE_CLASS, LEFT_HALF_SPACE_CLASS, RIGHT_SPACE_CLASS)
-      })
-    }
-
-    const addMarginClass = (length: number) => {
-      const bottomNavigationItems: Element[] = getBottomNavigationItems()
-      const itemsNum = bottomNavigationItems.length
-      const isEven = length % 2 === 0
-
-      bottomNavigationItems.forEach((bottomNavigationItem: Element, i: number) => {
-        handleMarginClass(isEven, bottomNavigationItem, i, itemsNum)
-      })
-    }
-
-    const handleMarginClass = (isEven: boolean, dom: Element, i: number, length: number) => {
-      const isLast = i === length - 1
-      if (!isEven && isLast) {
-        dom.classList.add(RIGHT_SPACE_CLASS)
-        return
-      }
-
-      const isFabLeft = i === length / 2 - 1
-      const isFabRight = i === length / 2
-      if (isFabLeft) {
-        dom.classList.add(RIGHT_HALF_SPACE_CLASS)
-      } else if (isFabRight) {
-        dom.classList.add(LEFT_HALF_SPACE_CLASS)
-      }
-    }
-
-    const getBottomNavigationItems = () => Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
-
-    const handleFabClick = () => {
-      call(props.onFabClick)
-    }
 
     const bottomNavigationProvider: BottomNavigationProvider = {
       active,
@@ -176,13 +88,105 @@ export default defineComponent({
       addMarginClass(length.value)
     })
 
+    function matchBoundary() {
+      if (length.value === 0 || matchName() || matchIndex()) {
+        return
+      }
+
+      handleActiveIndex()
+    }
+
+    function matchName(): BottomNavigationItemProvider | undefined {
+      return bottomNavigationItems.find(({ name }: BottomNavigationItemProvider) => active.value === name.value)
+    }
+
+    function matchIndex(): BottomNavigationItemProvider | undefined {
+      return bottomNavigationItems.find(({ index }: BottomNavigationItemProvider) => active.value === index.value)
+    }
+
+    function handleActiveIndex() {
+      if (!isNumber(active.value)) {
+        return
+      }
+
+      if (active.value < 0) {
+        call(props['onUpdate:active'], 0)
+      } else if (active.value > length.value - 1) {
+        call(props['onUpdate:active'], length.value - 1)
+      }
+    }
+
+    function onToggle(changedValue: number | string) {
+      if (active.value === changedValue) {
+        return
+      }
+
+      props.onBeforeChange ? handleBeforeChange(changedValue) : handleChange(changedValue)
+    }
+
+    function handleBeforeChange(changedValue: number | string) {
+      const results = normalizeToArray(call(props.onBeforeChange, changedValue))
+
+      Promise.all(results).then((results) => {
+        if (results.every(Boolean)) {
+          handleChange(changedValue)
+        }
+      })
+    }
+
+    function handleChange(changedValue: number | string) {
+      call(props['onUpdate:active'], changedValue)
+      call(props.onChange, changedValue)
+    }
+
+    function removeMarginClass() {
+      const bottomNavigationItems: Element[] = getBottomNavigationItems()
+      bottomNavigationItems.forEach((dom: Element) => {
+        dom.classList.remove(RIGHT_HALF_SPACE_CLASS, LEFT_HALF_SPACE_CLASS, RIGHT_SPACE_CLASS)
+      })
+    }
+
+    function addMarginClass(length: number) {
+      const bottomNavigationItems: Element[] = getBottomNavigationItems()
+      const itemsNum = bottomNavigationItems.length
+      const isEven = length % 2 === 0
+
+      bottomNavigationItems.forEach((bottomNavigationItem: Element, i: number) => {
+        handleMarginClass(isEven, bottomNavigationItem, i, itemsNum)
+      })
+    }
+
+    function handleMarginClass(isEven: boolean, dom: Element, i: number, length: number) {
+      const isLast = i === length - 1
+      if (!isEven && isLast) {
+        dom.classList.add(RIGHT_SPACE_CLASS)
+        return
+      }
+
+      const isFabLeft = i === length / 2 - 1
+      const isFabRight = i === length / 2
+      if (isFabLeft) {
+        dom.classList.add(RIGHT_HALF_SPACE_CLASS)
+      } else if (isFabRight) {
+        dom.classList.add(LEFT_HALF_SPACE_CLASS)
+      }
+    }
+
+    function getBottomNavigationItems() {
+      return Array.from(bottomNavigationDom.value!.querySelectorAll(`.${nItem()}`))
+    }
+
+    function handleFabClick() {
+      call(props.onFabClick)
+    }
+
     return {
-      n,
-      classes,
       length,
       bottomNavigationDom,
-      handleFabClick,
       fabProps,
+      n,
+      classes,
+      handleFabClick,
     }
   },
 })

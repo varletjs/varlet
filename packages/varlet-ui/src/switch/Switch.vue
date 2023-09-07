@@ -62,7 +62,7 @@ import { useForm } from '../form/provide'
 import { props } from './props'
 import { type SwitchProvider } from './provide'
 
-const { n, classes } = createNamespace('switch')
+const { name, n, classes } = createNamespace('switch')
 
 type StyleProps = {
   width: string
@@ -74,7 +74,7 @@ type StyleProps = {
 }
 
 export default defineComponent({
-  name: 'VarSwitch',
+  name,
   components: {
     VarFormDetails,
     VarHoverOverlay,
@@ -85,12 +85,7 @@ export default defineComponent({
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
-
-    const validate = () => v(props.rules, props.modelValue)
-
-    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
-
-    const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
+    const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
       const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
 
       return {
@@ -119,10 +114,25 @@ export default defineComponent({
         },
       }
     })
+    const radius = computed(() => multiplySizeUnit(props.size, 0.8))
 
-    const radius: ComputedRef<string | undefined> = computed(() => multiplySizeUnit(props.size, 0.8))
+    const switchProvider: SwitchProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
 
-    const switchActive = (event: MouseEvent) => {
+    call(bindForm, switchProvider)
+
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
+
+    function validateWithTrigger() {
+      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    }
+
+    function switchActive(event: MouseEvent) {
       const {
         onClick,
         onChange,
@@ -148,7 +158,7 @@ export default defineComponent({
       validateWithTrigger()
     }
 
-    const hover = (value: boolean) => {
+    function hover(value: boolean) {
       if (props.disabled || form?.disabled.value) {
         return
       }
@@ -156,28 +166,20 @@ export default defineComponent({
       handleHovering(value)
     }
 
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], props.inactiveValue)
       resetValidation()
     }
 
-    const switchProvider: SwitchProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    call(bindForm, switchProvider)
-
     return {
-      n,
-      classes,
       hovering,
       radius,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      n,
+      classes,
       multiplySizeUnit,
       switchActive,
       hover,

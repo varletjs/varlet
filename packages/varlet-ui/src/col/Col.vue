@@ -29,30 +29,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { isPlainObject, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { useRow, type ColPadding, type ColProvider, type ColSizeDescriptor } from './provide'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
 
-const { n, classes } = createNamespace('col')
+const { name, n, classes } = createNamespace('col')
 
 export default defineComponent({
-  name: 'VarCol',
+  name,
   props,
   setup(props) {
-    const padding: Ref<ColPadding> = ref({ left: 0, right: 0, top: 0, bottom: 0 })
-    const span: ComputedRef<number> = computed(() => toNumber(props.span))
-    const offset: ComputedRef<number> = computed(() => toNumber(props.offset))
+    const span = computed(() => toNumber(props.span))
+    const offset = computed(() => toNumber(props.offset))
+    const padding = ref<ColPadding>({ left: 0, right: 0, top: 0, bottom: 0 })
     const { row, bindRow } = useRow()
+
     const colProvider: ColProvider = {
       setPadding(pad: ColPadding) {
         padding.value = pad
       },
     }
 
-    const getSize = (mode: string, size: string | number | ColSizeDescriptor | undefined) => {
+    watch([() => props.span, () => props.offset], () => {
+      row?.computePadding()
+    })
+
+    call(bindRow, colProvider)
+
+    function getSize(mode: string, size: string | number | ColSizeDescriptor | undefined) {
       const classes: string[] = []
 
       if (size == null) {
@@ -71,25 +78,19 @@ export default defineComponent({
       return classes
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    watch([() => props.span, () => props.offset], () => {
-      row?.computePadding()
-    })
-
-    call(bindRow, colProvider)
-
     return {
+      span,
+      offset,
+      padding,
       n,
       classes,
-      padding,
       toNumber,
       toSizeUnit,
       getSize,
-      span,
-      offset,
       handleClick,
       padStartFlex,
     }

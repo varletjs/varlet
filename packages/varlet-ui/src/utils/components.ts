@@ -22,7 +22,7 @@ import {
   type Plugin,
   type App,
 } from 'vue'
-import { isArray } from '@varlet/shared'
+import { bigCamelize, isArray } from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -266,6 +266,7 @@ export function createNamespace<C extends string>(name: C) {
     })
 
   return {
+    name: bigCamelize(componentName),
     n: createBEM,
     classes,
   }

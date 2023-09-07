@@ -22,19 +22,19 @@
 <script lang="ts">
 import VarTooltip from '../tooltip'
 import { props as tooltipProps } from '../tooltip/props'
-import { computed, defineComponent, ref, type Ref, type ComputedRef, type StyleValue } from 'vue'
+import { computed, defineComponent, ref, type StyleValue } from 'vue'
 import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'
 
-const { n, classes } = createNamespace('ellipsis')
+const { name, n, classes } = createNamespace('ellipsis')
 
 export default defineComponent({
-  name: 'VarEllipsis',
+  name,
   components: { VarTooltip },
   props,
   setup(props) {
-    const expanding: Ref<boolean> = ref(false)
-    const rootStyles: ComputedRef<StyleValue> = computed(() => {
+    const expanding = ref(false)
+    const rootStyles = computed<StyleValue>(() => {
       if (!props.lineClamp) {
         return {}
       }
@@ -43,8 +43,7 @@ export default defineComponent({
         '-webkit-line-clamp': props.lineClamp,
       } as StyleValue
     })
-
-    const tooltip: ComputedRef<ExtractPublicPropTypes<typeof tooltipProps>> = computed(() => {
+    const tooltip = computed<ExtractPublicPropTypes<typeof tooltipProps>>(() => {
       if (props.tooltip === false) {
         return {
           disabled: true,
@@ -60,7 +59,7 @@ export default defineComponent({
       return { sameWidth: true, ...props.tooltip }
     })
 
-    const handleClick = () => {
+    function handleClick() {
       if (!props.expandTrigger) {
         return
       }
@@ -69,11 +68,11 @@ export default defineComponent({
     }
 
     return {
-      n,
-      classes,
       tooltip,
       expanding,
       rootStyles,
+      n,
+      classes,
       handleClick,
     }
   },

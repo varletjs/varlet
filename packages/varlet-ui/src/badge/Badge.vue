@@ -30,28 +30,28 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { toNumber } from '@varlet/shared'
-import { computed, defineComponent, type ComputedRef } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('badge')
+const { name, n, classes } = createNamespace('badge')
 
 export default defineComponent({
-  name: 'VarBadge',
+  name,
   components: { VarIcon },
   inheritAttrs: false,
   props,
   setup(props) {
-    const value: ComputedRef<string | number> = computed(() => {
+    const value = computed<string | number>(() => {
       const { value, maxValue } = props
 
       return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
 
     return {
+      value,
       n,
       classes,
-      value,
     }
   },
 })

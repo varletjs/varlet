@@ -46,16 +46,16 @@ import Ripple from '../ripple'
 import VarLoading from '../loading'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { computed, defineComponent, ref, type Ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { call, createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
 import { isArray } from '@varlet/shared'
 
-const { n, classes } = createNamespace('button')
+const { name, n, classes } = createNamespace('button')
 
 export default defineComponent({
-  name: 'VarButton',
+  name,
   components: {
     VarLoading,
     VarHoverOverlay,
@@ -63,10 +63,9 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
-    const pending: Ref<boolean> = ref(false)
+    const pending = ref(false)
     const { buttonGroup } = useButtonGroup()
     const { hovering, handleHovering } = useHoverOverlay()
-
     const states = computed(() => {
       if (!buttonGroup) {
         return {
@@ -93,7 +92,7 @@ export default defineComponent({
       }
     })
 
-    const attemptAutoLoading = (result: any) => {
+    function attemptAutoLoading(result: any) {
       if (props.autoLoading) {
         pending.value = true
 
@@ -109,7 +108,7 @@ export default defineComponent({
       }
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { loading, disabled, onClick } = props
 
       if (!onClick || loading || disabled || pending.value) {
@@ -119,7 +118,7 @@ export default defineComponent({
       attemptAutoLoading(call(onClick, e))
     }
 
-    const handleTouchstart = (e: Event) => {
+    function handleTouchstart(e: Event) {
       const { loading, disabled, onTouchstart } = props
 
       if (!onTouchstart || loading || disabled || pending.value) {
@@ -130,11 +129,11 @@ export default defineComponent({
     }
 
     return {
-      n,
-      classes,
       pending,
       states,
       hovering,
+      n,
+      classes,
       handleHovering,
       handleClick,
       handleTouchstart,

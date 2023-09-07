@@ -1,7 +1,7 @@
 import Button from '../button'
 import Icon from '../icon'
 import Drag from '../drag'
-import { defineComponent, Ref, ref, Transition, watch } from 'vue'
+import { defineComponent, ref, Transition, watch } from 'vue'
 import { useClickOutside } from '@varlet/use'
 import { isBoolean } from '@varlet/shared'
 import { call, createNamespace, flatFragment, useVModel } from '../utils/components'
@@ -17,18 +17,41 @@ import '../button/button.less'
 import '../drag/drag.less'
 import './fab.less'
 
-const { classes, n } = createNamespace('fab')
+const { name, classes, n } = createNamespace('fab')
 
 export default defineComponent({
-  name: 'VarFab',
+  name,
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
     const isActive = useVModel(props, 'active')
-    const host: Ref<null | HTMLElement> = ref(null)
-    const dragRef: Ref<InstanceType<typeof Drag> | null> = ref(null)
+    const host = ref<null | HTMLElement>(null)
+    const dragRef = ref<InstanceType<typeof Drag> | null>(null)
 
-    const handleClick = (e: Event, value: boolean, childrenLength: number) => {
+    watch(
+      () => props.trigger,
+      () => {
+        isActive.value = false
+      }
+    )
+
+    watch(
+      () => props.disabled,
+      () => {
+        isActive.value = false
+      }
+    )
+
+    watch(
+      () => [props.position, props.fixed, props.top, props.bottom, props.left, props.right],
+      () => {
+        dragRef.value?.reset()
+      }
+    )
+
+    useClickOutside(host, 'click', handleClickOutside)
+
+    function handleClick(e: Event, value: boolean, childrenLength: number) {
       e.stopPropagation()
 
       if (props.trigger !== 'click' || props.disabled) {
@@ -45,7 +68,7 @@ export default defineComponent({
       call(isActive.value ? props.onOpen : props.onClose)
     }
 
-    const handleMouse = (value: boolean, childrenLength: number) => {
+    function handleMouse(value: boolean, childrenLength: number) {
       if (props.trigger !== 'hover' || props.disabled || childrenLength === 0) {
         return
       }
@@ -54,7 +77,7 @@ export default defineComponent({
       call(isActive.value ? props.onOpen : props.onClose)
     }
 
-    const handleClickOutside = () => {
+    function handleClickOutside() {
       if (props.trigger !== 'click' || props.disabled) {
         return
       }
@@ -65,7 +88,7 @@ export default defineComponent({
       }
     }
 
-    const renderTrigger = () => {
+    function renderTrigger() {
       if (slots.trigger) {
         return props.show ? slots.trigger({ active: isActive.value }) : null
       }
@@ -93,32 +116,8 @@ export default defineComponent({
       )
     }
 
-    watch(
-      () => props.trigger,
-      () => {
-        isActive.value = false
-      }
-    )
-
-    watch(
-      () => props.disabled,
-      () => {
-        isActive.value = false
-      }
-    )
-
-    watch(
-      () => [props.position, props.fixed, props.top, props.bottom, props.left, props.right],
-      () => {
-        dragRef.value?.reset()
-      }
-    )
-
-    useClickOutside(host, 'click', handleClickOutside)
-
     return () => {
       const children = flatFragment(call(slots.default) ?? [])
-
       const dragProps = isBoolean(props.drag) ? {} : props.drag
 
       return (

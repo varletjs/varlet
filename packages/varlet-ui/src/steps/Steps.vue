@@ -5,27 +5,22 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, type ComputedRef } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { useStep, type StepsProvider } from './provide'
 import { props } from './props'
 import { createNamespace, call } from '../utils/components'
 
-const { n } = createNamespace('steps')
+const { name, n } = createNamespace('steps')
 
 export default defineComponent({
-  name: 'VarSteps',
+  name,
   props,
   setup(props) {
-    const active: ComputedRef<number | string> = computed(() => props.active)
-    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-    const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
-    const direction: ComputedRef<string> = computed(() => props.direction)
-
+    const active = computed(() => props.active)
+    const activeColor = computed(() => props.activeColor)
+    const inactiveColor = computed(() => props.inactiveColor)
+    const direction = computed(() => props.direction)
     const { bindStep } = useStep()
-
-    const clickStep = (index: number) => {
-      call(props.onClickStep, index)
-    }
 
     const stepsProvider: StepsProvider = {
       active,
@@ -36,9 +31,12 @@ export default defineComponent({
     }
 
     bindStep(stepsProvider)
-    return {
-      n,
+
+    function clickStep(index: number) {
+      call(props.onClickStep, index)
     }
+
+    return { n }
   },
 })
 </script>

@@ -5,29 +5,46 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, watch, type ComputedRef } from 'vue'
+import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { call, createNamespace } from '../utils/components'
 import { isArray } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
-const { n } = createNamespace('collapse')
+const { name, n } = createNamespace('collapse')
 
 export default defineComponent({
-  name: 'VarCollapse',
+  name,
   props,
   setup(props) {
+    const active = computed(() => props.modelValue)
+    const offset = computed(() => props.offset)
+    const divider = computed(() => props.divider)
+    const elevation = computed(() => props.elevation)
     const { length, collapseItem, bindCollapseItem } = useCollapseItem()
 
-    const active: ComputedRef<number | string | Array<number | string> | undefined | null> = computed(
-      () => props.modelValue
-    )
-    const offset: ComputedRef<boolean> = computed(() => props.offset)
-    const divider: ComputedRef<boolean> = computed(() => props.divider)
-    const elevation: ComputedRef<boolean | number | string> = computed(() => props.elevation)
+    const collapseProvider: CollapseProvider = {
+      active,
+      offset,
+      divider,
+      elevation,
+      updateItem,
+    }
 
-    const checkValue = () => {
+    watch(
+      () => length.value,
+      () => nextTick().then(resize)
+    )
+
+    watch(
+      () => props.modelValue,
+      () => nextTick().then(resize)
+    )
+
+    bindCollapseItem(collapseProvider)
+
+    function checkValue() {
       if (!props.accordion && !isArray(props.modelValue)) {
         console.error('[Varlet] Collapse: type of prop "modelValue" should be an Array')
         return false
@@ -40,7 +57,7 @@ export default defineComponent({
       return true
     }
 
-    const getValue = (value: number | string, isExpand: boolean): CollapseModelValue => {
+    function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
       if (!checkValue()) return null
       if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
 
@@ -49,13 +66,13 @@ export default defineComponent({
         : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
     }
 
-    const updateItem = (value: number | string, isExpand: boolean) => {
+    function updateItem(value: number | string, isExpand: boolean) {
       const modelValue = getValue(value, isExpand)
       call(props['onUpdate:modelValue'], modelValue)
       call(props.onChange, modelValue)
     }
 
-    const matchName = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {
+    function matchName(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
         return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
       }
@@ -69,7 +86,7 @@ export default defineComponent({
       return filterItem.length ? filterItem : undefined
     }
 
-    const matchIndex = (): Array<CollapseItemProvider> | CollapseItemProvider | undefined => {
+    function matchIndex(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
         return collapseItem.find(
           ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
@@ -81,7 +98,7 @@ export default defineComponent({
       )
     }
 
-    const resize = () => {
+    function resize() {
       if (!checkValue()) return
 
       const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
@@ -105,29 +122,9 @@ export default defineComponent({
       })
     }
 
-    const collapseProvider: CollapseProvider = {
-      active,
-      offset,
-      divider,
-      elevation,
-      updateItem,
-    }
-
-    bindCollapseItem(collapseProvider)
-
-    watch(
-      () => length.value,
-      () => nextTick().then(resize)
-    )
-
-    watch(
-      () => props.modelValue,
-      () => nextTick().then(resize)
-    )
-
     return {
-      n,
       divider,
+      n,
     }
   },
 })

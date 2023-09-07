@@ -20,27 +20,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onUpdated, type Ref } from 'vue'
+import { defineComponent, computed, ref, onUpdated } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { toNumber, isBoolean } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('divider')
+const { name, n, classes } = createNamespace('divider')
 
 export default defineComponent({
-  name: 'VarDivider',
+  name,
   props,
   setup(props, { slots }) {
-    const withText: Ref<boolean> = ref(false)
-
+    const withText = ref(false)
     const withPresetInset = computed(() => {
       // the inset is only effective in horizontal mode
       const { vertical, inset } = props
       return !vertical && inset === true
     })
-
     const style = computed(() => {
       const { inset, vertical, margin } = props
 
@@ -58,19 +56,14 @@ export default defineComponent({
       }
     })
 
-    const checkHasText = () => {
+    onSmartMounted(checkHasText)
+    onUpdated(checkHasText)
+
+    function checkHasText() {
       // the default slot or description is only effective in horizontal mode
       const { description, vertical } = props
       withText.value = (slots.default || description != null) && !vertical
     }
-
-    onSmartMounted(() => {
-      checkHasText()
-    })
-
-    onUpdated(() => {
-      checkHasText()
-    })
 
     return {
       n,

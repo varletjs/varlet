@@ -48,19 +48,17 @@ import { toSizeUnit } from '../utils/elements'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('skeleton')
+const { name, n, classes } = createNamespace('skeleton')
 
 export default defineComponent({
-  name: 'VarSkeleton',
+  name,
   props,
-  setup() {
-    return {
-      n,
-      classes,
-      toSizeUnit,
-      toNumber,
-    }
-  },
+  setup: () => ({
+    n,
+    classes,
+    toSizeUnit,
+    toNumber,
+  }),
 })
 </script>
 

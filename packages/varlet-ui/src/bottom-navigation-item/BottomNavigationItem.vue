@@ -29,13 +29,13 @@
 import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
-import { defineComponent, computed, ref, watch, type ComputedRef } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 import { props } from './props'
 import { useBottomNavigation, type BottomNavigationItemProvider } from './provide'
 import { createNamespace, call } from '../utils/components'
 import { type BadgeProps } from '../../types'
 
-const { n, classes } = createNamespace('bottom-navigation-item')
+const { name, n, classes } = createNamespace('bottom-navigation-item')
 
 const defaultBadgeProps = {
   type: 'danger',
@@ -43,7 +43,7 @@ const defaultBadgeProps = {
 }
 
 export default defineComponent({
-  name: 'VarBottomNavigationItem',
+  name,
   components: {
     VarBadge,
     VarIcon,
@@ -51,25 +51,14 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const name: ComputedRef<string | undefined> = computed(() => props.name)
-    const badge: ComputedRef<boolean | BadgeProps> = computed(() => props.badge)
+    const name = computed<string | undefined>(() => props.name)
+    const badge = computed<boolean | BadgeProps>(() => props.badge)
     const badgeProps = ref({})
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
     const { active, activeColor, inactiveColor } = bottomNavigation
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,
       index,
-    }
-
-    const computeColorStyle = () =>
-      active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
-
-    const handleClick = () => {
-      const active = name.value ?? index.value
-
-      call(props.onClick, active)
-
-      call(bottomNavigation.onToggle, active)
     }
 
     bindBottomNavigation(bottomNavigationItemProvider)
@@ -82,13 +71,25 @@ export default defineComponent({
       { immediate: true }
     )
 
+    function computeColorStyle() {
+      return active.value === name.value || active.value === index.value ? activeColor.value : inactiveColor.value
+    }
+
+    function handleClick() {
+      const active = name.value ?? index.value
+
+      call(props.onClick, active)
+
+      call(bottomNavigation.onToggle, active)
+    }
+
     return {
-      n,
-      classes,
       index,
       active,
       badge,
       badgeProps,
+      n,
+      classes,
       computeColorStyle,
       handleClick,
     }

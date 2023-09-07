@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type ComputedRef, type StyleValue } from 'vue'
+import { defineComponent, computed, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('avatar-group')
+const { name, n, classes } = createNamespace('avatar-group')
 
 export default defineComponent({
-  name: 'VarAvatarGroup',
+  name,
   props,
   setup(props) {
-    const rootStyles: ComputedRef<StyleValue> = computed(() => {
+    const rootStyles = computed<StyleValue>(() => {
       if (props.offset == null) {
         return {}
       }
@@ -27,10 +27,10 @@ export default defineComponent({
     })
 
     return {
+      rootStyles,
       n,
       classes,
       toSizeUnit,
-      rootStyles,
     }
   },
 })

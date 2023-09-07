@@ -4,10 +4,10 @@ import { formatStyleVars } from '../utils/elements'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { n } = createNamespace('style-provider')
+const { name, n } = createNamespace('style-provider')
 
 export default defineComponent({
-  name: 'VarStyleProvider',
+  name,
   props,
   setup(props, { slots }) {
     return () =>

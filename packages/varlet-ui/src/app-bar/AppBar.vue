@@ -36,26 +36,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
+import { defineComponent, ref, onUpdated, computed, type StyleValue } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('app-bar')
+const { name, n, classes } = createNamespace('app-bar')
 
 export default defineComponent({
-  name: 'VarAppBar',
+  name,
   props,
   setup(props, { slots }) {
-    const paddingLeft: Ref<number | undefined> = ref()
-    const paddingRight: Ref<number | undefined> = ref()
-
-    const computePadding = () => {
-      paddingLeft.value = slots.left ? 0 : undefined
-      paddingRight.value = slots.right ? 0 : undefined
-    }
-
-    const rootStyles: ComputedRef<StyleValue> = computed(() => {
+    const paddingLeft = ref<number | undefined>()
+    const paddingRight = ref<number | undefined>()
+    const rootStyles = computed<StyleValue>(() => {
       const { image, color, textColor, imageLinearGradient } = props
 
       if (image != null) {
@@ -77,13 +71,18 @@ export default defineComponent({
     onSmartMounted(computePadding)
     onUpdated(computePadding)
 
+    function computePadding() {
+      paddingLeft.value = slots.left ? 0 : undefined
+      paddingRight.value = slots.right ? 0 : undefined
+    }
+
     return {
-      n,
-      classes,
-      formatElevation,
       rootStyles,
       paddingLeft,
       paddingRight,
+      n,
+      classes,
+      formatElevation,
     }
   },
 })

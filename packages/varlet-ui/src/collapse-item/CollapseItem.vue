@@ -40,47 +40,44 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, computed, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, watch, computed } from 'vue'
 import { isArray, doubleRaf, raf } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useCollapse, type CollapseItemProvider } from './provide'
 import { props } from './props'
 
-const { n, classes } = createNamespace('collapse-item')
+const { name, n, classes } = createNamespace('collapse-item')
 
 export default defineComponent({
-  name: 'VarCollapseItem',
+  name,
   components: {
     VarIcon,
   },
   props,
   setup(props) {
+    const isShow = ref(false)
+    const showContent = ref(false)
+    const contentEl = ref<HTMLDivElement | null>(null)
+    const name = computed(() => props.name)
     const { index, collapse, bindCollapse } = useCollapse()
-
-    let isInitToTrigger = true // ensure to trigger transitionend
-    const contentEl: Ref<HTMLDivElement | null> = ref(null)
-    const showContent: Ref<boolean> = ref(false)
-    const isShow: Ref<boolean> = ref(false)
     const { active, offset, divider, elevation, updateItem } = collapse
 
-    const name: ComputedRef<number | string | undefined> = computed(() => props.name)
-
-    const init = (accordion: boolean, show: boolean) => {
-      if (active.value === undefined || (accordion && isArray(active.value)) || show === isShow.value) return
-
-      isShow.value = show
-      toggle(true)
+    const collapseItemProvider: CollapseItemProvider = {
+      index,
+      name,
+      init,
     }
 
-    const toggle = (initOrAccordion?: boolean) => {
-      if (props.disabled) return
+    // ensure to trigger transitionend
+    let isInitToTrigger = true
 
-      if (!initOrAccordion) {
-        updateItem(props.name || index.value, !isShow.value)
-      }
-    }
+    watch(isShow, (value) => {
+      value ? openPanel() : closePanel()
+    })
 
-    const openPanel = async () => {
+    bindCollapse(collapseItemProvider)
+
+    async function openPanel() {
       if (!contentEl.value) {
         return
       }
@@ -114,11 +111,7 @@ export default defineComponent({
       }
     }
 
-    const start = () => {
-      isInitToTrigger = false
-    }
-
-    const closePanel = async () => {
+    async function closePanel() {
       if (!contentEl.value) {
         return
       }
@@ -129,7 +122,26 @@ export default defineComponent({
       contentEl.value.style.height = 0 + 'px'
     }
 
-    const transitionend = () => {
+    function init(accordion: boolean, show: boolean) {
+      if (active.value === undefined || (accordion && isArray(active.value)) || show === isShow.value) return
+
+      isShow.value = show
+      toggle(true)
+    }
+
+    function toggle(initOrAccordion?: boolean) {
+      if (props.disabled) return
+
+      if (!initOrAccordion) {
+        updateItem(props.name || index.value, !isShow.value)
+      }
+    }
+
+    function start() {
+      isInitToTrigger = false
+    }
+
+    function transitionend() {
       if (!isShow.value) {
         showContent.value = false
       }
@@ -137,29 +149,17 @@ export default defineComponent({
       contentEl.value!.style.height = ''
     }
 
-    const collapseItemProvider: CollapseItemProvider = {
-      index,
-      name,
-      init,
-    }
-
-    bindCollapse(collapseItemProvider)
-
-    watch(isShow, (value) => {
-      value ? openPanel() : closePanel()
-    })
-
     return {
-      n,
-      start,
-      classes,
-      showContent,
       isShow,
+      showContent,
       offset,
       divider,
       elevation,
-      toggle,
       contentEl,
+      n,
+      start,
+      classes,
+      toggle,
       transitionend,
       formatElevation,
     }

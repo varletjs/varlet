@@ -66,14 +66,14 @@ import VarSwipe from '../swipe'
 import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber, clamp } from '@varlet/shared'
 import { useEventListener, useTouch } from '@varlet/use'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
 
-const { n, classes } = createNamespace('image-preview')
+const { name, n, classes } = createNamespace('image-preview')
 
 const DISTANCE_OFFSET = 12
 const EVENT_DELAY = 200
@@ -82,7 +82,7 @@ const ANIMATION_DURATION = 200
 const LONG_PRESS_DELAY = 500
 
 export default defineComponent({
-  name: 'VarImagePreview',
+  name,
   components: {
     VarSwipe,
     VarSwipeItem,
@@ -92,24 +92,16 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const popupShow: Ref<boolean> = ref(false)
-    const scale: Ref<number> = ref(1)
-    const translateX: Ref<number> = ref(0)
-    const translateY: Ref<number> = ref(0)
-    const transitionTimingFunction: Ref<string | undefined> = ref(undefined)
-    const transitionDuration: Ref<string | undefined> = ref(undefined)
-    const canSwipe: Ref<boolean> = ref(true)
-    const swipeRef: Ref<InstanceType<typeof VarSwipe> | null> = ref(null)
+    const popupShow = ref(false)
+    const scale = ref(1)
+    const translateX = ref(0)
+    const translateY = ref(0)
+    const transitionTimingFunction = ref<string | undefined>()
+    const transitionDuration = ref<string | undefined>()
+    const canSwipe = ref(true)
+    const swipeRef = ref<InstanceType<typeof VarSwipe> | null>(null)
     const { moveX, moveY, distance, startTime, startTouch, moveTouch, endTouch } = useTouch()
-    const targets: Record<string, HTMLElement | null> = {
-      start: null,
-      prev: null,
-    }
-    let closeRunner: number | null = null
-    let longPressRunner: number | null = null
-    let isLongPress = false
-
-    const initialIndex: ComputedRef<number> = computed(() => {
+    const initialIndex = computed(() => {
       // For compatibility with current, temporarily keep this computed method
       // Current will be replaced by initialIndex in the future
       const { images, current, initialIndex } = props
@@ -122,13 +114,30 @@ export default defineComponent({
 
       return Math.max(index, 0)
     })
-
-    const isPreventDefault: ComputedRef<boolean> = computed(() => {
+    const isPreventDefault = computed(() => {
       const { imagePreventDefault, show } = props
       return show && imagePreventDefault
     })
 
-    const zoomIn = () => {
+    let closeRunner: number | null = null
+    let longPressRunner: number | null = null
+    let isLongPress = false
+    const targets: Record<string, HTMLElement | null> = {
+      start: null,
+      prev: null,
+    }
+
+    useEventListener(() => document, 'contextmenu', preventImageDefault)
+
+    watch(
+      () => props.show,
+      (newShow) => {
+        popupShow.value = newShow
+      },
+      { immediate: true }
+    )
+
+    function zoomIn() {
       scale.value = toNumber(props.zoom)
       canSwipe.value = false
       targets.prev = null
@@ -139,7 +148,7 @@ export default defineComponent({
       }, ANIMATION_DURATION)
     }
 
-    const zoomOut = () => {
+    function zoomOut() {
       scale.value = 1
       translateX.value = 0
       translateY.value = 0
@@ -149,7 +158,7 @@ export default defineComponent({
       transitionDuration.value = undefined
     }
 
-    const isDoubleTouch = (target: HTMLElement) => {
+    function isDoubleTouch(target: HTMLElement) {
       if (!targets.prev) {
         return false
       }
@@ -161,7 +170,7 @@ export default defineComponent({
       )
     }
 
-    const isTapTouch = (target: HTMLElement) => {
+    function isTapTouch(target: HTMLElement) {
       if (!target || !targets.start || !targets.prev) {
         return false
       }
@@ -173,7 +182,7 @@ export default defineComponent({
       )
     }
 
-    const handleTouchcancel = () => {
+    function handleTouchcancel() {
       endTouch()
 
       window.clearTimeout(longPressRunner as number)
@@ -181,7 +190,7 @@ export default defineComponent({
       targets.start = null
     }
 
-    const handleTouchend = (event: TouchEvent) => {
+    function handleTouchend(event: TouchEvent) {
       endTouch()
 
       window.clearTimeout(longPressRunner as number)
@@ -199,7 +208,7 @@ export default defineComponent({
       }, EVENT_DELAY)
     }
 
-    const handleTouchstart = (event: TouchEvent, idx: number) => {
+    function handleTouchstart(event: TouchEvent, idx: number) {
       window.clearTimeout(closeRunner as number)
       window.clearTimeout(longPressRunner as number)
 
@@ -220,7 +229,7 @@ export default defineComponent({
       targets.prev = target
     }
 
-    const getZoom = (target: HTMLElement) => {
+    function getZoom(target: HTMLElement) {
       const { offsetWidth, offsetHeight } = target
       const { naturalWidth, naturalHeight } = target.querySelector(`.${n('image')}`) as HTMLImageElement
 
@@ -233,7 +242,7 @@ export default defineComponent({
       }
     }
 
-    const getLimitX = (target: HTMLElement) => {
+    function getLimitX(target: HTMLElement) {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
 
       if (!imageRadio) {
@@ -245,7 +254,7 @@ export default defineComponent({
       return Math.max(0, (zoom * displayWidth - width) / 2) / zoom
     }
 
-    const getLimitY = (target: HTMLElement) => {
+    function getLimitY(target: HTMLElement) {
       const { zoom, imageRadio, rootRadio, width, height } = getZoom(target)
 
       if (!imageRadio) {
@@ -257,7 +266,7 @@ export default defineComponent({
       return Math.max(0, (zoom * displayHeight - height) / 2) / zoom
     }
 
-    const handleTouchmove = (event: TouchEvent) => {
+    function handleTouchmove(event: TouchEvent) {
       if (!targets.prev) {
         return
       }
@@ -281,7 +290,7 @@ export default defineComponent({
       targets.prev = target
     }
 
-    const close = () => {
+    function close() {
       if (scale.value > 1) {
         zoomOut()
         setTimeout(() => call(props['onUpdate:show'], false), ANIMATION_DURATION)
@@ -292,37 +301,25 @@ export default defineComponent({
     }
 
     // expose
-    const prev = (options?: SwipeToOptions) => {
+    function prev(options?: SwipeToOptions) {
       swipeRef.value?.prev(options)
     }
 
     // expose
-    const next = (options?: SwipeToOptions) => {
+    function next(options?: SwipeToOptions) {
       swipeRef.value?.next(options)
     }
 
     // expose
-    const to = (idx: number, options?: SwipeToOptions) => {
+    function to(idx: number, options?: SwipeToOptions) {
       swipeRef.value?.to(idx, options)
     }
 
-    const preventImageDefault = (event: Event) => {
+    function preventImageDefault(event: Event) {
       props.imagePreventDefault && props.show && event.preventDefault()
     }
 
-    useEventListener(() => document, 'contextmenu', preventImageDefault)
-
-    watch(
-      () => props.show,
-      (newShow) => {
-        popupShow.value = newShow
-      },
-      { immediate: true }
-    )
-
     return {
-      n,
-      classes,
       swipeRef,
       isPreventDefault,
       initialIndex,
@@ -333,6 +330,8 @@ export default defineComponent({
       canSwipe,
       transitionTimingFunction,
       transitionDuration,
+      n,
+      classes,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,

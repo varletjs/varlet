@@ -13,17 +13,24 @@ import { find } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
 
-const { n } = createNamespace('form')
+const { name, n } = createNamespace('form')
 
 export default defineComponent({
-  name: 'VarForm',
+  name,
   props,
   setup(props) {
-    const disabled: ComputedRef<boolean> = computed(() => props.disabled)
-    const readonly: ComputedRef<boolean> = computed(() => props.readonly)
+    const disabled = computed(() => props.disabled)
+    const readonly = computed(() => props.readonly)
     const { formItems, bindFormItems } = useFormItems()
 
-    const scroll = (formItemElement: HTMLElement) => {
+    const formProvider: FormProvider = {
+      disabled,
+      readonly,
+    }
+
+    bindFormItems(formProvider)
+
+    function scroll(formItemElement: HTMLElement) {
       // wait form-details animation end
       setTimeout(() => {
         const scroller = getParentScroller(formItemElement)
@@ -37,20 +44,20 @@ export default defineComponent({
       }, 300)
     }
 
-    const handleSubmit = async (event: Event) => {
+    async function handleSubmit(event: Event) {
       event.preventDefault()
       const valid = await validate()
       call(props.onSubmit, valid)
     }
 
-    const handleReset = (event: Event) => {
+    function handleReset(event: Event) {
       event.preventDefault()
       reset()
       call(props.onReset)
     }
 
     // expose
-    const validate = async () => {
+    async function validate() {
       const res = await Promise.all(formItems.map(({ validate }) => validate()))
 
       if (props.scrollToError) {
@@ -69,17 +76,14 @@ export default defineComponent({
     }
 
     // expose
-    const reset = () => formItems.forEach(({ reset }) => reset())
-
-    // expose
-    const resetValidation = () => formItems.forEach(({ resetValidation }) => resetValidation())
-
-    const formProvider: FormProvider = {
-      disabled,
-      readonly,
+    function reset() {
+      return formItems.forEach(({ reset }) => reset())
     }
 
-    bindFormItems(formProvider)
+    // expose
+    function resetValidation() {
+      return formItems.forEach(({ resetValidation }) => resetValidation())
+    }
 
     return {
       n,

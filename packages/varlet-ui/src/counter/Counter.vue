@@ -108,12 +108,13 @@ import { useForm } from '../form/provide'
 import { useValidation, createNamespace, call, formatElevation } from '../utils/components'
 import { type CounterProvider } from './provide'
 
-const { n, classes } = createNamespace('counter')
 const SPEED = 100
 const DELAY = 600
 
+const { name, n, classes } = createNamespace('counter')
+
 export default defineComponent({
-  name: 'VarCounter',
+  name,
   components: {
     VarButton,
     VarIcon,
@@ -123,7 +124,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const inputValue: Ref<string | number> = ref('')
+    const inputValue = ref<string | number>('')
     const { bindForm, form } = useForm()
     const {
       errorMessage,
@@ -133,16 +134,43 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
     const { readonly: formReadonly, disabled: formDisabled } = form ?? {}
+    const isMax: ComputedRef<boolean> = computed(() => {
+      const { max, modelValue } = props
+      return max != null && toNumber(modelValue) >= toNumber(max)
+    })
+    const isMin: ComputedRef<boolean> = computed(() => {
+      const { min, modelValue } = props
+      return min != null && toNumber(modelValue) <= toNumber(min)
+    })
 
     let incrementTimer: number
     let decrementTimer: number
     let incrementDelayTimer: number
     let decrementDelayTimer: number
+    const counterProvider: CounterProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
+
+    call(bindForm, counterProvider)
+
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        setNormalizedValue(normalizeValue(String(newValue)))
+        call(props.onChange, toNumber(newValue))
+      }
+    )
+
+    setNormalizedValue(normalizeValue(String(props.modelValue)))
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
-    const validateWithTrigger = (trigger: ValidateTrigger) => {
+    function validateWithTrigger(trigger: ValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
@@ -150,30 +178,14 @@ export default defineComponent({
     }
 
     // expose
-    const reset = () => {
+    function reset() {
       const { min } = props
 
       call(props['onUpdate:modelValue'], min != null ? toNumber(min) : 0)
       resetValidation()
     }
 
-    const counterProvider: CounterProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    const isMax: ComputedRef<boolean> = computed(() => {
-      const { max, modelValue } = props
-      return max != null && toNumber(modelValue) >= toNumber(max)
-    })
-
-    const isMin: ComputedRef<boolean> = computed(() => {
-      const { min, modelValue } = props
-      return min != null && toNumber(modelValue) <= toNumber(min)
-    })
-
-    const normalizeValue = (value: string) => {
+    function normalizeValue(value: string) {
       const { decimalLength, max, min } = props
       let num: number = toNumber(value)
 
@@ -194,7 +206,7 @@ export default defineComponent({
       return value
     }
 
-    const handleChange = (event: Event) => {
+    function handleChange(event: Event) {
       const { lazyChange, onBeforeChange } = props
       const { value } = event.target as HTMLInputElement
       const normalizedValue = normalizeValue(value)
@@ -204,7 +216,7 @@ export default defineComponent({
       validateWithTrigger('onInputChange')
     }
 
-    const decrement = () => {
+    function decrement() {
       const {
         disabled,
         readonly,
@@ -239,7 +251,7 @@ export default defineComponent({
       }
     }
 
-    const increment = () => {
+    function increment() {
       const {
         disabled,
         readonly,
@@ -274,7 +286,7 @@ export default defineComponent({
       }
     }
 
-    const pressDecrement = () => {
+    function pressDecrement() {
       const { press, lazyChange } = props
 
       if (!press || lazyChange) {
@@ -286,7 +298,7 @@ export default defineComponent({
       }, DELAY)
     }
 
-    const pressIncrement = () => {
+    function pressIncrement() {
       const { press, lazyChange } = props
 
       if (!press || lazyChange) {
@@ -298,31 +310,31 @@ export default defineComponent({
       }, DELAY)
     }
 
-    const releaseDecrement = () => {
+    function releaseDecrement() {
       decrementTimer && clearTimeout(decrementTimer)
       decrementDelayTimer && clearTimeout(decrementDelayTimer)
     }
 
-    const releaseIncrement = () => {
+    function releaseIncrement() {
       incrementTimer && clearTimeout(incrementTimer)
       incrementDelayTimer && clearTimeout(incrementDelayTimer)
     }
 
-    const continuedIncrement = () => {
+    function continuedIncrement() {
       incrementTimer = window.setTimeout(() => {
         increment()
         continuedIncrement()
       }, SPEED)
     }
 
-    const continuedDecrement = () => {
+    function continuedDecrement() {
       decrementTimer = window.setTimeout(() => {
         decrement()
         continuedDecrement()
       }, SPEED)
     }
 
-    const setNormalizedValue = (normalizedValue: string) => {
+    function setNormalizedValue(normalizedValue: string) {
       inputValue.value = normalizedValue
 
       const normalizedValueNum = toNumber(normalizedValue)
@@ -330,33 +342,21 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], normalizedValueNum)
     }
 
-    const change = (value: string | number) => {
+    function change(value: string | number) {
       setNormalizedValue(normalizeValue(String(value)))
       validateWithTrigger('onLazyChange')
     }
 
-    call(bindForm, counterProvider)
-
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        setNormalizedValue(normalizeValue(String(newValue)))
-        call(props.onChange, toNumber(newValue))
-      }
-    )
-
-    setNormalizedValue(normalizeValue(String(props.modelValue)))
-
     return {
-      n,
-      classes,
-      formatElevation,
       inputValue,
       errorMessage,
       formDisabled,
       formReadonly,
       isMax,
       isMin,
+      n,
+      classes,
+      formatElevation,
       validate,
       reset,
       resetValidation,

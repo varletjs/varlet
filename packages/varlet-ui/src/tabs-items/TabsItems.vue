@@ -6,52 +6,22 @@
 
 <script lang="ts">
 import VarSwipe from '../swipe'
-import { defineComponent, watch, ref, type Ref } from 'vue'
+import { defineComponent, watch, ref } from 'vue'
 import { useTabItem } from './provide'
 import { call, createNamespace } from '../utils/components'
 import { props } from './props'
 import { doubleRaf } from '@varlet/shared'
 import { type TabItemProvider } from '../tab-item/provide'
 
-const { n } = createNamespace('tabs-items')
+const { name, n } = createNamespace('tabs-items')
 
 export default defineComponent({
-  name: 'VarTabsItems',
+  name,
   components: { VarSwipe },
   props,
   setup(props) {
-    const swipe: Ref<null | typeof VarSwipe> = ref(null)
+    const swipe = ref<null | typeof VarSwipe>(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
-
-    const matchName = (active: number | string | undefined): TabItemProvider | undefined =>
-      tabItemList.find(({ name }: TabItemProvider) => active === name.value)
-
-    const matchIndex = (active: number | string | undefined): TabItemProvider | undefined =>
-      tabItemList.find(({ index }: TabItemProvider) => active === index.value)
-
-    const matchActive = (active: number | string | undefined): TabItemProvider | undefined =>
-      matchName(active) || matchIndex(active)
-
-    const handleActiveChange = (newValue: number | string | undefined) => {
-      const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
-      if (!newActiveTabItemProvider) {
-        return
-      }
-
-      tabItemList.forEach(({ setCurrent }) => setCurrent(false))
-      newActiveTabItemProvider.setCurrent(true)
-      swipe.value?.to(newActiveTabItemProvider.index.value)
-    }
-
-    const handleSwipeChange = (currentIndex: number) => {
-      const tabItem = tabItemList.find(({ index }) => index.value === currentIndex) as TabItemProvider
-      const active = tabItem.name.value ?? tabItem.index.value
-
-      call(props['onUpdate:active'], active)
-    }
-
-    // expose
-    const getSwipe = () => swipe.value
 
     bindTabItem({})
 
@@ -64,6 +34,41 @@ export default defineComponent({
         handleActiveChange(props.active)
       }
     )
+
+    function matchName(active: number | string | undefined): TabItemProvider | undefined {
+      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
+    }
+
+    function matchIndex(active: number | string | undefined): TabItemProvider | undefined {
+      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
+    }
+
+    function matchActive(active: number | string | undefined): TabItemProvider | undefined {
+      return matchName(active) || matchIndex(active)
+    }
+
+    function handleActiveChange(newValue: number | string | undefined) {
+      const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
+      if (!newActiveTabItemProvider) {
+        return
+      }
+
+      tabItemList.forEach(({ setCurrent }) => setCurrent(false))
+      newActiveTabItemProvider.setCurrent(true)
+      swipe.value?.to(newActiveTabItemProvider.index.value)
+    }
+
+    function handleSwipeChange(currentIndex: number) {
+      const tabItem = tabItemList.find(({ index }) => index.value === currentIndex) as TabItemProvider
+      const active = tabItem.name.value ?? tabItem.index.value
+
+      call(props['onUpdate:active'], active)
+    }
+
+    // expose
+    function getSwipe() {
+      return swipe.value
+    }
 
     return {
       swipe,

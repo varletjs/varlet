@@ -110,29 +110,31 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, onUpdated, type Ref, computed, type ComputedRef } from 'vue'
+import { defineComponent, ref, onUpdated, computed } from 'vue'
 import { props } from './props'
 import { isEmpty, getStyle } from '@varlet/shared'
 import { createNamespace, call } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('field-decorator')
+const { name, n, classes } = createNamespace('field-decorator')
 
 export default defineComponent({
-  name: 'VarFieldDecorator',
-  components: {
-    VarIcon,
-  },
+  name,
+  components: { VarIcon },
   props,
   setup(props, { slots }) {
-    const placeholderTextEl: Ref<HTMLElement | null> = ref(null)
-    const legendWidth: Ref<string> = ref('')
-    const color: ComputedRef<string | undefined> = computed(() =>
+    const placeholderTextEl = ref<HTMLElement | null>(null)
+    const legendWidth = ref('')
+    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus || slots['prepend-icon']))
+    const color = computed<string | undefined>(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
-    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus || slots['prepend-icon']))
 
-    const computePlaceholderState = () => {
+    onWindowResize(resize)
+    onSmartMounted(resize)
+    onUpdated(resize)
+
+    function computePlaceholderState() {
       const { hint, value, composing } = props
 
       if (!hint && (!isEmpty(value) || composing)) {
@@ -144,7 +146,7 @@ export default defineComponent({
       }
     }
 
-    const resize = () => {
+    function resize() {
       const { size, hint, variant, placeholder } = props
       if (!placeholder || !hint || variant !== 'outlined') {
         legendWidth.value = ''
@@ -156,17 +158,13 @@ export default defineComponent({
       legendWidth.value = `calc(${placeholderTextStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
     }
 
-    const handleClear = (e: Event) => {
+    function handleClear(e: Event) {
       call(props.onClear, e)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
-
-    onWindowResize(resize)
-    onSmartMounted(resize)
-    onUpdated(resize)
 
     return {
       placeholderTextEl,

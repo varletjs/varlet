@@ -64,8 +64,6 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-export const dt = (value: unknown, defaultText: string | undefined) => (value == null ? defaultText : value)
-
 // eslint-disable-next-line default-param-last
 export const padStart = (str = '', maxLength: number, fillString = ''): string => {
   if (str.length >= maxLength) return str

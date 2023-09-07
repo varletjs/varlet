@@ -32,11 +32,11 @@
             :text-color="cancelButtonTextColor"
             @click="cancel"
           >
-            {{ dt(cancelButtonText, pack.pickerCancelButtonText) }}
+            {{ cancelButtonText ?? pack.pickerCancelButtonText }}
           </var-button>
         </slot>
         <slot name="title">
-          <div :class="n('title')">{{ dt(title, pack.pickerTitle) }}</div>
+          <div :class="n('title')">{{ title ?? pack.pickerTitle }}</div>
         </slot>
         <slot name="confirm">
           <var-button
@@ -46,7 +46,7 @@
             :text-color="confirmButtonTextColor"
             @click="confirm"
           >
-            {{ dt(confirmButtonText, pack.pickerConfirmButtonText) }}
+            {{ confirmButtonText ?? pack.pickerConfirmButtonText }}
           </var-button>
         </slot>
       </div>
@@ -96,21 +96,10 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarPopup from '../popup'
-import {
-  defineComponent,
-  watch,
-  ref,
-  computed,
-  Transition,
-  toRaw,
-  type Ref,
-  type ComputedRef,
-  type ComponentPublicInstance,
-} from 'vue'
+import { defineComponent, watch, ref, computed, Transition, toRaw, type ComponentPublicInstance } from 'vue'
 import { props, type CascadeColumn, type NormalColumn } from './props'
 import { useTouch } from '@varlet/use'
 import { clamp, clampArrayRange, isArray } from '@varlet/shared'
-import { dt } from '../utils/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { pack } from '../locale'
 import { createNamespace, call } from '../utils/components'
@@ -132,17 +121,16 @@ export interface ScrollColumn {
   scrollEl: HTMLElement | null
 }
 
-const { n, classes } = createNamespace('picker')
+const { name, n, classes } = createNamespace('picker')
 
 const MOMENTUM_RECORD_TIME = 300
 const MOMENTUM_ALLOW_DISTANCE = 15
 const TRANSITION_DURATION = 200
 const MOMENTUM_TRANSITION_DURATION = 1000
-
 let sid = 0
 
 export default defineComponent({
-  name: 'VarPicker',
+  name,
   components: {
     VarButton,
     VarPopup,
@@ -150,42 +138,57 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const scrollColumns: Ref<ScrollColumn[]> = ref([])
-    const optionHeight: ComputedRef<number> = computed(() => toPxNum(props.optionHeight))
-    const optionCount: ComputedRef<number> = computed(() => toPxNum(props.optionCount))
-    const center: ComputedRef<number> = computed(
-      () => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2
-    )
-    const columnHeight: ComputedRef<number> = computed(() => optionCount.value * optionHeight.value)
-    let prevIndexes: number[] = []
+    const scrollColumns = ref<ScrollColumn[]>([])
+    const optionHeight = computed(() => toPxNum(props.optionHeight))
+    const optionCount = computed(() => toPxNum(props.optionCount))
+    const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
+    const columnHeight = computed(() => optionCount.value * optionHeight.value)
     const { prevY, moveY, dragging, startTouch, moveTouch, endTouch } = useTouch()
 
-    const setScrollEl = (el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) => {
+    let prevIndexes: number[] = []
+
+    watch(
+      () => props.columns,
+      (newValue: any) => {
+        scrollColumns.value = props.cascade
+          ? normalizeCascadeColumns(toRaw(newValue) as CascadeColumn[])
+          : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | Texts)
+
+        const { indexes } = getPicked()
+        prevIndexes = [...indexes]
+      },
+      {
+        immediate: true,
+        deep: true,
+      }
+    )
+
+    function setScrollEl(el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) {
       scrollColumn.scrollEl = el as HTMLElement
     }
 
-    const handlePopupUpdateShow = (value: boolean) => {
+    function handlePopupUpdateShow(value: boolean) {
       call(props['onUpdate:show'], value)
     }
 
-    const clampTranslate = (scrollColumn: ScrollColumn) => {
+    function clampTranslate(scrollColumn: ScrollColumn) {
       const minTranslate = center.value - scrollColumn.column.texts.length * optionHeight.value
       const maxTranslate = optionHeight.value + center.value
       scrollColumn.translate = clamp(scrollColumn.translate, minTranslate, maxTranslate)
     }
 
-    const getTargetIndex = (scrollColumn: ScrollColumn, viewTranslate: number) => {
+    function getTargetIndex(scrollColumn: ScrollColumn, viewTranslate: number) {
       const index = Math.round((center.value - viewTranslate) / optionHeight.value)
 
       return clampArrayRange(index, scrollColumn.column.texts)
     }
 
-    const updateTranslate = (scrollColumn: ScrollColumn) => {
+    function updateTranslate(scrollColumn: ScrollColumn) {
       scrollColumn.translate = center.value - scrollColumn.index * optionHeight.value
       return scrollColumn.translate
     }
 
-    const getPicked = () => {
+    function getPicked() {
       const texts = scrollColumns.value.map((scrollColumn) => scrollColumn.column.texts[scrollColumn.index])
       const indexes = scrollColumns.value.map((scrollColumn) => scrollColumn.index)
 
@@ -195,16 +198,16 @@ export default defineComponent({
       }
     }
 
-    const scrollTo = (scrollColumn: ScrollColumn, duration = 0) => {
+    function scrollTo(scrollColumn: ScrollColumn, duration = 0) {
       updateTranslate(scrollColumn)
       scrollColumn.duration = duration
     }
 
-    const momentum = (scrollColumn: ScrollColumn, distance: number, duration: number) => {
+    function momentum(scrollColumn: ScrollColumn, distance: number, duration: number) {
       scrollColumn.translate += (Math.abs(distance / duration) / 0.003) * (distance < 0 ? -1 : 1)
     }
 
-    const handleClick = (scrollColumn: ScrollColumn, index: number) => {
+    function handleClick(scrollColumn: ScrollColumn, index: number) {
       if (dragging.value) {
         return
       }
@@ -214,13 +217,13 @@ export default defineComponent({
       scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
-    const handleTouchstart = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+    function handleTouchstart(event: TouchEvent, scrollColumn: ScrollColumn) {
       scrollColumn.touching = true
       scrollColumn.translate = getTranslateY(scrollColumn.scrollEl as HTMLElement)
       startTouch(event)
     }
 
-    const handleTouchmove = (event: TouchEvent, scrollColumn: ScrollColumn) => {
+    function handleTouchmove(event: TouchEvent, scrollColumn: ScrollColumn) {
       if (!scrollColumn.touching) {
         return
       }
@@ -240,7 +243,7 @@ export default defineComponent({
       }
     }
 
-    const handleTouchend = (scrollColumn: ScrollColumn) => {
+    function handleTouchend(scrollColumn: ScrollColumn) {
       endTouch()
 
       scrollColumn.touching = false
@@ -265,13 +268,13 @@ export default defineComponent({
       }
     }
 
-    const handleTransitionend = (scrollColumn: ScrollColumn) => {
+    function handleTransitionend(scrollColumn: ScrollColumn) {
       scrollColumn.scrolling = false
       change(scrollColumn)
     }
 
-    const normalizeNormalColumns = (normalColumns: NormalColumn[]) =>
-      normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
+    function normalizeNormalColumns(normalColumns: NormalColumn[]) {
+      return normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
         const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -290,8 +293,9 @@ export default defineComponent({
         scrollTo(scrollColumn)
         return scrollColumn
       })
+    }
 
-    const normalizeCascadeColumns = (cascadeColumns: CascadeColumn[]) => {
+    function normalizeCascadeColumns(cascadeColumns: CascadeColumn[]) {
       const scrollColumns: ScrollColumn[] = []
 
       createChildren(scrollColumns, cascadeColumns, 0, true)
@@ -299,12 +303,12 @@ export default defineComponent({
       return scrollColumns
     }
 
-    const createChildren = (
+    function createChildren(
       scrollColumns: ScrollColumn[],
       children: CascadeColumn[],
       columnIndex: number,
       initial = false
-    ) => {
+    ) {
       if (isArray(children) && children.length) {
         const index = initial ? props.cascadeInitialIndexes[scrollColumns.length] ?? 0 : 0
 
@@ -337,7 +341,7 @@ export default defineComponent({
       }
     }
 
-    const rebuildChildren = (scrollColumn: ScrollColumn) => {
+    function rebuildChildren(scrollColumn: ScrollColumn) {
       scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
       createChildren(
         scrollColumns.value,
@@ -346,12 +350,12 @@ export default defineComponent({
       )
     }
 
-    const isSamePicked = () => {
+    function isSamePicked() {
       const { indexes } = getPicked()
       return indexes.every((index, idx) => index === prevIndexes[idx])
     }
 
-    const change = (scrollColumn: ScrollColumn) => {
+    function change(scrollColumn: ScrollColumn) {
       const { cascade, onChange } = props
 
       if (isSamePicked()) {
@@ -374,7 +378,7 @@ export default defineComponent({
       call(onChange, texts, indexes)
     }
 
-    const stopScroll = () => {
+    function stopScroll() {
       if (props.cascade) {
         const currentScrollColumn = scrollColumns.value.find((scrollColumn) => scrollColumn.scrolling)
 
@@ -393,7 +397,7 @@ export default defineComponent({
     }
 
     // expose
-    const confirm = () => {
+    function confirm() {
       stopScroll()
 
       const { texts, indexes } = getPicked()
@@ -402,7 +406,7 @@ export default defineComponent({
     }
 
     // expose
-    const cancel = () => {
+    function cancel() {
       stopScroll()
 
       const { texts, indexes } = getPicked()
@@ -410,25 +414,7 @@ export default defineComponent({
       call(props.onCancel, texts, indexes)
     }
 
-    watch(
-      () => props.columns,
-      (newValue: any) => {
-        scrollColumns.value = props.cascade
-          ? normalizeCascadeColumns(toRaw(newValue) as CascadeColumn[])
-          : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | Texts)
-
-        const { indexes } = getPicked()
-        prevIndexes = [...indexes]
-      },
-      {
-        immediate: true,
-        deep: true,
-      }
-    )
-
     return {
-      n,
-      classes,
       pack,
       optionHeight,
       optionCount,
@@ -436,6 +422,8 @@ export default defineComponent({
       columnHeight,
       center,
       Transition,
+      n,
+      classes,
       setScrollEl,
       handlePopupUpdateShow,
       handleTouchstart,
@@ -444,7 +432,6 @@ export default defineComponent({
       handleTransitionend,
       confirm,
       cancel,
-      dt,
       handleClick,
     }
   },

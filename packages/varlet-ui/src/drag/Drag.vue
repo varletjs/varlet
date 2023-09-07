@@ -19,35 +19,44 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, watch, type Ref } from 'vue'
+import { defineComponent, ref, reactive, watch } from 'vue'
 import { props } from './props'
 import { createNamespace, useTeleport, call } from '../utils/components'
 import { toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
 import { clamp, getRect } from '@varlet/shared'
 
-const { n, classes } = createNamespace('drag')
+const { name, n, classes } = createNamespace('drag')
 
 export default defineComponent({
-  name: 'VarDrag',
+  name,
   inheritAttrs: false,
   props,
   setup(props, { attrs }) {
-    const drag: Ref<HTMLElement | null> = ref(null)
+    const drag = ref<HTMLElement | null>(null)
     const x = ref(0)
     const y = ref(0)
+    const dragged = ref(false)
+    const enableTransition = ref(false)
+    const { touching, dragging, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
+    const { disabled: teleportDisabled } = useTeleport()
     const boundary = reactive({
       top: 0,
       bottom: 0,
       left: 0,
       right: 0,
     })
-    const dragged = ref(false)
-    const enableTransition = ref(false)
-    const { touching, dragging, moveX, moveY, startTouch, moveTouch, endTouch, resetTouch } = useTouch()
-    const { disabled: teleportDisabled } = useTeleport()
 
-    const handleTouchstart = (event: TouchEvent) => {
+    watch(() => props.boundary, toPxBoundary)
+
+    onWindowResize(resize)
+
+    onSmartMounted(() => {
+      toPxBoundary()
+      resize()
+    })
+
+    function handleTouchstart(event: TouchEvent) {
       if (props.disabled) {
         return
       }
@@ -56,7 +65,7 @@ export default defineComponent({
       saveXY()
     }
 
-    const handleTouchmove = async (event: TouchEvent) => {
+    async function handleTouchmove(event: TouchEvent) {
       if (!touching.value || props.disabled) {
         return
       }
@@ -77,7 +86,7 @@ export default defineComponent({
       clampToBoundary()
     }
 
-    const handleTouchend = () => {
+    function handleTouchend() {
       if (props.disabled) {
         return
       }
@@ -87,7 +96,7 @@ export default defineComponent({
       attract()
     }
 
-    const handleClick = (event: Event) => {
+    function handleClick(event: Event) {
       if (dragging.value) {
         return
       }
@@ -95,13 +104,13 @@ export default defineComponent({
       call(props.onClick, event)
     }
 
-    const saveXY = () => {
+    function saveXY() {
       const { left, top } = getOffset()
       x.value = left
       y.value = top
     }
 
-    const getOffset = () => {
+    function getOffset() {
       const dragRect = getRect(drag.value!)
       const windowRect = getRect(window)
 
@@ -127,7 +136,7 @@ export default defineComponent({
       }
     }
 
-    const getRange = () => {
+    function getRange() {
       const offset = getOffset()
       const x1 = boundary.left
       const x2 = offset.windowWidth - boundary.right - offset.width
@@ -143,7 +152,7 @@ export default defineComponent({
       }
     }
 
-    const attract = () => {
+    function attract() {
       if (props.attraction == null) {
         return
       }
@@ -168,13 +177,13 @@ export default defineComponent({
       }
     }
 
-    const clampToBoundary = () => {
+    function clampToBoundary() {
       const { minX, minY, maxX, maxY } = getRange()
       x.value = clamp(x.value, minX, maxX)
       y.value = clamp(y.value, minY, maxY)
     }
 
-    const toPxBoundary = () => {
+    function toPxBoundary() {
       const { top = 0, bottom = 0, left = 0, right = 0 } = props.boundary
 
       boundary.top = toPxNum(top)
@@ -183,7 +192,7 @@ export default defineComponent({
       boundary.right = toPxNum(right)
     }
 
-    const getAttrs = () => {
+    function getAttrs() {
       const style = (attrs.style as Record<string, any>) ?? {}
 
       return {
@@ -201,7 +210,7 @@ export default defineComponent({
     }
 
     // expose
-    const resize = () => {
+    function resize() {
       if (!dragged.value) {
         return
       }
@@ -211,22 +220,13 @@ export default defineComponent({
     }
 
     // expose
-    const reset = () => {
+    function reset() {
       resetTouch()
       enableTransition.value = false
       dragged.value = false
       x.value = 0
       y.value = 0
     }
-
-    watch(() => props.boundary, toPxBoundary)
-
-    onWindowResize(resize)
-
-    onSmartMounted(() => {
-      toPxBoundary()
-      resize()
-    })
 
     return {
       drag,

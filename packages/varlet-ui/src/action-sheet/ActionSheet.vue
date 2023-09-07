@@ -21,7 +21,7 @@
   >
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
-        <div :class="n('title')">{{ dt(title, pack.actionSheetTitle) }}</div>
+        <div :class="n('title')">{{ title ?? pack.actionSheetTitle }}</div>
       </slot>
 
       <slot name="actions">
@@ -51,17 +51,16 @@
 import Ripple from '../ripple'
 import VarPopup from '../popup'
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, type Ref } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
-import { dt } from '../utils/shared'
 import { pack } from '../locale'
 import { createNamespace, call } from '../utils/components'
 import { type ActionItem } from './index'
 
-const { n, classes } = createNamespace('action-sheet')
+const { name, n, classes } = createNamespace('action-sheet')
 
 export default defineComponent({
-  name: 'VarActionSheet',
+  name,
   directives: { Ripple },
   components: {
     VarPopup,
@@ -70,19 +69,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const popupShow: Ref<boolean> = ref(false)
-
-    const handleSelect = (action: ActionItem) => {
-      if (action.disabled) {
-        return
-      }
-
-      const { closeOnClickAction, onSelect } = props
-      call(onSelect, action)
-      closeOnClickAction && call(props['onUpdate:show'], false)
-    }
-
-    const handlePopupUpdateShow = (value: boolean) => call(props['onUpdate:show'], value)
+    const popupShow = ref(false)
 
     watch(
       () => props.show,
@@ -92,13 +79,26 @@ export default defineComponent({
       { immediate: true }
     )
 
+    function handleSelect(action: ActionItem) {
+      if (action.disabled) {
+        return
+      }
+
+      const { closeOnClickAction, onSelect } = props
+      call(onSelect, action)
+      closeOnClickAction && call(props['onUpdate:show'], false)
+    }
+
+    function handlePopupUpdateShow(value: boolean) {
+      call(props['onUpdate:show'], value)
+    }
+
     return {
+      popupShow,
+      pack,
       n,
       classes,
       handlePopupUpdateShow,
-      popupShow,
-      pack,
-      dt,
       handleSelect,
     }
   },

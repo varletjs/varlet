@@ -38,15 +38,15 @@ import VarCheckbox from '../checkbox'
 import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, computed, ref, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 import { useSelect, OptionProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { n, classes } = createNamespace('option')
+const { name, n, classes } = createNamespace('option')
 
 export default defineComponent({
-  name: 'VarOption',
+  name,
   directives: { Ripple, Hover },
   components: {
     VarCheckbox,
@@ -54,26 +54,13 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const optionSelected: Ref<boolean> = ref(false)
-    const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-    const label: ComputedRef = computed(() => props.label)
-    const value: ComputedRef = computed(() => props.value)
+    const optionSelected = ref(false)
+    const selected = computed(() => optionSelected.value)
+    const label = computed<any>(() => props.label)
+    const value = computed<any>(() => props.value)
     const { select, bindSelect } = useSelect()
     const { multiple, focusColor, onSelect, computeLabel } = select
     const { hovering, handleHovering } = useHoverOverlay()
-
-    const handleClick = () => {
-      if (multiple.value) {
-        optionSelected.value = !optionSelected.value
-      }
-      onSelect(optionProvider)
-    }
-
-    const handleSelect = () => onSelect(optionProvider)
-
-    const sync = (checked: boolean) => {
-      optionSelected.value = checked
-    }
 
     const optionProvider: OptionProvider = {
       label,
@@ -85,6 +72,22 @@ export default defineComponent({
     watch([() => props.label, () => props.value], computeLabel)
 
     bindSelect(optionProvider)
+
+    function handleClick() {
+      if (multiple.value) {
+        optionSelected.value = !optionSelected.value
+      }
+
+      onSelect(optionProvider)
+    }
+
+    function handleSelect() {
+      return onSelect(optionProvider)
+    }
+
+    function sync(checked: boolean) {
+      optionSelected.value = checked
+    }
 
     return {
       n,

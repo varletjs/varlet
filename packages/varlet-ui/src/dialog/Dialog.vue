@@ -22,7 +22,7 @@
       v-bind="$attrs"
     >
       <div :class="n('title')">
-        <slot name="title">{{ dt(title, pack.dialogTitle) }}</slot>
+        <slot name="title">{{ title ?? pack.dialogTitle }}</slot>
       </div>
       <div :class="n('message')" :style="{ textAlign: messageAlign }">
         <slot>
@@ -39,7 +39,7 @@
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ dt(cancelButtonText, pack.dialogCancelButtonText) }}
+          {{ cancelButtonText ?? pack.dialogCancelButtonText }}
         </var-button>
         <var-button
           :class="classes(n('button'), n('confirm-button'))"
@@ -50,7 +50,7 @@
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ dt(confirmButtonText, pack.dialogConfirmButtonText) }}
+          {{ confirmButtonText ?? pack.dialogConfirmButtonText }}
         </var-button>
       </div>
     </div>
@@ -61,16 +61,15 @@
 import VarPopup from '../popup'
 import VarButton from '../button'
 import { props } from './props'
-import { defineComponent, ref, watch, type Ref } from 'vue'
-import { dt } from '../utils/shared'
+import { defineComponent, ref, watch } from 'vue'
 import { pack } from '../locale'
 import { call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('dialog')
+const { name, n, classes } = createNamespace('dialog')
 
 export default defineComponent({
-  name: 'VarDialog',
+  name,
   components: {
     VarPopup,
     VarButton,
@@ -78,53 +77,8 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const popupShow: Ref<boolean> = ref(false)
-    const popupCloseOnClickOverlay: Ref<boolean> = ref(false)
-
-    const done = () => call(props['onUpdate:show'], false)
-
-    const handleClickOverlay = () => {
-      const { closeOnClickOverlay, onClickOverlay, onBeforeClose } = props
-
-      call(onClickOverlay)
-
-      if (!closeOnClickOverlay) {
-        return
-      }
-
-      if (onBeforeClose != null) {
-        call(onBeforeClose, 'close', done)
-        return
-      }
-
-      call(props['onUpdate:show'], false)
-    }
-
-    const confirm = () => {
-      const { onBeforeClose, onConfirm } = props
-
-      call(onConfirm)
-
-      if (onBeforeClose != null) {
-        call(onBeforeClose, 'confirm', done)
-        return
-      }
-
-      call(props['onUpdate:show'], false)
-    }
-
-    const cancel = () => {
-      const { onBeforeClose, onCancel } = props
-
-      call(onCancel)
-
-      if (onBeforeClose != null) {
-        call(onBeforeClose, 'cancel', done)
-        return
-      }
-
-      call(props['onUpdate:show'], false)
-    }
+    const popupShow = ref(false)
+    const popupCloseOnClickOverlay = ref(false)
 
     watch(
       () => props.show,
@@ -147,13 +101,59 @@ export default defineComponent({
       { immediate: true }
     )
 
+    function done() {
+      return call(props['onUpdate:show'], false)
+    }
+
+    function handleClickOverlay() {
+      const { closeOnClickOverlay, onClickOverlay, onBeforeClose } = props
+
+      call(onClickOverlay)
+
+      if (!closeOnClickOverlay) {
+        return
+      }
+
+      if (onBeforeClose != null) {
+        call(onBeforeClose, 'close', done)
+        return
+      }
+
+      call(props['onUpdate:show'], false)
+    }
+
+    function confirm() {
+      const { onBeforeClose, onConfirm } = props
+
+      call(onConfirm)
+
+      if (onBeforeClose != null) {
+        call(onBeforeClose, 'confirm', done)
+        return
+      }
+
+      call(props['onUpdate:show'], false)
+    }
+
+    function cancel() {
+      const { onBeforeClose, onCancel } = props
+
+      call(onCancel)
+
+      if (onBeforeClose != null) {
+        call(onBeforeClose, 'cancel', done)
+        return
+      }
+
+      call(props['onUpdate:show'], false)
+    }
+
     return {
-      n,
-      classes,
       pack,
-      dt,
       popupShow,
       popupCloseOnClickOverlay,
+      n,
+      classes,
       handleClickOverlay,
       confirm,
       cancel,

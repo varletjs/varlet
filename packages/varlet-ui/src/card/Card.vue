@@ -94,7 +94,7 @@
 import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarButton from '../button'
-import { ref, defineComponent, watch, computed, nextTick, type Ref } from 'vue'
+import { ref, defineComponent, watch, computed, nextTick } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { doubleRaf, getRect } from '@varlet/shared'
@@ -102,12 +102,12 @@ import { call, createNamespace, formatElevation } from '../utils/components'
 import { useZIndex } from '../context/zIndex'
 import { useLock } from '../context/lock'
 
-const { n, classes } = createNamespace('card')
+const { name, n, classes } = createNamespace('card')
 
 const RIPPLE_DELAY = 500
 
 export default defineComponent({
-  name: 'VarCard',
+  name,
   directives: { Ripple },
   components: {
     VarIcon,
@@ -115,34 +115,46 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const card: Ref<null | HTMLElement> = ref(null)
-    const cardFloater: Ref<null | HTMLElement> = ref(null)
-    const holderWidth: Ref<string> = ref('auto')
-    const holderHeight: Ref<string> = ref('auto')
-    const floaterWidth: Ref<string> = ref('100%')
-    const floaterHeight: Ref<string> = ref('100%')
-    const floaterTop: Ref<string> = ref('auto')
-    const floaterLeft: Ref<string> = ref('auto')
-    const floaterPosition: Ref<'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | undefined> = ref(undefined)
-    const floaterOverflow: Ref<string> = ref('hidden')
-    const contentHeight: Ref<string> = ref('0px')
-    const opacity: Ref<string> = ref('0')
+    const card = ref<null | HTMLElement>(null)
+    const cardFloater = ref<null | HTMLElement>(null)
+    const holderWidth = ref('auto')
+    const holderHeight = ref('auto')
+    const floaterWidth = ref('100%')
+    const floaterHeight = ref('100%')
+    const floaterTop = ref('auto')
+    const floaterLeft = ref('auto')
+    const floaterPosition = ref<'static' | 'absolute' | 'fixed' | 'relative' | 'sticky' | undefined>(undefined)
+    const floaterOverflow = ref('hidden')
+    const contentHeight = ref('0px')
+    const opacity = ref('0')
     const isRow = computed(() => props.layout === 'row')
-    const showFloatingButtons: Ref<boolean> = ref(false)
-    const floated: Ref<boolean> = ref(false)
+    const showFloatingButtons = ref(false)
+    const floated = ref(false)
     const { zIndex } = useZIndex(() => props.floating, 1)
-
-    useLock(
-      () => props.floating,
-      () => !isRow.value
-    )
 
     let dropdownFloaterTop = 'auto'
     let dropdownFloaterLeft = 'auto'
     let dropper: any = null
     const floater: any = ref(null)
 
-    const floating = async () => {
+    useLock(
+      () => props.floating,
+      () => !isRow.value
+    )
+
+    watch(
+      () => props.floating,
+      (value) => {
+        if (isRow.value) return
+
+        nextTick(() => {
+          value ? floating() : dropdown()
+        })
+      },
+      { immediate: true }
+    )
+
+    async function floating() {
       clearTimeout(floater.value)
       clearTimeout(dropper)
 
@@ -177,7 +189,7 @@ export default defineComponent({
       )
     }
 
-    const dropdown = () => {
+    function dropdown() {
       clearTimeout(dropper)
       clearTimeout(floater.value)
       floater.value = null
@@ -205,30 +217,15 @@ export default defineComponent({
       }, props.floatingDuration)
     }
 
-    const close = () => {
+    function close() {
       call(props['onUpdate:floating'], false)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    watch(
-      () => props.floating,
-      (value) => {
-        if (isRow.value) return
-
-        nextTick(() => {
-          value ? floating() : dropdown()
-        })
-      },
-      { immediate: true }
-    )
-
     return {
-      n,
-      classes,
-      toSizeUnit,
       card,
       cardFloater,
       holderWidth,
@@ -244,9 +241,12 @@ export default defineComponent({
       opacity,
       zIndex,
       isRow,
-      close,
       showFloatingButtons,
       floated,
+      n,
+      classes,
+      toSizeUnit,
+      close,
       formatElevation,
       handleClick,
     }

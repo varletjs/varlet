@@ -61,10 +61,10 @@ import { useValidation, createNamespace, call, useVModel } from '../utils/compon
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
 
-const { n, classes } = createNamespace('radio')
+const { name, n, classes } = createNamespace('radio')
 
 export default defineComponent({
-  name: 'VarRadio',
+  name,
   directives: { Ripple, Hover },
   components: {
     VarIcon,
@@ -74,9 +74,9 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const value: Ref = useVModel(props, 'modelValue')
-    const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
-    const withAnimation: Ref<boolean> = ref(false)
+    const value = useVModel(props, 'modelValue')
+    const checked = computed(() => value.value === props.checkedValue)
+    const withAnimation = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -88,14 +88,24 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const validateWithTrigger = (trigger: ValidateTrigger) => {
+    const radioProvider: RadioProvider = {
+      sync,
+      validate,
+      resetValidation,
+      reset,
+    }
+
+    call(bindRadioGroup, radioProvider)
+    call(bindForm, radioProvider)
+
+    function validateWithTrigger(trigger: ValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
     }
 
-    const change = (changedValue: any) => {
+    function change(changedValue: any) {
       const { checkedValue, onChange } = props
 
       if (radioGroup && value.value === checkedValue) {
@@ -109,7 +119,7 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { disabled, readonly, uncheckedValue, checkedValue, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -125,22 +135,24 @@ export default defineComponent({
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
-    const sync = (v: any) => {
+    function sync(v: any) {
       const { checkedValue, uncheckedValue } = props
       value.value = v === checkedValue ? checkedValue : uncheckedValue
     }
 
     // expose
-    const reset = () => {
+    function reset() {
       value.value = props.uncheckedValue
       resetValidation()
     }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
     // expose
-    const toggle = (changedValue?: any) => {
+    function toggle(changedValue?: any) {
       const { uncheckedValue, checkedValue } = props
 
       const shouldReverse = ![uncheckedValue, checkedValue].includes(changedValue)
@@ -150,16 +162,6 @@ export default defineComponent({
 
       change(changedValue)
     }
-
-    const radioProvider: RadioProvider = {
-      sync,
-      validate,
-      resetValidation,
-      reset,
-    }
-
-    call(bindRadioGroup, radioProvider)
-    call(bindForm, radioProvider)
 
     return {
       withAnimation,

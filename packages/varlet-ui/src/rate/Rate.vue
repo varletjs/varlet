@@ -42,10 +42,10 @@ import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import { type RateProvider } from './provide'
 
-const { n } = createNamespace('rate')
+const { name, n } = createNamespace('rate')
 
 export default defineComponent({
-  name: 'VarRate',
+  name,
   components: {
     VarIcon,
     VarFormDetails,
@@ -54,13 +54,22 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
+    const currentHoveringValue = ref<number>(-1)
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
-    const currentHoveringValue = ref<number>(-1)
+
     let lastScore = Number(props.modelValue)
 
-    const getStyle = (val: number) => {
+    const rateProvider: RateProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
+
+    call(bindForm, rateProvider)
+
+    function getStyle(val: number) {
       const { count, gap } = props
 
       return {
@@ -69,7 +78,7 @@ export default defineComponent({
       }
     }
 
-    const getClass = (val: number) => {
+    function getClass(val: number) {
       const { name, color } = getCurrentState(val)
 
       return {
@@ -80,7 +89,7 @@ export default defineComponent({
       }
     }
 
-    const getCurrentState = (index: number) => {
+    function getCurrentState(index: number) {
       const { modelValue, disabled, disabledColor, color, half, emptyColor, icon, halfIcon, emptyIcon } = props
       let iconColor = color
 
@@ -99,7 +108,7 @@ export default defineComponent({
       return { color: disabled || form?.disabled.value ? disabledColor : emptyColor, name: emptyIcon }
     }
 
-    const changeValue = (score: number, event: MouseEvent) => {
+    function changeValue(score: number, event: MouseEvent) {
       const { half, clearable } = props
       const { offsetWidth } = event.target as HTMLDivElement
 
@@ -118,11 +127,15 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], score)
     }
 
-    const validate = () => v(props.rules, toNumber(props.modelValue))
+    function validate() {
+      return v(props.rules, toNumber(props.modelValue))
+    }
 
-    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    function validateWithTrigger() {
+      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    }
 
-    const handleClick = (score: number, event: MouseEvent) => {
+    function handleClick(score: number, event: MouseEvent) {
       const { readonly, disabled, onChange } = props
 
       if (readonly || disabled || form?.disabled.value || form?.readonly.value) {
@@ -134,34 +147,28 @@ export default defineComponent({
       validateWithTrigger()
     }
 
-    const createHoverHandler = (value: number) => (isHover: boolean) => {
-      currentHoveringValue.value = value
-      hovering.value = isHover
+    function createHoverHandler(value: number) {
+      return (isHover: boolean) => {
+        currentHoveringValue.value = value
+        hovering.value = isHover
+      }
     }
 
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], 0)
       resetValidation()
     }
-
-    const rateProvider: RateProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    call(bindForm, rateProvider)
 
     return {
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      hovering,
+      currentHoveringValue,
       getStyle,
       getClass,
       getCurrentState,
       handleClick,
-      hovering,
-      currentHoveringValue,
       createHoverHandler,
       reset,
       validate,

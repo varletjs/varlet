@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef, onActivated } from 'vue'
+import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber, doubleRaf } from '@varlet/shared'
@@ -44,19 +44,19 @@ import { type SwipeItemProvider } from '../swipe-item/provide'
 const SWIPE_DELAY = 250
 const SWIPE_OFFSET = 20
 
-const { n, classes } = createNamespace('swipe')
+const { name, n, classes } = createNamespace('swipe')
 
 export default defineComponent({
-  name: 'VarSwipe',
+  name,
   props,
   setup(props) {
-    const swipeEl: Ref<HTMLElement | null> = ref(null)
-    const size: Ref<number> = ref(0)
-    const vertical: ComputedRef<boolean> = computed(() => props.vertical)
-    const trackSize: Ref<number> = ref(0)
-    const trackTranslate: Ref<number> = ref(0)
-    const lockDuration: Ref<boolean> = ref(false)
-    const index: Ref<number> = ref(0)
+    const swipeEl = ref<HTMLElement | null>(null)
+    const size = ref(0)
+    const vertical = computed(() => props.vertical)
+    const trackSize = ref(0)
+    const trackTranslate = ref(0)
+    const lockDuration = ref(false)
+    const index = ref(0)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
     const { popup, bindPopup } = usePopup()
     const {
@@ -77,10 +77,50 @@ export default defineComponent({
 
     let initializedIndex = false
     let timer = -1
+    const swipeProvider: SwipeProvider = {
+      size,
+      vertical,
+    }
 
-    const findSwipeItem = (idx: number) => swipeItems.find(({ index }) => index.value === idx) as SwipeItemProvider
+    bindSwipeItems(swipeProvider)
 
-    const dispatchSwipeItems = () => {
+    call(bindPopup, null)
+
+    watch(
+      () => length.value,
+      async () => {
+        // In nuxt, the size of the swipe cannot got when the route is change, need double raf
+        await doubleRaf()
+
+        initialIndex()
+        resize()
+      }
+    )
+
+    if (popup) {
+      // watch popup show again
+      watch(
+        () => popup.show.value,
+        async (show) => {
+          if (show) {
+            await doubleRaf()
+            resize()
+          } else {
+            stopAutoplay()
+          }
+        }
+      )
+    }
+
+    onActivated(resize)
+    onSmartUnmounted(stopAutoplay)
+    onWindowResize(resize)
+
+    function findSwipeItem(idx: number) {
+      return swipeItems.find(({ index }) => index.value === idx) as SwipeItemProvider
+    }
+
+    function dispatchSwipeItems() {
       if (!props.loop) {
         return
       }
@@ -99,7 +139,7 @@ export default defineComponent({
       }
     }
 
-    const getSwipeIndex = (targetSwipeIndex?: number) => {
+    function getSwipeIndex(targetSwipeIndex?: number) {
       const swipeIndex = isNumber(targetSwipeIndex)
         ? targetSwipeIndex
         : Math.floor((trackTranslate.value - size.value / 2) / -size.value)
@@ -117,7 +157,7 @@ export default defineComponent({
       return swipeIndex
     }
 
-    const swipeIndexToIndex = (swipeIndex: number) => {
+    function swipeIndexToIndex(swipeIndex: number) {
       const { loop } = props
 
       if (swipeIndex === -1) {
@@ -131,7 +171,7 @@ export default defineComponent({
       return swipeIndex
     }
 
-    const clampIndex = (index: number) => {
+    function clampIndex(index: number) {
       if (props.loop) {
         if (index < 0) {
           return length.value + index
@@ -147,7 +187,7 @@ export default defineComponent({
       return clamp(index, 0, length.value - 1)
     }
 
-    const fixPosition = async () => {
+    async function fixPosition() {
       const overLeft = trackTranslate.value >= size.value
       const overRight = trackTranslate.value <= -trackSize.value
       const leftTranslate = 0
@@ -166,7 +206,7 @@ export default defineComponent({
       lockDuration.value = false
     }
 
-    const initialIndex = () => {
+    function initialIndex() {
       if (initializedIndex) {
         return
       }
@@ -175,7 +215,7 @@ export default defineComponent({
       initializedIndex = true
     }
 
-    const startAutoplay = () => {
+    function startAutoplay() {
       const { autoplay } = props
 
       if (!autoplay || length.value <= 1) {
@@ -190,16 +230,16 @@ export default defineComponent({
       }, toNumber(autoplay))
     }
 
-    const stopAutoplay = () => {
+    function stopAutoplay() {
       timer && clearTimeout(timer)
     }
 
-    const setTrackTranslate = (value: number) => {
+    function setTrackTranslate(value: number) {
       trackTranslate.value = value
       dispatchSwipeItems()
     }
 
-    const handleTouchstart = async (event: TouchEvent) => {
+    async function handleTouchstart(event: TouchEvent) {
       if (length.value <= 1 || !props.touchable) {
         return
       }
@@ -210,7 +250,7 @@ export default defineComponent({
       lockDuration.value = true
     }
 
-    const handleTouchmove = (event: TouchEvent) => {
+    function handleTouchmove(event: TouchEvent) {
       const { touchable, vertical } = props
 
       if (!touching.value || !touchable) {
@@ -227,7 +267,7 @@ export default defineComponent({
       setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
     }
 
-    const handleTouchend = () => {
+    function handleTouchend() {
       if (!touching.value) {
         return
       }
@@ -262,7 +302,7 @@ export default defineComponent({
     }
 
     // expose
-    const resize = () => {
+    function resize() {
       if (!swipeEl.value) {
         return
       }
@@ -283,8 +323,9 @@ export default defineComponent({
         lockDuration.value = false
       })
     }
+
     // expose
-    const next = async (options?: SwipeToOptions) => {
+    async function next(options?: SwipeToOptions) {
       if (length.value <= 1) {
         return
       }
@@ -311,8 +352,9 @@ export default defineComponent({
         trackTranslate.value = index.value * -size.value
       }
     }
+
     // expose
-    const prev = async (options?: SwipeToOptions) => {
+    async function prev(options?: SwipeToOptions) {
       if (length.value <= 1) {
         return
       }
@@ -339,8 +381,9 @@ export default defineComponent({
         trackTranslate.value = index.value * -size.value
       }
     }
+
     // expose
-    const to = (idx: number, options?: SwipeToOptions) => {
+    function to(idx: number, options?: SwipeToOptions) {
       if (length.value <= 1 || idx === index.value) {
         return
       }
@@ -356,53 +399,15 @@ export default defineComponent({
       })
     }
 
-    const swipeProvider: SwipeProvider = {
-      size,
-      vertical,
-    }
-
-    bindSwipeItems(swipeProvider)
-    call(bindPopup, null)
-
-    watch(
-      () => length.value,
-      async () => {
-        // In nuxt, the size of the swipe cannot got when the route is change, need double raf
-        await doubleRaf()
-
-        initialIndex()
-        resize()
-      }
-    )
-
-    if (popup) {
-      // watch popup show again
-      watch(
-        () => popup.show.value,
-        async (show) => {
-          if (show) {
-            await doubleRaf()
-            resize()
-          } else {
-            stopAutoplay()
-          }
-        }
-      )
-    }
-
-    onActivated(resize)
-    onSmartUnmounted(stopAutoplay)
-    onWindowResize(resize)
-
     return {
-      n,
-      classes,
       length,
       index,
       swipeEl,
       trackSize,
       trackTranslate,
       lockDuration,
+      n,
+      classes,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,

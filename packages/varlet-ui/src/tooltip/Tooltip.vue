@@ -38,10 +38,10 @@ import { toSizeUnit } from '../utils/elements'
 import { usePopover } from '../menu/usePopover'
 import { props } from './props'
 
-const { n, classes } = createNamespace('tooltip')
+const { name, n, classes } = createNamespace('tooltip')
 
 export default defineComponent({
-  name: 'VarTooltip',
+  name,
   props,
   setup(props) {
     const { disabled: teleportDisabled } = useTeleport()
@@ -67,13 +67,13 @@ export default defineComponent({
     } = usePopover(props)
 
     return {
-      toSizeUnit,
       popover,
       host,
       hostSize,
       show,
       zIndex,
       teleportDisabled,
+      toSizeUnit,
       n,
       classes,
       handleHostClick,

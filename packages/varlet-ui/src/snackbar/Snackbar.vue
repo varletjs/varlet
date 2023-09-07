@@ -20,20 +20,18 @@ import { defineComponent } from 'vue'
 import { createNamespace, useTeleport } from '../utils/components'
 import { props } from './props'
 
-const { n } = createNamespace('snackbar')
+const { name, n } = createNamespace('snackbar')
 
 export default defineComponent({
-  name: 'VarSnackbar',
-  components: {
-    VarSnackbarCore,
-  },
+  name,
+  components: { VarSnackbarCore },
   props,
   setup() {
     const { disabled } = useTeleport()
 
     return {
-      n,
       disabled,
+      n,
     }
   },
 })

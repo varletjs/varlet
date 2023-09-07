@@ -16,7 +16,7 @@
       :lazy-error="error"
       :style="{ objectFit: fit }"
       v-if="lazy && !showErrorSlot"
-      v-lazy="src"
+      v-lazy="src ?? ''"
       @load="handleLoad"
       @click="handleClick"
     />
@@ -40,30 +40,37 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import Lazy, { type LazyHTMLElement } from '../lazy'
-import { watch, defineComponent, ref, type Ref } from 'vue'
+import { watch, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace, call } from '../utils/components'
 
-const { n, classes } = createNamespace('image')
+const { name, n, classes } = createNamespace('image')
 
 export default defineComponent({
-  name: 'VarImage',
+  name,
   directives: {
     Lazy,
     Ripple,
   },
   props,
   setup(props, { slots }) {
-    const showErrorSlot: Ref<boolean> = ref(false)
+    const showErrorSlot = ref(false)
 
-    const handleError = (e: Event) => {
+    watch(
+      () => props.src,
+      () => {
+        showErrorSlot.value = false
+      }
+    )
+
+    function handleError(e: Event) {
       // the value of showErrorSlot depends on whether there is an error slot
       showErrorSlot.value = !!slots.error
       call(props.onError, e)
     }
 
-    const handleLoad = (e: Event) => {
+    function handleLoad(e: Event) {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
 
       if (props.lazy) {
@@ -80,21 +87,14 @@ export default defineComponent({
       }
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    watch(
-      () => props.src,
-      () => {
-        showErrorSlot.value = false
-      }
-    )
-
     return {
+      showErrorSlot,
       n,
       classes,
-      showErrorSlot,
       toSizeUnit,
       handleLoad,
       handleError,

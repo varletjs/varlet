@@ -124,10 +124,10 @@ import { toPxNum } from '../utils/elements'
 import { error } from '../utils/logger'
 import { type OptionProvider } from '../option/provide'
 
-const { n, classes } = createNamespace('select')
+const { name, n, classes } = createNamespace('select')
 
 export default defineComponent({
-  name: 'VarSelect',
+  name,
   components: {
     VarIcon,
     VarMenu,
@@ -137,14 +137,14 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isFocus: Ref<boolean> = ref(false)
-    const showMenu: Ref<boolean> = ref(false)
-    const multiple: ComputedRef<boolean> = computed(() => props.multiple)
-    const focusColor: ComputedRef<string | undefined> = computed(() => props.focusColor)
-    const label: Ref<string | number> = ref('')
-    const labels: Ref<(string | number)[]> = ref([])
-    const isEmptyModelValue: ComputedRef<boolean> = computed(() => isEmpty(props.modelValue))
-    const cursor: ComputedRef<string> = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
+    const isFocus = ref(false)
+    const showMenu = ref(false)
+    const multiple = computed(() => props.multiple)
+    const focusColor = computed(() => props.focusColor)
+    const label = ref<string | number>('')
+    const labels = ref<(string | number)[]>([])
+    const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
+    const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
@@ -155,11 +155,9 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
-    const menuEl: Ref<HTMLElement | null> = ref(null)
-
+    const menuEl = ref<HTMLElement | null>(null)
     const placement = computed(() => (props.variant === 'outlined' ? 'bottom' : 'cover-top'))
-
-    const placeholderColor: ComputedRef<string | undefined> = computed(() => {
+    const placeholderColor = computed(() => {
       const { hint, blurColor, focusColor } = props
 
       if (hint) {
@@ -176,10 +174,37 @@ export default defineComponent({
 
       return blurColor || 'var(--field-decorator-blur-color)'
     })
-
     const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
 
-    const computeLabel = () => {
+    const selectProvider: SelectProvider = {
+      multiple,
+      focusColor,
+      computeLabel,
+      onSelect,
+      reset,
+      validate,
+      resetValidation,
+    }
+
+    watch(
+      () => props.multiple,
+      () => {
+        const { multiple, modelValue } = props
+        if (multiple && !isArray(modelValue)) {
+          error('Select', 'The modelValue must be an array when multiple is true')
+        }
+      }
+    )
+
+    watch(() => props.modelValue, syncOptions, { deep: true })
+
+    watch(() => length.value, syncOptions)
+
+    bindOptions(selectProvider)
+
+    call(bindForm, selectProvider)
+
+    function computeLabel() {
       const { multiple, modelValue } = props
 
       if (multiple) {
@@ -196,14 +221,14 @@ export default defineComponent({
       }
     }
 
-    const validateWithTrigger = (trigger: SelectValidateTrigger) => {
+    function validateWithTrigger(trigger: SelectValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
     }
 
-    const findValueOrLabel = ({ value, label }: OptionProvider) => {
+    function findValueOrLabel({ value, label }: OptionProvider) {
       if (value.value != null) {
         return value.value
       }
@@ -211,7 +236,7 @@ export default defineComponent({
       return label.value
     }
 
-    const findLabel = (modelValue: string | number | any[]) => {
+    function findLabel(modelValue: string | number | any[]) {
       let option = options.find(({ value }) => value.value === modelValue)
 
       if (!option) {
@@ -221,7 +246,7 @@ export default defineComponent({
       return option?.label.value ?? ''
     }
 
-    const handleFocus = () => {
+    function handleFocus() {
       const { disabled, readonly, onFocus } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -235,7 +260,7 @@ export default defineComponent({
       validateWithTrigger('onFocus')
     }
 
-    const handleBlur = () => {
+    function handleBlur() {
       const { disabled, readonly, onBlur } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -247,7 +272,7 @@ export default defineComponent({
       validateWithTrigger('onBlur')
     }
 
-    const onSelect = (option: OptionProvider) => {
+    function onSelect(option: OptionProvider) {
       const { disabled, readonly, multiple, onChange } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -267,7 +292,7 @@ export default defineComponent({
       }
     }
 
-    const handleClear = () => {
+    function handleClear() {
       const { disabled, readonly, multiple, clearable, onClear } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly || !clearable) {
@@ -281,7 +306,7 @@ export default defineComponent({
       validateWithTrigger('onClear')
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { disabled, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -292,7 +317,7 @@ export default defineComponent({
       validateWithTrigger('onClick')
     }
 
-    const handleClose = (text: any) => {
+    function handleClose(text: any) {
       const { disabled, readonly, modelValue, onClose } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -308,7 +333,7 @@ export default defineComponent({
       validateWithTrigger('onClose')
     }
 
-    const syncOptions = () => {
+    function syncOptions() {
       const { multiple, modelValue } = props
 
       if (multiple) {
@@ -322,53 +347,28 @@ export default defineComponent({
     }
 
     // expose
-    const focus = () => {
+    function focus() {
       offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
       showMenu.value = true
     }
 
     // expose
-    const blur = () => {
+    function blur() {
       isFocus.value = false
       showMenu.value = false
     }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
     // expose
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], props.multiple ? [] : undefined)
       resetValidation()
     }
-
-    watch(
-      () => props.multiple,
-      () => {
-        const { multiple, modelValue } = props
-        if (multiple && !isArray(modelValue)) {
-          error('Select', 'The modelValue must be an array when multiple is true')
-        }
-      }
-    )
-
-    watch(() => props.modelValue, syncOptions, { deep: true })
-
-    watch(() => length.value, syncOptions)
-
-    const selectProvider: SelectProvider = {
-      multiple,
-      focusColor,
-      computeLabel,
-      onSelect,
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    bindOptions(selectProvider)
-    call(bindForm, selectProvider)
 
     return {
       offsetY,

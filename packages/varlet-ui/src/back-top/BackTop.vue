@@ -21,7 +21,7 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarIcon from '../icon'
-import { defineComponent, ref, onMounted, onActivated, type Ref, type TeleportProps } from 'vue'
+import { defineComponent, ref, onMounted, onActivated, type TeleportProps } from 'vue'
 import { props } from './props'
 import { throttle } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
@@ -37,10 +37,10 @@ import {
 import { call, createNamespace } from '../utils/components'
 import { onSmartUnmounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('back-top')
+const { name, n, classes } = createNamespace('back-top')
 
 export default defineComponent({
-  name: 'VarBackTop',
+  name,
   components: {
     VarButton,
     VarIcon,
@@ -48,13 +48,26 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const show: Ref<boolean> = ref(false)
-    const backTopEl: Ref<HTMLDivElement | null> = ref(null)
-    const disabled: Ref<TeleportProps['disabled']> = ref(true)
+    const show = ref(false)
+    const backTopEl = ref<HTMLDivElement | null>(null)
+    const disabled = ref<TeleportProps['disabled']>(true)
 
     let scroller: HTMLElement | Window
 
-    const handleClick = (event: MouseEvent) => {
+    const handleScroll = throttle(() => {
+      show.value = getScrollTop(scroller) >= toPxNum(props.visibilityHeight)
+    }, 200)
+
+    onMounted(() => {
+      setScroller()
+      addScrollerEventListener()
+      disabled.value = false
+    })
+
+    onActivated(addScrollerEventListener)
+    onSmartUnmounted(removeScrollerEventListener)
+
+    function handleClick(event: MouseEvent) {
       call(props.onClick, event)
 
       const left = getScrollLeft(scroller)
@@ -66,31 +79,17 @@ export default defineComponent({
       })
     }
 
-    const handleScroll = throttle(() => {
-      show.value = getScrollTop(scroller) >= toPxNum(props.visibilityHeight)
-    }, 200)
-
-    const setScroller = () => {
+    function setScroller() {
       scroller = props.target ? getTarget(props.target, 'BackTop') : getParentScroller(backTopEl.value!)
     }
 
-    const addScrollerEventListener = () => {
+    function addScrollerEventListener() {
       scroller.addEventListener('scroll', handleScroll)
     }
 
-    const removeScrollerEventListener = () => {
+    function removeScrollerEventListener() {
       scroller.removeEventListener('scroll', handleScroll)
     }
-
-    onMounted(() => {
-      setScroller()
-      addScrollerEventListener()
-      disabled.value = false
-    })
-
-    onActivated(addScrollerEventListener)
-
-    onSmartUnmounted(removeScrollerEventListener)
 
     return {
       disabled,

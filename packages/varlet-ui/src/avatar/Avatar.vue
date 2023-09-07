@@ -58,10 +58,10 @@ import { onSmartMounted } from '@varlet/use'
 
 const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
 
-const { n, classes } = createNamespace('avatar')
+const { name, n, classes } = createNamespace('avatar')
 
 export default defineComponent({
-  name: 'VarAvatar',
+  name,
   directives: { Lazy },
   props,
   setup(props) {
@@ -69,7 +69,10 @@ export default defineComponent({
     const textElement: Ref<HTMLDivElement | null> = ref(null)
     const scale: Ref<number> = ref(1)
 
-    const getScale = () => {
+    onSmartMounted(getScale)
+    onUpdated(getScale)
+
+    function getScale() {
       if (!avatarElement.value || !textElement.value) {
         scale.value = 1
         return
@@ -85,7 +88,7 @@ export default defineComponent({
       }
     }
 
-    const handleLoad = (e: Event) => {
+    function handleLoad(e: Event) {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
       const { lazy, onLoad, onError } = props
 
@@ -97,25 +100,22 @@ export default defineComponent({
       }
     }
 
-    const handleError = (e: Event) => {
+    function handleError(e: Event) {
       call(props.onError, e)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    onSmartMounted(getScale)
-    onUpdated(getScale)
-
     return {
-      isInternalSize,
-      toSizeUnit,
-      n,
-      classes,
       avatarElement,
       textElement,
       scale,
+      n,
+      classes,
+      isInternalSize,
+      toSizeUnit,
       handleLoad,
       handleError,
       handleClick,

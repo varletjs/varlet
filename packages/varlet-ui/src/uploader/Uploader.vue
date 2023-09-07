@@ -89,16 +89,16 @@ import VarPopup from '../popup'
 import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
 import Hover from '../hover'
-import { defineComponent, nextTick, reactive, computed, watch, ref, type ComputedRef, type Ref } from 'vue'
+import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
 import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
-import { type UploaderProvider } from './provide'
 import { toSizeUnit } from '../utils/elements'
+import { type UploaderProvider } from './provide'
 
-const { n, classes } = createNamespace('uploader')
+const { name, n, classes } = createNamespace('uploader')
 
 interface ValidationVarFile {
   valid: boolean
@@ -116,7 +116,7 @@ interface VarFileUtils {
 let fid = 0
 
 export default defineComponent({
-  name: 'VarUploader',
+  name,
   directives: { Ripple, Hover },
   components: {
     VarIcon,
@@ -126,10 +126,10 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const input: Ref<null | HTMLElement> = ref(null)
-    const showPreview: Ref<boolean> = ref(false)
-    const currentPreview: Ref<null | VarFile> = ref(null)
-    const maxlengthText: ComputedRef<string> = computed(() => {
+    const input = ref<null | HTMLElement>(null)
+    const showPreview = ref(false)
+    const currentPreview = ref<null | VarFile>(null)
+    const maxlengthText = computed(() => {
       const {
         maxlength,
         modelValue: { length },
@@ -137,7 +137,6 @@ export default defineComponent({
 
       return isNumber(maxlength) ? `${length} / ${maxlength}` : ''
     })
-
     const { form, bindForm } = useForm()
     const {
       errorMessage,
@@ -147,7 +146,6 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
-
     const files = computed(() => {
       const { modelValue, hideList } = props
 
@@ -157,7 +155,30 @@ export default defineComponent({
       return modelValue
     })
 
-    const preview = (varFile: VarFile) => {
+    let callReset = false
+    const varFileUtils: VarFileUtils = {
+      getSuccess,
+      getError,
+      getLoading,
+    }
+    const uploaderProvider: UploaderProvider = {
+      validate,
+      resetValidation,
+      reset,
+    }
+
+    call(bindForm, uploaderProvider)
+
+    watch(
+      () => props.modelValue,
+      () => {
+        !callReset && validateWithTrigger('onChange')
+        callReset = false
+      },
+      { deep: true }
+    )
+
+    function preview(varFile: VarFile) {
       const { disabled, readonly, previewed } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly || !previewed) {
@@ -177,23 +198,25 @@ export default defineComponent({
       }
     }
 
-    const createVarFile = (file: File): VarFile => ({
-      id: fid++,
-      url: '',
-      cover: '',
-      name: file.name,
-      file,
-      progress: 0,
-    })
+    function createVarFile(file: File): VarFile {
+      return {
+        id: fid++,
+        url: '',
+        cover: '',
+        name: file.name,
+        file,
+        progress: 0,
+      }
+    }
 
-    const getFiles = (event: Event): File[] => {
+    function getFiles(event: Event): File[] {
       const el = event.target as HTMLInputElement
       const { files: fileList } = el
       return Array.from<File>(fileList as ArrayLike<File>)
     }
 
-    const resolver = (varFile: VarFile): Promise<VarFile> =>
-      new Promise((resolve) => {
+    function resolver(varFile: VarFile): Promise<VarFile> {
+      return new Promise((resolve) => {
         // For performance, only file reader processing is performed on images
         if (!varFile.file!.type.startsWith('image')) {
           resolve(varFile)
@@ -213,10 +236,13 @@ export default defineComponent({
 
         fileReader.readAsDataURL(varFile.file as File)
       })
+    }
 
-    const getResolvers = (varFiles: VarFile[]) => varFiles.map(resolver)
+    function getResolvers(varFiles: VarFile[]) {
+      return varFiles.map(resolver)
+    }
 
-    const getBeforeReaders = (varFiles: VarFile[]): Promise<ValidationVarFile>[] => {
+    function getBeforeReaders(varFiles: VarFile[]): Promise<ValidationVarFile>[] {
       const { onBeforeRead } = props
 
       return varFiles.map(
@@ -240,7 +266,7 @@ export default defineComponent({
       )
     }
 
-    const handleChange = async (event: Event) => {
+    async function handleChange(event: Event) {
       const { maxsize, maxlength, modelValue, onOversize, onAfterRead, onBeforeFilter, readonly, disabled } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -295,7 +321,7 @@ export default defineComponent({
       validVarFiles.forEach((varFile) => call(onAfterRead, reactive(varFile)))
     }
 
-    const handleRemove = async (removedVarFile: VarFile) => {
+    async function handleRemove(removedVarFile: VarFile) {
       const { disabled, readonly, modelValue, onBeforeRemove, onRemove } = props
 
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
@@ -316,72 +342,52 @@ export default defineComponent({
     }
 
     // expose
-    const getSuccess = () => props.modelValue.filter((varFile) => varFile.state === 'success')
+    function getSuccess() {
+      return props.modelValue.filter((varFile) => varFile.state === 'success')
+    }
 
     // expose
-    const getError = () => props.modelValue.filter((varFile) => varFile.state === 'error')
+    function getError() {
+      return props.modelValue.filter((varFile) => varFile.state === 'error')
+    }
 
     // expose
-    const getLoading = () => props.modelValue.filter((varFile) => varFile.state === 'loading')
+    function getLoading() {
+      return props.modelValue.filter((varFile) => varFile.state === 'loading')
+    }
 
     // expose
-    const chooseFile = () => {
+    function chooseFile() {
       input.value!.click()
     }
 
     // expose
-    const closePreview = () => {
+    function closePreview() {
       currentPreview.value = null
       showPreview.value = false
       ImagePreview.close()
     }
 
-    const varFileUtils: VarFileUtils = {
-      getSuccess,
-      getError,
-      getLoading,
-    }
-
-    const validateWithTrigger = (trigger: ValidateTrigger) => {
+    function validateWithTrigger(trigger: ValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue, varFileUtils)
       })
     }
 
-    let callReset = false
+    // expose
+    function validate() {
+      return v(props.rules, props.modelValue, varFileUtils)
+    }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue, varFileUtils)
-
-    // expose
-    const reset = () => {
+    function reset() {
       callReset = true
       call(props['onUpdate:modelValue'], [])
       resetValidation()
     }
 
-    const uploaderProvider: UploaderProvider = {
-      validate,
-      resetValidation,
-      reset,
-    }
-
-    call(bindForm, uploaderProvider)
-
-    watch(
-      () => props.modelValue,
-      () => {
-        !callReset && validateWithTrigger('onChange')
-        callReset = false
-      },
-      { deep: true }
-    )
-
     return {
-      n,
-      classes,
-      formatElevation,
       input,
       files,
       showPreview,
@@ -391,6 +397,9 @@ export default defineComponent({
       hovering,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      n,
+      classes,
+      formatElevation,
       toNumber,
       handleHovering,
       isHTMLSupportVideo,

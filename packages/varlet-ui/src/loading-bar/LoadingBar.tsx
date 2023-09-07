@@ -7,10 +7,10 @@ import { props } from './props'
 import '../styles/common.less'
 import './loadingBar.less'
 
-const { classes, n } = createNamespace('loading-bar')
+const { name, classes, n } = createNamespace('loading-bar')
 
 export default defineComponent({
-  name: 'VarLoadingBar',
+  name,
   props,
   setup(props) {
     return () => (

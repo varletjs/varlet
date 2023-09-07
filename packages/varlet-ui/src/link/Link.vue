@@ -28,10 +28,10 @@ import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('link')
+const { name, n, classes } = createNamespace('link')
 
 export default defineComponent({
-  name: 'VarLink',
+  name,
   props,
   setup(props) {
     const tag = computed<'a' | 'router-link' | 'span'>(() => {
@@ -49,7 +49,6 @@ export default defineComponent({
 
       return 'a'
     })
-
     const linkProps = computed(() => {
       const { disabled, href, target, to, replace, rel } = props
 
@@ -68,7 +67,7 @@ export default defineComponent({
       return {}
     })
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       if (props.disabled) {
         return
       }
@@ -76,7 +75,14 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
-    return { n, classes, tag, linkProps, handleClick, toSizeUnit }
+    return {
+      tag,
+      linkProps,
+      n,
+      classes,
+      handleClick,
+      toSizeUnit,
+    }
   },
 })
 </script>

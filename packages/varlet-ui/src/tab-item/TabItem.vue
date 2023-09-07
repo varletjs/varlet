@@ -6,28 +6,22 @@
 
 <script lang="ts">
 import VarSwipeItem from '../swipe-item'
-import { defineComponent, ref, computed, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useTabsItems, useLists, type TabItemProvider } from './provide'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('tab-item')
+const { name, n, classes } = createNamespace('tab-item')
 
 export default defineComponent({
-  name: 'VarTabItem',
-  components: {
-    VarSwipeItem,
-  },
+  name,
+  components: { VarSwipeItem },
   props,
   setup(props) {
-    const current: Ref<boolean> = ref(false)
-    const name: ComputedRef<string | number | undefined> = computed(() => props.name)
+    const current = ref(false)
+    const name = computed(() => props.name)
     const { index, bindTabsItems } = useTabsItems()
     const { bindLists } = useLists()
-
-    const setCurrent = (value: boolean) => {
-      current.value = value
-    }
 
     const tabItemProvider: TabItemProvider = {
       index,
@@ -39,10 +33,14 @@ export default defineComponent({
     bindTabsItems(tabItemProvider)
     bindLists(tabItemProvider)
 
+    function setCurrent(value: boolean) {
+      current.value = value
+    }
+
     return {
+      current,
       n,
       classes,
-      current,
     }
   },
 })

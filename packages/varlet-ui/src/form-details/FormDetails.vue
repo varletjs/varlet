@@ -26,10 +26,10 @@ import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { n } = createNamespace('form-details')
+const { name, n } = createNamespace('form-details')
 
 export default defineComponent({
-  name: 'VarFormDetails',
+  name,
   props,
   setup: () => ({ n }),
 })

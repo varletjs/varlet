@@ -12,22 +12,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, type Ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useSwipe, type SwipeItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
 
-const { n } = createNamespace('swipe-item')
+const { name, n } = createNamespace('swipe-item')
 
 export default defineComponent({
-  name: 'VarSwipeItem',
+  name,
   setup() {
-    const translate: Ref<number> = ref(0)
+    const translate = ref(0)
     const { swipe, bindSwipe, index } = useSwipe()
     const { size, vertical } = swipe
-
-    const setTranslate = (x: number) => {
-      translate.value = x
-    }
 
     const swipeItemProvider: SwipeItemProvider = {
       index,
@@ -35,6 +31,10 @@ export default defineComponent({
     }
 
     bindSwipe(swipeItemProvider)
+
+    function setTranslate(x: number) {
+      translate.value = x
+    }
 
     return {
       n,

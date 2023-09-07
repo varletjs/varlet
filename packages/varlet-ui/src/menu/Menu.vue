@@ -44,10 +44,10 @@ import { props } from './props'
 import { usePopover } from './usePopover'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('menu')
+const { name, n, classes } = createNamespace('menu')
 
 export default defineComponent({
-  name: 'VarMenu',
+  name,
   props,
   setup(props) {
     const { disabled: teleportDisabled } = useTeleport()

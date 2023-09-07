@@ -18,14 +18,14 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, computed, type ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('chip')
+const { name, n, classes } = createNamespace('chip')
 
 export default defineComponent({
-  name: 'VarChip',
+  name,
   components: {
     VarIcon,
   },
@@ -47,8 +47,7 @@ export default defineComponent({
         background: color,
       }
     })
-
-    const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
+    const contentClass = computed(() => {
       const { size, block, type, plain, round } = props
 
       const blockClass = block ? n('$--flex') : n('$--inline-flex')
@@ -58,15 +57,15 @@ export default defineComponent({
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
 
-    const handleClose = (e: Event) => {
+    function handleClose(e: Event) {
       call(props.onClose, e)
     }
 
     return {
-      n,
-      classes,
       chipStyles,
       contentClass,
+      n,
+      classes,
       handleClose,
     }
   },
