@@ -124,7 +124,7 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
