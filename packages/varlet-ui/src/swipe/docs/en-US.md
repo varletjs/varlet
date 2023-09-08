@@ -268,6 +268,8 @@ import { Snackbar } from '@varlet/ui'
 | Name | Description | SlotProps |
 | --- |--------------------| --- |
 | `default`   | Swipe content           | `-`                                   |
+| `prev`   | Preview page button         | `-`                                   |
+| `next`   | Next page button         | `-`                                   |
 | `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 
 #### SwipeItem Slots
