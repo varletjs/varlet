@@ -196,4 +196,17 @@ describe('test swipe component props', () => {
     expect(onChange).toHaveBeenCalledTimes(0)
     wrapper.unmount()
   })
+
+  test('test swipe navigation', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        navigation: true,
+      },
+    })
+
+    expect(wrapper.find('.var-swipe__navigation').exists()).toBe(true)
+    await wrapper.setProps({ navigation: false })
+    expect(wrapper.find('.var-swipe__navigation').exists()).toBe(false)
+    wrapper.unmount()
+  })
 })

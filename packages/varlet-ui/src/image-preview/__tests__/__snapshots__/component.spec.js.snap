@@ -13,6 +13,8 @@ exports[`test image preview imagePreventDefault 1`] = `
             </div>
           </div>
           <!--v-if-->
+          <!--v-if-->
+          <!--v-if-->
         </div>
         <!--v-if-->
         <div class=\\"var-image-preview__extra\\"></div>
@@ -37,6 +39,8 @@ exports[`test image preview initialIndex 1`] = `
               <div class=\\"var-image-preview__zoom-container\\" style=\\"transform: scale(1) translate(0px, 0px);\\"><img class=\\"var-image-preview__image\\" src=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\" alt=\\"https://varlet.gitee.io/varlet-ui/cat2.jpg\\"></div>
             </div>
           </div>
+          <!--v-if-->
+          <!--v-if-->
           <div class=\\"var-image-preview__indicators\\">2 / 2</div>
         </div>
         <!--v-if-->

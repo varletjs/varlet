@@ -2,6 +2,8 @@
   --swipe-indicator-color: #fff;
   --swipe-indicators-offset: 10px;
   --swipe-indicator-offset: 4px;
+  --swipe-navigation-prev-left: 8px;
+  --swipe-navigation-next-right: 8px;
 }
 
 .var-swipe {
@@ -15,6 +17,21 @@
     height: 100%;
     display: flex;
     transition-property: transform;
+  }
+
+  &__navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+
+    &--prev {
+      left: var(--swipe-navigation-prev-left);
+    }
+
+    &--next {
+      right: var(--swipe-navigation-next-right);
+    }
   }
 
   &__indicators {

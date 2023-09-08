@@ -15,6 +15,18 @@
       <slot />
     </div>
 
+    <slot name="prev" v-if="navigation">
+      <div :class="classes(n('navigation'), n('navigation--prev'))" @click="prev()">
+        <var-button round><var-icon name="chevron-left" /></var-button>
+      </div>
+    </slot>
+
+    <slot name="next" v-if="navigation">
+      <div :class="classes(n('navigation'), n('navigation--next'))" @click="next()">
+        <var-button round><var-icon name="chevron-right" /></var-button>
+      </div>
+    </slot>
+
     <slot name="indicator" :index="index" :length="length" :prev="prev" :next="next" :to="to">
       <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
         <div
@@ -32,6 +44,7 @@
 </template>
 
 <script lang="ts">
+import VarButton from '../button'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
@@ -48,6 +61,7 @@ const { name, n, classes } = createNamespace('swipe')
 
 export default defineComponent({
   name,
+  components: { VarButton },
   props,
   setup(props) {
     const swipeEl = ref<HTMLElement | null>(null)
