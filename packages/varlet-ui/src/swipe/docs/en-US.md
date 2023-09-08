@@ -239,6 +239,7 @@ import { Snackbar } from '@varlet/ui'
 | `indicator-color` | Indicator color                  | _string_           | `-`     |
 | `vertical`        | Whether to enable vertical swipe | _boolean_          | `false` |
 | `touchable`       | Whether to enable touch          | _boolean_          | `true`  |
+| `navigation` | Whether to show navigation arrows | _boolean \| string_ | `false` |
 
 ### Methods
 

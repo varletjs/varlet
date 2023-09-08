@@ -238,6 +238,7 @@ import { Snackbar } from '@varlet/ui'
 | `indicator-color` | 指示器颜色 | _string_ | `-` |
 | `vertical` | 是否开启垂直轮播 | _boolean_ | `false` |
 | `touchable` | 是否可以拖动 | _boolean_ | `true` |
+| `navigation` | 是否显示导航箭头 | _boolean \| string_ | `false` |
 
 ### 方法
 
