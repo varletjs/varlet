@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" ref="swipeEl">
+  <div :class="n()" ref="swipeEl" v-hover:desktop="handleHovering">
     <div
       :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
@@ -15,13 +15,13 @@
       <slot />
     </div>
 
-    <slot name="prev" v-if="navigation">
+    <slot v-if="navigation" name="prev" :index="index" :length="length" :prev="prev" :next="next" :to="to">
       <div :class="classes(n('navigation'), n('navigation--prev'))" @click="prev()">
         <var-button round><var-icon name="chevron-left" /></var-button>
       </div>
     </slot>
 
-    <slot name="next" v-if="navigation">
+    <slot v-if="navigation" name="next" :index="index" :length="length" :prev="prev" :next="next" :to="to">
       <div :class="classes(n('navigation'), n('navigation--next'))" @click="next()">
         <var-button round><var-icon name="chevron-right" /></var-button>
       </div>
@@ -45,6 +45,7 @@
 
 <script lang="ts">
 import VarButton from '../button'
+import Hover from '../hover'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
@@ -61,6 +62,7 @@ const { name, n, classes } = createNamespace('swipe')
 
 export default defineComponent({
   name,
+  directives: { Hover },
   components: { VarButton },
   props,
   setup(props) {
@@ -71,6 +73,7 @@ export default defineComponent({
     const trackTranslate = ref(0)
     const lockDuration = ref(false)
     const index = ref(0)
+    const hovering = ref(false)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
     const { popup, bindPopup } = usePopup()
     const {
@@ -413,6 +416,10 @@ export default defineComponent({
       })
     }
 
+    const handleHovering = (value: boolean) => {
+      hovering.value = value
+    }
+
     return {
       length,
       index,
@@ -430,6 +437,7 @@ export default defineComponent({
       to,
       resize,
       toNumber,
+      handleHovering,
     }
   },
 })

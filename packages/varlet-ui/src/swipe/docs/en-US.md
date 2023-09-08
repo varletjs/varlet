@@ -300,8 +300,8 @@ import { Snackbar } from '@varlet/ui'
 | Name | Description | SlotProps |
 | --- |--------------------| --- |
 | `default`   | Swipe content           | `-`                                   |
-| `prev`   | Preview page button         | `-`                                   |
-| `next`   | Next page button         | `-`                                   |
+| `prev`   | Preview page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
+| `next`   | Next page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 | `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 
 #### SwipeItem Slots
@@ -319,3 +319,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--swipe-indicator-color`   | `#fff`  |
 | `--swipe-indicators-offset` | `10px`  |
 | `--swipe-indicator-offset`  | `4px`   |
+| `--swipe-navigation-prev-left` | `8px`  |  
+| `--swipe-navigation-next-right` | `8px` |

@@ -299,8 +299,8 @@ import { Snackbar } from '@varlet/ui'
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `prev` | 上一页按钮 | `-` |
-| `next` | 下一页按钮 | `-` |
+| `prev` | 上一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
+| `next` | 下一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 | `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 
 #### SwipeItem Slots
@@ -318,3 +318,5 @@ import { Snackbar } from '@varlet/ui'
 | `--swipe-indicator-color` | `#fff` |
 | `--swipe-indicators-offset` | `10px` |
 | `--swipe-indicator-offset` | `4px` |
+| `--swipe-navigation-prev-left` | `8px`  |  
+| `--swipe-navigation-next-right` | `8px` |

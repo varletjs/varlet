@@ -41,8 +41,8 @@ export class Swipe extends VarComponent {
 
   $slots: {
     default(): VNode[]
-    prev(): VNode[]
-    next(): VNode[]
+    prev(data: SwipeIndicatorData): VNode[]
+    next(data: SwipeIndicatorData): VNode[]
     indicator(data: SwipeIndicatorData): VNode[]
   }
 
