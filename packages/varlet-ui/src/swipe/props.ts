@@ -1,8 +1,11 @@
+import { PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export interface SwipeToOptions {
   event?: boolean
 }
+
+export type SwipeNavigation = 'hover'
 
 export const props = {
   loop: {
@@ -19,7 +22,7 @@ export const props = {
     default: 0,
   },
   navigation: {
-    type: [Boolean, String],
+    type: [Boolean, String] as PropType<boolean | SwipeNavigation>,
     default: false,
   },
   indicator: {
