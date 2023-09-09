@@ -10,9 +10,11 @@
   "jsdelivr": "umd/varlet.js",
   "web-types": "highlight/web-types.en-US.json",
   "keywords": [
-    "Vue",
-    "Material",
-    "UI"
+    "Vue3",
+    "Mobile",
+    "Material Design",
+    "UI",
+    "Components"
   ],
   "files": [
     "json",
@@ -77,9 +79,5 @@
     "typescript": "^5.1.5",
     "vue": "3.3.4",
     "vue-router": "4.2.0"
-  },
-  "browserslist": [
-    "Chrome >= 54",
-    "iOS >= 10"
-  ]
+  }
 }
