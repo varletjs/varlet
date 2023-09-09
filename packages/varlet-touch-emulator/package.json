@@ -9,6 +9,7 @@
   "type": "module",
   "main": "index.js",
   "module": "index.js",
+  "files": ["iffe.js", "index.js"],
   "author": "BeADre <beadre_wang@163.com>",
   "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
