@@ -20,7 +20,7 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
-    "build": "tsup index.js --format iife --out-dir=. && node build.js"
+    "build": "tsup index.js --format iife --out-dir=. --globalName=VarletTouchEmulator && node build.js"
   },
   "devDependencies": {
     "tsup": "7.2.0"
