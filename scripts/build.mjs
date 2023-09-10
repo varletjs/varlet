@@ -11,8 +11,9 @@ export function createTask(cwd, command = 'build') {
 export async function runTask(taskName, task) {
   const s = createSpinner(`Building ${taskName}`).start()
   try {
+    const start = performance.now()
     await task()
-    s.success({ text: `Build ${taskName} completed!` })
+    s.success({ text: `Build ${taskName} completed! (${Math.ceil(performance.now() - start)}ms)` })
   } catch (e) {
     s.error({ text: `Build ${taskName} failed!` })
     console.error(e.toString())
@@ -34,10 +35,14 @@ export const buildToucheEmulator = createTask(resolve(CWD, './packages/varlet-to
 export const buildUI = createTask(resolve(CWD, './packages/varlet-ui'), 'compile')
 
 export async function runTaskQueue() {
+  const start = performance.now()
+
   await runTask('shared & touch-emulator', () => Promise.all([buildShared(), buildToucheEmulator()]))
   await runTask('use', buildUse)
   await runTask('vite-plugins', buildVitePlugins)
   await runTask('cli', buildCli)
   await runTask('icons', buildIcons)
   await runTask('ui', buildUI)
+
+  console.info(`All tasks built in ${Math.ceil(performance.now() - start)} ms`)
 }
