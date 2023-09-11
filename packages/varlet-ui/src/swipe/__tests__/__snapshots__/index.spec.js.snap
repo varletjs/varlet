@@ -20,7 +20,7 @@ exports[`test swipe component props > test swipe navigation 2`] = `
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">2</div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">3</div>
   </div>
-  <transition-stub name=\\"prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe__navigation-prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-swipe__navigation var-swipe__navigation--prev\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round\\" type=\\"button\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">
@@ -29,7 +29,7 @@ exports[`test swipe component props > test swipe navigation 2`] = `
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
   </transition-stub>
-  <transition-stub name=\\"next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe__navigation-next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"var-swipe__navigation var-swipe__navigation--next\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round\\" type=\\"button\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">
@@ -53,10 +53,10 @@ exports[`test swipe component props > test swipe navigation 3`] = `
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">2</div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">3</div>
   </div>
-  <transition-stub name=\\"prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe__navigation-prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub name=\\"next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe__navigation-next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
   <div class=\\"var-swipe__indicators\\">
