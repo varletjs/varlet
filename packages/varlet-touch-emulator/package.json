@@ -7,16 +7,23 @@
     "varlet"
   ],
   "type": "module",
+  "main": "index.js",
+  "module": "index.js",
+  "files": ["iife.js", "index.js"],
   "author": "BeADre <beadre_wang@163.com>",
   "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/varletjs/varlet.git"
   },
   "bugs": {
     "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "scripts": {
+    "build": "tsup index.js --format iife --out-dir=. --globalName=VarletTouchEmulator && node build.js"
+  },
+  "devDependencies": {
+    "tsup": "7.2.0"
   }
 }

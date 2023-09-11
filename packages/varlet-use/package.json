@@ -24,14 +24,14 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "rimraf ./lib && tsc"
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
+    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
   },
   "dependencies": {
     "@varlet/shared": "workspace:*"
   },
   "devDependencies": {
-    "rimraf": "^5.0.1",
+    "tsup": "7.2.0",
     "typescript": "^5.1.5",
     "vue": "3.3.4"
   },

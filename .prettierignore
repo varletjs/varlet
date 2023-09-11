@@ -23,6 +23,7 @@ packages/varlet-ui-playground/*.d.ts
 packages/varlet-shared/lib/**
 packages/varlet-shared/es/**
 packages/varlet-use/lib/**
+packages/varlet-touch-emulator/iife.js
 
 **/package.json
 *.md
