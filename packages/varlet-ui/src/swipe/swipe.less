@@ -32,6 +32,42 @@
     &--next {
       right: var(--swipe-navigation-next-right);
     }
+
+    &-prev-enter-active {
+      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-prev-leave-active {
+      transition: left 0.3s cubic-bezier(1, 0.5, 0.8, 0.25);
+    }
+
+    &-prev-enter-from,
+    &-prev-leave-to {
+      left: -100%;
+    }
+
+    &-prev-enter-to,
+    &-prev-leave-from {
+      left: var(--swipe-navigation-prev-left);
+    }
+
+    &-next-enter-active {
+      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-next-leave-active {
+      transition: right 0.3s cubic-bezier(1, 0.5, 0.8, 0.25);
+    }
+
+    &-next-enter-from,
+    &-next-leave-to {
+      right: -100%;
+    }
+
+    &-next-enter-to,
+    &-next-leave-from {
+      right: var(--swipe-navigation-next-right);
+    }
   }
 
   &__indicators {

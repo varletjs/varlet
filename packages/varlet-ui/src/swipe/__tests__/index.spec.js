@@ -207,6 +207,15 @@ describe('test swipe component props', () => {
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(true)
     await wrapper.setProps({ navigation: false })
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(false)
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.setProps({ navigation: 'hover' })
+
+    await wrapper.trigger('mouseenter')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.trigger('mouseleave')
+    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 })

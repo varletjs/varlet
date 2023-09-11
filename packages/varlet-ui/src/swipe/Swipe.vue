@@ -16,15 +16,27 @@
     </div>
 
     <slot v-if="navigation" name="prev" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <div :class="classes(n('navigation'), n('navigation--prev'))" @click="prev()">
-        <var-button round><var-icon name="chevron-left" /></var-button>
-      </div>
+      <transition :name="navigation === 'hover' ? n('navigation-prev') : ''">
+        <div
+          v-if="hovering || navigation === true"
+          :class="classes(n('navigation'), n('navigation--prev'))"
+          @click="prev()"
+        >
+          <var-button round><var-icon name="chevron-left" /></var-button>
+        </div>
+      </transition>
     </slot>
 
     <slot v-if="navigation" name="next" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <div :class="classes(n('navigation'), n('navigation--next'))" @click="next()">
-        <var-button round><var-icon name="chevron-right" /></var-button>
-      </div>
+      <transition :name="navigation === 'hover' ? n('navigation-next') : ''">
+        <div
+          v-if="hovering || navigation === true"
+          :class="classes(n('navigation'), n('navigation--next'))"
+          @click="next()"
+        >
+          <var-button round><var-icon name="chevron-right" /></var-button>
+        </div>
+      </transition>
     </slot>
 
     <slot name="indicator" :index="index" :length="length" :prev="prev" :next="next" :to="to">
@@ -417,7 +429,9 @@ export default defineComponent({
     }
 
     const handleHovering = (value: boolean) => {
-      hovering.value = value
+      if (props.navigation === 'hover') {
+        hovering.value = value
+      }
     }
 
     return {
@@ -427,6 +441,7 @@ export default defineComponent({
       trackSize,
       trackTranslate,
       lockDuration,
+      hovering,
       n,
       classes,
       handleTouchstart,
