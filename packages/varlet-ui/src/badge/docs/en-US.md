@@ -167,6 +167,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--badge-content-padding` | `2px 6px` |
+| `--badge-content-border`| `none` |
 | `--badge-icon-size` | `12px` |
 | `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|
