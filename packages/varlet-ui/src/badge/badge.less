@@ -1,5 +1,6 @@
 :root {
   --badge-content-padding: 2px 6px;
+  --badge-content-border: none;
   --badge-icon-size: 12px;
   --badge-default-color: #e0e0e0;
   --badge-primary-color: var(--color-primary);
@@ -16,12 +17,12 @@
 
   &__content {
     color: #fff;
-    border-radius: 100px;
     font-size: 12px;
-    padding: 2px 6px;
+    padding: var(--badge-content-padding);
     vertical-align: middle;
     text-align: center;
     display: inline-block;
+    border: var(--badge-content-border);
   }
 
   &__icon[var-badge-cover] {
