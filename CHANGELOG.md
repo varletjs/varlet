@@ -1,3 +1,13 @@
+## [2.16.4](https://github.com/varletjs/varlet/compare/v2.16.2...v2.16.4) (2023-09-13)
+
+
+### Features
+
+* **badge:** support custom content border ([#1178](https://github.com/varletjs/varlet/issues/1178)) ([499cd46](https://github.com/varletjs/varlet/commit/499cd466ceaa6b527b83b722c6608b2b09675fe9))
+* **extension:** support webview for documentation preview ([3c77690](https://github.com/varletjs/varlet/commit/3c77690bbd04c041675970a075a833152b97df1e))
+
+
+
 ## [2.16.2](https://github.com/varletjs/varlet/compare/v2.16.1...v2.16.2) (2023-09-07)
 
 
