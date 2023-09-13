@@ -41,7 +41,7 @@
     "simple-git-hooks": "^2.8.0",
     "typescript": "^5.1.5"
   },
-  "packageManager": "pnpm@8.0.0",
+  "packageManager": "pnpm@8.7.5",
   "engines": {
     "pnpm": ">=8.0"
   }
