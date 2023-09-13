@@ -1,3 +1,12 @@
+## [2.16.5](https://github.com/varletjs/varlet/compare/v2.16.4...v2.16.5) (2023-09-13)
+
+
+### Bug Fixes
+
+* **badge:** fix border radius error ([bc46710](https://github.com/varletjs/varlet/commit/bc467109e9b322ba5a9d04e51daccc8c2ee444a0))
+
+
+
 ## [2.16.4](https://github.com/varletjs/varlet/compare/v2.16.2...v2.16.4) (2023-09-13)
 
 
