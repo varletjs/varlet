@@ -43,6 +43,20 @@
       })()
     }
   </script>
+  <script>
+    // solve the problem of blocking keyboard copy in vscode webview
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'c') {
+        const selection = document.getSelection()
+
+        if (!selection || !selection.toString()) {
+          return
+        }
+
+        window.parent.postMessage({ eventType: 'copy', text: selection.toString() }, '*')
+      }
+    })
+  </script>
 </head>
 <body>
 <div id="app"></div>

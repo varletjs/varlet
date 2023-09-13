@@ -11,7 +11,8 @@ export const ICONS_STATIC = 'https://varlet.gitee.io/varlet-ui/icons/png'
 export const LANGUAGE_TEXTS = {
   'zh-CN': {
     documentation: DOCUMENTATION_ZH,
-    linkText: '查看组件的官方文档',
+    linkWebviewText: '查看组件文档 (VSCode Webview)',
+    linkText: '查看组件文档 (外部浏览器)',
     prop: '属性',
     event: '事件',
     slot: '插槽',
@@ -20,7 +21,8 @@ export const LANGUAGE_TEXTS = {
   },
   'en-US': {
     documentation: DOCUMENTATION_EN,
-    linkText: 'Watch the documentation of the component',
+    linkWebviewText: 'Watch the documentation of the component (VSCode Webview)',
+    linkText: 'Watch the documentation of the component (External Browser)',
     prop: 'Prop',
     event: 'Event',
     slot: 'Slot',

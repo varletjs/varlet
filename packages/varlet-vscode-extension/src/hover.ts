@@ -1,5 +1,5 @@
 import { kebabCase, bigCamelize, uniq } from '@varlet/shared'
-import { languages, Position, Hover, MarkdownString, type TextDocument, type ExtensionContext } from 'vscode'
+import { languages, Position, Hover, MarkdownString, Uri, type TextDocument, type ExtensionContext } from 'vscode'
 import { componentsMap } from './componentsMap'
 import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
 import { t, getWebTypesTags } from './env'
@@ -32,7 +32,14 @@ export function getComponentTableData(component: string) {
   const bigCamelName = bigCamelize(name)
   const tags = getWebTypesTags()
   const tag = tags.find((tag) => tag.name === name)
-  const link = `[Varlet: ${bigCamelName} -> ${t('linkText')}](${t('documentation')}${componentsMap[component].path})`
+  const documentation = `${t('documentation')}${componentsMap[component].path}`
+  const documentationCommand = Uri.parse(
+    `command:varlet.open-webview?${encodeURIComponent(JSON.stringify([documentation]))}`
+  )
+  const link = `\
+[Varlet: ${bigCamelName} -> ${t('linkWebviewText')}](${documentationCommand})
+
+[Varlet: ${bigCamelName} -> ${t('linkText')}](${documentation})`
 
   if (!tag) {
     return {
@@ -133,8 +140,11 @@ export function registerHover(context: ExtensionContext) {
       .filter((component: string) => componentsMap[component])
       .map(getComponentTableTemplate)
       .reduce((hoverContents, item) => {
+        const linkMarkdown = new MarkdownString(item.link)
+        linkMarkdown.isTrusted = true
+
         hoverContents.push(
-          new MarkdownString(item.link),
+          linkMarkdown,
           new MarkdownString(item.propsTable),
           new MarkdownString(item.eventsTable),
           new MarkdownString(item.slotsTable)

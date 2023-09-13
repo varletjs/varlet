@@ -30,6 +30,10 @@
       {
         "command": "varlet.open-playground-by-selection-and-wrap-template-tag",
         "title": "Varlet: Open Varlet UI Playground By Selection And Wrap Template Tag"
+      },
+      {
+        "command": "varlet.open-webview",
+        "title": "Varlet: Open Webview"
       }
     ],
     "menus": {
