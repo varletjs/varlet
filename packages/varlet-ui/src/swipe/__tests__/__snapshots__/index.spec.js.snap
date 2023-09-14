@@ -20,20 +20,20 @@ exports[`test swipe component props > test swipe navigation 2`] = `
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">2</div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">3</div>
   </div>
-  <transition-stub name=\\"var-swipe__navigation-prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"var-swipe__navigation var-swipe__navigation--prev\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round\\" type=\\"button\\">
+  <transition-stub name=\\"var-swipe--navigation-prev-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <div class=\\"var-swipe__navigation var-swipe__navigation-prev\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-swipe__navigation-prev-button\\" type=\\"button\\" var-swipe-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">
-          <var-icon name=\\"chevron-left\\"></var-icon>
+          <var-icon var-swipe-cover=\\"\\" class=\\"var-swipe__navigation-prev-button-icon\\" name=\\"chevron-left\\"></var-icon>
         </div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
   </transition-stub>
-  <transition-stub name=\\"var-swipe__navigation-next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"var-swipe__navigation var-swipe__navigation--next\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round\\" type=\\"button\\">
+  <transition-stub name=\\"var-swipe--navigation-next-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <div class=\\"var-swipe__navigation var-swipe__navigation-next\\"><button class=\\"var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-swipe__navigation-next-button\\" type=\\"button\\" var-swipe-cover=\\"\\">
         <!--v-if-->
         <div class=\\"var-button__content\\">
-          <var-icon name=\\"chevron-right\\"></var-icon>
+          <var-icon var-swipe-cover=\\"\\" class=\\"var-swipe__navigation-next-button-icon\\" name=\\"chevron-right\\"></var-icon>
         </div>
         <div class=\\"var-hover-overlay\\"></div>
       </button></div>
@@ -53,10 +53,10 @@ exports[`test swipe component props > test swipe navigation 3`] = `
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">2</div>
     <div class=\\"var-swipe-item\\" style=\\"width: 0px; transform: translateX(0px);\\">3</div>
   </div>
-  <transition-stub name=\\"var-swipe__navigation-prev\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe--navigation-prev-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
-  <transition-stub name=\\"var-swipe__navigation-next\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <transition-stub name=\\"var-swipe--navigation-next-transition\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!--v-if-->
   </transition-stub>
   <div class=\\"var-swipe__indicators\\">

@@ -128,7 +128,7 @@
 
 ```html
 <template>
-  <var-swipe class="swipe-example" navigation>
+  <var-swipe class="swipe-example" navigation="hover">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
     </var-swipe-item>
@@ -319,5 +319,9 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--swipe-indicator-color`   | `#fff`  |
 | `--swipe-indicators-offset` | `10px`  |
 | `--swipe-indicator-offset`  | `4px`   |
+| `--swipe-navigation-button-width` | `36px` |
+| `--swipe-navigation-button-height` | `36px` |
+| `--swipe-navigation-button-border-radius` | `50%` |
+| `--swipe-navigation-icon-size` | `20px` |
 | `--swipe-navigation-prev-left` | `8px`  |  
 | `--swipe-navigation-next-right` | `8px` |

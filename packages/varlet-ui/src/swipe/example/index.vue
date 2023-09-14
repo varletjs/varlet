@@ -62,7 +62,7 @@ watchLang(use)
   </var-swipe>
 
   <app-type>{{ pack.navigation }}</app-type>
-  <var-swipe class="swipe" navigation>
+  <var-swipe class="swipe" navigation="hover">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
     </var-swipe-item>

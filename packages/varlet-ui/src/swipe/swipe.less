@@ -2,6 +2,10 @@
   --swipe-indicator-color: #fff;
   --swipe-indicators-offset: 10px;
   --swipe-indicator-offset: 4px;
+  --swipe-navigation-button-width: 36px;
+  --swipe-navigation-button-height: 36px;
+  --swipe-navigation-button-border-radius: 50%;
+  --swipe-navigation-icon-size: 20px;
   --swipe-navigation-prev-left: 8px;
   --swipe-navigation-next-right: 8px;
 }
@@ -22,51 +26,63 @@
   &__navigation {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    z-index: 999;
+    z-index: 99;
 
-    &--prev {
-      left: var(--swipe-navigation-prev-left);
+    &-prev {
+      left: 0;
+      transform: translate(var(--swipe-navigation-prev-left), -50%);
+
+      &-button[var-swipe-cover] {
+        width: var(--swipe-navigation-button-width);
+        height: var(--swipe-navigation-button-height);
+        border-radius: var(--swipe-navigation-button-border-radius);
+      }
+
+      &-button-icon[var-swipe-cover] {
+        font-size: var(--swipe-navigation-icon-size);
+      }
     }
 
-    &--next {
-      right: var(--swipe-navigation-next-right);
+    &-next {
+      right: 0;
+      transform: translate(
+        calc(100% - var(--swipe-navigation-next-right) - var(--swipe-navigation-button-width)),
+        -50%
+      );
+
+      &-button[var-swipe-cover] {
+        width: var(--swipe-navigation-button-width);
+        height: var(--swipe-navigation-button-height);
+        border-radius: var(--swipe-navigation-button-border-radius);
+      }
+
+      &-button-icon[var-swipe-cover] {
+        font-size: var(--swipe-navigation-icon-size);
+      }
+    }
+  }
+
+  &--navigation-prev-transition {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
     }
 
-    &-prev-enter-active {
-      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-100%, -50%);
+    }
+  }
+
+  &--navigation-next-transition {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
     }
 
-    &-prev-leave-active {
-      transition: left 0.3s cubic-bezier(1, 0.5, 0.8, 0.25);
-    }
-
-    &-prev-enter-from,
-    &-prev-leave-to {
-      left: -100%;
-    }
-
-    &-prev-enter-to,
-    &-prev-leave-from {
-      left: var(--swipe-navigation-prev-left);
-    }
-
-    &-next-enter-active {
-      transition: right 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-    }
-
-    &-next-leave-active {
-      transition: right 0.3s cubic-bezier(1, 0.5, 0.8, 0.25);
-    }
-
-    &-next-enter-from,
-    &-next-leave-to {
-      right: -100%;
-    }
-
-    &-next-enter-to,
-    &-next-leave-from {
-      right: var(--swipe-navigation-next-right);
+    &-enter-from,
+    &-leave-to {
+      transform: translate(100%, -50%);
     }
   }
 

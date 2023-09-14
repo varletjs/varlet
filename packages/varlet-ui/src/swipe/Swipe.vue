@@ -16,25 +16,29 @@
     </div>
 
     <slot v-if="navigation" name="prev" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <transition :name="navigation === 'hover' ? n('navigation-prev') : ''">
+      <transition :name="navigation === 'hover' ? n('--navigation-prev-transition') : ''">
         <div
           v-if="hovering || navigation === true"
-          :class="classes(n('navigation'), n('navigation--prev'))"
+          :class="classes(n('navigation'), n('navigation-prev'))"
           @click="prev()"
         >
-          <var-button round><var-icon name="chevron-left" /></var-button>
+          <var-button var-swipe-cover :class="n('navigation-prev-button')">
+            <var-icon var-swipe-cover :class="n('navigation-prev-button-icon')" name="chevron-left" />
+          </var-button>
         </div>
       </transition>
     </slot>
 
     <slot v-if="navigation" name="next" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <transition :name="navigation === 'hover' ? n('navigation-next') : ''">
+      <transition :name="navigation === 'hover' ? n('--navigation-next-transition') : ''">
         <div
           v-if="hovering || navigation === true"
-          :class="classes(n('navigation'), n('navigation--next'))"
+          :class="classes(n('navigation'), n('navigation-next'))"
           @click="next()"
         >
-          <var-button round><var-icon name="chevron-right" /></var-button>
+          <var-button var-swipe-cover :class="n('navigation-next-button')">
+            <var-icon var-swipe-cover :class="n('navigation-next-button-icon')" name="chevron-right" />
+          </var-button>
         </div>
       </transition>
     </slot>
