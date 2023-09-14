@@ -58,6 +58,11 @@
           "type": "boolean",
           "default": false,
           "description": "Use chinese language"
+        },
+        "varlet.useVercelOrigin": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use vercel origin"
         }
       }
     }

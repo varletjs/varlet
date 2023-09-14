@@ -2,7 +2,7 @@ import { kebabCase, bigCamelize, uniq } from '@varlet/shared'
 import { languages, Position, Hover, MarkdownString, Uri, type TextDocument, type ExtensionContext } from 'vscode'
 import { componentsMap } from './componentsMap'
 import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
-import { t, getWebTypesTags } from './env'
+import { envs, getWebTypesTags } from './env'
 
 export interface TableDataProp {
   name?: string
@@ -32,14 +32,14 @@ export function getComponentTableData(component: string) {
   const bigCamelName = bigCamelize(name)
   const tags = getWebTypesTags()
   const tag = tags.find((tag) => tag.name === name)
-  const documentation = `${t('documentation')}${componentsMap[component].path}`
+  const documentation = `${envs().t('documentation')}${componentsMap[component].path}`
   const documentationCommand = Uri.parse(
     `command:varlet.open-webview?${encodeURIComponent(JSON.stringify([documentation]))}`
   )
   const link = `\
-[Varlet: ${bigCamelName} -> ${t('linkWebviewText')}](${documentationCommand})
+[Varlet: ${bigCamelName} -> ${envs().t('linkWebviewText')}](${documentationCommand})
 
-[Varlet: ${bigCamelName} -> ${t('linkText')}](${documentation})`
+[Varlet: ${bigCamelName} -> ${envs().t('linkText')}](${documentation})`
 
   if (!tag) {
     return {
@@ -85,7 +85,7 @@ export function getComponentTableTemplate(component: string) {
           return propsTable
         },
         `\
-| ${t('prop')} | ${t('description')} | ${t('default')} |
+| ${envs().t('prop')} | ${envs().t('description')} | ${envs().t('default')} |
 | :--- | :--- | :--- |
 `
       )
@@ -98,7 +98,7 @@ export function getComponentTableTemplate(component: string) {
           return eventsTable
         },
         `\
-| ${t('event')} | ${t('description')} |
+| ${envs().t('event')} | ${envs().t('description')} |
 | :--- | :--- |
 `
       )
@@ -111,7 +111,7 @@ export function getComponentTableTemplate(component: string) {
           return slotsTable
         },
         `\
-| ${t('slot')} | ${t('description')} |
+| ${envs().t('slot')} | ${envs().t('description')} |
 | :--- | :--- |
 `
       )

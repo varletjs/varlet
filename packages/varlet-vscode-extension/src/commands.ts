@@ -1,7 +1,6 @@
-import { PLAYGROUND, DOCUMENTATION_EN, DOCUMENTATION_ZH } from './constant'
 import { commands, window, Selection, env, Uri, Range, ViewColumn, type ExtensionContext } from 'vscode'
-import { getLanguage } from './env'
 import { isPlainObject } from '@varlet/shared'
+import { envs } from './env'
 
 interface OpenPlaygroundOptions {
   selectionWrapTemplate?: boolean
@@ -13,7 +12,7 @@ function openPlayground(options: OpenPlaygroundOptions = {}) {
   const { activeTextEditor } = window
 
   if (!activeTextEditor || !selection) {
-    env.openExternal(Uri.parse(PLAYGROUND))
+    env.openExternal(Uri.parse(envs().playground))
     return
   }
 
@@ -21,7 +20,7 @@ function openPlayground(options: OpenPlaygroundOptions = {}) {
   let text = activeTextEditor.document.getText(range)
 
   if (!text.trim()) {
-    env.openExternal(Uri.parse(PLAYGROUND))
+    env.openExternal(Uri.parse(envs().playground))
     return
   }
 
@@ -31,12 +30,11 @@ function openPlayground(options: OpenPlaygroundOptions = {}) {
 
   const file = { 'App.vue': text }
   const hash = btoa(unescape(encodeURIComponent(JSON.stringify(file))))
-  env.openExternal(Uri.parse(`${PLAYGROUND}#${hash}`))
+  env.openExternal(Uri.parse(`${envs().playground}#${hash}`))
 }
 
 function openDocumentation() {
-  const language = getLanguage()
-  env.openExternal(Uri.parse(language === 'en-US' ? `${DOCUMENTATION_EN}/home` : `${DOCUMENTATION_ZH}/home`))
+  env.openExternal(Uri.parse(`${envs().t('documentation')}/home`))
 }
 
 function openWebview(url: string) {
