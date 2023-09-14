@@ -1,3 +1,12 @@
+## [2.16.6](https://github.com/varletjs/varlet/compare/v2.16.5...v2.16.6) (2023-09-14)
+
+
+### Features
+
+* **extension:** support vercel origin ([bad29f5](https://github.com/varletjs/varlet/commit/bad29f56d4d7ba1656925eb4a7ee2449306f794a))
+
+
+
 ## [2.16.5](https://github.com/varletjs/varlet/compare/v2.16.4...v2.16.5) (2023-09-13)
 
 
