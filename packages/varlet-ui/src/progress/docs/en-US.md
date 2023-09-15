@@ -8,21 +8,21 @@ Display the current progress of an operation flow.
 
 ```html
 <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-  const value = ref(0)
-  const interval = ref(0)
+const value = ref(0)
+const interval = ref(0)
 
-  onMounted(() => {
-    interval.value = window.setInterval(() => {
-      if (value.value >= 100) value.value = 0
-      else value.value += 20
-    }, 1000)
-  })
+onMounted(() => {
+  interval.value = window.setInterval(() => {
+    if (value.value >= 100) value.value = 0
+    else value.value += 20
+  }, 1000)
+})
 
-  onUnmounted(() => {
-    window.clearInterval(interval.value)
-  })
+onUnmounted(() => {
+  window.clearInterval(interval.value)
+})
 </script>
 
 <template>
@@ -52,25 +52,30 @@ Set the line width, progress bar color and track color through the attributes of
 
 ```html
 <script setup>
-  import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-  const value = ref(0)
-  const interval = ref(0)
+const value = ref(0)
+const interval = ref(0)
+const gradientColor = {
+  '0%': '#3fecff',
+  '100%': '#6149f6',
+}
 
-  onMounted(() => {
-    interval.value = window.setInterval(() => {
-      if (value.value >= 100) value.value = 0
-      else value.value += 20
-    }, 1000)
-  })
+onMounted(() => {
+  interval.value = window.setInterval(() => {
+    if (value.value >= 100) value.value = 0
+    else value.value += 20
+  }, 1000)
+})
 
-  onUnmounted(() => {
-    window.clearInterval(interval.value)
-  })
+onUnmounted(() => {
+  window.clearInterval(interval.value)
+})
 </script>
 
 <template>
   <var-space :size="[20, 20]">
+    <var-progress mode="circle" :value="50" :size="60"  :color="gradientColor" />
     <var-progress mode="circle" :value="75" :size="60" :track="false" />
     <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
     <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
@@ -108,7 +113,7 @@ Enable indeterminate animation through the `indeterminate` attribute when loadin
 | `type`        | Progress type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `primary` |
 | `value`       | Completion value                                                                    | _string \| number_   |  `0`  |
 | `line-width`  | Width of the progress bar                                                           | _string \| number_   | `4` |
-| `color`       | Color of the progress bar                                                           | _string_ | `#005CAF` |
+| `color`       | Color of the progress bar                                    | _string \| object_ | `#005CAF` |
 | `track-color` | Color of the progress track                                                         | _string_ | `#d8d8d8` |
 | `label`       | Whether the label is visible or not                                                 | _boolean_ | `false`   |
 | `label-class` | Custom label class name                                                             | _string_ | `-`       |

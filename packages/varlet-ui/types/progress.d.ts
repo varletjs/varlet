@@ -12,7 +12,7 @@ export interface ProgressProps extends BasicAttributes {
   type?: ProgressType
   indeterminate?: boolean
   lineWidth?: string | number
-  color?: string
+  color?: string | Record<string, string>
   trackColor?: string
   label?: boolean
   labelClass?: string

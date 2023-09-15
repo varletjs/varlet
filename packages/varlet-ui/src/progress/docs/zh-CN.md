@@ -56,6 +56,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
 const interval = ref(0)
+const gradientColor = {
+  '0%': '#3fecff',
+  '100%': '#6149f6',
+}
 
 onMounted(() => {
   interval.value = window.setInterval(() => {
@@ -71,6 +75,7 @@ onUnmounted(() => {
 
 <template>
   <var-space :size="[20, 20]">
+    <var-progress mode="circle" :value="50" :size="60"  :color="gradientColor" />
     <var-progress mode="circle" :value="75" :size="60" :track="false" />
     <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
     <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
@@ -108,7 +113,7 @@ onUnmounted(() => {
 | `type`        | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`      |
 | `value`       | `progress` 的进度                                                  | _string \| number_   |  `0`  |
 | `line-width`  | `progress` 的线宽                                                  | _string \| number_   | `4` |
-| `color`       | `progress` 的颜色                                                  | _string_ | `#005CAF` |
+| `color`       | `progress` 的颜色                                                  | _string \| object_ | `#005CAF` |
 | `track-color` | `progress` 轨道的颜色                                                | _string_ | `#d8d8d8` |
 | `label`       | 是否显示 `label`                                                    | _boolean_ | `false`   |
 | `label-class` | 自定义 `label` 的类名                                                 | _string_ | `-`       |
