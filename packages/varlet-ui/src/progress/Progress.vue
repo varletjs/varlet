@@ -123,6 +123,7 @@ export default defineComponent({
     })
 
     const progressColor = computed(() => {
+      // set linear gradient color for circle progress
       if (isPlainObject(props.color)) {
         return `url(#${id})`
       }

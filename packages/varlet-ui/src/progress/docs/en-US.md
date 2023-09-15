@@ -39,11 +39,17 @@ onUnmounted(() => {
 Set the line width, progress bar color and track color through the attributes of `type`, `line-width`, `color`, `track-color`.
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const gradientColor = ref('linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)')
+</script>
 <template>
   <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="40" :color="gradientColor"/>
     <var-progress type="info" :value="40" />
     <var-progress type="success" :value="60" />
-    <var-progress value="80" line-width="8" color="#ff9f00" track-color="#f5cb90" />
+    <var-progress :value="80" :line-width="8" color="#ff9f00" track-color="#f5cb90" />
   </var-space>
 </template>
 ```
@@ -56,10 +62,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
 const interval = ref(0)
-const gradientColor = {
+const gradientColor = ref({
   '0%': '#3fecff',
   '100%': '#6149f6',
-}
+})
 
 onMounted(() => {
   interval.value = window.setInterval(() => {
@@ -113,7 +119,7 @@ Enable indeterminate animation through the `indeterminate` attribute when loadin
 | `type`        | Progress type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `primary` |
 | `value`       | Completion value                                                                    | _string \| number_   |  `0`  |
 | `line-width`  | Width of the progress bar                                                           | _string \| number_   | `4` |
-| `color`       | Color of the progress bar                                    | _string \| object_ | `#005CAF` |
+| `color`       | Color of the progress bar (The circular progress bar sets the gradient color, please use object)                                    | _string \| object_ | `-` |
 | `track-color` | Color of the progress track                                                         | _string_ | `#d8d8d8` |
 | `label`       | Whether the label is visible or not                                                 | _boolean_ | `false`   |
 | `label-class` | Custom label class name                                                             | _string_ | `-`       |
