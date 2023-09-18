@@ -1,3 +1,17 @@
+## [2.16.7](https://github.com/varletjs/varlet/compare/v2.16.6...v2.16.7) (2023-09-18)
+
+
+### Bug Fixes
+
+* **input,select:** reduce the impact of text-align ([5091f35](https://github.com/varletjs/varlet/commit/5091f351a5353f03ef0a62252ecdfd38f3880a74))
+
+
+### Features
+
+* **swipe:** support navigation prop and prev and next slots ([#1177](https://github.com/varletjs/varlet/issues/1177)) ([d717f0c](https://github.com/varletjs/varlet/commit/d717f0c9aa29f7fc2bdd3b2cb744294e7d327aa9))
+
+
+
 ## [2.16.6](https://github.com/varletjs/varlet/compare/v2.16.5...v2.16.6) (2023-09-14)
 
 
