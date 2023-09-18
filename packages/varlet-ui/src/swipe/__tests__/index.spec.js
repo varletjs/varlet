@@ -200,10 +200,14 @@ describe('test swipe component props', () => {
   test('test swipe navigation', async () => {
     const wrapper = mount(Wrapper, {
       props: {
+        vertical: true,
         navigation: true,
       },
     })
 
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setProps({ vertical: false })
+    expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(true)
     await wrapper.setProps({ navigation: false })
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(false)

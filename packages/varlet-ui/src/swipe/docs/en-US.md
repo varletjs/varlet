@@ -126,8 +126,22 @@
 
 ### Navigation
 
+Navigation buttons can be enabled by setting `navigation`, when `navigation` is `hover`, the navigation buttons can be displayed when the pointer is hovering.
+
 ```html
 <template>
+  <var-swipe class="swipe-example" navigation>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+
   <var-swipe class="swipe-example" navigation="hover">
     <var-swipe-item>
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
@@ -144,6 +158,7 @@
 <style>
 .swipe-example {
   height: 160px;
+  margin-top: 14px;
 }
 
 .swipe-example-image {
@@ -300,9 +315,9 @@ import { Snackbar } from '@varlet/ui'
 | Name | Description | SlotProps |
 | --- |--------------------| --- |
 | `default`   | Swipe content           | `-`                                   |
-| `prev`   | Preview page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
-| `next`   | Next page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
-| `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
+| `prev`   | Preview page button         | `index: number` <br> `length: number` <br> `hovering: boolean` Whether the pointer is hovering <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
+| `next`   | Next page button         | `index: number` <br> `length: number` <br> `hovering: boolean` Whether the pointer is hovering <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
+| `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `hovering: boolean` Whether the pointer is hovering <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 
 #### SwipeItem Slots
 
@@ -325,3 +340,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--swipe-navigation-icon-size` | `20px` |
 | `--swipe-navigation-prev-left` | `8px`  |  
 | `--swipe-navigation-next-right` | `8px` |
+| `--swipe-navigation-prev-top` | `8px` |
+| `--swipe-navigation-next-bottom` | `8px` |

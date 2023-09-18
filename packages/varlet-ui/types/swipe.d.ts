@@ -31,6 +31,7 @@ export type SwipeTo = (index: number, options?: SwipeToOptions) => void
 export interface SwipeIndicatorData {
   index: number
   length: number
+  hovering: boolean
   prev: SwipePrev
   next: SwipeNext
   to: SwipeTo

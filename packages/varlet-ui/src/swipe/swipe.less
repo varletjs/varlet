@@ -8,6 +8,8 @@
   --swipe-navigation-icon-size: 20px;
   --swipe-navigation-prev-left: 8px;
   --swipe-navigation-next-right: 8px;
+  --swipe-navigation-prev-top: 8px;
+  --swipe-navigation-next-bottom: 8px;
 }
 
 .var-swipe {
@@ -45,10 +47,7 @@
 
     &-next {
       right: 0;
-      transform: translate(
-        calc(100% - var(--swipe-navigation-next-right) - var(--swipe-navigation-button-width)),
-        -50%
-      );
+      transform: translate(calc(-1 * var(--swipe-navigation-next-right)), -50%);
 
       &-button[var-swipe-cover] {
         width: var(--swipe-navigation-button-width);
@@ -59,30 +58,6 @@
       &-button-icon[var-swipe-cover] {
         font-size: var(--swipe-navigation-icon-size);
       }
-    }
-  }
-
-  &--navigation-prev-transition {
-    &-enter-active,
-    &-leave-active {
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-    }
-
-    &-enter-from,
-    &-leave-to {
-      transform: translate(-100%, -50%);
-    }
-  }
-
-  &--navigation-next-transition {
-    &-enter-active,
-    &-leave-active {
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-    }
-
-    &-enter-from,
-    &-leave-to {
-      transform: translate(100%, -50%);
     }
   }
 
@@ -121,5 +96,70 @@
 
   &--indicator-vertical {
     margin: var(--swipe-indicator-offset) 0;
+  }
+
+  &--navigation-vertical {
+    &-prev {
+      top: 0;
+      left: 50%;
+      right: unset;
+      transform: translate(-50%, var(--swipe-navigation-prev-top));
+    }
+
+    &-next {
+      bottom: 0;
+      left: 50%;
+      right: unset;
+      top: unset;
+      transform: translate(-50%, calc(-1 * var(--swipe-navigation-next-bottom)));
+    }
+  }
+
+  &--navigation-prev-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-100%, -50%);
+    }
+  }
+
+  &--navigation-next-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(100%, -50%);
+    }
+  }
+
+  &--navigation-vertical-prev-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-50%, -100%);
+    }
+  }
+
+  &--navigation-vertical-next-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-50%, 100%);
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" ref="swipeEl" v-hover:desktop="handleHovering">
+  <div :class="n()" ref="swipeEl" v-hover="handleHovering">
     <div
       :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
@@ -15,35 +15,83 @@
       <slot />
     </div>
 
-    <slot v-if="navigation" name="prev" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <transition :name="navigation === 'hover' ? n('--navigation-prev-transition') : ''">
+    <slot
+      v-if="navigation"
+      name="prev"
+      v-bind="{
+        index,
+        length,
+        prev,
+        next,
+        to,
+        hovering,
+      }"
+    >
+      <transition :name="getNavigationAnimation('prev')">
         <div
-          v-if="hovering || navigation === true"
-          :class="classes(n('navigation'), n('navigation-prev'))"
-          @click="prev()"
+          v-if="navigation === true || hovering"
+          :class="classes(n('navigation'), n('navigation-prev'), [vertical, n('--navigation-vertical-prev')])"
         >
-          <var-button var-swipe-cover :class="n('navigation-prev-button')">
-            <var-icon var-swipe-cover :class="n('navigation-prev-button-icon')" name="chevron-left" />
+          <var-button
+            var-swipe-cover
+            :disabled="!loop && index === 0"
+            :class="n('navigation-prev-button')"
+            @click="prev()"
+          >
+            <var-icon
+              var-swipe-cover
+              :class="n('navigation-prev-button-icon')"
+              :name="vertical ? 'chevron-up' : 'chevron-left'"
+            />
           </var-button>
         </div>
       </transition>
     </slot>
 
-    <slot v-if="navigation" name="next" :index="index" :length="length" :prev="prev" :next="next" :to="to">
-      <transition :name="navigation === 'hover' ? n('--navigation-next-transition') : ''">
+    <slot
+      v-if="navigation"
+      name="next"
+      v-bind="{
+        index,
+        length,
+        hovering,
+        prev,
+        next,
+        to,
+      }"
+    >
+      <transition :name="getNavigationAnimation('next')">
         <div
-          v-if="hovering || navigation === true"
-          :class="classes(n('navigation'), n('navigation-next'))"
-          @click="next()"
+          v-if="navigation === true || hovering"
+          :class="classes(n('navigation'), n('navigation-next'), [vertical, n('--navigation-vertical-next')])"
         >
-          <var-button var-swipe-cover :class="n('navigation-next-button')">
-            <var-icon var-swipe-cover :class="n('navigation-next-button-icon')" name="chevron-right" />
+          <var-button
+            var-swipe-cover
+            :class="n('navigation-next-button')"
+            :disabled="!loop && index === length - 1"
+            @click="next()"
+          >
+            <var-icon
+              var-swipe-cover
+              :class="n('navigation-next-button-icon')"
+              :name="vertical ? 'chevron-down' : 'chevron-right'"
+            />
           </var-button>
         </div>
       </transition>
     </slot>
 
-    <slot name="indicator" :index="index" :length="length" :prev="prev" :next="next" :to="to">
+    <slot
+      name="indicator"
+      v-bind="{
+        index,
+        length,
+        hovering,
+        prev,
+        next,
+        to,
+      }"
+    >
       <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
         <div
           :class="
@@ -61,6 +109,7 @@
 
 <script lang="ts">
 import VarButton from '../button'
+import VarIcon from '../icon'
 import Hover from '../hover'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
@@ -79,7 +128,7 @@ const { name, n, classes } = createNamespace('swipe')
 export default defineComponent({
   name,
   directives: { Hover },
-  components: { VarButton },
+  components: { VarButton, VarIcon },
   props,
   setup(props) {
     const swipeEl = ref<HTMLElement | null>(null)
@@ -438,6 +487,14 @@ export default defineComponent({
       }
     }
 
+    function getNavigationAnimation(type: 'prev' | 'next') {
+      if (props.navigation !== 'hover') {
+        return ''
+      }
+
+      return props.vertical ? n(`--navigation-vertical-${type}-animation`) : n(`--navigation-${type}-animation`)
+    }
+
     return {
       length,
       index,
@@ -457,6 +514,7 @@ export default defineComponent({
       resize,
       toNumber,
       handleHovering,
+      getNavigationAnimation,
     }
   },
 })
@@ -464,5 +522,10 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
+@import '../hover-overlay/hoverOverlay';
+@import '../ripple/ripple';
+@import '../loading/loading';
+@import '../icon/icon';
 @import './swipe';
 </style>
