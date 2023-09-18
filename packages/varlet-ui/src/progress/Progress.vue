@@ -27,9 +27,9 @@
       :class="classes(n('circle'), [indeterminate, n('circle-indeterminate')])"
       :style="{ width: toSizeUnit(size), height: toSizeUnit(size) }"
     >
-      <svg :class="n('circle-svg')" :style="{ transform: `rotate(${rotate - 90}deg)` }" :viewBox="circleProps.viewBox">
+      <svg :class="n('circle-svg')" :viewBox="circleProps.viewBox">
         <defs v-if="isPlainObject(color)">
-          <linearGradient x1="100%" y1="0%" x2="0%" y2="0%" :id="id">
+          <linearGradient :id="id" x1="100%" y1="0%" x2="0%" y2="0%">
             <stop
               v-for="(progress, idx) in linearGradientProgress"
               :key="idx"
@@ -38,32 +38,30 @@
             ></stop>
           </linearGradient>
         </defs>
-        <circle
+        <path
           v-if="track"
           :class="n('circle-background')"
-          cx="50%"
-          cy="50%"
-          :r="RADIUS"
+          :d="circleProps.path"
           fill="transparent"
           :stroke-width="circleProps.strokeWidth"
           :stroke-dasharray="CIRCUMFERENCE"
           :style="{
             stroke: trackColor,
           }"
-        ></circle>
-        <circle
+        ></path>
+        <path
           :class="classes(n('circle-certain'), n(`circle--${type}`), [indeterminate, n('circle-overlay')])"
-          cx="50%"
-          cy="50%"
-          :r="RADIUS"
+          :d="circleProps.path"
           fill="transparent"
           :stroke-width="circleProps.strokeWidth"
           :stroke-dasharray="CIRCUMFERENCE"
           :stroke-dashoffset="circleProps.strokeOffset"
           :style="{
             stroke: progressColor,
+            transform: `rotateZ(${rotate}deg)`,
+            transformOrigin: '50% 50%',
           }"
-        ></circle>
+        ></path>
       </svg>
 
       <div :class="classes(n('circle-label'), [labelClass, labelClass])" v-if="label">
@@ -114,11 +112,19 @@ export default defineComponent({
       const strokeOffset = `${((ONE_HUNDRED - roundValue) / ONE_HUNDRED) * CIRCUMFERENCE}`
       const strokeWidth = (toPxNum(lineWidth) / toPxNum(size)) * diameter
 
+      const beginPositionX = 0
+      const beginPositionY = -RADIUS
+      const endPositionX = 0
+      const endPositionY = -2 * RADIUS
+      const path = `M ${diameter / 2} ${diameter / 2} m ${beginPositionX} ${beginPositionY} a ${RADIUS} ${RADIUS} 
+        0 1 1 ${endPositionX} ${-endPositionY} a ${RADIUS} ${RADIUS} 0 1 1 ${-endPositionX} ${endPositionY}`
+
       return {
         strokeWidth,
         viewBox,
         strokeOffset,
         roundValue: `${roundValue}%`,
+        path,
       }
     })
 

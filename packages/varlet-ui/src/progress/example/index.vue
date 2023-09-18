@@ -47,7 +47,7 @@ onUnmounted(() => {
 
   <app-type>{{ pack.circle }}</app-type>
   <var-space :size="['8vmin', '8vmin']">
-    <var-progress mode="circle" :value="50" size="18vmin" :color="circleGradientColor" />
+    <var-progress mode="circle" :value="100" size="18vmin" :color="circleGradientColor" />
     <var-progress mode="circle" :value="75" size="18vmin" :track="false" />
     <var-progress mode="circle" label :value="value" line-width="5" size="18vmin" />
     <var-progress mode="circle" type="success" label :value="100" line-width="5" size="18vmin"> success </var-progress>

@@ -149,7 +149,8 @@ describe('test progress component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-progress__circle-svg').attributes('style')).toContain('transform: rotate(-80deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform: rotateZ(10deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform-origin: 50% 50%;')
     wrapper.unmount()
   })
 
