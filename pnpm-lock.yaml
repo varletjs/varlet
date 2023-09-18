@@ -2641,7 +2641,7 @@ packages:
       istanbul-lib-source-maps: 4.0.1
       istanbul-reports: 3.1.5
       test-exclude: 6.0.0
-      vitest: 0.34.3(jsdom@22.1.0)
+      vitest: 0.34.3(jsdom@22.1.0)(less@3.13.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -8707,6 +8707,7 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
 
   /vite-node@0.34.3(@types/node@18.7.20)(less@3.13.1):
     resolution: {integrity: sha512-+0TzJf1g0tYXj6tR2vEyiA42OPq68QkRZCu/ERSo2PtsDJfBpDyEfuKbRvLmZqi/CgC7SCBtyC+WjTGNMRIaig==}
@@ -8727,7 +8728,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: false
 
   /vite@4.3.5(@types/node@18.7.20):
     resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
@@ -8760,6 +8760,7 @@ packages:
       rollup: 3.21.5
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
 
   /vite@4.3.5(@types/node@18.7.20)(less@3.13.1):
     resolution: {integrity: sha512-0gEnL9wiRFxgz40o/i/eTBwm+NEbpUeTWhzKrZDSdKm6nplj+z4lKz8ANDgildxHm47Vg8EUia0aicKbawUVVA==}
@@ -8890,6 +8891,7 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
 
   /vitest@0.34.3(jsdom@22.1.0)(less@3.13.1):
     resolution: {integrity: sha512-7+VA5Iw4S3USYk+qwPxHl8plCMhA5rtfwMjgoQXMT7rO5ldWcdsdo3U1QD289JgglGK4WeOzgoLTsGFu6VISyQ==}
@@ -8954,7 +8956,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: false
 
   /vue-component-type-helpers@1.8.4:
     resolution: {integrity: sha512-6bnLkn8O0JJyiFSIF0EfCogzeqNXpnjJ0vW/SZzNHfe6sPx30lTtTXlE5TFs2qhJlAtDFybStVNpL73cPe3OMQ==}
