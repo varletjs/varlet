@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" ref="swipeEl">
+  <div :class="n()" ref="swipeEl" v-hover:desktop="handleHovering">
     <div
       :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
@@ -14,6 +14,34 @@
     >
       <slot />
     </div>
+
+    <slot v-if="navigation" name="prev" :index="index" :length="length" :prev="prev" :next="next" :to="to">
+      <transition :name="navigation === 'hover' ? n('--navigation-prev-transition') : ''">
+        <div
+          v-if="hovering || navigation === true"
+          :class="classes(n('navigation'), n('navigation-prev'))"
+          @click="prev()"
+        >
+          <var-button var-swipe-cover :class="n('navigation-prev-button')">
+            <var-icon var-swipe-cover :class="n('navigation-prev-button-icon')" name="chevron-left" />
+          </var-button>
+        </div>
+      </transition>
+    </slot>
+
+    <slot v-if="navigation" name="next" :index="index" :length="length" :prev="prev" :next="next" :to="to">
+      <transition :name="navigation === 'hover' ? n('--navigation-next-transition') : ''">
+        <div
+          v-if="hovering || navigation === true"
+          :class="classes(n('navigation'), n('navigation-next'))"
+          @click="next()"
+        >
+          <var-button var-swipe-cover :class="n('navigation-next-button')">
+            <var-icon var-swipe-cover :class="n('navigation-next-button-icon')" name="chevron-right" />
+          </var-button>
+        </div>
+      </transition>
+    </slot>
 
     <slot name="indicator" :index="index" :length="length" :prev="prev" :next="next" :to="to">
       <div :class="classes(n('indicators'), [vertical, n('--indicators-vertical')])" v-if="indicator && length">
@@ -32,6 +60,8 @@
 </template>
 
 <script lang="ts">
+import VarButton from '../button'
+import Hover from '../hover'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
@@ -48,6 +78,8 @@ const { name, n, classes } = createNamespace('swipe')
 
 export default defineComponent({
   name,
+  directives: { Hover },
+  components: { VarButton },
   props,
   setup(props) {
     const swipeEl = ref<HTMLElement | null>(null)
@@ -57,6 +89,7 @@ export default defineComponent({
     const trackTranslate = ref(0)
     const lockDuration = ref(false)
     const index = ref(0)
+    const hovering = ref(false)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
     const { popup, bindPopup } = usePopup()
     const {
@@ -399,6 +432,12 @@ export default defineComponent({
       })
     }
 
+    const handleHovering = (value: boolean) => {
+      if (props.navigation === 'hover') {
+        hovering.value = value
+      }
+    }
+
     return {
       length,
       index,
@@ -406,6 +445,7 @@ export default defineComponent({
       trackSize,
       trackTranslate,
       lockDuration,
+      hovering,
       n,
       classes,
       handleTouchstart,
@@ -416,6 +456,7 @@ export default defineComponent({
       to,
       resize,
       toNumber,
+      handleHovering,
     }
   },
 })

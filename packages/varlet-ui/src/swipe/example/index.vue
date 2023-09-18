@@ -61,6 +61,19 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
+  <app-type>{{ pack.navigation }}</app-type>
+  <var-swipe class="swipe" navigation="hover">
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+    </var-swipe-item>
+  </var-swipe>
+
   <app-type>{{ pack.handleChange }}</app-type>
   <var-swipe class="swipe" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>

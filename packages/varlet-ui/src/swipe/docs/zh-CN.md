@@ -124,6 +124,37 @@
 </style>
 ```
 
+### 导航
+
+```html
+<template>
+  <var-swipe class="swipe-example" navigation="hover">
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example {
+  height: 160px;
+}
+
+.swipe-example-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+</style>
+```
+
 ### 监听切换
 
 ```html
@@ -238,6 +269,7 @@ import { Snackbar } from '@varlet/ui'
 | `indicator-color` | 指示器颜色 | _string_ | `-` |
 | `vertical` | 是否开启垂直轮播 | _boolean_ | `false` |
 | `touchable` | 是否可以拖动 | _boolean_ | `true` |
+| `navigation` | 是否显示导航箭头 | _boolean \| string_ | `false` |
 
 ### 方法
 
@@ -267,6 +299,8 @@ import { Snackbar } from '@varlet/ui'
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
+| `prev` | 上一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
+| `next` | 下一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 | `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 
 #### SwipeItem Slots
@@ -284,3 +318,9 @@ import { Snackbar } from '@varlet/ui'
 | `--swipe-indicator-color` | `#fff` |
 | `--swipe-indicators-offset` | `10px` |
 | `--swipe-indicator-offset` | `4px` |
+| `--swipe-navigation-button-width` | `36px` |
+| `--swipe-navigation-button-height` | `36px` |
+| `--swipe-navigation-button-border-radius` | `50%` |
+| `--swipe-navigation-icon-size` | `20px` |
+| `--swipe-navigation-prev-left` | `8px`  |  
+| `--swipe-navigation-next-right` | `8px` |

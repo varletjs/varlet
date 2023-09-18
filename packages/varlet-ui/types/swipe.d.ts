@@ -7,6 +7,8 @@ export interface SwipeToOptions {
   event?: boolean
 }
 
+export type SwipeNavigation = 'hover'
+
 export interface SwipeProps extends BasicAttributes {
   loop?: boolean
   autoplay?: string | number
@@ -16,6 +18,7 @@ export interface SwipeProps extends BasicAttributes {
   indicatorColor?: string
   vertical?: boolean
   touchable?: boolean
+  navigation?: boolean | SwipeNavigation
   onChange?: ListenerProp<(index: number) => void>
 }
 
@@ -38,6 +41,8 @@ export class Swipe extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    prev(data: SwipeIndicatorData): VNode[]
+    next(data: SwipeIndicatorData): VNode[]
     indicator(data: SwipeIndicatorData): VNode[]
   }
 

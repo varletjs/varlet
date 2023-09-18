@@ -124,6 +124,37 @@
 </style>
 ```
 
+### Navigation
+
+```html
+<template>
+  <var-swipe class="swipe-example" navigation="hover">
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example {
+  height: 160px;
+}
+
+.swipe-example-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+</style>
+```
+
 ### Handle Change
 
 ```html
@@ -239,6 +270,7 @@ import { Snackbar } from '@varlet/ui'
 | `indicator-color` | Indicator color                  | _string_           | `-`     |
 | `vertical`        | Whether to enable vertical swipe | _boolean_          | `false` |
 | `touchable`       | Whether to enable touch          | _boolean_          | `true`  |
+| `navigation` | Whether to show navigation arrows | _boolean \| string_ | `false` |
 
 ### Methods
 
@@ -268,6 +300,8 @@ import { Snackbar } from '@varlet/ui'
 | Name | Description | SlotProps |
 | --- |--------------------| --- |
 | `default`   | Swipe content           | `-`                                   |
+| `prev`   | Preview page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
+| `next`   | Next page button         | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 | `indicator` | Swipe indicator content | `index: number` <br> `length: number` <br> `to`、`prev`、`next`: The type is consistent with the method of the same name |
 
 #### SwipeItem Slots
@@ -285,3 +319,9 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--swipe-indicator-color`   | `#fff`  |
 | `--swipe-indicators-offset` | `10px`  |
 | `--swipe-indicator-offset`  | `4px`   |
+| `--swipe-navigation-button-width` | `36px` |
+| `--swipe-navigation-button-height` | `36px` |
+| `--swipe-navigation-button-border-radius` | `50%` |
+| `--swipe-navigation-icon-size` | `20px` |
+| `--swipe-navigation-prev-left` | `8px`  |  
+| `--swipe-navigation-next-right` | `8px` |
