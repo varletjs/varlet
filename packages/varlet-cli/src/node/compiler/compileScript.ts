@@ -1,7 +1,8 @@
 import fse from 'fs-extra'
+import esbuild from 'esbuild'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
-import { getVersion, isDir, replaceExt } from '../shared/fsUtils.js'
+import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
 import { resolve, extname, dirname } from 'path'
 import type { BabelFileResult } from '@babel/core'
@@ -104,10 +105,37 @@ export const resolveDependence = (file: string, script: string) => {
     .replace(IMPORT_DEPENDENCE_RE, replacer)
 }
 
-export async function compileScript(script: string, file: string) {
-  let { code } = (await transformAsync(script, {
+export async function compileScriptByBabel(script: string, file: string) {
+  const { code } = (await transformAsync(script, {
     filename: file,
+    babelrc: false,
+    presets: ['@babel/preset-typescript'],
+    plugins: [
+      [
+        '@vue/babel-plugin-jsx',
+        {
+          enableObjectSlots: false,
+        },
+      ],
+    ],
   })) as BabelFileResult
+
+  return code!
+}
+export async function compileScriptByEsbuild(script: string) {
+  const { code } = await esbuild.transform(script, {
+    loader: 'ts',
+    target: 'es2016',
+    format: 'esm',
+  })
+
+  return code
+}
+
+export async function compileScript(script: string, file: string) {
+  let code = isJsx(file) || isTsx(file) ? await compileScriptByBabel(script, file) : script
+
+  code = await compileScriptByEsbuild(code)
 
   if (code) {
     code = resolveDependence(file, code)

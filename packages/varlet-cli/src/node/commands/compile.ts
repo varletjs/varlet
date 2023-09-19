@@ -26,8 +26,8 @@ export async function runTask(taskName: string, task: () => any) {
 
 export async function compile() {
   process.env.NODE_ENV = 'compile'
-
   await removeDir()
+
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
   process.env.BABEL_MODULE = 'module'
