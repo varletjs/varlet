@@ -179,9 +179,9 @@ export default defineComponent({
     )
 
     function preview(varFile: VarFile) {
-      const { disabled, readonly, previewed } = props
+      const { disabled, previewed } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !previewed) {
+      if (form?.disabled.value || disabled || !previewed) {
         return
       }
 
