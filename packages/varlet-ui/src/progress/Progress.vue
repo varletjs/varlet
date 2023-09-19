@@ -77,13 +77,13 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { isPlainObject, toNumber } from '@varlet/shared'
+import { useId } from '@varlet/use'
 import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
 const ONE_HUNDRED = 100
 const RADIUS = 20
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
-let uid = 0
 
 const { name, n, classes } = createNamespace('progress')
 
@@ -91,7 +91,7 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const id = `var-progress-${uid++}`
+    const id = useId()
     const linearProps = computed(() => {
       const value = toNumber(props.value)
       const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
@@ -131,7 +131,7 @@ export default defineComponent({
     const progressColor = computed(() => {
       // set linear gradient color for circle progress
       if (isPlainObject(props.color)) {
-        return `url(#${id})`
+        return `url(#${id.value})`
       }
 
       return props.color
