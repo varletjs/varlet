@@ -28,6 +28,10 @@ export const isSFC = (file: string): boolean => pathExistsSync(file) && extname(
 
 export const isDTS = (file: string): boolean => pathExistsSync(file) && file.endsWith('.d.ts')
 
+export const isJsx = (file: string): boolean => pathExistsSync(file) && file.endsWith('.jsx')
+
+export const isTsx = (file: string): boolean => pathExistsSync(file) && file.endsWith('.tsx')
+
 export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIPTS_EXTENSIONS.includes(extname(file))
 
 export const isLess = (file: string): boolean => pathExistsSync(file) && extname(file) === '.less'

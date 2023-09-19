@@ -67,10 +67,6 @@
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
     "commit-msg": "pnpm exec varlet-cli commit-lint $1"
   },
-  "browserslist": [
-    "Chrome >= 54",
-    "iOS >= 10"
-  ],
   "packageManager": "pnpm@8.0.0",
   "engines": {
     "pnpm": ">=8.0"
