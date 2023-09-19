@@ -16,7 +16,6 @@
   "license": "MIT",
   "files": [
     "lib",
-    "cjs",
     "client.js",
     "client.d.ts",
     "template",
