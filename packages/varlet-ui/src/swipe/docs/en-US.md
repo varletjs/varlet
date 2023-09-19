@@ -278,8 +278,8 @@ import { Snackbar } from '@varlet/ui'
 | Prop              | Description                      | Type               | Default |
 | ----------------- | -------------------------------- | ------------------ | ------- |
 | `loop`            | Whether to swipe the loop        | _boolean_          | `true`  |
-| `autoplay`        | Auto play interval time(ms)      | _string \| number_ | `-`     |
-| `duration`        | Transition time                  | _string \| number_ | `300`   |
+| `autoplay`        | Auto play interval time (ms)      | _string \| number_ | `-`     |
+| `duration`        | Transition time (ms)                  | _string \| number_ | `300`   |
 | `initial-index`   | Initializes the index displayed  | _string \| number_ | `0`     |
 | `indicator`       | Whether to display the indicator | _boolean_          | `true`  |
 | `indicator-color` | Indicator color                  | _string_           | `-`     |
