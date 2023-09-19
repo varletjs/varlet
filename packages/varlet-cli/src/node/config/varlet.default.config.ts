@@ -547,5 +547,8 @@ export default defineConfig({
     fontFamilyClassName: 'var-icon--set',
     base64: true,
   },
+  esbuild: {
+    target: 'es2016',
+  },
   directives: [],
 })

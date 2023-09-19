@@ -58,6 +58,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `directives` | Directive folder names | _string[]_ | `[]` |
 | `copy` | Copy file options | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
 | `icons` | Font icon packaging related configuration | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
+| `esbuild` | Esbuild configuration | _[VarletConfigEsbuild](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 
 #### Menu
 

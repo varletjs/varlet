@@ -5,6 +5,8 @@ import { bigCamelize } from '@varlet/shared'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
 import { resolve, extname, dirname } from 'path'
+import { getVarletConfig } from '../config/varlet.config.js'
+import { get } from 'lodash-es'
 import type { BabelFileResult } from '@babel/core'
 
 const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExistsSync } = fse
@@ -123,9 +125,11 @@ export async function compileScriptByBabel(script: string, file: string) {
   return code!
 }
 export async function compileScriptByEsbuild(script: string) {
+  const varletConfig = await getVarletConfig()
+
   const { code } = await esbuild.transform(script, {
     loader: 'ts',
-    target: 'es2016',
+    target: get(varletConfig, 'esbuild.target'),
     format: 'esm',
   })
 

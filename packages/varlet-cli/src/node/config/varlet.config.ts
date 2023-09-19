@@ -30,6 +30,10 @@ export interface VarletConfigIcons {
   fontStyle?: string
 }
 
+export interface VarletConfigEsbuild {
+  target?: string | string[]
+}
+
 export interface VarletConfig {
   /**
    * @default `Varlet`
@@ -68,6 +72,7 @@ export interface VarletConfig {
   mobile?: Record<string, any>
   copy?: CopyOptions['paths']
   icons?: VarletConfigIcons
+  esbuild?: VarletConfigEsbuild
   /**
    * @default `[]`
    * Directive folder name for component library.
