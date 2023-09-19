@@ -220,16 +220,9 @@ export function useTeleport() {
   }
 }
 
-export function exposeApis<T = Record<string, any>>(apis: T) {
-  const instance = getCurrentInstance()
-  if (instance) {
-    Object.assign(instance.proxy!, apis)
-  }
-}
-
-type ClassName = string | undefined | null
-type Classes = (ClassName | [any, ClassName, ClassName?])[]
-type BEM<S extends string | undefined, N extends string, NC extends string> = S extends undefined
+export type ClassName = string | undefined | null
+export type Classes = (ClassName | [any, ClassName, ClassName?])[]
+export type BEM<S extends string | undefined, N extends string, NC extends string> = S extends undefined
   ? NC
   : S extends `$--${infer CM}`
   ? `${N}--${CM}`

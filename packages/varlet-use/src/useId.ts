@@ -6,7 +6,7 @@ export function useId() {
   const instance = getCurrentInstance()!
   const name = kebabCase(instance.type.name!)
 
-  id.value = process.env.NODE_ENV === 'test' ? name : `${name}-${instance.uid}`
+  id.value = process.env.NODE_ENV === 'test' ? `${name}-mock-id` : `${name}-${instance.uid}`
 
   return id
 }

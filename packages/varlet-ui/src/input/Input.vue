@@ -124,12 +124,12 @@
 <script lang="ts">
 import VarFormDetails from '../form-details'
 import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
-import { defineComponent, getCurrentInstance, ref, computed, nextTick } from 'vue'
+import { defineComponent, ref, computed, nextTick } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, useId } from '@varlet/use'
 import { type InputProvider } from './provide'
 
 const { name, n, classes } = createNamespace('input')
@@ -142,7 +142,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const id = ref(`var-input-${getCurrentInstance()!.uid}`)
+    const id = useId()
     const el = ref<HTMLInputElement | null>(null)
     const isFocus = ref(false)
     const isComposing = ref(false)
