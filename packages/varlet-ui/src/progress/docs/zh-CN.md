@@ -39,8 +39,14 @@ onUnmounted(() => {
 通过 `type`、`line-width`、`color`、`track-color` 属性设置线宽、进度条颜色、轨道颜色。
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const gradientColor = ref('linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)')
+</script>
 <template>
   <var-space direction="column" :size="[12, 12]">
+    <var-progress :value="40" :color="gradientColor"/>
     <var-progress type="info" :value="40" />
     <var-progress type="success" :value="60" />
     <var-progress :value="80" :line-width="8" color="#ff9f00" track-color="#f5cb90" />
@@ -56,6 +62,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
 const interval = ref(0)
+const gradientColor = ref({
+  '0%': '#3fecff',
+  '100%': '#6149f6',
+})
 
 onMounted(() => {
   interval.value = window.setInterval(() => {
@@ -71,6 +81,7 @@ onUnmounted(() => {
 
 <template>
   <var-space :size="[20, 20]">
+    <var-progress mode="circle" :value="50" :size="60"  :color="gradientColor" />
     <var-progress mode="circle" :value="75" :size="60" :track="false" />
     <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
     <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
@@ -108,7 +119,7 @@ onUnmounted(() => {
 | `type`        | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`      |
 | `value`       | `progress` 的进度                                                  | _string \| number_   |  `0`  |
 | `line-width`  | `progress` 的线宽                                                  | _string \| number_   | `4` |
-| `color`       | `progress` 的颜色                                                  | _string_ | `#005CAF` |
+| `color`       | `progress` 的颜色 (环形进度条设置渐变色请使用object)                                                  | _string \| object_ | `-` |
 | `track-color` | `progress` 轨道的颜色                                                | _string_ | `#d8d8d8` |
 | `label`       | 是否显示 `label`                                                    | _boolean_ | `false`   |
 | `label-class` | 自定义 `label` 的类名                                                 | _string_ | `-`       |

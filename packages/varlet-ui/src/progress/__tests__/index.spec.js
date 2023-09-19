@@ -53,7 +53,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress color', () => {
+  test('test linear progress color', () => {
     const wrapper = mount(VarProgress, {
       props: {
         color: 'red',
@@ -61,6 +61,21 @@ describe('test progress component props', () => {
     })
 
     expect(wrapper.find('.var-progress__linear-certain').attributes('style')).toContain('background: red;')
+    wrapper.unmount()
+  })
+
+  test('test circle progress color', () => {
+    const wrapper = mount(VarProgress, {
+      props: {
+        color: {
+          '0%': '#3fecff',
+          '100%': '#6149f6',
+        },
+        mode: 'circle',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 
@@ -134,7 +149,8 @@ describe('test progress component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-progress__circle-svg').attributes('style')).toContain('transform: rotate(-80deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform: rotateZ(10deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform-origin: 50% 50%;')
     wrapper.unmount()
   })
 
