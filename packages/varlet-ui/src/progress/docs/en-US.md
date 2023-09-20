@@ -119,7 +119,7 @@ Enable indeterminate animation through the `indeterminate` attribute when loadin
 | `type`        | Progress type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `primary` |
 | `value`       | Completion value                                                                    | _string \| number_   |  `0`  |
 | `line-width`  | Width of the progress bar                                                           | _string \| number_   | `4` |
-| `color`       | Color of the progress bar (The circular progress bar sets the gradient color, please use object)                                    | _string \| object_ | `-` |
+| `color`       | Color of the progress bar (The circular progress bar sets the gradient color, please use object. Gradient is the same as svg's linearGradient element)                                    | _string \| object_ | `-` |
 | `track-color` | Color of the progress track                                                         | _string_ | `#d8d8d8` |
 | `label`       | Whether the label is visible or not                                                 | _boolean_ | `false`   |
 | `label-class` | Custom label class name                                                             | _string_ | `-`       |
