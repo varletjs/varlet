@@ -149,10 +149,10 @@ export default defineComponent({
       circleProps,
       progressColor,
       linearGradientProgress,
-      isPlainObject,
       n,
       classes,
       toSizeUnit,
+      isPlainObject,
     }
   },
 })
