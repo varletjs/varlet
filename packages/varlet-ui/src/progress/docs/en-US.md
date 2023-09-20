@@ -11,18 +11,22 @@ Display the current progress of an operation flow.
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
-const interval = ref(0)
+let timer
 
 onMounted(() => {
-  interval.value = window.setInterval(() => {
-    if (value.value >= 100) value.value = 0
-    else value.value += 20
+  timer = window.setInterval(() => {
+    if (value.value >= 100) {
+      value.value = 0
+      return
+    }
+
+    value.value += 20
   }, 1000)
 })
 
 onUnmounted(() => {
-  window.clearInterval(interval.value)
-})
+  window.clearInterval(timer)
+})  
 </script>
 
 <template>
@@ -39,14 +43,9 @@ onUnmounted(() => {
 Set the line width, progress bar color and track color through the attributes of `type`, `line-width`, `color`, `track-color`.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const gradientColor = ref('linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)')
-</script>
 <template>
   <var-space direction="column" :size="[12, 12]">
-    <var-progress :value="40" :color="gradientColor"/>
+    <var-progress :value="40" color="linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)"/>
     <var-progress type="info" :value="40" />
     <var-progress type="success" :value="60" />
     <var-progress :value="80" :line-width="8" color="#ff9f00" track-color="#f5cb90" />
@@ -61,27 +60,35 @@ const gradientColor = ref('linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
-const interval = ref(0)
-const gradientColor = ref({
-  '0%': '#3fecff',
-  '100%': '#6149f6',
-})
+let timer
 
 onMounted(() => {
-  interval.value = window.setInterval(() => {
-    if (value.value >= 100) value.value = 0
-    else value.value += 20
+  timer = window.setInterval(() => {
+    if (value.value >= 100) {
+      value.value = 0
+      return
+    }
+
+    value.value += 20
   }, 1000)
 })
 
 onUnmounted(() => {
-  window.clearInterval(interval.value)
-})
+  window.clearInterval(timer)
+})  
 </script>
 
 <template>
   <var-space :size="[20, 20]">
-    <var-progress mode="circle" :value="50" :size="60"  :color="gradientColor" />
+    <var-progress 
+      mode="circle" 
+      :value="100" 
+      :size="60"  
+      :color="{
+        '0%': '#3fecff',
+        '100%': '#6149f6',
+      }" 
+    />
     <var-progress mode="circle" :value="75" :size="60" :track="false" />
     <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
     <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
