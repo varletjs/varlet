@@ -32,18 +32,21 @@ export async function compileBundle() {
       fileName: `${name}.esm.js`,
       output: ES_DIR,
       emptyOutDir: false,
+      removeEnv: true,
     },
     {
       format: 'cjs',
       fileName: `${name}.cjs.js`,
       output: LIB_DIR,
       emptyOutDir: false,
+      removeEnv: false,
     },
     {
       format: 'umd',
       fileName: `${name}.js`,
       output: UMD_DIR,
       emptyOutDir: true,
+      removeEnv: true,
     },
   ]
   const tasks = buildOptions.map((options) => build(getBundleConfig(varletConfig, options)))

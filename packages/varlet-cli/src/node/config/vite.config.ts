@@ -95,13 +95,14 @@ export interface BundleBuildOptions {
   fileName: string
   output: string
   format: 'es' | 'cjs' | 'umd'
+  removeEnv: boolean
   emptyOutDir: boolean
 }
 
 export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
   const plugins = []
   const name = get(varletConfig, 'name')
-  const { fileName, output, format, emptyOutDir } = buildOptions
+  const { fileName, output, format, emptyOutDir, removeEnv } = buildOptions
 
   if (format === 'umd') {
     plugins.push(
@@ -112,17 +113,14 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
     )
   }
 
-  const define =
-    format === 'umd'
-      ? {
-          'process.env.NODE_ENV': JSON.stringify('production'),
-        }
-      : undefined
-
   return {
     logLevel: 'silent',
 
-    define,
+    define: removeEnv
+      ? {
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }
+      : undefined,
 
     plugins,
 
