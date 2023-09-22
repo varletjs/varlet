@@ -118,12 +118,8 @@ const TransitionGroupHost = {
           ;(transitionGroupEl as HTMLElement).classList.remove('var-pointer-auto')
         }
 
-        if (isAllowMultiple) reactiveSnackOptions.position = 'top'
-
-        const position = isAllowMultiple ? 'relative' : 'absolute'
-
         const style = {
-          position,
+          position: isAllowMultiple ? 'relative' : 'absolute',
           ...getTop(reactiveSnackOptions.position),
         }
 
@@ -284,7 +280,7 @@ function updateUniqOption(reactiveSnackOptions: SnackbarOptions, _update: string
 }
 
 function getTop(position = 'top') {
-  if (position === 'bottom') return { [position]: '5%' }
+  if (position === 'bottom') return { top: '85%' }
 
   return { top: position === 'top' ? '5%' : '45%' }
 }
