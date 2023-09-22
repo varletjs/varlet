@@ -31,7 +31,9 @@
           )
         "
         v-if="!maxlength || modelValue.length < toNumber(maxlength)"
-        v-ripple="{ disabled: disabled || formDisabled || readonly || formReadonly || !ripple || $slots.default }"
+        v-ripple="{
+          disabled: disabled || formDisabled || readonly || formReadonly || !ripple || Boolean($slots.default),
+        }"
         v-hover:desktop="handleHovering"
         @click="chooseFile"
       >
