@@ -44,5 +44,17 @@
   "packageManager": "pnpm@8.7.5",
   "engines": {
     "pnpm": ">=8.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "array-includes": "npm:@nolyfill/array-includes@latest",
+      "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
+      "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
+      "has": "npm:@nolyfill/has@latest",
+      "object.assign": "npm:@nolyfill/object.assign@latest",
+      "object.entries": "npm:@nolyfill/object.entries@latest",
+      "object.values": "npm:@nolyfill/object.values@latest",
+      "side-channel": "npm:@nolyfill/side-channel@latest"
+    }
   }
 }
