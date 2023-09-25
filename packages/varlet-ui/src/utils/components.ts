@@ -2,8 +2,6 @@ import { useEventListener } from '@varlet/use'
 import {
   createApp,
   h,
-  getCurrentInstance,
-  isVNode,
   ref,
   onActivated,
   onDeactivated,
@@ -11,11 +9,11 @@ import {
   Fragment,
   computed,
   watch,
+  nextTick,
   type PropType,
   type ExtractPropTypes,
   type Component,
   type VNode,
-  type ComponentInternalInstance,
   type Ref,
   type WritableComputedRef,
   type ComponentPublicInstance,
@@ -29,20 +27,6 @@ export type ListenerProp<F> = F | F[]
 export interface MountInstance {
   instance: ComponentPublicInstance
   unmount: () => void
-}
-
-export interface ChildrenCounter {
-  collect(instance: ComponentInternalInstance): void
-
-  clear(instance: ComponentInternalInstance): void
-
-  instances: ComponentInternalInstance[]
-}
-
-export interface BaseParentProvider<C> {
-  collect(childProvider: C): void
-
-  clear(childProvider: C): void
 }
 
 export type ExtractPublicPropTypes<P> = Partial<ExtractPropTypes<P>>
@@ -128,37 +112,6 @@ export function flatFragment(vNodes: any) {
   })
 
   return result
-}
-
-export function flatVNodes(subTree: any) {
-  const vNodes: VNode[] = []
-
-  const flat = (subTree: any) => {
-    if (subTree?.component) {
-      flat(subTree?.component.subTree)
-      return
-    }
-
-    if (Array.isArray(subTree?.children)) {
-      subTree.children.forEach((child: any) => {
-        if (isVNode(child)) {
-          vNodes.push(child)
-
-          flat(child)
-        }
-      })
-    }
-  }
-
-  flat(subTree)
-
-  return vNodes
-}
-
-export function keyInProvides(key: symbol) {
-  const instance = getCurrentInstance() as any
-
-  return key in instance.provides
 }
 
 export function useValidation() {
@@ -326,17 +279,29 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   }
 
   const proxy = ref<P[K]>(getValue())
+  let locking = false
 
   watch(
     () => props[key],
-    () => {
+    async () => {
+      if (locking) {
+        return
+      }
+
+      locking = true
       proxy.value = getValue()
+      await nextTick()
+      locking = false
     }
   )
 
   watch(
     () => proxy.value,
     (newValue: P[K]) => {
+      if (locking) {
+        return
+      }
+
       emit ? emit(event, newValue) : call(props[event], newValue)
     }
   )

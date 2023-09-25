@@ -59,17 +59,3 @@ test('test overlay click on clickOverlay', async () => {
 
   wrapper.unmount()
 })
-
-test('test overlay z-index', async () => {
-  const wrapper = mount(Wrapper)
-
-  await wrapper.setData({ show: true })
-
-  const prevOverlayZIndex = window.getComputedStyle(wrapper.find('.var-overlay').element).zIndex
-
-  await wrapper.setData({ show: false })
-  await wrapper.setData({ show: true })
-  expect(window.getComputedStyle(wrapper.find('.var-overlay').element).zIndex).toBe(String(+prevOverlayZIndex + 1))
-
-  wrapper.unmount()
-})

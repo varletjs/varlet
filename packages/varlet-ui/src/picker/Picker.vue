@@ -70,13 +70,13 @@
             @transitionend="handleTransitionend(c)"
           >
             <div
-              :class="n('option')"
+              v-for="(option, index) in c.column"
+              :key="getValue(option)"
+              :class="classes(n('option'), option.className)"
               :style="{ height: `${optionHeight}px` }"
-              v-for="(t, i) in c.column.texts"
-              :key="t"
-              @click="handleClick(c, i)"
+              @click="handleClick(c, index)"
             >
-              <div :class="n('text')">{{ textFormatter(t, c.columnIndex) }}</div>
+              <div :class="classes(n('text'), option.textClassName)">{{ option[getOptionKey('text')] }}</div>
             </div>
           </div>
         </div>
@@ -96,28 +96,25 @@
 <script lang="ts">
 import VarButton from '../button'
 import VarPopup from '../popup'
-import { defineComponent, watch, ref, computed, Transition, toRaw, type ComponentPublicInstance } from 'vue'
-import { props, type CascadeColumn, type NormalColumn } from './props'
+import { defineComponent, watch, ref, computed, Transition, type ComponentPublicInstance } from 'vue'
+import { props, type PickerColumnOption } from './props'
 import { useTouch } from '@varlet/use'
-import { clamp, clampArrayRange, isArray } from '@varlet/shared'
+import { clamp, clampArrayRange } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { pack } from '../locale'
-import { createNamespace, call } from '../utils/components'
-import { type Texts } from './index'
+import { createNamespace, call, useVModel } from '../utils/components'
 
 export interface ScrollColumn {
   id: number
   touching: boolean
   index: number
-  columnIndex: number
   prevY: number
   momentumPrevY: number
   momentumTime: number
   translate: number
   duration: number
   scrolling: boolean
-  column: NormalColumn
-  columns?: CascadeColumn[]
+  column: PickerColumnOption[]
   scrollEl: HTMLElement | null
 }
 
@@ -138,6 +135,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
+    const modelValue = useVModel(props, 'modelValue')
     const scrollColumns = ref<ScrollColumn[]>([])
     const optionHeight = computed(() => toPxNum(props.optionHeight))
     const optionCount = computed(() => toPxNum(props.optionCount))
@@ -147,21 +145,103 @@ export default defineComponent({
 
     let prevIndexes: number[] = []
 
-    watch(
-      () => props.columns,
-      (newValue: any) => {
-        scrollColumns.value = props.cascade
-          ? normalizeCascadeColumns(toRaw(newValue) as CascadeColumn[])
-          : normalizeNormalColumns(toRaw(newValue) as NormalColumn[] | Texts)
+    buildScrollColumns()
 
-        const { indexes } = getPicked()
-        prevIndexes = [...indexes]
-      },
-      {
-        immediate: true,
-        deep: true,
+    watch(() => props.columns, buildScrollColumns, { deep: true })
+
+    watch(() => modelValue.value, updateScrollColumnsIndex)
+
+    function getOptionKey(key: 'text' | 'value' | 'children') {
+      const keyMap = {
+        text: props.textKey,
+        value: props.valueKey,
+        children: props.childrenKey,
       }
-    )
+
+      return keyMap[key]
+    }
+
+    function getValue(option: PickerColumnOption): string | number {
+      return option[getOptionKey('value')] ?? option[getOptionKey('text')]
+    }
+
+    function setPrevIndexes(indexes: number[]) {
+      prevIndexes = [...indexes]
+    }
+
+    function normalizeNormalMode(columns: PickerColumnOption[][]) {
+      return columns.map((column) => {
+        const scrollColumn: ScrollColumn = {
+          id: sid++,
+          prevY: 0,
+          momentumPrevY: 0,
+          touching: false,
+          translate: center.value,
+          index: 0,
+          duration: 0,
+          momentumTime: 0,
+          column,
+          scrollEl: null,
+          scrolling: false,
+        }
+        scrollTo(scrollColumn)
+        return scrollColumn
+      })
+    }
+
+    function normalizeCascadeMode(column: PickerColumnOption[]) {
+      const scrollColumns: ScrollColumn[] = []
+
+      createChildren(scrollColumns, column)
+
+      return scrollColumns
+    }
+
+    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[]) {
+      if (children.length) {
+        const scrollColumn: ScrollColumn = {
+          id: sid++,
+          prevY: 0,
+          momentumPrevY: 0,
+          touching: false,
+          translate: center.value,
+          index: 0,
+          duration: 0,
+          momentumTime: 0,
+          column: children,
+          scrollEl: null,
+          scrolling: false,
+        }
+
+        scrollColumns.push(scrollColumn)
+        scrollTo(scrollColumn)
+        createChildren(scrollColumns, scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [])
+      }
+    }
+
+    function rebuildChildren(scrollColumn: ScrollColumn) {
+      scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
+      createChildren(scrollColumns.value, scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [])
+    }
+
+    function buildScrollColumns() {
+      scrollColumns.value = props.cascade
+        ? normalizeCascadeMode(props.columns as PickerColumnOption[])
+        : normalizeNormalMode(props.columns as PickerColumnOption[][])
+
+      updateScrollColumnsIndex()
+    }
+
+    function updateScrollColumnsIndex() {
+      scrollColumns.value.forEach((scrollColumn, idx) => {
+        const index = scrollColumn.column.findIndex((option) => modelValue.value[idx] === getValue(option))
+        scrollColumn.index = index === -1 ? 0 : index
+        scrollTo(scrollColumn)
+      })
+
+      const { indexes } = getPicked()
+      setPrevIndexes(indexes)
+    }
 
     function setScrollEl(el: Element | ComponentPublicInstance | null, scrollColumn: ScrollColumn) {
       scrollColumn.scrollEl = el as HTMLElement
@@ -172,15 +252,14 @@ export default defineComponent({
     }
 
     function clampTranslate(scrollColumn: ScrollColumn) {
-      const minTranslate = center.value - scrollColumn.column.texts.length * optionHeight.value
+      const minTranslate = center.value - scrollColumn.column.length * optionHeight.value
       const maxTranslate = optionHeight.value + center.value
       scrollColumn.translate = clamp(scrollColumn.translate, minTranslate, maxTranslate)
     }
 
     function getTargetIndex(scrollColumn: ScrollColumn, viewTranslate: number) {
       const index = Math.round((center.value - viewTranslate) / optionHeight.value)
-
-      return clampArrayRange(index, scrollColumn.column.texts)
+      return clampArrayRange(index, scrollColumn.column)
     }
 
     function updateTranslate(scrollColumn: ScrollColumn) {
@@ -189,12 +268,22 @@ export default defineComponent({
     }
 
     function getPicked() {
-      const texts = scrollColumns.value.map((scrollColumn) => scrollColumn.column.texts[scrollColumn.index])
-      const indexes = scrollColumns.value.map((scrollColumn) => scrollColumn.index)
+      const values: (string | number)[] = []
+      const indexes: number[] = []
+      const options: PickerColumnOption[] = []
+
+      scrollColumns.value.forEach(({ column, index }) => {
+        const option = column[index]
+
+        values.push(getValue(option))
+        indexes.push(index)
+        options.push(option)
+      })
 
       return {
-        texts,
+        values,
         indexes,
+        options,
       }
     }
 
@@ -213,7 +302,6 @@ export default defineComponent({
       }
 
       scrollColumn.index = index
-      scrollColumn.scrolling = true
       scrollTo(scrollColumn, TRANSITION_DURATION)
     }
 
@@ -251,16 +339,15 @@ export default defineComponent({
       const distance = scrollColumn.translate - scrollColumn.momentumPrevY
       const duration = performance.now() - scrollColumn.momentumTime
       const shouldMomentum = Math.abs(distance) >= MOMENTUM_ALLOW_DISTANCE && duration <= MOMENTUM_RECORD_TIME
+      const oldTranslate = scrollColumn.translate
 
       if (shouldMomentum) {
         momentum(scrollColumn, distance, duration)
       }
 
       scrollColumn.index = getTargetIndex(scrollColumn, scrollColumn.translate)
-      const oldTranslate = scrollColumn.translate
-      const newTranslate = updateTranslate(scrollColumn)
-      scrollColumn.scrolling = newTranslate !== oldTranslate
       scrollTo(scrollColumn, shouldMomentum ? MOMENTUM_TRANSITION_DURATION : TRANSITION_DURATION)
+      scrollColumn.scrolling = scrollColumn.translate !== oldTranslate
 
       // Can't trigger transition end when not scrolling, change needs to be triggered manually.
       if (!scrollColumn.scrolling) {
@@ -271,83 +358,6 @@ export default defineComponent({
     function handleTransitionend(scrollColumn: ScrollColumn) {
       scrollColumn.scrolling = false
       change(scrollColumn)
-    }
-
-    function normalizeNormalColumns(normalColumns: NormalColumn[]) {
-      return normalColumns.map((column: NormalColumn | any[], columnIndex: number) => {
-        const normalColumn = (isArray(column) ? { texts: column } : column) as NormalColumn
-        const scrollColumn: ScrollColumn = {
-          id: sid++,
-          prevY: 0,
-          momentumPrevY: 0,
-          touching: false,
-          translate: center.value,
-          index: normalColumn.initialIndex ?? 0,
-          columnIndex,
-          duration: 0,
-          momentumTime: 0,
-          column: normalColumn,
-          scrollEl: null,
-          scrolling: false,
-        }
-        scrollTo(scrollColumn)
-        return scrollColumn
-      })
-    }
-
-    function normalizeCascadeColumns(cascadeColumns: CascadeColumn[]) {
-      const scrollColumns: ScrollColumn[] = []
-
-      createChildren(scrollColumns, cascadeColumns, 0, true)
-
-      return scrollColumns
-    }
-
-    function createChildren(
-      scrollColumns: ScrollColumn[],
-      children: CascadeColumn[],
-      columnIndex: number,
-      initial = false
-    ) {
-      if (isArray(children) && children.length) {
-        const index = initial ? props.cascadeInitialIndexes[scrollColumns.length] ?? 0 : 0
-
-        const scrollColumn: ScrollColumn = {
-          id: sid++,
-          prevY: 0,
-          momentumPrevY: 0,
-          touching: false,
-          translate: center.value,
-          index,
-          columnIndex,
-          duration: 0,
-          momentumTime: 0,
-          column: {
-            texts: children.map((cascadeColumn) => cascadeColumn[props.textKey]),
-          },
-          columns: children,
-          scrollEl: null,
-          scrolling: false,
-        }
-
-        scrollColumns.push(scrollColumn)
-        scrollTo(scrollColumn)
-        createChildren(
-          scrollColumns,
-          (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
-          columnIndex + 1,
-          initial
-        )
-      }
-    }
-
-    function rebuildChildren(scrollColumn: ScrollColumn) {
-      scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
-      createChildren(
-        scrollColumns.value,
-        (scrollColumn.columns as CascadeColumn[])[scrollColumn.index].children,
-        scrollColumn.columnIndex + 1
-      )
     }
 
     function isSamePicked() {
@@ -367,15 +377,16 @@ export default defineComponent({
       }
 
       const hasScrolling = scrollColumns.value.some((scrollColumn) => scrollColumn.scrolling)
-
-      if (hasScrolling) {
+      const hasTouching = scrollColumns.value.some((scrollColumn) => scrollColumn.touching)
+      if (hasScrolling || hasTouching) {
         return
       }
 
       // rebuild will update the value of picked, so need to get the latest value again.
-      const { texts, indexes } = getPicked()
-      prevIndexes = [...indexes]
-      call(onChange, texts, indexes)
+      const { values, indexes, options } = getPicked()
+      setPrevIndexes(indexes)
+      call(onChange, values, indexes, options)
+      modelValue.value = values
     }
 
     function stopScroll() {
@@ -400,18 +411,18 @@ export default defineComponent({
     function confirm() {
       stopScroll()
 
-      const { texts, indexes } = getPicked()
-      prevIndexes = [...indexes]
-      call(props.onConfirm, texts, indexes)
+      const { values, indexes, options } = getPicked()
+      setPrevIndexes(indexes)
+      call(props.onConfirm, values, indexes, options)
     }
 
     // expose
     function cancel() {
       stopScroll()
 
-      const { texts, indexes } = getPicked()
-      prevIndexes = [...indexes]
-      call(props.onCancel, texts, indexes)
+      const { values, indexes, options } = getPicked()
+      setPrevIndexes(indexes)
+      call(props.onCancel, values, indexes, options)
     }
 
     return {
@@ -425,6 +436,8 @@ export default defineComponent({
       n,
       classes,
       setScrollEl,
+      getOptionKey,
+      getValue,
       handlePopupUpdateShow,
       handleTouchstart,
       handleTouchmove,

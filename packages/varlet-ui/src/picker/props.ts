@@ -1,21 +1,24 @@
 import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { props as popupProps } from '../popup/props'
-import { Texts } from '.'
 
-export interface NormalColumn {
-  texts: Texts
-  initialIndex?: number
-}
+export type PickerColumnOption = {
+  text?: string | number
+  value?: string | number
+  children?: PickerColumnOption[]
+  className?: string
+  textClassName?: string
 
-export interface CascadeColumn {
-  [textKey: string]: any
-  children: CascadeColumn[]
+  [key: PropertyKey]: any
 }
 
 export const props = {
+  modelValue: {
+    type: Array as PropType<(string | number)[]>,
+    default: () => [],
+  },
   columns: {
-    type: Array as PropType<NormalColumn[] | CascadeColumn[] | Texts>,
+    type: Array as PropType<PickerColumnOption[] | PickerColumnOption[][]>,
     default: () => [],
   },
   title: String,
@@ -23,15 +26,19 @@ export const props = {
     type: String,
     default: 'text',
   },
+  valueKey: {
+    type: String,
+    default: 'value',
+  },
+  childrenKey: {
+    type: String,
+    default: 'children',
+  },
   toolbar: {
     type: Boolean,
     default: true,
   },
   cascade: Boolean,
-  cascadeInitialIndexes: {
-    type: Array as PropType<number[]>,
-    default: () => [],
-  },
   optionHeight: {
     type: [Number, String],
     default: 44,
@@ -46,13 +53,13 @@ export const props = {
   cancelButtonTextColor: String,
   // dynamic internal
   dynamic: Boolean,
-  textFormatter: {
-    type: Function as PropType<(text: any, columnIndex: number) => any>,
-    default: (text: any) => text,
-  },
-  onChange: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
-  onConfirm: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
-  onCancel: defineListenerProp<(texts: Texts, indexes: number[]) => void>(),
+  onChange:
+    defineListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>(),
+  onConfirm:
+    defineListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>(),
+  onCancel:
+    defineListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(values: (string | number)[]) => void>(),
   // dynamic internal
   ...pickProps(popupProps, [
     'show',

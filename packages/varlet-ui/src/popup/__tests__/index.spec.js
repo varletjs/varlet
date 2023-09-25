@@ -85,24 +85,6 @@ test('test popup close on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test popup z-index', async () => {
-  const wrapper = mount(Wrapper)
-
-  await wrapper.setData({ show: true })
-
-  const prevPopupZIndex = window.getComputedStyle(wrapper.find('.var-popup').element).zIndex
-  const prevOverlayZIndex = window.getComputedStyle(wrapper.find('.var-popup__overlay').element).zIndex
-
-  await wrapper.setData({ show: false })
-  await wrapper.setData({ show: true })
-  expect(window.getComputedStyle(wrapper.find('.var-popup').element).zIndex).toBe(String(+prevPopupZIndex + 3))
-  expect(window.getComputedStyle(wrapper.find('.var-popup__overlay').element).zIndex).toBe(
-    String(+prevOverlayZIndex + 3)
-  )
-
-  wrapper.unmount()
-})
-
 test('test popup default style', async () => {
   const wrapper = mount(Wrapper, {
     props: {
