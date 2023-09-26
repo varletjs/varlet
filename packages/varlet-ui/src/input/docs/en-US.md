@@ -142,7 +142,7 @@ const value10 = ref('')
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
 | `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
-| `size` | Input size, The optional value is `small`                                                          | _string_ | `-` |
+| `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |
 | `textarea` | Is it a textarea                                                                                                                       | _boolean_ | `false` |  

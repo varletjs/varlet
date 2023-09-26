@@ -322,7 +322,7 @@ const value12 = ref()
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any \| any[]_ | `-` |
-| `size` | 选择框尺寸，可选值 `small`   | _string_ | `-` |
+| `size` | 选择框尺寸，可选值 `normal` `small`   | _string_ | `normal` |
 | `variant` | 选择框风格, 可选值为 `standard` `outlined` | _string_ | `standard` |
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |

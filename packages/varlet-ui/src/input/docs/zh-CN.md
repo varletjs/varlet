@@ -142,7 +142,7 @@ const value10 = ref('')
 | `v-model` | 绑定的值                                                                     | _string_ | `-` |
 | `placeholder` | 占位符                                                                      | _string_ | `-` |
 | `type` | 输入框类型, 可选值为 `text` `password` `number` `tel`                             | _string_ | `text` |
-| `size` | 输入框尺寸，可选值 `small`                                                          | _string_ | `-` |
+| `size` | 输入框尺寸，可选值 `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | 最大长度                                                                     | _string \| number_ | `-` |
 | `textarea` | 是否是文本域                                                                   | _boolean_ | `false` |

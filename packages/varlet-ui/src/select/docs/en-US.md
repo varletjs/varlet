@@ -321,6 +321,8 @@ const value12 = ref()
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
+| `size` | Select size, The optional value is `normal` `small`                | _string_ | `normal` |
+| `variant` | Select variant, The optional value is `standard` `outlined` | _string_ | `standard` |
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `0` |
