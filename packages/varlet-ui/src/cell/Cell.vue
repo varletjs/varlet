@@ -7,7 +7,7 @@
   >
     <slot name="icon">
       <div :class="classes(n('icon'), iconClass)" v-if="icon">
-        <var-icon :name="icon" />
+        <var-icon :name="icon" :namespace="namespace" />
       </div>
     </slot>
 

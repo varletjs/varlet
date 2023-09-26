@@ -6,6 +6,7 @@ export declare const cellProps: Record<string, any>
 export interface CellProps extends BasicAttributes {
   title?: string | number
   icon?: string
+  namespace?: string
   description?: string
   border?: boolean
   borderOffset?: number | string
