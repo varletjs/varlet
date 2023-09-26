@@ -92,10 +92,6 @@ See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
 
 See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
 
-### Start On Cloud IDE
-
-See [Cloud IDE](https://idegithub.com/varletjs/varlet).
-
 ### Community
 
 We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:

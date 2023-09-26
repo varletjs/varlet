@@ -92,11 +92,6 @@ createApp(App).use(Varlet).mount('#app')
 
 请参考 [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md)。
 
-### 在 Cloud IDE 中进行在线开发和调试
-
-在 [Cloud IDE](https://idegithub.com/varletjs/varlet) 对源码进行在线调试。
-
-
 ### 反馈和交流
 
 我们推荐使用`issue`列表进行最直接有效的反馈，也可以下面的方式
