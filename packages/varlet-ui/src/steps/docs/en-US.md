@@ -93,8 +93,8 @@ const active = ref(0)
 | ----- | -------------- | -------- | ---------- |
 | `active` | Active step | _string \| number_ | `0` |
 | `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
-| `active-color` | Active step color | _string_ | `#2979ff` |
-| `inactive-color` | Inactive step color | _string_ | `#9e9e9e` |
+| `active-color` | Active step color | _string_ | `-` |
+| `inactive-color` | Inactive step color | _string_ | `-` |
 
 #### Step Props
 
