@@ -150,7 +150,8 @@ Set the chip color through the `color` and `text-color` attributes.
 | `round` | Whether to be round label | _boolean_ | `true` |
 | `block` | Whether to be block label | _boolean_ | `false` |
 | `closeable` | Whether to be closed label | _boolean_ | `false`|
-| `close-name` | Custom Closeable TAB icon must be used when `Closeable` is `true`| _string_ | `-` |
+| `icon-name` | Custom closeable icon must be used when `Closeable` is `true`| _string_ | `-` |
+| `namespace` | Closeable icon namespace | _string_ | `var-icon` |
 | `color` | The label color | _string_ | `_` |
 | `text-color` | The text color takes precedence over the `color` attribute | _string_ | `-` |
 

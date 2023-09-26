@@ -148,7 +148,8 @@ const show1= ref(true)
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
 | `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
-| `close-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `icon-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `namespace` | 自定义可关闭纸片的图标的命名空间 | _string_ | `var-icon` |
 | `color` | 纸片颜色 | _string_ | `_` |
 | `text-color` | 文本颜色，优先级高于 `color` 属性 | _string_ | `-` |
 

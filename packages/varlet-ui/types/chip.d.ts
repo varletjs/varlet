@@ -11,6 +11,7 @@ export interface ChipProps extends BasicAttributes {
   color?: string
   textColor?: string
   iconName?: string
+  namespace?: string
   plain?: boolean
   round?: boolean
   block?: boolean
