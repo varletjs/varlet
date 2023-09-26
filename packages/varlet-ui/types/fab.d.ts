@@ -33,6 +33,8 @@ export interface FabProps extends BasicAttributes {
   activeIcon?: string
   inactiveIconSize?: string | number
   activeIconSize?: string | number
+  inactiveIconNamespace?: string
+  activeIconNamespace?: string
   zIndex?: string | number
   top?: string | number
   bottom?: string | number

@@ -108,7 +108,8 @@ export default defineComponent({
             var-fab-cover
             class={classes([isActive.value, n('trigger-active-icon'), n('trigger-inactive-icon')])}
             name={isActive.value ? props.activeIcon : props.inactiveIcon}
-            size={isActive.value ? props.inactiveIconSize : props.activeIconSize}
+            size={isActive.value ? props.activeIconSize : props.inactiveIconSize}
+            namespace={isActive.value ? props.activeIconNamespace : props.inactiveIconNamespace}
             transition={200}
             animationClass={n('--trigger-icon-animation')}
           />

@@ -1,5 +1,6 @@
-import { ExtractPublicPropTypes, defineListenerProp } from '../utils/components'
+import { ExtractPublicPropTypes, defineListenerProp, pickProps } from '../utils/components'
 import { dragProps } from '../drag'
+import { iconProps } from '../icon'
 import { type ButtonType } from '../button/props'
 import { type PropType, type TeleportProps } from 'vue'
 
@@ -49,8 +50,10 @@ export const props = {
     type: String,
     default: 'window-close',
   },
-  inactiveIconSize: [Number, String],
-  activeIconSize: [Number, String],
+  inactiveIconSize: pickProps(iconProps, 'size'),
+  activeIconSize: pickProps(iconProps, 'size'),
+  inactiveIconNamespace: pickProps(iconProps, 'namespace'),
+  activeIconNamespace: pickProps(iconProps, 'namespace'),
   fixed: {
     type: Boolean,
     default: true,
