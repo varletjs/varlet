@@ -6,12 +6,14 @@ export interface RateProps extends BasicAttributes {
   modelValue?: string | number
   count?: string | number
   color?: string
-  icon?: string
   emptyColor?: string
   disabledColor?: string
+  icon?: string
   emptyIcon?: string
   halfIcon?: string
   namespace?: string
+  emptyIconNamespace?: string
+  halfIconNamespace?: string
   size?: string | number
   gap?: string | number
   half?: boolean

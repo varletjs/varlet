@@ -14,7 +14,7 @@
           :class="n('content-icon')"
           var-rate-cover
           :transition="0"
-          :namespace="namespace"
+          :namespace="getCurrentState(value).namespace"
           :name="getCurrentState(value).name"
           :style="{ fontSize: toSizeUnit(size) }"
         >
@@ -90,7 +90,20 @@ export default defineComponent({
     }
 
     function getCurrentState(index: number) {
-      const { modelValue, disabled, disabledColor, color, half, emptyColor, icon, halfIcon, emptyIcon } = props
+      const {
+        modelValue,
+        disabled,
+        disabledColor,
+        color,
+        half,
+        emptyColor,
+        icon,
+        halfIcon,
+        emptyIcon,
+        namespace,
+        halfIconNamespace,
+        emptyIconNamespace,
+      } = props
       let iconColor = color
 
       if (disabled || form?.disabled.value) {
@@ -98,14 +111,18 @@ export default defineComponent({
       }
 
       if (index <= toNumber(modelValue)) {
-        return { color: iconColor, name: icon }
+        return { color: iconColor, name: icon, namespace }
       }
 
       if (half && index <= toNumber(modelValue) + 0.5) {
-        return { color: iconColor, name: halfIcon }
+        return { color: iconColor, name: halfIcon, namespace: halfIconNamespace }
       }
 
-      return { color: disabled || form?.disabled.value ? disabledColor : emptyColor, name: emptyIcon }
+      return {
+        color: disabled || form?.disabled.value ? disabledColor : emptyColor,
+        name: emptyIcon,
+        namespace: emptyIconNamespace,
+      }
     }
 
     function changeValue(score: number, event: MouseEvent) {

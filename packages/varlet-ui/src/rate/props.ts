@@ -1,5 +1,6 @@
 import { type PropType } from 'vue'
-import { defineListenerProp } from '../utils/components'
+import { defineListenerProp, pickProps } from '../utils/components'
+import { iconProps } from '../icon'
 
 export const props = {
   modelValue: {
@@ -23,10 +24,12 @@ export const props = {
     type: String,
     default: 'star-half-full',
   },
+  namespace: pickProps(iconProps, 'namespace'),
+  emptyIconNamespace: pickProps(iconProps, 'namespace'),
+  halfIconNamespace: pickProps(iconProps, 'namespace'),
   emptyColor: String,
   size: [String, Number],
   gap: [String, Number],
-  namespace: String,
   half: Boolean,
   disabled: Boolean,
   disabledColor: String,
