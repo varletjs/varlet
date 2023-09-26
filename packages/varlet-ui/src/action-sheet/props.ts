@@ -1,5 +1,5 @@
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as popupProps } from '../popup/props'
+import { popupProps } from '../popup'
 import { ActionItem } from './index'
 import { type PropType } from 'vue'
 

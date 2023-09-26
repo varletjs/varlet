@@ -22,7 +22,7 @@ export const props = {
   },
   maxValue: [String, Number],
   dot: Boolean,
-  icon: String,
+  icon: pickProps(iconProps, 'name'),
   namespace: pickProps(iconProps, 'namespace'),
   color: String,
 }

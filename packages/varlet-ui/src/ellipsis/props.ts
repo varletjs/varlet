@@ -1,6 +1,6 @@
+import { tooltipProps } from '../tooltip'
 import { type PropType } from 'vue'
 import { type ExtractPublicPropTypes } from '../utils/components'
-import { props as tooltipProps } from '../tooltip/props'
 
 export type EllipsisExpandTrigger = 'click'
 

@@ -1,5 +1,5 @@
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as stickyProps } from '../sticky/props'
+import { stickyProps } from '../sticky'
 import { type PropType } from 'vue'
 
 export type TabsDirection = 'horizontal' | 'vertical'

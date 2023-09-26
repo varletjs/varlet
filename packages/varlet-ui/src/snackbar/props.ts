@@ -1,5 +1,5 @@
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as loadingProps } from '../loading/props'
+import { loadingProps } from '../loading'
 import { SnackbarType } from './index'
 import { type PropType, type TeleportProps } from 'vue'
 import type { SlotType } from '.'

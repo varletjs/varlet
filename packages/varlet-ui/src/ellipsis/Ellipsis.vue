@@ -20,8 +20,7 @@
 </template>
 
 <script lang="ts">
-import VarTooltip from '../tooltip'
-import { props as tooltipProps } from '../tooltip/props'
+import VarTooltip, { tooltipProps } from '../tooltip'
 import { computed, defineComponent, ref, type StyleValue } from 'vue'
 import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'

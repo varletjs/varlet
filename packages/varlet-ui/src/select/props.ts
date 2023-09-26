@@ -1,6 +1,6 @@
 import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { props as fieldDecoratorProps } from '../field-decorator/props'
+import { fieldDecoratorProps } from '../field-decorator'
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
