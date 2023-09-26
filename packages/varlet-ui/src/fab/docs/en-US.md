@@ -282,6 +282,8 @@ function toggle() {
 | `active-icon` | trigger icon when active | _string_ | `window-close` |
 | `inactive-icon-size` | Inactive trigger icon size | _string \| number_ | `-` |
 | `active-icon-size` | Trigger icon size when active | _string \| number_ | `-` |
+| `inactive-icon-namespace` | Trigger icon namespace when inactive | _string_ | `var-icon`    |
+| `active-icon-namespace` | Trigger icon namespace when active | _string_ | `var-icon`  |
 | `fixed` | Whether to use fixed positioning, set to `false` to enable absolute positioning (absolute positioning prohibited from dragging) | _boolean_ | `true` |
 | `z-index` | Same as css z-index, used for custom trigger level | _string \| number_ | `90` |
 | `top` | Same as css top, for custom trigger position | _string \| number_ | `-` |

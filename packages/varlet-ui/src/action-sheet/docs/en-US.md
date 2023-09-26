@@ -448,6 +448,7 @@ function handleSelect(action) {
 | `color`     | Action text color                   | _string_  | `-`     |
 | `icon`      | Icon，support network image address | _string_  | `-`     |
 | `iconSize`  | Icon size                           | _string_  | `-`     |
+| `namespace` | Icon namespace | _string_ | `-` |
 | `className` | Class name                          | _string_  | `-`     |
 | `disabled`  | Disable or not option               | _boolean_ | `false` |
 

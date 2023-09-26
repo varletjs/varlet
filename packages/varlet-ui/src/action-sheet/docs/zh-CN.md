@@ -450,6 +450,7 @@ function handleSelect(action) {
 | `color` | 选项文字颜色 | _string_ | `-` |
 | `icon` | icon 图标，支持网络图片地址 | _string_ | `-` |
 | `iconSize` | 图标尺寸 | _string_ | `-` |
+| `namespace` | 图标命名空间 | _string_ | `-` |
 | `className` | 选项附加类名 | _string_ | `-` |
 | `disabled` | 是否禁用选项 | _boolean_ | `false` |
 

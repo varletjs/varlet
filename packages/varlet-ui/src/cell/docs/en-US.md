@@ -98,6 +98,7 @@ const handleClick = (item) => {
 | ----- | -------------- | -------- | ---------- |
 | `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
+| `namespace` |  Icon namespace | _string_ | `var-icon` |
 | `description` | Description | _string_ | `-` |
 | `border` | Whether to show border | _boolean_ | `false` |
 | `border-offset` | Border offset | _string \| number_ | `-` |

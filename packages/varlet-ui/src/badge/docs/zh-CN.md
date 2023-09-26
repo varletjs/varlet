@@ -155,6 +155,7 @@ function handleChange() {
 | `position`  | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
 | `color`     | 自定义徽标颜色 | _string_ | `-` |
 | `icon`      | 自定义徽标中图标的内容（优先级高于 `value`） | _string_ | `-` |
+| `namespace`      | 自定义徽标中图标的命名空间 | _string_ | `var-icon` |
 
 ### 插槽
 

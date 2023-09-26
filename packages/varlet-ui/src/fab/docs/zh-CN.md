@@ -282,6 +282,8 @@ function toggle() {
 | `active-icon` | 激活时触发器图标 | _string_ | `window-close`    |
 | `inactive-icon-size` | 未激活时触发器图标尺寸 | _string \| number_ | `-` |
 | `active-icon-size` | 激活时触发器图标尺寸 | _string \| number_ | `-` |
+| `inactive-icon-namespace` | 未激活时触发器图标的命名空间 | _string_ | `var-icon`    |
+| `active-icon-namespace` | 激活时触发器图标的命名空间 | _string_ | `var-icon`  |
 | `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位（绝对定位无法使用拖拽） | _boolean_ | `true` |
 | `z-index` | 同 css z-index，用于自定义触发器层级 | _string \| number_ | `90` |
 | `top` | 同 css top，用于自定义触发器位置 | _string \| number_ | `-` |

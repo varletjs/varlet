@@ -98,6 +98,7 @@ const handleClick = (item) => {
 | ----- | -------------- | -------- | ---------- |
 | `title` | 单元格标题  | _string \| number_ | `-` |
 | `icon` | 左侧图标名称 | _string_ | `-` |
+| `namespace` | 左侧图标命名空间 | _string_ | `var-icon` |
 | `description` | 单元格描述 | _string_ | `-` |
 | `border` | 是否显示边框 | _boolean_ | `false` |
 | `border-offset` | 边框偏移量 | _string \| number_ | `-` |
