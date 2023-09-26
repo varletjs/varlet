@@ -17,7 +17,7 @@
         v-show="!hidden"
         v-bind="$attrs"
       >
-        <var-icon :class="n('icon')" var-badge-cover :name="icon" v-if="icon" />
+        <var-icon :class="n('icon')" var-badge-cover :name="icon" :namespace="namespace" v-if="icon" />
 
         <slot name="value">
           <span :class="n('value')" v-if="!icon && !dot">{{ value }}</span>

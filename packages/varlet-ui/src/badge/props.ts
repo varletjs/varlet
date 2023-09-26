@@ -1,4 +1,6 @@
 import { type PropType } from 'vue'
+import { pickProps } from '../utils/components'
+import { iconProps } from '../icon'
 
 export type BadgeType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
@@ -21,5 +23,6 @@ export const props = {
   maxValue: [String, Number],
   dot: Boolean,
   icon: String,
+  namespace: pickProps(iconProps, 'namespace'),
   color: String,
 }
