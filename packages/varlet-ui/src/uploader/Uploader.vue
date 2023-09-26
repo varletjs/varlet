@@ -12,7 +12,7 @@
         <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
           <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
-        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
+        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" v-if="showCover(f)" :src="f.cover" :alt="f.name" />
         <div :class="n('file-indicator')">
           <div
             :class="
@@ -180,6 +180,10 @@ export default defineComponent({
       { deep: true }
     )
 
+    function showCover(varFile: VarFile) {
+      return varFile.file ? varFile.file.type.startsWith('image') : varFile.cover || varFile.url
+    }
+
     function preview(varFile: VarFile) {
       const { disabled, previewed } = props
 
@@ -219,8 +223,7 @@ export default defineComponent({
 
     function resolver(varFile: VarFile): Promise<VarFile> {
       return new Promise((resolve) => {
-        // For performance, only file reader processing is performed on images
-        if (!varFile.file!.type.startsWith('image')) {
+        if (props.resolveType === 'file') {
           resolve(varFile)
           return
         }
@@ -234,6 +237,17 @@ export default defineComponent({
           varFile.url = base64
 
           resolve(varFile)
+        }
+
+        if (props.resolveType === 'dataUrl') {
+          fileReader.readAsDataURL(varFile.file as File)
+          return
+        }
+
+        // For performance, only file reader processing is performed on images
+        if (!varFile.file!.type.startsWith('image')) {
+          resolve(varFile)
+          return
         }
 
         fileReader.readAsDataURL(varFile.file as File)
@@ -418,6 +432,7 @@ export default defineComponent({
       chooseFile,
       closePreview,
       toSizeUnit,
+      showCover,
     }
   },
 })

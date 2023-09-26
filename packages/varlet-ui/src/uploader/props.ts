@@ -12,6 +12,8 @@ export interface VarFile {
   state?: 'loading' | 'success' | 'error'
 }
 
+export type UploaderResolveType = 'default' | 'file' | 'dataUrl'
+
 export type ValidateTrigger = 'onChange' | 'onRemove'
 
 export const props = {
@@ -33,6 +35,10 @@ export const props = {
   elevation: {
     type: [Boolean, Number, String],
     default: true,
+  },
+  resolveType: {
+    type: String as PropType<UploaderResolveType>,
+    default: 'default',
   },
   removable: {
     type: Boolean,

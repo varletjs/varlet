@@ -7,6 +7,8 @@ export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'
 
+export type VarFileResolveType = 'default' | 'file' | 'dataUrl'
+
 export interface VarFile {
   file?: File
   name?: string
@@ -41,6 +43,7 @@ export interface UploaderProps extends BasicAttributes {
   previewed?: boolean
   hideList?: boolean
   ripple?: boolean
+  resolveType?: VarFileResolveType
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
   onBeforeFilter?: ListenerProp<(files: VarFile[]) => Promise<VarFile[]> | VarFile[]>

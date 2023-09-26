@@ -374,6 +374,7 @@ const files = ref([
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `hide-list` | 是否隐藏文件列表 | _boolean_ | `false` |
+| `resolve-type` | 文件读取结果类型，可选值为 `default` `file` `dataUrl`（`default`，图像包含 base64 编码和 File 对象，其他类型仅包含 File 对象。`file`，仅包含 File 对象。`dataUrl`，包含 base64 编码和 File 对象） | _string_ | `default` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 
