@@ -10,6 +10,7 @@ export interface ActionItem {
   color?: string
   icon?: string
   iconSize?: string | number
+  namespace?: string
   className?: string
   disabled?: boolean
 }
