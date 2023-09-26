@@ -112,7 +112,7 @@
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
-import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
+import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty } from '@varlet/shared'
@@ -172,7 +172,7 @@ export default defineComponent({
         return focusColor || 'var(--field-decorator-focus-color)'
       }
 
-      return blurColor || 'var(--field-decorator-blur-color)'
+      return blurColor || 'var(--field-decorator-placeholder-color, var(--field-decorator-blur-color))'
     })
     const enableCustomPlaceholder = computed(() => !props.hint && isEmpty(props.modelValue))
 

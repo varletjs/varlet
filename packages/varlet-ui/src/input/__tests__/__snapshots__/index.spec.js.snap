@@ -121,7 +121,7 @@ exports[`test input hint to be false 1`] = `
     <div class=\\"var-field-decorator__controller\\" style=\\"cursor: text; overflow: hidden;\\">
       <div class=\\"var-field-decorator__icon var-field-decorator--icon-non-hint\\"></div>
       <div class=\\"var-field-decorator__middle var-field-decorator--middle-non-hint\\">
-        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" style=\\"--input-placeholder-color: var(--field-decorator-blur-color);\\">
+        <!--v-if--><input class=\\"var-input__input\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" style=\\"--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));\\">
       </div>
       <!--v-if-->
       <div class=\\"var-field-decorator__icon var-field-decorator--icon-non-hint\\">

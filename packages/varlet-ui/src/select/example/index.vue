@@ -184,7 +184,7 @@ watchLang((lang) => {
 
   <app-type style="margin-top: 10vmin">{{ pack.outlined }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
-    <var-select :hint="false" variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue">
+    <var-select variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue">
       <var-option :label="pack.eat" />
       <var-option :label="pack.sleep" />
     </var-select>

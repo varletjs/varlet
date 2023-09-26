@@ -123,7 +123,7 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import VarFieldDecorator from '../field-decorator/FieldDecorator.vue'
+import VarFieldDecorator from '../field-decorator'
 import { defineComponent, ref, computed, nextTick } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, toNumber } from '@varlet/shared'
@@ -190,7 +190,7 @@ export default defineComponent({
         return focusColor || 'var(--field-decorator-focus-color)'
       }
 
-      return blurColor || 'var(--field-decorator-blur-color)'
+      return blurColor || 'var(--field-decorator-placeholder-color, var(--field-decorator-blur-color))'
     })
 
     const inputProvider: InputProvider = {

@@ -396,6 +396,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-placeholder-color` | `-` |
 | `--field-decorator-blur-color` | `#888` |
 | `--field-decorator-focus-color` | `var(--color-primary)` |
 | `--field-decorator-placeholder-size` | `16px` |

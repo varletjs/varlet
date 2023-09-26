@@ -397,6 +397,7 @@ const value12 = ref()
 | --- | --- |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-placeholder-color` | `-` |
 | `--field-decorator-blur-color` | `#888` |
 | `--field-decorator-focus-color` | `var(--color-primary)` |
 | `--field-decorator-placeholder-size` | `16px` |

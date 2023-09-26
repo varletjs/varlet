@@ -9,7 +9,6 @@ import {
   Fragment,
   computed,
   watch,
-  nextTick,
   type PropType,
   type ExtractPropTypes,
   type Component,
@@ -279,29 +278,17 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   }
 
   const proxy = ref<P[K]>(getValue())
-  let locking = false
 
   watch(
     () => props[key],
-    async () => {
-      if (locking) {
-        return
-      }
-
-      locking = true
+    () => {
       proxy.value = getValue()
-      await nextTick()
-      locking = false
     }
   )
 
   watch(
     () => proxy.value,
     (newValue: P[K]) => {
-      if (locking) {
-        return
-      }
-
       emit ? emit(event, newValue) : call(props[event], newValue)
     }
   )
