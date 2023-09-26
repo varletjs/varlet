@@ -103,6 +103,9 @@ const active = ref(0)
 | `active-icon` | Active icon name  | _string_ | `check` |
 | `current-icon` | Icon name of current ste	 | _string_ | `-`|
 | `inactive-icon` | Inactive icon name	 | _string_ | `-`|
+| `active-icon-namespace` | Active icon namespace  | _string_ | `var-icon` |
+| `current-icon-namespace` | Current icon namespace | _string_ |`var-icon` |
+| `inactive-icon-namespace` | Inactive icon namespace | _string_ | `var-icon` |
 
 ### Events
 
