@@ -195,14 +195,12 @@ export const inViewport = (element: HTMLElement) => {
   return xInViewport && yInViewport
 }
 
-export const fileToDataUrl = (file: File): Promise<string> =>
+export const toDataURL = (file: File): Promise<string> =>
   new Promise((resolve) => {
     const fileReader = new FileReader()
 
     fileReader.onload = () => {
-      const base64 = fileReader.result as string
-
-      resolve(base64)
+      resolve(fileReader.result as string)
     }
 
     fileReader.readAsDataURL(file)

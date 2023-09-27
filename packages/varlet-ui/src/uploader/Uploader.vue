@@ -93,7 +93,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type UploaderValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray, fileToDataUrl } from '@varlet/shared'
+import { isNumber, toNumber, isString, normalizeToArray, toDataURL } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -218,18 +218,16 @@ export default defineComponent({
     }
 
     async function resolver(varFile: VarFile): Promise<VarFile> {
-      const base64 = await fileToDataUrl(varFile.file!)
-      return new Promise((resolve) => {
-        if (
-          props.resolveType === 'data-url' ||
-          (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
-        ) {
-          varFile.cover = base64
-          varFile.url = base64
-        }
+      if (
+        props.resolveType === 'data-url' ||
+        (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
+      ) {
+        const dataURL = await toDataURL(varFile.file!)
+        varFile.cover = dataURL
+        varFile.url = dataURL
+      }
 
-        resolve(varFile)
-      })
+      return varFile
     }
 
     function getResolvers(varFiles: VarFile[]) {
