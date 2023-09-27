@@ -32,6 +32,8 @@ export type Pack = {
 interface Locale {
   zhCN: Pack
   enUS: Pack
+  zhTW: Pack
+  zhHK: Pack
   packs: Record<string, Partial<Pack>>
   pack: Ref<Partial<Pack>>
   add(lang: string, pack: Partial<Pack>): void

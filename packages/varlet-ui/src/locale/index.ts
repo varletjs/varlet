@@ -1,5 +1,7 @@
 import zhCN from './zh-CN'
 import enUS from './en-US'
+import zhTW from './zh-TW'
+import zhHK from './zh-HK'
 import { ref, type Ref } from 'vue'
 import { type Month, type Week } from '../date-picker/props'
 
@@ -80,6 +82,8 @@ export const _LocaleComponent = { zhCN, enUS, packs, pack, add, use, merge, useL
 export default {
   zhCN,
   enUS,
+  zhTW,
+  zhHK,
   packs,
   pack,
   add,
