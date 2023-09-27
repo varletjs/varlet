@@ -105,7 +105,7 @@ test('test uploader preview', async () => {
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.jpg', 'image/jpg'))
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   await delay(16)
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(100)
@@ -364,4 +364,136 @@ test('test uploader extra slot', async () => {
   expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能上传3个文件')
 
   wrapper.unmount()
+})
+
+test('test uploader resolve-type as default when file type is image', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'default',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover.includes('data:image/png;base64,')).toBe(true)
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader resolve-type as default when file type is not image', async () => {
+  const { mockRestore } = mockFileReader('data:')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'default',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('data.json', 'application/json'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover.includes('data:')).toBe(false)
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader resolve-type as file when file type is image', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'file',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover).toBe('')
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader resolve-type as file when file type is not image', async () => {
+  const { mockRestore } = mockFileReader('data:')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'file',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('data.json', 'application/json'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover).toBe('')
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader resolve-type as dataUrl when file type is image', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'dataUrl',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover.includes('data:image/png;base64,')).toBe(true)
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test uploader resolve-type as dataUrl when file type is not image', async () => {
+  const { mockRestore } = mockFileReader('data:')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      resolveType: 'dataUrl',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('data.json', 'application/json'))
+  await delay(100)
+  expect(wrapper.vm.files[0].cover.includes('data:')).toBe(true)
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
 })
