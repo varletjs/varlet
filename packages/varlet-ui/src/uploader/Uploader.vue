@@ -218,11 +218,12 @@ export default defineComponent({
     }
 
     async function resolver(varFile: VarFile): Promise<VarFile> {
-      if (
-        props.resolveType === 'data-url' ||
-        (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
-      ) {
-        const dataURL = await toDataURL(varFile.file!)
+      const file = varFile.file!
+      const shouldWithDataURL =
+        (props.resolveType === 'default' && file.type.startsWith('image')) || props.resolveType === 'data-url'
+
+      if (shouldWithDataURL) {
+        const dataURL = await toDataURL(file)
         varFile.cover = dataURL
         varFile.url = dataURL
       }
