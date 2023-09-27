@@ -375,6 +375,7 @@ const files = ref([
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
 | `ripple`    | Whether to open ripple | _boolean_ | `true` |
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
+| `resolve-type` | The file read result type, Can be set to `default` `file` `data-url` (`default`, the image type contains base64 and File object, other types contain only File object. `file`, which contains only File object. `data-url`, which contains base64 and File object) | _string_ | `default` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
 

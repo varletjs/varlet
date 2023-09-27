@@ -92,8 +92,8 @@ import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
-import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
+import { props, type VarFile, type UploaderValidateTrigger } from './props'
+import { isNumber, toNumber, isString, normalizeToArray, toDataURL } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -217,27 +217,17 @@ export default defineComponent({
       return Array.from<File>(fileList as ArrayLike<File>)
     }
 
-    function resolver(varFile: VarFile): Promise<VarFile> {
-      return new Promise((resolve) => {
-        // For performance, only file reader processing is performed on images
-        if (!varFile.file!.type.startsWith('image')) {
-          resolve(varFile)
-          return
-        }
+    async function resolver(varFile: VarFile): Promise<VarFile> {
+      if (
+        props.resolveType === 'data-url' ||
+        (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
+      ) {
+        const dataURL = await toDataURL(varFile.file!)
+        varFile.cover = dataURL
+        varFile.url = dataURL
+      }
 
-        const fileReader = new FileReader()
-
-        fileReader.onload = () => {
-          const base64 = fileReader.result as string
-
-          varFile.cover = base64
-          varFile.url = base64
-
-          resolve(varFile)
-        }
-
-        fileReader.readAsDataURL(varFile.file as File)
-      })
+      return varFile
     }
 
     function getResolvers(varFiles: VarFile[]) {
@@ -370,7 +360,7 @@ export default defineComponent({
       ImagePreview.close()
     }
 
-    function validateWithTrigger(trigger: ValidateTrigger) {
+    function validateWithTrigger(trigger: UploaderValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue, varFileUtils)
