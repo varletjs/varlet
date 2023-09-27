@@ -204,6 +204,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-icon-size` | `20px` |
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
 | `--field-decorator-standard-normal-padding-top` | `22px` |
 | `--field-decorator-standard-normal-padding-bottom` | `4px` |
