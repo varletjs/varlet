@@ -93,7 +93,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray } from '@varlet/shared'
+import { isNumber, toNumber, isString, normalizeToArray, resolveFile } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -221,36 +221,18 @@ export default defineComponent({
       return Array.from<File>(fileList as ArrayLike<File>)
     }
 
-    function resolver(varFile: VarFile): Promise<VarFile> {
+    async function resolver(varFile: VarFile): Promise<VarFile> {
+      const file = await resolveFile(varFile.file!)
       return new Promise((resolve) => {
-        if (props.resolveType === 'file') {
-          resolve(varFile)
-          return
+        if (
+          props.resolveType === 'dataUrl' ||
+          (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
+        ) {
+          varFile.cover = file.cover
+          varFile.url = file.cover
         }
 
-        const fileReader = new FileReader()
-
-        fileReader.onload = () => {
-          const base64 = fileReader.result as string
-
-          varFile.cover = base64
-          varFile.url = base64
-
-          resolve(varFile)
-        }
-
-        if (props.resolveType === 'dataUrl') {
-          fileReader.readAsDataURL(varFile.file as File)
-          return
-        }
-
-        // For performance, only file reader processing is performed on images
-        if (!varFile.file!.type.startsWith('image')) {
-          resolve(varFile)
-          return
-        }
-
-        fileReader.readAsDataURL(varFile.file as File)
+        resolve(varFile)
       })
     }
 
