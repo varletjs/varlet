@@ -454,7 +454,7 @@ test('test uploader resolve-type as file when file type is not image', async () 
   mockRestore()
 })
 
-test('test uploader resolve-type as dataUrl when file type is image', async () => {
+test('test uploader resolve-type as data-url when file type is image', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -462,7 +462,7 @@ test('test uploader resolve-type as dataUrl when file type is image', async () =
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: [],
-      resolveType: 'dataUrl',
+      resolveType: 'data-url',
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
@@ -476,7 +476,7 @@ test('test uploader resolve-type as dataUrl when file type is image', async () =
   mockRestore()
 })
 
-test('test uploader resolve-type as dataUrl when file type is not image', async () => {
+test('test uploader resolve-type as data-url when file type is not image', async () => {
   const { mockRestore } = mockFileReader('data:')
   const { mockRestore: mockRestoreStubs } = mockStubs()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
@@ -484,7 +484,7 @@ test('test uploader resolve-type as dataUrl when file type is not image', async 
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: [],
-      resolveType: 'dataUrl',
+      resolveType: 'data-url',
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })

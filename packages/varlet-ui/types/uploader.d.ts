@@ -7,7 +7,7 @@ export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type VarFileState = 'loading' | 'success' | 'error'
 
-export type VarFileResolveType = 'default' | 'file' | 'dataUrl'
+export type VarFileResolveType = 'default' | 'file' | 'data-url'
 
 export interface VarFile {
   file?: File

@@ -12,7 +12,7 @@
         <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
           <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
-        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" v-if="showCover(f)" :src="f.cover" :alt="f.name" />
+        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
         <div :class="n('file-indicator')">
           <div
             :class="
@@ -92,8 +92,8 @@ import ImagePreview from '../image-preview'
 import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
-import { props, type VarFile, type ValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray, resolveFile } from '@varlet/shared'
+import { props, type VarFile, type UploaderValidateTrigger } from './props'
+import { isNumber, toNumber, isString, normalizeToArray, fileToDataUrl } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -180,10 +180,6 @@ export default defineComponent({
       { deep: true }
     )
 
-    function showCover(varFile: VarFile) {
-      return varFile.file ? varFile.file.type.startsWith('image') : varFile.cover || varFile.url
-    }
-
     function preview(varFile: VarFile) {
       const { disabled, previewed } = props
 
@@ -222,14 +218,14 @@ export default defineComponent({
     }
 
     async function resolver(varFile: VarFile): Promise<VarFile> {
-      const file = await resolveFile(varFile.file!)
+      const base64 = await fileToDataUrl(varFile.file!)
       return new Promise((resolve) => {
         if (
-          props.resolveType === 'dataUrl' ||
+          props.resolveType === 'data-url' ||
           (varFile.file!.type.startsWith('image') && props.resolveType === 'default')
         ) {
-          varFile.cover = file.cover
-          varFile.url = file.cover
+          varFile.cover = base64
+          varFile.url = base64
         }
 
         resolve(varFile)
@@ -366,7 +362,7 @@ export default defineComponent({
       ImagePreview.close()
     }
 
-    function validateWithTrigger(trigger: ValidateTrigger) {
+    function validateWithTrigger(trigger: UploaderValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue, varFileUtils)
@@ -414,7 +410,6 @@ export default defineComponent({
       chooseFile,
       closePreview,
       toSizeUnit,
-      showCover,
     }
   },
 })

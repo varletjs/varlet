@@ -12,9 +12,9 @@ export interface VarFile {
   state?: 'loading' | 'success' | 'error'
 }
 
-export type UploaderResolveType = 'default' | 'file' | 'dataUrl'
+export type UploaderResolveType = 'default' | 'file' | 'data-url'
 
-export type ValidateTrigger = 'onChange' | 'onRemove'
+export type UploaderValidateTrigger = 'onChange' | 'onRemove'
 
 export const props = {
   modelValue: {
@@ -55,7 +55,7 @@ export const props = {
     default: true,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTrigger>>,
+    type: Array as PropType<Array<UploaderValidateTrigger>>,
     default: () => ['onChange', 'onRemove'],
   },
   rules: Array as PropType<Array<(v: VarFile) => any>>,
