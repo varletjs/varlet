@@ -59,6 +59,7 @@
 
 | 参数  | 说明   | 类型  | 默认值 |
 |-------|------|----|----|
+| `v-model:expand` | 是否展开 | _boolean_  | `false` |
 | `expand-trigger` | 展开触发方式，可选值 `click` | _string_  | `-` |
 | `line-clamp` | 最大显示行数，兼容性见 [line-clamp](https://caniuse.com/?search=line-clamp) | _string_  | `-` |
 | `tooltip` | Tooltip 组件配置，用于深度定制。为了更方便使用，`sameWidth` 在这里默认为 `true` | _boolean \| TooltipProps_  | `-` |

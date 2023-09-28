@@ -47,3 +47,14 @@ test('test ellipsis tooltip equals object', () => {
   const wrapper = mount(VarEllipsis, { props: { tooltip: { type: 'primary' } } })
   expect(wrapper.vm.tooltip).toStrictEqual({ sameWidth: true, type: 'primary' })
 })
+
+test('test ellipsis expand', async () => {
+  const wrapper = mount(VarEllipsis, {
+    props: { expand: true, expandTrigger: 'click' },
+    slots: { default: () => 'hello' },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+  await wrapper.find('.var-ellipsis').trigger('click')
+  expect(wrapper.html()).toMatchSnapshot()
+})

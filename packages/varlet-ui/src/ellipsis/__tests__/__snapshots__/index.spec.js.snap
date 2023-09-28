@@ -1,5 +1,19 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`test ellipsis expand 1`] = `
+"<div class=\\"var-tooltip var--box\\"><span class=\\"var-ellipsis var-ellipsis--line var-ellipsis--cursor var-ellipsis--expand\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
+exports[`test ellipsis expand 2`] = `
+"<div class=\\"var-tooltip var--box\\"><span class=\\"var-ellipsis var-ellipsis--line var-ellipsis--cursor\\">hello</span>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>"
+`;
+
 exports[`test ellipsis expandTrigger equals click 1`] = `
 "<div class=\\"var-tooltip var--box\\"><span class=\\"var-ellipsis var-ellipsis--line var-ellipsis--cursor\\">hello</span>
   <!--teleport start-->

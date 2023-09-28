@@ -59,6 +59,7 @@ Mainly used to omit single-line text and multi-line text.
 
 | Prop   | Description  | Type  | Default  |
 | ----- | ------ | ---- | ---- |
+| `v-model:expand` | Whether to expand | _boolean_  | `false` |
 | `expand-trigger` | Expand trigger method, optional value `click` | _string_ | `-` |
 | `line-clamp` | Maximum number of display lines, see [line-clamp](https://caniuse.com/?search=line-clamp) for compatibility | _string_ | `-` |
 | `tooltip` | Tooltip component props, for deep customization. For more convenience, `sameWidth` defaults to `true` here | _boolean \| TooltipProps_ | `-` |

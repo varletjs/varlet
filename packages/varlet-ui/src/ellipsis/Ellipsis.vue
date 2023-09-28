@@ -21,8 +21,8 @@
 
 <script lang="ts">
 import VarTooltip, { tooltipProps } from '../tooltip'
-import { computed, defineComponent, ref, type StyleValue } from 'vue'
-import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
+import { computed, defineComponent, ref, type CSSProperties, watch } from 'vue'
+import { call, createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'
 
 const { name, n, classes } = createNamespace('ellipsis')
@@ -33,15 +33,7 @@ export default defineComponent({
   props,
   setup(props) {
     const expanding = ref(false)
-    const rootStyles = computed<StyleValue>(() => {
-      if (!props.lineClamp) {
-        return {}
-      }
-
-      return {
-        '-webkit-line-clamp': props.lineClamp,
-      } as StyleValue
-    })
+    const rootStyles = computed<CSSProperties>(() => props.lineClamp ? { '-webkit-line-clamp': props.lineClamp } : {})
     const tooltip = computed<ExtractPublicPropTypes<typeof tooltipProps>>(() => {
       if (props.tooltip === false) {
         return {
@@ -64,7 +56,16 @@ export default defineComponent({
       }
 
       expanding.value = !expanding.value
+      call(props['onUpdate:expand'], expanding.value)
     }
+
+    watch(
+      () => props.expand,
+      (newValue) => {
+        expanding.value = newValue
+      },
+      { immediate: true }
+    )
 
     return {
       tooltip,
