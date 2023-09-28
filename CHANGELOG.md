@@ -1,3 +1,34 @@
+# [2.17.0](https://github.com/varletjs/varlet/compare/v2.16.7...v2.17.0) (2023-09-28)
+
+
+### Bug Fixes
+
+* **select:** hidden vertical scroll bar ([#1186](https://github.com/varletjs/varlet/issues/1186)) ([842b10c](https://github.com/varletjs/varlet/commit/842b10c92e9b6243e05fe19a7a33c92baafa59ce))
+* **snackbar:** incorrect position of multiple ([4fc386c](https://github.com/varletjs/varlet/commit/4fc386c9966452aabd30291c96a1df7ac403637c))
+* **uploader:** convert default slot to boolean value ([#1188](https://github.com/varletjs/varlet/issues/1188)) ([4416972](https://github.com/varletjs/varlet/commit/4416972f54d85394e60778f2cc99349925570720))
+* **uploader:** readonly mode allows to preview picture ([#1184](https://github.com/varletjs/varlet/issues/1184)) ([edcf93a](https://github.com/varletjs/varlet/commit/edcf93ac0d83a6fa42cbd981669843f8294d09ec))
+
+
+### Features
+
+* **action-sheet, step:** support namespace for icon ([d62ac66](https://github.com/varletjs/varlet/commit/d62ac6611523a44a647c1a13a66e18f17fc73345))
+* **badge:** support namespace for icon ([b1da5db](https://github.com/varletjs/varlet/commit/b1da5db688f1aa3a10599944923d888a12e4107d))
+* **cell:** support namespace for icon ([0a6d6e8](https://github.com/varletjs/varlet/commit/0a6d6e85fcf0ffe6b366e32acae59cf9b8ecb8d6))
+* **chip:** support namespace for icon ([2b31999](https://github.com/varletjs/varlet/commit/2b3199919084b0a891ebdd48a6849f86a91aaacc))
+* **cli:** support esbuild compiler ([5b33789](https://github.com/varletjs/varlet/commit/5b3378901e22779eb668599791e49c059b5ff86c))
+* **cli:** support esbuild option ([28195d9](https://github.com/varletjs/varlet/commit/28195d9bae41ae588e4b96d985fb93e7ca970a99))
+* **cli:** support record task time ([9cbd270](https://github.com/varletjs/varlet/commit/9cbd270ada16db5aabecd101985bf8032d4a628e))
+* **ellipsis:** support expand ([#1197](https://github.com/varletjs/varlet/issues/1197)) ([a781b28](https://github.com/varletjs/varlet/commit/a781b28fd3c6f66acc915fe021be2846a249f63d))
+* **fab:** support namespace for icon ([6f06bd7](https://github.com/varletjs/varlet/commit/6f06bd7829c8d12a8caada60dd6e2a51b69ebbd7))
+* **field:** support --field-decorator-line-border-radius ([bfaad07](https://github.com/varletjs/varlet/commit/bfaad07a32b36b0b6d133dc16ee4600ba78c51d6))
+* **field:** support --field-decorator-placeholder-color ([c3edacf](https://github.com/varletjs/varlet/commit/c3edacf2224d4bfcfcc1caebfefcb42d75b874af))
+* **locale:** support zh-TW zh-HK ([92976b9](https://github.com/varletjs/varlet/commit/92976b97452fa6a0dc336f7509c2effe9a1a85d0))
+* **progress:** support linear gradient color when mode is circle ([#1180](https://github.com/varletjs/varlet/issues/1180)) ([f1cd728](https://github.com/varletjs/varlet/commit/f1cd728eb2d20f52e803a1eb4541c839e0bae063))
+* **rate:** support namespace for icon ([7db258f](https://github.com/varletjs/varlet/commit/7db258f7c9c54b6877108f507df1a7b0e22ceb24))
+* **uploader:** support resolve-type ([#1194](https://github.com/varletjs/varlet/issues/1194)) ([a8fbb35](https://github.com/varletjs/varlet/commit/a8fbb35eeabaf9a5e485cac8b833a550eb85b5e9))
+
+
+
 ## [2.16.7](https://github.com/varletjs/varlet/compare/v2.16.6...v2.16.7) (2023-09-18)
 
 
