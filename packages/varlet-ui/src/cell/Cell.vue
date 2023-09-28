@@ -34,7 +34,7 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, type StyleValue } from 'vue'
+import { computed, defineComponent, CSSProperties } from 'vue'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -47,7 +47,7 @@ export default defineComponent({
   directives: { Ripple },
   props,
   setup(props) {
-    const borderOffsetStyles = computed<StyleValue>(() => {
+    const borderOffsetStyles = computed<CSSProperties>(() => {
       if (props.borderOffset == null) {
         return {}
       }
@@ -55,7 +55,7 @@ export default defineComponent({
       return {
         '--cell-border-left': toSizeUnit(props.borderOffset),
         '--cell-border-right': toSizeUnit(props.borderOffset),
-      } as StyleValue
+      }
     })
 
     function handleClick(e: Event) {

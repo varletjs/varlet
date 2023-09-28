@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onUpdated, computed, type StyleValue } from 'vue'
+import { defineComponent, ref, onUpdated, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
@@ -49,7 +49,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const paddingLeft = ref<number | undefined>()
     const paddingRight = ref<number | undefined>()
-    const rootStyles = computed<StyleValue>(() => {
+    const rootStyles = computed<CSSProperties>(() => {
       const { image, color, textColor, imageLinearGradient } = props
 
       if (image != null) {
