@@ -24,13 +24,22 @@
 </template>
 ```
 
-### 展开文字
+### 双向绑定
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const expand = ref(false)
+</script>
+
 <template>
-  <var-ellipsis style="max-width: 170px" expand>
-    其实没有什么事情是不可能的，我都拿到世界冠军了，真的没有什么事情是不可能的。
-  </var-ellipsis>
+  <var-space direction="column" size="large">
+    <var-button type="primary" @click="expand = !expand">切换</var-button>
+    <var-ellipsis style="max-width: 170px" v-model:expand="expand">
+      其实没有什么事情是不可能的，我都拿到世界冠军了，真的没有什么事情是不可能的。
+    </var-ellipsis>
+  </var-space>
 </template>
 ```
 

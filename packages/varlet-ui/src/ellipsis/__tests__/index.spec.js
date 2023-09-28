@@ -2,7 +2,7 @@ import VarEllipsis from '../Ellipsis.vue'
 import Ellipsis from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect } from 'vitest'
+import { expect, vi } from 'vitest'
 
 test('test ellipsis plugin', () => {
   const app = createApp({}).use(Ellipsis)
@@ -49,12 +49,14 @@ test('test ellipsis tooltip equals object', () => {
 })
 
 test('test ellipsis expand', async () => {
+  const onUpdateExpand = vi.fn()
   const wrapper = mount(VarEllipsis, {
-    props: { expand: true, expandTrigger: 'click' },
+    props: { expand: true, expandTrigger: 'click', 'onUpdate:expand': onUpdateExpand },
     slots: { default: () => 'hello' },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
   await wrapper.find('.var-ellipsis').trigger('click')
+  expect(onUpdateExpand).toBeCalledWith(false)
   expect(wrapper.html()).toMatchSnapshot()
 })

@@ -24,13 +24,22 @@ Mainly used to omit single-line text and multi-line text.
 </template>
 ```
 
-### Expand Text
+### Two-way binding
 
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const expand = ref(false)
+</script>
+
 <template>
-  <var-ellipsis style="max-width: 170px" expand>
-     I want to say english to everyone like, even you still are normal people, you still can work a world champion and no one trust you!
-  </var-ellipsis>
+  <var-space direction="column" size="large">
+    <var-button type="primary" @click="expand = !expand">Toggle</var-button>
+    <var-ellipsis style="max-width: 170px" v-model:expand="expand">
+      I want to say english to everyone like, even you still are normal people, you still can work a world champion and no one trust you!
+    </var-ellipsis>
+  </var-space>
 </template>
 ```
 
