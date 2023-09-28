@@ -35,7 +35,7 @@ Locale.merge('en-US', {
 | Language Name | Language Code | Language Pack | Supported Version |
 | --- | --- | --- | --- |
 | `Chinese` | zh-CN | _Locale.zhCN_ | `v2.0.0` |
-| `English` | en-US`| _Locale.enUS_ | `v2.0.0` |
+| `English` | en-US | _Locale.enUS_ | `v2.0.0` |
 | `Traditional Chinese (TW)	` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `Traditional Chinese (HK)	` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
 

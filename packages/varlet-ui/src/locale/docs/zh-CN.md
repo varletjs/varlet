@@ -36,6 +36,6 @@ Locale.merge('en-US', {
 | 语言名称 | 语言编码 | 语言包 | 支持版本 |
 | --- | --- | --- | --- |
 | `简体中文` | zh-CN | _Locale.zhCN_ | `v2.0.0` |
-| `英语` | en-US`| _Locale.enUS_ | `v2.0.0` |
+| `英语` | en-US| _Locale.enUS_ | `v2.0.0` |
 | `繁体中文(台)` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `繁体中文(港)` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
