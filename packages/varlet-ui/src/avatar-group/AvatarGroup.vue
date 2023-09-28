@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type StyleValue } from 'vue'
+import { defineComponent, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -16,14 +16,14 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const rootStyles = computed<StyleValue>(() => {
+    const rootStyles = computed<CSSProperties>(() => {
       if (props.offset == null) {
         return {}
       }
 
       return {
         '--avatar-group-offset': toSizeUnit(props.offset),
-      } as StyleValue
+      }
     })
 
     return {
