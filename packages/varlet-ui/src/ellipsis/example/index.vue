@@ -14,6 +14,9 @@ watchLang(use)
   <app-type>{{ pack.multipleLine }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :line-clamp="3">{{ pack.text }}</var-ellipsis>
 
+  <app-type>{{ pack.expandText }}</app-type>
+  <var-ellipsis style="max-width: 50vmin" expand>{{ pack.text }}</var-ellipsis>
+
   <app-type>{{ pack.expand }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :line-clamp="3" expand-trigger="click" :tooltip="false">{{
     pack.text

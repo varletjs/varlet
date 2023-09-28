@@ -24,6 +24,16 @@ Mainly used to omit single-line text and multi-line text.
 </template>
 ```
 
+### Expand Text
+
+```html
+<template>
+  <var-ellipsis style="max-width: 170px" expand>
+     I want to say english to everyone like, even you still are normal people, you still can work a world champion and no one trust you!
+  </var-ellipsis>
+</template>
+```
+
 ### Click On Text To Expand
 
 ```html
@@ -59,9 +69,10 @@ Mainly used to omit single-line text and multi-line text.
 
 | Prop   | Description  | Type  | Default  |
 | ----- | ------ | ---- | ---- |
+| `v-model:expand` | Whether to expand | _boolean_  | `false` |
 | `expand-trigger` | Expand trigger method, optional value `click` | _string_ | `-` |
 | `line-clamp` | Maximum number of display lines, see [line-clamp](https://caniuse.com/?search=line-clamp) for compatibility | _string_ | `-` |
-| `tooltip` | Tooltip component props, for deep customization. For more convenience, `sameWidth` defaults to `true` here | _boolean \| TooltipProps_ | `-` |
+| `tooltip` | Tooltip component props, for deep customization. For more convenience, `sameWidth` defaults to `true` here | _boolean \| TooltipProps_ | `true` |
 
 ### Slots
 
