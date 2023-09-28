@@ -10,7 +10,7 @@ export interface EllipsisProps extends BasicAttributes {
   expandTrigger?: EllipsisExpandTrigger
   lineClamp?: string | number
   tooltip?: boolean | TooltipProps
-  'onUpdate:show'?: ListenerProp<(expand: boolean) => void>
+  'onUpdate:expand'?: ListenerProp<(expand: boolean) => void>
 }
 
 export class Ellipsis extends VarComponent {
