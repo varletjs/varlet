@@ -34,8 +34,8 @@ Locale.merge('en-US', {
 
 | Language Name | Language Code | Language Pack | Supported Version |
 | --- | --- | --- | --- |
-| `简体中文` | zh-CN | _Locale.zhCN_ | `v2.0.0` |
-| `美式英语` | en-US`| _Locale.enUS_ | `v2.0.0` |
-| `繁体中文(台)` | zh-TW | _Locale.zhTW_ | `v2.7.0` |
-| `繁体中文(港)` | zh-HK | _Locale.zhHK_ | `v2.7.0` |
+| `Chinese` | zh-CN | _Locale.zhCN_ | `v2.0.0` |
+| `English` | en-US`| _Locale.enUS_ | `v2.0.0` |
+| `Traditional Chinese (TW)	` | zh-TW | _Locale.zhTW_ | `v2.7.0` |
+| `Traditional Chinese (HK)	` | zh-HK | _Locale.zhHK_ | `v2.7.0` |
 
