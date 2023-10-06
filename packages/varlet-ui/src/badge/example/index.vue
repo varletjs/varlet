@@ -29,8 +29,8 @@ watchDarkMode(dark)
       <var-badge />
       <var-badge type="primary" />
       <var-badge type="info" />
-      <var-badge type="warning" />
       <var-badge type="success" />
+      <var-badge type="warning" />
       <var-badge type="danger" />
     </var-space>
 
