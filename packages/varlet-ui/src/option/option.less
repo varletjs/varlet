@@ -3,7 +3,8 @@
   --option-padding: 0 12px;
   --option-font-size: 16px;
   --option-selected-background: var(--field-decorator-focus-color);
-  --options-text-color: #555;
+  --option-text-color: #555;
+  --option-disabled-color: var(--color-text-disabled);
 }
 
 .var-option {
@@ -14,7 +15,7 @@
   padding: var(--option-padding);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: var(--options-text-color);
+  color: var(--option-text-color);
 
   &__cover {
     position: absolute;
@@ -38,5 +39,10 @@
 
   &--selected-color {
     color: var(--option-selected-background);
+  }
+
+  &--disabled {
+    color: var(--option-disabled-color);
+    cursor: not-allowed;
   }
 }

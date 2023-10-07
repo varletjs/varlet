@@ -110,6 +110,27 @@ test('test select by value', async () => {
   wrapper.unmount()
 })
 
+test('test select by disabled', async () => {
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: '',
+    }),
+    template: `
+      <var-select v-model="value">
+        <var-option label="吃饭" disabled />
+        <var-option label="睡觉" disabled />
+      </var-select>
+    `,
+  })
+
+  await wrapper.trigger('click')
+  await trigger(document.querySelector('.var-option'), 'click')
+  expect(wrapper.vm.value).toBe('')
+
+  wrapper.unmount()
+})
+
 test('test select hint to be false', () => {
   const wrapper = mount({
     ...Wrapper,

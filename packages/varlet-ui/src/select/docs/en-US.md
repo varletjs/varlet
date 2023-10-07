@@ -344,6 +344,7 @@ const value12 = ref()
 | --- | --- | --- | --- |
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
+| `disabled` | Whether to disable | _boolean_ | `false` |
 
 ### Methods
 
@@ -446,4 +447,4 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--option-padding` | `0 12px` |
 | `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
-| `--options-text-color` | `#555` |
+| `--option-text-color` | `#555` |

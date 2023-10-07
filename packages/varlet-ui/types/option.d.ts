@@ -6,6 +6,7 @@ export declare const optionProps: Record<string, any>
 export interface OptionProps extends BasicAttributes {
   label?: any
   value?: any
+  disabled?: boolean
 }
 
 export class Option extends VarComponent {

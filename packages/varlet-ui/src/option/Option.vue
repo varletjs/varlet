@@ -1,10 +1,10 @@
 <template>
   <div
-    :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')])"
+    :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])"
     :style="{
       color: optionSelected ? focusColor : undefined,
     }"
-    v-ripple
+    v-ripple="{ disabled }"
     v-hover:desktop="handleHovering"
     @click="handleClick"
   >
@@ -14,22 +14,24 @@
         background: optionSelected ? focusColor : undefined,
       }"
     ></div>
+
     <var-checkbox
-      ref="checkbox"
-      :checked-color="focusColor"
       v-if="multiple"
+      ref="checkbox"
       v-model="optionSelected"
+      :checked-color="focusColor"
+      :disabled="disabled"
       @click.stop
       @change="handleSelect"
     />
 
-    <div :class="classes(n('text'), n('$--ellipsis'))">
-      <slot>
+    <slot>
+      <div :class="classes(n('text'), n('$--ellipsis'))">
         {{ label }}
-      </slot>
-    </div>
+      </div>
+    </slot>
 
-    <var-hover-overlay :hovering="hovering" />
+    <var-hover-overlay :hovering="hovering && !disabled" />
   </div>
 </template>
 
@@ -74,6 +76,10 @@ export default defineComponent({
     bindSelect(optionProvider)
 
     function handleClick() {
+      if (props.disabled) {
+        return
+      }
+
       if (multiple.value) {
         optionSelected.value = !optionSelected.value
       }
@@ -82,7 +88,7 @@ export default defineComponent({
     }
 
     function handleSelect() {
-      return onSelect(optionProvider)
+      onSelect(optionProvider)
     }
 
     function sync(checked: boolean) {
@@ -90,12 +96,12 @@ export default defineComponent({
     }
 
     return {
-      n,
-      classes,
       optionSelected,
       multiple,
       focusColor,
       hovering,
+      n,
+      classes,
       handleHovering,
       handleClick,
       handleSelect,

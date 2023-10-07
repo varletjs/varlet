@@ -1,3 +1,3 @@
 export default {
-  '--options-text-color': '#fff',
+  '--option-text-color': '#fff',
 }

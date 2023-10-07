@@ -345,6 +345,7 @@ const value12 = ref()
 | --- | --- | --- | --- |
 | `label` | 选项显示的文本 | _any_ | `-` |
 | `value` | 选项绑定的值 | _any_ | `-` |
+| `disabled` | 是否禁用 | _boolean_ | `false` |
 
 ### 方法
 
@@ -447,4 +448,4 @@ const value12 = ref()
 | `--option-padding` | `0 12px` |
 | `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
-| `--options-text-color` | `#555` |
+| `--option-text-color` | `#555` |
