@@ -174,7 +174,7 @@ function toggle() {
 </template>
 ```
 
-### 动作菜单显示/隐藏
+### 动作菜单展开/收起
 
 ```html
 <script setup>
