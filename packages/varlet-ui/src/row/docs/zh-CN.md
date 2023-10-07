@@ -139,7 +139,7 @@
 
 ### 响应式布局
 
-#### 基本用法
+#### 基本使用
 
 ```vue
 import BasicExample from '../example/Responsive.vue'
