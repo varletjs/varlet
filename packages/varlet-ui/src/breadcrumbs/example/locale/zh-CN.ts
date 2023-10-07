@@ -1,5 +1,5 @@
 export default {
-  basicUsage: '基本用法',
+  basicUsage: '基本使用',
   separator: '分隔符',
   childSeparator: '子级分隔符',
   separatorSlot: '分隔符插槽',
