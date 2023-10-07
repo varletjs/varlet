@@ -189,12 +189,12 @@ export default defineComponent({
 
       const { url } = varFile
 
-      if (isString(url) && isHTMLSupportImage(url)) {
+      if (isHTMLSupportImage(url)) {
         ImagePreview(url)
         return
       }
 
-      if (isString(url) && isHTMLSupportVideo(url)) {
+      if (isHTMLSupportVideo(url)) {
         currentPreview.value = varFile
         showPreview.value = true
       }

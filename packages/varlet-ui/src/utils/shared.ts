@@ -1,4 +1,4 @@
-import { removeItem } from '@varlet/shared'
+import { isString, removeItem } from '@varlet/shared'
 
 export interface CacheInstance<T> {
   cache: T[]
@@ -12,16 +12,16 @@ export interface CacheInstance<T> {
   clear(): void
 }
 
-export const isHTMLSupportImage = (val: string | undefined | null) => {
-  if (val == null) {
+export const isHTMLSupportImage = (val: unknown): val is string => {
+  if (!isString(val)) {
     return false
   }
 
-  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg|webp)$/.test(val)
+  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg|webp|ico)$/i.test(val)
 }
 
-export const isHTMLSupportVideo = (val: string | undefined | null) => {
-  if (val == null) {
+export const isHTMLSupportVideo = (val: unknown): val is string => {
+  if (!isString(val)) {
     return false
   }
 
