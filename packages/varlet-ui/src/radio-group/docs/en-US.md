@@ -180,8 +180,8 @@ const value = ref(false)
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any_ | `-` |
-| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+| `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
 #### Radio Props
 
@@ -196,7 +196,7 @@ const value = ref(false)
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
 ### Methods
 
@@ -205,7 +205,7 @@ const value = ref(false)
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `undefined`) and validate messages | `-` | `-` |
 
 #### Radio Methods
@@ -213,7 +213,7 @@ const value = ref(false)
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `unchecked-value`) and validate messages | `-` | `-` |
 | `toggle` | Toggle the checked state, pass `checked-value` to check, `unchecked-value` to uncheck, do not pass or other cases to reverse | `value: any` | `-` |
 
@@ -223,14 +223,14 @@ const value = ref(false)
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `change` | Trigger on change | `value: any` |
+| `change` | Triggered on change | `value: any` |
 
 #### Radio Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `click` | Triggered on Click | `e: Event` |
-| `change` | Trigger on change | `value: any` |
+| `click` | Triggered on click | `e: Event` |
+| `change` | Triggered on change | `value: any` |
 
 ### Slots
 
@@ -238,7 +238,7 @@ const value = ref(false)
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Radio group content | `-` |
+| `default` | Radio Group content | `-` |
 
 #### Radio Slots
 
@@ -249,7 +249,7 @@ const value = ref(false)
 | `default` | Displayed text | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Radio Variables
 

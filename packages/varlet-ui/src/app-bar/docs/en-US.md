@@ -138,7 +138,7 @@ const active = ref(0)
 | `color`          | Background                                           | _string_ | `-`     |
 | `text-color`     | Text color                                           | _string_ | `-`     |
 | `title`          | Title                                                | _string_ | -       |
-| `title-position` | Title location,Can be set to `left`,`center`,`right` | _string_ | `left`  |
+| `title-position` | Title location, can be set to `left`, `center`, `right` | _string_ | `left`  |
  | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `round`          | Whether to use rounded border                        | _boolean_ | `false` |
 | `image`          | Background image                            | _string_ | `-` |
@@ -155,7 +155,7 @@ const active = ref(0)
 | `content` | Insert the content to the extra content of the app bar   | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

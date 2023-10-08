@@ -105,13 +105,13 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
 | ----- | -------------- | -------- | ---------- |
 | `v-model` | Loading status | _boolean_ | `-` |
 | `disabled` | Whether to disable pull refresh | _boolean_ | `false` |
-| `target` | The target to trigger scroll, If it is undefined back top will listen to the nearest scrollable parent. | _string \| HTMLElement_     | `-` |
+| `target` | The target to trigger scroll. If it is undefined back top will listen to the nearest scrollable parent. | _string \| HTMLElement_     | `-` |
 | `animation-duration` | The duration of the animation to return to the initial position after loading(ms) | _string \| number_ | `300` |
 | `success-duration` | Success text display duration(ms) | _string \| number_ | `2000` |
 | `bg-color` | BackgroundColor of control | _string_ | `#005CAF` |
-| `color` | color of control | _string_ | `#ffffff` |
+| `color` | Color of control | _string_ | `#ffffff` |
 | `success-bg-color` | BackgroundColor of control when the status is success | _string_ | `#4CAF50` |
-| `success-color` | color of control when the status is success | _string_ | `ffffff` |
+| `success-color` | Color of control when the status is success | _string_ | `ffffff` |
 
 ### Events
 
@@ -126,7 +126,7 @@ When the height of the `PullRefresh` is `0`, it will be unavailable, so you need
 | `default` | Default slot | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

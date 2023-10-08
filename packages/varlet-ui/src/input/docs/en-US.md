@@ -158,7 +158,7 @@ const value10 = ref('')
 | `resize` | Whether textarea can be dragged to resize                                                                                              | _boolean_ | `false` |
 | `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
 ### Methods
@@ -168,19 +168,19 @@ const value10 = ref('')
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding and validate messages | `-` | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Trigger while focusing | `event: Event` |
+| `focus` | Triggered while focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `event: Event` |
 | `clear` | Triggered on Clearance | `value: string` |
-| `input` | Trigger on input | `value: string`, `event: Event` |
-| `change` | Trigger on change | `value: string`, `event: Event` |
+| `input` | Triggered on input | `value: string`, `event: Event` |
+| `change` | Triggered on change | `value: string`, `event: Event` |
 
 ### Slots
 
@@ -191,7 +191,7 @@ const value10 = ref('')
 | `extra-message` | Extra message | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

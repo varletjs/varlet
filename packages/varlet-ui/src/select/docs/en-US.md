@@ -335,8 +335,8 @@ const value12 = ref()
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation， Optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
+| `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed, The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
 #### Option Props
 
@@ -355,7 +355,7 @@ const value12 = ref()
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding (single set to 'undefined', multiple set to '[]') and the validation messages | `-` | `-` |
 
 ### Events
@@ -364,7 +364,7 @@ const value12 = ref()
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Trigger while focusing | `event: Event` |
+| `focus` | Triggered when focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on click | `event: Event` |
 | `clear` | Triggered on clearance | `value: any \| any[]` |
@@ -389,7 +389,7 @@ const value12 = ref()
 | `default` | Options to display the content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Select Variables
 

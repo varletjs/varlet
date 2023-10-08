@@ -145,7 +145,7 @@ Set Badge Icon through `icon` property.
 
 | Prop | Description                                                                                                                                                          | Type | Default |
 | --- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------| --- | --- |
-| `type` | Badge type. Can be set to `default` `primary` `info` `success` `warning` `danger`                                                                                    | _string_ | `default` |
+| `type` | Badge type, can be set to `default` `primary` `info` `success` `warning` `danger`                                                                                    | _string_ | `default` |
 | `hidden` | Whether to hidden badge                                                                                                                                              | _boolean_ | `false` |
 | `dot` | Whether the badge is a dot                                                                                                                                           | _boolean_ | `false`|
 | `value` | The value shown in the badge (takes effect when `dot` is `false`)                                                                                                    | _string \| number_ | `0`|
@@ -163,7 +163,7 @@ Set Badge Icon through `icon` property.
 | `value` | The value shown in the badge | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

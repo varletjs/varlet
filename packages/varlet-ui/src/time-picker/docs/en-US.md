@@ -123,7 +123,7 @@ function change(time) {
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected time（ISO 8601 format, `HH:mm` or `HH:mm:ss`）                                                             | _string_ | `-` |
-| `format` | Picker type, optional values `ampm, 24hr`                                                                         | _string_ | `ampm` |
+| `format` | Picker type, optional values `ampm` `24hr`                                                                         | _string_ | `ampm` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
@@ -149,7 +149,7 @@ function change(time) {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default                |
 | --- |------------------------|

@@ -157,8 +157,8 @@ const floating = ref(false)
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
 | `alt`               | Alt text                                                        | _string_ | `-`      |
-| `image-height`      | height of Image                                                 | _string \| number_  | `-`     |
-| `image-width`       | width of Image                                                  | _string \| number_  | `-`     |
+| `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
+| `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
 | `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
@@ -167,7 +167,7 @@ const floating = ref(false)
 
 | Events  | Description                      | Arguments      |
 | ------- | -------------------------------- | -------------- |
-| `click` | Triggered when the Card is click | `event: Event` |
+| `click` | Triggered when the card is click | `event: Event` |
 
 ### Slots
 
@@ -183,7 +183,7 @@ const floating = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|

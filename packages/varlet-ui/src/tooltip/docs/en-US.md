@@ -178,17 +178,17 @@ In the `disabled` state, the tooltip will not be opened.
 
 | Prop              | Description                                                 | Type              | Default   |
 | ------- |-------------------------------------------------------------|----------------------|-----------|
-| `v-model:show` | whether to show the tooltip                                    | _boolean_             | `false`   |
-| `content` | display content | _string_              | `-`       |
+| `v-model:show` | Whether to show the tooltip                                    | _boolean_             | `false`   |
+| `content` | Display content | _string_              | `-`       |
 | `color`          | Tooltip background color                                                            | _string_  | `-`       |
-| `type`           | Tooltip type, Can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
+| `type`           | Tooltip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
 | `placement` | Tooltip popup placement                                        | _Placement_          | `top`     |
-| `strategy`       | Tooltip position strategy，optional value is `absolute` `fixed` | _string_              | `absolute`           |
+| `strategy`       | Tooltip position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
 | `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to'] \| false_ | `body`    |
 | `same-width`    | Whether to same width as trigger element                   | _boolean_ | `false`           |
-| `disabled` | whether to disable the tooltip                                                      | _boolean_            | `false`   |
+| `disabled` | Whether to disable the tooltip                                                      | _boolean_            | `false`   |
 | `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `hover`   |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
@@ -197,18 +197,18 @@ In the `disabled` state, the tooltip will not be opened.
 
 | Prop | Description                             |
 | ------- |-----------------------------------------|
-| `top` | top center position                     |
-| `top-start` | top left position                       |
-| `top-end` | top right position                      |
-| `bottom` | bottom center position                  |
-| `bottom-start` | bottom left position                    |
-| `bottom-end` | bottom right position                   |
-| `right` | right center position                   |
-| `right-start` | top right position                      |
-| `right-end` | bottom right position                   |
-| `left` | left center position                    |
-| `left-start` | top left position                       |
-| `left-end` | bottom left position                    |
+| `top` | Top center position                     |
+| `top-start` | Top left position                       |
+| `top-end` | Top right position                      |
+| `bottom` | Bottom center position                  |
+| `bottom-start` | Bottom left position                    |
+| `bottom-end` | Bottom right position                   |
+| `right` | Right center position                   |
+| `right-start` | Top right position                      |
+| `right-end` | Bottom right position                   |
+| `left` | Left center position                    |
+| `left-start` | Top left position                       |
+| `left-end` | Bottom left position                    |
 
 ### Methods
 | Method   | Description                     | Arguments | Return |
@@ -236,7 +236,7 @@ In the `disabled` state, the tooltip will not be opened.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

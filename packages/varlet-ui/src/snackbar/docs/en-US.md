@@ -314,10 +314,10 @@ function openMultiple() {
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
 | `loading-type` | Loading type (see `Loading` component)                                             | _string_ | `circle` |
 | `loading-size` | Loading size (see `Loading` component)                                             | _string_ | `normal` |
-| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`currentColor`|
+| `loading-color`  | Loading color (see `Loading` component)                                            |_string_|`currentColor`|
 | `loading-radius` | Loading radius (see `Loading` component)                                           | _string \| number_  | `-` |
 | `lock-scroll`| Whether to disable rolling penetration                                             | _boolean_  | `false` |
-| `forbid-click`| whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
+| `forbid-click`| Whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
 | `teleport`| The location of the Snackbar to mount                                              | _TeleportProps['to'] \| false_  | `body` |
 
 ### Events
@@ -381,7 +381,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

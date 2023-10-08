@@ -90,13 +90,13 @@ import { Snackbar } from '@varlet/ui'
 
 | Prop               | Description          | Type               | Default      |
 | ----------- | ------ | -------- | ------ |
-| `separator` | separator | _string_ | `/` |
+| `separator` | Separator | _string_ | `/` |
 
 #### Breadcrumb Props
 
 | Prop       | Description            | Type               | Default |
 | ----------- | -------------- | ----------------------------- |-----|
-| `separator` | separator | _string_ | `-` |
+| `separator` | Separator | _string_ | `-` |
 
 ### Events
 
@@ -123,7 +123,7 @@ import { Snackbar } from '@varlet/ui'
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 #### Breadcrumb Variables
 
 | Variable                        | Default                |

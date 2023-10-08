@@ -4,7 +4,7 @@
 
 | Prop       | Description            | Type               | Default |
 | ---------- | ---------------------- | ------------------ | ------- |
-| `name`     | tab's name             | _string \| number_ | `index` |
+| `name`     | Tab's name             | _string \| number_ | `index` |
 | `disabled` | Whether to disable tab | _boolean_          | `false` |
 
 ### Events
@@ -19,4 +19,4 @@
 
 | Name | Description | SlotProps |
 | --------- | ------------- | --------- |
-| `default` | tab's content | `-`       |
+| `default` | Tab's content | `-`       |

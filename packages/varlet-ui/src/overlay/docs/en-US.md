@@ -83,7 +83,7 @@ const show = ref(false)
 
 | Event   | Description                         | Arguments |
 |---------|-------------------------------------|-----------|
-| `click` | Triggered when you click on overlay | `-`       |
+| `click` | Triggered when clicking on overlay | `-`       |
 
 ### Slots
 
@@ -93,7 +93,7 @@ const show = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                     | Default             |
 |------------------------------|---------------------|

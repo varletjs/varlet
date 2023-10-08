@@ -328,7 +328,7 @@ bindForm?.(apis)
 | --- | --- | --- | --- |
 | `validate` | Trigger validation for all form components | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear the validation messages for all form components | `-` | `-` |
-| `reset` | Clears all form component bindings of values and validation messages | `-` | `-` |
+| `reset` | Clear all form component bindings of values and validation messages | `-` | `-` |
 
 ### Events
 
@@ -348,7 +348,7 @@ bindForm?.(apis)
 | `default` | Form content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### FormDetails Variables
 

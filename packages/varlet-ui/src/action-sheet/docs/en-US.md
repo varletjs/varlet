@@ -4,7 +4,7 @@
 
 An action sheet pops up to give the user the ability to select options.
 `ActionSheet` Functional and component use methods are provided, and there is no essential difference between the two effects and parameters.
-The function returns a `Promise`，on selection return `action`，Click modal close to return `close`.
+The function returns a `Promise`, on selection return `action`. Click modal close to return `close`.
 
 ## Functional
 
@@ -404,12 +404,12 @@ function handleSelect(action) {
 
 | Event           | Description                                          | Arguments        |
 | --------------- | ---------------------------------------------------- | ---------------- |
-| `select`        | Triggered when the action is click                   | `action: Action` |
-| `open`          | Triggered when the action sheet is open              | `-`              |
-| `opened`        | Triggered when the action sheet open-animation ends  | `-`              |
-| `close`         | Triggered when the action sheet is close             | `-`              |
-| `closed`        | Triggered when the action sheet close-animation ends | `-`              |
-| `click-overlay` | Triggered when you click on overlay                  | `-`              |
+| `select`        | Triggered when selecting an action sheet                  | `action: Action` |
+| `open`          | Triggered when opening an action sheet              | `-`              |
+| `opened`        | Triggered when an action sheet open-animation ends  | `-`              |
+| `close`         | Triggered when closing an action sheet            | `-`              |
+| `closed`        | Triggered when an action sheet close-animation ends | `-`              |
+| `click-overlay` | Triggered when clicking on overlay                  | `-`              |
 
 ### Methods
 
@@ -446,7 +446,7 @@ function handleSelect(action) {
 | ----------- | ----------------------------------- | --------- | ------- |
 | `name`      | Action name                         | _string_  | `-`     |
 | `color`     | Action text color                   | _string_  | `-`     |
-| `icon`      | Icon，support network image address | _string_  | `-`     |
+| `icon`      | Icon, support network image address | _string_  | `-`     |
 | `iconSize`  | Icon size                           | _string_  | `-`     |
 | `namespace` | Icon namespace | _string_ | `-` |
 | `className` | Class name                          | _string_  | `-`     |
@@ -461,7 +461,7 @@ function handleSelect(action) {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                                    | Default                      |
 | ------------------------------------------- | ---------------------------- |

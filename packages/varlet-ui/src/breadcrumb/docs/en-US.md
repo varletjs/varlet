@@ -4,7 +4,7 @@
 
 | Prop       | Description            | Type               | Default |
 | ----------- | -------------- | ----------------------------- |-----|
-| `separator` | separator | _string_ | `-` |
+| `separator` | Separator | _string_ | `-` |
 
 ### Events
 

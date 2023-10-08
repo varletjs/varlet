@@ -13,14 +13,14 @@
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `click` | Triggered on Click | `e: Event` |
-| `change` | Trigger on change | `value: any` |
+| `click` | Triggered on click | `e: Event` |
+| `change` | Triggered on change | `value: any` |
 
 ### Slots
 
