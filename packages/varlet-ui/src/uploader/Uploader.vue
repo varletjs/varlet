@@ -93,7 +93,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type UploaderValidateTrigger } from './props'
-import { isNumber, toNumber, isString, normalizeToArray, toDataURL } from '@varlet/shared'
+import { isNumber, toNumber, normalizeToArray, toDataURL } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -181,9 +181,15 @@ export default defineComponent({
     )
 
     function preview(varFile: VarFile) {
-      const { disabled, previewed } = props
+      const { disabled, previewed, preventDefaultPreview, onPreview } = props
 
       if (form?.disabled.value || disabled || !previewed) {
+        return
+      }
+
+      call(onPreview, reactive(varFile))
+
+      if (preventDefaultPreview) {
         return
       }
 
