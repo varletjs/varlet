@@ -183,18 +183,19 @@ export default defineComponent({
     function preview(varFile: VarFile) {
       const { disabled, previewed, preventDefaultPreview, onPreview } = props
 
-      if (preventDefaultPreview) {
-        call(onPreview, reactive(varFile))
+      if (form?.disabled.value || disabled || !previewed) {
         return
       }
 
-      if (form?.disabled.value || disabled || !previewed) {
+      call(onPreview, reactive(varFile))
+
+      if (preventDefaultPreview) {
         return
       }
 
       const { url } = varFile
 
-      if (url && isHTMLSupportImage(url)) {
+      if (isHTMLSupportImage(url)) {
         ImagePreview(url)
         return
       }

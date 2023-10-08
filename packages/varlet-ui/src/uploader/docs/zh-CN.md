@@ -406,6 +406,8 @@ const files = ref([
 | `resolve-type` | 文件预处理类型，可选值为 `default` `file` `data-url`（`default`，图片文件包含 dataURL 编码和 File 对象，其他类型仅包含 File 对象。`file`，仅包含 File 对象。`data-url`，所有文件类型都包含 dataURL 编码和 File 对象） | _string_ | `default` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+| `preventDefaultPreview` | 阻止默认预览行为 | _boolean_ | `false` |
+
 
 ### VarFile
 
@@ -450,6 +452,8 @@ const files = ref([
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
 | `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持 promise) | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |
+| `preview` | 文件预览时触发，可自定义预览方式，需要配合`preventDefaultPreview`参数阻止默认预览行为 | `file: VarFile` |
+
 
 ### 插槽
 

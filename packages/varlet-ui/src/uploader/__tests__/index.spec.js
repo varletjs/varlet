@@ -133,6 +133,10 @@ test('test uploader custom preview', async () => {
 
   await wrapper.find('.var-uploader__file').trigger('click')
   expect(onPreview).toHaveBeenCalledTimes(1)
+
+  wrapper.setProps({ preventDefaultPreview: false })
+  await wrapper.find('.var-uploader__file').trigger('click')
+  expect(onPreview).toHaveBeenCalledTimes(2)
 })
 
 test('test uploader onOversize', async () => {
