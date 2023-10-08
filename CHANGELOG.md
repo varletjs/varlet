@@ -1,3 +1,21 @@
+## [2.17.1](https://github.com/varletjs/varlet/compare/v2.17.0...v2.17.1) (2023-10-08)
+
+
+### Bug Fixes
+
+* **dialog:** fix message word-wrap and improve uploader component tests and docs ([1c4c3d2](https://github.com/varletjs/varlet/commit/1c4c3d25ed2ec5ccf6b2f73f89875daddcac225e))
+* **option:** fix selected error in multiple mode ([c9753d9](https://github.com/varletjs/varlet/commit/c9753d984696e12ae56cc119682e877c7b0289a9))
+* **popup:** fixed width and height of the popup content ([b78826d](https://github.com/varletjs/varlet/commit/b78826d2839b9602b964ac0f13664f64b5198640))
+* **uploader:** support ico extname of the image ([3429668](https://github.com/varletjs/varlet/commit/34296689c0218690afeaaf2217fd3612fd3987b3))
+
+
+### Features
+
+* **option:** support disabled ([802813d](https://github.com/varletjs/varlet/commit/802813d87a08bac579edcbbd0e6196b458502338))
+* **uploader:** support props.PreventDefaultPreview and preview event([#1206](https://github.com/varletjs/varlet/issues/1206)) ([f5ab12b](https://github.com/varletjs/varlet/commit/f5ab12b368f00bea2b9190b39d1556a6c8c1496d))
+
+
+
 # [2.17.0](https://github.com/varletjs/varlet/compare/v2.16.7...v2.17.0) (2023-09-28)
 
 
