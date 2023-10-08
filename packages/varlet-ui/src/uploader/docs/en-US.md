@@ -65,7 +65,7 @@ const files = ref([
 function handlePreview(file) {
   Dialog({
     title: 'Custom Preview',
-    message: file.url,
+    message: file.url.slice(0, 100),,
   })
 }
 
@@ -402,12 +402,12 @@ const files = ref([
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
 | `maxsize`   | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
+| `prevent-default-preview` | Prevent Default Preview behavior | _boolean_ | `false` |
 | `ripple`    | Whether to open ripple | _boolean_ | `true` |
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `resolve-type` | The file preprocessing type, Can be set to `default` `file` `data-url` (`default`, the image type contains dataURL and File object, other types contain only File object. `file`, which contains only File object. `data-url`, all file types contain dataURL and File object) | _string_ | `default` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
-| `prevent-default-preview` | Prevent Default Preview behavior | _boolean_ | `false` |
 
 
 ### VarFile

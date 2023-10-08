@@ -133,10 +133,10 @@ function handleBeforeFilter(files) {
   return files.filter((file) => file.name.endsWith('png'))
 }
 
-function handlePreview(files) {
+function handlePreview(file) {
   Dialog({
     title: pack.value.customPreview,
-    message: files.url,
+    message: file.url.slice(0, 100),
   })
 }
 

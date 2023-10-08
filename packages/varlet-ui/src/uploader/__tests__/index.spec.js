@@ -100,16 +100,18 @@ test('test uploader preview', async () => {
 
   const wrapper = mount(VarUploader, {
     props: {
-      modelValue: [],
+      modelValue: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        },
+      ],
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
 
-  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
-  await delay(16)
   await wrapper.find('.var-uploader__file').trigger('click')
   await delay(100)
-
   expect(document.querySelectorAll('.var-popup')[1].style.display).toBe('')
   wrapper.vm.closePreview()
   await delay(300)
@@ -119,19 +121,26 @@ test('test uploader preview', async () => {
   mockRestore()
 })
 
-test('test uploader custom preview', async () => {
+test('test uploader preview event', async () => {
+  const { mockRestore: mockRestoreStubs } = mockStubs()
   const onPreview = vi.fn()
-  const { target } = createEvent('cat.png', 'image/png')
 
   const wrapper = mount(VarUploader, {
     props: {
-      modelValue: target.files,
+      modelValue: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        },
+      ],
       onPreview,
     },
   })
   await wrapper.find('.var-uploader__file').trigger('click')
   expect(onPreview).toHaveBeenCalledTimes(1)
-
+  wrapper.vm.closePreview()
+  await delay(300)
+  mockRestoreStubs()
   wrapper.unmount()
 })
 
@@ -142,19 +151,16 @@ test('test uploader prevent default preview', async () => {
 
   const wrapper = mount(VarUploader, {
     props: {
-      modelValue: [],
+      modelValue: [
+        {
+          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        },
+      ],
+      preventDefaultPreview: true,
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
-
-  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
-  await delay(16)
-
-  await wrapper.find('.var-uploader__file').trigger('click')
-  expect(document.querySelectorAll('.var-popup')[1].style.display).toBe('')
-
-  wrapper.vm.closePreview()
-  await delay(300)
 
   wrapper.setProps({ preventDefaultPreview: true })
   await delay(100)
