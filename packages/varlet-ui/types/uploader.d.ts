@@ -43,6 +43,7 @@ export interface UploaderProps extends BasicAttributes {
   previewed?: boolean
   hideList?: boolean
   ripple?: boolean
+  preventDefaultPreview?: boolean
   resolveType?: UploaderResolveType
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
@@ -52,6 +53,7 @@ export interface UploaderProps extends BasicAttributes {
   onOversize?: ListenerProp<(file: VarFile) => any>
   onBeforeRemove?: ListenerProp<(file: VarFile) => any>
   onRemove?: ListenerProp<(file: VarFile) => any>
+  onPreview?: ListenerProp<(file: VarFile) => void>
   'onUpdate:modelValue'?: ListenerProp<(files: VarFile[]) => any>
 }
 

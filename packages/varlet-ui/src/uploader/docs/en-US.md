@@ -62,10 +62,10 @@ const files = ref([
   }
 ])
 
-function handlePreview(files) {
+function handlePreview(file) {
   Dialog({
     title: 'Custom Preview',
-    message: files.url,
+    message: file.url,
   })
 }
 
@@ -407,7 +407,7 @@ const files = ref([
 | `resolve-type` | The file preprocessing type, Can be set to `default` `file` `data-url` (`default`, the image type contains dataURL and File object, other types contain only File object. `file`, which contains only File object. `data-url`, all file types contain dataURL and File object) | _string_ | `default` |
 | `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
-| `preventDefaultPreview` | Prevent Default Preview behavior | _boolean_ | `false` |
+| `prevent-default-preview` | Prevent Default Preview behavior | _boolean_ | `false` |
 
 
 ### VarFile
@@ -453,7 +453,7 @@ const files = ref([
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
 | `before-remove` | Triggered before file deletion, return false value to prevent file deletion (support promise) | `file: VarFile` |
 | `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
-| `preview` | Triggered when the file is previewed. The preview method can be customized. You need to use the `preventDefaultPreview` parameter to prevent the default preview behavior. | `file: VarFile` |
+| `preview` | Triggered when the file is previewed | `file: VarFile` |
 
 ### Slots
 

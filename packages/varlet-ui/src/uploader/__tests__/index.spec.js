@@ -126,17 +126,44 @@ test('test uploader custom preview', async () => {
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: target.files,
-      preventDefaultPreview: true,
       onPreview,
     },
   })
-
   await wrapper.find('.var-uploader__file').trigger('click')
   expect(onPreview).toHaveBeenCalledTimes(1)
 
-  wrapper.setProps({ preventDefaultPreview: false })
+  wrapper.unmount()
+})
+
+test('test uploader prevent default preview', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const { mockRestore: mockRestoreStubs } = mockStubs()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  await delay(16)
+
   await wrapper.find('.var-uploader__file').trigger('click')
-  expect(onPreview).toHaveBeenCalledTimes(2)
+  expect(document.querySelectorAll('.var-popup')[1].style.display).toBe('')
+
+  wrapper.vm.closePreview()
+  await delay(300)
+
+  wrapper.setProps({ preventDefaultPreview: true })
+  await delay(100)
+  await wrapper.find('.var-uploader__file').trigger('click')
+  expect(document.querySelectorAll('.var-popup').length).toBe(1)
+
+  mockRestoreStubs()
+  wrapper.unmount()
+  mockRestore()
 })
 
 test('test uploader onOversize', async () => {
