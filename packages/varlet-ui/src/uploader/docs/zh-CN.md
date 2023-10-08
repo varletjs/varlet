@@ -65,7 +65,7 @@ const files = ref([
 function handlePreview(file) {
   Dialog({
     title: '自定义预览',
-    message: file.url.slice(0, 100),,
+    message: file.url.slice(0, 100)
   })
 }
 

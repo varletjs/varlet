@@ -65,7 +65,7 @@ const files = ref([
 function handlePreview(file) {
   Dialog({
     title: 'Custom Preview',
-    message: file.url.slice(0, 100),,
+    message: file.url.slice(0, 100),
   })
 }
 
