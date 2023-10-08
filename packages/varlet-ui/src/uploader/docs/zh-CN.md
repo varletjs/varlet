@@ -47,6 +47,35 @@ const files = ref([
 </template>
 ```
 
+### 自定义预览
+
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Dialog } from '@varlet/ui'
+
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+  }
+])
+
+function handlePreview(files) {
+  Dialog({
+    title: '自定义预览',
+    message: files.url,
+  })
+}
+
+</script>
+
+<template>
+  <var-uploader v-model="files" prevent-default-preview @preview="handlePreview"/>
+</template>
+```
+
 ### 上传状态
 
 提供了 `loading`、 `success`、 `error` 三种上传状态，并提供了工具函数快速获取对应状态的文件。

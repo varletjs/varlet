@@ -133,6 +133,13 @@ function handleBeforeFilter(files) {
   return files.filter((file) => file.name.endsWith('png'))
 }
 
+function handlePreview(files) {
+  Dialog({
+    title: pack.value.customPreview,
+    message: files.url,
+  })
+}
+
 watchLang(use)
 watchDarkMode(dark)
 
@@ -147,6 +154,9 @@ onUnmounted(() => {
 
   <app-type>{{ pack.preview }}</app-type>
   <var-uploader v-model="values.files2" />
+
+  <app-type>{{ pack.customPreview }}</app-type>
+  <var-uploader v-model="values.files11" prevent-default-preview @preview="handlePreview" />
 
   <app-type>{{ pack.state }}</app-type>
   <var-uploader v-model="values.files3" @after-read="handleAfterRead2" />

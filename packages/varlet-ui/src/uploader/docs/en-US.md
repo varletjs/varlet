@@ -47,6 +47,35 @@ const files = ref([
 </template>
 ```
 
+### Custom Preview
+
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Dialog } from '@varlet/ui'
+
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+  }
+])
+
+function handlePreview(files) {
+  Dialog({
+    title: 'Custom Preview',
+    message: files.url,
+  })
+}
+
+</script>
+
+<template>
+  <var-uploader v-model="files" prevent-default-preview @preview="handlePreview"/>
+</template>
+```
+
 ### Upload State
 
 Three uploading states, `loading`, `success` and `error`, are provided, and tool functions are provided to quickly obtain files with corresponding states.

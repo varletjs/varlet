@@ -60,11 +60,13 @@ export const props = {
   },
   rules: Array as PropType<Array<(v: VarFile) => any>>,
   hideList: Boolean,
+  preventDefaultPreview: Boolean,
   onBeforeFilter: defineListenerProp<(files: VarFile[]) => Promise<VarFile[]> | VarFile[]>(),
   onBeforeRead: defineListenerProp<(file: VarFile) => Promise<any> | any>(),
   onAfterRead: defineListenerProp<(file: VarFile) => any>(),
   onBeforeRemove: defineListenerProp<(file: VarFile) => any>(),
   onRemove: defineListenerProp<(file: VarFile) => any>(),
   onOversize: defineListenerProp<(file: VarFile) => any>(),
+  onPreview: defineListenerProp<(file: VarFile) => void>(),
   'onUpdate:modelValue': defineListenerProp<(files: VarFile[]) => any>(),
 }

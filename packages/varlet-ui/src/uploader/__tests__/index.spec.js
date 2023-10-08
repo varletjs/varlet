@@ -119,6 +119,22 @@ test('test uploader preview', async () => {
   mockRestore()
 })
 
+test('test uploader custom preview', async () => {
+  const onPreview = vi.fn()
+  const { target } = createEvent('cat.png', 'image/png')
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: target.files,
+      preventDefaultPreview: true,
+      onPreview,
+    },
+  })
+
+  await wrapper.find('.var-uploader__file').trigger('click')
+  expect(onPreview).toHaveBeenCalledTimes(1)
+})
+
 test('test uploader onOversize', async () => {
   const onOversize = vi.fn()
 

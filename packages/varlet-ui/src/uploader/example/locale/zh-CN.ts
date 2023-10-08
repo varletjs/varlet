@@ -1,6 +1,7 @@
 export default {
   basicUsage: '基本使用',
   preview: '文件预览',
+  customPreview: '自定义预览',
   state: '上传状态',
   maxlength: '文件数量限制',
   maxsize: '文件大小限制',
