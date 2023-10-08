@@ -80,14 +80,14 @@ export default defineComponent({
         return
       }
 
+      handleSelect()
+    }
+
+    function handleSelect() {
       if (multiple.value) {
         optionSelected.value = !optionSelected.value
       }
 
-      onSelect(optionProvider)
-    }
-
-    function handleSelect() {
       onSelect(optionProvider)
     }
 
