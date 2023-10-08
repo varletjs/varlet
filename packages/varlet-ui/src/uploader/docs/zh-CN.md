@@ -68,7 +68,6 @@ function handlePreview(file) {
     message: file.url.slice(0, 100)
   })
 }
-
 </script>
 
 <template>
