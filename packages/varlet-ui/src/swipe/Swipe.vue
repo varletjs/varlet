@@ -114,7 +114,7 @@ import Hover from '../hover'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
 import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
-import { clamp, isNumber, toNumber, doubleRaf } from '@varlet/shared'
+import { clamp, isNumber, toNumber, doubleRaf, preventDefault } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
 import { onSmartUnmounted, onWindowResize, useTouch } from '@varlet/use'
 import { usePopup } from '../popup/provide'
@@ -345,7 +345,7 @@ export default defineComponent({
         return
       }
 
-      event.preventDefault()
+      preventDefault(event)
       setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
     }
 

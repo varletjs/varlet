@@ -67,7 +67,7 @@ import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
-import { toNumber, clamp } from '@varlet/shared'
+import { toNumber, clamp, preventDefault } from '@varlet/shared'
 import { useEventListener, useTouch } from '@varlet/use'
 import { props } from './props'
 import { call, createNamespace } from '../utils/components'
@@ -316,7 +316,7 @@ export default defineComponent({
     }
 
     function preventImageDefault(event: Event) {
-      props.imagePreventDefault && props.show && event.preventDefault()
+      props.imagePreventDefault && props.show && preventDefault(event)
     }
 
     return {

@@ -205,3 +205,11 @@ export const toDataURL = (file: File): Promise<string> =>
 
     fileReader.readAsDataURL(file)
   })
+
+export const preventDefault = (event: Event) => {
+  if (event.cancelable === false) {
+    return
+  }
+
+  event.preventDefault()
+}

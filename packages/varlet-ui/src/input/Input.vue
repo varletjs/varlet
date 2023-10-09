@@ -126,7 +126,7 @@ import VarFormDetails from '../form-details'
 import VarFieldDecorator from '../field-decorator'
 import { defineComponent, ref, computed, nextTick } from 'vue'
 import { props, type InputType, type InputValidateTrigger } from './props'
-import { isEmpty, toNumber } from '@varlet/shared'
+import { isEmpty, preventDefault, toNumber } from '@varlet/shared'
 import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { onSmartMounted, useId } from '@varlet/use'
@@ -326,7 +326,7 @@ export default defineComponent({
       }
 
       focus()
-      e.preventDefault()
+      preventDefault(e)
     }
 
     // expose

@@ -24,7 +24,7 @@ import { props } from './props'
 import { createNamespace, useTeleport, call } from '../utils/components'
 import { toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
-import { clamp, getRect } from '@varlet/shared'
+import { clamp, getRect, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('drag')
 
@@ -71,7 +71,7 @@ export default defineComponent({
       }
 
       moveTouch(event)
-      event.preventDefault()
+      preventDefault(event)
       enableTransition.value = false
       dragged.value = true
 

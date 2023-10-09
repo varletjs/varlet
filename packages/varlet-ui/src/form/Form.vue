@@ -9,7 +9,7 @@ import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useFormItems, type FormProvider } from './provide'
 import { call, createNamespace } from '../utils/components'
-import { find } from '@varlet/shared'
+import { find, preventDefault } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
 
@@ -45,13 +45,13 @@ export default defineComponent({
     }
 
     async function handleSubmit(event: Event) {
-      event.preventDefault()
+      preventDefault(event)
       const valid = await validate()
       call(props.onSubmit, valid)
     }
 
     function handleReset(event: Event) {
-      event.preventDefault()
+      preventDefault(event)
       reset()
       call(props.onReset)
     }

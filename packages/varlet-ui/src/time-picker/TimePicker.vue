@@ -58,7 +58,7 @@ import dayjs from 'dayjs/esm'
 import Clock from './clock.vue'
 import { computed, defineComponent, reactive, ref, watch, type DefineComponent } from 'vue'
 import { props, hoursAmpm, hours24, type Time, type AmPm } from './props'
-import { toNumber, getRect } from '@varlet/shared'
+import { toNumber, getRect, preventDefault } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
@@ -290,7 +290,7 @@ export default defineComponent({
     }
 
     function moveHand(event: TouchEvent) {
-      event.preventDefault()
+      preventDefault(event)
       if (props.readonly) return
 
       setCenterAndRange()

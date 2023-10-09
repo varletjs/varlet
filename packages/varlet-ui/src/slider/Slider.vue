@@ -73,7 +73,7 @@ import { useValidation, createNamespace, call } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, multiplySizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
-import { isArray, isNumber, toNumber, getRect } from '@varlet/shared'
+import { isArray, isNumber, toNumber, getRect, preventDefault } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
 import { onSmartMounted } from '@varlet/use'
 import { type SliderProvider } from './provide'
@@ -323,7 +323,7 @@ export default defineComponent({
     }
 
     function move(event: TouchEvent) {
-      event.preventDefault()
+      preventDefault(event)
 
       if (isDisabled.value || isReadonly.value || !isScroll.value) return
 
