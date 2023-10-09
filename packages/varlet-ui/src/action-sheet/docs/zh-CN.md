@@ -468,6 +468,7 @@ function handleSelect(action) {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--action-sheet-border-radius` | `2px` |
+| `--action-sheet-border-top` | `none` |
 | `--action-sheet-background` | `#fff` |
 | `--action-sheet-title-color` | `#888` |
 | `--action-sheet-title-padding` | `10px 16px` |
