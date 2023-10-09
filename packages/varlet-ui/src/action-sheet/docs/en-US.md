@@ -466,6 +466,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable                                    | Default                      |
 | ------------------------------------------- | ---------------------------- |
 | `--action-sheet-border-radius`              | `2px`                        |
+| `--action-sheet-border-top`                 | `none`                       |
 | `--action-sheet-background`                 | `#fff`                       |
 | `--action-sheet-title-color`                | `#888`                       |
 | `--action-sheet-title-padding`              | `10px 16px`                  |
