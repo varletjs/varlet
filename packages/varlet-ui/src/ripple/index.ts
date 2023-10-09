@@ -136,6 +136,7 @@ function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>
   el.addEventListener('dragstart', removeRipple, { passive: true })
   document.addEventListener('touchend', el._ripple.removeRipple, { passive: true })
   document.addEventListener('touchcancel', el._ripple.removeRipple, { passive: true })
+  document.addEventListener('dragend', el._ripple.removeRipple, { passive: true })
 }
 
 function unmounted(el: RippleHTMLElement) {
@@ -144,6 +145,7 @@ function unmounted(el: RippleHTMLElement) {
   el.removeEventListener('dragstart', removeRipple)
   document.removeEventListener('touchend', el._ripple!.removeRipple)
   document.removeEventListener('touchcancel', el._ripple!.removeRipple)
+  document.removeEventListener('dragend', el._ripple!.removeRipple)
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
