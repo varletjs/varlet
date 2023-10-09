@@ -12,7 +12,7 @@
 
 | Event | Description | Arguments |
 | ---- | ---- | ---- |
-| `click` | Trigger on click | `active: number \| string` |
+| `click` | Triggered when clicking | `active: number \| string` |
 
 ### Slots
 

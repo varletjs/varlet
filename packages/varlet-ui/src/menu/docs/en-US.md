@@ -222,13 +222,13 @@ it is recommended to wrap a `block` element.
 
 | Prop            | Description                                                                                                                  | Type              | Default           |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------|-------------------|
-| `v-model:show`  | whether to show the menu                                                                                                     | _string_             | `default`         |
-| `placement`     | menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
-| `strategy`       | menu position strategy，optional value is `absolute` `fixed` | _string_              | `absolute`           |
+| `v-model:show`  | Whether to show the menu                                                                                                     | _string_             | `default`         |
+| `placement`     | Menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
+| `strategy`       | Menu position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
-| `disabled`      | whether to disable the menu                                                                                                  | _boolean_            | `false`           |
+| `disabled`      | Whether to disable the menu                                                                                                  | _boolean_            | `false`           |
 | `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
@@ -241,26 +241,26 @@ it is recommended to wrap a `block` element.
 
 | Prop | Description                             |
 | ------- |-----------------------------------------|
-| `top` | top center position                     |
-| `top-start` | top left position                       |
-| `top-end` | top right position                      |
-| `bottom` | bottom center position                  |
-| `bottom-start` | bottom left position                    |
-| `bottom-end` | bottom right position                   |
-| `right` | right center position                   |
-| `right-start` | top right position                      |
-| `right-end` | bottom right position                   |
-| `left` | left center position                    |
-| `left-start` | top left position                       |
-| `left-end` | bottom left position                    |
-| `cover-top` | top center position, overlay trigger    |
-| `cover-top-start` | top left position, overlay trigger      |
-| `cover-top-end` | top right position, overlay trigger     |
-| `cover-bottom` | bottom center position, overlay trigger |
-| `cover-bottom-start` | bottom left position, overlay trigger   |
-| `cover-bottom-end` | bottom right position, overlay trigger  |
-| `cover-left` | left center position, overlay trigger   |
-| `cover-right` | right center position, overlay trigger |
+| `top` | Top center position                     |
+| `top-start` | Top left position                       |
+| `top-end` | Top right position                      |
+| `bottom` | Bottom center position                  |
+| `bottom-start` | Bottom left position                    |
+| `bottom-end` | Bottom right position                   |
+| `right` | Right center position                   |
+| `right-start` | Top right position                      |
+| `right-end` | Bottom right position                   |
+| `left` | Left center position                    |
+| `left-start` | Top left position                       |
+| `left-end` | Bottom left position                    |
+| `cover-top` | Top center position, overlay trigger    |
+| `cover-top-start` | Top left position, overlay trigger      |
+| `cover-top-end` | Top right position, overlay trigger     |
+| `cover-bottom` | Bottom center position, overlay trigger |
+| `cover-bottom-start` | Bottom left position, overlay trigger   |
+| `cover-bottom-end` | Bottom right position, overlay trigger  |
+| `cover-left` | Left center position, overlay trigger   |
+| `cover-right` | Right center position, overlay trigger |
 
 ### Methods
 | Method   | Description                     | Arguments | Return |
@@ -288,7 +288,7 @@ it is recommended to wrap a `block` element.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

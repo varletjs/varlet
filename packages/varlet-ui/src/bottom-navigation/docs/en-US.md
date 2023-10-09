@@ -198,13 +198,13 @@ const isEven = ref(true)
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns falsy value to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
-| `fab-click` | Triggered when fab button click | `-` |
+| `fab-click` | Triggered when clicking fab button | `-` |
 
 #### BottomNavigationItem Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
-| `click` | Trigger on click | `active: number \| string` |
+| `click` | Triggered when clicking | `active: number \| string` |
 
 ### Slots
 
@@ -224,7 +224,7 @@ const isEven = ref(true)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### BottomNavigation Variables
 

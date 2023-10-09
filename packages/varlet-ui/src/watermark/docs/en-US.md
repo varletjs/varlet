@@ -176,11 +176,11 @@ const toggle = () => {
 
 | Prop              | Description       | Type     | Default   |
 | --- |----------------------| --- | --- |
-| `font-size`    |    font size    | _number_      | `14`   |
-| `font-variant`  |    font variant    | _string_      | `normal`   |
-| `font-weight`    |    font weight   | _string_      | `normal`   |
-| `font-style`   |    font style   | _string_      | `normal`   |
-| `font-family`  |    font family    | _string_      | `-`   |
+| `font-size`    |    Font size    | _number_      | `14`   |
+| `font-variant`  |    Font variant    | _string_      | `normal`   |
+| `font-weight`    |    Font weight   | _string_      | `normal`   |
+| `font-style`   |    Font style   | _string_      | `normal`   |
+| `font-family`  |    Font family    | _string_      | `-`   |
 
 ### Methods
 
@@ -192,10 +192,10 @@ const toggle = () => {
 
 | Name | Description | SlotProps |
 | --- |----------------------| --- |
-| `content` | The content of HTML `Watermark`. only supports inline styles, does not support passing in self closing tags, priority higher than `content` or `image` attributes | `-` |
+| `content` | The content of HTML `Watermark`, only supports inline styles, does not support passing in self closing tags, priority higher than `content` or `image` attributes | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | ------ | -------- |

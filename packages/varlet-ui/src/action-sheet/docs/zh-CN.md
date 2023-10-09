@@ -405,7 +405,7 @@ function handleSelect(action) {
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `select` | 选择选项时出发 | `action: Action` |
+| `select` | 选择选项时触发 | `action: Action` |
 | `open` | 打开动作面板时触发 | `-` |
 | `opened` | 打开动作面板动画结束时触发 | `-` |
 | `close` | 关闭动作面板时触发 | `-` |

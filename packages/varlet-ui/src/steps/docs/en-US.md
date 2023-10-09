@@ -92,7 +92,7 @@ const active = ref(0)
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active` | Active step | _string \| number_ | `0` |
-| `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
+| `direction` | Mode of steps, can be set to `horizontal` `vertical` | _string_ | `horizontal` |
 | `active-color` | Active step color | _string_ | `-` |
 | `inactive-color` | Inactive step color | _string_ | `-` |
 
@@ -131,7 +131,7 @@ const active = ref(0)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

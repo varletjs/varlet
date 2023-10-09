@@ -144,8 +144,8 @@ Set the chip color through the `color` and `text-color` attributes.
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `type` | Chip type, Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | Chip size, Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |
+| `type` | Chip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | Chip size, can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
 | `plain` | Whether to be hollow label | _boolean_ | `false` |
 | `round` | Whether to be round label | _boolean_ | `true` |
 | `block` | Whether to be block label | _boolean_ | `false` |
@@ -170,7 +170,7 @@ Set the chip color through the `color` and `text-color` attributes.
 | `close` | Triggered when the Close button is clicked and can only be used when the Close button is displayed | `event: Event` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

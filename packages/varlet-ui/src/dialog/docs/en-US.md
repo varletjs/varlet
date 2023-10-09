@@ -240,9 +240,9 @@ const show = ref(false)
 | `before-close`  | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close`         | Triggered when the Dialog is close                   | `-`                                                        |
 | `closed`        | Triggered when the Dialog close-animation ends       | `-`                                                        |
-| `confirm`       | Trigger on confirm                                   | `-`                                                        |
-| `cancel`        | Trigger on cancel                                    | `-`                                                        |
-| `click-overlay` | Triggered when you click on overlay                  | `-`                                                        |
+| `confirm`       | Triggered on confirm                                   | `-`                                                        |
+| `cancel`        | Triggered on cancel                                    | `-`                                                        |
+| `click-overlay` | Triggered when clicking on overlay                  | `-`                                                        |
 
 ### Methods
 
@@ -296,7 +296,7 @@ const show = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                        | Default                |
 | ------------------------------- | ---------------------- |

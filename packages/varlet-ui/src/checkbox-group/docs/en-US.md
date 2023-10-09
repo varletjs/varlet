@@ -211,8 +211,8 @@ const value = ref([])
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
-| `direction` | The layout direction，Optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `horizontal` |
+| `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `horizontal` |
 
 #### Checkbox Props
 
@@ -228,7 +228,7 @@ const value = ref([])
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `indeterminate` | Whether indeterminate status(style has the highest priority) | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
 
 ### Methods
 
@@ -257,14 +257,14 @@ const value = ref([])
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `change` | Trigger on change | `value: any[]` |
+| `change` | Triggered on change | `value: any[]` |
 
 #### Checkbox Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `click` | Triggered on Click | `e: Event` |
-| `change` | Trigger on change | `value: any` |
+| `change` | Triggered on change | `value: any` |
 
 ### Slots
 
@@ -272,7 +272,7 @@ const value = ref([])
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Checkbox group content | `-` |
+| `default` | Checkbox Group content | `-` |
 
 #### Checkbox Slots
 
@@ -284,7 +284,7 @@ const value = ref([])
 | `default` | Displayed text | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

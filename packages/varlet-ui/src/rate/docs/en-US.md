@@ -156,7 +156,7 @@ function handleChange(score) {
 
 ### Validate
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+The values are validated by passing in an array of validators. If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 
 
@@ -179,7 +179,7 @@ const score = ref(3)
 | Prop             | Description | Type | Default | 
 |------------------| ---- | ---- | ---- |
 | `v-model`        | The current rating  | _number \| string_ | `0` |
-| `count`          | total rating  | _number \| string_ | `5` |
+| `count`          | Total rating  | _number \| string_ | `5` |
 | `color`          | The color of the icon when selected  | _string_ | `-` |
 | `icon`           | The icon style when the entire icon is selected  | _string_ | `star` |
 | `empty-color`    | The color of the icon when unchecked | _string_ | `#bdbdbd` |
@@ -196,7 +196,7 @@ const score = ref(3)
 | `readonly`       | Whether to use rating read-only | _boolean_ | `false` |
 | `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |
-| `rules`          | The validation rules，Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
+| `rules`          | The validation rules, returns `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
 
 ### Events
 
@@ -205,7 +205,7 @@ const score = ref(3)
 | `change` | Triggered when the rating changes | `value: string \| number` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default                      |
 | --- |------------------------------|

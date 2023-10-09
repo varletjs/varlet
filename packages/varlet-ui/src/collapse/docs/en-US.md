@@ -165,7 +165,7 @@ const value = ref(['1'])
 | `name` | Name | _string \| number_ | `index` |
 | `title` | Title | _string \| number_ | `-` |
 | `icon` | Icon name | _string_ | `chevron-down` |
-| `disabled` | Whether to disabled collapse	 | _boolean_ | `false` |
+| `disabled` | Whether to disable collapse	 | _boolean_ | `false` |
 
 ### Events
 
@@ -192,7 +192,7 @@ const value = ref(['1'])
 | `icon` | Custom right icon | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

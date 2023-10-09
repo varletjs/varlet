@@ -36,7 +36,7 @@ Here are some basic style variables for the component library
 
 ### Modify Styles At Runtime
 
-Maybe you have a need to replace the style while the program is runtime，like a one-click skin change or something.
+Maybe you have a need to replace the style while the program is runtime, like a one-click skin change or something.
 The component library provides a StyleProvider component to assist in managing styles,
 Component provides' `component call` and `function call` and two invocation modes.
 

@@ -131,7 +131,7 @@ function change(date) {
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
-| `type` | Picker type, optional values`date, month`                                                                         | _string_ | `date` |
+| `type` | Picker type, optional values `date` `month`                                                                         | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
 | `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
@@ -166,7 +166,7 @@ function change(date) {
 | `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default                |
 | --- |------------------------|

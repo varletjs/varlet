@@ -345,7 +345,7 @@ const active = ref(0)
 
 | Prop       | Description            | Type               | Default |
 | ---------- | ---------------------- | ------------------ | ------- |
-| `name`     | tab's name             | _string \| number_ | `index` |
+| `name`     | Tab's name             | _string \| number_ | `index` |
 | `disabled` | Whether to disable tab | _boolean_          | `false` |
 
 #### TabsItems Props
@@ -360,7 +360,7 @@ const active = ref(0)
 
 | Prop   | Description | Type               | Default |
 | ------ | ----------- | ------------------ | ------- |
-| `name` | view's name | _string \| number_ | `index` |
+| `name` | View's name | _string \| number_ | `index` |
 
 ### Methods
 
@@ -368,8 +368,8 @@ const active = ref(0)
 
 | Method   | Description                                                                         | Arguments | Return |
 | -------- |-------------------------------------------------------------------------------------| --------- | ------ |
-| `resize` | You can call this method to redraw when a tabs changes position size                | `-`       | `-`    |
-| `resizeSticky` | You can call this method to redraw when a tabs sticky layouts changes position size | `-`  | `Promise<void>` |
+| `resize` | Call this method to redraw when a tabs changes position size                | `-`       | `-`    |
+| `resizeSticky` | Call this method to redraw when a tabs sticky layouts changes position size | `-`  | `Promise<void>` |
 
 #### TabsItems Methods
 
@@ -398,13 +398,13 @@ const active = ref(0)
 
 | Name | Description | SlotProps |
 | --------- | ------------ | --------- |
-| `default` | tabs content | `-`       |
+| `default` | Tabs content | `-`       |
 
 #### Tab Slots
 
 | Name | Description | SlotProps |
 | --------- | ------------- | --------- |
-| `default` | tab's content | `-`       |
+| `default` | Tab's content | `-`       |
 
 #### TabsItems Slots
 
@@ -416,11 +416,11 @@ const active = ref(0)
 
 | Name | Description | SlotProps |
 | --------- | ----------------- | --------- |
-| `default` | tabItem's content | `-`       |
+| `default` | TabItem's content | `-`       |
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Tabs Variables
 

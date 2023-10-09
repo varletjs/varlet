@@ -87,7 +87,7 @@ Link component for hyperlink to web pages.
 
 | Prop         | Description                                                                       | Type     | Default  |
 |--------------|-----------------------------------------------------------------------------------|----------|----------|
-| `type`       | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `type`       | Link type, can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `underline`  | Underline, Can be set to `always` `hover` `none`                                  | _string_ | `always` |
 | `disabled`   | Whether to disable link                                                           | _boolean_ | `false`  |
 | `text-color` | Link text color                                                                   | _string_ | `-`      |
@@ -112,7 +112,7 @@ Link component for hyperlink to web pages.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                       | Default                      |
 | --- |------------------------------|

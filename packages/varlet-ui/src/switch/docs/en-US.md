@@ -83,7 +83,7 @@ const value = ref(true)
 
 ### Validate Value
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+The values are validated by passing in an array of validators. If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 
 ```html
@@ -126,7 +126,7 @@ const value = ref(true)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

@@ -291,7 +291,7 @@ import { Snackbar } from '@varlet/ui'
 
 | Method   | Description                                                          | Arguments       | Return |
 | -------- | -------------------------------------------------------------------- | --------------- | ------ |
-| `resize` | You can call this method to redraw when a swipe changes position size | `-`             | `-`    |
+| `resize` | Call this method to redraw when a swipe changes position size | `-`             | `-`    |
 | `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
 | `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
 | `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
@@ -300,7 +300,7 @@ import { Snackbar } from '@varlet/ui'
 
 | Option              | Description                      | Type               | Default |
 | --- | --- | --- | --- |
-| `event` | prevent `change` emit event when `false` | _boolean_ | `-` |
+| `event` | Prevent `change` emit event when `false` | _boolean_ | `-` |
 
 ### Events
 
@@ -327,7 +327,7 @@ import { Snackbar } from '@varlet/ui'
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                    | Default |
 | --------------------------- | ------- |

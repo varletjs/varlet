@@ -82,10 +82,10 @@ Used to separate parts of a list or layout.
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation, The default indentation is `72px` when `true` is passed (horizontal mode only) | _boolean \| number \| string_ | `false` |
+| `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed (horizontal mode only) | _boolean \| number \| string_ | `false` |
 | `vertical` | Whether to set divider to display vertically | _boolean_ | `false` |
 | `dashed` | Whether divider is dashed | _boolean_ | `false` |
-| `hairline` | Whether divider is 0.5px | _boolean_ | `false` |
+| `hairline` | Whether divider is `0.5px` | _boolean_ | `false` |
 | `description` | The text description of divider (horizontal mode only) | _string_ | `-` |
 | `margin` | Set `margin` of divider | _string_ | `-` |
 
@@ -96,7 +96,7 @@ Used to separate parts of a list or layout.
 | `default` | Custom content of divider (horizontal mode only) | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

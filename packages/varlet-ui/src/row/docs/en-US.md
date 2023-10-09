@@ -259,8 +259,8 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 | `span`   | Number of grids occupied by columns                 | _string \| number_                                                          | `24`    |
 | `offset` | Number of grids for column offsets                  | _string \| number_                                                          | `0`     |
 | `direction` | The optional value of layout direction is `row` `column` |  _string_ | `row` |
-| `justify`   | Main axis arrangement, Can be set to `flex-start` `flex-end` `center` `space-around` `space-between`             | _string_ | `-` |
-| `align`     | Cross axis arrangement, Can be set to `stretch` `center` `flex-start` `flex-end` `baseline`                         | _string_ | `-`     |
+| `justify`   | Main axis arrangement, can be set to `flex-start` `flex-end` `center` `space-around` `space-between`             | _string_ | `-` |
+| `align`     | Cross axis arrangement, can be set to `stretch` `center` `flex-start` `flex-end` `baseline`                         | _string_ | `-`     |
 | `xs`     | `<768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
 | `sm`     | `≥768px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
 | `md`     | `≥992px` Responsive columns or column props object  | _string \| number \| { span?: number \| string, offset?: number \| string }_ | `-`     |
@@ -273,13 +273,13 @@ import ObjectExample from '../example/ResponsiveObject.vue'
 
 | Event   | Description                  | Arguments      |
 | ------- | ---------------------------- | -------------- |
-| `click` | Triggered when you click Row | `event: Event` |
+| `click` | Triggered when clicking Row | `event: Event` |
 
 #### Col Events
 
 | Event   | Description                  | Arguments      |
 | ------- | ---------------------------- | -------------- |
-| `click` | Triggered when you click Col | `event: Event` |
+| `click` | Triggered when clicking Col | `event: Event` |
 
 ### Slots
 

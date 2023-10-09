@@ -255,7 +255,7 @@ const actions = [
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
 | `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to'] \| false_ | `body` |
-| `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
+| `image-prevent-default` | Whether to disable the default behavior of images |  _boolean_ | `false` |
 
 ### Events
 
@@ -299,7 +299,7 @@ const actions = [
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lockScroll` | Lock scroll | _boolean_ | `true` |
-| `imagePreventDefault` | whether to disable the default behavior of images |  _boolean_ | `false` |
+| `imagePreventDefault` | Whether to disable the default behavior of images |  _boolean_ | `false` |
 | `onChange`   | The callback function when switching images, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 | `onOpen`   | Callback when image-preview is turned on |  _() => void_ | `-` |
 | `onOpened` | Callback at the end of the animation that opened image-preview |   _() => void_ | `-` |
@@ -308,7 +308,7 @@ const actions = [
 | `onLongPress` | The callback function when long pressing an image, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | ------ | -------- |
