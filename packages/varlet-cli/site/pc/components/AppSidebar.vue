@@ -5,7 +5,7 @@
       v-for="(item, index) in menu"
       :key="index"
       :href="`#/${language}/${item.doc}`"
-      @click="handleClickLink"
+      @click.prevent
     >
       <var-cell
         class="varlet-site-sidebar__item"
@@ -37,10 +37,6 @@ import { reactive } from 'vue'
 const props = defineProps<{ menu: Menu[]; menuName: string; language: string }>()
 const emit = defineEmits(['change'])
 const menuTypes = reactive(MenuTypes)
-
-const handleClickLink = (event: MouseEvent) => {
-  event.preventDefault()
-}
 
 const changeRoute = (item: Menu) => {
   if (item.type === MenuTypes.TITLE || props.menuName === item.doc) {
