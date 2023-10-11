@@ -28,21 +28,6 @@ export type HtmlAttributeValue =
   | {
       kind: string
       type: Type
-      required?: boolean
-    }
-  | {
-      kind: string
-      type: Type
-      required?: boolean
-    }
-  | {
-      kind: string
-      type: Type
-      required?: boolean
-    }
-  | {
-      kind: string
-      type: Type
       items: [] | [string]
       required?: boolean
     }
