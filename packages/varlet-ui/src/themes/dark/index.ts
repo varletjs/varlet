@@ -10,6 +10,7 @@ import collapse from './collapse'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
+import floatingPanel from './floatingPanel'
 import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
@@ -90,4 +91,5 @@ export default {
   ...option,
   ...countdown,
   ...watermark,
+  ...floatingPanel,
 } as StyleVars

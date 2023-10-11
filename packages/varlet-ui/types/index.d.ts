@@ -32,6 +32,7 @@ export * from './divider'
 export * from './drag'
 export * from './ellipsis'
 export * from './fab'
+export * from './floatingPanel'
 export * from './form'
 export * from './formDetails'
 export * from './hover'
@@ -119,6 +120,7 @@ declare module 'vue' {
     VarDrag: typeof import('@varlet/ui')['_DragComponent']
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarFab: typeof import('@varlet/ui')['_FabComponent']
+    VarFloatingPanel: typeof import('@varlet/ui')['_FloatingPanelComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
