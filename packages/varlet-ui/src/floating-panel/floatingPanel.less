@@ -1,13 +1,13 @@
 :root {
   --floating-panel-z-index: 999;
   --floating-panel-border-top: none;
-  --floating-panel-border-radius: 2px;
+  --floating-panel-border-radius: 0;
   --floating-panel-background: #fff;
   --floating-panel-header-height: 30px;
-  --floating-panel-bar-width: 20px;
-  --floating-panel-bar-height: 3px;
-  --floating-panel-bar-border-radius: 10px;
-  --floating-panel-bar-background: #ddd;
+  --floating-panel-toolbar-width: 20px;
+  --floating-panel-toolbar-height: 3px;
+  --floating-panel-toolbar-border-radius: 10px;
+  --floating-panel-toolbar-background: #ddd;
 }
 
 .var-floating-panel {
@@ -45,11 +45,11 @@
     cursor: grab;
     user-select: none;
 
-    &-bar {
-      width: var(--floating-panel-bar-width);
-      height: var(--floating-panel-bar-height);
-      border-radius: var(--floating-panel-bar-border-radius);
-      background: var(--floating-panel-bar-background);
+    &-toolbar {
+      width: var(--floating-panel-toolbar-width);
+      height: var(--floating-panel-toolbar-height);
+      border-radius: var(--floating-panel-toolbar-border-radius);
+      background: var(--floating-panel-toolbar-background);
     }
   }
 

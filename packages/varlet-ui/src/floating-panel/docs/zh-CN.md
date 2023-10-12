@@ -22,8 +22,8 @@ FloatingPanel 的默认高度为 `100px`，允许拖动来展开或者收缩面�
 
 ```html
 <script setup>
-const anchors = [100, window.innerHeight * 0.4, window.innerHeight * 0.8]
-const anchor = ref(anchors[0])
+const anchors = ref([100, window.innerHeight * 0.4, window.innerHeight * 0.8])
+const anchor = ref(100)
 </script>
 
 <template>

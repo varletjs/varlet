@@ -8,7 +8,7 @@
       @touchend="handleTouchEnd"
     >
       <div :class="n('header')">
-        <div :class="n('header-bar')"></div>
+        <div :class="n('header-toolbar')"></div>
       </div>
       <div :class="n('content')" ref="contentRef">
         <slot></slot>
@@ -137,6 +137,9 @@ export default defineComponent({
       call(props.onAnchorChange, height.value)
     }
 
+    // expose
+    function resize() {}
+
     watch(
       () => props.anchor,
       (newAnchor: number | undefined) => {
@@ -155,6 +158,20 @@ export default defineComponent({
       { immediate: true }
     )
 
+    watch(
+      () => props.anchors,
+      (newAnchors: number[] | undefined) => {
+        height.value = MIN_FLOATING_PANEL_HEIGHT
+
+        if (newAnchors && newAnchors.length > 0) {
+          height.value = newAnchors[0]
+        }
+
+        anchor.value = height.value
+        call(props.onAnchorChange, height.value)
+      }
+    )
+
     return {
       rootStyles,
       contentRef,
@@ -163,6 +180,7 @@ export default defineComponent({
       handleTouchStart,
       handleTouchMove,
       handleTouchEnd,
+      resize,
     }
   },
 })

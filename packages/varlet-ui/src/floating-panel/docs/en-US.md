@@ -22,8 +22,8 @@ For example, dock the height of the panel at 100px, 40% screen height, and 80% s
 
 ```html
 <script setup>
-const anchors = [100, window.innerHeight * 0.4, window.innerHeight * 0.8]
-const anchor = ref(anchors[0])
+const anchors = ref([100, window.innerHeight * 0.4, window.innerHeight * 0.8])
+const anchor = ref(100)
 </script>
 
 <template>
@@ -54,7 +54,7 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 
 | Prop  | Description  | Type      | Default        |
 | ------- | ---- | ----- | ---- |
-| `v-model:anchor` | The panel initially displays the anchor point, or the first value of the 'anchors' attribute if not passed | _number \| string_ | `-`  |
+| `v-model:anchor` | The panel initially displays the anchor point, or the first value of the `anchors` attribute if not passed | _number \| string_ | `-`  |
 | `anchors` | Custom anchors which unit is `px` | _number[]_ | `[100, window.innerHeight * 0.6]`  |
 | `content-draggable` | Whether to allow to drag panel content area | _boolean_ | `true`  |
 | `duration` | Transition duration which unit is `ms` | _number \| string_ | `300`  |
