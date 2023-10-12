@@ -6,6 +6,7 @@ export interface FloatingPanelProps extends BasicAttributes {
   anchors?: number[]
   contentDraggable?: boolean
   duration?: number | string
+  elevation?: boolean | number | string
   teleport?: TeleportProps['to'] | false
   lockScroll?: boolean
   safeArea?: boolean

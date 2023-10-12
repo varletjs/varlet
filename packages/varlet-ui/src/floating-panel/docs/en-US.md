@@ -58,6 +58,7 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 | `anchors` | Custom anchors which unit is `px` | _number[]_ | `[100, window.innerHeight * 0.6]`  |
 | `content-draggable` | Whether to allow to drag panel content area | _boolean_ | `true`  |
 | `duration` | Transition duration which unit is `ms` | _number \| string_ | `300`  |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `teleport`       | The location of the ejector layer mount              | _TeleportProps['to'] \| false_ | `false`  |
 | `lock-scroll`    | Whether to disable scroll through, when disabled, the scrolling popup layer does not cause the body to scroll   | _boolean_   | `false`   |
 | `safe-area` | Whether to enable bottom safe area adaptation | _boolean_ | `false`  |

@@ -1,7 +1,7 @@
 <template>
   <Teleport v-if="teleport" :to="teleport">
     <div
-      :class="classes(n(), [safeArea, n('--safe-area')])"
+      :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
       :style="rootStyles"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
@@ -17,7 +17,7 @@
   </Teleport>
   <div
     v-else
-    :class="classes(n(), [safeArea, n('--safe-area')])"
+    :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
     :style="rootStyles"
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
@@ -36,7 +36,7 @@
 import { defineComponent, ref, computed, watch, type CSSProperties } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { call, createNamespace, useVModel } from '../utils/components'
+import { call, createNamespace, useVModel, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { useTouch } from '@varlet/use'
 import { toNumber } from '@varlet/shared'
@@ -177,6 +177,7 @@ export default defineComponent({
       contentRef,
       n,
       classes,
+      formatElevation,
       handleTouchStart,
       handleTouchMove,
       handleTouchEnd,
@@ -188,5 +189,6 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
 @import './floatingPanel.less';
 </style>

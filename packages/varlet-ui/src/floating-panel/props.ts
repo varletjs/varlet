@@ -12,6 +12,10 @@ export const props = {
     type: [Number, String],
     default: 0.3,
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: true,
+  },
   teleport: {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: false,

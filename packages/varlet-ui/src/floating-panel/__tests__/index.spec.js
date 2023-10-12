@@ -57,7 +57,7 @@ describe('test floating-panel components props', () => {
     wrapper.unmount()
   })
 
-  test('test floating-panel safeArea', () => {
+  test('test floating-panel safeArea', async () => {
     const wrapper = mount(VarFloatingPanel, {
       props: {
         safeArea: true,
@@ -65,6 +65,31 @@ describe('test floating-panel components props', () => {
     })
 
     expect(wrapper.find('.var-floating-panel--safe-area').exists()).toBeTruthy()
+
+    await wrapper.setProps({
+      safeArea: false,
+    })
+
+    expect(wrapper.find('.var-floating-panel--safe-area').exists()).toBeFalsy()
+
+    wrapper.unmount()
+  })
+
+  test('test floating-panel elevation', async () => {
+    const wrapper = mount(VarFloatingPanel, {
+      props: {
+        elevation: true,
+      },
+    })
+
+    expect(wrapper.classes().includes('var-elevation--2')).toBe(true)
+
+    await wrapper.setProps({
+      elevation: false,
+    })
+
+    expect(wrapper.classes().includes('var-elevation--2')).toBe(false)
+
     wrapper.unmount()
   })
 
