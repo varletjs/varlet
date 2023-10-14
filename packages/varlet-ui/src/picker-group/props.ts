@@ -36,10 +36,7 @@ export const props = {
     type: String,
     default: '确认',
   },
-  nextStepText: {
-    type: String,
-    default: '下一步',
-  },
+  nextStepText: String,
   cancelButtonText: {
     type: String,
     default: '取消',

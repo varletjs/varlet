@@ -1,23 +1,20 @@
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, type InjectionKey, type ExtractPropTypes } from 'vue'
 import { props } from './props'
 import './pickerGroup.less'
 import { isArray } from '@varlet/shared'
 import { createNamespace, call, useVModel, flatFragment } from '../utils/components'
-
+import { useChildren } from '@varlet/use'
 import '../styles/common.less'
 
 const { name, n, classes } = createNamespace('picker-group')
-const activeTab = ref(0)
-// expose
-function confirm() {}
-
-// expose
+export type PickerGroupProvide = Record<string, string>
+export const PICKER_GROUP_KEY: InjectionKey<PickerGroupProvide> = Symbol(name)
 
 export default defineComponent({
   name: 'VarPickerGroup',
   props,
 
-  emits: ['confirm', 'cancel', 'update:activeTab'],
+  emits: ['confirm', 'cancel', 'update:active'],
 
   setup(props, { emit, slots }) {
     const activeTab = useVModel(props, 'active')
