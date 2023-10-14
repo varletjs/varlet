@@ -554,6 +554,14 @@ export default defineConfig({
         doc: 'picker',
         type: 2,
       },
+       {
+        text: {
+          'zh-CN': 'PickerGroup 选择器组',
+          'en-US': 'PickerGroup',
+        },
+        doc: 'picker-group',
+        type: 2,
+      },
       {
         text: {
           'zh-CN': 'DatePicker 日期选择器',

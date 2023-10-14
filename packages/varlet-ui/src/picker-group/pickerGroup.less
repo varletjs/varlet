@@ -1,0 +1,23 @@
+.var-picker-group {
+  border: 1px solid #f2f2f2;
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    color: #333;
+    font-weight: bold;
+  }
+  .var-tabs {
+    margin-bottom: 1rem;
+    .var-tab.var--box {
+      padding: 0;
+      margin-right: 16px;
+      flex: none;
+      &.var-tab--active {
+        font-weight: bold;
+      }
+    }
+  }
+}
