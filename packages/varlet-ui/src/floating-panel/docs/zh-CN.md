@@ -90,7 +90,7 @@ const anchor = ref(100)
 | --- | --- |
 | `--floating-panel-z-index` | `999` |
 | `--floating-panel-border-top` | `none` |
-| `--floating-panel-border-radius` | `2px` |
+| `--floating-panel-border-radius` | `0` |
 | `--floating-panel-background` | `#fff` |
 | `--floating-panel-header-height` | `30px` |
 | `--floating-panel-bar-width` | `20px` |
