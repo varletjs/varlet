@@ -2,7 +2,7 @@
   <Teleport v-if="teleport" :to="teleport">
     <div
       :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
-      :style="rootStyles"
+      :style="rootStyle"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
@@ -19,7 +19,7 @@
   <div
     v-else
     :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
-    :style="rootStyles"
+    :style="rootStyle"
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
@@ -69,7 +69,7 @@ export default defineComponent({
       const { max, min } = boundary.value
       return props.anchors && props.anchors.length >= 1 ? props.anchors : [min, max]
     })
-    const rootStyles = computed<CSSProperties>(() => ({
+    const rootStyle = computed<CSSProperties>(() => ({
       height: `${toSizeUnit(boundary.value.max)}`,
       transform: `translateY(calc(100% - ${toSizeUnit(height.value)}))`,
       transition: dragging.value
@@ -193,7 +193,7 @@ export default defineComponent({
     )
 
     return {
-      rootStyles,
+      rootStyle,
       contentRef,
       n,
       classes,
