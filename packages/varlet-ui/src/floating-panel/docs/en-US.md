@@ -9,8 +9,9 @@ The default height of the FloatingPanel is `100px`, allowing dragging to expand 
 ```html
 <template>
   <var-floating-panel>
-    <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)">
-    </var-cell>
+    <div style="text-align: center; padding: 5px 15px">
+      <p>Drag panel</p>
+    </div>
   </var-floating-panel>
 </template>
 ```
@@ -41,9 +42,8 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 ```html
 <template>
   <var-floating-panel :content-draggable="false">
-    <div style="text-align: center; padding: 15px">
-      <p>Dragging panel content area is unresponsive</p>
-    </div>
+    <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border> 
+    </var-cell>
   </var-floating-panel>
 </template>
 ```

@@ -46,7 +46,9 @@ watchDarkMode(dark)
   <var-tabs-items v-model:active="active">
     <var-tab-item>
       <var-floating-panel v-if="active === 0" teleport="body">
-        <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border> </var-cell>
+        <div style="text-align: center; padding: 5px 15px">
+          <p>{{ pack.dragText }}</p>
+        </div>
       </var-floating-panel>
     </var-tab-item>
     <var-tab-item>
@@ -58,9 +60,7 @@ watchDarkMode(dark)
     </var-tab-item>
     <var-tab-item>
       <var-floating-panel v-if="active === 2" :content-draggable="false" teleport="body">
-        <div style="text-align: center; padding: 5px 15px">
-          <p>{{ pack.dragHeadText }}</p>
-        </div>
+        <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border> </var-cell>
       </var-floating-panel>
     </var-tab-item>
   </var-tabs-items>

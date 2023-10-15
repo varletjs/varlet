@@ -24,7 +24,7 @@
     @touchend="handleTouchEnd"
   >
     <div :class="n('header')">
-      <div :class="n('header-bar')"></div>
+      <div :class="n('header-toolbar')"></div>
     </div>
     <div :class="n('content')" ref="contentRef">
       <slot></slot>
@@ -39,7 +39,7 @@ import { useLock } from '../context/lock'
 import { call, createNamespace, useVModel, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { useTouch } from '@varlet/use'
-import { toNumber } from '@varlet/shared'
+import { toNumber, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
@@ -104,6 +104,10 @@ export default defineComponent({
       if (contentRef.value === target || contentRef.value?.contains(target)) {
         if (!props.contentDraggable) {
           return
+        }
+
+        if (startY < boundary.value.max) {
+          preventDefault(event)
         }
       }
 
