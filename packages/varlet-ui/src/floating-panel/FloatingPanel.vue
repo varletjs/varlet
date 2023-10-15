@@ -40,14 +40,13 @@ import { props } from './props'
 import { useLock } from '../context/lock'
 import { call, createNamespace, useVModel, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { useTouch } from '@varlet/use'
+import { onWindowResize, useTouch } from '@varlet/use'
 import { toNumber, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
 const MIN_FLOATING_PANEL_HEIGHT = 100
-const MAX_FLOATING_PANEL_HEIGHT = window.innerHeight * 0.6
-const MOVE_RATIO = 0.2
+const MAX_OFFSET_RATIO = 0.2
 
 export default defineComponent({
   name,
@@ -55,14 +54,21 @@ export default defineComponent({
   setup(props) {
     const height = ref<number>(0)
     const contentRef = ref<HTMLDivElement | null>(null)
+    const maxHeight = ref<number>(window.innerHeight * 0.6)
     const anchor = useVModel(props, 'anchor')
-    const boundary = computed<{ min: number; max: number }>(() => ({
-      min: props.anchors ? Math.min(...props.anchors) : MIN_FLOATING_PANEL_HEIGHT,
-      max: props.anchors ? Math.max(...props.anchors) : MAX_FLOATING_PANEL_HEIGHT,
-    }))
-    const anchors = computed<number[]>(() =>
-      props.anchors && props.anchors.length >= 1 ? props.anchors : [boundary.value.min, boundary.value.max]
-    )
+    const boundary = computed<{ min: number; max: number }>(() => {
+      const min = Math.min(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
+      const max = Math.max(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
+
+      return {
+        min: props.anchors ? Math.min(...props.anchors) : min,
+        max: props.anchors ? Math.max(...props.anchors) : max,
+      }
+    })
+    const anchors = computed<number[]>(() => {
+      const { max, min } = boundary.value
+      return props.anchors && props.anchors.length >= 1 ? props.anchors : [min, max]
+    })
     const rootStyles = computed<CSSProperties>(() => ({
       height: `${toSizeUnit(boundary.value.max)}`,
       transform: `translateY(calc(100% - ${toSizeUnit(height.value)}))`,
@@ -76,7 +82,6 @@ export default defineComponent({
     useLock(() => props.lockScroll || dragging.value)
 
     let startY: number
-    let sortedAnchors: number[]
 
     function handleTouchStart(event: TouchEvent) {
       startTouch(event)
@@ -89,11 +94,11 @@ export default defineComponent({
       const { max, min } = boundary.value
 
       if (offsetY > max) {
-        return max + (offsetY - max) * MOVE_RATIO
+        return max + (offsetY - max) * MAX_OFFSET_RATIO
       }
 
       if (offsetY < min) {
-        return min - (min - offsetY) * MOVE_RATIO
+        return min - (min - offsetY) * MAX_OFFSET_RATIO
       }
 
       return moveY
@@ -118,38 +123,43 @@ export default defineComponent({
     }
 
     function findNearestAnchor(anchors: number[], height: number): number {
-      if (!sortedAnchors) {
-        sortedAnchors = anchors.sort((a, b) => a - b)
-      }
+      let minDifference = Infinity
+      let index = 0
 
-      let leftIndex = 0
-      let rightIndex = sortedAnchors.length - 1
-
-      while (rightIndex - leftIndex > 1) {
-        const midIndex = Math.floor((leftIndex + rightIndex) / 2)
-
-        if (height < sortedAnchors[midIndex]) {
-          rightIndex = midIndex
-        } else {
-          leftIndex = midIndex
+      for (let i = 0; i < anchors.length; i++) {
+        const difference = Math.abs(anchors[i] - height)
+        if (difference < minDifference) {
+          minDifference = difference
+          index = i
         }
       }
 
-      return Math.abs(height - sortedAnchors[leftIndex]) > Math.abs(height - sortedAnchors[rightIndex])
-        ? sortedAnchors[rightIndex]
-        : sortedAnchors[leftIndex]
+      return anchors[index]
+    }
+
+    function updateAnchor() {
+      if (props.anchor) {
+        anchor.value = height.value
+      }
+      call(props.onAnchorChange, height.value)
     }
 
     function handleTouchEnd() {
       endTouch()
 
       height.value = findNearestAnchor(anchors.value, height.value)
-      anchor.value = height.value
-      call(props.onAnchorChange, height.value)
+      updateAnchor()
     }
 
     // expose
-    function resize() {}
+    function resize() {
+      maxHeight.value = window.innerHeight * 0.6
+
+      height.value = findNearestAnchor(anchors.value, height.value)
+      updateAnchor()
+    }
+
+    onWindowResize(resize)
 
     watch(
       () => props.anchor,
@@ -178,8 +188,7 @@ export default defineComponent({
           height.value = newAnchors[0]
         }
 
-        anchor.value = height.value
-        call(props.onAnchorChange, height.value)
+        updateAnchor()
       }
     )
 

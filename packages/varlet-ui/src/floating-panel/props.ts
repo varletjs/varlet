@@ -10,7 +10,7 @@ export const props = {
   },
   duration: {
     type: [Number, String],
-    default: 0.3,
+    default: 300,
   },
   elevation: {
     type: [Boolean, Number, String],
