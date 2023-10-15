@@ -59,7 +59,7 @@ export default defineComponent({
       max: props.anchors ? Math.max(...props.anchors) : MAX_FLOATING_PANEL_HEIGHT,
     }))
     const anchors = computed<number[]>(() =>
-      props.anchors && props.anchors.length > 2 ? props.anchors : [boundary.value.min, boundary.value.max]
+      props.anchors && props.anchors.length >= 1 ? props.anchors : [boundary.value.min, boundary.value.max]
     )
     const rootStyles = computed<CSSProperties>(() => ({
       height: `${toSizeUnit(boundary.value.max)}`,
@@ -74,6 +74,7 @@ export default defineComponent({
     useLock(() => props.lockScroll || dragging.value)
 
     let startY: number
+    let sortedAnchors: number[]
 
     function handleTouchStart(event: TouchEvent) {
       startTouch(event)
@@ -81,7 +82,7 @@ export default defineComponent({
       startY = height.value
     }
 
-    function getHeight(moveY: number): number {
+    function getMoveDistance(moveY: number): number {
       const offsetY = Math.abs(moveY)
       const { max, min } = boundary.value
 
@@ -107,32 +108,36 @@ export default defineComponent({
       }
 
       const moveY = startY - deltaY.value
-      height.value = getHeight(moveY)
+      height.value = getMoveDistance(moveY)
     }
 
     function findNearestAnchor(anchors: number[], height: number): number {
+      if (!sortedAnchors) {
+        sortedAnchors = anchors.sort((a, b) => a - b)
+      }
+
       let leftIndex = 0
-      let rightIndex = anchors.length - 1
+      let rightIndex = sortedAnchors.length - 1
 
       while (rightIndex - leftIndex > 1) {
         const midIndex = Math.floor((leftIndex + rightIndex) / 2)
 
-        if (height < anchors[midIndex]) {
+        if (height < sortedAnchors[midIndex]) {
           rightIndex = midIndex
         } else {
           leftIndex = midIndex
         }
       }
 
-      return Math.abs(height - anchors[leftIndex]) > Math.abs(height - anchors[rightIndex])
-        ? anchors[rightIndex]
-        : anchors[leftIndex]
+      return Math.abs(height - sortedAnchors[leftIndex]) > Math.abs(height - sortedAnchors[rightIndex])
+        ? sortedAnchors[rightIndex]
+        : sortedAnchors[leftIndex]
     }
 
     function handleTouchEnd() {
       endTouch()
-      height.value = findNearestAnchor(anchors.value, height.value)
 
+      height.value = findNearestAnchor(anchors.value, height.value)
       anchor.value = height.value
       call(props.onAnchorChange, height.value)
     }

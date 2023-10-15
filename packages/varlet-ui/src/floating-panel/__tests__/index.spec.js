@@ -33,6 +33,58 @@ describe('test floating-panel components props', () => {
     expect(wrapper.vm.anchor).toEqual(100)
     expect(wrapper.html()).toMatchSnapshot()
 
+    await delay(50)
+    await wrapper.setProps({
+      anchor: undefined,
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test floating-panel anchors', async () => {
+    const wrapper = mount(VarFloatingPanel, {
+      props: {
+        anchor: 200,
+        anchors: [300, 400],
+      },
+    })
+
+    const panel = wrapper.find('.var-floating-panel')
+
+    await delay(50)
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await wrapper.setProps({
+      anchor: 400,
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await wrapper.setProps({
+      anchor: undefined,
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await triggerDrag(panel, 0, 200)
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await triggerDrag(panel, 0, 800)
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await wrapper.setProps({
+      anchors: [500, 400],
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await delay(50)
+    await triggerDrag(panel, 0, 300)
+    expect(wrapper.html()).toMatchSnapshot()
+
     wrapper.unmount()
   })
 
@@ -101,6 +153,19 @@ describe('test floating-panel components props', () => {
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test floating-panel teleport', () => {
+    const container = document.createElement('div')
+    const wrapper = mount(FloatingPanel, {
+      props: {
+        teleport: container,
+      },
+    })
+
+    expect(container.innerHTML).toMatchSnapshot()
+
     wrapper.unmount()
   })
 })
