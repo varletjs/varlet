@@ -6,6 +6,7 @@
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
+      @touchcancel="handleTouchEnd"
     >
       <div :class="n('header')">
         <div :class="n('header-toolbar')"></div>
@@ -22,6 +23,7 @@
     @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd"
+    @touchcancel="handleTouchEnd"
   >
     <div :class="n('header')">
       <div :class="n('header-toolbar')"></div>
@@ -52,8 +54,8 @@ export default defineComponent({
   props,
   setup(props) {
     const height = ref<number>(0)
-    const anchor = useVModel(props, 'anchor')
     const contentRef = ref<HTMLDivElement | null>(null)
+    const anchor = useVModel(props, 'anchor')
     const boundary = computed<{ min: number; max: number }>(() => ({
       min: props.anchors ? Math.min(...props.anchors) : MIN_FLOATING_PANEL_HEIGHT,
       max: props.anchors ? Math.max(...props.anchors) : MAX_FLOATING_PANEL_HEIGHT,
