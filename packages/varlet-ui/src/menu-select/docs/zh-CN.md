@@ -295,7 +295,7 @@ const value = ref()
 | 变量名 | 默认值 |
 | --- | --- |
 | `--menu-select-menu-max-height` | `278px` |
-| `--menu-select-menu-padding` | `4px 0` |
+| `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
 | `--menu-select-menu-background-color` | `#fff` |
 | `--menu-option-normal-height` | `38px` |
