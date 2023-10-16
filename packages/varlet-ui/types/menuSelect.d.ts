@@ -41,7 +41,6 @@ export interface MenuSelectProps extends BasicAttributes {
   teleport?: TeleportProps['to'] | false
   sameWidth?: boolean
   elevation?: boolean | number | string
-  defaultStyle?: boolean
   popoverClass?: string
   closeOnClickReference?: boolean
   onOpen?: ListenerProp<() => void>

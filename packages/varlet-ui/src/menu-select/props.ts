@@ -31,7 +31,6 @@ export const props = {
     'teleport',
     'sameWidth',
     'elevation',
-    'defaultStyle',
     'popoverClass',
     'closeOnClickReference',
     'onOpen',

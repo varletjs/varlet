@@ -235,7 +235,6 @@ const value = ref()
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
-| `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
 
@@ -295,9 +294,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--menu-select-scroller-max-height` | `278px` |
-| `--menu-select-scroller-padding` | `4px 0` |
-| `--menu-select-scroller-border-radius` | `2px` |
+| `--menu-select-menu-max-height` | `278px` |
+| `--menu-select-menu-padding` | `4px 0` |
+| `--menu-select-menu-border-radius` | `2px` |
+| `--menu-select-menu-background-color` | `#fff` |
 | `--menu-option-normal-height` | `38px` |
 | `--menu-option-small-height` | `30px` |
 | `--menu-option-mini-height` | `24px` |

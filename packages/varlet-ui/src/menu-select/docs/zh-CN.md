@@ -235,7 +235,6 @@ const value = ref()
 | `reference`       | 菜单关联的触发元素选择器，用于指定菜单的特定子元素为触发元素 | _string_              | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
-| `default-style` | 是否启用默认样式                                                    | _boolean_             | `true`            |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
 
@@ -295,9 +294,10 @@ const value = ref()
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--menu-select-scroller-max-height` | `278px` |
-| `--menu-select-scroller-padding` | `4px 0` |
-| `--menu-select-scroller-border-radius` | `2px` |
+| `--menu-select-menu-max-height` | `278px` |
+| `--menu-select-menu-padding` | `4px 0` |
+| `--menu-select-menu-border-radius` | `2px` |
+| `--menu-select-menu-background-color` | `#fff` |
 | `--menu-option-normal-height` | `38px` |
 | `--menu-option-small-height` | `30px` |
 | `--menu-option-mini-height` | `24px` |

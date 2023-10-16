@@ -12,7 +12,7 @@
     :teleport="teleport"
     :same-width="sameWidth"
     :elevation="elevation"
-    :default-style="defaultStyle"
+    :default-style="false"
     :popover-class="popoverClass"
     :close-on-click-reference="closeOnClickReference"
     v-model:show="show"
@@ -25,7 +25,7 @@
     <slot />
 
     <template #menu>
-      <div :class="classes(n('scroller'), [scrollable, n('--scrollable')])">
+      <div :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])">
         <slot name="options" />
       </div>
     </template>
@@ -36,7 +36,7 @@
 import VarMenu from '../menu'
 import { defineComponent, computed, ref } from 'vue'
 import { props } from './props'
-import { createNamespace, call, useVModel } from '../utils/components'
+import { createNamespace, call, useVModel, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
 import { type MenuOptionProvider } from '../menu-option/provide'
@@ -97,6 +97,7 @@ export default defineComponent({
       menu,
       n,
       classes,
+      formatElevation,
       open,
       close,
       resize,
