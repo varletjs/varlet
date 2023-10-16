@@ -1,3 +1,3 @@
 export default {
-  '--floating-panel-background': '#000',
+  '--floating-panel-background': '#272727',
 }

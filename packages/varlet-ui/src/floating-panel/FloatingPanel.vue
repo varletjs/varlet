@@ -56,10 +56,10 @@ export default defineComponent({
     const contentRef = ref<HTMLDivElement | null>(null)
     const maxHeight = ref<number>(window.innerHeight * 0.6)
     const anchor = useVModel(props, 'anchor')
+    const { deltaY, dragging, startTouch, moveTouch, endTouch } = useTouch()
     const boundary = computed<{ min: number; max: number }>(() => {
       const min = Math.min(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
       const max = Math.max(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
-
       return {
         min: props.anchors ? Math.min(...props.anchors) : min,
         max: props.anchors ? Math.max(...props.anchors) : max,
@@ -77,11 +77,42 @@ export default defineComponent({
         : `transform ${toNumber(props.duration)}ms cubic-bezier(0.18, 0.89, 0.32, 1.28)`,
     }))
 
-    const { deltaY, dragging, startTouch, moveTouch, endTouch } = useTouch()
+    let startY: number
 
     useLock(() => props.lockScroll || dragging.value)
 
-    let startY: number
+    onWindowResize(resize)
+
+    watch(
+      () => props.anchor,
+      (newAnchor: number | undefined) => {
+        if (!props.anchors || props.anchors.length === 0) {
+          height.value = MIN_FLOATING_PANEL_HEIGHT
+          return
+        }
+
+        if (!newAnchor) {
+          height.value = props.anchors[0]
+          return
+        }
+
+        height.value = props.anchors.includes(newAnchor) ? newAnchor : props.anchors[0]
+      },
+      { immediate: true }
+    )
+
+    watch(
+      () => props.anchors,
+      (newAnchors: number[] | undefined) => {
+        height.value = MIN_FLOATING_PANEL_HEIGHT
+
+        if (newAnchors && newAnchors.length > 0) {
+          height.value = newAnchors[0]
+        }
+
+        updateAnchor()
+      }
+    )
 
     function handleTouchStart(event: TouchEvent) {
       startTouch(event)
@@ -158,39 +189,6 @@ export default defineComponent({
       height.value = findNearestAnchor(anchors.value, height.value)
       updateAnchor()
     }
-
-    onWindowResize(resize)
-
-    watch(
-      () => props.anchor,
-      (newAnchor: number | undefined) => {
-        if (!props.anchors || props.anchors.length === 0) {
-          height.value = MIN_FLOATING_PANEL_HEIGHT
-          return
-        }
-
-        if (!newAnchor) {
-          height.value = props.anchors[0]
-          return
-        }
-
-        height.value = props.anchors.includes(newAnchor) ? newAnchor : props.anchors[0]
-      },
-      { immediate: true }
-    )
-
-    watch(
-      () => props.anchors,
-      (newAnchors: number[] | undefined) => {
-        height.value = MIN_FLOATING_PANEL_HEIGHT
-
-        if (newAnchors && newAnchors.length > 0) {
-          height.value = newAnchors[0]
-        }
-
-        updateAnchor()
-      }
-    )
 
     return {
       rootStyle,
