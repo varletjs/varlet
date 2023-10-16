@@ -49,6 +49,8 @@ export * from './loading'
 export * from './loadingBar'
 export * from './locale'
 export * from './menu'
+export * from './menuOption'
+export * from './menuSelect'
 export * from './option'
 export * from './overlay'
 export * from './pagination'
@@ -134,6 +136,8 @@ declare module 'vue' {
     VarLoadingBar: typeof import('@varlet/ui')['_LoadingBarComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
+    VarMenuOption: typeof import('@varlet/ui')['_MenuOptionComponent']
+    VarMenuSelect: typeof import('@varlet/ui')['_MenuSelectComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']

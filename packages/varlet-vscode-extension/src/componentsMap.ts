@@ -322,4 +322,13 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   watermark: {
     path: '/watermark',
   },
+  'menu-select': {
+    path: '/menu-select',
+  },
+  'menu-option': {
+    path: '/menu-select',
+    attrs: ['label=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
 }

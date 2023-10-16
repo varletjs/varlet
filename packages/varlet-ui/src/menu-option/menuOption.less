@@ -1,0 +1,72 @@
+:root {
+  --menu-option-normal-height: 38px;
+  --menu-option-small-height: 30px;
+  --menu-option-mini-height: 24px;
+  --menu-option-large-height: 46px;
+  --menu-option-padding: 0 12px;
+  --menu-option-normal-font-size: var(--font-size-md);
+  --menu-option-small-font-size: var(--font-size-sm);
+  --menu-option-mini-font-size: var(--font-size-xs);
+  --menu-option-large-font-size: var(--font-size-lg);
+  --menu-option-selected-background: var(--color-primary);
+  --menu-option-text-color: #555;
+  --menu-option-disabled-color: var(--color-text-disabled);
+}
+
+.var-menu-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--menu-option-padding);
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: var(--menu-option-text-color);
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.2;
+    background: transparent;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+
+  &--normal {
+    height: var(--menu-option-normal-height);
+    font-size: var(--menu-option-normal-font-size);
+  }
+
+  &--large {
+    height: var(--menu-option-large-height);
+    font-size: var(--menu-option-large-font-size);
+  }
+
+  &--small {
+    height: var(--menu-option-small-height);
+    font-size: var(--menu-option-small-font-size);
+  }
+
+  &--mini {
+    height: var(--menu-option-mini-height);
+    font-size: var(--menu-option-mini-font-size);
+  }
+
+  &--selected-background {
+    background: var(--menu-option-selected-background);
+  }
+
+  &--selected-color {
+    color: var(--menu-option-selected-background);
+  }
+
+  &--disabled {
+    color: var(--menu-option-disabled-color);
+    cursor: not-allowed;
+  }
+}

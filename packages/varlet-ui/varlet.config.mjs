@@ -516,6 +516,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'MenuSelect 菜单选择器',
+          'en-US': 'MenuSelect',
+        },
+        doc: 'menu-select',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Tooltip 提示',
           'en-US': 'Tooltip',
         },

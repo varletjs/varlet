@@ -1,0 +1,17 @@
+:root {
+  --menu-select-scroller-max-height: 278px;
+  --menu-select-scroller-padding: 4px 0;
+  --menu-select-scroller-border-radius: 2px;
+}
+
+.var-menu-select {
+  &__scroller {
+    padding: var(--menu-select-scroller-padding);
+    border-radius: var(--menu-select-scroller-border-radius);
+  }
+
+  &--scrollable {
+    overflow-y: auto;
+    max-height: var(--menu-select-scroller-max-height);
+  }
+}

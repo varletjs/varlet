@@ -28,5 +28,6 @@ import VarCol from '../../col'
   width: 100%;
   height: 36px;
   background: var(--site-config-color-app-bar);
+  color: #fff;
 }
 </style>
