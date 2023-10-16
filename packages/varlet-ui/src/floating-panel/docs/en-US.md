@@ -1,7 +1,7 @@
 # FloatingPanel
 
 ### Intro
-A panel floating at the bottom of the page, allowing users to freely drag up and down through content, is often used to provide additional functionality or information.
+A panel floating at the bottom of the page, is often used to provide additional functionality or information, allowing users to freely drag up and down through content.
 
 ### Basic Usage
 The default height of the FloatingPanel is `100px`, allowing dragging to expand or shrink the panel, and the default maximum height of the expansion is `60%` of the screen.
@@ -17,7 +17,7 @@ The default height of the FloatingPanel is `100px`, allowing dragging to expand 
 ```
 
 ### Custom Anchors
-The anchor position of the FloatingPanel can be set via the `anchors` property (the default two anchors are at `100px` and `60%` of the screen), and the display anchor of the current panel can be controlled by `v-model:anchor`.
+The anchor position of the FloatingPanel can be set via the `anchors` property, and the display anchor of the current panel can be controlled by `v-model:anchor`.
 
 For example, dock the height of the panel at 100px, 40% screen height, and 80% screen height:
 
@@ -54,14 +54,14 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 
 | Prop  | Description  | Type      | Default        |
 | ------- | ---- | ----- | ---- |
-| `v-model:anchor` | The panel initially displays the anchor point, or the first value of the `anchors` attribute if not passed | _number \| string_ | `-`  |
-| `anchors` | Custom anchors which unit is `px` | _number[]_ | `[100, window.innerHeight * 0.6]`  |
+| `v-model:anchor`    | The panel initially displays the anchor point, or the first value of the `anchors` attribute if not passed | _number \| string_ | `-`  |
+| `anchors`           | Custom anchors which unit is `px` | _number[]_ | `[100, window.innerHeight * 0.6]`  |
 | `content-draggable` | Whether to allow to drag panel content area | _boolean_ | `true`  |
-| `duration` | Transition duration which unit is `ms` | _number \| string_ | `300`  |
-| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `teleport`       | The location of the ejector layer mount              | _TeleportProps['to'] \| false_ | `false`  |
-| `lock-scroll`    | Whether to disable scroll through, when disabled, the scrolling popup layer does not cause the body to scroll   | _boolean_   | `false`   |
-| `safe-area` | Whether to enable bottom safe area adaptation | _boolean_ | `false`  |
+| `duration`          | Transition duration which unit is `ms` | _number \| string_ | `300`  |
+| `elevation`         | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `teleport`          | The location of the ejector layer mount              | _TeleportProps['to'] \| false_ | `false`  |
+| `lock-scroll`       | Whether to disable scroll through, when disabled, the scrolling popup layer does not cause the body to scroll   | _boolean_   | `false`   |
+| `safe-area`         | Whether to enable bottom safe area adaptation | _boolean_ | `false`  |
 
 ### Events
 
@@ -96,3 +96,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--floating-panel-bar-height` | `3px` |
 | `--floating-panel-bar-border-radius` | `10px` |
 | `--floating-panel-bar-background` | `#ddd` |
+| `--floating-panel-transition-timing-function`| `cubic-bezier(0.18, 0.89, 0.32, 1.28)`|

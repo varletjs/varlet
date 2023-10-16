@@ -55,8 +55,10 @@ export default defineComponent({
     const height = ref<number>(0)
     const contentRef = ref<HTMLDivElement | null>(null)
     const maxHeight = ref<number>(window.innerHeight * 0.6)
+
     const anchor = useVModel(props, 'anchor')
     const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
+
     const boundary = computed<{ min: number; max: number }>(() => {
       const min = Math.min(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
       const max = Math.max(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
@@ -74,12 +76,15 @@ export default defineComponent({
       transform: `translateY(calc(100% - ${toSizeUnit(height.value)}))`,
       transition: touching.value
         ? 'none'
-        : `transform ${toNumber(props.duration)}ms cubic-bezier(0.18, 0.89, 0.32, 1.28)`,
+        : `transform ${toNumber(props.duration)}ms var(--floating-panel-transition-timing-function)`,
     }))
 
     let startY: number
 
-    useLock(() => props.lockScroll || touching.value)
+    useLock(
+      () => touching.value,
+      () => props.lockScroll
+    )
 
     onWindowResize(resize)
 
@@ -91,7 +96,7 @@ export default defineComponent({
           return
         }
 
-        if (!newAnchor) {
+        if (newAnchor == null) {
           height.value = props.anchors[0]
           return
         }
@@ -169,9 +174,7 @@ export default defineComponent({
     }
 
     function updateAnchor() {
-      if (props.anchor) {
-        anchor.value = height.value
-      }
+      anchor.value = height.value
       call(props.onAnchorChange, height.value)
     }
 
