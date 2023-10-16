@@ -56,7 +56,7 @@ export default defineComponent({
     const contentRef = ref<HTMLDivElement | null>(null)
     const maxHeight = ref<number>(window.innerHeight * 0.6)
     const anchor = useVModel(props, 'anchor')
-    const { deltaY, dragging, startTouch, moveTouch, endTouch } = useTouch()
+    const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
     const boundary = computed<{ min: number; max: number }>(() => {
       const min = Math.min(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
       const max = Math.max(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
@@ -72,14 +72,14 @@ export default defineComponent({
     const rootStyle = computed<CSSProperties>(() => ({
       height: `${toSizeUnit(boundary.value.max)}`,
       transform: `translateY(calc(100% - ${toSizeUnit(height.value)}))`,
-      transition: dragging.value
+      transition: touching.value
         ? 'none'
         : `transform ${toNumber(props.duration)}ms cubic-bezier(0.18, 0.89, 0.32, 1.28)`,
     }))
 
     let startY: number
 
-    useLock(() => props.lockScroll || dragging.value)
+    useLock(() => props.lockScroll || touching.value)
 
     onWindowResize(resize)
 
