@@ -93,6 +93,17 @@ const text = ref('VARLET')
 </template>
 ```
 
+### Avatar Hover Effect
+
+```html
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
+    <var-avatar hoverable bordered>+2</var-avatar>
+  </var-avatar-group>
+```
+
 ### Avatar Horizontal Group
 
 ```html
@@ -196,6 +207,7 @@ import logo from '../../assets/logo.png'
 | `loading`     | When lazy loading is enabled, the image displayed in the load                                 | _string_ | `-` |
 | `error`       | When lazy loading is enabled, the image displayed when loading fails                           | _string_ | `-` |
 | `lazy`        | Whether to enable lazy loading                                               | _boolean_ | `false` |
+| `hoverable`       | Whether the group avatars are hover able | _boolean_ | `false` |
 
 #### AvatarGroup Props
 
@@ -203,7 +215,6 @@ import logo from '../../assets/logo.png'
 |-------------------|-------------------------------------------|------|--------------|
 | `offset`          | Avatar Offset within Avatar Group	| _number \| string_ | `-` |
 | `vertical`        | Whether the group avatars are vertically aligned | _boolean_ | `false` |
-| `hoverable`       | Whether the group avatars are hover able | _boolean_ | `false` |
 
 ### Events
 

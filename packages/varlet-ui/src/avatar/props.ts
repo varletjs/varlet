@@ -26,6 +26,7 @@ export const props = {
   loading: String,
   error: String,
   lazy: Boolean,
+  hoverable: Boolean,
   onClick: defineListenerProp<(e: Event) => void>(),
   onLoad: defineListenerProp<(e: Event) => void>(),
   onError: defineListenerProp<(e: Event) => void>(),
