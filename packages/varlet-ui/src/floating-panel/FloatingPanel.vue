@@ -29,7 +29,7 @@ import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { call, createNamespace, useVModel, formatElevation, useTeleport } from '../utils/components'
-import { toSizeUnit } from '../utils/elements'
+import { getScrollTop, toSizeUnit } from '../utils/elements'
 import { useTouch, useWindowSize } from '@varlet/use'
 import { toNumber, isEmpty, preventDefault } from '@varlet/shared'
 
@@ -55,7 +55,7 @@ export default defineComponent({
     const minAnchor = computed<number>(() => Math.min(...anchors.value))
     const maxAnchor = computed<number>(() => Math.max(...anchors.value))
     const { disabled: teleportDisabled } = useTeleport()
-    const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
+    const { deltaY, touching, startTouch, moveTouch, endTouch, isReachTop, isReachBottom } = useTouch()
 
     let startVisibleHeight: number
 
@@ -88,6 +88,10 @@ export default defineComponent({
       const eventFromContent = contentRef.value === target || contentRef.value?.contains(target)
 
       if (eventFromContent && !props.contentDraggable) {
+        if (isReachTop(contentRef.value!) || isReachBottom(contentRef.value!)) {
+          preventDefault(event)
+        }
+
         return
       }
 

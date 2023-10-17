@@ -84,7 +84,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--floating-panel-border-top` | `none` |
 | `--floating-panel-border-radius` | `0px` |
 | `--floating-panel-background` | `#fff` |
-| `--floating-panel-header-height` | `36px` |
+| `--floating-panel-header-height` | `40px` |
 | `--floating-panel-bar-width` | `20px` |
 | `--floating-panel-bar-height` | `3px` |
 | `--floating-panel-bar-border-radius` | `10px` |

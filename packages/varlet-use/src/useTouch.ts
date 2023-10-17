@@ -95,6 +95,18 @@ export function useTouch() {
     })
   }
 
+  const isReachTop = (element: Element) => {
+    const { scrollTop } = element
+
+    return scrollTop === 0 && deltaY.value > 0
+  }
+
+  const isReachBottom = (element: Element, offset = 1) => {
+    const { scrollHeight, clientHeight, scrollTop } = element
+    const offsetBottom = Math.abs(scrollHeight - scrollTop - clientHeight)
+    return deltaY.value < 0 && offsetBottom <= offset
+  }
+
   return {
     startX,
     startY,
@@ -115,5 +127,7 @@ export function useTouch() {
     startTouch,
     moveTouch,
     endTouch,
+    isReachTop,
+    isReachBottom,
   }
 }
