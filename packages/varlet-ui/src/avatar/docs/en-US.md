@@ -203,6 +203,7 @@ import logo from '../../assets/logo.png'
 |-------------------|-------------------------------------------|------|--------------|
 | `offset`          | Avatar Offset within Avatar Group	| _number \| string_ | `-` |
 | `vertical`        | Whether the group avatars are vertically aligned | _boolean_ | `false` |
+| `hoverable`       | Whether the group avatars are hover able | _boolean_ | `false` |
 
 ### Events
 

@@ -1,5 +1,8 @@
 <template>
-  <div :class="classes(n(), [vertical, n('--column'), n('--row')])" :style="rootStyles">
+  <div
+    :class="classes(n(), [hoverable, n('--hover-able'), null], [vertical, n('--column'), n('--row')])"
+    :style="rootStyles"
+  >
     <slot />
   </div>
 </template>

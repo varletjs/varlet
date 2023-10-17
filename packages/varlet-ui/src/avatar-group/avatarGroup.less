@@ -22,4 +22,15 @@
       margin-top: var(--avatar-group-offset);
     }
   }
+
+  &--hover-able {
+    .var-avatar {
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+    }
+  }
 }
