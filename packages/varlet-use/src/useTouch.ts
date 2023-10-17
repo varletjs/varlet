@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { getScrollTop } from '@varlet/shared'
 
 export type TouchDirection = 'horizontal' | 'vertical'
 
@@ -95,8 +96,8 @@ export function useTouch() {
     })
   }
 
-  const isReachTop = (element: Element) => {
-    const { scrollTop } = element
+  const isReachTop = (element: Element | Window) => {
+    const scrollTop = getScrollTop(element)
 
     return scrollTop === 0 && deltaY.value > 0
   }

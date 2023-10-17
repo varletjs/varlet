@@ -29,7 +29,7 @@ import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { call, createNamespace, useVModel, formatElevation, useTeleport } from '../utils/components'
-import { getScrollTop, toSizeUnit } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 import { useTouch, useWindowSize } from '@varlet/use'
 import { toNumber, isEmpty, preventDefault } from '@varlet/shared'
 
