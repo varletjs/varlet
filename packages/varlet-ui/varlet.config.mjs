@@ -468,6 +468,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'FloatingPanel 浮动面板',
+          'en-US': 'FloatingPanel',
+        },
+        doc: 'floating-panel',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Dialog 对话框',
           'en-US': 'Dialog',
         },

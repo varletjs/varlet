@@ -331,4 +331,7 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     closeSelf: true,
     characterDelta: -3,
   },
+  'floating-panel': {
+    path: '/floating-panel',
+  },
 }
