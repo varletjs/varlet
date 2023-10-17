@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test floating-panel component slots > test floating-panel component default 1`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -10,7 +10,7 @@ exports[`test floating-panel component slots > test floating-panel component def
 `;
 
 exports[`test floating-panel components props > test floating-panel anchor 1`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -19,7 +19,7 @@ exports[`test floating-panel components props > test floating-panel anchor 1`] =
 `;
 
 exports[`test floating-panel components props > test floating-panel anchor 2`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -28,7 +28,7 @@ exports[`test floating-panel components props > test floating-panel anchor 2`] =
 `;
 
 exports[`test floating-panel components props > test floating-panel anchor 3`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -37,7 +37,7 @@ exports[`test floating-panel components props > test floating-panel anchor 3`] =
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 1`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -46,7 +46,7 @@ exports[`test floating-panel components props > test floating-panel anchors 1`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 2`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 400px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -55,7 +55,7 @@ exports[`test floating-panel components props > test floating-panel anchors 2`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 3`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -64,7 +64,7 @@ exports[`test floating-panel components props > test floating-panel anchors 3`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 4`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -73,7 +73,7 @@ exports[`test floating-panel components props > test floating-panel anchors 4`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 5`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 400px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 400px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -82,7 +82,7 @@ exports[`test floating-panel components props > test floating-panel anchors 5`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 6`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 500px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 400px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -91,7 +91,7 @@ exports[`test floating-panel components props > test floating-panel anchors 6`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 7`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 400px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 400px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -100,7 +100,7 @@ exports[`test floating-panel components props > test floating-panel anchors 7`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel contentDraggable 1`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -109,7 +109,7 @@ exports[`test floating-panel components props > test floating-panel contentDragg
 `;
 
 exports[`test floating-panel components props > test floating-panel contentDraggable 2`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 460.79999999999995px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -118,7 +118,7 @@ exports[`test floating-panel components props > test floating-panel contentDragg
 `;
 
 exports[`test floating-panel components props > test floating-panel duration 1`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 0.4ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -126,4 +126,4 @@ exports[`test floating-panel components props > test floating-panel duration 1`]
 </div>"
 `;
 
-exports[`test floating-panel components props > test floating-panel teleport 1`] = `"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms cubic-bezier(0.18, 0.89, 0.32, 1.28);\\"><div class=\\"var-floating-panel__header\\"><div class=\\"var-floating-panel__header-toolbar\\"></div></div><div class=\\"var-floating-panel__content\\"></div></div>"`;
+exports[`test floating-panel components props > test floating-panel teleport 1`] = `"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 460.79999999999995px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\"><div class=\\"var-floating-panel__header\\"><div class=\\"var-floating-panel__header-toolbar\\"></div></div><div class=\\"var-floating-panel__content\\"></div></div>"`;

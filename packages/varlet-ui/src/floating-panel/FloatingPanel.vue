@@ -45,35 +45,36 @@ import { toNumber, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
-const MIN_FLOATING_PANEL_HEIGHT = 100
+const START_VISIBLE_HEIGHT = 100
 const MAX_OFFSET_RATIO = 0.2
 
 export default defineComponent({
   name,
   props,
   setup(props) {
-    const height = ref<number>(0)
+    const visibleHeight = ref<number>(0)
     const contentRef = ref<HTMLDivElement | null>(null)
-    const maxHeight = ref<number>(window.innerHeight * 0.6)
+    const height = ref<number>(window.innerHeight * 0.6)
 
     const anchor = useVModel(props, 'anchor')
     const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
 
-    const boundary = computed<{ min: number; max: number }>(() => {
-      const min = Math.min(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
-      const max = Math.max(MIN_FLOATING_PANEL_HEIGHT, maxHeight.value)
-      return {
-        min: props.anchors ? Math.min(...props.anchors) : min,
-        max: props.anchors ? Math.max(...props.anchors) : max,
-      }
+    const isEmptyAnchors = computed(() => props.anchors == null || props.anchors.length === 0)
+    const start = computed<number>(() => (isEmptyAnchors.value ? START_VISIBLE_HEIGHT : Math.min(...props.anchors!)))
+    const end = computed<number>(() => {
+      const endHeight = height.value
+      return isEmptyAnchors.value ? endHeight : Math.max(...props.anchors!)
     })
     const anchors = computed<number[]>(() => {
-      const { max, min } = boundary.value
-      return props.anchors && props.anchors.length >= 1 ? props.anchors : [min, max]
+      const defaultAnchors = [
+        Math.min(START_VISIBLE_HEIGHT, height.value),
+        Math.max(START_VISIBLE_HEIGHT, height.value),
+      ]
+      return isEmptyAnchors.value ? defaultAnchors : props.anchors!
     })
     const rootStyle = computed<CSSProperties>(() => ({
-      height: `${toSizeUnit(boundary.value.max)}`,
-      transform: `translateY(calc(100% - ${toSizeUnit(height.value)}))`,
+      height: `${toSizeUnit(Math.max(start.value, end.value))}`,
+      transform: `translateY(calc(100% - ${toSizeUnit(visibleHeight.value)}))`,
       transition: touching.value
         ? 'none'
         : `transform ${toNumber(props.duration)}ms var(--floating-panel-transition-timing-function)`,
@@ -91,17 +92,17 @@ export default defineComponent({
     watch(
       () => props.anchor,
       (newAnchor: number | undefined) => {
-        if (!props.anchors || props.anchors.length === 0) {
-          height.value = MIN_FLOATING_PANEL_HEIGHT
+        if (isEmptyAnchors.value) {
+          updateVisibleHeight(START_VISIBLE_HEIGHT)
           return
         }
 
-        if (newAnchor == null) {
-          height.value = props.anchors[0]
+        if (newAnchor == null || !props.anchors!.includes(newAnchor)) {
+          updateVisibleHeight(props.anchors![0])
           return
         }
 
-        height.value = props.anchors.includes(newAnchor) ? newAnchor : props.anchors[0]
+        updateVisibleHeight(newAnchor)
       },
       { immediate: true }
     )
@@ -109,10 +110,10 @@ export default defineComponent({
     watch(
       () => props.anchors,
       (newAnchors: number[] | undefined) => {
-        height.value = MIN_FLOATING_PANEL_HEIGHT
+        updateVisibleHeight(START_VISIBLE_HEIGHT)
 
-        if (newAnchors && newAnchors.length > 0) {
-          height.value = newAnchors[0]
+        if (!isEmptyAnchors.value) {
+          updateVisibleHeight(newAnchors![0])
         }
 
         updateAnchor()
@@ -122,22 +123,51 @@ export default defineComponent({
     function handleTouchStart(event: TouchEvent) {
       startTouch(event)
 
-      startY = height.value
+      startY = visibleHeight.value
     }
 
     function getMoveDistance(moveY: number): number {
       const offsetY = Math.abs(moveY)
-      const { max, min } = boundary.value
+      const maxAnchor = Math.max(start.value, end.value)
+      const minAnchor = Math.min(start.value, end.value)
 
-      if (offsetY > max) {
-        return max + (offsetY - max) * MAX_OFFSET_RATIO
+      if (offsetY > maxAnchor) {
+        return maxAnchor + (offsetY - maxAnchor) * MAX_OFFSET_RATIO
       }
 
-      if (offsetY < min) {
-        return min - (min - offsetY) * MAX_OFFSET_RATIO
+      if (offsetY < minAnchor) {
+        return minAnchor - (minAnchor - offsetY) * MAX_OFFSET_RATIO
       }
 
       return moveY
+    }
+
+    function findNearestAnchor(anchor: number): number {
+      if (anchors.value.includes(anchor)) {
+        return anchor
+      }
+
+      let minDifference = Infinity
+      let index = 0
+
+      for (let i = 0; i < anchors.value.length; i++) {
+        const difference = Math.abs(anchors.value[i] - anchor)
+        if (difference < minDifference) {
+          minDifference = difference
+          index = i
+        }
+      }
+
+      return anchors.value[index]
+    }
+
+    function updateVisibleHeight(distance: number, isTouching?: boolean) {
+      if (isTouching) {
+        visibleHeight.value = getMoveDistance(distance)
+        return
+      }
+
+      visibleHeight.value = findNearestAnchor(visibleHeight.value)
     }
 
     function handleTouchMove(event: TouchEvent) {
@@ -149,47 +179,32 @@ export default defineComponent({
           return
         }
 
-        if (startY < boundary.value.max) {
+        if (startY < Math.max(start.value, end.value)) {
           preventDefault(event)
         }
       }
 
       const moveY = startY - deltaY.value
-      height.value = getMoveDistance(moveY)
-    }
-
-    function findNearestAnchor(anchors: number[], height: number): number {
-      let minDifference = Infinity
-      let index = 0
-
-      for (let i = 0; i < anchors.length; i++) {
-        const difference = Math.abs(anchors[i] - height)
-        if (difference < minDifference) {
-          minDifference = difference
-          index = i
-        }
-      }
-
-      return anchors[index]
+      updateVisibleHeight(moveY, true)
     }
 
     function updateAnchor() {
-      anchor.value = height.value
-      call(props.onAnchorChange, height.value)
+      anchor.value = visibleHeight.value
+      call(props.onAnchorChange, visibleHeight.value)
     }
 
     function handleTouchEnd() {
       endTouch()
 
-      height.value = findNearestAnchor(anchors.value, height.value)
+      updateVisibleHeight(visibleHeight.value)
       updateAnchor()
     }
 
     // expose
     function resize() {
-      maxHeight.value = window.innerHeight * 0.6
+      height.value = window.innerHeight * 0.6
 
-      height.value = findNearestAnchor(anchors.value, height.value)
+      updateVisibleHeight(visibleHeight.value)
       updateAnchor()
     }
 
