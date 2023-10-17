@@ -20,7 +20,6 @@ export const props = {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
-  lockScroll: Boolean,
   safeArea: Boolean,
   'onUpdate:anchor': defineListenerProp<(height: number) => void>(),
   onAnchorChange: defineListenerProp<(height: number) => void>(),

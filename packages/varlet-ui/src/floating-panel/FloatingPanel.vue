@@ -59,10 +59,7 @@ export default defineComponent({
 
     let startVisibleHeight: number
 
-    useLock(
-      () => touching.value,
-      () => props.lockScroll
-    )
+    useLock(() => touching.value)
 
     watch(() => anchor.value, matchAnchor, { immediate: true })
 
@@ -88,18 +85,15 @@ export default defineComponent({
       moveTouch(event)
 
       const target = event.target as Element
-      if (contentRef.value === target || contentRef.value?.contains(target)) {
-        if (!props.contentDraggable) {
-          return
-        }
+      const eventFromContent = contentRef.value === target || contentRef.value?.contains(target)
 
-        if (startVisibleHeight < maxAnchor.value) {
-          preventDefault(event)
-        }
+      if (eventFromContent && !props.contentDraggable) {
+        return
       }
 
       const targetVisibleHeight = startVisibleHeight - deltaY.value
       setVisibleHeight(clampVisibleHeight(targetVisibleHeight))
+      preventDefault(event)
     }
 
     function handleTouchend() {
