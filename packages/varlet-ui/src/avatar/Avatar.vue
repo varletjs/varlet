@@ -7,7 +7,8 @@
         n('$--box'),
         [isInternalSize(size), n(`--${size}`)],
         [round, n('--round')],
-        [bordered, n('--bordered')]
+        [bordered, n('--bordered')],
+        [hoverable, n('--hover')]
       )
     "
     :style="{
