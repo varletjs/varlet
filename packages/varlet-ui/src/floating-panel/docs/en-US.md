@@ -68,12 +68,6 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 | ---- | ---- | ---- |
 | `anchor-change` | Triggered after moving to an anchor | `height: number` |
 
-### Methods
-
-| Method   | Description                                                          | Arguments       | Return |
-| -------- | -------------------------------------------------------------------- | --------------- | ------ |
-| `resize` | Call this method to redraw when a drag element changes position size | `-`             | `-`    |
-
 ### Slots
 
 | Name | Description | SlotProps |
