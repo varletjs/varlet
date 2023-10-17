@@ -65,6 +65,4 @@ watchDarkMode(dark)
       </var-floating-panel>
     </var-tab-item>
   </var-tabs-items>
-
-  <var-cell v-for="i in 50" :key="i">Hello</var-cell>
 </template>
