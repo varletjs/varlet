@@ -66,10 +66,7 @@ export default defineComponent({
       return isEmptyAnchors.value ? endHeight : Math.max(...props.anchors!)
     })
     const anchors = computed<number[]>(() => {
-      const defaultAnchors = [
-        Math.min(START_VISIBLE_HEIGHT, height.value),
-        Math.max(START_VISIBLE_HEIGHT, height.value),
-      ]
+      const defaultAnchors = [START_VISIBLE_HEIGHT, height.value]
       return isEmptyAnchors.value ? defaultAnchors : props.anchors!
     })
     const rootStyle = computed<CSSProperties>(() => ({
