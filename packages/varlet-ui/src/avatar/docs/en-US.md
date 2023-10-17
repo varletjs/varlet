@@ -255,6 +255,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--avatar-large-size` |  `64px`|
 | `--avatar-border` |  `2px solid #fff`|
 | `--avatar-background-color` |  `#bebebe`|
+| `--avatar-hover-transform` | `scale(1.1)`      |
 
 #### AvatarGroup Variables
 
