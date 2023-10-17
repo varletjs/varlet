@@ -18,7 +18,7 @@ export const props = {
   },
   teleport: {
     type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
-    default: false,
+    default: 'body',
   },
   lockScroll: Boolean,
   safeArea: Boolean,
