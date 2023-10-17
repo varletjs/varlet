@@ -86,8 +86,8 @@ const anchor = ref(100)
 | `--floating-panel-border-radius` | `0` |
 | `--floating-panel-background` | `#fff` |
 | `--floating-panel-header-height` | `40px` |
-| `--floating-panel-bar-width` | `20px` |
-| `--floating-panel-bar-height` | `3px` |
-| `--floating-panel-bar-border-radius` | `10px` |
-| `--floating-panel-bar-background` | `#ddd` |
-| `--floating-panel-transition-timing-function`| `cubic-bezier(0.18, 0.89, 0.32, 1.28)`|
+| `--floating-panel-toolbar-width` | `20px` |
+| `--floating-panel-toolbar-height` | `3px` |
+| `--floating-panel-toolbar-border-radius` | `10px` |
+| `--floating-panel-toolbar-background` | `#ddd` |
+| `--floating-panel-transition-timing-function` | `cubic-bezier(0.18, 0.89, 0.32, 1.28)` |
