@@ -8,7 +8,7 @@
         [isInternalSize(size), n(`--${size}`)],
         [round, n('--round')],
         [bordered, n('--bordered')],
-        [hoverable, n('--hover')]
+        [hoverable, n('--hoverable')]
       )
     "
     :style="{

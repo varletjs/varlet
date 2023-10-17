@@ -104,17 +104,6 @@ const text = ref('VARLET')
 </template>
 ```
 
-### 头像悬停效果
-
-```html
-  <var-avatar-group>
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
-    <var-avatar hoverable bordered>+2</var-avatar>
-  </var-avatar-group>
-```
-
 ### 头像垂直分组
 
 ```html
@@ -124,6 +113,19 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
+  </var-avatar-group>
+</template>
+```
+
+### 头像可悬停
+
+```html
+<template>
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
+    <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -252,6 +254,7 @@ import logo from '../../assets/logo.png'
 | `--avatar-large-size`       | `64px`           |
 | `--avatar-border`           | `2px solid #fff` |
 | `--avatar-background-color` | `#bebebe`        |
+| `--avatar-hover-transform` | `scale(1.1)`      |
 
 #### AvatarGroup Variables
 

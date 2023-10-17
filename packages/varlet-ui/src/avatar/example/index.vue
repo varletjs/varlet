@@ -79,19 +79,19 @@ watchDarkMode(dark)
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
-  <app-type>{{ pack.avatarHoverAble }}</app-type>
-  <var-avatar-group>
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
-    <var-avatar hoverable bordered>+2</var-avatar>
-  </var-avatar-group>
-
   <app-type>{{ pack.avatarVerticalGroup }}</app-type>
   <var-avatar-group vertical>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
+  </var-avatar-group>
+
+  <app-type>{{ pack.avatarHoverable }}</app-type>
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
+    <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>

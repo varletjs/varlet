@@ -6,5 +6,5 @@ export default {
   backgroundColor: 'Background Color',
   avatarHorizontalGroup: 'Avatar Horizontal Group',
   avatarVerticalGroup: 'Avatar Vertical Group',
-  avatarHoverAble: 'Avatar Hoverable',
+  avatarHoverable: 'Avatar Hoverable',
 }

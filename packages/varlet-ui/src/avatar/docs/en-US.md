@@ -91,17 +91,6 @@ const text = ref('VARLET')
 </template>
 ```
 
-### Avatar Hover Effect
-
-```html
-  <var-avatar-group>
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
-    <var-avatar hoverable bordered>+2</var-avatar>
-  </var-avatar-group>
-```
-
 ### Avatar Horizontal Group
 
 ```html
@@ -124,6 +113,19 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
+  </var-avatar-group>
+</template>
+```
+
+### Avatar Hoverable
+
+```html
+<template>
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
+    <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```

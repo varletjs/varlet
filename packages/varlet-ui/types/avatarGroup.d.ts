@@ -6,7 +6,6 @@ export declare const avatarGroupProps: Record<string, any>
 export interface AvatarGroupProps extends BasicAttributes {
   offset?: number | string
   vertical?: boolean
-  hoverable?: boolean
 }
 
 export class AvatarGroup extends VarComponent {
