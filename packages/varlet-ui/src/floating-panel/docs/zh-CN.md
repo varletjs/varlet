@@ -60,8 +60,7 @@ const anchor = ref(100)
 | `content-draggable` | 是否允许拖拽面板内容       | _boolean_ | `true`  |
 | `duration`          | 动画时长，单位为 `ms`          | _number \| string_ | `300`  |
 | `elevation`         | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
-| `teleport`          | 弹出层挂载的位置              | _TeleportProps['to'] \| false_ | `false`  |
-| `lock-scroll`       | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动   | _boolean_   | `false`   |
+| `teleport`          | 弹出层挂载的位置              | _TeleportProps['to'] \| false_ | `body`  |
 | `safe-area`         | 是否开启底部安全区适配        | _boolean_ | `false`  |
 
 ### 事件
@@ -69,12 +68,6 @@ const anchor = ref(100)
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
 | `anchor-change` | 移动到某个锚点后触发 | `height: number` |
-
-### 方法
-
-| 方法名 | 说明 | 参数 | 返回值 |
-| --- | --- | --- | --- |
-| `resize` | 产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 插槽
 
@@ -92,9 +85,9 @@ const anchor = ref(100)
 | `--floating-panel-border-top` | `none` |
 | `--floating-panel-border-radius` | `0` |
 | `--floating-panel-background` | `#fff` |
-| `--floating-panel-header-height` | `30px` |
-| `--floating-panel-bar-width` | `20px` |
-| `--floating-panel-bar-height` | `3px` |
-| `--floating-panel-bar-border-radius` | `10px` |
-| `--floating-panel-bar-background` | `#ddd` |
-| `--floating-panel-transition-timing-function`| `cubic-bezier(0.18, 0.89, 0.32, 1.28)`|
+| `--floating-panel-header-height` | `40px` |
+| `--floating-panel-toolbar-width` | `20px` |
+| `--floating-panel-toolbar-height` | `3px` |
+| `--floating-panel-toolbar-border-radius` | `10px` |
+| `--floating-panel-toolbar-background` | `#ddd` |
+| `--floating-panel-transition-timing-function` | `cubic-bezier(0.18, 0.89, 0.32, 1.28)` |

@@ -8,7 +8,6 @@ export interface FloatingPanelProps extends BasicAttributes {
   duration?: number | string
   elevation?: boolean | number | string
   teleport?: TeleportProps['to'] | false
-  lockScroll?: boolean
   safeArea?: boolean
   onAnchorChange?: ListenerProp<(height: number) => void>
   'onUpdate:anchor'?: ListenerProp<(height: number) => void>

@@ -17,9 +17,18 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated, onActivated } from 'vue'
-import { isPlainObject, isWindow, toNumber, doubleRaf, requestAnimationFrame, getRect } from '@varlet/shared'
+import {
+  isPlainObject,
+  isWindow,
+  toNumber,
+  doubleRaf,
+  requestAnimationFrame,
+  getRect,
+  getScrollLeft,
+  getScrollTop,
+} from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
-import { getParentScroller, getScrollLeft, getScrollTop, scrollTo as varScrollTo, toPxNum } from '../utils/elements'
+import { getParentScroller, scrollTo as varScrollTo, toPxNum } from '../utils/elements'
 import { useIndexAnchors, type IndexBarProvider } from './provide'
 import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
 import { createNamespace, call } from '../utils/components'

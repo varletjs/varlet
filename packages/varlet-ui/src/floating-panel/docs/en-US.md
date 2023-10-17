@@ -59,8 +59,7 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 | `content-draggable` | Whether to allow to drag panel content area | _boolean_ | `true`  |
 | `duration`          | Transition duration which unit is `ms` | _number \| string_ | `300`  |
 | `elevation`         | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `teleport`          | The location of the ejector layer mount              | _TeleportProps['to'] \| false_ | `false`  |
-| `lock-scroll`       | Whether to disable scroll through, when disabled, the scrolling popup layer does not cause the body to scroll   | _boolean_   | `false`   |
+| `teleport`          | The location of the ejector layer mount              | _TeleportProps['to'] \| false_ | `body`  |
 | `safe-area`         | Whether to enable bottom safe area adaptation | _boolean_ | `false`  |
 
 ### Events
@@ -68,12 +67,6 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 | Event | Description  | Arguments  |
 | ---- | ---- | ---- |
 | `anchor-change` | Triggered after moving to an anchor | `height: number` |
-
-### Methods
-
-| Method   | Description                                                          | Arguments       | Return |
-| -------- | -------------------------------------------------------------------- | --------------- | ------ |
-| `resize` | Call this method to redraw when a drag element changes position size | `-`             | `-`    |
 
 ### Slots
 
@@ -89,11 +82,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | ---------- | -------- |
 | `--floating-panel-z-index` | `999` |
 | `--floating-panel-border-top` | `none` |
-| `--floating-panel-border-radius` | `0px` |
+| `--floating-panel-border-radius` | `0` |
 | `--floating-panel-background` | `#fff` |
-| `--floating-panel-header-height` | `30px` |
-| `--floating-panel-bar-width` | `20px` |
-| `--floating-panel-bar-height` | `3px` |
-| `--floating-panel-bar-border-radius` | `10px` |
-| `--floating-panel-bar-background` | `#ddd` |
-| `--floating-panel-transition-timing-function`| `cubic-bezier(0.18, 0.89, 0.32, 1.28)`|
+| `--floating-panel-header-height` | `40px` |
+| `--floating-panel-toolbar-width` | `20px` |
+| `--floating-panel-toolbar-height` | `3px` |
+| `--floating-panel-toolbar-border-radius` | `10px` |
+| `--floating-panel-toolbar-background` | `#ddd` |
+| `--floating-panel-transition-timing-function` | `cubic-bezier(0.18, 0.89, 0.32, 1.28)` |

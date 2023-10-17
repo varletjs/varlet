@@ -1,12 +1,18 @@
 <template>
-  <Teleport v-if="teleport" :to="teleport">
+  <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
     <div
       :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
-      :style="rootStyle"
-      @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
-      @touchend="handleTouchEnd"
-      @touchcancel="handleTouchEnd"
+      :style="{
+        height: `${toSizeUnit(maxAnchor)}`,
+        transform: `translateY(calc(100% - ${toSizeUnit(visibleHeight)}))`,
+        transition: touching
+          ? 'none'
+          : `transform ${toNumber(duration)}ms var(--floating-panel-transition-timing-function)`,
+      }"
+      @touchstart="handleTouchstart"
+      @touchmove="handleTouchmove"
+      @touchend="handleTouchend"
+      @touchcancel="handleTouchend"
     >
       <div :class="n('header')">
         <div :class="n('header-toolbar')"></div>
@@ -16,37 +22,21 @@
       </div>
     </div>
   </Teleport>
-  <div
-    v-else
-    :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
-    :style="rootStyle"
-    @touchstart="handleTouchStart"
-    @touchmove="handleTouchMove"
-    @touchend="handleTouchEnd"
-    @touchcancel="handleTouchEnd"
-  >
-    <div :class="n('header')">
-      <div :class="n('header-toolbar')"></div>
-    </div>
-    <div :class="n('content')" ref="contentRef">
-      <slot></slot>
-    </div>
-  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type CSSProperties } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { call, createNamespace, useVModel, formatElevation } from '../utils/components'
+import { call, createNamespace, useVModel, formatElevation, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
+import { useTouch, useWindowSize } from '@varlet/use'
 import { toNumber, isEmpty, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
-const START_VISIBLE_HEIGHT = 100
-const MAX_OFFSET_RATIO = 0.2
+const DEFAULT_START_ANCHOR = 100
+const OVERFLOW_REDUCE_RATIO = 0.2
 
 export default defineComponent({
   name,
@@ -54,170 +44,128 @@ export default defineComponent({
   setup(props) {
     const visibleHeight = ref<number>(0)
     const contentRef = ref<HTMLDivElement | null>(null)
-    const height = ref<number>(0)
-
+    const { height: windowHeight } = useWindowSize()
+    const defaultEndAnchor = computed(() => windowHeight.value * 0.6)
     const anchor = useVModel(props, 'anchor')
-    const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
-
-    const start = computed<number>(() => (isEmpty(props.anchors) ? START_VISIBLE_HEIGHT : Math.min(...props.anchors!)))
-    const end = computed<number>(() => {
-      const endHeight = height.value
-      return isEmpty(props.anchors) ? endHeight : Math.max(...props.anchors!)
-    })
     const anchors = computed<number[]>(() => {
-      const defaultAnchors = [START_VISIBLE_HEIGHT, height.value]
-      return isEmpty(props.anchors) ? defaultAnchors : props.anchors!
+      const defaultAnchors = [DEFAULT_START_ANCHOR, defaultEndAnchor.value]
+      const { anchors } = props
+      return isEmpty(anchors) ? defaultAnchors : anchors!
     })
-    const rootStyle = computed<CSSProperties>(() => ({
-      height: `${toSizeUnit(Math.max(start.value, end.value))}`,
-      transform: `translateY(calc(100% - ${toSizeUnit(visibleHeight.value)}))`,
-      transition: touching.value
-        ? 'none'
-        : `transform ${toNumber(props.duration)}ms var(--floating-panel-transition-timing-function)`,
-    }))
+    const minAnchor = computed<number>(() => Math.min(...anchors.value))
+    const maxAnchor = computed<number>(() => Math.max(...anchors.value))
+    const { disabled: teleportDisabled } = useTeleport()
+    const { deltaY, touching, startTouch, moveTouch, endTouch, isReachTop, isReachBottom } = useTouch()
 
-    let startY: number
+    let startVisibleHeight: number
 
-    useLock(
-      () => touching.value,
-      () => props.lockScroll
-    )
+    useLock(() => touching.value)
 
-    onWindowResize(resize)
-
-    onSmartMounted(() => {
-      height.value = window.innerHeight * 0.6
-    })
+    watch(() => anchor.value, matchAnchor, { immediate: true })
 
     watch(
-      () => props.anchor,
-      (newAnchor: number | undefined) => {
-        if (isEmpty(props.anchors)) {
-          updateVisibleHeight(START_VISIBLE_HEIGHT)
-          return
-        }
-
-        if (newAnchor == null || !props.anchors!.includes(newAnchor)) {
-          updateVisibleHeight(props.anchors![0])
-          return
-        }
-
-        updateVisibleHeight(newAnchor)
+      () => anchors.value,
+      () => {
+        matchAnchor(anchor.value)
       },
       { immediate: true }
     )
 
-    watch(
-      () => props.anchors,
-      (newAnchors: number[] | undefined) => {
-        updateVisibleHeight(START_VISIBLE_HEIGHT)
+    function matchAnchor(anchor: number | undefined | null) {
+      setVisibleHeight(anchor != null ? anchor : minAnchor.value)
+    }
 
-        if (!isEmpty(props.anchors)) {
-          updateVisibleHeight(newAnchors![0])
-        }
-
-        updateAnchor()
-      }
-    )
-
-    function handleTouchStart(event: TouchEvent) {
+    function handleTouchstart(event: TouchEvent) {
       startTouch(event)
 
-      startY = visibleHeight.value
+      startVisibleHeight = visibleHeight.value
     }
 
-    function getMoveDistance(moveY: number): number {
-      const offsetY = Math.abs(moveY)
-      const maxAnchor = Math.max(start.value, end.value)
-      const minAnchor = Math.min(start.value, end.value)
-
-      if (offsetY > maxAnchor) {
-        return maxAnchor + (offsetY - maxAnchor) * MAX_OFFSET_RATIO
-      }
-
-      if (offsetY < minAnchor) {
-        return minAnchor - (minAnchor - offsetY) * MAX_OFFSET_RATIO
-      }
-
-      return moveY
-    }
-
-    function findNearestAnchor(anchor: number): number {
-      if (anchors.value.includes(anchor)) {
-        return anchor
-      }
-
-      let minDifference = Infinity
-      let index = 0
-
-      for (let i = 0; i < anchors.value.length; i++) {
-        const difference = Math.abs(anchors.value[i] - anchor)
-        if (difference < minDifference) {
-          minDifference = difference
-          index = i
-        }
-      }
-
-      return anchors.value[index]
-    }
-
-    function updateVisibleHeight(distance: number, isTouching?: boolean) {
-      if (isTouching) {
-        visibleHeight.value = getMoveDistance(distance)
-        return
-      }
-
-      visibleHeight.value = findNearestAnchor(distance)
-    }
-
-    function handleTouchMove(event: TouchEvent) {
+    function handleTouchmove(event: TouchEvent) {
       moveTouch(event)
 
       const target = event.target as Element
-      if (contentRef.value === target || contentRef.value?.contains(target)) {
-        if (!props.contentDraggable) {
-          return
-        }
+      const eventFromContent = contentRef.value === target || contentRef.value?.contains(target)
 
-        if (startY < Math.max(start.value, end.value)) {
+      if (eventFromContent && !props.contentDraggable) {
+        if (isReachTop(contentRef.value!) || isReachBottom(contentRef.value!)) {
           preventDefault(event)
         }
+
+        return
       }
 
-      const moveY = startY - deltaY.value
-      updateVisibleHeight(moveY, true)
+      const targetVisibleHeight = startVisibleHeight - deltaY.value
+      setVisibleHeight(clampVisibleHeight(targetVisibleHeight))
+      preventDefault(event)
     }
 
-    function updateAnchor() {
-      anchor.value = visibleHeight.value
-      call(props.onAnchorChange, visibleHeight.value)
-    }
-
-    function handleTouchEnd() {
+    function handleTouchend() {
       endTouch()
 
-      updateVisibleHeight(visibleHeight.value)
-      updateAnchor()
+      const oldAnchor = anchor.value
+      setVisibleHeight(visibleHeight.value)
+      anchor.value = visibleHeight.value
+
+      if (anchor.value !== oldAnchor) {
+        call(props.onAnchorChange, visibleHeight.value)
+      }
     }
 
-    // expose
-    function resize() {
-      height.value = window.innerHeight * 0.6
+    function setVisibleHeight(targetVisibleHeight: number) {
+      visibleHeight.value = touching.value ? targetVisibleHeight : findNearestAnchor(targetVisibleHeight)
+    }
 
-      updateVisibleHeight(visibleHeight.value)
-      updateAnchor()
+    function clampVisibleHeight(visibleHeight: number): number {
+      if (visibleHeight > maxAnchor.value) {
+        // overflow top
+        const overflowHeight = visibleHeight - maxAnchor.value
+        return maxAnchor.value + overflowHeight * OVERFLOW_REDUCE_RATIO
+      }
+
+      if (visibleHeight < minAnchor.value) {
+        // overflow bottom
+        const overflowHeight = minAnchor.value - visibleHeight
+        return minAnchor.value - overflowHeight * OVERFLOW_REDUCE_RATIO
+      }
+
+      return visibleHeight
+    }
+
+    function findNearestAnchor(targetAnchor: number): number {
+      if (anchors.value.includes(targetAnchor)) {
+        return targetAnchor
+      }
+
+      let minDifference = Infinity
+      let nearestAnchor = 0
+
+      anchors.value.forEach((anchor) => {
+        const difference = Math.abs(anchor - targetAnchor)
+        if (difference < minDifference) {
+          minDifference = difference
+          nearestAnchor = anchor
+        }
+      })
+
+      return nearestAnchor
     }
 
     return {
-      rootStyle,
       contentRef,
+      teleportDisabled,
+      touching,
+      minAnchor,
+      maxAnchor,
+      visibleHeight,
       n,
       classes,
+      toSizeUnit,
+      toNumber,
       formatElevation,
-      handleTouchStart,
-      handleTouchMove,
-      handleTouchEnd,
-      resize,
+      handleTouchstart,
+      handleTouchmove,
+      handleTouchend,
     }
   },
 })

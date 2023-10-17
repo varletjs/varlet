@@ -13,135 +13,122 @@ test('test floating-panel plugin', () => {
 describe('test floating-panel components props', () => {
   test('test floating-panel anchor', async () => {
     const onUpdateAnchor = vi.fn()
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
         anchor: 100,
+        anchors: [100, 200],
+        teleport: root,
         'onUpdate:anchor': onUpdateAnchor,
       },
     })
 
-    const panel = wrapper.find('.var-floating-panel')
+    const panel = root.querySelector('.var-floating-panel')
 
-    await delay(100)
-    await triggerDrag(panel, 0, 600)
-    expect(onUpdateAnchor).toHaveBeenCalled(true)
-    expect(wrapper.html()).toMatchSnapshot()
+    await triggerDrag(panel, 0, 50)
+    expect(onUpdateAnchor).toHaveBeenCalledTimes(0)
+    expect(panel.outerHTML).toMatchSnapshot()
 
-    await delay(100)
-    await triggerDrag(panel, 0, 200)
-    expect(onUpdateAnchor).toHaveBeenCalled(true)
-    expect(wrapper.vm.anchor).toEqual(100)
-    expect(wrapper.html()).toMatchSnapshot()
+    await triggerDrag(panel, 0, -200)
+    expect(onUpdateAnchor).toHaveBeenCalledTimes(1)
+    expect(onUpdateAnchor).toHaveBeenCalledWith(200)
+    expect(panel.outerHTML).toMatchSnapshot()
 
-    await delay(100)
-    await wrapper.setProps({
-      anchor: undefined,
-    })
-    expect(wrapper.html()).toMatchSnapshot()
+    await triggerDrag(panel, 0, 100)
+    expect(onUpdateAnchor).toHaveBeenCalledTimes(2)
+    expect(onUpdateAnchor).toHaveBeenCalledWith(100)
+    expect(panel.outerHTML).toMatchSnapshot()
+
+    await triggerDrag(panel, 0, -80)
+    expect(onUpdateAnchor).toHaveBeenCalledTimes(3)
+    expect(onUpdateAnchor).toHaveBeenCalledWith(200)
+    expect(panel.outerHTML).toMatchSnapshot()
 
     wrapper.unmount()
   })
 
-  test('test floating-panel anchors', async () => {
+  test('test floating-panel anchors changed', async () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
-        anchor: 200,
-        anchors: [300, 400],
+        anchor: 100,
+        anchors: [100, 200],
+        teleport: root,
       },
     })
 
-    const panel = wrapper.find('.var-floating-panel')
+    const panel = root.querySelector('.var-floating-panel')
 
-    await delay(100)
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(panel.outerHTML).toMatchSnapshot()
 
-    await delay(100)
     await wrapper.setProps({
-      anchor: 400,
+      anchors: [50, 200],
     })
-    expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(100)
-    await wrapper.setProps({
-      anchor: undefined,
-    })
-    expect(wrapper.html()).toMatchSnapshot()
-
-    await delay(100)
-    await triggerDrag(panel, 0, 200)
-    expect(wrapper.html()).toMatchSnapshot()
-
-    await delay(100)
-    await triggerDrag(panel, 0, 800)
-    expect(wrapper.html()).toMatchSnapshot()
-
-    await delay(100)
-    await wrapper.setProps({
-      anchors: [500, 400],
-    })
-    expect(wrapper.html()).toMatchSnapshot()
-
-    await delay(100)
-    await triggerDrag(panel, 0, 300)
-    expect(wrapper.html()).toMatchSnapshot()
-
+    expect(panel.outerHTML).toMatchSnapshot()
     wrapper.unmount()
   })
 
   test('test floating-panel contentDraggable', async () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
+        anchor: 100,
+        anchors: [100, 200],
         contentDraggable: true,
+        teleport: root,
       },
     })
 
-    const content = wrapper.find('.var-floating-panel__content')
+    const panel = root.querySelector('.var-floating-panel')
+    const content = root.querySelector('.var-floating-panel__content')
 
-    await delay(100)
-    await triggerDrag(content, 0, 600)
-    expect(wrapper.html()).toMatchSnapshot()
+    await triggerDrag(content, 0, 50)
+    expect(panel.outerHTML).toMatchSnapshot()
 
-    await delay(100)
+    await triggerDrag(content, 0, -100)
+    expect(panel.outerHTML).toMatchSnapshot()
+
     await wrapper.setProps({ contentDraggable: false })
-    await triggerDrag(content, 0, 200)
-    expect(wrapper.html()).toMatchSnapshot()
+    await triggerDrag(content, 0, 100)
+    expect(panel.outerHTML).toMatchSnapshot()
 
     wrapper.unmount()
   })
 
   test('test floating-panel safeArea', async () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
         safeArea: true,
+        teleport: root,
       },
     })
 
-    expect(wrapper.find('.var-floating-panel--safe-area').exists()).toBeTruthy()
-
+    expect(root.querySelector('.var-floating-panel--safe-area')).toBeTruthy()
     await wrapper.setProps({
       safeArea: false,
     })
-
-    expect(wrapper.find('.var-floating-panel--safe-area').exists()).toBeFalsy()
-
+    expect(root.querySelector('.var-floating-panel--safe-area')).toBeFalsy()
     wrapper.unmount()
   })
 
   test('test floating-panel elevation', async () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
         elevation: true,
+        teleport: root,
       },
     })
 
-    expect(wrapper.classes().includes('var-elevation--2')).toBe(true)
+    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--2')).toBe(true)
 
     await wrapper.setProps({
       elevation: false,
     })
 
-    await delay(100)
-    expect(wrapper.classes().includes('var-elevation--2')).toBe(false)
+    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--2')).toBe(false)
 
     wrapper.unmount()
   })
@@ -153,22 +140,7 @@ describe('test floating-panel components props', () => {
       },
     })
 
-    await delay(100)
-    expect(wrapper.html()).toMatchSnapshot()
-
-    wrapper.unmount()
-  })
-
-  test('test floating-panel teleport', async () => {
-    const container = document.createElement('div')
-    const wrapper = mount(FloatingPanel, {
-      props: {
-        teleport: container,
-      },
-    })
-
-    await delay(100)
-    expect(container.innerHTML).toMatchSnapshot()
+    expect(document.body).toMatchSnapshot()
 
     wrapper.unmount()
   })
@@ -176,39 +148,49 @@ describe('test floating-panel components props', () => {
 
 describe('test floating-panel component slots', () => {
   test('test floating-panel component default', async () => {
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
+      props: {
+        teleport: root,
+      },
       slots: { default: () => 'Hello Varlet!' },
     })
 
-    await delay(100)
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(root.innerHTML).toMatchSnapshot()
 
     wrapper.unmount()
   })
 })
 
-describe('test floating-panel component methods', () => {
+describe('test floating-panel component events', () => {
   test('test floating-panel component onAnchorChange', async () => {
     const onAnchorChange = vi.fn()
+    const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
+        anchor: 100,
+        anchors: [100, 200],
+        teleport: root,
         onAnchorChange,
       },
     })
 
-    const panel = wrapper.find('.var-floating-panel')
+    const panel = root.querySelector('.var-floating-panel')
 
-    await delay(100)
-    await triggerDrag(panel, 0, 100)
+    await triggerDrag(panel, 0, 50)
+    expect(onAnchorChange).toHaveBeenCalledTimes(0)
+
+    await triggerDrag(panel, 0, -200)
     expect(onAnchorChange).toHaveBeenCalledTimes(1)
+    expect(onAnchorChange).toHaveBeenCalledWith(200)
 
-    await delay(100)
-    await triggerDrag(panel, 0, 600)
-    expect(onAnchorChange).toHaveBeenCalledTimes(2)
-
-    await delay(100)
     await triggerDrag(panel, 0, 100)
+    expect(onAnchorChange).toHaveBeenCalledTimes(2)
+    expect(onAnchorChange).toHaveBeenCalledWith(100)
+
+    await triggerDrag(panel, 0, -80)
     expect(onAnchorChange).toHaveBeenCalledTimes(3)
+    expect(onAnchorChange).toHaveBeenCalledWith(200)
 
     wrapper.unmount()
   })

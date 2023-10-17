@@ -2,7 +2,7 @@
 
 ### 介绍
 
-头像组件
+用作头像显示，支持图片、图标和字符。
 
 ### 头像尺寸
 
@@ -86,9 +86,7 @@ const text = ref('VARLET')
     <var-avatar color="#4a79f5">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar :round="false" color="#eb5a3f">
-      <var-icon name="fire" />
-    </var-avatar>
+    <var-avatar color="#eb5a3f">VARLET</var-avatar>
   </var-space>
 </template>
 ```
@@ -206,7 +204,7 @@ import logo from '../../assets/logo.png'
 | `loading`      | 当开启懒加载时, 加载中显示的图片                                | _string_           | `-`      |
 | `error`        | 当开启懒加载时, 加载失败显示的图片                              | _string_           | `-`      |
 | `lazy`         | 是否开启懒加载                                                  | _boolean_          | `false`  |
-| `hoverable`    | 组内头像是否开启悬停效果                                        | _boolean_          | `false`  |
+| `hoverable`    | 是否开启悬停效果                                        | _boolean_          | `false`  |
 
 #### AvatarGroup Props
 

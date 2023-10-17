@@ -8,6 +8,8 @@ import {
   inBrowser,
   getRect,
   getStyle,
+  getScrollTop,
+  getScrollLeft,
 } from '@varlet/shared'
 import { error } from './logger'
 import { type StyleVars } from '../style-provider'
@@ -22,19 +24,6 @@ export function getTop(element: HTMLElement): number {
   const { top } = getRect(element)
 
   return top + (document.body.scrollTop || document.documentElement.scrollTop)
-}
-
-export function getScrollTop(element: Element | Window): number {
-  const top = 'scrollTop' in element ? element.scrollTop : element.pageYOffset
-
-  // iOS scroll bounce cause minus scrollTop
-  return Math.max(top, 0)
-}
-
-export function getScrollLeft(element: Element | Window): number {
-  const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
-
-  return Math.max(left, 0)
 }
 
 export function getTranslateY(el: HTMLElement) {
