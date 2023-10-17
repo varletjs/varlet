@@ -2,7 +2,7 @@
 
 ### 介绍
 
-头像组件
+用作头像显示，支持图片、图标和字符。
 
 ### 头像尺寸
 
@@ -86,9 +86,7 @@ const text = ref('VARLET')
     <var-avatar color="#4a79f5">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar :round="false" color="#eb5a3f">
-      <var-icon name="fire" />
-    </var-avatar>
+    <var-avatar color="#eb5a3f">VARLET</var-avatar>
   </var-space>
 </template>
 ```
@@ -184,14 +182,14 @@ import logo from '../../assets/logo.png'
 
 | 参数                  | 说明                                        | 类型   | 默认值          |
 |---------------------|-------------------------------------------|------|--------------|
-| `round`       | 头像是否为圆形	| _boolean_ | `true` |
+| `round`       | 是否为圆形头像	| _boolean_ | `true` |
 | `size`        | 头像的尺寸，可选值为 `mini small normal large` | _string \| number_ | `normal` |
 | `color`       | 头像的背景颜色 | _string_      | `-` |
 | `src`         | 头像的地址 | _string_ | `-` |
-| `alt`     | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
+| `alt`         | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
 | `fit`         | 头像图片的填充模式，可选值 `fill contain cover none scale-down` | _string_ | `cover` |
 | `bordered`    | 头像是否带边框	| _boolean_ | `false` |
-| `border-color` | 头像边框颜色	| _string_ | `-` |
+| `border-color`| 头像边框颜色	| _string_ | `-` |
 | `loading`     | 当开启懒加载时, 加载中显示的图片	| _string_ | `-` |
 | `error`       | 当开启懒加载时, 加载失败显示的图片	| _string_ | `-` |
 | `lazy`        | 是否开启懒加载	| _boolean_ | `false` |

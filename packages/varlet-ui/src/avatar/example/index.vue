@@ -68,9 +68,7 @@ watchDarkMode(dark)
     <var-avatar color="#4a79f5">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar :round="false" color="#eb5a3f">
-      <var-icon name="fire" />
-    </var-avatar>
+    <var-avatar color="#eb5a3f">{{ text }}</var-avatar>
   </var-space>
 
   <app-type>{{ pack.avatarHorizontalGroup }}</app-type>
