@@ -383,6 +383,20 @@ export default defineComponent({
       }
     }
 
+    function handleHovering(value: boolean) {
+      if (props.navigation === 'hover') {
+        hovering.value = value
+      }
+    }
+
+    function getNavigationAnimation(type: 'prev' | 'next') {
+      if (props.navigation !== 'hover') {
+        return ''
+      }
+
+      return n(`--navigation${props.vertical ? '-vertical' : ''}-${type}-animation`)
+    }
+
     // expose
     function resize() {
       if (!swipeEl.value) {
@@ -479,20 +493,6 @@ export default defineComponent({
       Array.from({ length: count }).forEach((_, index) => {
         task({ event: index === count - 1 ? options?.event : false })
       })
-    }
-
-    const handleHovering = (value: boolean) => {
-      if (props.navigation === 'hover') {
-        hovering.value = value
-      }
-    }
-
-    function getNavigationAnimation(type: 'prev' | 'next') {
-      if (props.navigation !== 'hover') {
-        return ''
-      }
-
-      return props.vertical ? n(`--navigation-vertical-${type}-animation`) : n(`--navigation-${type}-animation`)
     }
 
     return {

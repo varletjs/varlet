@@ -96,6 +96,7 @@ watchLang(use)
   align-items: center;
   width: 100%;
   height: 36px;
+  color: #fff;
   background: var(--site-config-color-app-bar);
 }
 </style>

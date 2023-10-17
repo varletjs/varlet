@@ -325,4 +325,13 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   'floating-panel': {
     path: '/floating-panel',
   },
+  'menu-select': {
+    path: '/menu-select',
+  },
+  'menu-option': {
+    path: '/menu-select',
+    attrs: ['label=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
 }

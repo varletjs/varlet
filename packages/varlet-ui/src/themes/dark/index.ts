@@ -39,6 +39,8 @@ import progress from './progress'
 import option from './option'
 import countdown from './countdown'
 import watermark from './watermark'
+import menuSelect from './menuSelect'
+import menuOption from './menuOption'
 
 export default {
   // common
@@ -92,4 +94,6 @@ export default {
   ...countdown,
   ...watermark,
   ...floatingPanel,
+  ...menuSelect,
+  ...menuOption,
 } as StyleVars
