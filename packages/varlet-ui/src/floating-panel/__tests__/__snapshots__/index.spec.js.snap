@@ -46,7 +46,7 @@ exports[`test floating-panel components props > test floating-panel anchors 1`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 2`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 300px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 400px; transform: translateY(calc(100% - 400px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>
@@ -82,7 +82,7 @@ exports[`test floating-panel components props > test floating-panel anchors 5`] 
 `;
 
 exports[`test floating-panel components props > test floating-panel anchors 6`] = `
-"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 400px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
+"<div class=\\"var-floating-panel var-elevation--2\\" style=\\"height: 500px; transform: translateY(calc(100% - 500px)); transition: transform 300ms var(--floating-panel-transition-timing-function);\\">
   <div class=\\"var-floating-panel__header\\">
     <div class=\\"var-floating-panel__header-toolbar\\"></div>
   </div>

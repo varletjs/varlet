@@ -36,6 +36,7 @@ watchDarkMode(dark)
       active-color="#fff"
       inactive-color="hsla(0, 0%, 100%, .6)"
       v-model:active="active"
+      style="margin-top: 5px"
     >
       <var-tab style="font-size: 13px">{{ pack.basicUsage }}</var-tab>
       <var-tab style="font-size: 13px">{{ pack.customAnchors }}</var-tab>

@@ -40,8 +40,8 @@ import { props } from './props'
 import { useLock } from '../context/lock'
 import { call, createNamespace, useVModel, formatElevation } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { onWindowResize, useTouch } from '@varlet/use'
-import { toNumber, preventDefault } from '@varlet/shared'
+import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
+import { toNumber, isEmpty, preventDefault } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 
@@ -54,20 +54,19 @@ export default defineComponent({
   setup(props) {
     const visibleHeight = ref<number>(0)
     const contentRef = ref<HTMLDivElement | null>(null)
-    const height = ref<number>(window.innerHeight * 0.6)
+    const height = ref<number>(0)
 
     const anchor = useVModel(props, 'anchor')
     const { deltaY, touching, startTouch, moveTouch, endTouch } = useTouch()
 
-    const isEmptyAnchors = computed(() => props.anchors == null || props.anchors.length === 0)
-    const start = computed<number>(() => (isEmptyAnchors.value ? START_VISIBLE_HEIGHT : Math.min(...props.anchors!)))
+    const start = computed<number>(() => (isEmpty(props.anchors) ? START_VISIBLE_HEIGHT : Math.min(...props.anchors!)))
     const end = computed<number>(() => {
       const endHeight = height.value
-      return isEmptyAnchors.value ? endHeight : Math.max(...props.anchors!)
+      return isEmpty(props.anchors) ? endHeight : Math.max(...props.anchors!)
     })
     const anchors = computed<number[]>(() => {
       const defaultAnchors = [START_VISIBLE_HEIGHT, height.value]
-      return isEmptyAnchors.value ? defaultAnchors : props.anchors!
+      return isEmpty(props.anchors) ? defaultAnchors : props.anchors!
     })
     const rootStyle = computed<CSSProperties>(() => ({
       height: `${toSizeUnit(Math.max(start.value, end.value))}`,
@@ -86,10 +85,14 @@ export default defineComponent({
 
     onWindowResize(resize)
 
+    onSmartMounted(() => {
+      height.value = window.innerHeight * 0.6
+    })
+
     watch(
       () => props.anchor,
       (newAnchor: number | undefined) => {
-        if (isEmptyAnchors.value) {
+        if (isEmpty(props.anchors)) {
           updateVisibleHeight(START_VISIBLE_HEIGHT)
           return
         }
@@ -109,7 +112,7 @@ export default defineComponent({
       (newAnchors: number[] | undefined) => {
         updateVisibleHeight(START_VISIBLE_HEIGHT)
 
-        if (!isEmptyAnchors.value) {
+        if (!isEmpty(props.anchors)) {
           updateVisibleHeight(newAnchors![0])
         }
 
@@ -164,7 +167,7 @@ export default defineComponent({
         return
       }
 
-      visibleHeight.value = findNearestAnchor(visibleHeight.value)
+      visibleHeight.value = findNearestAnchor(distance)
     }
 
     function handleTouchMove(event: TouchEvent) {

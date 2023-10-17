@@ -22,18 +22,18 @@ describe('test floating-panel components props', () => {
 
     const panel = wrapper.find('.var-floating-panel')
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 600)
     expect(onUpdateAnchor).toHaveBeenCalled(true)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 200)
     expect(onUpdateAnchor).toHaveBeenCalled(true)
     expect(wrapper.vm.anchor).toEqual(100)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await wrapper.setProps({
       anchor: undefined,
     })
@@ -52,36 +52,36 @@ describe('test floating-panel components props', () => {
 
     const panel = wrapper.find('.var-floating-panel')
 
-    await delay(50)
+    await delay(100)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await wrapper.setProps({
       anchor: 400,
     })
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await wrapper.setProps({
       anchor: undefined,
     })
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 200)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 800)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await wrapper.setProps({
       anchors: [500, 400],
     })
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 300)
     expect(wrapper.html()).toMatchSnapshot()
 
@@ -97,11 +97,11 @@ describe('test floating-panel components props', () => {
 
     const content = wrapper.find('.var-floating-panel__content')
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(content, 0, 600)
     expect(wrapper.html()).toMatchSnapshot()
 
-    await delay(50)
+    await delay(100)
     await wrapper.setProps({ contentDraggable: false })
     await triggerDrag(content, 0, 200)
     expect(wrapper.html()).toMatchSnapshot()
@@ -140,23 +140,26 @@ describe('test floating-panel components props', () => {
       elevation: false,
     })
 
+    await delay(100)
     expect(wrapper.classes().includes('var-elevation--2')).toBe(false)
 
     wrapper.unmount()
   })
 
-  test('test floating-panel duration', () => {
+  test('test floating-panel duration', async () => {
     const wrapper = mount(VarFloatingPanel, {
       props: {
         duration: 0.4,
       },
     })
 
+    await delay(100)
     expect(wrapper.html()).toMatchSnapshot()
+
     wrapper.unmount()
   })
 
-  test('test floating-panel teleport', () => {
+  test('test floating-panel teleport', async () => {
     const container = document.createElement('div')
     const wrapper = mount(FloatingPanel, {
       props: {
@@ -164,6 +167,7 @@ describe('test floating-panel components props', () => {
       },
     })
 
+    await delay(100)
     expect(container.innerHTML).toMatchSnapshot()
 
     wrapper.unmount()
@@ -171,12 +175,14 @@ describe('test floating-panel components props', () => {
 })
 
 describe('test floating-panel component slots', () => {
-  test('test floating-panel component default', () => {
+  test('test floating-panel component default', async () => {
     const wrapper = mount(VarFloatingPanel, {
       slots: { default: () => 'Hello Varlet!' },
     })
 
+    await delay(100)
     expect(wrapper.html()).toMatchSnapshot()
+
     wrapper.unmount()
   })
 })
@@ -192,15 +198,15 @@ describe('test floating-panel component methods', () => {
 
     const panel = wrapper.find('.var-floating-panel')
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 100)
     expect(onAnchorChange).toHaveBeenCalledTimes(1)
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 600)
     expect(onAnchorChange).toHaveBeenCalledTimes(2)
 
-    await delay(50)
+    await delay(100)
     await triggerDrag(panel, 0, 100)
     expect(onAnchorChange).toHaveBeenCalledTimes(3)
 
