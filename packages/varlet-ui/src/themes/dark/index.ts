@@ -93,7 +93,7 @@ export default {
   ...option,
   ...countdown,
   ...watermark,
-  ...floatingPanel,
   ...menuSelect,
   ...menuOption,
+  ...floatingPanel,
 } as StyleVars

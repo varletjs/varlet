@@ -322,9 +322,6 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   watermark: {
     path: '/watermark',
   },
-  'floating-panel': {
-    path: '/floating-panel',
-  },
   'menu-select': {
     path: '/menu-select',
   },
@@ -333,5 +330,8 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     attrs: ['label=""'],
     closeSelf: true,
     characterDelta: -3,
+  },
+  'floating-panel': {
+    path: '/floating-panel',
   },
 }
