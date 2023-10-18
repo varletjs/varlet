@@ -222,8 +222,8 @@ import logo from '../../assets/logo.png'
 | 事件名  | 说明                                                                                       | 参数           |
 | ------- | ------------------------------------------------------------------------------------------ | -------------- |
 | `click` | 点击头像时触发                                                                             | `event: Event` |
-| `load`  | 头像图片成功加载时触发(懒加载模式下失败时会多次尝试加载头像图片，只会在成功加载时触发)     | `event: Event` |
-| `error` | 头像图片失败加载时触发(懒加载模式下失败时会多次尝试加载头像图片，只会在尝试次数结束时触发) | `event: Event` |
+| `load`  | 头像图片成功加载时触发（懒加载模式下失败时会多次尝试加载头像图片，只会在成功加载时触发）     | `event: Event` |
+| `error` | 头像图片失败加载时触发（懒加载模式下失败时会多次尝试加载头像图片，只会在尝试次数结束时触发） | `event: Event` |
 
 ### 插槽
 
@@ -254,7 +254,7 @@ import logo from '../../assets/logo.png'
 | `--avatar-large-size`       | `64px`           |
 | `--avatar-border`           | `2px solid #fff` |
 | `--avatar-background-color` | `#bebebe`        |
-| `--avatar-hover-transform` | `scale(1.1)`      |
+| `--avatar-hover-transform`  | `scale(1.1)`     |
 
 #### AvatarGroup Variables
 

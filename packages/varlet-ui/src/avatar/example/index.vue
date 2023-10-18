@@ -24,6 +24,7 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="large" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="21vmin" />
   </var-space>
+
   <app-type>{{ pack.avatarShape }}</app-type>
   <var-space>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />

@@ -46,6 +46,21 @@ test('test avatar bordered', async () => {
   wrapper.unmount()
 })
 
+test('test avatar hoverable', async () => {
+  const wrapper = mount(VarAvatar, {
+    props: { hoverable: true },
+  })
+
+  expect(wrapper.find(`.var-avatar--hoverable`).exists()).toBeTruthy()
+
+  await wrapper.setProps({
+    hoverable: false,
+  })
+
+  expect(wrapper.find(`.var-avatar--hoverable`).exists()).toBeFalsy()
+  wrapper.unmount()
+})
+
 test('test avatar size', () => {
   ;['mini', 'small', 'normal', 'large'].forEach((size) => {
     const wrapper = mount(VarAvatar, {

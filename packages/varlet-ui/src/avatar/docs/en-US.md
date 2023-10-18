@@ -207,7 +207,7 @@ import logo from '../../assets/logo.png'
 | `loading`     | When lazy loading is enabled, the image displayed in the load                                 | _string_ | `-` |
 | `error`       | When lazy loading is enabled, the image displayed when loading fails                           | _string_ | `-` |
 | `lazy`        | Whether to enable lazy loading                                               | _boolean_ | `false` |
-| `hoverable`       | Whether the group avatars are hover able | _boolean_ | `false` |
+| `hoverable`   | Whether to enable hover effect | _boolean_ | `false` |
 
 #### AvatarGroup Props
 
