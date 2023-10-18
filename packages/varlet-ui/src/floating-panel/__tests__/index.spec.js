@@ -122,13 +122,13 @@ describe('test floating-panel components props', () => {
       },
     })
 
-    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--2')).toBe(true)
+    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--3')).toBe(true)
 
     await wrapper.setProps({
       elevation: false,
     })
 
-    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--2')).toBe(false)
+    expect(root.querySelector('.var-floating-panel').classList.contains('var-elevation--3')).toBe(false)
 
     wrapper.unmount()
   })
