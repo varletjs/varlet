@@ -133,7 +133,6 @@ export function markdown(options: MarkdownOptions): Plugin {
         return markdownToVue(source, options)
       } catch (e: any) {
         this.error(e)
-        return ''
       }
     },
 
