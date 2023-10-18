@@ -1,4 +1,4 @@
-import { VNode } from 'vue'
+import { VNode, TeleportProps } from 'vue'
 import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
 
 export interface FloatingPanelProps extends BasicAttributes {
