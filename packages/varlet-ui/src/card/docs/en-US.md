@@ -221,3 +221,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--card-close-button-icon-size`     | `24px`                |
 | `--card-close-button-size`          | `56px`                |
 | `--card-close-button-primary-color` | `#212121`             |
+| `--card-close-button-text-color` | `#fff`            |
