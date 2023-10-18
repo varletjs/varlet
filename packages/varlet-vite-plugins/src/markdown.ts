@@ -1,15 +1,20 @@
 import markdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import { kebabCase } from '@varlet/shared'
+import { pinyin } from 'pinyin'
 import type { Plugin } from 'vite'
+
+function transformHash(hash: string) {
+  return pinyin(hash, { style: 'tone2' }).flat(Infinity).join('-').replaceAll(' ', '-')
+}
 
 function htmlWrapper(html: string) {
   const matches = html.matchAll(/<h3>(.*?)<\/h3>/g)
   const hGroup = html
     .replace(/<h3>/g, () => {
-      const content = matches.next().value[1]
+      const hash = transformHash(matches.next().value[1])
 
-      return `:::<h3 id="${content}"><router-link to="#${content}">#</router-link>`
+      return `:::<h3 id="${hash}"><router-link to="#${hash}">#</router-link>`
     })
     .replace(/<h2/g, ':::<h2')
     .split(':::')
