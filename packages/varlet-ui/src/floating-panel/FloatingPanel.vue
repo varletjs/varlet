@@ -1,7 +1,7 @@
 <template>
   <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
     <div
-      :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 2))"
+      :class="classes(n(), [safeArea, n('--safe-area')], formatElevation(elevation, 3))"
       :style="{
         height: `${toSizeUnit(maxAnchor)}`,
         transform: `translateY(calc(100% - ${toSizeUnit(visibleHeight)}))`,
