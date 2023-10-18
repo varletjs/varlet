@@ -1,7 +1,7 @@
 <script setup>
+import VarSpace from '../../space'
 import dark from '../../themes/dark'
 import { ref } from 'vue'
-import VarSpace from '../../space'
 import { watchDarkMode } from '@varlet/cli/client'
 
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
@@ -13,7 +13,7 @@ watchDarkMode(dark, (theme) => {
 </script>
 
 <template>
-  <var-space class="elevation-example-list" :size="['6vmin', '6vmin']">
+  <var-space class="elevation-example-list" :size="['10vmin', 0]" justify="space-between">
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e}`"
@@ -32,7 +32,7 @@ watchDarkMode(dark, (theme) => {
 
 <style>
 .elevation-example-list {
-  margin-top: 6vmin !important;
+  padding: 8vmin 4vmin;
 }
 
 .elevation-example-item {
@@ -41,6 +41,6 @@ watchDarkMode(dark, (theme) => {
   align-items: center;
   width: 24vmin;
   height: 24vmin;
-  transition: 0.25s background-color;
+  border-radius: 4px;
 }
 </style>
