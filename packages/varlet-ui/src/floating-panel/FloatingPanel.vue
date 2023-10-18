@@ -7,7 +7,9 @@
         transform: `translateY(calc(100% - ${toSizeUnit(visibleHeight)}))`,
         transition: touching
           ? 'none'
-          : `transform ${toNumber(duration)}ms var(--floating-panel-transition-timing-function)`,
+          : `transform ${toNumber(
+              duration
+            )}ms var(--floating-panel-transition-timing-function), background-color 0.25s`,
       }"
       @touchstart="handleTouchstart"
       @touchmove="handleTouchmove"
