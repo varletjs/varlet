@@ -1,7 +1,7 @@
 # TimePicker
 
 ### Intro
-Used to select a time.
+Used to select time.
 
 ### Basic Usage
 
@@ -160,6 +160,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                 |
 | `--time-picker-title-color` | `#fff`                 |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-hint-font-size` | `16px` |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                 |
 | `--time-picker-title-time-margin` | `0 5px`                |
