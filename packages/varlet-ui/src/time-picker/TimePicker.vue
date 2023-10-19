@@ -1,29 +1,36 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
     <div :class="n('title')" :style="{ background: headerColor || color }">
-      <div :class="n('title-time')">
-        <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
-          {{ time.hour }}
+      <div :class="n('title-hint')">选择时间</div>
+      <div :class="n('title-time-container')">
+        <div :class="n('title-time')">
+          <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
+            {{ time.hour }}
+          </div>
+          <span>:</span>
+          <div
+            :class="classes(n('title-btn'), [type === 'minute', n('title-btn--active')])"
+            @click="checkPanel('minute')"
+          >
+            {{ time.minute }}
+          </div>
+          <span v-if="useSeconds">:</span>
+          <div
+            v-if="useSeconds"
+            :class="classes(n('title-btn'), [type === 'second', n('title-btn--active')])"
+            @click="checkPanel('second')"
+          >
+            {{ time.second }}
+          </div>
         </div>
-        <span>:</span>
-        <div
-          :class="classes(n('title-btn'), [type === 'minute', n('title-btn--active')])"
-          @click="checkPanel('minute')"
-        >
-          {{ time.minute }}
+        <div :class="n('title-ampm')" v-if="format === 'ampm'">
+          <div :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])" @click="checkAmpm('am')">
+            AM
+          </div>
+          <div :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])" @click="checkAmpm('pm')">
+            PM
+          </div>
         </div>
-        <span v-if="useSeconds">:</span>
-        <div
-          v-if="useSeconds"
-          :class="classes(n('title-btn'), [type === 'second', n('title-btn--active')])"
-          @click="checkPanel('second')"
-        >
-          {{ time.second }}
-        </div>
-      </div>
-      <div :class="n('title-ampm')" v-if="format === 'ampm'">
-        <div :class="classes(n('title-btn'), [ampm === 'am', n('title-btn--active')])" @click="checkAmpm('am')">AM</div>
-        <div :class="classes(n('title-btn'), [ampm === 'pm', n('title-btn--active')])" @click="checkAmpm('pm')">PM</div>
       </div>
     </div>
     <div :class="n('body')">

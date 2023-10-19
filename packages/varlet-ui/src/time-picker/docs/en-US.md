@@ -157,7 +157,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-font-size` | `var(--font-size-md)`  |
 | `--time-picker-min-width` | `290px`                |
 | `--time-picker-height` | `385px`                |
+| `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                 |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-hint-font-size` | `16px` |
 | `--time-picker-title-color` | `#fff`                 |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                 |
@@ -167,8 +170,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-clock-right` | `27px`                 |
 | `--time-picker-clock-top` | `27px`                 |
 | `--time-picker-clock-bottom` | `27px`                 |
-| `--time-picker-clock-container-width` | `270px`                |
-| `--time-picker-clock-container-height` | `270px`                |
+| `--time-picker-clock-container-width` | `256px`                |
+| `--time-picker-clock-container-height` | `256px`                |
 | `--time-picker-clock-container-background` | `#e0e0e0`              |
 | `--time-picker-clock-hand-height` | `calc(50% - 4px)`      |
 | `--time-picker-clock-hand-width` | `2px`                  |
