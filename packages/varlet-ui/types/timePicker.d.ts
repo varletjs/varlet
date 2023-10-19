@@ -14,7 +14,9 @@ export interface TimePickerProps extends BasicAttributes {
   modelValue?: string
   elevation?: boolean | string | number
   color?: string
+  /** @deprecated Use titleColor to instead. */
   headerColor?: string
+  titleColor?: string
   allowedTime?: AllowedTime
   format?: TimePickerFormat
   min?: string

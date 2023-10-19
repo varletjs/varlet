@@ -200,3 +200,14 @@ test('test switch timePicker ampm', async () => {
 
   expect(wrapper.vm.time).toBe('06:10:22')
 })
+
+test('test timePicker titleColor', async () => {
+  const wrapper = mount(VarTimePicker, {
+    props: {
+      titleColor: 'green',
+    },
+  })
+
+  expect(wrapper.find('.var-time-picker__title').attributes('style')).toContain('background: green')
+  wrapper.unmount()
+})

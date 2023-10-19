@@ -26,7 +26,9 @@ export const props = {
     default: false,
   },
   color: String,
+  /** @deprecated Use titleColor to instead. */
   headerColor: String,
+  titleColor: String,
   format: {
     type: String as PropType<Format>,
     default: 'ampm',
