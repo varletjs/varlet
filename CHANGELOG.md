@@ -1,3 +1,26 @@
+# [2.18.0](https://github.com/varletjs/varlet/compare/v2.17.1...v2.18.0) (2023-10-19)
+
+
+### Bug Fixes
+
+* fix warning when event.preventDefault and close [#1212](https://github.com/varletjs/varlet/issues/1212) ([f3955ca](https://github.com/varletjs/varlet/commit/f3955cabfbd6b01c1bfa75b96c3318eab4fc0eb7))
+* **floating-panel:** cover the bottom shadow of the panel ([#1224](https://github.com/varletjs/varlet/issues/1224)) ([61e14e8](https://github.com/varletjs/varlet/commit/61e14e8fcf08048b816a50b522e67365d9ac7801))
+* **ripple:** fix ripple cannot be removed when user drag end and improve menu link of the documentation  ([#1213](https://github.com/varletjs/varlet/issues/1213)) ([63faeae](https://github.com/varletjs/varlet/commit/63faeaed88d46054e3e5b807fc26833e388be697))
+
+
+### Features
+
+* **action-sheet:** support --action-sheet-border-top ([#1215](https://github.com/varletjs/varlet/issues/1215)) ([fc88fd0](https://github.com/varletjs/varlet/commit/fc88fd0c4d7c80ded247711c863312cd7865c949))
+* **avatar:** support hoverable prop ([#1221](https://github.com/varletjs/varlet/issues/1221)) ([2a0397a](https://github.com/varletjs/varlet/commit/2a0397a9285de5c25cada0560dfead131d31d128))
+* **card:** support --card-close-button-text-color ([668775b](https://github.com/varletjs/varlet/commit/668775b58972acb4e9551e393a72506a42d104e8))
+* **floating-panel:** support new component floating panel ([#1217](https://github.com/varletjs/varlet/issues/1217)) ([5749040](https://github.com/varletjs/varlet/commit/5749040747e3ff0f16f8b53eae4d5833d29685f8))
+* **index-bar:** support custom index bar position ([#1220](https://github.com/varletjs/varlet/issues/1220)) ([fed2ad3](https://github.com/varletjs/varlet/commit/fed2ad3b63dc0869e5e4f14a62e402bdb3e7abde))
+* **menu-select:** support new component menu select and close [#1204](https://github.com/varletjs/varlet/issues/1204) ([df013ea](https://github.com/varletjs/varlet/commit/df013ea093d98757d41a211438da707e2084fa66))
+* **use:** support isReachTop and isReachBottom ([053c659](https://github.com/varletjs/varlet/commit/053c659cd46828a1ae47117b2a060af0e91e05ba))
+* **vite-plugins/markdown:** support transform hash to pinyin ([0102fdf](https://github.com/varletjs/varlet/commit/0102fdf079233f54710e9810a55e60b366bac597))
+
+
+
 ## [2.17.1](https://github.com/varletjs/varlet/compare/v2.17.0...v2.17.1) (2023-10-08)
 
 
