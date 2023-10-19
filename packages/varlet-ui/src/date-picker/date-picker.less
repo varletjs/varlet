@@ -4,6 +4,7 @@
   --date-picker-min-width: 290px;
   --date-picker-height: 385px;
   --date-picker-main-color: rgba(0, 0, 0, 0.87);
+  --date-picker-title-height: 105px;
   --date-picker-title-padding: 16px;
   --date-picker-title-background: var(--color-primary);
   --date-picker-title-color: #fff;
@@ -59,6 +60,7 @@
   }
 
   &__title {
+    min-height: var(--date-picker-title-height);
     padding: var(--date-picker-title-padding);
     color: var(--date-picker-title-color);
     background: var(--date-picker-title-background);
@@ -77,6 +79,7 @@
       font-weight: var(--date-picker-title-year-font-weight);
       margin-bottom: var(--date-picker-title-year-margin-bottom);
       transition: 0.3s var(--cubic-bezier);
+      justify-content: flex-end;
 
       &--active {
         opacity: 1;

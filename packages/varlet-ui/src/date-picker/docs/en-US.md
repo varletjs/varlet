@@ -175,6 +175,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-min-width` | `290px`                |
 | `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-height` | `105px` |
 | `--date-picker-title-padding` | `16px`                 |
 | `--date-picker-title-background` | `var(--color-primary)` |
 | `--date-picker-title-color` | `#fff`                 |
