@@ -101,4 +101,6 @@ export default {
   paginationItem: '',
   paginationPage: 'page',
   paginationJump: 'Go to',
+  // time-picker
+  timePickerHint: 'SELECT TIME',
 } as Pack

@@ -1,7 +1,7 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
     <div :class="n('title')" :style="{ background: headerColor || color }">
-      <div :class="n('title-hint')">选择时间</div>
+      <div :class="n('title-hint')">{{ hint || pack.timePickerHint }}</div>
       <div :class="n('title-time-container')">
         <div :class="n('title-time')">
           <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
@@ -69,6 +69,7 @@ import { toNumber, getRect, preventDefault } from '@varlet/shared'
 import { createNamespace, call, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
+import { pack } from '../locale'
 
 const { name, n, classes } = createNamespace('time-picker')
 
@@ -342,6 +343,7 @@ export default defineComponent({
       isPreventNextUpdate,
       n,
       classes,
+      pack,
       moveHand,
       checkPanel,
       checkAmpm,
