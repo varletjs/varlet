@@ -123,10 +123,10 @@ function change(time) {
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected time（ISO 8601 format, `HH:mm` or `HH:mm:ss`）                                                             | _string_ | `-` |
-| `format` | Picker type, optional values `ampm` `24hr`                                                                         | _string_ | `ampm` |
-| `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
-| `hint`  | Picker hint |  _string_  | `SELECT TIME` |
-| `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
+| `format`  | Picker type, optional values `ampm` `24hr`                                                                         | _string_ | `ampm` |
+| `color` | Picker color                           | _string_ | `-` |
+| `title-color` | Color of picker title. If not specified it will use the color defined by `color` prop or the default picker color. | _string_ | `-` |
+| `hint`        | Picker hint |  _string_  | `SELECT TIME` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
 | `min` | Minimum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |
 | `max` | Maximum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |

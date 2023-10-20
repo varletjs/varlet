@@ -122,17 +122,17 @@ function change(time) {
 
 | 参数 | 说明                                       | 类型 | 默认值 |
 | ----- |------------------------------------------| -------- | ---------- |
-| `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`） | _string_ | `-` |
-| `format` | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
-| `color` | 选择器的颜色                                   | _string_ | `#2979ff` |
-| `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。          | _string_ | `#2979ff` |
-| `hint`  | 选择器提示语 | _string_ | `选择时间` |
-| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级     | _string \| number \| boolean_|   `false`    |
-| `min` | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
-| `max` | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
+| `v-model`      | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`） | _string_ | `-` |
+| `format`       | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
+| `color`        | 选择器的颜色                                 | _string_ | `-` |
+| `title-color`  | 选择器标题栏背景色，如果未指定，将使用 `color` 属性或默认颜色。   | _string_ | `-` |
+| `hint`         | 选择器提示语                                  | _string_ | `选择时间` |
+| `elevation`    | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级    | _string \| number \| boolean_|   `false`    |
+| `min`          | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
+| `max`          | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
 | `allowed-time` | 限制可以选择的时间                                | _AllowedTime_ | `-` |
-| `readonly` | 是否只读                                     | _boolean_ | `false` |
-| `use-seconds` | 是否显示秒                                    | _boolean_ | `false` |
+| `readonly`     | 是否只读                                     | _boolean_ | `false` |
+| `use-seconds`  | 是否显示秒                                    | _boolean_ | `false` |
 
 ### TimePicker AllowedTime
 
