@@ -1,7 +1,7 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
     <div :class="n('title')" :style="{ background: titleColor || headerColor || color }">
-      <div :class="n('title-hint')">{{ hint || pack.timePickerHint }}</div>
+      <div :class="n('title-hint')">{{ hint ?? pack.timePickerHint }}</div>
       <div :class="n('title-time-container')">
         <div :class="n('title-time')">
           <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
