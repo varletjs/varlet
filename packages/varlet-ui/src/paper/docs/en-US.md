@@ -2,7 +2,7 @@
 
 ### Intro
 
-Create an easier container using elevation and water effects
+An easier container using elevation and water effects.
 
 ### Basic Usage
 
