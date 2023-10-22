@@ -25,6 +25,7 @@ export const props = {
     type: [Boolean, Number, String],
     default: false,
   },
+  hint: String,
   color: String,
   /** @deprecated Use titleColor to instead. */
   headerColor: String,

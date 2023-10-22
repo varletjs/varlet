@@ -28,6 +28,8 @@ export type Pack = {
   paginationItem: string
   paginationPage: string
   paginationJump: string
+  // time-picker
+  timePickerHint: string
   // internal
   lang?: string
 }

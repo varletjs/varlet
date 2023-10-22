@@ -1,7 +1,7 @@
 # TimePicker
 
 ### Intro
-Used to select a time.
+Used to select time.
 
 ### Basic Usage
 
@@ -126,6 +126,7 @@ function change(time) {
 | `format`  | Picker type, optional values `ampm` `24hr`                                                                         | _string_ | `ampm` |
 | `color` | Picker color                           | _string_ | `-` |
 | `title-color` | Color of picker title. If not specified it will use the color defined by `color` prop or the default picker color. | _string_ | `-` |
+| `hint`        | Picker hint |  _string_  | `SELECT TIME` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
 | `min` | Minimum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |
 | `max` | Maximum allowed time (ISO 8601 format)                                                                            | _string_ | `-` |
@@ -160,6 +161,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                 |
 | `--time-picker-title-color` | `#fff`                 |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-hint-font-size` | `16px` |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                 |
 | `--time-picker-title-time-margin` | `0 5px`                |

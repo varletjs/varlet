@@ -126,6 +126,7 @@ function change(time) {
 | `format`       | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
 | `color`        | 选择器的颜色                                 | _string_ | `-` |
 | `title-color`  | 选择器标题栏背景色，如果未指定，将使用 `color` 属性或默认颜色。   | _string_ | `-` |
+| `hint`         | 选择器提示语                                  | _string_ | `选择时间` |
 | `elevation`    | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级    | _string \| number \| boolean_|   `false`    |
 | `min`          | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
 | `max`          | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
@@ -161,6 +162,8 @@ function change(time) {
 | `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                |
 | `--time-picker-title-color` | `#fff`                |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-hint-font-size` | `16px` |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                |
 | `--time-picker-title-time-margin` | `0 5px`               |
