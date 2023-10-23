@@ -342,3 +342,22 @@ test('test value legal', async () => {
 
   mockRestore()
 })
+
+test('test datePicker titleColor', async () => {
+  const wrapper = mount(VarDatePicker, {
+    props: {
+      titleColor: 'red',
+    },
+  })
+
+  await delay(100)
+  expect(wrapper.find('.var-date-picker__title').attributes('style')).toContain('background: red')
+
+  await wrapper.setProps({
+    titleColor: 'green',
+  })
+  await delay(100)
+  expect(wrapper.find('.var-date-picker__title').attributes('style')).toContain('background: green')
+
+  wrapper.unmount()
+})
