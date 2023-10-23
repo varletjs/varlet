@@ -97,6 +97,7 @@ export default {
     },
   },
   datePickerSelected: ' selected',
+  datePickerHint: 'SELECT DATE',
   // pagination
   paginationItem: '',
   paginationPage: 'page',

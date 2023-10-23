@@ -121,6 +121,7 @@ export const props = {
     type: String as PropType<DatePickerType>,
     default: 'date',
   },
+  hint: String,
   allowedDates: Function as PropType<AllowedDates>,
   color: String,
   /** @deprecated Use titleColor to instead. */

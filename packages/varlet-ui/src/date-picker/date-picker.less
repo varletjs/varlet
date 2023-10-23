@@ -4,6 +4,7 @@
   --date-picker-min-width: 290px;
   --date-picker-height: 385px;
   --date-picker-main-color: rgba(0, 0, 0, 0.87);
+  --date-picker-title-hint-font-size: var(--font-size-md);
   --date-picker-title-height: 105px;
   --date-picker-title-padding: 16px;
   --date-picker-title-background: var(--color-primary);
@@ -69,17 +70,25 @@
     flex-direction: column;
     flex-wrap: wrap;
 
+    &-select {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--date-picker-title-year-margin-bottom);
+    }
+
+    &-hint {
+      font-size: var(--date-picker-title-hint-font-size);
+    }
+
     &-year {
       opacity: 0.6;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      align-items: center;
-      display: inline-flex;
       font-size: var(--date-picker-title-year-font-size);
       font-weight: var(--date-picker-title-year-font-weight);
-      margin-bottom: var(--date-picker-title-year-margin-bottom);
       transition: 0.3s var(--cubic-bezier);
-      justify-content: flex-end;
+      margin-bottom: 0;
 
       &--active {
         opacity: 1;

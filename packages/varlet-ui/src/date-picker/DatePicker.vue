@@ -1,10 +1,13 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))">
     <div :class="n('title')" :style="{ background: titleColor || headerColor || color }">
-      <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
-        <slot name="year" :year="chooseYear">
-          {{ chooseYear }}
-        </slot>
+      <div :class="n('title-select')">
+        <div :class="n('title-hint')">{{ hint ?? pack.datePickerHint }}</div>
+        <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
+          <slot name="year" :year="chooseYear">
+            {{ chooseYear }}
+          </slot>
+        </div>
       </div>
 
       <div
@@ -480,6 +483,7 @@ export default defineComponent({
       componentProps,
       slotProps,
       formatRange,
+      pack,
       n,
       classes,
       clickEl,
