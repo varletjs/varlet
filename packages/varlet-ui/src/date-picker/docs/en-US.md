@@ -133,8 +133,8 @@ function change(date) {
 | `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
 | `type` | Picker type, optional values `date` `month`                                                                         | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
-| `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
-| `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
+| `color` | Picker color                                                                                                      | _string_ | `-` |
+| `title-color` | Color of picker title. If not specified it will use `color` prop or the default picker color. | _string_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |

@@ -10,7 +10,9 @@ export interface DatePickerProps extends BasicAttributes {
   type?: DatePickerType
   allowedDates?: (val: string) => boolean
   color?: string
-  headerColor?: string
+  /** @deprecated Use titleColor to instead. */
+  headerColor: string
+  titleColor: string
   elevation?: boolean | string | number
   buttonElevation?: boolean | string | number
   firstDayOfWeek?: string | number
