@@ -10,6 +10,7 @@ export interface DatePickerProps extends BasicAttributes {
   type?: DatePickerType
   allowedDates?: (val: string) => boolean
   color?: string
+  hint?: string
   headerColor?: string
   elevation?: boolean | string | number
   buttonElevation?: boolean | string | number

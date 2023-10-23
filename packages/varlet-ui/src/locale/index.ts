@@ -24,6 +24,7 @@ export type Pack = {
   datePickerMonthDict: Record<Month, { name: string; abbr: string }>
   datePickerWeekDict: Record<Week, { name: string; abbr: string }>
   datePickerSelected: string
+  datePickerHint: string
   // pagination
   paginationItem: string
   paginationPage: string
