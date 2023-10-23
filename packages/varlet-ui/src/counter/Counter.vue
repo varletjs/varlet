@@ -9,7 +9,7 @@
           [errorMessage, n('--error')]
         )
       "
-      :style="{ background: color ? color : undefined }"
+      :style="{ background: color }"
       v-bind="$attrs"
     >
       <var-button
