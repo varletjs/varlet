@@ -9,9 +9,7 @@ FloatingPanel 的默认高度为 `100px`，允许拖动来展开或者收缩面�
 ```html
 <template>
   <var-floating-panel>
-    <div style="text-align: center; padding: 5px 15px">
-      <p>拖拽面板</p>
-    </div>
+    <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border /> 
   </var-floating-panel>
 </template>
 ```
@@ -42,8 +40,7 @@ const anchor = ref(100)
 ```html
 <template>
   <var-floating-panel :content-draggable="false">
-    <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border> 
-    </var-cell>
+    <var-cell v-for="i in 26" :key="i" :title="String.fromCharCode(i + 64)" border /> 
   </var-floating-panel>
 </template>
 ```
