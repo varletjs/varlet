@@ -90,10 +90,18 @@ export default defineComponent({
       const eventFromContent = contentRef.value === target || contentRef.value?.contains(target)
 
       if (eventFromContent && !props.contentDraggable) {
-        if (isReachTop(contentRef.value!) || isReachBottom(contentRef.value!)) {
+        return
+      }
+
+      if (
+        eventFromContent &&
+        props.contentDraggable &&
+        visibleHeight.value >= maxAnchor.value &&
+        !isReachTop(contentRef.value!)
+      ) {
+        if (isReachBottom(contentRef.value!)) {
           preventDefault(event)
         }
-
         return
       }
 
