@@ -63,8 +63,6 @@ test('test collapse and collapseItem onChange', async () => {
 
   expect(collapseItemList[0].classes()).toContain('var-collapse-item--active')
   expect(changeHandle).toHaveBeenCalledTimes(2)
-
-  wrapper.unmount()
 })
 
 describe('test collapse and collapseItem props', () => {
@@ -128,8 +126,6 @@ describe('test collapse and collapseItem props', () => {
     await delay(0)
     await wrapper.find('.var-collapse-item__header').trigger('click')
     expect(wrapper.vm.value).toBe('1')
-
-    wrapper.unmount()
   })
 
   test('test collapseItem disabled', async () => {
