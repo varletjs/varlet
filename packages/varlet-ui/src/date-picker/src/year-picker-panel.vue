@@ -1,5 +1,5 @@
 <template>
-  <ul :class="n()">
+  <ul ref="panel" :class="n()">
     <li
       v-for="year in yearList"
       :key="year"
@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import dayjs from 'dayjs/esm'
-import { defineComponent, computed, type ComputedRef, type PropType } from 'vue'
+import { defineComponent, computed, ref, type ComputedRef, type PropType } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { onSmartMounted } from '@varlet/use'
@@ -36,6 +36,7 @@ export default defineComponent({
   emits: ['choose-year'],
 
   setup(props, { emit }) {
+    const panel = ref<null | HTMLElement>()
     const yearList: ComputedRef<Array<number>> = computed(() => {
       const list: Array<number> = []
       const {
@@ -74,7 +75,7 @@ export default defineComponent({
     }
 
     onSmartMounted(() => {
-      const activeEl = document.querySelector(`.${n('item--active')}`)
+      const activeEl = panel.value!.querySelector(`.${n('item--active')}`)
       activeEl?.scrollIntoView({
         block: 'center',
       })
@@ -83,6 +84,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      panel,
       yearList,
       chooseYear,
       toNumber,
