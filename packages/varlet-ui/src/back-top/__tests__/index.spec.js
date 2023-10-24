@@ -3,7 +3,7 @@ import VarBackTop from '../BackTop'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { describe, expect, vi } from 'vitest'
 
 mockScrollTo()
 
@@ -36,7 +36,7 @@ test('test backTop plugin', () => {
 })
 
 describe('test backTop props', () => {
-  test('test visibilityHeight prop', async () => {
+  test('test backTop visibilityHeight', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
 
     const backTopEl = document.querySelector('.var-back-top')
@@ -49,7 +49,7 @@ describe('test backTop props', () => {
     wrapper.unmount()
   })
 
-  test('test position prop', async () => {
+  test('test backTop position', () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     const backTopEl = document.querySelector('.var-back-top')
 
@@ -58,17 +58,28 @@ describe('test backTop props', () => {
 
     wrapper.unmount()
   })
+
+  test('test backTop elevation', () => {
+    const wrapper = mount(VarBackTop, { attachTo: document.body })
+
+    expect(wrapper.find('.var-elevation--2').exists()).toBe(true)
+    wrapper.unmount()
+  })
 })
 
-test('test backTop event', async () => {
-  const wrapper = mount(Wrapper, { attachTo: document.body })
-  const backTopEl = document.querySelector('.var-back-top')
+describe('test backTop events', () => {
+  test('test backTop onClick', async () => {
+    const wrapper = mount(Wrapper, { attachTo: document.body })
+    const backTopEl = document.querySelector('.var-back-top')
 
-  wrapper.element.scrollTop = 600
-  await wrapper.trigger('scroll')
-  await backTopEl.click()
-  await delay(500)
+    wrapper.element.scrollTop = 600
+    await wrapper.trigger('scroll')
+    await backTopEl.click()
+    await delay(500)
 
-  expect(wrapper.element.scrollTop).toBeLessThan(1)
-  expect(clickHandle).toHaveBeenCalledTimes(1)
+    expect(wrapper.element.scrollTop).toBeLessThan(1)
+    expect(clickHandle).toHaveBeenCalledTimes(1)
+
+    wrapper.unmount()
+  })
 })

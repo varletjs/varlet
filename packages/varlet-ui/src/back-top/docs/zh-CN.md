@@ -6,6 +6,8 @@
 
 ### 基本使用
 
+当页面滚动到 `200px` 时，右下角会出现返回顶部按钮。
+
 ```html
 <script setup>
 const lists = [...Array(100).keys()]

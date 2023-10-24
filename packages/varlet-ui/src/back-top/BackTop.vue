@@ -59,7 +59,7 @@ export default defineComponent({
     onActivated(addScrollerEventListener)
     onSmartUnmounted(removeScrollerEventListener)
 
-    function handleClick(event: MouseEvent) {
+    function handleClick(event: Event) {
       call(props.onClick, event)
 
       const left = getScrollLeft(scroller)

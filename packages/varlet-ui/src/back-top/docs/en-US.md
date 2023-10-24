@@ -6,6 +6,8 @@ A button to back to top.
 
 ### Basic Usage
 
+When the page scrolls to `200px`, a back to top button will appear in the lower right corner.
+
 ```html
 <script setup>
 const lists = [...Array(100).keys()]
@@ -30,7 +32,8 @@ const lists = [...Array(100).keys()]
 | `bottom`            | Distance between `BackTop` and page bottom                                                              | _string \| number_ | `40` |
 | `right`            | Distance between `BackTop` and page right                                                               | _string \| number_ | `40` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `duration` | Time to return to top（ms）                                                                               | _number_ | `300` |
+| `duration` | Time to return to top(ms)                                                                               | _number_ | `300` |
+
 ### Events
 
 | Event | Description | arguments |

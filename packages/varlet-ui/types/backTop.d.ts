@@ -10,7 +10,7 @@ export interface BackTopProps extends BasicAttributes {
   right?: number | string
   elevation?: boolean | number | string
   bottom?: number | string
-  onClick?: ListenerProp<(e: MouseEvent) => void>
+  onClick?: ListenerProp<(e: Event) => void>
 }
 
 export class BackTop extends VarComponent {
