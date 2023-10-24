@@ -36,4 +36,5 @@ test('test styleProvider component', async () => {
     },
   })
   expect(el.attributes('style')).toBe('--cell-font-size: 30px;')
+  wrapper.unmount()
 })

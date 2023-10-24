@@ -3,7 +3,7 @@ import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, describe } from 'vitest'
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
@@ -52,6 +52,7 @@ test('test input size', () => {
 
   expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test input type', () => {
@@ -106,6 +107,8 @@ test('test input format number', async () => {
   expect(onUpdateModelValue).lastCalledWith('1.')
   await wrapper.find('.var-input__input').setValue('1.01')
   expect(onUpdateModelValue).lastCalledWith('1.01')
+
+  wrapper.unmount()
 })
 
 describe('test input events', () => {
@@ -181,6 +184,8 @@ test('test input maxlength', () => {
 
   expect(wrapper.find('.var-form-details__extra-message').text()).toBe('4/100')
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test input hint to be false', () => {

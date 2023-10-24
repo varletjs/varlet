@@ -115,4 +115,6 @@ test('test pull-refresh success state', async () => {
   await delay(300)
 
   expect(control.attributes('style').includes('translate3d(0px, 0px, 0px)')).toBe(true)
+
+  wrapper.unmount()
 })
