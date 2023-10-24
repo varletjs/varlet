@@ -52,7 +52,7 @@
                   <var-chip
                     :class="n('chip')"
                     var-select-cover
-                    closable
+                    closeable
                     size="small"
                     :type="errorMessage ? 'danger' : undefined"
                     v-for="l in labels"
