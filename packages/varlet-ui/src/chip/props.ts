@@ -25,6 +25,8 @@ export const props = {
     default: true,
   },
   block: Boolean,
+  /** @deprecated Use closeable to instead. */
   closable: Boolean,
+  closeable: Boolean,
   onClose: defineListenerProp<(e: Event) => void>(),
 }

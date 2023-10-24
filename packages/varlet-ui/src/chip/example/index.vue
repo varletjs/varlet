@@ -44,8 +44,8 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.canCloseChip }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip closable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
-    <var-chip closable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
+    <var-chip closeable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
+    <var-chip closeable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
   </var-space>
 
   <app-type>{{ pack.customColor }}</app-type>

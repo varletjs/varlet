@@ -57,7 +57,7 @@ Set the chip size through the `size` attribute.
 </template>
 ```
 
-### Block Flex
+### Block Chip
 
 Set the chip to block level through the `block` attribute.
 
@@ -69,7 +69,7 @@ Set the chip to block level through the `block` attribute.
 
 ### Can Close Chip
 
-Set the paper to be closable through the `closable` attribute, and use the `close-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
+Set the paper to be closable through the `closeable` attribute, and use the `icon-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
 
 ```html
 <script>
@@ -80,9 +80,9 @@ Set the paper to be closable through the `closable` attribute, and use the `clos
 </script>
 
 <template>
-  <var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
+  <var-chip closeable v-if="show" @close="show = false">Can Close Chip</var-chip>
   <var-chip 
-    closable 
+    closeable 
     icon-name="delete" 
     v-if="show1" 
     @close="show1 = false"

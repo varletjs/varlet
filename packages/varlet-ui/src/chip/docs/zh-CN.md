@@ -68,7 +68,7 @@
 
 ### 可关闭纸片
 
-通过 `closable` 属性将纸片设置为可关闭纸片，使用 `close-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
+通过 `closeable` 属性将纸片设置为可关闭纸片，使用 `icon-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
 
 ```html
 <script setup>
@@ -79,9 +79,9 @@ const show1= ref(true)
 </script>
 
 <template>
-  <var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
+  <var-chip closeable v-if="show" @close="show = false">可关闭纸片</var-chip>
   <var-chip
-    closable
+    closeable
     icon-name="delete"
     v-if="show1"
     @close="show1 = false"
