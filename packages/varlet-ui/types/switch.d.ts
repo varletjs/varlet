@@ -15,7 +15,7 @@ export interface SwitchProps extends BasicAttributes {
   closeColor?: string
   size?: string | number
   rules?: Array<(value: any) => any>
-  onClick?: ListenerProp<(event: MouseEvent) => void>
+  onClick?: ListenerProp<(event: Event) => void>
   onChange?: ListenerProp<(value: boolean) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: boolean) => void>
 }
