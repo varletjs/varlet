@@ -87,4 +87,5 @@ test('test snackbar event', async () => {
   expect(closed).toHaveBeenCalledTimes(1)
 
   mockRestore()
+  wrapper.unmount()
 })
