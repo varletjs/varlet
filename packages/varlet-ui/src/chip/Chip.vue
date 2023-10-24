@@ -9,7 +9,7 @@
 
       <slot name="right" />
 
-      <span v-if="closable" :class="n('--close')" @click="handleClose">
+      <span v-if="closeable" :class="n('--close')" @click="handleClose">
         <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
       </span>
     </span>

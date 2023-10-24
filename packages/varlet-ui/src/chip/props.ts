@@ -25,6 +25,6 @@ export const props = {
     default: true,
   },
   block: Boolean,
-  closable: Boolean,
+  closeable: Boolean,
   onClose: defineListenerProp<(e: Event) => void>(),
 }

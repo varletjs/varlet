@@ -15,7 +15,7 @@ export interface ChipProps extends BasicAttributes {
   plain?: boolean
   round?: boolean
   block?: boolean
-  closable?: boolean
+  closeable?: boolean
   onClose?: ListenerProp<(e: Event) => void>
 }
 
