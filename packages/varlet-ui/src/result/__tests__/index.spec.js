@@ -12,6 +12,7 @@ test('test result plugin', () => {
 test('test result snapshot', () => {
   const wrapper = mount(Result)
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 describe('test result component props', () => {
