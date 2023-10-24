@@ -11,7 +11,7 @@ export default {
   hidden: 'Hidden Badge',
   clickToChangeTheState: 'Click To Change The State',
   badge: 'Badge',
-  customBadgeColors: 'Custom Badge Colors',
-  customBadgeIcons: 'Custom Badge Icons',
+  customBadgeColors: 'Custom Badge Color',
+  customBadgeIcons: 'Custom Badge Icon',
   customBadgeValue: 'Custom Badge Value',
 }

@@ -131,4 +131,6 @@ test('test load event while list in tab-item', async () => {
   await delay(0)
   expect(load).toBeCalledTimes(1)
   expect(load2).toBeCalledTimes(1)
+
+  wrapper.unmount()
 })

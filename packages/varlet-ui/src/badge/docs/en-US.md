@@ -1,8 +1,12 @@
 # Badge
 
-### Badge Type
+### Intro
 
-Set the badge type through the `type` attribute.
+A red dot, number, or text that appears in the upper corner of an icon or text indicates that there is new content or pending information.
+
+### Theme Color Badge
+
+Set different color badge through the `type` attribute.
 
 ```html
 <template>
@@ -26,7 +30,7 @@ Set the badge as a dot through the `dot` attribute.
   <var-badge type="danger" dot />
 </template>
 ```
-### Customize Badge Content
+### Custom Badge Content
 
 Set the content of the badge through the `value` attribute.
 
@@ -101,7 +105,7 @@ function handleChange() {
 </template>
 ```
 
-### Custom Badge Colors
+### Custom Badge Color
 
 Set the color of the badge through the `color` property.
 
