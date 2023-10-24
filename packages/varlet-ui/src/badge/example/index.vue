@@ -77,12 +77,12 @@ watchDarkMode(dark)
       </var-button>
     </var-space>
 
-    <app-type>{{ pack.customBadgeColors }}</app-type>
+    <app-type>{{ pack.customBadgeColor }}</app-type>
     <var-badge color="#6200ea">
       <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
     </var-badge>
 
-    <app-type>{{ pack.customBadgeIcons }}</app-type>
+    <app-type>{{ pack.customBadgeIcon }}</app-type>
     <var-badge color="#6200ea" icon="notebook">
       <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
     </var-badge>

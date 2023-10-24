@@ -3,7 +3,7 @@ import VarFloatingPanel from '../FloatingPanel.vue'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, vi } from 'vitest'
-import { delay, triggerDrag } from '../../utils/test'
+import { triggerDrag } from '../../utils/test'
 
 test('test floating-panel plugin', () => {
   const app = createApp({}).use(FloatingPanel)
