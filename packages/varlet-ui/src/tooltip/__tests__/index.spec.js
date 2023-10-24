@@ -62,6 +62,7 @@ test('test tooltip click trigger', async () => {
   document.body.innerHTML = ''
 
   mockRestore()
+  wrapper.unmount()
 })
 
 test('test tooltip hover trigger and events', async () => {
