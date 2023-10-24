@@ -422,19 +422,19 @@ test('test counter onIncrement & onDecrement', async () => {
 
   await delay(100)
   await wrapper.find('.var-counter__increment-button').trigger('click')
-  expect(onIncrement).toBeCalled(1)
+  expect(onIncrement).toBeCalledTimes(1)
 
   await delay(100)
   await wrapper.find('.var-counter__increment-button').trigger('click')
-  expect(onIncrement).toBeCalled(1)
+  expect(onIncrement).toBeCalledTimes(2)
 
   await delay(100)
   await wrapper.find('.var-counter__decrement-button').trigger('click')
-  expect(onDecrement).toBeCalled(1)
+  expect(onDecrement).toBeCalledTimes(1)
 
   await delay(100)
   await wrapper.find('.var-counter__decrement-button').trigger('click')
-  expect(onDecrement).toBeCalled(1)
+  expect(onDecrement).toBeCalledTimes(2)
 
   wrapper.unmount()
 })
