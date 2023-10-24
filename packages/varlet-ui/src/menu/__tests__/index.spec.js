@@ -214,4 +214,5 @@ test('test menu elevation', async () => {
   expect(root.innerHTML).toMatchSnapshot()
 
   mockRestore()
+  wrapper.unmount()
 })
