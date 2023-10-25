@@ -138,10 +138,13 @@ export default defineComponent({
         score = 0
       }
 
+      if (lastScore !== score) {
+        call(props['onUpdate:modelValue'], score)
+        call(props.onChange, score)
+      }
+
       // update last score
       lastScore = score
-
-      call(props['onUpdate:modelValue'], score)
     }
 
     function validate() {
@@ -153,14 +156,13 @@ export default defineComponent({
     }
 
     function handleClick(score: number, event: MouseEvent) {
-      const { readonly, disabled, onChange } = props
+      const { readonly, disabled } = props
 
       if (readonly || disabled || form?.disabled.value || form?.readonly.value) {
         return
       }
 
       changeValue(score, event)
-      call(onChange, score)
       validateWithTrigger()
     }
 
