@@ -59,7 +59,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
 
-    let lastScore = Number(props.modelValue)
+    let lastScore = toNumber(props.modelValue)
 
     const rateProvider: RateProvider = {
       reset,
@@ -110,11 +110,11 @@ export default defineComponent({
         iconColor = disabledColor
       }
 
-      if (index <= toNumber(modelValue)) {
+      if (index <= modelValue) {
         return { color: iconColor, name: icon, namespace }
       }
 
-      if (half && index <= toNumber(modelValue) + 0.5) {
+      if (half && index <= modelValue + 0.5) {
         return { color: iconColor, name: halfIcon, namespace: halfIconNamespace }
       }
 
@@ -145,7 +145,7 @@ export default defineComponent({
     }
 
     function validate() {
-      return v(props.rules, toNumber(props.modelValue))
+      return v(props.rules, props.modelValue)
     }
 
     function validateWithTrigger() {
