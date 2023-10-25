@@ -10,7 +10,7 @@ test('test rate use', () => {
   expect(app.component(Rate.name)).toBeTruthy()
 })
 
-test('test rate component onchange event', async () => {
+test('test rate component onChange event', async () => {
   const onChange = vi.fn()
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
