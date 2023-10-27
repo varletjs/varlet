@@ -1,3 +1,26 @@
+## [2.18.1](https://github.com/varletjs/varlet/compare/v2.18.0...v2.18.1) (2023-10-27)
+
+
+### Bug Fixes
+
+* **back-top:** Change type of the click event from MouseEvent to Event ([#1239](https://github.com/varletjs/varlet/issues/1239)) ([4ef2e34](https://github.com/varletjs/varlet/commit/4ef2e34120aec6662ee55fb2df72a477a8ac08e5))
+* **chip:** rename closable to closeable ([#1237](https://github.com/varletjs/varlet/issues/1237)) ([7cbe418](https://github.com/varletjs/varlet/commit/7cbe41890a75302924bd68e285a8dcd429703228))
+* **date-picker:** fix year panel scroll error ([2ed4eb3](https://github.com/varletjs/varlet/commit/2ed4eb38e7c6d09f17ae2d8541bf348b381d07cd))
+* **floating-panel:** fix scroll behavior ([6d953f7](https://github.com/varletjs/varlet/commit/6d953f725d1afac29cf0177d683157b100919ff9))
+* **rate:** modify the trigger time of change event & limit the modelValue type to number ([#1243](https://github.com/varletjs/varlet/issues/1243)) ([2137984](https://github.com/varletjs/varlet/commit/21379844624f47ff968848b486b200dd63798a11))
+* **switch:** change type of the click event from MouseEvent to Event ([#1241](https://github.com/varletjs/varlet/issues/1241)) ([153e007](https://github.com/varletjs/varlet/commit/153e007c7d97c968454d35a2998f7c1520f95a1b))
+
+
+### Features
+
+* **date-picker:** replace headColor with titleColor ([#1234](https://github.com/varletjs/varlet/issues/1234)) ([1c2f41a](https://github.com/varletjs/varlet/commit/1c2f41a2ebd49433175a5e49e2312518ae397d37))
+* **date-picker:** suport hint ([#1233](https://github.com/varletjs/varlet/issues/1233)) ([870472e](https://github.com/varletjs/varlet/commit/870472e9ce189a5e3ae5ffa75c91de2d11230bfa))
+* **time-picker, date-picker:** support custom title height ([#1227](https://github.com/varletjs/varlet/issues/1227)) ([b89ca23](https://github.com/varletjs/varlet/commit/b89ca23788fbe7f0cc7fff0e5ae982cd4a134d5f))
+* **time-picker:** support hint ([#1229](https://github.com/varletjs/varlet/issues/1229)) ([65675ad](https://github.com/varletjs/varlet/commit/65675adce8e4dc88bf3cfe8ab0233f1e6eccbf59))
+* **time-picker:** support titleColor ([#1230](https://github.com/varletjs/varlet/issues/1230)) ([466951f](https://github.com/varletjs/varlet/commit/466951f58d33aa29c2a24c4b252fda9141d2f5f4))
+
+
+
 # [2.18.0](https://github.com/varletjs/varlet/compare/v2.17.1...v2.18.0) (2023-10-19)
 
 
