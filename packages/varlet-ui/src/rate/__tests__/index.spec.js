@@ -164,7 +164,7 @@ describe('test rate component props', () => {
     wrapper.unmount()
   })
 
-  test('test rate icon', async () => {
+  test('test rate halfIcon', async () => {
     const wrapper = mount(VarRate, {
       props: {
         modelValue: 1.5,
@@ -175,7 +175,7 @@ describe('test rate component props', () => {
     expect(wrapper.findAll('.var-icon-star-half-full').length).toBe(1)
 
     await wrapper.setProps({
-      icon: 'heart-half-full',
+      halfIcon: 'heart-half-full',
     })
     expect(wrapper.findAll('.var-icon-heart-half-full').length).toBe(1)
 
