@@ -7,7 +7,7 @@ import Download from './icons/Download.vue'
 import Close from './icons/Close.vue'
 import { downloadProject } from './download/download'
 import { nextTick, onMounted, ref, watch } from 'vue'
-import { Themes } from '@varlet/ui'
+import { Snackbar, StyleProvider, Themes } from '@varlet/ui'
 import { usePreviewVersion } from './utils/env'
 
 // eslint-disable-next-line vue/require-prop-types

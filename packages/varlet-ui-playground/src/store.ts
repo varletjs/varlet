@@ -2,6 +2,7 @@ import { reactive, watchEffect } from 'vue'
 import { compileFile, File, StoreOptions } from '@vue/repl'
 import { utoa, atou } from './utils/encode'
 import { usePreviewVersion } from './utils/env'
+import { Dialog, Snackbar } from '@varlet/ui'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 
