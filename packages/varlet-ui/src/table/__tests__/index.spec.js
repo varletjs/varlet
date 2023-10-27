@@ -2,7 +2,7 @@ import Table from '..'
 import VarTable from '../Table'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect } from 'vitest'
+import { expect, describe } from 'vitest'
 
 test('test table use', () => {
   const app = createApp({}).use(Table)
@@ -36,6 +36,32 @@ describe('test table component props', () => {
       elevation: 3,
     })
     expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+})
+
+describe('test table component slots', () => {
+  test('test table default slot', async () => {
+    const wrapper = mount(VarTable, {
+      slots: {
+        default: () => 'table default slot',
+      },
+    })
+
+    expect(wrapper.find('.var-table__table').text()).toBe('table default slot')
+
+    wrapper.unmount()
+  })
+
+  test('test table footer slot', async () => {
+    const wrapper = mount(VarTable, {
+      slots: {
+        footer: () => 'table footer slot',
+      },
+    })
+
+    expect(wrapper.find('.var-table__footer').text()).toBe('table footer slot')
 
     wrapper.unmount()
   })
