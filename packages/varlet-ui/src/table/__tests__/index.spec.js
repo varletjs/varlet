@@ -9,15 +9,34 @@ test('test table use', () => {
   expect(app.component(Table.name)).toBeTruthy()
 })
 
-describe('test table components props', () => {
-  test('test table full-Width', () => {
+describe('test table component props', () => {
+  test('test table full-Width', async () => {
+    const wrapper = mount(VarTable)
+
+    expect(wrapper.find('.var-table__table').attributes('style')).toContain('width: 100%;')
+
+    await wrapper.setProps({
+      fullWidth: 200,
+    })
+    expect(wrapper.find('.var-table__table').attributes('style')).toContain('width: 200px;')
+
+    wrapper.unmount()
+  })
+
+  test('test table elevation', async () => {
     const wrapper = mount(VarTable, {
       props: {
-        fullWidth: '100px',
+        elevation: true,
       },
     })
 
-    expect(wrapper.find('.var-table__table').attributes('style')).toContain('width: 100px;')
+    expect(wrapper.find('.var-elevation--1').exists()).toBe(true)
+
+    await wrapper.setProps({
+      elevation: 3,
+    })
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
+
     wrapper.unmount()
   })
 })
