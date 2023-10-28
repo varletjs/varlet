@@ -1,6 +1,10 @@
 # Card
 
-### Basic Use
+### Intro
+
+Display content and actions about a single subject.
+
+### Basic Usage
 
 ```html
 <template>
@@ -41,7 +45,32 @@
 
 ```html
 <template>
-  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+  <var-card 
+    title="Dangerous" 
+    subtitle="The girl was dangerous" 
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
+### Use Slot
+
+```html
+<template>
+  <var-card
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  >
+    <template #extra>
+      <var-space>
+        <var-button text type="warning">ACTION 1</var-button>
+        <var-button text type="warning">ACTION 2</var-button>
+      </var-space>
+    </template>
+  </var-card>
 </template>
 ```
 
@@ -62,26 +91,6 @@
       <var-button round text>
         <var-icon name="heart" />
       </var-button>
-    </template>
-  </var-card>
-</template>
-```
-
-### Use Slot
-
-```html
-<template>
-  <var-card
-    title="Dangerous"
-    subtitle="The girl was dangerous"
-    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-  >
-    <template #extra>
-      <var-space>
-        <var-button text type="warning">ACTION 1</var-button>
-        <var-button text type="warning">ACTION 2</var-button>
-      </var-space>
     </template>
   </var-card>
 </template>
