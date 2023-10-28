@@ -69,7 +69,7 @@ Used to separate parts of a list or layout.
 </template>
 ```
 
-### Use 0.5px Divider
+### 0.5px Divider
 ```html
 <template>
   <var-divider hairline />
