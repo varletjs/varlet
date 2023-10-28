@@ -1,9 +1,10 @@
 # Ripple Directive
 
 ### Intro
-Causes the element to generate a ripple spread effect when clicked.
 
-### Basic Use
+When the element is clicked, a water wave spreading effect is generated.
+
+### Basic Usage
 
 ```html
 <template>
