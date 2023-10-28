@@ -27,7 +27,7 @@ function changeHandle(val) {
 </template>
 ```
 
-### Hide The Margin
+### Hide Margin
 
 Use `offset` prop to hide the margin.
 
