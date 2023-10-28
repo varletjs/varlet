@@ -20,7 +20,7 @@ const values = reactive({
   value5: [],
 })
 
-function changeHandle(val) {
+function handleChange(val) {
   console.log(val)
 }
 
@@ -30,7 +30,7 @@ watchDarkMode(dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-collapse v-model="values.value" @change="changeHandle">
+  <var-collapse v-model="values.value" @change="handleChange">
     <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
   </var-collapse>
@@ -45,7 +45,7 @@ watchDarkMode(dark)
   <var-button @click="divider = !divider" style="margin-bottom: 8px">{{
     divider ? pack.hideDivider : pack.showDivider
   }}</var-button>
-  <var-collapse v-model="values.value5" :divider="divider" @change="changeHandle">
+  <var-collapse v-model="values.value5" :divider="divider">
     <var-collapse-item :title="pack.title" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="2">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.title" name="3">{{ pack.text }}</var-collapse-item>

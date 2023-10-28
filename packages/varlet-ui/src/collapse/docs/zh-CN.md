@@ -14,13 +14,13 @@ import { ref } from 'vue'
 
 const value = ref(['1'])
 
-function changeHandle(val) {
+function handleChange(val) {
   console.log(val)
 }
 </script>
 
 <template>
-  <var-collapse v-model="value" @change="changeHandle">
+  <var-collapse v-model="value" @change="handleChange">
     <var-collapse-item title="标题" name="1">文本</var-collapse-item>
     <var-collapse-item title="标题" name="2">文本</var-collapse-item>
   </var-collapse>
