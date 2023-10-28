@@ -87,8 +87,8 @@ createApp(App).use(Varlet).mount('#app')
 ## Official Ecosystem
 
 | Project | Description |
-| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | varlet extension for vscode |
-| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet) | A vscode theme for varlet |
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | Varlet extension for vscode |
+| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet) | A vscode theme for Varlet |
 
 ## Community Ecosystem
 
