@@ -68,15 +68,12 @@ watchDarkMode(dark)
   <app-type>{{ pack.floating }}</app-type>
   <var-card
     v-model:floating="floating"
-    @click="floating = true"
     :title="pack.title"
     :subtitle="pack.subtitle"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button text type="warning">{{ pack.action1 }}</var-button>
-      <var-button text type="warning">{{ pack.action2 }}</var-button>
+      <var-button type="primary" @click="floating = true">{{ pack.floating }}</var-button>
     </template>
 
     <template #floating-content>

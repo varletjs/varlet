@@ -122,14 +122,11 @@ const floating = ref(false)
   <var-card
     title="Dangerous"
     subtitle="The girl was dangerous"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
-    @click="floating = true"
   >
     <template #extra>
-      <var-button text type="warning">ACTION 1</var-button>
-      <var-button text type="warning">ACTION 2</var-button>
+      <var-button type="primary" @click="floating = true">Floating</var-button>
     </template>
 
     <template #floating-content>
@@ -169,7 +166,7 @@ const floating = ref(false)
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
 | `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
-| `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
+| `floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
 
 ### Events

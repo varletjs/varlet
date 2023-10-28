@@ -122,14 +122,11 @@ const floating = ref(false)
   <var-card
     title="本草纲目"
     subtitle="我表情悠哉 跳个大概"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
-    @click="floating = true"
   >
     <template #extra>
-      <var-button text type="warning">操作 1</var-button>
-      <var-button text type="warning">操作 2</var-button>
+      <var-button type="primary" @click="floating = true">开启全屏</var-button>
     </template>
 
     <template #floating-content>
