@@ -165,7 +165,7 @@ const floating = ref(false)
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
-| `alt`               | Alt text                                                        | _string_ | `-`      |
+| `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
 | `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |

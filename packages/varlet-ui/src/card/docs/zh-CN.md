@@ -109,7 +109,7 @@
 </template>
 ```
 
-### 漂浮
+### 开启全屏
 
 ```html
 <script setup>
@@ -165,7 +165,7 @@ const floating = ref(false)
 | `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
 | `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
-| `alt`               | 替代文本                                                   | _string_ | `-`      |
+| `alt`               | 替代文本，和 img 标签原生属性一致                                                   | _string_ | `-`      |
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
@@ -188,7 +188,7 @@ const floating = ref(false)
 | `description` | 自定义描述   | `-`  |
 | `floating-content`     | 漂浮时显示的正文内容 | `-`  |
 | `extra`       | 自定义底部内容 | `-`  |
-| `close-button` | 自定义关闭   | `-`  |
+| `close-button` | 自定义关闭按钮   | `-`  |
 
 ### 样式变量
 
