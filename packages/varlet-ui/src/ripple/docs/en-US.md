@@ -84,6 +84,7 @@ When the element is clicked, a water wave spreading effect is generated.
 | `disabled` | Whether to disable ripple | _boolean_ | `false` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
