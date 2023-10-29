@@ -84,17 +84,12 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
-## 官方生态
-
-| 项目 | 描述 |
-| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | vscode 的 Varlet 扩展 |
-| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet) | Varlet 的 vscode 主题 |
-
 ## 社区生态
 
 | 项目 | 描述 |
 | --- | --- |
-
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | vscode 的 Varlet 扩展 |
+| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet) | Varlet 的 vscode 主题 |
 | [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | 为 Varlet 开发人员提供更好的智能感知的 VS Code 扩展 |
 
 ### 演练场
