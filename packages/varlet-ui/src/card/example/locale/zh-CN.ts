@@ -12,5 +12,5 @@ export default {
   action1: '操作 1',
   action2: '操作 2',
   showRipple: '水波效果',
-  floating: '漂浮',
+  floating: '开启全屏',
 }
