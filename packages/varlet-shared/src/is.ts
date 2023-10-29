@@ -30,3 +30,7 @@ export const isWindow = (val: unknown): val is Window => val === window
 export const supportTouch = () => inBrowser() && 'ontouchstart' in window
 
 export const inBrowser = () => typeof window !== 'undefined'
+
+const { hasOwnProperty } = Object.prototype
+
+export const hasOwn = (val: object, key: string | symbol): key is keyof typeof val => hasOwnProperty.call(val, key)
