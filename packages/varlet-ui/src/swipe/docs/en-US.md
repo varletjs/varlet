@@ -334,6 +334,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--swipe-indicator-color`   | `#fff`  |
 | `--swipe-indicators-offset` | `10px`  |
 | `--swipe-indicator-offset`  | `4px`   |
+| `--swipe-navigation-z-index` | `9` |
 | `--swipe-navigation-button-width` | `36px` |
 | `--swipe-navigation-button-height` | `36px` |
 | `--swipe-navigation-button-border-radius` | `50%` |
