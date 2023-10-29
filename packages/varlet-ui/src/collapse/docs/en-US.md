@@ -14,20 +14,20 @@ import { ref } from 'vue'
 
 const value = ref(['1'])
 
-function changeHandle(val) {
+function handleChange(val) {
   console.log(val)
 }
 </script>
 
 <template>
-  <var-collapse v-model="value" @change="changeHandle">
+  <var-collapse v-model="value" @change="handleChange">
     <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
     <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
   </var-collapse>
 </template>
 ```
 
-### Hide The Margin
+### Hide Margin
 
 Use `offset` prop to hide the margin.
 

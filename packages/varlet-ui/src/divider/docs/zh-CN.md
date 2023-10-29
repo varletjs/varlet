@@ -70,7 +70,7 @@
 </template>
 ```
 
-### 使用 0.5px 分割线
+### 0.5px 分割线
 ```html
 <template>
   <var-divider hairline />
