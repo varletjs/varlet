@@ -92,7 +92,6 @@ createApp(App).use(Varlet).mount('#app')
 | [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet) | A vscode theme for Varlet |
 | [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | A VS Code extension that provides better intellisense to Varlet developers |
 
-
 ### Playground
 
 See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
