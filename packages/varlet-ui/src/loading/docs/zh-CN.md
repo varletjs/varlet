@@ -92,6 +92,7 @@ const loading = ref(false)
 
 | 变量名                     | 默认值 |
 |-------------------------| -- |
-| `--loading-color`       | `var(--loading-color)` |
-| `--loading-opacity`     | `0.38` |
-| `--loading-desc-margin` | `8px 0 0` |
+| `--loading-color`       | `var(--color-primary)` |
+| `--loading-opacity`     | `0.38`                 |
+| `--loading-desc-margin` | `8px 0 0`              |
+| `--loading-desc-color`  | `var(--color-primary)` |
