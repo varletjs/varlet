@@ -21,8 +21,18 @@ watchDarkMode(dark)
   <app-type>{{ pack.basicUsage }}</app-type>
   <var-app-bar :title="pack.title" />
 
-  <app-type>{{ pack.addSlotsAtTitle }}</app-type>
-  <var-app-bar>{{ pack.addSlotsAtTitle }}</var-app-bar>
+  <app-type>{{ pack.round }}</app-type>
+  <var-app-bar :title="pack.round" title-position="center" round />
+
+  <app-type>{{ pack.customStyle }}</app-type>
+  <var-app-bar
+    :title="pack.title"
+    title-position="center"
+    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
+  />
+
+  <app-type>{{ pack.addTitleSlot }}</app-type>
+  <var-app-bar>{{ pack.addTitleSlot }}</var-app-bar>
 
   <app-type>{{ pack.addLeftAndRightSlot }}</app-type>
   <var-app-bar :title="pack.title">
@@ -46,16 +56,6 @@ watchDarkMode(dark)
       </var-menu>
     </template>
   </var-app-bar>
-
-  <app-type>{{ pack.round }}</app-type>
-  <var-app-bar :title="pack.round" title-position="center" round />
-
-  <app-type>{{ pack.customStyle }}</app-type>
-  <var-app-bar
-    :title="pack.title"
-    title-position="center"
-    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-  />
 
   <app-type>{{ pack.custom }}</app-type>
   <var-app-bar

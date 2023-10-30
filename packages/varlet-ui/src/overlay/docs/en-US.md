@@ -50,7 +50,7 @@ const show = ref(false)
 </style>
 ```
 
-### Event
+### Click Event
 
 ```html
 <script setup>

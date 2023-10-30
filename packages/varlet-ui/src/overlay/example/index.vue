@@ -30,7 +30,7 @@ watchDarkMode(dark)
     {{ pack.overlayContent }}
   </var-button>
 
-  <app-type>{{ pack.event }}</app-type>
+  <app-type>{{ pack.clickEvent }}</app-type>
   <var-button type="primary" block @click="clickOverlay = true">
     {{ pack.clickOverlay }}
   </var-button>

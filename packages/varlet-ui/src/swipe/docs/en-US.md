@@ -1,5 +1,9 @@
 # Swipe
 
+### Intro
+
+Displays a collection of items that can be scrolled and scrolled across the screen.
+
 ### Basic Usage
 
 ```html
