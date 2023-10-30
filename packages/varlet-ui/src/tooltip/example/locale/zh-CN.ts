@@ -11,7 +11,7 @@ export default {
   placement: '弹出位置',
   trigger: '触发方式',
   twoWayBinding: '双向绑定',
-  themeColorTooltip: '主题色文字提示',
+  themeColorTooltip: '主题色',
   defaultTooltip: '默认',
   primaryTooltip: '主要',
   infoTooltip: '信息',

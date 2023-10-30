@@ -79,13 +79,13 @@ const placementOptions = [
 </style>
 ```
 
-### Theme Color Tooltip
+### Theme Color
 
 ```html
 <template>
   <var-space :size="[54, 10]">
-    <var-tooltip type="default" content="Tooltip">
-      <var-button type="default">Default</var-button>
+    <var-tooltip content="Tooltip">
+      <var-button>Default</var-button>
     </var-tooltip>
     <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">Primary</var-button>
