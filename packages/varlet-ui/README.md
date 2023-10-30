@@ -84,6 +84,30 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### Official Ecosystem
+
+The following projects are maintained by the official team for a long time.
+
+| Name | Description |
+|------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli) | `Vue3 component library rapid prototyping tool` |
+| [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
+| [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
+| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode Theme`   |
+| [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet component library app template`   |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Case collection of Varlet component library and various ecosystem integration` |
+
+### Community Ecosystem
+
+The following projects are maintained by community personnel, welcome to add.
+
+| Name | Description |
+|----------------------------------------------------------------|-----------------------------------------|
+| [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
+| [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
+| [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | `A VS Code extension that provides better intellisense to Varlet developers` |
+
 ### Playground
 
 See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
