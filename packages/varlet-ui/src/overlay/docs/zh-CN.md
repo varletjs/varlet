@@ -52,7 +52,7 @@ const show = ref(false)
 </style>
 ```
 
-### 注册事件
+### 点击事件
 ```html
 <script setup>
 import { ref } from 'vue'
