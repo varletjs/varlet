@@ -1,4 +1,5 @@
 :root {
+  --loading-color: var(--color-primary);
   --loading-opacity: 0.38;
   --loading-desc-margin: 8px 0 0;
 }
@@ -76,7 +77,7 @@
 
     &-block {
       display: inline-block;
-      color: var(--color-primary);
+      color: var(--loading-color);
       animation: circle 1.8s linear infinite;
 
       &--large {
@@ -172,7 +173,7 @@
       height: 100%;
       display: inline-block;
       animation: 1.2s ease-in-out infinite wave;
-      background-color: var(--color-primary);
+      background-color: var(--loading-color);
 
       &:nth-child(1) {
         animation-delay: -1.2s;
@@ -261,7 +262,7 @@
       display: inline-block;
       transform-origin: right bottom;
       animation: 1.5s ease infinite cube;
-      background-color: var(--color-primary);
+      background-color: var(--loading-color);
 
       &:nth-child(1) {
         animation-delay: 0.2s;
@@ -349,7 +350,7 @@
 
     &-item {
       animation: 2s ease-in-out infinite rect;
-      background-color: var(--color-primary);
+      background-color: var(--loading-color);
 
       &:nth-child(1) {
         animation-delay: 1.75s;
@@ -456,7 +457,7 @@
     &-item {
       border-radius: 50%;
       animation: 0.5s ease-in-out infinite alternate disappear;
-      background-color: var(--color-primary);
+      background-color: var(--loading-color);
 
       &:nth-child(1) {
         animation-delay: -0.4s;

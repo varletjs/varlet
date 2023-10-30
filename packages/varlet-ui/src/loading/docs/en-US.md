@@ -88,10 +88,11 @@ const loading = ref(false)
 | `description`    | Description of the loading | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `--loading-color`       | `var(--loading-color)` |
-| `--loading-opacity` | `0.38` |
-| `--loading-desc-margin` | `8px 0 0` |
+| `--loading-color`       | `var(--color-primary)` |
+| `--loading-opacity`     | `0.38`                 |
+| `--loading-desc-margin` | `8px 0 0`              |
