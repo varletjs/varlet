@@ -1,11 +1,13 @@
 import markdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import { kebabCase } from '@varlet/shared'
-import { pinyin } from 'pinyin'
+import { pinyin } from 'pinyin-pro'
 import type { Plugin } from 'vite'
 
+const includeChinese = (value: string) => /[\u4e00-\u9fa5]/.test(value)
+
 function transformHash(hash: string) {
-  return pinyin(hash, { style: 'tone2' }).flat(Infinity).join('-').replaceAll(' ', '-')
+  return (includeChinese(hash) ? pinyin(hash, { toneType: 'num' }) : hash).replaceAll(' ', '')
 }
 
 function htmlWrapper(html: string) {
