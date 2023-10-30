@@ -39,6 +39,7 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 |----------------------------------------------------------------|-------------------------------------------|
 | [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `基于 Vue 的移动端模板脚手架，提供了 Varlet 组件库的移动端预设`   |
 | [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `基于 Vue3 的桌面端模板脚手架，提供了 Varlet 组件库的桌面端预设`  |
+| [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | `为 Varlet 开发人员提供更好的智能感知的 VSCode 扩展` |
 
 ### PR & Issue
 使用过程中出现的问题可以到 [github](https://github.com/varletjs/varlet) 来给我们提 [issue](https://github.com/varletjs/varlet/issues)，

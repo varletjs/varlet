@@ -84,6 +84,30 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### 官方生态
+
+以下项目由官方团队长期维护。
+
+| 名称                                                                                                   | 描述                       |
+|------------------------------------------------------------------------------------------------------|--------------------------|
+| [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli)                       | `Vue3 组件库快速成型工具`         |
+| [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `桌面端适配器，让移动端组件库可以在桌面端运行` |
+| [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground)  | `Varlet 组件库在线编辑工具`       |
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension)  | `Varlet 组件库 VSCode 插件`   |
+| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode 主题`   |
+| [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet 组件库移动端模板`   |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Varlet 组件库与各种生态集成的案例集合`   |
+
+### 社区生态
+
+以下项目由社区人员维护，欢迎补充。
+
+| 名称                                                             | 描述                                        |
+|----------------------------------------------------------------|-------------------------------------------|
+| [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `基于 Vue 的移动端模板脚手架，提供了 Varlet 组件库的移动端预设`   |
+| [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `基于 Vue3 的桌面端模板脚手架，提供了 Varlet 组件库的桌面端预设`  |
+| [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | `为 Varlet 开发人员提供更好的智能感知的 VSCode 扩展` |
+
 ### 演练场
 
 在 [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground) 对组件进行在线编辑。
