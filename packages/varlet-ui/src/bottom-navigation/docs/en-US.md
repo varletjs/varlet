@@ -1,5 +1,9 @@
 # BottomNavigation
 
+### Intro
+
+Display navigation and key actions at the bottom of the page.
+
 ### Basic Usage
 
 ```html

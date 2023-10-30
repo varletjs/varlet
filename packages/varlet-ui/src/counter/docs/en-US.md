@@ -1,5 +1,9 @@
 # Counter
 
+### Intro
+
+Used to enter or adjust numbers within a certain range.
+
 ### Basic Usage
 
 ```html

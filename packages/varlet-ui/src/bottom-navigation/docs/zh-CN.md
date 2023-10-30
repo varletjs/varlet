@@ -1,6 +1,10 @@
 # 底部导航栏
 
-### 基础用法
+### 介绍
+
+在页面底部显示导航和关键操作。
+
+### 基本使用
 
 ```html
 <script setup>
@@ -19,7 +23,7 @@ const active = ref(0)
 </template>
 ```
 
-### 名称匹配
+### 通过名称匹配
 
 ```html
 <script setup>
