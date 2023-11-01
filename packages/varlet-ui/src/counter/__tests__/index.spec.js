@@ -193,7 +193,7 @@ test('test counter step', async () => {
 test('test counter disableIncrement', async () => {
   const wrapper = mount({
     ...Wrapper,
-    template: `<var-counter disableIncrement="true" v-model="value" />`,
+    template: `<var-counter disableIncrement v-model="value" />`,
   })
 
   await wrapper.find('.var-counter__increment-button').trigger('click')
@@ -212,7 +212,7 @@ test('test counter disableIncrement', async () => {
 test('test counter disableDecrement', async () => {
   const wrapper = mount({
     ...Wrapper,
-    template: `<var-counter disableDecrement="true" v-model="value" />`,
+    template: `<var-counter disableDecrement v-model="value" />`,
   })
 
   await wrapper.find('.var-counter__decrement-button').trigger('click')
