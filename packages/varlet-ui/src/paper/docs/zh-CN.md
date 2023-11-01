@@ -55,7 +55,7 @@
 | 参数 | 说明 | 类型 | 默认值  |
 | --- | --- | --- | ---    |
 | `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `false`            |
-| `ripple` | 是否启用水波效果  | _boolean_  | `-` |
+| `ripple` | 是否启用水波效果  | _boolean_  | `false` |
 | `radius` | 纸张圆角  | _string \| number_  | `-` |
 | `width` | 纸张宽度  | _string \| number_  | `-` |
 | `height` | 纸张高度  | _string \| number_  | `-` |
