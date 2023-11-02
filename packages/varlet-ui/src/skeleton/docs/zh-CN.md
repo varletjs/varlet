@@ -32,7 +32,7 @@ const loading = ref(true)
 </template>
 ```
 
-### 自定义段落高度
+### 自定义段落宽度
 
 ```html
 <script setup>
