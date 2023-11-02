@@ -28,7 +28,7 @@ watchDarkMode(dark)
   <app-type>{{ pack.displayTitle }}</app-type>
   <var-skeleton title :loading="loading">{{ pack.loadingData }}</var-skeleton>
 
-  <app-type>{{ pack.customRowsHeight }}</app-type>
+  <app-type>{{ pack.customRowsWidth }}</app-type>
   <var-skeleton title :rows="3" :loading="loading" :rows-width="['200px', '100px', '50px']">
     {{ pack.loadingData }}
   </var-skeleton>

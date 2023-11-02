@@ -4,7 +4,7 @@
 
 Display some space occupying elements with transition effect to optimize the loading process.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
@@ -32,7 +32,7 @@ const loading = ref(true)
 </template>
 ```
 
-### Custom Rows Height
+### Custom Rows Width
 
 ```html
 <script setup>
@@ -131,9 +131,9 @@ function fullscreen() {
 | `avatar` | Whether to display the avatar | _boolean_ | `false` |
 | `fullscreen` | Whether to enable fullscreen mode | _boolean_ | `false` |
 | `fullscreen-z-index` | Fullscreen mode z-index | _string \| number_ | `100` |
-| `title-width` | Title Width  | _string \| number_ | `50%` |
-| `card-height` | Card Height  | _string \| number_ | `160px` |
-| `avatar-size` | Avatar size  | _string \| number_ | `34px` |
+| `title-width` | Title Width  | _string \| number_ | `-` |
+| `card-height` | Card Height  | _string \| number_ | `-` |
+| `avatar-size` | Avatar size  | _string \| number_ | `-` |
 | `rows` | The paragraph number of rows | _string \| number_ | `3` |
 | `rows-width` | The width of each line of a paragraph | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 
