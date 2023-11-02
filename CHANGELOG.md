@@ -1,3 +1,22 @@
+## [2.18.2](https://github.com/varletjs/varlet/compare/v2.18.1...v2.18.2) (2023-11-02)
+
+
+### Bug Fixes
+
+* **loading:** add missing --loading-color &  support --loading-desc-color ([#1253](https://github.com/varletjs/varlet/issues/1253)) ([0c21498](https://github.com/varletjs/varlet/commit/0c21498ddf83aa555d8145b9685857df5d1751eb))
+* **option:** ellipses are not displayed when text overflows ([#1254](https://github.com/varletjs/varlet/issues/1254)) ([8e70fd5](https://github.com/varletjs/varlet/commit/8e70fd5ae32b0ceae92149b5f0fb794abcede483))
+
+
+### Features
+
+* **cli:** support stub on dev server ([43f61a5](https://github.com/varletjs/varlet/commit/43f61a5b5bca7fe20f845b93fafd99e5e12bc242))
+* **countdown:** support --countdown-text-font-size ([#1255](https://github.com/varletjs/varlet/issues/1255)) ([cd4b307](https://github.com/varletjs/varlet/commit/cd4b307238600554a97b2cd0f2da194faa5f9644))
+* **shared, use:** support call createNamespaceFn useVModel classes ([daed1e2](https://github.com/varletjs/varlet/commit/daed1e27bd56e2d847394c8f3413e1c06c1cd6b0))
+* **shared:** support hasOwn ([fe92b48](https://github.com/varletjs/varlet/commit/fe92b487bdc430b4ebb355847497b660524586a6))
+* **swipe:** support --swipe-navigation-z-index ([#1247](https://github.com/varletjs/varlet/issues/1247)) ([1f64a13](https://github.com/varletjs/varlet/commit/1f64a13b7824abfefb166976bcf634f0bbf1657e))
+
+
+
 ## [2.18.1](https://github.com/varletjs/varlet/compare/v2.18.0...v2.18.1) (2023-10-27)
 
 

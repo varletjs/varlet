@@ -1,7 +1,7 @@
 {
   "name": "@varlet/ui-playground",
   "private": true,
-  "version": "2.18.1",
+  "version": "2.18.2",
   "description": "varlet ui playground",
   "keywords": [
     "varlet ui",
@@ -33,5 +33,6 @@
     "@types/node": "*",
     "vite": "4.3.5",
     "live-server": "^1.2.1",
-    "typescript": "^5.1.5"  }
+    "typescript": "^5.1.5"
+  }
 }
