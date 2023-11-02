@@ -1,6 +1,7 @@
 # 骨架屏
 
 ### 介绍
+
 显示一些带过渡效果的占位元素，优化加载过程。
 
 ### 基本使用
@@ -130,9 +131,9 @@ function fullscreen() {
 | `avatar` | 是否显示头像 | _boolean_ | `false` |
 | `fullscreen` | 是否开启全屏模式 | _boolean_ | `false` |
 | `fullscreen-z-index` | 全屏模式的层级 | _string \| number_ | `100` |
-| `title-width` | 标题宽度 | _string \| number_ | `50%` |
-| `card-height` | 卡片高度 | _string \| number_ | `160px` |
-| `avatar-size` | 头像尺寸 | _string \| number_ | `34px` |
+| `title-width` | 标题宽度 | _string \| number_ | `-` |
+| `card-height` | 卡片高度 | _string \| number_ | `-` |
+| `avatar-size` | 头像尺寸 | _string \| number_ | `-` |
 | `rows` | 段落行数 | _string \| number_ | `3` |
 | `rows-width` | 段落每一行的宽度 | _number[] \| string[]_ | `['12px', '12px', '12px']` |
 

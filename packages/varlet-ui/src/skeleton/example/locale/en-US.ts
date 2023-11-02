@@ -1,7 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   displayTitle: 'Display Title',
-  customRowsHeight: 'Custom Row Heights',
+  customRowsHeight: 'Custom Rows Width',
   displayAvatar: 'Display Avatar',
   displayCard: 'Display Card',
   fullscreenMode: 'Fullscreen Mode',
