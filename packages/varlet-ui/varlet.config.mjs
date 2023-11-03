@@ -554,14 +554,7 @@ export default defineConfig({
         doc: 'picker',
         type: 2,
       },
-       {
-        text: {
-          'zh-CN': 'PickerGroup 选择器组',
-          'en-US': 'PickerGroup',
-        },
-        doc: 'picker-group',
-        type: 2,
-      },
+
       {
         text: {
           'zh-CN': 'DatePicker 日期选择器',
@@ -576,6 +569,14 @@ export default defineConfig({
           'en-US': 'TimePicker',
         },
         doc: 'time-picker',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'DateTimePicker 日期时间选择                                                                                                                                                                                   ',
+          'en-US': 'DateTimePicker',
+        },
+        doc: 'date-time-picker',
         type: 2,
       },
       {
