@@ -279,6 +279,7 @@ const actions = [
 | `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
 | `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
 | `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
+| `zoom` | Enlarge or reduce the picture | `ratio: number` | `-` |
 
 ### Slots
 
