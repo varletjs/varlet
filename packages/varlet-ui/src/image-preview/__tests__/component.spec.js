@@ -167,6 +167,26 @@ test('test image preview initialIndex', async () => {
   wrapper.unmount()
 })
 
+test('test image preview closeable', async () => {
+  const wrapper = mount(VarImagePreview, {
+    props: {
+      teleport: null,
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+      initialIndex: 1,
+      show: true,
+    },
+  })
+
+  expect(wrapper.find('.var-image-preview__close-icon').exists()).toBe(false)
+
+  await wrapper.setProps({
+    closeable: true,
+  })
+  expect(wrapper.find('.var-image-preview__close-icon').exists()).toBe(true)
+
+  wrapper.unmount()
+})
+
 test('test image preview next & prev & to method', async () => {
   const Wrapper = {
     components: {
@@ -205,6 +225,45 @@ test('test image preview next & prev & to method', async () => {
   to(0)
   await delay(100)
   expect(wrapper.find('.var-image-preview__indicators').text()).toBe('1 / 2')
+
+  wrapper.unmount()
+})
+
+test('test image preview zoom method', async () => {
+  const Wrapper = {
+    components: {
+      [VarImagePreview.name]: VarImagePreview,
+    },
+    template: `
+      <var-image-preview ref="imagePreviewRef">
+      </var-image-preview>
+    `,
+  }
+  const wrapper = mount(Wrapper, {
+    props: {
+      teleport: null,
+      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+      show: true,
+    },
+  })
+  const zoomContainer = wrapper.find('.var-image-preview__zoom-container')
+
+  await delay(50)
+  const {
+    imagePreviewRef: { zoom },
+  } = wrapper.vm.$refs
+
+  zoom(2)
+  await delay(100)
+  expect(zoomContainer.element.style.transform).toBe('scale(2) translate(0px, 0px)')
+
+  zoom(3)
+  await delay(100)
+  expect(zoomContainer.element.style.transform).toBe('scale(3) translate(0px, 0px)')
+
+  zoom(0.5)
+  await delay(100)
+  expect(zoomContainer.element.style.transform).toBe('scale(1) translate(0px, 0px)')
 
   wrapper.unmount()
 })
