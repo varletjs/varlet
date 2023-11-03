@@ -24,6 +24,7 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="large" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="21vmin" />
   </var-space>
+
   <app-type>{{ pack.avatarShape }}</app-type>
   <var-space>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
@@ -68,9 +69,7 @@ watchDarkMode(dark)
     <var-avatar color="#4a79f5">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar :round="false" color="#eb5a3f">
-      <var-icon name="fire" />
-    </var-avatar>
+    <var-avatar color="#eb5a3f">{{ text }}</var-avatar>
   </var-space>
 
   <app-type>{{ pack.avatarHorizontalGroup }}</app-type>
@@ -87,5 +86,13 @@ watchDarkMode(dark)
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
+  </var-avatar-group>
+
+  <app-type>{{ pack.avatarHoverable }}</app-type>
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
+    <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>

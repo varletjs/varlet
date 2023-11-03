@@ -5,7 +5,7 @@ import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockConsole } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, describe } from 'vitest'
 
 test('test collapse and collapseItem use', () => {
   const app = createApp({}).use(Collapse).use(CollapseItem)
@@ -97,7 +97,9 @@ describe('test collapse and collapseItem props', () => {
     })
     await delay(0)
     expect(errorFn).toHaveBeenCalledTimes(2)
+
     mockRestore()
+    wrapper.unmount()
   })
 
   test('test collapse accordion', async () => {
@@ -156,6 +158,8 @@ describe('test collapse and collapseItem props', () => {
     expect(collapseItemList[0].classes()).toContain('var-collapse-item--disable')
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
     expect(wrapper.vm.value.toString()).toBe('2')
+
+    wrapper.unmount()
   })
 
   test('test collapseItem icon', async () => {
@@ -183,6 +187,7 @@ describe('test collapse and collapseItem props', () => {
 
     await delay(0)
     expect(wrapper.find('.var-icon-checkbox-marked-circle').exists()).toBe(true)
+
     wrapper.unmount()
   })
 
@@ -207,14 +212,16 @@ describe('test collapse and collapseItem props', () => {
       template,
     })
 
-    await delay()
+    await delay(0)
 
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe(
       '--collapse-divider-top: var(--collapse-border-top);'
     )
 
     await wrapper.setData({ divider: false })
-    await delay()
+    await delay(0)
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe('--collapse-divider-top: none;')
+
+    wrapper.unmount()
   })
 })

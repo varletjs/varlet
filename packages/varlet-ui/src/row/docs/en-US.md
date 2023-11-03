@@ -45,6 +45,7 @@ The `gutter` property sets column spacing.
   width: 100%;
   height: 36px;
   background: #3a7afe;
+  color: #fff;
 }
 </style>
 ```
@@ -77,6 +78,7 @@ The `gutter` property sets column spacing.
   width: 100%;
   height: 36px;
   background: #3a7afe;
+  color: #fff;
 }
 </style>
 ```
@@ -138,6 +140,7 @@ using the `<var-row/>` `justify` and `align` properties to set the alignment of 
   width: 100%;
   height: 36px;
   background: #3a7afe;
+  color: #fff;
 }
 </style>
 ```
@@ -176,6 +179,7 @@ import BasicExample from '../example/Responsive.vue'
   width: 100%;
   height: 36px;
   background: #3a7afe;
+  color: #fff;
 }
 </style>
 ```
@@ -236,6 +240,7 @@ import ObjectExample from '../example/ResponsiveObject.vue'
   width: 100%;
   height: 36px;
   background: #3a7afe;
+  color: #fff;
 }
 </style>
 ```

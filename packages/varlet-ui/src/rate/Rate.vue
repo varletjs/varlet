@@ -59,7 +59,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
 
-    let lastScore = Number(props.modelValue)
+    let lastScore = toNumber(props.modelValue)
 
     const rateProvider: RateProvider = {
       reset,
@@ -110,11 +110,11 @@ export default defineComponent({
         iconColor = disabledColor
       }
 
-      if (index <= toNumber(modelValue)) {
+      if (index <= modelValue) {
         return { color: iconColor, name: icon, namespace }
       }
 
-      if (half && index <= toNumber(modelValue) + 0.5) {
+      if (half && index <= modelValue + 0.5) {
         return { color: iconColor, name: halfIcon, namespace: halfIconNamespace }
       }
 
@@ -138,14 +138,17 @@ export default defineComponent({
         score = 0
       }
 
+      if (lastScore !== score) {
+        call(props['onUpdate:modelValue'], score)
+        call(props.onChange, score)
+      }
+
       // update last score
       lastScore = score
-
-      call(props['onUpdate:modelValue'], score)
     }
 
     function validate() {
-      return v(props.rules, toNumber(props.modelValue))
+      return v(props.rules, props.modelValue)
     }
 
     function validateWithTrigger() {
@@ -153,14 +156,13 @@ export default defineComponent({
     }
 
     function handleClick(score: number, event: MouseEvent) {
-      const { readonly, disabled, onChange } = props
+      const { readonly, disabled } = props
 
       if (readonly || disabled || form?.disabled.value || form?.readonly.value) {
         return
       }
 
       changeValue(score, event)
-      call(onChange, score)
       validateWithTrigger()
     }
 

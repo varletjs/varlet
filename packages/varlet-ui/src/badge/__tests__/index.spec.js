@@ -2,7 +2,7 @@ import Badge from '..'
 import VarBadge from '../Badge'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect } from 'vitest'
+import { describe, expect } from 'vitest'
 
 test('test badge plugin', () => {
   const app = createApp({}).use(Badge)
@@ -34,6 +34,22 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
+  test('test badge hidden', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        hidden: true,
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setProps({
+      hidden: false,
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
   test('test badge value', async () => {
     const wrapper = mount(VarBadge, {
       props: {
@@ -48,7 +64,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge max value', async () => {
+  test('test badge maxValue', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         maxValue: 1,
@@ -75,12 +91,16 @@ describe('test badge component props', () => {
     })
   })
 
-  test('test badge color', () => {
+  test('test badge color', async () => {
     const wrapper = mount(VarBadge, {
       props: { color: 'red' },
     })
 
     expect(wrapper.find('.var-badge__content').attributes('style')).toContain('background: red;')
+    await wrapper.setProps({
+      color: 'green',
+    })
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('background: green;')
     wrapper.unmount()
   })
 
@@ -92,7 +112,9 @@ describe('test badge component props', () => {
     expect(wrapper.find('.var-icon').classes()).toContain('var-icon-notebook')
     wrapper.unmount()
   })
+})
 
+describe('test badge component slots', () => {
   test('test badge default slots', () => {
     const wrapper = mount(VarBadge, {
       slots: {
@@ -107,7 +129,7 @@ describe('test badge component props', () => {
   test('test badge value slots', () => {
     const wrapper = mount(VarBadge, {
       slots: {
-        value: () => 'value',
+        value: () => 'value slots',
       },
     })
 

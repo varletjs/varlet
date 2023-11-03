@@ -60,8 +60,8 @@ watchDarkMode(dark)
 
   <app-type>{{ pack.themeColorTooltip }}</app-type>
   <var-space :size="['14vmin', '2.666vmin']">
-    <var-tooltip type="default" content="Tooltip">
-      <var-button type="default">{{ pack.defaultTooltip }}</var-button>
+    <var-tooltip content="Tooltip">
+      <var-button>{{ pack.defaultTooltip }}</var-button>
     </var-tooltip>
     <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">{{ pack.primaryTooltip }}</var-button>

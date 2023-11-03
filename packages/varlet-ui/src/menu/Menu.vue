@@ -99,7 +99,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './menu';
 @import '../styles/elevation';
 @import '../styles/common';
+@import './menu';
 </style>

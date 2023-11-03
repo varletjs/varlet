@@ -1,7 +1,4 @@
 import fs from 'fs'
-import components from 'unplugin-vue-components/vite'
-import autoImport from 'unplugin-auto-import/vite'
-import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig, Plugin } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -45,13 +42,5 @@ export default defineConfig({
     __APP_ENABLE_PREVIEW__: process.env.ENABLE_PREVIEW,
   },
 
-  plugins: [
-    copyVarletDependencies(),
-    components({
-      resolvers: [VarletUIResolver()],
-    }),
-    autoImport({
-      resolvers: [VarletUIResolver({ autoImport: true })],
-    }),
-  ],
+  plugins: [copyVarletDependencies()],
 })

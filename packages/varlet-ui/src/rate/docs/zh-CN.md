@@ -1,5 +1,9 @@
 # 评分
 
+### 介绍
+
+用于对事物进行评级操作。
+
 ### 基本使用
 
 ```html
@@ -34,7 +38,7 @@ const score = ref(3)
 
 ### 自定义评分图标样式
 
-通过 `icon` 和 `empty-icon` 属性设置选中和未选时的图标样式。
+通过 `icon` 和 `empty-icon` 属性设置选中和未选中时的图标。
 通过 `color` 和 `empty-color` 属性设置选中和未选中时的颜色。
 
 ```html
@@ -180,7 +184,7 @@ const score = ref(3)
 
 | 参数               | 说明 | 类型 | 默认值 |
 |------------------| ---- | ---- | ---- |
-| `v-model`        | 当前分数 | _number \| string_ | `0` |
+| `v-model`        | 当前分数 | _number_ | `0` |
 | `count`          | 评分总数 | _number \| string_ | `5` |
 | `color`          | 选中时图标的颜色 | _string_ | `-` |
 | `icon`           | 选中整个图标时的图标样式 | _string_ | `star`|
@@ -195,8 +199,8 @@ const score = ref(3)
 | `half-icon-namespace`      | 半选时图标的命名空间 |  _string_ | `var-icon` |
 | `disabled`       | 是否禁止评分 | _boolean_ | `false`|
 | `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
-| `readonly`       | 是否使用评分只读 | _boolean_ | `false` |
-| `clearable`       | 是否允许清空 | _boolean_ | `false` |
+| `readonly`       | 是否为只读状态，只读状态下无法修改评分 | _boolean_ | `false` |
+| `clearable`      | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
 | `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
 
@@ -204,7 +208,7 @@ const score = ref(3)
 
 | 事件名 | 说明 | 回调参数 |
 | ---- | ---- | ---- |
-| `change` | 评分改变时触发 | `value: string \| number` |
+| `change` | 评分改变时触发 | `value: number` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

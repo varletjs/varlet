@@ -2,7 +2,7 @@
 
 ### Intro
 
-Avatar Component
+Used as avatar display, supporting images, icons and characters.
 
 ### Avatar Size
 
@@ -86,9 +86,7 @@ const text = ref('VARLET')
     <var-avatar color="#4a79f5">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar :round="false" color="#eb5a3f">
-      <var-icon name="fire" />
-    </var-avatar>
+    <var-avatar color="#eb5a3f">VARLET</var-avatar>
   </var-space>
 </template>
 ```
@@ -115,6 +113,19 @@ const text = ref('VARLET')
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
+  </var-avatar-group>
+</template>
+```
+
+### Avatar Hoverable
+
+```html
+<template>
+  <var-avatar-group>
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
+    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
+    <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
 ```
@@ -196,6 +207,7 @@ import logo from '../../assets/logo.png'
 | `loading`     | When lazy loading is enabled, the image displayed in the load                                 | _string_ | `-` |
 | `error`       | When lazy loading is enabled, the image displayed when loading fails                           | _string_ | `-` |
 | `lazy`        | Whether to enable lazy loading                                               | _boolean_ | `false` |
+| `hoverable`   | Whether to enable hover effect | _boolean_ | `false` |
 
 #### AvatarGroup Props
 
@@ -243,6 +255,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--avatar-large-size` |  `64px`|
 | `--avatar-border` |  `2px solid #fff`|
 | `--avatar-background-color` |  `#bebebe`|
+| `--avatar-hover-transform` | `scale(1.1)`      |
 
 #### AvatarGroup Variables
 

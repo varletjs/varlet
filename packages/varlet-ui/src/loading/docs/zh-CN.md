@@ -4,7 +4,7 @@
 
 加载组件，用于数据加载时执行动画。
 
-### Loading 类型
+### 类型
 
 ```html
 <template>
@@ -18,7 +18,7 @@
 </template>
 ```
 
-### Loading 颜色
+### 颜色
 ```html
 <template>
   <var-space align="center" justify="space-between">
@@ -31,7 +31,7 @@
 </template>
 ```
 
-### Loading 大小
+### 大小
 
 ```html
 <template>
@@ -92,6 +92,7 @@ const loading = ref(false)
 
 | 变量名                     | 默认值 |
 |-------------------------| -- |
-| `--loading-color`       | `var(--loading-color)` |
-| `--loading-opacity`     | `0.38` |
-| `--loading-desc-margin` | `8px 0 0` |
+| `--loading-color`       | `var(--color-primary)` |
+| `--loading-opacity`     | `0.38`                 |
+| `--loading-desc-margin` | `8px 0 0`              |
+| `--loading-desc-color`  | `var(--color-primary)` |

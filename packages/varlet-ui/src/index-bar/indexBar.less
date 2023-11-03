@@ -1,4 +1,9 @@
 :root {
+  --index-bar-list-right: 0;
+  --index-bar-list-top: 50%;
+  --index-bar-list-left: auto;
+  --index-bar-list-bottom: auto;
+  --index-bar-list-transform: translate(0, -50%);
   --index-bar-list-item-font-size: var(--font-size-xs);
   --index-bar-list-item-color: var(--color-primary);
   --index-bar-list-item-active-color: var(--color-danger);
@@ -11,9 +16,11 @@
 
   &__anchor-list {
     position: fixed;
-    right: 0;
-    top: 50%;
-    transform: translate(0, -50%);
+    right: var(--index-bar-list-right);
+    top: var(--index-bar-list-top);
+    left: var(--index-bar-list-left);
+    bottom: var(--index-bar-list-bottom);
+    transform: var(--index-bar-list-transform);
     list-style: none;
     padding: 0;
     margin: 0;

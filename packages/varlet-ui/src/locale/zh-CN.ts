@@ -97,8 +97,11 @@ export default {
     },
   },
   datePickerSelected: '个被选择',
+  datePickerHint: '选择日期',
   // pagination
   paginationItem: '条',
   paginationPage: '页',
   paginationJump: '前往',
+  // time-picker
+  timePickerHint: '选择时间',
 } as Pack

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-创建一个更容易的使用海拔效果和水波效果的容器
+一个易于使用海拔效果和水波效果的容器。
 
 ### 基本使用
 
@@ -54,8 +54,8 @@
 
 | 参数 | 说明 | 类型 | 默认值  |
 | --- | --- | --- | ---    |
-| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number_ \| _boolean_ | `false`            |
-| `ripple` | 是否启用水波效果  | _boolean_  | `-` |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `false`            |
+| `ripple` | 是否启用水波效果  | _boolean_  | `false` |
 | `radius` | 纸张圆角  | _string \| number_  | `-` |
 | `width` | 纸张宽度  | _string \| number_  | `-` |
 | `height` | 纸张高度  | _string \| number_  | `-` |

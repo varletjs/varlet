@@ -5,9 +5,9 @@ import { PositioningStrategy } from '@popperjs/core'
 
 export declare const tooltipProps: Record<string, any>
 
-type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+type TooltipNeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
-export type TooltipPlacement = NeededPopperPlacement
+export type TooltipPlacement = TooltipNeededPopperPlacement
 
 export type TooltipTrigger = 'click' | 'hover'
 

@@ -136,8 +136,9 @@ function change(date) {
 | `v-model`           | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`） | _string[] \| string_ | `undefined` |
 | `type`              | 选择器类型，可选值为 `date month`                      | _string_ | `date` |
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
-| `color`             | 选择器的颜色                                       | _string_ | `#2979ff` |
-| `header-color`      | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。              | _string_ | `#2979ff` |
+| `color`             | 选择器的颜色                                       | _string_ | `-` |
+| `title-color`       | 标题背景色。如果未指定，将使用 `color` 属性或默认颜色。              | _string_ | `-` |
+| `hint`              | 选择器提示语                                  | _string_ | `选择日期` |
 | `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级         | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Button 的海拔高度                                 | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。                          | _string \| number_ | `0` |
@@ -177,6 +178,8 @@ function change(date) {
 | `--date-picker-min-width` | `290px`                |
 | `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
+| `--date-picker-title-height` | `105px` |
 | `--date-picker-title-padding` | `16px`                 |
 | `--date-picker-title-background` | `var(--color-primary)` |
 | `--date-picker-title-color` | `#fff`                 |

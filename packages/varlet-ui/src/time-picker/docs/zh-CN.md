@@ -122,16 +122,17 @@ function change(time) {
 
 | 参数 | 说明                                       | 类型 | 默认值 |
 | ----- |------------------------------------------| -------- | ---------- |
-| `v-model` | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`） | _string_ | `-` |
-| `format` | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
-| `color` | 选择器的颜色                                   | _string_ | `#2979ff` |
-| `header-color` | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。          | _string_ | `#2979ff` |
-| `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级     | _string \| number \| boolean_|   `false`    |
-| `min` | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
-| `max` | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
+| `v-model`      | 被选择的时间（ISO 8601 格式，`HH:mm` 或 `HH:mm:ss`） | _string_ | `-` |
+| `format`       | 选择器时间格式，可选值为 `ampm 24hr`                 | _string_ | `ampm` |
+| `color`        | 选择器的颜色                                 | _string_ | `-` |
+| `title-color`  | 选择器标题栏背景色，如果未指定，将使用 `color` 属性或默认颜色。   | _string_ | `-` |
+| `hint`         | 选择器提示语                                  | _string_ | `选择时间` |
+| `elevation`    | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级    | _string \| number \| boolean_|   `false`    |
+| `min`          | 允许的最小时间（ISO 8601格式）                      | _string_ | `-` |
+| `max`          | 允许的最大时间（ISO 8601格式）                      | _string_ | `-` |
 | `allowed-time` | 限制可以选择的时间                                | _AllowedTime_ | `-` |
-| `readonly` | 是否只读                                     | _boolean_ | `false` |
-| `use-seconds` | 是否显示秒                                    | _boolean_ | `false` |
+| `readonly`     | 是否只读                                     | _boolean_ | `false` |
+| `use-seconds`  | 是否显示秒                                    | _boolean_ | `false` |
 
 ### TimePicker AllowedTime
 
@@ -158,8 +159,11 @@ function change(time) {
 | `--time-picker-font-size` | `var(--font-size-md)` |
 | `--time-picker-min-width` | `290px`               |
 | `--time-picker-height` | `385px`               |
+| `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                |
 | `--time-picker-title-color` | `#fff`                |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-hint-font-size` | `14px` |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                |
 | `--time-picker-title-time-margin` | `0 5px`               |
@@ -168,8 +172,8 @@ function change(time) {
 | `--time-picker-clock-right` | `27px`                |
 | `--time-picker-clock-top` | `27px`                |
 | `--time-picker-clock-bottom` | `27px`                |
-| `--time-picker-clock-container-width` | `270px`               |
-| `--time-picker-clock-container-height` | `270px`               |
+| `--time-picker-clock-container-width` | `256px`               |
+| `--time-picker-clock-container-height` | `256px`               |
 | `--time-picker-clock-container-background` | `#e0e0e0`             |
 | `--time-picker-clock-hand-height` | `calc(50% - 4px)`     |
 | `--time-picker-clock-hand-width` | `2px`                 |

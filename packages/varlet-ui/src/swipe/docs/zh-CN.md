@@ -1,5 +1,9 @@
 # 轮播
 
+### 介绍
+
+显示可以在屏幕上滚动和滚动的项目集合。
+
 ### 基本使用
 
 ```html
@@ -333,6 +337,7 @@ import { Snackbar } from '@varlet/ui'
 | `--swipe-indicator-color` | `#fff` |
 | `--swipe-indicators-offset` | `10px` |
 | `--swipe-indicator-offset` | `4px` |
+| `--swipe-navigation-z-index` | `9` |
 | `--swipe-navigation-button-width` | `36px` |
 | `--swipe-navigation-button-height` | `36px` |
 | `--swipe-navigation-button-border-radius` | `50%` |

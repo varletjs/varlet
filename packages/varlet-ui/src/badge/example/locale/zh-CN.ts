@@ -1,7 +1,7 @@
 export default {
   themeColorBadge: '主题色徽标',
   dotBadge: '圆点徽标',
-  customContentBadge: '自定义内容标签',
+  customContentBadge: '自定义徽标内容',
   maximum: '最大值',
   differentPositioningBadges: '不同定位徽标',
   upperRight: '右上',
@@ -11,7 +11,7 @@ export default {
   hidden: '隐藏徽标',
   clickToChangeTheState: '点击改变状态',
   badge: '徽标',
-  customBadgeColors: '自定义徽标颜色',
-  customBadgeIcons: '自定义徽标图标',
+  customBadgeColor: '自定义徽标颜色',
+  customBadgeIcon: '自定义徽标图标',
   customBadgeValue: '自定义徽标值',
 }

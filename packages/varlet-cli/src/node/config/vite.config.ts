@@ -15,7 +15,7 @@ import {
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
-import { VarletConfig } from './varlet.config'
+import { VarletConfig } from './varlet.config.js'
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')

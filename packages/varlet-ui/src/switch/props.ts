@@ -23,7 +23,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onClick: defineListenerProp<(event: MouseEvent) => void>(),
+  onClick: defineListenerProp<(event: Event) => void>(),
   onChange: defineListenerProp<(value: boolean) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),
 }

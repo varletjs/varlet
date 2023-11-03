@@ -132,7 +132,7 @@ export default defineComponent({
       return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
     }
 
-    function switchActive(event: MouseEvent) {
+    function switchActive(event: Event) {
       const {
         onClick,
         onChange,

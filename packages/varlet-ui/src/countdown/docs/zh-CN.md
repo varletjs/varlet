@@ -182,8 +182,10 @@ function change() {
 | `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | `-` | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
-| `--countdown-text-color` | `#555` |
+| `--countdown-text-color`     | `#555`                |
+| `--countdown-text-font-size` | `var(--font-size-lg)` |

@@ -4,7 +4,7 @@ import { iconProps } from '../icon'
 
 export const props = {
   modelValue: {
-    type: [String, Number],
+    type: Number,
     default: 0,
   },
   count: {

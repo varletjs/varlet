@@ -4,7 +4,7 @@
 
 Load when the image is visible.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <template>

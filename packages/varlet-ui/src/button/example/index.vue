@@ -1,14 +1,10 @@
 <script setup>
-import VarButton from '../index'
-import VarButtonGroup from '../../button-group'
-import VarIcon from '../../icon'
-import VarSpace from '../../space'
-import VarMenu from '../../menu'
-import VarCell from '../../cell'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Snackbar, Themes } from '@varlet/ui'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+
+watchLang(use)
+watchDarkMode(Themes.dark)
 
 function handleClick() {
   Snackbar.success(pack.value.clickSuccess)
@@ -23,9 +19,6 @@ function handleAutoLoadingClick() {
     setTimeout(resolve, 2000)
   })
 }
-
-watchLang(use)
-watchDarkMode(dark)
 </script>
 
 <template>

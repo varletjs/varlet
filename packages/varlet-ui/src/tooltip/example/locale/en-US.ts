@@ -11,7 +11,7 @@ export default {
   placement: 'Placement',
   trigger: 'Trigger',
   twoWayBinding: 'Two-way Binding',
-  themeColorTooltip: 'Theme Color Tooltip',
+  themeColorTooltip: 'Theme Color',
   defaultTooltip: 'Default',
   primaryTooltip: 'Primary',
   infoTooltip: 'Info',

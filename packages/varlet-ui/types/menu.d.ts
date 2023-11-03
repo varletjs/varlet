@@ -5,10 +5,10 @@ import { PositioningStrategy } from '@popperjs/core'
 
 export declare const menuProps: Record<string, any>
 
-type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
+type MenuNeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
 export type MenuPlacement =
-  | NeededPopperPlacement
+  | MenuNeededPopperPlacement
   | 'cover-top'
   | 'cover-top-start'
   | 'cover-top-end'

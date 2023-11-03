@@ -1,9 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test allowedDates prop 1`] = `
+exports[`test datePicker allowedDates 1`] = `
 "<div class=\\"var-date-picker\\">
   <div class=\\"var-date-picker__title\\">
-    <div class=\\"var-date-picker__title-year\\">2021</div>
+    <div class=\\"var-date-picker__title-select\\">
+      <div class=\\"var-date-picker__title-hint\\">选择日期</div>
+      <div class=\\"var-date-picker__title-year\\">2021</div>
+    </div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
       <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>03-01 星期一</div>
@@ -53,7 +56,10 @@ exports[`test allowedDates prop 1`] = `
 exports[`test datePicker style and type > test datePicker style and date 1`] = `
 "<div class=\\"var-date-picker var-elevation--2\\">
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
-    <div class=\\"var-date-picker__title-year\\">2021</div>
+    <div class=\\"var-date-picker__title-select\\">
+      <div class=\\"var-date-picker__title-hint\\">选择日期</div>
+      <div class=\\"var-date-picker__title-year\\">2021</div>
+    </div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
       <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>04-08 星期四</div>
@@ -274,7 +280,10 @@ exports[`test datePicker style and type > test datePicker style and date 1`] = `
 exports[`test datePicker style and type > test datePicker style and month 1`] = `
 "<div class=\\"var-date-picker var-elevation--2\\">
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
-    <div class=\\"var-date-picker__title-year\\">2021</div>
+    <div class=\\"var-date-picker__title-select\\">
+      <div class=\\"var-date-picker__title-hint\\">选择日期</div>
+      <div class=\\"var-date-picker__title-year\\">2021</div>
+    </div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
       <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>四月</div>
@@ -374,7 +383,10 @@ exports[`test datePicker style and type > test datePicker style and month 1`] = 
 exports[`test datePicker style and type 1`] = `
 "<div class=\\"var-date-picker var-elevation--2\\">
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
-    <div class=\\"var-date-picker__title-year\\">2021</div>
+    <div class=\\"var-date-picker__title-select\\">
+      <div class=\\"var-date-picker__title-hint\\">选择日期</div>
+      <div class=\\"var-date-picker__title-year\\">2021</div>
+    </div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
       <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>五月</div>
@@ -474,7 +486,10 @@ exports[`test datePicker style and type 1`] = `
 exports[`test datePicker style and type 2`] = `
 "<div class=\\"var-date-picker var-elevation--2\\">
   <div class=\\"var-date-picker__title\\" style=\\"background: purple;\\">
-    <div class=\\"var-date-picker__title-year\\">2021</div>
+    <div class=\\"var-date-picker__title-select\\">
+      <div class=\\"var-date-picker__title-hint\\">选择日期</div>
+      <div class=\\"var-date-picker__title-year\\">2021</div>
+    </div>
     <div class=\\"var-date-picker__title-date var-date-picker__title-date--active\\">
       <transition-stub name=\\"var-date-picker-translatey\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
         <div>05-19 星期三</div>

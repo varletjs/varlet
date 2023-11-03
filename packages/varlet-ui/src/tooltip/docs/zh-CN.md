@@ -84,8 +84,8 @@ const placementOptions = [
 ```html
 <template>
   <var-space :size="[54, 10]">
-    <var-tooltip type="default" content="Tooltip">
-      <var-button type="default">默认</var-button>
+    <var-tooltip content="Tooltip">
+      <var-button>默认</var-button>
     </var-tooltip>
     <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">主要</var-button>

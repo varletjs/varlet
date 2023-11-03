@@ -19,6 +19,7 @@ export interface AvatarProps extends BasicAttributes {
   loading?: string
   error?: string
   lazy?: boolean
+  hoverable?: boolean
   onClick?: ListenerProp<(e: Event) => void>
   onLoad?: ListenerProp<(e: Event) => void>
   onError?: ListenerProp<(e: Event) => void>

@@ -6,7 +6,7 @@ Components provide more convenient size, fill mode, rounded corner Settings,
 ripple effect enhanced picture click interactive experience.
 Supports `Lazy load`, `loading images`, `error images`, and default Settings for applying Lazy instructions.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <template>

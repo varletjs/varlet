@@ -1,5 +1,11 @@
 <template>
-  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
+  <div
+    ref="freshNode"
+    :class="n()"
+    @touchstart="handleTouchstart"
+    @touchend="handleTouchend"
+    @touchcancel="handleTouchend"
+  >
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -19,11 +25,11 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
-import { getParentScroller, getScrollTop, getTarget } from '../utils/elements'
+import { getParentScroller, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isNumber, isString, toNumber, getRect, preventDefault } from '@varlet/shared'
+import { isNumber, isString, toNumber, getRect, preventDefault, getScrollTop } from '@varlet/shared'
 import { call, createNamespace } from '../utils/components'
-import { useEventListener, onSmartMounted } from '@varlet/use'
+import { useEventListener, onSmartMounted, useTouch } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('pull-refresh')
 
@@ -55,11 +61,10 @@ export default defineComponent({
       background: isSuccess.value ? props.successBgColor : props.bgColor,
       color: isSuccess.value ? props.successColor : props.color,
     }))
+    const { startTouch, moveTouch, endTouch, isReachTop } = useTouch()
 
     let scroller: HTMLElement | Window
     let eventTargetScroller: HTMLElement | Window | null
-    let startY = 0
-    let deltaY = 0
 
     watch(
       () => props.modelValue,
@@ -78,7 +83,7 @@ export default defineComponent({
 
     onSmartMounted(setScroller)
 
-    useEventListener(freshNode, 'touchmove', touchMove)
+    useEventListener(freshNode, 'touchmove', handleTouchmove)
 
     async function startIconTransition(name: string) {
       if (iconName.value === name) {
@@ -97,18 +102,20 @@ export default defineComponent({
       el.classList[action](`${n()}--lock`)
     }
 
-    function touchStart(event: TouchEvent) {
+    function handleTouchstart(event: TouchEvent) {
+      startTouch(event)
+
       if (controlPosition.value === 0) {
         const { width } = getRect(controlNode.value as HTMLElement)
         controlPosition.value = -(width + width * 0.25)
       }
 
-      startY = event.touches[0].clientY
-      deltaY = 0
       eventTargetScroller = getParentScroller(event.target as HTMLElement)
     }
 
-    function touchMove(event: TouchEvent) {
+    function handleTouchmove(event: TouchEvent) {
+      moveTouch(event)
+
       if (!isTouchable.value || !eventTargetScroller) {
         return
       }
@@ -122,11 +129,7 @@ export default defineComponent({
         return
       }
 
-      const isReachTop = scrollTop === 0
-      const touch = event.touches[0]
-      deltaY = touch.clientY - startY
-
-      if (isReachTop && deltaY >= 0) {
+      if (isReachTop(scroller)) {
         preventDefault(event)
       }
 
@@ -135,17 +138,18 @@ export default defineComponent({
         startPosition.value = event.touches[0].clientY
       }
 
-      if (isReachTop && isNumber(distance.value) && distance.value > controlPosition.value) {
+      if (isReachTop(scroller) && isNumber(distance.value) && distance.value > controlPosition.value) {
         lockEvent('add')
       }
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
-
       distance.value = moveDistance >= maxDistance.value ? maxDistance.value : moveDistance
       startIconTransition(distance.value >= maxDistance.value * 0.2 ? 'refresh' : 'arrow-down')
     }
 
-    async function touchEnd() {
+    async function handleTouchend() {
+      endTouch()
+
       if (!isTouchable.value) {
         return
       }
@@ -198,9 +202,9 @@ export default defineComponent({
       isSuccess,
       n,
       classes,
-      touchStart,
-      touchMove,
-      touchEnd,
+      handleTouchstart,
+      handleTouchmove,
+      handleTouchend,
     }
   },
 })

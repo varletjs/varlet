@@ -160,23 +160,29 @@ export function getScriptExtname() {
   return '.mjs'
 }
 
-export async function compileESEntry(dir: string, publicDirs: string[]) {
+export interface GenerateEsEntryTemplateOptions {
+  publicDirs: string[]
+  scriptExtname?: string
+  root?: string
+}
+
+export function generateEsEntryTemplate(options: GenerateEsEntryTemplateOptions) {
+  const { publicDirs, scriptExtname = getScriptExtname(), root = './' } = options
   const imports: string[] = []
   const plugins: string[] = []
   const exports: string[] = []
   const cssImports: string[] = []
   const publicComponents: string[] = []
-  const scriptExtname = getScriptExtname()
 
   publicDirs.forEach((dirname: string) => {
     const publicComponent = bigCamelize(dirname)
-    const module = `'./${dirname}/index${scriptExtname}'`
+    const module = `'${root}${dirname}/index${scriptExtname}'`
 
     publicComponents.push(publicComponent)
     imports.push(`import ${publicComponent} from ${module}`)
     exports.push(`export * from ${module}`)
     plugins.push(`${publicComponent}.install && app.use(${publicComponent})`)
-    cssImports.push(`import './${dirname}/style/index${scriptExtname}'`)
+    cssImports.push(`import '${root}${dirname}/style/index${scriptExtname}'`)
   })
 
   const install = `
@@ -227,6 +233,16 @@ export default {
   ${publicComponents.join(',\n  ')}
 }
 `
+
+  return {
+    indexTemplate,
+    styleTemplate,
+    bundleTemplate,
+  }
+}
+
+export async function compileESEntry(dir: string, publicDirs: string[]) {
+  const { indexTemplate, bundleTemplate, styleTemplate } = generateEsEntryTemplate({ publicDirs })
 
   await Promise.all([
     writeFile(resolve(dir, 'index.mjs'), indexTemplate, 'utf-8'),

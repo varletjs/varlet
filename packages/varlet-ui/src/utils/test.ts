@@ -235,6 +235,12 @@ export function mockScrollTo() {
   })
 }
 
+export function mockScrollIntoView() {
+  Object.defineProperty(Element.prototype, 'scrollIntoView', {
+    value() {},
+  })
+}
+
 export function mockUserAgent(userAgent: string) {
   const originUserAgent = navigator.userAgent
 

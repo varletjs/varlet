@@ -1,6 +1,10 @@
 # Card
 
-### Basic Use
+### Intro
+
+Display content and actions about a single subject.
+
+### Basic Usage
 
 ```html
 <template>
@@ -41,7 +45,32 @@
 
 ```html
 <template>
-  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+  <var-card 
+    title="Dangerous" 
+    subtitle="The girl was dangerous" 
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
+### Use Slot
+
+```html
+<template>
+  <var-card
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  >
+    <template #extra>
+      <var-space>
+        <var-button text type="warning">ACTION 1</var-button>
+        <var-button text type="warning">ACTION 2</var-button>
+      </var-space>
+    </template>
+  </var-card>
 </template>
 ```
 
@@ -62,26 +91,6 @@
       <var-button round text>
         <var-icon name="heart" />
       </var-button>
-    </template>
-  </var-card>
-</template>
-```
-
-### Use Slot
-
-```html
-<template>
-  <var-card
-    title="Dangerous"
-    subtitle="The girl was dangerous"
-    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-  >
-    <template #extra>
-      <var-space>
-        <var-button text type="warning">ACTION 1</var-button>
-        <var-button text type="warning">ACTION 2</var-button>
-      </var-space>
     </template>
   </var-card>
 </template>
@@ -113,14 +122,11 @@ const floating = ref(false)
   <var-card
     title="Dangerous"
     subtitle="The girl was dangerous"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
-    @click="floating = true"
   >
     <template #extra>
-      <var-button text type="warning">ACTION 1</var-button>
-      <var-button text type="warning">ACTION 2</var-button>
+      <var-button type="primary" @click="floating = true">Floating</var-button>
     </template>
 
     <template #floating-content>
@@ -156,11 +162,11 @@ const floating = ref(false)
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
-| `alt`               | Alt text                                                        | _string_ | `-`      |
+| `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
 | `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
-| `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
+| `floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
 
 ### Events
@@ -221,3 +227,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--card-close-button-icon-size`     | `24px`                |
 | `--card-close-button-size`          | `56px`                |
 | `--card-close-button-primary-color` | `#212121`             |
+| `--card-close-button-text-color` | `#fff`            |

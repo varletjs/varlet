@@ -10,6 +10,7 @@ import collapse from './collapse'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
+import floatingPanel from './floatingPanel'
 import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
@@ -38,6 +39,8 @@ import progress from './progress'
 import option from './option'
 import countdown from './countdown'
 import watermark from './watermark'
+import menuSelect from './menuSelect'
+import menuOption from './menuOption'
 
 export default {
   // common
@@ -90,4 +93,7 @@ export default {
   ...option,
   ...countdown,
   ...watermark,
+  ...menuSelect,
+  ...menuOption,
+  ...floatingPanel,
 } as StyleVars

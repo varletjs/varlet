@@ -1,4 +1,4 @@
-import { useEventListener } from '@varlet/use'
+import { useEventListener, useVModel as _useVModel } from '@varlet/use'
 import {
   createApp,
   h,
@@ -7,19 +7,16 @@ import {
   onDeactivated,
   Comment,
   Fragment,
-  computed,
-  watch,
   type PropType,
   type ExtractPropTypes,
   type Component,
   type VNode,
   type Ref,
-  type WritableComputedRef,
   type ComponentPublicInstance,
   type Plugin,
   type App,
 } from 'vue'
-import { bigCamelize, isArray } from '@varlet/shared'
+import { call as _call, createNamespaceFn, isArray } from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -172,63 +169,11 @@ export function useTeleport() {
   }
 }
 
-export type ClassName = string | undefined | null
-export type Classes = (ClassName | [any, ClassName, ClassName?])[]
-export type BEM<S extends string | undefined, N extends string, NC extends string> = S extends undefined
-  ? NC
-  : S extends `$--${infer CM}`
-  ? `${N}--${CM}`
-  : S extends `--${infer M}`
-  ? `${NC}--${M}`
-  : `${NC}__${S}`
+export const createNamespace = createNamespaceFn('var')
 
-export function createNamespace<C extends string>(name: C) {
-  const namespace = `var` as const
-  const componentName = `${namespace}-${name}` as const
+export const call = _call
 
-  const createBEM = <S extends string | undefined = undefined>(
-    suffix?: S
-  ): BEM<S, typeof namespace, typeof componentName> => {
-    if (!suffix) {
-      return componentName as any
-    }
-
-    if (suffix[0] === '$') {
-      return suffix.replace('$', namespace) as any
-    }
-
-    return (suffix.startsWith('--') ? `${componentName}${suffix}` : `${componentName}__${suffix}`) as any
-  }
-
-  const classes = (...classes: Classes): any[] =>
-    classes.map((className) => {
-      if (isArray(className)) {
-        const [condition, truthy, falsy = null] = className
-        return condition ? truthy : falsy
-      }
-
-      return className
-    })
-
-  return {
-    name: bigCamelize(componentName),
-    n: createBEM,
-    classes,
-  }
-}
-
-export function call<P extends any[], R>(
-  fn?: ((...arg: P) => R) | ((...arg: P) => R)[] | null,
-  ...args: P
-): R | R[] | undefined {
-  if (isArray(fn)) {
-    return fn.map((f) => f(...args))
-  }
-
-  if (fn) {
-    return fn(...args)
-  }
-}
+export const useVModel = _useVModel
 
 export function defineListenerProp<F>(fallback?: any) {
   return {
@@ -247,51 +192,4 @@ export function formatElevation(elevation: number | boolean | string, defaultLev
   }
 
   return `var-elevation--${elevation}`
-}
-
-export interface UseVModelOptions<P, K extends keyof P> {
-  passive?: boolean
-  eventName?: string
-  defaultValue?: P[K]
-  emit?: (event: string, value: P[K]) => void
-}
-
-export function useVModel<P extends Record<string, any>, K extends keyof P>(
-  props: P,
-  key: K,
-  options: UseVModelOptions<P, K> = {}
-): WritableComputedRef<P[K]> | Ref<P[K]> {
-  const { passive = true, eventName, defaultValue, emit } = options
-  const event = eventName ?? `onUpdate:${key.toString()}`
-
-  const getValue = () => (props[key] != null ? props[key] : defaultValue)!
-
-  if (!passive) {
-    return computed<P[K]>({
-      get() {
-        return getValue()
-      },
-      set(value) {
-        emit ? emit(event, value) : call(props[event], value)
-      },
-    })
-  }
-
-  const proxy = ref<P[K]>(getValue())
-
-  watch(
-    () => props[key],
-    () => {
-      proxy.value = getValue()
-    }
-  )
-
-  watch(
-    () => proxy.value,
-    (newValue: P[K]) => {
-      emit ? emit(event, newValue) : call(props[event], newValue)
-    }
-  )
-
-  return proxy
 }

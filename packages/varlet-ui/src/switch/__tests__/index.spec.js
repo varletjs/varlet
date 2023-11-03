@@ -172,5 +172,7 @@ describe('test switch events', () => {
     expect(clickFn).toHaveBeenCalledTimes(2)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
+
+    wrapper.unmount()
   })
 })

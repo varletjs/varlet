@@ -1,5 +1,9 @@
 # AppBar
 
+### Intro
+
+Provide navigation function for the page, often used at the top of the page.
+
 ### Basic Usage
 
 Set the title of the app bar through the `title` prop.
@@ -10,11 +14,33 @@ Set the title of the app bar through the `title` prop.
 </template>
 ```
 
-### Add Slots At Title
+### Use Border Radius
+
+Turn on rounded border with the `round` prop.
 
 ```html
 <template>
-   <var-app-bar>Add Slots At Title</var-app-bar>
+   <var-app-bar title="Use Border Radius" title-position="center" round />
+</template>
+```
+
+### Custom Background Color
+
+```html
+<template>
+   <var-app-bar
+     title="title"
+     title-position="center"
+     color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
+   />
+</template>
+```
+
+### Add Title Slot
+
+```html
+<template>
+   <var-app-bar>Add Title Slot</var-app-bar>
 </template>
 ```
 
@@ -53,28 +79,6 @@ Set the title of the app bar through the `title` prop.
       </var-menu>
     </template>
   </var-app-bar>
-</template>
-```
-
-### Use Border Radius
-
-Turn on rounded border with the `round` prop.
-
-```html
-<template>
-   <var-app-bar title="Use Border Radius" title-position="center" round />
-</template>
-```
-
-### Custom Background Color
-
-```html
-<template>
-   <var-app-bar
-     title="title"
-     title-position="center"
-     color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-   />
 </template>
 ```
 
@@ -155,6 +159,7 @@ const active = ref(0)
 | `content` | Insert the content to the extra content of the app bar   | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |

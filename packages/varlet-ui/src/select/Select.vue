@@ -52,7 +52,7 @@
                   <var-chip
                     :class="n('chip')"
                     var-select-cover
-                    closable
+                    closeable
                     size="small"
                     :type="errorMessage ? 'danger' : undefined"
                     v-for="l in labels"
@@ -122,6 +122,7 @@ import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
 import { toPxNum } from '../utils/elements'
 import { error } from '../utils/logger'
+import { useSelectController } from './useSelectController'
 import { type OptionProvider } from '../option/provide'
 
 const { name, n, classes } = createNamespace('select')
@@ -141,13 +142,17 @@ export default defineComponent({
     const showMenu = ref(false)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
-    const label = ref<string | number>('')
-    const labels = ref<(string | number)[]>([])
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
+    const { label, labels, computeLabel, getSelectedValue } = useSelectController({
+      modelValue: () => props.modelValue,
+      multiple: () => props.multiple,
+      optionProviders: () => options,
+      optionProvidersLength: () => length.value,
+    })
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -196,54 +201,15 @@ export default defineComponent({
       }
     )
 
-    watch(() => props.modelValue, syncOptions, { deep: true })
-
-    watch(() => length.value, syncOptions)
-
     bindOptions(selectProvider)
 
     call(bindForm, selectProvider)
-
-    function computeLabel() {
-      const { multiple, modelValue } = props
-
-      if (multiple) {
-        const rawModelValue = modelValue as unknown as any[]
-        labels.value = rawModelValue.map(findLabel)
-      }
-
-      if (!multiple && !isEmpty(modelValue)) {
-        label.value = findLabel(modelValue as any)
-      }
-
-      if (!multiple && isEmpty(modelValue)) {
-        label.value = ''
-      }
-    }
 
     function validateWithTrigger(trigger: SelectValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
-    }
-
-    function findValueOrLabel({ value, label }: OptionProvider) {
-      if (value.value != null) {
-        return value.value
-      }
-
-      return label.value
-    }
-
-    function findLabel(modelValue: string | number | any[]) {
-      let option = options.find(({ value }) => value.value === modelValue)
-
-      if (!option) {
-        option = options.find(({ label }) => label.value === modelValue)
-      }
-
-      return option?.label.value ?? ''
     }
 
     function handleFocus() {
@@ -279,10 +245,7 @@ export default defineComponent({
         return
       }
 
-      const selectedValue: any = multiple
-        ? options.filter(({ selected }) => selected.value).map(findValueOrLabel)
-        : findValueOrLabel(option)
-
+      const selectedValue = getSelectedValue(option)
       call(props['onUpdate:modelValue'], selectedValue)
       call(onChange, selectedValue)
       validateWithTrigger('onChange')
@@ -300,7 +263,6 @@ export default defineComponent({
       }
 
       const changedModelValue = multiple ? [] : undefined
-
       call(props['onUpdate:modelValue'], changedModelValue)
       call(onClear, changedModelValue)
       validateWithTrigger('onClear')
@@ -324,26 +286,14 @@ export default defineComponent({
         return
       }
 
-      const rawModelValue = modelValue as unknown as any[]
       const option = options.find(({ label }) => label.value === text)
-      const currentModelValue = rawModelValue.filter((value) => value !== (option!.value.value ?? option!.label.value))
+      const currentModelValue = (modelValue as unknown as any[]).filter(
+        (value) => value !== (option!.value.value ?? option!.label.value)
+      )
 
       call(props['onUpdate:modelValue'], currentModelValue)
       call(onClose, currentModelValue)
       validateWithTrigger('onClose')
-    }
-
-    function syncOptions() {
-      const { multiple, modelValue } = props
-
-      if (multiple) {
-        const rawModelValue = modelValue as unknown as any[]
-        options.forEach((option) => option.sync(rawModelValue.includes(findValueOrLabel(option))))
-      } else {
-        options.forEach((option) => option.sync(modelValue === findValueOrLabel(option)))
-      }
-
-      computeLabel()
     }
 
     // expose
@@ -412,3 +362,4 @@ export default defineComponent({
 @import '../chip/chip';
 @import './select';
 </style>
+./useSelectControl

@@ -15,7 +15,7 @@ import '@varlet/ui/es/styles/elevation.css'
 
 ```html
 <template>
-  <var-space class="elevation-example-list" :size="[16, 16]">
+  <var-space class="elevation-example-list" :size="[40, 0]" justify="space-between">
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e - 1}`"
@@ -36,8 +36,9 @@ import '@varlet/ui/es/styles/elevation.css'
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw;
-  height: 25vw;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
 }
 </style>
 ```

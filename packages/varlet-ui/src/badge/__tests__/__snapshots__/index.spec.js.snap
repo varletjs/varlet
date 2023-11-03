@@ -1,7 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test badge component props > test badge default slots 1`] = `
-"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+exports[`test badge component props > test badge hidden 1`] = `
+"<div class=\\"var-badge var--box\\">
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"display: none;\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+</div>"
+`;
+
+exports[`test badge component props > test badge hidden 2`] = `
+"<div class=\\"var-badge var--box\\">
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
 </div>"
 `;
 
@@ -29,8 +36,13 @@ exports[`test badge component props > test badge position 4`] = `
 </div>"
 `;
 
-exports[`test badge component props > test badge value slots 1`] = `
+exports[`test badge component slots > test badge default slots 1`] = `
+"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\"><!--v-if--><span class=\\"var-badge__value\\">0</span></span></transition-stub>
+</div>"
+`;
+
+exports[`test badge component slots > test badge value slots 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if-->value</span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if-->value slots</span></transition-stub>
 </div>"
 `;

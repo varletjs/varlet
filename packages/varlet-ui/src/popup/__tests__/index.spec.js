@@ -108,6 +108,7 @@ test('test popup safe area', async () => {
   })
 
   await wrapper.setData({ show: true })
-
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })

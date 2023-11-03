@@ -97,8 +97,11 @@ export default {
     },
   },
   datePickerSelected: ' selected',
+  datePickerHint: 'SELECT DATE',
   // pagination
   paginationItem: '',
   paginationPage: 'page',
   paginationJump: 'Go to',
+  // time-picker
+  timePickerHint: 'SELECT TIME',
 } as Pack
