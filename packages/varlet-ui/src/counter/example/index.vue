@@ -1,6 +1,5 @@
 <script setup>
-import VarCounter from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { reactive } from 'vue'
 import { use, pack } from './locale'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
@@ -24,7 +23,7 @@ function handleBeforeChange(value, change) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

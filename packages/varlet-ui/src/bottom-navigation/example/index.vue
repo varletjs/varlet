@@ -1,9 +1,5 @@
 <script setup>
-import VarBottomNavigation from '..'
-import VarBottomNavigationItem from '../../bottom-navigation-item'
-import VarIcon from '../../icon'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Snackbar, Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -30,7 +26,7 @@ function handleClick(active) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

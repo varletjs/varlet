@@ -1,9 +1,5 @@
 <script setup>
-import VarCollapse from '..'
-import VarCollapseItem from '../../collapse-item'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
 import { pack, use } from './locale'
@@ -25,7 +21,7 @@ function handleChange(val) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

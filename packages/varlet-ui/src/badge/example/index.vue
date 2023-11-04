@@ -1,10 +1,5 @@
 <script setup>
-import VarBadge from '..'
-import VarButton from '../../button'
-import VarChip from '../../chip'
-import VarSpace from '../../space'
-import VarEllipsis from '../../ellipsis'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
@@ -19,7 +14,7 @@ function handleChange() {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

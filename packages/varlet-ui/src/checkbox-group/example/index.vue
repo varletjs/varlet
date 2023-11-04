@@ -1,10 +1,6 @@
 <script setup>
-import VarCheckboxGroup from '..'
-import VarCheckbox from '../../checkbox'
-import VarIcon from '../../icon'
-import VarButton from '../../button'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
 
@@ -26,7 +22,7 @@ const values = reactive({
 const { value, value2, value3, value4, value5, value6, value7, value8, value9, group, value10, indeterminate } =
   toRefs(values)
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

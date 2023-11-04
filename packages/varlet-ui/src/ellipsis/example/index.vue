@@ -1,8 +1,4 @@
 <script setup>
-import VarEllipsis from '../index'
-import VarIcon from '../../icon'
-import VarButton from '../../button'
-import VarSpace from '../../space'
 import { watchLang, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
