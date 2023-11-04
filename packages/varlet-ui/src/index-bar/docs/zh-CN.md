@@ -14,7 +14,7 @@ import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
-function change(value) {
+function handleChange(value) {
   console.log(value)
 }
 
@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <var-index-bar duration="300" @change="change">
+  <var-index-bar duration="300" @change="handleChange">
     <div v-for="item in list" :key="item">
       <var-index-anchor :index="item" class="anchor">
         标题 {{ item }}
@@ -64,7 +64,7 @@ onMounted(() => {
 | `hide-list`         | 是否隐藏锚点列表 | _boolean_ | `false` |
 | `sticky-css-mode`   | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
 | `z-index`           | z-index 层级 | _number \| string_ | `1` |
-| `highlight-color`   | 索引字符高亮颜色 | _string_ | `#ee0a24` |
+| `highlight-color`   | 索引字符高亮颜色 | _string_ | `-` |
 | `duration`          | 动画持续时间 | _string \| number_ | `0` |
 
 #### IndexAnchor Props

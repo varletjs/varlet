@@ -6,7 +6,7 @@
         v-for="anchorName in anchorNameList"
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
-        :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
+        :style="{ color: active === anchorName && highlightColor ? highlightColor : undefined }"
         @click="anchorClick({ anchorName, manualCall: true })"
       >
         {{ anchorName }}
