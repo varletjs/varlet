@@ -8,9 +8,9 @@
 import VarSwipe from '../swipe'
 import { defineComponent, watch, ref } from 'vue'
 import { useTabItem } from './provide'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { doubleRaf } from '@varlet/shared'
+import { doubleRaf, call } from '@varlet/shared'
 import { type TabItemProvider } from '../tab-item/provide'
 
 const { name, n } = createNamespace('tabs-items')

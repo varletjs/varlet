@@ -30,10 +30,10 @@
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
-import { call, createNamespace, useVModel, formatElevation, useTeleport } from '../utils/components'
+import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { useTouch, useWindowSize } from '@varlet/use'
-import { toNumber, isEmpty, preventDefault } from '@varlet/shared'
+import { useTouch, useWindowSize, useVModel } from '@varlet/use'
+import { toNumber, isEmpty, preventDefault, call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('floating-panel')
 

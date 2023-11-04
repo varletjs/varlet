@@ -32,8 +32,9 @@ import VarIcon from '../icon'
 import { defineComponent, computed, ref, watch } from 'vue'
 import { props } from './props'
 import { useBottomNavigation, type BottomNavigationItemProvider } from './provide'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { type BadgeProps } from '../../types'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('bottom-navigation-item')
 

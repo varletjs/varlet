@@ -8,8 +8,8 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useFormItems, type FormProvider } from './provide'
-import { call, createNamespace } from '../utils/components'
-import { find, preventDefault } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { find, preventDefault, call } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
 

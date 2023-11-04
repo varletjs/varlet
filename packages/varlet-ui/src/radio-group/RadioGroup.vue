@@ -12,9 +12,10 @@
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { props, type ValidateTriggers } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('radio-group')
 

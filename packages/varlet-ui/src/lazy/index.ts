@@ -1,7 +1,6 @@
 import { getAllParentScroller } from '../utils/elements'
-import { removeItem, throttle, doubleRaf, inViewport } from '@varlet/shared'
+import { removeItem, throttle, doubleRaf, inViewport, call } from '@varlet/shared'
 import { createCache } from '../utils/shared'
-import { call } from '../utils/components'
 import { type App, type Directive, type Plugin, type DirectiveBinding } from 'vue'
 import { type CacheInstance } from '../utils/shared'
 

@@ -16,8 +16,9 @@
 import Ripple from '../ripple'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { useTabs, type TabProvider } from './provide'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('tab')
 

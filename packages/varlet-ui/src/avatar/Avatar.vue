@@ -54,7 +54,8 @@ import Lazy, { type LazyHTMLElement } from '../lazy'
 import { defineComponent, ref, onUpdated, type Ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 
 const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)

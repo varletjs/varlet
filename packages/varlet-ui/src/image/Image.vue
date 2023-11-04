@@ -43,7 +43,8 @@ import Lazy, { type LazyHTMLElement } from '../lazy'
 import { watch, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('image')
 

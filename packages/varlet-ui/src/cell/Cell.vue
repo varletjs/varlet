@@ -36,8 +36,9 @@ import VarIcon from '../icon'
 import Ripple from '../ripple'
 import { computed, defineComponent, CSSProperties } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('cell')
 

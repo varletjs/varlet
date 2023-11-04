@@ -20,7 +20,8 @@
 import VarIcon from '../icon'
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('chip')
 

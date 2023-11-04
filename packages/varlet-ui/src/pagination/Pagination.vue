@@ -115,9 +115,9 @@ import VarCell from '../cell'
 import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props, type Range } from './props'
-import { isNumber, toNumber } from '@varlet/shared'
+import { isNumber, toNumber, call } from '@varlet/shared'
 import { pack } from '../locale'
-import { call, createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 
 const { name, n, classes } = createNamespace('pagination')
 

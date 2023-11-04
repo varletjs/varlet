@@ -1,7 +1,7 @@
 import VarDialog from './Dialog.vue'
 import { reactive, nextTick, type TeleportProps } from 'vue'
-import { inBrowser, isString } from '@varlet/shared'
-import { call, mountInstance, withInstall } from '../utils/components'
+import { inBrowser, isString, call } from '@varlet/shared'
+import { mountInstance, withInstall } from '../utils/components'
 
 export interface DialogOptions {
   show?: boolean

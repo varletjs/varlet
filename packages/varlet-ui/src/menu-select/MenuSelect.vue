@@ -36,10 +36,12 @@
 import VarMenu from '../menu'
 import { defineComponent, computed, ref } from 'vue'
 import { props } from './props'
-import { createNamespace, call, useVModel, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
 import { type MenuOptionProvider } from '../menu-option/provide'
+import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('menu-select')
 

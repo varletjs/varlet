@@ -15,10 +15,10 @@
 <script lang="ts">
 import { defineComponent, computed, watch } from 'vue'
 import { props } from './props'
-import { isArray } from '@varlet/shared'
+import { isArray, call } from '@varlet/shared'
 import { useCols, type RowProvider } from './provide'
 import { toPxNum, padStartFlex } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('row')
 

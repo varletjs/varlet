@@ -56,11 +56,12 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { props } from './props'
 import { type SwitchProvider } from './provide'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('switch')
 
