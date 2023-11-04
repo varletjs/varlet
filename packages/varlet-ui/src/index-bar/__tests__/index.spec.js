@@ -5,7 +5,7 @@ import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, describe } from 'vitest'
 
 mockScrollTo()
 
@@ -131,6 +131,12 @@ describe('test index-bar component props', () => {
     await delay(100)
     expect(wrapper.find('.var-index-bar__anchor-list').attributes('style')).toContain('display: none;')
 
+    await wrapper.setProps({
+      hideList: false,
+    })
+    await delay(100)
+    expect(wrapper.find('.var-index-bar__anchor-list').attributes('style')).toContain('display: block;')
+
     wrapper.unmount()
   })
 
@@ -145,6 +151,11 @@ describe('test index-bar component props', () => {
     await delay(100)
     expect(wrapper.find('.var-sticky').attributes('style')).toContain('z-index: 2;')
 
+    await wrapper.setProps({
+      zIndex: 4,
+    })
+    expect(wrapper.find('.var-sticky').attributes('style')).toContain('z-index: 4;')
+
     wrapper.unmount()
   })
 
@@ -153,14 +164,13 @@ describe('test index-bar component props', () => {
 
     await delay(100)
     await wrapper.find('.var-index-bar__anchor-item').trigger('click')
-
     expect(wrapper.find('.var-index-bar__anchor-item--active').attributes('style')).toContain('color: purple')
 
     wrapper.unmount()
   })
 })
 
-describe('test index-bar events', () => {
+describe('test index-bar component events', () => {
   test('test index-bar click event', async () => {
     vi.clearAllMocks()
 

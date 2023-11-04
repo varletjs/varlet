@@ -5,7 +5,7 @@ import VarCell from '../../cell'
 import dark from '../../themes/dark'
 import { ref, onMounted } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 
 const list = ref([])
 const bgColor = ref('#e7edf7')
@@ -17,7 +17,7 @@ onMounted(() => {
   }
 })
 
-function change(value) {
+function handleChange(value) {
   console.log(value)
 }
 
@@ -29,8 +29,9 @@ watchDarkMode(dark, (theme) => {
 </script>
 
 <template>
+  <app-type>{{ pack.basicUsage }}</app-type>
   <div class="index-bar-example-container">
-    <var-index-bar @change="change" duration="300">
+    <var-index-bar @change="handleChange" duration="300">
       <div v-for="item in list" :key="item">
         <var-index-anchor :index="item" class="index-bar-example-anchor" :style="{ background: bgColor, color }">
           {{ pack.title }} {{ item }}
