@@ -49,7 +49,6 @@ const files = ref([
 
 ### Custom Preview
 
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -224,6 +223,32 @@ function handleBeforeRead(file) {
 
 <template>
   <var-uploader v-model="files" @before-read="handleBeforeRead"/>
+</template>
+```
+
+### Upload button click event
+
+By listen the `click-action` event, you can intercept the click behavior of the upload button, and manually trigger the browser to select the file through the `chooseFile` method in the callback.
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const files = ref([])
+
+function handleClickAction(chooseFile) {
+  Snackbar.loading('delay 1s')
+
+  window.setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" @click-action="handleClickAction" />
 </template>
 ```
 

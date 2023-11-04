@@ -35,7 +35,7 @@
           disabled: disabled || formDisabled || readonly || formReadonly || !ripple || Boolean($slots.default),
         }"
         v-hover:desktop="handleHovering"
-        @click="chooseFile"
+        @click="handleActionClick"
       >
         <input
           ref="input"
@@ -46,6 +46,7 @@
           :capture="capture"
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
+          @click.stop
         />
 
         <slot>
@@ -340,6 +341,19 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], expectedFiles)
     }
 
+    function handleActionClick(event: Event) {
+      if (form?.disabled.value || props.disabled) {
+        return
+      }
+
+      if (props.onClickAction) {
+        call(props.onClickAction, chooseFile, event)
+        return
+      }
+
+      chooseFile()
+    }
+
     // expose
     function getSuccess() {
       return props.modelValue.filter((varFile) => varFile.state === 'success')
@@ -414,6 +428,7 @@ export default defineComponent({
       reset,
       chooseFile,
       closePreview,
+      handleActionClick,
       toSizeUnit,
     }
   },

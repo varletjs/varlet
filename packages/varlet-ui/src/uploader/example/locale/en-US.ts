@@ -21,4 +21,5 @@ export default {
   customRender: 'Custom render file list',
   useProgress: 'Use Progress',
   beforeFilter: 'File List Filter',
+  clickAction: 'Upload button click event',
 }

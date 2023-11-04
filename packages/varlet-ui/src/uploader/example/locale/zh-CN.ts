@@ -21,4 +21,5 @@ export default {
   customRender: '自定义渲染文件列表',
   useProgress: '使用进度条',
   beforeFilter: '文件列表过滤',
+  clickAction: '上传按钮点击事件',
 }

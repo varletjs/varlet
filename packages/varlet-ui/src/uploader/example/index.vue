@@ -1,11 +1,5 @@
 <script setup>
-import VarUploader from '..'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import VarIcon from '../../icon'
-import Dialog from '../../dialog'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Snackbar, Dialog, Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
@@ -77,6 +71,16 @@ const values = reactive({
   ],
   files13: [],
   files14: [],
+  files15: [],
+})
+
+let timer
+
+watchLang(use)
+watchDarkMode(Themes.dark)
+
+onUnmounted(() => {
+  window.clearInterval(timer)
 })
 
 function handleAfterRead(file) {
@@ -90,8 +94,6 @@ function handleAfterRead2(file) {
     file.state = 'success'
   }, 1000)
 }
-
-let timer
 
 function handleAfterRead3(file) {
   file.state = 'loading'
@@ -140,12 +142,14 @@ function handlePreview(file) {
   })
 }
 
-watchLang(use)
-watchDarkMode(dark)
+function handleActionClick(chooseFile) {
+  Snackbar.loading('delay 1s')
 
-onUnmounted(() => {
-  window.clearInterval(timer)
-})
+  setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
 </script>
 
 <template>
@@ -175,6 +179,9 @@ onUnmounted(() => {
 
   <app-type>{{ pack.beforeRead }}</app-type>
   <var-uploader v-model="values.files7" @before-read="handleBeforeRead" />
+
+  <app-type>{{ pack.clickAction }}</app-type>
+  <var-uploader v-model="values.files15" @click-action="handleActionClick" />
 
   <app-type>{{ pack.disabled }}</app-type>
   <var-uploader disabled v-model="values.files8" />
