@@ -1,4 +1,4 @@
-import { useEventListener, useVModel as _useVModel } from '@varlet/use'
+import { useEventListener } from '@varlet/use'
 import {
   createApp,
   h,
@@ -16,7 +16,7 @@ import {
   type Plugin,
   type App,
 } from 'vue'
-import { call as _call, createNamespaceFn, isArray } from '@varlet/shared'
+import { createNamespaceFn, isArray } from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -170,10 +170,6 @@ export function useTeleport() {
 }
 
 export const createNamespace = createNamespaceFn('var')
-
-export const call = _call
-
-export const useVModel = _useVModel
 
 export function defineListenerProp<F>(fallback?: any) {
   return {

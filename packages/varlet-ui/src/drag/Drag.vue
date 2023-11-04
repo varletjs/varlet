@@ -21,10 +21,10 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, watch } from 'vue'
 import { props } from './props'
-import { createNamespace, useTeleport, call } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { toPxNum } from '../utils/elements'
 import { onSmartMounted, onWindowResize, useTouch } from '@varlet/use'
-import { clamp, getRect, preventDefault } from '@varlet/shared'
+import { clamp, getRect, preventDefault, call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('drag')
 

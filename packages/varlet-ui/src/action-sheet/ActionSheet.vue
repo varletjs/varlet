@@ -55,8 +55,9 @@ import VarIcon from '../icon'
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { pack } from '../locale'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { type ActionItem } from './index'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('action-sheet')
 

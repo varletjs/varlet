@@ -9,9 +9,9 @@
 <script lang="ts">
 import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch } from 'vue'
 import { props, type TimeData } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import { toNumber, requestAnimationFrame, cancelAnimationFrame } from '@varlet/shared'
+import { toNumber, requestAnimationFrame, cancelAnimationFrame, call } from '@varlet/shared'
 
 const { name, n } = createNamespace('countdown')
 

@@ -30,11 +30,11 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from 'vue'
-import { isPlainObject, toNumber } from '@varlet/shared'
+import { isPlainObject, toNumber, call } from '@varlet/shared'
 import { props } from './props'
 import { useRow, type ColPadding, type ColProvider, type ColSizeDescriptor } from './provide'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('col')
 

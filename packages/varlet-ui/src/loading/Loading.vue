@@ -44,8 +44,9 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('loading')
 

@@ -48,9 +48,9 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { computed, defineComponent, ref } from 'vue'
 import { props } from './props'
-import { call, createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
-import { isArray } from '@varlet/shared'
+import { isArray, call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('button')
 

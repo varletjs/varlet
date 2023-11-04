@@ -63,8 +63,9 @@ import VarButton from '../button'
 import { props } from './props'
 import { defineComponent, ref, watch } from 'vue'
 import { pack } from '../locale'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('dialog')
 

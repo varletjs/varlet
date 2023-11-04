@@ -67,10 +67,10 @@ import VarSwipeItem from '../swipe-item'
 import VarIcon from '../icon'
 import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
-import { toNumber, clamp, preventDefault } from '@varlet/shared'
+import { toNumber, clamp, preventDefault, call } from '@varlet/shared'
 import { useEventListener, useTouch } from '@varlet/use'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
 
 const { name, n, classes } = createNamespace('image-preview')

@@ -41,8 +41,9 @@ import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE, type SnackbarType } from './index'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
+import { call } from '@varlet/shared'
 
 const { n, classes } = createNamespace('snackbar')
 

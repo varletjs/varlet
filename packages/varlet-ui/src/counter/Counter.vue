@@ -102,10 +102,10 @@ import Ripple from '../ripple'
 import { defineComponent, ref, watch, computed, nextTick, type ComputedRef } from 'vue'
 import { Decimal } from 'decimal.js'
 import { props, type ValidateTrigger } from './props'
-import { toNumber } from '@varlet/shared'
+import { toNumber, call } from '@varlet/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { useValidation, createNamespace, call, formatElevation } from '../utils/components'
+import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { type CounterProvider } from './provide'
 
 const SPEED = 100

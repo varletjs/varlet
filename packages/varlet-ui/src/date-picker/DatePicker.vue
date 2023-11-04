@@ -92,8 +92,8 @@ import {
   type ComponentProps,
   type TouchDirection,
 } from './props'
-import { isArray, toNumber, doubleRaf } from '@varlet/shared'
-import { createNamespace, call, formatElevation } from '../utils/components'
+import { isArray, toNumber, doubleRaf, call } from '@varlet/shared'
+import { createNamespace, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { pack } from '../locale'
 

@@ -23,10 +23,10 @@ import VarButton from '../button'
 import VarIcon from '../icon'
 import { defineComponent, ref, onMounted, onActivated, type TeleportProps } from 'vue'
 import { props } from './props'
-import { throttle, getScrollTop, getScrollLeft } from '@varlet/shared'
+import { throttle, getScrollTop, getScrollLeft, call } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
 import { scrollTo, getParentScroller, toPxNum, toSizeUnit, getTarget } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { onSmartUnmounted } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('back-top')

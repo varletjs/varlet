@@ -1,7 +1,7 @@
 import VarPicker from './Picker.vue'
 import { nextTick, reactive, type Component, type TeleportProps } from 'vue'
-import { isArray } from '@varlet/shared'
-import { call, mountInstance, withInstall } from '../utils/components'
+import { isArray, call } from '@varlet/shared'
+import { mountInstance, withInstall } from '../utils/components'
 import { type PickerColumnOption } from './props'
 
 interface PickerOptions {

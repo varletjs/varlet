@@ -66,9 +66,11 @@ import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, ref, computed, nextTick } from 'vue'
 import { props, type ValidateTriggers } from './props'
-import { useValidation, createNamespace, call, useVModel } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
+import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
 

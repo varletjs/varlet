@@ -57,9 +57,11 @@ import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { computed, defineComponent, nextTick, ref } from 'vue'
 import { props, type ValidateTrigger } from './props'
-import { useValidation, createNamespace, call, useVModel } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
+import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio')
 

@@ -112,8 +112,8 @@
 import VarIcon from '../icon'
 import { defineComponent, ref, onUpdated, computed } from 'vue'
 import { props } from './props'
-import { isEmpty, getStyle } from '@varlet/shared'
-import { createNamespace, call } from '../utils/components'
+import { isEmpty, getStyle, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('field-decorator')
