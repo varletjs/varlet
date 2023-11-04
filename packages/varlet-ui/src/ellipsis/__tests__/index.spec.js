@@ -69,14 +69,14 @@ test('test ellipsis expandTrigger', async () => {
   wrapper.unmount()
 })
 
-test('test ellipsis tooltip equals false', async () => {
+test('test ellipsis tooltip equals false', () => {
   const wrapper = mount(VarEllipsis, {
     props: {
       tooltip: false,
     },
   })
 
-  expect(wrapper.vm.tooltip).toStrictEqual({ disabled: true })
+  expect(wrapper.vm.tooltipProps).toStrictEqual({ disabled: true })
   wrapper.unmount()
 })
 
@@ -87,25 +87,35 @@ test('test ellipsis tooltip equals true', () => {
     },
   })
 
-  expect(wrapper.vm.tooltip).toStrictEqual({ sameWidth: true })
+  expect(wrapper.vm.tooltipProps).toStrictEqual({ sameWidth: true })
   wrapper.unmount()
 })
 
 test('test ellipsis tooltip equals object', async () => {
+  const container = document.createElement('div')
   const wrapper = mount(VarEllipsis, {
     props: {
       tooltip: { type: 'primary' },
     },
   })
 
-  expect(wrapper.vm.tooltip).toStrictEqual({ sameWidth: true, type: 'primary' })
+  expect(wrapper.vm.tooltipProps).toStrictEqual({ sameWidth: true, type: 'primary' })
 
   await wrapper.setProps({
     tooltip: {
       type: 'info',
     },
   })
-  expect(wrapper.vm.tooltip).toStrictEqual({ sameWidth: true, type: 'info' })
+  expect(wrapper.vm.tooltipProps).toStrictEqual({ sameWidth: true, type: 'info' })
+
+  await wrapper.setProps({
+    tooltip: {
+      show: true,
+      teleport: container,
+      content: 'Tooltip',
+    },
+  })
+  expect(container.innerHTML).toMatchSnapshot()
 
   wrapper.unmount()
 })
