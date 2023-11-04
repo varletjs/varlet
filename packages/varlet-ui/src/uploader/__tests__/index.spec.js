@@ -541,5 +541,8 @@ test('test uploader on click action', async () => {
 
   await wrapper.find('.var-uploader__action').trigger('click')
   expect(onClickAction).toBeCalledTimes(1)
+  await wrapper.setProps({ disabled: true })
+  await wrapper.find('.var-uploader__action').trigger('click')
+  expect(onClickAction).toBeCalledTimes(1)
   wrapper.unmount()
 })

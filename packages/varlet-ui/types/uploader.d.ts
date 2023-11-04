@@ -47,6 +47,7 @@ export interface UploaderProps extends BasicAttributes {
   resolveType?: UploaderResolveType
   validateTrigger?: Array<UploaderValidateTrigger>
   rules?: Array<(v: VarFile[], u: UploaderVarFileUtils) => any>
+  onClickAction?: ListenerProp<(chooseFile: () => void, event: Event) => void>
   onBeforeFilter?: ListenerProp<(files: VarFile[]) => Promise<VarFile[]> | VarFile[]>
   onBeforeRead?: ListenerProp<(file: VarFile) => Promise<any> | any>
   onAfterRead?: ListenerProp<(file: VarFile) => any>
