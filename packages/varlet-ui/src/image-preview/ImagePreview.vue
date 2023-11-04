@@ -302,7 +302,7 @@ export default defineComponent({
     }
 
     function preventImageDefault(event: Event) {
-      if (props.imagePreventDefault && props.show) {
+      if (isPreventDefault.value) {
         preventDefault(event)
       }
     }
