@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test ellipsis tooltip equals object 1`] = `"<transition-stub name=\\"var-tooltip\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><div class=\\"var-tooltip__tooltip var--box\\" style=\\"z-index: 2000; position: absolute; left: 0px; top: 0px; margin: 0px; transform-origin: top;\\" data-popper-placement=\\"bottom\\"><div style=\\"width: 0px;\\" class=\\"var-tooltip__content-container var-tooltip--default\\"><span>Tooltip</span></div></div></transition-stub>"`;
