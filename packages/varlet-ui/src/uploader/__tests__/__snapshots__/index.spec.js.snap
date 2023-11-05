@@ -37,7 +37,7 @@ exports[`test uploader disabled 2`] = `
 </div>"
 `;
 
-exports[`test uploader hide file list 1`] = `
+exports[`test uploader hideList 1`] = `
 "<div class=\\"var-uploader var--box\\">
   <div class=\\"var-uploader__file-list\\">
     <div class=\\"var-uploader__action var-elevation--2\\"><input type=\\"file\\" class=\\"var-uploader__action-input\\" accept=\\"image/*\\"><i class=\\"var-icon var-icon--set var-icon-plus var-uploader__action-icon\\" style=\\"transition-duration: 0ms;\\" var-uploader-cover=\\"\\"></i>
