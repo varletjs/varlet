@@ -98,11 +98,11 @@ import VarButton from '../button'
 import VarPopup from '../popup'
 import { defineComponent, watch, ref, computed, Transition, type ComponentPublicInstance } from 'vue'
 import { props, type PickerColumnOption } from './props'
-import { useTouch } from '@varlet/use'
-import { clamp, clampArrayRange } from '@varlet/shared'
+import { useTouch, useVModel } from '@varlet/use'
+import { clamp, clampArrayRange, call } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { pack } from '../locale'
-import { createNamespace, call, useVModel } from '../utils/components'
+import { createNamespace } from '../utils/components'
 
 export interface ScrollColumn {
   id: number

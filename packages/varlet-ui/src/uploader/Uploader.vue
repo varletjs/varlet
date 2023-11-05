@@ -35,7 +35,7 @@
           disabled: disabled || formDisabled || readonly || formReadonly || !ripple || Boolean($slots.default),
         }"
         v-hover:desktop="handleHovering"
-        @click="chooseFile"
+        @click="handleActionClick"
       >
         <input
           ref="input"
@@ -46,6 +46,7 @@
           :capture="capture"
           :disabled="disabled || formDisabled || readonly || formReadonly"
           @change="handleChange"
+          @click.stop
         />
 
         <slot>
@@ -93,9 +94,9 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type UploaderValidateTrigger } from './props'
-import { isNumber, toNumber, normalizeToArray, toDataURL } from '@varlet/shared'
+import { isNumber, toNumber, normalizeToArray, toDataURL, call } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
-import { call, useValidation, createNamespace, formatElevation } from '../utils/components'
+import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { toSizeUnit } from '../utils/elements'
 import { type UploaderProvider } from './provide'
@@ -340,6 +341,19 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], expectedFiles)
     }
 
+    function handleActionClick(event: Event) {
+      if (form?.disabled.value || props.disabled) {
+        return
+      }
+
+      if (props.onClickAction) {
+        call(props.onClickAction, chooseFile, event)
+        return
+      }
+
+      chooseFile()
+    }
+
     // expose
     function getSuccess() {
       return props.modelValue.filter((varFile) => varFile.state === 'success')
@@ -414,6 +428,7 @@ export default defineComponent({
       reset,
       chooseFile,
       closePreview,
+      handleActionClick,
       toSizeUnit,
     }
   },

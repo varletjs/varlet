@@ -61,6 +61,7 @@ export const props = {
   rules: Array as PropType<Array<(v: VarFile) => any>>,
   hideList: Boolean,
   preventDefaultPreview: Boolean,
+  onClickAction: defineListenerProp<(chooseFile: () => void, event: Event) => void>(),
   onBeforeFilter: defineListenerProp<(files: VarFile[]) => Promise<VarFile[]> | VarFile[]>(),
   onBeforeRead: defineListenerProp<(file: VarFile) => Promise<any> | any>(),
   onAfterRead: defineListenerProp<(file: VarFile) => any>(),

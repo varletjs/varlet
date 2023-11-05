@@ -227,6 +227,32 @@ function handleBeforeRead(file) {
 </template>
 ```
 
+### 上传按钮点击事件
+
+通过注册 `click-action` 事件可以拦截上传按钮的点击行为，通过回调中的 `chooseFile` 方法进行手动触发浏览器选择文件操作
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const files = ref([])
+
+function handleClickAction(chooseFile) {
+  Snackbar.loading('delay 1s')
+
+  window.setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" @click-action="handleClickAction" />
+</template>
+```
+
 ### 禁用
 
 ```html

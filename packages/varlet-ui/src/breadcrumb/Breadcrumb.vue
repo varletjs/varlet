@@ -15,7 +15,8 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useBreadcrumb } from './provide'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('breadcrumb')
 

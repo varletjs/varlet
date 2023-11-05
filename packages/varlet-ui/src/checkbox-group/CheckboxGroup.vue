@@ -11,10 +11,10 @@
 import VarFormDetails from '../form-details'
 import { defineComponent, computed, watch, nextTick } from 'vue'
 import { props, type CheckboxGroupValidateTrigger } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq } from '@varlet/shared'
+import { uniq, call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 

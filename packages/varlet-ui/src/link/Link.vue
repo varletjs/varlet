@@ -25,8 +25,9 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('link')
 

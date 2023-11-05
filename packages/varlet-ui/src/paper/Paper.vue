@@ -25,9 +25,10 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import { defineComponent } from 'vue'
-import { call, createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('paper')
 

@@ -528,3 +528,21 @@ test('test uploader resolve-type as data-url when file type is not image', async
   wrapper.unmount()
   mockRestore()
 })
+
+test('test uploader on click action', async () => {
+  const onClickAction = vi.fn()
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      onClickAction,
+    },
+  })
+
+  await wrapper.find('.var-uploader__action').trigger('click')
+  expect(onClickAction).toBeCalledTimes(1)
+  await wrapper.setProps({ disabled: true })
+  await wrapper.find('.var-uploader__action').trigger('click')
+  expect(onClickAction).toBeCalledTimes(1)
+  wrapper.unmount()
+})

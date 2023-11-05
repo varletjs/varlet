@@ -1,7 +1,7 @@
 import { defineComponent, VNodeChild } from 'vue'
 import { props, type SpaceSize } from './props'
-import { isArray } from '@varlet/shared'
-import { call, createNamespace, flatFragment } from '../utils/components'
+import { isArray, call } from '@varlet/shared'
+import { createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
 

@@ -27,8 +27,8 @@ import VarIcon from '../icon'
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { getParentScroller, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isNumber, isString, toNumber, getRect, preventDefault, getScrollTop } from '@varlet/shared'
-import { call, createNamespace } from '../utils/components'
+import { isNumber, isString, toNumber, getRect, preventDefault, getScrollTop, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
 import { useEventListener, onSmartMounted, useTouch } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('pull-refresh')

@@ -30,8 +30,8 @@
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { getParentScroller, toPxNum } from '../utils/elements'
-import { toNumber, raf, doubleRaf, getRect } from '@varlet/shared'
-import { call, createNamespace } from '../utils/components'
+import { toNumber, raf, doubleRaf, getRect, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
 import { useEventListener, onSmartMounted, onWindowResize, onSmartUnmounted } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('sticky')

@@ -8,7 +8,8 @@
 import { computed, defineComponent } from 'vue'
 import { useStep, type StepsProvider } from './provide'
 import { props } from './props'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
 const { name, n } = createNamespace('steps')
 

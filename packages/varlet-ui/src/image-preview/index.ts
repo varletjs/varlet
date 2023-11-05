@@ -1,7 +1,7 @@
 import VarImagePreview from './ImagePreview.vue'
 import { nextTick, reactive, type TeleportProps } from 'vue'
-import { inBrowser, isArray, isString } from '@varlet/shared'
-import { call, mountInstance, withInstall } from '../utils/components'
+import { inBrowser, isArray, isString, call } from '@varlet/shared'
+import { mountInstance, withInstall } from '../utils/components'
 
 interface ImagePreviewOptions {
   show?: boolean

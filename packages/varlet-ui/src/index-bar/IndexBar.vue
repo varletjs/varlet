@@ -6,7 +6,7 @@
         v-for="anchorName in anchorNameList"
         :key="anchorName"
         :class="classes(n('anchor-item'), [active === anchorName, n('anchor-item--active')])"
-        :style="{ color: active === anchorName && highlightColor ? highlightColor : '' }"
+        :style="{ color: active === anchorName && highlightColor ? highlightColor : undefined }"
         @click="anchorClick({ anchorName, manualCall: true })"
       >
         {{ anchorName }}
@@ -26,12 +26,13 @@ import {
   getRect,
   getScrollLeft,
   getScrollTop,
+  call,
 } from '@varlet/shared'
 import { easeInOutCubic } from '../utils/shared'
 import { getParentScroller, scrollTo as varScrollTo, toPxNum } from '../utils/elements'
 import { useIndexAnchors, type IndexBarProvider } from './provide'
 import { props, type IndexBarScrollToOptions, type ClickOptions } from './props'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 import { type IndexAnchorProvider } from '../index-anchor/provide'
 

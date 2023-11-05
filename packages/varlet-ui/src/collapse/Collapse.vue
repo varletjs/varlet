@@ -8,8 +8,8 @@
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
-import { call, createNamespace } from '../utils/components'
-import { isArray } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { isArray, call } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
