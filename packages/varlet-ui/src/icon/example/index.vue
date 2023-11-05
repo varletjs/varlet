@@ -1,5 +1,7 @@
 <script setup>
-import { Themes, Snackbar, Clipboard, icons } from '@varlet/ui'
+import { Themes, Snackbar } from '@varlet/ui'
+import Clipboard from 'clipboard'
+import icons from '@varlet/icons'
 import { reactive, onMounted, ref, computed } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
