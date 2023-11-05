@@ -1,22 +1,6 @@
 <script setup>
-import VarForm from '..'
-import VarInput from '../../input'
-import VarSelect from '../../select'
-import VarOption from '../../option'
-import VarCheckboxGroup from '../../checkbox-group'
-import VarCheckbox from '../../checkbox'
-import VarRadioGroup from '../../radio-group'
-import VarRadio from '../../radio'
-import VarButton from '../../button'
-import VarSwitch from '../../switch'
-import VarSlider from '../../slider'
-import VarUploader from '../../uploader'
-import VarCounter from '../../counter'
-import VarRate from '../../rate'
-import VarSpace from '../../space'
-import VarCustomFormComponent from './CustomFormComponent'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
 import { reactive, ref } from 'vue'
 import { use, pack } from './locale'
 
@@ -43,7 +27,7 @@ watchLang((lang) => {
   use(lang)
   form.value?.reset()
 })
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

@@ -1,11 +1,5 @@
 <script setup>
-import VarIcon from '..'
-import VarInput from '../../input'
-import vRipple from '../../ripple'
-import Snackbar from '../../snackbar'
-import Clipboard from 'clipboard'
-import icons from '@varlet/icons'
-import dark from '../../themes/dark'
+import { Themes, Snackbar, Clipboard, icons } from '@varlet/ui'
 import { reactive, onMounted, ref, computed } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -34,7 +28,7 @@ onMounted(() => {
 
 watchLang(use)
 
-watchDarkMode(dark, (theme) => {
+watchDarkMode(Themes.dark, (theme) => {
   background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })
 </script>

@@ -1,10 +1,5 @@
 <script setup>
-import ImagePreview from '../index'
-import VarButton from '../../button'
-import VarIcon from '../../icon'
-import ActionSheet from '../../action-sheet'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Themes, Snackbar, ImagePreview, ActionSheet } from '@varlet/ui'
 import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import { ref, computed } from 'vue'
 import { pack, use } from './locale'
@@ -61,7 +56,7 @@ function previewCallback() {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

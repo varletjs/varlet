@@ -1,14 +1,8 @@
 <script setup>
-import VarFloatingPanel from '..'
-import VarTabs from '../../tabs'
-import VarTab from '../../tab'
-import VarTabsItems from '../../tabs-items'
-import VarTabItem from '../../tab-item'
-import VarCell from '../../cell'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { watchDarkMode, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
-import dark from '../../themes/dark'
 
 const tabsRef = ref(null)
 const active = ref(0)
@@ -24,7 +18,7 @@ watchLang((lang) => {
     tabsRef.value.resize()
   }
 })
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
