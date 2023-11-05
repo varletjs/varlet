@@ -1,6 +1,7 @@
 # Uploader
 
 ### Intro
+
 It provides the ability to read files and preview pictures and videos.
 Get the file upload server by listening for `after-read` events.
 
@@ -226,7 +227,7 @@ function handleBeforeRead(file) {
 </template>
 ```
 
-### Upload button click event
+### Upload Button Click Event
 
 By listen the `click-action` event, you can intercept the click behavior of the upload button, and manually trigger the browser to select the file through the `chooseFile` method in the callback.
 
@@ -478,6 +479,7 @@ const files = ref([
 | `before-remove` | Triggered before file deletion, return false value to prevent file deletion (support promise) | `file: VarFile` |
 | `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
 | `preview` | Triggered when a file is previewed | `file: VarFile` |
+| `click-action`| Intercept click behavior of upload button | `chooseFile: () => void, event: Event` |
 
 ### Slots
 
