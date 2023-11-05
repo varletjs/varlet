@@ -1,17 +1,13 @@
 <script setup>
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarButton from '../../button'
-import VarDivider from '../../divider'
-import VarIcon from '../../icon'
-import VarCard from '..'
-import dark from '../../themes/dark'
 import { pack, use } from './locale'
 import { ref } from 'vue'
 
 const floating = ref(false)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

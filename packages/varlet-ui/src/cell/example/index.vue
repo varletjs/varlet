@@ -1,9 +1,5 @@
 <script setup>
-import VarIcon from '../../icon'
-import VarPaper from '../../paper'
-import VarSwitch from '../../switch'
-import VarCell from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { pack, use } from './locale'
 import { ref } from 'vue'
@@ -31,7 +27,7 @@ const handleClick = (item) => {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

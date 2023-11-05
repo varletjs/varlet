@@ -1,9 +1,5 @@
 <script setup>
-import VarCountdown from '..'
-import Snackbar from '../../snackbar'
-import VarButton from '../../button'
-import VarRow from '../../row'
-import dark from '../../themes/dark'
+import { Snackbar, Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
@@ -20,7 +16,7 @@ function change() {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

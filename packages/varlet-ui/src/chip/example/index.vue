@@ -1,9 +1,6 @@
 <script setup>
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarChip from '..'
-import VarIcon from '../../icon'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -11,7 +8,7 @@ const show = ref(true)
 const show1 = ref(true)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

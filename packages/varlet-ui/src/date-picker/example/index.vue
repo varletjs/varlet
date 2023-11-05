@@ -1,6 +1,5 @@
 <script setup>
-import VarDatePicker from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
@@ -27,7 +26,7 @@ function preview(year, month) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

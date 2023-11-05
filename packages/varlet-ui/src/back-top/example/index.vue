@@ -1,14 +1,12 @@
 <script setup>
-import VarBackTop from '..'
-import VarCell from '../../cell'
-import dark from '../../themes/dark'
 import { pack, use } from './locale'
+import { Themes } from '@varlet/ui'
 import { watchDarkMode, AppType, watchLang } from '@varlet/cli/client'
 
 const lists = [...Array(100).keys()]
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
