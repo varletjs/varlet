@@ -324,7 +324,7 @@ export default defineComponent({
 
     // expose
     function zoom(ratio: number) {
-      ratio < BASE_RATIO ? zoomOut() : zoomIn(ratio)
+      ratio <= BASE_RATIO ? zoomOut() : zoomIn(ratio)
     }
 
     return {
