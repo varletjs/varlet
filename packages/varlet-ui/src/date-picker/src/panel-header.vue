@@ -56,9 +56,11 @@ export default defineComponent({
       const { date, type } = props
       const { previewMonth, previewYear }: Preview = date
 
+      if (type === 'year') return previewYear
+
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
 
-      const monthName = pack.value.datePickerMonthDict?.[previewMonth.index].name
+      const monthName = pack.value.datePickerMonthDict?.[previewMonth!.index].name
       return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 

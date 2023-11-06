@@ -175,7 +175,7 @@ test('test datePicker max and min', async () => {
   await delay(200)
   await wrapper.find('.var-picker-header__value').trigger('click')
   await delay(200)
-  expect(wrapper.find('.var-year-picker').findAll('li').length).toBe(1)
+  expect(wrapper.find('.var-year-picker').findAll('li').length).toBe(100)
 
   wrapper.unmount()
 })
@@ -204,7 +204,8 @@ test('test datePicker v-model', async () => {
 
   await wrapper.find('.var-picker-header__value').trigger('click')
   await delay(200)
-  await wrapper.find('.var-year-picker').find('li').trigger('click')
+  await wrapper.find('button').trigger('click')
+  await wrapper.find('.var-year-picker').find('li').find('button').trigger('click')
   await delay(200)
   await wrapper.find('.var-month-picker__content').find('ul').find('button').trigger('click')
   expect(wrapper.vm.date).not.toBe('2021-01')
@@ -219,7 +220,7 @@ test('test datePicker v-model', async () => {
 })
 
 test('test datePicker multiple', async () => {
-  const template = `<var-date-picker multiple v-model="date" />`
+  const template = `<var-date-picker multiple v-model="date" :type="type"/>`
 
   const wrapper = mount({
     components: {
@@ -227,6 +228,7 @@ test('test datePicker multiple', async () => {
     },
     data() {
       return {
+        type: 'date',
         date: ['2021-05-19'],
       }
     },
@@ -252,6 +254,20 @@ test('test datePicker multiple', async () => {
     `${currentYear}-${currentMonth}-02`,
     `${currentYear}-${currentMonth}-03`,
   ])
+
+  await wrapper.setData({ type: 'month', date: ['2021-05'] })
+  await delay(0)
+
+  const btn = wrapper.find('ul').find('button')
+  await btn.trigger('click')
+  expect(wrapper.vm.date).toEqual(['2021-05', `${currentYear}-01`])
+
+  await wrapper.setData({ type: 'year', date: ['2021'] })
+  await delay(0)
+
+  const btn1 = wrapper.find('li').find('button')
+  await btn1.trigger('click')
+  expect(wrapper.vm.date).toEqual(['2021', `${currentYear.slice(0, 2)}00`])
 
   wrapper.unmount()
 })
@@ -291,6 +307,14 @@ test('test datePicker range', async () => {
   await lis[2].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual([`${currentYear}-01`, `${currentYear}-03`])
   expect(fn).toHaveBeenCalledTimes(1)
+
+  await wrapper.setData({ type: 'year', date: [currentYear, `${+currentYear + 2}`] })
+  await delay(0)
+
+  const lis1 = wrapper.find('.var-year-picker').findAll('li').slice(0, 2)
+  await lis1[0].find('button').trigger('click')
+  await lis1[1].find('button').trigger('click')
+  expect(wrapper.vm.date).toEqual([`${currentYear.slice(0, 2)}00`, `${currentYear.slice(0, 2)}01`])
 
   mockRestore()
   wrapper.unmount()

@@ -13,7 +13,12 @@ const dates = reactive({
   date5: '2021-05',
 })
 
-const allowedDates = (date) => parseInt(date.split('-')[1], 10) % 2 === 1
+const allowedDates = (date) => {
+  const month = date.split('-')[1]
+  if (!month) return true
+
+  return parseInt(month, 10) % 2 === 1
+}
 
 const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 
@@ -50,7 +55,7 @@ watchDarkMode(Themes.dark)
     type="month"
     :allowed-dates="allowedDates"
     v-model="dates.date5"
-    max="2022-01"
+    max="2036-01"
     min="2016-07"
     elevation
     header-color="purple"

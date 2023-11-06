@@ -3,7 +3,7 @@ import { defineListenerProp } from '../utils/components'
 
 type AllowedDates = (val: string) => boolean
 
-type DatePickerType = 'date' | 'month'
+type DatePickerType = 'year' | 'date' | 'month'
 
 export type TouchDirection = 'x' | 'y'
 
@@ -41,14 +41,16 @@ export type Choose = {
   chooseMonth: MonthDict | undefined
   chooseYear: string | undefined
   chooseDay: string | undefined
+  chooseYears: Array<string>
   chooseMonths: Array<string>
   chooseDays: Array<string>
+  chooseRangeYear: Array<string>
   chooseRangeMonth: Array<string>
   chooseRangeDay: Array<string>
 }
 
 export type Preview = {
-  previewMonth: MonthDict
+  previewMonth?: MonthDict
   previewYear: string
 }
 
@@ -152,7 +154,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  onPreview: defineListenerProp<(year: number, month: number) => void>(),
+  onPreview: defineListenerProp<(year: number, month: number, day?: number) => void>(),
   onChange: defineListenerProp<(value: string | string[]) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),
 }

@@ -96,22 +96,6 @@ export default defineComponent({
 
     const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr ?? ''
 
-    const inRange = (key: string): boolean => {
-      const {
-        preview: { previewYear },
-        componentProps: { min, max },
-      }: { preview: Preview; componentProps: ComponentProps } = props
-
-      let isBeforeMax = true
-      let isAfterMin = true
-      const previewDate = `${previewYear}-${key}`
-
-      if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'month')
-      if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'month')
-
-      return isBeforeMax && isAfterMin
-    }
-
     const shouldChoose = (val: string): boolean => {
       const {
         choose: { chooseMonths, chooseDays, chooseRangeMonth },
@@ -146,7 +130,6 @@ export default defineComponent({
       }
 
       const computeDisabled = (): boolean => {
-        if (!inRange(key)) return true
         if (!allowedDates) return false
 
         return !allowedDates(val)
