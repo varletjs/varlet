@@ -1,8 +1,5 @@
 <script setup>
-import vHover from '../../hover'
-import VarImage from '../../image'
-import VarPaper from '../../paper'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
@@ -14,7 +11,7 @@ function handleHover(hovering) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

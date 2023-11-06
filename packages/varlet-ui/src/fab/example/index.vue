@@ -1,14 +1,5 @@
 <script setup>
-import VarFab from '../index'
-import VarRadioGroup from '../../radio-group'
-import VarRadio from '../../radio'
-import VarSwitch from '../../switch'
-import VarButton from '../../button'
-import VarIcon from '../../icon'
-import VarSelect from '../../select'
-import VarOption from '../../option'
-import dark from '../../themes/dark'
-import VarSlider from '../../slider'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
@@ -32,7 +23,7 @@ function toggleActions() {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
