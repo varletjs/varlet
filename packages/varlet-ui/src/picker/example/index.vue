@@ -1,10 +1,6 @@
 <script setup>
-import Picker from '../index'
-import Snackbar from '../../snackbar/index'
-import VarSpace from '../../space'
-import VarButton from '../../button'
+import { Themes, Snackbar, Picker } from '@varlet/ui'
 import area from '../../../json/area.json'
-import dark from '../../themes/dark'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
@@ -127,7 +123,7 @@ function handleChange(values, indexes) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

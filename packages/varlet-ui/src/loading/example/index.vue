@@ -1,9 +1,5 @@
 <script setup>
-import VarLoading from '..'
-import VarSpace from '../../space'
-import VarButton from '../../button'
-import VarCard from '../../card'
-import dark from '../../themes/dark/index'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import { pack, use } from './locale'
@@ -11,7 +7,7 @@ import { pack, use } from './locale'
 const loading = ref(false)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

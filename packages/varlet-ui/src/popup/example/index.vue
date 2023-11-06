@@ -1,10 +1,6 @@
 <script setup>
-import VarPopup from '..'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import Snackbar from '../../snackbar'
+import { Themes, Snackbar } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -22,7 +18,7 @@ const values = reactive({
 const { center, top, bottom, left, right, overlayClass, overlayStyle, event } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
