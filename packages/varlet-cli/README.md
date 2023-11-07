@@ -261,3 +261,15 @@ varlet-cli create
 
 - 1.`npm` repository registry must set to `npm` official mirror
 - 2.Execute `npm login` to log in
+
+### Q & A
+
+> How to solve failure of installing sharp ?
+
+- You can choose to change mirror site which contains binaries for both sharp and libvips.
+
+``` shell
+pnpm config set sharp_binary_host "https://npmmirror.com/mirrors/sharp"
+pnpm config set sharp_libvips_binary_host "https://npmmirror.com/mirrors/sharp-libvips"
+```
+
