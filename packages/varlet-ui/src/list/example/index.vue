@@ -1,11 +1,5 @@
 <script setup>
-import VarList from '..'
-import VarCell from '../../cell'
-import VarTabs from '../../tabs'
-import VarTab from '../../tab'
-import VarTabsItems from '../../tabs-items'
-import VarTabItem from '../../tab-item'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { reactive, toRefs } from 'vue'
 import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -72,7 +66,7 @@ function load3() {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

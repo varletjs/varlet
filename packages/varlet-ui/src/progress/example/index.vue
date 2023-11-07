@@ -1,8 +1,6 @@
 <script setup>
-import VarProgress from '..'
-import VarSpace from '../../space'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 
@@ -10,7 +8,7 @@ const value = ref(0)
 let timer
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 
 onMounted(() => {
   timer = window.setInterval(() => {

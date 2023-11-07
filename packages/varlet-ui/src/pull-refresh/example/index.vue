@@ -1,7 +1,5 @@
 <script setup>
-import VarPullRefresh from '..'
-import VarCell from '../../cell'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { watchDarkMode } from '@varlet/cli/client'
 
@@ -17,7 +15,7 @@ function refresh() {
   }, 2000)
 }
 
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

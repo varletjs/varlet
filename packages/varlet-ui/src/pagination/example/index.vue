@@ -1,11 +1,10 @@
 <script setup>
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarPagination from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { use, pack } from './locale'
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

@@ -1,8 +1,5 @@
 <script setup>
-import VarOverlay from '../Overlay'
-import VarButton from '../../button'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Themes, Snackbar } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
@@ -16,7 +13,7 @@ const values = reactive({
 const { baseOverlay, contentOverlay, clickOverlay } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

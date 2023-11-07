@@ -1,9 +1,5 @@
 <script setup>
-import VarMenuSelect from '..'
-import VarMenuOption from '../../menu-option'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -33,7 +29,7 @@ watchLang((lang) => {
   valueCloseOnSelect.value = undefined
   valueMultiple.value = []
 })
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
