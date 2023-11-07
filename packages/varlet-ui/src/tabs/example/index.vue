@@ -1,11 +1,6 @@
 <script setup>
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarTabs from '..'
-import VarTab from '../../tab'
-import VarIcon from '../../icon'
-import VarTabsItems from '../../tabs-items'
-import VarTabItem from '../../tab-item'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { use, pack } from './locale'
 import { computed, reactive, ref, toRefs } from 'vue'
 
@@ -28,7 +23,7 @@ const tabItemStyle = computed(() => ({
 }))
 
 watchLang(use)
-watchDarkMode(dark, (mode) => {
+watchDarkMode(Themes.dark, (mode) => {
   theme.value = mode
 })
 </script>

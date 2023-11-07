@@ -1,7 +1,5 @@
 <script setup>
-import VarSwipe from '..'
-import VarSwipeItem from '../../swipe-item'
-import Snackbar from '../../snackbar'
+import { Snackbar } from '@varlet/ui'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 

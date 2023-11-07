@@ -1,7 +1,5 @@
 <script setup>
-import VarTable from '..'
-import VarPagination from '../../pagination'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
@@ -25,7 +23,7 @@ function get(current, size) {
 }
 
 watchLang(use, 'pc')
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

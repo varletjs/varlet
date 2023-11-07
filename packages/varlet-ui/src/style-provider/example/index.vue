@@ -1,9 +1,5 @@
 <script setup>
-import StyleProvider from '../index'
-import VarRate from '../../rate'
-import VarSwitch from '../../switch'
-import VarButton from '../../button'
-import dark from '../../themes/dark'
+import { Themes, StyleProvider } from '@varlet/ui'
 import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
@@ -42,7 +38,7 @@ function toggleRootTheme() {
 watchLang(use)
 
 onUnmounted(() => {
-  StyleProvider(getBrowserTheme() === 'darkTheme' ? dark : null)
+  StyleProvider(getBrowserTheme() === 'darkTheme' ? Themes.dark : null)
 })
 </script>
 

@@ -1,9 +1,5 @@
 <script setup>
-import Snackbar from '../index'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import VarIcon from '../../icon'
-import dark from '../../themes/dark'
+import { Themes, Snackbar, Icon, Button } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive, toRefs, onBeforeUnmount, h } from 'vue'
 import { pack, use } from './locale'
@@ -55,10 +51,10 @@ function createSnackbar(type) {
   if (type === 'custom') {
     const customSnackbar = Snackbar({
       content: 'Hello, Varlet',
-      icon: () => h(VarIcon, { name: 'heart', style: { paddingRight: '12px' } }),
+      icon: () => h(Icon, { name: 'heart', style: { paddingRight: '12px' } }),
       action: () =>
         h(
-          VarButton,
+          Button,
           { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() },
           { default: () => pack.value.close }
         ),
@@ -86,7 +82,7 @@ onBeforeUnmount(() => {
 })
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

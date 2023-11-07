@@ -1,11 +1,10 @@
 <script setup>
-import VarTable from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use, 'pc')
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

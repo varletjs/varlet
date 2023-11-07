@@ -1,12 +1,10 @@
 <script setup>
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarSpace from '..'
-import VarButton from '../../button'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { pack, use } from './locale'
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
