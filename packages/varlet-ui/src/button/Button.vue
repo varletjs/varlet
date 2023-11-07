@@ -10,10 +10,11 @@
         [states.text, `${n(`--text-${states.type}`)} ${n('--text')}`, `${n(`--${states.type}`)} ${states.elevation}`],
         [states.text && disabled, n('--text-disabled')],
         [round, n('--round')],
-        [states.outline, n('--outline')]
+        [states.outline, n('--outline')],
+        [loading || pending, n('--loading')]
       )
     "
-    v-ripple="{ disabled: disabled || !ripple }"
+    v-ripple="{ disabled: disabled || !ripple || loading || pending }"
     v-hover:desktop="handleHovering"
     :style="{
       color: states.textColor,
@@ -37,7 +38,7 @@
       <slot />
     </div>
 
-    <var-hover-overlay :hovering="disabled ? false : hovering" />
+    <var-hover-overlay :hovering="disabled || loading || pending ? false : hovering" />
   </button>
 </template>
 
