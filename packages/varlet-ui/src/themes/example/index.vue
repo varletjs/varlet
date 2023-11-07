@@ -1,13 +1,12 @@
 <script setup>
-import VarButton from '../../button'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { use, pack } from './locale'
 
 const toggleTheme = () => window.toggleTheme()
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

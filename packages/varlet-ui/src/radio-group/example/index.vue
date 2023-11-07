@@ -1,8 +1,5 @@
 <script setup>
-import VarRadioGroup from '..'
-import VarRadio from '../../radio'
-import VarIcon from '../../icon'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { toRefs, reactive } from 'vue'
 import { use, pack } from './locale'
@@ -21,7 +18,7 @@ const values = reactive({
 const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

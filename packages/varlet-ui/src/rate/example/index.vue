@@ -1,7 +1,5 @@
 <script setup>
-import VarRate from '..'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
+import { Themes, Snackbar } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
@@ -30,7 +28,7 @@ function handleChange(score) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

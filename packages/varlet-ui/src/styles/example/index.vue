@@ -1,13 +1,12 @@
 <script setup>
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { watchDarkMode } from '@varlet/cli/client'
 
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
-const background = ref(dark)
+const background = ref(Themes.dark)
 
-watchDarkMode(dark, (theme) => {
+watchDarkMode(Themes.dark, (theme) => {
   background.value = theme === 'darkTheme' ? '#303030' : '#fff'
 })
 </script>

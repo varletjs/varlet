@@ -1,8 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarTimePicker from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { pack, use } from './locale'
 
 const dates = reactive({
@@ -25,7 +24,7 @@ function change(time) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

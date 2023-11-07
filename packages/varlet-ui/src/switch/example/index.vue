@@ -1,8 +1,6 @@
 <script setup>
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarSwitch from '..'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -17,7 +15,7 @@ const values = reactive({
 const { value, value1, value2, value3, value4 } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

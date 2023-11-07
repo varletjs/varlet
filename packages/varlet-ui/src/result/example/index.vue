@@ -1,9 +1,5 @@
 <script setup>
-import VarResult from '../index'
-import VarButton from '../../button'
-import VarPopup from '../../popup'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
@@ -16,7 +12,7 @@ const question = ref(false)
 const empty = ref(false)
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

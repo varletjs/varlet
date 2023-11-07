@@ -1,9 +1,5 @@
 <script setup>
-import VarSelect from '..'
-import VarOption from '../../option'
-import VarSpace from '../../space'
-import VarIcon from '../../icon'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
@@ -34,7 +30,7 @@ const outlinedValue10 = ref(undefined)
 const outlinedValue11 = ref(undefined)
 const outlinedValue12 = ref(undefined)
 
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 watchLang((lang) => {
   standardValue.value = undefined
   standardValue2.value = undefined
