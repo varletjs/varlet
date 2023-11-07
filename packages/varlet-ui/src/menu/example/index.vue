@@ -1,5 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
+import { Themes, Snackbar } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale/index'
