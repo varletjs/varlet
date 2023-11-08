@@ -1,14 +1,17 @@
 <template>
   <div>
-    <panel-header
-      ref="headerEl"
-      type="year"
-      :date="{
-        previewYear: `${yearList[0]} ~ ${yearList[yearList.length - 1]}`,
-      }"
-      :disabled="panelBtnDisabled"
-      @check-date="checkDate"
-    />
+    <var-sticky css-mode>
+      <panel-header
+        ref="headerEl"
+        type="year"
+        :date="{
+          previewYear: `${yearList[0]} ~ ${yearList[yearList.length - 1]}`,
+        }"
+        :disabled="panelBtnDisabled"
+        @check-date="checkDate"
+      />
+    </var-sticky>
+
     <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
       <ul ref="panel" :class="n()" :key="panelKey">
         <li v-for="year in yearList" :key="year">

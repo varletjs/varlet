@@ -576,6 +576,7 @@ export default defineComponent({
 @import '../styles/elevation';
 @import '../ripple/ripple';
 @import '../button/button';
+@import '../sticky/sticky';
 @import '../icon/icon';
 @import './date-picker';
 </style>
