@@ -64,7 +64,9 @@ export function withPropsDefaultsSetter(target: any, props: Record<string, any>)
       }
 
       if (isPlainObject(prop)) {
+        // e.g. { type: String }
         prop.default = value
+        return
       }
 
       props[key] = {
