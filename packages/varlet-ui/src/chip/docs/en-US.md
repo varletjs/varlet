@@ -7,7 +7,7 @@ Chip component, used to display some items, and supports closing items.
 
 ### Chip Type
 
-Set the type of the chip with the 'type' attribute.
+Set the type of the chip with the `type` attribute.
 
 ```html
 <template>
