@@ -1,9 +1,11 @@
 import Button from './Button.vue'
-import { withInstall } from '../utils/components'
+import { props as buttonProps } from './props'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
 
 withInstall(Button)
+withPropsDefaultsSetter(Button, buttonProps)
 
-export { props as buttonProps } from './props'
+export { buttonProps }
 
 export const _ButtonComponent = Button
 

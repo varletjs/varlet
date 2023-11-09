@@ -6,6 +6,8 @@ export class VarComponent {
   static install(app: App): void
 }
 
+export type SetPropsDefaults<P> = (defaults: Record<keyof P, any>) => void
+
 export type Type = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
 export type Size = 'normal' | 'mini' | 'small' | 'large'
