@@ -185,7 +185,7 @@ export const toSizeUnit = (value: unknown) => {
     return `${value}px`
   }
 
-  return value
+  return String(value)
 }
 
 export const multiplySizeUnit = (value: unknown, quantity = 1) => {
