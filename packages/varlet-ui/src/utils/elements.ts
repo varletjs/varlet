@@ -10,6 +10,7 @@ import {
   getStyle,
   getScrollTop,
   getScrollLeft,
+  isNumeric,
 } from '@varlet/shared'
 import { error } from './logger'
 import { type StyleVars } from '../style-provider'
@@ -129,8 +130,8 @@ export const isVar = (value: unknown): value is string => isString(value) && val
 
 // e.g. return 1
 export const toPxNum = (value: unknown): number => {
-  if (isNumber(value)) {
-    return value
+  if (isNumeric(value)) {
+    return Number(value)
   }
 
   if (isPx(value)) {
@@ -180,21 +181,11 @@ export const toSizeUnit = (value: unknown) => {
     return undefined
   }
 
-  if (
-    isPercent(value) ||
-    isVw(value) ||
-    isVh(value) ||
-    isEm(value) ||
-    isRem(value) ||
-    isCalc(value) ||
-    isVar(value) ||
-    isVMin(value) ||
-    isVMax(value)
-  ) {
-    return value
+  if (isNumeric(value)) {
+    return `${value}px`
   }
 
-  return `${toPxNum(value)}px`
+  return value
 }
 
 export const multiplySizeUnit = (value: unknown, quantity = 1) => {
