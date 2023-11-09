@@ -1,8 +1,3 @@
-<script setup>
-import VarRow from '../../row'
-import VarCol from '../../col'
-</script>
-
 <template>
   <var-row :gutter="10">
     <var-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
