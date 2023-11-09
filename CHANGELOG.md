@@ -1,3 +1,26 @@
+## [2.18.3](https://github.com/varletjs/varlet/compare/v2.18.2...v2.18.3) (2023-11-09)
+
+
+### Bug Fixes
+
+* **button:** remove hover and ripple effect while loading ([#1275](https://github.com/varletjs/varlet/issues/1275)) ([591a8b2](https://github.com/varletjs/varlet/commit/591a8b2c1a3d63e1ef723a81563c2bcef3487efc))
+* **date-picker:** panel-header add sticky ([0212fee](https://github.com/varletjs/varlet/commit/0212feebb4144ad3e5d853e95baacd22241f8a2e))
+* **ui:** correct the return type of toSizeUnit ([#1282](https://github.com/varletjs/varlet/issues/1282)) ([0a2b04a](https://github.com/varletjs/varlet/commit/0a2b04a5b0f7818d24d18d2faf3d3d866afb86ff))
+
+
+### Features
+
+* **image-preview:** support zoom method ([#1262](https://github.com/varletjs/varlet/issues/1262)) ([99a8369](https://github.com/varletjs/varlet/commit/99a8369a875cc74bb7ff08b7b6cded3a1954b901))
+* **shared:** support isNumeric and optimize ui elements ([06cda15](https://github.com/varletjs/varlet/commit/06cda15ad3c4a286bb115b309f3a8a5406c0eab6))
+* **uploader:** support props.onClickAction ([830264f](https://github.com/varletjs/varlet/commit/830264f90d244858b4c3ee285fbf69758e0bab8c))
+
+
+### Reverts
+
+* **date-picker:** revert month-panel modify ([75cbae8](https://github.com/varletjs/varlet/commit/75cbae889a6d534f658f102156c3243c567324e9))
+
+
+
 ## [2.18.2](https://github.com/varletjs/varlet/compare/v2.18.1...v2.18.2) (2023-11-02)
 
 
