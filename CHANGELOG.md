@@ -1,3 +1,12 @@
+## [2.18.4](https://github.com/varletjs/varlet/compare/v2.18.3...v2.18.4) (2023-11-10)
+
+
+### Bug Fixes
+
+* **date-picker:** import sticky component ([6fe6ac6](https://github.com/varletjs/varlet/commit/6fe6ac67c2d34c8518b646e1aba98050f777614e))
+
+
+
 ## [2.18.3](https://github.com/varletjs/varlet/compare/v2.18.2...v2.18.3) (2023-11-09)
 
 

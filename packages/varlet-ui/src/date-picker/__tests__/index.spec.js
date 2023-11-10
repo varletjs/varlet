@@ -268,6 +268,7 @@ test('test datePicker multiple', async () => {
   const btn1 = wrapper.find('li').find('button')
   await btn1.trigger('click')
   expect(wrapper.vm.date).toEqual(['2021', `${currentYear.slice(0, 2)}00`])
+  await delay(200)
 
   wrapper.unmount()
 })
@@ -315,6 +316,7 @@ test('test datePicker range', async () => {
   await lis1[0].find('button').trigger('click')
   await lis1[1].find('button').trigger('click')
   expect(wrapper.vm.date).toEqual([`${currentYear.slice(0, 2)}00`, `${currentYear.slice(0, 2)}01`])
+  await delay(200)
 
   mockRestore()
   wrapper.unmount()
