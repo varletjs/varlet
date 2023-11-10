@@ -80,6 +80,7 @@ const EVENT_DELAY = 200
 const TAP_DELAY = 350
 const ANIMATION_DURATION = 200
 const LONG_PRESS_DELAY = 500
+const BASE_RATIO = 1
 
 export default defineComponent({
   name,
@@ -137,8 +138,8 @@ export default defineComponent({
       { immediate: true }
     )
 
-    function zoomIn() {
-      scale.value = toNumber(props.zoom)
+    function zoomIn(ratio: number | string) {
+      scale.value = toNumber(ratio)
       canSwipe.value = false
       targets.prev = null
 
@@ -221,7 +222,7 @@ export default defineComponent({
       }, LONG_PRESS_DELAY)
 
       if (isDoubleTouch(target)) {
-        scale.value > 1 ? zoomOut() : zoomIn()
+        scale.value > BASE_RATIO ? zoomOut() : zoomIn(props.zoom)
         return
       }
 
@@ -279,7 +280,7 @@ export default defineComponent({
         window.clearTimeout(longPressRunner as number)
       }
 
-      if (scale.value > 1) {
+      if (scale.value > BASE_RATIO) {
         const limitX = getLimitX(target)
         const limitY = getLimitY(target)
 
@@ -291,13 +292,19 @@ export default defineComponent({
     }
 
     function close() {
-      if (scale.value > 1) {
+      if (scale.value > BASE_RATIO) {
         zoomOut()
         setTimeout(() => call(props['onUpdate:show'], false), ANIMATION_DURATION)
         return
       }
 
       call(props['onUpdate:show'], false)
+    }
+
+    function preventImageDefault(event: Event) {
+      if (isPreventDefault.value) {
+        preventDefault(event)
+      }
     }
 
     // expose
@@ -315,8 +322,9 @@ export default defineComponent({
       swipeRef.value?.to(idx, options)
     }
 
-    function preventImageDefault(event: Event) {
-      props.imagePreventDefault && props.show && preventDefault(event)
+    // expose
+    function zoom(ratio: number) {
+      ratio <= BASE_RATIO ? zoomOut() : zoomIn(ratio)
     }
 
     return {
@@ -340,6 +348,7 @@ export default defineComponent({
       prev,
       next,
       to,
+      zoom,
     }
   },
 })

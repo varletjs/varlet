@@ -127,7 +127,7 @@ onUnmounted(() => {
 | `value`       | `progress` 的进度                                                  | _string \| number_   |  `0`  |
 | `line-width`  | `progress` 的线宽                                                  | _string \| number_   | `4` |
 | `color`       | `progress` 的颜色 (环形进度条设置渐变色请使用object, 渐变同svg的linearGradient元素)                                                  | _string \| object_ | `-` |
-| `track-color` | `progress` 轨道的颜色                                                | _string_ | `#d8d8d8` |
+| `track-color` | `progress` 轨道的颜色                                                | _string_ | `-` |
 | `label`       | 是否显示 `label`                                                    | _boolean_ | `false`   |
 | `label-class` | 自定义 `label` 的类名                                                 | _string_ | `-`       |
 | `track`       | 是否显示 `progress` 的轨道                                             | _boolean_ | `true`    |

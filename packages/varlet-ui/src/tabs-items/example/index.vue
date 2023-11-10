@@ -1,20 +1,19 @@
 <template>
-  <var-tabs-items />
+  <tabs-items />
 </template>
 
 <script lang="ts">
-import VarTabsItems from '..'
-import dark from '../../themes/dark'
+import { Themes, TabsItems } from '@varlet/ui'
 import { defineComponent } from 'vue'
 import { watchDarkMode } from '@varlet/cli/client'
 
 export default defineComponent({
   name: 'TabsItemsExample',
   components: {
-    VarTabsItems,
+    TabsItems,
   },
   setup() {
-    watchDarkMode(dark)
+    watchDarkMode(Themes.dark)
   },
 })
 </script>

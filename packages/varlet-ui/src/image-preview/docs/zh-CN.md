@@ -278,6 +278,7 @@ const actions = [
 | `prev` | 上一页 | `options?: SwipeToOptions` | `-` |
 | `next` | 下一页 | `options?: SwipeToOptions` | `-` |
 | `to` | 跳转到指定下标 | `index: number, options?: SwipeToOptions` | `-` |
+| `zoom` | 放大或者缩小图片 | `ratio: number` | `-` |
 
 ### 插槽
 

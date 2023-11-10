@@ -259,9 +259,9 @@ const value2 = ref([7, 64])
 
 | Event | Description | arguments |
 | ----- | -------- | -------- |
-| `change` |  Emitted after slider changed | value: current value |
+| `change` |  Emitted after slider changed | `value`: current value |
 | `start` | Emitted when start dragged | `-` |
-| `end` | Emitted when end dragged | value: current value |
+| `end` | Emitted when end dragged | `value`: current value |
 
 ### Slots
 

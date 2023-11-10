@@ -1,7 +1,5 @@
 <script setup>
-import VarSlider from '..'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { reactive } from 'vue'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { pack, use } from './locale'
@@ -28,7 +26,7 @@ function handleChange(v) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

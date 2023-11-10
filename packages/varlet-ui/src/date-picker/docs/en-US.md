@@ -93,7 +93,12 @@ import { ref } from 'vue'
 
 const date = ref('2021-05')
 
-const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
+const allowedDates = (date) => {
+  const month = date.split('-')[1]
+  if(!month) return true
+
+  return parseInt(month, 10) % 2 === 1
+}
 
 function change(date) {
   console.log(date)
@@ -105,7 +110,7 @@ function change(date) {
     elevation
     type="month"
     v-model="date"
-    min="2016-07"
+    min="2036-07"
     max="2022-01"
     header-color="purple"
     color="#7bb872"
@@ -131,7 +136,7 @@ function change(date) {
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
-| `type` | Picker type, optional values `date` `month`                                                                         | _string_ | `date` |
+| `type` | Picker type, optional values `date` `month` `year`                                                                         | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
 | `color` | Picker color                                                                                                      | _string_ | `-` |
 | `title-color` | Color of picker title. If not specified it will use `color` prop or the default picker color. | _string_ | `-` |
@@ -151,7 +156,7 @@ function change(date) {
 
 | Event | Description                 | arguments |
 | ----- |-----------------------------| -------- |
-| `preview` | Emitted after date switched | `year: number` <br>`month: number` |
+| `preview` | Emitted after date switched | `year: number` <br>`month: number` <br>`day?: number` |
 | `change` | Emitted after date changed  | `value: string \| string[]` |
 
 ### Slots
@@ -195,13 +200,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-font-weight` | `400`                  |
-| `--year-picker-item-padding` | `8px 0`                |
-| `--year-picker-item-active-font-size` | `26px`                 |
-| `--year-picker-item-active-font-weight` | `500`                  |
-| `--year-picker-item-active-font-padding` | `10px 0`               |
-| `--year-picker-item-active-color` | `var(--color-primary)` |
-| `--year-picker-item-color` | `#555` |
+| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-item-width` | `33%`                  |
+| `--year-picker-item-height` | `56px`                 |
+| `--year-picker-item-button-max-width` | `140px`                |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |

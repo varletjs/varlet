@@ -260,3 +260,14 @@ varlet-cli create
 
 - 1.`npm` 的仓库源必须指向 `npm` 官方镜像
 - 2.执行 `npm login` 进行登录
+
+### 问答
+
+> 如何解决安装 sharp 失败的问题 ?
+
+- 您可以选择更改包含 sharp 和 libvips 二进制文件的镜像站点
+
+``` shell
+pnpm config set sharp_binary_host "https://npmmirror.com/mirrors/sharp"
+pnpm config set sharp_libvips_binary_host "https://npmmirror.com/mirrors/sharp-libvips"
+```

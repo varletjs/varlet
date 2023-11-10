@@ -117,13 +117,13 @@ export default defineComponent({
     })
 
     const isCurrent: ComputedRef<boolean> = computed(
-      () => props.preview.previewYear === currentYear && props.preview.previewMonth.index === currentMonth
+      () => props.preview.previewYear === currentYear && props.preview.previewMonth!.index === currentMonth
     )
 
     const isSame: ComputedRef<boolean> = computed(
       () =>
         props.choose.chooseYear === props.preview.previewYear &&
-        props.choose.chooseMonth?.index === props.preview.previewMonth.index
+        props.choose.chooseMonth?.index === props.preview.previewMonth!.index
     )
 
     const sortWeekList: ComputedRef<Array<WeekDict>> = computed(() => {
@@ -141,8 +141,8 @@ export default defineComponent({
         preview: { previewMonth, previewYear },
       }: { preview: Preview } = props
 
-      const monthNum = dayjs(`${previewYear}-${previewMonth.index}`).daysInMonth()
-      const firstDayToWeek = dayjs(`${previewYear}-${previewMonth.index}-01`).day()
+      const monthNum = dayjs(`${previewYear}-${previewMonth!.index}`).daysInMonth()
+      const firstDayToWeek = dayjs(`${previewYear}-${previewMonth!.index}-01`).day()
       const index = sortWeekList.value.findIndex((week: WeekDict) => week.index === `${firstDayToWeek}`)
       days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
     }
@@ -154,12 +154,12 @@ export default defineComponent({
       }: { preview: Preview; componentProps: ComponentProps } = props
 
       if (max) {
-        const date = `${previewYear}-${toNumber(previewMonth.index) + 1}`
+        const date = `${previewYear}-${toNumber(previewMonth!.index) + 1}`
         panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
       }
 
       if (min) {
-        const date = `${previewYear}-${toNumber(previewMonth.index) - 1}`
+        const date = `${previewYear}-${toNumber(previewMonth!.index) - 1}`
         panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
       }
     }
@@ -172,7 +172,7 @@ export default defineComponent({
 
       let isBeforeMax = true
       let isAfterMin = true
-      const previewDate = `${previewYear}-${previewMonth.index}-${day}`
+      const previewDate = `${previewYear}-${previewMonth!.index}-${day}`
 
       if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
       if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
@@ -214,7 +214,7 @@ export default defineComponent({
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
 
-      const val = `${previewYear}-${previewMonth.index}-${day}`
+      const val = `${previewYear}-${previewMonth!.index}-${day}`
 
       const dayExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)

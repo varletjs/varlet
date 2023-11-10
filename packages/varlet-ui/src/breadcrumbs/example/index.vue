@@ -1,13 +1,9 @@
 <script setup>
-import VarBreadcrumbs from '..'
-import VarBreadcrumb from '../../breadcrumb'
-import VarIcon from '../../icon'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark/index'
+import { Themes } from '@varlet/ui'
 import { use, pack } from './locale'
 import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
 
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 watchLang(use)
 </script>
 

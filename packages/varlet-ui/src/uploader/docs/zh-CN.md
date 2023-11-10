@@ -1,8 +1,8 @@
 # 文件上传
 
 ### 介绍
-提供了文件读取、图片/视频预览能力。
-通过监听 `after-read` 事件获取文件上传服务器。
+
+提供了文件读取、图片/视频预览能力。通过监听 `after-read` 事件获取文件上传服务器。
 
 ### 基本使用
 
@@ -48,7 +48,6 @@ const files = ref([
 ```
 
 ### 自定义预览
-
 
 ```html
 <script setup>
@@ -229,7 +228,7 @@ function handleBeforeRead(file) {
 
 ### 上传按钮点击事件
 
-通过注册 `click-action` 事件可以拦截上传按钮的点击行为，通过回调中的 `chooseFile` 方法进行手动触发浏览器选择文件操作
+通过注册 `click-action` 事件可以拦截上传按钮的点击行为，通过回调中的 `chooseFile` 方法进行手动触发浏览器选择文件操作。
 
 ```html
 <script setup>
@@ -478,7 +477,7 @@ const files = ref([
 | `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持 promise) | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |
 | `preview` | 文件预览时触发 | `file: VarFile` |
-
+| `click-action`| 拦截上传按钮的点击行为 | `chooseFile: () => void, event: Event` |
 
 ### 插槽
 

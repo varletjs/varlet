@@ -1,6 +1,4 @@
 <script setup>
-import VarRow from '..'
-import VarCol from '../../col'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 

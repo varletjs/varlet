@@ -1,8 +1,5 @@
 <script setup>
-import VarIndexAnchor from '../../index-anchor/IndexAnchor.vue'
-import VarIndexBar from '..'
-import VarCell from '../../cell'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { ref, onMounted } from 'vue'
 import { pack, use } from './locale'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
@@ -22,7 +19,7 @@ function handleChange(value) {
 }
 
 watchLang(use)
-watchDarkMode(dark, (theme) => {
+watchDarkMode(Themes.dark, (theme) => {
   bgColor.value = theme === 'darkTheme' ? 'rgb(41, 42, 45)' : '#e7edf7'
   color.value = theme === 'darkTheme' ? '#3980e8' : '#2e67ba'
 })

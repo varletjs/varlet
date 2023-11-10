@@ -1,6 +1,4 @@
 <script setup>
-import VarSticky from '..'
-import VarButton from '../../button'
 import { AppType, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 

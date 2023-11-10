@@ -4,6 +4,8 @@ export const isBoolean = (val: unknown): val is boolean => typeof val === 'boole
 
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
 
+export const isNumeric = (val: unknown): val is number | string => isNumber(val) || (isString(val) && /^\d+$/.test(val))
+
 export const isPlainObject = (val: unknown): val is Record<string, any> =>
   Object.prototype.toString.call(val) === '[object Object]'
 

@@ -1,8 +1,5 @@
 <script setup>
-import LoadingBar from '..'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import dark from '../../themes/dark'
+import { Themes, LoadingBar } from '@varlet/ui'
 import { ref } from 'vue'
 import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -23,7 +20,7 @@ function setStyle() {
   hasCustomStyle.value = !hasCustomStyle.value
 }
 
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 watchLang(use)
 
 LoadingBar.setDefaultOptions({

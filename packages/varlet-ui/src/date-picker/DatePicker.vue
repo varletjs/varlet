@@ -3,7 +3,11 @@
     <div :class="n('title')" :style="{ background: titleColor || headerColor || color }">
       <div :class="n('title-select')">
         <div :class="n('title-hint')">{{ hint ?? pack.datePickerHint }}</div>
-        <div :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])" @click="clickEl('year')">
+        <div
+          v-if="type !== 'year'"
+          :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
+          @click="clickEl('year')"
+        >
           <slot name="year" :year="chooseYear">
             {{ chooseYear }}
           </slot>
@@ -11,11 +15,28 @@
       </div>
 
       <div
-        :class="classes(n('title-date'), [!isYearPanel, n('title-date--active')], [range, n('title-date--range')])"
+        :class="
+          classes(
+            n('title-date'),
+            [!isYearPanel || type === 'year', n('title-date--active')],
+            [range, n('title-date--range')]
+          )
+        "
         @click="clickEl('date')"
       >
         <transition :name="multiple ? '' : `${n()}${reverse ? '-reverse' : ''}-translatey`">
-          <div :key="`${chooseYear}${chooseMonth?.index}`" v-if="type === 'month'">
+          <div :key="`${chooseYear}`" v-if="type === 'year'">
+            <slot name="range" :choose="getChoose.chooseRangeYear" v-if="range">
+              {{ getYearTitle }}
+            </slot>
+            <slot name="multiple" :choose="getChoose.chooseYears" v-else-if="multiple">
+              {{ getYearTitle }}
+            </slot>
+            <slot name="year" :year="chooseYear" v-else>
+              {{ getYearTitle }}
+            </slot>
+          </div>
+          <div :key="`${chooseYear}${chooseMonth?.index}`" v-else-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
             </slot>
@@ -43,6 +64,9 @@
     <div :class="n('body')" @touchstart="handleTouchstart" @touchmove="handleTouchmove" @touchend="handleTouchend">
       <transition :name="`${n()}-panel-fade`">
         <year-picker-panel
+          ref="yearPanelEl"
+          :choose="getChoose"
+          :current="currentDate"
           :component-props="componentProps"
           :preview="previewYear"
           @choose-year="getChooseYear"
@@ -120,10 +144,13 @@ export default defineComponent({
     const previewMonth = ref<MonthDict>(monthDes)
     const previewYear = ref(currentYear)
     const reverse = ref(false)
+    const chooseYears = ref<string[]>([])
     const chooseMonths = ref<string[]>([])
     const chooseDays = ref<string[]>([])
+    const chooseRangeYear = ref<string[]>([])
     const chooseRangeMonth = ref<string[]>([])
     const chooseRangeDay = ref<string[]>([])
+    const yearPanelEl = ref<RendererNode | null>(null)
     const monthPanelEl = ref<RendererNode | null>(null)
     const dayPanelEl = ref<RendererNode | null>(null)
     const componentProps = reactive<ComponentProps>({
@@ -142,8 +169,10 @@ export default defineComponent({
       chooseMonth: chooseMonth.value,
       chooseYear: chooseYear.value,
       chooseDay: chooseDay.value,
+      chooseYears: chooseYears.value,
       chooseMonths: chooseMonths.value,
       chooseDays: chooseDays.value,
+      chooseRangeYear: chooseRangeYear.value,
       chooseRangeMonth: chooseRangeMonth.value,
       chooseRangeDay: chooseRangeDay.value,
     }))
@@ -151,6 +180,17 @@ export default defineComponent({
       previewMonth: previewMonth.value,
       previewYear: previewYear.value,
     }))
+
+    const getYearTitle = computed<string>(() => {
+      const { multiple, range } = props
+
+      if (range) {
+        return chooseRangeYear.value.length ? `${chooseRangeYear.value[0]} ~ ${chooseRangeYear.value[1]}` : ''
+      }
+
+      return multiple ? `${chooseYears.value.length}${pack.value.datePickerSelected}` : chooseYear.value ?? ''
+    })
+
     const getMonthTitle = computed<string>(() => {
       const { multiple, range } = props
 
@@ -164,6 +204,7 @@ export default defineComponent({
       }
       return multiple ? `${chooseMonths.value.length}${pack.value.datePickerSelected}` : monthName
     })
+
     const getDateTitle = computed<string>(() => {
       const { multiple, range } = props
 
@@ -187,7 +228,7 @@ export default defineComponent({
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
     const getPanelType = computed<string>(() => {
-      if (isYearPanel.value) return 'year'
+      if (props.type === 'year' || isYearPanel.value) return 'year'
 
       if (props.type === 'month' || isMonthPanel.value) return 'month'
 
@@ -195,7 +236,7 @@ export default defineComponent({
 
       return ''
     })
-    const isUntouchable = computed(() => !props.touchable || ['', 'year'].includes(getPanelType.value))
+    const isUntouchable = computed(() => !props.touchable || !getPanelType.value)
     const slotProps = computed<Record<string, string>>(() => {
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
       const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
@@ -276,14 +317,15 @@ export default defineComponent({
     async function handleTouchend() {
       if (isUntouchable.value || touchDirection !== 'x') return
 
-      const componentRef = getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
+      const componentRef =
+        getPanelType.value === 'year' ? yearPanelEl : getPanelType.value === 'month' ? monthPanelEl : dayPanelEl
       await doubleRaf()
       componentRef.value!.forwardRef(checkType)
       resetState()
     }
 
     function updateRange(date: string, type: string) {
-      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
+      const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
       rangeDate.value = rangeDone.value ? [date, date] : [rangeDate.value[0], date]
       rangeDone.value = !rangeDone.value
 
@@ -297,8 +339,8 @@ export default defineComponent({
     }
 
     function updateMultiple(date: string, type: string) {
-      const multipleDates = type === 'month' ? chooseMonths : chooseDays
-      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD'
+      const multipleDates = type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
+      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD'
       const formatDates = multipleDates.value.map((date) => dayjs(date).format(formatType))
 
       const index = formatDates.findIndex((choose) => choose === date)
@@ -313,6 +355,8 @@ export default defineComponent({
     function getReverse(dateType: string, date: MonthDict | number) {
       if (!chooseYear.value || !chooseMonth.value) return false
       if (!isSameYear.value) return chooseYear.value > previewYear.value
+
+      if (dateType === 'year') return (date as number) < toNumber(chooseYear.value)
 
       if (dateType === 'month') return (date as MonthDict).index < chooseMonth.value.index
 
@@ -353,19 +397,39 @@ export default defineComponent({
         }
       } else {
         previewMonth.value = month
-
-        call(onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
+        call(
+          onPreview,
+          toNumber(previewYear.value),
+          toNumber(previewMonth.value.index),
+          type === 'date' ? toNumber(chooseDay.value) : undefined
+        )
       }
 
       isMonthPanel.value = false
     }
 
     function getChooseYear(year: number) {
-      previewYear.value = `${year}`
-      isYearPanel.value = false
-      isMonthPanel.value = true
+      const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
+      reverse.value = getReverse('year', year)
 
-      call(props.onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
+      if (type === 'year' && !readonly) {
+        if (range) updateRange(`${year}`, 'year')
+        else if (multiple) updateMultiple(`${year}`, 'year')
+        else {
+          call(updateModelValue, `${year}`)
+          call(onChange, `${year}`)
+        }
+      } else {
+        previewYear.value = `${year}`
+        call(
+          onPreview,
+          toNumber(previewYear.value),
+          toNumber(previewMonth.value.index),
+          type === 'date' ? toNumber(chooseDay.value) : undefined
+        )
+      }
+
+      isYearPanel.value = false
     }
 
     function checkPreview(type: string, checkType: string) {
@@ -389,7 +453,12 @@ export default defineComponent({
         previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as MonthDict
       }
 
-      call(props.onPreview, toNumber(previewYear.value), toNumber(previewMonth.value.index))
+      call(
+        props.onPreview,
+        toNumber(previewYear.value),
+        toNumber(previewMonth.value.index),
+        props.type === 'date' ? toNumber(chooseDay.value) : undefined
+      )
     }
 
     function checkValue() {
@@ -416,8 +485,8 @@ export default defineComponent({
     }
 
     function rangeInit(value: Array<string>, type: string) {
-      const rangeDate = type === 'month' ? chooseRangeMonth : chooseRangeDay
-      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const rangeDate = type === 'year' ? chooseRangeYear : type === 'month' ? chooseRangeMonth : chooseRangeDay
+      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
       const formatDateList = value.map((choose) => dayjs(choose).format(formatType)).slice(0, 2)
 
       const isValid = rangeDate.value.some((date) => invalidFormatDate(date))
@@ -433,8 +502,8 @@ export default defineComponent({
     }
 
     function multipleInit(value: Array<string>, type: string) {
-      const rangeDate = type === 'month' ? chooseMonths : chooseDays
-      const formatType = type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
+      const rangeDate = type === 'year' ? chooseYears : type === 'month' ? chooseMonths : chooseDays
+      const formatType = type === 'year' ? 'YYYY' : type === 'month' ? 'YYYY-MM' : 'YYYY-MM-D'
 
       // need uniq
       const formatDateList = Array.from(new Set(value.map((choose) => dayjs(choose).format(formatType))))
@@ -465,6 +534,7 @@ export default defineComponent({
     }
 
     return {
+      yearPanelEl,
       monthPanelEl,
       dayPanelEl,
       reverse,
@@ -477,6 +547,7 @@ export default defineComponent({
       isMonthPanel,
       getMonthTitle,
       getDateTitle,
+      getYearTitle,
       getPanelType,
       getChoose,
       getPreview,
@@ -505,6 +576,7 @@ export default defineComponent({
 @import '../styles/elevation';
 @import '../ripple/ripple';
 @import '../button/button';
+@import '../sticky/sticky';
 @import '../icon/icon';
 @import './date-picker';
 </style>

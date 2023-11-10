@@ -101,14 +101,11 @@ export default defineComponent({
         preview: { previewYear },
         componentProps: { min, max },
       }: { preview: Preview; componentProps: ComponentProps } = props
-
       let isBeforeMax = true
       let isAfterMin = true
       const previewDate = `${previewYear}-${key}`
-
       if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'month')
       if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'month')
-
       return isBeforeMax && isAfterMin
     }
 

@@ -1,6 +1,5 @@
 <script setup>
-import VarWatermark from '../index'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { nextTick, ref } from 'vue'
 import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
@@ -18,7 +17,7 @@ const toggle = () => {
 
 watchLang(use)
 
-watchDarkMode(dark, () => {
+watchDarkMode(Themes.dark, () => {
   nextTick(() => {
     watermarkRef.value.resize()
     watermarkRef2.value.resize()

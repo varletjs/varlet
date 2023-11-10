@@ -1,6 +1,5 @@
 <script setup>
-import VarDatePicker from '..'
-import dark from '../../themes/dark'
+import { Themes } from '@varlet/ui'
 import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
@@ -14,7 +13,12 @@ const dates = reactive({
   date5: '2021-05',
 })
 
-const allowedDates = (date) => parseInt(date.split('-')[1], 10) % 2 === 1
+const allowedDates = (date) => {
+  const month = date.split('-')[1]
+  if (!month) return true
+
+  return parseInt(month, 10) % 2 === 1
+}
 
 const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 
@@ -27,7 +31,7 @@ function preview(year, month) {
 }
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -51,7 +55,7 @@ watchDarkMode(dark)
     type="month"
     :allowed-dates="allowedDates"
     v-model="dates.date5"
-    max="2022-01"
+    max="2036-01"
     min="2016-07"
     elevation
     header-color="purple"

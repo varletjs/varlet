@@ -330,7 +330,7 @@ test('test uploader length over maxlength in multiple mode', async () => {
   mockRestore()
 })
 
-test('test uploader hide file list', async () => {
+test('test uploader hideList', async () => {
   const { mockRestore } = mockFileReader('data:image/png;base64,')
   const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
@@ -404,6 +404,8 @@ test('test uploader progress', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test uploader extra slot', async () => {
@@ -529,7 +531,7 @@ test('test uploader resolve-type as data-url when file type is not image', async
   mockRestore()
 })
 
-test('test uploader on click action', async () => {
+test('test uploader onClickAction', async () => {
   const onClickAction = vi.fn()
 
   const wrapper = mount(VarUploader, {
@@ -545,4 +547,32 @@ test('test uploader on click action', async () => {
   await wrapper.find('.var-uploader__action').trigger('click')
   expect(onClickAction).toBeCalledTimes(1)
   wrapper.unmount()
+})
+
+test('test uploader removable', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+  const event = {
+    target: {
+      files: [new File([], 'cat.png'), new File([], 'dog.png')],
+    },
+  }
+
+  await wrapper.vm.handleChange(event)
+  expect(wrapper.find('.var-uploader__file-close').exists()).toBe(true)
+
+  await wrapper.setProps({
+    removable: false,
+  })
+  expect(wrapper.find('.var-uploader__file-close').exists()).toBe(false)
+
+  wrapper.unmount()
+  mockRestore()
 })

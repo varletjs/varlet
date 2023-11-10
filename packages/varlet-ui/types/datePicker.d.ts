@@ -3,7 +3,7 @@ import { VNode } from 'vue'
 
 export declare const datePickerProps: Record<string, any>
 
-export type DatePickerType = 'date' | 'month'
+export type DatePickerType = 'year' | 'date' | 'month'
 
 export interface DatePickerProps extends BasicAttributes {
   modelValue: string | Array<string>
@@ -12,8 +12,8 @@ export interface DatePickerProps extends BasicAttributes {
   color?: string
   hint?: string
   /** @deprecated Use titleColor to instead. */
-  headerColor: string
-  titleColor: string
+  headerColor?: string
+  titleColor?: string
   elevation?: boolean | string | number
   buttonElevation?: boolean | string | number
   firstDayOfWeek?: string | number
@@ -24,7 +24,7 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
-  onPreview?: ListenerProp<(year: number, month: number) => void>
+  onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>
 }

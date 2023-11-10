@@ -23,13 +23,10 @@
   --month-picker-item-width: 33%;
   --month-picker-item-height: 56px;
   --month-picker-item-button-max-width: 140px;
-  --year-picker-font-weight: 400;
-  --year-picker-item-padding: 8px 0;
-  --year-picker-item-active-font-size: 26px;
-  --year-picker-item-active-font-weight: 500;
-  --year-picker-item-active-font-padding: 10px 0;
-  --year-picker-item-active-color: var(--color-primary);
-  --year-picker-item-color: #555;
+  --year-picker-padding: 0 12px;
+  --year-picker-item-width: 33%;
+  --year-picker-item-height: 56px;
+  --year-picker-item-button-max-width: 140px;
   --day-picker-content-item-width: 14.28%;
   --day-picker-content-item-font-size: var(--font-size-sm);
   --day-picker-content-item-padding: 2px 0;
@@ -139,6 +136,7 @@
     justify-content: space-between;
     position: relative;
     color: var(--picker-header-color);
+    background-color: var(--date-picker-body-background-color);
 
     &__value {
       flex: 1;
@@ -190,27 +188,31 @@
   }
 
   .var-year-picker {
-    width: 100%;
-    height: 100%;
-    font-weight: var(--year-picker-font-weight);
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    overflow: auto;
-    text-align: center;
+    padding: var(--year-picker-padding);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-    &__item {
-      padding: var(--year-picker-item-padding);
-      cursor: pointer;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      color: var(--year-picker-item-color);
+    li {
+      width: var(--year-picker-item-width);
+      display: flex;
+      height: var(--year-picker-item-height);
+      align-items: center;
+      justify-content: center;
+    }
 
-      &--active {
-        font-size: var(--year-picker-item-active-font-size);
-        font-weight: var(--year-picker-item-active-font-weight);
-        padding: var(--year-picker-item-active-font-padding);
-        color: var(--year-picker-item-active-color);
-      }
+    &__button[var-year-picker-cover] {
+      width: 100%;
+      max-width: var(--year-picker-item-button-max-width);
+    }
+
+    &__button[var-date-picker-color-cover='true'] {
+      color: var(--date-picker-main-color);
+    }
+
+    &__button--disabled {
+      color: var(--color-text-disabled) !important;
+      cursor: not-allowed;
     }
   }
 

@@ -97,7 +97,12 @@ import { ref } from 'vue'
 
 const date = ref('2021-05')
 
-const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
+const allowedDates = (date) => {
+  const month = date.split('-')[1]
+  if(!month) return true
+
+  return parseInt(month, 10) % 2 === 1
+}
 
 function change(date) {
   console.log(date)
@@ -109,7 +114,7 @@ function change(date) {
     elevation
     type="month"
     v-model="date"
-    min="2016-07"
+    min="2036-07"
     max="2022-01"
     header-color="purple"
     color="#7bb872"
@@ -134,7 +139,7 @@ function change(date) {
 | 参数                  | 说明                                           | 类型 | 默认值 |
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `v-model`           | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`） | _string[] \| string_ | `undefined` |
-| `type`              | 选择器类型，可选值为 `date month`                      | _string_ | `date` |
+| `type`              | 选择器类型，可选值为 `date month year`                      | _string_ | `date` |
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
 | `color`             | 选择器的颜色                                       | _string_ | `-` |
 | `title-color`       | 标题背景色。如果未指定，将使用 `color` 属性或默认颜色。              | _string_ | `-` |
@@ -154,7 +159,7 @@ function change(date) {
 
 | 事件名       | 说明      | 回调参数                              |
 |-----------|---------|-----------------------------------|
-| `preview` | 日期切换时触发 | `year: number` <br>`month: number` |
+| `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
 
 ### 插槽
@@ -197,13 +202,10 @@ function change(date) {
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-font-weight` | `400`                  |
-| `--year-picker-item-padding` | `8px 0`                |
-| `--year-picker-item-active-font-size` | `26px`                 |
-| `--year-picker-item-active-font-weight` | `500`                  |
-| `--year-picker-item-active-font-padding` | `10px 0`               |
-| `--year-picker-item-active-color` | `var(--color-primary)` |
-| `--year-picker-item-color` | `#555` |
+| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-item-width` | `33%`                  |
+| `--year-picker-item-height` | `56px`                 |
+| `--year-picker-item-button-max-width` | `140px`                |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |

@@ -1,18 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import VarAvatar from '..'
-import VarSpace from '../../space'
-import VarIcon from '../../icon'
-import VarInput from '../../input'
-import VarAvatarGroup from '../../avatar-group'
-import dark from '../../themes/dark'
 import { pack, use } from './locale'
+import { Themes } from '@varlet/ui'
 import { watchDarkMode, watchLang, AppType } from '@varlet/cli/client'
 
 const text = ref('VARLET')
 
 watchLang(use)
-watchDarkMode(dark)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
