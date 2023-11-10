@@ -167,6 +167,7 @@ Set Badge Icon through `icon` property.
 | `value` | The value shown in the badge | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
@@ -174,6 +175,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--badge-content-padding` | `2px 6px` |
 | `--badge-content-border`| `none` |
 | `--badge-content-border-radius`| `100px` |
+| `--badge-content-font-size` | `12px` |
 | `--badge-icon-size` | `12px` |
 | `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|

@@ -169,6 +169,7 @@ function handleChange() {
 | `value` | 徽标中显示的值 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
@@ -176,6 +177,7 @@ function handleChange() {
 | `--badge-content-padding` | `2px 6px` |
 | `--badge-content-border`| `none` |
 | `--badge-content-border-radius`| `100px` |
+| `--badge-content-font-size` | `12px` |
 | `--badge-icon-size` | `12px` |
 | `--badge-default-color` | `#e0e0e0` |
 | `--badge-primary-color` | `var(--color-primary)`|
