@@ -58,9 +58,9 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__value').exists()).toBeFalsy()
+    expect(wrapper.find('.var-badge__content span').exists()).toBeFalsy()
     await wrapper.setProps({ dot: false })
-    expect(wrapper.find('.var-badge__value').exists()).toBeTruthy()
+    expect(wrapper.find('.var-badge__content span').text()).toBe('10')
     wrapper.unmount()
   })
 
@@ -72,9 +72,9 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__content').html()).toContain('<span class="var-badge__value">1+</span>')
+    expect(wrapper.find('.var-badge__content').html()).toContain('<span>1+</span>')
     await wrapper.setProps({ value: 1 })
-    expect(wrapper.find('.var-badge__content').html()).toContain(`<span class="var-badge__value">1</span>`)
+    expect(wrapper.find('.var-badge__content').html()).toContain(`<span>1</span>`)
     wrapper.unmount()
   })
 
