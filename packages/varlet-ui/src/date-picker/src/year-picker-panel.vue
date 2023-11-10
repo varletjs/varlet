@@ -49,6 +49,7 @@ import {
 } from 'vue'
 import { toNumber } from '@varlet/shared'
 import VarButton from '../../button'
+import VarSticky from '../../sticky'
 import PanelHeader from './panel-header.vue'
 import { createNamespace } from '../../utils/components'
 import { onSmartMounted } from '@varlet/use'
@@ -61,6 +62,7 @@ export default defineComponent({
   name: 'YearPickerPanel',
   components: {
     VarButton,
+    VarSticky,
     PanelHeader,
   },
   props: {
