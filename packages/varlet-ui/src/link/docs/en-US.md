@@ -67,7 +67,7 @@ Link component for hyperlink to web pages.
 </template>
 ```
 
-### Default Slots
+### Default Slot
 
 ```html
 <template>

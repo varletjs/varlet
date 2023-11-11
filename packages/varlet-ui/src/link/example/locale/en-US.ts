@@ -18,6 +18,6 @@ export default {
   disabledStatus: 'Disabled Status',
   customColor: 'Custom Color',
   linkText: 'Link',
-  slots: 'Default Slots',
+  slots: 'Default Slot',
   buttonText: 'To Home',
 }
