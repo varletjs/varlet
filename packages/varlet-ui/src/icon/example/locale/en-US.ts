@@ -1,12 +1,11 @@
 export default {
   iconSize: 'Icon Size',
-  iconColor: 'Icon color',
+  iconColor: 'Icon Color',
   useImage: 'Use Image',
-  events: 'Events',
-  iconAnimation: 'Icon Animation (click toggle)',
-  toggle: 'Toggle',
+  clickEvent: 'Click Event',
+  iconAnimation: 'Icon Animation',
   iconList: 'Icon List (click copy)',
-  copySuccess: 'copy success',
+  copySuccess: 'Copy success: ',
   clickSuccess: 'Click success',
   searchIcon: 'Search Icon',
 }
