@@ -1,9 +1,11 @@
 import FieldDecorator from './FieldDecorator.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as fieldDecoratorProps } from './props'
 
 withInstall(FieldDecorator)
+withPropsDefaultsSetter(FieldDecorator, fieldDecoratorProps)
 
-export { props as fieldDecoratorProps } from './props'
+export { fieldDecoratorProps }
 
 export const _FieldDecoratorComponent = FieldDecorator
 

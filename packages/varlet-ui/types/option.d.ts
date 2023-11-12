@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const optionProps: Record<string, any>
+export declare const optionProps: Record<keyof OptionProps, any>
 
 export interface OptionProps extends BasicAttributes {
   label?: any
@@ -10,6 +10,8 @@ export interface OptionProps extends BasicAttributes {
 }
 
 export class Option extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<OptionProps>
+
   $props: OptionProps
 
   $slots: {

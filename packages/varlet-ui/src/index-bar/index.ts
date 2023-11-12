@@ -1,9 +1,11 @@
 import IndexBar from './IndexBar.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as indexBarProps } from './props'
 
 withInstall(IndexBar)
+withPropsDefaultsSetter(IndexBar, indexBarProps)
 
-export { props as indexBarProps } from './props'
+export { indexBarProps }
 
 export const _IndexBarComponent = IndexBar
 

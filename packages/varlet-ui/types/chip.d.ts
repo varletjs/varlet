@@ -1,7 +1,14 @@
-import { VarComponent, BasicAttributes, Type as ChipType, Size as ChipSize, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Type as ChipType,
+  Size as ChipSize,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
-export declare const chipProps: Record<string, any>
+export declare const chipProps: Record<keyof ChipProps, any>
 
 export { ChipType, ChipSize }
 
@@ -22,6 +29,8 @@ export interface ChipProps extends BasicAttributes {
 }
 
 export class Chip extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ChipProps>
+
   $props: ChipProps
 
   $slots: {

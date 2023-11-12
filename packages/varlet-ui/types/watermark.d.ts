@@ -1,7 +1,7 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 
-export declare const watermarkProps: Record<string, any>
+export declare const watermarkProps: Record<keyof WatermarkProps, any>
 
 export interface WatermarkFont {
   fontSize?: number
@@ -28,6 +28,8 @@ export interface WatermarkProps extends BasicAttributes {
 }
 
 export class Watermark extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<WatermarkProps>
+
   $props: WatermarkProps
 
   $slots: {

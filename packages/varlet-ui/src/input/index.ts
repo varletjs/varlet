@@ -1,9 +1,11 @@
 import Input from './Input.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as inputProps } from './props'
 
 withInstall(Input)
+withPropsDefaultsSetter(Input, inputProps)
 
-export { props as inputProps } from './props'
+export { inputProps }
 
 export const _InputComponent = Input
 

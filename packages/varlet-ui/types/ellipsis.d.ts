@@ -1,7 +1,7 @@
 import { TooltipProps } from './tooltip'
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const ellipsisProps: Record<string, any>
+export declare const ellipsisProps: Record<keyof EllipsisProps, any>
 
 export type EllipsisExpandTrigger = 'click'
 
@@ -14,6 +14,8 @@ export interface EllipsisProps extends BasicAttributes {
 }
 
 export class Ellipsis extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<EllipsisProps>
+
   $props: EllipsisProps
 
   $slots: {

@@ -1,9 +1,11 @@
 import Link from './Link.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as linkProps } from './props'
 
 withInstall(Link)
+withPropsDefaultsSetter(Link, linkProps)
 
-export { props as linkProps } from './props'
+export { linkProps }
 
 export const _LinkComponent = Link
 

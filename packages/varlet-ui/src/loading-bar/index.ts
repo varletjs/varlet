@@ -1,6 +1,7 @@
 import LoadingBarComponent from './LoadingBar'
 import { reactive } from 'vue'
 import { mountInstance } from '../utils/components'
+import { props as loadingBarProps } from './props'
 
 interface LoadingBarOptions {
   color?: string
@@ -141,7 +142,7 @@ const LoadingBar: LoadingBar = {
   resetDefaultOptions,
 }
 
-export { props as loadingBarProps } from './props'
+export { loadingBarProps }
 
 export const _LoadingBarComponent = LoadingBar
 

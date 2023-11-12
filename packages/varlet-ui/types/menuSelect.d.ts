@@ -1,9 +1,9 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 import { PositioningStrategy } from '@popperjs/core'
 
-export declare const menuSelectProps: Record<string, any>
+export declare const menuSelectProps: Record<keyof MenuSelectProps, any>
 
 type MenuSelectNeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -52,6 +52,8 @@ export interface MenuSelectProps extends BasicAttributes {
 }
 
 export class MenuSelect extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<MenuSelectProps>
+
   $props: MenuSelectProps
 
   $slots: {

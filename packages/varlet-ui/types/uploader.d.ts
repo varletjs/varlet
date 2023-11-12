@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const uploaderProps: Record<string, any>
+export declare const uploaderProps: Record<keyof UploaderProps, any>
 
 export type VarFileFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -59,6 +59,8 @@ export interface UploaderProps extends BasicAttributes {
 }
 
 export class Uploader extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<UploaderProps>
+
   $props: UploaderProps
 
   $slots: {

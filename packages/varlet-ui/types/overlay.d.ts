@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode, TeleportProps } from 'vue'
 
-export declare const overlayProps: Record<string, any>
+export declare const overlayProps: Record<keyof OverlayProps, any>
 
 export interface OverlayProps extends BasicAttributes {
   lockScroll?: boolean
@@ -11,6 +11,8 @@ export interface OverlayProps extends BasicAttributes {
 }
 
 export class Overlay extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<OverlayProps>
+
   $props: OverlayProps
 
   $slots: {

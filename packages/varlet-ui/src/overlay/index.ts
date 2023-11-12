@@ -1,9 +1,11 @@
 import Overlay from './Overlay'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as overlayProps } from './props'
 
 withInstall(Overlay)
+withPropsDefaultsSetter(Overlay, overlayProps)
 
-export { props as overlayProps } from './props'
+export { overlayProps }
 
 export const _OverlayComponent = Overlay
 

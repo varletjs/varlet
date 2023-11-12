@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const radioProps: Record<string, any>
+export declare const radioProps: Record<keyof RadioProps, any>
 
 export type RadioValidateTrigger = 'onChange'
 
@@ -23,6 +23,8 @@ export interface RadioProps extends BasicAttributes {
 }
 
 export class Radio extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<RadioProps>
+
   $props: RadioProps
 
   $slots: {

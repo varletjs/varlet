@@ -1,9 +1,11 @@
 import Progress from './Progress.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as progressProps } from './props'
 
 withInstall(Progress)
+withPropsDefaultsSetter(Progress, progressProps)
 
-export { props as progressProps } from './props'
+export { progressProps }
 
 export const _ProgressComponent = Progress
 

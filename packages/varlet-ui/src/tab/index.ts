@@ -1,9 +1,11 @@
 import Tab from './Tab.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as tabProps } from './props'
 
 withInstall(Tab)
+withPropsDefaultsSetter(Tab, tabProps)
 
-export { props as tabProps } from './props'
+export { tabProps }
 
 export const _TabComponent = Tab
 

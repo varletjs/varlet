@@ -1,9 +1,11 @@
 import CheckboxGroup from './CheckboxGroup.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as checkboxGroupProps } from './props'
 
 withInstall(CheckboxGroup)
+withPropsDefaultsSetter(CheckboxGroup, checkboxGroupProps)
 
-export { props as checkboxGroupProps } from './props'
+export { checkboxGroupProps }
 
 export const _CheckboxGroupComponent = CheckboxGroup
 

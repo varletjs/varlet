@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const skeletonProps: Record<string, any>
+export declare const skeletonProps: Record<keyof SkeletonProps, any>
 
 export interface SkeletonProps extends BasicAttributes {
   loading?: boolean
@@ -18,6 +18,8 @@ export interface SkeletonProps extends BasicAttributes {
 }
 
 export class Skeleton extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SkeletonProps>
+
   $props: SkeletonProps
 
   $slots: {

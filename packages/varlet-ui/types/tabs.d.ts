@@ -1,7 +1,13 @@
-import { VarComponent, BasicAttributes, Direction as TabsDirection, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Direction as TabsDirection,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
-export declare const tabsProps: Record<string, any>
+export declare const tabsProps: Record<keyof TabsProps, any>
 
 export type TabsScrollable = 'auto' | 'always'
 
@@ -34,6 +40,8 @@ export interface TabsProps extends BasicAttributes {
 }
 
 export class Tabs extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<TabsProps>
+
   $props: TabsProps
 
   $slots: {

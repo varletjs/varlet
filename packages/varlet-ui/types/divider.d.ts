@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const dividerProps: Record<string, any>
+export declare const dividerProps: Record<keyof DividerProps, any>
 
 export interface DividerProps extends BasicAttributes {
   inset?: boolean | number | string
@@ -13,6 +13,8 @@ export interface DividerProps extends BasicAttributes {
 }
 
 export class Divider extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<DividerProps>
+
   $props: DividerProps
 
   $slots: {

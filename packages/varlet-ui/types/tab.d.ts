@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const tabProps: Record<string, any>
+export declare const tabProps: Record<keyof TabProps, any>
 
 export interface TabProps extends BasicAttributes {
   name?: string | number
@@ -10,6 +10,8 @@ export interface TabProps extends BasicAttributes {
 }
 
 export class Tab extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<TabProps>
+
   $props: TabProps
 
   $slots: {

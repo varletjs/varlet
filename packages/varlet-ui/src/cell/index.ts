@@ -1,9 +1,11 @@
 import Cell from './Cell.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as cellProps } from './props'
 
 withInstall(Cell)
+withPropsDefaultsSetter(Cell, cellProps)
 
-export { props as cellProps } from './props'
+export { cellProps }
 
 export const _CellComponent = Cell
 

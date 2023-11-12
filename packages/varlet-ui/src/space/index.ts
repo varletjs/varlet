@@ -1,9 +1,11 @@
 import Space from './Space'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as spaceProps } from './props'
 
 withInstall(Space)
+withPropsDefaultsSetter(Space, spaceProps)
 
-export { props as spaceProps } from './props'
+export { spaceProps }
 
 export const _SpaceComponent = Space
 

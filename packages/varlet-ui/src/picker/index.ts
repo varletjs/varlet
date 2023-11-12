@@ -1,8 +1,9 @@
 import VarPicker from './Picker.vue'
 import { nextTick, reactive, type Component, type TeleportProps } from 'vue'
 import { isArray, call } from '@varlet/shared'
-import { mountInstance, withInstall } from '../utils/components'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { type PickerColumnOption } from './props'
+import { props as pickerProps } from './props'
 
 interface PickerOptions {
   modelValue?: (string | number)[]
@@ -122,8 +123,9 @@ Picker.close = function () {
 Picker.Component = VarPicker as Component
 withInstall(VarPicker)
 withInstall(VarPicker, Picker)
+withPropsDefaultsSetter(Picker, pickerProps)
 
-export { props as pickerProps } from './props'
+export { pickerProps }
 
 export const _PickerComponent = VarPicker
 

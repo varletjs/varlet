@@ -1,9 +1,9 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { Placement as PopperPlacement } from '@popperjs/core/lib/enums'
 import { TeleportProps, VNode } from 'vue'
 import { PositioningStrategy } from '@popperjs/core'
 
-export declare const tooltipProps: Record<string, any>
+export declare const tooltipProps: Record<keyof TooltipProps, any>
 
 type TooltipNeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -38,6 +38,8 @@ export interface TooltipProps extends BasicAttributes {
 }
 
 export class Tooltip extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<TooltipProps>
+
   $props: TooltipProps
 
   $slots: {

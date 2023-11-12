@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode, App, TeleportProps } from 'vue'
 
-export declare const actionSheetProps: Record<string, any>
+export declare const actionSheetProps: Record<keyof ActionSheetProps, any>
 
 export interface ActionSheetProps extends BasicAttributes {
   actions?: ActionItem[]
@@ -76,6 +76,8 @@ export interface IActionSheet {
   close(): void
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<ActionSheetProps>
 }
 
 export class _ActionSheetComponent extends ActionSheetComponent {}

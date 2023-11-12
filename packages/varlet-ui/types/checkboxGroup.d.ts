@@ -1,7 +1,13 @@
-import { VarComponent, BasicAttributes, Direction as CheckboxGroupDirection, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Direction as CheckboxGroupDirection,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
-export declare const checkboxGroupProps: Record<string, any>
+export declare const checkboxGroupProps: Record<keyof CheckboxGroupProps, any>
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
@@ -18,6 +24,8 @@ export interface CheckboxGroupProps extends BasicAttributes {
 }
 
 export class CheckboxGroup extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CheckboxGroupProps>
+
   $props: CheckboxGroupProps
 
   $slots: {

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const cellProps: Record<string, any>
+export declare const cellProps: Record<keyof CellProps, any>
 
 export interface CellProps extends BasicAttributes {
   title?: string | number
@@ -19,6 +19,8 @@ export interface CellProps extends BasicAttributes {
 }
 
 export class Cell extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CellProps>
+
   $props: CellProps
 
   $slots: {

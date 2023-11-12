@@ -1,7 +1,7 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const avatarProps: Record<string, any>
+export declare const avatarProps: Record<keyof AvatarProps, any>
 
 export type AvatarFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -26,6 +26,8 @@ export interface AvatarProps extends BasicAttributes {
 }
 
 export class Avatar extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<AvatarProps>
+
   $props: AvatarProps
 
   $slots: {

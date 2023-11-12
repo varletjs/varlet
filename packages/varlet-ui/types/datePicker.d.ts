@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const datePickerProps: Record<string, any>
+export declare const datePickerProps: Record<keyof DatePickerProps, any>
 
 export type DatePickerType = 'year' | 'date' | 'month'
 
@@ -51,6 +51,8 @@ export interface DatePickerMultiple {
 }
 
 export class DatePicker extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<DatePickerProps>
+
   $props: DatePickerProps
 
   $slots: {

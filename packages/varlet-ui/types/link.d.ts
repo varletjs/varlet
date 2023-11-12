@@ -1,8 +1,8 @@
-import { VarComponent, BasicAttributes, Type as LinkType, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, Type as LinkType, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 import type { RouteLocationRaw } from 'vue-router'
 
-export declare const linkProps: Record<string, any>
+export declare const linkProps: Record<keyof LinkProps, any>
 
 export type LinkUnderline = 'always' | 'hover' | 'none'
 
@@ -23,6 +23,8 @@ export interface LinkProps extends BasicAttributes {
 }
 
 export class Link extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<LinkProps>
+
   $props: LinkProps
 
   $slots: {

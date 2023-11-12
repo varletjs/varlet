@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const rowProps: Record<string, any>
+export declare const rowProps: Record<keyof RowProps, any>
 
 export type RowJustify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'start' | 'end'
 
@@ -15,6 +15,8 @@ export interface RowProps extends BasicAttributes {
 }
 
 export class Row extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<RowProps>
+
   $props: RowProps
 
   $slots: {

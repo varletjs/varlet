@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp, Variant as InputVariant } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Variant as InputVariant, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const inputProps: Record<string, any>
+export declare const inputProps: Record<keyof InputProps, any>
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
@@ -40,6 +40,8 @@ export interface InputProps extends BasicAttributes {
 }
 
 export class Input extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<InputProps>
+
   $props: InputProps
 
   $slots: {

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const tableProps: Record<string, any>
+export declare const tableProps: Record<keyof TableProps, any>
 
 export interface TableProps extends BasicAttributes {
   fullWidth?: string | number
@@ -9,6 +9,8 @@ export interface TableProps extends BasicAttributes {
 }
 
 export class Table extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<TableProps>
+
   $props: TableProps
 
   $slots: {

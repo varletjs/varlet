@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const breadcrumbProps: Record<string, any>
+export declare const breadcrumbProps: Record<keyof BreadcrumbProps, any>
 
 export interface BreadcrumbProps extends BasicAttributes {
   separator?: string
@@ -9,6 +9,8 @@ export interface BreadcrumbProps extends BasicAttributes {
 }
 
 export class Breadcrumb extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BreadcrumbProps>
+
   $props: BreadcrumbProps
 
   $slots: {

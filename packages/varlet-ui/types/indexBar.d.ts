@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const indexBarProps: Record<string, any>
+export declare const indexBarProps: Record<keyof IndexBarProps, any>
 
 export interface IndexBarScrollToOptions {
   event?: boolean
@@ -23,6 +23,8 @@ export interface IndexBarProps extends BasicAttributes {
 }
 
 export class IndexBar extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<IndexBarProps>
+
   $props: IndexBarProps
 
   $slots: {

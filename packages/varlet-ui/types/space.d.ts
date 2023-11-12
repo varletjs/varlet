@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const spaceProps: Record<string, any>
+export declare const spaceProps: Record<keyof SpaceProps, any>
 
 export type SpaceAlign = 'stretch' | 'center' | 'start' | 'end' | 'baseline' | 'flex-start' | 'flex-end'
 
@@ -23,6 +23,8 @@ export interface SpaceProps extends BasicAttributes {
 }
 
 export class Space extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SpaceProps>
+
   $props: SpaceProps
 
   $slots: {

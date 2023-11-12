@@ -1,9 +1,11 @@
 import Radio from './Radio.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as radioProps } from './props'
 
 withInstall(Radio)
+withPropsDefaultsSetter(Radio, radioProps)
 
-export { props as radioProps } from './props'
+export { radioProps }
 
 export const _RadioComponent = Radio
 
