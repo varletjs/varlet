@@ -1,10 +1,17 @@
-import { VarComponent, BasicAttributes, Type as ButtonType, Size as ButtonSize, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  SetPropsDefaults,
+  BasicAttributes,
+  Type as ButtonType,
+  Size as ButtonSize,
+  ListenerProp,
+} from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { ButtonHTMLAttributes, VNode } from 'vue'
 
 export { ButtonType, ButtonSize }
 
-export declare const buttonProps: Record<string, any>
+export declare const buttonProps: Record<keyof ButtonProps, any>
 
 export interface ButtonProps extends BasicAttributes {
   type?: ButtonType
@@ -30,6 +37,8 @@ export interface ButtonProps extends BasicAttributes {
 }
 
 export class Button extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ButtonProps>
+
   $props: ButtonProps
 
   $slots: {

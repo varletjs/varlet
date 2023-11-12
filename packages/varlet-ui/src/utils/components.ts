@@ -16,7 +16,7 @@ import {
   type Plugin,
   type App,
 } from 'vue'
-import { createNamespaceFn, isArray } from '@varlet/shared'
+import { createNamespaceFn, isArray, isPlainObject } from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -52,6 +52,29 @@ export function withInstall<T = Component>(component: Component, target?: T): Co
   }
 
   return componentWithInstall as ComponentWithInstall<T>
+}
+
+export function withPropsDefaultsSetter(target: any, props: Record<string, any>) {
+  target.setPropsDefaults = function (defaults: Record<string, any>) {
+    Object.entries(defaults).forEach(([key, value]) => {
+      const prop = props[key]
+
+      if (prop == null) {
+        return
+      }
+
+      if (isPlainObject(prop)) {
+        // e.g. { type: String }
+        prop.default = value
+        return
+      }
+
+      props[key] = {
+        type: prop,
+        default: value,
+      }
+    })
+  }
 }
 
 export function mount(component: Component): MountInstance {
