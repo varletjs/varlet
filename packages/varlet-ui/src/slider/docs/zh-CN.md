@@ -244,16 +244,16 @@ const value2 = ref([7, 64])
 | `max`              | 最大值                               | _string \| number_ | `100`           |
 | `min`              | 最小值                               | _string \| number_ | `0`           |
 | `label-visible`    | 是否显示标签，可选值为 `always normal never` | _string_ | `normal`          |
-| `label-text-color` | 标签文字颜色                            | _string_ | `#fff`            |
+| `label-text-color` | 标签文字颜色                            | _string_ | `-`            |
 | `label-color`      | 标签颜色                              | _string_ | `-`               |
 | `active-color`     | 已激活的轨道背景颜色                        | _string_ | `-`               |
 | `track-color`      | 轨道背景颜色                            | _string_ | `-`               |
-| `track-height`     | 轨道的高度                             | _string \| number_           | `2` |
-| `thumb-size`       | 滑块的大小                             | _string \| number_           | `12` |
+| `track-height`     | 轨道的高度                             | _string \| number_           | `-` |
+| `thumb-size`       | 滑块的大小                             | _string \| number_           | `-` |
 | `thumb-color`      | 滑块的背景颜色                           | _string_ | `-`               |
 | `disabled`         | 是否禁用                              | _boolean_ | `false`           |
 | `readonly`         | 是否只读                              | _boolean_ | `false`           |
-| `direction` | 显示方向，可选值为 `vertical horizontal`             | _string_ | `horizontal` |
+| `direction`        | 显示方向，可选值为 `vertical horizontal`        | _string_ | `horizontal` |
 | `rules`            | 校验规则                              | _array_ | `-`               |
 
 ### 事件
@@ -278,9 +278,12 @@ const value2 = ref([7, 64])
 | --- | --- |
 | `--slider-error-color` | `var(--color-danger)` |
 | `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-height` | `2px` |
 | `--slider-track-fill-background` | `var(--color-primary)` |
 | `--slider-thumb-block-background` | `var(--color-primary)` |
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |
 | `--slider-thumb-label-background` | `var(--color-primary)` |
 | `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
+| `--slider-thumb-label-text-color` | `#fff` |
+| `--slider-thumb-size` | `12px` |
 | `--slider-disabled-opacity` | `var(--opacity-disabled)` |
