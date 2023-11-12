@@ -100,6 +100,10 @@ export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
   })
 }
 
+export function getSiteStyleVars(theme: Theme) {
+  return withSiteConfigNamespace(get(config, theme, {}))
+}
+
 export function setColorScheme(theme: Theme) {
   document.documentElement.style.setProperty('color-scheme', theme === 'darkTheme' ? 'dark' : 'light')
 }
