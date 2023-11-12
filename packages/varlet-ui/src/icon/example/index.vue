@@ -24,7 +24,7 @@ onMounted(() => {
   })
 
   clipboard.on('success', (e) => {
-    Snackbar.success(`${e.text}${pack.value.copySuccess}!`)
+    Snackbar.success(`${pack.value.copySuccess} ${e.text}!`)
   })
 })
 
@@ -42,17 +42,12 @@ watchDarkMode(Themes.dark, (theme) => {
 
   <app-type>{{ pack.iconColor }}</app-type>
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-primary)" />
-  <var-icon
-    class="icon-example__animation-icon"
-    name="checkbox-marked-circle"
-    color="var(--color-primary)"
-    :size="26"
-  />
+  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-success)" />
 
   <app-type>{{ pack.useImage }}</app-type>
   <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
 
-  <app-type>{{ pack.events }}</app-type>
+  <app-type>{{ pack.clickEvent }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"

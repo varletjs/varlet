@@ -3,7 +3,7 @@
 ### 介绍
 
 基于字体的图标库，也支持网络图片。
-字体图标来自 [Material Design Icon](https://materialdesignicons.com/)
+字体图标来自 [Material Design Icon](https://materialdesignicons.com/)。
 
 ### 图标尺寸
 
@@ -19,13 +19,13 @@
 ```html
 <template>
   <var-icon name="checkbox-marked-circle" color="var(--color-primary)" />
-  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" :size="26"/>
+  <var-icon name="checkbox-marked-circle" color="var(--color-success)" />
 </template>
 ```
 
 ### 使用图片
 
-当传入的 `name` 是一个网络地址时,将会使用 `img` 标签以 `cover` 模式显示。`size` 为图片的宽高。
+当传入的 `name` 是一个网络地址时，将会使用 `img` 标签以 `cover` 模式显示，`size` 为图片的宽高。
 
 ```html
 <template>
@@ -33,7 +33,7 @@
 </template>
 ```
 
-### 注册事件
+### 点击事件
 
 ```html
 <script setup>
