@@ -7,8 +7,8 @@
 | `v-model` | The value of the binding | _any_ | `false` |
 | `checked-value` | Checked value | _any_ | `true` |
 | `unchecked-value` | Unchecked value | _any_ | `false` |
-| `checked-color` | Checked color | _any_ | `-` |
-| `unchecked-color` | Unchecked color | _any_ | `-` |
+| `checked-color` | Checked color | _string_ | `-` |
+| `unchecked-color` | Unchecked color | _string_ | `-` |
 | `icon-size` | Icon size | _string |\ number_ | `-` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
