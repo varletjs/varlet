@@ -63,7 +63,7 @@
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `offset-top` | 吸顶距离 | _string \| number_ | `0` |
-| `z-index` | 吸顶时的层级 | _string \| number_ | `0` |
+| `z-index` | 吸顶时的层级 | _string \| number_ | `10` |
 | `css-mode` | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
 | `disabled` | 禁用吸顶, 设置为 `true` 时, 元素会回到文档流中 | _boolean_ | `false` |
 
