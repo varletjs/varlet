@@ -64,7 +64,7 @@ Custom content can be used as separator by setting slot.
 </template>
 ```
 
-### Events
+### Click Event
 
 Register the click event of the breadcrumb through `@click`, the last breadcrumb will not trigger the click event.
 
