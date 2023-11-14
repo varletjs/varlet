@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -1539,25 +1539,25 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@nolyfill/array-includes@1.0.21:
-    resolution: {integrity: sha512-P+SLU5wuJmHnuo1Nhy/3l4yneHm6M+WmISz5tCVGLc0rytUBRfACmneLTryh4nlobAhUulDkBL+VoldU1g3zoA==}
+  /@nolyfill/array-includes@1.0.24:
+    resolution: {integrity: sha512-4vnalzvzxhffSjyRVlmYJo1wqTCL5jesG94CeER4bwUx/S7sCtInHEZ3fncnt+MYMX+53BbSPOQT8Oz3NmdGig==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
-  /@nolyfill/array.prototype.flat@1.0.21:
-    resolution: {integrity: sha512-RoyB6qmcOSuflZH+XcZAkE1aBrYIV/3qdIGk6EG1afCdZSkUUCz0PAT8h3lHdtgVh+ge82hMK2SdCur2YeNj8A==}
+  /@nolyfill/array.prototype.flat@1.0.24:
+    resolution: {integrity: sha512-RCD+BTf2JXc2SexkTOVm7ELYfQRmJjfdHBavuWaE715QP8zvv5zh4hpFqS7jZpDZWC4bTCpmiuDS3CmEepKrLA==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
-  /@nolyfill/array.prototype.flatmap@1.0.21:
-    resolution: {integrity: sha512-VWUiJBWk4qDgktkeQRzrtYlQdBRnEU3vfjoQxcBmdn3vSnq7ujKCBox4cdpZe9LZK9FU9Y1L4UteyW5THat2CQ==}
+  /@nolyfill/array.prototype.flatmap@1.0.24:
+    resolution: {integrity: sha512-OH6aQ70QztI/5apHKaMWehcBPgxNy5dWGPlWNUSoD6BfG0u1XdOxtFOjqAruQnU+mbxr6eHA9OMAkHUvxTyl0Q==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
   /@nolyfill/has@1.0.21:
@@ -1567,29 +1567,33 @@ packages:
       '@nolyfill/shared': 1.0.21
     dev: false
 
-  /@nolyfill/object.assign@1.0.21:
-    resolution: {integrity: sha512-u7XqwTyyoUjbPcd8e1g/p+NORJehuZD62TjdyQbA15xD35nG76QwuEnybpqk6OZ/lE0XOneJhFSEQZ2nMC4/GA==}
+  /@nolyfill/object.assign@1.0.24:
+    resolution: {integrity: sha512-s1UPaJu730s6WWct5+NZVCDxu3OXM74ZvWxfnluNp89Rha92xDn5QpRqtHolB2WsTXBwQJDqZV72Jhr1gPTIbw==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
-  /@nolyfill/object.entries@1.0.21:
-    resolution: {integrity: sha512-5RKcuhKMp2cBT3I4iwI1DCX54CkxiNlHrtPFZMRpHewGFIUyVnNsC0AL4JimgppWDbBSl0oVHY1GX7XsvvHIiw==}
+  /@nolyfill/object.entries@1.0.24:
+    resolution: {integrity: sha512-im+bDIpHCgshjKasOEyHpQNE34xMtQMyV6ECLtkOTwZ0RX4OleSKSreogVbOyo5ocLR7PoscmdM8TQRpVQSVpQ==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
-  /@nolyfill/object.values@1.0.21:
-    resolution: {integrity: sha512-5RPPiaknXoCnpwXZTy99Oo/sNega0wf5DsYQU6YOFa1kLhvwgc4x2/Np1F8zT7WwGE9C1POH3ZIuSMelpd79Ew==}
+  /@nolyfill/object.values@1.0.24:
+    resolution: {integrity: sha512-FEbvgDQUGDdWZmXHvg8DhKzI9LM3jclZKVmkIx5ZMs3xLb37Sh/c6VG56pmObrHZjwISlDs4cHouVYRsFzwLZw==}
     engines: {node: '>=12.4.0'}
     dependencies:
-      '@nolyfill/shared': 1.0.21
+      '@nolyfill/shared': 1.0.24
     dev: false
 
   /@nolyfill/shared@1.0.21:
     resolution: {integrity: sha512-qDc/NoaFU23E0hhiDPeUrvWzTXIPE+RbvRQtRWSeHHNmCIgYI9HS1jKzNYNJxv4jvZ/1VmM3L6rNVxbj+LBMNA==}
+    dev: false
+
+  /@nolyfill/shared@1.0.24:
+    resolution: {integrity: sha512-TGCpg3k5N7jj9AgU/1xFw9K1g4AC1vEE5ZFkW77oPNNLzprxT17PvFaNr/lr3BkkT5fJ5LNMntaTIq+pyWaeEA==}
     dev: false
 
   /@nolyfill/side-channel@1.0.21:
@@ -3510,8 +3514,8 @@ packages:
       confusing-browser-globals: 1.0.11
       eslint: 8.43.0
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.60.1)(eslint@8.43.0)
-      object.assign: /@nolyfill/object.assign@1.0.21
-      object.entries: /@nolyfill/object.entries@1.0.21
+      object.assign: /@nolyfill/object.assign@1.0.24
+      object.entries: /@nolyfill/object.entries@1.0.24
       semver: 6.3.0
     dev: false
 
@@ -3574,9 +3578,9 @@ packages:
         optional: true
     dependencies:
       '@typescript-eslint/parser': 5.60.1(eslint@8.43.0)(typescript@5.2.2)
-      array-includes: /@nolyfill/array-includes@1.0.21
-      array.prototype.flat: /@nolyfill/array.prototype.flat@1.0.21
-      array.prototype.flatmap: /@nolyfill/array.prototype.flatmap@1.0.21
+      array-includes: /@nolyfill/array-includes@1.0.24
+      array.prototype.flat: /@nolyfill/array.prototype.flat@1.0.24
+      array.prototype.flatmap: /@nolyfill/array.prototype.flatmap@1.0.24
       debug: 3.2.7
       doctrine: 2.1.0
       eslint: 8.43.0
@@ -3586,7 +3590,7 @@ packages:
       is-core-module: 2.12.1
       is-glob: 4.0.3
       minimatch: 3.1.2
-      object.values: /@nolyfill/object.values@1.0.21
+      object.values: /@nolyfill/object.values@1.0.24
       resolve: 1.22.1
       semver: 6.3.0
       tsconfig-paths: 3.14.1
@@ -6777,7 +6781,7 @@ packages:
     engines: {node: '>=6.9.5'}
     hasBin: true
     dependencies:
-      array.prototype.flatmap: /@nolyfill/array.prototype.flatmap@1.0.21
+      array.prototype.flatmap: /@nolyfill/array.prototype.flatmap@1.0.24
       commander: 4.1.1
       geometry-interfaces: 1.1.4
       glob: 7.2.3

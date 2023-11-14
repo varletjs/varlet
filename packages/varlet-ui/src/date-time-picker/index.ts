@@ -1,4 +1,4 @@
-import DateTimePicker from './DateTimePicker.vue'
+import DateTimePicker from './DateTimePicker'
 import { withInstall } from '../utils/components'
 
 withInstall(DateTimePicker)
