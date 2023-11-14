@@ -9,6 +9,7 @@ The cell is a single display item in the list.
 ```html
 <template>
   <var-cell>This is Cell</var-cell>
+  <var-cell>This is Cell</var-cell>
 </template>
 ```
 
@@ -21,6 +22,11 @@ The cell is a single display item in the list.
       <var-icon name="information" />
     </template>
   </var-cell>
+  <var-cell icon="fire" title="This is Cell">
+    <template #extra>
+      <var-icon name="information" />
+    </template>
+  </var-cell>
 </template>
 ```
 
@@ -28,7 +34,12 @@ The cell is a single display item in the list.
 
 ```html
 <template>
-  <var-cell title="This is Cell" description="description" />
+  <var-cell icon="fire" title="This is Cell" description="Description">
+    <template #extra>
+      <var-icon name="information" />
+    </template>
+  </var-cell>
+  <var-cell title="This is Cell" description="Description" />
 </template>
 ```
 
@@ -36,6 +47,7 @@ The cell is a single display item in the list.
 
 ```html
 <template>
+  <var-cell border>This is Cell</var-cell>
   <var-cell border>This is Cell</var-cell>
 </template>
 ```
@@ -112,7 +124,7 @@ const handleClick = (item) => {
 
 | Event        | Description                                                                                          | Arguments      |
 | ------------ | ---------------------------------------------------------------------------------------------------- | -------------- |
-| `click`      | Triggered when the cell is clicked.  | `event: Event` |
+| `click`      | Triggered when the cell is clicked  | `event: Event` |
 
 ### Slots
 

@@ -9,6 +9,7 @@
 ```html
 <template>
   <var-cell>这是单元格</var-cell>
+  <var-cell>这是单元格</var-cell>
 </template>
 ```
 
@@ -21,6 +22,11 @@
       <var-icon name="information" />
     </template>
   </var-cell>
+  <var-cell icon="fire" title="这是单元格">
+    <template #extra>
+      <var-icon name="information" />
+    </template>
+  </var-cell>
 </template>
 ```
 
@@ -28,6 +34,11 @@
 
 ```html
 <template>
+  <var-cell icon="fire" title="这是单元格" description="描述">
+    <template #extra>
+      <var-icon name="information" />
+    </template>
+  </var-cell>
   <var-cell title="这是单元格" description="描述" />
 </template>
 ```
@@ -36,6 +47,7 @@
 
 ```html
 <template>
+  <var-cell border>这是单元格</var-cell>
   <var-cell border>这是单元格</var-cell>
 </template>
 ```
