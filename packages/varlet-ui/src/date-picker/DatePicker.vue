@@ -36,18 +36,18 @@
               {{ getYearTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth?.index}`" v-else-if="type === 'month'">
+          <div :key="`${chooseYear}${chooseMonth}`" v-else-if="type === 'month'">
             <slot name="range" :choose="getChoose.chooseRangeMonth" v-if="range">
               {{ getMonthTitle }}
             </slot>
             <slot name="multiple" :choose="getChoose.chooseMonths" v-else-if="multiple">
               {{ getMonthTitle }}
             </slot>
-            <slot name="month" :month="chooseMonth?.index" :year="chooseYear" v-else>
+            <slot name="month" :month="chooseMonth" :year="chooseYear" v-else>
               {{ getMonthTitle }}
             </slot>
           </div>
-          <div :key="`${chooseYear}${chooseMonth?.index}${chooseDay}`" v-else>
+          <div :key="`${chooseYear}${chooseMonth}${chooseDay}`" v-else>
             <slot name="range" :choose="formatRange" v-if="range">
               {{ getDateTitle }}
             </slot>
@@ -109,12 +109,12 @@ import {
   props,
   MONTH_LIST,
   WEEK_HEADER,
-  type MonthDict,
+  type Month,
   type Choose,
   type Preview,
-  type WeekDict,
   type ComponentProps,
   type TouchDirection,
+  type Week,
 } from './props'
 import { isArray, toNumber, doubleRaf, call } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
@@ -134,14 +134,14 @@ export default defineComponent({
   setup(props) {
     const currentDate = dayjs().format('YYYY-MM-D')
     const [currentYear, currentMonth] = currentDate.split('-')
-    const monthDes = MONTH_LIST.find((month) => month.index === currentMonth) as MonthDict
+    const monthDes = MONTH_LIST.find((month) => month === currentMonth) as Month
     const isYearPanel = ref(false)
     const isMonthPanel = ref(false)
     const rangeDone = ref(true)
-    const chooseMonth = ref<MonthDict | undefined>()
+    const chooseMonth = ref<Month | undefined>()
     const chooseYear = ref<string | undefined>()
     const chooseDay = ref<string | undefined>()
-    const previewMonth = ref<MonthDict>(monthDes)
+    const previewMonth = ref<Month>(monthDes)
     const previewYear = ref(currentYear)
     const reverse = ref(false)
     const chooseYears = ref<string[]>([])
@@ -200,7 +200,7 @@ export default defineComponent({
 
       let monthName = ''
       if (chooseMonth.value) {
-        monthName = pack.value.datePickerMonthDict?.[chooseMonth.value.index].name ?? ''
+        monthName = pack.value.datePickerMonthDict?.[chooseMonth.value].name ?? ''
       }
       return multiple ? `${chooseMonths.value.length}${pack.value.datePickerSelected}` : monthName
     })
@@ -217,14 +217,14 @@ export default defineComponent({
       if (multiple) return `${chooseDays.value.length}${pack.value.datePickerSelected}`
 
       if (!chooseYear.value || !chooseMonth.value || !chooseDay.value) return ''
-      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value.index}-${chooseDay.value}`).day()
-      const week: WeekDict = WEEK_HEADER.find((value) => value.index === `${weekIndex}`) as WeekDict
-      const weekName = pack.value.datePickerWeekDict?.[week.index].name ?? ''
+      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
+      const week: Week = WEEK_HEADER.find((value) => value === `${weekIndex}`) as Week
+      const weekName = pack.value.datePickerWeekDict?.[week].name ?? ''
 
-      const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value.index].name ?? ''
+      const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value].name ?? ''
       const showDay = padStart(chooseDay.value, 2, '0')
 
-      if (pack.value.lang === 'zh-CN') return `${chooseMonth.value.index}-${showDay} ${weekName.slice(0, 3)}`
+      if (pack.value.lang === 'zh-CN') return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
     const getPanelType = computed<string>(() => {
@@ -238,13 +238,13 @@ export default defineComponent({
     })
     const isUntouchable = computed(() => !props.touchable || !getPanelType.value)
     const slotProps = computed<Record<string, string>>(() => {
-      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value?.index}-${chooseDay.value}`).day()
+      const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
       const date = chooseDay.value ? padStart(chooseDay.value, 2, '0') : ''
 
       return {
         week: `${weekIndex}`,
         year: chooseYear.value ?? '',
-        month: chooseMonth.value?.index ?? '',
+        month: chooseMonth.value ?? '',
         date,
       }
     })
@@ -252,7 +252,7 @@ export default defineComponent({
       getChoose.value.chooseRangeDay.map((choose) => dayjs(choose).format('YYYY-MM-DD'))
     )
     const isSameYear = computed(() => chooseYear.value === previewYear.value)
-    const isSameMonth = computed(() => chooseMonth.value?.index === previewMonth.value.index)
+    const isSameMonth = computed(() => chooseMonth.value === previewMonth.value)
 
     let startX = 0
     let startY = 0
@@ -352,17 +352,15 @@ export default defineComponent({
       call(props.onChange, formatDates)
     }
 
-    function getReverse(dateType: string, date: MonthDict | number) {
+    function getReverse(dateType: string, date: Month | number) {
       if (!chooseYear.value || !chooseMonth.value) return false
       if (!isSameYear.value) return chooseYear.value > previewYear.value
 
       if (dateType === 'year') return (date as number) < toNumber(chooseYear.value)
 
-      if (dateType === 'month') return (date as MonthDict).index < chooseMonth.value.index
+      if (dateType === 'month') return (date as Month) < chooseMonth.value
 
-      return isSameMonth.value
-        ? (date as number) < toNumber(chooseDay.value)
-        : chooseMonth.value.index > previewMonth.value.index
+      return isSameMonth.value ? (date as number) < toNumber(chooseDay.value) : chooseMonth.value > previewMonth.value
     }
 
     function getChooseDay(day: number) {
@@ -371,7 +369,7 @@ export default defineComponent({
 
       reverse.value = getReverse('day', day)
 
-      const date = `${previewYear.value}-${previewMonth.value.index}-${day}`
+      const date = `${previewYear.value}-${previewMonth.value}-${day}`
       const formatDate = dayjs(date).format('YYYY-MM-DD')
 
       if (range) updateRange(formatDate, 'day')
@@ -382,12 +380,12 @@ export default defineComponent({
       }
     }
 
-    function getChooseMonth(month: MonthDict) {
+    function getChooseMonth(month: Month) {
       const { type, readonly, range, multiple, onChange, onPreview, 'onUpdate:modelValue': updateModelValue } = props
       reverse.value = getReverse('month', month)
 
       if (type === 'month' && !readonly) {
-        const date = `${previewYear.value}-${month.index}`
+        const date = `${previewYear.value}-${month}`
 
         if (range) updateRange(date, 'month')
         else if (multiple) updateMultiple(date, 'month')
@@ -400,7 +398,7 @@ export default defineComponent({
         call(
           onPreview,
           toNumber(previewYear.value),
-          toNumber(previewMonth.value.index),
+          toNumber(previewMonth.value),
           type === 'date' ? toNumber(chooseDay.value) : undefined
         )
       }
@@ -424,7 +422,7 @@ export default defineComponent({
         call(
           onPreview,
           toNumber(previewYear.value),
-          toNumber(previewMonth.value.index),
+          toNumber(previewMonth.value),
           type === 'date' ? toNumber(chooseDay.value) : undefined
         )
       }
@@ -438,7 +436,7 @@ export default defineComponent({
       if (type === 'year') {
         previewYear.value = `${toNumber(previewYear.value) + changeValue}`
       } else {
-        let checkIndex = toNumber(previewMonth.value.index) + changeValue
+        let checkIndex = toNumber(previewMonth.value) + changeValue
 
         if (checkIndex < 1) {
           previewYear.value = `${toNumber(previewYear.value) - 1}`
@@ -450,13 +448,13 @@ export default defineComponent({
           checkIndex = 1
         }
 
-        previewMonth.value = MONTH_LIST.find((month) => toNumber(month.index) === checkIndex) as MonthDict
+        previewMonth.value = MONTH_LIST.find((month) => toNumber(month) === checkIndex) as Month
       }
 
       call(
         props.onPreview,
         toNumber(previewYear.value),
-        toNumber(previewMonth.value.index),
+        toNumber(previewMonth.value),
         props.type === 'date' ? toNumber(chooseDay.value) : undefined
       )
     }
@@ -517,7 +515,7 @@ export default defineComponent({
 
       const [yearValue, monthValue, dayValue] = formatDate.split('-')
 
-      const monthDes: MonthDict = MONTH_LIST.find((month) => month.index === monthValue) as MonthDict
+      const monthDes: Month = MONTH_LIST.find((month) => month === monthValue) as Month
 
       chooseMonth.value = monthDes
       chooseYear.value = yearValue

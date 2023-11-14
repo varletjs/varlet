@@ -12,7 +12,7 @@
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <div :key="panelKey">
           <ul :class="n('head')">
-            <li v-for="week in sortWeekList" :key="week.index">{{ getDayAbbr(week.index) }}</li>
+            <li v-for="week in sortWeekList" :key="week">{{ getDayAbbr(week) }}</li>
           </ul>
           <ul :class="n('body')">
             <li v-for="(day, index) in days" :key="index">
@@ -55,15 +55,7 @@ import {
   type PropType,
   type RendererNode,
 } from 'vue'
-import {
-  WEEK_HEADER,
-  type Choose,
-  type Preview,
-  type ComponentProps,
-  type Week,
-  type WeekDict,
-  type PanelBtnDisabled,
-} from '../props'
+import { WEEK_HEADER, type Choose, type Preview, type ComponentProps, type Week, type PanelBtnDisabled } from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
@@ -117,17 +109,16 @@ export default defineComponent({
     })
 
     const isCurrent: ComputedRef<boolean> = computed(
-      () => props.preview.previewYear === currentYear && props.preview.previewMonth!.index === currentMonth
+      () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth
     )
 
     const isSame: ComputedRef<boolean> = computed(
       () =>
-        props.choose.chooseYear === props.preview.previewYear &&
-        props.choose.chooseMonth?.index === props.preview.previewMonth!.index
+        props.choose.chooseYear === props.preview.previewYear && props.choose.chooseMonth === props.preview.previewMonth
     )
 
-    const sortWeekList: ComputedRef<Array<WeekDict>> = computed(() => {
-      const index = WEEK_HEADER.findIndex((week: WeekDict) => week.index === props.componentProps.firstDayOfWeek)
+    const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
+      const index = WEEK_HEADER.findIndex((week: Week) => week === props.componentProps.firstDayOfWeek)
       if (index === -1 || index === 0) return WEEK_HEADER
       return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
     })
@@ -141,9 +132,9 @@ export default defineComponent({
         preview: { previewMonth, previewYear },
       }: { preview: Preview } = props
 
-      const monthNum = dayjs(`${previewYear}-${previewMonth!.index}`).daysInMonth()
-      const firstDayToWeek = dayjs(`${previewYear}-${previewMonth!.index}-01`).day()
-      const index = sortWeekList.value.findIndex((week: WeekDict) => week.index === `${firstDayToWeek}`)
+      const monthNum = dayjs(`${previewYear}-${previewMonth}`).daysInMonth()
+      const firstDayToWeek = dayjs(`${previewYear}-${previewMonth}-01`).day()
+      const index = sortWeekList.value.findIndex((week: Week) => week === `${firstDayToWeek}`)
       days.value = [...Array(index).fill(-1), ...Array.from(Array(monthNum + 1).keys())].filter((value) => value)
     }
 
@@ -154,12 +145,12 @@ export default defineComponent({
       }: { preview: Preview; componentProps: ComponentProps } = props
 
       if (max) {
-        const date = `${previewYear}-${toNumber(previewMonth!.index) + 1}`
+        const date = `${previewYear}-${toNumber(previewMonth) + 1}`
         panelBtnDisabled.right = !dayjs(date).isSameOrBefore(dayjs(max), 'month')
       }
 
       if (min) {
-        const date = `${previewYear}-${toNumber(previewMonth!.index) - 1}`
+        const date = `${previewYear}-${toNumber(previewMonth) - 1}`
         panelBtnDisabled.left = !dayjs(date).isSameOrAfter(dayjs(min), 'month')
       }
     }
@@ -172,7 +163,7 @@ export default defineComponent({
 
       let isBeforeMax = true
       let isAfterMin = true
-      const previewDate = `${previewYear}-${previewMonth!.index}-${day}`
+      const previewDate = `${previewYear}-${previewMonth}-${day}`
 
       if (max) isBeforeMax = dayjs(previewDate).isSameOrBefore(dayjs(max), 'day')
       if (min) isAfterMin = dayjs(previewDate).isSameOrAfter(dayjs(min), 'day')
@@ -214,7 +205,7 @@ export default defineComponent({
         componentProps: { allowedDates, color, multiple, range },
       }: { choose: Choose; preview: Preview; componentProps: ComponentProps } = props
 
-      const val = `${previewYear}-${previewMonth!.index}-${day}`
+      const val = `${previewYear}-${previewMonth}-${day}`
 
       const dayExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)
