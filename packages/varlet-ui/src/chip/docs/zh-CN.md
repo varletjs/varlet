@@ -27,7 +27,14 @@
 
 ```html
 <template>
-  <var-chip plain type="primary">空心纸片</var-chip>
+  <var-space>
+    <var-chip plain>默认纸片</var-chip>
+    <var-chip plain type="primary">主要纸片</var-chip>
+    <var-chip plain type="success">成功纸片</var-chip>
+    <var-chip plain type="danger">危险纸片</var-chip>
+    <var-chip plain type="warning">警告纸片</var-chip>
+    <var-chip plain type="info">信息纸片</var-chip>
+  </var-space>
 </template>
 ```
 
