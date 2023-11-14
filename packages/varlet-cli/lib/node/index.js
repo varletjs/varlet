@@ -1,5 +1,5 @@
 export { defineConfig } from './config/varlet.config.js';
-export * from './commands/release.js';
+export * from '@varlet/release';
 export * from './commands/dev.js';
 export * from './commands/build.js';
 export * from './commands/compile.js';
@@ -8,7 +8,6 @@ export * from './commands/gen.js';
 export * from './commands/test.js';
 export * from './commands/create.js';
 export * from './commands/lint.js';
-export * from './commands/changelog.js';
 export * from './commands/preview.js';
 export * from './commands/vite.js';
 export * from './commands/extension.js';
