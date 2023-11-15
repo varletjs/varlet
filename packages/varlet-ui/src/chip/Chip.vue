@@ -1,6 +1,6 @@
 <template>
   <transition :name="n('$-fade')">
-    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyles" v-bind="$attrs">
+    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyle" v-bind="$attrs">
       <slot name="left" />
 
       <span :class="n(`text-${size}`)">
@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { call } from '@varlet/shared'
@@ -33,7 +33,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const chipStyles = computed(() => {
+    const chipStyle = computed<CSSProperties>(() => {
       const { plain, textColor, color } = props
 
       if (plain) {
@@ -48,7 +48,7 @@ export default defineComponent({
         background: color,
       }
     })
-    const contentClass = computed(() => {
+    const contentClass = computed<(string | null)[]>(() => {
       const { size, block, type, plain, round } = props
 
       const blockClass = block ? n('$--flex') : n('$--inline-flex')
@@ -63,7 +63,7 @@ export default defineComponent({
     }
 
     return {
-      chipStyles,
+      chipStyle,
       contentClass,
       n,
       classes,

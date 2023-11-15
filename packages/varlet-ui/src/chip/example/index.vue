@@ -23,7 +23,14 @@ watchDarkMode(Themes.dark)
   </var-space>
 
   <app-type>{{ pack.plainChip }}</app-type>
-  <var-chip plain type="primary">{{ pack.plainChip }}</var-chip>
+  <var-space :size="['2.666vmin', '2.666vmin']">
+    <var-chip plain>{{ pack.defaultChip }}</var-chip>
+    <var-chip plain type="primary">{{ pack.primaryChip }}</var-chip>
+    <var-chip plain type="success">{{ pack.successChip }}</var-chip>
+    <var-chip plain type="danger">{{ pack.dangerChip }}</var-chip>
+    <var-chip plain type="warning">{{ pack.warningChip }}</var-chip>
+    <var-chip plain type="info">{{ pack.infoChip }}</var-chip>
+  </var-space>
 
   <app-type>{{ pack.nonRoundChip }}</app-type>
   <var-chip :round="false" type="primary">{{ pack.nonRoundChip }}</var-chip>

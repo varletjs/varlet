@@ -16,7 +16,7 @@ Set the type of the chip with the `type` attribute.
     <var-chip type="primary">Primary Chip</var-chip>
     <var-chip type="success">Success Chip</var-chip>
     <var-chip type="danger">Danger Chip</var-chip>
-    <var-chip type="warning">Waring Chip</var-chip>
+    <var-chip type="warning">Warning Chip</var-chip>
     <var-chip type="info">Info Chip</var-chip>
   </var-space>
 </template>
@@ -28,7 +28,14 @@ Use the `plain` property to make the chip plain.
 
 ```html
 <template>
-  <var-chip plain type="primary">Plain Chip</var-chip>
+  <var-space>
+    <var-chip plain>Default Chip</var-chip>
+    <var-chip plain type="primary">Primary Chip</var-chip>
+    <var-chip plain type="success">Success Chip</var-chip>
+    <var-chip plain type="danger">Danger Chip</var-chip>
+    <var-chip plain type="warning">Warning Chip</var-chip>
+    <var-chip plain type="info">Info Chip</var-chip>
+  </var-space>
 </template>
 ```
 
