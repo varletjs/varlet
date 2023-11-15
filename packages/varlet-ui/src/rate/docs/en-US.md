@@ -196,7 +196,7 @@ const score = ref(3)
 | `empty-icon-namespace`      | Empty icon namespace |  _string_ | `var-icon` |
 | `half-icon-namespace`      | Half icon namespace |  _string_ | `var-icon` |
 | `disabled`       | Whether to disable rating | _boolean_ | `false` |
-| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#aaa` |
+| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `-` |
 | `readonly`       | Whether it is in readonly status. The rating cannot be modified in readonly status. | _boolean_ | `false` |
 | `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |

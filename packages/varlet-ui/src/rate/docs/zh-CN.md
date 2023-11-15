@@ -198,7 +198,7 @@ const score = ref(3)
 | `empty-icon-namespace`      | 未选中时图标的命名空间 |  _string_ | `var-icon` |
 | `half-icon-namespace`      | 半选时图标的命名空间 |  _string_ | `var-icon` |
 | `disabled`       | 是否禁止评分 | _boolean_ | `false`|
-| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `#aaa` |
+| `disabled-color` | 禁止评分时图标的颜色，只有在 `disabled` 为 `true` 时才有效，优先级高于 `color`、`empty-color`| _string_ | `-` |
 | `readonly`       | 是否为只读状态，只读状态下无法修改评分 | _boolean_ | `false` |
 | `clearable`      | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
