@@ -120,7 +120,7 @@ const score = ref(3)
 
 ### Can Be Cleared
 
-The `clearable` property Allows users to clear score.
+The `clearable` property allows users to clear score.
 
 ```html
 <script setup>
@@ -134,7 +134,7 @@ const score = ref(3.5)
 </template>
 ```
 
-### Listen Events
+### Listen Event
 
 Other interaction logic is completed by calling the `change` event.
 
