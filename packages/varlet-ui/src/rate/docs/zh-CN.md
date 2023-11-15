@@ -216,6 +216,7 @@ const score = ref(3)
 | 变量名 | 默认值 |
 | --- | --- |
 | `--rate-color` | `var(--color-text)`          |
+| `--rate-size` | `24px` |
 | `--rate-primary-color` | `var(--color-primary)` |
 | `--rate-disabled-color` | `var(--color-text-disabled)` |
 | `--rate-error-color` | `var(--color-danger)` |

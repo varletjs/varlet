@@ -1,5 +1,6 @@
 :root {
   --rate-color: var(--color-text);
+  --rate-size: 24px;
   --rate-disabled-color: var(--color-text-disabled);
   --rate-error-color: var(--color-danger);
   --rate-action-padding: 4px;
@@ -25,7 +26,7 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     &-icon[var-rate-cover] {
-      font-size: 24px;
+      font-size: var(--rate-size);
     }
   }
 

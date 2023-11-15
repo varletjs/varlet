@@ -214,6 +214,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default                      |
 | --- |------------------------------|
 | `--rate-color` | `var(--color-text)`          |
+| `--rate-size` | `24px` |
 | `--rate-primary-color` | `var(--color-primary)`       |
 | `--rate-disabled-color` | `var(--color-text-disabled)` |
 | `--rate-error-color` | `var(--color-danger)`        |
