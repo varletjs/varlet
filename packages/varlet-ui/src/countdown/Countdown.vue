@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch } from 'vue'
+import { defineComponent, onActivated, onDeactivated, onMounted, onUnmounted, ref, watch } from 'vue'
 import { props, type TimeData } from './props'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
@@ -47,8 +47,7 @@ export default defineComponent({
         if (props.autoStart) {
           start()
         }
-      },
-      { immediate: true }
+      }
     )
 
     onActivated(() => {
@@ -66,6 +65,12 @@ export default defineComponent({
     onDeactivated(() => {
       cacheIsStart = isStart
       pause()
+    })
+
+    onMounted(() => {
+      if (props.autoStart) {
+        start()
+      }
     })
 
     onUnmounted(pause)
