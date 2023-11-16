@@ -431,6 +431,7 @@ const active = ref(0)
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
 | `--tabs-indicator-size`         | `2px`                  |
+| `--tabs-indicator-border-radius`         | `0`                  |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
 | `--tabs-indicator-inner-size`             | `100%`                 |
