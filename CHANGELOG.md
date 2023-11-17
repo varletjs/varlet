@@ -1,5134 +1,3878 @@
-## 2.19.0 (2023-11-17)
-
-* chore: bump version ([c5fd912](https://github.com/varletjs/varlet/commit/c5fd912))
-* types(chip): add the return type for computed properties (#1297) ([519a800](https://github.com/varletjs/varlet/commit/519a800)), closes [#1297](https://github.com/varletjs/varlet/issues/1297)
-* types(date-picker): remove unnesssary type ([47b8421](https://github.com/varletjs/varlet/commit/47b8421))
-* types(tab): support ripple ([6c3fef0](https://github.com/varletjs/varlet/commit/6c3fef0))
-* feat: support static method setPropsDefaults ([1407cef](https://github.com/varletjs/varlet/commit/1407cef))
-* feat: support static method setPropsDefaults (#1283) ([e0ba0fc](https://github.com/varletjs/varlet/commit/e0ba0fc)), closes [#1283](https://github.com/varletjs/varlet/issues/1283)
-* feat(badge): support --badge-content-font-size (#1286) ([f2ee14f](https://github.com/varletjs/varlet/commit/f2ee14f)), closes [#1286](https://github.com/varletjs/varlet/issues/1286)
-* feat(rate): support --rate-size (#1298) ([157b233](https://github.com/varletjs/varlet/commit/157b233)), closes [#1298](https://github.com/varletjs/varlet/issues/1298)
-* feat(slider): support custom styles by css var (#1293) ([e4b2431](https://github.com/varletjs/varlet/commit/e4b2431)), closes [#1293](https://github.com/varletjs/varlet/issues/1293)
-* feat(tab): support ripple (#1303) ([17a8a1e](https://github.com/varletjs/varlet/commit/17a8a1e)), closes [#1303](https://github.com/varletjs/varlet/issues/1303)
-* feat(tabs): support --tabs-indicator-border-radius ([559e156](https://github.com/varletjs/varlet/commit/559e156))
-* fix(breadcrumbs): import missing snackbar component (#1294) ([7e81ac3](https://github.com/varletjs/varlet/commit/7e81ac3)), closes [#1294](https://github.com/varletjs/varlet/issues/1294)
-* fix(server/countdown): ensure start function only be called in client ([4100156](https://github.com/varletjs/varlet/commit/4100156))
-* docs: add defaultsCustomization ([952fb4b](https://github.com/varletjs/varlet/commit/952fb4b))
-* docs(cell): docs and example remain consistent (#1296) ([cb4becd](https://github.com/varletjs/varlet/commit/cb4becd)), closes [#1296](https://github.com/varletjs/varlet/issues/1296)
-* docs(checkbox): correct the type of checkedColor and uncheckedColor (#1292) ([1d47306](https://github.com/varletjs/varlet/commit/1d47306)), closes [#1292](https://github.com/varletjs/varlet/issues/1292)
-* docs(icon): remove unused title and optimize examples (#1289) ([1458ca7](https://github.com/varletjs/varlet/commit/1458ca7)), closes [#1289](https://github.com/varletjs/varlet/issues/1289)
-* docs(radio): correct the type of checkedColor and uncheckedColor (#1291) ([daf8008](https://github.com/varletjs/varlet/commit/daf8008)), closes [#1291](https://github.com/varletjs/varlet/issues/1291)
-* docs(rate): remove the default value of disabledColor (#1300) ([001f2db](https://github.com/varletjs/varlet/commit/001f2db)), closes [#1300](https://github.com/varletjs/varlet/issues/1300)
-* docs(rate): typo (#1299) ([f407af5](https://github.com/varletjs/varlet/commit/f407af5)), closes [#1299](https://github.com/varletjs/varlet/issues/1299)
-* docs(sticky): correct the default value of z-index (#1290) ([9be6ecd](https://github.com/varletjs/varlet/commit/9be6ecd)), closes [#1290](https://github.com/varletjs/varlet/issues/1290)
-* docs(style-provider): fix example ([7459793](https://github.com/varletjs/varlet/commit/7459793))
-* refactor(cli): integrated @varlet/release ([03089bb](https://github.com/varletjs/varlet/commit/03089bb))
-* refactor(link): optimize code (#1288) ([76706d1](https://github.com/varletjs/varlet/commit/76706d1)), closes [#1288](https://github.com/varletjs/varlet/issues/1288)
-* refactor(setPropsDefaults): optimize props set logic ([8e7a131](https://github.com/varletjs/varlet/commit/8e7a131))
-
-
-
-## <small>2.18.4 (2023-11-10)</small>
-
-* v2.18.4 ([bd063bc](https://github.com/varletjs/varlet/commit/bd063bc))
-* test(date-picker): add delay to avoid scroller of sticky is undefined ([558cb7c](https://github.com/varletjs/varlet/commit/558cb7c))
-* fix(date-picker): import sticky component ([6fe6ac6](https://github.com/varletjs/varlet/commit/6fe6ac6))
-
-
-
-## <small>2.18.3 (2023-11-09)</small>
-
-* feat(date-picker)!: support year panel and close #1242 ([80dc969](https://github.com/varletjs/varlet/commit/80dc969)), closes [#1242](https://github.com/varletjs/varlet/issues/1242)
-* v2.18.3 ([765b51b](https://github.com/varletjs/varlet/commit/765b51b))
-* docs: fix docs ([06902df](https://github.com/varletjs/varlet/commit/06902df))
-* docs(chip): highlight type attribute in en-US docs (#1281) ([89ed789](https://github.com/varletjs/varlet/commit/89ed789)), closes [#1281](https://github.com/varletjs/varlet/issues/1281)
-* docs(cli): add the solution of failing to install sharp in readme (#1276) ([6e13d48](https://github.com/varletjs/varlet/commit/6e13d48)), closes [#1276](https://github.com/varletjs/varlet/issues/1276)
-* docs(index-bar): modify the default value of highlightColor (#1265) ([848dcf4](https://github.com/varletjs/varlet/commit/848dcf4)), closes [#1265](https://github.com/varletjs/varlet/issues/1265)
-* docs(progress): modify the default value of track-color (#1279) ([589e358](https://github.com/varletjs/varlet/commit/589e358)), closes [#1279](https://github.com/varletjs/varlet/issues/1279)
-* docs(slider): highlight event auguments (#1269) ([34c2089](https://github.com/varletjs/varlet/commit/34c2089)), closes [#1269](https://github.com/varletjs/varlet/issues/1269)
-* docs(ui): add the solution of failing to install sharp in cli readme (#1277) ([d9a3a1f](https://github.com/varletjs/varlet/commit/d9a3a1f)), closes [#1277](https://github.com/varletjs/varlet/issues/1277)
-* docs(uploader): add missing onClickAction event (#1267) ([f109e78](https://github.com/varletjs/varlet/commit/f109e78)), closes [#1267](https://github.com/varletjs/varlet/issues/1267)
-* fix(button): remove hover and ripple effect while loading (#1275) ([591a8b2](https://github.com/varletjs/varlet/commit/591a8b2)), closes [#1275](https://github.com/varletjs/varlet/issues/1275)
-* fix(date-picker): panel-header add sticky ([0212fee](https://github.com/varletjs/varlet/commit/0212fee))
-* fix(ui): correct the return type of toSizeUnit (#1282) ([0a2b04a](https://github.com/varletjs/varlet/commit/0a2b04a)), closes [#1282](https://github.com/varletjs/varlet/issues/1282)
-* feat(image-preview): support zoom method (#1262) ([99a8369](https://github.com/varletjs/varlet/commit/99a8369)), closes [#1262](https://github.com/varletjs/varlet/issues/1262)
-* feat(shared): support isNumeric and optimize ui elements ([06cda15](https://github.com/varletjs/varlet/commit/06cda15))
-* feat(uploader): support props.onClickAction ([830264f](https://github.com/varletjs/varlet/commit/830264f))
-* style(example): optimize code styles (#1270) ([16c8b19](https://github.com/varletjs/varlet/commit/16c8b19)), closes [#1270](https://github.com/varletjs/varlet/issues/1270)
-* style(example): optimize code styles (A-E) (#1266) ([e06ecb3](https://github.com/varletjs/varlet/commit/e06ecb3)), closes [#1266](https://github.com/varletjs/varlet/issues/1266)
-* style(example): optimize code styles (K-P) (#1271) ([2bbf10d](https://github.com/varletjs/varlet/commit/2bbf10d)), closes [#1271](https://github.com/varletjs/varlet/issues/1271)
-* style(example): optimize code styles (Q-Z) (#1278) ([46ed1f9](https://github.com/varletjs/varlet/commit/46ed1f9)), closes [#1278](https://github.com/varletjs/varlet/issues/1278)
-* revert(date-picker): revert month-panel modify ([75cbae8](https://github.com/varletjs/varlet/commit/75cbae8))
-* test(uploader): complete test cases (#1268) ([985db06](https://github.com/varletjs/varlet/commit/985db06)), closes [#1268](https://github.com/varletjs/varlet/issues/1268)
-* types(ellipsis): spread types may only be created from object types (#1264) ([d6550cd](https://github.com/varletjs/varlet/commit/d6550cd)), closes [#1264](https://github.com/varletjs/varlet/issues/1264)
-* types(uploader): support onClickAction and optimize tests ([3c71dd5](https://github.com/varletjs/varlet/commit/3c71dd5))
-* refactor(ui): modify the import path of call and useVModel (#1263) ([57e4439](https://github.com/varletjs/varlet/commit/57e4439)), closes [#1263](https://github.com/varletjs/varlet/issues/1263)
-
-
-
-## <small>2.18.2 (2023-11-02)</small>
-
-* feat(shared, use): support call createNamespaceFn useVModel classes ([daed1e2](https://github.com/varletjs/varlet/commit/daed1e2))
-* v2.18.2 ([0944e9b](https://github.com/varletjs/varlet/commit/0944e9b))
-* docs: add community ecosystem (#1246) ([391b4ab](https://github.com/varletjs/varlet/commit/391b4ab)), closes [#1246](https://github.com/varletjs/varlet/issues/1246)
-* docs: add official and community ecosystem in readme and docs (#1252) ([8142bb0](https://github.com/varletjs/varlet/commit/8142bb0)), closes [#1252](https://github.com/varletjs/varlet/issues/1252)
-* docs(back-top): modify the dafault value of right and bottom prop (#1259) ([7f402f8](https://github.com/varletjs/varlet/commit/7f402f8)), closes [#1259](https://github.com/varletjs/varlet/issues/1259)
-* docs(paper): modify the default value of ripple to false in docs (#1256) ([b557426](https://github.com/varletjs/varlet/commit/b557426)), closes [#1256](https://github.com/varletjs/varlet/issues/1256)
-* docs(skeleton): modify the default value of skeleton prop in docs (#1258) ([a4ae405](https://github.com/varletjs/varlet/commit/a4ae405)), closes [#1258](https://github.com/varletjs/varlet/issues/1258)
-* docs(switch): modify the default value of switch (#1260) ([7719bf7](https://github.com/varletjs/varlet/commit/7719bf7)), closes [#1260](https://github.com/varletjs/varlet/issues/1260)
-* docs(ui): add intro (#1251) ([602f7fd](https://github.com/varletjs/varlet/commit/602f7fd)), closes [#1251](https://github.com/varletjs/varlet/issues/1251)
-* docs(ui): docs keep pace with the example (#1248) ([1d395c9](https://github.com/varletjs/varlet/commit/1d395c9)), closes [#1248](https://github.com/varletjs/varlet/issues/1248)
-* test(card): complete test cases (#1249) ([b78024d](https://github.com/varletjs/varlet/commit/b78024d)), closes [#1249](https://github.com/varletjs/varlet/issues/1249)
-* test(counter): correct invalid prop type (#1257) ([b2c57c7](https://github.com/varletjs/varlet/commit/b2c57c7)), closes [#1257](https://github.com/varletjs/varlet/issues/1257)
-* test(rate): complete test cases (#1244) ([c00302d](https://github.com/varletjs/varlet/commit/c00302d)), closes [#1244](https://github.com/varletjs/varlet/issues/1244)
-* test(table): complete test cases (#1245) ([e0793af](https://github.com/varletjs/varlet/commit/e0793af)), closes [#1245](https://github.com/varletjs/varlet/issues/1245)
-* fix(loading): add missing --loading-color &  support --loading-desc-color (#1253) ([0c21498](https://github.com/varletjs/varlet/commit/0c21498)), closes [#1253](https://github.com/varletjs/varlet/issues/1253)
-* fix(option): ellipses are not displayed when text overflows (#1254) ([8e70fd5](https://github.com/varletjs/varlet/commit/8e70fd5)), closes [#1254](https://github.com/varletjs/varlet/issues/1254)
-* feat(cli): support stub on dev server ([43f61a5](https://github.com/varletjs/varlet/commit/43f61a5))
-* feat(countdown): support --countdown-text-font-size (#1255) ([cd4b307](https://github.com/varletjs/varlet/commit/cd4b307)), closes [#1255](https://github.com/varletjs/varlet/issues/1255)
-* feat(shared): support hasOwn ([fe92b48](https://github.com/varletjs/varlet/commit/fe92b48))
-* feat(swipe): support --swipe-navigation-z-index (#1247) ([1f64a13](https://github.com/varletjs/varlet/commit/1f64a13)), closes [#1247](https://github.com/varletjs/varlet/issues/1247)
-* refactor(vite-plugins): replace pinyin to pinyin-pro ([e25a2ab](https://github.com/varletjs/varlet/commit/e25a2ab))
-* chore: fix deps ([c5452d1](https://github.com/varletjs/varlet/commit/c5452d1))
-
-
-
-## <small>2.18.1 (2023-10-27)</small>
-
-* feat(time-picker, date-picker): support custom title height (#1227) ([b89ca23](https://github.com/varletjs/varlet/commit/b89ca23)), closes [#1227](https://github.com/varletjs/varlet/issues/1227)
-* test(counter, ellipsis): optimize test cases (#1236) ([f4331aa](https://github.com/varletjs/varlet/commit/f4331aa)), closes [#1236](https://github.com/varletjs/varlet/issues/1236)
-* v2.18.1 ([a543ddd](https://github.com/varletjs/varlet/commit/a543ddd))
-* fix(back-top): Change type of the click event from MouseEvent to Event (#1239) ([4ef2e34](https://github.com/varletjs/varlet/commit/4ef2e34)), closes [#1239](https://github.com/varletjs/varlet/issues/1239)
-* fix(chip): rename closable to closeable (#1237) ([7cbe418](https://github.com/varletjs/varlet/commit/7cbe418)), closes [#1237](https://github.com/varletjs/varlet/issues/1237)
-* fix(date-picker): fix year panel scroll error ([2ed4eb3](https://github.com/varletjs/varlet/commit/2ed4eb3))
-* fix(floating-panel): fix scroll behavior ([6d953f7](https://github.com/varletjs/varlet/commit/6d953f7))
-* fix(rate): modify the trigger time of change event & limit the modelValue type to number (#1243) ([2137984](https://github.com/varletjs/varlet/commit/2137984)), closes [#1243](https://github.com/varletjs/varlet/issues/1243)
-* fix(switch): change type of the click event from MouseEvent to Event (#1241) ([153e007](https://github.com/varletjs/varlet/commit/153e007)), closes [#1241](https://github.com/varletjs/varlet/issues/1241)
-* test(badge): add hidden prop test case (#1238) ([a92ec36](https://github.com/varletjs/varlet/commit/a92ec36)), closes [#1238](https://github.com/varletjs/varlet/issues/1238)
-* test(counter): complete test cases (#1235) ([78014a9](https://github.com/varletjs/varlet/commit/78014a9)), closes [#1235](https://github.com/varletjs/varlet/issues/1235)
-* test(date-picker): mock scrollIntoView ([dd9dcb8](https://github.com/varletjs/varlet/commit/dd9dcb8))
-* test(paper): unmount wrapper after end of test (#1231) ([812356d](https://github.com/varletjs/varlet/commit/812356d)), closes [#1231](https://github.com/varletjs/varlet/issues/1231)
-* test(ui): unmount wrapper after end of test (#1240) ([b77362f](https://github.com/varletjs/varlet/commit/b77362f)), closes [#1240](https://github.com/varletjs/varlet/issues/1240)
-* feat(date-picker): replace headColor with titleColor (#1234) ([1c2f41a](https://github.com/varletjs/varlet/commit/1c2f41a)), closes [#1234](https://github.com/varletjs/varlet/issues/1234)
-* feat(date-picker): suport hint (#1233) ([870472e](https://github.com/varletjs/varlet/commit/870472e)), closes [#1233](https://github.com/varletjs/varlet/issues/1233)
-* feat(time-picker): support hint (#1229) ([65675ad](https://github.com/varletjs/varlet/commit/65675ad)), closes [#1229](https://github.com/varletjs/varlet/issues/1229)
-* feat(time-picker): support titleColor (#1230) ([466951f](https://github.com/varletjs/varlet/commit/466951f)), closes [#1230](https://github.com/varletjs/varlet/issues/1230)
-* refactor(timer-picker): change --time-picker-title-hint-font-size to 14px ([dd80053](https://github.com/varletjs/varlet/commit/dd80053))
-* docs(ui): typo (#1232) ([861db20](https://github.com/varletjs/varlet/commit/861db20)), closes [#1232](https://github.com/varletjs/varlet/issues/1232)
-
-
-
-## 2.18.0 (2023-10-19)
-
-* v2.18.0 ([1b2e252](https://github.com/varletjs/varlet/commit/1b2e252))
-* feat(action-sheet): support --action-sheet-border-top (#1215) ([fc88fd0](https://github.com/varletjs/varlet/commit/fc88fd0)), closes [#1215](https://github.com/varletjs/varlet/issues/1215)
-* feat(avatar): support hoverable prop (#1221) ([2a0397a](https://github.com/varletjs/varlet/commit/2a0397a)), closes [#1221](https://github.com/varletjs/varlet/issues/1221)
-* feat(card): support --card-close-button-text-color ([668775b](https://github.com/varletjs/varlet/commit/668775b))
-* feat(floating-panel): support new component floating panel (#1217) ([5749040](https://github.com/varletjs/varlet/commit/5749040)), closes [#1217](https://github.com/varletjs/varlet/issues/1217)
-* feat(index-bar): support custom index bar position (#1220) ([fed2ad3](https://github.com/varletjs/varlet/commit/fed2ad3)), closes [#1220](https://github.com/varletjs/varlet/issues/1220)
-* feat(menu-select): support new component menu select and close #1204 ([df013ea](https://github.com/varletjs/varlet/commit/df013ea)), closes [#1204](https://github.com/varletjs/varlet/issues/1204)
-* feat(use): support isReachTop and isReachBottom ([053c659](https://github.com/varletjs/varlet/commit/053c659))
-* feat(vite-plugins/markdown): support transform hash to pinyin ([0102fdf](https://github.com/varletjs/varlet/commit/0102fdf))
-* test: update error tests ([d290245](https://github.com/varletjs/varlet/commit/d290245))
-* test(avatar): add hoverable test case (#1223) ([2331de5](https://github.com/varletjs/varlet/commit/2331de5)), closes [#1223](https://github.com/varletjs/varlet/issues/1223)
-* test(avatar): complete test cases (#1222) ([def4992](https://github.com/varletjs/varlet/commit/def4992)), closes [#1222](https://github.com/varletjs/varlet/issues/1222)
-* test(floating-panel): update snapshots ([e453441](https://github.com/varletjs/varlet/commit/e453441))
-* types(menu-select): rename NeededPopperPlacement ([463bddd](https://github.com/varletjs/varlet/commit/463bddd))
-* types(ui): resolve conflict between menu and tooltip types (#1225) ([0b2466f](https://github.com/varletjs/varlet/commit/0b2466f)), closes [#1225](https://github.com/varletjs/varlet/issues/1225)
-* refactor: remove repeated type ([c69389e](https://github.com/varletjs/varlet/commit/c69389e))
-* refactor: remove unuseful code ([53ba889](https://github.com/varletjs/varlet/commit/53ba889))
-* refactor(avatar): clean code ([529a344](https://github.com/varletjs/varlet/commit/529a344))
-* refactor(cli): improve site css ([7030ad6](https://github.com/varletjs/varlet/commit/7030ad6))
-* refactor(floating-panel): change teleport default value and clean code ([e171b1f](https://github.com/varletjs/varlet/commit/e171b1f))
-* refactor(floating-panel): improve css var ([825e4ab](https://github.com/varletjs/varlet/commit/825e4ab))
-* refactor(floating-panel): modify css var ([19f1175](https://github.com/varletjs/varlet/commit/19f1175))
-* refactor(floating-panel): support background transition ([48ef1a4](https://github.com/varletjs/varlet/commit/48ef1a4))
-* refactor(menu-select): remove default style ([18363f3](https://github.com/varletjs/varlet/commit/18363f3))
-* refactor(menu-select): remove padding ([e5bc689](https://github.com/varletjs/varlet/commit/e5bc689))
-* refactor(pull-refresh): refactor by useTouch ([18c0d71](https://github.com/varletjs/varlet/commit/18c0d71))
-* refactor(swipe): optimize code (#1219) ([8e26c5e](https://github.com/varletjs/varlet/commit/8e26c5e)), closes [#1219](https://github.com/varletjs/varlet/issues/1219)
-* refactor(vite-plugins): remove handleHotUpdate ([7259f65](https://github.com/varletjs/varlet/commit/7259f65))
-* docs: add the solution of failing to install sharp in contributing docs (#1214) ([286b76d](https://github.com/varletjs/varlet/commit/286b76d)), closes [#1214](https://github.com/varletjs/varlet/issues/1214)
-* docs: update ecosystem ([d0d736b](https://github.com/varletjs/varlet/commit/d0d736b))
-* docs(avatar): fix docs ([b8417c5](https://github.com/varletjs/varlet/commit/b8417c5))
-* docs(elevation): improve docs ([fdbf29f](https://github.com/varletjs/varlet/commit/fdbf29f))
-* docs(floating-panel): fix docs ([2c536e6](https://github.com/varletjs/varlet/commit/2c536e6))
-* docs(floating-panel): fix docs ([d5b4ce0](https://github.com/varletjs/varlet/commit/d5b4ce0))
-* docs(floating-panel): fix docs ([f390cd8](https://github.com/varletjs/varlet/commit/f390cd8))
-* docs(ui): typo (#1208) ([e8f32a6](https://github.com/varletjs/varlet/commit/e8f32a6)), closes [#1208](https://github.com/varletjs/varlet/issues/1208)
-* fix: fix warning when event.preventDefault and close #1212 ([f3955ca](https://github.com/varletjs/varlet/commit/f3955ca)), closes [#1212](https://github.com/varletjs/varlet/issues/1212)
-* fix(floating-panel): cover the bottom shadow of the panel (#1224) ([61e14e8](https://github.com/varletjs/varlet/commit/61e14e8)), closes [#1224](https://github.com/varletjs/varlet/issues/1224)
-* fix(ripple): fix ripple cannot be removed when user drag end and improve menu link of the documentat ([63faeae](https://github.com/varletjs/varlet/commit/63faeae)), closes [#1213](https://github.com/varletjs/varlet/issues/1213)
-* style: clean code ([7e3784c](https://github.com/varletjs/varlet/commit/7e3784c))
-
-
-
-## <small>2.17.1 (2023-10-08)</small>
-
-* v2.17.1 ([989709d](https://github.com/varletjs/varlet/commit/989709d))
-* docs: fix typo ([a69db16](https://github.com/varletjs/varlet/commit/a69db16))
-* docs(badge): keep example and docs with same codes (#1199) ([846b547](https://github.com/varletjs/varlet/commit/846b547)), closes [#1199](https://github.com/varletjs/varlet/issues/1199)
-* docs(fab): docs title keeps pace with example title (#1200) ([bebbbfe](https://github.com/varletjs/varlet/commit/bebbbfe)), closes [#1200](https://github.com/varletjs/varlet/issues/1200)
-* docs(ui): keep pace with the translation of basic use in docs (#1201) ([f257cb1](https://github.com/varletjs/varlet/commit/f257cb1)), closes [#1201](https://github.com/varletjs/varlet/issues/1201)
-* docs(uploader): fix typo ([f922849](https://github.com/varletjs/varlet/commit/f922849))
-* docs(uploader): fix typo ([b7c74e7](https://github.com/varletjs/varlet/commit/b7c74e7))
-* docs(uploader): typo (#1207) ([7858a97](https://github.com/varletjs/varlet/commit/7858a97)), closes [#1207](https://github.com/varletjs/varlet/issues/1207)
-* fix(dialog): fix message word-wrap and improve uploader component tests and docs ([1c4c3d2](https://github.com/varletjs/varlet/commit/1c4c3d2))
-* fix(option): fix selected error in multiple mode ([c9753d9](https://github.com/varletjs/varlet/commit/c9753d9))
-* fix(popup): fixed width and height of the popup content ([b78826d](https://github.com/varletjs/varlet/commit/b78826d))
-* fix(uploader): support ico extname of the image ([3429668](https://github.com/varletjs/varlet/commit/3429668))
-* feat(option): support disabled ([802813d](https://github.com/varletjs/varlet/commit/802813d))
-* feat(uploader): support props.PreventDefaultPreview and preview event(#1206) ([f5ab12b](https://github.com/varletjs/varlet/commit/f5ab12b)), closes [#1206](https://github.com/varletjs/varlet/issues/1206)
-
-
-
-## 2.17.0 (2023-09-28)
-
-* feat(action-sheet, step): support namespace for icon ([d62ac66](https://github.com/varletjs/varlet/commit/d62ac66))
-* feat(picker)!: component remake and api optimization ([16729b4](https://github.com/varletjs/varlet/commit/16729b4))
-* v2.17.0 ([14610a0](https://github.com/varletjs/varlet/commit/14610a0))
-* docs: fix typo ([ce530c0](https://github.com/varletjs/varlet/commit/ce530c0))
-* docs: improve documentation related to icon namespace ([d7976a6](https://github.com/varletjs/varlet/commit/d7976a6))
-* docs: rename chinese playground (#1189) ([dd00a59](https://github.com/varletjs/varlet/commit/dd00a59)), closes [#1189](https://github.com/varletjs/varlet/issues/1189)
-* docs: rename chinese playground and remove CSDN IDE link (#1195) ([994dbd8](https://github.com/varletjs/varlet/commit/994dbd8)), closes [#1195](https://github.com/varletjs/varlet/issues/1195)
-* docs(field): fix docs ([88900a4](https://github.com/varletjs/varlet/commit/88900a4))
-* docs(locale): fix english docs ([4d238b8](https://github.com/varletjs/varlet/commit/4d238b8))
-* docs(popup): typo (#1196) ([3bf3f1f](https://github.com/varletjs/varlet/commit/3bf3f1f)), closes [#1196](https://github.com/varletjs/varlet/issues/1196)
-* docs(progress): complete gradient color annotations (#1185) ([984d6ae](https://github.com/varletjs/varlet/commit/984d6ae)), closes [#1185](https://github.com/varletjs/varlet/issues/1185)
-* docs(progress): improve docs ([bed7a09](https://github.com/varletjs/varlet/commit/bed7a09))
-* docs(step): fix docs ([5928476](https://github.com/varletjs/varlet/commit/5928476))
-* docs(step): fix docs ([a81dc34](https://github.com/varletjs/varlet/commit/a81dc34))
-* docs(swipe): fix incorrect Chinese spelling (#1183) ([41efdae](https://github.com/varletjs/varlet/commit/41efdae)), closes [#1183](https://github.com/varletjs/varlet/issues/1183)
-* test(ellipsis): optimize test case and docs ([e879f9d](https://github.com/varletjs/varlet/commit/e879f9d))
-* feat(badge): support namespace for icon ([b1da5db](https://github.com/varletjs/varlet/commit/b1da5db))
-* feat(cell): support namespace for icon ([0a6d6e8](https://github.com/varletjs/varlet/commit/0a6d6e8))
-* feat(chip): support namespace for icon ([2b31999](https://github.com/varletjs/varlet/commit/2b31999))
-* feat(cli): support esbuild compiler ([5b33789](https://github.com/varletjs/varlet/commit/5b33789))
-* feat(cli): support esbuild option ([28195d9](https://github.com/varletjs/varlet/commit/28195d9))
-* feat(cli): support record task time ([9cbd270](https://github.com/varletjs/varlet/commit/9cbd270))
-* feat(ellipsis): support expand (#1197) ([a781b28](https://github.com/varletjs/varlet/commit/a781b28)), closes [#1197](https://github.com/varletjs/varlet/issues/1197)
-* feat(fab): support namespace for icon ([6f06bd7](https://github.com/varletjs/varlet/commit/6f06bd7))
-* feat(field): support --field-decorator-line-border-radius ([bfaad07](https://github.com/varletjs/varlet/commit/bfaad07))
-* feat(field): support --field-decorator-placeholder-color ([c3edacf](https://github.com/varletjs/varlet/commit/c3edacf))
-* feat(locale): support zh-TW zh-HK ([92976b9](https://github.com/varletjs/varlet/commit/92976b9))
-* feat(progress): support linear gradient color when mode is circle (#1180) ([f1cd728](https://github.com/varletjs/varlet/commit/f1cd728)), closes [#1180](https://github.com/varletjs/varlet/issues/1180)
-* feat(rate): support namespace for icon ([7db258f](https://github.com/varletjs/varlet/commit/7db258f))
-* feat(uploader): support resolve-type (#1194) ([a8fbb35](https://github.com/varletjs/varlet/commit/a8fbb35)), closes [#1194](https://github.com/varletjs/varlet/issues/1194)
-* refactor: refactor by useId ([f7ce86e](https://github.com/varletjs/varlet/commit/f7ce86e))
-* refactor(cli): esm.js remove env ([6e91c94](https://github.com/varletjs/varlet/commit/6e91c94))
-* refactor(ui): replace type StyleValue with CSSProperties (#1198) ([cb1b3a3](https://github.com/varletjs/varlet/commit/cb1b3a3)), closes [#1198](https://github.com/varletjs/varlet/issues/1198)
-* refactor(uploader): clean code and fix types ([0633d67](https://github.com/varletjs/varlet/commit/0633d67))
-* refactor(use): clean code ([2f7ee39](https://github.com/varletjs/varlet/commit/2f7ee39))
-* style: clean code ([41639aa](https://github.com/varletjs/varlet/commit/41639aa))
-* chore: rewrite pnpm overrides ([23b88bf](https://github.com/varletjs/varlet/commit/23b88bf))
-* chore: using nolyfill reduce size (#1193) ([c261bd6](https://github.com/varletjs/varlet/commit/c261bd6)), closes [#1193](https://github.com/varletjs/varlet/issues/1193)
-* chore(cli): remove cjs folder ([5c4e4cb](https://github.com/varletjs/varlet/commit/5c4e4cb))
-* fix(select): hidden vertical scroll bar (#1186) ([842b10c](https://github.com/varletjs/varlet/commit/842b10c)), closes [#1186](https://github.com/varletjs/varlet/issues/1186)
-* fix(snackbar): incorrect position of multiple ([4fc386c](https://github.com/varletjs/varlet/commit/4fc386c))
-* fix(uploader): convert default slot to boolean value (#1188) ([4416972](https://github.com/varletjs/varlet/commit/4416972)), closes [#1188](https://github.com/varletjs/varlet/issues/1188)
-* fix(uploader): readonly mode allows to preview picture (#1184) ([edcf93a](https://github.com/varletjs/varlet/commit/edcf93a)), closes [#1184](https://github.com/varletjs/varlet/issues/1184)
-
-
-
-## <small>2.16.7 (2023-09-18)</small>
-
-* fix(input,select): reduce the impact of text-align ([5091f35](https://github.com/varletjs/varlet/commit/5091f35))
-* v2.16.7 ([8a8dee7](https://github.com/varletjs/varlet/commit/8a8dee7))
-* chore: update dep ([f4c597c](https://github.com/varletjs/varlet/commit/f4c597c))
-* refactor(swipe): support navigation vertical mode ([dc69d24](https://github.com/varletjs/varlet/commit/dc69d24))
-* feat(swipe): support navigation prop and prev and next slots (#1177) ([d717f0c](https://github.com/varletjs/varlet/commit/d717f0c)), closes [#1177](https://github.com/varletjs/varlet/issues/1177)
-* style: clean code ([0fbcce8](https://github.com/varletjs/varlet/commit/0fbcce8))
-
-
-
-## <small>2.16.6 (2023-09-14)</small>
-
-* v2.16.6 ([282adba](https://github.com/varletjs/varlet/commit/282adba))
-* feat(extension): support vercel origin ([bad29f5](https://github.com/varletjs/varlet/commit/bad29f5))
-
-
-
-## <small>2.16.5 (2023-09-13)</small>
-
-* v2.16.5 ([dd7a581](https://github.com/varletjs/varlet/commit/dd7a581))
-* fix(badge): fix border radius error ([bc46710](https://github.com/varletjs/varlet/commit/bc46710))
-
-
-
-## <small>2.16.4 (2023-09-13)</small>
-
-* v2.16.4 ([e0d324f](https://github.com/varletjs/varlet/commit/e0d324f))
-* chore: fix linter ([b835e2c](https://github.com/varletjs/varlet/commit/b835e2c))
-* chore: fix typo ([f0f163f](https://github.com/varletjs/varlet/commit/f0f163f))
-* chore: improve build scripts and workflow ([3186123](https://github.com/varletjs/varlet/commit/3186123))
-* chore: replace pnpm action with corepack enable ([c640f5d](https://github.com/varletjs/varlet/commit/c640f5d))
-* chore: skip version ([daad320](https://github.com/varletjs/varlet/commit/daad320))
-* chore: skip version ([62c7fd7](https://github.com/varletjs/varlet/commit/62c7fd7))
-* chore(cli): update bin.js ([595b374](https://github.com/varletjs/varlet/commit/595b374))
-* chore(touch-emulator): add files field ([a05597f](https://github.com/varletjs/varlet/commit/a05597f))
-* feat(badge): support custom content border (#1178) ([499cd46](https://github.com/varletjs/varlet/commit/499cd46)), closes [#1178](https://github.com/varletjs/varlet/issues/1178)
-* feat(extension): support webview for documentation preview ([3c77690](https://github.com/varletjs/varlet/commit/3c77690))
-* refactor: replace tsc with tsup for shared and use & vite-plugins ([1170445](https://github.com/varletjs/varlet/commit/1170445))
-* style: change code style ([a574dd5](https://github.com/varletjs/varlet/commit/a574dd5))
-* style: clean code ([0eed60d](https://github.com/varletjs/varlet/commit/0eed60d))
-* style: clean code ([a3622eb](https://github.com/varletjs/varlet/commit/a3622eb))
-
-
-
-## <small>2.16.2 (2023-09-07)</small>
-
-* v2.16.2 ([58137be](https://github.com/varletjs/varlet/commit/58137be))
-* chore: fix contribution guide ([41a61c8](https://github.com/varletjs/varlet/commit/41a61c8))
-* chore: fix scripts ([b3b5968](https://github.com/varletjs/varlet/commit/b3b5968))
-* chore: fix tsconfig ([2c6cea3](https://github.com/varletjs/varlet/commit/2c6cea3))
-* chore: fix workflow ([f732a23](https://github.com/varletjs/varlet/commit/f732a23))
-* chore: remove preview.yml ([8578d6f](https://github.com/varletjs/varlet/commit/8578d6f))
-* feat(layout): support array for gutter and optimize scripts ([0a5252f](https://github.com/varletjs/varlet/commit/0a5252f))
-* feat(layout): support array for gutter and optimize scripts ([55a2e97](https://github.com/varletjs/varlet/commit/55a2e97))
-* feat(swipe): support prev next to for scoped slots data ([1031dd3](https://github.com/varletjs/varlet/commit/1031dd3))
-* docs: improve ui ([4de5699](https://github.com/varletjs/varlet/commit/4de5699))
-* docs: opt homepage btn text ([07aa7d9](https://github.com/varletjs/varlet/commit/07aa7d9))
-* docs: remove link to CSDN IDE in README.zh-CN.md (#1176) ([b48882f](https://github.com/varletjs/varlet/commit/b48882f)), closes [#1176](https://github.com/varletjs/varlet/issues/1176)
-* docs(swipe): modify custom indicator example (#1168) ([edf065b](https://github.com/varletjs/varlet/commit/edf065b)), closes [#1168](https://github.com/varletjs/varlet/issues/1168)
-
-
-
-## <small>2.16.1 (2023-09-05)</small>
-
-* v2.16.1 ([ac84929](https://github.com/varletjs/varlet/commit/ac84929))
-* fix(swipe): direction check on touchend ([11911ac](https://github.com/varletjs/varlet/commit/11911ac))
-
-
-
-## 2.16.0 (2023-09-05)
-
-* v2.16.0 ([779c836](https://github.com/varletjs/varlet/commit/779c836))
-* chore: fix deps ([205927d](https://github.com/varletjs/varlet/commit/205927d))
-* chore: fix deps ([d5d2e46](https://github.com/varletjs/varlet/commit/d5d2e46))
-* chore: update lockfile ([330965c](https://github.com/varletjs/varlet/commit/330965c))
-* refactor: improve css ([ad158c8](https://github.com/varletjs/varlet/commit/ad158c8))
-* refactor: optimize ([353c8cf](https://github.com/varletjs/varlet/commit/353c8cf))
-* refactor: refactor by varlet shared ([e4eae7f](https://github.com/varletjs/varlet/commit/e4eae7f))
-* refactor(cli): rename component namespace in template ([e52e701](https://github.com/varletjs/varlet/commit/e52e701))
-* refactor(shared): reduce delay ([d78feb2](https://github.com/varletjs/varlet/commit/d78feb2))
-* fix(button): fix hover effect while the component is disabled ([bc15462](https://github.com/varletjs/varlet/commit/bc15462))
-* feat: remake index page and add new icon ([6adee9c](https://github.com/varletjs/varlet/commit/6adee9c))
-* style: format ([b66598a](https://github.com/varletjs/varlet/commit/b66598a))
-
-
-
-## <small>2.15.1 (2023-08-31)</small>
-
-* fix(layout, table): fix col width overflow and optimize table hover effect ([695b75d](https://github.com/varletjs/varlet/commit/695b75d))
-* v2.15.1 ([d32e559](https://github.com/varletjs/varlet/commit/d32e559))
-
-
-
-## 2.15.0 (2023-08-30)
-
-* v2.15.0 ([9b7a408](https://github.com/varletjs/varlet/commit/9b7a408))
-* fix(input): fix it can't trigger click event in `readonly` (#1170) ([6ba487d](https://github.com/varletjs/varlet/commit/6ba487d)), closes [#1170](https://github.com/varletjs/varlet/issues/1170)
-* fix(swipe): fix swipe occasionally cross the boundary ([1788fd4](https://github.com/varletjs/varlet/commit/1788fd4))
-* refactor: improve props defination ([f6055b4](https://github.com/varletjs/varlet/commit/f6055b4))
-* refactor: improve props defination ([803df55](https://github.com/varletjs/varlet/commit/803df55))
-* refactor: refactor by useVModel ([7558cf4](https://github.com/varletjs/varlet/commit/7558cf4))
-* refactor: refactor useTouch ([de39e50](https://github.com/varletjs/varlet/commit/de39e50))
-* refactor: remove jest config ([2f365ca](https://github.com/varletjs/varlet/commit/2f365ca))
-* refactor: simplify props definition and optimize types ([2b7641f](https://github.com/varletjs/varlet/commit/2b7641f))
-* refactor: simplify props definition and optimize types ([b452a40](https://github.com/varletjs/varlet/commit/b452a40))
-* refactor: simplify props definition and optimize types ([6957060](https://github.com/varletjs/varlet/commit/6957060))
-* refactor: simplify props definition and optimize types (#1160) ([18763f6](https://github.com/varletjs/varlet/commit/18763f6)), closes [#1160](https://github.com/varletjs/varlet/issues/1160)
-* refactor: simplify props definition and optimize types (#1162) ([c84dc6c](https://github.com/varletjs/varlet/commit/c84dc6c)), closes [#1162](https://github.com/varletjs/varlet/issues/1162)
-* refactor(cli): jest to vi ([86a3eb7](https://github.com/varletjs/varlet/commit/86a3eb7))
-* refactor(drag): refactor by useTouch ([7e11cde](https://github.com/varletjs/varlet/commit/7e11cde))
-* refactor(image-preview): add endTouch call ([d94a831](https://github.com/varletjs/varlet/commit/d94a831))
-* refactor(image-preview): clean ([5fc99c9](https://github.com/varletjs/varlet/commit/5fc99c9))
-* refactor(image-preview): refactor by useTouch (#1158) ([0e319ec](https://github.com/varletjs/varlet/commit/0e319ec)), closes [#1158](https://github.com/varletjs/varlet/issues/1158)
-* refactor(input): remove error code ([8ff8017](https://github.com/varletjs/varlet/commit/8ff8017))
-* refactor(picker): refactor by useTouch (#1167) ([37c9705](https://github.com/varletjs/varlet/commit/37c9705)), closes [#1167](https://github.com/varletjs/varlet/issues/1167)
-* refactor(playground): improve ui experience ([95153e5](https://github.com/varletjs/varlet/commit/95153e5))
-* refactor(swipe): refactor by useTouch ([052a977](https://github.com/varletjs/varlet/commit/052a977))
-* refactor(swipe): remove async and raf ([d9b939f](https://github.com/varletjs/varlet/commit/d9b939f))
-* docs: compress image ([1645449](https://github.com/varletjs/varlet/commit/1645449))
-* docs: fix docs ([db6e579](https://github.com/varletjs/varlet/commit/db6e579))
-* docs: fix docs ([98b2bf9](https://github.com/varletjs/varlet/commit/98b2bf9))
-* docs: update vscode image ([cef0d36](https://github.com/varletjs/varlet/commit/cef0d36))
-* docs(tooltip): typo (#1155) ([5e6f790](https://github.com/varletjs/varlet/commit/5e6f790)), closes [#1155](https://github.com/varletjs/varlet/issues/1155)
-* feat(checkbox): support indeterminate prop and slot (#1159) ([41cd712](https://github.com/varletjs/varlet/commit/41cd712)), closes [#1159](https://github.com/varletjs/varlet/issues/1159)
-* feat(cli): unit testing tools migrated to vitest ([9911f4b](https://github.com/varletjs/varlet/commit/9911f4b))
-* feat(form): support submit and reset events and improve test case ([55b3d62](https://github.com/varletjs/varlet/commit/55b3d62))
-* feat(link): support rel prop (#1163) ([05baa4a](https://github.com/varletjs/varlet/commit/05baa4a)), closes [#1163](https://github.com/varletjs/varlet/issues/1163)
-* feat(option): support hover effect (#1157) ([56cdff8](https://github.com/varletjs/varlet/commit/56cdff8)), closes [#1157](https://github.com/varletjs/varlet/issues/1157)
-* test: clean ([9295ea6](https://github.com/varletjs/varlet/commit/9295ea6))
-* test: fix typo ([3e8e3da](https://github.com/varletjs/varlet/commit/3e8e3da))
-* test: improve ([b823209](https://github.com/varletjs/varlet/commit/b823209))
-* types: optimize types ([58a8d7e](https://github.com/varletjs/varlet/commit/58a8d7e))
-* chore: bump deps ([cb6cc40](https://github.com/varletjs/varlet/commit/cb6cc40))
-* chore: optimize pr template (#1153) ([e2dfcdc](https://github.com/varletjs/varlet/commit/e2dfcdc)), closes [#1153](https://github.com/varletjs/varlet/issues/1153)
-* style: clean ([715193b](https://github.com/varletjs/varlet/commit/715193b))
-* style: clean code ([ba02d05](https://github.com/varletjs/varlet/commit/ba02d05))
-* style: clean code ([e6ab85e](https://github.com/varletjs/varlet/commit/e6ab85e))
-* style: clean code ([1bbb8bb](https://github.com/varletjs/varlet/commit/1bbb8bb))
-* style: clean code ([7dedc52](https://github.com/varletjs/varlet/commit/7dedc52))
-
-
-
-## <small>2.14.2 (2023-08-18)</small>
-
-* v2.14.2 ([d404993](https://github.com/varletjs/varlet/commit/d404993))
-* style: clean code ([5595bd7](https://github.com/varletjs/varlet/commit/5595bd7))
-* refactor(fab): replace dragging status with click event (#1152) ([88ad2ac](https://github.com/varletjs/varlet/commit/88ad2ac)), closes [#1152](https://github.com/varletjs/varlet/issues/1152)
-* feat(drag): support click event (#1150) ([62ad9c3](https://github.com/varletjs/varlet/commit/62ad9c3)), closes [#1150](https://github.com/varletjs/varlet/issues/1150)
-* chore: add issue and related links into pr template (#1151) ([35d33dc](https://github.com/varletjs/varlet/commit/35d33dc)), closes [#1151](https://github.com/varletjs/varlet/issues/1151)
-
-
-
-## <small>2.14.1 (2023-08-15)</small>
-
-* v2.14.1 ([e15738f](https://github.com/varletjs/varlet/commit/e15738f))
-* fix(watermarker): fix missing style dependencies ([22fc711](https://github.com/varletjs/varlet/commit/22fc711))
-
-
-
-## 2.14.0 (2023-08-15)
-
-* v2.14.0 ([fad3418](https://github.com/varletjs/varlet/commit/fad3418))
-* docs: format ([79d4d25](https://github.com/varletjs/varlet/commit/79d4d25))
-* docs: improve docs readability (#1145) ([3b97d21](https://github.com/varletjs/varlet/commit/3b97d21)), closes [#1145](https://github.com/varletjs/varlet/issues/1145)
-* refactor(watermark): clean and refactor fullscreen by teleport ([b69038e](https://github.com/varletjs/varlet/commit/b69038e))
-* feat: add new component watermark (#1143) ([a0af434](https://github.com/varletjs/varlet/commit/a0af434)), closes [#1143](https://github.com/varletjs/varlet/issues/1143)
-* chore: add reproduction link into the bug report template (#1147) ([18324dd](https://github.com/varletjs/varlet/commit/18324dd)), closes [#1147](https://github.com/varletjs/varlet/issues/1147)
-
-
-
-## <small>2.13.6 (2023-08-02)</small>
-
-* v2.13.6 ([721836f](https://github.com/varletjs/varlet/commit/721836f))
-* fix(cell): fix cell overflow hidden ([0850d94](https://github.com/varletjs/varlet/commit/0850d94))
-* feat(icons): support email icon ([c23c7c1](https://github.com/varletjs/varlet/commit/c23c7c1))
-
-
-
-## <small>2.13.5 (2023-07-30)</small>
-
-* v2.13.5 ([fd30b91](https://github.com/varletjs/varlet/commit/fd30b91))
-* types(fab): optimize fab types ([e8257d4](https://github.com/varletjs/varlet/commit/e8257d4))
-* feat(avatar): support alt (#1141) ([b76f84e](https://github.com/varletjs/varlet/commit/b76f84e)), closes [#1141](https://github.com/varletjs/varlet/issues/1141)
-* feat(fab): support drag props (#1138) ([344fb86](https://github.com/varletjs/varlet/commit/344fb86)), closes [#1138](https://github.com/varletjs/varlet/issues/1138)
-* feat(icons): support lock icon ([ab406bd](https://github.com/varletjs/varlet/commit/ab406bd))
-* feat(popover): add position strategy (#1137) ([87bed1a](https://github.com/varletjs/varlet/commit/87bed1a)), closes [#1137](https://github.com/varletjs/varlet/issues/1137)
-* feat(progress): add css variable to set border radius when the mode is linear (#1136) ([83da939](https://github.com/varletjs/varlet/commit/83da939)), closes [#1136](https://github.com/varletjs/varlet/issues/1136)
-* refactor(popover): disable teleport on keepalive activated ([c4e832a](https://github.com/varletjs/varlet/commit/c4e832a))
-* refactor(teleport): support false value to disabled teleport ([935a7bb](https://github.com/varletjs/varlet/commit/935a7bb))
-* refactor(teleport): support false value to disabled teleport ([7a9f101](https://github.com/varletjs/varlet/commit/7a9f101))
-* refactor(teleport): support false value to disabled teleport ([854d2e8](https://github.com/varletjs/varlet/commit/854d2e8))
-* style: clean code ([74a33fd](https://github.com/varletjs/varlet/commit/74a33fd))
-
-
-
-## <small>2.13.4 (2023-07-25)</small>
-
-* v2.13.4 ([9fee3bb](https://github.com/varletjs/varlet/commit/9fee3bb))
-* fix(fab): drag style mission ([cc6c913](https://github.com/varletjs/varlet/commit/cc6c913))
-* fix(fab): fix fab teleport defaults to body ([59de630](https://github.com/varletjs/varlet/commit/59de630))
-* refactor(switch): optimize code (#1134) ([c1f87b0](https://github.com/varletjs/varlet/commit/c1f87b0)), closes [#1134](https://github.com/varletjs/varlet/issues/1134)
-
-
-
-## <small>2.13.3 (2023-07-24)</small>
-
-* fix(switch, slider): fix props.size cannot handle vmin and vmax ([8657077](https://github.com/varletjs/varlet/commit/8657077))
-* fix(switch, slider): support em unit ([5d5d3ab](https://github.com/varletjs/varlet/commit/5d5d3ab))
-* v2.13.3 ([5d2badc](https://github.com/varletjs/varlet/commit/5d2badc))
-* feat(fab): support drag (#1133) ([203c1a8](https://github.com/varletjs/varlet/commit/203c1a8)), closes [#1133](https://github.com/varletjs/varlet/issues/1133)
-* feat(site): support color scheme ([a03da2a](https://github.com/varletjs/varlet/commit/a03da2a))
-* style: remove console ([45e2f50](https://github.com/varletjs/varlet/commit/45e2f50))
-* refactor(fab): format code ([de37c58](https://github.com/varletjs/varlet/commit/de37c58))
-
-
-
-## <small>2.13.2 (2023-07-24)</small>
-
-* fix(switch, slider): fix props.size cannot handle vmin and vmax ([3a218e1](https://github.com/varletjs/varlet/commit/3a218e1))
-* v2.13.2 ([7346a46](https://github.com/varletjs/varlet/commit/7346a46))
-
-
-
-## <small>2.13.1 (2023-07-21)</small>
-
-* v2.13.1 ([6608853](https://github.com/varletjs/varlet/commit/6608853))
-* types(snackbar): fix types ([a2355df](https://github.com/varletjs/varlet/commit/a2355df))
-* docs(drag): fix docs ([1d56640](https://github.com/varletjs/varlet/commit/1d56640))
-* docs(snackbar): fix typo ([76abb86](https://github.com/varletjs/varlet/commit/76abb86))
-* feat(menu): support popoverClass and refactor select css and fixed #1129 ([417f45c](https://github.com/varletjs/varlet/commit/417f45c)), closes [#1129](https://github.com/varletjs/varlet/issues/1129)
-* feat(popover): support animation ([4416548](https://github.com/varletjs/varlet/commit/4416548))
-* style: clean code ([1b3eb97](https://github.com/varletjs/varlet/commit/1b3eb97))
-* style: remove unuseful code ([b4d3061](https://github.com/varletjs/varlet/commit/b4d3061))
-* refactor: refactor via withInstall ([571de27](https://github.com/varletjs/varlet/commit/571de27))
-* refactor(cli/gen): refactor tpl ([4107bb2](https://github.com/varletjs/varlet/commit/4107bb2))
-* refactor(popover): optimize performance ([203aee4](https://github.com/varletjs/varlet/commit/203aee4))
-* refactor(popover): optimize performance ([4daad0f](https://github.com/varletjs/varlet/commit/4daad0f))
-* refactor(select): fix typo ([569b34e](https://github.com/varletjs/varlet/commit/569b34e))
-* test(popover): update snapshots ([12d467c](https://github.com/varletjs/varlet/commit/12d467c))
-* fix(select): fix select option active error (#1130) ([a3b7138](https://github.com/varletjs/varlet/commit/a3b7138)), closes [#1130](https://github.com/varletjs/varlet/issues/1130)
-
-
-
-## 2.13.0 (2023-07-16)
-
-* feat(input,uploader): add extra message slot (#1117) ([979229e](https://github.com/varletjs/varlet/commit/979229e)), closes [#1117](https://github.com/varletjs/varlet/issues/1117)
-* refactor(form-details, input, uploader): refactor slots define ([5fce41c](https://github.com/varletjs/varlet/commit/5fce41c))
-* v2.13.0 ([04cdfab](https://github.com/varletjs/varlet/commit/04cdfab))
-* types(divider): fix inset type ([63ef0ee](https://github.com/varletjs/varlet/commit/63ef0ee))
-* refactor(divider): refactor divider in vertical mode (#1128) ([db7618c](https://github.com/varletjs/varlet/commit/db7618c)), closes [#1128](https://github.com/varletjs/varlet/issues/1128)
-* refactor(drag): optimize performance and clean code ([767f922](https://github.com/varletjs/varlet/commit/767f922))
-* refactor(playground): replace env variable ([90c1f24](https://github.com/varletjs/varlet/commit/90c1f24))
-* feat: new component drag (#1124) ([d86d5a1](https://github.com/varletjs/varlet/commit/d86d5a1)), closes [#1124](https://github.com/varletjs/varlet/issues/1124)
-* feat(drag): support reset and refactor animation ([6dddee3](https://github.com/varletjs/varlet/commit/6dddee3))
-* feat(playground): support preview mode ([d5101b2](https://github.com/varletjs/varlet/commit/d5101b2))
-* fix(cli): fix md table syntax ([c202ddf](https://github.com/varletjs/varlet/commit/c202ddf))
-* fix(slider): fix bubble size of the Slider component is abnormal (#1120) ([49a0b1f](https://github.com/varletjs/varlet/commit/49a0b1f)), closes [#1120](https://github.com/varletjs/varlet/issues/1120)
-* docs: fix docs typo ([aa3df2f](https://github.com/varletjs/varlet/commit/aa3df2f))
-* docs: fix typo ([caaee97](https://github.com/varletjs/varlet/commit/caaee97))
-* docs: replace vw with vmin in example (#1119) ([44fe149](https://github.com/varletjs/varlet/commit/44fe149)), closes [#1119](https://github.com/varletjs/varlet/issues/1119)
-* test(progress): add test case for indeterminate (#1115) ([7d62bae](https://github.com/varletjs/varlet/commit/7d62bae)), closes [#1115](https://github.com/varletjs/varlet/issues/1115)
-
-
-
-## <small>2.12.3 (2023-07-07)</small>
-
-* v2.12.3 ([5e70194](https://github.com/varletjs/varlet/commit/5e70194))
-* types: ensure type of value is number ([be3345c](https://github.com/varletjs/varlet/commit/be3345c))
-* types(progress): fix size type ([a41caf2](https://github.com/varletjs/varlet/commit/a41caf2))
-* fix(input): fix auto complete tab index (#1114) ([fb5e3ac](https://github.com/varletjs/varlet/commit/fb5e3ac)), closes [#1114](https://github.com/varletjs/varlet/issues/1114)
-* fix(pullRefresh): ensure element is not null and fix types ([3f594f5](https://github.com/varletjs/varlet/commit/3f594f5))
-* fix(switch): fix load animation without displaying when the radius isn't setting (#1110) ([f286f12](https://github.com/varletjs/varlet/commit/f286f12)), closes [#1110](https://github.com/varletjs/varlet/issues/1110)
-* test(progress): fix test case ([35cc5a3](https://github.com/varletjs/varlet/commit/35cc5a3))
-* refactor(progress): optimize code ([10518d1](https://github.com/varletjs/varlet/commit/10518d1))
-* feat(progress): add type attribute to set different theme colors ([8ccfafd](https://github.com/varletjs/varlet/commit/8ccfafd))
-
-
-
-## <small>2.12.2 (2023-07-02)</small>
-
-* v2.12.2 ([1e7f0cf](https://github.com/varletjs/varlet/commit/1e7f0cf))
-* refactor: fix teleport docs and tests ([98ef58a](https://github.com/varletjs/varlet/commit/98ef58a))
-* docs(ui/popup): fix teleport ([10eff39](https://github.com/varletjs/varlet/commit/10eff39))
-* fix: fix layout zIndex ([0b63630](https://github.com/varletjs/varlet/commit/0b63630))
-* test(image-preview): add test cases for initialIndex prop and prev next to methods (#1107) ([92d0e1f](https://github.com/varletjs/varlet/commit/92d0e1f)), closes [#1107](https://github.com/varletjs/varlet/issues/1107)
-
-
-
-## <small>2.12.1 (2023-07-01)</small>
-
-* v2.12.1 ([9d0eaf6](https://github.com/varletjs/varlet/commit/9d0eaf6))
-* fix(image-preview): fix swipe ref is not expose ([2363a31](https://github.com/varletjs/varlet/commit/2363a31))
-
-
-
-## 2.12.0 (2023-07-01)
-
-* v2.12.0 ([a166e0c](https://github.com/varletjs/varlet/commit/a166e0c))
-* types: patch popover related types ([18934f5](https://github.com/varletjs/varlet/commit/18934f5))
-* types: refactor popover and bottomNavigation types ([e1a3414](https://github.com/varletjs/varlet/commit/e1a3414))
-* types(loading-bar): export _LoadingBarComponent ([b36b967](https://github.com/varletjs/varlet/commit/b36b967))
-* style: clean code ([b11ac04](https://github.com/varletjs/varlet/commit/b11ac04))
-* feat(cli): support sponsors option ([8aca9e7](https://github.com/varletjs/varlet/commit/8aca9e7))
-* feat(image-preview): support initialIndex and prev, next, to methods (#1104) ([12fff90](https://github.com/varletjs/varlet/commit/12fff90)), closes [#1104](https://github.com/varletjs/varlet/issues/1104)
-* feat(playground): support light theme ([e7368db](https://github.com/varletjs/varlet/commit/e7368db))
-* feat(playground): support monaco and select varlet and vue version ([aed4817](https://github.com/varletjs/varlet/commit/aed4817))
-* feat(ui/select): support click reference element to collapse the menu (#1103) ([159a5b4](https://github.com/varletjs/varlet/commit/159a5b4)), closes [#1103](https://github.com/varletjs/varlet/issues/1103)
-* fix: fix vmin vmax compute error ([2ddf751](https://github.com/varletjs/varlet/commit/2ddf751))
-* fix(cli): fix less render paths ([da5bf3d](https://github.com/varletjs/varlet/commit/da5bf3d))
-* fix(cli/template): fix tsconfig.json ([438c365](https://github.com/varletjs/varlet/commit/438c365))
-* fix(popover): fix box sizing ([24da2a5](https://github.com/varletjs/varlet/commit/24da2a5))
-* fix(popover): fix reference getter ([a035f10](https://github.com/varletjs/varlet/commit/a035f10))
-* refactor: add cssvar for text (#1102) ([346a18e](https://github.com/varletjs/varlet/commit/346a18e)), closes [#1102](https://github.com/varletjs/varlet/issues/1102)
-* refactor: clean code ([047429b](https://github.com/varletjs/varlet/commit/047429b))
-* refactor: remove unuseful css var ([e664a96](https://github.com/varletjs/varlet/commit/e664a96))
-* refactor: support typescript5 and update deps ([42b4198](https://github.com/varletjs/varlet/commit/42b4198))
-* refactor(playground): filter varlet version ([f90d9b9](https://github.com/varletjs/varlet/commit/f90d9b9))
-* refactor(playground): optimize icons color ([2a339a1](https://github.com/varletjs/varlet/commit/2a339a1))
-* refactor(playground): optimize nav height ([bf6256a](https://github.com/varletjs/varlet/commit/bf6256a))
-* refactor(playground): optimize ui ([149a7aa](https://github.com/varletjs/varlet/commit/149a7aa))
-* chore: add rimraf to clean lib ([f06e030](https://github.com/varletjs/varlet/commit/f06e030))
-* chore: add sponsors ([9132b33](https://github.com/varletjs/varlet/commit/9132b33))
-* chore: clean gitignore ([a630f77](https://github.com/varletjs/varlet/commit/a630f77))
-* chore: update community qrcode (#1101) ([60dbf7d](https://github.com/varletjs/varlet/commit/60dbf7d)), closes [#1101](https://github.com/varletjs/varlet/issues/1101)
-* test: update snap ([57d1459](https://github.com/varletjs/varlet/commit/57d1459))
-
-
-
-## <small>2.11.8 (2023-06-17)</small>
-
-* v2.11.8 ([15e1f1c](https://github.com/varletjs/varlet/commit/15e1f1c))
-* fix: patch js ext ([a56e16a](https://github.com/varletjs/varlet/commit/a56e16a))
-
-
-
-## <small>2.11.7 (2023-06-17)</small>
-
-* v2.11.7 ([c03e031](https://github.com/varletjs/varlet/commit/c03e031))
-* docs: fix docs ([127c8f9](https://github.com/varletjs/varlet/commit/127c8f9))
-* docs: fix docs ([b543ce8](https://github.com/varletjs/varlet/commit/b543ce8))
-* docs(ui/image-preview): fix docs ([7e19176](https://github.com/varletjs/varlet/commit/7e19176))
-* docs(ui/slider): fix typo ([ced2f13](https://github.com/varletjs/varlet/commit/ced2f13))
-* refactor: ensure popup and popup items relation ([fa463cc](https://github.com/varletjs/varlet/commit/fa463cc))
-* fix(ui/popup): fix slots rerender ([4ee6487](https://github.com/varletjs/varlet/commit/4ee6487))
-* fix(ui/progress): fix css color inherit (#1096) ([704ffc7](https://github.com/varletjs/varlet/commit/704ffc7)), closes [#1096](https://github.com/varletjs/varlet/issues/1096)
-
-
-
-## <small>2.11.6 (2023-06-15)</small>
-
-* fix(ui/button,link): fix css color inherit (#1094) ([2b63723](https://github.com/varletjs/varlet/commit/2b63723)), closes [#1094](https://github.com/varletjs/varlet/issues/1094)
-* refactor(date-picker, time-picker): add background-color and close #1091 ([c9a3597](https://github.com/varletjs/varlet/commit/c9a3597)), closes [#1091](https://github.com/varletjs/varlet/issues/1091)
-* v2.11.6 ([7c4a68b](https://github.com/varletjs/varlet/commit/7c4a68b))
-* feat(ui/counter): support --counter-button-text-color and complete design docs ([30fd9fa](https://github.com/varletjs/varlet/commit/30fd9fa))
-* fix(rate): add flex to constraint icon size and close #1090 ([455ff1e](https://github.com/varletjs/varlet/commit/455ff1e)), closes [#1090](https://github.com/varletjs/varlet/issues/1090)
-* fix(switch): remove default loading size and close #1092 ([ae3b562](https://github.com/varletjs/varlet/commit/ae3b562)), closes [#1092](https://github.com/varletjs/varlet/issues/1092)
-* fix(ui/dialog): fix css color inherit (#1097) ([97c0937](https://github.com/varletjs/varlet/commit/97c0937)), closes [#1097](https://github.com/varletjs/varlet/issues/1097)
-* fix(ui/table): fix css color inherit (#1098) ([06d07a0](https://github.com/varletjs/varlet/commit/06d07a0)), closes [#1098](https://github.com/varletjs/varlet/issues/1098)
-* docs(slider): error message typo and close #1093 ([44735db](https://github.com/varletjs/varlet/commit/44735db)), closes [#1093](https://github.com/varletjs/varlet/issues/1093)
-* refactor: refactor lifecycle via onSmartMounted and onSmartUnmounted ([a3ca537](https://github.com/varletjs/varlet/commit/a3ca537))
-* refactor: refactor via useWindowResize ([35ffa62](https://github.com/varletjs/varlet/commit/35ffa62))
-* style: clean code ([1806dc9](https://github.com/varletjs/varlet/commit/1806dc9))
-* chore: update community qrcode (#1088) ([d9fbc28](https://github.com/varletjs/varlet/commit/d9fbc28)), closes [#1088](https://github.com/varletjs/varlet/issues/1088)
-
-
-
-## <small>2.11.5 (2023-06-09)</small>
-
-* v2.11.5 ([882d423](https://github.com/varletjs/varlet/commit/882d423))
-* refactor(cli): optimize theme ([bb4c1cb](https://github.com/varletjs/varlet/commit/bb4c1cb))
-* refactor(ui/pagination): fix menu placement to cover-top ([763da6c](https://github.com/varletjs/varlet/commit/763da6c))
-* feat(ui/rate): allow to clear score (#1080) ([b206b19](https://github.com/varletjs/varlet/commit/b206b19)), closes [#1080](https://github.com/varletjs/varlet/issues/1080)
-* fix(steps): reimplement the connection line style (#1082) ([132b0b8](https://github.com/varletjs/varlet/commit/132b0b8)), closes [#1082](https://github.com/varletjs/varlet/issues/1082)
-
-
-
-## <small>2.11.4 (2023-06-04)</small>
-
-* v2.11.4 ([9df30a0](https://github.com/varletjs/varlet/commit/9df30a0))
-* fix(ui/pagination): fix css var error ([f4a3a9f](https://github.com/varletjs/varlet/commit/f4a3a9f))
-* fix(ui/pagination): fix disabled style error and refactor css var ([2a78f52](https://github.com/varletjs/varlet/commit/2a78f52))
-
-
-
-## <small>2.11.3 (2023-06-04)</small>
-
-* v2.11.3 ([44ff603](https://github.com/varletjs/varlet/commit/44ff603))
-* chore: update community qrcode (#1067) ([e67818f](https://github.com/varletjs/varlet/commit/e67818f)), closes [#1067](https://github.com/varletjs/varlet/issues/1067)
-* chore: update default config desc (#1071) ([82fe9c4](https://github.com/varletjs/varlet/commit/82fe9c4)), closes [#1071](https://github.com/varletjs/varlet/issues/1071)
-* chore: update lockfile ([a8aefa9](https://github.com/varletjs/varlet/commit/a8aefa9))
-* fix(ui/field-decorator): fix calculation error when the filed decorato… (#1061) ([a23fa95](https://github.com/varletjs/varlet/commit/a23fa95)), closes [#1061](https://github.com/varletjs/varlet/issues/1061)
-* fix(ui/field-decorator): fix style error when placeholder is empty (#1078) ([5040bd2](https://github.com/varletjs/varlet/commit/5040bd2)), closes [#1078](https://github.com/varletjs/varlet/issues/1078)
-* fix(ui/pagination): fix a style bug(#1077) ([d7d6b0d](https://github.com/varletjs/varlet/commit/d7d6b0d)), closes [#1077](https://github.com/varletjs/varlet/issues/1077)
-* refactor: refactor via clamp ([54b45cb](https://github.com/varletjs/varlet/commit/54b45cb))
-* refactor: replace getBoundingClientRect with getRect (#1062) ([14e5ef7](https://github.com/varletjs/varlet/commit/14e5ef7)), closes [#1062](https://github.com/varletjs/varlet/issues/1062)
-* refactor: via clamp ([cf0e1f5](https://github.com/varletjs/varlet/commit/cf0e1f5))
-* refactor(extension): refactor env and hover ([8a81d5c](https://github.com/varletjs/varlet/commit/8a81d5c))
-* refactor(snackbar): adjust the margin of the action area (#1074) ([685cd16](https://github.com/varletjs/varlet/commit/685cd16)), closes [#1074](https://github.com/varletjs/varlet/issues/1074)
-* refactor(ui/image): clean code ([af03ae3](https://github.com/varletjs/varlet/commit/af03ae3))
-* refactor(ui/picker): replace font size via --font-size-lg ([5fab436](https://github.com/varletjs/varlet/commit/5fab436))
-* docs(extension): replace hover example picture (#1069) ([e1741f1](https://github.com/varletjs/varlet/commit/e1741f1)), closes [#1069](https://github.com/varletjs/varlet/issues/1069)
-* docs(extension): replace img for right size and language (#1076) ([9858369](https://github.com/varletjs/varlet/commit/9858369)), closes [#1076](https://github.com/varletjs/varlet/issues/1076)
-* feat(extension): Filter component fill prompt when entering information inside an element (#1066) ([1e67c51](https://github.com/varletjs/varlet/commit/1e67c51)), closes [#1066](https://github.com/varletjs/varlet/issues/1066)
-* feat(extension): show document when hover (#1065) ([0294701](https://github.com/varletjs/varlet/commit/0294701)), closes [#1065](https://github.com/varletjs/varlet/issues/1065)
-* feat(ui/image): add generic error slot (#1060) ([0cedc08](https://github.com/varletjs/varlet/commit/0cedc08)), closes [#1060](https://github.com/varletjs/varlet/issues/1060)
-* feat(ui/picker): add more css var ([4930457](https://github.com/varletjs/varlet/commit/4930457))
-
-
-
-## <small>2.11.2 (2023-05-27)</small>
-
-* v2.11.2 ([81c7de7](https://github.com/varletjs/varlet/commit/81c7de7))
-* refactor(extension): Update button link address (#1057) ([578fc71](https://github.com/varletjs/varlet/commit/578fc71)), closes [#1057](https://github.com/varletjs/varlet/issues/1057)
-* refactor(progress): Optimized code (#1053) ([4d9ab15](https://github.com/varletjs/varlet/commit/4d9ab15)), closes [#1053](https://github.com/varletjs/varlet/issues/1053)
-* docs: fix docs ([29df284](https://github.com/varletjs/varlet/commit/29df284))
-* docs: optimize contribution.md and close #1043 ([c0c4b2e](https://github.com/varletjs/varlet/commit/c0c4b2e)), closes [#1043](https://github.com/varletjs/varlet/issues/1043)
-* feat(ui/image-preview): add long press event & image-prevent-default prop (#1049) ([46e8dfc](https://github.com/varletjs/varlet/commit/46e8dfc)), closes [#1049](https://github.com/varletjs/varlet/issues/1049)
-* style: clean code ([c02d91b](https://github.com/varletjs/varlet/commit/c02d91b))
-* fix(ui/tabs-items): Fixed the tabs-items cannot match name (#1056) ([4bb18d8](https://github.com/varletjs/varlet/commit/4bb18d8)), closes [#1056](https://github.com/varletjs/varlet/issues/1056)
-
-
-
-## <small>2.11.1 (2023-05-20)</small>
-
-* v2.11.1 ([da58250](https://github.com/varletjs/varlet/commit/da58250))
-* refactor(ui/image-preview): optimize code ([b9c37ef](https://github.com/varletjs/varlet/commit/b9c37ef))
-* refactor(ui/picker): add passive for touchstart ([17d5987](https://github.com/varletjs/varlet/commit/17d5987))
-* refactor(ui/picker): change to click event (#1048) ([88481ae](https://github.com/varletjs/varlet/commit/88481ae)), closes [#1048](https://github.com/varletjs/varlet/issues/1048)
-* refactor(ui/picker): fix changed value error ([116170c](https://github.com/varletjs/varlet/commit/116170c))
-* refactor(ui/picker): refactor code style ([5170a79](https://github.com/varletjs/varlet/commit/5170a79))
-* refactor(utils): Narrow return type of createBEM function to more precise string literals (#1046) ([2ef8b17](https://github.com/varletjs/varlet/commit/2ef8b17)), closes [#1046](https://github.com/varletjs/varlet/issues/1046)
-* style: clean code ([53bc05d](https://github.com/varletjs/varlet/commit/53bc05d))
-* style: clean code ([8f6ddc5](https://github.com/varletjs/varlet/commit/8f6ddc5))
-* style: clean code ([be8dcec](https://github.com/varletjs/varlet/commit/be8dcec))
-* style: clean code ([a474a65](https://github.com/varletjs/varlet/commit/a474a65))
-* types: optimize BEM type ([1a17876](https://github.com/varletjs/varlet/commit/1a17876))
-* fix: cascade column the click event doesn't work sometime (#1047) ([fae3f5d](https://github.com/varletjs/varlet/commit/fae3f5d)), closes [#1047](https://github.com/varletjs/varlet/issues/1047)
-* fix(ui/image-preview): click can't trigger a close event sometimes (#1044) ([c0d6902](https://github.com/varletjs/varlet/commit/c0d6902)), closes [#1044](https://github.com/varletjs/varlet/issues/1044)
-* fix(ui/picker): clicking on the parent column causes the child column to restructure when the option ([3924744](https://github.com/varletjs/varlet/commit/3924744))
-* fix(utils): elements utils supports ssr and close #1045 ([9f3da12](https://github.com/varletjs/varlet/commit/9f3da12)), closes [#1045](https://github.com/varletjs/varlet/issues/1045)
-* chore: update community qrcode (#1042) ([5283a95](https://github.com/varletjs/varlet/commit/5283a95)), closes [#1042](https://github.com/varletjs/varlet/issues/1042)
-* feat(ui/picker): support scroll while click the option and refactor code (#1039) ([59a8d4c](https://github.com/varletjs/varlet/commit/59a8d4c)), closes [#1039](https://github.com/varletjs/varlet/issues/1039)
-* docs(checkbox-group): Added vertical direction document (#1041) ([925864f](https://github.com/varletjs/varlet/commit/925864f)), closes [#1041](https://github.com/varletjs/varlet/issues/1041)
-* docs(radio-group): added vertical direction document (#1038) ([1d3efe4](https://github.com/varletjs/varlet/commit/1d3efe4)), closes [#1038](https://github.com/varletjs/varlet/issues/1038)
-* docs(ui/checkbox-group): fix docs ([bb17cab](https://github.com/varletjs/varlet/commit/bb17cab))
-* build(playground): bump repl version to 1.4.1 ([d78b5cf](https://github.com/varletjs/varlet/commit/d78b5cf))
-
-
-
-## 2.11.0 (2023-05-15)
-
-* v2.11.0 ([9f6007f](https://github.com/varletjs/varlet/commit/9f6007f))
-* docs: fix docs ([5ae7271](https://github.com/varletjs/varlet/commit/5ae7271))
-* docs: fix prop type ([8e61d14](https://github.com/varletjs/varlet/commit/8e61d14))
-* docs: fix typo ([c22a93a](https://github.com/varletjs/varlet/commit/c22a93a))
-* docs: optimize code ([ea11a98](https://github.com/varletjs/varlet/commit/ea11a98))
-* docs: optimize docs ([5eb7065](https://github.com/varletjs/varlet/commit/5eb7065))
-* docs(ui/list): fix list example ([934c064](https://github.com/varletjs/varlet/commit/934c064))
-* docs(ui/uploader): fix typo ([4b06fb8](https://github.com/varletjs/varlet/commit/4b06fb8))
-* docs(ui/uploader): optimize docs ([3ff0279](https://github.com/varletjs/varlet/commit/3ff0279))
-* refactor: replace getComputedStyle to getStyle and close #1030 ([4d5a40b](https://github.com/varletjs/varlet/commit/4d5a40b)), closes [#1030](https://github.com/varletjs/varlet/issues/1030)
-* refactor(index-bar): optimize code ([e29e0da](https://github.com/varletjs/varlet/commit/e29e0da))
-* refactor(index-bar): replace getBoundingClientRect to getRect ([0375157](https://github.com/varletjs/varlet/commit/0375157))
-* refactor(slider): remove unnecessary top ([00ae55c](https://github.com/varletjs/varlet/commit/00ae55c))
-* refactor(ui): refactor via getRect and getStyle  (#1025) ([fd5af00](https://github.com/varletjs/varlet/commit/fd5af00)), closes [#1025](https://github.com/varletjs/varlet/issues/1025)
-* refactor(ui/field-decorator): optimize code and refactor via getRect and getStyle ([e889705](https://github.com/varletjs/varlet/commit/e889705))
-* refactor(ui/fieldDecorator): refactoring placeholder animation (#1019) ([7238935](https://github.com/varletjs/varlet/commit/7238935)), closes [#1019](https://github.com/varletjs/varlet/issues/1019)
-* refactor(ui/list): optimize the check behavior of list in tab-item ([11ce900](https://github.com/varletjs/varlet/commit/11ce900))
-* refactor(ui/list): refactor via getRect and getStyle ([f34237c](https://github.com/varletjs/varlet/commit/f34237c))
-* fix(collapse): remove flex layout of content ([5ae606b](https://github.com/varletjs/varlet/commit/5ae606b))
-* fix(loading): add max-height to loading container and close #1029 ([2d17414](https://github.com/varletjs/varlet/commit/2d17414)), closes [#1029](https://github.com/varletjs/varlet/issues/1029)
-* fix(ui/field-decorator): fix fieldset color display error ([7b3ea2a](https://github.com/varletjs/varlet/commit/7b3ea2a))
-* fix(ui/fieldDecorator): access DOM data in nextTick (#1021) ([c9b0bd0](https://github.com/varletjs/varlet/commit/c9b0bd0)), closes [#1021](https://github.com/varletjs/varlet/issues/1021)
-* fix(ui/fieldDecorator): placeholder width exceeds container size (#1015) ([93ae09f](https://github.com/varletjs/varlet/commit/93ae09f)), closes [#1015](https://github.com/varletjs/varlet/issues/1015)
-* fix(ui/image-preview): fix flickering when swiping quickly and optimize swipe initialIndex behavior  ([bf1fde4](https://github.com/varletjs/varlet/commit/bf1fde4)), closes [#1020](https://github.com/varletjs/varlet/issues/1020)
-* fix(ui/slider): fix the style of validation fails (#1035) ([4c85f88](https://github.com/varletjs/varlet/commit/4c85f88)), closes [#1035](https://github.com/varletjs/varlet/issues/1035)
-* build: bump deps version ([804d8d1](https://github.com/varletjs/varlet/commit/804d8d1))
-* feat(cli): support vue 3.3.x (#1033) ([18fda4c](https://github.com/varletjs/varlet/commit/18fda4c)), closes [#1033](https://github.com/varletjs/varlet/issues/1033)
-* feat(ui/tabs-items): render more content on the server side ([8b6245e](https://github.com/varletjs/varlet/commit/8b6245e))
-* feat(ui/uploader): support before-filter event (#1010) ([14575dc](https://github.com/varletjs/varlet/commit/14575dc)), closes [#1010](https://github.com/varletjs/varlet/issues/1010)
-* style: clean code ([73c63c7](https://github.com/varletjs/varlet/commit/73c63c7))
-* style: clean code ([5a22730](https://github.com/varletjs/varlet/commit/5a22730))
-* style: shorten path ([4dfe6c5](https://github.com/varletjs/varlet/commit/4dfe6c5))
-* types(ui/uploader): fix uploader type and optimize docs ([f356da5](https://github.com/varletjs/varlet/commit/f356da5))
-* test(ui/list): add case of the list in tab-item ([dd6d31f](https://github.com/varletjs/varlet/commit/dd6d31f))
-* test(ui/picker): update test case for safe area ([272ffd5](https://github.com/varletjs/varlet/commit/272ffd5))
-* chore: bump vite version ([f9269c7](https://github.com/varletjs/varlet/commit/f9269c7))
-* chore: update community qrcode (#1018) ([6b8bfcd](https://github.com/varletjs/varlet/commit/6b8bfcd)), closes [#1018](https://github.com/varletjs/varlet/issues/1018)
-
-
-
-## <small>2.10.2 (2023-05-06)</small>
-
-* v2.10.2 ([aa7e4b8](https://github.com/varletjs/varlet/commit/aa7e4b8))
-* fix(ui/slider): 修复滑块拖动时屏幕滚动 (#1011) ([b9ca512](https://github.com/varletjs/varlet/commit/b9ca512)), closes [#1011](https://github.com/varletjs/varlet/issues/1011)
-* refactor(ui/popup): typo error ([83f5651](https://github.com/varletjs/varlet/commit/83f5651))
-* feat(ui/input): support enterkeyhint for Input (#1013) ([706014c](https://github.com/varletjs/varlet/commit/706014c)), closes [#1013](https://github.com/varletjs/varlet/issues/1013)
-* feat(ui/popup): support safeArea and safeAreaTop ([7306ddc](https://github.com/varletjs/varlet/commit/7306ddc))
-
-
-
-## <small>2.10.1 (2023-05-04)</small>
-
-* fix(ui/input, select): fix text overflow error ([929765a](https://github.com/varletjs/varlet/commit/929765a))
-* refactor(ui/input, select): optimize code ([6a960f7](https://github.com/varletjs/varlet/commit/6a960f7))
-* refactor(ui/input, select): remove width transition ([a72f253](https://github.com/varletjs/varlet/commit/a72f253))
-* v2.10.1 ([a1d9f3a](https://github.com/varletjs/varlet/commit/a1d9f3a))
-* fix(cli/compile): support typescript and close #998 ([0b83869](https://github.com/varletjs/varlet/commit/0b83869)), closes [#998](https://github.com/varletjs/varlet/issues/998)
-* fix(select): fix select dropdown border radius ([22d656e](https://github.com/varletjs/varlet/commit/22d656e))
-* fix(ui/slider): optimize slider style and classes (#1000) ([7695457](https://github.com/varletjs/varlet/commit/7695457)), closes [#1000](https://github.com/varletjs/varlet/issues/1000)
-* fix(ui/swipe): to and next methods conflict with initialIndex ([140af1f](https://github.com/varletjs/varlet/commit/140af1f))
-* style: clean code ([35fe3f9](https://github.com/varletjs/varlet/commit/35fe3f9))
-* test(ui/uploader): update snap ([6e2cd7f](https://github.com/varletjs/varlet/commit/6e2cd7f))
-* docs: fix typo ([1898f4e](https://github.com/varletjs/varlet/commit/1898f4e))
-* docs: fix typo ([36235d1](https://github.com/varletjs/varlet/commit/36235d1))
-* docs: fix typo and close #996 ([78fa0b1](https://github.com/varletjs/varlet/commit/78fa0b1)), closes [#996](https://github.com/varletjs/varlet/issues/996)
-* docs(ui/uploader): add css var ([43b8744](https://github.com/varletjs/varlet/commit/43b8744))
-* refactor: optimize code ([c5daa19](https://github.com/varletjs/varlet/commit/c5daa19))
-* refactor: optimize code ([f919623](https://github.com/varletjs/varlet/commit/f919623))
-* refactor: remove support for tsx ([1e5a606](https://github.com/varletjs/varlet/commit/1e5a606))
-* refactor(slider): optimize code ([6620bfd](https://github.com/varletjs/varlet/commit/6620bfd))
-* feat(cli): support meta description and keywords ([d0ce672](https://github.com/varletjs/varlet/commit/d0ce672))
-* feat(slider): support vertical mode ([43acba6](https://github.com/varletjs/varlet/commit/43acba6))
-* feat(ui/uploader): support progress ([b991f6f](https://github.com/varletjs/varlet/commit/b991f6f))
-
-
-
-## 2.10.0 (2023-04-24)
-
-* docs(ui/input, select): fix docs typo ([a181f65](https://github.com/varletjs/varlet/commit/a181f65))
-* feat(ui/input, select): new outlined variant (#941) ([c054e21](https://github.com/varletjs/varlet/commit/c054e21)), closes [#941](https://github.com/varletjs/varlet/issues/941)
-* refactor(ui/input, select): optimize docs and css var ([abbee53](https://github.com/varletjs/varlet/commit/abbee53))
-* refactor(ui/input, select): refactor css ([421e001](https://github.com/varletjs/varlet/commit/421e001))
-* v2.10.0 ([db3b676](https://github.com/varletjs/varlet/commit/db3b676))
-* test: remove example ([3c3ed65](https://github.com/varletjs/varlet/commit/3c3ed65))
-* test: switch v8 reporter to solve coverage error ([be41def](https://github.com/varletjs/varlet/commit/be41def))
-* test: update snap ([db3fca2](https://github.com/varletjs/varlet/commit/db3fca2))
-* test: update snap ([62600ad](https://github.com/varletjs/varlet/commit/62600ad))
-* test: update snap ([8c8d038](https://github.com/varletjs/varlet/commit/8c8d038))
-* test: update snap ([3b06ea4](https://github.com/varletjs/varlet/commit/3b06ea4))
-* test(divider): Improve component test coverage (#974) ([a64b8e2](https://github.com/varletjs/varlet/commit/a64b8e2)), closes [#974](https://github.com/varletjs/varlet/issues/974)
-* test(snackbar): update snapshot ([0045f2e](https://github.com/varletjs/varlet/commit/0045f2e))
-* fix(extension): newline not parsed ([28ad42c](https://github.com/varletjs/varlet/commit/28ad42c))
-* fix(input): placeholder style ([4a00a63](https://github.com/varletjs/varlet/commit/4a00a63))
-* fix(input): remove transition delay ([2528f60](https://github.com/varletjs/varlet/commit/2528f60))
-* fix(ui/list): clear list scroller listener on deactivated ([3640121](https://github.com/varletjs/varlet/commit/3640121))
-* fix(ui/pagination): fix error key ([cf7793a](https://github.com/varletjs/varlet/commit/cf7793a))
-* refactor:  useVModel move to ui package  (#963) ([7032f57](https://github.com/varletjs/varlet/commit/7032f57)), closes [#963](https://github.com/varletjs/varlet/issues/963)
-* refactor: add transition delay ([e20a1ee](https://github.com/varletjs/varlet/commit/e20a1ee))
-* refactor: fix location info parse error ([9c4f231](https://github.com/varletjs/varlet/commit/9c4f231))
-* refactor: optimize code ([8a75cbe](https://github.com/varletjs/varlet/commit/8a75cbe))
-* refactor: optimize code ([398ead5](https://github.com/varletjs/varlet/commit/398ead5))
-* refactor: optimize code ([5e9a2dd](https://github.com/varletjs/varlet/commit/5e9a2dd))
-* refactor: optimize code ([b643589](https://github.com/varletjs/varlet/commit/b643589))
-* refactor: remove transition-delay ([25497e7](https://github.com/varletjs/varlet/commit/25497e7))
-* refactor: remove unused code ([39c5f00](https://github.com/varletjs/varlet/commit/39c5f00))
-* refactor: remove unuseful css ([863f68b](https://github.com/varletjs/varlet/commit/863f68b))
-* refactor: support normalizeToArray and refactor components logic ([f19f3b6](https://github.com/varletjs/varlet/commit/f19f3b6))
-* refactor(extension): rename command name and clean code ([024ddcb](https://github.com/varletjs/varlet/commit/024ddcb))
-* refactor(ui/field-decorator):  refactor by fieldset and legend (#979) ([a976433](https://github.com/varletjs/varlet/commit/a976433)), closes [#979](https://github.com/varletjs/varlet/issues/979)
-* refactor(ui/field-decorator): optimize code ([dff5f8f](https://github.com/varletjs/varlet/commit/dff5f8f))
-* refactor(ui/field-decorator): optimize code ([fb89cd5](https://github.com/varletjs/varlet/commit/fb89cd5))
-* refactor(ui/field): refactor css ([93a3987](https://github.com/varletjs/varlet/commit/93a3987))
-* refactor(ui/pagination): adapt new input ([6fef4be](https://github.com/varletjs/varlet/commit/6fef4be))
-* refactor(ui/themes): rename input to field decorator ([e9cf2eb](https://github.com/varletjs/varlet/commit/e9cf2eb))
-* refactor(use): support event target getter ([9a24c4e](https://github.com/varletjs/varlet/commit/9a24c4e))
-* docs: fix docs ([53a56aa](https://github.com/varletjs/varlet/commit/53a56aa))
-* docs: fix docs ([6cd92f4](https://github.com/varletjs/varlet/commit/6cd92f4))
-* docs: fix typo ([c741fa9](https://github.com/varletjs/varlet/commit/c741fa9))
-* docs(snackbar): typo ([93cfaeb](https://github.com/varletjs/varlet/commit/93cfaeb))
-* docs(ui/icon): optimize icon search ([1d1b035](https://github.com/varletjs/varlet/commit/1d1b035))
-* docs(ui/icon): supports icon search (#975) ([1a11104](https://github.com/varletjs/varlet/commit/1a11104)), closes [#975](https://github.com/varletjs/varlet/issues/975)
-* docs(ui/rate): fix docs ([cf84dfc](https://github.com/varletjs/varlet/commit/cf84dfc))
-* docs(ui/snackbar): fix docs ([86e1799](https://github.com/varletjs/varlet/commit/86e1799))
-* docs(ui/Snackbar): update docs (#969) ([7549c98](https://github.com/varletjs/varlet/commit/7549c98)), closes [#969](https://github.com/varletjs/varlet/issues/969)
-* feat: new icons and refactor rate component docs (#990) ([62787c7](https://github.com/varletjs/varlet/commit/62787c7)), closes [#990](https://github.com/varletjs/varlet/issues/990)
-* feat(icon): add view icons ([cebb99d](https://github.com/varletjs/varlet/commit/cebb99d))
-* feat(markdown): add id attribute for h3 tag & close #976 (#983) ([78c1b1d](https://github.com/varletjs/varlet/commit/78c1b1d)), closes [#976](https://github.com/varletjs/varlet/issues/976) [#983](https://github.com/varletjs/varlet/issues/983)
-* feat(ui/Snackbar): support icon and action in functional mode ([1f35aeb](https://github.com/varletjs/varlet/commit/1f35aeb))
-* feat(vscode-extension): add `varlet documentation` and  `varlet playground`  btns (#962) ([d36e532](https://github.com/varletjs/varlet/commit/d36e532)), closes [#962](https://github.com/varletjs/varlet/issues/962)
-* style: clean code ([24cbbba](https://github.com/varletjs/varlet/commit/24cbbba))
-* style: clean code ([038693b](https://github.com/varletjs/varlet/commit/038693b))
-* style: clean code ([4bcd7f4](https://github.com/varletjs/varlet/commit/4bcd7f4))
-* chore: remove ts-jest ([658b232](https://github.com/varletjs/varlet/commit/658b232))
-* chore: update community qrcode (#966) ([93cdc1b](https://github.com/varletjs/varlet/commit/93cdc1b)), closes [#966](https://github.com/varletjs/varlet/issues/966)
-* chore: update image ([2070cbb](https://github.com/varletjs/varlet/commit/2070cbb))
-
-
-
-## <small>2.9.6 (2023-04-14)</small>
-
-* fix(ui/checkbox, radio): fix shrink error and close #952 ([fa879ad](https://github.com/varletjs/varlet/commit/fa879ad)), closes [#952](https://github.com/varletjs/varlet/issues/952)
-* Modify page current (#951) ([50593ce](https://github.com/varletjs/varlet/commit/50593ce)), closes [#951](https://github.com/varletjs/varlet/issues/951)
-* v2.9.6 ([7cf0d0a](https://github.com/varletjs/varlet/commit/7cf0d0a))
-* chore: update community qrcode (#959) ([cdb8cba](https://github.com/varletjs/varlet/commit/cdb8cba)), closes [#959](https://github.com/varletjs/varlet/issues/959)
-* chore: update lock file ([7cdf255](https://github.com/varletjs/varlet/commit/7cdf255))
-* chore: upgrade vue-jest lib (#958) ([acba92b](https://github.com/varletjs/varlet/commit/acba92b)), closes [#958](https://github.com/varletjs/varlet/issues/958)
-* fix(DatePicker): fix Fixed hover effect bug (#956) ([4d72694](https://github.com/varletjs/varlet/commit/4d72694)), closes [#956](https://github.com/varletjs/varlet/issues/956)
-* fix(pagination): add disabled prop & close #950 ([fb98f46](https://github.com/varletjs/varlet/commit/fb98f46)), closes [#950](https://github.com/varletjs/varlet/issues/950)
-* fix(pull-refresh): fix icon name error while fast touchmove ([fe1be23](https://github.com/varletjs/varlet/commit/fe1be23))
-* fix(ui/dialog): fix onBeforeClose cannot use call ([62c7c89](https://github.com/varletjs/varlet/commit/62c7c89))
-* style: clean code ([60b1b81](https://github.com/varletjs/varlet/commit/60b1b81))
-* refactor: fix types error and refactor code ([ccbf2ff](https://github.com/varletjs/varlet/commit/ccbf2ff))
-* refactor(cli): optimize logger in draft mode ([40b6bae](https://github.com/varletjs/varlet/commit/40b6bae))
-* refactor(extension): optimize completion timing ([3a1aeb2](https://github.com/varletjs/varlet/commit/3a1aeb2))
-* docs: draft mode related and close #954 ([1e0d626](https://github.com/varletjs/varlet/commit/1e0d626)), closes [#954](https://github.com/varletjs/varlet/issues/954)
-* feat(cli): support draft mode ([569b651](https://github.com/varletjs/varlet/commit/569b651))
-
-
-
-## <small>2.9.5 (2023-04-07)</small>
-
-* v2.9.5 ([c81ee82](https://github.com/varletjs/varlet/commit/c81ee82))
-* chore: bump pnpm version to 8 ([71f39b7](https://github.com/varletjs/varlet/commit/71f39b7))
-* chore: bump pnpm version to 8 at the workflow ([81d2751](https://github.com/varletjs/varlet/commit/81d2751))
-* chore: bump version ([8ae7053](https://github.com/varletjs/varlet/commit/8ae7053))
-* chore: remove issues-inactive workflow ([fcf1968](https://github.com/varletjs/varlet/commit/fcf1968))
-* chore: remove unnecessary file ([201d5c9](https://github.com/varletjs/varlet/commit/201d5c9))
-* chore: update qrcode ([e068885](https://github.com/varletjs/varlet/commit/e068885))
-* test: bump test utils version and update snap ([1649e62](https://github.com/varletjs/varlet/commit/1649e62))
-* fix: fix useRouteListener for ssr ([6b75dd5](https://github.com/varletjs/varlet/commit/6b75dd5))
-* fix(tabs): fix tab active color computed error ([d6bef90](https://github.com/varletjs/varlet/commit/d6bef90))
-* fix(ui/hover): fix and close #942 ([58b2ef4](https://github.com/varletjs/varlet/commit/58b2ef4)), closes [#942](https://github.com/varletjs/varlet/issues/942)
-* fix(ui/pagination): fix pagination disabled exception (#943) ([4f7b046](https://github.com/varletjs/varlet/commit/4f7b046)), closes [#943](https://github.com/varletjs/varlet/issues/943)
-* fix(ui/pagination): fix pagination not require props (#946) ([20885d3](https://github.com/varletjs/varlet/commit/20885d3)), closes [#946](https://github.com/varletjs/varlet/issues/946)
-* fix(ui/tabs): fix tab active color error while the name's type is number ([d2bf6ad](https://github.com/varletjs/varlet/commit/d2bf6ad))
-* types(ui/context): add enable ripple type ([8582e77](https://github.com/varletjs/varlet/commit/8582e77))
-* feat(ui/context): support enableRipple option ([8591899](https://github.com/varletjs/varlet/commit/8591899))
-* feat(ui/tabs): support custom indicator inner size ([83a049d](https://github.com/varletjs/varlet/commit/83a049d))
-
-
-
-## <small>2.9.4 (2023-03-31)</small>
-
-* v2.9.4 ([a34a732](https://github.com/varletjs/varlet/commit/a34a732))
-* fix(cli/checklist): empty line is shown while no matched checklist ([1ce1078](https://github.com/varletjs/varlet/commit/1ce1078))
-* fix(index-bar): cache scroll state ([f30c6f2](https://github.com/varletjs/varlet/commit/f30c6f2))
-* fix(index-bar): index-anchor overlap and close #936 ([969944f](https://github.com/varletjs/varlet/commit/969944f)), closes [#936](https://github.com/varletjs/varlet/issues/936)
-* fix(pullrefresh): trigger timing of refresh event and close #930 ([fa2f1bf](https://github.com/varletjs/varlet/commit/fa2f1bf)), closes [#930](https://github.com/varletjs/varlet/issues/930)
-* fix(ui/bottom-navigation): offset error while set safe-area in ios ([7783acf](https://github.com/varletjs/varlet/commit/7783acf))
-* fix(ui/sticky): resize sticky layout offset while the window resize ([5ac6f67](https://github.com/varletjs/varlet/commit/5ac6f67))
-* feat: Collapse component add property divider (#937) ([afca9d8](https://github.com/varletjs/varlet/commit/afca9d8)), closes [#937](https://github.com/varletjs/varlet/issues/937)
-* feat: support vmin and vmax and close #931 ([3ef4f51](https://github.com/varletjs/varlet/commit/3ef4f51)), closes [#931](https://github.com/varletjs/varlet/issues/931)
-* feat(ui/app-bar): support props.safeAreaTop ([9f00d43](https://github.com/varletjs/varlet/commit/9f00d43))
-* refactor: encapsulation throw error (#935) ([5592fc9](https://github.com/varletjs/varlet/commit/5592fc9)), closes [#935](https://github.com/varletjs/varlet/issues/935)
-* refactor(index-bar): rename css-mode to sticky-css-mode ([103b622](https://github.com/varletjs/varlet/commit/103b622))
-* refactor(ui/pull-refresh): optimize touch behavior while event target is not parent scroller ([d04a2a8](https://github.com/varletjs/varlet/commit/d04a2a8))
-* refactor(ui/tabs): trigger resize on tabs activated ([3ed11c5](https://github.com/varletjs/varlet/commit/3ed11c5))
-* types: fix tsconfig warning ([c2d559d](https://github.com/varletjs/varlet/commit/c2d559d))
-* types(ui/pull-refresh): fix types ([d9e6c87](https://github.com/varletjs/varlet/commit/d9e6c87))
-* docs(cli): update docs ([da7f620](https://github.com/varletjs/varlet/commit/da7f620))
-* docs(ui/index-bar): fix index-bar document err ([2d8321e](https://github.com/varletjs/varlet/commit/2d8321e))
-* chore: update community qrcode (#929) ([bca81a3](https://github.com/varletjs/varlet/commit/bca81a3)), closes [#929](https://github.com/varletjs/varlet/issues/929)
-* chore: update qrcode ([04fd3f1](https://github.com/varletjs/varlet/commit/04fd3f1))
-
-
-
-## <small>2.9.3 (2023-03-23)</small>
-
-* v2.9.3 ([36d0882](https://github.com/varletjs/varlet/commit/36d0882))
-* docs: fix docs ([c1d990a](https://github.com/varletjs/varlet/commit/c1d990a))
-* docs: fix docs and clean code ([0d609e5](https://github.com/varletjs/varlet/commit/0d609e5))
-* docs: fix typo ([74f66f7](https://github.com/varletjs/varlet/commit/74f66f7))
-* docs: fix typo ([76a4ef9](https://github.com/varletjs/varlet/commit/76a4ef9))
-* docs: fix typo ([7d03347](https://github.com/varletjs/varlet/commit/7d03347))
-* docs: fix typo ([2ee7d75](https://github.com/varletjs/varlet/commit/2ee7d75))
-* docs(ui/button-group): fix docs ([471e6e2](https://github.com/varletjs/varlet/commit/471e6e2))
-* docs(ui/button): fix typo ([c924834](https://github.com/varletjs/varlet/commit/c924834))
-* docs(ui/paper): fix docs ([3a3ea17](https://github.com/varletjs/varlet/commit/3a3ea17))
-* docs(ui/tabs): fix tabs document err ([3a20b0f](https://github.com/varletjs/varlet/commit/3a20b0f))
-* feat: suppert elevation for Table、Tabs、AppBar (#928) ([be24aef](https://github.com/varletjs/varlet/commit/be24aef)), closes [#928](https://github.com/varletjs/varlet/issues/928)
-* feat: support elevation for uploader and counter (#927) ([3a4265d](https://github.com/varletjs/varlet/commit/3a4265d)), closes [#927](https://github.com/varletjs/varlet/issues/927)
-* feat: support props.elevation for button, button-group, fab, paper, card (#925) ([881966c](https://github.com/varletjs/varlet/commit/881966c)), closes [#925](https://github.com/varletjs/varlet/issues/925)
-* feat(backtop): support elevation ([80f3866](https://github.com/varletjs/varlet/commit/80f3866))
-* feat(cli): support checklist and close #926 ([3f1bffc](https://github.com/varletjs/varlet/commit/3f1bffc)), closes [#926](https://github.com/varletjs/varlet/issues/926)
-* feat(cli): support directive types generation for volar and close #918 ([38f9c64](https://github.com/varletjs/varlet/commit/38f9c64)), closes [#918](https://github.com/varletjs/varlet/issues/918)
-* feat(collapse): support elevation ([4bfc1db](https://github.com/varletjs/varlet/commit/4bfc1db))
-* feat(date-picker): support elevation and button-elevation ([f18d744](https://github.com/varletjs/varlet/commit/f18d744))
-* feat(pagination): support elevation ([4680cdd](https://github.com/varletjs/varlet/commit/4680cdd))
-* feat(time-picker): support elevation ([9e8e470](https://github.com/varletjs/varlet/commit/9e8e470))
-* feat(ui/fab): support props.safeArea and close #896 ([9237379](https://github.com/varletjs/varlet/commit/9237379)), closes [#896](https://github.com/varletjs/varlet/issues/896)
-* feat(ui/menu): support props.elevation ([2dafcf3](https://github.com/varletjs/varlet/commit/2dafcf3))
-* feat(ui/tabs): support props.scrollable and props.indicatorPosition (#921) ([33ea0d8](https://github.com/varletjs/varlet/commit/33ea0d8)), closes [#921](https://github.com/varletjs/varlet/issues/921)
-* feat(use): support useVModel (#909) ([af323d6](https://github.com/varletjs/varlet/commit/af323d6)), closes [#909](https://github.com/varletjs/varlet/issues/909)
-* style: clean code ([ad61477](https://github.com/varletjs/varlet/commit/ad61477))
-* refactor: collapse animation one frame delay ([5e87208](https://github.com/varletjs/varlet/commit/5e87208))
-* refactor: optimize code ([81cdcef](https://github.com/varletjs/varlet/commit/81cdcef))
-* refactor(cli): remove .d.ts suffix ([a67aa5a](https://github.com/varletjs/varlet/commit/a67aa5a))
-* refactor(use): optimize useVModel and refactor usePopover ([643c3ed](https://github.com/varletjs/varlet/commit/643c3ed))
-* fix(playground): add resetFlip ([0ae8c5e](https://github.com/varletjs/varlet/commit/0ae8c5e))
-* fix(playground): upgrade repl version to compatible safari ([3a11a77](https://github.com/varletjs/varlet/commit/3a11a77))
-* fix(pullrefresh): control node position ([06c2dad](https://github.com/varletjs/varlet/commit/06c2dad))
-* fix(ui/collapse): fix collapse Item animation error (#922) ([a799438](https://github.com/varletjs/varlet/commit/a799438)), closes [#922](https://github.com/varletjs/varlet/issues/922)
-* build: lock sharp version ([7e56950](https://github.com/varletjs/varlet/commit/7e56950))
-* revert: collapse animation one frame delay ([3630fea](https://github.com/varletjs/varlet/commit/3630fea))
-
-
-
-## <small>2.9.2 (2023-03-20)</small>
-
-* v2.9.2 ([69065f2](https://github.com/varletjs/varlet/commit/69065f2))
-* types: export IContext ([d35824a](https://github.com/varletjs/varlet/commit/d35824a))
-* types: support Context type and close #910 ([0954472](https://github.com/varletjs/varlet/commit/0954472)), closes [#910](https://github.com/varletjs/varlet/issues/910)
-* types: update index.d.ts ([0190aa9](https://github.com/varletjs/varlet/commit/0190aa9))
-* docs: button navigation  modify the  link in the document (#912) ([985d763](https://github.com/varletjs/varlet/commit/985d763)), closes [#912](https://github.com/varletjs/varlet/issues/912)
-* style: optimize import order ([5b7aa0c](https://github.com/varletjs/varlet/commit/5b7aa0c))
-* fix: checkbox、radio、uploader adds a reference to the hover style (#914) ([844df38](https://github.com/varletjs/varlet/commit/844df38)), closes [#914](https://github.com/varletjs/varlet/issues/914)
-
-
-
-## <small>2.9.1 (2023-03-16)</small>
-
-* v2.9.1 ([9337db8](https://github.com/varletjs/varlet/commit/9337db8))
-* feat: support hover effect and close #902 ([53461da](https://github.com/varletjs/varlet/commit/53461da)), closes [#902](https://github.com/varletjs/varlet/issues/902)
-* feat(slider): add hover overlay ([9adfdca](https://github.com/varletjs/varlet/commit/9adfdca))
-* feat(switch): add hover overlay ([7a3f769](https://github.com/varletjs/varlet/commit/7a3f769))
-* feat(ui/checkbox): support hover effect (#907) ([d853427](https://github.com/varletjs/varlet/commit/d853427)), closes [#907](https://github.com/varletjs/varlet/issues/907)
-* feat(ui/image-preview): add setDefaultOptions and resetDefaultOptions (#892) ([ec56890](https://github.com/varletjs/varlet/commit/ec56890)), closes [#892](https://github.com/varletjs/varlet/issues/892)
-* feat(ui/radio): support hover effect (#908) ([d0621ad](https://github.com/varletjs/varlet/commit/d0621ad)), closes [#908](https://github.com/varletjs/varlet/issues/908)
-* feat(ui/rate): support hover effect (#906) ([6a6a2d0](https://github.com/varletjs/varlet/commit/6a6a2d0)), closes [#906](https://github.com/varletjs/varlet/issues/906)
-* feat(ui/uploader): support hover effect and close #901 ([ca5e63f](https://github.com/varletjs/varlet/commit/ca5e63f)), closes [#901](https://github.com/varletjs/varlet/issues/901)
-* refactor: fix css dep ([15718e4](https://github.com/varletjs/varlet/commit/15718e4))
-* refactor: refactor hover overlay ([c75e3dc](https://github.com/varletjs/varlet/commit/c75e3dc))
-* refactor(ui/counter): remove readonly effect ([153e9db](https://github.com/varletjs/varlet/commit/153e9db))
-* refactor(ui/rate): optimize code ([866486e](https://github.com/varletjs/varlet/commit/866486e))
-* chore: clean code ([bbe8778](https://github.com/varletjs/varlet/commit/bbe8778))
-* chore: clean code ([18b1e18](https://github.com/varletjs/varlet/commit/18b1e18))
-* chore: debug ([587b6b6](https://github.com/varletjs/varlet/commit/587b6b6))
-* chore: debug playground vercel workflow ([a4b799a](https://github.com/varletjs/varlet/commit/a4b799a))
-* chore: debug playground vercel workflow ([786f339](https://github.com/varletjs/varlet/commit/786f339))
-* chore: fix deps ([4e86c88](https://github.com/varletjs/varlet/commit/4e86c88))
-* chore: fix for vercel ([40fcc3b](https://github.com/varletjs/varlet/commit/40fcc3b))
-* chore: fix playground vite config ([66c95df](https://github.com/varletjs/varlet/commit/66c95df))
-* chore: fix workflow ([b6da6e8](https://github.com/varletjs/varlet/commit/b6da6e8))
-* chore: optimize workflow ([ba6ed28](https://github.com/varletjs/varlet/commit/ba6ed28))
-* chore: update community qrcode (#897) ([c78f4b2](https://github.com/varletjs/varlet/commit/c78f4b2)), closes [#897](https://github.com/varletjs/varlet/issues/897)
-* revert: fix workflow ([cc4554c](https://github.com/varletjs/varlet/commit/cc4554c))
-* fix: fix input cursor error in the ios ([aad8dac](https://github.com/varletjs/varlet/commit/aad8dac))
-* fix(slider): add cursor ([dd82f92](https://github.com/varletjs/varlet/commit/dd82f92))
-* fix(ui/input): fixed placeholders not being able to hide while composing ([54a0391](https://github.com/varletjs/varlet/commit/54a0391))
-* docs: fix docs ([680e4ad](https://github.com/varletjs/varlet/commit/680e4ad))
-* docs(ui/fab): optimize words (#891) ([ae67a73](https://github.com/varletjs/varlet/commit/ae67a73)), closes [#891](https://github.com/varletjs/varlet/issues/891)
-
-
-
-## 2.9.0 (2023-03-12)
-
-* v2.9.0 ([2f45f6f](https://github.com/varletjs/varlet/commit/2f45f6f))
-* style: clean code ([74ecbd3](https://github.com/varletjs/varlet/commit/74ecbd3))
-* style: clean code ([f0b44e9](https://github.com/varletjs/varlet/commit/f0b44e9))
-* style(ui/loading): clean code ([c2e2163](https://github.com/varletjs/varlet/commit/c2e2163))
-* fix(ui/bottom-navigation): fix css dep ([bd1303d](https://github.com/varletjs/varlet/commit/bd1303d))
-* fix(ui/button): fix css dep ([07af3e2](https://github.com/varletjs/varlet/commit/07af3e2))
-* fix(ui/button): fix css dep ([8bc573a](https://github.com/varletjs/varlet/commit/8bc573a))
-* fix(ui/hover): fix wrong restore style ([ca3a455](https://github.com/varletjs/varlet/commit/ca3a455))
-* fix(ui/loading-bar): fix timer asynchronous issue ([374130b](https://github.com/varletjs/varlet/commit/374130b))
-* fix(ui/loading): fix loading display error and close #884 ([910afa8](https://github.com/varletjs/varlet/commit/910afa8)), closes [#884](https://github.com/varletjs/varlet/issues/884)
-* fix(ui/select): fix css dep ([fbb0100](https://github.com/varletjs/varlet/commit/fbb0100))
-* chore: remove unless provide function (#889) ([ee552e1](https://github.com/varletjs/varlet/commit/ee552e1)), closes [#889](https://github.com/varletjs/varlet/issues/889)
-* chore: update community qrcode (#882) ([ddd8f0c](https://github.com/varletjs/varlet/commit/ddd8f0c)), closes [#882](https://github.com/varletjs/varlet/issues/882)
-* refactor: optimize relation error handler ([323f0a9](https://github.com/varletjs/varlet/commit/323f0a9))
-* refactor: refactor from @varlet/use (#886) ([9c3a7e0](https://github.com/varletjs/varlet/commit/9c3a7e0)), closes [#886](https://github.com/varletjs/varlet/issues/886)
-* refactor: refactor from @varlet/use (#887) ([b09a664](https://github.com/varletjs/varlet/commit/b09a664)), closes [#887](https://github.com/varletjs/varlet/issues/887)
-* refactor: refactor from @varlet/use (#888) ([f7a2848](https://github.com/varletjs/varlet/commit/f7a2848)), closes [#888](https://github.com/varletjs/varlet/issues/888)
-* refactor: refactor relation from @varlet/use ([c85f137](https://github.com/varletjs/varlet/commit/c85f137))
-* refactor(ui/bottom-navigation): refactor from @varlet/use (#885) ([9ebcf44](https://github.com/varletjs/varlet/commit/9ebcf44)), closes [#885](https://github.com/varletjs/varlet/issues/885)
-* refactor(ui/button): optimize transition ([d9111da](https://github.com/varletjs/varlet/commit/d9111da))
-* refactor(ui/button): refactor from @varlet/use ([53a217a](https://github.com/varletjs/varlet/commit/53a217a))
-* refactor(ui/checkbox): refactor from @varlet/use ([9961bda](https://github.com/varletjs/varlet/commit/9961bda))
-* refactor(ui/col): unlink scope limit ([3bb1481](https://github.com/varletjs/varlet/commit/3bb1481))
-* refactor(ui/collapse): refactor from @varlet/use ([c781e5d](https://github.com/varletjs/varlet/commit/c781e5d))
-* refactor(ui/fab): refactor apis ([e260475](https://github.com/varletjs/varlet/commit/e260475))
-* refactor(ui/form): refactor from @varlet/use ([755deee](https://github.com/varletjs/varlet/commit/755deee))
-* refactor(ui/icon): clean code ([20bb909](https://github.com/varletjs/varlet/commit/20bb909))
-* refactor(ui/radio): refactor from @varlet/use ([04c0627](https://github.com/varletjs/varlet/commit/04c0627))
-* feat: refactor fab, support popover reference, fix option label lost reactivity ([a8051f3](https://github.com/varletjs/varlet/commit/a8051f3))
-* feat(extension): support fab ([cc2c039](https://github.com/varletjs/varlet/commit/cc2c039))
-* feat(ui/badge): refactor dom structure ([f96ceda](https://github.com/varletjs/varlet/commit/f96ceda))
-* feat(ui/badge): support value slot (#883) ([765393a](https://github.com/varletjs/varlet/commit/765393a)), closes [#883](https://github.com/varletjs/varlet/issues/883)
-* feat(ui/button): optimize hover effect (#881) ([fd69f23](https://github.com/varletjs/varlet/commit/fd69f23)), closes [#881](https://github.com/varletjs/varlet/issues/881)
-* feat(ui/fab): new component fab (#876) ([1ae784a](https://github.com/varletjs/varlet/commit/1ae784a)), closes [#876](https://github.com/varletjs/varlet/issues/876)
-* feat(ui/icon): icon support animationClass (#880) ([c6c06d6](https://github.com/varletjs/varlet/commit/c6c06d6)), closes [#880](https://github.com/varletjs/varlet/issues/880)
-* feat(use): useParent and useChildren support string key, refactor layout from @varlet/use ([6d8485a](https://github.com/varletjs/varlet/commit/6d8485a))
-* docs: fix typo ([34c4523](https://github.com/varletjs/varlet/commit/34c4523))
-
-
-
-## <small>2.8.6 (2023-03-05)</small>
-
-* v2.8.6 ([05a8eb6](https://github.com/varletjs/varlet/commit/05a8eb6))
-* refactor: optimize effect ([59c543a](https://github.com/varletjs/varlet/commit/59c543a))
-* refactor: optimize effect ([ff6560d](https://github.com/varletjs/varlet/commit/ff6560d))
-* refactor: refactor from use ([a6a9bad](https://github.com/varletjs/varlet/commit/a6a9bad))
-* refactor: refactor from useMounted ([cc82270](https://github.com/varletjs/varlet/commit/cc82270))
-* refactor(ui/countdown): cache isStart ([77ec368](https://github.com/varletjs/varlet/commit/77ec368))
-* refactor(ui/countdown): cache isStart ([a572f52](https://github.com/varletjs/varlet/commit/a572f52))
-* refactor(ui/countdown): clean code ([43a2297](https://github.com/varletjs/varlet/commit/43a2297))
-* refactor(ui/countdown): clean code ([736d0d2](https://github.com/varletjs/varlet/commit/736d0d2))
-* refactor(ui/countdown): optimize resume start ([2a8eab4](https://github.com/varletjs/varlet/commit/2a8eab4))
-* refactor(ui/countdown): remove unuseful ref ([94eea1f](https://github.com/varletjs/varlet/commit/94eea1f))
-* refactor(ui/tabs): refactor from useEventListener ([a5aac4e](https://github.com/varletjs/varlet/commit/a5aac4e))
-* refactor(use): replace to onBeforeUnmount ([5cf8395](https://github.com/varletjs/varlet/commit/5cf8395))
-* fix(ui/backtop): fix effect while the component in keepalive ([195bf9b](https://github.com/varletjs/varlet/commit/195bf9b))
-* fix(ui/coundown): fix start method error ([f6626ea](https://github.com/varletjs/varlet/commit/f6626ea))
-* fix(ui/input): value update error while the target is composingand close #877 ([5873fdf](https://github.com/varletjs/varlet/commit/5873fdf)), closes [#877](https://github.com/varletjs/varlet/issues/877)
-* style: remove unuseful file ([8bb1e54](https://github.com/varletjs/varlet/commit/8bb1e54))
-* feat(use): support useEventListener useClickOutside ([cb90734](https://github.com/varletjs/varlet/commit/cb90734))
-* chore: add static image ([885a11c](https://github.com/varletjs/varlet/commit/885a11c))
-* chore: enable sponsor ([3fd0d9b](https://github.com/varletjs/varlet/commit/3fd0d9b))
-* chore: fix sponsor information ([275023f](https://github.com/varletjs/varlet/commit/275023f))
-
-
-
-## <small>2.8.5 (2023-02-28)</small>
-
-* v2.8.5 ([2ad9835](https://github.com/varletjs/varlet/commit/2ad9835))
-* feat: consistent flex-start, start, flex-end, end ([3836f30](https://github.com/varletjs/varlet/commit/3836f30))
-* fix(ui/steps): fix step shrink ([eb1cff7](https://github.com/varletjs/varlet/commit/eb1cff7))
-* types(ui/app-bar): add content slots ([9d95cd4](https://github.com/varletjs/varlet/commit/9d95cd4))
-
-
-
-## <small>2.8.4 (2023-02-27)</small>
-
-* v2.8.4 ([01caa9b](https://github.com/varletjs/varlet/commit/01caa9b))
-* docs: fix readme ([eebc03b](https://github.com/varletjs/varlet/commit/eebc03b))
-* docs(ui/hover): format docs ([98a7280](https://github.com/varletjs/varlet/commit/98a7280))
-* docs(ui/index-bar): optimize docs ([5caf6c2](https://github.com/varletjs/varlet/commit/5caf6c2))
-* types: fix directive type ([54e2503](https://github.com/varletjs/varlet/commit/54e2503))
-* types: fix types ([2d90420](https://github.com/varletjs/varlet/commit/2d90420))
-* refactor: optimize avatar-group and button-group css and add new example for button ([3c7d24f](https://github.com/varletjs/varlet/commit/3c7d24f))
-* refactor: refactor hover ([de93417](https://github.com/varletjs/varlet/commit/de93417))
-* refactor(ui/input): optimize clear icon size ([bae0245](https://github.com/varletjs/varlet/commit/bae0245))
-* refactor(ui/input): refactor type number ([8a3ce10](https://github.com/varletjs/varlet/commit/8a3ce10))
-* test: update snap ([203ffaf](https://github.com/varletjs/varlet/commit/203ffaf))
-* test(ui/hover): test hover ([aa75ef1](https://github.com/varletjs/varlet/commit/aa75ef1))
-* feat: added hover directive (#868) ([44806ef](https://github.com/varletjs/varlet/commit/44806ef)), closes [#868](https://github.com/varletjs/varlet/issues/868)
-* feat: new directive hover and fix input number type bug (#871) ([8cd49bf](https://github.com/varletjs/varlet/commit/8cd49bf)), closes [#871](https://github.com/varletjs/varlet/issues/871)
-* fix(cli): fix resolve ([7856e60](https://github.com/varletjs/varlet/commit/7856e60))
-* fix(ui/space): fix space inline mode className err ([bcbbcad](https://github.com/varletjs/varlet/commit/bcbbcad))
-
-
-
-## <small>2.8.3 (2023-02-20)</small>
-
-* v2.8.3 ([3375b5c](https://github.com/varletjs/varlet/commit/3375b5c))
-* fix: fix avatar scale ([0e491ce](https://github.com/varletjs/varlet/commit/0e491ce))
-* chore: update deps ([6de86c4](https://github.com/varletjs/varlet/commit/6de86c4))
-* feat(cli): reduce dependencies size (#866) ([4965033](https://github.com/varletjs/varlet/commit/4965033)), closes [#866](https://github.com/varletjs/varlet/issues/866)
-* docs(ui/card): fix docs ([aa0c9f3](https://github.com/varletjs/varlet/commit/aa0c9f3))
-
-
-
-## <small>2.8.2 (2023-02-19)</small>
-
-* v2.8.2 ([6b006cc](https://github.com/varletjs/varlet/commit/6b006cc))
-* refactor(ui/button-group): support props.textColor and refactor css ([fcae09c](https://github.com/varletjs/varlet/commit/fcae09c))
-* refactor(ui/button): clean code ([dd619a3](https://github.com/varletjs/varlet/commit/dd619a3))
-* test(ui/button-group): add tests ([f46836b](https://github.com/varletjs/varlet/commit/f46836b))
-* test(ui/paper): update snap ([dff34ec](https://github.com/varletjs/varlet/commit/dff34ec))
-* docs: change button group docs (#864) ([09292b0](https://github.com/varletjs/varlet/commit/09292b0)), closes [#864](https://github.com/varletjs/varlet/issues/864)
-* docs: md format (#863) ([96bf989](https://github.com/varletjs/varlet/commit/96bf989)), closes [#863](https://github.com/varletjs/varlet/issues/863)
-* docs(ui/layout): fix docs ([c12250c](https://github.com/varletjs/varlet/commit/c12250c))
-* feat: new component button group ([66a6bed](https://github.com/varletjs/varlet/commit/66a6bed))
-* fix: paper elevation maybe undefined ([c9743fc](https://github.com/varletjs/varlet/commit/c9743fc))
-* chore: update community qrcode (#862) ([b1d8138](https://github.com/varletjs/varlet/commit/b1d8138)), closes [#862](https://github.com/varletjs/varlet/issues/862)
-* style: clean code ([4d6f5e1](https://github.com/varletjs/varlet/commit/4d6f5e1))
-
-
-
-## <small>2.8.1 (2023-02-15)</small>
-
-* v2.8.1 ([1dab684](https://github.com/varletjs/varlet/commit/1dab684))
-* fix(cli): umd format set production env ([b7920de](https://github.com/varletjs/varlet/commit/b7920de))
-* fix(cli): umd format should be replace NODE_ENV ([5f45a65](https://github.com/varletjs/varlet/commit/5f45a65))
-
-
-
-## 2.8.0 (2023-02-15)
-
-* v2.8.0 ([2761207](https://github.com/varletjs/varlet/commit/2761207))
-* docs: fix example ([3793ab6](https://github.com/varletjs/varlet/commit/3793ab6))
-* docs: fix example ([757f9cf](https://github.com/varletjs/varlet/commit/757f9cf))
-* docs: optimize docs ([aa7e2ea](https://github.com/varletjs/varlet/commit/aa7e2ea))
-* docs: optimize example ([9bcbafb](https://github.com/varletjs/varlet/commit/9bcbafb))
-* docs(ui/avatar): fix docs ([627d129](https://github.com/varletjs/varlet/commit/627d129))
-* refactor: clean code ([d39e9a4](https://github.com/varletjs/varlet/commit/d39e9a4))
-* refactor: get back paper dark themes ([dd8d297](https://github.com/varletjs/varlet/commit/dd8d297))
-* refactor: refactoring components (#847) ([20b7a37](https://github.com/varletjs/varlet/commit/20b7a37)), closes [#847](https://github.com/varletjs/varlet/issues/847)
-* refactor(extension): get back components map ([840fb56](https://github.com/varletjs/varlet/commit/840fb56))
-* refactor(ui/avatar): optimize code ([39153ed](https://github.com/varletjs/varlet/commit/39153ed))
-* refactor(ui/avatar): registered a lazy load directive to the component (#859) ([17947d5](https://github.com/varletjs/varlet/commit/17947d5)), closes [#859](https://github.com/varletjs/varlet/issues/859)
-* refactor(ui/paper): add --box ([2bdf9f4](https://github.com/varletjs/varlet/commit/2bdf9f4))
-* fix: fix umd format lose css ([cd2d606](https://github.com/varletjs/varlet/commit/cd2d606))
-* fix(cli): fix vite command NODE_ENV ([e3d84ce](https://github.com/varletjs/varlet/commit/e3d84ce))
-* fix(extension): fixed regex mismatch under CRLF (#850) ([0947726](https://github.com/varletjs/varlet/commit/0947726)), closes [#850](https://github.com/varletjs/varlet/issues/850)
-* fix(playground): fix jump github and detect iframe ([deeb9ef](https://github.com/varletjs/varlet/commit/deeb9ef))
-* test(ui/avatar): add test case ([43e360f](https://github.com/varletjs/varlet/commit/43e360f))
-* test(ui/cell): fix tests ([8585c5d](https://github.com/varletjs/varlet/commit/8585c5d))
-* test(ui/paper): update snap ([47fde92](https://github.com/varletjs/varlet/commit/47fde92))
-* style: clean code ([5aa9597](https://github.com/varletjs/varlet/commit/5aa9597))
-* style: clean code ([1fde5ad](https://github.com/varletjs/varlet/commit/1fde5ad))
-* feat: added avatar component (#857) ([c3bc355](https://github.com/varletjs/varlet/commit/c3bc355)), closes [#857](https://github.com/varletjs/varlet/issues/857)
-* feat: new component ellipsis and tooltip supports props.sameWidth ([d979181](https://github.com/varletjs/varlet/commit/d979181))
-* feat: new component paper and cell supports ripple, border-offset, onClick ([1626e82](https://github.com/varletjs/varlet/commit/1626e82))
-* feat: support useRouteMobile (#854) ([2df95eb](https://github.com/varletjs/varlet/commit/2df95eb)), closes [#854](https://github.com/varletjs/varlet/issues/854)
-* feat(ui/app-bar): support props.image, props.imageLinearGradient, content slots ([2293683](https://github.com/varletjs/varlet/commit/2293683))
-* types(extension): add web-types.d.ts file (#849) ([77e1411](https://github.com/varletjs/varlet/commit/77e1411)), closes [#849](https://github.com/varletjs/varlet/issues/849)
-* types(ui/ellipsis): fix types ([d062747](https://github.com/varletjs/varlet/commit/d062747))
-* chore: add release:extension script ([0d28567](https://github.com/varletjs/varlet/commit/0d28567))
-* chore: fix readme ([c91a43b](https://github.com/varletjs/varlet/commit/c91a43b))
-
-
-
-## <small>2.7.5 (2023-02-09)</small>
-
-* v2.7.5 ([403cca2](https://github.com/varletjs/varlet/commit/403cca2))
-* docs: fix docs ([aa3c6dd](https://github.com/varletjs/varlet/commit/aa3c6dd))
-* docs(extension): update readme (#848) ([36faa92](https://github.com/varletjs/varlet/commit/36faa92)), closes [#848](https://github.com/varletjs/varlet/issues/848)
-* revert(usePopover): revert to bubble ([5cd3f56](https://github.com/varletjs/varlet/commit/5cd3f56))
-* refactor(snackbar): remove show ([2ba48f9](https://github.com/varletjs/varlet/commit/2ba48f9))
-* refactor(ui/card): fix event args error ([8155976](https://github.com/varletjs/varlet/commit/8155976))
-* refactor(usePopover): optimize click trigger order ([9585d98](https://github.com/varletjs/varlet/commit/9585d98))
-* fix(ui/picker): fix props.toolbar useless ([5e57b4f](https://github.com/varletjs/varlet/commit/5e57b4f))
-* style: clean code ([a5d2350](https://github.com/varletjs/varlet/commit/a5d2350))
-* style: explicitly invoke event listeners (#846) ([bec5a7d](https://github.com/varletjs/varlet/commit/bec5a7d)), closes [#846](https://github.com/varletjs/varlet/issues/846)
-* types(ui/card): fix position type (#845) ([8d089a2](https://github.com/varletjs/varlet/commit/8d089a2)), closes [#845](https://github.com/varletjs/varlet/issues/845)
-
-
-
-## <small>2.7.4 (2023-02-08)</small>
-
-* v2.7.4 ([20e0b63](https://github.com/varletjs/varlet/commit/20e0b63))
-* style: clean code ([be8e5b7](https://github.com/varletjs/varlet/commit/be8e5b7))
-* refactor: clean code ([0ecbcd6](https://github.com/varletjs/varlet/commit/0ecbcd6))
-* refactor(cli): refactor code strong size ([a14755f](https://github.com/varletjs/varlet/commit/a14755f))
-* refactor(ui/dialog): clean code ([0a07d4f](https://github.com/varletjs/varlet/commit/0a07d4f))
-* fix: fix docs ([7b44984](https://github.com/varletjs/varlet/commit/7b44984))
-* fix(countdown): replace Date to performance ([b54f31c](https://github.com/varletjs/varlet/commit/b54f31c))
-* fix(ui/input): fix input overflow ([6370f62](https://github.com/varletjs/varlet/commit/6370f62))
-* fix(ui/select): fix select overflow ([879cdb1](https://github.com/varletjs/varlet/commit/879cdb1))
-* feat(extension): support playground in editor context menu ([43852fb](https://github.com/varletjs/varlet/commit/43852fb))
-* feat(extension): support props and events completions ([13198c5](https://github.com/varletjs/varlet/commit/13198c5))
-* feat(extension): support zh-CN and en-US toggle ([92abb5e](https://github.com/varletjs/varlet/commit/92abb5e))
-* feat(loading-bar): support setDefaultOptions and resetDefaultOptions ([8215585](https://github.com/varletjs/varlet/commit/8215585))
-* feat(snackbar): support setDefaultOptions and resetDefaultOptions ([e13c6a2](https://github.com/varletjs/varlet/commit/e13c6a2))
-* feat(ui/action-sheet): support setDefaultOptions and resetDefaultOptions ([92517c9](https://github.com/varletjs/varlet/commit/92517c9))
-* feat(ui/dialog): support setDefaultOptions and resetDefaultOptions and close #830 ([c0cd14e](https://github.com/varletjs/varlet/commit/c0cd14e)), closes [#830](https://github.com/varletjs/varlet/issues/830)
-* feat(ui/uploader): support closePreview and chooseFile and close #843 ([7a86662](https://github.com/varletjs/varlet/commit/7a86662)), closes [#843](https://github.com/varletjs/varlet/issues/843)
-* docs: fix docs ([8eb1e18](https://github.com/varletjs/varlet/commit/8eb1e18))
-* docs(snackbar): enhance doc ([a55b279](https://github.com/varletjs/varlet/commit/a55b279))
-* test: update snap ([9c6a8bc](https://github.com/varletjs/varlet/commit/9c6a8bc))
-
-
-
-## <small>2.7.3 (2023-02-01)</small>
-
-* v2.7.3 ([dac77cd](https://github.com/varletjs/varlet/commit/dac77cd))
-* chore: add unpkg, jsdelivr, style field into package.json ([8169aad](https://github.com/varletjs/varlet/commit/8169aad))
-* chore: fix package.json ([0e91826](https://github.com/varletjs/varlet/commit/0e91826))
-* chore: update community qrcode (#840) ([4bd3364](https://github.com/varletjs/varlet/commit/4bd3364)), closes [#840](https://github.com/varletjs/varlet/issues/840)
-* fix(cli): fix generators ([dcc3ff7](https://github.com/varletjs/varlet/commit/dcc3ff7))
-* feat: support sfc without script blocks ([44e009d](https://github.com/varletjs/varlet/commit/44e009d))
-* feat(cli): support extension development ([dbe47a9](https://github.com/varletjs/varlet/commit/dbe47a9))
-* feat(cli): support icon builder ([1cf420c](https://github.com/varletjs/varlet/commit/1cf420c))
-* feat(cli): support script setup ([229f4e1](https://github.com/varletjs/varlet/commit/229f4e1))
-* docs: fix docs ([9f3089f](https://github.com/varletjs/varlet/commit/9f3089f))
-
-
-
-## <small>2.7.2 (2023-01-30)</small>
-
-* v2.7.2 ([957e7f2](https://github.com/varletjs/varlet/commit/957e7f2))
-* docs: fix docs ([b9255ee](https://github.com/varletjs/varlet/commit/b9255ee))
-* refactor: optimize icon ([1658796](https://github.com/varletjs/varlet/commit/1658796))
-* refactor(extension): optimize code ([2f44b83](https://github.com/varletjs/varlet/commit/2f44b83))
-* refactor(icons): optimize color ([5ceaf0a](https://github.com/varletjs/varlet/commit/5ceaf0a))
-* refactor(icons): optimize icon size ([5ec8143](https://github.com/varletjs/varlet/commit/5ec8143))
-* refactor(icons): support build png ([92f40ed](https://github.com/varletjs/varlet/commit/92f40ed))
-* chore: fix readme ([924c784](https://github.com/varletjs/varlet/commit/924c784))
-* chore: fix scripts ([48acd39](https://github.com/varletjs/varlet/commit/48acd39))
-* chore: fix workflow ([1f1c129](https://github.com/varletjs/varlet/commit/1f1c129))
-* chore: fix workflow ([8f396be](https://github.com/varletjs/varlet/commit/8f396be))
-* chore: ignore public icons ([bdf6d58](https://github.com/varletjs/varlet/commit/bdf6d58))
-* feat(extension): support icon preview and completion ([adfa778](https://github.com/varletjs/varlet/commit/adfa778))
-* feat(icons): support pointCodes map ([ddd2575](https://github.com/varletjs/varlet/commit/ddd2575))
-
-
-
-## <small>2.7.1 (2023-01-28)</small>
-
-* v2.7.1 ([e7079b7](https://github.com/varletjs/varlet/commit/e7079b7))
-* fix: the sfc style cannot append to style folder ([06b0360](https://github.com/varletjs/varlet/commit/06b0360))
-* docs: fix docs ([8d88924](https://github.com/varletjs/varlet/commit/8d88924))
-
-
-
-## 2.7.0 (2023-01-27)
-
-* v2.7.0 ([76b5f10](https://github.com/varletjs/varlet/commit/76b5f10))
-* docs: fix docs ([d59623a](https://github.com/varletjs/varlet/commit/d59623a))
-* docs: fix docs ([b4cc53a](https://github.com/varletjs/varlet/commit/b4cc53a))
-* docs: fix docs ([00560ee](https://github.com/varletjs/varlet/commit/00560ee))
-* refactor: remove postcss from compile command and fix docs ([181e0ee](https://github.com/varletjs/varlet/commit/181e0ee))
-* chore: update bin.js ([79c82f9](https://github.com/varletjs/varlet/commit/79c82f9))
-* feat(cli): compiler standardization (#839) ([7ea3c5c](https://github.com/varletjs/varlet/commit/7ea3c5c)), closes [#839](https://github.com/varletjs/varlet/issues/839)
-
-
-
-## <small>2.6.3 (2023-01-18)</small>
-
-* v2.6.3 ([2f53530](https://github.com/varletjs/varlet/commit/2f53530))
-* refactor(index-bar): rename scrollToOptions ([e48f28c](https://github.com/varletjs/varlet/commit/e48f28c))
-* refactor(ui/app-bar): support font size css var (#836) ([d669d7c](https://github.com/varletjs/varlet/commit/d669d7c)), closes [#836](https://github.com/varletjs/varlet/issues/836)
-* feat(index-bar): add scrollTo options ([b1e1a30](https://github.com/varletjs/varlet/commit/b1e1a30))
-* feat(ui/swipe): support swipeToOptions ([98d7647](https://github.com/varletjs/varlet/commit/98d7647))
-* fix: the swipe element cannot be found in special case and close #834 ([172b4a3](https://github.com/varletjs/varlet/commit/172b4a3)), closes [#834](https://github.com/varletjs/varlet/issues/834)
-* fix: to method repeat emit change event ([52deffa](https://github.com/varletjs/varlet/commit/52deffa))
-* fix(index-bar): compute offsetTop ([eefdf9d](https://github.com/varletjs/varlet/commit/eefdf9d))
-* chore: update community qrcode (#837) ([a0def09](https://github.com/varletjs/varlet/commit/a0def09)), closes [#837](https://github.com/varletjs/varlet/issues/837)
-* types(slider): move types to props ([71258c6](https://github.com/varletjs/varlet/commit/71258c6))
-
-
-
-## <small>2.6.2 (2023-01-12)</small>
-
-* v2.6.2 ([41a59b5](https://github.com/varletjs/varlet/commit/41a59b5))
-* chore: add exports field ([76e2133](https://github.com/varletjs/varlet/commit/76e2133))
-* chore: add types field ([bec421a](https://github.com/varletjs/varlet/commit/bec421a))
-* chore: hidden vue2 version ([1dca569](https://github.com/varletjs/varlet/commit/1dca569))
-* chore: remove exports fields ([808134f](https://github.com/varletjs/varlet/commit/808134f))
-* refactor(pull-refresh): optimize touchmove ([70173ff](https://github.com/varletjs/varlet/commit/70173ff))
-* fix(ui/pull-refresh): fix pull-refresh touchMove (#829) ([1614e73](https://github.com/varletjs/varlet/commit/1614e73)), closes [#829](https://github.com/varletjs/varlet/issues/829)
-* docs: fix docs ([c6d58a9](https://github.com/varletjs/varlet/commit/c6d58a9))
-
-
-
-## <small>2.6.1 (2023-01-11)</small>
-
-* v2.6.1 ([305260c](https://github.com/varletjs/varlet/commit/305260c))
-* test: update snap ([88e7579](https://github.com/varletjs/varlet/commit/88e7579))
-* feat: support native-type and fix overlay auto import error ([35097ca](https://github.com/varletjs/varlet/commit/35097ca))
-
-
-
-## 2.6.0 (2023-01-10)
-
-* v2.6.0 ([16cecef](https://github.com/varletjs/varlet/commit/16cecef))
-* chore: clean ([42212ea](https://github.com/varletjs/varlet/commit/42212ea))
-* chore: playground logo ([c19e385](https://github.com/varletjs/varlet/commit/c19e385))
-* feat: support vite4 and create a new package vite-plugins (#824) ([34bbb86](https://github.com/varletjs/varlet/commit/34bbb86)), closes [#824](https://github.com/varletjs/varlet/issues/824)
-
-
-
-## <small>2.5.6 (2023-01-07)</small>
-
-* v2.5.6 ([1d410a7](https://github.com/varletjs/varlet/commit/1d410a7))
-* fix(pagination): watch page-count and close #820 ([a4bb395](https://github.com/varletjs/varlet/commit/a4bb395)), closes [#820](https://github.com/varletjs/varlet/issues/820)
-* docs: clean docs ([76437c2](https://github.com/varletjs/varlet/commit/76437c2))
-* docs(ui/action-sheet): fix docs ([be2d003](https://github.com/varletjs/varlet/commit/be2d003))
-* docs(ui/action-sheet): optimize docs (#823) ([25ba253](https://github.com/varletjs/varlet/commit/25ba253)), closes [#823](https://github.com/varletjs/varlet/issues/823)
-* docs(ui/countdown): change arrow into function at setup (#819) ([afe1fdd](https://github.com/varletjs/varlet/commit/afe1fdd)), closes [#819](https://github.com/varletjs/varlet/issues/819)
-* refactor(playground): fix main file error ([0ffe807](https://github.com/varletjs/varlet/commit/0ffe807))
-* refactor(ui/pull-refresh): optimize the behavior of touchmove prevent default ([c450a7c](https://github.com/varletjs/varlet/commit/c450a7c))
-* chore: update community qrcode (#821) ([b76f5c9](https://github.com/varletjs/varlet/commit/b76f5c9)), closes [#821](https://github.com/varletjs/varlet/issues/821)
-
-
-
-## <small>2.5.5 (2023-01-05)</small>
-
-* v2.5.5 ([5d40096](https://github.com/varletjs/varlet/commit/5d40096))
-* chore: clean code ([eaf5f28](https://github.com/varletjs/varlet/commit/eaf5f28))
-* chore: ignore dts ([7198ada](https://github.com/varletjs/varlet/commit/7198ada))
-* docs: clean code ([d9cd7e5](https://github.com/varletjs/varlet/commit/d9cd7e5))
-* docs: fix docs ([ee9b7dd](https://github.com/varletjs/varlet/commit/ee9b7dd))
-* docs(ui/button): change arrow into function (#816) ([f9994a0](https://github.com/varletjs/varlet/commit/f9994a0)), closes [#816](https://github.com/varletjs/varlet/issues/816)
-* docs(ui/button): optimize color ([75ebca8](https://github.com/varletjs/varlet/commit/75ebca8))
-* docs(ui/counter): change arrow into function at setup (#818) ([5e5ec29](https://github.com/varletjs/varlet/commit/5e5ec29)), closes [#818](https://github.com/varletjs/varlet/issues/818)
-* refactor: remove unused variable ([1a5caa4](https://github.com/varletjs/varlet/commit/1a5caa4))
-* refactor(playground): bump repl version and refactor code ([1aa1547](https://github.com/varletjs/varlet/commit/1aa1547))
-* fix(back-top): add default z-index ([f9f45fb](https://github.com/varletjs/varlet/commit/f9f45fb))
-* fix(pull-refresh): add lock and close #814 ([08b04e3](https://github.com/varletjs/varlet/commit/08b04e3)), closes [#814](https://github.com/varletjs/varlet/issues/814)
-* fix(ui/uploader): before-remove event mission file params ([db0870e](https://github.com/varletjs/varlet/commit/db0870e))
-* types(ui/uploader): fix types ([c38c352](https://github.com/varletjs/varlet/commit/c38c352))
-
-
-
-## <small>2.5.4 (2023-01-05)</small>
-
-* v2.5.4 ([7770109](https://github.com/varletjs/varlet/commit/7770109))
-* feat(pull-refresh): add target prop and close #811 ([47537b6](https://github.com/varletjs/varlet/commit/47537b6)), closes [#811](https://github.com/varletjs/varlet/issues/811)
-* docs(tooltip): typo ([076d6e8](https://github.com/varletjs/varlet/commit/076d6e8))
-* chore(markdown-vite-plugin): remove typographer ([a216715](https://github.com/varletjs/varlet/commit/a216715))
-
-
-
-## <small>2.5.3 (2023-01-04)</small>
-
-* v2.5.3 ([f29ee8a](https://github.com/varletjs/varlet/commit/f29ee8a))
-* fix(ui/menu): fix elevation display error ([91a83c4](https://github.com/varletjs/varlet/commit/91a83c4))
-* docs: fix docs ([754dcd0](https://github.com/varletjs/varlet/commit/754dcd0))
-* docs(ui/menu): fix docs ([258500f](https://github.com/varletjs/varlet/commit/258500f))
-
-
-
-## <small>2.5.2 (2023-01-04)</small>
-
-* v2.5.2 ([1dbd47d](https://github.com/varletjs/varlet/commit/1dbd47d))
-* feat(ui/menu): support sameWidth prop ([5fda8b7](https://github.com/varletjs/varlet/commit/5fda8b7))
-* docs: format doc fixed #804 (#808) ([55d41b0](https://github.com/varletjs/varlet/commit/55d41b0)), closes [#804](https://github.com/varletjs/varlet/issues/804) [#808](https://github.com/varletjs/varlet/issues/808)
-
-
-
-## <small>2.5.1 (2023-01-02)</small>
-
-* v2.5.1 ([7f7647f](https://github.com/varletjs/varlet/commit/7f7647f))
-* refactor(ui/form): clean code ([0ad6755](https://github.com/varletjs/varlet/commit/0ad6755))
-* fix: fix scroll form item error and close #807 ([6f44de4](https://github.com/varletjs/varlet/commit/6f44de4)), closes [#807](https://github.com/varletjs/varlet/issues/807)
-
-
-
-## 2.5.0 (2023-01-01)
-
-* refactor(ui/checkbox, chip): support array listener ([1e101dd](https://github.com/varletjs/varlet/commit/1e101dd))
-* refactor(ui/col, counter): support array listener ([9ab2d67](https://github.com/varletjs/varlet/commit/9ab2d67))
-* refactor(ui/image-preview, input): support array listener ([ae5e054](https://github.com/varletjs/varlet/commit/ae5e054))
-* refactor(ui/image, icon): support array listener ([de87dd6](https://github.com/varletjs/varlet/commit/de87dd6))
-* refactor(ui/link, list): support array listener ([7edd9d4](https://github.com/varletjs/varlet/commit/7edd9d4))
-* refactor(ui/overlay, menu, picker): support array listener ([20aa6ea](https://github.com/varletjs/varlet/commit/20aa6ea))
-* refactor(ui/radio, popup): support array listener ([4bc431f](https://github.com/varletjs/varlet/commit/4bc431f))
-* refactor(ui/rate, row): support array listener ([187de50](https://github.com/varletjs/varlet/commit/187de50))
-* refactor(ui/select, sticky): support array listener ([cd48d60](https://github.com/varletjs/varlet/commit/cd48d60))
-* v2.5.0 ([a084b39](https://github.com/varletjs/varlet/commit/a084b39))
-* docs: add methods return ([e664f01](https://github.com/varletjs/varlet/commit/e664f01))
-* docs: fix docs ([54e0ab8](https://github.com/varletjs/varlet/commit/54e0ab8))
-* docs: fix docs ([fe6182a](https://github.com/varletjs/varlet/commit/fe6182a))
-* docs(ui/breadcrumb): optimize docs ([832066a](https://github.com/varletjs/varlet/commit/832066a))
-* docs(ui/breadcrumb): optimize docs ([102b800](https://github.com/varletjs/varlet/commit/102b800))
-* docs(ui/breadcrumb): update docs ([4d8453a](https://github.com/varletjs/varlet/commit/4d8453a))
-* docs(ui/breadcrumbs): fix typo ([522d7bb](https://github.com/varletjs/varlet/commit/522d7bb))
-* docs(ui/card): fix docs ([2c89ed4](https://github.com/varletjs/varlet/commit/2c89ed4))
-* docs(ui/select): optimize docs ([fbc2f00](https://github.com/varletjs/varlet/commit/fbc2f00))
-* docs(ui/space): add style variables ([b914df2](https://github.com/varletjs/varlet/commit/b914df2))
-* docs(ui/tabs): fix docs ([fa9cc6a](https://github.com/varletjs/varlet/commit/fa9cc6a))
-* test(ui/form): update snapshot ([4595866](https://github.com/varletjs/varlet/commit/4595866))
-* test(ui/space): add computeMargin func test ([e46a035](https://github.com/varletjs/varlet/commit/e46a035))
-* test(ui/space): add test cases ([37947b4](https://github.com/varletjs/varlet/commit/37947b4))
-* test(ui/tooltip): update snap ([d165380](https://github.com/varletjs/varlet/commit/d165380))
-* refactor: add comment ([22fb2c5](https://github.com/varletjs/varlet/commit/22fb2c5))
-* refactor: clean code ([ffcfe60](https://github.com/varletjs/varlet/commit/ffcfe60))
-* refactor: refactor menu and tooltip ([360bfe2](https://github.com/varletjs/varlet/commit/360bfe2))
-* refactor: remove common import from elevation ([bc9834e](https://github.com/varletjs/varlet/commit/bc9834e))
-* refactor: support array listener ([c6bc29c](https://github.com/varletjs/varlet/commit/c6bc29c))
-* refactor: support array listener ([ae1f69d](https://github.com/varletjs/varlet/commit/ae1f69d))
-* refactor: support array listener ([ecbdffd](https://github.com/varletjs/varlet/commit/ecbdffd))
-* refactor(extension): support tooltip (#800) ([1e6c624](https://github.com/varletjs/varlet/commit/1e6c624)), closes [#800](https://github.com/varletjs/varlet/issues/800)
-* refactor(tooltip): refactor css var (#801) ([0a74f2c](https://github.com/varletjs/varlet/commit/0a74f2c)), closes [#801](https://github.com/varletjs/varlet/issues/801)
-* refactor(tooltip): refactor docs (#802) ([aa6f075](https://github.com/varletjs/varlet/commit/aa6f075)), closes [#802](https://github.com/varletjs/varlet/issues/802)
-* refactor(ui/BottomNavigation): support array listener ([71bd68c](https://github.com/varletjs/varlet/commit/71bd68c))
-* refactor(ui/breadcrumbs): clean code ([12adaf6](https://github.com/varletjs/varlet/commit/12adaf6))
-* refactor(ui/breadcrumbs): optimize code ([4a28b51](https://github.com/varletjs/varlet/commit/4a28b51))
-* refactor(ui/breadcrumbs): refactor all code ([44ee8d5](https://github.com/varletjs/varlet/commit/44ee8d5))
-* refactor(ui/card): opt outline code ([dbdb17f](https://github.com/varletjs/varlet/commit/dbdb17f))
-* refactor(ui/dialog): support array listener ([ea52fed](https://github.com/varletjs/varlet/commit/ea52fed))
-* refactor(ui/form): fix scroll ([709fe49](https://github.com/varletjs/varlet/commit/709fe49))
-* refactor(ui/icon): remove unuseful namespace class mounted ([c7aef50](https://github.com/varletjs/varlet/commit/c7aef50))
-* refactor(ui/menu): clean code ([6d1cb9f](https://github.com/varletjs/varlet/commit/6d1cb9f))
-* refactor(ui/select): optimize selected slot display ([2f03ed4](https://github.com/varletjs/varlet/commit/2f03ed4))
-* refactor(ui/space): add plugin options ([10bcf66](https://github.com/varletjs/varlet/commit/10bcf66))
-* refactor(ui/space): support ssr ([414d7f1](https://github.com/varletjs/varlet/commit/414d7f1))
-* refactor(ui/tooltip): optimize code ([7bfec23](https://github.com/varletjs/varlet/commit/7bfec23))
-* refactor(ui/tooltip): refactor tooltip docs and styles ([8434ba4](https://github.com/varletjs/varlet/commit/8434ba4))
-* refactor(ui/uploader): support array listener ([1e0c9dd](https://github.com/varletjs/varlet/commit/1e0c9dd))
-* feat: new component tooltip ([08f0d52](https://github.com/varletjs/varlet/commit/08f0d52))
-* feat(ui/breadcrumb): add router ([7677275](https://github.com/varletjs/varlet/commit/7677275))
-* feat(ui/breadcrumb): var-breadcrumb complete ([1dc4741](https://github.com/varletjs/varlet/commit/1dc4741))
-* feat(ui/card): add outline ([0bb33bb](https://github.com/varletjs/varlet/commit/0bb33bb))
-* feat(ui/form): form support scroll to last error ([1776ec0](https://github.com/varletjs/varlet/commit/1776ec0))
-* feat(ui/form): support scroll animation ([466916c](https://github.com/varletjs/varlet/commit/466916c))
-* feat(ui/form): support scroll to first error ([f620514](https://github.com/varletjs/varlet/commit/f620514))
-* feat(ui/icon): optimized the way to customize the icon library ([c73531c](https://github.com/varletjs/varlet/commit/c73531c))
-* feat(ui/select): support selected slot ([6a6ebe0](https://github.com/varletjs/varlet/commit/6a6ebe0))
-* feat(ui/space): replace dynamically calculated margin with css var ([e55c546](https://github.com/varletjs/varlet/commit/e55c546))
-* feat(ui/space): use calc to handle margin ([cc80a19](https://github.com/varletjs/varlet/commit/cc80a19))
-* feat(ui/sticky): support resize method ([7b1db86](https://github.com/varletjs/varlet/commit/7b1db86))
-* feat(ui/tabs): support more sticky props and sticky support resize ([d49488d](https://github.com/varletjs/varlet/commit/d49488d))
-* chore: fix readme ([4aa266b](https://github.com/varletjs/varlet/commit/4aa266b))
-* chore: fix typo ([3838f56](https://github.com/varletjs/varlet/commit/3838f56))
-* chore: standard code ([8cdac8a](https://github.com/varletjs/varlet/commit/8cdac8a))
-* chore: update community qrcode ([ac2e80c](https://github.com/varletjs/varlet/commit/ac2e80c))
-* chore(ui/breadcrumb): example update ([e14030e](https://github.com/varletjs/varlet/commit/e14030e))
-* types: optimize ([48f5105](https://github.com/varletjs/varlet/commit/48f5105))
-* types(loading): modify show to loading and close #792 ([06280f0](https://github.com/varletjs/varlet/commit/06280f0)), closes [#792](https://github.com/varletjs/varlet/issues/792)
-* types(tooltip): add types (#803) ([3066d61](https://github.com/varletjs/varlet/commit/3066d61)), closes [#803](https://github.com/varletjs/varlet/issues/803)
-* types(ui/space): optimize types ([5eaf153](https://github.com/varletjs/varlet/commit/5eaf153))
-* style: clean code ([f658df0](https://github.com/varletjs/varlet/commit/f658df0))
-* style: clean code ([2be2cbb](https://github.com/varletjs/varlet/commit/2be2cbb))
-* style: clean code ([821b9ca](https://github.com/varletjs/varlet/commit/821b9ca))
-* perf(ui/breadcrumb): optimize  breadcrumb docs ([2fb88fe](https://github.com/varletjs/varlet/commit/2fb88fe))
-* perf(ui/breadcrumb): optimize breadcrumb component ([611441a](https://github.com/varletjs/varlet/commit/611441a))
-* perf(ui/breadcrumb): optimize breadcrumb component ([6a68368](https://github.com/varletjs/varlet/commit/6a68368))
-* fix(cli): fix less compile order error ([e9d8d1f](https://github.com/varletjs/varlet/commit/e9d8d1f))
-* fix(ui/popup): fixed not being able to scroll when popup content overflowed ([7867282](https://github.com/varletjs/varlet/commit/7867282))
-* fix(ui/space): support ssr ([fc81fe7](https://github.com/varletjs/varlet/commit/fc81fe7))
-
-
-
-## <small>2.4.2 (2022-12-14)</small>
-
-* v2.4.2 ([cd44a42](https://github.com/varletjs/varlet/commit/cd44a42))
-* fix(ui/input): fix maxlength invalid with number type and close #775 ([edf4a2e](https://github.com/varletjs/varlet/commit/edf4a2e)), closes [#775](https://github.com/varletjs/varlet/issues/775)
-
-
-
-## <small>2.4.1 (2022-12-11)</small>
-
-* v2.4.1 ([355fbe8](https://github.com/varletjs/varlet/commit/355fbe8))
-* docs: fix docs ([07ab683](https://github.com/varletjs/varlet/commit/07ab683))
-* fix(pull-refresh): fix contorl position and close #774 ([9dc871c](https://github.com/varletjs/varlet/commit/9dc871c)), closes [#774](https://github.com/varletjs/varlet/issues/774)
-
-
-
-## 2.4.0 (2022-12-11)
-
-* v2.4.0 ([5b3f861](https://github.com/varletjs/varlet/commit/5b3f861))
-* docs: add Cloud IDE preview link (#772) ([5b084cc](https://github.com/varletjs/varlet/commit/5b084cc)), closes [#772](https://github.com/varletjs/varlet/issues/772)
-* docs: add zh-CN md ([4217609](https://github.com/varletjs/varlet/commit/4217609))
-* docs: fix docs ([503f924](https://github.com/varletjs/varlet/commit/503f924))
-* docs: fix readme ([107e8e9](https://github.com/varletjs/varlet/commit/107e8e9))
-* docs: optimize code ([7a1568f](https://github.com/varletjs/varlet/commit/7a1568f))
-* docs: optimize docs ([205008e](https://github.com/varletjs/varlet/commit/205008e))
-* docs: optimize docs ([441d3a5](https://github.com/varletjs/varlet/commit/441d3a5))
-* docs: replace attribute ([4699be6](https://github.com/varletjs/varlet/commit/4699be6))
-* docs: update zh-CN md ([443c9b4](https://github.com/varletjs/varlet/commit/443c9b4))
-* docs(loading-bar): typo ([810e0ae](https://github.com/varletjs/varlet/commit/810e0ae))
-* docs(ui/card): opt example ([8a311bc](https://github.com/varletjs/varlet/commit/8a311bc))
-* docs(ui/card): opt example style ([03c5536](https://github.com/varletjs/varlet/commit/03c5536))
-* docs(ui/card): opt example style ([01110c4](https://github.com/varletjs/varlet/commit/01110c4))
-* docs(ui/card): opt slot example ([87cc621](https://github.com/varletjs/varlet/commit/87cc621))
-* docs(ui/result): add docs ([ac99923](https://github.com/varletjs/varlet/commit/ac99923))
-* docs(ui/result): add en doc ([8166985](https://github.com/varletjs/varlet/commit/8166985))
-* docs(ui/result): fix doc errs ([abe96d1](https://github.com/varletjs/varlet/commit/abe96d1))
-* docs(ui/result): opt docs ([59d91a2](https://github.com/varletjs/varlet/commit/59d91a2))
-* refactor: optimize animate ([a0650ff](https://github.com/varletjs/varlet/commit/a0650ff))
-* refactor: optimize animate ([26d4a21](https://github.com/varletjs/varlet/commit/26d4a21))
-* refactor: optimize code ([03af76a](https://github.com/varletjs/varlet/commit/03af76a))
-* refactor: refactor site hash replace ([a436929](https://github.com/varletjs/varlet/commit/a436929))
-* refactor: revert router replace ([78c9ce6](https://github.com/varletjs/varlet/commit/78c9ce6))
-* refactor(loading-bar): add top prop ([247abf8](https://github.com/varletjs/varlet/commit/247abf8))
-* refactor(loading-bar): optimize code ([b81a642](https://github.com/varletjs/varlet/commit/b81a642))
-* refactor(overlay): optimize code (#769) ([1479f3a](https://github.com/varletjs/varlet/commit/1479f3a)), closes [#769](https://github.com/varletjs/varlet/issues/769)
-* refactor(site): fix to window.parent ([b7bfb19](https://github.com/varletjs/varlet/commit/b7bfb19))
-* refactor(ui/card): opt code ([64d907d](https://github.com/varletjs/varlet/commit/64d907d))
-* refactor(ui/result): add empty ([5f5de0e](https://github.com/varletjs/varlet/commit/5f5de0e))
-* refactor(ui/result): add error waring question ([4316f80](https://github.com/varletjs/varlet/commit/4316f80))
-* refactor(ui/result): add examples ([60b55a0](https://github.com/varletjs/varlet/commit/60b55a0))
-* refactor(ui/result): add info error warning ([569d5db](https://github.com/varletjs/varlet/commit/569d5db))
-* refactor(ui/result): add shake animation ([d3c8205](https://github.com/varletjs/varlet/commit/d3c8205))
-* refactor(ui/result): add success component ([06a0ffb](https://github.com/varletjs/varlet/commit/06a0ffb))
-* refactor(ui/result): add types ([3f60b95](https://github.com/varletjs/varlet/commit/3f60b95))
-* refactor(ui/result): change status prop to type ([30c14a6](https://github.com/varletjs/varlet/commit/30c14a6))
-* refactor(ui/result): clean code ([ee3cce0](https://github.com/varletjs/varlet/commit/ee3cce0))
-* refactor(ui/result): fix css ([c1fd41f](https://github.com/varletjs/varlet/commit/c1fd41f))
-* refactor(ui/result): fix style ([d583f94](https://github.com/varletjs/varlet/commit/d583f94))
-* refactor(ui/result): fix success animation ([cc9902a](https://github.com/varletjs/varlet/commit/cc9902a))
-* refactor(ui/result): fix success animation ([8f8bf95](https://github.com/varletjs/varlet/commit/8f8bf95))
-* refactor(ui/result): opt code structure ([d1909f7](https://github.com/varletjs/varlet/commit/d1909f7))
-* refactor(ui/result): opt dark style && docs ([caad4af](https://github.com/varletjs/varlet/commit/caad4af))
-* refactor(ui/result): opt style code ([cb0f899](https://github.com/varletjs/varlet/commit/cb0f899))
-* refactor(ui/result): optimize animation ([5059651](https://github.com/varletjs/varlet/commit/5059651))
-* refactor(ui/result): optimize animation ([f002ca0](https://github.com/varletjs/varlet/commit/f002ca0))
-* refactor(ui/result): optimize code ([d334c87](https://github.com/varletjs/varlet/commit/d334c87))
-* refactor(ui/result): optimize code ([12c2f71](https://github.com/varletjs/varlet/commit/12c2f71))
-* refactor(ui/result): optimize example ([6ca5488](https://github.com/varletjs/varlet/commit/6ca5488))
-* refactor(ui/result): reset error style ([c451e4f](https://github.com/varletjs/varlet/commit/c451e4f))
-* refactor(ui/result): reset success question error style ([7d96f7a](https://github.com/varletjs/varlet/commit/7d96f7a))
-* refactor(ui/result): rewrite class name ([e74cb84](https://github.com/varletjs/varlet/commit/e74cb84))
-* fix: change overlay test className ([093cbaa](https://github.com/varletjs/varlet/commit/093cbaa))
-* fix: recover popup root style ([61bdede](https://github.com/varletjs/varlet/commit/61bdede))
-* fix: replace popup overlay ([d9a7e8d](https://github.com/varletjs/varlet/commit/d9a7e8d))
-* fix: reset popup ([5b710e7](https://github.com/varletjs/varlet/commit/5b710e7))
-* fix(site): replace progress to loading-bar ([d5a9b0e](https://github.com/varletjs/varlet/commit/d5a9b0e))
-* feat: add overlay click event ([4853339](https://github.com/varletjs/varlet/commit/4853339))
-* feat: init overlay component ([5847685](https://github.com/varletjs/varlet/commit/5847685))
-* feat: loading-bar ([8290395](https://github.com/varletjs/varlet/commit/8290395))
-* feat: overlay test spec ([835b33e](https://github.com/varletjs/varlet/commit/835b33e))
-* feat(extension): support result ([d71bd13](https://github.com/varletjs/varlet/commit/d71bd13))
-* feat(ui/app-bar): support round prop ([21557ea](https://github.com/varletjs/varlet/commit/21557ea))
-* feat(ui/popup): add defaultStyle prop ([7ae22f3](https://github.com/varletjs/varlet/commit/7ae22f3))
-* chore: fix preview yml ([2d8399f](https://github.com/varletjs/varlet/commit/2d8399f))
-* chore: fix preview yml ([ed12507](https://github.com/varletjs/varlet/commit/ed12507))
-* chore: remove changelog file ([9741216](https://github.com/varletjs/varlet/commit/9741216))
-* chore: update community qrcode (#770) ([51725a4](https://github.com/varletjs/varlet/commit/51725a4)), closes [#770](https://github.com/varletjs/varlet/issues/770)
-* test: update snap ([038028d](https://github.com/varletjs/varlet/commit/038028d))
-* test: update snap ([23b7b84](https://github.com/varletjs/varlet/commit/23b7b84))
-* test: update snap ([18baba2](https://github.com/varletjs/varlet/commit/18baba2))
-* test(ui/result): add test cases ([f02e420](https://github.com/varletjs/varlet/commit/f02e420))
-
-
-
-## <small>2.3.1 (2022-11-28)</small>
-
-* v2.3.1 ([1a7e9ff](https://github.com/varletjs/varlet/commit/1a7e9ff))
-* refactor: remove unuseful prop ([b75cd46](https://github.com/varletjs/varlet/commit/b75cd46))
-* docs: fix links ([6eca390](https://github.com/varletjs/varlet/commit/6eca390))
-* docs(ui/link): fix docs ([a6c8361](https://github.com/varletjs/varlet/commit/a6c8361))
-
-
-
-## 2.3.0 (2022-11-28)
-
-* v2.3.0 ([61bfdc4](https://github.com/varletjs/varlet/commit/61bfdc4))
-* types(link): use RouteLocationRaw ([8076647](https://github.com/varletjs/varlet/commit/8076647))
-* types(ui/link): add link type ([41f2d7f](https://github.com/varletjs/varlet/commit/41f2d7f))
-* types(ui/link): fix types ([78db591](https://github.com/varletjs/varlet/commit/78db591))
-* fix: some unusual behavior of LOGO animation ([99d3846](https://github.com/varletjs/varlet/commit/99d3846))
-* fix(button): remove default value of circle and close #761 ([aafdb12](https://github.com/varletjs/varlet/commit/aafdb12)), closes [#761](https://github.com/varletjs/varlet/issues/761)
-* fix(space): remove width ([cb92a53](https://github.com/varletjs/varlet/commit/cb92a53))
-* docs: fix ssr docs ([cf582f6](https://github.com/varletjs/varlet/commit/cf582f6))
-* docs(button): fix the description about loading props ([bd8bcdd](https://github.com/varletjs/varlet/commit/bd8bcdd))
-* docs(ui/image): add another import method for image src ([2c496b5](https://github.com/varletjs/varlet/commit/2c496b5))
-* docs(ui/image): fix docs ([e5b67ae](https://github.com/varletjs/varlet/commit/e5b67ae))
-* docs(ui/link): add english document for link ([fc55ae2](https://github.com/varletjs/varlet/commit/fc55ae2))
-* refactor: optimize link, chip, button ([a5787a0](https://github.com/varletjs/varlet/commit/a5787a0))
-* refactor: use namespace to replace class ([904568f](https://github.com/varletjs/varlet/commit/904568f))
-* refactor(extension): add link component to extension ([23f8863](https://github.com/varletjs/varlet/commit/23f8863))
-* refactor(link): optimize code ([5cfaa95](https://github.com/varletjs/varlet/commit/5cfaa95))
-* refactor(ui/link): default style use dispaly: inline-flex ([9432139](https://github.com/varletjs/varlet/commit/9432139))
-* refactor(ui/link): optimize link attrs ([f249c9e](https://github.com/varletjs/varlet/commit/f249c9e))
-* chore: make up the `disconnect` ([03ade42](https://github.com/varletjs/varlet/commit/03ade42))
-* chore: update community qrcode (#759) ([ffe493f](https://github.com/varletjs/varlet/commit/ffe493f)), closes [#759](https://github.com/varletjs/varlet/issues/759)
-* test(ui/link): add link component test ([d73acce](https://github.com/varletjs/varlet/commit/d73acce))
-* feat(ui/link): support link component ([c6c8b8d](https://github.com/varletjs/varlet/commit/c6c8b8d))
-
-
-
-## <small>2.2.1 (2022-11-15)</small>
-
-* v2.2.1 ([40227ba](https://github.com/varletjs/varlet/commit/40227ba))
-* fix(ui/tabs-items): tabs-items cannot swipe to correct position when props.active initializes ([6ec8639](https://github.com/varletjs/varlet/commit/6ec8639))
-
-
-
-## 2.2.0 (2022-11-11)
-
-* v2.2.0 ([86f5dc0](https://github.com/varletjs/varlet/commit/86f5dc0))
-* docs: add breakchange to migrationguide ([99d1c56](https://github.com/varletjs/varlet/commit/99d1c56))
-* docs: change cjs to esm ([0a6e92d](https://github.com/varletjs/varlet/commit/0a6e92d))
-* docs: fix 404 links (#741) ([450d5cd](https://github.com/varletjs/varlet/commit/450d5cd)), closes [#741](https://github.com/varletjs/varlet/issues/741)
-* docs: fix docs ([fd3348a](https://github.com/varletjs/varlet/commit/fd3348a))
-* docs: fix docs ([7506e7d](https://github.com/varletjs/varlet/commit/7506e7d))
-* docs: fix link ([edc43f1](https://github.com/varletjs/varlet/commit/edc43f1))
-* docs: fix typo ([89e6d3e](https://github.com/varletjs/varlet/commit/89e6d3e))
-* docs: fix typo ([250b695](https://github.com/varletjs/varlet/commit/250b695))
-* docs: optimzie docs ([c9e8803](https://github.com/varletjs/varlet/commit/c9e8803))
-* docs: optimzie docs ([a760ce4](https://github.com/varletjs/varlet/commit/a760ce4))
-* docs(badge): complete doc ([7bfef47](https://github.com/varletjs/varlet/commit/7bfef47))
-* docs(ide): ide zh-CN delete global field (#743) ([c6d132d](https://github.com/varletjs/varlet/commit/c6d132d)), closes [#743](https://github.com/varletjs/varlet/issues/743)
-* docs(ui/badge): fix docs ([7ff578e](https://github.com/varletjs/varlet/commit/7ff578e))
-* docs(ui/form): optimize docs ([2b5cfac](https://github.com/varletjs/varlet/commit/2b5cfac))
-* chore: update community qrcode (#746) ([393b436](https://github.com/varletjs/varlet/commit/393b436)), closes [#746](https://github.com/varletjs/varlet/issues/746)
-* refactor: add css variable ([de9031c](https://github.com/varletjs/varlet/commit/de9031c))
-* refactor: add css variable & add rate text color ([2ce5f22](https://github.com/varletjs/varlet/commit/2ce5f22))
-* refactor: add transtion ([c146cc9](https://github.com/varletjs/varlet/commit/c146cc9))
-* refactor: form components style ([3ee9480](https://github.com/varletjs/varlet/commit/3ee9480))
-* refactor: optimize transition ([5d3a7fe](https://github.com/varletjs/varlet/commit/5d3a7fe))
-* refactor(eslint-config): fix rule ([4e5faf6](https://github.com/varletjs/varlet/commit/4e5faf6))
-* refactor(ui/counter): refactor error style ([a2dc0d3](https://github.com/varletjs/varlet/commit/a2dc0d3))
-* refactor(ui/counter): refactor error style ([9361bd0](https://github.com/varletjs/varlet/commit/9361bd0))
-* feat: support custom form component and refactor form-details and refactor form styles ([00ec07b](https://github.com/varletjs/varlet/commit/00ec07b))
-* feat(extension): support form-details ([20e8655](https://github.com/varletjs/varlet/commit/20e8655))
-* types: build types ([6f5477d](https://github.com/varletjs/varlet/commit/6f5477d))
-
-
-
-## 2.1.0 (2022-10-31)
-
-* v2.1.0 ([495f47a](https://github.com/varletjs/varlet/commit/495f47a))
-* refactor: add getCurrentFile & allowJs ([6178bc2](https://github.com/varletjs/varlet/commit/6178bc2))
-* refactor: add js extension ([1896822](https://github.com/varletjs/varlet/commit/1896822))
-* refactor: add js extension ([4c9ea5b](https://github.com/varletjs/varlet/commit/4c9ea5b))
-* refactor: change babel preset of template and add git init hint ([4ddae49](https://github.com/varletjs/varlet/commit/4ddae49))
-* refactor: change import path to cli/client ([04e058b](https://github.com/varletjs/varlet/commit/04e058b))
-* refactor: code style && move methods to utils ([ae13e10](https://github.com/varletjs/varlet/commit/ae13e10))
-* refactor: expose watch methods and app-type by client ([5b55935](https://github.com/varletjs/varlet/commit/5b55935))
-* refactor: fix package.json ([9bf46ef](https://github.com/varletjs/varlet/commit/9bf46ef))
-* refactor: migrate to esm ([b15a0ed](https://github.com/varletjs/varlet/commit/b15a0ed))
-* refactor: modify readJsonSync import type ([20d8ed4](https://github.com/varletjs/varlet/commit/20d8ed4))
-* refactor: move default.config to config folder ([9500099](https://github.com/varletjs/varlet/commit/9500099))
-* refactor: move withSiteConfigNamespace to index ([9c67fc3](https://github.com/varletjs/varlet/commit/9c67fc3))
-* refactor: refactor cli client api ([f5caf3d](https://github.com/varletjs/varlet/commit/f5caf3d))
-* refactor: refactor client entry ([2ddd096](https://github.com/varletjs/varlet/commit/2ddd096))
-* refactor(cli): fix package.json ([76e8102](https://github.com/varletjs/varlet/commit/76e8102))
-* refactor(cli): rename function name ([84eb20c](https://github.com/varletjs/varlet/commit/84eb20c))
-* refactor(cli): split client and node ([ff132f8](https://github.com/varletjs/varlet/commit/ff132f8))
-* refactor(ui/select): optimize select arrow icon ([583babe](https://github.com/varletjs/varlet/commit/583babe))
-* fix: error suffix when create tsx component (#736) ([dc4feac](https://github.com/varletjs/varlet/commit/dc4feac)), closes [#736](https://github.com/varletjs/varlet/issues/736)
-* fix: pathToFileURL ([0917537](https://github.com/varletjs/varlet/commit/0917537))
-* fix(cli/create): fix path of create template ([a48e875](https://github.com/varletjs/varlet/commit/a48e875))
-* fix(site): allow playground copy url ([4cc9c61](https://github.com/varletjs/varlet/commit/4cc9c61))
-* fix(slider): change slotProps ([8baf42a](https://github.com/varletjs/varlet/commit/8baf42a))
-* fix(ui/collapse): fix shadow invisibility of collapse (#734) ([038f807](https://github.com/varletjs/varlet/commit/038f807)), closes [#734](https://github.com/varletjs/varlet/issues/734)
-* test(slider): enhance test case ([65e343f](https://github.com/varletjs/varlet/commit/65e343f))
-* test(ui/select): upgrade snapshot ([01cc843](https://github.com/varletjs/varlet/commit/01cc843))
-* feat(icons): migrate esm ([e6704a0](https://github.com/varletjs/varlet/commit/e6704a0))
-* feat(slider): support max and min props and close #732 ([48c2633](https://github.com/varletjs/varlet/commit/48c2633)), closes [#732](https://github.com/varletjs/varlet/issues/732)
-* feat(ui/select): add arrow-icon slot (#738) ([68ceec9](https://github.com/varletjs/varlet/commit/68ceec9)), closes [#738](https://github.com/varletjs/varlet/issues/738)
-* chore: add lint cache (#739) ([9e0b456](https://github.com/varletjs/varlet/commit/9e0b456)), closes [#739](https://github.com/varletjs/varlet/issues/739)
-* chore: adjust dependencies ([265bedd](https://github.com/varletjs/varlet/commit/265bedd))
-* chore: extends tsconfig.json ([b62ee18](https://github.com/varletjs/varlet/commit/b62ee18))
-* chore: fix gitignore ([6331ddf](https://github.com/varletjs/varlet/commit/6331ddf))
-* chore: rebuild bin.js ([d4c02b1](https://github.com/varletjs/varlet/commit/d4c02b1))
-* chore: remove lodash ([7cdf4bd](https://github.com/varletjs/varlet/commit/7cdf4bd))
-* chore: remove unnecessary fields ([a234583](https://github.com/varletjs/varlet/commit/a234583))
-* chore: remove unnecessary rule ([1498842](https://github.com/varletjs/varlet/commit/1498842))
-* chore: update community qrcode (#735) ([e40ae6a](https://github.com/varletjs/varlet/commit/e40ae6a)), closes [#735](https://github.com/varletjs/varlet/issues/735)
-* chore: upgrade inquirer ([cd76643](https://github.com/varletjs/varlet/commit/cd76643))
-* chore: upgrade lock file ([c078fb1](https://github.com/varletjs/varlet/commit/c078fb1))
-* style: clean code ([20b0ce9](https://github.com/varletjs/varlet/commit/20b0ce9))
-* style: clean code ([f000ebb](https://github.com/varletjs/varlet/commit/f000ebb))
-* style: clean files ([9f12c93](https://github.com/varletjs/varlet/commit/9f12c93))
-* types: fix types ([479f726](https://github.com/varletjs/varlet/commit/479f726))
-* types: refactor call function ([0089b1b](https://github.com/varletjs/varlet/commit/0089b1b))
-* docs(snackbar): clear snackbar loading and close #737 ([2770bb4](https://github.com/varletjs/varlet/commit/2770bb4)), closes [#737](https://github.com/varletjs/varlet/issues/737)
-
-
-
-## <small>2.0.6 (2022-10-20)</small>
-
-* v2.0.6 ([c430af6](https://github.com/varletjs/varlet/commit/c430af6))
-* chore: update lock file ([362d533](https://github.com/varletjs/varlet/commit/362d533))
-* fix: fix select disabled and readonly bug (#731) ([411d327](https://github.com/varletjs/varlet/commit/411d327)), closes [#731](https://github.com/varletjs/varlet/issues/731)
-* refactor(release): rename branch to refs ([587522c](https://github.com/varletjs/varlet/commit/587522c))
-* feat(cli/release): add branch confirm ([6f3c764](https://github.com/varletjs/varlet/commit/6f3c764))
-
-
-
-## <small>2.0.5 (2022-10-19)</small>
-
-* v2.0.5 ([2839d5e](https://github.com/varletjs/varlet/commit/2839d5e))
-* fix(ui/BottomNavigation): change repeat trigger (#729) ([a61147f](https://github.com/varletjs/varlet/commit/a61147f)), closes [#729](https://github.com/varletjs/varlet/issues/729)
-* fix(ui/divider):  0.5px affects text display ([3e51cec](https://github.com/varletjs/varlet/commit/3e51cec))
-* chore: fix dep ([d240949](https://github.com/varletjs/varlet/commit/d240949))
-* types(bottomNavigation): add default slot ([c93e369](https://github.com/varletjs/varlet/commit/c93e369))
-* types(ui/divider): support hairline ([f5503b5](https://github.com/varletjs/varlet/commit/f5503b5))
-* feat(ui/divider): add hairline divider ([03102d4](https://github.com/varletjs/varlet/commit/03102d4))
-* docs(select): remove unused reactive ([548b580](https://github.com/varletjs/varlet/commit/548b580))
-
-
-
-## <small>2.0.4 (2022-10-19)</small>
-
-* v2.0.4 ([95b24f6](https://github.com/varletjs/varlet/commit/95b24f6))
-* docs(home): add community ecological project link (#727) ([1dbedb1](https://github.com/varletjs/varlet/commit/1dbedb1)), closes [#727](https://github.com/varletjs/varlet/issues/727)
-* docs(ui/elevation): remove less part ([98ada8a](https://github.com/varletjs/varlet/commit/98ada8a))
-
-
-
-## <small>2.0.3 (2022-10-15)</small>
-
-* v2.0.3 ([68e1212](https://github.com/varletjs/varlet/commit/68e1212))
-* fix(config): fix features merge strategy ([c3a378f](https://github.com/varletjs/varlet/commit/c3a378f))
-* docs: fix docs error ([aa52855](https://github.com/varletjs/varlet/commit/aa52855))
-* docs: format docs ([32e7dce](https://github.com/varletjs/varlet/commit/32e7dce))
-* types: add slot type declarationa ([f5b4a63](https://github.com/varletjs/varlet/commit/f5b4a63))
-* chore: add slot type declarationa for volar ([28bcd8b](https://github.com/varletjs/varlet/commit/28bcd8b))
-* chore: remove extension readme ([815d224](https://github.com/varletjs/varlet/commit/815d224))
-
-
-
-## <small>2.0.2 (2022-10-13)</small>
-
-* v2.0.2 ([7486d5e](https://github.com/varletjs/varlet/commit/7486d5e))
-* docs: add ecosystem ([697c139](https://github.com/varletjs/varlet/commit/697c139))
-* docs: optimize types ([bbf7506](https://github.com/varletjs/varlet/commit/bbf7506))
-* feat(ui/image): support title prop ([48462bb](https://github.com/varletjs/varlet/commit/48462bb))
-* refactor(cli): optimize comment ([ab90d4b](https://github.com/varletjs/varlet/commit/ab90d4b))
-
-
-
-## <small>2.0.1 (2022-10-13)</small>
-
-* v2.0.1 ([b7022f3](https://github.com/varletjs/varlet/commit/b7022f3))
-* chore: add defineConfig for template config ([c81ed18](https://github.com/varletjs/varlet/commit/c81ed18))
-* chore: remove unnecessary option ([dc68766](https://github.com/varletjs/varlet/commit/dc68766))
-* chore: update community qrcode (#722) ([fef57ad](https://github.com/varletjs/varlet/commit/fef57ad)), closes [#722](https://github.com/varletjs/varlet/issues/722)
-* chore: update community qrcode (#723) ([2642577](https://github.com/varletjs/varlet/commit/2642577)), closes [#723](https://github.com/varletjs/varlet/issues/723)
-* feat(cli): add defineConfig for type helper (#721) ([84579f4](https://github.com/varletjs/varlet/commit/84579f4)), closes [#721](https://github.com/varletjs/varlet/issues/721)
-* refactor(cli): remove less side effects ([d99cef8](https://github.com/varletjs/varlet/commit/d99cef8))
-
-
-
-## 2.0.0 (2022-10-11)
-
-* fix(button&snackbar): add loading color prop ([d4353b5](https://github.com/varletjs/varlet/commit/d4353b5))
-* fix(loading & pagination): expose loading color variable and optimize style of pagination ([1f36c80](https://github.com/varletjs/varlet/commit/1f36c80))
-* fix(ui/button,chip): remove line-height ([ec72772](https://github.com/varletjs/varlet/commit/ec72772))
-* refactor(cell)!: rename desc to description ([edaf3e4](https://github.com/varletjs/varlet/commit/edaf3e4))
-* refactor(cli)!: remove less themes support ([ae76181](https://github.com/varletjs/varlet/commit/ae76181))
-* refactor(time-picker&date-picker)!: rename shadow to elevation ([65f00d2](https://github.com/varletjs/varlet/commit/65f00d2))
-* refactor(ui/card)!: remove props height ([7619f5d](https://github.com/varletjs/varlet/commit/7619f5d))
-* revert:"test: update snapshots" ([474c61c](https://github.com/varletjs/varlet/commit/474c61c))
-* v2.0.0 ([1d71331](https://github.com/varletjs/varlet/commit/1d71331))
-* chore: add contribution ([0d806c6](https://github.com/varletjs/varlet/commit/0d806c6))
-* chore: add engine to limit pnpm version ([7416cae](https://github.com/varletjs/varlet/commit/7416cae))
-* chore: add no-frozen-lockfile ([3ffe0d3](https://github.com/varletjs/varlet/commit/3ffe0d3))
-* chore: add npmrc ([67a7ff4](https://github.com/varletjs/varlet/commit/67a7ff4))
-* chore: change to c8 ([e5e5943](https://github.com/varletjs/varlet/commit/e5e5943))
-* chore: check default readme ([b58bca7](https://github.com/varletjs/varlet/commit/b58bca7))
-* chore: fix playground link ([bcd0308](https://github.com/varletjs/varlet/commit/bcd0308))
-* chore: fix playground url and public path ([4ab82ea](https://github.com/varletjs/varlet/commit/4ab82ea))
-* chore: fix readme ([44a74d2](https://github.com/varletjs/varlet/commit/44a74d2))
-* chore: fix readme ([3aac70f](https://github.com/varletjs/varlet/commit/3aac70f))
-* chore: fix readme ([3dc0b30](https://github.com/varletjs/varlet/commit/3dc0b30))
-* chore: ignore cli/template ([360dece](https://github.com/varletjs/varlet/commit/360dece))
-* chore: ignore postcss plugin in test mode ([57d1151](https://github.com/varletjs/varlet/commit/57d1151))
-* chore: remove unuseful dep ([0322006](https://github.com/varletjs/varlet/commit/0322006))
-* chore: test ci ([43275f1](https://github.com/varletjs/varlet/commit/43275f1))
-* chore: test ci ([6e41a30](https://github.com/varletjs/varlet/commit/6e41a30))
-* chore: test ci ([921b148](https://github.com/varletjs/varlet/commit/921b148))
-* chore: test ci ([5aa1944](https://github.com/varletjs/varlet/commit/5aa1944))
-* chore: test ci ([2a3b292](https://github.com/varletjs/varlet/commit/2a3b292))
-* chore: test ci ([c6119e4](https://github.com/varletjs/varlet/commit/c6119e4))
-* chore: update chrome version ([c695e4c](https://github.com/varletjs/varlet/commit/c695e4c))
-* chore: update ci.yaml ([f8229a1](https://github.com/varletjs/varlet/commit/f8229a1))
-* chore: update ci.yaml ([74b709a](https://github.com/varletjs/varlet/commit/74b709a))
-* chore: update community (#675) ([d5c8df0](https://github.com/varletjs/varlet/commit/d5c8df0)), closes [#675](https://github.com/varletjs/varlet/issues/675)
-* chore: update community (#683) ([b6cb6cb](https://github.com/varletjs/varlet/commit/b6cb6cb)), closes [#683](https://github.com/varletjs/varlet/issues/683)
-* chore: update community qrcode (#687) ([2c47428](https://github.com/varletjs/varlet/commit/2c47428)), closes [#687](https://github.com/varletjs/varlet/issues/687)
-* chore: update community qrcode (#691) ([1dc44a6](https://github.com/varletjs/varlet/commit/1dc44a6)), closes [#691](https://github.com/varletjs/varlet/issues/691)
-* chore: update community qrcode (#713) ([cae1511](https://github.com/varletjs/varlet/commit/cae1511)), closes [#713](https://github.com/varletjs/varlet/issues/713)
-* chore: update community qrcode (#717) ([0684e9d](https://github.com/varletjs/varlet/commit/0684e9d)), closes [#717](https://github.com/varletjs/varlet/issues/717)
-* chore: update default README.md (#695) ([089c319](https://github.com/varletjs/varlet/commit/089c319)), closes [#695](https://github.com/varletjs/varlet/issues/695)
-* chore: update gitee config files ([6c5eccf](https://github.com/varletjs/varlet/commit/6c5eccf))
-* chore: update readme ([0011d57](https://github.com/varletjs/varlet/commit/0011d57))
-* chore: upgrade pnpm6 to pnpm7 ([f2c0358](https://github.com/varletjs/varlet/commit/f2c0358))
-* chore: upgrade to vite3 ([805e8fe](https://github.com/varletjs/varlet/commit/805e8fe))
-* chore(cli): Optimize gen commands to support imperative, interactive (#686) ([2fe7cf2](https://github.com/varletjs/varlet/commit/2fe7cf2)), closes [#686](https://github.com/varletjs/varlet/issues/686)
-* chore(gen): cli gen revise the copy (#715) ([bfa0bd1](https://github.com/varletjs/varlet/commit/bfa0bd1)), closes [#715](https://github.com/varletjs/varlet/issues/715)
-* chore(playground): Solve the problem that the component library must be manually introduced into the ([5388a6c](https://github.com/varletjs/varlet/commit/5388a6c)), closes [#670](https://github.com/varletjs/varlet/issues/670)
-* refactor: add confirm when the playground close ([081f756](https://github.com/varletjs/varlet/commit/081f756))
-* refactor: add polyfill for globalThis and padStart ([8354c5e](https://github.com/varletjs/varlet/commit/8354c5e))
-* refactor: fix generator tenplate typo ([a6fcab7](https://github.com/varletjs/varlet/commit/a6fcab7))
-* refactor: modify style in space (#696) ([088d3fb](https://github.com/varletjs/varlet/commit/088d3fb)), closes [#696](https://github.com/varletjs/varlet/issues/696)
-* refactor: optimize code ([48a4e5c](https://github.com/varletjs/varlet/commit/48a4e5c))
-* refactor: optimize code ([b7d8a7a](https://github.com/varletjs/varlet/commit/b7d8a7a))
-* refactor: optimize index page ([2d2519f](https://github.com/varletjs/varlet/commit/2d2519f))
-* refactor: optimize index page ([05ef446](https://github.com/varletjs/varlet/commit/05ef446))
-* refactor: optimize index page ([3236794](https://github.com/varletjs/varlet/commit/3236794))
-* refactor: optimize index page and ripple ([ad57aca](https://github.com/varletjs/varlet/commit/ad57aca))
-* refactor: optimize template ([60e1642](https://github.com/varletjs/varlet/commit/60e1642))
-* refactor: refactor documentaion ([757a79b](https://github.com/varletjs/varlet/commit/757a79b))
-* refactor: refactor index page ([c675b67](https://github.com/varletjs/varlet/commit/c675b67))
-* refactor: refactor the animationBox and floating proxy, optimize style (#678) ([6658096](https://github.com/varletjs/varlet/commit/6658096)), closes [#678](https://github.com/varletjs/varlet/issues/678)
-* refactor: remove less side effects ([4078cec](https://github.com/varletjs/varlet/commit/4078cec))
-* refactor: remove playground ([79cdc2f](https://github.com/varletjs/varlet/commit/79cdc2f))
-* refactor: replace gitee to vercel ([23554d9](https://github.com/varletjs/varlet/commit/23554d9))
-* refactor: replace url to dev ([1daae66](https://github.com/varletjs/varlet/commit/1daae66))
-* refactor(cli): optimize codegen template ([4a72e5d](https://github.com/varletjs/varlet/commit/4a72e5d))
-* refactor(cli): optimize generators ([66e9745](https://github.com/varletjs/varlet/commit/66e9745))
-* refactor(cli): optimize generators ([6238c1d](https://github.com/varletjs/varlet/commit/6238c1d))
-* refactor(cli): optimize index page css and adjust force api ([fe662ec](https://github.com/varletjs/varlet/commit/fe662ec))
-* refactor(cli): refactor create command (#673) ([b02685c](https://github.com/varletjs/varlet/commit/b02685c)), closes [#673](https://github.com/varletjs/varlet/issues/673)
-* refactor(cli): remove global.d.ts ([c0ff762](https://github.com/varletjs/varlet/commit/c0ff762))
-* refactor(cli): replace c8 with istanbul ([31bd649](https://github.com/varletjs/varlet/commit/31bd649))
-* refactor(cli): replace jest to vitest ([9a32db1](https://github.com/varletjs/varlet/commit/9a32db1))
-* refactor(cli/create): optimize code ([dbe303c](https://github.com/varletjs/varlet/commit/dbe303c))
-* refactor(cli/gen): move generators folder to template folder ([c661a3c](https://github.com/varletjs/varlet/commit/c661a3c))
-* refactor(cli/site): optimize index page css ([1c4a4b1](https://github.com/varletjs/varlet/commit/1c4a4b1))
-* refactor(cli/site): optimize indicator animation ([3439993](https://github.com/varletjs/varlet/commit/3439993))
-* refactor(cli/test): add @config to alias ([8d6c2b3](https://github.com/varletjs/varlet/commit/8d6c2b3))
-* refactor(cli/test): build site entry ([4658805](https://github.com/varletjs/varlet/commit/4658805))
-* refactor(cli/test): exclude example and tests ([324574a](https://github.com/varletjs/varlet/commit/324574a))
-* refactor(cli/vite): support jsx ([64260c9](https://github.com/varletjs/varlet/commit/64260c9))
-* refactor(create): optimize code ([07358bc](https://github.com/varletjs/varlet/commit/07358bc))
-* refactor(create): optimize code and use inquirer to replace prompts ([a34bec7](https://github.com/varletjs/varlet/commit/a34bec7))
-* refactor(gen): optimize code ([111165d](https://github.com/varletjs/varlet/commit/111165d))
-* refactor(generators): optimize option ([0ea6e6c](https://github.com/varletjs/varlet/commit/0ea6e6c))
-* refactor(loading): change default color ([3fdc9e1](https://github.com/varletjs/varlet/commit/3fdc9e1))
-* refactor(loading): remove less variable ([50de730](https://github.com/varletjs/varlet/commit/50de730))
-* refactor(pagination): remove item background when mode is simple ([4948a67](https://github.com/varletjs/varlet/commit/4948a67))
-* refactor(playground): use varlet-cli to dev and build app ([9af30fc](https://github.com/varletjs/varlet/commit/9af30fc))
-* refactor(progress): add labelClass prop ([5981cc8](https://github.com/varletjs/varlet/commit/5981cc8))
-* refactor(rate): optimize code ([59e9421](https://github.com/varletjs/varlet/commit/59e9421))
-* refactor(site): add indexpage to config ([51d45c1](https://github.com/varletjs/varlet/commit/51d45c1))
-* refactor(site): change mobile size to 350px ([e4041b9](https://github.com/varletjs/varlet/commit/e4041b9))
-* refactor(site): playground closed the prompt and only prompts once ([60c3a71](https://github.com/varletjs/varlet/commit/60c3a71))
-* refactor(site): remove layout background ([d066d12](https://github.com/varletjs/varlet/commit/d066d12))
-* refactor(site): try catch onMobileRouteChange ([ad01e43](https://github.com/varletjs/varlet/commit/ad01e43))
-* refactor(template): optimize code ([56da894](https://github.com/varletjs/varlet/commit/56da894))
-* refactor(ui/button): button content support flex ([14ee150](https://github.com/varletjs/varlet/commit/14ee150))
-* refactor(ui/button): remove promise finally ([8b73078](https://github.com/varletjs/varlet/commit/8b73078))
-* refactor(ui/card): add color transition ([afbb120](https://github.com/varletjs/varlet/commit/afbb120))
-* refactor(ui/card): rename content slot to floating-content ([2c64075](https://github.com/varletjs/varlet/commit/2c64075))
-* refactor(ui/col): optimize col ([c25b150](https://github.com/varletjs/varlet/commit/c25b150))
-* refactor(ui/dialog): optimize dialog ([bdb2b3e](https://github.com/varletjs/varlet/commit/bdb2b3e))
-* refactor(ui/image): clean code ([a08f395](https://github.com/varletjs/varlet/commit/a08f395))
-* refactor(ui/select): optimize menu offset ([a21cb5f](https://github.com/varletjs/varlet/commit/a21cb5f))
-* refactor(ui/select): optimize style ([1260317](https://github.com/varletjs/varlet/commit/1260317))
-* docs: add english migration guide ([a3ff191](https://github.com/varletjs/varlet/commit/a3ff191))
-* docs: fix copyright typo ([97d9986](https://github.com/varletjs/varlet/commit/97d9986))
-* docs: fix docs ([d8fa2b1](https://github.com/varletjs/varlet/commit/d8fa2b1))
-* docs: fix docs ([ba0c30a](https://github.com/varletjs/varlet/commit/ba0c30a))
-* docs: fix import on demand docs ([895df5b](https://github.com/varletjs/varlet/commit/895df5b))
-* docs: fix type ([1990d76](https://github.com/varletjs/varlet/commit/1990d76))
-* docs: fix typo ([9cb3475](https://github.com/varletjs/varlet/commit/9cb3475))
-* docs: improve the new component style document (#714) ([0b05420](https://github.com/varletjs/varlet/commit/0b05420)), closes [#714](https://github.com/varletjs/varlet/issues/714)
-* docs: modify menu docs (#708) ([f2178d1](https://github.com/varletjs/varlet/commit/f2178d1)), closes [#708](https://github.com/varletjs/varlet/issues/708)
-* docs: perfect the docs in menu (#706) ([b6f35e7](https://github.com/varletjs/varlet/commit/b6f35e7)), closes [#706](https://github.com/varletjs/varlet/issues/706)
-* docs: rewrite docs and example in menu (#704) ([ad5a2f0](https://github.com/varletjs/varlet/commit/ad5a2f0)), closes [#704](https://github.com/varletjs/varlet/issues/704)
-* docs: set url to gitee ([adbdd20](https://github.com/varletjs/varlet/commit/adbdd20))
-* docs: typo ([1201441](https://github.com/varletjs/varlet/commit/1201441))
-* docs: update information of menu (#697) ([4e18b5c](https://github.com/varletjs/varlet/commit/4e18b5c)), closes [#697](https://github.com/varletjs/varlet/issues/697)
-* docs: update readme ([dd0e6d5](https://github.com/varletjs/varlet/commit/dd0e6d5))
-* docs: update readme (#700) ([f8b20eb](https://github.com/varletjs/varlet/commit/f8b20eb)), closes [#700](https://github.com/varletjs/varlet/issues/700)
-* docs(cli): make up the `pages` folder docs and `SitePC` configuration (#674) ([5549cbf](https://github.com/varletjs/varlet/commit/5549cbf)), closes [#674](https://github.com/varletjs/varlet/issues/674)
-* docs(cli): optimize docs ([0c1faaa](https://github.com/varletjs/varlet/commit/0c1faaa))
-* docs(select): remove unused variable ([87734e4](https://github.com/varletjs/varlet/commit/87734e4))
-* docs(time-picker): fix typo ([cf34203](https://github.com/varletjs/varlet/commit/cf34203))
-* docs(ui/menu): add en docs ([dc36a78](https://github.com/varletjs/varlet/commit/dc36a78))
-* docs(ui/theme): add color transition ([16e59d1](https://github.com/varletjs/varlet/commit/16e59d1))
-* feat: export dark theme and playground support dark theme preview ([cede810](https://github.com/varletjs/varlet/commit/cede810))
-* feat(cli): coverage provider change to c8 ([dcba93a](https://github.com/varletjs/varlet/commit/dcba93a))
-* feat(cli): replace jest with vitest ([7ddbade](https://github.com/varletjs/varlet/commit/7ddbade))
-* feat(gen): add simple-git-hooks scripts ([c1c6cd1](https://github.com/varletjs/varlet/commit/c1c6cd1))
-* feat(style-provider): support custom tag ([ed653e6](https://github.com/varletjs/varlet/commit/ed653e6))
-* feat(ui/col): add a direction API for col (#716) ([6a30c8e](https://github.com/varletjs/varlet/commit/6a30c8e)), closes [#716](https://github.com/varletjs/varlet/issues/716)
-* feat(ui/dialog): add width props (#718) ([916ee21](https://github.com/varletjs/varlet/commit/916ee21)), closes [#718](https://github.com/varletjs/varlet/issues/718)
-* feat(ui/locale): export zh-CN en-US language ([e4eecf0](https://github.com/varletjs/varlet/commit/e4eecf0))
-* feat(ui/menu-v2): new menu component to replace old menu component, temporarily named v2 ([a2d621a](https://github.com/varletjs/varlet/commit/a2d621a))
-* feat(ui/menu): replace menuV2 with menu (#690) ([cbf117d](https://github.com/varletjs/varlet/commit/cbf117d)), closes [#690](https://github.com/varletjs/varlet/issues/690)
-* feat(ui/tabs-items): support getSwipe method ([23ffad1](https://github.com/varletjs/varlet/commit/23ffad1))
-* types: define union types ([abc0647](https://github.com/varletjs/varlet/commit/abc0647))
-* types: export some types ([4920d19](https://github.com/varletjs/varlet/commit/4920d19))
-* types: move Menu to utils ([79bd411](https://github.com/varletjs/varlet/commit/79bd411))
-* types: optimize type readability ([046febc](https://github.com/varletjs/varlet/commit/046febc))
-* types(cli): add node type into cli package.json ([2a30d03](https://github.com/varletjs/varlet/commit/2a30d03))
-* types(ui/actionSheet): modify some properties to be optional (#711) ([d82f73f](https://github.com/varletjs/varlet/commit/d82f73f)), closes [#711](https://github.com/varletjs/varlet/issues/711)
-* style: clean code ([db7b74d](https://github.com/varletjs/varlet/commit/db7b74d))
-* style: clean code ([9c5b8cb](https://github.com/varletjs/varlet/commit/9c5b8cb))
-* style: clean code ([8385a6e](https://github.com/varletjs/varlet/commit/8385a6e))
-* style: lint code ([5181b94](https://github.com/varletjs/varlet/commit/5181b94))
-* style: remove type import ([8e48c30](https://github.com/varletjs/varlet/commit/8e48c30))
-* style: remove unuseful code (#699) ([abc5974](https://github.com/varletjs/varlet/commit/abc5974)), closes [#699](https://github.com/varletjs/varlet/issues/699)
-* doc(style):  component style repetition (#707) ([1d037b0](https://github.com/varletjs/varlet/commit/1d037b0)), closes [#707](https://github.com/varletjs/varlet/issues/707)
-* fix(cli/commitlint): add ！for break change ([86ec583](https://github.com/varletjs/varlet/commit/86ec583))
-* fix(cli/gen): rename gitignore ([a60ebd0](https://github.com/varletjs/varlet/commit/a60ebd0))
-* fix(jest): ensure to generate config ([876ba35](https://github.com/varletjs/varlet/commit/876ba35))
-* fix(playground): remove import about vite and fix ts error ([cf261e6](https://github.com/varletjs/varlet/commit/cf261e6))
-* fix(rate): fix wrong style in form component ([4cae7e0](https://github.com/varletjs/varlet/commit/4cae7e0))
-* fix(slider): ignore slider track height ([2387b16](https://github.com/varletjs/varlet/commit/2387b16))
-* fix(ui/card): fix scroll lock err ([5f12819](https://github.com/varletjs/varlet/commit/5f12819))
-* fix(ui/card): fix the problem of ripple accidental failure ([facd510](https://github.com/varletjs/varlet/commit/facd510))
-* test: remove example cases ([70648c6](https://github.com/varletjs/varlet/commit/70648c6))
-* test: update snapshots ([e3a654e](https://github.com/varletjs/varlet/commit/e3a654e))
-* test: update test cases ([a24ff25](https://github.com/varletjs/varlet/commit/a24ff25))
-* test(index-bar): update test case ([ddf4a0c](https://github.com/varletjs/varlet/commit/ddf4a0c))
-* test(ui/space): update test case ([3dc8931](https://github.com/varletjs/varlet/commit/3dc8931))
-* test(ui/swipe): add mock offset ([50f94a3](https://github.com/varletjs/varlet/commit/50f94a3))
-* revert: "feat(cli): coverage provider change to c8" ([5317a77](https://github.com/varletjs/varlet/commit/5317a77))
-* revert: revert test case ([c1cf24d](https://github.com/varletjs/varlet/commit/c1cf24d))
-* perf: Improved Menu performance and Flip bugs (#680) ([f582c78](https://github.com/varletjs/varlet/commit/f582c78)), closes [#680](https://github.com/varletjs/varlet/issues/680)
-
-
-
-## <small>1.27.20 (2022-08-11)</small>
-
-* v1.27.20 ([4f79835](https://github.com/varletjs/varlet/commit/4f79835))
-* fix: add style and less to sideeffects to close #666 ([1e542fd](https://github.com/varletjs/varlet/commit/1e542fd)), closes [#666](https://github.com/varletjs/varlet/issues/666)
-* fix(pagination): judge pagecount and close #668 ([4f8135f](https://github.com/varletjs/varlet/commit/4f8135f)), closes [#668](https://github.com/varletjs/varlet/issues/668)
-* chore: update community qrcode (#664) ([10d836c](https://github.com/varletjs/varlet/commit/10d836c)), closes [#664](https://github.com/varletjs/varlet/issues/664)
-
-
-
-## <small>1.27.19 (2022-08-08)</small>
-
-* v1.27.19 ([79a68da](https://github.com/varletjs/varlet/commit/79a68da))
-* docs: optimize docs ([ff0a637](https://github.com/varletjs/varlet/commit/ff0a637))
-* fix(cli/release): change code execution order ([6f4e75c](https://github.com/varletjs/varlet/commit/6f4e75c))
-* fix(date-picker): change preview to choose ([3fe98f9](https://github.com/varletjs/varlet/commit/3fe98f9))
-* fix(ui/uploader): add webp image ext ([e49d511](https://github.com/varletjs/varlet/commit/e49d511))
-* types(pull-refresh): change refresh event to optional ([264a8bc](https://github.com/varletjs/varlet/commit/264a8bc))
-* chore: update community ([fcd32e3](https://github.com/varletjs/varlet/commit/fcd32e3))
-* feat(date-picker): add preview to close #654 ([ed23775](https://github.com/varletjs/varlet/commit/ed23775)), closes [#654](https://github.com/varletjs/varlet/issues/654)
-
-
-
-## <small>1.27.18 (2022-07-22)</small>
-
-* fix(date-picker&time-picker): change background color and add ripple style for close #651 ([c1303a0](https://github.com/varletjs/varlet/commit/c1303a0)), closes [#651](https://github.com/varletjs/varlet/issues/651)
-* v1.27.18 ([099ad67](https://github.com/varletjs/varlet/commit/099ad67))
-* test(pull-refresh): enhance test case ([b21e8a0](https://github.com/varletjs/varlet/commit/b21e8a0))
-* fix(collapse): ensure to trigger transitionend ([51b7710](https://github.com/varletjs/varlet/commit/51b7710))
-* fix(pull-refresh): use success props when status is success ([189f8ab](https://github.com/varletjs/varlet/commit/189f8ab))
-* chore: update community qrcode (#645) ([12e76d2](https://github.com/varletjs/varlet/commit/12e76d2)), closes [#645](https://github.com/varletjs/varlet/issues/645)
-* chore: update community qrcode (#653) ([21f450f](https://github.com/varletjs/varlet/commit/21f450f)), closes [#653](https://github.com/varletjs/varlet/issues/653)
-* chore(cli): optimize less (#650) ([8a86cda](https://github.com/varletjs/varlet/commit/8a86cda)), closes [#650](https://github.com/varletjs/varlet/issues/650)
-* chore(cli): upgrade vite version and close #648 ([554f93e](https://github.com/varletjs/varlet/commit/554f93e)), closes [#648](https://github.com/varletjs/varlet/issues/648)
-* chore(cli/gen): add side-effects for template ([bea1102](https://github.com/varletjs/varlet/commit/bea1102))
-* feat(cli): compatible with screens > 2560 ([6c4f161](https://github.com/varletjs/varlet/commit/6c4f161))
-* types: add BasicAttributes ([9a7cfe8](https://github.com/varletjs/varlet/commit/9a7cfe8))
-* types(ui/progress): add BasicAttributes (#643) ([e3fe1b2](https://github.com/varletjs/varlet/commit/e3fe1b2)), closes [#643](https://github.com/varletjs/varlet/issues/643)
-* types(ui/pullRefresh): add BasicAttributes (#642) ([84c247f](https://github.com/varletjs/varlet/commit/84c247f)), closes [#642](https://github.com/varletjs/varlet/issues/642)
-* types(ui/radio): add BasicAttributes  (#641) ([f3cee72](https://github.com/varletjs/varlet/commit/f3cee72)), closes [#641](https://github.com/varletjs/varlet/issues/641)
-* types(ui/rate): add BasicAttributes (#640) ([cd77bdf](https://github.com/varletjs/varlet/commit/cd77bdf)), closes [#640](https://github.com/varletjs/varlet/issues/640)
-* types(ui/row): add BasicAttributes (#639) ([172a407](https://github.com/varletjs/varlet/commit/172a407)), closes [#639](https://github.com/varletjs/varlet/issues/639)
-* types(ui/select): add BasicAttributes (#638) ([bf978c6](https://github.com/varletjs/varlet/commit/bf978c6)), closes [#638](https://github.com/varletjs/varlet/issues/638)
-* types(ui/skeleton): add BasicAttributes (#637) ([3602c6e](https://github.com/varletjs/varlet/commit/3602c6e)), closes [#637](https://github.com/varletjs/varlet/issues/637)
-* types(ui/slider): add BasicAttributes (#636) ([e303ea5](https://github.com/varletjs/varlet/commit/e303ea5)), closes [#636](https://github.com/varletjs/varlet/issues/636)
-* types(ui/snackbar): add BasicAttributes (#635) ([cd55596](https://github.com/varletjs/varlet/commit/cd55596)), closes [#635](https://github.com/varletjs/varlet/issues/635)
-* types(ui/space): add BasicAttributes (#634) ([31ba8ab](https://github.com/varletjs/varlet/commit/31ba8ab)), closes [#634](https://github.com/varletjs/varlet/issues/634)
-* types(ui/step): add BasicAttributes (#633) ([f2478e4](https://github.com/varletjs/varlet/commit/f2478e4)), closes [#633](https://github.com/varletjs/varlet/issues/633)
-* types(ui/sticky): add BasicAttributes (#632) ([50ba4b5](https://github.com/varletjs/varlet/commit/50ba4b5)), closes [#632](https://github.com/varletjs/varlet/issues/632)
-* types(ui/styleProvider): add BasicAttributes (#631) ([dd36676](https://github.com/varletjs/varlet/commit/dd36676)), closes [#631](https://github.com/varletjs/varlet/issues/631)
-* types(ui/swipe): add BasicAttributes (#625) ([429ca17](https://github.com/varletjs/varlet/commit/429ca17)), closes [#625](https://github.com/varletjs/varlet/issues/625)
-* types(ui/tab): add BasicAttributes (#626) ([4e0a838](https://github.com/varletjs/varlet/commit/4e0a838)), closes [#626](https://github.com/varletjs/varlet/issues/626)
-* types(ui/table): add BasicAttributes (#627) ([7d421bc](https://github.com/varletjs/varlet/commit/7d421bc)), closes [#627](https://github.com/varletjs/varlet/issues/627)
-* types(ui/tabs): add BasicAttributes (#628) ([e1fdd11](https://github.com/varletjs/varlet/commit/e1fdd11)), closes [#628](https://github.com/varletjs/varlet/issues/628)
-* types(ui/timePicker): add BasicAttributes (#629) ([e382d37](https://github.com/varletjs/varlet/commit/e382d37)), closes [#629](https://github.com/varletjs/varlet/issues/629)
-* types(ui/uploader): add BasicAttributes (#630) ([db39848](https://github.com/varletjs/varlet/commit/db39848)), closes [#630](https://github.com/varletjs/varlet/issues/630)
-
-
-
-## <small>1.27.17 (2022-07-06)</small>
-
-* v1.27.17 ([35a1ae8](https://github.com/varletjs/varlet/commit/35a1ae8))
-* fix(cli/gen): add varlet/shared to dependencies ([90800e1](https://github.com/varletjs/varlet/commit/90800e1))
-* fix(cli/site): support custom description ([d1b243e](https://github.com/varletjs/varlet/commit/d1b243e))
-* fix(collapse): fix content height error ([be485c4](https://github.com/varletjs/varlet/commit/be485c4))
-* fix(ui/select): select boundary detection bug fix (#623) ([eb2fc84](https://github.com/varletjs/varlet/commit/eb2fc84)), closes [#623](https://github.com/varletjs/varlet/issues/623)
-* fix(ui/skeleton): do not render the container when rows and title not exist ([b8c3b7c](https://github.com/varletjs/varlet/commit/b8c3b7c))
-* test(countdown): add delay time ([0ee9a2b](https://github.com/varletjs/varlet/commit/0ee9a2b))
-* test(countdown): enhance test case ([f2ede3b](https://github.com/varletjs/varlet/commit/f2ede3b))
-* test(lazy): Update this lazy component unit test. (#622) ([04637f9](https://github.com/varletjs/varlet/commit/04637f9)), closes [#622](https://github.com/varletjs/varlet/issues/622)
-* feat(site): support custom index page text ([5401c1c](https://github.com/varletjs/varlet/commit/5401c1c))
-* feat(ui/input): type support tel and email, touchstart event stop propagation ([c6cdcc9](https://github.com/varletjs/varlet/commit/c6cdcc9))
-* revert: revert "fix(cli/site): support custom description" ([b23e0d2](https://github.com/varletjs/varlet/commit/b23e0d2))
-* revert: revert "refactor(cli/site): adjust configurable item structure" ([493803b](https://github.com/varletjs/varlet/commit/493803b))
-* refactor(cli/site): adjust configurable item structure ([b1db187](https://github.com/varletjs/varlet/commit/b1db187))
-* types(ui): add BasicAttributes (#620) ([c63c528](https://github.com/varletjs/varlet/commit/c63c528)), closes [#620](https://github.com/varletjs/varlet/issues/620)
-
-
-
-## <small>1.27.16 (2022-07-01)</small>
-
-* v1.27.16 ([70e7b51](https://github.com/varletjs/varlet/commit/70e7b51))
-* fix(slider): stop propagation when touch slider ([6b4bc18](https://github.com/varletjs/varlet/commit/6b4bc18))
-* fix(ui/snackbar): remove position absolute in leaving animation's style (#611) ([18d5086](https://github.com/varletjs/varlet/commit/18d5086)), closes [#611](https://github.com/varletjs/varlet/issues/611)
-* chore: update community qrcode (#613) ([4e0c5c5](https://github.com/varletjs/varlet/commit/4e0c5c5)), closes [#613](https://github.com/varletjs/varlet/issues/613)
-* chore: update community qrcode (#618) ([515e7de](https://github.com/varletjs/varlet/commit/515e7de)), closes [#618](https://github.com/varletjs/varlet/issues/618)
-* types(ui): add BasicAttributes ([d274de4](https://github.com/varletjs/varlet/commit/d274de4))
-* types(ui): add BasicAttributes (#616) ([7e871ef](https://github.com/varletjs/varlet/commit/7e871ef)), closes [#616](https://github.com/varletjs/varlet/issues/616)
-* test(ripple): Update this ripple component unit test. (#615) ([a96563b](https://github.com/varletjs/varlet/commit/a96563b)), closes [#615](https://github.com/varletjs/varlet/issues/615)
-* refactor: replace with @varlet/shared ([7510cbf](https://github.com/varletjs/varlet/commit/7510cbf))
-* refactor(cli): replace with @varlet/shared ([3c3e44f](https://github.com/varletjs/varlet/commit/3c3e44f))
-* refactor(cli): replace with @varlet/shared ([9f3eae7](https://github.com/varletjs/varlet/commit/9f3eae7))
-
-
-
-## <small>1.27.15 (2022-06-20)</small>
-
-* v1.27.15 ([ca5a573](https://github.com/varletjs/varlet/commit/ca5a573))
-
-
-
-## <small>1.27.14 (2022-06-20)</small>
-
-* v1.27.14 ([9f83bd2](https://github.com/varletjs/varlet/commit/9f83bd2))
-* fix: add side-effects for tree shaking ([4fa8559](https://github.com/varletjs/varlet/commit/4fa8559))
-* chore: ensure @varlet/shared is built first ([6ebcaf8](https://github.com/varletjs/varlet/commit/6ebcaf8))
-* docs: update pnpm version ([730ff71](https://github.com/varletjs/varlet/commit/730ff71))
-* refactor: replace with @varlet/shared ([5ac0409](https://github.com/varletjs/varlet/commit/5ac0409))
-* refactor: replace with @varlet/shared ([47ab7ee](https://github.com/varletjs/varlet/commit/47ab7ee))
-* refactor(ui/ripple): add update diff ([5424271](https://github.com/varletjs/varlet/commit/5424271))
-* feat: add new package varlet-shared ([939d945](https://github.com/varletjs/varlet/commit/939d945))
-
-
-
-## <small>1.27.13 (2022-06-17)</small>
-
-* v1.27.13 ([36d3596](https://github.com/varletjs/varlet/commit/36d3596))
-* test(back-top): enhance test case ([2cfd0a3](https://github.com/varletjs/varlet/commit/2cfd0a3))
-* refactor(ui/select): optimize bundary detection in select  (#608) ([52d4181](https://github.com/varletjs/varlet/commit/52d4181)), closes [#608](https://github.com/varletjs/varlet/issues/608)
-* fix(back-top): add inheritAttrs ([cce45e2](https://github.com/varletjs/varlet/commit/cce45e2))
-* fix(ui/types): icon onClick's type ([d18d0ca](https://github.com/varletjs/varlet/commit/d18d0ca))
-* feat(ui/select): add boundary detection in select (#606) ([27eb0ea](https://github.com/varletjs/varlet/commit/27eb0ea)), closes [#606](https://github.com/varletjs/varlet/issues/606)
-* chore: update community qrcode (#603) ([6d8ebd8](https://github.com/varletjs/varlet/commit/6d8ebd8)), closes [#603](https://github.com/varletjs/varlet/issues/603)
-
-
-
-## <small>1.27.12 (2022-06-10)</small>
-
-* v1.27.12 ([4a27ba9](https://github.com/varletjs/varlet/commit/4a27ba9))
-* test: enhance test case ([8c588cf](https://github.com/varletjs/varlet/commit/8c588cf))
-* test(bottom-navigation): Update this bottom-navigation component unit test. (#598) ([8f70170](https://github.com/varletjs/varlet/commit/8f70170)), closes [#598](https://github.com/varletjs/varlet/issues/598)
-* fix: add default width ([09fe1cc](https://github.com/varletjs/varlet/commit/09fe1cc))
-* fix: swiperItem's type (#602) ([33a1488](https://github.com/varletjs/varlet/commit/33a1488)), closes [#602](https://github.com/varletjs/varlet/issues/602)
-* fix(space): add width when direction is column ([9108bfa](https://github.com/varletjs/varlet/commit/9108bfa))
-* fix(ui/ripple): ripple cannot be removed when the updated hooks trigger ([fc2fb08](https://github.com/varletjs/varlet/commit/fc2fb08))
-* chore: update community qrcode (#599) ([96c714a](https://github.com/varletjs/varlet/commit/96c714a)), closes [#599](https://github.com/varletjs/varlet/issues/599)
-* refactor(vscode-extension): add language logic for component description ([a3cecdf](https://github.com/varletjs/varlet/commit/a3cecdf))
-
-
-
-## <small>1.27.11 (2022-06-01)</small>
-
-* v1.27.11 ([f35a563](https://github.com/varletjs/varlet/commit/f35a563))
-* test(input): update test ([5ad4f17](https://github.com/varletjs/varlet/commit/5ad4f17))
-* test(table): Update this table component unit test. (#586) ([5d42f25](https://github.com/varletjs/varlet/commit/5d42f25)), closes [#586](https://github.com/varletjs/varlet/issues/586)
-* test(tabs): Update this tabs component unit test. (#594) ([fec4584](https://github.com/varletjs/varlet/commit/fec4584)), closes [#594](https://github.com/varletjs/varlet/issues/594)
-* feat(cli/gen): add i18n for template and close #590 ([6299780](https://github.com/varletjs/varlet/commit/6299780)), closes [#590](https://github.com/varletjs/varlet/issues/590)
-* feat(ui/input): add autofocus of input (#595) ([fb9e026](https://github.com/varletjs/varlet/commit/fb9e026)), closes [#595](https://github.com/varletjs/varlet/issues/595)
-* fix(cli/gen): gen i18n files ([e97e869](https://github.com/varletjs/varlet/commit/e97e869))
-* refactor(cli/gen): remove useless function ([c92e248](https://github.com/varletjs/varlet/commit/c92e248))
-* refactor(ui/space): adjust example ([d627190](https://github.com/varletjs/varlet/commit/d627190))
-* chore: Remove useless checks (#584) ([16d0a07](https://github.com/varletjs/varlet/commit/16d0a07)), closes [#584](https://github.com/varletjs/varlet/issues/584)
-* chore: update community qrcode (#592) ([4be1a50](https://github.com/varletjs/varlet/commit/4be1a50)), closes [#592](https://github.com/varletjs/varlet/issues/592)
-* docs(table): Fix parameter case error. (#589) ([89b0841](https://github.com/varletjs/varlet/commit/89b0841)), closes [#589](https://github.com/varletjs/varlet/issues/589)
-
-
-
-## <small>1.27.10 (2022-05-24)</small>
-
-* docs(ui/table,pagination): remove pc preview for px to vw ([70762a4](https://github.com/varletjs/varlet/commit/70762a4))
-* v1.27.10 ([6428d64](https://github.com/varletjs/varlet/commit/6428d64))
-* refactor(cli/site): optimize version styles ([7962f99](https://github.com/varletjs/varlet/commit/7962f99))
-
-
-
-## <small>1.27.9 (2022-05-24)</small>
-
-* v1.27.9 ([53c4d4b](https://github.com/varletjs/varlet/commit/53c4d4b))
-* fix: animationBox is not in the DomTree. the logo will not show (#579) ([a50f735](https://github.com/varletjs/varlet/commit/a50f735)), closes [#579](https://github.com/varletjs/varlet/issues/579)
-* fix: fix select throws an error when the select does not match any of the options (#571) ([f180d93](https://github.com/varletjs/varlet/commit/f180d93)), closes [#571](https://github.com/varletjs/varlet/issues/571)
-* fix: fix the logo fixed style && filter change (#573) ([37908dc](https://github.com/varletjs/varlet/commit/37908dc)), closes [#573](https://github.com/varletjs/varlet/issues/573)
-* fix(index-bar): fix click event to be triggered ([9fb9d90](https://github.com/varletjs/varlet/commit/9fb9d90))
-* fix(index-bar): support dimension units for sticky-offset-top and close #554 ([e7c6304](https://github.com/varletjs/varlet/commit/e7c6304)), closes [#554](https://github.com/varletjs/varlet/issues/554)
-* fix(loading): support dimension units ([7ce32cc](https://github.com/varletjs/varlet/commit/7ce32cc))
-* fix(playground): fix safari import error (#580) ([a5c8c99](https://github.com/varletjs/varlet/commit/a5c8c99)), closes [#580](https://github.com/varletjs/varlet/issues/580)
-* fix(progress): support dimension units #553 ([ddb2380](https://github.com/varletjs/varlet/commit/ddb2380)), closes [#553](https://github.com/varletjs/varlet/issues/553)
-* fix(rate): support dimension units #553 ([b6e4d35](https://github.com/varletjs/varlet/commit/b6e4d35)), closes [#553](https://github.com/varletjs/varlet/issues/553)
-* fix(slider): support dimension units #553 ([dacab1b](https://github.com/varletjs/varlet/commit/dacab1b)), closes [#553](https://github.com/varletjs/varlet/issues/553)
-* fix(switch): support dimension units (#556) ([73bec2b](https://github.com/varletjs/varlet/commit/73bec2b)), closes [#556](https://github.com/varletjs/varlet/issues/556)
-* refactor: optimize code style (#574) ([cb7728c](https://github.com/varletjs/varlet/commit/cb7728c)), closes [#574](https://github.com/varletjs/varlet/issues/574)
-* refactor: versions update (#577) ([f14e4c1](https://github.com/varletjs/varlet/commit/f14e4c1)), closes [#577](https://github.com/varletjs/varlet/issues/577)
-* refactor(cli/site):  logo z-index (#575) ([6c1e568](https://github.com/varletjs/varlet/commit/6c1e568)), closes [#575](https://github.com/varletjs/varlet/issues/575)
-* refactor(cli/site): optimize style ([dcddb87](https://github.com/varletjs/varlet/commit/dcddb87))
-* refactor(cli/site): optimize version styles ([e61482d](https://github.com/varletjs/varlet/commit/e61482d))
-* refactor(mobile-site): add postcss to browser adaptation ([80107b7](https://github.com/varletjs/varlet/commit/80107b7))
-* refactor(site): optimize example style use vw ([f23b4fd](https://github.com/varletjs/varlet/commit/f23b4fd))
-* refactor(site): optimize style ([37387f9](https://github.com/varletjs/varlet/commit/37387f9))
-* refactor(ui/bottom-navigation): code optimize ([7661175](https://github.com/varletjs/varlet/commit/7661175))
-* refactor(ui/card): add floater ([576df7e](https://github.com/varletjs/varlet/commit/576df7e))
-* refactor(ui/card): add row layout ([7276c92](https://github.com/varletjs/varlet/commit/7276c92))
-* refactor(ui/card): add toolbar ([d7a45c7](https://github.com/varletjs/varlet/commit/d7a45c7))
-* refactor(ui/card): add toolbar gradual change when scroll ([a2b115e](https://github.com/varletjs/varlet/commit/a2b115e))
-* refactor(ui/card): add types ([ac832b1](https://github.com/varletjs/varlet/commit/ac832b1))
-* refactor(ui/card): adjust close button ([94319b2](https://github.com/varletjs/varlet/commit/94319b2))
-* refactor(ui/card): adjust close button and landscape picture style ([ebff435](https://github.com/varletjs/varlet/commit/ebff435))
-* refactor(ui/card): adjust close-button slot & docs ([5cf76f0](https://github.com/varletjs/varlet/commit/5cf76f0))
-* refactor(ui/card): adjust img height parameters and add some test cases ([51a1190](https://github.com/varletjs/varlet/commit/51a1190))
-* refactor(ui/card): adjust row layout && close ([9a8f9b9](https://github.com/varletjs/varlet/commit/9a8f9b9))
-* refactor(ui/card): fix border radius transition not working ([0b475d2](https://github.com/varletjs/varlet/commit/0b475d2))
-* refactor(ui/card): handle horizontal layout title & subtitle overflow ([1e5708a](https://github.com/varletjs/varlet/commit/1e5708a))
-* refactor(ui/card): modify English documents && floating buttons ([4910c2c](https://github.com/varletjs/varlet/commit/4910c2c))
-* refactor(ui/card): optimization style of title in horizontal layout ([c8028fe](https://github.com/varletjs/varlet/commit/c8028fe))
-* refactor(ui/card): optimize animation ([86f0ee1](https://github.com/varletjs/varlet/commit/86f0ee1))
-* refactor(ui/card): optimize blur ([b7e7a3f](https://github.com/varletjs/varlet/commit/b7e7a3f))
-* refactor(ui/card): optimize card style ([b8a296e](https://github.com/varletjs/varlet/commit/b8a296e))
-* refactor(ui/card): optimize css ([c643c9b](https://github.com/varletjs/varlet/commit/c643c9b))
-* refactor(ui/card): optimize image size ([a9c6f3f](https://github.com/varletjs/varlet/commit/a9c6f3f))
-* refactor(ui/card): optimize img processing logic ([8337866](https://github.com/varletjs/varlet/commit/8337866))
-* refactor(ui/card): optimize less structure ([08f8af2](https://github.com/varletjs/varlet/commit/08f8af2))
-* refactor(ui/card): optimize ripple feedback ([eb9a019](https://github.com/varletjs/varlet/commit/eb9a019))
-* refactor(ui/card): remove scale ([bd8d3f0](https://github.com/varletjs/varlet/commit/bd8d3f0))
-* refactor(ui/card): remove unuseful css var ([3807b8c](https://github.com/varletjs/varlet/commit/3807b8c))
-* refactor(ui/card): use flex-end ([e52d0e4](https://github.com/varletjs/varlet/commit/e52d0e4))
-* refactor(ui/card): use translate3d ([4c90728](https://github.com/varletjs/varlet/commit/4c90728))
-* test(appbar): update this swipe component unit test and close #550 ([1c867dd](https://github.com/varletjs/varlet/commit/1c867dd)), closes [#550](https://github.com/varletjs/varlet/issues/550)
-* test(card): Update this card component unit test. (#567) ([cef321e](https://github.com/varletjs/varlet/commit/cef321e)), closes [#567](https://github.com/varletjs/varlet/issues/567)
-* test(divider): Update this divider component unit test. (#583) ([02567ec](https://github.com/varletjs/varlet/commit/02567ec)), closes [#583](https://github.com/varletjs/varlet/issues/583)
-* test(index-bar): update snapshot ([01b24e3](https://github.com/varletjs/varlet/commit/01b24e3))
-* test(index-bar): update unit test ([5ca9c63](https://github.com/varletjs/varlet/commit/5ca9c63))
-* test(rate): remove unnecessary async await ([21b5bef](https://github.com/varletjs/varlet/commit/21b5bef))
-* test(rate): Update this rate component unit test. (#548) ([552421f](https://github.com/varletjs/varlet/commit/552421f)), closes [#548](https://github.com/varletjs/varlet/issues/548)
-* test(steps): Update this steps component unit test. (#552) ([f9c10c2](https://github.com/varletjs/varlet/commit/f9c10c2)), closes [#552](https://github.com/varletjs/varlet/issues/552)
-* test(switch): update the switch component unit test ([b5c13ec](https://github.com/varletjs/varlet/commit/b5c13ec))
-* test(switch): update the switch component unit test ([5654a78](https://github.com/varletjs/varlet/commit/5654a78))
-* test(ui/card): add test cases ([e75fe8e](https://github.com/varletjs/varlet/commit/e75fe8e))
-* chore: add the `@types/glob` into `devDependencies` (#562) ([84ac4f1](https://github.com/varletjs/varlet/commit/84ac4f1)), closes [#562](https://github.com/varletjs/varlet/issues/562)
-* chore: fix the typo (#576) ([c02d171](https://github.com/varletjs/varlet/commit/c02d171)), closes [#576](https://github.com/varletjs/varlet/issues/576)
-* chore: update community qrcode (#549) ([c177f9a](https://github.com/varletjs/varlet/commit/c177f9a)), closes [#549](https://github.com/varletjs/varlet/issues/549)
-* chore: update community qrcode (#558) ([0ad54a9](https://github.com/varletjs/varlet/commit/0ad54a9)), closes [#558](https://github.com/varletjs/varlet/issues/558)
-* chore: update community qrcode (#581) ([8558ed3](https://github.com/varletjs/varlet/commit/8558ed3)), closes [#581](https://github.com/varletjs/varlet/issues/581)
-* docs(index-bar): optimize example ([84e038c](https://github.com/varletjs/varlet/commit/84e038c))
-* docs(ssr): add transpile related content ([d0b882a](https://github.com/varletjs/varlet/commit/d0b882a))
-* docs(ui/card): optimization doc & style ([ef528ad](https://github.com/varletjs/varlet/commit/ef528ad))
-* docs(ui/card): optimize docs ([6f8be45](https://github.com/varletjs/varlet/commit/6f8be45))
-* docs(ui/card): remove unnecessary code ([9bd85f6](https://github.com/varletjs/varlet/commit/9bd85f6))
-* feat: varlet/cli site version config (#568) ([75d5a38](https://github.com/varletjs/varlet/commit/75d5a38)), closes [#568](https://github.com/varletjs/varlet/issues/568)
-* feat(ui/picker): Picker of colums add deep watch (#572) ([54d3eb7](https://github.com/varletjs/varlet/commit/54d3eb7)), closes [#572](https://github.com/varletjs/varlet/issues/572)
-
-
-
-## <small>1.27.8 (2022-05-09)</small>
-
-* docs(list, pull-refresh): optimize docs ([c9de04c](https://github.com/varletjs/varlet/commit/c9de04c))
-* docs(pull-refresh&list): add example for combining components ([9ac30d5](https://github.com/varletjs/varlet/commit/9ac30d5))
-* v1.27.8 ([309cbea](https://github.com/varletjs/varlet/commit/309cbea))
-* refactor: avoid user has to create locale ([ef7de20](https://github.com/varletjs/varlet/commit/ef7de20))
-* refactor: fix the `docs` logo position style (#534) ([e0bd26d](https://github.com/varletjs/varlet/commit/e0bd26d)), closes [#534](https://github.com/varletjs/varlet/issues/534)
-* refactor: remove useless snackbar and use window.settimeout ([00856bd](https://github.com/varletjs/varlet/commit/00856bd))
-* refactor(cli/site): optimize css var ([b7ecce0](https://github.com/varletjs/varlet/commit/b7ecce0))
-* refactor(cli/site): optimize style ([81b4d1c](https://github.com/varletjs/varlet/commit/81b4d1c))
-* refactor(homepage): use locale options to replace multi route files (#536) ([399d402](https://github.com/varletjs/varlet/commit/399d402)), closes [#536](https://github.com/varletjs/varlet/issues/536)
-* refactor(site): optimize home page style ([3bb69e7](https://github.com/varletjs/varlet/commit/3bb69e7))
-* refactor(site): optimize home page style && fix the logo blink (#539) ([b2a3ec2](https://github.com/varletjs/varlet/commit/b2a3ec2)), closes [#539](https://github.com/varletjs/varlet/issues/539)
-* refactor(site): optimize homepage style ([1575777](https://github.com/varletjs/varlet/commit/1575777))
-* chore: make up the resize observer && homepage style (#546) ([319d8d1](https://github.com/varletjs/varlet/commit/319d8d1)), closes [#546](https://github.com/varletjs/varlet/issues/546)
-* chore: observer the animation box without route change (#542) ([764e10a](https://github.com/varletjs/varlet/commit/764e10a)), closes [#542](https://github.com/varletjs/varlet/issues/542)
-* chore: remove preview image ([0fb744c](https://github.com/varletjs/varlet/commit/0fb744c))
-* test(list): Update this list component unit test. (#538) ([12e3318](https://github.com/varletjs/varlet/commit/12e3318)), closes [#538](https://github.com/varletjs/varlet/issues/538)
-* test(swipe): Update this swipe component unit test. (#544) ([c230be2](https://github.com/varletjs/varlet/commit/c230be2)), closes [#544](https://github.com/varletjs/varlet/issues/544)
-* feat: cli pages and homepage (#531) ([d723e36](https://github.com/varletjs/varlet/commit/d723e36)), closes [#531](https://github.com/varletjs/varlet/issues/531)
-* feat: finish the floating and land && optimize home page style (#541) ([76d6fad](https://github.com/varletjs/varlet/commit/76d6fad)), closes [#541](https://github.com/varletjs/varlet/issues/541)
-* feat(ui/picker): add props textFormatter (#522) ([f735468](https://github.com/varletjs/varlet/commit/f735468)), closes [#522](https://github.com/varletjs/varlet/issues/522)
-* fix(compileSiteEntry): slash path for windows ([5170997](https://github.com/varletjs/varlet/commit/5170997))
-* fix(ui/col): fix logic for span & responsive setting 0 #529 ([80da305](https://github.com/varletjs/varlet/commit/80da305)), closes [#529](https://github.com/varletjs/varlet/issues/529)
-* fix(ui/col): fix span & responsive props when equal 0 #529 ([a0831c3](https://github.com/varletjs/varlet/commit/a0831c3)), closes [#529](https://github.com/varletjs/varlet/issues/529)
-* docs(picker): remove warning ([0327bb6](https://github.com/varletjs/varlet/commit/0327bb6))
-* docs(ui/picker): optimize docs ([c72f8a5](https://github.com/varletjs/varlet/commit/c72f8a5))
-* style: routes file style ([fc30519](https://github.com/varletjs/varlet/commit/fc30519))
-* style(homepage): code style ([a140867](https://github.com/varletjs/varlet/commit/a140867))
-
-
-
-## <small>1.27.7 (2022-04-29)</small>
-
-* docs(button&pagination): fix typo of en doc ([f797ee7](https://github.com/varletjs/varlet/commit/f797ee7))
-* v1.27.7 ([317d242](https://github.com/varletjs/varlet/commit/317d242))
-* test(collapse): Update this collapse component unit test. (#501) ([0817692](https://github.com/varletjs/varlet/commit/0817692)), closes [#501](https://github.com/varletjs/varlet/issues/501)
-* test(layout): Update this layout component unit test. (#512) ([5bee1d5](https://github.com/varletjs/varlet/commit/5bee1d5)), closes [#512](https://github.com/varletjs/varlet/issues/512)
-* test(progress): Update this progress component unit test. (#526) ([8022cc6](https://github.com/varletjs/varlet/commit/8022cc6)), closes [#526](https://github.com/varletjs/varlet/issues/526)
-* test(space): Update this space component unit test. (#503) ([0c92d5d](https://github.com/varletjs/varlet/commit/0c92d5d)), closes [#503](https://github.com/varletjs/varlet/issues/503)
-* test(sticky): Update this sticky component unit test. (#516) ([5362f43](https://github.com/varletjs/varlet/commit/5362f43)), closes [#516](https://github.com/varletjs/varlet/issues/516)
-* test(sticky): Update this sticky component unit test. (#521) ([5b54db4](https://github.com/varletjs/varlet/commit/5b54db4)), closes [#521](https://github.com/varletjs/varlet/issues/521)
-* chore: add community qrcode ([9c37444](https://github.com/varletjs/varlet/commit/9c37444))
-* chore: fix readme ([cfd97bf](https://github.com/varletjs/varlet/commit/cfd97bf))
-* chore(cli): bump vite version ([5f146dc](https://github.com/varletjs/varlet/commit/5f146dc))
-* feat(cli/release): add npm registry confirm (#510) ([f463bd1](https://github.com/varletjs/varlet/commit/f463bd1)), closes [#510](https://github.com/varletjs/varlet/issues/510)
-* feat(ui/input): support trim modifier(#519) ([5e9e238](https://github.com/varletjs/varlet/commit/5e9e238)), closes [#519](https://github.com/varletjs/varlet/issues/519)
-* fix: docs(ui/steps): use the setup script for exmple and docs (#505) ([5c6fb67](https://github.com/varletjs/varlet/commit/5c6fb67)), closes [#505](https://github.com/varletjs/varlet/issues/505)
-* fix(counter): add user-select for button ([fb239f0](https://github.com/varletjs/varlet/commit/fb239f0))
-* fix(loading): add mask to close #520 ([e40d7c5](https://github.com/varletjs/varlet/commit/e40d7c5)), closes [#520](https://github.com/varletjs/varlet/issues/520)
-* fix(pull-refresh): close #509 ([311947a](https://github.com/varletjs/varlet/commit/311947a)), closes [#509](https://github.com/varletjs/varlet/issues/509)
-* fix(ui/picker): add picker missing style (#513) ([d2aa016](https://github.com/varletjs/varlet/commit/d2aa016)), closes [#513](https://github.com/varletjs/varlet/issues/513)
-* refactor(playground): fix import map ([945a4ff](https://github.com/varletjs/varlet/commit/945a4ff))
-* refactor(pull-refresh): optimize code ([137f96c](https://github.com/varletjs/varlet/commit/137f96c))
-* refactor(test): use CustomEvent constructor ([bccf2e3](https://github.com/varletjs/varlet/commit/bccf2e3))
-* docs(back-top): fix props description of en ([9fdcdef](https://github.com/varletjs/varlet/commit/9fdcdef))
-* docs(cn): add logical spance between normal text and code wrap (#504) ([74825f9](https://github.com/varletjs/varlet/commit/74825f9)), closes [#504](https://github.com/varletjs/varlet/issues/504)
-* docs(ui): fix ide english doc err ([3f5d660](https://github.com/varletjs/varlet/commit/3f5d660))
-
-
-
-## <small>1.27.6 (2022-04-23)</small>
-
-* docs(form, input): format code ([2664af3](https://github.com/varletjs/varlet/commit/2664af3))
-* docs(ui/form, input): use the setup script for example and docs (#432) ([061e1c1](https://github.com/varletjs/varlet/commit/061e1c1)), closes [#432](https://github.com/varletjs/varlet/issues/432)
-* docs(ui/list, button): optimize docs ([11284aa](https://github.com/varletjs/varlet/commit/11284aa))
-* refactor(ui/app-bar, button): ripple import optimize ([099ac01](https://github.com/varletjs/varlet/commit/099ac01))
-* v1.27.6 ([7f9a992](https://github.com/varletjs/varlet/commit/7f9a992))
-* docs: add docs ([ef339d7](https://github.com/varletjs/varlet/commit/ef339d7))
-* docs: Check these `Components Docs` and format that markdown docs (#477) ([bb2fe75](https://github.com/varletjs/varlet/commit/bb2fe75)), closes [#477](https://github.com/varletjs/varlet/issues/477)
-* docs: code format ([3444a5a](https://github.com/varletjs/varlet/commit/3444a5a))
-* docs: format code ([12a5f4a](https://github.com/varletjs/varlet/commit/12a5f4a))
-* docs: format code ([21cf497](https://github.com/varletjs/varlet/commit/21cf497))
-* docs: format doc and fix rate style ([b58016c](https://github.com/varletjs/varlet/commit/b58016c))
-* docs: remove useless import ([f3ccb83](https://github.com/varletjs/varlet/commit/f3ccb83))
-* docs: support script setup ([cefe831](https://github.com/varletjs/varlet/commit/cefe831))
-* docs(app-bar): code style ([4eb2313](https://github.com/varletjs/varlet/commit/4eb2313))
-* docs(back-top): format doc ([ff6b158](https://github.com/varletjs/varlet/commit/ff6b158))
-* docs(back-top): format doc (#447) ([1b1dbac](https://github.com/varletjs/varlet/commit/1b1dbac)), closes [#447](https://github.com/varletjs/varlet/issues/447)
-* docs(badge): code style ([0ffd769](https://github.com/varletjs/varlet/commit/0ffd769))
-* docs(badge): Update this badge component docs. (#495) ([4d50f19](https://github.com/varletjs/varlet/commit/4d50f19)), closes [#495](https://github.com/varletjs/varlet/issues/495)
-* docs(bottom-navigation): fix typo ([74964f6](https://github.com/varletjs/varlet/commit/74964f6))
-* docs(checkbox): code style ([8b140bf](https://github.com/varletjs/varlet/commit/8b140bf))
-* docs(chip): code style ([643453b](https://github.com/varletjs/varlet/commit/643453b))
-* docs(collapse): modify to script setup ([7a70baa](https://github.com/varletjs/varlet/commit/7a70baa))
-* docs(countdown): format code style ([cc4f51a](https://github.com/varletjs/varlet/commit/cc4f51a))
-* docs(date-picker): remove unnecessary import ([4b262b0](https://github.com/varletjs/varlet/commit/4b262b0))
-* docs(date-picker): remove unnecessary import ([f1fbde3](https://github.com/varletjs/varlet/commit/f1fbde3))
-* docs(icon): code style ([ee46eb9](https://github.com/varletjs/varlet/commit/ee46eb9))
-* docs(image): code style ([be5852a](https://github.com/varletjs/varlet/commit/be5852a))
-* docs(index-bar): format doc ([d7385c6](https://github.com/varletjs/varlet/commit/d7385c6))
-* docs(lazy): code style ([6b972bc](https://github.com/varletjs/varlet/commit/6b972bc))
-* docs(loading): code style ([d55141d](https://github.com/varletjs/varlet/commit/d55141d))
-* docs(loading): Update this loading component docs. (#486) ([2d9582d](https://github.com/varletjs/varlet/commit/2d9582d)), closes [#486](https://github.com/varletjs/varlet/issues/486)
-* docs(pagination): code style ([9bad6dc](https://github.com/varletjs/varlet/commit/9bad6dc))
-* docs(pagination): modify to script setup ([747318c](https://github.com/varletjs/varlet/commit/747318c))
-* docs(picker): add ignore ([f63fb29](https://github.com/varletjs/varlet/commit/f63fb29))
-* docs(picker): format doc ([0411195](https://github.com/varletjs/varlet/commit/0411195))
-* docs(progress): code style ([5bde7e4](https://github.com/varletjs/varlet/commit/5bde7e4))
-* docs(progress): modify script setup ([71f37b8](https://github.com/varletjs/varlet/commit/71f37b8))
-* docs(pull-refresh): format doc ([e69ac2b](https://github.com/varletjs/varlet/commit/e69ac2b))
-* docs(pull-refresh): format doc (#450) ([a174ada](https://github.com/varletjs/varlet/commit/a174ada)), closes [#450](https://github.com/varletjs/varlet/issues/450)
-* docs(ripple): code style ([81538b4](https://github.com/varletjs/varlet/commit/81538b4))
-* docs(skeleton): Update this skeleton component docs. (#499) ([fca6f61](https://github.com/varletjs/varlet/commit/fca6f61)), closes [#499](https://github.com/varletjs/varlet/issues/499)
-* docs(slider): format doc ([ec41f45](https://github.com/varletjs/varlet/commit/ec41f45))
-* docs(snackbar): add multiple example ([e962fed](https://github.com/varletjs/varlet/commit/e962fed))
-* docs(snackbar): format doc ([d4c6ab4](https://github.com/varletjs/varlet/commit/d4c6ab4))
-* docs(space): code style ([680b300](https://github.com/varletjs/varlet/commit/680b300))
-* docs(switch): optimize doc ([7db0246](https://github.com/varletjs/varlet/commit/7db0246))
-* docs(table): format doc ([04a26fa](https://github.com/varletjs/varlet/commit/04a26fa))
-* docs(time-picker): format code style ([3426782](https://github.com/varletjs/varlet/commit/3426782))
-* docs(ui/action-sheet): format code ([aabe24d](https://github.com/varletjs/varlet/commit/aabe24d))
-* docs(ui/action-sheet): use the setup script for example and docs (#430) ([2751318](https://github.com/varletjs/varlet/commit/2751318)), closes [#430](https://github.com/varletjs/varlet/issues/430)
-* docs(ui/app-bar): format code ([eba8cc3](https://github.com/varletjs/varlet/commit/eba8cc3))
-* docs(ui/app-bar): use the setup script for exmple and docs ([2b268ba](https://github.com/varletjs/varlet/commit/2b268ba))
-* docs(ui/badge): use the setup script for example and docs ([7da02f0](https://github.com/varletjs/varlet/commit/7da02f0))
-* docs(ui/bottom-navigation): format code ([865d104](https://github.com/varletjs/varlet/commit/865d104))
-* docs(ui/bottom-navigation): use the setup script for exmple and docs ([377a7c9](https://github.com/varletjs/varlet/commit/377a7c9))
-* docs(ui/card): example support script setup ([26348f9](https://github.com/varletjs/varlet/commit/26348f9))
-* docs(ui/card): format code ([0a9d3c5](https://github.com/varletjs/varlet/commit/0a9d3c5))
-* docs(ui/card): use the setup script for exmple and docs (#425) ([cc8bd93](https://github.com/varletjs/varlet/commit/cc8bd93)), closes [#425](https://github.com/varletjs/varlet/issues/425)
-* docs(ui/cell): use the setup script for example and docs,  update snapshot (#439) ([3985e5b](https://github.com/varletjs/varlet/commit/3985e5b)), closes [#439](https://github.com/varletjs/varlet/issues/439)
-* docs(ui/chip): use the setup script for example and docs ([e8a6d41](https://github.com/varletjs/varlet/commit/e8a6d41))
-* docs(ui/countdown): use the setup script for example and docs (#461) ([a8521ac](https://github.com/varletjs/varlet/commit/a8521ac)), closes [#461](https://github.com/varletjs/varlet/issues/461)
-* docs(ui/counter): use the setup script for exmple and docs (#421) ([f62cf59](https://github.com/varletjs/varlet/commit/f62cf59)), closes [#421](https://github.com/varletjs/varlet/issues/421)
-* docs(ui/data-picker): use the setup script for exmple and docs (#454) ([661d21d](https://github.com/varletjs/varlet/commit/661d21d)), closes [#454](https://github.com/varletjs/varlet/issues/454)
-* docs(ui/dialog): format code ([0d69a2d](https://github.com/varletjs/varlet/commit/0d69a2d))
-* docs(ui/dialog): use the setup script for example and docs (#458) ([8eb9869](https://github.com/varletjs/varlet/commit/8eb9869)), closes [#458](https://github.com/varletjs/varlet/issues/458)
-* docs(ui/elevation): format code ([3707969](https://github.com/varletjs/varlet/commit/3707969))
-* docs(ui/elevation): remove useless code ([e8786db](https://github.com/varletjs/varlet/commit/e8786db))
-* docs(ui/elevation): use the setup script for example and docs ([b775edf](https://github.com/varletjs/varlet/commit/b775edf))
-* docs(ui/icon): use the setup script for example and docs, update snapshot (#440) ([9ab0f97](https://github.com/varletjs/varlet/commit/9ab0f97)), closes [#440](https://github.com/varletjs/varlet/issues/440)
-* docs(ui/image-preview): change img url to vercel ([47b0a9a](https://github.com/varletjs/varlet/commit/47b0a9a))
-* docs(ui/image-preview): format code ([3746d53](https://github.com/varletjs/varlet/commit/3746d53))
-* docs(ui/image-preview): use the setup script for exmple and docs (#434) ([e047ae6](https://github.com/varletjs/varlet/commit/e047ae6)), closes [#434](https://github.com/varletjs/varlet/issues/434)
-* docs(ui/image): format code ([cb4ad04](https://github.com/varletjs/varlet/commit/cb4ad04))
-* docs(ui/image): use the setup script for example and docs, update the snap (#453) ([0868895](https://github.com/varletjs/varlet/commit/0868895)), closes [#453](https://github.com/varletjs/varlet/issues/453)
-* docs(ui/index-bar): format code ([8692d80](https://github.com/varletjs/varlet/commit/8692d80))
-* docs(ui/index-bar): use the setup script for exmple and docs (#466) ([d6355b3](https://github.com/varletjs/varlet/commit/d6355b3)), closes [#466](https://github.com/varletjs/varlet/issues/466)
-* docs(ui/layout): support script setup ([b8721e2](https://github.com/varletjs/varlet/commit/b8721e2))
-* docs(ui/lazy): use the setup script for example and docs (#424) ([07445cd](https://github.com/varletjs/varlet/commit/07445cd)), closes [#424](https://github.com/varletjs/varlet/issues/424)
-* docs(ui/list): use the `setup script` for exmple (#420) ([2eed08a](https://github.com/varletjs/varlet/commit/2eed08a)), closes [#420](https://github.com/varletjs/varlet/issues/420)
-* docs(ui/loading): use the setup script for example and docs ([74a7b17](https://github.com/varletjs/varlet/commit/74a7b17))
-* docs(ui/menu): format code ([4144aae](https://github.com/varletjs/varlet/commit/4144aae))
-* docs(ui/menu): format doc (#448) ([cccca8a](https://github.com/varletjs/varlet/commit/cccca8a)), closes [#448](https://github.com/varletjs/varlet/issues/448)
-* docs(ui/picker): use the setup script for exmple and docs (#438) ([3f1d803](https://github.com/varletjs/varlet/commit/3f1d803)), closes [#438](https://github.com/varletjs/varlet/issues/438)
-* docs(ui/popup): format code ([fa087a0](https://github.com/varletjs/varlet/commit/fa087a0))
-* docs(ui/popup): format doc (#457) ([1005208](https://github.com/varletjs/varlet/commit/1005208)), closes [#457](https://github.com/varletjs/varlet/issues/457)
-* docs(ui/radio): format code ([3ddfeb5](https://github.com/varletjs/varlet/commit/3ddfeb5))
-* docs(ui/radio): use the setup script for exmple and docs (#456) ([c30a084](https://github.com/varletjs/varlet/commit/c30a084)), closes [#456](https://github.com/varletjs/varlet/issues/456)
-* docs(ui/rate): use the setup script for exmple and docs (#436) ([de6d36c](https://github.com/varletjs/varlet/commit/de6d36c)), closes [#436](https://github.com/varletjs/varlet/issues/436)
-* docs(ui/ripple): format code ([33f5d90](https://github.com/varletjs/varlet/commit/33f5d90))
-* docs(ui/ripple): use the setup script for example and docs ([f14402f](https://github.com/varletjs/varlet/commit/f14402f))
-* docs(ui/select): use the setup script for exmple and docs (#452) ([ee3036d](https://github.com/varletjs/varlet/commit/ee3036d)), closes [#452](https://github.com/varletjs/varlet/issues/452)
-* docs(ui/skeleton): support script setup ([b01f32e](https://github.com/varletjs/varlet/commit/b01f32e))
-* docs(ui/slider): use the setup script for exmple and docs (#437) ([2c30c8f](https://github.com/varletjs/varlet/commit/2c30c8f)), closes [#437](https://github.com/varletjs/varlet/issues/437)
-* docs(ui/snackbar): use the setup script for example and docs (#428) ([1e66af9](https://github.com/varletjs/varlet/commit/1e66af9)), closes [#428](https://github.com/varletjs/varlet/issues/428)
-* docs(ui/space): support script setup ([007e750](https://github.com/varletjs/varlet/commit/007e750))
-* docs(ui/steps): use the setup script for exmple and docs (#423) ([9fd4f03](https://github.com/varletjs/varlet/commit/9fd4f03)), closes [#423](https://github.com/varletjs/varlet/issues/423)
-* docs(ui/sticky): support script setup ([e4ae120](https://github.com/varletjs/varlet/commit/e4ae120))
-* docs(ui/style-provider): use the setup script for example and docs ([4d096fe](https://github.com/varletjs/varlet/commit/4d096fe))
-* docs(ui/swipe): fix docs ([24f7b4c](https://github.com/varletjs/varlet/commit/24f7b4c))
-* docs(ui/swipe): format code ([817758b](https://github.com/varletjs/varlet/commit/817758b))
-* docs(ui/swipe): format code ([399a4c0](https://github.com/varletjs/varlet/commit/399a4c0))
-* docs(ui/swiper): use the `setup script` for example and docs (#422) ([99b088a](https://github.com/varletjs/varlet/commit/99b088a)), closes [#422](https://github.com/varletjs/varlet/issues/422)
-* docs(ui/switch): use the setup script for example and docs (#431) ([a773f3e](https://github.com/varletjs/varlet/commit/a773f3e)), closes [#431](https://github.com/varletjs/varlet/issues/431)
-* docs(ui/table): use the setup script for exmple and docs (#427) ([53c9b5e](https://github.com/varletjs/varlet/commit/53c9b5e)), closes [#427](https://github.com/varletjs/varlet/issues/427)
-* docs(ui/tabs): format code ([b37576a](https://github.com/varletjs/varlet/commit/b37576a))
-* docs(ui/tabs): use the setup script for exmple and docs (#464) ([e44bca1](https://github.com/varletjs/varlet/commit/e44bca1)), closes [#464](https://github.com/varletjs/varlet/issues/464)
-* docs(ui/themes): format code ([b9dc3e2](https://github.com/varletjs/varlet/commit/b9dc3e2))
-* docs(ui/time-picker): use the setup script for exmple and docs (#455) ([7cf03f9](https://github.com/varletjs/varlet/commit/7cf03f9)), closes [#455](https://github.com/varletjs/varlet/issues/455)
-* docs(ui/uploader): format code ([d5f8dcd](https://github.com/varletjs/varlet/commit/d5f8dcd))
-* docs(ui/uploader): use the setup script for exmple and docs (#435) ([02c7a10](https://github.com/varletjs/varlet/commit/02c7a10)), closes [#435](https://github.com/varletjs/varlet/issues/435)
-* test: remove unnecessary describe ([62dd3ee](https://github.com/varletjs/varlet/commit/62dd3ee))
-* test: upgrade snap ([dd2d9be](https://github.com/varletjs/varlet/commit/dd2d9be))
-* test(app-bar): update snapshot ([65ce73c](https://github.com/varletjs/varlet/commit/65ce73c))
-* test(badge): Update this badge component unit test (#490) ([2d23f66](https://github.com/varletjs/varlet/commit/2d23f66)), closes [#490](https://github.com/varletjs/varlet/issues/490)
-* test(badge): Update this badge component unit test (#493) ([b9478ee](https://github.com/varletjs/varlet/commit/b9478ee)), closes [#493](https://github.com/varletjs/varlet/issues/493)
-* test(button): Update this button component unit test (#480) ([4384c72](https://github.com/varletjs/varlet/commit/4384c72)), closes [#480](https://github.com/varletjs/varlet/issues/480)
-* test(cell): Update this cell component unit test. (#471) ([d3d6834](https://github.com/varletjs/varlet/commit/d3d6834)), closes [#471](https://github.com/varletjs/varlet/issues/471)
-* test(chip): Update this chip component docs. (#488) ([86d6df8](https://github.com/varletjs/varlet/commit/86d6df8)), closes [#488](https://github.com/varletjs/varlet/issues/488)
-* test(icon): Update this icon component unit test. (#474) ([40be51e](https://github.com/varletjs/varlet/commit/40be51e)), closes [#474](https://github.com/varletjs/varlet/issues/474)
-* test(image): Update this image component unit test (#491) ([749d749](https://github.com/varletjs/varlet/commit/749d749)), closes [#491](https://github.com/varletjs/varlet/issues/491)
-* test(image): Update this image component unit test. (#484) ([cb7aff1](https://github.com/varletjs/varlet/commit/cb7aff1)), closes [#484](https://github.com/varletjs/varlet/issues/484)
-* test(loading): Update this loading component unit test. (#482) ([2c8a874](https://github.com/varletjs/varlet/commit/2c8a874)), closes [#482](https://github.com/varletjs/varlet/issues/482)
-* test(progress): update snapshot ([3d9129b](https://github.com/varletjs/varlet/commit/3d9129b))
-* test(skeleton): Update this skeleton component unit test. (#497) ([8634be1](https://github.com/varletjs/varlet/commit/8634be1)), closes [#497](https://github.com/varletjs/varlet/issues/497)
-* test(snackbar): update snapshot ([140d2c9](https://github.com/varletjs/varlet/commit/140d2c9))
-* test(ui/button): remove example test ([e14338c](https://github.com/varletjs/varlet/commit/e14338c))
-* test(ui/button): Update this button component unit test. (#468) ([e6d397a](https://github.com/varletjs/varlet/commit/e6d397a)), closes [#468](https://github.com/varletjs/varlet/issues/468)
-* test(ui/button): upgrade snap ([9202928](https://github.com/varletjs/varlet/commit/9202928))
-* test(ui/card): upgrade snap ([658ab2f](https://github.com/varletjs/varlet/commit/658ab2f))
-* test(ui/image): format code ([e9b46c8](https://github.com/varletjs/varlet/commit/e9b46c8))
-* test(ui/layout): upgrade snap ([f44c0d3](https://github.com/varletjs/varlet/commit/f44c0d3))
-* chore: add issues-inactive workflow ([2be275a](https://github.com/varletjs/varlet/commit/2be275a))
-* chore: add vercel.json ([26dca54](https://github.com/varletjs/varlet/commit/26dca54))
-* chore: clear lock file ([bc67e65](https://github.com/varletjs/varlet/commit/bc67e65))
-* chore: clear lock file ([aefc87f](https://github.com/varletjs/varlet/commit/aefc87f))
-* chore: fix issues-inactive message ([a7a9d18](https://github.com/varletjs/varlet/commit/a7a9d18))
-* chore: merge docs/script-setup ([a4647a9](https://github.com/varletjs/varlet/commit/a4647a9))
-* chore: remove surge ([75955e9](https://github.com/varletjs/varlet/commit/75955e9))
-* chore: remove surge ([07c8409](https://github.com/varletjs/varlet/commit/07c8409))
-* chore: site resource links switch to vercel #465 ([61ee59f](https://github.com/varletjs/varlet/commit/61ee59f)), closes [#465](https://github.com/varletjs/varlet/issues/465)
-* chore: test vercel bash ([0e105e4](https://github.com/varletjs/varlet/commit/0e105e4))
-* chore: test vercel bash ([4a82b2f](https://github.com/varletjs/varlet/commit/4a82b2f))
-* chore: use vercel preview deploy ([e864a63](https://github.com/varletjs/varlet/commit/e864a63))
-* chore: use vercel preview deploy ([5ac6a7b](https://github.com/varletjs/varlet/commit/5ac6a7b))
-* chore(extension): varlet-vue2 site links switch to vercel #465 ([16021e6](https://github.com/varletjs/varlet/commit/16021e6)), closes [#465](https://github.com/varletjs/varlet/issues/465)
-* refactor(cli): remove unnecessary slash ([1df6eea](https://github.com/varletjs/varlet/commit/1df6eea))
-* refactor(cli/compileSiteEntry): use glob replace regexp to find component path (#463) ([88d217b](https://github.com/varletjs/varlet/commit/88d217b)), closes [#463](https://github.com/varletjs/varlet/issues/463)
-* refactor(utils): optimize useLock ([bcf49f1](https://github.com/varletjs/varlet/commit/bcf49f1))
-* feat(cli): code example component support playground ([6763794](https://github.com/varletjs/varlet/commit/6763794))
-* feat(markdown-vite-plugin): add playground flag ([06f4394](https://github.com/varletjs/varlet/commit/06f4394))
-* feat(markdown-vite-plugin): add playground-ignore flag for code block ([07008bc](https://github.com/varletjs/varlet/commit/07008bc))
-* feat(playground): add area.json to import map ([2320f4e](https://github.com/varletjs/varlet/commit/2320f4e))
-* feat(ui/picker): add cascadeInitialIndexes prop (#489) ([c6f10bd](https://github.com/varletjs/varlet/commit/c6f10bd)), closes [#489](https://github.com/varletjs/varlet/issues/489)
-* style: format code ([130a4c8](https://github.com/varletjs/varlet/commit/130a4c8))
-* style: format code ([ac5ddd0](https://github.com/varletjs/varlet/commit/ac5ddd0))
-* fix(pagination): modify css style of disabled ([273bd6f](https://github.com/varletjs/varlet/commit/273bd6f))
-* revert: Merge branch 'docs/script-setup' into dev ([2208334](https://github.com/varletjs/varlet/commit/2208334))
-
-
-
-## <small>1.27.5 (2022-04-16)</small>
-
-* v1.27.5 ([bbf8921](https://github.com/varletjs/varlet/commit/bbf8921))
-* chore: change home page url ([2db165c](https://github.com/varletjs/varlet/commit/2db165c))
-* chore: fix assets url ([bcd43c8](https://github.com/varletjs/varlet/commit/bcd43c8))
-* chore: test vercel ignore preview deploy ([edb4cd2](https://github.com/varletjs/varlet/commit/edb4cd2))
-* chore: test vercel ignore preview deploy ([4fd9be2](https://github.com/varletjs/varlet/commit/4fd9be2))
-* chore: test vercel ignore preview deploy ([f8f3873](https://github.com/varletjs/varlet/commit/f8f3873))
-
-
-
-## <small>1.27.4 (2022-04-16)</small>
-
-* v1.27.4 ([1870fad](https://github.com/varletjs/varlet/commit/1870fad))
-* fix(rate): fix rate style ([79edabf](https://github.com/varletjs/varlet/commit/79edabf))
-
-
-
-## <small>1.27.3 (2022-04-14)</small>
-
-* v1.27.3 ([a471399](https://github.com/varletjs/varlet/commit/a471399))
-* fix(ui/uploader): fix #426 ([463e0a7](https://github.com/varletjs/varlet/commit/463e0a7)), closes [#426](https://github.com/varletjs/varlet/issues/426)
-* fix(uploader): use label tag to replace div ([d6832c8](https://github.com/varletjs/varlet/commit/d6832c8))
-* test(sticky): remove unused import ([d3a6daa](https://github.com/varletjs/varlet/commit/d3a6daa))
-
-
-
-## <small>1.27.2 (2022-04-11)</small>
-
-* v1.27.2 ([5e39cb1](https://github.com/varletjs/varlet/commit/5e39cb1))
-* docs: fix the format of prop ([9d16450](https://github.com/varletjs/varlet/commit/9d16450))
-* docs: optimize safe-area prop description ([8417bae](https://github.com/varletjs/varlet/commit/8417bae))
-* feat(bottom-navigation): add safe-area prop to avoid affect ([921775b](https://github.com/varletjs/varlet/commit/921775b))
-* feat(tabs): add safe-area prop to avoid affect ([5cfe4b9](https://github.com/varletjs/varlet/commit/5cfe4b9))
-
-
-
-## <small>1.27.1 (2022-04-09)</small>
-
-* v1.27.1 ([57c7f31](https://github.com/varletjs/varlet/commit/57c7f31))
-* test(ui/uploader): upgrade snap ([99fc13b](https://github.com/varletjs/varlet/commit/99fc13b))
-* fix(ui/uploader): ripple does not work when customizing the style ([8e6f0e7](https://github.com/varletjs/varlet/commit/8e6f0e7))
-* types(ui/uploader): add types(UploaderVarFileUtils, onBeforeRemove), fix types ([004b3e2](https://github.com/varletjs/varlet/commit/004b3e2))
-* types(ui/uploader): fix VarFileUtils type ([05b595b](https://github.com/varletjs/varlet/commit/05b595b))
-* docs(ui/bottom-navigation): code format ([083b04c](https://github.com/varletjs/varlet/commit/083b04c))
-
-
-
-## 1.27.0 (2022-04-08)
-
-* docs(ui/rate&slider): fix space (#405) ([10ee55d](https://github.com/varletjs/varlet/commit/10ee55d)), closes [#405](https://github.com/varletjs/varlet/issues/405)
-* docs(ui/select&checkbox&radio): add intro (#416) ([5315485](https://github.com/varletjs/varlet/commit/5315485)), closes [#416](https://github.com/varletjs/varlet/issues/416)
-* perf(tab&swipe-item): add class ([7807520](https://github.com/varletjs/varlet/commit/7807520))
-* perf(ui/back-top,countdown,menu): modify class method (#404) ([f9a7295](https://github.com/varletjs/varlet/commit/f9a7295)), closes [#404](https://github.com/varletjs/varlet/issues/404)
-* perf(ui/counter&slider): add class&call (#382) ([3277814](https://github.com/varletjs/varlet/commit/3277814)), closes [#382](https://github.com/varletjs/varlet/issues/382)
-* perf(ui/radio, checkbox): add class and call function (#389) ([4d399e4](https://github.com/varletjs/varlet/commit/4d399e4)), closes [#389](https://github.com/varletjs/varlet/issues/389)
-* v1.27.0 ([da655d3](https://github.com/varletjs/varlet/commit/da655d3))
-* refactor: code optimize (#358) ([eace23d](https://github.com/varletjs/varlet/commit/eace23d)), closes [#358](https://github.com/varletjs/varlet/issues/358)
-* refactor: fix the type of classes arguments ([5cf5ad0](https://github.com/varletjs/varlet/commit/5cf5ad0))
-* refactor: optimize code ([b70a015](https://github.com/varletjs/varlet/commit/b70a015))
-* refactor(extension): change bottom-navigation auto complete ([798d792](https://github.com/varletjs/varlet/commit/798d792))
-* refactor(loading): fix bem ([c1a702d](https://github.com/varletjs/varlet/commit/c1a702d))
-* refactor(pagination): fix classname of modifier ([799ba2d](https://github.com/varletjs/varlet/commit/799ba2d))
-* refactor(pull-refresh): remove unnecessary classes ([38a46bc](https://github.com/varletjs/varlet/commit/38a46bc))
-* refactor(rate): remove useless div ([3e472dd](https://github.com/varletjs/varlet/commit/3e472dd))
-* refactor(slider): fix bem ([26c56a3](https://github.com/varletjs/varlet/commit/26c56a3))
-* refactor(ui/action-sheet): optimize code ([deace20](https://github.com/varletjs/varlet/commit/deace20))
-* refactor(ui/bottom-navigation): code optimize ([bdaa834](https://github.com/varletjs/varlet/commit/bdaa834))
-* refactor(ui/bottom-navigation): code optimize ([1a3dedc](https://github.com/varletjs/varlet/commit/1a3dedc))
-* refactor(ui/bottom-navigation): code optimize (#412) ([ce298e7](https://github.com/varletjs/varlet/commit/ce298e7)), closes [#412](https://github.com/varletjs/varlet/issues/412)
-* refactor(ui/bottom-navigation): docs and code optimize (#401) ([83a5150](https://github.com/varletjs/varlet/commit/83a5150)), closes [#401](https://github.com/varletjs/varlet/issues/401)
-* refactor(ui/bottom-navigation): fab slot div to button (#409) ([dd54084](https://github.com/varletjs/varlet/commit/dd54084)), closes [#409](https://github.com/varletjs/varlet/issues/409)
-* refactor(ui/bottom-navigation): import component style (#402) ([1b6f747](https://github.com/varletjs/varlet/commit/1b6f747)), closes [#402](https://github.com/varletjs/varlet/issues/402)
-* refactor(ui/bottom-navigation): label nowrap ([da0d384](https://github.com/varletjs/varlet/commit/da0d384))
-* refactor(ui/bottom-navigation): optimize code ([be1393d](https://github.com/varletjs/varlet/commit/be1393d))
-* refactor(ui/bottom-navigation): remove animation cubic ([6faa871](https://github.com/varletjs/varlet/commit/6faa871))
-* refactor(ui/bottom-navigation): set tag-hightlight-color to transparent ([123d946](https://github.com/varletjs/varlet/commit/123d946))
-* refactor(ui/BottomNavigation): docs optimize & code optimize & add class (#394) ([af630c9](https://github.com/varletjs/varlet/commit/af630c9)), closes [#394](https://github.com/varletjs/varlet/issues/394)
-* refactor(ui/pagination): optimize class ([8c29976](https://github.com/varletjs/varlet/commit/8c29976))
-* refactor(ui/swipe): bem error ([7775332](https://github.com/varletjs/varlet/commit/7775332))
-* refactor(ui/uploader): remove repeat bindForm call ([4a57ed9](https://github.com/varletjs/varlet/commit/4a57ed9))
-* types: modify instance type ([0295e68](https://github.com/varletjs/varlet/commit/0295e68))
-* types(utils/components): fix exposeApis internal (#359) ([8d9a20a](https://github.com/varletjs/varlet/commit/8d9a20a)), closes [#359](https://github.com/varletjs/varlet/issues/359)
-* docs: fix assets (#365) ([ba68dc9](https://github.com/varletjs/varlet/commit/ba68dc9)), closes [#365](https://github.com/varletjs/varlet/issues/365)
-* docs: update the documentation for select and cell components (#406) ([8bd77c9](https://github.com/varletjs/varlet/commit/8bd77c9)), closes [#406](https://github.com/varletjs/varlet/issues/406)
-* docs(ui/bottom-navigation): description optimize ([ac569ac](https://github.com/varletjs/varlet/commit/ac569ac))
-* docs(ui/bottom-navigation): optimize docs ([d77b98d](https://github.com/varletjs/varlet/commit/d77b98d))
-* docs(ui/bottom-navigation): optimize docs ([56b7c24](https://github.com/varletjs/varlet/commit/56b7c24))
-* docs(ui/bottom-navigation): optimize documentation ([1388ab6](https://github.com/varletjs/varlet/commit/1388ab6))
-* docs(ui/bottom-navigation): remove unuseful space ([83e53d7](https://github.com/varletjs/varlet/commit/83e53d7))
-* docs(ui/tabs): fix space (#398) ([f968dd6](https://github.com/varletjs/varlet/commit/f968dd6)), closes [#398](https://github.com/varletjs/varlet/issues/398)
-* docs(ui/uploader): fix space (#388) ([0239e51](https://github.com/varletjs/varlet/commit/0239e51)), closes [#388](https://github.com/varletjs/varlet/issues/388)
-* chore: fix readme ([641d2f1](https://github.com/varletjs/varlet/commit/641d2f1))
-* chore: fix readme ([8740cd0](https://github.com/varletjs/varlet/commit/8740cd0))
-* chore: fix readme ([f3c6f0b](https://github.com/varletjs/varlet/commit/f3c6f0b))
-* chore: fix readme ([05b5ce3](https://github.com/varletjs/varlet/commit/05b5ce3))
-* chore: we need sponsorship to do more ([bfaf5f0](https://github.com/varletjs/varlet/commit/bfaf5f0))
-* chore(extension): bump version ([65a6500](https://github.com/varletjs/varlet/commit/65a6500))
-* fix(icons): use base64 src ([465b3c3](https://github.com/varletjs/varlet/commit/465b3c3))
-* fix(icons): use relative path src ([bdab3d4](https://github.com/varletjs/varlet/commit/bdab3d4))
-* fix(ui/tabs): fix match boundary error ([6cb05e0](https://github.com/varletjs/varlet/commit/6cb05e0))
-* style: optimize namespace ([ade8c6a](https://github.com/varletjs/varlet/commit/ade8c6a))
-* style(ui/bottom-navigation): remove unuseful space ([2a9cd18](https://github.com/varletjs/varlet/commit/2a9cd18))
-* test(time-picker): update snapshot ([2dea84b](https://github.com/varletjs/varlet/commit/2dea84b))
-* test(ui): update snaps ([0a3dfe4](https://github.com/varletjs/varlet/commit/0a3dfe4))
-* test(ui/bottom-navigation): upgrade snap ([8726891](https://github.com/varletjs/varlet/commit/8726891))
-* perf: add class and call function ([da8ac80](https://github.com/varletjs/varlet/commit/da8ac80))
-* perf: add class and call function ([469b5d0](https://github.com/varletjs/varlet/commit/469b5d0))
-* perf: Modify the class display method in table, tabs, ripple and lazy (#391) ([25ebec9](https://github.com/varletjs/varlet/commit/25ebec9)), closes [#391](https://github.com/varletjs/varlet/issues/391)
-* perf: remove unuseful function define ([d372fc0](https://github.com/varletjs/varlet/commit/d372fc0))
-* perf(card): add class (#361) ([73426b2](https://github.com/varletjs/varlet/commit/73426b2)), closes [#361](https://github.com/varletjs/varlet/issues/361)
-* perf(collapse): add class ([dc5b23e](https://github.com/varletjs/varlet/commit/dc5b23e))
-* perf(date-picker): add class ([7cfd233](https://github.com/varletjs/varlet/commit/7cfd233))
-* perf(form-details): add class ([5047156](https://github.com/varletjs/varlet/commit/5047156))
-* perf(option): add class ([ea062e8](https://github.com/varletjs/varlet/commit/ea062e8))
-* perf(progress): add class ([4a878d3](https://github.com/varletjs/varlet/commit/4a878d3))
-* perf(snackbar): complete to replace class ([9961458](https://github.com/varletjs/varlet/commit/9961458))
-* perf(step): add class ([9c97678](https://github.com/varletjs/varlet/commit/9c97678))
-* perf(time-picker): add class ([b2f458e](https://github.com/varletjs/varlet/commit/b2f458e))
-* perf(ui/app-bar): add class (#396) ([687d791](https://github.com/varletjs/varlet/commit/687d791)), closes [#396](https://github.com/varletjs/varlet/issues/396)
-* perf(ui/badge): add class ([de33df1](https://github.com/varletjs/varlet/commit/de33df1))
-* perf(ui/bottom-navigation): handle active boundary (#411) ([49c91b3](https://github.com/varletjs/varlet/commit/49c91b3)), closes [#411](https://github.com/varletjs/varlet/issues/411)
-* perf(ui/cell): add class ([6b40718](https://github.com/varletjs/varlet/commit/6b40718))
-* perf(ui/chip): add class & canonical class name ([5b5987f](https://github.com/varletjs/varlet/commit/5b5987f))
-* perf(ui/col): add class (#383) ([2d57c82](https://github.com/varletjs/varlet/commit/2d57c82)), closes [#383](https://github.com/varletjs/varlet/issues/383)
-* perf(ui/collapse): add call (#369) ([cfd23a3](https://github.com/varletjs/varlet/commit/cfd23a3)), closes [#369](https://github.com/varletjs/varlet/issues/369)
-* perf(ui/dialog): add class and call (#397) ([c1df88f](https://github.com/varletjs/varlet/commit/c1df88f)), closes [#397](https://github.com/varletjs/varlet/issues/397)
-* perf(ui/divider): add class (#393) ([520d211](https://github.com/varletjs/varlet/commit/520d211)), closes [#393](https://github.com/varletjs/varlet/issues/393)
-* perf(ui/form): delete call (#392) ([0726cb0](https://github.com/varletjs/varlet/commit/0726cb0)), closes [#392](https://github.com/varletjs/varlet/issues/392)
-* perf(ui/icon): add class ([1bb74a3](https://github.com/varletjs/varlet/commit/1bb74a3))
-* perf(ui/image-preview): add class and call (#387) ([fab1856](https://github.com/varletjs/varlet/commit/fab1856)), closes [#387](https://github.com/varletjs/varlet/issues/387)
-* perf(ui/image): add class and call function ([16a8bed](https://github.com/varletjs/varlet/commit/16a8bed))
-* perf(ui/index-bar): add class and call function (#395) ([ae489da](https://github.com/varletjs/varlet/commit/ae489da)), closes [#395](https://github.com/varletjs/varlet/issues/395)
-* perf(ui/input): add class (#377) ([adc8a5c](https://github.com/varletjs/varlet/commit/adc8a5c)), closes [#377](https://github.com/varletjs/varlet/issues/377)
-* perf(ui/list): add class and call function (#376) ([387af67](https://github.com/varletjs/varlet/commit/387af67)), closes [#376](https://github.com/varletjs/varlet/issues/376)
-* perf(ui/loading): add class and call function ([807f07d](https://github.com/varletjs/varlet/commit/807f07d))
-* perf(ui/picker): add class (#373) ([eadf910](https://github.com/varletjs/varlet/commit/eadf910)), closes [#373](https://github.com/varletjs/varlet/issues/373)
-* perf(ui/pull-refresh): add class (#399) ([e874763](https://github.com/varletjs/varlet/commit/e874763)), closes [#399](https://github.com/varletjs/varlet/issues/399)
-* perf(ui/rate): add call function (#379) ([5982608](https://github.com/varletjs/varlet/commit/5982608)), closes [#379](https://github.com/varletjs/varlet/issues/379)
-* perf(ui/row): add class (#384) ([a76fdb0](https://github.com/varletjs/varlet/commit/a76fdb0)), closes [#384](https://github.com/varletjs/varlet/issues/384)
-* perf(ui/select): add class and call function (#380) ([c0b7d07](https://github.com/varletjs/varlet/commit/c0b7d07)), closes [#380](https://github.com/varletjs/varlet/issues/380)
-* perf(ui/skeleton): add namespace (#362) ([cb97d8d](https://github.com/varletjs/varlet/commit/cb97d8d)), closes [#362](https://github.com/varletjs/varlet/issues/362)
-* perf(ui/snackbar): add class (#371) ([a0e6bfc](https://github.com/varletjs/varlet/commit/a0e6bfc)), closes [#371](https://github.com/varletjs/varlet/issues/371)
-* perf(ui/space): add class (#374) ([ceb18a7](https://github.com/varletjs/varlet/commit/ceb18a7)), closes [#374](https://github.com/varletjs/varlet/issues/374)
-* perf(ui/steps): add class (#378) ([e0fcbb3](https://github.com/varletjs/varlet/commit/e0fcbb3)), closes [#378](https://github.com/varletjs/varlet/issues/378)
-* perf(ui/sticky): add class and call (#385) ([baea28d](https://github.com/varletjs/varlet/commit/baea28d)), closes [#385](https://github.com/varletjs/varlet/issues/385)
-* perf(ui/swipe): add class and call (#386) ([0ec82e2](https://github.com/varletjs/varlet/commit/0ec82e2)), closes [#386](https://github.com/varletjs/varlet/issues/386)
-* perf(ui/switch): add class (#372) ([1d5eaed](https://github.com/varletjs/varlet/commit/1d5eaed)), closes [#372](https://github.com/varletjs/varlet/issues/372)
-* perf(ui/tab-item): add class (#400) ([58984b2](https://github.com/varletjs/varlet/commit/58984b2)), closes [#400](https://github.com/varletjs/varlet/issues/400)
-* perf(ui/uploader): add namespace ([ee8e833](https://github.com/varletjs/varlet/commit/ee8e833))
-* feat: new component BottomNavigation (#356) ([2fd7753](https://github.com/varletjs/varlet/commit/2fd7753)), closes [#356](https://github.com/varletjs/varlet/issues/356)
-* feat(bottom-navigation): new component bottom-navigation #866dc6ee ([ee48111](https://github.com/varletjs/varlet/commit/ee48111)), closes [#866dc6](https://github.com/varletjs/varlet/issues/866dc6)
-* revert: revert add class and call function ([cc70cae](https://github.com/varletjs/varlet/commit/cc70cae))
-* revert(rate): revert remove useless div ([95a9f25](https://github.com/varletjs/varlet/commit/95a9f25))
-
-
-
-## <small>1.26.9 (2022-03-31)</small>
-
-* v1.26.9 ([24ffd94](https://github.com/varletjs/varlet/commit/24ffd94))
-* perf: icon font moved to jsdelivr ([4ef2eab](https://github.com/varletjs/varlet/commit/4ef2eab))
-* docs: show scrollbar and modify collapse doc style ([99ea724](https://github.com/varletjs/varlet/commit/99ea724))
-* test(swipe): modify delay time ([0032b85](https://github.com/varletjs/varlet/commit/0032b85))
-
-
-
-## <small>1.26.8 (2022-03-25)</small>
-
-* v1.26.8 ([6e8ea6e](https://github.com/varletjs/varlet/commit/6e8ea6e))
-* docs: fix docs ([f069e27](https://github.com/varletjs/varlet/commit/f069e27))
-* docs(cell): update doc ([d4b95cc](https://github.com/varletjs/varlet/commit/d4b95cc))
-* docs(collapse): update doc ([f717257](https://github.com/varletjs/varlet/commit/f717257))
-* fix: resize offset and wrapWidth on focus function call ([e609c08](https://github.com/varletjs/varlet/commit/e609c08))
-* fix(cell): add cell color to close #353 ([24b44b9](https://github.com/varletjs/varlet/commit/24b44b9)), closes [#353](https://github.com/varletjs/varlet/issues/353)
-* fix(collapse): modify padding ([6ef1a28](https://github.com/varletjs/varlet/commit/6ef1a28))
-* test: remove useless function ([af841ac](https://github.com/varletjs/varlet/commit/af841ac))
-* test(ui/ripple): fix case ([2daeab4](https://github.com/varletjs/varlet/commit/2daeab4))
-* test(ui/ripple): fix case ([83c025c](https://github.com/varletjs/varlet/commit/83c025c))
-* style: format code ([c58350e](https://github.com/varletjs/varlet/commit/c58350e))
-* style: remove useless methods in the example (#351) ([15047ba](https://github.com/varletjs/varlet/commit/15047ba)), closes [#351](https://github.com/varletjs/varlet/issues/351)
-* refactor(back-top): teleport element to body by default ([b0b28df](https://github.com/varletjs/varlet/commit/b0b28df))
-* feat(ui/ripple): determine whether to prevent ripple's fast touchmove by supporting touch events ([f859144](https://github.com/varletjs/varlet/commit/f859144))
-
-
-
-## <small>1.26.7 (2022-03-18)</small>
-
-* v1.26.7 ([42366db](https://github.com/varletjs/varlet/commit/42366db))
-* test(ui/form): release comment ([ccdd13c](https://github.com/varletjs/varlet/commit/ccdd13c))
-* docs(collapse): fix typo ([3d1bcd5](https://github.com/varletjs/varlet/commit/3d1bcd5))
-* perf(extension): improve component description ([5bffd8a](https://github.com/varletjs/varlet/commit/5bffd8a))
-* chore: fix ui readme (#339) ([6f2eda9](https://github.com/varletjs/varlet/commit/6f2eda9)), closes [#339](https://github.com/varletjs/varlet/issues/339)
-* chore: release extension ([0c025ab](https://github.com/varletjs/varlet/commit/0c025ab))
-* refactor(extension): add component descriptor ([818b848](https://github.com/varletjs/varlet/commit/818b848))
-* refactor(ui/index-bar): fix scroll getter function ([d3dd14f](https://github.com/varletjs/varlet/commit/d3dd14f))
-* fix(cli/jest): reset transformIgnorePatterns ([2ce595a](https://github.com/varletjs/varlet/commit/2ce595a))
-* fix(index-bar): change scrollable target to fix cant scroll in Android web ([a0c07f6](https://github.com/varletjs/varlet/commit/a0c07f6))
-* fix(index-bar): compatible scrolltop ([73fca8f](https://github.com/varletjs/varlet/commit/73fca8f))
-* revert(ui/index-bar): revert fix scroll getter function ([1b61cdd](https://github.com/varletjs/varlet/commit/1b61cdd))
-* feat(extension): add code auto complete ([80690e4](https://github.com/varletjs/varlet/commit/80690e4))
-* feat(extension): compatible prompt plugin to vue2 (#337) ([38d715a](https://github.com/varletjs/varlet/commit/38d715a)), closes [#337](https://github.com/varletjs/varlet/issues/337)
-
-
-
-## <small>1.26.6 (2022-03-14)</small>
-
-* v1.26.6 ([c7613b0](https://github.com/varletjs/varlet/commit/c7613b0))
-* docs(ui/image-preview): add Style Variables ([7753521](https://github.com/varletjs/varlet/commit/7753521))
-* docs(ui/uploader): remove unuseful css ([d3d8076](https://github.com/varletjs/varlet/commit/d3d8076))
-* fix(date-picker): fix touch event not trigger when button disable ([8a99a5c](https://github.com/varletjs/varlet/commit/8a99a5c))
-* fix(site): fix app-bar transition error ([4efd4bf](https://github.com/varletjs/varlet/commit/4efd4bf))
-* refactor(site): remove unuseful css var ([324e080](https://github.com/varletjs/varlet/commit/324e080))
-* refactor(ui/image-preview): add extra slot less variable ([e6c348b](https://github.com/varletjs/varlet/commit/e6c348b))
-* refactor(ui/uploader): format code, add types, optimize docs ([2bababd](https://github.com/varletjs/varlet/commit/2bababd))
-* refactor(ui/uploader): format code, add types, optimize docs ([10867f2](https://github.com/varletjs/varlet/commit/10867f2))
-* feat(ui/uploader): add a hide-list props for uploader components (#335) ([70bf77a](https://github.com/varletjs/varlet/commit/70bf77a)), closes [#335](https://github.com/varletjs/varlet/issues/335)
-
-
-
-## <small>1.26.5 (2022-03-13)</small>
-
-* Use new Web Api standard features (#336) ([3e8c974](https://github.com/varletjs/varlet/commit/3e8c974)), closes [#336](https://github.com/varletjs/varlet/issues/336)
-* v1.26.5 ([06a2cc7](https://github.com/varletjs/varlet/commit/06a2cc7))
-* refactor(ui/image-preview): optimize css and fix docs ([a45896f](https://github.com/varletjs/varlet/commit/a45896f))
-* refactor(ui/image-preview): optimize slot and fix docs ([7e64374](https://github.com/varletjs/varlet/commit/7e64374))
-* feat(date-picker): suport touchable ([5868a11](https://github.com/varletjs/varlet/commit/5868a11))
-* feat(ui/image-preview): add extra slot ([8dc4d2d](https://github.com/varletjs/varlet/commit/8dc4d2d))
-* style(image-preview): code style ([c4c9e4e](https://github.com/varletjs/varlet/commit/c4c9e4e))
-* docs(ui): delete typos & fix space (#333) ([6f3f70a](https://github.com/varletjs/varlet/commit/6f3f70a)), closes [#333](https://github.com/varletjs/varlet/issues/333)
-* chore: modify vue-next to vuejs/core ([e89f447](https://github.com/varletjs/varlet/commit/e89f447))
-
-
-
-## <small>1.26.4 (2022-03-07)</small>
-
-* v1.26.4 ([134ddcb](https://github.com/varletjs/varlet/commit/134ddcb))
-* fix(ui/image-preview): fix TAP_DELAY ([c4edf69](https://github.com/varletjs/varlet/commit/c4edf69))
-* feat(rate): add namespace prop ([3aaa917](https://github.com/varletjs/varlet/commit/3aaa917))
-
-
-
-## <small>1.26.3 (2022-03-05)</small>
-
-* v1.26.3 ([bef6f99](https://github.com/varletjs/varlet/commit/bef6f99))
-* refactor(date-picker): optimize code ([444eb1c](https://github.com/varletjs/varlet/commit/444eb1c))
-* refactor(site): add css var ([93da22f](https://github.com/varletjs/varlet/commit/93da22f))
-* refactor(site): add transition for code border ([d86dc36](https://github.com/varletjs/varlet/commit/d86dc36))
-* refactor(site): display code toolbar in mouse hover ([60eb6a0](https://github.com/varletjs/varlet/commit/60eb6a0))
-* refactor(site): support dark mode of the code example ([8b29972](https://github.com/varletjs/varlet/commit/8b29972))
-* refactor(ui/image-preview): change TAP_DELAY value ([05f2d48](https://github.com/varletjs/varlet/commit/05f2d48))
-* fix(cli/site): optimize documentation color ([c53353e](https://github.com/varletjs/varlet/commit/c53353e))
-* fix(date-picker): format date of slotProps and style of doc ([67bf46c](https://github.com/varletjs/varlet/commit/67bf46c))
-* fix(site): add cssTarget chorme61 ([4481054](https://github.com/varletjs/varlet/commit/4481054))
-* fix(ui/checkbox): resolve checkbox component animation display exception (#321) ([9e5c078](https://github.com/varletjs/varlet/commit/9e5c078)), closes [#321](https://github.com/varletjs/varlet/issues/321)
-* fix(ui/image-preview): fix isTapTouch ([f5c38f8](https://github.com/varletjs/varlet/commit/f5c38f8))
-* fix(ui/image-preview): fixed the error that the target value is null when triggering isTapTouch (#32 ([ee5c559](https://github.com/varletjs/varlet/commit/ee5c559)), closes [#323](https://github.com/varletjs/varlet/issues/323)
-* style: format code ([77394c6](https://github.com/varletjs/varlet/commit/77394c6))
-* style(ui/index-bar): add commas to standardize rgb writing (#322) ([21b8ede](https://github.com/varletjs/varlet/commit/21b8ede)), closes [#322](https://github.com/varletjs/varlet/issues/322)
-* style(ui/uploader): added interactive effects to handleOversize and handleBeforeRead events (#325) ([63a2ae2](https://github.com/varletjs/varlet/commit/63a2ae2)), closes [#325](https://github.com/varletjs/varlet/issues/325)
-* docs: fix home docs ([5f21b87](https://github.com/varletjs/varlet/commit/5f21b87))
-* docs(pull-refresh): enhance doc ([ca60b1a](https://github.com/varletjs/varlet/commit/ca60b1a))
-* types(ui/radio-group): fix types ([d9e2530](https://github.com/varletjs/varlet/commit/d9e2530))
-* types(ui/radio-group): fix types params ([85f0802](https://github.com/varletjs/varlet/commit/85f0802))
-
-
-
-## <small>1.26.2 (2022-02-22)</small>
-
-* fix issues that the opened event cannot trigger (#317) ([2bca075](https://github.com/varletjs/varlet/commit/2bca075)), closes [#317](https://github.com/varletjs/varlet/issues/317)
-* v1.26.2 ([eb76b77](https://github.com/varletjs/varlet/commit/eb76b77))
-* fix: support --ripple-color ([c5ded77](https://github.com/varletjs/varlet/commit/c5ded77))
-* fix(ui/space): fix space err with comment #319 ([f2adc98](https://github.com/varletjs/varlet/commit/f2adc98)), closes [#319](https://github.com/varletjs/varlet/issues/319)
-* fix(ui/space): fix space v-for err ([c9d10e3](https://github.com/varletjs/varlet/commit/c9d10e3))
-* refactor(cli/site): improve document readability ([9e15781](https://github.com/varletjs/varlet/commit/9e15781))
-* refactor(cli/site): improve document readability ([b4ac06f](https://github.com/varletjs/varlet/commit/b4ac06f))
-* refactor(space): remove unused method ([21b4e26](https://github.com/varletjs/varlet/commit/21b4e26))
-* test(time-picker): fix format type ([14ed182](https://github.com/varletjs/varlet/commit/14ed182))
-* perf: remove unuseful function call (#316) ([263a830](https://github.com/varletjs/varlet/commit/263a830)), closes [#316](https://github.com/varletjs/varlet/issues/316)
-* perf(ui/divider): remove unuseful function call ([129e47d](https://github.com/varletjs/varlet/commit/129e47d))
-* chore: remove readme ([67e4409](https://github.com/varletjs/varlet/commit/67e4409))
-* chore(site): remove useless code comment ([c807fe3](https://github.com/varletjs/varlet/commit/c807fe3))
-* docs: Introduction to adding components (#314) ([7bbcf0d](https://github.com/varletjs/varlet/commit/7bbcf0d)), closes [#314](https://github.com/varletjs/varlet/issues/314)
-* docs: optimize intro ([1d17424](https://github.com/varletjs/varlet/commit/1d17424))
-
-
-
-## <small>1.26.1 (2022-02-14)</small>
-
-* v1.26.1 ([b9340aa](https://github.com/varletjs/varlet/commit/b9340aa))
-* refactor(site): unfold code block default ([6e5db49](https://github.com/varletjs/varlet/commit/6e5db49))
-* refactor(slider): optimize code ([e0bdc6a](https://github.com/varletjs/varlet/commit/e0bdc6a))
-* docs: add Nuxt docs (#311) ([11abe77](https://github.com/varletjs/varlet/commit/11abe77)), closes [#311](https://github.com/varletjs/varlet/issues/311)
-* docs: fix markdown title ([35a8ba3](https://github.com/varletjs/varlet/commit/35a8ba3))
-* docs: fix nuxt doc path ([0b5e81d](https://github.com/varletjs/varlet/commit/0b5e81d))
-* fix(site): fix fold animation error when defaultFold set false ([e709af0](https://github.com/varletjs/varlet/commit/e709af0))
-* fix(ui/list): the fractional part of the detectorBottom when bottoming out overflows ([c8e0142](https://github.com/varletjs/varlet/commit/c8e0142))
-* chore: bump @vitejs/plugin-vue-jsx version to 1.3.5 and @vue/babel-plugin-jsx to 1.1.1 ([95753c3](https://github.com/varletjs/varlet/commit/95753c3))
-* chore: bump vite version to 2.8.x ([0050783](https://github.com/varletjs/varlet/commit/0050783))
-* chore(select): remove unused arg ([0a0608f](https://github.com/varletjs/varlet/commit/0a0608f))
-
-
-
-## 1.26.0 (2022-02-08)
-
-* v1.26.0 ([33d6f62](https://github.com/varletjs/varlet/commit/33d6f62))
-* docs(README): fix unit test info to get a better showing (#307) ([a082629](https://github.com/varletjs/varlet/commit/a082629)), closes [#307](https://github.com/varletjs/varlet/issues/307)
-* docs(ui/layout): fix docs ([8e133be](https://github.com/varletjs/varlet/commit/8e133be))
-* docs(ui/layout): remove space ([3b18633](https://github.com/varletjs/varlet/commit/3b18633))
-* docs(ui/row): optimize document cases ([33a2df4](https://github.com/varletjs/varlet/commit/33a2df4))
-* test(ui/image): repair test snapshots ([00ae8db](https://github.com/varletjs/varlet/commit/00ae8db))
-* test(ui/layout): upgrade snap ([7ecae3b](https://github.com/varletjs/varlet/commit/7ecae3b))
-* test(ui/layout): upgrade snap ([9a0090b](https://github.com/varletjs/varlet/commit/9a0090b))
-* test(ui/row): fix col click test unit ([4429811](https://github.com/varletjs/varlet/commit/4429811))
-* test(ui/tabs): fix double raf delay issue ([1c0cbab](https://github.com/varletjs/varlet/commit/1c0cbab))
-* revert: revert add responsive layout" ([d54e500](https://github.com/varletjs/varlet/commit/d54e500))
-* revert: revert release command ([c2fc9df](https://github.com/varletjs/varlet/commit/c2fc9df))
-* revert: revert release command ([f910a24](https://github.com/varletjs/varlet/commit/f910a24))
-* refactor(cli/release): optimize release command (#309) ([bac572b](https://github.com/varletjs/varlet/commit/bac572b)), closes [#309](https://github.com/varletjs/varlet/issues/309)
-* refactor(ui/col): remove unuseful code ([ec9a182](https://github.com/varletjs/varlet/commit/ec9a182))
-* refactor(ui/col): streamline unnecessary code ([64cc33a](https://github.com/varletjs/varlet/commit/64cc33a))
-* refactor(ui/layout): optimize code ([b01f306](https://github.com/varletjs/varlet/commit/b01f306))
-* refactor(ui/layout): optimize code & add col click unit test ([e3d1631](https://github.com/varletjs/varlet/commit/e3d1631))
-* feat(icons): add new icon ([49c3d5e](https://github.com/varletjs/varlet/commit/49c3d5e))
-* feat(site): add playground logic ([24c542d](https://github.com/varletjs/varlet/commit/24c542d))
-* feat(ui/col): add responsive layout ([4e314cb](https://github.com/varletjs/varlet/commit/4e314cb))
-* style: clean code ([d69d8a1](https://github.com/varletjs/varlet/commit/d69d8a1))
-* fix(playground): fix primary color ([4b80e47](https://github.com/varletjs/varlet/commit/4b80e47))
-* fix(playground): fix to relative path ([73834d0](https://github.com/varletjs/varlet/commit/73834d0))
-* chore: add varlet-ui-playground package ([3867d75](https://github.com/varletjs/varlet/commit/3867d75))
-* chore: fix build ui timing ([c0c1084](https://github.com/varletjs/varlet/commit/c0c1084))
-
-
-
-## <small>1.25.1 (2022-01-27)</small>
-
-* fix(ui/input,select): fix label color error ([652ae97](https://github.com/varletjs/varlet/commit/652ae97))
-* v1.25.1 ([480cafa](https://github.com/varletjs/varlet/commit/480cafa))
-* fix(cli): fix select scrollbar display error #305 and add esm bundle ([f66ffb7](https://github.com/varletjs/varlet/commit/f66ffb7)), closes [#305](https://github.com/varletjs/varlet/issues/305)
-* fix(cli/site): do not show the fold icon when the height is not high enough to expand the code block ([b4cd0b5](https://github.com/varletjs/varlet/commit/b4cd0b5))
-* fix(collapse): fix modelValue is undefined when close accrodion item ([0da3871](https://github.com/varletjs/varlet/commit/0da3871))
-* fix(index-bar): support ssr and fix top value when click anchor ([6c7df9f](https://github.com/varletjs/varlet/commit/6c7df9f))
-* fix(ui/select): fix word break ([95b1684](https://github.com/varletjs/varlet/commit/95b1684))
-* fix(ui/sticky): add doubleRaf for ssr #296 ([ed1348c](https://github.com/varletjs/varlet/commit/ed1348c)), closes [#296](https://github.com/varletjs/varlet/issues/296)
-* fix(ui/tabs): support nuxt3 ([9459d1d](https://github.com/varletjs/varlet/commit/9459d1d))
-* refactor: add some icons pin & pin-outline (#304) ([ae07f8d](https://github.com/varletjs/varlet/commit/ae07f8d)), closes [#304](https://github.com/varletjs/varlet/issues/304)
-* refactor(backTop): use toSizeUnit to replace toPxNum ([89c0af7](https://github.com/varletjs/varlet/commit/89c0af7))
-* refactor(site/cli): optimize fold display ([492ab32](https://github.com/varletjs/varlet/commit/492ab32))
-* refactor(ui/back-top): optimze target handler ([b5e5527](https://github.com/varletjs/varlet/commit/b5e5527))
-* refactor(ui/button): remove unuseful code ([18d06b9](https://github.com/varletjs/varlet/commit/18d06b9))
-* feat(backTop): add position and default target ([86f9237](https://github.com/varletjs/varlet/commit/86f9237))
-* feat(ui/app-bar): change app-bar default background color in dark mode ([a073dee](https://github.com/varletjs/varlet/commit/a073dee))
-* feat(ui/dialog): add dialog-class dialog-style props ([e7f9b5d](https://github.com/varletjs/varlet/commit/e7f9b5d))
-* feat(ui/skeleton): add fullscreen-z-index prop ([394f0a9](https://github.com/varletjs/varlet/commit/394f0a9))
-* docs(button): fix space (#300) ([c66fad1](https://github.com/varletjs/varlet/commit/c66fad1)), closes [#300](https://github.com/varletjs/varlet/issues/300)
-* docs(ui/dialog): fix --dialog-border-radius css variable ([e26e9dc](https://github.com/varletjs/varlet/commit/e26e9dc))
-* types(dialog): add DialogOptions types ([db92cca](https://github.com/varletjs/varlet/commit/db92cca))
-* perf: optimize utils ([24c0f79](https://github.com/varletjs/varlet/commit/24c0f79))
-* test(ui/list): remove example test ([c8cd4c1](https://github.com/varletjs/varlet/commit/c8cd4c1))
-* test(ui/list): upgrade snap ([e107ce9](https://github.com/varletjs/varlet/commit/e107ce9))
-
-
-
-## 1.25.0 (2022-01-19)
-
-* changelog ([f45e9a1](https://github.com/varletjs/varlet/commit/f45e9a1))
-* clean code ([3e31d00](https://github.com/varletjs/varlet/commit/3e31d00))
-* feat ([bbfc890](https://github.com/varletjs/varlet/commit/bbfc890))
-* feat ([dc3ea3c](https://github.com/varletjs/varlet/commit/dc3ea3c))
-* feat ([5619c58](https://github.com/varletjs/varlet/commit/5619c58))
-* v1.25.0 ([f80796c](https://github.com/varletjs/varlet/commit/f80796c))
-* fix(date-picker): remove error when the initial value is undefined and close #277 ([ede1eb1](https://github.com/varletjs/varlet/commit/ede1eb1)), closes [#277](https://github.com/varletjs/varlet/issues/277)
-* fix(swipe): support ssr ([007c3e6](https://github.com/varletjs/varlet/commit/007c3e6))
-* fix(ui/app-bar): support ssr ([3700eef](https://github.com/varletjs/varlet/commit/3700eef))
-* fix(ui/list): remove isHidden function ([a4634e0](https://github.com/varletjs/varlet/commit/a4634e0))
-* chore: add simple-git-hooks in generators/cli ([e59f76e](https://github.com/varletjs/varlet/commit/e59f76e))
-* chore: fix commitlint messgae ([28ac02b](https://github.com/varletjs/varlet/commit/28ac02b))
-* chore: fix prettierignore ([1dba5e2](https://github.com/varletjs/varlet/commit/1dba5e2))
-* chore: fix prettierignore ([41172c2](https://github.com/varletjs/varlet/commit/41172c2))
-* chore: remove git hook in generators/cli ([87a742e](https://github.com/varletjs/varlet/commit/87a742e))
-* chore: revert commit-msg git hook && specified semver lib type ([de75a85](https://github.com/varletjs/varlet/commit/de75a85))
-* chore: update commit-msg git hook ([5528465](https://github.com/varletjs/varlet/commit/5528465))
-* chore: update pre-commit git hook ([2b541ed](https://github.com/varletjs/varlet/commit/2b541ed))
-* chore(date-picker): remove unused variable ([63575bb](https://github.com/varletjs/varlet/commit/63575bb))
-* types(button): add autoloading to declaration file ([6dcb358](https://github.com/varletjs/varlet/commit/6dcb358))
-* style(ui/button): format code ([2c54dc9](https://github.com/varletjs/varlet/commit/2c54dc9))
-* test: update snap ([e192b6c](https://github.com/varletjs/varlet/commit/e192b6c))
-* test(ui/button): repair snapshot ([3398cb0](https://github.com/varletjs/varlet/commit/3398cb0))
-* test(ui/button): update button auto loading snapshot ([958b218](https://github.com/varletjs/varlet/commit/958b218))
-* refactor(button): refactor button for auto loading ([e3d2dfa](https://github.com/varletjs/varlet/commit/e3d2dfa))
-* refactor(ui/button): refactor button for auto loading ([08b00ed](https://github.com/varletjs/varlet/commit/08b00ed))
-* docs: change cli docs for simple-git-hooks ([bab6b9f](https://github.com/varletjs/varlet/commit/bab6b9f))
-* docs: fix date-picker range endtag (#286) ([ac61e43](https://github.com/varletjs/varlet/commit/ac61e43)), closes [#286](https://github.com/varletjs/varlet/issues/286)
-* docs: fix date-picker range endtag (#287) ([b442792](https://github.com/varletjs/varlet/commit/b442792)), closes [#287](https://github.com/varletjs/varlet/issues/287)
-* docs: fix date-picker range endtag (#288) ([4cf794f](https://github.com/varletjs/varlet/commit/4cf794f)), closes [#288](https://github.com/varletjs/varlet/issues/288)
-* docs: fix date-picker range endtag (#290) ([c8b05b6](https://github.com/varletjs/varlet/commit/c8b05b6)), closes [#290](https://github.com/varletjs/varlet/issues/290)
-* docs(cli): fix docs for simple-git-hooks ([7331911](https://github.com/varletjs/varlet/commit/7331911))
-* docs(ui): add space between Chinese and English l-u (#289) ([4c6547c](https://github.com/varletjs/varlet/commit/4c6547c)), closes [#289](https://github.com/varletjs/varlet/issues/289) [#290](https://github.com/varletjs/varlet/issues/290)
-* workflow: switch to git-simple-hooks to instead husky ([bc2b401](https://github.com/varletjs/varlet/commit/bc2b401))
-* feat(button): add autoLoading prop ([67f4b40](https://github.com/varletjs/varlet/commit/67f4b40))
-
-
-
-## <small>1.24.11 (2022-01-14)</small>
-
-* v1.24.11 ([9ad8f53](https://github.com/varletjs/varlet/commit/9ad8f53))
-* docs: add space slots doc && handle icon docs err ([29a63f7](https://github.com/varletjs/varlet/commit/29a63f7))
-* docs: repair slider first letter capitalized ([3c40a92](https://github.com/varletjs/varlet/commit/3c40a92))
-* docs(slider): fix typo ([5df13ad](https://github.com/varletjs/varlet/commit/5df13ad))
-* docs(ui): fix docs typo (#278) ([354c140](https://github.com/varletjs/varlet/commit/354c140)), closes [#278](https://github.com/varletjs/varlet/issues/278)
-* types(all): enhance props type ([1813a45](https://github.com/varletjs/varlet/commit/1813a45))
-* chore(touch-emulator): add type field in package.json ([d3dd85b](https://github.com/varletjs/varlet/commit/d3dd85b))
-* chore(ui): add @vue/runtime-core to package.json ([be82525](https://github.com/varletjs/varlet/commit/be82525))
-* fix(button): add css cover for loading ([5c003cc](https://github.com/varletjs/varlet/commit/5c003cc))
-* fix(pagination): emit event when change pageSize and close #279 ([f9a9be4](https://github.com/varletjs/varlet/commit/f9a9be4)), closes [#279](https://github.com/varletjs/varlet/issues/279)
-* fix(ui/select): fix select wrapWidth and offsetY display error with ssr #276 ([6e396a3](https://github.com/varletjs/varlet/commit/6e396a3)), closes [#276](https://github.com/varletjs/varlet/issues/276)
-* refactor: fix site default title, allow stringlike argument for dialog and snackbar ([9785e31](https://github.com/varletjs/varlet/commit/9785e31))
-* refactor(ui/list): lazy load data when switching views ([6942652](https://github.com/varletjs/varlet/commit/6942652))
-* test(ui/button): upgrade snap ([607f67b](https://github.com/varletjs/varlet/commit/607f67b))
-
-
-
-## <small>1.24.10 (2022-01-10)</small>
-
-* v1.24.10 ([0195df4](https://github.com/varletjs/varlet/commit/0195df4))
-* types(ui/locale): fix types ([ca3f010](https://github.com/varletjs/varlet/commit/ca3f010))
-* chore(types/ui): change useLocale type to generic ([e66bf9c](https://github.com/varletjs/varlet/commit/e66bf9c))
-
-
-
-## <small>1.24.9 (2022-01-09)</small>
-
-* v1.24.9 ([8abb704](https://github.com/varletjs/varlet/commit/8abb704))
-* fix(touch-emulator): add module property in package.json ([866cd8d](https://github.com/varletjs/varlet/commit/866cd8d))
-
-
-
-## <small>1.24.8 (2022-01-09)</small>
-
-* v1.24.8 ([51a5b5a](https://github.com/varletjs/varlet/commit/51a5b5a))
-* fix(touch-emulator): fix cjs to esm ([ce68ff3](https://github.com/varletjs/varlet/commit/ce68ff3))
-
-
-
-## <small>1.24.7 (2022-01-09)</small>
-
-* v1.24.7 ([c233032](https://github.com/varletjs/varlet/commit/c233032))
-* fix(touch-emulator): rename file ([3a4cbd5](https://github.com/varletjs/varlet/commit/3a4cbd5))
-
-
-
-## <small>1.24.6 (2022-01-09)</small>
-
-* v1.24.6 ([210748f](https://github.com/varletjs/varlet/commit/210748f))
-* fix(date-picker): import icon.less ([48d54a6](https://github.com/varletjs/varlet/commit/48d54a6))
-* fix(touch-emulator): add iife script ([ed7e28a](https://github.com/varletjs/varlet/commit/ed7e28a))
-* fix(touch-emulator): support ssr ([f5857bb](https://github.com/varletjs/varlet/commit/f5857bb))
-* docs: add the space between Chinese and English in varlet-ui (#270) ([3a55555](https://github.com/varletjs/varlet/commit/3a55555)), closes [#270](https://github.com/varletjs/varlet/issues/270)
-* docs: add the space between Chinese and English in varlet-ui (#273) ([946f65e](https://github.com/varletjs/varlet/commit/946f65e)), closes [#273](https://github.com/varletjs/varlet/issues/273)
-* docs: add the space between Chinese and English in varlet-ui a-i (#272) ([b491db4](https://github.com/varletjs/varlet/commit/b491db4)), closes [#272](https://github.com/varletjs/varlet/issues/272)
-
-
-
-## <small>1.24.5 (2022-01-07)</small>
-
-*  docs: fix varlet.default.config (#266) ([8d70dc9](https://github.com/varletjs/varlet/commit/8d70dc9)), closes [#266](https://github.com/varletjs/varlet/issues/266)
-* test(ui/swipe,tabs): extend the delay ([f7d9ae8](https://github.com/varletjs/varlet/commit/f7d9ae8))
-* v1.24.5 ([02483c3](https://github.com/varletjs/varlet/commit/02483c3))
-* docs: add the space between Chinese and English in varlet-ui ([652af5d](https://github.com/varletjs/varlet/commit/652af5d))
-* docs: fix docs ([a99749d](https://github.com/varletjs/varlet/commit/a99749d))
-* docs: modify punctuation ([d69c50d](https://github.com/varletjs/varlet/commit/d69c50d))
-* docs: remove useless doc ([ed09a35](https://github.com/varletjs/varlet/commit/ed09a35))
-* docs: update repo url ([dfd5587](https://github.com/varletjs/varlet/commit/dfd5587))
-* docs: update urls ([58d1f11](https://github.com/varletjs/varlet/commit/58d1f11))
-* docs: update urls ([a3083c0](https://github.com/varletjs/varlet/commit/a3083c0))
-* docs(browser-adaptation/ui): add pnpm installation mode ([8404417](https://github.com/varletjs/varlet/commit/8404417))
-* docs(contribute): contribute document update boot using pnpm ([0a8809c](https://github.com/varletjs/varlet/commit/0a8809c))
-* docs(import-on-demand/ui): add pnpm installation mode ([a2eae64](https://github.com/varletjs/varlet/commit/a2eae64))
-* docs(open-source-guide/ui): add pnpm installation mode ([9252afb](https://github.com/varletjs/varlet/commit/9252afb))
-* docs(quick-start/ui): add pnpm installation mode ([9852bed](https://github.com/varletjs/varlet/commit/9852bed))
-* docs(readme): add pnpm installation mode ([0bd379c](https://github.com/varletjs/varlet/commit/0bd379c))
-* docs(readme/eslint-config): add pnpm installation mode ([1a6720f](https://github.com/varletjs/varlet/commit/1a6720f))
-* docs(readme/stylelint-config): add pnpm installation mode ([018f1be](https://github.com/varletjs/varlet/commit/018f1be))
-* docs(readme/ui): add pnpm installation mode ([5d1f434](https://github.com/varletjs/varlet/commit/5d1f434))
-* docs(ui): fix docs typo ([b46e8e2](https://github.com/varletjs/varlet/commit/b46e8e2))
-* docs(ui): remove contributors ([b3cdd99](https://github.com/varletjs/varlet/commit/b3cdd99))
-* docs(ui/image): change article language ([b2a3514](https://github.com/varletjs/varlet/commit/b2a3514))
-* test: update snap ([0eeb360](https://github.com/varletjs/varlet/commit/0eeb360))
-* fix(cli/release): add remote option ([8c9ed7c](https://github.com/varletjs/varlet/commit/8c9ed7c))
-* fix(ui/menu): support ssr ([c50e26f](https://github.com/varletjs/varlet/commit/c50e26f))
-* chore: add package.json to prettierignore ([3c82945](https://github.com/varletjs/varlet/commit/3c82945))
-* chore: remove unused pattern ([eaf4d68](https://github.com/varletjs/varlet/commit/eaf4d68))
-* chore(cli/site): change github repo url ([9e4d2d0](https://github.com/varletjs/varlet/commit/9e4d2d0))
-* chore(workflow): change git source ([5652c31](https://github.com/varletjs/varlet/commit/5652c31))
-* refactor(cli/release): optimize release process ([f8131ee](https://github.com/varletjs/varlet/commit/f8131ee))
-* refactor(ui): adjustment menu component styles ([b5116f2](https://github.com/varletjs/varlet/commit/b5116f2))
-* types(site): fix types ([b3be4b9](https://github.com/varletjs/varlet/commit/b3be4b9))
-* doc: add the space between Chinese and English ([4f71654](https://github.com/varletjs/varlet/commit/4f71654))
-* doc: add the space between Chinese and English in varlet/cli readme.md (#253) ([e7063e4](https://github.com/varletjs/varlet/commit/e7063e4)), closes [#253](https://github.com/varletjs/varlet/issues/253)
-
-
-
-## <small>1.24.4 (2021-12-30)</small>
-
-* v1.24.4 ([6e67546](https://github.com/varletjs/varlet/commit/6e67546))
-* fix(cli/release): fix tag release error ([341997a](https://github.com/varletjs/varlet/commit/341997a))
-
-
-
-## <small>1.24.3 (2021-12-30)</small>
-
-* v1.24.1 ([808913a](https://github.com/varletjs/varlet/commit/808913a))
-* v1.24.2 ([343580b](https://github.com/varletjs/varlet/commit/343580b))
-* v1.24.3 ([5699c6e](https://github.com/varletjs/varlet/commit/5699c6e))
-* refactor: fix prettierignore ([bbd6b59](https://github.com/varletjs/varlet/commit/bbd6b59))
-* refactor: optimize error catch ([e137d8c](https://github.com/varletjs/varlet/commit/e137d8c))
-* refactor: optimize error info format ([a5643d6](https://github.com/varletjs/varlet/commit/a5643d6))
-* refactor: optimize log info ([520bb66](https://github.com/varletjs/varlet/commit/520bb66))
-* refactor: remove markdown-loader package ([0fdcfda](https://github.com/varletjs/varlet/commit/0fdcfda))
-* refactor(all): add icons to root ([b1955e4](https://github.com/varletjs/varlet/commit/b1955e4))
-* refactor(all): fix icon snap and fix deps ([7dc756e](https://github.com/varletjs/varlet/commit/7dc756e))
-* refactor(all): refactor for pnpm ([2341420](https://github.com/varletjs/varlet/commit/2341420))
-* refactor(all): refactor for pnpm ([73523f5](https://github.com/varletjs/varlet/commit/73523f5))
-* refactor(all): refactor for pnpm ([07db7d1](https://github.com/varletjs/varlet/commit/07db7d1))
-* refactor(all): remove lerna ([eca794f](https://github.com/varletjs/varlet/commit/eca794f))
-* refactor(all): wip ([3731f3b](https://github.com/varletjs/varlet/commit/3731f3b))
-* refactor(cli): catch release error ([f7a4940](https://github.com/varletjs/varlet/commit/f7a4940))
-* refactor(cli): change release type order and add git resotre action ([0243bd9](https://github.com/varletjs/varlet/commit/0243bd9))
-* refactor(cli): fix success info ([069647f](https://github.com/varletjs/varlet/commit/069647f))
-* refactor(cli): optimize error handle ([d9d3f7e](https://github.com/varletjs/varlet/commit/d9d3f7e))
-* refactor(cli): refactor generators for pnpm ([8349eac](https://github.com/varletjs/varlet/commit/8349eac))
-* refactor(cli): refactor generators for pnpm ([9cd5edd](https://github.com/varletjs/varlet/commit/9cd5edd))
-* refactor(cli): rename getVarletConfig args ([8e6ea6d](https://github.com/varletjs/varlet/commit/8e6ea6d))
-* refactor(ui/icons): add icons ([dcaa589](https://github.com/varletjs/varlet/commit/dcaa589))
-* chore: add og protocol ([c1297fc](https://github.com/varletjs/varlet/commit/c1297fc))
-* chore: add typescript to deps ([d526e05](https://github.com/varletjs/varlet/commit/d526e05))
-* chore: bump version ([2697ef9](https://github.com/varletjs/varlet/commit/2697ef9))
-* chore: commit message expand ([8268f56](https://github.com/varletjs/varlet/commit/8268f56))
-* chore: fix lock file ([3ec8608](https://github.com/varletjs/varlet/commit/3ec8608))
-* chore: fix prettierignore ([4cdccd0](https://github.com/varletjs/varlet/commit/4cdccd0))
-* chore: format scripts ([77b0eaf](https://github.com/varletjs/varlet/commit/77b0eaf))
-* chore: ignore pnpm files from prettier ([86ef72c](https://github.com/varletjs/varlet/commit/86ef72c))
-* chore: install pnpm first ([43cb16a](https://github.com/varletjs/varlet/commit/43cb16a))
-* chore: nested workspace package ([13babe0](https://github.com/varletjs/varlet/commit/13babe0))
-* chore: only allow use pnpm ([2bde36e](https://github.com/varletjs/varlet/commit/2bde36e))
-* chore: remove unnecessary files ([0261fd7](https://github.com/varletjs/varlet/commit/0261fd7))
-* chore: use pnpm declare to package.json ([89db2c8](https://github.com/varletjs/varlet/commit/89db2c8))
-* chore(root): format code ([5696d85](https://github.com/varletjs/varlet/commit/5696d85))
-* docs: modify progress中文文档 ([bf0a708](https://github.com/varletjs/varlet/commit/bf0a708))
-* docs: modify uploader中文文档 ([e83aef6](https://github.com/varletjs/varlet/commit/e83aef6))
-* docs: 更新 开发工具支持 中文文档的中英文排版 ([569d203](https://github.com/varletjs/varlet/commit/569d203))
-* docs(cli): add pnpm docs ([db75bfd](https://github.com/varletjs/varlet/commit/db75bfd))
-* docs(modify ide.zh): modify ide.zh文档 ([2b9e621](https://github.com/varletjs/varlet/commit/2b9e621))
-* docs(readme): add contributors list ([0c84d3f](https://github.com/varletjs/varlet/commit/0c84d3f))
-* docs(ui/counter): change article language ([ec7e798](https://github.com/varletjs/varlet/commit/ec7e798))
-* docs(ui/counter): change method name ([a06bad2](https://github.com/varletjs/varlet/commit/a06bad2))
-* docs(ui/counter): fix letter formatting ([7760c06](https://github.com/varletjs/varlet/commit/7760c06))
-* docs(ui/counter): fix letter formatting ([d64fde5](https://github.com/varletjs/varlet/commit/d64fde5))
-* docs(ui/elevation): fix example ([bc8354c](https://github.com/varletjs/varlet/commit/bc8354c))
-* test: update snap ([7d0f3e6](https://github.com/varletjs/varlet/commit/7d0f3e6))
-* test: update snap ([bdfec01](https://github.com/varletjs/varlet/commit/bdfec01))
-* test(icons): update snapshots ([899e8b0](https://github.com/varletjs/varlet/commit/899e8b0))
-* test(space): add example unit test ([baeebde](https://github.com/varletjs/varlet/commit/baeebde))
-* test(ui/swipe): update snap ([74140d1](https://github.com/varletjs/varlet/commit/74140d1))
-* fix: modify component.spec ([9f5f022](https://github.com/varletjs/varlet/commit/9f5f022))
-* fix: modify home.zh-CN ([3664a6d](https://github.com/varletjs/varlet/commit/3664a6d))
-* fix: modify openSourceGuide.zh-CN ([cf263ed](https://github.com/varletjs/varlet/commit/cf263ed))
-* fix: remove yarn usage in script ([40d5fd2](https://github.com/varletjs/varlet/commit/40d5fd2))
-* fix(cli): fix release tag ([5341cfc](https://github.com/varletjs/varlet/commit/5341cfc))
-* fix(cli): remove unuseful import ([21e8b74](https://github.com/varletjs/varlet/commit/21e8b74))
-* fix(compile): move config to entry function to aviod generate unnecessary folder ([f99b050](https://github.com/varletjs/varlet/commit/f99b050))
-* fix(config): add parameter to control generate folder ([6a17558](https://github.com/varletjs/varlet/commit/6a17558))
-* fix(create): move config to entry function to aviod generate unnecessary folder ([333cfae](https://github.com/varletjs/varlet/commit/333cfae))
-* fix(date-picker): fix eslint error ([5c9b12c](https://github.com/varletjs/varlet/commit/5c9b12c))
-* fix(ui/elevation): resolve shadow cannot display ([f8dedba](https://github.com/varletjs/varlet/commit/f8dedba))
-* fix(ui/menu): modify the implementation of sloving offsetHeight error ([9871022](https://github.com/varletjs/varlet/commit/9871022))
-* fix(ui/menu): reslove error of getting offsetHeight when alignment is set as bottom ([d05a7f9](https://github.com/varletjs/varlet/commit/d05a7f9))
-* fix(ui/swipe): fix stopAutoplay function ([7cad9d5](https://github.com/varletjs/varlet/commit/7cad9d5))
-* fix(ui/swipe): fix stopAutoplay function ([b2390fb](https://github.com/varletjs/varlet/commit/b2390fb))
-* style(root): format scripts ([4b27f14](https://github.com/varletjs/varlet/commit/4b27f14))
-* wip: all test pass ([c318eb6](https://github.com/varletjs/varlet/commit/c318eb6))
-* workflow: switch to pnpm ([065193e](https://github.com/varletjs/varlet/commit/065193e))
-
-
-
-## <small>1.24.1 (2021-12-27)</small>
-
-* v1.24.1 ([e52a3c5](https://github.com/varletjs/varlet/commit/e52a3c5))
-* docs(ui/elevation): fix example ([2511b34](https://github.com/varletjs/varlet/commit/2511b34))
-* fix(ui/elevation): resolve shadow cannot display ([227b2db](https://github.com/varletjs/varlet/commit/227b2db))
-
-
-
-## 1.24.0 (2021-12-27)
-
-* fix(ui/input, select): fix placeholder animation and var--ellipsis class ([458ab30](https://github.com/varletjs/varlet/commit/458ab30))
-* v1.24.0 ([8597693](https://github.com/varletjs/varlet/commit/8597693))
-* test: update snapshot ([46aa154](https://github.com/varletjs/varlet/commit/46aa154))
-* test(placeholder): update unit test ([a2c0dbc](https://github.com/varletjs/varlet/commit/a2c0dbc))
-* test(ui/icon): update snap ([7ca255e](https://github.com/varletjs/varlet/commit/7ca255e))
-* test(ui/list): fix mock ([36c2a83](https://github.com/varletjs/varlet/commit/36c2a83))
-* test(ui/swipe): update snap ([1f3e960](https://github.com/varletjs/varlet/commit/1f3e960))
-* test(ui/tabs): update snap ([d584a1c](https://github.com/varletjs/varlet/commit/d584a1c))
-* fix: fix test fail ([78f20ec](https://github.com/varletjs/varlet/commit/78f20ec))
-* fix(card): add word-break for description ([38d7427](https://github.com/varletjs/varlet/commit/38d7427))
-* fix(cli): fix icon vertical-align ([f015092](https://github.com/varletjs/varlet/commit/f015092))
-* fix(cli/site): adjust z-index of the sidebar and code toolbar for site ([5b81918](https://github.com/varletjs/varlet/commit/5b81918))
-* fix(d.ts): fix pack declare lost after build ([d7df27e](https://github.com/varletjs/varlet/commit/d7df27e))
-* fix(loading): add transition for overlay ([2a62eaa](https://github.com/varletjs/varlet/commit/2a62eaa))
-* fix(loading): expose marigin css variable ([313d232](https://github.com/varletjs/varlet/commit/313d232))
-* fix(placeholder): text-overflow to ellipsis ([7c586d2](https://github.com/varletjs/varlet/commit/7c586d2))
-* fix(select): fix select's placeholder when too long ([a7e08a6](https://github.com/varletjs/varlet/commit/a7e08a6))
-* fix(site): add types ([6520984](https://github.com/varletjs/varlet/commit/6520984))
-* fix(site): fix mobile style ([3189225](https://github.com/varletjs/varlet/commit/3189225))
-* fix(site): modify code example style ([bb33910](https://github.com/varletjs/varlet/commit/bb33910))
-* fix(types): fix prompts that could not find a declaration file when import translation file ([2637884](https://github.com/varletjs/varlet/commit/2637884))
-* fix(types): fix prompts that could not find a declaration file when import translation file ([e17c6d2](https://github.com/varletjs/varlet/commit/e17c6d2))
-* fix(ui/swipe): do not use initialIndex when resize ([46e997e](https://github.com/varletjs/varlet/commit/46e997e))
-* docs(pull-refresh): rename props name ([45faafd](https://github.com/varletjs/varlet/commit/45faafd))
-* chore: remove explicit type ([b81b1b6](https://github.com/varletjs/varlet/commit/b81b1b6))
-* chore: remove unnecessary publish items ([e862905](https://github.com/varletjs/varlet/commit/e862905))
-* chore: remove unused shims-vue file ([6d319db](https://github.com/varletjs/varlet/commit/6d319db))
-* chore: remove unused variable ([46ded19](https://github.com/varletjs/varlet/commit/46ded19))
-* chore: remove useless options of tsconfig ([07cee18](https://github.com/varletjs/varlet/commit/07cee18))
-* refactor(cli/site): optimize site fold style ([4a1d774](https://github.com/varletjs/varlet/commit/4a1d774))
-* refactor(d.ts): change pack's  import url ([016290a](https://github.com/varletjs/varlet/commit/016290a))
-* refactor(loading): rename desc to description ([aebe684](https://github.com/varletjs/varlet/commit/aebe684))
-* refactor(site): rename key of themes ([94852f5](https://github.com/varletjs/varlet/commit/94852f5))
-* feat(cli): add clipboard and fold tool for site ([5298c99](https://github.com/varletjs/varlet/commit/5298c99))
-* feat(loading): add slots and desc prop ([db0df16](https://github.com/varletjs/varlet/commit/db0df16))
-* revert: revert fix mobile style ([22d9da9](https://github.com/varletjs/varlet/commit/22d9da9))
-* style: code style ([ab27ff7](https://github.com/varletjs/varlet/commit/ab27ff7))
-
-
-
-## <small>1.23.11 (2021-12-10)</small>
-
-* docs:Modify document formatting issues (#222) ([a6cd0d7](https://github.com/varletjs/varlet/commit/a6cd0d7)), closes [#222](https://github.com/varletjs/varlet/issues/222)
-* v1.23.11 ([449df88](https://github.com/varletjs/varlet/commit/449df88))
-* fix: fix types ([2d95d4c](https://github.com/varletjs/varlet/commit/2d95d4c))
-* fix: remove unused code ([b37f258](https://github.com/varletjs/varlet/commit/b37f258))
-* fix(card): fix image css problem in card  (#224) ([498cb3c](https://github.com/varletjs/varlet/commit/498cb3c)), closes [#224](https://github.com/varletjs/varlet/issues/224)
-* fix(fix the offset problem when the divider is vertical): remove transformY,use align-items: center ([5b10f08](https://github.com/varletjs/varlet/commit/5b10f08))
-* chore: fix typo ([766f756](https://github.com/varletjs/varlet/commit/766f756))
-* chore: modify ignore rules ([fde2904](https://github.com/varletjs/varlet/commit/fde2904))
-* chore: remove useless code ([dc9c8fb](https://github.com/varletjs/varlet/commit/dc9c8fb))
-* docs(countdown): fix typo and style, close #209 ([9b67858](https://github.com/varletjs/varlet/commit/9b67858)), closes [#209](https://github.com/varletjs/varlet/issues/209)
-* docs(ui): fix style ([bfd44a3](https://github.com/varletjs/varlet/commit/bfd44a3))
-* docs(ui): fix style ([72b4c08](https://github.com/varletjs/varlet/commit/72b4c08))
-* refactor(gen): optimize directory structure for generators ([cd2f82e](https://github.com/varletjs/varlet/commit/cd2f82e))
-* style(dev): modify info color ([35d5dbf](https://github.com/varletjs/varlet/commit/35d5dbf))
-* style(docs): code indent ([6e84ac5](https://github.com/varletjs/varlet/commit/6e84ac5))
-
-
-
-## <small>1.23.10 (2021-12-01)</small>
-
-* v1.23.10 ([4915578](https://github.com/varletjs/varlet/commit/4915578))
-* fix(ui/icon): fix vertical align to bottom ([b2c4da9](https://github.com/varletjs/varlet/commit/b2c4da9))
-* refactor(ui/jest): fix types ([827cb0a](https://github.com/varletjs/varlet/commit/827cb0a))
-
-
-
-## <small>1.23.9 (2021-11-25)</small>
-
-* v1.23.9 ([e6f8f2c](https://github.com/varletjs/varlet/commit/e6f8f2c))
-* fix(ui/checkbox): add ripple depend style ([b8345fa](https://github.com/varletjs/varlet/commit/b8345fa))
-
-
-
-## <small>1.23.8 (2021-11-24)</small>
-
-* refactor(refactor:adjustment unit test): refactor:adjustment unit test ([a70c837](https://github.com/varletjs/varlet/commit/a70c837))
-* v1.23.8 ([7962430](https://github.com/varletjs/varlet/commit/7962430))
-* fix: compatible dayjs for nuxt ([0b3b540](https://github.com/varletjs/varlet/commit/0b3b540))
-* fix(cli): add ts ignore to generate routes ([3363578](https://github.com/varletjs/varlet/commit/3363578))
-* fix(d.ts): repair type ([b925e7e](https://github.com/varletjs/varlet/commit/b925e7e))
-* docs(d.ts): style_provide options add null type ([8c26cb4](https://github.com/varletjs/varlet/commit/8c26cb4))
-
-
-
-## <small>1.23.7 (2021-11-23)</small>
-
-* fix(ui/themes, cli): fix themes types ([f29511a](https://github.com/varletjs/varlet/commit/f29511a))
-* v1.23.7 ([fb7d2dc](https://github.com/varletjs/varlet/commit/fb7d2dc))
-* refactor(ui/themes): fix types ([21c1a88](https://github.com/varletjs/varlet/commit/21c1a88))
-* fix(loading): add color for circle type & update doc ([3457394](https://github.com/varletjs/varlet/commit/3457394))
-* fix(loading): remove radius prop & add color for circle type & update doc ([3a9dfe0](https://github.com/varletjs/varlet/commit/3a9dfe0))
-* revert: revert fix loading ([b97b8b9](https://github.com/varletjs/varlet/commit/b97b8b9))
-
-
-
-## <small>1.23.6 (2021-11-22)</small>
-
-* v1.23.6 ([3bc826e](https://github.com/varletjs/varlet/commit/3bc826e))
-* fix(date-picker): css specificity ([565002b](https://github.com/varletjs/varlet/commit/565002b))
-
-
-
-## <small>1.23.5 (2021-11-21)</small>
-
-* docs(cli, ui): fix docs typo ([c51625b](https://github.com/varletjs/varlet/commit/c51625b))
-* fix(ui/popup,input): support nuxt ([def81ef](https://github.com/varletjs/varlet/commit/def81ef))
-* v1.23.5 ([013da06](https://github.com/varletjs/varlet/commit/013da06))
-* fix: compatible nuxt ([d681176](https://github.com/varletjs/varlet/commit/d681176))
-* fix(cli): add module moduleCompatible option in varlet.config.js ([0b1d95f](https://github.com/varletjs/varlet/commit/0b1d95f))
-* fix(cli): expose lib folder ([2a8848a](https://github.com/varletjs/varlet/commit/2a8848a))
-* fix(cli): fix commonjs compiler ([c5c2b12](https://github.com/varletjs/varlet/commit/c5c2b12))
-* fix(cli): fix inline css plugin ([3e8b7b4](https://github.com/varletjs/varlet/commit/3e8b7b4))
-* fix(cli/compile): add commonjs bundle ([4a424d4](https://github.com/varletjs/varlet/commit/4a424d4))
-* fix(cli/compile): add match commonjs script extname function ([2b5b1bd](https://github.com/varletjs/varlet/commit/2b5b1bd))
-* fix(cli/compile): fix compile module readdir ([9c3ad08](https://github.com/varletjs/varlet/commit/9c3ad08))
-* fix(ui): dayjs compatible ([3f2289b](https://github.com/varletjs/varlet/commit/3f2289b))
-* fix(ui/list): support nuxt ([dd7a71e](https://github.com/varletjs/varlet/commit/dd7a71e))
-* fix(ui/sticky): support nuxt ([29c24d6](https://github.com/varletjs/varlet/commit/29c24d6))
-* chore: fix component name of example import ([e173926](https://github.com/varletjs/varlet/commit/e173926))
-* refactor(ui): dayjs compatible ([3bfdedc](https://github.com/varletjs/varlet/commit/3bfdedc))
-* refactor(ui/input): remove dynamic component ([9c8973f](https://github.com/varletjs/varlet/commit/9c8973f))
-
-
-
-## <small>1.23.4 (2021-11-21)</small>
-
-* v1.23.4 ([d228e23](https://github.com/varletjs/varlet/commit/d228e23))
-* fix(ui/types): add list.d.ts ([ab06a8f](https://github.com/varletjs/varlet/commit/ab06a8f))
-
-
-
-## <small>1.23.3 (2021-11-20)</small>
-
-* v1.23.3 ([9c3f547](https://github.com/varletjs/varlet/commit/9c3f547))
-* fix(cli/jest): add watchAll mode ([84ebb4e](https://github.com/varletjs/varlet/commit/84ebb4e))
-* docs(ui/space): fix docs typo ([9d43aed](https://github.com/varletjs/varlet/commit/9d43aed))
-
-
-
-## <small>1.23.2 (2021-11-20)</small>
-
-* v1.23.2 ([19c2a47](https://github.com/varletjs/varlet/commit/19c2a47))
-* fix(ui/space): modify the behavior of space in space-around and space-between modes ([5abf617](https://github.com/varletjs/varlet/commit/5abf617))
-* chore(all): use svg logo ([1b72d6a](https://github.com/varletjs/varlet/commit/1b72d6a))
-* chore(extension): change extension icon ([b71ff19](https://github.com/varletjs/varlet/commit/b71ff19))
-* chore(extension): revert logo ([2c9cd02](https://github.com/varletjs/varlet/commit/2c9cd02))
-* chore(root): change readme logo ([f5664e0](https://github.com/varletjs/varlet/commit/f5664e0))
-* docs(ui): add special thanks and fix the features description ([8a1b048](https://github.com/varletjs/varlet/commit/8a1b048))
-* docs(ui/space): fix en docs ([c2deec0](https://github.com/varletjs/varlet/commit/c2deec0))
-* refactor(extension): add space to sitemap ([551e092](https://github.com/varletjs/varlet/commit/551e092))
-
-
-
-## 1.23.0 (2021-11-19)
-
-* docs(cli,ui): fix docs of dark mode ([a2e844d](https://github.com/varletjs/varlet/commit/a2e844d))
-* feat(form&rate&counter): add watchthemes ([3a2cd90](https://github.com/varletjs/varlet/commit/3a2cd90))
-* feat(pull-refresh&switch): add dark mode ([5936817](https://github.com/varletjs/varlet/commit/5936817))
-* fix(fix(ui/space):add space.d.ts for space): fix(ui/space):add space.d.ts for space ([29fe945](https://github.com/varletjs/varlet/commit/29fe945))
-* fix(fix(ui/space):add space.d.ts for space): fix(ui/space):add space.d.ts for space ([1fd3fac](https://github.com/varletjs/varlet/commit/1fd3fac))
-* fix(ui,cli): move dark theme import to example ([579e461](https://github.com/varletjs/varlet/commit/579e461))
-* fix(ui/select, darkmode): fix select disabled color lose, fix darkmode color ([8cfc654](https://github.com/varletjs/varlet/commit/8cfc654))
-* fix(ui/tab,tab-item,tabs,tabs-items): suppotr darkmode & remove nerver used vaiable `tab-color` ([681619d](https://github.com/varletjs/varlet/commit/681619d))
-* refactor(refactor:adjustment unit test): refactor:adjustment unit test ([36659a4](https://github.com/varletjs/varlet/commit/36659a4))
-* refactor(refactor(ui/space):add example case&&supplementary documents&&adjustment unit test): refact ([b5d765d](https://github.com/varletjs/varlet/commit/b5d765d))
-* refactor(refactor(ui/space):adjustment unit test): refactor(ui/space):adjustment unit test ([fa9706c](https://github.com/varletjs/varlet/commit/fa9706c))
-* refactor(refactor(ui/space):handle margin problem): refactor(ui/space):handle margin problem ([2be789e](https://github.com/varletjs/varlet/commit/2be789e))
-* refactor(refactor(ui/space):handle margin problem): refactor(ui/space):handle margin problem ([cb4eaf7](https://github.com/varletjs/varlet/commit/cb4eaf7))
-* refactor(refactor(ui/space):handle margin/2 problem): refactor(ui/space):handle margin/2 problem ([c8a3d45](https://github.com/varletjs/varlet/commit/c8a3d45))
-* refactor(refactor(ui/space):handle margin/2 problem): refactor(ui/space):handle margin/2 problem ([530da90](https://github.com/varletjs/varlet/commit/530da90))
-* refactor(refactor(ui/space):optimize the code and add unit tests): refactor(ui/space):optimize the c ([37fe7ce](https://github.com/varletjs/varlet/commit/37fe7ce))
-* refactor(refactor(ui/space):optimize the code and add unit tests): refactor(ui/space):optimize the c ([41d0615](https://github.com/varletjs/varlet/commit/41d0615))
-* refactor(ui, cli): move watchDarkMode function to cli ([eb929c3](https://github.com/varletjs/varlet/commit/eb929c3))
-* refactor(ui/badge,chip): support dark mode ([722fa32](https://github.com/varletjs/varlet/commit/722fa32))
-* refactor(ui/button, cell, style-provider): support dark mode ([f580f43](https://github.com/varletjs/varlet/commit/f580f43))
-* refactor(ui/card,list,skeleton,table,tabs,styles): support dark mode ([0fc7991](https://github.com/varletjs/varlet/commit/0fc7991))
-* refactor(ui/layout,sticky,uploader): support dark mode ([8f9aa8e](https://github.com/varletjs/varlet/commit/8f9aa8e))
-* refactor(ui/picker, button): optimize for dark mode ([471d169](https://github.com/varletjs/varlet/commit/471d169))
-* refactor(ui/tabs,tab,tab-item): support dark mode ([82d550e](https://github.com/varletjs/varlet/commit/82d550e))
-* refactor(ui/utils, uploader): remove unuseful code ([029aba4](https://github.com/varletjs/varlet/commit/029aba4))
-* refactor(ui/utils, uploader): remove unuseful code ([69822ce](https://github.com/varletjs/varlet/commit/69822ce))
-* v1.23.0 ([6ed02c9](https://github.com/varletjs/varlet/commit/6ed02c9))
-* chore: remove useless code ([147fc1f](https://github.com/varletjs/varlet/commit/147fc1f))
-* chore: remove useless code ([980cc37](https://github.com/varletjs/varlet/commit/980cc37))
-* chore: remove useless import ([3da3c50](https://github.com/varletjs/varlet/commit/3da3c50))
-* chore(root): change varlet logo ([19af8b3](https://github.com/varletjs/varlet/commit/19af8b3))
-* chore(root): fix readme ([20eb062](https://github.com/varletjs/varlet/commit/20eb062))
-* chore(site): upgrade vue-router and remove warning ([d6b9e41](https://github.com/varletjs/varlet/commit/d6b9e41))
-* refactor: handle margin/2 problem ([84ff5e4](https://github.com/varletjs/varlet/commit/84ff5e4))
-* refactor: optimize date-picker ([a7eb207](https://github.com/varletjs/varlet/commit/a7eb207))
-* refactor(cli/site): adjust the color of dark mode ([5c05b8d](https://github.com/varletjs/varlet/commit/5c05b8d))
-* refactor(cli/site): darkmode prototype design ([a479375](https://github.com/varletjs/varlet/commit/a479375))
-* refactor(cli/site): optimize dark mode styles ([76b9d46](https://github.com/varletjs/varlet/commit/76b9d46))
-* refactor(cli/site): optimize mobile css style ([3f63bbb](https://github.com/varletjs/varlet/commit/3f63bbb))
-* refactor(cli/site): optimize site ([e62376f](https://github.com/varletjs/varlet/commit/e62376f))
-* refactor(cli/site): optimize site layout ([85e3f62](https://github.com/varletjs/varlet/commit/85e3f62))
-* refactor(cli/site): optimize site styles ([f7744b3](https://github.com/varletjs/varlet/commit/f7744b3))
-* refactor(icons): sync feat/dark-mode branch icon ([7c2e396](https://github.com/varletjs/varlet/commit/7c2e396))
-* refactor(icons): sync feat/dark-mode branch icon ([8073523](https://github.com/varletjs/varlet/commit/8073523))
-* refactor(pagination): modify menu list item bg-color ([058b4d1](https://github.com/varletjs/varlet/commit/058b4d1))
-* refactor(site): modify nav-item padding and elevation name ([5fee882](https://github.com/varletjs/varlet/commit/5fee882))
-* refactor(ui): check transition property of all components ([e9ec891](https://github.com/varletjs/varlet/commit/e9ec891))
-* refactor(ui): support dark mode ([8c98941](https://github.com/varletjs/varlet/commit/8c98941))
-* refactor(ui): support dark mode ([d659753](https://github.com/varletjs/varlet/commit/d659753))
-* refactor(ui/space): enhance code readability, Use style instead of class to implement layout-related ([35c63d7](https://github.com/varletjs/varlet/commit/35c63d7))
-* refactor(ui/tabs): fix css var for dark mode ([78099eb](https://github.com/varletjs/varlet/commit/78099eb))
-* refactor(ui/types): add space to global types ([ae0b4f6](https://github.com/varletjs/varlet/commit/ae0b4f6))
-* refactor(ui/uploader): fix example ([af49dae](https://github.com/varletjs/varlet/commit/af49dae))
-* refactor(ui/uploader): fix example ([5d7bbfb](https://github.com/varletjs/varlet/commit/5d7bbfb))
-* refactor(ui/uploader): refactor before-remove ([a85020d](https://github.com/varletjs/varlet/commit/a85020d))
-* refactor(ui/uploader): refactor before-remove ([f538d3b](https://github.com/varletjs/varlet/commit/f538d3b))
-* feat: darkmode for time-picker&date-picker&card ([6878326](https://github.com/varletjs/varlet/commit/6878326))
-* feat: darkmode for time-picker&date-picker&card ([beaefdb](https://github.com/varletjs/varlet/commit/beaefdb))
-* feat: darkmode for time-picker&date-picker&card ([df633e9](https://github.com/varletjs/varlet/commit/df633e9))
-* feat: darkmode for time-picker&date-picker&card ([f372a92](https://github.com/varletjs/varlet/commit/f372a92))
-* feat: merge remote ([523b9f8](https://github.com/varletjs/varlet/commit/523b9f8))
-* feat: merge remote ([4abf933](https://github.com/varletjs/varlet/commit/4abf933))
-* feat: merge remote ([f50006c](https://github.com/varletjs/varlet/commit/f50006c))
-* feat(checkbox): add dark mode ([cee8c2c](https://github.com/varletjs/varlet/commit/cee8c2c))
-* feat(cli/generators): support dark mode ([4795af8](https://github.com/varletjs/varlet/commit/4795af8))
-* feat(collapse): add dark mode ([9c9f505](https://github.com/varletjs/varlet/commit/9c9f505))
-* feat(divider): support dark mode ([fa7e5ab](https://github.com/varletjs/varlet/commit/fa7e5ab))
-* feat(icons): add new icons ([ffd80da](https://github.com/varletjs/varlet/commit/ffd80da))
-* feat(index-bar): add dark mode ([32f30af](https://github.com/varletjs/varlet/commit/32f30af))
-* feat(input): add dark mode ([befd63c](https://github.com/varletjs/varlet/commit/befd63c))
-* feat(locale): add types and add optional chaining for date-picker ([654d60f](https://github.com/varletjs/varlet/commit/654d60f))
-* feat(locale): add types and add optional chaining for date-picker ([140e2ba](https://github.com/varletjs/varlet/commit/140e2ba))
-* feat(menu): add dark-mode ([e2807f6](https://github.com/varletjs/varlet/commit/e2807f6))
-* feat(picker): picker support dark mode ([2d404d7](https://github.com/varletjs/varlet/commit/2d404d7))
-* feat(radio): add dark mode ([1a1fc57](https://github.com/varletjs/varlet/commit/1a1fc57))
-* feat(select): add dark mode ([151bfc0](https://github.com/varletjs/varlet/commit/151bfc0))
-* feat(steps/pagination/table): support dark mode ([ad04ea7](https://github.com/varletjs/varlet/commit/ad04ea7))
-* feat(ui/skeleton): adaptatiton darkmode for skeleton ([3ee30f6](https://github.com/varletjs/varlet/commit/3ee30f6))
-* feat(ui/space): add new component name is space ([6f6e5e5](https://github.com/varletjs/varlet/commit/6f6e5e5))
-* feat(ui/space): var-space complete ([1d13b68](https://github.com/varletjs/varlet/commit/1d13b68))
-* feat(ui/space): var-space complete ([9af956c](https://github.com/varletjs/varlet/commit/9af956c))
-* feat(uploader): 添加onRemove条件删除 ([ad44d1e](https://github.com/varletjs/varlet/commit/ad44d1e))
-* feat(uploader): 添加onRemove条件删除 ([e3c5fb6](https://github.com/varletjs/varlet/commit/e3c5fb6))
-* docs(cli): add dark mode part into docs ([647467f](https://github.com/varletjs/varlet/commit/647467f))
-* docs(collpase): add style variable ([ad053cc](https://github.com/varletjs/varlet/commit/ad053cc))
-* docs(open source guide document): add node version description ([ff8e864](https://github.com/varletjs/varlet/commit/ff8e864))
-* docs(root): fix readme ([203cebf](https://github.com/varletjs/varlet/commit/203cebf))
-* docs(slider): add watch-themes ([a91fd5e](https://github.com/varletjs/varlet/commit/a91fd5e))
-* docs(ui): fix import on demand docs ([5d67104](https://github.com/varletjs/varlet/commit/5d67104))
-* docs(ui/docs): fix docs and upgrade snap ([e396360](https://github.com/varletjs/varlet/commit/e396360))
-* docs(ui/docs): fix word ([5e25e7b](https://github.com/varletjs/varlet/commit/5e25e7b))
-* docs(ui/themes): add themes docs ([b6231b2](https://github.com/varletjs/varlet/commit/b6231b2))
-* docs(ui/uploader): fix docs ([86ae000](https://github.com/varletjs/varlet/commit/86ae000))
-* docs(ui/uploader): fix docs ([e1e6de2](https://github.com/varletjs/varlet/commit/e1e6de2))
-* test: add trigger function for mockconsole ([fc40808](https://github.com/varletjs/varlet/commit/fc40808))
-* test: add trigger function for mockconsole ([1987b29](https://github.com/varletjs/varlet/commit/1987b29))
-* test(date-picker): update snapshot ([17893df](https://github.com/varletjs/varlet/commit/17893df))
-* test(ui/icon): upgrade snap ([d79eef1](https://github.com/varletjs/varlet/commit/d79eef1))
-* test(ui/select): upgrade snap ([d261528](https://github.com/varletjs/varlet/commit/d261528))
-* test(ui/space): upgrade snap ([a49d142](https://github.com/varletjs/varlet/commit/a49d142))
-* test(ui/uploader): upgrade snap ([8c85875](https://github.com/varletjs/varlet/commit/8c85875))
-* fix: add assert for example lang ([7ce8bae](https://github.com/varletjs/varlet/commit/7ce8bae))
-* fix: code styles ([79f48c2](https://github.com/varletjs/varlet/commit/79f48c2))
-* fix: code styles ([776da40](https://github.com/varletjs/varlet/commit/776da40))
-* fix: import dark themes of form related components ([32e6f08](https://github.com/varletjs/varlet/commit/32e6f08))
-* fix(cli): bump typescript and commander version ([af893e9](https://github.com/varletjs/varlet/commit/af893e9))
-* fix(cli): error when building with vite ([6e60e8f](https://github.com/varletjs/varlet/commit/6e60e8f))
-* fix(cli): error when building with vite ([e786702](https://github.com/varletjs/varlet/commit/e786702))
-* fix(collapse): modify border style ([9e0f2f3](https://github.com/varletjs/varlet/commit/9e0f2f3))
-* fix(date-picker): add nullish coalescing ([9c3914b](https://github.com/varletjs/varlet/commit/9c3914b))
-* fix(date-picker): add nullish coalescing ([8644d88](https://github.com/varletjs/varlet/commit/8644d88))
-* fix(date-picker): use style class to replace watch mode ([ce591de](https://github.com/varletjs/varlet/commit/ce591de))
-* fix(doc): progress bar should not use unmount function ([0587103](https://github.com/varletjs/varlet/commit/0587103))
-* fix(picker): optimize dark mode ([c7304b3](https://github.com/varletjs/varlet/commit/c7304b3))
-* fix(site): modify the width of nav ([af0bfbe](https://github.com/varletjs/varlet/commit/af0bfbe))
-* fix(site): support bg-color for dark mode of nav button ([b8417fe](https://github.com/varletjs/varlet/commit/b8417fe))
-* fix(slider): modify error color of track ([64f8cf3](https://github.com/varletjs/varlet/commit/64f8cf3))
-* fix(types): fix eslint error ([91e181d](https://github.com/varletjs/varlet/commit/91e181d))
-* fix(types): fix eslint error ([fa1d696](https://github.com/varletjs/varlet/commit/fa1d696))
-* fix(ui/icon): transition property all to transform ([860d8ce](https://github.com/varletjs/varlet/commit/860d8ce))
-* fix(ui/space): add common css ([5b439a8](https://github.com/varletjs/varlet/commit/5b439a8))
-* fix(ui/tab-item): tab-item example style ([c4f2ba4](https://github.com/varletjs/varlet/commit/c4f2ba4))
-* style: lint test files code style ([10d251f](https://github.com/varletjs/varlet/commit/10d251f))
-* perf(shared): throttle节流修改 ([981183c](https://github.com/varletjs/varlet/commit/981183c))
-* perf(shared): throttle节流修改 ([340b2e7](https://github.com/varletjs/varlet/commit/340b2e7))
-
-
-
-## <small>1.22.10 (2021-11-03)</small>
-
-* v1.22.10 ([a244364](https://github.com/varletjs/varlet/commit/a244364))
-* fix(cli/site): change code block font color to white ([f38aa0e](https://github.com/varletjs/varlet/commit/f38aa0e))
-* fix(cli/site): modify site theme update logic ([d12195a](https://github.com/varletjs/varlet/commit/d12195a))
-* fix(ui/style-provider): simplify the use of style-provider ([cbf66ce](https://github.com/varletjs/varlet/commit/cbf66ce))
-* chore(ui): add preview status image ([655141d](https://github.com/varletjs/varlet/commit/655141d))
-* chore(workflows): add preview deploy workflow ([2296186](https://github.com/varletjs/varlet/commit/2296186))
-* chore(workflows): fix preview-deploy node version ([949a72a](https://github.com/varletjs/varlet/commit/949a72a))
-* chore(workflows): fix workflow ([ad092f2](https://github.com/varletjs/varlet/commit/ad092f2))
-* chore(workflows): fix workflows ([8595264](https://github.com/varletjs/varlet/commit/8595264))
-* chore(workflows): fix workflows ([1de4276](https://github.com/varletjs/varlet/commit/1de4276))
-* chore(workflows): optimize preview status display ([c7dcfe0](https://github.com/varletjs/varlet/commit/c7dcfe0))
-* chore(workflows): split preview workflow ([5350df5](https://github.com/varletjs/varlet/commit/5350df5))
-
-
-
-## <small>1.22.9 (2021-10-31)</small>
-
-* v1.22.9 ([b1d9305](https://github.com/varletjs/varlet/commit/b1d9305))
-* docs(ui/docs): fix typescript support part ([f8dfd58](https://github.com/varletjs/varlet/commit/f8dfd58))
-* fix(cli/types): add global.d.ts for volar ([c99e0c1](https://github.com/varletjs/varlet/commit/c99e0c1))
-
-
-
-## <small>1.22.8 (2021-10-31)</small>
-
-* test(ui/list,tabs): upgrade snap ([347d686](https://github.com/varletjs/varlet/commit/347d686))
-* v1.22.8 ([5d2d460](https://github.com/varletjs/varlet/commit/5d2d460))
-* refactor(date-picker): modify the key of component i18n ([47c4075](https://github.com/varletjs/varlet/commit/47c4075))
-* fix(cli/highlight): fix web-types version ([636b408](https://github.com/varletjs/varlet/commit/636b408))
-* fix(cli/site): optimize site scroll on mobile trigger route change ([536d7b1](https://github.com/varletjs/varlet/commit/536d7b1))
-* fix(ui/divider): fix vertical divider ([edf9720](https://github.com/varletjs/varlet/commit/edf9720))
-* fix(ui/input): fix behaviour of the input type ([5643f3c](https://github.com/varletjs/varlet/commit/5643f3c))
-* docs(slider): modify example value ([ba6b349](https://github.com/varletjs/varlet/commit/ba6b349))
-* docs(ui/docs): fix importOnDemand docs ([4389a9b](https://github.com/varletjs/varlet/commit/4389a9b))
-
-
-
-## <small>1.22.7 (2021-10-22)</small>
-
-* docs(ui/pagination,table): ui/pagination,table ([b1134c0](https://github.com/varletjs/varlet/commit/b1134c0))
-* v1.22.7 ([cc86b81](https://github.com/varletjs/varlet/commit/cc86b81))
-* fix(cli/dev): add varlet config file watcher ([28b4ea9](https://github.com/varletjs/varlet/commit/28b4ea9))
-* fix(cli/dev): fixed bug of repeat restart server ([e14f090](https://github.com/varletjs/varlet/commit/e14f090))
-* fix(cli/site): optimize github link style ([47db851](https://github.com/varletjs/varlet/commit/47db851))
-* fix(cli/site): optimize site ([40161bf](https://github.com/varletjs/varlet/commit/40161bf))
-* fix(ui/site): modify highlight.css color ([203432e](https://github.com/varletjs/varlet/commit/203432e))
-* fix(ui/tab-item): add var-tab-item-cover attr ([934a833](https://github.com/varletjs/varlet/commit/934a833))
-* style(cli/site): fix types ([d768db4](https://github.com/varletjs/varlet/commit/d768db4))
-
-
-
-## <small>1.22.6 (2021-10-18)</small>
-
-* fix(ui/checkbox, radio): fix prop types ([219cab8](https://github.com/varletjs/varlet/commit/219cab8))
-* fix(ui/pagination, cli/site): fix size and total cannot be centered vertically in the pagination, ad ([ad3eb81](https://github.com/varletjs/varlet/commit/ad3eb81))
-* refactor(ui/picker,lazy): fix lazy tests, fix picker ts types ([cdd8bc2](https://github.com/varletjs/varlet/commit/cdd8bc2))
-* v1.22.6 ([679b86f](https://github.com/varletjs/varlet/commit/679b86f))
-* docs(ui/list): fix tabs offset-top ([ebd468e](https://github.com/varletjs/varlet/commit/ebd468e))
-* fix: fix types ([f9a372f](https://github.com/varletjs/varlet/commit/f9a372f))
-* fix(cli/jest): add root config check ([052a338](https://github.com/varletjs/varlet/commit/052a338))
-* fix(cli/site): optimize site style ([aaec99e](https://github.com/varletjs/varlet/commit/aaec99e))
-* fix(slider/types): fix template types ([31da191](https://github.com/varletjs/varlet/commit/31da191))
-* fix(snackbar/types): fix types of related loading props ([0e8d4f4](https://github.com/varletjs/varlet/commit/0e8d4f4))
-* fix(ui): fix types ([ead022f](https://github.com/varletjs/varlet/commit/ead022f))
-* fix(ui/types): fix types ([c87784d](https://github.com/varletjs/varlet/commit/c87784d))
-* style: remove redundant space and typo ([1955aa4](https://github.com/varletjs/varlet/commit/1955aa4))
-* style(ui/example): fix functional component importer ([0db8a3a](https://github.com/varletjs/varlet/commit/0db8a3a))
-* style(varlet-ui): modify component import ([d08a718](https://github.com/varletjs/varlet/commit/d08a718))
-* test(ui/button): add snap ([9a11489](https://github.com/varletjs/varlet/commit/9a11489))
-* test(ui/cell): fix example test ([6bfbbc2](https://github.com/varletjs/varlet/commit/6bfbbc2))
-* test(varlet-ui): card test change ([b0f00d2](https://github.com/varletjs/varlet/commit/b0f00d2))
-* test(varlet-ui): modify the Cell component test case ([035a6f7](https://github.com/varletjs/varlet/commit/035a6f7))
-* test(varlet-ui): modify the cell component test module ([8aed5b6](https://github.com/varletjs/varlet/commit/8aed5b6))
-* test(varlet-ui): modify the Cell test case ([2f686e6](https://github.com/varletjs/varlet/commit/2f686e6))
-* revert: revert slider types change ([b897c3c](https://github.com/varletjs/varlet/commit/b897c3c))
-* chore: add image-preview to sitemap ([2e89f16](https://github.com/varletjs/varlet/commit/2e89f16))
-* chore(extension): bump version ([0b1464d](https://github.com/varletjs/varlet/commit/0b1464d))
-
-
-
-## <small>1.22.4 (2021-10-14)</small>
-
-* test(ui/app-bar,index-bar,tabs): upgrade test snap ([f97d3ee](https://github.com/varletjs/varlet/commit/f97d3ee))
-* v1.22.4 ([f6b8bbf](https://github.com/varletjs/varlet/commit/f6b8bbf))
-* fix(ui/app-bar): fix app-bar style ([9da67b6](https://github.com/varletjs/varlet/commit/9da67b6))
-* test(ui/button): fix unit test ([11621df](https://github.com/varletjs/varlet/commit/11621df))
-* test(varlet-ui): modify test cases ([1f68ef6](https://github.com/varletjs/varlet/commit/1f68ef6))
-* test(varlet-ui): test snapshots of some button components are modified to assert statements ([46e0918](https://github.com/varletjs/varlet/commit/46e0918))
-* refactor(extension): add table and pagination component into siteMap, can link english documentation ([951f42c](https://github.com/varletjs/varlet/commit/951f42c))
-* refactor(ui/app-bar): optimize app-bar ui experience ([8beefad](https://github.com/varletjs/varlet/commit/8beefad))
-* refactor(ui/types): fix pickProps types ([e948271](https://github.com/varletjs/varlet/commit/e948271))
-* chore: remove package-lock ([b0446aa](https://github.com/varletjs/varlet/commit/b0446aa))
-
-
-
-## <small>1.22.3 (2021-10-10)</small>
-
-* v1.22.3 ([73fcb83](https://github.com/varletjs/varlet/commit/73fcb83))
-* chore(index-anchor): modify import types ([0930890](https://github.com/varletjs/varlet/commit/0930890))
-* chore(lint): add eslint pattern and remove useless code ([82b2921](https://github.com/varletjs/varlet/commit/82b2921))
-* fix(cli): use vite internal printUrls instead of logger ([1b164d7](https://github.com/varletjs/varlet/commit/1b164d7))
-* fix(ui/pagination): fix icon size style is not effective ([520b93d](https://github.com/varletjs/varlet/commit/520b93d))
-* docs(root): fix readme ([8e3c063](https://github.com/varletjs/varlet/commit/8e3c063))
-* docs(root): fix readme ([1e8f05f](https://github.com/varletjs/varlet/commit/1e8f05f))
-
-
-
-## <small>1.22.2 (2021-10-08)</small>
-
-* v1.22.2 ([495423a](https://github.com/varletjs/varlet/commit/495423a))
-* fix(cli): fix mobile cell hover color ([ea999ed](https://github.com/varletjs/varlet/commit/ea999ed))
-
-
-
-## <small>1.22.1 (2021-10-08)</small>
-
-* v1.22.1 ([d00f127](https://github.com/varletjs/varlet/commit/d00f127))
-* fix(cli/jest): replace testMatch to testRegex ([5ed0a5c](https://github.com/varletjs/varlet/commit/5ed0a5c))
-* fix(pagination): fix hover style ([1762dd8](https://github.com/varletjs/varlet/commit/1762dd8))
-* fix(site): remove hover style ([5ae0179](https://github.com/varletjs/varlet/commit/5ae0179))
-* fix(ui/action-sheet): fix disabled color ([ec70187](https://github.com/varletjs/varlet/commit/ec70187))
-* fix(ui/styles): fix disabled color vars ([f529c30](https://github.com/varletjs/varlet/commit/f529c30))
-* test(pagination): update snapshot ([45bbbd1](https://github.com/varletjs/varlet/commit/45bbbd1))
-* test(table): update snapshot ([18bfb73](https://github.com/varletjs/varlet/commit/18bfb73))
-
-
-
-## 1.22.0 (2021-10-08)
-
-* fix(ui/ripple, ui/menu): opt ripple animation, fix menu left error on transition animation running ([0f714de](https://github.com/varletjs/varlet/commit/0f714de))
-* refactor(ui,cli): fix dayjs module to esm, cli add clear plugin ([442b86e](https://github.com/varletjs/varlet/commit/442b86e))
-* v1.22.0 ([63ccd6e](https://github.com/varletjs/varlet/commit/63ccd6e))
-* fix: fix component path name ([bbd8b1f](https://github.com/varletjs/varlet/commit/bbd8b1f))
-* fix: remove console ([3ee3548](https://github.com/varletjs/varlet/commit/3ee3548))
-* fix(back-top): cover the style of button ([b5046ae](https://github.com/varletjs/varlet/commit/b5046ae))
-* fix(cli): fix dev server logger ([4e9f81d](https://github.com/varletjs/varlet/commit/4e9f81d))
-* fix(cli): fix dev server port log error ([2e82806](https://github.com/varletjs/varlet/commit/2e82806))
-* fix(cli): remove unuseful code and opt dev logger ([18da4b5](https://github.com/varletjs/varlet/commit/18da4b5))
-* fix(cli/gen): add default themes ([2d68e91](https://github.com/varletjs/varlet/commit/2d68e91))
-* fix(cli/site): increase app-bar vars weight ([b3e8d15](https://github.com/varletjs/varlet/commit/b3e8d15))
-* fix(input): text-color of disabled in safari ([dd33256](https://github.com/varletjs/varlet/commit/dd33256))
-* fix(pagination): add keydown event to switch page ([414decb](https://github.com/varletjs/varlet/commit/414decb))
-* fix(pagination): fix current and size not update ([463d891](https://github.com/varletjs/varlet/commit/463d891))
-* fix(pagination): remove padding ([83d214a](https://github.com/varletjs/varlet/commit/83d214a))
-* fix(ui/button): remove line-height ([c0d2422](https://github.com/varletjs/varlet/commit/c0d2422))
-* fix(ui/ripple): add style variables ([551a666](https://github.com/varletjs/varlet/commit/551a666))
-* fix(ui/skeleton): add avatar-border-radius css vars ([ddf259f](https://github.com/varletjs/varlet/commit/ddf259f))
-* fix(ui/table): add table-tbody-td-font-size variable ([861217e](https://github.com/varletjs/varlet/commit/861217e))
-* test(back-top): update snapshot ([8190a92](https://github.com/varletjs/varlet/commit/8190a92))
-* test(pagination): add test case ([b275bd8](https://github.com/varletjs/varlet/commit/b275bd8))
-* test(pagination): add test case of change current and size ([8f9f3ef](https://github.com/varletjs/varlet/commit/8f9f3ef))
-* test(pagination): update snapshot ([1d7ec93](https://github.com/varletjs/varlet/commit/1d7ec93))
-* test(table): add test case ([5bcac36](https://github.com/varletjs/varlet/commit/5bcac36))
-* test(ui/pagination): upgrade snap ([6f9aae3](https://github.com/varletjs/varlet/commit/6f9aae3))
-* test(ui/table): upgrade snap ([e7fe614](https://github.com/varletjs/varlet/commit/e7fe614))
-* test(ui/table): upgrade snap ([b084de2](https://github.com/varletjs/varlet/commit/b084de2))
-* docs: modify style of doc ([4a4d9d1](https://github.com/varletjs/varlet/commit/4a4d9d1))
-* docs: remove component title ([52fdfe4](https://github.com/varletjs/varlet/commit/52fdfe4))
-* docs(pagination): add disabeld example ([fffb4fc](https://github.com/varletjs/varlet/commit/fffb4fc))
-* docs(pagination): add i18n ([30b6bb6](https://github.com/varletjs/varlet/commit/30b6bb6))
-* docs(pagination): finish doc ([be1e85a](https://github.com/varletjs/varlet/commit/be1e85a))
-* docs(pagination): fix typo ([62cc8ea](https://github.com/varletjs/varlet/commit/62cc8ea))
-* docs(pagination): update en-US doc ([cfe2d7b](https://github.com/varletjs/varlet/commit/cfe2d7b))
-* docs(table): finish doc ([543bb3e](https://github.com/varletjs/varlet/commit/543bb3e))
-* docs(ui/app-bar): ui/app-bar ([33f6a61](https://github.com/varletjs/varlet/commit/33f6a61))
-* docs(ui/app-bar): ui/app-bar ([c23b9e1](https://github.com/varletjs/varlet/commit/c23b9e1))
-* docs(ui/table): fix docs ([329ce83](https://github.com/varletjs/varlet/commit/329ce83))
-* style(cli): optimize code style ([b1eaeb0](https://github.com/varletjs/varlet/commit/b1eaeb0))
-* style(cli/site): format code ([506f42f](https://github.com/varletjs/varlet/commit/506f42f))
-* chore: remove useless types ([628a951](https://github.com/varletjs/varlet/commit/628a951))
-* chore(cli): add progress-track config ([86fd046](https://github.com/varletjs/varlet/commit/86fd046))
-* chore(cli): add vue into devDep ([6b74530](https://github.com/varletjs/varlet/commit/6b74530))
-* chore(cli): fix vite version to 2.5.x ([aff33e6](https://github.com/varletjs/varlet/commit/aff33e6))
-* chore(cli): generator add preview command, fix preview command doc ([bc79b19](https://github.com/varletjs/varlet/commit/bc79b19))
-* chore(cli): upgrade vite version ([6338614](https://github.com/varletjs/varlet/commit/6338614))
-* chore(cli): upgrade vite version to 2.6.0 ([8f5d47a](https://github.com/varletjs/varlet/commit/8f5d47a))
-* chore(cli): upgrade vite version to 2.6.x ([53087fc](https://github.com/varletjs/varlet/commit/53087fc))
-* chore(cli): vite version change to 2.5.x ([d24a22e](https://github.com/varletjs/varlet/commit/d24a22e))
-* chore(root): remove build ui progress from bootstrap script ([1275a84](https://github.com/varletjs/varlet/commit/1275a84))
-* refactor: change position of nav ([4b49c77](https://github.com/varletjs/varlet/commit/4b49c77))
-* refactor(cli): add @varlet/markdown-vite-plugin into package.json ([019ba0c](https://github.com/varletjs/varlet/commit/019ba0c))
-* refactor(cli): build mode use relative base ([2b3624b](https://github.com/varletjs/varlet/commit/2b3624b))
-* refactor(cli): fix vue version ([fe44099](https://github.com/varletjs/varlet/commit/fe44099))
-* refactor(cli): resolve rollup build exception ([97121f3](https://github.com/varletjs/varlet/commit/97121f3))
-* refactor(cli/gen): upgrade vue version ([37af843](https://github.com/varletjs/varlet/commit/37af843))
-* refactor(cli/site): refactor site ([824f355](https://github.com/varletjs/varlet/commit/824f355))
-* refactor(cli/site): use lodash-es replace to lodash for site ([92fc6bb](https://github.com/varletjs/varlet/commit/92fc6bb))
-* refactor(pagination): optimize code ([1925bd0](https://github.com/varletjs/varlet/commit/1925bd0))
-* refactor(pagination): rename max-show-btn-count to max-pager-count ([8bc6aa7](https://github.com/varletjs/varlet/commit/8bc6aa7))
-* refactor(ui): remove useless code ([7fc83c1](https://github.com/varletjs/varlet/commit/7fc83c1))
-* refactor(ui/pagination): fix css ([b1e4046](https://github.com/varletjs/varlet/commit/b1e4046))
-* refactor(ui/pagination): optimize code ([f41ca24](https://github.com/varletjs/varlet/commit/f41ca24))
-* refactor(ui/pagination): refactor css style ([56a886a](https://github.com/varletjs/varlet/commit/56a886a))
-* feat: pagination ([62b27a8](https://github.com/varletjs/varlet/commit/62b27a8))
-* feat(cli): add preview command that can preview document site for production ([3fea1f1](https://github.com/varletjs/varlet/commit/3fea1f1))
-* feat(cli): migrate the build tool to vite ([c0eb94c](https://github.com/varletjs/varlet/commit/c0eb94c))
-* feat(pagination): add declaration file ([30fd32b](https://github.com/varletjs/varlet/commit/30fd32b))
-* feat(table): add declaration file ([30072d3](https://github.com/varletjs/varlet/commit/30072d3))
-* feat(ui/pagination): ui/pagination ([3f8e24c](https://github.com/varletjs/varlet/commit/3f8e24c))
-* feat(ui/table): ui/table ([abd3f7d](https://github.com/varletjs/varlet/commit/abd3f7d))
-
-
-
-## 1.21.0 (2021-09-22)
-
-* v1.21.0 ([e6dfe7a](https://github.com/varletjs/varlet/commit/e6dfe7a))
-* chore(cli): upgrade postcss version to 8.x ([89c77d4](https://github.com/varletjs/varlet/commit/89c77d4))
-* fix(index-bar): fix the bug of overlap ([52c1d9b](https://github.com/varletjs/varlet/commit/52c1d9b))
-* fix(index-bar): fix the scrolling bug when index-bar is not 0 away from the top ([2f28954](https://github.com/varletjs/varlet/commit/2f28954))
-* fix(types): add props type declaration ([a547cc9](https://github.com/varletjs/varlet/commit/a547cc9))
-* fix(ui/sticky): remove auto check sticky support statement ([8a35d98](https://github.com/varletjs/varlet/commit/8a35d98))
-* fix(ui/sticky): use scroll mode as sticky default mode ([3769f8b](https://github.com/varletjs/varlet/commit/3769f8b))
-* docs(index-bar): add css-mode description ([7e2db80](https://github.com/varletjs/varlet/commit/7e2db80))
-* docs(ui/sticky): fix docus ([646d326](https://github.com/varletjs/varlet/commit/646d326))
-* test(ui/list): upgrade test ([2d7393c](https://github.com/varletjs/varlet/commit/2d7393c))
-* feat(ui/sticky): add disabled,css-mode props ([5dbfbca](https://github.com/varletjs/varlet/commit/5dbfbca))
-* refactor(step): optimize code ([ae28ce2](https://github.com/varletjs/varlet/commit/ae28ce2))
-
-
-
-## 1.20.0 (2021-09-15)
-
-* v1.20.0 ([ec0aa70](https://github.com/varletjs/varlet/commit/ec0aa70))
-* refactor(cli): add pc component preview to generators ([03618fd](https://github.com/varletjs/varlet/commit/03618fd))
-* feat(cli): support pc component preview ([be463ad](https://github.com/varletjs/varlet/commit/be463ad))
-
-
-
-## 1.19.0 (2021-09-13)
-
-* docs(ui,cli): upgrade docs ([14ad2f8](https://github.com/varletjs/varlet/commit/14ad2f8))
-* docs(ui/picker,ui/snackbar): fix docs ([759f369](https://github.com/varletjs/varlet/commit/759f369))
-* v1.19.0 ([8f36f46](https://github.com/varletjs/varlet/commit/8f36f46))
-* fix(cli): add public folder to linter ignore ([d10a799](https://github.com/varletjs/varlet/commit/d10a799))
-* fix(cli): fix prepare scripts to husky ([d0ff087](https://github.com/varletjs/varlet/commit/d0ff087))
-* fix(cli): fix the parameter passing method of webpack-dev-server ([0d88843](https://github.com/varletjs/varlet/commit/0d88843))
-* fix(cli): optimize site style ([f789d77](https://github.com/varletjs/varlet/commit/f789d77))
-* fix(cli): optimize site style ([9287d7b](https://github.com/varletjs/varlet/commit/9287d7b))
-* fix(cli/gen): localize static resources ([80f9097](https://github.com/varletjs/varlet/commit/80f9097))
-* fix(doc): fix typo ([6371e4e](https://github.com/varletjs/varlet/commit/6371e4e))
-* chore: remove unnecessary arg ([55b5979](https://github.com/varletjs/varlet/commit/55b5979))
-* chore(cli): release it move to cli dep ([6a5d7d3](https://github.com/varletjs/varlet/commit/6a5d7d3))
-* chore(cli/gen): remove unuseful code ([d990a26](https://github.com/varletjs/varlet/commit/d990a26))
-* docs(cli): add cli readme link to generators docs ([afd8c39](https://github.com/varletjs/varlet/commit/afd8c39))
-* docs(cli): add readme ([fac86db](https://github.com/varletjs/varlet/commit/fac86db))
-* docs(cli): fix docs ([6b95347](https://github.com/varletjs/varlet/commit/6b95347))
-* docs(divider): fix the language of code template ([d9bec6e](https://github.com/varletjs/varlet/commit/d9bec6e))
-* refactor(site): modify the code theme of doc ([b49f6e2](https://github.com/varletjs/varlet/commit/b49f6e2))
-* feat(cli): add release for template ([5078838](https://github.com/varletjs/varlet/commit/5078838))
-* feat(cli): webpack-dev-server upgrade to 4.x version ([4d1fe95](https://github.com/varletjs/varlet/commit/4d1fe95))
-
-
-
-## <small>1.18.1 (2021-09-10)</small>
-
-* v1.18.1 ([1f474cb](https://github.com/varletjs/varlet/commit/1f474cb))
-* fix(cli): optimize site style and compile style reg ([df5e173](https://github.com/varletjs/varlet/commit/df5e173))
-* chore: upgrade highlight.js ([da1698b](https://github.com/varletjs/varlet/commit/da1698b))
-
-
-
-## 1.18.0 (2021-09-10)
-
-* v1.18.0 ([2db672e](https://github.com/varletjs/varlet/commit/2db672e))
-* fix(cli): babel configuration-related path optimization ([b79db48](https://github.com/varletjs/varlet/commit/b79db48))
-* fix(cli/gen): remove unuseful config ([2085b39](https://github.com/varletjs/varlet/commit/2085b39))
-* feat(cli): add version command ([c5860c8](https://github.com/varletjs/varlet/commit/c5860c8))
-
-
-
-## <small>1.17.4 (2021-09-09)</small>
-
-* v1.17.4 ([52c7e08](https://github.com/varletjs/varlet/commit/52c7e08))
-* fix(cli): add conventional-changelog-cli ([7708781](https://github.com/varletjs/varlet/commit/7708781))
-
-
-
-## <small>1.17.3 (2021-09-09)</small>
-
-* v1.17.3 ([3dc94ef](https://github.com/varletjs/varlet/commit/3dc94ef))
-* fix(cli): fix commitlint config, add changelog command ([5688425](https://github.com/varletjs/varlet/commit/5688425))
-
-
-
-## <small>1.17.2 (2021-09-09)</small>
-
-* v1.17.2 ([bcb997a](https://github.com/varletjs/varlet/commit/bcb997a))
-* fix(cli): add eslint,stylelint ([e393ea8](https://github.com/varletjs/varlet/commit/e393ea8))
-
-
-
-## <small>1.17.1 (2021-09-09)</small>
-
-* v1.17.1 ([b212103](https://github.com/varletjs/varlet/commit/b212103))
-* fix(cli): fix generators files publish error ([29c014d](https://github.com/varletjs/varlet/commit/29c014d))
-
-
-
-## 1.17.0 (2021-09-09)
-
-* v1.17.0 ([42905fe](https://github.com/varletjs/varlet/commit/42905fe))
-* fix(cli): generators add commitlint ([32dbf2a](https://github.com/varletjs/varlet/commit/32dbf2a))
-* feat(cli): add gen command ([abdec46](https://github.com/varletjs/varlet/commit/abdec46))
-
-
-
-## <small>1.16.3 (2021-09-09)</small>
-
-* fix(cli, markdown-loader): optimize generators, markdown-loader lock highlight version ([9b3e3bb](https://github.com/varletjs/varlet/commit/9b3e3bb))
-* fix(cli,markdown-loader): markdown-loader add style option, linter ignore generators ([7ca8844](https://github.com/varletjs/varlet/commit/7ca8844))
-* v1.16.3 ([1a650a5](https://github.com/varletjs/varlet/commit/1a650a5))
-* fix(cli): add site theme config property ([9bf4945](https://github.com/varletjs/varlet/commit/9bf4945))
-* fix(cli): fix generators progress color ([7e62811](https://github.com/varletjs/varlet/commit/7e62811))
-* fix(cli): handle sfc style block's lang non-existent ([96c8551](https://github.com/varletjs/varlet/commit/96c8551))
-* fix(cli): optimized Baidu statistics, add varlet-cli-app generators template, fix cli depend version ([703517e](https://github.com/varletjs/varlet/commit/703517e))
-* fix(cli): themes add progress color config ([f804915](https://github.com/varletjs/varlet/commit/f804915))
-* fix(cli/compile-types): fix the component name of types ([4d999ee](https://github.com/varletjs/varlet/commit/4d999ee))
-* chore: fix the typo ([11b475c](https://github.com/varletjs/varlet/commit/11b475c))
-* chore(config): create a issue-template ([6188f6f](https://github.com/varletjs/varlet/commit/6188f6f))
-* chore(config): create pull-requeset tempalte and contributing guide ([510d747](https://github.com/varletjs/varlet/commit/510d747))
-* chore(root): prettier ignore generators ([37487d0](https://github.com/varletjs/varlet/commit/37487d0))
-* test(form): update snapshot ([6c57ec9](https://github.com/varletjs/varlet/commit/6c57ec9))
-* refactor(slider): optimize code ([487be96](https://github.com/varletjs/varlet/commit/487be96))
-* perf(site): remove useless mobile image ([c55d7cf](https://github.com/varletjs/varlet/commit/c55d7cf))
-* docs(docs): import on demand docs fix ([783d549](https://github.com/varletjs/varlet/commit/783d549))
-
-
-
-## <small>1.16.2 (2021-09-01)</small>
-
-* v1.16.2 ([89d2548](https://github.com/varletjs/varlet/commit/89d2548))
-* fix(cli): add depend ([74cc717](https://github.com/varletjs/varlet/commit/74cc717))
-* fix(cli): optimize reference ([eba1951](https://github.com/varletjs/varlet/commit/eba1951))
-
-
-
-## <small>1.16.1 (2021-08-31)</small>
-
-* v1.16.1 ([a76838e](https://github.com/varletjs/varlet/commit/a76838e))
-* fix(markdown-loader): fix the bug of parse doc cause by template string ([6e35002](https://github.com/varletjs/varlet/commit/6e35002))
-
-
-
-## 1.16.0 (2021-08-30)
-
-* v1.16.0 ([9556795](https://github.com/varletjs/varlet/commit/9556795))
-* fix(cli): bump version ([3da0433](https://github.com/varletjs/varlet/commit/3da0433))
-* fix(cli/eslint): add ext ([6fa3971](https://github.com/varletjs/varlet/commit/6fa3971))
-* fix(compile): remove unnecessary camelize method ([e9fd509](https://github.com/varletjs/varlet/commit/e9fd509))
-* fix(site): remove import ([2b6c499](https://github.com/varletjs/varlet/commit/2b6c499))
-* refactor(cli): revert compileLibraryEntry ([faadba9](https://github.com/varletjs/varlet/commit/faadba9))
-* refactor(cli/compile-umd): optimize the logic of log error ([2397b1e](https://github.com/varletjs/varlet/commit/2397b1e))
-* refactor(markdown-loader): optimize code ([0dd413e](https://github.com/varletjs/varlet/commit/0dd413e))
-* refactor(site): add ts-ignore ([a3e7402](https://github.com/varletjs/varlet/commit/a3e7402))
-* feat(site): add theme config ([1d2c04c](https://github.com/varletjs/varlet/commit/1d2c04c))
-* chore: lint code and remove useless code ([46ff026](https://github.com/varletjs/varlet/commit/46ff026))
-* chore(cli/compile-script): modify the template of ESModule entry ([551d383](https://github.com/varletjs/varlet/commit/551d383))
-* chore(cli/compile-sfc): delete unnecessary remove func ([03a5370](https://github.com/varletjs/varlet/commit/03a5370))
-* chore(root): pkg.json ([0ba95ef](https://github.com/varletjs/varlet/commit/0ba95ef))
-
-
-
-## 1.15.0 (2021-08-13)
-
-* v1.15.0 ([b200fed](https://github.com/varletjs/varlet/commit/b200fed))
-* refactor(time-picker): optimize the logic of disable ([83b08b7](https://github.com/varletjs/varlet/commit/83b08b7))
-* feat(time-picker): add allowedTime ([b86bd84](https://github.com/varletjs/varlet/commit/b86bd84))
-* chore(version): upgrade version ([b103fde](https://github.com/varletjs/varlet/commit/b103fde))
-
-
-
-## <small>1.14.2 (2021-08-12)</small>
-
-* v1.14.2 ([ee9c386](https://github.com/varletjs/varlet/commit/ee9c386))
-* fix(ui/input): when the value is a number, the input type is not number ([34d750a](https://github.com/varletjs/varlet/commit/34d750a))
-* refactor: remove useless code and change the way of import type ([867fdb8](https://github.com/varletjs/varlet/commit/867fdb8))
-* refactor(cli/create): add locale template ([a0505b9](https://github.com/varletjs/varlet/commit/a0505b9))
-* chore(vscode-extension): upgrade version of webpack ([dac8b14](https://github.com/varletjs/varlet/commit/dac8b14))
-
-
-
-## <small>1.14.1 (2021-08-04)</small>
-
-* v1.14.1 ([f088d98](https://github.com/varletjs/varlet/commit/f088d98))
-* fix: optimize style of slider example ([8940bb6](https://github.com/varletjs/varlet/commit/8940bb6))
-* fix(ui/image-preview): tap can't trigger close ([ecf7afe](https://github.com/varletjs/varlet/commit/ecf7afe))
-
-
-
-## 1.14.0 (2021-08-04)
-
-* v1.14.0 ([da6ebaa](https://github.com/varletjs/varlet/commit/da6ebaa))
-* fix(ui/image-preview): restore the default behavior of the browser picture and prohibit dragging ([4d5cbc6](https://github.com/varletjs/varlet/commit/4d5cbc6))
-* feat(slider): add button slot ([a912564](https://github.com/varletjs/varlet/commit/a912564))
-
-
-
-## <small>1.13.5 (2021-07-31)</small>
-
-* v1.13.5 ([9777f62](https://github.com/varletjs/varlet/commit/9777f62))
-* test(ui/uploader): fix mock fileReader to class ([f8ce7ac](https://github.com/varletjs/varlet/commit/f8ce7ac))
-
-
-
-## <small>1.13.4 (2021-07-31)</small>
-
-* v1.13.4 ([823942b](https://github.com/varletjs/varlet/commit/823942b))
-* fix(cli): fix loose error in windows ([2a3f968](https://github.com/varletjs/varlet/commit/2a3f968))
-* fix(ui): fix babel config ([e5e4128](https://github.com/varletjs/varlet/commit/e5e4128))
-* fix(ui): fix browserlist ([3f4cfeb](https://github.com/varletjs/varlet/commit/3f4cfeb))
-* refactor(cli): remove babel-transform-runtime ([f21a082](https://github.com/varletjs/varlet/commit/f21a082))
-* style(cli): remove console ([cd2d4db](https://github.com/varletjs/varlet/commit/cd2d4db))
-* docs(ui): fix docus ([c3baf56](https://github.com/varletjs/varlet/commit/c3baf56))
-* perf(cli): perf build entry ([19f700a](https://github.com/varletjs/varlet/commit/19f700a))
-
-
-
-## <small>1.13.3 (2021-07-31)</small>
-
-* v1.13.3 ([fb8c5a5](https://github.com/varletjs/varlet/commit/fb8c5a5))
-* chore(ui): bundle error repub ([5531476](https://github.com/varletjs/varlet/commit/5531476))
-* fix(cli): jsx tsx is not processed as an index ([4079361](https://github.com/varletjs/varlet/commit/4079361))
-
-
-
-## <small>1.13.1 (2021-07-31)</small>
-
-* v1.13.1 ([103be9e](https://github.com/varletjs/varlet/commit/103be9e))
-* fix(ui/swipe): the screen size changes, the size of the carousel will not change (#112) ([7110457](https://github.com/varletjs/varlet/commit/7110457)), closes [#112](https://github.com/varletjs/varlet/issues/112)
-* chore: remove duplication .varlet ([59f5aaa](https://github.com/varletjs/varlet/commit/59f5aaa))
-* chore: remove unused code ([7678e92](https://github.com/varletjs/varlet/commit/7678e92))
-* refactor(snackbar): replace render to tsx ([c30a970](https://github.com/varletjs/varlet/commit/c30a970))
-* style(cli): clean code ([d903fb6](https://github.com/varletjs/varlet/commit/d903fb6))
-
-
-
-## 1.13.0 (2021-07-30)
-
-* v1.13.0 ([0040c6c](https://github.com/varletjs/varlet/commit/0040c6c))
-* chore(cli): upgrade ora ([8b5252f](https://github.com/varletjs/varlet/commit/8b5252f))
-* chore(root): move commitlint and lint-staged to cli ([cdddc66](https://github.com/varletjs/varlet/commit/cdddc66))
-* chore(root): optimized build script tips ([aa5b3fe](https://github.com/varletjs/varlet/commit/aa5b3fe))
-* fix: modify the style of indexbar ([ac268f1](https://github.com/varletjs/varlet/commit/ac268f1))
-* fix(cli): add the dev command ipv4 prompt, Optimization tips ([e86313b](https://github.com/varletjs/varlet/commit/e86313b))
-* feat(cli): support extraction of style dependencies in scripts, and optimize function definitions ([4d7d76f](https://github.com/varletjs/varlet/commit/4d7d76f))
-* refactor(cli/site): the mobile homepage is included in the cli ([2c758d0](https://github.com/varletjs/varlet/commit/2c758d0))
-* style: remove conflict ([3a702bb](https://github.com/varletjs/varlet/commit/3a702bb))
-
-
-
-## <small>1.11.1 (2021-07-29)</small>
-
-* v1.11.1 ([bde4c2e](https://github.com/varletjs/varlet/commit/bde4c2e))
-* fix(ui/sticky): fix sticky element size error in keep-alive ([3c269a9](https://github.com/varletjs/varlet/commit/3c269a9))
-
-
-
-## 1.12.0 (2021-07-29)
-
-* v1.11.1 ([d74bbb6](https://github.com/varletjs/varlet/commit/d74bbb6))
-* v1.12.0 ([c53d2c8](https://github.com/varletjs/varlet/commit/c53d2c8))
-* feat(cli): add babel-presets ([1c5825d](https://github.com/varletjs/varlet/commit/1c5825d))
-* feat(cli): support jsx tsx ([8d8c946](https://github.com/varletjs/varlet/commit/8d8c946))
-* feat(cli): support jsx tsx ([132fade](https://github.com/varletjs/varlet/commit/132fade))
-* feat(cli/site): support hmr ([5ff00d6](https://github.com/varletjs/varlet/commit/5ff00d6))
-* chore: remove console ([1900210](https://github.com/varletjs/varlet/commit/1900210))
-* chore: remove path of linter ignore ([49904c2](https://github.com/varletjs/varlet/commit/49904c2))
-* chore: upgrade husky ([fbbd235](https://github.com/varletjs/varlet/commit/fbbd235))
-* chore(root): add .varlet ignore ([940d0e3](https://github.com/varletjs/varlet/commit/940d0e3))
-* fix(cli/lint): fix the bug of cannot get warning message ([ba849b3](https://github.com/varletjs/varlet/commit/ba849b3))
-* fix(cli/site): fix build site fail ([fffbb41](https://github.com/varletjs/varlet/commit/fffbb41))
-* fix(ui/input): fix the wrong style of input ([0cd5752](https://github.com/varletjs/varlet/commit/0cd5752))
-* fix(ui/sticky): fix sticky element size error in keep-alive ([9f30544](https://github.com/varletjs/varlet/commit/9f30544))
-* refactor(cli/site): refactor relation of pc and mobile ([96ef860](https://github.com/varletjs/varlet/commit/96ef860))
-* refactor(cli/site): refactor site ([fb51037](https://github.com/varletjs/varlet/commit/fb51037))
-* refactor(cli/site): refactor site ([c1696fe](https://github.com/varletjs/varlet/commit/c1696fe))
-
-
-
-## <small>1.11.1 (2021-07-29)</small>
-
-* v1.11.1 ([bde4c2e](https://github.com/varletjs/varlet/commit/bde4c2e))
-* fix(ui/sticky): fix sticky element size error in keep-alive ([3c269a9](https://github.com/varletjs/varlet/commit/3c269a9))
-
-
-
-## 1.11.0 (2021-07-28)
-
-* v1.11.0 ([4f698d5](https://github.com/varletjs/varlet/commit/4f698d5))
-* docs: 文档css优化 ([c22a791](https://github.com/varletjs/varlet/commit/c22a791))
-* docs: 文档css优化 ([96e06ab](https://github.com/varletjs/varlet/commit/96e06ab))
-* docs(index-bar): add duration prop for example ([b95c380](https://github.com/varletjs/varlet/commit/b95c380))
-* docs(ui/tabs): fix docs ([4859358](https://github.com/varletjs/varlet/commit/4859358))
-* docs(ui/tabs): fix example ([e17a87b](https://github.com/varletjs/varlet/commit/e17a87b))
-* docs(ui/tabs): optimize example ([d76bbcf](https://github.com/varletjs/varlet/commit/d76bbcf))
-* feat(index-bar): add duration prop ([d115f84](https://github.com/varletjs/varlet/commit/d115f84))
-* feat(index-bar): add hide-list prop ([a433b08](https://github.com/varletjs/varlet/commit/a433b08))
-* style(cli/site): remove console ([b38aa82](https://github.com/varletjs/varlet/commit/b38aa82))
-* refactor(cli): create the config file dynamically and modify the webpack alias of config ([72de554](https://github.com/varletjs/varlet/commit/72de554))
-* refactor(cli): create the config file dynamically and modify the webpack alias of config ([b78c992](https://github.com/varletjs/varlet/commit/b78c992))
-* refactor(cli/site): refactor site ([c3cb4e5](https://github.com/varletjs/varlet/commit/c3cb4e5))
-* refactor(loading): optimize code ([b7a6653](https://github.com/varletjs/varlet/commit/b7a6653))
-* refactor(ui/home): modify config import method ([a5c53ad](https://github.com/varletjs/varlet/commit/a5c53ad))
-* refactor(ui/home): modify config import method ([6277737](https://github.com/varletjs/varlet/commit/6277737))
-* chore: ignore the config file of dynamically create ([1431065](https://github.com/varletjs/varlet/commit/1431065))
-* chore: ignore the config file of dynamically create ([14fa871](https://github.com/varletjs/varlet/commit/14fa871))
-* test(index-bar): update test ([1e3d671](https://github.com/varletjs/varlet/commit/1e3d671))
-* fix(index-bar): fix the bug of trigger two times change event after click anchor ([4282788](https://github.com/varletjs/varlet/commit/4282788))
-
-
-
-## 1.10.0 (2021-07-22)
-
-* v1.10.0 ([eb78712](https://github.com/varletjs/varlet/commit/eb78712))
-* docs(ui/index-bar): optimize docs ([2cb47d2](https://github.com/varletjs/varlet/commit/2cb47d2))
-* fix(app-bar): remove unused component ([4c70dbc](https://github.com/varletjs/varlet/commit/4c70dbc))
-* fix(style): remove unused component ([722058d](https://github.com/varletjs/varlet/commit/722058d))
-* fix(ui/swipe): fix swipe scroll error ([a0c197c](https://github.com/varletjs/varlet/commit/a0c197c))
-* test(ui/list): upgrade snapshot ([c6e01c3](https://github.com/varletjs/varlet/commit/c6e01c3))
-* feat(ui/tabs-items): add scrollIntoView, distance api ([a26f329](https://github.com/varletjs/varlet/commit/a26f329))
-* feat(ui/tabs-items): use carousel to replace the original design ([8dd346e](https://github.com/varletjs/varlet/commit/8dd346e))
-
-
-
-## <small>1.9.7 (2021-07-21)</small>
-
-* v1.9.7 ([b0d506d](https://github.com/varletjs/varlet/commit/b0d506d))
-* fix(ui/locale): expose useLocale api ([2bf30e7](https://github.com/varletjs/varlet/commit/2bf30e7))
-
-
-
-## <small>1.9.6 (2021-07-20)</small>
-
-* v1.9.6 ([42b477a](https://github.com/varletjs/varlet/commit/42b477a))
-* fix(snackbar): add default value for options ([18e6ae1](https://github.com/varletjs/varlet/commit/18e6ae1))
-* fix(snackbar): fix the wrong style of snackbar ([5b0ae93](https://github.com/varletjs/varlet/commit/5b0ae93))
-* chore(ui/package.json): drag cli into dev dep ([5e83e31](https://github.com/varletjs/varlet/commit/5e83e31))
-
-
-
-## <small>1.9.5 (2021-07-19)</small>
-
-* v1.9.5 ([a140318](https://github.com/varletjs/varlet/commit/a140318))
-* fix: modify the logic of create routes ([8c00955](https://github.com/varletjs/varlet/commit/8c00955))
-* fix: remove unnecessary code ([578b842](https://github.com/varletjs/varlet/commit/578b842))
-* fix(cli): add ./src ([0f46b0a](https://github.com/varletjs/varlet/commit/0f46b0a))
-* fix(cli): fix build error ([27f1947](https://github.com/varletjs/varlet/commit/27f1947))
-* fix(cli): fix eslint pattern ([ae93da1](https://github.com/varletjs/varlet/commit/ae93da1))
-* fix(cli): modify the logic of create route ([d60158a](https://github.com/varletjs/varlet/commit/d60158a))
-* fix(ui/button): button add white-space nowrap ([97626e1](https://github.com/varletjs/varlet/commit/97626e1))
-* chore: ignore icons/dist ([13a7972](https://github.com/varletjs/varlet/commit/13a7972))
-* chore(root): optimize workflows build speed ([fff494d](https://github.com/varletjs/varlet/commit/fff494d))
-* chore(ui): upgrade package.json ([d16f3a8](https://github.com/varletjs/varlet/commit/d16f3a8))
-* revert: revert the commit of modify routes ([d26c420](https://github.com/varletjs/varlet/commit/d26c420))
-* docs(root): upgrade readme ([0c5545e](https://github.com/varletjs/varlet/commit/0c5545e))
-
-
-
-## <small>1.9.4 (2021-07-17)</small>
-
-* v1.9.4 ([a5e8a93](https://github.com/varletjs/varlet/commit/a5e8a93))
-* chore(ui): update package.json ([112fa39](https://github.com/varletjs/varlet/commit/112fa39))
-* fix(cli): fix gen style error ([4f7dade](https://github.com/varletjs/varlet/commit/4f7dade))
-
-
-
-## <small>1.9.2 (2021-07-17)</small>
-
-* v1.9.2 ([83258b5](https://github.com/varletjs/varlet/commit/83258b5))
-* chore(ui/package.json): publish error republish ([139e524](https://github.com/varletjs/varlet/commit/139e524))
-
-
-
-## 1.9.0 (2021-07-17)
-
-* v1.9.0 ([56b1f5b](https://github.com/varletjs/varlet/commit/56b1f5b))
-* chore: add homepage ([22a3124](https://github.com/varletjs/varlet/commit/22a3124))
-* chore(cli): add lint command ([4d7ddd5](https://github.com/varletjs/varlet/commit/4d7ddd5))
-* chore(cli): add prettier task ([a27b49d](https://github.com/varletjs/varlet/commit/a27b49d))
-* chore(dep): upgrade dep ([61b68de](https://github.com/varletjs/varlet/commit/61b68de))
-* chore(root): add compile job ([4440a95](https://github.com/varletjs/varlet/commit/4440a95))
-* chore(root): add deploy site workflows ([22d33c9](https://github.com/varletjs/varlet/commit/22d33c9))
-* chore(root): add github workflows ([064d49e](https://github.com/varletjs/varlet/commit/064d49e))
-* chore(root): add lint to workflows ([44ce7ef](https://github.com/varletjs/varlet/commit/44ce7ef))
-* chore(root): add main branch event into deploy-site-sync-gitee ([54a9e19](https://github.com/varletjs/varlet/commit/54a9e19))
-* chore(root): add release-tag workflows ([d60207d](https://github.com/varletjs/varlet/commit/d60207d))
-* chore(root): add report coverage to Codecov into workflows ([a23de61](https://github.com/varletjs/varlet/commit/a23de61))
-* chore(root): ci/cd ([bb1bec6](https://github.com/varletjs/varlet/commit/bb1bec6))
-* chore(root): fix workflows ([cf2cf3e](https://github.com/varletjs/varlet/commit/cf2cf3e))
-* chore(root): fix workflows ([c05e01a](https://github.com/varletjs/varlet/commit/c05e01a))
-* chore(root): fix workflows ([afc89b2](https://github.com/varletjs/varlet/commit/afc89b2))
-* chore(root): fix workflows ([ee880b4](https://github.com/varletjs/varlet/commit/ee880b4))
-* chore(root): fix workflows ([e69467c](https://github.com/varletjs/varlet/commit/e69467c))
-* chore(root): fix workflows ([5c2751e](https://github.com/varletjs/varlet/commit/5c2751e))
-* chore(root): fix workflows ([c7b59ba](https://github.com/varletjs/varlet/commit/c7b59ba))
-* chore(root): fix workflows ([eba1497](https://github.com/varletjs/varlet/commit/eba1497))
-* chore(root): fix workflows ([e99a9e9](https://github.com/varletjs/varlet/commit/e99a9e9))
-* chore(root): fix workflows ([f9cc4f8](https://github.com/varletjs/varlet/commit/f9cc4f8))
-* chore(root): fix yarn.lock ([7465828](https://github.com/varletjs/varlet/commit/7465828))
-* chore(root): rename workflow ([54a66a7](https://github.com/varletjs/varlet/commit/54a66a7))
-* chore(ui): fix package.json ([c3f71da](https://github.com/varletjs/varlet/commit/c3f71da))
-* chore(ui/package.json): remove cjs support ([e193980](https://github.com/varletjs/varlet/commit/e193980))
-* docs: 文档部分引入路径修改 ([b36665f](https://github.com/varletjs/varlet/commit/b36665f))
-* docs(app-bar): add API title ([78d59ec](https://github.com/varletjs/varlet/commit/78d59ec))
-* docs(ui/docs): optimize importOnDemand documentation ([e5e006f](https://github.com/varletjs/varlet/commit/e5e006f))
-* refactor(cli): add copy-webpack-plugin ([5907a9f](https://github.com/varletjs/varlet/commit/5907a9f))
-* refactor(cli): clean code ([7638540](https://github.com/varletjs/varlet/commit/7638540))
-* refactor(cli): optimize compile progress ([39635e5](https://github.com/varletjs/varlet/commit/39635e5))
-* refactor(cli): optimize jest error handler ([b7e873a](https://github.com/varletjs/varlet/commit/b7e873a))
-* refactor(cli): remove repeat code ([5dde79b](https://github.com/varletjs/varlet/commit/5dde79b))
-* refactor(ui/checkbox-group): fix example ([0612760](https://github.com/varletjs/varlet/commit/0612760))
-* refactor(ui/lazy): remove io mode ([6373c01](https://github.com/varletjs/varlet/commit/6373c01))
-* refactor(ui/loading): fix loading style ([8c1665c](https://github.com/varletjs/varlet/commit/8c1665c))
-* fix: adjust the execution position of the remove function ([7fc61de](https://github.com/varletjs/varlet/commit/7fc61de))
-* fix: enhance type import ([ae000e5](https://github.com/varletjs/varlet/commit/ae000e5))
-* fix: remove unnecessary inheritAttrs prop ([91d9503](https://github.com/varletjs/varlet/commit/91d9503))
-* fix: remove unnecessary inheritAttrs prop and update way of import type ([72522ba](https://github.com/varletjs/varlet/commit/72522ba))
-* fix: remove unnecessary less import ([a10ee49](https://github.com/varletjs/varlet/commit/a10ee49))
-* fix(ui/swipe): fix vertical swipe indicator margin error ([a23a266](https://github.com/varletjs/varlet/commit/a23a266))
-* feat(extension): add siteMap ([a01d726](https://github.com/varletjs/varlet/commit/a01d726))
-* style(all): format code ([8ab48fb](https://github.com/varletjs/varlet/commit/8ab48fb))
-* test(snackbar): update test ([2c119c6](https://github.com/varletjs/varlet/commit/2c119c6))
-
-
-
-## 1.8.0 (2021-07-02)
-
-* docs:fix bug of loading doc ([d2f39b9](https://github.com/varletjs/varlet/commit/d2f39b9))
-* docs(ui/badge,chip): fix docs ([3317b67](https://github.com/varletjs/varlet/commit/3317b67))
-* docs(ui/switch, rate): fix docs ([fab1970](https://github.com/varletjs/varlet/commit/fab1970))
-* refactor(ui/action-sheet,app-bar,badge,cell): support style-provider ([e073b7f](https://github.com/varletjs/varlet/commit/e073b7f))
-* refactor(ui/back-top,chip): support style-provider ([0a8e0e0](https://github.com/varletjs/varlet/commit/0a8e0e0))
-* refactor(ui/counter,date-picker,dialog): support style-provider ([1864df6](https://github.com/varletjs/varlet/commit/1864df6))
-* refactor(ui/divider,form,form-details,icon,index-bar): support style-provider ([29eeb08](https://github.com/varletjs/varlet/commit/29eeb08))
-* refactor(ui/popup,rate): support style-provider ([1e09c04](https://github.com/varletjs/varlet/commit/1e09c04))
-* refactor(ui/skeleton, snackbar): support style-provider ([8c0f36f](https://github.com/varletjs/varlet/commit/8c0f36f))
-* Update README.en-US.md ([b653e47](https://github.com/varletjs/varlet/commit/b653e47))
-* Update README.md ([9a073b4](https://github.com/varletjs/varlet/commit/9a073b4))
-* v1.8.0 ([474af8b](https://github.com/varletjs/varlet/commit/474af8b))
-* refactor: remove types of theme ([b95531f](https://github.com/varletjs/varlet/commit/b95531f))
-* refactor: rename themeVars to styleVars ([194737a](https://github.com/varletjs/varlet/commit/194737a))
-* refactor(cli): support vite-plugin-components ([6da36a1](https://github.com/varletjs/varlet/commit/6da36a1))
-* refactor(progress): support style-provider ([f0ca92f](https://github.com/varletjs/varlet/commit/f0ca92f))
-* refactor(pull-refresh): support style-provider ([aeaa74e](https://github.com/varletjs/varlet/commit/aeaa74e))
-* refactor(slider): add cssvar and update snapshot ([4417611](https://github.com/varletjs/varlet/commit/4417611))
-* refactor(snackbar): add props types and modify type of the snackbar options ([ad8eae9](https://github.com/varletjs/varlet/commit/ad8eae9))
-* refactor(ui/button): fix less ([75749c8](https://github.com/varletjs/varlet/commit/75749c8))
-* refactor(ui/button): support style-provider ([2a10f53](https://github.com/varletjs/varlet/commit/2a10f53))
-* refactor(ui/card): support style-provider for card ([9ea98ba](https://github.com/varletjs/varlet/commit/9ea98ba))
-* refactor(ui/checkbox): replace less-vars with css-vars ([eb731f7](https://github.com/varletjs/varlet/commit/eb731f7))
-* refactor(ui/cli): upgrade tpl ([68b3339](https://github.com/varletjs/varlet/commit/68b3339))
-* refactor(ui/collapse): support style-provider ([ea5f64c](https://github.com/varletjs/varlet/commit/ea5f64c))
-* refactor(ui/components): add internal export component ([620ba66](https://github.com/varletjs/varlet/commit/620ba66))
-* refactor(ui/config): fix host ([770d6d2](https://github.com/varletjs/varlet/commit/770d6d2))
-* refactor(ui/image-preview):  Delete useless variables swipe and unused watch ([8570cdb](https://github.com/varletjs/varlet/commit/8570cdb))
-* refactor(ui/image-preview): optimize double touch trigger ([6c8ee94](https://github.com/varletjs/varlet/commit/6c8ee94))
-* refactor(ui/image-preview): refactor image-preview ([47131ba](https://github.com/varletjs/varlet/commit/47131ba))
-* refactor(ui/input): support style-provider ([f6fd92b](https://github.com/varletjs/varlet/commit/f6fd92b))
-* refactor(ui/list): support style-provider ([e498378](https://github.com/varletjs/varlet/commit/e498378))
-* refactor(ui/menu): support style-provider for menu ([b97eda5](https://github.com/varletjs/varlet/commit/b97eda5))
-* refactor(ui/picker): support style-provider ([c21d6c2](https://github.com/varletjs/varlet/commit/c21d6c2))
-* refactor(ui/radio): add support style-provider for radio ([2433b58](https://github.com/varletjs/varlet/commit/2433b58))
-* refactor(ui/radio): fix less ([017d639](https://github.com/varletjs/varlet/commit/017d639))
-* refactor(ui/select): fix style ([5e035d5](https://github.com/varletjs/varlet/commit/5e035d5))
-* refactor(ui/select): support style-provider for select ([91d7e74](https://github.com/varletjs/varlet/commit/91d7e74))
-* refactor(ui/site): optimize site ([0740817](https://github.com/varletjs/varlet/commit/0740817))
-* refactor(ui/slider): support style-provider for slider ([db388bf](https://github.com/varletjs/varlet/commit/db388bf))
-* refactor(ui/step): support style-provider for step ([db55174](https://github.com/varletjs/varlet/commit/db55174))
-* refactor(ui/style-provider): refactor code ([1b4534f](https://github.com/varletjs/varlet/commit/1b4534f))
-* refactor(ui/swipe): support style-provider for swipe ([bf6a66a](https://github.com/varletjs/varlet/commit/bf6a66a))
-* refactor(ui/swipe): support style-provider for swipe ([f6cc15b](https://github.com/varletjs/varlet/commit/f6cc15b))
-* refactor(ui/switch): support style-provider for switch ([56631de](https://github.com/varletjs/varlet/commit/56631de))
-* refactor(ui/tab-item): support style-provider ([c9ff8d6](https://github.com/varletjs/varlet/commit/c9ff8d6))
-* refactor(ui/tab): support style-provider for tab ([2f4cc7c](https://github.com/varletjs/varlet/commit/2f4cc7c))
-* refactor(ui/tabs): support style-provider for card ([851ecbf](https://github.com/varletjs/varlet/commit/851ecbf))
-* refactor(ui/time-picker): support style-provider ([5e84e9f](https://github.com/varletjs/varlet/commit/5e84e9f))
-* refactor(ui/types): optimize types ([f526771](https://github.com/varletjs/varlet/commit/f526771))
-* refactor(ui/types): support vite-plugin-components ([4452938](https://github.com/varletjs/varlet/commit/4452938))
-* refactor(ui/uploader): format code ([0a0f896](https://github.com/varletjs/varlet/commit/0a0f896))
-* refactor(ui/uploader): support style-provider for uploader ([531c155](https://github.com/varletjs/varlet/commit/531c155))
-* refactor(ui/uploader): support style-provider for uploader ([3814647](https://github.com/varletjs/varlet/commit/3814647))
-* refactor(ui/uploader): use image-preview components replace popup ([d9e0895](https://github.com/varletjs/varlet/commit/d9e0895))
-* docs: components自动引入插件文档编写 ([0c58686](https://github.com/varletjs/varlet/commit/0c58686))
-* docs: components自动引入插件文档编写 ([647169b](https://github.com/varletjs/varlet/commit/647169b))
-* docs: image-preview英文文档编写 ([5edf03b](https://github.com/varletjs/varlet/commit/5edf03b))
-* docs(ui/action-sheet dialog popup): fix docs ([90cb8e0](https://github.com/varletjs/varlet/commit/90cb8e0))
-* docs(ui/button): fix docs ([98f3b97](https://github.com/varletjs/varlet/commit/98f3b97))
-* docs(ui/checkbox): fix docs ([fcdf8c3](https://github.com/varletjs/varlet/commit/fcdf8c3))
-* docs(ui/docs): optimize importOnDemand docs ([a9b0145](https://github.com/varletjs/varlet/commit/a9b0145))
-* docs(ui/form): optimize ripple ([478c32b](https://github.com/varletjs/varlet/commit/478c32b))
-* docs(ui/image-preview):  add example and zh-CN.md ([e950dc9](https://github.com/varletjs/varlet/commit/e950dc9))
-* docs(ui/image-preview):  fix example and docs problem ([7ebfdf3](https://github.com/varletjs/varlet/commit/7ebfdf3))
-* docs(ui/image-preview):  refactor example and docs ([0c549f2](https://github.com/varletjs/varlet/commit/0c549f2))
-* docs(ui/image-preview): fix docs ([a55f580](https://github.com/varletjs/varlet/commit/a55f580))
-* docs(ui/image-preview): fix docs ([6b693a5](https://github.com/varletjs/varlet/commit/6b693a5))
-* docs(ui/image-preview): fix docs ([17abd18](https://github.com/varletjs/varlet/commit/17abd18))
-* docs(ui/image-preview): fix docs ([26fcf1f](https://github.com/varletjs/varlet/commit/26fcf1f))
-* docs(ui/style-provider): add example ([f39a53b](https://github.com/varletjs/varlet/commit/f39a53b))
-* docs(ui/style-provider): complete docs ([37db698](https://github.com/varletjs/varlet/commit/37db698))
-* docs(ui/types): add image-preview's declaration file ([d84760e](https://github.com/varletjs/varlet/commit/d84760e))
-* fix: fix the bug of style-provider when update ([0640b4e](https://github.com/varletjs/varlet/commit/0640b4e))
-* fix: fix the prop name of style-provider ([36dd315](https://github.com/varletjs/varlet/commit/36dd315))
-* fix: remove useless code and warning ([9674482](https://github.com/varletjs/varlet/commit/9674482))
-* fix: support styleVars keyName ([fa2d4b5](https://github.com/varletjs/varlet/commit/fa2d4b5))
-* fix: 更新类型引入 ([b1636f3](https://github.com/varletjs/varlet/commit/b1636f3))
-* fix(ui/rate): fix rate default color of props ([5bca5ea](https://github.com/varletjs/varlet/commit/5bca5ea))
-* fix(ui/swipe): fix touchable bug ([1c16e5d](https://github.com/varletjs/varlet/commit/1c16e5d))
-* test(style-provider): add test ([8915d45](https://github.com/varletjs/varlet/commit/8915d45))
-* test(ui/form input): upgrade snapshots ([2091018](https://github.com/varletjs/varlet/commit/2091018))
-* test(ui/form): upgrade snapshoot ([fea03d3](https://github.com/varletjs/varlet/commit/fea03d3))
-* test(ui/image-preview): add test ([e1a91ec](https://github.com/varletjs/varlet/commit/e1a91ec))
-* style: remove space ([a206f17](https://github.com/varletjs/varlet/commit/a206f17))
-* style(ui/picker): format code ([459cc04](https://github.com/varletjs/varlet/commit/459cc04))
-* style(ui/style-provider): format code ([dff6c19](https://github.com/varletjs/varlet/commit/dff6c19))
-* feat: add style-provider ([d4008ea](https://github.com/varletjs/varlet/commit/d4008ea))
-* feat(ui/card): add style provider for card ([a47e7c9](https://github.com/varletjs/varlet/commit/a47e7c9))
-* feat(ui/image-preview):  Add a click event to the close-icon button ([2ee89a2](https://github.com/varletjs/varlet/commit/2ee89a2))
-* feat(ui/image-preview):  Add an action to determine Scale in handleCloseClick function ([c0f159b](https://github.com/varletjs/varlet/commit/c0f159b))
-* feat(ui/image-preview): add new component image-preview prototype ([25a8907](https://github.com/varletjs/varlet/commit/25a8907))
-
-
-
-## <small>1.7.1 (2021-06-19)</small>
-
-* fix:clearable input icon's bug ([b295706](https://github.com/varletjs/varlet/commit/b295706))
-* Update README.en-US.md ([1e1c5c1](https://github.com/varletjs/varlet/commit/1e1c5c1))
-* Update README.md ([d73441e](https://github.com/varletjs/varlet/commit/d73441e))
-* Update README.md ([a97dcf2](https://github.com/varletjs/varlet/commit/a97dcf2))
-* Update README.md ([0618810](https://github.com/varletjs/varlet/commit/0618810))
-* v1.7.1 ([864f8b7](https://github.com/varletjs/varlet/commit/864f8b7))
-* refactor(ui/input): format ([16ea298](https://github.com/varletjs/varlet/commit/16ea298))
-* docs(switch): update doc ([5cbaa69](https://github.com/varletjs/varlet/commit/5cbaa69))
-* docs(ui/switch): optimize example ([32262c6](https://github.com/varletjs/varlet/commit/32262c6))
-* fix(countdown): modify style of example ([5dcf584](https://github.com/varletjs/varlet/commit/5dcf584))
-* fix(progress): modify style of example ([f2469a6](https://github.com/varletjs/varlet/commit/f2469a6))
-* fix(switch): modify style of example ([b790736](https://github.com/varletjs/varlet/commit/b790736))
-
-
-
-## 1.7.0 (2021-06-14)
-
-* refactor(ui/radio,checkbox): forbit with animation on mounted ([5030279](https://github.com/varletjs/varlet/commit/5030279))
-* Update README.en-US.md ([6ef9e3e](https://github.com/varletjs/varlet/commit/6ef9e3e))
-* Update README.md ([ef768b5](https://github.com/varletjs/varlet/commit/ef768b5))
-* Update README.md ([516ebd2](https://github.com/varletjs/varlet/commit/516ebd2))
-* v1.7.0 ([befe57a](https://github.com/varletjs/varlet/commit/befe57a))
-* test(ui/card): add test case for web ([8ff14a6](https://github.com/varletjs/varlet/commit/8ff14a6))
-* test(ui/divider): add test case for web ([dec3b3a](https://github.com/varletjs/varlet/commit/dec3b3a))
-* test(ui/divider): add test for plugin and update snapshot ([3790da1](https://github.com/varletjs/varlet/commit/3790da1))
-* test(ui/divider): update test and shapshots of divider ([4a37102](https://github.com/varletjs/varlet/commit/4a37102))
-* docs(ui/app-bar): modify warning color of example ([b88edb2](https://github.com/varletjs/varlet/commit/b88edb2))
-* docs(ui/button): optimize example ([e60acb9](https://github.com/varletjs/varlet/commit/e60acb9))
-* docs(ui/card): add Chinese document and config for card and complete declaration of component ([1976c77](https://github.com/varletjs/varlet/commit/1976c77))
-* docs(ui/card): improve document for card ([0a03d4d](https://github.com/varletjs/varlet/commit/0a03d4d))
-* docs(ui/card): improve document for card ([5a5eba5](https://github.com/varletjs/varlet/commit/5a5eba5))
-* docs(ui/card): optimize example ([54c5bf6](https://github.com/varletjs/varlet/commit/54c5bf6))
-* docs(ui/card): update document for card ([2301ef4](https://github.com/varletjs/varlet/commit/2301ef4))
-* docs(ui/card): 英文文档和api项样式修改 ([3f50ef9](https://github.com/varletjs/varlet/commit/3f50ef9))
-* docs(ui/divider): fix docs and add type declaration file ([89e5c26](https://github.com/varletjs/varlet/commit/89e5c26))
-* docs(ui/divider): optimize examples and docs ([d527ff4](https://github.com/varletjs/varlet/commit/d527ff4))
-* docs(ui/divider): optimize styles ([bdb0e6c](https://github.com/varletjs/varlet/commit/bdb0e6c))
-* docs(ui/divider): remove scoped install info ([43c870c](https://github.com/varletjs/varlet/commit/43c870c))
-* docs(ui/divider): update example and docs of divider ([baa9676](https://github.com/varletjs/varlet/commit/baa9676))
-* docs(ui/docs): add ide support docs ([c48bb3b](https://github.com/varletjs/varlet/commit/c48bb3b))
-* docs(ui/docs): add vw vh support description to docs ([4150018](https://github.com/varletjs/varlet/commit/4150018))
-* fix: fix import path and progress style ([81d1651](https://github.com/varletjs/varlet/commit/81d1651))
-* fix(cli/site): add hover for lang button ([5ce2822](https://github.com/varletjs/varlet/commit/5ce2822))
-* fix(date-picker): add hover style ([a6b4e42](https://github.com/varletjs/varlet/commit/a6b4e42))
-* fix(divider/types): export divider interface ([e01d452](https://github.com/varletjs/varlet/commit/e01d452))
-* fix(ui/divider): fix dynamic description ([5a47460](https://github.com/varletjs/varlet/commit/5a47460))
-* fix(ui/divider): fix type declaration ([b8ff9ac](https://github.com/varletjs/varlet/commit/b8ff9ac))
-* fix(ui/divider): fix vertical divider ([1aee499](https://github.com/varletjs/varlet/commit/1aee499))
-* fix(ui/divider): remove unnecessary type conversion ([792a8aa](https://github.com/varletjs/varlet/commit/792a8aa))
-* fix(ui/divider): support passing string inset with unit to divider ([5cbd457](https://github.com/varletjs/varlet/commit/5cbd457))
-* fix(ui/utils): support vw vh ([b444ed0](https://github.com/varletjs/varlet/commit/b444ed0))
-* fix(vscode-extension): add appbar to siteMap ([9595981](https://github.com/varletjs/varlet/commit/9595981))
-* refactor: rename useProgress method name ([2e61552](https://github.com/varletjs/varlet/commit/2e61552))
-* refactor(cli/site): modify progress color ([5704d86](https://github.com/varletjs/varlet/commit/5704d86))
-* refactor(cli/site): optimize progress hide style ([2ddacfc](https://github.com/varletjs/varlet/commit/2ddacfc))
-* refactor(extension): add divider and card in siteMap ([1dc3e86](https://github.com/varletjs/varlet/commit/1dc3e86))
-* refactor(extension): support jsx tsx ([8cc50f5](https://github.com/varletjs/varlet/commit/8cc50f5))
-* refactor(home): use default option ([88ed95d](https://github.com/varletjs/varlet/commit/88ed95d))
-* refactor(site): optimize code ([51586b0](https://github.com/varletjs/varlet/commit/51586b0))
-* refactor(ui/card): fix type of title props ([adb08a0](https://github.com/varletjs/varlet/commit/adb08a0))
-* refactor(ui/card): optimize styles and api ([e7f8bad](https://github.com/varletjs/varlet/commit/e7f8bad))
-* refactor(ui/divider): refactor divider and fix docs ([9878723](https://github.com/varletjs/varlet/commit/9878723))
-* refactor(ui/menu): optimize menu animation ([d54fca7](https://github.com/varletjs/varlet/commit/d54fca7))
-* refactor(ui/radio checkbox): optimize radio checkbox animation on toggle ([edbed26](https://github.com/varletjs/varlet/commit/edbed26))
-* refactor(ui/styles): change the success color of default theme ([1e6b87f](https://github.com/varletjs/varlet/commit/1e6b87f))
-* refactor(ui/styles): modify default theme color ([6828140](https://github.com/varletjs/varlet/commit/6828140))
-* refactor(ui/types): support all types of component ([a2ba681](https://github.com/varletjs/varlet/commit/a2ba681))
-* perf: optimize progress bar ([0b349db](https://github.com/varletjs/varlet/commit/0b349db))
-* feat(site): add progress bar ([e4590ec](https://github.com/varletjs/varlet/commit/e4590ec))
-* feat(site): add switch language for mobile ([60aff96](https://github.com/varletjs/varlet/commit/60aff96))
-* feat(ui/card): add Card component ([90b0a14](https://github.com/varletjs/varlet/commit/90b0a14))
-* feat(ui/divider): add dashed divider ([9c6724e](https://github.com/varletjs/varlet/commit/9c6724e))
-* feat(ui/divider): add divider component ([3a7ed64](https://github.com/varletjs/varlet/commit/3a7ed64))
-* style: fix style of readme ([acf93ed](https://github.com/varletjs/varlet/commit/acf93ed))
-* style(ui/types): format index.d.ts ([012feab](https://github.com/varletjs/varlet/commit/012feab))
-* chore: remove useless code and file ([94bf13e](https://github.com/varletjs/varlet/commit/94bf13e))
-* chore: update readme ([c07ba3c](https://github.com/varletjs/varlet/commit/c07ba3c))
-
-
-
-## 1.6.0 (2021-06-02)
-
-* v1.6.0 ([1d26081](https://github.com/varletjs/varlet/commit/1d26081))
-* refactor(extension): add icon ([37f516b](https://github.com/varletjs/varlet/commit/37f516b))
-* refactor(extension): remove .visx vcs ([b1d0c84](https://github.com/varletjs/varlet/commit/b1d0c84))
-* refactor(vcs): fix .gitignore ([492e0aa](https://github.com/varletjs/varlet/commit/492e0aa))
-* fix(root): fix lerna.json ([ea32067](https://github.com/varletjs/varlet/commit/ea32067))
-* fix(root): fix lerna.json ([3597037](https://github.com/varletjs/varlet/commit/3597037))
-* feat(extension): add varlet-code-extension package ([b276e06](https://github.com/varletjs/varlet/commit/b276e06))
-* docs(ui/action-sheet): fix white line ([b25ebbc](https://github.com/varletjs/varlet/commit/b25ebbc))
-
-
-
-## 1.5.0 (2021-06-02)
-
-* v1.5.0 ([4177d43](https://github.com/varletjs/varlet/commit/4177d43))
-* refactor(ui/dialog ui/action-sheet): add default background ([3a26dd7](https://github.com/varletjs/varlet/commit/3a26dd7))
-* docs(snackbar): modify example ([4ab9f01](https://github.com/varletjs/varlet/commit/4ab9f01))
-* docs(ui/action-sheet): add zh-CN documentation ([0eaa199](https://github.com/varletjs/varlet/commit/0eaa199))
-* docs(ui/action-sheet): documentation complete ([20dfe4c](https://github.com/varletjs/varlet/commit/20dfe4c))
-* docs(ui/dialog ui/snackbar): example optimize ([c15462b](https://github.com/varletjs/varlet/commit/c15462b))
-* docs(ui/types): fix action-sheet types ([7f48c55](https://github.com/varletjs/varlet/commit/7f48c55))
-* test(date-picker): use dayjs to get current date for test ([cf15915](https://github.com/varletjs/varlet/commit/cf15915))
-* test(ui/action-sheet): unit test complete ([4d642c8](https://github.com/varletjs/varlet/commit/4d642c8))
-* feat(ui/action-sheet): add new component action-sheet, basic feature complete ([22f54dc](https://github.com/varletjs/varlet/commit/22f54dc))
-* fix: remove error classname ([675a8da](https://github.com/varletjs/varlet/commit/675a8da))
-* fix(snackbar): modify option type ([b30e6b0](https://github.com/varletjs/varlet/commit/b30e6b0))
-
-
-
-## <small>1.4.9 (2021-05-31)</small>
-
-* v1.4.9 ([d8f24cc](https://github.com/varletjs/varlet/commit/d8f24cc))
-* refactor(ui/button): optimize box shadow style ([5bfc8ea](https://github.com/varletjs/varlet/commit/5bfc8ea))
-
-
-
-## <small>1.4.8 (2021-05-31)</small>
-
-* v1.4.8 ([f850c10](https://github.com/varletjs/varlet/commit/f850c10))
-* refactor(ui/button): optimize button's box shadow style in active ([170cd1d](https://github.com/varletjs/varlet/commit/170cd1d))
-* docs(root/readme): fix readme ([62b9d8f](https://github.com/varletjs/varlet/commit/62b9d8f))
-
-
-
-## <small>1.4.7 (2021-05-31)</small>
-
-* v1.4.7 ([05d3a6c](https://github.com/varletjs/varlet/commit/05d3a6c))
-* fix(cle/site/pc):  Make the left menu ([2585504](https://github.com/varletjs/varlet/commit/2585504))
-* fix(cli/config):  repair header configuration ([a91cd25](https://github.com/varletjs/varlet/commit/a91cd25))
-* fix(cli/config/dev):  Fixed the title ([fe54e48](https://github.com/varletjs/varlet/commit/fe54e48))
-* fix(cli/site/pc):  remove unused import ([260358b](https://github.com/varletjs/varlet/commit/260358b))
-* fix(cli/site/pc):  remove unused import ([c61eb4c](https://github.com/varletjs/varlet/commit/c61eb4c))
-* fix(cli/site/pc):  repair where the var-cell ([dbb63f8](https://github.com/varletjs/varlet/commit/dbb63f8))
-* fix(cli/site/pc):  repair where the var-cell ([bf91f0e](https://github.com/varletjs/varlet/commit/bf91f0e))
-* fix(cli/site/pc): add browser title toggle both ([28c9745](https://github.com/varletjs/varlet/commit/28c9745))
-* fix(cli/site/pc): remove unused import reactive ([07fdd24](https://github.com/varletjs/varlet/commit/07fdd24))
-* fix(cli/site/pc): remove unused import reactive ([14e1fa8](https://github.com/varletjs/varlet/commit/14e1fa8))
-* fix(date-picker): fix autoupdate of snapshot ([9ce63b7](https://github.com/varletjs/varlet/commit/9ce63b7))
-* fix(home): add headerLogo  description ([74fd8d4](https://github.com/varletjs/varlet/commit/74fd8d4))
-* fix(home): add headerLogo  description ([022b5a0](https://github.com/varletjs/varlet/commit/022b5a0))
-* fix(home): add locale ([e0b7155](https://github.com/varletjs/varlet/commit/e0b7155))
-* fix(home): add locale ([7e6fac9](https://github.com/varletjs/varlet/commit/7e6fac9))
-* fix(snackbar): add defaultOption for snackbar ([7e05d9c](https://github.com/varletjs/varlet/commit/7e05d9c))
-* fix(snackbar): close autooff when the type prop is loading ([95f7d2a](https://github.com/varletjs/varlet/commit/95f7d2a))
-* fix(snackbar): forbid click when type of snackbar is loading ([b324cfb](https://github.com/varletjs/varlet/commit/b324cfb))
-* fix(ui/home):  change varletConfig import path ([298d5ba](https://github.com/varletjs/varlet/commit/298d5ba))
-* fix(ui/home):  change varletConfig import url ([5346d3b](https://github.com/varletjs/varlet/commit/5346d3b))
-* fix(ui/home): change varletConfig import url ([73b9f84](https://github.com/varletjs/varlet/commit/73b9f84))
-* fix(ui/tsconfig):  add allowJs option ([c5bf05e](https://github.com/varletjs/varlet/commit/c5bf05e))
-* fix(varlet.default.config):  Now ([fea3daa](https://github.com/varletjs/varlet/commit/fea3daa))
-* fix(varletconfig):  Extract the public ([2fbc4b0](https://github.com/varletjs/varlet/commit/2fbc4b0))
-* docs(root/readme): add shields ([6c0da43](https://github.com/varletjs/varlet/commit/6c0da43))
-* docs(root/readme): modify the default language of readme ([9ebec77](https://github.com/varletjs/varlet/commit/9ebec77))
-* docs(root/readme): optimize readme style ([6ae8781](https://github.com/varletjs/varlet/commit/6ae8781))
-* docs(snackbar): update doc ([18ff023](https://github.com/varletjs/varlet/commit/18ff023))
-* docs(ui/docs): optimize readme ([774a6ae](https://github.com/varletjs/varlet/commit/774a6ae))
-* test(date-picker): fix console.error and error snapshot ([8ffe3b3](https://github.com/varletjs/varlet/commit/8ffe3b3))
-* test(snackbar): update snackbar type of test ([5247beb](https://github.com/varletjs/varlet/commit/5247beb))
-
-
-
-## <small>1.4.6 (2021-05-25)</small>
-
-* v1.4.6 ([efe1a1c](https://github.com/varletjs/varlet/commit/efe1a1c))
-* fix(ui/image): fix image template types ([c923ee1](https://github.com/varletjs/varlet/commit/c923ee1))
-* test(form): test form with slider ([36b2eb5](https://github.com/varletjs/varlet/commit/36b2eb5))
-* test(time-picker): add test ([871dd77](https://github.com/varletjs/varlet/commit/871dd77))
-* test(ui/form): test form with switch ([4cef978](https://github.com/varletjs/varlet/commit/4cef978))
-
-
-
-## <small>1.4.5 (2021-05-21)</small>
-
-* v1.4.5 ([0c43dc7](https://github.com/varletjs/varlet/commit/0c43dc7))
-* fix: use ScrollTo method to replace back-top animation ([88b6577](https://github.com/varletjs/varlet/commit/88b6577))
-* fix(ui/tabs): fix bug of tabs scrolling fail in the safari ([3e96046](https://github.com/varletjs/varlet/commit/3e96046))
-* refactor(back-top): modify ref-value to varible ([fbe50a6](https://github.com/varletjs/varlet/commit/fbe50a6))
-* refactor(ui/dialog): optimize the style of the dialog box ([0d2f12e](https://github.com/varletjs/varlet/commit/0d2f12e))
-* test: use mockScrollTo method mock scrollTo ([79613cb](https://github.com/varletjs/varlet/commit/79613cb))
-* test(date-picker): update snapshot ([3889832](https://github.com/varletjs/varlet/commit/3889832))
-
-
-
-## <small>1.4.4 (2021-05-21)</small>
-
-* v1.4.4 ([7770d13](https://github.com/varletjs/varlet/commit/7770d13))
-* fix(back-top): replace scrollTop to scrollTo ([776803f](https://github.com/varletjs/varlet/commit/776803f))
-* test: update snapshot ([50c258e](https://github.com/varletjs/varlet/commit/50c258e))
-
-
-
-## <small>1.4.3 (2021-05-20)</small>
-
-* v1.4.3 ([0d6f6a8](https://github.com/varletjs/varlet/commit/0d6f6a8))
-* refactor(ui/ripple): ripple animation duration 3s -> 2s ([6dd3557](https://github.com/varletjs/varlet/commit/6dd3557))
-
-
-
-## <small>1.4.2 (2021-05-20)</small>
-
-* v1.4.2 ([e794d8a](https://github.com/varletjs/varlet/commit/e794d8a))
-* refactor(ui/ripple): optimize the animation curve ([532bdc0](https://github.com/varletjs/varlet/commit/532bdc0))
-* test(date-picker): add test ([0bcf5e7](https://github.com/varletjs/varlet/commit/0bcf5e7))
-
-
-
-## <small>1.4.1 (2021-05-19)</small>
-
-* test(ui/picker, uploader): fix test methods progress ([3ef44fe](https://github.com/varletjs/varlet/commit/3ef44fe))
-* v1.4.1 ([950c2a7](https://github.com/varletjs/varlet/commit/950c2a7))
-* fix(back-top): add window as default value of target ([f293a94](https://github.com/varletjs/varlet/commit/f293a94))
-* fix(ui/uploader): add disabled and readonly case to the handleChange method ([da82ae2](https://github.com/varletjs/varlet/commit/da82ae2))
-* test(slider): add test legal of value ([acff32c](https://github.com/varletjs/varlet/commit/acff32c))
-* test(ui/rate): rate unit test complete, update some components snapshots ([80f2ad8](https://github.com/varletjs/varlet/commit/80f2ad8))
-
-
-
-## 1.4.0 (2021-05-19)
-
-* v1.4.0 ([0911291](https://github.com/varletjs/varlet/commit/0911291))
-* fix(slider): fix error method ([6e1774f](https://github.com/varletjs/varlet/commit/6e1774f))
-* fix(snackbar): add install method of snackbar component ([0b403cc](https://github.com/varletjs/varlet/commit/0b403cc))
-* fix(type): fix error type of snackbar ([430e382](https://github.com/varletjs/varlet/commit/430e382))
-* fix(types): fix snackbar option type ([a04588e](https://github.com/varletjs/varlet/commit/a04588e))
-* fix(ui/button): fix button block style to class ([433633c](https://github.com/varletjs/varlet/commit/433633c))
-* test(slider): add test ([755383a](https://github.com/varletjs/varlet/commit/755383a))
-* test(snackbar): add test ([4f4e290](https://github.com/varletjs/varlet/commit/4f4e290))
-* test(snackbar): test event of snackbar component ([34794ea](https://github.com/varletjs/varlet/commit/34794ea))
-* test(ui/jest): add mockStubs method to resolve transition stub out issue ([c47aee2](https://github.com/varletjs/varlet/commit/c47aee2))
-* feat: 添加form组件单元测试 ([93420c1](https://github.com/varletjs/varlet/commit/93420c1))
-* chore: remove useless code ([42e67c3](https://github.com/varletjs/varlet/commit/42e67c3))
-
-
-
-## <small>1.3.5 (2021-05-14)</small>
-
-* v1.3.5 ([0003589](https://github.com/varletjs/varlet/commit/0003589))
-* fix(ui/counter): fix bug of counter no validation function exposed ([247b4c5](https://github.com/varletjs/varlet/commit/247b4c5))
-* test(switch): add test ([4f03b5c](https://github.com/varletjs/varlet/commit/4f03b5c))
-* test(ui/checkbox ui/uploader): checkbox,uploader unit test complete ([b23e971](https://github.com/varletjs/varlet/commit/b23e971))
-* test(ui/form-details): form details unit test complete ([9f1b171](https://github.com/varletjs/varlet/commit/9f1b171))
-
-
-
-## <small>1.3.4 (2021-05-13)</small>
-
-* v1.3.4 ([af49c42](https://github.com/varletjs/varlet/commit/af49c42))
-* fix(ui/select ui/radio): fix bug of select click event repeat trigger, radio unit test complete ([21e6fcb](https://github.com/varletjs/varlet/commit/21e6fcb))
-* fix(ui/select): fix bug of select blur event can't trigger ([b9918fc](https://github.com/varletjs/varlet/commit/b9918fc))
-* test(steps): add test ([6bc64e9](https://github.com/varletjs/varlet/commit/6bc64e9))
-* test(ui/dialog): dialog unit test complete ([a4d0317](https://github.com/varletjs/varlet/commit/a4d0317))
-* test(ui/input): input unit test complete ([7e93772](https://github.com/varletjs/varlet/commit/7e93772))
-* test(ui/select): update select snapshot ([916c6e1](https://github.com/varletjs/varlet/commit/916c6e1))
-
-
-
-## <small>1.3.3 (2021-05-11)</small>
-
-* v1.3.3 ([936ef34](https://github.com/varletjs/varlet/commit/936ef34))
-* fix(ui/picker): 修复picker onChange事件在组件初始化结束后 选择当前选项也会触发一次事件 ([3f6458d](https://github.com/varletjs/varlet/commit/3f6458d))
-* test(pull-refresh): add test ([cbbb288](https://github.com/varletjs/varlet/commit/cbbb288))
-
-
-
-## <small>1.3.2 (2021-05-10)</small>
-
-* v1.3.2 ([cb40e7d](https://github.com/varletjs/varlet/commit/cb40e7d))
-* test(ui/lazy ui/locale): lazy,locale unit test complete ([4df2072](https://github.com/varletjs/varlet/commit/4df2072))
-* refactor(pull-refresh): rename disable to disabled ([353a5e4](https://github.com/varletjs/varlet/commit/353a5e4))
-* fix(pull-refresh): fix the bug of touchmove ([88aa3af](https://github.com/varletjs/varlet/commit/88aa3af))
-* fix(ui/tabs): fix indicator size error on window resize ([576caf1](https://github.com/varletjs/varlet/commit/576caf1))
-
-
-
-## <small>1.3.1 (2021-05-08)</small>
-
-* v1.3.1 ([00cbf23](https://github.com/varletjs/varlet/commit/00cbf23))
-* fix(ui/ripple): fix ripple repeat call remove ripple task, ripple unit test complete ([9c6b3c1](https://github.com/varletjs/varlet/commit/9c6b3c1))
-
-
-
-## 1.3.0 (2021-05-08)
-
-* v1.3.0 ([cb1b1d3](https://github.com/varletjs/varlet/commit/cb1b1d3))
-* test(index-bar): add test ([c47651b](https://github.com/varletjs/varlet/commit/c47651b))
-* test(ui/dialog): dialog unit test complete ([e00b412](https://github.com/varletjs/varlet/commit/e00b412))
-* fix: fix typo ([ffc0ba8](https://github.com/varletjs/varlet/commit/ffc0ba8))
-* fix(index-bar): remove useless prop and dont trigger click after call scrollTo method ([bba5152](https://github.com/varletjs/varlet/commit/bba5152))
-* feat(index-bar): add highlight-color prop ([b4d38f4](https://github.com/varletjs/varlet/commit/b4d38f4))
-
-
-
-## <small>1.2.3 (2021-05-07)</small>
-
-* v1.2.3 ([5be6322](https://github.com/varletjs/varlet/commit/5be6322))
-* test(countdown): add test ([facf636](https://github.com/varletjs/varlet/commit/facf636))
-* test(progress): add test ([54452d4](https://github.com/varletjs/varlet/commit/54452d4))
-* test(ui/menu): 增加menu teleport prop 完成menu单元测试 ([9d36925](https://github.com/varletjs/varlet/commit/9d36925))
-* test(ui/popup): 完成popup单元测试 ([2e14f43](https://github.com/varletjs/varlet/commit/2e14f43))
-* test(ui/tabs): 完成tabs单元测试 ([ce9c1c8](https://github.com/varletjs/varlet/commit/ce9c1c8))
-* style: remove redundant space ([dae4242](https://github.com/varletjs/varlet/commit/dae4242))
-* docs(root/docs ui/docs): 修改开发指南 ([dfceafa](https://github.com/varletjs/varlet/commit/dfceafa))
-
-
-
-## <small>1.2.2 (2021-05-06)</small>
-
-* v1.2.2 ([4fb5b5e](https://github.com/varletjs/varlet/commit/4fb5b5e))
-* test(app-bar): add test ([e2687f8](https://github.com/varletjs/varlet/commit/e2687f8))
-* test(back-top): add test ([fd144ad](https://github.com/varletjs/varlet/commit/fd144ad))
-* test(badge): add test ([cc847a8](https://github.com/varletjs/varlet/commit/cc847a8))
-* test(chip): add test ([0f1e014](https://github.com/varletjs/varlet/commit/0f1e014))
-* test(collapse): add test ([dccac57](https://github.com/varletjs/varlet/commit/dccac57))
-* test(loading): add test ([5a2d449](https://github.com/varletjs/varlet/commit/5a2d449))
-* test(ui/list): 完善list单元测试 ([3cb04d4](https://github.com/varletjs/varlet/commit/3cb04d4))
-* test(ui/list): 完成list单元测试 ([142ea12](https://github.com/varletjs/varlet/commit/142ea12))
-* test(ui/sticky): 完成sticky单元测试 ([5faba7b](https://github.com/varletjs/varlet/commit/5faba7b))
-* test(ui/swipe): 完成swipe单元测试 ([33058ac](https://github.com/varletjs/varlet/commit/33058ac))
-* style(readme): fix dividing line style ([e96aac2](https://github.com/varletjs/varlet/commit/e96aac2))
-* fix: fix test example warning ([fb16f71](https://github.com/varletjs/varlet/commit/fb16f71))
-* fix(badge): optimize code and hide icon when dot prop is true ([7246fd3](https://github.com/varletjs/varlet/commit/7246fd3))
-* fix(types): vite build typescript error ([cd1a402](https://github.com/varletjs/varlet/commit/cd1a402))
-
-
-
-## <small>1.2.1 (2021-04-29)</small>
-
-* v1.2.1 ([c3a5050](https://github.com/varletjs/varlet/commit/c3a5050))
-* fix(ui/input select): 修复了input select的label居中问题 完成layout skeleton的单元测试 ([b9502f9](https://github.com/varletjs/varlet/commit/b9502f9))
-* test(cell): add test case ([9a97c2b](https://github.com/varletjs/varlet/commit/9a97c2b))
-
-
-
-## 1.2.0 (2021-04-26)
-
-* v1.2.0 ([7fcb10e](https://github.com/varletjs/varlet/commit/7fcb10e))
-* test(ui/icon): 完成icon单元测试 ([0e5dfa7](https://github.com/varletjs/varlet/commit/0e5dfa7))
-* test(ui/image): 完成image单元测试 ([0c80fa4](https://github.com/varletjs/varlet/commit/0c80fa4))
-* chore(types): complete declaration of component ([3c0624a](https://github.com/varletjs/varlet/commit/3c0624a))
-* feat(switch): add activeValue prop and inactiveValue prop ([7e56ea7](https://github.com/varletjs/varlet/commit/7e56ea7))
-* fix(cli/site): 添加禁止站点强缓存meta标签 ([761b991](https://github.com/varletjs/varlet/commit/761b991))
-
-
-
-## 1.1.0 (2021-04-26)
-
-* v1.1.0 ([b19f772](https://github.com/varletjs/varlet/commit/b19f772))
-* docs: update readme ([bc19bbb](https://github.com/varletjs/varlet/commit/bc19bbb))
-* docs: update readme ([af74e30](https://github.com/varletjs/varlet/commit/af74e30))
-* docs(example): optimize example ([d1006ac](https://github.com/varletjs/varlet/commit/d1006ac))
-* docs(root ui/docs): 修改开发指南标点符号 ([7eba4c9](https://github.com/varletjs/varlet/commit/7eba4c9))
-* docs(root ui/docs): 完善开发指南 ([0eb9f5f](https://github.com/varletjs/varlet/commit/0eb9f5f))
-* docs(root ui/docs): 完善开发指南标点符号 ([8d10c08](https://github.com/varletjs/varlet/commit/8d10c08))
-* docs(ui/progress): 优化progress example ([c82f83f](https://github.com/varletjs/varlet/commit/c82f83f))
-* docs(ui/steps): 优化steps文档 ([170cd01](https://github.com/varletjs/varlet/commit/170cd01))
-* fix(ui/progress): 优化progress文档, 重命名props show-active -> label, show-track -> track ([7d82141](https://github.com/varletjs/varlet/commit/7d82141))
-* chore(cli/jest): 优化jest命令选项的parse方式 ([5312a77](https://github.com/varletjs/varlet/commit/5312a77))
-* chore(types): complete declare of component ([2e14190](https://github.com/varletjs/varlet/commit/2e14190))
-* chore(ui/**/props): 修改string类型为具体可选项的联合类型,优化类型提示。 ([3cc20cd](https://github.com/varletjs/varlet/commit/3cc20cd))
-* chore(ui/package.json): 修改scripts jest -> test ([e681008](https://github.com/varletjs/varlet/commit/e681008))
-* feat(ui/types): uploader提供jsx,tsx类型支持 ([b156587](https://github.com/varletjs/varlet/commit/b156587))
-* feat(ui/types): 完善row组件jsx,tsx类型推断 ([4630be3](https://github.com/varletjs/varlet/commit/4630be3))
-* feat(ui/types): 提供jsx,tsx支持.完成以下组件button,checkbox,checkboxGroup,col,counter,dialog,form,icon,image,i ([8818998](https://github.com/varletjs/varlet/commit/8818998))
-* test(ui/button): 更新快照 ([dcd579d](https://github.com/varletjs/varlet/commit/dcd579d))
-
-
-
-## <small>1.0.1 (2021-04-24)</small>
-
-* v1.0.1 ([bffb0fb](https://github.com/varletjs/varlet/commit/bffb0fb))
-* docs(root ui/docs): 新增todo list ([ed8f3aa](https://github.com/varletjs/varlet/commit/ed8f3aa))
-* fix(package/varlet-touch-emulator): package resolve entry point ([7a846e9](https://github.com/varletjs/varlet/commit/7a846e9))
-* test(ui/tests): 完成button单元测试 覆盖率100% ([d933fa8](https://github.com/varletjs/varlet/commit/d933fa8))
-* style(docs): modify punctuation format ([d2e4246](https://github.com/varletjs/varlet/commit/d2e4246))
-
-
-
-## 1.0.0 (2021-04-21)
-
-* v1.0.0 ([bef685a](https://github.com/varletjs/varlet/commit/bef685a))
-* docs(ui/docs): 修改文档 ([f448e23](https://github.com/varletjs/varlet/commit/f448e23))
-
-
-
-## <small>0.13.3 (2021-04-20)</small>
-
-* v0.13.3 ([c7cb1d4](https://github.com/varletjs/varlet/commit/c7cb1d4))
-* chore(type): declare component ([a7d172f](https://github.com/varletjs/varlet/commit/a7d172f))
-* docs: add scoped install description ([47d500b](https://github.com/varletjs/varlet/commit/47d500b))
-* docs(root/readme): 修改logo ([9cc2d8a](https://github.com/varletjs/varlet/commit/9cc2d8a))
-* fix(cli/site): 修改mobile全局字体颜色 ([3155bf6](https://github.com/varletjs/varlet/commit/3155bf6))
-* fix(index-bar): fix bug of scroll ([872bc14](https://github.com/varletjs/varlet/commit/872bc14))
-
-
-
-## <small>0.13.2 (2021-04-19)</small>
-
-* v0.13.2 ([f500e4a](https://github.com/varletjs/varlet/commit/f500e4a))
-* fix(badge): fix wrong classname ([11d90b5](https://github.com/varletjs/varlet/commit/11d90b5))
-* fix(ui/uploader): 修改默认状态指示器的颜色 ([c259acd](https://github.com/varletjs/varlet/commit/c259acd))
-* refactor(example): replace ref to reactive ([285704c](https://github.com/varletjs/varlet/commit/285704c))
-* refactor(rate): optimize code ([9ae7ac7](https://github.com/varletjs/varlet/commit/9ae7ac7))
-* refactor(varlet-icons): add icon ([414c39e](https://github.com/varletjs/varlet/commit/414c39e))
-
-
-
-## <small>0.13.1 (2021-04-19)</small>
-
-* v0.13.1 ([c81a44a](https://github.com/varletjs/varlet/commit/c81a44a))
-* docs: enhance doc ([10e4a9b](https://github.com/varletjs/varlet/commit/10e4a9b))
-* docs(example): modify style of example ([3f5a7f8](https://github.com/varletjs/varlet/commit/3f5a7f8))
-* docs(root/readme): 修改readme ([7b13d6e](https://github.com/varletjs/varlet/commit/7b13d6e))
-* docs(ui/docs): 修改基本介绍 ([cc16ba3](https://github.com/varletjs/varlet/commit/cc16ba3))
-* docs(varlet-ui): modify document ([bb1a33c](https://github.com/varletjs/varlet/commit/bb1a33c))
-* fix(site): change logo and back url of mobile ([2709c6c](https://github.com/varletjs/varlet/commit/2709c6c))
-* fix(site): fix the bug of mouseenter trigger ([d2e4b6d](https://github.com/varletjs/varlet/commit/d2e4b6d))
-* fix(ui/counter ui/input ui/select): 修复counter移动端长按touchend失效的问题，修复input select颜色显示的问题 ([a0e6f6a](https://github.com/varletjs/varlet/commit/a0e6f6a))
-* fix(ui/input ui/select): 修改input select样式 ([56cc7bf](https://github.com/varletjs/varlet/commit/56cc7bf))
-* fix(ui/input): 修复验证错误时光标颜色问题 ([03fc188](https://github.com/varletjs/varlet/commit/03fc188))
-
-
-
-## 0.13.0 (2021-04-17)
-
-* v0.13.0 ([2280935](https://github.com/varletjs/varlet/commit/2280935))
-* docs(cli/site): 修改文档 ([074ef38](https://github.com/varletjs/varlet/commit/074ef38))
-* docs(index-bar): fix style ([227ea90](https://github.com/varletjs/varlet/commit/227ea90))
-* docs(site): fix template name of markdown ([f30b0f4](https://github.com/varletjs/varlet/commit/f30b0f4))
-* docs(ui/docs): 优化文档 ([6d711c7](https://github.com/varletjs/varlet/commit/6d711c7))
-* docs(ui/docs): 修改文档logo ([c975c6a](https://github.com/varletjs/varlet/commit/c975c6a))
-* docs(ui/docs): 修改文档样式 ([3d61caa](https://github.com/varletjs/varlet/commit/3d61caa))
-* fix: fix some wrong style and docs error ([71cd483](https://github.com/varletjs/varlet/commit/71cd483))
-* fix: fix wrong z-index of snackbar and prevent touchmove event of pull-refresh example ([3be0b22](https://github.com/varletjs/varlet/commit/3be0b22))
-* fix(collapse): fix wrong style ([6e778f4](https://github.com/varletjs/varlet/commit/6e778f4))
-* fix(index-bar): fix mount error and remove active prop ([0dcb98f](https://github.com/varletjs/varlet/commit/0dcb98f))
-* fix(rate): add validator and import component style ([9b76d36](https://github.com/varletjs/varlet/commit/9b76d36))
-* fix(rate): fix error data ([e135560](https://github.com/varletjs/varlet/commit/e135560))
-* fix(snackbar): modify the way of transition ([eb8aada](https://github.com/varletjs/varlet/commit/eb8aada))
-* fix(ui/chip): 修复chip样式引入问题 ([1e85fa4](https://github.com/varletjs/varlet/commit/1e85fa4))
-* feat(cli/site markdown-loader/): 修改文档整体风格 ([288a1f8](https://github.com/varletjs/varlet/commit/288a1f8))
-* feat(cli/site): 修改手机样式 自适应高度 ([37029e2](https://github.com/varletjs/varlet/commit/37029e2))
-* test: remove example test case ([96b30db](https://github.com/varletjs/varlet/commit/96b30db))
-* refactor(ui/chip): 优化chip代码,删除废弃的props ([a0933ce](https://github.com/varletjs/varlet/commit/a0933ce))
-
-
-
-## <small>0.12.2 (2021-04-14)</small>
-
-* v0.12.2 ([ed6917c](https://github.com/varletjs/varlet/commit/ed6917c))
-* fix(ui/types): 修复checkboxGroup steps step类型声明问题 ([706632c](https://github.com/varletjs/varlet/commit/706632c))
-
-
-
-## <small>0.12.1 (2021-04-14)</small>
-
-* v0.12.1 ([29c4072](https://github.com/varletjs/varlet/commit/29c4072))
-* fix(ui/types): 修复dialog picker类型声明 ([53090e0](https://github.com/varletjs/varlet/commit/53090e0))
-* refactor(ui/test): 删除快照 ([20b608c](https://github.com/varletjs/varlet/commit/20b608c))
-* docs: modify way of functional component use ([c702c15](https://github.com/varletjs/varlet/commit/c702c15))
-
-
-
-## 0.12.0 (2021-04-14)
-
-* v0.12.0 ([27c6a90](https://github.com/varletjs/varlet/commit/27c6a90))
-* feat(snackbar): add types ([cdd48dc](https://github.com/varletjs/varlet/commit/cdd48dc))
-* docs(snackbar): complete doc ([aa7dac7](https://github.com/varletjs/varlet/commit/aa7dac7))
-* docs(varlet-ui): modify document details ([51f24ef](https://github.com/varletjs/varlet/commit/51f24ef))
-* docs(varlet-ui): modify document reference ([67b8c4f](https://github.com/varletjs/varlet/commit/67b8c4f))
-* chore: ignore html file ([0f27908](https://github.com/varletjs/varlet/commit/0f27908))
-* refactor(snackbar): optimize code ([a54130c](https://github.com/varletjs/varlet/commit/a54130c))
-
-
-
-## <small>0.11.4 (2021-04-11)</small>
-
-* v0.11.4 ([014d7ca](https://github.com/varletjs/varlet/commit/014d7ca))
-* fix(icon/lib): 增加base64构建模式 ([ae682cc](https://github.com/varletjs/varlet/commit/ae682cc))
-* fix(pull-refresh): update modelValue when loading ([b6f892e](https://github.com/varletjs/varlet/commit/b6f892e))
-* fix(rate): remove useless code ([f1a4900](https://github.com/varletjs/varlet/commit/f1a4900))
-* fix(ui/docs): 完善基本介绍中文文档 ([e92111d](https://github.com/varletjs/varlet/commit/e92111d))
-* docs(root ui/docs): 完善基本介绍英文文档 github仓库readme 新增语法高亮文档 ([3865c55](https://github.com/varletjs/varlet/commit/3865c55))
-* docs(root): 完善中文README ([243f38c](https://github.com/varletjs/varlet/commit/243f38c))
-* docs(ui/docs): 完善基本介绍中文文档 ([0c4ca51](https://github.com/varletjs/varlet/commit/0c4ca51))
-* docs(ui/docs): 完善文档 ([f6d2803](https://github.com/varletjs/varlet/commit/f6d2803))
-* docs(varlet-ui): modify AppBar and rate documents ([ff22ab5](https://github.com/varletjs/varlet/commit/ff22ab5))
-
-
-
-## <small>0.11.3 (2021-04-09)</small>
-
-* Update README.md ([b23086d](https://github.com/varletjs/varlet/commit/b23086d))
-* v0.11.3 ([bcc0162](https://github.com/varletjs/varlet/commit/bcc0162))
-* fix: remove useless code ([7215df0](https://github.com/varletjs/varlet/commit/7215df0))
-* fix: remove useless code and import cell component ([090da6f](https://github.com/varletjs/varlet/commit/090da6f))
-* docs(ui/docs): 修改快速开始英文文档 ([6ef10a7](https://github.com/varletjs/varlet/commit/6ef10a7))
-* docs(ui/docs): 完善主题定制文档 ([a7c29b8](https://github.com/varletjs/varlet/commit/a7c29b8))
-* docs(ui/image): 修改图片组件文档 ([2cc3905](https://github.com/varletjs/varlet/commit/2cc3905))
-* docs(ui/styles): 完善内置样式文档 ([bd62487](https://github.com/varletjs/varlet/commit/bd62487))
-* docs(varlet-ui): modifying chip and AppBar documents ([a45f59c](https://github.com/varletjs/varlet/commit/a45f59c))
-
-
-
-## <small>0.11.2 (2021-04-08)</small>
-
-* v0.11.2 ([ea6a554](https://github.com/varletjs/varlet/commit/ea6a554))
-* fix(icon/config): 修改config url ([e063fbf](https://github.com/varletjs/varlet/commit/e063fbf))
-
-
-
-## <small>0.11.1 (2021-04-08)</small>
-
-* v0.11.1 ([59939f3](https://github.com/varletjs/varlet/commit/59939f3))
-* fix(date-picker): check value ([d57b163](https://github.com/varletjs/varlet/commit/d57b163))
-* fix(icon/config): 修改打包的icon css url ([23b87b7](https://github.com/varletjs/varlet/commit/23b87b7))
-* fix(time-picker): wrong style ([4dd6d49](https://github.com/varletjs/varlet/commit/4dd6d49))
-
-
-
-## 0.11.0 (2021-04-07)
-
-* v0.11.0 ([400a3c2](https://github.com/varletjs/varlet/commit/400a3c2))
-* fix(ui/locale): 修复英文语言包字段名错误的问题 ([e26e24d](https://github.com/varletjs/varlet/commit/e26e24d))
-* feat(site): add Baidu statistics ([db2879b](https://github.com/varletjs/varlet/commit/db2879b))
-
-
-
-## <small>0.10.7 (2021-04-07)</small>
-
-* v0.10.7 ([388dc88](https://github.com/varletjs/varlet/commit/388dc88))
-* fix(cli/compiler): 编译时创建less.js cover babel-import-plugin ([3b75185](https://github.com/varletjs/varlet/commit/3b75185))
-
-
-
-## <small>0.10.6 (2021-04-07)</small>
-
-* v0.10.6 ([9e180cc](https://github.com/varletjs/varlet/commit/9e180cc))
-* fix(ui/locale): 将自定义的语言包名加入语言包内 ([5544b30](https://github.com/varletjs/varlet/commit/5544b30))
-
-
-
-## <small>0.10.5 (2021-04-07)</small>
-
-* v0.10.5 ([2ab568e](https://github.com/varletjs/varlet/commit/2ab568e))
-* fix(ui/types): 修复Locale类型声明 ([3e2f9f1](https://github.com/varletjs/varlet/commit/3e2f9f1))
-
-
-
-## <small>0.10.4 (2021-04-07)</small>
-
-* v0.10.4 ([58bec07](https://github.com/varletjs/varlet/commit/58bec07))
-* docs(ui/docs): 完善开发文档, 增加国际化类型声明 ([062f6b3](https://github.com/varletjs/varlet/commit/062f6b3))
-
-
-
-## <small>0.10.3 (2021-04-07)</small>
-
-* v0.10.3 ([232fb35](https://github.com/varletjs/varlet/commit/232fb35))
-* fix: fix the bug of invalid style in build ([56c85f0](https://github.com/varletjs/varlet/commit/56c85f0))
-* fix(ui/*): 解决组件依赖css优先级问题 优化所有组件文档排版 ([3791438](https://github.com/varletjs/varlet/commit/3791438))
-* fix(ui/docs): 完善快速开始，按需引入文档 ([0cd23c5](https://github.com/varletjs/varlet/commit/0cd23c5))
-* refactor(cli/site): 优化pc文档排版 ([7ce1e94](https://github.com/varletjs/varlet/commit/7ce1e94))
-* docs: remove model-value description ([e76e781](https://github.com/varletjs/varlet/commit/e76e781))
-
-
-
-## <small>0.10.2 (2021-04-06)</small>
-
-* v0.10.2 ([3c080dd](https://github.com/varletjs/varlet/commit/3c080dd))
-* fix(ui/dialog): 修复类型声明 ([29639b8](https://github.com/varletjs/varlet/commit/29639b8))
-
-
-
-## <small>0.10.1 (2021-04-06)</small>
-
-* v0.10.1 ([76d4e4e](https://github.com/varletjs/varlet/commit/76d4e4e))
-* fix(ui/*): 解决组件依赖组件less路径错误问题 ([a081d67](https://github.com/varletjs/varlet/commit/a081d67))
-
-
-
-## 0.10.0 (2021-04-06)
-
-* v0.10.0 ([82faa64](https://github.com/varletjs/varlet/commit/82faa64))
-* fix(ui/*): 解决组件依赖组件时 被依赖组件样式没有加载的问题 ([b2b18ae](https://github.com/varletjs/varlet/commit/b2b18ae))
-* feat(varlet-ui): write rate to form ([4a64a7e](https://github.com/varletjs/varlet/commit/4a64a7e))
-
-
-
-## <small>0.9.6 (2021-04-06)</small>
-
-* v0.9.6 ([2398bb1](https://github.com/varletjs/varlet/commit/2398bb1))
-* fix(ui/types): 修改函数式组件类型声明 ([0309fdc](https://github.com/varletjs/varlet/commit/0309fdc))
-
-
-
-## <small>0.9.5 (2021-04-06)</small>
-
-* v0.9.5 ([a88f98f](https://github.com/varletjs/varlet/commit/a88f98f))
-* fix(ui/package.json): 增加@babel/runtime依赖 ([d6948b8](https://github.com/varletjs/varlet/commit/d6948b8))
-
-
-
-## <small>0.9.4 (2021-04-06)</small>
-
-* v0.9.4 ([d5a9208](https://github.com/varletjs/varlet/commit/d5a9208))
-* fix(ui/collapse): 重命名组件名 ([c418cc0](https://github.com/varletjs/varlet/commit/c418cc0))
-
-
-
-## <small>0.9.3 (2021-04-06)</small>
-
-* v0.9.3 ([650f4fa](https://github.com/varletjs/varlet/commit/650f4fa))
-* fix(ui/locale): 修复locale导出异常 ([c5373af](https://github.com/varletjs/varlet/commit/c5373af))
-
-
-
-## <small>0.9.2 (2021-04-06)</small>
-
-* v0.9.2 ([45e56e2](https://github.com/varletjs/varlet/commit/45e56e2))
-* fix(ui/*): 所有组件阻止ios默认的点击高亮 ([78cce5f](https://github.com/varletjs/varlet/commit/78cce5f))
-* fix(ui/lazy): 修复install报错 ([187b822](https://github.com/varletjs/varlet/commit/187b822))
-
-
-
-## <small>0.9.1 (2021-04-06)</small>
-
-* v0.9.1 ([04cbbd5](https://github.com/varletjs/varlet/commit/04cbbd5))
-* fix(cli/site): 修改生成umd文件名和库的全局变量名称 ([ac39eb0](https://github.com/varletjs/varlet/commit/ac39eb0))
-
-
-
-## 0.9.0 (2021-04-06)
-
-* fix(cli, ui): 重构了 mobile和组件库的i18n设计 ([bf6c870](https://github.com/varletjs/varlet/commit/bf6c870))
-* fix(cli,ui): icon 文档和重构 ([84fac70](https://github.com/varletjs/varlet/commit/84fac70))
-* fix(cli,ui): 修改pc站点布局, 修改menu left获取问题 ([87d6041](https://github.com/varletjs/varlet/commit/87d6041))
-* fix(cli,ui): 完成组件库 pc文档 mobile文档的i18n设计 ([cbcd297](https://github.com/varletjs/varlet/commit/cbcd297))
-* fix(ui/select,option): 修复了v-model失效的问题 ([bf72234](https://github.com/varletjs/varlet/commit/bf72234))
-* fix(ui/skeleton,button,ripple): 完成skeleton button ripple的文档编写 ([846ffe9](https://github.com/varletjs/varlet/commit/846ffe9))
-* v0.9.0 ([0f475a6](https://github.com/varletjs/varlet/commit/0f475a6))
-* refactor: extract public code to useForm ([3e27ead](https://github.com/varletjs/varlet/commit/3e27ead))
-* refactor: rename expansion-panels to collapse and extract public code ([8d14e9c](https://github.com/varletjs/varlet/commit/8d14e9c))
-* refactor: rename isBaseObject to isPlainObject ([1b915c0](https://github.com/varletjs/varlet/commit/1b915c0))
-* refactor(badge): optimize code ([1f5dd96](https://github.com/varletjs/varlet/commit/1f5dd96))
-* refactor(cli/site): restore ([524caa9](https://github.com/varletjs/varlet/commit/524caa9))
-* refactor(cli/site): 修改站点手机 ([e10a7d1](https://github.com/varletjs/varlet/commit/e10a7d1))
-* refactor(date-picker): modify button prop and use toNumber to convert value type ([190e722](https://github.com/varletjs/varlet/commit/190e722))
-* refactor(date-picker): optimize buttonProps ([8aa8176](https://github.com/varletjs/varlet/commit/8aa8176))
-* refactor(date-picker): optimize code ([a0bc3fe](https://github.com/varletjs/varlet/commit/a0bc3fe))
-* refactor(index-bar): optimize components pass values and add scrollTo method, onClick prop ([9b795ea](https://github.com/varletjs/varlet/commit/9b795ea))
-* refactor(site): add media query ([1300976](https://github.com/varletjs/varlet/commit/1300976))
-* refactor(site): how to display pages in different types ([bb9bb77](https://github.com/varletjs/varlet/commit/bb9bb77))
-* refactor(site): modify font style ([94a6db3](https://github.com/varletjs/varlet/commit/94a6db3))
-* refactor(site): modify language switch ([7f344c8](https://github.com/varletjs/varlet/commit/7f344c8))
-* refactor(site): modify navigation bar positioning ([29717c6](https://github.com/varletjs/varlet/commit/29717c6))
-* refactor(site): modify page interaction logic ([da6a6dc](https://github.com/varletjs/varlet/commit/da6a6dc))
-* refactor(site): modify some styles ([f1cb92c](https://github.com/varletjs/varlet/commit/f1cb92c))
-* refactor(site): style site ([e47d28e](https://github.com/varletjs/varlet/commit/e47d28e))
-* refactor(site): style site ([165c2e8](https://github.com/varletjs/varlet/commit/165c2e8))
-* refactor(site): style site ([f15a532](https://github.com/varletjs/varlet/commit/f15a532))
-* refactor(site): style site ([16a535d](https://github.com/varletjs/varlet/commit/16a535d))
-* refactor(step): optimize code ([c71299d](https://github.com/varletjs/varlet/commit/c71299d))
-* refactor(time-picker): optimize code ([5a7a15c](https://github.com/varletjs/varlet/commit/5a7a15c))
-* refactor(ui/checkbox checkbox-group): 重构checkbox checkbox-group并完善文档 ([c6def87](https://github.com/varletjs/varlet/commit/c6def87))
-* refactor(ui/counter): 重构counter并完善文档 ([2333083](https://github.com/varletjs/varlet/commit/2333083))
-* refactor(ui/select option): 重构select option ([b2dad1f](https://github.com/varletjs/varlet/commit/b2dad1f))
-* refactor(ui/tabs tab tabs-items tab-item): 重构tabs ([605cfcf](https://github.com/varletjs/varlet/commit/605cfcf))
-* refactor(ui/uploader form): 重构uploader form并完善文档 ([9240b7d](https://github.com/varletjs/varlet/commit/9240b7d))
-* refactor(ui/utils): 提取useForm到form组件里 ([a8b56fc](https://github.com/varletjs/varlet/commit/a8b56fc))
-* refactor(varlet-ui): modify document format ([0d6f32d](https://github.com/varletjs/varlet/commit/0d6f32d))
-* feat: add declaration files ([a20cddb](https://github.com/varletjs/varlet/commit/a20cddb))
-* feat: add declaration files ([6eeb1a3](https://github.com/varletjs/varlet/commit/6eeb1a3))
-* feat: add less variable of time-picker, date-picker ([28f6131](https://github.com/varletjs/varlet/commit/28f6131))
-* feat: add less variables of cell, back-top, pull-refresh, progress, switch, slider, index-bar ([ef9750d](https://github.com/varletjs/varlet/commit/ef9750d))
-* feat: add less variables of step, collapse and define cubic func ([2a8be2d](https://github.com/varletjs/varlet/commit/2a8be2d))
-* feat: countdown ([f3fd177](https://github.com/varletjs/varlet/commit/f3fd177))
-* feat: steps ([4a70c31](https://github.com/varletjs/varlet/commit/4a70c31))
-* feat(countdown): i18n and refactor the way of formatting ([7be2461](https://github.com/varletjs/varlet/commit/7be2461))
-* feat(loading): i18n ([9c2240d](https://github.com/varletjs/varlet/commit/9c2240d))
-* feat(slider): docs and i18n ([3aab17b](https://github.com/varletjs/varlet/commit/3aab17b))
-* feat(snackbar): call the snackbar function directly ([7f486c8](https://github.com/varletjs/varlet/commit/7f486c8))
-* feat(ui/row ui/col): 新增row col组件 ([8b0ee5f](https://github.com/varletjs/varlet/commit/8b0ee5f))
-* style: remove redundant space ([c673100](https://github.com/varletjs/varlet/commit/c673100))
-* style(doc): replace ｜ to | ([4dafdb9](https://github.com/varletjs/varlet/commit/4dafdb9))
-* style(ui/home): 格式化代码 ([4cc839f](https://github.com/varletjs/varlet/commit/4cc839f))
-* revert: press wrong ([bfe9ee8](https://github.com/varletjs/varlet/commit/bfe9ee8))
-* revert(cell): revert attr position ([01b690f](https://github.com/varletjs/varlet/commit/01b690f))
-* fix: add boolean check of toNumber method ([f5c5193](https://github.com/varletjs/varlet/commit/f5c5193))
-* fix: remove unnecessary code and add example ([0505305](https://github.com/varletjs/varlet/commit/0505305))
-* fix(back-top): modify some errors ([fbde4f2](https://github.com/varletjs/varlet/commit/fbde4f2))
-* fix(cell): change attr container ([a86a370](https://github.com/varletjs/varlet/commit/a86a370))
-* fix(cli): work in progress ([ed362c7](https://github.com/varletjs/varlet/commit/ed362c7))
-* fix(cli): 优化compileRoutes正则 ([b9223c2](https://github.com/varletjs/varlet/commit/b9223c2))
-* fix(cli): 优化compileRoutes的正则匹配 ([2a500dc](https://github.com/varletjs/varlet/commit/2a500dc))
-* fix(cli): 优化site routes ([8f11570](https://github.com/varletjs/varlet/commit/8f11570))
-* fix(cli): 修改了文档站点的样式 ([ac28f9f](https://github.com/varletjs/varlet/commit/ac28f9f))
-* fix(cli/site): 优化路由联动 ([d7bbef3](https://github.com/varletjs/varlet/commit/d7bbef3))
-* fix(cli/site): 修复语言不同步的问题 ([3271d06](https://github.com/varletjs/varlet/commit/3271d06))
-* fix(cli/site): 修改手机缩放比例 ([777a38c](https://github.com/varletjs/varlet/commit/777a38c))
-* fix(index-bar): modify scroll container ([8c70cb8](https://github.com/varletjs/varlet/commit/8c70cb8))
-* fix(pull-refresh): fix error classname ([fedeff0](https://github.com/varletjs/varlet/commit/fedeff0))
-* fix(root): bootstrap脚本增加ui的compile操作 ([f6eaa11](https://github.com/varletjs/varlet/commit/f6eaa11))
-* fix(root/scripts): 修改bootstrap命令执行顺序 解决compile失败的问题 ([4022fec](https://github.com/varletjs/varlet/commit/4022fec))
-* fix(site): return to the previous step and display the left active menu in the visual box ([5ed5313](https://github.com/varletjs/varlet/commit/5ed5313))
-* fix(site): solve the problem of incorrect display of mobile phone ([2a549e8](https://github.com/varletjs/varlet/commit/2a549e8))
-* fix(slider): make sure maxWidth exist ([052bb70](https://github.com/varletjs/varlet/commit/052bb70))
-* fix(slider): modify z-index when draged ([7433719](https://github.com/varletjs/varlet/commit/7433719))
-* fix(time-picker): duplicate calls update ([2605384](https://github.com/varletjs/varlet/commit/2605384))
-* fix(time-picker): fix bug of irremovability ([b359852](https://github.com/varletjs/varlet/commit/b359852))
-* fix(time-picker): fix some bugs ([96d45e3](https://github.com/varletjs/varlet/commit/96d45e3))
-* fix(time-picker): fix the bug of touchmove and wrong handleStyle ([7383396](https://github.com/varletjs/varlet/commit/7383396))
-* fix(ui): counter原型完成 ([d7f5a52](https://github.com/varletjs/varlet/commit/d7f5a52))
-* fix(ui): menu重构完成 文档编写完成 ([6bd43ca](https://github.com/varletjs/varlet/commit/6bd43ca))
-* fix(ui): 修复select 在multiple chips模式下 无法关闭chip的bug ([8015120](https://github.com/varletjs/varlet/commit/8015120))
-* fix(ui): 修订文档 ([9827ca8](https://github.com/varletjs/varlet/commit/9827ca8))
-* fix(ui): 增加parse时间格式的工具函数 ([5851cbb](https://github.com/varletjs/varlet/commit/5851cbb))
-* fix(ui): 移除menu缩放动画 ([1566535](https://github.com/varletjs/varlet/commit/1566535))
-* fix(ui): 重构dialog 完善文档 ([0ba2eb1](https://github.com/varletjs/varlet/commit/0ba2eb1))
-* fix(ui): 重构menu 重写menu example ([edacc76](https://github.com/varletjs/varlet/commit/edacc76))
-* fix(ui/popup): 重写example ([dd4efa8](https://github.com/varletjs/varlet/commit/dd4efa8))
-* fix(ui/row col): 修复offset偏移问题 ([ebd3986](https://github.com/varletjs/varlet/commit/ebd3986))
-* fix(varlet-icons): add icon ([6d5f8f2](https://github.com/varletjs/varlet/commit/6d5f8f2))
-* fix(varlet-ui): error report in modification ([f8b9020](https://github.com/varletjs/varlet/commit/f8b9020))
-* fix(varlet-ui): modify phone size ([9e92861](https://github.com/varletjs/varlet/commit/9e92861))
-* docs(back-top): complete doc ([b6adeae](https://github.com/varletjs/varlet/commit/b6adeae))
-* docs(cell): complete doc ([21f6d83](https://github.com/varletjs/varlet/commit/21f6d83))
-* docs(cli/site): 站点迁移到gitee ([e99875e](https://github.com/varletjs/varlet/commit/e99875e))
-* docs(collapse): i18n adn complete doc ([83b7e82](https://github.com/varletjs/varlet/commit/83b7e82))
-* docs(countdown): done ([0319125](https://github.com/varletjs/varlet/commit/0319125))
-* docs(date-picker): complete i18n and doc ([1c1ec1d](https://github.com/varletjs/varlet/commit/1c1ec1d))
-* docs(index-bar): i18n and complete doc ([f9834fb](https://github.com/varletjs/varlet/commit/f9834fb))
-* docs(loading): add circle description ([de9a459](https://github.com/varletjs/varlet/commit/de9a459))
-* docs(progress): complete doc ([e62bf71](https://github.com/varletjs/varlet/commit/e62bf71))
-* docs(pull-refresh): complete doc ([8d20248](https://github.com/varletjs/varlet/commit/8d20248))
-* docs(root): 创建README.md ([8b000d5](https://github.com/varletjs/varlet/commit/8b000d5))
-* docs(step): add doc ([c284d6a](https://github.com/varletjs/varlet/commit/c284d6a))
-* docs(steps): complete i18n and doc ([4e70ab8](https://github.com/varletjs/varlet/commit/4e70ab8))
-* docs(switch): complete doc ([864263d](https://github.com/varletjs/varlet/commit/864263d))
-* docs(time-picker): i18n and complete doc ([72da644](https://github.com/varletjs/varlet/commit/72da644))
-* docs(ui/form types): 完善form文档 新增类型声明文件 ([46f73fb](https://github.com/varletjs/varlet/commit/46f73fb))
-* docs(ui/home): 完成mobile索引页面组件目录显示 ([fbd0bf9](https://github.com/varletjs/varlet/commit/fbd0bf9))
-* docs(ui/image sticky lazy): 完善image sticky lazy的文档 ([3ca0dc9](https://github.com/varletjs/varlet/commit/3ca0dc9))
-* docs(ui/input): 完善input文档 ([fd50ec4](https://github.com/varletjs/varlet/commit/fd50ec4))
-* docs(ui/input): 完善input文档 ([87d3291](https://github.com/varletjs/varlet/commit/87d3291))
-* docs(ui/row col): 完善row col文档 ([0e22094](https://github.com/varletjs/varlet/commit/0e22094))
-* docs(ui/swipe swipe-item picker): 完善swipe picker文档 ([5b6947b](https://github.com/varletjs/varlet/commit/5b6947b))
-* docs(ui/tabs tab tabsItems tabItem): 完善tabs tab tabsItems tabItem文档 ([0c1ba37](https://github.com/varletjs/varlet/commit/0c1ba37))
-* docs(ui/types): 增加类型声明 ([b14919f](https://github.com/varletjs/varlet/commit/b14919f))
-* docs(ui/types): 构建类型索引 ([d57ae90](https://github.com/varletjs/varlet/commit/d57ae90))
-* docs(varlet-ui): add CHIP, BADGE, RATE, APP-BAR English documents ([aa6b845](https://github.com/varletjs/varlet/commit/aa6b845))
-* chore: modify indent style and parsing rules of markdown ([6d5d2a7](https://github.com/varletjs/varlet/commit/6d5d2a7))
-
-
-
-## 0.8.0 (2021-02-26)
-
-* docs:complete the badge documentation ([ed6b3c8](https://github.com/varletjs/varlet/commit/ed6b3c8))
-* docs:improve the description of chip ([15a819b](https://github.com/varletjs/varlet/commit/15a819b))
-* feat:add badge ([ad788e0](https://github.com/varletjs/varlet/commit/ad788e0))
-* feat:add tabbar ([3d3ccbc](https://github.com/varletjs/varlet/commit/3d3ccbc))
-* fix:solve the problem of chip margin ([2850488](https://github.com/varletjs/varlet/commit/2850488))
-* fix:solve the problem of label slot distance ([cd082d1](https://github.com/varletjs/varlet/commit/cd082d1))
-* fix(cli,ui): 支持组件库,文档i18n ([b76e664](https://github.com/varletjs/varlet/commit/b76e664))
-* fix(ui/form, checkbox-group checkbox select input): 抽离了form-details useValidation ([53f9cde](https://github.com/varletjs/varlet/commit/53f9cde))
-* fix(ui/picker, dialog): 优化单例流程 ([4ca25a2](https://github.com/varletjs/varlet/commit/4ca25a2))
-* fix(ui/picker,dialog): 修改成统一的单例模式 增加close方法 ([095b346](https://github.com/varletjs/varlet/commit/095b346))
-* fix(ui/picker,popup,dialog): picker命令式原型完成 ([6c12f71](https://github.com/varletjs/varlet/commit/6c12f71))
-* fix(ui/swipe, swipe-item): 原型完成 ([9e7a45b](https://github.com/varletjs/varlet/commit/9e7a45b))
-* fix(恢复list): 恢复被删除的ui/list ([b2fd79e](https://github.com/varletjs/varlet/commit/b2fd79e))
-* fix(恢复list): 恢复被删除的ui/list ([4e52780](https://github.com/varletjs/varlet/commit/4e52780))
-* fox:Modify the positioning problem of dot ([393cd37](https://github.com/varletjs/varlet/commit/393cd37))
-* v0.8.0 ([aa4da36](https://github.com/varletjs/varlet/commit/aa4da36))
-* 添加图标 ([3a68339](https://github.com/varletjs/varlet/commit/3a68339))
-* fix: add icon and modify icon style ([3080c8c](https://github.com/varletjs/varlet/commit/3080c8c))
-* fix: add icon for snackbar and fix snackbar clear function ([56f322e](https://github.com/varletjs/varlet/commit/56f322e))
-* fix: add removed code ([8c9ba91](https://github.com/varletjs/varlet/commit/8c9ba91))
-* fix: add sticky prop ([6ae504f](https://github.com/varletjs/varlet/commit/6ae504f))
-* fix: add url-loader and build icons ([c4c219a](https://github.com/varletjs/varlet/commit/c4c219a))
-* fix: fix snackbar bugs ([0f05496](https://github.com/varletjs/varlet/commit/0f05496))
-* fix: modify componentName ([206a3c0](https://github.com/varletjs/varlet/commit/206a3c0))
-* fix: modify execution timing ([d3c66bb](https://github.com/varletjs/varlet/commit/d3c66bb))
-* fix: modify name of import loading ([0b9d7e4](https://github.com/varletjs/varlet/commit/0b9d7e4))
-* fix: modify some style ([ee7be71](https://github.com/varletjs/varlet/commit/ee7be71))
-* fix: modify style ([72d28b3](https://github.com/varletjs/varlet/commit/72d28b3))
-* fix: modify ts to js of example ([d6d269f](https://github.com/varletjs/varlet/commit/d6d269f))
-* fix: modify type ([b9dd910](https://github.com/varletjs/varlet/commit/b9dd910))
-* fix: rewrite emulator ([9215a83](https://github.com/varletjs/varlet/commit/9215a83))
-* fix(all package.json): 修订版本 ([c6fc097](https://github.com/varletjs/varlet/commit/c6fc097))
-* fix(cli ui/tabs ui/tab): cli修订依赖版本 tabs tab通信完成 切换效果完成 ([44c9495](https://github.com/varletjs/varlet/commit/44c9495))
-* fix(cli): webpack4.x -> 5.x ([967b63a](https://github.com/varletjs/varlet/commit/967b63a))
-* fix(cli): 修复windows template highlight 编译异常 ([babb72d](https://github.com/varletjs/varlet/commit/babb72d))
-* fix(cli): 增加模版高亮 默认值描述 ([847ae41](https://github.com/varletjs/varlet/commit/847ae41))
-* fix(date-picker): modify varible name ([e282a91](https://github.com/varletjs/varlet/commit/e282a91))
-* fix(date-picker): remove ts error of dayjs ([68e9ff5](https://github.com/varletjs/varlet/commit/68e9ff5))
-* fix(expansion-panels): add matchIndex and watch modelValue to update ([cdd7584](https://github.com/varletjs/varlet/commit/cdd7584))
-* fix(merge): merge code ([c4af410](https://github.com/varletjs/varlet/commit/c4af410))
-* fix(progress): modify default track color ([a853bb1](https://github.com/varletjs/varlet/commit/a853bb1))
-* fix(pull-refresh): modify default style ([9b78580](https://github.com/varletjs/varlet/commit/9b78580))
-* fix(root ui/utils): 创建了项目依赖统一安装脚本 优化了父子组件通信 ([a6bba67](https://github.com/varletjs/varlet/commit/a6bba67))
-* fix(root): 增加less文件的prettier格式化规则 合并代码 ([e74af2c](https://github.com/varletjs/varlet/commit/e74af2c))
-* fix(root): 移除了ui/coverage,hightlight的版本控制 ([0c5893d](https://github.com/varletjs/varlet/commit/0c5893d))
-* fix(root): 移除单元测试统计的stylelint ([8b86ee3](https://github.com/varletjs/varlet/commit/8b86ee3))
-* fix(scripts/bootstrap): 修复命令 兼容macos ([32f61b2](https://github.com/varletjs/varlet/commit/32f61b2))
-* fix(snackbar): fix zIndex and loading ([aaf2459](https://github.com/varletjs/varlet/commit/aaf2459))
-* fix(snackbar): modify switch mode of icon ([d8c943a](https://github.com/varletjs/varlet/commit/d8c943a))
-* fix(ui): ui/input,checkbox,checkbox-group,radio,radio-group原型完成 优化父子组件通信 ([3af4a62](https://github.com/varletjs/varlet/commit/3af4a62))
-* fix(ui): 增加单元测试命令 测试覆盖率统计 ide高亮支持 优化cli代码可读性 ([91882c6](https://github.com/varletjs/varlet/commit/91882c6))
-* fix(ui/dialog picker): 优化close方法 ([5b426ab](https://github.com/varletjs/varlet/commit/5b426ab))
-* fix(ui/icon ui/image ui/lazy): 增加lazy的处理状态 icon原型完成 增加image的load error监听 ([661b111](https://github.com/varletjs/varlet/commit/661b111))
-* fix(ui/icon): icon name支持图片地址 ([a5bcb49](https://github.com/varletjs/varlet/commit/a5bcb49))
-* fix(ui/icon): icon name支持图片地址 ([0884dd7](https://github.com/varletjs/varlet/commit/0884dd7))
-* fix(ui/icon): 增加复制icon功能 ([5282655](https://github.com/varletjs/varlet/commit/5282655))
-* fix(ui/input): input 原型完成 ([d945477](https://github.com/varletjs/varlet/commit/d945477))
-* fix(ui/input): input 默认trigger方式修改为 onInput onClear ([bbaed93](https://github.com/varletjs/varlet/commit/bbaed93))
-* fix(ui/input): input增加异步校验功能 ([da0c5f0](https://github.com/varletjs/varlet/commit/da0c5f0))
-* fix(ui/input): 修复line在error状态下没变红色的BUG ([7f8298d](https://github.com/varletjs/varlet/commit/7f8298d))
-* fix(ui/list): list原型完成 ([669590e](https://github.com/varletjs/varlet/commit/669590e))
-* fix(ui/picker dialog): 优化单例模式流程 ([0c78a72](https://github.com/varletjs/varlet/commit/0c78a72))
-* fix(ui/picker): 优化picker api ([42ee8bf](https://github.com/varletjs/varlet/commit/42ee8bf))
-* fix(ui/picker): 优化代码 ([10f27b7](https://github.com/varletjs/varlet/commit/10f27b7))
-* fix(ui/picker): 创建工具栏 ([2ed6e8a](https://github.com/varletjs/varlet/commit/2ed6e8a))
-* fix(ui/picker): 多列picker原型完成 ([e41f497](https://github.com/varletjs/varlet/commit/e41f497))
-* fix(ui/picker): 完成了多列模式的基本功能 ([882c014](https://github.com/varletjs/varlet/commit/882c014))
-* fix(ui/picker): 级连模式完成 ([dcd55b9](https://github.com/varletjs/varlet/commit/dcd55b9))
-* fix(ui/picker): 设计了基本的样式和基本dom结构 完成了基本的滚动 ([9d9f1b9](https://github.com/varletjs/varlet/commit/9d9f1b9))
-* fix(ui/ripple): 优化了ripple的动画 ([f219a14](https://github.com/varletjs/varlet/commit/f219a14))
-* fix(ui/ripple): 水波纹会自行设置容器的 overflow position zIndex 并在波纹结束时进行还原 ([a112796](https://github.com/varletjs/varlet/commit/a112796))
-* fix(ui/select utils/component): select option组件原型完成 增加了inject前的provide key判断 ([7f7795a](https://github.com/varletjs/varlet/commit/7f7795a))
-* fix(ui/sticky): sticky原型完成 ([8acff00](https://github.com/varletjs/varlet/commit/8acff00))
-* fix(ui/sticky): 修复number类型offsetTop失效的bug ([e7ac6bd](https://github.com/varletjs/varlet/commit/e7ac6bd))
-* fix(ui/sticky): 增加scroll事件监听 ([19e1447](https://github.com/varletjs/varlet/commit/19e1447))
-* fix(ui/sticky): 粘性默认使用css的sticky属性进行帧数提升 不支持的浏览器降级成fixed模式 ([f43bdd3](https://github.com/varletjs/varlet/commit/f43bdd3))
-* fix(ui/swipe list): 优化swipe list ([9439763](https://github.com/varletjs/varlet/commit/9439763))
-* fix(ui/swipe): 修复了touching状态下autoplay没禁止的bug ([40fcb2e](https://github.com/varletjs/varlet/commit/40fcb2e))
-* fix(ui/swipe): 增加resize方法 ([a453b66](https://github.com/varletjs/varlet/commit/a453b66))
-* fix(ui/tabs tab tabs-items tab-item): 优化了父子之间传值 增加resize方法 ([771b156](https://github.com/varletjs/varlet/commit/771b156))
-* fix(ui/tabs ui/tab): tabs tab原型完成 ([01d6330](https://github.com/varletjs/varlet/commit/01d6330))
-* fix(ui/tabs ui/tabs-items): 优化视图切换 增加tabs垂直布局支持 ([1f032ae](https://github.com/varletjs/varlet/commit/1f032ae))
-* fix(ui/utils ui/tabs tab tabs-items tab-item): 优化组件通信 ([487d751](https://github.com/varletjs/varlet/commit/487d751))
-* fix(ui/utils): 修改了获取滚动容器的实现 ([9cd5a23](https://github.com/varletjs/varlet/commit/9cd5a23))
-* feat: add indexbar option ([456095b](https://github.com/varletjs/varlet/commit/456095b))
-* feat: add rate ([dffc1dd](https://github.com/varletjs/varlet/commit/dffc1dd))
-* feat: add rate ([bdcccc2](https://github.com/varletjs/varlet/commit/bdcccc2))
-* feat: backTop ([efaf596](https://github.com/varletjs/varlet/commit/efaf596))
-* feat: cell ([c8e8a58](https://github.com/varletjs/varlet/commit/c8e8a58))
-* feat: date-picker ([bcfa3d2](https://github.com/varletjs/varlet/commit/bcfa3d2))
-* feat: expansion-panels ([61c2694](https://github.com/varletjs/varlet/commit/61c2694))
-* feat: finish indexbar ([923aa37](https://github.com/varletjs/varlet/commit/923aa37))
-* feat: indexbar ([650c174](https://github.com/varletjs/varlet/commit/650c174))
-* feat: pull-refresh done ([152c90c](https://github.com/varletjs/varlet/commit/152c90c))
-* feat: pullRefresh ([8669e0b](https://github.com/varletjs/varlet/commit/8669e0b))
-* feat: slider ([d2ac037](https://github.com/varletjs/varlet/commit/d2ac037))
-* feat: switch ([86729d7](https://github.com/varletjs/varlet/commit/86729d7))
-* feat: time-picker ([40048a4](https://github.com/varletjs/varlet/commit/40048a4))
-* feat(button): add forbidripple prop ([092c57d](https://github.com/varletjs/varlet/commit/092c57d))
-* feat(expansion-panels): add example ([8ef77ac](https://github.com/varletjs/varlet/commit/8ef77ac))
-* feat(loading): add circle ([ee1f020](https://github.com/varletjs/varlet/commit/ee1f020))
-* feat(slider): add validation ([a6c4e60](https://github.com/varletjs/varlet/commit/a6c4e60))
-* feat(snackbar): add clear ([aebe81b](https://github.com/varletjs/varlet/commit/aebe81b))
-* feat(switch): add validation ([68aabef](https://github.com/varletjs/varlet/commit/68aabef))
-* style: modify tab to space ([01de29c](https://github.com/varletjs/varlet/commit/01de29c))
-* style: modify the display style ([291fd37](https://github.com/varletjs/varlet/commit/291fd37))
-* style: remove unused code ([25e9ca6](https://github.com/varletjs/varlet/commit/25e9ca6))
-* refactor: modify the ripple of rate ([cdf9f78](https://github.com/varletjs/varlet/commit/cdf9f78))
-* refactor: simplify the code ([5959bd4](https://github.com/varletjs/varlet/commit/5959bd4))
-* refactor(date-picker): modify '...' to Array.from and remove .default ([92926c8](https://github.com/varletjs/varlet/commit/92926c8))
-* refactor(date-picker): optimize code readability ([1e6bcc3](https://github.com/varletjs/varlet/commit/1e6bcc3))
-* refactor(date-picker): optimize code readability ([c49da55](https://github.com/varletjs/varlet/commit/c49da55))
-* refactor(site): modify style ([c597e4d](https://github.com/varletjs/varlet/commit/c597e4d))
-* refactor(slider): remove duplicate code ([beee1ac](https://github.com/varletjs/varlet/commit/beee1ac))
-* refactor(snackbar): modify the way of props are called ([59b0ca4](https://github.com/varletjs/varlet/commit/59b0ca4))
-* refactor(snackbar): move snackbar-core in snackbar ([dc7d417](https://github.com/varletjs/varlet/commit/dc7d417))
-* refactor(switch): rename disable props ([21a9f48](https://github.com/varletjs/varlet/commit/21a9f48))
-* chore: modify tab to space ([8c308cd](https://github.com/varletjs/varlet/commit/8c308cd))
-* perf(cli): 优化compiler编译速度 ([20df4e1](https://github.com/varletjs/varlet/commit/20df4e1))
-
-
-
-## 0.7.0 (2020-12-25)
-
-* feat:new slot function ([f66d799](https://github.com/varletjs/varlet/commit/f66d799))
-* fix:solve the disorder of layout ([5561a85](https://github.com/varletjs/varlet/commit/5561a85))
-* fix(ui/lazy,skeleton): 修改了skeleton样式 取消了lazy尝试请求的请求数参数 ([df1c8e1](https://github.com/varletjs/varlet/commit/df1c8e1))
-* refactor:chip ([baa184e](https://github.com/varletjs/varlet/commit/baa184e))
-* v0.6.0 ([2f7baf3](https://github.com/varletjs/varlet/commit/2f7baf3))
-* v0.7.0 ([4255485](https://github.com/varletjs/varlet/commit/4255485))
-* fix: add class for transition-group ([75e3df6](https://github.com/varletjs/varlet/commit/75e3df6))
-* fix: add isDeclarative for snackbar ([a156647](https://github.com/varletjs/varlet/commit/a156647))
-* fix: add margin for loading text and detection componentName ([b42046e](https://github.com/varletjs/varlet/commit/b42046e))
-* fix: add typescript type(App) ([4d49a7b](https://github.com/varletjs/varlet/commit/4d49a7b))
-* fix: fix style of snackbar ([2858e3e](https://github.com/varletjs/varlet/commit/2858e3e))
-* fix: modify loading docs and example ([66be153](https://github.com/varletjs/varlet/commit/66be153))
-* fix: modify size and animation of loading ([63eb392](https://github.com/varletjs/varlet/commit/63eb392))
-* fix: remove console ([675f910](https://github.com/varletjs/varlet/commit/675f910))
-* fix(cli): 修改.vue文件编译逻辑 ([5e2e64a](https://github.com/varletjs/varlet/commit/5e2e64a))
-* fix(cli): 重构部分代码 ([e4840dc](https://github.com/varletjs/varlet/commit/e4840dc))
-* fix(cli/compiler): 修复cjs编译bug 增加编译不同模块标准库css,less入口文件 ([226bc04](https://github.com/varletjs/varlet/commit/226bc04))
-* fix(commands): modify indexTemplate of create ([48a0687](https://github.com/varletjs/varlet/commit/48a0687))
-* fix(icons): 子包@varlet/icons完成 svg待选 ([76c8cbd](https://github.com/varletjs/varlet/commit/76c8cbd))
-* fix(loading): remove text ([86ec547](https://github.com/varletjs/varlet/commit/86ec547))
-* fix(snackbar): add type definition ([a3283ff](https://github.com/varletjs/varlet/commit/a3283ff))
-* fix(snackbar): modify default duration ([520cf47](https://github.com/varletjs/varlet/commit/520cf47))
-* fix(snackbar): modify position prop ([2862958](https://github.com/varletjs/varlet/commit/2862958))
-* fix(ui): button原型制作中 已完成基本type size color基本交互 ([5d528ea](https://github.com/varletjs/varlet/commit/5d528ea))
-* fix(ui): button原型完成 ([cdf32e5](https://github.com/varletjs/varlet/commit/cdf32e5))
-* fix(ui): menu组件原型完成 重构button popup dialog skeleton的props ([09a57b1](https://github.com/varletjs/varlet/commit/09a57b1))
-* fix(ui): popup dialog原型完成 ([4c3da72](https://github.com/varletjs/varlet/commit/4c3da72))
-* fix(ui): snackbar index.ts重构 ([a76a0be](https://github.com/varletjs/varlet/commit/a76a0be))
-* fix(ui): snackbar 解决动画问题 ([da87973](https://github.com/varletjs/varlet/commit/da87973))
-* fix(ui): 修复类型问题 ([10ebe7a](https://github.com/varletjs/varlet/commit/10ebe7a))
-* fix(ui): 修改了ripple的定位 ([67fd0cc](https://github.com/varletjs/varlet/commit/67fd0cc))
-* fix(ui): 增加button组件的loading参数校验 ([4d839c1](https://github.com/varletjs/varlet/commit/4d839c1))
-* fix(ui): 增加ui全局上下文 适配teleport keep-alive 锁操作 ([d237750](https://github.com/varletjs/varlet/commit/d237750))
-* fix(ui): 定义组件上下文对象 ([4e926c7](https://github.com/varletjs/varlet/commit/4e926c7))
-* fix(ui): 按钮组件开发 ([4fddcbd](https://github.com/varletjs/varlet/commit/4fddcbd))
-* fix(ui): 添加@varlet/icons依赖 ([f32de8c](https://github.com/varletjs/varlet/commit/f32de8c))
-* fix(ui/image): image原型完成 ([97fcc83](https://github.com/varletjs/varlet/commit/97fcc83))
-* fix(ui/lazy): lazy原型完成 ([e332fa8](https://github.com/varletjs/varlet/commit/e332fa8))
-* fix(ui/lazy): 修复CacheInstance类型错误 ([1573b56](https://github.com/varletjs/varlet/commit/1573b56))
-* fix(ui/lazy): 修复了lazy在兼容模式下 图片从视口外操作到视口内没有进行check的bug ([8af34d0](https://github.com/varletjs/varlet/commit/8af34d0))
-* fix(ui/lazy): 修复了部分情况下图片update重复check的bug ([f8fcf78](https://github.com/varletjs/varlet/commit/f8fcf78))
-* fix(ui/lazy): 增加1px像素占位 增加图片URL缓存 ([865a10c](https://github.com/varletjs/varlet/commit/865a10c))
-* fix(ui/lazy): 增加局部滚动的案例cover ([c24820a](https://github.com/varletjs/varlet/commit/c24820a))
-* fix(ui/lazy): 增加绑定事件配置 ([64a95cb](https://github.com/varletjs/varlet/commit/64a95cb))
-* fix(ui/styles): 修改common.less中的状态名 ([8e30223](https://github.com/varletjs/varlet/commit/8e30223))
-* feat: add button for menu ([e9e1860](https://github.com/varletjs/varlet/commit/e9e1860))
-* feat: add chips ([ed1cc95](https://github.com/varletjs/varlet/commit/ed1cc95))
-* feat: add progress ([170d515](https://github.com/varletjs/varlet/commit/170d515))
-* feat: add propsEmits for loading ([41bfdab](https://github.com/varletjs/varlet/commit/41bfdab))
-* feat: add touch emulater ([6836953](https://github.com/varletjs/varlet/commit/6836953))
-* feat: complete snackbar ([f7aa36b](https://github.com/varletjs/varlet/commit/f7aa36b))
-* feat: loading ([d93e481](https://github.com/varletjs/varlet/commit/d93e481))
-* feat: modify loading size ([321526c](https://github.com/varletjs/varlet/commit/321526c))
-* feat: snackbar ([ff3483d](https://github.com/varletjs/varlet/commit/ff3483d))
-* docs: update progress doc ([ef96be3](https://github.com/varletjs/varlet/commit/ef96be3))
-* docs(loading): update docs ([d762dd1](https://github.com/varletjs/varlet/commit/d762dd1))
-* perf: add validator for progress mode ([8eb9721](https://github.com/varletjs/varlet/commit/8eb9721))
-* perf: refactor snackbar ([fd58373](https://github.com/varletjs/varlet/commit/fd58373))
-* style: change varlet to var ([d247cc9](https://github.com/varletjs/varlet/commit/d247cc9))
-* style: modify the style of docs ([081980c](https://github.com/varletjs/varlet/commit/081980c))
-* chore: modify options of prettier and remove lint-staged about markdown ([a85ea21](https://github.com/varletjs/varlet/commit/a85ea21))
-* refactor: modify site ([7ed1428](https://github.com/varletjs/varlet/commit/7ed1428))
-* refactor(snackbar): change emits to props ([7fe8b7c](https://github.com/varletjs/varlet/commit/7fe8b7c))
-* refactor(snackbar): optimize code ([ad8deec](https://github.com/varletjs/varlet/commit/ad8deec))
-
-
-
-## <small>0.5.13 (2020-11-27)</small>
-
-* v0.5.13 ([c58f30f](https://github.com/varletjs/varlet/commit/c58f30f))
-* fix(ui/package.json): fix ([6bb1761](https://github.com/varletjs/varlet/commit/6bb1761))
-* fix(ui/skeleton): 修复row的迭代bug ([d1640ac](https://github.com/varletjs/varlet/commit/d1640ac))
-
-
-
-## <small>0.5.10 (2020-11-27)</small>
-
-* v0.5.10 ([4f99ab7](https://github.com/varletjs/varlet/commit/4f99ab7))
-* fix(cli ui): 统一给每个包增加另一个style入口 方便babel-import-plugin解析 ([cd1ef49](https://github.com/varletjs/varlet/commit/cd1ef49))
-
-
-
-## <small>0.5.9 (2020-11-27)</small>
-
-* v0.5.9 ([77b4174](https://github.com/varletjs/varlet/commit/77b4174))
-* fix(all package.json): 修改了peer依赖 改成了依赖大于目标版本 ([294eced](https://github.com/varletjs/varlet/commit/294eced))
-
-
-
-## <small>0.5.8 (2020-11-27)</small>
-
-* v0.5.8 ([ddefaa2](https://github.com/varletjs/varlet/commit/ddefaa2))
-* fix(cli/site ui): skeleton组件原型完成 文档完成 ([374100f](https://github.com/varletjs/varlet/commit/374100f))
-
-
-
-## <small>0.5.7 (2020-11-26)</small>
-
-* v0.5.7 ([640e72f](https://github.com/varletjs/varlet/commit/640e72f))
-* fix(ui): ripple指令原型完成 ([43f8665](https://github.com/varletjs/varlet/commit/43f8665))
-* docs(readme): 增加了子包的readme说明 ([caddd0d](https://github.com/varletjs/varlet/commit/caddd0d))
-
-
-
-## <small>0.5.6 (2020-11-23)</small>
-
-* v0.5.6 ([ddd17fc](https://github.com/varletjs/varlet/commit/ddd17fc))
-* fix(cli): 启动生成varlet.config.js ([d8dfa5e](https://github.com/varletjs/varlet/commit/d8dfa5e))
-
-
-
-## <small>0.5.5 (2020-11-23)</small>
-
-* v0.5.5 ([31f885b](https://github.com/varletjs/varlet/commit/31f885b))
-* fix(cli): 修改ts-loader配置 allowTsInNodeModules ([cf65039](https://github.com/varletjs/varlet/commit/cf65039))
-
-
-
-## <small>0.5.4 (2020-11-23)</small>
-
-* v0.5.4 ([6467b46](https://github.com/varletjs/varlet/commit/6467b46))
-* fix(cli): tsconfig.json加入生产依赖 ([7c56dd2](https://github.com/varletjs/varlet/commit/7c56dd2))
-
-
-
-## <small>0.5.3 (2020-11-23)</small>
-
-* v0.5.3 ([b7cd790](https://github.com/varletjs/varlet/commit/b7cd790))
-* fix(cli): 把shim作为生产依赖 ([4e099d9](https://github.com/varletjs/varlet/commit/4e099d9))
-
-
-
-## <small>0.5.2 (2020-11-23)</small>
-
-* fix(添加tsconfig.json到cli的依赖列表): tsconfig.json ([3e55747](https://github.com/varletjs/varlet/commit/3e55747))
-* v0.5.2 ([9266ae5](https://github.com/varletjs/varlet/commit/9266ae5))
-* fix(all changelog): 修正版本号 ([af8f2b6](https://github.com/varletjs/varlet/commit/af8f2b6))
-
-
-
-## <small>0.5.1 (2020-11-23)</small>
-
-* v0.5.1 ([93edbac](https://github.com/varletjs/varlet/commit/93edbac))
-* fix(all packages/package.json): 发包失败重新发包 ([849f9ae](https://github.com/varletjs/varlet/commit/849f9ae))
-
-
-
-## 0.6.0 (2020-11-23)
-
-* refactor(代码重构,所有子包都有调整): 代码重构，提升了编译效率，减轻了过度设计的部分 ([e0a6be2](https://github.com/varletjs/varlet/commit/e0a6be2))
-* style(兼容IDE类型提示): 兼容IDE类型提示 ([165daa7](https://github.com/varletjs/varlet/commit/165daa7))
-* v0.6.0 ([5dabda3](https://github.com/varletjs/varlet/commit/5dabda3))
-* style(all packages): 移除了异常捕获冗余代码,修复了build命令生成多余的声明文件的bug ([b79c1be](https://github.com/varletjs/varlet/commit/b79c1be))
-* feat: add config to globalProperties ([00e2ebf](https://github.com/varletjs/varlet/commit/00e2ebf))
-* feat: add example of checkbox ([6effb17](https://github.com/varletjs/varlet/commit/6effb17))
-* feat: add iframe and add style ([5086937](https://github.com/varletjs/varlet/commit/5086937))
-* feat: add markdon-loader ([7dc787b](https://github.com/varletjs/varlet/commit/7dc787b))
-* feat: add style of site ([b936468](https://github.com/varletjs/varlet/commit/b936468))
-* feat: add test file and router ([fb6615c](https://github.com/varletjs/varlet/commit/fb6615c))
-* feat: connect nav and router ([0bc640f](https://github.com/varletjs/varlet/commit/0bc640f))
-* feat(markdown-loader): addcard-warpper ([38ec300](https://github.com/varletjs/varlet/commit/38ec300))
-* refactor: merge config ([7ffc5b1](https://github.com/varletjs/varlet/commit/7ffc5b1))
-* refactor: modify the methods of automatic generated routes ([4dc7500](https://github.com/varletjs/varlet/commit/4dc7500))
-* fix: add active style ([e23ecb2](https://github.com/varletjs/varlet/commit/e23ecb2))
-* fix: modify router path ([5451c55](https://github.com/varletjs/varlet/commit/5451c55))
-* fix: sentenced to empty ([2f21c5b](https://github.com/varletjs/varlet/commit/2f21c5b))
-* fix(cli): 增加功能create命令生成单测模板 ([0a2cf55](https://github.com/varletjs/varlet/commit/0a2cf55))
-* perf: add .DS_Store ([a78828e](https://github.com/varletjs/varlet/commit/a78828e))
-
-
-
-## 0.5.0 (2020-11-13)
-
-* v0.5.0 ([d342e26](https://github.com/varletjs/varlet/commit/d342e26))
-* feat: add auto create pc site route ([65cd41a](https://github.com/varletjs/varlet/commit/65cd41a))
-* feat(cli): 增加jest单测命令 一键执行所有单测文件 或是执行某一个组件的单测文件 ([b23bfee](https://github.com/varletjs/varlet/commit/b23bfee))
-* fix(.gitignore): 移除cli routes文件的依赖托管 ([1576643](https://github.com/varletjs/varlet/commit/1576643))
-* fix(cli): 移除typescript依赖 ([67cd726](https://github.com/varletjs/varlet/commit/67cd726))
-* perf: ignore varlet-cli/lib ([41cf49b](https://github.com/varletjs/varlet/commit/41cf49b))
-* chore: add varlet-cli/lib ([476bd9b](https://github.com/varletjs/varlet/commit/476bd9b))
-* chore: remove varlet-u/umd ([36442c4](https://github.com/varletjs/varlet/commit/36442c4))
-
-
-
-## 0.4.0 (2020-11-10)
-
-* v0.4.0 ([586ed48](https://github.com/varletjs/varlet/commit/586ed48))
-* feat(cli): 支持打包成umd ([af0645f](https://github.com/varletjs/varlet/commit/af0645f))
-
-
-
-## <small>0.3.2 (2020-11-09)</small>
-
-* v0.3.2 ([1ff4c79](https://github.com/varletjs/varlet/commit/1ff4c79))
-* style(cli): format code ([7ae3afa](https://github.com/varletjs/varlet/commit/7ae3afa))
-
-
-
-## <small>0.3.1 (2020-11-09)</small>
-
-* v0.3.1 ([5b7a350](https://github.com/varletjs/varlet/commit/5b7a350))
-* fix(cli): 修改.vue文件编译规则 ([71ab372](https://github.com/varletjs/varlet/commit/71ab372))
-
-
-
-## 0.3.0 (2020-11-06)
-
-* v0.3.0 ([fe23083](https://github.com/varletjs/varlet/commit/fe23083))
-* feat(cli): 实现compile命令,可编译出es,commonjs规范两套发布代码|实现--watch文件监听,按需编译有改动的文件 ([a00695a](https://github.com/varletjs/varlet/commit/a00695a))
-
-
-
-## <small>0.2.1 (2020-11-03)</small>
-
-* v0.2.1 ([ca91805](https://github.com/varletjs/varlet/commit/ca91805))
-* fix(cli): 修复了node_modules的依赖包没被webpack扫进去的bug ([128a0fa](https://github.com/varletjs/varlet/commit/128a0fa))
-
-
-
-## 0.2.0 (2020-11-03)
-
-* v0.2.0 ([c0aed5b](https://github.com/varletjs/varlet/commit/c0aed5b))
-* feat(packages/**): 架构调整,实现varlet-cli dev build命令 ([1ca2cf6](https://github.com/varletjs/varlet/commit/1ca2cf6))
-* fix(gitignore): 修改gitignore ([0b51c3d](https://github.com/varletjs/varlet/commit/0b51c3d))
-* fix(packages/varlet-cli/lib): 移除了packages/varlet-cli/lib ([3d71b03](https://github.com/varletjs/varlet/commit/3d71b03))
-
-
-
-## <small>0.1.7 (2020-10-30)</small>
-
-* add licence ([ee67f5c](https://github.com/varletjs/varlet/commit/ee67f5c))
-* fix(所有子包的package.json): 移除了publicConfig ([1ce49db](https://github.com/varletjs/varlet/commit/1ce49db))
-* v0.1.7 ([e658bc7](https://github.com/varletjs/varlet/commit/e658bc7))
-
-
-
-## <small>0.1.6 (2020-10-30)</small>
-
-* v0.1.6 ([5d0fd4b](https://github.com/varletjs/varlet/commit/5d0fd4b))
-* fix(lerna.json): 修改lerna.json的publishConfig字段 ([a6ea83f](https://github.com/varletjs/varlet/commit/a6ea83f))
-
-
-
-## <small>0.1.5 (2020-10-30)</small>
-
-* v0.1.5 ([9a86311](https://github.com/varletjs/varlet/commit/9a86311))
-* fix(lerna.json): 修改了lerna.json的public选项 ([831e521](https://github.com/varletjs/varlet/commit/831e521))
-
-
-
-## <small>0.1.4 (2020-10-30)</small>
-
-* v0.1.4 ([6fdd924](https://github.com/varletjs/varlet/commit/6fdd924))
-* fix(root package.json): 修改主包package.json ([1ecfad0](https://github.com/varletjs/varlet/commit/1ecfad0))
-
-
-
-## <small>0.1.3 (2020-10-30)</small>
-
-* fix(所有子包的package.json): 修改publicConfig字段 ([d711a57](https://github.com/varletjs/varlet/commit/d711a57))
-* v0.1.3 ([8bcc120](https://github.com/varletjs/varlet/commit/8bcc120))
-* chore: add .editorconfig ([8603010](https://github.com/varletjs/varlet/commit/8603010))
-* chore(.gitignore): add .vscode ([908707a](https://github.com/varletjs/varlet/commit/908707a))
-
-
-
-## <small>0.1.2 (2020-10-30)</small>
-
-* refactor(所有子包的package.json): 修改private字段 ([9dc9c2a](https://github.com/varletjs/varlet/commit/9dc9c2a))
-* v0.1.2 ([0038b51](https://github.com/varletjs/varlet/commit/0038b51))
-
-
-
-## <small>0.1.1 (2020-10-30)</small>
-
-* refactor(所有子包的package.json): 修改publishConfig的access字段为publish ([e8d5c32](https://github.com/varletjs/varlet/commit/e8d5c32))
-* v0.1.1 ([bda6baf](https://github.com/varletjs/varlet/commit/bda6baf))
-
-
-
-## 0.1.0 (2020-10-30)
-
-* feat(初始化仓库): 初始化规范化配置 monorepo配置 ([5913d0b](https://github.com/varletjs/varlet/commit/5913d0b))
-* v0.1.0 ([399d9ab](https://github.com/varletjs/varlet/commit/399d9ab))
-* refactor(root package.json): 修正package.json版本号 ([35dc112](https://github.com/varletjs/varlet/commit/35dc112))
+## [2.19.1](https://github.com/varletjs/varlet/compare/v2.19.0...v2.19.1) (2023-11-17)
+
+
+
+# [2.19.0](https://github.com/varletjs/varlet/compare/v2.18.4...v2.19.0) (2023-11-17)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** import missing snackbar component ([#1294](https://github.com/varletjs/varlet/issues/1294)) ([7e81ac3](https://github.com/varletjs/varlet/commit/7e81ac3940e525e8a0953a0a32a3cf9b991777ac))
+* **server/countdown:** ensure start function only be called in client ([4100156](https://github.com/varletjs/varlet/commit/41001567d904dd83ce52313b4b922b27b02e4bb2))
+
+
+### Features
+
+* **badge:** support --badge-content-font-size ([#1286](https://github.com/varletjs/varlet/issues/1286)) ([f2ee14f](https://github.com/varletjs/varlet/commit/f2ee14fd535c37a8ae6fb4af70f4f4367305d252))
+* **rate:** support --rate-size ([#1298](https://github.com/varletjs/varlet/issues/1298)) ([157b233](https://github.com/varletjs/varlet/commit/157b233c8c7e98e3bc75e3e3e87df53064f3d9a5))
+* **slider:** support custom styles by css var ([#1293](https://github.com/varletjs/varlet/issues/1293)) ([e4b2431](https://github.com/varletjs/varlet/commit/e4b2431fcc0c1eb12b051df1d21aed7855f02b59))
+* support static method setPropsDefaults ([1407cef](https://github.com/varletjs/varlet/commit/1407cefeac95c1ff0770fe695413f73c636fec87))
+* support static method setPropsDefaults ([#1283](https://github.com/varletjs/varlet/issues/1283)) ([e0ba0fc](https://github.com/varletjs/varlet/commit/e0ba0fc4243974ddebfc48a6fe5025f2955daa21))
+* **tabs:** support --tabs-indicator-border-radius ([559e156](https://github.com/varletjs/varlet/commit/559e15603ce06d4c49228790d5ac30f606e4fc77))
+* **tab:** support ripple ([#1303](https://github.com/varletjs/varlet/issues/1303)) ([17a8a1e](https://github.com/varletjs/varlet/commit/17a8a1e1bc1997f8820ddc8bf32e987b4eb70320))
+
+
+
+## [2.18.4](https://github.com/varletjs/varlet/compare/v2.18.3...v2.18.4) (2023-11-10)
+
+
+### Bug Fixes
+
+* **date-picker:** import sticky component ([6fe6ac6](https://github.com/varletjs/varlet/commit/6fe6ac67c2d34c8518b646e1aba98050f777614e))
+
+
+
+## [2.18.3](https://github.com/varletjs/varlet/compare/v2.18.2...v2.18.3) (2023-11-09)
+
+
+### Bug Fixes
+
+* **button:** remove hover and ripple effect while loading ([#1275](https://github.com/varletjs/varlet/issues/1275)) ([591a8b2](https://github.com/varletjs/varlet/commit/591a8b2c1a3d63e1ef723a81563c2bcef3487efc))
+* **date-picker:** panel-header add sticky ([0212fee](https://github.com/varletjs/varlet/commit/0212feebb4144ad3e5d853e95baacd22241f8a2e))
+* **ui:** correct the return type of toSizeUnit ([#1282](https://github.com/varletjs/varlet/issues/1282)) ([0a2b04a](https://github.com/varletjs/varlet/commit/0a2b04a5b0f7818d24d18d2faf3d3d866afb86ff))
+
+
+### Features
+
+* **image-preview:** support zoom method ([#1262](https://github.com/varletjs/varlet/issues/1262)) ([99a8369](https://github.com/varletjs/varlet/commit/99a8369a875cc74bb7ff08b7b6cded3a1954b901))
+* **shared:** support isNumeric and optimize ui elements ([06cda15](https://github.com/varletjs/varlet/commit/06cda15ad3c4a286bb115b309f3a8a5406c0eab6))
+* **uploader:** support props.onClickAction ([830264f](https://github.com/varletjs/varlet/commit/830264f90d244858b4c3ee285fbf69758e0bab8c))
+
+
+### Reverts
+
+* **date-picker:** revert month-panel modify ([75cbae8](https://github.com/varletjs/varlet/commit/75cbae889a6d534f658f102156c3243c567324e9))
+
+
+
+## [2.18.2](https://github.com/varletjs/varlet/compare/v2.18.1...v2.18.2) (2023-11-02)
+
+
+### Bug Fixes
+
+* **loading:** add missing --loading-color &  support --loading-desc-color ([#1253](https://github.com/varletjs/varlet/issues/1253)) ([0c21498](https://github.com/varletjs/varlet/commit/0c21498ddf83aa555d8145b9685857df5d1751eb))
+* **option:** ellipses are not displayed when text overflows ([#1254](https://github.com/varletjs/varlet/issues/1254)) ([8e70fd5](https://github.com/varletjs/varlet/commit/8e70fd5ae32b0ceae92149b5f0fb794abcede483))
+
+
+### Features
+
+* **cli:** support stub on dev server ([43f61a5](https://github.com/varletjs/varlet/commit/43f61a5b5bca7fe20f845b93fafd99e5e12bc242))
+* **countdown:** support --countdown-text-font-size ([#1255](https://github.com/varletjs/varlet/issues/1255)) ([cd4b307](https://github.com/varletjs/varlet/commit/cd4b307238600554a97b2cd0f2da194faa5f9644))
+* **shared, use:** support call createNamespaceFn useVModel classes ([daed1e2](https://github.com/varletjs/varlet/commit/daed1e27bd56e2d847394c8f3413e1c06c1cd6b0))
+* **shared:** support hasOwn ([fe92b48](https://github.com/varletjs/varlet/commit/fe92b487bdc430b4ebb355847497b660524586a6))
+* **swipe:** support --swipe-navigation-z-index ([#1247](https://github.com/varletjs/varlet/issues/1247)) ([1f64a13](https://github.com/varletjs/varlet/commit/1f64a13b7824abfefb166976bcf634f0bbf1657e))
+
+
+
+## [2.18.1](https://github.com/varletjs/varlet/compare/v2.18.0...v2.18.1) (2023-10-27)
+
+
+### Bug Fixes
+
+* **back-top:** Change type of the click event from MouseEvent to Event ([#1239](https://github.com/varletjs/varlet/issues/1239)) ([4ef2e34](https://github.com/varletjs/varlet/commit/4ef2e34120aec6662ee55fb2df72a477a8ac08e5))
+* **chip:** rename closable to closeable ([#1237](https://github.com/varletjs/varlet/issues/1237)) ([7cbe418](https://github.com/varletjs/varlet/commit/7cbe41890a75302924bd68e285a8dcd429703228))
+* **date-picker:** fix year panel scroll error ([2ed4eb3](https://github.com/varletjs/varlet/commit/2ed4eb38e7c6d09f17ae2d8541bf348b381d07cd))
+* **floating-panel:** fix scroll behavior ([6d953f7](https://github.com/varletjs/varlet/commit/6d953f725d1afac29cf0177d683157b100919ff9))
+* **rate:** modify the trigger time of change event & limit the modelValue type to number ([#1243](https://github.com/varletjs/varlet/issues/1243)) ([2137984](https://github.com/varletjs/varlet/commit/21379844624f47ff968848b486b200dd63798a11))
+* **switch:** change type of the click event from MouseEvent to Event ([#1241](https://github.com/varletjs/varlet/issues/1241)) ([153e007](https://github.com/varletjs/varlet/commit/153e007c7d97c968454d35a2998f7c1520f95a1b))
+
+
+### Features
+
+* **date-picker:** replace headColor with titleColor ([#1234](https://github.com/varletjs/varlet/issues/1234)) ([1c2f41a](https://github.com/varletjs/varlet/commit/1c2f41a2ebd49433175a5e49e2312518ae397d37))
+* **date-picker:** suport hint ([#1233](https://github.com/varletjs/varlet/issues/1233)) ([870472e](https://github.com/varletjs/varlet/commit/870472e9ce189a5e3ae5ffa75c91de2d11230bfa))
+* **time-picker, date-picker:** support custom title height ([#1227](https://github.com/varletjs/varlet/issues/1227)) ([b89ca23](https://github.com/varletjs/varlet/commit/b89ca23788fbe7f0cc7fff0e5ae982cd4a134d5f))
+* **time-picker:** support hint ([#1229](https://github.com/varletjs/varlet/issues/1229)) ([65675ad](https://github.com/varletjs/varlet/commit/65675adce8e4dc88bf3cfe8ab0233f1e6eccbf59))
+* **time-picker:** support titleColor ([#1230](https://github.com/varletjs/varlet/issues/1230)) ([466951f](https://github.com/varletjs/varlet/commit/466951f58d33aa29c2a24c4b252fda9141d2f5f4))
+
+
+
+# [2.18.0](https://github.com/varletjs/varlet/compare/v2.17.1...v2.18.0) (2023-10-19)
+
+
+### Bug Fixes
+
+* fix warning when event.preventDefault and close [#1212](https://github.com/varletjs/varlet/issues/1212) ([f3955ca](https://github.com/varletjs/varlet/commit/f3955cabfbd6b01c1bfa75b96c3318eab4fc0eb7))
+* **floating-panel:** cover the bottom shadow of the panel ([#1224](https://github.com/varletjs/varlet/issues/1224)) ([61e14e8](https://github.com/varletjs/varlet/commit/61e14e8fcf08048b816a50b522e67365d9ac7801))
+* **ripple:** fix ripple cannot be removed when user drag end and improve menu link of the documentation  ([#1213](https://github.com/varletjs/varlet/issues/1213)) ([63faeae](https://github.com/varletjs/varlet/commit/63faeaed88d46054e3e5b807fc26833e388be697))
+
+
+### Features
+
+* **action-sheet:** support --action-sheet-border-top ([#1215](https://github.com/varletjs/varlet/issues/1215)) ([fc88fd0](https://github.com/varletjs/varlet/commit/fc88fd0c4d7c80ded247711c863312cd7865c949))
+* **avatar:** support hoverable prop ([#1221](https://github.com/varletjs/varlet/issues/1221)) ([2a0397a](https://github.com/varletjs/varlet/commit/2a0397a9285de5c25cada0560dfead131d31d128))
+* **card:** support --card-close-button-text-color ([668775b](https://github.com/varletjs/varlet/commit/668775b58972acb4e9551e393a72506a42d104e8))
+* **floating-panel:** support new component floating panel ([#1217](https://github.com/varletjs/varlet/issues/1217)) ([5749040](https://github.com/varletjs/varlet/commit/5749040747e3ff0f16f8b53eae4d5833d29685f8))
+* **index-bar:** support custom index bar position ([#1220](https://github.com/varletjs/varlet/issues/1220)) ([fed2ad3](https://github.com/varletjs/varlet/commit/fed2ad3b63dc0869e5e4f14a62e402bdb3e7abde))
+* **menu-select:** support new component menu select and close [#1204](https://github.com/varletjs/varlet/issues/1204) ([df013ea](https://github.com/varletjs/varlet/commit/df013ea093d98757d41a211438da707e2084fa66))
+* **use:** support isReachTop and isReachBottom ([053c659](https://github.com/varletjs/varlet/commit/053c659cd46828a1ae47117b2a060af0e91e05ba))
+* **vite-plugins/markdown:** support transform hash to pinyin ([0102fdf](https://github.com/varletjs/varlet/commit/0102fdf079233f54710e9810a55e60b366bac597))
+
+
+
+## [2.17.1](https://github.com/varletjs/varlet/compare/v2.17.0...v2.17.1) (2023-10-08)
+
+
+### Bug Fixes
+
+* **dialog:** fix message word-wrap and improve uploader component tests and docs ([1c4c3d2](https://github.com/varletjs/varlet/commit/1c4c3d25ed2ec5ccf6b2f73f89875daddcac225e))
+* **option:** fix selected error in multiple mode ([c9753d9](https://github.com/varletjs/varlet/commit/c9753d984696e12ae56cc119682e877c7b0289a9))
+* **popup:** fixed width and height of the popup content ([b78826d](https://github.com/varletjs/varlet/commit/b78826d2839b9602b964ac0f13664f64b5198640))
+* **uploader:** support ico extname of the image ([3429668](https://github.com/varletjs/varlet/commit/34296689c0218690afeaaf2217fd3612fd3987b3))
+
+
+### Features
+
+* **option:** support disabled ([802813d](https://github.com/varletjs/varlet/commit/802813d87a08bac579edcbbd0e6196b458502338))
+* **uploader:** support props.PreventDefaultPreview and preview event([#1206](https://github.com/varletjs/varlet/issues/1206)) ([f5ab12b](https://github.com/varletjs/varlet/commit/f5ab12b368f00bea2b9190b39d1556a6c8c1496d))
+
+
+
+# [2.17.0](https://github.com/varletjs/varlet/compare/v2.16.7...v2.17.0) (2023-09-28)
+
+
+### Bug Fixes
+
+* **select:** hidden vertical scroll bar ([#1186](https://github.com/varletjs/varlet/issues/1186)) ([842b10c](https://github.com/varletjs/varlet/commit/842b10c92e9b6243e05fe19a7a33c92baafa59ce))
+* **snackbar:** incorrect position of multiple ([4fc386c](https://github.com/varletjs/varlet/commit/4fc386c9966452aabd30291c96a1df7ac403637c))
+* **uploader:** convert default slot to boolean value ([#1188](https://github.com/varletjs/varlet/issues/1188)) ([4416972](https://github.com/varletjs/varlet/commit/4416972f54d85394e60778f2cc99349925570720))
+* **uploader:** readonly mode allows to preview picture ([#1184](https://github.com/varletjs/varlet/issues/1184)) ([edcf93a](https://github.com/varletjs/varlet/commit/edcf93ac0d83a6fa42cbd981669843f8294d09ec))
+
+
+### Features
+
+* **action-sheet, step:** support namespace for icon ([d62ac66](https://github.com/varletjs/varlet/commit/d62ac6611523a44a647c1a13a66e18f17fc73345))
+* **badge:** support namespace for icon ([b1da5db](https://github.com/varletjs/varlet/commit/b1da5db688f1aa3a10599944923d888a12e4107d))
+* **cell:** support namespace for icon ([0a6d6e8](https://github.com/varletjs/varlet/commit/0a6d6e85fcf0ffe6b366e32acae59cf9b8ecb8d6))
+* **chip:** support namespace for icon ([2b31999](https://github.com/varletjs/varlet/commit/2b3199919084b0a891ebdd48a6849f86a91aaacc))
+* **cli:** support esbuild compiler ([5b33789](https://github.com/varletjs/varlet/commit/5b3378901e22779eb668599791e49c059b5ff86c))
+* **cli:** support esbuild option ([28195d9](https://github.com/varletjs/varlet/commit/28195d9bae41ae588e4b96d985fb93e7ca970a99))
+* **cli:** support record task time ([9cbd270](https://github.com/varletjs/varlet/commit/9cbd270ada16db5aabecd101985bf8032d4a628e))
+* **ellipsis:** support expand ([#1197](https://github.com/varletjs/varlet/issues/1197)) ([a781b28](https://github.com/varletjs/varlet/commit/a781b28fd3c6f66acc915fe021be2846a249f63d))
+* **fab:** support namespace for icon ([6f06bd7](https://github.com/varletjs/varlet/commit/6f06bd7829c8d12a8caada60dd6e2a51b69ebbd7))
+* **field:** support --field-decorator-line-border-radius ([bfaad07](https://github.com/varletjs/varlet/commit/bfaad07a32b36b0b6d133dc16ee4600ba78c51d6))
+* **field:** support --field-decorator-placeholder-color ([c3edacf](https://github.com/varletjs/varlet/commit/c3edacf2224d4bfcfcc1caebfefcb42d75b874af))
+* **locale:** support zh-TW zh-HK ([92976b9](https://github.com/varletjs/varlet/commit/92976b97452fa6a0dc336f7509c2effe9a1a85d0))
+* **progress:** support linear gradient color when mode is circle ([#1180](https://github.com/varletjs/varlet/issues/1180)) ([f1cd728](https://github.com/varletjs/varlet/commit/f1cd728eb2d20f52e803a1eb4541c839e0bae063))
+* **rate:** support namespace for icon ([7db258f](https://github.com/varletjs/varlet/commit/7db258f7c9c54b6877108f507df1a7b0e22ceb24))
+* **uploader:** support resolve-type ([#1194](https://github.com/varletjs/varlet/issues/1194)) ([a8fbb35](https://github.com/varletjs/varlet/commit/a8fbb35eeabaf9a5e485cac8b833a550eb85b5e9))
+
+
+
+## [2.16.7](https://github.com/varletjs/varlet/compare/v2.16.6...v2.16.7) (2023-09-18)
+
+
+### Bug Fixes
+
+* **input,select:** reduce the impact of text-align ([5091f35](https://github.com/varletjs/varlet/commit/5091f351a5353f03ef0a62252ecdfd38f3880a74))
+
+
+### Features
+
+* **swipe:** support navigation prop and prev and next slots ([#1177](https://github.com/varletjs/varlet/issues/1177)) ([d717f0c](https://github.com/varletjs/varlet/commit/d717f0c9aa29f7fc2bdd3b2cb744294e7d327aa9))
+
+
+
+## [2.16.6](https://github.com/varletjs/varlet/compare/v2.16.5...v2.16.6) (2023-09-14)
+
+
+### Features
+
+* **extension:** support vercel origin ([bad29f5](https://github.com/varletjs/varlet/commit/bad29f56d4d7ba1656925eb4a7ee2449306f794a))
+
+
+
+## [2.16.5](https://github.com/varletjs/varlet/compare/v2.16.4...v2.16.5) (2023-09-13)
+
+
+### Bug Fixes
+
+* **badge:** fix border radius error ([bc46710](https://github.com/varletjs/varlet/commit/bc467109e9b322ba5a9d04e51daccc8c2ee444a0))
+
+
+
+## [2.16.4](https://github.com/varletjs/varlet/compare/v2.16.2...v2.16.4) (2023-09-13)
+
+
+### Features
+
+* **badge:** support custom content border ([#1178](https://github.com/varletjs/varlet/issues/1178)) ([499cd46](https://github.com/varletjs/varlet/commit/499cd466ceaa6b527b83b722c6608b2b09675fe9))
+* **extension:** support webview for documentation preview ([3c77690](https://github.com/varletjs/varlet/commit/3c77690bbd04c041675970a075a833152b97df1e))
+
+
+
+## [2.16.2](https://github.com/varletjs/varlet/compare/v2.16.1...v2.16.2) (2023-09-07)
+
+
+### Features
+
+* **layout:** support array for gutter and optimize scripts ([0a5252f](https://github.com/varletjs/varlet/commit/0a5252f0ba5ba8bfda7cd290257d3c5dd97f2b52))
+* **layout:** support array for gutter and optimize scripts ([55a2e97](https://github.com/varletjs/varlet/commit/55a2e9762342bf7bc62fd3414554a4df1c7b5838))
+* **swipe:** support prev next to for scoped slots data ([1031dd3](https://github.com/varletjs/varlet/commit/1031dd3a63e089303912f5e27cd51b7b763c3044))
+
+
+
+## [2.16.1](https://github.com/varletjs/varlet/compare/v2.16.0...v2.16.1) (2023-09-05)
+
+
+### Bug Fixes
+
+* **swipe:** direction check on touchend ([11911ac](https://github.com/varletjs/varlet/commit/11911acd64e89cb476751c36226586bb14db256a))
+
+
+
+# [2.16.0](https://github.com/varletjs/varlet/compare/v2.15.1...v2.16.0) (2023-09-05)
+
+
+### Bug Fixes
+
+* **button:** fix hover effect while the component is disabled ([bc15462](https://github.com/varletjs/varlet/commit/bc154629eaac63923449f9532f778b96f3704c68))
+
+
+### Features
+
+* remake index page and add new icon ([6adee9c](https://github.com/varletjs/varlet/commit/6adee9c5c50e097c92318eeb29ef6c7247ce7f4d))
+
+
+
+## [2.15.1](https://github.com/varletjs/varlet/compare/v2.15.0...v2.15.1) (2023-08-31)
+
+
+### Bug Fixes
+
+* **layout, table:** fix col width overflow and optimize table hover effect ([695b75d](https://github.com/varletjs/varlet/commit/695b75dae1863fa5ef0f5908691d6d3aca1230e5))
+
+
+
+# [2.15.0](https://github.com/varletjs/varlet/compare/v2.14.2...v2.15.0) (2023-08-30)
+
+
+### Bug Fixes
+
+* **input:** fix it can't trigger click event in `readonly` ([#1170](https://github.com/varletjs/varlet/issues/1170)) ([6ba487d](https://github.com/varletjs/varlet/commit/6ba487d5904f7c7a9e58c9f1bbe32c20074a4478))
+* **swipe:** fix swipe occasionally cross the boundary ([1788fd4](https://github.com/varletjs/varlet/commit/1788fd4a8cf0a71456eed5740755414d3a9fa604))
+
+
+### Features
+
+* **checkbox:** support indeterminate prop and slot ([#1159](https://github.com/varletjs/varlet/issues/1159)) ([41cd712](https://github.com/varletjs/varlet/commit/41cd7126d4787285f8a3cce2a18f903b66d16719))
+* **cli:** unit testing tools migrated to vitest ([9911f4b](https://github.com/varletjs/varlet/commit/9911f4b0a157cbff84d72b4fa19e5db66ebbf9a6))
+* **form:** support submit and reset events and improve test case ([55b3d62](https://github.com/varletjs/varlet/commit/55b3d62c2208204b1caac1bfb12ecfb0a550c4e2))
+* **link:** support rel prop ([#1163](https://github.com/varletjs/varlet/issues/1163)) ([05baa4a](https://github.com/varletjs/varlet/commit/05baa4a0d971b2f63e952c24e92e30f4acac9036))
+* **option:** support hover effect ([#1157](https://github.com/varletjs/varlet/issues/1157)) ([56cdff8](https://github.com/varletjs/varlet/commit/56cdff83e1aa610bd5d4cae1130060cfaf9b4e39))
+
+
+
+## [2.14.2](https://github.com/varletjs/varlet/compare/v2.14.1...v2.14.2) (2023-08-18)
+
+
+### Features
+
+* **drag:** support click event ([#1150](https://github.com/varletjs/varlet/issues/1150)) ([62ad9c3](https://github.com/varletjs/varlet/commit/62ad9c312f1cfb1716a50042f27dcb7c7b1486ef))
+
+
+
+## [2.14.1](https://github.com/varletjs/varlet/compare/v2.14.0...v2.14.1) (2023-08-15)
+
+
+### Bug Fixes
+
+* **watermarker:** fix missing style dependencies ([22fc711](https://github.com/varletjs/varlet/commit/22fc7112bc0cce43a8fc4813a940274e481c9222))
+
+
+
+# [2.14.0](https://github.com/varletjs/varlet/compare/v2.13.6...v2.14.0) (2023-08-15)
+
+
+### Features
+
+* add new component watermark ([#1143](https://github.com/varletjs/varlet/issues/1143)) ([a0af434](https://github.com/varletjs/varlet/commit/a0af434296215705c8c97667df267ac6f8575e86))
+
+
+
+## [2.13.6](https://github.com/varletjs/varlet/compare/v2.13.5...v2.13.6) (2023-08-02)
+
+
+### Bug Fixes
+
+* **cell:** fix cell overflow hidden ([0850d94](https://github.com/varletjs/varlet/commit/0850d940eca1e61522eef48afb6d8ec7ef5e91fa))
+
+
+### Features
+
+* **icons:** support email icon ([c23c7c1](https://github.com/varletjs/varlet/commit/c23c7c12554bec087a6e58e7afda01cd25e38b7c))
+
+
+
+## [2.13.5](https://github.com/varletjs/varlet/compare/v2.13.4...v2.13.5) (2023-07-30)
+
+
+### Features
+
+* **avatar:** support alt ([#1141](https://github.com/varletjs/varlet/issues/1141)) ([b76f84e](https://github.com/varletjs/varlet/commit/b76f84e82580d16fb5757f1d11da4a1c2218a2d1))
+* **fab:** support drag props ([#1138](https://github.com/varletjs/varlet/issues/1138)) ([344fb86](https://github.com/varletjs/varlet/commit/344fb86db493c4ebaac36b81b8cf9ae2f2118fb8))
+* **icons:** support lock icon ([ab406bd](https://github.com/varletjs/varlet/commit/ab406bd1da7ac568fe6d194e8483b3b0fd4febe2))
+* **popover:** add position strategy ([#1137](https://github.com/varletjs/varlet/issues/1137)) ([87bed1a](https://github.com/varletjs/varlet/commit/87bed1a7d11c31fc0e9bf2c77984ecdfc21f1ba3))
+* **progress:** add css variable to set border radius when the mode is linear ([#1136](https://github.com/varletjs/varlet/issues/1136)) ([83da939](https://github.com/varletjs/varlet/commit/83da939c2d2c9cae4ae53105f194994885541ba0))
+
+
+
+## [2.13.4](https://github.com/varletjs/varlet/compare/v2.13.3...v2.13.4) (2023-07-25)
+
+
+### Bug Fixes
+
+* **fab:** drag style mission ([cc6c913](https://github.com/varletjs/varlet/commit/cc6c913e1a28c46b0325e0af9d94cc936851924b))
+* **fab:** fix fab teleport defaults to body ([59de630](https://github.com/varletjs/varlet/commit/59de63096842a8804d2e8fdaf4b670b99339c2a3))
+
+
+
+## [2.13.3](https://github.com/varletjs/varlet/compare/v2.13.2...v2.13.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **switch, slider:** fix props.size cannot handle vmin and vmax ([8657077](https://github.com/varletjs/varlet/commit/865707711282f9e6fa815f4d17ffaf14e85ce4ff))
+* **switch, slider:** support em unit ([5d5d3ab](https://github.com/varletjs/varlet/commit/5d5d3abcd5e6d4a22a1f7d4a069a73a63d76254b))
+
+
+### Features
+
+* **fab:** support drag ([#1133](https://github.com/varletjs/varlet/issues/1133)) ([203c1a8](https://github.com/varletjs/varlet/commit/203c1a84f45bbdee13a28b7e208979c9ccae7bfd))
+* **site:** support color scheme ([a03da2a](https://github.com/varletjs/varlet/commit/a03da2a3c3c7598ff459abb506b6148dd2fb0e8f))
+
+
+
+## [2.13.2](https://github.com/varletjs/varlet/compare/v2.13.1...v2.13.2) (2023-07-24)
+
+
+### Bug Fixes
+
+* **switch, slider:** fix props.size cannot handle vmin and vmax ([3a218e1](https://github.com/varletjs/varlet/commit/3a218e172ee12073a50b68197571a0aaff398e72))
+
+
+
+## [2.13.1](https://github.com/varletjs/varlet/compare/v2.13.0...v2.13.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* **select:** fix select option active error ([#1130](https://github.com/varletjs/varlet/issues/1130)) ([a3b7138](https://github.com/varletjs/varlet/commit/a3b71389962eb9c55d589682de27623fe5fd67c9))
+
+
+### Features
+
+* **menu:** support popoverClass and refactor select css and fixed [#1129](https://github.com/varletjs/varlet/issues/1129) ([417f45c](https://github.com/varletjs/varlet/commit/417f45c4ab39471cae4314e440d6430b39ae54af))
+* **popover:** support animation ([4416548](https://github.com/varletjs/varlet/commit/4416548ec1593b255b993acdf6ca47d0097caf10))
+
+
+
+# [2.13.0](https://github.com/varletjs/varlet/compare/v2.12.3...v2.13.0) (2023-07-16)
+
+
+### Bug Fixes
+
+* **cli:** fix md table syntax ([c202ddf](https://github.com/varletjs/varlet/commit/c202ddfe5f27d1e850682d6216da23a4e719fb1b))
+* **slider:** fix bubble size of the Slider component is abnormal ([#1120](https://github.com/varletjs/varlet/issues/1120)) ([49a0b1f](https://github.com/varletjs/varlet/commit/49a0b1f6337ede3dcd36d649b346f1e7c832fa65))
+
+
+### Features
+
+* **drag:** support reset and refactor animation ([6dddee3](https://github.com/varletjs/varlet/commit/6dddee30b0d243e1c2db464623e21e9dc2fce3c9))
+* **input,uploader:** add extra message slot ([#1117](https://github.com/varletjs/varlet/issues/1117)) ([979229e](https://github.com/varletjs/varlet/commit/979229ecfcda6c3af840a0912300a9d59c96388c))
+* new component drag ([#1124](https://github.com/varletjs/varlet/issues/1124)) ([d86d5a1](https://github.com/varletjs/varlet/commit/d86d5a1d491f6c84068b32e1ff0c5ac2ed95c065))
+* **playground:** support preview mode ([d5101b2](https://github.com/varletjs/varlet/commit/d5101b26473a011a89cc6366a03dc8ad286bd8bd))
+
+
+
+## [2.12.3](https://github.com/varletjs/varlet/compare/v2.12.2...v2.12.3) (2023-07-07)
+
+
+### Bug Fixes
+
+* **input:** fix auto complete tab index ([#1114](https://github.com/varletjs/varlet/issues/1114)) ([fb5e3ac](https://github.com/varletjs/varlet/commit/fb5e3ac7312df0e34e987a1290b50a0e2ddfc17a))
+* **pullRefresh:** ensure element is not null and fix types ([3f594f5](https://github.com/varletjs/varlet/commit/3f594f520f90796fc6cd72e345c6fc18723ce7ba))
+* **switch:** fix load animation without displaying when the radius isn't setting ([#1110](https://github.com/varletjs/varlet/issues/1110)) ([f286f12](https://github.com/varletjs/varlet/commit/f286f1244d1e8e631e0e07a15c76c3aa0cbe52ab))
+
+
+### Features
+
+* **progress:** add type attribute to set different theme colors ([8ccfafd](https://github.com/varletjs/varlet/commit/8ccfafd268432a40aece12ccb3673169a70832bd))
+
+
+
+## [2.12.2](https://github.com/varletjs/varlet/compare/v2.12.1...v2.12.2) (2023-07-02)
+
+
+### Bug Fixes
+
+* fix layout zIndex ([0b63630](https://github.com/varletjs/varlet/commit/0b636306fb859cba809dea3d9ded3ddcc47780de))
+
+
+
+## [2.12.1](https://github.com/varletjs/varlet/compare/v2.12.0...v2.12.1) (2023-07-01)
+
+
+### Bug Fixes
+
+* **image-preview:** fix swipe ref is not expose ([2363a31](https://github.com/varletjs/varlet/commit/2363a31788d5f80932735860cf3e70b45b144279))
+
+
+
+# [2.12.0](https://github.com/varletjs/varlet/compare/v2.11.8...v2.12.0) (2023-07-01)
+
+
+### Bug Fixes
+
+* **cli/template:** fix tsconfig.json ([438c365](https://github.com/varletjs/varlet/commit/438c365a7751a6c422d15f121547a0d94a69566f))
+* **cli:** fix less render paths ([da5bf3d](https://github.com/varletjs/varlet/commit/da5bf3d27691ae068a5329c97611898a46ee3d25))
+* fix vmin vmax compute error ([2ddf751](https://github.com/varletjs/varlet/commit/2ddf7515b7f76f8c3ce912d0c927dff5075b61ec))
+* **popover:** fix box sizing ([24da2a5](https://github.com/varletjs/varlet/commit/24da2a5b7a9eb599e004478f705150c964dc730a))
+* **popover:** fix reference getter ([a035f10](https://github.com/varletjs/varlet/commit/a035f10392a482ac2f79f7227325a619b9db1dc9))
+
+
+### Features
+
+* **cli:** support sponsors option ([8aca9e7](https://github.com/varletjs/varlet/commit/8aca9e73338e7bff98483aa923e89286661ee271))
+* **image-preview:** support initialIndex and prev, next, to methods ([#1104](https://github.com/varletjs/varlet/issues/1104)) ([12fff90](https://github.com/varletjs/varlet/commit/12fff9033c7c20ce6d2d0b770ddf168cfa23626e))
+* **playground:** support light theme ([e7368db](https://github.com/varletjs/varlet/commit/e7368db5322f817afdb4b4b35b3002b1a8cdd531))
+* **playground:** support monaco and select varlet and vue version ([aed4817](https://github.com/varletjs/varlet/commit/aed4817ed043eb28e274b7bd3a1f72dce729dd89))
+* **ui/select:** support click reference element to collapse the menu ([#1103](https://github.com/varletjs/varlet/issues/1103)) ([159a5b4](https://github.com/varletjs/varlet/commit/159a5b4b74b9120c76415723a8d0640aa619adcd))
+
+
+
+## [2.11.8](https://github.com/varletjs/varlet/compare/v2.11.7...v2.11.8) (2023-06-17)
+
+
+### Bug Fixes
+
+* patch js ext ([a56e16a](https://github.com/varletjs/varlet/commit/a56e16aa2eece4f4d6f0d9fdf023e58ac9739cc5))
+
+
+
+## [2.11.7](https://github.com/varletjs/varlet/compare/v2.11.6...v2.11.7) (2023-06-17)
+
+
+### Bug Fixes
+
+* **ui/popup:** fix slots rerender ([4ee6487](https://github.com/varletjs/varlet/commit/4ee6487b7d7ed47e2713bccac6a06e8fdb1031ce))
+* **ui/progress:** fix css color inherit ([#1096](https://github.com/varletjs/varlet/issues/1096)) ([704ffc7](https://github.com/varletjs/varlet/commit/704ffc73d31560b1bebfaf0bf12410958da1105a))
+
+
+
+## [2.11.6](https://github.com/varletjs/varlet/compare/v2.11.5...v2.11.6) (2023-06-15)
+
+
+### Bug Fixes
+
+* **rate:** add flex to constraint icon size and close [#1090](https://github.com/varletjs/varlet/issues/1090) ([455ff1e](https://github.com/varletjs/varlet/commit/455ff1ec108809f61dc4ee9145ca34cd217ebde9))
+* **switch:** remove default loading size and close [#1092](https://github.com/varletjs/varlet/issues/1092) ([ae3b562](https://github.com/varletjs/varlet/commit/ae3b562c67f0469be1229b5158e6412802caa9af))
+* **ui/button,link:** fix css color inherit ([#1094](https://github.com/varletjs/varlet/issues/1094)) ([2b63723](https://github.com/varletjs/varlet/commit/2b637233897dc3ce68725d994e1587abe53a8316))
+* **ui/dialog:** fix css color inherit ([#1097](https://github.com/varletjs/varlet/issues/1097)) ([97c0937](https://github.com/varletjs/varlet/commit/97c0937b69680288f02c2d58d0323127171c9e86))
+* **ui/table:** fix css color inherit ([#1098](https://github.com/varletjs/varlet/issues/1098)) ([06d07a0](https://github.com/varletjs/varlet/commit/06d07a0529512fba248e26e96a0b88f515e1580e))
+
+
+### Features
+
+* **ui/counter:** support --counter-button-text-color and complete design docs ([30fd9fa](https://github.com/varletjs/varlet/commit/30fd9fa0c38508c4fbf95a387c919bd10da0efa7))
+
+
+
+## [2.11.5](https://github.com/varletjs/varlet/compare/v2.11.4...v2.11.5) (2023-06-09)
+
+
+### Bug Fixes
+
+* **steps:** reimplement the connection line style ([#1082](https://github.com/varletjs/varlet/issues/1082)) ([132b0b8](https://github.com/varletjs/varlet/commit/132b0b8d7b234d275a6dddc60a5574b914baf8a8))
+
+
+### Features
+
+* **ui/rate:** allow to clear score ([#1080](https://github.com/varletjs/varlet/issues/1080)) ([b206b19](https://github.com/varletjs/varlet/commit/b206b19d4abd97e605321e76f7b1e691c3af2c60))
+
+
+
+## [2.11.4](https://github.com/varletjs/varlet/compare/v2.11.3...v2.11.4) (2023-06-04)
+
+
+### Bug Fixes
+
+* **ui/pagination:** fix css var error ([f4a3a9f](https://github.com/varletjs/varlet/commit/f4a3a9f6cb0c01c1ed84e821e47d621139343f90))
+* **ui/pagination:** fix disabled style error and refactor css var ([2a78f52](https://github.com/varletjs/varlet/commit/2a78f527b7e2f5cb0568983f60c5dda7ebbeba86))
+
+
+
+## [2.11.3](https://github.com/varletjs/varlet/compare/v2.11.2...v2.11.3) (2023-06-04)
+
+
+### Bug Fixes
+
+* **ui/field-decorator:** fix calculation error when the filed decorato… ([#1061](https://github.com/varletjs/varlet/issues/1061)) ([a23fa95](https://github.com/varletjs/varlet/commit/a23fa9512d4ba0107188bcbe09bdce6943f62884))
+* **ui/field-decorator:** fix style error when placeholder is empty ([#1078](https://github.com/varletjs/varlet/issues/1078)) ([5040bd2](https://github.com/varletjs/varlet/commit/5040bd23452678996b3494c9d1629cc061d6aac7))
+* **ui/pagination:** fix a style bug([#1077](https://github.com/varletjs/varlet/issues/1077)) ([d7d6b0d](https://github.com/varletjs/varlet/commit/d7d6b0dc8e2baaecfaf0576ba5bd6a94a5e981e5))
+
+
+### Features
+
+* **extension:** Filter component fill prompt when entering information inside an element ([#1066](https://github.com/varletjs/varlet/issues/1066)) ([1e67c51](https://github.com/varletjs/varlet/commit/1e67c510b1b921256fdc8ba2bb5aabb8bd585079))
+* **extension:** show document when hover ([#1065](https://github.com/varletjs/varlet/issues/1065)) ([0294701](https://github.com/varletjs/varlet/commit/02947016752f4c685ec4f4aff577e5200ce5d883))
+* **ui/image:** add generic error slot ([#1060](https://github.com/varletjs/varlet/issues/1060)) ([0cedc08](https://github.com/varletjs/varlet/commit/0cedc0811e70105ae8ea67cc0e455b323fb6c3bc))
+* **ui/picker:** add more css var ([4930457](https://github.com/varletjs/varlet/commit/493045757e80081cead829f1c6010980f71d7a5c))
+
+
+
+## [2.11.2](https://github.com/varletjs/varlet/compare/v2.11.1...v2.11.2) (2023-05-27)
+
+
+### Bug Fixes
+
+* **ui/tabs-items:** Fixed the tabs-items cannot match name ([#1056](https://github.com/varletjs/varlet/issues/1056)) ([4bb18d8](https://github.com/varletjs/varlet/commit/4bb18d8a0f05718e2a276745b08a86a5de1d3de0))
+
+
+### Features
+
+* **ui/image-preview:** add long press event & image-prevent-default prop ([#1049](https://github.com/varletjs/varlet/issues/1049)) ([46e8dfc](https://github.com/varletjs/varlet/commit/46e8dfc8544063e32f59f397f71b2f62e25cedfb))
+
+
+
+## [2.11.1](https://github.com/varletjs/varlet/compare/v2.11.0...v2.11.1) (2023-05-20)
+
+
+### Bug Fixes
+
+* cascade column the click event doesn't work sometime ([#1047](https://github.com/varletjs/varlet/issues/1047)) ([fae3f5d](https://github.com/varletjs/varlet/commit/fae3f5dde74de11821eedfd98fcb29a0c9db0a45))
+* **ui/image-preview:** click can't trigger a close event sometimes ([#1044](https://github.com/varletjs/varlet/issues/1044)) ([c0d6902](https://github.com/varletjs/varlet/commit/c0d6902b236a29ee3d9580d0ac43a1f0bffd802a))
+* **ui/picker:** clicking on the parent column causes the child column to restructure when the options are unchanged ([3924744](https://github.com/varletjs/varlet/commit/3924744d63b8a93a44f9a1087d889a38a33cc80b))
+* **utils:** elements utils supports ssr and close [#1045](https://github.com/varletjs/varlet/issues/1045) ([9f3da12](https://github.com/varletjs/varlet/commit/9f3da1291b63ab04b34624cff739f4692b101fd2))
+
+
+### Features
+
+* **ui/picker:** support scroll while click the option and refactor code ([#1039](https://github.com/varletjs/varlet/issues/1039)) ([59a8d4c](https://github.com/varletjs/varlet/commit/59a8d4cab0fac71a03edce9d2b2190e004ea7c72))
+
+
+
+# [2.11.0](https://github.com/varletjs/varlet/compare/v2.10.2...v2.11.0) (2023-05-15)
+
+
+### Bug Fixes
+
+* **collapse:** remove flex layout of content ([5ae606b](https://github.com/varletjs/varlet/commit/5ae606ba59c7a891901f665a5a5075216f95415a))
+* **loading:** add max-height to loading container and close [#1029](https://github.com/varletjs/varlet/issues/1029) ([2d17414](https://github.com/varletjs/varlet/commit/2d1741492d3956f942c854e1c7432eab454e6fc1))
+* **ui/field-decorator:** fix fieldset color display error ([7b3ea2a](https://github.com/varletjs/varlet/commit/7b3ea2a7019def6fe61052040d73a1044561c9e8))
+* **ui/fieldDecorator:** access DOM data in nextTick ([#1021](https://github.com/varletjs/varlet/issues/1021)) ([c9b0bd0](https://github.com/varletjs/varlet/commit/c9b0bd09f309aa512c68ec1d08c192405fc1a073))
+* **ui/fieldDecorator:** placeholder width exceeds container size ([#1015](https://github.com/varletjs/varlet/issues/1015)) ([93ae09f](https://github.com/varletjs/varlet/commit/93ae09f418a77722788f31b8067ca979535cbfe6))
+* **ui/image-preview:** fix flickering when swiping quickly and optimize swipe initialIndex behavior and close [#1020](https://github.com/varletjs/varlet/issues/1020) ([bf1fde4](https://github.com/varletjs/varlet/commit/bf1fde40091e1e3bdb1f3fac98d6388156a01b97))
+* **ui/slider:** fix the style of validation fails ([#1035](https://github.com/varletjs/varlet/issues/1035)) ([4c85f88](https://github.com/varletjs/varlet/commit/4c85f883a19eef95eebf11189da31214781f2fa3))
+
+
+### Features
+
+* **cli:** support vue 3.3.x ([#1033](https://github.com/varletjs/varlet/issues/1033)) ([18fda4c](https://github.com/varletjs/varlet/commit/18fda4c7cf5ba6baecca09166eec4c6ed615f8d9))
+* **ui/tabs-items:** render more content on the server side ([8b6245e](https://github.com/varletjs/varlet/commit/8b6245e73631003f5e4067b7d964ab8fc166c2af))
+* **ui/uploader:** support before-filter event ([#1010](https://github.com/varletjs/varlet/issues/1010)) ([14575dc](https://github.com/varletjs/varlet/commit/14575dc1269848deb7a20cf1c635ae2193345f01))
+
+
+
+## [2.10.2](https://github.com/varletjs/varlet/compare/v2.10.1...v2.10.2) (2023-05-06)
+
+
+### Bug Fixes
+
+* **ui/slider:** 修复滑块拖动时屏幕滚动 ([#1011](https://github.com/varletjs/varlet/issues/1011)) ([b9ca512](https://github.com/varletjs/varlet/commit/b9ca5122d1edf94fdf5ddb0ec6344241723b3c55))
+
+
+### Features
+
+* **ui/input:** support enterkeyhint for Input ([#1013](https://github.com/varletjs/varlet/issues/1013)) ([706014c](https://github.com/varletjs/varlet/commit/706014c264ca14ad36988d5ca9430b12509f5e29))
+* **ui/popup:** support safeArea and safeAreaTop ([7306ddc](https://github.com/varletjs/varlet/commit/7306ddc1cf88bf16dc50840966f460502a2def91))
+
+
+
+## [2.10.1](https://github.com/varletjs/varlet/compare/v2.10.0...v2.10.1) (2023-05-04)
+
+
+### Bug Fixes
+
+* **cli/compile:** support typescript and close [#998](https://github.com/varletjs/varlet/issues/998) ([0b83869](https://github.com/varletjs/varlet/commit/0b8386924c157aef1f8c093e2fa11d4c85cbb1da))
+* **select:** fix select dropdown border radius ([22d656e](https://github.com/varletjs/varlet/commit/22d656e713a21661fc3aca33fc8231f328c97521))
+* **ui/input, select:** fix text overflow error ([929765a](https://github.com/varletjs/varlet/commit/929765a94c6b86d1d28d9b86a3899cd31113c57b))
+* **ui/slider:** optimize slider style and classes ([#1000](https://github.com/varletjs/varlet/issues/1000)) ([7695457](https://github.com/varletjs/varlet/commit/7695457def220ff979225e6211b4841da17a88dd))
+* **ui/swipe:** to and next methods conflict with initialIndex ([140af1f](https://github.com/varletjs/varlet/commit/140af1fd84dc748fbf67e0b8928d7ccf9e95bd47))
+
+
+### Features
+
+* **cli:** support meta description and keywords ([d0ce672](https://github.com/varletjs/varlet/commit/d0ce67249903fb5223521c86a4fc9be761b246ef))
+* **slider:** support vertical mode ([43acba6](https://github.com/varletjs/varlet/commit/43acba6981663ce54f2b4201d82d90328f717bf8))
+* **ui/uploader:** support progress ([b991f6f](https://github.com/varletjs/varlet/commit/b991f6f0329c12cc21042174f275e6ac5396b674))
+
+
+
+# [2.10.0](https://github.com/varletjs/varlet/compare/v2.9.6...v2.10.0) (2023-04-24)
+
+
+### Bug Fixes
+
+* **extension:** newline not parsed ([28ad42c](https://github.com/varletjs/varlet/commit/28ad42c7147c1e14de27f5d9e23cfd259e06ef01))
+* **input:** placeholder style ([4a00a63](https://github.com/varletjs/varlet/commit/4a00a6352c494c59ebd73b3303c1b4e1fed61178))
+* **input:** remove transition delay ([2528f60](https://github.com/varletjs/varlet/commit/2528f60a25743935bffbc0f3a853c88ae9d62d37))
+* **ui/list:** clear list scroller listener on deactivated ([3640121](https://github.com/varletjs/varlet/commit/364012188a37abff256a24dadefff02e4f0f2181))
+* **ui/pagination:** fix error key ([cf7793a](https://github.com/varletjs/varlet/commit/cf7793aedbaf5564d737419b7721aeeded99e974))
+
+
+### Features
+
+* **icon:** add view icons ([cebb99d](https://github.com/varletjs/varlet/commit/cebb99d8f0f9245de17319605085101637a54234))
+* **markdown:** add id attribute for h3 tag & close [#976](https://github.com/varletjs/varlet/issues/976) ([#983](https://github.com/varletjs/varlet/issues/983)) ([78c1b1d](https://github.com/varletjs/varlet/commit/78c1b1d7a9ccee7de9e16ae0495102043341210b))
+* new icons and refactor rate component docs ([#990](https://github.com/varletjs/varlet/issues/990)) ([62787c7](https://github.com/varletjs/varlet/commit/62787c7e08bb288daba7aede615e46a5fddf14f2))
+* **ui/input, select:** new outlined variant ([#941](https://github.com/varletjs/varlet/issues/941)) ([c054e21](https://github.com/varletjs/varlet/commit/c054e2111e1f6ff1749ddca7b18282d0ba7d06e6))
+* **ui/Snackbar:** support icon and action in functional mode ([1f35aeb](https://github.com/varletjs/varlet/commit/1f35aeb7c08f2f57278eec431c86280491c14d47))
+* **vscode-extension:** add `varlet documentation` and  `varlet playground`  btns ([#962](https://github.com/varletjs/varlet/issues/962)) ([d36e532](https://github.com/varletjs/varlet/commit/d36e532e919a34a587e80f447b07abdf536eb756))
+
+
+
+## [2.9.6](https://github.com/varletjs/varlet/compare/v2.9.5...v2.9.6) (2023-04-14)
+
+
+### Bug Fixes
+
+* **DatePicker:** fix Fixed hover effect bug ([#956](https://github.com/varletjs/varlet/issues/956)) ([4d72694](https://github.com/varletjs/varlet/commit/4d726942a4e0ee14889bd9105f7948a694f4d262))
+* **pagination:** add disabled prop & close [#950](https://github.com/varletjs/varlet/issues/950) ([fb98f46](https://github.com/varletjs/varlet/commit/fb98f46ee2b657664d416b3fc18c6a76f6bb8693))
+* **pull-refresh:** fix icon name error while fast touchmove ([fe1be23](https://github.com/varletjs/varlet/commit/fe1be23e6b2ea77b99759ad7977ca99e6308c961))
+* **ui/checkbox, radio:** fix shrink error and close [#952](https://github.com/varletjs/varlet/issues/952) ([fa879ad](https://github.com/varletjs/varlet/commit/fa879ad5b6a1bd72e4a64a494192387e4710e371))
+* **ui/dialog:** fix onBeforeClose cannot use call ([62c7c89](https://github.com/varletjs/varlet/commit/62c7c89bf553f21421df7f1bbf74c79fc068efa0))
+
+
+### Features
+
+* **cli:** support draft mode ([569b651](https://github.com/varletjs/varlet/commit/569b651417d7dfd9b4a73cd81f4922dd93502d6f))
+
+
+
+## [2.9.5](https://github.com/varletjs/varlet/compare/v2.9.4...v2.9.5) (2023-04-07)
+
+
+### Bug Fixes
+
+* fix useRouteListener for ssr ([6b75dd5](https://github.com/varletjs/varlet/commit/6b75dd5b0a628c673961f276a5a42b61df17abaa))
+* **tabs:** fix tab active color computed error ([d6bef90](https://github.com/varletjs/varlet/commit/d6bef90b34f52572de7fe9faaa61ec7ec5f5a886))
+* **ui/hover:** fix and close [#942](https://github.com/varletjs/varlet/issues/942) ([58b2ef4](https://github.com/varletjs/varlet/commit/58b2ef4825b485e2b406ba69dbe30a1a8f03501a))
+* **ui/pagination:** fix pagination disabled exception ([#943](https://github.com/varletjs/varlet/issues/943)) ([4f7b046](https://github.com/varletjs/varlet/commit/4f7b0461ea5dcb6f7fbee07b1e76f2d92a67c972))
+* **ui/pagination:** fix pagination not require props ([#946](https://github.com/varletjs/varlet/issues/946)) ([20885d3](https://github.com/varletjs/varlet/commit/20885d3dea8819ba8c682dab0a3a2cecbfaf905d))
+* **ui/tabs:** fix tab active color error while the name's type is number ([d2bf6ad](https://github.com/varletjs/varlet/commit/d2bf6ad2b86c1ebe1db7adda1ffe64a2047cdc2e))
+
+
+### Features
+
+* **ui/context:** support enableRipple option ([8591899](https://github.com/varletjs/varlet/commit/859189930c5d8437376b9fd53afbb8cb497da833))
+* **ui/tabs:** support custom indicator inner size ([83a049d](https://github.com/varletjs/varlet/commit/83a049daedde8e4f3b587d0f1ab375704b12ef9d))
+
+
+
+## [2.9.4](https://github.com/varletjs/varlet/compare/v2.9.3...v2.9.4) (2023-03-31)
+
+
+### Bug Fixes
+
+* **cli/checklist:** empty line is shown while no matched checklist ([1ce1078](https://github.com/varletjs/varlet/commit/1ce10782e4f3e49b70c366e9c80991788befb530))
+* **index-bar:** cache scroll state ([f30c6f2](https://github.com/varletjs/varlet/commit/f30c6f2efc1db25c88aed9cc69250f3b4b75c720))
+* **index-bar:** index-anchor overlap and close [#936](https://github.com/varletjs/varlet/issues/936) ([969944f](https://github.com/varletjs/varlet/commit/969944f4d744585edb2bbf7f34e929c337467726))
+* **pullrefresh:** trigger timing of refresh event and close [#930](https://github.com/varletjs/varlet/issues/930) ([fa2f1bf](https://github.com/varletjs/varlet/commit/fa2f1bf0280b1840a30ddadd36283d8ce214d1a1))
+* **ui/bottom-navigation:** offset error while set safe-area in ios ([7783acf](https://github.com/varletjs/varlet/commit/7783acf1d8cfbeca7afb55d0f27bfbb37b8e3c50))
+* **ui/sticky:** resize sticky layout offset while the window resize ([5ac6f67](https://github.com/varletjs/varlet/commit/5ac6f673a2f5784675b39ffcd59fece828566a87))
+
+
+### Features
+
+* Collapse component add property divider ([#937](https://github.com/varletjs/varlet/issues/937)) ([afca9d8](https://github.com/varletjs/varlet/commit/afca9d8df296051a33bc2ba0d6700b14a92706cc))
+* support vmin and vmax and close [#931](https://github.com/varletjs/varlet/issues/931) ([3ef4f51](https://github.com/varletjs/varlet/commit/3ef4f51232433ef2e23c577f9974d8b87c166b5d))
+* **ui/app-bar:** support props.safeAreaTop ([9f00d43](https://github.com/varletjs/varlet/commit/9f00d43fe5ae0219a15be4e707880154e321fc51))
+
+
+
+## [2.9.3](https://github.com/varletjs/varlet/compare/v2.9.2...v2.9.3) (2023-03-23)
+
+
+### Bug Fixes
+
+* **playground:** add resetFlip ([0ae8c5e](https://github.com/varletjs/varlet/commit/0ae8c5efa5d9cb51beedd4c9b800022105500fa4))
+* **playground:** upgrade repl version to compatible safari ([3a11a77](https://github.com/varletjs/varlet/commit/3a11a77342a002038c104e9662fc447ad4805748))
+* **pullrefresh:** control node position ([06c2dad](https://github.com/varletjs/varlet/commit/06c2dad62dfd901760a556d644cef14c758e926b))
+* **ui/collapse:** fix collapse Item animation error ([#922](https://github.com/varletjs/varlet/issues/922)) ([a799438](https://github.com/varletjs/varlet/commit/a799438b36b211d23dc4058a3712fbd8971e35b8))
+
+
+### Features
+
+* **backtop:** support elevation ([80f3866](https://github.com/varletjs/varlet/commit/80f38666757123e49a79ba331f213250e224e4f2))
+* **cli:** support checklist and close [#926](https://github.com/varletjs/varlet/issues/926) ([3f1bffc](https://github.com/varletjs/varlet/commit/3f1bffc47d500f59bab8ac9f24ecd3f0e0f6edaa))
+* **cli:** support directive types generation for volar and close [#918](https://github.com/varletjs/varlet/issues/918) ([38f9c64](https://github.com/varletjs/varlet/commit/38f9c64148896f31b30408bacf11109b6c2430a8))
+* **collapse:** support elevation ([4bfc1db](https://github.com/varletjs/varlet/commit/4bfc1db79e1a26f1f1b5c8b4cf7649b3642939e4))
+* **date-picker:** support elevation and button-elevation ([f18d744](https://github.com/varletjs/varlet/commit/f18d7447e929ca6b6f804d105a07af4bfe6491e5))
+* **pagination:** support elevation ([4680cdd](https://github.com/varletjs/varlet/commit/4680cdd03d2f8f10f97635364c1a7a13e847fd5c))
+* suppert elevation for Table、Tabs、AppBar ([#928](https://github.com/varletjs/varlet/issues/928)) ([be24aef](https://github.com/varletjs/varlet/commit/be24aef4c719c9d4d44b457f3fd34fef994b1beb))
+* support elevation for uploader and counter ([#927](https://github.com/varletjs/varlet/issues/927)) ([3a4265d](https://github.com/varletjs/varlet/commit/3a4265d08f275b362f5070089fffa5454292acd4))
+* support props.elevation for button, button-group, fab, paper, card ([#925](https://github.com/varletjs/varlet/issues/925)) ([881966c](https://github.com/varletjs/varlet/commit/881966c6078f0a056c026f4182f8fca7ad93534f))
+* **time-picker:** support elevation ([9e8e470](https://github.com/varletjs/varlet/commit/9e8e4709c14fbda80c7547fb79b6b3652f8c57f4))
+* **ui/fab:** support props.safeArea and close [#896](https://github.com/varletjs/varlet/issues/896) ([9237379](https://github.com/varletjs/varlet/commit/92373793a8a33b15b78ffa327b1a3324e3a747a0))
+* **ui/menu:** support props.elevation ([2dafcf3](https://github.com/varletjs/varlet/commit/2dafcf3c2720bbf6d8d1799e02aaf03b73f958ca))
+* **ui/tabs:** support props.scrollable and props.indicatorPosition ([#921](https://github.com/varletjs/varlet/issues/921)) ([33ea0d8](https://github.com/varletjs/varlet/commit/33ea0d84e0b7b802f16aa56f36cf7310dfd06e65))
+* **use:** support useVModel ([#909](https://github.com/varletjs/varlet/issues/909)) ([af323d6](https://github.com/varletjs/varlet/commit/af323d6cdfe397a945e5de05d02038297c6e6e3b))
+
+
+### Reverts
+
+* collapse animation one frame delay ([3630fea](https://github.com/varletjs/varlet/commit/3630fea7137fba1de86399e96dd38f3a72a45398))
+
+
+
+## [2.9.2](https://github.com/varletjs/varlet/compare/v2.9.1...v2.9.2) (2023-03-20)
+
+
+### Bug Fixes
+
+* checkbox、radio、uploader adds a reference to the hover style ([#914](https://github.com/varletjs/varlet/issues/914)) ([844df38](https://github.com/varletjs/varlet/commit/844df38ca373168315a04fafc075ecc71741ff6b))
+
+
+
+## [2.9.1](https://github.com/varletjs/varlet/compare/v2.9.0...v2.9.1) (2023-03-16)
+
+
+### Bug Fixes
+
+* fix input cursor error in the ios ([aad8dac](https://github.com/varletjs/varlet/commit/aad8dac160be93354382333b7738a0666dc93ec8))
+* **slider:** add cursor ([dd82f92](https://github.com/varletjs/varlet/commit/dd82f92305d7d0cec01885f5bb41cf684bf0623b))
+* **ui/input:** fixed placeholders not being able to hide while composing ([54a0391](https://github.com/varletjs/varlet/commit/54a0391e7948ed00fa54028bc47bc529541507ef))
+
+
+### Features
+
+* **slider:** add hover overlay ([9adfdca](https://github.com/varletjs/varlet/commit/9adfdcae23a8d0a014a99b2b06936fcde4f8a7c4))
+* support hover effect and close [#902](https://github.com/varletjs/varlet/issues/902) ([53461da](https://github.com/varletjs/varlet/commit/53461dafe98cdf78e7566c4948d4ffe7152bc7d4))
+* **switch:** add hover overlay ([7a3f769](https://github.com/varletjs/varlet/commit/7a3f769cf46578972201125bc96c57f66686b623))
+* **ui/checkbox:** support hover effect ([#907](https://github.com/varletjs/varlet/issues/907)) ([d853427](https://github.com/varletjs/varlet/commit/d853427fa80641829f43fa3432f233ecd22b486f))
+* **ui/image-preview:** add setDefaultOptions and resetDefaultOptions ([#892](https://github.com/varletjs/varlet/issues/892)) ([ec56890](https://github.com/varletjs/varlet/commit/ec56890628eed7f07d63fe092c55e7a30cc89750))
+* **ui/radio:** support hover effect ([#908](https://github.com/varletjs/varlet/issues/908)) ([d0621ad](https://github.com/varletjs/varlet/commit/d0621ad084805436f83dbdecd6788974d5cd911f))
+* **ui/rate:** support hover effect ([#906](https://github.com/varletjs/varlet/issues/906)) ([6a6a2d0](https://github.com/varletjs/varlet/commit/6a6a2d01f0dfd4c7a50b31ec2b98f7a6dddcd51e))
+* **ui/uploader:** support hover effect and close [#901](https://github.com/varletjs/varlet/issues/901) ([ca5e63f](https://github.com/varletjs/varlet/commit/ca5e63fb7c7e401d02be14768d04f0c7df0e7de0))
+
+
+### Reverts
+
+* fix workflow ([cc4554c](https://github.com/varletjs/varlet/commit/cc4554cace2c89c0a6e357efe9c987e0423f0fb9))
+
+
+
+# [2.9.0](https://github.com/varletjs/varlet/compare/v2.8.6...v2.9.0) (2023-03-12)
+
+
+### Bug Fixes
+
+* **ui/bottom-navigation:** fix css dep ([bd1303d](https://github.com/varletjs/varlet/commit/bd1303da392a3f95754e200830a7680e91a95c4c))
+* **ui/button:** fix css dep ([07af3e2](https://github.com/varletjs/varlet/commit/07af3e2915f4a3f1c7c7e7533356f7e04576cc31))
+* **ui/button:** fix css dep ([8bc573a](https://github.com/varletjs/varlet/commit/8bc573a9f776a16ac3cabb43a5ad0568da56a864))
+* **ui/hover:** fix wrong restore style ([ca3a455](https://github.com/varletjs/varlet/commit/ca3a455bcf3b29ff0f384930df6534f7dd82baf9))
+* **ui/loading-bar:** fix timer asynchronous issue ([374130b](https://github.com/varletjs/varlet/commit/374130b2155385ef23b5563a3724aaa4c6b05788))
+* **ui/loading:** fix loading display error and close [#884](https://github.com/varletjs/varlet/issues/884) ([910afa8](https://github.com/varletjs/varlet/commit/910afa8a9aea1e84f5ebacdc589bee67a80a8a7f))
+* **ui/select:** fix css dep ([fbb0100](https://github.com/varletjs/varlet/commit/fbb010064ab6258bcb2a6aa9ecff6cfbc0985014))
+
+
+### Features
+
+* **extension:** support fab ([cc2c039](https://github.com/varletjs/varlet/commit/cc2c03941a43c39b9241e5bde830d420e800cd9e))
+* refactor fab, support popover reference, fix option label lost reactivity ([a8051f3](https://github.com/varletjs/varlet/commit/a8051f34eb26c9a8b1b4ab2f72b58363626be034))
+* **ui/badge:** refactor dom structure ([f96ceda](https://github.com/varletjs/varlet/commit/f96cedac697064782a81fed0924339dfbee83fad))
+* **ui/badge:** support value slot ([#883](https://github.com/varletjs/varlet/issues/883)) ([765393a](https://github.com/varletjs/varlet/commit/765393ae34db3f4c05fc9f3aa67b5d6debbfdd55))
+* **ui/button:** optimize hover effect ([#881](https://github.com/varletjs/varlet/issues/881)) ([fd69f23](https://github.com/varletjs/varlet/commit/fd69f23206593ba2fa7748d4e9d8d69971f981e4))
+* **ui/fab:** new component fab ([#876](https://github.com/varletjs/varlet/issues/876)) ([1ae784a](https://github.com/varletjs/varlet/commit/1ae784a4bbb74f1bcc28e0ea9d7877cd00bf558f))
+* **ui/icon:** icon support animationClass ([#880](https://github.com/varletjs/varlet/issues/880)) ([c6c06d6](https://github.com/varletjs/varlet/commit/c6c06d6bd3d4ab2c4fad468bdb2f1b9215bbed2d))
+* **use:** useParent and useChildren support string key, refactor layout from @varlet/use ([6d8485a](https://github.com/varletjs/varlet/commit/6d8485a66b56959a596c89a02c1fcfaeaad2c929))
+
+
+
+## [2.8.6](https://github.com/varletjs/varlet/compare/v2.8.5...v2.8.6) (2023-03-05)
+
+
+### Bug Fixes
+
+* **ui/backtop:** fix effect while the component in keepalive ([195bf9b](https://github.com/varletjs/varlet/commit/195bf9b7d9c535d31b9e02a8238d781f93b5bb1f))
+* **ui/coundown:** fix start method error ([f6626ea](https://github.com/varletjs/varlet/commit/f6626eac03517483f3906f6111c65dc4a8c2e83c))
+* **ui/input:** value update error while the target is composingand close [#877](https://github.com/varletjs/varlet/issues/877) ([5873fdf](https://github.com/varletjs/varlet/commit/5873fdf830ff6978fdb4195cf1fafaa2e2d30f1e))
+
+
+### Features
+
+* **use:** support useEventListener useClickOutside ([cb90734](https://github.com/varletjs/varlet/commit/cb907340ae67729bfe05f0df062463d63fb43166))
+
+
+
+## [2.8.5](https://github.com/varletjs/varlet/compare/v2.8.4...v2.8.5) (2023-02-28)
+
+
+### Bug Fixes
+
+* **ui/steps:** fix step shrink ([eb1cff7](https://github.com/varletjs/varlet/commit/eb1cff75746005b173e3f0b75c6625ac37708320))
+
+
+### Features
+
+* consistent flex-start, start, flex-end, end ([3836f30](https://github.com/varletjs/varlet/commit/3836f3040a80635da66001965022149190f59e0e))
+
+
+
+## [2.8.4](https://github.com/varletjs/varlet/compare/v2.8.3...v2.8.4) (2023-02-27)
+
+
+### Bug Fixes
+
+* **cli:** fix resolve ([7856e60](https://github.com/varletjs/varlet/commit/7856e6018ec884cf39fb8230cce7fabab7dbda91))
+* **ui/space:** fix space inline mode className err ([bcbbcad](https://github.com/varletjs/varlet/commit/bcbbcaddef1e36903031c6d9cf079ab7a789731d))
+
+
+### Features
+
+* added hover directive ([#868](https://github.com/varletjs/varlet/issues/868)) ([44806ef](https://github.com/varletjs/varlet/commit/44806ef8c30436f62017b0250936511106226d14))
+* new directive hover and fix input number type bug ([#871](https://github.com/varletjs/varlet/issues/871)) ([8cd49bf](https://github.com/varletjs/varlet/commit/8cd49bf5d24d3e9fe837e185ae15553a9bc23fba))
+
+
+
+## [2.8.3](https://github.com/varletjs/varlet/compare/v2.8.2...v2.8.3) (2023-02-20)
+
+
+### Bug Fixes
+
+* fix avatar scale ([0e491ce](https://github.com/varletjs/varlet/commit/0e491ce736d6b9f4e264485f52a739a1effba4e9))
+
+
+### Features
+
+* **cli:** reduce dependencies size ([#866](https://github.com/varletjs/varlet/issues/866)) ([4965033](https://github.com/varletjs/varlet/commit/4965033bb79099d13576b08c0fdaf6c4969038fc))
+
+
+
+## [2.8.2](https://github.com/varletjs/varlet/compare/v2.8.1...v2.8.2) (2023-02-19)
+
+
+### Bug Fixes
+
+* paper elevation maybe undefined ([c9743fc](https://github.com/varletjs/varlet/commit/c9743fcedb5414813581b6cde49013090bed4fc0))
+
+
+### Features
+
+* new component button group ([66a6bed](https://github.com/varletjs/varlet/commit/66a6bed9a1be3dbc995f4cf7d74da0b1b626ed6e))
+
+
+
+## [2.8.1](https://github.com/varletjs/varlet/compare/v2.8.0...v2.8.1) (2023-02-15)
+
+
+### Bug Fixes
+
+* **cli:** umd format set production env ([b7920de](https://github.com/varletjs/varlet/commit/b7920decb120e8a67b08dc0d81072443da387762))
+* **cli:** umd format should be replace NODE_ENV ([5f45a65](https://github.com/varletjs/varlet/commit/5f45a652dc576e549732efd73129c66e0bb55423))
+
+
+
+# [2.8.0](https://github.com/varletjs/varlet/compare/v2.7.5...v2.8.0) (2023-02-15)
+
+
+### Bug Fixes
+
+* **cli:** fix vite command NODE_ENV ([e3d84ce](https://github.com/varletjs/varlet/commit/e3d84cefc25d229c9a16cefdd0aa646ab4dbbf23))
+* **extension:** fixed regex mismatch under CRLF ([#850](https://github.com/varletjs/varlet/issues/850)) ([0947726](https://github.com/varletjs/varlet/commit/0947726f2de7fd4e6088ee73b77af819d4488bbd))
+* fix umd format lose css ([cd2d606](https://github.com/varletjs/varlet/commit/cd2d60639a8d9819ef828882db3fdc6761ff9222))
+* **playground:** fix jump github and detect iframe ([deeb9ef](https://github.com/varletjs/varlet/commit/deeb9ef179bc4d612bebaf0322fcf1427b995872))
+
+
+### Features
+
+* added avatar component ([#857](https://github.com/varletjs/varlet/issues/857)) ([c3bc355](https://github.com/varletjs/varlet/commit/c3bc3555e4f103edfdcf71ebcda273cc5ea1e2cd))
+* new component ellipsis and tooltip supports props.sameWidth ([d979181](https://github.com/varletjs/varlet/commit/d979181ba42d7a780cd26572582d330ede230615))
+* new component paper and cell supports ripple, border-offset, onClick ([1626e82](https://github.com/varletjs/varlet/commit/1626e82b638e3e1469afc5ca29918ced82e4e89c))
+* support useRouteMobile ([#854](https://github.com/varletjs/varlet/issues/854)) ([2df95eb](https://github.com/varletjs/varlet/commit/2df95eb3f795439baa0aada74405acaa70f60222))
+* **ui/app-bar:** support props.image, props.imageLinearGradient, content slots ([2293683](https://github.com/varletjs/varlet/commit/229368393c18f10a97837016ff10604cd0d3e69e))
+
+
+
+## [2.7.5](https://github.com/varletjs/varlet/compare/v2.7.4...v2.7.5) (2023-02-09)
+
+
+### Bug Fixes
+
+* **ui/picker:** fix props.toolbar useless ([5e57b4f](https://github.com/varletjs/varlet/commit/5e57b4ffbc6f9e2461f4d532374272611913ceba))
+
+
+### Reverts
+
+* **usePopover:** revert to bubble ([5cd3f56](https://github.com/varletjs/varlet/commit/5cd3f5620293aea97a44188a2ef3fca8de2921d0))
+
+
+
+## [2.7.4](https://github.com/varletjs/varlet/compare/v2.7.3...v2.7.4) (2023-02-08)
+
+
+### Bug Fixes
+
+* **countdown:** replace Date to performance ([b54f31c](https://github.com/varletjs/varlet/commit/b54f31c2dbd8d089da6063926982f53b20adf326))
+* fix docs ([7b44984](https://github.com/varletjs/varlet/commit/7b449848e73bf9aaf09f9165a01a2efbada5689c))
+* **ui/input:** fix input overflow ([6370f62](https://github.com/varletjs/varlet/commit/6370f62cd09d8c2946165a2e704bf301d11d020a))
+* **ui/select:** fix select overflow ([879cdb1](https://github.com/varletjs/varlet/commit/879cdb111fd924b6a695d3baa6c16f82addba371))
+
+
+### Features
+
+* **extension:** support playground in editor context menu ([43852fb](https://github.com/varletjs/varlet/commit/43852fba2eea39355e2f3302f4e834aa41c96527))
+* **extension:** support props and events completions ([13198c5](https://github.com/varletjs/varlet/commit/13198c5de38bcff03d0ca147440b994aa42adb2f))
+* **extension:** support zh-CN and en-US toggle ([92abb5e](https://github.com/varletjs/varlet/commit/92abb5ea49c237b9f6fd335a8026f5d501266f73))
+* **loading-bar:** support setDefaultOptions and resetDefaultOptions ([8215585](https://github.com/varletjs/varlet/commit/82155853d030e00927c343f899e0aded299d329b))
+* **snackbar:** support setDefaultOptions and resetDefaultOptions ([e13c6a2](https://github.com/varletjs/varlet/commit/e13c6a29d46bab62b6034c7b038f0b75d103bba4))
+* **ui/action-sheet:** support setDefaultOptions and resetDefaultOptions ([92517c9](https://github.com/varletjs/varlet/commit/92517c9387db6da058b72759eeeb7f1f7fb2d262))
+* **ui/dialog:** support setDefaultOptions and resetDefaultOptions and close [#830](https://github.com/varletjs/varlet/issues/830) ([c0cd14e](https://github.com/varletjs/varlet/commit/c0cd14ea4aacf1fa41a06cae32bf8d2b1999d8f8))
+* **ui/uploader:** support closePreview and chooseFile and close [#843](https://github.com/varletjs/varlet/issues/843) ([7a86662](https://github.com/varletjs/varlet/commit/7a8666288000b3df8173ee5b068fe4688a71c768))
+
+
+
+## [2.7.3](https://github.com/varletjs/varlet/compare/v2.7.2...v2.7.3) (2023-02-01)
+
+
+### Bug Fixes
+
+* **cli:** fix generators ([dcc3ff7](https://github.com/varletjs/varlet/commit/dcc3ff787afcee8b3288be34a4b849ac780450a6))
+
+
+### Features
+
+* **cli:** support extension development ([dbe47a9](https://github.com/varletjs/varlet/commit/dbe47a9a89bb7ee791fe0408bcd94c66d36ac1e6))
+* **cli:** support icon builder ([1cf420c](https://github.com/varletjs/varlet/commit/1cf420ce0ba17d7f5a15104991c6fba2ad8755bb))
+* **cli:** support script setup ([229f4e1](https://github.com/varletjs/varlet/commit/229f4e1840eee539594430b5e21c27e09c5d7cad))
+* support sfc without script blocks ([44e009d](https://github.com/varletjs/varlet/commit/44e009ddd843601c2f4b1b412e4a1d8f1c59f4cc))
+
+
+
+## [2.7.2](https://github.com/varletjs/varlet/compare/v2.7.1...v2.7.2) (2023-01-30)
+
+
+### Features
+
+* **extension:** support icon preview and completion ([adfa778](https://github.com/varletjs/varlet/commit/adfa77883844177b56664f839e174bd8002ec964))
+* **icons:** support pointCodes map ([ddd2575](https://github.com/varletjs/varlet/commit/ddd2575b9db3deff92310e84f3a0bba2b6fc48c3))
+
+
+
+## [2.7.1](https://github.com/varletjs/varlet/compare/v2.7.0...v2.7.1) (2023-01-28)
+
+
+### Bug Fixes
+
+* the sfc style cannot append to style folder ([06b0360](https://github.com/varletjs/varlet/commit/06b0360f0a684ecaa5f6f095b7df3b9adbcb2a01))
+
+
+
+# [2.7.0](https://github.com/varletjs/varlet/compare/v2.6.3...v2.7.0) (2023-01-27)
+
+
+### Features
+
+* **cli:** compiler standardization ([#839](https://github.com/varletjs/varlet/issues/839)) ([7ea3c5c](https://github.com/varletjs/varlet/commit/7ea3c5c1da1343e219a26b58205397e85102c5e2))
+
+
+
+## [2.6.3](https://github.com/varletjs/varlet/compare/v2.6.2...v2.6.3) (2023-01-18)
+
+
+### Bug Fixes
+
+* **index-bar:** compute offsetTop ([eefdf9d](https://github.com/varletjs/varlet/commit/eefdf9d328dbe08994b6cfbbcfd5fc8f17bd76c6))
+* the swipe element cannot be found in special case and close [#834](https://github.com/varletjs/varlet/issues/834) ([172b4a3](https://github.com/varletjs/varlet/commit/172b4a3e4d68286226c82fa77d754b7eaefacfa3))
+* to method repeat emit change event ([52deffa](https://github.com/varletjs/varlet/commit/52deffa3b9188f1ca6330707a8c36db20020f1f4))
+
+
+### Features
+
+* **index-bar:** add scrollTo options ([b1e1a30](https://github.com/varletjs/varlet/commit/b1e1a30aee3da63b2b4d4b62bfc773e822fdbd8a))
+* **ui/swipe:** support swipeToOptions ([98d7647](https://github.com/varletjs/varlet/commit/98d76472eaf5a2b3d36ef41facbdb84ab7645b09))
+
+
+
+## [2.6.2](https://github.com/varletjs/varlet/compare/v2.6.1...v2.6.2) (2023-01-12)
+
+
+### Bug Fixes
+
+* **ui/pull-refresh:** fix pull-refresh touchMove ([#829](https://github.com/varletjs/varlet/issues/829)) ([1614e73](https://github.com/varletjs/varlet/commit/1614e733a0144572883a70a0f859ea95a4ad88a8))
+
+
+
+## [2.6.1](https://github.com/varletjs/varlet/compare/v2.6.0...v2.6.1) (2023-01-11)
+
+
+### Features
+
+* support native-type and fix overlay auto import error ([35097ca](https://github.com/varletjs/varlet/commit/35097ca2285f38f175934b07c5b7b117d8d1cc4d))
+
+
+
+# [2.6.0](https://github.com/varletjs/varlet/compare/v2.5.6...v2.6.0) (2023-01-10)
+
+
+### Features
+
+* support vite4 and create a new package vite-plugins ([#824](https://github.com/varletjs/varlet/issues/824)) ([34bbb86](https://github.com/varletjs/varlet/commit/34bbb86038916a9303a57a2938a0a29727965137))
+
+
+
+## [2.5.6](https://github.com/varletjs/varlet/compare/v2.5.5...v2.5.6) (2023-01-07)
+
+
+### Bug Fixes
+
+* **pagination:** watch page-count and close [#820](https://github.com/varletjs/varlet/issues/820) ([a4bb395](https://github.com/varletjs/varlet/commit/a4bb3952f2a7a7cddf2eb48ae8a6f44e0a120623))
+
+
+
+## [2.5.5](https://github.com/varletjs/varlet/compare/v2.5.4...v2.5.5) (2023-01-05)
+
+
+### Bug Fixes
+
+* **back-top:** add default z-index ([f9f45fb](https://github.com/varletjs/varlet/commit/f9f45fb379a67b9a4ad671a928815ce8705a85bb))
+* **pull-refresh:** add lock and close [#814](https://github.com/varletjs/varlet/issues/814) ([08b04e3](https://github.com/varletjs/varlet/commit/08b04e36d8d7e19d161034bc2c3cff4115b0d9f9))
+* **ui/uploader:** before-remove event mission file params ([db0870e](https://github.com/varletjs/varlet/commit/db0870ef6e38dff59e2050e5cbf8d467ed0a7027))
+
+
+
+## [2.5.4](https://github.com/varletjs/varlet/compare/v2.5.3...v2.5.4) (2023-01-05)
+
+
+### Features
+
+* **pull-refresh:** add target prop and close [#811](https://github.com/varletjs/varlet/issues/811) ([47537b6](https://github.com/varletjs/varlet/commit/47537b690b48ed71e69587eac2449a0dfe636788))
+
+
+
+## [2.5.3](https://github.com/varletjs/varlet/compare/v2.5.2...v2.5.3) (2023-01-04)
+
+
+### Bug Fixes
+
+* **ui/menu:** fix elevation display error ([91a83c4](https://github.com/varletjs/varlet/commit/91a83c4b674a790f089b514167d892f1725bd01c))
+
+
+
+## [2.5.2](https://github.com/varletjs/varlet/compare/v2.5.1...v2.5.2) (2023-01-04)
+
+
+### Features
+
+* **ui/menu:** support sameWidth prop ([5fda8b7](https://github.com/varletjs/varlet/commit/5fda8b7cb487b6aea442e3cc6f8d27660ef98ff3))
+
+
+
+## [2.5.1](https://github.com/varletjs/varlet/compare/v2.5.0...v2.5.1) (2023-01-02)
+
+
+### Bug Fixes
+
+* fix scroll form item error and close [#807](https://github.com/varletjs/varlet/issues/807) ([6f44de4](https://github.com/varletjs/varlet/commit/6f44de4c36b8798b141433b5f59611493cd9d6c7))
+
+
+
+# [2.5.0](https://github.com/varletjs/varlet/compare/v2.4.2...v2.5.0) (2023-01-01)
+
+
+### Bug Fixes
+
+* **cli:** fix less compile order error ([e9d8d1f](https://github.com/varletjs/varlet/commit/e9d8d1fb5e41c7f7aca383e3659a929cfc60b030))
+* **ui/popup:** fixed not being able to scroll when popup content overflowed ([7867282](https://github.com/varletjs/varlet/commit/78672828c08c1a411c445f62bec5aa25585ccbce))
+* **ui/space:** support ssr ([fc81fe7](https://github.com/varletjs/varlet/commit/fc81fe7048d63a58aeec41bb07a52b7d4564836b))
+
+
+### Features
+
+* new component tooltip ([08f0d52](https://github.com/varletjs/varlet/commit/08f0d52c330353008f706b503f9a5f976baf9278))
+* **ui/breadcrumb:** add router ([7677275](https://github.com/varletjs/varlet/commit/7677275eeee96ea65a6b2a8302af21bb170dd3a1))
+* **ui/breadcrumb:** var-breadcrumb complete ([1dc4741](https://github.com/varletjs/varlet/commit/1dc47418342b462c5ea9063cc4a424278a830dd1))
+* **ui/card:** add outline ([0bb33bb](https://github.com/varletjs/varlet/commit/0bb33bb5d847a8d951eff2d6fc6b50c3e90424ba))
+* **ui/form:** form support scroll to last error ([1776ec0](https://github.com/varletjs/varlet/commit/1776ec06e462d6e1dd85bc91d2e77ff2f7efe03c))
+* **ui/form:** support scroll animation ([466916c](https://github.com/varletjs/varlet/commit/466916ca5224aeb1771ee8a281af286050ef46ae))
+* **ui/form:** support scroll to first error ([f620514](https://github.com/varletjs/varlet/commit/f620514e29059ad7a4e9633c85b56a33beb6873b))
+* **ui/icon:** optimized the way to customize the icon library ([c73531c](https://github.com/varletjs/varlet/commit/c73531cb6e1ea6aa3638608d28739953ec00d61b))
+* **ui/select:** support selected slot ([6a6ebe0](https://github.com/varletjs/varlet/commit/6a6ebe0330cd972acf495b73427e033e5a23a5cd))
+* **ui/space:** replace dynamically calculated margin with css var ([e55c546](https://github.com/varletjs/varlet/commit/e55c54600eb126e9e6dc98f26291d1b3caef2a9d))
+* **ui/space:** use calc to handle margin ([cc80a19](https://github.com/varletjs/varlet/commit/cc80a19c691e496f5c013a7b0c26869aa40beded))
+* **ui/sticky:** support resize method ([7b1db86](https://github.com/varletjs/varlet/commit/7b1db86505fecf05ce523ef17e40224ac6a3f0cb))
+* **ui/tabs:** support more sticky props and sticky support resize ([d49488d](https://github.com/varletjs/varlet/commit/d49488dd051e644d1be0602eed4606256a6fa829))
+
+
+### Performance Improvements
+
+* **ui/breadcrumb:** optimize  breadcrumb docs ([2fb88fe](https://github.com/varletjs/varlet/commit/2fb88fe0f3345b4556bb95546d0e1a7fc7d43b84))
+* **ui/breadcrumb:** optimize breadcrumb component ([611441a](https://github.com/varletjs/varlet/commit/611441a7274a956ae7bc3ecefb91513407f07001))
+* **ui/breadcrumb:** optimize breadcrumb component ([6a68368](https://github.com/varletjs/varlet/commit/6a68368ab479b8eb85a7065a2074013f930dbb69))
+
+
+
+## [2.4.2](https://github.com/varletjs/varlet/compare/v2.4.1...v2.4.2) (2022-12-14)
+
+
+### Bug Fixes
+
+* **ui/input:** fix maxlength invalid with number type and close [#775](https://github.com/varletjs/varlet/issues/775) ([edf4a2e](https://github.com/varletjs/varlet/commit/edf4a2efeb0d75f1f818c0e8b986cb2dcc2ac2be))
+
+
+
+## [2.4.1](https://github.com/varletjs/varlet/compare/v2.4.0...v2.4.1) (2022-12-11)
+
+
+### Bug Fixes
+
+* **pull-refresh:** fix contorl position and close [#774](https://github.com/varletjs/varlet/issues/774) ([9dc871c](https://github.com/varletjs/varlet/commit/9dc871cc8b586751dcbe17e42dfd266e9a057cab))
+
+
+
+# [2.4.0](https://github.com/varletjs/varlet/compare/v2.3.1...v2.4.0) (2022-12-11)
+
+
+### Bug Fixes
+
+* change overlay test className ([093cbaa](https://github.com/varletjs/varlet/commit/093cbaaaf375c771c260e0f6a9f39f691f749288))
+* recover popup root style ([61bdede](https://github.com/varletjs/varlet/commit/61bdede3e5bcff80a6d1fba8c069a271fba27201))
+* replace popup overlay ([d9a7e8d](https://github.com/varletjs/varlet/commit/d9a7e8dd43b112496cff1bd8fd319521598b17b6))
+* reset popup ([5b710e7](https://github.com/varletjs/varlet/commit/5b710e70fcf1037a65179516a3b4a2801ab54ec0))
+* **site:** replace progress to loading-bar ([d5a9b0e](https://github.com/varletjs/varlet/commit/d5a9b0e6f0c78036290fa8164e75e39dc8e8e9cf))
+
+
+### Features
+
+* add overlay click event ([4853339](https://github.com/varletjs/varlet/commit/4853339d8a29942110c58eb279b956d81d878db0))
+* **extension:** support result ([d71bd13](https://github.com/varletjs/varlet/commit/d71bd1324e12e39f46f14061139b6174db46ba11))
+* init overlay component ([5847685](https://github.com/varletjs/varlet/commit/58476856b5bcf3ff07a082192fcb3a214b947e02))
+* loading-bar ([8290395](https://github.com/varletjs/varlet/commit/82903955a40524ccd7ce91d1b0fb8d9d443dca20))
+* overlay test spec ([835b33e](https://github.com/varletjs/varlet/commit/835b33eae86e508eb011b758d05f65f20cf11e9e))
+* **ui/app-bar:** support round prop ([21557ea](https://github.com/varletjs/varlet/commit/21557ea69814b5456dac806f9e98fa764b83d5f1))
+* **ui/popup:** add defaultStyle prop ([7ae22f3](https://github.com/varletjs/varlet/commit/7ae22f37318ec4c4bc54b6c868dd6433224aa0ac))
+
+
+
+## [2.3.1](https://github.com/varletjs/varlet/compare/v2.3.0...v2.3.1) (2022-11-28)
+
+
+
+# [2.3.0](https://github.com/varletjs/varlet/compare/v2.2.1...v2.3.0) (2022-11-28)
+
+
+### Bug Fixes
+
+* **button:** remove default value of circle and close [#761](https://github.com/varletjs/varlet/issues/761) ([aafdb12](https://github.com/varletjs/varlet/commit/aafdb123ee87a7dff1d32b63c900ecfc110dd268))
+* some unusual behavior of LOGO animation ([99d3846](https://github.com/varletjs/varlet/commit/99d38462e6dcfe8dff28aa7476dba6527cd3cc70))
+* **space:** remove width ([cb92a53](https://github.com/varletjs/varlet/commit/cb92a536f2de2b44e9f28cab1f493669a526ef7c))
+
+
+### Features
+
+* **ui/link:** support link component ([c6c8b8d](https://github.com/varletjs/varlet/commit/c6c8b8d4a4a85cbe5d05442f5fe6ad3cc5e2277d))
+
+
+
+## [2.2.1](https://github.com/varletjs/varlet/compare/v2.2.0...v2.2.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* **ui/tabs-items:** tabs-items cannot swipe to correct position when props.active initializes ([6ec8639](https://github.com/varletjs/varlet/commit/6ec8639086fd68d27df5bab1fa844645ceac59ea))
+
+
+
+# [2.2.0](https://github.com/varletjs/varlet/compare/v2.1.0...v2.2.0) (2022-11-11)
+
+
+### Features
+
+* **extension:** support form-details ([20e8655](https://github.com/varletjs/varlet/commit/20e86551b11dca95378010e12231acefb68ebe83))
+* support custom form component and refactor form-details and refactor form styles ([00ec07b](https://github.com/varletjs/varlet/commit/00ec07b830f1c87662a074d9f1478739e15d8334))
+
+
+
+# [2.1.0](https://github.com/varletjs/varlet/compare/v2.0.6...v2.1.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* **cli/create:** fix path of create template ([a48e875](https://github.com/varletjs/varlet/commit/a48e875c4c1d77a1c45a17184f4d7c53cd9e9d05))
+* error suffix when create tsx component ([#736](https://github.com/varletjs/varlet/issues/736)) ([dc4feac](https://github.com/varletjs/varlet/commit/dc4feacd0870c4fdeb67f302e01268185f507bcf))
+* pathToFileURL ([0917537](https://github.com/varletjs/varlet/commit/0917537ac5a1f999b4b97f169feba869b5d0eb1c))
+* **site:** allow playground copy url ([4cc9c61](https://github.com/varletjs/varlet/commit/4cc9c61648cd68c72cab6d2d18a078c286455b72))
+* **slider:** change slotProps ([8baf42a](https://github.com/varletjs/varlet/commit/8baf42a98b4bf2d0118363fe47ac4003dd75db09))
+* **ui/collapse:** fix shadow invisibility of collapse ([#734](https://github.com/varletjs/varlet/issues/734)) ([038f807](https://github.com/varletjs/varlet/commit/038f8077e8ccc754bb4f50c0e47ec579dcfd36dd))
+
+
+### Features
+
+* **icons:** migrate esm ([e6704a0](https://github.com/varletjs/varlet/commit/e6704a03e017537312ec1f039cf4b283045fce4c))
+* **slider:** support max and min props and close [#732](https://github.com/varletjs/varlet/issues/732) ([48c2633](https://github.com/varletjs/varlet/commit/48c26330c2a5dee028d52da1abad4a1b114bb998))
+* **ui/select:** add arrow-icon slot ([#738](https://github.com/varletjs/varlet/issues/738)) ([68ceec9](https://github.com/varletjs/varlet/commit/68ceec94c3e3e45df9565e4de3dcf5dcd774e926))
+
+
+
+## [2.0.6](https://github.com/varletjs/varlet/compare/v2.0.5...v2.0.6) (2022-10-20)
+
+
+### Bug Fixes
+
+* fix select disabled and readonly bug ([#731](https://github.com/varletjs/varlet/issues/731)) ([411d327](https://github.com/varletjs/varlet/commit/411d3272f29d0ed778f886485d2f925d56306842))
+
+
+### Features
+
+* **cli/release:** add branch confirm ([6f3c764](https://github.com/varletjs/varlet/commit/6f3c764f4b70e13b9930d1e6858dc75ada3d753b))
+
+
+
+## [2.0.5](https://github.com/varletjs/varlet/compare/v2.0.4...v2.0.5) (2022-10-19)
+
+
+### Bug Fixes
+
+* **ui/BottomNavigation:** change repeat trigger ([#729](https://github.com/varletjs/varlet/issues/729)) ([a61147f](https://github.com/varletjs/varlet/commit/a61147fca6694196268278dd7b7f99691ca73b0b))
+* **ui/divider:**  0.5px affects text display ([3e51cec](https://github.com/varletjs/varlet/commit/3e51cec5ef1533ce38bbbd23f497afea8eb956b7))
+
+
+### Features
+
+* **ui/divider:** add hairline divider ([03102d4](https://github.com/varletjs/varlet/commit/03102d4047253cbdab11861d699a50e9b3919636))
+
+
+
+## [2.0.4](https://github.com/varletjs/varlet/compare/v2.0.3...v2.0.4) (2022-10-19)
+
+
+
+## [2.0.3](https://github.com/varletjs/varlet/compare/v2.0.2...v2.0.3) (2022-10-15)
+
+
+### Bug Fixes
+
+* **config:** fix features merge strategy ([c3a378f](https://github.com/varletjs/varlet/commit/c3a378f9b43085888f5610dc739f45b28795e7e1))
+
+
+
+## [2.0.2](https://github.com/varletjs/varlet/compare/v2.0.1...v2.0.2) (2022-10-13)
+
+
+### Features
+
+* **ui/image:** support title prop ([48462bb](https://github.com/varletjs/varlet/commit/48462bbf81d24e7558295e86ec543e6fed0a6d04))
+
+
+
+## [2.0.1](https://github.com/varletjs/varlet/compare/v2.0.0...v2.0.1) (2022-10-13)
+
+
+### Features
+
+* **cli:** add defineConfig for type helper ([#721](https://github.com/varletjs/varlet/issues/721)) ([84579f4](https://github.com/varletjs/varlet/commit/84579f488a7ca800e083c97019b6f6fd785b9fa3))
+
+
+
+# [2.0.0](https://github.com/varletjs/varlet/compare/v1.27.20...v2.0.0) (2022-10-11)
+
+
+### Bug Fixes
+
+* **button&snackbar:** add loading color prop ([d4353b5](https://github.com/varletjs/varlet/commit/d4353b5fad0d9309531bc12863ddb13e3f942305))
+* **cli/commitlint:** add ！for break change ([86ec583](https://github.com/varletjs/varlet/commit/86ec5839128077d668a76b910279626437ebc909))
+* **cli/gen:** rename gitignore ([a60ebd0](https://github.com/varletjs/varlet/commit/a60ebd045d1809416cbfd3aa9f756bc410bdca1c))
+* **jest:** ensure to generate config ([876ba35](https://github.com/varletjs/varlet/commit/876ba3531f57d08573b7a033c888c766870913db))
+* **loading & pagination:** expose loading color variable and optimize style of pagination ([1f36c80](https://github.com/varletjs/varlet/commit/1f36c809540e8b1f4c9eb4d60d10930da6d6cd19))
+* **playground:** remove import about vite and fix ts error ([cf261e6](https://github.com/varletjs/varlet/commit/cf261e6b6c27812bf154ed3c82734fb8289e27bd))
+* **rate:** fix wrong style in form component ([4cae7e0](https://github.com/varletjs/varlet/commit/4cae7e0bf4885ee7cf6f91c12c705629f76e2807))
+* **slider:** ignore slider track height ([2387b16](https://github.com/varletjs/varlet/commit/2387b16a809c9da83a8a49caa3badd4e9338f222))
+* **ui/button,chip:** remove line-height ([ec72772](https://github.com/varletjs/varlet/commit/ec72772122a0ae6b6f6805261599cde94663bb92))
+* **ui/card:** fix scroll lock err ([5f12819](https://github.com/varletjs/varlet/commit/5f128192582d383e2f6bd5c90db88cab9265db15))
+* **ui/card:** fix the problem of ripple accidental failure ([facd510](https://github.com/varletjs/varlet/commit/facd5101fe18ef98efb0df840c7de5ecdf2fc4e4))
+
+
+### Features
+
+* **cli:** replace jest with vitest ([7ddbade](https://github.com/varletjs/varlet/commit/7ddbade1840ad93a9dadfeb1ce2a2dd914a0143b))
+* export dark theme and playground support dark theme preview ([cede810](https://github.com/varletjs/varlet/commit/cede810856f756712c6bfe352d7d026c067330c6))
+* **gen:** add simple-git-hooks scripts ([c1c6cd1](https://github.com/varletjs/varlet/commit/c1c6cd1b5c61701bcc6e3fd6e5cad48fe99e7cc4))
+* **style-provider:** support custom tag ([ed653e6](https://github.com/varletjs/varlet/commit/ed653e6510f310265e1dad757ce008e9b587fef2))
+* **ui/col:** add a direction API for col ([#716](https://github.com/varletjs/varlet/issues/716)) ([6a30c8e](https://github.com/varletjs/varlet/commit/6a30c8ed9305d0d32e42439ec5cc8cc6fb37e82b))
+* **ui/dialog:** add width props ([#718](https://github.com/varletjs/varlet/issues/718)) ([916ee21](https://github.com/varletjs/varlet/commit/916ee21c6c01b12066e9126a62c50609790ed737))
+* **ui/locale:** export zh-CN en-US language ([e4eecf0](https://github.com/varletjs/varlet/commit/e4eecf0f3525f7f40abcd7caf7b2721a75584f45))
+* **ui/menu-v2:** new menu component to replace old menu component, temporarily named v2 ([a2d621a](https://github.com/varletjs/varlet/commit/a2d621a8885dd20626ebe3f3ab61a4fcc9c487fb))
+* **ui/menu:** replace menuV2 with menu ([#690](https://github.com/varletjs/varlet/issues/690)) ([cbf117d](https://github.com/varletjs/varlet/commit/cbf117d76924644845509da09e2aed39d380710b))
+* **ui/tabs-items:** support getSwipe method ([23ffad1](https://github.com/varletjs/varlet/commit/23ffad12f643e47ec1fdd8e42f669005fd4426ad))
+
+
+### Performance Improvements
+
+* Improved Menu performance and Flip bugs ([#680](https://github.com/varletjs/varlet/issues/680)) ([f582c78](https://github.com/varletjs/varlet/commit/f582c783ff1e4435f5d6f03d5ce8658df84a7f04))
+
+
+### Reverts
+
+* revert test case ([c1cf24d](https://github.com/varletjs/varlet/commit/c1cf24d5c87de2f6336b065778698d5d7651d62a))
+
+
+
+## [1.27.20](https://github.com/varletjs/varlet/compare/v1.27.19...v1.27.20) (2022-08-11)
+
+
+### Bug Fixes
+
+* add style and less to sideeffects to close [#666](https://github.com/varletjs/varlet/issues/666) ([1e542fd](https://github.com/varletjs/varlet/commit/1e542fda37adcbaebc3cdc1d20f0845f82e8b22c))
+* **pagination:** judge pagecount and close [#668](https://github.com/varletjs/varlet/issues/668) ([4f8135f](https://github.com/varletjs/varlet/commit/4f8135f746a48e0cb8a3fb78ff4aa939fcad8ee7))
+
+
+
+## [1.27.19](https://github.com/varletjs/varlet/compare/v1.27.18...v1.27.19) (2022-08-08)
+
+
+### Bug Fixes
+
+* **cli/release:** change code execution order ([6f4e75c](https://github.com/varletjs/varlet/commit/6f4e75c1a9787cdf400718d9d4ce29df948b1d12))
+* **date-picker:** change preview to choose ([3fe98f9](https://github.com/varletjs/varlet/commit/3fe98f99ee213525a20ff082bd1579b7c68ed60d))
+* **ui/uploader:** add webp image ext ([e49d511](https://github.com/varletjs/varlet/commit/e49d51129c8cc349bbf3540b1d84df6c8fbb03bb))
+
+
+### Features
+
+* **date-picker:** add preview to close [#654](https://github.com/varletjs/varlet/issues/654) ([ed23775](https://github.com/varletjs/varlet/commit/ed23775e7da53e71a2d5112b7b7f8133fb180336))
+
+
+
+## [1.27.18](https://github.com/varletjs/varlet/compare/v1.27.17...v1.27.18) (2022-07-22)
+
+
+### Bug Fixes
+
+* **collapse:** ensure to trigger transitionend ([51b7710](https://github.com/varletjs/varlet/commit/51b77104d12e7a59c267921a004a429f882bcd9d))
+* **date-picker&time-picker:** change background color and add ripple style for close [#651](https://github.com/varletjs/varlet/issues/651) ([c1303a0](https://github.com/varletjs/varlet/commit/c1303a0b97430c0b03d90e8f404aa8a3b2586306))
+* **pull-refresh:** use success props when status is success ([189f8ab](https://github.com/varletjs/varlet/commit/189f8ab5eff8e406332cd1e4587f8a167e13d94c))
+
+
+### Features
+
+* **cli:** compatible with screens > 2560 ([6c4f161](https://github.com/varletjs/varlet/commit/6c4f1612857f1789e8c69ea63bbde24b5776c97e))
+
+
+
+## [1.27.17](https://github.com/varletjs/varlet/compare/v1.27.16...v1.27.17) (2022-07-06)
+
+
+### Bug Fixes
+
+* **cli/gen:** add varlet/shared to dependencies ([90800e1](https://github.com/varletjs/varlet/commit/90800e14567374a5db396da7e6bdba921329f878))
+* **cli/site:** support custom description ([d1b243e](https://github.com/varletjs/varlet/commit/d1b243e90ad5dad50ad3da30231b0c89caf64f45))
+* **collapse:** fix content height error ([be485c4](https://github.com/varletjs/varlet/commit/be485c45e31b8eb76048191468bceefe9ef3f3c4))
+* **ui/select:** select boundary detection bug fix ([#623](https://github.com/varletjs/varlet/issues/623)) ([eb2fc84](https://github.com/varletjs/varlet/commit/eb2fc8467cc25476994a68f4f7214be6936deb05))
+* **ui/skeleton:** do not render the container when rows and title not exist ([b8c3b7c](https://github.com/varletjs/varlet/commit/b8c3b7cdb13a7a0f33e77679e4a02e4e0438ce9b))
+
+
+### Features
+
+* **site:** support custom index page text ([5401c1c](https://github.com/varletjs/varlet/commit/5401c1cdae2f7d787211e1d79cb718ea9644e019))
+* **ui/input:** type support tel and email, touchstart event stop propagation ([c6cdcc9](https://github.com/varletjs/varlet/commit/c6cdcc902dbc4fa7ccd7f2730dfe3ff290a7358f))
+
+
+### Reverts
+
+* revert "fix(cli/site): support custom description" ([b23e0d2](https://github.com/varletjs/varlet/commit/b23e0d2f2f3e8c44fb770b7089cdd5aa6ceb015e))
+* revert "refactor(cli/site): adjust configurable item structure" ([493803b](https://github.com/varletjs/varlet/commit/493803b06a342a1b792ce7462633590365338176))
+
+
+
+## [1.27.16](https://github.com/varletjs/varlet/compare/v1.27.15...v1.27.16) (2022-07-01)
+
+
+### Bug Fixes
+
+* **slider:** stop propagation when touch slider ([6b4bc18](https://github.com/varletjs/varlet/commit/6b4bc181e50ffb887b8f7bae8bd161dddaa4530f))
+* **ui/snackbar:** remove position absolute in leaving animation's style ([#611](https://github.com/varletjs/varlet/issues/611)) ([18d5086](https://github.com/varletjs/varlet/commit/18d5086cc176929ad4abed1d257757305ea83afd))
+
+
+
+## [1.27.15](https://github.com/varletjs/varlet/compare/v1.27.14...v1.27.15) (2022-06-20)
+
+
+
+## [1.27.14](https://github.com/varletjs/varlet/compare/v1.27.13...v1.27.14) (2022-06-20)
+
+
+### Bug Fixes
+
+* add side-effects for tree shaking ([4fa8559](https://github.com/varletjs/varlet/commit/4fa85597ce0c7ed7c7335c17732cfc39dc7d6abe))
+
+
+### Features
+
+* add new package varlet-shared ([939d945](https://github.com/varletjs/varlet/commit/939d945d7a7b45b01b9784d22043c302b1753b4c))
+
+
+
+## [1.27.13](https://github.com/varletjs/varlet/compare/v1.27.12...v1.27.13) (2022-06-17)
+
+
+### Bug Fixes
+
+* **back-top:** add inheritAttrs ([cce45e2](https://github.com/varletjs/varlet/commit/cce45e269cd431593e3703e20a8ae592cf20d7a1))
+* **ui/types:** icon onClick's type ([d18d0ca](https://github.com/varletjs/varlet/commit/d18d0ca1de53b0b03f10d6daffc97711912fc141))
+
+
+### Features
+
+* **ui/select:** add boundary detection in select ([#606](https://github.com/varletjs/varlet/issues/606)) ([27eb0ea](https://github.com/varletjs/varlet/commit/27eb0eaf249c7b7faa8dad0dec47fa27e2a75c49))
+
+
+
+## [1.27.12](https://github.com/varletjs/varlet/compare/v1.27.11...v1.27.12) (2022-06-10)
+
+
+### Bug Fixes
+
+* add default width ([09fe1cc](https://github.com/varletjs/varlet/commit/09fe1cc8b560d7c05f6b8f06daca61babb6c6012))
+* **space:** add width when direction is column ([9108bfa](https://github.com/varletjs/varlet/commit/9108bfadfc761b1ce66191cc8e546d3edab840c4))
+* swiperItem's type ([#602](https://github.com/varletjs/varlet/issues/602)) ([33a1488](https://github.com/varletjs/varlet/commit/33a1488f9b43a6f7a073f3dccf5257ebcbc5adfe))
+* **ui/ripple:** ripple cannot be removed when the updated hooks trigger ([fc2fb08](https://github.com/varletjs/varlet/commit/fc2fb086c9cbdcb36003fe12993271cc27af2f4a))
+
+
+
+## [1.27.11](https://github.com/varletjs/varlet/compare/v1.27.10...v1.27.11) (2022-06-01)
+
+
+### Bug Fixes
+
+* **cli/gen:** gen i18n files ([e97e869](https://github.com/varletjs/varlet/commit/e97e8695f02fe3a0971d831da93630386a36f1c5))
+
+
+### Features
+
+* **cli/gen:** add i18n for template and close [#590](https://github.com/varletjs/varlet/issues/590) ([6299780](https://github.com/varletjs/varlet/commit/6299780dfabc3aae421a7d381916dab0a4bb4ad8))
+* **ui/input:** add autofocus of input ([#595](https://github.com/varletjs/varlet/issues/595)) ([fb9e026](https://github.com/varletjs/varlet/commit/fb9e0269dacb01e207ce548774fe96c65433a932))
+
+
+
+## [1.27.10](https://github.com/varletjs/varlet/compare/v1.27.9...v1.27.10) (2022-05-24)
+
+
+
+## [1.27.9](https://github.com/varletjs/varlet/compare/v1.27.8...v1.27.9) (2022-05-24)
+
+
+### Bug Fixes
+
+* animationBox is not in the DomTree. the logo will not show ([#579](https://github.com/varletjs/varlet/issues/579)) ([a50f735](https://github.com/varletjs/varlet/commit/a50f735fa19c86e67266a35adeb4617bb14d219c))
+* fix select throws an error when the select does not match any of the options ([#571](https://github.com/varletjs/varlet/issues/571)) ([f180d93](https://github.com/varletjs/varlet/commit/f180d93b3ca5e635dd5263c8bf7599213afd7600))
+* fix the logo fixed style && filter change ([#573](https://github.com/varletjs/varlet/issues/573)) ([37908dc](https://github.com/varletjs/varlet/commit/37908dceb75ac19db952cdc2be60a79485683d75))
+* **index-bar:** fix click event to be triggered ([9fb9d90](https://github.com/varletjs/varlet/commit/9fb9d901680b96e00db443277064fbe0eb52b730))
+* **index-bar:** support dimension units for sticky-offset-top and close [#554](https://github.com/varletjs/varlet/issues/554) ([e7c6304](https://github.com/varletjs/varlet/commit/e7c630433af3df5159fecde95d2a9dc456a01b13))
+* **loading:** support dimension units ([7ce32cc](https://github.com/varletjs/varlet/commit/7ce32cc9ef961170cc9f9f303d0d90b201b6ee84))
+* **playground:** fix safari import error ([#580](https://github.com/varletjs/varlet/issues/580)) ([a5c8c99](https://github.com/varletjs/varlet/commit/a5c8c999cfd6a7ab726a7f6c5408698e6c1b2059))
+* **progress:** support dimension units [#553](https://github.com/varletjs/varlet/issues/553) ([ddb2380](https://github.com/varletjs/varlet/commit/ddb238098e28ffa8b8de28bb074f277e6b215fcd))
+* **rate:** support dimension units [#553](https://github.com/varletjs/varlet/issues/553) ([b6e4d35](https://github.com/varletjs/varlet/commit/b6e4d353f445cdf136f240763c62cd5d61bd44af))
+* **slider:** support dimension units [#553](https://github.com/varletjs/varlet/issues/553) ([dacab1b](https://github.com/varletjs/varlet/commit/dacab1b5cc5f3f02908e34396f83f3f74de8b85e))
+* **switch:** support dimension units ([#556](https://github.com/varletjs/varlet/issues/556)) ([73bec2b](https://github.com/varletjs/varlet/commit/73bec2b810cad05a4d1a815b9ea9d1294291b547))
+
+
+### Features
+
+* **ui/picker:** Picker of colums add deep watch ([#572](https://github.com/varletjs/varlet/issues/572)) ([54d3eb7](https://github.com/varletjs/varlet/commit/54d3eb72c6be1e61c089a39e2597a22c72f6558c))
+* varlet/cli site version config ([#568](https://github.com/varletjs/varlet/issues/568)) ([75d5a38](https://github.com/varletjs/varlet/commit/75d5a381926e7cbe2c4df7508c8bd34b9a433842))
+
+
+
+## [1.27.8](https://github.com/varletjs/varlet/compare/v1.27.7...v1.27.8) (2022-05-09)
+
+
+### Bug Fixes
+
+* **compileSiteEntry:** slash path for windows ([5170997](https://github.com/varletjs/varlet/commit/51709974d5b7c77bc9c7f37b09a79348a0ff9ca6))
+* **ui/col:** fix logic for span & responsive setting 0 [#529](https://github.com/varletjs/varlet/issues/529) ([80da305](https://github.com/varletjs/varlet/commit/80da3058913b5300539184c2650eb709b5bb0e10))
+* **ui/col:** fix span & responsive props when equal 0 [#529](https://github.com/varletjs/varlet/issues/529) ([a0831c3](https://github.com/varletjs/varlet/commit/a0831c3410d40cf5fd8b1f5795a930ac7d6aebdc))
+
+
+### Features
+
+* cli pages and homepage ([#531](https://github.com/varletjs/varlet/issues/531)) ([d723e36](https://github.com/varletjs/varlet/commit/d723e367dd006243d7bf0b2adb0611ae49e19d5f))
+* finish the floating and land && optimize home page style ([#541](https://github.com/varletjs/varlet/issues/541)) ([76d6fad](https://github.com/varletjs/varlet/commit/76d6fadfe66fb0d9c2892666c309933d3a378c0e))
+* **ui/picker:** add props textFormatter ([#522](https://github.com/varletjs/varlet/issues/522)) ([f735468](https://github.com/varletjs/varlet/commit/f735468dd5879f19a3f4285ab1ddf9629ddd3849))
+
+
+
+## [1.27.7](https://github.com/varletjs/varlet/compare/v1.27.6...v1.27.7) (2022-04-29)
+
+
+### Bug Fixes
+
+* **counter:** add user-select for button ([fb239f0](https://github.com/varletjs/varlet/commit/fb239f0eda6e888f404f87615c9cfa4675af5e42))
+* docs(ui/steps): use the setup script for exmple and docs ([#505](https://github.com/varletjs/varlet/issues/505)) ([5c6fb67](https://github.com/varletjs/varlet/commit/5c6fb675f0b24bf643ced19238507efa80373489))
+* **loading:** add mask to close [#520](https://github.com/varletjs/varlet/issues/520) ([e40d7c5](https://github.com/varletjs/varlet/commit/e40d7c5e21cadb64b8e8a4ddcbc8a9f04fe12427))
+* **pull-refresh:** close [#509](https://github.com/varletjs/varlet/issues/509) ([311947a](https://github.com/varletjs/varlet/commit/311947ad5c161da11faae7a65bda41f802350a46))
+* **ui/picker:** add picker missing style ([#513](https://github.com/varletjs/varlet/issues/513)) ([d2aa016](https://github.com/varletjs/varlet/commit/d2aa016b2511c561f63f837efca63525ea409600))
+
+
+### Features
+
+* **cli/release:** add npm registry confirm ([#510](https://github.com/varletjs/varlet/issues/510)) ([f463bd1](https://github.com/varletjs/varlet/commit/f463bd128d2f5aa43b1112f54d594818f9313117))
+* **ui/input:** support trim modifier([#519](https://github.com/varletjs/varlet/issues/519)) ([5e9e238](https://github.com/varletjs/varlet/commit/5e9e2384140f86c96015461e68c11f7e1ddc2bba))
+
+
+
+## [1.27.6](https://github.com/varletjs/varlet/compare/v1.27.5...v1.27.6) (2022-04-23)
+
+
+### Bug Fixes
+
+* **pagination:** modify css style of disabled ([273bd6f](https://github.com/varletjs/varlet/commit/273bd6f0aced4b00b49af53733daef4d3a3e9dcb))
+
+
+### Features
+
+* **cli:** code example component support playground ([6763794](https://github.com/varletjs/varlet/commit/6763794d1d2bb7bc2ed9cb478311b85dd7c2bbd1))
+* **markdown-vite-plugin:** add playground flag ([06f4394](https://github.com/varletjs/varlet/commit/06f43943ddeeb142d6fecf7bcb2d3fe49ac56b84))
+* **markdown-vite-plugin:** add playground-ignore flag for code block ([07008bc](https://github.com/varletjs/varlet/commit/07008bcb033a7e0b3b1d275e9b847889ed5bd525))
+* **playground:** add area.json to import map ([2320f4e](https://github.com/varletjs/varlet/commit/2320f4e6033715a045e8ddb051925654085ee0c5))
+* **ui/picker:** add cascadeInitialIndexes prop ([#489](https://github.com/varletjs/varlet/issues/489)) ([c6f10bd](https://github.com/varletjs/varlet/commit/c6f10bd162b50006fbf34c1580de2d530ea768e3))
+
+
+### Reverts
+
+* Merge branch 'docs/script-setup' into dev ([2208334](https://github.com/varletjs/varlet/commit/220833436211f5b21aa9d8a8309a17c5b957d8b1))
+
+
+
+## [1.27.5](https://github.com/varletjs/varlet/compare/v1.27.4...v1.27.5) (2022-04-16)
+
+
+
+## [1.27.4](https://github.com/varletjs/varlet/compare/v1.27.3...v1.27.4) (2022-04-16)
+
+
+### Bug Fixes
+
+* **rate:** fix rate style ([79edabf](https://github.com/varletjs/varlet/commit/79edabff2fa08f44dd3b251af9a41e311a7426d6))
+
+
+
+## [1.27.3](https://github.com/varletjs/varlet/compare/v1.27.2...v1.27.3) (2022-04-14)
+
+
+### Bug Fixes
+
+* **ui/uploader:** fix [#426](https://github.com/varletjs/varlet/issues/426) ([463e0a7](https://github.com/varletjs/varlet/commit/463e0a7aee6f6f1ca61c2e18f88e5db4b30d9c4d))
+* **uploader:** use label tag to replace div ([d6832c8](https://github.com/varletjs/varlet/commit/d6832c820b4538daf264e02aba39ee5e6509090d))
+
+
+
+## [1.27.2](https://github.com/varletjs/varlet/compare/v1.27.1...v1.27.2) (2022-04-11)
+
+
+### Features
+
+* **bottom-navigation:** add safe-area prop to avoid affect ([921775b](https://github.com/varletjs/varlet/commit/921775be50eb7f0b9b161292a43b261e40f4247b))
+* **tabs:** add safe-area prop to avoid affect ([5cfe4b9](https://github.com/varletjs/varlet/commit/5cfe4b955f49b85bf11224657328855f33bbeed1))
+
+
+
+## [1.27.1](https://github.com/varletjs/varlet/compare/v1.27.0...v1.27.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* **ui/uploader:** ripple does not work when customizing the style ([8e6f0e7](https://github.com/varletjs/varlet/commit/8e6f0e753845e4a1c8c872df005166b4ee4c53a3))
+
+
+
+# [1.27.0](https://github.com/varletjs/varlet/compare/v1.26.9...v1.27.0) (2022-04-08)
+
+
+### Bug Fixes
+
+* **icons:** use base64 src ([465b3c3](https://github.com/varletjs/varlet/commit/465b3c35db29b682997560ba63210b1347b81cbe))
+* **icons:** use relative path src ([bdab3d4](https://github.com/varletjs/varlet/commit/bdab3d41aa358686385cbb382319c9e8a85c9b37))
+* **ui/tabs:** fix match boundary error ([6cb05e0](https://github.com/varletjs/varlet/commit/6cb05e0c37527f1e44ac0ee6c91b209fc3fa8503))
+
+
+### Features
+
+* **bottom-navigation:** new component bottom-navigation [#866](https://github.com/varletjs/varlet/issues/866)dc6ee ([ee48111](https://github.com/varletjs/varlet/commit/ee48111afa5a6dcb548a7d790915d6101a7cd555)), closes [#866dc6](https://github.com/varletjs/varlet/issues/866dc6)
+* new component BottomNavigation ([#356](https://github.com/varletjs/varlet/issues/356)) ([2fd7753](https://github.com/varletjs/varlet/commit/2fd7753cab212bef0c3da552509ecb67a7d503e3))
+
+
+### Performance Improvements
+
+* add class and call function ([da8ac80](https://github.com/varletjs/varlet/commit/da8ac80a58e10f734add8ae3d33585e73b0d1355))
+* add class and call function ([469b5d0](https://github.com/varletjs/varlet/commit/469b5d0b7d07615b5460f4fd2beab2b65c212368))
+* **card:** add class ([#361](https://github.com/varletjs/varlet/issues/361)) ([73426b2](https://github.com/varletjs/varlet/commit/73426b25602e433f7fa0fd7e2f975668497523b2))
+* **collapse:** add class ([dc5b23e](https://github.com/varletjs/varlet/commit/dc5b23e67da1254456281f27f415f36c43d3a0e0))
+* **date-picker:** add class ([7cfd233](https://github.com/varletjs/varlet/commit/7cfd233023f705bc98fcd1b865315b84e2751d84))
+* **form-details:** add class ([5047156](https://github.com/varletjs/varlet/commit/50471560724b866cb501922399a922e742b1b514))
+* Modify the class display method in table, tabs, ripple and lazy ([#391](https://github.com/varletjs/varlet/issues/391)) ([25ebec9](https://github.com/varletjs/varlet/commit/25ebec98855975492a051a3b64cde73c41b7a5fa))
+* **option:** add class ([ea062e8](https://github.com/varletjs/varlet/commit/ea062e857a475238a975530c2d72a9291e6d971c))
+* **progress:** add class ([4a878d3](https://github.com/varletjs/varlet/commit/4a878d3dc3e6c602dd26621ef0f0d186e37c9278))
+* remove unuseful function define ([d372fc0](https://github.com/varletjs/varlet/commit/d372fc0cd7404e2070cc49172e1dbef7c85a7c48))
+* **snackbar:** complete to replace class ([9961458](https://github.com/varletjs/varlet/commit/996145813dd8ed00b6f6ef82c1212f36f674db70))
+* **step:** add class ([9c97678](https://github.com/varletjs/varlet/commit/9c97678dc4a7baa5c9a3eaca00e10c663036346e))
+* **tab&swipe-item:** add class ([7807520](https://github.com/varletjs/varlet/commit/78075201606d3851b2a00da4c86f63b78e2c8b08))
+* **time-picker:** add class ([b2f458e](https://github.com/varletjs/varlet/commit/b2f458e1403185ed1a5035d114cbb26418b18172))
+* **ui/app-bar:** add class ([#396](https://github.com/varletjs/varlet/issues/396)) ([687d791](https://github.com/varletjs/varlet/commit/687d7918ce8f068e702e64b0a524cd1dfbad0e07))
+* **ui/back-top,countdown,menu:** modify class method ([#404](https://github.com/varletjs/varlet/issues/404)) ([f9a7295](https://github.com/varletjs/varlet/commit/f9a72953114f76f58794bc5428eaeb462a96a4c4))
+* **ui/badge:** add class ([de33df1](https://github.com/varletjs/varlet/commit/de33df180fae615e417fbe1c23ee65b838ad2436))
+* **ui/bottom-navigation:** handle active boundary ([#411](https://github.com/varletjs/varlet/issues/411)) ([49c91b3](https://github.com/varletjs/varlet/commit/49c91b359e92ee764fb5241af614df7139053dcd))
+* **ui/cell:** add class ([6b40718](https://github.com/varletjs/varlet/commit/6b40718f610e64895e62dc5183898d8f9d21410a))
+* **ui/chip:** add class & canonical class name ([5b5987f](https://github.com/varletjs/varlet/commit/5b5987fe897281c58d2232367e40242648495254))
+* **ui/col:** add class ([#383](https://github.com/varletjs/varlet/issues/383)) ([2d57c82](https://github.com/varletjs/varlet/commit/2d57c825898fde3b350077ae3b40eb091c5c1d5e))
+* **ui/collapse:** add call ([#369](https://github.com/varletjs/varlet/issues/369)) ([cfd23a3](https://github.com/varletjs/varlet/commit/cfd23a3926e438b9dacb7ff610cb4467073cf6c5))
+* **ui/counter&slider:** add class&call ([#382](https://github.com/varletjs/varlet/issues/382)) ([3277814](https://github.com/varletjs/varlet/commit/3277814bd7b1d8f0b1345a77655911d7c5eca180))
+* **ui/dialog:** add class and call ([#397](https://github.com/varletjs/varlet/issues/397)) ([c1df88f](https://github.com/varletjs/varlet/commit/c1df88f9bac031c7b553bd20af51536e34623f37))
+* **ui/divider:** add class ([#393](https://github.com/varletjs/varlet/issues/393)) ([520d211](https://github.com/varletjs/varlet/commit/520d21125a6d299e79c537d435eef3f385452e13))
+* **ui/form:** delete call ([#392](https://github.com/varletjs/varlet/issues/392)) ([0726cb0](https://github.com/varletjs/varlet/commit/0726cb0a5c7c7eb4422e464c24e5f9a470062e94))
+* **ui/icon:** add class ([1bb74a3](https://github.com/varletjs/varlet/commit/1bb74a3748316921247f96efd2b1ed51d31ef3ed))
+* **ui/image-preview:** add class and call ([#387](https://github.com/varletjs/varlet/issues/387)) ([fab1856](https://github.com/varletjs/varlet/commit/fab185657d67b044ec73fcf866e497291650aed7))
+* **ui/image:** add class and call function ([16a8bed](https://github.com/varletjs/varlet/commit/16a8bed4f83995a7304f897cadeb738526788bf7))
+* **ui/index-bar:** add class and call function ([#395](https://github.com/varletjs/varlet/issues/395)) ([ae489da](https://github.com/varletjs/varlet/commit/ae489da0e58c1ae413a2908855928e8eebde5ab7))
+* **ui/input:** add class ([#377](https://github.com/varletjs/varlet/issues/377)) ([adc8a5c](https://github.com/varletjs/varlet/commit/adc8a5ca5b212afb1122b1370c3ef0480aaf4c48))
+* **ui/list:** add class and call function ([#376](https://github.com/varletjs/varlet/issues/376)) ([387af67](https://github.com/varletjs/varlet/commit/387af67e3a94877c1cc8c5a7536152a8ad311ebd))
+* **ui/loading:** add class and call function ([807f07d](https://github.com/varletjs/varlet/commit/807f07d1c8627866054def13d9d778b0e77db174))
+* **ui/picker:** add class ([#373](https://github.com/varletjs/varlet/issues/373)) ([eadf910](https://github.com/varletjs/varlet/commit/eadf910bc9a8b567dbfc9322267ad90b05c2f6d9))
+* **ui/pull-refresh:** add class ([#399](https://github.com/varletjs/varlet/issues/399)) ([e874763](https://github.com/varletjs/varlet/commit/e8747638db35e82defcca9863219b17ce674efd7))
+* **ui/radio, checkbox:** add class and call function ([#389](https://github.com/varletjs/varlet/issues/389)) ([4d399e4](https://github.com/varletjs/varlet/commit/4d399e4f606c76a695a434f7d4b21f7f943ebdca))
+* **ui/rate:** add call function ([#379](https://github.com/varletjs/varlet/issues/379)) ([5982608](https://github.com/varletjs/varlet/commit/5982608d092a8eeb58b64068c7073f8418c1061d))
+* **ui/row:** add class ([#384](https://github.com/varletjs/varlet/issues/384)) ([a76fdb0](https://github.com/varletjs/varlet/commit/a76fdb05aebbc5ec5406d99701deb2dadcbb6eb3))
+* **ui/select:** add class and call function ([#380](https://github.com/varletjs/varlet/issues/380)) ([c0b7d07](https://github.com/varletjs/varlet/commit/c0b7d07022245dc246f4fcf8189067a5a1008151))
+* **ui/skeleton:** add namespace ([#362](https://github.com/varletjs/varlet/issues/362)) ([cb97d8d](https://github.com/varletjs/varlet/commit/cb97d8dc5517953495ca3f37212686a3d1c48d4a))
+* **ui/snackbar:** add class ([#371](https://github.com/varletjs/varlet/issues/371)) ([a0e6bfc](https://github.com/varletjs/varlet/commit/a0e6bfc6f4a63b8bf3b84214bbc955e09b6e9c81))
+* **ui/space:** add class ([#374](https://github.com/varletjs/varlet/issues/374)) ([ceb18a7](https://github.com/varletjs/varlet/commit/ceb18a756bd7bbf39fb717839ad0b49786f716f1))
+* **ui/steps:** add class ([#378](https://github.com/varletjs/varlet/issues/378)) ([e0fcbb3](https://github.com/varletjs/varlet/commit/e0fcbb3ed2699ffc87f82ce68d02591ddf9aca0a))
+* **ui/sticky:** add class and call ([#385](https://github.com/varletjs/varlet/issues/385)) ([baea28d](https://github.com/varletjs/varlet/commit/baea28dd083ab59fcea34b47c3a4257b84d51c85))
+* **ui/swipe:** add class and call ([#386](https://github.com/varletjs/varlet/issues/386)) ([0ec82e2](https://github.com/varletjs/varlet/commit/0ec82e2677fdc5167d82760b3b52f3504beeb570))
+* **ui/switch:** add class ([#372](https://github.com/varletjs/varlet/issues/372)) ([1d5eaed](https://github.com/varletjs/varlet/commit/1d5eaed11eb11f92df83a61aee54b69e7a2ae839))
+* **ui/tab-item:** add class ([#400](https://github.com/varletjs/varlet/issues/400)) ([58984b2](https://github.com/varletjs/varlet/commit/58984b242d9f787b5a3cb71c8f27e45804c74b67))
+* **ui/uploader:** add namespace ([ee8e833](https://github.com/varletjs/varlet/commit/ee8e833106b98c4db5d74d5dd4539a919ad4c8ae))
+
+
+### Reverts
+
+* **rate:** revert remove useless div ([95a9f25](https://github.com/varletjs/varlet/commit/95a9f252d9152caef2d0e97e705e556e84e75d7c))
+* revert add class and call function ([cc70cae](https://github.com/varletjs/varlet/commit/cc70caed053eaf7659dbbdcc0822d1fd4047e386))
+
+
+
+## [1.26.9](https://github.com/varletjs/varlet/compare/v1.26.8...v1.26.9) (2022-03-31)
+
+
+### Performance Improvements
+
+* icon font moved to jsdelivr ([4ef2eab](https://github.com/varletjs/varlet/commit/4ef2eab4fc9d0636078255ba92745547c32734bc))
+
+
+
+## [1.26.8](https://github.com/varletjs/varlet/compare/v1.26.7...v1.26.8) (2022-03-25)
+
+
+### Bug Fixes
+
+* **cell:** add cell color to close [#353](https://github.com/varletjs/varlet/issues/353) ([24b44b9](https://github.com/varletjs/varlet/commit/24b44b932bae3f741858fa276c03136312ebe633))
+* **collapse:** modify padding ([6ef1a28](https://github.com/varletjs/varlet/commit/6ef1a28486ec96825f5707d4828554675de7fe9e))
+* resize offset and wrapWidth on focus function call ([e609c08](https://github.com/varletjs/varlet/commit/e609c086c82ac9c31e7c3826c26a14184b204e98))
+
+
+### Features
+
+* **ui/ripple:** determine whether to prevent ripple's fast touchmove by supporting touch events ([f859144](https://github.com/varletjs/varlet/commit/f8591445a70462d82ea19ca00ef6d1b792e62df9))
+
+
+
+## [1.26.7](https://github.com/varletjs/varlet/compare/v1.26.6...v1.26.7) (2022-03-18)
+
+
+### Bug Fixes
+
+* **cli/jest:** reset transformIgnorePatterns ([2ce595a](https://github.com/varletjs/varlet/commit/2ce595aab2cc45746f4da2d1e642e7e1c1aa33f6))
+* **index-bar:** change scrollable target to fix cant scroll in Android web ([a0c07f6](https://github.com/varletjs/varlet/commit/a0c07f66036b0a599117f9c815c4d92ef1186dd0))
+* **index-bar:** compatible scrolltop ([73fca8f](https://github.com/varletjs/varlet/commit/73fca8f89ec0342f3f897199627ddad8dbde98b5))
+
+
+### Features
+
+* **extension:** add code auto complete ([80690e4](https://github.com/varletjs/varlet/commit/80690e4125f4c5d4ba1a9eb207e1a3f4c1bb4991))
+* **extension:** compatible prompt plugin to vue2 ([#337](https://github.com/varletjs/varlet/issues/337)) ([38d715a](https://github.com/varletjs/varlet/commit/38d715a614ab1a29167f9100eee46784e8feaccb))
+
+
+### Performance Improvements
+
+* **extension:** improve component description ([5bffd8a](https://github.com/varletjs/varlet/commit/5bffd8a430f1066c96fd6783ab4f4c0c970e88e6))
+
+
+### Reverts
+
+* **ui/index-bar:** revert fix scroll getter function ([1b61cdd](https://github.com/varletjs/varlet/commit/1b61cddf53ebca76ad6d86240f25e154cb462b03))
+
+
+
+## [1.26.6](https://github.com/varletjs/varlet/compare/v1.26.5...v1.26.6) (2022-03-14)
+
+
+### Bug Fixes
+
+* **date-picker:** fix touch event not trigger when button disable ([8a99a5c](https://github.com/varletjs/varlet/commit/8a99a5c23c677da0136085f7edaa9ad863779d02))
+* **site:** fix app-bar transition error ([4efd4bf](https://github.com/varletjs/varlet/commit/4efd4bf4b565181ee2e687cee293435a23d4a441))
+
+
+### Features
+
+* **ui/uploader:** add a hide-list props for uploader components ([#335](https://github.com/varletjs/varlet/issues/335)) ([70bf77a](https://github.com/varletjs/varlet/commit/70bf77a0aed937006b4a06ce100eae45fb5f7cb6))
+
+
+
+## [1.26.5](https://github.com/varletjs/varlet/compare/v1.26.4...v1.26.5) (2022-03-13)
+
+
+### Features
+
+* **date-picker:** suport touchable ([5868a11](https://github.com/varletjs/varlet/commit/5868a115e11b2e3638475857396c95957c6728d7))
+* **ui/image-preview:** add extra slot ([8dc4d2d](https://github.com/varletjs/varlet/commit/8dc4d2d800b8ee61c8c7792a907c7d9369208ddc))
+
+
+
+## [1.26.4](https://github.com/varletjs/varlet/compare/v1.26.3...v1.26.4) (2022-03-07)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** fix TAP_DELAY ([c4edf69](https://github.com/varletjs/varlet/commit/c4edf695e5bf03fb715f18d335df2705173d54b6))
+
+
+### Features
+
+* **rate:** add namespace prop ([3aaa917](https://github.com/varletjs/varlet/commit/3aaa9170af649017f6c16c92bab5c44ad41fecae))
+
+
+
+## [1.26.3](https://github.com/varletjs/varlet/compare/v1.26.2...v1.26.3) (2022-03-05)
+
+
+### Bug Fixes
+
+* **cli/site:** optimize documentation color ([c53353e](https://github.com/varletjs/varlet/commit/c53353e9e9f8fc72ccff10e277ad42b866424096))
+* **date-picker:** format date of slotProps and style of doc ([67bf46c](https://github.com/varletjs/varlet/commit/67bf46ce266fb8d1e4c25e3a6cacf43c74253db5))
+* **site:** add cssTarget chorme61 ([4481054](https://github.com/varletjs/varlet/commit/4481054517b817e168e0ac4a30c103affaea94d0))
+* **ui/checkbox:** resolve checkbox component animation display exception ([#321](https://github.com/varletjs/varlet/issues/321)) ([9e5c078](https://github.com/varletjs/varlet/commit/9e5c07812c28ede647825119a086425366cb868e))
+* **ui/image-preview:** fix isTapTouch ([f5c38f8](https://github.com/varletjs/varlet/commit/f5c38f8b454699951cde262cda7ce78b96478fc0))
+* **ui/image-preview:** fixed the error that the target value is null when triggering isTapTouch ([#323](https://github.com/varletjs/varlet/issues/323)) ([ee5c559](https://github.com/varletjs/varlet/commit/ee5c559700728fa5a620bddb9a55fa05b4ecc432))
+
+
+
+## [1.26.2](https://github.com/varletjs/varlet/compare/v1.26.1...v1.26.2) (2022-02-22)
+
+
+### Bug Fixes
+
+* support --ripple-color ([c5ded77](https://github.com/varletjs/varlet/commit/c5ded77c7be2dd8fcfa7eae24817fb18c3a29bf3))
+* **ui/space:** fix space err with comment [#319](https://github.com/varletjs/varlet/issues/319) ([f2adc98](https://github.com/varletjs/varlet/commit/f2adc981030481fb218e608342a184c4d1e07588))
+* **ui/space:** fix space v-for err ([c9d10e3](https://github.com/varletjs/varlet/commit/c9d10e3c5500f4ae5064be106b73c169dff010f3))
+
+
+### Performance Improvements
+
+* remove unuseful function call ([#316](https://github.com/varletjs/varlet/issues/316)) ([263a830](https://github.com/varletjs/varlet/commit/263a8305a5e3ec24a4b3c67db6dd2ed4dc5fdcca))
+* **ui/divider:** remove unuseful function call ([129e47d](https://github.com/varletjs/varlet/commit/129e47dd7df8bfea17059180cb5fd041fef0809b))
+
+
+
+## [1.26.1](https://github.com/varletjs/varlet/compare/v1.26.0...v1.26.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **site:** fix fold animation error when defaultFold set false ([e709af0](https://github.com/varletjs/varlet/commit/e709af094343ffac2002d63c5a883005bd3f82f8))
+* **ui/list:** the fractional part of the detectorBottom when bottoming out overflows ([c8e0142](https://github.com/varletjs/varlet/commit/c8e01423d98b9bdcea825be35558f299932f753d))
+
+
+
+# [1.26.0](https://github.com/varletjs/varlet/compare/v1.25.1...v1.26.0) (2022-02-08)
+
+
+### Bug Fixes
+
+* **playground:** fix primary color ([4b80e47](https://github.com/varletjs/varlet/commit/4b80e47d42948b8e67dbd7e23184431bbe51c521))
+* **playground:** fix to relative path ([73834d0](https://github.com/varletjs/varlet/commit/73834d0070c0bd8833cb4e8d0b731b884a4874f7))
+
+
+### Features
+
+* **icons:** add new icon ([49c3d5e](https://github.com/varletjs/varlet/commit/49c3d5ed790132443415b0af4ca594adfef906ed))
+* **site:** add playground logic ([24c542d](https://github.com/varletjs/varlet/commit/24c542dff259f91d427c5deaa79032cda53e4597))
+* **ui/col:** add responsive layout ([4e314cb](https://github.com/varletjs/varlet/commit/4e314cb0f3ea0d5ac234d5987289ee33c19cfc69))
+
+
+### Reverts
+
+* revert add responsive layout" ([d54e500](https://github.com/varletjs/varlet/commit/d54e500325618806adc118562fa4df9774e347b3))
+* revert release command ([c2fc9df](https://github.com/varletjs/varlet/commit/c2fc9df5c6263d30d9304410b40e6140b4a53630))
+* revert release command ([f910a24](https://github.com/varletjs/varlet/commit/f910a24a3fd3ee13f332ec0fd226971c80f862a2))
+
+
+
+## [1.25.1](https://github.com/varletjs/varlet/compare/v1.25.0...v1.25.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **cli/site:** do not show the fold icon when the height is not high enough to expand the code block ([b4cd0b5](https://github.com/varletjs/varlet/commit/b4cd0b5dc9e7a19c7933d515ee83bf6666578c4f))
+* **cli:** fix select scrollbar display error [#305](https://github.com/varletjs/varlet/issues/305) and add esm bundle ([f66ffb7](https://github.com/varletjs/varlet/commit/f66ffb70e197d3f508eeb07488496c6c5d3008bf))
+* **collapse:** fix modelValue is undefined when close accrodion item ([0da3871](https://github.com/varletjs/varlet/commit/0da38718b58ddac463965194e4160e1541318803))
+* **index-bar:** support ssr and fix top value when click anchor ([6c7df9f](https://github.com/varletjs/varlet/commit/6c7df9f4b218ca4174f610262112dbe8567fecc1))
+* **ui/input,select:** fix label color error ([652ae97](https://github.com/varletjs/varlet/commit/652ae97bb594ffa6a9309ec004b8b9c5ebc8ead6))
+* **ui/select:** fix word break ([95b1684](https://github.com/varletjs/varlet/commit/95b16848c6672470ea8f75328ac043525ca08057))
+* **ui/sticky:** add doubleRaf for ssr [#296](https://github.com/varletjs/varlet/issues/296) ([ed1348c](https://github.com/varletjs/varlet/commit/ed1348c78805282349815d317a98d262915b98f1))
+* **ui/tabs:** support nuxt3 ([9459d1d](https://github.com/varletjs/varlet/commit/9459d1d8d36264487d4a3dc29dc82fe22ccfd328))
+
+
+### Features
+
+* **backTop:** add position and default target ([86f9237](https://github.com/varletjs/varlet/commit/86f92376600578db8433ad67540d931d87bdc773))
+* **ui/app-bar:** change app-bar default background color in dark mode ([a073dee](https://github.com/varletjs/varlet/commit/a073dee493408a269666ef9615789d8c446d1e76))
+* **ui/dialog:** add dialog-class dialog-style props ([e7f9b5d](https://github.com/varletjs/varlet/commit/e7f9b5d791eb0a1a76d0a6c31b60430880232a2c))
+* **ui/skeleton:** add fullscreen-z-index prop ([394f0a9](https://github.com/varletjs/varlet/commit/394f0a9b8dabc5b877f9b27d71e5337ca6876921))
+
+
+### Performance Improvements
+
+* optimize utils ([24c0f79](https://github.com/varletjs/varlet/commit/24c0f79d83737bf93bfd6220176edb6271250c3b))
+
+
+
+# [1.25.0](https://github.com/varletjs/varlet/compare/v1.24.11...v1.25.0) (2022-01-19)
+
+
+### Bug Fixes
+
+* **date-picker:** remove error when the initial value is undefined and close [#277](https://github.com/varletjs/varlet/issues/277) ([ede1eb1](https://github.com/varletjs/varlet/commit/ede1eb12ea2d2dcd0f24819a11369b47ac8825f7))
+* **swipe:** support ssr ([007c3e6](https://github.com/varletjs/varlet/commit/007c3e65b37259b68343388bd45453c46bca30ea))
+* **ui/app-bar:** support ssr ([3700eef](https://github.com/varletjs/varlet/commit/3700eef03ef33c53762fc677cde22ea41d669568))
+* **ui/list:** remove isHidden function ([a4634e0](https://github.com/varletjs/varlet/commit/a4634e0d468b865264381fa31acb2a4af87e2a9a))
+
+
+### Features
+
+* **button:** add autoLoading prop ([67f4b40](https://github.com/varletjs/varlet/commit/67f4b40635d3452d74be6ce0a1abc5a423611950))
+
+
+
+## [1.24.11](https://github.com/varletjs/varlet/compare/v1.24.10...v1.24.11) (2022-01-14)
+
+
+### Bug Fixes
+
+* **button:** add css cover for loading ([5c003cc](https://github.com/varletjs/varlet/commit/5c003ccb172e773fc369fc732df40f0df3499a7e))
+* **pagination:** emit event when change pageSize and close [#279](https://github.com/varletjs/varlet/issues/279) ([f9a9be4](https://github.com/varletjs/varlet/commit/f9a9be4a628c30c8886f1398182be9313ef8c587))
+* **ui/select:** fix select wrapWidth and offsetY display error with ssr [#276](https://github.com/varletjs/varlet/issues/276) ([6e396a3](https://github.com/varletjs/varlet/commit/6e396a3e51de9129121ab30e096805b17c6d7083))
+
+
+
+## [1.24.10](https://github.com/varletjs/varlet/compare/v1.24.9...v1.24.10) (2022-01-10)
+
+
+
+## [1.24.9](https://github.com/varletjs/varlet/compare/v1.24.8...v1.24.9) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** add module property in package.json ([866cd8d](https://github.com/varletjs/varlet/commit/866cd8d806416321e405e7b4f8bb14221f2320f3))
+
+
+
+## [1.24.8](https://github.com/varletjs/varlet/compare/v1.24.7...v1.24.8) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** fix cjs to esm ([ce68ff3](https://github.com/varletjs/varlet/commit/ce68ff3ed710f3b9f5f1513659121ee21297d5e4))
+
+
+
+## [1.24.7](https://github.com/varletjs/varlet/compare/v1.24.6...v1.24.7) (2022-01-09)
+
+
+### Bug Fixes
+
+* **touch-emulator:** rename file ([3a4cbd5](https://github.com/varletjs/varlet/commit/3a4cbd587092fb51e3401233da718b73c4b1ad35))
+
+
+
+## [1.24.6](https://github.com/varletjs/varlet/compare/v1.24.5...v1.24.6) (2022-01-09)
+
+
+### Bug Fixes
+
+* **date-picker:** import icon.less ([48d54a6](https://github.com/varletjs/varlet/commit/48d54a6d5fe148bb8bf926e670f155da6ea77589))
+* **touch-emulator:** add iife script ([ed7e28a](https://github.com/varletjs/varlet/commit/ed7e28a246612573a7558309719fb616d7e46a4f))
+* **touch-emulator:** support ssr ([f5857bb](https://github.com/varletjs/varlet/commit/f5857bb93e79582dc17423d07d973d8fb590d4f6))
+
+
+
+## [1.24.5](https://github.com/varletjs/varlet/compare/v1.24.4...v1.24.5) (2022-01-07)
+
+
+### Bug Fixes
+
+* **cli/release:** add remote option ([8c9ed7c](https://github.com/varletjs/varlet/commit/8c9ed7c1af950e6bf0094a76b7053af93d16306e))
+* **ui/menu:** support ssr ([c50e26f](https://github.com/varletjs/varlet/commit/c50e26fcf285b238370822ada65a33b189214d8e))
+
+
+
+## [1.24.4](https://github.com/varletjs/varlet/compare/v1.24.3...v1.24.4) (2021-12-30)
+
+
+### Bug Fixes
+
+* **cli/release:** fix tag release error ([341997a](https://github.com/varletjs/varlet/commit/341997a6b02957ee34c5d2f8619b4b8c619a06d6))
+
+
+
+## [1.24.3](https://github.com/varletjs/varlet/compare/v1.24.1...v1.24.3) (2021-12-30)
+
+
+### Bug Fixes
+
+* **cli:** fix release tag ([5341cfc](https://github.com/varletjs/varlet/commit/5341cfc4496d5b5222a2599ee494546483dcd5a4))
+* **cli:** remove unuseful import ([21e8b74](https://github.com/varletjs/varlet/commit/21e8b741ac4249d413a16d465ea5dd73e83114cd))
+* **compile:** move config to entry function to aviod generate unnecessary folder ([f99b050](https://github.com/varletjs/varlet/commit/f99b050a71c605ea907f70f855850469b652ff5c))
+* **config:** add parameter to control generate folder ([6a17558](https://github.com/varletjs/varlet/commit/6a175585e4f5070b0a312de403c5dbbf9e26c08d))
+* **create:** move config to entry function to aviod generate unnecessary folder ([333cfae](https://github.com/varletjs/varlet/commit/333cfae36313a4c8364471e076a2d6fb3b7e1818))
+* **date-picker:** fix eslint error ([5c9b12c](https://github.com/varletjs/varlet/commit/5c9b12cc4a06f7a877a3061d8f51cd6bc44c7a1f))
+* modify component.spec ([9f5f022](https://github.com/varletjs/varlet/commit/9f5f02245fea94fa3e45248391ea24fd4d5c81d2))
+* modify home.zh-CN ([3664a6d](https://github.com/varletjs/varlet/commit/3664a6d8d72b6545391ec7ff425ba2878bd106ee))
+* modify openSourceGuide.zh-CN ([cf263ed](https://github.com/varletjs/varlet/commit/cf263ed55cfafd0d9339f7fc2697e096b6b1e3cc))
+* remove yarn usage in script ([40d5fd2](https://github.com/varletjs/varlet/commit/40d5fd283de8ad598088c2d09949f979a5dfaff6))
+* **ui/elevation:** resolve shadow cannot display ([f8dedba](https://github.com/varletjs/varlet/commit/f8dedbaeb5e7af080c5f91d4501747f43ca893fa))
+* **ui/menu:** modify the implementation of sloving offsetHeight error ([9871022](https://github.com/varletjs/varlet/commit/987102260cf30279306914075b3f82b6083d4406))
+* **ui/menu:** reslove error of getting offsetHeight when alignment is set as bottom ([d05a7f9](https://github.com/varletjs/varlet/commit/d05a7f94d5a939205ade2e7df48ba1f7e6ac2a67))
+* **ui/swipe:** fix stopAutoplay function ([7cad9d5](https://github.com/varletjs/varlet/commit/7cad9d5fcb3b0eb4747423d44dc4935616181fdf))
+* **ui/swipe:** fix stopAutoplay function ([b2390fb](https://github.com/varletjs/varlet/commit/b2390fb52b13e4227f0436bb8cc6b4645cc73300))
+
+
+
+## [1.24.1](https://github.com/varletjs/varlet/compare/v1.24.0...v1.24.1) (2021-12-27)
+
+
+### Bug Fixes
+
+* **ui/elevation:** resolve shadow cannot display ([227b2db](https://github.com/varletjs/varlet/commit/227b2dbab2884a8914ef5a530c18dfffff010323))
+
+
+
+# [1.24.0](https://github.com/varletjs/varlet/compare/v1.23.11...v1.24.0) (2021-12-27)
+
+
+### Bug Fixes
+
+* **card:** add word-break for description ([38d7427](https://github.com/varletjs/varlet/commit/38d74270eed5bc71b4f821f5433604b7a62eecbc))
+* **cli/site:** adjust z-index of the sidebar and code toolbar for site ([5b81918](https://github.com/varletjs/varlet/commit/5b8191822305e5a485003223d3109a6554b33251))
+* **cli:** fix icon vertical-align ([f015092](https://github.com/varletjs/varlet/commit/f0150923b9d33c6f61c9810887ea294015a35621))
+* **d.ts:** fix pack declare lost after build ([d7df27e](https://github.com/varletjs/varlet/commit/d7df27e439a2b28fa4a9cfb867129611f2a268b3))
+* fix test fail ([78f20ec](https://github.com/varletjs/varlet/commit/78f20ec46bea357fd12c1da68b02ce7dc9cc2918))
+* **loading:** add transition for overlay ([2a62eaa](https://github.com/varletjs/varlet/commit/2a62eaa8eed6a5ff77222b48932b39655744ffae))
+* **loading:** expose marigin css variable ([313d232](https://github.com/varletjs/varlet/commit/313d232b363981ce94c11e419ace904bfc2b246d))
+* **placeholder:** text-overflow to ellipsis ([7c586d2](https://github.com/varletjs/varlet/commit/7c586d2f7e751a12993d06e46d460ac25de24b22))
+* **select:** fix select's placeholder when too long ([a7e08a6](https://github.com/varletjs/varlet/commit/a7e08a60e7d2d8f49f0863fcda6814bc1fdd4fdc))
+* **site:** add types ([6520984](https://github.com/varletjs/varlet/commit/6520984af6eb13b772783540aa72427cf1e4403e))
+* **site:** fix mobile style ([3189225](https://github.com/varletjs/varlet/commit/31892257a3611e2c6fa39d01cd0d87d4cc2d5ebb))
+* **site:** modify code example style ([bb33910](https://github.com/varletjs/varlet/commit/bb3391008bdafbf052b8485b79bb54270ca27771))
+* **types:** fix prompts that could not find a declaration file when import translation file ([2637884](https://github.com/varletjs/varlet/commit/26378841f2fbafeda8bcd6fffd5eccfd50e9e559))
+* **types:** fix prompts that could not find a declaration file when import translation file ([e17c6d2](https://github.com/varletjs/varlet/commit/e17c6d2c430f1b4601875e98ca92d075a1de5813))
+* **ui/input, select:** fix placeholder animation and var--ellipsis class ([458ab30](https://github.com/varletjs/varlet/commit/458ab307652328ace71dc0523323422f7ebdbaac))
+* **ui/swipe:** do not use initialIndex when resize ([46e997e](https://github.com/varletjs/varlet/commit/46e997e8f014432149f409e40545592757ae4484))
+
+
+### Features
+
+* **cli:** add clipboard and fold tool for site ([5298c99](https://github.com/varletjs/varlet/commit/5298c996a6ea890ee29c01c254704f06d157df4c))
+* **loading:** add slots and desc prop ([db0df16](https://github.com/varletjs/varlet/commit/db0df16af2cab2de059282e9a8c15c66077b1ae2))
+
+
+### Reverts
+
+* revert fix mobile style ([22d9da9](https://github.com/varletjs/varlet/commit/22d9da9beaf88fa1a29394bc07141e5ec3355c42))
+
+
+
+## [1.23.11](https://github.com/varletjs/varlet/compare/v1.23.10...v1.23.11) (2021-12-10)
+
+
+### Bug Fixes
+
+* **card:** fix image css problem in card  ([#224](https://github.com/varletjs/varlet/issues/224)) ([498cb3c](https://github.com/varletjs/varlet/commit/498cb3c41f70ca265ab407cb9d4ed4100abf6c9f))
+* **fix the offset problem when the divider is vertical:** remove transformY,use align-items: center ([5b10f08](https://github.com/varletjs/varlet/commit/5b10f08ef6e2ebdbae4c3e199b23e68a319181e2))
+* fix types ([2d95d4c](https://github.com/varletjs/varlet/commit/2d95d4c53a8e106ef38d23b372e7f5583d7ef0d2))
+* remove unused code ([b37f258](https://github.com/varletjs/varlet/commit/b37f25809adfc0a7e3e8a3ecf3085715c531aa7f))
+
+
+
+## [1.23.10](https://github.com/varletjs/varlet/compare/v1.23.9...v1.23.10) (2021-12-01)
+
+
+### Bug Fixes
+
+* **ui/icon:** fix vertical align to bottom ([b2c4da9](https://github.com/varletjs/varlet/commit/b2c4da9a1a4df2ee43b27b005576f3523e7a4e5f))
+
+
+
+## [1.23.9](https://github.com/varletjs/varlet/compare/v1.23.8...v1.23.9) (2021-11-25)
+
+
+### Bug Fixes
+
+* **ui/checkbox:** add ripple depend style ([b8345fa](https://github.com/varletjs/varlet/commit/b8345fa2792f6b3b0f7b9651a5fb63590397eb5a))
+
+
+
+## [1.23.8](https://github.com/varletjs/varlet/compare/v1.23.7...v1.23.8) (2021-11-24)
+
+
+### Bug Fixes
+
+* **cli:** add ts ignore to generate routes ([3363578](https://github.com/varletjs/varlet/commit/3363578eb2763282fd3c274ab75374cbff94c92b))
+* compatible dayjs for nuxt ([0b3b540](https://github.com/varletjs/varlet/commit/0b3b540694e13130686773d9bcd3c3c4d21da496))
+* **d.ts:** repair type ([b925e7e](https://github.com/varletjs/varlet/commit/b925e7ea63c4154b3c26cb711fde4a7382633c80))
+
+
+
+## [1.23.7](https://github.com/varletjs/varlet/compare/v1.23.6...v1.23.7) (2021-11-23)
+
+
+### Bug Fixes
+
+* **loading:** add color for circle type & update doc ([3457394](https://github.com/varletjs/varlet/commit/345739466b8109e63205eee720d391a328d30ca7))
+* **loading:** remove radius prop & add color for circle type & update doc ([3a9dfe0](https://github.com/varletjs/varlet/commit/3a9dfe07886b245d686b454bfa1aa975b7e223f5))
+* **ui/themes, cli:** fix themes types ([f29511a](https://github.com/varletjs/varlet/commit/f29511a016edb462bdf578a6b5a19fbe10a22158))
+
+
+### Reverts
+
+* revert fix loading ([b97b8b9](https://github.com/varletjs/varlet/commit/b97b8b96e6f5f3c5f22f0f93eedc3e39b44e5344))
+
+
+
+## [1.23.6](https://github.com/varletjs/varlet/compare/v1.23.5...v1.23.6) (2021-11-22)
+
+
+### Bug Fixes
+
+* **date-picker:** css specificity ([565002b](https://github.com/varletjs/varlet/commit/565002bf78b0374b6b9f411df95d5e342f4ce626))
+
+
+
+## [1.23.5](https://github.com/varletjs/varlet/compare/v1.23.4...v1.23.5) (2021-11-21)
+
+
+### Bug Fixes
+
+* **cli/compile:** add commonjs bundle ([4a424d4](https://github.com/varletjs/varlet/commit/4a424d4c066f7de69cbf561a5bc9279862739637))
+* **cli/compile:** add match commonjs script extname function ([2b5b1bd](https://github.com/varletjs/varlet/commit/2b5b1bde5e1c16d4e58ce2a100ae4a1a3cc428ce))
+* **cli/compile:** fix compile module readdir ([9c3ad08](https://github.com/varletjs/varlet/commit/9c3ad08410009e50b288f033b8fdbe10a8c01160))
+* **cli:** add module moduleCompatible option in varlet.config.js ([0b1d95f](https://github.com/varletjs/varlet/commit/0b1d95fc740a225240ee3f28e06015f4538b2304))
+* **cli:** expose lib folder ([2a8848a](https://github.com/varletjs/varlet/commit/2a8848a6f064aa91d56875ba467c46da79589a79))
+* **cli:** fix commonjs compiler ([c5c2b12](https://github.com/varletjs/varlet/commit/c5c2b12f163bed130b3c6c0ee0eb805fe4a015f1))
+* **cli:** fix inline css plugin ([3e8b7b4](https://github.com/varletjs/varlet/commit/3e8b7b4e5489bc67dd38f8787477f07e2a13e7ac))
+* compatible nuxt ([d681176](https://github.com/varletjs/varlet/commit/d6811763867f44731544c8c218e5368896aab6b1))
+* **ui/list:** support nuxt ([dd7a71e](https://github.com/varletjs/varlet/commit/dd7a71ee37e2eadbacc6febd22949ef664997cb3))
+* **ui/popup,input:** support nuxt ([def81ef](https://github.com/varletjs/varlet/commit/def81ef821a8ce679287702316bd98ca363bc7f4))
+* **ui/sticky:** support nuxt ([29c24d6](https://github.com/varletjs/varlet/commit/29c24d61a0e91ceb948ff5a3e1bc6eb4c52b416a))
+* **ui:** dayjs compatible ([3f2289b](https://github.com/varletjs/varlet/commit/3f2289bdf39e82529df94fea6fec9dd7739a5c96))
+
+
+
+## [1.23.4](https://github.com/varletjs/varlet/compare/v1.23.3...v1.23.4) (2021-11-21)
+
+
+### Bug Fixes
+
+* **ui/types:** add list.d.ts ([ab06a8f](https://github.com/varletjs/varlet/commit/ab06a8f219fcf5f4f929938f048a142a6c4b1715))
+
+
+
+## [1.23.3](https://github.com/varletjs/varlet/compare/v1.23.2...v1.23.3) (2021-11-20)
+
+
+### Bug Fixes
+
+* **cli/jest:** add watchAll mode ([84ebb4e](https://github.com/varletjs/varlet/commit/84ebb4efe823cb9d7f22995d429b82d8fc3e05c8))
+
+
+
+## [1.23.2](https://github.com/varletjs/varlet/compare/v1.23.0...v1.23.2) (2021-11-20)
+
+
+### Bug Fixes
+
+* **ui/space:** modify the behavior of space in space-around and space-between modes ([5abf617](https://github.com/varletjs/varlet/commit/5abf617b009fbb63409724a3394b207949cc3a2c))
+
+
+
+# [1.23.0](https://github.com/varletjs/varlet/compare/v1.22.10...v1.23.0) (2021-11-19)
+
+
+### Bug Fixes
+
+* add assert for example lang ([7ce8bae](https://github.com/varletjs/varlet/commit/7ce8baefeaaf0f10d2638cb4927ccbf570b28006))
+* **cli:** bump typescript and commander version ([af893e9](https://github.com/varletjs/varlet/commit/af893e970b71ddc46365187c94ecba244513ef5a))
+* **cli:** error when building with vite ([6e60e8f](https://github.com/varletjs/varlet/commit/6e60e8f9b225fb0978a517f120589bdc8d5026b4))
+* **cli:** error when building with vite ([e786702](https://github.com/varletjs/varlet/commit/e78670201ae31d8bdfd710cfbbf9c794da0c0aa2))
+* code styles ([79f48c2](https://github.com/varletjs/varlet/commit/79f48c260f0424dfeccc659b4e77b68a2cdfe09b))
+* code styles ([776da40](https://github.com/varletjs/varlet/commit/776da4099f4a458cc4b19f4e80a037b8d7737086))
+* **collapse:** modify border style ([9e0f2f3](https://github.com/varletjs/varlet/commit/9e0f2f3a885828757cbe1d9d2af1d21c323133ec))
+* **date-picker:** add nullish coalescing ([9c3914b](https://github.com/varletjs/varlet/commit/9c3914bede52371483c05505475f67e4045570dd))
+* **date-picker:** add nullish coalescing ([8644d88](https://github.com/varletjs/varlet/commit/8644d8841587e6831c8175a5e4596b92f23d08d6))
+* **date-picker:** use style class to replace watch mode ([ce591de](https://github.com/varletjs/varlet/commit/ce591de2ab35be8d524da6a671357c106b8e81bb))
+* **doc:** progress bar should not use unmount function ([0587103](https://github.com/varletjs/varlet/commit/05871038e42a50f38fdc2a201107d786431691cd))
+* **fix(ui/space):add space.d.ts for space:** fix(ui/space):add space.d.ts for space ([29fe945](https://github.com/varletjs/varlet/commit/29fe945119a83c549ab13058343f72f07466781e))
+* **fix(ui/space):add space.d.ts for space:** fix(ui/space):add space.d.ts for space ([1fd3fac](https://github.com/varletjs/varlet/commit/1fd3fac9288e78dfec2f62754773426c03f63feb))
+* import dark themes of form related components ([32e6f08](https://github.com/varletjs/varlet/commit/32e6f08b9fab066be249158ef5d1c646ab536d57))
+* **picker:** optimize dark mode ([c7304b3](https://github.com/varletjs/varlet/commit/c7304b37128096cc5a4b86e275a07de0015f32b7))
+* **site:** modify the width of nav ([af0bfbe](https://github.com/varletjs/varlet/commit/af0bfbe8557182fa23083b8a4060625b18132c92))
+* **site:** support bg-color for dark mode of nav button ([b8417fe](https://github.com/varletjs/varlet/commit/b8417fe0873b8ecea4bcef21068aa0328ec32f88))
+* **slider:** modify error color of track ([64f8cf3](https://github.com/varletjs/varlet/commit/64f8cf33b32aeeeceab54f9610067f0794b0b066))
+* **types:** fix eslint error ([91e181d](https://github.com/varletjs/varlet/commit/91e181da75538c78640abf7a60a31bdbc9fc8156))
+* **types:** fix eslint error ([fa1d696](https://github.com/varletjs/varlet/commit/fa1d6961b20f2a3a3083b530f6629715a5099ae5))
+* **ui,cli:** move dark theme import to example ([579e461](https://github.com/varletjs/varlet/commit/579e461a620c2a7e416193b43368b885ec02b862))
+* **ui/icon:** transition property all to transform ([860d8ce](https://github.com/varletjs/varlet/commit/860d8cebdf4a09992080b7fa8ef599a0d47be3f8))
+* **ui/select, darkmode:** fix select disabled color lose, fix darkmode color ([8cfc654](https://github.com/varletjs/varlet/commit/8cfc654df9f14724f0fd5261b0e90a2faed59b78))
+* **ui/space:** add common css ([5b439a8](https://github.com/varletjs/varlet/commit/5b439a8afe0267ba9f118d205fa56e23d434d504))
+* **ui/tab-item:** tab-item example style ([c4f2ba4](https://github.com/varletjs/varlet/commit/c4f2ba48f73d87012cb769bbccc93accca296985))
+* **ui/tab,tab-item,tabs,tabs-items:** suppotr darkmode & remove nerver used vaiable `tab-color` ([681619d](https://github.com/varletjs/varlet/commit/681619d25d2a971ed73f6a7d16b892d6d3d751b0))
+
+
+### Features
+
+* **checkbox:** add dark mode ([cee8c2c](https://github.com/varletjs/varlet/commit/cee8c2c098c9f7cb26b232397f14d62a4bd5d311))
+* **cli/generators:** support dark mode ([4795af8](https://github.com/varletjs/varlet/commit/4795af8c25cc155eb1fe7cd8d8a6b23b45379989))
+* **collapse:** add dark mode ([9c9f505](https://github.com/varletjs/varlet/commit/9c9f505ed4fd909c0a7c4ab19eae27cabb9b25e3))
+* darkmode for time-picker&date-picker&card ([6878326](https://github.com/varletjs/varlet/commit/6878326b4f0915eec6a1eeee1e6b93f9ad1c85af))
+* darkmode for time-picker&date-picker&card ([beaefdb](https://github.com/varletjs/varlet/commit/beaefdbf6f5131e7fce8f51d5605d1309f2fa0c2))
+* darkmode for time-picker&date-picker&card ([df633e9](https://github.com/varletjs/varlet/commit/df633e97c2529ddd9789c1e61a06e9b28c4cf19c))
+* darkmode for time-picker&date-picker&card ([f372a92](https://github.com/varletjs/varlet/commit/f372a9235a468a1e662dfd3002d72e7e008481ac))
+* **divider:** support dark mode ([fa7e5ab](https://github.com/varletjs/varlet/commit/fa7e5ab58803285bc5cd13f7bc41477c5ba2ef4f))
+* **form&rate&counter:** add watchthemes ([3a2cd90](https://github.com/varletjs/varlet/commit/3a2cd9037b72d745f0616f84ae2f976817d8b8cb))
+* **icons:** add new icons ([ffd80da](https://github.com/varletjs/varlet/commit/ffd80da571adcb37474f32ef4d3220307598e69c))
+* **index-bar:** add dark mode ([32f30af](https://github.com/varletjs/varlet/commit/32f30af7581227a3bb622f389e965d9054bab64c))
+* **input:** add dark mode ([befd63c](https://github.com/varletjs/varlet/commit/befd63cb3a8d05bfd753e32e70601ded6b47f6df))
+* **locale:** add types and add optional chaining for date-picker ([654d60f](https://github.com/varletjs/varlet/commit/654d60f4bb8c70204db05e6352ec1d42619dbe90))
+* **locale:** add types and add optional chaining for date-picker ([140e2ba](https://github.com/varletjs/varlet/commit/140e2bafe01bd48e07620c07264e72cef60d45f7))
+* **menu:** add dark-mode ([e2807f6](https://github.com/varletjs/varlet/commit/e2807f6f45ee3331acdd3b9ba4180b16096f0114))
+* merge remote ([523b9f8](https://github.com/varletjs/varlet/commit/523b9f8ec63928088a8f635c07c1014cfc148251))
+* merge remote ([4abf933](https://github.com/varletjs/varlet/commit/4abf9332110db8081a21b6888fb1a7552922eb22))
+* merge remote ([f50006c](https://github.com/varletjs/varlet/commit/f50006c905d9f20bd1e33301205c45a3fa027329))
+* **picker:** picker support dark mode ([2d404d7](https://github.com/varletjs/varlet/commit/2d404d7c779d2df292bc6e6fe5521249740b1526))
+* **pull-refresh&switch:** add dark mode ([5936817](https://github.com/varletjs/varlet/commit/5936817b80c526c724a8b0f732196f436e5d1f17))
+* **radio:** add dark mode ([1a1fc57](https://github.com/varletjs/varlet/commit/1a1fc5705e7481e7c3568267b9b01ee4f83902c1))
+* **select:** add dark mode ([151bfc0](https://github.com/varletjs/varlet/commit/151bfc0eb3c417794f6c8caef1954c021bf10bb1))
+* **steps/pagination/table:** support dark mode ([ad04ea7](https://github.com/varletjs/varlet/commit/ad04ea7ce3ec4ebf96605ac6db297daa8b7099fd))
+* **ui/skeleton:** adaptatiton darkmode for skeleton ([3ee30f6](https://github.com/varletjs/varlet/commit/3ee30f6712e881d0751cc7a0ea09f4f6e638cd61))
+* **ui/space:** add new component name is space ([6f6e5e5](https://github.com/varletjs/varlet/commit/6f6e5e524cb2c13ff4ff24a5d2afa4ffe5ab759f))
+* **ui/space:** var-space complete ([1d13b68](https://github.com/varletjs/varlet/commit/1d13b688aab5a6b6d9ee1339e566d5fab68adca6))
+* **ui/space:** var-space complete ([9af956c](https://github.com/varletjs/varlet/commit/9af956c190733302474586d5e7f0710bd88b2a15))
+* **uploader:** 添加onRemove条件删除 ([ad44d1e](https://github.com/varletjs/varlet/commit/ad44d1e2b8d6514178970e15a47e656394316756))
+* **uploader:** 添加onRemove条件删除 ([e3c5fb6](https://github.com/varletjs/varlet/commit/e3c5fb62b8ece141fbf78c97519ff70b4f7c02ad))
+
+
+### Performance Improvements
+
+* **shared:** throttle节流修改 ([981183c](https://github.com/varletjs/varlet/commit/981183cba00a0d45d546e3ab3684b9c2bb137b4d))
+* **shared:** throttle节流修改 ([340b2e7](https://github.com/varletjs/varlet/commit/340b2e768c5fe544597f9319747c456029418939))
+
+
+
+## [1.22.10](https://github.com/varletjs/varlet/compare/v1.22.9...v1.22.10) (2021-11-03)
+
+
+### Bug Fixes
+
+* **cli/site:** change code block font color to white ([f38aa0e](https://github.com/varletjs/varlet/commit/f38aa0ea1a21be630e8dd0dec9e219a28a4f4567))
+* **cli/site:** modify site theme update logic ([d12195a](https://github.com/varletjs/varlet/commit/d12195ae7d98f8d1e9b4cc44d71c564b2f7b2974))
+* **ui/style-provider:** simplify the use of style-provider ([cbf66ce](https://github.com/varletjs/varlet/commit/cbf66ce9b2295df7be5c0de32d0969354462cff7))
+
+
+
+## [1.22.9](https://github.com/varletjs/varlet/compare/v1.22.8...v1.22.9) (2021-10-31)
+
+
+### Bug Fixes
+
+* **cli/types:** add global.d.ts for volar ([c99e0c1](https://github.com/varletjs/varlet/commit/c99e0c16176f81dc3aa58b5512f9ec66d85156e2))
+
+
+
+## [1.22.8](https://github.com/varletjs/varlet/compare/v1.22.7...v1.22.8) (2021-10-31)
+
+
+### Bug Fixes
+
+* **cli/highlight:** fix web-types version ([636b408](https://github.com/varletjs/varlet/commit/636b4088270857e3ada7341d707ecc63ee5c58f4))
+* **cli/site:** optimize site scroll on mobile trigger route change ([536d7b1](https://github.com/varletjs/varlet/commit/536d7b1daa30b6b9a8093173f64e394d3a3e69eb))
+* **ui/divider:** fix vertical divider ([edf9720](https://github.com/varletjs/varlet/commit/edf9720330adb2cadb4570847bfd1326ab3a0a2d))
+* **ui/input:** fix behaviour of the input type ([5643f3c](https://github.com/varletjs/varlet/commit/5643f3c29f86396badd7da2f7a6c19fe58d75a22))
+
+
+
+## [1.22.7](https://github.com/varletjs/varlet/compare/v1.22.6...v1.22.7) (2021-10-22)
+
+
+### Bug Fixes
+
+* **cli/dev:** add varlet config file watcher ([28b4ea9](https://github.com/varletjs/varlet/commit/28b4ea9a6b28a83dd57e12914f256634c8822297))
+* **cli/dev:** fixed bug of repeat restart server ([e14f090](https://github.com/varletjs/varlet/commit/e14f090cd8a3b932680acb8871ffd8cdd562f2a0))
+* **cli/site:** optimize github link style ([47db851](https://github.com/varletjs/varlet/commit/47db8511df8234a6a713d6bdbbf6f9c6f5bfd7e8))
+* **cli/site:** optimize site ([40161bf](https://github.com/varletjs/varlet/commit/40161bff3776760933c3f99e6b13ab656fa456e8))
+* **ui/site:** modify highlight.css color ([203432e](https://github.com/varletjs/varlet/commit/203432e12f8c9e22b92d1e00b790db708f0ac663))
+* **ui/tab-item:** add var-tab-item-cover attr ([934a833](https://github.com/varletjs/varlet/commit/934a833bfa9118c0c8c25e2796a1d0e7100ce84f))
+
+
+
+## [1.22.6](https://github.com/varletjs/varlet/compare/v1.22.4...v1.22.6) (2021-10-18)
+
+
+### Bug Fixes
+
+* **cli/jest:** add root config check ([052a338](https://github.com/varletjs/varlet/commit/052a338c9860b6d7d92e652dea0efdd8fbe41217))
+* **cli/site:** optimize site style ([aaec99e](https://github.com/varletjs/varlet/commit/aaec99ee9abcf6807e5629e5f07a7475452b6b5a))
+* fix types ([f9a372f](https://github.com/varletjs/varlet/commit/f9a372fb86268fa59903ef4b0c3c519cdefcf722))
+* **slider/types:** fix template types ([31da191](https://github.com/varletjs/varlet/commit/31da19127549971732fb5f28289ee52060232a7c))
+* **snackbar/types:** fix types of related loading props ([0e8d4f4](https://github.com/varletjs/varlet/commit/0e8d4f4230e40e5e5f431a7246cac38984b2c381))
+* **ui/checkbox, radio:** fix prop types ([219cab8](https://github.com/varletjs/varlet/commit/219cab8f17d2fbedc7c186a2e61191a8676f779d))
+* **ui/pagination, cli/site:** fix size and total cannot be centered vertically in the pagination, ad ([ad3eb81](https://github.com/varletjs/varlet/commit/ad3eb81269cdb005bb41a8c8127bb07bdc62ff91))
+* **ui/types:** fix types ([c87784d](https://github.com/varletjs/varlet/commit/c87784d4c8e32584a7a245854365259f95849fbe))
+* **ui:** fix types ([ead022f](https://github.com/varletjs/varlet/commit/ead022f620f05993229682f304060530ce856f7e))
+
+
+### Reverts
+
+* revert slider types change ([b897c3c](https://github.com/varletjs/varlet/commit/b897c3c2b58b4213f1b8dd1d2f84a1a2bdd4e67a))
+
+
+
+## [1.22.4](https://github.com/varletjs/varlet/compare/v1.22.3...v1.22.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **ui/app-bar:** fix app-bar style ([9da67b6](https://github.com/varletjs/varlet/commit/9da67b6fa0e07a644cba6118f4a90cb8293df8be))
+
+
+
+## [1.22.3](https://github.com/varletjs/varlet/compare/v1.22.2...v1.22.3) (2021-10-10)
+
+
+### Bug Fixes
+
+* **cli:** use vite internal printUrls instead of logger ([1b164d7](https://github.com/varletjs/varlet/commit/1b164d7f464d7c48b78cc17271a41170f61f53c6))
+* **ui/pagination:** fix icon size style is not effective ([520b93d](https://github.com/varletjs/varlet/commit/520b93d806e9282d2d60605ef8b7b332a86ddebd))
+
+
+
+## [1.22.2](https://github.com/varletjs/varlet/compare/v1.22.1...v1.22.2) (2021-10-08)
+
+
+### Bug Fixes
+
+* **cli:** fix mobile cell hover color ([ea999ed](https://github.com/varletjs/varlet/commit/ea999edcab71acca6894e1e7f2017fe8d96d787c))
+
+
+
+## [1.22.1](https://github.com/varletjs/varlet/compare/v1.22.0...v1.22.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* **cli/jest:** replace testMatch to testRegex ([5ed0a5c](https://github.com/varletjs/varlet/commit/5ed0a5c59cdfd296d3732a10387a454464c17c05))
+* **pagination:** fix hover style ([1762dd8](https://github.com/varletjs/varlet/commit/1762dd8224806975c916485e40f4dc15b0fbb87a))
+* **site:** remove hover style ([5ae0179](https://github.com/varletjs/varlet/commit/5ae0179f6344a822ecb69d6665b7d7512ee865d7))
+* **ui/action-sheet:** fix disabled color ([ec70187](https://github.com/varletjs/varlet/commit/ec7018723815ead6f5deae85c79a5b0533a4927d))
+* **ui/styles:** fix disabled color vars ([f529c30](https://github.com/varletjs/varlet/commit/f529c309d41f4ca28ff8d3c0d00e48889837222d))
+
+
+
+# [1.22.0](https://github.com/varletjs/varlet/compare/v1.21.0...v1.22.0) (2021-10-08)
+
+
+### Bug Fixes
+
+* **back-top:** cover the style of button ([b5046ae](https://github.com/varletjs/varlet/commit/b5046ae8e2b1c90e1583718d989e9c62528eadbb))
+* **cli/gen:** add default themes ([2d68e91](https://github.com/varletjs/varlet/commit/2d68e91c2fc83d1db4063ae576144815e24f17e5))
+* **cli/site:** increase app-bar vars weight ([b3e8d15](https://github.com/varletjs/varlet/commit/b3e8d150b843c603b090d8e2da3ec05e02f2a32e))
+* **cli:** fix dev server logger ([4e9f81d](https://github.com/varletjs/varlet/commit/4e9f81dabf854961e3bd99c445a0a8566b26db66))
+* **cli:** fix dev server port log error ([2e82806](https://github.com/varletjs/varlet/commit/2e82806817f23e4da2f4d80e4200c3da5a4dc439))
+* **cli:** remove unuseful code and opt dev logger ([18da4b5](https://github.com/varletjs/varlet/commit/18da4b590bf4194581d10edff8f4b1a052ff2b69))
+* fix component path name ([bbd8b1f](https://github.com/varletjs/varlet/commit/bbd8b1fbd62bdc4a084eb53f63f3d896f7ca4c1a))
+* **input:** text-color of disabled in safari ([dd33256](https://github.com/varletjs/varlet/commit/dd33256c87f3d708583694e12f17ea19961812a3))
+* **pagination:** add keydown event to switch page ([414decb](https://github.com/varletjs/varlet/commit/414decb43bd8009776111a0bf84ad8b967ccb38e))
+* **pagination:** fix current and size not update ([463d891](https://github.com/varletjs/varlet/commit/463d8916960c8c9d1a32555f0a405c4b073d0502))
+* **pagination:** remove padding ([83d214a](https://github.com/varletjs/varlet/commit/83d214ad80423b67829b9cedf2f338f5ffe4ab25))
+* remove console ([3ee3548](https://github.com/varletjs/varlet/commit/3ee35486f9ad760e7463a7fe981edcf29eb336be))
+* **ui/button:** remove line-height ([c0d2422](https://github.com/varletjs/varlet/commit/c0d2422e1a8735f7acf0459c2c4a2d8ba20bd4e2))
+* **ui/ripple, ui/menu:** opt ripple animation, fix menu left error on transition animation running ([0f714de](https://github.com/varletjs/varlet/commit/0f714de1c40af46116fd07d7717525c2c63d0470))
+* **ui/ripple:** add style variables ([551a666](https://github.com/varletjs/varlet/commit/551a66696c2e87fdbc2fe9b04f89350affc64d8a))
+* **ui/skeleton:** add avatar-border-radius css vars ([ddf259f](https://github.com/varletjs/varlet/commit/ddf259fab66bb0630e78c48fccd63429b87d2f0f))
+* **ui/table:** add table-tbody-td-font-size variable ([861217e](https://github.com/varletjs/varlet/commit/861217e49fc1594d66182a076c648bef4d462942))
+
+
+### Features
+
+* **cli:** add preview command that can preview document site for production ([3fea1f1](https://github.com/varletjs/varlet/commit/3fea1f1fed8a2f0fdb0d2fd5e7880531335a6711))
+* **cli:** migrate the build tool to vite ([c0eb94c](https://github.com/varletjs/varlet/commit/c0eb94c3c82683abb49b8561e181e75aa843aac4))
+* pagination ([62b27a8](https://github.com/varletjs/varlet/commit/62b27a8fde6c647cd072093ca0398348498a56e2))
+* **pagination:** add declaration file ([30fd32b](https://github.com/varletjs/varlet/commit/30fd32b9f5af842c7fd187e5aed9535d0eb5d195))
+* **table:** add declaration file ([30072d3](https://github.com/varletjs/varlet/commit/30072d3ccd2f6cddcf7ddbc734d85266489d9d32))
+* **ui/pagination:** ui/pagination ([3f8e24c](https://github.com/varletjs/varlet/commit/3f8e24c075c31853b2a6de94bcd02b4bb4195d2c))
+* **ui/table:** ui/table ([abd3f7d](https://github.com/varletjs/varlet/commit/abd3f7da5001902870ad7a322cfa5122c41ed395))
+
+
+
+# [1.21.0](https://github.com/varletjs/varlet/compare/v1.20.0...v1.21.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of overlap ([52c1d9b](https://github.com/varletjs/varlet/commit/52c1d9be10f9ece2f70fd613a24fac6457d016a6))
+* **index-bar:** fix the scrolling bug when index-bar is not 0 away from the top ([2f28954](https://github.com/varletjs/varlet/commit/2f28954d1ac4d14ffaa6d439675318dab273e0f9))
+* **types:** add props type declaration ([a547cc9](https://github.com/varletjs/varlet/commit/a547cc9fa99436d82d0ae2ac2804b0b94d0d3da0))
+* **ui/sticky:** remove auto check sticky support statement ([8a35d98](https://github.com/varletjs/varlet/commit/8a35d98487cc3c547d42a5c22ad32d8e2c96d19a))
+* **ui/sticky:** use scroll mode as sticky default mode ([3769f8b](https://github.com/varletjs/varlet/commit/3769f8b0837bc16f9bc4d7ce3405cac61c1f79e1))
+
+
+### Features
+
+* **ui/sticky:** add disabled,css-mode props ([5dbfbca](https://github.com/varletjs/varlet/commit/5dbfbca81a04d41583827d40f2cb9b8ffe391ad3))
+
+
+
+# [1.20.0](https://github.com/varletjs/varlet/compare/v1.19.0...v1.20.0) (2021-09-15)
+
+
+### Features
+
+* **cli:** support pc component preview ([be463ad](https://github.com/varletjs/varlet/commit/be463adf62cb7cb196e555a42c37a7d2b10cac77))
+
+
+
+# [1.19.0](https://github.com/varletjs/varlet/compare/v1.18.1...v1.19.0) (2021-09-13)
+
+
+### Bug Fixes
+
+* **cli/gen:** localize static resources ([80f9097](https://github.com/varletjs/varlet/commit/80f9097fde3c5e18f3ac162979b45bdb0147ffe4))
+* **cli:** add public folder to linter ignore ([d10a799](https://github.com/varletjs/varlet/commit/d10a7996efe9963a4f3c7247b1c5d2f2baac2502))
+* **cli:** fix prepare scripts to husky ([d0ff087](https://github.com/varletjs/varlet/commit/d0ff087834a5b2c4e1cacd6cb6e7e7ad0412aeda))
+* **cli:** fix the parameter passing method of webpack-dev-server ([0d88843](https://github.com/varletjs/varlet/commit/0d88843af5b15b59b27321f61f2701e562d4f8af))
+* **cli:** optimize site style ([f789d77](https://github.com/varletjs/varlet/commit/f789d7795a86736ad4f67f758759a17283e7dcdb))
+* **cli:** optimize site style ([9287d7b](https://github.com/varletjs/varlet/commit/9287d7b004f9b6508d065f62bb3d2e7b370499f5))
+* **doc:** fix typo ([6371e4e](https://github.com/varletjs/varlet/commit/6371e4e7e53fa03589ac99247ab2abec8330e5c5))
+
+
+### Features
+
+* **cli:** add release for template ([5078838](https://github.com/varletjs/varlet/commit/5078838cfee1cd8232aaef7fafd5eec0a03f1569))
+* **cli:** webpack-dev-server upgrade to 4.x version ([4d1fe95](https://github.com/varletjs/varlet/commit/4d1fe9570198b73910c0926c6f1e030753b52cda))
+
+
+
+## [1.18.1](https://github.com/varletjs/varlet/compare/v1.18.0...v1.18.1) (2021-09-10)
+
+
+### Bug Fixes
+
+* **cli:** optimize site style and compile style reg ([df5e173](https://github.com/varletjs/varlet/commit/df5e173d524879ecf542281b42c93cdc061eda91))
+
+
+
+# [1.18.0](https://github.com/varletjs/varlet/compare/v1.17.4...v1.18.0) (2021-09-10)
+
+
+### Bug Fixes
+
+* **cli/gen:** remove unuseful config ([2085b39](https://github.com/varletjs/varlet/commit/2085b39e384b9d9a66d50591dc1ca3d784292bd8))
+* **cli:** babel configuration-related path optimization ([b79db48](https://github.com/varletjs/varlet/commit/b79db48df980fb192e184239d8cf7b4fde252733))
+
+
+### Features
+
+* **cli:** add version command ([c5860c8](https://github.com/varletjs/varlet/commit/c5860c8cc8076b8a9f864a692d9a827beae16ed8))
+
+
+
+## [1.17.4](https://github.com/varletjs/varlet/compare/v1.17.3...v1.17.4) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** add conventional-changelog-cli ([7708781](https://github.com/varletjs/varlet/commit/7708781331d0d788fdadce53d8655d5ac93d849c))
+
+
+
+## [1.17.3](https://github.com/varletjs/varlet/compare/v1.17.2...v1.17.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** fix commitlint config, add changelog command ([5688425](https://github.com/varletjs/varlet/commit/5688425757e2d6d60fcaa25e9eef254f417d3180))
+
+
+
+## [1.17.2](https://github.com/varletjs/varlet/compare/v1.17.1...v1.17.2) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** add eslint,stylelint ([e393ea8](https://github.com/varletjs/varlet/commit/e393ea8dab9a0e8ea0248b2ee01a232cf55bc315))
+
+
+
+## [1.17.1](https://github.com/varletjs/varlet/compare/v1.17.0...v1.17.1) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** fix generators files publish error ([29c014d](https://github.com/varletjs/varlet/commit/29c014dab61cf7242dc005a3878e172a03def602))
+
+
+
+# [1.17.0](https://github.com/varletjs/varlet/compare/v1.16.3...v1.17.0) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli:** generators add commitlint ([32dbf2a](https://github.com/varletjs/varlet/commit/32dbf2abdb2bc9f75f7447483d4ce6eaa87e5897))
+
+
+### Features
+
+* **cli:** add gen command ([abdec46](https://github.com/varletjs/varlet/commit/abdec46ac7ef39962bb3025b37b12749f767a777))
+
+
+
+## [1.16.3](https://github.com/varletjs/varlet/compare/v1.16.2...v1.16.3) (2021-09-09)
+
+
+### Bug Fixes
+
+* **cli, markdown-loader:** optimize generators, markdown-loader lock highlight version ([9b3e3bb](https://github.com/varletjs/varlet/commit/9b3e3bba6e0c67fa53df23718fddfb8e9f09990f))
+* **cli,markdown-loader:** markdown-loader add style option, linter ignore generators ([7ca8844](https://github.com/varletjs/varlet/commit/7ca884425eb94df89995ab502a491a26bbefc9d4))
+* **cli/compile-types:** fix the component name of types ([4d999ee](https://github.com/varletjs/varlet/commit/4d999ee876e90b2c22dd93a0d17da8c181307378))
+* **cli:** add site theme config property ([9bf4945](https://github.com/varletjs/varlet/commit/9bf49450a9b6082d5e384ae78d4f8bace568d209))
+* **cli:** fix generators progress color ([7e62811](https://github.com/varletjs/varlet/commit/7e62811e5fa8fa4d87ac7d0bf98cd510f5900eb6))
+* **cli:** handle sfc style block's lang non-existent ([96c8551](https://github.com/varletjs/varlet/commit/96c85513937e97eebd5c43575e96b689ae3cf3df))
+* **cli:** optimized Baidu statistics, add varlet-cli-app generators template, fix cli depend version ([703517e](https://github.com/varletjs/varlet/commit/703517eddf8842093897800e4a940906bb632c5f))
+* **cli:** themes add progress color config ([f804915](https://github.com/varletjs/varlet/commit/f80491508fb80bd7c15c9e014eac78f95430dc57))
+
+
+### Performance Improvements
+
+* **site:** remove useless mobile image ([c55d7cf](https://github.com/varletjs/varlet/commit/c55d7cff289ac442672cf77636f87465c763fb93))
+
+
+
+## [1.16.2](https://github.com/varletjs/varlet/compare/v1.16.1...v1.16.2) (2021-09-01)
+
+
+### Bug Fixes
+
+* **cli:** add depend ([74cc717](https://github.com/varletjs/varlet/commit/74cc7170064017264a32feb04b5f0868d3880ebe))
+* **cli:** optimize reference ([eba1951](https://github.com/varletjs/varlet/commit/eba1951ae0b89090271126105bc44c0e91838465))
+
+
+
+## [1.16.1](https://github.com/varletjs/varlet/compare/v1.16.0...v1.16.1) (2021-08-31)
+
+
+### Bug Fixes
+
+* **markdown-loader:** fix the bug of parse doc cause by template string ([6e35002](https://github.com/varletjs/varlet/commit/6e35002003e3197e0af74c87a4cf778e862405df))
+
+
+
+# [1.16.0](https://github.com/varletjs/varlet/compare/v1.15.0...v1.16.0) (2021-08-30)
+
+
+### Bug Fixes
+
+* **cli/eslint:** add ext ([6fa3971](https://github.com/varletjs/varlet/commit/6fa39716015036c891aaff9cc3452b044baa0eda))
+* **cli:** bump version ([3da0433](https://github.com/varletjs/varlet/commit/3da04335751955cc0596fddecdcd671add0177de))
+* **compile:** remove unnecessary camelize method ([e9fd509](https://github.com/varletjs/varlet/commit/e9fd509fb07e29be47f11333e595a852bdc1971c))
+* **site:** remove import ([2b6c499](https://github.com/varletjs/varlet/commit/2b6c4996275dba15ce7bc0a8a83cd7a5f1e7ba8c))
+
+
+### Features
+
+* **site:** add theme config ([1d2c04c](https://github.com/varletjs/varlet/commit/1d2c04c862e8403655ec8bf5a13b84ddf2c3a801))
+
+
+
+# [1.15.0](https://github.com/varletjs/varlet/compare/v1.14.2...v1.15.0) (2021-08-13)
+
+
+### Features
+
+* **time-picker:** add allowedTime ([b86bd84](https://github.com/varletjs/varlet/commit/b86bd8420591a0bcffcae7442f5b9b7ab2546613))
+
+
+
+## [1.14.2](https://github.com/varletjs/varlet/compare/v1.14.1...v1.14.2) (2021-08-12)
+
+
+### Bug Fixes
+
+* **ui/input:** when the value is a number, the input type is not number ([34d750a](https://github.com/varletjs/varlet/commit/34d750ace1a2b338dde41680924534aed446d286))
+
+
+
+## [1.14.1](https://github.com/varletjs/varlet/compare/v1.14.0...v1.14.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* optimize style of slider example ([8940bb6](https://github.com/varletjs/varlet/commit/8940bb6a712c11efca2f3eb5fd5761923db62dd3))
+* **ui/image-preview:** tap can't trigger close ([ecf7afe](https://github.com/varletjs/varlet/commit/ecf7afec2392678bcf65b306cdbccf23d85997c3))
+
+
+
+# [1.14.0](https://github.com/varletjs/varlet/compare/v1.13.5...v1.14.0) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ui/image-preview:** restore the default behavior of the browser picture and prohibit dragging ([4d5cbc6](https://github.com/varletjs/varlet/commit/4d5cbc68063b4aff18172ccb995ed74bf765bba5))
+
+
+### Features
+
+* **slider:** add button slot ([a912564](https://github.com/varletjs/varlet/commit/a912564752458cb8cd54f2330dba4223f5a619b1))
+
+
+
+## [1.13.5](https://github.com/varletjs/varlet/compare/v1.13.4...v1.13.5) (2021-07-31)
+
+
+
+## [1.13.4](https://github.com/varletjs/varlet/compare/v1.13.3...v1.13.4) (2021-07-31)
+
+
+### Bug Fixes
+
+* **cli:** fix loose error in windows ([2a3f968](https://github.com/varletjs/varlet/commit/2a3f9688fceba337bf8eef1d6977bacc75311dae))
+* **ui:** fix babel config ([e5e4128](https://github.com/varletjs/varlet/commit/e5e41289791102ce5955abe19f903a6a58cc1cac))
+* **ui:** fix browserlist ([3f4cfeb](https://github.com/varletjs/varlet/commit/3f4cfeb4177403ab8723b4841a3f193d3a8ffec6))
+
+
+### Performance Improvements
+
+* **cli:** perf build entry ([19f700a](https://github.com/varletjs/varlet/commit/19f700adb44532905861459d60e54f06824dd96b))
+
+
+
+## [1.13.3](https://github.com/varletjs/varlet/compare/v1.13.1...v1.13.3) (2021-07-31)
+
+
+### Bug Fixes
+
+* **cli:** jsx tsx is not processed as an index ([4079361](https://github.com/varletjs/varlet/commit/4079361bb4c4273199653a02b51be0df1d738274))
+
+
+
+## [1.13.1](https://github.com/varletjs/varlet/compare/v1.13.0...v1.13.1) (2021-07-31)
+
+
+### Bug Fixes
+
+* **ui/swipe:** the screen size changes, the size of the carousel will not change ([#112](https://github.com/varletjs/varlet/issues/112)) ([7110457](https://github.com/varletjs/varlet/commit/71104570a6192af6293de894d42ca09d9b78f0c5))
+
+
+
+# [1.13.0](https://github.com/varletjs/varlet/compare/v1.12.0...v1.13.0) (2021-07-30)
+
+
+### Bug Fixes
+
+* **cli:** add the dev command ipv4 prompt, Optimization tips ([e86313b](https://github.com/varletjs/varlet/commit/e86313b790afe7812d52dfcff11c74131bf55cdb))
+* modify the style of indexbar ([ac268f1](https://github.com/varletjs/varlet/commit/ac268f10f4efd51b68d5a257822ad2c9b05a1d53))
+
+
+### Features
+
+* **cli:** support extraction of style dependencies in scripts, and optimize function definitions ([4d7d76f](https://github.com/varletjs/varlet/commit/4d7d76f3d61c351dd50a4d8b19081c7cc8b21b9f))
+
+
+
+## [1.11.1](https://github.com/varletjs/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/varletjs/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+# [1.12.0](https://github.com/varletjs/varlet/compare/v1.11.1...v1.12.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **cli/lint:** fix the bug of cannot get warning message ([ba849b3](https://github.com/varletjs/varlet/commit/ba849b3152924716d2ea20c38c769607a28e48ee))
+* **cli/site:** fix build site fail ([fffbb41](https://github.com/varletjs/varlet/commit/fffbb416a9bd5f3812e8529c07ae177e3d3b6e63))
+* **ui/input:** fix the wrong style of input ([0cd5752](https://github.com/varletjs/varlet/commit/0cd5752f70f6d58627f9a5f7a3f5f0fa74f43619))
+* **ui/sticky:** fix sticky element size error in keep-alive ([9f30544](https://github.com/varletjs/varlet/commit/9f30544764ab9f4161a20a1ee2032c10744e5a7a))
+
+
+### Features
+
+* **cli/site:** support hmr ([5ff00d6](https://github.com/varletjs/varlet/commit/5ff00d61ec0d1a332557c87142d5afb04f4a6fdb))
+* **cli:** add babel-presets ([1c5825d](https://github.com/varletjs/varlet/commit/1c5825d907115b4c1b017c6fb1747cef7f72d29d))
+* **cli:** support jsx tsx ([8d8c946](https://github.com/varletjs/varlet/commit/8d8c9466c80cac7820f9268ac7b257c9870e13be))
+* **cli:** support jsx tsx ([132fade](https://github.com/varletjs/varlet/commit/132fade5a12de1b8c71263ee72aec364564f0f35))
+
+
+
+## [1.11.1](https://github.com/varletjs/varlet/compare/v1.11.0...v1.11.1) (2021-07-29)
+
+
+### Bug Fixes
+
+* **ui/sticky:** fix sticky element size error in keep-alive ([3c269a9](https://github.com/varletjs/varlet/commit/3c269a9c6a379a02c448e7a911c63048ee079e33))
+
+
+
+# [1.11.0](https://github.com/varletjs/varlet/compare/v1.10.0...v1.11.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **index-bar:** fix the bug of trigger two times change event after click anchor ([4282788](https://github.com/varletjs/varlet/commit/4282788e4d5b0ee576144da951dc10c86fb235fc))
+
+
+### Features
+
+* **index-bar:** add duration prop ([d115f84](https://github.com/varletjs/varlet/commit/d115f84998ae1422d560b27003a869d8a31aa533))
+* **index-bar:** add hide-list prop ([a433b08](https://github.com/varletjs/varlet/commit/a433b08ea13a2504e1f9d75552fd95243fed8d2f))
+
+
+
+# [1.10.0](https://github.com/varletjs/varlet/compare/v1.9.7...v1.10.0) (2021-07-22)
+
+
+### Bug Fixes
+
+* **app-bar:** remove unused component ([4c70dbc](https://github.com/varletjs/varlet/commit/4c70dbc75a5ec23bdfc01e07496cfe01d5be626a))
+* **style:** remove unused component ([722058d](https://github.com/varletjs/varlet/commit/722058df1a9ee2e5c769ca5325aff3b7bb65ebee))
+* **ui/swipe:** fix swipe scroll error ([a0c197c](https://github.com/varletjs/varlet/commit/a0c197c9ad109a4df45fd50e97a9805656abad62))
+
+
+### Features
+
+* **ui/tabs-items:** add scrollIntoView, distance api ([a26f329](https://github.com/varletjs/varlet/commit/a26f329dd7d9018f8cc29c8f11d36a229ac8a32e))
+* **ui/tabs-items:** use carousel to replace the original design ([8dd346e](https://github.com/varletjs/varlet/commit/8dd346ee2f2d6419bf7ec0d9fbdfa9acfba111b0))
+
+
+
+## [1.9.7](https://github.com/varletjs/varlet/compare/v1.9.6...v1.9.7) (2021-07-21)
+
+
+### Bug Fixes
+
+* **ui/locale:** expose useLocale api ([2bf30e7](https://github.com/varletjs/varlet/commit/2bf30e798b1e9f43a0591ada296af3ab811efbe4))
+
+
+
+## [1.9.6](https://github.com/varletjs/varlet/compare/v1.9.5...v1.9.6) (2021-07-20)
+
+
+### Bug Fixes
+
+* **snackbar:** add default value for options ([18e6ae1](https://github.com/varletjs/varlet/commit/18e6ae10a5e4bb8005de391fedd5a1de2388935d))
+* **snackbar:** fix the wrong style of snackbar ([5b0ae93](https://github.com/varletjs/varlet/commit/5b0ae93fa3a649a7c4c1409202a865eb405c2ee1))
+
+
+
+## [1.9.5](https://github.com/varletjs/varlet/compare/v1.9.4...v1.9.5) (2021-07-19)
+
+
+### Bug Fixes
+
+* **cli:** add ./src ([0f46b0a](https://github.com/varletjs/varlet/commit/0f46b0a908d072ca5939bd3c21b74344a9543c65))
+* **cli:** fix build error ([27f1947](https://github.com/varletjs/varlet/commit/27f19477986c5979784953a2f3ef3c5e7f4fd0f1))
+* **cli:** fix eslint pattern ([ae93da1](https://github.com/varletjs/varlet/commit/ae93da12af4853bcb42e746d0d89f7fddc7be792))
+* **cli:** modify the logic of create route ([d60158a](https://github.com/varletjs/varlet/commit/d60158ac5b7ddc13eb9c41f1a8f27bb6f5c26d8f))
+* modify the logic of create routes ([8c00955](https://github.com/varletjs/varlet/commit/8c0095573909db9cd406f8554466f153f39e98b7))
+* remove unnecessary code ([578b842](https://github.com/varletjs/varlet/commit/578b842d7cdf8e1b71cf54fc3242e1bfb0d34e3d))
+* **ui/button:** button add white-space nowrap ([97626e1](https://github.com/varletjs/varlet/commit/97626e19aaca9cbd6b6126901e0962727c24142e))
+
+
+### Reverts
+
+* revert the commit of modify routes ([d26c420](https://github.com/varletjs/varlet/commit/d26c4200c8a81af81ce74afc62d430d02923d603))
+
+
+
+## [1.9.4](https://github.com/varletjs/varlet/compare/v1.9.2...v1.9.4) (2021-07-17)
+
+
+### Bug Fixes
+
+* **cli:** fix gen style error ([4f7dade](https://github.com/varletjs/varlet/commit/4f7dade4c9c18997a8151273aa8ac006cabb31c7))
+
+
+
+## [1.9.2](https://github.com/varletjs/varlet/compare/v1.9.0...v1.9.2) (2021-07-17)
+
+
+
+# [1.9.0](https://github.com/varletjs/varlet/compare/v1.8.0...v1.9.0) (2021-07-17)
+
+
+### Bug Fixes
+
+* adjust the execution position of the remove function ([7fc61de](https://github.com/varletjs/varlet/commit/7fc61deb9eca3bf30a4ecf1d37f531d2c1b154e8))
+* enhance type import ([ae000e5](https://github.com/varletjs/varlet/commit/ae000e5755fe3e7618c96a46fa5f3cde89dcb86f))
+* remove unnecessary inheritAttrs prop ([91d9503](https://github.com/varletjs/varlet/commit/91d95033ed94111c49b7af75713ec7cfd8504a58))
+* remove unnecessary inheritAttrs prop and update way of import type ([72522ba](https://github.com/varletjs/varlet/commit/72522ba93c2e5c69f3a7e3cd4ee0ee6b8463e107))
+* remove unnecessary less import ([a10ee49](https://github.com/varletjs/varlet/commit/a10ee49f5aa839f957268f981d156b405fed9f46))
+* **ui/swipe:** fix vertical swipe indicator margin error ([a23a266](https://github.com/varletjs/varlet/commit/a23a2664462b5a785e713f29951ed8f7a31b27b8))
+
+
+### Features
+
+* **extension:** add siteMap ([a01d726](https://github.com/varletjs/varlet/commit/a01d726e922d8a9f36f79f16184bf2d474b60241))
+
+
+
+# [1.8.0](https://github.com/varletjs/varlet/compare/v1.7.1...v1.8.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* fix the bug of style-provider when update ([0640b4e](https://github.com/varletjs/varlet/commit/0640b4e00282edbf9495af8ebadb2a64873d4ea5))
+* fix the prop name of style-provider ([36dd315](https://github.com/varletjs/varlet/commit/36dd3159581df3a98d78dd6761ed96c418dacda7))
+* remove useless code and warning ([9674482](https://github.com/varletjs/varlet/commit/96744820a53dba35ef89a79e0d9c79ac7444a04a))
+* support styleVars keyName ([fa2d4b5](https://github.com/varletjs/varlet/commit/fa2d4b58e2cbaec585ccca81c3721a04ffd3ae25))
+* **ui/rate:** fix rate default color of props ([5bca5ea](https://github.com/varletjs/varlet/commit/5bca5ea41402960fad1e6f62f4ec42f2053e8580))
+* **ui/swipe:** fix touchable bug ([1c16e5d](https://github.com/varletjs/varlet/commit/1c16e5d28803bc397a7a4d892ed057f3173078c2))
+* 更新类型引入 ([b1636f3](https://github.com/varletjs/varlet/commit/b1636f3b94fd5461a4c3f150fbc39a3de0842b0d))
+
+
+### Features
+
+* add style-provider ([d4008ea](https://github.com/varletjs/varlet/commit/d4008ea8679e827f954d0dfe4aa6ec559b39f8af))
+* **ui/card:** add style provider for card ([a47e7c9](https://github.com/varletjs/varlet/commit/a47e7c90ce1f7a18a1d1cd299118240d289192cd))
+* **ui/image-preview:**  Add a click event to the close-icon button ([2ee89a2](https://github.com/varletjs/varlet/commit/2ee89a2ccf414321bc634f0d85cbe9330dab5534))
+* **ui/image-preview:**  Add an action to determine Scale in handleCloseClick function ([c0f159b](https://github.com/varletjs/varlet/commit/c0f159b2d7f6c08915d7ad230a7906416eb97397))
+* **ui/image-preview:** add new component image-preview prototype ([25a8907](https://github.com/varletjs/varlet/commit/25a8907c2173218dc011088bd5d93b8abe581e1b))
+
+
+
+## [1.7.1](https://github.com/varletjs/varlet/compare/v1.7.0...v1.7.1) (2021-06-19)
+
+
+### Bug Fixes
+
+* **countdown:** modify style of example ([5dcf584](https://github.com/varletjs/varlet/commit/5dcf5849245817463f8fcd85d74c80abd20fbe78))
+* **progress:** modify style of example ([f2469a6](https://github.com/varletjs/varlet/commit/f2469a6915c6ef4d2a264672971bfffe29adedff))
+* **switch:** modify style of example ([b790736](https://github.com/varletjs/varlet/commit/b79073635295227180e79501068887c4c776c06c))
+
+
+
+# [1.7.0](https://github.com/varletjs/varlet/compare/v1.6.0...v1.7.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **cli/site:** add hover for lang button ([5ce2822](https://github.com/varletjs/varlet/commit/5ce2822d8e1c8c8bd0981cb55d534387e51f6403))
+* **date-picker:** add hover style ([a6b4e42](https://github.com/varletjs/varlet/commit/a6b4e42bfeb0a93c8d43063ddf6efecfe2048ace))
+* **divider/types:** export divider interface ([e01d452](https://github.com/varletjs/varlet/commit/e01d452f13767c732fa39ca85b2f264d15de185a))
+* fix import path and progress style ([81d1651](https://github.com/varletjs/varlet/commit/81d1651ca2a036174c29e98d2aedeb963d17c31d))
+* **ui/divider:** fix dynamic description ([5a47460](https://github.com/varletjs/varlet/commit/5a474608096acedbe8120368d8a3e7c9ea27890c))
+* **ui/divider:** fix type declaration ([b8ff9ac](https://github.com/varletjs/varlet/commit/b8ff9ac452117e41964bda1d78d4b9a9c5d57a2f))
+* **ui/divider:** fix vertical divider ([1aee499](https://github.com/varletjs/varlet/commit/1aee499556d5ad80e28a9130ca40f9ec0401db4b))
+* **ui/divider:** remove unnecessary type conversion ([792a8aa](https://github.com/varletjs/varlet/commit/792a8aa8eacaa1f98e141fad5792eec2f57ccf55))
+* **ui/divider:** support passing string inset with unit to divider ([5cbd457](https://github.com/varletjs/varlet/commit/5cbd45743435c3e1fcd2b1dcbd0662b92ff4240b))
+* **ui/utils:** support vw vh ([b444ed0](https://github.com/varletjs/varlet/commit/b444ed0775fd2b2fea6f250b6f8698c92300b5d1))
+* **vscode-extension:** add appbar to siteMap ([9595981](https://github.com/varletjs/varlet/commit/9595981e33f0554ee78b60a980a5583180ef472a))
+
+
+### Features
+
+* **site:** add progress bar ([e4590ec](https://github.com/varletjs/varlet/commit/e4590ecee5043da051593672bc23073de77b414a))
+* **site:** add switch language for mobile ([60aff96](https://github.com/varletjs/varlet/commit/60aff9631a85633fb523b12757d36a2bf986adbd))
+* **ui/card:** add Card component ([90b0a14](https://github.com/varletjs/varlet/commit/90b0a145f0f27ed1d5ecd278a15cd96863a9731a))
+* **ui/divider:** add dashed divider ([9c6724e](https://github.com/varletjs/varlet/commit/9c6724ef4f2bb7bb6ecba432ed9070f1c7c716b2))
+* **ui/divider:** add divider component ([3a7ed64](https://github.com/varletjs/varlet/commit/3a7ed648b21329a15748558391f9de8729fd9e1e))
+
+
+### Performance Improvements
+
+* optimize progress bar ([0b349db](https://github.com/varletjs/varlet/commit/0b349dbfd02c20599a106dce2e0bcef7153cc1cd))
+
+
+
+# [1.6.0](https://github.com/varletjs/varlet/compare/v1.5.0...v1.6.0) (2021-06-02)
+
+
+### Bug Fixes
+
+* **root:** fix lerna.json ([ea32067](https://github.com/varletjs/varlet/commit/ea320675ef03f4f7700969a200bfa69451de8820))
+* **root:** fix lerna.json ([3597037](https://github.com/varletjs/varlet/commit/35970379d3eb4509420d011eb10863a143ecd9c4))
+
+
+### Features
+
+* **extension:** add varlet-code-extension package ([b276e06](https://github.com/varletjs/varlet/commit/b276e064e1cb410a17c5f51c5eae2de55e58e88c))
+
+
+
+# [1.5.0](https://github.com/varletjs/varlet/compare/v1.4.9...v1.5.0) (2021-06-02)
+
+
+### Bug Fixes
+
+* remove error classname ([675a8da](https://github.com/varletjs/varlet/commit/675a8da866811e38c2c04398a4b8a2b761ce3c80))
+* **snackbar:** modify option type ([b30e6b0](https://github.com/varletjs/varlet/commit/b30e6b082ce410270811fbbdcf137e6c364562a8))
+
+
+### Features
+
+* **ui/action-sheet:** add new component action-sheet, basic feature complete ([22f54dc](https://github.com/varletjs/varlet/commit/22f54dccd016eaee141802eaa5f5dff5b036aeab))
+
+
+
+## [1.4.9](https://github.com/varletjs/varlet/compare/v1.4.8...v1.4.9) (2021-05-31)
+
+
+
+## [1.4.8](https://github.com/varletjs/varlet/compare/v1.4.7...v1.4.8) (2021-05-31)
+
+
+
+## [1.4.7](https://github.com/varletjs/varlet/compare/v1.4.6...v1.4.7) (2021-05-31)
+
+
+### Bug Fixes
+
+* **cle/site/pc:**  Make the left menu ([2585504](https://github.com/varletjs/varlet/commit/258550493deffc79f32bd2a60c88e7055596c6ff))
+* **cli/config:**  repair header configuration ([a91cd25](https://github.com/varletjs/varlet/commit/a91cd258aed834b161f5e789b627d6cfd3595a94))
+* **cli/config/dev:**  Fixed the title ([fe54e48](https://github.com/varletjs/varlet/commit/fe54e486478247864ae8edf7507e6c2337d11512))
+* **cli/site/pc:**  remove unused import ([260358b](https://github.com/varletjs/varlet/commit/260358bc8d3c4d3bf5128eaf509d813c39bc6a19))
+* **cli/site/pc:**  remove unused import ([c61eb4c](https://github.com/varletjs/varlet/commit/c61eb4cc7f6d71f1dabc1ff85be4596a199ea5b0))
+* **cli/site/pc:**  repair where the var-cell ([dbb63f8](https://github.com/varletjs/varlet/commit/dbb63f84ece63e7f3a48a7c89bf0a8170822caa4))
+* **cli/site/pc:**  repair where the var-cell ([bf91f0e](https://github.com/varletjs/varlet/commit/bf91f0e3f256dfc5f282f4f6eca9ad2fc95630ad))
+* **cli/site/pc:** add browser title toggle both ([28c9745](https://github.com/varletjs/varlet/commit/28c97453752b96618ca8289cb4af5c4ceba0b25c))
+* **cli/site/pc:** remove unused import reactive ([07fdd24](https://github.com/varletjs/varlet/commit/07fdd241adf3c5cf1e8c532d7151aae01986c1dc))
+* **cli/site/pc:** remove unused import reactive ([14e1fa8](https://github.com/varletjs/varlet/commit/14e1fa89904ba8082eda8198e2b1b8843ff36311))
+* **date-picker:** fix autoupdate of snapshot ([9ce63b7](https://github.com/varletjs/varlet/commit/9ce63b7651231b95f0a65f446a3186cb2d0e72a4))
+* **home:** add headerLogo  description ([74fd8d4](https://github.com/varletjs/varlet/commit/74fd8d4693d54bdf7d50747ac9bcc88e4ce792e1))
+* **home:** add headerLogo  description ([022b5a0](https://github.com/varletjs/varlet/commit/022b5a08a4ba72df2995e89e52dac286fff124e9))
+* **home:** add locale ([e0b7155](https://github.com/varletjs/varlet/commit/e0b7155392fb44a01484860297c374282bb16669))
+* **home:** add locale ([7e6fac9](https://github.com/varletjs/varlet/commit/7e6fac94ba0e8cef4c1d0237b5e71ade8ee2978f))
+* **snackbar:** add defaultOption for snackbar ([7e05d9c](https://github.com/varletjs/varlet/commit/7e05d9ceae7e2a1c03535ea85625f600275e0b61))
+* **snackbar:** close autooff when the type prop is loading ([95f7d2a](https://github.com/varletjs/varlet/commit/95f7d2a130384acbc145f6edcecc6c2b9aec9b10))
+* **snackbar:** forbid click when type of snackbar is loading ([b324cfb](https://github.com/varletjs/varlet/commit/b324cfbcc02978d65e77860cabd2ca5e77b22175))
+* **ui/home:**  change varletConfig import path ([298d5ba](https://github.com/varletjs/varlet/commit/298d5bab395fc4a8d87035fa75c132b6c90fb3b1))
+* **ui/home:**  change varletConfig import url ([5346d3b](https://github.com/varletjs/varlet/commit/5346d3bff357c71b6da23736f9d5bb7e6b175fb6))
+* **ui/home:** change varletConfig import url ([73b9f84](https://github.com/varletjs/varlet/commit/73b9f841ce5aac64284381a12dbb14e98e721244))
+* **ui/tsconfig:**  add allowJs option ([c5bf05e](https://github.com/varletjs/varlet/commit/c5bf05ea04c802093acc95267f7c11aad8ed2e37))
+* **varlet.default.config:**  Now ([fea3daa](https://github.com/varletjs/varlet/commit/fea3daa6fc5610a0a567668549d8c92a36c6300d))
+* **varletconfig:**  Extract the public ([2fbc4b0](https://github.com/varletjs/varlet/commit/2fbc4b0d71d135d744ba635f306da6a44aa49449))
+
+
+
+## [1.4.6](https://github.com/varletjs/varlet/compare/v1.4.5...v1.4.6) (2021-05-25)
+
+
+### Bug Fixes
+
+* **ui/image:** fix image template types ([c923ee1](https://github.com/varletjs/varlet/commit/c923ee13ccdcf45abcc095787bed95fd5f1974da))
+
+
+
+## [1.4.5](https://github.com/varletjs/varlet/compare/v1.4.4...v1.4.5) (2021-05-21)
+
+
+### Bug Fixes
+
+* **ui/tabs:** fix bug of tabs scrolling fail in the safari ([3e96046](https://github.com/varletjs/varlet/commit/3e960460069c67a95945819fa238508b218342b1))
+* use ScrollTo method to replace back-top animation ([88b6577](https://github.com/varletjs/varlet/commit/88b65773a13eff1b1764a6751fc9d7109ef95e61))
+
+
+
+## [1.4.4](https://github.com/varletjs/varlet/compare/v1.4.3...v1.4.4) (2021-05-21)
+
+
+### Bug Fixes
+
+* **back-top:** replace scrollTop to scrollTo ([776803f](https://github.com/varletjs/varlet/commit/776803fe5df175f276d388be5b8be049962b018a))
+
+
+
+## [1.4.3](https://github.com/varletjs/varlet/compare/v1.4.2...v1.4.3) (2021-05-20)
+
+
+
+## [1.4.2](https://github.com/varletjs/varlet/compare/v1.4.1...v1.4.2) (2021-05-20)
+
+
+
+## [1.4.1](https://github.com/varletjs/varlet/compare/v1.4.0...v1.4.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* **back-top:** add window as default value of target ([f293a94](https://github.com/varletjs/varlet/commit/f293a94c82c6dca108158cc7348cbd4ba9ed7526))
+* **ui/uploader:** add disabled and readonly case to the handleChange method ([da82ae2](https://github.com/varletjs/varlet/commit/da82ae2cf2dab9a6801dbe695f2c65e8e4673aed))
+
+
+
+# [1.4.0](https://github.com/varletjs/varlet/compare/v1.3.5...v1.4.0) (2021-05-19)
+
+
+### Bug Fixes
+
+* **slider:** fix error method ([6e1774f](https://github.com/varletjs/varlet/commit/6e1774fa57f805027603b2b2c3ed5be08067ea91))
+* **snackbar:** add install method of snackbar component ([0b403cc](https://github.com/varletjs/varlet/commit/0b403cccfb53685488c45ecf86aedd58b96f1553))
+* **type:** fix error type of snackbar ([430e382](https://github.com/varletjs/varlet/commit/430e3828a68e595f049599231a36b379dfa81a37))
+* **types:** fix snackbar option type ([a04588e](https://github.com/varletjs/varlet/commit/a04588e7f1c181670681024ede8e038471185f1f))
+* **ui/button:** fix button block style to class ([433633c](https://github.com/varletjs/varlet/commit/433633cf82e1adccb542b69e04ad7a458884a313))
+
+
+### Features
+
+* 添加form组件单元测试 ([93420c1](https://github.com/varletjs/varlet/commit/93420c1d344e906d5a7f5ec7a91bc4ece82d40f5))
+
+
+
+## [1.3.5](https://github.com/varletjs/varlet/compare/v1.3.4...v1.3.5) (2021-05-14)
+
+
+### Bug Fixes
+
+* **ui/counter:** fix bug of counter no validation function exposed ([247b4c5](https://github.com/varletjs/varlet/commit/247b4c5e2b77104c532d4832b34e47831240d6b7))
+
+
+
+## [1.3.4](https://github.com/varletjs/varlet/compare/v1.3.3...v1.3.4) (2021-05-13)
+
+
+### Bug Fixes
+
+* **ui/select ui/radio:** fix bug of select click event repeat trigger, radio unit test complete ([21e6fcb](https://github.com/varletjs/varlet/commit/21e6fcbf9335358022080d0221ad57a76b00a1a2))
+* **ui/select:** fix bug of select blur event can't trigger ([b9918fc](https://github.com/varletjs/varlet/commit/b9918fcd08a6805408b18a7e0765213974bde235))
+
+
+
+## [1.3.3](https://github.com/varletjs/varlet/compare/v1.3.2...v1.3.3) (2021-05-11)
+
+
+### Bug Fixes
+
+* **ui/picker:** 修复picker onChange事件在组件初始化结束后 选择当前选项也会触发一次事件 ([3f6458d](https://github.com/varletjs/varlet/commit/3f6458da70ffcce581a4440b350b2fed1764d8b6))
+
+
+
+## [1.3.2](https://github.com/varletjs/varlet/compare/v1.3.1...v1.3.2) (2021-05-10)
+
+
+### Bug Fixes
+
+* **pull-refresh:** fix the bug of touchmove ([88aa3af](https://github.com/varletjs/varlet/commit/88aa3afc9d7e939e96e0ed00d572a63771fcc58d))
+* **ui/tabs:** fix indicator size error on window resize ([576caf1](https://github.com/varletjs/varlet/commit/576caf1d706deee98f503a47c1e25f62d6788dfd))
+
+
+
+## [1.3.1](https://github.com/varletjs/varlet/compare/v1.3.0...v1.3.1) (2021-05-08)
+
+
+### Bug Fixes
+
+* **ui/ripple:** fix ripple repeat call remove ripple task, ripple unit test complete ([9c6b3c1](https://github.com/varletjs/varlet/commit/9c6b3c1970679248494b9928e430df26aed2ae82))
+
+
+
+# [1.3.0](https://github.com/varletjs/varlet/compare/v1.2.3...v1.3.0) (2021-05-08)
+
+
+### Bug Fixes
+
+* fix typo ([ffc0ba8](https://github.com/varletjs/varlet/commit/ffc0ba85f1f15f8c919c411e81e41e5375500dc9))
+* **index-bar:** remove useless prop and dont trigger click after call scrollTo method ([bba5152](https://github.com/varletjs/varlet/commit/bba5152dd4db1bacb1f6c62b28b8705d3c504a3a))
+
+
+### Features
+
+* **index-bar:** add highlight-color prop ([b4d38f4](https://github.com/varletjs/varlet/commit/b4d38f41f21be4a73218b9076f69c8a1e0b94332))
+
+
+
+## [1.2.3](https://github.com/varletjs/varlet/compare/v1.2.2...v1.2.3) (2021-05-07)
+
+
+
+## [1.2.2](https://github.com/varletjs/varlet/compare/v1.2.1...v1.2.2) (2021-05-06)
+
+
+### Bug Fixes
+
+* **badge:** optimize code and hide icon when dot prop is true ([7246fd3](https://github.com/varletjs/varlet/commit/7246fd369e379437c29c6be5c77fdfca113f6799))
+* fix test example warning ([fb16f71](https://github.com/varletjs/varlet/commit/fb16f71f324920b6b40c7281d56062b28205d4e5))
+* **types:** vite build typescript error ([cd1a402](https://github.com/varletjs/varlet/commit/cd1a4028900ab91bc3aa0692d1f0653ea8f0bdd5))
+
+
+
+## [1.2.1](https://github.com/varletjs/varlet/compare/v1.2.0...v1.2.1) (2021-04-29)
+
+
+### Bug Fixes
+
+* **ui/input select:** 修复了input select的label居中问题 完成layout skeleton的单元测试 ([b9502f9](https://github.com/varletjs/varlet/commit/b9502f9052594398c12397798070589a86e5d879))
+
+
+
+# [1.2.0](https://github.com/varletjs/varlet/compare/v1.1.0...v1.2.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **cli/site:** 添加禁止站点强缓存meta标签 ([761b991](https://github.com/varletjs/varlet/commit/761b991dd4b95ee8a3ed543e9b41a1294e1bd944))
+
+
+### Features
+
+* **switch:** add activeValue prop and inactiveValue prop ([7e56ea7](https://github.com/varletjs/varlet/commit/7e56ea71d2a61b9263a132e4d441004040715c8c))
+
+
+
+# [1.1.0](https://github.com/varletjs/varlet/compare/v1.0.1...v1.1.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **ui/progress:** 优化progress文档, 重命名props show-active -> label, show-track -> track ([7d82141](https://github.com/varletjs/varlet/commit/7d82141aef288e03b580b6ffabc0844f8f889ba3))
+
+
+### Features
+
+* **ui/types:** uploader提供jsx,tsx类型支持 ([b156587](https://github.com/varletjs/varlet/commit/b15658715a3c64cada1c9be4d80c0ffc1df701fd))
+* **ui/types:** 完善row组件jsx,tsx类型推断 ([4630be3](https://github.com/varletjs/varlet/commit/4630be3dd3678d35e8f5e9d194de84c6043797dd))
+* **ui/types:** 提供jsx,tsx支持.完成以下组件button,checkbox,checkboxGroup,col,counter,dialog,form,icon,image,i ([8818998](https://github.com/varletjs/varlet/commit/8818998748945eea3acd88f88eff8d9387a9e86c))
+
+
+
+## [1.0.1](https://github.com/varletjs/varlet/compare/v1.0.0...v1.0.1) (2021-04-24)
+
+
+### Bug Fixes
+
+* **package/varlet-touch-emulator:** package resolve entry point ([7a846e9](https://github.com/varletjs/varlet/commit/7a846e9f8422619f80c9a1849e584b19aad87066))
+
+
+
+# [1.0.0](https://github.com/varletjs/varlet/compare/v0.13.3...v1.0.0) (2021-04-21)
+
+
+
+## [0.13.3](https://github.com/varletjs/varlet/compare/v0.13.2...v0.13.3) (2021-04-20)
+
+
+### Bug Fixes
+
+* **cli/site:** 修改mobile全局字体颜色 ([3155bf6](https://github.com/varletjs/varlet/commit/3155bf65b86dfb5ca0244eb9b2b57fa75870c69e))
+* **index-bar:** fix bug of scroll ([872bc14](https://github.com/varletjs/varlet/commit/872bc144c146293719a6f98483ed7d92a8dfc988))
+
+
+
+## [0.13.2](https://github.com/varletjs/varlet/compare/v0.13.1...v0.13.2) (2021-04-19)
+
+
+### Bug Fixes
+
+* **badge:** fix wrong classname ([11d90b5](https://github.com/varletjs/varlet/commit/11d90b5082d800ba9baab9837a243da2faba347e))
+* **ui/uploader:** 修改默认状态指示器的颜色 ([c259acd](https://github.com/varletjs/varlet/commit/c259acd73fff916a082f7985b9f53741b75e7e03))
+
+
+
+## [0.13.1](https://github.com/varletjs/varlet/compare/v0.13.0...v0.13.1) (2021-04-19)
+
+
+### Bug Fixes
+
+* **site:** change logo and back url of mobile ([2709c6c](https://github.com/varletjs/varlet/commit/2709c6ca8d084e0360d9014bcadecb074ae2b453))
+* **site:** fix the bug of mouseenter trigger ([d2e4b6d](https://github.com/varletjs/varlet/commit/d2e4b6d5a98f04986a05296a0c272d2e6706de8d))
+* **ui/counter ui/input ui/select:** 修复counter移动端长按touchend失效的问题，修复input select颜色显示的问题 ([a0e6f6a](https://github.com/varletjs/varlet/commit/a0e6f6af9889b50aa2a3ea19d6bb9b0ba28da386))
+* **ui/input ui/select:** 修改input select样式 ([56cc7bf](https://github.com/varletjs/varlet/commit/56cc7bfb62fd60475a612872a4049a9308dcddcc))
+* **ui/input:** 修复验证错误时光标颜色问题 ([03fc188](https://github.com/varletjs/varlet/commit/03fc188bb93c714862cc5531e26a2c23db58ca5e))
+
+
+
+# [0.13.0](https://github.com/varletjs/varlet/compare/v0.12.2...v0.13.0) (2021-04-17)
+
+
+### Bug Fixes
+
+* **collapse:** fix wrong style ([6e778f4](https://github.com/varletjs/varlet/commit/6e778f47bf470be29c7e0bf3649b9b13e2f20ca5))
+* fix some wrong style and docs error ([71cd483](https://github.com/varletjs/varlet/commit/71cd4836c2fa6c773ef999000b41bb4c4905451d))
+* fix wrong z-index of snackbar and prevent touchmove event of pull-refresh example ([3be0b22](https://github.com/varletjs/varlet/commit/3be0b226291d87bba5b660d4e9ea6e2b5f3c3ca9))
+* **index-bar:** fix mount error and remove active prop ([0dcb98f](https://github.com/varletjs/varlet/commit/0dcb98fbe9284c8242db8b384e8047651b4913eb))
+* **rate:** add validator and import component style ([9b76d36](https://github.com/varletjs/varlet/commit/9b76d361399119431c910607592a44df837b632e))
+* **rate:** fix error data ([e135560](https://github.com/varletjs/varlet/commit/e135560b55b30ce9a6363cfb019cd1f961e75745))
+* **snackbar:** modify the way of transition ([eb8aada](https://github.com/varletjs/varlet/commit/eb8aadaa493b9af4b993f012d8b9874b2d6d2906))
+* **ui/chip:** 修复chip样式引入问题 ([1e85fa4](https://github.com/varletjs/varlet/commit/1e85fa442e47de81021c782b4c286e4fd1f737c3))
+
+
+### Features
+
+* **cli/site markdown-loader/:** 修改文档整体风格 ([288a1f8](https://github.com/varletjs/varlet/commit/288a1f8e5a6e81e21accd1b2f18082ac2ee4b74e))
+* **cli/site:** 修改手机样式 自适应高度 ([37029e2](https://github.com/varletjs/varlet/commit/37029e2a76fbf6a2995fc4e634c81defe0633fc3))
+
+
+
+## [0.12.2](https://github.com/varletjs/varlet/compare/v0.12.1...v0.12.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复checkboxGroup steps step类型声明问题 ([706632c](https://github.com/varletjs/varlet/commit/706632ce69a04595298ae60b9024882158fdb913))
+
+
+
+## [0.12.1](https://github.com/varletjs/varlet/compare/v0.12.0...v0.12.1) (2021-04-14)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复dialog picker类型声明 ([53090e0](https://github.com/varletjs/varlet/commit/53090e063eaf1f61a80416f9a4fec5fb5aa99f1b))
+
+
+
+# [0.12.0](https://github.com/varletjs/varlet/compare/v0.11.4...v0.12.0) (2021-04-14)
+
+
+### Features
+
+* **snackbar:** add types ([cdd48dc](https://github.com/varletjs/varlet/commit/cdd48dcc8d9cbc4fdb1b820d57e638d5a68878f2))
+
+
+
+## [0.11.4](https://github.com/varletjs/varlet/compare/v0.11.3...v0.11.4) (2021-04-11)
+
+
+### Bug Fixes
+
+* **icon/lib:** 增加base64构建模式 ([ae682cc](https://github.com/varletjs/varlet/commit/ae682cc632465642a08fe003ce44b70c9b9e30b6))
+* **pull-refresh:** update modelValue when loading ([b6f892e](https://github.com/varletjs/varlet/commit/b6f892e2f9096dcee84bd556e8d0b20aaaaeac84))
+* **rate:** remove useless code ([f1a4900](https://github.com/varletjs/varlet/commit/f1a4900e1bcdee096f9b0bb6b45b1b9ed1e3e267))
+* **ui/docs:** 完善基本介绍中文文档 ([e92111d](https://github.com/varletjs/varlet/commit/e92111d5d628cecb2da6d3101f06c5a438e7c049))
+
+
+
+## [0.11.3](https://github.com/varletjs/varlet/compare/v0.11.2...v0.11.3) (2021-04-09)
+
+
+### Bug Fixes
+
+* remove useless code ([7215df0](https://github.com/varletjs/varlet/commit/7215df0ab2374f9108f0642ab8211b5b518e564d))
+* remove useless code and import cell component ([090da6f](https://github.com/varletjs/varlet/commit/090da6f23b8cb9e8ab31334c617ffcd30a6c9989))
+
+
+
+## [0.11.2](https://github.com/varletjs/varlet/compare/v0.11.1...v0.11.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* **icon/config:** 修改config url ([e063fbf](https://github.com/varletjs/varlet/commit/e063fbfa1c4f75932e68c82a7e01c4a30ccb71b4))
+
+
+
+## [0.11.1](https://github.com/varletjs/varlet/compare/v0.11.0...v0.11.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **date-picker:** check value ([d57b163](https://github.com/varletjs/varlet/commit/d57b163138d1c3ec3999c4c4c5c997bbf0a662f3))
+* **icon/config:** 修改打包的icon css url ([23b87b7](https://github.com/varletjs/varlet/commit/23b87b73737ed7da7f560ff98d610fbcc03c7d9a))
+* **time-picker:** wrong style ([4dd6d49](https://github.com/varletjs/varlet/commit/4dd6d493d6ead6e034aa13f84a3409192e147569))
+
+
+
+# [0.11.0](https://github.com/varletjs/varlet/compare/v0.10.7...v0.11.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/locale:** 修复英文语言包字段名错误的问题 ([e26e24d](https://github.com/varletjs/varlet/commit/e26e24d9f806dbc78150d4a294fd6ed2af63f0f6))
+
+
+### Features
+
+* **site:** add Baidu statistics ([db2879b](https://github.com/varletjs/varlet/commit/db2879b4ee92fafec54e0e5e3d1dca3a78de4b20))
+
+
+
+## [0.10.7](https://github.com/varletjs/varlet/compare/v0.10.6...v0.10.7) (2021-04-07)
+
+
+### Bug Fixes
+
+* **cli/compiler:** 编译时创建less.js cover babel-import-plugin ([3b75185](https://github.com/varletjs/varlet/commit/3b75185a6e3b25d27da7b95f0778cf70c12268f7))
+
+
+
+## [0.10.6](https://github.com/varletjs/varlet/compare/v0.10.5...v0.10.6) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/locale:** 将自定义的语言包名加入语言包内 ([5544b30](https://github.com/varletjs/varlet/commit/5544b30a2725a35c11034f49e524dbd567155af6))
+
+
+
+## [0.10.5](https://github.com/varletjs/varlet/compare/v0.10.4...v0.10.5) (2021-04-07)
+
+
+### Bug Fixes
+
+* **ui/types:** 修复Locale类型声明 ([3e2f9f1](https://github.com/varletjs/varlet/commit/3e2f9f19cf5f9a8c8fe9133db5c1d18550856a9f))
+
+
+
+## [0.10.4](https://github.com/varletjs/varlet/compare/v0.10.3...v0.10.4) (2021-04-07)
+
+
+
+## [0.10.3](https://github.com/varletjs/varlet/compare/v0.10.2...v0.10.3) (2021-04-07)
+
+
+### Bug Fixes
+
+* fix the bug of invalid style in build ([56c85f0](https://github.com/varletjs/varlet/commit/56c85f06c911379384918faeeb9d5377f2297632))
+* **ui/*:** 解决组件依赖css优先级问题 优化所有组件文档排版 ([3791438](https://github.com/varletjs/varlet/commit/3791438b9d77e381488047a0a4d74f67f4526c59))
+* **ui/docs:** 完善快速开始，按需引入文档 ([0cd23c5](https://github.com/varletjs/varlet/commit/0cd23c59e2dcb9394cbdb579ed1c2754bab2426d))
+
+
+
+## [0.10.2](https://github.com/varletjs/varlet/compare/v0.10.1...v0.10.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/dialog:** 修复类型声明 ([29639b8](https://github.com/varletjs/varlet/commit/29639b86c7edf7b93169f2ac8eec36febc9d2189))
+
+
+
+## [0.10.1](https://github.com/varletjs/varlet/compare/v0.10.0...v0.10.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 解决组件依赖组件less路径错误问题 ([a081d67](https://github.com/varletjs/varlet/commit/a081d67c8cb7e388c1f5a10a2c3078d9e7363a8a))
+
+
+
+# [0.10.0](https://github.com/varletjs/varlet/compare/v0.9.6...v0.10.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 解决组件依赖组件时 被依赖组件样式没有加载的问题 ([b2b18ae](https://github.com/varletjs/varlet/commit/b2b18aed2d3783dbb82904a7d31389f866825fb4))
+
+
+### Features
+
+* **varlet-ui:** write rate to form ([4a64a7e](https://github.com/varletjs/varlet/commit/4a64a7e93f9ecf58f470c2a1bccb34cec06da189))
+
+
+
+## [0.9.6](https://github.com/varletjs/varlet/compare/v0.9.5...v0.9.6) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/types:** 修改函数式组件类型声明 ([0309fdc](https://github.com/varletjs/varlet/commit/0309fdc180e43bdd8788214ffff68637b7450faa))
+
+
+
+## [0.9.5](https://github.com/varletjs/varlet/compare/v0.9.4...v0.9.5) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/package.json:** 增加@babel/runtime依赖 ([d6948b8](https://github.com/varletjs/varlet/commit/d6948b865fcdf61cc7b79bd50765f3c4b3abccf7))
+
+
+
+## [0.9.4](https://github.com/varletjs/varlet/compare/v0.9.3...v0.9.4) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/collapse:** 重命名组件名 ([c418cc0](https://github.com/varletjs/varlet/commit/c418cc055129197c632585c4bacfb6f842bd83cc))
+
+
+
+## [0.9.3](https://github.com/varletjs/varlet/compare/v0.9.2...v0.9.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/locale:** 修复locale导出异常 ([c5373af](https://github.com/varletjs/varlet/commit/c5373af51caaabc7e8e3889c76264e610a7ff601))
+
+
+
+## [0.9.2](https://github.com/varletjs/varlet/compare/v0.9.1...v0.9.2) (2021-04-06)
+
+
+### Bug Fixes
+
+* **ui/*:** 所有组件阻止ios默认的点击高亮 ([78cce5f](https://github.com/varletjs/varlet/commit/78cce5f93ff4a039272e8c825b0ed78f324b6fe7))
+* **ui/lazy:** 修复install报错 ([187b822](https://github.com/varletjs/varlet/commit/187b8221d186f64eb990b829e96d46e4ae55330a))
+
+
+
+## [0.9.1](https://github.com/varletjs/varlet/compare/v0.9.0...v0.9.1) (2021-04-06)
+
+
+### Bug Fixes
+
+* **cli/site:** 修改生成umd文件名和库的全局变量名称 ([ac39eb0](https://github.com/varletjs/varlet/commit/ac39eb0bdee2e3767ec928a119af5f284d7e7649))
+
+
+
+# [0.9.0](https://github.com/varletjs/varlet/compare/v0.8.0...v0.9.0) (2021-04-06)
+
+
+### Bug Fixes
+
+* add boolean check of toNumber method ([f5c5193](https://github.com/varletjs/varlet/commit/f5c5193866a07938fe14ebf0144f6f6e84b3e47c))
+* **back-top:** modify some errors ([fbde4f2](https://github.com/varletjs/varlet/commit/fbde4f21f094e2e8add2df0798c562a408a5cf87))
+* **cell:** change attr container ([a86a370](https://github.com/varletjs/varlet/commit/a86a370b1cbb644d7f69f37d3f960faf5fa1f0e5))
+* **cli, ui:** 重构了 mobile和组件库的i18n设计 ([bf6c870](https://github.com/varletjs/varlet/commit/bf6c870a82c4d309f10ae555b48a13d1810e66fa))
+* **cli,ui:** icon 文档和重构 ([84fac70](https://github.com/varletjs/varlet/commit/84fac70fc627c9e15620000cf34fac69ce6da628))
+* **cli,ui:** 修改pc站点布局, 修改menu left获取问题 ([87d6041](https://github.com/varletjs/varlet/commit/87d6041aba6e579973da67a2d63c144b4d4aa95d))
+* **cli,ui:** 完成组件库 pc文档 mobile文档的i18n设计 ([cbcd297](https://github.com/varletjs/varlet/commit/cbcd2978731f3b7f8850da702beb744fe8e77831))
+* **cli/site:** 优化路由联动 ([d7bbef3](https://github.com/varletjs/varlet/commit/d7bbef370d2feb1c6298eb29b942dbbe241f7dbe))
+* **cli/site:** 修复语言不同步的问题 ([3271d06](https://github.com/varletjs/varlet/commit/3271d06e37faa73e98a68b5986433d27d8be591f))
+* **cli/site:** 修改手机缩放比例 ([777a38c](https://github.com/varletjs/varlet/commit/777a38c46268cf5f394d467eddb149faddc63997))
+* **cli:** work in progress ([ed362c7](https://github.com/varletjs/varlet/commit/ed362c785ab6f7ab52c61c8ccb19a4eec0b1f217))
+* **cli:** 优化compileRoutes正则 ([b9223c2](https://github.com/varletjs/varlet/commit/b9223c2e63c4f767b319b24c159a4a949a8a4204))
+* **cli:** 优化compileRoutes的正则匹配 ([2a500dc](https://github.com/varletjs/varlet/commit/2a500dce3e22f5c725b9660c8ec01180717fc363))
+* **cli:** 优化site routes ([8f11570](https://github.com/varletjs/varlet/commit/8f1157057a73fe4dbbcd4b818da3d8c661c7a293))
+* **cli:** 修改了文档站点的样式 ([ac28f9f](https://github.com/varletjs/varlet/commit/ac28f9ff6094ee198bca3b2f1d46bc9548de378e))
+* **index-bar:** modify scroll container ([8c70cb8](https://github.com/varletjs/varlet/commit/8c70cb8bade2c27772d3a541b6291c18acc2da3a))
+* **pull-refresh:** fix error classname ([fedeff0](https://github.com/varletjs/varlet/commit/fedeff03c87656e3713f32f0f30e85a3bfd02008))
+* remove unnecessary code and add example ([0505305](https://github.com/varletjs/varlet/commit/0505305540ff748beaeb1185d3f07bcc1adfc736))
+* **root/scripts:** 修改bootstrap命令执行顺序 解决compile失败的问题 ([4022fec](https://github.com/varletjs/varlet/commit/4022fec95a613a1696714837e327de0218a940ce))
+* **root:** bootstrap脚本增加ui的compile操作 ([f6eaa11](https://github.com/varletjs/varlet/commit/f6eaa119b83b3f607090a489b7f89e8f5a56a1ca))
+* **site:** return to the previous step and display the left active menu in the visual box ([5ed5313](https://github.com/varletjs/varlet/commit/5ed53133de4763dbf360d192324d35674a4e5c52))
+* **site:** solve the problem of incorrect display of mobile phone ([2a549e8](https://github.com/varletjs/varlet/commit/2a549e8eb134e94cc9196908d59b488b059ac70e))
+* **slider:** make sure maxWidth exist ([052bb70](https://github.com/varletjs/varlet/commit/052bb70c58c738529610a3ae8caa251d33a85a47))
+* **slider:** modify z-index when draged ([7433719](https://github.com/varletjs/varlet/commit/7433719c5f749eccbc50b9e015049f025623ab21))
+* **time-picker:** duplicate calls update ([2605384](https://github.com/varletjs/varlet/commit/26053841c2e120881847903f83e9f945e918090a))
+* **time-picker:** fix bug of irremovability ([b359852](https://github.com/varletjs/varlet/commit/b3598522a85a684312e07a9168dfdec5c01be034))
+* **time-picker:** fix some bugs ([96d45e3](https://github.com/varletjs/varlet/commit/96d45e39c3e7fb5f8a28d3fe24a52ecc03217dce))
+* **time-picker:** fix the bug of touchmove and wrong handleStyle ([7383396](https://github.com/varletjs/varlet/commit/7383396ed318e9e3be4fc3e703f4333d50a442a1))
+* **ui/popup:** 重写example ([dd4efa8](https://github.com/varletjs/varlet/commit/dd4efa8cfdca28e2ac39a82ad02d2123b34a2518))
+* **ui/row col:** 修复offset偏移问题 ([ebd3986](https://github.com/varletjs/varlet/commit/ebd39863f771e928390d71108eec360a24df935d))
+* **ui/select,option:** 修复了v-model失效的问题 ([bf72234](https://github.com/varletjs/varlet/commit/bf72234847446816e2a7075f89a6b1f8f8b1227f))
+* **ui/skeleton,button,ripple:** 完成skeleton button ripple的文档编写 ([846ffe9](https://github.com/varletjs/varlet/commit/846ffe990b8c755d033843bea3c30ccb8da7e491))
+* **ui:** counter原型完成 ([d7f5a52](https://github.com/varletjs/varlet/commit/d7f5a526ff44cc49323f498836d192a75a08745c))
+* **ui:** menu重构完成 文档编写完成 ([6bd43ca](https://github.com/varletjs/varlet/commit/6bd43cad39129c82ad3bbafdcda8165dc11dc7be))
+* **ui:** 修复select 在multiple chips模式下 无法关闭chip的bug ([8015120](https://github.com/varletjs/varlet/commit/80151200c30ab3dc70289c78d2ca6687916f7836))
+* **ui:** 修订文档 ([9827ca8](https://github.com/varletjs/varlet/commit/9827ca884333f8f3bfd8024106e65cbcead70ac8))
+* **ui:** 增加parse时间格式的工具函数 ([5851cbb](https://github.com/varletjs/varlet/commit/5851cbb02e9ff8455f07db42a0f47b61110f2fa4))
+* **ui:** 移除menu缩放动画 ([1566535](https://github.com/varletjs/varlet/commit/1566535a3ceb97dcb9f5fc3efdc258252e547833))
+* **ui:** 重构dialog 完善文档 ([0ba2eb1](https://github.com/varletjs/varlet/commit/0ba2eb11081babfc4d48539b6661de3610c1fe77))
+* **ui:** 重构menu 重写menu example ([edacc76](https://github.com/varletjs/varlet/commit/edacc762427eaf1c77614209f636f18bde5b33b8))
+* **varlet-icons:** add icon ([6d5f8f2](https://github.com/varletjs/varlet/commit/6d5f8f222d5e7b7a279aa2b0c0e797b03dbcea35))
+* **varlet-ui:** error report in modification ([f8b9020](https://github.com/varletjs/varlet/commit/f8b90205837ea059df2f626f4fe9fe2c25e994a7))
+* **varlet-ui:** modify phone size ([9e92861](https://github.com/varletjs/varlet/commit/9e92861d4fbfd562edbdaf67dd14154e6092b01e))
+
+
+### Features
+
+* add declaration files ([a20cddb](https://github.com/varletjs/varlet/commit/a20cddb6fe173493f28f26093578cba5fb21e79b))
+* add declaration files ([6eeb1a3](https://github.com/varletjs/varlet/commit/6eeb1a343b3c8bea5ced8361b454fb6e45cb7de7))
+* add less variable of time-picker, date-picker ([28f6131](https://github.com/varletjs/varlet/commit/28f6131924c13c38fbfe2b97ded4254b51735247))
+* add less variables of cell, back-top, pull-refresh, progress, switch, slider, index-bar ([ef9750d](https://github.com/varletjs/varlet/commit/ef9750d717a37b6b7c9ca9476a39561775c37dfd))
+* add less variables of step, collapse and define cubic func ([2a8be2d](https://github.com/varletjs/varlet/commit/2a8be2d822ff137f1dd49661f76f63c4ecd68256))
+* countdown ([f3fd177](https://github.com/varletjs/varlet/commit/f3fd17770fe367cdfeb41023928f90dc27a3983d))
+* **countdown:** i18n and refactor the way of formatting ([7be2461](https://github.com/varletjs/varlet/commit/7be2461b6692e285c4975fd1880c145d35907e5c))
+* **loading:** i18n ([9c2240d](https://github.com/varletjs/varlet/commit/9c2240d419c1c1c63379eef579426560b2be2d45))
+* **slider:** docs and i18n ([3aab17b](https://github.com/varletjs/varlet/commit/3aab17b3e2163477944159d515e13be68b799dcf))
+* **snackbar:** call the snackbar function directly ([7f486c8](https://github.com/varletjs/varlet/commit/7f486c8ed622346e9cd9bec0d8c57f36f2a077ef))
+* steps ([4a70c31](https://github.com/varletjs/varlet/commit/4a70c31c694ee5c2365b5038df72ca5831ca31df))
+* **ui/row ui/col:** 新增row col组件 ([8b0ee5f](https://github.com/varletjs/varlet/commit/8b0ee5fde3d5db33f69c9ad532e660b4293bdad5))
+
+
+### Reverts
+
+* **cell:** revert attr position ([01b690f](https://github.com/varletjs/varlet/commit/01b690f21eb2823e9ec52f81ac69c35f3fb642f9))
+* press wrong ([bfe9ee8](https://github.com/varletjs/varlet/commit/bfe9ee8ae7d618c7baec0ddf2c120c6b8e2eae93))
+
+
+
+# [0.8.0](https://github.com/varletjs/varlet/compare/v0.7.0...v0.8.0) (2021-02-26)
+
+
+### Bug Fixes
+
+* add icon and modify icon style ([3080c8c](https://github.com/varletjs/varlet/commit/3080c8c8878d5606e7ee310c81caadc020092231))
+* add icon for snackbar and fix snackbar clear function ([56f322e](https://github.com/varletjs/varlet/commit/56f322e7be2d594f8e8ffdcce7a3d735edb3d191))
+* add removed code ([8c9ba91](https://github.com/varletjs/varlet/commit/8c9ba9112b42dd301a4387279f9017a7c78b5c5f))
+* add sticky prop ([6ae504f](https://github.com/varletjs/varlet/commit/6ae504fc7f1e31c1c9bf4637bbe40f22d5ee0396))
+* add url-loader and build icons ([c4c219a](https://github.com/varletjs/varlet/commit/c4c219a246722cde4d4f60f58b45b223977eba1f))
+* **all package.json:** 修订版本 ([c6fc097](https://github.com/varletjs/varlet/commit/c6fc09740cda2fb121485e41d01caab082633e2e))
+* **cli ui/tabs ui/tab:** cli修订依赖版本 tabs tab通信完成 切换效果完成 ([44c9495](https://github.com/varletjs/varlet/commit/44c9495469b99d49343f0a20ecf30d406d76e844))
+* **cli,ui:** 支持组件库,文档i18n ([b76e664](https://github.com/varletjs/varlet/commit/b76e66474ae48fffe0722650c4d03499b127aab5))
+* **cli:** webpack4.x -> 5.x ([967b63a](https://github.com/varletjs/varlet/commit/967b63a7294058e91dabe0eb27e132c0a3a33baf))
+* **cli:** 修复windows template highlight 编译异常 ([babb72d](https://github.com/varletjs/varlet/commit/babb72d8169d8918bdd09c289227a60b3659f415))
+* **cli:** 增加模版高亮 默认值描述 ([847ae41](https://github.com/varletjs/varlet/commit/847ae4173634cac959783d4d27c4d4a3b4a6908b))
+* **date-picker:** modify varible name ([e282a91](https://github.com/varletjs/varlet/commit/e282a91df0bf5bbf9ea653bd18d961447e7d4e0f))
+* **date-picker:** remove ts error of dayjs ([68e9ff5](https://github.com/varletjs/varlet/commit/68e9ff52951bb80f25dccced98072387e6491fde))
+* **expansion-panels:** add matchIndex and watch modelValue to update ([cdd7584](https://github.com/varletjs/varlet/commit/cdd7584a340a18241e9995391973657101305d07))
+* fix snackbar bugs ([0f05496](https://github.com/varletjs/varlet/commit/0f054960a95cbe992d39bdd87f3571bdf5f706e6))
+* **merge:** merge code ([c4af410](https://github.com/varletjs/varlet/commit/c4af4102e8435663c9fafd3c0f2f3ae0678ce968))
+* modify componentName ([206a3c0](https://github.com/varletjs/varlet/commit/206a3c04938cd3f21c7f495989e9c8bb7aa118b0))
+* modify execution timing ([d3c66bb](https://github.com/varletjs/varlet/commit/d3c66bb68fc12988dbfd22b58f6c64ac6f9818e3))
+* modify name of import loading ([0b9d7e4](https://github.com/varletjs/varlet/commit/0b9d7e48187eb7a7c49d0d6eac708f30070b5e49))
+* modify some style ([ee7be71](https://github.com/varletjs/varlet/commit/ee7be710ad1ff0b3d8b9fe349726b5c271e2d21d))
+* modify style ([72d28b3](https://github.com/varletjs/varlet/commit/72d28b35ecbd1b8bfa2d1a2406e566e1b346d1ea))
+* modify ts to js of example ([d6d269f](https://github.com/varletjs/varlet/commit/d6d269f4d159c3cb6bea7605424ab8baf52db6a5))
+* modify type ([b9dd910](https://github.com/varletjs/varlet/commit/b9dd910a3845acbd449d3d93190436273ba25070))
+* **progress:** modify default track color ([a853bb1](https://github.com/varletjs/varlet/commit/a853bb1d2dd588814c1622a878cdbeec9f1d3098))
+* **pull-refresh:** modify default style ([9b78580](https://github.com/varletjs/varlet/commit/9b78580080d0bfeea2bbe3d2398290bd5b3e98b5))
+* rewrite emulator ([9215a83](https://github.com/varletjs/varlet/commit/9215a8343bf9d8cd6fd2c271358f53dd6d98a563))
+* **root ui/utils:** 创建了项目依赖统一安装脚本 优化了父子组件通信 ([a6bba67](https://github.com/varletjs/varlet/commit/a6bba67506fc0354ff7ecc12dde34df19223e016))
+* **root:** 增加less文件的prettier格式化规则 合并代码 ([e74af2c](https://github.com/varletjs/varlet/commit/e74af2cd7fc0714a1aa4e7d80a7e2d6bdefaf587))
+* **root:** 移除了ui/coverage,hightlight的版本控制 ([0c5893d](https://github.com/varletjs/varlet/commit/0c5893d9f04fe35e105167a31540c9d1408ec596))
+* **root:** 移除单元测试统计的stylelint ([8b86ee3](https://github.com/varletjs/varlet/commit/8b86ee303ede7f0070829f6de53c188467194bdb))
+* **scripts/bootstrap:** 修复命令 兼容macos ([32f61b2](https://github.com/varletjs/varlet/commit/32f61b2352d64aafae19694da380614cc314e8e5))
+* **snackbar:** fix zIndex and loading ([aaf2459](https://github.com/varletjs/varlet/commit/aaf245907ab331cbeb4c2dba3783e233745a88f6))
+* **snackbar:** modify switch mode of icon ([d8c943a](https://github.com/varletjs/varlet/commit/d8c943a9a7755ddddb716856466ede707b096fdc))
+* **ui/dialog picker:** 优化close方法 ([5b426ab](https://github.com/varletjs/varlet/commit/5b426abdbd2cb9fee62dd88842a865b61498f263))
+* **ui/form, checkbox-group checkbox select input:** 抽离了form-details useValidation ([53f9cde](https://github.com/varletjs/varlet/commit/53f9cde793fc75ee8170baed6deb63bba25e16be))
+* **ui/icon ui/image ui/lazy:** 增加lazy的处理状态 icon原型完成 增加image的load error监听 ([661b111](https://github.com/varletjs/varlet/commit/661b111d75061d434d480256b6977908a6dc8ca2))
+* **ui/icon:** icon name支持图片地址 ([a5bcb49](https://github.com/varletjs/varlet/commit/a5bcb49d51c7acebf2fe4f515215cc1376fc66f4))
+* **ui/icon:** icon name支持图片地址 ([0884dd7](https://github.com/varletjs/varlet/commit/0884dd7f5bf59fc8b72f363a6e42e9ac23881822))
+* **ui/icon:** 增加复制icon功能 ([5282655](https://github.com/varletjs/varlet/commit/52826554b46d7121a1209a471be9e6242c8c1167))
+* **ui/input:** input 原型完成 ([d945477](https://github.com/varletjs/varlet/commit/d945477086414fe6a1fb9a24c811e0ac6f8df264))
+* **ui/input:** input 默认trigger方式修改为 onInput onClear ([bbaed93](https://github.com/varletjs/varlet/commit/bbaed93f93bdea3fc938afc43517c8af4c79a9a7))
+* **ui/input:** input增加异步校验功能 ([da0c5f0](https://github.com/varletjs/varlet/commit/da0c5f0feb40501165369e3f51023a56f56aacb4))
+* **ui/input:** 修复line在error状态下没变红色的BUG ([7f8298d](https://github.com/varletjs/varlet/commit/7f8298d2e9c5ea77d81602bced2e2789bfec5d85))
+* **ui/list:** list原型完成 ([669590e](https://github.com/varletjs/varlet/commit/669590e460c82f457a73594a518e02c05a1138eb))
+* **ui/picker dialog:** 优化单例模式流程 ([0c78a72](https://github.com/varletjs/varlet/commit/0c78a72f7d3190a001cad49da71064dd2c4a9862))
+* **ui/picker, dialog:** 优化单例流程 ([4ca25a2](https://github.com/varletjs/varlet/commit/4ca25a2385667670267e400cddfd560191ec4670))
+* **ui/picker,dialog:** 修改成统一的单例模式 增加close方法 ([095b346](https://github.com/varletjs/varlet/commit/095b346d4ae314ac0e6db50c02baaa06f008a9c8))
+* **ui/picker,popup,dialog:** picker命令式原型完成 ([6c12f71](https://github.com/varletjs/varlet/commit/6c12f71834b2fdccc0b0733917151facb2ebca01))
+* **ui/picker:** 优化picker api ([42ee8bf](https://github.com/varletjs/varlet/commit/42ee8bf7254b53bd362e633472c04dfaed1cdee5))
+* **ui/picker:** 优化代码 ([10f27b7](https://github.com/varletjs/varlet/commit/10f27b794a54cdee20fcb0577de6c781803fe99c))
+* **ui/picker:** 创建工具栏 ([2ed6e8a](https://github.com/varletjs/varlet/commit/2ed6e8a0ced451aa695012bb39a2a2b791633fe9))
+* **ui/picker:** 多列picker原型完成 ([e41f497](https://github.com/varletjs/varlet/commit/e41f497861647871b5a5d072d4cee4dcf471d050))
+* **ui/picker:** 完成了多列模式的基本功能 ([882c014](https://github.com/varletjs/varlet/commit/882c014328fd992e3b7ca1d624123719595c7cb8))
+* **ui/picker:** 级连模式完成 ([dcd55b9](https://github.com/varletjs/varlet/commit/dcd55b9076337db5b09393d482cdf28f47159b76))
+* **ui/picker:** 设计了基本的样式和基本dom结构 完成了基本的滚动 ([9d9f1b9](https://github.com/varletjs/varlet/commit/9d9f1b93f80f0c8e33819da32c0f6b49984d6ca9))
+* **ui/ripple:** 优化了ripple的动画 ([f219a14](https://github.com/varletjs/varlet/commit/f219a144b53140342460ef9e75eb5eab2020a4fd))
+* **ui/ripple:** 水波纹会自行设置容器的 overflow position zIndex 并在波纹结束时进行还原 ([a112796](https://github.com/varletjs/varlet/commit/a112796ec48c5bab48e918843b3336606a8d8152))
+* **ui/select utils/component:** select option组件原型完成 增加了inject前的provide key判断 ([7f7795a](https://github.com/varletjs/varlet/commit/7f7795a09ea5ee53c4821aff6cdfe67675aa9e2c))
+* **ui/sticky:** sticky原型完成 ([8acff00](https://github.com/varletjs/varlet/commit/8acff00e2def9c062d2e767cecd320939bf3cfdd))
+* **ui/sticky:** 修复number类型offsetTop失效的bug ([e7ac6bd](https://github.com/varletjs/varlet/commit/e7ac6bd0df0f6c0ff189b1f96a221d3ff9353043))
+* **ui/sticky:** 增加scroll事件监听 ([19e1447](https://github.com/varletjs/varlet/commit/19e1447055a4f3e479435a61d9593e573275068e))
+* **ui/sticky:** 粘性默认使用css的sticky属性进行帧数提升 不支持的浏览器降级成fixed模式 ([f43bdd3](https://github.com/varletjs/varlet/commit/f43bdd31eb2402560d36040e3f481bc524851242))
+* **ui/swipe list:** 优化swipe list ([9439763](https://github.com/varletjs/varlet/commit/9439763b798ff929be905c7f05b71167939c3025))
+* **ui/swipe, swipe-item:** 原型完成 ([9e7a45b](https://github.com/varletjs/varlet/commit/9e7a45b04eab9086fc2bb7c8c26f2c777ff12c25))
+* **ui/swipe:** 修复了touching状态下autoplay没禁止的bug ([40fcb2e](https://github.com/varletjs/varlet/commit/40fcb2e2e5b7690605a0f6c47e81c9d4444be695))
+* **ui/swipe:** 增加resize方法 ([a453b66](https://github.com/varletjs/varlet/commit/a453b66003ed60478e2f94d0f3ab8b8488031392))
+* **ui/tabs tab tabs-items tab-item:** 优化了父子之间传值 增加resize方法 ([771b156](https://github.com/varletjs/varlet/commit/771b15699c98ffb6e5ecfcb2a777b04fcf0118a7))
+* **ui/tabs ui/tabs-items:** 优化视图切换 增加tabs垂直布局支持 ([1f032ae](https://github.com/varletjs/varlet/commit/1f032ae6f084ff8b60c239e2af2b6315b3b864b7))
+* **ui/tabs ui/tab:** tabs tab原型完成 ([01d6330](https://github.com/varletjs/varlet/commit/01d633031a56f4d593a85613a680ed244f49fb2c))
+* **ui/utils ui/tabs tab tabs-items tab-item:** 优化组件通信 ([487d751](https://github.com/varletjs/varlet/commit/487d7516862042f2abee7ea314a30f6e7d33f118))
+* **ui/utils:** 修改了获取滚动容器的实现 ([9cd5a23](https://github.com/varletjs/varlet/commit/9cd5a237927cdd096b92f3388cb58ba3805e19ca))
+* **ui:** ui/input,checkbox,checkbox-group,radio,radio-group原型完成 优化父子组件通信 ([3af4a62](https://github.com/varletjs/varlet/commit/3af4a6205b8a4c1a2f77decdfe4382f0fc9dc24d))
+* **ui:** 增加单元测试命令 测试覆盖率统计 ide高亮支持 优化cli代码可读性 ([91882c6](https://github.com/varletjs/varlet/commit/91882c65349b83140598612fef650330bbf57d56))
+* **恢复list:** 恢复被删除的ui/list ([b2fd79e](https://github.com/varletjs/varlet/commit/b2fd79ed4818cb36b76cedb36cd6b9c97124c206))
+* **恢复list:** 恢复被删除的ui/list ([4e52780](https://github.com/varletjs/varlet/commit/4e527801594edba24be27fbd76b3946f182748d1))
+
+
+### Features
+
+* add indexbar option ([456095b](https://github.com/varletjs/varlet/commit/456095bb05efc9c019ceac87e1003d8450c7369b))
+* add rate ([dffc1dd](https://github.com/varletjs/varlet/commit/dffc1ddb710d3630f866a4199aaee97fb2be630e))
+* add rate ([bdcccc2](https://github.com/varletjs/varlet/commit/bdcccc2ae24fa17668f0a9a169e68b1d196cba12))
+* backTop ([efaf596](https://github.com/varletjs/varlet/commit/efaf5962638cdc3a783ad5fbd2c6b107b0843a56))
+* **button:** add forbidripple prop ([092c57d](https://github.com/varletjs/varlet/commit/092c57d4990f1ca0296c955323a6595d7003a2ce))
+* cell ([c8e8a58](https://github.com/varletjs/varlet/commit/c8e8a58fe29024413bd9811d407fad7afc8332c7))
+* date-picker ([bcfa3d2](https://github.com/varletjs/varlet/commit/bcfa3d2e6d1112d98d4c98d7fdd2ad5e786fc06e))
+* expansion-panels ([61c2694](https://github.com/varletjs/varlet/commit/61c26946785be0ea40151ae29c62a7dc888ed317))
+* **expansion-panels:** add example ([8ef77ac](https://github.com/varletjs/varlet/commit/8ef77ac9d687bb46a897deca6e497660e75538f4))
+* finish indexbar ([923aa37](https://github.com/varletjs/varlet/commit/923aa37e9e80e4247b39497a65653893250649bd))
+* indexbar ([650c174](https://github.com/varletjs/varlet/commit/650c174be8cce0a3213f9bb07bce89c8db0ebfcd))
+* **loading:** add circle ([ee1f020](https://github.com/varletjs/varlet/commit/ee1f0201ab468e17668267d33de8414c54b06cc6))
+* pull-refresh done ([152c90c](https://github.com/varletjs/varlet/commit/152c90cd94b535edf8305d6fa0b085bc75ef3a89))
+* pullRefresh ([8669e0b](https://github.com/varletjs/varlet/commit/8669e0bf76395db657d50acf059fba39faac4e4b))
+* slider ([d2ac037](https://github.com/varletjs/varlet/commit/d2ac037ba0f15978cceab3dfbfc4e7710a2de8e8))
+* **slider:** add validation ([a6c4e60](https://github.com/varletjs/varlet/commit/a6c4e602814ad94d73fcac8c7b606c179e5996ac))
+* **snackbar:** add clear ([aebe81b](https://github.com/varletjs/varlet/commit/aebe81ba23504eee0633d3aa1b6e574e3a8d3d4c))
+* switch ([86729d7](https://github.com/varletjs/varlet/commit/86729d7aa5ee8b732a11582aa7cc9c59a0a81102))
+* **switch:** add validation ([68aabef](https://github.com/varletjs/varlet/commit/68aabef30ae118651bde9f8313ae54f152f97bda))
+* time-picker ([40048a4](https://github.com/varletjs/varlet/commit/40048a4ad7963aae926bf3f66c4ba6804e8308c7))
+
+
+### Performance Improvements
+
+* **cli:** 优化compiler编译速度 ([20df4e1](https://github.com/varletjs/varlet/commit/20df4e18819cc43010cbb3223b980dc140eb5585))
+
+
+
+# [0.7.0](https://github.com/varletjs/varlet/compare/v0.5.13...v0.7.0) (2020-12-25)
+
+
+### Bug Fixes
+
+* add class for transition-group ([75e3df6](https://github.com/varletjs/varlet/commit/75e3df66067c26fb4eaa9c17d549a2e59501e536))
+* add isDeclarative for snackbar ([a156647](https://github.com/varletjs/varlet/commit/a156647f2917e6f82b069557f851844e6647a0a5))
+* add margin for loading text and detection componentName ([b42046e](https://github.com/varletjs/varlet/commit/b42046e7538d8b05b61b47085446f73c9c46a1b3))
+* add typescript type(App) ([4d49a7b](https://github.com/varletjs/varlet/commit/4d49a7bde63167b93c144badc353d0004af91109))
+* **cli/compiler:** 修复cjs编译bug 增加编译不同模块标准库css,less入口文件 ([226bc04](https://github.com/varletjs/varlet/commit/226bc0426f217e834512990edf78077f92fbed78))
+* **cli:** 修改.vue文件编译逻辑 ([5e2e64a](https://github.com/varletjs/varlet/commit/5e2e64a48acdcf81ba446acc668ebbb32d519ce9))
+* **cli:** 重构部分代码 ([e4840dc](https://github.com/varletjs/varlet/commit/e4840dc59c5087a007d819a0f8db9db795f234a9))
+* **commands:** modify indexTemplate of create ([48a0687](https://github.com/varletjs/varlet/commit/48a068701253ceeaca11937a24251c5f5712d435))
+* fix style of snackbar ([2858e3e](https://github.com/varletjs/varlet/commit/2858e3e972fea79a49b8efa9757235a97e385392))
+* **icons:** 子包@varlet/icons完成 svg待选 ([76c8cbd](https://github.com/varletjs/varlet/commit/76c8cbd9ff7494e442e6a0edcaed4e9e603905da))
+* **loading:** remove text ([86ec547](https://github.com/varletjs/varlet/commit/86ec5475af3d98e523cb1ddf81b42f830e9b4d82))
+* modify loading docs and example ([66be153](https://github.com/varletjs/varlet/commit/66be153e324c1378e80ee4ab94c0c7609ddd936e))
+* modify size and animation of loading ([63eb392](https://github.com/varletjs/varlet/commit/63eb392b01a46b469b1f9944f364970a64e686bb))
+* remove console ([675f910](https://github.com/varletjs/varlet/commit/675f910b8639d9f985c53fd43f8804e30b101029))
+* **snackbar:** add type definition ([a3283ff](https://github.com/varletjs/varlet/commit/a3283ff7f4e2f32ff55ced1a8d2b54d885df4be8))
+* **snackbar:** modify default duration ([520cf47](https://github.com/varletjs/varlet/commit/520cf47bfab6effec9e4bf64baf759b82f5b0881))
+* **snackbar:** modify position prop ([2862958](https://github.com/varletjs/varlet/commit/2862958021311cdd16eb3f540570a9351438b2d6))
+* **ui/image:** image原型完成 ([97fcc83](https://github.com/varletjs/varlet/commit/97fcc8333ef1648dd82fe2b34ab284cc753600b8))
+* **ui/lazy,skeleton:** 修改了skeleton样式 取消了lazy尝试请求的请求数参数 ([df1c8e1](https://github.com/varletjs/varlet/commit/df1c8e1ee6ef1d5db88ff2a4e50dc1a42ff224a7))
+* **ui/lazy:** lazy原型完成 ([e332fa8](https://github.com/varletjs/varlet/commit/e332fa86eed8f6d1598473ba19b023a19c7ed54b))
+* **ui/lazy:** 修复CacheInstance类型错误 ([1573b56](https://github.com/varletjs/varlet/commit/1573b5614099fcc2da18c440dd1d27a332076adb))
+* **ui/lazy:** 修复了lazy在兼容模式下 图片从视口外操作到视口内没有进行check的bug ([8af34d0](https://github.com/varletjs/varlet/commit/8af34d0f0aa8b2f36002e43657de130095871340))
+* **ui/lazy:** 修复了部分情况下图片update重复check的bug ([f8fcf78](https://github.com/varletjs/varlet/commit/f8fcf7892a9b6b37c5400d49a931fbad7cbb631b))
+* **ui/lazy:** 增加1px像素占位 增加图片URL缓存 ([865a10c](https://github.com/varletjs/varlet/commit/865a10c7e51b0308c99d7387ab5740c7843e31b1))
+* **ui/lazy:** 增加局部滚动的案例cover ([c24820a](https://github.com/varletjs/varlet/commit/c24820a97d59fe2a97a9902afbc8f09615e99897))
+* **ui/lazy:** 增加绑定事件配置 ([64a95cb](https://github.com/varletjs/varlet/commit/64a95cb0777cbf695bfd6d0269a344af4e6ae813))
+* **ui/styles:** 修改common.less中的状态名 ([8e30223](https://github.com/varletjs/varlet/commit/8e302236c8d6f90e042eaa5deffcdfb12a4958dd))
+* **ui:** button原型制作中 已完成基本type size color基本交互 ([5d528ea](https://github.com/varletjs/varlet/commit/5d528ead4d3f13df3d70ee95b837cd819ef4d1e4))
+* **ui:** button原型完成 ([cdf32e5](https://github.com/varletjs/varlet/commit/cdf32e5f8a1e431fa052684f828d0dbceab46f96))
+* **ui:** menu组件原型完成 重构button popup dialog skeleton的props ([09a57b1](https://github.com/varletjs/varlet/commit/09a57b1d692eeab909ab0c1e2672d1095f2df12e))
+* **ui:** popup dialog原型完成 ([4c3da72](https://github.com/varletjs/varlet/commit/4c3da72d776d682c4b1be1b96e445076f53012c1))
+* **ui:** snackbar index.ts重构 ([a76a0be](https://github.com/varletjs/varlet/commit/a76a0be18dab5fd317d2011704764f4fe1ad4e98))
+* **ui:** snackbar 解决动画问题 ([da87973](https://github.com/varletjs/varlet/commit/da87973acb1b44b194459d9cda76bb31da5227ba))
+* **ui:** 修复类型问题 ([10ebe7a](https://github.com/varletjs/varlet/commit/10ebe7a90e9dfe71b5d87712f5bc55374213cff0))
+* **ui:** 修改了ripple的定位 ([67fd0cc](https://github.com/varletjs/varlet/commit/67fd0cc137a0e64b9c7058477ad56d9c5ed2b6f9))
+* **ui:** 增加button组件的loading参数校验 ([4d839c1](https://github.com/varletjs/varlet/commit/4d839c1297bf3069d5e8f299ff64d9eed822c853))
+* **ui:** 增加ui全局上下文 适配teleport keep-alive 锁操作 ([d237750](https://github.com/varletjs/varlet/commit/d237750e8efa0ef33841239c0c2e19d745726abe))
+* **ui:** 定义组件上下文对象 ([4e926c7](https://github.com/varletjs/varlet/commit/4e926c70fcbd49b848205709bcde00a93420bb98))
+* **ui:** 按钮组件开发 ([4fddcbd](https://github.com/varletjs/varlet/commit/4fddcbda84737fb499e0adcc798b5a73f5cf55ea))
+* **ui:** 添加@varlet/icons依赖 ([f32de8c](https://github.com/varletjs/varlet/commit/f32de8cd8936a4fee07ad4cb1506c1863730b51a))
+
+
+### Features
+
+* add button for menu ([e9e1860](https://github.com/varletjs/varlet/commit/e9e1860ccfb1f50624467c32d0ee2fba291a44f9))
+* add chips ([ed1cc95](https://github.com/varletjs/varlet/commit/ed1cc95d8a41d064804ec04be43714bbb69ef9eb))
+* add progress ([170d515](https://github.com/varletjs/varlet/commit/170d5150aa3dd43c2d2c13ad5c43a154f91749a2))
+* add propsEmits for loading ([41bfdab](https://github.com/varletjs/varlet/commit/41bfdab7d298901cdbbcc77ae14326b765af5a8f))
+* add touch emulater ([6836953](https://github.com/varletjs/varlet/commit/6836953943f38229b5b46361f30f077a00116db7))
+* complete snackbar ([f7aa36b](https://github.com/varletjs/varlet/commit/f7aa36b27d232242ddc796a5550086ef2a75e94d))
+* loading ([d93e481](https://github.com/varletjs/varlet/commit/d93e4812b18f8d4cb310797947416f8feeb97271))
+* modify loading size ([321526c](https://github.com/varletjs/varlet/commit/321526c3290e431eb5dbd82891712acddde15839))
+* snackbar ([ff3483d](https://github.com/varletjs/varlet/commit/ff3483d0a734ca822eb03b44710b20a7093f783a))
+
+
+### Performance Improvements
+
+* add validator for progress mode ([8eb9721](https://github.com/varletjs/varlet/commit/8eb9721cc4b4c7141a48efa285c2b383e8cab2e0))
+* refactor snackbar ([fd58373](https://github.com/varletjs/varlet/commit/fd583733d6c85a60d2fc05f7613c59689fdabe1d))
+
+
+
+## [0.5.13](https://github.com/varletjs/varlet/compare/v0.5.10...v0.5.13) (2020-11-27)
+
+
+### Bug Fixes
+
+* **ui/package.json:** fix ([6bb1761](https://github.com/varletjs/varlet/commit/6bb1761adb7d25cd27d6ff38ffe3f483f219a4be))
+* **ui/skeleton:** 修复row的迭代bug ([d1640ac](https://github.com/varletjs/varlet/commit/d1640ac6da277ef5023b0cfb136c5a0787d370cd))
+
+
+
+## [0.5.10](https://github.com/varletjs/varlet/compare/v0.5.9...v0.5.10) (2020-11-27)
+
+
+### Bug Fixes
+
+* **cli ui:** 统一给每个包增加另一个style入口 方便babel-import-plugin解析 ([cd1ef49](https://github.com/varletjs/varlet/commit/cd1ef4957d9659c840d710bc423f44234d8340d2))
+
+
+
+## [0.5.9](https://github.com/varletjs/varlet/compare/v0.5.8...v0.5.9) (2020-11-27)
+
+
+### Bug Fixes
+
+* **all package.json:** 修改了peer依赖 改成了依赖大于目标版本 ([294eced](https://github.com/varletjs/varlet/commit/294ecedce9e2f4bb85eea6556eac34e450818d05))
+
+
+
+## [0.5.8](https://github.com/varletjs/varlet/compare/v0.5.7...v0.5.8) (2020-11-27)
+
+
+### Bug Fixes
+
+* **cli/site ui:** skeleton组件原型完成 文档完成 ([374100f](https://github.com/varletjs/varlet/commit/374100f2bcfaafd1ca0369b560e05ecde292de7d))
+
+
+
+## [0.5.7](https://github.com/varletjs/varlet/compare/v0.5.6...v0.5.7) (2020-11-26)
+
+
+### Bug Fixes
+
+* **ui:** ripple指令原型完成 ([43f8665](https://github.com/varletjs/varlet/commit/43f8665e3254fe66b69ca542c9c5daa49a30cce4))
+
+
+
+## [0.5.6](https://github.com/varletjs/varlet/compare/v0.5.5...v0.5.6) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** 启动生成varlet.config.js ([d8dfa5e](https://github.com/varletjs/varlet/commit/d8dfa5ef9ec48ab1c234db0a2b4e20baf3c8f934))
+
+
+
+## [0.5.5](https://github.com/varletjs/varlet/compare/v0.5.4...v0.5.5) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** 修改ts-loader配置 allowTsInNodeModules ([cf65039](https://github.com/varletjs/varlet/commit/cf65039ca0da0021f52cdabecd61029e2abaf485))
+
+
+
+## [0.5.4](https://github.com/varletjs/varlet/compare/v0.5.3...v0.5.4) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** tsconfig.json加入生产依赖 ([7c56dd2](https://github.com/varletjs/varlet/commit/7c56dd22f54001c503dabadd9e77392ce043ad10))
+
+
+
+## [0.5.3](https://github.com/varletjs/varlet/compare/v0.5.2...v0.5.3) (2020-11-23)
+
+
+### Bug Fixes
+
+* **cli:** 把shim作为生产依赖 ([4e099d9](https://github.com/varletjs/varlet/commit/4e099d9c464795ddcc9047871020dfba7cfe6c85))
+
+
+
+## [0.5.2](https://github.com/varletjs/varlet/compare/v0.5.1...v0.5.2) (2020-11-23)
+
+
+### Bug Fixes
+
+* **all changelog:** 修正版本号 ([af8f2b6](https://github.com/varletjs/varlet/commit/af8f2b65d01a436601a5ebfe076be1f75df95c5c))
+* **添加tsconfig.json到cli的依赖列表:** tsconfig.json ([3e55747](https://github.com/varletjs/varlet/commit/3e55747cf3e9877ed30646d13dde35f7c6f0e0a5))
+
+
+
+## [0.5.1](https://github.com/varletjs/varlet/compare/v0.6.0...v0.5.1) (2020-11-23)
+
+
+### Bug Fixes
+
+* **all packages/package.json:** 发包失败重新发包 ([849f9ae](https://github.com/varletjs/varlet/commit/849f9ae95f6ada7cb6e101d976826944bf1e15b3))
+
+
+
+# [0.6.0](https://github.com/varletjs/varlet/compare/v0.5.0...v0.6.0) (2020-11-23)
+
+
+### Bug Fixes
+
+* add active style ([e23ecb2](https://github.com/varletjs/varlet/commit/e23ecb27e564ef761c3f9bd1588956dc0a0e4385))
+* **cli:** 增加功能create命令生成单测模板 ([0a2cf55](https://github.com/varletjs/varlet/commit/0a2cf55042d18ed0889a2a44ac390eb8dffbf245))
+* modify router path ([5451c55](https://github.com/varletjs/varlet/commit/5451c552072ad8f1693cf46e51499be0623db2f6))
+* sentenced to empty ([2f21c5b](https://github.com/varletjs/varlet/commit/2f21c5b52753ac4b520c9cf8530b6b35dd2658f8))
+
+
+### Features
+
+* add config to globalProperties ([00e2ebf](https://github.com/varletjs/varlet/commit/00e2ebf5ee38e1cb2eb0638ad03d724c837eeb44))
+* add example of checkbox ([6effb17](https://github.com/varletjs/varlet/commit/6effb177ade2f8e69a2756f9481829688c0f3961))
+* add iframe and add style ([5086937](https://github.com/varletjs/varlet/commit/508693748e3f9ee574d4db33b9fd83bd57bd66b1))
+* add markdon-loader ([7dc787b](https://github.com/varletjs/varlet/commit/7dc787bfc7719aeef3bdab263a6fffe267e2c9e7))
+* add style of site ([b936468](https://github.com/varletjs/varlet/commit/b9364680cc6bd4952a2e01a62e4c897af8ff6b97))
+* add test file and router ([fb6615c](https://github.com/varletjs/varlet/commit/fb6615c0d92fc086cd91824f4aa49750c0433526))
+* connect nav and router ([0bc640f](https://github.com/varletjs/varlet/commit/0bc640f2cf2081abc378b5db8644d8edeb374763))
+* **markdown-loader:** addcard-warpper ([38ec300](https://github.com/varletjs/varlet/commit/38ec3005e4fa523863bc853f67cc5398073f716d))
+
+
+### Performance Improvements
+
+* add .DS_Store ([a78828e](https://github.com/varletjs/varlet/commit/a78828e530f914d211213b115be3d5726225fea5))
+
+
+
+# [0.5.0](https://github.com/varletjs/varlet/compare/v0.4.0...v0.5.0) (2020-11-13)
+
+
+### Bug Fixes
+
+* **.gitignore:** 移除cli routes文件的依赖托管 ([1576643](https://github.com/varletjs/varlet/commit/15766436d3e9e3f16f527635b5fbc97349d39d13))
+* **cli:** 移除typescript依赖 ([67cd726](https://github.com/varletjs/varlet/commit/67cd726ea0fbc72279e8c9a83b13d0bbc4803c6b))
+
+
+### Features
+
+* add auto create pc site route ([65cd41a](https://github.com/varletjs/varlet/commit/65cd41a085a22eee4c4cf0b39b3ba727939b4ed3))
+* **cli:** 增加jest单测命令 一键执行所有单测文件 或是执行某一个组件的单测文件 ([b23bfee](https://github.com/varletjs/varlet/commit/b23bfeebf6be90f4e417e3210c3fc82976f59b73))
+
+
+### Performance Improvements
+
+* ignore varlet-cli/lib ([41cf49b](https://github.com/varletjs/varlet/commit/41cf49bb85aa7e620a7ce47d38d3a172d175ee24))
+
+
+
+# [0.4.0](https://github.com/varletjs/varlet/compare/v0.3.2...v0.4.0) (2020-11-10)
+
+
+### Features
+
+* **cli:** 支持打包成umd ([af0645f](https://github.com/varletjs/varlet/commit/af0645f8bf648717bf8d616024ac612af4764a51))
+
+
+
+## [0.3.2](https://github.com/varletjs/varlet/compare/v0.3.1...v0.3.2) (2020-11-09)
+
+
+
+## [0.3.1](https://github.com/varletjs/varlet/compare/v0.3.0...v0.3.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **cli:** 修改.vue文件编译规则 ([71ab372](https://github.com/varletjs/varlet/commit/71ab37266132fa0771802aa57dbef1e6e3670e5a))
+
+
+
+# [0.3.0](https://github.com/varletjs/varlet/compare/v0.2.1...v0.3.0) (2020-11-06)
+
+
+### Features
+
+* **cli:** 实现compile命令,可编译出es,commonjs规范两套发布代码|实现--watch文件监听,按需编译有改动的文件 ([a00695a](https://github.com/varletjs/varlet/commit/a00695a2f0dc66e7ee9674c6ee18e12583cf614b))
+
+
+
+## [0.2.1](https://github.com/varletjs/varlet/compare/v0.2.0...v0.2.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* **cli:** 修复了node_modules的依赖包没被webpack扫进去的bug ([128a0fa](https://github.com/varletjs/varlet/commit/128a0fa44609ef20d5a16d99a25307ccb34be927))
+
+
+
+# [0.2.0](https://github.com/varletjs/varlet/compare/v0.1.7...v0.2.0) (2020-11-03)
+
+
+### Bug Fixes
+
+* **gitignore:** 修改gitignore ([0b51c3d](https://github.com/varletjs/varlet/commit/0b51c3d09e29bf4c54faaeac3373073982429ab7))
+* **packages/varlet-cli/lib:** 移除了packages/varlet-cli/lib ([3d71b03](https://github.com/varletjs/varlet/commit/3d71b03746838a31fb8922eedda8770699fb6743))
+
+
+### Features
+
+* **packages/**:** 架构调整,实现varlet-cli dev build命令 ([1ca2cf6](https://github.com/varletjs/varlet/commit/1ca2cf636af766615d6e733d5c96ac2d2349b34f))
+
+
+
+## [0.1.7](https://github.com/varletjs/varlet/compare/v0.1.6...v0.1.7) (2020-10-30)
+
+
+### Bug Fixes
+
+* **所有子包的package.json:** 移除了publicConfig ([1ce49db](https://github.com/varletjs/varlet/commit/1ce49db96acb99578517765b4751276d86c1c170))
+
+
+
+## [0.1.6](https://github.com/varletjs/varlet/compare/v0.1.5...v0.1.6) (2020-10-30)
+
+
+### Bug Fixes
+
+* **lerna.json:** 修改lerna.json的publishConfig字段 ([a6ea83f](https://github.com/varletjs/varlet/commit/a6ea83fa70738d7d5d41db377f0f19671c23a755))
+
+
+
+## [0.1.5](https://github.com/varletjs/varlet/compare/v0.1.4...v0.1.5) (2020-10-30)
+
+
+### Bug Fixes
+
+* **lerna.json:** 修改了lerna.json的public选项 ([831e521](https://github.com/varletjs/varlet/commit/831e5219eaa9628decafa53d8e97274c5900c408))
+
+
+
+## [0.1.4](https://github.com/varletjs/varlet/compare/v0.1.3...v0.1.4) (2020-10-30)
+
+
+### Bug Fixes
+
+* **root package.json:** 修改主包package.json ([1ecfad0](https://github.com/varletjs/varlet/commit/1ecfad052da65abb7329dc5c4645717722366496))
+
+
+
+## [0.1.3](https://github.com/varletjs/varlet/compare/v0.1.2...v0.1.3) (2020-10-30)
+
+
+### Bug Fixes
+
+* **所有子包的package.json:** 修改publicConfig字段 ([d711a57](https://github.com/varletjs/varlet/commit/d711a57f6307d8dd9b2f5b2b9a9a869a10d02f7d))
+
+
+
+## [0.1.2](https://github.com/varletjs/varlet/compare/v0.1.1...v0.1.2) (2020-10-30)
+
+
+
+## [0.1.1](https://github.com/varletjs/varlet/compare/v0.1.0...v0.1.1) (2020-10-30)
+
+
+
+# [0.1.0](https://github.com/varletjs/varlet/compare/5913d0b1edb1d72e6c6439af1525a692291861ba...v0.1.0) (2020-10-30)
+
+
+### Features
+
+* **初始化仓库:** 初始化规范化配置 monorepo配置 ([5913d0b](https://github.com/varletjs/varlet/commit/5913d0b1edb1d72e6c6439af1525a692291861ba))
 
 
 
