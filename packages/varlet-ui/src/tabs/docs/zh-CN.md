@@ -347,6 +347,7 @@ const active = ref(0)
 | ---------- | -------------- | ------------------ | ------- |
 | `name`     | 选项卡的名字   | _string \| number_ | `index` |
 | `disabled` | 是否禁用选项卡 | _boolean_          | `false` |
+| `ripple`   | 是否启用水波效果 ｜ _boolean_ | `true` |
 
 #### TabsItems Props
 
