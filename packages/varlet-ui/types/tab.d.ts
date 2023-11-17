@@ -6,6 +6,7 @@ export declare const tabProps: Record<keyof TabProps, any>
 export interface TabProps extends BasicAttributes {
   name?: string | number
   disabled?: boolean
+  ripple?: boolean
   onClick?: ListenerProp<(active: string | number, e: Event) => void>
 }
 
