@@ -56,8 +56,8 @@ importers:
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.5)
       '@varlet/release':
-        specifier: 0.0.1
-        version: 0.0.1(typescript@5.1.5)
+        specifier: 0.0.3
+        version: 0.0.3(typescript@5.1.5)
       '@varlet/shared':
         specifier: workspace:*
         version: link:../varlet-shared
@@ -1893,8 +1893,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: false
 
-  /@varlet/release@0.0.1(typescript@5.1.5):
-    resolution: {integrity: sha512-DBaisRwSJBHH9Z5CcnMbGru9qBDBKc3jb7ULPic+2d+vFkjY23Ij7Iz4mAQX5Ol23eZU0mldzMj28q9jMvkrNg==}
+  /@varlet/release@0.0.3(typescript@5.1.5):
+    resolution: {integrity: sha512-j3QPEhfOhrKQgxlteMCq3m4wFZEhVYw/NTH1d2UTpb6pY/0pHFkLpS9oxKmpK4YrPDrVg8hOMgN3lVJ8KMtocg==}
     engines: {node: '>=16.0.0', pnpm: '>=8.0'}
     hasBin: true
     requiresBuild: true
@@ -1906,6 +1906,7 @@ packages:
       glob: 10.3.10
       inquirer: 9.2.12
       nanospinner: 1.1.0
+      picocolors: 1.0.0
       rslog: 1.1.1
       semver: 7.5.4
       tsup: 7.2.0(typescript@5.1.5)
@@ -5520,6 +5521,7 @@ packages:
   /lru-cache@10.0.0:
     resolution: {integrity: sha512-svTf/fzsKHffP42sujkO/Rjs37BCIsQVRCeNYIm9WN8rgT7ffoUnRtZCqU+6BqcSBdv8gwJeTz8knJpgACeQMw==}
     engines: {node: 14 || >=16.14}
+    dev: true
 
   /lru-cache@10.0.2:
     resolution: {integrity: sha512-Yj9mA8fPiVgOUpByoTZO5pNrcl5Yk37FcSHsUINpAsaBIEZIuqcCclDZJCVxqQShDsmYX8QG63svJiTbOATZwg==}
@@ -6277,7 +6279,7 @@ packages:
     resolution: {integrity: sha512-MkhCqzzBEpPvxxQ71Md0b1Kk51W01lrYvlMzSUaIzNsODdd7mqhiimSZlr+VegAz5Z6Vzt9Xg2ttE//XBhH3EQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
-      lru-cache: 10.0.0
+      lru-cache: 10.0.2
       minipass: 6.0.2
     dev: false
 
