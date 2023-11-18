@@ -6,7 +6,7 @@
 | ---------- | ---------------------- | ------------------ | ------- |
 | `name`     | Tab's name             | _string \| number_ | `index` |
 | `disabled` | Whether to disable tab | _boolean_          | `false` |
-| `ripple`   | Whether to enable ripple effect ｜ _boolean_ | `true` |
+| `ripple`   | Whether to enable ripple effect | _boolean_ | `true`  |
 
 ### Events
 
