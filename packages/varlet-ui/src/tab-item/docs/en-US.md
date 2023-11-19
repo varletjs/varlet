@@ -4,7 +4,7 @@
 
 | Prop   | Description | Type               | Default |
 | ------ | ----------- | ------------------ | ------- |
-| `name` | View's name | _string \| number_ | `index` |
+| `name` | View's name | _string \| number_ | `-` |
 
 ### Slots
 
