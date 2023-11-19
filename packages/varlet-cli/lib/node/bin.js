@@ -113,7 +113,7 @@ program
     .option('-f --file <file>', 'Changelog filename')
     .description('Generate changelog')
     .action(async (options) => {
-    const { changelog } = await import('./commands/changelog.js');
+    const { changelog } = await import('@varlet/release');
     return changelog(options);
 });
 program
@@ -121,7 +121,7 @@ program
     .option('-r --remote <remote>', 'Remote name')
     .description('Release all packages and generate changelogs')
     .action(async (options) => {
-    const { release } = await import('./commands/release.js');
+    const { release } = await import('@varlet/release');
     return release(options);
 });
 program

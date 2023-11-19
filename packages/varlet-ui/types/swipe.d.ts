@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const swipeProps: Record<string, any>
+export declare const swipeProps: Record<keyof SwipeProps, any>
 
 export interface SwipeToOptions {
   event?: boolean
@@ -38,6 +38,8 @@ export interface SwipeIndicatorData {
 }
 
 export class Swipe extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SwipeProps>
+
   $props: SwipeProps
 
   $slots: {

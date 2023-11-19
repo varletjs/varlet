@@ -2,7 +2,7 @@
   <div
     :class="classes(n(), n('$--box'), computeColorClass(), n(`--${itemDirection}`))"
     ref="tabEl"
-    v-ripple="{ disabled }"
+    v-ripple="{ disabled: disabled || !ripple }"
     :style="{
       color: computeColorStyle(),
     }"

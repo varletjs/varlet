@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "2.18.3",
+  "version": "2.19.1",
   "type": "module",
   "description": "cli of varlet",
   "bin": {
@@ -40,6 +40,7 @@
   "dependencies": {
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
+    "@varlet/release": "0.0.3",
     "@babel/core": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@vitejs/plugin-vue": "4.2.3",
@@ -51,7 +52,6 @@
     "vitest": "0.34.3",
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
-    "conventional-changelog": "^3.1.25",
     "ejs": "^3.1.8",
     "execa": "^5.0.0",
     "fs-extra": "^9.0.1",

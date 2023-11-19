@@ -1,9 +1,11 @@
 import Paper from './Paper.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as paperProps } from './props'
 
 withInstall(Paper)
+withPropsDefaultsSetter(Paper, paperProps)
 
-export { props as paperProps } from './props'
+export { paperProps }
 
 export const _PaperComponent = Paper
 

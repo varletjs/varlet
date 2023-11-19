@@ -24,21 +24,13 @@ export type ComponentProps = {
   buttonElevation: boolean | string | number
 }
 
-export type MonthDict = {
-  index: Month
-}
-
-export type WeekDict = {
-  index: Week
-}
-
 export type PanelBtnDisabled = {
   left: boolean
   right: boolean
 }
 
 export type Choose = {
-  chooseMonth: MonthDict | undefined
+  chooseMonth: Month | undefined
   chooseYear: string | undefined
   chooseDay: string | undefined
   chooseYears: Array<string>
@@ -50,72 +42,13 @@ export type Choose = {
 }
 
 export type Preview = {
-  previewMonth?: MonthDict
+  previewMonth?: Month
   previewYear: string
 }
 
-export const MONTH_LIST: Array<MonthDict> = [
-  {
-    index: '01',
-  },
-  {
-    index: '02',
-  },
-  {
-    index: '03',
-  },
-  {
-    index: '04',
-  },
-  {
-    index: '05',
-  },
-  {
-    index: '06',
-  },
-  {
-    index: '07',
-  },
-  {
-    index: '08',
-  },
-  {
-    index: '09',
-  },
-  {
-    index: '10',
-  },
-  {
-    index: '11',
-  },
-  {
-    index: '12',
-  },
-]
+export const MONTH_LIST: Array<Month> = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
-export const WEEK_HEADER: Array<WeekDict> = [
-  {
-    index: '0',
-  },
-  {
-    index: '1',
-  },
-  {
-    index: '2',
-  },
-  {
-    index: '3',
-  },
-  {
-    index: '4',
-  },
-  {
-    index: '5',
-  },
-  {
-    index: '6',
-  },
-]
+export const WEEK_HEADER: Array<Week> = ['0', '1', '2', '3', '4', '5', '6']
 
 export const props = {
   modelValue: [String, Array] as PropType<string | Array<string>>,

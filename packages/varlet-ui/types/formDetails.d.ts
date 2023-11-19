@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 
-export declare const formDetailsProps: Record<string, any>
+export declare const formDetailsProps: Record<keyof FormDetailsProps, any>
 
 export interface FormDetailsProps extends BasicAttributes {
   errorMessage?: string
@@ -8,6 +8,8 @@ export interface FormDetailsProps extends BasicAttributes {
 }
 
 export class FormDetails extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<FormDetailsProps>
+
   $props: FormDetailsProps
 }
 

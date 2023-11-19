@@ -11,13 +11,15 @@ test('test countdown plugin', () => {
 })
 
 describe('test countdown props', () => {
-  test('test format prop', () => {
+  test('test format prop', async () => {
     const wrapper = mount(VarCountdown, {
       props: {
         time: 108000000,
         format: 'HH-mm-ss-SS',
       },
     })
+
+    await delay(0)
 
     const reg = /(\d{2}-){3}\d{2}/
     expect(reg.test(wrapper.text())).toBe(true)
@@ -33,6 +35,7 @@ describe('test countdown props', () => {
       },
     })
 
+    await delay(0)
     const text = wrapper.text()
 
     await delay(100)
@@ -98,6 +101,7 @@ describe('test countdown methods', () => {
 
   test('test countdown start method', async () => {
     const wrapper = mount(Wrapper)
+    await delay(0)
     const text = wrapper.text()
 
     await delay(50)
@@ -128,6 +132,7 @@ describe('test countdown methods', () => {
 
   test('test countdown reset method', async () => {
     const wrapper = mount(Wrapper)
+    await delay(0)
     const text = wrapper.text()
 
     wrapper.vm.$refs.countdown.start()

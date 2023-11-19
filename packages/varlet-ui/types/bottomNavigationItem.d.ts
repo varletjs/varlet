@@ -1,8 +1,8 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { BadgeProps } from './badge'
 import { VNode } from 'vue'
 
-export declare const bottomNavigationItemProps: Record<string, any>
+export declare const bottomNavigationItemProps: Record<keyof BottomNavigationItemProps, any>
 
 export interface BottomNavigationItemProps extends BasicAttributes {
   name?: string
@@ -18,6 +18,8 @@ export interface BottomNavigationItemIcon {
 }
 
 export class BottomNavigationItem extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BottomNavigationItemProps>
+
   $props: BottomNavigationItemProps
 
   $slots: {

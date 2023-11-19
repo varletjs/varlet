@@ -1,9 +1,11 @@
 import Card from './Card.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as cardProps } from './props'
 
 withInstall(Card)
+withPropsDefaultsSetter(Card, cardProps)
 
-export { props as cardProps } from './props'
+export { cardProps }
 
 export const _CardComponent = Card
 

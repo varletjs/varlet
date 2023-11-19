@@ -36,15 +36,17 @@ export default defineComponent({
   props,
   setup(props) {
     const tag = computed<'a' | 'router-link' | 'span'>(() => {
-      if (props.disabled) {
+      const { disabled, href, to } = props
+
+      if (disabled) {
         return 'span'
       }
 
-      if (props.href) {
+      if (href) {
         return 'a'
       }
 
-      if (props.to) {
+      if (to) {
         return 'router-link'
       }
 

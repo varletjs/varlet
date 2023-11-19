@@ -1,5 +1,7 @@
 import { VNode, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+
+export declare const floatingPanelProps: Record<keyof FloatingPanelProps, any>
 
 export interface FloatingPanelProps extends BasicAttributes {
   anchor?: number
@@ -14,6 +16,8 @@ export interface FloatingPanelProps extends BasicAttributes {
 }
 
 export class FloatingPanel extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<FloatingPanelProps>
+
   $props: FloatingPanelProps
 
   $slots: {

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const listProps: Record<string, any>
+export declare const listProps: Record<keyof ListProps, any>
 
 export interface ListProps extends BasicAttributes {
   loading?: boolean
@@ -18,6 +18,8 @@ export interface ListProps extends BasicAttributes {
 }
 
 export class List extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ListProps>
+
   $props: ListProps
 
   $slots: {

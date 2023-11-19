@@ -243,12 +243,12 @@ const value2 = ref([7, 64])
 | `max` | The maximum value the slider can slide to                                | _string \| number_ | `100`           |
 | `min` | The minimum value the slider can slide to                                | _string \| number_ | `0`           |
 | `label-visible` | Whether to display labels, the optional value is `always, normal, never` | _string_ | `normal` |
-| `label-text-color` | Color of label text                                                      | _string_ | `#fff` |
+| `label-text-color` | Color of label text                                                      | _string_ | `-` |
 | `label-color`  | Background color of label                                                | _string_ | `-`               |
 | `active-color` | Background color of actived track                                        | _string_ | `-`               |
 | `track-color`  | Background color of track                                                | _string_ | `-`               |
-| `track-height` | Height of track                                                          | _string \| number_ | `2` |
-| `thumb-size` | Size of thumb                                                            | _string \| number_ | `12` |
+| `track-height` | Height of track                                                          | _string \| number_ | `-` |
+| `thumb-size` | Size of thumb                                                            | _string \| number_ | `-` |
 | `thumb-color`   | Background color of thumb                                                | _string_ | `-`               |
 | `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
 | `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
@@ -277,9 +277,12 @@ Here are the CSS variables used by the component. Styles can be customized using
 | --- | --- |
 | `--slider-error-color` | `var(--color-danger)` |
 | `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-height` | `2px` |
 | `--slider-track-fill-background` | `var(--color-primary)` |
 | `--slider-thumb-block-background` | `var(--color-primary)` |
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |
 | `--slider-thumb-label-background` | `var(--color-primary)` |
 | `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
+| `--slider-thumb-label-text-color` | `#fff` |
+| `--slider-thumb-size` | `12px` |
 | `--slider-disabled-opacity` | `var(--opacity-disabled)` |

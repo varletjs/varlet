@@ -1,7 +1,7 @@
-import { VarComponent, ListenerProp } from './varComponent'
+import { VarComponent, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode, App } from 'vue'
 
-export declare const pickerProps: Record<string, any>
+export declare const pickerProps: Record<keyof PickerProps, any>
 
 export type PickerColumnOption = {
   text?: string | number
@@ -89,6 +89,8 @@ export interface IPicker {
   Component: typeof PickerComponent
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<PickerProps>
 
   close(): void
 }

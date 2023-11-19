@@ -1,7 +1,8 @@
 import VarActionSheet from './ActionSheet.vue'
 import { nextTick, reactive, type TeleportProps } from 'vue'
 import { inBrowser, call } from '@varlet/shared'
-import { mountInstance, withInstall } from '../utils/components'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as actionSheetProps } from './props'
 
 export type ActionSheetActions = ActionItem | 'close'
 
@@ -104,8 +105,9 @@ ActionSheet.close = function () {
 ActionSheet.Component = VarActionSheet
 withInstall(VarActionSheet)
 withInstall(VarActionSheet, ActionSheet)
+withPropsDefaultsSetter(ActionSheet, actionSheetProps)
 
-export { props as actionSheetProps } from './props'
+export { actionSheetProps }
 
 export const _ActionSheetComponent = VarActionSheet
 

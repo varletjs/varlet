@@ -120,7 +120,7 @@ const score = ref(3)
 
 ### Can Be Cleared
 
-The `clearable` property Allows users to clear score.
+The `clearable` property allows users to clear score.
 
 ```html
 <script setup>
@@ -134,7 +134,7 @@ const score = ref(3.5)
 </template>
 ```
 
-### Listen Events
+### Listen Event
 
 Other interaction logic is completed by calling the `change` event.
 
@@ -196,7 +196,7 @@ const score = ref(3)
 | `empty-icon-namespace`      | Empty icon namespace |  _string_ | `var-icon` |
 | `half-icon-namespace`      | Half icon namespace |  _string_ | `var-icon` |
 | `disabled`       | Whether to disable rating | _boolean_ | `false` |
-| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `#aaa` |
+| `disabled-color` | The color of the icon when disabling grading is only effective when `disabled` is `true` and has higher priority than `color` and `empty-color` | _string_ | `-` |
 | `readonly`       | Whether it is in readonly status. The rating cannot be modified in readonly status. | _boolean_ | `false` |
 | `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |
@@ -214,6 +214,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default                      |
 | --- |------------------------------|
 | `--rate-color` | `var(--color-text)`          |
+| `--rate-size` | `24px` |
 | `--rate-primary-color` | `var(--color-primary)`       |
 | `--rate-disabled-color` | `var(--color-text-disabled)` |
 | `--rate-error-color` | `var(--color-danger)`        |

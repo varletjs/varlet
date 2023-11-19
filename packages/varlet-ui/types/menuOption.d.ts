@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const menuOptionProps: Record<string, any>
+export declare const menuOptionProps: Record<keyof MenuOptionProps, any>
 
 export interface MenuOptionProps extends BasicAttributes {
   label?: any
@@ -10,6 +10,8 @@ export interface MenuOptionProps extends BasicAttributes {
 }
 
 export class MenuOption extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<MenuOptionProps>
+
   $props: MenuOptionProps
 
   $slots: {

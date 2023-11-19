@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const imageProps: Record<string, any>
+export declare const imageProps: Record<keyof ImageProps, any>
 
 export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -24,6 +24,8 @@ export interface ImageProps extends BasicAttributes {
 }
 
 export class Image extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ImageProps>
+
   $props: ImageProps
 
   $slots: {

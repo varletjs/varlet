@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const checkboxProps: Record<string, any>
+export declare const checkboxProps: Record<keyof CheckboxProps, any>
 
 export type CheckboxValidateTriggers = 'onChange'
 
@@ -25,6 +25,8 @@ export interface CheckboxProps extends BasicAttributes {
 }
 
 export class Checkbox extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CheckboxProps>
+
   $props: CheckboxProps
 
   $slots: {

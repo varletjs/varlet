@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode, TeleportProps } from 'vue'
 
-export declare const popupProps: Record<string, any>
+export declare const popupProps: Record<keyof PopupProps, any>
 
 export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
 
@@ -26,6 +26,8 @@ export interface PopupProps extends BasicAttributes {
 }
 
 export class Popup extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<PopupProps>
+
   $props: PopupProps
 
   $slots: {

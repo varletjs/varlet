@@ -1,3 +1,37 @@
+## [2.19.1](https://github.com/varletjs/varlet/compare/v2.19.0...v2.19.1) (2023-11-17)
+
+
+
+# [2.19.0](https://github.com/varletjs/varlet/compare/v2.18.4...v2.19.0) (2023-11-17)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** import missing snackbar component ([#1294](https://github.com/varletjs/varlet/issues/1294)) ([7e81ac3](https://github.com/varletjs/varlet/commit/7e81ac3940e525e8a0953a0a32a3cf9b991777ac))
+* **server/countdown:** ensure start function only be called in client ([4100156](https://github.com/varletjs/varlet/commit/41001567d904dd83ce52313b4b922b27b02e4bb2))
+
+
+### Features
+
+* **badge:** support --badge-content-font-size ([#1286](https://github.com/varletjs/varlet/issues/1286)) ([f2ee14f](https://github.com/varletjs/varlet/commit/f2ee14fd535c37a8ae6fb4af70f4f4367305d252))
+* **rate:** support --rate-size ([#1298](https://github.com/varletjs/varlet/issues/1298)) ([157b233](https://github.com/varletjs/varlet/commit/157b233c8c7e98e3bc75e3e3e87df53064f3d9a5))
+* **slider:** support custom styles by css var ([#1293](https://github.com/varletjs/varlet/issues/1293)) ([e4b2431](https://github.com/varletjs/varlet/commit/e4b2431fcc0c1eb12b051df1d21aed7855f02b59))
+* support static method setPropsDefaults ([1407cef](https://github.com/varletjs/varlet/commit/1407cefeac95c1ff0770fe695413f73c636fec87))
+* support static method setPropsDefaults ([#1283](https://github.com/varletjs/varlet/issues/1283)) ([e0ba0fc](https://github.com/varletjs/varlet/commit/e0ba0fc4243974ddebfc48a6fe5025f2955daa21))
+* **tabs:** support --tabs-indicator-border-radius ([559e156](https://github.com/varletjs/varlet/commit/559e15603ce06d4c49228790d5ac30f606e4fc77))
+* **tab:** support ripple ([#1303](https://github.com/varletjs/varlet/issues/1303)) ([17a8a1e](https://github.com/varletjs/varlet/commit/17a8a1e1bc1997f8820ddc8bf32e987b4eb70320))
+
+
+
+## [2.18.4](https://github.com/varletjs/varlet/compare/v2.18.3...v2.18.4) (2023-11-10)
+
+
+### Bug Fixes
+
+* **date-picker:** import sticky component ([6fe6ac6](https://github.com/varletjs/varlet/commit/6fe6ac67c2d34c8518b646e1aba98050f777614e))
+
+
+
 ## [2.18.3](https://github.com/varletjs/varlet/compare/v2.18.2...v2.18.3) (2023-11-09)
 
 

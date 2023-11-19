@@ -81,6 +81,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': '默认值定制',
+          'en-US': 'Defaults Customization',
+        },
+        doc: 'defaultsCustomization',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '服务端渲染',
           'en-US': 'Server side rendering',
         },

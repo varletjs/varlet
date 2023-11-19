@@ -1,11 +1,11 @@
-import { VarComponent, BasicAttributes, Type as ProgressType } from './varComponent'
+import { VarComponent, BasicAttributes, Type as ProgressType, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
 export type ProgressMode = 'linear' | 'circle'
 
 export { ProgressType }
 
-export declare const progressProps: Record<string, any>
+export declare const progressProps: Record<keyof ProgressProps, any>
 
 export interface ProgressProps extends BasicAttributes {
   mode?: ProgressMode
@@ -26,6 +26,8 @@ export interface ProgressProps extends BasicAttributes {
 }
 
 export class Progress extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ProgressProps>
+
   $props: ProgressProps
 
   $slots: {

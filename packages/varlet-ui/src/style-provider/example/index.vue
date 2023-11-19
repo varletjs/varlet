@@ -1,6 +1,6 @@
 <script setup>
 import { Themes, StyleProvider } from '@varlet/ui'
-import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
+import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, watchTheme } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
@@ -31,14 +31,20 @@ function toggleTheme() {
 }
 
 function toggleRootTheme() {
+  const siteTheme = getBrowserTheme()
   rootStyleVars = rootStyleVars ? null : darkTheme
-  StyleProvider(rootStyleVars)
+  StyleProvider({ ...getSiteStyleVars(siteTheme), ...rootStyleVars })
 }
 
 watchLang(use)
+watchTheme(() => {
+  rootStyleVars = null
+})
 
 onUnmounted(() => {
-  StyleProvider(getBrowserTheme() === 'darkTheme' ? Themes.dark : null)
+  const siteTheme = getBrowserTheme()
+  const styleVars = siteTheme === 'darkTheme' ? Themes.dark : null
+  StyleProvider({ ...getSiteStyleVars(siteTheme), ...styleVars })
 })
 </script>
 

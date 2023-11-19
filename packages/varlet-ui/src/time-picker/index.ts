@@ -1,9 +1,11 @@
 import TimePicker from './TimePicker.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as timePickerProps } from './props'
 
 withInstall(TimePicker)
+withPropsDefaultsSetter(TimePicker, timePickerProps)
 
-export { props as timePickerProps } from './props'
+export { timePickerProps }
 
 export const _TimePickerComponent = TimePicker
 

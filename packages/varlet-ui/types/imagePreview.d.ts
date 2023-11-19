@@ -1,8 +1,8 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { SwipeToOptions } from './swipe'
 import { App, TeleportProps, VNode } from 'vue'
 
-export declare const imagePreviewProps: Record<string, any>
+export declare const imagePreviewProps: Record<keyof ImagePreviewProps, any>
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
@@ -46,6 +46,8 @@ export interface ImagePreviewOptions {
 }
 
 export class ImagePreviewComponent extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ImagePreviewProps>
+
   $props: ImagePreviewProps
 
   $slots: {
@@ -73,6 +75,8 @@ export interface IImagePreview {
   close(): void
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<ImagePreviewProps>
 }
 
 export declare const ImagePreview: IImagePreview

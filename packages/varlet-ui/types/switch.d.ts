@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const switchProps: Record<string, any>
+export declare const switchProps: Record<keyof SwitchProps, any>
 
 export interface SwitchProps extends BasicAttributes {
   modelValue?: any
@@ -21,6 +21,8 @@ export interface SwitchProps extends BasicAttributes {
 }
 
 export class Switch extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SwitchProps>
+
   $props: SwitchProps
 }
 

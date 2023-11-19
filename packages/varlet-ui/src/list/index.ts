@@ -1,9 +1,11 @@
 import List from './List.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as listProps } from './props'
 
 withInstall(List)
+withPropsDefaultsSetter(List, listProps)
 
-export { props as listProps } from './props'
+export { listProps }
 
 export const _ListComponent = List
 

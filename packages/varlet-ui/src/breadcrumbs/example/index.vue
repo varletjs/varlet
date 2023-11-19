@@ -1,5 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
+import { Themes, Snackbar } from '@varlet/ui'
 import { use, pack } from './locale'
 import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
 
@@ -46,7 +46,7 @@ watchLang(use)
     <var-breadcrumb>{{ pack.level3 }}</var-breadcrumb>
   </var-breadcrumbs>
 
-  <app-type>{{ pack.events }}</app-type>
+  <app-type>{{ pack.clickEvent }}</app-type>
   <var-breadcrumbs>
     <var-breadcrumb @click="Snackbar(pack.level1)">{{ pack.level1 }}</var-breadcrumb>
     <var-breadcrumb @click="Snackbar(pack.level2)">{{ pack.level2 }}</var-breadcrumb>

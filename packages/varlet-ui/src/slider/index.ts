@@ -1,9 +1,11 @@
 import Slider from './Slider.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as sliderProps } from './props'
 
 withInstall(Slider)
+withPropsDefaultsSetter(Slider, sliderProps)
 
-export { props as sliderProps } from './props'
+export { sliderProps }
 
 export const _SliderComponent = Slider
 

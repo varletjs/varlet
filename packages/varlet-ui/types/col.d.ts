@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const colProps: Record<string, any>
+export declare const colProps: Record<keyof ColProps, any>
 
 export type ColSizeDescriptor = {
   span?: number | string
@@ -40,6 +40,8 @@ export interface ColProps extends BasicAttributes {
 }
 
 export class Col extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ColProps>
+
   $props: ColProps
 
   $slots: {

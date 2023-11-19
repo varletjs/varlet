@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const rateProps: Record<string, any>
+export declare const rateProps: Record<keyof RateProps, any>
 
 export interface RateProps extends BasicAttributes {
   modelValue?: number
@@ -27,6 +27,8 @@ export interface RateProps extends BasicAttributes {
 }
 
 export class Rate extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<RateProps>
+
   $props: RateProps
 }
 

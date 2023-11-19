@@ -1,9 +1,11 @@
 import Rate from './Rate.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as rateProps } from './props'
 
 withInstall(Rate)
+withPropsDefaultsSetter(Rate, rateProps)
 
-export { props as rateProps } from './props'
+export { rateProps }
 
 export const _RateComponent = Rate
 

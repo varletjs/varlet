@@ -11,18 +11,18 @@
       />
       <transition :name="`${nDate()}${reverse ? '-reverse' : ''}-translatex`">
         <ul :key="panelKey">
-          <li v-for="month in MONTH_LIST" :key="month.index">
+          <li v-for="month in MONTH_LIST" :key="month">
             <var-button
               type="primary"
               var-month-picker-cover
               :ripple="false"
               :elevation="componentProps.buttonElevation"
               v-bind="{
-                ...buttonProps(month.index),
+                ...buttonProps(month),
               }"
               @click="(event: Event) => chooseMonth(month, event)"
             >
-              {{ getMonthAbbr(month.index) }}
+              {{ getMonthAbbr(month) }}
             </var-button>
           </li>
         </ul>
@@ -43,7 +43,7 @@ import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { pack } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
-import type { Choose, Preview, ComponentProps, Month, MonthDict, PanelBtnDisabled } from '../props'
+import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -139,7 +139,7 @@ export default defineComponent({
 
       const monthExist = (): boolean => {
         if (range || multiple) return shouldChoose(val)
-        return chooseMonth?.index === key && isSameYear.value
+        return chooseMonth === key && isSameYear.value
       }
 
       const computeDisabled = (): boolean => {
@@ -154,7 +154,7 @@ export default defineComponent({
         if (disabled) return true
         if (range || multiple) return !shouldChoose(val)
 
-        return !isSameYear.value || chooseMonth?.index !== key
+        return !isSameYear.value || chooseMonth !== key
       }
 
       const computeOutline = (): boolean => {
@@ -168,7 +168,7 @@ export default defineComponent({
         if (range || multiple) return !shouldChoose(val)
 
         // 同一年但是未被选择的情况
-        if (isSameYear.value) return chooseMonth?.index !== currentMonth
+        if (isSameYear.value) return chooseMonth !== currentMonth
 
         return true
       }
@@ -194,7 +194,7 @@ export default defineComponent({
       }
     }
 
-    const chooseMonth = (month: MonthDict, event: Event) => {
+    const chooseMonth = (month: Month, event: Event) => {
       const buttonEl = event.currentTarget as HTMLButtonElement
       if (buttonEl.classList.contains(n('button--disabled'))) return
 

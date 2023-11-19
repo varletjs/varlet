@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const timePickerProps: Record<string, any>
+export declare const timePickerProps: Record<keyof TimePickerProps, any>
 
 export type AllowedTime = {
   hours?: (hour: number) => boolean
@@ -29,6 +29,8 @@ export interface TimePickerProps extends BasicAttributes {
 }
 
 export class TimePicker extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<TimePickerProps>
+
   $props: TimePickerProps
 }
 

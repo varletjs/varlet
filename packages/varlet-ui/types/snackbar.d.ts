@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps, VNode } from 'vue'
 
@@ -6,7 +6,7 @@ export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
-export declare const snackbarProps: Record<string, any>
+export declare const snackbarProps: Record<keyof SnackbarProps, any>
 
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
@@ -71,6 +71,8 @@ export interface ISnackbar {
   Component: typeof SnackbarComponent
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<SnackbarProps>
 
   allowMultiple(bool: boolean): void
 

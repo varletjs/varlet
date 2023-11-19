@@ -1,9 +1,11 @@
 import AppBar from './AppBar.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as appBarProps } from './props'
 
 withInstall(AppBar)
+withPropsDefaultsSetter(AppBar, appBarProps)
 
-export { props as appBarProps } from './props'
+export { appBarProps }
 
 export const _AppBarComponent = AppBar
 

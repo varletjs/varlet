@@ -1,8 +1,7 @@
-import type { App } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
-import { VNode } from 'vue'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
+import { App, VNode } from 'vue'
 
-export declare const styleProviderProps: Record<string, any>
+export declare const styleProviderProps: Record<keyof StyleProviderProps, any>
 
 export type StyleVars = Record<string, string>
 
@@ -24,6 +23,8 @@ export interface IStyleProvider {
   Component: typeof StyleProviderComponent
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<StyleProviderProps>
 }
 
 export const StyleProvider: IStyleProvider

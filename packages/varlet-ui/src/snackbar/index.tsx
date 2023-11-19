@@ -3,9 +3,10 @@ import VarSnackbar from './Snackbar.vue'
 import context from '../context'
 import type { App, Component, TeleportProps, VNode } from 'vue'
 import { reactive, TransitionGroup } from 'vue'
-import { mountInstance, withInstall } from '../utils/components'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { isFunction, isPlainObject, isString, toNumber, call } from '@varlet/shared'
 import type { LoadingSize, LoadingType } from '../loading/props'
+import { props as snackbarProps } from './props'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
@@ -288,8 +289,9 @@ function getTop(position = 'top') {
 Snackbar.Component = VarSnackbar
 withInstall(VarSnackbar)
 withInstall(VarSnackbar, Snackbar)
+withPropsDefaultsSetter(Snackbar, snackbarProps)
 
-export { props as snackbarProps } from './props'
+export { snackbarProps }
 
 export const _SnackbarComponent = VarSnackbar
 

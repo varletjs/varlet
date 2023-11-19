@@ -1,9 +1,11 @@
 import Row from './Row.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as rowProps } from './props'
 
 withInstall(Row)
+withPropsDefaultsSetter(Row, rowProps)
 
-export { props as rowProps } from './props'
+export { rowProps }
 
 export const _RowComponent = Row
 

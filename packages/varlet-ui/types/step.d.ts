@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const stepProps: Record<string, any>
+export declare const stepProps: Record<keyof StepProps, any>
 
 export interface StepProps extends BasicAttributes {
   activeIcon?: string
@@ -13,6 +13,8 @@ export interface StepProps extends BasicAttributes {
 }
 
 export class Step extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<StepProps>
+
   $props: StepProps
 
   $slots: {

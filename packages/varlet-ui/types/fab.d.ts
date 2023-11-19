@@ -1,5 +1,5 @@
 import { VNode, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp, Type } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Type, SetPropsDefaults } from './varComponent'
 import { DragProps } from './drag'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
@@ -12,7 +12,7 @@ export type FabType = Type
 
 export type FabDrag = boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
 
-export declare const fabProps: Record<string, any>
+export declare const fabProps: Record<keyof FabProps, any>
 
 export interface FabTriggerData {
   active: boolean
@@ -52,6 +52,8 @@ export interface FabProps extends BasicAttributes {
 }
 
 export class Fab extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<FabProps>
+
   $props: FabProps
 
   $slots: {

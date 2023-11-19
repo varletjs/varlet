@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { ComputedRef, VNode, Ref } from 'vue'
 
-export declare const formProps: Record<string, any>
+export declare const formProps: Record<keyof FormProps, any>
 
 export interface FormValidation {
   validate(): Promise<boolean>
@@ -26,6 +26,8 @@ export interface FormProps extends BasicAttributes {
 }
 
 export class Form extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<FormProps>
+
   static useForm(): {
     form: FormProvider | null
 

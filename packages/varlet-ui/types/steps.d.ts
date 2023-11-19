@@ -1,9 +1,15 @@
-import { VarComponent, BasicAttributes, Direction as StepsDirection, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Direction as StepsDirection,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
 export { StepsDirection }
 
-export declare const stepsProps: Record<string, any>
+export declare const stepsProps: Record<keyof StepsProps, any>
 
 export interface StepsProps extends BasicAttributes {
   active?: string | number
@@ -14,6 +20,8 @@ export interface StepsProps extends BasicAttributes {
 }
 
 export class Steps extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<StepsProps>
+
   $props: StepsProps
 
   $slots: {

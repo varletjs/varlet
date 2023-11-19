@@ -345,8 +345,9 @@ const active = ref(0)
 
 | 参数       | 说明           | 类型               | 默认值  |
 | ---------- | -------------- | ------------------ | ------- |
-| `name`     | 选项卡的名字   | _string \| number_ | `index` |
+| `name`     | 选项卡的名字   | _string \| number_ | `-` |
 | `disabled` | 是否禁用选项卡 | _boolean_          | `false` |
+| `ripple`   | 是否启用水波效果 | _boolean_ | `true` |
 
 #### TabsItems Props
 
@@ -360,7 +361,7 @@ const active = ref(0)
 
 | 参数   | 说明       | 类型               | 默认值  |
 | ------ | ---------- | ------------------ | ------- |
-| `name` | 视图的名字 | _string \| number_ | `index` |
+| `name` | 视图的名字 | _string \| number_ | `-` |
 
 ### 方法
 
@@ -431,6 +432,7 @@ const active = ref(0)
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
 | `--tabs-indicator-size`         | `2px`                  |
+| `--tabs-indicator-border-radius`         | `0`                  |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
 | `--tabs-indicator-inner-size`             | `100%`                 |

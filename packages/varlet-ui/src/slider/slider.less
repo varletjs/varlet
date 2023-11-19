@@ -1,11 +1,14 @@
 :root {
   --slider-error-color: var(--color-danger);
   --slider-track-background: #bdbdbd;
+  --slider-track-height: 2px;
   --slider-track-fill-background: var(--color-primary);
   --slider-thumb-block-background: var(--color-primary);
   --slider-thumb-ripple-background: var(--color-primary);
   --slider-thumb-label-background: var(--color-primary);
   --slider-thumb-label-font-size: var(--font-size-sm);
+  --slider-thumb-label-text-color: #fff;
+  --slider-thumb-size: 12px;
   --slider-disabled-opacity: var(--opacity-disabled);
 }
 
@@ -36,7 +39,7 @@
 
     &-background {
       width: 100%;
-      height: 2px;
+      height: var(--slider-track-height);
       background: var(--slider-track-background);
       transition: filter, background-color, 0.25s;
     }
@@ -56,8 +59,8 @@
 
     &-block {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: var(--slider-thumb-size);
+      height: var(--slider-thumb-size);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: background-color 0.25s;
@@ -90,7 +93,7 @@
       align-items: center;
       border: none;
       justify-content: center;
-      color: #fff;
+      color: var(--slider-thumb-label-text-color);
       border-radius: 50% 50% 0;
       padding: 13px;
       bottom: 60%;
@@ -173,7 +176,7 @@
     width: fit-content;
 
     &-background {
-      width: 2px;
+      width: var(--slider-track-height);
       height: 100%;
       background: var(--slider-track-background);
       transition: filter, background-color, 0.25s;

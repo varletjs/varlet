@@ -1,9 +1,11 @@
 import Uploader from './Uploader.vue'
-import { withInstall } from '../utils/components'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as uploaderProps } from './props'
 
 withInstall(Uploader)
+withPropsDefaultsSetter(Uploader, uploaderProps)
 
-export { props as uploaderProps } from './props'
+export { uploaderProps }
 
 export const _UploaderComponent = Uploader
 

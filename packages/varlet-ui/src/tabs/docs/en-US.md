@@ -345,8 +345,9 @@ const active = ref(0)
 
 | Prop       | Description            | Type               | Default |
 | ---------- | ---------------------- | ------------------ | ------- |
-| `name`     | Tab's name             | _string \| number_ | `index` |
+| `name`     | Tab's name             | _string \| number_ | `-` |
 | `disabled` | Whether to disable tab | _boolean_          | `false` |
+| `ripple`   | Whether to enable ripple effect | _boolean_ | `true`  |
 
 #### TabsItems Props
 
@@ -360,7 +361,7 @@ const active = ref(0)
 
 | Prop   | Description | Type               | Default |
 | ------ | ----------- | ------------------ | ------- |
-| `name` | View's name | _string \| number_ | `index` |
+| `name` | View's name | _string \| number_ | `-` |
 
 ### Methods
 
@@ -431,6 +432,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tabs-radius`                 | `2px`                  |
 | `--tabs-padding`                | `12px`                 |
 | `--tabs-indicator-size`         | `2px`                  |
+| `--tabs-indicator-border-radius`         | `0`         |
 | `--tabs-indicator-background`   | `var(--color-primary)` |
 | `--tabs-background`             | `#fff`                 |
 | `--tabs-indicator-inner-size`             | `100%`                 |

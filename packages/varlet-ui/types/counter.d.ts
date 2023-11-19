@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const counterProps: Record<string, any>
+export declare const counterProps: Record<keyof CounterProps, any>
 
 export type CounterValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputChange' | 'onLazyChange'
 
@@ -35,6 +35,8 @@ export interface CounterProps extends BasicAttributes {
 }
 
 export class Counter extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CounterProps>
+
   $props: CounterProps
 
   validate(): Promise<boolean>

@@ -1,7 +1,7 @@
 import { VNode } from 'vue'
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 
-export declare const avatarGroupProps: Record<string, any>
+export declare const avatarGroupProps: Record<keyof AvatarGroupProps, any>
 
 export interface AvatarGroupProps extends BasicAttributes {
   offset?: number | string
@@ -9,6 +9,8 @@ export interface AvatarGroupProps extends BasicAttributes {
 }
 
 export class AvatarGroup extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<AvatarGroupProps>
+
   $props: AvatarGroupProps
 
   $slots: {

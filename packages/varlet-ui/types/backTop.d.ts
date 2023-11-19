@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const backTopProps: Record<string, any>
+export declare const backTopProps: Record<keyof BackTopProps, any>
 
 export interface BackTopProps extends BasicAttributes {
   visibilityHeight?: number | string
@@ -14,6 +14,8 @@ export interface BackTopProps extends BasicAttributes {
 }
 
 export class BackTop extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BackTopProps>
+
   $props: BackTopProps
 
   $slots: {
