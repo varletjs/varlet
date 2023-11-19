@@ -7,11 +7,6 @@ export const props = {
     type: Number,
     default: 0,
   },
-
-  elevation: {
-    type: [Boolean, Number, String],
-    default: false,
-  },
   confirmButtonText: {
     type: String,
     default: 'submit',

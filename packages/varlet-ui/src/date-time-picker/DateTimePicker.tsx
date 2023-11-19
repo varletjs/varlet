@@ -1,10 +1,7 @@
 import './dateTimePicker.less'
-import '../styles/elevation.less'
-import { defineComponent, ref, VNodeChild, watch } from 'vue'
+import { defineComponent, VNodeChild, watch } from 'vue'
 import { props } from './props'
 import { call } from '@varlet/shared'
-import Snackbar from '../snackbar'
-import dayjs from 'dayjs/esm'
 import { useVModel } from '@varlet/use'
 import { createNamespace, flatFragment } from '../utils/components'
 
@@ -41,18 +38,22 @@ export default defineComponent({
               <var-tab-item>
                 {child}
                 <div class={n('body')}>
-                  <var-button text type="primary" onClick={prevStep} v-show={activeTab.value}>
-                    {props.prevStepText}
-                  </var-button>
-                  <var-button text type="primary" onClick={nextStep} v-show={+activeTab.value < children.length - 1}>
-                    {props.nextStepText}
-                  </var-button>
-                  <var-button text onClick={cancel}>
-                    {props.cancelButtonText}
-                  </var-button>
-                  <var-button text type="primary" onClick={timeConfirm}>
-                    {props.confirmButtonText}
-                  </var-button>
+                  <div class={n('button-flex')}>
+                    <var-button text onClick={prevStep} v-show={activeTab.value}>
+                      {props.prevStepText}
+                    </var-button>
+                    <var-button text onClick={nextStep} v-show={+activeTab.value < children.length - 1}>
+                      {props.nextStepText}
+                    </var-button>
+                  </div>
+                  <div class={n('button-flex')}>
+                    <var-button text onClick={cancel}>
+                      {props.cancelButtonText}
+                    </var-button>
+                    <var-button text type="primary" onClick={timeConfirm}>
+                      {props.confirmButtonText}
+                    </var-button>
+                  </div>
                 </div>
               </var-tab-item>
             ))}
