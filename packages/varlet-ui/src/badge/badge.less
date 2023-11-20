@@ -10,6 +10,8 @@
   --badge-success-color: var(--color-success);
   --badge-warning-color: var(--color-warning);
   --badge-info-color: var(--color-info);
+  --badge-dot-width: 8px;
+  --badge-dot-height: 8px;
 }
 
 .var-badge {
@@ -38,9 +40,8 @@
 
   &--dot {
     box-sizing: content-box;
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
+    width: var(--badge-dot-width);
+    height: var(--badge-dot-height);
     padding: 0;
   }
 
