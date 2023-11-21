@@ -1,14 +1,16 @@
 import './dateTimePicker.less'
+import '../button/button.less'
+
 import { defineComponent, VNodeChild, watch } from 'vue'
 import { props } from './props'
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { createNamespace, flatFragment } from '../utils/components'
+import VarButton from '../button'
 
 const { n, classes } = createNamespace('date-time-picker')
 
 export default defineComponent({
-  name: 'VarDateTimePicker',
   props,
   setup(props, { slots }) {
     const activeTab = useVModel(props, 'active')

@@ -17,3 +17,15 @@ export interface DateTimePickerProps extends BasicAttributes {
   onConfirm?: ListenerProp<() => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
+
+export class DateTimePicker extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<DateTimePicker>
+
+  $props: DateTimePicker
+
+  $slots: {
+    default(): VNode[]
+  }
+}
+
+export class _DateTimePickerComponent extends DateTimePicker {}
