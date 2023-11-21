@@ -4,6 +4,7 @@ import { bigCamelize } from '@varlet/shared'
 import { resolve, relative } from 'path'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash-es'
+import { compileStyleVars } from './compileStyleVars.js'
 
 const { ensureDir, writeFileSync, readdir, writeFile, readJSONSync } = fse
 
@@ -18,6 +19,7 @@ export * from '${relative(moduleDir, TYPES_DIR)}'
 
 export async function compileTypes() {
   await ensureDir(TYPES_DIR)
+  compileStyleVars()
 
   const varletConfig = await getVarletConfig()
   const namespace = get(varletConfig, 'namespace')

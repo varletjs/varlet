@@ -123,3 +123,32 @@ function toggleRootTheme() {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Component content | `-` |
+
+### Style Variables
+
+The following is a style variable universal in the module library. Please check the style variable table at the bottom of each component document with unique style variables in each component.
+
+| Variable | Default |
+| --- | --- |
+| `--font-size-xs` | `10px` |
+| `--font-size-sm` | `12px` |
+| `--font-size-md` | `14px` |
+| `--font-size-lg` | `16px` |
+| `--icon-size-xs` | `16px` |
+| `--icon-size-sm` | `18px` |
+| `--icon-size-md` | `20px` |
+| `--icon-size-lg` | `22px` |
+| `--color-body` | `#fff` |
+| `--color-text` | `#333` |
+| `--color-primary` | `#3a7afe` |
+| `--color-info` | `#00afef` |
+| `--color-success` | `#00c48f` |
+| `--color-warning` | `#ff9f00` |
+| `--color-danger` | `#f44336` |
+| `--color-disabled` | `#e0e0e0` |
+| `--color-text-disabled` | `#aaa` |
+| `--opacity-disabled` | `0.6` |
+| `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
+| `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |
+| `--shadow-key-penumbra-opacity` | `rgba(0, 0, 0, 0.14)` |
+| `--shadow-key-ambient-opacity` | `rgba(0, 0, 0, 0.12)` |
