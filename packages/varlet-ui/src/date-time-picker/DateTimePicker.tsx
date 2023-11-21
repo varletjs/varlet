@@ -8,9 +8,10 @@ import { useVModel } from '@varlet/use'
 import { createNamespace, flatFragment } from '../utils/components'
 import VarButton from '../button'
 
-const { n, classes } = createNamespace('date-time-picker')
+const { name, n, classes } = createNamespace('date-time-picker')
 
 export default defineComponent({
+  name,
   props,
   setup(props, { slots }) {
     const activeTab = useVModel(props, 'active')
