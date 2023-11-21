@@ -446,3 +446,4 @@ const active = ref(0)
 | `--tab-inactive-color` | `#646566`                    |
 | `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size`      | `var(--font-size-md)`        |
+| `--tab-font-weight`    | `400`                        |
