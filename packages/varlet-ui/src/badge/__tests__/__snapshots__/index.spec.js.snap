@@ -2,47 +2,47 @@
 
 exports[`test badge component props > test badge hidden 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"display: none;\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px; display: none;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props > test badge hidden 2`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props > test badge position 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props > test badge position 2`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props > test badge position 3`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component props > test badge position 4`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if--><span>0</span></span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component slots > test badge default slots 1`] = `
-"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\"><!--v-if--><span>0</span></span></transition-stub>
+"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\" style=\\"top: 0px; right: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
 exports[`test badge component slots > test badge value slots 1`] = `
 "<div class=\\"var-badge var--box\\">
-  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\"><!--v-if-->value slots</span></transition-stub>
+  <transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default\\" style=\\"margin-top: 0px; margin-left: 0px;\\"><!--v-if-->value slots</span></transition-stub>
 </div>"
 `;

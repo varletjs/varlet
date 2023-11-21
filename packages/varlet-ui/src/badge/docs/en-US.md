@@ -79,6 +79,35 @@ Set the position of the badge through the `position` property.
 </template>
 ```
 
+### Custom Offset
+
+Set the horizontal and vertical offset of the logo via the `offset-x` and `offset-y` properties.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const offset = ref(6)
+</script>
+
+<template>
+  <var-space :size="[8, 20]">
+    <var-badge type="danger" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    </var-badge>
+  </var-space>
+</template>
+```
+
 ### Hidden Badge
 
 Control whether the badge is hidden or not via the `hidden` prop.
@@ -155,6 +184,8 @@ Set Badge Icon through `icon` property.
 | `value` | The value shown in the badge (takes effect when `dot` is `false`)                                                                                                    | _string \| number_ | `0`|
 | `max-value`| The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (effective when both `value` and `max-value` exist)             | _number_| `-` |
 | `position` | Define the position of the logo on other labels when there are other labels in the logo tag. Optional values are `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
+| `offset-x`  | The horizontal offset of badge | _number_ | `0` |
+| `offset-y`  | The vertical offset of badge | _number_ | `0` |
 | `color` | Custom badge colors                                                                                                                                                  | _string_ | `-` |
 | `icon` | Customize the content of the icon in the badge (priority is higher than `value`)                                                                                      | _string_ | `-` |
 | `namespace`      | Customize the namespace of the icon in the badge | _string_ | `var-icon` |

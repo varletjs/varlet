@@ -13,7 +13,7 @@
             [icon, n('--icon')]
           )
         "
-        :style="{ background: color }"
+        :style="{ background: color, ...contentStyle }"
         v-show="!hidden"
         v-bind="$attrs"
       >
@@ -30,9 +30,10 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { toNumber } from '@varlet/shared'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('badge')
 
@@ -41,15 +42,34 @@ export default defineComponent({
   components: { VarIcon },
   inheritAttrs: false,
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const value = computed<string | number>(() => {
       const { value, maxValue } = props
 
       return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
 
+    const contentStyle = computed<CSSProperties>(() => {
+      const { position, offsetX, offsetY } = props
+
+      const [positionX, positionY] = position.split('-') as ['left' | 'right', 'top' | 'bottom']
+
+      if (!slots.default) {
+        return {
+          marginTop: toSizeUnit(offsetY),
+          marginLeft: toSizeUnit(offsetX),
+        }
+      }
+
+      return {
+        [positionY]: toSizeUnit(positionY === 'top' ? offsetY : -offsetY),
+        [positionX]: toSizeUnit(positionX === 'left' ? offsetX : -offsetX),
+      }
+    })
+
     return {
       value,
+      contentStyle,
       n,
       classes,
     }

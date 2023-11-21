@@ -104,6 +104,80 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
+  test('test badge offsetX with default slot', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetX: 4,
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-left: 4px;')
+
+    await wrapper.setProps({
+      offsetX: 5,
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-left: 5px;')
+
+    wrapper.unmount()
+  })
+
+  test('test badge offsetX without default slot', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetX: 4,
+      },
+      slots: {
+        default: () => 'default slots',
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('right: -4px;')
+
+    await wrapper.setProps({
+      position: 'left-top',
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('left: 4px;')
+  })
+
+  test('test badge offsetY with default slot', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetY: 4,
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-top: 4px;')
+
+    await wrapper.setProps({
+      offsetY: 5,
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-top: 5px;')
+
+    wrapper.unmount()
+  })
+
+  test('test badge offsetY without default slot', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetY: 4,
+      },
+      slots: {
+        default: () => 'default slots',
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('top: 4px;')
+
+    await wrapper.setProps({
+      position: 'right-bottom',
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('bottom: -4px;')
+  })
+
   test('test badge icon', () => {
     const wrapper = mount(VarBadge, {
       props: { icon: 'notebook' },

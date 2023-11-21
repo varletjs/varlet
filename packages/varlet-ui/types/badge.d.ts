@@ -17,6 +17,8 @@ export interface BadgeProps extends BasicAttributes {
   position?: BadgePosition
   icon?: string
   namespace?: string
+  offsetX?: number
+  offsetY?: number
 }
 
 export class Badge extends VarComponent {

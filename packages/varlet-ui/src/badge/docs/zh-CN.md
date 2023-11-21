@@ -81,6 +81,35 @@
 </template>
 ```
 
+### 自定义偏移量
+
+通过 `offset-x` 和 `offset-y` 属性设置徽标的水平和垂直方向的偏移量。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const offset = ref(6)
+</script>
+
+<template>
+  <var-space :size="[8, 20]">
+    <var-badge type="danger" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+    </var-badge>
+    <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
+      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+    </var-badge>
+  </var-space>
+</template>
+```
+
 ### 隐藏徽标
 
 通过 `hidden` 属性控制是否隐藏徽标。
@@ -157,6 +186,8 @@ function handleChange() {
 | `value`     | 徽标中显示的值（当 `dot` 为 `false` 时生效）| _string \| number_ | `0` |
 | `max-value` | 徽标中显示的最大值，当 `value` 大于 `max-value` 时会显示 `max-value+` (当 `value` 与 `max-value` 都存在时生效)| _string \| number_ | `-` |
 | `position`  | 徽标标签中有其他标签时定义徽标在其他标签上的位置，可选值 `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
+| `offset-x`  | 徽标的水平偏移量 | _number_ | `0` |
+| `offset-y`  | 徽标的垂直偏移量 | _number_ | `0` |
 | `color`     | 自定义徽标颜色 | _string_ | `-` |
 | `icon`      | 自定义徽标中图标的内容（优先级高于 `value`） | _string_ | `-` |
 | `namespace`      | 自定义徽标中图标的命名空间 | _string_ | `var-icon` |
