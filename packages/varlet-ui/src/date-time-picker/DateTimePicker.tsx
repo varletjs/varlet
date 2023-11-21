@@ -1,7 +1,6 @@
 import './dateTimePicker.less'
 import '../button/button.less'
-import '../tabs-items/tabs-items.less'
-import '../tab-item/tab-item.less'
+import '../tab-item/tabItem.less'
 
 import { defineComponent, VNodeChild, watch } from 'vue'
 import { props } from './props'
