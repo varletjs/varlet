@@ -2,6 +2,7 @@ import fse from 'fs-extra'
 import { SRC_DIR, TYPES_DIR } from '../shared/constant.js'
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils.js'
+import { camelize } from '@varlet/shared'
 
 const { ensureDirSync, readdirSync, readFileSync, writeFileSync } = fse
 
@@ -32,7 +33,8 @@ export function compileStyleVars() {
   compileDir(SRC_DIR, keys)
 
   const template = [...keys].reduce((template, key: string) => {
-    template += `  '${key}': string;\n`
+    template += `  '${key}'?: string;\n`
+    template += `  ${camelize(key.slice(2))}?: string;\n`
     return template
   }, 'export interface StyleVars {\n')
 
