@@ -16,26 +16,24 @@ export default defineComponent({
   setup(props, { slots }) {
     const activeTab = useVModel(props, 'active')
     watch(activeTab, () => {})
+    const cancel = () => {
+      call(props.onCancel)
+    }
+    let children: VNodeChild[] = call(slots.default) ?? []
+    children = flatFragment(children)
+    const nextStep = () => {
+      activeTab.value = +activeTab.value + 1
+    }
+    const prevStep = () => {
+      if (activeTab.value) {
+        activeTab.value = +activeTab.value - 1
+      }
+    }
+    const timeConfirm = () => {
+      call(props.onConfirm)
+    }
 
-    return () => {
-      const cancel = () => {
-        call(props.onCancel)
-      }
-      let children: VNodeChild[] = call(slots.default) ?? []
-      children = flatFragment(children)
-      const nextStep = () => {
-        activeTab.value = +activeTab.value + 1
-      }
-      const prevStep = () => {
-        if (activeTab.value) {
-          activeTab.value = +activeTab.value - 1
-        }
-      }
-      const timeConfirm = () => {
-        call(props.onConfirm)
-      }
-
-      return (
+    return () => (
         <div class={classes(n())} ref="picker">
           <var-tabs-items v-model:active={activeTab.value}>
             {children.map((child) => (
@@ -67,6 +65,5 @@ export default defineComponent({
           </div>
         </div>
       )
-    }
   },
 })
