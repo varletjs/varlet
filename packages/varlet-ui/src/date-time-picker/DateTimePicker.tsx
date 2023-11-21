@@ -1,5 +1,7 @@
 import './dateTimePicker.less'
 import '../button/button.less'
+import '../tabs-items/tabs-items.less'
+import '../tab-item/tab-item.less'
 
 import { defineComponent, VNodeChild, watch } from 'vue'
 import { props } from './props'
@@ -7,6 +9,8 @@ import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { createNamespace, flatFragment } from '../utils/components'
 import VarButton from '../button'
+import VarTabsItems from '../tabs-items'
+import VarTabItem from '../tab-item'
 
 const { name, n, classes } = createNamespace('date-time-picker')
 
@@ -35,27 +39,27 @@ export default defineComponent({
 
     return () => (
       <div class={classes(n())} ref="picker">
-        <var-tabs-items v-model:active={activeTab.value}>
+        <VarTabsItems v-model:active={activeTab.value}>
           {children.map((child) => (
-            <var-tab-item>{child}</var-tab-item>
+            <VarTabItem>{child}</VarTabItem>
           ))}
-        </var-tabs-items>
+        </VarTabsItems>
         <div class={n('body')}>
           <div class={n('button-flex')}>
-            <var-button class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
+            <VarButton class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
               {props.prevStepText}
-            </var-button>
-            <var-button class={n('next-button')} text onClick={nextStep} v-show={activeTab.value < children.length - 1}>
+            </VarButton>
+            <VarButton class={n('next-button')} text onClick={nextStep} v-show={activeTab.value < children.length - 1}>
               {props.nextStepText}
-            </var-button>
+            </VarButton>
           </div>
           <div class={n('button-flex')}>
-            <var-button class={n('cancel-button')} text onClick={cancel}>
+            <VarButton class={n('cancel-button')} text onClick={cancel}>
               {props.cancelButtonText}
-            </var-button>
-            <var-button class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
+            </VarButton>
+            <VarButton class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
               {props.confirmButtonText}
-            </var-button>
+            </VarButton>
           </div>
         </div>
       </div>
