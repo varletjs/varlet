@@ -4,32 +4,51 @@ import { mount } from '@vue/test-utils'
 import DatePicker from '../../date-picker'
 import TimePicker from '../../time-picker'
 import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
+
+const Wrapper = {
+  components: {
+    [DateTimePicker.name]: DateTimePicker,
+    [DatePicker.name]: DatePicker,
+    [TimePicker.name]: TimePicker,
+  },
+  props: ['onConfirm', 'onCancel', 'prevStepText', 'nextStepText', 'cancelButtonText', 'confirmButtonText'],
+  data: () => ({
+    date: '2021-04-08',
+    time: '13:24',
+  }),
+  template: `
+    <var-date-time-picker>
+      <var-date-picker v-model="date" />
+      <var-time-picker v-model="time" />
+    </var-date-time-picker>
+  `,
+}
 
 test('test date-time-picker plugin', () => {
-  const app = createApp({}).use(DateTimePicker)
+  const app = createApp({}).use(DatePicker).use(TimePicker).use(DateTimePicker)
+  expect(app.component(DatePicker.name)).toBeTruthy()
+  expect(app.component(TimePicker.name)).toBeTruthy()
   expect(app.component(DateTimePicker.name)).toBeTruthy()
 })
 
-describe('test dateTimePicker style and type', () => {
-  test('test dateTimePicker style and date time', async () => {
-    const template = `
-    <var-date-time-picker :active="1">
-      <var-date-picker v-model="2023-11-14" />
-      <var-time-picker v-model="12:34" />
-    </var-date-time-picker>
-  `
-    const wrapper = mount({
-      components: {
-        [DateTimePicker.name]: DateTimePicker,
-        [DatePicker.name]: DatePicker,
-        [TimePicker.name]: TimePicker,
-      },
-      template,
-    })
-
-    await delay(0)
-    expect(wrapper.html()).toMatchSnapshot()
-
-    wrapper.unmount()
+test('test DateTimePicker event', async () => {
+  const onCancel = vi.fn()
+  const onConfirm = vi.fn()
+  const wrapper = mount(Wrapper, {
+    props: {
+      onCancel,
+      onConfirm,
+    },
   })
+
+  await delay(100)
+  await wrapper.find('.var-date-time-picker__cancel-button').trigger('click')
+  expect(onCancel).toHaveBeenCalledTimes(0)
+
+  await delay(100)
+  await wrapper.find('.var-date-time-picker__confirm-button').trigger('click')
+  expect(onConfirm).toHaveBeenCalledTimes(0)
+
+  wrapper.unmount()
 })

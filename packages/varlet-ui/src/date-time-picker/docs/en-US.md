@@ -44,7 +44,7 @@ const confirm = () => {
 | 事件名       | 说明      | 回调参数                              |
 |-----------|---------|-----------------------------------|
 | `confirm` | Trigger when clicking OK | `-` |
-| `change`  | Triggered when clicking Cancel | `-` |
+| `cancel`  | Triggered when clicking Cancel | `-` |
 
 ### Slots
 
