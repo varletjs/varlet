@@ -334,4 +334,7 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
   'floating-panel': {
     path: '/floating-panel',
   },
+  'date-time-picker': {
+    path: '/date-time-picker',
+  },
 }

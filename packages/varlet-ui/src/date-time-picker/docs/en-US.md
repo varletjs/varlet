@@ -52,3 +52,4 @@ Custom selector group content, unlimited number
 
 | Name | Description | Parameters |
 | ----- | -------------- | -------- |
+| `default` | Custom panel content | `-` |

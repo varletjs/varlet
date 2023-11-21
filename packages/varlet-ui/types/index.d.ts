@@ -27,6 +27,7 @@ export * from './context'
 export * from './countdown'
 export * from './counter'
 export * from './datePicker'
+export * from './dateTimePicker'
 export * from './dialog'
 export * from './divider'
 export * from './drag'
@@ -117,6 +118,7 @@ declare module 'vue' {
     VarCountdown: typeof import('@varlet/ui')['_CountdownComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
+    VarDateTimePicker: typeof import('@varlet/ui')['_DateTimePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
     VarDrag: typeof import('@varlet/ui')['_DragComponent']
