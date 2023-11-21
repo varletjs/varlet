@@ -32,7 +32,7 @@ const confirm = () => {
 
 | 参数                  | 说明                                           | 类型 | 默认值 |
 |---------------------|----------------------------------------------| -------- | ---------- |
-| `active`                 | 选中的tab                          | _number_ | 0 |
+| `active`                 | 选中的tab                          | _number_ | `0` |
 | `confirm-button-text`    | 自定义确认按钮文字                      | _string_ | `submit` |
 | `cancel-button-text`     | 自定义取消按钮文字                       | _string_ | `cancel` |
 | `next-step-text`          | 自定义下一步按钮文字                    | _string_ | `next` |

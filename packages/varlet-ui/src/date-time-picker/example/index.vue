@@ -1,8 +1,8 @@
 <script setup>
-import { watchLang, AppType } from '@varlet/cli/client'
+import { Themes , Snackbar } from '@varlet/ui'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
-import { Snackbar } from '@varlet/ui'
 
 const date = ref('2023-11-14')
 const time = ref('12:34')
@@ -12,6 +12,7 @@ const confirm = () => {
 }
 
 watchLang(use)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>

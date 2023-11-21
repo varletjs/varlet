@@ -32,7 +32,7 @@ const confirm = () => {
 
 | Parameter | Description | Type | Default |
 |---------------------|----------------------------------------------| -------- | ---------- |
-| `active`                 | Selected tab                                     | _number_ | 0 |
+| `active`                 | Selected tab                                     | _number_ | `0` |
 | `confirm-button-text`    | Custom confirmation button text                      | _string_ | `submit` |
 | `cancel-button-text`     | Custom cancel button text                       | _string_ | `cancel` |
 | `next-step-text`          | Customize the next button text                    | _string_ | `next` |
