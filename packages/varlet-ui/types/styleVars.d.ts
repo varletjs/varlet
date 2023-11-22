@@ -1209,6 +1209,8 @@ export interface StyleVars {
   tabDisabledColor?: string;
   '--tab-font-size'?: string;
   tabFontSize?: string;
+  '--tab-font-weight'?: string;
+  tabFontWeight?: string;
   '--time-picker-border-radius'?: string;
   timePickerBorderRadius?: string;
   '--time-picker-font-size'?: string;
