@@ -27,25 +27,18 @@ watchDarkMode(Themes.dark, (theme) => {
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <div class="index-bar-example-container">
-    <var-index-bar @change="handleChange" duration="300">
-      <div v-for="item in list" :key="item">
-        <var-index-anchor :index="item" class="index-bar-example-anchor" :style="{ background: bgColor, color }">
-          {{ pack.title }} {{ item }}
-        </var-index-anchor>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-        <var-cell>{{ item }} {{ pack.text }}</var-cell>
-      </div>
-    </var-index-bar>
-  </div>
+  <var-index-bar @change="handleChange" duration="300" :sticky-offset-top="54">
+    <div v-for="item in list" :key="item">
+      <var-index-anchor :index="item" class="index-bar-example-anchor" :style="{ background: bgColor, color }">
+        {{ pack.title }} {{ item }}
+      </var-index-anchor>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+      <var-cell>{{ item }} {{ pack.text }}</var-cell>
+    </div>
+  </var-index-bar>
 </template>
 
 <style lang="less">
-.index-bar-example-container {
-  overflow: auto;
-  height: calc(100vh - 20vmin);
-}
-
 .index-bar-example-anchor {
   height: 42px;
   display: flex;

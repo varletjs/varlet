@@ -19,7 +19,6 @@
 import { computed, defineComponent, ref, watch, onBeforeUnmount, onDeactivated, onActivated } from 'vue'
 import {
   isPlainObject,
-  isWindow,
   toNumber,
   doubleRaf,
   requestAnimationFrame,
@@ -108,11 +107,9 @@ export default defineComponent({
     }
 
     function getOffsetTop() {
-      if (isWindow(scroller)) return 0
-
       const { top: parentTop } = getRect(scroller!)
-      const { scrollTop } = scroller!
       const { top: targetTop } = getRect(barEl.value!)
+      const scrollTop = getScrollTop(scroller!)
 
       return scrollTop - parentTop + targetTop
     }
