@@ -101,4 +101,9 @@ export default {
   paginationItem: '條',
   paginationPage: '頁',
   paginationJump: '前往',
+  // date-time-picker
+  prevStepText: '上一步',
+  nextStepText: '下一步',
+  cancelButtonText: '取消',
+  confirmButtonText: '提交',
 } as Pack

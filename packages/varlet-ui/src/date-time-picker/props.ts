@@ -7,22 +7,10 @@ export const props = {
     type: Number,
     default: 0,
   },
-  confirmButtonText: {
-    type: String,
-    default: 'submit',
-  },
-  cancelButtonText: {
-    type: String,
-    default: 'cancel',
-  },
-  nextStepText: {
-    type: String,
-    default: 'next',
-  },
-  prevStepText: {
-    type: String,
-    default: 'prev',
-  },
+  confirmButtonText: String,
+  cancelButtonText: String,
+  nextStepText: String,
+  prevStepText: String,
   onConfirm: defineListenerProp<() => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   onCancel: defineListenerProp<() => void>(),

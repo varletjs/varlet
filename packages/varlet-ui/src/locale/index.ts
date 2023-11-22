@@ -33,6 +33,11 @@ export type Pack = {
   timePickerHint: string
   // internal
   lang?: string
+  // date-time-picker
+  confirmButtonText: string
+  cancelButtonText: string
+  nextStepText: string
+  prevStepText: string
 }
 
 function useLocale<T = Pack>() {

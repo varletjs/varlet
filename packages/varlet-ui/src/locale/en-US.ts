@@ -104,4 +104,9 @@ export default {
   paginationJump: 'Go to',
   // time-picker
   timePickerHint: 'SELECT TIME',
+  // date-time-picker
+  prevStepText: 'prev',
+  nextStepText: 'next',
+  cancelButtonText: 'cancel',
+  confirmButtonText: 'submit',
 } as Pack

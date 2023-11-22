@@ -10,6 +10,7 @@ import { createNamespace, flatFragment } from '../utils/components'
 import VarButton from '../button'
 import VarTabsItems from '../tabs-items'
 import VarTabItem from '../tab-item'
+import { pack } from '../locale'
 
 const { name, n, classes } = createNamespace('date-time-picker')
 
@@ -35,6 +36,7 @@ export default defineComponent({
     const timeConfirm = () => {
       call(props.onConfirm)
     }
+    console.log(pack.value)
 
     return () => (
       <div class={classes(n())} ref="picker">
@@ -46,18 +48,18 @@ export default defineComponent({
         <div class={n('body')}>
           <div class={n('button-flex')}>
             <VarButton class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
-              {props.prevStepText}
+              {props.prevStepText ?? pack.value.prevStepText}
             </VarButton>
             <VarButton class={n('next-button')} text onClick={nextStep} v-show={activeTab.value < children.length - 1}>
-              {props.nextStepText}
+              {props.nextStepText ?? pack.value.nextStepText}
             </VarButton>
           </div>
           <div class={n('button-flex')}>
             <VarButton class={n('cancel-button')} text onClick={cancel}>
-              {props.cancelButtonText}
+              {props.cancelButtonText ?? pack.value.cancelButtonText}
             </VarButton>
             <VarButton class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
-              {props.confirmButtonText}
+              {props.confirmButtonText ?? pack.value.confirmButtonText}
             </VarButton>
           </div>
         </div>
