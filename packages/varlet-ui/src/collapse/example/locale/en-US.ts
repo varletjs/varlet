@@ -12,4 +12,5 @@ export default {
   hideDivider: 'Hide Divider',
   showDivider: 'Show Divider',
   controlledDivider: 'Controlled Divider',
+  toggleAll: 'Toggle All',
 }

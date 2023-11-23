@@ -6,6 +6,7 @@ import { pack, use } from './locale'
 
 const disabled = ref(false)
 const divider = ref(false)
+const collapseRef = ref(null)
 
 const values = reactive({
   value: ['1'],
@@ -14,10 +15,15 @@ const values = reactive({
   value3: ['1'],
   value4: ['2'],
   value5: [],
+  value6: ['2'],
 })
 
 function handleChange(val) {
   console.log(val)
+}
+
+function toggleAll() {
+  collapseRef.value.toggleAll()
 }
 
 watchLang(use)
@@ -72,5 +78,12 @@ watchDarkMode(Themes.dark)
       <template #icon>^_^</template>
       {{ pack.slotContent }}
     </var-collapse-item>
+  </var-collapse>
+
+  <app-type>{{ pack.toggleAll }}</app-type>
+  <var-button @click="toggleAll">{{ pack.toggleAll }}</var-button>
+  <var-collapse v-model="values.value6" ref="collapseRef">
+    <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>
   </var-collapse>
 </template>

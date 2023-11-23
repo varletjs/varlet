@@ -12,4 +12,5 @@ export default {
   hideDivider: '隐藏分割线',
   showDivider: '显示分割线',
   controlledDivider: '可控的分割线',
+  toggleAll: '切换全部',
 }

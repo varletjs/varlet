@@ -44,26 +44,24 @@ export default defineComponent({
 
     bindCollapseItem(collapseProvider)
 
-    function checkValue() {
+    const normalizeValue = computed(() => {
       if (!props.accordion && !isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be an Array')
-        return false
+        return props.modelValue !== undefined && props.modelValue !== null ? [props.modelValue] : []
       }
 
       if (props.accordion && isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be a String or Number')
-        return false
+        return props.modelValue.length ? props.modelValue[0] : undefined
       }
-      return true
-    }
+      return props.modelValue
+    })
 
     function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
-      if (!checkValue()) return null
-      if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
+      if (normalizeValue.value === undefined) return null
+      if (isExpand) return props.accordion ? value : [...(normalizeValue.value as Array<string | number>), value]
 
       return props.accordion
         ? null
-        : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
+        : (normalizeValue.value as Array<string | number>).filter((name: string | number) => name !== value)
     }
 
     function updateItem(value: number | string, isExpand: boolean) {
@@ -74,13 +72,13 @@ export default defineComponent({
 
     function matchName(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
+        return collapseItem.find(({ name }: CollapseItemProvider) => normalizeValue.value === name.value)
       }
 
       const filterItem = collapseItem.filter(({ name }: CollapseItemProvider) => {
         if (name.value === undefined) return false
 
-        return (props.modelValue as Array<string | number>).includes(name.value)
+        return (normalizeValue.value as Array<string | number>).includes(name.value)
       })
 
       return filterItem.length ? filterItem : undefined
@@ -89,18 +87,17 @@ export default defineComponent({
     function matchIndex(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
         return collapseItem.find(
-          ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
+          ({ index, name }: CollapseItemProvider) => name.value === undefined && normalizeValue.value === index.value
         )
       }
       return collapseItem.filter(
         ({ index, name }: CollapseItemProvider) =>
-          name.value === undefined && (props.modelValue as Array<string | number>).includes(index.value)
+          name.value === undefined && (normalizeValue.value as Array<string | number>).includes(index.value)
       )
     }
 
     function resize() {
-      if (!checkValue()) return
-
+      if (normalizeValue.value === undefined) return null
       const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
 
       if (
@@ -122,9 +119,21 @@ export default defineComponent({
       })
     }
 
+    const toggleAll = () => {
+      let modelValue: CollapseModelValue = []
+      if (!matchName()) {
+        modelValue = collapseItem
+          .filter((provider) => provider.name.value !== undefined)
+          .map((provider) => provider.name.value || provider.index.value)
+      }
+      call(props['onUpdate:modelValue'], modelValue)
+      call(props.onChange, modelValue)
+    }
+
     return {
       divider,
       n,
+      toggleAll,
     }
   },
 })
