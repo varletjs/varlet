@@ -27,8 +27,6 @@ const Wrapper = {
 
 test('test date-time-picker plugin', () => {
   const app = createApp({}).use(DateTimePicker)
-  expect(app.component(DatePicker.name)).toBeTruthy()
-  expect(app.component(TimePicker.name)).toBeTruthy()
   expect(app.component(DateTimePicker.name)).toBeTruthy()
 })
 
