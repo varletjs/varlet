@@ -26,11 +26,11 @@ export const props = {
   namespace: pickProps(iconProps, 'namespace'),
   color: String,
   offsetX: {
-    type: Number,
+    type: [String, Number],
     default: 0,
   },
   offsetY: {
-    type: Number,
+    type: [String, Number],
     default: 0,
   },
 }

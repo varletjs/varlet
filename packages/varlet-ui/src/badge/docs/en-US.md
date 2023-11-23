@@ -184,8 +184,8 @@ Set Badge Icon through `icon` property.
 | `value` | The value shown in the badge (takes effect when `dot` is `false`)                                                                                                    | _string \| number_ | `0`|
 | `max-value`| The maximum value shown in the logo, when `value` is greater than `max-value`, displays `max-value+` (effective when both `value` and `max-value` exist)             | _number_| `-` |
 | `position` | Define the position of the logo on other labels when there are other labels in the logo tag. Optional values are `right-top` `right-bottom` `left-top` `left-bottom` | _string_ | `right-top` |
-| `offset-x`  | The horizontal offset of badge | _number_ | `0` |
-| `offset-y`  | The vertical offset of badge | _number_ | `0` |
+| `offset-x`  | The horizontal offset of badge | _number \| string_ | `0` |
+| `offset-y`  | The vertical offset of badge | _number \| string_ | `0` |
 | `color` | Custom badge colors                                                                                                                                                  | _string_ | `-` |
 | `icon` | Customize the content of the icon in the badge (priority is higher than `value`)                                                                                      | _string_ | `-` |
 | `namespace`      | Customize the namespace of the icon in the badge | _string_ | `var-icon` |

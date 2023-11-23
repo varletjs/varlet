@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { toNumber } from '@varlet/shared'
+import { bigCamelize, toNumber } from '@varlet/shared'
 import { computed, defineComponent, type CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
@@ -62,8 +62,8 @@ export default defineComponent({
       }
 
       return {
-        [positionY]: toSizeUnit(positionY === 'top' ? offsetY : -offsetY),
-        [positionX]: toSizeUnit(positionX === 'left' ? offsetX : -offsetX),
+        [`margin${bigCamelize(positionY)}`]: toSizeUnit(positionY === 'top' ? offsetY : -offsetY),
+        [`margin${bigCamelize(positionX)}`]: toSizeUnit(positionX === 'left' ? offsetX : -offsetX),
       }
     })
 
