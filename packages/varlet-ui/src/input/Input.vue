@@ -72,8 +72,7 @@
         @change="handleChange"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
-      >
-      </textarea>
+      />
       <input
         v-else
         :class="
