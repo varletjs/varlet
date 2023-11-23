@@ -578,7 +578,6 @@ export default defineConfig({
         doc: 'picker',
         type: 2,
       },
-
       {
         text: {
           'zh-CN': 'DatePicker 日期选择器',

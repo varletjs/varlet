@@ -8,7 +8,7 @@ The function returns a `Promise`, on selection return `action`. Click modal clos
 
 ## Functional
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>

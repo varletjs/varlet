@@ -1,10 +1,10 @@
-# Date and time selector
+# DateTimePicker
 
-### Introduction
+### Intro
 
 It is used to select date, time or other combined components.
 
-### Basic use
+### Basic Usage
 
 ```html
 <script setup>
@@ -33,17 +33,17 @@ const confirm = () => {
 | Parameter | Description | Type | Default |
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `active`                 | Selected tab                                     | _number_ | `0` |
-| `confirm-button-text`    | Custom confirmation button text                      | _string_ | `submit` |
-| `cancel-button-text`     | Custom cancel button text                       | _string_ | `cancel` |
-| `next-step-text`          | Customize the next button text                    | _string_ | `next` |
-| `prev-step-text`          | Customize the previous button text                     | _string_ | `prev` |
+| `confirm-button-text`    | Custom confirmation button text                      | _string_ | `Submit` |
+| `cancel-button-text`     | Custom cancel button text                       | _string_ | `Cancel` |
+| `next-step-text`          | Custom the next button text                    | _string_ | `Next` |
+| `prev-step-text`          | Custom the previous button text                     | _string_ | `Prev` |
 
 
-### 事件
+### Events
 
-| 事件名       | 说明      | 回调参数                              |
+| Event | Description                 | arguments |
 |-----------|---------|-----------------------------------|
-| `confirm` | Trigger when clicking OK | `-` |
+| `confirm` | Triggered when clicking OK | `-` |
 | `cancel`  | Triggered when clicking Cancel | `-` |
 
 ### Slots

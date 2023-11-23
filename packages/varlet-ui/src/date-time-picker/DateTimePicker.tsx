@@ -2,14 +2,14 @@ import './dateTimePicker.less'
 import '../button/button.less'
 import '../tab-item/tabItem.less'
 
-import { defineComponent, VNodeChild, watch } from 'vue'
+import { defineComponent, watch } from 'vue'
 import { props } from './props'
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { createNamespace, flatFragment } from '../utils/components'
-import VarButton from '../button'
-import VarTabsItems from '../tabs-items'
-import VarTabItem from '../tab-item'
+import Button from '../button'
+import TabsItems from '../tabs-items'
+import TabItem from '../tab-item'
 import { pack } from '../locale'
 
 const { name, n, classes } = createNamespace('date-time-picker')
@@ -42,32 +42,27 @@ export default defineComponent({
 
       return (
         <div class={classes(n())} ref="picker">
-          <VarTabsItems v-model:active={activeTab.value}>
+          <TabsItems v-model:active={activeTab.value}>
             {children.map((child) => (
-              <VarTabItem>{child}</VarTabItem>
+              <TabItem>{child}</TabItem>
             ))}
-          </VarTabsItems>
+          </TabsItems>
           <div class={n('body')}>
-            <div class={n('button-flex')}>
-              <VarButton class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
+            <div>
+              <Button class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
                 {prevStepText ?? pack.value.prevStepText}
-              </VarButton>
-              <VarButton
-                class={n('next-button')}
-                text
-                onClick={nextStep}
-                v-show={activeTab.value < children.length - 1}
-              >
+              </Button>
+              <Button class={n('next-button')} text onClick={nextStep} v-show={activeTab.value < children.length - 1}>
                 {nextStepText ?? pack.value.nextStepText}
-              </VarButton>
+              </Button>
             </div>
-            <div class={n('button-flex')}>
-              <VarButton class={n('cancel-button')} text onClick={cancel}>
+            <div>
+              <Button class={n('cancel-button')} text onClick={cancel}>
                 {cancelButtonText ?? pack.value.cancelButtonText}
-              </VarButton>
-              <VarButton class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
+              </Button>
+              <Button class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
                 {confirmButtonText ?? pack.value.confirmButtonText}
-              </VarButton>
+              </Button>
             </div>
           </div>
         </div>
