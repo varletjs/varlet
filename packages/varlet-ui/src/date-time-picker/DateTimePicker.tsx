@@ -23,8 +23,8 @@ export default defineComponent({
 
     return () => {
       const { prevStepText, nextStepText, cancelButtonText, confirmButtonText } = props
-      let children: VNodeChild[] = call(slots.default) ?? []
-      children = flatFragment(children)
+      const children = flatFragment(call(slots.default) ?? [])
+
       const nextStep = () => {
         activeTab.value += 1
       }
@@ -39,6 +39,7 @@ export default defineComponent({
       const cancel = () => {
         call(props.onCancel)
       }
+
       return (
         <div class={classes(n())} ref="picker">
           <VarTabsItems v-model:active={activeTab.value}>
