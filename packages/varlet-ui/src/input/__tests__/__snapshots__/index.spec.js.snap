@@ -73,8 +73,7 @@ exports[`test input events > test input focus & blur 3`] = `
     <div class=\\"var-field-decorator__controller var-field-decorator--focus\\" style=\\"cursor: text; overflow: visible;\\">
       <div class=\\"var-field-decorator__icon\\"></div>
       <div class=\\"var-field-decorator__middle\\">
-        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-      </textarea>
+        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"></textarea>
       </div>
       <!--v-if-->
       <div class=\\"var-field-decorator__icon\\">
@@ -97,8 +96,7 @@ exports[`test input events > test input focus & blur 4`] = `
     <div class=\\"var-field-decorator__controller\\" style=\\"cursor: text; overflow: hidden;\\">
       <div class=\\"var-field-decorator__icon\\"></div>
       <div class=\\"var-field-decorator__middle\\">
-        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\">
-      </textarea>
+        <!--v-if--><textarea class=\\"var-input__input var-input--textarea\\" autocomplete=\\"new-password\\" id=\\"var-input-mock-id\\" type=\\"text\\" rows=\\"8\\" style=\\"resize: none;\\"></textarea>
       </div>
       <!--v-if-->
       <div class=\\"var-field-decorator__icon\\">
