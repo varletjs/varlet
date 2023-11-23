@@ -27,7 +27,7 @@ jobs:
         run: pnpm build:play
 
       - name: Deploy site
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@4.4.1
         with:
           branch: playground-gh-page
           folder: packages/varlet-ui-playground/site
