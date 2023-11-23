@@ -20,50 +20,57 @@ export default defineComponent({
   setup(props, { slots }) {
     const activeTab = useVModel(props, 'active')
     watch(activeTab, () => {})
-    const cancel = () => {
-      call(props.onCancel)
-    }
-    let children: VNodeChild[] = call(slots.default) ?? []
-    children = flatFragment(children)
-    const nextStep = () => {
-      activeTab.value += 1
-    }
-    const prevStep = () => {
-      if (activeTab.value) {
-        activeTab.value -= 1
-      }
-    }
-    const timeConfirm = () => {
-      call(props.onConfirm)
-    }
-    console.log(pack.value)
 
-    return () => (
-      <div class={classes(n())} ref="picker">
-        <VarTabsItems v-model:active={activeTab.value}>
-          {children.map((child) => (
-            <VarTabItem>{child}</VarTabItem>
-          ))}
-        </VarTabsItems>
-        <div class={n('body')}>
-          <div class={n('button-flex')}>
-            <VarButton class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
-              {props.prevStepText ?? pack.value.prevStepText}
-            </VarButton>
-            <VarButton class={n('next-button')} text onClick={nextStep} v-show={activeTab.value < children.length - 1}>
-              {props.nextStepText ?? pack.value.nextStepText}
-            </VarButton>
-          </div>
-          <div class={n('button-flex')}>
-            <VarButton class={n('cancel-button')} text onClick={cancel}>
-              {props.cancelButtonText ?? pack.value.cancelButtonText}
-            </VarButton>
-            <VarButton class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
-              {props.confirmButtonText ?? pack.value.confirmButtonText}
-            </VarButton>
+    return () => {
+      const { prevStepText, nextStepText, cancelButtonText, confirmButtonText } = props
+      let children: VNodeChild[] = call(slots.default) ?? []
+      children = flatFragment(children)
+      const nextStep = () => {
+        activeTab.value += 1
+      }
+      const prevStep = () => {
+        if (activeTab.value) {
+          activeTab.value -= 1
+        }
+      }
+      const timeConfirm = () => {
+        call(props.onConfirm)
+      }
+      const cancel = () => {
+        call(props.onCancel)
+      }
+      return (
+        <div class={classes(n())} ref="picker">
+          <VarTabsItems v-model:active={activeTab.value}>
+            {children.map((child) => (
+              <VarTabItem>{child}</VarTabItem>
+            ))}
+          </VarTabsItems>
+          <div class={n('body')}>
+            <div class={n('button-flex')}>
+              <VarButton class={n('prev-button')} text onClick={prevStep} v-show={activeTab.value}>
+                {prevStepText ?? pack.value.prevStepText}
+              </VarButton>
+              <VarButton
+                class={n('next-button')}
+                text
+                onClick={nextStep}
+                v-show={activeTab.value < children.length - 1}
+              >
+                {nextStepText ?? pack.value.nextStepText}
+              </VarButton>
+            </div>
+            <div class={n('button-flex')}>
+              <VarButton class={n('cancel-button')} text onClick={cancel}>
+                {cancelButtonText ?? pack.value.cancelButtonText}
+              </VarButton>
+              <VarButton class={n('confirm-button')} text type="primary" onClick={timeConfirm}>
+                {confirmButtonText ?? pack.value.confirmButtonText}
+              </VarButton>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    }
   },
 })

@@ -33,10 +33,10 @@ const confirm = () => {
 | 参数                  | 说明                                           | 类型 | 默认值 |
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `active`                 | 选中的tab                          | _number_ | `0` |
-| `confirm-button-text`    | 自定义确认按钮文字                      | _string_ | `submit` |
-| `cancel-button-text`     | 自定义取消按钮文字                       | _string_ | `cancel` |
-| `next-step-text`          | 自定义下一步按钮文字                    | _string_ | `next` |
-| `prev-step-text`          | 自定义上一步按钮文字                     | _string_ | `prev` |
+| `confirm-button-text`    | 自定义确认按钮文字                      | _string_ | `提交` |
+| `cancel-button-text`     | 自定义取消按钮文字                       | _string_ | `取消` |
+| `next-step-text`          | 自定义下一步按钮文字                    | _string_ | `下一步` |
+| `prev-step-text`          | 自定义上一步按钮文字                     | _string_ | `上一步` |
 
 
 ### 事件

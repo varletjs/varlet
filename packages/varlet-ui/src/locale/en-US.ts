@@ -96,17 +96,17 @@ export default {
       abbr: 'S',
     },
   },
-  datePickerSelected: ' selected',
+  datePickerSelected: 'selected',
   datePickerHint: 'SELECT DATE',
   // pagination
-  paginationItem: '',
+  paginationItem: 'piece',
   paginationPage: 'page',
   paginationJump: 'Go to',
   // time-picker
   timePickerHint: 'SELECT TIME',
   // date-time-picker
-  prevStepText: 'prev',
-  nextStepText: 'next',
-  cancelButtonText: 'cancel',
-  confirmButtonText: 'submit',
+  prevStepText: 'Prev',
+  nextStepText: 'Next',
+  cancelButtonText: 'Cancel',
+  confirmButtonText: 'Submit',
 } as Pack
