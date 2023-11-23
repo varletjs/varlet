@@ -120,3 +120,32 @@ function toggleRootTheme() {
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 组件内容 | `-` |
+
+### 样式变量
+
+以下为组件库通用的样式变量，各组件独有的样式变量请查询各组件文档底部的样式变量表格。
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--font-size-xs` | `10px` |
+| `--font-size-sm` | `12px` |
+| `--font-size-md` | `14px` |
+| `--font-size-lg` | `16px` |
+| `--icon-size-xs` | `16px` |
+| `--icon-size-sm` | `18px` |
+| `--icon-size-md` | `20px` |
+| `--icon-size-lg` | `22px` |
+| `--color-body` | `#fff` |
+| `--color-text` | `#333` |
+| `--color-primary` | `#3a7afe` |
+| `--color-info` | `#00afef` |
+| `--color-success` | `#00c48f` |
+| `--color-warning` | `#ff9f00` |
+| `--color-danger` | `#f44336` |
+| `--color-disabled` | `#e0e0e0` |
+| `--color-text-disabled` | `#aaa` |
+| `--opacity-disabled` | `0.6` |
+| `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
+| `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |
+| `--shadow-key-penumbra-opacity` | `rgba(0, 0, 0, 0.14)` |
+| `--shadow-key-ambient-opacity` | `rgba(0, 0, 0, 0.12)` |

@@ -7,6 +7,7 @@
     "bootstrap": "pnpm install && node scripts/bootstrap.mjs",
     "lint": "varlet-cli lint",
     "changelog": "varlet-cli changelog",
+    "clean": "rimraf ./node_modules ./packages/*/node_modules",
     "dev": "pnpm --dir ./packages/varlet-ui dev",
     "build": "pnpm --dir ./packages/varlet-ui build",
     "dev:play": "pnpm --dir ./packages/varlet-ui-playground dev",
@@ -22,10 +23,10 @@
     "release:extension": "pnpm --dir ./packages/varlet-vscode-extension release"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
+    "pre-commit": "pnpm exec nano-staged --allow-empty --concurrent false",
     "commit-msg": "pnpm exec varlet-cli commit-lint $1 && pnpm exec varlet-cli checklist $1"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix"
   },
@@ -35,7 +36,8 @@
     "@varlet/icons": "workspace:*",
     "eslint": "^8.43.0",
     "execa": "^5.0.0",
-    "lint-staged": "^10.5.0",
+    "rimraf": "^5.0.1",
+    "nano-staged": "0.8.0",
     "nanospinner": "^1.1.0",
     "prettier": "^2.8.8",
     "simple-git-hooks": "^2.8.0",

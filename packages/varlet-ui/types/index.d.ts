@@ -76,6 +76,7 @@ export * from './step'
 export * from './steps'
 export * from './sticky'
 export * from './styleProvider'
+export * from './styleVars'
 export * from './swipe'
 export * from './swipeItem'
 export * from './switch'
@@ -164,6 +165,7 @@ declare module 'vue' {
     VarSteps: typeof import('@varlet/ui')['_StepsComponent']
     VarSticky: typeof import('@varlet/ui')['_StickyComponent']
     VarStyleProvider: typeof import('@varlet/ui')['_StyleProviderComponent']
+    VarStyleVars: typeof import('@varlet/ui')['_StyleVarsComponent']
     VarSwipe: typeof import('@varlet/ui')['_SwipeComponent']
     VarSwipeItem: typeof import('@varlet/ui')['_SwipeItemComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
