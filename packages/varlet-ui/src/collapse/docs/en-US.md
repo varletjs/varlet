@@ -144,6 +144,26 @@ const value = ref(['1'])
 </template>
 ```
 
+### Toggle All
+```html
+<script setup>
+const collapseRef = ref(null)
+const value = ref(['1'])  
+function toggleAll() {
+  collapseRef.value.toggleAll()
+}
+</script>
+
+<template>
+  <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
+  <var-collapse v-model="value" ref="collapseRef">
+    <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" disabled name="3">This is a content.</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
 ## API
 
 ### Props
@@ -174,6 +194,7 @@ const value = ref(['1'])
 | Event | Description | arguments |
 | ----- | -------------- | -------- |
 | `change` | Emitted when active index changed | `value` |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off | `-`|
 
 ### Slots
 

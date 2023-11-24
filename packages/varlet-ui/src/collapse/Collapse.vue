@@ -46,7 +46,7 @@ export default defineComponent({
 
     const normalizeValue = computed(() => {
       if (!props.accordion && !isArray(props.modelValue)) {
-        return props.modelValue !== undefined && props.modelValue !== null ? [props.modelValue] : []
+        return props.modelValue !== null ? [props.modelValue] : []
       }
 
       if (props.accordion && isArray(props.modelValue)) {
@@ -119,12 +119,13 @@ export default defineComponent({
       })
     }
 
+    // expose
     const toggleAll = () => {
+      if (props.accordion) return
+
       let modelValue: CollapseModelValue = []
       if (!matchName()) {
-        modelValue = collapseItem
-          .filter((provider) => provider.name.value !== undefined)
-          .map((provider) => provider.name.value || provider.index.value)
+        modelValue = collapseItem.map((provider) => provider.name.value || provider.index.value)
       }
       call(props['onUpdate:modelValue'], modelValue)
       call(props.onChange, modelValue)

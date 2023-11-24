@@ -142,6 +142,26 @@ const value = ref(['1'])
 </template>
 ```
 
+### Toggle All
+```html
+<script setup>
+const collapseRef = ref(null)
+const value = ref(['1'])  
+function toggleAll() {
+  collapseRef.value.toggleAll()
+}
+</script>
+
+<template>
+  <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
+  <var-collapse v-model="value" ref="collapseRef">
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+    <var-collapse-item title="标题" disabled name="3">文本</var-collapse-item>
+  </var-collapse>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -172,6 +192,7 @@ const value = ref(['1'])
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------------- | -------- |
 | `change` | 切换面板时触发| `value: 类型与 v-model 绑定的值一致` |
+| `toggleAll` | 同时控制所有子面板开启关闭| `-`|
 
 ### 插槽
 
