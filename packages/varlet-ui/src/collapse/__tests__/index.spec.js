@@ -57,6 +57,8 @@ test('test collapse and collapseItem onChange', async () => {
 
   await firstCollapseItemHeader.trigger('click')
 
+  expect(wrapper.vm.value).toEqual(['2', '1'])
+
   await secondCollapseItemHeader.trigger('click')
 
   expect(wrapper.vm.value).toEqual(['1'])
@@ -66,42 +68,6 @@ test('test collapse and collapseItem onChange', async () => {
 })
 
 describe('test collapse and collapseItem props', () => {
-  test('test invalid modelValue', async () => {
-    const errorFn = vi.fn()
-    const { mockRestore } = mockConsole('error', errorFn)
-    const template = `
-       <var-collapse v-model="value" :accordion="accordion">
-        <var-collapse-item title="test1" name="1">test1</var-collapse-item>
-        <var-collapse-item title="test2" name="2">test2</var-collapse-item>
-       </var-collapse>
-    `
-
-    const wrapper = mount({
-      components: {
-        [VarCollapse.name]: VarCollapse,
-        [VarCollapseItem.name]: VarCollapseItem,
-      },
-      data() {
-        return {
-          value: '1',
-          accordion: false,
-        }
-      },
-      template,
-    })
-
-    await delay(0)
-    await wrapper.setData({
-      value: ['1'],
-      accordion: true,
-    })
-    await delay(0)
-    expect(errorFn).toHaveBeenCalledTimes(2)
-
-    mockRestore()
-    wrapper.unmount()
-  })
-
   test('test collapse accordion', async () => {
     const template = `
      <var-collapse v-model="value" accordion>

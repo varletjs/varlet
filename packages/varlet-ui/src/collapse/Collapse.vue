@@ -9,7 +9,7 @@ import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
-import { isArray, call } from '@varlet/shared'
+import { normalizeToArray, call } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
@@ -22,6 +22,7 @@ export default defineComponent({
     const offset = computed(() => props.offset)
     const divider = computed(() => props.divider)
     const elevation = computed(() => props.elevation)
+    const normalizeValues = computed(() => normalizeToArray(props.modelValue))
     const { length, collapseItem, bindCollapseItem } = useCollapseItem()
 
     const collapseProvider: CollapseProvider = {
@@ -44,68 +45,47 @@ export default defineComponent({
 
     bindCollapseItem(collapseProvider)
 
-    function checkValue() {
-      if (!props.accordion && !isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be an Array')
-        return false
-      }
-
-      if (props.accordion && isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be a String or Number')
-        return false
-      }
-      return true
-    }
-
     function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
-      if (!checkValue()) return null
-      if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
+      if (props.accordion) {
+        return isExpand ? value : null
+      }
 
-      return props.accordion
-        ? null
-        : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
+      const values = normalizeValues.value as Array<string | number>
+      return isExpand ? values.concat(value) : values.filter((name) => name !== value)
     }
 
     function updateItem(value: number | string, isExpand: boolean) {
       const modelValue = getValue(value, isExpand)
+
       call(props['onUpdate:modelValue'], modelValue)
       call(props.onChange, modelValue)
     }
 
     function matchName(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
+        return collapseItem.find(({ name }) => normalizeValues.value[0] === name.value)
       }
 
-      const filterItem = collapseItem.filter(({ name }: CollapseItemProvider) => {
-        if (name.value === undefined) return false
+      const matchedItems = collapseItem.filter(({ name }) =>
+        name.value === undefined ? false : normalizeValues.value.includes(name.value)
+      )
 
-        return (props.modelValue as Array<string | number>).includes(name.value)
-      })
-
-      return filterItem.length ? filterItem : undefined
+      return matchedItems.length ? matchedItems : undefined
     }
 
     function matchIndex(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
-      if (props.accordion) {
-        return collapseItem.find(
-          ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
-        )
-      }
       return collapseItem.filter(
-        ({ index, name }: CollapseItemProvider) =>
-          name.value === undefined && (props.modelValue as Array<string | number>).includes(index.value)
+        ({ index, name }) => name.value === undefined && normalizeValues.value.includes(index.value)
       )
     }
 
     function resize() {
-      if (!checkValue()) return
-
-      const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
+      const matchedProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined =
+        matchName() || matchIndex()
 
       if (
-        (props.accordion && !matchProviders) ||
-        (!props.accordion && !(matchProviders as Array<CollapseItemProvider>).length)
+        (props.accordion && !matchedProviders) ||
+        (!props.accordion && !(matchedProviders as Array<CollapseItemProvider>).length)
       ) {
         collapseItem.forEach((provider) => {
           provider.init(props.accordion, false)
@@ -115,8 +95,8 @@ export default defineComponent({
 
       collapseItem.forEach((provider) => {
         const isShow = props.accordion
-          ? matchProviders === provider
-          : (matchProviders as Array<CollapseItemProvider>).includes(provider)
+          ? matchedProviders === provider
+          : (matchedProviders as Array<CollapseItemProvider>).includes(provider)
 
         provider.init(props.accordion, isShow)
       })
