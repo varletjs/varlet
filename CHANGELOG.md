@@ -1,3 +1,21 @@
+## [2.19.2](https://github.com/varletjs/varlet/compare/v2.19.1...v2.19.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* **index-bar:** fix scroll offset error in window scroller ([9f5483e](https://github.com/varletjs/varlet/commit/9f5483e21fee84bcd3516a2883cc7bc32db12797))
+* **shared:** adapt to - and + for isNumeric function ([#1314](https://github.com/varletjs/varlet/issues/1314)) ([094206f](https://github.com/varletjs/varlet/commit/094206fed04b0079a3dffdd3305b23d2723ba466))
+* **ssr/input:** fix hydration error in textarea mode ([edaee1e](https://github.com/varletjs/varlet/commit/edaee1ee02d4224b360f774049c0936572a0034f))
+
+
+### Features
+
+* **badge:** support --badge-dot-width and --badge-dot-height ([#1310](https://github.com/varletjs/varlet/issues/1310)) ([e0d7b00](https://github.com/varletjs/varlet/commit/e0d7b00cb4274acccc5da117c2f76d42d4f5b9d4))
+* support extraction of style vars ([aefb12f](https://github.com/varletjs/varlet/commit/aefb12f0c8260c734043b859ae5ea622e47f7098))
+* **tab:** support --tab-font-weight ([#1312](https://github.com/varletjs/varlet/issues/1312)) ([fe4fdb3](https://github.com/varletjs/varlet/commit/fe4fdb37f8cc0f06e240e5ebaedf2390424987c6))
+
+
+
 ## [2.19.1](https://github.com/varletjs/varlet/compare/v2.19.0...v2.19.1) (2023-11-17)
 
 
