@@ -4,7 +4,7 @@ import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole } from '../../utils/test'
+import { delay } from '../../utils/test'
 import { expect, vi, describe } from 'vitest'
 
 test('test collapse and collapseItem use', () => {
