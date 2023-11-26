@@ -119,8 +119,12 @@ export default defineComponent({
 
     const sortWeekList: ComputedRef<Array<Week>> = computed(() => {
       const index = WEEK_HEADER.findIndex((week: Week) => week === props.componentProps.firstDayOfWeek)
-      if (index === -1 || index === 0) return WEEK_HEADER
-      return WEEK_HEADER.slice(index).concat(WEEK_HEADER.slice(0, index))
+
+      if (index === -1 || index === 0) {
+        return WEEK_HEADER
+      }
+
+      return [...WEEK_HEADER.slice(index), ...WEEK_HEADER.slice(0, index)]
     })
 
     const getDayAbbr = (key: Week): string => pack.value.datePickerWeekDict?.[key].abbr ?? ''
