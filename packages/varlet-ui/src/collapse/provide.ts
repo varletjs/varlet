@@ -19,7 +19,7 @@ export function useCollapseItem() {
 
   return {
     length,
-    collapseItem: childProviders,
-    bindCollapseItem: bindChildren,
+    collapseItems: childProviders,
+    bindCollapseItems: bindChildren,
   }
 }

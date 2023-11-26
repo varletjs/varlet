@@ -23,7 +23,7 @@ export default defineComponent({
     const divider = computed(() => props.divider)
     const elevation = computed(() => props.elevation)
     const normalizeValues = computed(() => normalizeToArray(props.modelValue))
-    const { length, collapseItem, bindCollapseItem } = useCollapseItem()
+    const { length, collapseItems, bindCollapseItems } = useCollapseItem()
 
     const collapseProvider: CollapseProvider = {
       active,
@@ -43,7 +43,7 @@ export default defineComponent({
       () => nextTick().then(resize)
     )
 
-    bindCollapseItem(collapseProvider)
+    bindCollapseItems(collapseProvider)
 
     function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
       if (props.accordion) {
@@ -51,7 +51,7 @@ export default defineComponent({
       }
 
       const values = normalizeValues.value as Array<string | number>
-      return isExpand ? values.concat(value) : values.filter((name) => name !== value)
+      return isExpand ? [...values, value] : values.filter((name) => name !== value)
     }
 
     function updateItem(value: number | string, isExpand: boolean) {
@@ -63,25 +63,25 @@ export default defineComponent({
 
     function matchItems(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        const matchedName = collapseItem.find(({ name }) => normalizeValues.value[0] === name.value)
+        const matchedNameItem = collapseItems.find(({ name }) => normalizeValues.value[0] === name.value)
 
-        if (matchedName === undefined) {
-          return collapseItem.filter(
-            ({ index, name }) => name.value === undefined && normalizeValues.value.includes(index.value)
+        if (matchedNameItem === undefined) {
+          return collapseItems.find(
+            ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
           )
         }
 
-        return matchedName
+        return matchedNameItem
       }
 
-      const matchedNames = collapseItem.filter(({ name }) =>
-        name.value === undefined ? false : normalizeValues.value.includes(name.value)
+      const matchedNameItems = collapseItems.filter(({ name }) =>
+        name.value == null ? false : normalizeValues.value.includes(name.value)
       )
-      const matchedIndexes = collapseItem.filter(
-        ({ index, name }) => name.value === undefined && normalizeValues.value.includes(index.value)
+      const matchedIndexItems = collapseItems.filter(
+        ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
       )
 
-      return matchedNames.concat(matchedIndexes)
+      return [...matchedNameItems, ...matchedIndexItems]
     }
 
     function resize() {
@@ -91,13 +91,13 @@ export default defineComponent({
         (props.accordion && !matchedProviders) ||
         (!props.accordion && !(matchedProviders as Array<CollapseItemProvider>).length)
       ) {
-        collapseItem.forEach((provider) => {
+        collapseItems.forEach((provider) => {
           provider.init(props.accordion, false)
         })
         return
       }
 
-      collapseItem.forEach((provider) => {
+      collapseItems.forEach((provider) => {
         const isShow = props.accordion
           ? matchedProviders === provider
           : (matchedProviders as Array<CollapseItemProvider>).includes(provider)
