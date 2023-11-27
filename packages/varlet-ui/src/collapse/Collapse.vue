@@ -63,13 +63,14 @@ export default defineComponent({
 
     function matchItems(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        if (normalizeValues.value[0] == null) {
+        const [value] = normalizeValues.value
+        if (value == null) {
           return
         }
 
-        const matchedNameItem = collapseItems.find(({ name }) => normalizeValues.value[0] === name.value)
+        const matchedNameItem = collapseItems.find(({ name }) => value === name.value)
         if (matchedNameItem == null) {
-          return collapseItems.find(({ index, name }) => name.value == null && normalizeValues.value[0] === index.value)
+          return collapseItems.find(({ index, name }) => name.value == null && value === index.value)
         }
 
         return matchedNameItem
