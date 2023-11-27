@@ -32,11 +32,13 @@ export function compileStyleVars() {
 
   compileDir(SRC_DIR, keys)
 
-  const template = [...keys].reduce((template, key: string) => {
-    template += `  '${key}'?: string;\n`
-    template += `  ${camelize(key.slice(2))}?: string;\n`
+  let template = [...keys].reduce((template, key: string) => {
+    template += `  '${key}'?: string\n`
+    template += `  ${camelize(key.slice(2))}?: string\n`
     return template
   }, 'export interface StyleVars {\n')
+
+  template += '  [key: PropertyKey]: string\n'
 
   writeFileSync(resolve(TYPES_DIR, 'styleVars.d.ts'), template + '}')
 }

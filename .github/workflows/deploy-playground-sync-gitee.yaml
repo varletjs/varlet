@@ -27,10 +27,11 @@ jobs:
         run: pnpm build:play
 
       - name: Deploy site
-        uses: JamesIves/github-pages-deploy-action@4.1.1
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: playground-gh-page
           folder: packages/varlet-ui-playground/site
+          single-commit: true
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
