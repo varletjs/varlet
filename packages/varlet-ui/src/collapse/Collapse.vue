@@ -63,7 +63,9 @@ export default defineComponent({
 
     function matchItems(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        const matchedNameItem = collapseItems.find(({ name }) => normalizeValues.value[0] === name.value)
+        const matchedNameItem = collapseItems.find(
+          ({ name }) => normalizeValues.value[0] != null && normalizeValues.value[0] === name.value
+        )
 
         if (matchedNameItem == null) {
           return collapseItems.find(
