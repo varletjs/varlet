@@ -4,7 +4,7 @@ export const uniq = (arr: Array<any>) => [...new Set(arr)]
 
 export const normalizeToArray = <T>(value: T | T[]) => (isArray(value) ? value : [value])
 
-export const removeItem = (arr: Array<unknown>, item: unknown) => {
+export const removeItem = <T>(arr: Array<T>, item: T) => {
   if (arr.length) {
     const index: number = arr.indexOf(item)
     if (index > -1) {
@@ -13,9 +13,12 @@ export const removeItem = (arr: Array<unknown>, item: unknown) => {
   }
 }
 
-export const toggleItem = (arr: Array<unknown>, item: unknown) => {
+export const toggleItem = <T>(arr: Array<T>, item: T) => {
   arr.includes(item) ? removeItem(arr, item) : arr.push(item)
+  return arr
 }
+
+export const removeArrayBlank = <T>(arr: Array<T>) => arr.filter((item) => item != null)
 
 export const find = <T>(
   arr: Array<T>,
