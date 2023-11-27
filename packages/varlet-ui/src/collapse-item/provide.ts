@@ -6,7 +6,7 @@ import { type ComputedRef } from 'vue'
 export interface CollapseItemProvider {
   index: ComputedRef<number>
   name: ComputedRef<string | number | undefined>
-  init(accordion: boolean, show: boolean): void
+  init(show: boolean): void
 }
 
 export function useCollapse() {

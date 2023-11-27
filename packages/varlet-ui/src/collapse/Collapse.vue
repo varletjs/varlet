@@ -9,7 +9,7 @@ import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
-import { normalizeToArray, call } from '@varlet/shared'
+import { normalizeToArray, call, isArray } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
@@ -18,7 +18,6 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const active = computed(() => props.modelValue)
     const offset = computed(() => props.offset)
     const divider = computed(() => props.divider)
     const elevation = computed(() => props.elevation)
@@ -26,7 +25,6 @@ export default defineComponent({
     const { length, collapseItems, bindCollapseItems } = useCollapseItem()
 
     const collapseProvider: CollapseProvider = {
-      active,
       offset,
       divider,
       elevation,
@@ -47,14 +45,15 @@ export default defineComponent({
 
     function updateItem(itemValue: number | string, targetExpand: boolean) {
       if (props.accordion) {
-        updateModelValue(targetExpand ? itemValue : null)
+        const value = targetExpand ? itemValue : undefined
+        updateModelValue(isArray(props.modelValue) ? [value].filter((v) => v !== null) : value)
         return
       }
 
-      const values = normalizeValues.value as Array<string | number>
-      const modelValue = targetExpand ? [...values, itemValue] : values.filter((value) => value !== itemValue)
-
-      updateModelValue(modelValue)
+      const value = targetExpand
+        ? [...normalizeValues.value, itemValue]
+        : normalizeValues.value.filter((value) => value !== itemValue)
+      updateModelValue(value)
     }
 
     function updateModelValue(modelValue: CollapseModelValue) {
@@ -66,7 +65,7 @@ export default defineComponent({
       if (props.accordion) {
         const matchedNameItem = collapseItems.find(({ name }) => normalizeValues.value[0] === name.value)
 
-        if (matchedNameItem === undefined) {
+        if (matchedNameItem == null) {
           return collapseItems.find(
             ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
           )
@@ -89,7 +88,7 @@ export default defineComponent({
       const matchedItems: Array<CollapseItemProvider | undefined> = normalizeToArray(matchItems())
 
       collapseItems.forEach((collapseItem) => {
-        collapseItem.init(props.accordion, matchedItems.includes(collapseItem))
+        collapseItem.init(matchedItems.includes(collapseItem))
       })
     }
 

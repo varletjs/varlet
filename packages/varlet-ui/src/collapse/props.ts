@@ -1,7 +1,7 @@
 import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-export type CollapseModelValue = null | string | number | Array<string | number>
+export type CollapseModelValue = undefined | string | number | Array<string | number | undefined>
 
 export const props = {
   modelValue: [Array, String, Number] as PropType<CollapseModelValue>,
