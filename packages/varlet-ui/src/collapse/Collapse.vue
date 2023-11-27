@@ -87,7 +87,7 @@ export default defineComponent({
     }
 
     function resize() {
-      const matchedItems: Array<CollapseItemProvider | undefined> = normalizeToArray(matchItems())
+      const matchedItems: CollapseItemProvider[] = removeArrayBlank(normalizeToArray(matchItems()))
 
       collapseItems.forEach((collapseItem) => {
         collapseItem.init(matchedItems.includes(collapseItem))

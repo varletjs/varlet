@@ -18,7 +18,7 @@ export const toggleItem = <T>(arr: Array<T>, item: T) => {
   return arr
 }
 
-export const removeArrayBlank = <T>(arr: Array<T>) => arr.filter((item) => item != null)
+export const removeArrayBlank = <T>(arr: Array<T | null | undefined>) => arr.filter((item) => item != null) as T[]
 
 export const find = <T>(
   arr: Array<T>,
