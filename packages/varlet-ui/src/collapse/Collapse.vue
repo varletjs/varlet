@@ -76,8 +76,8 @@ export default defineComponent({
         return matchedNameItem
       }
 
-      const matchedNameItems = collapseItems.filter(({ name }) =>
-        name.value == null ? false : normalizeValues.value.includes(name.value)
+      const matchedNameItems = collapseItems.filter(
+        ({ name }) => name.value != null && normalizeValues.value.includes(name.value)
       )
       const matchedIndexItems = collapseItems.filter(
         ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
