@@ -25,6 +25,8 @@ export type Pack = {
   datePickerWeekDict: Record<Week, { name: string; abbr: string }>
   datePickerSelected: string
   datePickerHint: string
+  datePickerConfirmButtonText: string
+  datePickerCancelButtonText: string
   // pagination
   paginationItem: string
   paginationPage: string

@@ -24,6 +24,9 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
+  showActions?: boolean
+  onConfirm?: ListenerProp<(e: Event) => void>
+  onCancel?: ListenerProp<(e: Event) => void>
   onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>
@@ -61,6 +64,7 @@ export class DatePicker extends VarComponent {
     date(data: DatePickerDate): VNode[]
     range(data: DatePickerRange): VNode[]
     multiple(data: DatePickerMultiple): VNode[]
+    actions(): VNode[]
   }
 }
 

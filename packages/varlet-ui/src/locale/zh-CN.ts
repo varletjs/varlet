@@ -98,6 +98,8 @@ export default {
   },
   datePickerSelected: '个被选择',
   datePickerHint: '选择日期',
+  datePickerConfirmButtonText: '确认',
+  datePickerCancelButtonText: '取消',
   // pagination
   paginationItem: '条',
   paginationPage: '页',

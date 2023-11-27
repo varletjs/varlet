@@ -50,6 +50,7 @@ exports[`test datePicker allowedDates 1`] = `
       </div>
     </transition-stub>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -274,6 +275,7 @@ exports[`test datePicker style and type > test datePicker style and date 1`] = `
       </div>
     </transition-stub>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -377,6 +379,7 @@ exports[`test datePicker style and type > test datePicker style and month 1`] = 
       </div>
     </transition-stub>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -480,6 +483,7 @@ exports[`test datePicker style and type 1`] = `
       </div>
     </transition-stub>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -719,5 +723,6 @@ exports[`test datePicker style and type 2`] = `
       </div>
     </transition-stub>
   </div>
+  <!--v-if-->
 </div>"
 `;

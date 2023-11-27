@@ -87,7 +87,13 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  showActions: {
+    type: Boolean,
+    default: false,
+  },
   onPreview: defineListenerProp<(year: number, month: number, day?: number) => void>(),
   onChange: defineListenerProp<(value: string | string[]) => void>(),
+  onCancel: defineListenerProp<(e: Event) => void>(),
+  onConfirm: defineListenerProp<(e: Event) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string | string[]) => void>(),
 }
