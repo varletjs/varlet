@@ -45,18 +45,19 @@ export default defineComponent({
 
     bindCollapseItems(collapseProvider)
 
-    function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
+    function updateItem(itemValue: number | string, targetExpand: boolean) {
       if (props.accordion) {
-        return isExpand ? value : null
+        updateModelValue(targetExpand ? itemValue : null)
+        return
       }
 
       const values = normalizeValues.value as Array<string | number>
-      return isExpand ? [...values, value] : values.filter((name) => name !== value)
+      const modelValue = targetExpand ? [...values, itemValue] : values.filter((value) => value !== itemValue)
+
+      updateModelValue(modelValue)
     }
 
-    function updateItem(value: number | string, isExpand: boolean) {
-      const modelValue = getValue(value, isExpand)
-
+    function updateModelValue(modelValue: CollapseModelValue) {
       call(props['onUpdate:modelValue'], modelValue)
       call(props.onChange, modelValue)
     }
@@ -85,24 +86,10 @@ export default defineComponent({
     }
 
     function resize() {
-      const matchedProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchItems()
+      const matchedItems: Array<CollapseItemProvider | undefined> = normalizeToArray(matchItems())
 
-      if (
-        (props.accordion && !matchedProviders) ||
-        (!props.accordion && !(matchedProviders as Array<CollapseItemProvider>).length)
-      ) {
-        collapseItems.forEach((provider) => {
-          provider.init(props.accordion, false)
-        })
-        return
-      }
-
-      collapseItems.forEach((provider) => {
-        const isShow = props.accordion
-          ? matchedProviders === provider
-          : (matchedProviders as Array<CollapseItemProvider>).includes(provider)
-
-        provider.init(props.accordion, isShow)
+      collapseItems.forEach((collapseItem) => {
+        collapseItem.init(props.accordion, matchedItems.includes(collapseItem))
       })
     }
 
