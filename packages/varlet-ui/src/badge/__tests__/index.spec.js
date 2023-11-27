@@ -104,7 +104,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge offsetX with default slot', async () => {
+  test('test badge offsetX without default slot', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetX: 4,
@@ -122,7 +122,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge offsetX without default slot', async () => {
+  test('test badge offsetX with default slot', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetX: 4,
@@ -132,16 +132,18 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('right: -4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 4px;')
 
     await wrapper.setProps({
-      position: 'left-top',
+      offsetX: 5,
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('left: 4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 5px;')
+
+    wrapper.unmount()
   })
 
-  test('test badge offsetY with default slot', async () => {
+  test('test badge offsetY without default slot', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetY: 4,
@@ -159,7 +161,7 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
-  test('test badge offsetY without default slot', async () => {
+  test('test badge offsetY with default slot', async () => {
     const wrapper = mount(VarBadge, {
       props: {
         offsetY: 4,
@@ -169,13 +171,15 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('top: 4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 4px;')
 
     await wrapper.setProps({
-      position: 'right-bottom',
+      offsetY: 5,
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('bottom: -4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 5px;')
+
+    wrapper.unmount()
   })
 
   test('test badge icon', () => {

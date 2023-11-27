@@ -37,7 +37,7 @@ exports[`test badge component props > test badge position 4`] = `
 `;
 
 exports[`test badge component slots > test badge default slots 1`] = `
-"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\" style=\\"margin-top: 0px; margin-right: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
+"<div class=\\"var-badge var--box\\">default slots<transition-stub name=\\"var-badge-fade\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\"><span class=\\"var-badge__content var-badge--default var-badge--right-top\\" style=\\"--badge-offset-y: 0px; --badge-offset-x: 0px;\\"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
