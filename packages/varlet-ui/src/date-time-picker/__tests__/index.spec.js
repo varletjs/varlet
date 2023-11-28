@@ -37,12 +37,21 @@ test('test DateTimePicker events', async () => {
   const nextStep = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
+      active: 0,
+      prevStepText: '上一步',
+      nextStepText: '下一步',
+      cancelButtonText: '取消',
+      confirmButtonText: '提交',
       onCancel,
       onConfirm,
       prevStep,
       nextStep,
     },
   })
+  await delay(10)
+  expect(wrapper.find('.var-date-time-picker__cancel-button').find('.var-button__content').text()).toBe('取消')
+  expect(wrapper.find('.var-date-time-picker__confirm-button').find('.var-button__content').text()).toBe('提交')
+  expect(wrapper.find('.var-date-time-picker__next-button').find('.var-button__content').text()).toBe('下一步')
 
   await delay(100)
   await wrapper.find('.var-date-time-picker__cancel-button').trigger('click')
