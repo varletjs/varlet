@@ -8,12 +8,12 @@
           classes(
             n('content'),
             n(`--${type}`),
-            [$slots.default, n(`--${position}`)],
+            [$slots.default, n(`--${position}`), n('--offset')],
             [dot, n('--dot')],
             [icon, n('--icon')]
           )
         "
-        :style="{ background: color, ...contentStyle }"
+        :style="{ background: color, ...offsetStyle }"
         v-show="!hidden"
         v-bind="$attrs"
       >
@@ -49,14 +49,14 @@ export default defineComponent({
       return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
 
-    const contentStyle = computed<CSSProperties>(() => ({
+    const offsetStyle = computed<CSSProperties>(() => ({
       [`--badge-offset-y`]: toSizeUnit(props.offsetY),
       [`--badge-offset-x`]: toSizeUnit(props.offsetX),
     }))
 
     return {
       value,
-      contentStyle,
+      offsetStyle,
       n,
       classes,
     }
