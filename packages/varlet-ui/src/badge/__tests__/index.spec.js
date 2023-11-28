@@ -111,13 +111,13 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-left: 4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 4px;')
 
     await wrapper.setProps({
       offsetX: 5,
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-left: 5px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 5px;')
 
     wrapper.unmount()
   })
@@ -150,13 +150,13 @@ describe('test badge component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-top: 4px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 4px;')
 
     await wrapper.setProps({
       offsetY: 5,
     })
 
-    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('margin-top: 5px;')
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 5px;')
 
     wrapper.unmount()
   })

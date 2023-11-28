@@ -42,28 +42,17 @@ export default defineComponent({
   components: { VarIcon },
   inheritAttrs: false,
   props,
-  setup(props, { slots }) {
+  setup(props) {
     const value = computed<string | number>(() => {
       const { value, maxValue } = props
 
       return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
 
-    const contentStyle = computed<CSSProperties>(() => {
-      const { offsetX, offsetY } = props
-
-      if (!slots.default) {
-        return {
-          marginTop: toSizeUnit(offsetY),
-          marginLeft: toSizeUnit(offsetX),
-        }
-      }
-
-      return {
-        [`--badge-offset-y`]: toSizeUnit(offsetY),
-        [`--badge-offset-x`]: toSizeUnit(offsetX),
-      }
-    })
+    const contentStyle = computed<CSSProperties>(() => ({
+      [`--badge-offset-y`]: toSizeUnit(props.offsetY),
+      [`--badge-offset-x`]: toSizeUnit(props.offsetX),
+    }))
 
     return {
       value,
