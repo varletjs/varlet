@@ -236,7 +236,13 @@ export default defineComponent({
         value = formatNumber(value)
       }
 
-      return withMaxlength(withTrim(value))
+      // avoid vue cannot render when the target is the same with props.modelValue
+      const targetValue = withMaxlength(withTrim(value))
+      if (targetValue === props.modelValue) {
+        target.value = targetValue
+      }
+
+      return targetValue
     }
 
     function handleCompositionStart() {
