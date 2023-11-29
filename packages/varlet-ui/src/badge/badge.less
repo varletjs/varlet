@@ -30,6 +30,10 @@
     font-size: var(--badge-content-font-size);
   }
 
+  &--offset {
+    transform: translateX(var(--badge-offset-x)) translateY(var(--badge-offset-y));
+  }
+
   &__icon[var-badge-cover] {
     font-size: var(--badge-icon-size);
   }
@@ -73,28 +77,28 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(-50%) translateX(50%);
+    transform: translateY(calc(-50% + var(--badge-offset-y))) translateX(calc(50% + var(--badge-offset-x)));
   }
 
   &--left-top {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(calc(-50% + var(--badge-offset-y))) translateX(calc(-50% + var(--badge-offset-x)));
   }
 
   &--right-bottom {
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translateY(50%) translateX(50%);
+    transform: translateY(calc(50% + var(--badge-offset-y))) translateX(calc(50% + var(--badge-offset-x)));
   }
 
   &--left-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translateY(50%) translateX(-50%);
+    transform: translateY(calc(50% + var(--badge-offset-y))) translateX(calc(-50% + var(--badge-offset-x)));
   }
 
   &-fade-enter-active,

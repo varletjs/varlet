@@ -104,6 +104,48 @@ describe('test badge component props', () => {
     wrapper.unmount()
   })
 
+  test('test badge offsetX', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetX: 4,
+      },
+      slots: {
+        default: () => 'default slots',
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 4px;')
+
+    await wrapper.setProps({
+      offsetX: 5,
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-x: 5px;')
+
+    wrapper.unmount()
+  })
+
+  test('test badge offsetY', async () => {
+    const wrapper = mount(VarBadge, {
+      props: {
+        offsetY: 4,
+      },
+      slots: {
+        default: () => 'default slots',
+      },
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 4px;')
+
+    await wrapper.setProps({
+      offsetY: 5,
+    })
+
+    expect(wrapper.find('.var-badge__content').attributes('style')).toContain('--badge-offset-y: 5px;')
+
+    wrapper.unmount()
+  })
+
   test('test badge icon', () => {
     const wrapper = mount(VarBadge, {
       props: { icon: 'notebook' },

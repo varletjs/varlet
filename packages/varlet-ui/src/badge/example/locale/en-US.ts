@@ -8,6 +8,7 @@ export default {
   lowerRight: 'The Lower Right',
   upperLeft: 'The Upper Left',
   lowerLeft: 'The Lower Left',
+  offset: 'Custom Offset',
   hidden: 'Hidden Badge',
   clickToChangeTheState: 'Click To Change The State',
   badge: 'Badge',

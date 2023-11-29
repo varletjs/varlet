@@ -8,6 +8,7 @@ export default {
   lowerRight: '右下',
   upperLeft: '左上',
   lowerLeft: '左下',
+  offset: '自定义偏移量',
   hidden: '隐藏徽标',
   clickToChangeTheState: '点击改变状态',
   badge: '徽标',
