@@ -4,7 +4,7 @@
     :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
   >
     <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
-    <div :class="n('header')" @click="toggle()">
+    <div :class="n('header')" @click="toggle">
       <div :class="n('header-title')">
         <slot name="title">{{ title }}</slot>
       </div>
@@ -41,7 +41,7 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { defineComponent, ref, watch, computed } from 'vue'
-import { isArray, doubleRaf, raf } from '@varlet/shared'
+import { doubleRaf, raf } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useCollapse, type CollapseItemProvider } from './provide'
 import { props } from './props'
@@ -59,13 +59,15 @@ export default defineComponent({
     const showContent = ref(false)
     const contentEl = ref<HTMLDivElement | null>(null)
     const name = computed(() => props.name)
+    const disabled = computed(() => props.disabled)
     const { index, collapse, bindCollapse } = useCollapse()
-    const { active, offset, divider, elevation, updateItem } = collapse
+    const { offset, divider, elevation, updateItem } = collapse
 
     const collapseItemProvider: CollapseItemProvider = {
       index,
       name,
       init,
+      disabled,
     }
 
     // ensure to trigger transitionend
@@ -122,19 +124,16 @@ export default defineComponent({
       contentEl.value.style.height = 0 + 'px'
     }
 
-    function init(accordion: boolean, show: boolean) {
-      if (active.value === undefined || (accordion && isArray(active.value)) || show === isShow.value) return
-
+    function init(show: boolean) {
       isShow.value = show
-      toggle(true)
     }
 
-    function toggle(initOrAccordion?: boolean) {
-      if (props.disabled) return
-
-      if (!initOrAccordion) {
-        updateItem(props.name || index.value, !isShow.value)
+    function toggle() {
+      if (props.disabled) {
+        return
       }
+
+      updateItem(props.name ?? index.value, !isShow.value)
     }
 
     function start() {

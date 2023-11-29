@@ -15,7 +15,7 @@ const values = reactive({
   value3: ['1'],
   value4: ['2'],
   value5: [],
-  value6: ['2'],
+  value6: ['2', '4'],
 })
 
 function handleChange(val) {
@@ -86,5 +86,6 @@ watchDarkMode(Themes.dark)
     <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" disabled name="3"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" disabled name="4"> {{ pack.text }}</var-collapse-item>
   </var-collapse>
 </template>

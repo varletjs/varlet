@@ -3,7 +3,6 @@ import { CollapseItemProvider } from '../collapse-item/provide'
 import { type ComputedRef } from 'vue'
 
 export interface CollapseProvider {
-  active: ComputedRef<number | string | Array<number | string> | undefined | null>
   offset: ComputedRef<boolean>
   divider: ComputedRef<boolean>
   elevation: ComputedRef<boolean | number | string>
@@ -19,7 +18,7 @@ export function useCollapseItem() {
 
   return {
     length,
-    collapseItem: childProviders,
-    bindCollapseItem: bindChildren,
+    collapseItems: childProviders,
+    bindCollapseItems: bindChildren,
   }
 }

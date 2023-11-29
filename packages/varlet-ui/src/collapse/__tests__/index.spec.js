@@ -4,7 +4,7 @@ import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockConsole } from '../../utils/test'
+import { delay } from '../../utils/test'
 import { expect, vi, describe } from 'vitest'
 
 test('test collapse and collapseItem use', () => {
@@ -16,14 +16,14 @@ test('test collapse and collapseItem use', () => {
 
 test('test collapse and collapseItem onChange', async () => {
   const template = `
-    <var-collapse v-model="value" @change="changeHandle">
+    <var-collapse v-model="value" @change="handleChange">
       <var-collapse-item title="test1" name="1">test1</var-collapse-item>
       <var-collapse-item title="test2" name="2">test2</var-collapse-item>
       <var-collapse-item title="test3" name="3">test3</var-collapse-item>
     </var-collapse>
   `
 
-  const changeHandle = vi.fn()
+  const handleChange = vi.fn()
 
   const wrapper = mount(
     {
@@ -37,7 +37,7 @@ test('test collapse and collapseItem onChange', async () => {
         }
       },
       methods: {
-        changeHandle,
+        handleChange,
       },
       template,
     },
@@ -57,12 +57,14 @@ test('test collapse and collapseItem onChange', async () => {
 
   await firstCollapseItemHeader.trigger('click')
 
+  expect(wrapper.vm.value).toEqual(['2', '1'])
+
   await secondCollapseItemHeader.trigger('click')
 
   expect(wrapper.vm.value).toEqual(['1'])
 
   expect(collapseItemList[0].classes()).toContain('var-collapse-item--active')
-  expect(changeHandle).toHaveBeenCalledTimes(2)
+  expect(handleChange).toHaveBeenCalledTimes(2)
 })
 
 describe('test collapse and collapseItem props', () => {
