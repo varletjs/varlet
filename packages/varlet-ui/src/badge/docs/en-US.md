@@ -84,24 +84,18 @@ Set the position of the badge through the `position` property.
 Set the horizontal and vertical offset of the logo via the `offset-x` and `offset-y` properties.
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const offset = ref(6)
-</script>
-
 <template>
   <var-space :size="[8, 20]">
-    <var-badge type="danger" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">Badge</var-chip>
     </var-badge>
-    <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="right-bottom" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">Badge</var-chip>
     </var-badge>
-    <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="left-top" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">Badge</var-chip>
     </var-badge>
-    <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="left-bottom" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">Badge</var-chip>
     </var-badge>
   </var-space>

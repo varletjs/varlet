@@ -86,24 +86,18 @@
 通过 `offset-x` 和 `offset-y` 属性设置徽标的水平和垂直方向的偏移量。
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const offset = ref(6)
-</script>
-
 <template>
   <var-space :size="[8, 20]">
-    <var-badge type="danger" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">徽标</var-chip>
     </var-badge>
-    <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="right-bottom" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">徽标</var-chip>
     </var-badge>
-    <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="left-top" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">徽标</var-chip>
     </var-badge>
-    <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
+    <var-badge type="danger" position="left-bottom" :offset-x="6" :offset-y="6">
       <var-chip plain :round="false" color="#009688">徽标</var-chip>
     </var-badge>
   </var-space>
