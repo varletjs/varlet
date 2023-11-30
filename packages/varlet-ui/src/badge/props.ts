@@ -25,4 +25,12 @@ export const props = {
   icon: pickProps(iconProps, 'name'),
   namespace: pickProps(iconProps, 'namespace'),
   color: String,
+  offsetX: {
+    type: [String, Number],
+    default: 0,
+  },
+  offsetY: {
+    type: [String, Number],
+    default: 0,
+  },
 }

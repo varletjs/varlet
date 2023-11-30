@@ -9,7 +9,7 @@ import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
-import { normalizeToArray, call, isArray, removeArrayBlank } from '@varlet/shared'
+import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
@@ -45,15 +45,15 @@ export default defineComponent({
 
     function updateItem(itemValue: number | string, targetExpand: boolean) {
       if (props.accordion) {
-        const value = targetExpand ? itemValue : undefined
-        updateModelValue(isArray(props.modelValue) ? removeArrayBlank([value]) : value)
+        const modelValue = targetExpand ? itemValue : undefined
+        updateModelValue(modelValue)
         return
       }
 
-      const value = targetExpand
+      const modelValue = targetExpand
         ? [...normalizeValues.value, itemValue]
         : normalizeValues.value.filter((value) => value !== itemValue)
-      updateModelValue(value)
+      updateModelValue(modelValue)
     }
 
     function updateModelValue(modelValue: CollapseModelValue) {
