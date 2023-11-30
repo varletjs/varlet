@@ -148,18 +148,35 @@ const value = ref(['1'])
 ```html
 <script setup>
 const collapseRef = ref(null)
-const value = ref(['1'])  
+const toggleAllValue = ref(['2', '4'])  
+const toggleAllExpand = ref(false)
+
+function handleChange(val) {
+  console.log(val)
+}
+
 function toggleAll() {
   collapseRef.value.toggleAll()
+}
+
+function toggleAllOpen() {
+  collapseRef.value.toggleAll(true)
+}
+
+function toggleAllSkipDisabledItem() {
+  collapseRef.value.toggleAll({ expanded: toggleAllExpand.value, skipDisabledItem: true })
+  toggleAllExpand.value = !toggleAllExpand.value
 }
 </script>
 
 <template>
   <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
-  <var-collapse v-model="value" ref="collapseRef">
-    <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
-    <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
-    <var-collapse-item title="title" disabled name="3">This is a content.</var-collapse-item>
+  <var-collapse v-model="toggleAllValue" ref="collapseRef">
+    <var-collapse-item title="title" disabled name="1">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" disabled name="2">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" name="3">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" name="4">This is a content.</var-collapse-item>
+
   </var-collapse>
 </template>
 ```
@@ -170,59 +187,59 @@ function toggleAll() {
 
 #### Collapse Props
 
-| Prop | Description                                                         | Type | Default |
-| ----- |---------------------------------------------------------------------| -------- | ---------- |
-| `v-model` | Names of current active panels                                      | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-` |
-| `accordion` | Whether to be accordion mode                                        | _boolean_ | `false` |
-| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
-| `offset` | Whether to show margin                                              | _boolean_ | `true` |
-| `divider` | Whether to show divider                                              | _boolean_ | `true` |
+| Prop        | Description                                                 | Type                                                                                | Default |
+| ----------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------- | ------- |
+| `v-model`   | Names of current active panels                              | accordion mode： _string \| number_ <br> non-accordion mode：_string[] \| number[]_ | `-`     |
+| `accordion` | Whether to be accordion mode                                | _boolean_                                                                           | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_                                                       | `true`  |
+| `offset`    | Whether to show margin                                      | _boolean_                                                                           | `true`  |
+| `divider`   | Whether to show divider                                     | _boolean_                                                                           | `true`  |
 
 #### CollapseItem Props
 
-| Prop | Description | Type | Default |
-| ----- | -------------- | -------- | ---------- |
-| `name` | Name | _string \| number_ | `index` |
-| `title` | Title | _string \| number_ | `-` |
-| `icon` | Icon name | _string_ | `chevron-down` |
-| `disabled` | Whether to disable collapse	 | _boolean_ | `false` |
+| Prop       | Description                 | Type               | Default        |
+| ---------- | --------------------------- | ------------------ | -------------- |
+| `name`     | Name                        | _string \| number_ | `index`        |
+| `title`    | Title                       | _string \| number_ | `-`            |
+| `icon`     | Icon name                   | _string_           | `chevron-down` |
+| `disabled` | Whether to disable collapse | _boolean_          | `false`        |
 
 ### Events
 
 #### Collapse Events
 
-| Event | Description | arguments |
-| ----- | -------------- | -------- |
-| `change` | Emitted when active index changed | `value` |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off | `-`|
+| Event       | Description                                              | arguments |
+| ----------- | -------------------------------------------------------- | --------- |
+| `change`    | Emitted when active index changed                        | `value`   |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off | `-`       |
 
 ### Slots
 
 #### Collapse Slots
 
-| Name | Description | SlotProps |
-| ----- |---------------------| -------- |
-| `default` | Content of collapse | `-` |
+| Name      | Description         | SlotProps |
+| --------- | ------------------- | --------- |
+| `default` | Content of collapse | `-`       |
 
 #### CollapseItem Slots
 
-| Name | Description | SlotProps |
-| ----- | -------------- | -------- |
-| `default` | Content | `-` |
-| `title` | Title | `-` |
-| `icon` | Custom right icon | `-` |
+| Name      | Description       | SlotProps |
+| --------- | ----------------- | --------- |
+| `default` | Content           | `-`       |
+| `title`   | Title             | `-`       |
+| `icon`    | Custom right icon | `-`       |
 
 ### Style Variables
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
-| Variable | Default |
-| --- | --- |
-| `--collapse-background` | `#fff` |
-| `--collapse-text-color` | `#232222` |
-| `--collapse-header-font-size` | `var(--font-size-lg)` |
-| `--collapse-header-padding` | `10px 12px` |
-| `--collapse-content-font-size` | `var(--font-size-md)` |
-| `--collapse-content-padding` | `0 12px 10px` |
-| `--collapse-item-margin-top` | `16px` |
-| `--collapse-disable-color` | `#bdbdbd` |
-| `--collapse-divider-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| Variable                       | Default                          |
+| ------------------------------ | -------------------------------- |
+| `--collapse-background`        | `#fff`                           |
+| `--collapse-text-color`        | `#232222`                        |
+| `--collapse-header-font-size`  | `var(--font-size-lg)`            |
+| `--collapse-header-padding`    | `10px 12px`                      |
+| `--collapse-content-font-size` | `var(--font-size-md)`            |
+| `--collapse-content-padding`   | `0 12px 10px`                    |
+| `--collapse-item-margin-top`   | `16px`                           |
+| `--collapse-disable-color`     | `#bdbdbd`                        |
+| `--collapse-divider-top`       | `thin solid rgba(0, 0, 0, 0.12)` |

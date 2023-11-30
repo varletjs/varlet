@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { useCollapseItem, type CollapseProvider } from './provide'
+import { useCollapseItem, type CollapseProvider, type CollapseToggleAllOptions } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
 import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
@@ -94,28 +94,27 @@ export default defineComponent({
       })
     }
 
-    // expose
-    const toggleAll = () => {
+    /**
+     * expose toggleAll method
+     * @param options  expanded: 是否展开, skipDisabled: 是否跳过禁止项
+     */
+    const toggleAll = (options: boolean | CollapseToggleAllOptions = {}) => {
       if (props.accordion) return
-      let modelValue: CollapseModelValue = []
-      const enabledItems = (name: string | number | undefined) =>
-        normalizeToArray(matchItems()).find((i) => i?.name.value === name)
 
-      if (normalizeToArray(matchItems()).filter((i) => !i?.disabled.value).length < 1) {
-        modelValue = collapseItems.map((provider) =>
-          provider.disabled.value
-            ? enabledItems(provider.name.value)
-              ? provider.name.value
-              : undefined
-            : provider.name.value
-        )
-      } else {
-        modelValue = collapseItems.map((provider) =>
-          provider.disabled.value ? (enabledItems(provider.name.value) ? provider.name.value : undefined) : undefined
-        )
+      if (typeof options === 'boolean') {
+        options = { expanded: options, skipDisabledItem: false }
       }
-      call(props['onUpdate:modelValue'], modelValue)
-      call(props.onChange, modelValue)
+
+      const { expanded, skipDisabledItem } = options
+
+      const matchedItems = collapseItems.filter((item) => {
+        if (skipDisabledItem && item.disabled.value) return item.name.value ?? item.index.value
+        return expanded ?? !normalizeValues.value.includes(item.name.value)
+      })
+
+      const modelValue = matchedItems.map((item) => item.name.value)
+
+      updateModelValue(modelValue)
     }
 
     return {

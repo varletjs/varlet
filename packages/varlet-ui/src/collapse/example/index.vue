@@ -17,6 +17,7 @@ const values = reactive({
   value5: [],
   value6: ['2', '4'],
 })
+const toggleAllExpand = ref(false)
 
 function handleChange(val) {
   console.log(val)
@@ -24,6 +25,15 @@ function handleChange(val) {
 
 function toggleAll() {
   collapseRef.value.toggleAll()
+}
+
+function toggleAllOpen() {
+  collapseRef.value.toggleAll(true)
+}
+
+function toggleAllSkipDisabledItem() {
+  collapseRef.value.toggleAll({ expanded: toggleAllExpand.value, skipDisabledItem: true })
+  toggleAllExpand.value = !toggleAllExpand.value
 }
 
 watchLang(use)
@@ -81,11 +91,13 @@ watchDarkMode(Themes.dark)
   </var-collapse>
 
   <app-type>{{ pack.toggleAll }}</app-type>
-  <var-button @click="toggleAll" style="margin-bottom: 8px">{{ pack.toggleAll }}</var-button>
+  <var-button @click="toggleAll" style="margin: 8px">{{ pack.toggleAll }}</var-button>
+  <var-button @click="toggleAllOpen()" style="margin: 8px">{{ pack.toggleAllOpen }}</var-button>
+  <var-button @click="toggleAllSkipDisabledItem()" style="margin: 8px">{{ pack.toggleAllSkipDisabledItem }}</var-button>
   <var-collapse v-model="values.value6" ref="collapseRef">
-    <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
-    <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>
-    <var-collapse-item :title="pack.slotTitle" disabled name="3"> {{ pack.text }}</var-collapse-item>
-    <var-collapse-item :title="pack.slotTitle" disabled name="4"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" disabled name="1"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" disabled name="2"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" name="3">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" name="4"> {{ pack.text }}</var-collapse-item>
   </var-collapse>
 </template>

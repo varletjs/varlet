@@ -142,22 +142,39 @@ const value = ref(['1'])
 </template>
 ```
 
-### Toggle All
+### 切换全部
 ```html
 <script setup>
 const collapseRef = ref(null)
-const value = ref(['1'])  
+const toggleAllValue = ref(['2', '4'])  
+const toggleAllExpand = ref(false)
+
+function handleChange(val) {
+  console.log(val)
+}
+
 function toggleAll() {
   collapseRef.value.toggleAll()
+}
+
+function toggleAllOpen() {
+  collapseRef.value.toggleAll(true)
+}
+
+function toggleAllSkipDisabledItem() {
+  collapseRef.value.toggleAll({ expanded: toggleAllExpand.value, skipDisabledItem: true })
+  toggleAllExpand.value = !toggleAllExpand.value
 }
 </script>
 
 <template>
   <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
-  <var-collapse v-model="value" ref="collapseRef">
-    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
-    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
-    <var-collapse-item title="标题" disabled name="3">文本</var-collapse-item>
+  <var-collapse v-model="toggleAllValue" ref="collapseRef">
+     <var-collapse-item title="标题" disabled name="1">文本</var-collapse-item>
+     <var-collapse-item title="标题" disabled name="2">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="3">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="4">文本</var-collapse-item>
+
   </var-collapse>
 </template>
 ```
@@ -168,59 +185,59 @@ function toggleAll() {
 
 #### Collapse Props
 
-| 参数          | 说明                                   | 类型 | 默认值                          |
-|-------------|--------------------------------------| -------- |------------------------------|
-| `v-model`   | 当前展开面板的 name                         | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \| number[]_ | `-` |
-| `accordion` | 是否开启手风琴模式                            | _boolean_ | `false`                      |
-| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
-| `offset`    | 是否显示边距                               | _boolean_ | `true`                       |
-| `divider`   | 是否显示分割线                               | _boolean_ | `true`                       |
+| 参数        | 说明                                               | 类型                                                                     | 默认值  |
+| ----------- | -------------------------------------------------- | ------------------------------------------------------------------------ | ------- |
+| `v-model`   | 当前展开面板的 name                                | 手风琴模式： _string \| number_<br> 非手风琴模式：_string[] \| number[]_ | `-`     |
+| `accordion` | 是否开启手风琴模式                                 | _boolean_                                                                | `false` |
+| `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_                                            | `true`  |
+| `offset`    | 是否显示边距                                       | _boolean_                                                                | `true`  |
+| `divider`   | 是否显示分割线                                     | _boolean_                                                                | `true`  |
 
 #### CollapseItem Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ----- | -------------- | -------- | ---------- |
-| `name` | 唯一标识符，默认为索引值 | _string \| number_| `index` |
-| `title` | 面板标题 | _string \| number_| `-` |
-| `icon` | icon 的名称 | _string_ | `chevron-down` |
-| `disabled` | 是否禁用面板 | _boolean_ | `false` |
+| 参数       | 说明                     | 类型               | 默认值         |
+| ---------- | ------------------------ | ------------------ | -------------- |
+| `name`     | 唯一标识符，默认为索引值 | _string \| number_ | `index`        |
+| `title`    | 面板标题                 | _string \| number_ | `-`            |
+| `icon`     | icon 的名称              | _string_           | `chevron-down` |
+| `disabled` | 是否禁用面板             | _boolean_          | `false`        |
 
 ### 事件
 
 #### Collapse Events
 
-| 事件名 | 说明 | 回调参数 |
-| ----- | -------------- | -------- |
-| `change` | 切换面板时触发| `value: 类型与 v-model 绑定的值一致` |
-| `toggleAll` | 同时控制所有子面板开启关闭| `-`|
+| 事件名      | 说明                       | 回调参数                             |
+| ----------- | -------------------------- | ------------------------------------ |
+| `change`    | 切换面板时触发             | `value: 类型与 v-model 绑定的值一致` |
+| `toggleAll` | 同时控制所有子面板开启关闭 | `-`                                  |
 
 ### 插槽
 
 #### Collapse Slots
 
-| 名称 | 说明      | 参数 |
-| ----- |---------| -------- |
-| `default` | 折叠面板的内容 | `-` |
+| 名称      | 说明           | 参数 |
+| --------- | -------------- | ---- |
+| `default` | 折叠面板的内容 | `-`  |
 
 #### CollapseItem Slots
 
-| 名称 | 说明 | 参数 |
-| ----- | -------------- | -------- |
-| `default` | 面板的内容 | `-` |
-| `title` | 面板的标题 | `-` |
-| `icon` | 自定义右侧 icon | `-` |
+| 名称      | 说明            | 参数 |
+| --------- | --------------- | ---- |
+| `default` | 面板的内容      | `-`  |
+| `title`   | 面板的标题      | `-`  |
+| `icon`    | 自定义右侧 icon | `-`  |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
-| 变量名 | 默认值 |
-| --- | --- |
-| `--collapse-background` | `#fff` |
-| `--collapse-text-color` | `#232222` |
-| `--collapse-header-font-size` | `var(--font-size-lg)` |
-| `--collapse-header-padding` | `10px 12px` |
-| `--collapse-content-font-size` | `var(--font-size-md)` |
-| `--collapse-content-padding` | `0 12px 10px` |
-| `--collapse-item-margin-top` | `16px` |
-| `--collapse-disable-color` | `#bdbdbd` |
-| `--collapse-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| 变量名                         | 默认值                           |
+| ------------------------------ | -------------------------------- |
+| `--collapse-background`        | `#fff`                           |
+| `--collapse-text-color`        | `#232222`                        |
+| `--collapse-header-font-size`  | `var(--font-size-lg)`            |
+| `--collapse-header-padding`    | `10px 12px`                      |
+| `--collapse-content-font-size` | `var(--font-size-md)`            |
+| `--collapse-content-padding`   | `0 12px 10px`                    |
+| `--collapse-item-margin-top`   | `16px`                           |
+| `--collapse-disable-color`     | `#bdbdbd`                        |
+| `--collapse-border-top`        | `thin solid rgba(0, 0, 0, 0.12)` |

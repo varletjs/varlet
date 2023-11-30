@@ -66,8 +66,8 @@ export default defineComponent({
     const collapseItemProvider: CollapseItemProvider = {
       index,
       name,
-      init,
       disabled,
+      init,
     }
 
     // ensure to trigger transitionend
