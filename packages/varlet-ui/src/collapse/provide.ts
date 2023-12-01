@@ -22,10 +22,3 @@ export function useCollapseItem() {
     bindCollapseItems: bindChildren,
   }
 }
-
-export type CollapseToggleAllOptions =
-  | boolean
-  | {
-      expanded?: boolean
-      skipDisabledItem?: boolean
-    }

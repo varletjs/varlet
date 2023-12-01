@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { useCollapseItem, type CollapseProvider, type CollapseToggleAllOptions } from './provide'
+import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
 import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
@@ -96,20 +96,13 @@ export default defineComponent({
 
     /**
      * expose toggleAll method
-     * @param options  expanded: 是否展开, skipDisabled: 是否跳过禁止项
      */
-    const toggleAll = (options: boolean | CollapseToggleAllOptions = {}) => {
+    const toggleAll = (expanded: boolean) => {
       if (props.accordion) return
 
-      if (typeof options === 'boolean') {
-        options = { expanded: options, skipDisabledItem: false }
-      }
-
-      const { expanded, skipDisabledItem } = options
-
       const matchedItems = collapseItems.filter((item) => {
-        if (skipDisabledItem && item.disabled.value) return item.name.value ?? item.index.value
-        return expanded ?? !normalizeValues.value.includes(item.name.value)
+        const modelValueExpanded = normalizeValues.value.includes(item.name.value)
+        return item.disabled.value ? normalizeValues.value.includes(item.name.value) : expanded ?? !modelValueExpanded
       })
 
       const modelValue = matchedItems.map((item) => item.name.value)

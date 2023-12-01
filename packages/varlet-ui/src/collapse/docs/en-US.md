@@ -149,7 +149,6 @@ const value = ref(['1'])
 <script setup>
 const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
-const toggleAllExpand = ref(false)
 
 function handleChange(val) {
   console.log(val)
@@ -163,14 +162,11 @@ function toggleAllOpen() {
   collapseRef.value.toggleAll(true)
 }
 
-function toggleAllSkipDisabledItem() {
-  collapseRef.value.toggleAll({ expanded: toggleAllExpand.value, skipDisabledItem: true })
-  toggleAllExpand.value = !toggleAllExpand.value
-}
 </script>
 
 <template>
-  <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
+  <var-button @click="toggleAll" style="margin: 8px">Toggle All</var-button>
+    <var-button @click="toggleAll" style="margin: 8px">Toggle All Open</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="title" disabled name="1">This is a content.</var-collapse-item>
     <var-collapse-item title="title" disabled name="2">This is a content.</var-collapse-item>
@@ -211,7 +207,7 @@ function toggleAllSkipDisabledItem() {
 | Event       | Description                                              | arguments |
 | ----------- | -------------------------------------------------------- | --------- |
 | `change`    | Emitted when active index changed                        | `value`   |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off | `-`       |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off | `expanded?:boolean`  |
 
 ### Slots
 

@@ -147,7 +147,6 @@ const value = ref(['1'])
 <script setup>
 const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
-const toggleAllExpand = ref(false)
 
 function handleChange(val) {
   console.log(val)
@@ -160,15 +159,11 @@ function toggleAll() {
 function toggleAllOpen() {
   collapseRef.value.toggleAll(true)
 }
-
-function toggleAllSkipDisabledItem() {
-  collapseRef.value.toggleAll({ expanded: toggleAllExpand.value, skipDisabledItem: true })
-  toggleAllExpand.value = !toggleAllExpand.value
-}
 </script>
 
 <template>
-  <var-button @click="toggleAll" style="margin-bottom: 8px">toggleAll</var-button>
+  <var-button @click="toggleAll" style="margin: 8px">切换展开</var-button>
+    <var-button @click="toggleAllOpen" style="margin: 8px">展开全部</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
      <var-collapse-item title="标题" disabled name="1">文本</var-collapse-item>
      <var-collapse-item title="标题" disabled name="2">文本</var-collapse-item>
@@ -209,7 +204,7 @@ function toggleAllSkipDisabledItem() {
 | 事件名      | 说明                       | 回调参数                             |
 | ----------- | -------------------------- | ------------------------------------ |
 | `change`    | 切换面板时触发             | `value: 类型与 v-model 绑定的值一致` |
-| `toggleAll` | 同时控制所有子面板开启关闭 | `-`                                  |
+| `toggleAll` | 同时控制所有子面板开启关闭 | `expanded?:boolean`                                  |
 
 ### 插槽
 
