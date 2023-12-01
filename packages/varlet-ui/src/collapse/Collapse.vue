@@ -99,14 +99,15 @@ export default defineComponent({
       if (props.accordion) return
 
       const matchedItems = collapseItems.filter((item) => {
-        const modelValueExpanded = normalizeValues.value.includes(item.name.value)
+        const value = item.name.value ?? item.index.value
+        const modelValueExpanded = normalizeValues.value.includes(value)
         if (item.disabled.value) {
-          return normalizeValues.value.includes(item.name.value)
+          return normalizeValues.value.includes(value)
         }
         return expanded ?? !modelValueExpanded
       })
 
-      const modelValue = matchedItems.map((item) => item.name.value)
+      const modelValue = matchedItems.map((item) => item.name.value ?? item.index.value)
 
       updateModelValue(modelValue)
     }
