@@ -94,15 +94,16 @@ export default defineComponent({
       })
     }
 
-    /**
-     * expose toggleAll method
-     */
+    // expose
     const toggleAll = (expanded: boolean) => {
       if (props.accordion) return
 
       const matchedItems = collapseItems.filter((item) => {
         const modelValueExpanded = normalizeValues.value.includes(item.name.value)
-        return item.disabled.value ? normalizeValues.value.includes(item.name.value) : expanded ?? !modelValueExpanded
+        if (item.disabled.value) {
+          return normalizeValues.value.includes(item.name.value)
+        }
+        return expanded ?? !modelValueExpanded
       })
 
       const modelValue = matchedItems.map((item) => item.name.value)

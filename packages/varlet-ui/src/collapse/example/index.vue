@@ -26,7 +26,7 @@ function toggleAll() {
   collapseRef.value.toggleAll()
 }
 
-function toggleAllOpen() {
+function toggleOpenAll() {
   collapseRef.value.toggleAll(true)
 }
 
@@ -86,7 +86,7 @@ watchDarkMode(Themes.dark)
 
   <app-type>{{ pack.toggleAll }}</app-type>
   <var-button @click="toggleAll" style="margin: 8px">{{ pack.toggleAll }}</var-button>
-  <var-button @click="toggleAllOpen()" style="margin: 8px">{{ pack.toggleAllOpen }}</var-button>
+  <var-button @click="toggleOpenAll()" style="margin: 8px">{{ pack.toggleOpenAll }}</var-button>
   <var-collapse v-model="values.value6" ref="collapseRef">
     <var-collapse-item :title="pack.slotTitle" disabled name="1"> {{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" disabled name="2"> {{ pack.text }}</var-collapse-item>

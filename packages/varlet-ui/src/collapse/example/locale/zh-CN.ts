@@ -13,6 +13,5 @@ export default {
   showDivider: '显示分割线',
   controlledDivider: '可控的分割线',
   toggleAll: '切换全部',
-  toggleAllOpen: '全部展开',
-  toggleAllSkipDisabledItem: '跳过禁用项',
+  toggleOpenAll: '全部展开',
 }

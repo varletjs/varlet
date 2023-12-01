@@ -13,6 +13,5 @@ export default {
   showDivider: 'Show Divider',
   controlledDivider: 'Controlled Divider',
   toggleAll: 'Toggle All',
-  toggleAllOpen: 'Toggle All Open',
-  toggleAllSkipDisabledItem: 'Skip Disabled Item',
+  toggleOpenAll: 'Toggle Open All',
 }

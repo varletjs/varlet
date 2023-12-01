@@ -147,6 +147,7 @@ const value = ref(['1'])
 ### Toggle All
 ```html
 <script setup>
+import { ref } from 'vue'
 const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
 
@@ -158,7 +159,7 @@ function toggleAll() {
   collapseRef.value.toggleAll()
 }
 
-function toggleAllOpen() {
+function toggleAllOpenAll() {
   collapseRef.value.toggleAll(true)
 }
 
@@ -166,7 +167,7 @@ function toggleAllOpen() {
 
 <template>
   <var-button @click="toggleAll" style="margin: 8px">Toggle All</var-button>
-    <var-button @click="toggleAll" style="margin: 8px">Toggle All Open</var-button>
+    <var-button @click="toggleAllOpenAll" style="margin: 8px">Toggle All Open</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="title" disabled name="1">This is a content.</var-collapse-item>
     <var-collapse-item title="title" disabled name="2">This is a content.</var-collapse-item>

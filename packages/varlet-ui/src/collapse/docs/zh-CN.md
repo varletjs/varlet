@@ -145,6 +145,7 @@ const value = ref(['1'])
 ### 切换全部
 ```html
 <script setup>
+import { ref } from 'vue'
 const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
 
@@ -156,14 +157,14 @@ function toggleAll() {
   collapseRef.value.toggleAll()
 }
 
-function toggleAllOpen() {
+function toggleAllOpenAll() {
   collapseRef.value.toggleAll(true)
 }
 </script>
 
 <template>
   <var-button @click="toggleAll" style="margin: 8px">切换展开</var-button>
-    <var-button @click="toggleAllOpen" style="margin: 8px">展开全部</var-button>
+    <var-button @click="toggleAllOpenAll" style="margin: 8px">展开全部</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
      <var-collapse-item title="标题" disabled name="1">文本</var-collapse-item>
      <var-collapse-item title="标题" disabled name="2">文本</var-collapse-item>
