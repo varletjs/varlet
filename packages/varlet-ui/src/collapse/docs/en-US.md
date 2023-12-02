@@ -196,14 +196,21 @@ function openAll() {
 | `icon`     | Icon name                   | _string_           | `chevron-down` |
 | `disabled` | Whether to disable collapse | _boolean_          | `false`        |
 
+### Methods
+
+| Method      | Description                                                                                                                                          | Arguments           | Return |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------ |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `expanded?:boolean` | `-`    |
+
+
 ### Events
 
 #### Collapse Events
 
-| Event       | Description                                              | arguments |
-| ----------- | -------------------------------------------------------- | --------- |
-| `change`    | Emitted when active index changed                        | `value`   |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `expanded?:boolean`  |
+| Event    | Description                       | arguments |
+| -------- | --------------------------------- | --------- |
+| `change` | Emitted when active index changed | `value`   |
+
 
 ### Slots
 
