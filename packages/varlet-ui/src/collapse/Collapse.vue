@@ -103,7 +103,7 @@ export default defineComponent({
         const isExpanded = normalizeValues.value.includes(itemValue)
 
         if (item.disabled.value) {
-          return normalizeValues.value.includes(itemValue)
+          return isExpanded
         }
 
         if (isBoolean(expand)) {
