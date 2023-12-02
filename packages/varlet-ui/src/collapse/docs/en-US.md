@@ -165,10 +165,10 @@ function openAll() {
   <var-button @click="toggleAll" style="margin: 8px">Toggle All</var-button>
     <var-button @click="openAll" style="margin: 8px">Toggle All Open</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
-    <var-collapse-item title="title" disabled name="1">This is a content.</var-collapse-item>
-    <var-collapse-item title="title" disabled name="2">This is a content.</var-collapse-item>
-    <var-collapse-item title="title" name="3">This is a content.</var-collapse-item>
-    <var-collapse-item title="title" name="4">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" disabled name="3">This is a content.</var-collapse-item>
+    <var-collapse-item title="title" disabled name="4">This is a content.</var-collapse-item>
   </var-collapse>
 </template>
 ```

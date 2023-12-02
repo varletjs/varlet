@@ -162,10 +162,10 @@ function openAll() {
   <var-button @click="toggleAll" style="margin: 8px">切换展开</var-button>
     <var-button @click="openAll" style="margin: 8px">展开全部</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
-     <var-collapse-item title="标题" disabled name="1">文本</var-collapse-item>
-     <var-collapse-item title="标题" disabled name="2">文本</var-collapse-item>
-    <var-collapse-item title="标题" name="3">文本</var-collapse-item>
-    <var-collapse-item title="标题" name="4">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="1">文本</var-collapse-item>
+    <var-collapse-item title="标题" name="2">文本</var-collapse-item>
+    <var-collapse-item title="标题" disabled name="3">文本</var-collapse-item>
+    <var-collapse-item title="标题" disabled name="4">文本</var-collapse-item>
   </var-collapse>
 </template>
 ```
