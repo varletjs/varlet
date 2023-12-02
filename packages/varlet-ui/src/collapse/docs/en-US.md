@@ -203,7 +203,7 @@ function openAll() {
 | Event       | Description                                              | arguments |
 | ----------- | -------------------------------------------------------- | --------- |
 | `change`    | Emitted when active index changed                        | `value`   |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off | `expanded?:boolean`  |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `expanded?:boolean`  |
 
 ### Slots
 
