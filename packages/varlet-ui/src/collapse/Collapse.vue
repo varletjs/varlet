@@ -14,6 +14,8 @@ import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
 
+type CollapseToggleAllOptions = { expand: boolean | 'inverse'; skipDisabled?: boolean }
+
 export default defineComponent({
   name,
   props,
@@ -95,22 +97,30 @@ export default defineComponent({
     }
 
     // expose
-    const toggleAll = (expand: boolean) => {
+    const toggleAll = (option: CollapseToggleAllOptions) => {
       if (props.accordion) return
 
       const matchedItems = collapseItems.filter((item) => {
         const itemValue = item.name.value ?? item.index.value
         const isExpanded = normalizeValues.value.includes(itemValue)
 
-        if (item.disabled.value) {
-          return isExpanded
+        if (option.expand === 'inverse') {
+          if (!option?.skipDisabled && item.disabled.value) {
+            return isExpanded
+          }
+
+          return !isExpanded
         }
 
-        if (isBoolean(expand)) {
-          return expand
+        if (isBoolean(option.expand)) {
+          if (option?.skipDisabled) {
+            return option.expand
+          }
+
+          return item.disabled.value ? isExpanded : option.expand
         }
 
-        return !isExpanded
+        return isExpanded
       })
 
       const modelValue = matchedItems.map((item) => item.name.value ?? item.index.value)

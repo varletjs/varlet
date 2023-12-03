@@ -23,11 +23,24 @@ function handleChange(val) {
 }
 
 function toggleAll() {
-  collapseRef.value.toggleAll()
+  collapseRef.value.toggleAll({ expand: 'inverse' })
+}
+function toggleAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
 }
 
 function openAll() {
-  collapseRef.value.toggleAll(true)
+  collapseRef.value.toggleAll({ expand: true })
+}
+function openAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
+}
+
+function expandAll() {
+  collapseRef.value.toggleAll({ expand: false })
+}
+function expandAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
 
 watchLang(use)
@@ -86,7 +99,11 @@ watchDarkMode(Themes.dark)
 
   <app-type>{{ pack.toggleAll }}</app-type>
   <var-button @click="toggleAll" style="margin: 8px">{{ pack.toggleAll }}</var-button>
-  <var-button @click="openAll()" style="margin: 8px">{{ pack.openAll }}</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">{{ pack.toggleAllSkipDisabled }}</var-button>
+  <var-button @click="openAll" style="margin: 8px">{{ pack.openAll }}</var-button>
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">{{ pack.openAllSkipDisabled }}</var-button>
+  <var-button @click="expandAll" style="margin: 8px">{{ pack.expandAll }}</var-button>
+  <var-button @click="expandAllSkipDisabled" style="margin: 8px">{{ pack.expandAllSkipDisabled }}</var-button>
   <var-collapse v-model="values.value6" ref="collapseRef">
     <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>

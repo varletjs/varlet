@@ -150,17 +150,34 @@ const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
 
 function toggleAll() {
-  collapseRef.value.toggleAll()
+  collapseRef.value.toggleAll({ expand: 'inverse' })
+}
+function toggleAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
 }
 
 function openAll() {
-  collapseRef.value.toggleAll(true)
+  collapseRef.value.toggleAll({ expand: true })
+}
+function openAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
+}
+
+function expandAll() {
+  collapseRef.value.toggleAll({ expand: false })
+}
+function expandAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
 </script>
 
 <template>
-  <var-button @click="toggleAll" style="margin: 8px">切换展开</var-button>
-    <var-button @click="openAll" style="margin: 8px">展开全部</var-button>
+  <var-button @click="toggleAll" style="margin: 8px">切换全部</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">切换全部(跳过禁用)</var-button>
+  <var-button @click="openAll" style="margin: 8px">展开全部</var-button>
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">展开全部(跳过禁用)</var-button>
+  <var-button @click="expandAll" style="margin: 8px">收起全部</var-button>
+  <var-button @click="expandAllSkipDisabled" style="margin: 8px">收起全部(跳过禁用)</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="标题" name="1">文本</var-collapse-item>
     <var-collapse-item title="标题" name="2">文本</var-collapse-item>
@@ -197,7 +214,7 @@ function openAll() {
 
 | 方法名      | 说明                                                                                | 参数              | 返回值 |
 | ----------- | ----------------------------------------------------------------------------------- | ----------------- | ------ |
-| `toggleAll` | 同时控制所有子面板开启关闭(被禁用的除外),传入`expand`可选参数可以具体控制展开和收起 | `expand?:boolean` | `-`    |
+| `toggleAll` | 同时控制所有子面板开启关闭(被禁用的除外),传入`expand`可选参数可以具体控制展开和收起 | `options:{expand: boolean|'inverse', skipDisabled?: boolean }` | `-`    |
 
 
 ### 事件

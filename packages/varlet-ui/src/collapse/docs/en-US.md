@@ -163,7 +163,11 @@ function openAll() {
 
 <template>
   <var-button @click="toggleAll" style="margin: 8px">Toggle All</var-button>
-    <var-button @click="openAll" style="margin: 8px">Toggle All Open</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">Toggle All(Skip Disabled)</var-button>
+  <var-button @click="openAll" style="margin: 8px">Open All</var-button>
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">Open All(Skip Disabled)</var-button>
+  <var-button @click="expandAll" style="margin: 8px">Expand All</var-button>
+  <var-button @click="expandAllSkipDisabled" style="margin: 8px">收起全部(跳过禁用)</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
     <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
@@ -198,9 +202,9 @@ function openAll() {
 
 ### Methods
 
-| Method      | Description                                                                                                                                          | Arguments           | Return |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------ |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `expanded?:boolean` | `-`    |
+| Method      | Description                                                                                                                                          | Arguments                 | Return                               |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `options:{expand: boolean | 'inverse', skipDisabled?: boolean }` | `-` |
 
 
 ### Events
