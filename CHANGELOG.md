@@ -1,3 +1,18 @@
+## [2.19.3](https://github.com/varletjs/varlet/compare/v2.19.2...v2.19.3) (2023-12-01)
+
+
+### Bug Fixes
+
+* **input:** user input display error on type is number and close [#1322](https://github.com/varletjs/varlet/issues/1322) ([8a0bb99](https://github.com/varletjs/varlet/commit/8a0bb992d4bd2cb44683f3f7b904674590e06329))
+
+
+### Features
+
+* **badge:** support offsetX and offsetY ([#1313](https://github.com/varletjs/varlet/issues/1313)) ([605a1af](https://github.com/varletjs/varlet/commit/605a1afb5408c1ea5a3bd7b473264fa371342740))
+* **shared:** support removeArrayBlank ([fe3ddd2](https://github.com/varletjs/varlet/commit/fe3ddd2880e8055dff036423a41d9756f760df8f))
+
+
+
 ## [2.19.2](https://github.com/varletjs/varlet/compare/v2.19.1...v2.19.2) (2023-11-25)
 
 
