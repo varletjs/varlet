@@ -105,7 +105,7 @@ export default defineComponent({
         const isExpanded = normalizeValues.value.includes(itemValue)
 
         if (option.expand === 'inverse') {
-          if (!option?.skipDisabled && item.disabled.value) {
+          if (option?.skipDisabled && item.disabled.value) {
             return isExpanded
           }
 
@@ -114,10 +114,10 @@ export default defineComponent({
 
         if (isBoolean(option.expand)) {
           if (option?.skipDisabled) {
-            return option.expand
+            return item.disabled.value ? isExpanded : option.expand
           }
 
-          return item.disabled.value ? isExpanded : option.expand
+          return option.expand
         }
 
         return isExpanded
