@@ -204,7 +204,14 @@ function openAll() {
 
 | Method      | Description                                                                                                                                          | Arguments                 | Return                               |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `options:{expand: boolean | 'inverse', skipDisabled?: boolean }` | `-` |
+| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `options:CollapseToggleAllOptions` | `-` |
+
+### CollapseToggleAllOptions
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ---- | ---- | ---- | ------ |
+| `expand` | `'inverse'`:Refers to switching between unfolded and folded states;`boolean`Manual control of unfolding and folding status | _boolean \| 'inverse'_ | `-` |
+| `skipDisabled` | skip the disabled state | `boolean` | `-` |
 
 
 ### Events
