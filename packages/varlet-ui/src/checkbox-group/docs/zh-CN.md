@@ -101,11 +101,11 @@ const value = ref(false)
 import { ref } from 'vue'
 
 const value = ref(false)
-const intermediate = ref(true)
+const indeterminate = ref(true)
 </script>
 
 <template>
-  <var-checkbox v-model:intermediate="intermediate" v-model="value"></var-checkbox>
+  <var-checkbox v-model:indeterminate="indeterminate" v-model="value"></var-checkbox>
 </template>
 ```
 
