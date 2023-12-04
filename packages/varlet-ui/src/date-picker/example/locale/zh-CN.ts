@@ -5,7 +5,10 @@ export default {
   range: '选择范围',
   dateLimit: '日期限制',
   custom: '自定义',
+  showActions: '操作按钮',
   year: '年',
   month: '月',
-  divider: '年',
+  divider: '',
+  confirm: '确认',
+  cancel: '取消',
 }

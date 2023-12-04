@@ -132,6 +132,26 @@ function change(date) {
 </template>
 ```
 
+
+### 操作按钮
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('2023-11-11')
+</script>
+
+<template>
+  <var-date-picker 
+    v-model="date" 
+    showActions 
+    @confirm="console.log('确认')" 
+    @cancel="console.log('取消')"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -154,6 +174,7 @@ function change(date) {
 | `multiple`          | 是否支持选择多个日期                                   | _boolean_ | `false` |
 | `range`             | 是否支持选择一个范围                                   | _boolean_ | `false` |
 | `touchable`         | 是否支持拖动切换面板                                   | _boolean_ | `true` |
+| `showActions`       | 是否显示操作面板                                       | _boolean_ | `false` |
 
 ### 事件
 
@@ -161,6 +182,8 @@ function change(date) {
 |-----------|---------|-----------------------------------|
 | `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
+| `confirm` | 点击确认时触发 | `event: Event` |
+| `cancel`  | 点击取消时触发 | `event: Event` |
 
 ### 插槽
 `weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
@@ -172,6 +195,7 @@ function change(date) {
 | `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
 | `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
 | `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
+| `actions` | 自定义操作面板 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
@@ -181,7 +205,6 @@ function change(date) {
 | `--date-picker-border-radius` | `4px`                  |
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
-| `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
 | `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
 | `--date-picker-title-height` | `105px` |
@@ -196,6 +219,7 @@ function change(date) {
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-body-background-color` | `#fff`                 |
+| `--date-picker-body-height` | `280px`                |
 | `--picker-header-padding` | `4px 16px`             |
 | `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
