@@ -3,10 +3,9 @@ import CollapseItem from '../../collapse-item'
 import VarCollapse from '../Collapse'
 import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi, describe, test } from 'vitest'
-import { ref } from 'vue'
+import { expect, vi, describe } from 'vitest'
 
 test('test collapse and collapseItem use', () => {
   const app = createApp({}).use(Collapse).use(CollapseItem)
