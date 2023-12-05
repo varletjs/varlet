@@ -96,16 +96,8 @@
         />
       </transition>
     </div>
-    <div :class="n('actions')" v-if="showActions">
-      <slot name="actions" v-bind="slotProps">
-        <var-button text type="default" @click="onCancel">
-          {{ pack.datePickerCancelButtonText }}
-        </var-button>
-
-        <var-button text type="primary" @click="onConfirm">
-          {{ pack.datePickerConfirmButtonText }}
-        </var-button>
-      </slot>
+    <div :class="n('actions')" v-if="$slots.actions">
+      <slot name="actions" />
     </div>
   </div>
 </template>
@@ -131,7 +123,6 @@ import { isArray, toNumber, doubleRaf, call } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { pack } from '../locale'
-import VarButton from '../button'
 
 const { name, n, classes } = createNamespace('date-picker')
 
@@ -141,7 +132,6 @@ export default defineComponent({
     MonthPickerPanel,
     YearPickerPanel,
     DayPickerPanel,
-    VarButton,
   },
   props,
   setup(props) {

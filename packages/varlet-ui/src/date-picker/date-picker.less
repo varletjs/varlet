@@ -18,6 +18,7 @@
   --date-picker-body-background-color: #fff;
   --date-picker-body-height: 280px;
   --picker-header-padding: 4px 16px;
+  --picker-action-padding: 0 8px 12px 8px;
   --picker-header-color: #555;
   --month-picker-padding: 0 12px;
   --month-picker-item-width: 33%;
@@ -36,7 +37,6 @@
   --day-picker-head-item-color: rgba(0, 0, 0, 0.38);
   --day-picker-head-item-padding: 8px 0;
   --day-picker-head-item-font-weight: 600;
-  --day-picker-action-panel-padding: 5px;
 }
 
 .var-date-picker {
@@ -130,7 +130,8 @@
   }
 
   &__actions {
-    padding: var(--day-picker-action-panel-padding);
+    background-color: var(--date-picker-body-background-color);
+    padding: var(--picker-action-padding);
     display: flex;
     justify-content: flex-end;
   }

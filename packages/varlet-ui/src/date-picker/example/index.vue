@@ -11,7 +11,6 @@ const dates = reactive({
   date3: ['2021-02-01', '2021-02-15'],
   date4: '2020-11-11',
   date5: '2021-05',
-  date6: '2023-11-11',
 })
 
 const allowedDates = (date) => {
@@ -69,15 +68,7 @@ watchDarkMode(Themes.dark)
       <span>{{ year }}{{ pack.year }}</span>
     </template>
     <template #month="{ year, month }">
-      <span>{{ year }}{{ pack.year }}{{ pack.divider }}{{ month }}{{ pack.month }}</span>
+      <span>{{ year }}{{ pack.divider }}{{ month }}{{ pack.month }}</span>
     </template>
   </var-date-picker>
-
-  <app-type>{{ pack.showActions }}</app-type>
-  <var-date-picker
-    v-model="dates.date6"
-    show-actions
-    @confirm="console.log(pack.confirm)"
-    @cancel="console.log(pack.cancel)"
-  />
 </template>

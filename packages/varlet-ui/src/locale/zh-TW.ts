@@ -97,8 +97,6 @@ export default {
     },
   },
   datePickerSelected: '個被選擇',
-  datePickerConfirmButtonText: '確認',
-  datePickerCancelButtonText: '取消',
   // pagination
   paginationItem: '條',
   paginationPage: '頁',

@@ -24,9 +24,6 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
-  showActions?: boolean
-  onConfirm?: ListenerProp<(e: Event) => void>
-  onCancel?: ListenerProp<(e: Event) => void>
   onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>

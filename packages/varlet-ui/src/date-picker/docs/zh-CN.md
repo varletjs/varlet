@@ -132,26 +132,6 @@ function change(date) {
 </template>
 ```
 
-
-### 操作按钮
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2023-11-11')
-</script>
-
-<template>
-  <var-date-picker 
-    v-model="date" 
-    showActions 
-    @confirm="console.log('确认')" 
-    @cancel="console.log('取消')"
-  />
-</template>
-```
-
 ## API
 
 ### 属性
@@ -174,7 +154,6 @@ const date = ref('2023-11-11')
 | `multiple`          | 是否支持选择多个日期                                   | _boolean_ | `false` |
 | `range`             | 是否支持选择一个范围                                   | _boolean_ | `false` |
 | `touchable`         | 是否支持拖动切换面板                                   | _boolean_ | `true` |
-| `showActions`       | 是否显示操作面板                                       | _boolean_ | `false` |
 
 ### 事件
 
@@ -182,20 +161,18 @@ const date = ref('2023-11-11')
 |-----------|---------|-----------------------------------|
 | `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
-| `confirm` | 点击确认时触发 | `event: Event` |
-| `cancel`  | 点击取消时触发 | `event: Event` |
 
 ### 插槽
 `weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
 
-| 名称 | 说明 | 参数 |
-| ----- | -------------- | -------- |
-| `year` | 自定义标题中的年 | `year: YYYY` |
-| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM` |
+| 名称 | 说明 | 参数                                                                   |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `year` | 自定义标题中的年 | `year: YYYY`                                                         |
+| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM`                                        |
 | `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
-| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
-| `actions` | 自定义操作面板 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
+| `range` | 自定义标题中的范围 | `choose: [startData, endDate]`                                       |
+| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `actions` | 自定义操作面板 | `-`                                                                  |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
@@ -221,6 +198,7 @@ const date = ref('2023-11-11')
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `280px`                |
 | `--picker-header-padding` | `4px 16px`             |
+| `--picker-action-padding` | `0 8px 12px 8px`             |
 | `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |

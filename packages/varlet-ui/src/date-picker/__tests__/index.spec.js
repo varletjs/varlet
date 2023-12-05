@@ -438,21 +438,4 @@ test('test datePicker action', async () => {
   expect(wrapper.find('.var-date-picker__actions').text()).toBe('This is action slot')
 
   wrapper.unmount()
-
-  const okFn = vi.fn()
-  const slotWrapper = mount(VarDatePicker, {
-    props: {
-      showActions: true,
-      onConfirm: okFn,
-    },
-  })
-
-  await delay(100)
-  const okBtn = slotWrapper.find('.var-date-picker__actions .var-button--text-primary .var-button__content')
-  expect(okBtn).toBeTruthy()
-  await okBtn.trigger('click')
-
-  expect(okFn).toBeCalled()
-
-  slotWrapper.unmount()
 })

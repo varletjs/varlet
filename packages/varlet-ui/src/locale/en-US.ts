@@ -98,8 +98,6 @@ export default {
   },
   datePickerSelected: ' selected',
   datePickerHint: 'SELECT DATE',
-  datePickerConfirmButtonText: 'Confirm',
-  datePickerCancelButtonText: 'Cancel',
   // pagination
   paginationItem: '',
   paginationPage: 'page',
