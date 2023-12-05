@@ -9,10 +9,12 @@ import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
-import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
+import { normalizeToArray, call, removeArrayBlank, isBoolean } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
+
+type CollapseToggleAllOptions = { expand: boolean | 'inverse'; skipDisabled?: boolean }
 
 export default defineComponent({
   name,
@@ -94,9 +96,41 @@ export default defineComponent({
       })
     }
 
+    // expose
+    const toggleAll = (option: CollapseToggleAllOptions) => {
+      if (props.accordion) return
+
+      const matchedItems = collapseItems.filter((item) => {
+        const itemValue = item.name.value ?? item.index.value
+        const isExpanded = normalizeValues.value.includes(itemValue)
+
+        if (option.expand === 'inverse') {
+          if (option?.skipDisabled && item.disabled.value) {
+            return isExpanded
+          }
+
+          return !isExpanded
+        }
+        if (isBoolean(option.expand)) {
+          if (option?.skipDisabled && item.disabled.value) {
+            return isExpanded
+          }
+
+          return option.expand
+        }
+
+        return isExpanded
+      })
+
+      const modelValue = matchedItems.map((item) => item.name.value ?? item.index.value)
+
+      updateModelValue(modelValue)
+    }
+
     return {
       divider,
       n,
+      toggleAll,
     }
   },
 })

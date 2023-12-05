@@ -59,12 +59,14 @@ export default defineComponent({
     const showContent = ref(false)
     const contentEl = ref<HTMLDivElement | null>(null)
     const name = computed(() => props.name)
+    const disabled = computed(() => props.disabled)
     const { index, collapse, bindCollapse } = useCollapse()
     const { offset, divider, elevation, updateItem } = collapse
 
     const collapseItemProvider: CollapseItemProvider = {
       index,
       name,
+      disabled,
       init,
     }
 

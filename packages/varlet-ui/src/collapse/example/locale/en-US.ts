@@ -12,4 +12,10 @@ export default {
   hideDivider: 'Hide Divider',
   showDivider: 'Show Divider',
   controlledDivider: 'Controlled Divider',
+  toggleAll: 'Toggle All',
+  toggleAllSkipDisabled: 'Toggle All(Skip Disabled)',
+  openAll: 'Open All',
+  openAllSkipDisabled: 'Open All(Skip Disabled)',
+  expandAll: 'Expand All',
+  expandAllSkipDisabled: 'Expand All(Skip Disabled)',
 }
