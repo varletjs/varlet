@@ -5,7 +5,8 @@ import VarCollapseItem from '../../collapse-item/CollapseItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
+import { ref } from 'vue'
 
 test('test collapse and collapseItem use', () => {
   const app = createApp({}).use(Collapse).use(CollapseItem)
@@ -189,5 +190,60 @@ describe('test collapse and collapseItem props', () => {
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe('--collapse-divider-top: none;')
 
     wrapper.unmount()
+  })
+
+  test('test collapse toggleAll', async () => {
+    const collapseRef = ref(null)
+
+    const template = `
+      <var-collapse v-model="value" ref="collapseRef">
+        <var-collapse-item :title="test1" name="1">test1</var-collapse-item>
+        <var-collapse-item :title="test2" name="2"> test2</var-collapse-item>
+        <var-collapse-item :title="test3" disabled name="3"> test3</var-collapse-item>
+        <var-collapse-item :title="test4" disabled name="4"> test4</var-collapse-item>
+      </var-collapse>
+    `
+    const wrapper = mount({
+      components: {
+        [VarCollapse.name]: VarCollapse,
+        [VarCollapseItem.name]: VarCollapseItem,
+      },
+      data() {
+        return {
+          value: ['1', '3'],
+        }
+      },
+      template,
+      setup() {
+        return {
+          collapseRef,
+        }
+      },
+    })
+
+    await wrapper.vm.$nextTick()
+
+    collapseRef.value.toggleAll({ expand: 'inverse' })
+    expect(wrapper.vm.value).toEqual(['2', '4'])
+
+    await wrapper.setData({ value: ['1', '3'] })
+    collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
+    expect(wrapper.vm.value).toEqual(['2', '3'])
+
+    await wrapper.setData({ value: ['1', '3'] })
+    collapseRef.value.toggleAll({ expand: true })
+    expect(wrapper.vm.value).toEqual(['1', '2', '3', '4'])
+
+    await wrapper.setData({ value: ['1', '3'] })
+    collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
+    expect(wrapper.vm.value).toEqual(['1', '2', '3'])
+
+    await wrapper.setData({ value: ['1', '3'] })
+    collapseRef.value.toggleAll({ expand: false })
+    expect(wrapper.vm.value).toEqual([])
+
+    await wrapper.setData({ value: ['1', '3'] })
+    collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
+    expect(wrapper.vm.value).toEqual(['3'])
   })
 })

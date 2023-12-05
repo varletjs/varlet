@@ -112,15 +112,11 @@ export default defineComponent({
           return !isExpanded
         }
 
-        if (isBoolean(option.expand)) {
-          if (option?.skipDisabled) {
-            return item.disabled.value ? isExpanded : option.expand
-          }
-
-          return option.expand
+        if (option?.skipDisabled && item.disabled.value) {
+          return isExpanded
         }
 
-        return isExpanded
+        return option.expand
       })
 
       const modelValue = matchedItems.map((item) => item.name.value ?? item.index.value)

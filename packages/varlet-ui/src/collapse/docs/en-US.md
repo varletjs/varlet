@@ -152,11 +152,24 @@ const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
 
 function toggleAll() {
-  collapseRef.value.toggleAll()
+  collapseRef.value.toggleAll({ expand: 'inverse' })
+}
+function toggleAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
 }
 
 function openAll() {
-  collapseRef.value.toggleAll(true)
+  collapseRef.value.toggleAll({ expand: true })
+}
+function openAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
+}
+
+function expandAll() {
+  collapseRef.value.toggleAll({ expand: false })
+}
+function expandAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
 
 </script>
@@ -167,7 +180,7 @@ function openAll() {
   <var-button @click="openAll" style="margin: 8px">Open All</var-button>
   <var-button @click="openAllSkipDisabled" style="margin: 8px">Open All(Skip Disabled)</var-button>
   <var-button @click="expandAll" style="margin: 8px">Expand All</var-button>
-  <var-button @click="expandAllSkipDisabled" style="margin: 8px">收起全部(跳过禁用)</var-button>
+  <var-button @click="expandAllSkipDisabled" style="margin: 8px">Open All(Skip Disabled)</var-button>
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
     <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
