@@ -112,7 +112,7 @@ export default defineComponent({
           return !isExpanded
         }
         if (isBoolean(option.expand)) {
-          if (isBoolean(option.expand) && option?.skipDisabled && item.disabled.value) {
+          if (option?.skipDisabled && item.disabled.value) {
             return isExpanded
           }
 
