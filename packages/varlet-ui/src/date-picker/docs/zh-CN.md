@@ -165,13 +165,14 @@ function change(date) {
 ### 插槽
 `weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
 
-| 名称 | 说明 | 参数 |
-| ----- | -------------- | -------- |
-| `year` | 自定义标题中的年 | `year: YYYY` |
-| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM` |
+| 名称 | 说明 | 参数                                                                   |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `year` | 自定义标题中的年 | `year: YYYY`                                                         |
+| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM`                                        |
 | `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
-| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
+| `range` | 自定义标题中的范围 | `choose: [startData, endDate]`                                       |
+| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `actions` | 自定义操作面板 | `-`                                                                  |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
@@ -181,7 +182,6 @@ function change(date) {
 | `--date-picker-border-radius` | `4px`                  |
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
-| `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
 | `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
 | `--date-picker-title-height` | `105px` |
@@ -196,7 +196,9 @@ function change(date) {
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-body-background-color` | `#fff`                 |
+| `--date-picker-body-height` | `280px`                |
 | `--picker-header-padding` | `4px 16px`             |
+| `--picker-action-padding` | `0 8px 12px 8px`             |
 | `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |
