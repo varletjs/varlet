@@ -195,7 +195,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `280px`                |
 | `--picker-header-padding` | `4px 16px`             |
-| `--picker-action-padding` | `0 8px 12px 8px`       |
+| `--picker-actions-padding` | `0 8px 12px 8px`       |
 | `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |

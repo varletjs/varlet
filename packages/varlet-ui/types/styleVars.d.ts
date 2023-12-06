@@ -413,8 +413,8 @@ export interface StyleVars {
   datePickerBodyHeight?: string
   '--picker-header-padding'?: string
   pickerHeaderPadding?: string
-  '--picker-action-padding'?: string
-  pickerActionPadding?: string
+  '--picker-actions-padding'?: string
+  pickerActionsPadding?: string
   '--picker-header-color'?: string
   pickerHeaderColor?: string
   '--month-picker-padding'?: string
