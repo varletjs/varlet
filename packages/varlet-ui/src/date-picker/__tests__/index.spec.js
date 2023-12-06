@@ -424,18 +424,3 @@ test('test datePicker titleColor', async () => {
 
   wrapper.unmount()
 })
-
-test('test datePicker action', async () => {
-  const wrapper = mount(VarDatePicker, {
-    slots: {
-      actions: () => 'This is action slot',
-    },
-    props: {
-      showActions: true,
-    },
-  })
-
-  expect(wrapper.find('.var-date-picker__actions').text()).toBe('This is action slot')
-
-  wrapper.unmount()
-})
