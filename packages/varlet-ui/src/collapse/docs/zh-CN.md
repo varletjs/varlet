@@ -2,7 +2,7 @@
 
 ### 介绍
 
-可以折叠/展开的内容区域。
+可以折叠和展开的内容区域。
 
 ### 基本使用
 
@@ -97,7 +97,6 @@ const value = ref('')
 import { ref } from 'vue'
 
 const value = ref([1])
-
 const disabled = ref(false)  
 </script>
 
@@ -143,15 +142,18 @@ const value = ref(['1'])
 ```
 
 ### 切换全部
+
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const collapseRef = ref(null)
-const toggleAllValue = ref(['2', '4'])  
+const value = ref(['2', '4'])  
 
 function toggleAll() {
   collapseRef.value.toggleAll({ expand: 'inverse' })
 }
+
 function toggleAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
 }
@@ -163,22 +165,30 @@ function openAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
 }
 
-function expandAll() {
+function closeAll() {
   collapseRef.value.toggleAll({ expand: false })
 }
-function expandAllSkipDisabled() {
+
+function closeAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
 </script>
 
 <template>
   <var-button @click="toggleAll" style="margin: 8px">切换全部</var-button>
-  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">切换全部(跳过禁用)</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">
+    切换全部（跳过禁用）
+  </var-button>
   <var-button @click="openAll" style="margin: 8px">展开全部</var-button>
-  <var-button @click="openAllSkipDisabled" style="margin: 8px">展开全部(跳过禁用)</var-button>
-  <var-button @click="expandAll" style="margin: 8px">收起全部</var-button>
-  <var-button @click="expandAllSkipDisabled" style="margin: 8px">收起全部(跳过禁用)</var-button>
-  <var-collapse v-model="toggleAllValue" ref="collapseRef">
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">
+    展开全部（跳过禁用）
+  </var-button>
+  <var-button @click="closeAll" style="margin: 8px">收起全部</var-button>
+  <var-button @click="closeAllSkipDisabled" style="margin: 8px">
+    收起全部（跳过禁用）
+  </var-button>
+
+  <var-collapse v-model="value" ref="collapseRef">
     <var-collapse-item title="标题" name="1">文本</var-collapse-item>
     <var-collapse-item title="标题" name="2">文本</var-collapse-item>
     <var-collapse-item title="标题" disabled name="3">文本</var-collapse-item>
@@ -214,15 +224,14 @@ function expandAllSkipDisabled() {
 
 | 方法名      | 说明                                                                                | 参数                               | 返回值 |
 | ----------- | ----------------------------------------------------------------------------------- | ---------------------------------- | ------ |
-| `toggleAll` | 同时控制所有子面板开启关闭(被禁用的除外),传入`expand`可选参数可以具体控制展开和收起 | `options:CollapseToggleAllOptions` | `-`    |
+| `toggleAll` | 开启或关闭所有面板 | `options: CollapseToggleAllOptions` | `-`    |
 
 ### CollapseToggleAllOptions
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ---- | ---- | ---- | ------ |
-| `expand` | `'inverse'`:指的是展开和收起状态进行切换;传入`boolean`手动控制展开和收起状态 | _boolean \| 'inverse'_ | `-` |
-| `skipDisabled` | 是否跳过禁用状态 | `boolean` | `-` |
-
+| `expand` | 设置`'inverse'`可切换所有面板的状态，包括禁用的面板；设置`boolean`控制所有面板展开或收起 | _'inverse' \| boolean_ | `-` |
+| `skipDisabled` | 是否跳过禁用状态的面板 | _boolean_ | `false` |
 
 ### 事件
 

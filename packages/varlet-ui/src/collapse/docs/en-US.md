@@ -21,8 +21,8 @@ function handleChange(val) {
 
 <template>
   <var-collapse v-model="value" @change="handleChange">
-    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="1">Text</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Text</var-collapse-item>
   </var-collapse>
 </template>
 ```
@@ -40,8 +40,8 @@ const value = ref(['2'])
 
 <template>
   <var-collapse v-model="value" :offset="false">
-    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="1">Text</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Text</var-collapse-item>
   </var-collapse>
 </template>
 ```
@@ -63,9 +63,9 @@ const divider = ref(false)
     {{ divider ? 'Hide Divider' : 'Show Divider' }}
   </var-button>
   <var-collapse v-model="value" :divider="divider">
-    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
-    <var-collapse-item title="Title" name="3">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="1">Text</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Text</var-collapse-item>
+    <var-collapse-item title="Title" name="3">Text</var-collapse-item>
   </var-collapse>
 </template>
 ```
@@ -84,8 +84,8 @@ const value = ref('')
 
 <template>
   <var-collapse v-model="value" accordion :offset="false">
-    <var-collapse-item title="Title" name="1">Hello World</var-collapse-item>
-    <var-collapse-item title="Title" name="2">Hello World</var-collapse-item>
+    <var-collapse-item title="Title" name="1">Text</var-collapse-item>
+    <var-collapse-item title="Title" name="2">Text</var-collapse-item>
   </var-collapse>
 </template>
 ```
@@ -99,7 +99,6 @@ Use the `disabled` prop to disable CollapseItem.
 import { ref } from 'vue'
 
 const value = ref([1])
-
 const disabled = ref(false)  
 </script>
 
@@ -111,10 +110,10 @@ const disabled = ref(false)
     
     <var-collapse v-model="value">
       <var-collapse-item title="Title" :name="1" :disabled="disabled">
-        Hello World
+        Text
       </var-collapse-item>
       <var-collapse-item title="Title" :name="2" :disabled="disabled">
-        Hello World
+        Text
       </var-collapse-item>
     </var-collapse>
   </var-space>
@@ -133,7 +132,7 @@ const value = ref(['1'])
 <template>
   <var-collapse v-model="value">
     <var-collapse-item title="This is a Title" name="1" icon="account-circle">
-      Hello World
+      Text
     </var-collapse-item>
     <var-collapse-item name="2">
       <template #title>This is a Title</template>
@@ -145,15 +144,18 @@ const value = ref(['1'])
 ```
 
 ### Toggle All
+
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const collapseRef = ref(null)
 const toggleAllValue = ref(['2', '4'])  
 
 function toggleAll() {
   collapseRef.value.toggleAll({ expand: 'inverse' })
 }
+
 function toggleAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
 }
@@ -161,26 +163,34 @@ function toggleAllSkipDisabled() {
 function openAll() {
   collapseRef.value.toggleAll({ expand: true })
 }
+
 function openAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
 }
 
-function expandAll() {
+function closeAll() {
   collapseRef.value.toggleAll({ expand: false })
 }
-function expandAllSkipDisabled() {
+
+function closeAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
-
 </script>
 
 <template>
   <var-button @click="toggleAll" style="margin: 8px">Toggle All</var-button>
-  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">Toggle All(Skip Disabled)</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">
+    Toggle All(Skip Disabled)
+  </var-button>
   <var-button @click="openAll" style="margin: 8px">Open All</var-button>
-  <var-button @click="openAllSkipDisabled" style="margin: 8px">Open All(Skip Disabled)</var-button>
-  <var-button @click="expandAll" style="margin: 8px">Expand All</var-button>
-  <var-button @click="expandAllSkipDisabled" style="margin: 8px">Open All(Skip Disabled)</var-button>
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">
+    Open All(Skip Disabled)
+  </var-button>
+  <var-button @click="closeAll" style="margin: 8px">Close All</var-button>
+  <var-button @click="closeAllSkipDisabled" style="margin: 8px">
+    Close All(Skip Disabled)
+  </var-button>
+
   <var-collapse v-model="toggleAllValue" ref="collapseRef">
     <var-collapse-item title="title" name="1">This is a content.</var-collapse-item>
     <var-collapse-item title="title" name="2">This is a content.</var-collapse-item>
@@ -217,15 +227,14 @@ function expandAllSkipDisabled() {
 
 | Method      | Description                                                                                                                                          | Arguments                 | Return                               |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------------ |
-| `toggleAll` | Simultaneously control all sub panels to turn on and off(except disabled),use `expand` parameter to control the expansion and collapse of the panels | `options:CollapseToggleAllOptions` | `-` |
+| `toggleAll` | Expand or close all items | `options: CollapseToggleAllOptions` | `-` |
 
 ### CollapseToggleAllOptions
 
-| 参数 | 说明 | 类型 | 默认值 |
+| Option              | Description                      | Type               | Default |
 | ---- | ---- | ---- | ------ |
-| `expand` | `'inverse'`:Refers to switching between unfolded and folded states;`boolean`Manual control of unfolding and folding status | _boolean \| 'inverse'_ | `-` |
-| `skipDisabled` | skip the disabled state | `boolean` | `-` |
-
+| `expand` | Set `'inverse'` to switch the status of all items, including disabled items; set `boolean` to control the expansion or collapse of all items | _'inverse' \| boolean_ | `-` |
+| `skipDisabled` | Skip the disabled item | _boolean_ | `false` |
 
 ### Events
 
