@@ -9,12 +9,13 @@ import { glob } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { SRC_DIR, dirname } from '../shared/constant.js'
 
-const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync } = fse
+const { removeSync, readFileSync, copySync, pathExistsSync, writeFileSync, renameSync } = fse
 const { prompt } = inquirer
 
 type CodingStyle = 'tsx' | 'vue'
 
 export interface CreateCommandOptions {
+  internal?: boolean
   name?: string
   locale?: boolean
   sfc?: boolean
@@ -110,6 +111,16 @@ export async function create(options: CreateCommandOptions) {
 
   copySync(resolve(dirname, '../../../template/create'), componentFolder)
   await renderTemplates(componentFolder, componentFolderName, renderData)
+
+  if (options.internal) {
+    removeSync(resolve(componentFolder, './example/locale/index.ts'))
+    renameSync(
+      resolve(componentFolder, './example/locale/_index.ts'),
+      resolve(componentFolder, './example/locale/index.ts')
+    )
+  } else {
+    removeSync(resolve(componentFolder, './example/locale/_index.ts'))
+  }
 
   if (!renderData.locale) {
     removeSync(resolve(componentFolder, '/example/locale'))
