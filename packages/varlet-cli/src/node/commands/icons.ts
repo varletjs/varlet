@@ -64,7 +64,7 @@ export async function icons() {
   const { name, namespace, base64, publicPath, fontFamilyClassName, fontWeight, fontStyle } = get(varletConfig, 'icons')
 
   await removeDir()
-  const svgFiles = readdirSync(ICONS_SVG_DIR).filter((svgFile) => svgFile.includes('.svg'))
+  const svgFiles = readdirSync(ICONS_SVG_DIR).filter((svgFile) => svgFile.startsWith('u') && svgFile.endsWith('.svg'))
   const [{ ttf }] = await Promise.all([buildWebFont(name!), buildPNG(svgFiles)])
 
   const icons = svgFiles.map((svgName) => {
