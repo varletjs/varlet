@@ -6,7 +6,7 @@ export default {
   enable: 'Enable',
   customContent: 'Custom Content',
   title: 'Title',
-  text: 'Hello World',
+  text: 'Text',
   slotTitle: 'This is a Title',
   slotContent: 'This is a content',
   hideDivider: 'Hide Divider',
@@ -16,6 +16,6 @@ export default {
   toggleAllSkipDisabled: 'Toggle All(Skip Disabled)',
   openAll: 'Open All',
   openAllSkipDisabled: 'Open All(Skip Disabled)',
-  expandAll: 'Expand All',
-  expandAllSkipDisabled: 'Expand All(Skip Disabled)',
+  closeAll: 'Close All',
+  closeAllSkipDisabled: 'Close All(Skip Disabled)',
 }
