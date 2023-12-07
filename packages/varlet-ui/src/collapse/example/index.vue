@@ -106,8 +106,10 @@ watchDarkMode(Themes.dark)
   <var-button @click="openAll" style="margin: 8px">{{ pack.openAll }}</var-button>
   <var-button @click="openAllSkipDisabled" style="margin: 8px">{{ pack.openAllSkipDisabled }}</var-button>
   <var-button @click="closeAll" style="margin: 8px">{{ pack.closeAll }}</var-button>
-  <var-button @click="closeAllSkipDisabled" style="margin: 8px">{{ pack.closeAllSkipDisabled }}</var-button>
-  <var-collapse v-model="values.value6" ref="collapseRef">
+  <var-button @click="closeAllSkipDisabled" style="margin: 8px 8px 16px 8px">{{
+    pack.closeAllSkipDisabled
+  }}</var-button>
+  <var-collapse v-model="values.value6" ref="collapseRef" style="margin-bottom: 40px">
     <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>
     <var-collapse-item :title="pack.slotTitle" disabled name="3"> {{ pack.text }}</var-collapse-item>
