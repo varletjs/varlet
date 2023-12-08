@@ -1,3 +1,21 @@
+# [2.20.0](https://github.com/varletjs/varlet/compare/v2.19.3...v2.20.0) (2023-12-08)
+
+
+### Bug Fixes
+
+* **cli:** filter non-svg files ([#1338](https://github.com/varletjs/varlet/issues/1338)) ([b0acea5](https://github.com/varletjs/varlet/commit/b0acea533f7b7c42036d7b1129d0e5a0d1780a49))
+* **cli:** optimize judgment condition to filter svg files ([#1339](https://github.com/varletjs/varlet/issues/1339)) ([aacedb8](https://github.com/varletjs/varlet/commit/aacedb8d2865d8b27fb96c45d07203a0552d58d8))
+
+
+### Features
+
+* **cli:** support create command internal mode and fix docs i18n error ([0d42d01](https://github.com/varletjs/varlet/commit/0d42d01fd6668eced6fd5369e442ee7c76b7b13a))
+* **collapse:** support toggleAll method ([#1315](https://github.com/varletjs/varlet/issues/1315)) ([04498fc](https://github.com/varletjs/varlet/commit/04498fcf62acb38b76a53844ca8c782078d93b51))
+* **date-picker:** support action slot ([#1321](https://github.com/varletjs/varlet/issues/1321)) ([8a66849](https://github.com/varletjs/varlet/commit/8a66849b7662d567d693a60ad2e72b421d186ad6))
+* **icons:** support history icon ([#1336](https://github.com/varletjs/varlet/issues/1336)) ([5aefc6b](https://github.com/varletjs/varlet/commit/5aefc6bff948cbc40438d9134f256f5b359e7999))
+
+
+
 ## [2.19.3](https://github.com/varletjs/varlet/compare/v2.19.2...v2.19.3) (2023-12-01)
 
 
