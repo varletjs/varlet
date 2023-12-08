@@ -129,7 +129,7 @@ program
     .command('commit-lint <gitParams>')
     .description('Lint commit message')
     .action(async (options) => {
-    const { commitLint } = await import('./commands/commitLint.js');
+    const { commitLint } = await import('@varlet/release');
     return commitLint(options);
 });
 program
