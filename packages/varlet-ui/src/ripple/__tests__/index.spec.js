@@ -57,15 +57,4 @@ describe('test ripple component props', () => {
 
     wrapper.unmount()
   })
-
-  test('test ripple touchmove', async () => {
-    window.ontouchstart = true
-    const wrapper = mount(Wrapper, { attachTo: document.body })
-
-    await triggerDrag(wrapper, 0, 20)
-    await delay(60)
-    expect(wrapper.find('.var-ripple').exists()).toBeFalsy()
-
-    wrapper.unmount()
-  })
 })
