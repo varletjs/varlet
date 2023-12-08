@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "2.19.2",
+  "version": "2.19.3",
   "description": "A material like components library",
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
@@ -46,7 +46,7 @@
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
-    "create": "varlet-cli create",
+    "create": "varlet-cli create -i",
     "test": "varlet-cli test",
     "test:watch": "varlet-cli test -w",
     "test:coverage": "varlet-cli test -cov"

@@ -61,6 +61,7 @@ export class DatePicker extends VarComponent {
     date(data: DatePickerDate): VNode[]
     range(data: DatePickerRange): VNode[]
     multiple(data: DatePickerMultiple): VNode[]
+    actions(): VNode[]
   }
 }
 

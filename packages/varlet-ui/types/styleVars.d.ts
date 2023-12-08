@@ -381,8 +381,6 @@ export interface StyleVars {
   datePickerFontSize?: string
   '--date-picker-min-width'?: string
   datePickerMinWidth?: string
-  '--date-picker-height'?: string
-  datePickerHeight?: string
   '--date-picker-main-color'?: string
   datePickerMainColor?: string
   '--date-picker-title-hint-font-size'?: string
@@ -411,8 +409,12 @@ export interface StyleVars {
   datePickerTitleDateRangeFontSize?: string
   '--date-picker-body-background-color'?: string
   datePickerBodyBackgroundColor?: string
+  '--date-picker-body-height'?: string
+  datePickerBodyHeight?: string
   '--picker-header-padding'?: string
   pickerHeaderPadding?: string
+  '--picker-actions-padding'?: string
+  pickerActionsPadding?: string
   '--picker-header-color'?: string
   pickerHeaderColor?: string
   '--month-picker-padding'?: string

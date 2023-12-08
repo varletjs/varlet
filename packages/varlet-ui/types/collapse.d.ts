@@ -3,7 +3,9 @@ import { VNode } from 'vue'
 
 export declare const collapseProps: Record<keyof CollapseProps, any>
 
-export type CollapseModelValue = null | string | number | Array<string | number>
+export type CollapseModelValue = undefined | string | number | Array<string | number | undefined>
+
+export type CollapseToggleAllOptions = { expand: boolean | 'inverse'; skipDisabled?: boolean }
 
 export interface CollapseProps extends BasicAttributes {
   modelValue?: CollapseModelValue
@@ -23,6 +25,8 @@ export class Collapse extends VarComponent {
   $slots: {
     default(): VNode[]
   }
+
+  toggleAll(options: CollapseToggleAllOptions): void
 }
 
 export class _CollapseComponent extends Collapse {}

@@ -12,4 +12,10 @@ export default {
   hideDivider: '隐藏分割线',
   showDivider: '显示分割线',
   controlledDivider: '可控的分割线',
+  toggleAll: '切换全部',
+  toggleAllSkipDisabled: '切换全部（跳过禁用）',
+  openAll: '展开全部',
+  openAllSkipDisabled: '展开全部（跳过禁用）',
+  closeAll: '收起全部',
+  closeAllSkipDisabled: '收起全部（跳过禁用）',
 }

@@ -7,6 +7,7 @@ import { pack, use } from './locale'
 const value = ref(88)
 const value1 = ref(188)
 const maxValue = ref(99)
+const offset = ref(6)
 const hidden = ref(false)
 
 function handleChange() {
@@ -47,7 +48,7 @@ watchDarkMode(Themes.dark)
 
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
     <var-space :size="['2.666vmin', '6vmin']">
-      <var-badge type="danger" position="right-top">
+      <var-badge type="danger">
         <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="right-bottom">
@@ -58,6 +59,22 @@ watchDarkMode(Themes.dark)
       </var-badge>
       <var-badge type="danger" position="left-bottom">
         <var-chip plain :round="false" color="#009688">{{ pack.lowerLeft }}</var-chip>
+      </var-badge>
+    </var-space>
+
+    <app-type>{{ pack.offset }}</app-type>
+    <var-space :size="['2.666vmin', '6vmin']">
+      <var-badge type="danger" :offset-x="offset" :offset-y="offset">
+        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      </var-badge>
+      <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
+        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      </var-badge>
+      <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
+        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      </var-badge>
+      <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
+        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
       </var-badge>
     </var-space>
 

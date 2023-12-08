@@ -1,3 +1,4 @@
+// @ts-nocheck
 // lib
 import _zhCN from '../../../locale/zh-CN'
 import _enCN from '../../../locale/en-US'

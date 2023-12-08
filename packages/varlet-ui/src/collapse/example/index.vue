@@ -6,6 +6,7 @@ import { pack, use } from './locale'
 
 const disabled = ref(false)
 const divider = ref(false)
+const collapseRef = ref(null)
 
 const values = reactive({
   value: ['1'],
@@ -14,10 +15,35 @@ const values = reactive({
   value3: ['1'],
   value4: ['2'],
   value5: [],
+  value6: ['2', '4'],
 })
 
 function handleChange(val) {
   console.log(val)
+}
+
+function toggleAll() {
+  collapseRef.value.toggleAll({ expand: 'inverse' })
+}
+
+function toggleAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: 'inverse', skipDisabled: true })
+}
+
+function openAll() {
+  collapseRef.value.toggleAll({ expand: true })
+}
+
+function openAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: true, skipDisabled: true })
+}
+
+function closeAll() {
+  collapseRef.value.toggleAll({ expand: false })
+}
+
+function closeAllSkipDisabled() {
+  collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
 
 watchLang(use)
@@ -72,5 +98,21 @@ watchDarkMode(Themes.dark)
       <template #icon>^_^</template>
       {{ pack.slotContent }}
     </var-collapse-item>
+  </var-collapse>
+
+  <app-type>{{ pack.toggleAll }}</app-type>
+  <var-button @click="toggleAll" style="margin: 8px">{{ pack.toggleAll }}</var-button>
+  <var-button @click="toggleAllSkipDisabled" style="margin: 8px">{{ pack.toggleAllSkipDisabled }}</var-button>
+  <var-button @click="openAll" style="margin: 8px">{{ pack.openAll }}</var-button>
+  <var-button @click="openAllSkipDisabled" style="margin: 8px">{{ pack.openAllSkipDisabled }}</var-button>
+  <var-button @click="closeAll" style="margin: 8px">{{ pack.closeAll }}</var-button>
+  <var-button @click="closeAllSkipDisabled" style="margin: 8px 8px 16px 8px">{{
+    pack.closeAllSkipDisabled
+  }}</var-button>
+  <var-collapse v-model="values.value6" ref="collapseRef" style="margin-bottom: 40px">
+    <var-collapse-item :title="pack.slotTitle" name="1">{{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" name="2"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" disabled name="3"> {{ pack.text }}</var-collapse-item>
+    <var-collapse-item :title="pack.slotTitle" disabled name="4"> {{ pack.text }}</var-collapse-item>
   </var-collapse>
 </template>

@@ -5,7 +5,7 @@ import VarButtonGroup from '../../button-group/ButtonGroup.vue'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, describe } from 'vitest'
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)
@@ -15,33 +15,6 @@ test('test button plugin', () => {
 test('test button group plugin', () => {
   const app = createApp({}).use(ButtonGroup)
   expect(app.component(ButtonGroup.name)).toBeTruthy()
-})
-
-describe('test button component event', () => {
-  test('test button onClick & onTouchstart null callback', async () => {
-    const wrapper = mount(VarButton)
-    await trigger(wrapper, 'click')
-    await trigger(wrapper, 'touchstart')
-    wrapper.unmount()
-  })
-
-  test('test button onClick & onTouchstart', async () => {
-    const onClick = vi.fn()
-    const onTouchstart = vi.fn()
-
-    const wrapper = mount(VarButton, {
-      props: {
-        onClick,
-        onTouchstart,
-      },
-    })
-
-    await trigger(wrapper, 'click')
-    await trigger(wrapper, 'touchstart')
-    expect(onClick).toHaveBeenCalledTimes(1)
-    expect(onTouchstart).toHaveBeenCalledTimes(1)
-    wrapper.unmount()
-  })
 })
 
 describe('test button component props', () => {
@@ -278,98 +251,141 @@ describe('test button component props', () => {
     expect(wrapper.attributes('style')).toMatch('background: rgb(0, 0, 0)')
     wrapper.unmount()
   })
+
+  test('test button elevation', () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        elevation: 4,
+      },
+    })
+    expect(wrapper.find('.var-elevation--4').exists()).toBe(true)
+    wrapper.unmount()
+  })
 })
 
-test('test button default slots', () => {
-  const wrapper = mount(VarButton, {
-    slots: {
-      default: () => 'test',
-    },
+describe('test button component events', () => {
+  test('test button onClick & onTouchstart null callback', async () => {
+    const wrapper = mount(VarButton)
+    await trigger(wrapper, 'click')
+    await trigger(wrapper, 'touchstart')
+    wrapper.unmount()
   })
 
-  expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
-  wrapper.unmount()
+  test('test button onClick & onTouchstart', async () => {
+    const onClick = vi.fn()
+    const onTouchstart = vi.fn()
+
+    const wrapper = mount(VarButton, {
+      props: {
+        onClick,
+        onTouchstart,
+      },
+    })
+
+    await trigger(wrapper, 'click')
+    await trigger(wrapper, 'touchstart')
+    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(onTouchstart).toHaveBeenCalledTimes(1)
+    wrapper.unmount()
+  })
 })
 
-test('test button group default slots', () => {
-  const wrapper = mount(VarButtonGroup, {
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
-  })
+describe('test button component slots', () => {
+  test('test button default slot', () => {
+    const wrapper = mount(VarButton, {
+      slots: {
+        default: () => 'test',
+      },
+    })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
+    expect(wrapper.find('.var-button__content').element.textContent).toBe('test')
+    wrapper.unmount()
+  })
 })
 
-test('test button group color and text-color', () => {
-  const wrapper = mount(VarButtonGroup, {
-    props: {
-      color: 'yellow',
-      textColor: 'red',
-    },
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
+describe('test button group component props', () => {
+  test('test button group color and text-color', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        color: 'yellow',
+        textColor: 'red',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
+  test('test button group type and size', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        type: 'primary',
+        size: 'large',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test button group text mode', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        mode: 'text',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test button group outline mode', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        mode: 'outline',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test button group elevation', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        elevation: 10,
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })
 
-test('test button group type and size', () => {
-  const wrapper = mount(VarButtonGroup, {
-    props: {
-      type: 'primary',
-      size: 'large',
-    },
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
+describe('test button group component slots', () => {
+  test('test button group default slot', () => {
+    const wrapper = mount(VarButtonGroup, {
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
   })
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test button group text mode', () => {
-  const wrapper = mount(VarButtonGroup, {
-    props: {
-      mode: 'text',
-    },
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test button group outline mode', () => {
-  const wrapper = mount(VarButtonGroup, {
-    props: {
-      mode: 'outline',
-    },
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
-})
-
-test('test button group elevation', () => {
-  const wrapper = mount(VarButtonGroup, {
-    props: {
-      elevation: 10,
-    },
-    slots: {
-      default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
-    },
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-  wrapper.unmount()
 })

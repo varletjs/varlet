@@ -101,6 +101,7 @@ program
 program
   .command('create')
   .description('Create a component directory')
+  .option('-i, --internal', 'varlet internal mode')
   .option('-n, --name <componentName>', 'Component name')
   .option('-s, --sfc', 'Generate files in sfc format')
   .option('-t, --tsx', 'Generate files in tsx format')

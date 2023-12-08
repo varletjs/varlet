@@ -8,12 +8,12 @@
           classes(
             n('content'),
             n(`--${type}`),
-            [$slots.default, n(`--${position}`)],
+            [$slots.default, n(`--${position}`), n('--offset')],
             [dot, n('--dot')],
             [icon, n('--icon')]
           )
         "
-        :style="{ background: color }"
+        :style="{ background: color, ...offsetStyle }"
         v-show="!hidden"
         v-bind="$attrs"
       >
@@ -30,9 +30,10 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import { toNumber } from '@varlet/shared'
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('badge')
 
@@ -48,8 +49,14 @@ export default defineComponent({
       return value != null && maxValue != null && toNumber(value) > toNumber(maxValue) ? `${maxValue}+` : value
     })
 
+    const offsetStyle = computed<CSSProperties>(() => ({
+      [`--badge-offset-y`]: toSizeUnit(props.offsetY),
+      [`--badge-offset-x`]: toSizeUnit(props.offsetX),
+    }))
+
     return {
       value,
+      offsetStyle,
       n,
       classes,
     }

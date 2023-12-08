@@ -128,7 +128,6 @@ function change(date) {
 </template>
 ```
 
-
 ## API
 
 ### Props
@@ -163,13 +162,14 @@ function change(date) {
 
 `weekIndex` means the nth day of the week, starting with `0` for Sunday.
 
-| Name | Description | SlotProps |
-| ----- | -------------- | -------- |
-| `year` | Custom the year in the title | `year: YYYY` |
-| `month` | Custom the month in the title | `year: YYYY` <br> `month: MM` |
+| Name | Description | SlotProps                                                            |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `year` | Custom the year in the title | `year: YYYY`                                                         |
+| `month` | Custom the month in the title | `year: YYYY` <br> `month: MM`                                        |
 | `date` | Custom the date in the title | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | Custom the range in the title | `choose: [startData, endDate]` |
-| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
+| `range` | Custom the range in the title | `choose: [startData, endDate]`                                       |
+| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `actions` | Custom the views in the action panel | `-`                                                                  |
 
 ### Style Variables
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
@@ -179,7 +179,6 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-border-radius` | `4px`                  |
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
-| `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
 | `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
 | `--date-picker-title-height` | `105px` |
@@ -194,7 +193,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-body-background-color` | `#fff`                 |
+| `--date-picker-body-height` | `280px`                |
 | `--picker-header-padding` | `4px 16px`             |
+| `--picker-actions-padding` | `0 8px 12px 8px`       |
 | `--picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |

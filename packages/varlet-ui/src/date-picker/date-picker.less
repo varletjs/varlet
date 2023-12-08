@@ -2,7 +2,6 @@
   --date-picker-border-radius: 4px;
   --date-picker-font-size: var(--font-size-md);
   --date-picker-min-width: 290px;
-  --date-picker-height: 385px;
   --date-picker-main-color: rgba(0, 0, 0, 0.87);
   --date-picker-title-hint-font-size: var(--font-size-md);
   --date-picker-title-height: 105px;
@@ -17,8 +16,10 @@
   --date-picker-title-date-font-weight: 500;
   --date-picker-title-date-range-font-size: 20px;
   --date-picker-body-background-color: #fff;
+  --date-picker-body-height: 280px;
   --picker-header-padding: 4px 16px;
   --picker-header-color: #555;
+  --picker-actions-padding: 0 8px 12px 8px;
   --month-picker-padding: 0 12px;
   --month-picker-item-width: 33%;
   --month-picker-item-height: 56px;
@@ -48,7 +49,6 @@
   font-size: var(--date-picker-font-size);
   position: relative;
   min-width: var(--date-picker-min-width);
-  height: var(--date-picker-height);
   overflow: hidden;
 
   ul {
@@ -117,9 +117,9 @@
   }
 
   &__body {
-    flex: 1;
     position: relative;
     overflow: auto;
+    height: var(--date-picker-body-height);
     background-color: var(--date-picker-body-background-color);
 
     &::-webkit-scrollbar {
@@ -127,6 +127,13 @@
       width: 0;
       background: transparent;
     }
+  }
+
+  &__actions {
+    background-color: var(--date-picker-body-background-color);
+    padding: var(--picker-actions-padding);
+    display: flex;
+    justify-content: flex-end;
   }
 
   .var-picker-header {

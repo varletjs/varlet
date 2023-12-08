@@ -9,23 +9,24 @@ import { computed, defineComponent, nextTick, watch } from 'vue'
 import { useCollapseItem, type CollapseProvider } from './provide'
 import { props, type CollapseModelValue } from './props'
 import { createNamespace } from '../utils/components'
-import { isArray, call } from '@varlet/shared'
+import { normalizeToArray, call, removeArrayBlank } from '@varlet/shared'
 import { type CollapseItemProvider } from '../collapse-item/provide'
 
 const { name, n } = createNamespace('collapse')
+
+type CollapseToggleAllOptions = { expand: boolean | 'inverse'; skipDisabled?: boolean }
 
 export default defineComponent({
   name,
   props,
   setup(props) {
-    const active = computed(() => props.modelValue)
     const offset = computed(() => props.offset)
     const divider = computed(() => props.divider)
     const elevation = computed(() => props.elevation)
-    const { length, collapseItem, bindCollapseItem } = useCollapseItem()
+    const normalizeValues = computed(() => normalizeToArray(props.modelValue))
+    const { length, collapseItems, bindCollapseItems } = useCollapseItem()
 
     const collapseProvider: CollapseProvider = {
-      active,
       offset,
       divider,
       elevation,
@@ -42,89 +43,86 @@ export default defineComponent({
       () => nextTick().then(resize)
     )
 
-    bindCollapseItem(collapseProvider)
+    bindCollapseItems(collapseProvider)
 
-    function checkValue() {
-      if (!props.accordion && !isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be an Array')
-        return false
+    function updateItem(itemValue: number | string, targetExpand: boolean) {
+      if (props.accordion) {
+        const modelValue = targetExpand ? itemValue : undefined
+        updateModelValue(modelValue)
+        return
       }
 
-      if (props.accordion && isArray(props.modelValue)) {
-        console.error('[Varlet] Collapse: type of prop "modelValue" should be a String or Number')
-        return false
-      }
-      return true
+      const modelValue = targetExpand
+        ? [...normalizeValues.value, itemValue]
+        : normalizeValues.value.filter((value) => value !== itemValue)
+      updateModelValue(modelValue)
     }
 
-    function getValue(value: number | string, isExpand: boolean): CollapseModelValue {
-      if (!checkValue()) return null
-      if (isExpand) return props.accordion ? value : [...(props.modelValue as Array<string | number>), value]
-
-      return props.accordion
-        ? null
-        : (props.modelValue as Array<string | number>).filter((name: string | number) => name !== value)
-    }
-
-    function updateItem(value: number | string, isExpand: boolean) {
-      const modelValue = getValue(value, isExpand)
+    function updateModelValue(modelValue: CollapseModelValue) {
       call(props['onUpdate:modelValue'], modelValue)
       call(props.onChange, modelValue)
     }
 
-    function matchName(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
+    function matchItems(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
       if (props.accordion) {
-        return collapseItem.find(({ name }: CollapseItemProvider) => props.modelValue === name.value)
+        const [value] = normalizeValues.value
+        if (value == null) {
+          return
+        }
+
+        const matchedNameItem = collapseItems.find(({ name }) => value === name.value)
+        if (matchedNameItem == null) {
+          return collapseItems.find(({ index, name }) => name.value == null && value === index.value)
+        }
+
+        return matchedNameItem
       }
 
-      const filterItem = collapseItem.filter(({ name }: CollapseItemProvider) => {
-        if (name.value === undefined) return false
-
-        return (props.modelValue as Array<string | number>).includes(name.value)
-      })
-
-      return filterItem.length ? filterItem : undefined
-    }
-
-    function matchIndex(): Array<CollapseItemProvider> | CollapseItemProvider | undefined {
-      if (props.accordion) {
-        return collapseItem.find(
-          ({ index, name }: CollapseItemProvider) => name.value === undefined && props.modelValue === index.value
-        )
-      }
-      return collapseItem.filter(
-        ({ index, name }: CollapseItemProvider) =>
-          name.value === undefined && (props.modelValue as Array<string | number>).includes(index.value)
+      const matchedNameItems = collapseItems.filter(
+        ({ name }) => name.value != null && normalizeValues.value.includes(name.value)
       )
+      const matchedIndexItems = collapseItems.filter(
+        ({ index, name }) => name.value == null && normalizeValues.value.includes(index.value)
+      )
+
+      return [...matchedNameItems, ...matchedIndexItems]
     }
 
     function resize() {
-      if (!checkValue()) return
+      const matchedItems: CollapseItemProvider[] = removeArrayBlank(normalizeToArray(matchItems()))
 
-      const matchProviders: Array<CollapseItemProvider> | CollapseItemProvider | undefined = matchName() || matchIndex()
-
-      if (
-        (props.accordion && !matchProviders) ||
-        (!props.accordion && !(matchProviders as Array<CollapseItemProvider>).length)
-      ) {
-        collapseItem.forEach((provider) => {
-          provider.init(props.accordion, false)
-        })
-        return
-      }
-
-      collapseItem.forEach((provider) => {
-        const isShow = props.accordion
-          ? matchProviders === provider
-          : (matchProviders as Array<CollapseItemProvider>).includes(provider)
-
-        provider.init(props.accordion, isShow)
+      collapseItems.forEach((collapseItem) => {
+        collapseItem.init(matchedItems.includes(collapseItem))
       })
+    }
+
+    // expose
+    const toggleAll = (options: CollapseToggleAllOptions) => {
+      if (props.accordion) return
+
+      const matchedItems = collapseItems.filter((item) => {
+        const itemValue = item.name.value ?? item.index.value
+        const expanded = normalizeValues.value.includes(itemValue)
+
+        if (options.skipDisabled && item.disabled.value) {
+          return expanded
+        }
+
+        if (options.expand === 'inverse') {
+          return !expanded
+        }
+
+        return options.expand
+      })
+
+      const modelValue = matchedItems.map((item) => item.name.value ?? item.index.value)
+      updateModelValue(modelValue)
     }
 
     return {
       divider,
       n,
+      toggleAll,
     }
   },
 })
