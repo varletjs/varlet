@@ -428,6 +428,7 @@ export default defineConfig({
       },
       versions: null,
       github: 'https://github.com/varletjs/varlet',
+      changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
       playground: 'https://varlet.gitee.io/varlet-ui-playground',
       darkMode: true,
     },
