@@ -126,7 +126,11 @@ program
     return release(options);
 });
 program
-    .command('commit-lint <gitParams>')
+    .command('commit-lint')
+    .option('-p --commitMessagePath <path>', 'Git commit message path')
+    .option('-r --commitMessageRe <reg>', 'Validate the regular of whether the commit message passes')
+    .option('-e --errorMessage <message>', 'Validation failed to display error messages')
+    .option('-w --warningMessage <message>', 'Validation failed to display warning messages')
     .description('Lint commit message')
     .action(async (options) => {
     const { commitLint } = await import('@varlet/release');
