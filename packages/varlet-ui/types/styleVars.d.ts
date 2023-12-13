@@ -979,6 +979,10 @@ export interface StyleVars {
   sliderTrackBackground?: string
   '--slider-track-height'?: string
   sliderTrackHeight?: string
+  '--slider-track-border-radius'?: string
+  sliderTrackBorderRadius?: string
+  '--slider-track-fill-border-radius'?: string
+  sliderTrackFillBorderRadius?: string
   '--slider-track-fill-background'?: string
   sliderTrackFillBackground?: string
   '--slider-thumb-block-background'?: string
