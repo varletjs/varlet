@@ -201,7 +201,9 @@ describe('test slider props', () => {
       },
     })
 
-    expect(wrapper.find('.var-slider__horizontal-thumb-label--active').attributes('style')).toContain('height: 40px;')
+    expect(wrapper.find('.var-slider__horizontal-thumb-label--active').attributes('style')).toContain(
+      'height: 20px; width: 20px;'
+    )
     wrapper.unmount()
   })
 
