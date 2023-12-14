@@ -130,6 +130,7 @@ const changeRoute = (item: Menu) => {
 
   &__title {
     margin-top: 10px !important;
+    cursor: default;
   }
 }
 </style>
