@@ -10,8 +10,8 @@
           :class="n(`${direction}-track-background`)"
           :style="{
             background: trackColor,
-            height: isVertical ? '100%' : multiplySizeUnit(trackHeight),
-            width: isVertical ? multiplySizeUnit(trackHeight) : '100%',
+            height: isVertical ? '100%' : toSizeUnit(trackHeight),
+            width: isVertical ? toSizeUnit(trackHeight) : '100%',
           }"
         ></div>
         <div :class="n(`${direction}-track-fill`)" :style="getFillStyle"></div>
@@ -51,8 +51,8 @@
             :style="{
               background: labelColor,
               color: labelTextColor,
-              height: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 2),
-              width: thumbSize === undefined ? thumbSize : multiplySizeUnit(thumbSize, 2),
+              height: toSizeUnit(thumbSize),
+              width: toSizeUnit(thumbSize),
             }"
           >
             <span>{{ item.text }}</span>
@@ -71,7 +71,7 @@ import Hover from '../hover'
 import { defineComponent, ref, onBeforeUnmount, computed, reactive, nextTick, watch, unref } from 'vue'
 import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
-import { getLeft, multiplySizeUnit } from '../utils/elements'
+import { getLeft, toSizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber, getRect, preventDefault, call } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
@@ -440,7 +440,7 @@ export default defineComponent({
       classes,
       thumbStyle,
       hover,
-      multiplySizeUnit,
+      toSizeUnit,
       toNumber,
       showLabel,
       start,
