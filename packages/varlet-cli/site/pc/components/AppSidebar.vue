@@ -4,7 +4,7 @@
       class="varlet-site-sidebar__link"
       v-for="(item, index) in menu"
       :key="index"
-      :href="`#/${language}/${item.doc}`"
+      :href="item.type !== MenuTypes.TITLE ? `#/${language}/${item.doc}` : undefined"
       @click.prevent
     >
       <var-cell
