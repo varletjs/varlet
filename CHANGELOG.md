@@ -1,3 +1,22 @@
+## [2.20.1](https://github.com/varletjs/varlet/compare/v2.20.0...v2.20.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **site:** hide link when menu type is title ([#1351](https://github.com/varletjs/varlet/issues/1351)) ([a9a5454](https://github.com/varletjs/varlet/commit/a9a54544cbf180e64ada4274bcc885282dd4aa8a))
+* **slider:** remove the logic for thumb to double in size ([#1350](https://github.com/varletjs/varlet/issues/1350)) ([5710b84](https://github.com/varletjs/varlet/commit/5710b848e3e35dc7e65e8a3e9e1899828642f008))
+
+
+### Features
+
+* **icons:** support chat icon ([#1347](https://github.com/varletjs/varlet/issues/1347)) ([d50da0d](https://github.com/varletjs/varlet/commit/d50da0d44555759d50f9e0fc7ffa66985ffd7c94))
+* **icons:** support download icon and share icon ([#1344](https://github.com/varletjs/varlet/issues/1344)) ([00f2d89](https://github.com/varletjs/varlet/commit/00f2d895e1d0b87ea8b4f3b875e9fc061cdbf2a9))
+* **icons:** support tag icon ([#1346](https://github.com/varletjs/varlet/issues/1346)) ([dd16d6b](https://github.com/varletjs/varlet/commit/dd16d6b1be9e65af64a35e1dc37e13a15ac628af))
+* **site:** add changelog enrty in header for pc ([#1345](https://github.com/varletjs/varlet/issues/1345)) ([604685b](https://github.com/varletjs/varlet/commit/604685b3003551e98c8c4bd462a0e0b118e0431a))
+* **slider:** support --slider-track-border-radius and --slider-track-fill-border-radius ([#1349](https://github.com/varletjs/varlet/issues/1349)) ([b3232a0](https://github.com/varletjs/varlet/commit/b3232a09c44d740dea52c5c0e081b365190b5fe2))
+
+
+
 # [2.20.0](https://github.com/varletjs/varlet/compare/v2.19.3...v2.20.0) (2023-12-08)
 
 
