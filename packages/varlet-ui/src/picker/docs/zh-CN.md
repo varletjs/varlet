@@ -6,7 +6,7 @@
 
 ### 注意
 
-为了使 api 更加友好，该组件重构于 `2.17.0`，但引入了破坏性变更，老版本文档请 [查看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-ui/src/picker/docs/zh-CN.md)。
+为了使 api 更加友好，该组件重构于 `2.17.0`，但引入了破坏性变更，老版本文档请 [查看这里](https://github.com/varletjs/varlet/blob/v2.16.7/packages/varlet-ui/src/picker/docs/zh-CN.md)。
 
 ## 函数调用
 
