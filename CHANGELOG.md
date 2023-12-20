@@ -1,3 +1,17 @@
+## [2.20.3](https://github.com/varletjs/varlet/compare/v2.20.2...v2.20.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* **steps:** disassociate --step-tag-size, --step-line-gap, --step-min-size and --step-line-size ([#1357](https://github.com/varletjs/varlet/issues/1357)) ([a48cbc4](https://github.com/varletjs/varlet/commit/a48cbc4c488a32f5069e5f87498d21f9db12cefd))
+
+
+### Features
+
+* **shared, use:** support cjs format ([24975f0](https://github.com/varletjs/varlet/commit/24975f0f919846e6509c1d8457f24460e09eb0a7))
+
+
+
 ## [2.20.2](https://github.com/varletjs/varlet/compare/v2.20.1...v2.20.2) (2023-12-17)
 
 
