@@ -3,24 +3,24 @@ import sharp from 'sharp'
 import webfont from 'webfont'
 import logger from '../shared/logger.js'
 import { parse, resolve } from 'path'
-import { ICONS_DIST_DIR, ICONS_CSS_DIR, ICONS_PNG_DIR, ICONS_FONTS_DIR, ICONS_SVG_DIR } from '../shared/constant.js'
+import { ICONS_CSS_DIR_NAME, ICONS_FONTS_DIR_NAME, ICONS_PNG_DIR_NAME, CWD } from '../shared/constant.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash-es'
 
 const { removeSync, ensureDir, writeFile, readdirSync } = fse
 
-async function removeDir() {
-  removeSync(ICONS_DIST_DIR)
-  await Promise.all([ensureDir(ICONS_FONTS_DIR), ensureDir(ICONS_CSS_DIR), ensureDir(ICONS_PNG_DIR)])
+async function removeDir(output: string, fontsDir: string, cssDir: string, pngDir: string) {
+  removeSync(output)
+  await Promise.all([ensureDir(fontsDir), ensureDir(cssDir), ensureDir(pngDir)])
 }
 
-async function buildPNG(svgFiles: string[]) {
+async function buildPNG(entry: string, pngDir: string, svgFiles: string[]) {
   await Promise.all(
     svgFiles.map(
       (svg) =>
         new Promise<void>((done) => {
           const { name } = parse(svg)
-          sharp(resolve(ICONS_SVG_DIR, svg))
+          sharp(resolve(entry, svg))
             .resize({ height: 100 })
             .toBuffer()
             .then((buffer) => {
@@ -39,7 +39,7 @@ async function buildPNG(svgFiles: string[]) {
                   },
                 ])
                 .png()
-                .toFile(resolve(ICONS_PNG_DIR, `${name}.png`))
+                .toFile(resolve(pngDir, `${name}.png`))
                 .then(() => {
                   done()
                 })
@@ -49,9 +49,9 @@ async function buildPNG(svgFiles: string[]) {
   )
 }
 
-function buildWebFont(name: string) {
+function buildWebFont(name: string, entry: string) {
   return webfont.default({
-    files: `${ICONS_SVG_DIR}/*.svg`,
+    files: `${entry}/*.svg`,
     fontName: name,
     formats: ['ttf'],
     fontHeight: 512,
@@ -61,11 +61,34 @@ function buildWebFont(name: string) {
 
 export async function icons() {
   const varletConfig = await getVarletConfig()
-  const { name, namespace, base64, publicPath, fontFamilyClassName, fontWeight, fontStyle } = get(varletConfig, 'icons')
+  const {
+    name,
+    namespace,
+    base64,
+    publicPath,
+    fontFamilyClassName,
+    fontWeight,
+    fontStyle,
+    genPng = true,
+    entry = './svg',
+    output = './dist',
+  } = get(varletConfig, 'icons')
 
-  await removeDir()
-  const svgFiles = readdirSync(ICONS_SVG_DIR).filter((svgFile) => svgFile.startsWith('u') && svgFile.endsWith('.svg'))
-  const [{ ttf }] = await Promise.all([buildWebFont(name!), buildPNG(svgFiles)])
+  const io = {
+    entry: resolve(CWD, entry),
+    output: resolve(CWD, output),
+  }
+
+  const fontsDir = resolve(io.output, ICONS_FONTS_DIR_NAME)
+  const cssDir = resolve(io.output, ICONS_CSS_DIR_NAME)
+  const pngDir = resolve(io.output, ICONS_PNG_DIR_NAME)
+
+  await removeDir(io.output, fontsDir, cssDir, pngDir)
+  const svgFiles = readdirSync(io.entry).filter((svgFile) => svgFile.startsWith('u') && svgFile.endsWith('.svg'))
+  const [{ ttf }] = await Promise.all([
+    buildWebFont(name!, io.entry),
+    genPng ? buildPNG(io.entry, pngDir, svgFiles) : Promise.resolve(),
+  ])
 
   const icons = svgFiles.map((svgName) => {
     const i = svgName.indexOf('-')
@@ -113,10 +136,10 @@ ${icons
 `
 
   await Promise.all([
-    writeFile(resolve(ICONS_FONTS_DIR, `${name}-webfont.ttf`), ttf),
-    writeFile(resolve(ICONS_CSS_DIR, `${name}.css`), cssTemplate),
-    writeFile(resolve(ICONS_CSS_DIR, `${name}.less`), cssTemplate),
-    writeFile(resolve(ICONS_DIST_DIR, 'index.js'), indexTemplate),
+    writeFile(resolve(fontsDir, `${name}-webfont.ttf`), ttf),
+    writeFile(resolve(cssDir, `${name}.css`), cssTemplate),
+    writeFile(resolve(cssDir, `${name}.less`), cssTemplate),
+    writeFile(resolve(io.output, 'index.js'), indexTemplate),
   ])
 
   logger.success('build success!')
