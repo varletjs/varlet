@@ -32,6 +32,7 @@
         </transition>
       </div>
 
+      <Documate endpoint="https://wxph8mrwg6.us.aircode.run/ask" />
       <a class="varlet-site-header__link" style="margin-right: 8px;" target="_blank" :href="changelog" v-ripple v-if="changelog">
         <var-icon name="history" :size="28"/>
       </a>
@@ -82,10 +83,12 @@
 </template>
 
 <script lang="ts">
+import Documate from '@documate/vue'
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
+import '@documate/vue/dist/style.css'
 import { setTheme } from '../../utils'
 import { removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
@@ -97,6 +100,9 @@ export default defineComponent({
     language: {
       type: String,
     }
+  },
+  components: {
+    Documate
   },
   setup() {
     const title: Ref<string> = ref(get(config, 'title'))
