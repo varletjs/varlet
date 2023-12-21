@@ -1,3 +1,13 @@
+## [2.20.4](https://github.com/varletjs/varlet/compare/v2.20.3...v2.20.4) (2023-12-21)
+
+
+### Features
+
+* **cli/icons:** support entry output genPng options ([f551733](https://github.com/varletjs/varlet/commit/f5517336270168f08e11ea3195d33cc7768a93b2))
+* **icons:** support canlendar month icon ([#1359](https://github.com/varletjs/varlet/issues/1359)) ([95fe846](https://github.com/varletjs/varlet/commit/95fe8462a90553948380c419f3556baef23a743e))
+
+
+
 ## [2.20.3](https://github.com/varletjs/varlet/compare/v2.20.2...v2.20.3) (2023-12-20)
 
 
