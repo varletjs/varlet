@@ -24,6 +24,21 @@ export interface VarletConfigIcons {
    * Output base64
    */
   base64?: boolean
+  /**
+   * @default `./svg`
+   * SVG icons folder path.
+   */
+  entry?: string
+  /**
+   * @default `./dist`
+   * SVG icons folder path.
+   */
+  output?: string
+  /**
+   * @default true
+   * Whether to generate png
+   */
+  genPng?: boolean
   publicPath?: string
   fontFamilyClassName?: string
   fontWeight?: string

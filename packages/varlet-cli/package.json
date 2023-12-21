@@ -69,7 +69,7 @@
     "typescript": "^5.1.5",
     "vite": "4.3.5",
     "vue": "3.3.4",
-    "webfont": "^9.0.0"
+    "webfont": "11.2.26"
   },
   "devDependencies": {
     "@varlet/ui": "workspace:*",
