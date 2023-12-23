@@ -83,7 +83,7 @@ Button component for triggering actions.
 <template>
   <var-space :size="[10, 10]">
     <var-button color="#66bb6a" text-color="#fff">Background/Text Color</var-button>
-    <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff"> Linear Gradient Color </var-button>
+    <var-button color="linear-gradient(to right bottom, #6750A4, #D0BCFF)" text-color="#fff"> Linear Gradient Color </var-button>
   </var-space>
 </template>
 ```
@@ -190,7 +190,7 @@ function handleAutoLoadingClick() {
   <var-menu placement="bottom" same-width :offset-y="6">
     <var-button-group type="primary">
       <var-button @click.stop>Split Button</var-button>
-      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+      <var-button style="padding: 0 6px;">
         <var-icon name="menu-down" :size="24" />
       </var-button>
     </var-button-group>
@@ -234,7 +234,7 @@ function handleAutoLoadingClick() {
 
 ```html
 <template>
-  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+  <var-button-group type="primary" color="linear-gradient(to bottom right, #6750A4, #D0BCFF)">
     <var-button>Button</var-button>
     <var-button>Button</var-button>
     <var-button>Button</var-button>
@@ -339,8 +339,13 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                       | Default                      |
 | ------------------------------ | ---------------------------- |
-| `--button-default-color`       | `#f5f5f5`                    |
-| `--button-default-text-color`  | `#555`                       |
+| `--button-default-text-color` | `#555` |
+| `--button-primary-text-color` | `#fff` |
+| `--button-danger-text-color` | `#fff` |
+| `--button-success-text-color` | `#fff` |
+| `--button-warning-text-color` | `#fff` |
+| `--button-info-text-color` | `#fff` |
+| `--button-default-color` | `#f5f5f5` |
 | `--button-primary-color`       | `var(--color-primary)`       |
 | `--button-danger-color`        | `var(--color-danger)`        |
 | `--button-success-color`       | `var(--color-success)`       |

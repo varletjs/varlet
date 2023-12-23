@@ -1,10 +1,10 @@
 <script setup>
-import { Snackbar, Themes } from '@varlet/ui'
+import { Snackbar } from '@varlet/ui'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 
 function handleClick() {
   Snackbar.success(pack.value.clickSuccess)
@@ -68,7 +68,7 @@ function handleAutoLoadingClick() {
   <app-type>{{ pack.customColor }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-button color="#66bb6a" text-color="#fff">{{ pack.backgroundTextColor }}</var-button>
-    <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff">
+    <var-button color="linear-gradient(to bottom right, #6750A4, #D0BCFF)" text-color="#fff">
       {{ pack.linearGradientColor }}
     </var-button>
   </var-space>
@@ -133,7 +133,7 @@ function handleAutoLoadingClick() {
   <var-menu placement="bottom" same-width :offset-y="6">
     <var-button-group type="primary">
       <var-button @click.stop>{{ pack.splitButton }}</var-button>
-      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+      <var-button style="padding: 0 6px">
         <var-icon name="menu-down" :size="24" />
       </var-button>
     </var-button-group>
@@ -167,7 +167,7 @@ function handleAutoLoadingClick() {
   </var-space>
 
   <app-type>{{ pack.customButtonGroupColor }}</app-type>
-  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+  <var-button-group type="primary" color="linear-gradient(to bottom right, #6750A4, #D0BCFF)">
     <var-button>{{ pack.button }}</var-button>
     <var-button>{{ pack.button }}</var-button>
     <var-button>{{ pack.button }}</var-button>

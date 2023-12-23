@@ -20,22 +20,15 @@
         </template>
         <template #right>
           <var-button
-            v-if="darkMode"
+            v-if="themes.length > 1"
+            class="theme-button"
             text
-            round
             color="transparent"
             text-color="#fff"
-            :style="{
-              transform: languages ? 'translateX(-4px)' : 'translateX(-6px)',
-            }"
-            @click="toggleTheme"
+            @click.stop="showThemeMenu = true"
           >
-            <var-icon
-              class="theme"
-              color="#fff"
-              :size="24"
-              :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
-            />
+            <var-icon name="palette" :size="28" class="palette"/>
+            <var-icon name="chevron-down" class="arrow-down"/>
           </var-button>
           <var-button
             v-if="languages"
@@ -69,6 +62,21 @@
         </var-cell>
       </div>
     </transition>
+
+    <transition name="site-menu">
+      <div class="theme-settings var-elevation--3" v-if="showThemeMenu">
+        <var-cell
+          v-for="t in themes"
+          :key="t.value"
+          class="mobile-theme-cell"
+          :class="[currentTheme === t.value && 'mobile-theme-cell--active']"
+          v-ripple
+          @click="toggleTheme(t.value)"
+        >
+          {{ t[language] }}
+        </var-cell>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -83,7 +91,7 @@ import {
   watchTheme
 } from '@varlet/cli/client'
 import { removeEmpty, setTheme, inIframe, isPhone } from '../utils'
-import { bigCamelize } from '@varlet/shared'
+import { bigCamelize, toggleItem } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -92,8 +100,10 @@ export default defineComponent({
     const route = useRoute()
     const showBackIcon: Ref<boolean> = ref(false)
     const showMenu: Ref<boolean> = ref(false)
+    const showThemeMenu: Ref<boolean> = ref(false)
     const language: Ref<string> = ref('')
     const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
+    const themes: Ref<Record<string, any>[]> = ref(get(config, 'mobile.header.themes'))
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
     const redirect = get(config, 'mobile.redirect', '')
     const github: Ref<string> = ref(get(config, 'mobile.header.github'))
@@ -148,9 +158,10 @@ export default defineComponent({
       window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
-    const toggleTheme = () => {
-      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+    const toggleTheme = (value: Theme) => {
+      setCurrentTheme(value)
       window.postMessage(getThemeMessage(), '*')
+      showThemeMenu.value = false
 
       if (!isPhone() && inIframe()) {
         ;(window.top as any).postMessage(getThemeMessage(), '*')
@@ -163,6 +174,7 @@ export default defineComponent({
 
     document.body.addEventListener('click', () => {
       showMenu.value = false
+      showThemeMenu.value = false
     })
 
     watchTheme((theme, from) => {
@@ -175,6 +187,7 @@ export default defineComponent({
       github,
       showMenu,
       languages,
+      themes,
       language,
       nonEmptyLanguages,
       currentTheme,
@@ -183,6 +196,7 @@ export default defineComponent({
       back,
       changeLanguage,
       toggleTheme,
+      showThemeMenu,
     }
   },
 })
@@ -197,11 +211,11 @@ export default defineComponent({
 body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  min-height: 100vh;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: var(--site-config-color-bar);
+  background: var(--site-config-color-mobile-body);
   color: var(--site-config-color-text);
   transition: background-color 0.25s, color 0.25s;
 }
@@ -248,6 +262,14 @@ header {
   background: var(--site-config-color-bar);
 }
 
+.theme-settings {
+  position: fixed;
+  z-index: 200;
+  top: 48px;
+  right: 68px;
+  background: var(--site-config-color-bar);
+}
+
 .router-view__block {
   padding: 55px 15px 15px;
 }
@@ -263,6 +285,17 @@ header {
   }
 }
 
+.mobile-theme-cell {
+  color: var(--site-config-color-text) !important;
+  background: var(--site-config-color-bar) !important;
+  cursor: pointer !important;
+
+  &--active {
+    color: var(--site-config-color-mobile-theme-active) !important;
+    background: var(--site-config-color-mobile-theme-active-background) !important;
+  }
+}
+
 .arrow-left {
   font-size: 28px !important;
 }
@@ -271,11 +304,11 @@ header {
   font-size: 28px !important;
 }
 
-.theme {
+.i18n {
   font-size: 24px !important;
 }
 
-.i18n {
+.palette {
   font-size: 24px !important;
 }
 
@@ -284,6 +317,12 @@ header {
 }
 
 .i18n-button {
+  padding-right: 6px !important;
+  margin-right: 4px;
+  padding-left: 12px !important;
+}
+
+.theme-button {
   padding-right: 6px !important;
   margin-right: 4px;
   padding-left: 12px !important;
