@@ -148,6 +148,12 @@ function change(time) {
 | ----- | -------------- | -------- |
 | `change` | Emitted after time changed | `value: string` |
 
+### slots
+
+| Name | Description | SlotProps                                                            |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `actions` | Custom the actions views in the bottom area | `-` |
+
 ### Style Variables
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
@@ -157,7 +163,6 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-border-radius` | `4px`                  |
 | `--time-picker-font-size` | `var(--font-size-md)`  |
 | `--time-picker-min-width` | `290px`                |
-| `--time-picker-height` | `385px`                |
 | `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                 |
 | `--time-picker-title-color` | `#fff`                 |
@@ -196,3 +201,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-inner-top` | `36px`                 |
 | `--time-picker-inner-bottom` | `36px`                 |
 | `--time-picker-body-background` | `#fff`                 |
+| `--time-picker-body-height` | `266px`               |
+| `--time-picker-actions-padding` | `0 12px 12px`         |

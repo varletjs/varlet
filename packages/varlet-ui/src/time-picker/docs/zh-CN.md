@@ -148,6 +148,11 @@ function change(time) {
 | ----- | -------------- | -------- |
 | `change` | 时间变化时触发 | `value: string` |
 
+### 插槽
+
+| 名称 | 说明 | 参数                                                                   |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `actions` | 自定义底部操作内容 | `-`                                                                  |
 
 ### 样式变量
 
@@ -158,7 +163,6 @@ function change(time) {
 | `--time-picker-border-radius` | `4px`                 |
 | `--time-picker-font-size` | `var(--font-size-md)` |
 | `--time-picker-min-width` | `290px`               |
-| `--time-picker-height` | `385px`               |
 | `--time-picker-title-height` | `105px` |
 | `--time-picker-title-padding` | `16px`                |
 | `--time-picker-title-color` | `#fff`                |
@@ -197,3 +201,5 @@ function change(time) {
 | `--time-picker-inner-top` | `36px`                |
 | `--time-picker-inner-bottom` | `36px`                |
 | `--time-picker-body-background` | `#fff`                |
+| `--time-picker-body-height` | `266px`               |
+| `--time-picker-actions-padding` | `0 12px 12px`         |

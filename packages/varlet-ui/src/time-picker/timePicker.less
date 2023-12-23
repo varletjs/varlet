@@ -2,7 +2,6 @@
   --time-picker-border-radius: 4px;
   --time-picker-font-size: var(--font-size-md);
   --time-picker-min-width: 290px;
-  --time-picker-height: 385px;
   --time-picker-title-height: 105px;
   --time-picker-title-padding: 16px;
   --time-picker-title-margin-bottom: 8px;
@@ -41,6 +40,8 @@
   --time-picker-inner-top: 36px;
   --time-picker-inner-bottom: 36px;
   --time-picker-body-background: #fff;
+  --time-picker-body-height: 266px;
+  --time-picker-actions-padding: 0 12px 12px;
 }
 
 // Mixins
@@ -61,7 +62,6 @@
   font-size: var(--time-picker-font-size);
   position: relative;
   min-width: var(--time-picker-min-width);
-  height: var(--time-picker-height);
   overflow: hidden;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
@@ -112,10 +112,10 @@
   }
 
   &__body {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: var(--time-picker-body-height);
     background-color: var(--time-picker-body-background);
   }
 
@@ -199,6 +199,14 @@
       right: var(--time-picker-inner-right);
       top: var(--time-picker-inner-top);
     }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--time-picker-body-background);
+    padding: var(--time-picker-actions-padding);
   }
 
   &-panel-fade-enter-from,
