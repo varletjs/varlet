@@ -1223,8 +1223,6 @@ export interface StyleVars {
   timePickerFontSize?: string
   '--time-picker-min-width'?: string
   timePickerMinWidth?: string
-  '--time-picker-height'?: string
-  timePickerHeight?: string
   '--time-picker-title-height'?: string
   timePickerTitleHeight?: string
   '--time-picker-title-padding'?: string
@@ -1301,6 +1299,10 @@ export interface StyleVars {
   timePickerInnerBottom?: string
   '--time-picker-body-background'?: string
   timePickerBodyBackground?: string
+  '--time-picker-body-height'?: string
+  timePickerBodyHeight?: string
+  '--time-picker-actions-padding'?: string
+  timePickerActionsPadding?: string
   '--tooltip-opacity'?: string
   tooltipOpacity?: string
   '--tooltip-border-radius'?: string
