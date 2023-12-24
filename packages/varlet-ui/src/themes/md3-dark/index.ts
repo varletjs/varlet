@@ -3,6 +3,7 @@ import button from './button'
 import hoverOverlay from './hoverOverlay'
 import menu from './menu'
 import menuSelect from './menuSelect'
+import menuOption from './menuOption'
 
 export default {
   // common
@@ -20,4 +21,5 @@ export default {
   ...hoverOverlay,
   ...menu,
   ...menuSelect,
+  ...menuOption,
 } as StyleVars
