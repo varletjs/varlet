@@ -1,9 +1,14 @@
 :root {
   --menu-background-color: #fff;
+  --menu-border-radius: 2px;
 }
 
 .var-menu {
   display: inline-block;
+
+  &__menu {
+    border-radius: var(--menu-border-radius);
+  }
 
   &-enter-from,
   &-leave-to {

@@ -705,6 +705,8 @@ export interface StyleVars {
   loadingBarHeight?: string
   '--menu-background-color'?: string
   menuBackgroundColor?: string
+  '--menu-border-radius'?: string
+  menuBorderRadius?: string
   '--menu-select-menu-max-height'?: string
   menuSelectMenuMaxHeight?: string
   '--menu-select-menu-padding'?: string
