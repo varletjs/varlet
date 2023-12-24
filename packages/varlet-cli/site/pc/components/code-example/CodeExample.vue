@@ -93,7 +93,7 @@ export default defineComponent({
     const toPlayground = () => {
       const codeText = code.value?.innerText ?? ''
       const file = { 'App.vue': codeText }
-      const initialTheme = getBrowserTheme().replace('Theme', '')
+      const initialTheme = getBrowserTheme()
 
       context.showPlayground = true
       context.playgroundURL = `${playground.value}/?initialTheme=${initialTheme}#${utoa(JSON.stringify(file))}`

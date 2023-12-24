@@ -17,7 +17,7 @@ const currentVueVersion = ref('')
 const currentVarletVersion = ref('')
 const vueVersions = ref<string[]>([])
 const varletVersions = ref<string[]>([])
-const currentTheme = ref('')
+const currentTheme = ref(props.theme)
 
 const themeOptions = ref([
   { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
@@ -34,12 +34,10 @@ const themeMap = {
 }
 
 onMounted(() => {
-  document.documentElement.classList.add('dark')
-  document.documentElement.setAttribute('theme', 'md3DarkTheme')
   const initialTheme = getInitialTheme()
-  console.log(initialTheme)
   if (initialTheme) {
     emit('update:theme', initialTheme)
+    currentTheme.value = initialTheme
   }
 
   fetchVueVersions()
@@ -47,7 +45,13 @@ onMounted(() => {
   nextTick().then(syncTheme)
 })
 
-watch(() => props.theme, syncTheme)
+watch(
+  () => props.theme,
+  () => {
+    currentTheme.value = props.theme
+    syncTheme()
+  }
+)
 watch(
   () => currentTheme.value,
   () => {
@@ -172,7 +176,7 @@ async function setVarletVersion(v: string) {
         <var-option v-for="v in vueVersions" :key="v" :label="`v${v}`" :value="v" />
       </var-select>
 
-      <var-menu-select placement="bottom" trigger="hover" :offset-y="10" v-model="currentTheme">
+      <var-menu-select placement="bottom" :offset-y="10" v-model="currentTheme">
         <var-button class="link-button" text round>
           <Palette />
         </var-button>

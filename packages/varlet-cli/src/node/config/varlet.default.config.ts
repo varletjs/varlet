@@ -476,8 +476,6 @@ export default defineConfig({
     'color-body': '#fff',
     'color-index-page-background': '#fff',
     'color-index-page-get-started-button': '#3a7afe',
-    'color-index-page-github-button': '#212121',
-    'color-index-page-feature-background': '#fff',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
@@ -522,8 +520,6 @@ export default defineConfig({
   darkTheme: {
     'color-body': '#121212',
     'color-index-page-background': '#1e1e1e',
-    'color-index-page-get-started-button': '#4a7afe',
-    'color-index-page-github-button': '#303030',
     'color-index-page-feature-background': '#303030',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
@@ -569,8 +565,6 @@ export default defineConfig({
   md3LightTheme: {
     'color-body': '#fff',
     'color-index-page-background': '#fff',
-    'color-index-page-get-started-button': '#6750A4',
-    'color-index-page-github-button': '#212121',
     'color-index-page-feature-background': '#fff',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
@@ -616,8 +610,6 @@ export default defineConfig({
   md3DarkTheme: {
     'color-body': '#050505',
     'color-index-page-background': '#1e1e1e',
-    'color-index-page-get-started-button': '#D0BCFF',
-    'color-index-page-github-button': '#303030',
     'color-index-page-feature-background': '#303030',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
