@@ -1,6 +1,8 @@
 import { StyleVars } from '../../style-provider'
 import button from './button'
 import hoverOverlay from './hoverOverlay'
+import menu from './menu'
+import menuSelect from './menuSelect'
 
 export default {
   // common
@@ -16,4 +18,6 @@ export default {
   // component
   ...button,
   ...hoverOverlay,
+  ...menu,
+  ...menuSelect,
 } as StyleVars

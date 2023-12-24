@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const value = ref()
@@ -29,7 +28,7 @@ watchLang((lang) => {
   valueCloseOnSelect.value = undefined
   valueMultiple.value = []
 })
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
