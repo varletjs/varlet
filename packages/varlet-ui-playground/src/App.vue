@@ -9,7 +9,7 @@ import Monaco from '@vue/repl/monaco-editor'
 const store = new ReplStore({
   serializedState: location.hash.slice(1),
 })
-const dark = ref(localStorage.getItem('varlet-ui-playground-prefer-dark') !== 'false')
+const theme = ref(localStorage.getItem('varlet-ui-playground-theme') ?? 'md3DarkTheme')
 
 function setVH() {
   document.documentElement.style.setProperty('--vh', window.innerHeight + `px`)
@@ -23,11 +23,11 @@ watchEffect(() => history.replaceState({}, '', store.serialize()))
 </script>
 
 <template>
-  <Header :store="store" v-model:dark="dark" />
+  <Header :store="store" v-model:theme="theme" />
   <Repl
     :editor="Monaco"
     :store="store"
-    :theme="dark ? 'dark' : 'light'"
+    :theme="theme?.toLowerCase().includes('dark') ? 'dark' : 'light'"
     :show-compile-output="true"
     :auto-resize="true"
     :clear-console="false"

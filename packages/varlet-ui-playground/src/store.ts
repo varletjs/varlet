@@ -102,13 +102,22 @@ export function installVarletUI() {
   script.src = varletTouchEmulator
   document.body.appendChild(script)
 
-  if (parent.document.documentElement.classList.contains('dark')) {
-    VarletUI.StyleProvider(VarletUI.Themes.dark)
+  const themeMap = {
+    lightTheme: null,
+    darkTheme: VarletUI.Themes.dark,
+    md3LightTheme: VarletUI.Themes.md3Light,
+    md3DarkTheme: VarletUI.Themes.md3Dark,
+  }
+
+  const theme = parent.document.documentElement.getAttribute('theme')
+
+  if (theme) {
+    VarletUI.StyleProvider(themeMap[theme])
   }
 
   window.addEventListener('message', ({ data }) => {
     if (data.action === 'theme-change') {
-      VarletUI.StyleProvider(data.value === 'dark' ? VarletUI.Themes.dark : null)
+      VarletUI.StyleProvider(themeMap[data.value])
     }
   })
 

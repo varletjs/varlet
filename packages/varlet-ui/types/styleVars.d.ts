@@ -125,10 +125,20 @@ export interface StyleVars {
   breadcrumbSeparatorMargin?: string
   '--breadcrumb-separator-font-size'?: string
   breadcrumbSeparatorFontSize?: string
-  '--button-default-color'?: string
-  buttonDefaultColor?: string
   '--button-default-text-color'?: string
   buttonDefaultTextColor?: string
+  '--button-primary-text-color'?: string
+  buttonPrimaryTextColor?: string
+  '--button-danger-text-color'?: string
+  buttonDangerTextColor?: string
+  '--button-success-text-color'?: string
+  buttonSuccessTextColor?: string
+  '--button-warning-text-color'?: string
+  buttonWarningTextColor?: string
+  '--button-info-text-color'?: string
+  buttonInfoTextColor?: string
+  '--button-default-color'?: string
+  buttonDefaultColor?: string
   '--button-primary-color'?: string
   buttonPrimaryColor?: string
   '--button-danger-color'?: string
