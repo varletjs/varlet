@@ -1,22 +1,17 @@
 <script setup>
-import { Themes, Snackbar } from '@varlet/ui'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
+import { Snackbar } from '@varlet/ui'
 import { reactive, onMounted, ref, computed } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
-const background = ref('#fff')
 const searchText = ref('')
 const searchIcons = computed(() =>
   searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
 )
-
-function toggle() {
-  iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
-}
 
 onMounted(() => {
   const clipboard = new Clipboard('.icon-example__icon', {
@@ -29,10 +24,11 @@ onMounted(() => {
 })
 
 watchLang(use)
+onThemeChange()
 
-watchDarkMode(Themes.dark, (theme) => {
-  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
-})
+function toggle() {
+  iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
+}
 </script>
 
 <template>
@@ -92,7 +88,7 @@ watchDarkMode(Themes.dark, (theme) => {
   <div class="icon-example__icons">
     <div
       class="icon-example__icon var-elevation--2"
-      :style="{ background }"
+      :style="{ background: 'var(--paper-background)' }"
       :data-clipboard-text="name"
       :key="name"
       v-for="name in searchIcons"
@@ -131,10 +127,10 @@ watchDarkMode(Themes.dark, (theme) => {
     width: 29%;
     padding: 6% 5%;
     margin: 0 2% 4%;
+    border-radius: 10px;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
-    border-bottom: 2px solid var(--color-primary);
     transition: background-color 0.25s;
   }
 
