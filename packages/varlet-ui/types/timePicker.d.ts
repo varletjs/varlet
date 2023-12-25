@@ -1,4 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VNode } from 'vue'
 
 export declare const timePickerProps: Record<keyof TimePickerProps, any>
 
@@ -32,6 +33,10 @@ export class TimePicker extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<TimePickerProps>
 
   $props: TimePickerProps
+
+  $slots: {
+    actions(): VNode[]
+  }
 }
 
 export class _TimePickerComponent extends TimePicker {}
