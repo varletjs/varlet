@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { Themes } from '@varlet/ui'
-import { watchDarkMode, watchLang, AppType } from '@varlet/cli/client'
+import { onThemeChange, watchLang, AppType } from '@varlet/cli/client'
 
 const text = ref('VARLET')
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -61,10 +60,10 @@ watchDarkMode(Themes.dark)
 
   <app-type>{{ pack.backgroundColor }}</app-type>
   <var-space>
-    <var-avatar color="#4a79f5">
+    <var-avatar color="var(--color-warning)">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar color="#eb5a3f">{{ text }}</var-avatar>
+    <var-avatar color="var(--color-danger)">{{ text }}</var-avatar>
   </var-space>
 
   <app-type>{{ pack.avatarHorizontalGroup }}</app-type>

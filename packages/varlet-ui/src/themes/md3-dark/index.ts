@@ -9,6 +9,8 @@ import breadcrumb from './breadcrumb'
 import link from './link'
 import cell from './cell'
 import paper from './paper'
+import avatar from './avatar'
+import fieldDecorator from './fieldDecorator'
 
 export default {
   // common
@@ -32,4 +34,6 @@ export default {
   ...link,
   ...cell,
   ...paper,
+  ...avatar,
+  ...fieldDecorator,
 } as StyleVars
