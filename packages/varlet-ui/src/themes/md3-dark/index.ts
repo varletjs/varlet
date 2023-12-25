@@ -7,6 +7,7 @@ import menuOption from './menuOption'
 import fab from './fab'
 import breadcrumb from './breadcrumb'
 import link from './link'
+import cell from './cell'
 
 export default {
   // common
@@ -28,4 +29,5 @@ export default {
   ...fab,
   ...breadcrumb,
   ...link,
+  ...cell,
 } as StyleVars

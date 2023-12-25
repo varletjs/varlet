@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 import { ref } from 'vue'
 
@@ -27,7 +26,7 @@ const handleClick = (item) => {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
