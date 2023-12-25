@@ -64,16 +64,16 @@ const trigger = ref('click')
   </var-radio-group>
 
   <var-fab type="primary" :trigger="trigger">
-    <var-button class="action" type="info" round>
+    <var-button type="info">
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success">
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning">
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger">
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -98,28 +98,20 @@ const direction = ref('top')
   </var-radio-group>
 
   <var-fab type="primary" :direction="direction">
-    <var-button class="action" type="info" round>
+    <var-button type="info">
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success">
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning">
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" >
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
-
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
 ```
 
 ### 开启拖拽
@@ -191,28 +183,20 @@ function toggle() {
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
   <var-fab v-model:active="active" type="primary">
-    <var-button class="action" type="info" round>
+    <var-button type="info">
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success">
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning">
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger">
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
-
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
 ```
 
 ### 自定义触发器
@@ -220,16 +204,16 @@ function toggle() {
 ```html
 <template>
   <var-fab>
-    <var-button class="action" type="info" round>
+    <var-button type="info">
       <var-icon name="account-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success">
       <var-icon name="checkbox-marked-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning">
       <var-icon name="bell" :size="24" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger">
       <var-icon name="delete" :size="24" />
     </var-button>
 
@@ -246,13 +230,6 @@ function toggle() {
   width: 64px !important;
   height: 64px !important;
   border-radius: 8px !important;
-}
-
-.action {
-  display: flex;
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 6px !important;
 }
 
 .fade {
