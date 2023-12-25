@@ -1,14 +1,9 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { ref } from 'vue'
-import { watchDarkMode } from '@varlet/cli/client'
+import { onThemeChange } from '@varlet/cli/client'
 
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
-const background = ref(Themes.dark)
 
-watchDarkMode(Themes.dark, (theme) => {
-  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
-})
+onThemeChange()
 </script>
 
 <template>
@@ -16,7 +11,7 @@ watchDarkMode(Themes.dark, (theme) => {
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e}`"
-      :style="{ background }"
+      :style="{ background: 'var(--paper-background)' }"
       v-for="e in elevations"
       :key="e"
     >

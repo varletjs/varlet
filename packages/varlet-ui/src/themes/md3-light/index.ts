@@ -8,6 +8,7 @@ import fab from './fab'
 import breadcrumb from './breadcrumb'
 import link from './link'
 import cell from './cell'
+import paper from './paper'
 
 export default {
   // common
@@ -28,4 +29,5 @@ export default {
   ...breadcrumb,
   ...link,
   ...cell,
+  ...paper,
 } as StyleVars
