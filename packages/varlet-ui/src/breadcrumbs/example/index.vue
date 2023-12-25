@@ -1,9 +1,9 @@
 <script setup>
-import { Themes, Snackbar } from '@varlet/ui'
+import { Snackbar } from '@varlet/ui'
 import { use, pack } from './locale'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 
-watchDarkMode(Themes.dark)
+onThemeChange()
 watchLang(use)
 </script>
 
