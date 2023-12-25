@@ -95,7 +95,7 @@ import { StyleProvider } from '@varlet/ui'
 let rootStyleVars = null
 
 const darkTheme = {
-  '--color-primary': '#3f51b5'
+  '--color-primary': 'var(--color-info)'
 }
 
 function toggleRootTheme() {

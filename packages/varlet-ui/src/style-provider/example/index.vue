@@ -1,6 +1,6 @@
 <script setup>
 import { Themes, StyleProvider } from '@varlet/ui'
-import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, watchTheme } from '@varlet/cli/client'
+import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, onThemeChange } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
@@ -13,7 +13,7 @@ const state = reactive({
 
 const styleVars = ref(null)
 
-let rootStyleVars = null
+let isRootStyleChanged = false
 
 const successTheme = {
   '--rate-primary-color': 'var(--color-success)',
@@ -22,9 +22,23 @@ const successTheme = {
   '--switch-track-active-background': 'var(--color-success)',
 }
 
-const darkTheme = {
-  '--color-primary': '#3f51b5',
+const themeMap = {
+  lightTheme: null,
+  darkTheme: Themes.dark,
+  md3LightTheme: Themes.md3Light,
+  md3DarkTheme: Themes.md3Dark,
 }
+
+watchLang(use)
+
+onThemeChange(() => {
+  isRootStyleChanged = false
+})
+
+onUnmounted(() => {
+  const siteTheme = getBrowserTheme()
+  StyleProvider({ ...getSiteStyleVars(siteTheme), ...themeMap[siteTheme] })
+})
 
 function toggleTheme() {
   styleVars.value = styleVars.value ? null : successTheme
@@ -32,20 +46,17 @@ function toggleTheme() {
 
 function toggleRootTheme() {
   const siteTheme = getBrowserTheme()
-  rootStyleVars = rootStyleVars ? null : darkTheme
-  StyleProvider({ ...getSiteStyleVars(siteTheme), ...rootStyleVars })
-}
-
-watchLang(use)
-watchTheme(() => {
-  rootStyleVars = null
-})
-
-onUnmounted(() => {
-  const siteTheme = getBrowserTheme()
-  const styleVars = siteTheme === 'darkTheme' ? Themes.dark : null
+  const styleVars = isRootStyleChanged
+    ? themeMap[siteTheme]
+    : {
+        ...themeMap[siteTheme],
+        ...{
+          '--color-primary': 'var(--color-info)',
+        },
+      }
   StyleProvider({ ...getSiteStyleVars(siteTheme), ...styleVars })
-})
+  isRootStyleChanged = !isRootStyleChanged
+}
 </script>
 
 <template>
