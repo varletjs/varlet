@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const type = ref('primary')
 const trigger = ref('click')
@@ -14,6 +13,9 @@ const drag = ref(false)
 const disabled = ref(false)
 const elevation = ref(2)
 
+watchLang(use)
+onThemeChange()
+
 function toggleTrigger() {
   show.value = !show.value
 }
@@ -21,9 +23,6 @@ function toggleTrigger() {
 function toggleActions() {
   active.value = !active.value
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -85,16 +84,16 @@ watchDarkMode(Themes.dark)
     :disabled="disabled"
     :elevation="elevation"
   >
-    <var-button class="action" type="info" round :disabled="disabled">
+    <var-button type="info" :disabled="disabled">
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round :disabled="disabled">
+    <var-button type="success" :disabled="disabled">
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round :disabled="disabled">
+    <var-button type="warning" :disabled="disabled">
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round :disabled="disabled">
+    <var-button type="danger" :disabled="disabled">
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -103,11 +102,5 @@ watchDarkMode(Themes.dark)
 <style lang="less" scoped>
 .fade {
   transform: scale(0.4);
-}
-
-.action {
-  display: flex;
-  width: 40px;
-  height: 40px;
 }
 </style>

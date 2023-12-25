@@ -509,6 +509,8 @@ export interface StyleVars {
   fabRight?: string
   '--fab-trigger-size'?: string
   fabTriggerSize?: string
+  '--fab-trigger-border-radius'?: string
+  fabTriggerBorderRadius?: string
   '--fab-trigger-inactive-icon-size'?: string
   fabTriggerInactiveIconSize?: string
   '--fab-trigger-active-icon-size'?: string
@@ -517,6 +519,10 @@ export interface StyleVars {
   fabActionsPadding?: string
   '--fab-action-margin'?: string
   fabActionMargin?: string
+  '--fab-action-size'?: string
+  fabActionSize?: string
+  '--fab-action-border-radius'?: string
+  fabActionBorderRadius?: string
   '--fab-transition-standard-easing'?: string
   fabTransitionStandardEasing?: string
   '--floating-panel-z-index'?: string
