@@ -39,6 +39,7 @@ exports[`test timePicker hint 1`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -81,6 +82,7 @@ exports[`test timePicker hint 2`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -123,6 +125,7 @@ exports[`test timePicker max and min 1`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -165,6 +168,7 @@ exports[`test timePicker max and min 2`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -207,6 +211,7 @@ exports[`test timePicker style and format 1`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -259,6 +264,7 @@ exports[`test timePicker style and format 2`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
 
@@ -300,5 +306,6 @@ exports[`test timePicker useSeconds 1`] = `
       </transition-stub>
     </div>
   </div>
+  <!--v-if-->
 </div>"
 `;
