@@ -5,6 +5,8 @@ import menu from './menu'
 import menuSelect from './menuSelect'
 import menuOption from './menuOption'
 import fab from './fab'
+import breadcrumb from './breadcrumb'
+import link from './link'
 
 export default {
   // common
@@ -22,4 +24,6 @@ export default {
   ...menuSelect,
   ...menuOption,
   ...fab,
+  ...breadcrumb,
+  ...link,
 } as StyleVars

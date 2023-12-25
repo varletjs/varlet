@@ -1,10 +1,9 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
