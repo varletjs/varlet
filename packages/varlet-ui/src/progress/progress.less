@@ -1,6 +1,5 @@
 :root {
   --progress-font-size: var(--font-size-sm);
-  --progress-ripple-color: #fff;
   --progress-track-color: #d8d8d8;
   --progress-label-color: #555;
   --progress-background: var(--color-primary);
@@ -33,18 +32,6 @@
       width: 100%;
       height: 100%;
       border-radius: var(--progress-linear-border-radius);
-    }
-
-    &-ripple {
-      &::after {
-        position: absolute;
-        width: 0;
-        background-color: var(--progress-ripple-color);
-        height: 100%;
-        opacity: 0;
-        animation: ripple 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        content: '';
-      }
     }
 
     &-background {
@@ -140,21 +127,6 @@
       100% {
         left: 107%;
         right: -8%;
-      }
-    }
-
-    @keyframes ripple {
-      0% {
-        width: 0;
-        opacity: 0.1;
-      }
-      20% {
-        width: 0;
-        opacity: 0.5;
-      }
-      80% {
-        width: 100%;
-        opacity: 0;
       }
     }
   }
