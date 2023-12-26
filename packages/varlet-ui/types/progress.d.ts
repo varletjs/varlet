@@ -20,9 +20,6 @@ export interface ProgressProps extends BasicAttributes {
   value?: number | string
   size?: number | string
   rotate?: number
-
-  /** @deprecated  Use indeterminate to instead. */
-  ripple?: boolean
 }
 
 export class Progress extends VarComponent {

@@ -15,7 +15,6 @@ export const props = {
   },
   color: [String, Object] as PropType<string | Record<string, string>>,
   trackColor: String,
-  ripple: Boolean,
   value: {
     type: [Number, String],
     default: 0,
