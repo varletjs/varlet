@@ -46,7 +46,7 @@ export default defineComponent({
     const anchorNameList = ref<(number | string)[]>([])
     const active = ref<number | string | undefined>()
     const sticky = computed(() => props.sticky)
-    const cssMode = computed(() => props.stickyCssMode || props.cssMode)
+    const cssMode = computed(() => props.stickyCssMode)
     const stickyOffsetTop = computed(() => toPxNum(props.stickyOffsetTop))
     const zIndex = computed(() => props.zIndex)
     const { length, indexAnchors, bindIndexAnchors } = useIndexAnchors()
