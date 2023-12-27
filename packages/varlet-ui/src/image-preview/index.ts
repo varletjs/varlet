@@ -21,9 +21,6 @@ interface ImagePreviewOptions {
   onLongPress?: (index: number) => void
   // internal
   teleport?: TeleportProps['to']
-
-  /** @deprecated Use initialIndex to instead. */
-  current?: string
 }
 
 let singletonOptions: ImagePreviewOptions | null
