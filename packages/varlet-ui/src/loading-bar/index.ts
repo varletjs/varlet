@@ -17,8 +17,6 @@ interface InternalProps {
 }
 
 interface LoadingBar {
-  mergeConfig(options: LoadingBarOptions): void
-
   start(): void
 
   finish(): void
@@ -43,10 +41,6 @@ const internalProps: InternalProps = {
   error: false,
 }
 const props: LoadingBarOptions & InternalProps = reactive(internalProps)
-
-const mergeConfig = (options: LoadingBarOptions) => {
-  Object.assign(props, options)
-}
 
 const setDefaultOptions = (options: LoadingBarOptions) => {
   Object.assign(props, options)
@@ -136,8 +130,6 @@ const LoadingBar: LoadingBar = {
   start,
   finish,
   error,
-  /** @deprecated Use setDefaultOptions to instead. */
-  mergeConfig,
   setDefaultOptions,
   resetDefaultOptions,
 }
