@@ -1,9 +1,18 @@
 {
   "name": "@varlet/shared",
-  "version": "2.19.3",
+  "version": "2.20.4",
   "type": "module",
-  "main": "lib/index.js",
+  "main": "lib/index.cjs",
   "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./*": "./*"
+  },
   "description": "shared utils of varlet",
   "keywords": [
     "shared",
@@ -25,7 +34,7 @@
   },
   "scripts": {
     "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
-    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
+    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",

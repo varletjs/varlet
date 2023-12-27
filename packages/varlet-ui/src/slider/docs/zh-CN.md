@@ -279,6 +279,8 @@ const value2 = ref([7, 64])
 | `--slider-error-color` | `var(--color-danger)` |
 | `--slider-track-background` | `#bdbdbd` |
 | `--slider-track-height` | `2px` |
+| `--slider-track-border-radius` | `0` |
+| `--slider-track-fill-border-radius` | `0` |
 | `--slider-track-fill-background` | `var(--color-primary)` |
 | `--slider-thumb-block-background` | `var(--color-primary)` |
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |

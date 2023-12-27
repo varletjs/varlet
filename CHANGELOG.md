@@ -1,3 +1,68 @@
+## [2.20.4](https://github.com/varletjs/varlet/compare/v2.20.3...v2.20.4) (2023-12-21)
+
+
+### Features
+
+* **cli/icons:** support entry output genPng options ([f551733](https://github.com/varletjs/varlet/commit/f5517336270168f08e11ea3195d33cc7768a93b2))
+* **icons:** support canlendar month icon ([#1359](https://github.com/varletjs/varlet/issues/1359)) ([95fe846](https://github.com/varletjs/varlet/commit/95fe8462a90553948380c419f3556baef23a743e))
+
+
+
+## [2.20.3](https://github.com/varletjs/varlet/compare/v2.20.2...v2.20.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* **steps:** disassociate --step-tag-size, --step-line-gap, --step-min-size and --step-line-size ([#1357](https://github.com/varletjs/varlet/issues/1357)) ([a48cbc4](https://github.com/varletjs/varlet/commit/a48cbc4c488a32f5069e5f87498d21f9db12cefd))
+
+
+### Features
+
+* **shared, use:** support cjs format ([24975f0](https://github.com/varletjs/varlet/commit/24975f0f919846e6509c1d8457f24460e09eb0a7))
+
+
+
+## [2.20.2](https://github.com/varletjs/varlet/compare/v2.20.1...v2.20.2) (2023-12-17)
+
+
+
+## [2.20.1](https://github.com/varletjs/varlet/compare/v2.20.0...v2.20.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **site:** hide link when menu type is title ([#1351](https://github.com/varletjs/varlet/issues/1351)) ([a9a5454](https://github.com/varletjs/varlet/commit/a9a54544cbf180e64ada4274bcc885282dd4aa8a))
+* **slider:** remove the logic for thumb to double in size ([#1350](https://github.com/varletjs/varlet/issues/1350)) ([5710b84](https://github.com/varletjs/varlet/commit/5710b848e3e35dc7e65e8a3e9e1899828642f008))
+
+
+### Features
+
+* **icons:** support chat icon ([#1347](https://github.com/varletjs/varlet/issues/1347)) ([d50da0d](https://github.com/varletjs/varlet/commit/d50da0d44555759d50f9e0fc7ffa66985ffd7c94))
+* **icons:** support download icon and share icon ([#1344](https://github.com/varletjs/varlet/issues/1344)) ([00f2d89](https://github.com/varletjs/varlet/commit/00f2d895e1d0b87ea8b4f3b875e9fc061cdbf2a9))
+* **icons:** support tag icon ([#1346](https://github.com/varletjs/varlet/issues/1346)) ([dd16d6b](https://github.com/varletjs/varlet/commit/dd16d6b1be9e65af64a35e1dc37e13a15ac628af))
+* **site:** add changelog enrty in header for pc ([#1345](https://github.com/varletjs/varlet/issues/1345)) ([604685b](https://github.com/varletjs/varlet/commit/604685b3003551e98c8c4bd462a0e0b118e0431a))
+* **slider:** support --slider-track-border-radius and --slider-track-fill-border-radius ([#1349](https://github.com/varletjs/varlet/issues/1349)) ([b3232a0](https://github.com/varletjs/varlet/commit/b3232a09c44d740dea52c5c0e081b365190b5fe2))
+
+
+
+# [2.20.0](https://github.com/varletjs/varlet/compare/v2.19.3...v2.20.0) (2023-12-08)
+
+
+### Bug Fixes
+
+* **cli:** filter non-svg files ([#1338](https://github.com/varletjs/varlet/issues/1338)) ([b0acea5](https://github.com/varletjs/varlet/commit/b0acea533f7b7c42036d7b1129d0e5a0d1780a49))
+* **cli:** optimize judgment condition to filter svg files ([#1339](https://github.com/varletjs/varlet/issues/1339)) ([aacedb8](https://github.com/varletjs/varlet/commit/aacedb8d2865d8b27fb96c45d07203a0552d58d8))
+
+
+### Features
+
+* **cli:** support create command internal mode and fix docs i18n error ([0d42d01](https://github.com/varletjs/varlet/commit/0d42d01fd6668eced6fd5369e442ee7c76b7b13a))
+* **collapse:** support toggleAll method ([#1315](https://github.com/varletjs/varlet/issues/1315)) ([04498fc](https://github.com/varletjs/varlet/commit/04498fcf62acb38b76a53844ca8c782078d93b51))
+* **date-picker:** support action slot ([#1321](https://github.com/varletjs/varlet/issues/1321)) ([8a66849](https://github.com/varletjs/varlet/commit/8a66849b7662d567d693a60ad2e72b421d186ad6))
+* **icons:** support history icon ([#1336](https://github.com/varletjs/varlet/issues/1336)) ([5aefc6b](https://github.com/varletjs/varlet/commit/5aefc6bff948cbc40438d9134f256f5b359e7999))
+
+
+
 ## [2.19.3](https://github.com/varletjs/varlet/compare/v2.19.2...v2.19.3) (2023-12-01)
 
 

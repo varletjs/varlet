@@ -57,6 +57,9 @@
         </transition>
       </div>
     </div>
+    <div v-if="$slots.actions" :class="n('actions')">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 

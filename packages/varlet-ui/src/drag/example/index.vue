@@ -54,7 +54,7 @@ watchDarkMode(Themes.dark)
   </var-drag>
 
   <app-type style="height: 50px; margin-top: 40px">{{ pack.disabled }}</app-type>
-  <var-drag ref="drag5" style="left: 15px; top: 375px" disabled attraction="x" :boundary="{ top: 54 }">
+  <var-drag ref="drag5" style="left: 15px; top: 375px" disabled attraction="x" :boundary="{ top: 54 }" z-index="80">
     <var-button type="primary" disabled>{{ pack.disabled }}</var-button>
   </var-drag>
 

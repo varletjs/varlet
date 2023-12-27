@@ -148,6 +148,12 @@ function change(time) {
 | ----- | -------------- | -------- |
 | `change` | Emitted after time changed | `value: string` |
 
+### slots
+
+| Name | Description | SlotProps                                                            |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `actions` | Custom the views in the action panel | `-` |
+
 ### Style Variables
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
@@ -157,12 +163,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-border-radius` | `4px`                  |
 | `--time-picker-font-size` | `var(--font-size-md)`  |
 | `--time-picker-min-width` | `290px`                |
-| `--time-picker-height` | `385px`                |
-| `--time-picker-title-height` | `105px` |
+| `--time-picker-title-height` | `105px`                |
 | `--time-picker-title-padding` | `16px`                 |
 | `--time-picker-title-color` | `#fff`                 |
-| `--time-picker-title-margin-bottom` | `8px` |
-| `--time-picker-title-hint-font-size` | `14px` |
+| `--time-picker-title-margin-bottom` | `8px`                  |
+| `--time-picker-title-hint-font-size` | `14px`                 |
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-time-font-size` | `50px`                 |
 | `--time-picker-title-time-margin` | `0 5px`                |
@@ -190,9 +195,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-clock-item-active-background` | `var(--color-primary)` |
 | `--time-picker-clock-item-active-color` | `#fff`                 |
 | `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)`  |
-| `--time-picker-clock-item-text-color` | `#555` |
+| `--time-picker-clock-item-text-color` | `#555`                 |
 | `--time-picker-inner-left` | `36px`                 |
 | `--time-picker-inner-right` | `36px`                 |
 | `--time-picker-inner-top` | `36px`                 |
 | `--time-picker-inner-bottom` | `36px`                 |
 | `--time-picker-body-background` | `#fff`                 |
+| `--time-picker-body-height` | `288px`                |
+| `--time-picker-actions-padding` | `0 8px 12px 8px`       |

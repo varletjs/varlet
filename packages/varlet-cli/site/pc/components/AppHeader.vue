@@ -32,6 +32,9 @@
         </transition>
       </div>
 
+      <a class="varlet-site-header__link" style="margin-right: 8px;" target="_blank" :href="changelog" v-ripple v-if="changelog">
+        <var-icon name="history" :size="28"/>
+      </a>
       <a class="varlet-site-header__link" target="_blank" :href="playground" v-ripple v-if="playground">
         <var-icon name="code-json" :size="24"/>
       </a>
@@ -103,6 +106,7 @@ export default defineComponent({
     const versionItems: Ref<Record<string, string>> = ref(get(config, 'pc.header.version.items'))
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
+    const changelog: Ref<string> = ref(get(config, 'pc.header.changelog'))
     const redirect = get(config, 'pc.redirect')
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentTheme = ref(getBrowserTheme())
@@ -175,6 +179,7 @@ export default defineComponent({
       nonEmptyLanguages,
       nonEmptyVersions,
       playground,
+      changelog,
       github,
       isOpenLanguageMenu,
       isOpenVersionsMenu,
