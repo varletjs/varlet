@@ -17,9 +17,6 @@ export interface IndexBarProps extends BasicAttributes {
   duration?: number | string
   onClick?: ListenerProp<(value: string | number) => void>
   onChange?: ListenerProp<(value: string | number) => void>
-
-  /** @deprecated Use stickyCssMode to instead. */
-  cssMode?: boolean
 }
 
 export class IndexBar extends VarComponent {
