@@ -55,6 +55,8 @@ export class ImagePreviewComponent extends VarComponent {
   next(options?: SwipeToOptions): void
 
   to(index: number, options?: SwipeToOptions): void
+
+  zoom(ratio: number): void
 }
 
 export interface IImagePreview {

@@ -441,6 +441,8 @@ export default defineComponent({
 @import '../form-details/formDetails';
 @import '../icon/icon';
 @import '../popup/popup';
+@import '../swipe/swipe';
+@import '../swipe-item/swipeItem';
 @import '../image-preview/imagePreview';
 @import '../hover-overlay/hoverOverlay';
 @import './uploader';
