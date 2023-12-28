@@ -21,7 +21,7 @@ describe('test datePicker style and type', () => {
     <var-date-picker
       v-model="date"
       elevation
-      header-color="purple"
+      title-color="purple"
       color="#7bb872"
       :show-current="false"
     />
@@ -50,7 +50,7 @@ describe('test datePicker style and type', () => {
       v-model="date"
       type="month"
       elevation
-      header-color="purple"
+      title-color="purple"
       color="#7bb872"
       :show-current="false"
     />
@@ -80,7 +80,7 @@ test('test datePicker style and type', async () => {
       :type="type"
       v-model="date"
       elevation
-      header-color="purple"
+      title-color="purple"
       color="#7bb872"
       :show-current="false"
     />
