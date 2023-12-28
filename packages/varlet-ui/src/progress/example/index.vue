@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref, onMounted, onUnmounted } from 'vue'
 import { pack, use } from './locale'
 
@@ -8,7 +7,7 @@ const value = ref(0)
 let timer
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 
 onMounted(() => {
   timer = window.setInterval(() => {

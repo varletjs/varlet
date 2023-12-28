@@ -17,6 +17,7 @@ import card from './card'
 import chip from './chip'
 import badge from './badge'
 import tooltip from './tooltip'
+import progress from './progress'
 
 export default {
   // common
@@ -48,4 +49,5 @@ export default {
   ...chip,
   ...badge,
   ...tooltip,
+  ...progress,
 } as StyleVars
