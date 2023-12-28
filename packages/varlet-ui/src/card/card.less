@@ -42,10 +42,6 @@
   overflow: hidden;
   width: 100%;
 
-  &--outline {
-    border: thin solid var(--card-outline-color);
-  }
-
   &__floater {
     display: flex;
     flex-direction: column;
@@ -165,5 +161,13 @@
 
   &__close-button-icon[var-card-cover] {
     font-size: var(--card-close-button-icon-size);
+  }
+
+  &--outline {
+    border: thin solid var(--card-outline-color);
+
+    .var-card__floater {
+      background: transparent;
+    }
   }
 }
