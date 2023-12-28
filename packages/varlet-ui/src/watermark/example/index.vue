@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { nextTick, ref } from 'vue'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const fullscreen = ref(false)
@@ -17,7 +16,7 @@ const toggle = () => {
 
 watchLang(use)
 
-watchDarkMode(Themes.dark, () => {
+onThemeChange(() => {
   nextTick(() => {
     watermarkRef.value.resize()
     watermarkRef2.value.resize()

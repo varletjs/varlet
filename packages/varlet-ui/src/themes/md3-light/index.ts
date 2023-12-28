@@ -20,6 +20,8 @@ import tooltip from './tooltip'
 import tabs from './tabs'
 import tab from './tab'
 import divider from './divider'
+import table from './table'
+import pagination from './pagination'
 
 export default {
   // common
@@ -52,4 +54,6 @@ export default {
   ...tabs,
   ...tab,
   ...divider,
+  ...table,
+  ...pagination,
 } as StyleVars

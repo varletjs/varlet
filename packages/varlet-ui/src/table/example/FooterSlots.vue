@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
@@ -23,7 +22,7 @@ function get(current, size) {
 }
 
 watchLang(use, 'pc')
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>

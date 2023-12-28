@@ -89,6 +89,18 @@ export interface StyleVars {
   badgeWarningColor?: string
   '--badge-info-color'?: string
   badgeInfoColor?: string
+  '--badge-default-text-color'?: string
+  badgeDefaultTextColor?: string
+  '--badge-primary-text-color'?: string
+  badgePrimaryTextColor?: string
+  '--badge-danger-text-color'?: string
+  badgeDangerTextColor?: string
+  '--badge-success-text-color'?: string
+  badgeSuccessTextColor?: string
+  '--badge-warning-text-color'?: string
+  badgeWarningTextColor?: string
+  '--badge-info-text-color'?: string
+  badgeInfoTextColor?: string
   '--badge-dot-width'?: string
   badgeDotWidth?: string
   '--badge-dot-height'?: string
@@ -251,6 +263,8 @@ export interface StyleVars {
   cardCloseButtonPrimaryColor?: string
   '--card-close-button-text-color'?: string
   cardCloseButtonTextColor?: string
+  '--card-close-button-border-radius'?: string
+  cardCloseButtonBorderRadius?: string
   '--cell-color'?: string
   cellColor?: string
   '--cell-font-size'?: string
@@ -289,6 +303,16 @@ export interface StyleVars {
   checkboxIconSize?: string
   '--chip-default-text-color'?: string
   chipDefaultTextColor?: string
+  '--chip-primary-text-color'?: string
+  chipPrimaryTextColor?: string
+  '--chip-danger-text-color'?: string
+  chipDangerTextColor?: string
+  '--chip-success-text-color'?: string
+  chipSuccessTextColor?: string
+  '--chip-warning-text-color'?: string
+  chipWarningTextColor?: string
+  '--chip-info-text-color'?: string
+  chipInfoTextColor?: string
   '--chip-default-color'?: string
   chipDefaultColor?: string
   '--chip-primary-color'?: string
@@ -301,6 +325,16 @@ export interface StyleVars {
   chipWarningColor?: string
   '--chip-info-color'?: string
   chipInfoColor?: string
+  '--chip-primary-plain-color'?: string
+  chipPrimaryPlainColor?: string
+  '--chip-danger-plain-color'?: string
+  chipDangerPlainColor?: string
+  '--chip-success-plain-color'?: string
+  chipSuccessPlainColor?: string
+  '--chip-warning-plain-color'?: string
+  chipWarningPlainColor?: string
+  '--chip-info-plain-color'?: string
+  chipInfoPlainColor?: string
   '--chip-border-radius'?: string
   chipBorderRadius?: string
   '--chip-mini-height'?: string
@@ -823,8 +857,6 @@ export interface StyleVars {
   popupContentBackgroundColor?: string
   '--progress-font-size'?: string
   progressFontSize?: string
-  '--progress-ripple-color'?: string
-  progressRippleColor?: string
   '--progress-track-color'?: string
   progressTrackColor?: string
   '--progress-label-color'?: string
@@ -1329,10 +1361,10 @@ export interface StyleVars {
   tooltipFontSize?: string
   '--tooltip-padding'?: string
   tooltipPadding?: string
-  '--tooltip-default-color'?: string
-  tooltipDefaultColor?: string
   '--tooltip-offset'?: string
   tooltipOffset?: string
+  '--tooltip-default-color'?: string
+  tooltipDefaultColor?: string
   '--tooltip-primary-color'?: string
   tooltipPrimaryColor?: string
   '--tooltip-info-color'?: string
@@ -1343,6 +1375,18 @@ export interface StyleVars {
   tooltipWarningColor?: string
   '--tooltip-danger-color'?: string
   tooltipDangerColor?: string
+  '--tooltip-default-text-color'?: string
+  tooltipDefaultTextColor?: string
+  '--tooltip-primary-text-color'?: string
+  tooltipPrimaryTextColor?: string
+  '--tooltip-info-text-color'?: string
+  tooltipInfoTextColor?: string
+  '--tooltip-success-text-color'?: string
+  tooltipSuccessTextColor?: string
+  '--tooltip-warning-text-color'?: string
+  tooltipWarningTextColor?: string
+  '--tooltip-danger-text-color'?: string
+  tooltipDangerTextColor?: string
   '--uploader-action-background'?: string
   uploaderActionBackground?: string
   '--uploader-action-icon-color'?: string

@@ -22,6 +22,9 @@ import tabs from './tabs'
 import tab from './tab'
 import steps from './steps'
 import divider from './divider'
+import table from './table'
+import pagination from './pagination'
+import watermark from './watermark'
 
 export default {
   // common
@@ -58,4 +61,7 @@ export default {
   ...tab,
   ...steps,
   ...divider,
+  ...table,
+  ...pagination,
+  ...watermark,
 } as StyleVars
