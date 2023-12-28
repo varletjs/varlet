@@ -1,13 +1,12 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 const loading = ref(false)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -22,11 +21,11 @@ watchDarkMode(Themes.dark)
 
   <app-type>{{ pack.color }}</app-type>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="#00afef" />
-    <var-loading type="cube" color="#00c48f" />
-    <var-loading type="wave" color="#ff9f00" />
-    <var-loading type="rect" color="#f44336" />
-    <var-loading type="disappear" color="#aaa" />
+    <var-loading type="circle" color="var(--color-info)" />
+    <var-loading type="cube" color="var(--color-success)" />
+    <var-loading type="wave" color="var(--color-warning)" />
+    <var-loading type="rect" color="var(--color-danger)" />
+    <var-loading type="disappear" color="var(--color-text-disabled)" />
   </var-space>
 
   <app-type>{{ pack.size }}</app-type>
