@@ -1,13 +1,12 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 import { ref } from 'vue'
 
 const floating = ref(false)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -36,8 +35,10 @@ watchDarkMode(Themes.dark)
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button text type="warning">{{ pack.action1 }}</var-button>
-      <var-button text type="warning">{{ pack.action2 }}</var-button>
+      <var-space>
+        <var-button type="primary">{{ pack.action1 }}</var-button>
+        <var-button type="primary">{{ pack.action2 }}</var-button>
+      </var-space>
     </template>
   </var-card>
 
@@ -73,7 +74,7 @@ watchDarkMode(Themes.dark)
     </template>
 
     <template #floating-content>
-      <var-divider dashed></var-divider>
+      <var-divider dashed margin="32px 0"></var-divider>
       <div class="card-example-text">
         {{ pack.description }}
       </div>
@@ -83,7 +84,7 @@ watchDarkMode(Themes.dark)
 
 <style scoped lang="less">
 .card-example-text {
-  padding: 14px;
+  padding: 0 16px 16px;
   font-size: 14px;
   line-height: 28px;
 }

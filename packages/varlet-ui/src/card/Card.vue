@@ -18,6 +18,7 @@
         left: floaterLeft,
         overflow: floaterOverflow,
         position: floaterPosition,
+        zIndex: floated ? zIndex : undefined,
         transition: floated
           ? `background-color ${floatingDuration}ms, color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
@@ -73,7 +74,7 @@
         v-if="showFloatingButtons"
       >
         <slot name="close-button">
-          <var-button var-card-cover round :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
+          <var-button var-card-cover :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
             <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
           </var-button>
         </slot>

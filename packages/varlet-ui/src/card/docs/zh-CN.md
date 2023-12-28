@@ -66,8 +66,8 @@
   >
     <template #extra>
       <var-space>
-        <var-button text type="warning">操作 1</var-button>
-        <var-button text type="warning">操作 2</var-button>
+        <var-button type="primary">操作 1</var-button>
+        <var-button type="primary">操作 2</var-button>
       </var-space>
     </template>
   </var-card>
@@ -228,3 +228,4 @@ const floating = ref(false)
 | `--card-close-button-size`          | `56px`               |
 | `--card-close-button-primary-color` | `#212121`            |
 | `--card-close-button-text-color` | `#fff`            |
+| `--card-close-button-border-radius` | `50%` |

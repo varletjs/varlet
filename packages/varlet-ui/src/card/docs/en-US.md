@@ -66,8 +66,8 @@ Display content and actions about a single subject.
   >
     <template #extra>
       <var-space>
-        <var-button text type="warning">ACTION 1</var-button>
-        <var-button text type="warning">ACTION 2</var-button>
+        <var-button type="primary">ACTION 1</var-button>
+        <var-button type="primary">ACTION 2</var-button>
       </var-space>
     </template>
   </var-card>
@@ -228,3 +228,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--card-close-button-size`          | `56px`                |
 | `--card-close-button-primary-color` | `#212121`             |
 | `--card-close-button-text-color` | `#fff`            |
+| `--card-close-button-border-radius` | `50%` |

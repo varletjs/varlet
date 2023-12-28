@@ -13,6 +13,7 @@ import avatar from './avatar'
 import fieldDecorator from './fieldDecorator'
 import checkbox from './checkbox'
 import radio from './radio'
+import card from './card'
 
 export default {
   // common
@@ -38,4 +39,5 @@ export default {
   ...fieldDecorator,
   ...checkbox,
   ...radio,
+  ...card,
 } as StyleVars
