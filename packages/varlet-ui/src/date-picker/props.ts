@@ -59,8 +59,6 @@ export const props = {
   hint: String,
   allowedDates: Function as PropType<AllowedDates>,
   color: String,
-  /** @deprecated Use titleColor to instead. */
-  headerColor: String,
   titleColor: String,
   elevation: {
     type: [Boolean, Number, String],
