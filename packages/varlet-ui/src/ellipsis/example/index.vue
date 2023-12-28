@@ -1,11 +1,12 @@
 <script setup>
-import { watchLang, AppType } from '@varlet/cli/client'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
-watchLang(use)
-
 const expand = ref(false)
+
+watchLang(use)
+onThemeChange()
 </script>
 
 <template>

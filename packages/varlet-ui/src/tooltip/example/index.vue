@@ -1,6 +1,6 @@
 <script setup>
-import { Themes, Snackbar } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale/index'
 
@@ -22,7 +22,7 @@ const placementOptions = ref([
 ])
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
