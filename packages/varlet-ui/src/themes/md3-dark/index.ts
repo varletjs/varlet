@@ -18,6 +18,8 @@ import chip from './chip'
 import badge from './badge'
 import tooltip from './tooltip'
 import progress from './progress'
+import tabs from './tabs'
+import tab from './tab'
 
 export default {
   // common
@@ -50,4 +52,6 @@ export default {
   ...badge,
   ...tooltip,
   ...progress,
+  ...tabs,
+  ...tab,
 } as StyleVars

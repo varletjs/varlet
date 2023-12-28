@@ -1,8 +1,7 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { Themes } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
-import { computed, reactive, ref, toRefs } from 'vue'
+import { reactive, toRefs, ref } from 'vue'
 
 const actives = reactive({
   active: 0,
@@ -16,15 +15,11 @@ const actives = reactive({
   activeRelation: 0,
 })
 const { active, active2, active3, active4, active5, active6, active7, active8, activeRelation } = toRefs(actives)
-
-const theme = ref('lightTheme')
-const tabItemStyle = computed(() => ({
-  color: theme.value === 'lightTheme' ? '#888' : '#aaa',
-}))
+const currentTheme = ref()
 
 watchLang(use)
-watchDarkMode(Themes.dark, (mode) => {
-  theme.value = mode
+onThemeChange((theme) => {
+  currentTheme.value = theme
 })
 </script>
 
@@ -40,8 +35,8 @@ watchDarkMode(Themes.dark, (mode) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active2"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -53,9 +48,9 @@ watchDarkMode(Themes.dark, (mode) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
-    disabled-color="#aaa"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
+    :disabled-color="currentTheme === 'darkTheme' ? '#bbb' : undefined"
     v-model:active="active3"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -67,8 +62,8 @@ watchDarkMode(Themes.dark, (mode) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active4"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -86,8 +81,8 @@ watchDarkMode(Themes.dark, (mode) => {
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active5"
   >
     <var-tab>
@@ -110,8 +105,8 @@ watchDarkMode(Themes.dark, (mode) => {
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active6"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -123,8 +118,8 @@ watchDarkMode(Themes.dark, (mode) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="activeRelation"
     offset-top="50"
   >
@@ -134,13 +129,13 @@ watchDarkMode(Themes.dark, (mode) => {
   </var-tabs>
 
   <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
-    <var-tab-item :style="tabItemStyle">
+    <var-tab-item>
       {{ pack.text }}
     </var-tab-item>
-    <var-tab-item :style="tabItemStyle">
+    <var-tab-item>
       {{ pack.text2 }}
     </var-tab-item>
-    <var-tab-item :style="tabItemStyle">
+    <var-tab-item>
       {{ pack.text3 }}
     </var-tab-item>
   </var-tabs-items>
@@ -150,8 +145,8 @@ watchDarkMode(Themes.dark, (mode) => {
     sticky
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     offset-top="14.4vmin"
     v-model:active="active7"
   >
@@ -165,8 +160,8 @@ watchDarkMode(Themes.dark, (mode) => {
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active8"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -181,8 +176,8 @@ watchDarkMode(Themes.dark, (mode) => {
     indicator-position="reverse"
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active8"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -204,6 +199,6 @@ watchDarkMode(Themes.dark, (mode) => {
 }
 
 .var-tab-item {
-  color: #888;
+  color: var(--color-text);
 }
 </style>

@@ -56,8 +56,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -80,8 +80,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     disabled-color="#aaa"
     v-model:active="active"
   >
@@ -107,8 +107,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -137,8 +137,8 @@ const active = ref(0)
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>
@@ -178,8 +178,8 @@ const active = ref(0)
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -209,8 +209,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -249,8 +249,8 @@ const active = ref(0)
       sticky
       elevation
       color="var(--color-primary)"
-      active-color="#fff"
-      inactive-color="hsla(0, 0%, 100%, .6)"
+      active-color="var(--button-primary-text-color)"
+      inactive-color="var(--button-info-text-color)"
       v-model:active="active"
     >
       <var-tab>选项1</var-tab>
@@ -281,8 +281,8 @@ const active = ref(0)
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -296,8 +296,8 @@ const active = ref(0)
     indicator-position="reverse"
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--button-primary-text-color)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>选项1</var-tab>
@@ -327,11 +327,11 @@ const active = ref(0)
 | `layout-direction` | 选项卡组的布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `item-direction`   | 选项卡的布局方向，可选值为 `horizontal` `vertical`  | _string_ | `horizontal` |
 | `fixed-bottom`     | 是否固定在窗口底部, 可用做底部导航                     | _boolean_ | `false`      |
-| `color`            | 选项卡的背景颜色                               | _string_ | `#fff`       |
-| `active-color`     | 选项卡激活的主要颜色                             | _string_ | `#2979ff`    |
-| `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `#646566`    |
-| `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `#e0e0e0`    |
-| `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `#2979ff`    |
+| `color`            | 选项卡的背景颜色                               | _string_ | `-`       |
+| `active-color`     | 选项卡激活的主要颜色                             | _string_ | `-`    |
+| `inactive-color`   | 选项卡未激活的主要颜色                            | _string_ | `-`    |
+| `disabled-color`   | 选项卡禁用时的主要颜色                            | _string_ | `-`    |
+| `indicator-color`  | 选项卡激活指示器的颜色                            | _string_ | `-`    |
 | `indicator-size`   | 选项卡激活指示器的尺寸                            | _string \| number_      | `2px`        |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `false`    |
 | `sticky`           | 是否启用粘性布局                               | _boolean_ | `false`      |
