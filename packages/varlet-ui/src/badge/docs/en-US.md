@@ -64,16 +64,16 @@ Set the position of the badge through the `position` property.
 <template>
   <var-space :size="[8, 20]">
     <var-badge type="danger">
-      <var-chip plain :round="false" color="#009688">The Upper Right</var-chip>
+      <var-chip>The Upper Right</var-chip>
     </var-badge>
     <var-badge type="danger" position="right-bottom">
-      <var-chip plain :round="false" color="#009688">The Lower Right</var-chip>
+      <var-chip>The Lower Right</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-top">
-      <var-chip plain :round="false" color="#009688">The Upper Left</var-chip>
+      <var-chip>The Upper Left</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-bottom">
-      <var-chip plain :round="false" color="#009688">The Lower Left</var-chip>
+      <var-chip>The Lower Left</var-chip>
     </var-badge>
   </var-space>
 </template>
@@ -87,16 +87,16 @@ Set the horizontal and vertical offset of the logo via the `offset-x` and `offse
 <template>
   <var-space :size="[8, 20]">
     <var-badge type="danger" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+      <var-chip>Badge</var-chip>
     </var-badge>
     <var-badge type="danger" position="right-bottom" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+      <var-chip>Badge</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-top" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+      <var-chip>Badge</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-bottom" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+      <var-chip>Badge</var-chip>
     </var-badge>
   </var-space>
 </template>
@@ -120,7 +120,7 @@ function handleChange() {
 <template>
   <var-space>
     <var-badge type="danger" :hidden="hidden">
-      <var-chip plain :round="false" color="#009688">Badge</var-chip>
+      <var-chip>Badge</var-chip>
     </var-badge>
 
     <var-button type="success" @click="handleChange">Click To Change The State</var-button>
@@ -135,7 +135,7 @@ Set the color of the badge through the `color` property.
 ```html
 <template>
   <var-badge color="#6200ea">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
+    <var-chip>Badge</var-chip>
   </var-badge>
 </template>
 ```
@@ -146,8 +146,8 @@ Set Badge Icon through `icon` property.
 
 ```html
 <template>
-  <var-badge color="#6200ea" icon="notebook">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
+  <var-badge icon="notebook">
+    <var-chip>Badge</var-chip>
   </var-badge>
 </template>
 ```
@@ -156,8 +156,8 @@ Set Badge Icon through `icon` property.
 
 ```html
 <template>
-  <var-badge color="#6200ea">
-    <var-chip plain :round="false" color="#009688">Badge</var-chip>
+  <var-badge>
+    <var-chip>Badge</var-chip>
 
     <template #value>
       <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>
