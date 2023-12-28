@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { toRefs, reactive } from 'vue'
 import { use, pack } from './locale'
 
@@ -18,7 +17,7 @@ const values = reactive({
 const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -29,7 +28,7 @@ watchDarkMode(Themes.dark)
   <var-radio :unchecked-value="0" :checked-value="1" v-model="value2"> {{ pack.currentValue }} {{ value2 }} </var-radio>
 
   <app-type>{{ pack.setStyle }}</app-type>
-  <var-radio unchecked-color="#e99eb4" checked-color="#f44336" v-model="value3">
+  <var-radio unchecked-color="var(--color-warning)" checked-color="var(--color-danger)" v-model="value3">
     <template #unchecked-icon>
       <var-icon name="heart-half-full" size="24px" />
     </template>
