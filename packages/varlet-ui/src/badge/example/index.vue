@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -15,7 +14,7 @@ function handleChange() {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -49,39 +48,39 @@ watchDarkMode(Themes.dark)
     <app-type>{{ pack.differentPositioningBadges }}</app-type>
     <var-space :size="['2.666vmin', '6vmin']">
       <var-badge type="danger">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperRight }}</var-chip>
+        <var-chip>{{ pack.upperRight }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="right-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerRight }}</var-chip>
+        <var-chip>{{ pack.lowerRight }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="left-top">
-        <var-chip plain :round="false" color="#009688">{{ pack.upperLeft }}</var-chip>
+        <var-chip>{{ pack.upperLeft }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="left-bottom">
-        <var-chip plain :round="false" color="#009688">{{ pack.lowerLeft }}</var-chip>
+        <var-chip>{{ pack.lowerLeft }}</var-chip>
       </var-badge>
     </var-space>
 
     <app-type>{{ pack.offset }}</app-type>
     <var-space :size="['2.666vmin', '6vmin']">
       <var-badge type="danger" :offset-x="offset" :offset-y="offset">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+        <var-chip>{{ pack.badge }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="right-bottom" :offset-x="offset" :offset-y="offset">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+        <var-chip>{{ pack.badge }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="left-top" :offset-x="offset" :offset-y="offset">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+        <var-chip>{{ pack.badge }}</var-chip>
       </var-badge>
       <var-badge type="danger" position="left-bottom" :offset-x="offset" :offset-y="offset">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+        <var-chip>{{ pack.badge }}</var-chip>
       </var-badge>
     </var-space>
 
     <app-type>{{ pack.hidden }}</app-type>
     <var-space :size="['2.666vmin', '6vmin']">
       <var-badge type="danger" :hidden="hidden">
-        <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+        <var-chip>{{ pack.badge }}</var-chip>
       </var-badge>
 
       <var-button type="success" @click="handleChange">
@@ -91,17 +90,17 @@ watchDarkMode(Themes.dark)
 
     <app-type>{{ pack.customBadgeColor }}</app-type>
     <var-badge color="#6200ea">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+      <var-chip>{{ pack.badge }}</var-chip>
     </var-badge>
 
     <app-type>{{ pack.customBadgeIcon }}</app-type>
-    <var-badge color="#6200ea" icon="notebook">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+    <var-badge icon="notebook">
+      <var-chip>{{ pack.badge }}</var-chip>
     </var-badge>
 
     <app-type>{{ pack.customBadgeValue }}</app-type>
-    <var-badge color="#6200ea">
-      <var-chip plain :round="false" color="#009688">{{ pack.badge }}</var-chip>
+    <var-badge>
+      <var-chip>{{ pack.badge }}</var-chip>
 
       <template #value>
         <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>

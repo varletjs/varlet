@@ -15,6 +15,7 @@ import checkbox from './checkbox'
 import radio from './radio'
 import card from './card'
 import chip from './chip'
+import badge from './badge'
 
 export default {
   // common
@@ -42,4 +43,5 @@ export default {
   ...radio,
   ...card,
   ...chip,
+  ...badge,
 } as StyleVars

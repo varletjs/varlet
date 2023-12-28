@@ -210,5 +210,11 @@ function handleChange() {
 | `--badge-success-color` | `var(--color-success)`|
 | `--badge-warning-color` |  `var(--color-warning)`|
 | `--badge-info-color` | `var(--color-info)`|
+| `--badge-default-text-color` | `#1D1B20` |
+| `--badge-primary-text-color` | `#fff` |
+| `--badge-danger-text-color` | `#fff` |
+| `--badge-success-text-color` | `#fff` |
+| `--badge-warning-text-color` | `#fff` |
+| `--badge-info-text-color` | `#fff` |
 | `--badge-dot-width` |  `8px`|
 | `--badge-dot-height` | `8px`|
