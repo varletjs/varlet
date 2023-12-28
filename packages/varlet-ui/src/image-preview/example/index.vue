@@ -1,6 +1,6 @@
 <script setup>
-import { Themes, Snackbar, ImagePreview, ActionSheet } from '@varlet/ui'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
+import { Snackbar, ImagePreview, ActionSheet } from '@varlet/ui'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { ref, computed } from 'vue'
 import { pack, use } from './locale'
 
@@ -28,6 +28,9 @@ const actions = computed(() => [
   },
 ])
 
+watchLang(use)
+onThemeChange()
+
 function handleCloseEvent() {
   Snackbar({
     content: pack.value.shutdownEvent,
@@ -54,9 +57,6 @@ function previewCallback() {
     },
   })
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>

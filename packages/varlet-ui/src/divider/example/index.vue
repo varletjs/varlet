@@ -1,10 +1,9 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
@@ -32,7 +31,7 @@ watchDarkMode(Themes.dark)
 
   <app-type>{{ pack.custom }}</app-type>
   <var-divider>
-    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255)" />
+    <var-icon name="heart-outline" style="margin: 0 16px; color: var(--color-danger)" />
   </var-divider>
 
   <app-type>{{ pack.hairline }}</app-type>

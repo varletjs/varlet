@@ -19,6 +19,7 @@ import badge from './badge'
 import tooltip from './tooltip'
 import tabs from './tabs'
 import tab from './tab'
+import divider from './divider'
 
 export default {
   // common
@@ -50,4 +51,5 @@ export default {
   ...tooltip,
   ...tabs,
   ...tab,
+  ...divider,
 } as StyleVars

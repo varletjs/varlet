@@ -21,6 +21,7 @@ import progress from './progress'
 import tabs from './tabs'
 import tab from './tab'
 import steps from './steps'
+import divider from './divider'
 
 export default {
   // common
@@ -56,4 +57,5 @@ export default {
   ...tabs,
   ...tab,
   ...steps,
+  ...divider,
 } as StyleVars

@@ -64,7 +64,7 @@ Used to separate parts of a list or layout.
 ```html
 <template>
   <var-divider>
-    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+    <var-icon name="heart-outline" style="margin: 0 16px; color: var(--color-danger);" />
   </var-divider>
 </template>
 ```
