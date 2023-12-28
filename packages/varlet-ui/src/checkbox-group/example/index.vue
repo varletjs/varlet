@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { use, pack } from './locale'
 
@@ -21,8 +20,9 @@ const values = reactive({
 
 const { value, value2, value3, value4, value5, value6, value7, value8, value9, group, value10, indeterminate } =
   toRefs(values)
+
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -35,7 +35,7 @@ watchDarkMode(Themes.dark)
   </var-checkbox>
 
   <app-type>{{ pack.setStyle }}</app-type>
-  <var-checkbox unchecked-color="#e99eb4" checked-color="#f44336" v-model="value3">
+  <var-checkbox unchecked-color="var(--color-warning)" checked-color="var(--color-danger)" v-model="value3">
     <template #unchecked-icon>
       <var-icon name="heart-half-full" size="24px" />
     </template>

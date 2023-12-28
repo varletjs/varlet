@@ -11,6 +11,7 @@ import cell from './cell'
 import paper from './paper'
 import avatar from './avatar'
 import fieldDecorator from './fieldDecorator'
+import checkbox from './checkbox'
 
 export default {
   // common
@@ -34,4 +35,5 @@ export default {
   ...paper,
   ...avatar,
   ...fieldDecorator,
+  ...checkbox,
 } as StyleVars
