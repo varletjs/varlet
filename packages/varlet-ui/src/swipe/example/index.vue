@@ -1,9 +1,10 @@
 <script setup>
 import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 watchLang(use)
+onThemeChange()
 </script>
 
 <template>

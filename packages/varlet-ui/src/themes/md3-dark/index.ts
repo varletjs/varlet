@@ -20,6 +20,7 @@ import tooltip from './tooltip'
 import progress from './progress'
 import tabs from './tabs'
 import tab from './tab'
+import steps from './steps'
 
 export default {
   // common
@@ -54,4 +55,5 @@ export default {
   ...progress,
   ...tabs,
   ...tab,
+  ...steps,
 } as StyleVars

@@ -43,8 +43,8 @@ const active = ref(0)
 <template>
   <var-steps
     :active="active"
-    active-color="#f44336"
-    inactive-color="#e99eb4"
+    active-color="var(--color-danger)" 
+    inactive-color="var(--color-warning)"
   >
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
       Step1

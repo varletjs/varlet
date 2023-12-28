@@ -1,17 +1,16 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
 const active = ref(0)
 
+watchLang(use)
+onThemeChange()
+
 function next() {
   active.value = (active.value + 1) % 4
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -24,7 +23,7 @@ watchDarkMode(Themes.dark)
   </var-steps>
 
   <app-type>{{ pack.customStyle }}</app-type>
-  <var-steps :active="active" active-color="#f44336" inactive-color="#e99eb4">
+  <var-steps :active="active" active-color="var(--color-danger)" inactive-color="var(--color-warning)">
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">{{ pack.first }}</var-step>
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">{{ pack.second }}</var-step>
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">{{ pack.third }}</var-step>

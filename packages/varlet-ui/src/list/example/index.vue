@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { reactive, toRefs } from 'vue'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const values = reactive({
@@ -20,6 +19,9 @@ const values = reactive({
 
 const { list, list2, list3, loading, loading2, loading3, finished, finished2, finished3, error, current } =
   toRefs(values)
+
+watchLang(use)
+onThemeChange()
 
 function load() {
   setTimeout(() => {
@@ -64,9 +66,6 @@ function load3() {
     }
   }, 1000)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
