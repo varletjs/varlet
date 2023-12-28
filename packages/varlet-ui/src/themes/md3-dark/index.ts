@@ -14,6 +14,7 @@ import fieldDecorator from './fieldDecorator'
 import checkbox from './checkbox'
 import radio from './radio'
 import card from './card'
+import chip from './chip'
 
 export default {
   // common
@@ -21,7 +22,7 @@ export default {
   '--color-text': '#fff',
   '--color-primary': '#D0BCFF',
   '--color-info': '#CCC2DC',
-  '--color-success': '#465C04',
+  '--color-success': '#BACF83',
   '--color-warning': '#EFB8C8',
   '--color-danger': '#F2B8B5',
   '--color-disabled': '#404040',
@@ -42,4 +43,5 @@ export default {
   ...checkbox,
   ...radio,
   ...card,
+  ...chip,
 } as StyleVars

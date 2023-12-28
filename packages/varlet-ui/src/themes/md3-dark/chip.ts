@@ -1,0 +1,15 @@
+export default {
+  '--chip-round-radius': '8px',
+  '--chip-default-color': '#2B2930',
+  '--chip-default-text-color': '#CAC4D0',
+  '--chip-primary-color': '#4F378B',
+  '--chip-primary-text-color': '#EADDFF',
+  '--chip-info-color': '#4A4458',
+  '--chip-info-text-color': '#E8DEF8',
+  '--chip-warning-color': '#633B48',
+  '--chip-warning-text-color': '#FFD8E4',
+  '--chip-danger-color': '#8C1D18',
+  '--chip-danger-text-color': '#F9DEDC',
+  '--chip-success-text-color': '#D5EC9C',
+  '--chip-success-color': '#3C4D0E',
+}

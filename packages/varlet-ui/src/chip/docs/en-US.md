@@ -182,26 +182,36 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--chip-default-text-color` | `#555` |
-| `--chip-default-color` | `#f5f5f5` |
-| `--chip-primary-color` | `var(--color-primary)`|
-| `--chip-danger-color` |  `var(--color-danger)`|
-| `--chip-success-color` | `var(--color-success)`|
-| `--chip-warning-color` |  `var(--color-warning)`|
-| `--chip-info-color` | `var(--color-info)`|
-| `--chip-border-radius` | `2px` |
-| `--chip-mini-height` | `16px` |
-| `--chip-small-height` | `24px` |
-| `--chip-normal-height` | `32px` |
-| `--chip-large-height` | `40px` |
-| `--chip-round-radius` | `100px` |
-| `--chip-mini-padding` | `0 4px` |
-| `--chip-small-padding` | `0 6px` |
-| `--chip-normal-padding` | `0 10px` |
-| `--chip-large-padding` | `0 17px` |
-| `--chip-text-large-margin` | `0 5px` |
+| `--chip-primary-text-color` | `#fff` |
+| `--chip-danger-text-color` | `#fff` |
+| `--chip-success-text-color` | `#fff` |
+| `--chip-warning-text-color` | `#fff` |
+| `--chip-info-text-color` | `#fff` |
+| `--chip-default-color`      | `#e0e0e0` |
+| `--chip-primary-color`      | `var(--color-primary)`|
+| `--chip-danger-color`       |  `var(--color-danger)`|
+| `--chip-success-color`      | `var(--color-success)`|
+| `--chip-warning-color`      |  `var(--color-warning)`|
+| `--chip-info-color`         | `var(--color-info)`|
+| `--chip-primary-plain-color` | `var(--color-primary)` |
+| `--chip-danger-plain-color` | `var(--color-danger)` |
+| `--chip-success-plain-color` | `var(--color-success)` |
+| `--chip-warning-plain-color` | `var(--color-warning)` |
+| `--chip-info-plain-color` | `var(--color-info)` |
+| `--chip-border-radius`      | `2px` |
+| `--chip-mini-height`        | `16px` |
+| `--chip-small-height`       | `24px` |
+| `--chip-normal-height`      | `32px` |
+| `--chip-large-height`       | `40px` |
+| `--chip-round-radius`       | `100px` |
+| `--chip-mini-padding`       | `0 4px` |
+| `--chip-small-padding`      | `0 6px` |
+| `--chip-normal-padding`     | `0 10px` |
+| `--chip-large-padding`      | `0 17px` |
+| `--chip-text-large-margin`  | `0 5px` |
 | `--chip-text-normal-margin` | `0 5px` |
-| `--chip-text-small-margin` | `0 3px` |
-| `--chip-text-mini-margin` | `0 2px` |
+| `--chip-text-small-margin`  | `0 3px` |
+| `--chip-text-mini-margin`   | `0 2px` |
 | `--chip-mini-font-size`     | `var(--font-size-xs)` |
 | `--chip-small-font-size`    | `var(--font-size-sm)` |
 | `--chip-normal-font-size`   | `var(--font-size-md)` |

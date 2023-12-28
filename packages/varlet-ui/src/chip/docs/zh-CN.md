@@ -180,12 +180,22 @@ const show1= ref(true)
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
 | `--chip-default-text-color` | `#555` |
+| `--chip-primary-text-color` | `#fff` |
+| `--chip-danger-text-color` | `#fff` |
+| `--chip-success-text-color` | `#fff` |
+| `--chip-warning-text-color` | `#fff` |
+| `--chip-info-text-color` | `#fff` |
 | `--chip-default-color`      | `#e0e0e0` |
 | `--chip-primary-color`      | `var(--color-primary)`|
 | `--chip-danger-color`       |  `var(--color-danger)`|
 | `--chip-success-color`      | `var(--color-success)`|
 | `--chip-warning-color`      |  `var(--color-warning)`|
 | `--chip-info-color`         | `var(--color-info)`|
+| `--chip-primary-plain-color` | `var(--color-primary)` |
+| `--chip-danger-plain-color` | `var(--color-danger)` |
+| `--chip-success-plain-color` | `var(--color-success)` |
+| `--chip-warning-plain-color` | `var(--color-warning)` |
+| `--chip-info-plain-color` | `var(--color-info)` |
 | `--chip-border-radius`      | `2px` |
 | `--chip-mini-height`        | `16px` |
 | `--chip-small-height`       | `24px` |

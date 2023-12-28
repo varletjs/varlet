@@ -4,7 +4,7 @@ export default {
   '--button-border-radius': '100px',
   '--button-primary-text-color': '#381E72',
   '--button-danger-text-color': '#601410',
-  '--button-success-text-color': '#fff',
+  '--button-success-text-color': '#273500',
   '--button-warning-text-color': '#492532',
   '--button-info-text-color': '#332D41',
 }
