@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "vue",
     "jsx": "preserve",
     "isolatedModules": true,
     "allowJs": true,
