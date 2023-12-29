@@ -36,7 +36,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" size="small" @click="show = !show">Close</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = !show">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">Multi-Line</var-button>
@@ -58,7 +58,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" size="small" @click="show = false">Close</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = false">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">Bottom Display</var-button>

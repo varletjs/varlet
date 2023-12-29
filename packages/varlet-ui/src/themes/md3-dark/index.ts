@@ -30,6 +30,7 @@ import result from './result'
 import appBar from './appBar'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
+import snackbar from './snackbar'
 
 export default {
   // common
@@ -74,4 +75,5 @@ export default {
   ...appBar,
   ...bottomNavigation,
   ...bottomNavigationItem,
+  ...snackbar,
 } as StyleVars

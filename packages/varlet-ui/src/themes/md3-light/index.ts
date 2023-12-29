@@ -26,6 +26,7 @@ import collapse from './collapse'
 import result from './result'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
+import snackbar from './snackbar'
 
 export default {
   // common
@@ -64,4 +65,5 @@ export default {
   ...result,
   ...bottomNavigation,
   ...bottomNavigationItem,
+  ...snackbar,
 } as StyleVars

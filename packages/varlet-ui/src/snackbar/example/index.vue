@@ -1,6 +1,6 @@
 <script setup>
-import { Themes, Snackbar, Icon, Button } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar, Icon, Button } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs, onBeforeUnmount, h } from 'vue'
 import { pack, use } from './locale'
 
@@ -16,6 +16,13 @@ const shows = reactive({
 const VarSnackbar = Snackbar.Component
 
 const { show1, show2, show3, show4, show5, show9 } = toRefs(shows)
+
+onBeforeUnmount(() => {
+  Snackbar.allowMultiple(false)
+})
+
+watchLang(use)
+onThemeChange()
 
 function changeValue(type) {
   shows[type] = !shows[type]
@@ -76,13 +83,6 @@ function openMultiple() {
     snackbar1.clear()
   }, 1000)
 }
-
-onBeforeUnmount(() => {
-  Snackbar.allowMultiple(false)
-})
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -124,14 +124,14 @@ watchDarkMode(Themes.dark)
     <var-snackbar v-model:show="show2" position="bottom">
       {{ pack.text }}
       <template #action>
-        <var-button type="primary" size="small" @click="show2 = false">{{ pack.close }}</var-button>
+        <var-button type="primary" :elevation="false" size="small" @click="show2 = false">{{ pack.close }}</var-button>
       </template>
     </var-snackbar>
 
     <var-snackbar v-model:show="show3" :vertical="true">
       {{ pack.text }}
       <template #action>
-        <var-button type="primary" size="small" @click="show3 = false">{{ pack.close }}</var-button>
+        <var-button type="primary" :elevation="false" size="small" @click="show3 = false">{{ pack.close }}</var-button>
       </template>
     </var-snackbar>
 
