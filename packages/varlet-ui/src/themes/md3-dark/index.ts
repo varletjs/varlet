@@ -27,6 +27,7 @@ import pagination from './pagination'
 import watermark from './watermark'
 import collapse from './collapse'
 import result from './result'
+import appBar from './appBar'
 
 export default {
   // common
@@ -68,4 +69,5 @@ export default {
   ...watermark,
   ...collapse,
   ...result,
+  ...appBar,
 } as StyleVars
