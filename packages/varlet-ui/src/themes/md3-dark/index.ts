@@ -26,6 +26,7 @@ import table from './table'
 import pagination from './pagination'
 import watermark from './watermark'
 import collapse from './collapse'
+import result from './result'
 
 export default {
   // common
@@ -66,4 +67,5 @@ export default {
   ...pagination,
   ...watermark,
   ...collapse,
+  ...result,
 } as StyleVars

@@ -23,6 +23,7 @@ import divider from './divider'
 import table from './table'
 import pagination from './pagination'
 import collapse from './collapse'
+import result from './result'
 
 export default {
   // common
@@ -58,4 +59,5 @@ export default {
   ...table,
   ...pagination,
   ...collapse,
+  ...result,
 } as StyleVars

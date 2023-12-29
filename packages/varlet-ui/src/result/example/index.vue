@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
 import { use, pack } from './locale'
 import { ref } from 'vue'
 
@@ -12,7 +11,7 @@ const question = ref(false)
 const empty = ref(false)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
