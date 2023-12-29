@@ -4,10 +4,6 @@
 
 Two calling methods, function and component, are provided. It also supports cascade mode and can handle multi-level linkage.
 
-### Notice
-
-In order to make the API more friendly, this component was refactored in `2.17.0`, but break changes were introduced. For the old version documentation, please [check here](https://github.com/varletjs/varlet/blob/v2.16.7/packages/varlet-ui/src/picker/docs/en-US.md).
-
 ## Function call
 
 ### Single Column Picker

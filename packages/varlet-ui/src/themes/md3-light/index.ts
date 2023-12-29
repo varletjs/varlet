@@ -31,6 +31,7 @@ import actionSheet from './actionSheet'
 import dialog from './dialog'
 import pullRefresh from './pullRefresh'
 import popup from './popup'
+import picker from './picker'
 
 export default {
   // common
@@ -74,4 +75,5 @@ export default {
   ...dialog,
   ...pullRefresh,
   ...popup,
+  ...picker,
 } as StyleVars

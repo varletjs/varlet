@@ -1,7 +1,7 @@
 <script setup>
-import { Themes, Snackbar, Picker } from '@varlet/ui'
 import area from '../../../json/area.json'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar, Picker } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, pack } from './locale'
 
@@ -71,6 +71,9 @@ const columns5 = ref([
 
 const values = ref(['A', 'B', 'C'])
 
+watchLang(use)
+onThemeChange()
+
 async function picker() {
   await Picker({
     columns: columns.value,
@@ -121,9 +124,6 @@ async function picker5() {
 function handleChange(values, indexes) {
   Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
