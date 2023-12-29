@@ -129,6 +129,8 @@ export interface StyleVars {
   bottomNavigationItemIconSize?: string
   '--bottom-navigation-item-icon-margin-bottom'?: string
   bottomNavigationItemIconMarginBottom?: string
+  '--bottom-navigation-fab-border-radius'?: string
+  bottomNavigationFabBorderRadius?: string
   '--breadcrumb-active-color'?: string
   breadcrumbActiveColor?: string
   '--breadcrumb-inactive-color'?: string
@@ -1117,10 +1119,6 @@ export interface StyleVars {
   stepLineBackground?: string
   '--step-line-gap'?: string
   stepLineGap?: string
-  '--step-min-size'?: string
-  stepMinSize?: string
-  '--step-line-size'?: string
-  stepLineSize?: string
   '--step-vertical-tag-margin'?: string
   stepVerticalTagMargin?: string
   '--step-vertical-min-height'?: string
