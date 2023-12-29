@@ -1,6 +1,6 @@
 <script setup>
-import { Snackbar, Dialog, Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar, Dialog } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -17,6 +17,9 @@ const actions = {
   cancel: () => Snackbar.error('cancel'),
   close: () => Snackbar.info('close'),
 }
+
+watchLang(use)
+onThemeChange()
 
 function createBasic() {
   Dialog(pack.value.message)
@@ -56,9 +59,6 @@ function asyncClose() {
     onBeforeClose,
   })
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
