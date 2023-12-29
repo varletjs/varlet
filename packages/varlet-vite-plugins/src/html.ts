@@ -12,7 +12,7 @@ export function html(options: HtmlOptions): Plugin {
     transformIndexHtml: {
       order: 'pre',
 
-      transform(html) {
+      handler(html) {
         return ejs.render(html, options.data)
       },
     },
