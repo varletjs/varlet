@@ -1,6 +1,5 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
 import { pack, use } from './locale'
 
@@ -17,6 +16,9 @@ const values = reactive({
   value5: [],
   value6: ['2', '4'],
 })
+
+watchLang(use)
+onThemeChange()
 
 function handleChange(val) {
   console.log(val)
@@ -45,9 +47,6 @@ function closeAll() {
 function closeAllSkipDisabled() {
   collapseRef.value.toggleAll({ expand: false, skipDisabled: true })
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>

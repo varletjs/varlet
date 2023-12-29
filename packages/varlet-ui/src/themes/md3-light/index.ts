@@ -22,6 +22,7 @@ import tab from './tab'
 import divider from './divider'
 import table from './table'
 import pagination from './pagination'
+import collapse from './collapse'
 
 export default {
   // common
@@ -56,4 +57,5 @@ export default {
   ...divider,
   ...table,
   ...pagination,
+  ...collapse,
 } as StyleVars

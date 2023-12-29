@@ -25,6 +25,7 @@ import divider from './divider'
 import table from './table'
 import pagination from './pagination'
 import watermark from './watermark'
+import collapse from './collapse'
 
 export default {
   // common
@@ -64,4 +65,5 @@ export default {
   ...table,
   ...pagination,
   ...watermark,
+  ...collapse,
 } as StyleVars
