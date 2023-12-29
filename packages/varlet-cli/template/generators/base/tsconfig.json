@@ -8,6 +8,7 @@
     "allowJs": true,
     "lib": ["esnext", "dom"],
     "allowSyntheticDefaultImports": true,
+    "jsxImportSource": "vue",
     "jsx": "preserve",
     "types": ["vitest/globals"]
   },
