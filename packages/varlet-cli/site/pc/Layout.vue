@@ -429,7 +429,7 @@ iframe {
       }
 
       .card {
-        border-radius: var(--site-config-color-card-border-radius);
+        border-radius: var(--site-config-card-border-radius);
         background: var(--site-config-color-bar);
         padding: 20px;
         margin-bottom: 30px;
