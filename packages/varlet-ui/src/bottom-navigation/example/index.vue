@@ -1,7 +1,7 @@
 <script setup>
-import { Snackbar, Themes } from '@varlet/ui'
+import { Snackbar } from '@varlet/ui'
 import { ref } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const basicUsage = ref(0)
@@ -17,6 +17,9 @@ const clickEvent = ref(0)
 const fab = ref(0)
 const isEven = ref(true)
 
+watchLang(use)
+onThemeChange()
+
 function handleChange(active) {
   Snackbar.info(`changed to ${active}`)
 }
@@ -24,9 +27,6 @@ function handleChange(active) {
 function handleClick(active) {
   Snackbar.success(`clicked ${active}`)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -55,7 +55,7 @@ watchDarkMode(Themes.dark)
   </var-bottom-navigation>
 
   <app-type>{{ pack.customColor }}</app-type>
-  <var-bottom-navigation active-color="#ba68c8" v-model:active="customColor">
+  <var-bottom-navigation active-color="var(--color-warning)" v-model:active="customColor">
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />

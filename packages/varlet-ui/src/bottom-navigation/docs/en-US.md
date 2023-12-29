@@ -75,7 +75,7 @@ const active = ref(0)
 </script>
 
 <template>
-  <var-bottom-navigation active-color="#ba68c8" v-model:active="active">
+  <var-bottom-navigation active-color="var(--color-warning)" v-model:active="active">
     <var-bottom-navigation-item label="label" icon="home" />
     <var-bottom-navigation-item label="label" icon="magnify" />
     <var-bottom-navigation-item label="label" icon="heart" />
@@ -251,3 +251,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--bottom-navigation-item-line-height` | `1` |
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |
+| `--bottom-navigation-fab-border-radius` | `50%` |

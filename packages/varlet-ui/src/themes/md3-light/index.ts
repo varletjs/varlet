@@ -24,6 +24,8 @@ import table from './table'
 import pagination from './pagination'
 import collapse from './collapse'
 import result from './result'
+import bottomNavigation from './bottomNavigation'
+import bottomNavigationItem from './bottomNavigationItem'
 
 export default {
   // common
@@ -60,4 +62,6 @@ export default {
   ...pagination,
   ...collapse,
   ...result,
+  ...bottomNavigation,
+  ...bottomNavigationItem,
 } as StyleVars

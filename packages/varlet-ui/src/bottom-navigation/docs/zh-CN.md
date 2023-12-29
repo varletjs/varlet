@@ -75,7 +75,7 @@ const active = ref(0)
 </script>
 
 <template>
-  <var-bottom-navigation active-color="#ba68c8" v-model:active="active">
+  <var-bottom-navigation active-color="var(--color-warning)" v-model:active="active">
     <var-bottom-navigation-item label="标签" icon="home" />
     <var-bottom-navigation-item label="标签" icon="magnify" />
     <var-bottom-navigation-item label="标签" icon="heart" />
@@ -253,3 +253,4 @@ const isEven = ref(true)
 | `--bottom-navigation-item-line-height` | `1` |
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |
+| `--bottom-navigation-fab-border-radius` | `50%` |

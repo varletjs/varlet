@@ -28,6 +28,8 @@ import watermark from './watermark'
 import collapse from './collapse'
 import result from './result'
 import appBar from './appBar'
+import bottomNavigation from './bottomNavigation'
+import bottomNavigationItem from './bottomNavigationItem'
 
 export default {
   // common
@@ -70,4 +72,6 @@ export default {
   ...collapse,
   ...result,
   ...appBar,
+  ...bottomNavigation,
+  ...bottomNavigationItem,
 } as StyleVars
