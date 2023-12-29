@@ -162,7 +162,10 @@ export default defineComponent({
     }
 
     const notifyThemeChange = (target: 'mobile' | 'window') => {
-      const contentWindow = target === 'window' ? window : (document.getElementById(target) as HTMLIFrameElement).contentWindow!
+      const contentWindow = target === 'window' ? window : (document.getElementById(target) as HTMLIFrameElement | undefined)?.contentWindow
+      if (!contentWindow) {
+        return
+      }
 
       contentWindow.postMessage(getThemeMessage(), '*')
     }
