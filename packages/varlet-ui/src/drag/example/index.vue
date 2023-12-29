@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref, nextTick } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 const drag = ref(null)
@@ -31,7 +30,7 @@ watchLang((lang) => {
     drag6.value.resize()
   })
 })
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
