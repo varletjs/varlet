@@ -1,10 +1,17 @@
 <script setup>
-import { Themes, LoadingBar } from '@varlet/ui'
+import { LoadingBar } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 import { use, pack } from './locale'
 
 const hasCustomStyle = ref(false)
+
+onThemeChange()
+watchLang(use)
+
+LoadingBar.setDefaultOptions({
+  top: '14.5vmin',
+})
 
 function setStyle() {
   if (hasCustomStyle.value) {
@@ -19,13 +26,6 @@ function setStyle() {
 
   hasCustomStyle.value = !hasCustomStyle.value
 }
-
-watchDarkMode(Themes.dark)
-watchLang(use)
-
-LoadingBar.setDefaultOptions({
-  top: '14.5vmin',
-})
 </script>
 
 <template>
