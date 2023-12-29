@@ -146,7 +146,5 @@ const active = ref(0)
 | `--step-content-active-color` | `#000` |
 | `--step-line-background` | `#000` |
 | `--step-line-gap` | `8px` |
-| `--step-min-size` | `calc(20px + 8px)` |
-| `--step-line-size` | `calc(100% - calc(20px + 8px))` |
 | `--step-vertical-tag-margin` | `0 4px` |
 | `--step-vertical-min-height` | `50px` |
