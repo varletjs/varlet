@@ -30,6 +30,7 @@ import snackbar from './snackbar'
 import actionSheet from './actionSheet'
 import dialog from './dialog'
 import pullRefresh from './pullRefresh'
+import popup from './popup'
 
 export default {
   // common
@@ -72,4 +73,5 @@ export default {
   ...actionSheet,
   ...dialog,
   ...pullRefresh,
+  ...popup,
 } as StyleVars

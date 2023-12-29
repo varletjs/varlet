@@ -83,8 +83,8 @@ const right = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -140,8 +140,8 @@ const overlayStyle = ref(false)
 }
 
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -179,8 +179,8 @@ const event = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
