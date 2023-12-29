@@ -92,7 +92,7 @@
     "@varlet/ui": "workspace:*",
     "@varlet/icons": "workspace:*",
     "@varlet/touch-emulator": "workspace:*",
-    "@vue/runtime-core": "3.3.4",
+    "@vue/runtime-core": "3.4.0",
     "@vue/test-utils": "2.4.1",
     "@vitest/coverage-istanbul": "1.1.0",
     "vitest": "1.1.0",
