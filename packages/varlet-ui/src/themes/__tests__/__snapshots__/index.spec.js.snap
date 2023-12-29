@@ -12,6 +12,7 @@ exports[`test dark theme 1`] = `
   "--bottom-navigation-background-color": "#272727",
   "--bottom-navigation-border-color": "#444",
   "--bottom-navigation-item-active-background-color": "#272727",
+  "--bottom-navigation-item-inactive-color": "#BFBFBF",
   "--breadcrumb-inactive-color": "#aaa",
   "--button-default-color": "#303030",
   "--button-default-text-color": "#fff",
