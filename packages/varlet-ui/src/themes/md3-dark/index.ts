@@ -31,6 +31,7 @@ import appBar from './appBar'
 import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import snackbar from './snackbar'
+import actionSheet from './actionSheet'
 
 export default {
   // common
@@ -76,4 +77,5 @@ export default {
   ...bottomNavigation,
   ...bottomNavigationItem,
   ...snackbar,
+  ...actionSheet,
 } as StyleVars

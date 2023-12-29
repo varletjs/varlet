@@ -1,6 +1,6 @@
 <script setup>
-import { ActionSheet, Snackbar, Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { ActionSheet, Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref, reactive } from 'vue'
 import { pack, use } from './locale'
 
@@ -37,17 +37,17 @@ const rawCustomStyleActions = [
   {
     name: 'Item 01',
     icon: 'account-circle',
-    color: '#00c48f',
+    color: 'var(--color-success)',
   },
   {
     name: 'Item 02',
     icon: 'notebook',
-    color: '#ff9800',
+    color: 'var(--color-warning)',
   },
   {
     name: 'Item 03',
     icon: 'wifi',
-    color: '#00afef',
+    color: 'var(--color-info)',
   },
 ]
 const actions = reactive(rawActions)
@@ -58,6 +58,9 @@ const show1 = ref(false)
 const show2 = ref(false)
 const show3 = ref(false)
 const show4 = ref(false)
+
+watchLang(use)
+onThemeChange()
 
 async function createBasic() {
   const action = await ActionSheet({ actions: rawActions })
@@ -113,9 +116,6 @@ function disableCloseOnClickAction() {
 function handleSelect(action) {
   Snackbar(`${pack.value.yourSelected}${action.name}`)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
