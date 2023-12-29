@@ -1,6 +1,6 @@
 <script setup>
-import { Themes, Snackbar } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
 import { pack, use } from './locale'
 
@@ -13,7 +13,7 @@ const values = reactive({
 const { baseOverlay, contentOverlay, clickOverlay } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -43,8 +43,9 @@ watchDarkMode(Themes.dark)
 
 <style lang="less" scoped>
 .overlay-content {
-  padding: 20px 24px;
-  width: 250px;
-  background: var(--button-default-color);
+  padding: 24px;
+  width: 312px;
+  background: var(--card-background);
+  border-radius: 28px;
 }
 </style>
