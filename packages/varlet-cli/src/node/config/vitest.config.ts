@@ -20,7 +20,10 @@ export default defineConfig({
       exclude: ['**/example/**', '**/__tests__/**'],
     },
     globals: true,
-    experimentalVmThreads: true,
-    experimentalVmWorkerMemoryLimit: Math.min((1 / cpuNum) * 2, 0.2),
+    poolOptions: {
+      vmThreads: {
+        memoryLimit: Math.min((1 / cpuNum) * 2, 0.2),
+      },
+    },
   },
 })

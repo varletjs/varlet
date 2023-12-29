@@ -20,7 +20,7 @@
     "@vue/repl": "^2.4.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.6.0",
-    "vue": "3.3.4"
+    "vue": "3.4.0"
   },
   "eslintConfig": {
     "rules": {
@@ -31,7 +31,7 @@
     "@varlet/cli": "workspace: *",
     "@types/file-saver": "^2.0.5",
     "@types/node": "*",
-    "vite": "4.3.5",
+    "vite": "5.0.10",
     "live-server": "^1.2.1",
     "typescript": "^5.1.5"
   }
