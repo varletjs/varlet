@@ -33,6 +33,7 @@ import bottomNavigationItem from './bottomNavigationItem'
 import snackbar from './snackbar'
 import actionSheet from './actionSheet'
 import dialog from './dialog'
+import pullRefresh from './pullRefresh'
 
 export default {
   // common
@@ -80,4 +81,5 @@ export default {
   ...snackbar,
   ...actionSheet,
   ...dialog,
+  ...pullRefresh,
 } as StyleVars
