@@ -1,11 +1,14 @@
 <script setup>
-import { Snackbar, Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
 const countdown = ref(null)
 const time = ref(3000)
+
+watchLang(use)
+onThemeChange()
 
 function end() {
   Snackbar.info('end!')
@@ -14,9 +17,6 @@ function end() {
 function change() {
   console.log('change')
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -51,7 +51,7 @@ watchDarkMode(Themes.dark)
 
 <style scoped>
 .countdown-example-block {
-  background: #ff9f00;
+  background: var(--color-warning);
   color: white;
   width: 30px;
   height: 30px;

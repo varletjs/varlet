@@ -36,6 +36,7 @@ import dialog from './dialog'
 import pullRefresh from './pullRefresh'
 import popup from './popup'
 import picker from './picker'
+import countdown from './countdown'
 
 export default {
   // common
@@ -86,4 +87,5 @@ export default {
   ...pullRefresh,
   ...popup,
   ...picker,
+  ...countdown,
 } as StyleVars

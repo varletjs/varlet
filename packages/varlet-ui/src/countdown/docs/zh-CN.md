@@ -71,7 +71,7 @@ const time = ref(30 * 60 * 60 * 1000)
 
 <style>
 .countdown-example-block {
-  background: #ff9f00;
+  background: var(--color-warning);
   color: white;
   width: 30px;
   height: 30px;

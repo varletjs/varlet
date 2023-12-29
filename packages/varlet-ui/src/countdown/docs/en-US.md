@@ -71,7 +71,7 @@ Use `slot` to set custom countdown style.
 
 <style>
 .countdown-example-block {
-  background: #ff9f00;
+  background: var(--color-warning);
   color: white;
   width: 30px;
   height: 30px;
