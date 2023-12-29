@@ -16,7 +16,7 @@ The style binding is performed when the pointer hovers over the bound element, a
     :elevation="2"
     :width="100"
     :height="100"
-    v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
+    v-hover="{ color: 'var(--button-primary-text-color)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
@@ -28,6 +28,7 @@ The style binding is performed when the pointer hovers over the bound element, a
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background: var(--card-background);
 }
 </style>
 ```
@@ -72,7 +73,7 @@ function handleHover(hovering) {
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: #fff;
+  color: var(--button-primary-text-color);
   background-color: var(--color-primary);
   font-size: 50px;
 }

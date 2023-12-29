@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
 import { pack, use } from './locale'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const translateY = ref('100%')
 
@@ -11,7 +10,7 @@ function handleHover(hovering) {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -22,7 +21,7 @@ watchDarkMode(Themes.dark)
     :width="100"
     :height="100"
     ripple
-    v-hover="{ color: '#fff', background: ' var(--color-primary)' }"
+    v-hover="{ color: 'var(--button-primary-text-color)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
@@ -40,6 +39,7 @@ watchDarkMode(Themes.dark)
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background: var(--card-background);
 }
 
 .image-container {
@@ -59,7 +59,7 @@ watchDarkMode(Themes.dark)
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: #fff;
+  color: var(--button-primary-text-color);
   background-color: var(--color-primary);
   font-size: 50px;
 }
