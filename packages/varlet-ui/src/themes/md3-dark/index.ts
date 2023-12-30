@@ -39,6 +39,8 @@ import picker from './picker'
 import countdown from './countdown'
 import floatingPanel from './floatingPanel'
 import backTop from './backTop'
+import select from './select'
+import option from './option'
 
 export default {
   // common
@@ -92,4 +94,6 @@ export default {
   ...countdown,
   ...floatingPanel,
   ...backTop,
+  ...select,
+  ...option,
 } as StyleVars
