@@ -33,6 +33,7 @@ import pullRefresh from './pullRefresh'
 import popup from './popup'
 import picker from './picker'
 import countdown from './countdown'
+import floatingPanel from './floatingPanel'
 
 export default {
   // common
@@ -78,4 +79,5 @@ export default {
   ...popup,
   ...picker,
   ...countdown,
+  ...floatingPanel,
 } as StyleVars
