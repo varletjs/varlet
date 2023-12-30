@@ -1,12 +1,11 @@
 <script setup>
 import { pack, use } from './locale'
-import { Themes } from '@varlet/ui'
-import { watchDarkMode, AppType, watchLang } from '@varlet/cli/client'
+import { onThemeChange, AppType, watchLang } from '@varlet/cli/client'
 
 const lists = [...Array(100).keys()]
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>

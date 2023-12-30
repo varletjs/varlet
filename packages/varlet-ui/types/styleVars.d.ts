@@ -67,6 +67,8 @@ export interface StyleVars {
   backTopBottom?: string
   '--back-top-button-size'?: string
   backTopButtonSize?: string
+  '--back-top-button-border-radius'?: string
+  backTopButtonBorderRadius?: string
   '--badge-content-padding'?: string
   badgeContentPadding?: string
   '--badge-content-border'?: string
