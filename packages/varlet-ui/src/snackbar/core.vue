@@ -26,7 +26,7 @@
         />
         <slot name="icon" />
       </div>
-      <div :class="n('action')">
+      <div :class="n('action')" v-if="$slots.action">
         <slot name="action" />
       </div>
     </div>
