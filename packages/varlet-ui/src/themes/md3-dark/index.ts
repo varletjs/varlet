@@ -41,6 +41,7 @@ import floatingPanel from './floatingPanel'
 import backTop from './backTop'
 import select from './select'
 import option from './option'
+import counter from './counter'
 
 export default {
   // common
@@ -96,4 +97,5 @@ export default {
   ...backTop,
   ...select,
   ...option,
+  ...counter,
 } as StyleVars

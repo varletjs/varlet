@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import VarCustomFormComponent from './CustomFormComponent'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
 import { use, pack } from './locale'
 
@@ -28,7 +27,7 @@ watchLang((lang) => {
   use(lang)
   form.value?.reset()
 })
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
