@@ -593,6 +593,8 @@ export interface StyleVars {
   fieldDecoratorPlaceholderSize?: string
   '--field-decorator-icon-size'?: string
   fieldDecoratorIconSize?: string
+  '--field-decorator-clear-icon-color'?: string
+  fieldDecoratorClearIconColor?: string
   '--field-decorator-line-size'?: string
   fieldDecoratorLineSize?: string
   '--field-decorator-line-focus-size'?: string
