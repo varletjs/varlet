@@ -197,9 +197,9 @@ function change(date) {
 | `--date-picker-title-date-range-font-size` | `20px`                 |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `280px`                |
-| `--picker-header-padding` | `4px 16px`             |
-| `--picker-actions-padding` | `0 8px 12px 8px`             |
-| `--picker-header-color` | `#555`             |
+| `--date-picker-header-padding` | `4px 16px`             |
+| `--date-picker-actions-padding` | `0 8px 12px 8px`             |
+| `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |

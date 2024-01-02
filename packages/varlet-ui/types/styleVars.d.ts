@@ -459,12 +459,12 @@ export interface StyleVars {
   datePickerBodyBackgroundColor?: string
   '--date-picker-body-height'?: string
   datePickerBodyHeight?: string
-  '--picker-header-padding'?: string
-  pickerHeaderPadding?: string
-  '--picker-actions-padding'?: string
-  pickerActionsPadding?: string
-  '--picker-header-color'?: string
-  pickerHeaderColor?: string
+  '--date-picker-header-padding'?: string
+  datePickerHeaderPadding?: string
+  '--date-picker-actions-padding'?: string
+  datePickerActionsPadding?: string
+  '--date-picker-header-color'?: string
+  datePickerHeaderColor?: string
   '--month-picker-padding'?: string
   monthPickerPadding?: string
   '--month-picker-item-width'?: string
