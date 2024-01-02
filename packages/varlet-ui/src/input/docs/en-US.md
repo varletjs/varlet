@@ -202,6 +202,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--field-decorator-focus-color` | `var(--color-primary)` |
 | `--field-decorator-placeholder-size` | `16px` |
 | `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-clear-icon-color` | `var(--color-primary)` |
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
 | `--field-decorator-line-border-radius` | `4px` |
