@@ -1,6 +1,6 @@
 <script setup>
-import { Themes, Snackbar } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
 import { pack, use } from './locale'
 
@@ -27,8 +27,8 @@ function handleChange(score) {
   })
 }
 
+onThemeChange()
 watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
@@ -40,7 +40,13 @@ watchDarkMode(Themes.dark)
   <var-rate v-model="scores.score1" :count="8" />
 
   <app-type>{{ pack.customRatingIconStyle }}</app-type>
-  <var-rate v-model="scores.score3" icon="heart" empty-icon="heart-outline" color="red" empty-color="red" />
+  <var-rate
+    v-model="scores.score3"
+    icon="heart"
+    empty-icon="heart-outline"
+    color="var(--color-danger)"
+    empty-color="var(--color-danger)"
+  />
 
   <app-type>{{ pack.customRatingIconSizeAndGap }}</app-type>
   <var-rate v-model="scores.score4" size="8vmin" gap="1vmin" />
@@ -53,7 +59,7 @@ watchDarkMode(Themes.dark)
     icon="heart"
     half-icon="heart-half-full"
     empty-icon="heart-outline"
-    color="red"
+    color="var(--color-danger)"
     half
     style="margin-top: 4px"
   />
