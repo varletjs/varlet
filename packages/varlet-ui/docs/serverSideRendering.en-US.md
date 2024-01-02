@@ -1,4 +1,4 @@
-# Server side rendering
+# Server-Side Rendering
 
 ### Intro
 
