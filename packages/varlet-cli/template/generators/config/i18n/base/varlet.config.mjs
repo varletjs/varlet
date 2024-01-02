@@ -12,7 +12,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '开发指南',
-          'en-US': 'Developer guide',
+          'en-US': 'Developer Guide',
         },
         type: 1,
       },
