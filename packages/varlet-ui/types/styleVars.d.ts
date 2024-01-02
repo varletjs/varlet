@@ -1407,6 +1407,8 @@ export interface StyleVars {
   uploaderFileNameFontSize?: string
   '--uploader-file-name-padding'?: string
   uploaderFileNamePadding?: string
+  '--uploader-file-border-radius'?: string
+  uploaderFileBorderRadius?: string
   '--uploader-file-text-align'?: string
   uploaderFileTextAlign?: string
   '--uploader-file-close-background'?: string

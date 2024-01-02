@@ -1,6 +1,6 @@
 <script setup>
-import { Snackbar, Dialog, Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar, Dialog } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, onUnmounted } from 'vue'
 import { use, pack } from './locale'
 
@@ -77,7 +77,7 @@ const values = reactive({
 let timer
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 
 onUnmounted(() => {
   window.clearInterval(timer)

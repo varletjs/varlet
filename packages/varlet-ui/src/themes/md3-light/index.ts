@@ -38,6 +38,7 @@ import backTop from './backTop'
 import select from './select'
 import option from './option'
 import slider from './slider'
+import uploader from './uploader'
 
 export default {
   // common
@@ -88,4 +89,5 @@ export default {
   ...select,
   ...option,
   ...slider,
+  ...uploader,
 } as StyleVars

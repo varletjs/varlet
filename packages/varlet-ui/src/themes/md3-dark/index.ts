@@ -44,6 +44,7 @@ import option from './option'
 import counter from './counter'
 import switchThemes from './switch'
 import slider from './slider'
+import uploader from './uploader'
 
 export default {
   // common
@@ -102,4 +103,5 @@ export default {
   ...counter,
   ...switchThemes,
   ...slider,
+  ...uploader,
 } as StyleVars
