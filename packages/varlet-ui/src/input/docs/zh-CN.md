@@ -188,6 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
+| `clear-icon` | 清除图标 | `-` |
 | `extra-message` | 附加信息 | `-` |
 
 ### 样式变量
