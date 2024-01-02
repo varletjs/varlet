@@ -1,6 +1,6 @@
 {
   "name": "@varlet/use",
-  "version": "2.20.4",
+  "version": "2.20.5",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",
@@ -43,7 +43,7 @@
     "@types/node": "^18.7.18",
     "tsup": "7.2.0",
     "typescript": "^5.1.5",
-    "vue": "3.3.4"
+    "vue": "3.4.3"
   },
   "peerDependencies": {
     "vue": "^3.2.0"

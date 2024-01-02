@@ -321,7 +321,7 @@ describe('test collapse Events', () => {
     expect(handleChange).toHaveBeenCalledTimes(2)
   })
 
-  test('test collapse Methods', async () => {
+  describe('test collapse Methods', async () => {
     test('test collapse toggleAll', async () => {
       const collapseRef = ref(null)
 
@@ -392,6 +392,7 @@ describe('test collapse Events', () => {
           [VarCollapse.name]: VarCollapse,
           [VarCollapseItem.name]: VarCollapseItem,
         },
+
         data() {
           return {
             value: ['2'],

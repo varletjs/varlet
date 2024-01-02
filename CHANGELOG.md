@@ -1,3 +1,22 @@
+## [2.20.5](https://github.com/varletjs/varlet/compare/v2.20.4...v2.20.5) (2023-12-29)
+
+
+### Bug Fixes
+
+* **cli:** fix vitest coverage exclude ([c6aefa5](https://github.com/varletjs/varlet/commit/c6aefa51f719dc3c7eb6bd6d481e0b9fddbab464))
+* **cli:** site error on theme change ([9b0dd9b](https://github.com/varletjs/varlet/commit/9b0dd9b6e4407d5f211cc673ed9a864519808ec7))
+* **select:** fix scroller background color ([8cc85d2](https://github.com/varletjs/varlet/commit/8cc85d2fb44505e3da7adf3eae03e58cc723fed1))
+* **uploader:** mission swipe style deps ([7b6f5f6](https://github.com/varletjs/varlet/commit/7b6f5f632c449b272e8c6f7df2ecca15930aec5b))
+
+
+### Features
+
+* **icons:** support bookmark icon ([#1361](https://github.com/varletjs/varlet/issues/1361)) ([1980232](https://github.com/varletjs/varlet/commit/1980232af781979b865d852059070a76c60e85a9))
+* **menu:** support --menu-border-radius ([18ee52a](https://github.com/varletjs/varlet/commit/18ee52af4cac3f6336b2844981632d24a8d00d47))
+* **time-picker:** support actions slot ([#1360](https://github.com/varletjs/varlet/issues/1360)) ([e400fc8](https://github.com/varletjs/varlet/commit/e400fc87f604f033f3bd64a7aa4e9048d22dd6df))
+
+
+
 ## [2.20.4](https://github.com/varletjs/varlet/compare/v2.20.3...v2.20.4) (2023-12-21)
 
 

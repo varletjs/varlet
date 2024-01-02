@@ -17,10 +17,29 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       provider: 'istanbul',
-      exclude: ['**/example/**', '**/__tests__/**'],
+      exclude: [
+        '**/*.d.ts',
+        '**/*.md',
+        '**/example/**',
+        '**/__tests__/**',
+        'node_modules/**',
+        '.varlet/**',
+        'es/**',
+        'lib/**',
+        'site/**',
+        'umd/**',
+        'docs/**',
+        'coverage/**',
+        'types/**',
+        'shims/**',
+        'varlet.config.mjs',
+      ],
     },
     globals: true,
-    experimentalVmThreads: true,
-    experimentalVmWorkerMemoryLimit: Math.min((1 / cpuNum) * 2, 0.2),
+    poolOptions: {
+      vmThreads: {
+        memoryLimit: Math.min((1 / cpuNum) * 2, 0.2),
+      },
+    },
   },
 })
