@@ -18,17 +18,18 @@ const value = ref(true)
 </template>
 ```
 
-### Not Available
+### Disabled
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
 <template>
   <var-switch v-model="value" disabled />
+</template>
+```
+
+### Readonly
+
+```html
+<template>
   <var-switch v-model="value" readonly />
 </template>
 ```
@@ -43,8 +44,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" :ripple="false" />
-  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+  <var-switch v-model="value" color="var(--color-warning)" close-color="var(--color-info)" />
 </template>
 ```
 
@@ -60,9 +60,9 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" size="15" />
+  <var-switch v-model="value" :size="15" />
   <var-switch v-model="value" />
-  <var-switch v-model="value" size="25" />
+  <var-switch v-model="value" :size="25" />
 </template>
 ```
 
@@ -76,8 +76,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch :model-value="true" loading />
-  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+  <var-switch v-model="true" loading />
 </template>
 ```
 

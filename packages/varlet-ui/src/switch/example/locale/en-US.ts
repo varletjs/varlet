@@ -1,7 +1,8 @@
 export default {
   basicUsage: 'Basic Usage',
   customColor: 'Custom Color',
-  notAvailable: 'Not Available',
+  disabled: 'Disabled',
+  readonly: 'Readonly',
   size: 'Size',
   loading: 'Loading',
   validateValue: 'Validate Value',

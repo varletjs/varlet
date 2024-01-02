@@ -42,6 +42,7 @@ import backTop from './backTop'
 import select from './select'
 import option from './option'
 import counter from './counter'
+import switchThemes from './switch'
 
 export default {
   // common
@@ -98,4 +99,5 @@ export default {
   ...select,
   ...option,
   ...counter,
+  ...switchThemes,
 } as StyleVars
