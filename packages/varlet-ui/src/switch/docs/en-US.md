@@ -76,8 +76,8 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch :model-value="true" loading />
-  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+  <var-switch v-model="value" loading />
+  <var-switch v-model="value" size="25" loading loading-color="#ff9f00" />
 </template>
 ```
 
