@@ -42,7 +42,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '按需引入',
-          'en-US': 'Import on demand',
+          'en-US': 'Import On Demand',
         },
         doc: 'importOnDemand',
         type: 3,
