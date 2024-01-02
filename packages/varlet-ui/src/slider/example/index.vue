@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { reactive } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 const values = reactive({
@@ -21,12 +20,12 @@ const values = reactive({
   value13: [7, 64],
 })
 
+watchLang(use)
+onThemeChange()
+
 function handleChange(v) {
   console.log(v)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>

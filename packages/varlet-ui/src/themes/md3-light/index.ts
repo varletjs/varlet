@@ -37,6 +37,7 @@ import floatingPanel from './floatingPanel'
 import backTop from './backTop'
 import select from './select'
 import option from './option'
+import slider from './slider'
 
 export default {
   // common
@@ -86,4 +87,5 @@ export default {
   ...backTop,
   ...select,
   ...option,
+  ...slider,
 } as StyleVars

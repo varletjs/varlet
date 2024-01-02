@@ -43,6 +43,7 @@ import select from './select'
 import option from './option'
 import counter from './counter'
 import switchThemes from './switch'
+import slider from './slider'
 
 export default {
   // common
@@ -100,4 +101,5 @@ export default {
   ...option,
   ...counter,
   ...switchThemes,
+  ...slider,
 } as StyleVars
