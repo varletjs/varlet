@@ -35,7 +35,7 @@ jobs:
           folder: packages/varlet-ui/site
           single-commit: true
           clean: true
-          target-folder: v3
+          target-folder: v2
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
