@@ -188,6 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
+| `clear-icon` | Clear Icon | `-` |
 | `extra-message` | Extra message | `-` |
 
 ### Style Variables
