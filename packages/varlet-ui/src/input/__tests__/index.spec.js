@@ -355,32 +355,6 @@ test('test input autofocus', async () => {
   wrapper.unmount()
 })
 
-test('test input extra slot', async () => {
-  const wrapper = mount(VarInput, {
-    slots: {
-      'extra-message': () => '还能输入10个字符',
-    },
-  })
-
-  await delay(100)
-  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
-
-  wrapper.unmount()
-})
-
-test('test input icon slot', async () => {
-  const wrapper = mount(VarInput, {
-    slots: {
-      'prepend-icon': () => 'prepend-icon',
-      'append-icon': () => 'append-icon',
-    },
-  })
-
-  expect(wrapper.html()).toMatchSnapshot()
-
-  wrapper.unmount()
-})
-
 test('test input focus on mousedown', async () => {
   let wrapper = mount(VarInput)
 
@@ -388,4 +362,59 @@ test('test input focus on mousedown', async () => {
   await wrapper.find('.var-input__input').trigger('focus')
   expect(wrapper.find('.var-field-decorator--focus').exists()).toBe(true)
   wrapper.unmount()
+})
+
+describe('test input component slots', () => {
+  test('test input extra slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'extra-message': () => '还能输入10个字符',
+      },
+    })
+
+    await delay(100)
+    expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
+
+    wrapper.unmount()
+  })
+
+  test('test input append-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'append-icon': () => 'append-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test input prepend-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'prepend-icon': () => 'prepend-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test input clear-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
+      slots: {
+        'clear-icon': () => 'clear-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })

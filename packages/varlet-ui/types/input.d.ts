@@ -47,6 +47,7 @@ export class Input extends VarComponent {
   $slots: {
     'prepend-icon'(): VNode[]
     'append-icon'(): VNode[]
+    'clear-icon'(): VNode[]
     'extra-message'(): VNode[]
   }
 

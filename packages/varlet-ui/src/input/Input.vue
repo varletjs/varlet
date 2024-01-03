@@ -107,6 +107,10 @@
         @compositionend="handleCompositionEnd"
       />
 
+      <template #clear-icon>
+        <slot name="clear-icon" />
+      </template>
+
       <template #append-icon>
         <slot name="append-icon" />
       </template>

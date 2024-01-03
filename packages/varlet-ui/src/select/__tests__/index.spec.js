@@ -5,7 +5,7 @@ import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, describe } from 'vitest'
 
 test('test select plugin', () => {
   const app = createApp({}).use(Select)
@@ -463,4 +463,22 @@ test('test select offset-y', async () => {
   expect(menu.vm.offsetY).toBe(40)
 
   wrapper.unmount()
+})
+
+describe('test select component slots', () => {
+  test('test select clear icon slot', () => {
+    const wrapper = mount(VarSelect, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
+      slots: {
+        'clear-icon': () => 'clear-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })

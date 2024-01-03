@@ -380,6 +380,7 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | 选择区域的内容 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
+| `clear-icon` | 清除图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态 |
 

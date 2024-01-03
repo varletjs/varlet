@@ -19,7 +19,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '开发指南',
-          'en-US': 'Developer guide',
+          'en-US': 'Developer Guide',
         },
         type: 1,
       },
@@ -34,7 +34,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '快速开始',
-          'en-US': 'Quickstart',
+          'en-US': 'Quick Start',
         },
         doc: 'quickstart',
         type: 3,
@@ -42,7 +42,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '按需引入',
-          'en-US': 'Import on demand',
+          'en-US': 'Import On Demand',
         },
         doc: 'importOnDemand',
         type: 3,
@@ -90,7 +90,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '服务端渲染',
-          'en-US': 'Server side rendering',
+          'en-US': 'Server-Side Rendering',
         },
         doc: 'serverSideRendering',
         type: 3,
