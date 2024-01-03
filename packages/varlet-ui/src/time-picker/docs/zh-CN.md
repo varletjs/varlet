@@ -102,7 +102,7 @@ const date = ref('17:36:22')
 </script>
 
 <template>
-  <var-time-picker v-model="dates.date6">
+  <var-time-picker v-model="date">
     <template #actions>
       <var-space size="small">
         <var-button type="primary" text>操作</var-button>
