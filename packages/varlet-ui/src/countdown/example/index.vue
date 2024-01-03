@@ -51,11 +51,12 @@ function change() {
 
 <style scoped>
 .countdown-example-block {
-  background: var(--color-warning);
-  color: white;
+  background: var(--color-primary);
+  color: var(--button-primary-text-color);
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  padding: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
