@@ -65,8 +65,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '暗黑模式',
-          'en-US': 'Dark Mode',
+          'zh-CN': '主题系统',
+          'en-US': 'Theme System',
         },
         doc: 'themes',
         type: 2,
