@@ -2,7 +2,7 @@ name: Deploy Site And Sync to Gitee
 
 on:
   push:
-    branches: [dev, main]
+    branches: [main]
 
 jobs:
   deploy-site-sync-gitee:
@@ -32,6 +32,10 @@ jobs:
           branch: gh-page
           folder: packages/varlet-ui/site
           single-commit: true
+          clean: true
+          clean-exclude: |
+            2.x/*
+            2.x/**/*
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
