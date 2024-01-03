@@ -32,6 +32,7 @@ jobs:
           branch: playground-gh-page
           folder: packages/varlet-ui-playground/site
           single-commit: true
+          clean: true
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
