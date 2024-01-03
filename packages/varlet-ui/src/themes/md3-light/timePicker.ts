@@ -1,5 +1,6 @@
 export default {
   '--time-picker-title-color': '#1D1B20',
+  '--time-picker-title-hint-color': '#49454F',
   '--time-picker-clock-container-background': '#E6E0E9',
   '--time-picker-title-background': '#ECE6F0',
   '--time-picker-body-background': '#ECE6F0',

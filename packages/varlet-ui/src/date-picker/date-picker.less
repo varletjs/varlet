@@ -3,6 +3,7 @@
   --date-picker-font-size: var(--font-size-md);
   --date-picker-min-width: 290px;
   --date-picker-main-color: rgba(0, 0, 0, 0.87);
+  --date-picker-title-hint-color: '#fff';
   --date-picker-title-hint-font-size: var(--font-size-md);
   --date-picker-title-height: 105px;
   --date-picker-title-padding: 16px;
@@ -17,9 +18,11 @@
   --date-picker-title-date-range-font-size: 20px;
   --date-picker-body-background-color: #fff;
   --date-picker-body-height: 280px;
+  --date-picker-body-padding: 0;
   --date-picker-header-padding: 4px 16px;
   --date-picker-header-color: #555;
   --date-picker-actions-padding: 0 8px 12px 8px;
+  --date-picker-header-arrow-filter: opacity(0.54);
   --month-picker-padding: 0 12px;
   --month-picker-item-width: 33%;
   --month-picker-item-height: 56px;
@@ -75,11 +78,11 @@
     }
 
     &-hint {
+      color: var(--date-picker-title-hint-color);
       font-size: var(--date-picker-title-hint-font-size);
     }
 
     &-year {
-      opacity: 0.6;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       font-size: var(--date-picker-title-year-font-size);
@@ -121,6 +124,7 @@
     overflow: auto;
     height: var(--date-picker-body-height);
     background-color: var(--date-picker-body-background-color);
+    padding: var(--date-picker-body-padding);
 
     &::-webkit-scrollbar {
       display: none;
@@ -136,7 +140,7 @@
     justify-content: flex-end;
   }
 
-  .var-picker-header {
+  &-header {
     padding: var(--date-picker-header-padding);
     align-items: center;
     display: flex;
@@ -157,6 +161,10 @@
       div {
         width: 100%;
       }
+    }
+
+    &__arrow[var-date-picker-header-cover] {
+      filter: var(--date-picker-header-arrow-filter);
     }
   }
 

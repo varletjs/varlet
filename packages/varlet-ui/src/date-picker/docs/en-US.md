@@ -85,48 +85,6 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
   />
 </template>
 ```
-### Custom
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-05')
-
-const allowedDates = (date) => {
-  const month = date.split('-')[1]
-  if(!month) return true
-
-  return parseInt(month, 10) % 2 === 1
-}
-
-function change(date) {
-  console.log(date)
-}
-</script>
-
-<template>
-  <var-date-picker
-    elevation
-    type="month"
-    v-model="date"
-    min="2036-07"
-    max="2022-01"
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    :allowed-dates="allowedDates"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}-{{ month }}</span>
-    </template>
-  </var-date-picker>
-</template>
-```
 
 ## API
 
@@ -180,6 +138,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-hint-color` | `#fff` |
 | `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
 | `--date-picker-title-height` | `105px` |
 | `--date-picker-title-padding` | `16px`                 |
@@ -192,8 +151,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
+| `--date-picker-body-padding` | '0' |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `280px`                |
+| `--date-picker-header-arrow-filter` | `opacity(0.54)` |
 | `--date-picker-header-padding` | `4px 16px`             |
 | `--date-picker-actions-padding` | `0 8px 12px 8px`       |
 | `--date-picker-header-color` | `#555`             |

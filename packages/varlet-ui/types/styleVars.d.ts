@@ -431,6 +431,8 @@ export interface StyleVars {
   datePickerMinWidth?: string
   '--date-picker-main-color'?: string
   datePickerMainColor?: string
+  '--date-picker-title-hint-color'?: string
+  datePickerTitleHintColor?: string
   '--date-picker-title-hint-font-size'?: string
   datePickerTitleHintFontSize?: string
   '--date-picker-title-height'?: string
@@ -455,10 +457,14 @@ export interface StyleVars {
   datePickerTitleDateFontWeight?: string
   '--date-picker-title-date-range-font-size'?: string
   datePickerTitleDateRangeFontSize?: string
+  '--date-picker-body-padding'?: string
+  datePickerBodyPadding?: string
   '--date-picker-body-background-color'?: string
   datePickerBodyBackgroundColor?: string
   '--date-picker-body-height'?: string
   datePickerBodyHeight?: string
+  '--date-picker-header-arrow-filter'?: string
+  datePickerHeaderArrowFilter?: string
   '--date-picker-header-padding'?: string
   datePickerHeaderPadding?: string
   '--date-picker-actions-padding'?: string
@@ -1281,6 +1287,8 @@ export interface StyleVars {
   timePickerTitleColor?: string
   '--time-picker-title-margin-bottom'?: string
   timePickerTitleMarginBottom?: string
+  '--time-picker-title-hint-color'?: string
+  timePickerTitleHintColor?: string
   '--time-picker-title-hint-font-size'?: string
   timePickerTitleHintFontSize?: string
   '--time-picker-title-background'?: string

@@ -1,6 +1,13 @@
 <template>
   <div :class="n()">
-    <var-button round text style="filter: opacity(0.54)" :disabled="disabled.left" @click="checkDate('prev')">
+    <var-button
+      :class="n('arrow')"
+      var-date-picker-header-cover
+      round
+      text
+      :disabled="disabled.left"
+      @click="checkDate('prev')"
+    >
       <var-icon name="chevron-left" />
     </var-button>
     <div :class="n('value')" @click="$emit('check-panel')">
@@ -8,7 +15,14 @@
         <div :key="showDate">{{ showDate }}</div>
       </transition>
     </div>
-    <var-button round text style="filter: opacity(0.54)" :disabled="disabled.right" @click="checkDate('next')">
+    <var-button
+      :class="n('arrow')"
+      var-date-picker-header-cover
+      round
+      text
+      :disabled="disabled.right"
+      @click="checkDate('next')"
+    >
       <var-icon name="chevron-right" />
     </var-button>
   </div>
@@ -24,7 +38,7 @@ import { pack } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
 
-const { n } = createNamespace('picker-header')
+const { n } = createNamespace('date-picker-header')
 
 export default defineComponent({
   name: 'PanelHeader',
