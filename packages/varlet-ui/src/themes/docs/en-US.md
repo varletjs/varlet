@@ -1,9 +1,17 @@
-# Dark Mode
+# Theme System
 
 ### Intro
 
-The first party of the component library provides the theme of dark mode.
-The advantage of dark mode is that it has higher readability in low light environments.
+The first-party component library provides four sets of themes: `Material Design 2 Light`, `Material Design 2 Dark`, `Material Design 3 Light`, and `Material Design 3 Dark`.
+
+### 可用主题
+
+| Available Themes | Theme Pack |
+| --- | --- |
+| `Material Design 2 Light` | _-_ |
+| `Material Design 2 Dark` | _Themes.dark_ |
+| `Material Design 3 Light` | _Themes.md3Light_ |
+| `Material Design 3 Dark` | _Themes.md3Dark_ |
 
 ### Toggle Theme
 
@@ -11,17 +19,15 @@ The advantage of dark mode is that it has higher readability in low light enviro
 <!-- playground-ignore -->
 <script setup>
 import { StyleProvider, Themes } from '@varlet/ui'
-
-let currentTheme = null
-
-function toggleTheme() {
-  currentTheme = currentTheme ? null : Themes.dark
-  StyleProvider(currentTheme)
-}
 </script>
 
 <template>
-  <var-button block @click="toggleTheme">Toggle Theme</var-button>
+  <var-space direction="column" size="large">
+    <var-button block @click="() => StyleProvider(null)">Material Design 2 Light</var-button>
+    <var-button block @click="() => StyleProvider(Themes.dark)">Material Design 2 Dark</var-button>
+    <var-button block @click="() => StyleProvider(Themes.md3Light)">Material Design 3 Light</var-button>
+    <var-button block @click="() => StyleProvider(Themes.md3Dark)">Material Design 3 Dark</var-button>
+  </var-space>
 </template>
 ```
 
