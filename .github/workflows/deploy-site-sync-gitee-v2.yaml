@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: '2.x'
+          ref: 'v2.x'
 
       - name: Install pnpm
         run: corepack enable
