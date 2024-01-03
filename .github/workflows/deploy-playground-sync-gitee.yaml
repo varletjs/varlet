@@ -1,11 +1,11 @@
-name: Deploy Playground And Sync to Gitee
+name: Deploy Playground And Sync to Gitee V2
 
 on:
   push:
-    branches: [dev, main]
+    branches: ['v2.x']
 
 jobs:
-  deploy-playground-sync-gitee:
+  deploy-playground-sync-gitee-v2:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,9 +33,7 @@ jobs:
           folder: packages/varlet-ui-playground/site
           single-commit: true
           clean: true
-          clean-exclude: | 
-            v2/*
-            v2/**
+          target-folder: v2
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
