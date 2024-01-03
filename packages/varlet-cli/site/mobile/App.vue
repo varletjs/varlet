@@ -86,12 +86,13 @@ import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   getBrowserTheme,
-  type Theme,
   watchLang,
-  watchTheme
+  watchTheme,
+  setTheme,
+  type Theme,
 } from '@varlet/cli/client'
-import { removeEmpty, setTheme, inIframe, isPhone } from '../utils'
-import { bigCamelize, toggleItem } from '@varlet/shared'
+import { removeEmpty, inIframe, isPhone } from '../utils'
+import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 export default defineComponent({
@@ -154,7 +155,7 @@ export default defineComponent({
 
     const setCurrentTheme = (theme: Theme) => {
       currentTheme.value = theme
-      setTheme(config, currentTheme.value)
+      setTheme(currentTheme.value)
       window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
@@ -169,7 +170,7 @@ export default defineComponent({
     }
 
     ;(window as any).toggleTheme = toggleTheme
-    setTheme(config, currentTheme.value)
+    setTheme(currentTheme.value)
     window.postMessage(getThemeMessage(), '*')
 
     document.body.addEventListener('click', () => {

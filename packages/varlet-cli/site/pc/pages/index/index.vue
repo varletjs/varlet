@@ -9,9 +9,9 @@ import {
   watchTheme,
   onThemeChange,
   getBrowserTheme,
+  setTheme,
   type Theme
 } from '@varlet/cli/client'
-import { setTheme } from '../../../utils'
 
 const route = useRoute()
 const router = useRouter()
@@ -33,7 +33,7 @@ const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: curre
 
 const setCurrentTheme = (theme: Theme) => {
   currentTheme.value = theme
-  setTheme(config, currentTheme.value)
+  setTheme(currentTheme.value)
   window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
 }
 
@@ -49,7 +49,7 @@ const to = (url: string) => {
   window.open(url)
 }
 
-setTheme(config, currentTheme.value)
+setTheme(currentTheme.value)
 
 window.postMessage(getThemeMessage(), '*')
 

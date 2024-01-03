@@ -100,8 +100,7 @@
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
-import { setTheme } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme, setTheme } from '@varlet/cli/client'
 import { removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
@@ -147,7 +146,7 @@ export default defineComponent({
 
     const setCurrentTheme = (theme: Theme) => {
       currentTheme.value = theme
-      setTheme(config, currentTheme.value)
+      setTheme(currentTheme.value)
       window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
@@ -187,7 +186,7 @@ export default defineComponent({
       }
     })
 
-    setTheme(config, currentTheme.value)
+    setTheme(currentTheme.value)
     notifyThemeChange('window')
 
     return {

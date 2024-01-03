@@ -31,12 +31,6 @@ export function inIframe() {
   return window.self !== window.top
 }
 
-export function setTheme(config: Record<string, any>, theme: Theme) {
-  const styleVars = withSiteConfigNamespace(get(config, theme, {}))
-  StyleProvider({ ...styleVars, ...(theme === 'darkTheme' ? Themes.dark : {}) })
-  setColorScheme(theme)
-}
-
 export function utoa(data: string): string {
   return btoa(unescape(encodeURIComponent(data)))
 }

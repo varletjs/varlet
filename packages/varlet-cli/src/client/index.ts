@@ -88,16 +88,6 @@ export function useRouteListener(cb: () => void) {
   })
 }
 
-export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
-  watchTheme((theme) => {
-    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-    const darkStyleVars = { ...siteStyleVars, ...Themes.dark, ...dark }
-    StyleProvider(theme === 'darkTheme' ? darkStyleVars : siteStyleVars)
-    setColorScheme(theme)
-    cb?.(theme)
-  })
-}
-
 const themeMap = {
   lightTheme: null,
   darkTheme: Themes.dark,
@@ -105,12 +95,16 @@ const themeMap = {
   md3DarkTheme: Themes.md3Dark,
 }
 
+export function setTheme(theme: Theme) {
+  const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
+  const styleVars = { ...siteStyleVars, ...(themeMap[theme] ?? {}) }
+  StyleProvider(styleVars)
+  setColorScheme(theme)
+}
+
 export function onThemeChange(cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
-    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-    const styleVars = { ...siteStyleVars, ...(themeMap[theme] ?? {}) }
-    StyleProvider(styleVars)
-    setColorScheme(theme)
+    setTheme(theme)
     cb?.(theme)
   })
 }
