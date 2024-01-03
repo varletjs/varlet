@@ -481,4 +481,36 @@ describe('test select component slots', () => {
 
     wrapper.unmount()
   })
+
+  test('test select append icon slot', () => {
+    const wrapper = mount(VarSelect, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
+      slots: {
+        'append-icon': () => 'append-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test select prepend icon slot', () => {
+    const wrapper = mount(VarSelect, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
+      slots: {
+        'prepend-icon': () => 'prepend-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })
