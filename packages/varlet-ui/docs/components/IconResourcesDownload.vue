@@ -1,12 +1,11 @@
 <script setup>
 import VarButton from '../../src/button'
 import VarIcon from '../../src/icon'
-import dark from '../../src/themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { pack, use } from './locale'
 
 watchLang(use, 'pc')
-watchDarkMode(dark)
+onThemeChange()
 
 function download() {
   window.location.href = 'https://raw.githubusercontent.com/varletjs/varlet-design-resources/main/icons.sketch'
