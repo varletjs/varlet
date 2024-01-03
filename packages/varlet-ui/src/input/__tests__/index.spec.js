@@ -404,6 +404,10 @@ describe('test input component slots', () => {
 
   test('test input clear-icon slot', async () => {
     const wrapper = mount(VarInput, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
       slots: {
         'clear-icon': () => 'clear-icon',
       },

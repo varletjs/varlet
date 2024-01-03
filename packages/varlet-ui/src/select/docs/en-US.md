@@ -379,6 +379,7 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
+| `clear-icon` | Clear Icon | `-` |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |
 
