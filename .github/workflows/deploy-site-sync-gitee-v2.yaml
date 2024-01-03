@@ -2,7 +2,7 @@ name: Deploy Site And Sync to Gitee V2
 
 on:
   push:
-    branches: ['2.x']
+    branches: ['v2.x']
 
 jobs:
   deploy-site-sync-gitee-v2:
