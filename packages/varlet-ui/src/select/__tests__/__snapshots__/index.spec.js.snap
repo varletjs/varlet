@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test select clear icon slot 1`] = `
+exports[`test select component slots > test select clear icon slot 1`] = `
 "<div class="var-select">
   <div class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
