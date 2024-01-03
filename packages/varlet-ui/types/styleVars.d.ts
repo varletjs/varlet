@@ -1337,6 +1337,8 @@ export interface StyleVars {
   timePickerClockItemActiveColor?: string
   '--time-picker-clock-item-disable-color'?: string
   timePickerClockItemDisableColor?: string
+  '--time-picker-clock-item-disable-background'?: string
+  timePickerClockItemDisableBackground?: string
   '--time-picker-clock-item-text-color'?: string
   timePickerClockItemTextColor?: string
   '--time-picker-inner-left'?: string

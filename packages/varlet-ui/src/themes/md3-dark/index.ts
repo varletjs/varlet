@@ -45,6 +45,7 @@ import counter from './counter'
 import switchThemes from './switch'
 import slider from './slider'
 import uploader from './uploader'
+import timePicker from './timePicker'
 
 export default {
   // common
@@ -104,4 +105,5 @@ export default {
   ...switchThemes,
   ...slider,
   ...uploader,
+  ...timePicker,
 } as StyleVars

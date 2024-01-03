@@ -144,10 +144,10 @@ export default defineComponent({
       const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
 
       if (timeScales.value === minSec) {
-        return isDisableMinSec() ? '#bdbdbd' : props.color
+        return isDisableMinSec() ? 'var(--time-picker-clock-item-disable-background)' : props.color
       }
 
-      return isDisable(hour) ? '#bdbdbd' : props.color
+      return isDisable(hour) ? 'var(--time-picker-clock-item-disable-background)' : props.color
     }
 
     const isActive = (index: number, inner: boolean): boolean => {
@@ -181,8 +181,8 @@ export default defineComponent({
         }
         if (isDisable(hour)) {
           return {
-            backgroundColor: '#bdbdbd',
-            color: '#fff',
+            backgroundColor: 'var(--time-picker-clock-item-disable-background)',
+            color: 'var(--time-picker-clock-item-disable-color)',
           }
         }
 

@@ -29,7 +29,7 @@ const date = ref('15:20')
 </script>
 
 <template>
-  <var-time-picker v-model="date" format="24hr" elevation />
+  <var-time-picker v-model="date" format="24hr" />
 </template>
 ```
 
@@ -59,7 +59,7 @@ const date = ref('07:10')
 </script>
 
 <template>
-  <var-time-picker v-model="date" readonly elevation />
+  <var-time-picker v-model="date" readonly />
 </template>
 ```
 
@@ -91,31 +91,27 @@ const allowedTime = {
 </template>
 ```
 
-### Custom
+### Actions Slots
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('05:10')
-
-function change(time) {
-  console.log(time)
-}
+const date = ref('17:36:22')
 </script>
 
 <template>
-  <var-time-picker
-    v-model="date"
-    header-color="purple"
-    color="#7bb872"
-    min="2:28:38"
-    max="19:40:22"
-    elevation
-    @change="change"
-  />
+  <var-time-picker v-model="dates.date6">
+    <template #actions>
+      <var-space size="small">
+        <var-button type="primary" text>ACTION</var-button>
+        <var-button type="primary" text>ACTION</var-button>
+      </var-space>
+    </template>
+  </var-time-picker>
 </template>
 ```
+
 ## API
 
 ### Props
@@ -195,6 +191,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-clock-item-active-background` | `var(--color-primary)` |
 | `--time-picker-clock-item-active-color` | `#fff`                 |
 | `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)`  |
+| `--time-picker-clock-item-disable-background` | `#bdbdbd` |
 | `--time-picker-clock-item-text-color` | `#555`                 |
 | `--time-picker-inner-left` | `36px`                 |
 | `--time-picker-inner-right` | `36px`                 |

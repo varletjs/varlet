@@ -34,6 +34,7 @@
   --time-picker-clock-item-active-background: var(--color-primary);
   --time-picker-clock-item-active-color: #fff;
   --time-picker-clock-item-disable-color: rgba(0, 0, 0, 0.26);
+  --time-picker-clock-item-disable-background: #bdbdbd;
   --time-picker-clock-item-text-color: #555;
   --time-picker-inner-left: 36px;
   --time-picker-inner-right: 36px;
@@ -70,6 +71,7 @@
     padding: var(--time-picker-title-padding);
     color: var(--time-picker-title-color);
     background: var(--time-picker-title-background);
+    transition: 0.25s background-color;
     display: block;
 
     &-hint {
@@ -117,6 +119,7 @@
     justify-content: center;
     height: var(--time-picker-body-height);
     background-color: var(--time-picker-body-background);
+    transition: 0.25s background-color;
   }
 
   &__clock {

@@ -39,6 +39,7 @@ import select from './select'
 import option from './option'
 import slider from './slider'
 import uploader from './uploader'
+import timePicker from './timePicker'
 
 export default {
   // common
@@ -90,4 +91,5 @@ export default {
   ...option,
   ...slider,
   ...uploader,
+  ...timePicker,
 } as StyleVars
