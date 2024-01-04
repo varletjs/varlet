@@ -1,4 +1,5 @@
 import { saveAs } from 'file-saver'
+import { Dialog } from '@varlet/ui'
 
 import index from './template/index.html?raw'
 import main from './template/main.js?raw'
