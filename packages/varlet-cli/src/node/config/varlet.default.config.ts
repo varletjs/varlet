@@ -426,7 +426,35 @@ export default defineConfig({
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      versions: null,
+      currentVersion: 'Latest',
+      versions: [
+        {
+          name: 'varlet.gitee.io',
+          items: [
+            {
+              label: 'Latest',
+              link: 'https://varlet.gitee.io/varlet-ui',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varlet.gitee.io/varlet-ui/v2',
+            },
+          ],
+        },
+        {
+          name: 'varletjs.vercel.app',
+          items: [
+            {
+              label: 'latest',
+              link: 'varlet-varletjs.vercel.app',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varlet-git-v2x-varletjs.vercel.app',
+            },
+          ],
+        },
+      ],
       github: 'https://github.com/varletjs/varlet',
       changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
       playground: 'https://varlet.gitee.io/varlet-ui-playground',

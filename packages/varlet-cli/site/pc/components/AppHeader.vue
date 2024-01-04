@@ -10,9 +10,9 @@
         class="varlet-site-header__versions"
         @mouseenter="isOpenVersionsMenu = true"
         @mouseleave="isOpenVersionsMenu = false"
-        v-if="nonEmptyVersions && Object.keys(nonEmptyVersions).length"
+        v-if="isShowVersion"
       >
-        <span style="font-size: 14px;">{{ currentVersion }}</span>
+        <span style="font-size: 16px;">{{ currentVersion }}</span>
         <var-icon name="chevron-down"/>
         <transition name="fade">
           <div
@@ -21,12 +21,13 @@
             :style="{ pointerEvents: isOpenVersionsMenu ? 'auto' : 'none' }"
           >
             <var-cell
-              v-for="(value, key) in nonEmptyVersions"
+              v-for="(i, key) in versionItems"
               v-ripple
               :key="key"
-              :class="{ 'varlet-site-header__animation-list--active': currentVersion === key }"
-              @click="open(value)"
-            >{{ key }}
+              :class="{ 'varlet-site-header__animation-list--active': currentVersion === i.label }"
+              @click="open(i.link)"
+            >
+            {{ i.label }}
             </var-cell>
           </div>
         </transition>
@@ -116,8 +117,10 @@ export default defineComponent({
     const title: Ref<string> = ref(get(config, 'title'))
     const logo: Ref<string> = ref(get(config, 'logo'))
     const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-    const currentVersion: Ref<string> = ref(get(config, 'pc.header.version.current'))
-    const versionItems: Ref<Record<string, string>> = ref(get(config, 'pc.header.version.items'))
+    const currentVersion: Ref<string> = ref(get(config, 'pc.header.currentVersion'))
+    const versions = get(config, 'pc.header.versions') 
+    const isShowVersion: Ref<boolean> = ref(!!versions)
+    const versionItems: Ref<Array<Record<string, any>>> = ref((versions ?? []).find((i: any) => window.location.host.includes(i.name))?.items ?? versions?.[0]?.items ?? [])
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
     const themes: Ref<Record<string, any>> = ref(get(config, 'pc.header.themes'))
@@ -131,7 +134,6 @@ export default defineComponent({
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
-    const nonEmptyVersions: ComputedRef<Record<string, string>> = computed(() => removeEmpty(versionItems.value))
 
     const backRoot = () => {
       const { language: lang } = getPCLocationInfo()
@@ -170,9 +172,7 @@ export default defineComponent({
     }
 
     const open = (value: string) => {
-      setTimeout(() => {
-        window.location.href = value
-      }, 350)
+      window.location.href = value
     }
 
     watchTheme((theme, from) => {
@@ -195,10 +195,10 @@ export default defineComponent({
       title,
       currentVersion,
       languages,
+      isShowVersion,
       versionItems,
       themes,
       nonEmptyLanguages,
-      nonEmptyVersions,
       playground,
       changelog,
       github,
