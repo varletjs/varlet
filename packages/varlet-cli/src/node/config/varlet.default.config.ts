@@ -426,7 +426,7 @@ export default defineConfig({
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      currentVersion: 'v2.x',
+      currentVersion: 'Latest',
       versions: [
         {
           name: 'varlet.gitee.io',
