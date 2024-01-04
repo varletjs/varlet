@@ -30,7 +30,16 @@ Here are some basic style variables for the component library
   --color-danger: #f44336;
   --color-disabled: #e0e0e0;
   --color-text-disabled: #aaa;
+  --color-on-primary: #fff;
+  --color-on-info: #fff;
+  --color-on-success: #fff;
+  --color-on-warning: #fff;
+  --color-on-danger: #fff;
+  --opacity-disabled: 0.6;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
+  --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);
+  --shadow-key-penumbra-opacity: rgba(0, 0, 0, 0.14);
+  --shadow-key-ambient-opacity: rgba(0, 0, 0, 0.12);
 }
 ```
 
@@ -148,6 +157,11 @@ The following is a style variable universal in the module library. Please check 
 | `--color-disabled` | `#e0e0e0` |
 | `--color-text-disabled` | `#aaa` |
 | `--opacity-disabled` | `0.6` |
+| `--color-on-primary` | `#fff` |
+| `--color-on-info` | `#fff` |
+| `--color-on-success` | `#fff` |
+| `--color-on-warning` | `#fff` |
+| `--color-on-danger` | `#fff` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |
 | `--shadow-key-penumbra-opacity` | `rgba(0, 0, 0, 0.14)` |

@@ -136,7 +136,7 @@ function handleChange() {
 
 ```html
 <template>
-  <var-badge color="#6200ea">
+  <var-badge type="primary" color="#6200ea">
     <var-chip plain :round="false" color="#009688">徽标</var-chip>
   </var-badge>
 </template>
@@ -211,10 +211,10 @@ function handleChange() {
 | `--badge-warning-color` |  `var(--color-warning)`|
 | `--badge-info-color` | `var(--color-info)`|
 | `--badge-default-text-color` | `#1D1B20` |
-| `--badge-primary-text-color` | `#fff` |
-| `--badge-danger-text-color` | `#fff` |
-| `--badge-success-text-color` | `#fff` |
-| `--badge-warning-text-color` | `#fff` |
-| `--badge-info-text-color` | `#fff` |
+| `--badge-primary-text-color` | `var(--color-on-primary)` |
+| `--badge-danger-text-color` | `var(--color-on-danger)` |
+| `--badge-success-text-color` | `var(--color-on-success)` |
+| `--badge-warning-text-color` | `var(--color-on-warning)` |
+| `--badge-info-text-color` | `var(--color-on-info)` |
 | `--badge-dot-width` |  `8px`|
 | `--badge-dot-height` | `8px`|

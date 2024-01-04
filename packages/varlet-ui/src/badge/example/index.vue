@@ -89,7 +89,7 @@ onThemeChange()
     </var-space>
 
     <app-type>{{ pack.customBadgeColor }}</app-type>
-    <var-badge color="#6200ea">
+    <var-badge type="primary" color="#6200ea">
       <var-chip>{{ pack.badge }}</var-chip>
     </var-badge>
 

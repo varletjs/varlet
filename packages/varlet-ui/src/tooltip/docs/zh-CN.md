@@ -252,8 +252,8 @@ import { Snackbar } from '@varlet/ui'
 | `--tooltip-warning-color` | `var(--color-warning)` |
 | `--tooltip-danger-color` | `var(--color-danger)` |
 | `--tooltip-default-text-color` | `#fff` |
-| `--tooltip-primary-text-color` | `#fff` |
-| `--tooltip-info-text-color` | `#fff` |
-| `--tooltip-success-text-color` | `#fff` |
-| `--tooltip-warning-text-color` | `#fff` |
-| `--tooltip-danger-text-color` | `#fff` |
+| `--tooltip-primary-text-color` | `var(--color-on-primary)` |
+| `--tooltip-info-text-color` | `var(--color-on-info)` |
+| `--tooltip-success-text-color` | `var(--color-on-success)` |
+| `--tooltip-warning-text-color` | `var(--color-on-warning)` |
+| `--tooltip-danger-text-color` | `var(--color-on-danger)` |

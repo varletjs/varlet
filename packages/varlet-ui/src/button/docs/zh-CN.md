@@ -358,11 +358,11 @@ function handleAutoLoadingClick() {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--button-default-text-color` | `#555` |
-| `--button-primary-text-color` | `#fff` |
-| `--button-danger-text-color` | `#fff` |
-| `--button-success-text-color` | `#fff` |
-| `--button-warning-text-color` | `#fff` |
-| `--button-info-text-color` | `#fff` |
+| `--button-primary-text-color` | `var(--color-on-primary)` |
+| `--button-danger-text-color` | `var(--color-on-danger)` |
+| `--button-success-text-color` | `var(--color-on-success)` |
+| `--button-warning-text-color` | `var(--color-on-warning)` |
+| `--button-info-text-color` | `var(--color-on-info)` |
 | `--button-default-color` | `#f5f5f5` |
 | `--button-primary-color` | `var(--color-primary)`|
 | `--button-danger-color` |  `var(--color-danger)`|

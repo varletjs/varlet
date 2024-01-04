@@ -26,8 +26,8 @@ onThemeChange()
       ref="tabsRef"
       elevation
       color="var(--color-primary)"
-      active-color="var(--button-primary-text-color)"
-      inactive-color="var(--button-info-text-color)"
+      active-color="var(--color-on-primary)"
+      inactive-color="var(--color-on-info)"
       v-model:active="active"
       style="margin-top: 14px"
     >

@@ -182,11 +182,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--chip-default-text-color` | `#555` |
-| `--chip-primary-text-color` | `#fff` |
-| `--chip-danger-text-color` | `#fff` |
-| `--chip-success-text-color` | `#fff` |
-| `--chip-warning-text-color` | `#fff` |
-| `--chip-info-text-color` | `#fff` |
+| `--chip-primary-text-color` | `var(--color-on-primary)` |
+| `--chip-danger-text-color` | `var(--color-on-danger)` |
+| `--chip-success-text-color` | `var(--color-on-success)` |
+| `--chip-warning-text-color` | `var(--color-on-warning)` |
+| `--chip-info-text-color` | `var(--color-on-info)` |
 | `--chip-default-color`      | `#e0e0e0` |
 | `--chip-primary-color`      | `var(--color-primary)`|
 | `--chip-danger-color`       |  `var(--color-danger)`|

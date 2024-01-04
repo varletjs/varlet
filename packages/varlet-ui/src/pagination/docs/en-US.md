@@ -172,7 +172,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | --- | --- |
 | `--pagination-text-color` | `#555` |
 | `--pagination-font-size` | `var(--font-size-md)` |
-| `--pagination-active-color` | `#fff` |
+| `--pagination-active-color` | `var(--color-on-primary)` |
 | `--pagination-active-bg-color` | `var(--color-primary)` |
 | `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
 | `--pagination-total-margin` | `0 12px` |

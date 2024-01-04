@@ -47,6 +47,7 @@ import slider from './slider'
 import uploader from './uploader'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
+import rate from './rate'
 
 export default {
   // common
@@ -57,6 +58,11 @@ export default {
   '--color-success': '#BACF83',
   '--color-warning': '#EFB8C8',
   '--color-danger': '#F2B8B5',
+  '--color-on-primary': '#381E72',
+  '--color-on-info': '#332D41',
+  '--color-on-success': '#273500',
+  '--color-on-warning': '#492532',
+  '--color-on-danger': '#601410',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
   // component
@@ -108,4 +114,5 @@ export default {
   ...uploader,
   ...timePicker,
   ...datePicker,
+  ...rate,
 } as StyleVars

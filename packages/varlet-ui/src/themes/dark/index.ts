@@ -51,6 +51,11 @@ export default {
   '--color-success': '#10c48f',
   '--color-warning': '#ff8800',
   '--color-danger': '#ef5350',
+  '--color-on-primary': '#fff',
+  '--color-on-info': '#fff',
+  '--color-on-success': '#fff',
+  '--color-on-warning': '#fff',
+  '--color-on-danger': '#fff',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
   // component

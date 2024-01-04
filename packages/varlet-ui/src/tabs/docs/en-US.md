@@ -56,7 +56,7 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
+    active-color="var(--color-on-primary)"
     inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
@@ -80,8 +80,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     disabled-color="#aaa"
     v-model:active="active"
   >
@@ -108,8 +108,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -138,8 +138,8 @@ const active = ref(0)
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>
@@ -179,8 +179,8 @@ const active = ref(0)
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -210,8 +210,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -249,8 +249,8 @@ const active = ref(0)
       sticky
       elevation
       color="var(--color-primary)"
-      active-color="var(--button-primary-text-color)"
-      inactive-color="var(--button-info-text-color)"
+      active-color="var(--color-on-primary)"
+      inactive-color="var(--color-on-info)"
       v-model:active="active"
     >
       <var-tab>Option1</var-tab>
@@ -281,8 +281,8 @@ const active = ref(0)
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -296,8 +296,8 @@ const active = ref(0)
     indicator-position="reverse"
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>

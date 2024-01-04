@@ -21,7 +21,7 @@ onThemeChange()
     :width="100"
     :height="100"
     ripple
-    v-hover="{ color: 'var(--button-primary-text-color)', background: ' var(--color-primary)' }"
+    v-hover="{ color: 'var(--color-on-primary)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
@@ -59,7 +59,7 @@ onThemeChange()
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: var(--button-primary-text-color);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   font-size: 50px;
 }

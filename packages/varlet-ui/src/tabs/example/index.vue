@@ -35,8 +35,8 @@ onThemeChange((theme) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active2"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -48,8 +48,8 @@ onThemeChange((theme) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     :disabled-color="currentTheme === 'darkTheme' ? '#bbb' : undefined"
     v-model:active="active3"
   >
@@ -62,8 +62,8 @@ onThemeChange((theme) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active4"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -81,8 +81,8 @@ onThemeChange((theme) => {
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active5"
   >
     <var-tab>
@@ -105,8 +105,8 @@ onThemeChange((theme) => {
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active6"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -118,8 +118,8 @@ onThemeChange((theme) => {
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="activeRelation"
     offset-top="50"
   >
@@ -145,8 +145,8 @@ onThemeChange((theme) => {
     sticky
     elevation
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     offset-top="14.4vmin"
     v-model:active="active7"
   >
@@ -160,8 +160,8 @@ onThemeChange((theme) => {
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active8"
   >
     <var-tab>{{ pack.option }}1</var-tab>
@@ -176,8 +176,8 @@ onThemeChange((theme) => {
     indicator-position="reverse"
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="var(--button-primary-text-color)"
-    inactive-color="var(--button-info-text-color)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active8"
   >
     <var-tab>{{ pack.option }}1</var-tab>

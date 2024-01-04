@@ -15,7 +15,6 @@ import checkbox from './checkbox'
 import radio from './radio'
 import card from './card'
 import chip from './chip'
-import badge from './badge'
 import tooltip from './tooltip'
 import tabs from './tabs'
 import tab from './tab'
@@ -41,6 +40,7 @@ import slider from './slider'
 import uploader from './uploader'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
+import SwitchTheme from './switch'
 
 export default {
   // common
@@ -51,6 +51,11 @@ export default {
   '--color-success': '#536525',
   '--color-warning': '#7D5260',
   '--color-danger': '#B3261E',
+  '--color-on-primary': '#fff',
+  '--color-on-info': '#fff',
+  '--color-on-success': '#fff',
+  '--color-on-warning': '#fff',
+  '--color-on-danger': '#fff',
   // component
   ...button,
   ...hoverOverlay,
@@ -68,7 +73,6 @@ export default {
   ...radio,
   ...card,
   ...chip,
-  ...badge,
   ...tooltip,
   ...tabs,
   ...tab,
@@ -94,4 +98,5 @@ export default {
   ...uploader,
   ...timePicker,
   ...datePicker,
+  ...SwitchTheme,
 } as StyleVars
