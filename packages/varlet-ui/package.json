@@ -46,6 +46,7 @@
     "build": "varlet-cli build",
     "preview": "varlet-cli preview",
     "compile": "varlet-cli compile",
+    "compile:style-vars": "varlet-cli compile:style-vars",
     "create": "varlet-cli create -i",
     "test": "varlet-cli test",
     "test:watch": "varlet-cli test -w",

@@ -165,6 +165,30 @@ export interface StyleVars {
   buttonWarningColor?: string
   '--button-info-color'?: string
   buttonInfoColor?: string
+  '--button-default-icon-color'?: string
+  buttonDefaultIconColor?: string
+  '--button-primary-icon-color'?: string
+  buttonPrimaryIconColor?: string
+  '--button-danger-icon-color'?: string
+  buttonDangerIconColor?: string
+  '--button-success-icon-color'?: string
+  buttonSuccessIconColor?: string
+  '--button-warning-icon-color'?: string
+  buttonWarningIconColor?: string
+  '--button-info-icon-color'?: string
+  buttonInfoIconColor?: string
+  '--button-default-icon-container-color'?: string
+  buttonDefaultIconContainerColor?: string
+  '--button-primary-icon-container-color'?: string
+  buttonPrimaryIconContainerColor?: string
+  '--button-danger-icon-container-color'?: string
+  buttonDangerIconContainerColor?: string
+  '--button-success-icon-container-color'?: string
+  buttonSuccessIconContainerColor?: string
+  '--button-warning-icon-container-color'?: string
+  buttonWarningIconContainerColor?: string
+  '--button-info-icon-container-color'?: string
+  buttonInfoIconContainerColor?: string
   '--button-disabled-color'?: string
   buttonDisabledColor?: string
   '--button-disabled-text-color'?: string
@@ -341,28 +365,28 @@ export interface StyleVars {
   chipInfoPlainColor?: string
   '--chip-border-radius'?: string
   chipBorderRadius?: string
-  '--chip-mini-height'?: string
-  chipMiniHeight?: string
-  '--chip-small-height'?: string
-  chipSmallHeight?: string
   '--chip-normal-height'?: string
   chipNormalHeight?: string
   '--chip-large-height'?: string
   chipLargeHeight?: string
+  '--chip-small-height'?: string
+  chipSmallHeight?: string
+  '--chip-mini-height'?: string
+  chipMiniHeight?: string
   '--chip-round-radius'?: string
   chipRoundRadius?: string
-  '--chip-mini-padding'?: string
-  chipMiniPadding?: string
-  '--chip-small-padding'?: string
-  chipSmallPadding?: string
   '--chip-normal-padding'?: string
   chipNormalPadding?: string
   '--chip-large-padding'?: string
   chipLargePadding?: string
-  '--chip-text-large-margin'?: string
-  chipTextLargeMargin?: string
+  '--chip-small-padding'?: string
+  chipSmallPadding?: string
+  '--chip-mini-padding'?: string
+  chipMiniPadding?: string
   '--chip-text-normal-margin'?: string
   chipTextNormalMargin?: string
+  '--chip-text-large-margin'?: string
+  chipTextLargeMargin?: string
   '--chip-text-small-margin'?: string
   chipTextSmallMargin?: string
   '--chip-text-mini-margin'?: string

@@ -15,6 +15,7 @@
     "preview": "pnpm --dir ./packages/varlet-ui preview",
     "preview:play": "pnpm --dir ./packages/varlet-ui-playground preview",
     "compile": "pnpm --dir ./packages/varlet-ui compile",
+    "compile:style-vars": "pnpm --dir ./packages/varlet-ui compile:style-vars",
     "create": "pnpm --dir ./packages/varlet-ui run create",
     "test": "pnpm --dir ./packages/varlet-ui test",
     "test:watch": "pnpm --dir ./packages/varlet-ui test:watch",

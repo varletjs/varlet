@@ -371,23 +371,35 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--button-warning-text-color` | `var(--color-on-warning)` |
 | `--button-info-text-color` | `var(--color-on-info)` |
 | `--button-default-color` | `#f5f5f5` |
-| `--button-primary-color`       | `var(--color-primary)`       |
-| `--button-danger-color`        | `var(--color-danger)`        |
-| `--button-success-color`       | `var(--color-success)`       |
-| `--button-warning-color`       | `var(--color-warning)`       |
-| `--button-info-color`          | `var(--color-info)`          |
-| `--button-disabled-color`      | `var(--color-disabled)`      |
+| `--button-primary-color` | `var(--color-primary)`|
+| `--button-danger-color` |  `var(--color-danger)`|
+| `--button-success-color` | `var(--color-success)`|
+| `--button-warning-color` |  `var(--color-warning)`|
+| `--button-info-color` | `var(--color-info)`|
+| `--button-default-icon-color` | `#555` |
+| `--button-primary-icon-color` | `var(--color-on-primary-container)` |
+| `--button-danger-icon-color` | `var(--color-on-danger-container)` |
+| `--button-success-icon-color` | `var(--color-on-success-container)` |
+| `--button-warning-icon-color` | `var(--color-on-warning-container)` |
+| `--button-info-icon-color` | `var(--color-on-info-container)` |
+| `--button-default-icon-container-color` | `#f5f5f5` |
+| `--button-primary-icon-container-color` | `var(--color-primary-container)` |
+| `--button-danger-icon-container-color` | `var(--color-danger-container)` |
+| `--button-success-icon-container-color` | `var(--color-success-container)` |
+| `--button-warning-icon-container-color` | `var(--color-warning-container)` |
+| `--button-info-icon-container-color` | `var(--color-info-container)` |
+| `--button-disabled-color` | `var(--color-disabled)`|
 | `--button-disabled-text-color` | `var(--color-text-disabled)` |
-| `--button-border-radius`       | `4px`                        |
-| `--button-mini-padding`        | `0 9px`                      |
-| `--button-small-padding`       | `0 11px`                     |
-| `--button-normal-padding`      | `0 15px`                     |
-| `--button-large-padding`       | `0 22px`                     |
-| `--button-round-padding`       | `6px`                        |
-| `--button-mini-height`         | `20px`                       |
-| `--button-small-height`        | `28px`                       |
-| `--button-normal-height`       | `36px`                       |
-| `--button-large-height`        | `44px`                       |
+| `--button-border-radius` | `4px` |
+| `--button-mini-padding` | `0 9px` |
+| `--button-small-padding` | `0 11px` |
+| `--button-normal-padding` | `0 15px` |
+| `--button-large-padding` | `0 22px` |
+| `--button-round-padding` | `6px` |
+| `--button-mini-height` | `20px` |
+| `--button-small-height` | `28px` |
+| `--button-normal-height` | `36px` |
+| `--button-large-height` | `44px` |
 | `--button-mini-font-size` | `var(--font-size-xs)` |
 | `--button-small-font-size` | `var(--font-size-sm)` |
 | `--button-normal-font-size` | `var(--font-size-md)` |

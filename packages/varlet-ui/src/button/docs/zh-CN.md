@@ -394,6 +394,18 @@ function handleAutoLoadingClick() {
 | `--button-success-color` | `var(--color-success)`|
 | `--button-warning-color` |  `var(--color-warning)`|
 | `--button-info-color` | `var(--color-info)`|
+| `--button-default-icon-color` | `#555` |
+| `--button-primary-icon-color` | `var(--color-on-primary-container)` |
+| `--button-danger-icon-color` | `var(--color-on-danger-container)` |
+| `--button-success-icon-color` | `var(--color-on-success-container)` |
+| `--button-warning-icon-color` | `var(--color-on-warning-container)` |
+| `--button-info-icon-color` | `var(--color-on-info-container)` |
+| `--button-default-icon-container-color` | `#f5f5f5` |
+| `--button-primary-icon-container-color` | `var(--color-primary-container)` |
+| `--button-danger-icon-container-color` | `var(--color-danger-container)` |
+| `--button-success-icon-container-color` | `var(--color-success-container)` |
+| `--button-warning-icon-container-color` | `var(--color-warning-container)` |
+| `--button-info-icon-container-color` | `var(--color-info-container)` |
 | `--button-disabled-color` | `var(--color-disabled)`|
 | `--button-disabled-text-color` | `var(--color-text-disabled)` |
 | `--button-border-radius` | `4px` |
