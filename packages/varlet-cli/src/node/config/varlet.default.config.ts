@@ -426,13 +426,13 @@ export default defineConfig({
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      currentVersion: 'Latest',
+      currentVersion: 'latest',
       versions: [
         {
           name: 'varlet.gitee.io',
           items: [
             {
-              label: 'Latest',
+              label: 'latest',
               link: 'https://varlet.gitee.io/varlet-ui',
             },
             {
