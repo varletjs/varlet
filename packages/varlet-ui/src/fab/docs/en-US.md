@@ -14,16 +14,16 @@ const type = ref('primary')
 </script>
 
 <template>
-   <var-select v-model="type">
-     <var-option label="default" value="default"/>
-     <var-option label="primary" value="primary"/>
-     <var-option label="info" value="info"/>
-     <var-option label="success" value="success"/>
-     <var-option label="warning" value="warning"/>
-     <var-option label="dangerous" value="danger"/>
-   </var-select>
+  <var-select v-model="type">
+    <var-option label="default" value="default"/>
+    <var-option label="primary" value="primary"/>
+    <var-option label="info" value="info"/>
+    <var-option label="success" value="success"/>
+    <var-option label="warning" value="warning"/>
+    <var-option label="dangerous" value="danger"/>
+  </var-select>
 
-   <var-fab :type="type" />
+  <var-fab :type="type" />
 </template>
 ```
 
@@ -37,14 +37,14 @@ const position = ref('right-bottom')
 </script>
 
 <template>
-   <var-radio-group v-model="position">
-     <var-radio checked-value="left-top">left-top</var-radio>
-     <var-radio checked-value="right-top">right-top</var-radio>
-     <var-radio checked-value="left-bottom">left-bottom</var-radio>
-     <var-radio checked-value="right-bottom">right-bottom</var-radio>
-   </var-radio-group>
+  <var-radio-group v-model="position">
+    <var-radio checked-value="left-top">left-top</var-radio>
+    <var-radio checked-value="right-top">right-top</var-radio>
+    <var-radio checked-value="left-bottom">left-bottom</var-radio>
+    <var-radio checked-value="right-bottom">right-bottom</var-radio>
+  </var-radio-group>
 
-   <var-fab type="primary" :position="position" />
+  <var-fab type="primary" :position="position" />
 </template>
 ```
 
@@ -58,22 +58,22 @@ const trigger = ref('click')
 </script>
 
 <template>
-   <var-radio-group v-model="trigger">
-     <var-radio checked-value="click">click</var-radio>
-     <var-radio checked-value="hover">hover</var-radio>
-   </var-radio-group>
-
-   <var-fab type="primary" :trigger="trigger">
-    <var-button type="info">
+  <var-radio-group v-model="trigger">
+    <var-radio checked-value="click">click</var-radio>
+    <var-radio checked-value="hover">hover</var-radio>
+  </var-radio-group>
+   
+  <var-fab type="primary" :trigger="trigger">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button type="success">
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button type="warning">
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button type="danger">
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -91,26 +91,13 @@ const direction = ref('top')
 
 <template>
    <var-radio-group v-model="direction">
-     <var-radio checked-value="top">top</var-radio>
-     <var-radio checked-value="right">right</var-radio>
-     <var-radio checked-value="bottom">bottom</var-radio>
-     <var-radio checked-value="left">left</var-radio>
+      <var-radio checked-value="top">top</var-radio>
+      <var-radio checked-value="right">right</var-radio>
+      <var-radio checked-value="bottom">bottom</var-radio>
+      <var-radio checked-value="left">left</var-radio>
    </var-radio-group>
 
-   <var-fab type="primary" :direction="direction">
-     <var-button type="info">
-       <var-icon name="account-circle" />
-     </var-button>
-     <var-button type="success">
-       <var-icon name="checkbox-marked-circle" />
-     </var-button>
-     <var-button type="warning">
-       <var-icon name="bell" />
-     </var-button>
-     <var-button type="danger">
-       <var-icon name="delete" />
-     </var-button>
-   </var-fab>
+   <var-fab type="primary" :direction="direction" />
 </template>
 ```
 
@@ -160,9 +147,9 @@ function toggle() {
 </script>
 
 <template>
-   <var-button type="primary" @click.stop="toggle">Toggle</var-button>
+  <var-button type="primary" @click.stop="toggle">Toggle</var-button>
 
-   <var-fab :show="show" type="primary" />
+  <var-fab :show="show" type="primary" />
 </template>
 ```
 
@@ -175,52 +162,52 @@ import { ref } from 'vue'
 const active = ref(false)
 
 function toggle() {
-   active.value = !active.value
+  active.value = !active.value
 }
 </script>
 
 <template>
-   <var-button type="primary" @click.stop="toggle">Toggle</var-button>
-
-   <var-fab v-model:active="active" type="primary">
-     <var-button type="info">
-       <var-icon name="account-circle" />
-     </var-button>
-     <var-button type="success">
-       <var-icon name="checkbox-marked-circle" />
-     </var-button>
-     <var-button type="warning">
-       <var-icon name="bell" />
-     </var-button>
-     <var-button type="danger">
-       <var-icon name="delete" />
-     </var-button>
-   </var-fab>
+  <var-button type="primary" @click.stop="toggle">Toggle</var-button>
+   
+  <var-fab v-model:active="active" type="primary">
+    <var-button type="info" icon-container>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button type="success" icon-container>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button type="warning" icon-container>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button type="danger" icon-container>
+      <var-icon name="delete" />
+    </var-button>
+  </var-fab>
 </template>
 
 ### Custom Trigger
 
 ```html
 <template>
-   <var-fab>
-     <var-button type="info">
-       <var-icon name="account-circle" :size="24" />
-     </var-button>
-     <var-button type="success">
-       <var-icon name="checkbox-marked-circle" :size="24" />
-     </var-button>
-     <var-button type="warning">
-       <var-icon name="bell" :size="24" />
-     </var-button>
-     <var-button type="danger">
-       <var-icon name="delete" :size="24" />
-     </var-button>
-
-     <template #trigger="{ active }">
-       <var-button class="trigger" type="primary" round>
-         <var-icon :name="active ? 'heart' : 'heart-half-full'" animation-class="fade" :transition="300" :size="24" />
-       </var-button>
-     </template>
+  <var-fab>
+    <var-button type="info" icon-container>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button type="success" icon-container>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button type="warning" icon-container>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button type="danger" icon-container>
+      <var-icon name="delete" />
+    </var-button>
+    
+    <template #trigger="{ active }">
+      <var-button class="trigger" type="primary" round>
+        <var-icon :name="active ? 'heart' : 'heart-half-full'" animation-class="fade" :transition="300" :size="24" />
+      </var-button>
+    </template>
    </var-fab>
 </template>
 

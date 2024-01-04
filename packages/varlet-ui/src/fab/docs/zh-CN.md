@@ -64,16 +64,16 @@ const trigger = ref('click')
   </var-radio-group>
 
   <var-fab type="primary" :trigger="trigger">
-    <var-button type="info">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button type="success">
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button type="warning">
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button type="danger">
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -98,16 +98,16 @@ const direction = ref('top')
   </var-radio-group>
 
   <var-fab type="primary" :direction="direction">
-    <var-button type="info">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button type="success">
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button type="warning">
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button type="danger" >
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -183,16 +183,16 @@ function toggle() {
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
   <var-fab v-model:active="active" type="primary">
-    <var-button type="info">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button type="success">
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button type="warning">
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button type="danger">
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -204,16 +204,16 @@ function toggle() {
 ```html
 <template>
   <var-fab>
-    <var-button type="info">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" :size="24" />
     </var-button>
-    <var-button type="success">
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" :size="24" />
     </var-button>
-    <var-button type="warning">
+    <var-button type="warning" icon-container>
       <var-icon name="bell" :size="24" />
     </var-button>
-    <var-button type="danger">
+    <var-button type="danger" icon-container>
       <var-icon name="delete" :size="24" />
     </var-button>
 
