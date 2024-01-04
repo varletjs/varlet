@@ -7,6 +7,7 @@ export default defineConfig({
     header: {
       darkMode: null,
       playground: null,
+      versions: null
     },
     menu: [
       {
