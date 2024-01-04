@@ -31,7 +31,6 @@ import dialog from './dialog'
 import pullRefresh from './pullRefresh'
 import popup from './popup'
 import picker from './picker'
-import countdown from './countdown'
 import floatingPanel from './floatingPanel'
 import backTop from './backTop'
 import select from './select'
@@ -90,7 +89,6 @@ export default {
   ...pullRefresh,
   ...popup,
   ...picker,
-  ...countdown,
   ...floatingPanel,
   ...backTop,
   ...select,

@@ -36,7 +36,6 @@ import dialog from './dialog'
 import pullRefresh from './pullRefresh'
 import popup from './popup'
 import picker from './picker'
-import countdown from './countdown'
 import floatingPanel from './floatingPanel'
 import backTop from './backTop'
 import select from './select'
@@ -48,6 +47,7 @@ import uploader from './uploader'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
 import rate from './rate'
+import skeleton from './skeleton'
 
 export default {
   // common
@@ -103,7 +103,6 @@ export default {
   ...pullRefresh,
   ...popup,
   ...picker,
-  ...countdown,
   ...floatingPanel,
   ...backTop,
   ...select,
@@ -115,4 +114,5 @@ export default {
   ...timePicker,
   ...datePicker,
   ...rate,
+  ...skeleton,
 } as StyleVars

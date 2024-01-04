@@ -187,5 +187,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--countdown-text-color`     | `#555`                |
+| `--countdown-text-color`     | `var(--color-text)`   |
 | `--countdown-text-font-size` | `var(--font-size-lg)` |

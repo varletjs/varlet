@@ -37,7 +37,6 @@ import avatar from './avatar'
 import link from './link'
 import progress from './progress'
 import option from './option'
-import countdown from './countdown'
 import watermark from './watermark'
 import menuSelect from './menuSelect'
 import menuOption from './menuOption'
@@ -96,7 +95,6 @@ export default {
   ...link,
   ...progress,
   ...option,
-  ...countdown,
   ...watermark,
   ...menuSelect,
   ...menuOption,
