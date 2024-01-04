@@ -1167,6 +1167,16 @@ export interface StyleVars {
   colorTextDisabled?: string
   '--opacity-disabled'?: string
   opacityDisabled?: string
+  '--color-on-primary'?: string
+  colorOnPrimary?: string
+  '--color-on-info'?: string
+  colorOnInfo?: string
+  '--color-on-success'?: string
+  colorOnSuccess?: string
+  '--color-on-warning'?: string
+  colorOnWarning?: string
+  '--color-on-danger'?: string
+  colorOnDanger?: string
   '--cubic-bezier'?: string
   cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string
