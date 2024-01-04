@@ -84,16 +84,16 @@ function toggleActions() {
     :disabled="disabled"
     :elevation="elevation"
   >
-    <var-button type="info" :disabled="disabled">
+    <var-button type="info" icon-container :disabled="disabled">
       <var-icon name="account-circle" />
     </var-button>
-    <var-button type="success" :disabled="disabled">
+    <var-button type="success" icon-container :disabled="disabled">
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button type="warning" :disabled="disabled">
+    <var-button type="warning" icon-container :disabled="disabled">
       <var-icon name="bell" />
     </var-button>
-    <var-button type="danger" :disabled="disabled">
+    <var-button type="danger" icon-container :disabled="disabled">
       <var-icon name="delete" />
     </var-button>
   </var-fab>
