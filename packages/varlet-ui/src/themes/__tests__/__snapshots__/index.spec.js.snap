@@ -307,7 +307,6 @@ exports[`test md3Dark theme 1`] = `
   "--step-content-active-color": "#fff",
   "--step-content-color": "rgba(255, 255, 255, .38)",
   "--step-line-background": "#fff",
-  "--step-tag-color": "#381E72",
   "--switch-handle-background": "#727272",
   "--switch-track-background": "#727272",
   "--switch-track-color": "#381E72",
