@@ -6,12 +6,15 @@
         n('$--box'),
         n(`--${states.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
-        [disabled, n('--disabled')],
-        [states.text, `${n(`--text-${states.type}`)} ${n('--text')}`, `${n(`--${states.type}`)} ${states.elevation}`],
-        [states.text && disabled, n('--text-disabled')],
+        [!states.text, states.elevation],
+        [!states.iconContainer && !states.text, n(`--${states.type}`)],
+        [states.text, `${n('--text')} ${n(`--text-${states.type}`)}`],
+        [states.iconContainer, n(`--icon-container-${states.type}`)],
         [round, n('--round')],
         [states.outline, n('--outline')],
-        [loading || pending, n('--loading')]
+        [loading || pending, n('--loading')],
+        [disabled, n('--disabled')],
+        [states.text && disabled, n('--text-disabled')]
       )
     "
     v-ripple="{ disabled: disabled || !ripple || loading || pending }"
@@ -77,6 +80,7 @@ export default defineComponent({
           text: props.text,
           textColor: props.textColor,
           outline: props.outline,
+          iconContainer: props.iconContainer,
         }
       }
 
@@ -88,8 +92,9 @@ export default defineComponent({
         size: props.size != null ? props.size : size.value,
         color: props.color != null ? props.color : color.value,
         textColor: props.textColor != null ? props.textColor : textColor.value,
-        text: mode.value !== 'normal',
+        text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
+        iconContainer: mode.value === 'icon-container',
       }
     })
 

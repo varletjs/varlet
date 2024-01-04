@@ -175,6 +175,19 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
+  test('test button icon container', async () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        iconContainer: true,
+      },
+    })
+
+    expect(wrapper.find('button').classes()).toContain('var-button--icon-container-default')
+    await wrapper.setProps({ iconContainer: false })
+    expect(wrapper.find('button').classes()).not.toContain('var-button--icon-container-default')
+    wrapper.unmount()
+  })
+
   test('test button outline', async () => {
     const wrapper = mount(VarButton, {
       props: {
@@ -338,6 +351,20 @@ describe('test button group component props', () => {
     const wrapper = mount(VarButtonGroup, {
       props: {
         mode: 'text',
+      },
+      slots: {
+        default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test button group icon-container mode', () => {
+    const wrapper = mount(VarButtonGroup, {
+      props: {
+        mode: 'icon-container',
       },
       slots: {
         default: () => h(Fragment, [h(VarButton), h(VarButton), h(VarButton)]),

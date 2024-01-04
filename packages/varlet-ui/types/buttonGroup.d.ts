@@ -9,7 +9,7 @@ import {
 
 export declare const buttonGroupProps: Record<keyof ButtonGroupProps, any>
 
-export type ButtonGroupMode = 'normal' | 'text' | 'outline'
+export type ButtonGroupMode = 'normal' | 'text' | 'outline' | 'icon-container'
 
 export interface ButtonGroupProps extends BasicAttributes {
   type?: ButtonGroupType

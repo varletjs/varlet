@@ -240,6 +240,18 @@ function handleAutoLoadingClick() {
       <var-button>按钮</var-button>
       <var-button>按钮</var-button>
     </var-button-group>
+
+    <var-button-group mode="icon-container">
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
+    </var-button-group>
   
     <var-button-group type="primary">
       <var-button>按钮</var-button>
@@ -278,6 +290,18 @@ function handleAutoLoadingClick() {
       <var-button>按钮</var-button>
       <var-button>按钮</var-button>
     </var-button-group>
+
+    <var-button-group mode="icon-container" vertical>
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
+    </var-button-group>
   
     <var-button-group type="primary" vertical>
       <var-button>按钮</var-button>
@@ -308,6 +332,7 @@ function handleAutoLoadingClick() {
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |
 | `block`          | 是否是块级元素                                                         | _boolean_ | `false`        |
 | `text`           | 是否是文字按钮                                                         | _boolean_ | `false`        |
+| `icon-container` | 是否作为图标容器                                                        | _boolean_ | `false`        |
 | `outline`        | 是否使用外边框                                                         | _boolean_ | `false`        |
 | `disabled`       | 禁用状态                                                            | _boolean_ | `false`        |
 | `ripple`         | 是否使用水波纹                                                         | _boolean_ | `true`         |
@@ -321,7 +346,7 @@ function handleAutoLoadingClick() {
 |-------------|------------------------------------------------------------------|----------|-----------|
 | `type`      | 按钮组类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`      | 按钮组尺寸，可选值为 `normal` `mini` `small` `large`                       | _string_ | `normal`  |
-| `mode`      | 按钮组模式，可选值为 `normal` `text` `outline`                               | _string_ | `normal`       |
+| `mode`      | 按钮组模式，可选值为 `normal` `text` `outline` `icon-container`                               | _string_ | `normal`       |
 | `vertical`  | 按钮组是否竖直排列                                                        | _boolean_ | `false`   |
 | `elevation`      | 按钮组海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `true`            |
 | `color`     | 按钮组背景颜色                                                          | _string_ | `-`       |

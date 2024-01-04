@@ -75,19 +75,22 @@ function handleAutoLoadingClick() {
 
   <app-type>{{ pack.roundButton }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-button type="primary" round>
+    <var-button round icon-container>
+      <var-icon name="bookmark" />
+    </var-button>
+    <var-button type="primary" round icon-container>
       <var-icon name="plus" />
     </var-button>
-    <var-button type="info" round>
+    <var-button type="info" round icon-container>
       <var-icon name="information" />
     </var-button>
-    <var-button type="success" round>
+    <var-button type="success" round icon-container>
       <var-icon name="check" />
     </var-button>
-    <var-button type="warning" round>
+    <var-button type="warning" round icon-container>
       <var-icon name="warning" />
     </var-button>
-    <var-button type="danger" round>
+    <var-button type="danger" round icon-container>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
@@ -146,7 +149,7 @@ function handleAutoLoadingClick() {
   </var-menu>
 
   <app-type>{{ pack.modeButtonGroup }}</app-type>
-  <var-space :size="['2.666vmin', '2.666vmin']">
+  <var-space direction="column" :size="['3.666vmin', '3.666vmin']">
     <var-button-group type="primary" mode="text">
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -157,6 +160,18 @@ function handleAutoLoadingClick() {
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
+    </var-button-group>
+
+    <var-button-group mode="icon-container">
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
     </var-button-group>
 
     <var-button-group type="primary">
@@ -174,7 +189,7 @@ function handleAutoLoadingClick() {
   </var-button-group>
 
   <app-type>{{ pack.verticalButtonGroup }}</app-type>
-  <var-space :size="['2.666vmin', '2.666vmin']">
+  <var-space :size="['5vmin', '5vmin']">
     <var-button-group type="primary" mode="text" vertical>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
@@ -185,6 +200,18 @@ function handleAutoLoadingClick() {
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
       <var-button>{{ pack.button }}</var-button>
+    </var-button-group>
+
+    <var-button-group mode="icon-container" vertical>
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
     </var-button-group>
 
     <var-button-group type="primary" vertical>

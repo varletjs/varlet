@@ -220,6 +220,18 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
       <var-button>Button</var-button>
     </var-button-group>
+
+    <var-button-group mode="icon-container">
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
+    </var-button-group>
   
     <var-button-group type="primary">
       <var-button>Button</var-button>
@@ -258,6 +270,18 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
       <var-button>Button</var-button>
     </var-button-group>
+
+    <var-button-group mode="icon-container" vertical>
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
+    </var-button-group>
     
     <var-button-group type="primary" vertical>
       <var-button>Button</var-button>
@@ -288,6 +312,7 @@ function handleAutoLoadingClick() {
 | `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
 | `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
 | `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
+| `icon-container` | Whether to serve as an icon container                                                        | _boolean_ | `false`        |
 | `outline`        | Whether to be outline button                                                            | _boolean_ | `false`        |
 | `disabled`       | Whether to disable button                                                               | _boolean_ | `false`        |
 | `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
@@ -302,7 +327,7 @@ function handleAutoLoadingClick() {
 |--------------|------------------------------------------------------------------------------------------|----------|-----------|
 | `type`       | Button Group type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`       | Button Group size, can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
-| `mode`       | Button Group mode, can be set to `normal` `text` `outline`                               | _string_ | `normal`  |
+| `mode`       | Button Group mode, can be set to `normal` `text` `outline` `icon-container`              | _string_ | `normal`  |
 | `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
 | `elevation` | Elevation of Button Group, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `color`      | Button Group background color                                                            | _string_ | `-`       |

@@ -4,7 +4,7 @@ export type ButtonGroupType = 'default' | 'primary' | 'info' | 'success' | 'warn
 
 export type ButtonGroupSize = 'normal' | 'mini' | 'small' | 'large'
 
-export type ButtonMode = 'text' | 'outline' | 'normal'
+export type ButtonMode = 'text' | 'outline' | 'normal' | 'icon-container'
 
 export const props = {
   type: {
