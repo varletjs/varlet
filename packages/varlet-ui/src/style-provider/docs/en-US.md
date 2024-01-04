@@ -26,7 +26,7 @@ Here are some basic style variables for the component library
   --color-primary: #3a7afe;
   --color-info: #00afef;
   --color-success: #00c48f;
-  --color-warning: #ff9f00;
+  --color-warning: #ff9f00
   --color-danger: #f44336;
   --color-disabled: #e0e0e0;
   --color-text-disabled: #aaa;
@@ -35,6 +35,16 @@ Here are some basic style variables for the component library
   --color-on-success: #fff;
   --color-on-warning: #fff;
   --color-on-danger: #fff;
+  --color-primary-container: #3a7afe;
+  --color-info-container: #00afef;
+  --color-success-container: #00c48f;
+  --color-warning-container: #ff9f00;
+  --color-danger-container: #f44336;
+  --color-on-primary-container: #fff;
+  --color-on-info-container: #fff;
+  --color-on-success-container: #fff;
+  --color-on-warning-container: #fff;
+  --color-on-danger-container: #fff;
   --opacity-disabled: 0.6;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
   --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);

@@ -4,7 +4,6 @@ export default {
   '--time-picker-title-hint-color': '#CAC4D0',
   '--time-picker-title-background': '#2B2930',
   '--time-picker-body-background': '#2B2930',
-  '--time-picker-clock-item-active-color': '#381E72',
   '--time-picker-clock-item-disable-color': '#888',
   '--time-picker-clock-item-disable-background': '#ccc',
   '--time-picker-clock-item-text-color': '#E6E0E9',

@@ -191,7 +191,7 @@ const date = ref('17:36:22')
 | `--time-picker-clock-item-height` | `32px`                 |
 | `--time-picker-clock-item-width` | `32px`                 |
 | `--time-picker-clock-item-active-background` | `var(--color-primary)` |
-| `--time-picker-clock-item-active-color` | `#fff`                 |
+| `--time-picker-clock-item-active-color` | `var(--color-on-primary)`    |
 | `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)`  |
 | `--time-picker-clock-item-disable-background` | `#bdbdbd` |
 | `--time-picker-clock-item-text-color` | `#555`                 |

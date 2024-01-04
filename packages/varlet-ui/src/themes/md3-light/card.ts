@@ -19,6 +19,7 @@ export default {
   '--card-subtitle-row-margin': '4px 0 0 0',
   '--card-footer-padding': '0 16px',
   '--card-close-button-size': '56px',
-  '--card-close-button-primary-color': 'var(--color-primary)',
+  '--card-close-button-primary-color': 'var(--color-primary-container)',
+  '--card-close-button-text-color': 'var(--color-on-primary-container)',
   '--card-close-button-border-radius': '12px',
 }
