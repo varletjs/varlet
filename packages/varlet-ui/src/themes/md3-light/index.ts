@@ -41,6 +41,7 @@ import uploader from './uploader'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
 import SwitchTheme from './switch'
+import rate from './rate'
 
 export default {
   // common
@@ -99,4 +100,5 @@ export default {
   ...timePicker,
   ...datePicker,
   ...SwitchTheme,
+  ...rate,
 } as StyleVars
