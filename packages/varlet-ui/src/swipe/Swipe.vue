@@ -317,10 +317,6 @@ export default defineComponent({
       timer && clearTimeout(timer)
     }
 
-    function setTrackTranslate(value: number) {
-      trackTranslate.value = value
-    }
-
     async function handleTouchstart(event: TouchEvent) {
       if (length.value <= 1 || !props.touchable) {
         return
@@ -346,7 +342,7 @@ export default defineComponent({
       }
 
       preventDefault(event)
-      setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
+      trackTranslate.value += (vertical ? moveY.value : moveX.value)
       dispatchSwipeItems()
     }
 
@@ -373,7 +369,7 @@ export default defineComponent({
         : getSwipeIndex()
 
       lockDuration.value = false
-      setTrackTranslate(swipeIndex * -size.value)
+      trackTranslate.value = swipeIndex * -size.value
 
       const prevIndex = index.value
       index.value = swipeIndexToIndex(swipeIndex)
