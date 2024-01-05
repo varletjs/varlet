@@ -1317,22 +1317,40 @@ export interface StyleVars {
   timePickerTitleHeight?: string
   '--time-picker-title-padding'?: string
   timePickerTitlePadding?: string
-  '--time-picker-title-color'?: string
-  timePickerTitleColor?: string
   '--time-picker-title-margin-bottom'?: string
   timePickerTitleMarginBottom?: string
+  '--time-picker-title-color'?: string
+  timePickerTitleColor?: string
+  '--time-picker-title-background'?: string
+  timePickerTitleBackground?: string
   '--time-picker-title-hint-color'?: string
   timePickerTitleHintColor?: string
   '--time-picker-title-hint-font-size'?: string
   timePickerTitleHintFontSize?: string
-  '--time-picker-title-background'?: string
-  timePickerTitleBackground?: string
+  '--time-picker-title-inactive-opacity'?: string
+  timePickerTitleInactiveOpacity?: string
   '--time-picker-title-time-font-size'?: string
   timePickerTitleTimeFontSize?: string
   '--time-picker-title-time-margin'?: string
   timePickerTitleTimeMargin?: string
+  '--time-picker-title-time-border-radius'?: string
+  timePickerTitleTimeBorderRadius?: string
+  '--time-picker-title-time-padding'?: string
+  timePickerTitleTimePadding?: string
+  '--time-picker-title-time-background'?: string
+  timePickerTitleTimeBackground?: string
+  '--time-picker-title-time-active-background'?: string
+  timePickerTitleTimeActiveBackground?: string
+  '--time-picker-title-ampm-button-active-background'?: string
+  timePickerTitleAmpmButtonActiveBackground?: string
   '--time-picker-title-ampm-margin-left'?: string
   timePickerTitleAmpmMarginLeft?: string
+  '--time-picker-title-ampm-border-radius'?: string
+  timePickerTitleAmpmBorderRadius?: string
+  '--time-picker-title-ampm-border'?: string
+  timePickerTitleAmpmBorder?: string
+  '--time-picker-title-ampm-button-padding'?: string
+  timePickerTitleAmpmButtonPadding?: string
   '--time-picker-clock-left'?: string
   timePickerClockLeft?: string
   '--time-picker-clock-right'?: string

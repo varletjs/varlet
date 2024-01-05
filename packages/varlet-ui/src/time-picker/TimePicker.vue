@@ -7,14 +7,14 @@
           <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
             {{ time.hour }}
           </div>
-          <span>:</span>
+          <span :class="n('title-splitter')">:</span>
           <div
             :class="classes(n('title-btn'), [type === 'minute', n('title-btn--active')])"
             @click="checkPanel('minute')"
           >
             {{ time.minute }}
           </div>
-          <span v-if="useSeconds">:</span>
+          <span :class="n('title-splitter')" v-if="useSeconds">:</span>
           <div
             v-if="useSeconds"
             :class="classes(n('title-btn'), [type === 'second', n('title-btn--active')])"
