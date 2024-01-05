@@ -3,6 +3,7 @@
   "private": true,
   "version": "2.20.5",
   "description": "varlet ui playground",
+  "type": "module",
   "keywords": [
     "varlet ui",
     "playground",
