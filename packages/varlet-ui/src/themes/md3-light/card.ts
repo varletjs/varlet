@@ -1,7 +1,6 @@
 export default {
   '--card-border-radius': '12px',
   '--card-background': '#F7F2FA',
-  '--card-outline-color': '#CAC4D0',
   '--card-image-height': '188px',
   '--card-title-color': '#1D1B20',
   '--card-title-font-size': '16px',

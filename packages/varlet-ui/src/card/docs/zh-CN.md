@@ -196,7 +196,7 @@ const floating = ref(false)
 | `--card-background`                 | `#fff`               |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |
-| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
+| `--card-outline-color`              | `var(--color-outline)` |
 | `--card-image-width`                | `100%`               |
 | `--card-row-image-width`            | `140px`              |
 | `--card-image-height`               | `200px`              |

@@ -237,7 +237,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--bottom-navigation-height` | `50px` |
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `#fff` |
-| `--bottom-navigation-border-color` | `#bcc2cb` |
+| `--bottom-navigation-border-color` | `var(--color-outline)` |
 | `--bottom-navigation-fab-offset` | `4px` |
 
 #### BottomNavigationItem Variables

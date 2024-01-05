@@ -67,6 +67,7 @@ export default {
   '--color-on-danger-container': '#fff',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  '--color-outline': 'rgba(255, 255, 255, 0.2)',
   // component
   ...button,
   ...cell,

@@ -147,7 +147,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--cell-description-color` | `rgba(0, 0, 0, 0.6)` |
 | `--cell-padding` | `10px 12px` |
 | `--cell-min-height` | `40px` |
-| `--cell-border-color` | `#bcc2cb` |
+| `--cell-border-color` | `var(--color-outline)` |
 | `--cell-border-left` | `12px` |
 | `--cell-border-right` | `12px` |
 | `--cell-icon-right` | `8px` |

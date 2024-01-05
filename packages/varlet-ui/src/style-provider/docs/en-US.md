@@ -45,6 +45,7 @@ Here are some basic style variables for the component library
   --color-on-success-container: #fff;
   --color-on-warning-container: #fff;
   --color-on-danger-container: #fff;
+  --color-outline: rgba(0, 0, 0, 0.12);
   --opacity-disabled: 0.6;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
   --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);
@@ -172,6 +173,7 @@ The following is a style variable universal in the module library. Please check 
 | `--color-on-success` | `#fff` |
 | `--color-on-warning` | `#fff` |
 | `--color-on-danger` | `#fff` |
+| `--color-outline` | `rgba(0, 0, 0, 0.12)` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |
 | `--shadow-key-penumbra-opacity` | `rgba(0, 0, 0, 0.14)` |

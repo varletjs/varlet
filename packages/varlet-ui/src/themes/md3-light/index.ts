@@ -18,7 +18,6 @@ import chip from './chip'
 import tooltip from './tooltip'
 import tabs from './tabs'
 import tab from './tab'
-import divider from './divider'
 import table from './table'
 import pagination from './pagination'
 import collapse from './collapse'
@@ -66,6 +65,7 @@ export default {
   '--color-on-success-container': '#151F00',
   '--color-on-warning-container': '#31111D',
   '--color-on-danger-container': '#410E0B',
+  '--color-outline': '#CAC4D0',
   // component
   ...button,
   ...hoverOverlay,
@@ -86,7 +86,6 @@ export default {
   ...tooltip,
   ...tabs,
   ...tab,
-  ...divider,
   ...table,
   ...pagination,
   ...collapse,

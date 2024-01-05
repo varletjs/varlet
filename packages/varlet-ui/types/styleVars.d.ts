@@ -1201,6 +1201,8 @@ export interface StyleVars {
   colorOnWarning?: string
   '--color-on-danger'?: string
   colorOnDanger?: string
+  '--color-outline'?: string
+  colorOutline?: string
   '--cubic-bezier'?: string
   cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string

@@ -100,7 +100,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--divider-color` | `rgba(0, 0, 0, 0.12)` |
+| `--divider-color` | `var(--color-outline)` |
 | `--divider-text-color` | `#888`|
 | `--divider-text-margin` | `8px 0`|
 | `--divider-text-padding` | `0 8px`|

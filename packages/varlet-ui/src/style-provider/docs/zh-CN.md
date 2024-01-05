@@ -44,6 +44,7 @@
   --color-on-success-container: #fff;
   --color-on-warning-container: #fff;
   --color-on-danger-container: #fff;
+  --color-outline: rgba(0, 0, 0, 0.12);
   --opacity-disabled: 0.6;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
   --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);
@@ -163,6 +164,7 @@ function toggleRootTheme() {
 | `--color-danger` | `#f44336` |
 | `--color-disabled` | `#e0e0e0` |
 | `--color-text-disabled` | `#aaa` |
+| `--color-outline` | `rgba(0, 0, 0, 0.12)` |
 | `--opacity-disabled` | `0.6` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |

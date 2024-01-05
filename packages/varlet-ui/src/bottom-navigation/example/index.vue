@@ -31,7 +31,7 @@ function handleClick(active) {
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-bottom-navigation v-model:active="basicUsage">
+  <var-bottom-navigation border v-model:active="basicUsage">
     <var-bottom-navigation-item :label="pack.label" icon="home" />
     <var-bottom-navigation-item :label="pack.label" icon="magnify" />
     <var-bottom-navigation-item :label="pack.label" icon="heart" />

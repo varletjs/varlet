@@ -523,7 +523,7 @@ function handleChange(values, indexes) {
 | `--picker-toolbar-height` | `44px` |
 | `--picker-confirm-button-text-color` | `var(--color-primary)` |
 | `--picker-cancel-button-text-color` | `#888` |
-| `--picker-picked-border` | `1px solid rgba(0, 0, 0, 0.12)` |
+| `--picker-picked-border` | `1px solid var(--color-outline)` |
 | `--picker-title-font-size` | `var(--font-size-lg)` |
 | `--picker-title-text-color` | `#555` |
 | `--picker-option-font-size` | `var(--font-size-lg)` |

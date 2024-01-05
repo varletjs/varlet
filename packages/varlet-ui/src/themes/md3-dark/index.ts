@@ -75,6 +75,7 @@ export default {
   '--color-on-danger-container': '#F9DEDC',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  '--color-outline': '#49454F',
   // component
   ...button,
   ...hoverOverlay,
