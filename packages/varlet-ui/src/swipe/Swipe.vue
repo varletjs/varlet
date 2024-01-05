@@ -206,6 +206,7 @@ export default defineComponent({
       if (!props.loop) {
         return
       }
+
       // track out of bounds from left
       if (trackTranslate.value >= 0) {
         findSwipeItem(length.value - 1).setTranslate(-trackSize.value)
@@ -318,7 +319,6 @@ export default defineComponent({
 
     function setTrackTranslate(value: number) {
       trackTranslate.value = value
-      dispatchSwipeItems()
     }
 
     async function handleTouchstart(event: TouchEvent) {
@@ -347,6 +347,7 @@ export default defineComponent({
 
       preventDefault(event)
       setTrackTranslate(trackTranslate.value + (vertical ? moveY.value : moveX.value))
+      dispatchSwipeItems()
     }
 
     function handleTouchend() {
