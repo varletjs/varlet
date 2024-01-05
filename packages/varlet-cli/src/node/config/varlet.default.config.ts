@@ -458,10 +458,6 @@ export default defineConfig({
       github: 'https://github.com/varletjs/varlet',
       changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
       playground: 'https://varlet.gitee.io/varlet-ui-playground',
-      /**
-       * @deprecated
-       */
-      darkMode: true,
       themes: [
         { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
         { 'zh-CN': 'Md2 暗色', 'en-US': 'Md2 Dark', value: 'darkTheme' },
