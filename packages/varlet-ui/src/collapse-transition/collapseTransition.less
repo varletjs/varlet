@@ -1,0 +1,15 @@
+.var-collapse-transition {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 0;
+  color: var(--collapse-text-color);
+  transition: margin-top 0.25s, background-color 0.25s;
+
+  &__content {
+    font-size: var(--collapse-content-font-size);
+    overflow: hidden;
+    transition: all 0.25s;
+    word-break: break-all;
+  }
+}
