@@ -1,6 +1,6 @@
 <template>
-  <div :class="classes(n())">
-    <div :class="n('content')" v-show="showContent" ref="contentEl" @transitionend="transitionEnd">
+  <div :class="n()">
+    <div :class="n('content')" v-show="showContent" ref="contentEl" @transitionend="handleTransitionend">
       <slot />
     </div>
   </div>
@@ -66,7 +66,7 @@ export default defineComponent({
       contentEl.value.style.height = 0 + 'px'
     }
 
-    function transitionEnd() {
+    function handleTransitionend() {
       if (!props.expand) {
         showContent.value = false
       }
@@ -79,13 +79,12 @@ export default defineComponent({
       contentEl,
       n,
       classes,
-      transitionEnd,
+      handleTransitionend,
     }
   },
 })
 </script>
 
 <style lang="less">
-@import '../styles/common';
 @import './collapseTransition';
 </style>
