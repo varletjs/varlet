@@ -5,7 +5,6 @@ export declare const collapseTransitionProps: Record<keyof CollapseTransitionPro
 
 export interface CollapseTransitionProps extends BasicAttributes {
   expand?: boolean
-  appear?: boolean
 }
 
 export class CollapseTransition extends VarComponent {

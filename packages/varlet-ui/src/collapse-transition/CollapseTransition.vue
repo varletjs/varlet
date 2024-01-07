@@ -1,20 +1,14 @@
 <template>
   <div :class="classes(n())">
-    <div
-      :class="n('content')"
-      v-show="showContent"
-      ref="contentEl"
-      @transitionend="transitionend"
-      @transitionstart="start"
-    >
+    <div :class="n('content')" v-show="showContent" ref="contentEl" @transitionend="transitionEnd">
       <slot />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed, onMounted } from 'vue'
-import { doubleRaf, raf } from '@varlet/shared'
+import { defineComponent, ref, watch, nextTick } from 'vue'
+import { raf } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
@@ -26,21 +20,16 @@ export default defineComponent({
   setup(props) {
     const showContent = ref(false)
     const contentEl = ref<HTMLDivElement | null>(null)
-    const expand = computed(() => props.expand)
-    const appear = computed(() => props.appear)
 
-    onMounted(() => {
-      if (expand.value) {
-        appear.value ? openPanel() : (showContent.value = true)
-      }
-    })
-
-    // ensure to trigger transitionend
-    let isInitToTrigger = true
-
-    watch(expand, (value) => {
-      value ? openPanel() : closePanel()
-    })
+    watch(
+      () => props.expand,
+      (value) => {
+        nextTick().then(() => {
+          value ? openPanel() : closePanel()
+        })
+      },
+      { immediate: true }
+    )
 
     async function openPanel() {
       if (!contentEl.value) {
@@ -64,16 +53,6 @@ export default defineComponent({
       }
 
       contentEl.value.style.height = offsetHeight + 'px'
-
-      if (!isInitToTrigger) {
-        return
-      }
-
-      await doubleRaf()
-
-      if (isInitToTrigger) {
-        transitionend()
-      }
     }
 
     async function closePanel() {
@@ -87,12 +66,8 @@ export default defineComponent({
       contentEl.value.style.height = 0 + 'px'
     }
 
-    function start() {
-      isInitToTrigger = false
-    }
-
-    function transitionend() {
-      if (!expand.value) {
+    function transitionEnd() {
+      if (!props.expand) {
         showContent.value = false
       }
 
@@ -100,13 +75,11 @@ export default defineComponent({
     }
 
     return {
-      expand,
       showContent,
       contentEl,
       n,
-      start,
       classes,
-      transitionend,
+      transitionEnd,
     }
   },
 })

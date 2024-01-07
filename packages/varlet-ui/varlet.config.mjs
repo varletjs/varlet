@@ -270,7 +270,7 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'CollapseTransition 折叠效果',
+          'zh-CN': 'CollapseTransition 折叠动效',
           'en-US': 'CollapseTransition',
         },
         doc: 'collapse-transition',
