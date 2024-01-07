@@ -67,8 +67,8 @@ export default defineComponent({
   directives: { Lazy },
   props,
   setup(props) {
-    const avatarElement: Ref<HTMLDivElement | null> = ref(null)
-    const textElement: Ref<HTMLDivElement | null> = ref(null)
+    const avatarElement: Ref<HTMLElement | null> = ref(null)
+    const textElement: Ref<HTMLElement | null> = ref(null)
     const scale: Ref<number> = ref(1)
 
     onSmartMounted(getScale)

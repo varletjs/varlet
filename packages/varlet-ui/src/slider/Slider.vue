@@ -90,7 +90,7 @@ export default defineComponent({
   props,
   setup(props) {
     const maxDistance = ref(0)
-    const sliderEl = ref<HTMLDivElement | null>(null)
+    const sliderEl = ref<HTMLElement | null>(null)
     const isScroll = ref(false)
     const scope = computed(() => toNumber(props.max) - toNumber(props.min))
     const unitWidth = computed(() => (maxDistance.value / scope.value) * toNumber(props.step))
@@ -185,7 +185,7 @@ export default defineComponent({
     onSmartMounted(() => {
       if (!stepValidator() || !valueValidator()) return
 
-      maxDistance.value = (sliderEl.value as HTMLDivElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']
+      maxDistance.value = (sliderEl.value as HTMLElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']
     })
 
     onBeforeUnmount(() => {
@@ -307,7 +307,7 @@ export default defineComponent({
     }
 
     function start(event: TouchEvent, type: keyof ThumbsProps) {
-      if (!maxDistance.value) maxDistance.value = (sliderEl.value as HTMLDivElement).offsetWidth
+      if (!maxDistance.value) maxDistance.value = (sliderEl.value as HTMLElement).offsetWidth
       if (!isDisabled.value) {
         thumbsProps[type].active = true
       }
@@ -362,7 +362,7 @@ export default defineComponent({
 
     function click(event: MouseEvent) {
       if (isDisabled.value || isReadonly.value) return
-      if ((event.target as HTMLDivElement).closest(`.${n('thumb')}`)) return
+      if ((event.target as HTMLElement).closest(`.${n('thumb')}`)) return
       const offset = getOffset(event)
       const type = getType(offset)
       activeThumb = type

@@ -81,7 +81,7 @@ export default defineComponent({
   components: { Clock },
   props,
   setup(props) {
-    const container = ref<HTMLDivElement | null>(null)
+    const container = ref<HTMLElement | null>(null)
     const picker = ref<HTMLElement | null>(null)
     const inner = ref<DefineComponent | null>(null)
     const isInner = ref(false)
@@ -287,7 +287,7 @@ export default defineComponent({
     }
 
     function setCenterAndRange() {
-      const { left, top, width, height } = getRect(container.value as HTMLDivElement)
+      const { left, top, width, height } = getRect(container.value as HTMLElement)
 
       center.x = left + width / 2
       center.y = top + height / 2

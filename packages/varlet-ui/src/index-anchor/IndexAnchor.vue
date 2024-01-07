@@ -31,7 +31,7 @@ export default defineComponent({
     const ownTop = ref(0)
     const disabled = ref(false)
     const name = computed(() => props.index)
-    const anchorEl = ref<HTMLDivElement | RendererNode | null>(null)
+    const anchorEl = ref<HTMLElement | RendererNode | null>(null)
     const { index, indexBar, bindIndexBar } = useIndexBar()
     const { active, sticky, cssMode, stickyOffsetTop, zIndex } = indexBar
 
@@ -52,7 +52,7 @@ export default defineComponent({
 
       ownTop.value = (anchorEl.value as RendererNode).$el
         ? (anchorEl.value as RendererNode).$el.offsetTop
-        : (anchorEl.value as HTMLDivElement).offsetTop
+        : (anchorEl.value as HTMLElement).offsetTop
     }
 
     function setDisabled(value: boolean) {

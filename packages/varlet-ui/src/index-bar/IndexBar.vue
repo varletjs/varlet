@@ -42,7 +42,7 @@ export default defineComponent({
   props,
   setup(props) {
     const clickedName = ref<string | number>('')
-    const barEl = ref<HTMLDivElement | null>(null)
+    const barEl = ref<HTMLElement | null>(null)
     const anchorNameList = ref<(number | string)[]>([])
     const active = ref<number | string | undefined>()
     const sticky = computed(() => props.sticky)
@@ -168,7 +168,7 @@ export default defineComponent({
 
     async function setScroller() {
       await doubleRaf()
-      scroller = getParentScroller(barEl.value as HTMLDivElement)
+      scroller = getParentScroller(barEl.value as HTMLElement)
     }
 
     function addScrollerListener() {
