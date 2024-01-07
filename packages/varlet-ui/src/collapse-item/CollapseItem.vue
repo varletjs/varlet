@@ -57,7 +57,7 @@ export default defineComponent({
   setup(props) {
     const isShow = ref(false)
     const showContent = ref(false)
-    const contentEl = ref<HTMLDivElement | null>(null)
+    const contentEl = ref<HTMLElement | null>(null)
     const name = computed(() => props.name)
     const disabled = computed(() => props.disabled)
     const { index, collapse, bindCollapse } = useCollapse()
