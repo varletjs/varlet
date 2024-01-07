@@ -15,10 +15,10 @@ describe('test collapseTransition render', () => {
 
 describe('test collapseTransition props', () => {
   test('test collapseTransition expand', async () => {
-    const expand = ref(false)
+    const expand = ref(true)
     const template = `
      <var-collapse-transition :expand="expand">
-      test1
+      test
      </var-collapse-transition>
     `
 
@@ -35,12 +35,12 @@ describe('test collapseTransition props', () => {
     })
 
     await delay(0)
-    expect(wrapper.vm.expand).toBeFalsy()
-    expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('display: none; height: 0px;')
-
-    expand.value = true
-    await delay(0)
     expect(wrapper.vm.expand).toBeTruthy()
     expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('')
+
+    expand.value = false
+    await delay(200)
+    expect(wrapper.vm.expand).toBeFalsy()
+    expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('display: none;')
   })
 })
