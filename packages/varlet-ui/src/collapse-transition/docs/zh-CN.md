@@ -18,7 +18,7 @@ const expand = ref(true)
 <template>
   <var-switch v-model="expand"></var-switch>
   <var-collapse-transition :expand="expand">
-    内容
+    不要温和地走进那良夜，老年应当在日暮时燃烧咆哮；怒斥，怒斥光明的消逝。虽然智慧的人临终时懂得黑暗有理，因为他们的话没有迸发出闪电，他们也并不温和地走进那个良夜。善良的人，当最后一浪过去，高呼他们脆弱的善行可能曾会多么光辉地在绿色的海湾里舞蹈，怒斥，怒斥光明的消逝。
   </var-collapse-transition>
 </template>
 ```
@@ -27,9 +27,9 @@ const expand = ref(true)
 
 ### 属性
 
-| 参数       | 说明         | 类型        | 默认值    |
-| ---------- | ------------ | ----------- | --------- |
-| `expand` | 是否展示内容 | *boolean* | `false` |
+| 参数       | 说明                     | 类型        | 默认值    |
+| ---------- | ------------------------ | ----------- | --------- |
+| `expand` | 控制内容状态为折叠或展开 | *boolean* | `false` |
 
 ### 插槽
 
