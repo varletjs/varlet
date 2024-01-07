@@ -342,7 +342,7 @@ export default defineComponent({
       }
 
       preventDefault(event)
-      trackTranslate.value += (vertical ? moveY.value : moveX.value)
+      trackTranslate.value += vertical ? moveY.value : moveX.value
       dispatchSwipeItems()
     }
 
