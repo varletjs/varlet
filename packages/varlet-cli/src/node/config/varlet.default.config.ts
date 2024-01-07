@@ -493,7 +493,7 @@ export default defineConfig({
       ],
     },
   },
-  themeKey: 'VARLET_THEME',
+  themeKey: 'VARLET_V3_THEME',
   defaultLightTheme: 'md3LightTheme',
   defaultDarkTheme: 'md3DarkTheme',
   lightTheme: {
