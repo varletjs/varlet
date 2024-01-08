@@ -349,7 +349,7 @@ exports[`test form with radio 1`] = `
       <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text var-radio--disabled"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
@@ -365,7 +365,7 @@ exports[`test form with radio 2`] = `
       <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
@@ -381,7 +381,7 @@ exports[`test form with radio 3`] = `
       <div class="var-radio__action var-radio--unchecked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text var-radio--error"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <div class="var-form-details">
@@ -408,7 +408,7 @@ exports[`test form with radio 4`] = `
       <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
