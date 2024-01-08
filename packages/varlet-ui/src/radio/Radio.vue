@@ -40,6 +40,7 @@
             [formDisabled || disabled, n('--disabled')]
           )
         "
+        v-if="$slots.default"
       >
         <slot />
       </div>
