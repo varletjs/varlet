@@ -149,7 +149,16 @@ export default defineComponent({
 
     watch(() => props.columns, buildScrollColumns, { deep: true })
 
-    watch(() => modelValue.value, updateScrollColumnsIndex)
+    watch(
+      () => modelValue.value,
+      () => {
+        if (props.cascade && props.modelValue.length) {
+          buildScrollColumns()
+        } else {
+          updateScrollColumnsIndex()
+        }
+      }
+    )
 
     function getOptionKey(key: 'text' | 'value' | 'children') {
       const keyMap = {
@@ -214,6 +223,11 @@ export default defineComponent({
         }
 
         scrollColumns.push(scrollColumn)
+        if (props.modelValue.length) {
+          const index = children.findIndex((option) => modelValue.value[scrollColumns.length - 1] === getValue(option))
+          scrollColumn.index = index === -1 ? 0 : index
+        }
+
         scrollTo(scrollColumn)
         createChildren(scrollColumns, scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [])
       }
@@ -229,7 +243,9 @@ export default defineComponent({
         ? normalizeCascadeMode(props.columns as PickerColumnOption[])
         : normalizeNormalMode(props.columns as PickerColumnOption[][])
 
-      updateScrollColumnsIndex()
+      if (!props.cascade) {
+        updateScrollColumnsIndex()
+      }
     }
 
     function updateScrollColumnsIndex() {
@@ -372,7 +388,7 @@ export default defineComponent({
         return
       }
 
-      if (cascade) {
+      if (cascade && !props.modelValue.length) {
         rebuildChildren(scrollColumn)
       }
 

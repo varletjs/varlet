@@ -1,3 +1,12 @@
+## [2.20.7](https://github.com/varletjs/varlet/compare/v2.20.6...v2.20.7) (2024-01-08)
+
+
+### Bug Fixes
+
+* **picker:** fix picker v-model value matched error in cascade mode and close [#1386](https://github.com/varletjs/varlet/issues/1386) ([ff1c0f1](https://github.com/varletjs/varlet/commit/ff1c0f15f7ea2c57845870dae757f22fa92fe633))
+
+
+
 ## [2.20.6](https://github.com/varletjs/varlet/compare/v2.20.5...v2.20.6) (2024-01-05)
 
 

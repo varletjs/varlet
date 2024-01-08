@@ -17,7 +17,7 @@ exports[`test image preview component props > test image preview imagePreventDef
           <!--v-if-->
         </div>
         <!--v-if-->
-        <div class="var-image-preview__extra"></div>
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -44,7 +44,7 @@ exports[`test image preview component props > test image preview initialIndex 1`
           <div class="var-image-preview__indicators">2 / 2</div>
         </div>
         <!--v-if-->
-        <div class="var-image-preview__extra"></div>
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>
@@ -77,7 +77,7 @@ exports[`test image preview component props > test image preview show 2`] = `
           <!--v-if-->
         </div>
         <!--v-if-->
-        <div class="var-image-preview__extra"></div>
+        <!--v-if-->
       </div>
     </transition-stub>
   </div>

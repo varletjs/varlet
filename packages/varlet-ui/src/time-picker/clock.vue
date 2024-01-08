@@ -94,7 +94,7 @@ export default defineComponent({
   },
   emits: ['update', 'change-prevent-update'],
   setup(props, { emit }) {
-    const inner: Ref<HTMLDivElement | null> = ref(null)
+    const inner: Ref<HTMLElement | null> = ref(null)
     const disableHour: Ref<Array<string>> = ref([])
     const disable24HourIndex: Ref<Array<number>> = ref([])
 
@@ -203,7 +203,7 @@ export default defineComponent({
     }
 
     const getSize = () => {
-      const { width, height } = getRect(inner.value as HTMLDivElement)
+      const { width, height } = getRect(inner.value as HTMLElement)
 
       return {
         width,

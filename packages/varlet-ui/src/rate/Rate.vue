@@ -127,7 +127,7 @@ export default defineComponent({
 
     function changeValue(score: number, event: MouseEvent) {
       const { half, clearable } = props
-      const { offsetWidth } = event.target as HTMLDivElement
+      const { offsetWidth } = event.target as HTMLElement
 
       if (half && event.offsetX <= Math.floor(offsetWidth / 2)) {
         score -= 0.5
