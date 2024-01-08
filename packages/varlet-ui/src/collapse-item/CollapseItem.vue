@@ -40,7 +40,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useCollapse, type CollapseItemProvider } from './provide'
 import { props } from './props'
@@ -70,17 +70,13 @@ export default defineComponent({
       init,
     }
 
-    watch(isShow, (value) => {
-      value ? openPanel() : closePanel()
-    })
-
     bindCollapse(collapseItemProvider)
 
-    const { openPanel, closePanel, handleTransitionEnd, handleTransitionStart } = useCollapseTransition(
+    const { handleTransitionEnd, handleTransitionStart } = useCollapseTransition({
       contentEl,
       showContent,
-      isShow
-    )
+      expand: isShow,
+    })
 
     function init(show: boolean) {
       isShow.value = show

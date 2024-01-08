@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, nextTick, computed } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useCollapseTransition } from './useCollapseTransition'
@@ -28,21 +28,11 @@ export default defineComponent({
     const contentEl = ref<HTMLDivElement | null>(null)
     const expand = computed(() => props.expand)
 
-    watch(
-      expand,
-      (value) => {
-        nextTick().then(() => {
-          value ? openPanel() : closePanel()
-        })
-      },
-      { immediate: true }
-    )
-
-    const { openPanel, closePanel, handleTransitionEnd, handleTransitionStart } = useCollapseTransition(
+    const { handleTransitionEnd, handleTransitionStart } = useCollapseTransition({
       contentEl,
       showContent,
-      expand
-    )
+      expand,
+    })
 
     return {
       showContent,

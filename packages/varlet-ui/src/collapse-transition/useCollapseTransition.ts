@@ -1,15 +1,29 @@
 import { raf, doubleRaf } from '@varlet/shared'
-import { Ref } from 'vue'
+import { ComputedRef, Ref, nextTick, watch } from 'vue'
 
-export function useCollapseTransition(
-  contentEl: Ref<HTMLDivElement | null>,
-  showContent: Ref<boolean>,
-  isShow: Ref<boolean>
-) {
+export interface UseCollapseTransitionOptions {
+  contentEl: Ref<HTMLDivElement | null>
+  showContent: Ref<boolean>
+  expand: Ref | ComputedRef
+}
+
+export function useCollapseTransition(options: UseCollapseTransitionOptions) {
+  const { contentEl, showContent, expand } = options
+
   // ensure to trigger transitionend
   let isInitToTrigger = true
 
-  async function openPanel() {
+  watch(
+    expand,
+    (value) => {
+      nextTick(() => {
+        value ? open() : close()
+      })
+    },
+    { immediate: true }
+  )
+
+  async function open() {
     if (!contentEl.value) {
       return
     }
@@ -43,7 +57,7 @@ export function useCollapseTransition(
     }
   }
 
-  const closePanel = async () => {
+  const close = async () => {
     if (!contentEl.value) {
       return
     }
@@ -55,7 +69,7 @@ export function useCollapseTransition(
   }
 
   const handleTransitionEnd = () => {
-    if (!isShow.value) {
+    if (!expand.value) {
       showContent.value = false
     }
 
@@ -67,8 +81,8 @@ export function useCollapseTransition(
   }
 
   return {
-    openPanel,
-    closePanel,
+    open,
+    close,
     handleTransitionEnd,
     handleTransitionStart,
   }
