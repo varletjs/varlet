@@ -3,7 +3,7 @@
     <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyle" v-bind="$attrs">
       <slot name="left" />
 
-      <span :class="n(`text-${size}`)">
+      <span :class="n(`text-${size}`)" v-if="$slots.default">
         <slot />
       </span>
 
