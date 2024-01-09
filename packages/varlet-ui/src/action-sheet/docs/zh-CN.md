@@ -32,7 +32,7 @@ async function createBasic() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -66,7 +66,7 @@ async function handleSelect(){
     title: '选择一个你喜欢的吧' 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -102,7 +102,7 @@ async function handleSelect() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -176,7 +176,7 @@ async function handleSelect() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -211,7 +211,7 @@ const actions = ref([
 ])
 
 function handleSelect(action){
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -249,7 +249,7 @@ const actions = ref([
 ])
 
 function handleSelect(action){
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -289,7 +289,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -327,7 +327,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -369,7 +369,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
