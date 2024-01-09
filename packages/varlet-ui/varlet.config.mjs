@@ -270,6 +270,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'CollapseTransition 折叠动效',
+          'en-US': 'CollapseTransition',
+        },
+        doc: 'collapse-transition',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Space 间隔',
           'en-US': 'Space',
         },

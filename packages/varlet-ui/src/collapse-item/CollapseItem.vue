@@ -28,8 +28,8 @@
       :class="n('content')"
       v-show="showContent"
       ref="contentEl"
-      @transitionend="transitionend"
-      @transitionstart="start"
+      @transitionend="handleTransitionEnd"
+      @transitionstart="handleTransitionStart"
     >
       <div :class="n('content-wrap')">
         <slot />
@@ -40,11 +40,11 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, watch, computed } from 'vue'
-import { doubleRaf, raf } from '@varlet/shared'
+import { defineComponent, ref, computed } from 'vue'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useCollapse, type CollapseItemProvider } from './provide'
 import { props } from './props'
+import { useCollapseTransition } from '../collapse-transition/useCollapseTransition'
 
 const { name, n, classes } = createNamespace('collapse-item')
 
@@ -70,59 +70,13 @@ export default defineComponent({
       init,
     }
 
-    // ensure to trigger transitionend
-    let isInitToTrigger = true
-
-    watch(isShow, (value) => {
-      value ? openPanel() : closePanel()
-    })
-
     bindCollapse(collapseItemProvider)
 
-    async function openPanel() {
-      if (!contentEl.value) {
-        return
-      }
-
-      contentEl.value.style.height = ''
-      showContent.value = true
-      await raf()
-
-      if (!contentEl.value) {
-        return
-      }
-
-      const { offsetHeight } = contentEl.value
-      contentEl.value.style.height = 0 + 'px'
-      await raf()
-
-      if (!contentEl.value) {
-        return
-      }
-
-      contentEl.value.style.height = offsetHeight + 'px'
-
-      if (!isInitToTrigger) {
-        return
-      }
-
-      await doubleRaf()
-
-      if (isInitToTrigger) {
-        transitionend()
-      }
-    }
-
-    async function closePanel() {
-      if (!contentEl.value) {
-        return
-      }
-
-      const { offsetHeight } = contentEl.value
-      contentEl.value.style.height = offsetHeight + 'px'
-      await raf()
-      contentEl.value.style.height = 0 + 'px'
-    }
+    const { handleTransitionEnd, handleTransitionStart } = useCollapseTransition({
+      contentEl,
+      showContent,
+      expand: isShow,
+    })
 
     function init(show: boolean) {
       isShow.value = show
@@ -136,18 +90,6 @@ export default defineComponent({
       updateItem(props.name ?? index.value, !isShow.value)
     }
 
-    function start() {
-      isInitToTrigger = false
-    }
-
-    function transitionend() {
-      if (!isShow.value) {
-        showContent.value = false
-      }
-
-      contentEl.value!.style.height = ''
-    }
-
     return {
       isShow,
       showContent,
@@ -156,11 +98,11 @@ export default defineComponent({
       elevation,
       contentEl,
       n,
-      start,
       classes,
       toggle,
-      transitionend,
       formatElevation,
+      handleTransitionEnd,
+      handleTransitionStart,
     }
   },
 })
