@@ -38,7 +38,7 @@ describe('test collapse and collapseItem props', () => {
       template,
     })
 
-    await delay(20)
+    await delay(100)
     await wrapper.find('.var-collapse-item__header').trigger('click')
     expect(wrapper.vm.value).toBe('1')
   })
@@ -71,15 +71,15 @@ describe('test collapse and collapseItem props', () => {
       },
     })
 
-    await delay(20)
+    await delay(100)
     expect(wrapper.find('.var-collapse-item__shadow').classes()).not.toContain('var-elevation--2')
 
     elevation.value = true
-    await delay(20)
+    await delay(100)
     expect(wrapper.find('.var-collapse-item__shadow').classes()).toContain('var-elevation--2')
 
     elevation.value = 24
-    await delay(20)
+    await delay(100)
     expect(wrapper.find('.var-collapse-item__shadow').classes()).toContain('var-elevation--24')
   })
 
@@ -113,14 +113,14 @@ describe('test collapse and collapseItem props', () => {
 
     const collapseItemList = wrapper.findAll('.var-collapse-item')
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
-    await delay(20)
+    await delay(100)
     expect(collapseItemList[0].classes()).not.toContain('var-collapse-item--active')
 
     await wrapper.setData({ value: ['2'] })
     offset.value = true
-    await delay(20)
+    await delay(100)
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
-    await delay(20)
+    await delay(100)
     expect(collapseItemList[0].classes()).toContain('var-collapse-item--active')
   })
 
@@ -145,14 +145,14 @@ describe('test collapse and collapseItem props', () => {
       template,
     })
 
-    await delay(20)
+    await delay(100)
 
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe(
       '--collapse-divider-top: var(--collapse-border-top);'
     )
 
     await wrapper.setData({ divider: false })
-    await delay(20)
+    await delay(100)
     expect(wrapper.find('.var-collapse-item').attributes('style')).toBe('--collapse-divider-top: none;')
 
     wrapper.unmount()
@@ -189,7 +189,7 @@ describe('test collapse and collapseItem props', () => {
       { attachTo: document.body }
     )
 
-    await delay(20)
+    await delay(100)
     const collapseItemList = wrapper.findAll('.var-collapse-item')
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
     expect(wrapper.vm.value).toStrictEqual(['1'])
@@ -198,9 +198,9 @@ describe('test collapse and collapseItem props', () => {
     await wrapper.setData({ value: [] })
     name.value = '2'
     title.value = 'test2'
-    await delay(20)
+    await delay(100)
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
-    await delay(20)
+    await delay(100)
     expect(wrapper.vm.value).toStrictEqual(['2'])
     expect(wrapper.find('.var-collapse-item__header').text()).toBe('test2')
   })
@@ -228,7 +228,7 @@ describe('test collapse and collapseItem props', () => {
       { attachTo: document.body }
     )
 
-    await delay(20)
+    await delay(100)
     expect(wrapper.find('.var-icon-checkbox-marked-circle').exists()).toBe(true)
   })
 
@@ -257,7 +257,7 @@ describe('test collapse and collapseItem props', () => {
       { attachTo: document.body }
     )
 
-    await delay(20)
+    await delay(100)
     const collapseItemList = wrapper.findAll('.var-collapse-item')
     expect(collapseItemList[0].classes()).toContain('var-collapse-item--disable')
     await collapseItemList[0].find('.var-collapse-item__header').trigger('click')
@@ -298,7 +298,7 @@ describe('test collapse Events', () => {
       { attachTo: document.body }
     )
 
-    await delay(20)
+    await delay(100)
 
     const collapseItemList = wrapper.findAll('.var-collapse-item')
 
@@ -401,7 +401,7 @@ describe('test collapse Events', () => {
         template,
       })
 
-      await delay(20)
+      await delay(100)
       expect(wrapper.findAll('.var-collapse-item__content')[0].text()).toBe('test1')
       expect(wrapper.findAll('.var-collapse-item__content')[1].text()).toBe('test2')
       expect(wrapper.findAll('.var-collapse-item__content')[2].text()).toBe('test3')
@@ -437,7 +437,7 @@ describe('test collapse Events', () => {
         template,
       })
 
-      await delay(20)
+      await delay(100)
       expect(wrapper.findAll('.var-collapse-item__header')[0].text()).toBe('title slot1')
       expect(wrapper.findAll('.var-collapse-item__header')[1].text()).toBe('title slot2')
       expect(wrapper.findAll('.var-collapse-item__header')[2].text()).toBe('title slot3')
@@ -473,7 +473,7 @@ describe('test collapse Events', () => {
         template,
       })
 
-      await delay(20)
+      await delay(100)
       expect(wrapper.findAll('.var-collapse-item__header')[0].text()).toBe('icon slot1')
       expect(wrapper.findAll('.var-collapse-item__header')[1].text()).toBe('icon slot2')
       expect(wrapper.findAll('.var-collapse-item__header')[2].text()).toBe('icon slot3')
