@@ -42,5 +42,7 @@ describe('test collapseTransition props', () => {
     await delay(200)
     expect(wrapper.vm.expand).toBeFalsy()
     expect(wrapper.find('.var-collapse-transition__content').attributes('style')).toBe('display: none;')
+
+    wrapper.unmount()
   })
 })

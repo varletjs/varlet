@@ -1,14 +1,12 @@
 <template>
-  <div :class="n()">
-    <div
-      :class="n('content')"
-      v-show="showContent"
-      ref="contentEl"
-      @transitionend="handleTransitionEnd"
-      @transitionstart="handleTransitionStart"
-    >
-      <slot />
-    </div>
+  <div
+    :class="n('content')"
+    v-show="showContent"
+    ref="contentEl"
+    @transitionend="handleTransitionEnd"
+    @transitionstart="handleTransitionStart"
+  >
+    <slot />
   </div>
 </template>
 
@@ -18,7 +16,7 @@ import { createNamespace } from '../utils/components'
 import { props } from './props'
 import { useCollapseTransition } from './useCollapseTransition'
 
-const { name, n, classes } = createNamespace('collapse-transition')
+const { name, n } = createNamespace('collapse-transition')
 
 export default defineComponent({
   name,
@@ -38,7 +36,6 @@ export default defineComponent({
       showContent,
       contentEl,
       n,
-      classes,
       handleTransitionEnd,
       handleTransitionStart,
     }
@@ -47,5 +44,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './collapseTransition';
 </style>
