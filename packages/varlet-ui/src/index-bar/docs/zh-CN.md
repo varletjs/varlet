@@ -88,13 +88,14 @@ onMounted(() => {
 
 | 名称 | 说明 | 参数 |
 | --- | -- | --- |
-| `default` | 索引栏内容 |`-` |
+| `default` | 索引栏内容 | `-` |
 
 #### IndexAnchor Slots
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 自定义索引字符 |`-` |
+| `default` | 自定义索引字符 | `-` |
+| `anchor-name` | 自定义锚点内容 | `anchorName: string` 锚点内容 |
 
 ### 方法
 通过 ref 可以获取到 IndexBar 实例并调用实例方法

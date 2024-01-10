@@ -29,6 +29,7 @@ export class IndexBar extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    'anchor-name'(anchorName: string): VNode[]
   }
 
   scrollTo: (index: number | string, options?: IndexBarScrollToOptions) => void
