@@ -18,6 +18,8 @@
         left: floaterLeft,
         overflow: floaterOverflow,
         position: floaterPosition,
+        zIndex: floated ? zIndex : undefined,
+        background: outline && !floated ? 'transparent' : undefined,
         transition: floated
           ? `background-color ${floatingDuration}ms, color ${floatingDuration}ms, width ${floatingDuration}ms, height ${floatingDuration}ms, top ${floatingDuration}ms, left ${floatingDuration}ms`
           : undefined,
