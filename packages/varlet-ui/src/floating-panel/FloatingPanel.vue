@@ -45,7 +45,7 @@ export default defineComponent({
   props,
   setup(props) {
     const visibleHeight = ref<number>(0)
-    const contentRef = ref<HTMLDivElement | null>(null)
+    const contentRef = ref<HTMLElement | null>(null)
     const { height: windowHeight } = useWindowSize()
     const defaultEndAnchor = computed(() => windowHeight.value * 0.6)
     const anchor = useVModel(props, 'anchor')

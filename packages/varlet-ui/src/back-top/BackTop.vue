@@ -42,7 +42,7 @@ export default defineComponent({
   props,
   setup(props) {
     const show = ref(false)
-    const backTopEl = ref<HTMLDivElement | null>(null)
+    const backTopEl = ref<HTMLElement | null>(null)
     const disabled = ref<TeleportProps['disabled']>(true)
 
     let scroller: HTMLElement | Window

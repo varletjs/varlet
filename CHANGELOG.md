@@ -1,3 +1,33 @@
+## [2.20.7](https://github.com/varletjs/varlet/compare/v2.20.6...v2.20.7) (2024-01-08)
+
+
+### Bug Fixes
+
+* **picker:** fix picker v-model value matched error in cascade mode and close [#1386](https://github.com/varletjs/varlet/issues/1386) ([ff1c0f1](https://github.com/varletjs/varlet/commit/ff1c0f15f7ea2c57845870dae757f22fa92fe633))
+
+
+
+## [2.20.6](https://github.com/varletjs/varlet/compare/v2.20.5...v2.20.6) (2024-01-05)
+
+
+### Bug Fixes
+
+* **bottom-navigation:** fix dark theme css var ([dfc0a0f](https://github.com/varletjs/varlet/commit/dfc0a0fbd8e6f29b461308bd325356eb5d6f9d7f))
+* **cli:** fix config default value ([374f696](https://github.com/varletjs/varlet/commit/374f696190f3ec052ac35366630a6d6f4daa838f))
+* **playground:** add missing import for Dialog component ([#1381](https://github.com/varletjs/varlet/issues/1381)) ([37bb6b1](https://github.com/varletjs/varlet/commit/37bb6b1f52bd0e4f48f961603190327f7a325cda))
+* **rate:** fix typo ([60ec1c1](https://github.com/varletjs/varlet/commit/60ec1c1666fa939c5805d61fbe651d5d66ab1343))
+* **snackbar:** hidden action element when no action slot ([#1372](https://github.com/varletjs/varlet/issues/1372)) ([7440c3d](https://github.com/varletjs/varlet/commit/7440c3db1d564826d5cde153fbbf9a22ffd0f6b9))
+* **swipe:** remove unuseful dispatch to fix duration blink ([e565454](https://github.com/varletjs/varlet/commit/e565454ba2eb63a829e472e2030cbe82daec53b1))
+
+
+### Features
+
+* **icons:** support arrow up bold box icon ([#1382](https://github.com/varletjs/varlet/issues/1382)) ([4d86554](https://github.com/varletjs/varlet/commit/4d865549f612f690c710d8d642ea3f962b5d37fd))
+* **input, select:** support clear icon slot ([#1378](https://github.com/varletjs/varlet/issues/1378)) ([9399a7e](https://github.com/varletjs/varlet/commit/9399a7e76433868564152617ee85ebfb2f6257fd))
+* support versions ([bd12461](https://github.com/varletjs/varlet/commit/bd124619a5d0a16d4e97d8caf633272d09cf5c65))
+
+
+
 ## [2.20.5](https://github.com/varletjs/varlet/compare/v2.20.4...v2.20.5) (2023-12-29)
 
 

@@ -74,6 +74,11 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     attrs: ['title=""'],
     characterDelta: -2,
   },
+  'collapse-transition': {
+    path: '/collapse-transition',
+    attrs: ['title=""'],
+    characterDelta: -2,
+  },
   row: {
     path: '/row',
   },

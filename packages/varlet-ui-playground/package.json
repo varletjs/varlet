@@ -1,7 +1,7 @@
 {
   "name": "@varlet/ui-playground",
   "private": true,
-  "version": "2.20.5",
+  "version": "2.20.7",
   "description": "varlet ui playground",
   "type": "module",
   "keywords": [

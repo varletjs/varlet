@@ -135,7 +135,7 @@ function fullscreen() {
 | `card-height` | Card Height  | _string \| number_ | `-` |
 | `avatar-size` | Avatar size  | _string \| number_ | `-` |
 | `rows` | The paragraph number of rows | _string \| number_ | `3` |
-| `rows-width` | The width of each line of a paragraph | _number[] \| string[]_ | `['12px', '12px', '12px']` |
+| `rows-width` | The width of each line of a paragraph | _number[] \| string[]_ | `[]` |
 
 ### Slots
 

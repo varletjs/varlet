@@ -55,7 +55,7 @@
       <var-icon :class="n('close-icon')" name="close-circle" var-image-preview-cover v-if="closeable" @click="close" />
     </slot>
 
-    <div :class="n('extra')">
+    <div :class="n('extra')" v-if="$slots.extra">
       <slot name="extra" />
     </div>
   </var-popup>

@@ -144,7 +144,7 @@ function handleChange(values, indexes) {
   <app-type>{{ pack.multiplePicker }}</app-type>
   <var-picker :columns="columns2" @change="handleChange" />
 
-  <app-type>{{ pack.areaPicker }}</app-type>
+  <app-type>{{ pack.cascadePicker }}</app-type>
   <var-picker :columns="columns3" cascade @change="handleChange" />
 
   <app-type>{{ pack.areaPicker }}</app-type>

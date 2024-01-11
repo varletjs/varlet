@@ -32,6 +32,7 @@
       <div
         :class="classes(n(`${direction}-content`), [isActive || isCurrent, n(`${direction}-content--active`)])"
         @click="click"
+        v-if="$slots.default"
       >
         <slot />
       </div>

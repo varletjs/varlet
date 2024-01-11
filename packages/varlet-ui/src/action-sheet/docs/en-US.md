@@ -32,7 +32,7 @@ async function createBasic() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -66,7 +66,7 @@ async function handleSelect() {
     title: 'Choose whichever you like'
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -102,7 +102,7 @@ async function handleSelect() {
     ]
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -175,7 +175,7 @@ async function handleSelect() {
     ]
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -210,7 +210,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -248,7 +248,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -288,7 +288,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -326,7 +326,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -368,7 +368,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 

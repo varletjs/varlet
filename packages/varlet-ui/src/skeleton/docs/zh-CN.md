@@ -135,7 +135,7 @@ function fullscreen() {
 | `card-height` | 卡片高度 | _string \| number_ | `-` |
 | `avatar-size` | 头像尺寸 | _string \| number_ | `-` |
 | `rows` | 段落行数 | _string \| number_ | `3` |
-| `rows-width` | 段落每一行的宽度 | _number[] \| string[]_ | `['12px', '12px', '12px']` |
+| `rows-width` | 段落每一行的宽度 | _number[] \| string[]_ | `[]` |
 
 ### 插槽
 
