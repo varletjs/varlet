@@ -12,7 +12,8 @@ watchDarkMode(Themes.dark)
 
 <template>
   <app-type>{{ pack.basicUsage }}</app-type>
-  <var-switch v-model="expand"></var-switch>
+  <var-switch v-model="expand" />
+  <var-divider />
   <var-collapse-transition :expand="expand">
     {{ pack.textContent }}
   </var-collapse-transition>
