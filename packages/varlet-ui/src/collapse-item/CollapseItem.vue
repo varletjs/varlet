@@ -5,7 +5,7 @@
   >
     <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
     <div :class="n('header')" @click="toggle">
-      <div :class="n('header-title')">
+      <div :class="n('header-title')" v-if="$slots.title || title">
         <slot name="title">{{ title }}</slot>
       </div>
       <div :class="n('header-icon')">

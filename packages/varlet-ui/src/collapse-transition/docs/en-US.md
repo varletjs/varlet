@@ -29,10 +29,10 @@ const expand = ref(true)
 
 | Prop       | Description                                         | Type        | Default   |
 | ---------- | --------------------------------------------------- | ----------- | --------- |
-| `expand` | Status of whether content is collapsed or expanded. | _boolean_ | `false` |
+| `expand` | Collapse or expand content | _boolean_ | `false` |
 
 ### Slots
 
 | Name        | Description                                 | SlotProps |
 | ----------- | ------------------------------------------- | --------- |
-| `default` | The content inside the collapse transition. | `-`     |
+| `default` | Collapsed or expanded content | `-`     |

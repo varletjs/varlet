@@ -1,11 +1,13 @@
 <script setup>
-import { AppType, watchLang } from '@varlet/cli/client'
+import { Themes } from '@varlet/ui'
+import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { pack, use } from './locale'
 
-watchLang(use)
-
 const expand = ref(true)
+
+watchLang(use)
+watchDarkMode(Themes.dark)
 </script>
 
 <template>
