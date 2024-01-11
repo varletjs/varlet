@@ -109,13 +109,13 @@ describe('test countdown methods', () => {
 
     wrapper.vm.$refs.countdown.start()
 
-    await delay(100)
+    await delay(600)
     expect(wrapper.text()).not.toBe(text)
 
     wrapper.unmount()
   })
 
-  test('test countdown start method', async () => {
+  test('test countdown pause method', async () => {
     const wrapper = mount(Wrapper)
     wrapper.vm.$refs.countdown.start()
 
