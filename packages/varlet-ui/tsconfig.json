@@ -8,5 +8,6 @@
     "allowJs": true,
     "types": ["vitest/globals"]
   },
+  "declaration": true,
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
