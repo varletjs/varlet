@@ -44,7 +44,7 @@ const position = ref('right-bottom')
      <var-radio checked-value="right-bottom">right-bottom</var-radio>
    </var-radio-group>
 
-   <var-fab type="primary" :position="position" />
+   <var-fab :position="position" />
 </template>
 ```
 
@@ -63,7 +63,7 @@ const trigger = ref('click')
      <var-radio checked-value="hover">hover</var-radio>
    </var-radio-group>
 
-   <var-fab type="primary" :trigger="trigger">
+   <var-fab :trigger="trigger">
     <var-button class="action" type="info" round>
       <var-icon name="account-circle" />
     </var-button>
@@ -97,7 +97,7 @@ const direction = ref('top')
      <var-radio checked-value="left">left</var-radio>
    </var-radio-group>
 
-   <var-fab type="primary" :direction="direction">
+   <var-fab :direction="direction">
      <var-button class="action" type="info" round>
        <var-icon name="account-circle" />
      </var-button>
@@ -134,7 +134,7 @@ const drag = ref(false)
 <template>
   <var-switch v-model="drag" />
 
-  <var-fab type="primary" :drag="drag" />
+  <var-fab :drag="drag" />
 </template>
 ```
 
@@ -150,7 +150,7 @@ const disabled = ref(false)
 <template>
    <var-switch v-model="disabled" />
 
-   <var-fab type="primary" :disabled="disabled" />
+   <var-fab :disabled="disabled" />
 </template>
 ```
 
@@ -170,7 +170,7 @@ function toggle() {
 <template>
    <var-button type="primary" @click.stop="toggle">Toggle</var-button>
 
-   <var-fab :show="show" type="primary" />
+   <var-fab :show="show" />
 </template>
 ```
 
@@ -190,7 +190,7 @@ function toggle() {
 <template>
    <var-button type="primary" @click.stop="toggle">Toggle</var-button>
 
-   <var-fab v-model:active="active" type="primary">
+   <var-fab v-model:active="active">
      <var-button class="action" type="info" round>
        <var-icon name="account-circle" />
      </var-button>
