@@ -1,3 +1,22 @@
+# [2.21.0](https://github.com/varletjs/varlet/compare/v2.20.7...v2.21.0) (2024-01-12)
+
+
+### Bug Fixes
+
+* **card:** fix card floated z-index ([71379b2](https://github.com/varletjs/varlet/commit/71379b2a3100187866ba57a1d56d47e1ac6d6420))
+* **checkbox:** hidden default element when no default slot ([#1390](https://github.com/varletjs/varlet/issues/1390)) ([98d9e9c](https://github.com/varletjs/varlet/commit/98d9e9c029453cb3b08a42db88e47eecd9b7f8ea))
+* **collapse-transition:** use transition height instead of the all ([e29ff54](https://github.com/varletjs/varlet/commit/e29ff54fadfa43d513c2c7f480bf918c253ca5b0))
+* **image-preview:** hidden extra element when no extra slot ([#1387](https://github.com/varletjs/varlet/issues/1387)) ([44ce14e](https://github.com/varletjs/varlet/commit/44ce14e0837e09135a3b9916e41aed4eca66a957))
+* **radio:** hidden default element when no default slot ([#1389](https://github.com/varletjs/varlet/issues/1389)) ([05b090d](https://github.com/varletjs/varlet/commit/05b090d90aae7a2fee07e80fc1c1527e1fdcf744))
+* **step:** hidden default element when no default slot ([#1399](https://github.com/varletjs/varlet/issues/1399)) ([7a1d902](https://github.com/varletjs/varlet/commit/7a1d902973994df9d4f04d5e85a2cd400576b7bb))
+
+
+### Features
+
+* **ui:** support CollapseTransition component ([#1384](https://github.com/varletjs/varlet/issues/1384)) ([3987dd2](https://github.com/varletjs/varlet/commit/3987dd2396201a1eb7f15e7797c1b2e074bc83a6))
+
+
+
 ## [2.20.7](https://github.com/varletjs/varlet/compare/v2.20.6...v2.20.7) (2024-01-08)
 
 
