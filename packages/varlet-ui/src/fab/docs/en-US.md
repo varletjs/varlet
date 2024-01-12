@@ -113,7 +113,7 @@ const drag = ref(false)
 <template>
   <var-switch v-model="drag" />
 
-  <var-fab type="primary" :drag="drag" />
+  <var-fab :drag="drag" />
 </template>
 ```
 
@@ -129,7 +129,7 @@ const disabled = ref(false)
 <template>
    <var-switch v-model="disabled" />
 
-   <var-fab type="primary" :disabled="disabled" />
+   <var-fab :disabled="disabled" />
 </template>
 ```
 

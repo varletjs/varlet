@@ -44,7 +44,7 @@ const position = ref('right-bottom')
     <var-radio checked-value="right-bottom">right-bottom</var-radio>
   </var-radio-group>
 
-  <var-fab type="primary" :position="position" />
+  <var-fab :position="position" />
 </template>
 ```
 
@@ -126,7 +126,7 @@ const drag = ref(false)
 <template>
   <var-switch v-model="drag" />
 
-  <var-fab type="primary" :drag="drag" />
+  <var-fab :drag="drag" />
 </template>
 ```
 
@@ -142,7 +142,7 @@ const disabled = ref(false)
 <template>
   <var-switch v-model="disabled" />
 
-  <var-fab type="primary" :disabled="disabled" />
+  <var-fab :disabled="disabled" />
 </template>
 ```
 
@@ -162,7 +162,7 @@ function toggle() {
 <template>
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
-  <var-fab :show="show" type="primary" />
+  <var-fab :show="show" />
 </template>
 ```
 
