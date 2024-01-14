@@ -26,7 +26,7 @@ test('test snackbar style', async () => {
       lock-scroll
     />
    `
-  mount({
+  const wrapper = mount({
     components: {
       [VarSnackbar.name]: VarSnackbar,
     },
@@ -43,6 +43,8 @@ test('test snackbar style', async () => {
 
   await delay(500)
   expect(document.querySelector('.var-snackbar').style.display).toBe('none')
+
+  wrapper.unmount()
 })
 
 test('test snackbar event', async () => {
