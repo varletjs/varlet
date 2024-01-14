@@ -1,13 +1,13 @@
 import { useChildren, useParent } from '@varlet/use'
 import { error } from '../utils/logger'
 import { TABS_ITEMS_BIND_TAB_ITEM_KEY, type TabsItemsProvider } from '../tabs-items/provide'
-import { type ComputedRef } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import { type ListProvider } from '../list/provide'
 
 export interface TabItemProvider {
   index: ComputedRef<number>
   name: ComputedRef<string | number | undefined>
-  current: ComputedRef<boolean>
+  current: Ref<boolean>
   setCurrent: (value: boolean) => void
 }
 

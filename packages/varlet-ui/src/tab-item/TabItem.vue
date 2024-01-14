@@ -26,7 +26,7 @@ export default defineComponent({
     const tabItemProvider: TabItemProvider = {
       index,
       name,
-      current: computed(() => current.value),
+      current,
       setCurrent,
     }
 

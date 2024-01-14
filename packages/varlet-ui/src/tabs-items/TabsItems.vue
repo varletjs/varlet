@@ -1,5 +1,12 @@
 <template>
-  <var-swipe :class="n()" ref="swipe" :loop="loop" :touchable="canSwipe" :indicator="false" @change="handleSwipeChange">
+  <var-swipe
+    :class="n()"
+    ref="swipeRef"
+    :loop="loop"
+    :touchable="canSwipe"
+    :indicator="false"
+    @change="handleSwipeChange"
+  >
     <slot />
   </var-swipe>
 </template>
@@ -20,7 +27,7 @@ export default defineComponent({
   components: { VarSwipe },
   props,
   setup(props) {
-    const swipe = ref<null | typeof VarSwipe>(null)
+    const swipeRef = ref<null | typeof VarSwipe>(null)
     const { tabItemList, bindTabItem, length } = useTabItem()
 
     bindTabItem({})
@@ -35,27 +42,26 @@ export default defineComponent({
       }
     )
 
-    function matchName(active: number | string | undefined): TabItemProvider | undefined {
-      return tabItemList.find(({ name }: TabItemProvider) => active === name.value)
-    }
+    function matchActiveTabItem(active: number | string | undefined) {
+      const matchedNameItem = tabItemList.find(({ name }) => name.value != null && active === name.value)
+      const matchedIndexItem = tabItemList.find(({ index, name }) => name.value == null && active === index.value)
 
-    function matchIndex(active: number | string | undefined): TabItemProvider | undefined {
-      return tabItemList.find(({ index }: TabItemProvider) => active === index.value)
-    }
-
-    function matchActive(active: number | string | undefined): TabItemProvider | undefined {
-      return matchName(active) || matchIndex(active)
+      return matchedNameItem ?? matchedIndexItem
     }
 
     function handleActiveChange(newValue: number | string | undefined) {
-      const newActiveTabItemProvider: TabItemProvider | undefined = matchActive(newValue)
+      if (!swipeRef.value) {
+        return
+      }
+
+      const newActiveTabItemProvider = matchActiveTabItem(newValue)
       if (!newActiveTabItemProvider) {
         return
       }
 
       tabItemList.forEach(({ setCurrent }) => setCurrent(false))
       newActiveTabItemProvider.setCurrent(true)
-      swipe.value?.to(newActiveTabItemProvider.index.value)
+      swipeRef.value.to(newActiveTabItemProvider.index.value)
     }
 
     function handleSwipeChange(currentIndex: number) {
@@ -67,11 +73,11 @@ export default defineComponent({
 
     // expose
     function getSwipe() {
-      return swipe.value
+      return swipeRef.value
     }
 
     return {
-      swipe,
+      swipeRef,
       n,
       handleSwipeChange,
       getSwipe,
