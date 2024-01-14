@@ -15,7 +15,7 @@
       <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
-      <div :class="[n('icon')]">
+      <div v-if="iconName || type === 'loading' || $slots.icon">
         <var-icon v-if="iconName" :name="iconName" />
         <var-loading
           v-if="type === 'loading'"
@@ -130,7 +130,6 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../loading/loading';
-@import '../button/button';
 @import '../icon/icon';
 @import './snackbar';
 </style>
