@@ -2,11 +2,11 @@
   <Teleport :to="teleport === false ? undefined : teleport" :disabled="disabled || teleport === false">
     <transition :name="`${n()}-fade`" @after-enter="onOpened" @after-leave="onClosed">
       <var-snackbar-core v-bind="$props" :class="n('transition')">
-        <slot>{{ content }}</slot>
-        <template #icon>
+        <slot />
+        <template #icon v-if="$slots.icon">
           <slot name="icon" />
         </template>
-        <template #action>
+        <template #action v-if="$slots.action">
           <slot name="action" />
         </template>
       </var-snackbar-core>
