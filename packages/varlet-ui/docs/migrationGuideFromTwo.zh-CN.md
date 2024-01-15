@@ -52,3 +52,13 @@
 | `--color-on-warning-container` | `#fff` |
 | `--color-on-danger-container` | `#fff` |
 | `--color-outline` | `rgba(0, 0, 0, 0.12)` |
+
+## 组件库快速成型工具(@varlet/cli)
+
+### 命令重构
+
+- 新增 `compile:style-vars` 命令，用来编译组件的自定义属性
+
+### 文档相关
+
+- 新增md3亮色主题和暗色主题

@@ -51,3 +51,13 @@ This section mainly introduces the main changes of the `3.x` version compared to
 | `--color-on-warning-container` | `#fff` |
 | `--color-on-danger-container` | `#fff` |
 | `--color-outline` | `rgba(0, 0, 0, 0.12)` |
+
+## Component library rapid prototyping tool (@varlet/cli)
+
+### Command reconstruction
+
+- Added `compile:style-vars` command to compile custom properties of components
+
+### Document related
+
+- Added md3 light theme and dark theme
