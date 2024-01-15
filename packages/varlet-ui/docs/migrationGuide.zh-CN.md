@@ -8,7 +8,7 @@
 
 ### 组件重构
 
-- Menu 组件进行了重做，优化了 api 使其变得更易使用，在桌面端也有更优秀的边界检测能力和性能。具体使用方式参考 [Menu 文档](#/zh-CN/menu)， 
+- Menu 组件进行了重做，优化了 api 使其变得更易使用，在桌面端也有更优秀的边界检测能力和性能。具体使用方式参考 [Menu 文档](#/zh-CN/menu)
 - Select 组件的下拉菜单替换成了新版 Menu 组件
 - Pagination 组件的下拉菜单替换成了新版 Menu 组件
 - Loading 组件的默认颜色从 `currentColor` 更改为 `var(--color-primary)`
