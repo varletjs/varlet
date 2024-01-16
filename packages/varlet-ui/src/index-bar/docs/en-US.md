@@ -95,6 +95,7 @@ onMounted(() => {
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Custom index character | `-` |
+| `anchor-name` | Custom anchor content | `anchorName: string` anchor content |
 
 ### Methods
 Use ref to get IndexBar instance and call instance methods.
