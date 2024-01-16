@@ -89,7 +89,15 @@ export default defineComponent({
     function renderPopup() {
       return (
         <Transition name={n('$-fade')} onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
-          <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={props.show}>
+          <div
+            class={classes(
+              n(),
+              n('$--box'),
+              [props.overlay, n('--pointer-events-none')],
+            )}
+            style={{ zIndex: zIndex.value - 2 }}
+            v-show={props.show}
+          >
             {props.overlay && renderOverlay()}
             <Transition name={props.transition || n(`$-pop-${props.position}`)}>{renderContent()}</Transition>
           </div>

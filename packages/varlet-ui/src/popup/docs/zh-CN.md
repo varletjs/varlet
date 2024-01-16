@@ -10,11 +10,11 @@
 ```html
 <script setup>
 import { ref } from 'vue'
-  
+
 const center = ref(false)
 const top = ref(false)
 const bottom = ref(false)
-const left = ref(false) 
+const left = ref(false)
 const right = ref(false)
 </script>
 
@@ -36,7 +36,7 @@ const right = ref(false)
       右侧弹出
     </var-button>
   </var-space>
-  
+
   <var-popup v-model:show="center">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -45,7 +45,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="bottom" v-model:show="bottom">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -54,7 +54,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="top" v-model:show="top">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -63,7 +63,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="left" v-model:show="left">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -72,7 +72,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="right" v-model:show="right">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -96,7 +96,7 @@ const right = ref(false)
 ```html
 <script setup>
 import { ref } from 'vue'
-  
+
 const overlayClass = ref(false)
 const overlayStyle = ref(false)
 </script>
@@ -110,7 +110,7 @@ const overlayStyle = ref(false)
       遮罩层 style
     </var-button>
   </var-space>
-  
+
   <var-popup
     overlay-class="popup-example-custom-overlay"
     v-model:show="overlayClass"
@@ -122,7 +122,7 @@ const overlayStyle = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup
     :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
     v-model:show="overlayStyle"
