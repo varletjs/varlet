@@ -1,6 +1,8 @@
 import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
+export type ValidateTrigger = 'onChange' | 'onLazyChange'
+
 export const props = {
   modelValue: {
     default: false,
@@ -11,6 +13,7 @@ export const props = {
   inactiveValue: {
     default: false,
   },
+  lazyChange: Boolean,
   disabled: Boolean,
   readonly: Boolean,
   loading: Boolean,
@@ -23,7 +26,12 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  validateTrigger: {
+    type: Array as PropType<Array<ValidateTrigger>>,
+    default: () => ['onChange', 'onLazyChange'],
+  },
   onClick: defineListenerProp<(event: Event) => void>(),
+  onBeforeChange: defineListenerProp<(value: boolean, change: (value: boolean) => void) => void>(),
   onChange: defineListenerProp<(value: boolean) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),
 }

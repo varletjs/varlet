@@ -98,6 +98,32 @@ const value = ref(true)
 </template>
 ```
 
+### Asynchronous Change
+
+In some scenarios, you may need to wait for the server to return successfully before making changes.
+`lazy-change` prevents binding value updates on the component itself.
+Register `before-change` events for manual updates.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+
+function handleBeforeChange(value, change) {
+  setTimeout(() => change(value), 500)
+}
+</script>
+
+<template>
+  <var-switch 
+    lazy-change
+    v-model="value"
+    @before-change="handleBeforeChange"
+  />
+</template>
+```
+
 ## API
 
 ### Props

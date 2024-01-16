@@ -98,6 +98,32 @@ const value = ref(true)
 </template>
 ```
 
+### 异步变更
+
+在某些场景下需要等待服务器返回成功之后再执行变更。
+设置 `lazy-change` 后会阻止组件本身的绑定值更新操作，
+并注册 `before-change` 事件进行手动更新。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+
+function handleBeforeChange(value, change) {
+  setTimeout(() => change(value), 500)
+}
+</script>
+
+<template>
+  <var-switch 
+    lazy-change
+    v-model="value"
+    @before-change="handleBeforeChange"
+  />
+</template>
+```
+
 ## API
 
 ### 属性

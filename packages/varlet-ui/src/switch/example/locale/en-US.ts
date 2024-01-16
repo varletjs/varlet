@@ -7,4 +7,5 @@ export default {
   validateValue: 'Validate Value',
   text: 'Whether to open the switch',
   state: 'Error!',
+  lazyChange: 'Asynchronous Change',
 }
