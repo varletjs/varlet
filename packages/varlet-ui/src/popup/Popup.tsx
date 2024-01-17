@@ -90,11 +90,7 @@ export default defineComponent({
       return (
         <Transition name={n('$-fade')} onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
           <div
-            class={classes(
-              n(),
-              n('$--box'),
-              [props.overlay, n('--pointer-events-none')],
-            )}
+            class={classes(n(), n('$--box'), [!props.overlay, n('--pointer-events-none')])}
             style={{ zIndex: zIndex.value - 2 }}
             v-show={props.show}
           >
