@@ -3,6 +3,7 @@ import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from '.
 export declare const switchProps: Record<keyof SwitchProps, any>
 
 export type SwitchValidateTrigger = 'onChange' | 'onLazyChange'
+
 export interface SwitchProps extends BasicAttributes {
   modelValue?: any
   activeValue?: any
