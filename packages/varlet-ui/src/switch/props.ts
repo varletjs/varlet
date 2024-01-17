@@ -21,7 +21,7 @@ export const props = {
   loadingColor: String,
   closeColor: String,
   size: [String, Number],
-  rules: Array as PropType<Array<(v: boolean) => any>>,
+  rules: Array as PropType<Array<(v: any) => any>>,
   ripple: {
     type: Boolean,
     default: true,
@@ -31,7 +31,7 @@ export const props = {
     default: () => ['onChange', 'onLazyChange'],
   },
   onClick: defineListenerProp<(event: Event) => void>(),
-  onBeforeChange: defineListenerProp<(value: boolean, change: (value: boolean) => void) => void>(),
-  onChange: defineListenerProp<(value: boolean) => void>(),
-  'onUpdate:modelValue': defineListenerProp<(value: boolean) => void>(),
+  onBeforeChange: defineListenerProp<(value: any, change: (value: any) => void) => void>(),
+  onChange: defineListenerProp<(value: any) => void>(),
+  'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
 }

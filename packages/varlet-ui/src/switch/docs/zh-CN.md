@@ -142,6 +142,8 @@ function handleBeforeChange(value, change) {
 | `close-color`    | 关闭状态下的颜色 | _string_ | `-` |
 | `size`           | switch 的大小 | _string \| number_ | `-` |
 | `rules`          | 校验规则 | _array_  | `-` |
+| `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 
 ### 事件
 
@@ -149,6 +151,7 @@ function handleBeforeChange(value, change) {
 | ----- | -------------- | -------- |
 | `click` | 点击时触发 | `event: Event` |
 | `change` | 开关状态切换时触发 | `value: any` |
+| `before-change` | 变更之前(仅限 `lazy-change` 模式)触发 | `value: any` <br> `change: (value: any) => void` |
 
 ### 样式变量
 

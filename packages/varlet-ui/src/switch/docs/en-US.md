@@ -142,6 +142,8 @@ function handleBeforeChange(value, change) {
 | `loading-color`  | Color of loading icon | _string_ | `-` |
 | `size`           | Size of switch | _string \| number_ | `-` |
 | `rules`          | Validation rules | _array_  | `-` |
+| `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
+| `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 
 ### Events
 
@@ -149,6 +151,7 @@ function handleBeforeChange(value, change) {
 | ----- | -------------- | -------- |
 | `click` | Emitted when component is clicked | `event: Event` |
 | `change` | Emitted when check status changed | `value: any` |
+| `before-change` | Triggered before a change event (`lazy-change` mode only) | `value: any` <br> `change: (value: any) => void` |
 
 ### Style Variables
 
