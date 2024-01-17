@@ -1,5 +1,6 @@
 import fse from 'fs-extra'
 import sharp from 'sharp'
+import slash from 'slash'
 import webfont from 'webfont'
 import logger from '../shared/logger.js'
 import { parse, resolve } from 'path'
@@ -51,7 +52,7 @@ async function buildPNG(entry: string, pngDir: string, svgFiles: string[]) {
 
 function buildWebFont(name: string, entry: string) {
   return webfont.default({
-    files: `${entry}/*.svg`,
+    files: `${slash(entry)}/*.svg`,
     fontName: name,
     formats: ['ttf'],
     fontHeight: 512,
