@@ -178,6 +178,7 @@ const value = ref(0)
 | `decrement-button` | 是否显示减少按钮 | _boolean_ | `true` |
 | `press` | 是否开启按钮长按 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
+| `lazy-change` | 是否阻止组件本身的绑定值更新操作 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
 
