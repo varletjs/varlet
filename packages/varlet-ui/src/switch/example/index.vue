@@ -10,9 +10,16 @@ const values = reactive({
   value2: true,
   value3: true,
   value4: true,
+  value5: true,
 })
 
-const { value, value1, value2, value3, value4 } = toRefs(values)
+const { value, value1, value2, value3, value4, value5 } = toRefs(values)
+
+function handleBeforeChange(value, change) {
+  setTimeout(() => {
+    change(value)
+  }, 500)
+}
 
 watchLang(use)
 watchDarkMode(Themes.dark)
@@ -47,5 +54,9 @@ watchDarkMode(Themes.dark)
   <app-type>{{ pack.validateValue }}</app-type>
   <var-space :size="['3vmin', '9vmin']">
     <var-switch v-model="value4" :rules="[(v) => v === true || pack.state]" />
+  </var-space>
+  <app-type>{{ pack.lazyChange }}</app-type>
+  <var-space :size="['3vmin', '9vmin']">
+    <var-switch v-model="value5" lazy-change @before-change="handleBeforeChange" />
   </var-space>
 </template>
