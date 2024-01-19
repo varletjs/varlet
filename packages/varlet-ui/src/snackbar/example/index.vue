@@ -139,7 +139,7 @@ watchDarkMode(Themes.dark)
       {{ pack.text }}
     </var-snackbar>
 
-    <var-snackbar v-model:show="show5" :duration="1000">
+    <var-snackbar v-model:show="show5">
       {{ pack.text }}
       <template #icon>
         <var-icon name="heart-outline" />
