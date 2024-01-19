@@ -107,7 +107,7 @@ const indeterminate = ref(true)
 <template>
   <var-space :size="[0, 10]">
     <var-checkbox v-model="value" v-model:indeterminate="indeterminate">
-    不确定状态的值: {{ value }}
+      不确定状态的值: {{ value }}
     </var-checkbox>
     <var-button type="primary" @click="indeterminate = !indeterminate">切换</var-button>
   </var-space>
