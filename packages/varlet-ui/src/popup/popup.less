@@ -86,6 +86,7 @@
   &__content {
     overflow: auto;
     transition: all 0.25s;
+    pointer-events: auto;
   }
 
   &--content-background-color {
@@ -132,5 +133,9 @@
   &--safe-area-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
+  }
+
+  &--pointer-events-none {
+    pointer-events: none;
   }
 }

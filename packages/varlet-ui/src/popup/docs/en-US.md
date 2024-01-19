@@ -34,7 +34,7 @@ const right = ref(false)
       Right Popup
     </var-button>
   </var-space>
-  
+
   <var-popup v-model:show="center">
     <div class="popup-example-block">
       As he came into the window.
@@ -43,16 +43,16 @@ const right = ref(false)
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-  
+
   <var-popup position="bottom" v-model:show="bottom">
     <div class="popup-example-block">
-      As he came into the window. 
-      It was the sound of a crescendo. 
-      He came into her apartment. 
+      As he came into the window.
+      It was the sound of a crescendo.
+      He came into her apartment.
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-  
+
   <var-popup position="top" v-model:show="top">
     <div class="popup-example-block">
       As he came into the window.
@@ -61,7 +61,7 @@ const right = ref(false)
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-  
+
   <var-popup position="left" v-model:show="left">
     <div class="popup-example-block">
       As he came into the window.
@@ -70,7 +70,7 @@ const right = ref(false)
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-  
+
   <var-popup position="right" v-model:show="right">
     <div class="popup-example-block">
       As he came into the window.
@@ -94,7 +94,7 @@ const right = ref(false)
 ```html
 <script setup>
 import { ref } from 'vue'
-  
+
 const overlayClass = ref(false)
 const overlayStyle = ref(false)
 </script>
@@ -108,7 +108,7 @@ const overlayStyle = ref(false)
       Overlay Style
     </var-button>
   </var-space>
-  
+
   <var-popup
     overlay-class="popup-example-custom-overlay"
     v-model:show="overlayClass"
@@ -120,7 +120,7 @@ const overlayStyle = ref(false)
       He left the bloodstains on the carpet.
     </div>
   </var-popup>
-  
+
   <var-popup
     :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
     v-model:show="overlayStyle"
@@ -152,7 +152,7 @@ const overlayStyle = ref(false)
 <script setup>
 import { ref } from 'vue'
 import { Snackbar } from '@varlet/ui'
-  
+
 const event = ref(false)
 </script>
 
@@ -189,17 +189,17 @@ const event = ref(false)
 
 ### Props
 
-| Prop | Description                                                                                                   | Type | Default | 
-| --- |---------------------------------------------------------------------------------------------------------------| --- | --- | 
+| Prop | Description                                                                                                   | Type | Default |
+| --- |---------------------------------------------------------------------------------------------------------------| --- | --- |
 | `v-model:show` | Whether to display the Popup                                                                                  | _boolean_ | `false` |
 | `position` | Popup position with optional value of `top` `bottom` `right` `left` `center`                                  | _string_ | `center` |
-| `overlay` | Whether to display the overlay                                                                                | _boolean_ | `true` |  
+| `overlay` | Whether to display the overlay                                                                                | _boolean_ | `true` |
 | `overlay-class` | Custom overlay class                                                                                          | _string_ | `-` |
 | `overlay-style` | Custom overlay style                                                                                          | _object_ | `-` |
-| `default-style`  | Whether to enable the default style                                                                           | _boolean_   | `true`   |
+| `default-style`  | Whether to enable the default style                                                                          | _boolean_ | `true` |
 | `transition` | Transition animation name                                                                                     | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
-| `close-on-click-overlay` | Whether to click the overlay to close the Popup                                                               | _boolean_ | `true` | 
+| `close-on-click-overlay` | Whether to click the overlay to close the Popup                                                               | _boolean_ | `true` |
 | `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to'] \| false_ | `body` |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `safe-area-top`          | Whether to enable top safety zone adaptation	                                                                 | _boolean_             | `false`  |
