@@ -175,4 +175,32 @@ describe('test switch events', () => {
 
     wrapper.unmount()
   })
+
+  test('test counter lazy change', async () => {
+    const wrapper = mount({
+      components: {
+        [VarSwitch.name]: VarSwitch,
+      },
+      data() {
+        return {
+          value: true,
+        }
+      },
+      methods: {
+        async onBeforeChange(value, change) {
+          await delay(500)
+          change(value)
+        },
+      },
+      template: `<var-switch lazy-change v-model="value" @before-change="onBeforeChange" />`,
+    })
+
+    await wrapper.find('.var-switch__block').trigger('click')
+    expect(wrapper.vm.value).toBe(true)
+
+    await delay(600)
+    expect(wrapper.vm.value).toBe(false)
+
+    wrapper.unmount()
+  })
 })
