@@ -127,16 +127,16 @@ const value = ref([])
     <var-checkbox :checked-value="1">睡觉</var-checkbox>
   </var-checkbox-group>
 
-  <var-button 
-    class="button" 
-    type="primary" 
+  <var-button
+    class="button"
+    type="primary"
     @click="$refs.group.checkAll()"
   >
     全选
   </var-button>
-  <var-button 
-    class="button" 
-    type="primary" 
+  <var-button
+    class="button"
+    type="primary"
     @click="$refs.group.inverseAll()"
   >
     反选
@@ -156,7 +156,7 @@ const value = ref([])
 <template>
   <var-checkbox-group v-model="value" direction="vertical">
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
-    <var-checkbox :checked-value="1">睡觉</var-checkbox>   
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
   </var-checkbox-group>
 </template>
 ```
@@ -212,7 +212,7 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `horizontal` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
 #### Checkbox Props
 
