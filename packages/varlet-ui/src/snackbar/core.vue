@@ -15,7 +15,7 @@
       <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
-      <div v-if="iconName || type === 'loading' || $slots.icon">
+      <div :class="n('icon')" v-if="iconName || type === 'loading' || $slots.icon">
         <var-icon v-if="iconName" :name="iconName" />
         <var-loading
           v-if="type === 'loading'"
