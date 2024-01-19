@@ -141,7 +141,7 @@ function handleBeforeChange(value, change) {
 | `loading-color`  | 加载图标的颜色 | _string_ | `-` |
 | `close-color`    | 关闭状态下的颜色 | _string_ | `-` |
 | `size`           | switch 的大小 | _string \| number_ | `-` |
-| `rules`          | 校验规则 | _array_  | `-` |
+| `rules`          | 校验规则 | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 

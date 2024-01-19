@@ -141,7 +141,7 @@ function handleBeforeChange(value, change) {
 | `close-color`    | Background color when close | _string_ | `-` |
 | `loading-color`  | Color of loading icon | _string_ | `-` |
 | `size`           | Size of switch | _string \| number_ | `-` |
-| `rules`          | Validation rules | _array_  | `-` |
+| `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 
