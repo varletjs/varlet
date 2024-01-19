@@ -162,7 +162,7 @@ const value = ref(0)
 | `v-model` | The value of the binding | _string \| number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
 | `max` | Maximum value | _string \| number_ | `-` |
-| `step` | Step size | _string \| number_ | `-` |
+| `step` | Step size | _string \| number_ | `1` |
 | `decimal-length` | Preserve decimal places | _string \| number_ | `-` |
 | `color` | Background color | _string_ | `-` |
 | `input-width` | The width of the input box | _string \| number_ | `-` |

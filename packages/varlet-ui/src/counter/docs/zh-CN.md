@@ -162,7 +162,7 @@ const value = ref(0)
 | `v-model` | 绑定的值 | _string \| number_ | `0` |
 | `min` | 最小值 | _string \| number_ | `-` |
 | `max` | 最大值 | _string \| number_ | `-` |
-| `step` | 步长 | _string \| number_ | `-` |
+| `step` | 步长 | _string \| number_ | `1` |
 | `decimal-length` | 保留小数位数 | _string \| number_ | `-` |
 | `color` | 背景颜色 | _string_ | `-` |
 | `input-width` | 输入框的宽度 | _string \| number_ | `-` |
