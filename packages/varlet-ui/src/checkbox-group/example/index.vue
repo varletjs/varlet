@@ -52,20 +52,22 @@ watchDarkMode(Themes.dark)
   <var-checkbox readonly v-model="value5">{{ pack.currentValue }} {{ value5 }}</var-checkbox>
 
   <app-type>{{ pack.indeterminate }}</app-type>
-  <div class="indeterminate-container">
+  <var-space :size="[0, 10]">
     <var-checkbox v-model="value10" v-model:indeterminate="indeterminate">
       {{ pack.indeterminateValue }} {{ indeterminate }}
     </var-checkbox>
-    <var-button class="button" type="primary" @click="indeterminate = !indeterminate">{{ pack.toggle }}</var-button>
-  </div>
+    <var-button type="primary" @click="indeterminate = !indeterminate">{{ pack.toggle }}</var-button>
+  </var-space>
 
   <app-type>{{ pack.checkboxGroup }}</app-type>
   <var-checkbox-group ref="group" v-model="value6">
     <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
-    <var-button class="button" type="primary" @click="$refs.group.checkAll()">{{ pack.checkAll }}</var-button>
-    <var-button class="button" type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
   </var-checkbox-group>
+  <var-space :size="[0, 10]">
+    <var-button type="primary" @click="$refs.group.checkAll()">{{ pack.checkAll }}</var-button>
+    <var-button type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
+  </var-space>
   <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
 
   <app-type>{{ pack.vertical }}</app-type>
@@ -91,17 +93,8 @@ watchDarkMode(Themes.dark)
 </template>
 
 <style scoped lang="less">
-.indeterminate-container {
-  display: flex;
-  align-items: center;
-}
-
 .relation {
   margin-top: 10px;
-}
-
-.button {
-  margin-left: 10px;
 }
 
 .space {

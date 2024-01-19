@@ -105,7 +105,12 @@ const indeterminate = ref(true)
 </script>
 
 <template>
-  <var-checkbox v-model:indeterminate="indeterminate" v-model="value"></var-checkbox>
+  <var-space :size="[0, 10]">
+    <var-checkbox v-model="value" v-model:indeterminate="indeterminate">
+      Current value: {{ value }}
+    </var-checkbox>
+    <var-button type="primary" @click="indeterminate = !indeterminate">Toggle</var-button>
+  </var-space>
 </template>
 ```
 
@@ -126,21 +131,21 @@ const value = ref([])
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>
   </var-checkbox-group>
-
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.checkAll()"
-  >
-    Check All
-  </var-button>
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.inverseAll()"
-  >
-    Inverse All
-  </var-button>
+  <var-space :size="[0, 10]">
+    <var-button
+      type="primary"
+      @click="$refs.group.checkAll()"
+    >
+      Check All
+    </var-button>
+    <var-button
+      type="primary"
+      @click="$refs.group.inverseAll()"
+    >
+      Inverse All
+    </var-button>
+  </var-space>
+  <div>Current value: {{ value }}</div>
 </template>
 ```
 

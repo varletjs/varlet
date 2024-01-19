@@ -105,7 +105,12 @@ const indeterminate = ref(true)
 </script>
 
 <template>
-  <var-checkbox v-model:indeterminate="indeterminate" v-model="value"></var-checkbox>
+  <var-space :size="[0, 10]">
+    <var-checkbox v-model="value" v-model:indeterminate="indeterminate">
+    不确定状态的值: {{ value }}
+    </var-checkbox>
+    <var-button type="primary" @click="indeterminate = !indeterminate">切换</var-button>
+  </var-space>
 </template>
 ```
 
@@ -126,21 +131,21 @@ const value = ref([])
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
     <var-checkbox :checked-value="1">睡觉</var-checkbox>
   </var-checkbox-group>
-
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.checkAll()"
-  >
-    全选
-  </var-button>
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.inverseAll()"
-  >
-    反选
-  </var-button>
+  <var-space :size="[0, 10]">
+    <var-button
+      type="primary"
+      @click="$refs.group.checkAll()"
+    >
+      全选
+    </var-button>
+    <var-button
+      type="primary"
+      @click="$refs.group.inverseAll()"
+    >
+      反选
+    </var-button>
+  </var-space>
+  <div>当前的值: {{ value }}</div>
 </template>
 ```
 
