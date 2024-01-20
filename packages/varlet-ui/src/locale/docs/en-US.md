@@ -38,4 +38,4 @@ Locale.merge('en-US', {
 | `English` | en-US | _Locale.enUS_ | `v2.0.0` |
 | `Traditional Chinese (TW)` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `Traditional Chinese (HK)` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
-| `Persian Language` | fa-IR | _Locale.faIR_ | `v2.21.1` |
+| `Persian Language` | fa-IR | _Locale.faIR_ | `v2.22.0` |

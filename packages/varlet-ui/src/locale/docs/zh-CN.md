@@ -39,4 +39,4 @@ Locale.merge('en-US', {
 | `英语` | en-US| _Locale.enUS_ | `v2.0.0` |
 | `繁体中文(台)` | zh-TW | _Locale.zhTW_ | `v2.17.0` |
 | `繁体中文(港)` | zh-HK | _Locale.zhHK_ | `v2.17.0` |
-| `波斯语` | fa-IR | _Locale.faIR_ | `v2.21.1` |
+| `波斯语` | fa-IR | _Locale.faIR_ | `v2.22.0` |
