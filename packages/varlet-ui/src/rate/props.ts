@@ -39,7 +39,7 @@ export const props = {
     default: true,
   },
   clearable: Boolean,
-  rules: Array as PropType<Array<(value: any) => any>>,
+  rules: Array as PropType<Array<(value: number) => any>>,
   onChange: defineListenerProp<(score: number) => void>(),
   'onUpdate:modelValue': defineListenerProp<(score: number) => void>(),
 }
