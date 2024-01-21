@@ -2,6 +2,7 @@ import zhCN from './zh-CN'
 import enUS from './en-US'
 import zhTW from './zh-TW'
 import zhHK from './zh-HK'
+import faIR from './fa-IR'
 import { ref, type Ref } from 'vue'
 import { type Month, type Week } from '../date-picker/props'
 
@@ -87,6 +88,7 @@ export default {
   enUS,
   zhTW,
   zhHK,
+  faIR,
   packs,
   pack,
   add,
