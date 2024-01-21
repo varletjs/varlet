@@ -1,6 +1,6 @@
 {
   "name": "@varlet/use",
-  "version": "2.21.0",
+  "version": "2.22.0",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",

@@ -1109,6 +1109,8 @@ export interface StyleVars {
   snackbarContentPadding?: string
   '--snackbar-action-margin'?: string
   snackbarActionMargin?: string
+  '--snackbar-icon-margin'?: string
+  snackbarIconMargin?: string
   '--snackbar-vertical-action-margin'?: string
   snackbarVerticalActionMargin?: string
   '--space-size-mini-y'?: string

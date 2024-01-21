@@ -12,9 +12,7 @@ export const props = {
     type: String as PropType<SnackbarPosition>,
     default: 'top',
   },
-  content: {
-    type: [String, Function, Object] as PropType<SlotType>,
-  },
+  content: [String, Function, Object] as PropType<SlotType>,
   contentClass: String,
   duration: {
     type: Number,

@@ -105,7 +105,12 @@ const indeterminate = ref(true)
 </script>
 
 <template>
-  <var-checkbox v-model:indeterminate="indeterminate" v-model="value"></var-checkbox>
+  <var-space :size="[0, 10]">
+    <var-checkbox v-model="value" v-model:indeterminate="indeterminate">
+      Current value: {{ value }}
+    </var-checkbox>
+    <var-button type="primary" @click="indeterminate = !indeterminate">Toggle</var-button>
+  </var-space>
 </template>
 ```
 
@@ -126,21 +131,21 @@ const value = ref([])
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>
   </var-checkbox-group>
-
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.checkAll()"
-  >
-    Check All
-  </var-button>
-  <var-button
-    class="button"
-    type="primary"
-    @click="$refs.group.inverseAll()"
-  >
-    Inverse All
-  </var-button>
+  <var-space :size="[0, 10]">
+    <var-button
+      type="primary"
+      @click="$refs.group.checkAll()"
+    >
+      Check All
+    </var-button>
+    <var-button
+      type="primary"
+      @click="$refs.group.inverseAll()"
+    >
+      Inverse All
+    </var-button>
+  </var-space>
+  <div>Current value: {{ value }}</div>
 </template>
 ```
 
@@ -212,7 +217,7 @@ const value = ref([])
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `horizontal` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
 
 #### Checkbox Props
 
@@ -223,7 +228,7 @@ const value = ref([])
 | `unchecked-value` | Unchecked value | _any_ | `false` |
 | `checked-color` | Checked color | _string_ | `-` |
 | `unchecked-color` | Unchecked color | _string_ | `-` |
-| `icon-size` | Icon size | _string |\ number_ | `-` |
+| `icon-size` | Icon size | _string \| number_ | `-` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `indeterminate` | Whether indeterminate status(style has the highest priority) | _boolean_ | `false` |

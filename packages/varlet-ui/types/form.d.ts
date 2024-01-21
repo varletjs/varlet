@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { ComputedRef, VNode, Ref } from 'vue'
+import type { ComputedRef, Ref, VNode } from 'vue'
 
 export declare const formProps: Record<keyof FormProps, any>
 

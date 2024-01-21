@@ -1,3 +1,25 @@
+# [2.22.0](https://github.com/varletjs/varlet/compare/v2.21.0...v2.22.0) (2024-01-21)
+
+
+### Bug Fixes
+
+* **cli:** add missing shared package for lint command and remove useless path ([#1413](https://github.com/varletjs/varlet/issues/1413)) ([84bff4a](https://github.com/varletjs/varlet/commit/84bff4af001ec9668e7b7fdac47b660572c15c42))
+* **cli:** icons build failure in windows ([#1411](https://github.com/varletjs/varlet/issues/1411)) ([e5240b0](https://github.com/varletjs/varlet/commit/e5240b0d76af340fde860d57021811dd6a96285a))
+* **picker:** changed value invalid on v-model mode and close [#1415](https://github.com/varletjs/varlet/issues/1415) ([a25411e](https://github.com/varletjs/varlet/commit/a25411edde986ac5812d571d88647fe3fa59809e))
+* **popup:** allow click through when overlay is false ([#1416](https://github.com/varletjs/varlet/issues/1416)) ([cb1132f](https://github.com/varletjs/varlet/commit/cb1132f5c1bd1cc674903e02e3fd47c5302638ed))
+* **snackbar:** hidden icon and action element when no related slots and remove useless code ([#1406](https://github.com/varletjs/varlet/issues/1406)) ([e2bb1bb](https://github.com/varletjs/varlet/commit/e2bb1bb8dcb8225a2edb2b6aca27e739dde5b017))
+
+
+### Features
+
+* **index-bar:** support anchor name slot ([#1400](https://github.com/varletjs/varlet/issues/1400)) ([649c11b](https://github.com/varletjs/varlet/commit/649c11b049f31de339fbb42bdb14992abe55322b))
+* **locale:** support Persian language ([#1423](https://github.com/varletjs/varlet/issues/1423)) ([dc4381c](https://github.com/varletjs/varlet/commit/dc4381c4b389df15abe649b18a2e983136d4dede)), closes [#1419](https://github.com/varletjs/varlet/issues/1419)
+* **snackbar:** support --snackbar-icon-margin ([#1425](https://github.com/varletjs/varlet/issues/1425)) ([5cc91be](https://github.com/varletjs/varlet/commit/5cc91be786dc6f09c27c1e1f0ee97566ec40a688))
+* **switch:** support lazyChange and validateTrigger prop and onBefor… ([#1412](https://github.com/varletjs/varlet/issues/1412)) ([d109e69](https://github.com/varletjs/varlet/commit/d109e697520c8797d63d13e83b7104e52ba02b38))
+* **vscode-extension:** improve to not show statusBarItem if dependencies are not install varlet/ui ([#1421](https://github.com/varletjs/varlet/issues/1421)) ([6a052d2](https://github.com/varletjs/varlet/commit/6a052d253d26761c7e9ae68e703570dd304d732f))
+
+
+
 # [2.21.0](https://github.com/varletjs/varlet/compare/v2.20.7...v2.21.0) (2024-01-12)
 
 

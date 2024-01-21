@@ -145,20 +145,11 @@ export default defineComponent({
 
     let prevIndexes: number[] = []
 
-    buildScrollColumns()
+    initScrollColumns()
 
-    watch(() => props.columns, buildScrollColumns, { deep: true })
+    watch(() => props.columns, initScrollColumns, { deep: true })
 
-    watch(
-      () => modelValue.value,
-      () => {
-        if (props.cascade && props.modelValue.length) {
-          buildScrollColumns()
-        } else {
-          updateScrollColumnsIndex()
-        }
-      }
-    )
+    watch(() => modelValue.value, initScrollColumns)
 
     function getOptionKey(key: 'text' | 'value' | 'children') {
       const keyMap = {
@@ -179,7 +170,7 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      return columns.map((column) => {
+      return columns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
@@ -193,6 +184,9 @@ export default defineComponent({
           scrollEl: null,
           scrolling: false,
         }
+        const value = modelValue.value[idx]
+        const index = scrollColumn.column.findIndex((option) => value === getValue(option))
+        scrollColumn.index = index === -1 ? 0 : index
         scrollTo(scrollColumn)
         return scrollColumn
       })
@@ -206,7 +200,7 @@ export default defineComponent({
       return scrollColumns
     }
 
-    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[]) {
+    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[], syncModelValue = true) {
       if (children.length) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -223,37 +217,35 @@ export default defineComponent({
         }
 
         scrollColumns.push(scrollColumn)
-        if (props.modelValue.length) {
-          const index = children.findIndex((option) => modelValue.value[scrollColumns.length - 1] === getValue(option))
+
+        if (syncModelValue) {
+          const value = modelValue.value[scrollColumns.length - 1]
+          const index = children.findIndex((option) => value === getValue(option))
           scrollColumn.index = index === -1 ? 0 : index
         }
 
         scrollTo(scrollColumn)
-        createChildren(scrollColumns, scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [])
+        createChildren(
+          scrollColumns,
+          scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
+          syncModelValue
+        )
       }
     }
 
     function rebuildChildren(scrollColumn: ScrollColumn) {
       scrollColumns.value.splice(scrollColumns.value.indexOf(scrollColumn) + 1)
-      createChildren(scrollColumns.value, scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [])
+      createChildren(
+        scrollColumns.value,
+        scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
+        false
+      )
     }
 
-    function buildScrollColumns() {
+    function initScrollColumns() {
       scrollColumns.value = props.cascade
         ? normalizeCascadeMode(props.columns as PickerColumnOption[])
         : normalizeNormalMode(props.columns as PickerColumnOption[][])
-
-      if (!props.cascade) {
-        updateScrollColumnsIndex()
-      }
-    }
-
-    function updateScrollColumnsIndex() {
-      scrollColumns.value.forEach((scrollColumn, idx) => {
-        const index = scrollColumn.column.findIndex((option) => modelValue.value[idx] === getValue(option))
-        scrollColumn.index = index === -1 ? 0 : index
-        scrollTo(scrollColumn)
-      })
 
       const { indexes } = getPicked()
       setPrevIndexes(indexes)
@@ -367,13 +359,13 @@ export default defineComponent({
 
       // Can't trigger transition end when not scrolling, change needs to be triggered manually.
       if (!scrollColumn.scrolling) {
-        change(scrollColumn)
+        handleScrollColumnChange(scrollColumn)
       }
     }
 
     function handleTransitionend(scrollColumn: ScrollColumn) {
       scrollColumn.scrolling = false
-      change(scrollColumn)
+      handleScrollColumnChange(scrollColumn)
     }
 
     function isSamePicked() {
@@ -381,14 +373,14 @@ export default defineComponent({
       return indexes.every((index, idx) => index === prevIndexes[idx])
     }
 
-    function change(scrollColumn: ScrollColumn) {
-      const { cascade, onChange } = props
+    function handleScrollColumnChange(scrollColumn: ScrollColumn) {
+      const { onChange, cascade } = props
 
       if (isSamePicked()) {
         return
       }
 
-      if (cascade && !props.modelValue.length) {
+      if (cascade) {
         rebuildChildren(scrollColumn)
       }
 

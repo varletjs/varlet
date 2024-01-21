@@ -17,7 +17,7 @@ export async function lint() {
       './src',
       './packages/varlet-cli/src',
       './packages/varlet-ui/src',
-      './packages/varlet-icons/lib',
+      './packages/varlet-shared/src',
       './packages/varlet-vite-plugins/src',
       './packages/varlet-use/src',
       './packages/varlet-touch-emulator',

@@ -9,7 +9,9 @@
         :style="{ color: active === anchorName && highlightColor ? highlightColor : undefined }"
         @click="anchorClick({ anchorName, manualCall: true })"
       >
-        {{ anchorName }}
+        <slot name="anchor-name" :anchor-name="anchorName">
+          {{ anchorName }}
+        </slot>
       </li>
     </ul>
   </div>

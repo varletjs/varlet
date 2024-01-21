@@ -162,12 +162,12 @@ const value = ref(0)
 | `v-model` | The value of the binding | _string \| number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
 | `max` | Maximum value | _string \| number_ | `-` |
-| `step` | Step size | _string \| number_ | `-` |
+| `step` | Step size | _string \| number_ | `1` |
 | `decimal-length` | Preserve decimal places | _string \| number_ | `-` |
 | `color` | Background color | _string_ | `-` |
 | `input-width` | The width of the input box | _string \| number_ | `-` |
 | `input-text-size` | The text size of the input box | _string \| number_ | `-` |
-| `button-size` | Button size | _string_ | `true` |
+| `button-size` | Button size | _string \| number_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
@@ -178,6 +178,7 @@ const value = ref(0)
 | `decrement-button` | Whether to display the decrement button | _boolean_ | `true` |
 | `press` | Long press the open button | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `lazy-change` | Whether to prevent the component itself from updating the bound value | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: number) => any>_ | `-` |
 

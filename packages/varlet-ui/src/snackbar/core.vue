@@ -15,7 +15,7 @@
       <div :class="[n('content'), contentClass]">
         <slot>{{ content }}</slot>
       </div>
-      <div :class="[n('icon')]">
+      <div :class="n('icon')" v-if="iconName || type === 'loading' || $slots.icon">
         <var-icon v-if="iconName" :name="iconName" />
         <var-loading
           v-if="type === 'loading'"
@@ -71,17 +71,18 @@ export default defineComponent({
       () => props.lockScroll
     )
 
-    const isForbidClick: ComputedRef<boolean> = computed(() => props.type === 'loading' || props.forbidClick)
-
-    const iconName: ComputedRef<string> = computed(() => {
-      if (!props.type) return ''
-
-      return ICON_TYPE_DICT[props.type]
+    const isForbidClick: ComputedRef<boolean> = computed(() => {
+      const { type, forbidClick } = props
+      return type === 'loading' || forbidClick
     })
 
-    const updateAfterDuration = () => {
+    const iconName: ComputedRef<string> = computed(() => (!props.type ? '' : ICON_TYPE_DICT[props.type]))
+
+    function updateAfterDuration() {
       timer.value = setTimeout(() => {
-        props.type !== 'loading' && call(props['onUpdate:show'], false)
+        if (props.type !== 'loading') {
+          call(props['onUpdate:show'], false)
+        }
       }, props.duration)
     }
 
@@ -91,7 +92,7 @@ export default defineComponent({
         if (show) {
           call(props.onOpen)
           updateAfterDuration()
-        } else if (show === false) {
+        } else {
           clearTimeout(timer.value)
           call(props.onClose)
         }
@@ -115,11 +116,11 @@ export default defineComponent({
 
     return {
       SNACKBAR_TYPE,
-      n,
-      classes,
       zIndex,
       iconName,
       isForbidClick,
+      n,
+      classes,
     }
   },
 })
@@ -129,7 +130,6 @@ export default defineComponent({
 @import '../styles/common';
 @import '../styles/elevation';
 @import '../loading/loading';
-@import '../button/button';
 @import '../icon/icon';
 @import './snackbar';
 </style>

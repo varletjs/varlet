@@ -162,12 +162,12 @@ const value = ref(0)
 | `v-model` | 绑定的值 | _string \| number_ | `0` |
 | `min` | 最小值 | _string \| number_ | `-` |
 | `max` | 最大值 | _string \| number_ | `-` |
-| `step` | 步长 | _string \| number_ | `-` |
+| `step` | 步长 | _string \| number_ | `1` |
 | `decimal-length` | 保留小数位数 | _string \| number_ | `-` |
 | `color` | 背景颜色 | _string_ | `-` |
 | `input-width` | 输入框的宽度 | _string \| number_ | `-` |
 | `input-text-size` | 输入框的文字大小 | _string \| number_ | `-` |
-| `button-size` | 按钮大小 | _string_ | `true` |
+| `button-size` | 按钮大小 | _string \| number_ | `-` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_| `true` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
@@ -178,6 +178,7 @@ const value = ref(0)
 | `decrement-button` | 是否显示减少按钮 | _boolean_ | `true` |
 | `press` | 是否开启按钮长按 | _boolean_ | `true` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
+| `lazy-change` | 是否阻止组件本身的绑定值更新操作 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: number) => any>_ | `-` |
 

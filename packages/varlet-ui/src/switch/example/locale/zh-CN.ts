@@ -8,4 +8,5 @@ export default {
   validateValue: '值的校验',
   text: '是否打开开关',
   state: '错误！',
+  lazyChange: '异步变更',
 }

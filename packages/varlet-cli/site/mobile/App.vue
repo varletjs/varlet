@@ -82,7 +82,7 @@
 
 <script lang="ts">
 import config from '@config'
-import { computed, ComputedRef, defineComponent, ref, Ref, watch } from 'vue'
+import { computed,  defineComponent, ref, watch, type Ref, type ComputedRef } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   getBrowserTheme,

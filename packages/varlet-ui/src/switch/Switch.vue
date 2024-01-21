@@ -59,7 +59,7 @@ import { defineComponent, computed, nextTick } from 'vue'
 import { useValidation, createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { props } from './props'
+import { props, type ValidateTrigger } from './props'
 import { type SwitchProvider } from './provide'
 import { call } from '@varlet/shared'
 
@@ -130,8 +130,11 @@ export default defineComponent({
       return v(props.rules, props.modelValue)
     }
 
-    function validateWithTrigger() {
-      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    function validateWithTrigger(trigger: ValidateTrigger) {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
     }
 
     function switchActive(event: Event) {
@@ -144,7 +147,9 @@ export default defineComponent({
         modelValue,
         activeValue,
         inactiveValue,
+        lazyChange,
         'onUpdate:modelValue': updateModelValue,
+        onBeforeChange,
       } = props
 
       call(onClick, event)
@@ -155,9 +160,16 @@ export default defineComponent({
 
       const newValue = modelValue === activeValue ? inactiveValue : activeValue
 
-      call(onChange, newValue)
-      call(updateModelValue, newValue)
-      validateWithTrigger()
+      if (lazyChange) {
+        call(onBeforeChange, newValue, (value) => {
+          call(updateModelValue, value)
+          validateWithTrigger('onLazyChange')
+        })
+      } else {
+        call(onChange, newValue)
+        call(updateModelValue, newValue)
+        validateWithTrigger('onChange')
+      }
     }
 
     function hover(value: boolean) {
