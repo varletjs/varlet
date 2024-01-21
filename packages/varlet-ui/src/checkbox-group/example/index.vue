@@ -64,11 +64,12 @@ watchDarkMode(Themes.dark)
     <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
   </var-checkbox-group>
+  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
+  <var-divider margin="14px 0" />
   <var-space :size="[0, 10]">
     <var-button type="primary" @click="$refs.group.checkAll()">{{ pack.checkAll }}</var-button>
     <var-button type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
   </var-space>
-  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
 
   <app-type>{{ pack.vertical }}</app-type>
   <var-checkbox-group v-model="value9" direction="vertical">
