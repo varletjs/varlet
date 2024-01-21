@@ -202,7 +202,7 @@ const score = ref(3)
 | `readonly`       | 是否为只读状态，只读状态下无法修改评分 | _boolean_ | `false` |
 | `clearable`      | 是否允许清空 | _boolean_ | `false` |
 | `ripple`         | 是否使用水波纹 | _boolean_ | `true` |
-| `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: string \| number) => any>_ | `-` |
+| `rules`          | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: number) => any>_ | `-` |
 
 ### 事件
 

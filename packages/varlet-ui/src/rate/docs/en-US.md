@@ -200,7 +200,7 @@ const score = ref(3)
 | `readonly`       | Whether it is in readonly status. The rating cannot be modified in readonly status. | _boolean_ | `false` |
 | `clearable`      | whether to allow to clear | _boolean_ | `false` |
 | `ripple`         | Whether to use water ripple | _boolean_ | `true` |
-| `rules`          | The validation rules, returns `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(v: string \| number) => any>_ | `-` |
+| `rules`          | The validation rules, returns `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(v: number) => any>_ | `-` |
 
 ### Events
 
