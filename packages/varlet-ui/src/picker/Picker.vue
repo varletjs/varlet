@@ -200,11 +200,7 @@ export default defineComponent({
       return scrollColumns
     }
 
-    function createChildren(
-      scrollColumns: ScrollColumn[],
-      children: PickerColumnOption[],
-      syncModelValue = true
-    ) {
+    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[], syncModelValue = true) {
       if (children.length) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
