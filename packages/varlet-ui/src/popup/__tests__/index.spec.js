@@ -85,30 +85,83 @@ test('test popup close on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test popup default style', async () => {
+test('test popup default style', () => {
   const wrapper = mount(Wrapper, {
     props: {
-      defaultStyle: false,
+      show: true,
+      defaultStyle: true,
     },
   })
 
-  await wrapper.setData({ show: true })
-  expect(wrapper.find('.var-popup--content-background-color').exists()).toBeFalsy()
-  expect(wrapper.find('.var-elevation--3').exists()).toBeFalsy()
+  expect(wrapper.find('.var-popup--content-background-color').exists()).toBe(true)
+  expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
 
   wrapper.unmount()
 })
 
-test('test popup safe area', async () => {
+test('test popup safeArea prop', () => {
   const wrapper = mount(Wrapper, {
     props: {
+      show: true,
       safeArea: true,
+    },
+  })
+
+  expect(wrapper.find('.var-popup--safe-area').exists()).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('test popup safeAreaTop prop', () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
       safeAreaTop: true,
     },
   })
 
-  await wrapper.setData({ show: true })
+  expect(wrapper.find('.var-popup--safe-area-top').exists()).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('test popup overlayClass prop', () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      overlayClass: 'test-class',
+    },
+  })
+
+  expect(wrapper.find('.test-class').exists()).toBe(true)
+
+  wrapper.unmount()
+})
+
+test('test popup overlayStyle prop', () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      overlayStyle: {
+        backgroundColor: 'red',
+      },
+    },
+  })
+
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test popup position prop', () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      position: 'bottom',
+    },
+  })
+
+  expect(wrapper.find('.var-popup--bottom').exists()).toBe(true)
 
   wrapper.unmount()
 })
