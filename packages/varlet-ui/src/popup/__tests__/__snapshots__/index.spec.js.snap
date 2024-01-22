@@ -1,16 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test popup overlayStyle prop 1`] = `
-"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
-  <div class="var--box var-popup" style="z-index: 1998;">
-    <div class="var-popup__overlay" style="z-index: 1999; background-color: red;"></div>
-    <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3" style="z-index: 2000;"> default slot content </div>
-    </transition-stub>
-  </div>
-</transition-stub>"
-`;
-
 exports[`test popup show 1`] = `
 "<transition-stub name="var-fade" appear="false" persisted="false" css="true">
   <div class="var--box var-popup" style="z-index: 1998; display: none;">

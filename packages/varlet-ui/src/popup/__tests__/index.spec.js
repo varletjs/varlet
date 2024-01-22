@@ -85,7 +85,7 @@ test('test popup close on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test popup default style', () => {
+test('test popup default style', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -96,10 +96,16 @@ test('test popup default style', () => {
   expect(wrapper.find('.var-popup--content-background-color').exists()).toBe(true)
   expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
 
+  await wrapper.setProps({
+    defaultStyle: false,
+  })
+  expect(wrapper.find('.var-popup--content-background-color').exists()).toBe(false)
+  expect(wrapper.find('.var-elevation--3').exists()).toBe(false)
+
   wrapper.unmount()
 })
 
-test('test popup safeArea prop', () => {
+test('test popup safeArea prop', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -109,10 +115,15 @@ test('test popup safeArea prop', () => {
 
   expect(wrapper.find('.var-popup--safe-area').exists()).toBe(true)
 
+  await wrapper.setProps({
+    safeArea: false,
+  })
+  expect(wrapper.find('.var-popup--safe-area').exists()).toBe(false)
+
   wrapper.unmount()
 })
 
-test('test popup safeAreaTop prop', () => {
+test('test popup safeAreaTop prop', async () => {
   const wrapper = mount(Wrapper, {
     props: {
       show: true,
@@ -121,6 +132,11 @@ test('test popup safeAreaTop prop', () => {
   })
 
   expect(wrapper.find('.var-popup--safe-area-top').exists()).toBe(true)
+
+  await wrapper.setProps({
+    safeAreaTop: false,
+  })
+  expect(wrapper.find('.var-popup--safe-area-top').exists()).toBe(false)
 
   wrapper.unmount()
 })
@@ -143,25 +159,27 @@ test('test popup overlayStyle prop', () => {
     props: {
       show: true,
       overlayStyle: {
-        backgroundColor: 'red',
+        background: 'red',
       },
     },
   })
 
-  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-popup__overlay').attributes('style')).toContain('background: red;')
 
   wrapper.unmount()
 })
 
 test('test popup position prop', () => {
-  const wrapper = mount(Wrapper, {
-    props: {
-      show: true,
-      position: 'bottom',
-    },
+  ;['top', 'bottom', 'right', 'left', 'center'].forEach((position) => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        show: true,
+        position,
+      },
+    })
+
+    expect(wrapper.find(`.var-popup--${position}`).exists()).toBe(true)
+
+    wrapper.unmount()
   })
-
-  expect(wrapper.find('.var-popup--bottom').exists()).toBe(true)
-
-  wrapper.unmount()
 })
