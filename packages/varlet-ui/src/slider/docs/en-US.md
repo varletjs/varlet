@@ -36,7 +36,7 @@ const value = ref(25)
 
 ### Dual Thumbs
 
-Open the double slider mode through the `range` attribute. Make sure the `value` is an **array**.
+Open the double slider mode through the `range` attribute. Make sure the `value` is an array.
 
 ```html
 <script setup>
