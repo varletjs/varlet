@@ -36,7 +36,7 @@ const value = ref(25)
 
 ### 双滑块
 
-通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个**数组**。
+通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个数组。
 
 ```html
 <script setup>
