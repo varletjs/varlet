@@ -253,8 +253,7 @@ const value2 = ref([7, 64])
 | `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
 | `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
 | `direction` | Direction of slider, Can be set to `vertical horizontal`                           | _string_ | `horizontal` |
-| `rules`| Validation rules                                                         | _array_  | `-` |
-
+| `rules`| Validation rules                                                         | _Array<(v: number \| number[]) => any>_ | `-`               |
 ### Events
 
 | Event | Description | arguments |
