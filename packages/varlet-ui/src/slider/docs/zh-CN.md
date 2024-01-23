@@ -254,7 +254,7 @@ const value2 = ref([7, 64])
 | `disabled`         | 是否禁用                              | _boolean_ | `false`           |
 | `readonly`         | 是否只读                              | _boolean_ | `false`           |
 | `direction`        | 显示方向，可选值为 `vertical horizontal`        | _string_ | `horizontal` |
-| `rules`            | 校验规则                              | _array_ | `-`               |
+| `rules`            | 校验规则                              | _Array<(v: number \| number[]) => any>_ | `-`               |
 
 ### 事件
 
