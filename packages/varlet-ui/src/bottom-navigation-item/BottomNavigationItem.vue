@@ -44,7 +44,7 @@ export default defineComponent({
   props,
   setup(props) {
     const name = computed<string | undefined>(() => props.name)
-    const isActive = computed<boolean>(() => active.value === name.value || active.value === index.value)
+    const isActive = computed<boolean>(() => [name.value, index.value].includes(active.value))
     const badgeProps = ref({})
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
     const { active, activeColor, inactiveColor } = bottomNavigation
