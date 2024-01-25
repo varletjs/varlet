@@ -220,7 +220,7 @@ const value = ref()
 | Prop            | Description                                                                                                                  | Type              | Default           |
 |-----------------|----------------------------------------------------------------------------|----------------------|-------------------|
 | `v-model`  | The value of the binding                                                      | _any \| any[]_              | `-`         |
-| `v-model:show`  | Whether to show the menu                                                                                                     | _string_             | `default`         |
+| `v-model:show`  | Whether to show the menu                                                                                                     |_boolean_             | `false`         |
 | `size`  | Menu size, optional values `normal` `mini` `small` `large`        | _string_              | `normal`         |
 | `multiple`     | Whether to select multiple                                                      | _boolean_           | `false` |
 | `scrollable`     | Whether to enable scrolling                                                      | _boolean_           | `false` |

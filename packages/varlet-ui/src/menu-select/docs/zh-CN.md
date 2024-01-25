@@ -220,7 +220,7 @@ const value = ref()
 | 参数              | 说明                                                          | 类型                    | 默认值               |
 |-----------------|-------------------------------------------------------------|-----------------------|-------------------|
 | `v-model`  | 绑定的值                                                      | _any \| any[]_              | `-`         |
-| `v-model:show`  | 是否显示菜单                                                      | _string_              | `default`         |
+| `v-model:show`  | 是否显示菜单                                                      | _boolean_              | `false`         |
 | `size`  | 菜单尺寸，可选值 `normal` `mini` `small` `large`        | _string_              | `normal`         |
 | `multiple`     | 是否多选                                                      | _boolean_           | `false` |
 | `scrollable`     | 是否可滚动                                                      | _boolean_           | `false` |
