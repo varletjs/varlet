@@ -21,10 +21,11 @@
 import Ripple from '../ripple'
 import VarBadge from '../badge'
 import VarIcon from '../icon'
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useBottomNavigation, type BottomNavigationItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
+import { type BadgeProps } from '../../types'
 import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('bottom-navigation-item')
@@ -45,7 +46,7 @@ export default defineComponent({
   setup(props) {
     const name = computed<string | undefined>(() => props.name)
     const isActive = computed<boolean>(() => [name.value, index.value].includes(active.value))
-    const badgeProps = ref({})
+    const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
     const { active, activeColor, inactiveColor } = bottomNavigation
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
@@ -54,14 +55,6 @@ export default defineComponent({
     }
 
     bindBottomNavigation(bottomNavigationItemProvider)
-
-    watch(
-      () => props.badge,
-      (newValue) => {
-        badgeProps.value = newValue === true ? defaultBadgeProps : props.badge
-      },
-      { immediate: true }
-    )
 
     function handleClick() {
       const active = name.value ?? index.value
