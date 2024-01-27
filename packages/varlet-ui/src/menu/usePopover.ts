@@ -75,6 +75,10 @@ export function usePopover(options: UsePopoverOptions) {
   let enterHost = false
 
   const computeHostSize = () => {
+    if (!host.value) {
+      return
+    }
+
     const { width, height } = getStyle(host.value!)
 
     hostSize.value = {
