@@ -59,8 +59,8 @@ importers:
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.5)
       '@varlet/release':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.2.1
+        version: 0.2.2
       '@varlet/shared':
         specifier: workspace:*
         version: link:../varlet-shared
@@ -2005,8 +2005,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: false
 
-  /@varlet/release@0.1.2:
-    resolution: {integrity: sha512-0tpBDtIUxUj9kjwNyhKWN+kRqzTLongNP9CY32WDfEdmhzqb7E6K6vKy3X4JNRzVMaZCFOgSLulUWnOPsXqsEw==}
+  /@varlet/release@0.2.2:
+    resolution: {integrity: sha512-G4SDu+P8MyGbWLJQ87IWqtzgn8xZiGBAZtFiuF2c+9N+cvbzSajKna+fP0/IwCbYuzx/9+BSOB8jP3h6ieSOSg==}
     engines: {node: '>=16.0.0', pnpm: '>=8.0'}
     hasBin: true
     dependencies:
@@ -5777,7 +5777,7 @@ packages:
     resolution: {integrity: sha512-SgOTCX/EZXtZxBE5eJ97P4yGM5n37BwRU+YMsH4vNzFqJV/oWFXXCmwFlgWUM4PrakybVOueJJ6pwHqSVhTFDw==}
     engines: {node: '>=16'}
     dependencies:
-      '@babel/code-frame': 7.22.5
+      '@babel/code-frame': 7.23.5
       error-ex: 1.3.2
       json-parse-even-better-errors: 3.0.0
       lines-and-columns: 2.0.4
