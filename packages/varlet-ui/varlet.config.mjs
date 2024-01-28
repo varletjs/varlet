@@ -110,18 +110,10 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '从 1.x 迁移',
-          'en-US': 'Migrate from 1.x',
-        },
-        doc: 'migrationGuide',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '从 2.x 迁移',
           'en-US': 'Migrate from 2.x',
         },
-        doc: 'migrationGuideFromTwo',
+        doc: 'migrationGuide',
         type: 3,
       },
       {
