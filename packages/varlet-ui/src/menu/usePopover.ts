@@ -79,7 +79,7 @@ export function usePopover(options: UsePopoverOptions) {
       return
     }
 
-    const { width, height } = getStyle(host.value!)
+    const { width, height } = getStyle(host.value)
 
     hostSize.value = {
       width: toPxNum(width),
