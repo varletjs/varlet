@@ -71,6 +71,7 @@ const changeRoute = (item: Menu) => {
   overflow-y: scroll;
   box-shadow: 0 8px 12px var(--site-config-color-shadow);
   background: var(--site-config-color-bar);
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
