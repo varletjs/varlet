@@ -28,7 +28,6 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const ownTop = ref(0)
     const disabled = ref(false)
     const name = computed(() => props.index)
     const anchorEl = ref<HTMLElement | RendererNode | null>(null)
@@ -38,19 +37,17 @@ export default defineComponent({
     const indexAnchorProvider: IndexAnchorProvider = {
       index,
       name,
-      ownTop,
-      setOwnTop,
       setDisabled,
+      getOffsetTop,
     }
 
     bindIndexBar(indexAnchorProvider)
 
-    function setOwnTop() {
+    function getOffsetTop() {
       if (!anchorEl.value) {
-        return
+        return 0
       }
-
-      ownTop.value = (anchorEl.value as RendererNode).$el
+      return (anchorEl.value as RendererNode).$el
         ? (anchorEl.value as RendererNode).$el.offsetTop
         : (anchorEl.value as HTMLElement).offsetTop
     }

@@ -9,21 +9,23 @@ import { expect, vi, describe } from 'vitest'
 
 mockScrollTo()
 
-function mockIndexBarOwnTop() {
+function mockIndexAnchorOffsetTop() {
   const originForEach = Array.prototype.forEach
 
   Array.prototype.forEach = function (fn, thisArg) {
-    let changedArr = this
+    let mockedArray = this
 
     if (this && this.map) {
-      changedArr = this.map((value, index) => {
-        if (value.ownTop && !value.ownTop.value) value.ownTop.value = index % 2 === 0 ? index * 10 : index * -10
+      mockedArray = this.map((value, index) => {
+        if (value.getOffsetTop) {
+          value.getOffsetTop = vi.fn(() => (index % 2 === 0 ? index * 10 : index * -10))
+        }
 
         return value
       })
     }
 
-    originForEach.call(changedArr, fn, thisArg)
+    originForEach.call(mockedArray, fn, thisArg)
   }
 
   return {
@@ -32,6 +34,9 @@ function mockIndexBarOwnTop() {
     },
   }
 }
+
+const handleClick = vi.fn()
+const handleChange = vi.fn()
 
 const Wrapper = {
   components: {
@@ -46,12 +51,10 @@ const Wrapper = {
   `,
 }
 
-const clickHandle = vi.fn()
-const changeHandle = vi.fn()
 const Wrapper2 = {
   template: `
     <div style="height: 50px; overflow: auto">
-      <var-index-bar @click="clickHandle" @change="changeHandle" ref="bar" highlight-color="purple">
+      <var-index-bar @click="handleClick" @change="handleChange" ref="bar" highlight-color="purple">
         <var-index-anchor index="A">test A</var-index-anchor>
         <p>test</p>
         <p>test</p>
@@ -77,8 +80,8 @@ const Wrapper2 = {
     [VarIndexAnchor.name]: VarIndexAnchor,
   },
   methods: {
-    clickHandle,
-    changeHandle,
+    handleClick,
+    handleChange,
   },
 }
 
@@ -185,7 +188,7 @@ describe('test index-bar component events', () => {
 
     expect(anchorItems[0].classes()).toContain('var-index-bar__anchor-item--active')
 
-    expect(clickHandle).toHaveBeenCalledTimes(1)
+    expect(handleClick).toHaveBeenCalledTimes(1)
 
     wrapper.unmount()
   })
@@ -207,7 +210,7 @@ describe('test index-bar component events', () => {
   test('test indexBar scroll to trigger change event', async () => {
     vi.clearAllMocks()
 
-    const { mockRestore } = mockIndexBarOwnTop()
+    const { mockRestore } = mockIndexAnchorOffsetTop()
     const wrapper = mount(Wrapper2, { attachTo: document.body })
 
     await delay(100)
@@ -215,7 +218,7 @@ describe('test index-bar component events', () => {
     wrapper.element.scrollTop = 150
     await wrapper.trigger('scroll')
 
-    expect(changeHandle).toHaveBeenCalled()
+    expect(handleChange).toHaveBeenCalled()
 
     mockRestore()
     wrapper.unmount()

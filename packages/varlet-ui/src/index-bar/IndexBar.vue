@@ -67,9 +67,8 @@ export default defineComponent({
       () => length.value,
       async () => {
         await doubleRaf()
-        indexAnchors.forEach(({ name, setOwnTop }) => {
+        indexAnchors.forEach(({ name }) => {
           if (name.value) anchorNameList.value.push(name.value)
-          setOwnTop()
         })
       }
     )
@@ -122,10 +121,12 @@ export default defineComponent({
       const offsetTop = getOffsetTop()
 
       indexAnchors.forEach((anchor: IndexAnchorProvider, index: number) => {
-        const anchorTop = anchor.ownTop.value
+        const anchorTop = anchor.getOffsetTop()
         const top = scrollTop - anchorTop + stickyOffsetTop.value - offsetTop
         const distance =
-          index === indexAnchors.length - 1 ? scrollHeight : indexAnchors[index + 1].ownTop.value - anchor.ownTop.value
+          index === indexAnchors.length - 1
+            ? scrollHeight
+            : indexAnchors[index + 1].getOffsetTop() - anchor.getOffsetTop()
 
         anchor.setDisabled(true)
 
@@ -151,7 +152,8 @@ export default defineComponent({
       }
 
       const offsetTop = getOffsetTop()
-      const top = indexAnchor.ownTop.value - stickyOffsetTop.value + offsetTop
+      const indexAnchorTop = indexAnchor.getOffsetTop()
+      const top = indexAnchorTop - stickyOffsetTop.value + offsetTop
       const left = getScrollLeft(scroller!)
 
       clickedName.value = anchorName

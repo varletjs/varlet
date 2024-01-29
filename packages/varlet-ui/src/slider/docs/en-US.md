@@ -36,7 +36,7 @@ const value = ref(25)
 
 ### Dual Thumbs
 
-Open the double slider mode through the `range` attribute. Make sure the `value` is an **array**.
+Open the double slider mode through the `range` attribute. Make sure the `value` is an array.
 
 ```html
 <script setup>
@@ -253,8 +253,7 @@ const value2 = ref([7, 64])
 | `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
 | `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
 | `direction` | Direction of slider, Can be set to `vertical horizontal`                           | _string_ | `horizontal` |
-| `rules`| Validation rules                                                         | _array_  | `-` |
-
+| `rules`| Validation rules                                                         | _Array<(v: number \| number[]) => any>_ | `-`               |
 ### Events
 
 | Event | Description | arguments |

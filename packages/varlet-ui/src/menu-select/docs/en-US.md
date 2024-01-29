@@ -217,10 +217,12 @@ const value = ref()
 
 ### Props
 
+#### MenuSelect Props
+
 | Prop            | Description                                                                                                                  | Type              | Default           |
 |-----------------|----------------------------------------------------------------------------|----------------------|-------------------|
 | `v-model`  | The value of the binding                                                      | _any \| any[]_              | `-`         |
-| `v-model:show`  | Whether to show the menu                                                                                                     | _string_             | `default`         |
+| `v-model:show`  | Whether to show the menu                                                                                                     |_boolean_             | `false`         |
 | `size`  | Menu size, optional values `normal` `mini` `small` `large`        | _string_              | `normal`         |
 | `multiple`     | Whether to select multiple                                                      | _boolean_           | `false` |
 | `scrollable`     | Whether to enable scrolling                                                      | _boolean_           | `false` |
@@ -237,6 +239,14 @@ const value = ref()
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
+
+#### MenuOption Props
+
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| `label` | The text that the option displays | _any_ | `-` |
+| `value` | The value of the option binding | _any_ | `-` |
+| `disabled` | Whether to disable | _boolean_ | `false` |
 
 ### Placement
 
@@ -265,6 +275,8 @@ const value = ref()
 
 ### Methods
 
+#### MenuSelect Methods
+
 | Method   | Description                     | Arguments | Return |
 | --- |---------------------------------| --- | --- |
 | `open` | Open Menu                       | `-` | `-` |
@@ -272,6 +284,8 @@ const value = ref()
 | `resize` | This method can be called to redraw when the default slot element of Menu select changes its position and size | `-` | `-` |
 
 ### Events
+
+#### MenuSelect Events
 
 | Event    | Description | Arguments |
 | --- | --- | --- |
@@ -283,14 +297,24 @@ const value = ref()
 
 ### Slots
 
+#### MenuSelect Slots
+
 | Name | Description | SlotProps |
 | --- |----------------------| --- |
 | `default` | Menu select trigger element | `-` |
 | `options` | Menu select options         | `-` |
 
+#### MenuOption Slots
+
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| `default` | Options to display the content | `-` |
+
 ### Style Variables
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+#### Select Variables
 
 | Variable | Default |
 | --- | --- |
@@ -298,6 +322,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
 | `--menu-select-menu-background-color` | `#fff` |
+
+#### Option Variables
+
+| Variable | Default |
+| --- | --- |
 | `--menu-option-normal-height` | `38px` |
 | `--menu-option-small-height` | `30px` |
 | `--menu-option-mini-height` | `24px` |
@@ -310,3 +339,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-option-selected-background` | `var(--color-primary)` |
 | `--menu-option-text-color` | `#555` |
 | `--menu-option-disabled-color` | `var(--color-text-disabled)` |
+

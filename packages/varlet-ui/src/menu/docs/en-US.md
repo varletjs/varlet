@@ -222,7 +222,7 @@ it is recommended to wrap a `block` element.
 
 | Prop            | Description                                                                                                                  | Type              | Default           |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------|-------------------|
-| `v-model:show`  | Whether to show the menu                                                                                                     | _string_             | `default`         |
+| `v-model:show`  | Whether to show the menu                                                                                                     | _boolean_             | `false`         |
 | `placement`     | Menu popup placement                                                                                                         | _Placement_          | `cover-top-start` |
 | `strategy`       | Menu position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x`      | The x-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |

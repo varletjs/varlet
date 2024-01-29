@@ -36,7 +36,7 @@ const value = ref(25)
 
 ### 双滑块
 
-通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个**数组**。
+通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个数组。
 
 ```html
 <script setup>
@@ -254,7 +254,7 @@ const value2 = ref([7, 64])
 | `disabled`         | 是否禁用                              | _boolean_ | `false`           |
 | `readonly`         | 是否只读                              | _boolean_ | `false`           |
 | `direction`        | 显示方向，可选值为 `vertical horizontal`        | _string_ | `horizontal` |
-| `rules`            | 校验规则                              | _array_ | `-`               |
+| `rules`            | 校验规则                              | _Array<(v: number \| number[]) => any>_ | `-`               |
 
 ### 事件
 

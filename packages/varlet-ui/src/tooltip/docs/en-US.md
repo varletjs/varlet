@@ -182,7 +182,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `content` | Display content | _string_              | `-`       |
 | `color`          | Tooltip background color                                                            | _string_  | `-`       |
 | `type`           | Tooltip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
-| `placement` | Tooltip popup placement                                        | _Placement_          | `top`     |
+| `placement` | Tooltip popup placement                                        | _Placement_          | `bottom`     |
 | `strategy`       | Tooltip position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
 | `offset-x` | The x-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |
 | `offset-y` | The y-axis offset, relative to the tooltip-aligned position    | _number \| string_   | `0` |

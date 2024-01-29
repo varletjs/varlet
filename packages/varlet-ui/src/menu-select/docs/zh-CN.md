@@ -217,10 +217,12 @@ const value = ref()
 
 ### 属性
 
+#### MenuSelect Props
+
 | 参数              | 说明                                                          | 类型                    | 默认值               |
 |-----------------|-------------------------------------------------------------|-----------------------|-------------------|
 | `v-model`  | 绑定的值                                                      | _any \| any[]_              | `-`         |
-| `v-model:show`  | 是否显示菜单                                                      | _string_              | `default`         |
+| `v-model:show`  | 是否显示菜单                                                      | _boolean_              | `false`         |
 | `size`  | 菜单尺寸，可选值 `normal` `mini` `small` `large`        | _string_              | `normal`         |
 | `multiple`     | 是否多选                                                      | _boolean_           | `false` |
 | `scrollable`     | 是否可滚动                                                      | _boolean_           | `false` |
@@ -237,6 +239,14 @@ const value = ref()
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
+
+#### MenuOption Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| `label` | 选项显示的文本 | _any_ | `-` |
+| `value` | 选项绑定的值 | _any_ | `-` |
+| `disabled` | 是否禁用 | _boolean_ | `false` |
 
 ### Placement
 
@@ -265,6 +275,8 @@ const value = ref()
 
 ### 方法
 
+#### MenuSelect Methods
+
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `open` | 打开 MenuSelect | `-` | `-` |
@@ -272,6 +284,8 @@ const value = ref()
 | `resize` | MenuSelect 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
 
 ### 事件
+
+#### MenuSelect Events
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
@@ -283,14 +297,24 @@ const value = ref()
 
 ### 插槽
 
+#### MenuSelect Slots
+
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 菜单关联的触发元素 | `-` |
 | `options` | 菜单选项内容 | `-` |
 
+#### MenuOption Slots
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `default` | 选项显示的内容 | `-` |
+
 ### 样式变量
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+#### Select Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -298,6 +322,11 @@ const value = ref()
 | `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
 | `--menu-select-menu-background-color` | `#fff` |
+
+#### Option Variables
+
+| 变量名 | 默认值 |
+| --- | --- |
 | `--menu-option-normal-height` | `38px` |
 | `--menu-option-small-height` | `30px` |
 | `--menu-option-mini-height` | `24px` |

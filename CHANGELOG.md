@@ -1,3 +1,15 @@
+## [2.22.1](https://github.com/varletjs/varlet/compare/v2.22.0...v2.22.1) (2024-01-29)
+
+
+### Bug Fixes
+
+* fix changedTouches patched error ([3189038](https://github.com/varletjs/varlet/commit/31890383fcae39b741e67fb751eeca5ad87a4bad))
+* **index-bar:** index anchor offsetTop get timing error and close [#1436](https://github.com/varletjs/varlet/issues/1436)([#1449](https://github.com/varletjs/varlet/issues/1449)) ([f124799](https://github.com/varletjs/varlet/commit/f1247996deddb29d47998b4bc16238d700cfdf58))
+* **menu:** don't compute hostSize when no host element ([#1448](https://github.com/varletjs/varlet/issues/1448)) ([469257a](https://github.com/varletjs/varlet/commit/469257ae45b935376ca07573f3a00527281f8096))
+* **tabs:** hidden scrollbar for firefox ([#1454](https://github.com/varletjs/varlet/issues/1454)) ([a9aef80](https://github.com/varletjs/varlet/commit/a9aef800611c562ded0e585a34932fa98bf7800c))
+
+
+
 # [2.22.0](https://github.com/varletjs/varlet/compare/v2.21.0...v2.22.0) (2024-01-21)
 
 
