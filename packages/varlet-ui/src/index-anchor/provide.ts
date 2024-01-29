@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useParent } from '@varlet/use'
 import { error } from '../utils/logger'
 import { INDEX_BAR_BIND_INDEX_ANCHOR_KEY, type IndexBarProvider } from '../index-bar/provide'
@@ -6,9 +6,8 @@ import { INDEX_BAR_BIND_INDEX_ANCHOR_KEY, type IndexBarProvider } from '../index
 export interface IndexAnchorProvider {
   index: ComputedRef<number> | null
   name: ComputedRef<string | number | undefined>
-  ownTop: Ref<number>
-  setOwnTop: () => void
   setDisabled: (value: boolean) => void
+  getOffsetTop: () => number
 }
 
 export function useIndexBar() {
