@@ -114,9 +114,14 @@ export default defineComponent({
       }
     }
 
+    function setScroller() {
+      scroller = getParentScroller(stickyEl.value as HTMLElement)
+    }
+
     function handleScroll() {
       if (!scroller) {
-        return
+        setScroller()
+        scroller !== window && (scroller as HTMLElement).addEventListener('scroll', handleScroll)
       }
 
       // returns undefined when disabled = true
@@ -136,8 +141,6 @@ export default defineComponent({
 
     async function addScrollListener() {
       await doubleRaf()
-      scroller = getParentScroller(stickyEl.value as HTMLElement)
-      scroller !== window && scroller.addEventListener('scroll', handleScroll)
       handleScroll()
     }
 
