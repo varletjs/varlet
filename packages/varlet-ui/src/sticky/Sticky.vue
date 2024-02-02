@@ -62,7 +62,10 @@ export default defineComponent({
 
     watch(() => props.disabled, resize)
 
-    onSmartMounted(addScrollListener)
+    onSmartMounted(async () => {
+      await doubleRaf()
+      handleScroll()
+    })
 
     onSmartUnmounted(removeScrollListener)
 
@@ -114,14 +117,18 @@ export default defineComponent({
       }
     }
 
-    function setScroller() {
+    function setupScroller() {
       scroller = getParentScroller(stickyEl.value as HTMLElement)
+
+      if (scroller !== window) {
+        scroller.addEventListener('scroll', handleScroll)
+      }
     }
 
     function handleScroll() {
+      // scroller may change after page switch for nuxt
       if (!scroller) {
-        setScroller()
-        scroller !== window && (scroller as HTMLElement).addEventListener('scroll', handleScroll)
+        setupScroller()
       }
 
       // returns undefined when disabled = true
@@ -132,20 +139,19 @@ export default defineComponent({
       }
     }
 
+    function removeScrollListener() {
+      if (!scroller || scroller === window) {
+        return
+      }
+
+      scroller.removeEventListener('scroll', handleScroll)
+    }
+
     // expose
     async function resize() {
       isFixed.value = false
       await raf()
       computeFixedParams()
-    }
-
-    async function addScrollListener() {
-      await doubleRaf()
-      handleScroll()
-    }
-
-    function removeScrollListener() {
-      scroller !== window && scroller.removeEventListener('scroll', handleScroll)
     }
 
     return {
