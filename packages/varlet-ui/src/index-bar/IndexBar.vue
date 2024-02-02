@@ -67,9 +67,9 @@ export default defineComponent({
       () => length.value,
       async () => {
         await doubleRaf()
-        indexAnchors.forEach(({ name }) => {
-          if (name.value) anchorNameList.value.push(name.value)
-        })
+        anchorNameList.value = indexAnchors
+          .filter(({ name }) => name.value != null)
+          .map(({ name }) => name.value) as Array<string | number>
       }
     )
 
