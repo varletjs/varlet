@@ -1,3 +1,15 @@
+## [2.22.2](https://github.com/varletjs/varlet/compare/v2.22.1...v2.22.2) (2024-02-03)
+
+
+### Bug Fixes
+
+* fix defineProps limited to a type literal or a reference to a local interface and close [#1458](https://github.com/varletjs/varlet/issues/1458) ([64ba155](https://github.com/varletjs/varlet/commit/64ba155a5b3e2a9e828ed60dbb38b8d30b067070))
+* **index-bar:** init scroller when start to scroll for nuxt ([#1460](https://github.com/varletjs/varlet/issues/1460)) ([9b9ad8c](https://github.com/varletjs/varlet/commit/9b9ad8c35c15cc9fce14536d9f80ff14fe8592b7))
+* **index-bar:** recollect anchor name that is empty from anchors when length changes ([#1459](https://github.com/varletjs/varlet/issues/1459)) ([e61d046](https://github.com/varletjs/varlet/commit/e61d046b55e4e4e84822aec352d88737c1fac544))
+* **sticky:** init scroller when start scrolling to avoid the value of scroller becomes window for nuxt ([#1456](https://github.com/varletjs/varlet/issues/1456)) ([43637b9](https://github.com/varletjs/varlet/commit/43637b9d440ec7bdf601e3f0b1e89eef36ed86d5))
+
+
+
 ## [2.22.1](https://github.com/varletjs/varlet/compare/v2.22.0...v2.22.1) (2024-01-29)
 
 
