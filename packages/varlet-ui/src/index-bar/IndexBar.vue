@@ -67,16 +67,13 @@ export default defineComponent({
       () => length.value,
       async () => {
         await doubleRaf()
-        indexAnchors.forEach(({ name }) => {
-          if (name.value) anchorNameList.value.push(name.value)
-        })
+        anchorNameList.value = indexAnchors
+          .filter(({ name }) => name.value != null)
+          .map(({ name }) => name.value) as Array<string | number>
       }
     )
 
-    onSmartMounted(async () => {
-      await setScroller()
-      addScrollerListener()
-    })
+    onSmartMounted(setupScroller)
 
     onBeforeUnmount(removeScrollerListener)
 
@@ -170,17 +167,17 @@ export default defineComponent({
       clickedName.value = ''
     }
 
-    async function setScroller() {
-      await doubleRaf()
+    function setupScroller() {
       scroller = getParentScroller(barEl.value as HTMLElement)
-    }
-
-    function addScrollerListener() {
-      scroller!.addEventListener('scroll', handleScroll)
+      scroller.addEventListener('scroll', handleScroll)
     }
 
     function removeScrollerListener() {
-      scroller!.removeEventListener('scroll', handleScroll)
+      if (!scroller) {
+        return
+      }
+
+      scroller.removeEventListener('scroll', handleScroll)
     }
 
     // expose
