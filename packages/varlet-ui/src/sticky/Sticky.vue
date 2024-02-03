@@ -64,6 +64,7 @@ export default defineComponent({
 
     onSmartMounted(async () => {
       await doubleRaf()
+      setupScroller()
       handleScroll()
     })
 
@@ -126,11 +127,6 @@ export default defineComponent({
     }
 
     function handleScroll() {
-      // scroller may change after page switch for nuxt
-      if (!scroller) {
-        setupScroller()
-      }
-
       // returns undefined when disabled = true
       const fixedParams = computeFixedParams()
 
