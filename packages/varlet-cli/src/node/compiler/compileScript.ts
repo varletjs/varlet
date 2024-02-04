@@ -145,9 +145,10 @@ export async function compileScript(script: string, file: string) {
     code = resolveDependence(file, code)
     code = extractStyleDependencies(file, code, IMPORT_CSS_RE)
     code = extractStyleDependencies(file, code, IMPORT_LESS_RE)
-    removeSync(file)
-    writeFileSync(replaceExt(file, getScriptExtname()), code, 'utf8')
   }
+
+  removeSync(file)
+  writeFileSync(replaceExt(file, getScriptExtname()), code, 'utf8')
 }
 
 export async function compileScriptFile(file: string) {
