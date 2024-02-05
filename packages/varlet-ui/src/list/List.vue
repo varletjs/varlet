@@ -84,6 +84,10 @@ export default defineComponent({
     }
 
     function removeScrollerListener() {
+      if (!scroller) {
+        return
+      }
+
       scroller.removeEventListener('scroll', check)
     }
 
