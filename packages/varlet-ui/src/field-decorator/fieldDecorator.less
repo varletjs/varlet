@@ -9,30 +9,30 @@
   --field-decorator-line-focus-size: 2px;
   --field-decorator-line-border-radius: 4px;
   --field-decorator-disabled-color: var(--color-text-disabled);
-  --field-decorator-standard-normal-padding-top: 22px;
-  --field-decorator-standard-normal-padding-bottom: 4px;
-  --field-decorator-standard-normal-icon-padding: 22px 0 4px;
-  --field-decorator-standard-normal-non-hint-padding-top: 4px;
-  --field-decorator-standard-normal-placeholder-translate-y: var(--field-decorator-standard-normal-padding-top);
-  --field-decorator-standard-small-padding-top: 18px;
-  --field-decorator-standard-small-padding-bottom: 4px;
-  --field-decorator-standard-small-icon-padding: 18px 0 4px;
-  --field-decorator-standard-small-non-hint-padding-top: 2px;
-  --field-decorator-standard-small-placeholder-translate-y: var(--field-decorator-standard-small-padding-top);
-  --field-decorator-outlined-normal-padding-top: 16px;
-  --field-decorator-outlined-normal-padding-bottom: 16px;
+  --field-decorator-standard-normal-margin-top: 22px;
+  --field-decorator-standard-normal-margin-bottom: 4px;
+  --field-decorator-standard-normal-icon-margin-top: 22px;
+  --field-decorator-standard-normal-icon-margin-bottom: 4px;
+  --field-decorator-standard-normal-non-hint-margin-top: 4px;
+  --field-decorator-standard-small-margin-top: 18px;
+  --field-decorator-standard-small-margin-bottom: 4px;
+  --field-decorator-standard-small-icon-margin-top: 18px;
+  --field-decorator-standard-small-icon-margin-bottom: 4px;
+  --field-decorator-standard-small-non-hint-margin-top: 2px;
+  --field-decorator-outlined-normal-margin-top: 16px;
+  --field-decorator-outlined-normal-margin-bottom: 16px;
   --field-decorator-outlined-normal-padding-left: 16px;
   --field-decorator-outlined-normal-padding-right: 16px;
   --field-decorator-outlined-normal-placeholder-space: 4px;
-  --field-decorator-outlined-normal-icon-padding: 16px 0 16px;
-  --field-decorator-outlined-normal-placeholder-translate-y: var(--field-decorator-outlined-normal-padding-top);
-  --field-decorator-outlined-small-padding-top: 8px;
-  --field-decorator-outlined-small-padding-bottom: 8px;
+  --field-decorator-outlined-normal-icon-margin-top: 16px;
+  --field-decorator-outlined-normal-icon-margin-bottom: 16px;
+  --field-decorator-outlined-small-margin-top: 8px;
+  --field-decorator-outlined-small-margin-bottom: 8px;
   --field-decorator-outlined-small-padding-left: 12px;
   --field-decorator-outlined-small-padding-right: 12px;
   --field-decorator-outlined-small-placeholder-space: 2px;
-  --field-decorator-outlined-small-icon-padding: 8px 0 8px;
-  --field-decorator-outlined-small-placeholder-translate-y: var(--field-decorator-outlined-small-padding-top);
+  --field-decorator-outlined-small-icon-margin-top: 8px;
+  --field-decorator-outlined-small-icon-margin-bottom: 8px;
 }
 
 .var-field-decorator {
@@ -84,6 +84,25 @@
     cursor: pointer;
   }
 
+  &__placeholder-text {
+    max-width: calc(
+      133% - var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-padding-right)
+    );
+    position: absolute;
+    z-index: -1;
+    display: inline-block;
+    pointer-events: none;
+    opacity: 0;
+    height: 0;
+    font-size: var(--field-decorator-placeholder-size);
+  }
+
+  &__placeholder-text--small {
+    max-width: calc(
+      133% - var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-padding-right)
+    );
+  }
+
   &--placeholder-hidden {
     visibility: hidden;
   }
@@ -103,17 +122,21 @@
 
   &--standard {
     .var-field-decorator__middle {
-      padding: var(--field-decorator-standard-normal-padding-top) 0
-        var(--field-decorator-standard-normal-padding-bottom);
+      margin-top: var(--field-decorator-standard-normal-margin-top);
+      margin-bottom: var(--field-decorator-standard-normal-margin-bottom);
     }
 
     .var-field-decorator__icon {
-      padding: var(--field-decorator-standard-normal-icon-padding);
+      margin-top: var(--field-decorator-standard-normal-icon-margin-top);
+      margin-bottom: var(--field-decorator-standard-normal-icon-margin-bottom);
     }
 
     .var-field-decorator__placeholder {
       max-width: 100%;
-      transform: translate(0, var(--field-decorator-standard-normal-placeholder-translate-y));
+      transform: translate(
+        var(--field-decorator-middle-offset-left),
+        var(--field-decorator-standard-normal-margin-top)
+      );
     }
 
     .var-field-decorator--placeholder-hint {
@@ -142,11 +165,18 @@
     }
 
     .var-field-decorator--middle-non-hint {
-      padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
+      margin-top: var(--field-decorator-standard-normal-non-hint-margin-top);
     }
 
     .var-field-decorator--icon-non-hint {
-      padding-top: var(--field-decorator-standard-normal-non-hint-padding-top);
+      margin-top: var(--field-decorator-standard-normal-non-hint-margin-top);
+    }
+
+    .var-field-decorator--hint-center {
+      transform: translate(
+        var(--field-decorator-middle-offset-left),
+        calc(var(--field-decorator-standard-normal-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
+      );
     }
 
     .var-field-decorator--line-focus {
@@ -165,12 +195,13 @@
     }
 
     .var-field-decorator__middle {
-      padding: var(--field-decorator-outlined-normal-padding-top) 0
-        var(--field-decorator-outlined-normal-padding-bottom) 0;
+      margin-top: var(--field-decorator-outlined-normal-margin-top);
+      margin-bottom: var(--field-decorator-outlined-normal-margin-bottom);
     }
 
     .var-field-decorator__icon {
-      padding: var(--field-decorator-outlined-normal-icon-padding);
+      margin-top: var(--field-decorator-outlined-normal-icon-margin-top);
+      margin-bottom: var(--field-decorator-outlined-normal-icon-margin-bottom);
     }
 
     .var-field-decorator__placeholder {
@@ -180,9 +211,20 @@
       );
       transform: translate(
           var(--field-decorator-outlined-normal-padding-left),
-          var(--field-decorator-outlined-normal-placeholder-translate-y)
+          var(--field-decorator-outlined-normal-margin-top)
         )
         scale(1);
+    }
+
+    .var-field-decorator--hint-center {
+      max-width: calc(
+        133% - var(--field-decorator-outlined-normal-padding-left) -
+          var(--field-decorator-outlined-normal-padding-right)
+      );
+      transform: translate(
+        var(--field-decorator-middle-offset-left),
+        calc(var(--field-decorator-outlined-normal-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
+      );
     }
 
     .var-field-decorator--placeholder-hint {
@@ -259,12 +301,15 @@
   &--small {
     .var-field-decorator--standard& {
       .var-field-decorator__middle {
-        padding: var(--field-decorator-standard-small-padding-top) 0
-          var(--field-decorator-standard-small-padding-bottom);
+        margin-top: var(--field-decorator-standard-small-margin-top);
+        margin-bottom: var(--field-decorator-standard-small-margin-bottom);
       }
 
       .var-field-decorator__placeholder {
-        transform: translate(0, var(--field-decorator-standard-small-placeholder-translate-y));
+        transform: translate(
+          var(--field-decorator-middle-offset-left),
+          var(--field-decorator-standard-small-margin-top)
+        );
       }
 
       .var-field-decorator--middle-non-hint {
@@ -272,11 +317,18 @@
           133% - var(--field-decorator-outlined-small-padding-left) -
             var(--field-decorator-outlined-small-padding-right)
         );
-        padding-top: var(--field-decorator-standard-small-non-hint-padding-top);
+        margin-top: var(--field-decorator-standard-small-non-hint-margin-top);
       }
 
       .var-field-decorator--icon-non-hint {
-        padding-top: var(--field-decorator-standard-small-non-hint-padding-top);
+        margin-top: var(--field-decorator-standard-small-non-hint-margin-top);
+      }
+
+      .var-field-decorator--hint-center {
+        transform: translate(
+          var(--field-decorator-middle-offset-left),
+          calc(var(--field-decorator-standard-small-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
+        );
       }
     }
 
@@ -287,12 +339,13 @@
       }
 
       .var-field-decorator__middle {
-        padding: var(--field-decorator-outlined-small-padding-top) 0
-          var(--field-decorator-outlined-small-padding-bottom) 0;
+        margin-top: var(--field-decorator-outlined-small-margin-top);
+        margin-bottom: var(--field-decorator-outlined-small-margin-bottom);
       }
 
       .var-field-decorator__icon {
-        padding: var(--field-decorator-outlined-small-icon-padding);
+        margin-top: var(--field-decorator-outlined-small-icon-margin-top);
+        margin-bottom: var(--field-decorator-outlined-small-icon-margin-bottom);
       }
 
       .var-field-decorator__placeholder {
@@ -302,9 +355,20 @@
         );
         transform: translate(
             var(--field-decorator-outlined-small-padding-left),
-            var(--field-decorator-outlined-small-placeholder-translate-y)
+            var(--field-decorator-outlined-small-margin-top)
           )
           scale(1);
+      }
+
+      .var-field-decorator--hint-center {
+        max-width: calc(
+          133% - var(--field-decorator-outlined-small-padding-left) -
+            var(--field-decorator-outlined-small-padding-right)
+        );
+        transform: translate(
+          var(--field-decorator-middle-offset-left),
+          calc(var(--field-decorator-outlined-small-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
+        );
       }
 
       .var-field-decorator--placeholder-hint {
@@ -338,23 +402,8 @@
       }
     }
   }
-}
 
-.var-field-decorator__placeholder-text {
-  max-width: calc(
-    133% - var(--field-decorator-outlined-normal-padding-left) - var(--field-decorator-outlined-normal-padding-right)
-  );
-  position: absolute;
-  z-index: -1;
-  display: inline-block;
-  pointer-events: none;
-  opacity: 0;
-  height: 0;
-  font-size: var(--field-decorator-placeholder-size);
-}
-
-.var-field-decorator__placeholder-text--small {
-  max-width: calc(
-    133% - var(--field-decorator-outlined-small-padding-left) - var(--field-decorator-outlined-small-padding-right)
-  );
+  &--transition-disabled {
+    transition: none;
+  }
 }

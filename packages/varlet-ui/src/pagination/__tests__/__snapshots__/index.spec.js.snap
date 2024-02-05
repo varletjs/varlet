@@ -6,7 +6,7 @@ exports[`Size related props 1`] = `
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
@@ -44,7 +44,7 @@ exports[`Size related props 2`] = `
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
@@ -106,7 +106,7 @@ exports[`basic mode > mount 1`] = `
   </li>
   <li class="var-pagination__quickly">前往 <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
@@ -135,7 +135,7 @@ exports[`simple mode > disabled prop 1`] = `
   <li class="var-pagination__simple var-pagination__item--disabled">
     <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
-        <div class="var-field-decorator__controller var-field-decorator--disabled" style="overflow: hidden;">
+        <div class="var-field-decorator__controller var-field-decorator--disabled" style="overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
             <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-mock-id" disabled="" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
@@ -173,7 +173,7 @@ exports[`simple mode > mount 1`] = `
   <li class="var-pagination__simple">
     <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
           <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
             <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">

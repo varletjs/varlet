@@ -19,6 +19,7 @@
         clearable,
         cursor,
         composing: isComposing,
+        hintCenter: !textarea,
         onClick: handleClick,
         onClear: handleClear,
       }"

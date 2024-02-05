@@ -4,7 +4,7 @@ exports[`test form events 1`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-mock-id" type="text">
@@ -40,7 +40,7 @@ exports[`test form events 2`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
@@ -235,7 +235,7 @@ exports[`test form with input 1`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-mock-id" disabled="" type="text">
@@ -260,7 +260,7 @@ exports[`test form with input 2`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
@@ -285,7 +285,7 @@ exports[`test form with input 3`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
@@ -321,7 +321,7 @@ exports[`test form with input 4`] = `
 "<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
@@ -514,7 +514,7 @@ exports[`test form with select 1`] = `
   <div class="var-select">
     <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--disabled" style="text-align: left;">
@@ -548,7 +548,7 @@ exports[`test form with select 2`] = `
   <div class="var-select">
     <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
@@ -582,7 +582,7 @@ exports[`test form with select 3`] = `
   <div class="var-select">
     <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--error" style="text-align: left;">
@@ -627,7 +627,7 @@ exports[`test form with select 4`] = `
   <div class="var-select">
     <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
