@@ -143,6 +143,12 @@ function unmounted(el: RippleHTMLElement) {
   el.removeEventListener('touchstart', createRipple)
   el.removeEventListener('touchmove', forbidRippleTask)
   el.removeEventListener('dragstart', removeRipple)
+
+  if (!el._ripple || !el._ripple.removeRipple) {
+    // may be null in nuxt
+    return
+  }
+
   document.removeEventListener('touchend', el._ripple!.removeRipple)
   document.removeEventListener('touchcancel', el._ripple!.removeRipple)
   document.removeEventListener('dragend', el._ripple!.removeRipple)

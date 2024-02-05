@@ -137,6 +137,7 @@ export default defineComponent({
 
     function removeScrollListener() {
       if (!scroller || scroller === window) {
+        // may be null in nuxt
         return
       }
 
