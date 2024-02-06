@@ -4,18 +4,18 @@
 
     <slot name="loading" v-if="loading">
       <div :class="n('loading')">
-        <div :class="n('loading-text')">{{ loadingText ?? pack.listLoadingText }}</div>
+        <div :class="n('loading-text')">{{ loadingText ?? t('listLoadingText') }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div :class="n('finished')">{{ finishedText ?? pack.listFinishedText }}</div>
+      <div :class="n('finished')">{{ finishedText ?? t('listFinishedText') }}</div>
     </slot>
 
     <slot name="error" v-if="error">
       <div :class="n('error')" v-ripple @click="load">
-        {{ errorText ?? pack.listErrorText }}
+        {{ errorText ?? t('listErrorText') }}
       </div>
     </slot>
 
@@ -31,7 +31,7 @@ import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
 import { isNumber, getRect, call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
-import { pack } from '../locale'
+import { t } from '../locale'
 import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 import { useTabItem } from './provide'
 
@@ -99,7 +99,7 @@ export default defineComponent({
     }
 
     return {
-      pack,
+      t,
       listEl,
       detectorEl,
       isNumber,

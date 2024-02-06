@@ -1,6 +1,6 @@
 <script setup>
 import { watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 watchLang(use, 'pc')
 onThemeChange()
@@ -10,19 +10,19 @@ onThemeChange()
   <var-table class="reset">
     <thead>
       <tr>
-        <th>{{ pack.name }}</th>
-        <th>{{ pack.math }}</th>
-        <th>{{ pack.english }}</th>
+        <th>{{ t('name') }}</th>
+        <th>{{ t('math') }}</th>
+        <th>{{ t('english') }}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{ pack.jerry }}</td>
+        <td>{{ t('jerry') }}</td>
         <td>124</td>
         <td>38</td>
       </tr>
       <tr>
-        <td>{{ pack.tom }}</td>
+        <td>{{ t('tom') }}</td>
         <td>100</td>
         <td>135</td>
       </tr>

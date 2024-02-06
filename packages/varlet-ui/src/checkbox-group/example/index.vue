@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const values = reactive({
   value: false,
@@ -26,15 +26,15 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <var-checkbox v-model="value">{{ pack.currentValue }} {{ value }}</var-checkbox>
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-checkbox v-model="value">{{ t('currentValue') }} {{ value }}</var-checkbox>
 
-  <app-type>{{ pack.setState }}</app-type>
+  <app-type>{{ t('setState') }}</app-type>
   <var-checkbox :unchecked-value="0" :checked-value="1" v-model="value2">
-    {{ pack.currentValue }} {{ value2 }}
+    {{ t('currentValue') }} {{ value2 }}
   </var-checkbox>
 
-  <app-type>{{ pack.setStyle }}</app-type>
+  <app-type>{{ t('setStyle') }}</app-type>
   <var-checkbox unchecked-color="var(--color-warning)" checked-color="var(--color-danger)" v-model="value3">
     <template #unchecked-icon>
       <var-icon name="heart-half-full" size="24px" />
@@ -42,53 +42,53 @@ onThemeChange()
     <template #checked-icon>
       <var-icon name="heart" size="24px" />
     </template>
-    <template #default> {{ pack.currentValue }} {{ value3 }} </template>
+    <template #default> {{ t('currentValue') }} {{ value3 }} </template>
   </var-checkbox>
 
-  <app-type>{{ pack.disabled }}</app-type>
-  <var-checkbox disabled v-model="value4">{{ pack.currentValue }} {{ value4 }}</var-checkbox>
+  <app-type>{{ t('disabled') }}</app-type>
+  <var-checkbox disabled v-model="value4">{{ t('currentValue') }} {{ value4 }}</var-checkbox>
 
-  <app-type>{{ pack.readonly }}</app-type>
-  <var-checkbox readonly v-model="value5">{{ pack.currentValue }} {{ value5 }}</var-checkbox>
+  <app-type>{{ t('readonly') }}</app-type>
+  <var-checkbox readonly v-model="value5">{{ t('currentValue') }} {{ value5 }}</var-checkbox>
 
-  <app-type>{{ pack.indeterminate }}</app-type>
+  <app-type>{{ t('indeterminate') }}</app-type>
   <var-space :size="[0, 10]">
     <var-checkbox v-model="value10" v-model:indeterminate="indeterminate">
-      {{ pack.indeterminateValue }} {{ indeterminate }}
+      {{ t('indeterminateValue') }} {{ indeterminate }}
     </var-checkbox>
-    <var-button type="primary" @click="indeterminate = !indeterminate">{{ pack.toggle }}</var-button>
+    <var-button type="primary" @click="indeterminate = !indeterminate">{{ t('toggle') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.checkboxGroup }}</app-type>
+  <app-type>{{ t('checkboxGroup') }}</app-type>
   <var-checkbox-group ref="group" v-model="value6">
-    <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
-    <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
+    <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value6 }}</div>
+  <div class="relation">{{ t('currentValue') }} {{ value6 }}</div>
   <var-divider margin="14px 0" />
   <var-space :size="[0, 10]">
-    <var-button type="primary" @click="$refs.group.checkAll()">{{ pack.checkAll }}</var-button>
-    <var-button type="primary" @click="$refs.group.inverseAll()">{{ pack.inverseAll }}</var-button>
+    <var-button type="primary" @click="$refs.group.checkAll()">{{ t('checkAll') }}</var-button>
+    <var-button type="primary" @click="$refs.group.inverseAll()">{{ t('inverseAll') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.vertical }}</app-type>
+  <app-type>{{ t('vertical') }}</app-type>
   <var-checkbox-group v-model="value9" direction="vertical">
-    <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
-    <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
+    <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value9 }}</div>
+  <div class="relation">{{ t('currentValue') }} {{ value9 }}</div>
 
-  <app-type>{{ pack.checkboxValidate }}</app-type>
-  <var-checkbox v-model="value7" :rules="[(v) => v || pack.checkboxValidateMessage]">
-    {{ pack.currentValue }} {{ value7 }}
+  <app-type>{{ t('checkboxValidate') }}</app-type>
+  <var-checkbox v-model="value7" :rules="[(v) => v || t('checkboxValidateMessage')]">
+    {{ t('currentValue') }} {{ value7 }}
   </var-checkbox>
 
-  <app-type>{{ pack.checkboxGroupValidate }}</app-type>
-  <var-checkbox-group v-model="value8" :rules="[(v) => v.length === 2 || pack.checkboxGroupValidateMessage]">
-    <var-checkbox :checked-value="0">{{ pack.eat }}</var-checkbox>
-    <var-checkbox :checked-value="1">{{ pack.sleep }}</var-checkbox>
+  <app-type>{{ t('checkboxGroupValidate') }}</app-type>
+  <var-checkbox-group v-model="value8" :rules="[(v) => v.length === 2 || t('checkboxGroupValidateMessage')]">
+    <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
   </var-checkbox-group>
-  <div class="relation">{{ pack.currentValue }} {{ value8 }}</div>
+  <div class="relation">{{ t('currentValue') }} {{ value8 }}</div>
 
   <div class="space"></div>
 </template>

@@ -14,7 +14,7 @@ test('test add lang', () => {
   add(LANG, PACK)
   use(LANG)
 
-  expect(pack.value.lang).toBe(LANG)
+  expect(t('lang')).toBe(LANG)
   expect(packs[LANG]).toBe(PACK)
 })
 
@@ -34,7 +34,7 @@ test('test merge lang', () => {
   merge('zh-HK', PACK)
   merge(LANG, PACK)
 
-  expect(pack.value.dialogTitle).toBe('Custom Dialog Title')
+  expect(t('dialogTitle')).toBe('Custom Dialog Title')
   expect(fn).toHaveBeenCalledTimes(2)
 
   mockRestore()

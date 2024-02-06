@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 import { reactive, toRefs, ref } from 'vue'
 
 const actives = reactive({
@@ -24,14 +24,14 @@ onThemeChange((theme) => {
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-tabs v-model:active="active">
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.modifyStyle }}</app-type>
+  <app-type>{{ t('modifyStyle') }}</app-type>
   <var-tabs
     elevation
     color="var(--color-primary)"
@@ -39,12 +39,12 @@ onThemeChange((theme) => {
     inactive-color="var(--color-on-info)"
     v-model:active="active2"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.disabled }}</app-type>
+  <app-type>{{ t('disabled') }}</app-type>
   <var-tabs
     elevation
     color="var(--color-primary)"
@@ -53,12 +53,12 @@ onThemeChange((theme) => {
     :disabled-color="currentTheme === 'darkTheme' ? '#bbb' : undefined"
     v-model:active="active3"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab disabled>{{ pack.disabled }}</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab disabled>{{ t('disabled') }}</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.enableScroll }}</app-type>
+  <app-type>{{ t('enableScroll') }}</app-type>
   <var-tabs
     elevation
     color="var(--color-primary)"
@@ -66,17 +66,17 @@ onThemeChange((theme) => {
     inactive-color="var(--color-on-info)"
     v-model:active="active4"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
-    <var-tab>{{ pack.option }}4</var-tab>
-    <var-tab>{{ pack.option }}5</var-tab>
-    <var-tab>{{ pack.option }}6</var-tab>
-    <var-tab>{{ pack.option }}7</var-tab>
-    <var-tab>{{ pack.option }}8</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
+    <var-tab>{{ t('option') }}4</var-tab>
+    <var-tab>{{ t('option') }}5</var-tab>
+    <var-tab>{{ t('option') }}6</var-tab>
+    <var-tab>{{ t('option') }}7</var-tab>
+    <var-tab>{{ t('option') }}8</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.tabVerticalLayout }}</app-type>
+  <app-type>{{ t('tabVerticalLayout') }}</app-type>
   <var-tabs
     elevation
     item-direction="vertical"
@@ -87,19 +87,19 @@ onThemeChange((theme) => {
   >
     <var-tab>
       <var-icon class="icon" name="information" />
-      <div>{{ pack.option }}1</div>
+      <div>{{ t('option') }}1</div>
     </var-tab>
     <var-tab>
       <var-icon class="icon" name="warning" />
-      <div>{{ pack.option }}2</div>
+      <div>{{ t('option') }}2</div>
     </var-tab>
     <var-tab>
       <var-icon class="icon" name="error" />
-      <div>{{ pack.option }}3</div>
+      <div>{{ t('option') }}3</div>
     </var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.tabsVerticalLayout }}</app-type>
+  <app-type>{{ t('tabsVerticalLayout') }}</app-type>
   <var-tabs
     class="vertical-tabs"
     elevation
@@ -109,12 +109,12 @@ onThemeChange((theme) => {
     inactive-color="var(--color-on-info)"
     v-model:active="active6"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.viewRelation }}</app-type>
+  <app-type>{{ t('viewRelation') }}</app-type>
   <var-tabs
     elevation
     color="var(--color-primary)"
@@ -123,24 +123,24 @@ onThemeChange((theme) => {
     v-model:active="activeRelation"
     offset-top="50"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
   <var-tabs-items style="margin: 8px 0" v-model:active="activeRelation">
     <var-tab-item>
-      {{ pack.text }}
+      {{ t('text') }}
     </var-tab-item>
     <var-tab-item>
-      {{ pack.text2 }}
+      {{ t('text2') }}
     </var-tab-item>
     <var-tab-item>
-      {{ pack.text3 }}
+      {{ t('text3') }}
     </var-tab-item>
   </var-tabs-items>
 
-  <app-type>{{ pack.stickyLayout }}</app-type>
+  <app-type>{{ t('stickyLayout') }}</app-type>
   <var-tabs
     sticky
     elevation
@@ -150,12 +150,12 @@ onThemeChange((theme) => {
     offset-top="14.4vmin"
     v-model:active="active7"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
-  <app-type>{{ pack.indicatorPosition }}</app-type>
+  <app-type>{{ t('indicatorPosition') }}</app-type>
   <var-tabs
     elevation
     indicator-position="reverse"
@@ -164,9 +164,9 @@ onThemeChange((theme) => {
     inactive-color="var(--color-on-info)"
     v-model:active="active8"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
   <var-tabs
@@ -180,9 +180,9 @@ onThemeChange((theme) => {
     inactive-color="var(--color-on-info)"
     v-model:active="active8"
   >
-    <var-tab>{{ pack.option }}1</var-tab>
-    <var-tab>{{ pack.option }}2</var-tab>
-    <var-tab>{{ pack.option }}3</var-tab>
+    <var-tab>{{ t('option') }}1</var-tab>
+    <var-tab>{{ t('option') }}2</var-tab>
+    <var-tab>{{ t('option') }}3</var-tab>
   </var-tabs>
 
   <div style="height: 120vh"></div>

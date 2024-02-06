@@ -73,7 +73,7 @@
           :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])"
           @click.stop="showMenu"
         >
-          <span>{{ size }}{{ pack.paginationItem }} / {{ pack.paginationPage }}</span>
+          <span>{{ size }}{{ t('paginationItem') }} / {{ t('paginationPage') }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
 
@@ -85,13 +85,13 @@
             :key="index"
             @click="clickSize(option)"
           >
-            {{ option }}{{ pack.paginationItem }} / {{ pack.paginationPage }}
+            {{ option }}{{ t('paginationItem') }} / {{ t('paginationPage') }}
           </var-cell>
         </template>
       </var-menu>
     </li>
     <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, n('item--disabled')])">
-      {{ pack.paginationJump }}
+      {{ t('paginationJump') }}
       <var-input
         v-model="quickJumperValue"
         :disabled="disabled"
@@ -116,7 +116,7 @@ import VarInput from '../input'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { props, type Range } from './props'
 import { isNumber, toNumber, call } from '@varlet/shared'
-import { pack } from '../locale'
+import { t } from '../locale'
 import { createNamespace, formatElevation } from '../utils/components'
 
 const { name, n, classes } = createNamespace('pagination')
@@ -311,7 +311,7 @@ export default defineComponent({
     }
 
     return {
-      pack,
+      t,
       current,
       menuVisible,
       size,

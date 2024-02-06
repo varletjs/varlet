@@ -4,7 +4,7 @@ import icons from '@varlet/icons'
 import { Snackbar } from '@varlet/ui'
 import { reactive, onMounted, ref, computed } from 'vue'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
@@ -19,7 +19,7 @@ onMounted(() => {
   })
 
   clipboard.on('success', (e) => {
-    Snackbar.success(`${pack.value.copySuccess} ${e.text}!`)
+    Snackbar.success(`${t('copySuccess')} ${e.text}!`)
   })
 })
 
@@ -32,26 +32,26 @@ function toggle() {
 </script>
 
 <template>
-  <app-type>{{ pack.iconSize }}</app-type>
+  <app-type>{{ t('iconSize') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" />
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" :size="26" />
 
-  <app-type>{{ pack.iconColor }}</app-type>
+  <app-type>{{ t('iconColor') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-primary)" />
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-success)" />
 
-  <app-type>{{ pack.useImage }}</app-type>
+  <app-type>{{ t('useImage') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
 
-  <app-type>{{ pack.clickEvent }}</app-type>
+  <app-type>{{ t('clickEvent') }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"
     color="var(--color-primary)"
-    @click="() => Snackbar.success(pack.clickSuccess)"
+    @click="() => Snackbar.success(t('clickSuccess'))"
   />
 
-  <app-type>{{ pack.iconAnimation }}</app-type>
+  <app-type>{{ t('iconAnimation') }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
     color="var(--color-primary)"
@@ -70,13 +70,13 @@ function toggle() {
     @click="toggle"
   />
 
-  <app-type>{{ pack.iconList }}</app-type>
+  <app-type>{{ t('iconList') }}</app-type>
 
   <var-input
     class="icon-example__search"
     size="small"
     variant="outlined"
-    :placeholder="pack.searchIcon"
+    :placeholder="t('searchIcon')"
     v-model.trim="searchText"
     clearable
   >

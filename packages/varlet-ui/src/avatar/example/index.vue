@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 import { onThemeChange, watchLang, AppType } from '@varlet/cli/client'
 
 const text = ref('VARLET')
@@ -10,7 +10,7 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.avatarSize }}</app-type>
+  <app-type>{{ t('avatarSize') }}</app-type>
   <var-space align="center">
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="small" />
@@ -19,13 +19,13 @@ onThemeChange()
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="21vmin" />
   </var-space>
 
-  <app-type>{{ pack.avatarShape }}</app-type>
+  <app-type>{{ t('avatarShape') }}</app-type>
   <var-space>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" :round="false" />
   </var-space>
 
-  <app-type>{{ pack.fitMode }}</app-type>
+  <app-type>{{ t('fitMode') }}</app-type>
   <var-space>
     <var-space direction="column" align="center">
       <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
@@ -49,7 +49,7 @@ onThemeChange()
     </var-space>
   </var-space>
 
-  <app-type>{{ pack.fontSize }}</app-type>
+  <app-type>{{ t('fontSize') }}</app-type>
   <var-space direction="column">
     <var-space>
       <var-avatar>{{ text }}</var-avatar>
@@ -58,7 +58,7 @@ onThemeChange()
     <var-input v-model="text" />
   </var-space>
 
-  <app-type>{{ pack.backgroundColor }}</app-type>
+  <app-type>{{ t('backgroundColor') }}</app-type>
   <var-space>
     <var-avatar color="var(--color-warning)">
       <var-icon name="fire" />
@@ -66,7 +66,7 @@ onThemeChange()
     <var-avatar color="var(--color-danger)">{{ text }}</var-avatar>
   </var-space>
 
-  <app-type>{{ pack.avatarHorizontalGroup }}</app-type>
+  <app-type>{{ t('avatarHorizontalGroup') }}</app-type>
   <var-avatar-group>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
@@ -74,7 +74,7 @@ onThemeChange()
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
-  <app-type>{{ pack.avatarVerticalGroup }}</app-type>
+  <app-type>{{ t('avatarVerticalGroup') }}</app-type>
   <var-avatar-group vertical>
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
@@ -82,7 +82,7 @@ onThemeChange()
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
-  <app-type>{{ pack.avatarHoverable }}</app-type>
+  <app-type>{{ t('avatarHoverable') }}</app-type>
   <var-avatar-group>
     <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
     <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />

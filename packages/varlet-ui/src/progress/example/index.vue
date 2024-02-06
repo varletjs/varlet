@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref, onMounted, onUnmounted } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const value = ref(0)
 let timer
@@ -26,14 +26,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="20" />
     <var-progress :value="value" :track="false" label />
     <var-progress :value="100" label>success</var-progress>
   </var-space>
 
-  <app-type>{{ pack.style }}</app-type>
+  <app-type>{{ t('style') }}</app-type>
   <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress :value="40" color="linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)" />
     <var-progress type="info" :value="40" />
@@ -41,7 +41,7 @@ onUnmounted(() => {
     <var-progress value="80" line-width="8" color="#ff9f00" track-color="#f5cb90" />
   </var-space>
 
-  <app-type>{{ pack.circle }}</app-type>
+  <app-type>{{ t('circle') }}</app-type>
   <var-space :size="['8vmin', '8vmin']">
     <var-progress
       mode="circle"
@@ -57,7 +57,7 @@ onUnmounted(() => {
     <var-progress mode="circle" type="success" label :value="100" line-width="5" size="18vmin"> success </var-progress>
   </var-space>
 
-  <app-type>{{ pack.indeterminateProgress }}</app-type>
+  <app-type>{{ t('indeterminateProgress') }}</app-type>
   <var-space direction="column" :size="['3vh', '3vh']">
     <var-progress indeterminate />
     <var-progress indeterminate type="info" />

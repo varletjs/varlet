@@ -2,7 +2,7 @@ import { Locale } from '@varlet/ui'
 import zhCN from './zh-CN'
 import enUS from './en-US'
 
-const { add, use: exampleUse, pack, packs, merge } = Locale.useLocale()
+const { add, use: exampleUse, t, merge } = Locale.useLocale()
 
 const use = (lang: string) => {
   Locale.use(lang)
@@ -11,7 +11,7 @@ const use = (lang: string) => {
 
 Locale.add('zh-CN', Locale.zhCN)
 Locale.add('en-US', Locale.enUS)
-add('zh-CN', zhCN as any)
-add('en-US', enUS as any)
+add('zh-CN', zhCN)
+add('en-US', enUS)
 
-export { add, pack, packs, merge, use }
+export { add, t, merge, use }

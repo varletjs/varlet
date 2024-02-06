@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const dates = reactive({
   date: '11:20',
@@ -24,19 +24,19 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-time-picker v-model="dates.date" />
 
-  <app-type>{{ pack.hour24 }}</app-type>
+  <app-type>{{ t('hour24') }}</app-type>
   <var-time-picker v-model="dates.date1" format="24hr" />
 
-  <app-type>{{ pack.showSecond }}</app-type>
+  <app-type>{{ t('showSecond') }}</app-type>
   <var-time-picker v-model="dates.date5" format="24hr" use-seconds />
 
-  <app-type>{{ pack.readonly }}</app-type>
+  <app-type>{{ t('readonly') }}</app-type>
   <var-time-picker v-model="dates.date2" readonly />
 
-  <app-type>{{ pack.timeLimit }}</app-type>
+  <app-type>{{ t('timeLimit') }}</app-type>
   <var-time-picker
     v-model="dates.date3"
     format="24hr"
@@ -46,12 +46,12 @@ onThemeChange()
     :allowed-time="allowedTime"
   />
 
-  <app-type>{{ pack.actions }}</app-type>
+  <app-type>{{ t('actions') }}</app-type>
   <var-time-picker v-model="dates.date6">
     <template #actions>
       <var-space size="small">
-        <var-button type="primary" text>{{ pack.action }}</var-button>
-        <var-button type="primary" text>{{ pack.action }}</var-button>
+        <var-button type="primary" text>{{ t('action') }}</var-button>
+        <var-button type="primary" text>{{ t('action') }}</var-button>
       </var-space>
     </template>
   </var-time-picker>

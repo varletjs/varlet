@@ -2,7 +2,7 @@
 import { Snackbar, Icon, Button } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs, onBeforeUnmount, h } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const shows = reactive({
   show1: false,
@@ -29,13 +29,13 @@ function changeValue(type) {
 }
 
 function create(type) {
-  const text = type === 'loading' ? pack.value.wait : pack.value.text
+  const text = type === 'loading' ? t('wait') : t('text')
   const snackbar = Snackbar[type](text)
 
   if (type === 'loading') {
     setTimeout(() => {
       snackbar.clear()
-      Snackbar.success(pack.value.loaded)
+      Snackbar.success(t('loaded'))
     }, 2000)
   }
 }
@@ -43,14 +43,14 @@ function create(type) {
 function createSnackbar(type) {
   if (type === 'time') {
     Snackbar({
-      content: pack.value.text,
+      content: t('text'),
       duration: 1000,
     })
   }
 
   if (type === 'position') {
     Snackbar({
-      content: pack.value.text,
+      content: t('text'),
       position: 'bottom',
     })
   }
@@ -63,13 +63,13 @@ function createSnackbar(type) {
         h(
           Button,
           { size: 'small', type: 'primary', onClick: () => customSnackbar.clear() },
-          { default: () => pack.value.close }
+          { default: () => t('close') }
         ),
     })
   }
 
   if (!type) {
-    Snackbar(pack.value.text)
+    Snackbar(t('text'))
   }
 }
 
@@ -86,68 +86,68 @@ function openMultiple() {
 </script>
 
 <template>
-  <app-type>{{ pack.componentCall }}</app-type>
+  <app-type>{{ t('componentCall') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="primary" block @click="changeValue('show1')">{{ pack.basicUsage }}</var-button>
-    <var-button type="primary" block @click="changeValue('show3')">{{ pack.multiLine }}</var-button>
-    <var-button type="primary" block @click="changeValue('show2')">{{ pack.bottomDisplay }}</var-button>
-    <var-button type="primary" block @click="changeValue('show4')">{{ pack.hiddenTime }}</var-button>
-    <var-button type="primary" block @click="changeValue('show5')">{{ pack.customIcon }}</var-button>
-    <var-button type="primary" block @click="changeValue('show9')">{{ pack.forbidClick }}</var-button>
+    <var-button type="primary" block @click="changeValue('show1')">{{ t('basicUsage') }}</var-button>
+    <var-button type="primary" block @click="changeValue('show3')">{{ t('multiLine') }}</var-button>
+    <var-button type="primary" block @click="changeValue('show2')">{{ t('bottomDisplay') }}</var-button>
+    <var-button type="primary" block @click="changeValue('show4')">{{ t('hiddenTime') }}</var-button>
+    <var-button type="primary" block @click="changeValue('show5')">{{ t('customIcon') }}</var-button>
+    <var-button type="primary" block @click="changeValue('show9')">{{ t('forbidClick') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.functionCall }}</app-type>
+  <app-type>{{ t('functionCall') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="warning" block @click="createSnackbar()">{{ pack.basicUsage }}</var-button>
-    <var-button type="warning" block @click="createSnackbar('time')">{{ pack.hiddenTime }}</var-button>
-    <var-button type="warning" block @click="createSnackbar('position')">{{ pack.bottomDisplay }}</var-button>
-    <var-button type="warning" block @click="createSnackbar('custom')">{{ pack.custom }}</var-button>
+    <var-button type="warning" block @click="createSnackbar()">{{ t('basicUsage') }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('time')">{{ t('hiddenTime') }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('position')">{{ t('bottomDisplay') }}</var-button>
+    <var-button type="warning" block @click="createSnackbar('custom')">{{ t('custom') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.type }}</app-type>
+  <app-type>{{ t('type') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="success" block @click="create('success')">{{ pack.success }}</var-button>
-    <var-button type="warning" block @click="create('warning')">{{ pack.warning }}</var-button>
-    <var-button type="info" block @click="create('info')">{{ pack.info }}</var-button>
-    <var-button type="danger" block @click="create('error')">{{ pack.error }}</var-button>
-    <var-button type="primary" block @click="create('loading')">{{ pack.loading }}</var-button>
+    <var-button type="success" block @click="create('success')">{{ t('success') }}</var-button>
+    <var-button type="warning" block @click="create('warning')">{{ t('warning') }}</var-button>
+    <var-button type="info" block @click="create('info')">{{ t('info') }}</var-button>
+    <var-button type="danger" block @click="create('error')">{{ t('error') }}</var-button>
+    <var-button type="primary" block @click="create('loading')">{{ t('loading') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.multiple }}</app-type>
-  <var-button type="primary" block @click="openMultiple">{{ pack.multiple }}</var-button>
+  <app-type>{{ t('multiple') }}</app-type>
+  <var-button type="primary" block @click="openMultiple">{{ t('multiple') }}</var-button>
 
   <div class="snackbar-demo">
     <var-snackbar v-model:show="show1">
-      {{ pack.text }}
+      {{ t('text') }}
     </var-snackbar>
 
     <var-snackbar v-model:show="show2" position="bottom">
-      {{ pack.text }}
+      {{ t('text') }}
       <template #action>
-        <var-button type="primary" :elevation="false" size="small" @click="show2 = false">{{ pack.close }}</var-button>
+        <var-button type="primary" :elevation="false" size="small" @click="show2 = false">{{ t('close') }}</var-button>
       </template>
     </var-snackbar>
 
     <var-snackbar v-model:show="show3" :vertical="true">
-      {{ pack.text }}
+      {{ t('text') }}
       <template #action>
-        <var-button type="primary" :elevation="false" size="small" @click="show3 = false">{{ pack.close }}</var-button>
+        <var-button type="primary" :elevation="false" size="small" @click="show3 = false">{{ t('close') }}</var-button>
       </template>
     </var-snackbar>
 
     <var-snackbar v-model:show="show4" :duration="1000">
-      {{ pack.text }}
+      {{ t('text') }}
     </var-snackbar>
 
     <var-snackbar v-model:show="show5">
-      {{ pack.text }}
+      {{ t('text') }}
       <template #icon>
         <var-icon name="heart-outline" />
       </template>
     </var-snackbar>
 
     <var-snackbar v-model:show="show9" :forbid-click="true">
-      {{ pack.text }}
+      {{ t('text') }}
     </var-snackbar>
   </div>
 </template>

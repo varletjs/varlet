@@ -1,6 +1,6 @@
 <script setup>
 import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 import { ref } from 'vue'
 
 const expand = ref(false)
@@ -10,26 +10,26 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.line }}</app-type>
-  <var-ellipsis style="max-width: 50vmin">{{ pack.text }}</var-ellipsis>
+  <app-type>{{ t('line') }}</app-type>
+  <var-ellipsis style="max-width: 50vmin">{{ t('text') }}</var-ellipsis>
 
-  <app-type>{{ pack.multipleLine }}</app-type>
-  <var-ellipsis style="max-width: 50vmin" :line-clamp="3">{{ pack.text }}</var-ellipsis>
+  <app-type>{{ t('multipleLine') }}</app-type>
+  <var-ellipsis style="max-width: 50vmin" :line-clamp="3">{{ t('text') }}</var-ellipsis>
 
-  <app-type>{{ pack.twoWayBinding }}</app-type>
+  <app-type>{{ t('twoWayBinding') }}</app-type>
   <var-space direction="column" size="large">
-    <var-button type="primary" @click="expand = !expand">{{ pack.toggle }}</var-button>
-    <var-ellipsis style="max-width: 50vmin" v-model:expand="expand">{{ pack.text }}</var-ellipsis>
+    <var-button type="primary" @click="expand = !expand">{{ t('toggle') }}</var-button>
+    <var-ellipsis style="max-width: 50vmin" v-model:expand="expand">{{ t('text') }}</var-ellipsis>
   </var-space>
 
-  <app-type>{{ pack.expand }}</app-type>
+  <app-type>{{ t('expand') }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :line-clamp="3" expand-trigger="click" :tooltip="false">{{
-    pack.text
+    t('text')
   }}</var-ellipsis>
 
-  <app-type>{{ pack.tooltip }}</app-type>
+  <app-type>{{ t('tooltip') }}</app-type>
   <var-ellipsis style="max-width: 50vmin" :tooltip="{ type: 'primary', sameWidth: false }">
-    {{ pack.text }}
+    {{ t('text') }}
 
     <template #tooltip-content>
       <var-icon name="github" />

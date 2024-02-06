@@ -2,7 +2,7 @@
 import { Snackbar } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const scores = reactive({
   score: 3,
@@ -32,14 +32,14 @@ watchLang(use)
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-rate v-model="scores.score" />
   <var-rate v-model="scores.score" icon="thumb-up" empty-icon="thumb-up-outline" />
 
-  <app-type>{{ pack.customTotalRating }}</app-type>
+  <app-type>{{ t('customTotalRating') }}</app-type>
   <var-rate v-model="scores.score1" :count="8" />
 
-  <app-type>{{ pack.customRatingIconStyle }}</app-type>
+  <app-type>{{ t('customRatingIconStyle') }}</app-type>
   <var-rate
     v-model="scores.score3"
     icon="heart"
@@ -48,10 +48,10 @@ watchLang(use)
     empty-color="var(--color-danger)"
   />
 
-  <app-type>{{ pack.customRatingIconSizeAndGap }}</app-type>
+  <app-type>{{ t('customRatingIconSizeAndGap') }}</app-type>
   <var-rate v-model="scores.score4" size="8vmin" gap="1vmin" />
 
-  <app-type>{{ pack.halfStar }}</app-type>
+  <app-type>{{ t('halfStar') }}</app-type>
   <var-rate v-model="scores.score6" :count="8" half />
   <var-rate
     v-model="scores.score6"
@@ -64,16 +64,16 @@ watchLang(use)
     style="margin-top: 4px"
   />
 
-  <app-type>{{ pack.disabledAndReadonly }}</app-type>
+  <app-type>{{ t('disabledAndReadonly') }}</app-type>
   <var-rate v-model="scores.score7" disabled />
   <var-rate v-model="scores.score8" readonly />
 
-  <app-type>{{ pack.clearable }}</app-type>
+  <app-type>{{ t('clearable') }}</app-type>
   <var-rate v-model="scores.score12" clearable half />
 
-  <app-type>{{ pack.listenEvent }}</app-type>
+  <app-type>{{ t('listenEvent') }}</app-type>
   <var-rate v-model="scores.score10" @change="handleChange" />
 
-  <app-type>{{ pack.validate }}</app-type>
-  <var-rate :rules="[(v) => v >= 3 || pack.errorMessage]" v-model="scores.score11" />
+  <app-type>{{ t('validate') }}</app-type>
+  <var-rate :rules="[(v) => v >= 3 || t('errorMessage')]" v-model="scores.score11" />
 </template>

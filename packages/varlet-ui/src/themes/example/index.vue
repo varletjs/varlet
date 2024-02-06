@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 watchLang(use)
 onThemeChange()
@@ -11,17 +11,17 @@ function setTheme(theme) {
 </script>
 
 <template>
-  <app-type>{{ pack.toggleTheme }}</app-type>
+  <app-type>{{ t('toggleTheme') }}</app-type>
   <var-space direction="column" size="large">
     <var-button type="primary" block @click="() => setTheme('lightTheme')"
-      >Material Design 2 {{ pack.light }}</var-button
+      >Material Design 2 {{ t('light') }}</var-button
     >
-    <var-button type="primary" block @click="() => setTheme('darkTheme')">Material Design 2 {{ pack.dark }}</var-button>
+    <var-button type="primary" block @click="() => setTheme('darkTheme')">Material Design 2 {{ t('dark') }}</var-button>
     <var-button type="primary" block @click="() => setTheme('md3LightTheme')"
-      >Material Design 3 {{ pack.light }}</var-button
+      >Material Design 3 {{ t('light') }}</var-button
     >
     <var-button type="primary" block @click="() => setTheme('md3DarkTheme')"
-      >Material Design 3 {{ pack.dark }}</var-button
+      >Material Design 3 {{ t('dark') }}</var-button
     >
   </var-space>
 </template>

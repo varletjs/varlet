@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const loading = ref(true)
 const fullscreenLoading = ref(false)
@@ -19,30 +19,30 @@ function fullscreen() {
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <var-skeleton :loading="loading">{{ pack.loadingData }}</var-skeleton>
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-skeleton :loading="loading">{{ t('loadingData') }}</var-skeleton>
 
-  <app-type>{{ pack.displayTitle }}</app-type>
-  <var-skeleton title :loading="loading">{{ pack.loadingData }}</var-skeleton>
+  <app-type>{{ t('displayTitle') }}</app-type>
+  <var-skeleton title :loading="loading">{{ t('loadingData') }}</var-skeleton>
 
-  <app-type>{{ pack.customRowsWidth }}</app-type>
+  <app-type>{{ t('customRowsWidth') }}</app-type>
   <var-skeleton title :rows="3" :loading="loading" :rows-width="['200px', '100px', '50px']">
-    {{ pack.loadingData }}
+    {{ t('loadingData') }}
   </var-skeleton>
 
-  <app-type>{{ pack.displayAvatar }}</app-type>
+  <app-type>{{ t('displayAvatar') }}</app-type>
   <var-skeleton title avatar :rows="3" :loading="loading">
-    {{ pack.loadingData }}
+    {{ t('loadingData') }}
   </var-skeleton>
 
-  <app-type>{{ pack.displayCard }}</app-type>
+  <app-type>{{ t('displayCard') }}</app-type>
   <var-skeleton title avatar card :rows="3" :loading="loading">
-    {{ pack.loadingData }}
+    {{ t('loadingData') }}
   </var-skeleton>
 
-  <app-type>{{ pack.fullscreenMode }}</app-type>
+  <app-type>{{ t('fullscreenMode') }}</app-type>
   <var-button type="danger" class="button" @click="fullscreen">
-    {{ pack.toggleFullscreenMode }}
+    {{ t('toggleFullscreenMode') }}
   </var-button>
   <var-skeleton fullscreen :loading="fullscreenLoading" />
 </template>

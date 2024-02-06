@@ -2,7 +2,7 @@
 import VarButton from '../../src/button'
 import VarIcon from '../../src/icon'
 import { watchLang, onThemeChange } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 watchLang(use, 'pc')
 onThemeChange()
@@ -14,7 +14,7 @@ function download() {
 
 <template>
   <var-button type="primary" @click="download">
-    {{ pack.downloadResources }}
+    {{ t('downloadResources') }}
     <var-icon name="download" style="margin: 2px 0 0 6px" />
   </var-button>
 </template>

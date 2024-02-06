@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const standardValue = ref(undefined)
 const standardValue2 = ref(undefined)
@@ -62,42 +62,42 @@ watchLang((lang) => {
 </script>
 
 <template>
-  <app-type>{{ pack.standard }}</app-type>
+  <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
-    <var-select :placeholder="pack.placeholder" v-model="standardValue">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select :placeholder="t('placeholder')" v-model="standardValue">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="pack.relation" v-model="standardValue10">
-      <var-option :label="pack.eat" :value="1" />
-      <var-option :label="pack.sleep" :value="2" />
+    <var-select :placeholder="t('relation')" v-model="standardValue10">
+      <var-option :label="t('eat')" :value="1" />
+      <var-option :label="t('sleep')" :value="2" />
     </var-select>
-    <div class="relation">{{ pack.currentSelect }} {{ standardValue10 }}</div>
-    <var-select :placeholder="pack.readonly" readonly v-model="standardValue2">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <div class="relation">{{ t('currentSelect') }} {{ standardValue10 }}</div>
+    <var-select :placeholder="t('readonly')" readonly v-model="standardValue2">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="pack.disabled" disabled v-model="standardValue3">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select :placeholder="t('disabled')" disabled v-model="standardValue3">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="pack.clearable" clearable v-model="standardValue4">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select :placeholder="t('clearable')" clearable v-model="standardValue4">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="pack.customIcon" v-model="standardValue6">
+    <var-select :placeholder="t('customIcon')" v-model="standardValue6">
       <template #default>
-        <var-option :label="pack.eat">
+        <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
-          <span>{{ pack.eat }}</span>
+          <span>{{ t('eat') }}</span>
         </var-option>
-        <var-option :label="pack.sleep">
+        <var-option :label="t('sleep')">
           <var-icon class="selected-icon" name="weather-night" />
-          <span>{{ pack.sleep }}</span>
+          <span>{{ t('sleep') }}</span>
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="standardValue6 === pack.eat ? 'cake-variant' : 'weather-night'" />
+        <var-icon class="selected-icon" :name="standardValue6 === t('eat') ? 'cake-variant' : 'weather-night'" />
         <span>{{ standardValue6 }}</span>
       </template>
       <template #prepend-icon>
@@ -110,21 +110,21 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="pack.customIconSize" v-model="standardValue12">
+    <var-select :placeholder="t('customIconSize')" v-model="standardValue12">
       <template #default>
-        <var-option :label="pack.eat">
+        <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
-          <span>{{ pack.eat }}</span>
+          <span>{{ t('eat') }}</span>
         </var-option>
-        <var-option :label="pack.sleep">
+        <var-option :label="t('sleep')">
           <var-icon class="selected-icon" name="weather-night" />
-          <span>{{ pack.sleep }}</span>
+          <span>{{ t('sleep') }}</span>
         </var-option>
       </template>
       <template #selected>
         <var-icon
           class="selected-icon"
-          :name="standardValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
+          :name="standardValue12 === t('eat') ? 'cake-variant' : 'weather-night'"
           size="8vmin"
         />
         <span>{{ standardValue12 }}</span>
@@ -139,80 +139,80 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="pack.multiple" multiple v-model="standardValue7">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+    <var-select :placeholder="t('multiple')" multiple v-model="standardValue7">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="pack.chipMultiple" chip multiple v-model="standardValue8">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+    <var-select :placeholder="t('chipMultiple')" chip multiple v-model="standardValue8">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
     <var-select
-      :placeholder="pack.validate"
-      :rules="[(v) => v === pack.rest || pack.mustSelectRest]"
+      :placeholder="t('validate')"
+      :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
       v-model="standardValue5"
     >
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.rest" />
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('rest')" />
     </var-select>
     <var-select
       multiple
-      :placeholder="pack.multipleValidate"
-      :rules="[(v) => v.length >= 2 || pack.mustSelectMoreThan]"
+      :placeholder="t('multipleValidate')"
+      :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
       v-model="standardValue9"
     >
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="pack.smallSize" v-model="standardValue11">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select :placeholder="t('smallSize')" v-model="standardValue11">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
   </var-space>
 
-  <app-type style="margin-top: 10vmin">{{ pack.outlined }}</app-type>
+  <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
-    <var-select variant="outlined" :placeholder="pack.placeholder" v-model="outlinedValue">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select variant="outlined" :placeholder="t('placeholder')" v-model="outlinedValue">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.relation" v-model="outlinedValue10">
-      <var-option :label="pack.eat" :value="1" />
-      <var-option :label="pack.sleep" :value="2" />
+    <var-select variant="outlined" :placeholder="t('relation')" v-model="outlinedValue10">
+      <var-option :label="t('eat')" :value="1" />
+      <var-option :label="t('sleep')" :value="2" />
     </var-select>
-    <div class="relation">{{ pack.currentSelect }} {{ outlinedValue10 }}</div>
-    <var-select variant="outlined" :placeholder="pack.readonly" readonly v-model="outlinedValue2">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <div class="relation">{{ t('currentSelect') }} {{ outlinedValue10 }}</div>
+    <var-select variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue2">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.disabled" disabled v-model="outlinedValue3">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue3">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.clearable" clearable v-model="outlinedValue4">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue4">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.customIcon" v-model="outlinedValue6">
+    <var-select variant="outlined" :placeholder="t('customIcon')" v-model="outlinedValue6">
       <template #default>
-        <var-option :label="pack.eat">
+        <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
-          <span>{{ pack.eat }}</span>
+          <span>{{ t('eat') }}</span>
         </var-option>
-        <var-option :label="pack.sleep">
+        <var-option :label="t('sleep')">
           <var-icon class="selected-icon" name="weather-night" />
-          <span>{{ pack.sleep }}</span>
+          <span>{{ t('sleep') }}</span>
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="outlinedValue6 === pack.eat ? 'cake-variant' : 'weather-night'" />
+        <var-icon class="selected-icon" :name="outlinedValue6 === t('eat') ? 'cake-variant' : 'weather-night'" />
         <span>{{ outlinedValue6 }}</span>
       </template>
       <template #prepend-icon>
@@ -225,21 +225,21 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.customIconSize" v-model="outlinedValue12">
+    <var-select variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue12">
       <template #default>
-        <var-option :label="pack.eat">
+        <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
-          <span>{{ pack.eat }}</span>
+          <span>{{ t('eat') }}</span>
         </var-option>
-        <var-option :label="pack.sleep">
+        <var-option :label="t('sleep')">
           <var-icon class="selected-icon" name="weather-night" />
-          <span>{{ pack.sleep }}</span>
+          <span>{{ t('sleep') }}</span>
         </var-option>
       </template>
       <template #selected>
         <var-icon
           class="selected-icon"
-          :name="outlinedValue12 === pack.eat ? 'cake-variant' : 'weather-night'"
+          :name="outlinedValue12 === t('eat') ? 'cake-variant' : 'weather-night'"
           size="8vmin"
         />
         <span>{{ outlinedValue12 }}</span>
@@ -254,43 +254,43 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.multiple" multiple v-model="outlinedValue7">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+    <var-select variant="outlined" :placeholder="t('multiple')" multiple v-model="outlinedValue7">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="pack.chipMultiple" chip multiple v-model="outlinedValue8">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+    <var-select variant="outlined" :placeholder="t('chipMultiple')" chip multiple v-model="outlinedValue8">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
     <var-select
       variant="outlined"
-      :placeholder="pack.validate"
-      :rules="[(v) => v === pack.rest || pack.mustSelectRest]"
+      :placeholder="t('validate')"
+      :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
       v-model="outlinedValue5"
     >
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.rest" />
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('rest')" />
     </var-select>
     <var-select
       multiple
       variant="outlined"
-      :placeholder="pack.multipleValidate"
-      :rules="[(v) => v.length >= 2 || pack.mustSelectMoreThan]"
+      :placeholder="t('multipleValidate')"
+      :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
       v-model="outlinedValue9"
     >
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
-      <var-option :label="pack.play" />
-      <var-option :label="pack.coding" />
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" size="small" :placeholder="pack.smallSize" v-model="outlinedValue11">
-      <var-option :label="pack.eat" />
-      <var-option :label="pack.sleep" />
+    <var-select variant="outlined" size="small" :placeholder="t('smallSize')" v-model="outlinedValue11">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
     </var-select>
   </var-space>
 

@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const expand = ref(true)
 
@@ -10,10 +10,10 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-switch v-model="expand" />
   <var-divider />
   <var-collapse-transition :expand="expand">
-    {{ pack.textContent }}
+    {{ t('textContent') }}
   </var-collapse-transition>
 </template>

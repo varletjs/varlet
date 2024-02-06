@@ -1,20 +1,20 @@
 <script setup>
 import vLazy from '..'
 import { AppType, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 watchLang(use)
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
   <img class="lazy-example-cat" v-lazy="'https://varlet.gitee.io/varlet-ui/cat.jpg'" />
 
-  <app-type>{{ pack.backgroundImageLazyLoad }}</app-type>
+  <app-type>{{ t('backgroundImageLazyLoad') }}</app-type>
   <div class="lazy-example-cat" v-lazy:background-image="'https://varlet.gitee.io/varlet-ui/cat.jpg'"></div>
 </template>
 

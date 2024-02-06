@@ -1,23 +1,23 @@
 <script setup>
 import vRipple from '..'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 watchLang(use)
 onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <div class="ripple-example__block var-elevation--2" v-ripple>{{ pack.click }}</div>
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <div class="ripple-example__block var-elevation--2" v-ripple>{{ t('click') }}</div>
 
-  <app-type>{{ pack.customColor }}</app-type>
+  <app-type>{{ t('customColor') }}</app-type>
   <div class="ripple-example__block var-elevation--2" v-ripple="{ color: 'var(--color-warning)' }">
-    {{ pack.click }}
+    {{ t('click') }}
   </div>
 
-  <app-type>{{ pack.disabledStatus }}</app-type>
-  <div class="ripple-example__block var-elevation--2" v-ripple="{ disabled: true }">{{ pack.click }}</div>
+  <app-type>{{ t('disabledStatus') }}</app-type>
+  <div class="ripple-example__block var-elevation--2" v-ripple="{ disabled: true }">{{ t('click') }}</div>
 </template>
 
 <style scoped lang="less">

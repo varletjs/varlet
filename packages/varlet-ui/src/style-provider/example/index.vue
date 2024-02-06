@@ -2,7 +2,7 @@
 import { Themes, StyleProvider } from '@varlet/ui'
 import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, onThemeChange } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const VarStyleProvider = StyleProvider.Component
 
@@ -60,13 +60,13 @@ function toggleRootTheme() {
 </script>
 
 <template>
-  <app-type>{{ pack.componentCall }}</app-type>
+  <app-type>{{ t('componentCall') }}</app-type>
   <var-style-provider :style-vars="styleVars">
     <var-rate v-model="state.score" />
     <var-switch v-model="state.license" />
-    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ pack.toggleTheme }}</var-button>
+    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ t('toggleTheme') }}</var-button>
   </var-style-provider>
 
-  <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" block @click="toggleRootTheme">{{ pack.toggleRootTheme }}</var-button>
+  <app-type>{{ t('functionCall') }}</app-type>
+  <var-button type="primary" block @click="toggleRootTheme">{{ t('toggleRootTheme') }}</var-button>
 </template>

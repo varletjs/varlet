@@ -34,7 +34,7 @@ import VarIcon from '../../icon'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
-import { pack } from '../../locale'
+import { t } from '../../locale'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
 
@@ -74,8 +74,8 @@ export default defineComponent({
 
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
 
-      const monthName = pack.value.datePickerMonthDict?.[previewMonth!].name
-      return pack.value.lang === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
+      const monthName = t('datePickerMonthDict')?.[previewMonth!].name
+      return t('lang') === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
     const checkDate = (checkType: string) => {

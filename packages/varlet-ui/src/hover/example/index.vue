@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const translateY = ref('100%')
@@ -14,7 +14,7 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.styleBinding }}</app-type>
+  <app-type>{{ t('styleBinding') }}</app-type>
   <var-paper
     class="paper"
     :elevation="2"
@@ -26,7 +26,7 @@ onThemeChange()
     HOVER
   </var-paper>
 
-  <app-type>{{ pack.functionBinding }}</app-type>
+  <app-type>{{ t('functionBinding') }}</app-type>
   <div class="image-container" v-hover="handleHover">
     <var-image src="https://varlet.gitee.io/varlet-ui/tree.jpeg" />
     <div class="image-mask" :style="{ transform: `translateY(${translateY})` }">HOVER</div>

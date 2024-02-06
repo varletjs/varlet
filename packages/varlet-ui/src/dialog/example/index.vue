@@ -2,7 +2,7 @@
 import { Snackbar, Dialog } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const values = reactive({
   show: false,
@@ -22,30 +22,30 @@ watchLang(use)
 onThemeChange()
 
 function createBasic() {
-  Dialog(pack.value.message)
+  Dialog(t('message'))
 }
 
 async function createAction() {
-  actions[await Dialog(pack.value.message)]()
+  actions[await Dialog(t('message'))]()
 }
 
 function modifyTitle() {
   Dialog({
-    title: pack.value.title,
-    message: pack.value.message,
+    title: t('title'),
+    message: t('message'),
   })
 }
 
 function hideButton() {
   Dialog({
-    message: pack.value.message,
+    message: t('message'),
     confirmButton: false,
     cancelButton: false,
   })
 }
 
 function onBeforeClose(action, done) {
-  Snackbar.loading(pack.value.asyncCloseProgress)
+  Snackbar.loading(t('asyncCloseProgress'))
 
   setTimeout(() => {
     actions[action]()
@@ -55,43 +55,43 @@ function onBeforeClose(action, done) {
 
 function asyncClose() {
   Dialog({
-    message: pack.value.message,
+    message: t('message'),
     onBeforeClose,
   })
 }
 </script>
 
 <template>
-  <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
-  <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
-  <var-button type="primary" block @click="hideButton">{{ pack.hideButton }}</var-button>
-  <var-button type="primary" block @click="createAction">{{ pack.handleUserBehavior }}</var-button>
-  <var-button type="primary" block @click="asyncClose">{{ pack.asyncClose }}</var-button>
+  <app-type>{{ t('functionCall') }}</app-type>
+  <var-button type="primary" block @click="createBasic">{{ t('basicUsage') }}</var-button>
+  <var-button type="primary" block @click="modifyTitle">{{ t('modifyTitle') }}</var-button>
+  <var-button type="primary" block @click="hideButton">{{ t('hideButton') }}</var-button>
+  <var-button type="primary" block @click="createAction">{{ t('handleUserBehavior') }}</var-button>
+  <var-button type="primary" block @click="asyncClose">{{ t('asyncClose') }}</var-button>
 
-  <app-type>{{ pack.componentCall }}</app-type>
-  <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
+  <app-type>{{ t('componentCall') }}</app-type>
+  <var-button type="warning" block @click="show = true">{{ t('basicUsage') }}</var-button>
   <var-dialog
     v-model:show="show"
-    :title="pack.title"
-    :message="pack.message"
+    :title="t('title')"
+    :message="t('message')"
     @confirm="() => Snackbar.success('confirm')"
     @cancel="() => Snackbar.error('cancel')"
     @closed="() => Snackbar.info('closed')"
   />
 
-  <var-button type="warning" block @click="show1 = true">{{ pack.asyncClose }}</var-button>
-  <var-dialog v-model:show="show1" :title="pack.title" :message="pack.message" @before-close="onBeforeClose" />
+  <var-button type="warning" block @click="show1 = true">{{ t('asyncClose') }}</var-button>
+  <var-dialog v-model:show="show1" :title="t('title')" :message="t('message')" @before-close="onBeforeClose" />
 
-  <var-button type="warning" block @click="show2 = true">{{ pack.customSlots }}</var-button>
+  <var-button type="warning" block @click="show2 = true">{{ t('customSlots') }}</var-button>
   <var-dialog v-model:show="show2">
     <template #title>
       <var-icon name="information" color="#2979ff" />
     </template>
 
-    <var-cell>{{ pack.message }}</var-cell>
-    <var-cell>{{ pack.message }}</var-cell>
-    <var-cell>{{ pack.message }}</var-cell>
+    <var-cell>{{ t('message') }}</var-cell>
+    <var-cell>{{ t('message') }}</var-cell>
+    <var-cell>{{ t('message') }}</var-cell>
   </var-dialog>
 </template>
 

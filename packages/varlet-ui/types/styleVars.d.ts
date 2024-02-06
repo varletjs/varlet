@@ -667,8 +667,6 @@ export interface StyleVars {
   fieldDecoratorTextColor?: string
   '--field-decorator-error-color'?: string
   fieldDecoratorErrorColor?: string
-  '--field-decorator-placeholder-color'?: string
-  fieldDecoratorPlaceholderColor?: string
   '--field-decorator-blur-color'?: string
   fieldDecoratorBlurColor?: string
   '--field-decorator-focus-color'?: string
@@ -685,54 +683,54 @@ export interface StyleVars {
   fieldDecoratorLineBorderRadius?: string
   '--field-decorator-disabled-color'?: string
   fieldDecoratorDisabledColor?: string
-  '--field-decorator-standard-normal-padding-top'?: string
-  fieldDecoratorStandardNormalPaddingTop?: string
-  '--field-decorator-standard-normal-padding-bottom'?: string
-  fieldDecoratorStandardNormalPaddingBottom?: string
-  '--field-decorator-standard-normal-icon-padding'?: string
-  fieldDecoratorStandardNormalIconPadding?: string
-  '--field-decorator-standard-normal-non-hint-padding-top'?: string
-  fieldDecoratorStandardNormalNonHintPaddingTop?: string
-  '--field-decorator-standard-normal-placeholder-translate-y'?: string
-  fieldDecoratorStandardNormalPlaceholderTranslateY?: string
-  '--field-decorator-standard-small-padding-top'?: string
-  fieldDecoratorStandardSmallPaddingTop?: string
-  '--field-decorator-standard-small-padding-bottom'?: string
-  fieldDecoratorStandardSmallPaddingBottom?: string
-  '--field-decorator-standard-small-icon-padding'?: string
-  fieldDecoratorStandardSmallIconPadding?: string
-  '--field-decorator-standard-small-non-hint-padding-top'?: string
-  fieldDecoratorStandardSmallNonHintPaddingTop?: string
-  '--field-decorator-standard-small-placeholder-translate-y'?: string
-  fieldDecoratorStandardSmallPlaceholderTranslateY?: string
-  '--field-decorator-outlined-normal-padding-top'?: string
-  fieldDecoratorOutlinedNormalPaddingTop?: string
-  '--field-decorator-outlined-normal-padding-bottom'?: string
-  fieldDecoratorOutlinedNormalPaddingBottom?: string
+  '--field-decorator-standard-normal-margin-top'?: string
+  fieldDecoratorStandardNormalMarginTop?: string
+  '--field-decorator-standard-normal-margin-bottom'?: string
+  fieldDecoratorStandardNormalMarginBottom?: string
+  '--field-decorator-standard-normal-icon-margin-top'?: string
+  fieldDecoratorStandardNormalIconMarginTop?: string
+  '--field-decorator-standard-normal-icon-margin-bottom'?: string
+  fieldDecoratorStandardNormalIconMarginBottom?: string
+  '--field-decorator-standard-normal-non-hint-margin-top'?: string
+  fieldDecoratorStandardNormalNonHintMarginTop?: string
+  '--field-decorator-standard-small-margin-top'?: string
+  fieldDecoratorStandardSmallMarginTop?: string
+  '--field-decorator-standard-small-margin-bottom'?: string
+  fieldDecoratorStandardSmallMarginBottom?: string
+  '--field-decorator-standard-small-icon-margin-top'?: string
+  fieldDecoratorStandardSmallIconMarginTop?: string
+  '--field-decorator-standard-small-icon-margin-bottom'?: string
+  fieldDecoratorStandardSmallIconMarginBottom?: string
+  '--field-decorator-standard-small-non-hint-margin-top'?: string
+  fieldDecoratorStandardSmallNonHintMarginTop?: string
+  '--field-decorator-outlined-normal-margin-top'?: string
+  fieldDecoratorOutlinedNormalMarginTop?: string
+  '--field-decorator-outlined-normal-margin-bottom'?: string
+  fieldDecoratorOutlinedNormalMarginBottom?: string
   '--field-decorator-outlined-normal-padding-left'?: string
   fieldDecoratorOutlinedNormalPaddingLeft?: string
   '--field-decorator-outlined-normal-padding-right'?: string
   fieldDecoratorOutlinedNormalPaddingRight?: string
   '--field-decorator-outlined-normal-placeholder-space'?: string
   fieldDecoratorOutlinedNormalPlaceholderSpace?: string
-  '--field-decorator-outlined-normal-icon-padding'?: string
-  fieldDecoratorOutlinedNormalIconPadding?: string
-  '--field-decorator-outlined-normal-placeholder-translate-y'?: string
-  fieldDecoratorOutlinedNormalPlaceholderTranslateY?: string
-  '--field-decorator-outlined-small-padding-top'?: string
-  fieldDecoratorOutlinedSmallPaddingTop?: string
-  '--field-decorator-outlined-small-padding-bottom'?: string
-  fieldDecoratorOutlinedSmallPaddingBottom?: string
+  '--field-decorator-outlined-normal-icon-margin-top'?: string
+  fieldDecoratorOutlinedNormalIconMarginTop?: string
+  '--field-decorator-outlined-normal-icon-margin-bottom'?: string
+  fieldDecoratorOutlinedNormalIconMarginBottom?: string
+  '--field-decorator-outlined-small-margin-top'?: string
+  fieldDecoratorOutlinedSmallMarginTop?: string
+  '--field-decorator-outlined-small-margin-bottom'?: string
+  fieldDecoratorOutlinedSmallMarginBottom?: string
   '--field-decorator-outlined-small-padding-left'?: string
   fieldDecoratorOutlinedSmallPaddingLeft?: string
   '--field-decorator-outlined-small-padding-right'?: string
   fieldDecoratorOutlinedSmallPaddingRight?: string
   '--field-decorator-outlined-small-placeholder-space'?: string
   fieldDecoratorOutlinedSmallPlaceholderSpace?: string
-  '--field-decorator-outlined-small-icon-padding'?: string
-  fieldDecoratorOutlinedSmallIconPadding?: string
-  '--field-decorator-outlined-small-placeholder-translate-y'?: string
-  fieldDecoratorOutlinedSmallPlaceholderTranslateY?: string
+  '--field-decorator-outlined-small-icon-margin-top'?: string
+  fieldDecoratorOutlinedSmallIconMarginTop?: string
+  '--field-decorator-outlined-small-icon-margin-bottom'?: string
+  fieldDecoratorOutlinedSmallIconMarginBottom?: string
   '--input-input-height'?: string
   inputInputHeight?: string
   '--input-input-font-size'?: string

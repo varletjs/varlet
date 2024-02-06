@@ -1,7 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const dates = reactive({
   date: '2021-04',
@@ -26,18 +26,18 @@ const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-date-picker v-model="dates.date1" />
 
-  <app-type>{{ pack.monthPicker }}</app-type>
+  <app-type>{{ t('monthPicker') }}</app-type>
   <var-date-picker type="month" v-model="dates.date" />
 
-  <app-type>{{ pack.multiple }}</app-type>
+  <app-type>{{ t('multiple') }}</app-type>
   <var-date-picker type="date" v-model="dates.date2" multiple />
 
-  <app-type>{{ pack.range }}</app-type>
+  <app-type>{{ t('range') }}</app-type>
   <var-date-picker type="date" v-model="dates.date3" range />
 
-  <app-type>{{ pack.dateLimit }}</app-type>
+  <app-type>{{ t('dateLimit') }}</app-type>
   <var-date-picker type="date" v-model="dates.date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates1" />
 </template>

@@ -1,16 +1,16 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 watchLang(use)
 onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
-  <app-type>{{ pack.fitMode }}</app-type>
+  <app-type>{{ t('fitMode') }}</app-type>
   <var-space :size="['6vmin', '6vmin']">
     <div class="image-example-fit-item">
       <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
@@ -43,7 +43,7 @@ onThemeChange()
     </div>
   </var-space>
 
-  <app-type>{{ pack.setRadius }}</app-type>
+  <app-type>{{ t('setRadius') }}</app-type>
   <var-space :size="['6vmin', '6vmin']">
     <var-image
       width="22.666vmin"
@@ -63,13 +63,13 @@ onThemeChange()
     />
   </var-space>
 
-  <app-type>{{ pack.useRipple }}</app-type>
+  <app-type>{{ t('useRipple') }}</app-type>
   <var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
-  <app-type>{{ pack.useLazyLoad }}</app-type>
+  <app-type>{{ t('useLazyLoad') }}</app-type>
   <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
 
-  <app-type>{{ pack.useFailureSlot }}</app-type>
+  <app-type>{{ t('useFailureSlot') }}</app-type>
   <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/ca.jpg">
     <template #error>
       <svg viewBox="0 0 24 24" style="width: 100%; height: 100%">

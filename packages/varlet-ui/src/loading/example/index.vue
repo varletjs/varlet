@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const loading = ref(false)
 
@@ -10,7 +10,7 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.type }}</app-type>
+  <app-type>{{ t('type') }}</app-type>
   <var-space align="center" justify="space-between">
     <var-loading type="circle" />
     <var-loading type="cube" />
@@ -19,7 +19,7 @@ onThemeChange()
     <var-loading type="disappear" />
   </var-space>
 
-  <app-type>{{ pack.color }}</app-type>
+  <app-type>{{ t('color') }}</app-type>
   <var-space align="center" justify="space-between">
     <var-loading type="circle" color="var(--color-info)" />
     <var-loading type="cube" color="var(--color-success)" />
@@ -28,7 +28,7 @@ onThemeChange()
     <var-loading type="disappear" color="var(--color-text-disabled)" />
   </var-space>
 
-  <app-type>{{ pack.size }}</app-type>
+  <app-type>{{ t('size') }}</app-type>
   <var-space align="center" justify="space-between">
     <var-loading type="circle" size="small" />
     <var-loading type="cube" size="small" />
@@ -37,12 +37,12 @@ onThemeChange()
     <var-loading type="disappear" size="small" />
   </var-space>
 
-  <app-type>{{ pack.wrap }}</app-type>
+  <app-type>{{ t('wrap') }}</app-type>
   <var-button @click="loading = !loading" style="margin-bottom: 8px">
-    {{ loading ? pack.close : pack.open }}
+    {{ loading ? t('close') : t('open') }}
   </var-button>
   <var-loading description="LOADING" :loading="loading">
-    <var-card :title="pack.cardTitle" :description="pack.cardDesc" />
+    <var-card :title="t('cardTitle')" :description="t('cardDesc')" />
   </var-loading>
 </template>
 

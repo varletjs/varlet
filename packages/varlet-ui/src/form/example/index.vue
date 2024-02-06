@@ -2,7 +2,7 @@
 import VarCustomFormComponent from './CustomFormComponent'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, ref } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const formData = reactive({
   username: '',
@@ -31,7 +31,7 @@ onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.example }}</app-type>
+  <app-type>{{ t('example') }}</app-type>
 
   <var-form
     ref="form"
@@ -42,69 +42,69 @@ onThemeChange()
   >
     <var-space direction="column" :size="['4vmin', 0]">
       <var-input
-        :placeholder="pack.username"
-        :rules="[(v) => !!v || pack.usernameMessage]"
+        :placeholder="t('username')"
+        :rules="[(v) => !!v || t('usernameMessage')]"
         v-model="formData.username"
       />
       <var-input
         type="password"
-        :placeholder="pack.password"
-        :rules="[(v) => !!v || pack.passwordMessage]"
+        :placeholder="t('password')"
+        :rules="[(v) => !!v || t('passwordMessage')]"
         v-model="formData.password"
       />
       <var-select
-        :placeholder="pack.department"
-        :rules="[(v) => !!v || pack.departmentMessage]"
+        :placeholder="t('department')"
+        :rules="[(v) => !!v || t('departmentMessage')]"
         v-model="formData.department"
       >
-        <var-option :label="`${pack.eat}${pack.departmentUnit}`" />
-        <var-option :label="`${pack.sleep}${pack.departmentUnit}`" />
-        <var-option :label="`${pack.play}${pack.departmentUnit}`" />
+        <var-option :label="`${t('eat')}${t('departmentUnit')}`" />
+        <var-option :label="`${t('sleep')}${t('departmentUnit')}`" />
+        <var-option :label="`${t('play')}${t('departmentUnit')}`" />
       </var-select>
       <var-select
         multiple
-        :placeholder="pack.group"
-        :rules="[(v) => v.length >= 1 || pack.groupMessage]"
+        :placeholder="t('group')"
+        :rules="[(v) => v.length >= 1 || t('groupMessage')]"
         v-model="formData.group"
       >
-        <var-option :label="`${pack.eat}${pack.groupUnit}`" />
-        <var-option :label="`${pack.sleep}${pack.groupUnit}`" />
-        <var-option :label="`${pack.play}${pack.groupUnit}`" />
+        <var-option :label="`${t('eat')}${t('groupUnit')}`" />
+        <var-option :label="`${t('sleep')}${t('groupUnit')}`" />
+        <var-option :label="`${t('play')}${t('groupUnit')}`" />
       </var-select>
-      <var-radio-group :rules="[(v) => !!v || pack.genderMessage]" v-model="formData.gender">
-        <var-radio :checked-value="1">{{ pack.male }}</var-radio>
-        <var-radio :checked-value="2">{{ pack.female }}</var-radio>
+      <var-radio-group :rules="[(v) => !!v || t('genderMessage')]" v-model="formData.gender">
+        <var-radio :checked-value="1">{{ t('male') }}</var-radio>
+        <var-radio :checked-value="2">{{ t('female') }}</var-radio>
       </var-radio-group>
-      <var-checkbox-group :rules="[(v) => v.length > 0 || pack.likeMessage]" v-model="formData.like">
-        <var-checkbox :checked-value="1">{{ pack.eat }}</var-checkbox>
-        <var-checkbox :checked-value="2">{{ pack.sleep }}</var-checkbox>
-        <var-checkbox :checked-value="3">{{ pack.play }}</var-checkbox>
+      <var-checkbox-group :rules="[(v) => v.length > 0 || t('likeMessage')]" v-model="formData.like">
+        <var-checkbox :checked-value="1">{{ t('eat') }}</var-checkbox>
+        <var-checkbox :checked-value="2">{{ t('sleep') }}</var-checkbox>
+        <var-checkbox :checked-value="3">{{ t('play') }}</var-checkbox>
       </var-checkbox-group>
-      <var-rate :rules="[(v) => v >= 3 || pack.rateMessage]" v-model="formData.score" />
-      <var-switch :rules="[(v) => !!v || pack.licenseMessage]" v-model="formData.license" />
-      <var-counter :rules="[(v) => v > 10 || pack.countMessage]" v-model="formData.count" />
-      <var-slider :rules="[(v) => v > 10 || pack.rangeMessage]" v-model="formData.range" />
-      <var-uploader :rules="[(v) => v.length >= 1 || pack.filesMessage]" v-model="formData.files" />
+      <var-rate :rules="[(v) => v >= 3 || t('rateMessage')]" v-model="formData.score" />
+      <var-switch :rules="[(v) => !!v || t('licenseMessage')]" v-model="formData.license" />
+      <var-counter :rules="[(v) => v > 10 || t('countMessage')]" v-model="formData.count" />
+      <var-slider :rules="[(v) => v > 10 || t('rangeMessage')]" v-model="formData.range" />
+      <var-uploader :rules="[(v) => v.length >= 1 || t('filesMessage')]" v-model="formData.files" />
     </var-space>
 
-    <app-type>{{ pack.customFormComponent }}</app-type>
+    <app-type>{{ t('customFormComponent') }}</app-type>
     <var-custom-form-component
-      :extra-message="pack.customExtraMessage"
-      :rules="[(v) => !!v || pack.customErrorMessage]"
+      :extra-message="t('customExtraMessage')"
+      :rules="[(v) => !!v || t('customErrorMessage')]"
       v-model="formData.custom"
     >
-      {{ pack.customLabel }}
+      {{ t('customLabel') }}
     </var-custom-form-component>
   </var-form>
 
-  <app-type>{{ pack.controller }}</app-type>
+  <app-type>{{ t('controller') }}</app-type>
 
   <var-space direction="column" :size="['4vmin', 0]">
-    <var-button block type="danger" @click="form.reset()">{{ pack.reset }}</var-button>
-    <var-button block type="warning" @click="form.resetValidation()">{{ pack.resetValidation }}</var-button>
-    <var-button block type="success" @click="form.validate()">{{ pack.validate }}</var-button>
-    <var-button block type="info" @click="disabled = !disabled">{{ pack.disabled }}</var-button>
-    <var-button block type="primary" @click="readonly = !readonly">{{ pack.readonly }}</var-button>
+    <var-button block type="danger" @click="form.reset()">{{ t('reset') }}</var-button>
+    <var-button block type="warning" @click="form.resetValidation()">{{ t('resetValidation') }}</var-button>
+    <var-button block type="success" @click="form.validate()">{{ t('validate') }}</var-button>
+    <var-button block type="info" @click="disabled = !disabled">{{ t('disabled') }}</var-button>
+    <var-button block type="primary" @click="readonly = !readonly">{{ t('readonly') }}</var-button>
   </var-space>
 
   <div class="space"></div>

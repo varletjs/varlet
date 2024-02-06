@@ -32,11 +32,11 @@
             :text-color="cancelButtonTextColor"
             @click="cancel"
           >
-            {{ cancelButtonText ?? pack.pickerCancelButtonText }}
+            {{ cancelButtonText ?? t('pickerCancelButtonText') }}
           </var-button>
         </slot>
         <slot name="title">
-          <div :class="n('title')">{{ title ?? pack.pickerTitle }}</div>
+          <div :class="n('title')">{{ title ?? t('pickerTitle') }}</div>
         </slot>
         <slot name="confirm">
           <var-button
@@ -46,7 +46,7 @@
             :text-color="confirmButtonTextColor"
             @click="confirm"
           >
-            {{ confirmButtonText ?? pack.pickerConfirmButtonText }}
+            {{ confirmButtonText ?? t('pickerConfirmButtonText') }}
           </var-button>
         </slot>
       </div>
@@ -101,7 +101,7 @@ import { props, type PickerColumnOption } from './props'
 import { useTouch, useVModel } from '@varlet/use'
 import { clamp, clampArrayRange, call } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
-import { pack } from '../locale'
+import { t } from '../locale'
 import { createNamespace } from '../utils/components'
 
 export interface ScrollColumn {
@@ -434,7 +434,7 @@ export default defineComponent({
     }
 
     return {
-      pack,
+      t,
       optionHeight,
       optionCount,
       scrollColumns,

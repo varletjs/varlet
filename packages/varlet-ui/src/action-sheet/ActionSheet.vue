@@ -21,7 +21,7 @@
   >
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
-        <div :class="n('title')">{{ title ?? pack.actionSheetTitle }}</div>
+        <div :class="n('title')">{{ title ?? t('actionSheetTitle') }}</div>
       </slot>
 
       <slot name="actions">
@@ -54,7 +54,7 @@ import VarPopup from '../popup'
 import VarIcon from '../icon'
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
-import { pack } from '../locale'
+import { t } from '../locale'
 import { createNamespace } from '../utils/components'
 import { type ActionItem } from './index'
 import { call } from '@varlet/shared'
@@ -97,7 +97,7 @@ export default defineComponent({
 
     return {
       popupShow,
-      pack,
+      t,
       n,
       classes,
       handlePopupUpdateShow,

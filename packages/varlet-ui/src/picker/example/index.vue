@@ -3,7 +3,7 @@ import area from '../../../json/area.json'
 import { Snackbar, Picker } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const VarPicker = Picker.Component
 
@@ -127,35 +127,35 @@ function handleChange(values, indexes) {
 </script>
 
 <template>
-  <app-type>{{ pack.functionCall }}</app-type>
+  <app-type>{{ t('functionCall') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="primary" block @click="picker">{{ pack.singlePicker }}</var-button>
-    <var-button type="primary" block @click="picker2">{{ pack.multiplePicker }}</var-button>
-    <var-button type="primary" block @click="picker3">{{ pack.cascadePicker }}</var-button>
-    <var-button type="primary" block @click="picker4">{{ pack.areaPicker }}</var-button>
-    <var-button type="primary" block @click="picker5">{{ pack.valueMapping }}</var-button>
+    <var-button type="primary" block @click="picker">{{ t('singlePicker') }}</var-button>
+    <var-button type="primary" block @click="picker2">{{ t('multiplePicker') }}</var-button>
+    <var-button type="primary" block @click="picker3">{{ t('cascadePicker') }}</var-button>
+    <var-button type="primary" block @click="picker4">{{ t('areaPicker') }}</var-button>
+    <var-button type="primary" block @click="picker5">{{ t('apping') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.componentCall }}</app-type>
+  <app-type>{{ t('componentCall') }}</app-type>
 
-  <app-type>{{ pack.singlePicker }}</app-type>
+  <app-type>{{ t('singlePicker') }}</app-type>
   <var-picker :columns="columns" @change="handleChange" />
 
-  <app-type>{{ pack.multiplePicker }}</app-type>
+  <app-type>{{ t('multiplePicker') }}</app-type>
   <var-picker :columns="columns2" @change="handleChange" />
 
-  <app-type>{{ pack.cascadePicker }}</app-type>
+  <app-type>{{ t('cascadePicker') }}</app-type>
   <var-picker :columns="columns3" cascade @change="handleChange" />
 
-  <app-type>{{ pack.areaPicker }}</app-type>
+  <app-type>{{ t('areaPicker') }}</app-type>
   <var-picker :columns="columns4" cascade @change="handleChange" />
 
-  <app-type>{{ pack.valueMapping }}</app-type>
+  <app-type>{{ t('apping') }}</app-type>
   <var-picker :columns="columns5" @change="handleChange" />
 
-  <app-type>{{ pack.twoWayBinding }}</app-type>
+  <app-type>{{ t('twoWayBinding') }}</app-type>
   <var-space direction="column" size="large">
-    <var-button type="primary" @click="values = ['A', 'B', 'C']">values: {{ values }} {{ pack.reset }}</var-button>
+    <var-button type="primary" @click="values = ['A', 'B', 'C']">values: {{ values }} {{ t('reset') }}</var-button>
     <var-picker :columns="columns2" v-model="values" @change="handleChange" />
   </var-space>
 </template>
