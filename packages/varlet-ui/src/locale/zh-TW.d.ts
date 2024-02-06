@@ -1,5 +1,5 @@
 import type { Pack } from '../../types'
 
-declare const enUS: Pack
+declare const zhTW: Pack
 
-export default enUS
+export default zhTW
