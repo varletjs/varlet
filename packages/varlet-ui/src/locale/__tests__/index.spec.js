@@ -4,35 +4,35 @@ import { mockConsole } from '../../utils/test'
 import { expect, vi } from 'vitest'
 
 test('test add lang', () => {
-  const { add, use, pack, packs } = useLocale()
+  const { add, use, t, messages } = useLocale()
 
-  const LANG = 'custom'
-  const PACK = {
+  const lang = 'custom'
+  const message = {
     dialogTitle: 'Custom Dialog Title',
   }
 
-  add(LANG, PACK)
-  use(LANG)
+  add(lang, message)
+  use(lang)
 
-  expect(t('lang')).toBe(LANG)
-  expect(packs[LANG]).toBe(PACK)
+  expect(t('lang')).toBe(lang)
+  expect(messages[lang]).toBe(message)
 })
 
 test('test merge lang', () => {
   const fn = vi.fn()
   const { mockRestore } = mockConsole('warn', fn)
-  const { add, use, merge, pack } = useLocale()
+  const { add, use, merge, t } = useLocale()
 
-  const LANG = 'en-US'
-  const PACK = {
+  const lang = 'en-US'
+  const message = {
     dialogTitle: 'Custom Dialog Title',
   }
 
-  add(LANG, enUS)
+  add(lang, enUS)
   use('zh-HK')
-  use(LANG)
-  merge('zh-HK', PACK)
-  merge(LANG, PACK)
+  use(lang)
+  merge('zh-HK', message)
+  merge(lang, message)
 
   expect(t('dialogTitle')).toBe('Custom Dialog Title')
   expect(fn).toHaveBeenCalledTimes(2)
