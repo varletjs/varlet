@@ -49,7 +49,7 @@ function useLocale<T = Message>() {
 
   const use = (lang: string) => {
     if (!messages[lang]) {
-      console.warn(`The ${lang} does not exist. You can mount a language package using the add method`)
+      console.warn(`The ${lang} does not exist. You can mount a language message using the add method`)
       return {}
     }
 
@@ -58,7 +58,7 @@ function useLocale<T = Message>() {
 
   const merge = (lang: string, message: Partial<T>) => {
     if (!messages[lang]) {
-      console.warn(`The ${lang} does not exist. You can mount a language package using the add method`)
+      console.warn(`The ${lang} does not exist. You can mount a language message using the add method`)
       return
     }
 
