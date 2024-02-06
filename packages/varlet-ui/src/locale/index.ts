@@ -79,9 +79,9 @@ const { packs, pack, add, use, merge } = useLocale()
 add('zh-CN', zhCN)
 use('zh-CN')
 
-export { zhCN, enUS, packs, pack, add, use, merge, useLocale }
+export { zhCN, enUS, zhTW, zhHK, faIR, packs, pack, add, use, merge, useLocale }
 
-export const _LocaleComponent = { zhCN, enUS, packs, pack, add, use, merge, useLocale }
+export const _LocaleComponent = { zhCN, enUS, zhTW, zhHK, faIR, packs, pack, add, use, merge, useLocale }
 
 export default {
   zhCN,
