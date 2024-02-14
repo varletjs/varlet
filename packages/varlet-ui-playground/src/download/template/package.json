@@ -7,13 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4",
+    "vue": "^3.4.15",
     "@varlet/ui": "latest",
     "@varlet/touch-emulator": "latest"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/compiler-sfc": "^3.3.4",
+    "@vue/compiler-sfc": "^3.4.15",
     "vite": "^4.3.9"
   }
 }

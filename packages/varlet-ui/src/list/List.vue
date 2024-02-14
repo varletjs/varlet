@@ -84,6 +84,11 @@ export default defineComponent({
     }
 
     function removeScrollerListener() {
+      if (!scroller) {
+        // may be null in nuxt
+        return
+      }
+
       scroller.removeEventListener('scroll', check)
     }
 

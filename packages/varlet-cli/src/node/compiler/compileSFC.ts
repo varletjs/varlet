@@ -9,7 +9,7 @@ import {
   registerTS,
 } from '@vue/compiler-sfc'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
-import { CWD, SRC_DIR, ES_DIR } from '../shared/constant.js'
+import { SRC_DIR, ES_DIR } from '../shared/constant.js'
 import { compileScript, getScriptExtname } from './compileScript.js'
 import ts from 'typescript'
 import {
@@ -59,18 +59,10 @@ export function injectRender(script: string, render: string): string {
   return script
 }
 
-export function getFsPath(sfc: string, fsFile: string) {
-  if (fsFile === 'tsconfig.json' || fsFile.startsWith('node_modules')) {
-    return resolve(CWD, fsFile)
-  }
-
-  return resolve(sfc.replace(ES_DIR, SRC_DIR), '..', fsFile)
-}
-
 export async function compileSFC(sfc: string) {
   const sources: string = await readFile(sfc, 'utf-8')
   const id = hash(sources)
-  const { descriptor } = parseSFC(sources, { sourceMap: false })
+  const { descriptor } = parseSFC(sources, { filename: sfc, sourceMap: false })
   const { script, scriptSetup, template, styles } = descriptor
 
   let scriptContent
@@ -82,8 +74,8 @@ export async function compileSFC(sfc: string) {
         id,
         // issue https://github.com/varletjs/varlet/issues/1458
         fs: {
-          fileExists: (file) => existsSync(getFsPath(sfc, file)),
-          readFile: (file) => readFileSync(getFsPath(sfc, file), 'utf-8'),
+          fileExists: (file) => existsSync(file.replace(ES_DIR, SRC_DIR)),
+          readFile: (file) => readFileSync(file.replace(ES_DIR, SRC_DIR), 'utf-8'),
         },
       })
       scriptContent = content
