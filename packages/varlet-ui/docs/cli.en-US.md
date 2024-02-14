@@ -276,7 +276,7 @@ varlet-cli create
 
 ### Q & A
 
-> How to solve failure of installing sharp ?
+#### How to solve failure of installing sharp ?
 
 - You can choose to change mirror site which contains binaries for both sharp and libvips.
 
