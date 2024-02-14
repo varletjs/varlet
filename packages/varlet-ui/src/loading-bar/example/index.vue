@@ -24,7 +24,7 @@ watchDarkMode(Themes.dark)
 watchLang(use)
 
 LoadingBar.setDefaultOptions({
-  top: '14.5vmin',
+  top: '54px',
 })
 </script>
 

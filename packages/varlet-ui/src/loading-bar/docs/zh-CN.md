@@ -29,7 +29,7 @@ function setStyle() {
 
 // 移动端案例设置了偏移
 // LoadingBar.setDefaultOptions({
-//   top: '48px'
+//   top: '54px'
 // })
 </script>
 
