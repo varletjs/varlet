@@ -1,3 +1,16 @@
+## [2.22.3](https://github.com/varletjs/varlet/compare/v2.22.2...v2.22.3) (2024-02-14)
+
+
+### Bug Fixes
+
+* fix mission export ([ce64393](https://github.com/varletjs/varlet/commit/ce64393bfd05713272b41c9496d71bf50cf36397))
+* **popup:** correct the value of scrollbar-width ([#1463](https://github.com/varletjs/varlet/issues/1463)) ([b71a97d](https://github.com/varletjs/varlet/commit/b71a97d71bc552edbb9832bd7356bc0903a5fb2f))
+* **popup:** in firefox, the popup will have a scrollbar when it pops up ([#1462](https://github.com/varletjs/varlet/issues/1462)) ([b84fbaf](https://github.com/varletjs/varlet/commit/b84fbafca2a56fb283553ffafb8605ed382210e1))
+* **ripple:** _ripple may be null in nuxt and add comment ([77c4ddc](https://github.com/varletjs/varlet/commit/77c4ddc3d2c43115e18c982c4e4c901872b9c352))
+* scroller may be null in nuxt ([6f72b75](https://github.com/varletjs/varlet/commit/6f72b758001ef1691da8e52f43ed8bd137fe88c1))
+
+
+
 ## [2.22.2](https://github.com/varletjs/varlet/compare/v2.22.1...v2.22.2) (2024-02-03)
 
 
