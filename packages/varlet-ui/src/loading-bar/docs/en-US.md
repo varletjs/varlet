@@ -29,7 +29,7 @@ function setStyle() {
 
 // mobile only
 // LoadingBar.setDefaultOptions({
-//   top: '48px'
+//   top: '54px'
 // })
 </script>
 
