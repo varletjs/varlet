@@ -1,5 +1,5 @@
 export default {
-  '--result-background': '#36343B',
+  '--result-background': 'var(--color-surface-container-highest)',
   '--result-title-color': 'var(--color-inverse-surface)',
   '--result-description-color': 'var(--color-on-surface-variant)',
   '--result-question-color': '#7f8e96',

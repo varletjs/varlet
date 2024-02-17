@@ -1,3 +1,3 @@
 export default {
-  '--pull-refresh-background': '#36343B',
+  '--pull-refresh-background': 'var(--color-surface-container-highest)',
 }
