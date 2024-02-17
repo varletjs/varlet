@@ -1,3 +1,3 @@
 export default {
-  '--paper-background': '#F7F2FA',
+  '--paper-background': 'var(--color-surface-container-low)',
 }

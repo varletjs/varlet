@@ -1,3 +1,3 @@
 export default {
-  '--popup-content-background-color': '#ECE6F0',
+  '--popup-content-background-color': 'var(--color-surface-container-high)',
 }

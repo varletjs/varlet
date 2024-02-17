@@ -292,5 +292,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--menu-background-color` | `#fff` |
+| `--menu-background-color` | `var(--color-surface-container-high)` |
 | `--menu-border-radius` | `2px` |

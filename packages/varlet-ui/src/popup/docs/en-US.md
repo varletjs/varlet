@@ -226,4 +226,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
-| `--popup-content-background-color` | `#fff` |
+| `--popup-content-background-color` | `var(--color-surface-container-low)` |

@@ -262,7 +262,7 @@ function closeAllSkipDisabled() {
 
 | 变量名                         | 默认值                           |
 | ------------------------------ | -------------------------------- |
-| `--collapse-background`        | `#fff`                           |
+| `--collapse-background`        | `var(--color-surface-container-highest)`                           |
 | `--collapse-text-color`        | `#232222`                        |
 | `--collapse-header-font-size`  | `var(--font-size-lg)`            |
 | `--collapse-header-padding`    | `10px 12px`                      |

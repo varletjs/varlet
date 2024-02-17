@@ -10,7 +10,6 @@ import collapse from './collapse'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
-import floatingPanel from './floatingPanel'
 import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
@@ -18,7 +17,6 @@ import popup from './popup'
 import pullRefresh from './pullRefresh'
 import radio from './radio'
 import result from './result'
-import select from './select'
 import skeleton from './skeleton'
 import steps from './steps'
 import switchThemes from './switch'
@@ -28,11 +26,9 @@ import timePicker from './timePicker'
 import uploader from './uploader'
 import tabs from './tabs'
 import appBar from './appBar'
-import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import menu from './menu'
 import breadcrumb from './breadcrumb'
-import paper from './paper'
 import avatar from './avatar'
 import link from './link'
 import progress from './progress'
@@ -67,7 +63,13 @@ export default {
   '--color-on-danger-container': '#fff',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  '--color-surface-container': '#1e1e1e',
+  '--color-surface-container-low': '#1e1e1e',
+  '--color-surface-container-high': '#272727',
+  '--color-surface-container-highest': '#303030',
+  '--color-inverse-surface': '#fff',
   '--color-outline': 'rgba(255, 255, 255, 0.2)',
+  '--color-on-surface-variant': '#fff',
   // component
   ...button,
   ...cell,
@@ -90,18 +92,15 @@ export default {
   ...pagination,
   ...table,
   ...fieldDecorator,
-  ...select,
   ...radio,
   ...checkbox,
   ...divider,
   ...picker,
   ...appBar,
-  ...bottomNavigation,
   ...bottomNavigationItem,
   ...menu,
   ...result,
   ...breadcrumb,
-  ...paper,
   ...avatar,
   ...link,
   ...progress,
@@ -109,5 +108,4 @@ export default {
   ...watermark,
   ...menuSelect,
   ...menuOption,
-  ...floatingPanel,
 } as StyleVars

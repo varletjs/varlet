@@ -193,7 +193,7 @@ const floating = ref(false)
 
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
-| `--card-background`                 | `#fff`               |
+| `--card-background`                 | `var(--color-surface-container-highest)`               |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |
 | `--card-outline-color`              | `var(--color-outline)` |

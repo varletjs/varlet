@@ -1,4 +1,4 @@
 export default {
-  '--select-scroller-background': '#F3EDF7',
+  '--select-scroller-background': 'var(--color-surface-container)',
   '--select-scroller-border-radius': '4px',
 }

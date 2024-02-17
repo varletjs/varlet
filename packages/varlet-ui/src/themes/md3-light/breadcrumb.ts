@@ -1,3 +1,3 @@
 export default {
-  '--breadcrumb-inactive-color': '#49454F',
+  '--breadcrumb-inactive-color': 'var(--color-on-surface-variant)',
 }

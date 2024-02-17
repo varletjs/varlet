@@ -266,7 +266,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                       | Default                          |
 | ------------------------------ | -------------------------------- |
-| `--collapse-background`        | `#fff`                           |
+| `--collapse-background`        | `var(--color-surface-container-highest)`                           |
 | `--collapse-text-color`        | `#232222`                        |
 | `--collapse-header-font-size`  | `var(--font-size-lg)`            |
 | `--collapse-header-padding`    | `10px 12px`                      |

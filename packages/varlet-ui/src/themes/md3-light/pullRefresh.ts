@@ -1,3 +1,3 @@
 export default {
-  '--pull-refresh-background': '#FEF7FF',
+  '--pull-refresh-background': 'var(--color-body)',
 }

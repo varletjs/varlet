@@ -1,3 +1,3 @@
 export default {
-  '--menu-option-text-color': '#E6E0E9',
+  '--menu-option-text-color': 'var(--color-inverse-surface)',
 }

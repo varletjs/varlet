@@ -301,7 +301,7 @@ const show = ref(false)
 | 变量名 | 默认值 |
 | --- | --- |
 | `--dialog-width` | `280px` |
-| `--dialog-background` | `#fff` |
+| `--dialog-background` | `var(--color-surface-container-low)` |
 | `--dialog-border-radius` | `3px` |
 | `--dialog-title-padding` | `20px 20px 0` |
 | `--dialog-title-font-size` | `var(--font-size-lg)` |

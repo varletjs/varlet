@@ -1,3 +1,3 @@
 export default {
-  '--rate-color': '#49454F',
+  '--rate-color': 'var(--color-on-surface-variant)',
 }

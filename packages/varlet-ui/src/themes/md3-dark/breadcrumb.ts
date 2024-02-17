@@ -1,3 +1,3 @@
 export default {
-  '--breadcrumb-inactive-color': '#CAC4D0',
+  '--breadcrumb-inactive-color': 'var(--color-on-surface-variant)',
 }

@@ -1,4 +1,4 @@
 export default {
-  '--checkbox-unchecked-color': '#49454F',
-  '--checkbox-text-color': '#49454F',
+  '--checkbox-unchecked-color': 'var(--color-on-surface-variant)',
+  '--checkbox-text-color': 'var(--color-on-surface-variant)',
 }

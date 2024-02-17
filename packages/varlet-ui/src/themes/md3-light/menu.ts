@@ -1,4 +1,4 @@
 export default {
-  '--menu-background-color': '#F3EDF7',
+  '--menu-background-color': 'var(--color-surface-container)',
   '--menu-border-radius': '4px',
 }

@@ -1,4 +1,4 @@
 export default {
-  '--radio-unchecked-color': '#CAC4D0',
-  '--radio-text-color': '#CAC4D0',
+  '--radio-unchecked-color': 'var(--color-on-surface-variant)',
+  '--radio-text-color': 'var(--color-on-surface-variant)',
 }

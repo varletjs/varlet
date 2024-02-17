@@ -1,5 +1,5 @@
 export default {
-  '--floating-panel-background': '#1D1B20',
+  '--floating-panel-background': 'var(--color-surface-container-low)',
   '--floating-panel-toolbar-background': '#938F99',
   '--floating-panel-toolbar-width': '32px',
   '--floating-panel-toolbar-height': '4px',

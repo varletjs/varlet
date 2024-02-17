@@ -193,7 +193,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|
-| `--card-background`                 | `#fff`                |
+| `--card-background`                 | `var(--color-surface-container-highest)`                |
 | `--card-padding`                    | `0px 0 15px 0`        |
 | `--card-border-radius`              | `4px`                 |
 | `--card-outline-color`              | `var(--color-outline)` |

@@ -1,4 +1,4 @@
 export default {
-  '--checkbox-unchecked-color': '#CAC4D0',
-  '--checkbox-text-color': '#CAC4D0',
+  '--checkbox-unchecked-color': 'var(--color-on-surface-variant)',
+  '--checkbox-text-color': 'var(--color-on-surface-variant)',
 }

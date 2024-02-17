@@ -1,5 +1,5 @@
 export default {
-  '--picker-background': '#141218',
+  '--picker-background': 'var(--color-body)',
   '--picker-cancel-button-text-color': 'var(--color-primary)',
   '--picker-title-text-color': '#fff',
   '--picker-option-text-color': '#fff',

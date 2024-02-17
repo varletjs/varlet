@@ -1,3 +1,3 @@
 export default {
-  '--bottom-navigation-background-color': '#211F26',
+  '--bottom-navigation-background-color': 'var(--color-surface-container)',
 }

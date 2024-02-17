@@ -75,7 +75,13 @@ export default {
   '--color-on-danger-container': '#F9DEDC',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  '--color-surface-container': '#211F26',
+  '--color-surface-container-low': '#1D1B20',
+  '--color-surface-container-high': '#2B2930',
+  '--color-surface-container-highest': '#36343B',
+  '--color-inverse-surface': '#e6e0e9',
   '--color-outline': '#49454F',
+  '--color-on-surface-variant': '#CAC4D0',
   // component
   ...button,
   ...hoverOverlay,

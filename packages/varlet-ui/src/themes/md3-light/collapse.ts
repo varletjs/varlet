@@ -1,4 +1,4 @@
 export default {
-  '--collapse-background': '#F7F2FA',
+  '--collapse-background': 'var(--color-surface-container-low)',
   '--collapse-text-color': '#1D1B20',
 }

@@ -1,5 +1,5 @@
 export default {
-  '--action-sheet-background': '#1e1e1e',
+  '--action-sheet-background': 'var(--color-surface-container-low)',
   '--action-sheet-title-color': '#aaa',
   '--action-sheet-action-item-color': '#fff',
 }

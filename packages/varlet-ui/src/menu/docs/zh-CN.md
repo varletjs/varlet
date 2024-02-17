@@ -288,5 +288,5 @@ Menu 是一个 `inline-block` 元素，通过默认插槽点击时显示菜单�
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--menu-background-color` | `#fff` |
+| `--menu-background-color` | `var(--color-surface-container-high)` |
 | `--menu-border-radius` | `2px` |

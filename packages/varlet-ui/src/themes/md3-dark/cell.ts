@@ -1,3 +1,3 @@
 export default {
-  '--cell-description-color': '#CAC4D0',
+  '--cell-description-color': 'var(--color-on-surface-variant)',
 }

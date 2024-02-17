@@ -236,7 +236,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | --- | --- |
 | `--bottom-navigation-height` | `50px` |
 | `--bottom-navigation-z-index` | `1` |
-| `--bottom-navigation-background-color` | `#fff` |
+| `--bottom-navigation-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-border-color` | `var(--color-outline)` |
 | `--bottom-navigation-fab-offset` | `4px` |
 
@@ -247,7 +247,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--bottom-navigation-item-font-size` | `var(--font-size-sm)` |
 | `--bottom-navigation-item-inactive-color` | `#646566` |
 | `--bottom-navigation-item-active-color` | `var(--color-primary)` |
-| `--bottom-navigation-item-active-background-color` | `#fff` |
+| `--bottom-navigation-item-active-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-item-line-height` | `1` |
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |

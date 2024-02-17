@@ -1,4 +1,4 @@
 export default {
-  '--radio-unchecked-color': '#49454F',
-  '--radio-text-color': '#49454F',
+  '--radio-unchecked-color': 'var(--color-on-surface-variant)',
+  '--radio-text-color': 'var(--color-on-surface-variant)',
 }

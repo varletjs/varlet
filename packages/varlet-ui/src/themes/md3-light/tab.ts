@@ -1,3 +1,3 @@
 export default {
-  '--tab-inactive-color': '#49454F',
+  '--tab-inactive-color': 'var(--color-on-surface-variant)',
 }

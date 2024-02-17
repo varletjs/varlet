@@ -321,7 +321,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-select-menu-max-height` | `278px` |
 | `--menu-select-menu-padding` | `0` |
 | `--menu-select-menu-border-radius` | `2px` |
-| `--menu-select-menu-background-color` | `#fff` |
+| `--menu-select-menu-background-color` | `var(--color-surface-container-high)` |
 
 #### Option Variables
 

@@ -301,7 +301,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable                        | Default                |
 | ------------------------------- | ---------------------- |
 | `--dialog-width`                | `280px`                |
-| `--dialog-background`           | `#fff`                 |
+| `--dialog-background`           | `var(--color-surface-container-low)`                 |
 | `--dialog-border-radius`        | `3px`                  |
 | `--dialog-title-padding`        | `20px 20px 0`          |
 | `--dialog-title-font-size`      | `var(--font-size-lg)`  |

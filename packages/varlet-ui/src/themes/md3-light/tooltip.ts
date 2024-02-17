@@ -1,4 +1,4 @@
 export default {
-  '--tooltip-default-color': '#322F35',
+  '--tooltip-default-color': 'var(--color-inverse-surface)',
   '--tooltip-opacity': '1',
 }

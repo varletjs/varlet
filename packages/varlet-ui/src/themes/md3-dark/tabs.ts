@@ -1,3 +1,3 @@
 export default {
-  '--tabs-background': '#141218',
+  '--tabs-background': 'var(--color-body)',
 }

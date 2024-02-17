@@ -1,6 +1,6 @@
 export default {
-  '--action-sheet-background': '#ECE6F0',
-  '--action-sheet-title-color': '#49454F',
+  '--action-sheet-background': 'var(--color-surface-container-high)',
+  '--action-sheet-title-color': 'var(--color-on-surface-variant)',
   '--action-sheet-action-item-color': '#1D1B20',
   '--action-sheet-border-radius': '0px',
 }

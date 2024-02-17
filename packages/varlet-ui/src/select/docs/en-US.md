@@ -430,7 +430,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
 | `--field-decorator-outlined-small-icon-margin-top` | `8px` |
 | `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
-| `--select-scroller-background` | `#fff` |
+| `--select-scroller-background` | `var(--color-surface-container-high)` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |

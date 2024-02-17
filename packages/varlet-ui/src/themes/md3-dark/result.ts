@@ -1,7 +1,7 @@
 export default {
   '--result-background': '#36343B',
-  '--result-title-color': '#E6E0E9',
-  '--result-description-color': '#CAC4D0',
+  '--result-title-color': 'var(--color-inverse-surface)',
+  '--result-description-color': 'var(--color-on-surface-variant)',
   '--result-question-color': '#7f8e96',
   '--result-question-border-color': 'rgba(151,194,216,0.3)',
   '--result-empty-color': '#adadad',
