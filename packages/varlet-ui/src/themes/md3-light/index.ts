@@ -19,7 +19,6 @@ import tooltip from './tooltip'
 import tabs from './tabs'
 import tab from './tab'
 import table from './table'
-import pagination from './pagination'
 import collapse from './collapse'
 import result from './result'
 import bottomNavigation from './bottomNavigation'
@@ -93,7 +92,6 @@ export default {
   ...tabs,
   ...tab,
   ...table,
-  ...pagination,
   ...collapse,
   ...result,
   ...bottomNavigation,

@@ -181,10 +181,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--pagination-item-height` | `32px` |
 | `--pagination-item-margin` | `0 6px` |
 | `--pagination-item-border-radius` | `4px` |
-| `--pagination-list-bg-color` | `#fff` |
-| `--pagination-list-active-bg-color` | `#edf5ff` |
-| `--pagination-list-active-color` | `var(--color-primary)` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
 | `--pagination-size-line-height` | `24px` |
+| `--pagination-size-padding` | `0 6px` |

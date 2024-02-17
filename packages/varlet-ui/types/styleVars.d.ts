@@ -845,12 +845,6 @@ export interface StyleVars {
   paginationItemMargin?: string
   '--pagination-item-border-radius'?: string
   paginationItemBorderRadius?: string
-  '--pagination-list-bg-color'?: string
-  paginationListBgColor?: string
-  '--pagination-list-active-bg-color'?: string
-  paginationListActiveBgColor?: string
-  '--pagination-list-active-color'?: string
-  paginationListActiveColor?: string
   '--pagination-input-width'?: string
   paginationInputWidth?: string
   '--pagination-disabled-color'?: string
@@ -859,6 +853,8 @@ export interface StyleVars {
   paginationBgDisabledColor?: string
   '--pagination-size-line-height'?: string
   paginationSizeLineHeight?: string
+  '--pagination-size-padding'?: string
+  paginationSizePadding?: string
   '--paper-background'?: string
   paperBackground?: string
   '--picker-background'?: string

@@ -12,13 +12,11 @@
   --pagination-item-background: #fff;
   --pagination-item-border-radius: 4px;
   --pagination-item-simple-border-radius: 50%;
-  --pagination-list-bg-color: #fff;
-  --pagination-list-active-bg-color: #edf5ff;
-  --pagination-list-active-color: var(--color-primary);
   --pagination-input-width: 32px;
   --pagination-disabled-color: var(--color-text-disabled);
   --pagination-bg-disabled-color: var(--color-disabled);
   --pagination-size-line-height: 24px;
+  --pagination-size-padding: 0 6px;
 }
 
 // Mixins
@@ -70,7 +68,7 @@
     }
 
     &--disabled {
-      cursor: not-allowed;
+      cursor: not-allowed !important;
       color: var(--pagination-disabled-color);
       background-color: unset;
 
@@ -110,6 +108,8 @@
 
     line-height: var(--pagination-size-line-height);
     margin: var(--pagination-item-margin);
+    padding: var(--pagination-size-padding);
+    cursor: pointer;
 
     &--open {
       display: flex;
@@ -119,22 +119,6 @@
       &--disabled {
         cursor: inherit;
       }
-    }
-  }
-
-  &__list {
-    background-color: var(--pagination-list-bg-color);
-    cursor: pointer;
-    transition: all 0.25s;
-
-    &:hover {
-      color: var(--pagination-list-active-color);
-      background-color: var(--pagination-list-active-bg-color);
-    }
-
-    &--active {
-      background-color: var(--pagination-list-active-bg-color) !important;
-      color: var(--pagination-list-active-color);
     }
   }
 

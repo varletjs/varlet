@@ -6,6 +6,7 @@ export type MenuSelectSize = 'normal' | 'mini' | 'small' | 'large'
 
 export const props = {
   modelValue: {
+    type: [String, Number, Boolean] as PropType<string | number | boolean>,
     default: undefined,
   },
   size: {
