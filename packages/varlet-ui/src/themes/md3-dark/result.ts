@@ -1,5 +1,6 @@
 export default {
   '--result-background': 'var(--color-surface-container-highest)',
+  '--result-border-radius': '12px',
   '--result-title-color': 'var(--color-inverse-surface)',
   '--result-description-color': 'var(--color-on-surface-variant)',
   '--result-question-color': '#7f8e96',

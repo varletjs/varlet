@@ -1,5 +1,6 @@
 export default {
   '--result-background': 'var(--color-body)',
+  '--result-border-radius': '12px',
   '--result-title-color': '#1D1B20',
   '--result-description-color': 'var(--color-on-surface-variant)',
   '--result-info-border-color': 'rgba(98, 91, 113, 0.3)',
