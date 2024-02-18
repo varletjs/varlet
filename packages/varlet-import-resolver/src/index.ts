@@ -11,7 +11,7 @@ export interface VarletImportResolverOptions {
   /**
    * whether to import style
    *
-   * @default boolean
+   * @default true
    */
   importStyle?: boolean
 
@@ -37,7 +37,7 @@ const varFunctions = [
 const varDirectives = ['Ripple', 'Lazy', 'Hover']
 
 export function getResolved(name: string, options: VarletImportResolverOptions) {
-  const { importStyle = 'css', autoImport = false } = options
+  const { importStyle = true, autoImport = false } = options
 
   const sideEffects = []
 
@@ -55,23 +55,31 @@ export function getResolved(name: string, options: VarletImportResolverOptions) 
 export function VarletImportResolver(options: VarletImportResolverOptions = {}) {
   return [
     {
-      type: 'component',
+      type: 'component' as const,
       resolve: (name: string) => {
         const { autoImport = false } = options
 
-        if (autoImport && varFunctions.includes(name)) return getResolved(name, options)
+        if (autoImport && varFunctions.includes(name)) {
+          return getResolved(name, options)
+        }
 
-        if (name.startsWith('Var')) return getResolved(name.slice(3), options)
+        if (name.startsWith('Var')) {
+          return getResolved(name.slice(3), options)
+        }
       },
     },
     {
-      type: 'directive',
+      type: 'directive' as const,
       resolve: (name: string) => {
         const { directives = true } = options
 
-        if (!directives) return
+        if (!directives) {
+          return
+        }
 
-        if (!varDirectives.includes(name)) return
+        if (!varDirectives.includes(name)) {
+          return
+        }
 
         return getResolved(name, options)
       },
