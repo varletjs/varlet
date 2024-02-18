@@ -60,10 +60,10 @@ const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
 module.exports = {
   configureWebpack: {
     plugins: [
-      Components({
+      Components.default({
         resolvers: [VarletUIResolver()]
       }),
-      AutoImport({
+      AutoImport.default({
         resolvers: [VarletUIResolver({ autoImport: true })]
       })
     ]
