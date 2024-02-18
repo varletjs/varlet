@@ -107,12 +107,12 @@ exports[`basic mode > mount 1`] = `
   <li class="var-pagination__quickly">前往 <div class="var-input var--box" var-pagination-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-height: 0px;">
-          <div class="var-field-decorator__icon"></div>
-          <div class="var-field-decorator__middle">
-            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
+          <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
+          <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
+            <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
           </div>
           <!--v-if-->
-          <div class="var-field-decorator__icon">
+          <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
             <!--v-if-->
           </div>
         </div>
