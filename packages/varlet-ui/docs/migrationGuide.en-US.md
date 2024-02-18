@@ -1,63 +1,115 @@
-# Migrate from 2.x
+# Migrating from 2.x
 
-### Introduce
-This section mainly introduces the main changes of the `3.x` version compared to the `2.x` version and the considerations for migration.
+### Intro
 
-## Components Library(@varlet/ui)
+This section mainly introduces the considerations for migrating from `2.x` to `3.x`
 
-### Component Refactoring
+### Component function changes
 
-- The `headerColor` attribute has been removed from the DatePicker component
-- The TimePicker component has removed the `headerColor` attribute
-- ImagePreview component has removed the `current` attribute
-- Chip component removed `closable` attribute
-- The `ripple` attribute has been removed from the Progress component
-- IndexBar component has removed the `cssMode` attribute
-- The `mergeConfig` method has been removed from the LoadingBar component
-- Button component adds `iconContainer` attribute
+- DatePicker component removes compatibility with `headerColor` property
+- TimePicker component removes compatibility with `headerColor` property
+- ImagePreview component removes compatibility with `current` property
+- Chip component removed compatibility with `closable` property
+- Progress component removed compatibility with `ripple` property
+- IndexBar component removes compatibility with `cssMode` property
+- LoadingBar component removed compatibility with `mergeConfig` method
 
 ### Component style variable changes
 
-- The BottomNavigation component adds `--bottom-navigation-fab-border-radius`, and the default value of `--bottom-navigation-border-color` is changed from `#e3e3e3` to `var(--color-outline)`
-- The Steps component has removed `--step-line-size` and `--step-min-size`, and the default value of `--step-tag-color` has been changed from `#fff` to `var(-- color-on-primary)`
-- Progress component removed `--progress-ripple-color`
-- The default value of the custom attribute `--slider-thumb-label-text-color` of the Slider component is changed from `#fff` to `var(--color-on-primary)`
-- The default value of the custom property `--pagination-active-color` of the Pagination component is changed from `#fff` to `var(--color-on-primary)`
-- The default value of the Divider component's custom attribute `--divider-color` is changed from `rgba(0, 0, 0, 0.12)` to `var(--color-outline)`
-- The default value of the Countdown component's custom property `--countdown-text-color` is modified from `#555` to `var(--color-text)`
-- The default value of the Cell component's custom attribute `--cell-border-color` is modified from `#bcc2cb` to `var(--color-outline)`
-- Added `--uploader-file-border-radius` to the Uploader component
-- Added `--back-top-button-border-radius` to BackTop component
-- Fab component adds new custom properties such as `--fab-trigger-border-radius`, `--fab-action-size` and `--fab-action-border-radius`
-- Tooltip component adds `tooltip-default-text-color`, `tooltip-primary-text-color`, `tooltip-info-text-color`, `tooltip-success-text-color`, `tooltip-warning- Custom properties such as text-color` and `tooltip-danger-text-color`
-- Badge component adds `badge-default-text-color`, `badge-primary-text-color`, `badge-info-text-color`, `badge-success-text-color`, `badge-warning- Custom properties such as text-color` and `badge-danger-text-color`
-- Several new custom attributes have been added to the component root element, as follows:
+In order to make component style definition easier and support `Material Design 3`, the `3.x` version has restructured the style variables of the component library and added some new basic style variables.
 
-| attribute name | attribute value |
-|----------------|------------------|
-| `--color-on-primary` | `#fff` |
-| `--color-on-info` | `#fff` |
-| `--color-on-success` | `#fff` |
-| `--color-on-warning` | `#fff` |
-| `--color-on-danger` | `#fff` |
-| `--color-primary-container` | `#3a7afe` |
-| `--color-info-container` | `#00afef` |
-| `--color-success-container` | `#00c48f` |
-| `--color-warning-container` | `#ff9f00` |
-| `--color-danger-container` | `#f44336` |
-| `--color-on-primary-container` | `#fff` |
-| `--color-on-info-container` | `#fff` |
-| `--color-on-success-container` | `#fff` |
-| `--color-on-warning-container` | `#fff` |
-| `--color-on-danger-container` | `#fff` |
-| `--color-outline` | `rgba(0, 0, 0, 0.12)` |
+| Variable  |
+|----------------|
+| `--color-on-primary` |
+| `--color-on-info` |
+| `--color-on-success` |
+| `--color-on-warning` |
+| `--color-on-danger` |
+| `--color-primary-container` |
+| `--color-info-container` |
+| `--color-success-container` |
+| `--color-warning-container` |
+| `--color-danger-container` |
+| `--color-on-primary-container` |
+| `--color-on-info-container` |
+| `--color-on-success-container` |
+| `--color-on-warning-container` |
+| `--color-on-danger-container` |
+| `--color-outline` |
+| `--color-surface-container` |
+| `--color-surface-container-low` |
+| `--color-surface-container-high` |
+| `--color-surface-container-highest` |
+| `--color-inverse-surface` |
+| `--color-on-surface-variant` |
 
-## Component library rapid prototyping tool (@varlet/cli)
+以下列举了一些可能会影响页面样式的变量变更。
 
-### Command reconstruction
+- DatePicker 
 
-- Added `compile:style-vars` command to compile custom properties of components
+  - `--picker-header-padding` change to `--date-picker-header-padding`
+  - `--picker-header-color` change to `--date-picker-header-color`
+  - `--picker-actions-padding` change to `--date-picker-actions-padding`
 
-### Document related
+- Pagination
 
-- Added md3 light theme and dark theme
+  Remove
+  `--pagination-list-bg-color`,
+  `--pagination-list-active-bg-color`,
+  `--pagination-list-active-color`
+
+- Step
+
+  Remove
+  `--step-min-size`,
+  `--step-line-size`
+
+- Progress
+
+  Remove `--progress-ripple-color`
+
+- Select/Input
+
+  The component has undergone a major refactoring and supports hint animation when the prepend icon exists.
+  
+  | Removed Variable  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-padding-top` |
+  | `--field-decorator-standard-normal-padding-bottom` |
+  | `--field-decorator-standard-normal-icon-padding` |
+  | `--field-decorator-standard-normal-non-hint-padding-top` |
+  | `--field-decorator-standard-normal-placeholder-translate-y` |
+  | `--field-decorator-standard-small-padding-top` |
+  | `--field-decorator-standard-small-padding-bottom` |
+  | `--field-decorator-standard-small-icon-padding` |
+  | `--field-decorator-standard-small-non-hint-padding-top` |
+  | `--field-decorator-standard-small-placeholder-translate-y` |
+  | `--field-decorator-outlined-normal-padding-top` |
+  | `--field-decorator-outlined-normal-padding-bottom` |
+  | `--field-decorator-outlined-normal-icon-padding` |
+  | `--field-decorator-outlined-normal-placeholder-translate-y` |
+  | `--field-decorator-outlined-small-padding-top` |
+  | `--field-decorator-outlined-small-padding-bottom` |
+  | `--field-decorator-outlined-small-icon-padding` |
+  | `--field-decorator-outlined-small-placeholder-translate-y` |
+
+  | Added Variable  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-margin-top` |
+  | `--field-decorator-standard-normal-margin-bottom` |
+  | `--field-decorator-standard-normal-icon-margin-top` |
+  | `--field-decorator-standard-normal-icon-margin-bottom` |
+  | `--field-decorator-standard-normal-non-hint-margin-top` |
+  | `--field-decorator-standard-small-margin-top` |
+  | `--field-decorator-standard-small-margin-bottom` |
+  | `--field-decorator-standard-small-icon-margin-top` |
+  | `--field-decorator-standard-small-icon-margin-bottom` |
+  | `--field-decorator-standard-small-non-hint-margin-top` |
+  | `--field-decorator-outlined-normal-margin-top` |
+  | `--field-decorator-outlined-normal-margin-bottom` |
+  | `--field-decorator-outlined-normal-icon-margin-top` |
+  | `--field-decorator-outlined-normal-icon-margin-bottom` |
+  | `--field-decorator-outlined-small-margin-top` |
+  | `--field-decorator-outlined-small-margin-bottom` |
+  | `--field-decorator-outlined-small-icon-margin-top` |
+  | `--field-decorator-outlined-small-icon-margin-bottom` |
