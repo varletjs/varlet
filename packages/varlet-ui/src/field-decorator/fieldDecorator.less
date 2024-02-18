@@ -132,7 +132,7 @@
     }
 
     .var-field-decorator__placeholder {
-      max-width: 100%;
+      max-width: var(--field-decorator-middle-offset-width);
       transform: translate(
         var(--field-decorator-middle-offset-left),
         var(--field-decorator-standard-normal-margin-top)
@@ -205,22 +205,14 @@
     }
 
     .var-field-decorator__placeholder {
-      max-width: calc(
-        100% - var(--field-decorator-outlined-normal-padding-left) -
-          var(--field-decorator-outlined-normal-padding-right)
-      );
+      max-width: var(--field-decorator-middle-offset-width);
       transform: translate(
-          var(--field-decorator-outlined-normal-padding-left),
-          var(--field-decorator-outlined-normal-margin-top)
-        )
-        scale(1);
+        var(--field-decorator-middle-offset-left),
+        var(--field-decorator-outlined-normal-margin-top)
+      );
     }
 
     .var-field-decorator--hint-center {
-      max-width: calc(
-        133% - var(--field-decorator-outlined-normal-padding-left) -
-          var(--field-decorator-outlined-normal-padding-right)
-      );
       transform: translate(
         var(--field-decorator-middle-offset-left),
         calc(var(--field-decorator-outlined-normal-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
@@ -236,7 +228,8 @@
     }
 
     .var-field-decorator__line {
-      min-width: 0; // for fieldset
+      // for fieldset
+      min-width: 0;
       width: 100%;
       height: calc(100% + (var(--field-decorator-placeholder-size) * 0.75 / 2));
       position: absolute;
@@ -306,6 +299,7 @@
       }
 
       .var-field-decorator__placeholder {
+        max-width: var(--field-decorator-middle-offset-width);
         transform: translate(
           var(--field-decorator-middle-offset-left),
           var(--field-decorator-standard-small-margin-top)
@@ -313,10 +307,6 @@
       }
 
       .var-field-decorator--middle-non-hint {
-        max-width: calc(
-          133% - var(--field-decorator-outlined-small-padding-left) -
-            var(--field-decorator-outlined-small-padding-right)
-        );
         margin-top: var(--field-decorator-standard-small-non-hint-margin-top);
       }
 
@@ -349,22 +339,14 @@
       }
 
       .var-field-decorator__placeholder {
-        max-width: calc(
-          100% - var(--field-decorator-outlined-small-padding-left) -
-            var(--field-decorator-outlined-small-padding-right)
-        );
+        max-width: var(--field-decorator-middle-offset-width);
         transform: translate(
-            var(--field-decorator-outlined-small-padding-left),
-            var(--field-decorator-outlined-small-margin-top)
-          )
-          scale(1);
+          var(--field-decorator-middle-offset-left),
+          var(--field-decorator-outlined-small-margin-top)
+        );
       }
 
       .var-field-decorator--hint-center {
-        max-width: calc(
-          133% - var(--field-decorator-outlined-small-padding-left) -
-            var(--field-decorator-outlined-small-padding-right)
-        );
         transform: translate(
           var(--field-decorator-middle-offset-left),
           calc(var(--field-decorator-outlined-small-margin-top) + var(--field-decorator-middle-offset-height) / 2 - 50%)
@@ -372,6 +354,10 @@
       }
 
       .var-field-decorator--placeholder-hint {
+        max-width: calc(
+          133% - var(--field-decorator-outlined-small-padding-left) -
+            var(--field-decorator-outlined-small-padding-right)
+        );
         transform: translate(calc(var(--field-decorator-outlined-small-padding-left)), -50%) scale(0.75);
       }
 

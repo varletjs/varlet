@@ -17,6 +17,7 @@
         cursor,
         overflow: isFloating ? 'visible' : 'hidden',
         '--field-decorator-middle-offset-left': middleOffsetLeft,
+        '--field-decorator-middle-offset-width': middleOffsetWidth,
         '--field-decorator-middle-offset-height': middleOffsetHeight,
       }"
     >
@@ -127,6 +128,7 @@ export default defineComponent({
     const middleEl = ref<HTMLElement | null>(null)
     const legendWidth = ref('')
     const middleOffsetLeft = ref('0px')
+    const middleOffsetWidth = ref('0px')
     const middleOffsetHeight = ref('0px')
     const transitionDisabled = ref(true)
     const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus))
@@ -169,6 +171,7 @@ export default defineComponent({
 
     function resize() {
       middleOffsetLeft.value = `${middleEl.value!.offsetLeft}px`
+      middleOffsetWidth.value = `${middleEl.value!.offsetWidth}px`
       middleOffsetHeight.value = `${middleEl.value!.offsetHeight}px`
 
       if (props.variant === 'outlined' && placeholderTextEl.value) {
@@ -182,6 +185,7 @@ export default defineComponent({
       placeholderTextEl,
       middleEl,
       middleOffsetLeft,
+      middleOffsetWidth,
       middleOffsetHeight,
       color,
       legendWidth,
