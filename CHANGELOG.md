@@ -1,3 +1,12 @@
+## [2.22.4](https://github.com/varletjs/varlet/compare/v2.22.3...v2.22.4) (2024-02-18)
+
+
+### Bug Fixes
+
+* fix extname for webpack fully specified resolver ([38595f9](https://github.com/varletjs/varlet/commit/38595f9e25b62739fdffe72b67853b5241a4a4b0))
+
+
+
 ## [2.22.3](https://github.com/varletjs/varlet/compare/v2.22.2...v2.22.3) (2024-02-14)
 
 
