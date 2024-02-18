@@ -39,7 +39,6 @@ onThemeChange()
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: var(--card-background);
 }
 
 .image-container {

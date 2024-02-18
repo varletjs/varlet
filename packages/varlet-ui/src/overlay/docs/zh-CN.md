@@ -47,7 +47,6 @@ const show = ref(false)
 .overlay-content {
   padding: 24px;
   width: 312px;
-  background: var(--card-background);
   border-radius: 28px;
 }
 </style>

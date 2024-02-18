@@ -31,7 +31,7 @@ onThemeChange()
   user-select: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background-color: var(--card-background);
+  background-color: var(--color-surface-container-highest);
   transition: background-color 0.25s;
 }
 </style>
