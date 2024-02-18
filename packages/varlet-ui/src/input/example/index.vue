@@ -54,7 +54,7 @@ onThemeChange()
       </template>
     </var-input>
 
-    <var-input :placeholder="t('customIconSize')" v-model="standardValue10">
+    <var-input placeholder="aaaaa啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊" v-model="standardValue10">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
