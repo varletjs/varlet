@@ -110,7 +110,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, nextTick , onUpdated } from 'vue'
+import { defineComponent, ref, computed, nextTick, onUpdated } from 'vue'
 import { props } from './props'
 import { isEmpty, getStyle, call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
