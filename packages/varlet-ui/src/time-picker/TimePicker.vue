@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm'
+import dayjs from 'dayjs/esm/index.js'
 import Clock from './clock.vue'
 import { computed, defineComponent, reactive, ref, watch, type DefineComponent } from 'vue'
 import { props, hoursAmpm, hours24, type Time, type AmPm } from './props'

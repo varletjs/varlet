@@ -103,7 +103,7 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm'
+import dayjs from 'dayjs/esm/index.js'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'

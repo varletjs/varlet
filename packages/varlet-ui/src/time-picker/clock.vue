@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm'
+import dayjs from 'dayjs/esm/index.js'
 import { computed, defineComponent, ref, watch, type ComputedRef, type Ref, type PropType } from 'vue'
 import { hoursAmpm, hours24, minSec, type Time, type AmPm, type Format, type AllowedTime } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'

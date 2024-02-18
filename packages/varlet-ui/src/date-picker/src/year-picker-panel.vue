@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm'
+import dayjs from 'dayjs/esm/index.js'
 import {
   defineComponent,
   computed,
