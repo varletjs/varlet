@@ -38,9 +38,9 @@
 </template>
 
 <script lang="ts">
-import dayjs from 'dayjs/esm'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
+import dayjs from 'dayjs/esm/index.js'
+import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
+import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import {

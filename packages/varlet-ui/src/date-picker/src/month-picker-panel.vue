@@ -33,9 +33,9 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, reactive, watch } from 'vue'
-import dayjs from 'dayjs/esm'
-import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore'
-import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter'
+import dayjs from 'dayjs/esm/index.js'
+import isSameOrBefore from 'dayjs/esm/plugin/isSameOrBefore/index.js'
+import isSameOrAfter from 'dayjs/esm/plugin/isSameOrAfter/index.js'
 import { MONTH_LIST } from '../props'
 import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
