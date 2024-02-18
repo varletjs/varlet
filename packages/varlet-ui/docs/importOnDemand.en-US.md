@@ -16,13 +16,13 @@ Implement components to automatically import on demand, This is our most recomme
 ```shell
 # playground-ignore
 # npm
-npm i unplugin-vue-components unplugin-auto-import -D
+npm i @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # yarn
-yarn add unplugin-vue-components unplugin-auto-import -D
+yarn add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # pnpm
-pnpm add unplugin-vue-components unplugin-auto-import -D
+pnpm add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 ```
 
 #### Vite
@@ -33,17 +33,17 @@ pnpm add unplugin-vue-components unplugin-auto-import -D
 import vue from '@vitejs/plugin-vue'
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
-import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
+import { VarletImportResolver } from '@varlet/import-resolver'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
     components({
-      resolvers: [VarletUIResolver()]
+      resolvers: [VarletImportResolver()]
     }),
     autoImport({
-      resolvers: [VarletUIResolver({ autoImport: true })]
+      resolvers: [VarletImportResolver({ autoImport: true })]
     })
   ]
 })
@@ -55,16 +55,16 @@ export default defineConfig({
 // vue.config.js
 const Components = require('unplugin-vue-components/webpack')
 const AutoImport = require('unplugin-auto-import/webpack')
-const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
+const { VarletImportResolver } = require('@varlet/import-resolver')
 
 module.exports = {
   configureWebpack: {
     plugins: [
       Components.default({
-        resolvers: [VarletUIResolver()]
+        resolvers: [VarletImportResolver()]
       }),
       AutoImport.default({
-        resolvers: [VarletUIResolver({ autoImport: true })]
+        resolvers: [VarletImportResolver({ autoImport: true })]
       })
     ]
   }
