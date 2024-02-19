@@ -1,3 +1,12 @@
+## [2.22.5](https://github.com/varletjs/varlet/compare/v2.22.4...v2.22.5) (2024-02-19)
+
+
+### Bug Fixes
+
+* **cli:** fix latest version display ([6be329c](https://github.com/varletjs/varlet/commit/6be329c77c5f293f3437af69372166f612c5542a))
+
+
+
 ## [2.22.4](https://github.com/varletjs/varlet/compare/v2.22.3...v2.22.4) (2024-02-18)
 
 
