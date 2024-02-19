@@ -1,3 +1,12 @@
+## [2.22.8](https://github.com/varletjs/varlet/compare/v2.22.7...v2.22.8) (2024-02-19)
+
+
+### Features
+
+* **cli:** improve release command ([f6b263f](https://github.com/varletjs/varlet/commit/f6b263f84ddcf510d4e93e0d2a98c734388be576))
+
+
+
 ## [2.22.7](https://github.com/varletjs/varlet/compare/v2.22.6...v2.22.7) (2024-02-19)
 
 
