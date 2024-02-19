@@ -40,7 +40,7 @@
   "dependencies": {
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
-    "@varlet/release": "^0.2.4",
+    "@varlet/release": "^0.2.5",
     "@babel/core": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@vitejs/plugin-vue": "5.0.3",

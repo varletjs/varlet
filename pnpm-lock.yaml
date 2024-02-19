@@ -59,8 +59,8 @@ importers:
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.5)
       '@varlet/release':
-        specifier: ^0.2.4
-        version: 0.2.4
+        specifier: ^0.2.5
+        version: 0.2.5
       '@varlet/shared':
         specifier: workspace:*
         version: link:../varlet-shared
@@ -2050,8 +2050,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: false
 
-  /@varlet/release@0.2.4:
-    resolution: {integrity: sha512-qoULZJjzAAa+NrYxBEZPi3L7JSPaPTJwoOHmzkUnaEXT6dDdAmaAVggzm3MEz8oSNEhhakSmZICpkIkJE5OyHQ==}
+  /@varlet/release@0.2.5:
+    resolution: {integrity: sha512-J7heCtN6SFtMh3i45iDYtYa2oVt21630F/g+rYTDTqfbUOs7dEecJm+OzPW5c1mr38g2k33iMxX0OeCU6yCgSA==}
     engines: {node: '>=16.0.0', pnpm: '>=8.0'}
     hasBin: true
     dependencies:
