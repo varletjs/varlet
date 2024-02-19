@@ -117,19 +117,6 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress ripple', async () => {
-    const wrapper = mount(VarProgress, {
-      props: {
-        ripple: true,
-      },
-    })
-
-    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(true)
-    await wrapper.setProps({ ripple: false })
-    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(false)
-    wrapper.unmount()
-  })
-
   test('test progress size', () => {
     const wrapper = mount(VarProgress, {
       props: {

@@ -11,13 +11,14 @@
       @click.stop="handleClick"
     >
       <slot>
-        <var-button :elevation="elevation" type="primary" round var-back-top-cover>
+        <var-button :elevation="elevation" type="primary" var-back-top-cover>
           <var-icon name="chevron-up" />
         </var-button>
       </slot>
     </div>
   </teleport>
 </template>
+
 <script lang="ts">
 import VarButton from '../button'
 import VarIcon from '../icon'

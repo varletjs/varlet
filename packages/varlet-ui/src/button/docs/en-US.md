@@ -83,7 +83,7 @@ Button component for triggering actions.
 <template>
   <var-space :size="[10, 10]">
     <var-button color="#66bb6a" text-color="#fff">Background/Text Color</var-button>
-    <var-button color="linear-gradient(to right, #69dbaa, #3a7afe)" text-color="#fff"> Linear Gradient Color </var-button>
+    <var-button color="linear-gradient(to right bottom, #6750A4, #D0BCFF)" text-color="#fff"> Linear Gradient Color </var-button>
   </var-space>
 </template>
 ```
@@ -190,7 +190,7 @@ function handleAutoLoadingClick() {
   <var-menu placement="bottom" same-width :offset-y="6">
     <var-button-group type="primary">
       <var-button @click.stop>Split Button</var-button>
-      <var-button style="padding: 0 6px; border-left: thin solid #1976d2">
+      <var-button style="padding: 0 6px;">
         <var-icon name="menu-down" :size="24" />
       </var-button>
     </var-button-group>
@@ -220,6 +220,18 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
       <var-button>Button</var-button>
     </var-button-group>
+
+    <var-button-group mode="icon-container">
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
+    </var-button-group>
   
     <var-button-group type="primary">
       <var-button>Button</var-button>
@@ -234,7 +246,7 @@ function handleAutoLoadingClick() {
 
 ```html
 <template>
-  <var-button-group type="primary" color="linear-gradient(to right, #69dbaa, #3a7afe)">
+  <var-button-group type="primary" color="linear-gradient(to bottom right, #6750A4, #D0BCFF)">
     <var-button>Button</var-button>
     <var-button>Button</var-button>
     <var-button>Button</var-button>
@@ -257,6 +269,18 @@ function handleAutoLoadingClick() {
       <var-button>Button</var-button>
       <var-button>Button</var-button>
       <var-button>Button</var-button>
+    </var-button-group>
+
+    <var-button-group mode="icon-container" vertical>
+      <var-button type="warning">
+        <var-icon name="warning" />
+      </var-button>
+      <var-button type="info">
+        <var-icon name="information" />
+      </var-button>
+      <var-button type="success">
+        <var-icon name="check" />
+      </var-button>
     </var-button-group>
     
     <var-button-group type="primary" vertical>
@@ -288,6 +312,7 @@ function handleAutoLoadingClick() {
 | `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
 | `block`          | Whether to be block button                                                              | _boolean_ | `false`        |
 | `text`           | Whether to be text button                                                               | _boolean_ | `false`        |
+| `icon-container` | Whether to serve as an icon container                                                        | _boolean_ | `false`        |
 | `outline`        | Whether to be outline button                                                            | _boolean_ | `false`        |
 | `disabled`       | Whether to disable button                                                               | _boolean_ | `false`        |
 | `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
@@ -302,7 +327,7 @@ function handleAutoLoadingClick() {
 |--------------|------------------------------------------------------------------------------------------|----------|-----------|
 | `type`       | Button Group type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `size`       | Button Group size, can be set to `normal` `mini` `small` `large`                         | _string_ | `normal`  |
-| `mode`       | Button Group mode, can be set to `normal` `text` `outline`                               | _string_ | `normal`  |
+| `mode`       | Button Group mode, can be set to `normal` `text` `outline` `icon-container`              | _string_ | `normal`  |
 | `vertical`   | Whether to be vertical button  group                                                     | _boolean_ | `false`   |
 | `elevation` | Elevation of Button Group, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `color`      | Button Group background color                                                            | _string_ | `-`       |
@@ -339,25 +364,42 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                       | Default                      |
 | ------------------------------ | ---------------------------- |
-| `--button-default-color`       | `#f5f5f5`                    |
-| `--button-default-text-color`  | `#555`                       |
-| `--button-primary-color`       | `var(--color-primary)`       |
-| `--button-danger-color`        | `var(--color-danger)`        |
-| `--button-success-color`       | `var(--color-success)`       |
-| `--button-warning-color`       | `var(--color-warning)`       |
-| `--button-info-color`          | `var(--color-info)`          |
-| `--button-disabled-color`      | `var(--color-disabled)`      |
+| `--button-default-text-color` | `#555` |
+| `--button-primary-text-color` | `var(--color-on-primary)` |
+| `--button-danger-text-color` | `var(--color-on-danger)` |
+| `--button-success-text-color` | `var(--color-on-success)` |
+| `--button-warning-text-color` | `var(--color-on-warning)` |
+| `--button-info-text-color` | `var(--color-on-info)` |
+| `--button-default-color` | `#f5f5f5` |
+| `--button-primary-color` | `var(--color-primary)`|
+| `--button-danger-color` |  `var(--color-danger)`|
+| `--button-success-color` | `var(--color-success)`|
+| `--button-warning-color` |  `var(--color-warning)`|
+| `--button-info-color` | `var(--color-info)`|
+| `--button-default-icon-color` | `#555` |
+| `--button-primary-icon-color` | `var(--color-on-primary-container)` |
+| `--button-danger-icon-color` | `var(--color-on-danger-container)` |
+| `--button-success-icon-color` | `var(--color-on-success-container)` |
+| `--button-warning-icon-color` | `var(--color-on-warning-container)` |
+| `--button-info-icon-color` | `var(--color-on-info-container)` |
+| `--button-default-icon-container-color` | `#f5f5f5` |
+| `--button-primary-icon-container-color` | `var(--color-primary-container)` |
+| `--button-danger-icon-container-color` | `var(--color-danger-container)` |
+| `--button-success-icon-container-color` | `var(--color-success-container)` |
+| `--button-warning-icon-container-color` | `var(--color-warning-container)` |
+| `--button-info-icon-container-color` | `var(--color-info-container)` |
+| `--button-disabled-color` | `var(--color-disabled)`|
 | `--button-disabled-text-color` | `var(--color-text-disabled)` |
-| `--button-border-radius`       | `4px`                        |
-| `--button-mini-padding`        | `0 9px`                      |
-| `--button-small-padding`       | `0 11px`                     |
-| `--button-normal-padding`      | `0 15px`                     |
-| `--button-large-padding`       | `0 22px`                     |
-| `--button-round-padding`       | `6px`                        |
-| `--button-mini-height`         | `20px`                       |
-| `--button-small-height`        | `28px`                       |
-| `--button-normal-height`       | `36px`                       |
-| `--button-large-height`        | `44px`                       |
+| `--button-border-radius` | `4px` |
+| `--button-mini-padding` | `0 9px` |
+| `--button-small-padding` | `0 11px` |
+| `--button-normal-padding` | `0 15px` |
+| `--button-large-padding` | `0 22px` |
+| `--button-round-padding` | `6px` |
+| `--button-mini-height` | `20px` |
+| `--button-small-height` | `28px` |
+| `--button-normal-height` | `36px` |
+| `--button-large-height` | `44px` |
 | `--button-mini-font-size` | `var(--font-size-xs)` |
 | `--button-small-font-size` | `var(--font-size-sm)` |
 | `--button-normal-font-size` | `var(--font-size-md)` |

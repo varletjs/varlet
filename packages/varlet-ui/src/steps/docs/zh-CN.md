@@ -42,8 +42,8 @@ const active = ref(0)
 <template>
   <var-steps
     :active="active"
-    active-color="#f44336"
-    inactive-color="#e99eb4"
+    active-color="var(--color-danger)" 
+    inactive-color="var(--color-warning)"
   >
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
       步骤1
@@ -137,7 +137,7 @@ const active = ref(0)
 | `--step-tag-size` | `20px` |
 | `--step-tag-background` | `#9e9e9e` |
 | `--step-tag-font-size` | `var(--font-size-md)` |
-| `--step-tag-color` | `#fff` |
+| `--step-tag-color` | `var(--color-on-primary)` |
 | `--step-tag-active-color` | `var(--color-primary)` |
 | `--step-tag-margin` | `4px 0` |
 | `--step-tag-icon-size` | `var(--font-size-lg)` |
@@ -146,7 +146,5 @@ const active = ref(0)
 | `--step-content-active-color` | `#000` |
 | `--step-line-background` | `#000` |
 | `--step-line-gap` | `8px` |
-| `--step-min-size` | `calc(20px + 8px)` |
-| `--step-line-size` | `calc(100% - calc(20px + 8px))` |
 | `--step-vertical-tag-margin` | `0 4px` |
 | `--step-vertical-min-height` | `50px` |

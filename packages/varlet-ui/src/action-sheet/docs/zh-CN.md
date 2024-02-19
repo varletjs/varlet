@@ -161,17 +161,17 @@ async function handleSelect() {
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#00c48f',
+        color: 'var(--color-success)',
       },
       {
         name: 'Item 02',
         icon: 'notebook',
-        color: '#ff9800',
+        color: 'var(--color-warning)',
       },
       {
         name: 'Item 03',
         icon: 'wifi',
-        color: '#00afef',
+        color: 'var(--color-info)',
       },
     ] 
   })
@@ -354,17 +354,17 @@ const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
-    color: '#00c48f',
+    color: 'var(--color-success)',
   },
   {
     name: 'Item 02',
     icon: 'notebook',
-    color: '#ff9800',
+    color: 'var(--color-warning)',
   },
   {
     name: 'Item 03',
     icon: 'wifi',
-    color: '#00afef',
+    color: 'var(--color-info)',
   },
 ])
 

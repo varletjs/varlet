@@ -81,6 +81,10 @@ export interface VarletConfig {
   useMobile?: boolean
   lightTheme?: Record<string, string>
   darkTheme?: Record<string, string>
+  md3LightTheme?: Record<string, string>
+  md3DarkTheme?: Record<string, string>
+  defaultLightTheme?: 'lightTheme' | 'md3LightTheme'
+  defaultDarkTheme?: 'darkTheme' | 'md3DarkTheme'
   highlight?: { style: string }
   analysis?: { baidu: string }
   pc?: Record<string, any>

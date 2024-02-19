@@ -11,7 +11,7 @@
         </div>
         <div
           v-else
-          :class="classes(n('linear-certain'), n(`linear--${type}`), [ripple, n('linear-ripple')])"
+          :class="classes(n('linear-certain'), n(`linear--${type}`))"
           :style="{ background: progressColor, width: linearProps.width }"
         ></div>
       </div>

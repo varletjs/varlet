@@ -6,7 +6,7 @@ exports[`test timePicker hint 1`] = `
     <div class="var-time-picker__title-hint">选择打卡时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">00</div>
         <!--v-if-->
         <!--v-if-->
@@ -49,7 +49,7 @@ exports[`test timePicker hint 2`] = `
     <div class="var-time-picker__title-hint">选择下班时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">00</div>
         <!--v-if-->
         <!--v-if-->
@@ -92,7 +92,7 @@ exports[`test timePicker max and min 1`] = `
     <div class="var-time-picker__title-hint">选择时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">11</div>
         <!--v-if-->
         <!--v-if-->
@@ -135,7 +135,7 @@ exports[`test timePicker max and min 2`] = `
     <div class="var-time-picker__title-hint">选择时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">11</div>
         <!--v-if-->
         <!--v-if-->
@@ -178,7 +178,7 @@ exports[`test timePicker style and format 1`] = `
     <div class="var-time-picker__title-hint">选择时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">05</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">05</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">10</div>
         <!--v-if-->
         <!--v-if-->
@@ -221,7 +221,7 @@ exports[`test timePicker style and format 2`] = `
     <div class="var-time-picker__title-hint">选择时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">05</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">05</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">10</div>
         <!--v-if-->
         <!--v-if-->
@@ -274,8 +274,8 @@ exports[`test timePicker useSeconds 1`] = `
     <div class="var-time-picker__title-hint">选择时间</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
-        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span>:</span>
-        <div class="var-time-picker__title-btn">11</div><span>:</span>
+        <div class="var-time-picker__title-btn var-time-picker__title-btn--active">11</div><span class="var-time-picker__title-splitter">:</span>
+        <div class="var-time-picker__title-btn">11</div><span class="var-time-picker__title-splitter">:</span>
         <div class="var-time-picker__title-btn">00</div>
       </div>
       <div class="var-time-picker__title-ampm">

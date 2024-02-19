@@ -22,6 +22,7 @@ export interface ButtonProps extends BasicAttributes {
   block?: boolean
   text?: boolean
   outline?: boolean
+  iconContainer?: boolean
   disabled?: boolean
   ripple?: boolean
   autoLoading?: boolean

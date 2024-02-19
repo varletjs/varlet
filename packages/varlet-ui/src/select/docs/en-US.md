@@ -398,7 +398,6 @@ Here are the CSS variables used by the component. Styles can be customized using
 | --- | --- |
 | `--field-decorator-text-color` | `#555` |
 | `--field-decorator-error-color` | `var(--color-danger)` |
-| `--field-decorator-placeholder-color` | `-` |
 | `--field-decorator-blur-color` | `#888` |
 | `--field-decorator-focus-color` | `var(--color-primary)` |
 | `--field-decorator-placeholder-size` | `16px` |
@@ -407,31 +406,31 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--field-decorator-line-focus-size` | `2px` |
 | `--field-decorator-line-border-radius` | `4px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-padding-top` | `22px` |
-| `--field-decorator-standard-normal-padding-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
-| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
-| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
-| `--field-decorator-standard-small-padding-top` | `18px` |
-| `--field-decorator-standard-small-padding-bottom` | `2px` |
-| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
-| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
-| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
-| `--field-decorator-outlined-normal-padding-top` | `16px` |
-| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
-| `--field-decorator-outlined-small-padding-top` | `8px` |
-| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
-| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
-| `--select-scroller-background` | `#fff` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
+| `--select-scroller-background` | `var(--color-surface-container-high)` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |

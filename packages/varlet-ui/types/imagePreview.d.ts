@@ -21,9 +21,6 @@ export interface ImagePreviewProps extends BasicAttributes {
   onChange?: ListenerProp<(index: number) => void>
   onLongPress?: ListenerProp<(index: number) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
-
-  /** @deprecated Use initialIndex to instead. */
-  current?: string
 }
 
 export interface ImagePreviewOptions {
@@ -40,9 +37,6 @@ export interface ImagePreviewOptions {
   onClosed?: () => void
   onChange?: (index: number) => void
   onLongPress?: (index: number) => void
-
-  /** @deprecated Use initialIndex to instead. */
-  current?: string
 }
 
 export class ImagePreviewComponent extends VarComponent {

@@ -19,9 +19,9 @@ When the element is clicked, a water wave spreading effect is generated.
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest)
 }
 </style>
 ```
@@ -30,7 +30,7 @@ When the element is clicked, a water wave spreading effect is generated.
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: 'var(--color-warning)' }">
     click
   </div>
 </template>
@@ -43,9 +43,9 @@ When the element is clicked, a water wave spreading effect is generated.
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -65,11 +65,11 @@ When the element is clicked, a water wave spreading effect is generated.
   justify-content: center;
   align-items: center;
   height: 100px;
-  color: #888;
   user-select: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```

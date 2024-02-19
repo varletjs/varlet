@@ -1,12 +1,13 @@
 <script setup>
-import { AppType, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 watchLang(use)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.girdSystem }}</app-type>
+  <app-type>{{ t('girdSystem') }}</app-type>
   <var-row :gutter="[10, 10]">
     <var-col :span="8">
       <div class="item">span: 8</div>
@@ -28,7 +29,7 @@ watchLang(use)
     </var-col>
   </var-row>
 
-  <app-type>{{ pack.offset }}</app-type>
+  <app-type>{{ t('offset') }}</app-type>
   <var-row :gutter="[10, 10]">
     <var-col :span="16" :offset="8">
       <div class="item">offset: 8 span: 16</div>
@@ -44,7 +45,7 @@ watchLang(use)
     </var-col>
   </var-row>
 
-  <app-type>{{ pack.alignment }}</app-type>
+  <app-type>{{ t('alignment') }}</app-type>
   <var-row :gutter="[20, 10]">
     <var-col :span="8">
       <div class="item">span: 8</div>

@@ -63,17 +63,17 @@ const trigger = ref('click')
     <var-radio checked-value="hover">hover</var-radio>
   </var-radio-group>
 
-  <var-fab :trigger="trigger">
-    <var-button class="action" type="info" round>
+  <var-fab type="primary" :trigger="trigger">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -97,29 +97,21 @@ const direction = ref('top')
     <var-radio checked-value="left">left</var-radio>
   </var-radio-group>
 
-  <var-fab :direction="direction">
-    <var-button class="action" type="info" round>
+  <var-fab type="primary" :direction="direction">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
-
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
 ```
 
 ### 开启拖拽
@@ -190,29 +182,21 @@ function toggle() {
 <template>
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
-  <var-fab v-model:active="active">
-    <var-button class="action" type="info" round>
+  <var-fab v-model:active="active" type="primary">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
-
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
 ```
 
 ### 自定义触发器
@@ -220,16 +204,16 @@ function toggle() {
 ```html
 <template>
   <var-fab>
-    <var-button class="action" type="info" round>
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" :size="24" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" :size="24" />
     </var-button>
 
@@ -246,13 +230,6 @@ function toggle() {
   width: 64px !important;
   height: 64px !important;
   border-radius: 8px !important;
-}
-
-.action {
-  display: flex;
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 6px !important;
 }
 
 .fade {
@@ -323,8 +300,11 @@ function toggle() {
 | `--fab-left` | `16px` |
 | `--fab-right` | `16px` |
 | `--fab-trigger-size` | `56px` |
+| `--fab-trigger-border-radius` | `50%` |
 | `--fab-trigger-inactive-icon-size` | `26px` |
 | `--fab-trigger-active-icon-size` | `22px` |
 | `--fab-actions-padding` | `10px 0` |
 | `--fab-action-margin` | `6px` |
+| `--fab-action-size` | `40px` |
+| `--fab-action-border-radius` | `50%` |
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` |

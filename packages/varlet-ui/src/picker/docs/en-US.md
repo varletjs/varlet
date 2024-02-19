@@ -4,10 +4,6 @@
 
 Two calling methods, function and component, are provided. It also supports cascade mode and can handle multi-level linkage.
 
-### Notice
-
-In order to make the API more friendly, this component was refactored in `2.17.0`, but break changes were introduced. For the old version documentation, please [check here](https://github.com/varletjs/varlet/blob/v2.16.7/packages/varlet-ui/src/picker/docs/en-US.md).
-
 ## Function call
 
 ### Single Column Picker
@@ -527,7 +523,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--picker-toolbar-height` | `44px` |
 | `--picker-confirm-button-text-color` | `var(--color-primary)` |
 | `--picker-cancel-button-text-color` | `#888` |
-| `--picker-picked-border` | `1px solid rgba(0, 0, 0, 0.12)` |
+| `--picker-picked-border` | `1px solid var(--color-outline)` |
 | `--picker-title-font-size` | `var(--font-size-lg)` |
 | `--picker-title-text-color` | `#555` |
 | `--picker-option-font-size` | `var(--font-size-lg)` |

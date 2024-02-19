@@ -22,7 +22,7 @@
       v-bind="$attrs"
     >
       <div :class="n('title')">
-        <slot name="title">{{ title ?? pack.dialogTitle }}</slot>
+        <slot name="title">{{ title ?? t('dialogTitle') }}</slot>
       </div>
       <div :class="n('message')" :style="{ textAlign: messageAlign }">
         <slot>
@@ -39,7 +39,7 @@
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ cancelButtonText ?? pack.dialogCancelButtonText }}
+          {{ cancelButtonText ?? t('dialogCancelButtonText') }}
         </var-button>
         <var-button
           :class="classes(n('button'), n('confirm-button'))"
@@ -50,7 +50,7 @@
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ confirmButtonText ?? pack.dialogConfirmButtonText }}
+          {{ confirmButtonText ?? t('dialogConfirmButtonText') }}
         </var-button>
       </div>
     </div>
@@ -62,7 +62,7 @@ import VarPopup from '../popup'
 import VarButton from '../button'
 import { props } from './props'
 import { defineComponent, ref, watch } from 'vue'
-import { pack } from '../locale'
+import { t } from '../locale'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { call } from '@varlet/shared'
@@ -150,7 +150,7 @@ export default defineComponent({
     }
 
     return {
-      pack,
+      t,
       popupShow,
       popupCloseOnClickOverlay,
       n,

@@ -29,7 +29,33 @@
   --color-danger: #f44336;
   --color-disabled: #e0e0e0;
   --color-text-disabled: #aaa;
+  --color-on-primary: #fff;
+  --color-on-info: #fff;
+  --color-on-success: #fff;
+  --color-on-warning: #fff;
+  --color-on-danger: #fff;
+  --color-primary-container: #3a7afe;
+  --color-info-container: #00afef;
+  --color-success-container: #00c48f;
+  --color-warning-container: #ff9f00;
+  --color-danger-container: #f44336;
+  --color-on-primary-container: #fff;
+  --color-on-info-container: #fff;
+  --color-on-success-container: #fff;
+  --color-on-warning-container: #fff;
+  --color-on-danger-container: #fff;
+  --color-surface-container: #fff;
+  --color-surface-container-low: #fff;
+  --color-surface-container-high: #fff;
+  --color-surface-container-highest: #fff;
+  --color-inverse-surface: #333;
+  --color-outline: rgba(0, 0, 0, 0.12);
+  --color-on-surface-variant: #888;
+  --opacity-disabled: 0.6;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
+  --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);
+  --shadow-key-penumbra-opacity: rgba(0, 0, 0, 0.14);
+  --shadow-key-ambient-opacity: rgba(0, 0, 0, 0.12);
 }
 ```
 
@@ -92,7 +118,7 @@ import { StyleProvider } from '@varlet/ui'
 let rootStyleVars = null
 
 const darkTheme = {
-  '--color-primary': '#3f51b5'
+  '--color-primary': 'var(--color-info)'
 }
 
 function toggleRootTheme() {
@@ -144,6 +170,7 @@ function toggleRootTheme() {
 | `--color-danger` | `#f44336` |
 | `--color-disabled` | `#e0e0e0` |
 | `--color-text-disabled` | `#aaa` |
+| `--color-outline` | `rgba(0, 0, 0, 0.12)` |
 | `--opacity-disabled` | `0.6` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |

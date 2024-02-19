@@ -1,5 +1,5 @@
-import type { Pack } from '../../types'
+import type { Message } from '../../types'
 
-declare const zhTW: Pack
+declare const zhTW: Message
 
 export default zhTW

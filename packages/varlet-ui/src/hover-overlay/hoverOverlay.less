@@ -1,3 +1,7 @@
+:root {
+  --hover-overlay-opacity: 0.15;
+}
+
 .var-hover-overlay {
   position: absolute;
   top: 0;
@@ -12,6 +16,6 @@
   pointer-events: none;
 
   &--hovering {
-    opacity: 0.15;
+    opacity: var(--hover-overlay-opacity);
   }
 }

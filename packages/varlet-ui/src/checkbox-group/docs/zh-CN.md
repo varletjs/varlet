@@ -49,8 +49,8 @@ const value = ref(false)
 
 <template>
   <var-checkbox
-    unchecked-color="#e99eb4"
-    checked-color="#f44336"
+    unchecked-color="var(--color-warning)" 
+    checked-color="var(--color-danger)"
     v-model="value"
   >
     <template #unchecked-icon>

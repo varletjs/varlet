@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { nextTick, ref } from 'vue'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 const fullscreen = ref(false)
 const watermarkRef = ref(null)
@@ -17,7 +16,7 @@ const toggle = () => {
 
 watchLang(use)
 
-watchDarkMode(Themes.dark, () => {
+onThemeChange(() => {
   nextTick(() => {
     watermarkRef.value.resize()
     watermarkRef2.value.resize()
@@ -29,32 +28,32 @@ watchDarkMode(Themes.dark, () => {
 </script>
 
 <template>
-  <app-type>{{ pack.textWatermark }}</app-type>
+  <app-type>{{ t('textWatermark') }}</app-type>
   <var-watermark content="Varlet" ref="watermarkRef">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.customGap }}</app-type>
+  <app-type>{{ t('customGap') }}</app-type>
   <var-watermark content="Varlet" :gap-x="40" :gap-y="40" ref="watermarkRef2">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.customOffset }}</app-type>
+  <app-type>{{ t('customOffset') }}</app-type>
   <var-watermark content="Varlet" :offset-x="20" :offset-y="20" ref="watermarkRef3">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.customRotate }}</app-type>
+  <app-type>{{ t('customRotate') }}</app-type>
   <var-watermark content="Varlet" :rotate="22" :offset-y="20" ref="watermarkRef4">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.imageWatermark }}</app-type>
+  <app-type>{{ t('imageWatermark') }}</app-type>
   <var-watermark image="./logo.svg" :width="40" :height="40" :gap-x="40" :gap-y="40" :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper"></div>
   </var-watermark>
 
-  <app-type>{{ pack.fullscreen }}</app-type>
+  <app-type>{{ t('fullscreen') }}</app-type>
 
   <var-watermark
     ref="watermarkRef5"
@@ -65,11 +64,11 @@ watchDarkMode(Themes.dark, () => {
     :offset-y="10"
   >
     <div class="watermark-wrapper">
-      <var-button type="primary" @click="toggle">{{ pack.toggle }}</var-button>
+      <var-button type="primary" @click="toggle">{{ t('toggle') }}</var-button>
     </div>
   </var-watermark>
 
-  <app-type>{{ pack.customContentSlot }}</app-type>
+  <app-type>{{ t('customContentSlot') }}</app-type>
   <var-watermark :offset-x="10" :offset-y="10">
     <div class="watermark-wrapper"></div>
     <template #content>

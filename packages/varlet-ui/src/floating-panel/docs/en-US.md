@@ -80,7 +80,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--floating-panel-z-index` | `999` |
 | `--floating-panel-border-top` | `none` |
 | `--floating-panel-border-radius` | `0` |
-| `--floating-panel-background` | `#fff` |
+| `--floating-panel-background` | `var(--color-surface-container-high)` |
 | `--floating-panel-header-height` | `40px` |
 | `--floating-panel-toolbar-width` | `20px` |
 | `--floating-panel-toolbar-height` | `3px` |

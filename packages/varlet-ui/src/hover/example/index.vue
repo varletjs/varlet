@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
-import { pack, use } from './locale'
-import { watchLang, watchDarkMode, AppType } from '@varlet/cli/client'
+import { t, use } from './locale'
+import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 
 const translateY = ref('100%')
 
@@ -11,23 +10,23 @@ function handleHover(hovering) {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.styleBinding }}</app-type>
+  <app-type>{{ t('styleBinding') }}</app-type>
   <var-paper
     class="paper"
     :elevation="2"
     :width="100"
     :height="100"
     ripple
-    v-hover="{ color: '#fff', background: ' var(--color-primary)' }"
+    v-hover="{ color: 'var(--color-on-primary)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
 
-  <app-type>{{ pack.functionBinding }}</app-type>
+  <app-type>{{ t('functionBinding') }}</app-type>
   <div class="image-container" v-hover="handleHover">
     <var-image src="https://varlet.gitee.io/varlet-ui/tree.jpeg" />
     <div class="image-mask" :style="{ transform: `translateY(${translateY})` }">HOVER</div>
@@ -59,7 +58,7 @@ watchDarkMode(Themes.dark)
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: #fff;
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   font-size: 50px;
 }

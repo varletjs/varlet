@@ -32,16 +32,32 @@ exports[`test button group component props > test button group elevation 1`] = `
   </button></div>"
 `;
 
+exports[`test button group component props > test button group icon-container mode 1`] = `
+"<div class="var-button-group var--box var-button-group--mode-icon-container var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+    <!--v-if-->
+    <div class="var-button__content"></div>
+    <div class="var-hover-overlay"></div>
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+    <!--v-if-->
+    <div class="var-button__content"></div>
+    <div class="var-hover-overlay"></div>
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--icon-container-default" type="button">
+    <!--v-if-->
+    <div class="var-button__content"></div>
+    <div class="var-hover-overlay"></div>
+  </button></div>"
+`;
+
 exports[`test button group component props > test button group outline mode 1`] = `
-"<div class="var-button-group var--box var-button-group--mode-outline var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--outline" type="button">
+"<div class="var-button-group var--box var-button-group--mode-outline var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--outline" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--outline" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--outline" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text var-button--outline" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-button--outline" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
@@ -49,15 +65,15 @@ exports[`test button group component props > test button group outline mode 1`] 
 `;
 
 exports[`test button group component props > test button group text mode 1`] = `
-"<div class="var-button-group var--box var-button-group--mode-text var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text" type="button">
+"<div class="var-button-group var--box var-button-group--mode-text var-button-group--horizontal"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>
-  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text-default var-button--text" type="button">
+  </button><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default" type="button">
     <!--v-if-->
     <div class="var-button__content"></div>
     <div class="var-hover-overlay"></div>

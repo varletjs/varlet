@@ -1,5 +1,5 @@
-import type { Pack } from '../../types'
+import type { Message } from '../../types'
 
-declare const zhCN: Pack
+declare const zhCN: Message
 
 export default zhCN

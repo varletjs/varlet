@@ -1,0 +1,16 @@
+export default {
+  '--date-picker-title-background': 'var(--color-surface-container-high)',
+  '--date-picker-title-color': '#1D1B20',
+  '--date-picker-title-hint-color': 'var(--color-on-surface-variant)',
+  '--date-picker-body-background-color': 'var(--color-surface-container-high)',
+  '--date-picker-main-color': '#1D1B20',
+  '--date-picker-border-radius': '20px',
+  '--date-picker-title-padding': '20px 20px 16px',
+  '--date-picker-actions-padding': '20px',
+  '--day-picker-head-item-color': '#1D1B20',
+  '--date-picker-header-arrow-filter': 'opacity(1)',
+  '--date-picker-header-padding': '0 0 16px',
+  '--date-picker-body-height': '300px',
+  '--date-picker-body-padding': '0 14px 16px',
+  '--date-picker-header-color': 'var(--color-on-surface-variant)',
+}

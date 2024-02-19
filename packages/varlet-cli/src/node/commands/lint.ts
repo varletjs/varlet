@@ -23,6 +23,7 @@ export async function lint() {
       './packages/varlet-touch-emulator',
       './packages/varlet-vscode-extension/src',
       './packages/varlet-ui-playground/src',
+      './packages/varlet-import-resolver/src',
     ]
     const { stdout } = await execa('eslint', [
       ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),

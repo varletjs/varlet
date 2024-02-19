@@ -58,7 +58,7 @@ import {
 import { WEEK_HEADER, type Choose, type Preview, type ComponentProps, type Week, type PanelBtnDisabled } from '../props'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
-import { pack } from '../../locale'
+import { t } from '../../locale'
 import { onSmartMounted } from '@varlet/use'
 
 dayjs.extend(isSameOrBefore)
@@ -127,7 +127,7 @@ export default defineComponent({
       return [...WEEK_HEADER.slice(index), ...WEEK_HEADER.slice(0, index)]
     })
 
-    const getDayAbbr = (key: Week): string => pack.value.datePickerWeekDict?.[key].abbr ?? ''
+    const getDayAbbr = (key: Week): string => t('datePickerWeekDict')?.[key].abbr ?? ''
 
     const filterDay = (day: number): number | string => (day > 0 ? day : '')
 

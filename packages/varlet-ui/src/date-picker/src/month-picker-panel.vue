@@ -41,7 +41,7 @@ import PanelHeader from './panel-header.vue'
 import VarButton from '../../button'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
-import { pack } from '../../locale'
+import { t } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
 
@@ -94,7 +94,7 @@ export default defineComponent({
 
     const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const getMonthAbbr = (key: Month): string => pack.value.datePickerMonthDict?.[key].abbr ?? ''
+    const getMonthAbbr = (key: Month): string => t('datePickerMonthDict')?.[key].abbr ?? ''
 
     const inRange = (key: string): boolean => {
       const {
@@ -228,7 +228,7 @@ export default defineComponent({
     return {
       n,
       nDate,
-      pack,
+      t,
       MONTH_LIST,
       headerEl,
       reverse,

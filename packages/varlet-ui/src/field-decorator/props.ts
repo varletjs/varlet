@@ -32,6 +32,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  hintCenter: {
+    type: Boolean,
+    default: true,
+  },
   textColor: String,
   focusColor: String,
   blurColor: String,

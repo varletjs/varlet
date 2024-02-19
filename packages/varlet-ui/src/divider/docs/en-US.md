@@ -64,7 +64,7 @@ Used to separate parts of a list or layout.
 ```html
 <template>
   <var-divider>
-    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+    <var-icon name="heart-outline" style="margin: 0 16px; color: var(--color-danger);" />
   </var-divider>
 </template>
 ```
@@ -100,7 +100,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
-| `--divider-color` | `rgba(0, 0, 0, 0.12)` |
+| `--divider-color` | `var(--color-outline)` |
 | `--divider-text-color` | `#888`|
 | `--divider-text-margin` | `8px 0`|
 | `--divider-text-padding` | `0 8px`|

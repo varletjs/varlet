@@ -19,8 +19,6 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
-  /** @deprecated Use stickyCssMode to instead. */
-  cssMode: Boolean,
   stickyCssMode: Boolean,
   hideList: Boolean,
   zIndex: {

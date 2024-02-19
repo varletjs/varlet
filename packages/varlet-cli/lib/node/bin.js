@@ -69,6 +69,13 @@ program
     return compile();
 });
 program
+    .command('compile:style-vars')
+    .description('Compile varlet style vars')
+    .action(async () => {
+    const { styleVars } = await import('./commands/styleVars.js');
+    return styleVars();
+});
+program
     .command('lint')
     .description('Lint code')
     .action(async () => {

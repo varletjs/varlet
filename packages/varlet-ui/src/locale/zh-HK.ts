@@ -1,4 +1,5 @@
-import { Pack } from './index'
-import pack from './zh-TW'
+import { Message } from './index'
 
-export default pack as Pack
+import zhHK from './zh-TW'
+
+export default zhHK as Message

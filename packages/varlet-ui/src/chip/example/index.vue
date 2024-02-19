@@ -1,83 +1,82 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const show = ref(true)
 const show1 = ref(true)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.chipType }}</app-type>
+  <app-type>{{ t('chipType') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip>{{ pack.defaultChip }}</var-chip>
-    <var-chip type="primary">{{ pack.primaryChip }}</var-chip>
-    <var-chip type="success">{{ pack.successChip }}</var-chip>
-    <var-chip type="danger">{{ pack.dangerChip }}</var-chip>
-    <var-chip type="warning">{{ pack.warningChip }}</var-chip>
-    <var-chip type="info">{{ pack.infoChip }}</var-chip>
+    <var-chip>{{ t('defaultChip') }}</var-chip>
+    <var-chip type="primary">{{ t('primaryChip') }}</var-chip>
+    <var-chip type="success">{{ t('successChip') }}</var-chip>
+    <var-chip type="danger">{{ t('dangerChip') }}</var-chip>
+    <var-chip type="warning">{{ t('warningChip') }}</var-chip>
+    <var-chip type="info">{{ t('infoChip') }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.plainChip }}</app-type>
+  <app-type>{{ t('plainChip') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip plain>{{ pack.defaultChip }}</var-chip>
-    <var-chip plain type="primary">{{ pack.primaryChip }}</var-chip>
-    <var-chip plain type="success">{{ pack.successChip }}</var-chip>
-    <var-chip plain type="danger">{{ pack.dangerChip }}</var-chip>
-    <var-chip plain type="warning">{{ pack.warningChip }}</var-chip>
-    <var-chip plain type="info">{{ pack.infoChip }}</var-chip>
+    <var-chip plain>{{ t('defaultChip') }}</var-chip>
+    <var-chip plain type="primary">{{ t('primaryChip') }}</var-chip>
+    <var-chip plain type="success">{{ t('successChip') }}</var-chip>
+    <var-chip plain type="danger">{{ t('dangerChip') }}</var-chip>
+    <var-chip plain type="warning">{{ t('warningChip') }}</var-chip>
+    <var-chip plain type="info">{{ t('infoChip') }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.nonRoundChip }}</app-type>
-  <var-chip :round="false" type="primary">{{ pack.nonRoundChip }}</var-chip>
+  <app-type>{{ t('nonRoundChip') }}</app-type>
+  <var-chip :round="false" type="primary">{{ t('nonRoundChip') }}</var-chip>
 
-  <app-type>{{ pack.chipSize }}</app-type>
+  <app-type>{{ t('chipSize') }}</app-type>
   <var-space align="center" :size="['2.666vmin', '2.666vmin']">
-    <var-chip type="primary">{{ pack.normalChip }}</var-chip>
-    <var-chip type="success" size="small">{{ pack.smallChip }}</var-chip>
-    <var-chip type="warning" size="mini">{{ pack.miniChip }}</var-chip>
-    <var-chip type="danger" size="large">{{ pack.largeChip }}</var-chip>
+    <var-chip type="primary">{{ t('normalChip') }}</var-chip>
+    <var-chip type="success" size="small">{{ t('smallChip') }}</var-chip>
+    <var-chip type="warning" size="mini">{{ t('miniChip') }}</var-chip>
+    <var-chip type="danger" size="large">{{ t('largeChip') }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.blockChip }}</app-type>
-  <var-chip type="primary" block>{{ pack.blockChip }}</var-chip>
+  <app-type>{{ t('blockChip') }}</app-type>
+  <var-chip type="primary" block>{{ t('blockChip') }}</var-chip>
 
-  <app-type>{{ pack.canCloseChip }}</app-type>
+  <app-type>{{ t('canCloseChip') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip closeable v-if="show" @close="show = false">{{ pack.canCloseChip }}</var-chip>
-    <var-chip closeable icon-name="delete" v-if="show1" @close="show1 = false"> {{ pack.customCloseIcon }}</var-chip>
+    <var-chip closeable v-if="show" @close="show = false">{{ t('canCloseChip') }}</var-chip>
+    <var-chip closeable icon-name="delete" v-if="show1" @close="show1 = false"> {{ t('customCloseIcon') }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.customColor }}</app-type>
+  <app-type>{{ t('customColor') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
-    <var-chip color="#009688" text-color="#fff">{{ pack.chip }}</var-chip>
-    <var-chip color="#009688" plain>{{ pack.chip }}</var-chip>
-    <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ pack.chip }}</var-chip>
-    <var-chip color="#faecd8" text-color="#e6a23c">{{ pack.chip }}</var-chip>
+    <var-chip color="#009688" text-color="#fff">{{ t('chip') }}</var-chip>
+    <var-chip color="#009688" plain>{{ t('chip') }}</var-chip>
+    <var-chip color="#faecd8" text-color="#e6a23c" plain>{{ t('chip') }}</var-chip>
+    <var-chip color="#faecd8" text-color="#e6a23c">{{ t('chip') }}</var-chip>
   </var-space>
 
-  <app-type>{{ pack.addSlot }}</app-type>
+  <app-type>{{ t('addSlot') }}</app-type>
   <var-space :size="['2.666vmin', '2.666vmin']">
     <var-chip>
-      {{ pack.leftSlot }}
+      {{ t('leftSlot') }}
 
       <template #left>
         <var-icon name="star"></var-icon>
       </template>
     </var-chip>
     <var-chip>
-      {{ pack.rightSlot }}
+      {{ t('rightSlot') }}
 
       <template #right>
         <var-icon name="fire"></var-icon>
       </template>
     </var-chip>
     <var-chip>
-      {{ pack.leftAndRightSlot }}
+      {{ t('leftAndRightSlot') }}
 
       <template #left>
         <var-icon name="account-circle"></var-icon>

@@ -75,7 +75,7 @@
         v-if="showFloatingButtons"
       >
         <slot name="close-button">
-          <var-button var-card-cover round :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
+          <var-button var-card-cover :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
             <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
           </var-button>
         </slot>

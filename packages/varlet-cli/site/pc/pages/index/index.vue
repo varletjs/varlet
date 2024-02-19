@@ -7,10 +7,11 @@ import { useRoute, useRouter } from 'vue-router'
 import {
   getPCLocationInfo,
   watchTheme,
+  onThemeChange,
   getBrowserTheme,
+  setTheme,
   type Theme
 } from '@varlet/cli/client'
-import { setTheme } from '../../../utils'
 
 const route = useRoute()
 const router = useRouter()
@@ -32,7 +33,7 @@ const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: curre
 
 const setCurrentTheme = (theme: Theme) => {
   currentTheme.value = theme
-  setTheme(config, currentTheme.value)
+  setTheme(currentTheme.value)
   window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
 }
 
@@ -48,7 +49,7 @@ const to = (url: string) => {
   window.open(url)
 }
 
-setTheme(config, currentTheme.value)
+setTheme(currentTheme.value)
 
 window.postMessage(getThemeMessage(), '*')
 
@@ -56,8 +57,10 @@ watchTheme((theme, from) => {
   from === 'mobile' && setCurrentTheme(theme)
 })
 
+onThemeChange()
+
 watch(() => route.path, () => {
-  language.value =  getPCLocationInfo().language
+  language.value = getPCLocationInfo().language
   setLocale()
 }, { immediate: true })
 </script>
@@ -79,7 +82,7 @@ watch(() => route.path, () => {
             <var-button class="varlet-doc-index__link-button" type="primary" style="line-height: 1.2" @click="getStar">
             {{ indexPage.started[language] }}
             </var-button>
-            <var-button class="varlet-doc-index__github-button" type="primary" style="line-height: 1.2" @click="toGithub">
+            <var-button class="varlet-doc-index__github-button" style="line-height: 1.2" @click="toGithub">
               {{ indexPage.viewOnGithub[language] }}
             </var-button>
           </var-space>
@@ -239,7 +242,6 @@ watch(() => route.path, () => {
     font-size: 19px !important;
     transition: all .2s !important;
     margin-top: 38px !important;
-    background: var(--site-config-color-index-page-get-started-button) !important;
   }
 
   &__github-button {
@@ -248,7 +250,6 @@ watch(() => route.path, () => {
     font-size: 19px !important;
     transition: all .2s !important;
     margin-top: 38px !important;
-    background: var(--site-config-color-index-page-github-button) !important;
   }
 
   &__features {
@@ -262,7 +263,7 @@ watch(() => route.path, () => {
     width: 300px;
     margin: 12px;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--site-config-color-index-page-feature-background);
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
@@ -306,7 +307,7 @@ watch(() => route.path, () => {
     width: 300px;
     margin: 12px;
     padding: 30px 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--site-config-color-index-page-feature-background);
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 

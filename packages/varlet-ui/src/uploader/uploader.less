@@ -10,6 +10,7 @@
   --uploader-file-name-font-size: 12px;
   --uploader-file-name-padding: 10px;
   --uploader-file-text-align: center;
+  --uploader-file-border-radius: 0;
   --uploader-file-close-background: rgba(0, 0, 0, 0.3);
   --uploader-file-close-size: 24px;
   --uploader-file-close-icon-font-size: 14px;
@@ -57,6 +58,7 @@
     width: var(--uploader-file-size);
     height: var(--uploader-file-size);
     margin: var(--uploader-file-margin);
+    border-radius: var(--uploader-file-border-radius);
     overflow: hidden;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -133,6 +135,7 @@
     height: var(--uploader-file-size);
     background: var(--uploader-action-background);
     margin: var(--uploader-action-margin);
+    border-radius: var(--uploader-file-border-radius);
     transition: background-color 0.25s;
     cursor: pointer;
   }

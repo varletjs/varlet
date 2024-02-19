@@ -428,8 +428,14 @@ iframe {
         font-weight: normal;
       }
 
+      table strong {
+        border: 1px solid currentColor;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
       .card {
-        border-radius: 6px;
+        border-radius: var(--site-config-card-border-radius);
         background: var(--site-config-color-bar);
         padding: 20px;
         margin-bottom: 30px;

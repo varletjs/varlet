@@ -2,11 +2,11 @@
 
 exports[`test counter decimalLength 1`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -19,11 +19,11 @@ exports[`test counter decimalLength 1`] = `
 
 exports[`test counter decimalLength 2`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="decimal"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="decimal"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -36,11 +36,11 @@ exports[`test counter decimalLength 2`] = `
 
 exports[`test counter decrementButton 1`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -53,11 +53,11 @@ exports[`test counter decrementButton 1`] = `
 
 exports[`test counter decrementButton 2`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button var-counter--hidden" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button var-counter--hidden" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -70,11 +70,11 @@ exports[`test counter decrementButton 2`] = `
 
 exports[`test counter elevation 1`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -87,11 +87,11 @@ exports[`test counter elevation 1`] = `
 
 exports[`test counter elevation 2`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -104,11 +104,11 @@ exports[`test counter elevation 2`] = `
 
 exports[`test counter incrementButton 1`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -121,11 +121,11 @@ exports[`test counter incrementButton 1`] = `
 
 exports[`test counter incrementButton 2`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button var-counter--hidden" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button var-counter--hidden" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
@@ -138,11 +138,11 @@ exports[`test counter incrementButton 2`] = `
 
 exports[`test counter validation 1`] = `
 "<div class="var-counter var--box">
-  <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+  <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>
-    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+    </button><input class="var-counter__input" inputmode="numeric"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
       <!--v-if-->
       <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
       <div class="var-hover-overlay"></div>

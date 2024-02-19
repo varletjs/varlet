@@ -83,8 +83,8 @@ const right = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -140,8 +140,8 @@ const overlayStyle = ref(false)
 }
 
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -179,8 +179,8 @@ const event = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -226,4 +226,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
-| `--popup-content-background-color` | `#fff` |
+| `--popup-content-background-color` | `var(--color-surface-container-low)` |

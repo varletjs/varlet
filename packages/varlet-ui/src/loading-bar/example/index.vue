@@ -1,10 +1,17 @@
 <script setup>
-import { Themes, LoadingBar } from '@varlet/ui'
+import { LoadingBar } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchLang, AppType, watchDarkMode } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 const hasCustomStyle = ref(false)
+
+onThemeChange()
+watchLang(use)
+
+LoadingBar.setDefaultOptions({
+  top: '54px',
+})
 
 function setStyle() {
   if (hasCustomStyle.value) {
@@ -19,21 +26,14 @@ function setStyle() {
 
   hasCustomStyle.value = !hasCustomStyle.value
 }
-
-watchDarkMode(Themes.dark)
-watchLang(use)
-
-LoadingBar.setDefaultOptions({
-  top: '54px',
-})
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="primary" block @click="LoadingBar.start()">{{ pack.start }}</var-button>
-    <var-button type="primary" block @click="LoadingBar.finish()">{{ pack.finish }}</var-button>
-    <var-button type="primary" block @click="LoadingBar.error()">{{ pack.error }}</var-button>
-    <var-button type="primary" block @click="setStyle">{{ hasCustomStyle ? pack.clear : pack.custom }}</var-button>
+    <var-button type="primary" block @click="LoadingBar.start()">{{ t('start') }}</var-button>
+    <var-button type="primary" block @click="LoadingBar.finish()">{{ t('finish') }}</var-button>
+    <var-button type="primary" block @click="LoadingBar.error()">{{ t('error') }}</var-button>
+    <var-button type="primary" block @click="setStyle">{{ hasCustomStyle ? t('clear') : t('custom') }}</var-button>
   </var-space>
 </template>

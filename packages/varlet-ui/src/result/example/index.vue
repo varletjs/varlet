@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchDarkMode, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { AppType, onThemeChange, watchLang } from '@varlet/cli/client'
+import { use, t } from './locale'
 import { ref } from 'vue'
 
 const success = ref(false)
@@ -12,78 +11,78 @@ const question = ref(false)
 const empty = ref(false)
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <var-result :title="pack.success" :description="pack.description">
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-result :title="t('success')" :description="t('description')">
     <template #footer>
-      <var-button type="success" @click="success = false">{{ pack.button }}</var-button>
+      <var-button type="success" @click="success = false">{{ t('button') }}</var-button>
     </template>
   </var-result>
 
-  <app-type>{{ pack.type }}</app-type>
+  <app-type>{{ t('type') }}</app-type>
   <var-space direction="column" size="large">
-    <var-button type="success" block @click="success = true">{{ pack.success }}</var-button>
-    <var-button type="warning" block @click="warning = true">{{ pack.warning }}</var-button>
-    <var-button type="info" block @click="info = true">{{ pack.info }}</var-button>
-    <var-button type="danger" block @click="error = true">{{ pack.error }}</var-button>
+    <var-button type="success" block @click="success = true">{{ t('success') }}</var-button>
+    <var-button type="warning" block @click="warning = true">{{ t('warning') }}</var-button>
+    <var-button type="info" block @click="info = true">{{ t('info') }}</var-button>
+    <var-button type="danger" block @click="error = true">{{ t('error') }}</var-button>
     <var-button color="var(--result-question-color)" text-color="#fff" block @click="question = true">
-      {{ pack.question }}
+      {{ t('question') }}
     </var-button>
     <var-button color="var(--result-empty-color)" text-color="#fff" block @click="empty = true">
-      {{ pack.empty }}
+      {{ t('empty') }}
     </var-button>
   </var-space>
 
   <var-popup :default-style="false" v-model:show="success">
-    <var-result class="result" :title="pack.success" :description="pack.description">
+    <var-result class="result" :title="t('success')" :description="t('description')">
       <template #footer>
-        <var-button type="success" @click="success = false">{{ pack.button }}</var-button>
+        <var-button type="success" @click="success = false">{{ t('button') }}</var-button>
       </template>
     </var-result>
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="error">
-    <var-result class="result" type="error" :title="pack.error" :description="pack.description">
+    <var-result class="result" type="error" :title="t('error')" :description="t('description')">
       <template #footer>
-        <var-button type="danger" @click="error = false">{{ pack.button }}</var-button>
+        <var-button type="danger" @click="error = false">{{ t('button') }}</var-button>
       </template>
     </var-result>
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="warning">
-    <var-result class="result" type="warning" :title="pack.warning" :description="pack.description">
+    <var-result class="result" type="warning" :title="t('warning')" :description="t('description')">
       <template #footer>
-        <var-button type="warning" @click="warning = false">{{ pack.button }}</var-button>
+        <var-button type="warning" @click="warning = false">{{ t('button') }}</var-button>
       </template>
     </var-result>
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="info">
-    <var-result class="result" type="info" :title="pack.info" :description="pack.description">
+    <var-result class="result" type="info" :title="t('info')" :description="t('description')">
       <template #footer>
-        <var-button type="info" @click="info = false">{{ pack.button }}</var-button>
+        <var-button type="info" @click="info = false">{{ t('button') }}</var-button>
       </template>
     </var-result>
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="question">
-    <var-result class="result" type="question" :title="pack.question" :description="pack.description">
+    <var-result class="result" type="question" :title="t('question')" :description="t('description')">
       <template #footer>
         <var-button color="var(--result-question-color)" text-color="#fff" @click="question = false"
-          >{{ pack.button }}
+          >{{ t('button') }}
         </var-button>
       </template>
     </var-result>
   </var-popup>
 
   <var-popup :default-style="false" v-model:show="empty">
-    <var-result class="result" type="empty" :title="pack.empty" :description="pack.description">
+    <var-result class="result" type="empty" :title="t('empty')" :description="t('description')">
       <template #footer>
         <var-button color="var(--result-empty-color)" text-color="#fff" @click="empty = false"
-          >{{ pack.button }}
+          >{{ t('button') }}
         </var-button>
       </template>
     </var-result>

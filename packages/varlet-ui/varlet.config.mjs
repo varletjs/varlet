@@ -7,7 +7,6 @@ export default defineConfig({
   },
   pc: {
     header: {
-      currentVersion: 'v2.x',
       playground:
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000'
@@ -63,8 +62,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '暗黑模式',
-          'en-US': 'Dark Mode',
+          'zh-CN': '主题系统',
+          'en-US': 'Theme System',
         },
         doc: 'themes',
         type: 2,
@@ -111,8 +110,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '从 1.x 迁移',
-          'en-US': 'Migrating from 1.x',
+          'zh-CN': '从 2.x 迁移',
+          'en-US': 'Migrate from 2.x',
         },
         doc: 'migrationGuide',
         type: 3,

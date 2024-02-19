@@ -12,7 +12,6 @@
       var-bottom-navigation__fab
       @click="handleFabClick"
       v-bind="fabProps"
-      round
     >
       <slot name="fab"></slot>
     </var-button>

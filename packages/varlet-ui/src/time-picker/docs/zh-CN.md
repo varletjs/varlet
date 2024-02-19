@@ -30,7 +30,7 @@ const date = ref('15:20')
 </script>
 
 <template>
-  <var-time-picker v-model="date" format="24hr" elevation />
+  <var-time-picker v-model="date" format="24hr" />
 </template>
 ```
 
@@ -59,9 +59,10 @@ const date = ref('07:10')
 </script>
 
 <template>
-  <var-time-picker v-model="date" readonly elevation />
+  <var-time-picker v-model="date" readonly />
 </template>
 ```
+
 ### 时间限制
 
 通过 `min`、`max` 和 `allowed-time` 属性来控制可选择的时间范围。
@@ -91,31 +92,27 @@ const allowedTime = {
 </template>
 ```
 
-### 自定义
+### 操作烂
 
 ```html
 <script setup>
 import { ref } from 'vue'
 
-const date = ref('05:10')
-
-function change(time) {
-  console.log(time)
-}
+const date = ref('17:36:22')
 </script>
 
 <template>
-  <var-time-picker
-    v-model="date"
-    header-color="purple"
-    color="#7bb872"
-    min="2:28:38"
-    max="19:40:22"
-    elevation
-    @change="change"
-  />
+  <var-time-picker v-model="date">
+    <template #actions>
+      <var-space size="small">
+        <var-button type="primary" text>操作</var-button>
+        <var-button type="primary" text>操作</var-button>
+      </var-space>
+    </template>
+  </var-time-picker>
 </template>
 ```
+
 ## API
 
 ### 属性
@@ -160,46 +157,57 @@ function change(time) {
 
 | 变量名 | 默认值                    |
 | --- |------------------------|
-| `--time-picker-border-radius` | `4px`                  |
-| `--time-picker-font-size` | `var(--font-size-md)`  |
-| `--time-picker-min-width` | `290px`                |
-| `--time-picker-title-height` | `105px`                |
-| `--time-picker-title-padding` | `16px`                 |
-| `--time-picker-title-color` | `#fff`                 |
-| `--time-picker-title-margin-bottom` | `8px`                  |
-| `--time-picker-title-hint-font-size` | `14px`                 |
+| `--time-picker-border-radius` | `4px` |
+| `--time-picker-font-size` | `var(--font-size-md)` |
+| `--time-picker-min-width` | `290px` |
+| `--time-picker-title-height` | `105px` |
+| `--time-picker-title-padding` | `16px` |
+| `--time-picker-title-margin-bottom` | `8px` |
+| `--time-picker-title-color` | `#fff` |
 | `--time-picker-title-background` | `var(--color-primary)` |
-| `--time-picker-title-time-font-size` | `50px`                 |
-| `--time-picker-title-time-margin` | `0 5px`                |
-| `--time-picker-title-ampm-margin-left` | `5px`                  |
-| `--time-picker-clock-left` | `27px`                 |
-| `--time-picker-clock-right` | `27px`                 |
-| `--time-picker-clock-top` | `27px`                 |
-| `--time-picker-clock-bottom` | `27px`                 |
-| `--time-picker-clock-container-width` | `256px`                |
-| `--time-picker-clock-container-height` | `256px`                |
-| `--time-picker-clock-container-background` | `#e0e0e0`              |
-| `--time-picker-clock-hand-height` | `calc(50% - 4px)`      |
-| `--time-picker-clock-hand-width` | `2px`                  |
-| `--time-picker-clock-hand-bottom` | `50%`                  |
-| `--time-picker-clock-hand-left` | `calc(50% - 1px)`      |
+| `--time-picker-title-hint-color` | `'#fff'` |
+| `--time-picker-title-hint-font-size` | `14px` |
+| `--time-picker-title-inactive-opacity` | `0.6` |
+| `--time-picker-title-time-font-size` | `50px` |
+| `--time-picker-title-time-margin` | `0 5px` |
+| `--time-picker-title-time-border-radius` | `0` |
+| `--time-picker-title-time-padding` | `0` |
+| `--time-picker-title-time-background` | `transparent` |
+| `--time-picker-title-time-active-background` | `transparent` |
+| `--time-picker-title-ampm-button-active-background` | `transparent` |
+| `--time-picker-title-ampm-margin-left` | `10px` |
+| `--time-picker-title-ampm-border-radius` | `0` |
+| `--time-picker-title-ampm-border` | `none` |
+| `--time-picker-title-ampm-button-padding` | `2px` |
+| `--time-picker-clock-left` | `27px` |
+| `--time-picker-clock-right` | `27px` |
+| `--time-picker-clock-top` | `27px` |
+| `--time-picker-clock-bottom` | `27px` |
+| `--time-picker-clock-container-width` | `256px` |
+| `--time-picker-clock-container-height` | `256px` |
+| `--time-picker-clock-container-background` | `#e0e0e0` |
+| `--time-picker-clock-hand-height` | `calc(50% - 4px)` |
+| `--time-picker-clock-hand-width` | `2px` |
+| `--time-picker-clock-hand-bottom` | `50%` |
+| `--time-picker-clock-hand-left` | `calc(50% - 1px)` |
 | `--time-picker-clock-hand-background` | `var(--color-primary)` |
 | `--time-picker-clock-hand-border-color` | `var(--color-primary)` |
-| `--time-picker-clock-hand-before-width` | `10px`                 |
-| `--time-picker-clock-hand-before-height` | `10px`                 |
-| `--time-picker-clock-hand-before-border-width` | `2px`                  |
-| `--time-picker-clock-hand-after-width` | `4px`                  |
-| `--time-picker-clock-hand-after-height` | `4px`                  |
-| `--time-picker-clock-item-height` | `32px`                 |
-| `--time-picker-clock-item-width` | `32px`                 |
+| `--time-picker-clock-hand-before-width` | `10px` |
+| `--time-picker-clock-hand-before-height` | `10px` |
+| `--time-picker-clock-hand-before-border-width` | `2px` |
+| `--time-picker-clock-hand-after-width` | `4px` |
+| `--time-picker-clock-hand-after-height` | `4px` |
+| `--time-picker-clock-item-height` | `32px` |
+| `--time-picker-clock-item-width` | `32px` |
 | `--time-picker-clock-item-active-background` | `var(--color-primary)` |
-| `--time-picker-clock-item-active-color` | `#fff`                 |
-| `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)`  |
-| `--time-picker-clock-item-text-color` | `#555`                 |
-| `--time-picker-inner-left` | `36px`                 |
-| `--time-picker-inner-right` | `36px`                 |
-| `--time-picker-inner-top` | `36px`                 |
-| `--time-picker-inner-bottom` | `36px`                 |
-| `--time-picker-body-background` | `#fff`                 |
-| `--time-picker-body-height` | `288px`                |
-| `--time-picker-actions-padding` | `0 8px 12px 8px`       |
+| `--time-picker-clock-item-active-color` | `var(--color-on-primary)` |
+| `--time-picker-clock-item-disable-color` | `rgba(0, 0, 0, 0.26)` |
+| `--time-picker-clock-item-disable-background` | `#bdbdbd` |
+| `--time-picker-clock-item-text-color` | `#555` |
+| `--time-picker-inner-left` | `36px` |
+| `--time-picker-inner-right` | `36px` |
+| `--time-picker-inner-top` | `36px` |
+| `--time-picker-inner-bottom` | `36px` |
+| `--time-picker-body-background` | `#fff` |
+| `--time-picker-body-height` | `288px` |
+| `--time-picker-actions-padding` | `0 8px 12px 8px` |

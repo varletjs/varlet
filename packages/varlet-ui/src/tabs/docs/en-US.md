@@ -56,8 +56,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--button-info-text-color)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -80,8 +80,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     disabled-color="#aaa"
     v-model:active="active"
   >
@@ -108,8 +108,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -138,8 +138,8 @@ const active = ref(0)
     elevation
     item-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>
@@ -179,8 +179,8 @@ const active = ref(0)
     elevation
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -210,8 +210,8 @@ const active = ref(0)
   <var-tabs
     elevation
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -249,8 +249,8 @@ const active = ref(0)
       sticky
       elevation
       color="var(--color-primary)"
-      active-color="#fff"
-      inactive-color="hsla(0, 0%, 100%, .6)"
+      active-color="var(--color-on-primary)"
+      inactive-color="var(--color-on-info)"
       v-model:active="active"
     >
       <var-tab>Option1</var-tab>
@@ -281,8 +281,8 @@ const active = ref(0)
     elevation
     indicator-position="reverse"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -296,8 +296,8 @@ const active = ref(0)
     indicator-position="reverse"
     layout-direction="vertical"
     color="var(--color-primary)"
-    active-color="#fff"
-    inactive-color="hsla(0, 0%, 100%, .6)"
+    active-color="var(--color-on-primary)"
+    inactive-color="var(--color-on-info)"
     v-model:active="active"
   >
     <var-tab>Option1</var-tab>
@@ -327,11 +327,11 @@ const active = ref(0)
 | `layout-direction` | The layout direction of the tabs, optional value of `horizontal` `vertical`  | _string_ | `horizontal` |
 | `item-direction`   | The layout direction of the tab, optional value of `horizontal` `vertical`   | _string_ | `horizontal` |
 | `fixed-bottom`     | Whether fixed to the bottom of the window, can be used for bottom navigation | _boolean_ | `false`      |
-| `color`            | The background color of the tabs                                             | _string_ | `#fff`       |
-| `active-color`     | The primary color that the tab is activates                                  | _string_ | `#2979ff`    |
-| `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `#646566`    |
-| `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `#e0e0e0`    |
-| `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `#2979ff`    |
+| `color`            | The background color of the tabs                                             | _string_ | `-`       |
+| `active-color`     | The primary color that the tab is activates                                  | _string_ | `-`    |
+| `inactive-color`   | The primary color that the tab is not activated                              | _string_ | `-`    |
+| `disabled-color`   | The primary color that the tab is disabled                                   | _string_ | `-`    |
+| `indicator-color`  | The tab activates the color of the indicator                                 | _string_ | `-`    |
 | `indicator-size`   | Tab activates the size of the indicator                                      | _string \| number_      | `2px`        |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `sticky`           | Whether to enable sticky layouts                                             | _boolean_ | `false`      |

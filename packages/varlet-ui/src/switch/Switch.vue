@@ -98,7 +98,7 @@ export default defineComponent({
         },
         ripple: {
           left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
-          color: modelValue === activeValue ? color : closeColor || '#999',
+          color: modelValue === activeValue ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
         },
@@ -115,6 +115,7 @@ export default defineComponent({
         },
       }
     })
+
     const radius = computed(() => multiplySizeUnit(props.size, 0.8))
 
     const switchProvider: SwitchProvider = {

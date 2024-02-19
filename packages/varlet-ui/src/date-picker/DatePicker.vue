@@ -1,8 +1,8 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))">
-    <div :class="n('title')" :style="{ background: titleColor || headerColor || color }">
+    <div :class="n('title')" :style="{ background: titleColor || color }">
       <div :class="n('title-select')">
-        <div :class="n('title-hint')">{{ hint ?? pack.datePickerHint }}</div>
+        <div :class="n('title-hint')">{{ hint ?? t('datePickerHint') }}</div>
         <div
           v-if="type !== 'year'"
           :class="classes(n('title-year'), [isYearPanel, n('title-year--active')])"
@@ -122,7 +122,7 @@ import {
 import { isArray, toNumber, doubleRaf, call } from '@varlet/shared'
 import { createNamespace, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
-import { pack } from '../locale'
+import { t } from '../locale'
 
 const { name, n, classes } = createNamespace('date-picker')
 
@@ -191,7 +191,7 @@ export default defineComponent({
         return chooseRangeYear.value.length ? `${chooseRangeYear.value[0]} ~ ${chooseRangeYear.value[1]}` : ''
       }
 
-      return multiple ? `${chooseYears.value.length}${pack.value.datePickerSelected}` : chooseYear.value ?? ''
+      return multiple ? `${chooseYears.value.length}${t('datePickerSelected')}` : chooseYear.value ?? ''
     })
 
     const getMonthTitle = computed<string>(() => {
@@ -203,9 +203,9 @@ export default defineComponent({
 
       let monthName = ''
       if (chooseMonth.value) {
-        monthName = pack.value.datePickerMonthDict?.[chooseMonth.value].name ?? ''
+        monthName = t('datePickerMonthDict')?.[chooseMonth.value].name ?? ''
       }
-      return multiple ? `${chooseMonths.value.length}${pack.value.datePickerSelected}` : monthName
+      return multiple ? `${chooseMonths.value.length}${t('datePickerSelected')}` : monthName
     })
 
     const getDateTitle = computed<string>(() => {
@@ -217,17 +217,17 @@ export default defineComponent({
         return formatRangeDays.length ? `${formatRangeDays[0]} ~ ${formatRangeDays[1]}` : ''
       }
 
-      if (multiple) return `${chooseDays.value.length}${pack.value.datePickerSelected}`
+      if (multiple) return `${chooseDays.value.length}${t('datePickerSelected')}`
 
       if (!chooseYear.value || !chooseMonth.value || !chooseDay.value) return ''
       const weekIndex = dayjs(`${chooseYear.value}-${chooseMonth.value}-${chooseDay.value}`).day()
       const week: Week = WEEK_HEADER.find((value) => value === `${weekIndex}`) as Week
-      const weekName = pack.value.datePickerWeekDict?.[week].name ?? ''
+      const weekName = t('datePickerWeekDict')?.[week].name ?? ''
 
-      const monthName = pack.value.datePickerMonthDict?.[chooseMonth.value].name ?? ''
+      const monthName = t('datePickerMonthDict')?.[chooseMonth.value].name ?? ''
       const showDay = padStart(chooseDay.value, 2, '0')
 
-      if (pack.value.lang === 'zh-CN') return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
+      if (t('lang') === 'zh-CN') return `${chooseMonth.value}-${showDay} ${weekName.slice(0, 3)}`
       return `${weekName.slice(0, 3)}, ${monthName.slice(0, 3)} ${chooseDay.value}`
     })
     const getPanelType = computed<string>(() => {
@@ -555,7 +555,7 @@ export default defineComponent({
       componentProps,
       slotProps,
       formatRange,
-      pack,
+      t,
       n,
       classes,
       clickEl,

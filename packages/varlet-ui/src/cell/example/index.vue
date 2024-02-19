@@ -1,7 +1,6 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { t, use } from './locale'
 import { ref } from 'vue'
 
 const items = ref([
@@ -27,39 +26,39 @@ const handleClick = (item) => {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <var-cell> {{ pack.content }} </var-cell>
-  <var-cell> {{ pack.content }} </var-cell>
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-cell> {{ t('content') }} </var-cell>
+  <var-cell> {{ t('content') }} </var-cell>
 
-  <app-type>{{ pack.showIcon }}</app-type>
-  <var-cell icon="fire" :title="pack.content">
+  <app-type>{{ t('showIcon') }}</app-type>
+  <var-cell icon="fire" :title="t('content')">
     <template #extra>
       <var-icon name="information" />
     </template>
   </var-cell>
-  <var-cell icon="fire" :title="pack.content">
+  <var-cell icon="fire" :title="t('content')">
     <template #extra>
       <var-icon name="information" />
     </template>
   </var-cell>
 
-  <app-type>{{ pack.showDesc }}</app-type>
-  <var-cell icon="fire" :title="pack.content" :description="pack.description">
+  <app-type>{{ t('showDesc') }}</app-type>
+  <var-cell icon="fire" :title="t('content')" :description="t('description')">
     <template #extra>
       <var-icon name="information" />
     </template>
   </var-cell>
-  <var-cell :title="pack.content" :description="pack.description" />
+  <var-cell :title="t('content')" :description="t('description')" />
 
-  <app-type>{{ pack.showBorder }}</app-type>
-  <var-cell border> {{ pack.content }} </var-cell>
-  <var-cell border> {{ pack.content }} </var-cell>
+  <app-type>{{ t('showBorder') }}</app-type>
+  <var-cell border> {{ t('content') }} </var-cell>
+  <var-cell border> {{ t('content') }} </var-cell>
 
-  <app-type>{{ pack.list }}</app-type>
+  <app-type>{{ t('list') }}</app-type>
   <var-paper :elevation="2">
     <var-cell
       v-for="(item, index) in items"

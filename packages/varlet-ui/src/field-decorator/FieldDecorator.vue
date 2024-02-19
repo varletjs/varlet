@@ -16,13 +16,16 @@
         color,
         cursor,
         overflow: isFloating ? 'visible' : 'hidden',
+        '--field-decorator-middle-offset-left': middleOffsetLeft,
+        '--field-decorator-middle-offset-width': middleOffsetWidth,
+        '--field-decorator-middle-offset-height': middleOffsetHeight,
       }"
     >
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <slot name="prepend-icon" />
       </div>
 
-      <div :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
+      <div ref="middleEl" :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
         <slot />
       </div>
 
@@ -33,8 +36,10 @@
             n('placeholder'),
             n('$--ellipsis'),
             [isFocus, n('--focus')],
+            [hintCenter, n('--hint-center')],
             [formDisabled || disabled, n('--disabled')],
             [errorMessage, n('--error')],
+            [transitionDisabled, n('--transition-disabled')],
             computePlaceholderState()
           )
         "
@@ -106,7 +111,7 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, onUpdated, computed } from 'vue'
+import { defineComponent, ref, computed, nextTick, onUpdated } from 'vue'
 import { props } from './props'
 import { isEmpty, getStyle, call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
@@ -118,16 +123,30 @@ export default defineComponent({
   name,
   components: { VarIcon },
   props,
-  setup(props, { slots }) {
+  setup(props) {
     const placeholderTextEl = ref<HTMLElement | null>(null)
+    const middleEl = ref<HTMLElement | null>(null)
     const legendWidth = ref('')
-    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus || slots['prepend-icon']))
+    const middleOffsetLeft = ref('0px')
+    const middleOffsetWidth = ref('0px')
+    const middleOffsetHeight = ref('0px')
+    const transitionDisabled = ref(true)
+    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus))
+
     const color = computed<string | undefined>(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
 
     onWindowResize(resize)
-    onSmartMounted(resize)
+
+    onSmartMounted(() => {
+      resize()
+
+      nextTick().then(() => {
+        transitionDisabled.value = false
+      })
+    })
+
     onUpdated(resize)
 
     function computePlaceholderState() {
@@ -142,18 +161,6 @@ export default defineComponent({
       }
     }
 
-    function resize() {
-      const { size, hint, variant, placeholder } = props
-      if (!placeholder || !hint || variant !== 'outlined') {
-        legendWidth.value = ''
-        return
-      }
-
-      const placeholderTextStyle = getStyle(placeholderTextEl.value!)
-      const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-      legendWidth.value = `calc(${placeholderTextStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
-    }
-
     function handleClear(e: Event) {
       call(props.onClear, e)
     }
@@ -162,11 +169,29 @@ export default defineComponent({
       call(props.onClick, e)
     }
 
+    function resize() {
+      middleOffsetLeft.value = `${middleEl.value!.offsetLeft}px`
+      middleOffsetWidth.value = `${middleEl.value!.offsetWidth}px`
+      middleOffsetHeight.value = `${middleEl.value!.offsetHeight}px`
+
+      if (props.variant === 'outlined' && placeholderTextEl.value) {
+        const placeholderTextStyle = getStyle(placeholderTextEl.value)
+        const placeholderSpace = `var(--field-decorator-outlined-${props.size}-placeholder-space)`
+        legendWidth.value = `calc(${placeholderTextStyle.width} * 0.75 + ${placeholderSpace} * 2)`
+      }
+    }
+
     return {
       placeholderTextEl,
+      middleEl,
+      middleOffsetLeft,
+      middleOffsetWidth,
+      middleOffsetHeight,
       color,
       legendWidth,
       isFloating,
+      transitionDisabled,
+      resize,
       computePlaceholderState,
       n,
       classes,

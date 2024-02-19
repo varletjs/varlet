@@ -1,10 +1,10 @@
 <script setup>
 import { Themes } from '@varlet/ui'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
+import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { use } from './locale'
 
 watchLang(use, 'pc')
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>

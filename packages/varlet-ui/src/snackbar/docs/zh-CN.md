@@ -36,7 +36,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" size="small" @click="show = !show">关闭</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = !show">关闭</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">垂直排列</var-button>
@@ -58,7 +58,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" size="small" @click="show = false">关闭</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = false">关闭</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">底部显示</var-button>

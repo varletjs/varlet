@@ -67,6 +67,8 @@ export interface StyleVars {
   backTopBottom?: string
   '--back-top-button-size'?: string
   backTopButtonSize?: string
+  '--back-top-button-border-radius'?: string
+  backTopButtonBorderRadius?: string
   '--badge-content-padding'?: string
   badgeContentPadding?: string
   '--badge-content-border'?: string
@@ -89,6 +91,18 @@ export interface StyleVars {
   badgeWarningColor?: string
   '--badge-info-color'?: string
   badgeInfoColor?: string
+  '--badge-default-text-color'?: string
+  badgeDefaultTextColor?: string
+  '--badge-primary-text-color'?: string
+  badgePrimaryTextColor?: string
+  '--badge-danger-text-color'?: string
+  badgeDangerTextColor?: string
+  '--badge-success-text-color'?: string
+  badgeSuccessTextColor?: string
+  '--badge-warning-text-color'?: string
+  badgeWarningTextColor?: string
+  '--badge-info-text-color'?: string
+  badgeInfoTextColor?: string
   '--badge-dot-width'?: string
   badgeDotWidth?: string
   '--badge-dot-height'?: string
@@ -117,6 +131,8 @@ export interface StyleVars {
   bottomNavigationItemIconSize?: string
   '--bottom-navigation-item-icon-margin-bottom'?: string
   bottomNavigationItemIconMarginBottom?: string
+  '--bottom-navigation-fab-border-radius'?: string
+  bottomNavigationFabBorderRadius?: string
   '--breadcrumb-active-color'?: string
   breadcrumbActiveColor?: string
   '--breadcrumb-inactive-color'?: string
@@ -125,10 +141,20 @@ export interface StyleVars {
   breadcrumbSeparatorMargin?: string
   '--breadcrumb-separator-font-size'?: string
   breadcrumbSeparatorFontSize?: string
-  '--button-default-color'?: string
-  buttonDefaultColor?: string
   '--button-default-text-color'?: string
   buttonDefaultTextColor?: string
+  '--button-primary-text-color'?: string
+  buttonPrimaryTextColor?: string
+  '--button-danger-text-color'?: string
+  buttonDangerTextColor?: string
+  '--button-success-text-color'?: string
+  buttonSuccessTextColor?: string
+  '--button-warning-text-color'?: string
+  buttonWarningTextColor?: string
+  '--button-info-text-color'?: string
+  buttonInfoTextColor?: string
+  '--button-default-color'?: string
+  buttonDefaultColor?: string
   '--button-primary-color'?: string
   buttonPrimaryColor?: string
   '--button-danger-color'?: string
@@ -139,6 +165,30 @@ export interface StyleVars {
   buttonWarningColor?: string
   '--button-info-color'?: string
   buttonInfoColor?: string
+  '--button-default-icon-color'?: string
+  buttonDefaultIconColor?: string
+  '--button-primary-icon-color'?: string
+  buttonPrimaryIconColor?: string
+  '--button-danger-icon-color'?: string
+  buttonDangerIconColor?: string
+  '--button-success-icon-color'?: string
+  buttonSuccessIconColor?: string
+  '--button-warning-icon-color'?: string
+  buttonWarningIconColor?: string
+  '--button-info-icon-color'?: string
+  buttonInfoIconColor?: string
+  '--button-default-icon-container-color'?: string
+  buttonDefaultIconContainerColor?: string
+  '--button-primary-icon-container-color'?: string
+  buttonPrimaryIconContainerColor?: string
+  '--button-danger-icon-container-color'?: string
+  buttonDangerIconContainerColor?: string
+  '--button-success-icon-container-color'?: string
+  buttonSuccessIconContainerColor?: string
+  '--button-warning-icon-container-color'?: string
+  buttonWarningIconContainerColor?: string
+  '--button-info-icon-container-color'?: string
+  buttonInfoIconContainerColor?: string
   '--button-disabled-color'?: string
   buttonDisabledColor?: string
   '--button-disabled-text-color'?: string
@@ -241,6 +291,8 @@ export interface StyleVars {
   cardCloseButtonPrimaryColor?: string
   '--card-close-button-text-color'?: string
   cardCloseButtonTextColor?: string
+  '--card-close-button-border-radius'?: string
+  cardCloseButtonBorderRadius?: string
   '--cell-color'?: string
   cellColor?: string
   '--cell-font-size'?: string
@@ -279,6 +331,16 @@ export interface StyleVars {
   checkboxIconSize?: string
   '--chip-default-text-color'?: string
   chipDefaultTextColor?: string
+  '--chip-primary-text-color'?: string
+  chipPrimaryTextColor?: string
+  '--chip-danger-text-color'?: string
+  chipDangerTextColor?: string
+  '--chip-success-text-color'?: string
+  chipSuccessTextColor?: string
+  '--chip-warning-text-color'?: string
+  chipWarningTextColor?: string
+  '--chip-info-text-color'?: string
+  chipInfoTextColor?: string
   '--chip-default-color'?: string
   chipDefaultColor?: string
   '--chip-primary-color'?: string
@@ -291,30 +353,40 @@ export interface StyleVars {
   chipWarningColor?: string
   '--chip-info-color'?: string
   chipInfoColor?: string
+  '--chip-primary-plain-color'?: string
+  chipPrimaryPlainColor?: string
+  '--chip-danger-plain-color'?: string
+  chipDangerPlainColor?: string
+  '--chip-success-plain-color'?: string
+  chipSuccessPlainColor?: string
+  '--chip-warning-plain-color'?: string
+  chipWarningPlainColor?: string
+  '--chip-info-plain-color'?: string
+  chipInfoPlainColor?: string
   '--chip-border-radius'?: string
   chipBorderRadius?: string
-  '--chip-mini-height'?: string
-  chipMiniHeight?: string
-  '--chip-small-height'?: string
-  chipSmallHeight?: string
   '--chip-normal-height'?: string
   chipNormalHeight?: string
   '--chip-large-height'?: string
   chipLargeHeight?: string
+  '--chip-small-height'?: string
+  chipSmallHeight?: string
+  '--chip-mini-height'?: string
+  chipMiniHeight?: string
   '--chip-round-radius'?: string
   chipRoundRadius?: string
-  '--chip-mini-padding'?: string
-  chipMiniPadding?: string
-  '--chip-small-padding'?: string
-  chipSmallPadding?: string
   '--chip-normal-padding'?: string
   chipNormalPadding?: string
   '--chip-large-padding'?: string
   chipLargePadding?: string
-  '--chip-text-large-margin'?: string
-  chipTextLargeMargin?: string
+  '--chip-small-padding'?: string
+  chipSmallPadding?: string
+  '--chip-mini-padding'?: string
+  chipMiniPadding?: string
   '--chip-text-normal-margin'?: string
   chipTextNormalMargin?: string
+  '--chip-text-large-margin'?: string
+  chipTextLargeMargin?: string
   '--chip-text-small-margin'?: string
   chipTextSmallMargin?: string
   '--chip-text-mini-margin'?: string
@@ -383,6 +455,8 @@ export interface StyleVars {
   datePickerMinWidth?: string
   '--date-picker-main-color'?: string
   datePickerMainColor?: string
+  '--date-picker-title-hint-color'?: string
+  datePickerTitleHintColor?: string
   '--date-picker-title-hint-font-size'?: string
   datePickerTitleHintFontSize?: string
   '--date-picker-title-height'?: string
@@ -407,16 +481,20 @@ export interface StyleVars {
   datePickerTitleDateFontWeight?: string
   '--date-picker-title-date-range-font-size'?: string
   datePickerTitleDateRangeFontSize?: string
+  '--date-picker-body-padding'?: string
+  datePickerBodyPadding?: string
   '--date-picker-body-background-color'?: string
   datePickerBodyBackgroundColor?: string
   '--date-picker-body-height'?: string
   datePickerBodyHeight?: string
-  '--picker-header-padding'?: string
-  pickerHeaderPadding?: string
-  '--picker-actions-padding'?: string
-  pickerActionsPadding?: string
-  '--picker-header-color'?: string
-  pickerHeaderColor?: string
+  '--date-picker-header-arrow-filter'?: string
+  datePickerHeaderArrowFilter?: string
+  '--date-picker-header-padding'?: string
+  datePickerHeaderPadding?: string
+  '--date-picker-actions-padding'?: string
+  datePickerActionsPadding?: string
+  '--date-picker-header-color'?: string
+  datePickerHeaderColor?: string
   '--month-picker-padding'?: string
   monthPickerPadding?: string
   '--month-picker-item-width'?: string
@@ -499,6 +577,8 @@ export interface StyleVars {
   fabRight?: string
   '--fab-trigger-size'?: string
   fabTriggerSize?: string
+  '--fab-trigger-border-radius'?: string
+  fabTriggerBorderRadius?: string
   '--fab-trigger-inactive-icon-size'?: string
   fabTriggerInactiveIconSize?: string
   '--fab-trigger-active-icon-size'?: string
@@ -507,6 +587,10 @@ export interface StyleVars {
   fabActionsPadding?: string
   '--fab-action-margin'?: string
   fabActionMargin?: string
+  '--fab-action-size'?: string
+  fabActionSize?: string
+  '--fab-action-border-radius'?: string
+  fabActionBorderRadius?: string
   '--fab-transition-standard-easing'?: string
   fabTransitionStandardEasing?: string
   '--floating-panel-z-index'?: string
@@ -583,8 +667,6 @@ export interface StyleVars {
   fieldDecoratorTextColor?: string
   '--field-decorator-error-color'?: string
   fieldDecoratorErrorColor?: string
-  '--field-decorator-placeholder-color'?: string
-  fieldDecoratorPlaceholderColor?: string
   '--field-decorator-blur-color'?: string
   fieldDecoratorBlurColor?: string
   '--field-decorator-focus-color'?: string
@@ -601,54 +683,54 @@ export interface StyleVars {
   fieldDecoratorLineBorderRadius?: string
   '--field-decorator-disabled-color'?: string
   fieldDecoratorDisabledColor?: string
-  '--field-decorator-standard-normal-padding-top'?: string
-  fieldDecoratorStandardNormalPaddingTop?: string
-  '--field-decorator-standard-normal-padding-bottom'?: string
-  fieldDecoratorStandardNormalPaddingBottom?: string
-  '--field-decorator-standard-normal-icon-padding'?: string
-  fieldDecoratorStandardNormalIconPadding?: string
-  '--field-decorator-standard-normal-non-hint-padding-top'?: string
-  fieldDecoratorStandardNormalNonHintPaddingTop?: string
-  '--field-decorator-standard-normal-placeholder-translate-y'?: string
-  fieldDecoratorStandardNormalPlaceholderTranslateY?: string
-  '--field-decorator-standard-small-padding-top'?: string
-  fieldDecoratorStandardSmallPaddingTop?: string
-  '--field-decorator-standard-small-padding-bottom'?: string
-  fieldDecoratorStandardSmallPaddingBottom?: string
-  '--field-decorator-standard-small-icon-padding'?: string
-  fieldDecoratorStandardSmallIconPadding?: string
-  '--field-decorator-standard-small-non-hint-padding-top'?: string
-  fieldDecoratorStandardSmallNonHintPaddingTop?: string
-  '--field-decorator-standard-small-placeholder-translate-y'?: string
-  fieldDecoratorStandardSmallPlaceholderTranslateY?: string
-  '--field-decorator-outlined-normal-padding-top'?: string
-  fieldDecoratorOutlinedNormalPaddingTop?: string
-  '--field-decorator-outlined-normal-padding-bottom'?: string
-  fieldDecoratorOutlinedNormalPaddingBottom?: string
+  '--field-decorator-standard-normal-margin-top'?: string
+  fieldDecoratorStandardNormalMarginTop?: string
+  '--field-decorator-standard-normal-margin-bottom'?: string
+  fieldDecoratorStandardNormalMarginBottom?: string
+  '--field-decorator-standard-normal-icon-margin-top'?: string
+  fieldDecoratorStandardNormalIconMarginTop?: string
+  '--field-decorator-standard-normal-icon-margin-bottom'?: string
+  fieldDecoratorStandardNormalIconMarginBottom?: string
+  '--field-decorator-standard-normal-non-hint-margin-top'?: string
+  fieldDecoratorStandardNormalNonHintMarginTop?: string
+  '--field-decorator-standard-small-margin-top'?: string
+  fieldDecoratorStandardSmallMarginTop?: string
+  '--field-decorator-standard-small-margin-bottom'?: string
+  fieldDecoratorStandardSmallMarginBottom?: string
+  '--field-decorator-standard-small-icon-margin-top'?: string
+  fieldDecoratorStandardSmallIconMarginTop?: string
+  '--field-decorator-standard-small-icon-margin-bottom'?: string
+  fieldDecoratorStandardSmallIconMarginBottom?: string
+  '--field-decorator-standard-small-non-hint-margin-top'?: string
+  fieldDecoratorStandardSmallNonHintMarginTop?: string
+  '--field-decorator-outlined-normal-margin-top'?: string
+  fieldDecoratorOutlinedNormalMarginTop?: string
+  '--field-decorator-outlined-normal-margin-bottom'?: string
+  fieldDecoratorOutlinedNormalMarginBottom?: string
   '--field-decorator-outlined-normal-padding-left'?: string
   fieldDecoratorOutlinedNormalPaddingLeft?: string
   '--field-decorator-outlined-normal-padding-right'?: string
   fieldDecoratorOutlinedNormalPaddingRight?: string
   '--field-decorator-outlined-normal-placeholder-space'?: string
   fieldDecoratorOutlinedNormalPlaceholderSpace?: string
-  '--field-decorator-outlined-normal-icon-padding'?: string
-  fieldDecoratorOutlinedNormalIconPadding?: string
-  '--field-decorator-outlined-normal-placeholder-translate-y'?: string
-  fieldDecoratorOutlinedNormalPlaceholderTranslateY?: string
-  '--field-decorator-outlined-small-padding-top'?: string
-  fieldDecoratorOutlinedSmallPaddingTop?: string
-  '--field-decorator-outlined-small-padding-bottom'?: string
-  fieldDecoratorOutlinedSmallPaddingBottom?: string
+  '--field-decorator-outlined-normal-icon-margin-top'?: string
+  fieldDecoratorOutlinedNormalIconMarginTop?: string
+  '--field-decorator-outlined-normal-icon-margin-bottom'?: string
+  fieldDecoratorOutlinedNormalIconMarginBottom?: string
+  '--field-decorator-outlined-small-margin-top'?: string
+  fieldDecoratorOutlinedSmallMarginTop?: string
+  '--field-decorator-outlined-small-margin-bottom'?: string
+  fieldDecoratorOutlinedSmallMarginBottom?: string
   '--field-decorator-outlined-small-padding-left'?: string
   fieldDecoratorOutlinedSmallPaddingLeft?: string
   '--field-decorator-outlined-small-padding-right'?: string
   fieldDecoratorOutlinedSmallPaddingRight?: string
   '--field-decorator-outlined-small-placeholder-space'?: string
   fieldDecoratorOutlinedSmallPlaceholderSpace?: string
-  '--field-decorator-outlined-small-icon-padding'?: string
-  fieldDecoratorOutlinedSmallIconPadding?: string
-  '--field-decorator-outlined-small-placeholder-translate-y'?: string
-  fieldDecoratorOutlinedSmallPlaceholderTranslateY?: string
+  '--field-decorator-outlined-small-icon-margin-top'?: string
+  fieldDecoratorOutlinedSmallIconMarginTop?: string
+  '--field-decorator-outlined-small-icon-margin-bottom'?: string
+  fieldDecoratorOutlinedSmallIconMarginBottom?: string
   '--input-input-height'?: string
   inputInputHeight?: string
   '--input-input-font-size'?: string
@@ -763,12 +845,6 @@ export interface StyleVars {
   paginationItemMargin?: string
   '--pagination-item-border-radius'?: string
   paginationItemBorderRadius?: string
-  '--pagination-list-bg-color'?: string
-  paginationListBgColor?: string
-  '--pagination-list-active-bg-color'?: string
-  paginationListActiveBgColor?: string
-  '--pagination-list-active-color'?: string
-  paginationListActiveColor?: string
   '--pagination-input-width'?: string
   paginationInputWidth?: string
   '--pagination-disabled-color'?: string
@@ -777,6 +853,8 @@ export interface StyleVars {
   paginationBgDisabledColor?: string
   '--pagination-size-line-height'?: string
   paginationSizeLineHeight?: string
+  '--pagination-size-padding'?: string
+  paginationSizePadding?: string
   '--paper-background'?: string
   paperBackground?: string
   '--picker-background'?: string
@@ -807,8 +885,6 @@ export interface StyleVars {
   popupContentBackgroundColor?: string
   '--progress-font-size'?: string
   progressFontSize?: string
-  '--progress-ripple-color'?: string
-  progressRippleColor?: string
   '--progress-track-color'?: string
   progressTrackColor?: string
   '--progress-label-color'?: string
@@ -1071,10 +1147,6 @@ export interface StyleVars {
   stepLineBackground?: string
   '--step-line-gap'?: string
   stepLineGap?: string
-  '--step-min-size'?: string
-  stepMinSize?: string
-  '--step-line-size'?: string
-  stepLineSize?: string
   '--step-vertical-tag-margin'?: string
   stepVerticalTagMargin?: string
   '--step-vertical-min-height'?: string
@@ -1115,6 +1187,18 @@ export interface StyleVars {
   colorTextDisabled?: string
   '--opacity-disabled'?: string
   opacityDisabled?: string
+  '--color-on-primary'?: string
+  colorOnPrimary?: string
+  '--color-on-info'?: string
+  colorOnInfo?: string
+  '--color-on-success'?: string
+  colorOnSuccess?: string
+  '--color-on-warning'?: string
+  colorOnWarning?: string
+  '--color-on-danger'?: string
+  colorOnDanger?: string
+  '--color-outline'?: string
+  colorOutline?: string
   '--cubic-bezier'?: string
   cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string
@@ -1231,20 +1315,40 @@ export interface StyleVars {
   timePickerTitleHeight?: string
   '--time-picker-title-padding'?: string
   timePickerTitlePadding?: string
-  '--time-picker-title-color'?: string
-  timePickerTitleColor?: string
   '--time-picker-title-margin-bottom'?: string
   timePickerTitleMarginBottom?: string
-  '--time-picker-title-hint-font-size'?: string
-  timePickerTitleHintFontSize?: string
+  '--time-picker-title-color'?: string
+  timePickerTitleColor?: string
   '--time-picker-title-background'?: string
   timePickerTitleBackground?: string
+  '--time-picker-title-hint-color'?: string
+  timePickerTitleHintColor?: string
+  '--time-picker-title-hint-font-size'?: string
+  timePickerTitleHintFontSize?: string
+  '--time-picker-title-inactive-opacity'?: string
+  timePickerTitleInactiveOpacity?: string
   '--time-picker-title-time-font-size'?: string
   timePickerTitleTimeFontSize?: string
   '--time-picker-title-time-margin'?: string
   timePickerTitleTimeMargin?: string
+  '--time-picker-title-time-border-radius'?: string
+  timePickerTitleTimeBorderRadius?: string
+  '--time-picker-title-time-padding'?: string
+  timePickerTitleTimePadding?: string
+  '--time-picker-title-time-background'?: string
+  timePickerTitleTimeBackground?: string
+  '--time-picker-title-time-active-background'?: string
+  timePickerTitleTimeActiveBackground?: string
+  '--time-picker-title-ampm-button-active-background'?: string
+  timePickerTitleAmpmButtonActiveBackground?: string
   '--time-picker-title-ampm-margin-left'?: string
   timePickerTitleAmpmMarginLeft?: string
+  '--time-picker-title-ampm-border-radius'?: string
+  timePickerTitleAmpmBorderRadius?: string
+  '--time-picker-title-ampm-border'?: string
+  timePickerTitleAmpmBorder?: string
+  '--time-picker-title-ampm-button-padding'?: string
+  timePickerTitleAmpmButtonPadding?: string
   '--time-picker-clock-left'?: string
   timePickerClockLeft?: string
   '--time-picker-clock-right'?: string
@@ -1291,6 +1395,8 @@ export interface StyleVars {
   timePickerClockItemActiveColor?: string
   '--time-picker-clock-item-disable-color'?: string
   timePickerClockItemDisableColor?: string
+  '--time-picker-clock-item-disable-background'?: string
+  timePickerClockItemDisableBackground?: string
   '--time-picker-clock-item-text-color'?: string
   timePickerClockItemTextColor?: string
   '--time-picker-inner-left'?: string
@@ -1315,10 +1421,10 @@ export interface StyleVars {
   tooltipFontSize?: string
   '--tooltip-padding'?: string
   tooltipPadding?: string
-  '--tooltip-default-color'?: string
-  tooltipDefaultColor?: string
   '--tooltip-offset'?: string
   tooltipOffset?: string
+  '--tooltip-default-color'?: string
+  tooltipDefaultColor?: string
   '--tooltip-primary-color'?: string
   tooltipPrimaryColor?: string
   '--tooltip-info-color'?: string
@@ -1329,6 +1435,18 @@ export interface StyleVars {
   tooltipWarningColor?: string
   '--tooltip-danger-color'?: string
   tooltipDangerColor?: string
+  '--tooltip-default-text-color'?: string
+  tooltipDefaultTextColor?: string
+  '--tooltip-primary-text-color'?: string
+  tooltipPrimaryTextColor?: string
+  '--tooltip-info-text-color'?: string
+  tooltipInfoTextColor?: string
+  '--tooltip-success-text-color'?: string
+  tooltipSuccessTextColor?: string
+  '--tooltip-warning-text-color'?: string
+  tooltipWarningTextColor?: string
+  '--tooltip-danger-text-color'?: string
+  tooltipDangerTextColor?: string
   '--uploader-action-background'?: string
   uploaderActionBackground?: string
   '--uploader-action-icon-color'?: string
@@ -1349,6 +1467,8 @@ export interface StyleVars {
   uploaderFileNameFontSize?: string
   '--uploader-file-name-padding'?: string
   uploaderFileNamePadding?: string
+  '--uploader-file-border-radius'?: string
+  uploaderFileBorderRadius?: string
   '--uploader-file-text-align'?: string
   uploaderFileTextAlign?: string
   '--uploader-file-close-background'?: string

@@ -1,13 +1,14 @@
 <script setup>
 import { Snackbar } from '@varlet/ui'
-import { AppType, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 watchLang(use)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-swipe class="swipe">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -20,7 +21,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.forbidLoop }}</app-type>
+  <app-type>{{ t('forbidLoop') }}</app-type>
   <var-swipe class="swipe" :loop="false">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -33,7 +34,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.autoplay }}</app-type>
+  <app-type>{{ t('autoplay') }}</app-type>
   <var-swipe class="swipe" :autoplay="2000">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -46,7 +47,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.vertical }}</app-type>
+  <app-type>{{ t('vertical') }}</app-type>
   <var-swipe class="swipe" vertical>
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -59,7 +60,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.navigation }}</app-type>
+  <app-type>{{ t('navigation') }}</app-type>
   <var-swipe class="swipe" navigation>
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -84,7 +85,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.handleChange }}</app-type>
+  <app-type>{{ t('handleChange') }}</app-type>
   <var-swipe class="swipe" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
@@ -97,7 +98,7 @@ watchLang(use)
     </var-swipe-item>
   </var-swipe>
 
-  <app-type>{{ pack.customIndicator }}</app-type>
+  <app-type>{{ t('customIndicator') }}</app-type>
   <var-swipe class="swipe-example">
     <var-swipe-item>
       <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />

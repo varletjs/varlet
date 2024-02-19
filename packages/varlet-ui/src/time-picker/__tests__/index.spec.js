@@ -16,7 +16,7 @@ test('test timePicker style and format', async () => {
       :format="format"
       v-model="time"
       elevation
-      header-color="purple"
+      title-color="purple"
       color="#7bb872"
     />
   `

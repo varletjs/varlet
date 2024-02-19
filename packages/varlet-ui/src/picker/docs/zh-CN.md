@@ -4,10 +4,6 @@
 
 提供了函数和组件两种调用方式。同时支持级联模式，可以处理多级联动。
 
-### 注意
-
-为了使 api 更加友好，该组件重构于 `2.17.0`，但引入了破坏性变更，老版本文档请 [查看这里](https://github.com/varletjs/varlet/blob/v2.16.7/packages/varlet-ui/src/picker/docs/zh-CN.md)。
-
 ## 函数调用
 
 ### 单列选择
@@ -527,7 +523,7 @@ function handleChange(values, indexes) {
 | `--picker-toolbar-height` | `44px` |
 | `--picker-confirm-button-text-color` | `var(--color-primary)` |
 | `--picker-cancel-button-text-color` | `#888` |
-| `--picker-picked-border` | `1px solid rgba(0, 0, 0, 0.12)` |
+| `--picker-picked-border` | `1px solid var(--color-outline)` |
 | `--picker-title-font-size` | `var(--font-size-lg)` |
 | `--picker-title-text-color` | `#555` |
 | `--picker-option-font-size` | `var(--font-size-lg)` |

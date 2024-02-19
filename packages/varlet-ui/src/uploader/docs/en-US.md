@@ -504,6 +504,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--uploader-file-name-color`              | `#888`                                                                                       |
 | `--uploader-file-name-font-size`          | `12px`                                                                                       |
 | `--uploader-file-name-padding`            | `10px`                                                                                       |
+| `--uploader-file-border-radius`            | `0`                                                                                       |
 | `--uploader-file-text-align`              | `center`                                                                                     |
 | `--uploader-file-close-background`        | `rgba(0, 0, 0, 0.3)`                                                                         |
 | `--uploader-file-close-size`              | `24px`                                                                                       |

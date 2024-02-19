@@ -27,20 +27,6 @@ Display content and actions about a single subject.
 </template>
 ```
 
-### Outline
-
-```html
-<template>
-  <var-card
-    outline
-    :elevation="0"
-    title="Dangerous"
-    subtitle="The girl was dangerous"
-    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-  />
-</template>
-```
-
 ### Show Image
 
 ```html
@@ -66,8 +52,8 @@ Display content and actions about a single subject.
   >
     <template #extra>
       <var-space>
-        <var-button text type="warning">ACTION 1</var-button>
-        <var-button text type="warning">ACTION 2</var-button>
+        <var-button type="primary">ACTION 1</var-button>
+        <var-button type="primary">ACTION 2</var-button>
       </var-space>
     </template>
   </var-card>
@@ -148,6 +134,20 @@ const floating = ref(false)
 </style>
 ```
 
+### Outline
+
+```html
+<template>
+  <var-card
+    outline
+    :elevation="0"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
 ## API
 
 ### Props
@@ -193,10 +193,10 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|
-| `--card-background`                 | `#fff`                |
+| `--card-background`                 | `var(--color-surface-container-highest)`                |
 | `--card-padding`                    | `0px 0 15px 0`        |
 | `--card-border-radius`              | `4px`                 |
-| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
+| `--card-outline-color`              | `var(--color-outline)` |
 | `--card-image-width`                | `100%`                |
 | `--card-row-image-width`            | `140px`               |
 | `--card-image-height`               | `200px`               |
@@ -228,3 +228,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--card-close-button-size`          | `56px`                |
 | `--card-close-button-primary-color` | `#212121`             |
 | `--card-close-button-text-color` | `#fff`            |
+| `--card-close-button-border-radius` | `50%` |

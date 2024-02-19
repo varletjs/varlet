@@ -42,15 +42,30 @@
       <a class="varlet-site-header__link" target="_blank" :href="github" v-ripple v-if="github">
         <var-icon name="github" :size="28"/>
       </a>
-      <div class="varlet-site-header__theme" v-ripple v-if="darkMode" @click="toggleTheme">
-        <var-icon
-          size="26px"
-          :name="currentTheme === 'lightTheme' ? 'white-balance-sunny' : 'weather-night'"
-          :style="{
-            marginBottom: currentTheme === 'darkTheme' && '2px',
-            marginTop: currentTheme === 'lightTheme' && '2px',
-          }"
-        />
+      <div
+        class="varlet-site-header__theme"
+        @mouseenter="isOpenThemeMenu = true"
+        @mouseleave="isOpenThemeMenu = false"
+        v-if="themes.length > 1"
+      >
+        <var-icon name="palette" :size="28" />
+        <var-icon name="chevron-down"/>
+        <transition name="fade">
+          <div
+            class="varlet-site-header__animation-list var-elevation--5"
+            v-show="isOpenThemeMenu"
+            :style="{ pointerEvents: isOpenThemeMenu ? 'auto' : 'none' }"
+          >
+            <var-cell
+              v-for="t in themes"
+              v-ripple
+              :key="t.value"
+              :class="{ 'varlet-site-header__animation-list--active': currentTheme === t.value }"
+              @click="() => toggleTheme(t.value as Theme)"
+            >{{ t[language as keyof typeof t] }}
+            </var-cell>
+          </div>
+        </transition>
       </div>
       <div
         class="varlet-site-header__language"
@@ -86,8 +101,7 @@
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
 import { get } from 'lodash-es'
-import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme } from '@varlet/cli/client'
-import { setTheme } from '../../utils'
+import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme, setTheme } from '@varlet/cli/client'
 import { removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
 import type { Ref, ComputedRef } from 'vue'
@@ -109,12 +123,14 @@ export default defineComponent({
     const versionItems: Ref<Array<Record<string, any>>> = ref((versions ?? []).find((i: any) => window.location.host.includes(i.name))?.items ?? versions?.[0]?.items ?? [])
     const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
+    const themes: Ref<Record<string, any>> = ref(get(config, 'pc.header.themes'))
     const changelog: Ref<string> = ref(get(config, 'pc.header.changelog'))
     const redirect = get(config, 'pc.redirect')
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentTheme = ref(getBrowserTheme())
 
     const isOpenLanguageMenu: Ref<boolean> = ref(false)
+    const isOpenThemeMenu: Ref<boolean> = ref(false)
     const isOpenVersionsMenu: Ref<boolean> = ref(false)
     const router = useRouter()
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
@@ -132,17 +148,18 @@ export default defineComponent({
 
     const setCurrentTheme = (theme: Theme) => {
       currentTheme.value = theme
-      setTheme(config, currentTheme.value)
+      setTheme(currentTheme.value)
       window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
     }
 
     const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: currentTheme.value })
 
-    const toggleTheme = () => {
-      setCurrentTheme(currentTheme.value === 'darkTheme' ? 'lightTheme' : 'darkTheme')
+    const toggleTheme = (value: Theme) => {
+      setCurrentTheme(value)
 
       window.postMessage(getThemeMessage(), '*')
       notifyThemeChange('mobile')
+      isOpenThemeMenu.value = false
     }
 
     const notifyThemeChange = (target: 'mobile' | 'window') => {
@@ -169,7 +186,7 @@ export default defineComponent({
       }
     })
 
-    setTheme(config, currentTheme.value)
+    setTheme(currentTheme.value)
     notifyThemeChange('window')
 
     return {
@@ -180,12 +197,14 @@ export default defineComponent({
       languages,
       isShowVersion,
       versionItems,
+      themes,
       nonEmptyLanguages,
       playground,
       changelog,
       github,
       isOpenLanguageMenu,
       isOpenVersionsMenu,
+      isOpenThemeMenu,
       darkMode,
       currentTheme,
       open,
@@ -244,21 +263,6 @@ export default defineComponent({
     }
   }
 
-  &__language {
-    border-radius: 3px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.25s;
-
-    &:hover {
-      background: var(--site-config-color-nav-button-hover-background);
-    }
-  }
-
   &__versions {
     border-radius: 3px;
     height: 40px;
@@ -298,16 +302,31 @@ export default defineComponent({
     }
   }
 
-  &__theme {
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
+  &__language {
+    border-radius: 3px;
+    height: 40px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 10px;
+    position: relative;
     cursor: pointer;
     transition: background-color 0.25s;
-    margin-right: 4px;
+
+    &:hover {
+      background: var(--site-config-color-nav-button-hover-background);
+    }
+  }
+
+  &__theme {
+    border-radius: 3px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    margin-right: 6px;
 
     &:hover {
       background: var(--site-config-color-nav-button-hover-background);
@@ -335,6 +354,30 @@ export default defineComponent({
     &--active {
       background: var(--site-config-color-pc-language-active-background) !important;
       color: var(--site-config-color-pc-language-active) !important;
+    }
+  }
+
+  &__theme-animation-list {
+    background: var(--site-config-color-bar);
+    cursor: pointer;
+    color: var(--site-config-color-text);
+    border-radius: 2px;
+    position: absolute;
+    top: 40px;
+    left: -20px;
+
+    .var-cell {
+      width: 100px !important;
+      color: var(--site-config-color-text);
+
+      &__content {
+        color: inherit !important;
+      }
+    }
+
+    &--active {
+      background: var(--site-config-color-pc-theme-active-background) !important;
+      color: var(--site-config-color-pc-theme-active) !important;
     }
   }
 

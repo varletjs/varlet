@@ -8,10 +8,10 @@
     <title>Varlet UI Playground</title>
     <script>
       window.process = { env: {} }
-      const savedPreferDark = localStorage.getItem('varlet-ui-playground-prefer-dark')
+      const theme = localStorage.getItem('varlet-ui-playground-prefer-theme')
       if (
-        savedPreferDark === 'true' ||
-        (!savedPreferDark && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        (theme && theme.toLowerCase().includes('dark')) ||
+        (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
         document.documentElement.classList.add('dark')
       }

@@ -1,11 +1,21 @@
 :root {
   --chip-default-text-color: #555;
+  --chip-primary-text-color: var(--color-on-primary-container);
+  --chip-danger-text-color: var(--color-on-danger-container);
+  --chip-success-text-color: var(--color-on-success-container);
+  --chip-warning-text-color: var(--color-on-warning-container);
+  --chip-info-text-color: var(--color-on-info-container);
   --chip-default-color: #e0e0e0;
-  --chip-primary-color: var(--color-primary);
-  --chip-danger-color: var(--color-danger);
-  --chip-success-color: var(--color-success);
-  --chip-warning-color: var(--color-warning);
-  --chip-info-color: var(--color-info);
+  --chip-primary-color: var(--color-primary-container);
+  --chip-danger-color: var(--color-danger-container);
+  --chip-success-color: var(--color-success-container);
+  --chip-warning-color: var(--color-warning-container);
+  --chip-info-color: var(--color-info-container);
+  --chip-primary-plain-color: var(--color-primary);
+  --chip-danger-plain-color: var(--color-danger);
+  --chip-success-plain-color: var(--color-success);
+  --chip-warning-plain-color: var(--color-warning);
+  --chip-info-plain-color: var(--color-info);
   --chip-border-radius: 2px;
   --chip-normal-height: 32px;
   --chip-large-height: 40px;
@@ -44,7 +54,7 @@
   cursor: default;
   border: thin solid transparent;
   vertical-align: middle;
-  transition: background-color 0.25s;
+  transition: background-color 0.25s, border-radius 0.25s;
 
   &--default {
     color: var(--chip-default-text-color);
@@ -52,27 +62,27 @@
   }
 
   &--primary {
-    color: #fff;
+    color: var(--chip-primary-text-color);
     background-color: var(--chip-primary-color);
   }
 
   &--info {
-    color: #fff;
+    color: var(--chip-info-text-color);
     background-color: var(--chip-info-color);
   }
 
   &--success {
-    color: #fff;
+    color: var(--chip-success-text-color);
     background-color: var(--chip-success-color);
   }
 
   &--warning {
-    color: #fff;
+    color: var(--chip-warning-text-color);
     background-color: var(--chip-warning-color);
   }
 
   &--danger {
-    color: #fff;
+    color: var(--chip-danger-text-color);
     background-color: var(--chip-danger-color);
   }
 
@@ -90,27 +100,27 @@
   }
 
   &__plain-primary {
-    color: var(--chip-primary-color);
+    color: var(--chip-primary-plain-color);
     border-color: currentColor;
   }
 
   &__plain-info {
-    color: var(--chip-info-color);
+    color: var(--chip-info-plain-color);
     border-color: currentColor;
   }
 
   &__plain-success {
-    color: var(--chip-success-color);
+    color: var(--chip-success-plain-color);
     border-color: currentColor;
   }
 
   &__plain-warning {
-    color: var(--chip-warning-color);
+    color: var(--chip-warning-plain-color);
     border-color: currentColor;
   }
 
   &__plain-danger {
-    color: var(--chip-danger-color);
+    color: var(--chip-danger-plain-color);
     border-color: currentColor;
   }
 

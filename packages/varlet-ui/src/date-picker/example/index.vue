@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const dates = reactive({
   date: '2021-04',
@@ -13,6 +12,9 @@ const dates = reactive({
   date5: '2021-05',
 })
 
+watchLang(use)
+onThemeChange()
+
 const allowedDates = (date) => {
   const month = date.split('-')[1]
   if (!month) return true
@@ -21,54 +23,21 @@ const allowedDates = (date) => {
 }
 
 const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
-
-function change(date) {
-  console.log(date)
-}
-
-function preview(year, month) {
-  console.log(year, month)
-}
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-date-picker v-model="dates.date1" />
 
-  <app-type>{{ pack.monthPicker }}</app-type>
-  <var-date-picker type="month" v-model="dates.date" elevation />
+  <app-type>{{ t('monthPicker') }}</app-type>
+  <var-date-picker type="month" v-model="dates.date" />
 
-  <app-type>{{ pack.multiple }}</app-type>
+  <app-type>{{ t('multiple') }}</app-type>
   <var-date-picker type="date" v-model="dates.date2" multiple />
 
-  <app-type>{{ pack.range }}</app-type>
+  <app-type>{{ t('range') }}</app-type>
   <var-date-picker type="date" v-model="dates.date3" range />
 
-  <app-type>{{ pack.dateLimit }}</app-type>
+  <app-type>{{ t('dateLimit') }}</app-type>
   <var-date-picker type="date" v-model="dates.date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates1" />
-
-  <app-type>{{ pack.custom }}</app-type>
-  <var-date-picker
-    type="month"
-    :allowed-dates="allowedDates"
-    v-model="dates.date5"
-    max="2036-01"
-    min="2016-07"
-    elevation
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    @preview="preview"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}{{ pack.year }}</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}{{ pack.divider }}{{ month }}{{ pack.month }}</span>
-    </template>
-  </var-date-picker>
 </template>

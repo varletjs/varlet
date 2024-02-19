@@ -23,6 +23,7 @@
     "packages/varlet-ui-playground/site/**",
     "packages/varlet-shared/lib/**",
     "packages/varlet-use/lib/**",
+    "packages/varlet-import-resolver/lib/**",
     "packages/varlet-touch-emulator/iife.js"
   ],
   "extends": ["@varlet"]

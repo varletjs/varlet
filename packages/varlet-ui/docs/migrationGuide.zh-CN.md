@@ -1,134 +1,115 @@
-# 迁移指南
+# 从 2.x 迁移
 
 ### 介绍
 
-本节主要介绍 `2.x` 版本相对于 `1.x` 版本的主要变化以及迁移的注意事项。
+本节主要介绍从 `2.x` 迁移至 `3.x` 的注意事项
 
-## 组件库(@varlet/ui)
+### 组件功能变更
 
-### 组件重构
-
-- Menu 组件进行了重做，优化了 api 使其变得更易使用，在桌面端也有更优秀的边界检测能力和性能。具体使用方式参考 [Menu 文档](#/zh-CN/menu)， 
-- Select 组件的下拉菜单替换成了新版 Menu 组件
-- Pagination 组件的下拉菜单替换成了新版 Menu 组件
-- Loading 组件的默认颜色从 `currentColor` 更改为 `var(--color-primary)`
-- Loading 组件暴露出 `var(--loading-color)`
-- Button 组件新增 `loadingColor` 属性
-- Snackbar 组件新增 `loadingColor` 属性
-- Progress 组件新增 `labelClass` 属性
-- StyleProvider 组件新增 `tag` 属性，允许自定义容器标签
-- Cell 组件重命名了部分 api `desc` -> `description`，`descClass` -> `descriptionClass`
-- DatePicker 组件重命名了部分 api `shadow` -> `elevation`
-- TimePicker 组件重命名了部分 api `shadow` -> `elevation`
-- Card 组件重命名了部分 api  `height` -> `image-height`，`content` -> `floating-content`
-- Col 组件新增 `direction` 属性
-- Dialog 组件新增 `width` 属性
-- Form 组件新增 `useForm` 和 `useValidation` 静态方法以提供自定义表单组件的能力
+- DatePicker 组件移除了对 `headerColor` 属性的兼容
+- TimePicker 组件移除了对 `headerColor` 属性的兼容
+- ImagePreview 组件移除了对 `current` 属性的兼容
+- Chip 组件移除了对 `closable` 属性的兼容
+- Progress 组件移除了对 `ripple` 属性的兼容
+- IndexBar 组件移除了对 `cssMode` 属性的兼容
+- LoadingBar 组件移除了对 `mergeConfig` 方法的兼容
 
 ### 组件样式变量变更
 
-- Menu 组件变量新增 `--menu-background-color`
-- Select 组件变量新增 `--select-select-min-height`，`--select-menu-margin-top`
-- Pagination 组件变量新增 `--pagination-simple-padding`
-- Loading 组件变量新增 `--loading-color`
-- Rate 组件变量新增 `--rate-color`
-- Counter 组件变量新增 `--counter-disabled-opacity`
-- Slider 组件变量新增 `--slider-disabled-opacity`
-- Switch 组件变量新增 `--switch-disabled-opacity`
-- Cell 组件变量重命名 `--cell-desc-font-size` -> `--cell-description-font-size`，`--cell-desc-color` -> `--cell-description-color`
-- Form 组件变量重命名 `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
+为了使组件样式定义更加容易，并且支持 `Material Design 3`，`3.x` 版本对组件库的样式变量进行了一次重构，新增了一些基础样式变量。
 
-### UMD 模块导出中英文语言包
+| 变量名  |
+|----------------|
+| `--color-on-primary` |
+| `--color-on-info` |
+| `--color-on-success` |
+| `--color-on-warning` |
+| `--color-on-danger` |
+| `--color-primary-container` |
+| `--color-info-container` |
+| `--color-success-container` |
+| `--color-warning-container` |
+| `--color-danger-container` |
+| `--color-on-primary-container` |
+| `--color-on-info-container` |
+| `--color-on-success-container` |
+| `--color-on-warning-container` |
+| `--color-on-danger-container` |
+| `--color-outline` |
+| `--color-surface-container` |
+| `--color-surface-container-low` |
+| `--color-surface-container-high` |
+| `--color-surface-container-highest` |
+| `--color-inverse-surface` |
+| `--color-on-surface-variant` |
 
-在 `1.x` 版本中，UMD 模块不导出中英文语言包，在 `2.x` 版本中，我们将中英文语言包进行了导出，
-非 UMD 模块现在有两种使用语言包的方式。
+以下列举了一些可能会影响页面样式的变量变更。
 
-```ts
-// playground-ignore
-import { Locale } from '@varlet/ui'
-import enUS from '@varlet/ui/es/locale/en-US'
+- DatePicker 
 
-Locale.add('en-US', enUS)
-```
+  - `--picker-header-padding` 变更为 `--date-picker-header-padding`
+  - `--picker-header-color` 变更为 `--date-picker-header-color`
+  - `--picker-actions-padding` 变更为 `--date-picker-actions-padding`
 
-或
+- Pagination
 
-```ts
-// playground-ignore
-import { Locale } from '@varlet/ui'
+  移除
+  `--pagination-list-bg-color`,
+  `--pagination-list-active-bg-color`,
+  `--pagination-list-active-color`
 
-Locale.add('en-US', Locale.enUS)
-```
+- Step
 
-### UMD 模块导出暗黑模式主题
+  移除
+  `--step-min-size`,
+  `--step-line-size`
 
-在 `1.x` 版本中，UMD 模块不导出暗黑模式主题包，在 `2.x` 版本中，我们将暗黑模式主题包进行了导出，
-非 UMD 模块现在有两种使用暗黑模式主题的方式。
+- Progress
 
-```ts
-// playground-ignore
-import { StyleProvider } from '@varlet/ui'
-import dark from '@varlet/ui/es/themes/dark'
+  移除 `--progress-ripple-color`
 
-StyleProvider(dark)
-```
+- Select/Input
 
-或
+  组件进行了一次较大的重构，支持了前置图标存在时的占位符 (hint) 动画
+  
+  | 移除变量  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-padding-top` |
+  | `--field-decorator-standard-normal-padding-bottom` |
+  | `--field-decorator-standard-normal-icon-padding` |
+  | `--field-decorator-standard-normal-non-hint-padding-top` |
+  | `--field-decorator-standard-normal-placeholder-translate-y` |
+  | `--field-decorator-standard-small-padding-top` |
+  | `--field-decorator-standard-small-padding-bottom` |
+  | `--field-decorator-standard-small-icon-padding` |
+  | `--field-decorator-standard-small-non-hint-padding-top` |
+  | `--field-decorator-standard-small-placeholder-translate-y` |
+  | `--field-decorator-outlined-normal-padding-top` |
+  | `--field-decorator-outlined-normal-padding-bottom` |
+  | `--field-decorator-outlined-normal-icon-padding` |
+  | `--field-decorator-outlined-normal-placeholder-translate-y` |
+  | `--field-decorator-outlined-small-padding-top` |
+  | `--field-decorator-outlined-small-padding-bottom` |
+  | `--field-decorator-outlined-small-icon-padding` |
+  | `--field-decorator-outlined-small-placeholder-translate-y` |
 
-```ts
-// playground-ignore
-import { StyleProvider, Themes } from '@varlet/ui'
-
-StyleProvider(Themes.dark)
-```
-
-### 移除 less 主题变量的支持
-
-如今 `css variable` 方案已经十分成熟，在 `2.x` 版本中不再支持 `less` 主题变量，这有利于减小包的发布体积。
-如果您使用了在构建时替换 `less` 主题变量的方案，需要替换成 `css variable` 方案。
-
-### Typescript 类型优化
-
-我们对组件内部类型进行了重构，抽象了更多的类型并且暴露了出来，组件的类型规范依照`组件名` + `类型名`的形式。使用方式如下所示:
-
-```ts
-// playground-ignore
-import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
-```
-
-### 支持自动引入函数组件
-
-在 1.x 中，组件库只支持自动引入在模板中的声明式组件，函数组件 `(例如: Snackbar)` 仍然需要手动引入样式文件。
-在 2.x 中，通过 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 插件支持了函数组件的自动引入。
-详情见[按需引入](#/zh-CN/importOnDemand)。
-
-## 组件库快速成型工具(@varlet/cli)
-
-### 命令重构
-
-- 重构了 `gen` 和 `create` 命令，增加了 `sfc` 和 `tsx` 两种风格的模板选择，增加了国际化的选项，优化了命令行交互体验
-- 重构了 `compile` 命令，编译后的包不再支持 `less` 变量
-- 新增 `vite:dev` 和 `vite:build` 命令，对 `vite` 进行了基本的封装
-
-### 文档相关
-
-- 新的文档首页
-- 优化了文档视觉
-- 文档样式变量进行了一些重命名
-
-### 其他改变
-
-- `Node.js` 版本锁定为 `^14.18.0 || >=16.0.0`
-- 文档配置文件从 `varlet.config.js` -> `varlet.config.mjs`
-- 内置方法引入方式改变
-
-```js
-// 1.x
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-```
-
-```js
-// 2.x
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-```
+  | 新增变量  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-margin-top` |
+  | `--field-decorator-standard-normal-margin-bottom` |
+  | `--field-decorator-standard-normal-icon-margin-top` |
+  | `--field-decorator-standard-normal-icon-margin-bottom` |
+  | `--field-decorator-standard-normal-non-hint-margin-top` |
+  | `--field-decorator-standard-small-margin-top` |
+  | `--field-decorator-standard-small-margin-bottom` |
+  | `--field-decorator-standard-small-icon-margin-top` |
+  | `--field-decorator-standard-small-icon-margin-bottom` |
+  | `--field-decorator-standard-small-non-hint-margin-top` |
+  | `--field-decorator-outlined-normal-margin-top` |
+  | `--field-decorator-outlined-normal-margin-bottom` |
+  | `--field-decorator-outlined-normal-icon-margin-top` |
+  | `--field-decorator-outlined-normal-icon-margin-bottom` |
+  | `--field-decorator-outlined-small-margin-top` |
+  | `--field-decorator-outlined-small-margin-bottom` |
+  | `--field-decorator-outlined-small-icon-margin-top` |
+  | `--field-decorator-outlined-small-icon-margin-bottom` |

@@ -66,16 +66,16 @@
 <template>
   <var-space :size="[8, 20]">
     <var-badge type="danger">
-      <var-chip plain :round="false" color="#009688">右上</var-chip>
+      <var-chip>右上</var-chip>
     </var-badge>
     <var-badge type="danger" position="right-bottom">
-      <var-chip plain :round="false" color="#009688">右下</var-chip>
+      <var-chip>右下</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-top">
-      <var-chip plain :round="false" color="#009688">左上</var-chip>
+      <var-chip>左上</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-bottom">
-      <var-chip plain :round="false" color="#009688">左下</var-chip>
+      <var-chip>左下</var-chip>
     </var-badge>
   </var-space>
 </template>
@@ -89,16 +89,16 @@
 <template>
   <var-space :size="[8, 20]">
     <var-badge type="danger" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+      <var-chip>徽标</var-chip>
     </var-badge>
     <var-badge type="danger" position="right-bottom" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+      <var-chip>徽标</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-top" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+      <var-chip>徽标</var-chip>
     </var-badge>
     <var-badge type="danger" position="left-bottom" :offset-x="6" :offset-y="6">
-      <var-chip plain :round="false" color="#009688">徽标</var-chip>
+      <var-chip>徽标</var-chip>
     </var-badge>
   </var-space>
 </template>
@@ -136,7 +136,7 @@ function handleChange() {
 
 ```html
 <template>
-  <var-badge color="#6200ea">
+  <var-badge type="primary" color="#6200ea">
     <var-chip plain :round="false" color="#009688">徽标</var-chip>
   </var-badge>
 </template>
@@ -148,7 +148,7 @@ function handleChange() {
 
 ```html
 <template>
-  <var-badge color="#6200ea" icon="notebook">
+  <var-badge icon="notebook">
     <var-chip plain :round="false" color="#009688">徽标</var-chip>
   </var-badge>
 </template>
@@ -158,8 +158,8 @@ function handleChange() {
 
 ```html
 <template>
-  <var-badge color="#6200ea">
-    <var-chip plain :round="false" color="#009688">徽标</var-chip>
+  <var-badge>
+    <var-chip>徽标</var-chip>
 
     <template #value>
       <var-ellipsis style="max-width: 40px" :tooltip="{ sameWidth: false }">100000000</var-ellipsis>
@@ -210,5 +210,11 @@ function handleChange() {
 | `--badge-success-color` | `var(--color-success)`|
 | `--badge-warning-color` |  `var(--color-warning)`|
 | `--badge-info-color` | `var(--color-info)`|
+| `--badge-default-text-color` | `#1D1B20` |
+| `--badge-primary-text-color` | `var(--color-on-primary)` |
+| `--badge-danger-text-color` | `var(--color-on-danger)` |
+| `--badge-success-text-color` | `var(--color-on-success)` |
+| `--badge-warning-text-color` | `var(--color-on-warning)` |
+| `--badge-info-text-color` | `var(--color-on-info)` |
 | `--badge-dot-width` |  `8px`|
 | `--badge-dot-height` | `8px`|

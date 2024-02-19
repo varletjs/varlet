@@ -1,8 +1,8 @@
 <script setup>
-import { ActionSheet, Snackbar, Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { ActionSheet, Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref, reactive } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const rawActions = [
   {
@@ -37,17 +37,17 @@ const rawCustomStyleActions = [
   {
     name: 'Item 01',
     icon: 'account-circle',
-    color: '#00c48f',
+    color: 'var(--color-success)',
   },
   {
     name: 'Item 02',
     icon: 'notebook',
-    color: '#ff9800',
+    color: 'var(--color-warning)',
   },
   {
     name: 'Item 03',
     icon: 'wifi',
-    color: '#00afef',
+    color: 'var(--color-info)',
   },
 ]
 const actions = reactive(rawActions)
@@ -59,18 +59,21 @@ const show2 = ref(false)
 const show3 = ref(false)
 const show4 = ref(false)
 
+watchLang(use)
+onThemeChange()
+
 async function createBasic() {
   const action = await ActionSheet({ actions: rawActions })
 
-  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+  action !== 'close' && Snackbar(`${t('yourSelected')}${action.name}`)
 }
 
 async function modifyTitle() {
   const action = await ActionSheet({
     actions: rawActions,
-    title: pack.value.customTitle,
+    title: t('value').customTitle,
   })
-  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+  action !== 'close' && Snackbar(`${t('yourSelected')}${action.name}`)
 }
 
 async function disableAction() {
@@ -78,7 +81,7 @@ async function disableAction() {
     actions: rawDisabledActions,
   })
 
-  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+  action !== 'close' && Snackbar(`${t('yourSelected')}${action.name}`)
 }
 
 async function customActionStyles() {
@@ -86,7 +89,7 @@ async function customActionStyles() {
     actions: rawCustomStyleActions,
   })
 
-  action !== 'close' && Snackbar(`${pack.value.yourSelected}${action.name}`)
+  action !== 'close' && Snackbar(`${t('yourSelected')}${action.name}`)
 }
 
 function disableCloseOnClickAction() {
@@ -106,41 +109,38 @@ function disableCloseOnClickAction() {
       },
     ],
     closeOnClickAction: false,
-    onSelect: (action) => Snackbar(`${pack.value.yourSelected}${action.name}`),
+    onSelect: (action) => Snackbar(`${t('yourSelected')}${action.name}`),
   })
 }
 
 function handleSelect(action) {
-  Snackbar(`${pack.value.yourSelected}${action.name}`)
+  Snackbar(`${t('yourSelected')}${action.name}`)
 }
-
-watchLang(use)
-watchDarkMode(Themes.dark)
 </script>
 
 <template>
-  <app-type>{{ pack.functionCall }}</app-type>
+  <app-type>{{ t('functionCall') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="primary" block @click="createBasic">{{ pack.basicUsage }}</var-button>
-    <var-button type="primary" block @click="modifyTitle">{{ pack.modifyTitle }}</var-button>
-    <var-button type="primary" block @click="disableAction">{{ pack.disabled }}</var-button>
+    <var-button type="primary" block @click="createBasic">{{ t('basicUsage') }}</var-button>
+    <var-button type="primary" block @click="modifyTitle">{{ t('modifyTitle') }}</var-button>
+    <var-button type="primary" block @click="disableAction">{{ t('disabled') }}</var-button>
     <var-button type="primary" block @click="disableCloseOnClickAction"
-      >{{ pack.disableCloseOnClickAction }}
+      >{{ t('disableCloseOnClickAction') }}
     </var-button>
-    <var-button type="primary" block @click="customActionStyles">{{ pack.customActionStyles }}</var-button>
+    <var-button type="primary" block @click="customActionStyles">{{ t('customActionStyles') }}</var-button>
   </var-space>
 
-  <app-type>{{ pack.componentCall }}</app-type>
+  <app-type>{{ t('componentCall') }}</app-type>
   <var-space direction="column" :size="['3vmin', '4vmin']">
-    <var-button type="warning" block @click="show = true">{{ pack.basicUsage }}</var-button>
-    <var-button type="warning" block @click="show1 = true">{{ pack.modifyTitle }}</var-button>
-    <var-button type="warning" block @click="show2 = true">{{ pack.disabled }}</var-button>
-    <var-button type="warning" block @click="show3 = true">{{ pack.disableCloseOnClickAction }}</var-button>
-    <var-button type="warning" block @click="show4 = true">{{ pack.customActionStyles }}</var-button>
+    <var-button type="warning" block @click="show = true">{{ t('basicUsage') }}</var-button>
+    <var-button type="warning" block @click="show1 = true">{{ t('modifyTitle') }}</var-button>
+    <var-button type="warning" block @click="show2 = true">{{ t('disabled') }}</var-button>
+    <var-button type="warning" block @click="show3 = true">{{ t('disableCloseOnClickAction') }}</var-button>
+    <var-button type="warning" block @click="show4 = true">{{ t('customActionStyles') }}</var-button>
   </var-space>
 
   <var-action-sheet :actions="actions" v-model:show="show" @select="handleSelect" />
-  <var-action-sheet :title="pack.customTitle" :actions="actions" v-model:show="show1" @select="handleSelect" />
+  <var-action-sheet :title="t('customTitle')" :actions="actions" v-model:show="show1" @select="handleSelect" />
   <var-action-sheet :actions="disabledActions" v-model:show="show2" @select="handleSelect" />
   <var-action-sheet :close-on-click-action="false" :actions="actions" v-model:show="show3" @select="handleSelect" />
   <var-action-sheet :actions="customStyleActions" v-model:show="show4" @select="handleSelect" />

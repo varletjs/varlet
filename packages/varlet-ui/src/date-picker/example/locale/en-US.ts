@@ -4,7 +4,6 @@ export default {
   multiple: 'Multiple',
   range: 'Range',
   dateLimit: 'Date Limit',
-  custom: 'Custom',
   year: '',
   month: '',
   divider: '-',

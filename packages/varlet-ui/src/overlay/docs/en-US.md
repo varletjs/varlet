@@ -43,9 +43,9 @@ const show = ref(false)
 
 <style>
 .overlay-content {
-  padding: 20px 24px;
-  width: 250px;
-  background: var(--button-default-color);
+  padding: 24px;
+  width: 312px;
+  border-radius: 28px;
 }
 </style>
 ```

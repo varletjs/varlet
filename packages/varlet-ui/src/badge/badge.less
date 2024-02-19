@@ -10,6 +10,12 @@
   --badge-success-color: var(--color-success);
   --badge-warning-color: var(--color-warning);
   --badge-info-color: var(--color-info);
+  --badge-default-text-color: #1d1b20;
+  --badge-primary-text-color: var(--color-on-primary);
+  --badge-danger-text-color: var(--color-on-danger);
+  --badge-success-text-color: var(--color-on-success);
+  --badge-warning-text-color: var(--color-on-warning);
+  --badge-info-text-color: var(--color-on-info);
   --badge-dot-width: 8px;
   --badge-dot-height: 8px;
 }
@@ -26,7 +32,6 @@
     padding: var(--badge-content-padding);
     border: var(--badge-content-border);
     border-radius: var(--badge-content-border-radius);
-    color: #fff;
     font-size: var(--badge-content-font-size);
   }
 
@@ -50,26 +55,32 @@
   }
 
   &--default {
+    color: var(--badge-default-text-color);
     background: var(--badge-default-color);
   }
 
   &--primary {
+    color: var(--badge-primary-text-color);
     background: var(--badge-primary-color);
   }
 
   &--info {
+    color: var(--badge-info-text-color);
     background: var(--badge-info-color);
   }
 
   &--warning {
+    color: var(--badge-warning-text-color);
     background: var(--badge-warning-color);
   }
 
   &--success {
+    color: var(--badge-success-text-color);
     background: var(--badge-success-color);
   }
 
   &--danger {
+    color: var(--badge-danger-text-color);
     background: var(--badge-danger-color);
   }
 

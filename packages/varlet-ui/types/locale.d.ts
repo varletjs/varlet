@@ -4,7 +4,7 @@ export type Month = '01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09'
 
 export type Week = '0' | '1' | '2' | '3' | '4' | '5' | '6'
 
-export type Pack = {
+export type Message = {
   // Dialog
   dialogTitle: string
   dialogConfirmButtonText: string
@@ -27,25 +27,29 @@ export type Pack = {
   paginationItem: string
   paginationPage: string
   paginationJump: string
+
+  [key: PropertyKey]: any
 }
 
 interface Locale {
-  zhCN: Pack
-  enUS: Pack
-  zhTW: Pack
-  zhHK: Pack
-  packs: Record<string, Partial<Pack>>
-  pack: Ref<Partial<Pack>>
-  add(lang: string, pack: Partial<Pack>): void
+  zhCN: Message
+  enUS: Message
+  zhTW: Message
+  zhHK: Message
+  messages: Record<string, Partial<Message>>
+  currentMessage: Ref<Partial<Pack>>
+  add(lang: string, message: Partial<Message>): void
   use(lang: string): void
-  merge(lang: string, pack: Partial<Pack>): void
+  merge(lang: string, message: Partial<Message>): void
+  t(id: string): string
 
-  useLocale<T = Pack>(): {
-    packs: Record<string, Partial<T>>
-    pack: Ref<Partial<T>>
-    add(lang: string, pack: Partial<T> & { lang?: string }): void
+  useLocale<T = Message>(): {
+    messages: Record<string, Partial<T>>
+    currentMessage: Ref<Partial<T>>
+    add(lang: string, message: Partial<T> & { lang?: string }): void
     use(lang: string): void
-    merge(lang: string, pack: Partial<T>): void
+    merge(lang: string, message: Partial<T>): void
+    t(id: string): string
   }
 }
 

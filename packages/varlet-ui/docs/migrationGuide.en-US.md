@@ -1,133 +1,115 @@
-# Migration Guide
+# Migrating from 2.x
 
-### Introduce
-This section mainly introduces the main changes of the `2.x` version compared to the `1.x` version and the considerations for migration.
+### Intro
 
-## Components Library(@varlet/ui)
+This section mainly introduces the considerations for migrating from `2.x` to `3.x`
 
-### Component refactoring
+### Component function changes
 
-- The Menu component has been reworked, the api has been optimized to make it easier to use, and it has better boundary detection capabilities and performance on the desktop side. For specific usage, please refer to [Menu documentation](#/en-US/menu),
-- The drop-down menu of the Select component is replaced by the new Menu component
-- The drop-down menu of the Pagination component is replaced by the new Menu component
-- Default color of Loading component changed from `currentColor` to `var(--color-primary)`
-- The Loading component exposes `var(--loading-color)`
-- Added `loadingColor` property to Button component
-- Added `loadingColor` property to Snackbar component
-- Added `labelClass` property to Progress component
-- Added `tag` property to StyleProvider component to allow custom container tags
-- Cell component renamed part of api `desc` -> `description`, `descClass` -> `descriptionClass`
-- DatePicker component renamed part of api `shadow` -> `elevation`
-- TimePicker component renamed part of api `shadow` -> `elevation`
-- Card component renamed parts of api `height` -> `image-height`, `content` -> `floating-content`
-- Added `direction` property to Col component
-- Added `width` property to Dialog component
-- Added `useForm` and `useValidation` static methods to the Form component to provide the ability to customize form components
+- DatePicker component removes compatibility with `headerColor` property
+- TimePicker component removes compatibility with `headerColor` property
+- ImagePreview component removes compatibility with `current` property
+- Chip component removed compatibility with `closable` property
+- Progress component removed compatibility with `ripple` property
+- IndexBar component removes compatibility with `cssMode` property
+- LoadingBar component removed compatibility with `mergeConfig` method
 
 ### Component style variable changes
 
-- Menu component variable added `--menu-background-color`
-- Select component variable added `--select-select-min-height`, `--select-menu-margin-top`
-- Pagination component variable added `--pagination-simple-padding`
-- Loading component variable added `--loading-color`
-- Rate component variable added `--rate-color`
-- Counter component variable added `--counter-disabled-opacity`
-- Slider component variable added `--slider-disabled-opacity`
-- Switch component variable added `--switch-disabled-opacity`
-- Cell component variable renamed `--cell-desc-font-size` -> `--cell-description-font-size`, `--cell-desc-color` -> `--cell-description-color`
-- Form component variable renamed `--form-details-error-color` -> `--form-details-error-message-color`， `--form-details-length-color` -> `--form-details-extra-message-color`
+In order to make component style definition easier and support `Material Design 3`, the `3.x` version has restructured the style variables of the component library and added some new basic style variables.
 
-### UMD module exports Chinese and English language packages
+| Variable  |
+|----------------|
+| `--color-on-primary` |
+| `--color-on-info` |
+| `--color-on-success` |
+| `--color-on-warning` |
+| `--color-on-danger` |
+| `--color-primary-container` |
+| `--color-info-container` |
+| `--color-success-container` |
+| `--color-warning-container` |
+| `--color-danger-container` |
+| `--color-on-primary-container` |
+| `--color-on-info-container` |
+| `--color-on-success-container` |
+| `--color-on-warning-container` |
+| `--color-on-danger-container` |
+| `--color-outline` |
+| `--color-surface-container` |
+| `--color-surface-container-low` |
+| `--color-surface-container-high` |
+| `--color-surface-container-highest` |
+| `--color-inverse-surface` |
+| `--color-on-surface-variant` |
 
-In the `1.x` version, the UMD module did not export the Chinese and English language packs. In the `2.x` version, we exported the Chinese and English language packs by default.
-Non-UMD modules now have two ways to use language packs.
+以下列举了一些可能会影响页面样式的变量变更。
 
-```ts
-// playground-ignore
-import { Locale } from '@varlet/ui'
-import enUS from '@varlet/ui/es/locale/en-US'
+- DatePicker 
 
-Locale.add('en-US', enUS)
-````
+  - `--picker-header-padding` change to `--date-picker-header-padding`
+  - `--picker-header-color` change to `--date-picker-header-color`
+  - `--picker-actions-padding` change to `--date-picker-actions-padding`
 
-OR
+- Pagination
 
-```ts
-// playground-ignore
-import { Locale } from '@varlet/ui'
+  Remove
+  `--pagination-list-bg-color`,
+  `--pagination-list-active-bg-color`,
+  `--pagination-list-active-color`
 
-Locale.add('en-US', Locale.enUS)
-````
+- Step
 
-### UMD module export dark mode theme
+  Remove
+  `--step-min-size`,
+  `--step-line-size`
 
-In `1.x` version, UMD module is not exported for dark mode theme package, in `2.x` version, we export dark mode theme package,
-Non-UMD modules now have two ways to use the dark mode theme
+- Progress
 
-```ts
-// playground-ignore
-import { StyleProvider } from '@varlet/ui'
-import dark from '@varlet/ui/es/themes/dark'
+  Remove `--progress-ripple-color`
 
-StyleProvider(dark)
-````
+- Select/Input
 
-OR
+  The component has undergone a major refactoring and supports hint animation when the prepend icon exists.
+  
+  | Removed Variable  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-padding-top` |
+  | `--field-decorator-standard-normal-padding-bottom` |
+  | `--field-decorator-standard-normal-icon-padding` |
+  | `--field-decorator-standard-normal-non-hint-padding-top` |
+  | `--field-decorator-standard-normal-placeholder-translate-y` |
+  | `--field-decorator-standard-small-padding-top` |
+  | `--field-decorator-standard-small-padding-bottom` |
+  | `--field-decorator-standard-small-icon-padding` |
+  | `--field-decorator-standard-small-non-hint-padding-top` |
+  | `--field-decorator-standard-small-placeholder-translate-y` |
+  | `--field-decorator-outlined-normal-padding-top` |
+  | `--field-decorator-outlined-normal-padding-bottom` |
+  | `--field-decorator-outlined-normal-icon-padding` |
+  | `--field-decorator-outlined-normal-placeholder-translate-y` |
+  | `--field-decorator-outlined-small-padding-top` |
+  | `--field-decorator-outlined-small-padding-bottom` |
+  | `--field-decorator-outlined-small-icon-padding` |
+  | `--field-decorator-outlined-small-placeholder-translate-y` |
 
-```ts
-// playground-ignore
-import { StyleProvider, Themes } from '@varlet/ui'
-
-StyleProvider(Themes.dark)
-````
-
-### Remove less theme variable support
-
-Now that the `css variable` solution is very mature, the `less` theme variable is no longer supported in the `2.x` version, which is conducive to reducing the release size of the package.
-If you use a scheme that replaces the `less` theme variable at build time, you need to replace it with the `css variable` scheme.
-
-### Typescript type optimization
-
-We refactored the internal types of components, abstracting more types and exposing them. The type specification of components is in the form of `component name` + `type name`. Use as follows:
-
-```ts
-// playground-ignore
-import type { ButtonProps, ButtonType, ButtonSize } from '@varlet/ui'
-````
-
-### Supports automatic introduction of function components
-
-In 1.x, the component library only supports declarative components that are automatically imported into templates, and functional components `(eg: Snackbar)` still need to manually import style files.
-In 2.x, the automatic import of function components is supported through the [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) plugin.
-For details, see [Import On Demand](#/en-US/importOnDemand).
-
-## Components Library Tools(@varlet/cli)
-
-### Command refactoring
-
-- Refactored `gen` and `create` commands, added `sfc` and `tsx` template options, added internationalization options, and optimized the command line interactive experience
-- Refactored `compile` command, compiled package no longer supports `less` variable
-- Added `vite:dev` and `vite:build` commands to basically encapsulate `vite`
-
-### Documentation related
-
-- New documentation home page
-- Optimized document visual
-- Some renaming of document style variables
-
-### Other changes
-
-- Node.js `^14.18.0 || >=16.0.0` is now required.
-- Site config file `varlet.config.js` -> `varlet.config.mjs`
-- Built-in method import method changed
-
-```js
-// 1.x
-import AppType from '@varlet/cli/site/mobile/components/AppType'
-import { watchLang, watchDarkMode } from '@varlet/cli/site/utils'
-```
-
-```js
-// 2.x
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-```
+  | Added Variable  |
+  | ----------------| 
+  | `--field-decorator-standard-normal-margin-top` |
+  | `--field-decorator-standard-normal-margin-bottom` |
+  | `--field-decorator-standard-normal-icon-margin-top` |
+  | `--field-decorator-standard-normal-icon-margin-bottom` |
+  | `--field-decorator-standard-normal-non-hint-margin-top` |
+  | `--field-decorator-standard-small-margin-top` |
+  | `--field-decorator-standard-small-margin-bottom` |
+  | `--field-decorator-standard-small-icon-margin-top` |
+  | `--field-decorator-standard-small-icon-margin-bottom` |
+  | `--field-decorator-standard-small-non-hint-margin-top` |
+  | `--field-decorator-outlined-normal-margin-top` |
+  | `--field-decorator-outlined-normal-margin-bottom` |
+  | `--field-decorator-outlined-normal-icon-margin-top` |
+  | `--field-decorator-outlined-normal-icon-margin-bottom` |
+  | `--field-decorator-outlined-small-margin-top` |
+  | `--field-decorator-outlined-small-margin-bottom` |
+  | `--field-decorator-outlined-small-icon-margin-top` |
+  | `--field-decorator-outlined-small-icon-margin-bottom` |

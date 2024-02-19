@@ -10,7 +10,7 @@ interface PCLocationInfo {
   hash: string
 }
 
-export type Theme = 'lightTheme' | 'darkTheme'
+export type Theme = 'lightTheme' | 'darkTheme' | 'md3LightTheme' | 'md3DarkTheme'
 
 export type StyleVars = Record<string, string>
 
@@ -34,16 +34,14 @@ function getHashSearch() {
 
 export function getBrowserTheme(): Theme {
   const themeKey = get(config, 'themeKey')
-  const darkThemeConfig = get(config, 'darkTheme')
-
-  if (!darkThemeConfig) {
-    return 'lightTheme'
-  }
-
+  const defaultLightTheme = get(config, 'defaultLightTheme')
+  const defaultDarkTheme = get(config, 'defaultDarkTheme')
   const storageTheme = window.localStorage.getItem(themeKey) as Theme
 
   if (!storageTheme) {
-    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkTheme' : 'lightTheme'
+    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches
+      ? defaultDarkTheme
+      : defaultLightTheme
     window.localStorage.setItem(themeKey, preferTheme)
 
     return preferTheme
@@ -90,12 +88,23 @@ export function useRouteListener(cb: () => void) {
   })
 }
 
-export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
+const themeMap = {
+  lightTheme: null,
+  darkTheme: Themes.dark,
+  md3LightTheme: Themes.md3Light,
+  md3DarkTheme: Themes.md3Dark,
+}
+
+export function setTheme(theme: Theme) {
+  const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
+  const styleVars = { ...siteStyleVars, ...(themeMap[theme] ?? {}) }
+  StyleProvider(styleVars)
+  setColorScheme(theme)
+}
+
+export function onThemeChange(cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
-    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-    const darkStyleVars = { ...siteStyleVars, ...Themes.dark, ...dark }
-    StyleProvider(theme === 'darkTheme' ? darkStyleVars : siteStyleVars)
-    setColorScheme(theme)
+    setTheme(theme)
     cb?.(theme)
   })
 }
@@ -105,7 +114,7 @@ export function getSiteStyleVars(theme: Theme) {
 }
 
 export function setColorScheme(theme: Theme) {
-  document.documentElement.style.setProperty('color-scheme', theme === 'darkTheme' ? 'dark' : 'light')
+  document.documentElement.style.setProperty('color-scheme', theme.toLowerCase().includes('dark') ? 'dark' : 'light')
 }
 
 export function watchTheme(

@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const list = ref(gen(1, 10))
 
@@ -23,40 +22,40 @@ function get(current, size) {
 }
 
 watchLang(use)
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-table>
     <thead>
       <tr>
-        <th>{{ pack.name }}</th>
-        <th>{{ pack.math }}</th>
-        <th>{{ pack.english }}</th>
+        <th>{{ t('name') }}</th>
+        <th>{{ t('math') }}</th>
+        <th>{{ t('english') }}</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{ pack.jerry }}</td>
+        <td>{{ t('jerry') }}</td>
         <td>124</td>
         <td>38</td>
       </tr>
       <tr>
-        <td>{{ pack.tom }}</td>
+        <td>{{ t('tom') }}</td>
         <td>100</td>
         <td>135</td>
       </tr>
     </tbody>
   </var-table>
 
-  <app-type>{{ pack.slot }}</app-type>
+  <app-type>{{ t('slot') }}</app-type>
   <var-table>
     <thead>
       <tr>
-        <th>{{ pack.name }}</th>
-        <th>{{ pack.math }}</th>
-        <th>{{ pack.english }}</th>
+        <th>{{ t('name') }}</th>
+        <th>{{ t('math') }}</th>
+        <th>{{ t('english') }}</th>
       </tr>
     </thead>
     <tbody>

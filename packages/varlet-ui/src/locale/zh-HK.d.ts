@@ -1,5 +1,5 @@
-import type { Pack } from '../../types'
+import type { Message } from '../../types'
 
-declare const zhHK: Pack
+declare const zhHK: Message
 
 export default zhHK

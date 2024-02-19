@@ -1,8 +1,7 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchDarkMode, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { onThemeChange, watchLang } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 const tabsRef = ref(null)
 const active = ref(0)
@@ -18,7 +17,7 @@ watchLang((lang) => {
     tabsRef.value.resize()
   }
 })
-watchDarkMode(Themes.dark)
+onThemeChange()
 </script>
 
 <template>
@@ -27,14 +26,14 @@ watchDarkMode(Themes.dark)
       ref="tabsRef"
       elevation
       color="var(--color-primary)"
-      active-color="#fff"
-      inactive-color="hsla(0, 0%, 100%, .6)"
+      active-color="var(--color-on-primary)"
+      inactive-color="var(--color-on-info)"
       v-model:active="active"
       style="margin-top: 14px"
     >
-      <var-tab style="font-size: 13px">{{ pack.basicUsage }}</var-tab>
-      <var-tab style="font-size: 13px">{{ pack.customAnchors }}</var-tab>
-      <var-tab style="font-size: 13px">{{ pack.dragHeadOnly }}</var-tab>
+      <var-tab style="font-size: 13px">{{ t('basicUsage') }}</var-tab>
+      <var-tab style="font-size: 13px">{{ t('customAnchors') }}</var-tab>
+      <var-tab style="font-size: 13px">{{ t('dragHeadOnly') }}</var-tab>
     </var-tabs>
   </var-style-provider>
 
@@ -47,7 +46,7 @@ watchDarkMode(Themes.dark)
     <var-tab-item>
       <var-floating-panel v-if="active === 1" v-model:anchor="anchor" :anchors="anchors" teleport="body">
         <div style="text-align: center; padding: 5px 15px">
-          <p>{{ pack.currentAnchorText }} {{ Math.floor(anchor) }} px</p>
+          <p>{{ t('currentAnchorText') }} {{ Math.floor(anchor) }} px</p>
         </div>
       </var-floating-panel>
     </var-tab-item>

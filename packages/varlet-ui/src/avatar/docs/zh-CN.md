@@ -83,10 +83,10 @@ const text = ref('VARLET')
 ```html
 <template>
   <var-space>
-    <var-avatar color="#4a79f5">
+    <var-avatar color="var(--color-warning)">
       <var-icon name="fire" />
     </var-avatar>
-    <var-avatar color="#eb5a3f">VARLET</var-avatar>
+    <var-avatar color="var(--color-danger)">VARLET</var-avatar>
   </var-space>
 </template>
 ```

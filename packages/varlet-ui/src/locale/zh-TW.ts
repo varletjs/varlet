@@ -1,4 +1,4 @@
-import { Pack } from './index'
+import { Message } from './index'
 
 export default {
   // Dialog
@@ -101,4 +101,4 @@ export default {
   paginationItem: '條',
   paginationPage: '頁',
   paginationJump: '前往',
-} as Pack
+} as Message

@@ -266,7 +266,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable                       | Default                          |
 | ------------------------------ | -------------------------------- |
-| `--collapse-background`        | `#fff`                           |
+| `--collapse-background`        | `var(--color-surface-container-highest)`                           |
 | `--collapse-text-color`        | `#232222`                        |
 | `--collapse-header-font-size`  | `var(--font-size-lg)`            |
 | `--collapse-header-padding`    | `10px 12px`                      |
@@ -274,4 +274,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--collapse-content-padding`   | `0 12px 10px`                    |
 | `--collapse-item-margin-top`   | `16px`                           |
 | `--collapse-disable-color`     | `#bdbdbd`                        |
-| `--collapse-divider-top`       | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--collapse-divider-top`       | `thin solid var(--color-outline)` |

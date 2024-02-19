@@ -71,11 +71,12 @@ const time = ref(30 * 60 * 60 * 1000)
 
 <style>
 .countdown-example-block {
-  background: #ff9f00;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  padding: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -187,5 +188,5 @@ function change() {
 
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
-| `--countdown-text-color`     | `#555`                |
-| `--countdown-text-font-size` | `var(--font-size-lg)` |
+| `--countdown-text-color`     | `var(--color-text)`                |
+| `--countdown-text-font-size` | `var(--font-size-lg)` 

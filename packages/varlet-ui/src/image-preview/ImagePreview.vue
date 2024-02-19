@@ -20,7 +20,7 @@
       var-image-preview-cover
       :touchable="canSwipe"
       :indicator="indicator && images.length > 1"
-      :initial-index="initialIndex"
+      :initial-index="toNumber(initialIndex)"
       :loop="loop"
       @change="onChange"
       v-bind="$attrs"
@@ -102,19 +102,6 @@ export default defineComponent({
     const canSwipe = ref(true)
     const swipeRef = ref<InstanceType<typeof VarSwipe> | null>(null)
     const { moveX, moveY, distance, startTime, startTouch, moveTouch, endTouch } = useTouch()
-    const initialIndex = computed(() => {
-      // For compatibility with current, temporarily keep this computed method
-      // Current will be replaced by initialIndex in the future
-      const { images, current, initialIndex } = props
-
-      if (initialIndex != null) {
-        return toNumber(initialIndex)
-      }
-
-      const index = images.findIndex((image: string) => image === current)
-
-      return Math.max(index, 0)
-    })
     const isPreventDefault = computed(() => {
       const { imagePreventDefault, show } = props
       return show && imagePreventDefault
@@ -330,7 +317,6 @@ export default defineComponent({
     return {
       swipeRef,
       isPreventDefault,
-      initialIndex,
       popupShow,
       scale,
       translateX,
@@ -340,6 +326,7 @@ export default defineComponent({
       transitionDuration,
       n,
       classes,
+      toNumber,
       handleTouchstart,
       handleTouchmove,
       handleTouchend,

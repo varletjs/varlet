@@ -1,21 +1,22 @@
 <script setup>
-import { AppType, watchLang } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 watchLang(use)
+onThemeChange()
 </script>
 
 <template>
   <div class="example">
-    <app-type>{{ pack.basicUsage }}</app-type>
+    <app-type>{{ t('basicUsage') }}</app-type>
     <var-sticky offset-top="14.4vmin">
-      <var-button type="primary">{{ pack.basicUsage }}</var-button>
+      <var-button type="primary">{{ t('basicUsage') }}</var-button>
     </var-sticky>
 
-    <app-type>{{ pack.localSticky }}</app-type>
+    <app-type>{{ t('localSticky') }}</app-type>
     <div class="scroller">
       <var-sticky>
-        <var-button type="success">{{ pack.localSticky }}</var-button>
+        <var-button type="success">{{ t('localSticky') }}</var-button>
       </var-sticky>
       <div class="block"></div>
     </div>

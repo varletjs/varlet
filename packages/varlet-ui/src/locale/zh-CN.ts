@@ -1,4 +1,4 @@
-import { Pack } from './index'
+import { Message } from './index'
 
 export default {
   // Dialog
@@ -104,4 +104,4 @@ export default {
   paginationJump: '前往',
   // time-picker
   timePickerHint: '选择时间',
-} as Pack
+} as Message

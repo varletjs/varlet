@@ -19,9 +19,9 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+ background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -30,7 +30,7 @@
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: 'var(--color-warning)' }">
     点击
   </div>
 </template>
@@ -43,9 +43,9 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -67,9 +67,9 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```

@@ -10,7 +10,6 @@ import collapse from './collapse'
 import datePicker from './datePicker'
 import dialog from './dialog'
 import divider from './divider'
-import floatingPanel from './floatingPanel'
 import fieldDecorator from './fieldDecorator'
 import pagination from './pagination'
 import picker from './picker'
@@ -18,7 +17,6 @@ import popup from './popup'
 import pullRefresh from './pullRefresh'
 import radio from './radio'
 import result from './result'
-import select from './select'
 import skeleton from './skeleton'
 import steps from './steps'
 import switchThemes from './switch'
@@ -28,16 +26,13 @@ import timePicker from './timePicker'
 import uploader from './uploader'
 import tabs from './tabs'
 import appBar from './appBar'
-import bottomNavigation from './bottomNavigation'
 import bottomNavigationItem from './bottomNavigationItem'
 import menu from './menu'
 import breadcrumb from './breadcrumb'
-import paper from './paper'
 import avatar from './avatar'
 import link from './link'
 import progress from './progress'
 import option from './option'
-import countdown from './countdown'
 import watermark from './watermark'
 import menuSelect from './menuSelect'
 import menuOption from './menuOption'
@@ -51,8 +46,30 @@ export default {
   '--color-success': '#10c48f',
   '--color-warning': '#ff8800',
   '--color-danger': '#ef5350',
+  '--color-on-primary': '#fff',
+  '--color-on-info': '#fff',
+  '--color-on-success': '#fff',
+  '--color-on-warning': '#fff',
+  '--color-on-danger': '#fff',
+  '--color-primary-container': '#4a7afe',
+  '--color-info-container': '#10afef',
+  '--color-success-container': '#10c48f',
+  '--color-warning-container': '#ff8800',
+  '--color-danger-container': '#ef5350',
+  '--color-on-primary-container': '#fff',
+  '--color-on-info-container': '#fff',
+  '--color-on-success-container': '#fff',
+  '--color-on-warning-container': '#fff',
+  '--color-on-danger-container': '#fff',
   '--color-disabled': '#404040',
   '--color-text-disabled': '#757575',
+  '--color-surface-container': '#1e1e1e',
+  '--color-surface-container-low': '#1e1e1e',
+  '--color-surface-container-high': '#272727',
+  '--color-surface-container-highest': '#303030',
+  '--color-inverse-surface': '#fff',
+  '--color-outline': 'rgba(255, 255, 255, 0.2)',
+  '--color-on-surface-variant': '#fff',
   // component
   ...button,
   ...cell,
@@ -75,25 +92,20 @@ export default {
   ...pagination,
   ...table,
   ...fieldDecorator,
-  ...select,
   ...radio,
   ...checkbox,
   ...divider,
   ...picker,
   ...appBar,
-  ...bottomNavigation,
   ...bottomNavigationItem,
   ...menu,
   ...result,
   ...breadcrumb,
-  ...paper,
   ...avatar,
   ...link,
   ...progress,
   ...option,
-  ...countdown,
   ...watermark,
   ...menuSelect,
   ...menuOption,
-  ...floatingPanel,
 } as StyleVars

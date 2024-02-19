@@ -1,12 +1,13 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { ref } from 'vue'
-import { watchDarkMode } from '@varlet/cli/client'
+import { onThemeChange } from '@varlet/cli/client'
 
 const data1 = Array(30).fill('List Item')
 const data2 = Array(30).fill('This is new List Item')
 const isRefresh = ref(false)
 const data = ref(data1)
+
+onThemeChange()
 
 function refresh() {
   setTimeout(() => {
@@ -14,8 +15,6 @@ function refresh() {
     isRefresh.value = false
   }, 2000)
 }
-
-watchDarkMode(Themes.dark)
 </script>
 
 <template>

@@ -10,8 +10,6 @@ export const props = {
     type: Array as PropType<string[]>,
     default: () => [],
   },
-  /** @deprecated Use initialIndex to instead. */
-  current: String,
   initialIndex: {
     type: [String, Number],
     default: 0,
