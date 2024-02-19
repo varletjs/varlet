@@ -426,7 +426,7 @@ export default defineConfig({
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      currentVersion: 'v3.x',
+      currentVersion: 'v2.x',
       versions: [
         {
           name: 'varlet.gitee.io',
@@ -446,7 +446,7 @@ export default defineConfig({
           items: [
             {
               label: 'v3.x',
-              link: 'varlet-varletjs.vercel.app',
+              link: 'https://varlet-varletjs.vercel.app',
             },
             {
               label: 'v2.x',
