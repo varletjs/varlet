@@ -8,7 +8,6 @@ export default defineConfig({
   pc: {
     header: {
       currentVersion: 'v2.x',
-      versions: null,
       playground:
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000'
