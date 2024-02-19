@@ -20,20 +20,20 @@
 # 安装插件
 
 # npm
-npm i unplugin-vue-components unplugin-auto-import -D
+npm i @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # yarn
-yarn add unplugin-vue-components unplugin-auto-import -D
+yarn add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # pnpm
-pnpm add unplugin-vue-components unplugin-auto-import -D
+pnpm add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 ```
 
 ```ts
 // nuxt.config.ts
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
-import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
+import { VarletImportResolver } from '@varlet/import-resolver'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -43,10 +43,10 @@ export default defineNuxtConfig({
     },
     plugins: [
       components({
-        resolvers: [VarletUIResolver()]
+        resolvers: [VarletImportResolver()]
       }),
       autoImport({
-        resolvers: [VarletUIResolver({ autoImport: true })],
+        resolvers: [VarletImportResolver({ autoImport: true })],
       })
     ]
   }

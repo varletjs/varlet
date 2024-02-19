@@ -16,7 +16,7 @@
 - 💪 &nbsp;支持 `VSCode` 插件开发
 - 💪 &nbsp;支持 `字体图标打包`
 - 💪 &nbsp;支持 `Typescript`
-- 💪 &nbsp;支持 `多种主题, 包含 md2、md3、暗黑模式`
+- 💪 &nbsp;支持 `多种主题, 包含 Material Design 2、Material Design 3`
 - 🌍 &nbsp;支持 `国际化`
 - 🚀 &nbsp;基于 `pnpm`
 
@@ -275,7 +275,7 @@ varlet-cli create
 
 ### 问答
 
-> 如何解决安装 sharp 失败的问题 ?
+#### 如何解决安装 sharp 失败的问题 ?
 
 - 您可以选择更改包含 sharp 和 libvips 二进制文件的镜像站点
 

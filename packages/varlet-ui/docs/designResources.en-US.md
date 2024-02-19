@@ -6,7 +6,7 @@ We provide design resources for designers, you can select the required resources
 
 ### Components Resources
 
-Component resources include `color`, `text`, and `component resources`. At present, only the design resources of the light color mode are provided, and the dark mode is not yet available. Community contributions are welcome.
+Component resources include `color`, `text`, and `component resources`. At present, only the design resources of the Material Design 2 light color mode are provided, and the dark mode is not yet available. Community contributions are welcome.
 
 <img src="https://varlet.gitee.io/varlet-ui/design/components.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 

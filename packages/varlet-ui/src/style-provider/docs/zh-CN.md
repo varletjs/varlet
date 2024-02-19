@@ -149,7 +149,7 @@ function toggleRootTheme() {
 
 ### 样式变量
 
-以下为组件库通用的样式变量，各组件独有的样式变量请查询各组件文档底部的样式变量表格。
+以下为组件库的通用样式变量，各组件独有的样式变量请查询各组件文档底部的样式变量表格。
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -170,7 +170,28 @@ function toggleRootTheme() {
 | `--color-danger` | `#f44336` |
 | `--color-disabled` | `#e0e0e0` |
 | `--color-text-disabled` | `#aaa` |
+| `--color-on-primary` | `#fff` |
+| `--color-on-info` | `#fff` |
+| `--color-on-success` | `#fff` |
+| `--color-on-warning` | `#fff` |
+| `--color-on-danger` | `#fff` |
+| `--color-primary-container` | `#3a7afe` |
+| `--color-info-container` | `#00afef` |
+| `--color-success-container` | `#00c48f` |
+| `--color-warning-container` | `#ff9f00` |
+| `--color-danger-container` | `#f44336` |
+| `--color-on-primary-container` | `#fff` |
+| `--color-on-info-container` | `#fff` |
+| `--color-on-success-container` | `#fff` |
+| `--color-on-warning-container` | `#fff` |
+| `--color-on-danger-container` | `#fff` |
+| `--color-surface-container` | `#fff` |
+| `--color-surface-container-low` | `#fff` |
+| `--color-surface-container-high` | `#fff` |
+| `--color-surface-container-highest` | `#fff` |
+| `--color-inverse-surface` | `#333` |
 | `--color-outline` | `rgba(0, 0, 0, 0.12)` |
+| `--color-on-surface-variant` | `#888` |
 | `--opacity-disabled` | `0.6` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |

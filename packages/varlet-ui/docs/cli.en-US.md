@@ -16,7 +16,7 @@ The out-of-the-box `Vue3 component library` rapid prototyping tool provides a se
 - 💪 &nbsp;Support for `VSCode` extension development
 - 💪 &nbsp;Support `build svg to web fonts`
 - 💪 &nbsp;Support for `Typescript`
-- 💪 &nbsp;Support `Various themes, including md2, md3, dark mode`
+- 💪 &nbsp;Support `Various themes, including Material Design 2, Material Design 3`
 - 🌍 &nbsp;Support `Internationalization`
 - 🚀 &nbsp;Based on `pnpm`
 
