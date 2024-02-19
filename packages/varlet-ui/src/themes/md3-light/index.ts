@@ -37,11 +37,41 @@ import slider from './slider'
 import uploader from './uploader'
 import timePicker from './timePicker'
 import datePicker from './datePicker'
-import SwitchTheme from './switch'
+import switchThemes from './switch'
 import rate from './rate'
+import avatarGroup from './avatarGroup'
+import badge from './badge'
+import countdown from './countdown'
+import counter from './counter'
+import divider from './divider'
+import formDetails from './formDetails'
+import icon from './icon'
+import imagePreview from './imagePreview'
+import indexBar from './indexBar'
+import input from './input'
+import list from './list'
+import loading from './loading'
+import loadingBar from './loadingBar'
+import overlay from './overlay'
+import pagination from './pagination'
+import progress from './progress'
+import ripple from './ripple'
+import skeleton from './skeleton'
+import space from './space'
+import step from './step'
+import swipe from './swipe'
+import watermark from './watermark'
+import appBar from './appBar'
 
 export default {
-  // common
+  '--font-size-xs': '10px',
+  '--font-size-sm': '12px',
+  '--font-size-md': '14px',
+  '--font-size-lg': '16px',
+  '--icon-size-xs': '16px',
+  '--icon-size-sm': '18px',
+  '--icon-size-md': '20px',
+  '--icon-size-lg': '22px',
   '--color-body': '#fef7ff',
   '--color-text': '#000',
   '--color-primary': '#6750A4',
@@ -64,6 +94,8 @@ export default {
   '--color-on-success-container': '#151F00',
   '--color-on-warning-container': '#31111D',
   '--color-on-danger-container': '#410E0B',
+  '--color-disabled': '#e0e0e0',
+  '--color-text-disabled': '#aaa',
   '--color-surface-container': '#F3EDF7',
   '--color-surface-container-low': '#F7F2FA',
   '--color-surface-container-high': '#ECE6F0',
@@ -71,7 +103,11 @@ export default {
   '--color-inverse-surface': '#322F35',
   '--color-outline': '#CAC4D0',
   '--color-on-surface-variant': '#49454F',
-  // component
+  '--opacity-disabled': '0.6',
+  '--cubic-bezier': 'cubic-bezier(0.25, 0.8, 0.5, 1)',
+  '--shadow-key-umbra-opacity': 'rgba(0, 0, 0, 0.2)',
+  '--shadow-key-penumbra-opacity': 'rgba(0, 0, 0, 0.14)',
+  '--shadow-key-ambient-opacity': 'rgba(0, 0, 0, 0.12)',
   ...button,
   ...hoverOverlay,
   ...menu,
@@ -110,6 +146,29 @@ export default {
   ...uploader,
   ...timePicker,
   ...datePicker,
-  ...SwitchTheme,
+  ...switchThemes,
   ...rate,
+  ...avatarGroup,
+  ...badge,
+  ...countdown,
+  ...counter,
+  ...divider,
+  ...formDetails,
+  ...icon,
+  ...imagePreview,
+  ...indexBar,
+  ...input,
+  ...list,
+  ...loading,
+  ...loadingBar,
+  ...overlay,
+  ...pagination,
+  ...progress,
+  ...ripple,
+  ...skeleton,
+  ...space,
+  ...step,
+  ...swipe,
+  ...watermark,
+  ...appBar,
 } as StyleVars

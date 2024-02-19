@@ -1,0 +1,15 @@
+export default {
+  '--slider-error-color': 'var(--color-danger)',
+  '--slider-track-background': '#bdbdbd',
+  '--slider-track-height': '2px',
+  '--slider-track-border-radius': '0',
+  '--slider-track-fill-border-radius': '0',
+  '--slider-track-fill-background': 'var(--color-primary)',
+  '--slider-thumb-block-background': 'var(--color-primary)',
+  '--slider-thumb-ripple-background': 'var(--color-primary)',
+  '--slider-thumb-label-background': 'var(--color-primary)',
+  '--slider-thumb-label-font-size': 'var(--font-size-sm)',
+  '--slider-thumb-label-text-color': 'var(--color-on-primary)',
+  '--slider-thumb-size': '12px',
+  '--slider-disabled-opacity': 'var(--opacity-disabled)',
+}

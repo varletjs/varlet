@@ -20,7 +20,7 @@ import tooltip from './tooltip'
 import progress from './progress'
 import tabs from './tabs'
 import tab from './tab'
-import steps from './steps'
+import step from './step'
 import divider from './divider'
 import table from './table'
 import pagination from './pagination'
@@ -48,9 +48,30 @@ import timePicker from './timePicker'
 import datePicker from './datePicker'
 import rate from './rate'
 import skeleton from './skeleton'
+import avatarGroup from './avatarGroup'
+import countdown from './countdown'
+import formDetails from './formDetails'
+import icon from './icon'
+import imagePreview from './imagePreview'
+import indexBar from './indexBar'
+import input from './input'
+import list from './list'
+import loading from './loading'
+import loadingBar from './loadingBar'
+import overlay from './overlay'
+import ripple from './ripple'
+import space from './space'
+import swipe from './swipe'
 
 export default {
-  // common
+  '--font-size-xs': '10px',
+  '--font-size-sm': '12px',
+  '--font-size-md': '14px',
+  '--font-size-lg': '16px',
+  '--icon-size-xs': '16px',
+  '--icon-size-sm': '18px',
+  '--icon-size-md': '20px',
+  '--icon-size-lg': '22px',
   '--color-body': '#141218',
   '--color-text': '#fff',
   '--color-primary': '#D0BCFF',
@@ -82,7 +103,11 @@ export default {
   '--color-inverse-surface': '#e6e0e9',
   '--color-outline': '#49454F',
   '--color-on-surface-variant': '#CAC4D0',
-  // component
+  '--opacity-disabled': '0.6',
+  '--cubic-bezier': 'cubic-bezier(0.25, 0.8, 0.5, 1)',
+  '--shadow-key-umbra-opacity': 'rgba(0, 0, 0, 0.2)',
+  '--shadow-key-penumbra-opacity': 'rgba(0, 0, 0, 0.14)',
+  '--shadow-key-ambient-opacity': 'rgba(0, 0, 0, 0.12)',
   ...button,
   ...hoverOverlay,
   ...menu,
@@ -104,7 +129,7 @@ export default {
   ...progress,
   ...tabs,
   ...tab,
-  ...steps,
+  ...step,
   ...divider,
   ...table,
   ...pagination,
@@ -132,4 +157,18 @@ export default {
   ...datePicker,
   ...rate,
   ...skeleton,
+  ...avatarGroup,
+  ...countdown,
+  ...formDetails,
+  ...icon,
+  ...imagePreview,
+  ...indexBar,
+  ...input,
+  ...list,
+  ...loading,
+  ...loadingBar,
+  ...overlay,
+  ...ripple,
+  ...space,
+  ...swipe,
 } as StyleVars

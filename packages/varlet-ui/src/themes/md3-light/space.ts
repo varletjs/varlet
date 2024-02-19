@@ -1,0 +1,10 @@
+export default {
+  '--space-size-mini-y': '4px',
+  '--space-size-mini-x': '4px',
+  '--space-size-small-y': '6px',
+  '--space-size-small-x': '6px',
+  '--space-size-normal-y': '8px',
+  '--space-size-normal-x': '12px',
+  '--space-size-large-y': '12px',
+  '--space-size-large-x': '20px',
+}

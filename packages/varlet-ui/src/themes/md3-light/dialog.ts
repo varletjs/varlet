@@ -9,4 +9,8 @@ export default {
   '--dialog-actions-padding': '0 24px 24px',
   '--dialog-title-font-size': '20px',
   '--dialog-button-margin-left': '8px',
+  '--dialog-message-line-height': '24px',
+  '--dialog-message-font-size': 'var(--font-size-md)',
+  '--dialog-confirm-button-color': 'var(--color-primary)',
+  '--dialog-cancel-button-color': 'var(--color-primary)',
 }
