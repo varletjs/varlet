@@ -1,3 +1,205 @@
+# [3.0.0](https://github.com/varletjs/varlet/compare/v2.22.5...v3.0.0) (2024-02-19)
+
+
+### Features
+
+* v3 ([#1465](https://github.com/varletjs/varlet/issues/1465)) ([5355778](https://github.com/varletjs/varlet/commit/5355778b914d6a92c1fa4d88c81bf4f6758809ab)), closes [#1366](https://github.com/varletjs/varlet/issues/1366) [#1364](https://github.com/varletjs/varlet/issues/1364) [#1362](https://github.com/varletjs/varlet/issues/1362) [#1369](https://github.com/varletjs/varlet/issues/1369) [#1368](https://github.com/varletjs/varlet/issues/1368) [#1367](https://github.com/varletjs/varlet/issues/1367) [#1371](https://github.com/varletjs/varlet/issues/1371) [#1370](https://github.com/varletjs/varlet/issues/1370) [#1373](https://github.com/varletjs/varlet/issues/1373) [#1464](https://github.com/varletjs/varlet/issues/1464)
+
+
+### BREAKING CHANGES
+
+* remove closable prop
+* remove ripple prop
+* deprecated prop.current
+* deprecated prop.cssMode
+* deprecated prop.headerColor
+* deprecated props.headerColor
+
+* feat(card): support md3
+
+* feat(card): clear background color when use outline mode
+
+* fix(card): fix outline style error on floating
+
+* docs(card): improve docs
+
+* feat: improve success color and support md3 for chip
+
+* feat(badge): support md3
+
+* feat(tooltip): support md3
+
+* docs(badge): clean up docs
+
+* docs: support md3
+
+* docs: support md3
+
+* feat(progress): support md3
+
+* feat(tabs): support md3
+
+* feat(steps): support md3
+
+* feat(divider): support md3
+
+* feat(table, watermark, pagination): support md3
+
+* feat(pagination): fix cssvar
+
+* feat(collapse): support md3
+
+* feat(result): support md3
+
+* docs(index-bar): support md3
+
+* feat(app-bar): support md3
+
+* refactor(cli): improve ui
+
+* feat(bottom-navigation): support md3
+
+* docs(ripple): support md3
+
+* docs(hover): support md3
+
+* docs(drag): support md3
+
+* test: update snap
+* deprecated --step-line-size and --step-min-size
+
+* feat(snackbar): support md3
+
+* feat(action-sheet): support md3
+
+* feat(dialog): support md3
+
+* feat(pull-refresh): support md3
+
+* docs(overlay): support md3
+
+* feat(popup): support md3
+
+* feat(picker): support md3
+
+* docs(loading-bar): support md3
+
+* feat(countdown): support md3
+
+* feat(floating-panel): support md3
+
+* feat(back-top): support md3
+
+* feat(select): support md3
+
+* feat(counter): support md3
+
+* refactor(date-picker): rename css var
+
+* feat(switch): support md3
+
+* fix(switch): fix switch ripple fallback color
+
+* feat(slider): support md3
+
+* docs(rate): support md3 and fix docs
+
+* feat(uploader): support md3
+
+* feat(time-picker): support md3
+
+* docs: fix typo
+
+* feat(date-picker): support md3
+
+* refactor(cli): optimize set theme
+
+* test: update snap and optimize docs
+
+* docs: fix menu name
+
+* refactor: remove unuseful file
+
+* docs: support md3
+
+* docs: optimize docs
+
+* chore: fix config
+
+* feat(css-var): support more css var
+
+* test: update snap
+
+* types: update styleVars
+
+* refactor(chip): optimize css var
+
+* refactor(rate): optimize css var
+
+* test: update snap
+
+* refactor(countdown): optimize css var
+
+* refactor(chip): optimize css var
+
+* feat(css-var): support more common css var
+
+* feat(button): support prop.iconContainer
+
+* feat(fab): support icon container
+
+* docs(fab): optimize
+
+* feat(cli): support version tag
+
+* feat(cli): support styleVars command
+
+* refactor(step): optimize css var
+
+* refactor: remove unuseful css var
+
+* feat(time-picker): support md3
+
+* feat(css-vars): support --color-outline
+
+* refactor: rename icon
+
+* refactor(cli): optimize site css var
+
+* refactor(cli): deprecated darkMode option
+
+* fix(playground): fix vite cjs deprecated warning
+
+* refactor(cli): modify themeKey
+
+* docs: fix docs
+
+* refactor(field-decorator): support hint animation when the icon existed and optimize code
+
+* refactor: refactor i18n
+
+* test: fix locale cases
+
+* style: typo error
+
+* docs: fix docs
+
+* docs: fix docs
+
+* docs(loading-bar): fix example
+
+* feat: support more base css var
+
+* feat: support more base css var
+
+* refactor: deprecated --pagination-list-* css vars
+
+* feat: refactor result-border-radius for md3
+
+* test: update
+
+
+
 ## [2.22.5](https://github.com/varletjs/varlet/compare/v2.22.4...v2.22.5) (2024-02-19)
 
 

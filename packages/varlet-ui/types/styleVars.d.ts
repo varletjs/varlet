@@ -1185,8 +1185,6 @@ export interface StyleVars {
   colorDisabled?: string
   '--color-text-disabled'?: string
   colorTextDisabled?: string
-  '--opacity-disabled'?: string
-  opacityDisabled?: string
   '--color-on-primary'?: string
   colorOnPrimary?: string
   '--color-on-info'?: string
@@ -1197,8 +1195,42 @@ export interface StyleVars {
   colorOnWarning?: string
   '--color-on-danger'?: string
   colorOnDanger?: string
+  '--color-primary-container'?: string
+  colorPrimaryContainer?: string
+  '--color-info-container'?: string
+  colorInfoContainer?: string
+  '--color-success-container'?: string
+  colorSuccessContainer?: string
+  '--color-warning-container'?: string
+  colorWarningContainer?: string
+  '--color-danger-container'?: string
+  colorDangerContainer?: string
+  '--color-on-primary-container'?: string
+  colorOnPrimaryContainer?: string
+  '--color-on-info-container'?: string
+  colorOnInfoContainer?: string
+  '--color-on-success-container'?: string
+  colorOnSuccessContainer?: string
+  '--color-on-warning-container'?: string
+  colorOnWarningContainer?: string
+  '--color-on-danger-container'?: string
+  colorOnDangerContainer?: string
+  '--color-surface-container'?: string
+  colorSurfaceContainer?: string
+  '--color-surface-container-low'?: string
+  colorSurfaceContainerLow?: string
+  '--color-surface-container-high'?: string
+  colorSurfaceContainerHigh?: string
+  '--color-surface-container-highest'?: string
+  colorSurfaceContainerHighest?: string
+  '--color-inverse-surface'?: string
+  colorInverseSurface?: string
   '--color-outline'?: string
   colorOutline?: string
+  '--color-on-surface-variant'?: string
+  colorOnSurfaceVariant?: string
+  '--opacity-disabled'?: string
+  opacityDisabled?: string
   '--cubic-bezier'?: string
   cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string
