@@ -1420,7 +1420,7 @@ exports[`test md3Dark theme 1`] = `
   "--switch-disabled-opacity": "var(--opacity-disabled)",
   "--switch-handle-active-background": "var(--color-primary)",
   "--switch-handle-background": "#727272",
-  "--switch-handle-color": "#fff",
+  "--switch-handle-color": "var(--color-on-primary)",
   "--switch-handle-error-background": "var(--color-danger)",
   "--switch-ripple-color": "var(--color-primary)",
   "--switch-track-active-background": "var(--color-primary)",
