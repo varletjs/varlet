@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/varletjs/varlet/compare/v3.0.0...v3.0.1) (2024-02-19)
+
+
+### Features
+
+* **cli:** improve release command ([28bc2e3](https://github.com/varletjs/varlet/commit/28bc2e3301c17cc233f7ab310e087e86ca51461b))
+
+
+
 # [3.0.0](https://github.com/varletjs/varlet/compare/v2.22.5...v3.0.0) (2024-02-19)
 
 
