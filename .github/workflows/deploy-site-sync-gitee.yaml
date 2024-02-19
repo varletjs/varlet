@@ -34,8 +34,8 @@ jobs:
           single-commit: true
           clean: true
           clean-exclude: |
-            2.x/*
-            2.x/**/*
+            v2/*
+            v2/**/*
 
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
