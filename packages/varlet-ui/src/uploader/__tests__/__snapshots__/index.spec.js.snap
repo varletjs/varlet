@@ -20,7 +20,7 @@ exports[`test uploader disabled 2`] = `
   <div class="var-uploader__file-list">
     <div class="var-uploader__file var-elevation--2">
       <div class="var-uploader__file-name">cat.png</div>
-      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
+      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img role="img" class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
       <div class="var-uploader__file-indicator">
         <div class="var-uploader__progress" style="width: 0%;"></div>
       </div>
@@ -132,7 +132,7 @@ exports[`test uploader validation 2`] = `
   <div class="var-uploader__file-list">
     <div class="var-uploader__file var-elevation--2">
       <div class="var-uploader__file-name">cat.png</div>
-      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
+      <div class="var-uploader__file-close"><i class="var-icon var-icon--set var-icon-delete var-uploader__file-close-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i></div><img role="img" class="var-uploader__file-cover" src="data:image/png;base64," alt="cat.png">
       <div class="var-uploader__file-indicator">
         <div class="var-uploader__progress" style="width: 0%;"></div>
       </div>
