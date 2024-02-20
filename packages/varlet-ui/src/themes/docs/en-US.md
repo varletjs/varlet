@@ -4,7 +4,7 @@
 
 The first-party component library provides four sets of themes: `Material Design 2 Light`, `Material Design 2 Dark`, `Material Design 3 Light`, and `Material Design 3 Dark`.
 
-### 可用主题
+### Available Themes
 
 | Available Themes | Theme Pack |
 | --- | --- |
