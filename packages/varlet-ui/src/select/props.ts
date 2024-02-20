@@ -8,7 +8,7 @@ export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export const props = {
   modelValue: {
-    type: [String, Number, Boolean] as PropType<string | number | boolean>,
+    type: [String, Number, Boolean, Array] as PropType<any>,
     default: undefined,
   },
   multiple: Boolean,
