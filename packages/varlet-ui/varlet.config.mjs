@@ -7,10 +7,7 @@ export default defineConfig({
   },
   pc: {
     header: {
-      playground:
-        process.env.NODE_ENV === 'development'
-          ? 'http://localhost:3000'
-          : 'https://varlet.gitee.io/varlet-ui-playground',
+      playground: null,
     },
     menu: [
       {
