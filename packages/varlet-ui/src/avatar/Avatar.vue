@@ -21,6 +21,7 @@
   >
     <template v-if="src">
       <img
+        role="img"
         v-if="lazy"
         v-lazy="src"
         :class="n('image')"
@@ -34,6 +35,7 @@
 
       <img
         v-else
+        role="img"
         :class="n('image')"
         :src="src"
         :alt="alt"
