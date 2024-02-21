@@ -366,4 +366,3 @@ export default defineComponent({
 @import '../chip/chip';
 @import './select';
 </style>
-./useSelectControl
