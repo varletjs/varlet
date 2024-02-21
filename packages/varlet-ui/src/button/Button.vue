@@ -27,6 +27,8 @@
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
+    @focus="isFocusing = true"
+    @blur="isFocusing = false"
   >
     <var-loading
       :class="n('loading')"
@@ -41,7 +43,10 @@
       <slot />
     </div>
 
-    <var-hover-overlay :hovering="disabled || loading || pending ? false : hovering" />
+    <var-hover-overlay
+      :hovering="disabled || loading || pending ? false : hovering"
+      :focusing="disabled || loading || pending ? false : isFocusing"
+    />
   </button>
 </template>
 
@@ -54,7 +59,7 @@ import { computed, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
-import { isArray, call } from '@varlet/shared'
+import { isArray, call, inMobile } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('button')
 
@@ -67,6 +72,7 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
+    const isFocusing = inMobile() ? computed(() => false) : ref(false)
     const pending = ref(false)
     const { buttonGroup } = useButtonGroup()
     const { hovering, handleHovering } = useHoverOverlay()
@@ -143,6 +149,7 @@ export default defineComponent({
       handleHovering,
       handleClick,
       handleTouchstart,
+      isFocusing,
     }
   },
 })

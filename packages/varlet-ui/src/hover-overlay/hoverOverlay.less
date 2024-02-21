@@ -1,5 +1,6 @@
 :root {
-  --hover-overlay-opacity: 0.15;
+  --hover-overlay-opacity: var(--opacity-hover);
+  --hover-overlay-focusing-opacity: var(--opacity-focus);
 }
 
 .var-hover-overlay {
@@ -17,5 +18,9 @@
 
   &--hovering {
     opacity: var(--hover-overlay-opacity);
+  }
+
+  &--focusing {
+    opacity: var(--hover-overlay-focusing-opacity);
   }
 }

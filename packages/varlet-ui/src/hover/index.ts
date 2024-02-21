@@ -1,20 +1,18 @@
-import { isFunction, camelize } from '@varlet/shared'
-import { type App, type Directive, type Plugin, type DirectiveBinding, type StyleValue } from 'vue'
+import { isFunction, camelize, inMobile } from '@varlet/shared'
+import { type App, type Directive, type Plugin, type DirectiveBinding } from 'vue'
 
-export type HoverValue = StyleValue | ((isHovering: boolean) => void)
+export type HoverValue = Record<string, any> | ((isHovering: boolean) => void)
 
 function shouldDisabled(arg?: string) {
   if (!arg) {
     return false
   }
 
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-
-  if (arg === 'desktop' && isMobile) {
+  if (arg === 'desktop' && inMobile()) {
     return true
   }
 
-  if (arg === 'mobile' && !isMobile) {
+  if (arg === 'mobile' && !inMobile()) {
     return true
   }
 
@@ -25,7 +23,7 @@ export type HoverHTMLElement = HTMLElement & {
   _hover: {
     value: HoverValue
     hovering: boolean
-    rawStyle: StyleValue
+    rawStyle: Record<string, any>
   }
 }
 
@@ -40,10 +38,10 @@ function getStyle(element: HoverHTMLElement) {
     .reduce((style, item) => {
       const [key, value] = item.split(':').map((item) => item.trim())
 
-      style[camelize(key) as keyof StyleValue] = value as keyof StyleValue
+      style[camelize(key)] = value
 
       return style
-    }, {})
+    }, {} as Record<string, any>)
 }
 
 function updateRawStyle(element: HoverHTMLElement) {
@@ -51,10 +49,10 @@ function updateRawStyle(element: HoverHTMLElement) {
 
   const style = getStyle(element)
 
-  Object.keys(value).forEach((key) => {
-    const camelizedKey = camelize(key) as keyof StyleValue
+  Object.keys(value as Record<string, any>).forEach((key) => {
+    const camelizedKey = camelize(key)
 
-    const styleValue = value[camelizedKey]
+    const styleValue = (value as Record<string, any>)[camelizedKey]
 
     if (styleValue != null && style[camelizedKey]) {
       element._hover.rawStyle[camelizedKey] = style[camelizedKey]
@@ -62,22 +60,22 @@ function updateRawStyle(element: HoverHTMLElement) {
   })
 }
 
-function updateStyle(element: HoverHTMLElement, styleValue: StyleValue) {
+function updateStyle(element: HoverHTMLElement, styleValue: Record<string, any>) {
   Object.keys(styleValue).forEach((key) => {
-    const value = styleValue[key as keyof StyleValue]
+    const value = styleValue[key]
 
     if (value != null) {
-      element.style[key as keyof StyleValue] = value
+      element.style[key as any] = value
     }
   })
 }
 
 function clearStyle(element: HoverHTMLElement) {
-  Object.keys(element._hover.value).forEach((key) => {
-    const value = element._hover.value[key as keyof StyleValue]
+  Object.keys(element._hover.value as Record<string, any>).forEach((key) => {
+    const value = (element._hover.value as Record<string, any>)[key]
 
     if (value != null) {
-      element.style[key as keyof StyleValue] = ''
+      element.style[key as any] = ''
     }
   })
 }
@@ -156,7 +154,7 @@ function updated(element: HoverHTMLElement, binding: DirectiveBinding<HoverValue
   mounted(element, binding)
 
   if (shouldUpdateStyle(element, binding)) {
-    updateStyle(element, binding.value as StyleValue)
+    updateStyle(element, binding.value as Record<string, any>)
   }
 }
 

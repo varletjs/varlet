@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [hovering, n('--hovering')])"></div>
+  <div :class="classes(n(), [hovering, n('--hovering')], [focusing, n('--focusing')])"></div>
 </template>
 
 <script lang="ts">
@@ -20,5 +20,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './hoverOverlay';
 </style>

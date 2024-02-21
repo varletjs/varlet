@@ -34,6 +34,9 @@ export const supportTouch = () => inBrowser() && 'ontouchstart' in window
 
 export const inBrowser = () => typeof window !== 'undefined'
 
+export const inMobile = () =>
+  inBrowser() && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
 const { hasOwnProperty } = Object.prototype
 
 export const hasOwn = (val: object, key: string | symbol): key is keyof typeof val => hasOwnProperty.call(val, key)

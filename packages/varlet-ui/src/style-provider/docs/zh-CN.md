@@ -52,6 +52,8 @@
   --color-outline: rgba(0, 0, 0, 0.12);
   --color-on-surface-variant: #888;
   --opacity-disabled: 0.6;
+  --opacity-hover: 0.15;
+  --opacity-focus: 0.2;
   --cubic-bezier: cubic-bezier(0.25, 0.8, 0.5, 1);
   --shadow-key-umbra-opacity: rgba(0, 0, 0, 0.2);
   --shadow-key-penumbra-opacity: rgba(0, 0, 0, 0.14);
@@ -193,6 +195,8 @@ function toggleRootTheme() {
 | `--color-outline` | `rgba(0, 0, 0, 0.12)` |
 | `--color-on-surface-variant` | `#888` |
 | `--opacity-disabled` | `0.6` |
+| `--opacity-hover` | `0.15` |
+| `--opacity-focus` | `0.2` |
 | `--cubic-bezier` | `cubic-bezier(0.25, 0.8, 0.5, 1)` |
 | `--shadow-key-umbra-opacity` | `rgba(0, 0, 0, 0.2)` |
 | `--shadow-key-penumbra-opacity` | `rgba(0, 0, 0, 0.14)` |

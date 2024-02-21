@@ -57,9 +57,22 @@ export function trigger(
     offsetX,
     offsetY,
     touches: touchList,
-    targetTouches: touchList,
-    changedTouches: touchList,
+    targetTouches: eventName.startsWith('touch') ? touchList : undefined,
+    changedTouches: eventName.startsWith('touch') ? touchList : undefined,
   })
+
+  el.dispatchEvent(event)
+
+  return nextTick()
+}
+
+export function triggerKeyboard(
+  wrapper: VueWrapper<ComponentPublicInstance<any, any, any>> | DOMWrapper<Element> | Element | Window,
+  eventName: string,
+  eventInitDict: Record<string, any> = {}
+) {
+  const el = 'element' in wrapper ? wrapper.element : wrapper
+  const event = new KeyboardEvent(eventName, eventInitDict)
 
   el.dispatchEvent(event)
 
