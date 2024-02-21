@@ -1,5 +1,4 @@
 <script setup>
-import { Themes } from '@varlet/ui'
 import { watchLang, onThemeChange } from '@varlet/cli/client'
 import { use } from './locale'
 
