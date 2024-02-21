@@ -9,6 +9,7 @@
     v-ripple="{ disabled: !ripple }"
   >
     <img
+      role="img"
       :class="n('image')"
       :alt="alt"
       :title="title"
@@ -22,6 +23,7 @@
     />
 
     <img
+      role="img"
       :class="n('image')"
       :alt="alt"
       :title="title"
