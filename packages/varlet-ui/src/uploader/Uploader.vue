@@ -12,7 +12,14 @@
         <div :class="n('file-close')" v-if="removable" @click.stop="handleRemove(f)">
           <var-icon :class="n('file-close-icon')" var-uploader-cover name="delete" />
         </div>
-        <img :class="n('file-cover')" :style="{ objectFit: f.fit }" :src="f.cover" :alt="f.name" v-if="f.cover" />
+        <img
+          role="img"
+          :class="n('file-cover')"
+          :style="{ objectFit: f.fit }"
+          :src="f.cover"
+          :alt="f.name"
+          v-if="f.cover"
+        />
         <div :class="n('file-indicator')">
           <div
             :class="
