@@ -39,7 +39,12 @@
             @touchend="handleTouchend"
             @touchcancel="handleTouchcancel"
           >
-            <img :class="classes(n('image'), [isPreventDefault, n('--prevent')])" :src="image" :alt="image" />
+            <img
+              role="img"
+              :class="classes(n('image'), [isPreventDefault, n('--prevent')])"
+              :src="image"
+              :alt="image"
+            />
           </div>
         </var-swipe-item>
       </template>
