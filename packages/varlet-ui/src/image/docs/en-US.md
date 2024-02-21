@@ -213,8 +213,8 @@ import logo from '../../assets/logo.png'
 | `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
 | `title`   | Image title text, the same as with the native attributes of the `img` tag             | _string_ | `-` |
 | `referrerpolicy`  | Indicate which referrer to use when fetching the resource. This attribute requires attention to browser compatibility, see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)             | _string_ | `-` |
-| `width` | Image width text, the same as the native attribute of the `img` tag            | _string \| number_ | `-` |
-| `height` | Image height                                                                   | _string \| number_ | `-` |
+| `width` | Image width            | _string \| number_ | `-` |
+| `height` | Image height          | _string \| number_ | `-` |
 | `radius` | Image radius                                                                   | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |
