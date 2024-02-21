@@ -1,3 +1,15 @@
+## [3.0.3](https://github.com/varletjs/varlet/compare/v3.0.2...v3.0.3) (2024-02-21)
+
+
+### Performance Improvements
+
+* **avatar:** improve accessibility ([#1467](https://github.com/varletjs/varlet/issues/1467)) ([48c5d0e](https://github.com/varletjs/varlet/commit/48c5d0ec5e0d85c7e42be53779d32d6a06424ca1))
+* **image-preview:** improve accessibility ([#1468](https://github.com/varletjs/varlet/issues/1468)) ([a25cf4f](https://github.com/varletjs/varlet/commit/a25cf4f51ae70edcf46a3f422d811bd95e696e43))
+* **image:** improve accessibility ([#1466](https://github.com/varletjs/varlet/issues/1466)) ([c0d0039](https://github.com/varletjs/varlet/commit/c0d00399103dbfb06e3c0528c8574e32cda803c1))
+* **uploader:** improve accessibility ([#1469](https://github.com/varletjs/varlet/issues/1469)) ([64d543b](https://github.com/varletjs/varlet/commit/64d543b2e9ccbba159e07309bf17bcbf3c22178a))
+
+
+
 ## [3.0.2](https://github.com/varletjs/varlet/compare/v3.0.1...v3.0.2) (2024-02-20)
 
 
