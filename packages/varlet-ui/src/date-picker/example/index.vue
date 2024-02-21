@@ -15,14 +15,7 @@ const dates = reactive({
 watchLang(use)
 onThemeChange()
 
-const allowedDates = (date) => {
-  const month = date.split('-')[1]
-  if (!month) return true
-
-  return parseInt(month, 10) % 2 === 1
-}
-
-const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
+const allowedDates = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
 </script>
 
 <template>
@@ -39,5 +32,5 @@ const allowedDates1 = (date) => parseInt(date.split('-')[2], 10) % 2 === 1
   <var-date-picker type="date" v-model="dates.date3" range />
 
   <app-type>{{ t('dateLimit') }}</app-type>
-  <var-date-picker type="date" v-model="dates.date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates1" />
+  <var-date-picker type="date" v-model="dates.date4" min="2020-10-15" max="2021-01-15" :allowed-dates="allowedDates" />
 </template>
