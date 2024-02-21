@@ -71,7 +71,7 @@ async function createBasic() {
 async function modifyTitle() {
   const action = await ActionSheet({
     actions: rawActions,
-    title: t('value').customTitle,
+    title: t('customTitle'),
   })
   action !== 'close' && Snackbar(`${t('yourSelected')}${action.name}`)
 }

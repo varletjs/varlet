@@ -6,9 +6,9 @@ An action sheet pops up to give the user the ability to select options.
 `ActionSheet` Functional and component use methods are provided, and there is no essential difference between the two effects and parameters.
 The function returns a `Promise`, on selection return `action`. Click modal close to return `close`.
 
-## Functional
+## Function Call
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
