@@ -1,7 +1,7 @@
 import flip from '@popperjs/core/lib/modifiers/flip.js'
 import offset from '@popperjs/core/lib/modifiers/offset.js'
 import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
-import { useClickOutside, useVModel } from '@varlet/use'
+import { onWindowResize, useClickOutside, useVModel } from '@varlet/use'
 import { doubleRaf, getStyle, call } from '@varlet/shared'
 import { toPxNum } from '../utils/elements'
 import { type ListenerProp } from '../utils/components'
@@ -372,7 +372,7 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   useClickOutside(getReference, 'click', handleClickOutside)
-
+  onWindowResize(resize)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
 
