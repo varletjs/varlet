@@ -113,16 +113,36 @@ describe('test image component props', () => {
     })
   })
 
-  test('test image alt and title', () => {
+  test('test image alt', () => {
     const wrapper = mount(VarImage, {
       props: {
         alt: 'This is alt',
-        title: 'This is title',
       },
     })
 
     expect(wrapper.find('.var-image__image').attributes('alt')).toContain('This is alt')
+    wrapper.unmount()
+  })
+
+  test('test image title', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        title: 'This is title',
+      },
+    })
+
     expect(wrapper.find('.var-image__image').attributes('title')).toContain('This is title')
+    wrapper.unmount()
+  })
+
+  test('test image referrerpolicy', () => {
+    const wrapper = mount(VarImage, {
+      props: {
+        referrerpolicy: 'no-referrer',
+      },
+    })
+
+    expect(wrapper.find('.var-image__image').attributes('referrerpolicy')).toContain('no-referrer')
     wrapper.unmount()
   })
 

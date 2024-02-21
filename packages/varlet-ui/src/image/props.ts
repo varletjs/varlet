@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type PropType, type ImgHTMLAttributes } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
@@ -11,6 +11,7 @@ export const props = {
   },
   alt: String,
   title: String,
+  referrerpolicy: String as PropType<ImgHTMLAttributes['referrerpolicy']>,
   width: [String, Number],
   height: [String, Number],
   radius: {

@@ -211,7 +211,9 @@ import logo from '../../assets/logo.png'
 | `src` | Image src                                                                      | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
-| `width` | Image title text, the same as the native attribute of the `img` tag            | _string \| number_ | `-` |
+| `title`   | Image title text, the same as with the native attributes of the `img` tag             | _string_ | `-` |
+| `referrerpolicy`  | Indicate which referrer to use when fetching the resource. This attribute requires attention to browser compatibility, see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)             | _string_ | `-` |
+| `width` | Image width text, the same as the native attribute of the `img` tag            | _string \| number_ | `-` |
 | `height` | Image height                                                                   | _string \| number_ | `-` |
 | `radius` | Image radius                                                                   | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
