@@ -1231,6 +1231,10 @@ export interface StyleVars {
   colorOnSurfaceVariant?: string
   '--opacity-disabled'?: string
   opacityDisabled?: string
+  '--opacity-hover'?: string
+  opacityHover?: string
+  '--opacity-focus'?: string
+  opacityFocus?: string
   '--cubic-bezier'?: string
   cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string
