@@ -25,10 +25,6 @@ const outlinedValue8 = ref('')
 const outlinedValue9 = ref('')
 const outlinedValue10 = ref('')
 
-const show = ref(false)
-
-window.show = show
-
 watchLang(use)
 onThemeChange()
 </script>
@@ -47,7 +43,7 @@ onThemeChange()
     />
     <var-input :placeholder="t('displayIcon')" v-model="standardValue7">
       <template #prepend-icon>
-        <var-icon class="prepend-icon" name="github" v-if="show" />
+        <var-icon class="prepend-icon" name="github" />
       </template>
       <template #append-icon>
         <var-icon class="append-icon" name="github" />
