@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type PropType, InputHTMLAttributes } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { fieldDecoratorProps } from '../field-decorator'
 
@@ -30,7 +30,7 @@ export const props = {
     default: () => ['onInput', 'onClear'],
   },
   rules: Array as PropType<Array<(v: string) => any>>,
-  enterkeyhint: String,
+  enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),

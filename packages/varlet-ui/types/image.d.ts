@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { VNode, type ImgHTMLAttributes } from 'vue'
+import { VNode, ImgHTMLAttributes } from 'vue'
 
 export declare const imageProps: Record<keyof ImageProps, any>
 
