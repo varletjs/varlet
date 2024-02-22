@@ -1,5 +1,5 @@
 import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
-import { VNode } from 'vue'
+import { VNode, InputHTMLAttributes } from 'vue'
 
 export declare const uploaderProps: Record<keyof UploaderProps, any>
 
@@ -33,7 +33,7 @@ export type UploaderCapture = boolean | 'user' | 'environment'
 export interface UploaderProps extends BasicAttributes {
   modelValue?: VarFile[]
   accept?: string
-  capture?: UploaderCapture
+  capture?: InputHTMLAttributes['capture']
   multiple?: boolean
   readonly?: boolean
   disabled?: boolean
