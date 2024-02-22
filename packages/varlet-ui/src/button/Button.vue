@@ -27,8 +27,8 @@
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
-    @focus="isFocusing = true"
-    @blur="isFocusing = false"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
   >
     <var-loading
       :class="n('loading')"
@@ -45,7 +45,7 @@
 
     <var-hover-overlay
       :hovering="disabled || loading || pending ? false : hovering"
-      :focusing="disabled || loading || pending ? false : isFocusing"
+      :focusing="disabled || loading || pending ? false : isEffectFocusing"
     />
   </button>
 </template>
@@ -72,7 +72,7 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
-    const isFocusing = inMobile() ? computed(() => false) : ref(false)
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const pending = ref(false)
     const { buttonGroup } = useButtonGroup()
     const { hovering, handleHovering } = useHoverOverlay()
@@ -149,7 +149,7 @@ export default defineComponent({
       handleHovering,
       handleClick,
       handleTouchstart,
-      isFocusing,
+      isEffectFocusing,
     }
   },
 })
