@@ -209,6 +209,7 @@ import logo from '../../assets/logo.png'
 | `fit`     | 填充模式, 可选值为 `fill contain cover none scale-down` | _string_ | `fill` |
 | `alt`     | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
 | `title`   | 图片描述性文字，和 `img` 标签原生属性一致             | _string_ | `-` |
+| `referrerpolicy`   | 指示在获取资源时使用的来源地址。该属性需注意浏览器兼容性，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)            | _string_ | `-` |
 | `width`   | 图片宽度                                            | _string \| number_ | `-` |
 | `height`  | 图片高度                                            | _string \| number_ | `-` |
 | `radius`  | 图片圆角                                            | _string \| number_ | `-` |
