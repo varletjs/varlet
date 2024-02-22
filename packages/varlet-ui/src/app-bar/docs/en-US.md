@@ -143,7 +143,9 @@ const active = ref(0)
 | `text-color`     | Text color                                           | _string_ | `-`     |
 | `title`          | Title                                                | _string_ | -       |
 | `title-position` | Title location, can be set to `left`, `center`, `right` | _string_ | `left`  |
- | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `fixed`          | Whether to fixed to the top     | _boolean_ | `false` |
+| `z-index`          | element z-index                            | _number_ | `1` |
 | `round`          | Whether to use rounded border                        | _boolean_ | `false` |
 | `image`          | Background image                            | _string_ | `-` |
 | `image-linear-gradient` | Background image linear gradient | _string_ | `-` |

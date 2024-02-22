@@ -154,4 +154,20 @@ describe('test app bar slots', () => {
 
     wrapper.unmount()
   })
+
+  test('test app bar fixed and z-index', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        fixed: true,
+        zIndex: 100,
+      },
+      slots: {
+        content: () => 'This is content slot',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })

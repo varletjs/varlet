@@ -6,6 +6,7 @@
         n('$--box'),
         [safeAreaTop, n('--safe-area-top')],
         [round, n('--round')],
+        [fixed, n('--fixed')],
         formatElevation(elevation, 3)
       )
     "
@@ -50,7 +51,7 @@ export default defineComponent({
     const paddingLeft = ref<number | undefined>()
     const paddingRight = ref<number | undefined>()
     const rootStyles = computed<CSSProperties>(() => {
-      const { image, color, textColor, imageLinearGradient } = props
+      const { image, color, textColor, imageLinearGradient, zIndex } = props
 
       if (image != null) {
         const gradient = imageLinearGradient ? `linear-gradient(${imageLinearGradient}), ` : ''
@@ -59,12 +60,14 @@ export default defineComponent({
           'background-image': `${gradient}url(${image})`,
           'background-position': 'center center',
           'background-size': 'cover',
+          'z-index': zIndex,
         }
       }
 
       return {
         background: color,
         color: textColor,
+        'z-index': zIndex,
       }
     })
 
