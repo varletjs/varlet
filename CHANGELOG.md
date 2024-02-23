@@ -1,3 +1,19 @@
+## [3.0.4](https://github.com/varletjs/varlet/compare/v3.0.3...v3.0.4) (2024-02-23)
+
+
+### Bug Fixes
+
+* **menu:** resize host size on window resize ([d3c0845](https://github.com/varletjs/varlet/commit/d3c084574850b0c1b1daefa82a6a775451270451))
+
+
+### Features
+
+* **app-bar:** support props.fixed and props.zIndex ([49737a2](https://github.com/varletjs/varlet/commit/49737a293fe731e5447b590b17a7e7c723c3547d))
+* **image:** support referrerpolicy ([#1476](https://github.com/varletjs/varlet/issues/1476)) ([519a08e](https://github.com/varletjs/varlet/commit/519a08e28445f6c34031c03f052c644c6ff131e9))
+* support new base css vars and improve ripple and button keyboard effect ([973777d](https://github.com/varletjs/varlet/commit/973777d78f4094490fe6d27454f06f52bb6ec38c))
+
+
+
 ## [3.0.3](https://github.com/varletjs/varlet/compare/v3.0.2...v3.0.3) (2024-02-21)
 
 
