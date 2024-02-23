@@ -90,11 +90,12 @@ Each component is a `Vue plugin` and consists of `component logic` and `style fi
 
 ```js
 // playground-ignore
+import App from './App.vue'
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index'
 
-createApp().use(Button)
+createApp(App).use(Button)
 ```
 
 OR
