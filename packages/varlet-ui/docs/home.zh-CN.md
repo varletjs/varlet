@@ -29,6 +29,7 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 | [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli)                       | `Vue3 组件库快速成型工具`         |
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `桌面端适配器，让移动端组件库可以在桌面端运行` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground)  | `Varlet 组件库在线编辑工具`       |
+| [@varlet/import-resolver](https://github.com/varletjs/varlet/tree/dev/packages/varlet-import-resolver)  | [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) `的一个解析器，用于实现 Varlet 按需引入`   |
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension)  | `Varlet 组件库 VSCode 插件`   |
 | [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode 主题`   |
 | [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet 组件库移动端模板`   |

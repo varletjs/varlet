@@ -88,11 +88,12 @@ module.exports = {
 
 ```js
 // playground-ignore
+import App from './App.vue'
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index'
 
-createApp().use(Button)
+createApp(App).use(Button)
 ```
 
 或
