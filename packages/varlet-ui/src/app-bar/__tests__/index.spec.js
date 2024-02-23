@@ -104,6 +104,34 @@ describe('test app bar component props', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  test('test app bar fixed', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar--fixed').exists()).toBe(false)
+
+    await wrapper.setProps({
+      fixed: true,
+    })
+
+    expect(wrapper.find('.var-app-bar--fixed').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('test app bar z-index', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('z-index: 1')
+
+    await wrapper.setProps({
+      zIndex: 3,
+    })
+
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('z-index: 3')
+
+    wrapper.unmount()
+  })
 })
 
 describe('test app bar slots', () => {
@@ -145,22 +173,6 @@ describe('test app bar slots', () => {
 
   test('test app bar content slot', () => {
     const wrapper = mount(VarAppBar, {
-      slots: {
-        content: () => 'This is content slot',
-      },
-    })
-
-    expect(wrapper.html()).toMatchSnapshot()
-
-    wrapper.unmount()
-  })
-
-  test('test app bar fixed and z-index', () => {
-    const wrapper = mount(VarAppBar, {
-      props: {
-        fixed: true,
-        zIndex: 100,
-      },
       slots: {
         content: () => 'This is content slot',
       },
