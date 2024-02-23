@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { type PropType, InputHTMLAttributes } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export interface VarFile {
@@ -26,7 +26,7 @@ export const props = {
     default: 'image/*',
   },
   capture: {
-    type: [String, Boolean] as PropType<boolean | 'user' | 'environment'>,
+    type: [String, Boolean] as PropType<InputHTMLAttributes['capture']>,
     default: undefined,
   },
   multiple: Boolean,
