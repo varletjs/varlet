@@ -249,31 +249,39 @@ export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
 }
 
+const focusableSelector = 'button, input:not([type="hidden"]), select, textarea, [tabindex], [href]'
+
 export function focusChildElementByKey(
+  hostElement: HTMLElement,
   parentElement: HTMLElement,
   key: 'ArrowDown' | 'ArrowUp' | 'ArrowLeft' | 'ArrowRight'
 ) {
-  const focusableElements = parentElement.querySelectorAll<HTMLElement>('[tabindex]')
+  const focusableElements = parentElement.querySelectorAll<HTMLElement>(focusableSelector)
   if (!focusableElements.length) {
     return
   }
 
+  const isActiveHostElement =
+    [hostElement, ...Array.from(hostElement.querySelectorAll<HTMLElement>(focusableSelector))].findIndex(
+      (el) => el === document.activeElement
+    ) !== -1
+
   const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
 
   if (key === 'ArrowDown' || key === 'ArrowRight') {
-    if (activeElementIndex === -1 || activeElementIndex === focusableElements.length - 1) {
+    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === focusableElements.length - 1) {
       focusableElements[0]?.focus()
       return
     }
 
-    if (activeElementIndex < focusableElements.length - 1) {
+    if (activeElementIndex !== -1 && activeElementIndex < focusableElements.length - 1) {
       focusableElements[activeElementIndex + 1].focus()
       return
     }
   }
 
   if (key === 'ArrowUp' || key === 'ArrowLeft') {
-    if (activeElementIndex === -1 || activeElementIndex === 0) {
+    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === 0) {
       focusableElements[focusableElements.length - 1]?.focus()
       return
     }

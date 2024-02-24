@@ -103,7 +103,7 @@ export default defineComponent({
       }
 
       if (key === 'ArrowDown' || key === 'ArrowUp') {
-        focusChildElementByKey(menuOptionsRef.value!, key)
+        focusChildElementByKey(menu.value!.$el, menuOptionsRef.value!, key)
       }
     }
 
