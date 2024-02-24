@@ -2,7 +2,7 @@
 
 exports[`test select component slots > test select append icon slot 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -30,7 +30,7 @@ exports[`test select component slots > test select append icon slot 1`] = `
 
 exports[`test select component slots > test select clear icon slot 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -58,7 +58,7 @@ exports[`test select component slots > test select clear icon slot 1`] = `
 
 exports[`test select component slots > test select prepend icon slot 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon">prepend-icon</div>
@@ -86,7 +86,7 @@ exports[`test select component slots > test select prepend icon slot 1`] = `
 
 exports[`test select focus & blur methods 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--focus" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -118,7 +118,7 @@ exports[`test select focus & blur methods 1`] = `
 
 exports[`test select focus & blur methods 2`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -150,7 +150,7 @@ exports[`test select focus & blur methods 2`] = `
 
 exports[`test select hint to be false 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
@@ -180,7 +180,7 @@ exports[`test select hint to be false 1`] = `
 
 exports[`test select size 1`] = `
 "<div class="var-select" value="">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--small">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -212,7 +212,7 @@ exports[`test select size 1`] = `
 
 exports[`test select validation 1`] = `
 "<div class="var-select">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -255,7 +255,7 @@ exports[`test select validation 1`] = `
 
 exports[`test select variant 1`] = `
 "<div class="var-select" value="">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--standard">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
@@ -287,7 +287,7 @@ exports[`test select variant 1`] = `
 
 exports[`test select variant 2`] = `
 "<div class="var-select" value="">
-  <div class="var-menu var--box var-select__menu" var-select-cover="">
+  <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
     <div class="var-field-decorator var--box var-field-decorator--outlined">
       <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>

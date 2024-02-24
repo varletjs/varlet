@@ -1,6 +1,7 @@
 <template>
   <div
     ref="host"
+    tabindex="-1"
     :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
