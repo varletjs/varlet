@@ -249,7 +249,10 @@ export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
 }
 
-export function focusChildElementByKey(parentElement: HTMLElement, key: 'ArrowDown' | 'ArrowUp') {
+export function focusChildElementByKey(
+  parentElement: HTMLElement,
+  key: 'ArrowDown' | 'ArrowUp' | 'ArrowLeft' | 'ArrowRight'
+) {
   const focusableElements = parentElement.querySelectorAll<HTMLElement>('[tabindex]')
   if (!focusableElements.length) {
     return
@@ -257,7 +260,7 @@ export function focusChildElementByKey(parentElement: HTMLElement, key: 'ArrowDo
 
   const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
 
-  if (key === 'ArrowDown') {
+  if (key === 'ArrowDown' || key === 'ArrowRight') {
     if (activeElementIndex === -1 || activeElementIndex === focusableElements.length - 1) {
       focusableElements[0]?.focus()
       return
@@ -269,7 +272,7 @@ export function focusChildElementByKey(parentElement: HTMLElement, key: 'ArrowDo
     }
   }
 
-  if (key === 'ArrowUp') {
+  if (key === 'ArrowUp' || key === 'ArrowLeft') {
     if (activeElementIndex === -1 || activeElementIndex === 0) {
       focusableElements[focusableElements.length - 1]?.focus()
       return
@@ -277,7 +280,6 @@ export function focusChildElementByKey(parentElement: HTMLElement, key: 'ArrowDo
 
     if (activeElementIndex > 0) {
       focusableElements[activeElementIndex - 1].focus()
-      
     }
   }
 }
