@@ -6,7 +6,7 @@
     v-ripple="{ disabled }"
     v-hover:desktop="handleHovering"
     tabindex="-1"
-    :disabled="disabled"
+    :disabled="disabled ? true : undefined"
     @click="handleClick"
     @focus="isEffectFocusing = true"
     @blur="isEffectFocusing = false"

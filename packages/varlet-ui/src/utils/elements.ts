@@ -249,7 +249,9 @@ export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
 }
 
-const focusableSelector = 'button, input:not([type="hidden"]), select, textarea, [tabindex], [href]'
+const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]', '[href]']
+  .map((s) => `${s}:not([disabled])`)
+  .join(', ')
 
 export function focusChildElementByKey(
   hostElement: HTMLElement,
@@ -270,7 +272,7 @@ export function focusChildElementByKey(
 
   if (key === 'ArrowDown' || key === 'ArrowRight') {
     if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === focusableElements.length - 1) {
-      focusableElements[0]?.focus()
+      focusableElements[0].focus()
       return
     }
 
