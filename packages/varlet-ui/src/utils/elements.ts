@@ -248,3 +248,36 @@ export function formatStyleVars(styleVars: StyleVars | null) {
 export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
 }
+
+export function focusChildElementByKey(parentElement: HTMLElement, key: 'ArrowDown' | 'ArrowUp') {
+  const focusableElements = parentElement.querySelectorAll<HTMLElement>('[tabindex]')
+  if (!focusableElements.length) {
+    return
+  }
+
+  const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
+
+  if (key === 'ArrowDown') {
+    if (activeElementIndex === -1 || activeElementIndex === focusableElements.length - 1) {
+      focusableElements[0]?.focus()
+      return
+    }
+
+    if (activeElementIndex < focusableElements.length - 1) {
+      focusableElements[activeElementIndex + 1].focus()
+      return
+    }
+  }
+
+  if (key === 'ArrowUp') {
+    if (activeElementIndex === -1 || activeElementIndex === 0) {
+      focusableElements[focusableElements.length - 1]?.focus()
+      return
+    }
+
+    if (activeElementIndex > 0) {
+      focusableElements[activeElementIndex - 1].focus()
+      
+    }
+  }
+}

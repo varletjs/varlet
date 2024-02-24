@@ -5,7 +5,7 @@ import VarMenuOption from '../../menu-option/MenuOption'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, vi } from 'vitest'
-import { delay, mockStubs, trigger } from '../../utils/test'
+import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 
 test('test menu-select plugin', () => {
   const app = createApp({}).use(MenuSelect)
@@ -213,4 +213,80 @@ test('test menu-select methods', async () => {
   expect(root.innerHTML).toMatchSnapshot()
   wrapper.unmount()
   mockRestore()
+})
+
+test('test menu-select keyboard ArrowDown and Enter', async () => {
+  const { mockRestore } = mockStubs()
+  const onUpdateModelValue = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+      options: () => h(VarMenuOption, { label: 'Option 1', value: 1 }),
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
+  await trigger(root.querySelector('.var-menu-option'), 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(onUpdateModelValue).toBeCalledTimes(1)
+  expect(onUpdateModelValue).toHaveBeenCalledWith(1)
+
+  mockRestore()
+  wrapper.unmount()
+})
+
+test('test menu-select keyboard ArrowUp and Enter', async () => {
+  const { mockRestore } = mockStubs()
+  const onUpdateModelValue = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+      options: () => h(VarMenuOption, { label: 'Option 1', value: 1 }),
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowUp' })
+  await trigger(root.querySelector('.var-menu-option'), 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(onUpdateModelValue).toBeCalledTimes(1)
+  expect(onUpdateModelValue).toHaveBeenCalledWith(1)
+
+  mockRestore()
+  wrapper.unmount()
+})
+
+test('test menu-select keyboard Escape', async () => {
+  const { mockRestore } = mockStubs()
+  const onUpdateShow = vi.fn()
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      show: true,
+      'onUpdate:show': onUpdateShow,
+      teleport: root,
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+      options: () => h(VarMenuOption, { label: 'Option 1', value: 1 }),
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(onUpdateShow).toBeCalledTimes(1)
+  expect(onUpdateShow).toHaveBeenCalledWith(false)
+
+  mockRestore()
+  wrapper.unmount()
 })

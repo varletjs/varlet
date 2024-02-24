@@ -5,7 +5,11 @@
     "
     v-ripple="{ disabled }"
     v-hover:desktop="handleHovering"
+    tabindex="-1"
+    :disabled="disabled"
     @click="handleClick"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
   >
     <div :class="classes(n('cover'), [optionSelected, n('--selected-background')])"></div>
 
@@ -24,7 +28,7 @@
       </div>
     </slot>
 
-    <var-hover-overlay :hovering="hovering && !disabled" />
+    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isEffectFocusing && !disabled" />
   </div>
 </template>
 
@@ -37,6 +41,8 @@ import { defineComponent, computed, ref, watch } from 'vue'
 import { useMenuSelect, type MenuOptionProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
+import { inMobile, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('menu-option')
 
@@ -49,6 +55,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
     const label = computed<any>(() => props.label)
@@ -68,12 +75,33 @@ export default defineComponent({
 
     bindMenuSelect(menuOptionProvider)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
     function handleClick() {
       if (props.disabled) {
         return
       }
 
       handleSelect()
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || props.disabled || event.key !== 'Enter') {
+        return
+      }
+
+      preventDefault(event)
+      handleClick()
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || props.disabled || event.key !== ' ') {
+        return
+      }
+
+      preventDefault(event)
+      handleClick()
     }
 
     function handleSelect() {
@@ -93,6 +121,7 @@ export default defineComponent({
       size,
       multiple,
       hovering,
+      isEffectFocusing,
       n,
       classes,
       handleHovering,

@@ -25,7 +25,10 @@
     <slot />
 
     <template #menu>
-      <div :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])">
+      <div
+        ref="menuOptionsRef"
+        :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
+      >
         <slot name="options" />
       </div>
     </template>
@@ -40,8 +43,9 @@ import { createNamespace, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
 import { type MenuOptionProvider } from '../menu-option/provide'
-import { call } from '@varlet/shared'
-import { useVModel } from '@varlet/use'
+import { call, preventDefault } from '@varlet/shared'
+import { useEventListener, useVModel } from '@varlet/use'
+import { focusChildElementByKey } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('menu-select')
 
@@ -51,6 +55,7 @@ export default defineComponent({
   props,
   setup(props) {
     const menu = ref<null | typeof VarMenu>(null)
+    const menuOptionsRef = ref<null | HTMLElement>(null)
     const show = useVModel(props, 'show')
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
     const { computeLabel, getSelectedValue } = useSelectController({
@@ -69,6 +74,8 @@ export default defineComponent({
 
     bindMenuOptions(menuSelectProvider)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+
     function onSelect(option: MenuOptionProvider) {
       const { multiple, closeOnSelect } = props
 
@@ -76,6 +83,27 @@ export default defineComponent({
 
       if (!multiple && closeOnSelect) {
         show.value = false
+      }
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (props.disabled || !show.value) {
+        return
+      }
+
+      const { key } = event
+
+      if (['Escape', 'ArrowDown', 'ArrowUp'].includes(key)) {
+        preventDefault(event)
+      }
+
+      if (key === 'Escape') {
+        show.value = false
+        return
+      }
+
+      if (key === 'ArrowDown' || key === 'ArrowUp') {
+        focusChildElementByKey(menuOptionsRef.value!, key)
       }
     }
 
@@ -97,6 +125,7 @@ export default defineComponent({
     return {
       show,
       menu,
+      menuOptionsRef,
       n,
       classes,
       formatElevation,
