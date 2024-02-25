@@ -20,7 +20,7 @@ export default defineComponent({
   setup(props, { slots, attrs }) {
     const rendered = useInitialized(() => props.show, true)
     const { zIndex } = useZIndex(() => props.show, 3)
-    const { onStackTop } = useStack(() => props.show)
+    const { onStackTop } = useStack(() => props.show, zIndex)
     const { disabled } = useTeleport()
     const { bindPopupItems } = usePopupItems()
 
@@ -106,7 +106,7 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!onStackTop() || event.key !== 'Escape') {
+      if (!onStackTop() || event.key !== 'Escape' || !props.show) {
         return
       }
 

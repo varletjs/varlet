@@ -73,7 +73,7 @@ export function usePopover(options: UsePopoverOptions) {
     },
   })
   const { zIndex } = useZIndex(() => show.value, 1)
-  useStack(() => show.value)
+  useStack(() => show.value, zIndex)
 
   let popoverInstance: Instance | null = null
   let enterPopover = false

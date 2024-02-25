@@ -151,7 +151,7 @@ export default defineComponent({
   props,
   setup(props) {
     const isFocus = ref(false)
-    const showMenu = ref(false)
+    const showMenu = ref(true)
     const root = ref<HTMLElement | null>(null)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
