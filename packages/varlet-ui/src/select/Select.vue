@@ -257,7 +257,6 @@ export default defineComponent({
       if ((key === 'ArrowDown' || key === 'ArrowUp') && showMenu.value) {
         preventDefault(event)
         focusChildElementByKey(root.value!, menuEl.value!, key)
-        focus()
       }
     }
 
