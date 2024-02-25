@@ -256,7 +256,7 @@ const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]'
 export function focusChildElementByKey(
   hostElement: HTMLElement,
   parentElement: HTMLElement,
-  key: 'ArrowDown' | 'ArrowUp' | 'ArrowLeft' | 'ArrowRight'
+  key: 'ArrowDown' | 'ArrowUp'
 ) {
   const focusableElements = parentElement.querySelectorAll<HTMLElement>(focusableSelector)
   if (!focusableElements.length) {
@@ -270,7 +270,7 @@ export function focusChildElementByKey(
 
   const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
 
-  if (key === 'ArrowDown' || key === 'ArrowRight') {
+  if (key === 'ArrowDown') {
     if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === focusableElements.length - 1) {
       focusableElements[0].focus()
       return
@@ -282,7 +282,7 @@ export function focusChildElementByKey(
     }
   }
 
-  if (key === 'ArrowUp' || key === 'ArrowLeft') {
+  if (key === 'ArrowUp') {
     if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === 0) {
       focusableElements[focusableElements.length - 1]?.focus()
       return
