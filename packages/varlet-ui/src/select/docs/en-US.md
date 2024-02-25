@@ -381,7 +381,7 @@ const value12 = ref()
 | `prepend-icon` | Prepend icon | `-` |
 | `clear-icon` | Clear Icon | `-` |
 | `append-icon` | Append icon | `-` |
-| `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |
+| `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
 #### Option Slots
 

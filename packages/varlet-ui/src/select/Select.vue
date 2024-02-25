@@ -1,5 +1,11 @@
 <template>
-  <div :class="n()" @click="handleFocus">
+  <div
+    ref="root"
+    :class="n()"
+    :tabindex="disabled || formDisabled ? undefined : '0'"
+    @focus="handleFocus"
+    @blur="handleRootBlur"
+  >
     <var-menu
       var-select-cover
       same-width
@@ -11,7 +17,7 @@
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
-      @click-outside="handleBlur"
+      @click-outside="handleClickOutside"
     >
       <var-field-decorator
         v-bind="{
@@ -82,7 +88,7 @@
             {{ placeholder }}
           </span>
 
-          <slot name="arrow-icon" :focus="showMenu">
+          <slot name="arrow-icon" :focus="isFocus" :menu-open="showMenu">
             <var-icon
               :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
               var-select-cover
@@ -119,15 +125,16 @@ import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty, call } from '@varlet/shared'
+import { isArray, isEmpty, call, preventDefault, doubleRaf } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
-import { toPxNum } from '../utils/elements'
+import { focusChildElementByKey, toPxNum } from '../utils/elements'
 import { error } from '../utils/logger'
 import { useSelectController } from './useSelectController'
 import { type OptionProvider } from '../option/provide'
+import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('select')
 
@@ -144,6 +151,7 @@ export default defineComponent({
   setup(props) {
     const isFocus = ref(false)
     const showMenu = ref(false)
+    const root = ref<HTMLElement | null>(null)
     const multiple = computed(() => props.multiple)
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
@@ -207,7 +215,66 @@ export default defineComponent({
 
     bindOptions(selectProvider)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
     call(bindForm, selectProvider)
+
+    function handleKeydown(event: KeyboardEvent) {
+      const { disabled, readonly } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !isFocus.value) {
+        return
+      }
+
+      const { key } = event
+
+      if (key === ' ' && !showMenu.value) {
+        preventDefault(event)
+        return
+      }
+
+      if (key === 'Escape' && showMenu.value) {
+        root.value!.focus()
+        preventDefault(event)
+        showMenu.value = false
+        return
+      }
+
+      if (key === 'Tab' && showMenu.value) {
+        root.value!.focus()
+        preventDefault(event)
+        handleBlur()
+        return
+      }
+
+      if (key === 'Enter' && !showMenu.value) {
+        preventDefault(event)
+        showMenu.value = true
+        return
+      }
+
+      if ((key === 'ArrowDown' || key === 'ArrowUp') && showMenu.value) {
+        preventDefault(event)
+        focusChildElementByKey(root.value!, menuEl.value!, key)
+        focus()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      const { disabled, readonly } = props
+
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || showMenu.value || !isFocus.value) {
+        return
+      }
+
+      const { key } = event
+
+      if (key === ' ' && !showMenu.value) {
+        preventDefault(event)
+        showMenu.value = true
+      }
+    }
 
     function validateWithTrigger(trigger: SelectValidateTrigger) {
       nextTick(() => {
@@ -224,15 +291,14 @@ export default defineComponent({
       }
 
       offsetY.value = toPxNum(props.offsetY)
-      isFocus.value = true
 
+      focus()
       call(onFocus)
       validateWithTrigger('onFocus')
     }
 
     function handleBlur() {
       const { disabled, readonly, onBlur } = props
-
       if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
@@ -240,6 +306,22 @@ export default defineComponent({
       blur()
       call(onBlur)
       validateWithTrigger('onBlur')
+    }
+
+    function handleRootBlur() {
+      if (showMenu.value) {
+        return
+      }
+
+      handleBlur()
+    }
+
+    function handleClickOutside() {
+      if (!isFocus.value) {
+        return
+      }
+
+      handleBlur()
     }
 
     function onSelect(option: OptionProvider) {
@@ -255,7 +337,10 @@ export default defineComponent({
       validateWithTrigger('onChange')
 
       if (!multiple) {
-        blur()
+        root.value!.focus()
+        doubleRaf().then(() => {
+          showMenu.value = false
+        })
       }
     }
 
@@ -304,7 +389,6 @@ export default defineComponent({
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
       isFocus.value = true
-      showMenu.value = true
     }
 
     // expose
@@ -325,6 +409,7 @@ export default defineComponent({
     }
 
     return {
+      root,
       offsetY,
       isFocus,
       showMenu,
@@ -343,9 +428,11 @@ export default defineComponent({
       classes,
       handleFocus,
       handleBlur,
+      handleClickOutside,
       handleClear,
       handleClick,
       handleClose,
+      handleRootBlur,
       reset,
       validate,
       resetValidation,

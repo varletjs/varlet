@@ -40,6 +40,7 @@ export interface SelectProps extends BasicAttributes {
 
 export interface SelectArrowIconData {
   focus: boolean
+  menuOpen: boolean
 }
 
 export class Select extends VarComponent {

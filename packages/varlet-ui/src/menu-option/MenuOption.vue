@@ -5,8 +5,7 @@
     "
     v-ripple="{ disabled }"
     v-hover:desktop="handleHovering"
-    tabindex="-1"
-    :disabled="disabled ? true : undefined"
+    :tabindex="disabled ? undefined : '-1'"
     @click="handleClick"
     @focus="isEffectFocusing = true"
     @blur="isEffectFocusing = false"
@@ -87,21 +86,28 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled || event.key !== 'Enter') {
+      if (!isEffectFocusing.value || props.disabled) {
         return
       }
 
-      preventDefault(event)
-      handleClick()
+      if (event.key === ' ' || event.key === 'Enter') {
+        preventDefault(event)
+      }
+
+      if (event.key === 'Enter') {
+        handleClick()
+      }
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled || event.key !== ' ') {
+      if (!isEffectFocusing.value || props.disabled) {
         return
       }
 
-      preventDefault(event)
-      handleClick()
+      if (event.key === ' ') {
+        preventDefault(event)
+        handleClick()
+      }
     }
 
     function handleSelect() {

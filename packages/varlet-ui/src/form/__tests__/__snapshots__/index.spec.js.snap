@@ -512,7 +512,7 @@ exports[`test form with rate 3`] = `
 exports[`test form with select 1`] = `
 "<form class="var-form">
   <div class="var-select">
-    <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
@@ -545,8 +545,8 @@ exports[`test form with select 1`] = `
 
 exports[`test form with select 2`] = `
 "<form class="var-form">
-  <div class="var-select">
-    <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
@@ -579,8 +579,8 @@ exports[`test form with select 2`] = `
 
 exports[`test form with select 3`] = `
 "<form class="var-form">
-  <div class="var-select">
-    <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
@@ -624,8 +624,8 @@ exports[`test form with select 3`] = `
 
 exports[`test form with select 4`] = `
 "<form class="var-form">
-  <div class="var-select">
-    <div tabindex="-1" class="var-menu var--box var-select__menu" var-select-cover="">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
         <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>

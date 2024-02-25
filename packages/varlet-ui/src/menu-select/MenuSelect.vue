@@ -1,6 +1,7 @@
 <template>
   <var-menu
     ref="menu"
+    tabindex="-1"
     :class="n()"
     :disabled="disabled"
     :trigger="trigger"

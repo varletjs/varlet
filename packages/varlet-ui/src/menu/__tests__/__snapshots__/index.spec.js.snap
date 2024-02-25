@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test menu click trigger 1`] = `"<div data-v-app=""><div tabindex="-1" class="var-menu var--box"><!--teleport start--><!--teleport end--></div></div><div style="z-index: 2000; position: absolute; left: 0px; top: 0px; margin: 0px; transform-origin: top left;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3" data-popper-placement="bottom-start"></div>"`;
+exports[`test menu click trigger 1`] = `"<div data-v-app=""><div class="var-menu var--box"><!--teleport start--><!--teleport end--></div></div><div style="z-index: 2000; position: absolute; left: 0px; top: 0px; margin: 0px; transform-origin: top left;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3" data-popper-placement="bottom-start"></div>"`;
 
-exports[`test menu click trigger 2`] = `"<div data-v-app=""><div tabindex="-1" class="var-menu var--box"><!--teleport start--><!--teleport end--></div></div><div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3" data-popper-placement="bottom-start"></div>"`;
+exports[`test menu click trigger 2`] = `"<div data-v-app=""><div class="var-menu var--box"><!--teleport start--><!--teleport end--></div></div><div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3" data-popper-placement="bottom-start"></div>"`;
 
 exports[`test menu default style 1`] = `"<transition-stub name="var-menu" appear="false" persisted="true" css="true"><div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box"></div></transition-stub>"`;
 

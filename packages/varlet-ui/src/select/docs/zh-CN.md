@@ -382,7 +382,7 @@ const value12 = ref()
 | `prepend-icon` | 前置图标 | `-` |
 | `clear-icon` | 清除图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
-| `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态 |
+| `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
 
 #### Option Slots
 

@@ -4,7 +4,7 @@ import Option from '../../option'
 import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/test'
+import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe } from 'vitest'
 
 test('test select plugin', () => {
@@ -154,30 +154,26 @@ test('test select onFocus & onBlur', async () => {
   const onFocus = vi.fn()
   const onBlur = vi.fn()
 
-  const wrapper = mount(
-    {
-      ...Wrapper,
-      data: () => ({
-        value: '',
-      }),
-      methods: {
-        onFocus,
-        onBlur,
-      },
-      template: `
-      <div class="container"></div>
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: '',
+    }),
+    methods: {
+      onFocus,
+      onBlur,
+    },
+    template: `
       <var-select v-model="value" @focus="onFocus" @blur="onBlur">
         <var-option label="吃饭" />
         <var-option label="睡觉" />
       </var-select>
     `,
-    },
-    { attachTo: document.body }
-  )
+  })
 
-  await wrapper.find('.var-select__menu').trigger('click')
+  await wrapper.trigger('focus')
   expect(onFocus).toHaveBeenCalledTimes(1)
-  await wrapper.find('.container').trigger('click')
+  await wrapper.trigger('blur')
   expect(onBlur).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
@@ -234,6 +230,7 @@ test('test select disabled', async () => {
   expect(wrapper.vm.value).toBe('睡觉')
 
   wrapper.unmount()
+  document.body.innerHTML = ''
 })
 
 test('test select readonly', async () => {
@@ -287,6 +284,7 @@ test('test select readonly', async () => {
   expect(wrapper.vm.value).toBe('睡觉')
 
   wrapper.unmount()
+  document.body.innerHTML = ''
 })
 
 test('test select clear', async () => {
@@ -335,6 +333,7 @@ test('test select multiple value', async () => {
   expect(wrapper.vm.value).toStrictEqual(['吃饭', '睡觉'])
 
   wrapper.unmount()
+  document.body.innerHTML = ''
 })
 
 test('test select multiple value in chips', async () => {
@@ -364,6 +363,7 @@ test('test select multiple value in chips', async () => {
   expect(wrapper.vm.value).toStrictEqual(['睡觉'])
 
   wrapper.unmount()
+  document.body.innerHTML = ''
 })
 
 test('test select validation', async () => {
@@ -399,24 +399,22 @@ test('test select validation', async () => {
   expect(wrapper.vm.value).toBe(undefined)
 
   wrapper.unmount()
+  document.innerHTML = ''
 })
 
 test('test select focus & blur methods', async () => {
-  const wrapper = mount(
-    {
-      ...Wrapper,
-      data: () => ({
-        value: '',
-      }),
-      template: `
-      <var-select ref="select" :rules="[v => !!v || '您必须选择一个']" v-model="value">
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: '',
+    }),
+    template: `
+      <var-select ref="select" v-model="value">
         <var-option label="吃饭" />
         <var-option label="睡觉" />
       </var-select>
     `,
-    },
-    { attachTo: document.body }
-  )
+  })
 
   const { select } = wrapper.vm.$refs
 
@@ -429,6 +427,88 @@ test('test select focus & blur methods', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
+})
+
+test('test select keyboard select option by space', async () => {
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        value: '',
+      }),
+      template: `
+      <var-select v-model="value">
+        <var-option label="吃饭" />
+        <var-option label="睡觉" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body }
+  )
+
+  await trigger(wrapper, 'focus')
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
+  await triggerKeyboard(document.querySelector('.var-option'), 'focus')
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
+  expect(wrapper.vm.value).toBe('吃饭')
+
+  wrapper.unmount()
+  document.body.innerHTML = ''
+})
+
+test('test select keyboard select option by enter', async () => {
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        value: '',
+      }),
+      template: `
+      <var-select v-model="value">
+        <var-option label="吃饭" />
+        <var-option label="睡觉" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body }
+  )
+
+  await trigger(wrapper, 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
+  await triggerKeyboard(document.querySelector('.var-option'), 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(wrapper.vm.value).toBe('吃饭')
+
+  wrapper.unmount()
+  document.body.innerHTML = ''
+})
+
+test('test select keyboard close menu by escape', async () => {
+  const wrapper = mount(
+    {
+      ...Wrapper,
+      data: () => ({
+        value: '',
+      }),
+      template: `
+      <var-select v-model="value">
+        <var-option label="吃饭" />
+        <var-option label="睡觉" />
+      </var-select>
+    `,
+    },
+    { attachTo: document.body }
+  )
+
+  await wrapper.trigger('focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(document.querySelector('.var-menu__menu').style.display).toBe('')
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
+  wrapper.unmount()
+  document.body.innerHTML = ''
 })
 
 test('test select offset-y', async () => {
