@@ -8,11 +8,13 @@
     :overlay-style="overlayStyle"
     :lock-scroll="lockScroll"
     :close-on-click-overlay="popupCloseOnClickOverlay"
+    :close-on-key-escape="false"
     :teleport="teleport"
     @open="onOpen"
     @close="onClose"
     @closed="onClosed"
     @opened="onOpened"
+    @key-escape="handleKeyEscape"
     @route-change="onRouteChange"
     @click-overlay="handleClickOverlay"
   >
@@ -149,6 +151,16 @@ export default defineComponent({
       call(props['onUpdate:show'], false)
     }
 
+    function handleKeyEscape() {
+      call(props.onKeyEscape)
+
+      if (!props.closeOnKeyEscape) {
+        return
+      }
+
+      cancel()
+    }
+
     return {
       t,
       popupShow,
@@ -159,6 +171,7 @@ export default defineComponent({
       confirm,
       cancel,
       toSizeUnit,
+      handleKeyEscape,
     }
   },
 })

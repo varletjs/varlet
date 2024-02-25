@@ -10,6 +10,7 @@ import { createPopper } from '@popperjs/core/lib/popper-lite.js'
 import { useZIndex } from '../context/zIndex'
 import { type Instance, type Modifier } from '@popperjs/core/lib/types'
 import { type Placement as PopperPlacement, type PositioningStrategy } from '@popperjs/core'
+import { useStack } from '../context/stack'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -51,7 +52,7 @@ export interface UsePopoverOptions {
   onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 
-  // internal
+  // internal for esc
   closeOnKeyEscape: boolean
 }
 
@@ -72,6 +73,7 @@ export function usePopover(options: UsePopoverOptions) {
     },
   })
   const { zIndex } = useZIndex(() => show.value, 1)
+  useStack(() => show.value)
 
   let popoverInstance: Instance | null = null
   let enterPopover = false

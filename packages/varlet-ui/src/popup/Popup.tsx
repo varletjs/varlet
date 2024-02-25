@@ -2,10 +2,11 @@ import { defineComponent, watch, Transition, Teleport, computed } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
+import { useStack } from '../context/stack'
 import { useRouteListener, useTeleport, createNamespace } from '../utils/components'
 import { usePopupItems } from './provide'
-import { useInitialized } from '@varlet/use'
-import { call } from '@varlet/shared'
+import { useEventListener, useInitialized } from '@varlet/use'
+import { call, preventDefault } from '@varlet/shared'
 
 import '../styles/common.less'
 import './popup.less'
@@ -19,6 +20,7 @@ export default defineComponent({
   setup(props, { slots, attrs }) {
     const rendered = useInitialized(() => props.show, true)
     const { zIndex } = useZIndex(() => props.show, 3)
+    const { onStackTop } = useStack(() => props.show)
     const { disabled } = useTeleport()
     const { bindPopupItems } = usePopupItems()
 
@@ -35,6 +37,8 @@ export default defineComponent({
     )
 
     bindPopupItems({ show: computed(() => props.show) })
+
+    useEventListener(window, 'keydown', handleKeydown)
 
     // internal for Dialog
     useRouteListener(() => call(props.onRouteChange))
@@ -99,6 +103,21 @@ export default defineComponent({
           </div>
         </Transition>
       )
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!onStackTop() || event.key !== 'Escape') {
+        return
+      }
+
+      call(props.onKeyEscape)
+
+      if (!props.closeOnKeyEscape) {
+        return
+      }
+
+      preventDefault(event)
+      call(props['onUpdate:show'], false)
     }
 
     return () => {

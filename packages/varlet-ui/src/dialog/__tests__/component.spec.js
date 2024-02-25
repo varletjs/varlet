@@ -2,7 +2,7 @@ import Dialog from '..'
 import VarDialog from '../Dialog'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe } from 'vitest'
 
 test('test dialog component plugin', () => {
@@ -311,6 +311,50 @@ describe('test dialog component events', () => {
 
     await delay(600)
     expect(wrapper.vm.show).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('test dialog keyboard escape', async () => {
+    const onKeyEscape = vi.fn()
+    const wrapper = mount({
+      components: {
+        [VarDialog.name]: VarDialog,
+      },
+      data: () => ({
+        show: true,
+      }),
+      methods: {
+        onKeyEscape,
+      },
+      template: `<var-dialog v-model:show="show" :teleport="null" @key-escape="onKeyEscape" />`,
+    })
+
+    await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+    expect(onKeyEscape).toBeCalledTimes(1)
+    expect(wrapper.vm.show).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('test dialog keyboard escape and closeOnKeyEscape', async () => {
+    const onKeyEscape = vi.fn()
+    const wrapper = mount({
+      components: {
+        [VarDialog.name]: VarDialog,
+      },
+      data: () => ({
+        show: true,
+      }),
+      methods: {
+        onKeyEscape,
+      },
+      template: `<var-dialog v-model:show="show" :close-on-key-escape="false" :teleport="null" @key-escape="onKeyEscape" />`,
+    })
+
+    await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+    expect(onKeyEscape).toBeCalledTimes(1)
+    expect(wrapper.vm.show).toBe(true)
 
     wrapper.unmount()
   })

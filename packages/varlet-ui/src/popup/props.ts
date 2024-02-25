@@ -42,4 +42,10 @@ export const props = {
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   // internal for Dialog
   onRouteChange: defineListenerProp<() => void>(),
+  // internal for esc
+  onKeyEscape: defineListenerProp<() => void>(),
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
 }

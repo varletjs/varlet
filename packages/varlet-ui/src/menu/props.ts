@@ -51,7 +51,7 @@ export const props = {
   onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 
-  // internal
+  // internal for esc
   closeOnKeyEscape: {
     type: Boolean,
     default: true,
