@@ -33,7 +33,7 @@ export default defineComponent({
         <div
           class={n()}
           style={{
-            zIndex: zIndex.value - 1,
+            zIndex: zIndex.value,
           }}
           {...attrs}
           onClick={handleClickOverlay}
