@@ -10,9 +10,11 @@ exports[`test action-sheet styles 1`] = `
           <div class="var-action-sheet__title">请选择</div>
           <div class="var-action-sheet__action-item customClass" style="color: rgb(76, 175, 80);"><i class="var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon" style="transition-duration: 0ms; font-size: 30px;" var-action-sheet-cover=""></i>
             <div class="var-action-sheet__action-name">Item 01</div>
+            <div class="var-hover-overlay"></div>
           </div>
-          <div class="var-action-sheet__action-item var-action-sheet--disabled"><i class="var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon" style="transition-duration: 0ms;" var-action-sheet-cover=""></i>
+          <div class="var-action-sheet__action-item"><i class="var-icon var-icon--set var-icon-account-circle var-action-sheet__action-icon" style="transition-duration: 0ms;" var-action-sheet-cover=""></i>
             <div class="var-action-sheet__action-name">Item 02</div>
+            <div class="var-hover-overlay"></div>
           </div>
         </div>
       </div>

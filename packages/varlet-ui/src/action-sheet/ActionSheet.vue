@@ -25,24 +25,17 @@
       </slot>
 
       <slot name="actions">
-        <div
-          :class="classes(n('action-item'), action.className, [action.disabled, n('--disabled')])"
-          v-ripple="{ disabled: action.disabled }"
+        <var-action-item
           v-for="action in actions"
           :key="action.name"
-          :style="{ color: action.color }"
+          :name="action.name"
+          :namespace="action.namespace"
+          :icon="action.icon"
+          :icon-size="action.iconSize"
+          :class-name="action.className"
+          :color="action.color"
           @click="handleSelect(action)"
-        >
-          <var-icon
-            :class="n('action-icon')"
-            var-action-sheet-cover
-            :namespace="action.namespace"
-            :name="action.icon"
-            :size="action.iconSize"
-            v-if="action.icon"
-          />
-          <div :class="n('action-name')">{{ action.name }}</div>
-        </div>
+        />
       </slot>
     </div>
   </var-popup>
@@ -51,7 +44,7 @@
 <script lang="ts">
 import Ripple from '../ripple'
 import VarPopup from '../popup'
-import VarIcon from '../icon'
+import VarActionItem from './ActionItem.vue'
 import { defineComponent, ref, watch } from 'vue'
 import { props } from './props'
 import { t } from '../locale'
@@ -66,7 +59,7 @@ export default defineComponent({
   directives: { Ripple },
   components: {
     VarPopup,
-    VarIcon,
+    VarActionItem,
   },
   inheritAttrs: false,
   props,
