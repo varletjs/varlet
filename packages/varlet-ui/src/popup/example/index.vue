@@ -1,14 +1,14 @@
 <script setup>
 import { Snackbar } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { t, use } from './locale'
 
 const values = reactive({
-  center: true,
+  center: false,
   top: false,
-  bottom: true,
-  left: true,
+  bottom: false,
+  left: false,
   right: false,
   overlayClass: false,
   overlayStyle: false,
@@ -19,8 +19,6 @@ const { center, top, bottom, left, right, overlayClass, overlayStyle, event } = 
 
 watchLang(use)
 onThemeChange()
-
-const value = ref('')
 </script>
 
 <template>
@@ -33,12 +31,11 @@ const value = ref('')
     <var-button type="primary" block @click="right = true">{{ t('rightPopup') }}</var-button>
   </var-space>
 
+  <var-popup v-model:show="center">
+    <div class="block">{{ t('text') }}</div>
+  </var-popup>
   <var-popup position="bottom" v-model:show="bottom">
     <div class="block">{{ t('text') }}</div>
-    <var-select v-model="value">
-      <var-option label="asdad"></var-option>
-      <var-option label="asda123123"></var-option>
-    </var-select>
   </var-popup>
   <var-popup position="top" v-model:show="top">
     <div class="block">{{ t('text') }}</div>
@@ -79,17 +76,6 @@ const value = ref('')
     @closed="() => Snackbar.error('closed')"
   >
     <div class="block">{{ t('text') }}</div>
-  </var-popup>
-
-  <var-popup v-model:show="center">
-    <div class="block">
-      {{ t('text') }}
-
-      <var-select v-model="value">
-        <var-option label="asdad"></var-option>
-        <var-option label="asda123123"></var-option>
-      </var-select>
-    </div>
   </var-popup>
 </template>
 
