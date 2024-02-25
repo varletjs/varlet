@@ -50,4 +50,10 @@ export const props = {
   onClosed: defineListenerProp<() => void>(),
   onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
+
+  // internal
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
 }

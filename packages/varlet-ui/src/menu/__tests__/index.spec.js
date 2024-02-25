@@ -2,7 +2,7 @@ import Menu from '..'
 import VarMenu from '../Menu'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/test'
+import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import { doubleRaf } from '@varlet/shared'
 import { expect, vi } from 'vitest'
 
@@ -38,7 +38,7 @@ test('test menu placement', async () => {
   ]) {
     const root = document.createElement('div')
 
-    mount(VarMenu, {
+    const wrapper = mount(VarMenu, {
       props: {
         placement,
         teleport: root,
@@ -48,6 +48,7 @@ test('test menu placement', async () => {
     await doubleRaf()
 
     expect(root.innerHTML).toMatchSnapshot()
+    wrapper.unmount()
   }
 
   mockRestore()
@@ -111,6 +112,32 @@ test('test menu hover trigger and events', async () => {
 
   expect(onClosed).toHaveBeenCalledTimes(1)
   expect(root.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test menu close on escape', async () => {
+  const { mockRestore } = mockStubs()
+
+  const onClose = vi.fn()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarMenu, {
+    props: {
+      teleport: root,
+      show: true,
+      onClose,
+    },
+  })
+
+  await wrapper.trigger('mouseenter')
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+
+  await doubleRaf()
+  await delay(0)
+  expect(onClose).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
   mockRestore()

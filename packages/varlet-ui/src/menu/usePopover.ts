@@ -1,8 +1,8 @@
 import flip from '@popperjs/core/lib/modifiers/flip.js'
 import offset from '@popperjs/core/lib/modifiers/offset.js'
 import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
-import { onWindowResize, useClickOutside, useVModel } from '@varlet/use'
-import { doubleRaf, getStyle, call } from '@varlet/shared'
+import { onWindowResize, useClickOutside, useEventListener, useVModel } from '@varlet/use'
+import { doubleRaf, getStyle, call, preventDefault } from '@varlet/shared'
 import { toPxNum } from '../utils/elements'
 import { type ListenerProp } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
@@ -50,6 +50,9 @@ export interface UsePopoverOptions {
   onClosed?: ListenerProp<() => void>
   onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
+
+  // internal
+  closeOnKeyEscape: boolean
 }
 
 export function usePopover(options: UsePopoverOptions) {
@@ -348,6 +351,14 @@ export function usePopover(options: UsePopoverOptions) {
 
   const getReference = () => (options.reference ? host.value!.querySelector(options.reference)! : host.value!)
 
+  const handleKeydown = (event: KeyboardEvent) => {
+    const { closeOnKeyEscape = false } = options
+    if (event.key === 'Escape' && closeOnKeyEscape && show.value) {
+      preventDefault(event)
+      close()
+    }
+  }
+
   // expose
   const resize = () => {
     popoverInstance!.setOptions(getPopperOptions())
@@ -371,6 +382,7 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
+  useEventListener(window, 'keydown', handleKeydown)
   useClickOutside(getReference, 'click', handleClickOutside)
   onWindowResize(resize)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)

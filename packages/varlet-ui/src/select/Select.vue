@@ -10,13 +10,14 @@
       var-select-cover
       same-width
       close-on-click-reference
-      v-model:show="showMenu"
+      :close-on-key-escape="false"
       :class="n('menu')"
       :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
       :offset-y="offsetY"
       :disabled="formReadonly || readonly || formDisabled || disabled"
       :placement="placement"
       :default-style="false"
+      v-model:show="showMenu"
       @click-outside="handleClickOutside"
     >
       <var-field-decorator

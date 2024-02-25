@@ -16,6 +16,7 @@
     :default-style="false"
     :popover-class="popoverClass"
     :close-on-click-reference="closeOnClickReference"
+    :close-on-key-escape="false"
     v-model:show="show"
     @open="onOpen"
     @opened="onOpened"
@@ -83,7 +84,8 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], getSelectedValue(option))
 
       if (!multiple && closeOnSelect) {
-        show.value = false
+        menu.value!.$el.focus()
+        close()
       }
     }
 
@@ -99,7 +101,8 @@ export default defineComponent({
       }
 
       if (key === 'Escape') {
-        show.value = false
+        menu.value!.$el.focus()
+        close()
         return
       }
 
