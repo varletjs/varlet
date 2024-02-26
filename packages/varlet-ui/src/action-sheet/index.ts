@@ -35,6 +35,9 @@ export interface ActionSheetOptions {
   onSelect?: (action: ActionItem) => void
   // internal
   teleport?: TeleportProps['to']
+  // internal for esc
+  closeOnKeyEscape?: boolean
+  onKeyEscape?: () => void
 }
 
 let singletonOptions: ActionSheetOptions | null
