@@ -2,6 +2,6 @@
 
 exports[`test overlay show 1`] = `
 "<transition-stub name="var-overlay--fade" appear="false" persisted="false" css="true">
-  <div class="var-overlay" style="z-index: 1999;"> default slot content </div>
+  <div class="var-overlay" style="z-index: 2000;"> default slot content </div>
 </transition-stub>"
 `;
