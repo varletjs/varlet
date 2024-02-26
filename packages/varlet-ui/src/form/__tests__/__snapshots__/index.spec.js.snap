@@ -523,7 +523,7 @@ exports[`test form with select 1`] = `
                   <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small">选项1</span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div>
-              <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
+              <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
           </div>
           <!--v-if-->
