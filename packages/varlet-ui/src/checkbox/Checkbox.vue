@@ -1,5 +1,12 @@
 <template>
-  <div :class="n('wrap')" @click="handleClick">
+  <div
+    :class="n('wrap')"
+    ref="root"
+    :tabindex="disabled || formDisabled ? undefined : '0'"
+    @focus="handleFocus"
+    @blur="handleBlur"
+    @click="handleClick"
+  >
     <div :class="n()">
       <div
         :class="
@@ -71,7 +78,7 @@ import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
 import { call } from '@varlet/shared'
-import { useVModel } from '@varlet/use'
+import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
 
@@ -85,6 +92,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const root = ref<HTMLElement | null>(null)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
@@ -182,6 +190,34 @@ export default defineComponent({
       change(changedValue)
     }
 
+    useEventListener(() => root.value!, 'keydown', handleKeydown)
+
+    function handleKeydown(event: KeyboardEvent) {
+      const { disabled, readonly } = props
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+        return
+      }
+
+      const { key } = event
+
+      if (key === 'Tab') {
+        root.value?.focus()
+        return
+      }
+
+      if (key === 'Enter' || key === ' ') {
+        root.value?.click()
+      }
+    }
+
+    function handleFocus() {
+      handleHovering(true)
+    }
+
+    function handleBlur() {
+      handleHovering(false)
+    }
+
     // expose
     function validate() {
       return v(props.rules, props.modelValue)
@@ -196,6 +232,7 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
+      root,
       n,
       classes,
       handleHovering,
@@ -204,6 +241,8 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
+      handleBlur,
+      handleFocus,
     }
   },
 })
