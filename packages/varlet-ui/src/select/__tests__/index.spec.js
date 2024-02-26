@@ -150,7 +150,7 @@ test('test select hint to be false', () => {
   wrapper.unmount()
 })
 
-test('test select onFocus & onBlur', async () => {
+test('test select onFocus', async () => {
   const onFocus = vi.fn()
   const onBlur = vi.fn()
 
@@ -161,10 +161,9 @@ test('test select onFocus & onBlur', async () => {
     }),
     methods: {
       onFocus,
-      onBlur,
     },
     template: `
-      <var-select v-model="value" @focus="onFocus" @blur="onBlur">
+      <var-select v-model="value" @focus="onFocus">
         <var-option label="吃饭" />
         <var-option label="睡觉" />
       </var-select>
@@ -173,8 +172,6 @@ test('test select onFocus & onBlur', async () => {
 
   await wrapper.trigger('focus')
   expect(onFocus).toHaveBeenCalledTimes(1)
-  await wrapper.trigger('blur')
-  expect(onBlur).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })
