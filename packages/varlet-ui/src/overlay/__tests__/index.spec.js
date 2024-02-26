@@ -3,6 +3,7 @@ import VarOverlay from '../Overlay'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { expect, vi } from 'vitest'
+import { triggerKeyboard } from '../../utils/test'
 
 test('test overlay plugin', () => {
   const app = createApp({}).use(Overlay)
@@ -56,6 +57,45 @@ test('test overlay click on clickOverlay', async () => {
   await wrapper.setProps({ closeOnClickOverlay: false })
   await wrapper.find('.var-overlay').trigger('click')
   expect(onClick).toHaveBeenCalledTimes(2)
+
+  wrapper.unmount()
+})
+
+test('test overlay keyboard escape', async () => {
+  const onKeyEscape = vi.fn()
+  const onUpdateShow = vi.fn()
+
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      onKeyEscape,
+      'onUpdate:show': onUpdateShow,
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(onKeyEscape).toBeCalledTimes(1)
+  expect(onUpdateShow).toBeCalledWith(false)
+
+  wrapper.unmount()
+})
+
+test('test overlay keyboard escape and closeOnKeyEscape', async () => {
+  const onKeyEscape = vi.fn()
+  const onUpdateShow = vi.fn()
+
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      closeOnKeyEscape: false,
+      onKeyEscape,
+      'onUpdate:show': onUpdateShow,
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(onKeyEscape).toBeCalledTimes(1)
+  expect(onUpdateShow).toBeCalledTimes(0)
 
   wrapper.unmount()
 })
