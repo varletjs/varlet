@@ -1,6 +1,10 @@
 # Card
 
-### Basic Use
+### Intro
+
+Display content and actions about a single subject.
+
+### Basic Usage
 
 ```html
 <template>
@@ -23,25 +27,36 @@
 </template>
 ```
 
-### Outline
+### Show Image
 
 ```html
 <template>
-  <var-card
-    outline
-    :elevation="0"
-    title="Dangerous"
-    subtitle="The girl was dangerous"
+  <var-card 
+    title="Dangerous" 
+    subtitle="The girl was dangerous" 
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
   />
 </template>
 ```
 
-### Show Image
+### Use Slot
 
 ```html
 <template>
-  <var-card title="Dangerous" subtitle="The girl was dangerous" src="https://varlet.gitee.io/varlet-ui/cat.jpg"/>
+  <var-card
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  >
+    <template #extra>
+      <var-space>
+        <var-button type="primary">ACTION 1</var-button>
+        <var-button type="primary">ACTION 2</var-button>
+      </var-space>
+    </template>
+  </var-card>
 </template>
 ```
 
@@ -62,26 +77,6 @@
       <var-button round text>
         <var-icon name="heart" />
       </var-button>
-    </template>
-  </var-card>
-</template>
-```
-
-### Use Slot
-
-```html
-<template>
-  <var-card
-    title="Dangerous"
-    subtitle="The girl was dangerous"
-    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-  >
-    <template #extra>
-      <var-space>
-        <var-button text type="warning">ACTION 1</var-button>
-        <var-button text type="warning">ACTION 2</var-button>
-      </var-space>
     </template>
   </var-card>
 </template>
@@ -113,14 +108,11 @@ const floating = ref(false)
   <var-card
     title="Dangerous"
     subtitle="The girl was dangerous"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
-    @click="floating = true"
   >
     <template #extra>
-      <var-button text type="warning">ACTION 1</var-button>
-      <var-button text type="warning">ACTION 2</var-button>
+      <var-button type="primary" @click="floating = true">Floating</var-button>
     </template>
 
     <template #floating-content>
@@ -142,6 +134,20 @@ const floating = ref(false)
 </style>
 ```
 
+### Outline
+
+```html
+<template>
+  <var-card
+    outline
+    :elevation="0"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
 ## API
 
 ### Props
@@ -156,18 +162,18 @@ const floating = ref(false)
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
-| `alt`               | Alt text                                                        | _string_ | `-`      |
-| `image-height`      | height of Image                                                 | _string \| number_  | `-`     |
-| `image-width`       | width of Image                                                  | _string \| number_  | `-`     |
+| `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
+| `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
+| `image-width`       | Width of Image                                                  | _string \| number_  | `-`     |
 | `ripple`            | Whether to enable ripple                                        | _boolean_ | `false`  |
-| `floating`          | Whether to full screen                                          | _boolean_ | `false`  |
+| `floating`          | Whether to full screen                                         | _boolean_ | `false`  |
 | `floating-duration` | Time to full screen(ms)                                         | _number_ | `250`    |
 
 ### Events
 
 | Events  | Description                      | Arguments      |
 | ------- | -------------------------------- | -------------- |
-| `click` | Triggered when the Card is click | `event: Event` |
+| `click` | Triggered when the card is click | `event: Event` |
 
 ### Slots
 
@@ -183,14 +189,14 @@ const floating = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|
-| `--card-background`                 | `#fff`                |
+| `--card-background`                 | `var(--color-surface-container-highest)`                |
 | `--card-padding`                    | `0px 0 15px 0`        |
 | `--card-border-radius`              | `4px`                 |
-| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
+| `--card-outline-color`              | `var(--color-outline)` |
 | `--card-image-width`                | `100%`                |
 | `--card-row-image-width`            | `140px`               |
 | `--card-image-height`               | `200px`               |
@@ -221,3 +227,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--card-close-button-icon-size`     | `24px`                |
 | `--card-close-button-size`          | `56px`                |
 | `--card-close-button-primary-color` | `#212121`             |
+| `--card-close-button-text-color` | `#fff`            |
+| `--card-close-button-border-radius` | `50%` |

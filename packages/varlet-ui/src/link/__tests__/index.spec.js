@@ -2,7 +2,8 @@ import Link from '..'
 import VarLink from '../Link'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { trigger } from '../../utils/jest'
+import { trigger } from '../../utils/test'
+import { expect, vi, describe } from 'vitest'
 
 const HREF = 'https://varlet.gitee.io/varlet-ui/'
 
@@ -15,22 +16,6 @@ test('test link plugin', () => {
   expect(app.component(Link.name)).toBeTruthy()
 })
 
-describe('test link component event', () => {
-  test('test link onClick', async () => {
-    const onClick = jest.fn()
-
-    const wrapper = mount(VarLink, {
-      props: {
-        onClick,
-      },
-    })
-
-    await trigger(wrapper, 'click')
-    expect(onClick).toHaveBeenCalledTimes(1)
-    wrapper.unmount()
-  })
-})
-
 describe('test link component props', () => {
   test('test link type', () => {
     ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
@@ -41,6 +26,20 @@ describe('test link component props', () => {
       expect(wrapper.find('a').classes()).toContain('var-link--' + type)
       wrapper.unmount()
     })
+  })
+
+  test('test link rel', () => {
+    const wrapper = mount(VarLink, {
+      props: {
+        href: HREF,
+        target: TARGET,
+        rel: 'noopener noreferrer',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 
   test('test link href target', () => {
@@ -79,7 +78,7 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link type', () => {
+  test('test link underline', () => {
     ;['always', 'hover', 'none'].forEach((underline) => {
       const wrapper = mount(VarLink, {
         props: { underline },
@@ -96,7 +95,7 @@ describe('test link component props', () => {
   })
 
   test('test link disabled', async () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
 
     const wrapper = mount(VarLink, {
       props: {
@@ -112,24 +111,66 @@ describe('test link component props', () => {
     wrapper.unmount()
   })
 
-  test('test link text color', () => {
+  test('test link text color', async () => {
     const wrapper = mount(VarLink, {
       props: {
         textColor: '#000',
       },
     })
+
     expect(wrapper.attributes('style')).toMatch('color: rgb(0, 0, 0)')
+
+    await wrapper.setProps({
+      textColor: 'red',
+    })
+    expect(wrapper.attributes('style')).toMatch('color: red')
+
+    wrapper.unmount()
+  })
+
+  test('test link text size', async () => {
+    const wrapper = mount(VarLink, {
+      props: {
+        textSize: '12',
+      },
+    })
+
+    expect(wrapper.attributes('style')).toMatch('font-size: 12px')
+
+    await wrapper.setProps({
+      textSize: '14px',
+    })
+    expect(wrapper.attributes('style')).toMatch('font-size: 14px')
+
     wrapper.unmount()
   })
 })
 
-test('test link default slots', () => {
-  const wrapper = mount(VarLink, {
-    slots: {
-      default: () => 'test',
-    },
-  })
+describe('test link component events', () => {
+  test('test link onClick', async () => {
+    const onClick = vi.fn()
 
-  expect(wrapper.find('.var-link').element.textContent).toBe('test')
-  wrapper.unmount()
+    const wrapper = mount(VarLink, {
+      props: {
+        onClick,
+      },
+    })
+
+    await trigger(wrapper, 'click')
+    expect(onClick).toHaveBeenCalledTimes(1)
+    wrapper.unmount()
+  })
+})
+
+describe('test link component slots', () => {
+  test('test link default slot', () => {
+    const wrapper = mount(VarLink, {
+      slots: {
+        default: () => 'test',
+      },
+    })
+
+    expect(wrapper.find('.var-link').element.textContent).toBe('test')
+    wrapper.unmount()
+  })
 })

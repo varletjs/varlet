@@ -84,4 +84,49 @@
       background-color: var(--switch-handle-error-background) !important;
     }
   }
+
+  &__loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    animation: circle 1.8s linear infinite;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      circle {
+        animation: circular 1.5s ease-in-out infinite;
+        stroke: currentColor;
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+    }
+
+    @keyframes circle {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes circular {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -40;
+      }
+
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -120;
+      }
+    }
+  }
 }

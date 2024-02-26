@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const backTopProps: Record<string, any>
+export declare const backTopProps: Record<keyof BackTopProps, any>
 
 export interface BackTopProps extends BasicAttributes {
   visibilityHeight?: number | string
@@ -10,10 +10,12 @@ export interface BackTopProps extends BasicAttributes {
   right?: number | string
   elevation?: boolean | number | string
   bottom?: number | string
-  onClick?: ListenerProp<(e: MouseEvent) => void>
+  onClick?: ListenerProp<(e: Event) => void>
 }
 
 export class BackTop extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BackTopProps>
+
   $props: BackTopProps
 
   $slots: {

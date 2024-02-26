@@ -85,44 +85,6 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
   />
 </template>
 ```
-### Custom
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-05')
-
-const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
-
-function change(date) {
-  console.log(date)
-}
-</script>
-
-<template>
-  <var-date-picker
-    elevation
-    type="month"
-    v-model="date"
-    min="2016-07"
-    max="2022-01"
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    :allowed-dates="allowedDates"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}-{{ month }}</span>
-    </template>
-  </var-date-picker>
-</template>
-```
-
 
 ## API
 
@@ -131,10 +93,11 @@ function change(date) {
 | Prop | Description                                                                                                       | Type | Default |
 | ----- |-------------------------------------------------------------------------------------------------------------------| -------- | ---------- |
 | `v-model` | Selected date（ISO 8601 format, `YYYY-MM-DD` or `YYYY-MM`）                                                         | _string[] \| string_ | `undefined` |
-| `type` | Picker type, optional values`date, month`                                                                         | _string_ | `date` |
+| `type` | Picker type, optional values `date` `month` `year`                                                                         | _string_ | `date` |
 | `allowed-dates` | Restricts which dates can be selected                                                                             | _function_ | `-` |
-| `color` | Picker color                                                                                                      | _string_ | `#2979ff` |
-| `header-color` | Color of picker header. If not specified it will use the color defined by color prop or the default picker color. | _string_ | `#2979ff` |
+| `color` | Picker color                                                                                                      | _string_ | `-` |
+| `title-color` | Color of picker title. If not specified it will use `color` prop or the default picker color. | _string_ | `-` |
+| `hint`              | Picker hint                                  | _string_ | `SELECT DATE` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`                                                       | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Elevation level of Button                                                                                         | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | Sets the first day of the week, starting with 0 for Sunday.                                                       | _string \| number_ | `0` |
@@ -150,31 +113,34 @@ function change(date) {
 
 | Event | Description                 | arguments |
 | ----- |-----------------------------| -------- |
-| `preview` | Emitted after date switched | `year: number` <br>`month: number` |
+| `preview` | Emitted after date switched | `year: number` <br>`month: number` <br>`day?: number` |
 | `change` | Emitted after date changed  | `value: string \| string[]` |
 
 ### Slots
 
 `weekIndex` means the nth day of the week, starting with `0` for Sunday.
 
-| Name | Description | SlotProps |
-| ----- | -------------- | -------- |
-| `year` | Custom the year in the title | `year: YYYY` |
-| `month` | Custom the month in the title | `year: YYYY` <br> `month: MM` |
+| Name | Description | SlotProps                                                            |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `year` | Custom the year in the title | `year: YYYY`                                                         |
+| `month` | Custom the month in the title | `year: YYYY` <br> `month: MM`                                        |
 | `date` | Custom the date in the title | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | Custom the range in the title | `choose: [startData, endDate]` |
-| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
+| `range` | Custom the range in the title | `choose: [startData, endDate]`                                       |
+| `multiple` | Custom the multiple in the title  | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `actions` | Custom the views in the action panel | `-`                                                                  |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default                |
 | --- |------------------------|
 | `--date-picker-border-radius` | `4px`                  |
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
-| `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-hint-color` | `#fff` |
+| `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
+| `--date-picker-title-height` | `105px` |
 | `--date-picker-title-padding` | `16px`                 |
 | `--date-picker-title-background` | `var(--color-primary)` |
 | `--date-picker-title-color` | `#fff`                 |
@@ -185,19 +151,21 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
+| `--date-picker-body-padding` | '0' |
 | `--date-picker-body-background-color` | `#fff`                 |
-| `--picker-header-padding` | `4px 16px`             |
-| `--picker-header-padding` | `4px 16px`             |
+| `--date-picker-body-height` | `280px`                |
+| `--date-picker-header-arrow-filter` | `opacity(0.54)` |
+| `--date-picker-header-padding` | `4px 16px`             |
+| `--date-picker-actions-padding` | `0 8px 12px 8px`       |
+| `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-font-weight` | `400`                  |
-| `--year-picker-item-padding` | `8px 0`                |
-| `--year-picker-item-active-font-size` | `26px`                 |
-| `--year-picker-item-active-font-weight` | `500`                  |
-| `--year-picker-item-active-font-padding` | `10px 0`               |
-| `--year-picker-item-active-color` | `var(--color-primary)` |
+| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-item-width` | `33%`                  |
+| `--year-picker-item-height` | `56px`                 |
+| `--year-picker-item-button-max-width` | `140px`                |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |

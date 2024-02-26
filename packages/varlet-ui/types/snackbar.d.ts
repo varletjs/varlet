@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { LoadingType, LoadingSize } from './loading'
 import { App, TeleportProps, VNode } from 'vue'
 
@@ -6,21 +6,17 @@ export type SnackbarPosition = 'top' | 'center' | 'bottom'
 
 export type SnackbarType = 'success' | 'warning' | 'info' | 'error' | 'loading'
 
-export declare const snackbarProps: Record<string, any>
-
-export type SlotType = string | VNode | (() => VNode)
+export declare const snackbarProps: Record<keyof SnackbarProps, any>
 
 export interface SnackbarProps extends BasicAttributes {
   type?: SnackbarType
-  content?: SlotType
-  icon?: SlotType
-  action?: SlotType
+  content?: string
   position?: SnackbarPosition
   loadingType?: LoadingType
   loadingSize?: LoadingSize
   loadingColor?: string
   loadingRadius?: string | number
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   lockScroll?: boolean
   contentClass?: string
   duration?: number
@@ -50,15 +46,18 @@ export interface SnackbarHandel {
 
 export interface SnackbarOptions {
   type?: SnackbarType
-  content?: string
   position?: SnackbarPosition
+  content?: string | VNode | (() => VNode)
+  icon?: string | VNode | (() => VNode)
+  action?: string | VNode | (() => VNode)
+  duration?: number
+  contentClass?: string
+  vertical?: boolean
   loadingType?: string
   loadingSize?: string
-  teleport?: string
+  loadingColor?: string
+  loadingRadius?: string
   lockScroll?: boolean
-  contentClass?: string
-  duration?: number
-  vertical?: boolean
   forbidClick?: boolean
   onOpen?: () => void
   onClose?: () => void
@@ -72,6 +71,8 @@ export interface ISnackbar {
   Component: typeof SnackbarComponent
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<SnackbarProps>
 
   allowMultiple(bool: boolean): void
 

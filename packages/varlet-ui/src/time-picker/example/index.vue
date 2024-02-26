@@ -1,9 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarTimePicker from '..'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 const dates = reactive({
   date: '11:20',
@@ -12,6 +10,7 @@ const dates = reactive({
   date3: '07:10:12',
   date4: '05:10',
   date5: '17:36:22',
+  date6: '17:36:22',
 })
 
 const allowedTime = {
@@ -20,28 +19,24 @@ const allowedTime = {
   seconds: (second) => second % 2 !== 0,
 }
 
-function change(time) {
-  console.log(time)
-}
-
 watchLang(use)
-watchDarkMode(dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-time-picker v-model="dates.date" />
 
-  <app-type>{{ pack.hour24 }}</app-type>
-  <var-time-picker v-model="dates.date1" format="24hr" elevation />
+  <app-type>{{ t('hour24') }}</app-type>
+  <var-time-picker v-model="dates.date1" format="24hr" />
 
-  <app-type>{{ pack.showSecond }}</app-type>
+  <app-type>{{ t('showSecond') }}</app-type>
   <var-time-picker v-model="dates.date5" format="24hr" use-seconds />
 
-  <app-type>{{ pack.readonly }}</app-type>
-  <var-time-picker v-model="dates.date2" readonly elevation />
+  <app-type>{{ t('readonly') }}</app-type>
+  <var-time-picker v-model="dates.date2" readonly />
 
-  <app-type>{{ pack.timeLimit }}</app-type>
+  <app-type>{{ t('timeLimit') }}</app-type>
   <var-time-picker
     v-model="dates.date3"
     format="24hr"
@@ -51,14 +46,13 @@ watchDarkMode(dark)
     :allowed-time="allowedTime"
   />
 
-  <app-type>{{ pack.custom }}</app-type>
-  <var-time-picker
-    v-model="dates.date4"
-    elevation
-    header-color="purple"
-    color="#7bb872"
-    min="2:28:38"
-    max="19:40:22"
-    @change="change"
-  />
+  <app-type>{{ t('actions') }}</app-type>
+  <var-time-picker v-model="dates.date6">
+    <template #actions>
+      <var-space size="small">
+        <var-button type="primary" text>{{ t('action') }}</var-button>
+        <var-button type="primary" text>{{ t('action') }}</var-button>
+      </var-space>
+    </template>
+  </var-time-picker>
 </template>

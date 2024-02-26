@@ -1,18 +1,18 @@
 <template>
   <div
     ref="host"
-    :class="n()"
+    :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
     @mouseleave="handleHostMouseleave"
   >
     <slot />
 
-    <teleport :to="teleport">
-      <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
+    <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
+      <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
-          :class="n('tooltip')"
+          :class="classes(n('tooltip'), n('$--box'))"
           :style="{ zIndex }"
           v-show="show"
           @click.stop
@@ -27,23 +27,24 @@
           </div>
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 
 <script lang="ts">
-import { createNamespace } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
 import { toSizeUnit } from '../utils/elements'
 import { usePopover } from '../menu/usePopover'
 import { props } from './props'
 
-const { n, classes } = createNamespace('tooltip')
+const { name, n, classes } = createNamespace('tooltip')
 
 export default defineComponent({
-  name: 'VarTooltip',
+  name,
   props,
   setup(props) {
+    const { disabled: teleportDisabled } = useTeleport()
     const {
       popover,
       host,
@@ -56,6 +57,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       // expose
       open,
       // expose
@@ -65,12 +67,13 @@ export default defineComponent({
     } = usePopover(props)
 
     return {
-      toSizeUnit,
       popover,
       host,
       hostSize,
       show,
       zIndex,
+      teleportDisabled,
+      toSizeUnit,
       n,
       classes,
       handleHostClick,
@@ -79,6 +82,7 @@ export default defineComponent({
       handleHostMouseleave,
       handlePopoverMouseenter,
       handlePopoverMouseleave,
+      handleClosed,
       resize,
       open,
       close,

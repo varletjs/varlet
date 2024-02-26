@@ -1,23 +1,15 @@
-import type { PropType } from 'vue'
-import type { BadgeProps } from '../../types'
-import { defineListenerProp } from '../utils/components'
+import { badgeProps } from '../badge'
+import { iconProps } from '../icon'
+import { type PropType } from 'vue'
+import { type ExtractPublicPropTypes, defineListenerProp, pickProps } from '../utils/components'
 
 export const props = {
-  name: {
-    type: String,
-  },
-  icon: {
-    type: String,
-  },
-  label: {
-    type: String,
-  },
-  namespace: {
-    type: String,
-    default: 'var-icon',
-  },
+  name: String,
+  label: String,
+  icon: pickProps(iconProps, 'name'),
+  namespace: pickProps(iconProps, 'namespace'),
   badge: {
-    type: [Boolean, Object] as PropType<boolean | Partial<BadgeProps>>,
+    type: [Boolean, Object] as PropType<boolean | ExtractPublicPropTypes<typeof badgeProps>>,
     default: false,
   },
   onClick: defineListenerProp<(active: number | string) => void>(),

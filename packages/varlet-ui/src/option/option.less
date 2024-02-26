@@ -1,7 +1,10 @@
 :root {
   --option-height: 38px;
   --option-padding: 0 12px;
+  --option-font-size: 16px;
   --option-selected-background: var(--field-decorator-focus-color);
+  --option-text-color: #555;
+  --option-disabled-color: var(--color-text-disabled);
 }
 
 .var-option {
@@ -12,6 +15,8 @@
   padding: var(--option-padding);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: var(--option-text-color);
+  outline: none;
 
   &__cover {
     position: absolute;
@@ -24,8 +29,7 @@
   }
 
   &__text {
-    display: flex;
-    align-items: center;
+    font-size: var(--option-font-size);
   }
 
   &--selected-background {
@@ -34,5 +38,10 @@
 
   &--selected-color {
     color: var(--option-selected-background);
+  }
+
+  &--disabled {
+    color: var(--option-disabled-color);
+    cursor: not-allowed;
   }
 }

@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import BackTop from './BackTop.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as backTopProps } from './props'
 
-BackTop.install = function (app: App) {
-  app.component(BackTop.name, BackTop)
-}
+withInstall(BackTop)
+withPropsDefaultsSetter(BackTop, backTopProps)
 
-export { props as backTopProps } from './props'
+export { backTopProps }
 
 export const _BackTopComponent = BackTop
 

@@ -12,7 +12,6 @@
 
 .var-app-bar {
   position: relative;
-  z-index: 0;
   width: 100%;
   font-size: var(--app-bar-font-size);
   background: var(--app-bar-color);
@@ -43,7 +42,6 @@
     display: flex;
     align-items: center;
     height: 100%;
-    z-index: 2;
   }
 
   &__left {
@@ -66,5 +64,11 @@
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
     box-sizing: content-box !important;
+  }
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 }

@@ -33,16 +33,16 @@
 
     <var-image 
       width="85px"
-      height="85px" 
-      fit="contain"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+      height="85px"
+      fit="none"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
     <var-image 
       width="85px"
-      height="85px"
-      fit="none"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      height="85px" 
+      fit="contain"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
     <var-image 
@@ -125,9 +125,19 @@
 
 ```html
 <template>
-   <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+  <var-image 
+    width="22.666vw" 
+    height="22.666vw" 
+    src="https://varlet.gitee.io/varlet-ui/ca.jpg"
+  >
     <template #error>
-      <var-result type="error" title="加载失败" />
+      <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+        <path
+          fill="currentColor"
+          d="M21,5V11.59L18,8.58L14,12.59L10,8.59L6,12.59L3,9.58V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5M18,11.42L21,14.43V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V12.42L6,15.41L10,11.41L14,15.41"
+        >
+        </path>
+      </svg>
     </template>
   </var-image>
 </template>
@@ -199,6 +209,7 @@ import logo from '../../assets/logo.png'
 | `fit`     | 填充模式, 可选值为 `fill contain cover none scale-down` | _string_ | `fill` |
 | `alt`     | 替代文本，和 `img` 标签原生属性一致                           | _string_ | `-` |
 | `title`   | 图片描述性文字，和 `img` 标签原生属性一致             | _string_ | `-` |
+| `referrerpolicy`   | 指示在获取资源时使用的来源地址。该属性需注意浏览器兼容性，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)            | _string_ | `-` |
 | `width`   | 图片宽度                                            | _string \| number_ | `-` |
 | `height`  | 图片高度                                            | _string \| number_ | `-` |
 | `radius`  | 图片圆角                                            | _string \| number_ | `-` |

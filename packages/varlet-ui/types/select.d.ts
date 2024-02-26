@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp, Variant as SelectVariant } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Variant as SelectVariant, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const selectProps: Record<string, any>
+export declare const selectProps: Record<keyof SelectProps, any>
 
 export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onClose'
 
@@ -40,14 +40,18 @@ export interface SelectProps extends BasicAttributes {
 
 export interface SelectArrowIconData {
   focus: boolean
+  menuOpen: boolean
 }
 
 export class Select extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SelectProps>
+
   $props: SelectProps
 
   $slots: {
     'selected'(): VNode[]
     'prepend-icon'(): VNode[]
+    'clear-icon'(): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]
   }

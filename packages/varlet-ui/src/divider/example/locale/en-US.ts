@@ -7,5 +7,5 @@ export default {
   withDesc: 'Description Text',
   withDescText: 'Description',
   custom: 'Custom Description',
-  hairline: 'Use 0.5px Divider',
+  hairline: '0.5px Divider',
 }

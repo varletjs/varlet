@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Col from './Col.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as colProps } from './props'
 
-Col.install = function (app: App) {
-  app.component(Col.name, Col)
-}
+withInstall(Col)
+withPropsDefaultsSetter(Col, colProps)
 
-export { props as colProps } from './props'
+export { colProps }
 
 export const _ColComponent = Col
 

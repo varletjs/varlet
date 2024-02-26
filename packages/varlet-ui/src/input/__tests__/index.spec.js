@@ -2,7 +2,8 @@ import Input from '..'
 import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi, describe } from 'vitest'
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
@@ -51,6 +52,7 @@ test('test input size', () => {
 
   expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
 test('test input type', () => {
@@ -87,10 +89,32 @@ test('test input type', () => {
   })
 })
 
+test('test input format number', async () => {
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      type: 'number',
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-input__input').setValue('10')
+  expect(onUpdateModelValue).lastCalledWith('10')
+  await wrapper.find('.var-input__input').setValue('aa111')
+  expect(onUpdateModelValue).lastCalledWith('111')
+  await wrapper.find('.var-input__input').setValue('1.')
+  expect(onUpdateModelValue).lastCalledWith('1.')
+  await wrapper.find('.var-input__input').setValue('1.01')
+  expect(onUpdateModelValue).lastCalledWith('1.01')
+
+  wrapper.unmount()
+})
+
 describe('test input events', () => {
   async function expectFocusAndBlur(props = {}) {
-    const onFocus = jest.fn()
-    const onBlur = jest.fn()
+    const onFocus = vi.fn()
+    const onBlur = vi.fn()
 
     const wrapper = mount(VarInput, {
       props: {
@@ -112,10 +136,10 @@ describe('test input events', () => {
   }
 
   async function expectInputAndChangeAndClick(props = {}) {
-    const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-    const onInput = jest.fn()
-    const onChange = jest.fn()
-    const onClick = jest.fn()
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const onInput = vi.fn()
+    const onChange = vi.fn()
+    const onClick = vi.fn()
 
     const wrapper = mount(VarInput, {
       props: {
@@ -160,6 +184,8 @@ test('test input maxlength', () => {
 
   expect(wrapper.find('.var-form-details__extra-message').text()).toBe('4/100')
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })
 
 test('test input hint to be false', () => {
@@ -176,8 +202,8 @@ test('test input hint to be false', () => {
 })
 
 test('test input clear', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
-  const onClear = jest.fn()
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onClear = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -206,11 +232,11 @@ const triggerEvents = async (wrapper) => {
 }
 
 test('test input disabled', async () => {
-  const onClear = jest.fn()
-  const onClick = jest.fn()
-  const onInput = jest.fn()
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn()
+  const onClear = vi.fn()
+  const onClick = vi.fn()
+  const onInput = vi.fn()
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -237,11 +263,11 @@ test('test input disabled', async () => {
 })
 
 test('test input readonly', async () => {
-  const onClear = jest.fn()
-  const onClick = jest.fn()
-  const onInput = jest.fn()
-  const onChange = jest.fn()
-  const onUpdateModelValue = jest.fn()
+  const onClear = vi.fn()
+  const onClick = vi.fn()
+  const onInput = vi.fn()
+  const onChange = vi.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -258,17 +284,17 @@ test('test input readonly', async () => {
 
   await triggerEvents(wrapper)
 
-  expect(onInput).toHaveBeenCalledTimes(0)
+  expect(onInput).toHaveBeenCalledTimes(1)
   expect(onClear).toHaveBeenCalledTimes(0)
   expect(onClick).toHaveBeenCalledTimes(2)
-  expect(onChange).toHaveBeenCalledTimes(0)
-  expect(onUpdateModelValue).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(1)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
 })
 
 test('test input validation', async () => {
-  const onUpdateModelValue = jest.fn((value) => wrapper.setProps({ modelValue: value }))
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
 
   const wrapper = mount(VarInput, {
     props: {
@@ -299,7 +325,7 @@ test('test input validation', async () => {
 })
 
 test('test input trim', async () => {
-  const onUpdateModelValue = jest.fn()
+  const onUpdateModelValue = vi.fn()
 
   const wrapper = mount(VarInput, {
     props: {
@@ -323,8 +349,72 @@ test('test input autofocus', async () => {
     },
   })
 
-  await delay(100)
-  expect(wrapper.find('.var-input--focus')).toBeTruthy()
+  await wrapper.find('.var-input__input').trigger('focus')
+  expect(wrapper.find('.var-field-decorator--focus').exists()).toBe(true)
 
   wrapper.unmount()
+})
+
+test('test input focus on mousedown', async () => {
+  let wrapper = mount(VarInput)
+
+  await wrapper.trigger('mousedown')
+  await wrapper.find('.var-input__input').trigger('focus')
+  expect(wrapper.find('.var-field-decorator--focus').exists()).toBe(true)
+  wrapper.unmount()
+})
+
+describe('test input component slots', () => {
+  test('test input extra slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'extra-message': () => '还能输入10个字符',
+      },
+    })
+
+    await delay(100)
+    expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
+
+    wrapper.unmount()
+  })
+
+  test('test input append-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'append-icon': () => 'append-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test input prepend-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      slots: {
+        'prepend-icon': () => 'prepend-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test input clear-icon slot', async () => {
+    const wrapper = mount(VarInput, {
+      props: {
+        clearable: true,
+        modelValue: 'value',
+      },
+      slots: {
+        'clear-icon': () => 'clear-icon',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })

@@ -27,14 +27,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, type Ref, type ComputedRef } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
-import { doubleRaf, getParentScroller, raf, toPxNum, getRect } from '../utils/elements'
-import { toNumber } from '@varlet/shared'
-import { call, createNamespace } from '../utils/components'
+import { getParentScroller, toPxNum } from '../utils/elements'
+import { toNumber, raf, doubleRaf, getRect, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
 import { useEventListener, onSmartMounted, onWindowResize, onSmartUnmounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('sticky')
+const { name, n, classes } = createNamespace('sticky')
 
 export interface StickyFixedParams {
   offsetTop: number
@@ -42,27 +42,39 @@ export interface StickyFixedParams {
 }
 
 export default defineComponent({
-  name: 'VarSticky',
+  name,
   props,
   setup(props) {
-    const stickyEl: Ref<HTMLElement | null> = ref(null)
-    const wrapperEl: Ref<HTMLElement | null> = ref(null)
-
-    const isFixed: Ref<boolean> = ref(false)
-    const fixedTop: Ref<string> = ref('0px')
-    const fixedLeft: Ref<string> = ref('0px')
-    const fixedWidth: Ref<string> = ref('auto')
-    const fixedHeight: Ref<string> = ref('auto')
-    const fixedWrapperWidth: Ref<string> = ref('auto')
-    const fixedWrapperHeight: Ref<string> = ref('auto')
-
-    const enableCSSMode: ComputedRef<boolean> = computed(() => !props.disabled && props.cssMode)
-    const enableFixedMode: ComputedRef<boolean> = computed(() => !props.disabled && !props.cssMode && isFixed.value)
-    const offsetTop: ComputedRef<number> = computed(() => toPxNum(props.offsetTop))
+    const stickyEl = ref<HTMLElement | null>(null)
+    const wrapperEl = ref<HTMLElement | null>(null)
+    const isFixed = ref(false)
+    const fixedTop = ref('0px')
+    const fixedLeft = ref('0px')
+    const fixedWidth = ref('auto')
+    const fixedHeight = ref('auto')
+    const fixedWrapperWidth = ref('auto')
+    const fixedWrapperHeight = ref('auto')
+    const enableCSSMode = computed(() => !props.disabled && props.cssMode)
+    const enableFixedMode = computed(() => !props.disabled && !props.cssMode && isFixed.value)
+    const offsetTop = computed(() => toPxNum(props.offsetTop))
 
     let scroller: HTMLElement | Window
 
-    const computeFixedParams = (): StickyFixedParams | undefined => {
+    watch(() => props.disabled, resize)
+
+    onSmartMounted(async () => {
+      await doubleRaf()
+      setupScroller()
+      handleScroll()
+    })
+
+    onSmartUnmounted(removeScrollListener)
+
+    onWindowResize(resize)
+
+    useEventListener(() => window, 'scroll', handleScroll)
+
+    function computeFixedParams(): StickyFixedParams | undefined {
       const { cssMode, disabled } = props
 
       if (disabled) {
@@ -106,11 +118,15 @@ export default defineComponent({
       }
     }
 
-    const handleScroll = () => {
-      if (!scroller) {
-        return
-      }
+    function setupScroller() {
+      scroller = getParentScroller(stickyEl.value as HTMLElement)
 
+      if (scroller !== window) {
+        scroller.addEventListener('scroll', handleScroll)
+      }
+    }
+
+    function handleScroll() {
       // returns undefined when disabled = true
       const fixedParams = computeFixedParams()
 
@@ -119,35 +135,23 @@ export default defineComponent({
       }
     }
 
+    function removeScrollListener() {
+      if (!scroller || scroller === window) {
+        // may be null in nuxt
+        return
+      }
+
+      scroller.removeEventListener('scroll', handleScroll)
+    }
+
     // expose
-    const resize = async () => {
+    async function resize() {
       isFixed.value = false
       await raf()
       computeFixedParams()
     }
 
-    const addScrollListener = async () => {
-      await doubleRaf()
-      scroller = getParentScroller(stickyEl.value as HTMLElement)
-      scroller !== window && scroller.addEventListener('scroll', handleScroll)
-      handleScroll()
-    }
-
-    const removeScrollListener = () => {
-      scroller !== window && scroller.removeEventListener('scroll', handleScroll)
-    }
-
-    watch(() => props.disabled, resize)
-
-    onSmartMounted(addScrollListener)
-    onSmartUnmounted(removeScrollListener)
-    onWindowResize(resize)
-    useEventListener(() => window, 'scroll', handleScroll)
-
     return {
-      n,
-      classes,
-      resize,
       stickyEl,
       wrapperEl,
       isFixed,
@@ -160,6 +164,9 @@ export default defineComponent({
       fixedWrapperHeight,
       enableCSSMode,
       enableFixedMode,
+      n,
+      classes,
+      resize,
       toNumber,
     }
   },

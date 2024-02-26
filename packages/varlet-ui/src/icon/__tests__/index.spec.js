@@ -2,7 +2,8 @@ import Icon from '..'
 import VarIcon from '../Icon'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test icon plugin', () => {
   const app = createApp({}).use(Icon)
@@ -10,7 +11,7 @@ test('test icon plugin', () => {
 })
 
 test('test icon onClick', () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
   const wrapper = mount(VarIcon, {
     props: {
       onClick,

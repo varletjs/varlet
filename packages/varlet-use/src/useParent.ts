@@ -8,7 +8,7 @@ import {
   type ComponentInternalInstance,
   type ComputedRef,
 } from 'vue'
-import { type UseChildrenBaseProvider } from './useChildren'
+import { type UseChildrenBaseProvider } from './useChildren.js'
 
 export function keyInProvides(key: symbol | string) {
   const instance = getCurrentInstance() as any

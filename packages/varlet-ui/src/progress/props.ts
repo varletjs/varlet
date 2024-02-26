@@ -1,42 +1,26 @@
 import { type PropType } from 'vue'
 
-function modeValidator(mode: string): boolean {
-  return ['linear', 'circle'].includes(mode)
-}
+export type ProgressMode = 'linear' | 'circle'
 
-type ProgressMode = 'linear' | 'circle'
+export type ProgressType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
 export const props = {
   mode: {
     type: String as PropType<ProgressMode>,
     default: 'linear',
-    validator: modeValidator,
   },
   lineWidth: {
     type: [Number, String],
     default: 4,
   },
-  color: {
-    type: String,
-  },
-  trackColor: {
-    type: String,
-  },
-  ripple: {
-    type: Boolean,
-    default: false,
-  },
+  color: [String, Object] as PropType<string | Record<string, string>>,
+  trackColor: String,
   value: {
     type: [Number, String],
     default: 0,
   },
-  label: {
-    type: Boolean,
-    default: false,
-  },
-  labelClass: {
-    type: String,
-  },
+  label: Boolean,
+  labelClass: String,
   size: {
     type: [Number, String],
     default: 40,
@@ -48,5 +32,10 @@ export const props = {
   track: {
     type: Boolean,
     default: true,
+  },
+  indeterminate: Boolean,
+  type: {
+    type: String as PropType<ProgressType>,
+    default: 'primary',
   },
 }

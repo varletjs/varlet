@@ -1,15 +1,15 @@
 export default {
   functionCall: 'Function Call',
   componentCall: 'Component Call',
-  preview: 'Basic Use',
+  preview: 'Basic usage',
   callBack: 'Handle callback function',
-  basicUse: 'Basic Use',
+  basicUse: 'Basic usage',
   specifyInitialPosition: 'Specify initial position',
   displayCloseButton: 'Display the close button',
   listenCloseEvents: 'Listen for close event',
   shutdownEvent: 'The shutdown event was triggered.',
   preventLongTapDefault: 'Listen for long press event',
-  preventDefaultEvent: 'This image is copyrighted!!',
+  preventDefaultEvent: 'Long press event is triggered',
   showExtraSlots: 'Show extra slots',
   operate: 'Operate',
 }

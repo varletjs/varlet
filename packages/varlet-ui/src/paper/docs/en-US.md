@@ -2,7 +2,7 @@
 
 ### Intro
 
-Create an easier container using elevation and water effects
+An easier container using elevation and water effects.
 
 ### Basic Usage
 
@@ -55,7 +55,7 @@ Create an easier container using elevation and water effects
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
-| `ripple` | Whether to enable ripple effect | _boolean_ | `-` |
+| `ripple` | Whether to enable ripple effect | _boolean_ | `false` |
 | `radius` | Paper border radius | _string \| number_ | `-` |
 | `width` | Paper width | _string \| number_ | `-` |
 | `height` | Paper height | _string \| number_ | `-` |
@@ -76,8 +76,8 @@ Create an easier container using elevation and water effects
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | ------ | -------------|
-| `--paper-background` | `#fff` |
+| `--paper-background` | `var(--color-surface-container-highest)` |

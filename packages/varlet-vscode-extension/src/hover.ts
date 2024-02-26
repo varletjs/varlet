@@ -1,8 +1,8 @@
 import { kebabCase, bigCamelize, uniq } from '@varlet/shared'
-import { languages, Position, Hover, MarkdownString, type TextDocument, type ExtensionContext } from 'vscode'
+import { languages, Position, Hover, MarkdownString, Uri, type TextDocument, type ExtensionContext } from 'vscode'
 import { componentsMap } from './componentsMap'
 import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
-import { t, getWebTypesTags } from './env'
+import { envs, getWebTypesTags } from './env'
 
 export interface TableDataProp {
   name?: string
@@ -32,7 +32,14 @@ export function getComponentTableData(component: string) {
   const bigCamelName = bigCamelize(name)
   const tags = getWebTypesTags()
   const tag = tags.find((tag) => tag.name === name)
-  const link = `[Varlet: ${bigCamelName} -> ${t('linkText')}](${t('documentation')}${componentsMap[component].path})`
+  const documentation = `${envs().t('documentation')}${componentsMap[component].path}`
+  const documentationCommand = Uri.parse(
+    `command:varlet.open-webview?${encodeURIComponent(JSON.stringify([documentation]))}`
+  )
+  const link = `\
+[Varlet: ${bigCamelName} -> ${envs().t('linkWebviewText')}](${documentationCommand})
+
+[Varlet: ${bigCamelName} -> ${envs().t('linkText')}](${documentation})`
 
   if (!tag) {
     return {
@@ -43,28 +50,22 @@ export function getComponentTableData(component: string) {
     }
   }
 
-  const props = tag.attributes.map((attr) => {
-    return {
-      name: attr.name,
-      description: attr.description,
-      defaultValue: attr.default,
-    }
-  })
+  const props = tag.attributes.map((attr) => ({
+    name: attr.name,
+    description: attr.description,
+    defaultValue: attr.default,
+  }))
 
-  const events = tag.events.map((event) => {
-    return {
-      name: event.name,
-      description: event.description,
-    }
-  })
+  const events = tag.events.map((event) => ({
+    name: event.name,
+    description: event.description,
+  }))
 
   const slots =
-    tag.slots?.map((slot) => {
-      return {
-        name: slot.name,
-        description: slot.description,
-      }
-    }) ?? []
+    tag.slots?.map((slot) => ({
+      name: slot.name,
+      description: slot.description,
+    })) ?? []
 
   return {
     link,
@@ -84,7 +85,7 @@ export function getComponentTableTemplate(component: string) {
           return propsTable
         },
         `\
-| ${t('prop')} | ${t('description')} | ${t('default')} |
+| ${envs().t('prop')} | ${envs().t('description')} | ${envs().t('default')} |
 | :--- | :--- | :--- |
 `
       )
@@ -97,7 +98,7 @@ export function getComponentTableTemplate(component: string) {
           return eventsTable
         },
         `\
-| ${t('event')} | ${t('description')} |
+| ${envs().t('event')} | ${envs().t('description')} |
 | :--- | :--- |
 `
       )
@@ -110,7 +111,7 @@ export function getComponentTableTemplate(component: string) {
           return slotsTable
         },
         `\
-| ${t('slot')} | ${t('description')} |
+| ${envs().t('slot')} | ${envs().t('description')} |
 | :--- | :--- |
 `
       )
@@ -139,8 +140,11 @@ export function registerHover(context: ExtensionContext) {
       .filter((component: string) => componentsMap[component])
       .map(getComponentTableTemplate)
       .reduce((hoverContents, item) => {
+        const linkMarkdown = new MarkdownString(item.link)
+        linkMarkdown.isTrusted = true
+
         hoverContents.push(
-          new MarkdownString(item.link),
+          linkMarkdown,
           new MarkdownString(item.propsTable),
           new MarkdownString(item.eventsTable),
           new MarkdownString(item.slotsTable)

@@ -1,8 +1,8 @@
 # 文件上传
 
 ### 介绍
-提供了文件读取、图片/视频预览能力。
-通过监听 `after-read` 事件获取文件上传服务器。
+
+提供了文件读取、图片/视频预览能力。通过监听 `after-read` 事件获取文件上传服务器。
 
 ### 基本使用
 
@@ -44,6 +44,33 @@ const files = ref([
 
 <template>
   <var-uploader v-model="files"/>
+</template>
+```
+
+### 自定义预览
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Dialog } from '@varlet/ui'
+
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+  }
+])
+
+function handlePreview(file) {
+  Dialog({
+    title: '自定义预览',
+    message: file.url.slice(0, 100)
+  })
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" prevent-default-preview @preview="handlePreview"/>
 </template>
 ```
 
@@ -196,6 +223,32 @@ function handleBeforeRead(file) {
 
 <template>
   <var-uploader v-model="files" @before-read="handleBeforeRead"/>
+</template>
+```
+
+### 上传按钮点击事件
+
+通过注册 `click-action` 事件可以拦截上传按钮的点击行为，通过回调中的 `chooseFile` 方法进行手动触发浏览器选择文件操作。
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const files = ref([])
+
+function handleClickAction(chooseFile) {
+  Snackbar.loading('delay 1s')
+
+  window.setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" @click-action="handleClickAction" />
 </template>
 ```
 
@@ -372,10 +425,13 @@ const files = ref([
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
 | `maxsize` | 最大文件大小 | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
+| `prevent-default-preview` | 阻止默认预览行为 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `hide-list` | 是否隐藏文件列表 | _boolean_ | `false` |
+| `resolve-type` | 文件预处理类型，可选值为 `default` `file` `data-url`（`default`，图片文件包含 dataURL 编码和 File 对象，其他类型仅包含 File 对象。`file`，仅包含 File 对象。`data-url`，所有文件类型都包含 dataURL 编码和 File 对象） | _string_ | `default` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+
 
 ### VarFile
 
@@ -420,12 +476,15 @@ const files = ref([
 | `oversize` | 文件超过限制大小时触发 | `file: VarFile` |
 | `before-remove` | 文件删除前触发，返回假值阻止文件删除(支持 promise) | `file: VarFile` |
 | `remove` | 文件删除时触发 | `file: VarFile` |
+| `preview` | 文件预览时触发 | `file: VarFile` |
+| `click-action`| 拦截上传按钮的点击行为 | `chooseFile: () => void, event: Event` |
 
 ### 插槽
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 上传按钮内容 | `-` |
+| `extra-message` | 附加信息 | `-` |
 
 ### 样式变量
 
@@ -443,6 +502,7 @@ const files = ref([
 | `--uploader-file-name-color`              | `#888`                                                                                       |
 | `--uploader-file-name-font-size`          | `12px`                                                                                       |
 | `--uploader-file-name-padding`            | `10px`                                                                                       |
+| `--uploader-file-border-radius`            | `0`                                                                                       |
 | `--uploader-file-text-align`              | `center`                                                                                     |
 | `--uploader-file-close-background`        | `rgba(0, 0, 0, 0.3)`                                                                         |
 | `--uploader-file-close-size`              | `24px`                                                                                       |

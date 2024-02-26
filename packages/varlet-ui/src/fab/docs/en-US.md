@@ -14,16 +14,16 @@ const type = ref('primary')
 </script>
 
 <template>
-   <var-select v-model="type">
-     <var-option label="default" value="default"/>
-     <var-option label="primary" value="primary"/>
-     <var-option label="info" value="info"/>
-     <var-option label="success" value="success"/>
-     <var-option label="warning" value="warning"/>
-     <var-option label="dangerous" value="danger"/>
-   </var-select>
+  <var-select v-model="type">
+    <var-option label="default" value="default"/>
+    <var-option label="primary" value="primary"/>
+    <var-option label="info" value="info"/>
+    <var-option label="success" value="success"/>
+    <var-option label="warning" value="warning"/>
+    <var-option label="dangerous" value="danger"/>
+  </var-select>
 
-   <var-fab :type="type" />
+  <var-fab :type="type" />
 </template>
 ```
 
@@ -37,14 +37,14 @@ const position = ref('right-bottom')
 </script>
 
 <template>
-   <var-radio-group v-model="position">
-     <var-radio checked-value="left-top">left-top</var-radio>
-     <var-radio checked-value="right-top">right-top</var-radio>
-     <var-radio checked-value="left-bottom">left-bottom</var-radio>
-     <var-radio checked-value="right-bottom">right-bottom</var-radio>
-   </var-radio-group>
+  <var-radio-group v-model="position">
+    <var-radio checked-value="left-top">left-top</var-radio>
+    <var-radio checked-value="right-top">right-top</var-radio>
+    <var-radio checked-value="left-bottom">left-bottom</var-radio>
+    <var-radio checked-value="right-bottom">right-bottom</var-radio>
+  </var-radio-group>
 
-   <var-fab type="primary" :position="position" />
+  <var-fab type="primary" :position="position" />
 </template>
 ```
 
@@ -58,29 +58,29 @@ const trigger = ref('click')
 </script>
 
 <template>
-   <var-radio-group v-model="trigger">
-     <var-radio checked-value="click">click</var-radio>
-     <var-radio checked-value="hover">hover</var-radio>
-   </var-radio-group>
-
-   <var-fab type="primary" :trigger="trigger">
-    <var-button class="action" type="info" round>
+  <var-radio-group v-model="trigger">
+    <var-radio checked-value="click">click</var-radio>
+    <var-radio checked-value="hover">hover</var-radio>
+  </var-radio-group>
+   
+  <var-fab type="primary" :trigger="trigger">
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
 ```
 
-### Action menu popup direction
+### Action Menu Popup Direction
 
 ```html
 <script setup>
@@ -91,35 +91,30 @@ const direction = ref('top')
 
 <template>
    <var-radio-group v-model="direction">
-     <var-radio checked-value="top">top</var-radio>
-     <var-radio checked-value="right">right</var-radio>
-     <var-radio checked-value="bottom">bottom</var-radio>
-     <var-radio checked-value="left">left</var-radio>
+      <var-radio checked-value="top">top</var-radio>
+      <var-radio checked-value="right">right</var-radio>
+      <var-radio checked-value="bottom">bottom</var-radio>
+      <var-radio checked-value="left">left</var-radio>
    </var-radio-group>
 
-   <var-fab type="primary" :direction="direction">
-     <var-button class="action" type="info" round>
-       <var-icon name="account-circle" />
-     </var-button>
-     <var-button class="action" type="success" round>
-       <var-icon name="checkbox-marked-circle" />
-     </var-button>
-     <var-button class="action" type="warning" round>
-       <var-icon name="bell" />
-     </var-button>
-     <var-button class="action" type="danger" round>
-       <var-icon name="delete" />
-     </var-button>
-   </var-fab>
+   <var-fab type="primary" :direction="direction" />
 </template>
+```
 
-<style>
-.action {
-   display: flex;
-   width: 40px !important;
-   height: 40px !important;
-}
-</style>
+### Drag
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="drag" />
+
+  <var-fab :drag="drag" />
+</template>
 ```
 
 ### Disabled
@@ -134,11 +129,11 @@ const disabled = ref(false)
 <template>
    <var-switch v-model="disabled" />
 
-   <var-fab type="primary" :disabled="disabled" />
+   <var-fab :disabled="disabled" />
 </template>
 ```
 
-### Trigger show/hide
+### Trigger Show/Hide
 
 ```html
 <script setup>
@@ -152,13 +147,13 @@ function toggle() {
 </script>
 
 <template>
-   <var-button type="primary" @click.stop="toggle">Toggle</var-button>
+  <var-button type="primary" @click.stop="toggle">Toggle</var-button>
 
-   <var-fab :show="show" type="primary" />
+  <var-fab :show="show" type="primary" />
 </template>
 ```
 
-### Action menu expand/collapse
+### Action Menu Expand/Collapse
 
 ```html
 <script setup>
@@ -167,61 +162,52 @@ import { ref } from 'vue'
 const active = ref(false)
 
 function toggle() {
-   active.value = !active.value
+  active.value = !active.value
 }
 </script>
 
 <template>
-   <var-button type="primary" @click.stop="toggle">Toggle</var-button>
-
-   <var-fab v-model:active="active" type="primary">
-     <var-button class="action" type="info" round>
-       <var-icon name="account-circle" />
-     </var-button>
-     <var-button class="action" type="success" round>
-       <var-icon name="checkbox-marked-circle" />
-     </var-button>
-     <var-button class="action" type="warning" round>
-       <var-icon name="bell" />
-     </var-button>
-     <var-button class="action" type="danger" round>
-       <var-icon name="delete" />
-     </var-button>
-   </var-fab>
+  <var-button type="primary" @click.stop="toggle">Toggle</var-button>
+   
+  <var-fab v-model:active="active" type="primary">
+    <var-button type="info" icon-container>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button type="success" icon-container>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button type="warning" icon-container>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button type="danger" icon-container>
+      <var-icon name="delete" />
+    </var-button>
+  </var-fab>
 </template>
-
-<style>
-.action {
-   display: flex;
-   width: 40px !important;
-   height: 40px !important;
-}
-</style>
-```
 
 ### Custom Trigger
 
 ```html
 <template>
-   <var-fab>
-     <var-button class="action" type="info" round>
-       <var-icon name="account-circle" :size="24" />
-     </var-button>
-     <var-button class="action" type="success" round>
-       <var-icon name="checkbox-marked-circle" :size="24" />
-     </var-button>
-     <var-button class="action" type="warning" round>
-       <var-icon name="bell" :size="24" />
-     </var-button>
-     <var-button class="action" type="danger" round>
-       <var-icon name="delete" :size="24" />
-     </var-button>
-
-     <template #trigger="{ active }">
-       <var-button class="trigger" type="primary" round>
-         <var-icon :name="active ? 'heart' : 'heart-half-full'" animation-class="fade" :transition="300" :size="24" />
-       </var-button>
-     </template>
+  <var-fab>
+    <var-button type="info" icon-container>
+      <var-icon name="account-circle" />
+    </var-button>
+    <var-button type="success" icon-container>
+      <var-icon name="checkbox-marked-circle" />
+    </var-button>
+    <var-button type="warning" icon-container>
+      <var-icon name="bell" />
+    </var-button>
+    <var-button type="danger" icon-container>
+      <var-icon name="delete" />
+    </var-button>
+    
+    <template #trigger="{ active }">
+      <var-button class="trigger" type="primary" round>
+        <var-icon :name="active ? 'heart' : 'heart-half-full'" animation-class="fade" :transition="300" :size="24" />
+      </var-button>
+    </template>
    </var-fab>
 </template>
 
@@ -230,13 +216,6 @@ function toggle() {
    width: 64px !important;
    height: 64px !important;
    border-radius: 8px !important;
-}
-
-.action {
-   display: flex;
-   width: 44px !important;
-   height: 44px !important;
-   border-radius: 6px !important;
 }
 
 .fade {
@@ -255,6 +234,7 @@ function toggle() {
 | ------- | ---- | ----- | ---- |
 | `v-model:active` | Whether to activate the action menu | _boolean_ | `false` |
 | `show` | Whether to show trigger | _boolean_ | `true` |
+| `drag` | Drag component props, for deep customization (support `direction` `attraction` `boundary`） | _boolean \| DragProps_ | `false` |
 | `type` | type, optional values are `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary` |
 | `position` | trigger position, optional values are `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom` |
 | `direction` | Action menu popup direction, optional values are `top` `bottom` `left` `right` | _string_ | `top` |
@@ -265,14 +245,16 @@ function toggle() {
 | `active-icon` | trigger icon when active | _string_ | `window-close` |
 | `inactive-icon-size` | Inactive trigger icon size | _string \| number_ | `-` |
 | `active-icon-size` | Trigger icon size when active | _string \| number_ | `-` |
-| `fixed` | Whether to use fixed positioning, set to `false` to enable absolute positioning | _boolean_ | `true` |
+| `inactive-icon-namespace` | Trigger icon namespace when inactive | _string_ | `var-icon`    |
+| `active-icon-namespace` | Trigger icon namespace when active | _string_ | `var-icon`  |
+| `fixed` | Whether to use fixed positioning, set to `false` to enable absolute positioning (absolute positioning prohibited from dragging) | _boolean_ | `true` |
 | `z-index` | Same as css z-index, used for custom trigger level | _string \| number_ | `90` |
 | `top` | Same as css top, for custom trigger position | _string \| number_ | `-` |
 | `bottom` | Same as css bottom, for custom trigger position | _string \| number_ | `-` |
 | `left` | Same as css left, for custom trigger position | _string \| number_ | `-` |
 | `right` | Same as css right, for custom trigger position | _string \| number_ | `-` |
 | `safe-area` | Whether to enable bottom safe area adaptation	 | _boolean_ | `false` |
-| `teleport` | element to which the component mounts | _TeleportProps['to']_ | `-` |
+| `teleport` | element to which the component mounts | _TeleportProps['to'] \| false_ | `body` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Events
@@ -295,7 +277,7 @@ function toggle() {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable  | Default  |
 | ---------- | -------- |
@@ -304,8 +286,11 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--fab-left` | `16px` |
 | `--fab-right` | `16px` |
 | `--fab-trigger-size` | `56px` |
+| `--fab-trigger-border-radius` | `50%` |
 | `--fab-trigger-inactive-icon-size` | `26px` |
 | `--fab-trigger-active-icon-size` | `22px` |
 | `--fab-actions-padding` | `10px 0` |
 | `--fab-action-margin` | `6px` |
+| `--fab-action-size` | `40px` |
+| `--fab-action-border-radius` | `50%` |
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` |

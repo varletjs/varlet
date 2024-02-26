@@ -24,10 +24,29 @@ export interface VarletConfigIcons {
    * Output base64
    */
   base64?: boolean
+  /**
+   * @default `./svg`
+   * SVG icons folder path.
+   */
+  entry?: string
+  /**
+   * @default `./dist`
+   * SVG icons folder path.
+   */
+  output?: string
+  /**
+   * @default true
+   * Whether to generate png
+   */
+  genPng?: boolean
   publicPath?: string
   fontFamilyClassName?: string
   fontWeight?: string
   fontStyle?: string
+}
+
+export interface VarletConfigEsbuild {
+  target?: string | string[]
 }
 
 export interface VarletConfig {
@@ -62,12 +81,17 @@ export interface VarletConfig {
   useMobile?: boolean
   lightTheme?: Record<string, string>
   darkTheme?: Record<string, string>
+  md3LightTheme?: Record<string, string>
+  md3DarkTheme?: Record<string, string>
+  defaultLightTheme?: 'lightTheme' | 'md3LightTheme'
+  defaultDarkTheme?: 'darkTheme' | 'md3DarkTheme'
   highlight?: { style: string }
   analysis?: { baidu: string }
   pc?: Record<string, any>
   mobile?: Record<string, any>
   copy?: CopyOptions['paths']
   icons?: VarletConfigIcons
+  esbuild?: VarletConfigEsbuild
   /**
    * @default `[]`
    * Directive folder name for component library.
@@ -80,7 +104,9 @@ export function defineConfig(config: VarletConfig) {
 }
 
 export function mergeStrategy(value: any, srcValue: any, key: string) {
-  if (key === 'features' && isArray(srcValue)) {
+  const keys = ['features', 'members']
+
+  if (keys.includes(key) && isArray(srcValue)) {
     return srcValue
   }
 }

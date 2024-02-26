@@ -1,6 +1,7 @@
 import VarStyleProvider from './StyleProvider.vue'
 import { formatStyleVars } from '../utils/elements'
-import type { App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as styleProviderProps } from './props'
 
 export type StyleVars = Record<string, string>
 
@@ -18,16 +19,11 @@ function StyleProvider(styleVars: StyleVars | null) {
 }
 
 StyleProvider.Component = VarStyleProvider
+withInstall(VarStyleProvider)
+withInstall(VarStyleProvider, StyleProvider)
+withPropsDefaultsSetter(StyleProvider, styleProviderProps)
 
-VarStyleProvider.install = function (app: App) {
-  app.component(VarStyleProvider.name, VarStyleProvider)
-}
-
-StyleProvider.install = function (app: App) {
-  app.component(VarStyleProvider.name, VarStyleProvider)
-}
-
-export { props as styleProviderProps } from './props'
+export { styleProviderProps }
 
 export const _StyleProviderComponent = VarStyleProvider
 

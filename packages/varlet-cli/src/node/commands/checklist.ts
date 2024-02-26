@@ -2,7 +2,7 @@ import fse from 'fs-extra'
 import markdownIt from 'markdown-it'
 import logger from '../shared/logger.js'
 import { CHECKLIST_FILE } from '../shared/constant.js'
-import { COMMIT_MESSAGE_RE, isVersionCommitMessage, getCommitMessage } from './commitLint.js'
+import { COMMIT_MESSAGE_RE, isVersionCommitMessage, getCommitMessage } from '@varlet/release'
 
 const { readFileSync, existsSync } = fse
 
@@ -34,14 +34,14 @@ export function getCheckBlocks(html: string) {
       return
     }
 
-    const list = children.map((child) => {
-      return child
+    const list = children.map((child) =>
+      child
         .replaceAll('<li>', '')
         .replaceAll('</li>', '')
         .replaceAll('<p>', '')
         .replaceAll('</p>', '')
         .replaceAll('\n', '')
-    })
+    )
 
     checkBlocks.push({
       type,

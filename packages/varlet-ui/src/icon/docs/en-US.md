@@ -19,7 +19,7 @@ Font icons are from [Material Design Icon](https://materialdesignicons.com/).
 ```html
 <template>
   <var-icon name="checkbox-marked-circle" color="var(--color-primary)" />
-  <var-icon name="checkbox-marked-circle" color="var(--color-primary)" :size="26"/>
+  <var-icon name="checkbox-marked-circle" color="var(--color-success)" />
 </template>
 ```
 
@@ -34,7 +34,7 @@ When the name passed in is a URL the `img` tag is displayed in `cover` mode.
 </template>
 ```
 
-### Event
+### Click Event
 
 ```html
 <script setup>
@@ -155,7 +155,7 @@ You can use it this way:
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable      | Default |
 | ------------- | ------- |

@@ -1,11 +1,18 @@
 import { onDeactivated, onUnmounted } from 'vue'
 
 export function onSmartUnmounted(hook: () => void) {
-  onUnmounted(() => {
+  let keepalive = false
+
+  onDeactivated(() => {
+    keepalive = true
     hook()
   })
 
-  onDeactivated(() => {
+  onUnmounted(() => {
+    if (keepalive) {
+      return
+    }
+
     hook()
   })
 }

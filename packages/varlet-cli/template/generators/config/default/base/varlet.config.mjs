@@ -8,6 +8,7 @@ export default defineConfig({
       darkMode: null,
       i18n: null,
       playground: null,
+      versions: null
     },
     menu: [
       {

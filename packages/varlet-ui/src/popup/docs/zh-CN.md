@@ -10,11 +10,11 @@
 ```html
 <script setup>
 import { ref } from 'vue'
-  
+
 const center = ref(false)
 const top = ref(false)
 const bottom = ref(false)
-const left = ref(false) 
+const left = ref(false)
 const right = ref(false)
 </script>
 
@@ -36,7 +36,7 @@ const right = ref(false)
       右侧弹出
     </var-button>
   </var-space>
-  
+
   <var-popup v-model:show="center">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -45,7 +45,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="bottom" v-model:show="bottom">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -54,7 +54,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="top" v-model:show="top">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -63,7 +63,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="left" v-model:show="left">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -72,7 +72,7 @@ const right = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup position="right" v-model:show="right">
     <div class="popup-example-block">
       素胚勾勒出青花笔锋浓转淡,
@@ -85,8 +85,8 @@ const right = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -96,7 +96,7 @@ const right = ref(false)
 ```html
 <script setup>
 import { ref } from 'vue'
-  
+
 const overlayClass = ref(false)
 const overlayStyle = ref(false)
 </script>
@@ -110,7 +110,7 @@ const overlayStyle = ref(false)
       遮罩层 style
     </var-button>
   </var-space>
-  
+
   <var-popup
     overlay-class="popup-example-custom-overlay"
     v-model:show="overlayClass"
@@ -122,7 +122,7 @@ const overlayStyle = ref(false)
       宣纸上走笔至此搁一半。
     </div>
   </var-popup>
-  
+
   <var-popup
     :overlay-style="{backgroundColor: 'rgba(0, 0, 0, 0.3)'}"
     v-model:show="overlayStyle"
@@ -142,8 +142,8 @@ const overlayStyle = ref(false)
 }
 
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -181,8 +181,8 @@ const event = ref(false)
 
 <style>
 .popup-example-block {
-  padding: 20px 24px;
-  width: 250px;
+  padding: 24px;
+  width: 280px;
 }
 </style>
 ```
@@ -199,13 +199,12 @@ const event = ref(false)
 | `overlay-class`          | 自定义遮罩层的 class                                    | _string_              | `-`      |
 | `overlay-style`          | 自定义遮罩层的 style                                    | _object_              | `-`      |
 | `default-style`          | 是否启用默认样式                                         | _boolean_             | `true`   |
-| `transition`             | 过度动画的名称                                          | _string_              | `-`      |
+| `transition`             | 过渡动画的名称                                          | _string_              | `-`      |
 | `lock-scroll`            | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动                   | _boolean_             | `true`   |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层                                     | _boolean_             | `true`   |
-| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
+| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to'] \| false_ | `body`      |
 | `safe-area`              | 是否开启底部安全区适配	                                     | _boolean_             | `false`  |
 | `safe-area-top`          | 是否开启顶部安全区适配	                                     | _boolean_             | `false`  |
-| `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to']_ | `-`      |
 
 ### 事件
 
@@ -229,4 +228,4 @@ const event = ref(false)
 | 变量名 | 默认值 |
 | --- | --- |
 | `--popup-overlay-background-color` | `rgba(0, 0, 0, .6)` |
-| `--popup-content-background-color` | `#fff` |
+| `--popup-content-background-color` | `var(--color-surface-container-low)` |

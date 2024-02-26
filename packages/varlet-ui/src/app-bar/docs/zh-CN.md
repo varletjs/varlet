@@ -1,6 +1,10 @@
 # 导航栏
 
-### 基础导航栏
+### 介绍
+
+为页面提供导航功能，常用于页面顶部。
+
+### 基本使用
 
 通过 `title` 属性设置导航栏标题。
 
@@ -10,11 +14,33 @@
 </template>
 ```
 
-### 添加标题处插槽
+### 开启圆角
+
+通过 `round` 属性开启圆角。
 
 ```html
 <template>
-  <var-app-bar>添加标题处插槽</var-app-bar>
+  <var-app-bar title="开启圆角" title-position="center" round />
+</template>
+```
+
+### 自定义背景色
+
+```html
+<template>
+  <var-app-bar
+    title="标题" 
+    title-position="center" 
+    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
+  />
+</template>
+```
+
+### 添加标题插槽
+
+```html
+<template>
+  <var-app-bar>添加标题插槽</var-app-bar>
 </template>
 ```
 
@@ -53,28 +79,6 @@
       </var-menu>
     </template>
   </var-app-bar>
-</template>
-```
-
-### 开启圆角
-
-通过 `round` 属性开启圆角。
-
-```html
-<template>
-  <var-app-bar title="开启圆角" title-position="center" round />
-</template>
-```
-
-### 自定义背景色
-
-```html
-<template>
-  <var-app-bar
-    title="标题" 
-    title-position="center" 
-    color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-  />
 </template>
 ```
 
@@ -140,6 +144,8 @@ const active = ref(0)
 | `title`          | 标题                                | _string_ | -       |
 | `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left`  |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `fixed`          | 是否固定到顶部                            | _boolean_ | `false` |
+| `z-index`          | 元素 z-index                            | _number \| string_ | `1` |
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
 | `image`          | 背景图片                            | _string_ | `-` |
 | `image-linear-gradient` | 背景图片渐变色 | _string_ | `-` |
@@ -155,6 +161,7 @@ const active = ref(0)
 | `content` | 扩展内容 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名                       | 默认值 |

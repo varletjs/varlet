@@ -4,8 +4,9 @@
 
 | Prop       | Description            | Type               | Default |
 | ---------- | ---------------------- | ------------------ | ------- |
-| `name`     | tab's name             | _string \| number_ | `index` |
+| `name`     | Tab's name             | _string \| number_ | `-` |
 | `disabled` | Whether to disable tab | _boolean_          | `false` |
+| `ripple`   | Whether to enable ripple effect | _boolean_ | `true`  |
 
 ### Events
 
@@ -19,4 +20,4 @@
 
 | Name | Description | SlotProps |
 | --------- | ------------- | --------- |
-| `default` | tab's content | `-`       |
+| `default` | Tab's content | `-`       |

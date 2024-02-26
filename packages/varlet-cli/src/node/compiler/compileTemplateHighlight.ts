@@ -22,7 +22,7 @@ import { getVarletConfig, type VarletConfig } from '../config/varlet.config.js'
 
 const { ensureDir, readdirSync, readFileSync, writeFileSync } = fse
 
-const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*---+\s*\|\s*\n+/
+const TABLE_HEAD_RE = /\s*\|.*\|\s*\n\s*\|.*-+\s*\|\s*\n+/
 const TABLE_FOOT_RE = /(\|\s*$)|(\|\s*\n(?!\s*\|))/
 
 export interface TemplateHighlightCompilerOptions {

@@ -16,7 +16,7 @@ The style binding is performed when the pointer hovers over the bound element, a
     :elevation="2"
     :width="100"
     :height="100"
-    v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
+    v-hover="{ color: 'var(--color-on-primary)', background: ' var(--color-primary)' }"
   >
     HOVER
   </var-paper>
@@ -72,25 +72,25 @@ function handleHover(hovering) {
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: #fff;
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   font-size: 50px;
 }
 </style>
 ```
 
-### Selectively enable for different devices
+### Selectively Enable For Different Devices
 
 Considering the differences in `hover` effects on different platforms, the hover command can only be enabled on specific platforms.
 
-#### Only enabled on desktop
+#### Only Enabled On Desktop
 
 ```html
 // playground-ignore
 <var-paper v-hover:desktop="{ color: '#fff' }"">HOVER</var-paper>
 ```
 
-#### Only enabled on mobile
+#### Only Enabled On Mobile
 
 ```html
 // playground-ignore

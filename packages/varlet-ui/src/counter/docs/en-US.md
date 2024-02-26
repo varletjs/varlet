@@ -1,5 +1,9 @@
 # Counter
 
+### Intro
+
+Used to enter or adjust numbers within a certain range.
+
 ### Basic Usage
 
 ```html
@@ -14,7 +18,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set the value range
+### Set Value Range
 
 ```html
 <script setup>
@@ -28,7 +32,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set step
+### Set Step
 
 ```html
 <script setup>
@@ -42,7 +46,7 @@ const value = ref(0)
 </template>
 ```
 
-### Decimal length
+### Decimal Length
 
 ```html
 <script setup>
@@ -56,7 +60,7 @@ const value = ref(0)
 </template>
 ```
 
-### Set size
+### Set Size
 
 ```html
 <script setup>
@@ -103,7 +107,7 @@ const value = ref(0)
 </template>
 ```
 
-### Asynchronous change
+### Asynchronous Change
 
 In some scenarios, you may need to wait for the server to return successfully before making changes.
 `lazy-change` prevents binding value updates on the component itself.
@@ -131,7 +135,7 @@ function handleBeforeChange(value, change) {
 
 ### Validate
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+The values are validated by passing in an array of validators. If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 
 ```html
@@ -158,12 +162,12 @@ const value = ref(0)
 | `v-model` | The value of the binding | _string \| number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
 | `max` | Maximum value | _string \| number_ | `-` |
-| `step` | Step size | _string \| number_ | `-` |
+| `step` | Step size | _string \| number_ | `1` |
 | `decimal-length` | Preserve decimal places | _string \| number_ | `-` |
 | `color` | Background color | _string_ | `-` |
 | `input-width` | The width of the input box | _string \| number_ | `-` |
 | `input-text-size` | The text size of the input box | _string \| number_ | `-` |
-| `button-size` | Button size | _string_ | `true` |
+| `button-size` | Button size | _string \| number_ | `-` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
@@ -174,15 +178,16 @@ const value = ref(0)
 | `decrement-button` | Whether to display the decrement button | _boolean_ | `true` |
 | `press` | Long press the open button | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
+| `lazy-change` | Whether to prevent the component itself from updating the bound value | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(value: number) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: number) => any>_ | `-` |
 
 ### Methods
 
 | Method | Description | Arguments | Return |
 | --- | --- | --- | --- |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `min \|\| 0`)and validate messages | `-` | `-` |
 
 ### Events
@@ -196,7 +201,7 @@ const value = ref(0)
 
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                        | Default                      |
 |---------------------------------|------------------------------|
@@ -207,6 +212,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--counter-input-margin`        | `0 4px`                      |
 | `--counter-input-font-size`     | `14px`                       |
 | `--counter-button-size`         | `28px`                       |
+| `--counter-button-text-color`         | `#fff`                       |
 | `--counter-button-icon-size`    | `100%`                       |
 | `--counter-disabled-color`      | `var(--color-disabled)`      |
 | `--counter-disabled-opacity`    | `var(--opacity-disabled)`    |

@@ -36,7 +36,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" size="small" @click="show = !show">Close</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = !show">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">Multi-Line</var-button>
@@ -58,7 +58,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     Hello, I'm a snackbar
     <template #action>
-      <var-button type="primary" size="small" @click="show = false">Close</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = false">Close</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">Bottom Display</var-button>
@@ -314,11 +314,11 @@ function openMultiple() {
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
 | `loading-type` | Loading type (see `Loading` component)                                             | _string_ | `circle` |
 | `loading-size` | Loading size (see `Loading` component)                                             | _string_ | `normal` |
-| `loading-color`  | loading color (see `Loading` component)                                            |_string_|`current_color`|
+| `loading-color`  | Loading color (see `Loading` component)                                            |_string_|`currentColor`|
 | `loading-radius` | Loading radius (see `Loading` component)                                           | _string \| number_  | `-` |
 | `lock-scroll`| Whether to disable rolling penetration                                             | _boolean_  | `false` |
-| `forbid-click`| whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
-| `teleport`| The location of the Snackbar to mount                                              | _TeleportProps['to']_  | `body` |
+| `forbid-click`| Whether to penetrating clicks are forbidden                                        | _boolean_  | `false` |
+| `teleport`| The location of the Snackbar to mount                                              | _TeleportProps['to'] \| false_  | `body` |
 
 ### Events
 
@@ -381,7 +381,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
@@ -397,5 +397,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--snackbar-error-background` | `var(--color-danger)` |
 | `--snackbar-warning-background` | `var(--color-warning)` |
 | `--snackbar-content-padding` | `14px 16px` |
-| `--snackbar-action-margin` | `0 8px 0` |
+| `--snackbar-action-margin` | `0 8px` |
+| `--snackbar-icon-margin` | `0 8px` |
 | `--snackbar-vertical-action-margin` | `0 8px 8px 0` |

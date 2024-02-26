@@ -5,7 +5,7 @@ import { registerStatusBarItems } from './statusBarItems'
 import { type ExtensionContext } from 'vscode'
 
 export function activate(context: ExtensionContext) {
-  registerCommands()
+  registerCommands(context)
   registerCompletions(context)
   registerHover(context)
   registerStatusBarItems()

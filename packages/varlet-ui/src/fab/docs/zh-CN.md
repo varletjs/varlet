@@ -44,7 +44,7 @@ const position = ref('right-bottom')
     <var-radio checked-value="right-bottom">right-bottom</var-radio>
   </var-radio-group>
 
-  <var-fab type="primary" :position="position" />
+  <var-fab :position="position" />
 </template>
 ```
 
@@ -64,16 +64,16 @@ const trigger = ref('click')
   </var-radio-group>
 
   <var-fab type="primary" :trigger="trigger">
-    <var-button class="action" type="info" round>
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
@@ -98,28 +98,36 @@ const direction = ref('top')
   </var-radio-group>
 
   <var-fab type="primary" :direction="direction">
-    <var-button class="action" type="info" round>
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
+```
 
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
+### 开启拖拽
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const drag = ref(false)
+</script>
+
+<template>
+  <var-switch v-model="drag" />
+
+  <var-fab :drag="drag" />
+</template>
 ```
 
 ### 禁用
@@ -134,7 +142,7 @@ const disabled = ref(false)
 <template>
   <var-switch v-model="disabled" />
 
-  <var-fab type="primary" :disabled="disabled" />
+  <var-fab :disabled="disabled" />
 </template>
 ```
 
@@ -154,11 +162,11 @@ function toggle() {
 <template>
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
-  <var-fab :show="show" type="primary" />
+  <var-fab :show="show" />
 </template>
 ```
 
-### 动作菜单显示/隐藏
+### 动作菜单展开/收起
 
 ```html
 <script setup>
@@ -175,28 +183,20 @@ function toggle() {
   <var-button type="primary" @click.stop="toggle">切换</var-button>
 
   <var-fab v-model:active="active" type="primary">
-    <var-button class="action" type="info" round>
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" />
     </var-button>
   </var-fab>
 </template>
-
-<style>
-.action {
-  display: flex;
-  width: 40px !important;
-  height: 40px !important;
-}
-</style>
 ```
 
 ### 自定义触发器
@@ -204,16 +204,16 @@ function toggle() {
 ```html
 <template>
   <var-fab>
-    <var-button class="action" type="info" round>
+    <var-button type="info" icon-container>
       <var-icon name="account-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="success" round>
+    <var-button type="success" icon-container>
       <var-icon name="checkbox-marked-circle" :size="24" />
     </var-button>
-    <var-button class="action" type="warning" round>
+    <var-button type="warning" icon-container>
       <var-icon name="bell" :size="24" />
     </var-button>
-    <var-button class="action" type="danger" round>
+    <var-button type="danger" icon-container>
       <var-icon name="delete" :size="24" />
     </var-button>
 
@@ -232,13 +232,6 @@ function toggle() {
   border-radius: 8px !important;
 }
 
-.action {
-  display: flex;
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 6px !important;
-}
-
 .fade {
   transition-property: opacity, transform;
   opacity: 0;
@@ -255,6 +248,7 @@ function toggle() {
 |------------------|----------------------------------------------------------------- |----------|----------------|
 | `v-model:active` | 是否激活动作菜单                                                    | _boolean_ | `false`       |
 | `show`           | 是否显示触发器 | _boolean_ | `true`    |
+| `drag`      | Drag 组件配置，用于深度定制（支持 `direction` `attraction` `boundary`） | _boolean \| DragProps_  | `false`    |
 | `type`           | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`    |
 | `position` | 触发器位置，可选值为 `left-top` `right-top` `left-bottom` `right-bottom` | _string_ | `right-bottom`    |
 | `direction` | 动作菜单弹出方向，可选值为 `top` `bottom` `left` `right` | _string_ | `top`    |
@@ -265,15 +259,17 @@ function toggle() {
 | `active-icon` | 激活时触发器图标 | _string_ | `window-close`    |
 | `inactive-icon-size` | 未激活时触发器图标尺寸 | _string \| number_ | `-` |
 | `active-icon-size` | 激活时触发器图标尺寸 | _string \| number_ | `-` |
-| `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位 | _boolean_ | `true` |
+| `inactive-icon-namespace` | 未激活时触发器图标的命名空间 | _string_ | `var-icon`    |
+| `active-icon-namespace` | 激活时触发器图标的命名空间 | _string_ | `var-icon`  |
+| `fixed` | 是否使用固定定位，设置为 `false` 可开启绝对定位（绝对定位无法使用拖拽） | _boolean_ | `true` |
 | `z-index` | 同 css z-index，用于自定义触发器层级 | _string \| number_ | `90` |
 | `top` | 同 css top，用于自定义触发器位置 | _string \| number_ | `-` |
 | `bottom` | 同 css bottom，用于自定义触发器位置 | _string \| number_ | `-` |
 | `left` | 同 css left，用于自定义触发器位置 | _string \| number_ | `-` |
 | `right` | 同 css right，用于自定义触发器位置 | _string \| number_ | `-` |
 | `safe-area` | 是否开启底部安全区适配	 | _boolean_ | `false` |
-| `teleport` | 组件挂载的元素 | _TeleportProps['to']_ | `-` |
-| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number_ \| _boolean_ | `true`            |
+| `teleport` | 组件挂载的元素 | _TeleportProps['to'] \| false_ | `body` |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级 | _string \| number \| boolean_ | `true`            |
 
 ### 事件
 
@@ -304,8 +300,11 @@ function toggle() {
 | `--fab-left` | `16px` |
 | `--fab-right` | `16px` |
 | `--fab-trigger-size` | `56px` |
+| `--fab-trigger-border-radius` | `50%` |
 | `--fab-trigger-inactive-icon-size` | `26px` |
 | `--fab-trigger-active-icon-size` | `22px` |
 | `--fab-actions-padding` | `10px 0` |
 | `--fab-action-margin` | `6px` |
+| `--fab-action-size` | `40px` |
+| `--fab-action-border-radius` | `50%` |
 | `--fab-transition-standard-easing` | `cubic-bezier(0.4, 0, 0.2, 1)` |

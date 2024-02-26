@@ -1,10 +1,11 @@
-// Component entry, the folder where the file exists will be exposed to the user
 import Fab from './Fab'
-import type { App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as fabProps } from './props'
 
-Fab.install = function (app: App) {
-  app.component(Fab.name, Fab)
-}
+withInstall(Fab)
+withPropsDefaultsSetter(Fab, fabProps)
+
+export { fabProps }
 
 export const _FabComponent = Fab
 

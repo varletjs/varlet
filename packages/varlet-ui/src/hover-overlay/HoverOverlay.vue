@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n(), [hovering, n('--hovering')])"></div>
+  <div :class="classes(n(), [hovering, n('--hovering')], [focusing, n('--focusing')])"></div>
 </template>
 
 <script lang="ts">
@@ -7,20 +7,19 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('hover-overlay')
+const { name, n, classes } = createNamespace('hover-overlay')
 
 export default defineComponent({
-  name: 'VarHoverOverlay',
+  name,
   props,
-  setup() {
-    return {
-      n,
-      classes,
-    }
-  },
+  setup: () => ({
+    n,
+    classes,
+  }),
 })
 </script>
 
 <style lang="less">
+@import '../styles/common';
 @import './hoverOverlay';
 </style>

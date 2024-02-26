@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Option from './Option.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as optionProps } from './props'
 
-Option.install = function (app: App) {
-  app.component(Option.name, Option)
-}
+withInstall(Option)
+withPropsDefaultsSetter(Option, optionProps)
 
-export { props as optionProps } from './props'
+export { optionProps }
 
 export const _OptionComponent = Option
 

@@ -69,6 +69,13 @@ program
     return compile();
 });
 program
+    .command('compile:style-vars')
+    .description('Compile varlet style vars')
+    .action(async () => {
+    const { styleVars } = await import('./commands/styleVars.js');
+    return styleVars();
+});
+program
     .command('lint')
     .description('Lint code')
     .action(async () => {
@@ -78,6 +85,7 @@ program
 program
     .command('create')
     .description('Create a component directory')
+    .option('-i, --internal', 'varlet internal mode')
     .option('-n, --name <componentName>', 'Component name')
     .option('-s, --sfc', 'Generate files in sfc format')
     .option('-t, --tsx', 'Generate files in tsx format')
@@ -87,15 +95,14 @@ program
     return create(options);
 });
 program
-    .command('jest')
-    .description('Run Jest in work directory')
+    .command('test')
+    .description('Run test in work directory')
     .option('-w, --watch', 'Watch files for changes and rerun tests related to changed files')
-    .option('-wa, --watchAll', 'Watch files for changes and rerun all tests when something changes')
     .option('-c, --component <componentName>', 'Test a specific component')
-    .option('-cc --clearCache', 'Clear test cache')
-    .action(async (option) => {
-    const { jest } = await import('./commands/jest.js');
-    return jest(option);
+    .option('-cov, --coverage', 'Generate the coverage')
+    .action(async (options) => {
+    const { test } = await import('./commands/test.js');
+    return test(options);
 });
 program
     .command('gen')
@@ -104,40 +111,44 @@ program
     .option('-s, --sfc', 'Generate files in sfc format')
     .option('-t, --tsx', 'Generate files in tsx format')
     .option('-l, --locale', 'Generator internationalized files')
-    .action(async (option) => {
+    .action(async (options) => {
     const { gen } = await import('./commands/gen.js');
-    return gen(option);
+    return gen(options);
 });
 program
     .command('changelog')
     .option('-rc --releaseCount <releaseCount>', 'Release count')
     .option('-f --file <file>', 'Changelog filename')
     .description('Generate changelog')
-    .action(async (option) => {
-    const { changelog } = await import('./commands/changelog.js');
-    return changelog(option);
+    .action(async (options) => {
+    const { changelog } = await import('@varlet/release');
+    return changelog(options);
 });
 program
     .command('release')
     .option('-r --remote <remote>', 'Remote name')
     .description('Release all packages and generate changelogs')
-    .action(async (option) => {
-    const { release } = await import('./commands/release.js');
-    return release(option);
+    .action(async (options) => {
+    const { release } = await import('@varlet/release');
+    return release(options);
 });
 program
-    .command('commit-lint <gitParams>')
+    .command('commit-lint')
+    .option('-p --commitMessagePath <path>', 'Git commit message path')
+    .option('-r --commitMessageRe <reg>', 'Validate the regular of whether the commit message passes')
+    .option('-e --errorMessage <message>', 'Validation failed to display error messages')
+    .option('-w --warningMessage <message>', 'Validation failed to display warning messages')
     .description('Lint commit message')
-    .action(async (option) => {
-    const { commitLint } = await import('./commands/commitLint.js');
-    return commitLint(option);
+    .action(async (options) => {
+    const { commitLint } = await import('@varlet/release');
+    return commitLint(options);
 });
 program
     .command('checklist <gitParams>')
     .description('Display a checklist for confirmation')
-    .action(async (option) => {
+    .action(async (options) => {
     const { checklist } = await import('./commands/checklist.js');
-    return checklist(option);
+    return checklist(options);
 });
 program.on('command:*', async ([cmd]) => {
     const { default: logger } = await import('./shared/logger.js');

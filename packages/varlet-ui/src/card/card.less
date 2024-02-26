@@ -1,7 +1,7 @@
 :root {
   --card-padding: 0 0 15px 0;
-  --card-background: #fff;
-  --card-outline-color: rgba(0, 0, 0, 0.12);
+  --card-background: var(--color-surface-container-highest);
+  --card-outline-color: var(--color-outline);
   --card-border-radius: 4px;
   --card-image-width: 100%;
   --card-row-image-width: 140px;
@@ -33,16 +33,14 @@
   --card-close-button-icon-size: 24px;
   --card-close-button-size: 56px;
   --card-close-button-primary-color: #212121;
+  --card-close-button-text-color: #fff;
+  --card-close-button-border-radius: 50%;
 }
 
 .var-card {
   border-radius: var(--card-border-radius);
   overflow: hidden;
   width: 100%;
-
-  &--outline {
-    border: thin solid var(--card-outline-color);
-  }
 
   &__floater {
     display: flex;
@@ -72,6 +70,7 @@
     width: var(--card-image-width);
     height: var(--card-image-height);
     display: block;
+    transition: all 0.25s;
   }
 
   &--layout-row &__image {
@@ -87,6 +86,7 @@
     margin: var(--card-title-margin);
     color: var(--card-title-color);
     word-break: break-word;
+    transition: padding 0.25s, margin 0.25s, font-size 0.25s;
   }
 
   &--layout-row &__title {
@@ -103,6 +103,7 @@
     padding: var(--card-subtitle-padding);
     margin: var(--card-subtitle-margin);
     word-break: break-word;
+    transition: padding 0.25s, margin 0.25s, font-size 0.25s;
   }
 
   &--layout-row &__subtitle {
@@ -120,6 +121,7 @@
     margin: var(--card-description-margin);
     padding: var(--card-description-padding);
     word-break: break-all;
+    transition: padding 0.25s, margin 0.25s, font-size 0.25s;
   }
 
   &__footer {
@@ -127,6 +129,7 @@
     justify-content: flex-end;
     padding: var(--card-footer-padding);
     margin: var(--card-footer-margin);
+    transition: all 0.25s;
   }
 
   &--layout-row &__footer {
@@ -149,13 +152,18 @@
   }
 
   &__close-button[var-card-cover] {
-    padding: var(--card-close-button-padding);
     width: var(--card-close-button-size);
     height: var(--card-close-button-size);
     background-color: var(--card-close-button-primary-color);
+    color: var(--card-close-button-text-color);
+    border-radius: var(--card-close-button-border-radius);
   }
 
   &__close-button-icon[var-card-cover] {
     font-size: var(--card-close-button-icon-size);
+  }
+
+  &--outline {
+    border: thin solid var(--card-outline-color);
   }
 }

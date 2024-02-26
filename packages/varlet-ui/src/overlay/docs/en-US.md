@@ -43,14 +43,14 @@ const show = ref(false)
 
 <style>
 .overlay-content {
-  padding: 20px 24px;
-  width: 250px;
-  background: var(--button-default-color);
+  padding: 24px;
+  width: 312px;
+  border-radius: 28px;
 }
 </style>
 ```
 
-### Event
+### Click Event
 
 ```html
 <script setup>
@@ -77,13 +77,13 @@ const show = ref(false)
 |----------------|-----------------------------------------------------------------------------------------------------------------|-----------------------|---------|
 | `v-model:show` | Whether to display the Overlay                                                                                  | _boolean_             | `false` |
 | `lock-scroll`  | Whether to disable scrolling penetration, scrolling the Overlay when disabled will not cause the body to scroll | _boolean_             | `true`  |
-| `teleport`     | The location of the Overlay to mount                                                                            | _TeleportProps['to']_ | `-`     |
+| `teleport`     | The location of the Overlay to mount                                                                            | _TeleportProps['to'] \| false_ | `-`     |
 
 ### Events
 
 | Event   | Description                         | Arguments |
 |---------|-------------------------------------|-----------|
-| `click` | Triggered when you click on overlay | `-`       |
+| `click` | Triggered when clicking on overlay | `-`       |
 
 ### Slots
 
@@ -93,7 +93,7 @@ const show = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                     | Default             |
 |------------------------------|---------------------|

@@ -1,11 +1,8 @@
 <script setup>
-import VarOverlay from '../Overlay'
-import VarButton from '../../button'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs } from 'vue'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 const values = reactive({
   baseOverlay: false,
@@ -16,29 +13,29 @@ const values = reactive({
 const { baseOverlay, contentOverlay, clickOverlay } = toRefs(values)
 
 watchLang(use)
-watchDarkMode(dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.overlayBase }}</app-type>
+  <app-type>{{ t('overlayBase') }}</app-type>
   <var-button type="primary" block @click="baseOverlay = true">
-    {{ pack.showOverlay }}
+    {{ t('showOverlay') }}
   </var-button>
 
-  <app-type>{{ pack.overlayContent }}</app-type>
+  <app-type>{{ t('overlayContent') }}</app-type>
   <var-button type="primary" block @click="contentOverlay = true">
-    {{ pack.overlayContent }}
+    {{ t('overlayContent') }}
   </var-button>
 
-  <app-type>{{ pack.event }}</app-type>
+  <app-type>{{ t('clickEvent') }}</app-type>
   <var-button type="primary" block @click="clickOverlay = true">
-    {{ pack.clickOverlay }}
+    {{ t('clickOverlay') }}
   </var-button>
 
   <var-overlay v-model:show="baseOverlay" />
   <var-overlay v-model:show="contentOverlay">
     <div class="overlay-content" @click.stop>
-      {{ pack.text }}
+      {{ t('text') }}
     </div>
   </var-overlay>
   <var-overlay v-model:show="clickOverlay" @click="Snackbar.success('click')" />
@@ -46,8 +43,9 @@ watchDarkMode(dark)
 
 <style lang="less" scoped>
 .overlay-content {
-  padding: 20px 24px;
-  width: 250px;
-  background: var(--button-default-color);
+  padding: 24px;
+  width: 312px;
+  background: var(--color-surface-container-highest);
+  border-radius: 28px;
 }
 </style>

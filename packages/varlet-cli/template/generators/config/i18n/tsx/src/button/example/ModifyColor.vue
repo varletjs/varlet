@@ -1,11 +1,11 @@
 <script setup>
-import VarButton from '..'
+import VaButton from '..'
 import { watchLang } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { t, use } from './locale'
 
 watchLang(use, 'pc')
 </script>
 
 <template>
-  <var-button color="#03A9F4">{{ pack.start }}</var-button>
+  <va-button color="#03A9F4">{{ t('start') }}</va-button>
 </template>

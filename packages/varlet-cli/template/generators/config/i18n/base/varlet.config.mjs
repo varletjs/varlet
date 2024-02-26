@@ -7,12 +7,13 @@ export default defineConfig({
     header: {
       darkMode: null,
       playground: null,
+      versions: null
     },
     menu: [
       {
         text: {
           'zh-CN': '开发指南',
-          'en-US': 'Developer guide',
+          'en-US': 'Developer Guide',
         },
         type: 1,
       },

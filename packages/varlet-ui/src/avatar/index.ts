@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Avatar from './Avatar.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as avatarProps } from './props'
 
-Avatar.install = function (app: App) {
-  app.component(Avatar.name, Avatar)
-}
+withInstall(Avatar)
+withPropsDefaultsSetter(Avatar, avatarProps)
 
-export { props as avatarProps } from './props'
+export { avatarProps }
 
 export const _AvatarComponent = Avatar
 

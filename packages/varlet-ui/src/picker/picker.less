@@ -3,7 +3,7 @@
   --picker-toolbar-height: 44px;
   --picker-confirm-button-text-color: var(--color-primary);
   --picker-cancel-button-text-color: #888;
-  --picker-picked-border: 1px solid rgba(0, 0, 0, 0.12);
+  --picker-picked-border: 1px solid var(--color-outline);
   --picker-title-font-size: var(--font-size-lg);
   --picker-title-text-color: #555;
   --picker-option-font-size: var(--font-size-lg);
@@ -35,6 +35,14 @@
     overflow: hidden;
   }
 
+  &__option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 4px;
+  }
+
   &__text {
     overflow: hidden;
     white-space: nowrap;
@@ -46,14 +54,6 @@
   &__scroller {
     width: 100%;
     transition-timing-function: cubic-bezier(0.23, 1, 0.68, 1);
-  }
-
-  &__option {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0 4px;
   }
 
   &__picked {

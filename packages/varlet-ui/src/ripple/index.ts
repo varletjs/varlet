@@ -1,5 +1,5 @@
 import context from '../context'
-import { supportTouch, getStyle, getRect } from '../utils/elements'
+import { supportTouch, getStyle, getRect, hasOwn } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { type Directive, type Plugin, type App, type DirectiveBinding } from 'vue'
 
@@ -39,15 +39,19 @@ function setStyles(element: RippleHTMLElement) {
   zIndex === 'auto' && (element.style.zIndex = '1')
 }
 
-function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): RippleStyles {
+function isTouchEvent(event: Event): event is TouchEvent {
+  return hasOwn(event, 'touches')
+}
+
+function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent | KeyboardEvent): RippleStyles {
   const { top, left }: DOMRect = getRect(element)
   const { clientWidth, clientHeight } = element
 
   const radius: number = Math.sqrt(clientWidth ** 2 + clientHeight ** 2) / 2
   const size: number = radius * 2
 
-  const localX: number = event.touches[0].clientX - left
-  const localY: number = event.touches[0].clientY - top
+  const localX: number = isTouchEvent(event) ? event.touches[0].clientX - left : clientWidth / 2
+  const localY: number = isTouchEvent(event) ? event.touches[0].clientY - top : clientHeight / 2
 
   const centerX: number = (clientWidth - radius * 2) / 2
   const centerY: number = (clientHeight - radius * 2) / 2
@@ -58,7 +62,7 @@ function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent): Rip
   return { x, y, centerX, centerY, size }
 }
 
-function createRipple(this: RippleHTMLElement, event: TouchEvent) {
+function createRipple(this: RippleHTMLElement, event: TouchEvent | KeyboardEvent) {
   const _ripple = this._ripple as RippleOptions
   _ripple.removeRipple()
 
@@ -124,6 +128,26 @@ function forbidRippleTask(this: RippleHTMLElement) {
   _ripple.tasker = null
 }
 
+let hasKeyboardRipple = false
+
+function createKeyboardRipple(this: RippleHTMLElement, event: KeyboardEvent) {
+  if (hasKeyboardRipple || !(event.key === ' ' || event.key === 'Enter')) {
+    return
+  }
+
+  createRipple.call(this, event)
+  hasKeyboardRipple = true
+}
+
+function removeKeyboardRipple(this: RippleHTMLElement) {
+  if (!hasKeyboardRipple) {
+    return
+  }
+
+  removeRipple.call(this)
+  hasKeyboardRipple = false
+}
+
 function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {
   el._ripple = {
     tasker: null,
@@ -134,16 +158,28 @@ function mounted(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>
   el.addEventListener('touchstart', createRipple, { passive: true })
   el.addEventListener('touchmove', forbidRippleTask, { passive: true })
   el.addEventListener('dragstart', removeRipple, { passive: true })
+  el.addEventListener('keydown', createKeyboardRipple)
+  el.addEventListener('keyup', removeKeyboardRipple)
+  el.addEventListener('blur', removeKeyboardRipple)
+
   document.addEventListener('touchend', el._ripple.removeRipple, { passive: true })
   document.addEventListener('touchcancel', el._ripple.removeRipple, { passive: true })
+  document.addEventListener('dragend', el._ripple.removeRipple, { passive: true })
 }
 
 function unmounted(el: RippleHTMLElement) {
   el.removeEventListener('touchstart', createRipple)
   el.removeEventListener('touchmove', forbidRippleTask)
   el.removeEventListener('dragstart', removeRipple)
+
+  if (!el._ripple || !el._ripple.removeRipple) {
+    // may be null in nuxt
+    return
+  }
+
   document.removeEventListener('touchend', el._ripple!.removeRipple)
   document.removeEventListener('touchcancel', el._ripple!.removeRipple)
+  document.removeEventListener('dragend', el._ripple!.removeRipple)
 }
 
 function updated(el: RippleHTMLElement, binding: DirectiveBinding<RippleOptions>) {

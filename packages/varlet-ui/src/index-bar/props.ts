@@ -19,26 +19,13 @@ export const props = {
     type: [String, Number],
     default: 0,
   },
-  /** @deprecated Use stickyCssMode to instead. */
-  cssMode: {
-    type: Boolean,
-    default: false,
-  },
-  stickyCssMode: {
-    type: Boolean,
-    default: false,
-  },
-  hideList: {
-    type: Boolean,
-    default: false,
-  },
+  stickyCssMode: Boolean,
+  hideList: Boolean,
   zIndex: {
     type: [Number, String],
     default: 1,
   },
-  highlightColor: {
-    type: String,
-  },
+  highlightColor: String,
   duration: {
     type: [Number, String],
     default: 0,

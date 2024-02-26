@@ -7,16 +7,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onActivated, onDeactivated, onUnmounted, ref, watch } from 'vue'
-import { props } from './props'
-import { requestAnimationFrame, cancelAnimationFrame } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { defineComponent, onActivated, onDeactivated, onMounted, onUnmounted, ref, watch } from 'vue'
+import { props, type TimeData } from './props'
+import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import { toNumber } from '@varlet/shared'
-import type { Ref } from 'vue'
-import type { TimeData } from './props'
+import { toNumber, requestAnimationFrame, cancelAnimationFrame, call } from '@varlet/shared'
 
-const { n } = createNamespace('countdown')
+const { name, n } = createNamespace('countdown')
 
 const SECOND = 1000
 const MINUTE = 60 * SECOND
@@ -24,11 +21,11 @@ const HOUR = 60 * MINUTE
 const DAY = 24 * HOUR
 
 export default defineComponent({
-  name: 'VarCountdown',
+  name,
   props,
   setup(props) {
-    const showTime: Ref<string> = ref('')
-    const timeData: Ref<TimeData> = ref({
+    const showTime = ref('')
+    const timeData = ref<TimeData>({
       days: 0,
       hours: 0,
       minutes: 0,
@@ -42,7 +39,44 @@ export default defineComponent({
     let remainingTime = 0
     let cacheIsStart: boolean
 
-    const parseFormat = (format: string, time: TimeData): string => {
+    watch(
+      () => props.time,
+      () => {
+        reset()
+
+        if (props.autoStart) {
+          start()
+        }
+      }
+    )
+
+    onMounted(() => {
+      countdown()
+      if (props.autoStart) {
+        start()
+      }
+    })
+
+    onActivated(() => {
+      if (cacheIsStart == null) {
+        return
+      }
+
+      isStart = cacheIsStart
+
+      if (isStart === true) {
+        start(true)
+      }
+    })
+
+    onDeactivated(() => {
+      cacheIsStart = isStart
+      pause()
+    })
+
+    onUnmounted(pause)
+
+    function parseFormat(format: string, time: TimeData): string {
       const scannedTimes = Object.values(time)
       const scannedFormats = ['DD', 'HH', 'mm', 'ss']
       const padValues = [24, 60, 60, 1000]
@@ -70,7 +104,7 @@ export default defineComponent({
       return format
     }
 
-    const displayTime = (durationTime: number) => {
+    function displayTime(durationTime: number) {
       const days = Math.floor(durationTime / DAY)
       const hours = Math.floor((durationTime % DAY) / HOUR)
       const minutes = Math.floor((durationTime % HOUR) / MINUTE)
@@ -90,7 +124,7 @@ export default defineComponent({
       showTime.value = parseFormat(props.format, time)
     }
 
-    const countdown = () => {
+    function countdown() {
       const { time, onEnd } = props
       const now = performance.now()
 
@@ -116,7 +150,7 @@ export default defineComponent({
     }
 
     // expose
-    const start = (resume = false) => {
+    function start(resume = false) {
       if (isStart && !resume) {
         return
       }
@@ -127,49 +161,18 @@ export default defineComponent({
     }
 
     // expose
-    const pause = () => {
+    function pause() {
       isStart = false
       cancelAnimationFrame(handle)
     }
 
     // expose
-    const reset = () => {
+    function reset() {
       endTime = 0
       isStart = false
       cancelAnimationFrame(handle)
       countdown()
     }
-
-    watch(
-      () => props.time,
-      () => {
-        reset()
-
-        if (props.autoStart) {
-          start()
-        }
-      },
-      { immediate: true }
-    )
-
-    onActivated(() => {
-      if (cacheIsStart == null) {
-        return
-      }
-
-      isStart = cacheIsStart
-
-      if (isStart === true) {
-        start(true)
-      }
-    })
-
-    onDeactivated(() => {
-      cacheIsStart = isStart
-      pause()
-    })
-
-    onUnmounted(pause)
 
     return {
       showTime,
@@ -185,4 +188,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import './countdown';
 </style>

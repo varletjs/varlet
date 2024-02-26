@@ -16,13 +16,13 @@
 ```shell
 # playground-ignore
 # npm
-npm i unplugin-vue-components unplugin-auto-import -D
+npm i @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # yarn
-yarn add unplugin-vue-components unplugin-auto-import -D
+yarn add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
 # pnpm
-pnpm add unplugin-vue-components unplugin-auto-import -D
+pnpm add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 ```
 
 #### Vite
@@ -33,17 +33,17 @@ pnpm add unplugin-vue-components unplugin-auto-import -D
 import vue from '@vitejs/plugin-vue'
 import components from 'unplugin-vue-components/vite'
 import autoImport from 'unplugin-auto-import/vite'
-import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
+import { VarletImportResolver } from '@varlet/import-resolver'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
     vue(),
     components({
-      resolvers: [VarletUIResolver()]
+      resolvers: [VarletImportResolver()]
     }),
     autoImport({
-      resolvers: [VarletUIResolver({ autoImport: true })]
+      resolvers: [VarletImportResolver({ autoImport: true })]
     })
   ]
 })
@@ -55,16 +55,16 @@ export default defineConfig({
 // vue.config.js
 const Components = require('unplugin-vue-components/webpack')
 const AutoImport = require('unplugin-auto-import/webpack')
-const { VarletUIResolver } = require('unplugin-vue-components/resolvers')
+const { VarletImportResolver } = require('@varlet/import-resolver')
 
 module.exports = {
   configureWebpack: {
     plugins: [
-      Components({
-        resolvers: [VarletUIResolver()]
+      Components.default({
+        resolvers: [VarletImportResolver()]
       }),
-      AutoImport({
-        resolvers: [VarletUIResolver({ autoImport: true })]
+      AutoImport.default({
+        resolvers: [VarletImportResolver({ autoImport: true })]
       })
     ]
   }
@@ -88,11 +88,12 @@ module.exports = {
 
 ```js
 // playground-ignore
+import App from './App.vue'
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index'
 
-createApp().use(Button)
+createApp(App).use(Button)
 ```
 
 或
@@ -143,13 +144,4 @@ function handleClick() {
 <template>
   <var-button @click="handleClick">说你好</var-button>
 </template>
-```
-
-### 文件路径注意
-
-在 `@varlet/ui@2.7.0` 及其之后的版本，我们推荐使用如下省略后缀名的文件引入方式，以兼容 `js` 和 `mjs`
-
-```js
-// playground-ignore
-import '@varlet/ui/es/style'
 ```

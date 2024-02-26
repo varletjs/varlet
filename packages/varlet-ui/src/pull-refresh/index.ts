@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import PullRefresh from './PullRefresh.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as pullRefreshProps } from './props'
 
-PullRefresh.install = function (app: App) {
-  app.component(PullRefresh.name, PullRefresh)
-}
+withInstall(PullRefresh)
+withPropsDefaultsSetter(PullRefresh, pullRefreshProps)
 
-export { props as pullRefreshProps } from './props'
+export { pullRefreshProps }
 
 export const _PullRefreshComponent = PullRefresh
 

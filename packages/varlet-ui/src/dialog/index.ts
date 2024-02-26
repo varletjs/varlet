@@ -1,7 +1,8 @@
 import VarDialog from './Dialog.vue'
-import { reactive, nextTick, type App, type TeleportProps } from 'vue'
-import { inBrowser, isString } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
+import { reactive, nextTick, type TeleportProps } from 'vue'
+import { inBrowser, isString, call } from '@varlet/shared'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as dialogProps } from './props'
 
 export interface DialogOptions {
   show?: boolean
@@ -114,17 +115,12 @@ Dialog.close = function () {
   }
 }
 
-VarDialog.install = function (app: App) {
-  app.component(VarDialog.name, VarDialog)
-}
-
-Dialog.install = function (app: App) {
-  app.component(VarDialog.name, VarDialog)
-}
-
 Dialog.Component = VarDialog
+withInstall(VarDialog)
+withInstall(VarDialog, Dialog)
+withPropsDefaultsSetter(Dialog, dialogProps)
 
-export { props as dialogProps } from './props'
+export { dialogProps }
 
 export const _DialogComponent = VarDialog
 

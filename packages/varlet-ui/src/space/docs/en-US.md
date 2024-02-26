@@ -95,10 +95,10 @@ so that you can do flex layout more efficiently.
 
 | Prop        | Description                                                                                             | Type     | Default |
 |-------------|---------------------------------------------------------------------------------------------------------|----------|---------|
-| `direction` | Layout direction, Can be set to `row` `column`                                                          | _string_ | `row`   |
+| `direction` | Layout direction, can be set to `row` `column`                                                          | _string_ | `row`   |
 | `justify`   | Main axis arrangement, Can be set to `flex-start` `flex-end` `center` `space-around` `space-between`             | _string_ | `flex-start` |
 | `align`     | Cross axis arrangement, Can be set to `stretch` `center` `flex-start` `flex-end` `baseline`                         | _string_ | `-`     |
-| `size`      | spacing, Can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \| number \| [string \| number, string \| number]_ |`normal`|
+| `size`      | Spacing, can be set to `mini` `small` `normal` `large` or `[Vertical, Horizontal]`(Support length unit) | _string \| number \| [string \| number, string \| number]_ |`normal`|
 | `wrap`      | Whether to exceed the line break                                                                        | _boolean_ | `true`  |
 | `inline`    | Is it an inline element                                                                                 | _boolean_ | `false` |
 
@@ -110,7 +110,7 @@ so that you can do flex layout more efficiently.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

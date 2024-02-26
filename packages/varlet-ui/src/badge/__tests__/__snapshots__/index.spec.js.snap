@@ -1,36 +1,48 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test badge component props test badge default slots 1`] = `
-"<div class="var-badge var--box">default slots<transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top"><!--v-if--><span class="var-badge__value">0</span></span></transition-stub>
+exports[`test badge component props > test badge hidden 1`] = `
+"<div class="var-badge var--box">
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px; display: none;"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
-exports[`test badge component props test badge position 1`] = `
+exports[`test badge component props > test badge hidden 2`] = `
 "<div class="var-badge var--box">
-  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default"><!--v-if--><span class="var-badge__value">0</span></span></transition-stub>
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
-exports[`test badge component props test badge position 2`] = `
+exports[`test badge component props > test badge position 1`] = `
 "<div class="var-badge var--box">
-  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default"><!--v-if--><span class="var-badge__value">0</span></span></transition-stub>
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
-exports[`test badge component props test badge position 3`] = `
+exports[`test badge component props > test badge position 2`] = `
 "<div class="var-badge var--box">
-  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default"><!--v-if--><span class="var-badge__value">0</span></span></transition-stub>
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
-exports[`test badge component props test badge position 4`] = `
+exports[`test badge component props > test badge position 3`] = `
 "<div class="var-badge var--box">
-  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default"><!--v-if--><span class="var-badge__value">0</span></span></transition-stub>
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
 </div>"
 `;
 
-exports[`test badge component props test badge value slots 1`] = `
+exports[`test badge component props > test badge position 4`] = `
 "<div class="var-badge var--box">
-  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default"><!--v-if-->value</span></transition-stub>
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
+</div>"
+`;
+
+exports[`test badge component slots > test badge default slots 1`] = `
+"<div class="var-badge var--box">default slots<transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if--><span>0</span></span></transition-stub>
+</div>"
+`;
+
+exports[`test badge component slots > test badge value slots 1`] = `
+"<div class="var-badge var--box">
+  <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--offset" style="--badge-offset-y: 0px; --badge-offset-x: 0px;"><!--v-if-->value slots</span></transition-stub>
 </div>"
 `;

@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import AvatarGroup from './AvatarGroup.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as avatarGroupProps } from './props'
 
-AvatarGroup.install = function (app: App) {
-  app.component(AvatarGroup.name, AvatarGroup)
-}
+withInstall(AvatarGroup)
+withPropsDefaultsSetter(AvatarGroup, avatarGroupProps)
 
-export { props as avatarGroupProps } from './props'
+export { avatarGroupProps }
 
 export const _AvatarGroupComponent = AvatarGroup
 

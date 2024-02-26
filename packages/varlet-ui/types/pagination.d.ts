@@ -1,9 +1,9 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
 type Range = [number, number]
 
-export declare const paginationProps: Record<string, any>
+export declare const paginationProps: Record<keyof PaginationProps, any>
 
 export interface PaginationProps extends BasicAttributes {
   current?: string | number
@@ -23,6 +23,8 @@ export interface PaginationProps extends BasicAttributes {
 }
 
 export class Pagination extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<PaginationProps>
+
   $props: PaginationProps
 
   $slots: {

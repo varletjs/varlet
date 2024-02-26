@@ -7,7 +7,7 @@ Chip component, used to display some items, and supports closing items.
 
 ### Chip Type
 
-Set the type of the chip with the 'type' attribute.
+Set the type of the chip with the `type` attribute.
 
 ```html
 <template>
@@ -16,7 +16,7 @@ Set the type of the chip with the 'type' attribute.
     <var-chip type="primary">Primary Chip</var-chip>
     <var-chip type="success">Success Chip</var-chip>
     <var-chip type="danger">Danger Chip</var-chip>
-    <var-chip type="warning">Waring Chip</var-chip>
+    <var-chip type="warning">Warning Chip</var-chip>
     <var-chip type="info">Info Chip</var-chip>
   </var-space>
 </template>
@@ -28,7 +28,14 @@ Use the `plain` property to make the chip plain.
 
 ```html
 <template>
-  <var-chip plain type="primary">Plain Chip</var-chip>
+  <var-space>
+    <var-chip plain>Default Chip</var-chip>
+    <var-chip plain type="primary">Primary Chip</var-chip>
+    <var-chip plain type="success">Success Chip</var-chip>
+    <var-chip plain type="danger">Danger Chip</var-chip>
+    <var-chip plain type="warning">Warning Chip</var-chip>
+    <var-chip plain type="info">Info Chip</var-chip>
+  </var-space>
 </template>
 ```
 
@@ -57,7 +64,7 @@ Set the chip size through the `size` attribute.
 </template>
 ```
 
-### Block Flex
+### Block Chip
 
 Set the chip to block level through the `block` attribute.
 
@@ -69,7 +76,7 @@ Set the chip to block level through the `block` attribute.
 
 ### Can Close Chip
 
-Set the paper to be closable through the `closable` attribute, and use the `close-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
+Set the paper to be closable through the `closeable` attribute, and use the `icon-name` attribute to set the closing icon style of the paper (It can only be used when `closeable` is `true`).
 
 ```html
 <script>
@@ -80,9 +87,9 @@ Set the paper to be closable through the `closable` attribute, and use the `clos
 </script>
 
 <template>
-  <var-chip closable v-if="show" @close="show = false">Can Close Chip</var-chip>
+  <var-chip closeable v-if="show" @close="show = false">Can Close Chip</var-chip>
   <var-chip 
-    closable 
+    closeable 
     icon-name="delete" 
     v-if="show1" 
     @close="show1 = false"
@@ -144,13 +151,14 @@ Set the chip color through the `color` and `text-color` attributes.
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `type` | Chip type, Can be set to   `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
-| `size` | Chip size, Can be set to   `normal` `mini` `small` `large` | _string_ | `normal` |
+| `type` | Chip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `size` | Chip size, can be set to `normal` `mini` `small` `large` | _string_ | `normal` |
 | `plain` | Whether to be hollow label | _boolean_ | `false` |
 | `round` | Whether to be round label | _boolean_ | `true` |
 | `block` | Whether to be block label | _boolean_ | `false` |
 | `closeable` | Whether to be closed label | _boolean_ | `false`|
-| `close-name` | Custom Closeable TAB icon must be used when `Closeable` is `true`| _string_ | `-` |
+| `icon-name` | Custom closeable icon must be used when `Closeable` is `true`| _string_ | `-` |
+| `namespace` | Closeable icon namespace | _string_ | `var-icon` |
 | `color` | The label color | _string_ | `_` |
 | `text-color` | The text color takes precedence over the `color` attribute | _string_ | `-` |
 
@@ -169,31 +177,42 @@ Set the chip color through the `color` and `text-color` attributes.
 | `close` | Triggered when the Close button is clicked and can only be used when the Close button is displayed | `event: Event` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
-| `--chip-default-color` | `#f5f5f5` |
-| `--chip-primary-color` | `var(--color-primary)`|
-| `--chip-danger-color` |  `var(--color-danger)`|
-| `--chip-success-color` | `var(--color-success)`|
-| `--chip-warning-color` |  `var(--color-warning)`|
-| `--chip-info-color` | `var(--color-info)`|
+| `--chip-default-text-color` | `#555` |
+| `--chip-primary-text-color` | `var(--color-on-primary-container)` |
+| `--chip-danger-text-color` | `var(--color-on-danger-container)` |
+| `--chip-success-text-color` | `var(--color-on-success-container)` |
+| `--chip-warning-text-color` | `var(--color-on-warning-container)` |
+| `--chip-info-text-color` | `var(--color-on-info-container)` |
+| `--chip-default-color` | `#e0e0e0` |
+| `--chip-primary-color` | `var(--color-primary-container)` |
+| `--chip-danger-color` | `var(--color-danger-container)` |
+| `--chip-success-color` | `var(--color-success-container)` |
+| `--chip-warning-color` | `var(--color-warning-container)` |
+| `--chip-info-color` | `var(--color-info-container)` |
+| `--chip-primary-plain-color` | `var(--color-primary)` |
+| `--chip-danger-plain-color` | `var(--color-danger)` |
+| `--chip-success-plain-color` | `var(--color-success)` |
+| `--chip-warning-plain-color` | `var(--color-warning)` |
+| `--chip-info-plain-color` | `var(--color-info)` |
 | `--chip-border-radius` | `2px` |
-| `--chip-mini-height` | `16px` |
-| `--chip-small-height` | `24px` |
 | `--chip-normal-height` | `32px` |
 | `--chip-large-height` | `40px` |
+| `--chip-small-height` | `24px` |
+| `--chip-mini-height` | `16px` |
 | `--chip-round-radius` | `100px` |
-| `--chip-mini-padding` | `0 4px` |
-| `--chip-small-padding` | `0 6px` |
 | `--chip-normal-padding` | `0 10px` |
 | `--chip-large-padding` | `0 17px` |
-| `--chip-text-large-margin` | `0 5px` |
+| `--chip-small-padding` | `0 6px` |
+| `--chip-mini-padding` | `0 4px` |
 | `--chip-text-normal-margin` | `0 5px` |
+| `--chip-text-large-margin` | `0 5px` |
 | `--chip-text-small-margin` | `0 3px` |
 | `--chip-text-mini-margin` | `0 2px` |
-| `--chip-mini-font-size`     | `var(--font-size-xs)` |
-| `--chip-small-font-size`    | `var(--font-size-sm)` |
-| `--chip-normal-font-size`   | `var(--font-size-md)` |
-| `--chip-large-font-size`    | `var(--font-size-lg)` |
+| `--chip-mini-font-size` | `var(--font-size-xs)` |
+| `--chip-small-font-size` | `var(--font-size-sm)` |
+| `--chip-normal-font-size` | `var(--font-size-md)` |
+| `--chip-large-font-size` | `var(--font-size-lg)` |

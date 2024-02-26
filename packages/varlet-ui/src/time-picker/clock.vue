@@ -35,16 +35,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
-import dayjs from 'dayjs/esm'
-import { hoursAmpm, hours24, minSec } from './props'
+import dayjs from 'dayjs/esm/index.js'
+import { computed, defineComponent, ref, watch, type ComputedRef, type Ref, type PropType } from 'vue'
+import { hoursAmpm, hours24, minSec, type Time, type AmPm, type Format, type AllowedTime } from './props'
 import { notConvert, convertHour, getIsDisableMinute, getIsDisableSecond, getNumberTime } from './utils'
-import { toNumber } from '@varlet/shared'
+import { toNumber, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { padStart } from '../utils/shared'
-import type { ComputedRef, Ref, PropType } from 'vue'
-import type { Time, AmPm, Format, AllowedTime } from './props'
-import { getRect } from '../utils/elements'
 
 const { n, classes } = createNamespace('time-picker')
 
@@ -97,7 +94,7 @@ export default defineComponent({
   },
   emits: ['update', 'change-prevent-update'],
   setup(props, { emit }) {
-    const inner: Ref<HTMLDivElement | null> = ref(null)
+    const inner: Ref<HTMLElement | null> = ref(null)
     const disableHour: Ref<Array<string>> = ref([])
     const disable24HourIndex: Ref<Array<number>> = ref([])
 
@@ -147,10 +144,10 @@ export default defineComponent({
       const hour = props.isInner ? hours24[activeItemIndex.value] : timeScales.value[activeItemIndex.value]
 
       if (timeScales.value === minSec) {
-        return isDisableMinSec() ? '#bdbdbd' : props.color
+        return isDisableMinSec() ? 'var(--time-picker-clock-item-disable-background)' : props.color
       }
 
-      return isDisable(hour) ? '#bdbdbd' : props.color
+      return isDisable(hour) ? 'var(--time-picker-clock-item-disable-background)' : props.color
     }
 
     const isActive = (index: number, inner: boolean): boolean => {
@@ -184,8 +181,8 @@ export default defineComponent({
         }
         if (isDisable(hour)) {
           return {
-            backgroundColor: '#bdbdbd',
-            color: '#fff',
+            backgroundColor: 'var(--time-picker-clock-item-disable-background)',
+            color: 'var(--time-picker-clock-item-disable-color)',
           }
         }
 
@@ -206,7 +203,7 @@ export default defineComponent({
     }
 
     const getSize = () => {
-      const { width, height } = getRect(inner.value as HTMLDivElement)
+      const { width, height } = getRect(inner.value as HTMLElement)
 
       return {
         width,

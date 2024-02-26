@@ -1,6 +1,5 @@
-import { watch, onBeforeMount, onUnmounted, onDeactivated, onActivated, getCurrentInstance } from 'vue'
-import type { ComponentInternalInstance } from 'vue'
 import context from '.'
+import { watch, onBeforeMount, onUnmounted, onDeactivated, onActivated, getCurrentInstance } from 'vue'
 
 export function resolveLock() {
   const lockCounts: number = Object.keys(context.locks).length
@@ -18,15 +17,15 @@ export function releaseLock(uid: number) {
 }
 
 export function useLock(source: any, useSource?: any) {
-  const { uid } = getCurrentInstance() as ComponentInternalInstance
+  const { uid } = getCurrentInstance()!
 
   if (useSource) {
     watch(useSource, (newValue: boolean) => {
       if (newValue === false) {
-        // 改变为禁用状态 组件解锁
+        // change to disabled state component release lock
         releaseLock(uid)
       } else if (newValue === true && source() === true) {
-        // 改变为启用状态 并且popup处于开启状态 组件加锁
+        // change to enabled state and layer is open. component is locked
         addLock(uid)
       }
     })
@@ -38,10 +37,10 @@ export function useLock(source: any, useSource?: any) {
     }
 
     if (newValue === true) {
-      // popup开启 组件加锁
+      // Layer opens and component is locked
       addLock(uid)
     } else {
-      // popup关闭 组件解锁
+      // Layer closes component release lock
       releaseLock(uid)
     }
   })
@@ -52,7 +51,7 @@ export function useLock(source: any, useSource?: any) {
     }
 
     if (source() === true) {
-      // popup处于开启状态 组件挂载 组件加锁
+      // The layer is open, the component is mounted, and the component is locked
       addLock(uid)
     }
   })
@@ -63,7 +62,7 @@ export function useLock(source: any, useSource?: any) {
     }
 
     if (source() === true) {
-      // popup处于开启状态 组件卸载 组件解锁
+      // The layer is open. The component is uninstalled. The component release lock
       releaseLock(uid)
     }
   })
@@ -74,7 +73,7 @@ export function useLock(source: any, useSource?: any) {
     }
 
     if (source() === true) {
-      // popup处于开启状态 组件处于keepalive前台 组件加锁
+      // The layer is open, the component is in the keepalive foreground, and the component is locked
       addLock(uid)
     }
   })
@@ -85,7 +84,7 @@ export function useLock(source: any, useSource?: any) {
     }
 
     if (source() === true) {
-      // popup处于开启状态 组件处于keepalive后台 组件解锁
+      // The layer is open, the component is in the keepalive background, and the component release lock
       releaseLock(uid)
     }
   })

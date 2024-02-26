@@ -58,7 +58,7 @@ function hideButton() {
 </template>
 ```
 
-### Handling user behavior
+### Handling User Behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
 Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
@@ -83,7 +83,7 @@ async function createAction() {
 </template>
 ```
 
-### Asynchronous closing
+### Asynchronous Closing
 
 You can use `onBeforeClose` to intercept before closing, and you can get the user behavior from the parameters, and the callback function that triggers the shutdown.
 
@@ -144,7 +144,7 @@ const show = ref(false)
 </template>
 ```
 
-### Asynchronous closing
+### Asynchronous Closing
 
 ```html
 <script setup>
@@ -229,7 +229,7 @@ const show = ref(false)
 | `overlay-style`             | Custom overlay style                                                                                           | _string_              | `-`       |
 | `lock-scroll`               | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_             | `true`    |
 | `close-on-click-overlay`    | Whether to click the overlay to close the Dialog                                                               | _boolean_             | `true`    |
-| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to']_ | `-`       |
+| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to'] \| false_ | `body`       |
 
 ### Events
 
@@ -240,9 +240,9 @@ const show = ref(false)
 | `before-close`  | Triggering before the Dialog closes prevents closure | `action: confirm \| cancel \| close` <br> `done: Function` |
 | `close`         | Triggered when the Dialog is close                   | `-`                                                        |
 | `closed`        | Triggered when the Dialog close-animation ends       | `-`                                                        |
-| `confirm`       | Trigger on confirm                                   | `-`                                                        |
-| `cancel`        | Trigger on cancel                                    | `-`                                                        |
-| `click-overlay` | Triggered when you click on overlay                  | `-`                                                        |
+| `confirm`       | Triggered on confirm                                   | `-`                                                        |
+| `cancel`        | Triggered on cancel                                    | `-`                                                        |
+| `click-overlay` | Triggered when clicking on overlay                  | `-`                                                        |
 
 ### Methods
 
@@ -296,12 +296,12 @@ const show = ref(false)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                        | Default                |
 | ------------------------------- | ---------------------- |
 | `--dialog-width`                | `280px`                |
-| `--dialog-background`           | `#fff`                 |
+| `--dialog-background`           | `var(--color-surface-container-low)`                 |
 | `--dialog-border-radius`        | `3px`                  |
 | `--dialog-title-padding`        | `20px 20px 0`          |
 | `--dialog-title-font-size`      | `var(--font-size-lg)`  |
@@ -311,5 +311,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--dialog-message-font-size`    | `var(--font-size-md)`  |
 | `--dialog-actions-padding`      | `0 12px 12px`          |
 | `--dialog-button-margin-left`   | `6px`                  |
+| `--dialog-title-color`          | `#555`                 |
 | `--dialog-confirm-button-color` | `var(--color-primary)` |
 | `--dialog-cancel-button-color`  | `var(--color-primary)` |

@@ -18,7 +18,7 @@ const value = ref(3)
 </template>
 ```
 
-### Step size
+### Step Size
 
 Set step increment by `step`.
 
@@ -34,9 +34,9 @@ const value = ref(25)
 </template>
 ```
 
-### Dual thumb
+### Dual Thumbs
 
-Open the double slider mode through the `range` attribute. Make sure the `value` is an **array**.
+Open the double slider mode through the `range` attribute. Make sure the `value` is an array.
 
 ```html
 <script setup>
@@ -96,7 +96,7 @@ const value = ref(40)
 </template>
 ```
 
-### Slider size
+### Slider Size
 
 Control the size of slider through `track-height` and `thumb-size`.
 
@@ -112,7 +112,7 @@ const value = ref([7, 64])
 </template>
 ```
 
-### Custom style
+### Custom Style
 
 ```html
 <script setup>
@@ -170,7 +170,7 @@ const value = ref([5, 38])
 </style>
 ```
 
-### Show label
+### Show Label
 Control the display of labels through the `label-visible` attribute.
 
 ```html
@@ -189,7 +189,7 @@ const value2 = ref(50)
 </template>
 ```
 
-### Validate value
+### Validate Value
 
 Verify the value through the `rules` attribute.
 
@@ -212,8 +212,9 @@ const value = ref(20)
 Set the `direction` attribute value to `vertical` to make the slider display vertically.
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
+
 const value1 = ref(50)
 const value2 = ref([7, 64])
 </script>
@@ -221,10 +222,10 @@ const value2 = ref([7, 64])
 <template>
   <var-space justify="space-around">
     <div style="height: 300px">
-      <var-slider v-model="values.value1" direction="vertical" />
+      <var-slider v-model="value1" direction="vertical" />
     </div>
     <div style="height: 300px">
-      <var-slider v-model="values.value2" range label-visible="always" direction="vertical" />
+      <var-slider v-model="value2" range label-visible="always" direction="vertical" />
     </div>
   </var-space>
 </template>
@@ -242,25 +243,24 @@ const value2 = ref([7, 64])
 | `max` | The maximum value the slider can slide to                                | _string \| number_ | `100`           |
 | `min` | The minimum value the slider can slide to                                | _string \| number_ | `0`           |
 | `label-visible` | Whether to display labels, the optional value is `always, normal, never` | _string_ | `normal` |
-| `label-text-color` | Color of label text                                                      | _string_ | `#fff` |
+| `label-text-color` | Color of label text                                                      | _string_ | `-` |
 | `label-color`  | Background color of label                                                | _string_ | `-`               |
 | `active-color` | Background color of actived track                                        | _string_ | `-`               |
 | `track-color`  | Background color of track                                                | _string_ | `-`               |
-| `track-height` | Height of track                                                          | _string \| number_ | `2` |
-| `thumb-size` | Size of thumb                                                            | _string \| number_ | `12` |
+| `track-height` | Height of track                                                          | _string \| number_ | `-` |
+| `thumb-size` | Size of thumb                                                            | _string \| number_ | `-` |
 | `thumb-color`   | Background color of thumb                                                | _string_ | `-`               |
 | `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
 | `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
 | `direction` | Direction of slider, Can be set to `vertical horizontal`                           | _string_ | `horizontal` |
-| `rules`| Validation rules                                                         | _array_  | `-` |
-
+| `rules`| Validation rules                                                         | _Array<(v: number \| number[]) => any>_ | `-`               |
 ### Events
 
 | Event | Description | arguments |
 | ----- | -------- | -------- |
-| `change` |  Emitted after slider changed | value: current value |
+| `change` |  Emitted after slider changed | `value`: current value |
 | `start` | Emitted when start dragged | `-` |
-| `end` | Emitted when end dragged | value: current value |
+| `end` | Emitted when end dragged | `value`: current value |
 
 ### Slots
 
@@ -270,15 +270,20 @@ const value2 = ref([7, 64])
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
 | `--slider-error-color` | `var(--color-danger)` |
 | `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-height` | `2px` |
+| `--slider-track-border-radius` | `0` |
+| `--slider-track-fill-border-radius` | `0` |
 | `--slider-track-fill-background` | `var(--color-primary)` |
 | `--slider-thumb-block-background` | `var(--color-primary)` |
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |
 | `--slider-thumb-label-background` | `var(--color-primary)` |
 | `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
+| `--slider-thumb-label-text-color` | `var(--color-on-primary)` |
+| `--slider-thumb-size` | `12px` |
 | `--slider-disabled-opacity` | `var(--opacity-disabled)` |

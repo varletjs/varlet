@@ -36,7 +36,7 @@ const value = ref(25)
 
 ### 双滑块
 
-通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个**数组**。
+通过 `range` 属性开启双滑块模式，确保 `value` 的值是一个数组。
 
 ```html
 <script setup>
@@ -203,7 +203,7 @@ const value = ref(20)
 </script>
 
 <template>
-  <var-slider v-model="value" :rules="[(v) => v > 35 || 'error message']" />
+  <var-slider v-model="value" :rules="[(v) => v > 35 || '错误信息']" />
 </template>
 ```
 
@@ -212,8 +212,9 @@ const value = ref(20)
 通过设置 `direction` 属性值为 `vertical` 来让滑块垂直显示。
 
 ```html
-<script>
+<script setup>
 import { ref } from 'vue'
+
 const value1 = ref(50)
 const value2 = ref([7, 64])
 </script>
@@ -221,10 +222,10 @@ const value2 = ref([7, 64])
 <template>
  <var-space justify="space-around">
     <div style="height: 300px">
-      <var-slider v-model="values.value1" direction="vertical" />
+      <var-slider v-model="value1" direction="vertical" />
     </div>
     <div style="height: 300px">
-      <var-slider v-model="values.value2" range label-visible="always" direction="vertical" />
+      <var-slider v-model="value2" range label-visible="always" direction="vertical" />
     </div>
   </var-space>
 </template>
@@ -243,25 +244,25 @@ const value2 = ref([7, 64])
 | `max`              | 最大值                               | _string \| number_ | `100`           |
 | `min`              | 最小值                               | _string \| number_ | `0`           |
 | `label-visible`    | 是否显示标签，可选值为 `always normal never` | _string_ | `normal`          |
-| `label-text-color` | 标签文字颜色                            | _string_ | `#fff`            |
+| `label-text-color` | 标签文字颜色                            | _string_ | `-`            |
 | `label-color`      | 标签颜色                              | _string_ | `-`               |
 | `active-color`     | 已激活的轨道背景颜色                        | _string_ | `-`               |
 | `track-color`      | 轨道背景颜色                            | _string_ | `-`               |
-| `track-height`     | 轨道的高度                             | _string \| number_           | `2` |
-| `thumb-size`       | 滑块的大小                             | _string \| number_           | `12` |
+| `track-height`     | 轨道的高度                             | _string \| number_           | `-` |
+| `thumb-size`       | 滑块的大小                             | _string \| number_           | `-` |
 | `thumb-color`      | 滑块的背景颜色                           | _string_ | `-`               |
 | `disabled`         | 是否禁用                              | _boolean_ | `false`           |
 | `readonly`         | 是否只读                              | _boolean_ | `false`           |
-| `direction` | 显示方向，可选值为 `vertical horizontal`             | _string_ | `horizontal` |
-| `rules`            | 校验规则                              | _array_ | `-`               |
+| `direction`        | 显示方向，可选值为 `vertical horizontal`        | _string_ | `horizontal` |
+| `rules`            | 校验规则                              | _Array<(v: number \| number[]) => any>_ | `-`               |
 
 ### 事件
 
 | 事件名 | 说明 | 回调参数 |
 | ----- | -------- | -------- |
-| `change` |  值改变时触发| value: 当前进度|
+| `change` |  值改变时触发| `value`: 当前进度|
 | `start` | 开始拖动时触发 | `-` |
-| `end` | 结束拖动时触发 | value: 当前进度 |
+| `end` | 结束拖动时触发 | `value`: 当前进度 |
 
 ### 插槽
 
@@ -277,9 +278,14 @@ const value2 = ref([7, 64])
 | --- | --- |
 | `--slider-error-color` | `var(--color-danger)` |
 | `--slider-track-background` | `#bdbdbd` |
+| `--slider-track-height` | `2px` |
+| `--slider-track-border-radius` | `0` |
+| `--slider-track-fill-border-radius` | `0` |
 | `--slider-track-fill-background` | `var(--color-primary)` |
 | `--slider-thumb-block-background` | `var(--color-primary)` |
 | `--slider-thumb-ripple-background` | `var(--color-primary)` |
 | `--slider-thumb-label-background` | `var(--color-primary)` |
 | `--slider-thumb-label-font-size` | `var(--font-size-sm)` |
+| `--slider-thumb-label-text-color` | `var(--color-on-primary)` |
+| `--slider-thumb-size` | `12px` |
 | `--slider-disabled-opacity` | `var(--opacity-disabled)` |

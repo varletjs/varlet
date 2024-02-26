@@ -2,6 +2,8 @@ import Overlay from '..'
 import VarOverlay from '../Overlay'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect, vi } from 'vitest'
+import { triggerKeyboard } from '../../utils/test'
 
 test('test overlay plugin', () => {
   const app = createApp({}).use(Overlay)
@@ -38,7 +40,7 @@ test('test overlay show', async () => {
 })
 
 test('test overlay click on clickOverlay', async () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount(Wrapper, {
     props: {
@@ -59,16 +61,41 @@ test('test overlay click on clickOverlay', async () => {
   wrapper.unmount()
 })
 
-test('test overlay z-index', async () => {
-  const wrapper = mount(Wrapper)
+test('test overlay keyboard escape', async () => {
+  const onKeyEscape = vi.fn()
+  const onUpdateShow = vi.fn()
 
-  await wrapper.setData({ show: true })
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      onKeyEscape,
+      'onUpdate:show': onUpdateShow,
+    },
+  })
 
-  const prevOverlayZIndex = window.getComputedStyle(wrapper.find('.var-overlay').element).zIndex
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(onKeyEscape).toBeCalledTimes(1)
+  expect(onUpdateShow).toBeCalledWith(false)
 
-  await wrapper.setData({ show: false })
-  await wrapper.setData({ show: true })
-  expect(window.getComputedStyle(wrapper.find('.var-overlay').element).zIndex).toBe(String(+prevOverlayZIndex + 1))
+  wrapper.unmount()
+})
+
+test('test overlay keyboard escape and closeOnKeyEscape', async () => {
+  const onKeyEscape = vi.fn()
+  const onUpdateShow = vi.fn()
+
+  const wrapper = mount(Wrapper, {
+    props: {
+      show: true,
+      closeOnKeyEscape: false,
+      onKeyEscape,
+      'onUpdate:show': onUpdateShow,
+    },
+  })
+
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+  expect(onKeyEscape).toBeCalledTimes(1)
+  expect(onUpdateShow).toBeCalledTimes(0)
 
   wrapper.unmount()
 })

@@ -1,5 +1,11 @@
 <template>
-  <div ref="freshNode" :class="n()" @touchstart="touchStart" @touchend="touchEnd" @touchcancel="touchEnd">
+  <div
+    ref="freshNode"
+    :class="n()"
+    @touchstart="handleTouchstart"
+    @touchend="handleTouchend"
+    @touchcancel="handleTouchend"
+  >
     <div
       ref="controlNode"
       :class="classes(n('control'), n('$-elevation--2'), [isSuccess, n('control-success')])"
@@ -18,39 +24,68 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, watch, nextTick, type Ref } from 'vue'
-import { getParentScroller, getScrollTop, getTarget, getRect } from '../utils/elements'
+import { defineComponent, ref, computed, watch, nextTick } from 'vue'
+import { getParentScroller, getTarget } from '../utils/elements'
 import { props, type RefreshStatus } from './props'
-import { isString, toNumber } from '@varlet/shared'
-import { call, createNamespace } from '../utils/components'
-import { useEventListener, onSmartMounted } from '@varlet/use'
+import { isNumber, isString, toNumber, getRect, preventDefault, getScrollTop, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { useEventListener, onSmartMounted, useTouch } from '@varlet/use'
 
-const { n, classes } = createNamespace('pull-refresh')
+const { name, n, classes } = createNamespace('pull-refresh')
 
 const ICON_TRANSITION = 150
 
 export default defineComponent({
-  name: 'VarPullRefresh',
-  components: {
-    VarIcon,
-  },
+  name,
+  components: { VarIcon },
   props,
   setup(props) {
-    const controlPosition: Ref<number> = ref(0)
-    const freshNode: Ref<HTMLElement | null> = ref(null)
-    const controlNode: Ref<HTMLElement | null> = ref(null)
-    const startPosition: Ref<number> = ref(0)
-    const distance: Ref<number | string> = ref('-125%')
-    const iconName: Ref<string> = ref('arrow-down')
-    const refreshStatus: Ref<RefreshStatus> = ref('default')
-    const isEnd: Ref<boolean> = ref(false)
+    const controlPosition = ref(0)
+    const freshNode = ref<HTMLElement | null>(null)
+    const controlNode = ref<HTMLElement | null>(null)
+    const startPosition = ref(0)
+    const distance = ref<number | string>('-125%')
+    const iconName = ref('arrow-down')
+    const refreshStatus = ref<RefreshStatus>('default')
+    const isEnd = ref(false)
+    const maxDistance = computed(() => Math.abs(2 * controlPosition.value))
+    const isSuccess = computed(() => refreshStatus.value === 'success')
+    const isTouchable = computed(
+      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
+    )
+    const controlStyle = computed(() => ({
+      transform: `translate3d(0px, ${
+        isString(distance.value) ? distance.value : `${distance.value}px`
+      }, 0px) translate(-50%, 0)`,
+      transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
+      background: isSuccess.value ? props.successBgColor : props.bgColor,
+      color: isSuccess.value ? props.successColor : props.color,
+    }))
+    const { startTouch, moveTouch, endTouch, isReachTop } = useTouch()
 
     let scroller: HTMLElement | Window
     let eventTargetScroller: HTMLElement | Window | null
-    let startY = 0
-    let deltaY = 0
 
-    const startIconTransition = async (name: string) => {
+    watch(
+      () => props.modelValue,
+      (newValue) => {
+        if (newValue === false) {
+          isEnd.value = true
+          refreshStatus.value = 'success'
+          iconName.value = 'checkbox-marked-circle'
+          setTimeout(() => {
+            distance.value = controlPosition.value
+            reset()
+          }, toNumber(props.successDuration))
+        }
+      }
+    )
+
+    onSmartMounted(setScroller)
+
+    useEventListener(freshNode, 'touchmove', handleTouchmove)
+
+    async function startIconTransition(name: string) {
       if (iconName.value === name) {
         return
       }
@@ -61,42 +96,27 @@ export default defineComponent({
       })
     }
 
-    const isTouchable = computed(
-      () => refreshStatus.value !== 'loading' && refreshStatus.value !== 'success' && !props.disabled
-    )
-
-    const controlStyle = computed(() => ({
-      transform: `translate3d(0px, ${
-        isString(distance.value) ? distance.value : `${distance.value}px`
-      }, 0px) translate(-50%, 0)`,
-      transition: isEnd.value ? `transform ${props.animationDuration}ms` : undefined,
-      background: isSuccess.value ? props.successBgColor : props.bgColor,
-      color: isSuccess.value ? props.successColor : props.color,
-    }))
-
-    const maxDistance = computed(() => Math.abs(2 * controlPosition.value))
-
-    const isSuccess = computed(() => refreshStatus.value === 'success')
-
-    const lockEvent = (action: 'add' | 'remove') => {
+    function lockEvent(action: 'add' | 'remove') {
       const el = 'classList' in scroller ? scroller : document.body
 
       el.classList[action](`${n()}--lock`)
     }
 
-    const touchStart = (event: TouchEvent) => {
+    function handleTouchstart(event: TouchEvent) {
+      startTouch(event)
+
       if (controlPosition.value === 0) {
         const { width } = getRect(controlNode.value as HTMLElement)
         controlPosition.value = -(width + width * 0.25)
       }
 
-      startY = event.touches[0].clientY
-      deltaY = 0
       eventTargetScroller = getParentScroller(event.target as HTMLElement)
     }
 
-    const touchMove = (event: TouchEvent) => {
-      if (!isTouchable.value) {
+    function handleTouchmove(event: TouchEvent) {
+      moveTouch(event)
+
+      if (!isTouchable.value || !eventTargetScroller) {
         return
       }
 
@@ -109,12 +129,8 @@ export default defineComponent({
         return
       }
 
-      const isReachTop = scrollTop === 0
-      const touch = event.touches[0]
-      deltaY = touch.clientY - startY
-
-      if (isReachTop && deltaY >= 0) {
-        event.preventDefault()
+      if (isReachTop(scroller)) {
+        preventDefault(event)
       }
 
       if (refreshStatus.value !== 'pulling') {
@@ -122,24 +138,25 @@ export default defineComponent({
         startPosition.value = event.touches[0].clientY
       }
 
-      if (isReachTop && distance.value > controlPosition.value) {
+      if (isReachTop(scroller) && isNumber(distance.value) && distance.value > controlPosition.value) {
         lockEvent('add')
       }
 
       const moveDistance = (event.touches[0].clientY - startPosition.value) / 2 + controlPosition.value
-
       distance.value = moveDistance >= maxDistance.value ? maxDistance.value : moveDistance
       startIconTransition(distance.value >= maxDistance.value * 0.2 ? 'refresh' : 'arrow-down')
     }
 
-    const touchEnd = async () => {
+    async function handleTouchend() {
+      endTouch()
+
       if (!isTouchable.value) {
         return
       }
 
       isEnd.value = true
 
-      if (distance.value >= maxDistance.value * 0.2) {
+      if (toNumber(distance.value) >= maxDistance.value * 0.2) {
         await startIconTransition('refresh')
         refreshStatus.value = 'loading'
         distance.value = maxDistance.value * 0.3
@@ -163,11 +180,11 @@ export default defineComponent({
       eventTargetScroller = null
     }
 
-    const setScroller = () => {
+    function setScroller() {
       scroller = props.target ? getTarget(props.target, 'PullRefresh') : getParentScroller(freshNode.value!)
     }
 
-    const reset = () => {
+    function reset() {
       setTimeout(() => {
         refreshStatus.value = 'default'
         iconName.value = 'arrow-down'
@@ -175,37 +192,19 @@ export default defineComponent({
       }, toNumber(props.animationDuration))
     }
 
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        if (newValue === false) {
-          isEnd.value = true
-          refreshStatus.value = 'success'
-          iconName.value = 'checkbox-marked-circle'
-          setTimeout(() => {
-            distance.value = controlPosition.value
-            reset()
-          }, toNumber(props.successDuration))
-        }
-      }
-    )
-
-    onSmartMounted(setScroller)
-    useEventListener(freshNode, 'touchmove', touchMove)
-
     return {
-      n,
-      classes,
       ICON_TRANSITION,
       refreshStatus,
       freshNode,
       controlNode,
-      touchStart,
-      touchMove,
-      touchEnd,
       iconName,
       controlStyle,
       isSuccess,
+      n,
+      classes,
+      handleTouchstart,
+      handleTouchmove,
+      handleTouchend,
     }
   },
 })

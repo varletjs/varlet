@@ -1,11 +1,11 @@
 import Result from './Result.vue'
-import type { App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as resultProps } from './props'
 
-Result.install = function (app: App) {
-  app.component(Result.name, Result)
-}
+withInstall(Result)
+withPropsDefaultsSetter(Result, resultProps)
 
-export { props as resultProps } from './props'
+export { resultProps }
 
 export const _ResultComponent = Result
 

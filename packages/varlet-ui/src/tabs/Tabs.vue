@@ -53,42 +53,66 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { defineComponent, watch, ref, computed, Transition, type Ref, type ComputedRef, onActivated } from 'vue'
+import { defineComponent, watch, ref, computed, Transition, onActivated } from 'vue'
 import { props } from './props'
 import { useTabList, type TabsProvider } from './provide'
-import { type TabProvider } from '../tab/provide'
-import { clamp, isNumber } from '@varlet/shared'
+import { clamp, isNumber, doubleRaf, call } from '@varlet/shared'
 import { linear } from '../utils/shared'
-import { toSizeUnit, scrollTo, doubleRaf } from '../utils/elements'
-import { createNamespace, call, formatElevation } from '../utils/components'
+import { toSizeUnit, scrollTo } from '../utils/elements'
+import { createNamespace, formatElevation } from '../utils/components'
 import { onWindowResize } from '@varlet/use'
+import { type TabProvider } from '../tab/provide'
 
-const { n, classes } = createNamespace('tabs')
+const { name, n, classes } = createNamespace('tabs')
 
 export default defineComponent({
-  name: 'VarTabs',
+  name,
   components: { VarSticky },
   inheritAttrs: false,
   props,
   setup(props) {
-    const indicatorWidth: Ref<string> = ref('0px')
-    const indicatorHeight: Ref<string> = ref('0px')
-    const indicatorX: Ref<string> = ref('0px')
-    const indicatorY: Ref<string> = ref('0px')
-    const localScrollable: Ref<boolean> = ref(false)
-    const scrollerEl: Ref<HTMLElement | null> = ref(null)
-    const active: ComputedRef<number | string> = computed(() => props.active)
-    const indicatorPosition: ComputedRef<string> = computed(() =>
-      props.indicatorPosition === 'reverse' ? '-reverse' : ''
-    )
-    const activeColor: ComputedRef<string | undefined> = computed(() => props.activeColor)
-    const inactiveColor: ComputedRef<string | undefined> = computed(() => props.inactiveColor)
-    const disabledColor: ComputedRef<string | undefined> = computed(() => props.disabledColor)
-    const itemDirection: ComputedRef<string> = computed(() => props.itemDirection)
-    const stickyComponent: Ref<null | typeof VarSticky> = ref(null)
+    const indicatorWidth = ref('0px')
+    const indicatorHeight = ref('0px')
+    const indicatorX = ref('0px')
+    const indicatorY = ref('0px')
+    const localScrollable = ref(false)
+    const scrollerEl = ref<HTMLElement | null>(null)
+    const active = computed(() => props.active)
+    const activeColor = computed(() => props.activeColor)
+    const inactiveColor = computed(() => props.inactiveColor)
+    const disabledColor = computed(() => props.disabledColor)
+    const itemDirection = computed(() => props.itemDirection)
+    const stickyComponent = ref<null | typeof VarSticky>(null)
+    const indicatorPosition = computed<string>(() => (props.indicatorPosition === 'reverse' ? '-reverse' : ''))
     const { tabList, bindTabList, length } = useTabList()
 
-    const onTabClick = (tab: TabProvider) => {
+    const tabsProvider: TabsProvider = {
+      active,
+      activeColor,
+      inactiveColor,
+      disabledColor,
+      itemDirection,
+      resize,
+      onTabClick,
+    }
+
+    bindTabList(tabsProvider)
+
+    watch(
+      () => length.value,
+      async () => {
+        await doubleRaf()
+        resize()
+      }
+    )
+
+    watch(() => [props.active, props.scrollable], resize)
+
+    onActivated(resize)
+
+    onWindowResize(resize)
+
+    function onTabClick(tab: TabProvider) {
       const currentActive = tab.name.value ?? tab.index.value
       const { active, onChange, onClick } = props
 
@@ -97,15 +121,15 @@ export default defineComponent({
       currentActive !== active && call(onChange, currentActive)
     }
 
-    const matchName = (): TabProvider | undefined => {
+    function matchName(): TabProvider | undefined {
       return tabList.find(({ name }: TabProvider) => props.active === name.value)
     }
 
-    const matchIndex = (activeIndex?: number): TabProvider | undefined => {
+    function matchIndex(activeIndex?: number): TabProvider | undefined {
       return tabList.find(({ index }: TabProvider) => (activeIndex ?? props.active) === index.value)
     }
 
-    const matchBoundary = (): TabProvider | undefined => {
+    function matchBoundary(): TabProvider | undefined {
       if (length.value === 0) {
         return
       }
@@ -119,11 +143,11 @@ export default defineComponent({
       }
     }
 
-    const watchScrollable = () => {
+    function watchScrollable() {
       localScrollable.value = props.scrollable === 'always' || tabList.length >= 5
     }
 
-    const moveIndicator = ({ element }: TabProvider) => {
+    function moveIndicator({ element }: TabProvider) {
       const el = element.value
 
       if (!el) return
@@ -137,7 +161,7 @@ export default defineComponent({
       }
     }
 
-    const scrollToCenter = ({ element }: TabProvider) => {
+    function scrollToCenter({ element }: TabProvider) {
       if (!localScrollable.value) {
         return
       }
@@ -161,7 +185,7 @@ export default defineComponent({
     }
 
     // expose
-    const resize = () => {
+    function resize() {
       const tab: TabProvider | undefined = matchName() || matchIndex() || matchBoundary()
       if (!tab || tab.disabled.value) {
         return
@@ -173,36 +197,11 @@ export default defineComponent({
     }
 
     // expose
-    const resizeSticky = async () => {
+    async function resizeSticky() {
       if (props.sticky && stickyComponent.value) {
         await stickyComponent.value.resize()
       }
     }
-
-    const tabsProvider: TabsProvider = {
-      active,
-      activeColor,
-      inactiveColor,
-      disabledColor,
-      itemDirection,
-      resize,
-      onTabClick,
-    }
-
-    bindTabList(tabsProvider)
-
-    watch(
-      () => length.value,
-      async () => {
-        await doubleRaf()
-        resize()
-      }
-    )
-
-    watch(() => props.active, resize)
-    watch(() => props.scrollable, resize)
-    onActivated(resize)
-    onWindowResize(resize)
 
     return {
       stickyComponent,

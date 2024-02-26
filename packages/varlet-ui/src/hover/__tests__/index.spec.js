@@ -1,7 +1,8 @@
 import Hover from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { mockUserAgent } from '../../utils/jest'
+import { mockUserAgent } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test hover use', () => {
   const app = createApp({}).use(Hover)
@@ -27,7 +28,7 @@ test('test hover style binding', async () => {
 })
 
 test('test hover function binding', async () => {
-  const handleHover = jest.fn()
+  const handleHover = vi.fn()
 
   const Wrapper = {
     directives: { Hover },

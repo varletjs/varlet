@@ -4,8 +4,8 @@
     :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
   >
     <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
-    <div :class="n('header')" @click="toggle()">
-      <div :class="n('header-title')">
+    <div :class="n('header')" @click="toggle">
+      <div :class="n('header-title')" v-if="$slots.title || title">
         <slot name="title">{{ title }}</slot>
       </div>
       <div :class="n('header-icon')">
@@ -28,8 +28,8 @@
       :class="n('content')"
       v-show="showContent"
       ref="contentEl"
-      @transitionend="transitionend"
-      @transitionstart="start"
+      @transitionend="handleTransitionEnd"
+      @transitionstart="handleTransitionStart"
     >
       <div :class="n('content-wrap')">
         <slot />
@@ -39,120 +39,70 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue'
-import { nextTickFrame, requestAnimationFrame } from '../utils/elements'
-import { isArray } from '@varlet/shared'
-import { createNamespace, formatElevation } from '../utils/components'
-import { useCollapse } from './provide'
-import { props } from './props'
 import VarIcon from '../icon'
-import type { Ref, ComputedRef } from 'vue'
-import type { CollapseItemProvider } from './provide'
+import { defineComponent, ref, computed } from 'vue'
+import { createNamespace, formatElevation } from '../utils/components'
+import { useCollapse, type CollapseItemProvider } from './provide'
+import { props } from './props'
+import { useCollapseTransition } from '../collapse-transition/useCollapseTransition'
 
-const { n, classes } = createNamespace('collapse-item')
+const { name, n, classes } = createNamespace('collapse-item')
 
 export default defineComponent({
-  name: 'VarCollapseItem',
+  name,
   components: {
     VarIcon,
   },
   props,
   setup(props) {
+    const isShow = ref(false)
+    const showContent = ref(false)
+    const contentEl = ref<HTMLElement | null>(null)
+    const name = computed(() => props.name)
+    const disabled = computed(() => props.disabled)
     const { index, collapse, bindCollapse } = useCollapse()
-
-    let isInitToTrigger = true // ensure to trigger transitionend
-    const contentEl: Ref<HTMLDivElement | null> = ref(null)
-    const showContent: Ref<boolean> = ref(false)
-    const isShow: Ref<boolean> = ref(false)
-    const { active, offset, divider, elevation, updateItem } = collapse
-
-    const name: ComputedRef<number | string | undefined> = computed(() => props.name)
-
-    const init = (accordion: boolean, show: boolean) => {
-      if (active.value === undefined || (accordion && isArray(active.value)) || show === isShow.value) return
-
-      isShow.value = show
-      toggle(true)
-    }
-
-    const toggle = (initOrAccordion?: boolean) => {
-      if (props.disabled) return
-
-      if (!initOrAccordion) {
-        updateItem(props.name || index.value, !isShow.value)
-      }
-    }
-
-    const openPanel = () => {
-      if (!contentEl.value) return
-      ;(contentEl.value as HTMLDivElement).style.height = ''
-      showContent.value = true
-
-      requestAnimationFrame(() => {
-        const { offsetHeight } = contentEl.value as HTMLDivElement
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
-
-        requestAnimationFrame(() => {
-          ;(contentEl.value as HTMLDivElement).style.height = offsetHeight + 'px'
-
-          if (!isInitToTrigger) return
-
-          nextTickFrame(() => {
-            if (isInitToTrigger) transitionend()
-          })
-        })
-      })
-    }
-
-    const start = () => {
-      isInitToTrigger = false
-    }
-
-    const closePanel = () => {
-      if (!contentEl.value) return
-
-      const { offsetHeight } = contentEl.value
-      contentEl.value.style.height = offsetHeight + 'px'
-
-      requestAnimationFrame(() => {
-        ;(contentEl.value as HTMLDivElement).style.height = 0 + 'px'
-      })
-    }
-
-    const transitionend = () => {
-      if (!isShow.value) {
-        showContent.value = false
-      }
-
-      ;(contentEl.value as HTMLDivElement).style.height = ''
-    }
+    const { offset, divider, elevation, updateItem } = collapse
 
     const collapseItemProvider: CollapseItemProvider = {
       index,
       name,
+      disabled,
       init,
     }
 
     bindCollapse(collapseItemProvider)
 
-    watch(isShow, (value) => {
-      if (value) openPanel()
-      else closePanel()
+    const { handleTransitionEnd, handleTransitionStart } = useCollapseTransition({
+      contentEl,
+      showContent,
+      expand: isShow,
     })
 
+    function init(show: boolean) {
+      isShow.value = show
+    }
+
+    function toggle() {
+      if (props.disabled) {
+        return
+      }
+
+      updateItem(props.name ?? index.value, !isShow.value)
+    }
+
     return {
-      n,
-      start,
-      classes,
-      showContent,
       isShow,
+      showContent,
       offset,
       divider,
       elevation,
-      toggle,
       contentEl,
-      transitionend,
+      n,
+      classes,
+      toggle,
       formatElevation,
+      handleTransitionEnd,
+      handleTransitionStart,
     }
   },
 })

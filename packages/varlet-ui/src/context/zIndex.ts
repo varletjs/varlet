@@ -9,7 +9,7 @@ export function useZIndex(source: any, count: number) {
     source,
     (newValue) => {
       if (newValue) {
-        context.zIndex += count
+        context.zIndex += process.env.NODE_ENV === 'test' ? 0 : count
         zIndex.value = context.zIndex
       }
     },

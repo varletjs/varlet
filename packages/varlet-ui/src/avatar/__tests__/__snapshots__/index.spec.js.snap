@@ -1,16 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`test avatar borderColor 1`] = `
-"<div class="var-avatar var--box var-avatar--normal var-avatar--round var-avatar--bordered" style="border-color: red;">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
-
-exports[`test avatar color 1`] = `
-"<div class="var-avatar var--box var-avatar--normal var-avatar--round" style="background-color: red;">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test avatar group basic use 1`] = `
 "<div class="var-avatar-group var-avatar-group--row">
@@ -54,30 +42,16 @@ exports[`test avatar group vertical 1`] = `
 </div>"
 `;
 
-exports[`test avatar size 1`] = `
-"<div class="var-avatar var--box var-avatar--mini var-avatar--round">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
+exports[`test avatar src 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: cover;"></div>"`;
 
-exports[`test avatar size 2`] = `
-"<div class="var-avatar var--box var-avatar--small var-avatar--round">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
+exports[`test avatar src and alt 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" alt="1.png" style="object-fit: cover;"></div>"`;
 
-exports[`test avatar size 3`] = `
-"<div class="var-avatar var--box var-avatar--large var-avatar--round">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
+exports[`test avatar src and fit 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: fill;"></div>"`;
 
-exports[`test avatar size 4`] = `
-"<div class="var-avatar var--box var-avatar--round" style="width: 76px; height: 76px;">
-  <div class="var-avatar__text" style="transform: scale(1);"></div>
-</div>"
-`;
+exports[`test avatar src and fit 2`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: contain;"></div>"`;
 
-exports[`test avatar src 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img class="var-avatar__image" src="https://1.png" style="object-fit: cover;"></div>"`;
+exports[`test avatar src and fit 3`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: cover;"></div>"`;
 
-exports[`test avatar src and fit 1`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img class="var-avatar__image" src="https://1.png" style="object-fit: fill;"></div>"`;
+exports[`test avatar src and fit 4`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: none;"></div>"`;
+
+exports[`test avatar src and fit 5`] = `"<div class="var-avatar var--box var-avatar--normal var-avatar--round"><img role="img" class="var-avatar__image" src="https://1.png" style="object-fit: scale-down;"></div>"`;

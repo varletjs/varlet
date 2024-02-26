@@ -1,7 +1,8 @@
 import Ripple from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset, trigger, triggerDrag } from '../../utils/jest'
+import { delay, mockOffset, trigger, triggerDrag, triggerKeyboard } from '../../utils/test'
+import { expect } from 'vitest'
 
 mockOffset()
 
@@ -34,6 +35,30 @@ describe('test ripple component props', () => {
     wrapper.unmount()
   })
 
+  test('test ripple show & hide via keydown and keyup and enter', async () => {
+    const wrapper = mount(Wrapper, { attachTo: document.body })
+    await triggerKeyboard(wrapper, 'keydown', { key: 'Enter' })
+    await delay(60)
+    expect(wrapper.find('.var-ripple').exists()).toBeTruthy()
+
+    await triggerKeyboard(wrapper, 'keyup', { key: 'Enter' })
+    await delay(1000)
+    expect(wrapper.find('.var-ripple').exists()).toBeFalsy()
+    wrapper.unmount()
+  })
+
+  test('test ripple show & hide via keydown and blur and space', async () => {
+    const wrapper = mount(Wrapper, { attachTo: document.body })
+    await triggerKeyboard(wrapper, 'keydown', { key: ' ' })
+    await delay(60)
+    expect(wrapper.find('.var-ripple').exists()).toBeTruthy()
+
+    await trigger(wrapper, 'blur')
+    await delay(1000)
+    expect(wrapper.find('.var-ripple').exists()).toBeFalsy()
+    wrapper.unmount()
+  })
+
   test('test ripple update & color', async () => {
     const wrapper = mount(Wrapper, { attachTo: document.body })
     await wrapper.setData({ color: 'green' })
@@ -58,7 +83,6 @@ describe('test ripple component props', () => {
   })
 
   test('test ripple touchmove', async () => {
-    window.ontouchstart = true
     const wrapper = mount(Wrapper, { attachTo: document.body })
 
     await triggerDrag(wrapper, 0, 20)

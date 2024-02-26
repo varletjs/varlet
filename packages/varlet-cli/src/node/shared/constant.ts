@@ -5,7 +5,9 @@ export const dirname = getDirname(import.meta.url)
 
 export const CWD = process.cwd()
 export const VARLET_CONFIG = resolve(CWD, 'varlet.config.mjs')
-export const SRC_DIR = resolve(CWD, 'src')
+export const VITEST_CONFIG = resolve(dirname, '../config/vitest.config.js')
+export const SRC = 'src'
+export const SRC_DIR = resolve(CWD, SRC)
 export const ES_DIR = resolve(CWD, 'es')
 export const LIB_DIR = resolve(CWD, 'lib')
 export const UMD_DIR = resolve(CWD, 'umd')
@@ -55,14 +57,9 @@ export const HL_ZH_MD = 'zh-CN.md'
 export const HL_ZH_WEB_TYPES_JSON = resolve(HL_DIR, 'web-types.zh-CN.json')
 
 // icons
-export const ICONS_DIST_DIR = resolve(CWD, 'dist')
-export const ICONS_CSS_DIR = resolve(ICONS_DIST_DIR, 'css')
-export const ICONS_PNG_DIR = resolve(ICONS_DIST_DIR, 'png')
-export const ICONS_FONTS_DIR = resolve(ICONS_DIST_DIR, 'fonts')
-export const ICONS_SVG_DIR = resolve(CWD, 'svg')
+export const ICONS_CSS_DIR_NAME = 'css'
+export const ICONS_PNG_DIR_NAME = 'png'
+export const ICONS_FONTS_DIR_NAME = 'fonts'
 
 // extension
 export const EXTENSION_ENTRY = resolve(CWD, 'src/extension.ts')
-
-// jest
-export const JEST_CONFIG = resolve(dirname, '../../../cjs/jest.config.cjs')

@@ -7,7 +7,7 @@
   >
     <slot name="icon">
       <div :class="classes(n('icon'), iconClass)" v-if="icon">
-        <var-icon :name="icon" />
+        <var-icon :name="icon" :namespace="namespace" />
       </div>
     </slot>
 
@@ -34,20 +34,21 @@
 <script lang="ts">
 import VarIcon from '../icon'
 import Ripple from '../ripple'
-import { computed, defineComponent, type StyleValue, type ComputedRef } from 'vue'
+import { computed, defineComponent, CSSProperties } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
-const { n, classes } = createNamespace('cell')
+const { name, n, classes } = createNamespace('cell')
 
 export default defineComponent({
-  name: 'VarCell',
+  name,
   components: { VarIcon },
   directives: { Ripple },
   props,
   setup(props) {
-    const borderOffsetStyles: ComputedRef<StyleValue> = computed(() => {
+    const borderOffsetStyles = computed<CSSProperties>(() => {
       if (props.borderOffset == null) {
         return {}
       }
@@ -55,18 +56,18 @@ export default defineComponent({
       return {
         '--cell-border-left': toSizeUnit(props.borderOffset),
         '--cell-border-right': toSizeUnit(props.borderOffset),
-      } as StyleValue
+      }
     })
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
     return {
+      borderOffsetStyles,
       n,
       classes,
       toSizeUnit,
-      borderOffsetStyles,
       handleClick,
     }
   },

@@ -1,225 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test form with checkbox 1`] = `
-"<div class="var-form">
-  <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
-        <div class="var-hover-overlay"></div>
-      </div>
-      <div class="var-checkbox__text var-checkbox--disabled"></div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with checkbox 2`] = `
-"<div class="var-form">
-  <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
-        <div class="var-hover-overlay"></div>
-      </div>
-      <div class="var-checkbox__text"></div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with checkbox 3`] = `
-"<div class="var-form">
-  <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
-        <div class="var-hover-overlay"></div>
-      </div>
-      <div class="var-checkbox__text var-checkbox--error"></div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <div class="var-form-details">
-        <div class="var-form-details__error-message">
-          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须勾选</div>
-          </transition-stub>
-        </div>
-        <div class="var-form-details__extra-message">
-          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <!--v-if-->
-          </transition-stub>
-        </div>
-      </div>
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with checkbox 4`] = `
-"<div class="var-form">
-  <div class="var-checkbox__wrap">
-    <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked"><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
-        <div class="var-hover-overlay"></div>
-      </div>
-      <div class="var-checkbox__text"></div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with counter 1`] = `
-"<div class="var-form">
-  <div class="var-counter var--box">
-    <div class="var-counter__controller var-elevation--2 var-counter--disabled"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button var-counter--not-allowed" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button><input class="var-counter__input var-counter--not-allowed" inputmode="numeric" disabled=""><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button var-counter--not-allowed" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button></div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with counter 2`] = `
-"<div class="var-form">
-  <div class="var-counter var--box">
-    <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button></div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with counter 3`] = `
-"<div class="var-form">
-  <div class="var-counter var--box">
-    <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button></div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <div class="var-form-details">
-        <div class="var-form-details__error-message">
-          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须大于0</div>
-          </transition-stub>
-        </div>
-        <div class="var-form-details__extra-message">
-          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <!--v-if-->
-          </transition-stub>
-        </div>
-      </div>
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with counter 4`] = `
-"<div class="var-form">
-  <div class="var-counter var--box">
-    <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-button--default var-elevation--2 var-button--round var-counter__increment-button" type="button" var-counter-cover="">
-        <!--v-if-->
-        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
-        <div class="var-hover-overlay"></div>
-      </button></div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with input 1`] = `
-"<div class="var-form">
+exports[`test form events 1`] = `
+"<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div>
-        <!--v-if-->
-        <div class="var-field-decorator__icon">
-          <!--v-if-->
-        </div>
-      </div>
-      <div class="var-field-decorator__line var-field-decorator--line-disabled">
-        <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
-      </div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with input 2`] = `
-"<div class="var-form">
-  <div class="var-input var--box">
-    <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
-        <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__middle">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text">
-        </div>
-        <!--v-if-->
-        <div class="var-field-decorator__icon">
-          <!--v-if-->
-        </div>
-      </div>
-      <div class="var-field-decorator__line">
-        <div class="var-field-decorator__dot"></div>
-      </div>
-    </div>
-    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-      <!--v-if-->
-    </transition-stub>
-  </div>
-</div>"
-`;
-
-exports[`test form with input 3`] = `
-"<div class="var-form">
-  <div class="var-input var--box">
-    <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden;">
-        <div class="var-field-decorator__icon"></div>
-        <div class="var-field-decorator__middle">
-          <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-3" disabled="" type="text">
+          <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-mock-id" type="text">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -245,17 +33,17 @@ exports[`test form with input 3`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
-exports[`test form with input 4`] = `
-"<div class="var-form">
+exports[`test form events 2`] = `
+"<form class="var-form">
   <div class="var-input var--box">
     <div class="var-field-decorator var--box var-field-decorator--standard">
-      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden;">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
-          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-3" disabled="" type="text">
+          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
         </div>
         <!--v-if-->
         <div class="var-field-decorator__icon">
@@ -270,49 +58,55 @@ exports[`test form with input 4`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
-exports[`test form with radio 1`] = `
-"<div class="var-form">
-  <div class="var-radio__wrap">
-    <div class="var-radio">
-      <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+exports[`test form with checkbox 1`] = `
+"<form class="var-form">
+  <div class="var-checkbox__wrap">
+    <div class="var-checkbox">
+      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
+        <!--v-if-->
+        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text var-radio--disabled"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
-exports[`test form with radio 2`] = `
-"<div class="var-form">
-  <div class="var-radio__wrap">
-    <div class="var-radio">
-      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+exports[`test form with checkbox 2`] = `
+"<form class="var-form">
+  <div class="var-checkbox__wrap">
+    <div class="var-checkbox">
+      <div class="var-checkbox__action var-checkbox--unchecked">
+        <!--v-if-->
+        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
-exports[`test form with radio 3`] = `
-"<div class="var-form">
-  <div class="var-radio__wrap">
-    <div class="var-radio">
-      <div class="var-radio__action var-radio--unchecked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+exports[`test form with checkbox 3`] = `
+"<form class="var-form">
+  <div class="var-checkbox__wrap">
+    <div class="var-checkbox">
+      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
+        <!--v-if-->
+        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text var-radio--error"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <div class="var-form-details">
@@ -329,27 +123,302 @@ exports[`test form with radio 3`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
-exports[`test form with radio 4`] = `
-"<div class="var-form">
-  <div class="var-radio__wrap">
-    <div class="var-radio">
-      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+exports[`test form with checkbox 4`] = `
+"<form class="var-form">
+  <div class="var-checkbox__wrap">
+    <div class="var-checkbox">
+      <div class="var-checkbox__action var-checkbox--unchecked">
+        <!--v-if-->
+        <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
-      <div class="var-radio__text"></div>
+      <!--v-if-->
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
+`;
+
+exports[`test form with counter 1`] = `
+"<form class="var-form">
+  <div class="var-counter var--box">
+    <div class="var-counter__controller var-elevation--2 var-counter--disabled"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button var-counter--not-allowed" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button><input class="var-counter__input var-counter--not-allowed" inputmode="numeric" disabled=""><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button var-counter--not-allowed" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button></div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with counter 2`] = `
+"<form class="var-form">
+  <div class="var-counter var--box">
+    <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button></div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with counter 3`] = `
+"<form class="var-form">
+  <div class="var-counter var--box">
+    <div class="var-counter__controller var-elevation--2 var-counter--error"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button></div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <div class="var-form-details">
+        <div class="var-form-details__error-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <div>必须大于0</div>
+          </transition-stub>
+        </div>
+        <div class="var-form-details__extra-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <!--v-if-->
+          </transition-stub>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with counter 4`] = `
+"<form class="var-form">
+  <div class="var-counter var--box">
+    <div class="var-counter__controller var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__decrement-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-minus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button><input class="var-counter__input" inputmode="numeric" readonly=""><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-button--round var-counter__increment-button" type="button" var-counter-cover="">
+        <!--v-if-->
+        <div class="var-button__content"><i class="var-icon var-icon--set var-icon-plus" style="transition-duration: 0ms;"></i></div>
+        <div class="var-hover-overlay"></div>
+      </button></div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with input 1`] = `
+"<form class="var-form">
+  <div class="var-input var--box">
+    <div class="var-field-decorator var--box var-field-decorator--standard">
+      <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+        <div class="var-field-decorator__icon"></div>
+        <div class="var-field-decorator__middle">
+          <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="new-password" id="var-input-mock-id" disabled="" type="text">
+        </div>
+        <!--v-if-->
+        <div class="var-field-decorator__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-field-decorator__line var-field-decorator--line-disabled">
+        <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
+      </div>
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with input 2`] = `
+"<form class="var-form">
+  <div class="var-input var--box">
+    <div class="var-field-decorator var--box var-field-decorator--standard">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+        <div class="var-field-decorator__icon"></div>
+        <div class="var-field-decorator__middle">
+          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
+        </div>
+        <!--v-if-->
+        <div class="var-field-decorator__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-field-decorator__line">
+        <div class="var-field-decorator__dot"></div>
+      </div>
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with input 3`] = `
+"<form class="var-form">
+  <div class="var-input var--box">
+    <div class="var-field-decorator var--box var-field-decorator--standard">
+      <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+        <div class="var-field-decorator__icon"></div>
+        <div class="var-field-decorator__middle">
+          <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
+        </div>
+        <!--v-if-->
+        <div class="var-field-decorator__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-field-decorator__line var-field-decorator--line-error">
+        <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
+      </div>
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <div class="var-form-details">
+        <div class="var-form-details__error-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <div>不能为空</div>
+          </transition-stub>
+        </div>
+        <div class="var-form-details__extra-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <!--v-if-->
+          </transition-stub>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with input 4`] = `
+"<form class="var-form">
+  <div class="var-input var--box">
+    <div class="var-field-decorator var--box var-field-decorator--standard">
+      <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+        <div class="var-field-decorator__icon"></div>
+        <div class="var-field-decorator__middle">
+          <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" readonly="">
+        </div>
+        <!--v-if-->
+        <div class="var-field-decorator__icon">
+          <!--v-if-->
+        </div>
+      </div>
+      <div class="var-field-decorator__line">
+        <div class="var-field-decorator__dot"></div>
+      </div>
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with radio 1`] = `
+"<form class="var-form">
+  <div class="var-radio__wrap">
+    <div class="var-radio">
+      <div class="var-radio__action var-radio--unchecked var-radio--disabled"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-hover-overlay"></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with radio 2`] = `
+"<form class="var-form">
+  <div class="var-radio__wrap">
+    <div class="var-radio">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-hover-overlay"></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with radio 3`] = `
+"<form class="var-form">
+  <div class="var-radio__wrap">
+    <div class="var-radio">
+      <div class="var-radio__action var-radio--unchecked var-radio--error"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-hover-overlay"></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <div class="var-form-details">
+        <div class="var-form-details__error-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <div>必须勾选</div>
+          </transition-stub>
+        </div>
+        <div class="var-form-details__extra-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <!--v-if-->
+          </transition-stub>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with radio 4`] = `
+"<form class="var-form">
+  <div class="var-radio__wrap">
+    <div class="var-radio">
+      <div class="var-radio__action var-radio--unchecked"><i class="var-icon var-icon--set var-icon-radio-blank var-radio__icon" style="transition-duration: 0ms;" var-radio-cover=""></i>
+        <div class="var-hover-overlay"></div>
+      </div>
+      <!--v-if-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
 `;
 
 exports[`test form with rate 1`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-rate__wrap">
     <div class="var-rate">
       <div class="var-rate__content var-rate--disabled"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
@@ -372,11 +441,11 @@ exports[`test form with rate 1`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with rate 2`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-rate__wrap">
     <div class="var-rate">
       <div class="var-rate__content var-rate--error"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
@@ -410,11 +479,11 @@ exports[`test form with rate 2`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with rate 3`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-rate__wrap">
     <div class="var-rate">
       <div class="var-rate__content"><i class="var-icon var-icon--set var-icon-star-outline var-rate__content-icon" style="transition-duration: 0ms;" var-rate-cover=""></i>
@@ -437,15 +506,15 @@ exports[`test form with rate 3`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with select 1`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller var-field-decorator--disabled" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--disabled" style="text-align: left;">
@@ -454,7 +523,7 @@ exports[`test form with select 1`] = `
                   <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small">选项1</span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div>
-              <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
+              <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
             </div>
           </div>
           <!--v-if-->
@@ -471,15 +540,15 @@ exports[`test form with select 1`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with select 2`] = `
-"<div class="var-form">
-  <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+"<form class="var-form">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
@@ -505,15 +574,15 @@ exports[`test form with select 2`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with select 3`] = `
-"<div class="var-form">
-  <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+"<form class="var-form">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible;">
+        <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: pointer; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select var-select--error" style="text-align: left;">
@@ -550,15 +619,15 @@ exports[`test form with select 3`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with select 4`] = `
-"<div class="var-form">
-  <div class="var-select">
-    <div class="var-menu var-select__menu" var-select-cover="">
+"<form class="var-form">
+  <div class="var-select" tabindex="0">
+    <div class="var-menu var--box var-select__menu" var-select-cover="">
       <div class="var-field-decorator var--box var-field-decorator--standard">
-        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden;">
+        <div class="var-field-decorator__controller" style="cursor: pointer; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
           <div class="var-field-decorator__icon"></div>
           <div class="var-field-decorator__middle">
             <div class="var-select__select" style="text-align: left;">
@@ -584,12 +653,12 @@ exports[`test form with select 4`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with slider 1`] = `
-"<div class="var-form">
-  <div class="var-slider__horizontal">
+"<form class="var-form">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block var-slider--disabled">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
@@ -607,12 +676,12 @@ exports[`test form with slider 1`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with slider 2`] = `
-"<div class="var-form">
-  <div class="var-slider__horizontal">
+"<form class="var-form">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block var-slider__horizontal--error">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
@@ -641,12 +710,12 @@ exports[`test form with slider 2`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with slider 3`] = `
-"<div class="var-form">
-  <div class="var-slider__horizontal">
+"<form class="var-form">
+  <div class="var-slider__horizontal var--box">
     <div class="var-slider__horizontal-block">
       <div class="var-slider__horizontal-track">
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
@@ -664,15 +733,15 @@ exports[`test form with slider 3`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with switch 1`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-switch">
     <div class="var-switch__block var-switch--disabled">
       <div style="filter: brightness(.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: rgb(153, 153, 153);">
+      <div class="var-switch__ripple" style="color: currentColor;">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>
@@ -683,15 +752,15 @@ exports[`test form with switch 1`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with switch 2`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-switch">
     <div class="var-switch__block">
       <div style="" class="var-switch__track var-switch__track--error"></div>
-      <div class="var-switch__ripple" style="color: rgb(153, 153, 153);">
+      <div class="var-switch__ripple" style="color: currentColor;">
         <div class="var-switch__handle var-elevation--2 var-switch__handle--error">
           <!--v-if-->
         </div>
@@ -713,15 +782,15 @@ exports[`test form with switch 2`] = `
       </div>
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with switch 3`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-switch">
     <div class="var-switch__block">
       <div style="filter: brightness(.6);" class="var-switch__track"></div>
-      <div class="var-switch__ripple" style="color: rgb(153, 153, 153);">
+      <div class="var-switch__ripple" style="color: currentColor;">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
         </div>
@@ -732,60 +801,48 @@ exports[`test form with switch 3`] = `
       <!--v-if-->
     </transition-stub>
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with uploader 1`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2 var-uploader--disabled"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2 var-uploader--disabled"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var--box var-popup" style="z-index: 1998; display: none;">
-        <div class="var-popup__overlay" style="z-index: 1999;"></div>
-        <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
-        </transition-stub>
-      </div>
-    </transition-stub>
+    <!--teleport start-->
+    <!--teleport end-->
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with uploader 2`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var--box var-popup" style="z-index: 1998; display: none;">
-        <div class="var-popup__overlay" style="z-index: 1999;"></div>
-        <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
-        </transition-stub>
-      </div>
-    </transition-stub>
+    <!--teleport start-->
+    <!--teleport end-->
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with uploader 3`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
@@ -803,37 +860,25 @@ exports[`test form with uploader 3`] = `
         </div>
       </div>
     </transition-stub>
-    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var--box var-popup" style="z-index: 1998; display: none;">
-        <div class="var-popup__overlay" style="z-index: 1999;"></div>
-        <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
-        </transition-stub>
-      </div>
-    </transition-stub>
+    <!--teleport start-->
+    <!--teleport end-->
   </div>
-</div>"
+</form>"
 `;
 
 exports[`test form with uploader 4`] = `
-"<div class="var-form">
+"<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
     <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
       <!--v-if-->
     </transition-stub>
-    <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var--box var-popup" style="z-index: 1998; display: none;">
-        <div class="var-popup__overlay" style="z-index: 1999;"></div>
-        <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
-          <!---->
-        </transition-stub>
-      </div>
-    </transition-stub>
+    <!--teleport start-->
+    <!--teleport end-->
   </div>
-</div>"
+</form>"
 `;

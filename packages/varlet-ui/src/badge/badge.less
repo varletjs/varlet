@@ -1,5 +1,8 @@
 :root {
   --badge-content-padding: 2px 6px;
+  --badge-content-border: none;
+  --badge-content-border-radius: 100px;
+  --badge-content-font-size: 12px;
   --badge-icon-size: 12px;
   --badge-default-color: #e0e0e0;
   --badge-primary-color: var(--color-primary);
@@ -7,6 +10,14 @@
   --badge-success-color: var(--color-success);
   --badge-warning-color: var(--color-warning);
   --badge-info-color: var(--color-info);
+  --badge-default-text-color: #1d1b20;
+  --badge-primary-text-color: var(--color-on-primary);
+  --badge-danger-text-color: var(--color-on-danger);
+  --badge-success-text-color: var(--color-on-success);
+  --badge-warning-text-color: var(--color-on-warning);
+  --badge-info-text-color: var(--color-on-info);
+  --badge-dot-width: 8px;
+  --badge-dot-height: 8px;
 }
 
 .var-badge {
@@ -15,13 +26,17 @@
   transition: background-color 0.25s;
 
   &__content {
-    color: #fff;
-    border-radius: 100px;
-    font-size: 12px;
-    padding: 2px 6px;
+    display: inline-block;
     vertical-align: middle;
     text-align: center;
-    display: inline-block;
+    padding: var(--badge-content-padding);
+    border: var(--badge-content-border);
+    border-radius: var(--badge-content-border-radius);
+    font-size: var(--badge-content-font-size);
+  }
+
+  &--offset {
+    transform: translateX(var(--badge-offset-x)) translateY(var(--badge-offset-y));
   }
 
   &__icon[var-badge-cover] {
@@ -34,33 +49,38 @@
 
   &--dot {
     box-sizing: content-box;
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
+    width: var(--badge-dot-width);
+    height: var(--badge-dot-height);
     padding: 0;
   }
 
   &--default {
+    color: var(--badge-default-text-color);
     background: var(--badge-default-color);
   }
 
   &--primary {
+    color: var(--badge-primary-text-color);
     background: var(--badge-primary-color);
   }
 
   &--info {
+    color: var(--badge-info-text-color);
     background: var(--badge-info-color);
   }
 
   &--warning {
+    color: var(--badge-warning-text-color);
     background: var(--badge-warning-color);
   }
 
   &--success {
+    color: var(--badge-success-text-color);
     background: var(--badge-success-color);
   }
 
   &--danger {
+    color: var(--badge-danger-text-color);
     background: var(--badge-danger-color);
   }
 
@@ -68,28 +88,28 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(-50%) translateX(50%);
+    transform: translateY(calc(-50% + var(--badge-offset-y))) translateX(calc(50% + var(--badge-offset-x)));
   }
 
   &--left-top {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(calc(-50% + var(--badge-offset-y))) translateX(calc(-50% + var(--badge-offset-x)));
   }
 
   &--right-bottom {
     position: absolute;
     bottom: 0;
     right: 0;
-    transform: translateY(50%) translateX(50%);
+    transform: translateY(calc(50% + var(--badge-offset-y))) translateX(calc(50% + var(--badge-offset-x)));
   }
 
   &--left-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translateY(50%) translateX(-50%);
+    transform: translateY(calc(50% + var(--badge-offset-y))) translateX(calc(-50% + var(--badge-offset-x)));
   }
 
   &-fade-enter-active,

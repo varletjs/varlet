@@ -4,7 +4,7 @@
     :style="{
       justifyContent: padStartFlex(justify),
       alignItems: padStartFlex(align),
-      margin: average ? `0 -${average}px` : undefined,
+      margin: `${-average[0]}px ${-average[1]}px`,
     }"
     @click="handleClick"
   >
@@ -13,42 +13,48 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, type ComputedRef } from 'vue'
+import { defineComponent, computed, watch } from 'vue'
 import { props } from './props'
+import { isArray, call } from '@varlet/shared'
 import { useCols, type RowProvider } from './provide'
 import { toPxNum, padStartFlex } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('row')
+const { name, n, classes } = createNamespace('row')
 
 export default defineComponent({
-  name: 'VarRow',
+  name,
   props,
   setup(props) {
+    const average = computed(() =>
+      isArray(props.gutter) ? props.gutter.map((numeric) => toPxNum(numeric) / 2) : [0, toPxNum(props.gutter) / 2]
+    )
     const { cols, bindCols, length } = useCols()
-    const average: ComputedRef<number> = computed(() => {
-      const gutter: number = toPxNum(props.gutter)
-      return gutter / 2
-    })
-
-    const computePadding = () => {
-      cols.forEach((col) => {
-        col.setPadding({ left: average.value, right: average.value })
-      })
-    }
-
-    const handleClick = (e: Event) => {
-      call(props.onClick, e)
-    }
 
     const rowProvider: RowProvider = { computePadding }
 
     watch(() => length.value, computePadding)
     watch(() => props.gutter, computePadding)
-
     bindCols(rowProvider)
 
-    return { n, classes, average, handleClick, padStartFlex }
+    function computePadding() {
+      cols.forEach((col) => {
+        const [y, x] = average.value
+        col.setPadding({ left: x, right: x, top: y, bottom: y })
+      })
+    }
+
+    function handleClick(e: Event) {
+      call(props.onClick, e)
+    }
+
+    return {
+      average,
+      n,
+      classes,
+      handleClick,
+      padStartFlex,
+    }
   },
 })
 </script>

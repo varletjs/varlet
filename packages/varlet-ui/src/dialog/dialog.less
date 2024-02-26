@@ -9,9 +9,10 @@
   --dialog-title-font-size: var(--font-size-lg);
   --dialog-actions-padding: 0 12px 12px;
   --dialog-button-margin-left: 6px;
+  --dialog-title-color: #555;
   --dialog-confirm-button-color: var(--color-primary);
   --dialog-cancel-button-color: var(--color-primary);
-  --dialog-background: #fff;
+  --dialog-background: var(--color-surface-container-low);
 }
 
 .var-dialog {
@@ -28,6 +29,7 @@
     font-size: var(--dialog-title-font-size);
     font-weight: 400;
     padding: var(--dialog-title-padding);
+    color: var(--dialog-title-color);
   }
 
   &__message {
@@ -35,6 +37,7 @@
     color: var(--dialog-message-color);
     line-height: var(--dialog-message-line-height);
     font-size: var(--dialog-message-font-size);
+    word-wrap: break-word;
   }
 
   &__actions {

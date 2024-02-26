@@ -1,7 +1,8 @@
 import VarActionSheet from './ActionSheet.vue'
-import { nextTick, reactive, type App, type TeleportProps } from 'vue'
-import { inBrowser } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
+import { nextTick, reactive, type TeleportProps } from 'vue'
+import { inBrowser, call } from '@varlet/shared'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as actionSheetProps } from './props'
 
 export type ActionSheetActions = ActionItem | 'close'
 
@@ -10,6 +11,7 @@ export interface ActionItem {
   color?: string
   icon?: string
   iconSize?: string | number
+  namespace?: string
   className?: string
   disabled?: boolean
 }
@@ -33,6 +35,9 @@ export interface ActionSheetOptions {
   onSelect?: (action: ActionItem) => void
   // internal
   teleport?: TeleportProps['to']
+  // internal for esc
+  closeOnKeyEscape?: boolean
+  onKeyEscape?: () => void
 }
 
 let singletonOptions: ActionSheetOptions | null
@@ -101,16 +106,11 @@ ActionSheet.close = function () {
 }
 
 ActionSheet.Component = VarActionSheet
+withInstall(VarActionSheet)
+withInstall(VarActionSheet, ActionSheet)
+withPropsDefaultsSetter(ActionSheet, actionSheetProps)
 
-VarActionSheet.install = function (app: App) {
-  app.component(VarActionSheet.name, VarActionSheet)
-}
-
-ActionSheet.install = function (app: App) {
-  app.component(VarActionSheet.name, VarActionSheet)
-}
-
-export { props as actionSheetProps } from './props'
+export { actionSheetProps }
 
 export const _ActionSheetComponent = VarActionSheet
 

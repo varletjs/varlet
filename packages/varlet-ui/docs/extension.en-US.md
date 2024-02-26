@@ -1,4 +1,4 @@
-# Varlet VSCode Extension
+# VSCode Extension
 
 ### Intro
 

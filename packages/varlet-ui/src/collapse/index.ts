@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Collapse from './Collapse.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as collapseProps } from './props'
 
-Collapse.install = function (app: App) {
-  app.component(Collapse.name, Collapse)
-}
+withInstall(Collapse)
+withPropsDefaultsSetter(Collapse, collapseProps)
 
-export { props as collapseProps } from './props'
+export { collapseProps }
 
 export const _CollapseComponent = Collapse
 

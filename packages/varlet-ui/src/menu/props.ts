@@ -1,57 +1,25 @@
-import type { PropType, TeleportProps } from 'vue'
-import type { Placement } from './usePopover'
+import { type PropType, type TeleportProps } from 'vue'
+import { type Placement } from './usePopover'
+import { type PositioningStrategy } from '@popperjs/core'
 import { defineListenerProp } from '../utils/components'
 
-function triggerValidator(trigger: string) {
-  return ['click', 'hover'].includes(trigger)
-}
-
-function placementValidator(alignment: string) {
-  return [
-    'top',
-    'top-start',
-    'top-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'right',
-    'right-start',
-    'right-end',
-    'left',
-    'left-start',
-    'left-end',
-    'cover-top',
-    'cover-top-start',
-    'cover-top-end',
-    'cover-bottom',
-    'cover-bottom-start',
-    'cover-bottom-end',
-    'cover-left',
-    'cover-right',
-  ].includes(alignment)
-}
+export type MenuTrigger = 'click' | 'hover'
 
 export const props = {
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
+  show: Boolean,
+  disabled: Boolean,
   trigger: {
-    type: String as PropType<'click' | 'hover'>,
+    type: String as PropType<MenuTrigger>,
     default: 'click',
-    validator: triggerValidator,
   },
-  reference: {
-    type: String,
-  },
+  reference: String,
   placement: {
     type: String as PropType<Placement>,
     default: 'cover-top-start',
-    validator: placementValidator,
+  },
+  strategy: {
+    type: String as PropType<PositioningStrategy>,
+    default: 'absolute',
   },
   offsetX: {
     type: [Number, String],
@@ -62,13 +30,10 @@ export const props = {
     default: 0,
   },
   teleport: {
-    type: [String, Object] as PropType<TeleportProps['to']>,
+    type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
     default: 'body',
   },
-  sameWidth: {
-    type: Boolean,
-    default: false,
-  },
+  sameWidth: Boolean,
   elevation: {
     type: [Boolean, String, Number],
     default: true,
@@ -77,9 +42,18 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  popoverClass: String,
+  closeOnClickReference: Boolean,
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
+  onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
+
+  // internal for esc
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
 }

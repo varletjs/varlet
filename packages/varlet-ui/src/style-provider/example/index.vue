@@ -1,12 +1,8 @@
 <script setup>
-import StyleProvider from '../index'
-import VarRate from '../../rate'
-import VarSwitch from '../../switch'
-import VarButton from '../../button'
-import dark from '../../themes/dark'
-import { AppType, getBrowserTheme, watchLang } from '@varlet/cli/client'
+import { Themes, StyleProvider } from '@varlet/ui'
+import { AppType, getBrowserTheme, watchLang, getSiteStyleVars, onThemeChange } from '@varlet/cli/client'
 import { ref, reactive, onUnmounted } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const VarStyleProvider = StyleProvider.Component
 
@@ -17,7 +13,7 @@ const state = reactive({
 
 const styleVars = ref(null)
 
-let rootStyleVars = null
+let isRootStyleChanged = false
 
 const successTheme = {
   '--rate-primary-color': 'var(--color-success)',
@@ -26,34 +22,51 @@ const successTheme = {
   '--switch-track-active-background': 'var(--color-success)',
 }
 
-const darkTheme = {
-  '--color-primary': '#3f51b5',
+const themeMap = {
+  lightTheme: null,
+  darkTheme: Themes.dark,
+  md3LightTheme: Themes.md3Light,
+  md3DarkTheme: Themes.md3Dark,
 }
+
+watchLang(use)
+
+onThemeChange(() => {
+  isRootStyleChanged = false
+})
+
+onUnmounted(() => {
+  const siteTheme = getBrowserTheme()
+  StyleProvider({ ...getSiteStyleVars(siteTheme), ...themeMap[siteTheme] })
+})
 
 function toggleTheme() {
   styleVars.value = styleVars.value ? null : successTheme
 }
 
 function toggleRootTheme() {
-  rootStyleVars = rootStyleVars ? null : darkTheme
-  StyleProvider(rootStyleVars)
+  const siteTheme = getBrowserTheme()
+  const styleVars = isRootStyleChanged
+    ? themeMap[siteTheme]
+    : {
+        ...themeMap[siteTheme],
+        ...{
+          '--color-primary': 'var(--color-info)',
+        },
+      }
+  StyleProvider({ ...getSiteStyleVars(siteTheme), ...styleVars })
+  isRootStyleChanged = !isRootStyleChanged
 }
-
-watchLang(use)
-
-onUnmounted(() => {
-  StyleProvider(getBrowserTheme() === 'darkTheme' ? dark : null)
-})
 </script>
 
 <template>
-  <app-type>{{ pack.componentCall }}</app-type>
+  <app-type>{{ t('componentCall') }}</app-type>
   <var-style-provider :style-vars="styleVars">
     <var-rate v-model="state.score" />
     <var-switch v-model="state.license" />
-    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ pack.toggleTheme }}</var-button>
+    <var-button style="margin-top: 10px" type="primary" block @click="toggleTheme">{{ t('toggleTheme') }}</var-button>
   </var-style-provider>
 
-  <app-type>{{ pack.functionCall }}</app-type>
-  <var-button type="primary" block @click="toggleRootTheme">{{ pack.toggleRootTheme }}</var-button>
+  <app-type>{{ t('functionCall') }}</app-type>
+  <var-button type="primary" block @click="toggleRootTheme">{{ t('toggleRootTheme') }}</var-button>
 </template>

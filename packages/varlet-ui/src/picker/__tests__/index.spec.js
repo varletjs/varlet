@@ -1,20 +1,23 @@
 import Picker from '..'
 import VarPicker from '../Picker'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger, mockTranslate } from '../../utils/test'
+import { expect, vi } from 'vitest'
+
+mockTranslate()
 
 test('test picker plugin', () => {
   const app = createApp({}).use(Picker)
   expect(app.component(VarPicker.name)).toBeTruthy()
 })
 
-const columns = [['A', 'B', 'C']]
+const columns = [[{ text: 'A' }, { text: 'B' }, { text: 'C' }]]
 
 test('test picker functional show & close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   Picker({
     columns,
@@ -41,7 +44,7 @@ test('test picker functional show & close', async () => {
 })
 
 test('test picker functional confirm', async () => {
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   Picker({
     columns,
@@ -49,16 +52,16 @@ test('test picker functional confirm', async () => {
   })
   await delay(16)
   await delay(300)
-
   await trigger(document.querySelector('.var-picker__confirm-button'), 'click')
   expect(onConfirm).toHaveBeenCalledTimes(1)
+  expect(onConfirm).toBeCalledWith(['A'], [0], [{ text: 'A' }])
 
   await delay(16)
   await delay(300)
 })
 
 test('test picker functional cancel', async () => {
-  const onCancel = jest.fn()
+  const onCancel = vi.fn()
 
   Picker({
     columns,
@@ -69,27 +72,7 @@ test('test picker functional cancel', async () => {
 
   await trigger(document.querySelector('.var-picker__cancel-button'), 'click')
   expect(onCancel).toHaveBeenCalledTimes(1)
-
-  await delay(16)
-  await delay(300)
-})
-
-test('test picker functional textFormatter', async () => {
-  const textFormatter = jest.fn().mockReturnValue('text')
-
-  const columns = [['A']]
-
-  Picker({
-    columns,
-    textFormatter,
-  })
-  await delay(16)
-  await delay(300)
-
-  await trigger(document.querySelector('.var-picker__cancel-button'), 'click')
-
-  expect(textFormatter).toHaveBeenLastCalledWith('A', 0)
-  expect(document.querySelector('.var-picker__text').innerHTML).toBe('text')
+  expect(onCancel).toBeCalledWith(['A'], [0], [{ text: 'A' }])
 
   await delay(16)
   await delay(300)

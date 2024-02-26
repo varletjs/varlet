@@ -1,9 +1,17 @@
 import fse from 'fs-extra'
 import hash from 'hash-sum'
 import { parse, resolve } from 'path'
-import { parse as parseSFC, compileTemplate, compileStyle, compileScript as compileScriptSFC } from '@vue/compiler-sfc'
+import {
+  parse as parseSFC,
+  compileTemplate,
+  compileStyle,
+  compileScript as compileScriptSFC,
+  registerTS,
+} from '@vue/compiler-sfc'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
+import { SRC_DIR, ES_DIR } from '../shared/constant.js'
 import { compileScript, getScriptExtname } from './compileScript.js'
+import ts from 'typescript'
 import {
   clearEmptyLine,
   compileLess,
@@ -13,7 +21,9 @@ import {
 } from './compileStyle.js'
 import type { SFCStyleBlock } from '@vue/compiler-sfc'
 
-const { readFile, writeFileSync } = fse
+const { readFile, existsSync, readFileSync, writeFileSync } = fse
+
+registerTS(() => ts)
 
 const EXPORT = 'export default'
 const SFC = '__sfc__'
@@ -52,7 +62,7 @@ export function injectRender(script: string, render: string): string {
 export async function compileSFC(sfc: string) {
   const sources: string = await readFile(sfc, 'utf-8')
   const id = hash(sources)
-  const { descriptor } = parseSFC(sources, { sourceMap: false })
+  const { descriptor } = parseSFC(sources, { filename: sfc, sourceMap: false })
   const { script, scriptSetup, template, styles } = descriptor
 
   let scriptContent
@@ -60,7 +70,14 @@ export async function compileSFC(sfc: string) {
 
   if (script || scriptSetup) {
     if (scriptSetup) {
-      const { content, bindings } = compileScriptSFC(descriptor, { id })
+      const { content, bindings } = compileScriptSFC(descriptor, {
+        id,
+        // issue https://github.com/varletjs/varlet/issues/1458
+        fs: {
+          fileExists: (file) => existsSync(file.replace(ES_DIR, SRC_DIR)),
+          readFile: (file) => readFileSync(file.replace(ES_DIR, SRC_DIR), 'utf-8'),
+        },
+      })
       scriptContent = content
       bindingMetadata = bindings
     } else {

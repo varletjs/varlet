@@ -1,31 +1,33 @@
 import { defineComponent, VNodeChild } from 'vue'
-import { internalSizeValidator, props, type SpaceSize } from './props'
-import { isArray } from '@varlet/shared'
-import { call, createNamespace, flatFragment } from '../utils/components'
+import { props, type SpaceSize } from './props'
+import { isArray, call } from '@varlet/shared'
+import { createNamespace, flatFragment } from '../utils/components'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { computeMargin } from './margin'
+
 import '../styles/common.less'
 import './space.less'
 
-const { n, classes } = createNamespace('space')
+const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
+
+const { name, n, classes } = createNamespace('space')
+
+function getSize(size: SpaceSize, isInternalSize: boolean): string[] {
+  return isInternalSize
+    ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
+    : isArray(size)
+    ? (size.map(toSizeUnit) as string[])
+    : ([toSizeUnit(size), toSizeUnit(size)] as string[])
+}
 
 export default defineComponent({
-  name: 'VarSpace',
+  name,
   props,
   setup(props, { slots }) {
-    const getSize = (size: SpaceSize, isInternalSize: boolean): string[] => {
-      return isInternalSize
-        ? [`var(--space-size-${size}-y)`, `var(--space-size-${size}-x)`]
-        : isArray(size)
-        ? (size.map(toSizeUnit) as string[])
-        : ([toSizeUnit(size), toSizeUnit(size)] as string[])
-    }
-
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
       let children: VNodeChild[] = call(slots.default) ?? []
-      const isInternalSize = internalSizeValidator(size)
-      const [y, x] = getSize(size, isInternalSize)
+      const [y, x] = getSize(size, isInternalSize(size))
 
       children = flatFragment(children)
 

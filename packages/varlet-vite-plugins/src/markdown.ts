@@ -1,15 +1,22 @@
 import markdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import { kebabCase } from '@varlet/shared'
+import { pinyin } from 'pinyin-pro'
 import type { Plugin } from 'vite'
+
+const includeChinese = (value: string) => /[\u4e00-\u9fa5]/.test(value)
+
+function transformHash(hash: string) {
+  return (includeChinese(hash) ? pinyin(hash, { toneType: 'num' }) : hash).replaceAll(' ', '')
+}
 
 function htmlWrapper(html: string) {
   const matches = html.matchAll(/<h3>(.*?)<\/h3>/g)
   const hGroup = html
     .replace(/<h3>/g, () => {
-      const content = matches.next().value[1]
+      const hash = transformHash(matches.next().value[1])
 
-      return `:::<h3 id="${content}"><router-link to="#${content}">#</router-link>`
+      return `:::<h3 id="${hash}"><router-link to="#${hash}">#</router-link>`
     })
     .replace(/<h2/g, ':::<h2')
     .split(':::')
@@ -133,16 +140,6 @@ export function markdown(options: MarkdownOptions): Plugin {
         return markdownToVue(source, options)
       } catch (e: any) {
         this.error(e)
-        return ''
-      }
-    },
-
-    async handleHotUpdate(ctx) {
-      if (!/\.md$/.test(ctx.file)) return
-
-      const readSource = ctx.read
-      ctx.read = async function () {
-        return markdownToVue(await readSource(), options)
       }
     },
   }

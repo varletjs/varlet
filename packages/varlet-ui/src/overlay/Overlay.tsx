@@ -2,37 +2,58 @@ import { defineComponent, Teleport, Transition } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { createNamespace, useTeleport, call } from '../utils/components'
+import { createNamespace, useTeleport } from '../utils/components'
+import { call, preventDefault } from '@varlet/shared'
 
 import '../styles/common.less'
 import './overlay.less'
+import { useStack } from '../context/stack'
+import { useEventListener } from '@varlet/use'
 
-const { n } = createNamespace('overlay')
+const { name, n } = createNamespace('overlay')
 
 export default defineComponent({
-  name: 'VarOverlay',
+  name,
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
     const { zIndex } = useZIndex(() => props.show, 1)
+    const { onStackTop } = useStack(() => props.show, zIndex)
     const { disabled } = useTeleport()
-
-    const handleClickOverlay = () => {
-      call(props.onClick)
-      call(props['onUpdate:show'], false)
-    }
 
     useLock(
       () => props.show,
       () => props.lockScroll
     )
 
-    const renderOverlay = () => {
+    useEventListener(window, 'keydown', handleKeydown)
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!onStackTop() || event.key !== 'Escape' || !props.show) {
+        return
+      }
+
+      call(props.onKeyEscape)
+
+      if (!props.closeOnKeyEscape) {
+        return
+      }
+
+      preventDefault(event)
+      call(props['onUpdate:show'], false)
+    }
+
+    function handleClickOverlay() {
+      call(props.onClick)
+      call(props['onUpdate:show'], false)
+    }
+
+    function renderOverlay() {
       return (
         <div
           class={n()}
           style={{
-            zIndex: zIndex.value - 1,
+            zIndex: zIndex.value,
           }}
           {...attrs}
           onClick={handleClickOverlay}
@@ -42,9 +63,8 @@ export default defineComponent({
       )
     }
 
-    const renderTransitionOverlay = () => {
-      const { show } = props
-      return <Transition name={n('--fade')}>{show && renderOverlay()}</Transition>
+    function renderTransitionOverlay() {
+      return <Transition name={n('--fade')}>{props.show && renderOverlay()}</Transition>
     }
 
     return () => {

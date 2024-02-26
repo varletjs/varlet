@@ -1,23 +1,17 @@
 <script setup>
-import dark from '../../themes/dark'
-import { ref } from 'vue'
-import VarSpace from '../../space'
-import { watchDarkMode } from '@varlet/cli/client'
+import { onThemeChange } from '@varlet/cli/client'
 
 const elevations = Array.from({ length: 25 }).map((_, index) => index)
-const background = ref(dark)
 
-watchDarkMode(dark, (theme) => {
-  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
-})
+onThemeChange()
 </script>
 
 <template>
-  <var-space class="elevation-example-list" :size="['5.5vw', '5.5vw']">
+  <var-space class="elevation-example-list" :size="['10vmin', 0]" justify="space-between">
     <div
       class="elevation-example-item"
       :class="`var-elevation--${e}`"
-      :style="{ background }"
+      :style="{ background: 'var(--paper-background)' }"
       v-for="e in elevations"
       :key="e"
     >
@@ -32,15 +26,15 @@ watchDarkMode(dark, (theme) => {
 
 <style>
 .elevation-example-list {
-  margin-top: 8px !important;
+  padding: 8vmin 4vmin;
 }
 
 .elevation-example-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw;
-  height: 25vw;
-  transition: 0.25s background-color;
+  width: 24vmin;
+  height: 24vmin;
+  border-radius: 4px;
 }
 </style>

@@ -1,26 +1,17 @@
 <script setup>
-import VarIcon from '..'
-import VarInput from '../../input'
-import vRipple from '../../ripple'
-import Snackbar from '../../snackbar'
 import Clipboard from 'clipboard'
 import icons from '@varlet/icons'
-import dark from '../../themes/dark'
+import { Snackbar } from '@varlet/ui'
 import { reactive, onMounted, ref, computed } from 'vue'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import { use, pack } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 const iconNames = reactive(icons)
 const iconName = ref('information')
-const background = ref('#fff')
 const searchText = ref('')
-const searchIcons = computed(() => {
-  return searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
-})
-
-function toggle() {
-  iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
-}
+const searchIcons = computed(() =>
+  searchText.value ? iconNames.filter((name) => name.includes(searchText.value)) : iconNames
+)
 
 onMounted(() => {
   const clipboard = new Clipboard('.icon-example__icon', {
@@ -28,43 +19,39 @@ onMounted(() => {
   })
 
   clipboard.on('success', (e) => {
-    Snackbar.success(`${e.text}${pack.value.copySuccess}!`)
+    Snackbar.success(`${t('copySuccess')} ${e.text}!`)
   })
 })
 
 watchLang(use)
+onThemeChange()
 
-watchDarkMode(dark, (theme) => {
-  background.value = theme === 'darkTheme' ? '#303030' : '#fff'
-})
+function toggle() {
+  iconName.value = iconName.value === 'information' ? 'checkbox-marked-circle' : 'information'
+}
 </script>
 
 <template>
-  <app-type>{{ pack.iconSize }}</app-type>
+  <app-type>{{ t('iconSize') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" />
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" :size="26" />
 
-  <app-type>{{ pack.iconColor }}</app-type>
+  <app-type>{{ t('iconColor') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-primary)" />
-  <var-icon
-    class="icon-example__animation-icon"
-    name="checkbox-marked-circle"
-    color="var(--color-primary)"
-    :size="26"
-  />
+  <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-success)" />
 
-  <app-type>{{ pack.useImage }}</app-type>
+  <app-type>{{ t('useImage') }}</app-type>
   <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
 
-  <app-type>{{ pack.events }}</app-type>
+  <app-type>{{ t('clickEvent') }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"
     color="var(--color-primary)"
-    @click="() => Snackbar.success(pack.clickSuccess)"
+    @click="() => Snackbar.success(t('clickSuccess'))"
   />
 
-  <app-type>{{ pack.iconAnimation }}</app-type>
+  <app-type>{{ t('iconAnimation') }}</app-type>
   <var-icon
     class="icon-example__animation-icon"
     color="var(--color-primary)"
@@ -83,13 +70,13 @@ watchDarkMode(dark, (theme) => {
     @click="toggle"
   />
 
-  <app-type>{{ pack.iconList }}</app-type>
+  <app-type>{{ t('iconList') }}</app-type>
 
   <var-input
     class="icon-example__search"
     size="small"
     variant="outlined"
-    :placeholder="pack.searchIcon"
+    :placeholder="t('searchIcon')"
     v-model.trim="searchText"
     clearable
   >
@@ -101,7 +88,7 @@ watchDarkMode(dark, (theme) => {
   <div class="icon-example__icons">
     <div
       class="icon-example__icon var-elevation--2"
-      :style="{ background }"
+      :style="{ background: 'var(--paper-background)' }"
       :data-clipboard-text="name"
       :key="name"
       v-for="name in searchIcons"
@@ -140,10 +127,10 @@ watchDarkMode(dark, (theme) => {
     width: 29%;
     padding: 6% 5%;
     margin: 0 2% 4%;
+    border-radius: 10px;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     user-select: none;
-    border-bottom: 2px solid var(--color-primary);
     transition: background-color 0.25s;
   }
 

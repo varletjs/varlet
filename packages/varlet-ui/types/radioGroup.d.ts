@@ -1,7 +1,13 @@
-import { VarComponent, BasicAttributes, Direction as RadioGroupDirection, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Direction as RadioGroupDirection,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
-export declare const radioGroupProps: Record<string, any>
+export declare const radioGroupProps: Record<keyof RadioGroupProps, any>
 
 export type RadioGroupValidateTrigger = 'onChange'
 
@@ -17,6 +23,8 @@ export interface RadioGroupProps extends BasicAttributes {
 }
 
 export class RadioGroup extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<RadioGroupProps>
+
   $props: RadioGroupProps
 
   $slots: {

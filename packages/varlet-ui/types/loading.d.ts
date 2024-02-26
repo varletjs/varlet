@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, Size as LoadingSize } from './varComponent'
+import { VarComponent, BasicAttributes, Size as LoadingSize, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const loadingProps: Record<string, any>
+export declare const loadingProps: Record<keyof LoadingProps, any>
 
 export type LoadingType = 'circle' | 'wave' | 'cube' | 'rect' | 'disappear'
 
@@ -17,6 +17,8 @@ export interface LoadingProps extends BasicAttributes {
 }
 
 export class Loading extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<LoadingProps>
+
   $props: LoadingProps
 
   $slots: {

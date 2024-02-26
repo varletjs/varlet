@@ -64,12 +64,12 @@ Used to separate parts of a list or layout.
 ```html
 <template>
   <var-divider>
-    <var-icon name="heart-outline" style="margin: 0 16px; color: rgb(41, 121, 255);" />
+    <var-icon name="heart-outline" style="margin: 0 16px; color: var(--color-danger);" />
   </var-divider>
 </template>
 ```
 
-### Use 0.5px Divider
+### 0.5px Divider
 ```html
 <template>
   <var-divider hairline />
@@ -82,27 +82,26 @@ Used to separate parts of a list or layout.
 
 | Prop | Description | Type | Default | 
 | --- | --- | --- | --- | 
-| `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed | _boolean \| number \| string_ | `false` |
+| `inset` | Set the indentation distance, and the number plus or minus sign controls the direction of indentation. The default indentation is `72px` when `true` is passed (horizontal mode only) | _boolean \| number \| string_ | `false` |
 | `vertical` | Whether to set divider to display vertically | _boolean_ | `false` |
 | `dashed` | Whether divider is dashed | _boolean_ | `false` |
-| `hairline` | Whether divider is 0.5px | _boolean_ | `false` |
-| `description` | The text description of divider | _string_ | `-` |
+| `hairline` | Whether divider is `0.5px` | _boolean_ | `false` |
+| `description` | The text description of divider (horizontal mode only) | _string_ | `-` |
 | `margin` | Set `margin` of divider | _string_ | `-` |
 
 ### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Custom content of divider | `-` |
+| `default` | Custom content of divider (horizontal mode only) | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
-| `--divider-color` | `rgba(0, 0, 0, 0.12)` |
+| `--divider-color` | `var(--color-outline)` |
 | `--divider-text-color` | `#888`|
 | `--divider-text-margin` | `8px 0`|
 | `--divider-text-padding` | `0 8px`|
 | `--divider-inset` |  `72px`|
-| `--divider-vertical-inset` | `8px`|

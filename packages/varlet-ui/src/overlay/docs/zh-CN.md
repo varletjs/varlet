@@ -45,14 +45,14 @@ const show = ref(false)
 
 <style>
 .overlay-content {
-  padding: 20px 24px;
-  width: 250px;
-  background: var(--button-default-color);
+  padding: 24px;
+  width: 312px;
+  border-radius: 28px;
 }
 </style>
 ```
 
-### 注册事件
+### 点击事件
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -78,7 +78,7 @@ const show = ref(false)
 |----------------|-------------------------------|-----------------------|---------|
 | `v-model:show` | 是否显示遮罩层                       | _boolean_             | `false` |
 | `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动遮罩层不会引发 body 的滚动 | _boolean_             | `true`  |
-| `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to']_ | `-`     |
+| `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to'] \| false_ | `-`     |
 
 ### 事件
 

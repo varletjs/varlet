@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const resultProps: Record<string, any>
+export declare const resultProps: Record<keyof ResultProps, any>
 
 export type ResultType = 'info' | 'success' | 'warning' | 'error' | 'question' | 'empty'
 
@@ -14,6 +14,8 @@ export interface ResultProps extends BasicAttributes {
 }
 
 export class Result extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ResultProps>
+
   $props: ResultProps
 
   $slots: {

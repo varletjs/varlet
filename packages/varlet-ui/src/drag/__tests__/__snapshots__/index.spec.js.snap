@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test drag attraction 1`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(0px, 10px);"></div>"`;
+
+exports[`test drag attraction 2`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(10px, 0px);"></div>"`;
+
+exports[`test drag attraction 3`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(0px, 0px);"></div>"`;
+
+exports[`test drag boundary 1`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(10px, 10px);"></div>"`;
+
+exports[`test drag direction 1`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(10px, 10px);"></div>"`;
+
+exports[`test drag direction 2`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(10px, 0px);"></div>"`;
+
+exports[`test drag direction 3`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(0px, 10px);"></div>"`;
+
+exports[`test drag disabled 1`] = `"<div class="var-drag var--box" style="z-index: 90;"></div>"`;
+
+exports[`test drag reset 1`] = `"<div class="var-drag var--box var-drag--transition" style="z-index: 90; top: 0px; left: 0px; transform: translate(10px, 10px);"></div>"`;
+
+exports[`test drag reset 2`] = `"<div class="var-drag var--box" style="z-index: 90;"></div>"`;

@@ -229,7 +229,7 @@ const show = ref(false)
 | `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
-| `teleport` | 弹出层挂载的位置 | _TeleportProps['to']_ | `-` |
+| `teleport` | 弹出层挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
 ### 事件
 
@@ -301,7 +301,7 @@ const show = ref(false)
 | 变量名 | 默认值 |
 | --- | --- |
 | `--dialog-width` | `280px` |
-| `--dialog-background` | `#fff` |
+| `--dialog-background` | `var(--color-surface-container-low)` |
 | `--dialog-border-radius` | `3px` |
 | `--dialog-title-padding` | `20px 20px 0` |
 | `--dialog-title-font-size` | `var(--font-size-lg)` |
@@ -311,5 +311,6 @@ const show = ref(false)
 | `--dialog-message-font-size` | `var(--font-size-md)` |
 | `--dialog-actions-padding` | `0 12px 12px` |
 | `--dialog-button-margin-left` | `6px` |
+| `--dialog-title-color`          | `#555`                 |
 | `--dialog-confirm-button-color` | `var(--color-primary)` |
 | `--dialog-cancel-button-color` | `var(--color-primary)` |

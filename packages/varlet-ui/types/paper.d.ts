@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const paperProps: Record<string, any>
+export declare const paperProps: Record<keyof PaperProps, any>
 
 export interface PaperProps extends BasicAttributes {
   elevation?: boolean | number | string
@@ -15,6 +15,8 @@ export interface PaperProps extends BasicAttributes {
 }
 
 export class Paper extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<PaperProps>
+
   $props: PaperProps
 
   $slots: {

@@ -1,20 +1,14 @@
 import routes from '@mobile-routes'
 import config from '@config'
 import App from './App.vue'
-import '@varlet/touch-emulator'
+import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-
-import Icon from '../components/icon'
-import AppBar from './components/app-bar'
-import Button from '../components/button'
-import Cell from '../components/cell'
-import Ripple from '../components/ripple'
-import '../components/styles/common.less'
-import '../components/styles/elevation.less'
-
 import { get } from 'lodash-es'
 import { inIframe, isPhone } from '../utils'
+
+import '@varlet/touch-emulator'
+import '@varlet/ui/es/style'
 
 const redirect = get(config, 'mobile.redirect')
 const defaultLanguage = get(config, 'defaultLanguage')
@@ -27,7 +21,7 @@ redirect &&
 
 routes.push({
   path: '/home',
-  component: () => import('./components/AppHome.vue')
+  component: () => import('./AppHome.vue')
 })
 
 const router = createRouter({
@@ -63,16 +57,7 @@ router.beforeEach((to: any) => {
   }
 })
 
-// @ts-ignore
 createApp(App)
   .use(router)
-  // @ts-ignore
-  .use(Icon)
-  // @ts-ignore
-  .use(AppBar)
-  // @ts-ignore
-  .use(Cell)
-  .use(Ripple)
-  // @ts-ignore
-  .use(Button)
+  .use(Varlet)
   .mount('#app')

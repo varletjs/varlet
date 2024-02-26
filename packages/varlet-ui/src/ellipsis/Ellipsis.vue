@@ -1,5 +1,5 @@
 <template>
-  <var-tooltip v-bind="tooltip">
+  <var-tooltip v-bind="tooltipProps">
     <span
       :class="
         classes(n(), [lineClamp, n('--clamp'), n('--line')], [expandTrigger, n('--cursor')], [expanding, n('--expand')])
@@ -12,7 +12,7 @@
 
     <template #content>
       <slot name="tooltip-content">
-        <span v-if="tooltip?.content">{{ tooltip.content }}</span>
+        <span v-if="tooltipProps?.content">{{ tooltipProps.content }}</span>
         <slot v-else />
       </slot>
     </template>
@@ -20,31 +20,22 @@
 </template>
 
 <script lang="ts">
-import VarTooltip from '../tooltip'
-import { props as tooltipProps } from '../tooltip/props'
-import { computed, defineComponent, ref, type Ref, type ComputedRef, type StyleValue } from 'vue'
+import VarTooltip, { tooltipProps as _tooltipProps } from '../tooltip'
+import { computed, defineComponent, type CSSProperties } from 'vue'
 import { createNamespace, type ExtractPublicPropTypes } from '../utils/components'
 import { props } from './props'
+import { useVModel } from '@varlet/use'
 
-const { n, classes } = createNamespace('ellipsis')
+const { name, n, classes } = createNamespace('ellipsis')
 
 export default defineComponent({
-  name: 'VarEllipsis',
+  name,
   components: { VarTooltip },
   props,
   setup(props) {
-    const expanding: Ref<boolean> = ref(false)
-    const rootStyles: ComputedRef<StyleValue> = computed(() => {
-      if (!props.lineClamp) {
-        return {}
-      }
-
-      return {
-        '-webkit-line-clamp': props.lineClamp,
-      } as StyleValue
-    })
-
-    const tooltip: ComputedRef<ExtractPublicPropTypes<typeof tooltipProps>> = computed(() => {
+    const expanding = useVModel(props, 'expand')
+    const rootStyles = computed<CSSProperties>(() => (props.lineClamp ? { '-webkit-line-clamp': props.lineClamp } : {}))
+    const tooltipProps = computed<ExtractPublicPropTypes<typeof _tooltipProps>>(() => {
       if (props.tooltip === false) {
         return {
           disabled: true,
@@ -60,7 +51,7 @@ export default defineComponent({
       return { sameWidth: true, ...props.tooltip }
     })
 
-    const handleClick = () => {
+    function handleClick() {
       if (!props.expandTrigger) {
         return
       }
@@ -69,11 +60,11 @@ export default defineComponent({
     }
 
     return {
-      n,
-      classes,
-      tooltip,
+      tooltipProps,
       expanding,
       rootStyles,
+      n,
+      classes,
       handleClick,
     }
   },

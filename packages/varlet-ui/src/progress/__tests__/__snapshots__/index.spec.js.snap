@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test progress component props > test circle progress color 1`] = `
+"<div class="var-progress">
+  <!--v-if-->
+  <div class="var-progress__circle" style="width: 40px; height: 40px;"><svg class="var-progress__circle-svg" viewBox="0 0 44.44444444444444 44.44444444444444">
+      <defs>
+        <linearGradient id="var-progress-mock-id" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#3fecff"></stop>
+          <stop offset="100%" stop-color="#6149f6"></stop>
+        </linearGradient>
+      </defs>
+      <path class="var-progress__circle-background" d="M 22.22222222222222 22.22222222222222 m 0 -20 a 20 20 
+        0 1 1 0 40 a 20 20 0 1 1 0 -40" fill="transparent" stroke-width="4.444444444444445" stroke-dasharray="125.66370614359172"></path>
+      <path class="var-progress__circle-certain var-progress__circle--primary" d="M 22.22222222222222 22.22222222222222 m 0 -20 a 20 20 
+        0 1 1 0 40 a 20 20 0 1 1 0 -40" fill="transparent" stroke-width="4.444444444444445" stroke-dasharray="125.66370614359172" stroke-dashoffset="125.66370614359172" style="stroke: url(#var-progress-mock-id); transform: rotateZ(0deg); transform-origin: 50% 50%;"></path>
+    </svg>
+    <!--v-if-->
+  </div>
+</div>"
+`;

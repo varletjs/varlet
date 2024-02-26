@@ -18,17 +18,18 @@ const value = ref(true)
 </template>
 ```
 
-### 不可用
+### 禁用
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
 <template>
   <var-switch v-model="value" disabled />
+</template>
+```
+
+### 只读
+
+```html
+<template>
   <var-switch v-model="value" readonly />
 </template>
 ```
@@ -43,8 +44,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" :ripple="false" />
-  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+  <var-switch v-model="value" color="var(--color-warning)" close-color="var(--color-info)" />
 </template>
 ```
 
@@ -76,8 +76,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch :model-value="true" loading />
-  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+  <var-switch v-model="value" loading />
 </template>
 ```
 
@@ -98,6 +97,32 @@ const value = ref(true)
 </template>
 ```
 
+### 异步变更
+
+在某些场景下需要等待服务器返回成功之后再执行变更。
+设置 `lazy-change` 后会阻止组件本身的绑定值更新操作，
+并注册 `before-change` 事件进行手动更新。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+
+function handleBeforeChange(value, change) {
+  setTimeout(() => change(value), 500)
+}
+</script>
+
+<template>
+  <var-switch 
+    lazy-change
+    v-model="value"
+    @before-change="handleBeforeChange"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -111,11 +136,13 @@ const value = ref(true)
 | `readonly`       | 是否只读 | _boolean_ | `false` |
 | `loading`        | 是否为加载状态 | _boolean_ | `false` |
 | `ripple`         | 是否启用水波纹 | _boolean_ | `true` |
-| `color`          | 打开状态下的颜色 | _string_ | `#2979ff` |
-| `loading-color`  | 加载图标的颜色 | _string_ | `#fff` |
-| `close-color`    | 关闭状态下的颜色 | _string_ | `#fff` |
-| `size`           | switch 的大小 | _string \| number_ | - |
-| `rules`          | 校验规则 | _array_  | - |
+| `color`          | 打开状态下的颜色 | _string_ | `-` |
+| `loading-color`  | 加载图标的颜色 | _string_ | `-` |
+| `close-color`    | 关闭状态下的颜色 | _string_ | `-` |
+| `size`           | switch 的大小 | _string \| number_ | `-` |
+| `rules`          | 校验规则 | _Array<(value: any) => any>_  | `-` |
+| `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 
 ### 事件
 
@@ -123,6 +150,7 @@ const value = ref(true)
 | ----- | -------------- | -------- |
 | `click` | 点击时触发 | `event: Event` |
 | `change` | 开关状态切换时触发 | `value: any` |
+| `before-change` | 变更之前(仅限 `lazy-change` 模式)触发 | `value: any` <br> `change: (value: any) => void` |
 
 ### 样式变量
 

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const cardProps: Record<string, any>
+export declare const cardProps: Record<keyof CardProps, any>
 
 export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -26,6 +26,8 @@ export interface CardProps extends BasicAttributes {
 }
 
 export class Card extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CardProps>
+
   $props: CardProps
 
   $slots: {

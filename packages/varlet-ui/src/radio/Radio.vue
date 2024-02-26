@@ -40,6 +40,7 @@
             [formDisabled || disabled, n('--disabled')]
           )
         "
+        v-if="$slots.default"
       >
         <slot />
       </div>
@@ -54,16 +55,19 @@ import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import Hover from '../hover'
-import { computed, defineComponent, nextTick, ref, watch, type Ref, type ComputedRef } from 'vue'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { computed, defineComponent, nextTick, ref } from 'vue'
 import { props, type ValidateTrigger } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 
-const { n, classes } = createNamespace('radio')
+const { name, n, classes } = createNamespace('radio')
+
 export default defineComponent({
-  name: 'VarRadio',
+  name,
   directives: { Ripple, Hover },
   components: {
     VarIcon,
@@ -73,9 +77,9 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const value: Ref = ref(false)
-    const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
-    const withAnimation: Ref<boolean> = ref(false)
+    const value = useVModel(props, 'modelValue')
+    const checked = computed(() => value.value === props.checkedValue)
+    const withAnimation = ref(false)
     const { radioGroup, bindRadioGroup } = useRadioGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -87,14 +91,24 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const validateWithTrigger = (trigger: ValidateTrigger) => {
+    const radioProvider: RadioProvider = {
+      sync,
+      validate,
+      resetValidation,
+      reset,
+    }
+
+    call(bindRadioGroup, radioProvider)
+    call(bindForm, radioProvider)
+
+    function validateWithTrigger(trigger: ValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
     }
 
-    const change = (changedValue: any) => {
+    function change(changedValue: any) {
       const { checkedValue, onChange } = props
 
       if (radioGroup && value.value === checkedValue) {
@@ -103,13 +117,12 @@ export default defineComponent({
 
       value.value = changedValue
 
-      call(props['onUpdate:modelValue'], value.value)
       call(onChange, value.value)
       radioGroup?.onToggle(checkedValue)
       validateWithTrigger('onChange')
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { disabled, readonly, uncheckedValue, checkedValue, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -125,22 +138,24 @@ export default defineComponent({
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
-    const sync = (v: any) => {
+    function sync(v: any) {
       const { checkedValue, uncheckedValue } = props
       value.value = v === checkedValue ? checkedValue : uncheckedValue
     }
 
     // expose
-    const reset = () => {
-      call(props['onUpdate:modelValue'], props.uncheckedValue)
+    function reset() {
+      value.value = props.uncheckedValue
       resetValidation()
     }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
     // expose
-    const toggle = (changedValue?: any) => {
+    function toggle(changedValue?: any) {
       const { uncheckedValue, checkedValue } = props
 
       const shouldReverse = ![uncheckedValue, checkedValue].includes(changedValue)
@@ -150,24 +165,6 @@ export default defineComponent({
 
       change(changedValue)
     }
-
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        value.value = newValue
-      },
-      { immediate: true }
-    )
-
-    const radioProvider: RadioProvider = {
-      sync,
-      validate,
-      resetValidation,
-      reset,
-    }
-
-    call(bindRadioGroup, radioProvider)
-    call(bindForm, radioProvider)
 
     return {
       withAnimation,

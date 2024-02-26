@@ -4,6 +4,8 @@ export default {
   singlePicker: '单列选择',
   multiplePicker: '多列选择',
   cascadePicker: '级联选择',
-  textFormatter: '文本格式化',
-  extension: '值的映射',
+  areaPicker: '地区选择',
+  valueMapping: '值映射',
+  twoWayBinding: '双向绑定',
+  reset: '点击重置',
 }

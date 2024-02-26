@@ -1,9 +1,10 @@
 import HoverOverlay from './HoverOverlay.vue'
-import { ref, type App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as hoverOverlayProps } from './props'
+import { ref } from 'vue'
 
-HoverOverlay.install = function (app: App) {
-  app.component(HoverOverlay.name, HoverOverlay)
-}
+withInstall(HoverOverlay)
+withPropsDefaultsSetter(HoverOverlay, hoverOverlayProps)
 
 export function useHoverOverlay() {
   const hovering = ref(false)
@@ -17,6 +18,8 @@ export function useHoverOverlay() {
     handleHovering,
   }
 }
+
+export { hoverOverlayProps }
 
 export const _HoverOverlayComponent = HoverOverlay
 

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const stickyProps: Record<string, any>
+export declare const stickyProps: Record<keyof StickyProps, any>
 
 export interface StickyProps extends BasicAttributes {
   offsetTop?: string | number
@@ -12,6 +12,8 @@ export interface StickyProps extends BasicAttributes {
 }
 
 export class Sticky extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<StickyProps>
+
   $props: StickyProps
 
   $slots: {

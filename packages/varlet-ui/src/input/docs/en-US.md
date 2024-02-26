@@ -142,7 +142,7 @@ const value10 = ref('')
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
 | `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
-| `size` | Input size, The optional value is `small`                                                          | _string_ | `-` |
+| `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |
 | `textarea` | Is it a textarea                                                                                                                       | _boolean_ | `false` |  
@@ -158,7 +158,7 @@ const value10 = ref('')
 | `resize` | Whether textarea can be dragged to resize                                                                                              | _boolean_ | `false` |
 | `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | The validation rules, Returns `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
 ### Methods
@@ -168,19 +168,19 @@ const value10 = ref('')
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding and validate messages | `-` | `-` |
 
 ### Events
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Trigger while focusing | `event: Event` |
+| `focus` | Triggered while focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `event: Event` |
 | `clear` | Triggered on Clearance | `value: string` |
-| `input` | Trigger on input | `value: string`, `event: Event` |
-| `change` | Trigger on change | `value: string`, `event: Event` |
+| `input` | Triggered on input | `value: string`, `event: Event` |
+| `change` | Triggered on change | `value: string`, `event: Event` |
 
 ### Slots
 
@@ -188,9 +188,11 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
+| `clear-icon` | Clear Icon | `-` |
+| `extra-message` | Extra message | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
@@ -202,30 +204,32 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-icon-size` | `20px` |
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-padding-top` | `22px` |
-| `--field-decorator-standard-normal-padding-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
-| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
-| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
-| `--field-decorator-standard-small-padding-top` | `18px` |
-| `--field-decorator-standard-small-padding-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-padding` | `18px 0 4px` |
-| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
-| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
-| `--field-decorator-outlined-normal-padding-top` | `16px` |
-| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
-| `--field-decorator-outlined-small-padding-top` | `8px` |
-| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
-| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
 | `--input-input-height` | `24px` |
+| `--input-input-font-size` | `16px` |
 | `--input-textarea-height` | `auto` |

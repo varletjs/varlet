@@ -1,11 +1,5 @@
 module.exports = {
-  extends: [
-    'airbnb-base',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/vue3-recommended',
-    'prettier',
-    'prettier/vue',
-  ],
+  extends: ['airbnb-base', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 2020,
@@ -17,7 +11,6 @@ module.exports = {
     es6: true,
     node: true,
     browser: true,
-    'vue/setup-compiler-macros': true,
   },
   rules: {
     'max-classes-per-file': 'off',

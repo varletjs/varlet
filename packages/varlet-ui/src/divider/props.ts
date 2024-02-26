@@ -3,22 +3,9 @@ export const props = {
     type: [Boolean, Number, String],
     default: false,
   },
-  vertical: {
-    type: Boolean,
-    default: false,
-  },
-  description: {
-    type: String,
-  },
-  margin: {
-    type: String,
-  },
-  dashed: {
-    type: Boolean,
-    default: false,
-  },
-  hairline: {
-    type: Boolean,
-    default: false,
-  },
+  vertical: Boolean,
+  description: String,
+  margin: String,
+  dashed: Boolean,
+  hairline: Boolean,
 }

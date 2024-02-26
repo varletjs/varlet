@@ -2,6 +2,15 @@
   --swipe-indicator-color: #fff;
   --swipe-indicators-offset: 10px;
   --swipe-indicator-offset: 4px;
+  --swipe-navigation-z-index: 9;
+  --swipe-navigation-button-width: 36px;
+  --swipe-navigation-button-height: 36px;
+  --swipe-navigation-button-border-radius: 50%;
+  --swipe-navigation-icon-size: 20px;
+  --swipe-navigation-prev-left: 8px;
+  --swipe-navigation-next-right: 8px;
+  --swipe-navigation-prev-top: 8px;
+  --swipe-navigation-next-bottom: 8px;
 }
 
 .var-swipe {
@@ -15,6 +24,42 @@
     height: 100%;
     display: flex;
     transition-property: transform;
+  }
+
+  &__navigation {
+    position: absolute;
+    top: 50%;
+    z-index: var(--swipe-navigation-z-index);
+
+    &-prev {
+      left: 0;
+      transform: translate(var(--swipe-navigation-prev-left), -50%);
+
+      &-button[var-swipe-cover] {
+        width: var(--swipe-navigation-button-width);
+        height: var(--swipe-navigation-button-height);
+        border-radius: var(--swipe-navigation-button-border-radius);
+      }
+
+      &-button-icon[var-swipe-cover] {
+        font-size: var(--swipe-navigation-icon-size);
+      }
+    }
+
+    &-next {
+      right: 0;
+      transform: translate(calc(-1 * var(--swipe-navigation-next-right)), -50%);
+
+      &-button[var-swipe-cover] {
+        width: var(--swipe-navigation-button-width);
+        height: var(--swipe-navigation-button-height);
+        border-radius: var(--swipe-navigation-button-border-radius);
+      }
+
+      &-button-icon[var-swipe-cover] {
+        font-size: var(--swipe-navigation-icon-size);
+      }
+    }
   }
 
   &__indicators {
@@ -52,5 +97,70 @@
 
   &--indicator-vertical {
     margin: var(--swipe-indicator-offset) 0;
+  }
+
+  &--navigation-vertical {
+    &-prev {
+      top: 0;
+      left: 50%;
+      right: unset;
+      transform: translate(-50%, var(--swipe-navigation-prev-top));
+    }
+
+    &-next {
+      bottom: 0;
+      left: 50%;
+      right: unset;
+      top: unset;
+      transform: translate(-50%, calc(-1 * var(--swipe-navigation-next-bottom)));
+    }
+  }
+
+  &--navigation-prev-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-100%, -50%);
+    }
+  }
+
+  &--navigation-next-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(100%, -50%);
+    }
+  }
+
+  &--navigation-vertical-prev-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-50%, -100%);
+    }
+  }
+
+  &--navigation-vertical-next-animation {
+    &-enter-active,
+    &-leave-active {
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.5, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+      transform: translate(-50%, 100%);
+    }
   }
 }

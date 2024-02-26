@@ -1,4 +1,4 @@
-import { Pack } from './index'
+import { Message } from './index'
 
 export default {
   // Dialog
@@ -97,8 +97,11 @@ export default {
     },
   },
   datePickerSelected: '个被选择',
+  datePickerHint: '选择日期',
   // pagination
   paginationItem: '条',
   paginationPage: '页',
   paginationJump: '前往',
-} as Pack
+  // time-picker
+  timePickerHint: '选择时间',
+} as Message

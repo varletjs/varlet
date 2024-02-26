@@ -1,6 +1,7 @@
 import LoadingBarComponent from './LoadingBar'
 import { reactive } from 'vue'
 import { mountInstance } from '../utils/components'
+import { props as loadingBarProps } from './props'
 
 interface LoadingBarOptions {
   color?: string
@@ -16,8 +17,6 @@ interface InternalProps {
 }
 
 interface LoadingBar {
-  mergeConfig(options: LoadingBarOptions): void
-
   start(): void
 
   finish(): void
@@ -42,10 +41,6 @@ const internalProps: InternalProps = {
   error: false,
 }
 const props: LoadingBarOptions & InternalProps = reactive(internalProps)
-
-const mergeConfig = (options: LoadingBarOptions) => {
-  Object.assign(props, options)
-}
 
 const setDefaultOptions = (options: LoadingBarOptions) => {
   Object.assign(props, options)
@@ -135,13 +130,11 @@ const LoadingBar: LoadingBar = {
   start,
   finish,
   error,
-  /** @deprecated Use setDefaultOptions to instead. */
-  mergeConfig,
   setDefaultOptions,
   resetDefaultOptions,
 }
 
-export { props as loadingBarProps } from './props'
+export { loadingBarProps }
 
 export const _LoadingBarComponent = LoadingBar
 

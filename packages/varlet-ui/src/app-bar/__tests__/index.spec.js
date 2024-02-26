@@ -2,6 +2,7 @@ import AppBar from '..'
 import VarAppBar from '../AppBar'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test app bar use', () => {
   const app = createApp({}).use(AppBar)
@@ -102,6 +103,34 @@ describe('test app bar component props', () => {
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  test('test app bar fixed', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar--fixed').exists()).toBe(false)
+
+    await wrapper.setProps({
+      fixed: true,
+    })
+
+    expect(wrapper.find('.var-app-bar--fixed').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('test app bar z-index', async () => {
+    const wrapper = mount(VarAppBar)
+
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('z-index: 1')
+
+    await wrapper.setProps({
+      zIndex: 3,
+    })
+
+    expect(wrapper.find('.var-app-bar').attributes('style')).toContain('z-index: 3')
+
+    wrapper.unmount()
   })
 })
 

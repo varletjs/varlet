@@ -16,7 +16,7 @@
     :elevation="2"
     :width="100"
     :height="100"
-    v-hover="{ color: '#fff', background: 'var(--color-primary)' }"
+    v-hover="{ color: 'var(--color-on-primary)', background: 'var(--color-primary)' }"
   >
     HOVER
   </var-paper>
@@ -72,7 +72,7 @@ function handleHover(hovering) {
   width: 100%;
   height: 100%;
   transition: all 0.3s;
-  color: #fff;
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
   font-size: 50px;
 }

@@ -102,26 +102,77 @@ const readonly = ref(false)
         :rules="[v => v.length >= 1 || 'Upload at least one picture']"
         v-model="formData.files"
       />
+
+      <var-space direction="column" :size="[14, 0]">
+        <var-button block type="danger" @click="form.reset()">
+          Empty form
+        </var-button>
+        <var-button block type="warning" @click="form.resetValidation()">
+          Empty the validation
+        </var-button>
+        <var-button block type="success" @click="form.validate()">
+          Trigger validation
+        </var-button>
+        <var-button block type="info" @click="disabled = !disabled">
+          Form disabled
+        </var-button>
+        <var-button block type="primary" @click="readonly = !readonly">
+          Form readonly
+        </var-button>
+      </var-space>
     </var-space>
   </var-form>
-  
-  <var-space direction="column" :size="[14, 0]">
-    <var-button block type="danger" @click="form.reset()">
-      Empty form
-    </var-button>
-    <var-button block type="warning" @click="form.resetValidation()">
-      Empty the validation
-    </var-button>
-    <var-button block type="success" @click="form.validate()">
-      Trigger validation
-    </var-button>
-    <var-button block type="info" @click="disabled = !disabled">
-      Form disabled
-    </var-button>
-    <var-button block type="primary" @click="readonly = !readonly">
-      Form readonly
-    </var-button>
-  </var-space>
+</template>
+```
+
+### Form Events
+
+You can also use form events to handle form behavior.
+
+```html
+<script setup>
+import { reactive } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const formData = reactive({
+  username: '',
+  password: '',
+})
+
+function handleSubmit(valid) {
+  Snackbar(`onSubmit: ${valid}`)
+}
+
+function handleReset() {
+  Snackbar(`onReset`)
+}
+</script>
+
+<template>
+  <var-form @submit="handleSubmit" @reset="handleReset">
+    <var-space direction="column" :size="[14, 0]">
+      <var-input
+        placeholder="Please input username"
+        :rules="[v => !!v || 'The username cannot be empty']"
+        v-model="formData.username"
+      />
+      <var-input
+        type="password"
+        placeholder="Please input password"
+        :rules="[v => !!v || 'The password cannot be empty']"
+        v-model="formData.password"
+      />
+
+      <var-space>
+        <var-button type="primary" native-type="submit">
+          Submit
+        </var-button>
+        <var-button type="primary" native-type="reset">
+          Reset
+        </var-button>
+      </var-space>
+    </var-space>
+  </var-form>
 </template>
 ```
 
@@ -277,7 +328,16 @@ bindForm?.(apis)
 | --- | --- | --- | --- |
 | `validate` | Trigger validation for all form components | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clear the validation messages for all form components | `-` | `-` |
-| `reset` | Clears all form component bindings of values and validation messages | `-` | `-` |
+| `reset` | Clear all form component bindings of values and validation messages | `-` | `-` |
+
+### Events
+
+#### Form Events
+
+| Event | Description  | Arguments  |
+| --- | --- | --- |
+| `submit` | Triggered when the form is submitted | `valid: boolean` Whether to pass the form verification |
+| `reset` | Fired when the form is reset | `-` |
 
 ### Slots
 
@@ -288,7 +348,7 @@ bindForm?.(apis)
 | `default` | Form content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### FormDetails Variables
 

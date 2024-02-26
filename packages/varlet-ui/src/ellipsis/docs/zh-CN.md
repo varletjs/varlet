@@ -24,6 +24,25 @@
 </template>
 ```
 
+### 双向绑定
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const expand = ref(false)
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-button type="primary" @click="expand = !expand">切换</var-button>
+    <var-ellipsis style="max-width: 170px" v-model:expand="expand">
+      其实没有什么事情是不可能的，我都拿到世界冠军了，真的没有什么事情是不可能的。
+    </var-ellipsis>
+  </var-space>
+</template>
+```
+
 ### 点击文字展开
 
 ```html
@@ -59,9 +78,10 @@
 
 | 参数  | 说明   | 类型  | 默认值 |
 |-------|------|----|----|
+| `v-model:expand` | 是否展开 | _boolean_  | `false` |
 | `expand-trigger` | 展开触发方式，可选值 `click` | _string_  | `-` |
 | `line-clamp` | 最大显示行数，兼容性见 [line-clamp](https://caniuse.com/?search=line-clamp) | _string_  | `-` |
-| `tooltip` | Tooltip 组件配置，用于深度定制。为了更方便使用，`sameWidth` 在这里默认为 `true` | _boolean \| TooltipProps_  | `-` |
+| `tooltip` | Tooltip 组件配置，用于深度定制。为了更方便使用，`sameWidth` 在这里默认为 `true` | _boolean \| TooltipProps_  | `true` |
 
 ### 插槽
 

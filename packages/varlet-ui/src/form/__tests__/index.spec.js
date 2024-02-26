@@ -12,7 +12,10 @@ import VarSwitch from '../../switch/Switch'
 import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger, mockScrollTo } from '../../utils/test'
+import { expect, vi } from 'vitest'
+
+mockScrollTo()
 
 test('test form plugin', () => {
   const app = createApp({}).use(Form)
@@ -20,8 +23,8 @@ test('test form plugin', () => {
 })
 
 const expectValidate = async (form, wrapper, message) => {
-  form.validate()
-  await delay(16)
+  await form.validate()
+  await delay(10)
   expect(wrapper.find('.var-form-details__error-message').text()).toBe(message)
   expect(wrapper.html()).toMatchSnapshot()
 }
@@ -50,9 +53,9 @@ const Wrapper = {
 }
 
 test('test form with input', async () => {
-  const onClick = jest.fn()
-  const onInput = jest.fn()
-  const onChange = jest.fn()
+  const onClick = vi.fn()
+  const onInput = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -67,7 +70,7 @@ test('test form with input', async () => {
       onChange,
     },
     template: `
-      <var-form ref="form" :disabled="disabled" :readonly="readonly">
+      <var-form ref="form" scroll-to-error="start" :disabled="disabled" :readonly="readonly">
         <var-input
           clearable
           :rules="[v => !!v || '不能为空']"
@@ -97,9 +100,9 @@ test('test form with input', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await triggerEvents()
-  expect(onInput).toHaveBeenCalledTimes(0)
+  expect(onInput).toHaveBeenCalledTimes(1)
   expect(onClick).toHaveBeenCalledTimes(1)
-  expect(onChange).toHaveBeenCalledTimes(0)
+  expect(onChange).toHaveBeenCalledTimes(1)
 
   const { form } = wrapper.vm.$refs
   await expectValidate(form, wrapper, '不能为空')
@@ -109,9 +112,9 @@ test('test form with input', async () => {
 })
 
 test('test form with select', async () => {
-  const onClear = jest.fn()
-  const onClick = jest.fn()
-  const onClose = jest.fn()
+  const onClear = vi.fn()
+  const onClick = vi.fn()
+  const onClose = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -174,8 +177,8 @@ test('test form with select', async () => {
 })
 
 test('test form with radio', async () => {
-  const onChange = jest.fn()
-  const onClick = jest.fn()
+  const onChange = vi.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -222,8 +225,8 @@ test('test form with radio', async () => {
 })
 
 test('test form with checkbox', async () => {
-  const onChange = jest.fn()
-  const onClick = jest.fn()
+  const onChange = vi.fn()
+  const onClick = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -271,9 +274,9 @@ test('test form with checkbox', async () => {
 })
 
 test('test form with counter', async () => {
-  const onIncrement = jest.fn()
-  const onDecrement = jest.fn()
-  const onChange = jest.fn()
+  const onIncrement = vi.fn()
+  const onDecrement = vi.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -329,7 +332,7 @@ test('test form with counter', async () => {
 })
 
 test('test form with rate', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -372,7 +375,7 @@ test('test form with rate', async () => {
 })
 
 test('test form with uploader', async () => {
-  const onAfterRead = jest.fn()
+  const onAfterRead = vi.fn()
 
   const createEvent = (filename) => {
     return {
@@ -423,7 +426,7 @@ test('test form with uploader', async () => {
 })
 
 test('test form with switch', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -472,9 +475,9 @@ test('test form with switch', async () => {
 })
 
 test('test form with slider', async () => {
-  const onChange = jest.fn()
-  const onStart = jest.fn()
-  const onEnd = jest.fn()
+  const onChange = vi.fn()
+  const onStart = vi.fn()
+  const onEnd = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,
@@ -532,4 +535,42 @@ test('test form with slider', async () => {
   expect(onChange).toHaveBeenCalled()
   expect(onStart).toHaveBeenCalledTimes(1)
   expect(onEnd).toHaveBeenCalledTimes(1)
+})
+
+test('test form events', async () => {
+  const onSubmit = vi.fn()
+  const onReset = vi.fn()
+
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: undefined,
+    }),
+    methods: {
+      onSubmit,
+      onReset,
+    },
+    template: `
+      <var-form @submit="onSubmit" @reset="onReset">
+        <var-input
+          clearable
+          :rules="[v => !!v || '不能为空']"
+          v-model="value"
+        />
+      </var-form>
+    `,
+  })
+
+  await delay(16)
+
+  await wrapper.trigger('submit')
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(onSubmit).toHaveBeenCalledTimes(1)
+  expect(onSubmit).toHaveBeenLastCalledWith(false)
+
+  await wrapper.trigger('reset')
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(onReset).toHaveBeenCalledTimes(1)
 })

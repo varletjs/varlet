@@ -12,8 +12,8 @@ import {
 } from 'vscode'
 import { componentsMap, type ComponentDescriptor } from './componentsMap'
 import { bigCamelize, isString, kebabCase } from '@varlet/shared'
-import { ATTR_RE, ICONS_STATIC, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
-import { getWebTypesTags, t } from './env'
+import { ATTR_RE, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
+import { getWebTypesTags, envs } from './env'
 
 export function shouldDisableProvide(document: TextDocument, position: Position) {
   if (document.languageId !== 'vue') {
@@ -85,17 +85,17 @@ export function registerCompletions(context: ExtensionContext) {
         return null
       }
 
-      const completionItems: CompletionItem[] = icons.map((icon: string) => {
-        return new CompletionItem(icon, CompletionItemKind.Field)
-      })
+      const completionItems: CompletionItem[] = icons.map(
+        (icon: string) => new CompletionItem(icon, CompletionItemKind.Field)
+      )
 
       return completionItems
     },
 
     resolveCompletionItem(completionItem: CompletionItem) {
       const id = completionItem.label
-      const url = `${ICONS_STATIC}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
-      const markdownString = new MarkdownString(`[icon: ${id}](${t('documentation')}/icon)
+      const url = `${envs().iconsStatic}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
+      const markdownString = new MarkdownString(`[icon: ${id}](${envs().t('documentation')}/icon)
 <p align="center"><img height="80" src="${url}"></p>
 <br>
 `)

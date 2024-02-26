@@ -1,13 +1,14 @@
 <script lang="ts">
 import { defineComponent, h } from 'vue'
 import { formatStyleVars } from '../utils/elements'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { props } from './props'
+import { call } from '@varlet/shared'
 
-const { n } = createNamespace('style-provider')
+const { name, n } = createNamespace('style-provider')
 
 export default defineComponent({
-  name: 'VarStyleProvider',
+  name,
   props,
   setup(props, { slots }) {
     return () =>

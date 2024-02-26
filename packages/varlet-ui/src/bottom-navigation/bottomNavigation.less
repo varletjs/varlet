@@ -1,9 +1,10 @@
 :root {
   --bottom-navigation-height: 50px;
   --bottom-navigation-z-index: 1;
-  --bottom-navigation-background-color: #fff;
-  --bottom-navigation-border-color: #e3e3e3;
+  --bottom-navigation-background-color: var(--color-surface-container-high);
+  --bottom-navigation-border-color: var(--color-outline);
   --bottom-navigation-fab-offset: 4px;
+  --bottom-navigation-fab-border-radius: 50%;
 }
 
 .var-bottom-navigation {
@@ -34,6 +35,7 @@
   &__fab[var-bottom-navigation__fab] {
     width: var(--bottom-navigation-height);
     height: var(--bottom-navigation-height);
+    border-radius: var(--bottom-navigation-fab-border-radius);
     position: absolute;
     z-index: 2;
     transform: translateY(-50%);

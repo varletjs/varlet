@@ -1,38 +1,37 @@
-import type { App } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
-import { VNode } from 'vue'
+import { VarComponent, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VNode, App } from 'vue'
 
-export declare const pickerProps: Record<string, any>
+export declare const pickerProps: Record<keyof PickerProps, any>
 
-export interface NormalColumn extends BasicAttributes {
-  texts: Texts
-  initialIndex?: number
+export type PickerColumnOption = {
+  text?: string | number
+  value?: string | number
+  children?: PickerColumnOption[]
+  className?: string
+  textClassName?: string
+
+  [key: PropertyKey]: any
 }
-
-export interface CascadeColumn {
-  [textKey: string]: any
-  children: CascadeColumn[]
-}
-
-export type Texts = any[]
 
 export interface PickerProps {
-  columns?: NormalColumn[] | CascadeColumn[] | Texts
+  modelValue?: (string | number)[]
+  columns?: PickerColumnOption[] | PickerColumnOption[][]
   title?: string
   textKey?: string
+  valueKey?: string
+  childrenKey?: string
   toolbar?: boolean
   cascade?: boolean
-  cascadeInitialIndexes: number[]
-  textFormatter?: (text: any, columnIndex: number) => any
   optionHeight?: string | number
   optionCount?: string | number
   confirmButtonText?: string
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
-  onChange?: ListenerProp<(texts: Texts, indexes: number[]) => void>
-  onConfirm?: ListenerProp<(texts: Texts, indexes: number[]) => void>
-  onCancel?: ListenerProp<(texts: Texts, indexes: number[]) => void>
+  onChange?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
+  onConfirm?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
+  onCancel?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
+  'onUpdate:modelValue'?: ListenerProp<(values: (string | number)[]) => void>
 }
 
 export class PickerComponent extends VarComponent {
@@ -52,40 +51,46 @@ export class PickerComponent extends VarComponent {
 export type PickerActions = 'confirm' | 'cancel' | 'close'
 
 export interface PickerResolvedData {
-  state: PickerActions
-  texts?: Texts
+  state: PickerResolvedState
+  values?: (string | number)[]
   indexes?: number[]
+  options?: PickerColumnOption[]
 }
 
 export interface PickerOptions {
-  columns: NormalColumn | CascadeColumn | Texts
+  modelValue?: (string | number)[]
+  columns?: PickerColumnOption[] | PickerColumnOption[][]
   title?: string
   textKey?: string
+  valueKey?: string
+  childrenKey?: string
   toolbar?: boolean
   cascade?: boolean
-  cascadeInitialIndexes?: number[]
   optionHeight?: number | string
   optionCount?: number | string
   confirmButtonText?: string
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
-  textFormatter?: (text: any, columnIndex: number) => any
   safeArea?: boolean
+  closeOnClickOverlay?: boolean
+  onClickOverlay?: () => void
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
-  onChange?: (texts: Texts, indexes: number[]) => void
-  onConfirm?: (texts: Texts, indexes: number[]) => void
-  onCancel?: (texts: Texts, indexes: number[]) => void
+  onChange?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
+  onConfirm?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
+  onCancel?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
 }
 
 export interface IPicker {
-  (options: PickerOptions | Texts): Promise<PickerResolvedData>
+  (options: PickerOptions | PickerColumnOption[] | PickerColumnOption[][]): Promise<PickerResolvedData>
   Component: typeof PickerComponent
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<PickerProps>
 
   close(): void
 }

@@ -1,33 +1,21 @@
-import type { PropType, TeleportProps } from 'vue'
+import { type PropType, type TeleportProps } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-function positionValidator(position: string): boolean {
-  return ['top', 'bottom', 'right', 'left', 'center'].includes(position)
-}
+export type PopupPosition = 'top' | 'bottom' | 'right' | 'left' | 'center'
 
 export const props = {
-  show: {
-    type: Boolean,
-    default: false,
-  },
+  show: Boolean,
   position: {
-    type: String as PropType<'top' | 'bottom' | 'right' | 'left' | 'center'>,
+    type: String as PropType<PopupPosition>,
     default: 'center',
-    validator: positionValidator,
   },
-  transition: {
-    type: String,
-  },
+  transition: String,
   overlay: {
     type: Boolean,
     default: true,
   },
-  overlayClass: {
-    type: String,
-  },
-  overlayStyle: {
-    type: Object,
-  },
+  overlayClass: String,
+  overlayStyle: Object,
   lockScroll: {
     type: Boolean,
     default: true,
@@ -40,16 +28,11 @@ export const props = {
     type: Boolean,
     default: true,
   },
-  safeArea: {
-    type: Boolean,
-    default: false,
-  },
-  safeAreaTop: {
-    type: Boolean,
-    default: false,
-  },
+  safeArea: Boolean,
+  safeAreaTop: Boolean,
   teleport: {
-    type: String as PropType<TeleportProps['to']>,
+    type: [String, Object, Boolean] as PropType<TeleportProps['to'] | false>,
+    default: 'body',
   },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
@@ -59,4 +42,10 @@ export const props = {
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   // internal for Dialog
   onRouteChange: defineListenerProp<() => void>(),
+  // internal for esc
+  onKeyEscape: defineListenerProp<() => void>(),
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
 }

@@ -43,8 +43,8 @@ const active = ref(0)
 <template>
   <var-steps
     :active="active"
-    active-color="#f44336"
-    inactive-color="#e99eb4"
+    active-color="var(--color-danger)" 
+    inactive-color="var(--color-warning)"
   >
     <var-step active-icon="heart" current-icon="fire" inactive-icon="heart-half-full">
       Step1
@@ -92,9 +92,9 @@ const active = ref(0)
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
 | `active` | Active step | _string \| number_ | `0` |
-| `direction` | Mode of steps, Can be set to `vertical` | _string_ | `horizontal` |
-| `active-color` | Active step color | _string_ | `#2979ff` |
-| `inactive-color` | Inactive step color | _string_ | `#9e9e9e` |
+| `direction` | Mode of steps, can be set to `horizontal` `vertical` | _string_ | `horizontal` |
+| `active-color` | Active step color | _string_ | `-` |
+| `inactive-color` | Inactive step color | _string_ | `-` |
 
 #### Step Props
 
@@ -103,6 +103,9 @@ const active = ref(0)
 | `active-icon` | Active icon name  | _string_ | `check` |
 | `current-icon` | Icon name of current ste	 | _string_ | `-`|
 | `inactive-icon` | Inactive icon name	 | _string_ | `-`|
+| `active-icon-namespace` | Active icon namespace  | _string_ | `var-icon` |
+| `current-icon-namespace` | Current icon namespace | _string_ |`var-icon` |
+| `inactive-icon-namespace` | Inactive icon namespace | _string_ | `var-icon` |
 
 ### Events
 
@@ -128,14 +131,14 @@ const active = ref(0)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
 | `--step-tag-size` | `20px` |
 | `--step-tag-background` | `#9e9e9e` |
 | `--step-tag-font-size` | `var(--font-size-md)` |
-| `--step-tag-color` | `#fff` |
+| `--step-tag-color` | `var(--color-on-primary)` |
 | `--step-tag-active-color` | `var(--color-primary)` |
 | `--step-tag-margin` | `4px 0` |
 | `--step-tag-icon-size` | `var(--font-size-lg)` |
@@ -144,7 +147,5 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--step-content-active-color` | `#000` |
 | `--step-line-background` | `#000` |
 | `--step-line-gap` | `8px` |
-| `--step-min-size` | `calc(var(--step-tag-size) + var(--step-line-gap))` |
-| `--step-line-size` | `calc(100% - var(--step-min-size))` |
 | `--step-vertical-tag-margin` | `0 4px` |
 | `--step-vertical-min-height` | `50px` |

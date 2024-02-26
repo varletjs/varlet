@@ -1,6 +1,6 @@
 <template>
   <transition :name="n('$-fade')">
-    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyles" v-bind="$attrs">
+    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyle" v-bind="$attrs">
       <slot name="left" />
 
       <span :class="n(`text-${size}`)">
@@ -9,8 +9,8 @@
 
       <slot name="right" />
 
-      <span v-if="closable" :class="n('--close')" @click="handleClose">
-        <var-icon :name="`${iconName ? iconName : 'close-circle'}`" />
+      <span v-if="closeable" :class="n('--close')" @click="handleClose">
+        <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
       </span>
     </span>
   </transition>
@@ -18,22 +18,22 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, CSSProperties } from 'vue'
 import { props } from './props'
-import type { ComputedRef } from 'vue'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
-const { n, classes } = createNamespace('chip')
+const { name, n, classes } = createNamespace('chip')
 
 export default defineComponent({
-  name: 'VarChip',
+  name,
   components: {
     VarIcon,
   },
   inheritAttrs: false,
   props,
   setup(props) {
-    const chipStyles = computed(() => {
+    const chipStyle = computed<CSSProperties>(() => {
       const { plain, textColor, color } = props
 
       if (plain) {
@@ -48,8 +48,7 @@ export default defineComponent({
         background: color,
       }
     })
-
-    const contentClass: ComputedRef<Array<string | null | undefined>> = computed(() => {
+    const contentClass = computed<(string | null)[]>(() => {
       const { size, block, type, plain, round } = props
 
       const blockClass = block ? n('$--flex') : n('$--inline-flex')
@@ -59,15 +58,15 @@ export default defineComponent({
       return [n(`--${size}`), blockClass, plainTypeClass, roundClass]
     })
 
-    const handleClose = (e: Event) => {
+    function handleClose(e: Event) {
       call(props.onClose, e)
     }
 
     return {
+      chipStyle,
+      contentClass,
       n,
       classes,
-      chipStyles,
-      contentClass,
       handleClose,
     }
   },

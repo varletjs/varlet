@@ -71,11 +71,12 @@ const time = ref(30 * 60 * 60 * 1000)
 
 <style>
 .countdown-example-block {
-  background: #ff9f00;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  padding: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -180,3 +181,12 @@ function change() {
 | `start` | 开始倒计时 | `-` | `-` |
 | `pause` | 暂停倒计时 | `-` | `-` |
 | `reset` | 重设倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | `-` | `-` |
+
+### 样式变量
+
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+| 变量名                         | 默认值 |
+|-----------------------------| --- |
+| `--countdown-text-color`     | `var(--color-text)`                |
+| `--countdown-text-font-size` | `var(--font-size-lg)` 

@@ -1,7 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   stepSize: 'Step Size',
-  dualThumb: 'Dual thumb',
+  dualThumb: 'Dual Thumbs',
   disable: 'Disable',
   readonly: 'Readonly',
   range: 'Range',
@@ -10,5 +10,6 @@ export default {
   showLabel: 'Show Label',
   customBtn: 'Custom Button',
   validateValue: 'Validate Value',
+  errMsg: 'error message',
   vertical: 'Vertical',
 }

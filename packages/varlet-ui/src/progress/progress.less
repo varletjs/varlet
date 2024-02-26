@@ -1,8 +1,15 @@
 :root {
   --progress-font-size: var(--font-size-sm);
-  --progress-ripple-color: #fff;
   --progress-track-color: #d8d8d8;
+  --progress-label-color: #555;
   --progress-background: var(--color-primary);
+  --progress-default-color: #f5f5f5;
+  --progress-primary-color: var(--color-primary);
+  --progress-danger-color: var(--color-danger);
+  --progress-success-color: var(--color-success);
+  --progress-warning-color: var(--color-warning);
+  --progress-info-color: var(--color-info);
+  --progress-linear-border-radius: 0px;
 }
 
 .var-progress {
@@ -18,24 +25,13 @@
       position: relative;
       overflow: hidden;
       height: 4px;
+      border-radius: var(--progress-linear-border-radius);
     }
 
-    &-background,
     &-certain {
       width: 100%;
       height: 100%;
-    }
-
-    &-ripple {
-      &::after {
-        position: absolute;
-        width: 0;
-        background-color: var(--progress-ripple-color);
-        height: 100%;
-        opacity: 0;
-        animation: ripple 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        content: '';
-      }
+      border-radius: var(--progress-linear-border-radius);
     }
 
     &-background {
@@ -53,20 +49,84 @@
     &-label {
       margin-left: 8px;
       flex: 0;
+      color: var(--progress-label-color);
     }
 
-    @keyframes ripple {
+    &-indeterminate {
+      div {
+        bottom: 0;
+        height: inherit;
+        left: 0;
+        position: absolute;
+        right: auto;
+        top: 0;
+        width: auto;
+        will-change: left, right;
+        border-radius: var(--progress-linear-border-radius);
+
+        &:first-child {
+          animation: progress-linear-long 2.2s infinite;
+        }
+
+        &:last-child {
+          animation: progress-linear-short 2.2s infinite;
+        }
+      }
+    }
+
+    &--success {
+      background-color: var(--progress-success-color);
+    }
+
+    &--default {
+      background-color: var(--progress-default-color);
+    }
+
+    &--primary {
+      background-color: var(--progress-primary-color);
+    }
+
+    &--warning {
+      background-color: var(--progress-warning-color);
+    }
+
+    &--danger {
+      background-color: var(--progress-danger-color);
+    }
+
+    &--info {
+      background-color: var(--progress-info-color);
+    }
+
+    @keyframes progress-linear-long {
       0% {
-        width: 0;
-        opacity: 0.1;
+        left: -90%;
+        right: 100%;
       }
-      20% {
-        width: 0;
-        opacity: 0.5;
+
+      60% {
+        left: -90%;
+        right: 100%;
       }
-      80% {
-        width: 100%;
-        opacity: 0;
+      100% {
+        left: 100%;
+        right: -35%;
+      }
+    }
+
+    @keyframes progress-linear-short {
+      0% {
+        left: -200%;
+        right: 100%;
+      }
+
+      60% {
+        left: 107%;
+        right: -8%;
+      }
+      100% {
+        left: 107%;
+        right: -8%;
       }
     }
   }
@@ -78,6 +138,7 @@
 
     &-background {
       stroke: var(--progress-track-color);
+      z-index: 1;
     }
 
     &-certain {
@@ -91,6 +152,78 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      color: var(--progress-label-color);
+    }
+
+    &--success {
+      stroke: var(--progress-success-color);
+    }
+
+    &--default {
+      stroke: var(--progress-default-color);
+    }
+
+    &--primary {
+      stroke: var(--progress-primary-color);
+    }
+
+    &--warning {
+      stroke: var(--progress-warning-color);
+    }
+
+    &--danger {
+      stroke: var(--progress-danger-color);
+    }
+
+    &--info {
+      stroke: var(--progress-info-color);
+    }
+
+    &-indeterminate {
+      svg {
+        animation: progress-circle-rotate 1.4s linear infinite;
+        transform-origin: center center;
+        transition: all 0.2s ease-in-out;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+      }
+    }
+
+    &-overlay {
+      animation: progress-circle-dash 1.4s ease-in-out infinite, progress-circle-rotate 1.4s linear infinite;
+      stroke-dasharray: 25, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      transform-origin: center center;
+      transform: rotate(-90deg);
+      z-index: 2;
+    }
+
+    @keyframes progress-circle-dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 100, 200;
+        stroke-dashoffset: -15px;
+      }
+      100% {
+        stroke-dasharray: 100, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+
+    @keyframes progress-circle-rotate {
+      100% {
+        transform: rotate(270deg);
+      }
     }
   }
 }

@@ -6,14 +6,18 @@
         n('$--box'),
         n(`--${states.size}`),
         [block, `${n('$--flex')} ${n('--block')}`, n('$--inline-flex')],
-        [disabled, n('--disabled')],
-        [states.text, `${n(`--text-${states.type}`)} ${n('--text')}`, `${n(`--${states.type}`)} ${states.elevation}`],
-        [states.text && disabled, n('--text-disabled')],
+        [!states.text, states.elevation],
+        [!states.iconContainer && !states.text, n(`--${states.type}`)],
+        [states.text, `${n('--text')} ${n(`--text-${states.type}`)}`],
+        [states.iconContainer, n(`--icon-container-${states.type}`)],
         [round, n('--round')],
-        [states.outline, n('--outline')]
+        [states.outline, n('--outline')],
+        [loading || pending, n('--loading')],
+        [disabled, n('--disabled')],
+        [states.text && disabled, n('--text-disabled')]
       )
     "
-    v-ripple="{ disabled: disabled || !ripple }"
+    v-ripple="{ disabled: disabled || !ripple || loading || pending }"
     v-hover:desktop="handleHovering"
     :style="{
       color: states.textColor,
@@ -23,6 +27,8 @@
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
   >
     <var-loading
       :class="n('loading')"
@@ -37,7 +43,10 @@
       <slot />
     </div>
 
-    <var-hover-overlay :hovering="hovering" />
+    <var-hover-overlay
+      :hovering="disabled || loading || pending ? false : hovering"
+      :focusing="disabled || loading || pending ? false : isEffectFocusing"
+    />
   </button>
 </template>
 
@@ -46,16 +55,16 @@ import Ripple from '../ripple'
 import VarLoading from '../loading'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { computed, defineComponent, ref, type Ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { props } from './props'
-import { call, createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
-import { isArray } from '@varlet/shared'
+import { isArray, call, inMobile } from '@varlet/shared'
 
-const { n, classes } = createNamespace('button')
+const { name, n, classes } = createNamespace('button')
 
 export default defineComponent({
-  name: 'VarButton',
+  name,
   components: {
     VarLoading,
     VarHoverOverlay,
@@ -63,10 +72,10 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
-    const pending: Ref<boolean> = ref(false)
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const pending = ref(false)
     const { buttonGroup } = useButtonGroup()
     const { hovering, handleHovering } = useHoverOverlay()
-
     const states = computed(() => {
       if (!buttonGroup) {
         return {
@@ -77,6 +86,7 @@ export default defineComponent({
           text: props.text,
           textColor: props.textColor,
           outline: props.outline,
+          iconContainer: props.iconContainer,
         }
       }
 
@@ -88,12 +98,13 @@ export default defineComponent({
         size: props.size != null ? props.size : size.value,
         color: props.color != null ? props.color : color.value,
         textColor: props.textColor != null ? props.textColor : textColor.value,
-        text: mode.value !== 'normal',
+        text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
+        iconContainer: mode.value === 'icon-container',
       }
     })
 
-    const attemptAutoLoading = (result: any) => {
+    function attemptAutoLoading(result: any) {
       if (props.autoLoading) {
         pending.value = true
 
@@ -109,7 +120,7 @@ export default defineComponent({
       }
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { loading, disabled, onClick } = props
 
       if (!onClick || loading || disabled || pending.value) {
@@ -119,7 +130,7 @@ export default defineComponent({
       attemptAutoLoading(call(onClick, e))
     }
 
-    const handleTouchstart = (e: Event) => {
+    function handleTouchstart(e: Event) {
       const { loading, disabled, onTouchstart } = props
 
       if (!onTouchstart || loading || disabled || pending.value) {
@@ -130,14 +141,15 @@ export default defineComponent({
     }
 
     return {
-      n,
-      classes,
       pending,
       states,
       hovering,
+      n,
+      classes,
       handleHovering,
       handleClick,
       handleTouchstart,
+      isEffectFocusing,
     }
   },
 })

@@ -1,17 +1,18 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { SwipeToOptions } from './swipe'
 import { App, TeleportProps, VNode } from 'vue'
 
-export declare const imagePreviewProps: Record<string, any>
+export declare const imagePreviewProps: Record<keyof ImagePreviewProps, any>
 
 export interface ImagePreviewProps extends BasicAttributes {
   show?: boolean
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   imagePreventDefault?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
@@ -23,7 +24,7 @@ export interface ImagePreviewProps extends BasicAttributes {
 }
 
 export interface ImagePreviewOptions {
-  current?: string
+  initialIndex?: string | number
   images?: string[]
   zoom?: string | number
   lockScroll?: boolean
@@ -39,6 +40,8 @@ export interface ImagePreviewOptions {
 }
 
 export class ImagePreviewComponent extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ImagePreviewProps>
+
   $props: ImagePreviewProps
 
   $slots: {
@@ -46,6 +49,14 @@ export class ImagePreviewComponent extends VarComponent {
     extra(): VNode[]
     'close-icon'(): VNode[]
   }
+
+  prev(options?: SwipeToOptions): void
+
+  next(options?: SwipeToOptions): void
+
+  to(index: number, options?: SwipeToOptions): void
+
+  zoom(ratio: number): void
 }
 
 export interface IImagePreview {
@@ -60,6 +71,8 @@ export interface IImagePreview {
   close(): void
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<ImagePreviewProps>
 }
 
 export declare const ImagePreview: IImagePreview

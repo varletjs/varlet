@@ -27,7 +27,14 @@
 
 ```html
 <template>
-  <var-chip plain type="primary">空心纸片</var-chip>
+  <var-space>
+    <var-chip plain>默认纸片</var-chip>
+    <var-chip plain type="primary">主要纸片</var-chip>
+    <var-chip plain type="success">成功纸片</var-chip>
+    <var-chip plain type="danger">危险纸片</var-chip>
+    <var-chip plain type="warning">警告纸片</var-chip>
+    <var-chip plain type="info">信息纸片</var-chip>
+  </var-space>
 </template>
 ```
 
@@ -68,7 +75,7 @@
 
 ### 可关闭纸片
 
-通过 `closable` 属性将纸片设置为可关闭纸片，使用 `close-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
+通过 `closeable` 属性将纸片设置为可关闭纸片，使用 `icon-name` 属性设置纸片的关闭图标样式（必须在 `closeable` 为 `true` 的条件下才能使用）。
 
 ```html
 <script setup>
@@ -79,9 +86,9 @@ const show1= ref(true)
 </script>
 
 <template>
-  <var-chip closable v-if="show" @close="show = false">可关闭纸片</var-chip>
+  <var-chip closeable v-if="show" @close="show = false">可关闭纸片</var-chip>
   <var-chip
-    closable
+    closeable
     icon-name="delete"
     v-if="show1"
     @close="show1 = false"
@@ -148,7 +155,8 @@ const show1= ref(true)
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
 | `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
-| `close-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `icon-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
+| `namespace` | 自定义可关闭纸片的图标的命名空间 | _string_ | `var-icon` |
 | `color` | 纸片颜色 | _string_ | `_` |
 | `text-color` | 文本颜色，优先级高于 `color` 属性 | _string_ | `-` |
 
@@ -171,27 +179,38 @@ const show1= ref(true)
 
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
-| `--chip-default-color`      | `#e0e0e0` |
-| `--chip-primary-color`      | `var(--color-primary)`|
-| `--chip-danger-color`       |  `var(--color-danger)`|
-| `--chip-success-color`      | `var(--color-success)`|
-| `--chip-warning-color`      |  `var(--color-warning)`|
-| `--chip-info-color`         | `var(--color-info)`|
-| `--chip-border-radius`      | `2px` |
-| `--chip-mini-height`        | `16px` |
-| `--chip-small-height`       | `24px` |
-| `--chip-normal-height`      | `32px` |
-| `--chip-large-height`       | `40px` |
-| `--chip-round-radius`       | `100px` |
-| `--chip-mini-padding`       | `0 4px` |
-| `--chip-small-padding`      | `0 6px` |
-| `--chip-normal-padding`     | `0 10px` |
-| `--chip-large-padding`      | `0 17px` |
-| `--chip-text-large-margin`  | `0 5px` |
+| `--chip-default-text-color` | `#555` |
+| `--chip-primary-text-color` | `var(--color-on-primary-container)` |
+| `--chip-danger-text-color` | `var(--color-on-danger-container)` |
+| `--chip-success-text-color` | `var(--color-on-success-container)` |
+| `--chip-warning-text-color` | `var(--color-on-warning-container)` |
+| `--chip-info-text-color` | `var(--color-on-info-container)` |
+| `--chip-default-color` | `#e0e0e0` |
+| `--chip-primary-color` | `var(--color-primary-container)` |
+| `--chip-danger-color` | `var(--color-danger-container)` |
+| `--chip-success-color` | `var(--color-success-container)` |
+| `--chip-warning-color` | `var(--color-warning-container)` |
+| `--chip-info-color` | `var(--color-info-container)` |
+| `--chip-primary-plain-color` | `var(--color-primary)` |
+| `--chip-danger-plain-color` | `var(--color-danger)` |
+| `--chip-success-plain-color` | `var(--color-success)` |
+| `--chip-warning-plain-color` | `var(--color-warning)` |
+| `--chip-info-plain-color` | `var(--color-info)` |
+| `--chip-border-radius` | `2px` |
+| `--chip-normal-height` | `32px` |
+| `--chip-large-height` | `40px` |
+| `--chip-small-height` | `24px` |
+| `--chip-mini-height` | `16px` |
+| `--chip-round-radius` | `100px` |
+| `--chip-normal-padding` | `0 10px` |
+| `--chip-large-padding` | `0 17px` |
+| `--chip-small-padding` | `0 6px` |
+| `--chip-mini-padding` | `0 4px` |
 | `--chip-text-normal-margin` | `0 5px` |
-| `--chip-text-small-margin`  | `0 3px` |
-| `--chip-text-mini-margin`   | `0 2px` |
-| `--chip-mini-font-size`     | `var(--font-size-xs)` |
-| `--chip-small-font-size`    | `var(--font-size-sm)` |
-| `--chip-normal-font-size`   | `var(--font-size-md)` |
-| `--chip-large-font-size`    | `var(--font-size-lg)` |
+| `--chip-text-large-margin` | `0 5px` |
+| `--chip-text-small-margin` | `0 3px` |
+| `--chip-text-mini-margin` | `0 2px` |
+| `--chip-mini-font-size` | `var(--font-size-xs)` |
+| `--chip-small-font-size` | `var(--font-size-sm)` |
+| `--chip-normal-font-size` | `var(--font-size-md)` |
+| `--chip-large-font-size` | `var(--font-size-lg)` |

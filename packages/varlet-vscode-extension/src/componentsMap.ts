@@ -74,6 +74,11 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     attrs: ['title=""'],
     characterDelta: -2,
   },
+  'collapse-transition': {
+    path: '/collapse-transition',
+    attrs: ['title=""'],
+    characterDelta: -2,
+  },
   row: {
     path: '/row',
   },
@@ -315,5 +320,23 @@ export const componentsMap: Record<string, ComponentDescriptor> = {
     path: '/fab',
     attrs: ['type="primary"'],
     closeSelf: true,
+  },
+  drag: {
+    path: '/drag',
+  },
+  watermark: {
+    path: '/watermark',
+  },
+  'menu-select': {
+    path: '/menu-select',
+  },
+  'menu-option': {
+    path: '/menu-select',
+    attrs: ['label=""'],
+    closeSelf: true,
+    characterDelta: -3,
+  },
+  'floating-panel': {
+    path: '/floating-panel',
   },
 }

@@ -4,9 +4,10 @@ import VarSteps from '../Steps'
 import VarStep from '../../step/Step'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
-const clickStep = jest.fn()
+const clickStep = vi.fn()
 const Wrapper = {
   components: {
     [VarSteps.name]: VarSteps,

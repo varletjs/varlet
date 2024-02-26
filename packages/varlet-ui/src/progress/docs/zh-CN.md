@@ -6,84 +6,49 @@
 
 ### 基本使用
 
-通过 `value` 属性设置当前进度。
-
 ```html
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
-const interval = ref(0)
+let timer
 
 onMounted(() => {
-  interval.value = window.setInterval(() => {
-    if (value.value >= 100) value.value = 0
-    else value.value += 20
+  timer = window.setInterval(() => {
+    if (value.value >= 100) {
+      value.value = 0
+      return
+    }
+
+    value.value += 20
   }, 1000)
 })
 
 onUnmounted(() => {
-  window.clearInterval(interval.value)
+  window.clearInterval(timer)
 })  
 </script>
 
 <template>
   <var-space direction="column" :size="[12, 12]">
-    <var-progress :value="20" :track="false" />
-    <var-progress :value="value" :track="false" />
-    <var-progress :value="100" :track="false" />
+    <var-progress :value="20" />
+    <var-progress :value="value" :track="false" label />
+    <var-progress :value="100" label>success</var-progress>
   </var-space>
 </template>
 ```
 
-### 显示标签
+### 其他样式
 
-通过 `label` 属性将 label 显示，label 默认为进度的百分比，可以使用插槽插入自定义内容。
-
-```html
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const value = ref(0)
-const interval = ref(0)
-
-onMounted(() => {
-  interval.value = window.setInterval(() => {
-    if (value.value >= 100) value.value = 0
-    else value.value += 20
-  }, 1000)
-})
-
-onUnmounted(() => {
-  window.clearInterval(interval.value)
-})  
-</script>
-
-<template>
-  <var-space direction="column" :size="[12, 12]">
-    <var-progress label :value="30" />
-    <var-progress label :value="value" />
-    <var-progress label :value="100">success</var-progress>
-  </var-space>
-</template>
-```
-
-### 自定义样式
-
-通过 `line-width`、`color`、`track-color`、`ripple` 属性设置线宽、进度条颜色、轨道颜色、水波纹加载效果。
+通过 `type`、`line-width`、`color`、`track-color` 属性设置线宽、进度条颜色、轨道颜色。
 
 ```html
 <template>
   <var-space direction="column" :size="[12, 12]">
-    <var-progress :value="30" line-width="8" color="#ff9f00" />
-    <var-progress :value="60" line-width="8" color="#ff9f00" track-color="#f5cb90" />
-    <var-progress
-      :value="80"
-      ripple
-      line-width="8"
-      color="#ff9f00"
-      track-color="#f5cb90"
-    />
+    <var-progress :value="40" color="linear-gradient(131.53deg, #3fecff 0%, #6149f6 100%)"/>
+    <var-progress type="info" :value="40" />
+    <var-progress type="success" :value="60" />
+    <var-progress :value="80" :line-width="8" color="#ff9f00" track-color="#f5cb90" />
   </var-space>
 </template>
 ```
@@ -95,55 +60,80 @@ onUnmounted(() => {
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const value = ref(0)
-const interval = ref(0)
+let timer
 
 onMounted(() => {
-  interval.value = window.setInterval(() => {
-    if (value.value >= 100) value.value = 0
-    else value.value += 20
+  timer = window.setInterval(() => {
+    if (value.value >= 100) {
+      value.value = 0
+      return
+    }
+
+    value.value += 20
   }, 1000)
 })
 
 onUnmounted(() => {
-  window.clearInterval(interval.value)
+  window.clearInterval(timer)
 })  
 </script>
 
 <template>
   <var-space :size="[20, 20]">
-    <var-progress mode="circle" :value="30" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="value" line-width="5" :size="56" />
-    <var-progress mode="circle" label :value="100" line-width="5" :size="56" />
+    <var-progress 
+      mode="circle" 
+      :value="100" 
+      :size="60"  
+      :color="{
+        '0%': '#3fecff',
+        '100%': '#6149f6',
+      }" 
+    />
+    <var-progress mode="circle" :value="75" :size="60" :track="false" />
+    <var-progress mode="circle" label :value="value" :line-width="5" :size="60" />
+    <var-progress mode="circle" type="success" label :value="100" :line-width="5" :size="60">
+      success
+    </var-progress>
   </var-space>
 </template>
 ```
 
-### 隐藏轨道
+### 不间断动画
 
-通过 `track` 属性隐藏 track。
+当加载进度未知时，通过 `indeterminate` 属性开启不间断动画。
 
 ```html
 <template>
-  <var-progress mode="circle" :value="50" :size="56" :track="false" />
+  <var-space direction="column" :size="[20, 20]">
+    <var-progress indeterminate />
+    <var-progress indeterminate type="info" />
+
+    <var-space justify="space-between">
+      <var-progress mode="circle" indeterminate :size="60" />
+      <var-progress mode="circle" type="info" indeterminate :size="60" />
+    </var-space>
+  </var-space>
 </template>
 ```
+
 ## API
 
 ### 属性
 
-| 参数            | 说明                                    | 类型       | 默认值       |
-|---------------|---------------------------------------|----------|-----------|
-| `mode`        | `progress` 的模式，可选值为 `linear, circle`  | _string_ | `linear`  |
-| `value`       | `progress` 的进度                        | _string \| number_   |  `0`  |
-| `line-width`  | `progress` 的线宽                        | _string \| number_   | `4` |
-| `color`       | `progress` 的颜色                        | _string_ | `#005CAF` |
-| `track-color` | `progress` 轨道的颜色                      | _string_ | `#d8d8d8` |
-| `label`       | 是否显示 `label`                          | _boolean_ | `false`   |
-| `label-class` | 自定义 `label` 的类名                       | _string_ | `-`       |
-| `track`       | 是否显示 `progress` 的轨道                   | _boolean_ | `true`    |
-| `ripple`      | 水波纹加载效果（仅支持线性进度条）                     | _boolean_ | `false`   |
-| `size`        | `progress` 的尺寸（仅支持环形进度条）              | _string \| number_   | `40` |
-| `rotate`      | `progress` 的原点（仅支持环形进度条）              | _number_ | `0`       |
+| 参数            | 说明                                                              | 类型       | 默认值       |
+|---------------|-----------------------------------------------------------------|----------|-----------|
+| `mode`        | `progress` 的模式，可选值为 `linear, circle`                            | _string_ | `linear`  |
+| `type`        | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `primary`      |
+| `value`       | `progress` 的进度                                                  | _string \| number_   |  `0`  |
+| `line-width`  | `progress` 的线宽                                                  | _string \| number_   | `4` |
+| `color`       | `progress` 的颜色 (环形进度条设置渐变色请使用object, 渐变同svg的linearGradient元素)                                                  | _string \| object_ | `-` |
+| `track-color` | `progress` 轨道的颜色                                                | _string_ | `-` |
+| `label`       | 是否显示 `label`                                                    | _boolean_ | `false`   |
+| `label-class` | 自定义 `label` 的类名                                                 | _string_ | `-`       |
+| `track`       | 是否显示 `progress` 的轨道                                             | _boolean_ | `true`    |
+| `indeterminate` | 是否显示不间断动画                                                        | _boolean_ | `false` |
+| `size`        | `progress` 的尺寸（仅支持环形进度条）                                        | _string \| number_   | `40` |
+| `rotate`      | `progress` 的原点（仅支持环形进度条）                                        | _number_ | `0`       |
 
 ### 插槽
 
@@ -157,6 +147,13 @@ onUnmounted(() => {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--progress-font-size` | `var(--font-size-sm)` |
-| `--progress-ripple-color` | `#fff` |
 | `--progress-track-color` | `#d8d8d8` |
+| `--progress-label-color` | `#555` |
 | `--progress-background` | `var(--color-primary)` |
+| `--progress-default-color` | `#f5f5f5` |
+| `--progress-primary-color` | `var(--color-primary)`|
+| `--progress-danger-color` |  `var(--color-danger)`|
+| `--progress-success-color` | `var(--color-success)`|
+| `--progress-warning-color` |  `var(--color-warning)`|
+| `--progress-info-color` | `var(--color-info)`|
+| `--progress-linear-border-radius` | `0px`|

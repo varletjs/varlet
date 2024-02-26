@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Steps from './Steps.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as stepsProps } from './props'
 
-Steps.install = function (app: App) {
-  app.component(Steps.name, Steps)
-}
+withInstall(Steps)
+withPropsDefaultsSetter(Steps, stepsProps)
 
-export { props as stepsProps } from './props'
+export { stepsProps }
 
 export const _StepsComponent = Steps
 

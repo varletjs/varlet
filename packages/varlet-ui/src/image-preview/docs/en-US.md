@@ -25,7 +25,7 @@ function preview() {
 #### Call Back
 ```html
 <script setup>
-import { ImagePreview } from '@varlet/ui'
+import { ImagePreview, Snackbar } from '@varlet/ui'
 
 function preview() {
   ImagePreview({
@@ -34,7 +34,7 @@ function preview() {
       'https://varlet.gitee.io/varlet-ui/cat2.jpg'
     ],
     onChange(index) {
-      console.log(index)
+      Snackbar(String(index))
     }
   })
 }
@@ -73,7 +73,7 @@ const images = ref([
 </template>
 ```
 
-### Specify initial position
+### Specify Initial Position
 
 ```html
 <script setup>
@@ -95,14 +95,14 @@ const images = ref([
     Specify initial position
   </var-button>
   <var-image-preview
-    current="https://varlet.gitee.io/varlet-ui/cat2.jpg"
+    :initial-index="1"
     :images="images"
     v-model:show="show" 
   />
 </template>
 ```
 
-### Display the close button
+### Display The Close Button
 
 ```html
 <script setup>
@@ -131,7 +131,7 @@ const images = ref([
 </template>
 ```
 
-### Listen for close event
+### Listen For Close Event
 
 ```html
 <script setup>
@@ -161,7 +161,7 @@ const images = ref([
 </template>
 ```
 
-### Listen for long press event
+### Listen For Long Press Event
 
 The `image-prevent-default` attribute prohibits the default behavior of images, and the `long-press` event can be customized to achieve long press requirements.
 
@@ -189,12 +189,12 @@ const images = ref([
     image-prevent-default
     :images="images"
     v-model:show="show"
-    @long-press="Snackbar('This image is copyrighted!!')"
+    @long-press="Snackbar('Long press event is triggered')"
   />
 </template>
 ```
 
-### Show extra slots
+### Show Extra Slots
 
 ```html
 <script setup>
@@ -248,14 +248,14 @@ const actions = [
 | ------------ | ------------ | ------------------ | ------------ |
 | `show`       | Whether or display | _boolean_ | `false` |
 | `images`     | Need to preview the image URL | _string[]_ | `[]` |
-| `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initial-index`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lock-scroll` | Lock scroll | _boolean_ | `true` |
-| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to']_ | `-` |
-| `image-prevent-default` | whether to disable the default behavior of images |  _boolean_ | `false` |
+| `teleport`   | The location of the pop-up layer to mount | _TeleportProps['to'] \| false_ | `body` |
+| `image-prevent-default` | Whether to disable the default behavior of images |  _boolean_ | `false` |
 
 ### Events
 
@@ -276,8 +276,12 @@ const actions = [
 | `ImagePreview.close` | Close image-preview | _-_ | `-` |
 | `ImagePreview.setDefaultOptions` | Set default option configuration | _options_ | `-` |
 | `ImagePreview.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
+| `prev`   | Previous page                                                        | `options?: SwipeToOptions`             | `-`    |
+| `next`   | Next page                                                            | `options?: SwipeToOptions`             | `-`    |
+| `to`     | To index page                                                        | `index: number, options?: SwipeToOptions` | `-`    |
+| `zoom` | Enlarge or reduce the picture | `ratio: number` | `-` |
 
-### Slot
+### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
@@ -290,13 +294,13 @@ const actions = [
 | Prop   | Description  |  Type  | Default |
 | ------ | ----------- | ------ | -------- |
 | `images`     | The image URL array or the URL of a single image to be previewed | _string[] \| string_ | `[]` |
-| `current`    | URL from which the image preview starts | _string_ | `-` |
+| `initialIndex`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
 | `closeable`  | Whether to show the close button | _boolean_ | `false` |
 | `loop`       | Whether to open loop playback | _boolean_ | `true` |
 | `indicator`  | Whether to show paging | _boolean_ | `true` |
 | `lockScroll` | Lock scroll | _boolean_ | `true` |
-| `imagePreventDefault` | whether to disable the default behavior of images |  _boolean_ | `false` |
+| `imagePreventDefault` | Whether to disable the default behavior of images |  _boolean_ | `false` |
 | `onChange`   | The callback function when switching images, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 | `onOpen`   | Callback when image-preview is turned on |  _() => void_ | `-` |
 | `onOpened` | Callback at the end of the animation that opened image-preview |   _() => void_ | `-` |
@@ -305,7 +309,7 @@ const actions = [
 | `onLongPress` | The callback function when long pressing an image, the callback parameter is the current index | _(index: number) => void_  |  `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | ------ | -------- |

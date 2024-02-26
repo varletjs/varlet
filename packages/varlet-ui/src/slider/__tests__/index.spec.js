@@ -2,7 +2,8 @@ import Slider from '..'
 import VarSlider from '../Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, mockConsole } from '../../utils/jest'
+import { delay, trigger, mockConsole } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
 beforeAll(() => {
@@ -200,14 +201,16 @@ describe('test slider props', () => {
       },
     })
 
-    expect(wrapper.find('.var-slider__horizontal-thumb-label--active').attributes('style')).toContain('height: 40px;')
+    expect(wrapper.find('.var-slider__horizontal-thumb-label--active').attributes('style')).toContain(
+      'height: 20px; width: 20px;'
+    )
     wrapper.unmount()
   })
 
   test('test slider not available', async () => {
-    const changeFn = jest.fn()
-    const startFn = jest.fn()
-    const endFn = jest.fn()
+    const changeFn = vi.fn()
+    const startFn = vi.fn()
+    const endFn = vi.fn()
 
     const template = `
     <var-slider v-model="value" :disabled="disabled" :readonly="readonly" @change="changeFn" @start="startFn" @end="endFn" />
@@ -254,7 +257,7 @@ describe('test slider props', () => {
   })
 
   test('test slider value legal', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     const { mockRestore } = mockConsole('error', fn)
     const template = `<var-slider v-model="value" :range="range" /> `
 
@@ -306,9 +309,9 @@ describe('test slider props', () => {
 })
 
 test('test slider events', async () => {
-  const changeFn = jest.fn()
-  const startFn = jest.fn()
-  const endFn = jest.fn()
+  const changeFn = vi.fn()
+  const startFn = vi.fn()
+  const endFn = vi.fn()
 
   const template = `
     <var-slider v-model="value" :range="range" @change="changeFn" @start="startFn" @end="endFn" />

@@ -49,8 +49,8 @@ const value = ref(false)
 
 <template>
   <var-checkbox
-    unchecked-color="#e99eb4"
-    checked-color="#f44336"
+    unchecked-color="var(--color-warning)" 
+    checked-color="var(--color-danger)"
     v-model="value"
   >
     <template #unchecked-icon>
@@ -94,6 +94,26 @@ const value = ref(false)
 </template>
 ```
 
+### 不确定状态
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(false)
+const indeterminate = ref(true)
+</script>
+
+<template>
+  <var-space :size="[0, 10]">
+    <var-checkbox v-model="value" v-model:indeterminate="indeterminate">
+      不确定状态的值: {{ value }}
+    </var-checkbox>
+    <var-button type="primary" @click="indeterminate = !indeterminate">切换</var-button>
+  </var-space>
+</template>
+```
+
 ### 复选框组
 
 在复选框组中，必须给 `checkbox` 设置 `checked-value` 用来标识，
@@ -111,21 +131,21 @@ const value = ref([])
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
     <var-checkbox :checked-value="1">睡觉</var-checkbox>
   </var-checkbox-group>
-
-  <var-button 
-    class="button" 
-    type="primary" 
-    @click="$refs.group.checkAll()"
-  >
-    全选
-  </var-button>
-  <var-button 
-    class="button" 
-    type="primary" 
-    @click="$refs.group.inverseAll()"
-  >
-    反选
-  </var-button>
+  <var-space :size="[0, 10]">
+    <var-button
+      type="primary"
+      @click="$refs.group.checkAll()"
+    >
+      全选
+    </var-button>
+    <var-button
+      type="primary"
+      @click="$refs.group.inverseAll()"
+    >
+      反选
+    </var-button>
+  </var-space>
+  <div>当前的值: {{ value }}</div>
 </template>
 ```
 
@@ -141,7 +161,7 @@ const value = ref([])
 <template>
   <var-checkbox-group v-model="value" direction="vertical">
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
-    <var-checkbox :checked-value="1">睡觉</var-checkbox>   
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
   </var-checkbox-group>
 </template>
 ```
@@ -197,7 +217,7 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `horizontal` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
 #### Checkbox Props
 
@@ -206,11 +226,12 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any_ | `false` |
 | `checked-value` | 选中状态的值 | _any_ | `true` |
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
-| `checked-color` | 选中状态的颜色 | _any_ | `-` |
-| `unchecked-color` | 未选中状态的颜色 | _any_ | `-` |
+| `checked-color` | 选中状态的颜色 | _string_ | `-` |
+| `unchecked-color` | 未选中状态的颜色 | _string_ | `-` |
 | `icon-size` | 图标尺寸 | _string \| number_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
+| `indeterminate` | 是否为不确定状态（样式优先级最高） | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
@@ -264,6 +285,7 @@ const value = ref([])
 | --- | --- | --- |
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
+| `indeterminate-icon` | 不确定状态图标 | `-` |
 | `default` | 显示的文本 | `-` |
 
 ### 样式变量
@@ -276,4 +298,5 @@ const value = ref([])
 | `--checkbox-disabled-color` | `var(--color-text-disabled)` |
 | `--checkbox-error-color` | `var(--color-danger)` |
 | `--checkbox-action-padding` | `6px` |
+| `--checkbox-text-color` | `#555` |
 | `--checkbox-icon-size` | `24px` |

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
-import { VNode } from 'vue'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VNode, ImgHTMLAttributes } from 'vue'
 
-export declare const imageProps: Record<string, any>
+export declare const imageProps: Record<keyof ImageProps, any>
 
 export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
@@ -10,6 +10,7 @@ export interface ImageProps extends BasicAttributes {
   fit?: ImageFit
   title?: string
   alt?: string
+  referrerpolicy?: ImgHTMLAttributes['referrerpolicy']
   width?: string | number
   height?: string | number
   radius?: string | number
@@ -24,6 +25,8 @@ export interface ImageProps extends BasicAttributes {
 }
 
 export class Image extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ImageProps>
+
   $props: ImageProps
 
   $slots: {

@@ -2,14 +2,17 @@ import Picker from '..'
 import VarPicker from '../Picker'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockTranslate, trigger } from '../../utils/jest'
+import { delay, mockTranslate, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
+
+mockTranslate()
 
 test('test picker component plugin', () => {
   const app = createApp({}).use(Picker.Component)
   expect(app.component(Picker.Component.name)).toBeTruthy()
 })
 
-const columns = [['A', 'B', 'C']]
+const columns = [[{ text: 'A' }, { text: 'B' }, { text: 'C' }]]
 
 const triggerDrag = async (element, x, y) => {
   await trigger(element, 'touchstart', 0, 0)
@@ -22,8 +25,7 @@ const triggerDrag = async (element, x, y) => {
 }
 
 test('test scroll up & onConfirm', async () => {
-  const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -38,19 +40,17 @@ test('test scroll up & onConfirm', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-picker__confirm-button').trigger('click')
-  expect(onConfirm).lastCalledWith(['C'], [2])
+  expect(onConfirm).lastCalledWith(['C'], [2], [{ text: 'C' }])
 
-  mockRestore()
   wrapper.unmount()
 })
 
 test('test click option & onConfirm', async () => {
-  const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
-      columns: [['A', 'B', 'C']],
+      columns,
       onConfirm,
     },
   })
@@ -60,15 +60,13 @@ test('test click option & onConfirm', async () => {
   await delay(300)
 
   await wrapper.find('.var-picker__confirm-button').trigger('click')
-  expect(onConfirm).toHaveBeenLastCalledWith(['B'], [1])
+  expect(onConfirm).toHaveBeenLastCalledWith(['B'], [1], [{ text: 'B' }])
 
-  mockRestore()
   wrapper.unmount()
 })
 
 test('test scroll down & onCancel', async () => {
-  const { mockRestore } = mockTranslate()
-  const onCancel = jest.fn()
+  const onCancel = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -83,38 +81,13 @@ test('test scroll down & onCancel', async () => {
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-picker__cancel-button').trigger('click')
-  expect(onCancel).lastCalledWith(['A'], [0])
+  expect(onCancel).lastCalledWith(['A'], [0], [{ text: 'A' }])
 
-  mockRestore()
-  wrapper.unmount()
-})
-
-test('test confirm & cancel method', async () => {
-  const { mockRestore } = mockTranslate()
-  const onCancel = jest.fn()
-  const onConfirm = jest.fn()
-
-  const wrapper = mount(VarPicker, {
-    props: {
-      columns,
-      onConfirm,
-      onCancel,
-    },
-  })
-
-  wrapper.vm.confirm()
-  wrapper.vm.cancel()
-
-  expect(onCancel).lastCalledWith(['A'], [0])
-  expect(onConfirm).lastCalledWith(['A'], [0])
-
-  mockRestore()
   wrapper.unmount()
 })
 
 test('test cascade mode', async () => {
-  const { mockRestore } = mockTranslate()
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
 
   const wrapper = mount(VarPicker, {
     props: {
@@ -155,78 +128,129 @@ test('test cascade mode', async () => {
 
   await triggerDrag(columns[0].element, 0, -44)
   await confirmButton.trigger('click')
-  expect(onConfirm).lastCalledWith(['无锡市', '新吴区'], [1, 0])
+  expect(onConfirm).lastCalledWith(
+    ['无锡市', '新吴区'],
+    [1, 0],
+    [
+      {
+        text: '无锡市',
+        children: [
+          {
+            text: '新吴区',
+          },
+          {
+            text: '惠山区',
+          },
+        ],
+      },
+      { text: '新吴区' },
+    ]
+  )
 
   // find elements again for rebuild children
   columns = wrapper.findAll('.var-picker__column')
   await triggerDrag(columns[1].element, 0, -44)
   await confirmButton.trigger('click')
-  expect(onConfirm).lastCalledWith(['无锡市', '惠山区'], [1, 1])
+  expect(onConfirm).lastCalledWith(
+    ['无锡市', '惠山区'],
+    [1, 1],
+    [
+      {
+        text: '无锡市',
+        children: [
+          {
+            text: '新吴区',
+          },
+          {
+            text: '惠山区',
+          },
+        ],
+      },
+      { text: '惠山区' },
+    ]
+  )
 
-  mockRestore()
   wrapper.unmount()
 })
 
-test('test cascade initial indexes', async () => {
-  const onConfirm = jest.fn()
-  const onCancel = jest.fn()
-
+test('test custom key', async () => {
+  const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
-      cascade: true,
-      cascadeInitialIndexes: [1, 0],
       columns: [
         {
-          text: '成都市',
-          children: [
+          id: 1,
+          label: '无锡市',
+          next: [
             {
-              text: '温江区',
+              id: 10,
+              label: '新吴区',
             },
             {
-              text: '金牛区',
-            },
-          ],
-        },
-        {
-          text: '无锡市',
-          children: [
-            {
-              text: '新吴区',
-            },
-            {
-              text: '惠山区',
+              id: 11,
+              label: '惠山区',
             },
           ],
         },
       ],
+      textKey: 'label',
+      valueKey: 'id',
+      childrenKey: 'next',
+      cascade: true,
       onConfirm,
-      onCancel,
     },
   })
-
-  wrapper.vm.confirm()
-  wrapper.vm.cancel()
-
-  expect(onCancel).lastCalledWith(['无锡市', '新吴区'], [1, 0])
-  expect(onConfirm).lastCalledWith(['无锡市', '新吴区'], [1, 0])
-
+  let columns = wrapper.findAll('.var-picker__column')
   expect(wrapper.html()).toMatchSnapshot()
+  await triggerDrag(columns[0].element, 0, -44)
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.find('.var-picker__confirm-button').trigger('click')
+  expect(onConfirm).lastCalledWith(
+    [1, 10],
+    [0, 0],
+    [
+      {
+        id: 1,
+        label: '无锡市',
+        next: [
+          {
+            id: 10,
+            label: '新吴区',
+          },
+          {
+            id: 11,
+            label: '惠山区',
+          },
+        ],
+      },
+      {
+        id: 10,
+        label: '新吴区',
+      },
+    ]
+  )
+
   wrapper.unmount()
 })
 
-test('test picker component textFormatter', async () => {
-  const textFormatter = jest.fn().mockReturnValue('text')
-
+test('test column option className', async () => {
   const wrapper = mount(VarPicker, {
     props: {
-      columns,
-      textFormatter,
+      columns: [
+        [
+          {
+            text: 'A',
+            className: 'a',
+            textClassName: 'b',
+          },
+          {
+            text: 'B',
+          },
+        ],
+      ],
     },
   })
 
-  const pickerText = wrapper.find('.var-picker__text')
-
-  expect(pickerText.text()).toBe('text')
-
-  wrapper.unmount()
+  expect(wrapper.html()).toMatchSnapshot()
 })

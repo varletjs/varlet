@@ -18,22 +18,23 @@ const value = ref(true)
 </template>
 ```
 
-### Not Available
+### Disabled
 
 ```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref(true)
-</script>
-
 <template>
   <var-switch v-model="value" disabled />
+</template>
+```
+
+### Readonly
+
+```html
+<template>
   <var-switch v-model="value" readonly />
 </template>
 ```
 
-### Custom color
+### Custom Color
 
 ```html
 <script setup>
@@ -43,8 +44,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" :ripple="false" />
-  <var-switch v-model="value" color="#ff9f00" close-color="#f5cb90" />
+  <var-switch v-model="value" color="var(--color-warning)" close-color="var(--color-info)" />
 </template>
 ```
 
@@ -60,9 +60,9 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" size="15" />
+  <var-switch v-model="value" :size="15" />
   <var-switch v-model="value" />
-  <var-switch v-model="value" size="25" />
+  <var-switch v-model="value" :size="25" />
 </template>
 ```
 
@@ -76,14 +76,13 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch :model-value="true" loading />
-  <var-switch :model-value="true" size="25" loading loading-color="#ff9f00" />
+  <var-switch v-model="true" loading />
 </template>
 ```
 
-### Validate value
+### Validate Value
 
-The values are validated by passing in an array of validators，If the validator returns `true`, the validation passes.
+The values are validated by passing in an array of validators. If the validator returns `true`, the validation passes.
 Other values are converted to text as a user prompt.
 
 ```html
@@ -95,6 +94,32 @@ const value = ref(true)
 
 <template>
   <var-switch v-model="value" :rules="[(v) => v === true || 'Error！']"/>
+</template>
+```
+
+### Asynchronous Change
+
+In some scenarios, you may need to wait for the server to return successfully before making changes.
+`lazy-change` prevents binding value updates on the component itself.
+Register `before-change` events for manual updates.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+
+function handleBeforeChange(value, change) {
+  setTimeout(() => change(value), 500)
+}
+</script>
+
+<template>
+  <var-switch 
+    lazy-change
+    v-model="value"
+    @before-change="handleBeforeChange"
+  />
 </template>
 ```
 
@@ -111,11 +136,13 @@ const value = ref(true)
 | `readonly`       | Whether to readonly switch | _boolean_ | `false` |
 | `loading`        | Whether to show loading icon | _boolean_ | `false` |
 | `ripple`         | Whether to open ripple | _boolean_ | `true` |
-| `color`          | Background color when open | _string_ | `#2979ff` |
-| `close-color`    | Background color when close | _string_ | `#fff` |
-| `loading-color`  | Color of loading icon | _string_ | `#fff` |
-| `size`           | Size of switch | _string \| number_ | - |
-| `rules`          | Validation rules | _array_  | - |
+| `color`          | Background color when open | _string_ | `-` |
+| `close-color`    | Background color when close | _string_ | `-` |
+| `loading-color`  | Color of loading icon | _string_ | `-` |
+| `size`           | Size of switch | _string \| number_ | `-` |
+| `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
+| `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
+| `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
 
 ### Events
 
@@ -123,10 +150,11 @@ const value = ref(true)
 | ----- | -------------- | -------- |
 | `click` | Emitted when component is clicked | `event: Event` |
 | `change` | Emitted when check status changed | `value: any` |
+| `before-change` | Triggered before a change event (`lazy-change` mode only) | `value: any` <br> `change: (value: any) => void` |
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

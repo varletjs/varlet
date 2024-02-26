@@ -1,12 +1,12 @@
 export default {
   basicUsage: 'Basic Usage',
-  range: 'Set the value range',
-  step: 'Set step',
-  toFixed: 'Decimal length',
+  range: 'Set Value Range',
+  step: 'Set Step',
+  toFixed: 'Decimal Length',
   disabled: 'Disabled',
   readonly: 'Readonly',
-  lazyChange: 'Asynchronous change',
-  size: 'Set size',
+  lazyChange: 'Asynchronous Change',
+  size: 'Set Size',
   validate: 'Validate',
-  validateMessage: 'Please select a value greater than 5',
+  validateMessage: 'Please set a value greater than 5',
 }

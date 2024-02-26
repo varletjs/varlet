@@ -1,21 +1,25 @@
 import type { Ref } from 'vue'
 
-export type Pack = {
+export type Message = {
   button: string
+
+  [key: PropertyKey]: any
 }
 
 interface Locale {
-  packs: Record<string, Partial<Pack>>
-  pack: Ref<Partial<Pack>>
-  add(lang: string, pack: Partial<Pack>): void
+  messages: Record<string, Partial<Message>>
+  currentMessage: Ref<Partial<Message>>
+  add(lang: string, message: Partial<Message>): void
   use(lang: string): void
-  merge(lang: string, pack: Partial<Pack>): void
-  useLocale<T = Pack>(): {
-    packs: Record<string, Partial<T>>
-    pack: Ref<Partial<T>>
-    add(lang: string, pack: Partial<T> & { lang?: string }): void
+  merge(lang: string, message: Partial<Message>): void
+  t(id: string): string
+  useLocale<T = Message>(): {
+    messages: Record<string, Partial<T>>
+    currentMessage: Ref<Partial<T>>
+    add(lang: string, message: Partial<T> & { lang?: string }): void
     use(lang: string): void
-    merge(lang: string, pack: Partial<T>): void
+    merge(lang: string, message: Partial<T>): void
+    t(id: string): string
   }
 }
 

@@ -1,5 +1,9 @@
 # 轮播
 
+### 介绍
+
+显示可以在屏幕上滚动和滚动的项目集合。
+
 ### 基本使用
 
 ```html
@@ -124,6 +128,52 @@
 </style>
 ```
 
+### 导航
+
+通过设置 `navigation` 可开启导航按钮, 当 `navigation` 为 `hover` 时，可在指针悬浮时对导航按钮进行显示。
+
+```html
+<template>
+  <var-swipe class="swipe-example" navigation>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+
+  <var-swipe class="swipe-example" navigation="hover">
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat2.jpg">
+    </var-swipe-item>
+    <var-swipe-item>
+      <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
+    </var-swipe-item>
+  </var-swipe>
+</template>
+
+<style>
+.swipe-example {
+  height: 160px;
+  margin-top: 14px;
+}
+
+.swipe-example-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+</style>
+```
+
 ### 监听切换
 
 ```html
@@ -174,9 +224,16 @@ import { Snackbar } from '@varlet/ui'
       <img class="swipe-example-image" src="https://varlet.gitee.io/varlet-ui/cat3.jpg">
     </var-swipe-item>
 
-    <template #indicator="{ index, length }">
+    <template #indicator="{ index, length, to }">
       <div class="swipe-example-indicators">
-        {{ index + 1 }} / {{ length }}
+        <div 
+          class="swipe-example-indicator" 
+          v-for="(l, idx) in length" 
+          :key="l"
+          :class="{'swipe-example-active-indicator': idx === index}" 
+          @click="to(idx)"
+        >
+        </div>
       </div>
     </template>
   </var-swipe>
@@ -196,15 +253,25 @@ import { Snackbar } from '@varlet/ui'
 
 .swipe-example-indicators {
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 4px 0;
-  color: #fff;
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-</style>
+
+.swipe-example-indicator {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  opacity: 0.3;
+  margin: 0 4px;
+  transition: opacity 0.3s;
+}
+
+.swipe-example-active-indicator {
+  opacity: 1;
+}
+</style> 
 ```
 
 ## API
@@ -215,12 +282,13 @@ import { Snackbar } from '@varlet/ui'
 | --- | --- | --- | --- |
 | `loop` | 是否开启循环轮播 | _boolean_ | `true` |
 | `autoplay` | 自动播放间隔时间 (ms) | _string \| number_ | `-` |
-| `duration` | 切换过度时间 | _string \| number_ | `300` |
+| `duration` | 切换过渡时间 (ms) | _string \| number_ | `300` |
 | `initial-index` | 初始化显示的索引 | _string \| number_ | `0` |
 | `indicator` | 是否显示指示器 | _boolean_ | `true` |
 | `indicator-color` | 指示器颜色 | _string_ | `-` |
 | `vertical` | 是否开启垂直轮播 | _boolean_ | `false` |
 | `touchable` | 是否可以拖动 | _boolean_ | `true` |
+| `navigation` | 是否显示导航箭头 | _boolean \| string_ | `false` |
 
 ### 方法
 
@@ -250,7 +318,9 @@ import { Snackbar } from '@varlet/ui'
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
 | `default` | 轮播内容 | `-` |
-| `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 |
+| `prev` | 上一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `hovering: boolean` 指针是否悬浮 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
+| `next` | 下一页按钮 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `hovering: boolean` 指针是否悬浮 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
+| `indicator` | 指示器内容 | `index: number` 轮播索引 <br> `length: number` 轮播总数 <br> `hovering: boolean` 指针是否悬浮 <br> `to`、`prev`、`next`: 类型和同名方法一致 |
 
 #### SwipeItem Slots
 
@@ -267,3 +337,12 @@ import { Snackbar } from '@varlet/ui'
 | `--swipe-indicator-color` | `#fff` |
 | `--swipe-indicators-offset` | `10px` |
 | `--swipe-indicator-offset` | `4px` |
+| `--swipe-navigation-z-index` | `9` |
+| `--swipe-navigation-button-width` | `36px` |
+| `--swipe-navigation-button-height` | `36px` |
+| `--swipe-navigation-button-border-radius` | `50%` |
+| `--swipe-navigation-icon-size` | `20px` |
+| `--swipe-navigation-prev-left` | `8px`  |  
+| `--swipe-navigation-next-right` | `8px` |
+| `--swipe-navigation-prev-top` | `8px` |
+| `--swipe-navigation-next-bottom` | `8px` |

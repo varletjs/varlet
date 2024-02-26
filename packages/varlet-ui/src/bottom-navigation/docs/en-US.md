@@ -1,5 +1,9 @@
 # BottomNavigation
 
+### Intro
+
+Display navigation and key actions at the bottom of the page.
+
 ### Basic Usage
 
 ```html
@@ -19,7 +23,7 @@ const active = ref(0)
 </template>
 ```
 
-### Match by name
+### Match By Name
 
 ```html
 <script setup>
@@ -71,7 +75,7 @@ const active = ref(0)
 </script>
 
 <template>
-  <var-bottom-navigation active-color="#ba68c8" v-model:active="active">
+  <var-bottom-navigation active-color="var(--color-warning)" v-model:active="active">
     <var-bottom-navigation-item label="label" icon="home" />
     <var-bottom-navigation-item label="label" icon="magnify" />
     <var-bottom-navigation-item label="label" icon="heart" />
@@ -198,13 +202,13 @@ const isEven = ref(true)
 | ---- | ---- | ---- |
 | `before-change` | The callback function before switching labels, which returns falsy value to prevent switching, supports the return of promise | `active: number \| string` |
 | `change` | Triggered when switching labels | `active: number \| string` |
-| `fab-click` | Triggered when fab button click | `-` |
+| `fab-click` | Triggered when clicking fab button | `-` |
 
 #### BottomNavigationItem Events
 
 |Event | Description | Arguments |
 | ---- | ---- | ---- |
-| `click` | Trigger on click | `active: number \| string` |
+| `click` | Triggered when clicking | `active: number \| string` |
 
 ### Slots
 
@@ -224,7 +228,7 @@ const isEven = ref(true)
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### BottomNavigation Variables
 
@@ -232,8 +236,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--bottom-navigation-height` | `50px` |
 | `--bottom-navigation-z-index` | `1` |
-| `--bottom-navigation-background-color` | `#fff` |
-| `--bottom-navigation-border-color` | `#bcc2cb` |
+| `--bottom-navigation-background-color` | `var(--color-surface-container-high)` |
+| `--bottom-navigation-border-color` | `var(--color-outline)` |
 | `--bottom-navigation-fab-offset` | `4px` |
 
 #### BottomNavigationItem Variables
@@ -243,7 +247,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--bottom-navigation-item-font-size` | `var(--font-size-sm)` |
 | `--bottom-navigation-item-inactive-color` | `#646566` |
 | `--bottom-navigation-item-active-color` | `var(--color-primary)` |
-| `--bottom-navigation-item-active-background-color` | `#fff` |
+| `--bottom-navigation-item-active-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-item-line-height` | `1` |
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |
+| `--bottom-navigation-fab-border-radius` | `50%` |

@@ -1,11 +1,9 @@
 <script setup>
-import VarPagination from '../Pagination'
-import dark from '../../themes/dark'
-import { watchLang, watchDarkMode } from '@varlet/cli/client'
-import { pack, use } from './locale'
+import { watchLang, onThemeChange } from '@varlet/cli/client'
+import { t, use } from './locale'
 
 watchLang(use, 'pc')
-watchDarkMode(dark)
+onThemeChange()
 </script>
 
 <template>
@@ -14,13 +12,13 @@ watchDarkMode(dark)
     :size="10"
     :total="120"
     :simple="false"
-    :show-total="(total) => `${pack.pcTotal} ${total} ${pack.item}`"
+    :show-total="(total) => `${t('pcTotal')} ${total} ${t('item')}`"
   />
   <var-pagination
     :current="3"
     :size="10"
     :total="120"
     :simple="false"
-    :show-total="(total, range) => `${pack.current} ${range[0]}-${range[1]} / ${pack.pcTotal} ${total} ${pack.item}`"
+    :show-total="(total, range) => `${t('current')} ${range[0]}-${range[1]} / ${t('pcTotal')} ${total} ${t('item')}`"
   />
 </template>

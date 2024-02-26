@@ -89,44 +89,6 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 </template>
 ```
 
-### 自定义
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const date = ref('2021-05')
-
-const allowedDates = val => parseInt(val.split('-')[1], 10) % 2 === 1
-
-function change(date) {
-  console.log(date)
-}
-</script>
-
-<template>
-  <var-date-picker
-    elevation
-    type="month"
-    v-model="date"
-    min="2016-07"
-    max="2022-01"
-    header-color="purple"
-    color="#7bb872"
-    first-day-of-week="1"
-    :allowed-dates="allowedDates"
-    @change="change"
-  >
-    <template #year="{ year }">
-      <span>{{ year }}年</span>
-    </template>
-    <template #month="{ year, month }">
-      <span>{{ year }}年{{ month }}月</span>
-    </template>
-  </var-date-picker>
-</template>
-```
-
 ## API
 
 ### 属性
@@ -134,10 +96,11 @@ function change(date) {
 | 参数                  | 说明                                           | 类型 | 默认值 |
 |---------------------|----------------------------------------------| -------- | ---------- |
 | `v-model`           | 被选择的日期（ISO 8601 格式，`YYYY-MM-DD` 或 `YYYY-MM`） | _string[] \| string_ | `undefined` |
-| `type`              | 选择器类型，可选值为 `date month`                      | _string_ | `date` |
+| `type`              | 选择器类型，可选值为 `date month year`                      | _string_ | `date` |
 | `allowed-dates`     | 限制可以选择的日期                                    | _function_ | `-` |
-| `color`             | 选择器的颜色                                       | _string_ | `#2979ff` |
-| `header-color`      | 标题背景色。如果未指定，将使用由 color 属性或默认颜色。              | _string_ | `#2979ff` |
+| `color`             | 选择器的颜色                                       | _string_ | `-` |
+| `title-color`       | 标题背景色。如果未指定，将使用 `color` 属性或默认颜色。              | _string_ | `-` |
+| `hint`              | 选择器提示语                                  | _string_ | `选择日期` |
 | `elevation`         | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级         | _string \| number \| boolean_|   `false`    |
 | `button-elevation`  | Button 的海拔高度                                 | _string \| number \| boolean_|   `true`    |
 | `first-day-of-week` | 设置一周的第一天，从周日的 0 开始。                          | _string \| number_ | `0` |
@@ -153,19 +116,20 @@ function change(date) {
 
 | 事件名       | 说明      | 回调参数                              |
 |-----------|---------|-----------------------------------|
-| `preview` | 日期切换时触发 | `year: number` <br>`month: number` |
+| `preview` | 日期切换时触发 | `year: number` <br>`month: number` <br>`day?: number` |
 | `change`  | 日期改变时触发 | `value: string \| string[]` |
 
 ### 插槽
 `weekIndex` 表示一周的第 `n` 天，从周末的 `0` 开始
 
-| 名称 | 说明 | 参数 |
-| ----- | -------------- | -------- |
-| `year` | 自定义标题中的年 | `year: YYYY` |
-| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM` |
+| 名称 | 说明 | 参数                                                                   |
+| ----- | -------------- |----------------------------------------------------------------------|
+| `year` | 自定义标题中的年 | `year: YYYY`                                                         |
+| `month` | 自定义标题中的月 | `year: YYYY` <br> `month: MM`                                        |
 | `date` | 自定义标题中的日期 | `year: YYYY` <br> `month: MM` <br> `date: DD` <br> `week: weekIndex` |
-| `range` | 自定义标题中的范围 | `choose: [startData, endDate]` |
-| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']` |
+| `range` | 自定义标题中的范围 | `choose: [startData, endDate]`                                       |
+| `multiple` | 自定义标题中的多选 | `choose: ['YYYY-MM-DD' \| 'YYYY-MM']`                                |
+| `actions` | 自定义操作面板 | `-`                                                                  |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
@@ -175,8 +139,10 @@ function change(date) {
 | `--date-picker-border-radius` | `4px`                  |
 | `--date-picker-font-size` | `var(--font-size-md)`  |
 | `--date-picker-min-width` | `290px`                |
-| `--date-picker-height` | `385px`                |
 | `--date-picker-main-color` | `rgba(0, 0, 0, .87)`   |
+| `--date-picker-title-hint-color` | `#fff` |
+| `--date-picker-title-hint-font-size` | `var(--font-size-md)` |
+| `--date-picker-title-height` | `105px` |
 | `--date-picker-title-padding` | `16px`                 |
 | `--date-picker-title-background` | `var(--color-primary)` |
 | `--date-picker-title-color` | `#fff`                 |
@@ -187,18 +153,21 @@ function change(date) {
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
+| `--date-picker-header-arrow-filter` | `opacity(0.54)` |
 | `--date-picker-body-background-color` | `#fff`                 |
-| `--picker-header-padding` | `4px 16px`             |
+| `--date-picker-body-height` | `280px`                |
+| `--date-picker-body-padding` | '0' |
+| `--date-picker-header-padding` | `4px 16px`             |
+| `--date-picker-actions-padding` | `0 8px 12px 8px`             |
+| `--date-picker-header-color` | `#555`             |
 | `--month-picker-padding` | `0 12px`               |
 | `--month-picker-item-width` | `33%`                  |
 | `--month-picker-item-height` | `56px`                 |
 | `--month-picker-item-button-max-width` | `140px`                |
-| `--year-picker-font-weight` | `400`                  |
-| `--year-picker-item-padding` | `8px 0`                |
-| `--year-picker-item-active-font-size` | `26px`                 |
-| `--year-picker-item-active-font-weight` | `500`                  |
-| `--year-picker-item-active-font-padding` | `10px 0`               |
-| `--year-picker-item-active-color` | `var(--color-primary)` |
+| `--year-picker-padding` | `0 12px`               |
+| `--year-picker-item-width` | `33%`                  |
+| `--year-picker-item-height` | `56px`                 |
+| `--year-picker-item-button-max-width` | `140px`                |
 | `--day-picker-content-item-width` | `14.28%`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |

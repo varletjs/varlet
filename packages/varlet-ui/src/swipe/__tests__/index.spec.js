@@ -4,7 +4,8 @@ import VarSwipe from '../Swipe'
 import VarSwipeItem from '../../swipe-item/SwipeItem'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockOffset, triggerDrag } from '../../utils/jest'
+import { delay, mockOffset, triggerDrag } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 mockOffset()
 
@@ -30,7 +31,7 @@ test('test swipe & swipe-item use', () => {
 })
 
 test('test swipe next & prev & to method', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
   const wrapper = mount(Wrapper, {
     props: {
       onChange,
@@ -77,7 +78,7 @@ test('test swipe next & prev & to method', async () => {
 
 describe('test swipe component props', () => {
   test('test swipe loop', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         loop: false,
@@ -99,7 +100,7 @@ describe('test swipe component props', () => {
   })
 
   test('test swipe autoplay', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         autoplay: 100,
@@ -181,7 +182,7 @@ describe('test swipe component props', () => {
   })
 
   test('test touch touchable', async () => {
-    const onChange = jest.fn()
+    const onChange = vi.fn()
     const wrapper = mount(Wrapper, {
       props: {
         touchable: false,
@@ -193,6 +194,32 @@ describe('test swipe component props', () => {
     const track = wrapper.find('.var-swipe__track')
     await triggerDrag(track, -100, 0)
     expect(onChange).toHaveBeenCalledTimes(0)
+    wrapper.unmount()
+  })
+
+  test('test swipe navigation', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        vertical: true,
+        navigation: true,
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setProps({ vertical: false })
+    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-swipe__navigation').exists()).toBe(true)
+    await wrapper.setProps({ navigation: false })
+    expect(wrapper.find('.var-swipe__navigation').exists()).toBe(false)
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.setProps({ navigation: 'hover' })
+
+    await wrapper.trigger('mouseenter')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.trigger('mouseleave')
+    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 })

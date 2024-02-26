@@ -1,7 +1,8 @@
 import ImagePreview from '../index'
 import VarImagePreview from '../ImagePreview.vue'
 import { createApp } from 'vue'
-import { delay, trigger, triggerDrag } from '../../utils/jest'
+import { delay, trigger, triggerDrag } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test image preview plugin', () => {
   const app = createApp({}).use(ImagePreview)
@@ -9,10 +10,10 @@ test('test image preview plugin', () => {
 })
 
 test('test image preview functional show & close', async () => {
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   ImagePreview({
     onOpen,
@@ -37,7 +38,7 @@ test('test image preview functional show & close', async () => {
 })
 
 test('test image preview onChange callback', async () => {
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   ImagePreview({
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
@@ -96,7 +97,7 @@ test('test image preview imagePreventDefault', async () => {
 })
 
 test('test image preview onLongPress callback', async () => {
-  const onLongPress = jest.fn()
+  const onLongPress = vi.fn()
 
   ImagePreview({
     images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
@@ -109,6 +110,18 @@ test('test image preview onLongPress callback', async () => {
   await trigger(document.querySelector('.var-image-preview__zoom-container'), 'touchend')
   expect(onLongPress).toBeCalledTimes(1)
   expect(onLongPress).toHaveBeenCalledWith(0)
+
+  ImagePreview.close()
+})
+
+test('test image preview initialIndex', async () => {
+  ImagePreview({
+    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+    initialIndex: 1,
+  })
+
+  await delay(200)
+  expect(document.querySelector('.var-image-preview__indicators').textContent).toBe('2 / 2')
 
   ImagePreview.close()
 })

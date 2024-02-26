@@ -25,40 +25,42 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 import { props } from './props'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
+import { call } from '@varlet/shared'
 
-const { n, classes } = createNamespace('link')
+const { name, n, classes } = createNamespace('link')
 
 export default defineComponent({
-  name: 'VarLink',
+  name,
   props,
   setup(props) {
     const tag = computed<'a' | 'router-link' | 'span'>(() => {
-      if (props.disabled) {
+      const { disabled, href, to } = props
+
+      if (disabled) {
         return 'span'
       }
 
-      if (props.href) {
+      if (href) {
         return 'a'
       }
 
-      if (props.to) {
+      if (to) {
         return 'router-link'
       }
 
       return 'a'
     })
-
     const linkProps = computed(() => {
-      const { disabled, href, target, to, replace } = props
+      const { disabled, href, target, to, replace, rel } = props
 
       if (disabled) {
         return {}
       }
 
       if (href) {
-        return { href, target }
+        return { href, target, rel }
       }
 
       if (to) {
@@ -68,17 +70,22 @@ export default defineComponent({
       return {}
     })
 
-    const handleClick = (e: Event) => {
-      const { disabled, onClick } = props
-
-      if (disabled) {
+    function handleClick(e: Event) {
+      if (props.disabled) {
         return
       }
 
-      call(onClick, e)
+      call(props.onClick, e)
     }
 
-    return { n, classes, tag, linkProps, handleClick, toSizeUnit }
+    return {
+      tag,
+      linkProps,
+      n,
+      classes,
+      handleClick,
+      toSizeUnit,
+    }
   },
 })
 </script>

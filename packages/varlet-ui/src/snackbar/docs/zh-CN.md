@@ -36,7 +36,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" :vertical="true">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" size="small" @click="show = !show">关闭</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = !show">关闭</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">垂直排列</var-button>
@@ -58,7 +58,7 @@ const show = ref(false)
   <var-snackbar v-model:show="show" position="bottom">
     这是一个消息条！！
     <template #action>
-      <var-button type="primary" size="small" @click="show = false">关闭</var-button>
+      <var-button type="primary" :elevation="false" size="small" @click="show = false">关闭</var-button>
     </template>
   </var-snackbar>
   <var-button type="primary" block @click="show = !show">底部显示</var-button>
@@ -312,11 +312,11 @@ function openMultiple() {
 | `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |
 | `loading-type`   | Loading类型(见 `Loading` 组件)                               | _string_ | `circle`       |
 | `loading-size`   | Loading大小(见 `Loading` 组件)                               | _string_ | `normal`       |
-| `loading-color`  | loading颜色(见`_loading`组件)                                |_string_|`current_color`|
+| `loading-color`  | loading颜色(见 `loading`组件)                                |_string_|`currentColor`|
 | `loading-radius` | Loading半径大小(见 `Loading` 组件)                             | _string \| number_  | `-` |
 | `lock-scroll`    | 是否禁止滚动穿透                                                | _boolean_  | `false` |
 | `forbid-click`   | 是否禁止穿透点击                                                | _boolean_  | `false` |
-| `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to']_  | `body` |
+| `teleport`       | 弹出层挂载的位置                                                | _TeleportProps['to'] \| false_  | `body` |
 
 ### 事件
 
@@ -395,5 +395,6 @@ function openMultiple() {
 | `--snackbar-error-background` | `var(--color-danger)` |
 | `--snackbar-warning-background` | `var(--color-warning)` |
 | `--snackbar-content-padding` | `14px 16px` |
-| `--snackbar-action-margin` | `0 8px 0` |
+| `--snackbar-action-margin` | `0 8px` |
+| `--snackbar-icon-margin` | `0 8px` |
 | `--snackbar-vertical-action-margin` | `0 8px 8px 0` |

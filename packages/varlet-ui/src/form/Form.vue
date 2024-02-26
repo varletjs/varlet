@@ -1,29 +1,36 @@
 <template>
-  <div :class="n()">
+  <form :class="n()" @submit="handleSubmit" @reset="handleReset">
     <slot />
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, type ComputedRef } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useFormItems, type FormProvider } from './provide'
 import { createNamespace } from '../utils/components'
-import { find } from '@varlet/shared'
+import { find, preventDefault, call } from '@varlet/shared'
 import { getParentScroller, getTop, scrollTo, toPxNum } from '../utils/elements'
 import { linear } from '../utils/shared'
 
-const { n } = createNamespace('form')
+const { name, n } = createNamespace('form')
 
 export default defineComponent({
-  name: 'VarForm',
+  name,
   props,
   setup(props) {
-    const disabled: ComputedRef<boolean> = computed(() => props.disabled)
-    const readonly: ComputedRef<boolean> = computed(() => props.readonly)
+    const disabled = computed(() => props.disabled)
+    const readonly = computed(() => props.readonly)
     const { formItems, bindFormItems } = useFormItems()
 
-    const scroll = (formItemElement: HTMLElement) => {
+    const formProvider: FormProvider = {
+      disabled,
+      readonly,
+    }
+
+    bindFormItems(formProvider)
+
+    function scroll(formItemElement: HTMLElement) {
       // wait form-details animation end
       setTimeout(() => {
         const scroller = getParentScroller(formItemElement)
@@ -37,8 +44,20 @@ export default defineComponent({
       }, 300)
     }
 
+    async function handleSubmit(event: Event) {
+      preventDefault(event)
+      const valid = await validate()
+      call(props.onSubmit, valid)
+    }
+
+    function handleReset(event: Event) {
+      preventDefault(event)
+      reset()
+      call(props.onReset)
+    }
+
     // expose
-    const validate = async () => {
+    async function validate() {
       const res = await Promise.all(formItems.map(({ validate }) => validate()))
 
       if (props.scrollToError) {
@@ -57,20 +76,19 @@ export default defineComponent({
     }
 
     // expose
-    const reset = () => formItems.forEach(({ reset }) => reset())
-
-    // expose
-    const resetValidation = () => formItems.forEach(({ resetValidation }) => resetValidation())
-
-    const formProvider: FormProvider = {
-      disabled,
-      readonly,
+    function reset() {
+      return formItems.forEach(({ reset }) => reset())
     }
 
-    bindFormItems(formProvider)
+    // expose
+    function resetValidation() {
+      return formItems.forEach(({ resetValidation }) => resetValidation())
+    }
 
     return {
       n,
+      handleSubmit,
+      handleReset,
       validate,
       reset,
       resetValidation,

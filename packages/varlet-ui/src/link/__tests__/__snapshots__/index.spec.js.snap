@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test link component props > test link rel 1`] = `"<a href="https://varlet.gitee.io/varlet-ui/" target="_blank" rel="noopener noreferrer" class="var-link var--box var--inline-flex var-link--default var-link--underline-always"></a>"`;

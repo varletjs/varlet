@@ -16,13 +16,16 @@
         color,
         cursor,
         overflow: isFloating ? 'visible' : 'hidden',
+        '--field-decorator-middle-offset-left': middleOffsetLeft,
+        '--field-decorator-middle-offset-width': middleOffsetWidth,
+        '--field-decorator-middle-offset-height': middleOffsetHeight,
       }"
     >
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
         <slot name="prepend-icon" />
       </div>
 
-      <div :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
+      <div ref="middleEl" :class="classes(n('middle'), [!hint, n('--middle-non-hint')])">
         <slot />
       </div>
 
@@ -33,8 +36,10 @@
             n('placeholder'),
             n('$--ellipsis'),
             [isFocus, n('--focus')],
+            [hintCenter, n('--hint-center')],
             [formDisabled || disabled, n('--disabled')],
             [errorMessage, n('--error')],
+            [transitionDisabled, n('--transition-disabled')],
             computePlaceholderState()
           )
         "
@@ -47,13 +52,9 @@
       </label>
 
       <div :class="classes(n('icon'), [!hint, n('--icon-non-hint')])">
-        <var-icon
-          :class="n('clear-icon')"
-          var-field-decorator-cover
-          name="close-circle"
-          v-if="clearable && !isEmpty(value)"
-          @click="handleClear"
-        />
+        <slot name="clear-icon" v-if="clearable && !isEmpty(value)">
+          <var-icon :class="n('clear-icon')" var-field-decorator-cover name="close-circle" @click="handleClear" />
+        </slot>
         <slot name="append-icon" />
       </div>
     </div>
@@ -110,30 +111,45 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, type Ref, computed, type ComputedRef, onUpdated } from 'vue'
+import { defineComponent, ref, computed, nextTick, onUpdated } from 'vue'
 import { props } from './props'
-import { isEmpty } from '@varlet/shared'
-import { createNamespace, call } from '../utils/components'
+import { isEmpty, getStyle, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
-import { getStyle } from '../utils/elements'
 
-const { n, classes } = createNamespace('field-decorator')
+const { name, n, classes } = createNamespace('field-decorator')
 
 export default defineComponent({
-  name: 'VarFieldDecorator',
-  components: {
-    VarIcon,
-  },
+  name,
+  components: { VarIcon },
   props,
-  setup(props, { slots }) {
-    const placeholderTextEl: Ref<HTMLElement | null> = ref(null)
-    const legendWidth: Ref<string> = ref('')
-    const color: ComputedRef<string | undefined> = computed(() =>
+  setup(props) {
+    const placeholderTextEl = ref<HTMLElement | null>(null)
+    const middleEl = ref<HTMLElement | null>(null)
+    const legendWidth = ref('')
+    const middleOffsetLeft = ref('0px')
+    const middleOffsetWidth = ref('0px')
+    const middleOffsetHeight = ref('0px')
+    const transitionDisabled = ref(true)
+    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus))
+
+    const color = computed<string | undefined>(() =>
       !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
     )
-    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus || slots['prepend-icon']))
 
-    const computePlaceholderState = () => {
+    onWindowResize(resize)
+
+    onSmartMounted(() => {
+      resize()
+
+      nextTick().then(() => {
+        transitionDisabled.value = false
+      })
+    })
+
+    onUpdated(resize)
+
+    function computePlaceholderState() {
       const { hint, value, composing } = props
 
       if (!hint && (!isEmpty(value) || composing)) {
@@ -145,35 +161,37 @@ export default defineComponent({
       }
     }
 
-    const resize = () => {
-      const { size, hint, variant, placeholder } = props
-      if (!placeholder || !hint || variant !== 'outlined') {
-        legendWidth.value = ''
-        return
-      }
-
-      const placeholderTextStyle = getStyle(placeholderTextEl.value!)
-      const placeholderSpace = `var(--field-decorator-outlined-${size}-placeholder-space)`
-      legendWidth.value = `calc(${placeholderTextStyle!.width} * 0.75 + ${placeholderSpace} * 2)`
-    }
-
-    const handleClear = (e: Event) => {
+    function handleClear(e: Event) {
       call(props.onClear, e)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    onWindowResize(resize)
-    onSmartMounted(resize)
-    onUpdated(resize)
+    function resize() {
+      middleOffsetLeft.value = `${middleEl.value!.offsetLeft}px`
+      middleOffsetWidth.value = `${middleEl.value!.offsetWidth}px`
+      middleOffsetHeight.value = `${middleEl.value!.offsetHeight}px`
+
+      if (props.variant === 'outlined' && placeholderTextEl.value) {
+        const placeholderTextStyle = getStyle(placeholderTextEl.value)
+        const placeholderSpace = `var(--field-decorator-outlined-${props.size}-placeholder-space)`
+        legendWidth.value = `calc(${placeholderTextStyle.width} * 0.75 + ${placeholderSpace} * 2)`
+      }
+    }
 
     return {
       placeholderTextEl,
+      middleEl,
+      middleOffsetLeft,
+      middleOffsetWidth,
+      middleOffsetHeight,
       color,
       legendWidth,
       isFloating,
+      transitionDisabled,
+      resize,
       computePlaceholderState,
       n,
       classes,

@@ -1,0 +1,116 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test card component slots > test card description slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container">
+      <!--v-if-->
+      <!--v-if--><span>description</span>
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card extra slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div class="var-card__footer"><span>extra</span></div>
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card floating-content slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <div class="var-card__floating-content" style="height: 0px; opacity: 0; transition: opacity 500ms;"><span>floating-content</span></div>
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card floating-content slot 2`] = `
+"<div class="var-card var-card--layout-row var-elevation--1">
+  <div class="var-card__floater" style="width: auto; height: auto; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card image slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;"><img src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="cat">
+    <div class="var-card__container">
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card subtitle slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container">
+      <!--v-if--><span>subtitle</span>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
+exports[`test card component slots > test card title slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
+    <!--v-if-->
+    <div class="var-card__container"><span>title</span>
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+  </div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;

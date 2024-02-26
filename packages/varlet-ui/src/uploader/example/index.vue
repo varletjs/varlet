@@ -1,14 +1,8 @@
 <script setup>
-import VarUploader from '..'
-import VarButton from '../../button'
-import VarSpace from '../../space'
-import VarIcon from '../../icon'
-import Dialog from '../../dialog'
-import Snackbar from '../../snackbar'
-import dark from '../../themes/dark'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
+import { Snackbar, Dialog } from '@varlet/ui'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, onUnmounted } from 'vue'
-import { use, pack } from './locale'
+import { use, t } from './locale'
 
 const values = reactive({
   files: [],
@@ -77,6 +71,16 @@ const values = reactive({
   ],
   files13: [],
   files14: [],
+  files15: [],
+})
+
+let timer
+
+watchLang(use)
+onThemeChange()
+
+onUnmounted(() => {
+  window.clearInterval(timer)
 })
 
 function handleAfterRead(file) {
@@ -90,8 +94,6 @@ function handleAfterRead2(file) {
     file.state = 'success'
   }, 1000)
 }
-
-let timer
 
 function handleAfterRead3(file) {
   file.state = 'loading'
@@ -108,22 +110,22 @@ function handleAfterRead3(file) {
 }
 
 function handleOversize() {
-  Snackbar.warning(pack.value.fileSizeExceedsLimit)
+  Snackbar.warning(t('fileSizeExceedsLimit'))
 }
 
 function handleBeforeRead(file) {
   if (file.file.size <= 1 * 1024 * 1024) {
-    Snackbar.success(pack.value.fileLessThen)
+    Snackbar.success(t('fileLessThen'))
     return true
   }
-  Snackbar.warning(pack.value.fileLargeThen)
+  Snackbar.warning(t('fileLargeThen'))
   return false
 }
 
 async function handleBeforeRemove() {
   const action = await Dialog({
-    title: pack.value.removeTitle,
-    message: pack.value.removeMessage,
+    title: t('removeTitle'),
+    message: t('removeMessage'),
   })
 
   return action === 'confirm'
@@ -133,57 +135,72 @@ function handleBeforeFilter(files) {
   return files.filter((file) => file.name.endsWith('png'))
 }
 
-watchLang(use)
-watchDarkMode(dark)
+function handlePreview(file) {
+  Dialog({
+    title: t('customPreview'),
+    message: file.url.slice(0, 100),
+  })
+}
 
-onUnmounted(() => {
-  window.clearInterval(timer)
-})
+function handleActionClick(chooseFile) {
+  Snackbar.loading('delay 1s')
+
+  setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-uploader v-model="values.files" @after-read="handleAfterRead" />
 
-  <app-type>{{ pack.preview }}</app-type>
+  <app-type>{{ t('preview') }}</app-type>
   <var-uploader v-model="values.files2" />
 
-  <app-type>{{ pack.state }}</app-type>
+  <app-type>{{ t('customPreview') }}</app-type>
+  <var-uploader v-model="values.files11" prevent-default-preview @preview="handlePreview" />
+
+  <app-type>{{ t('state') }}</app-type>
   <var-uploader v-model="values.files3" @after-read="handleAfterRead2" />
 
-  <app-type>{{ pack.useProgress }}</app-type>
+  <app-type>{{ t('useProgress') }}</app-type>
   <var-uploader v-model="values.files13" @after-read="handleAfterRead3" />
 
-  <app-type>{{ pack.maxlength }}</app-type>
+  <app-type>{{ t('maxlength') }}</app-type>
   <var-uploader v-model="values.files4" :maxlength="1" />
 
-  <app-type>{{ pack.maxsize }}</app-type>
+  <app-type>{{ t('maxsize') }}</app-type>
   <var-uploader v-model="values.files5" :maxsize="1024" @oversize="handleOversize" />
 
-  <app-type>{{ pack.beforeFilter }}</app-type>
+  <app-type>{{ t('beforeFilter') }}</app-type>
   <var-uploader v-model="values.files14" multiple @before-filter="handleBeforeFilter" />
 
-  <app-type>{{ pack.beforeRead }}</app-type>
+  <app-type>{{ t('beforeRead') }}</app-type>
   <var-uploader v-model="values.files7" @before-read="handleBeforeRead" />
 
-  <app-type>{{ pack.disabled }}</app-type>
+  <app-type>{{ t('clickAction') }}</app-type>
+  <var-uploader v-model="values.files15" @click-action="handleActionClick" />
+
+  <app-type>{{ t('disabled') }}</app-type>
   <var-uploader disabled v-model="values.files8" />
 
-  <app-type>{{ pack.readonly }}</app-type>
+  <app-type>{{ t('readonly') }}</app-type>
   <var-uploader readonly v-model="values.files9" />
 
-  <app-type>{{ pack.beforeRemove }}</app-type>
+  <app-type>{{ t('beforeRemove') }}</app-type>
   <var-uploader v-model="values.files11" @before-remove="handleBeforeRemove" />
 
-  <app-type>{{ pack.style }}</app-type>
+  <app-type>{{ t('style') }}</app-type>
   <var-uploader v-model="values.files6">
-    <var-button type="primary">{{ pack.upload }}</var-button>
+    <var-button type="primary">{{ t('upload') }}</var-button>
   </var-uploader>
 
-  <app-type>{{ pack.validate }}</app-type>
-  <var-uploader :rules="[(v, u) => u.getError().length === 0 || pack.validateMessage]" v-model="values.files10" />
+  <app-type>{{ t('validate') }}</app-type>
+  <var-uploader :rules="[(v, u) => u.getError().length === 0 || t('validateMessage')]" v-model="values.files10" />
 
-  <app-type>{{ pack.customRender }}</app-type>
+  <app-type>{{ t('customRender') }}</app-type>
   <var-space>
     <img class="custom-uploader-file" v-for="f in values.files12" :key="f.id" :src="f.cover" />
     <var-uploader hide-list v-model="values.files12">

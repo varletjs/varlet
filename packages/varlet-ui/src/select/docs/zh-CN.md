@@ -322,7 +322,7 @@ const value12 = ref()
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any \| any[]_ | `-` |
-| `size` | 选择框尺寸，可选值 `small`   | _string_ | `-` |
+| `size` | 选择框尺寸，可选值 `normal` `small`   | _string_ | `normal` |
 | `variant` | 选择框风格, 可选值为 `standard` `outlined` | _string_ | `standard` |
 | `placeholder` | 占位符 | _string_ | `-` |
 | `multiple` | 是否开启多选 | _boolean_ | `false` |
@@ -345,6 +345,7 @@ const value12 = ref()
 | --- | --- | --- | --- |
 | `label` | 选项显示的文本 | _any_ | `-` |
 | `value` | 选项绑定的值 | _any_ | `-` |
+| `disabled` | 是否禁用 | _boolean_ | `false` |
 
 ### 方法
 
@@ -379,8 +380,9 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | 选择区域的内容 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
+| `clear-icon` | 清除图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
-| `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态 |
+| `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
 
 #### Option Slots
 
@@ -403,39 +405,40 @@ const value12 = ref()
 | `--field-decorator-icon-size` | `20px` |
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-padding-top` | `22px` |
-| `--field-decorator-standard-normal-padding-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
-| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
-| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
-| `--field-decorator-standard-small-padding-top` | `18px` |
-| `--field-decorator-standard-small-padding-bottom` | `2px` |
-| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
-| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
-| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
-| `--field-decorator-outlined-normal-padding-top` | `16px` |
-| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
-| `--field-decorator-outlined-small-padding-top` | `8px` |
-| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
-| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
-| `--select-scroller-background` | `#fff` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
+| `--select-scroller-background` | `var(--color-surface-container-high)` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
-| `--select-outlined-scroller-margin` | `0` |
+| `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
 #### Option Variables
 
@@ -443,4 +446,6 @@ const value12 = ref()
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
+| `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--option-text-color` | `#555` |

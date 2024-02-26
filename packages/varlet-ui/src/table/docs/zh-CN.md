@@ -125,13 +125,14 @@ function get(current, size) {
 | --- | --- |
 | `--table-background` | `#fff` |
 | `--table-border-radius` | `2px` |
-| `--table-thead-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-thead-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` |
 | `--table-thead-th-font-size` | `14px` |
-| `--table-thead-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-thead-tr-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-tbody-tr-hover-background` | `#eee` |
-| `--table-tbody-tr-border-bottom` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-tbody-tr-border-bottom` | `thin solid var(--color-outline)` |
+| `--table-tbody-td-text-color` | `#555` | 
 | `--table-tbody-td-font-size` | `16px` |
 | `--table-row-height` | `46px` |
 | `--table-row-padding` | `0 16px` |
-| `--table-footer-border-top` | `thin solid rgba(0, 0, 0, 0.12)` |
+| `--table-footer-border-top` | `thin solid var(--color-outline)` |

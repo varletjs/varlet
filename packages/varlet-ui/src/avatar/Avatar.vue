@@ -5,14 +5,15 @@
       classes(
         n(),
         n('$--box'),
-        [internalSizeValidator(size), n(`--${size}`)],
+        [isInternalSize(size), n(`--${size}`)],
         [round, n('--round')],
-        [bordered, n('--bordered')]
+        [bordered, n('--bordered')],
+        [hoverable, n('--hoverable')]
       )
     "
     :style="{
-      width: !internalSizeValidator(size) ? toSizeUnit(size) : undefined,
-      height: !internalSizeValidator(size) ? toSizeUnit(size) : undefined,
+      width: !isInternalSize(size) ? toSizeUnit(size) : undefined,
+      height: !isInternalSize(size) ? toSizeUnit(size) : undefined,
       borderColor,
       backgroundColor: color,
     }"
@@ -20,17 +21,28 @@
   >
     <template v-if="src">
       <img
+        role="img"
         v-if="lazy"
         v-lazy="src"
         :class="n('image')"
         :src="src"
+        :alt="alt"
         :style="{ objectFit: fit }"
         :lazy-loading="loading"
         :lazy-error="error"
         @load="handleLoad"
       />
 
-      <img v-else :class="n('image')" :src="src" :style="{ objectFit: fit }" @load="handleLoad" @error="handleError" />
+      <img
+        v-else
+        role="img"
+        :class="n('image')"
+        :src="src"
+        :alt="alt"
+        :style="{ objectFit: fit }"
+        @load="handleLoad"
+        @error="handleError"
+      />
     </template>
 
     <div ref="textElement" :class="n('text')" :style="{ transform: `scale(${scale})` }" v-else>
@@ -42,23 +54,29 @@
 <script lang="ts">
 import Lazy, { type LazyHTMLElement } from '../lazy'
 import { defineComponent, ref, onUpdated, type Ref } from 'vue'
-import { props, internalSizeValidator, sizeValidator } from './props'
+import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
-import { createNamespace, call } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('avatar')
+const isInternalSize = (size: any) => ['mini', 'small', 'normal', 'large'].includes(size)
+
+const { name, n, classes } = createNamespace('avatar')
 
 export default defineComponent({
-  name: 'VarAvatar',
+  name,
   directives: { Lazy },
   props,
   setup(props) {
-    const avatarElement: Ref<HTMLDivElement | null> = ref(null)
-    const textElement: Ref<HTMLDivElement | null> = ref(null)
+    const avatarElement: Ref<HTMLElement | null> = ref(null)
+    const textElement: Ref<HTMLElement | null> = ref(null)
     const scale: Ref<number> = ref(1)
 
-    const getScale = () => {
+    onSmartMounted(getScale)
+    onUpdated(getScale)
+
+    function getScale() {
       if (!avatarElement.value || !textElement.value) {
         scale.value = 1
         return
@@ -74,7 +92,7 @@ export default defineComponent({
       }
     }
 
-    const handleLoad = (e: Event) => {
+    function handleLoad(e: Event) {
       const el: LazyHTMLElement = e.currentTarget as LazyHTMLElement
       const { lazy, onLoad, onError } = props
 
@@ -86,26 +104,22 @@ export default defineComponent({
       }
     }
 
-    const handleError = (e: Event) => {
+    function handleError(e: Event) {
       call(props.onError, e)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       call(props.onClick, e)
     }
 
-    onSmartMounted(getScale)
-    onUpdated(getScale)
-
     return {
-      internalSizeValidator,
-      sizeValidator,
-      toSizeUnit,
-      n,
-      classes,
       avatarElement,
       textElement,
       scale,
+      n,
+      classes,
+      isInternalSize,
+      toSizeUnit,
       handleLoad,
       handleError,
       handleClick,

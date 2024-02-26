@@ -14,7 +14,7 @@ import { ref, onMounted } from 'vue'
 
 const list = ref([])
 
-function change(value) {
+function handleChange(value) {
   console.log(value)
 }
 
@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <var-index-bar duration="300" @change="change">
+  <var-index-bar duration="300" @change="handleChange">
     <div v-for="item in list" :key="item">
       <var-index-anchor :index="item" class="anchor">
         标题 {{ item }}
@@ -64,7 +64,7 @@ onMounted(() => {
 | `hide-list`         | 是否隐藏锚点列表 | _boolean_ | `false` |
 | `sticky-css-mode`   | 开启原生 `css sticky` 模式 | _boolean_ | `false` |
 | `z-index`           | z-index 层级 | _number \| string_ | `1` |
-| `highlight-color`   | 索引字符高亮颜色 | _string_ | `#ee0a24` |
+| `highlight-color`   | 索引字符高亮颜色 | _string_ | `-` |
 | `duration`          | 动画持续时间 | _string \| number_ | `0` |
 
 #### IndexAnchor Props
@@ -88,13 +88,14 @@ onMounted(() => {
 
 | 名称 | 说明 | 参数 |
 | --- | -- | --- |
-| `default` | 索引栏内容 |`-` |
+| `default` | 索引栏内容 | `-` |
 
 #### IndexAnchor Slots
 
 | 名称 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 自定义索引字符 |`-` |
+| `default` | 自定义索引字符 | `-` |
+| `anchor-name` | 自定义锚点内容 | `anchorName: string` 锚点内容 |
 
 ### 方法
 通过 ref 可以获取到 IndexBar 实例并调用实例方法
@@ -115,8 +116,13 @@ onMounted(() => {
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--index-bar-list-item-font-size` | `var(--font-size-xs)` |
-| `--index-bar-list-item-color` | `var(--color-primary)` |
-| `--index-bar-list-item-active-color` | `var(--color-danger)` |
-| `--index-bar-list-item-height` | `14px` |
-| `--index-bar-list-item-padding` | `0 10px` |
+| `--index-bar-list-right`             | `0`                    |
+| `--index-bar-list-top`               | `50%`                  |
+| `--index-bar-list-left`              | `auto`                 |
+| `--index-bar-list-bottom`            | `auto`                 |
+| `--index-bar-list-transform`         | `translate(0, -50%)`   |
+| `--index-bar-list-item-font-size`    | `var(--font-size-xs)`  |
+| `--index-bar-list-item-color`        | `var(--color-primary)` |
+| `--index-bar-list-item-active-color` | `var(--color-danger)`  |
+| `--index-bar-list-item-height`       | `14px`                 |
+| `--index-bar-list-item-padding`      | `0 10px`               |

@@ -1,19 +1,20 @@
 import VarPicker from './Picker.vue'
-import { nextTick, reactive, type App, type Component, type TeleportProps } from 'vue'
-import { NormalColumn, CascadeColumn } from './props'
-import { isArray } from '@varlet/shared'
-import { call, mountInstance } from '../utils/components'
-
-export type Texts = any[]
+import { nextTick, reactive, type Component, type TeleportProps } from 'vue'
+import { isArray, call } from '@varlet/shared'
+import { mountInstance, withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { type PickerColumnOption } from './props'
+import { props as pickerProps } from './props'
 
 interface PickerOptions {
-  columns: NormalColumn | CascadeColumn | Texts
+  modelValue?: (string | number)[]
+  columns?: PickerColumnOption[] | PickerColumnOption[][]
   show?: boolean
   title?: string
   textKey?: string
+  valueKey?: string
+  childrenKey?: string
   toolbar?: boolean
   cascade?: boolean
-  cascadeInitialIndexes?: number[]
   optionHeight?: number | string
   optionCount?: number | string
   confirmButtonText?: string
@@ -21,29 +22,31 @@ interface PickerOptions {
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
   safeArea?: boolean
+  closeOnClickOverlay?: boolean
   teleport?: TeleportProps['to']
   dynamic?: boolean
-  textFormatter?: (text: any, columnIndex: number) => any
+  onClickOverlay?: () => void
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
-  onChange?: (texts: Texts, indexes: number[]) => void
-  onConfirm?: (texts: Texts, indexes: number[]) => void
-  onCancel?: (texts: Texts, indexes: number[]) => void
+  onChange?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
+  onConfirm?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
+  onCancel?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
 }
 
 type PickerResolvedState = 'confirm' | 'cancel' | 'close'
 
 interface PickerResolvedData {
   state: PickerResolvedState
-  texts?: Texts
+  values?: (string | number)[]
   indexes?: number[]
+  options?: PickerColumnOption[]
 }
 
 let singletonOptions: PickerOptions | null
 
-function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
+function Picker(options: PickerOptions | PickerColumnOption[] | PickerColumnOption[][]): Promise<PickerResolvedData> {
   return new Promise((resolve) => {
     Picker.close()
 
@@ -51,45 +54,50 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
     const reactivePickerOptions: PickerOptions = reactive(pickerOptions)
     reactivePickerOptions.dynamic = true
     reactivePickerOptions.teleport = 'body'
-
     singletonOptions = reactivePickerOptions
 
+    function resetSingletonOptions() {
+      singletonOptions === reactivePickerOptions && (singletonOptions = null)
+    }
+
     const { unmountInstance } = mountInstance(VarPicker, reactivePickerOptions, {
-      onConfirm: (texts: Texts, indexes: number[]) => {
-        call(reactivePickerOptions.onConfirm, texts, indexes)
+      onConfirm: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => {
+        call(reactivePickerOptions.onConfirm, values, indexes, options)
         resolve({
           state: 'confirm',
-          texts,
+          values,
           indexes,
+          options,
         })
         reactivePickerOptions.show = false
-        singletonOptions === reactivePickerOptions && (singletonOptions = null)
+        resetSingletonOptions()
       },
-      onCancel: (texts: Texts, indexes: number[]) => {
-        call(reactivePickerOptions.onCancel, texts, indexes)
+      onCancel: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => {
+        call(reactivePickerOptions.onCancel, values, indexes, options)
         resolve({
           state: 'cancel',
-          texts,
+          values,
           indexes,
+          options,
         })
         reactivePickerOptions.show = false
-        singletonOptions === reactivePickerOptions && (singletonOptions = null)
+        resetSingletonOptions()
       },
       onClose: () => {
         call(reactivePickerOptions.onClose)
         resolve({
           state: 'close',
         })
-        singletonOptions === reactivePickerOptions && (singletonOptions = null)
+        resetSingletonOptions()
       },
       onClosed: () => {
         call(reactivePickerOptions.onClosed)
         unmountInstance()
-        singletonOptions === reactivePickerOptions && (singletonOptions = null)
+        resetSingletonOptions()
       },
       onRouteChange: () => {
         unmountInstance()
-        singletonOptions === reactivePickerOptions && (singletonOptions = null)
+        resetSingletonOptions()
       },
       'onUpdate:show': (value: boolean) => {
         reactivePickerOptions.show = value
@@ -100,28 +108,24 @@ function Picker(options: PickerOptions | Texts): Promise<PickerResolvedData> {
   })
 }
 
-VarPicker.install = function (app: App) {
-  app.component(VarPicker.name, VarPicker)
+Picker.close = function () {
+  if (singletonOptions == null) {
+    return
+  }
+
+  const prevSingletonOptions = singletonOptions
+  singletonOptions = null
+  nextTick().then(() => {
+    prevSingletonOptions.show = false
+  })
 }
 
 Picker.Component = VarPicker as Component
+withInstall(VarPicker)
+withInstall(VarPicker, Picker)
+withPropsDefaultsSetter(Picker, pickerProps)
 
-Picker.install = function (app: App) {
-  app.component(VarPicker.name, VarPicker)
-}
-
-Picker.close = function () {
-  if (singletonOptions != null) {
-    const prevSingletonOptions = singletonOptions
-    singletonOptions = null
-
-    nextTick().then(() => {
-      prevSingletonOptions.show = false
-    })
-  }
-}
-
-export { props as pickerProps } from './props'
+export { pickerProps }
 
 export const _PickerComponent = VarPicker
 

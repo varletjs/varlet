@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import TabItem from './TabItem.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as tabItemProps } from './props'
 
-TabItem.install = function (app: App) {
-  app.component(TabItem.name, TabItem)
-}
+withInstall(TabItem)
+withPropsDefaultsSetter(TabItem, tabItemProps)
 
-export { props as tabItemProps } from './props'
+export { tabItemProps }
 
 export const _TabItemComponent = TabItem
 

@@ -4,8 +4,9 @@
 
 | 参数 | 说明 | 类型 | 默认值 | 
 | --- | --- | --- | --- | 
-| `name` | 选项卡的名字 | _string \| number_ | `index` |
+| `name` | 选项卡的名字 | _string \| number_ | `-` |
 | `disabled` | 是否禁用选项卡 | _boolean_ | `false` |
+| `ripple`   | 是否启用水波效果 | _boolean_ | `true` |
 
 ### 事件
 

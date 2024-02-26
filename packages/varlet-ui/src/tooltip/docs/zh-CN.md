@@ -84,8 +84,8 @@ const placementOptions = [
 ```html
 <template>
   <var-space :size="[54, 10]">
-    <var-tooltip type="default" content="Tooltip">
-      <var-button type="default">默认</var-button>
+    <var-tooltip content="Tooltip">
+      <var-button>默认</var-button>
     </var-tooltip>
     <var-tooltip type="primary" content="Tooltip">
       <var-button type="primary">主要</var-button>
@@ -178,18 +178,20 @@ import { Snackbar } from '@varlet/ui'
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `v-model:show` | 是否显示 | _string_       | `false`   |
+| `v-model:show` | 是否显示 | _boolean_       | `false`   |
 | `content` | 显示的内容 | _string_    | `-`       |
 | `color` | 背景颜色 | _string_       | `-`       |
 | `type`  | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
-| `placement` | 弹出位置 | _Placement_    | `top`     |
+| `placement` | 弹出位置 | _Placement_    | `bottom`     |
+| `strategy`  | 定位方式，可选值为 `absolute` `fixed` | _string_    | `absolute`    |
 | `offset-x` | x 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
 | `offset-y` | y 轴偏移量， 相对于 `Tooltip` 对齐后的位置 | _number \| string_   | `0` |
-| `teleport` | 挂载的位置 | _TeleportProps['to']_ | `body`    |
+| `teleport` | 挂载的位置 | _TeleportProps['to'] \| false_ | `body`    |
 | `same-width` | 是否与触发元素同宽 | _boolean_ | `false`  |
 | `disabled` | 是否禁用 Tooltip | _boolean_      | `false`   |
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
 | `reference`       | 关联的触发元素选择器，用于指定特定子元素为触发元素 | _string_              | `-`           |
+| `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
 
 ### Placement
 
@@ -214,6 +216,7 @@ import { Snackbar } from '@varlet/ui'
 | `open` | 打开 `Tooltip` | `-` | `-` |
 | `close` | 关闭 `Tooltip` | `-` | `-` |
 | `resize` | `Tooltip` 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
+| `click-outside` | 点击菜单外部时触发 | `event: Event` |
 
 ### 事件
 
@@ -241,10 +244,16 @@ import { Snackbar } from '@varlet/ui'
 | `--tooltip-border-radius` | `4px` |
 | `--tooltip-font-size` | `14px` |
 | `--tooltip-padding` | `8px 16px` |
-| `--tooltip-default-color` | `#616161` |
 | `--tooltip-offset` | `10px` |
+| `--tooltip-default-color` | `#616161` |
 | `--tooltip-primary-color` | `var(--color-primary)` |
 | `--tooltip-info-color` | `var(--color-info)` |
 | `--tooltip-success-color` | `var(--color-success)` |
 | `--tooltip-warning-color` | `var(--color-warning)` |
 | `--tooltip-danger-color` | `var(--color-danger)` |
+| `--tooltip-default-text-color` | `#fff` |
+| `--tooltip-primary-text-color` | `var(--color-on-primary)` |
+| `--tooltip-info-text-color` | `var(--color-on-info)` |
+| `--tooltip-success-text-color` | `var(--color-on-success)` |
+| `--tooltip-warning-text-color` | `var(--color-on-warning)` |
+| `--tooltip-danger-text-color` | `var(--color-on-danger)` |

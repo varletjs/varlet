@@ -5,16 +5,24 @@
         :class="
           classes(
             n('action'),
-            [checked, n('--checked'), n('--unchecked')],
+            [checked || isIndeterminate, n('--checked'), n('--unchecked')],
             [errorMessage || checkboxGroupErrorMessage, n('--error')],
             [formDisabled || disabled, n('--disabled')]
           )
         "
-        :style="{ color: checked ? checkedColor : uncheckedColor }"
+        :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
       >
-        <slot name="checked-icon" v-if="checked">
+        <slot name="indeterminate-icon" v-if="isIndeterminate">
+          <var-icon
+            :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
+            name="minus-box"
+            :size="iconSize"
+            var-checkbox-cover
+          />
+        </slot>
+        <slot name="checked-icon" v-if="checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-marked"
@@ -22,7 +30,7 @@
             var-checkbox-cover
           />
         </slot>
-        <slot name="unchecked-icon" v-else>
+        <slot name="unchecked-icon" v-if="!checked && !isIndeterminate">
           <var-icon
             :class="classes(n('icon'), [withAnimation, n('--with-animation')])"
             name="checkbox-blank-outline"
@@ -41,6 +49,7 @@
             [formDisabled || disabled, n('--disabled')]
           )
         "
+        v-if="$slots.default"
       >
         <slot />
       </div>
@@ -55,20 +64,19 @@ import VarIcon from '../icon'
 import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import Hover from '../hover'
-import { defineComponent, ref, computed, watch, nextTick } from 'vue'
-import { props } from './props'
-import { useValidation, createNamespace, call } from '../utils/components'
-import { useCheckboxGroup } from './provide'
-import { useForm } from '../form/provide'
-import type { Ref, ComputedRef } from 'vue'
-import type { ValidateTriggers } from './props'
-import type { CheckboxProvider } from './provide'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
+import { defineComponent, ref, computed, nextTick } from 'vue'
+import { props, type ValidateTriggers } from './props'
+import { useValidation, createNamespace } from '../utils/components'
+import { useCheckboxGroup, type CheckboxProvider } from './provide'
+import { useForm } from '../form/provide'
+import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
 
-const { n, classes } = createNamespace('checkbox')
+const { name, n, classes } = createNamespace('checkbox')
 
 export default defineComponent({
-  name: 'VarCheckbox',
+  name,
   directives: { Ripple, Hover },
   components: {
     VarIcon,
@@ -77,10 +85,11 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const value: Ref = ref(false)
-    const checked: ComputedRef<boolean> = computed(() => value.value === props.checkedValue)
-    const checkedValue: ComputedRef<boolean> = computed(() => props.checkedValue)
-    const withAnimation: Ref<boolean> = ref(false)
+    const value = useVModel(props, 'modelValue')
+    const isIndeterminate = useVModel(props, 'indeterminate')
+    const checked = computed(() => value.value === props.checkedValue)
+    const checkedValue = computed(() => props.checkedValue)
+    const withAnimation = ref(false)
     const { checkboxGroup, bindCheckboxGroup } = useCheckboxGroup()
     const { hovering, handleHovering } = useHoverOverlay()
     const { form, bindForm } = useForm()
@@ -92,26 +101,38 @@ export default defineComponent({
       resetValidation,
     } = useValidation()
 
-    const validateWithTrigger = (trigger: ValidateTriggers) => {
+    const checkboxProvider: CheckboxProvider = {
+      checkedValue,
+      checked,
+      sync,
+      validate,
+      resetValidation,
+      reset,
+      resetWithAnimation,
+    }
+
+    call(bindCheckboxGroup, checkboxProvider)
+    call(bindForm, checkboxProvider)
+
+    function validateWithTrigger(trigger: ValidateTriggers) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
       })
     }
 
-    const change = (changedValue: any) => {
-      value.value = changedValue
-
+    function change(changedValue: any) {
       const { checkedValue, onChange } = props
 
-      call(props['onUpdate:modelValue'], value.value)
+      value.value = changedValue
+      isIndeterminate.value = false
+
       call(onChange, value.value)
       validateWithTrigger('onChange')
-
       changedValue === checkedValue ? checkboxGroup?.onChecked(checkedValue) : checkboxGroup?.onUnchecked(checkedValue)
     }
 
-    const handleClick = (e: Event) => {
+    function handleClick(e: Event) {
       const { disabled, readonly, checkedValue, uncheckedValue, onClick } = props
 
       if (form?.disabled.value || disabled) {
@@ -134,23 +155,23 @@ export default defineComponent({
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
-    const sync = (values: Array<any>) => {
+    function sync(values: Array<any>) {
       const { checkedValue, uncheckedValue } = props
       value.value = values.includes(checkedValue) ? checkedValue : uncheckedValue
     }
 
-    const resetWithAnimation = () => {
+    function resetWithAnimation() {
       withAnimation.value = false
     }
 
     // expose
-    const reset = () => {
-      call(props['onUpdate:modelValue'], props.uncheckedValue)
+    function reset() {
+      value.value = props.uncheckedValue
       resetValidation()
     }
 
     // expose
-    const toggle = (changedValue?: any) => {
+    function toggle(changedValue?: any) {
       const { checkedValue, uncheckedValue } = props
 
       const shouldReverse = ![checkedValue, uncheckedValue].includes(changedValue)
@@ -162,30 +183,12 @@ export default defineComponent({
     }
 
     // expose
-    const validate = () => v(props.rules, props.modelValue)
-
-    watch(
-      () => props.modelValue,
-      (newValue) => {
-        value.value = newValue
-      },
-      { immediate: true }
-    )
-
-    const checkboxProvider: CheckboxProvider = {
-      checkedValue,
-      checked,
-      sync,
-      validate,
-      resetValidation,
-      reset,
-      resetWithAnimation,
+    function validate() {
+      return v(props.rules, props.modelValue)
     }
 
-    call(bindCheckboxGroup, checkboxProvider)
-    call(bindForm, checkboxProvider)
-
     return {
+      isIndeterminate,
       withAnimation,
       checked,
       errorMessage,
@@ -193,9 +196,9 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
-      handleHovering,
       n,
       classes,
+      handleHovering,
       handleClick,
       toggle,
       reset,

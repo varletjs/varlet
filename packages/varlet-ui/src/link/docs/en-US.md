@@ -67,7 +67,7 @@ Link component for hyperlink to web pages.
 </template>
 ```
 
-### Default Slots
+### Default Slot
 
 ```html
 <template>
@@ -87,12 +87,13 @@ Link component for hyperlink to web pages.
 
 | Prop         | Description                                                                       | Type     | Default  |
 |--------------|-----------------------------------------------------------------------------------|----------|----------|
-| `type`       | Link type, Can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `type`       | Link type, can be set to  `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
 | `underline`  | Underline, Can be set to `always` `hover` `none`                                  | _string_ | `always` |
 | `disabled`   | Whether to disable link                                                           | _boolean_ | `false`  |
 | `text-color` | Link text color                                                                   | _string_ | `-`      |
 | `text-size`  | Link font size                                                                    | _string \| number_  | `-`            |
 | `href`       | Same as native hyperlink's `href`, Have higher priority than `to`                 | _string_ | `-`      |
+| `rel`        | Same as the native `rel` attribute                                            | _string_ | `-`      |
 | `target`     | Same as the native `target` attribute                                             | _string_ | `-`      |
 | `to`         | `router-link` `to`, will render as `<router-link />`                              | _string \| object_  | `-`        |
 | `replace`    | `router-link` `replace`                                                           | _boolean_ | `false`  |
@@ -111,10 +112,11 @@ Link component for hyperlink to web pages.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                       | Default                      |
 | --- |------------------------------|
+| `--link-default-color` | `#555`                       |
 | `--link-primary-color` | `var(--color-primary)`       |
 | `--link-danger-color` | `var(--color-danger)`        |
 | `--link-success-color` | `var(--color-success)`       |

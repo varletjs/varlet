@@ -1,8 +1,8 @@
 # 水波指令
 
 ### 介绍
-使元素点击时生成一个水波扩散的效果。
 
+元素点击时生成一个水波扩散的效果。
 
 ### 基本使用
 
@@ -19,18 +19,18 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+ background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
 
-### 修改颜色
+### 自定义颜色
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: 'var(--color-warning)' }">
     点击
   </div>
 </template>
@@ -43,14 +43,14 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
 
-### 禁用水波
+### 禁用状态
 
 ```html
 <template>
@@ -67,9 +67,9 @@
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -84,6 +84,7 @@
 | `disabled` | 禁用状态 | _boolean_ | `false` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |

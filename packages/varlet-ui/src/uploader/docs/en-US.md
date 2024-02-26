@@ -1,6 +1,7 @@
 # Uploader
 
 ### Intro
+
 It provides the ability to read files and preview pictures and videos.
 Get the file upload server by listening for `after-read` events.
 
@@ -44,6 +45,33 @@ const files = ref([
 
 <template>
   <var-uploader v-model="files"/>
+</template>
+```
+
+### Custom Preview
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Dialog } from '@varlet/ui'
+
+const files = ref([
+  {
+    url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+    cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg'
+  }
+])
+
+function handlePreview(file) {
+  Dialog({
+    title: 'Custom Preview',
+    message: file.url.slice(0, 100),
+  })
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" prevent-default-preview @preview="handlePreview"/>
 </template>
 ```
 
@@ -199,6 +227,32 @@ function handleBeforeRead(file) {
 </template>
 ```
 
+### Upload Button Click Event
+
+By listen the `click-action` event, you can intercept the click behavior of the upload button, and manually trigger the browser to select the file through the `chooseFile` method in the callback.
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const files = ref([])
+
+function handleClickAction(chooseFile) {
+  Snackbar.loading('delay 1s')
+
+  window.setTimeout(() => {
+    Snackbar.clear()
+    chooseFile()
+  }, 1000)
+}
+</script>
+
+<template>
+  <var-uploader v-model="files" @click-action="handleClickAction" />
+</template>
+```
+
 ### Disabled
 
 ```html
@@ -258,7 +312,7 @@ async function handleBeforeRemove() {
 </template>
 ```
 
-### Customize upload styles
+### Customize Upload Styles
 
 ```html
 <script setup>
@@ -301,7 +355,7 @@ const files = ref([
 </template>
 ```
 
-### Custom render file list
+### Custom Render File List
 
 You can use the `hide-list` to hide component files list, then you can render this list by custom.
 
@@ -373,10 +427,13 @@ const files = ref([
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
 | `maxsize`   | Maximum file size | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
+| `prevent-default-preview` | Prevent default preview behavior | _boolean_ | `false` |
 | `ripple`    | Whether to open ripple | _boolean_ | `true` |
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation， The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+| `resolve-type` | The file preprocessing type, can be set to `default` `file` `data-url` (`default`, the image type contains dataURL and File object, other types contain only File object. `file`, which contains only File object. `data-url`, all file types contain dataURL and File object) | _string_ | `default` |
+| `validate-trigger` | Timing to trigger validation. The optional value is `onChange` `onRemove` | _ValidateTriggers[]_ | `['onChange', 'onRemove']` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+
 
 ### VarFile
 
@@ -416,21 +473,24 @@ const files = ref([
 | Event | Description | Arguments |
 | --- | --- | --- |
 | `before-filter` | Triggered before the event `before-read` to filter the file list | `files: VarFile[]` |
-| `before-read` | Trigger returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
+| `before-read` | Triggered returns a false value before a file is read to prevent the file from being read(support promise) | `file: VarFile` |
 | `after-read` | Triggered after the file is read | `file: VarFile` |
 | `oversize` | Triggered when the file size limit is exceeded | `file: VarFile` |
 | `before-remove` | Triggered before file deletion, return false value to prevent file deletion (support promise) | `file: VarFile` |
 | `remove` | Triggered when deleting a file. There is a true value to prevent deleting a file (support promise) | `file: VarFile` |
+| `preview` | Triggered when a file is previewed | `file: VarFile` |
+| `click-action`| Intercept click behavior of upload button | `chooseFile: () => void, event: Event` |
 
 ### Slots
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Upload action content | `-` |
+| `extra-message` | Extra message | `-` |
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
@@ -444,6 +504,7 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--uploader-file-name-color`              | `#888`                                                                                       |
 | `--uploader-file-name-font-size`          | `12px`                                                                                       |
 | `--uploader-file-name-padding`            | `10px`                                                                                       |
+| `--uploader-file-border-radius`            | `0`                                                                                       |
 | `--uploader-file-text-align`              | `center`                                                                                     |
 | `--uploader-file-close-background`        | `rgba(0, 0, 0, 0.3)`                                                                         |
 | `--uploader-file-close-size`              | `24px`                                                                                       |

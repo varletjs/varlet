@@ -1,10 +1,14 @@
 <template>
   <div
-    :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')])"
+    :class="classes(n(), n('$--box'), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])"
     :style="{
       color: optionSelected ? focusColor : undefined,
     }"
-    v-ripple
+    :tabindex="disabled ? undefined : '-1'"
+    v-ripple="{ disabled }"
+    v-hover:desktop="handleHovering"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
     @click="handleClick"
   >
     <div
@@ -13,60 +17,58 @@
         background: optionSelected ? focusColor : undefined,
       }"
     ></div>
+
     <var-checkbox
-      ref="checkbox"
-      :checked-color="focusColor"
       v-if="multiple"
+      ref="checkbox"
       v-model="optionSelected"
+      :checked-color="focusColor"
+      :disabled="disabled"
       @click.stop
       @change="handleSelect"
     />
 
-    <div :class="classes(n('text'), n('$--ellipsis'))">
-      <slot>
+    <slot>
+      <div :class="classes(n('text'), n('$--ellipsis'))">
         {{ label }}
-      </slot>
-    </div>
+      </div>
+    </slot>
+
+    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isEffectFocusing && !disabled" />
   </div>
 </template>
 
 <script lang="ts">
 import VarCheckbox from '../checkbox'
 import Ripple from '../ripple'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, ref, watch } from 'vue'
-import { useSelect } from './provide'
+import { useSelect, OptionProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import type { Ref, ComputedRef } from 'vue'
-import type { OptionProvider } from './provide'
+import { inMobile, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 
-const { n, classes } = createNamespace('option')
+const { name, n, classes } = createNamespace('option')
 
 export default defineComponent({
-  name: 'VarOption',
-  directives: { Ripple },
+  name,
+  directives: { Ripple, Hover },
   components: {
     VarCheckbox,
+    VarHoverOverlay,
   },
   props,
   setup(props) {
-    const optionSelected: Ref<boolean> = ref(false)
-    const selected: ComputedRef<boolean> = computed(() => optionSelected.value)
-    const label: ComputedRef = computed(() => props.label)
-    const value: ComputedRef = computed(() => props.value)
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const optionSelected = ref(false)
+    const selected = computed(() => optionSelected.value)
+    const label = computed<any>(() => props.label)
+    const value = computed<any>(() => props.value)
     const { select, bindSelect } = useSelect()
     const { multiple, focusColor, onSelect, computeLabel } = select
-
-    const handleClick = () => {
-      optionSelected.value = !optionSelected.value
-      onSelect(optionProvider)
-    }
-
-    const handleSelect = () => onSelect(optionProvider)
-
-    const sync = (checked: boolean) => {
-      optionSelected.value = checked
-    }
+    const { hovering, handleHovering } = useHoverOverlay()
 
     const optionProvider: OptionProvider = {
       label,
@@ -79,12 +81,63 @@ export default defineComponent({
 
     bindSelect(optionProvider)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
+    function handleClick() {
+      if (props.disabled) {
+        return
+      }
+
+      handleSelect()
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || props.disabled) {
+        return
+      }
+
+      if (event.key === ' ' || event.key === 'Enter') {
+        preventDefault(event)
+      }
+
+      if (event.key === 'Enter') {
+        handleClick()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || props.disabled) {
+        return
+      }
+
+      if (event.key === ' ') {
+        preventDefault(event)
+        handleClick()
+      }
+    }
+
+    function handleSelect() {
+      if (multiple.value) {
+        optionSelected.value = !optionSelected.value
+      }
+
+      onSelect(optionProvider)
+    }
+
+    function sync(checked: boolean) {
+      optionSelected.value = checked
+    }
+
     return {
-      n,
-      classes,
       optionSelected,
       multiple,
       focusColor,
+      hovering,
+      isEffectFocusing,
+      n,
+      classes,
+      handleHovering,
       handleClick,
       handleSelect,
     }

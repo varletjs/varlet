@@ -1,33 +1,28 @@
-import { defineComponent, watch, Transition, Teleport } from 'vue'
+import { defineComponent, watch, Transition, Teleport, computed } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { useZIndex } from '../context/zIndex'
-import { useRouteListener, useTeleport, createNamespace, call } from '../utils/components'
+import { useStack } from '../context/stack'
+import { useRouteListener, useTeleport, createNamespace } from '../utils/components'
+import { usePopupItems } from './provide'
+import { useEventListener, useInitialized } from '@varlet/use'
+import { call, preventDefault } from '@varlet/shared'
 
 import '../styles/common.less'
 import './popup.less'
 
-const { n, classes } = createNamespace('popup')
+const { name, n, classes } = createNamespace('popup')
 
 export default defineComponent({
-  name: 'VarPopup',
+  name,
   inheritAttrs: false,
   props,
   setup(props, { slots, attrs }) {
+    const rendered = useInitialized(() => props.show, true)
     const { zIndex } = useZIndex(() => props.show, 3)
+    const { onStackTop } = useStack(() => props.show, zIndex)
     const { disabled } = useTeleport()
-
-    const hidePopup = () => {
-      const { closeOnClickOverlay, onClickOverlay } = props
-
-      call(onClickOverlay)
-
-      if (!closeOnClickOverlay) {
-        return
-      }
-
-      call(props['onUpdate:show'], false)
-    }
+    const { bindPopupItems } = usePopupItems()
 
     useLock(
       () => props.show,
@@ -41,10 +36,26 @@ export default defineComponent({
       }
     )
 
+    bindPopupItems({ show: computed(() => props.show) })
+
+    useEventListener(window, 'keydown', handleKeydown)
+
     // internal for Dialog
     useRouteListener(() => call(props.onRouteChange))
 
-    const renderOverlay = () => {
+    function hidePopup() {
+      const { closeOnClickOverlay, onClickOverlay } = props
+
+      call(onClickOverlay)
+
+      if (!closeOnClickOverlay) {
+        return
+      }
+
+      call(props['onUpdate:show'], false)
+    }
+
+    function renderOverlay() {
       const { overlayClass = '', overlayStyle } = props
 
       return (
@@ -59,7 +70,7 @@ export default defineComponent({
       )
     }
 
-    const renderContent = () => {
+    function renderContent() {
       return (
         <div
           class={classes(
@@ -72,23 +83,41 @@ export default defineComponent({
           )}
           style={{ zIndex: zIndex.value }}
           {...attrs}
+          v-show={props.show}
         >
-          {call(slots.default)}
+          {rendered.value && call(slots.default)}
         </div>
       )
     }
 
-    const renderPopup = () => {
-      const { onOpened, onClosed, show, overlay, transition, position } = props
-
+    function renderPopup() {
       return (
-        <Transition name={n('$-fade')} onAfterEnter={onOpened} onAfterLeave={onClosed}>
-          <div class={classes(n('$--box'), n())} style={{ zIndex: zIndex.value - 2 }} v-show={show}>
-            {overlay && renderOverlay()}
-            <Transition name={transition || n(`$-pop-${position}`)}>{show && renderContent()}</Transition>
+        <Transition name={n('$-fade')} onAfterEnter={props.onOpened} onAfterLeave={props.onClosed}>
+          <div
+            class={classes(n('$--box'), n(), [!props.overlay, n('--pointer-events-none')])}
+            style={{ zIndex: zIndex.value - 2 }}
+            v-show={props.show}
+          >
+            {props.overlay && renderOverlay()}
+            <Transition name={props.transition || n(`$-pop-${props.position}`)}>{renderContent()}</Transition>
           </div>
         </Transition>
       )
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!onStackTop() || event.key !== 'Escape' || !props.show) {
+        return
+      }
+
+      call(props.onKeyEscape)
+
+      if (!props.closeOnKeyEscape) {
+        return
+      }
+
+      preventDefault(event)
+      call(props['onUpdate:show'], false)
     }
 
     return () => {

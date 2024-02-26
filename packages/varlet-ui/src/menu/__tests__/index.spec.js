@@ -1,9 +1,10 @@
 import Menu from '..'
 import VarMenu from '../Menu'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { delay, mockStubs, trigger } from '../../utils/jest'
-import { doubleRaf } from '../../utils/elements'
+import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
+import { doubleRaf } from '@varlet/shared'
+import { expect, vi } from 'vitest'
 
 test('test menu plugin', () => {
   const app = createApp({}).use(Menu)
@@ -37,7 +38,7 @@ test('test menu placement', async () => {
   ]) {
     const root = document.createElement('div')
 
-    mount(VarMenu, {
+    const wrapper = mount(VarMenu, {
       props: {
         placement,
         teleport: root,
@@ -47,6 +48,7 @@ test('test menu placement', async () => {
     await doubleRaf()
 
     expect(root.innerHTML).toMatchSnapshot()
+    wrapper.unmount()
   }
 
   mockRestore()
@@ -75,10 +77,10 @@ test('test menu click trigger', async () => {
 test('test menu hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 
-  const onOpen = jest.fn()
-  const onOpened = jest.fn()
-  const onClose = jest.fn()
-  const onClosed = jest.fn()
+  const onOpen = vi.fn()
+  const onOpened = vi.fn()
+  const onClose = vi.fn()
+  const onClosed = vi.fn()
 
   const root = document.createElement('div')
 
@@ -110,6 +112,32 @@ test('test menu hover trigger and events', async () => {
 
   expect(onClosed).toHaveBeenCalledTimes(1)
   expect(root.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
+  mockRestore()
+})
+
+test('test menu close on escape', async () => {
+  const { mockRestore } = mockStubs()
+
+  const onClose = vi.fn()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarMenu, {
+    props: {
+      teleport: root,
+      show: true,
+      onClose,
+    },
+  })
+
+  await wrapper.trigger('mouseenter')
+  await triggerKeyboard(window, 'keydown', { key: 'Escape' })
+
+  await doubleRaf()
+  await delay(0)
+  expect(onClose).toHaveBeenCalledTimes(1)
 
   wrapper.unmount()
   mockRestore()
@@ -213,4 +241,5 @@ test('test menu elevation', async () => {
   expect(root.innerHTML).toMatchSnapshot()
 
   mockRestore()
+  wrapper.unmount()
 })

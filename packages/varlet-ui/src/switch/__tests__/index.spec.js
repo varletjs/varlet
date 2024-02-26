@@ -2,7 +2,8 @@ import Switch from '..'
 import VarSwitch from '../Switch'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/jest'
+import { delay } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
@@ -101,8 +102,8 @@ describe('test switch component props', () => {
 
 describe('test switch events', () => {
   test('test switch v-model and events', async () => {
-    const clickFn = jest.fn()
-    const changeFn = jest.fn()
+    const clickFn = vi.fn()
+    const changeFn = vi.fn()
 
     const wrapper = mount({
       components: {
@@ -130,8 +131,8 @@ describe('test switch events', () => {
   })
 
   test('test switch event not trigger', async () => {
-    const clickFn = jest.fn()
-    const changeFn = jest.fn()
+    const clickFn = vi.fn()
+    const changeFn = vi.fn()
     const template = `
     <var-switch v-model="value" @click="clickFn" @change="changeFn" :disabled="disabled" :readonly="readonly" />
   `
@@ -171,5 +172,35 @@ describe('test switch events', () => {
     expect(clickFn).toHaveBeenCalledTimes(2)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
+
+    wrapper.unmount()
+  })
+
+  test('test counter lazy change', async () => {
+    const wrapper = mount({
+      components: {
+        [VarSwitch.name]: VarSwitch,
+      },
+      data() {
+        return {
+          value: true,
+        }
+      },
+      methods: {
+        async onBeforeChange(value, change) {
+          await delay(500)
+          change(value)
+        },
+      },
+      template: `<var-switch lazy-change v-model="value" @before-change="onBeforeChange" />`,
+    })
+
+    await wrapper.find('.var-switch__block').trigger('click')
+    expect(wrapper.vm.value).toBe(true)
+
+    await delay(600)
+    expect(wrapper.vm.value).toBe(false)
+
+    wrapper.unmount()
   })
 })

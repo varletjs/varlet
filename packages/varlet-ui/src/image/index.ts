@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Image from './Image.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as imageProps } from './props'
 
-Image.install = function (app: App) {
-  app.component(Image.name, Image)
-}
+withInstall(Image)
+withPropsDefaultsSetter(Image, imageProps)
 
-export { props as imageProps } from './props'
+export { imageProps }
 
 export const _ImageComponent = Image
 

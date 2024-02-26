@@ -39,6 +39,7 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 - 💪 &nbsp; Support the SSR
 - 💡 &nbsp; Support the Typescript
 - 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
+- 🛠️ &nbsp; Supports both Material Design 2 and Material Design 3 design systems
 - 🛠️ &nbsp; Support dark mode
 - 🛠️ &nbsp; Provide official VSCode extension
 
@@ -79,7 +80,75 @@ pnpm add @varlet/ui
 import App from './App.vue'
 import Varlet from '@varlet/ui'
 import { createApp } from 'vue'
-import '@varlet/ui/es/style.js'
+import '@varlet/ui/es/style'
 
 createApp(App).use(Varlet).mount('#app')
 ```
+
+### Official Ecosystem
+
+The following projects are maintained by the official team for a long time.
+
+| Name | Description |
+|------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [@varlet/cli](https://github.com/varletjs/varlet/tree/dev/packages/varlet-cli) | `Vue3 component library rapid prototyping tool` |
+| [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
+| [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
+| [@varlet/import-resolver](https://github.com/varletjs/varlet/tree/dev/packages/varlet-import-resolver)  | `A resolver for` [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) ` used to implement Varlet and import it on demand`   |
+| [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
+| [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode Theme`   |
+| [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet component library app template`   |
+| [varlet-install-example](https://github.com/varletjs/varlet-install-example)  | `Case collection of Varlet component library and various ecosystem integration` |
+
+### Community Ecosystem
+
+The following projects are maintained by community personnel, welcome to add.
+
+| Name | Description |
+|----------------------------------------------------------------|-----------------------------------------|
+| [vue-h5-template](https://github.com/sunniejs/vue-h5-template) | `Vue-based mobile template scaffolding, providing mobile presets for Varlet component library` |
+| [create-vite-app](https://github.com/ErKeLost/create-vite-app) | `A desktop template scaffolding based on Vue3, providing desktop presets for Varlet component library` |
+| [vscode-common-intellisense](https://github.com/Simon-He95/vscode-common-intellisense) | `A VS Code extension that provides better intellisense to Varlet developers` |
+
+### Playground
+
+See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
+
+### Contribution
+
+See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
+
+### Community
+
+We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
+
+* Wechat group 
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/community.png" />
+
+* Join the [Discord](https://discord.gg/Dmb8ydBHkw)
+
+### Thanks to contributors
+
+<a href="https://github.com/varletjs/varlet/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=varletjs/varlet" />
+</a>
+
+### Thanks to the following sponsors
+
+<a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+  <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg">
+</a>
+
+### Sponsor this project
+
+Sponsor this project to support our better creation. It is recommended to use afdian to subscribe, and your avatar will appear in this project.
+
+#### Afdian
+
+<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+
+#### Wechat / Alipay
+
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/wechat.jpg" />
+<img style="width: 25%" src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/alipay.jpg" />

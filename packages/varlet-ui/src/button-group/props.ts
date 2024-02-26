@@ -1,45 +1,29 @@
-import type { PropType } from 'vue'
+import { type PropType } from 'vue'
 
-function typeValidator(type: string): boolean {
-  return ['default', 'primary', 'info', 'success', 'warning', 'danger'].includes(type)
-}
+export type ButtonGroupType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 
-function sizeValidator(size: string): boolean {
-  return ['normal', 'mini', 'small', 'large'].includes(size)
-}
+export type ButtonGroupSize = 'normal' | 'mini' | 'small' | 'large'
 
-function modeValidator(mode: string): boolean {
-  return ['normal', 'text', 'outline'].includes(mode)
-}
+export type ButtonMode = 'text' | 'outline' | 'normal' | 'icon-container'
 
 export const props = {
   type: {
-    type: String as PropType<'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'>,
+    type: String as PropType<ButtonGroupType>,
     default: 'default',
-    validator: typeValidator,
   },
   size: {
-    type: String as PropType<'normal' | 'mini' | 'small' | 'large'>,
+    type: String as PropType<ButtonGroupSize>,
     default: 'normal',
-    validator: sizeValidator,
   },
-  color: {
-    type: String,
-  },
-  textColor: {
-    type: String,
-  },
+  color: String,
+  textColor: String,
   mode: {
-    type: String as PropType<'text' | 'outline' | 'normal'>,
+    type: String as PropType<ButtonMode>,
     default: 'normal',
-    validator: modeValidator,
   },
   elevation: {
     type: [Boolean, Number, String],
     default: true,
   },
-  vertical: {
-    type: Boolean,
-    default: false,
-  },
+  vertical: Boolean,
 }

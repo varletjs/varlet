@@ -4,18 +4,18 @@
 
     <slot name="loading" v-if="loading">
       <div :class="n('loading')">
-        <div :class="n('loading-text')">{{ dt(loadingText, pack.listLoadingText) }}</div>
+        <div :class="n('loading-text')">{{ loadingText ?? t('listLoadingText') }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div :class="n('finished')">{{ dt(finishedText, pack.listFinishedText) }}</div>
+      <div :class="n('finished')">{{ finishedText ?? t('listFinishedText') }}</div>
     </slot>
 
     <slot name="error" v-if="error">
       <div :class="n('error')" v-ripple @click="load">
-        {{ dt(errorText, pack.listErrorText) }}
+        {{ errorText ?? t('listErrorText') }}
       </div>
     </slot>
 
@@ -26,60 +26,28 @@
 <script lang="ts">
 import VarLoading from '../loading'
 import Ripple from '../ripple'
-import { defineComponent, ref, nextTick, type Ref, watch } from 'vue'
-import { getParentScroller, getRect, toPxNum } from '../utils/elements'
+import { defineComponent, ref, nextTick, watch } from 'vue'
+import { getParentScroller, toPxNum } from '../utils/elements'
 import { props } from './props'
-import { isNumber } from '@varlet/shared'
-import { dt } from '../utils/shared'
-import { createNamespace, call } from '../utils/components'
-import { pack } from '../locale'
+import { isNumber, getRect, call } from '@varlet/shared'
+import { createNamespace } from '../utils/components'
+import { t } from '../locale'
 import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 import { useTabItem } from './provide'
 
-const { n, classes } = createNamespace('list')
+const { name, n, classes } = createNamespace('list')
 
 export default defineComponent({
-  name: 'VarList',
+  name,
   directives: { Ripple },
-  components: {
-    VarLoading,
-  },
+  components: { VarLoading },
   props,
   setup(props) {
+    const listEl = ref<HTMLElement | null>(null)
+    const detectorEl = ref<HTMLElement | null>(null)
     const { tabItem, bindTabItem } = useTabItem()
-    const listEl: Ref<HTMLElement | null> = ref(null)
-    const detectorEl: Ref<HTMLElement | null> = ref(null)
+
     let scroller: HTMLElement | Window
-
-    const load = () => {
-      call(props['onUpdate:error'], false)
-      call(props['onUpdate:loading'], true)
-      call(props.onLoad)
-    }
-
-    const isReachBottom = () => {
-      const { bottom: containerBottom } = getRect(scroller)
-      const { bottom: detectorBottom } = getRect(detectorEl.value!)
-
-      // The fractional part of the detectorBottom when bottoming out overflows
-      // https://github.com/varletjs/varlet/issues/310
-      return Math.floor(detectorBottom) - toPxNum(props.offset) <= containerBottom
-    }
-
-    const removeScrollerListener = () => {
-      scroller.removeEventListener('scroll', check)
-    }
-
-    // expose
-    const check = async () => {
-      await nextTick()
-
-      if (props.loading || props.finished || props.error || tabItem?.current.value === false || !isReachBottom()) {
-        return
-      }
-
-      load()
-    }
 
     call(bindTabItem, {})
 
@@ -100,11 +68,45 @@ export default defineComponent({
 
     onSmartUnmounted(removeScrollerListener)
 
+    function load() {
+      call(props['onUpdate:error'], false)
+      call(props['onUpdate:loading'], true)
+      call(props.onLoad)
+    }
+
+    function isReachBottom() {
+      const { bottom: containerBottom } = getRect(scroller)
+      const { bottom: detectorBottom } = getRect(detectorEl.value!)
+
+      // The fractional part of the detectorBottom when bottoming out overflows
+      // https://github.com/varletjs/varlet/issues/310
+      return Math.floor(detectorBottom) - toPxNum(props.offset) <= containerBottom
+    }
+
+    function removeScrollerListener() {
+      if (!scroller) {
+        // may be null in nuxt
+        return
+      }
+
+      scroller.removeEventListener('scroll', check)
+    }
+
+    // expose
+    async function check() {
+      await nextTick()
+
+      if (props.loading || props.finished || props.error || tabItem?.current.value === false || !isReachBottom()) {
+        return
+      }
+
+      load()
+    }
+
     return {
-      pack,
+      t,
       listEl,
       detectorEl,
-      dt,
       isNumber,
       load,
       check,

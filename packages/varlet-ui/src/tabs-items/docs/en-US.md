@@ -13,3 +13,9 @@
 | Name | Description | SlotProps |
 | --------- | ----------------- | --------- |
 | `default` | TabsItems content | `-`       |
+
+### Methods
+
+| Method     | Description                        | Arguments | Return |
+| ---------- | ---------------------------------- | --------- | ------ |
+| `getSwipe` | Get the `swipe` component instance | `-`       | `-`    |

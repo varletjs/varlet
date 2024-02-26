@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Uploader from './Uploader.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as uploaderProps } from './props'
 
-Uploader.install = function (app: App) {
-  app.component(Uploader.name, Uploader)
-}
+withInstall(Uploader)
+withPropsDefaultsSetter(Uploader, uploaderProps)
 
-export { props as uploaderProps } from './props'
+export { uploaderProps }
 
 export const _UploaderComponent = Uploader
 

@@ -2,6 +2,7 @@ import Progress from '..'
 import VarProgress from '../Progress'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test progress use', () => {
   const app = createApp({}).use(Progress)
@@ -31,6 +32,17 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
+  test('test progress type', () => {
+    ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
+      const wrapper = mount(VarProgress, {
+        props: { type, mode: 'linear' },
+      })
+
+      expect(wrapper.find(`.var-progress__linear--${type}`).exists()).toBe(true)
+      wrapper.unmount()
+    })
+  })
+
   test('test progress line-width', () => {
     const wrapper = mount(VarProgress, {
       props: {
@@ -42,7 +54,7 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress color', () => {
+  test('test linear progress color', () => {
     const wrapper = mount(VarProgress, {
       props: {
         color: 'red',
@@ -50,6 +62,21 @@ describe('test progress component props', () => {
     })
 
     expect(wrapper.find('.var-progress__linear-certain').attributes('style')).toContain('background: red;')
+    wrapper.unmount()
+  })
+
+  test('test circle progress color', () => {
+    const wrapper = mount(VarProgress, {
+      props: {
+        color: {
+          '0%': '#3fecff',
+          '100%': '#6149f6',
+        },
+        mode: 'circle',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 
@@ -90,19 +117,6 @@ describe('test progress component props', () => {
     wrapper.unmount()
   })
 
-  test('test progress ripple', async () => {
-    const wrapper = mount(VarProgress, {
-      props: {
-        ripple: true,
-      },
-    })
-
-    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(true)
-    await wrapper.setProps({ ripple: false })
-    expect(wrapper.find('.var-progress__linear-ripple').exists()).toBe(false)
-    wrapper.unmount()
-  })
-
   test('test progress size', () => {
     const wrapper = mount(VarProgress, {
       props: {
@@ -123,7 +137,23 @@ describe('test progress component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-progress__circle-svg').attributes('style')).toContain('transform: rotate(-80deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform: rotateZ(10deg);')
+    expect(wrapper.find('.var-progress__circle-certain').attributes('style')).toContain('transform-origin: 50% 50%;')
+    wrapper.unmount()
+  })
+
+  test('test progress indeterminate', async () => {
+    const wrapper = mount(VarProgress, {
+      props: {
+        mode: 'linear',
+        indeterminate: true,
+      },
+    })
+
+    expect(wrapper.find('.var-progress__linear-indeterminate').exists()).toBe(true)
+    await wrapper.setProps({ mode: 'circle' })
+    expect(wrapper.find('.var-progress__circle-indeterminate').exists()).toBe(true)
+    expect(wrapper.find('.var-progress__circle-overlay').exists()).toBe(true)
     wrapper.unmount()
   })
 })

@@ -321,6 +321,8 @@ const value12 = ref()
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any \| any[]_ | `-` |
+| `size` | Select size, The optional value is `normal` `small`                | _string_ | `normal` |
+| `variant` | Select variant, The optional value is `standard` `outlined` | _string_ | `standard` |
 | `placeholder` | placeholder | _string_ | `-` |
 | `multiple` | Whether to enable multiple selection | _boolean_ | `false` |
 | `offset-y` | The vertical offset of the drop-down menu | _string \| number_ | `0` |
@@ -333,8 +335,8 @@ const value12 = ref()
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation， Optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `rules` | The validation rules，Returns `true` to indicate that the validation passed，The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
+| `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
+| `rules` | The validation rules, return `true` to indicate that the validation passed, The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
 #### Option Props
 
@@ -342,6 +344,7 @@ const value12 = ref()
 | --- | --- | --- | --- |
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
+| `disabled` | Whether to disable | _boolean_ | `false` |
 
 ### Methods
 
@@ -352,7 +355,7 @@ const value12 = ref()
 | `focus` | Focus | `-` | `-` |
 | `blur` | Blur | `-` | `-` |
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
-| `resetValidation` | Clearing validate messages | `-` | `-` |
+| `resetValidation` | Clear validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding (single set to 'undefined', multiple set to '[]') and the validation messages | `-` | `-` |
 
 ### Events
@@ -361,7 +364,7 @@ const value12 = ref()
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Trigger while focusing | `event: Event` |
+| `focus` | Triggered when focusing | `event: Event` |
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on click | `event: Event` |
 | `clear` | Triggered on clearance | `value: any \| any[]` |
@@ -376,8 +379,9 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
+| `clear-icon` | Clear Icon | `-` |
 | `append-icon` | Append icon | `-` |
-| `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus |
+| `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
 #### Option Slots
 
@@ -386,7 +390,7 @@ const value12 = ref()
 | `default` | Options to display the content | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Select Variables
 
@@ -400,39 +404,40 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--field-decorator-icon-size` | `20px` |
 | `--field-decorator-line-size` | `1px` |
 | `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
 | `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-padding-top` | `22px` |
-| `--field-decorator-standard-normal-padding-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-padding` | `22px 0 4px` |
-| `--field-decorator-standard-normal-non-hint-padding-top` | `4px` |
-| `--field-decorator-standard-normal-placeholder-translate-y` | `var(--field-decorator-standard-normal-padding-top)` |
-| `--field-decorator-standard-small-padding-top` | `18px` |
-| `--field-decorator-standard-small-padding-bottom` | `2px` |
-| `--field-decorator-standard-small-icon-padding` | `18px 0 2px` |
-| `--field-decorator-standard-small-non-hint-padding-top` | `2px` |
-| `--field-decorator-standard-small-placeholder-translate-y` | `var(--field-decorator-standard-small-padding-top)` |
-| `--field-decorator-outlined-normal-padding-top` | `16px` |
-| `--field-decorator-outlined-normal-padding-bottom` | `16px` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
 | `--field-decorator-outlined-normal-padding-left` | `16px` |
 | `--field-decorator-outlined-normal-padding-right` | `16px` |
 | `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-padding` | `16px 0 16px` |
-| `--field-decorator-outlined-normal-placeholder-translate-y` | `var(--field-decorator-outlined-normal-padding-top)` |
-| `--field-decorator-outlined-small-padding-top` | `8px` |
-| `--field-decorator-outlined-small-padding-bottom` | `8px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
 | `--field-decorator-outlined-small-padding-left` | `12px` |
 | `--field-decorator-outlined-small-padding-right` | `12px` |
 | `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-padding` | `8px 0 8px` |
-| `--field-decorator-outlined-small-placeholder-translate-y` | `var(--field-decorator-outlined-small-padding-top)` |
-| `--select-scroller-background` | `#fff` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
+| `--select-scroller-background` | `var(--color-surface-container-high)` |
 | `--select-scroller-padding` | `6px 0` |
 | `--select-scroller-max-height` | `278px` |
 | `--select-scroller-border-radius` | `2px` |
+| `--select-label-font-size` | `16px` |
 | `--select-chip-margin` | `5px 5px 0` |
 | `--select-arrow-size` | `20px` |
-| `--select-standard-scroller-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
-| `--select-outlined-scroller-margin` | `0` |
+| `--select-standard-menu-margin` | `calc(var(--field-decorator-placeholder-size) * 0.75 + 14px) 0 0 0` |
 
 #### Option Variables
 
@@ -440,4 +445,6 @@ Here are the CSS variables used by the component, Styles can be customized using
 | --- | --- |
 | `--option-height` | `38px` |
 | `--option-padding` | `0 12px` |
+| `--option-font-size` | `16px` |
 | `--option-selected-background` | `var(--input-decorator-focus-color)` |
+| `--option-text-color` | `#555` |

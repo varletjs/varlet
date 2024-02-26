@@ -8,9 +8,6 @@ export interface LoadingBarOptions {
 export declare const loadingBarProps: Record<string, any>
 
 export interface ILoadingBar {
-  /** @deprecated Use setDefaultOptions to instead. */
-  mergeConfig(options: LoadingBarOptions): void
-
   start(): void
 
   finish(): void
@@ -23,3 +20,5 @@ export interface ILoadingBar {
 }
 
 export declare const LoadingBar: ILoadingBar
+
+export class _LoadingBarComponent {}

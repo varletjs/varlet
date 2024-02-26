@@ -3,20 +3,20 @@ import config from '@config'
 import AppMobile from './components/AppMobile.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
-import context from '../components/context'
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { Context } from '@varlet/ui'
+import { nextTick, onMounted, ref, watch, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { get } from 'lodash-es'
 import { getPCLocationInfo } from '@varlet/cli/client'
 import { MenuTypes, type Menu } from '../utils'
-import type { Ref } from 'vue'
+import { type SiteContext } from '../types'
 
+const context = Context as SiteContext
 const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
 const useMobile = ref(get(config, 'useMobile'))
 const mobileRedirect = get(config, 'mobile.redirect')
-
 const language: Ref<string> = ref('')
-const componentName: Ref<null | string> = ref(null)
+const componentName: Ref<string | undefined> = ref()
 const menuName: Ref<string> = ref('')
 const hash: Ref<string> = ref('')
 const doc: Ref<HTMLElement | null> = ref(null)
@@ -33,7 +33,7 @@ const init = () => {
   nextTick(() => {
     const children = document
       .querySelector('.varlet-site-sidebar')!
-      .getElementsByClassName('var-site-cell')
+      .getElementsByClassName('var-cell')
     const index = menu.value.findIndex((item) => item.doc === menuName)
 
     if (index !== -1) {
@@ -133,28 +133,13 @@ watch(
     @click-overlay="confirmClose"
   >
     <div class="varlet-site-playground-container">
-      <iframe id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" allow="clipboard-write">
+      <iframe v-if="context.showPlayground" id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" allow="clipboard-write">
       </iframe>
     </div>
   </var-popup>
 </template>
 
-<style>
-.varlet-site-playground-container {
-  width: calc(100vw - 256px);
-  max-width: 1360px;
-  height: 100vh;
-}
-
-.varlet-site-playground-iframe {
-  width: 100%;
-  height: 100%;
-}
-
-.var-site-popup__content {
-  background-color: rgba(0, 0, 0, 0)
-}
-
+<style lang="less">
 .hljs {
   background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
@@ -200,6 +185,10 @@ watch(
 .hljs-deletion, .hljs-number {
   color: var(--site-config-color-hl-group-i)
 }
+
+.var-popup__content {
+  background-color: rgba(0, 0, 0, 0)
+}
 </style>
 
 <style lang="less">
@@ -208,10 +197,6 @@ watch(
   font-family: inherit;
   padding: 0;
   white-space: pre-wrap;
-}
-
-* {
-  transition: background-color .25s, box-shadow .25s;
 }
 
 iframe {
@@ -266,14 +251,14 @@ iframe {
     &-content {
       display: flex;
       background: var(--site-config-color-body);
-      margin-left: 240px;
+      margin-left: 246px;
       min-height: calc(100vh - 60px);
     }
 
     &-doc-container {
       flex: 1 0 0;
       min-width: 500px;
-      padding: 0 25px;
+      padding: 0 32px;
       overflow-x: hidden;
 
       &::-webkit-scrollbar {
@@ -327,6 +312,7 @@ iframe {
         line-height: 40px;
         font-size: 30px;
         cursor: default;
+        margin: 30px 0;
       }
 
       h2 {
@@ -442,17 +428,34 @@ iframe {
         font-weight: normal;
       }
 
+      table strong {
+        border: 1px solid currentColor;
+        padding: 2px 8px;
+        border-radius: 12px;
+      }
+
       .card {
-        border-radius: 4px;
+        border-radius: var(--site-config-card-border-radius);
         background: var(--site-config-color-bar);
         padding: 20px;
         margin-bottom: 30px;
-        box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),  0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         &:first-child {
           margin-top: 30px;
         }
       }
+    }
+
+    &-playground-container {
+      width: calc(100vw - 256px);
+      max-width: 1660px;
+      height: 100vh;
+    }
+
+    &-playground-iframe {
+      width: 100%;
+      height: 100%;
     }
   }
 }

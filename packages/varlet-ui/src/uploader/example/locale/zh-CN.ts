@@ -1,6 +1,7 @@
 export default {
   basicUsage: '基本使用',
   preview: '文件预览',
+  customPreview: '自定义预览',
   state: '上传状态',
   maxlength: '文件数量限制',
   maxsize: '文件大小限制',
@@ -20,4 +21,5 @@ export default {
   customRender: '自定义渲染文件列表',
   useProgress: '使用进度条',
   beforeFilter: '文件列表过滤',
+  clickAction: '上传按钮点击事件',
 }

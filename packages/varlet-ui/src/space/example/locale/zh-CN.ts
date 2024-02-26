@@ -1,5 +1,5 @@
 export default {
-  baseUse: '基本用法',
+  baseUse: '基本使用',
   vertical: '垂直',
   space: '间隙',
   rightAlign: '靠右',

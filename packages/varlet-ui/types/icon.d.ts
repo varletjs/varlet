@@ -1,6 +1,6 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 
-export declare const iconProps: Record<string, any>
+export declare const iconProps: Record<keyof IconProps, any>
 
 export interface IconProps extends BasicAttributes {
   name?: string
@@ -13,6 +13,8 @@ export interface IconProps extends BasicAttributes {
 }
 
 export class Icon extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<IconProps>
+
   $props: IconProps
 }
 

@@ -1,5 +1,6 @@
 import { VNode, TeleportProps } from 'vue'
-import { VarComponent, BasicAttributes, ListenerProp, Type } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Type, SetPropsDefaults } from './varComponent'
+import { DragProps } from './drag'
 
 export type FabPosition = 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom'
 
@@ -9,7 +10,9 @@ export type FabDirection = 'top' | 'right' | 'bottom' | 'left'
 
 export type FabType = Type
 
-export declare const fabProps: Record<string, any>
+export type FabDrag = boolean | Pick<DragProps, 'attraction' | 'boundary' | 'direction'>
+
+export declare const fabProps: Record<keyof FabProps, any>
 
 export interface FabTriggerData {
   active: boolean
@@ -18,6 +21,7 @@ export interface FabTriggerData {
 export interface FabProps extends BasicAttributes {
   active?: boolean
   show?: boolean
+  drag?: FabDrag
   type?: FabType
   fixed?: boolean
   position?: FabPosition
@@ -29,13 +33,15 @@ export interface FabProps extends BasicAttributes {
   activeIcon?: string
   inactiveIconSize?: string | number
   activeIconSize?: string | number
+  inactiveIconNamespace?: string
+  activeIconNamespace?: string
   zIndex?: string | number
   top?: string | number
   bottom?: string | number
   left?: string | number
   right?: string | number
   safeArea?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   elevation?: boolean | number | string
   onClick?: ListenerProp<(active: boolean, e: Event) => void>
   onOpen?: ListenerProp<() => void>
@@ -46,6 +52,8 @@ export interface FabProps extends BasicAttributes {
 }
 
 export class Fab extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<FabProps>
+
   $props: FabProps
 
   $slots: {

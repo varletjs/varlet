@@ -7,9 +7,6 @@ export default defineConfig({
   },
   pc: {
     header: {
-      version: {
-        current: 'Vue 3',
-      },
       playground:
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000'
@@ -19,7 +16,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '开发指南',
-          'en-US': 'Developer guide',
+          'en-US': 'Developer Guide',
         },
         type: 1,
       },
@@ -34,7 +31,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '快速开始',
-          'en-US': 'Quickstart',
+          'en-US': 'Quick Start',
         },
         doc: 'quickstart',
         type: 3,
@@ -42,7 +39,7 @@ export default defineConfig({
       {
         text: {
           'zh-CN': '按需引入',
-          'en-US': 'Import on demand',
+          'en-US': 'Import On Demand',
         },
         doc: 'importOnDemand',
         type: 3,
@@ -65,8 +62,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '暗黑模式',
-          'en-US': 'Dark Mode',
+          'zh-CN': '主题系统',
+          'en-US': 'Theme System',
         },
         doc: 'themes',
         type: 2,
@@ -81,10 +78,26 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': '默认值定制',
+          'en-US': 'Defaults Customization',
+        },
+        doc: 'defaultsCustomization',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '服务端渲染',
-          'en-US': 'Server side rendering',
+          'en-US': 'Server-Side Rendering',
         },
         doc: 'serverSideRendering',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '设计资源',
+          'en-US': 'Design Resources',
+        },
+        doc: 'designResources',
         type: 3,
       },
       {
@@ -97,8 +110,8 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '从 1.x 迁移',
-          'en-US': 'Migrating from 1.x',
+          'zh-CN': '从 2.x 迁移',
+          'en-US': 'Migrate from 2.x',
         },
         doc: 'migrationGuide',
         type: 3,
@@ -255,6 +268,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'CollapseTransition 折叠动效',
+          'en-US': 'CollapseTransition',
+        },
+        doc: 'collapse-transition',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Space 间隔',
           'en-US': 'Space',
         },
@@ -351,6 +372,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Watermark 水印',
+          'en-US': 'Watermark',
+        },
+        doc: 'watermark',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },
@@ -428,6 +457,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Drag 拖拽',
+          'en-US': 'Drag',
+        },
+        doc: 'drag',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Snackbar 消息条',
           'en-US': 'Snackbar',
         },
@@ -440,6 +477,14 @@ export default defineConfig({
           'en-US': 'ActionSheet',
         },
         doc: 'action-sheet',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'FloatingPanel 浮动面板',
+          'en-US': 'FloatingPanel',
+        },
+        doc: 'floating-panel',
         type: 2,
       },
       {
@@ -488,6 +533,14 @@ export default defineConfig({
           'en-US': 'Menu',
         },
         doc: 'menu',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'MenuSelect 菜单选择器',
+          'en-US': 'MenuSelect',
+        },
+        doc: 'menu-select',
         type: 2,
       },
       {

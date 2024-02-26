@@ -4,11 +4,11 @@
 
 An action sheet pops up to give the user the ability to select options.
 `ActionSheet` Functional and component use methods are provided, and there is no essential difference between the two effects and parameters.
-The function returns a `Promise`，on selection return `action`，Click modal close to return `close`.
+The function returns a `Promise`, on selection return `action`. Click modal close to return `close`.
 
-## Functional
+## Function Call
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
@@ -32,7 +32,7 @@ async function createBasic() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -66,7 +66,7 @@ async function handleSelect() {
     title: 'Choose whichever you like'
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -102,7 +102,7 @@ async function handleSelect() {
     ]
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -160,22 +160,22 @@ async function handleSelect() {
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#00c48f',
+        color: 'var(--color-success)',
       },
       {
         name: 'Item 02',
         icon: 'notebook',
-        color: '#ff9800',
+        color: 'var(--color-warning)',
       },
       {
         name: 'Item 03',
         icon: 'wifi',
-        color: '#00afef',
+        color: 'var(--color-info)',
       },
     ]
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -210,7 +210,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -248,7 +248,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -288,7 +288,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -302,7 +302,7 @@ function handleSelect(action) {
 </template>
 ```
 
-### Disable close on click action
+### Disable Close On Click Action
 
 ```html
 <script setup>
@@ -326,7 +326,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -353,22 +353,22 @@ const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
-    color: '#00c48f',
+    color: 'var(--color-success)',
   },
   {
     name: 'Item 02',
     icon: 'notebook',
-    color: '#ff9800',
+    color: 'var(--color-warning)',
   },
   {
     name: 'Item 03',
     icon: 'wifi',
-    color: '#00afef',
+    color: 'var(--color-info)',
   },
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`Your selected is:${action.name}`)
 }
 </script>
 
@@ -398,18 +398,18 @@ function handleSelect(action) {
 | `close-on-click-action`  | Whether to close the actions sheet when clicking action                                                        | _boolean_             | `true`       |
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet                                                         | _boolean_             | `true`       |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
-| `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to']_ | `-`          |
+| `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to'] \| false_ | `body`          |
 
 ### Events
 
 | Event           | Description                                          | Arguments        |
 | --------------- | ---------------------------------------------------- | ---------------- |
-| `select`        | Triggered when the action is click                   | `action: Action` |
-| `open`          | Triggered when the action sheet is open              | `-`              |
-| `opened`        | Triggered when the action sheet open-animation ends  | `-`              |
-| `close`         | Triggered when the action sheet is close             | `-`              |
-| `closed`        | Triggered when the action sheet close-animation ends | `-`              |
-| `click-overlay` | Triggered when you click on overlay                  | `-`              |
+| `select`        | Triggered when selecting an action sheet                  | `action: Action` |
+| `open`          | Triggered when opening an action sheet              | `-`              |
+| `opened`        | Triggered when an action sheet open-animation ends  | `-`              |
+| `close`         | Triggered when closing an action sheet            | `-`              |
+| `closed`        | Triggered when an action sheet close-animation ends | `-`              |
+| `click-overlay` | Triggered when clicking on overlay                  | `-`              |
 
 ### Methods
 
@@ -446,8 +446,9 @@ function handleSelect(action) {
 | ----------- | ----------------------------------- | --------- | ------- |
 | `name`      | Action name                         | _string_  | `-`     |
 | `color`     | Action text color                   | _string_  | `-`     |
-| `icon`      | Icon，support network image address | _string_  | `-`     |
+| `icon`      | Icon, support network image address | _string_  | `-`     |
 | `iconSize`  | Icon size                           | _string_  | `-`     |
+| `namespace` | Icon namespace | _string_ | `-` |
 | `className` | Class name                          | _string_  | `-`     |
 | `disabled`  | Disable or not option               | _boolean_ | `false` |
 
@@ -460,11 +461,12 @@ function handleSelect(action) {
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                                    | Default                      |
 | ------------------------------------------- | ---------------------------- |
 | `--action-sheet-border-radius`              | `2px`                        |
+| `--action-sheet-border-top`                 | `none`                       |
 | `--action-sheet-background`                 | `#fff`                       |
 | `--action-sheet-title-color`                | `#888`                       |
 | `--action-sheet-title-padding`              | `10px 16px`                  |

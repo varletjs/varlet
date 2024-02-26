@@ -1,5 +1,6 @@
 import Button from '..'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test button use', () => {
   const app = createApp({}).use(Button)

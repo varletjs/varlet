@@ -6,4 +6,5 @@ export default {
   backgroundColor: '背景颜色',
   avatarHorizontalGroup: '头像水平分组',
   avatarVerticalGroup: '头像垂直分组',
+  avatarHoverable: '头像可悬停',
 }

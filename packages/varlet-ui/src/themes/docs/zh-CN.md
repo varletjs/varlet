@@ -1,8 +1,17 @@
-# 暗黑模式
+# 主题系统
 
 ### 介绍
 
-组件库第一方提供了暗黑模式的主题，暗黑模式的优势在于在弱光环境下具有更高的可读性。
+组件库第一方提供了 `Material Design 2 Light`, `Material Design 2 Dark`, `Material Design 3 Light`, `Material Design 3 Dark` 四套主题。
+
+### 可用主题
+
+| 主题名称 | 主题包 |
+| --- | --- |
+| `Material Design 2 亮色` | _-_ |
+| `Material Design 2 暗色` | _Themes.dark_ |
+| `Material Design 3 亮色` | _Themes.md3Light_ |
+| `Material Design 3 暗色` | _Themes.md3Dark_ |
 
 ### 切换主题
 
@@ -10,17 +19,15 @@
 <!-- playground-ignore -->
 <script setup>
 import { StyleProvider, Themes } from '@varlet/ui'
-
-let currentTheme = null
-
-function toggleTheme() {
-  currentTheme = currentTheme ? null : Themes.dark
-  StyleProvider(currentTheme)
-}
 </script>
 
 <template>
-  <var-button block @click="toggleTheme">切换主题</var-button>
+  <var-space direction="column" size="large">
+    <var-button block @click="() => StyleProvider(null)">Material Design 2 亮色</var-button>
+    <var-button block @click="() => StyleProvider(Themes.dark)">Material Design 2 暗色</var-button>
+    <var-button block @click="() => StyleProvider(Themes.md3Light)">Material Design 3 亮色</var-button>
+    <var-button block @click="() => StyleProvider(Themes.md3Dark)">Material Design 3 暗色</var-button>
+  </var-space>
 </template>
 ```
 

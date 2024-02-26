@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test floating-panel component slots > test floating-panel component default 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 100px; transform: translateY(calc(100% - 0px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content">Hello Varlet!</div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchor 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchor 2`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 200px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchor 3`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchor 4`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 200px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchors changed 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel anchors changed 2`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 50px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel contentDraggable 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel contentDraggable 2`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 200px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel contentDraggable 3`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 200px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
+
+exports[`test floating-panel components props > test floating-panel duration 1`] = `
+<body
+  class=""
+>
+  <div
+    class="var-floating-panel var-elevation--3"
+    style="height: 100px; transform: translateY(calc(100% - 0px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function), background-color 0.25s;"
+  >
+    <div
+      class="var-floating-panel__header"
+    >
+      <div
+        class="var-floating-panel__header-toolbar"
+      />
+    </div>
+    <div
+      class="var-floating-panel__content"
+    >
+      
+      
+    </div>
+  </div>
+  
+</body>
+`;

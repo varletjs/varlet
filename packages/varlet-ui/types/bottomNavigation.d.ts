@@ -1,8 +1,8 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { ButtonProps } from './button'
 import { VNode } from 'vue'
 
-export declare const bottomNavigationProps: Record<string, any>
+export declare const bottomNavigationProps: Record<keyof BottomNavigationProps, any>
 
 export interface BottomNavigationProps extends BasicAttributes {
   active?: number | string
@@ -13,13 +13,15 @@ export interface BottomNavigationProps extends BasicAttributes {
   activeColor?: string
   inactiveColor?: string
   fabProps?: Partial<ButtonProps>
-  onChange?: (active: string | number) => void
-  'onUpdate:active'?: (active: string | number) => void
-  onBeforeChange?: (active: string | number) => any | Promise<any>
-  onFabClick?: () => void
+  onChange?: ListenerProp<(active: string | number) => void>
+  onBeforeChange?: ListenerProp<(active: string | number) => any | Promise<any>>
+  onFabClick?: ListenerProp<() => void>
+  'onUpdate:active'?: ListenerProp<(active: string | number) => void>
 }
 
 export class BottomNavigation extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BottomNavigationProps>
+
   $props: BottomNavigationProps
 
   $slots: {

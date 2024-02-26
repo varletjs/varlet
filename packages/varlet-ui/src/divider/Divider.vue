@@ -6,79 +6,71 @@
         n('$--box'),
         [vertical, n('--vertical')],
         [withText, n('--with-text')],
-        [isInset, n('--inset')],
+        [withPresetInset, n('--inset')],
         [dashed, n('--dashed')],
         [hairline, n('--hairline')]
       )
     "
     :style="style"
   >
-    <slot>
+    <slot v-if="!vertical">
       <span :class="n('text')" v-if="description">{{ description }}</span>
     </slot>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onUpdated, toRefs } from 'vue'
+import { defineComponent, computed, ref, onUpdated } from 'vue'
 import { toSizeUnit } from '../utils/elements'
-import { isBoolean, toNumber } from '@varlet/shared'
+import { toNumber, isBoolean } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('divider')
+const { name, n, classes } = createNamespace('divider')
 
 export default defineComponent({
-  name: 'VarDivider',
+  name,
   props,
   setup(props, { slots }) {
-    const state = reactive({ withText: false })
-    const isInset = computed(() => {
-      return isBoolean(props.inset) ? props.inset : true
+    const withText = ref(false)
+    const withPresetInset = computed(() => {
+      // the inset is only effective in horizontal mode
+      const { vertical, inset } = props
+      return !vertical && inset === true
     })
-
     const style = computed(() => {
       const { inset, vertical, margin } = props
-      const baseStyle = { margin }
 
-      if (isBoolean(inset) || inset === 0) {
-        return { ...baseStyle }
+      if (isBoolean(inset) || vertical) {
+        return { margin }
       }
 
       const _inset = toNumber(inset)
       const absInsetWithUnit = Math.abs(_inset) + (inset + '').replace(_inset + '', '')
 
-      return vertical
-        ? {
-            ...baseStyle,
-            height: `calc(80% - ${toSizeUnit(absInsetWithUnit)})`,
-          }
-        : {
-            ...baseStyle,
-            width: `calc(100% - ${toSizeUnit(absInsetWithUnit)})`,
-            left: _inset > 0 ? toSizeUnit(absInsetWithUnit) : toSizeUnit(0),
-          }
+      return {
+        margin,
+        width: `calc(100% - ${toSizeUnit(absInsetWithUnit)})`,
+        left: _inset > 0 ? toSizeUnit(absInsetWithUnit) : toSizeUnit(0),
+      }
     })
 
-    const checkHasText = () => {
-      state.withText = Boolean(slots.default) || Boolean(props.description)
+    onSmartMounted(checkHasText)
+    onUpdated(checkHasText)
+
+    function checkHasText() {
+      // the default slot or description is only effective in horizontal mode
+      const { description, vertical } = props
+      withText.value = (slots.default || description != null) && !vertical
     }
-
-    onSmartMounted(() => {
-      checkHasText()
-    })
-
-    onUpdated(() => {
-      checkHasText()
-    })
 
     return {
       n,
       classes,
-      ...toRefs(state),
+      withText,
       style,
-      isInset,
+      withPresetInset,
     }
   },
 })

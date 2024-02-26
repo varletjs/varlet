@@ -1,15 +1,15 @@
 <template>
   <div
     ref="host"
-    :class="n()"
+    :class="classes(n(), n('$--box'))"
     @click="handleHostClick"
     @mouseenter="handleHostMouseenter"
     @mouseleave="handleHostMouseleave"
   >
     <slot />
 
-    <teleport :to="teleport">
-      <transition :name="n()" @after-enter="onOpened" @after-leave="onClosed">
+    <Teleport :to="teleport === false ? undefined : teleport" :disabled="teleportDisabled || teleport === false">
+      <transition :name="n()" @after-enter="onOpened" @after-leave="handleClosed">
         <div
           ref="popover"
           :style="{
@@ -19,6 +19,8 @@
           :class="
             classes(
               n('menu'),
+              n('$--box'),
+              popoverClass,
               [defaultStyle, n('--menu-background-color')],
               [defaultStyle, formatElevation(elevation, 3)]
             )
@@ -31,23 +33,24 @@
           <slot name="menu" />
         </div>
       </transition>
-    </teleport>
+    </Teleport>
   </div>
 </template>
 
 <script lang="ts">
-import { createNamespace, formatElevation } from '../utils/components'
+import { createNamespace, formatElevation, useTeleport } from '../utils/components'
 import { defineComponent } from 'vue'
 import { props } from './props'
 import { usePopover } from './usePopover'
 import { toSizeUnit } from '../utils/elements'
 
-const { n, classes } = createNamespace('menu')
+const { name, n, classes } = createNamespace('menu')
 
 export default defineComponent({
-  name: 'VarMenu',
+  name,
   props,
   setup(props) {
+    const { disabled: teleportDisabled } = useTeleport()
     const {
       popover,
       host,
@@ -60,6 +63,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       // expose
       open,
       // expose
@@ -74,6 +78,7 @@ export default defineComponent({
       hostSize,
       show,
       zIndex,
+      teleportDisabled,
       formatElevation,
       toSizeUnit,
       n,
@@ -84,6 +89,7 @@ export default defineComponent({
       handlePopoverMouseenter,
       handlePopoverMouseleave,
       handlePopoverClose,
+      handleClosed,
       resize,
       open,
       close,
@@ -93,7 +99,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './menu';
 @import '../styles/elevation';
 @import '../styles/common';
+@import './menu';
 </style>

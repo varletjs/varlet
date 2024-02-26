@@ -1,39 +1,26 @@
-export function positionValidator(position: string): boolean {
-  const validPositions = ['left', 'center', 'right']
-  return validPositions.includes(position)
-}
+import { type PropType } from 'vue'
+
+export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
 export const props = {
-  color: {
-    type: String,
-  },
-  textColor: {
-    type: String,
-  },
-  title: {
-    type: String,
-  },
+  color: String,
+  textColor: String,
+  title: String,
   titlePosition: {
-    type: String,
+    type: String as PropType<AppBarTitlePosition>,
     default: 'left',
-    validator: positionValidator,
   },
   elevation: {
     type: [Boolean, String, Number],
     default: true,
   },
-  round: {
-    type: Boolean,
-    default: false,
+  round: Boolean,
+  image: String,
+  imageLinearGradient: String,
+  safeAreaTop: Boolean,
+  zIndex: {
+    type: [Number, String] as PropType<number | string>,
+    default: 1,
   },
-  image: {
-    type: String,
-  },
-  imageLinearGradient: {
-    type: String,
-  },
-  safeAreaTop: {
-    type: Boolean,
-    default: false,
-  },
+  fixed: Boolean,
 }

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const countdownProps: Record<string, any>
+export declare const countdownProps: Record<keyof CountdownProps, any>
 
 export interface CountdownTimeData {
   days: number
@@ -20,6 +20,8 @@ export interface CountdownProps extends BasicAttributes {
 }
 
 export class Countdown extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CountdownProps>
+
   $props: CountdownProps
 
   $slots: {

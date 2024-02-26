@@ -71,11 +71,12 @@ Use `slot` to set custom countdown style.
 
 <style>
 .countdown-example-block {
-  background: #ff9f00;
-  color: white;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  padding: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -180,3 +181,11 @@ Use ref to get CountDown instance and call instance methods.
 | `start` | Start countdown | `-`       | `-` |
 | `pause` | Pause countdown | `-`       | `-` |
 | `reset` | Reset countdown | `-`       | `-` |
+
+### Style Variables
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+| Variable | Default |
+| --- | --- |
+| `--countdown-text-color`     | `var(--color-text)`   |
+| `--countdown-text-font-size` | `var(--font-size-lg)` |

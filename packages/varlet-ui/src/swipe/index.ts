@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Swipe from './Swipe.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as swipeProps } from './props'
 
-Swipe.install = function (app: App) {
-  app.component(Swipe.name, Swipe)
-}
+withInstall(Swipe)
+withPropsDefaultsSetter(Swipe, swipeProps)
 
-export { props as swipeProps } from './props'
+export { swipeProps }
 
 export const _SwipeComponent = Swipe
 

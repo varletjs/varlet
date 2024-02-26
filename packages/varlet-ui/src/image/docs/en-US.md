@@ -6,7 +6,7 @@ Components provide more convenient size, fill mode, rounded corner Settings,
 ripple effect enhanced picture click interactive experience.
 Supports `Lazy load`, `loading images`, `error images`, and default Settings for applying Lazy instructions.
 
-### Basic Use
+### Basic Usage
 
 ```html
 <template>
@@ -24,17 +24,11 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
+
     <var-image 
       width="85px" 
       height="85px"
       fit="cover" 
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
-    />
-
-    <var-image 
-      width="85px"
-      height="85px" 
-      fit="contain"
       src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
     />
 
@@ -45,6 +39,13 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     />
 
+    <var-image 
+      width="85px"
+      height="85px" 
+      fit="contain"
+      src="https://varlet.gitee.io/varlet-ui/cat.jpg" 
+    />
+    
     <var-image 
       width="85px"
       height="85px" 
@@ -105,7 +106,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
-### Set the lazy loading state
+### Set Lazy Loading State
 
 ```html
 <!-- playground-ignore -->
@@ -121,13 +122,23 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 </template>
 ```
 
-### Load failure slot
+### Load Failure Slot
 
 ```html
 <template>
-   <var-image src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+  <var-image 
+    width="22.666vw" 
+    height="22.666vw" 
+    src="https://varlet.gitee.io/varlet-ui/ca.jpg"
+  >
     <template #error>
-      <var-result type="error" title="Load failure" />
+      <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
+        <path
+          fill="currentColor"
+          d="M21,5V11.59L18,8.58L14,12.59L10,8.59L6,12.59L3,9.58V5A2,2 0 0,1 5,3H19A2,2 0 0,1 21,5M18,11.42L21,14.43V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V12.42L6,15.41L10,11.41L14,15.41"
+        >
+        </path>
+      </svg>
     </template>
   </var-image>
 </template>
@@ -200,8 +211,10 @@ import logo from '../../assets/logo.png'
 | `src` | Image src                                                                      | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
 | `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
-| `width` | Image title text, the same as the native attribute of the `img` tag            | _string \| number_ | `-` |
-| `height` | Image height                                                                   | _string \| number_ | `-` |
+| `title`   | Image title text, the same as with the native attributes of the `img` tag             | _string_ | `-` |
+| `referrerpolicy`  | Indicate which referrer to use when fetching the resource. This attribute requires attention to browser compatibility, see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)             | _string_ | `-` |
+| `width` | Image width            | _string \| number_ | `-` |
+| `height` | Image height          | _string \| number_ | `-` |
 | `radius` | Image radius                                                                   | _string \| number_ | `-` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |

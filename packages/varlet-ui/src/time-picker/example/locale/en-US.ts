@@ -3,6 +3,7 @@ export default {
   hour24: '24hr Format',
   readonly: 'Readonly',
   timeLimit: 'Time Limit',
-  custom: 'Custom',
-  showSecond: 'show-seconds',
+  showSecond: 'Show Seconds',
+  actions: 'Actions Slots',
+  action: 'ACTION',
 }

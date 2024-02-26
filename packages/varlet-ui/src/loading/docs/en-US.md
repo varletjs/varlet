@@ -22,11 +22,11 @@ Loading component for performing animations when data is loaded.
 ```html
 <template>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="#00afef" />
-    <var-loading type="cube" color="#00c48f" />
-    <var-loading type="wave" color="#ff9f00" />
-    <var-loading type="rect" color="#f44336" />
-    <var-loading type="disappear" color="#aaa" />
+    <var-loading type="circle" color="var(--color-info)" />
+    <var-loading type="cube" color="var(--color-success)" />
+    <var-loading type="wave" color="var(--color-warning)" />
+    <var-loading type="rect" color="var(--color-danger)" />
+    <var-loading type="disappear" color="var(--color-text-disabled)" />
   </var-space>
 </template>
 ```
@@ -88,10 +88,12 @@ const loading = ref(false)
 | `description`    | Description of the loading | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider)
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider)
 
 | Variable | Default |
 | --- | --- |
-| `--loading-color`       | `var(--loading-color)` |
-| `--loading-opacity` | `0.38` |
-| `--loading-desc-margin` | `8px 0 0` |
+| `--loading-color`       | `var(--color-primary)` |
+| `--loading-opacity`     | `0.38`                 |
+| `--loading-desc-margin` | `8px 0 0`              |
+| `--loading-desc-color`  | `var(--color-primary)` |

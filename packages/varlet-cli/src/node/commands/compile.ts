@@ -15,8 +15,9 @@ export function removeDir() {
 export async function runTask(taskName: string, task: () => any) {
   const s = createSpinner().start({ text: `Compiling ${taskName}` })
   try {
+    const start = performance.now()
     await task()
-    s.success({ text: `Compilation ${taskName} completed!` })
+    s.success({ text: `Compilation ${taskName} completed! (${Math.ceil(performance.now() - start)}ms)` })
   } catch (e: any) {
     s.error({ text: `Compilation ${taskName} failed!` })
     logger.error(e.toString())
@@ -25,8 +26,8 @@ export async function runTask(taskName: string, task: () => any) {
 
 export async function compile() {
   process.env.NODE_ENV = 'compile'
-
   await removeDir()
+
   await Promise.all([runTask('types', compileTypes), runTask('template highlight', compileTemplateHighlight)])
 
   process.env.BABEL_MODULE = 'module'

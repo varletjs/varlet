@@ -64,7 +64,7 @@ Set `simple` to `false` when you use medium and large screen devices, preview se
 </template>
 ```
 
-### Enable page number to jump quickly
+### Enable Page Number To Jump Quickly
 
 Use `show-quick-jumper` prop to enable page number to jump quickly.
 
@@ -166,13 +166,13 @@ Use `show-size-changer` hide size changer and use `size-option` prop set the num
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
 | `--pagination-text-color` | `#555` |
 | `--pagination-font-size` | `var(--font-size-md)` |
-| `--pagination-active-color` | `#fff` |
+| `--pagination-active-color` | `var(--color-on-primary)` |
 | `--pagination-active-bg-color` | `var(--color-primary)` |
 | `--pagination-hover-bg-color` | `rgba(85, 85, 85, 0.15)` |
 | `--pagination-total-margin` | `0 12px` |
@@ -181,10 +181,8 @@ Here are the CSS variables used by the component, Styles can be customized using
 | `--pagination-item-height` | `32px` |
 | `--pagination-item-margin` | `0 6px` |
 | `--pagination-item-border-radius` | `4px` |
-| `--pagination-list-bg-color` | `#fff` |
-| `--pagination-list-active-bg-color` | `#edf5ff` |
-| `--pagination-list-active-color` | `var(--color-primary)` |
 | `--pagination-input-width` | `32px` |
 | `--pagination-disabled-color` | `var(--color-text-disabled)` |
 | `--pagination-bg-disabled-color` | `var(--color-disabled)` |
 | `--pagination-size-line-height` | `24px` |
+| `--pagination-size-padding` | `0 6px` |

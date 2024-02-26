@@ -1,16 +1,27 @@
 <script setup>
-import VarButton from '../../button'
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import dark from '../../themes/dark'
-import { use, pack } from './locale'
-
-const toggleTheme = () => window.toggleTheme()
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { use, t } from './locale'
 
 watchLang(use)
-watchDarkMode(dark)
+onThemeChange()
+
+function setTheme(theme) {
+  window.toggleTheme(theme)
+}
 </script>
 
 <template>
-  <app-type>{{ pack.toggleTheme }}</app-type>
-  <var-button block @click="toggleTheme">{{ pack.toggleTheme }}</var-button>
+  <app-type>{{ t('toggleTheme') }}</app-type>
+  <var-space direction="column" size="large">
+    <var-button type="primary" block @click="() => setTheme('lightTheme')"
+      >Material Design 2 {{ t('light') }}</var-button
+    >
+    <var-button type="primary" block @click="() => setTheme('darkTheme')">Material Design 2 {{ t('dark') }}</var-button>
+    <var-button type="primary" block @click="() => setTheme('md3LightTheme')"
+      >Material Design 3 {{ t('light') }}</var-button
+    >
+    <var-button type="primary" block @click="() => setTheme('md3DarkTheme')"
+      >Material Design 3 {{ t('dark') }}</var-button
+    >
+  </var-space>
 </template>

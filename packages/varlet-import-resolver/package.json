@@ -1,0 +1,49 @@
+{
+  "name": "@varlet/import-resolver",
+  "version": "3.0.4",
+  "type": "module",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "description": "varlet import resolver for unplugin-vue-components and unplugin-auto-import",
+  "keywords": [
+    "varlet",
+    "resolver",
+    "import",
+    "unplugin-vue-components",
+    "unplugin-auto-import"
+  ],
+  "author": "haoziqaq <357229046@qq.com>",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "tsconfig.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/varletjs/varlet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/varletjs/varlet/issues"
+  },
+  "scripts": {
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
+    "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean"
+  },
+  "dependencies": {
+    "@varlet/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "typescript": "^5.1.5",
+    "tsup": "7.2.0"
+  }
+}

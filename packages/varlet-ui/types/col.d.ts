@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const colProps: Record<string, any>
+export declare const colProps: Record<keyof ColProps, any>
 
 export type ColSizeDescriptor = {
   span?: number | string
@@ -23,21 +23,25 @@ export type ColJustify = 'start' | 'end' | 'center' | 'space-around' | 'space-be
 
 export type ColDirection = 'row' | 'column'
 
+export type ColBreakpoint = string | number | ColSizeDescriptor
+
 export interface ColProps extends BasicAttributes {
   span?: string | number
   offset?: string | number
   direction?: ColDirection
   justify?: ColJustify
   align?: ColAlign
-  xs?: string | number | ColSizeDescriptor | undefined
-  sm?: string | number | ColSizeDescriptor | undefined
-  md?: string | number | ColSizeDescriptor | undefined
-  lg?: string | number | ColSizeDescriptor | undefined
-  xl?: string | number | ColSizeDescriptor | undefined
+  xs?: ColBreakpoint
+  sm?: ColBreakpoint
+  md?: ColBreakpoint
+  lg?: ColBreakpoint
+  xl?: ColBreakpoint
   onClick?: ListenerProp<(e: Event) => void>
 }
 
 export class Col extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<ColProps>
+
   $props: ColProps
 
   $slots: {

@@ -4,7 +4,8 @@ import Col from '../../col'
 import VarCol from '../../col/Col'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { delay, mockConsole } from '../../utils/jest'
+import { delay, mockConsole } from '../../utils/test'
+import { expect } from 'vitest'
 
 test('test row and col use', () => {
   const app = createApp({}).use(Row).use(Col)
@@ -27,10 +28,24 @@ describe('test row and col component props', () => {
     wrapper.unmount()
   })
 
+  test('test row and col gutter array', () => {
+    const wrapper = mount(VarRow, {
+      props: {
+        gutter: [20, 20],
+      },
+      slots: {
+        default: () => [12, 12].map((span) => h(VarCol, { span })),
+      },
+    })
+
+    expect(wrapper.find('.var-row').attributes('style')).toContain('margin: -10px -10px;')
+    wrapper.unmount()
+  })
+
   test('test row and col gutter computed', async () => {
     const wrapper = mount(VarRow, {
       props: {
-        gutter: 20,
+        gutter: [20, 20],
       },
       slots: {
         default: () => [12, 12].map((span) => h(VarCol, { span })),

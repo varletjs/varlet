@@ -4,10 +4,10 @@
 
 | Prop   | Description | Type               | Default |
 | ------ | ----------- | ------------------ | ------- |
-| `name` | view's name | _string \| number_ | `index` |
+| `name` | View's name | _string \| number_ | `-` |
 
 ### Slots
 
 | Name | Description | SlotProps |
 | --------- | ----------------- | --------- |
-| `default` | tabItem's content | `-`       |
+| `default` | TabItem's content | `-`       |

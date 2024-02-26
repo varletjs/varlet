@@ -1,9 +1,10 @@
 # Ripple Directive
 
 ### Intro
-Causes the element to generate a ripple spread effect when clicked.
 
-### Basic Use
+When the element is clicked, a water wave spreading effect is generated.
+
+### Basic Usage
 
 ```html
 <template>
@@ -18,9 +19,9 @@ Causes the element to generate a ripple spread effect when clicked.
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest)
 }
 </style>
 ```
@@ -29,7 +30,7 @@ Causes the element to generate a ripple spread effect when clicked.
 
 ```html
 <template>
-  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: '#2979ff' }">
+  <div class="ripple-example-block var-elevation--2" v-ripple="{ color: 'var(--color-warning)' }">
     click
   </div>
 </template>
@@ -42,9 +43,9 @@ Causes the element to generate a ripple spread effect when clicked.
   height: 100px;
   user-select: none;
   cursor: pointer;
-  color: #888;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -64,11 +65,11 @@ Causes the element to generate a ripple spread effect when clicked.
   justify-content: center;
   align-items: center;
   height: 100px;
-  color: #888;
   user-select: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   transition: background-color 0.25s;
+  background-color: var(--color-surface-container-highest);
 }
 </style>
 ```
@@ -83,7 +84,8 @@ Causes the element to generate a ripple spread effect when clicked.
 | `disabled` | Whether to disable ripple | _boolean_ | `false` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

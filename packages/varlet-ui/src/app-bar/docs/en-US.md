@@ -1,5 +1,9 @@
 # AppBar
 
+### Intro
+
+Provide navigation function for the page, often used at the top of the page.
+
 ### Basic Usage
 
 Set the title of the app bar through the `title` prop.
@@ -10,11 +14,33 @@ Set the title of the app bar through the `title` prop.
 </template>
 ```
 
-### Add Slots At Title
+### Use Border Radius
+
+Turn on rounded border with the `round` prop.
 
 ```html
 <template>
-   <var-app-bar>Add Slots At Title</var-app-bar>
+   <var-app-bar title="Use Border Radius" title-position="center" round />
+</template>
+```
+
+### Custom Background Color
+
+```html
+<template>
+   <var-app-bar
+     title="title"
+     title-position="center"
+     color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
+   />
+</template>
+```
+
+### Add Title Slot
+
+```html
+<template>
+   <var-app-bar>Add Title Slot</var-app-bar>
 </template>
 ```
 
@@ -53,28 +79,6 @@ Set the title of the app bar through the `title` prop.
       </var-menu>
     </template>
   </var-app-bar>
-</template>
-```
-
-### Use Border Radius
-
-Turn on rounded border with the `round` prop.
-
-```html
-<template>
-   <var-app-bar title="Use Border Radius" title-position="center" round />
-</template>
-```
-
-### Custom Background Color
-
-```html
-<template>
-   <var-app-bar
-     title="title"
-     title-position="center"
-     color="linear-gradient(90deg, rgba(72,176,221,1) 0%, rgba(0,208,161,1) 100%)"
-   />
 </template>
 ```
 
@@ -138,8 +142,10 @@ const active = ref(0)
 | `color`          | Background                                           | _string_ | `-`     |
 | `text-color`     | Text color                                           | _string_ | `-`     |
 | `title`          | Title                                                | _string_ | -       |
-| `title-position` | Title location,Can be set to `left`,`center`,`right` | _string_ | `left`  |
- | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `title-position` | Title location, can be set to `left`, `center`, `right` | _string_ | `left`  |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `fixed`          | Whether to fixed to the top     | _boolean_ | `false` |
+| `z-index`          | AppBar element z-index                            | _number \| string_ | `1` |
 | `round`          | Whether to use rounded border                        | _boolean_ | `false` |
 | `image`          | Background image                            | _string_ | `-` |
 | `image-linear-gradient` | Background image linear gradient | _string_ | `-` |
@@ -155,7 +161,8 @@ const active = ref(0)
 | `content` | Insert the content to the extra content of the app bar   | `-` |
 
 ### Style Variables
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |

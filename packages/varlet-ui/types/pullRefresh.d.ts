@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const pullRefreshProps: Record<string, any>
+export declare const pullRefreshProps: Record<keyof PullRefreshProps, any>
 
 export interface PullRefreshProps extends BasicAttributes {
   modelValue?: boolean
@@ -18,6 +18,8 @@ export interface PullRefreshProps extends BasicAttributes {
 }
 
 export class PullRefresh extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<PullRefreshProps>
+
   $props: PullRefreshProps
 
   $slots: {

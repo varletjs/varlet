@@ -1,9 +1,11 @@
 import Ellipsis from './Ellipsis.vue'
-import type { App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as ellipsisProps } from './props'
 
-Ellipsis.install = function (app: App) {
-  app.component(Ellipsis.name, Ellipsis)
-}
+withInstall(Ellipsis)
+withPropsDefaultsSetter(Ellipsis, ellipsisProps)
+
+export { ellipsisProps }
 
 export const _EllipsisComponent = Ellipsis
 

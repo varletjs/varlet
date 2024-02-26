@@ -32,7 +32,7 @@ async function createBasic() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -66,7 +66,7 @@ async function handleSelect(){
     title: '选择一个你喜欢的吧' 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -102,7 +102,7 @@ async function handleSelect() {
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -161,22 +161,22 @@ async function handleSelect() {
       {
         name: 'Item 01',
         icon: 'account-circle',
-        color: '#00c48f',
+        color: 'var(--color-success)',
       },
       {
         name: 'Item 02',
         icon: 'notebook',
-        color: '#ff9800',
+        color: 'var(--color-warning)',
       },
       {
         name: 'Item 03',
         icon: 'wifi',
-        color: '#00afef',
+        color: 'var(--color-info)',
       },
     ] 
   })
   
-  action !== 'close' && Snackbar(`${action.name}`)
+  action !== 'close' && Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -211,7 +211,7 @@ const actions = ref([
 ])
 
 function handleSelect(action){
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -249,7 +249,7 @@ const actions = ref([
 ])
 
 function handleSelect(action){
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -289,7 +289,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -327,7 +327,7 @@ const actions = ref([
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -354,22 +354,22 @@ const actions = ref([
   {
     name: 'Item 01',
     icon: 'account-circle',
-    color: '#00c48f',
+    color: 'var(--color-success)',
   },
   {
     name: 'Item 02',
     icon: 'notebook',
-    color: '#ff9800',
+    color: 'var(--color-warning)',
   },
   {
     name: 'Item 03',
     icon: 'wifi',
-    color: '#00afef',
+    color: 'var(--color-info)',
   },
 ])
 
 function handleSelect(action) {
-  Snackbar(`${action.name}`)
+  Snackbar(`您选择的是:${action.name}`)
 }
 </script>
 
@@ -399,13 +399,13 @@ function handleSelect(action) {
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
 | `safe-area`   | 是否开启底部安全区适配      | _boolean_             | `false`  |
-| `teleport` | 动作面板挂载的位置 | _TeleportProps['to']_ | `-` |
+| `teleport` | 动作面板挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
 ### 事件
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `select` | 选择选项时出发 | `action: Action` |
+| `select` | 选择选项时触发 | `action: Action` |
 | `open` | 打开动作面板时触发 | `-` |
 | `opened` | 打开动作面板动画结束时触发 | `-` |
 | `close` | 关闭动作面板时触发 | `-` |
@@ -450,6 +450,7 @@ function handleSelect(action) {
 | `color` | 选项文字颜色 | _string_ | `-` |
 | `icon` | icon 图标，支持网络图片地址 | _string_ | `-` |
 | `iconSize` | 图标尺寸 | _string_ | `-` |
+| `namespace` | 图标命名空间 | _string_ | `-` |
 | `className` | 选项附加类名 | _string_ | `-` |
 | `disabled` | 是否禁用选项 | _boolean_ | `false` |
 
@@ -467,6 +468,7 @@ function handleSelect(action) {
 | 变量名 | 默认值 |
 | --- | --- |
 | `--action-sheet-border-radius` | `2px` |
+| `--action-sheet-border-top` | `none` |
 | `--action-sheet-background` | `#fff` |
 | `--action-sheet-title-color` | `#888` |
 | `--action-sheet-title-padding` | `10px 16px` |

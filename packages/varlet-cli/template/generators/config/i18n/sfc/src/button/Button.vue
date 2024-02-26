@@ -1,5 +1,5 @@
 <template>
-  <button class="var-button" :style="{ background: color }" @click="handleClick">
+  <button class="va-button" :style="{ background: color }" @click="handleClick">
     {{ pack.button }}
     <slot />
   </button>
@@ -12,7 +12,7 @@ import { defineComponent, PropType } from 'vue'
 import { pack } from '../locale'
 
 export default defineComponent({
-  name: 'VarButton',
+  name: 'VaButton',
   props: {
     color: {
       type: String,

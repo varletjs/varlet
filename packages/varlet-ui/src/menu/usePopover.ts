@@ -1,13 +1,16 @@
-import flip from '@popperjs/core/lib/modifiers/flip'
-import offset from '@popperjs/core/lib/modifiers/offset'
-import { useClickOutside } from '@varlet/use'
-import { doubleRaf, toPxNum, getStyle } from '../utils/elements'
-import { call, useVModel } from '../utils/components'
+import flip from '@popperjs/core/lib/modifiers/flip.js'
+import offset from '@popperjs/core/lib/modifiers/offset.js'
+import computeStyles from '@popperjs/core/lib/modifiers/computeStyles.js'
+import { onWindowResize, useClickOutside, useEventListener, useVModel } from '@varlet/use'
+import { doubleRaf, getStyle, call, preventDefault } from '@varlet/shared'
+import { toPxNum } from '../utils/elements'
+import { type ListenerProp } from '../utils/components'
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
-import { createPopper } from '@popperjs/core/lib/popper-lite'
+import { createPopper } from '@popperjs/core/lib/popper-lite.js'
 import { useZIndex } from '../context/zIndex'
 import { type Instance, type Modifier } from '@popperjs/core/lib/types'
-import { type Placement as PopperPlacement } from '@popperjs/core'
+import { type Placement as PopperPlacement, type PositioningStrategy } from '@popperjs/core'
+import { useStack } from '../context/stack'
 
 export type NeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-start' | 'auto-end'>
 
@@ -37,13 +40,20 @@ export interface UsePopoverOptions {
   show: boolean
   trigger: 'hover' | 'click'
   placement: Placement
+  strategy: PositioningStrategy
   disabled: boolean
   offsetX: string | number
   offsetY: string | number
   reference?: string
-  onOpen?(): void
-  onClose?(): void
-  'onUpdate:show'?(show: boolean): void
+  closeOnClickReference?: boolean
+  onOpen?: ListenerProp<() => void>
+  onClose?: ListenerProp<() => void>
+  onClosed?: ListenerProp<() => void>
+  onClickOutside?: ListenerProp<(event: Event) => void>
+  'onUpdate:show'?: ListenerProp<(show: boolean) => void>
+
+  // internal for esc
+  closeOnKeyEscape: boolean
 }
 
 export function usePopover(options: UsePopoverOptions) {
@@ -63,17 +73,62 @@ export function usePopover(options: UsePopoverOptions) {
     },
   })
   const { zIndex } = useZIndex(() => show.value, 1)
+  useStack(() => show.value, zIndex)
 
   let popoverInstance: Instance | null = null
   let enterPopover = false
   let enterHost = false
 
   const computeHostSize = () => {
-    const { width, height } = getStyle(host.value!)
+    if (!host.value) {
+      return
+    }
+
+    const { width, height } = getStyle(host.value)
 
     hostSize.value = {
       width: toPxNum(width),
       height: toPxNum(height),
+    }
+  }
+
+  const getTransformOrigin = () => {
+    switch (options.placement) {
+      case 'top':
+      case 'cover-bottom':
+        return 'bottom'
+
+      case 'top-start':
+      case 'right-end':
+      case 'cover-bottom-start':
+        return 'bottom left'
+
+      case 'top-end':
+      case 'left-end':
+      case 'cover-bottom-end':
+        return 'bottom right'
+
+      case 'bottom':
+      case 'cover-top':
+        return 'top'
+
+      case 'bottom-start':
+      case 'right-start':
+      case 'cover-top-start':
+        return 'top left'
+
+      case 'bottom-end':
+      case 'left-start':
+      case 'cover-top-end':
+        return 'top right'
+
+      case 'left':
+      case 'cover-right':
+        return 'right'
+
+      case 'right':
+      case 'cover-left':
+        return 'left'
     }
   }
 
@@ -128,31 +183,42 @@ export function usePopover(options: UsePopoverOptions) {
   }
 
   const handleHostClick = () => {
-    open()
+    if (options.closeOnClickReference && show.value) {
+      close()
+    } else {
+      open()
+    }
   }
 
   const handlePopoverClose = () => {
-    show.value = false
-    call(options['onUpdate:show'], false)
+    close()
   }
 
-  const handleClickOutside = () => {
+  const handleClickOutside = (e: Event) => {
     if (options.trigger !== 'click') {
       return
     }
 
     handlePopoverClose()
+    call(options.onClickOutside, e)
+  }
+
+  const handleClosed = () => {
+    resize()
+    call(options.onClosed)
   }
 
   const getPosition = (): Position => {
+    const { offsetX, offsetY, placement } = options
+
     computeHostSize()
 
     const offset = {
-      x: toPxNum(options.offsetX),
-      y: toPxNum(options.offsetY),
+      x: toPxNum(offsetX),
+      y: toPxNum(offsetY),
     }
 
-    switch (options.placement) {
+    switch (placement) {
       case 'cover-top':
         return {
           placement: 'bottom',
@@ -213,7 +279,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'left-start':
       case 'left-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.y,
           distance: -offset.x,
         }
@@ -222,7 +288,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'top-start':
       case 'top-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.x,
           distance: -offset.y,
         }
@@ -231,7 +297,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'bottom-start':
       case 'bottom-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.x,
           distance: offset.y,
         }
@@ -240,7 +306,7 @@ export function usePopover(options: UsePopoverOptions) {
       case 'right-start':
       case 'right-end':
         return {
-          placement: options.placement,
+          placement,
           skidding: offset.y,
           distance: offset.x,
         }
@@ -260,11 +326,38 @@ export function usePopover(options: UsePopoverOptions) {
           offset: [skidding, distance],
         },
       },
+      {
+        ...computeStyles,
+        options: {
+          adaptive: false,
+          gpuAcceleration: false,
+        },
+        enabled: show.value,
+      },
+      {
+        name: 'applyTransformOrigin',
+        enabled: show.value,
+        phase: 'beforeWrite',
+        fn({ state }) {
+          state.styles.popper.transformOrigin = getTransformOrigin()
+        },
+      },
     ]
 
     return {
       placement,
       modifiers,
+      strategy: options.strategy,
+    }
+  }
+
+  const getReference = () => (options.reference ? host.value!.querySelector(options.reference)! : host.value!)
+
+  const handleKeydown = (event: KeyboardEvent) => {
+    const { closeOnKeyEscape = false } = options
+    if (event.key === 'Escape' && closeOnKeyEscape && show.value) {
+      preventDefault(event)
+      close()
     }
   }
 
@@ -291,17 +384,14 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
-  useClickOutside(host, 'click', handleClickOutside)
-
-  watch(() => options.offsetX, resize)
-  watch(() => options.offsetY, resize)
-  watch(() => options.placement, resize)
+  useEventListener(window, 'keydown', handleKeydown)
+  useClickOutside(getReference, 'click', handleClickOutside)
+  onWindowResize(resize)
+  watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
 
   onMounted(() => {
-    const reference = options.reference ? host.value?.querySelector(options.reference) : host.value
-
-    popoverInstance = createPopper(reference ?? host.value!, popover.value!, getPopperOptions())
+    popoverInstance = createPopper(getReference() ?? host.value!, popover.value!, getPopperOptions())
   })
   onUnmounted(() => {
     popoverInstance!.destroy()
@@ -319,6 +409,7 @@ export function usePopover(options: UsePopoverOptions) {
     handlePopoverClose,
     handlePopoverMouseenter,
     handlePopoverMouseleave,
+    handleClosed,
     resize,
     open,
     close,

@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import Row from './Row.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as rowProps } from './props'
 
-Row.install = function (app: App) {
-  app.component(Row.name, Row)
-}
+withInstall(Row)
+withPropsDefaultsSetter(Row, rowProps)
 
-export { props as rowProps } from './props'
+export { rowProps }
 
 export const _RowComponent = Row
 

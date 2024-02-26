@@ -1,12 +1,11 @@
 import { defineListenerProp } from '../utils/components'
 
 export const props = {
-  name: {
-    type: [String, Number],
-  },
-  disabled: {
+  name: [String, Number],
+  disabled: Boolean,
+  ripple: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   onClick: defineListenerProp<(active: string | number, e: Event) => void>(),
 }

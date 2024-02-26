@@ -1,0 +1,19 @@
+:root {
+  --menu-select-menu-max-height: 278px;
+  --menu-select-menu-padding: 0;
+  --menu-select-menu-border-radius: 2px;
+  --menu-select-menu-background-color: var(--color-surface-container-high);
+}
+
+.var-menu-select {
+  &__menu {
+    padding: var(--menu-select-menu-padding);
+    border-radius: var(--menu-select-menu-border-radius);
+    background-color: var(--menu-select-menu-background-color);
+  }
+
+  &--scrollable {
+    overflow-y: auto;
+    max-height: var(--menu-select-menu-max-height);
+  }
+}

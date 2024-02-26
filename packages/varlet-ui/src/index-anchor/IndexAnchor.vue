@@ -15,51 +15,46 @@
 
 <script lang="ts">
 import VarSticky from '../sticky'
-import { computed, defineComponent, ref, Transition } from 'vue'
-import { useIndexBar } from './provide'
+import { computed, defineComponent, ref, Transition, type RendererNode } from 'vue'
+import { useIndexBar, type IndexAnchorProvider } from './provide'
 import { props } from './props'
-import type { Ref, ComputedRef, RendererNode } from 'vue'
-import type { IndexAnchorProvider } from './provide'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('index-anchor')
+const { name, n, classes } = createNamespace('index-anchor')
 
 export default defineComponent({
-  name: 'VarIndexAnchor',
-  components: {
-    VarSticky,
-  },
+  name,
+  components: { VarSticky },
   inheritAttrs: false,
   props,
   setup(props) {
+    const disabled = ref(false)
+    const name = computed(() => props.index)
+    const anchorEl = ref<HTMLElement | RendererNode | null>(null)
     const { index, indexBar, bindIndexBar } = useIndexBar()
-
-    const ownTop: Ref<number> = ref(0)
-    const disabled: Ref<boolean> = ref(false)
-    const name: ComputedRef<number | string | undefined> = computed(() => props.index)
-    const anchorEl: Ref<HTMLDivElement | RendererNode | null> = ref(null)
-
     const { active, sticky, cssMode, stickyOffsetTop, zIndex } = indexBar
-    const setOwnTop = () => {
-      if (!anchorEl.value) return
-      ownTop.value = (anchorEl.value as RendererNode).$el
-        ? (anchorEl.value as RendererNode).$el.offsetTop
-        : (anchorEl.value as HTMLDivElement).offsetTop
-    }
-
-    const setDisabled = (value: boolean) => {
-      disabled.value = value
-    }
 
     const indexAnchorProvider: IndexAnchorProvider = {
       index,
       name,
-      ownTop,
-      setOwnTop,
       setDisabled,
+      getOffsetTop,
     }
 
     bindIndexBar(indexAnchorProvider)
+
+    function getOffsetTop() {
+      if (!anchorEl.value) {
+        return 0
+      }
+      return (anchorEl.value as RendererNode).$el
+        ? (anchorEl.value as RendererNode).$el.offsetTop
+        : (anchorEl.value as HTMLElement).offsetTop
+    }
+
+    function setDisabled(value: boolean) {
+      disabled.value = value
+    }
 
     return {
       n,

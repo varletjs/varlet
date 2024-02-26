@@ -17,19 +17,17 @@ import { toSizeUnit } from '../utils/elements'
 import { createNamespace, formatElevation } from '../utils/components'
 import { props } from './props'
 
-const { n, classes } = createNamespace('table')
+const { name, n, classes } = createNamespace('table')
 
 export default defineComponent({
-  name: 'VarTable',
+  name,
   props,
-  setup() {
-    return {
-      toSizeUnit,
-      n,
-      classes,
-      formatElevation,
-    }
-  },
+  setup: () => ({
+    toSizeUnit,
+    n,
+    classes,
+    formatElevation,
+  }),
 })
 </script>
 

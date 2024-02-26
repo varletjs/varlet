@@ -1,6 +1,6 @@
 {
   "name": "@varlet/vite-plugins",
-  "version": "2.11.5",
+  "version": "3.0.4",
   "type": "module",
   "description": "vite plugins of varlet",
   "main": "lib/index.js",
@@ -14,8 +14,8 @@
   "homepage": "https://github.com/varletjs/varlet#readme",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
+    "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
+    "build": "tsup src/index.ts --format esm --out-dir=lib --dts --clean"
   },
   "repository": {
     "type": "git",
@@ -29,14 +29,16 @@
     "ejs": "^3.1.8",
     "fs-extra": "^9.0.1",
     "highlight.js": "^10.7.2",
-    "markdown-it": "^12.2.3"
+    "markdown-it": "^12.2.3",
+    "pinyin-pro": "3.17.0"
   },
   "devDependencies": {
-    "vite": "4.3.5",
-    "typescript": "^4.4.4",
-    "@types/node": "^18.7.20",
     "@types/ejs": "^3.1.1",
+    "@types/fs-extra": "^9.0.2",
     "@types/markdown-it": "^12.2.3",
-    "@types/fs-extra": "^9.0.2"
+    "@types/node": "^18.7.20",
+    "tsup": "7.2.0",
+    "typescript": "^5.1.5",
+    "vite": "5.0.10"
   }
 }

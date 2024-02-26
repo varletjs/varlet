@@ -1,16 +1,17 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const datePickerProps: Record<string, any>
+export declare const datePickerProps: Record<keyof DatePickerProps, any>
 
-export type DatePickerType = 'date' | 'month'
+export type DatePickerType = 'year' | 'date' | 'month'
 
 export interface DatePickerProps extends BasicAttributes {
   modelValue: string | Array<string>
   type?: DatePickerType
   allowedDates?: (val: string) => boolean
   color?: string
-  headerColor?: string
+  hint?: string
+  titleColor?: string
   elevation?: boolean | string | number
   buttonElevation?: boolean | string | number
   firstDayOfWeek?: string | number
@@ -21,7 +22,7 @@ export interface DatePickerProps extends BasicAttributes {
   multiple?: boolean
   range?: boolean
   touchable?: boolean
-  onPreview?: ListenerProp<(year: number, month: number) => void>
+  onPreview?: ListenerProp<(year: number, month: number, day?: number) => void>
   onChange?: ListenerProp<(value: string | string[]) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: string | string[]) => void>
 }
@@ -48,6 +49,8 @@ export interface DatePickerMultiple {
 }
 
 export class DatePicker extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<DatePickerProps>
+
   $props: DatePickerProps
 
   $slots: {
@@ -56,6 +59,7 @@ export class DatePicker extends VarComponent {
     date(data: DatePickerDate): VNode[]
     range(data: DatePickerRange): VNode[]
     multiple(data: DatePickerMultiple): VNode[]
+    actions(): VNode[]
   }
 }
 

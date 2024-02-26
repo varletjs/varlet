@@ -1,17 +1,14 @@
 import Form from './Form.vue'
-import { useValidation } from '../utils/components'
+import { useValidation, withInstall, withPropsDefaultsSetter } from '../utils/components'
 import { useForm } from './provide'
-import type { App } from 'vue'
-
-Form.install = function (app: App) {
-  app.component(Form.name, Form)
-}
+import { props as formProps } from './props'
 
 Form.useValidation = useValidation
-
 Form.useForm = useForm
+withInstall(Form)
+withPropsDefaultsSetter(Form, formProps)
 
-export { props as formProps } from './props'
+export { formProps }
 
 export const _FormComponent = Form
 

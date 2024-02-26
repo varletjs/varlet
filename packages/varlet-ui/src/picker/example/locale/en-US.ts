@@ -4,6 +4,8 @@ export default {
   singlePicker: 'Single Column Picker',
   multiplePicker: 'Multiple Column Picker',
   cascadePicker: 'Cascade Column Picker',
-  textFormatter: 'Text Formatter',
-  extension: 'Value Mapping',
+  areaPicker: 'Area Picker',
+  valueMapping: 'Value Mapping',
+  twoWayBinding: 'Two-way binding',
+  reset: 'Click Reset',
 }

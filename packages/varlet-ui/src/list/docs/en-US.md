@@ -7,7 +7,7 @@ Support custom loading state, error state, data loading completed state.
 
 ### Basic Use
 
-The `load` event is emitted when a scroll container is detected scrolling to the bottom，and will be set `loading` to `true`,
+The `load` event is emitted when a scroll container is detected scrolling to the bottom, and will be set `loading` to `true`,
 you need to manually set `loading` to `false` at the end of loading, that's the end of the load.
 
 ```html
@@ -182,8 +182,8 @@ This can be mistaken for a scroll container, so avoid it.
 
 | Prop              | Description                                                               | Type               | Default     |
 | ----------------- | ------------------------------------------------------------------------- | ------------------ | ----------- |
-| `v-model:loading` | loading state                                                             | _boolean_          | `false`     |
-| `v-model:error`   | error state                                                               | _boolean_          | `false`     |
+| `v-model:loading` | Loading state                                                             | _boolean_          | `false`     |
+| `v-model:error`   | Error state                                                               | _boolean_          | `false`     |
 | `immediate-check` | Whether the location is detected immediately when the List is initialized | _boolean_          | `true`      |
 | `finished`        | Whether the load is complete                                              | _boolean_          | `false`     |
 | `offset`          | Trigger distance from the bottom                                          | _string \| number_ | `0`         |
@@ -214,7 +214,7 @@ This can be mistaken for a scroll container, so avoid it.
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                    | Default               |
 | --------------------------- | --------------------- |

@@ -2,7 +2,8 @@ import TimePicker from '..'
 import VarTimePicker from '../TimePicker'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger } from '../../utils/jest'
+import { delay, trigger } from '../../utils/test'
+import { expect, vi } from 'vitest'
 
 test('test timePicker plugin', () => {
   const app = createApp({}).use(TimePicker)
@@ -15,7 +16,7 @@ test('test timePicker style and format', async () => {
       :format="format"
       v-model="time"
       elevation
-      header-color="purple"
+      title-color="purple"
       color="#7bb872"
     />
   `
@@ -33,15 +34,30 @@ test('test timePicker style and format', async () => {
   })
 
   await delay(0)
-
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({ format: '24hr' })
-
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
-test('test max and min', async () => {
+test('test timePicker hint', async () => {
+  const wrapper = mount(VarTimePicker, {
+    props: {
+      hint: '选择打卡时间',
+    },
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    hint: '选择下班时间',
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test timePicker max and min', async () => {
   const template = `<var-time-picker v-model="time" :max="max" :min="min" />`
   const wrapper = mount({
     components: {
@@ -78,11 +94,11 @@ test('test max and min', async () => {
 
   await wrapper.find('.var-time-picker__title-btn').trigger('click')
   await wrapper.find('.var-time-picker__clock-item').trigger('click')
-
   expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
+  wrapper.unmount()
 })
 
-test('test useSeconds prop', () => {
+test('test timePicker useSeconds', () => {
   const wrapper = mount(VarTimePicker, {
     props: {
       modelValue: '11:11',
@@ -91,9 +107,10 @@ test('test useSeconds prop', () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
 })
 
-test('test readonly prop', async () => {
+test('test timePicker readonly', async () => {
   const template = `<var-time-picker v-model="time" readonly />`
   const wrapper = mount({
     components: {
@@ -122,10 +139,11 @@ test('test readonly prop', async () => {
   await wrapper.find('.var-time-picker__clock-item').trigger('click')
 
   expect(wrapper.find('.var-time-picker__title-time').text()).toBe('11:11')
+  wrapper.unmount()
 })
 
-test('test v-model and onChange event', async () => {
-  const change = jest.fn()
+test('test timePicker v-model and onChange event', async () => {
+  const change = vi.fn()
 
   const template = `<var-time-picker v-model="time" use-seconds format="24hr" @change="change" />`
   const wrapper = mount({
@@ -172,9 +190,10 @@ test('test v-model and onChange event', async () => {
   expect(wrapper.find('.var-time-picker__title-time').findAll('.var-time-picker__title-btn')[2].text()).not.toBe('11')
   expect(wrapper.vm.time).not.toBe('11:11:11')
   expect(change).toHaveBeenCalled()
+  wrapper.unmount()
 })
 
-test('test switch timePicker ampm', async () => {
+test('test timePicker switch ampm', async () => {
   const template = `<var-time-picker v-model="time" use-seconds :min="min" max="19:40:22" />`
   const wrapper = mount({
     components: {
@@ -196,6 +215,22 @@ test('test switch timePicker ampm', async () => {
 
   await wrapper.setData({ min: '6:00:00' })
   await wrapper.find('.var-time-picker__title-ampm').findAll('.var-time-picker__title-btn')[0].trigger('click')
-
   expect(wrapper.vm.time).toBe('06:10:22')
+  wrapper.unmount()
+})
+
+test('test timePicker titleColor', async () => {
+  const wrapper = mount(VarTimePicker, {
+    props: {
+      titleColor: 'green',
+    },
+  })
+
+  expect(wrapper.find('.var-time-picker__title').attributes('style')).toContain('background: green')
+
+  await wrapper.setProps({
+    titleColor: 'red',
+  })
+  expect(wrapper.find('.var-time-picker__title').attributes('style')).toContain('background: red')
+  wrapper.unmount()
 })

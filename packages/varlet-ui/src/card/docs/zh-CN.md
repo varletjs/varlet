@@ -1,5 +1,9 @@
 # 卡片
 
+### 介绍
+
+展示有关单个主题的内容和操作。
+
 ### 基本使用
 
 ```html
@@ -23,20 +27,6 @@
 </template>
 ```
 
-### 外边框
-
-```html
-<template>
-  <var-card
-    outline
-    :elevation="0"
-    title="本草纲目"
-    subtitle="我表情悠哉 跳个大概"
-    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
-  />
-</template>
-```
-
 ### 显示图片
 
 ```html
@@ -47,6 +37,26 @@
     description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
+</template>
+```
+
+### 使用插槽
+
+```html
+<template>
+  <var-card
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
+    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+  >
+    <template #extra>
+      <var-space>
+        <var-button type="primary">操作 1</var-button>
+        <var-button type="primary">操作 2</var-button>
+      </var-space>
+    </template>
+  </var-card>
 </template>
 ```
 
@@ -72,26 +82,6 @@
 </template>
 ```
 
-### 使用插槽
-
-```html
-<template>
-  <var-card
-    title="本草纲目"
-    subtitle="我表情悠哉 跳个大概"
-    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
-  >
-    <template #extra>
-      <var-space>
-        <var-button text type="warning">操作 1</var-button>
-        <var-button text type="warning">操作 2</var-button>
-      </var-space>
-    </template>
-  </var-card>
-</template>
-```
-
 ### 水波效果
 
 ```html
@@ -105,7 +95,7 @@
 </template>
 ```
 
-### 漂浮
+### 开启全屏
 
 ```html
 <script setup>
@@ -118,14 +108,11 @@ const floating = ref(false)
   <var-card
     title="本草纲目"
     subtitle="我表情悠哉 跳个大概"
-    ripple
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
     v-model:floating="floating"
-    @click="floating = true"
   >
     <template #extra>
-      <var-button text type="warning">操作 1</var-button>
-      <var-button text type="warning">操作 2</var-button>
+      <var-button type="primary" @click="floating = true">开启全屏</var-button>
     </template>
 
     <template #floating-content>
@@ -147,6 +134,20 @@ const floating = ref(false)
 </style>
 ```
 
+### 外边框
+
+```html
+<template>
+  <var-card
+    outline
+    :elevation="0"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -156,12 +157,12 @@ const floating = ref(false)
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |
-| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number_ \| _boolean_ | `true`            |
+| `elevation`      | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                                            | _string \| number \| boolean_ | `true`            |
 | `src`               | 图片地址                                                   | _string_ | `-`      |
 | `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
 | `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
-| `alt`               | 替代文本                                                   | _string_ | `-`      |
+| `alt`               | 替代文本，和 img 标签原生属性一致                                                   | _string_ | `-`      |
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
@@ -184,7 +185,7 @@ const floating = ref(false)
 | `description` | 自定义描述   | `-`  |
 | `floating-content`     | 漂浮时显示的正文内容 | `-`  |
 | `extra`       | 自定义底部内容 | `-`  |
-| `close-button` | 自定义关闭   | `-`  |
+| `close-button` | 自定义关闭按钮   | `-`  |
 
 ### 样式变量
 
@@ -192,10 +193,10 @@ const floating = ref(false)
 
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
-| `--card-background`                 | `#fff`               |
+| `--card-background`                 | `var(--color-surface-container-highest)`               |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |
-| `--card-outline-color`              | `rgba(0, 0, 0, 0.12)` |
+| `--card-outline-color`              | `var(--color-outline)` |
 | `--card-image-width`                | `100%`               |
 | `--card-row-image-width`            | `140px`              |
 | `--card-image-height`               | `200px`              |
@@ -226,3 +227,5 @@ const floating = ref(false)
 | `--card-close-button-icon-size`     | `24px`               |
 | `--card-close-button-size`          | `56px`               |
 | `--card-close-button-primary-color` | `#212121`            |
+| `--card-close-button-text-color` | `#fff`            |
+| `--card-close-button-border-radius` | `50%` |

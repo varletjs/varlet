@@ -1,11 +1,17 @@
-import { VarComponent, BasicAttributes, Direction as SliderDirection, ListenerProp } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  Direction as SliderDirection,
+  ListenerProp,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
 export { SliderDirection }
 
 export type SliderLabelVisible = 'always' | 'normal' | 'never'
 
-export declare const sliderProps: Record<string, any>
+export declare const sliderProps: Record<keyof SliderProps, any>
 
 export interface SliderProps extends BasicAttributes {
   modelValue?: number | Array<number>
@@ -24,7 +30,7 @@ export interface SliderProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
   direction?: SliderDirection
-  rules?: Array<(value: any) => any>
+  rules?: Array<(value: number | Array<number>) => any>
   onChange?: ListenerProp<(value: number | Array<number>) => void>
   onStart?: ListenerProp<() => void>
   onEnd?: ListenerProp<(value: number | Array<number>) => void>
@@ -36,6 +42,8 @@ export interface SliderButton {
 }
 
 export class Slider extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<SliderProps>
+
   $props: SliderProps
 
   $slots: {

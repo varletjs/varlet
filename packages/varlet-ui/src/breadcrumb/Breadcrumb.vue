@@ -15,27 +15,28 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { useBreadcrumb } from './provide'
-import { call, createNamespace } from '../utils/components'
+import { createNamespace } from '../utils/components'
+import { call } from '@varlet/shared'
 
-const { n, classes } = createNamespace('breadcrumb')
+const { name, n, classes } = createNamespace('breadcrumb')
 
 export default defineComponent({
-  name: 'VarBreadcrumb',
+  name,
   props,
   setup(props) {
     const { index, breadcrumb, bindBreadcrumb } = useBreadcrumb()
     const isLast = computed(() => index.value === breadcrumb.length.value - 1)
     const parentSeparator = computed(() => breadcrumb.separator.value)
 
-    const handleClick = (e: Event) => {
+    bindBreadcrumb(null)
+
+    function handleClick(e: Event) {
       if (isLast.value) {
         return
       }
 
       call(props.onClick, e)
     }
-
-    bindBreadcrumb(null)
 
     return {
       n,

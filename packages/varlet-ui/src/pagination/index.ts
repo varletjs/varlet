@@ -1,11 +1,11 @@
 import Pagination from './Pagination.vue'
-import type { App } from 'vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as paginationProps } from './props'
 
-Pagination.install = function (app: App) {
-  app.component(Pagination.name, Pagination)
-}
+withInstall(Pagination)
+withPropsDefaultsSetter(Pagination, paginationProps)
 
-export { props as paginationProps } from './props'
+export { paginationProps }
 
 export const _PaginationComponent = Pagination
 

@@ -22,7 +22,7 @@ It is used to show the results to users.
 
 ### Types
 
-Result type, optional values are `info`，`success`，`warning`，`error`，`question`，`empty`.
+Result type, optional values are `info`, `success`, `warning`, `error`, `question`, `empty`.
 
 ```html
 <script setup>
@@ -127,7 +127,7 @@ const empty = ref(false)
 </style>
 ```
 
-### Note when modifying the background color
+### Note When Modifying The Background Color
 
 Please try not to modify the background color to be transparent or translucent, which may affect the animation effect of the success type.
 
@@ -137,7 +137,7 @@ Please try not to modify the background color to be transparent or translucent, 
 
 | Prop          | Description                                                              | Type     | Default   |
 |---------------|--------------------------------------------------------------------------|----------|-----------|
-| `type`        | Image type，options `info` `success` `warning` `error` `question` `empty` | _string_ | `success` |
+| `type`        | Image type, options `info` `success` `warning` `error` `question` `empty` | _string_ | `success` |
 | `title`       | The title of Result                                                      | _string_ | `-`       |
 | `description` | The description of Result                                                | _string_ | `-`       |
 | `image-size`  | Image Size                                                               | _string \| number_   | `-`  |
@@ -154,7 +154,7 @@ Please try not to modify the background color to be transparent or translucent, 
 
 ### Style Variables
 
-Here are the CSS variables used by the component, Styles can be customized using [StyleProvider](#/en-US/style-provider).
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable                           | Default                    |
 |------------------------------------|----------------------------|

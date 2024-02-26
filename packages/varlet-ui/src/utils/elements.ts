@@ -1,36 +1,19 @@
-import { isNumber, isObject, isString, kebabCase, toNumber, isWindow, inBrowser } from '@varlet/shared'
-import { getGlobalThis } from './shared'
+import {
+  isNumber,
+  isObject,
+  isString,
+  kebabCase,
+  toNumber,
+  isWindow,
+  inBrowser,
+  getRect,
+  getStyle,
+  getScrollTop,
+  getScrollLeft,
+  isNumeric,
+} from '@varlet/shared'
 import { error } from './logger'
-import type { StyleVars } from '../style-provider'
-
-// shorthand only
-export function getStyle(element: Element) {
-  return window.getComputedStyle(element)
-}
-
-export function getRect(element: Element | Window): DOMRect {
-  if (isWindow(element)) {
-    const width = element.innerWidth
-    const height = element.innerHeight
-    const rect = {
-      x: 0,
-      y: 0,
-      top: 0,
-      left: 0,
-      right: width,
-      bottom: height,
-      width,
-      height,
-    }
-
-    return {
-      ...rect,
-      toJSON: () => rect,
-    }
-  }
-
-  return element.getBoundingClientRect()
-}
+import { type StyleVars } from '../style-provider'
 
 export function getLeft(element: HTMLElement): number {
   const { left } = getRect(element)
@@ -42,29 +25,6 @@ export function getTop(element: HTMLElement): number {
   const { top } = getRect(element)
 
   return top + (document.body.scrollTop || document.documentElement.scrollTop)
-}
-
-export function getScrollTop(element: Element | Window): number {
-  const top = 'scrollTop' in element ? element.scrollTop : element.pageYOffset
-
-  // iOS scroll bounce cause minus scrollTop
-  return Math.max(top, 0)
-}
-
-export function getScrollLeft(element: Element | Window): number {
-  const left = 'scrollLeft' in element ? element.scrollLeft : element.pageXOffset
-
-  return Math.max(left, 0)
-}
-
-export function inViewport(element: HTMLElement): boolean {
-  const { top, bottom, left, right } = getRect(element)
-  const { width, height } = getRect(window)
-
-  const xInViewport = left <= width && right >= 0
-  const yInViewport = top <= height && bottom >= 0
-
-  return xInViewport && yInViewport
 }
 
 export function getTranslateY(el: HTMLElement) {
@@ -128,15 +88,12 @@ export function getTarget(target: string | HTMLElement, componentName: string) {
 export function getViewportSize() {
   const { width, height } = getRect(window)
 
-  return width > height
-    ? {
-        vMin: height,
-        vMax: width,
-      }
-    : {
-        vMin: width,
-        vMax: height,
-      }
+  return {
+    vw: width,
+    vh: height,
+    vMin: Math.min(width, height),
+    vMax: Math.max(width, height),
+  }
 }
 
 // example 1rem
@@ -173,8 +130,8 @@ export const isVar = (value: unknown): value is string => isString(value) && val
 
 // e.g. return 1
 export const toPxNum = (value: unknown): number => {
-  if (isNumber(value)) {
-    return value
+  if (isNumeric(value)) {
+    return Number(value)
   }
 
   if (isPx(value)) {
@@ -185,14 +142,22 @@ export const toPxNum = (value: unknown): number => {
     return 0
   }
 
-  const { width, height } = getRect(window)
+  const { vw, vh, vMin, vMax } = getViewportSize()
 
   if (isVw(value)) {
-    return (+(value as string).replace('vw', '') * width) / 100
+    return (+(value as string).replace('vw', '') * vw) / 100
   }
 
   if (isVh(value)) {
-    return (+(value as string).replace('vh', '') * height) / 100
+    return (+(value as string).replace('vh', '') * vh) / 100
+  }
+
+  if (isVMin(value)) {
+    return (+(value as string).replace('vmin', '') * vMin) / 100
+  }
+
+  if (isVMax(value)) {
+    return (+(value as string).replace('vmax', '') * vMax) / 100
   }
 
   if (isRem(value)) {
@@ -200,14 +165,6 @@ export const toPxNum = (value: unknown): number => {
     const rootFontSize = getStyle(document.documentElement).fontSize
 
     return num * parseFloat(rootFontSize)
-  }
-
-  if (isVMin(value)) {
-    return getViewportSize().vMin
-  }
-
-  if (isVMax(value)) {
-    return getViewportSize().vMax
   }
 
   if (isString(value)) {
@@ -224,21 +181,11 @@ export const toSizeUnit = (value: unknown) => {
     return undefined
   }
 
-  if (
-    isPercent(value) ||
-    isVw(value) ||
-    isVh(value) ||
-    isEm(value) ||
-    isRem(value) ||
-    isCalc(value) ||
-    isVar(value) ||
-    isVMin(value) ||
-    isVMax(value)
-  ) {
-    return value
+  if (isNumeric(value)) {
+    return `${value}px`
   }
 
-  return `${toPxNum(value)}px`
+  return String(value)
 }
 
 export const multiplySizeUnit = (value: unknown, quantity = 1) => {
@@ -248,41 +195,9 @@ export const multiplySizeUnit = (value: unknown, quantity = 1) => {
 
   const legalSize = toSizeUnit(value) as string
 
-  const unit = legalSize.match(/(vh|%|rem|px|vw)$/)![0]
+  const unit = legalSize.match(/(vh|%|r?em|px|vw|vmin|vmax)$/)![0]
 
   return `${parseFloat(legalSize) * quantity}${unit}`
-}
-
-export function requestAnimationFrame(fn: FrameRequestCallback): number {
-  const globalThis = getGlobalThis()
-
-  return globalThis.requestAnimationFrame ? globalThis.requestAnimationFrame(fn) : globalThis.setTimeout(fn, 16)
-}
-
-export function cancelAnimationFrame(handle: number): void {
-  const globalThis = getGlobalThis()
-
-  globalThis.cancelAnimationFrame ? globalThis.cancelAnimationFrame(handle) : globalThis.clearTimeout(handle)
-}
-
-export function nextTickFrame(fn: FrameRequestCallback) {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(fn)
-  })
-}
-
-export function doubleRaf() {
-  return new Promise((resolve) => {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(resolve)
-    })
-  })
-}
-
-export function raf() {
-  return new Promise((resolve) => {
-    requestAnimationFrame(resolve)
-  })
 }
 
 interface ScrollToOptions {
@@ -330,11 +245,51 @@ export function formatStyleVars(styleVars: StyleVars | null) {
   }, {} as StyleVars)
 }
 
-export function supportTouch() {
-  const inBrowser = typeof window !== 'undefined'
-  return inBrowser && 'ontouchstart' in window
-}
-
 export function padStartFlex(style: string | undefined) {
   return style === 'start' || style === 'end' ? `flex-${style}` : style
+}
+
+const focusableSelector = ['button', 'input', 'select', 'textarea', '[tabindex]', '[href]']
+  .map((s) => `${s}:not([disabled])`)
+  .join(', ')
+
+export function focusChildElementByKey(
+  hostElement: HTMLElement,
+  parentElement: HTMLElement,
+  key: 'ArrowDown' | 'ArrowUp'
+) {
+  const focusableElements = parentElement.querySelectorAll<HTMLElement>(focusableSelector)
+  if (!focusableElements.length) {
+    return
+  }
+
+  const isActiveHostElement =
+    [hostElement, ...Array.from(hostElement.querySelectorAll<HTMLElement>(focusableSelector))].findIndex(
+      (el) => el === document.activeElement
+    ) !== -1
+
+  const activeElementIndex = Array.from(focusableElements).findIndex((el) => el === document.activeElement)
+
+  if (key === 'ArrowDown') {
+    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === focusableElements.length - 1) {
+      focusableElements[0].focus()
+      return
+    }
+
+    if (activeElementIndex !== -1 && activeElementIndex < focusableElements.length - 1) {
+      focusableElements[activeElementIndex + 1].focus()
+      return
+    }
+  }
+
+  if (key === 'ArrowUp') {
+    if ((isActiveHostElement && activeElementIndex === -1) || activeElementIndex === 0) {
+      focusableElements[focusableElements.length - 1]?.focus()
+      return
+    }
+
+    if (activeElementIndex > 0) {
+      focusableElements[activeElementIndex - 1].focus()
+    }
+  }
 }

@@ -1,0 +1,15 @@
+export default {
+  '--slider-thumb-size': '16px',
+  '--slider-track-height': '4px',
+  '--slider-track-background': 'var(--color-surface-container-highest)',
+  '--slider-track-fill-border-radius': '4px',
+  '--slider-track-border-radius': '4px',
+  '--slider-error-color': 'var(--color-danger)',
+  '--slider-track-fill-background': 'var(--color-primary)',
+  '--slider-thumb-block-background': 'var(--color-primary)',
+  '--slider-thumb-ripple-background': 'var(--color-primary)',
+  '--slider-thumb-label-background': 'var(--color-primary)',
+  '--slider-thumb-label-font-size': 'var(--font-size-sm)',
+  '--slider-thumb-label-text-color': 'var(--color-on-primary)',
+  '--slider-disabled-opacity': 'var(--opacity-disabled)',
+}

@@ -23,14 +23,17 @@ export * from './chip'
 export * from './col'
 export * from './collapse'
 export * from './collapseItem'
+export * from './collapseTransition'
 export * from './context'
 export * from './countdown'
 export * from './counter'
 export * from './datePicker'
 export * from './dialog'
 export * from './divider'
+export * from './drag'
 export * from './ellipsis'
 export * from './fab'
+export * from './floatingPanel'
 export * from './form'
 export * from './formDetails'
 export * from './hover'
@@ -48,6 +51,8 @@ export * from './loading'
 export * from './loadingBar'
 export * from './locale'
 export * from './menu'
+export * from './menuOption'
+export * from './menuSelect'
 export * from './option'
 export * from './overlay'
 export * from './pagination'
@@ -71,6 +76,7 @@ export * from './step'
 export * from './steps'
 export * from './sticky'
 export * from './styleProvider'
+export * from './styleVars'
 export * from './swipe'
 export * from './swipeItem'
 export * from './switch'
@@ -85,6 +91,7 @@ export * from './tooltip'
 export * from './uploader'
 export * from './varComponent'
 export * from './varDirective'
+export * from './watermark'
 
 declare module 'vue' {
   export interface GlobalComponents {
@@ -108,14 +115,17 @@ declare module 'vue' {
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarCollapse: typeof import('@varlet/ui')['_CollapseComponent']
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']
+    VarCollapseTransition: typeof import('@varlet/ui')['_CollapseTransitionComponent']
     VarContext: typeof import('@varlet/ui')['_ContextComponent']
     VarCountdown: typeof import('@varlet/ui')['_CountdownComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']
     VarDialog: typeof import('@varlet/ui')['_DialogComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
+    VarDrag: typeof import('@varlet/ui')['_DragComponent']
     VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarFab: typeof import('@varlet/ui')['_FabComponent']
+    VarFloatingPanel: typeof import('@varlet/ui')['_FloatingPanelComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
@@ -131,6 +141,8 @@ declare module 'vue' {
     VarLoadingBar: typeof import('@varlet/ui')['_LoadingBarComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
+    VarMenuOption: typeof import('@varlet/ui')['_MenuOptionComponent']
+    VarMenuSelect: typeof import('@varlet/ui')['_MenuSelectComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
@@ -153,6 +165,7 @@ declare module 'vue' {
     VarSteps: typeof import('@varlet/ui')['_StepsComponent']
     VarSticky: typeof import('@varlet/ui')['_StickyComponent']
     VarStyleProvider: typeof import('@varlet/ui')['_StyleProviderComponent']
+    VarStyleVars: typeof import('@varlet/ui')['_StyleVarsComponent']
     VarSwipe: typeof import('@varlet/ui')['_SwipeComponent']
     VarSwipeItem: typeof import('@varlet/ui')['_SwipeItemComponent']
     VarSwitch: typeof import('@varlet/ui')['_SwitchComponent']
@@ -165,6 +178,7 @@ declare module 'vue' {
     VarTimePicker: typeof import('@varlet/ui')['_TimePickerComponent']
     VarTooltip: typeof import('@varlet/ui')['_TooltipComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
+    VarWatermark: typeof import('@varlet/ui')['_WatermarkComponent']
   }
 
   export interface ComponentCustomProperties {

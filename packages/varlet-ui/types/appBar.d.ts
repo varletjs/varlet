@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const appBarProps: Record<string, any>
+export declare const appBarProps: Record<keyof AppBarProps, any>
 
 export type AppBarTitlePosition = 'left' | 'center' | 'right'
 
@@ -15,9 +15,13 @@ export interface AppBarProps extends BasicAttributes {
   image?: string
   imageLinearGradient?: string
   safeAreaTop?: boolean
+  fixed?: boolean
+  zIndex?: number | string
 }
 
 export class AppBar extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<AppBarProps>
+
   $props: AppBarProps
 
   $slots: {

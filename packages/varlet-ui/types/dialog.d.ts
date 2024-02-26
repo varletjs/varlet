@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { App, TeleportProps, VNode } from 'vue'
 
-export declare const dialogProps: Record<string, any>
+export declare const dialogProps: Record<keyof DialogProps, any>
 
 export type DialogTypeMessageAlign = 'left' | 'center' | 'right'
 
@@ -26,7 +26,7 @@ export interface DialogProps extends BasicAttributes {
   dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
-  teleport?: TeleportProps['to']
+  teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onBeforeClose?: ListenerProp<(action: DialogActions, done: () => void) => void>
@@ -91,6 +91,8 @@ export interface IDialog {
   close(): void
 
   install(app: App): void
+
+  setPropsDefaults: SetPropsDefaults<DialogProps>
 }
 
 export declare const Dialog: IDialog

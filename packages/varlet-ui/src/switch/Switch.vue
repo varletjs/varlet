@@ -29,7 +29,18 @@
             )
           "
         >
-          <var-loading v-if="loading" :radius="radius" color="currentColor" />
+          <span
+            v-if="loading"
+            :class="n('loading')"
+            :style="{
+              width: radius,
+              height: radius,
+            }"
+          >
+            <svg viewBox="25 25 50 50">
+              <circle cx="50" cy="50" r="20" fill="none"></circle>
+            </svg>
+          </span>
         </div>
 
         <var-hover-overlay :hovering="hovering" />
@@ -40,20 +51,19 @@
 </template>
 
 <script lang="ts">
+import VarFormDetails from '../form-details'
+import Ripple from '../ripple'
+import Hover from '../hover'
+import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, nextTick } from 'vue'
-import { useValidation, createNamespace, call } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import Hover from '../hover'
-import { props } from './props'
-import VarFormDetails from '../form-details'
-import VarLoading from '../loading'
-import Ripple from '../ripple'
-import type { ComputedRef } from 'vue'
-import type { SwitchProvider } from './provide'
+import { props, type ValidateTrigger } from './props'
+import { type SwitchProvider } from './provide'
+import { call } from '@varlet/shared'
 
-const { n, classes } = createNamespace('switch')
+const { name, n, classes } = createNamespace('switch')
 
 type StyleProps = {
   width: string
@@ -65,9 +75,8 @@ type StyleProps = {
 }
 
 export default defineComponent({
-  name: 'VarSwitch',
+  name,
   components: {
-    VarLoading,
     VarFormDetails,
     VarHoverOverlay,
   },
@@ -77,12 +86,7 @@ export default defineComponent({
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
-
-    const validate = () => v(props.rules, props.modelValue)
-
-    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
-
-    const styleComputed: ComputedRef<Record<string, Partial<StyleProps>>> = computed(() => {
+    const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
       const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
 
       return {
@@ -94,7 +98,7 @@ export default defineComponent({
         },
         ripple: {
           left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
-          color: modelValue === activeValue ? color : closeColor || '#999',
+          color: modelValue === activeValue ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
         },
@@ -112,13 +116,28 @@ export default defineComponent({
       }
     })
 
-    const radius: ComputedRef<string> = computed(() => {
-      const { size = '5.333vw' } = props
+    const radius = computed(() => multiplySizeUnit(props.size, 0.8))
 
-      return multiplySizeUnit(size, 0.4) as string
-    })
+    const switchProvider: SwitchProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
 
-    const switchActive = (event: MouseEvent) => {
+    call(bindForm, switchProvider)
+
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
+
+    function validateWithTrigger(trigger: ValidateTrigger) {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
+    }
+
+    function switchActive(event: Event) {
       const {
         onClick,
         onChange,
@@ -128,46 +147,56 @@ export default defineComponent({
         modelValue,
         activeValue,
         inactiveValue,
+        lazyChange,
         'onUpdate:modelValue': updateModelValue,
+        onBeforeChange,
       } = props
 
       call(onClick, event)
-      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) return
+
+      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) {
+        return
+      }
+
       const newValue = modelValue === activeValue ? inactiveValue : activeValue
-      call(onChange, newValue)
-      call(updateModelValue, newValue)
-      validateWithTrigger()
+
+      if (lazyChange) {
+        call(onBeforeChange, newValue, (value) => {
+          call(updateModelValue, value)
+          validateWithTrigger('onLazyChange')
+        })
+      } else {
+        call(onChange, newValue)
+        call(updateModelValue, newValue)
+        validateWithTrigger('onChange')
+      }
     }
 
-    const hover = (value: boolean) => {
-      if (props.disabled || form?.disabled.value) return
+    function hover(value: boolean) {
+      if (props.disabled || form?.disabled.value) {
+        return
+      }
 
       handleHovering(value)
     }
 
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], props.inactiveValue)
       resetValidation()
     }
 
-    const switchProvider: SwitchProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-    call(bindForm, switchProvider)
-
     return {
-      n,
-      classes,
-      switchActive,
       hovering,
-      hover,
       radius,
       styleComputed,
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      n,
+      classes,
+      multiplySizeUnit,
+      switchActive,
+      hover,
     }
   },
 })

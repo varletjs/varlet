@@ -1,6 +1,7 @@
 export default {
   basicUsage: 'Basic Usage',
   preview: 'File Preview',
+  customPreview: 'Custom Preview',
   state: 'Upload State',
   maxlength: 'File Maxlength',
   maxsize: 'File Size Limit',
@@ -20,4 +21,5 @@ export default {
   customRender: 'Custom render file list',
   useProgress: 'Use Progress',
   beforeFilter: 'File List Filter',
+  clickAction: 'Upload Button Click Event',
 }

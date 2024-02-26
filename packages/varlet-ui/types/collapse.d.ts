@@ -1,9 +1,11 @@
-import { VarComponent, BasicAttributes, ListenerProp } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const collapseProps: Record<string, any>
+export declare const collapseProps: Record<keyof CollapseProps, any>
 
-export type CollapseModelValue = null | string | number | Array<string | number>
+export type CollapseModelValue = undefined | string | number | Array<string | number | undefined>
+
+export type CollapseToggleAllOptions = { expand: boolean | 'inverse'; skipDisabled?: boolean }
 
 export interface CollapseProps extends BasicAttributes {
   modelValue?: CollapseModelValue
@@ -16,11 +18,15 @@ export interface CollapseProps extends BasicAttributes {
 }
 
 export class Collapse extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<CollapseProps>
+
   $props: CollapseProps
 
   $slots: {
     default(): VNode[]
   }
+
+  toggleAll(options: CollapseToggleAllOptions): void
 }
 
 export class _CollapseComponent extends Collapse {}

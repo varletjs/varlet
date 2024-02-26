@@ -23,22 +23,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, nextTick, type Ref } from 'vue'
+import { defineComponent, watch, ref, nextTick } from 'vue'
 import { isURL, toNumber } from '@varlet/shared'
 import { props } from './props'
 import { toSizeUnit } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
-const { n, classes } = createNamespace('icon')
+const { name, n, classes } = createNamespace('icon')
 
 export default defineComponent({
-  name: 'VarIcon',
+  name,
   props,
   setup(props) {
-    const nextName: Ref<string | undefined> = ref('')
-    const animateInProgress: Ref<boolean> = ref(false)
+    const nextName = ref<string | undefined>('')
+    const animateInProgress = ref(false)
 
-    const handleNameChange = async (newName?: string, oldName?: string) => {
+    watch(() => props.name, handleNameChange, { immediate: true })
+
+    async function handleNameChange(newName?: string, oldName?: string) {
       const { transition } = props
 
       if (oldName == null || toNumber(transition) === 0) {
@@ -59,13 +61,11 @@ export default defineComponent({
       }, toNumber(transition))
     }
 
-    watch(() => props.name, handleNameChange, { immediate: true })
-
     return {
-      n,
-      classes,
       nextName,
       animateInProgress,
+      n,
+      classes,
       isURL,
       toNumber,
       toSizeUnit,

@@ -1,7 +1,7 @@
-import { VarComponent, BasicAttributes, Type as BadgeType } from './varComponent'
+import { VarComponent, BasicAttributes, Type as BadgeType, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
-export declare const badgeProps: Record<string, any>
+export declare const badgeProps: Record<keyof BadgeProps, any>
 
 export type BadgePosition = 'right-top' | 'right-bottom' | 'left-top' | 'left-bottom'
 
@@ -16,9 +16,14 @@ export interface BadgeProps extends BasicAttributes {
   color?: string
   position?: BadgePosition
   icon?: string
+  namespace?: string
+  offsetX?: number | string
+  offsetY?: number | string
 }
 
 export class Badge extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<BadgeProps>
+
   $props: BadgeProps
 
   $slots: {

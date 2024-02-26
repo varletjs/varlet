@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import AppBar from './AppBar.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as appBarProps } from './props'
 
-AppBar.install = function (app: App) {
-  app.component(AppBar.name, AppBar)
-}
+withInstall(AppBar)
+withPropsDefaultsSetter(AppBar, appBarProps)
 
-export { props as appBarProps } from './props'
+export { appBarProps }
 
 export const _AppBarComponent = AppBar
 

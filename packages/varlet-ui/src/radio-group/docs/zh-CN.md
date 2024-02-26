@@ -49,8 +49,8 @@ const value = ref(false)
 
 <template>
   <var-radio
-    unchecked-color="#e99eb4"
-    checked-color="#f44336"
+    unchecked-color="var(--color-warning)" 
+    checked-color="var(--color-danger)"
     v-model="value"
   >
     <template #unchecked-icon>
@@ -190,8 +190,8 @@ const value = ref(0)
 | `v-model` | 绑定的值 | _any_ | `false` |
 | `checked-value` | 选中状态的值 | _any_ | `true` |
 | `unchecked-value` | 未选中状态的值 | _any_ | `false` |
-| `checked-color` | 选中状态的颜色 | _any_ | `-` |
-| `unchecked-color` | 未选中状态的颜色 | _any_ | `-` |
+| `checked-color` | 选中状态的颜色 | _string_ | `-` |
+| `unchecked-color` | 未选中状态的颜色 | _string_ | `-` |
 | `icon-size` | 图标尺寸 | _string \| number_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `readonly` | 是否只读 | _boolean_ | `false` |
@@ -261,3 +261,4 @@ const value = ref(0)
 | `--radio-error-color` | `var(color-danger)` |
 | `--radio-action-padding` | `6px` |
 | `--radio-icon-size` | `24px` |
+| `--radio-text-color` | `#555` |

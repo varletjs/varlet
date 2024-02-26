@@ -7,9 +7,9 @@ const title = {
 
 const description = {
   'zh-CN':
-    'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验',
+    'Varlet 是一个基于 Vue3 开发的 Material 风格移动端组件库，全面拥抱 Vue3 生态，由社区团队维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验。',
   'en-US':
-    'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience',
+    'Varlet is a Material design mobile component library developed based on Vue3, developed and maintained by partners in the community. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience.',
 }
 
 const keywords = {
@@ -44,8 +44,12 @@ export default defineConfig({
     indexPage: {
       description,
       started: {
-        'zh-CN': '起步',
-        'en-US': 'GET STARTED',
+        'zh-CN': '快速开始',
+        'en-US': 'Get Started',
+      },
+      viewOnGithub: {
+        'zh-CN': '查看源码',
+        'en-US': 'View On Github',
       },
       features: [
         {
@@ -141,6 +145,257 @@ export default defineConfig({
           },
         },
       ],
+      teamMembers: {
+        label: {
+          'zh-CN': '团队成员',
+          'en-US': 'Team Members',
+        },
+        members: [
+          {
+            name: {
+              'zh-CN': 'haoziqaq',
+              'en-US': 'haoziqaq',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 核心团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/24223652',
+            github: 'https://github.com/haoziqaq',
+            twitter: 'https://twitter.com/haozijunqaq',
+          },
+          {
+            name: {
+              'zh-CN': 'BeADre',
+              'en-US': 'BeADre',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 核心团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/34639100',
+            github: 'https://github.com/BeADre',
+          },
+          {
+            name: {
+              'zh-CN': 'zhangmo8',
+              'en-US': 'zhangmo8',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & ikun-ui 核心团队成员',
+              'en-US': 'Core team member of varletjs & ikun-ui',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/43628500',
+            github: 'https://github.com/zhangmo8',
+            twitter: 'https://twitter.com/wegi8666',
+          },
+          {
+            name: {
+              'zh-CN': 'chouchouji',
+              'en-US': 'chouchouji',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 核心团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/70570907',
+            github: 'https://github.com/chouchouji',
+          },
+          {
+            name: {
+              'zh-CN': 'tiny-dust',
+              'en-US': 'tiny-dust',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 核心团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/49502875',
+            github: 'https://github.com/tiny-dust',
+          },
+          {
+            name: {
+              'zh-CN': 'songjianet',
+              'en-US': 'songjianet',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & apache & w3c & naiveui & ikun-ui 团队成员',
+              'en-US': 'Core team member of varletjs & apache & w3c & naiveui & ikun-ui',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/19239641',
+            github: 'https://github.com/songjianet',
+            twitter: 'https://twitter.com/songjianet',
+          },
+          {
+            name: {
+              'zh-CN': 'running snail',
+              'en-US': 'running snail',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & dcloud 团队成员',
+              'en-US': 'Core team member of varletjs & dcloud',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/37523000',
+            github: 'https://github.com/zhenyuWang',
+          },
+          {
+            name: {
+              'zh-CN': 'qytayh',
+              'en-US': 'qytayh',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/39668309',
+            github: 'https://github.com/qytayh',
+          },
+          {
+            name: {
+              'zh-CN': 'Erkelost',
+              'en-US': 'Erkelost',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs & unplugin & farm & devui & wujie 团队成员',
+              'en-US': 'Core team member of varletjs & unplugin & farm & devui & wujie',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/66500121',
+            github: 'https://github.com/ErKeLost',
+          },
+          {
+            name: {
+              'zh-CN': 'EmberSpirit',
+              'en-US': 'EmberSpirit',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/85718018',
+            github: 'https://github.com/wangKBweb',
+          },
+          {
+            name: {
+              'zh-CN': 'ayangweb',
+              'en-US': 'ayangweb',
+            },
+            title: {
+              'zh-CN': '开源开发者 & B 站 UP 主',
+              'en-US': 'Open Source Developer & Bilibili UP',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/75017711',
+            github: 'https://github.com/ayangweb',
+          },
+          {
+            name: {
+              'zh-CN': 'jiechen66',
+              'en-US': 'jiechen66',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/42862411',
+            github: 'https://github.com/jiechen66',
+          },
+          {
+            name: {
+              'zh-CN': 'dyggod',
+              'en-US': 'dyggod',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/49914353',
+            github: 'https://github.com/dyggod',
+          },
+          {
+            name: {
+              'zh-CN': 'clen cat',
+              'en-US': 'clen cat',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/37403253',
+            github: 'https://github.com/a145789',
+          },
+          {
+            name: {
+              'zh-CN': 'gaoting',
+              'en-US': 'gaoting',
+            },
+            title: {
+              'zh-CN': '开源开发者',
+              'en-US': 'Open Source Developer',
+            },
+            description: {
+              'zh-CN': 'varletjs 团队成员',
+              'en-US': 'Core team member of varletjs',
+            },
+            avatar: 'https://avatars.githubusercontent.com/u/7401170',
+            github: 'https://github.com/gaoting',
+          },
+        ],
+      },
       contributors: {
         label: {
           'zh-CN': '贡献者',
@@ -148,6 +403,14 @@ export default defineConfig({
         },
         link: 'https://github.com/varletjs/varlet/graphs/contributors',
         image: 'https://contrib.rocks/image?repo=varletjs/varlet',
+      },
+      sponsors: {
+        label: {
+          'zh-CN': '赞助者',
+          'en-US': 'Sponsors',
+        },
+        link: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
+        image: 'https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg',
       },
       license: {
         'zh-CN': '组件库基于 MIT 协议，您可以自由的使用和分享',
@@ -163,10 +426,44 @@ export default defineConfig({
         'zh-CN': '中文',
         'en-US': 'English',
       },
-      versions: null,
+      currentVersion: 'v3.x',
+      versions: [
+        {
+          name: 'varlet.gitee.io',
+          items: [
+            {
+              label: 'v3.x',
+              link: 'https://varlet.gitee.io/varlet-ui',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varlet.gitee.io/varlet-ui/v2',
+            },
+          ],
+        },
+        {
+          name: 'varletjs.vercel.app',
+          items: [
+            {
+              label: 'v3.x',
+              link: 'varlet-varletjs.vercel.app',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varlet-git-v2x-varletjs.vercel.app',
+            },
+          ],
+        },
+      ],
       github: 'https://github.com/varletjs/varlet',
+      changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
       playground: 'https://varlet.gitee.io/varlet-ui-playground',
-      darkMode: true,
+      themes: [
+        { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
+        { 'zh-CN': 'Md2 暗色', 'en-US': 'Md2 Dark', value: 'darkTheme' },
+        { 'zh-CN': 'Md3 亮色', 'en-US': 'Md3 Light', value: 'md3LightTheme' },
+        { 'zh-CN': 'Md3 暗色', 'en-US': 'Md3 Dark', value: 'md3DarkTheme' },
+      ],
     },
     clipboard: {
       'zh-CN': '代码已复制到剪切板',
@@ -188,19 +485,27 @@ export default defineConfig({
         'en-US': 'English',
       },
       github: 'https://github.com/varletjs/varlet',
-      darkMode: true,
+      themes: [
+        { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
+        { 'zh-CN': 'Md2 暗色', 'en-US': 'Md2 Dark', value: 'darkTheme' },
+        { 'zh-CN': 'Md3 亮色', 'en-US': 'Md3 Light', value: 'md3LightTheme' },
+        { 'zh-CN': 'Md3 暗色', 'en-US': 'Md3 Dark', value: 'md3DarkTheme' },
+      ],
     },
   },
-  themeKey: 'VARLET_THEME',
+  themeKey: 'VARLET_V3_THEME',
+  defaultLightTheme: 'md3LightTheme',
+  defaultDarkTheme: 'md3DarkTheme',
   lightTheme: {
     'color-body': '#fff',
-    'color-index-page-background': '#f2f2f2',
-    'color-index-page-feature-background': '#fff',
+    'color-index-page-background': '#fff',
+    'color-index-page-get-started-button': '#3a7afe',
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
     'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
     'color-index-page-divider-color': '#ddd',
+    'card-border-radius': '12px',
+    'code-example-border-radius': '8px',
     'color-bar': '#fff',
-    'color-sub-bar': '#f5f5f5',
     'color-text': '#555',
     'color-sub-text': '#888',
     'color-border': 'rgba(0, 0, 0, 0.12)',
@@ -217,9 +522,13 @@ export default defineConfig({
     'color-mobile-cell-hover': '#3a7afe',
     'color-pc-language-active': '#3a7afe',
     'color-pc-language-active-background': '#edf5ff',
-    'color-pc-github-active-background': '#212121',
     'color-mobile-language-active': '#3a7afe',
     'color-mobile-language-active-background': '#edf5ff',
+    'color-pc-theme-active': '#3a7afe',
+    'color-pc-theme-active-background': '#edf5ff',
+    'color-mobile-theme-active': '#3a7afe',
+    'color-mobile-theme-active-background': '#edf5ff',
+    'color-mobile-body': '#fff',
     'color-hl-background': '#fafafa',
     'color-hl-code': '#58727e',
     'color-hl-border': '#f3f3f3',
@@ -240,8 +549,9 @@ export default defineConfig({
     'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
     'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
     'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
+    'card-border-radius': '12px',
+    'code-example-border-radius': '8px',
     'color-bar': '#1e1e1e',
-    'color-sub-bar': '#272727',
     'color-text': '#fff',
     'color-sub-text': '#aaa',
     'color-border': '#333',
@@ -258,9 +568,13 @@ export default defineConfig({
     'color-mobile-cell-hover': '#4a7afe',
     'color-pc-language-active': '#4a7afe',
     'color-pc-language-active-background': '#4a7afe20',
-    'color-pc-github-active-background': '#303030',
     'color-mobile-language-active': '#4a7afe',
     'color-mobile-language-active-background': '#4a7afe20',
+    'color-pc-theme-active': '#4a7afe',
+    'color-pc-theme-active-background': '#4a7afe20',
+    'color-mobile-theme-active': '#4a7afe',
+    'color-mobile-theme-active-background': '#4a7afe20',
+    'color-mobile-body': '#1e1e1e',
     'color-hl-background': '#272727',
     'color-hl-code': '#fff',
     'color-hl-border': '#272727',
@@ -274,6 +588,98 @@ export default defineConfig({
     'color-hl-group-h': '#14a6e9',
     'color-hl-group-i': '#96cbfe',
   },
+  md3LightTheme: {
+    'color-body': '#fff',
+    'color-index-page-background': '#fff',
+    'color-index-page-feature-background': '#fff',
+    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #8baff8 50%, #84e0ff 50%)',
+    'color-index-page-second-text-color': 'rgba(60, 60, 60, .7)',
+    'color-index-page-divider-color': '#ddd',
+    'card-border-radius': '12px',
+    'code-example-border-radius': '8px',
+    'color-bar': '#fff',
+    'color-text': '#555',
+    'color-sub-text': '#888',
+    'color-border': 'rgba(0, 0, 0, 0.12)',
+    'color-shadow': '#eee',
+    'color-introduce-border': '#6750A4',
+    'color-primary': '#6750A4',
+    'color-link': '#536525',
+    'color-type': '#536525',
+    'color-loading-bar': '#6750A4',
+    'color-side-bar': '#6750A4',
+    'color-side-bar-active-background': '#E8DEF8',
+    'color-app-bar': '#6750A4',
+    'color-nav-button-hover-background': 'rgba(0, 0, 0, 0.08)',
+    'color-mobile-cell-hover': '#6750A4',
+    'color-pc-language-active': '#6750A4',
+    'color-pc-language-active-background': '#E8DEF8',
+    'color-mobile-language-active': '#6750A4',
+    'color-mobile-language-active-background': '#E8DEF8',
+    'color-pc-theme-active': '#6750A4',
+    'color-pc-theme-active-background': '#E8DEF8',
+    'color-mobile-theme-active': '#6750A4',
+    'color-mobile-theme-active-background': '#E8DEF8',
+    'color-mobile-body': '#FEF7FF',
+    'color-hl-background': '#fafafa',
+    'color-hl-code': '#58727e',
+    'color-hl-border': '#f3f3f3',
+    'color-hl-group-a': '#7c7c7c',
+    'color-hl-group-b': '#6750A4',
+    'color-hl-group-c': '#7D5260',
+    'color-hl-group-d': '#B3261E',
+    'color-hl-group-e': '#7D5260',
+    'color-hl-group-f': '#7D5260',
+    'color-hl-group-g': '#7D5260',
+    'color-hl-group-h': '#633B48',
+    'color-hl-group-i': '#633B48',
+  },
+  md3DarkTheme: {
+    'color-body': '#050505',
+    'color-index-page-background': '#1e1e1e',
+    'color-index-page-feature-background': '#303030',
+    'color-index-page-logo-mask-background': 'linear-gradient(-45deg, #729dfc 50%, #6859f4 50%)',
+    'color-index-page-second-text-color': 'rgba(255, 255, 255, .75)',
+    'color-index-page-divider-color': 'rgba(84, 84, 84, .8)',
+    'card-border-radius': '12px',
+    'code-example-border-radius': '8px',
+    'color-bar': '#1e1e1e',
+    'color-text': '#fff',
+    'color-sub-text': '#aaa',
+    'color-border': '#333',
+    'color-shadow': '#090909',
+    'color-introduce-border': '#555',
+    'color-primary': '#D0BCFF',
+    'color-link': '#BACF83',
+    'color-type': '#BACF83',
+    'color-loading-bar': '#D0BCFF',
+    'color-side-bar': '#D0BCFF',
+    'color-side-bar-active-background': '#4A4458',
+    'color-app-bar': '#211F26',
+    'color-nav-button-hover-background': 'rgba(255, 255, 255, 0.08)',
+    'color-mobile-cell-hover': '#D0BCFF',
+    'color-pc-language-active': '#D0BCFF',
+    'color-pc-language-active-background': '#4A4458',
+    'color-mobile-language-active': '#D0BCFF',
+    'color-mobile-language-active-background': '#4A4458',
+    'color-pc-theme-active': '#D0BCFF',
+    'color-pc-theme-active-background': '#4A4458',
+    'color-mobile-theme-active': '#D0BCFF',
+    'color-mobile-theme-active-background': '#4A4458',
+    'color-mobile-body': '#141218',
+    'color-hl-background': '#272727',
+    'color-hl-code': '#fff',
+    'color-hl-border': '#272727',
+    'color-hl-group-a': '#7c7c7c',
+    'color-hl-group-b': '#D0BCFF',
+    'color-hl-group-c': '#EFB8C8',
+    'color-hl-group-d': '#F2B8B5',
+    'color-hl-group-e': '#EFB8C8',
+    'color-hl-group-f': '#EFB8C8',
+    'color-hl-group-g': '#EFB8C8',
+    'color-hl-group-h': '#EFB8C8',
+    'color-hl-group-i': '#EFB8C8',
+  },
   icons: {
     name: 'varlet-icons',
     namespace: 'var-icon',
@@ -281,6 +687,9 @@ export default defineConfig({
     fontWeight: 'normal',
     fontFamilyClassName: 'var-icon--set',
     base64: true,
+  },
+  esbuild: {
+    target: 'es2016',
   },
   directives: [],
 })

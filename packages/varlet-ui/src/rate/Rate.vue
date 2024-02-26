@@ -14,7 +14,7 @@
           :class="n('content-icon')"
           var-rate-cover
           :transition="0"
-          :namespace="namespace"
+          :namespace="getCurrentState(value).namespace"
           :name="getCurrentState(value).name"
           :style="{ fontSize: toSizeUnit(size) }"
         >
@@ -36,16 +36,16 @@ import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
 import { defineComponent, nextTick, ref } from 'vue'
 import { useForm } from '../form/provide'
-import { useValidation, call, createNamespace } from '../utils/components'
+import { useValidation, createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
-import { toNumber } from '@varlet/shared'
+import { toNumber, call } from '@varlet/shared'
 import { props } from './props'
 import { type RateProvider } from './provide'
 
-const { n } = createNamespace('rate')
+const { name, n } = createNamespace('rate')
 
 export default defineComponent({
-  name: 'VarRate',
+  name,
   components: {
     VarIcon,
     VarFormDetails,
@@ -54,13 +54,22 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
+    const currentHoveringValue = ref<number>(-1)
     const { form, bindForm } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering } = useHoverOverlay()
-    const currentHoveringValue = ref<number>(-1)
-    let lastScore = Number(props.modelValue)
 
-    const getStyle = (val: number) => {
+    let lastScore = toNumber(props.modelValue)
+
+    const rateProvider: RateProvider = {
+      reset,
+      validate,
+      resetValidation,
+    }
+
+    call(bindForm, rateProvider)
+
+    function getStyle(val: number) {
       const { count, gap } = props
 
       return {
@@ -69,7 +78,7 @@ export default defineComponent({
       }
     }
 
-    const getClass = (val: number) => {
+    function getClass(val: number) {
       const { name, color } = getCurrentState(val)
 
       return {
@@ -80,88 +89,105 @@ export default defineComponent({
       }
     }
 
-    const getCurrentState = (index: number) => {
-      const { modelValue, disabled, disabledColor, color, half, emptyColor, icon, halfIcon, emptyIcon } = props
+    function getCurrentState(index: number) {
+      const {
+        modelValue,
+        disabled,
+        disabledColor,
+        color,
+        half,
+        emptyColor,
+        icon,
+        halfIcon,
+        emptyIcon,
+        namespace,
+        halfIconNamespace,
+        emptyIconNamespace,
+      } = props
       let iconColor = color
 
-      if (disabled || form?.disabled.value) iconColor = disabledColor
-
-      if (index <= toNumber(modelValue)) {
-        return { color: iconColor, name: icon }
+      if (disabled || form?.disabled.value) {
+        iconColor = disabledColor
       }
 
-      if (half && index <= toNumber(modelValue) + 0.5) {
-        return { color: iconColor, name: halfIcon }
+      if (index <= modelValue) {
+        return { color: iconColor, name: icon, namespace }
       }
 
-      return { color: disabled || form?.disabled.value ? disabledColor : emptyColor, name: emptyIcon }
+      if (half && index <= modelValue + 0.5) {
+        return { color: iconColor, name: halfIcon, namespace: halfIconNamespace }
+      }
+
+      return {
+        color: disabled || form?.disabled.value ? disabledColor : emptyColor,
+        name: emptyIcon,
+        namespace: emptyIconNamespace,
+      }
     }
 
-    const changeValue = (score: number, event: MouseEvent) => {
+    function changeValue(score: number, event: MouseEvent) {
       const { half, clearable } = props
+      const { offsetWidth } = event.target as HTMLElement
 
-      if (half) {
-        const { offsetWidth } = event.target as HTMLDivElement
-
-        if (event.offsetX <= Math.floor(offsetWidth / 2)) score -= 0.5
+      if (half && event.offsetX <= Math.floor(offsetWidth / 2)) {
+        score -= 0.5
       }
 
-      // set score to 0 when last score is equal to current score
-      // and the value of clearable is true
-      if (lastScore === score && clearable) score = 0
+      // set score to 0 when last score is equal to current score and clearable is true
+      if (lastScore === score && clearable) {
+        score = 0
+      }
+
+      if (lastScore !== score) {
+        call(props['onUpdate:modelValue'], score)
+        call(props.onChange, score)
+      }
 
       // update last score
       lastScore = score
-
-      call(props['onUpdate:modelValue'], score)
     }
 
-    const validate = () => v(props.rules, toNumber(props.modelValue))
+    function validate() {
+      return v(props.rules, props.modelValue)
+    }
 
-    const validateWithTrigger = () => nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    function validateWithTrigger() {
+      return nextTick(() => vt(['onChange'], 'onChange', props.rules, props.modelValue))
+    }
 
-    const handleClick = (score: number, event: MouseEvent) => {
-      const { readonly, disabled, onChange } = props
+    function handleClick(score: number, event: MouseEvent) {
+      const { readonly, disabled } = props
 
       if (readonly || disabled || form?.disabled.value || form?.readonly.value) {
         return
       }
 
       changeValue(score, event)
-      call(onChange, score)
       validateWithTrigger()
     }
 
-    const createHoverHandler = (value: number) => {
+    function createHoverHandler(value: number) {
       return (isHover: boolean) => {
         currentHoveringValue.value = value
         hovering.value = isHover
       }
     }
 
-    const reset = () => {
+    function reset() {
       call(props['onUpdate:modelValue'], 0)
       resetValidation()
     }
-
-    const rateProvider: RateProvider = {
-      reset,
-      validate,
-      resetValidation,
-    }
-
-    call(bindForm, rateProvider)
 
     return {
       errorMessage,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      hovering,
+      currentHoveringValue,
       getStyle,
       getClass,
       getCurrentState,
       handleClick,
-      hovering,
-      currentHoveringValue,
       createHoverHandler,
       reset,
       validate,

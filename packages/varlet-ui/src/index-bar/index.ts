@@ -1,11 +1,11 @@
-import type { App } from 'vue'
 import IndexBar from './IndexBar.vue'
+import { withInstall, withPropsDefaultsSetter } from '../utils/components'
+import { props as indexBarProps } from './props'
 
-IndexBar.install = function (app: App) {
-  app.component(IndexBar.name, IndexBar)
-}
+withInstall(IndexBar)
+withPropsDefaultsSetter(IndexBar, indexBarProps)
 
-export { props as indexBarProps } from './props'
+export { indexBarProps }
 
 export const _IndexBarComponent = IndexBar
 

@@ -1,54 +1,48 @@
 <script setup>
-import { AppType, watchLang, watchDarkMode } from '@varlet/cli/client'
-import VarButton from '../../button'
-import VarDivider from '../../divider'
-import VarIcon from '../../icon'
-import VarCard from '..'
-import dark from '../../themes/dark'
-import { pack, use } from './locale'
+import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { t, use } from './locale'
 import { ref } from 'vue'
 
 const floating = ref(false)
 
 watchLang(use)
-watchDarkMode(dark)
+onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ pack.basicUsage }}</app-type>
-  <var-card :title="pack.title" :description="pack.description" />
+  <app-type>{{ t('basicUsage') }}</app-type>
+  <var-card :title="t('title')" :description="t('description')" />
 
-  <app-type>{{ pack.showSubtitle }}</app-type>
-  <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" />
+  <app-type>{{ t('showSubtitle') }}</app-type>
+  <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" />
 
-  <app-type>{{ pack.outline }}</app-type>
-  <var-card :title="pack.title" :subtitle="pack.subtitle" outline elevation="0" :description="pack.description" />
-
-  <app-type>{{ pack.showImage }}</app-type>
+  <app-type>{{ t('showImage') }}</app-type>
   <var-card
-    :title="pack.title"
-    :subtitle="pack.subtitle"
-    :description="pack.description"
+    :title="t('title')"
+    :subtitle="t('subtitle')"
+    :description="t('description')"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   />
 
-  <app-type>{{ pack.useSlot }}</app-type>
+  <app-type>{{ t('useSlot') }}</app-type>
   <var-card
-    :title="pack.title"
-    :subtitle="pack.subtitle"
-    :description="pack.description"
+    :title="t('title')"
+    :subtitle="t('subtitle')"
+    :description="t('description')"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button text type="warning">{{ pack.action1 }}</var-button>
-      <var-button text type="warning">{{ pack.action2 }}</var-button>
+      <var-space>
+        <var-button type="primary">{{ t('action1') }}</var-button>
+        <var-button type="primary">{{ t('action2') }}</var-button>
+      </var-space>
     </template>
   </var-card>
 
-  <app-type>{{ pack.horizontal }}</app-type>
+  <app-type>{{ t('horizontal') }}</app-type>
   <var-card
-    :title="pack.title"
-    :subtitle="pack.description"
+    :title="t('title')"
+    :subtitle="t('description')"
     layout="row"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
@@ -62,35 +56,35 @@ watchDarkMode(dark)
     </template>
   </var-card>
 
-  <app-type>{{ pack.showRipple }}</app-type>
-  <var-card :title="pack.title" :subtitle="pack.subtitle" :description="pack.description" ripple />
+  <app-type>{{ t('showRipple') }}</app-type>
+  <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" ripple />
 
-  <app-type>{{ pack.floating }}</app-type>
+  <app-type>{{ t('floating') }}</app-type>
   <var-card
     v-model:floating="floating"
-    @click="floating = true"
-    :title="pack.title"
-    :subtitle="pack.subtitle"
-    ripple
+    :title="t('title')"
+    :subtitle="t('subtitle')"
     src="https://varlet.gitee.io/varlet-ui/cat.jpg"
   >
     <template #extra>
-      <var-button text type="warning">{{ pack.action1 }}</var-button>
-      <var-button text type="warning">{{ pack.action2 }}</var-button>
+      <var-button type="primary" @click="floating = true">{{ t('floating') }}</var-button>
     </template>
 
     <template #floating-content>
-      <var-divider dashed></var-divider>
+      <var-divider dashed margin="32px 0"></var-divider>
       <div class="card-example-text">
-        {{ pack.description }}
+        {{ t('description') }}
       </div>
     </template>
   </var-card>
+
+  <app-type>{{ t('outline') }}</app-type>
+  <var-card :title="t('title')" :subtitle="t('subtitle')" outline elevation="0" :description="t('description')" />
 </template>
 
 <style scoped lang="less">
 .card-example-text {
-  padding: 14px;
+  padding: 0 16px 16px;
   font-size: 14px;
   line-height: 28px;
 }

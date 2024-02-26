@@ -1,7 +1,7 @@
 import config from '@config'
 import AppType from './appType'
+import { Themes, StyleProvider } from '@varlet/ui'
 import { onMounted, onUnmounted } from 'vue'
-import { kebabCase } from '@varlet/shared'
 import { get } from 'lodash-es'
 
 interface PCLocationInfo {
@@ -10,31 +10,9 @@ interface PCLocationInfo {
   hash: string
 }
 
-export type Theme = 'lightTheme' | 'darkTheme'
+export type Theme = 'lightTheme' | 'darkTheme' | 'md3LightTheme' | 'md3DarkTheme'
 
 export type StyleVars = Record<string, string>
-
-const mountedVarKeys: string[] = []
-
-function formatStyleVars(styleVars: StyleVars | null) {
-  return Object.entries(styleVars ?? {}).reduce((styles, [key, value]) => {
-    const cssVar = key.startsWith('--') ? key : `--${kebabCase(key)}`
-    styles[cssVar] = value
-
-    return styles
-  }, {} as StyleVars)
-}
-
-export function StyleProvider(styleVars: StyleVars | null = {}) {
-  mountedVarKeys.forEach((key) => document.documentElement.style.removeProperty(key))
-  mountedVarKeys.length = 0
-
-  const styles: StyleVars = formatStyleVars(styleVars)
-  Object.entries(styles).forEach(([key, value]) => {
-    document.documentElement.style.setProperty(key, value)
-    mountedVarKeys.push(key)
-  })
-}
 
 export function getPCLocationInfo(): PCLocationInfo {
   const [, language, path] = window.location.hash.split('/')
@@ -56,16 +34,14 @@ function getHashSearch() {
 
 export function getBrowserTheme(): Theme {
   const themeKey = get(config, 'themeKey')
-  const darkThemeConfig = get(config, 'darkTheme')
-
-  if (!darkThemeConfig) {
-    return 'lightTheme'
-  }
-
+  const defaultLightTheme = get(config, 'defaultLightTheme')
+  const defaultDarkTheme = get(config, 'defaultDarkTheme')
   const storageTheme = window.localStorage.getItem(themeKey) as Theme
 
   if (!storageTheme) {
-    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'darkTheme' : 'lightTheme'
+    const preferTheme = window.matchMedia?.('(prefers-color-scheme: dark)').matches
+      ? defaultDarkTheme
+      : defaultLightTheme
     window.localStorage.setItem(themeKey, preferTheme)
 
     return preferTheme
@@ -112,14 +88,33 @@ export function useRouteListener(cb: () => void) {
   })
 }
 
-export function watchDarkMode(dark: StyleVars, cb?: (theme: Theme) => void) {
+const themeMap = {
+  lightTheme: null,
+  darkTheme: Themes.dark,
+  md3LightTheme: Themes.md3Light,
+  md3DarkTheme: Themes.md3Dark,
+}
+
+export function setTheme(theme: Theme) {
+  const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
+  const styleVars = { ...siteStyleVars, ...(themeMap[theme] ?? {}) }
+  StyleProvider(styleVars)
+  setColorScheme(theme)
+}
+
+export function onThemeChange(cb?: (theme: Theme) => void) {
   watchTheme((theme) => {
-    const siteStyleVars = withSiteConfigNamespace(get(config, theme, {}))
-
-    StyleProvider(theme === 'darkTheme' ? { ...siteStyleVars, ...dark } : siteStyleVars)
-
+    setTheme(theme)
     cb?.(theme)
   })
+}
+
+export function getSiteStyleVars(theme: Theme) {
+  return withSiteConfigNamespace(get(config, theme, {}))
+}
+
+export function setColorScheme(theme: Theme) {
+  document.documentElement.style.setProperty('color-scheme', theme.toLowerCase().includes('dark') ? 'dark' : 'light')
 }
 
 export function watchTheme(
@@ -144,4 +139,4 @@ export function watchTheme(
   cb(getBrowserTheme(), 'default')
 }
 
-export { AppType }
+export { AppType, StyleProvider }

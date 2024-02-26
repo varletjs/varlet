@@ -1,4 +1,4 @@
-import { removeItem } from '@varlet/shared'
+import { isString, removeItem } from '@varlet/shared'
 
 export interface CacheInstance<T> {
   cache: T[]
@@ -12,16 +12,16 @@ export interface CacheInstance<T> {
   clear(): void
 }
 
-export const isHTMLSupportImage = (val: string | undefined | null) => {
-  if (val == null) {
+export const isHTMLSupportImage = (val: unknown): val is string => {
+  if (!isString(val)) {
     return false
   }
 
-  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg|webp)$/.test(val)
+  return val.startsWith('data:image') || /\.(png|jpg|gif|jpeg|svg|webp|ico)$/i.test(val)
 }
 
-export const isHTMLSupportVideo = (val: string | undefined | null) => {
-  if (val == null) {
+export const isHTMLSupportVideo = (val: unknown): val is string => {
+  if (!isString(val)) {
     return false
   }
 
@@ -64,16 +64,7 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-export const dt = (value: unknown, defaultText: string | undefined) => (value == null ? defaultText : value)
-
-export const getGlobalThis = (): typeof globalThis => {
-  if (typeof globalThis !== 'undefined') return globalThis
-
-  if (typeof window !== 'undefined') return window
-
-  return typeof global !== 'undefined' ? global : self
-}
-
+// eslint-disable-next-line default-param-last
 export const padStart = (str = '', maxLength: number, fillString = ''): string => {
   if (str.length >= maxLength) return str
 

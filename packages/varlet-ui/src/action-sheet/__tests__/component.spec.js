@@ -2,6 +2,7 @@ import ActionSheet from '../index'
 import VarActionSheet from '../ActionSheet'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
+import { expect } from 'vitest'
 
 test('test action-sheet component plugin', () => {
   const app = createApp({}).use(ActionSheet.Component)
@@ -11,6 +12,7 @@ test('test action-sheet component plugin', () => {
 test('test action-sheet styles', () => {
   const wrapper = mount(VarActionSheet, {
     props: {
+      teleport: null,
       actions: [
         {
           name: 'Item 01',

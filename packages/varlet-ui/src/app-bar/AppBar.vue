@@ -6,6 +6,7 @@
         n('$--box'),
         [safeAreaTop, n('--safe-area-top')],
         [round, n('--round')],
+        [fixed, n('--fixed')],
         formatElevation(elevation, 3)
       )
     "
@@ -36,27 +37,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, onUpdated, computed, type ComputedRef, type StyleValue } from 'vue'
+import { defineComponent, ref, onUpdated, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 
-const { n, classes } = createNamespace('app-bar')
+const { name, n, classes } = createNamespace('app-bar')
 
 export default defineComponent({
-  name: 'VarAppBar',
+  name,
   props,
   setup(props, { slots }) {
-    const paddingLeft: Ref<number | undefined> = ref()
-    const paddingRight: Ref<number | undefined> = ref()
-
-    const computePadding = () => {
-      paddingLeft.value = slots.left ? 0 : undefined
-      paddingRight.value = slots.right ? 0 : undefined
-    }
-
-    const rootStyles: ComputedRef<StyleValue> = computed(() => {
-      const { image, color, textColor, imageLinearGradient } = props
+    const paddingLeft = ref<number | undefined>()
+    const paddingRight = ref<number | undefined>()
+    const rootStyles = computed<CSSProperties>(() => {
+      const { image, color, textColor, imageLinearGradient, zIndex } = props
 
       if (image != null) {
         const gradient = imageLinearGradient ? `linear-gradient(${imageLinearGradient}), ` : ''
@@ -65,25 +60,32 @@ export default defineComponent({
           'background-image': `${gradient}url(${image})`,
           'background-position': 'center center',
           'background-size': 'cover',
+          'z-index': zIndex,
         }
       }
 
       return {
         background: color,
         color: textColor,
+        'z-index': zIndex,
       }
     })
 
     onSmartMounted(computePadding)
     onUpdated(computePadding)
 
+    function computePadding() {
+      paddingLeft.value = slots.left ? 0 : undefined
+      paddingRight.value = slots.right ? 0 : undefined
+    }
+
     return {
-      n,
-      classes,
-      formatElevation,
       rootStyles,
       paddingLeft,
       paddingRight,
+      n,
+      classes,
+      formatElevation,
     }
   },
 })
