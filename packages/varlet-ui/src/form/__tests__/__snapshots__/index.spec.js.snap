@@ -808,7 +808,7 @@ exports[`test form with uploader 1`] = `
 "<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2 var-uploader--disabled"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2 var-uploader--disabled"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
@@ -825,7 +825,7 @@ exports[`test form with uploader 2`] = `
 "<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
@@ -842,7 +842,7 @@ exports[`test form with uploader 3`] = `
 "<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>
@@ -870,7 +870,7 @@ exports[`test form with uploader 4`] = `
 "<form class="var-form">
   <div class="var-uploader var--box">
     <div class="var-uploader__file-list">
-      <div class="var-uploader__action var-elevation--2"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
+      <div class="var-uploader--outline-none var-uploader__action var-elevation--2" tabindex="0"><input type="file" class="var-uploader__action-input" accept="image/*" disabled=""><i class="var-icon var-icon--set var-icon-plus var-uploader__action-icon" style="transition-duration: 0ms;" var-uploader-cover=""></i>
         <div class="var-hover-overlay"></div>
       </div>
     </div>

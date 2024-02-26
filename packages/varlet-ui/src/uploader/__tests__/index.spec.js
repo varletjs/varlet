@@ -2,7 +2,7 @@ import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockFileReader, mockStubs } from '../../utils/test'
+import { delay, mockFileReader, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi } from 'vitest'
 
 const createEvent = (filename, type) => {
@@ -575,4 +575,43 @@ test('test uploader removable', async () => {
 
   wrapper.unmount()
   mockRestore()
+})
+
+test('test uploader keyboard enter for chooseFile', async () => {
+  const click = vi.fn()
+  const origin = (HTMLInputElement.prototype.click = click)
+  HTMLInputElement.prototype.click = click
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+    },
+  })
+
+  await wrapper.find('.var-uploader__action').trigger('focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(click).toHaveBeenCalledTimes(1)
+
+  HTMLInputElement.prototype.click = origin
+  wrapper.unmount()
+})
+
+test('test uploader keyboard space for chooseFile', async () => {
+  const click = vi.fn()
+  const origin = (HTMLInputElement.prototype.click = click)
+  HTMLInputElement.prototype.click = click
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+    },
+  })
+
+  await wrapper.find('.var-uploader__action').trigger('focus')
+  await triggerKeyboard(window, 'keydown', { key: ' ' })
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
+  expect(click).toHaveBeenCalledTimes(1)
+
+  HTMLInputElement.prototype.click = origin
+  wrapper.unmount()
 })

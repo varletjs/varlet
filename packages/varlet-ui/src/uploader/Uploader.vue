@@ -33,16 +33,20 @@
       <div
         :class="
           classes(
+            n('--outline-none'),
             [!$slots.default, `${n('action')} ${formatElevation(elevation, 2)}`],
             [disabled || formDisabled, n('--disabled')]
           )
         "
+        :tabindex="disabled || formDisabled ? undefined : '0'"
         v-if="!maxlength || modelValue.length < toNumber(maxlength)"
         v-ripple="{
           disabled: disabled || formDisabled || readonly || formReadonly || !ripple || Boolean($slots.default),
         }"
         v-hover:desktop="handleHovering"
         @click="handleActionClick"
+        @focus="isEffectFocusing = true"
+        @blur="isEffectFocusing = false"
       >
         <input
           ref="input"
@@ -58,7 +62,10 @@
 
         <slot>
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
-          <var-hover-overlay :hovering="hovering && !disabled && !formDisabled" />
+          <var-hover-overlay
+            :hovering="hovering && !disabled && !formDisabled && !readonly && !formReadonly"
+            :focusing="isEffectFocusing && !disabled && !formDisabled && !readonly && !formReadonly"
+          />
         </slot>
       </div>
     </div>
@@ -101,12 +108,13 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type UploaderValidateTrigger } from './props'
-import { isNumber, toNumber, normalizeToArray, toDataURL, call } from '@varlet/shared'
+import { isNumber, toNumber, normalizeToArray, toDataURL, call, inMobile } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
 import { toSizeUnit } from '../utils/elements'
 import { type UploaderProvider } from './provide'
+import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('uploader')
 
@@ -136,6 +144,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const input = ref<null | HTMLElement>(null)
     const showPreview = ref(false)
     const currentPreview = ref<null | VarFile>(null)
@@ -179,6 +188,9 @@ export default defineComponent({
 
     call(bindForm, uploaderProvider)
 
+    useEventListener(window, 'keydown', handleKeydown)
+    useEventListener(window, 'keyup', handleKeyup)
+
     watch(
       () => props.modelValue,
       () => {
@@ -187,6 +199,36 @@ export default defineComponent({
       },
       { deep: true }
     )
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || props.disabled || form?.disabled.value || props.readonly || form?.readonly.value) {
+        return
+      }
+
+      if (event.key === ' ' || event.key === 'Enter') {
+        event.preventDefault()
+      }
+
+      if (event.key === 'Enter') {
+        chooseFile()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (
+        !isEffectFocusing.value ||
+        props.disabled ||
+        form?.disabled.value ||
+        props.readonly ||
+        form?.readonly.value ||
+        event.key !== ' '
+      ) {
+        return
+      }
+
+      event.preventDefault()
+      chooseFile()
+    }
 
     function preview(varFile: VarFile) {
       const { disabled, previewed, preventDefaultPreview, onPreview } = props
@@ -415,6 +457,7 @@ export default defineComponent({
       errorMessage,
       maxlengthText,
       hovering,
+      isEffectFocusing,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       n,
