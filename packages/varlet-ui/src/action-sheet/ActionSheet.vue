@@ -1,23 +1,22 @@
 <template>
   <var-popup
-    :class="n('popup-radius')"
     position="bottom"
-    :show="popupShow"
+    :class="n('popup-radius')"
     :overlay="overlay"
     :overlay-class="overlayClass"
     :overlay-style="overlayStyle"
     :lock-scroll="lockScroll"
     :close-on-click-overlay="closeOnClickOverlay"
+    :close-on-key-escape="closeOnKeyEscape"
     :teleport="teleport"
     :safe-area="safeArea"
-    v-bind="{
-      'onUpdate:show': handlePopupUpdateShow,
-    }"
+    v-model:show="show"
     @open="onOpen"
     @close="onClose"
     @closed="onClosed"
     @opened="onOpened"
     @route-change="onRouteChange"
+    @key-escape="onKeyEscape"
   >
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
@@ -45,12 +44,13 @@
 import Ripple from '../ripple'
 import VarPopup from '../popup'
 import VarActionItem from './ActionItem.vue'
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent } from 'vue'
 import { props } from './props'
 import { t } from '../locale'
 import { createNamespace } from '../utils/components'
-import { type ActionItem } from './index'
 import { call } from '@varlet/shared'
+import { useVModel } from '@varlet/use'
+import { type ActionItem } from './index'
 
 const { name, n, classes } = createNamespace('action-sheet')
 
@@ -64,15 +64,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const popupShow = ref(false)
-
-    watch(
-      () => props.show,
-      (newValue) => {
-        popupShow.value = newValue
-      },
-      { immediate: true }
-    )
+    const show = useVModel(props, 'show')
 
     function handleSelect(action: ActionItem) {
       if (action.disabled) {
@@ -81,19 +73,17 @@ export default defineComponent({
 
       const { closeOnClickAction, onSelect } = props
       call(onSelect, action)
-      closeOnClickAction && call(props['onUpdate:show'], false)
-    }
 
-    function handlePopupUpdateShow(value: boolean) {
-      call(props['onUpdate:show'], value)
+      if (closeOnClickAction) {
+        show.value = false
+      }
     }
 
     return {
-      popupShow,
+      show,
       t,
       n,
       classes,
-      handlePopupUpdateShow,
       handleSelect,
     }
   },
