@@ -1,17 +1,19 @@
 <template>
   <var-popup
-    :class="n('popup')"
     var-image-preview-cover
+    :class="n('popup')"
     :transition="n('$-fade')"
-    :show="popupShow"
     :overlay="false"
     :close-on-click-overlay="false"
+    :close-on-key-escape="closeOnKeyEscape"
     :lock-scroll="lockScroll"
     :teleport="teleport"
+    v-model:show="show"
     @open="onOpen"
     @close="onClose"
     @closed="onClosed"
     @opened="onOpened"
+    @key-escape="onKeyEscape"
     @route-change="onRouteChange"
   >
     <var-swipe
@@ -73,7 +75,7 @@ import VarIcon from '../icon'
 import VarPopup from '../popup'
 import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber, clamp, preventDefault, call } from '@varlet/shared'
-import { useEventListener, useTouch } from '@varlet/use'
+import { useEventListener, useTouch, useVModel } from '@varlet/use'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { type SwipeToOptions } from '../swipe/props'
@@ -98,7 +100,7 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
-    const popupShow = ref(false)
+    const show = useVModel(props, 'show')
     const scale = ref(1)
     const translateX = ref(0)
     const translateY = ref(0)
@@ -121,14 +123,6 @@ export default defineComponent({
     }
 
     useEventListener(() => document, 'contextmenu', preventImageDefault)
-
-    watch(
-      () => props.show,
-      (newShow) => {
-        popupShow.value = newShow
-      },
-      { immediate: true }
-    )
 
     function zoomIn(ratio: number | string) {
       scale.value = toNumber(ratio)
@@ -322,7 +316,7 @@ export default defineComponent({
     return {
       swipeRef,
       isPreventDefault,
-      popupShow,
+      show,
       scale,
       translateX,
       translateY,

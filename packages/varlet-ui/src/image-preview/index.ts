@@ -21,6 +21,9 @@ interface ImagePreviewOptions {
   onLongPress?: (index: number) => void
   // internal
   teleport?: TeleportProps['to']
+  // internal for esc
+  closeOnKeyEscape?: boolean
+  onKeyEscape?: () => void
 }
 
 let singletonOptions: ImagePreviewOptions | null

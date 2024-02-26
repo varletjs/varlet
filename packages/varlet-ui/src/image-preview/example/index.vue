@@ -53,7 +53,7 @@ function previewCallback() {
   ImagePreview({
     images,
     onChange: (index) => {
-      console.log('index', index)
+      Snackbar(String(index))
     },
   })
 }
