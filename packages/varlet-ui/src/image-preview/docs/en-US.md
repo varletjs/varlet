@@ -25,7 +25,7 @@ function preview() {
 #### Call Back
 ```html
 <script setup>
-import { ImagePreview } from '@varlet/ui'
+import { ImagePreview, Snackbar } from '@varlet/ui'
 
 function preview() {
   ImagePreview({
@@ -34,7 +34,7 @@ function preview() {
       'https://varlet.gitee.io/varlet-ui/cat2.jpg'
     ],
     onChange(index) {
-      console.log(index)
+      Snackbar(String(index))
     }
   })
 }

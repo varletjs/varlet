@@ -31,5 +31,8 @@ export const props = {
     'onClosed',
     // internal for function call closes the dialog
     'onRouteChange',
+    // internal for esc
+    'closeOnKeyEscape',
+    'onKeyEscape',
   ]),
 }
