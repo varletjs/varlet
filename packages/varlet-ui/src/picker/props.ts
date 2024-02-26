@@ -73,5 +73,8 @@ export const props = {
     'onClosed',
     'onClickOverlay',
     'onRouteChange',
+    // internal for esc
+    'onKeyEscape',
+    'closeOnKeyEscape',
   ]),
 }
