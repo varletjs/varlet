@@ -1,3 +1,12 @@
+## [3.0.6](https://github.com/varletjs/varlet/compare/v3.0.5...v3.0.6) (2024-02-27)
+
+
+### Bug Fixes
+
+* fix field position error ([0f675ba](https://github.com/varletjs/varlet/commit/0f675bab094be33d5a09f8ca8c8a2a3a2c91258c))
+
+
+
 ## [3.0.5](https://github.com/varletjs/varlet/compare/v3.0.4...v3.0.5) (2024-02-27)
 
 
