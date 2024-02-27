@@ -354,7 +354,7 @@ test('test checkbox keyboard Enter', async () => {
   expect(wrapper.vm.value).toStrictEqual([1])
 
   await trigger(children[1], 'focus')
-  await triggerKeyboard(window, 'keydown', { key: ' ' })
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
 
   expect(wrapper.vm.value).toStrictEqual([1, 2])
 
