@@ -199,30 +199,30 @@ export default defineComponent({
 
     function handleKeydown(event: KeyboardEvent) {
       const { disabled, readonly } = props
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      if (!isEffectFocusing.value || form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
       const { key } = event
 
-      if (isEffectFocusing.value && (key === 'Enter' || key === ' ')) {
+      if (key === 'Enter' || key === ' ') {
         preventDefault(event)
       }
 
-      if (isEffectFocusing.value && key === 'Enter') {
+      if (key === 'Enter') {
         root.value!.click()
       }
     }
 
     function handleKeyup(event: KeyboardEvent) {
       const { disabled, readonly } = props
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      if (!isEffectFocusing.value || form?.disabled.value || form?.readonly.value || disabled || readonly) {
         return
       }
 
       const { key } = event
 
-      if (isEffectFocusing.value && key === ' ') {
+      if (key === ' ') {
         preventDefault(event)
         root.value!.click()
       }
