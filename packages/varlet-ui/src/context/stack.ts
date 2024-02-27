@@ -4,7 +4,7 @@ import { removeItem } from '@varlet/shared'
 import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 
 export function useStack(activeGetter: () => boolean) {
-  const {uid} = getCurrentInstance()!
+  const { uid } = getCurrentInstance()!
 
   watch(activeGetter, (isActive) => {
     if (isActive && !context.stack.includes(uid)) {
