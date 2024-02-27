@@ -1,10 +1,10 @@
 <template>
   <div
-    :class="n('wrap')"
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
     @focus="handleFocus"
     @blur="handleBlur"
+    :class="n('wrap')"
     @click="handleClick"
   >
     <div :class="n()">
@@ -77,7 +77,7 @@ import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call } from '@varlet/shared'
+import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
@@ -190,7 +190,7 @@ export default defineComponent({
       change(changedValue)
     }
 
-    useEventListener(() => root.value!, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keydown', handleKeydown)
 
     function handleKeydown(event: KeyboardEvent) {
       const { disabled, readonly } = props
@@ -200,13 +200,9 @@ export default defineComponent({
 
       const { key } = event
 
-      if (key === 'Tab') {
-        root.value?.focus()
-        return
-      }
-
-      if (key === 'Enter' || key === ' ') {
-        root.value?.click()
+      if (hovering.value && (key === 'Enter' || key === ' ')) {
+        preventDefault(event)
+        root.value!.click()
       }
     }
 
@@ -241,8 +237,8 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
-      handleBlur,
       handleFocus,
+      handleBlur,
     }
   },
 })

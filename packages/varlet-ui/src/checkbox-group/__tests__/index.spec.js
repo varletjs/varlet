@@ -4,7 +4,7 @@ import VarCheckboxGroup from '../CheckboxGroup'
 import VarCheckbox from '../../checkbox/Checkbox'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay, triggerKeyboard, trigger } from '../../utils/test'
 import { expect, vi } from 'vitest'
 
 test('test checkbox group plugin', () => {
@@ -327,5 +327,39 @@ test('test checkbox group layout direction', async () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test checkbox keyboard Enter', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+    }),
+    template: `
+          <var-checkbox-group v-model="value">
+            <var-checkbox :checked-value="1" >吃饭</var-checkbox>
+            <var-checkbox :checked-value="2" >睡觉</var-checkbox>
+          </var-checkbox-group>
+        `,
+    attachTo: document.body,
+  })
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(children[1], 'focus')
+  await triggerKeyboard(window, 'keydown', { key: ' ' })
+
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(wrapper.vm.value).toStrictEqual([1])
+
   wrapper.unmount()
 })

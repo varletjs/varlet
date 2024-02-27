@@ -3,7 +3,7 @@
 exports[`test checkbox group layout direction 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--vertical">
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
@@ -16,7 +16,7 @@ exports[`test checkbox group layout direction 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
@@ -39,7 +39,7 @@ exports[`test checkbox group layout direction 1`] = `
 exports[`test checkbox group validation 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
@@ -52,7 +52,7 @@ exports[`test checkbox group validation 1`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
           <!--v-if-->
@@ -86,7 +86,7 @@ exports[`test checkbox group validation 1`] = `
 exports[`test checkbox group validation 2`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked">
           <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
@@ -99,7 +99,7 @@ exports[`test checkbox group validation 2`] = `
         <!--v-if-->
       </transition-stub>
     </div>
-    <div class="var-checkbox__wrap">
+    <div tabindex="0" class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked">
           <!--v-if-->
@@ -120,7 +120,7 @@ exports[`test checkbox group validation 2`] = `
 `;
 
 exports[`test checkbox indeterminate 1`] = `
-"<div class="var-checkbox__wrap">
+"<div tabindex="0" class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked"><i class="var-icon var-icon--set var-icon-minus-box var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
       <!--v-if-->
@@ -136,7 +136,7 @@ exports[`test checkbox indeterminate 1`] = `
 `;
 
 exports[`test checkbox validation 1`] = `
-"<div class="var-checkbox__wrap">
+"<div tabindex="0" class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
       <!--v-if-->
@@ -163,7 +163,7 @@ exports[`test checkbox validation 1`] = `
 `;
 
 exports[`test checkbox validation 2`] = `
-"<div class="var-checkbox__wrap">
+"<div tabindex="0" class="var-checkbox__wrap">
   <div class="var-checkbox">
     <div class="var-checkbox__action var-checkbox--checked">
       <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-marked var-checkbox__icon var-checkbox--with-animation" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
