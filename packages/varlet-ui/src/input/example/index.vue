@@ -13,6 +13,7 @@ const standardValue7 = ref('')
 const standardValue8 = ref('')
 const standardValue9 = ref('')
 const standardValue10 = ref('')
+const standardValue11 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -24,6 +25,7 @@ const outlinedValue7 = ref('')
 const outlinedValue8 = ref('')
 const outlinedValue9 = ref('')
 const outlinedValue10 = ref('')
+const outlinedValue11 = ref('')
 
 watchLang(use)
 onThemeChange()
@@ -36,6 +38,11 @@ onThemeChange()
     <var-input :placeholder="t('readonly')" readonly v-model="standardValue3" />
     <var-input :placeholder="t('disabled')" disabled v-model="standardValue4" />
     <var-input :placeholder="t('clearable')" clearable v-model="standardValue5" />
+    <var-input clearable :placeholder="t('clearIconSlot')" v-model="standardValue11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       :placeholder="t('validate')"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
@@ -69,6 +76,11 @@ onThemeChange()
     <var-input variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue3" />
     <var-input variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue4" />
     <var-input variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue5" />
+    <var-input clearable variant="outlined" :placeholder="t('clearIconSlot')" v-model="outlinedValue11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       variant="outlined"
       :placeholder="t('validate')"

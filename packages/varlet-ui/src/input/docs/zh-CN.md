@@ -188,7 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | 前置图标 | `-` |
 | `append-icon` | 后置图标 | `-` |
-| `clear-icon` | 清除图标 | `-` |
+| `clear-icon` | 清除图标 | `clear: function` 清除函数(在使用插槽时, 可用于清除输入框内容) |
 | `extra-message` | 附加信息 | `-` |
 
 ### 样式变量

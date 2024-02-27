@@ -1,7 +1,7 @@
 import Input from '..'
 import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay } from '../../utils/test'
 import { expect, vi, describe } from 'vitest'
 
@@ -409,10 +409,11 @@ describe('test input component slots', () => {
         modelValue: 'value',
       },
       slots: {
-        'clear-icon': () => 'clear-icon',
+        'clear-icon': ({ clear }) => h('button', { class: 'custom-clear-icon', onClick: () => clear() }, 'Clear'),
       },
     })
 
+    await wrapper.find('.custom-clear-icon').trigger('click')
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.unmount()
