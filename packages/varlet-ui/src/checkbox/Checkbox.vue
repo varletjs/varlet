@@ -205,8 +205,11 @@ export default defineComponent({
 
       const { key } = event
 
-      if (isEffectFocusing.value && key === 'Enter') {
+      if (isEffectFocusing.value && (key === 'Enter' || key === ' ')) {
         preventDefault(event)
+      }
+
+      if (isEffectFocusing.value && key === 'Enter') {
         root.value!.click()
       }
     }
