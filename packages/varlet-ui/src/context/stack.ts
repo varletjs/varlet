@@ -1,4 +1,3 @@
-import context from './index'
 import { type Ref, getCurrentInstance, watch } from 'vue'
 import { removeItem } from '@varlet/shared'
 import { onSmartUnmounted, onSmartMounted } from '@varlet/use'
