@@ -3,8 +3,8 @@
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
     :class="n('wrap')"
-    @focus="handleFocus"
-    @blur="handleBlur"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
     @click="handleClick"
   >
     <div :class="n()">
@@ -45,7 +45,10 @@
             var-checkbox-cover
           />
         </slot>
-        <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
+        <var-hover-overlay
+          :hovering="!disabled && !formDisabled && hovering"
+          :focusing="!disabled && !formDisabled && isEffectFocusing"
+        />
       </div>
 
       <div
@@ -77,7 +80,7 @@ import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, preventDefault } from '@varlet/shared'
+import { call, inMobile, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
@@ -93,6 +96,7 @@ export default defineComponent({
   props,
   setup(props) {
     const root = ref<HTMLElement | null>(null)
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
@@ -191,6 +195,7 @@ export default defineComponent({
     }
 
     useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
       const { disabled, readonly } = props
@@ -200,18 +205,24 @@ export default defineComponent({
 
       const { key } = event
 
-      if (hovering.value && (key === 'Enter' || key === ' ')) {
+      if (isEffectFocusing.value && key === 'Enter') {
         preventDefault(event)
         root.value!.click()
       }
     }
 
-    function handleFocus() {
-      handleHovering(true)
-    }
+    function handleKeyup(event: KeyboardEvent) {
+      const { disabled, readonly } = props
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly) {
+        return
+      }
 
-    function handleBlur() {
-      handleHovering(false)
+      const { key } = event
+
+      if (isEffectFocusing.value && key === ' ') {
+        preventDefault(event)
+        root.value!.click()
+      }
     }
 
     // expose
@@ -229,6 +240,7 @@ export default defineComponent({
       formReadonly: form?.readonly,
       hovering,
       root,
+      isEffectFocusing,
       n,
       classes,
       handleHovering,
@@ -237,8 +249,6 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
-      handleFocus,
-      handleBlur,
     }
   },
 })
