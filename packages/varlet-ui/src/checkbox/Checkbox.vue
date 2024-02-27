@@ -2,7 +2,7 @@
   <div
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
-    :class="n('wrap')"
+    :class="classes(n('wrap'), [isEffectFocusing, n('--outline-none')])"
     @focus="isEffectFocusing = true"
     @blur="isEffectFocusing = false"
     @click="handleClick"
@@ -198,8 +198,8 @@ export default defineComponent({
     useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
-      const { disabled, readonly } = props
-      if (!isEffectFocusing.value || form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      const { disabled } = props
+      if (!isEffectFocusing.value || form?.disabled.value || disabled) {
         return
       }
 
@@ -215,8 +215,8 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      const { disabled, readonly } = props
-      if (!isEffectFocusing.value || form?.disabled.value || form?.readonly.value || disabled || readonly) {
+      const { disabled } = props
+      if (!isEffectFocusing.value || form?.disabled.value || disabled) {
         return
       }
 
