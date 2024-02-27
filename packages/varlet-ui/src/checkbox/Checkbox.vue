@@ -2,9 +2,9 @@
   <div
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
+    :class="n('wrap')"
     @focus="handleFocus"
     @blur="handleBlur"
-    :class="n('wrap')"
     @click="handleClick"
   >
     <div :class="n()">
