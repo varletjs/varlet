@@ -1,3 +1,12 @@
+## [3.0.5](https://github.com/varletjs/varlet/compare/v3.0.4...v3.0.5) (2024-02-27)
+
+
+### Bug Fixes
+
+* fix field legend width computed error in some browser ([a7adf42](https://github.com/varletjs/varlet/commit/a7adf42195ecf6528e6f3754a5aebab6325c1739))
+
+
+
 ## [3.0.4](https://github.com/varletjs/varlet/compare/v3.0.3...v3.0.4) (2024-02-23)
 
 
