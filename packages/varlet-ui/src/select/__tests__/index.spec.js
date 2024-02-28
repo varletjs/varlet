@@ -5,7 +5,7 @@ import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 test('test select plugin', () => {
   const app = createApp({}).use(Select)
@@ -152,7 +152,6 @@ test('test select hint to be false', () => {
 
 test('test select onFocus', async () => {
   const onFocus = vi.fn()
-  const onBlur = vi.fn()
 
   const wrapper = mount({
     ...Wrapper,

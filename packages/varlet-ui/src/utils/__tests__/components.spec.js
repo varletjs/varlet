@@ -1,4 +1,4 @@
-import { expect, vi } from 'vitest'
+import { expect, test } from 'vitest'
 import { withPropsDefaultsSetter } from '../components'
 
 test('test withPropsDefaultsSetter', () => {

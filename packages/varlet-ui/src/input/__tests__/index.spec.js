@@ -3,7 +3,7 @@ import VarInput from '../Input'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
@@ -356,7 +356,7 @@ test('test input autofocus', async () => {
 })
 
 test('test input focus on mousedown', async () => {
-  let wrapper = mount(VarInput)
+  const wrapper = mount(VarInput)
 
   await wrapper.trigger('mousedown')
   await wrapper.find('.var-input__input').trigger('focus')

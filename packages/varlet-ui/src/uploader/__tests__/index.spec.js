@@ -2,16 +2,14 @@ import Uploader from '..'
 import VarUploader from '../Uploader'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, mockFileReader, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { delay, mockFileReader, mockStubs, triggerKeyboard } from '../../utils/test'
+import { expect, vi, test } from 'vitest'
 
-const createEvent = (filename, type) => {
-  return {
-    target: {
-      files: [new File([], filename, { type })],
-    },
-  }
-}
+const createEvent = (filename, type) => ({
+  target: {
+    files: [new File([], filename, { type })],
+  },
+})
 
 test('test uploader plugin', () => {
   const app = createApp({}).use(Uploader)
@@ -53,8 +51,8 @@ test('test uploader onBeforeFilter', async () => {
     modelValue: [],
     multiple: true,
     'onUpdate:modelValue': onUpdateModelValue,
-    onBeforeFilter: async function (files) {
-      return new Promise((resolve, reject) => {
+    async onBeforeFilter(files) {
+      return new Promise((resolve) => {
         setTimeout(() => {
           resolve(files.filter((file) => file.name.endsWith('jpg')))
         }, 1000)
@@ -579,8 +577,8 @@ test('test uploader removable', async () => {
 
 test('test uploader keyboard enter for chooseFile', async () => {
   const click = vi.fn()
-  const origin = (HTMLInputElement.prototype.click = click)
   HTMLInputElement.prototype.click = click
+  const origin = HTMLInputElement.prototype.click
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -598,8 +596,8 @@ test('test uploader keyboard enter for chooseFile', async () => {
 
 test('test uploader keyboard space for chooseFile', async () => {
   const click = vi.fn()
-  const origin = (HTMLInputElement.prototype.click = click)
   HTMLInputElement.prototype.click = click
+  const origin = HTMLInputElement.prototype.click
 
   const wrapper = mount(VarUploader, {
     props: {

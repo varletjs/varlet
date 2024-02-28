@@ -1,4 +1,4 @@
-import { expect } from 'vitest'
+import { expect, test } from 'vitest'
 import Themes from '..'
 
 test('test dark theme', () => {

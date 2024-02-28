@@ -1,9 +1,9 @@
 import VarTooltip from '..'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger } from '../../utils/test'
 import { doubleRaf } from '@varlet/shared'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 test('test tooltip plugin', () => {
   const app = createApp({}).use(VarTooltip)
@@ -11,9 +11,7 @@ test('test tooltip plugin', () => {
 })
 
 test('test tooltip placement', async () => {
-  const { mockRestore } = mockStubs()
-
-  for (const placement of [
+  ;[
     'top',
     'top-start',
     'top-end',
@@ -26,22 +24,22 @@ test('test tooltip placement', async () => {
     'left',
     'left-start',
     'left-end',
-  ]) {
+  ].forEach((placement) => {
+    const { mockRestore } = mockStubs()
     const root = document.createElement('div')
 
-    mount(VarTooltip, {
+    const wrapper = mount(VarTooltip, {
       props: {
         placement,
         teleport: root,
       },
     })
 
-    await doubleRaf()
-
     expect(root.innerHTML).toMatchSnapshot()
-  }
 
-  mockRestore()
+    wrapper.unmount()
+    mockRestore()
+  })
 })
 
 test('test tooltip click trigger', async () => {
@@ -108,24 +106,22 @@ test('test tooltip hover trigger and events', async () => {
 })
 
 test('test tooltip type', async () => {
-  const { mockRestore } = mockStubs()
-
-  for (const type of ['default', 'primary', 'info', 'success', 'warning', 'danger']) {
+  ;['default', 'primary', 'info', 'success', 'warning', 'danger'].forEach((type) => {
+    const { mockRestore } = mockStubs()
     const root = document.createElement('div')
 
-    mount(VarTooltip, {
+    const wrapper = mount(VarTooltip, {
       props: {
         type,
         teleport: root,
       },
     })
 
-    await doubleRaf()
-
     expect(root.innerHTML).toMatchSnapshot()
-  }
 
-  mockRestore()
+    wrapper.unmount()
+    mockRestore()
+  })
 })
 
 test('test tooltip content', async () => {

@@ -2,7 +2,7 @@ import Lazy, { imageCache } from '..'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockDoubleRaf, trigger } from '../../utils/test'
-import { expect } from 'vitest'
+import { expect, test, describe } from 'vitest'
 
 test('test lazy use', () => {
   const app = createApp({}).use(Lazy)

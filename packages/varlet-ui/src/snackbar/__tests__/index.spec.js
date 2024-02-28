@@ -2,7 +2,7 @@ import Snackbar from '../index'
 import VarSnackbar from '../Snackbar'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 test('test snackbar plugin', () => {
   const app = createApp({}).use(Snackbar)

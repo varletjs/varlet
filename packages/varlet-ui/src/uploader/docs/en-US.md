@@ -425,7 +425,7 @@ const files = ref([
 | `elevation`| Elevation level, options `true` `false` and level of `0-24`, not in simple mode | _string \| number \| boolean_|  `true` |
 | `removable` | Whether the removable | _boolean_ | `true` |
 | `maxlength` | Maximum number of files | _string \| number_ | `-` |
-| `maxsize`   | Maximum file size | _string \| number_ | `-` |
+| `maxsize`   | Maximum file size, the unit is `byte` | _string \| number_ | `-` |
 | `previewed` | Whether to allow preview | _boolean_ | `true` |
 | `prevent-default-preview` | Prevent default preview behavior | _boolean_ | `false` |
 | `ripple`    | Whether to open ripple | _boolean_ | `true` |

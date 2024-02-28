@@ -1,3 +1,4 @@
+/* eslint-disable no-extend-native */
 import IndexBar from '..'
 import IndexAnchor from '../../index-anchor'
 import VarIndexBar from '../IndexBar'
@@ -5,7 +6,7 @@ import VarIndexAnchor from '../../index-anchor/IndexAnchor'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 mockScrollTo()
 
@@ -13,6 +14,7 @@ function mockIndexAnchorOffsetTop() {
   const originForEach = Array.prototype.forEach
 
   Array.prototype.forEach = function (fn, thisArg) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     let mockedArray = this
 
     if (this && this.map) {
