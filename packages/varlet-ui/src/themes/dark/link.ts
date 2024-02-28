@@ -7,4 +7,5 @@ export default {
   '--link-info-color': 'var(--color-info)',
   '--link-disabled-color': 'var(--color-text-disabled)',
   '--link-font-size': 'var(--font-size-md)',
+  '--link-focus-opacity': '0.8',
 }

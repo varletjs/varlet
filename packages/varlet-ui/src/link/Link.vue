@@ -85,11 +85,11 @@ export default defineComponent({
     return {
       tag,
       linkProps,
+      isEffectFocusing,
       n,
       classes,
       handleClick,
       toSizeUnit,
-      isEffectFocusing,
     }
   },
 })

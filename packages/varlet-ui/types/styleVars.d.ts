@@ -753,6 +753,8 @@ export interface StyleVars {
   linkDisabledColor?: string
   '--link-font-size'?: string
   linkFontSize?: string
+  '--link-focus-opacity'?: string
+  linkFocusOpacity?: string
   '--list-loading-height'?: string
   listLoadingHeight?: string
   '--list-finished-height'?: string

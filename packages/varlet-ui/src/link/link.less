@@ -7,6 +7,7 @@
   --link-info-color: var(--color-info);
   --link-disabled-color: var(--color-text-disabled);
   --link-font-size: var(--font-size-md);
+  --link-focus-opacity: 0.8;
 }
 
 .var-link {
@@ -19,6 +20,7 @@
   white-space: nowrap;
   text-decoration: none;
   font-size: var(--link-font-size);
+  transition: opacity 0.15s;
 
   &--underline-always {
     text-decoration: underline;
@@ -60,6 +62,6 @@
   }
 
   &--focusing {
-    opacity: var(--hover-overlay-focusing-opacity);
+    opacity: var(--link-focus-opacity);
   }
 }
