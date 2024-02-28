@@ -10,7 +10,7 @@
         n(`--${type}`),
         [underline !== 'none', n(`--underline-${underline}`)],
         [disabled, n('--disabled')],
-        [isEffectFocusing, $slots.default ? n('--focusing') : '']
+        [isEffectFocusing, n('--focusing')]
       )
     "
     :style="{
