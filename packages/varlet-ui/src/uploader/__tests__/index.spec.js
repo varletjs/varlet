@@ -577,8 +577,8 @@ test('test uploader removable', async () => {
 
 test('test uploader keyboard enter for chooseFile', async () => {
   const click = vi.fn()
-  HTMLInputElement.prototype.click = click
   const origin = HTMLInputElement.prototype.click
+  HTMLInputElement.prototype.click = click
 
   const wrapper = mount(VarUploader, {
     props: {
@@ -596,8 +596,8 @@ test('test uploader keyboard enter for chooseFile', async () => {
 
 test('test uploader keyboard space for chooseFile', async () => {
   const click = vi.fn()
-  HTMLInputElement.prototype.click = click
   const origin = HTMLInputElement.prototype.click
+  HTMLInputElement.prototype.click = click
 
   const wrapper = mount(VarUploader, {
     props: {
