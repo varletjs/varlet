@@ -2,7 +2,7 @@ import Chip from '..'
 import VarChip from '../Chip'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 test('test chip plugin', () => {
   const app = createApp({}).use(Chip)

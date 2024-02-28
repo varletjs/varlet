@@ -3,7 +3,7 @@ import VarPagination from '../Pagination'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 test('test pagination plugin', () => {
   const app = createApp({}).use(Pagination)

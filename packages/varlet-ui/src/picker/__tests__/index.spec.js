@@ -2,7 +2,7 @@ import Picker from '..'
 import VarPicker from '../Picker'
 import { createApp } from 'vue'
 import { delay, trigger, mockTranslate } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 mockTranslate()
 

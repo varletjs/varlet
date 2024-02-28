@@ -3,7 +3,7 @@ import VarPicker from '../Picker'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockTranslate, trigger } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 mockTranslate()
 
@@ -200,7 +200,7 @@ test('test custom key', async () => {
       onConfirm,
     },
   })
-  let columns = wrapper.findAll('.var-picker__column')
+  const columns = wrapper.findAll('.var-picker__column')
   expect(wrapper.html()).toMatchSnapshot()
   await triggerDrag(columns[0].element, 0, -44)
   expect(wrapper.html()).toMatchSnapshot()

@@ -3,7 +3,7 @@ import VarDialog from '../Dialog'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 test('test dialog component plugin', () => {
   const app = createApp({}).use(Dialog.Component)

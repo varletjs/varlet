@@ -3,7 +3,7 @@ import Space from '..'
 import { computeMargin } from '../margin'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
-import { expect } from 'vitest'
+import { expect, test, describe } from 'vitest'
 
 test('test space use', () => {
   const app = createApp({}).use(Space)

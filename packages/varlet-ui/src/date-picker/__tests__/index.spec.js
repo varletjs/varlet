@@ -4,7 +4,7 @@ import dayjs from 'dayjs/esm'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockConsole, triggerDrag, mockScrollIntoView } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 mockScrollIntoView()
 
@@ -111,9 +111,7 @@ test('test datePicker style and type', async () => {
 test('test datePicker allowedDates', async () => {
   const wrapper = mount(VarDatePicker, {
     props: {
-      allowedDates: (val) => {
-        return parseInt(val.split('-')[2], 10) % 2 === 1
-      },
+      allowedDates: (val) => parseInt(val.split('-')[2], 10) % 2 === 1,
       modelValue: '2021-03-01',
     },
   })

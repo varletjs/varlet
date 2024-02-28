@@ -3,7 +3,7 @@ import VarSwitch from '../Switch'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
