@@ -124,3 +124,4 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--link-info-color` | `var(--color-info)`          |
 | `--link-disabled-color` | `var(--color-text-disabled)` |
 | `--link-font-size` | `var(--font-size-md)` |
+| `--link-focus-opacity` | `0.8` |
