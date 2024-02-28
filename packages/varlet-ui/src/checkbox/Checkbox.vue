@@ -2,7 +2,7 @@
   <div
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
-    :class="classes(n('wrap'), [isEffectFocusing, n('--outline-none')])"
+    :class="n('wrap')"
     @focus="isEffectFocusing = true"
     @blur="isEffectFocusing = false"
     @click="handleClick"
@@ -220,9 +220,7 @@ export default defineComponent({
         return
       }
 
-      const { key } = event
-
-      if (key === ' ') {
+      if (event.key === ' ') {
         preventDefault(event)
         root.value!.click()
       }
