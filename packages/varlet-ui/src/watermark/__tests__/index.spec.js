@@ -3,7 +3,7 @@ import VarWatermark from '../Watermark'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { mockCanvas } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 global.URL.createObjectURL = vi.fn()
 global.URL.revokeObjectURL = vi.fn()

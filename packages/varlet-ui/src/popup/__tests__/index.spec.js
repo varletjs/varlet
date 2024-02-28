@@ -2,7 +2,7 @@ import Popup from '..'
 import VarPopup from '../Popup'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 import { triggerKeyboard } from '../../utils/test'
 
 test('test popup plugin', () => {

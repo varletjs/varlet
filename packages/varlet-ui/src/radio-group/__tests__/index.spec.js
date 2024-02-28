@@ -5,7 +5,7 @@ import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 test('test radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)

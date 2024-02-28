@@ -2,7 +2,7 @@ import Skeleton from '..'
 import VarSkeleton from '../Skeleton'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
-import { expect } from 'vitest'
+import { expect, test, describe } from 'vitest'
 
 test('test skeleton use', () => {
   const app = createApp({}).use(Skeleton)

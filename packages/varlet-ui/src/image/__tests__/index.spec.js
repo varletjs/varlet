@@ -3,7 +3,7 @@ import VarImage from '../Image'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 const SRC = 'https://varlet.gitee.io/varlet-ui/cat.png'
 

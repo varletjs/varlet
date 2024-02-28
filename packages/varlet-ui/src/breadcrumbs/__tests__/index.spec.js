@@ -4,16 +4,16 @@ import VarBreadcrumb from '../../breadcrumb/Breadcrumb.vue'
 import { createApp, Fragment, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 function renderBasicUsage(props) {
   return h(
     Fragment,
-    ['HOME', 'LINK 1', 'LINK 2'].map((text) => {
-      return h(VarBreadcrumb, props, {
+    ['HOME', 'LINK 1', 'LINK 2'].map((text) =>
+      h(VarBreadcrumb, props, {
         default: () => text,
       })
-    })
+    )
   )
 }
 
@@ -89,12 +89,12 @@ test('test breadcrumbs slots', async () => {
       default: () =>
         h(
           Fragment,
-          ['HOME', 'LINK 1', 'LINK 2'].map((text) => {
-            return h(VarBreadcrumb, null, {
+          ['HOME', 'LINK 1', 'LINK 2'].map((text) =>
+            h(VarBreadcrumb, null, {
               default: () => text,
               separator: () => h('span', '*'),
             })
-          })
+          )
         ),
     },
   })

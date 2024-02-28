@@ -3,7 +3,7 @@ import VarBackTop from '../BackTop'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockScrollTo } from '../../utils/test'
-import { describe, expect, vi } from 'vitest'
+import { describe, expect, vi, test } from 'vitest'
 
 mockScrollTo()
 
