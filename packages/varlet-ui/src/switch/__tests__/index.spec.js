@@ -5,7 +5,6 @@ import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test, describe } from 'vitest'
 
-
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
   expect(app.component(Switch.name)).toBeTruthy()
@@ -207,8 +206,8 @@ describe('test switch events', () => {
 
   test('test switch keyboard enter for switch', async () => {
     const click = vi.fn()
-    const origin = (HTMLElement.prototype.click = click)
     HTMLElement.prototype.click = click
+    const origin = HTMLElement.prototype.click
 
     const wrapper = mount(VarSwitch, {
       props: {
@@ -226,8 +225,8 @@ describe('test switch events', () => {
 
   test('test switch keyboard space for switch', async () => {
     const click = vi.fn()
-    const origin = (HTMLElement.prototype.click = click)
     HTMLElement.prototype.click = click
+    const origin = HTMLElement.prototype.click
 
     const wrapper = mount(VarSwitch, {
       props: {
