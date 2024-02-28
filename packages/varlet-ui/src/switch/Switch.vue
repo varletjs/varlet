@@ -141,7 +141,7 @@ export default defineComponent({
     useEventListener(window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled || form?.disabled.value || props.readonly || form?.readonly.value) {
+      if (!isEffectFocusing.value) {
         return
       }
 
@@ -155,14 +155,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (
-        !isEffectFocusing.value ||
-        props.disabled ||
-        form?.disabled.value ||
-        props.readonly ||
-        form?.readonly.value ||
-        event.key !== ' '
-      ) {
+      if (!isEffectFocusing.value || event.key !== ' ') {
         return
       }
 
@@ -196,9 +189,13 @@ export default defineComponent({
         onBeforeChange,
       } = props
 
+      if (disabled || form?.disabled.value) {
+        return
+      }
+
       call(onClick, event)
 
-      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) {
+      if (loading || readonly || form?.readonly.value) {
         return
       }
 

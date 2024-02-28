@@ -159,7 +159,7 @@ describe('test switch events', () => {
 
     await wrapper.find('.var-switch__block').trigger('click')
 
-    expect(clickFn).toHaveBeenCalledTimes(1)
+    expect(clickFn).toHaveBeenCalledTimes(0)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
 
@@ -169,7 +169,7 @@ describe('test switch events', () => {
     })
 
     await wrapper.find('.var-switch__block').trigger('click')
-    expect(clickFn).toHaveBeenCalledTimes(2)
+    expect(clickFn).toHaveBeenCalledTimes(1)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
 
