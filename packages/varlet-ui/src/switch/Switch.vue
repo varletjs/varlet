@@ -4,10 +4,7 @@
       ref="switchRef"
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
       :style="styleComputed.switch"
-      :tabindex="disabled || formDisabled ? undefined : '0'"
       @click="switchActive"
-      @focus="isEffectFocusing = true"
-      @blur="isEffectFocusing = false"
     >
       <div
         :style="styleComputed.track"
@@ -18,9 +15,12 @@
       <div
         :class="classes(n('ripple'), [modelValue === activeValue, n('ripple--active')])"
         :style="styleComputed.ripple"
+        :tabindex="disabled || formDisabled ? undefined : '0'"
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled,
         }"
+        @focus="isEffectFocusing = true"
+        @blur="isEffectFocusing = false"
       >
         <div
           :style="styleComputed.handle"

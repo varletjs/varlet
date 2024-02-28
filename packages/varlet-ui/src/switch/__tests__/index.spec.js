@@ -5,7 +5,6 @@ import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test, describe } from 'vitest'
 
-
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
   expect(app.component(Switch.name)).toBeTruthy()
@@ -207,7 +206,7 @@ describe('test switch events', () => {
 
   test('test switch keyboard enter for switch', async () => {
     const click = vi.fn()
-    const origin = (HTMLElement.prototype.click = click)
+    const origin = HTMLElement.prototype.click
     HTMLElement.prototype.click = click
 
     const wrapper = mount(VarSwitch, {
@@ -216,7 +215,7 @@ describe('test switch events', () => {
       },
     })
 
-    await wrapper.find('.var-switch__block').trigger('focus')
+    await wrapper.find('.var-switch__ripple').trigger('focus')
     await triggerKeyboard(window, 'keydown', { key: 'Enter' })
     expect(click).toHaveBeenCalledTimes(1)
 
@@ -226,7 +225,7 @@ describe('test switch events', () => {
 
   test('test switch keyboard space for switch', async () => {
     const click = vi.fn()
-    const origin = (HTMLElement.prototype.click = click)
+    const origin = HTMLElement.prototype.click
     HTMLElement.prototype.click = click
 
     const wrapper = mount(VarSwitch, {
@@ -235,7 +234,7 @@ describe('test switch events', () => {
       },
     })
 
-    await wrapper.find('.var-switch__block').trigger('focus')
+    await wrapper.find('.var-switch__ripple').trigger('focus')
     await triggerKeyboard(window, 'keydown', { key: ' ' })
     await triggerKeyboard(window, 'keyup', { key: ' ' })
     expect(click).toHaveBeenCalledTimes(1)
