@@ -31,6 +31,7 @@
       </div>
 
       <div
+        ref="actionRef"
         :class="
           classes(
             n('--outline-none'),
@@ -145,6 +146,7 @@ export default defineComponent({
   props,
   setup(props) {
     const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const actionRef = ref<null | HTMLElement>(null)
     const input = ref<null | HTMLElement>(null)
     const showPreview = ref(false)
     const currentPreview = ref<null | VarFile>(null)
@@ -201,7 +203,7 @@ export default defineComponent({
     )
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled || form?.disabled.value || props.readonly || form?.readonly.value) {
+      if (!isEffectFocusing.value) {
         return
       }
 
@@ -210,24 +212,17 @@ export default defineComponent({
       }
 
       if (event.key === 'Enter') {
-        chooseFile()
+        actionRef.value!.click()
       }
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (
-        !isEffectFocusing.value ||
-        props.disabled ||
-        form?.disabled.value ||
-        props.readonly ||
-        form?.readonly.value ||
-        event.key !== ' '
-      ) {
+      if (!isEffectFocusing.value || event.key !== ' ') {
         return
       }
 
       event.preventDefault()
-      chooseFile()
+      actionRef.value!.click()
     }
 
     function preview(varFile: VarFile) {
@@ -451,6 +446,7 @@ export default defineComponent({
 
     return {
       input,
+      actionRef,
       files,
       showPreview,
       currentPreview,
