@@ -44,6 +44,10 @@ export function useStack(activeGetter: () => boolean, zIndex: Ref<number>) {
   }
 
   function pushStackItem() {
+    if (getStackItem(uid)) {
+      return
+    }
+
     stack.push({ uid, zIndex })
   }
 
