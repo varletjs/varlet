@@ -86,7 +86,7 @@ function asyncClose() {
   <var-button type="warning" block @click="show2 = true">{{ t('customSlots') }}</var-button>
   <var-dialog v-model:show="show2">
     <template #title>
-      <var-icon name="information" color="#2979ff" />
+      <var-icon name="information" color="var(--color-primary)" />
     </template>
 
     <var-cell>{{ t('message') }}</var-cell>
