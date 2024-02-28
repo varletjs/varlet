@@ -17,7 +17,7 @@
         :style="styleComputed.ripple"
         :tabindex="disabled || formDisabled ? undefined : '0'"
         v-ripple="{
-          disabled: !ripple || disabled || loading || formDisabled,
+          disabled: !ripple || disabled || loading || formDisabled || readonly || formReadonly,
         }"
         @focus="isEffectFocusing = true"
         @blur="isEffectFocusing = false"
