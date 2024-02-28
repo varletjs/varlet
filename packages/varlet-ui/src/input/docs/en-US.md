@@ -188,7 +188,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
-| `clear-icon` | Clear Icon | `clear: function` clear function (can be used to clear input box contents when using slots) |
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear input box contents when using slots) |
 | `extra-message` | Extra message | `-` |
 
 ### Style Variables
