@@ -24,7 +24,7 @@ import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
 
 const { name, n, classes } = createNamespace('action-sheet')
