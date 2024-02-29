@@ -1253,6 +1253,10 @@ export interface StyleVars {
   tabFontSize?: string
   '--tab-font-weight'?: string
   tabFontWeight?: string
+  '--tab-active-font-size'?: string
+  tabActiveFontSize?: string
+  '--tab-active-font-weight'?: string
+  tabActiveFontWeight?: string
   '--font-size-xs'?: string
   fontSizeXs?: string
   '--font-size-sm'?: string
