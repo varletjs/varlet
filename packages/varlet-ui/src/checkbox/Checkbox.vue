@@ -198,8 +198,7 @@ export default defineComponent({
     useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
-      const { disabled } = props
-      if (!isEffectFocusing.value || form?.disabled.value || disabled) {
+      if (!isEffectFocusing.value) {
         return
       }
 
@@ -215,8 +214,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      const { disabled } = props
-      if (!isEffectFocusing.value || form?.disabled.value || disabled) {
+      if (!isEffectFocusing.value) {
         return
       }
 
