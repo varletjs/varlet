@@ -81,9 +81,9 @@ exports[`test form with checkbox 1`] = `
 
 exports[`test form with checkbox 2`] = `
 "<form class="var-form">
-  <div class="var-checkbox__wrap" tabindex="0">
+  <div class="var-checkbox__wrap">
     <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked">
+      <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
@@ -99,9 +99,9 @@ exports[`test form with checkbox 2`] = `
 
 exports[`test form with checkbox 3`] = `
 "<form class="var-form">
-  <div class="var-checkbox__wrap" tabindex="0">
+  <div class="var-checkbox__wrap">
     <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error">
+      <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>
@@ -128,9 +128,9 @@ exports[`test form with checkbox 3`] = `
 
 exports[`test form with checkbox 4`] = `
 "<form class="var-form">
-  <div class="var-checkbox__wrap" tabindex="0">
+  <div class="var-checkbox__wrap">
     <div class="var-checkbox">
-      <div class="var-checkbox__action var-checkbox--unchecked">
+      <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
         <!--v-if-->
         <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
         <div class="var-hover-overlay"></div>

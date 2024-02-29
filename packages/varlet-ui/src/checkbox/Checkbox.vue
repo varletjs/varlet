@@ -1,14 +1,8 @@
 <template>
-  <div
-    ref="root"
-    :tabindex="disabled || formDisabled ? undefined : '0'"
-    :class="n('wrap')"
-    @focus="isFocusing = true"
-    @blur="isFocusing = false"
-    @click="handleClick"
-  >
+  <div :class="n('wrap')" @click="handleClick">
     <div :class="n()">
       <div
+        ref="action"
         :class="
           classes(
             n('action'),
@@ -18,8 +12,11 @@
           )
         "
         :style="{ color: checked || isIndeterminate ? checkedColor : uncheckedColor }"
+        :tabindex="disabled || formDisabled ? undefined : '0'"
         v-hover:desktop="handleHovering"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
+        @focus="isFocusing = true"
+        @blur="isFocusing = false"
       >
         <slot name="indeterminate-icon" v-if="isIndeterminate">
           <var-icon
@@ -95,7 +92,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const root = ref<HTMLElement | null>(null)
+    const action = ref<HTMLElement | null>(null)
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
@@ -209,7 +206,7 @@ export default defineComponent({
       }
 
       if (key === 'Enter') {
-        root.value!.click()
+        action.value!.click()
       }
     }
 
@@ -220,7 +217,7 @@ export default defineComponent({
 
       if (event.key === ' ') {
         preventDefault(event)
-        root.value!.click()
+        action.value!.click()
       }
     }
 
@@ -230,7 +227,7 @@ export default defineComponent({
     }
 
     return {
-      root,
+      action,
       isFocusing,
       isIndeterminate,
       withAnimation,

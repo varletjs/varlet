@@ -349,11 +349,11 @@ test('test checkbox keyboard Enter', async () => {
   })
 
   const children = wrapper.findAllComponents({ name: 'var-checkbox' })
-  await trigger(children[0], 'focus')
+  await trigger(children[0].find('.var-checkbox__action'), 'focus')
   await triggerKeyboard(window, 'keydown', { key: 'Enter' })
   expect(wrapper.vm.value).toStrictEqual([1])
 
-  await trigger(children[1], 'focus')
+  await trigger(children[1].find('.var-checkbox__action'), 'focus')
   await triggerKeyboard(window, 'keyup', { key: ' ' })
 
   expect(wrapper.vm.value).toStrictEqual([1, 2])
