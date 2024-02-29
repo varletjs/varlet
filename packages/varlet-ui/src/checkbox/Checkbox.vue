@@ -1,5 +1,12 @@
 <template>
-  <div :class="n('wrap')" @click="handleClick">
+  <div
+    ref="root"
+    :tabindex="disabled || formDisabled ? undefined : '0'"
+    :class="n('wrap')"
+    @focus="isEffectFocusing = true"
+    @blur="isEffectFocusing = false"
+    @click="handleClick"
+  >
     <div :class="n()">
       <div
         :class="
@@ -38,7 +45,10 @@
             var-checkbox-cover
           />
         </slot>
-        <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
+        <var-hover-overlay
+          :hovering="!disabled && !formDisabled && hovering"
+          :focusing="!disabled && !formDisabled && isEffectFocusing"
+        />
       </div>
 
       <div
@@ -70,8 +80,8 @@ import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call } from '@varlet/shared'
-import { useVModel } from '@varlet/use'
+import { call, inMobile, preventDefault } from '@varlet/shared'
+import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
 
@@ -85,6 +95,8 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const root = ref<HTMLElement | null>(null)
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
@@ -182,6 +194,36 @@ export default defineComponent({
       change(changedValue)
     }
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isEffectFocusing.value) {
+        return
+      }
+
+      const { key } = event
+
+      if (key === 'Enter' || key === ' ') {
+        preventDefault(event)
+      }
+
+      if (key === 'Enter') {
+        root.value!.click()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (!isEffectFocusing.value) {
+        return
+      }
+
+      if (event.key === ' ') {
+        preventDefault(event)
+        root.value!.click()
+      }
+    }
+
     // expose
     function validate() {
       return v(props.rules, props.modelValue)
@@ -196,6 +238,8 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
+      root,
+      isEffectFocusing,
       n,
       classes,
       handleHovering,
