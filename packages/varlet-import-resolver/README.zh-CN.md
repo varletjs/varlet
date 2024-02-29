@@ -20,7 +20,6 @@
 ## 安装插件
 
 ```shell
-# playground-ignore
 # npm
 npm i @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 
@@ -34,7 +33,6 @@ pnpm add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
 ### Vite
 
 ```js
-// playground-ignore
 // vite.config.js
 import vue from '@vitejs/plugin-vue'
 import components from 'unplugin-vue-components/vite'
@@ -58,7 +56,6 @@ export default defineConfig({
 ### Vue CLI
 
 ```js
-// playground-ignore
 // vue.config.js
 const Components = require('unplugin-vue-components/webpack')
 const AutoImport = require('unplugin-auto-import/webpack')
@@ -83,7 +80,6 @@ module.exports = {
 为了得到良好的 IDE 语法高亮，请确保上述两个插件生成的类型声明文件被 `typescript` 识别，可在 `tsconfig.json` 中进行如下配置:
 
 ```json
-// playground-ignore
 {
   "include": ["auto-imports.d.ts", "components.d.ts"]
 }
@@ -94,7 +90,6 @@ module.exports = {
 每一个组件都是一个 `Vue插件`，并由 `组件逻辑` 和 `样式文件` 组成，手动引入的使用方式如下。
 
 ```js
-// playground-ignore
 import App from './App.vue'
 import { createApp } from 'vue'
 import { Button } from '@varlet/ui'
@@ -106,7 +101,6 @@ createApp(App).use(Button)
 或
 
 ```html
-// playground-ignore
 <script setup>
 import { Button as VarButton } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index'
@@ -122,7 +116,6 @@ import '@varlet/ui/es/button/style/index'
 #### 对比-手动引入
 
 ```html
-// playground-ignore
 <script setup>
 import { Button as VarButton, Snackbar } from '@varlet/ui'
 import '@varlet/ui/es/button/style/index'
@@ -141,7 +134,6 @@ function handleClick() {
 #### 对比-自动引入
 
 ```html
-// playground-ignore
 <script setup>
 function handleClick() {
   Snackbar('你好!')
