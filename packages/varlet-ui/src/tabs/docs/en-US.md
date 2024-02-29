@@ -447,3 +447,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size`      | `var(--font-size-md)`        |
 | `--tab-font-weight`    | `400`                        |
+| `--tab-active-font-size`      | `var(--font-size-md)`        |
+| `--tab-active-font-weight`    | `400`                        |

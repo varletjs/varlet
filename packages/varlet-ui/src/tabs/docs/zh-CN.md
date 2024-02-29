@@ -447,3 +447,5 @@ const active = ref(0)
 | `--tab-disabled-color` | `var(--color-text-disabled)` |
 | `--tab-font-size`      | `var(--font-size-md)`        |
 | `--tab-font-weight`    | `400`                        |
+| `--tab-active-font-size`      | `var(--font-size-md)`        |
+| `--tab-active-font-weight`    | `400`                        |
