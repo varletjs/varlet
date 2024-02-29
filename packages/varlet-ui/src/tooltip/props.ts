@@ -53,5 +53,8 @@ export const props = {
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
 
   // internal for esc
-  closeOnKeyEscape: Boolean,
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
 }

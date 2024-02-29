@@ -19,8 +19,8 @@
         v-ripple="{
           disabled: !ripple || disabled || loading || formDisabled || readonly || formReadonly,
         }"
-        @focus="isEffectFocusing = true"
-        @blur="isEffectFocusing = false"
+        @focus="isFocusing = true"
+        @blur="isFocusing = false"
       >
         <div
           :style="styleComputed.handle"
@@ -49,7 +49,7 @@
 
         <var-hover-overlay
           :hovering="hovering && !disabled && !formDisabled"
-          :focusing="isEffectFocusing && !disabled && !formDisabled"
+          :focusing="isFocusing && !disabled && !formDisabled"
         />
       </div>
     </div>
@@ -67,9 +67,9 @@ import { useValidation, createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { props, type ValidateTrigger } from './props'
-import { type SwitchProvider } from './provide'
-import { call, inMobile, preventDefault } from '@varlet/shared'
+import { call, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
+import { type SwitchProvider } from './provide'
 
 const { name, n, classes } = createNamespace('switch')
 
@@ -92,6 +92,7 @@ export default defineComponent({
   props,
   setup(props) {
     const switchRef = ref<HTMLElement | null>(null)
+    const isFocusing = ref(false)
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
@@ -127,8 +128,6 @@ export default defineComponent({
 
     const radius = computed(() => multiplySizeUnit(props.size, 0.8))
 
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
-
     const switchProvider: SwitchProvider = {
       reset,
       validate,
@@ -141,7 +140,7 @@ export default defineComponent({
     useEventListener(window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -155,7 +154,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || event.key !== ' ') {
+      if (!isFocusing.value || event.key !== ' ') {
         return
       }
 
@@ -229,7 +228,7 @@ export default defineComponent({
     return {
       switchRef,
       hovering,
-      isEffectFocusing,
+      isFocusing,
       radius,
       styleComputed,
       errorMessage,

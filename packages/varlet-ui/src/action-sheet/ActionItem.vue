@@ -15,7 +15,7 @@
     />
     <div :class="n('action-name')">{{ name }}</div>
 
-    <var-hover-overlay :hovering="disabled ? false : hovering" :focusing="disabled ? false : isEffectFocusing" />
+    <var-hover-overlay :hovering="disabled ? false : hovering" />
   </div>
 </template>
 
@@ -24,9 +24,8 @@ import Ripple from '../ripple'
 import VarIcon from '../icon'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import Hover from '../hover'
-import { computed, defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { createNamespace } from '../utils/components'
-import { inMobile } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('action-sheet')
 
@@ -47,11 +46,9 @@ export default defineComponent({
     icon: String,
   },
   setup() {
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
     const { hovering, handleHovering } = useHoverOverlay()
 
     return {
-      isEffectFocusing,
       hovering,
       n,
       classes,

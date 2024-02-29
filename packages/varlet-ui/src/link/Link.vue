@@ -10,7 +10,7 @@
         n(`--${type}`),
         [underline !== 'none', n(`--underline-${underline}`)],
         [disabled, n('--disabled')],
-        [isEffectFocusing, n('--focusing')]
+        [isFocusing && !inMobile(), n('--focusing')]
       )
     "
     :style="{
@@ -18,8 +18,8 @@
       fontSize: toSizeUnit(textSize),
     }"
     @click="handleClick"
-    @focus="isEffectFocusing = true"
-    @blur="isEffectFocusing = false"
+    @focus="isFocusing = true"
+    @blur="isFocusing = false"
   >
     <slot />
   </component>
@@ -38,7 +38,7 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const isFocusing = ref(false)
     const tag = computed<'a' | 'router-link' | 'span'>(() => {
       const { disabled, href, to } = props
 
@@ -85,7 +85,8 @@ export default defineComponent({
     return {
       tag,
       linkProps,
-      isEffectFocusing,
+      isFocusing,
+      inMobile,
       n,
       classes,
       handleClick,

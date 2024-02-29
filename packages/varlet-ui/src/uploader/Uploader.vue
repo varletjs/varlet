@@ -46,8 +46,8 @@
         }"
         v-hover:desktop="handleHovering"
         @click="handleActionClick"
-        @focus="isEffectFocusing = true"
-        @blur="isEffectFocusing = false"
+        @focus="isFocusing = true"
+        @blur="isFocusing = false"
       >
         <input
           ref="input"
@@ -65,7 +65,7 @@
           <var-icon :class="n('action-icon')" var-uploader-cover name="plus" />
           <var-hover-overlay
             :hovering="hovering && !disabled && !formDisabled && !readonly && !formReadonly"
-            :focusing="isEffectFocusing && !disabled && !formDisabled && !readonly && !formReadonly"
+            :focusing="isFocusing && !disabled && !formDisabled && !readonly && !formReadonly"
           />
         </slot>
       </div>
@@ -109,7 +109,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import { defineComponent, nextTick, reactive, computed, watch, ref } from 'vue'
 import { props, type VarFile, type UploaderValidateTrigger } from './props'
-import { isNumber, toNumber, normalizeToArray, toDataURL, call, inMobile } from '@varlet/shared'
+import { isNumber, toNumber, normalizeToArray, toDataURL, call } from '@varlet/shared'
 import { isHTMLSupportImage, isHTMLSupportVideo } from '../utils/shared'
 import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { useForm } from '../form/provide'
@@ -145,7 +145,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const isFocusing = ref(false)
     const actionRef = ref<null | HTMLElement>(null)
     const input = ref<null | HTMLElement>(null)
     const showPreview = ref(false)
@@ -203,7 +203,7 @@ export default defineComponent({
     )
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -217,7 +217,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || event.key !== ' ') {
+      if (!isFocusing.value || event.key !== ' ') {
         return
       }
 
@@ -453,7 +453,7 @@ export default defineComponent({
       errorMessage,
       maxlengthText,
       hovering,
-      isEffectFocusing,
+      isFocusing,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       n,

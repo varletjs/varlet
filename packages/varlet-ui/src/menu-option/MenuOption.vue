@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="root"
     :class="
       classes(n(), n('$--box'), n(`--${size}`), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])
     "
@@ -7,8 +8,8 @@
     v-hover:desktop="handleHovering"
     :tabindex="disabled ? undefined : '-1'"
     @click="handleClick"
-    @focus="isEffectFocusing = true"
-    @blur="isEffectFocusing = false"
+    @focus="isFocusing = true"
+    @blur="isFocusing = false"
   >
     <div :class="classes(n('cover'), [optionSelected, n('--selected-background')])"></div>
 
@@ -27,7 +28,7 @@
       </div>
     </slot>
 
-    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isEffectFocusing && !disabled" />
+    <var-hover-overlay :hovering="hovering && !disabled" :focusing="isFocusing && !disabled" />
   </div>
 </template>
 
@@ -40,7 +41,7 @@ import { defineComponent, computed, ref, watch } from 'vue'
 import { useMenuSelect, type MenuOptionProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
-import { inMobile, preventDefault } from '@varlet/shared'
+import { preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('menu-option')
@@ -54,7 +55,8 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const root = ref<HTMLElement>()
+    const isFocusing = ref(false)
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
     const label = computed<any>(() => props.label)
@@ -86,7 +88,7 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -95,18 +97,18 @@ export default defineComponent({
       }
 
       if (event.key === 'Enter') {
-        handleClick()
+        root.value!.click()
       }
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (!isEffectFocusing.value || props.disabled) {
+      if (!isFocusing.value) {
         return
       }
 
       if (event.key === ' ') {
         preventDefault(event)
-        handleClick()
+        root.value!.click()
       }
     }
 
@@ -123,11 +125,12 @@ export default defineComponent({
     }
 
     return {
+      root,
       optionSelected,
       size,
       multiple,
       hovering,
-      isEffectFocusing,
+      isFocusing,
       n,
       classes,
       handleHovering,
