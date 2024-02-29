@@ -12,7 +12,7 @@
         textColor,
         focusColor,
         blurColor,
-        isFocus,
+        isFocusing,
         errorMessage,
         formDisabled,
         disabled,
@@ -148,7 +148,7 @@ export default defineComponent({
   setup(props) {
     const id = useId()
     const el = ref<HTMLInputElement | null>(null)
-    const isFocus = ref(false)
+    const isFocusing = ref(false)
     const isComposing = ref(false)
     const { bindForm, form } = useForm()
     const {
@@ -190,7 +190,7 @@ export default defineComponent({
         return 'var(--field-decorator-error-color)'
       }
 
-      if (isFocus.value) {
+      if (isFocusing.value) {
         return focusColor || 'var(--field-decorator-focus-color)'
       }
 
@@ -219,14 +219,14 @@ export default defineComponent({
     }
 
     function handleFocus(e: FocusEvent) {
-      isFocus.value = true
+      isFocusing.value = true
 
       call(props.onFocus, e)
       validateWithTrigger('onFocus')
     }
 
     function handleBlur(e: FocusEvent) {
-      isFocus.value = false
+      isFocusing.value = false
 
       call(props.onBlur, e)
       validateWithTrigger('onBlur')
@@ -363,7 +363,7 @@ export default defineComponent({
     return {
       el,
       id,
-      isFocus,
+      isFocusing,
       isComposing,
       errorMessage,
       placeholderColor,

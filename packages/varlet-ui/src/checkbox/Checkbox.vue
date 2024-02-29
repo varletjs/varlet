@@ -3,8 +3,8 @@
     ref="root"
     :tabindex="disabled || formDisabled ? undefined : '0'"
     :class="n('wrap')"
-    @focus="isEffectFocusing = true"
-    @blur="isEffectFocusing = false"
+    @focus="isFocusing = true"
+    @blur="isFocusing = false"
     @click="handleClick"
   >
     <div :class="n()">
@@ -47,7 +47,7 @@
         </slot>
         <var-hover-overlay
           :hovering="!disabled && !formDisabled && hovering"
-          :focusing="!disabled && !formDisabled && isEffectFocusing"
+          :focusing="!disabled && !formDisabled && isFocusing"
         />
       </div>
 
@@ -80,7 +80,7 @@ import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, inMobile, preventDefault } from '@varlet/shared'
+import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('checkbox')
@@ -96,7 +96,7 @@ export default defineComponent({
   props,
   setup(props) {
     const root = ref<HTMLElement | null>(null)
-    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+    const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const isIndeterminate = useVModel(props, 'indeterminate')
     const checked = computed(() => value.value === props.checkedValue)
@@ -198,7 +198,7 @@ export default defineComponent({
     useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
-      if (!isEffectFocusing.value) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -214,7 +214,7 @@ export default defineComponent({
     }
 
     function handleKeyup(event: KeyboardEvent) {
-      if (!isEffectFocusing.value) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -230,6 +230,8 @@ export default defineComponent({
     }
 
     return {
+      root,
+      isFocusing,
       isIndeterminate,
       withAnimation,
       checked,
@@ -238,8 +240,6 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       hovering,
-      root,
-      isEffectFocusing,
       n,
       classes,
       handleHovering,

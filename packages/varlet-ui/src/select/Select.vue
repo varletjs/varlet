@@ -31,7 +31,7 @@
           textColor,
           focusColor,
           blurColor,
-          isFocus,
+          isFocusing,
           errorMessage,
           formDisabled,
           disabled,
@@ -89,7 +89,7 @@
             {{ placeholder }}
           </span>
 
-          <slot name="arrow-icon" :focus="isFocus" :menu-open="showMenu">
+          <slot name="arrow-icon" :focus="isFocusing" :menu-open="showMenu">
             <var-icon
               :class="classes(n('arrow'), [showMenu, n('--arrow-rotate')])"
               var-select-cover
@@ -150,7 +150,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isFocus = ref(false)
+    const isFocusing = ref(false)
     const showMenu = ref(false)
     const root = ref<HTMLElement | null>(null)
     const multiple = computed(() => props.multiple)
@@ -186,7 +186,7 @@ export default defineComponent({
         return 'var(--field-decorator-error-color)'
       }
 
-      if (isFocus.value) {
+      if (isFocusing.value) {
         return focusColor || 'var(--field-decorator-focus-color)'
       }
 
@@ -224,7 +224,7 @@ export default defineComponent({
     function handleKeydown(event: KeyboardEvent) {
       const { disabled, readonly } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !isFocus.value) {
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || !isFocusing.value) {
         return
       }
 
@@ -264,7 +264,7 @@ export default defineComponent({
     function handleKeyup(event: KeyboardEvent) {
       const { disabled, readonly } = props
 
-      if (form?.disabled.value || form?.readonly.value || disabled || readonly || showMenu.value || !isFocus.value) {
+      if (form?.disabled.value || form?.readonly.value || disabled || readonly || showMenu.value || !isFocusing.value) {
         return
       }
 
@@ -317,7 +317,7 @@ export default defineComponent({
     }
 
     function handleClickOutside() {
-      if (!isFocus.value) {
+      if (!isFocusing.value) {
         return
       }
 
@@ -388,12 +388,12 @@ export default defineComponent({
     // expose
     function focus() {
       offsetY.value = toPxNum(props.offsetY)
-      isFocus.value = true
+      isFocusing.value = true
     }
 
     // expose
     function blur() {
-      isFocus.value = false
+      isFocusing.value = false
       showMenu.value = false
     }
 
@@ -411,7 +411,7 @@ export default defineComponent({
     return {
       root,
       offsetY,
-      isFocus,
+      isFocusing,
       showMenu,
       errorMessage,
       formDisabled: form?.disabled,

@@ -7,7 +7,7 @@
       :class="
         classes(
           n('controller'),
-          [isFocus, n('--focus')],
+          [isFocusing, n('--focus')],
           [errorMessage, n('--error')],
           [formDisabled || disabled, n('--disabled')]
         )
@@ -35,7 +35,7 @@
           classes(
             n('placeholder'),
             n('$--ellipsis'),
-            [isFocus, n('--focus')],
+            [isFocusing, n('--focus')],
             [hintCenter, n('--hint-center')],
             [formDisabled || disabled, n('--disabled')],
             [errorMessage, n('--error')],
@@ -65,7 +65,7 @@
         :class="
           classes(
             n('line'),
-            [isFocus, n('--line-focus')],
+            [isFocusing, n('--line-focus')],
             [errorMessage, n('--line-error')],
             [formDisabled || disabled, n('--line-disabled')]
           )
@@ -97,7 +97,7 @@
           :class="
             classes(
               n('dot'),
-              [isFocus, n('--line-focus')],
+              [isFocusing, n('--line-focus')],
               [formDisabled || disabled, n('--line-disabled')],
               [errorMessage, n('--line-error')]
             )
@@ -131,10 +131,10 @@ export default defineComponent({
     const middleOffsetWidth = ref('0px')
     const middleOffsetHeight = ref('0px')
     const transitionDisabled = ref(true)
-    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocus))
+    const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocusing))
 
     const color = computed<string | undefined>(() =>
-      !props.errorMessage ? (props.isFocus ? props.focusColor : props.blurColor) : undefined
+      !props.errorMessage ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
     )
 
     onWindowResize(resize)

@@ -14,7 +14,7 @@ export const props = {
     type: String,
     default: '',
   },
-  isFocus: Boolean,
+  isFocusing: Boolean,
   size: {
     type: String as PropType<FieldDecoratorSize>,
     default: 'normal',
