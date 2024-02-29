@@ -80,4 +80,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | ------ | -------------|
-| `--paper-background` | `var(--color-surface-container-highest)` |
+| `--paper-background`    | `var(--color-surface-container-highest)` |
+| `--paper-border-radius` | `0` |

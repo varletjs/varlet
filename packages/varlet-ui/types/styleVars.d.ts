@@ -859,6 +859,8 @@ export interface StyleVars {
   paginationSizePadding?: string
   '--paper-background'?: string
   paperBackground?: string
+  '--paper-border-radius'?: string
+  paperBorderRadius?: string
   '--picker-background'?: string
   pickerBackground?: string
   '--picker-toolbar-height'?: string
