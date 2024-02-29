@@ -1,6 +1,7 @@
 import <%- bigCamelizeName %> from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
+import { expect, test } from 'vitest'
 
 test('test <%- kebabCaseName %> plugin', () => {
   const app = createApp({}).use(<%- bigCamelizeName %>)
