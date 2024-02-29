@@ -1,11 +1,13 @@
 :root {
   --paper-background: var(--color-surface-container-highest);
+  --paper-border-radius: 0;
 }
 
 .var-paper {
   background: var(--paper-background);
   transition: background-color 0.25s;
   overflow: hidden;
+  border-radius: var(--paper-border-radius);
 
   &--round {
     border-radius: 50%;
