@@ -20,6 +20,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -28,6 +29,11 @@ const value10 = ref('')
     <var-input placeholder="只读" readonly v-model="value2" />
     <var-input placeholder="禁用" disabled v-model="value3" />
     <var-input placeholder="可清除" clearable v-model="value4" />
+    <var-input clearable placeholder="使用插槽自定义清除图标" v-model="value11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       placeholder="字段校验"
       :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
@@ -82,6 +88,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -90,6 +97,11 @@ const value10 = ref('')
     <var-input variant="outlined" placeholder="只读" readonly v-model="value2" />
     <var-input variant="outlined" placeholder="禁用" disabled v-model="value3" />
     <var-input variant="outlined" placeholder="可清除" clearable v-model="value4" />
+    <var-input variant="outlined" clearable placeholder="使用插槽自定义清除图标" v-model="value11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       variant="outlined"
       placeholder="字段校验"

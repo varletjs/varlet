@@ -20,6 +20,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -27,7 +28,12 @@ const value10 = ref('')
     <var-input placeholder="Please enter text" v-model="value" />
     <var-input placeholder="Readonly" readonly v-model="value2" />
     <var-input placeholder="Disabled" disabled v-model="value3" />
-    <var-input placeholder="Clearable" clearable v-model="value4" />
+    <var-input placeholder="Clearable" clearable v-model="value11" />
+    <var-input clearable placeholder="Use the clear icon slot" v-model="value11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       placeholder="Validate"
       :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
@@ -82,6 +88,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -90,6 +97,11 @@ const value10 = ref('')
     <var-input variant="outlined" placeholder="Readonly" readonly v-model="value2" />
     <var-input variant="outlined" placeholder="Disabled" disabled v-model="value3" />
     <var-input variant="outlined" placeholder="Clearable" clearable v-model="value4" />
+    <var-input variant="outlined" clearable placeholder="Use the clear icon slot" v-model="value11">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       variant="outlined"
       placeholder="Validate"
