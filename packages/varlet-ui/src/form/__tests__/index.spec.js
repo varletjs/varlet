@@ -13,7 +13,7 @@ import VarSlider from '../../slider/Slider'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, mockScrollTo } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 mockScrollTo()
 
@@ -377,13 +377,11 @@ test('test form with rate', async () => {
 test('test form with uploader', async () => {
   const onAfterRead = vi.fn()
 
-  const createEvent = (filename) => {
-    return {
-      target: {
-        files: [new File([], filename)],
-      },
-    }
-  }
+  const createEvent = (filename) => ({
+    target: {
+      files: [new File([], filename)],
+    },
+  })
 
   const wrapper = mount({
     ...Wrapper,

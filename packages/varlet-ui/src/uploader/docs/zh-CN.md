@@ -423,7 +423,7 @@ const files = ref([
 | `elevation`| 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级, 不为简单模式时生效 | _string \| number \| boolean_|   `true`    |
 | `removable` | 是否可以删除 | _boolean_ | `true` |
 | `maxlength` | 最大文件个数 | _string \| number_ | `-` |
-| `maxsize` | 最大文件大小 | _string \| number_ | `-` |
+| `maxsize` | 最大文件大小，单位为 `byte` | _string \| number_ | `-` |
 | `previewed` | 是否允许预览 | _boolean_ | `true` |
 | `prevent-default-preview` | 阻止默认预览行为 | _boolean_ | `false` |
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |

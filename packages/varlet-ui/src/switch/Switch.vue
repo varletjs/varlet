@@ -1,9 +1,10 @@
 <template>
   <div :class="n()" v-hover:desktop="hover">
     <div
+      ref="switchRef"
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
-      @click="switchActive"
       :style="styleComputed.switch"
+      @click="switchActive"
     >
       <div
         :style="styleComputed.track"
@@ -14,9 +15,12 @@
       <div
         :class="classes(n('ripple'), [modelValue === activeValue, n('ripple--active')])"
         :style="styleComputed.ripple"
+        :tabindex="disabled || formDisabled ? undefined : '0'"
         v-ripple="{
-          disabled: !ripple || disabled || loading || formDisabled,
+          disabled: !ripple || disabled || loading || formDisabled || readonly || formReadonly,
         }"
+        @focus="isEffectFocusing = true"
+        @blur="isEffectFocusing = false"
       >
         <div
           :style="styleComputed.handle"
@@ -43,7 +47,10 @@
           </span>
         </div>
 
-        <var-hover-overlay :hovering="hovering" />
+        <var-hover-overlay
+          :hovering="hovering && !disabled && !formDisabled"
+          :focusing="isEffectFocusing && !disabled && !formDisabled"
+        />
       </div>
     </div>
     <var-form-details :error-message="errorMessage" />
@@ -55,13 +62,14 @@ import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
-import { defineComponent, computed, nextTick } from 'vue'
+import { defineComponent, computed, nextTick, ref } from 'vue'
 import { useValidation, createNamespace } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { props, type ValidateTrigger } from './props'
 import { type SwitchProvider } from './provide'
-import { call } from '@varlet/shared'
+import { call, inMobile, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('switch')
 
@@ -83,6 +91,7 @@ export default defineComponent({
   directives: { Ripple, Hover },
   props,
   setup(props) {
+    const switchRef = ref<HTMLElement | null>(null)
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
@@ -118,6 +127,8 @@ export default defineComponent({
 
     const radius = computed(() => multiplySizeUnit(props.size, 0.8))
 
+    const isEffectFocusing = inMobile() ? computed(() => false) : ref(false)
+
     const switchProvider: SwitchProvider = {
       reset,
       validate,
@@ -125,6 +136,32 @@ export default defineComponent({
     }
 
     call(bindForm, switchProvider)
+
+    useEventListener(window, 'keydown', handleKeydown)
+    useEventListener(window, 'keyup', handleKeyup)
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isEffectFocusing.value) {
+        return
+      }
+
+      if (event.key === ' ' || event.key === 'Enter') {
+        preventDefault(event)
+      }
+
+      if (event.key === 'Enter') {
+        switchRef.value!.click()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (!isEffectFocusing.value || event.key !== ' ') {
+        return
+      }
+
+      preventDefault(event)
+      switchRef.value!.click()
+    }
 
     function validate() {
       return v(props.rules, props.modelValue)
@@ -152,9 +189,13 @@ export default defineComponent({
         onBeforeChange,
       } = props
 
+      if (disabled || form?.disabled.value) {
+        return
+      }
+
       call(onClick, event)
 
-      if (disabled || loading || readonly || form?.disabled.value || form?.readonly.value) {
+      if (loading || readonly || form?.readonly.value) {
         return
       }
 
@@ -186,7 +227,9 @@ export default defineComponent({
     }
 
     return {
+      switchRef,
       hovering,
+      isEffectFocusing,
       radius,
       styleComputed,
       errorMessage,

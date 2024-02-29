@@ -5,7 +5,7 @@ import TabItem from '../../tab-item'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay, mockOffset, mockScrollTo } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
 
 mockScrollTo()
 mockOffset()

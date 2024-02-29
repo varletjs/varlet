@@ -2,7 +2,7 @@ import VarEllipsis from '../Ellipsis.vue'
 import Ellipsis from '..'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 test('test ellipsis plugin', () => {
   const app = createApp({}).use(Ellipsis)

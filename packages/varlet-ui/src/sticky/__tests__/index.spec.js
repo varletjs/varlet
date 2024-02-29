@@ -3,7 +3,7 @@ import VarSticky from '../Sticky'
 import { delay, trigger } from '../../utils/test'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect } from 'vitest'
+import { expect, test, describe } from 'vitest'
 
 const mockRect = (top) => {
   const origin = HTMLElement.prototype.getBoundingClientRect

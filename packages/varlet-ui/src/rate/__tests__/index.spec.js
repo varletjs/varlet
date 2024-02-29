@@ -3,7 +3,7 @@ import VarRate from '../Rate'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { describe, expect, vi } from 'vitest'
+import { describe, expect, vi, test } from 'vitest'
 
 test('test rate use', () => {
   const app = createApp({}).use(Rate)

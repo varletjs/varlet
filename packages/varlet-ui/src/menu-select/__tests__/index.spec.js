@@ -4,7 +4,7 @@ import VarMenuSelect from '../MenuSelect'
 import VarMenuOption from '../../menu-option/MenuOption'
 import { createApp, h, Fragment } from 'vue'
 import { mount } from '@vue/test-utils'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 
 test('test menu-select plugin', () => {

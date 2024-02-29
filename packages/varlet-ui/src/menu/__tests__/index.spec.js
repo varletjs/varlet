@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { delay, mockStubs, trigger, triggerKeyboard } from '../../utils/test'
 import { doubleRaf } from '@varlet/shared'
-import { expect, vi } from 'vitest'
+import { expect, vi, test } from 'vitest'
 
 test('test menu plugin', () => {
   const app = createApp({}).use(Menu)
@@ -12,9 +12,7 @@ test('test menu plugin', () => {
 })
 
 test('test menu placement', async () => {
-  const { mockRestore } = mockStubs()
-
-  for (const placement of [
+  ;[
     'top',
     'top-start',
     'top-end',
@@ -35,7 +33,9 @@ test('test menu placement', async () => {
     'cover-bottom-end',
     'cover-left',
     'cover-right',
-  ]) {
+  ].forEach((placement) => {
+    const { mockRestore } = mockStubs()
+
     const root = document.createElement('div')
 
     const wrapper = mount(VarMenu, {
@@ -45,13 +45,11 @@ test('test menu placement', async () => {
       },
     })
 
-    await doubleRaf()
-
     expect(root.innerHTML).toMatchSnapshot()
-    wrapper.unmount()
-  }
 
-  mockRestore()
+    wrapper.unmount()
+    mockRestore()
+  })
 })
 
 test('test menu click trigger', async () => {

@@ -1,4 +1,3 @@
-import context from './index'
 import { type Ref, getCurrentInstance, watch } from 'vue'
 import { removeItem } from '@varlet/shared'
 import { onSmartUnmounted, onSmartMounted } from '@varlet/use'
@@ -45,6 +44,10 @@ export function useStack(activeGetter: () => boolean, zIndex: Ref<number>) {
   }
 
   function pushStackItem() {
+    if (getStackItem(uid)) {
+      return
+    }
+
     stack.push({ uid, zIndex })
   }
 

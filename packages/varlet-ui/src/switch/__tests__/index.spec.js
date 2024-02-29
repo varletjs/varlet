@@ -2,8 +2,8 @@ import Switch from '..'
 import VarSwitch from '../Switch'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
-import { expect, vi } from 'vitest'
+import { delay, triggerKeyboard } from '../../utils/test'
+import { expect, vi, test, describe } from 'vitest'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
@@ -159,7 +159,7 @@ describe('test switch events', () => {
 
     await wrapper.find('.var-switch__block').trigger('click')
 
-    expect(clickFn).toHaveBeenCalledTimes(1)
+    expect(clickFn).toHaveBeenCalledTimes(0)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
 
@@ -169,7 +169,7 @@ describe('test switch events', () => {
     })
 
     await wrapper.find('.var-switch__block').trigger('click')
-    expect(clickFn).toHaveBeenCalledTimes(2)
+    expect(clickFn).toHaveBeenCalledTimes(1)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(wrapper.vm.value).toBe(true)
 
@@ -201,6 +201,45 @@ describe('test switch events', () => {
     await delay(600)
     expect(wrapper.vm.value).toBe(false)
 
+    wrapper.unmount()
+  })
+
+  test('test switch keyboard enter for switch', async () => {
+    const click = vi.fn()
+    const origin = HTMLElement.prototype.click
+    HTMLElement.prototype.click = click
+
+    const wrapper = mount(VarSwitch, {
+      props: {
+        modelValue: true,
+      },
+    })
+
+    await wrapper.find('.var-switch__ripple').trigger('focus')
+    await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+    expect(click).toHaveBeenCalledTimes(1)
+
+    HTMLElement.prototype.click = origin
+    wrapper.unmount()
+  })
+
+  test('test switch keyboard space for switch', async () => {
+    const click = vi.fn()
+    const origin = HTMLElement.prototype.click
+    HTMLElement.prototype.click = click
+
+    const wrapper = mount(VarSwitch, {
+      props: {
+        modelValue: true,
+      },
+    })
+
+    await wrapper.find('.var-switch__ripple').trigger('focus')
+    await triggerKeyboard(window, 'keydown', { key: ' ' })
+    await triggerKeyboard(window, 'keyup', { key: ' ' })
+    expect(click).toHaveBeenCalledTimes(1)
+
+    HTMLElement.prototype.click = origin
     wrapper.unmount()
   })
 })

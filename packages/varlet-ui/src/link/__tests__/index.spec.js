@@ -3,7 +3,7 @@ import VarLink from '../Link'
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { trigger } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 const HREF = 'https://varlet.gitee.io/varlet-ui/'
 

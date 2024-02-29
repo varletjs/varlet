@@ -5,7 +5,7 @@ import VarButtonGroup from '../../button-group/ButtonGroup.vue'
 import { mount } from '@vue/test-utils'
 import { createApp, Fragment, h } from 'vue'
 import { delay, trigger } from '../../utils/test'
-import { expect, vi, describe } from 'vitest'
+import { expect, vi, describe, test } from 'vitest'
 
 test('test button plugin', () => {
   const app = createApp({}).use(Button)
@@ -102,17 +102,15 @@ describe('test button component props', () => {
   })
 
   test('test button auto loading', async () => {
-    const onClick = () => {
-      return new Promise((resolve) => {
+    const onClick = () =>
+      new Promise((resolve) => {
         setTimeout(resolve, 100)
       })
-    }
 
-    const onTouchstart = () => {
-      return new Promise((resolve) => {
+    const onTouchstart = () =>
+      new Promise((resolve) => {
         setTimeout(resolve, 100)
       })
-    }
 
     const wrapper = mount(VarButton, {
       props: {
