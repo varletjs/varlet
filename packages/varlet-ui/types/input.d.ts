@@ -39,6 +39,10 @@ export interface InputProps extends BasicAttributes {
   'onUpdate:modelValue'?: ListenerProp<(value: string) => void>
 }
 
+export interface InputClearIconData {
+  clear: (e: Event) => void
+}
+
 export class Input extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<InputProps>
 
@@ -47,7 +51,7 @@ export class Input extends VarComponent {
   $slots: {
     'prepend-icon'(): VNode[]
     'append-icon'(): VNode[]
-    'clear-icon'(clear: (e: Event) => void): VNode[]
+    'clear-icon'(data: InputClearIconData): VNode[]
     'extra-message'(): VNode[]
   }
 

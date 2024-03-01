@@ -43,6 +43,10 @@ export interface SelectArrowIconData {
   menuOpen: boolean
 }
 
+export interface SelectClearIconData {
+  clear: (e: Event) => void
+}
+
 export class Select extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<SelectProps>
 
@@ -51,7 +55,7 @@ export class Select extends VarComponent {
   $slots: {
     'selected'(): VNode[]
     'prepend-icon'(): VNode[]
-    'clear-icon'(clear: (e: Event) => void): VNode[]
+    'clear-icon'(data: SelectClearIconData): VNode[]
     'append-icon'(): VNode[]
     'arrow-icon'(data: SelectArrowIconData): VNode[]
   }
