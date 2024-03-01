@@ -22,6 +22,8 @@ export interface ActionSheetProps extends BasicAttributes {
   onSelect?: ListenerProp<(action: ActionItem) => void>
   onClickOverlay?: ListenerProp<() => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
+  closeOnKeyEscape?: boolean
+  onKeyEscape?: ListenerProp<() => void>
 }
 
 export interface ActionItem {
