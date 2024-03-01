@@ -20,6 +20,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -28,12 +29,17 @@ const value10 = ref('')
     <var-input placeholder="Readonly" readonly v-model="value2" />
     <var-input placeholder="Disabled" disabled v-model="value3" />
     <var-input placeholder="Clearable" clearable v-model="value4" />
+    <var-input clearable placeholder="Use the clear icon slot" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       placeholder="Validate"
       :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
-      v-model="value5"
+      v-model="value6"
     />
-    <var-input placeholder="Display Icon" v-model="value6">
+    <var-input placeholder="Display Icon" v-model="value7">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
@@ -41,7 +47,7 @@ const value10 = ref('')
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input placeholder="Custom Icon Size" v-model="value7">
+    <var-input placeholder="Custom Icon Size" v-model="value8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
       </template>
@@ -49,9 +55,9 @@ const value10 = ref('')
         <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-input>
-    <var-input placeholder="Maxlength" :maxlength="10" v-model="value8" />
-    <var-input placeholder="Textarea" textarea v-model="value9" />
-    <var-input placeholder="Small Size" size="small" v-model="value10" />
+    <var-input placeholder="Maxlength" :maxlength="10" v-model="value9" />
+    <var-input placeholder="Textarea" textarea v-model="value10" />
+    <var-input placeholder="Small Size" size="small" v-model="value11" />
   </var-space>
 </template>
 
@@ -82,6 +88,7 @@ const value7 = ref('')
 const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
+const value11 = ref('')
 </script>
 
 <template>
@@ -90,13 +97,18 @@ const value10 = ref('')
     <var-input variant="outlined" placeholder="Readonly" readonly v-model="value2" />
     <var-input variant="outlined" placeholder="Disabled" disabled v-model="value3" />
     <var-input variant="outlined" placeholder="Clearable" clearable v-model="value4" />
+    <var-input variant="outlined" clearable placeholder="Use the clear icon slot" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       variant="outlined"
       placeholder="Validate"
       :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
-      v-model="value5"
+      v-model="value6"
     />
-    <var-input variant="outlined" placeholder="Display Icon" v-model="value6">
+    <var-input variant="outlined" placeholder="Display Icon" v-model="value7">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
       </template>
@@ -107,7 +119,7 @@ const value10 = ref('')
     <var-input 
       variant="outlined" 
       placeholder="Custom Icon Size"
-      v-model="value7"
+      v-model="value8"
     >
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
@@ -116,9 +128,9 @@ const value10 = ref('')
         <var-icon class="append-icon" name="github" :size="42" />
       </template>
     </var-input>
-    <var-input variant="outlined" placeholder="Maxlength" :maxlength="10" v-model="value8" />
-    <var-input variant="outlined" placeholder="Textarea" textarea v-model="value9" />
-    <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value10" />
+    <var-input variant="outlined" placeholder="Maxlength" :maxlength="10" v-model="value9" />
+    <var-input variant="outlined" placeholder="Textarea" textarea v-model="value10" />
+    <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value11" />
   </var-space>
 </template>
 
@@ -188,7 +200,7 @@ const value10 = ref('')
 | --- | --- | --- |
 | `prepend-icon` | Prepend Icon | `-` |
 | `append-icon` | Append Icon | `-` |
-| `clear-icon` | Clear Icon | `-` |
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear input box contents when using slots) |
 | `extra-message` | Extra message | `-` |
 
 ### Style Variables

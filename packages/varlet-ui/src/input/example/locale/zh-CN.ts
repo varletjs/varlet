@@ -8,6 +8,7 @@ export default {
   disabled: '禁用',
   readonly: '只读',
   clearable: '可清除',
+  clearIconSlot: '使用插槽自定义清除图标',
   displayIcon: '显示图标',
   customIconSize: '自定义图标尺寸',
   validate: '字段校验',

@@ -13,6 +13,7 @@ const standardValue7 = ref('')
 const standardValue8 = ref('')
 const standardValue9 = ref('')
 const standardValue10 = ref('')
+const standardValue11 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -24,6 +25,7 @@ const outlinedValue7 = ref('')
 const outlinedValue8 = ref('')
 const outlinedValue9 = ref('')
 const outlinedValue10 = ref('')
+const outlinedValue11 = ref('')
 
 watchLang(use)
 onThemeChange()
@@ -32,10 +34,15 @@ onThemeChange()
 <template>
   <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
-    <var-input :placeholder="t('placeholder')" v-model="standardValue2" />
-    <var-input :placeholder="t('readonly')" readonly v-model="standardValue3" />
-    <var-input :placeholder="t('disabled')" disabled v-model="standardValue4" />
-    <var-input :placeholder="t('clearable')" clearable v-model="standardValue5" />
+    <var-input :placeholder="t('placeholder')" v-model="standardValue" />
+    <var-input :placeholder="t('readonly')" readonly v-model="standardValue2" />
+    <var-input :placeholder="t('disabled')" disabled v-model="standardValue3" />
+    <var-input :placeholder="t('clearable')" clearable v-model="standardValue4" />
+    <var-input :placeholder="t('clearIconSlot')" clearable v-model="standardValue5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       :placeholder="t('validate')"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
@@ -50,7 +57,7 @@ onThemeChange()
       </template>
     </var-input>
 
-    <var-input :placeholder="t('customIconSize')" v-model="standardValue10">
+    <var-input :placeholder="t('customIconSize')" v-model="standardValue8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
@@ -58,17 +65,22 @@ onThemeChange()
         <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
     </var-input>
-    <var-input :placeholder="t('maxlength')" :maxlength="10" v-model="standardValue8" />
-    <var-input :placeholder="t('textarea')" textarea v-model="standardValue9" />
-    <var-input :placeholder="t('smallSize')" size="small" v-model="standardValue" />
+    <var-input :placeholder="t('maxlength')" :maxlength="10" v-model="standardValue9" />
+    <var-input :placeholder="t('textarea')" textarea v-model="standardValue10" />
+    <var-input :placeholder="t('smallSize')" size="small" v-model="standardValue11" />
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
-    <var-input variant="outlined" :placeholder="t('placeholder')" v-model="outlinedValue2" />
-    <var-input variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue3" />
-    <var-input variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue4" />
-    <var-input variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue5" />
+    <var-input variant="outlined" :placeholder="t('placeholder')" v-model="outlinedValue" />
+    <var-input variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue2" />
+    <var-input variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue3" />
+    <var-input variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue4" />
+    <var-input variant="outlined" :placeholder="t('clearIconSlot')" clearable v-model="outlinedValue5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-input>
     <var-input
       variant="outlined"
       :placeholder="t('validate')"
@@ -83,7 +95,7 @@ onThemeChange()
         <var-icon class="append-icon" name="github" />
       </template>
     </var-input>
-    <var-input variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue10">
+    <var-input variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue8">
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
       </template>
@@ -91,9 +103,9 @@ onThemeChange()
         <var-icon class="append-icon" name="github" size="12vmin" />
       </template>
     </var-input>
-    <var-input variant="outlined" :placeholder="t('maxlength')" :maxlength="10" v-model="outlinedValue8" />
-    <var-input variant="outlined" :placeholder="t('textarea')" textarea v-model="outlinedValue9" />
-    <var-input variant="outlined" :placeholder="t('smallSize')" size="small" v-model="outlinedValue" />
+    <var-input variant="outlined" :placeholder="t('maxlength')" :maxlength="10" v-model="outlinedValue9" />
+    <var-input variant="outlined" :placeholder="t('textarea')" textarea v-model="outlinedValue10" />
+    <var-input variant="outlined" :placeholder="t('smallSize')" size="small" v-model="outlinedValue11" />
   </var-space>
 
   <div style="height: 40px"></div>

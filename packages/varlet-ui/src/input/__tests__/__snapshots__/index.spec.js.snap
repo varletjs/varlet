@@ -53,7 +53,7 @@ exports[`test input component slots > test input clear-icon slot 1`] = `
         <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
       </div>
       <!--v-if-->
-      <div class="var-field-decorator__icon">clear-icon</div>
+      <div class="var-field-decorator__icon"><button class="custom-clear-icon">Clear</button></div>
     </div>
     <div class="var-field-decorator__line">
       <div class="var-field-decorator__dot"></div>
