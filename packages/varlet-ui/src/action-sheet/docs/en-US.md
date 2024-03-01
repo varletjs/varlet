@@ -399,6 +399,7 @@ function handleSelect(action) {
 | `close-on-click-overlay` | Whether to click the overlay to close the action sheet                                                         | _boolean_             | `true`       |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `teleport`               | The location of the action sheet to mount                                                                      | _TeleportProps['to'] \| false_ | `body`          |
+| `close-on-key-escape` | Whether to support keyboard ESC to close the action sheet | _boolean_ | `true`  |
 
 ### Events
 

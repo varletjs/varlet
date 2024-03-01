@@ -31,7 +31,6 @@ export const props = {
     'onClickOverlay',
     // internal for function call closes the dialog
     'onRouteChange',
-    // internal for esc
     'closeOnKeyEscape',
     'onKeyEscape',
   ]),
