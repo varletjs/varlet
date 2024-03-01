@@ -396,7 +396,7 @@ const value13 = ref()
 | --- | --- | --- |
 | `selected` | 选择区域的内容 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
-| `clear-icon` | 清除图标 | `clear: function` 清除函数(在使用插槽时, 可用于清除选择框内容) |
+| `clear-icon` | 清除图标 | `clear: (e: Event) => void` 清除函数(在使用插槽时, 可用于清除选择框内容) |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
 

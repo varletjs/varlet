@@ -395,7 +395,7 @@ const value13 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
-| `clear-icon` | Clear Icon | `clear: function` clear function (can be used to clear select box contents when using slots) | 
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) | 
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
