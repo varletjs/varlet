@@ -368,7 +368,7 @@ const value12 = ref()
 | `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on click | `event: Event` |
 | `clear` | Triggered on clearance | `value: any \| any[]` |
-| `close` | Triggered on close | `value: any \| any[]` |
+| `close` | Triggered on close | `value: any[]` |
 | `change` | Triggered when change | `value: any \| any[]` |
 
 ### Slots

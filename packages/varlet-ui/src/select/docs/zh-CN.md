@@ -363,13 +363,13 @@ const value12 = ref()
 
 #### Select Events
 
-| 事件名 | 说明 | 参数 |
-| --- | --- | --- |
+| 事件名 | 说明    | 参数 |
+| --- |-------| --- |
 | `focus` | 聚焦时触发 | `event: Event` |
 | `blur` | 失焦时触发 | `event: Event` |
 | `click` | 点击时触发 | `event: Event` |
 | `clear` | 清除时触发 | `value: any \| any[]` |
-| `close` | 输入时触发 | `value: any \| any[]` |
+| `close` | 关闭时触发 | `value: any[]` |
 | `change` | 更新时触发 | `value: any \| any[]` |
 
 ### 插槽
