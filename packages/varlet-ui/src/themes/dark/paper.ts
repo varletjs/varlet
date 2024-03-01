@@ -1,4 +1,4 @@
 export default {
   '--paper-background': 'var(--color-surface-container-highest)',
-  '--paper-border-radius': 0,
+  '--paper-border-radius': '4px',
 }

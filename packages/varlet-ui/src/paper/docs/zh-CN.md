@@ -81,4 +81,4 @@
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
 | `--paper-background`                 | `var(--color-surface-container-highest)`               |
-| `--paper-border-radius`              | `0` |
+| `--paper-border-radius`              | `4px` |
