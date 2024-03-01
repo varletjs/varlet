@@ -99,8 +99,8 @@
           </slot>
         </div>
 
-        <template #clear-icon>
-          <slot name="clear-icon" />
+        <template #clear-icon="{ clear }">
+          <slot name="clear-icon" :clear="clear" />
         </template>
 
         <template #append-icon>

@@ -9,12 +9,13 @@ const standardValue3 = ref(undefined)
 const standardValue4 = ref(undefined)
 const standardValue5 = ref(undefined)
 const standardValue6 = ref(undefined)
-const standardValue7 = ref([])
-const standardValue8 = ref([])
+const standardValue7 = ref(undefined)
+const standardValue8 = ref(undefined)
 const standardValue9 = ref([])
-const standardValue10 = ref(undefined)
+const standardValue10 = ref([])
 const standardValue11 = ref(undefined)
-const standardValue12 = ref(undefined)
+const standardValue12 = ref([])
+const standardValue13 = ref(undefined)
 
 const outlinedValue = ref(undefined)
 const outlinedValue2 = ref(undefined)
@@ -22,12 +23,13 @@ const outlinedValue3 = ref(undefined)
 const outlinedValue4 = ref(undefined)
 const outlinedValue5 = ref(undefined)
 const outlinedValue6 = ref(undefined)
-const outlinedValue7 = ref([])
-const outlinedValue8 = ref([])
+const outlinedValue7 = ref(undefined)
+const outlinedValue8 = ref(undefined)
 const outlinedValue9 = ref([])
-const outlinedValue10 = ref(undefined)
+const outlinedValue10 = ref([])
 const outlinedValue11 = ref(undefined)
-const outlinedValue12 = ref(undefined)
+const outlinedValue12 = ref([])
+const outlinedValue13 = ref(undefined)
 
 onThemeChange()
 watchLang((lang) => {
@@ -37,12 +39,13 @@ watchLang((lang) => {
   standardValue4.value = undefined
   standardValue5.value = undefined
   standardValue6.value = undefined
-  standardValue7.value = []
-  standardValue8.value = []
+  standardValue7.value = undefined
+  standardValue8.value = undefined
   standardValue9.value = []
-  standardValue10.value = undefined
+  standardValue10.value = []
   standardValue11.value = undefined
-  standardValue12.value = undefined
+  standardValue12.value = []
+  standardValue13.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -50,12 +53,13 @@ watchLang((lang) => {
   outlinedValue4.value = undefined
   outlinedValue5.value = undefined
   outlinedValue6.value = undefined
-  outlinedValue7.value = []
-  outlinedValue8.value = []
+  outlinedValue7.value = undefined
+  outlinedValue8.value = undefined
   outlinedValue9.value = []
-  outlinedValue10.value = undefined
+  outlinedValue10.value = []
   outlinedValue11.value = undefined
-  outlinedValue12.value = undefined
+  outlinedValue12.value = []
+  outlinedValue13.value = undefined
 
   use(lang)
 })
@@ -68,24 +72,31 @@ watchLang((lang) => {
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('relation')" v-model="standardValue10">
+    <var-select :placeholder="t('relation')" v-model="standardValue2">
       <var-option :label="t('eat')" :value="1" />
       <var-option :label="t('sleep')" :value="2" />
     </var-select>
-    <div class="relation">{{ t('currentSelect') }} {{ standardValue10 }}</div>
-    <var-select :placeholder="t('readonly')" readonly v-model="standardValue2">
+    <div class="relation">{{ t('currentSelect') }} {{ standardValue2 }}</div>
+    <var-select :placeholder="t('readonly')" readonly v-model="standardValue3">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('disabled')" disabled v-model="standardValue3">
+    <var-select :placeholder="t('disabled')" disabled v-model="standardValue4">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('clearable')" clearable v-model="standardValue4">
+    <var-select :placeholder="t('clearable')" clearable v-model="standardValue5">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('customIcon')" v-model="standardValue6">
+    <var-select :placeholder="t('clearIconSlot')" clearable v-model="standardValue6">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
+    <var-select :placeholder="t('customIcon')" v-model="standardValue7">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -97,8 +108,8 @@ watchLang((lang) => {
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="standardValue6 === t('eat') ? 'cake-variant' : 'weather-night'" />
-        <span>{{ standardValue6 }}</span>
+        <var-icon class="selected-icon" :name="standardValue7 === t('eat') ? 'cake-variant' : 'weather-night'" />
+        <span>{{ standardValue7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -110,7 +121,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="t('customIconSize')" v-model="standardValue12">
+    <var-select :placeholder="t('customIconSize')" v-model="standardValue8">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -124,10 +135,10 @@ watchLang((lang) => {
       <template #selected>
         <var-icon
           class="selected-icon"
-          :name="standardValue12 === t('eat') ? 'cake-variant' : 'weather-night'"
+          :name="standardValue8 === t('eat') ? 'cake-variant' : 'weather-night'"
           size="8vmin"
         />
-        <span>{{ standardValue12 }}</span>
+        <span>{{ standardValue8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
@@ -139,13 +150,13 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select :placeholder="t('multiple')" multiple v-model="standardValue7">
+    <var-select :placeholder="t('multiple')" multiple v-model="standardValue9">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="t('chipMultiple')" chip multiple v-model="standardValue8">
+    <var-select :placeholder="t('chipMultiple')" chip multiple v-model="standardValue10">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
@@ -154,7 +165,7 @@ watchLang((lang) => {
     <var-select
       :placeholder="t('validate')"
       :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
-      v-model="standardValue5"
+      v-model="standardValue11"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
@@ -164,14 +175,14 @@ watchLang((lang) => {
       multiple
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
-      v-model="standardValue9"
+      v-model="standardValue12"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select :placeholder="t('smallSize')" v-model="standardValue11">
+    <var-select :placeholder="t('smallSize')" v-model="standardValue13">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
@@ -183,24 +194,31 @@ watchLang((lang) => {
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('relation')" v-model="outlinedValue10">
+    <var-select variant="outlined" :placeholder="t('relation')" v-model="outlinedValue2">
       <var-option :label="t('eat')" :value="1" />
       <var-option :label="t('sleep')" :value="2" />
     </var-select>
-    <div class="relation">{{ t('currentSelect') }} {{ outlinedValue10 }}</div>
-    <var-select variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue2">
+    <div class="relation">{{ t('currentSelect') }} {{ outlinedValue2 }}</div>
+    <var-select variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue3">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue3">
+    <var-select variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue4">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue4">
+    <var-select variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue5">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('customIcon')" v-model="outlinedValue6">
+    <var-select variant="outlined" :placeholder="t('clearIconSlot')" clearable v-model="outlinedValue6">
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
+    <var-select variant="outlined" :placeholder="t('customIcon')" v-model="outlinedValue7">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -212,8 +230,8 @@ watchLang((lang) => {
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="outlinedValue6 === t('eat') ? 'cake-variant' : 'weather-night'" />
-        <span>{{ outlinedValue6 }}</span>
+        <var-icon class="selected-icon" :name="outlinedValue7 === t('eat') ? 'cake-variant' : 'weather-night'" />
+        <span>{{ outlinedValue7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -225,7 +243,7 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue12">
+    <var-select variant="outlined" :placeholder="t('customIconSize')" v-model="outlinedValue8">
       <template #default>
         <var-option :label="t('eat')">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -239,10 +257,10 @@ watchLang((lang) => {
       <template #selected>
         <var-icon
           class="selected-icon"
-          :name="outlinedValue12 === t('eat') ? 'cake-variant' : 'weather-night'"
+          :name="outlinedValue8 === t('eat') ? 'cake-variant' : 'weather-night'"
           size="8vmin"
         />
-        <span>{{ outlinedValue12 }}</span>
+        <span>{{ outlinedValue8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" size="8vmin" />
@@ -254,13 +272,13 @@ watchLang((lang) => {
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" :placeholder="t('multiple')" multiple v-model="outlinedValue7">
+    <var-select variant="outlined" :placeholder="t('multiple')" multiple v-model="outlinedValue9">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" :placeholder="t('chipMultiple')" chip multiple v-model="outlinedValue8">
+    <var-select variant="outlined" :placeholder="t('chipMultiple')" chip multiple v-model="outlinedValue10">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
@@ -270,7 +288,7 @@ watchLang((lang) => {
       variant="outlined"
       :placeholder="t('validate')"
       :rules="[(v) => v === t('rest') || t('mustSelectRest')]"
-      v-model="outlinedValue5"
+      v-model="outlinedValue11"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
@@ -281,14 +299,14 @@ watchLang((lang) => {
       variant="outlined"
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
-      v-model="outlinedValue9"
+      v-model="outlinedValue12"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
       <var-option :label="t('play')" />
       <var-option :label="t('coding')" />
     </var-select>
-    <var-select variant="outlined" size="small" :placeholder="t('smallSize')" v-model="outlinedValue11">
+    <var-select variant="outlined" size="small" :placeholder="t('smallSize')" v-model="outlinedValue13">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>

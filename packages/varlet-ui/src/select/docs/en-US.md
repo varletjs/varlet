@@ -17,11 +17,12 @@ const value4 = ref()
 const value5 = ref()
 const value6 = ref()
 const value7 = ref()
-const value8 = ref([])
+const value8 = ref()
 const value9 = ref([])
-const value10 = ref()
-const value11 = ref([])
-const value12 = ref()
+const value10 = ref([])
+const value11 = ref()
+const value12 = ref([])
+const value13 = ref()
 </script>
 
 <template>
@@ -47,8 +48,15 @@ const value12 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+    <var-select placeholder="Use the clear icon slot" clearable v-model="value6">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
 
-    <var-select placeholder="Custom Icon" v-model="value6">
+    <var-select placeholder="Custom Icon" v-model="value7">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -60,8 +68,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value6 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value6 }}</span>
+        <var-icon class="selected-icon" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -73,7 +81,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select placeholder="Custom Icon Size" v-model="value7">
+    <var-select placeholder="Custom Icon Size" v-model="value8">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -85,8 +93,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :size="28" :name="value8 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
@@ -99,13 +107,13 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select placeholder="Multiple Selection" multiple v-model="value8">
+    <var-select placeholder="Multiple Selection" multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value9">
+    <var-select placeholder="Multiple choice of paper style" chip multiple v-model="value10">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -114,7 +122,7 @@ const value12 = ref()
     <var-select
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -124,14 +132,14 @@ const value12 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value11"
+      v-model="value12"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select size="small" placeholder="Small Size" v-model="value12">
+    <var-select size="small" placeholder="Small Size" v-model="value13">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -170,11 +178,12 @@ const value4 = ref()
 const value5 = ref()
 const value6 = ref()
 const value7 = ref()
-const value8 = ref([])
+const value8 = ref()
 const value9 = ref([])
-const value10 = ref()
-const value11 = ref([])
-const value12 = ref()
+const value10 = ref([])
+const value11 = ref()
+const value12 = ref([])
+const value13 = ref()
 </script>
 
 <template>
@@ -200,8 +209,15 @@ const value12 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+    <var-select variant="outlined" placeholder="Use the clear icon slot" clearable v-model="value6">
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
 
-    <var-select variant="outlined" placeholder="Custom Icon" v-model="value6">
+    <var-select variant="outlined" placeholder="Custom Icon" v-model="value7">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -213,8 +229,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value6 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value6 }}</span>
+        <var-icon class="selected-icon" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -226,7 +242,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="Custom Icon Size" v-model="value7">
+    <var-select variant="outlined" placeholder="Custom Icon Size" v-model="value8">
       <template #default>
         <var-option label="Eat">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -238,8 +254,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value7 === 'Eat' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :size="28" :name="value8 === 'Eat' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
@@ -252,13 +268,13 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value8">
+    <var-select variant="outlined" placeholder="Multiple Selection" multiple v-model="value9">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value9">
+    <var-select variant="outlined" placeholder="Multiple choice of paper style" chip multiple v-model="value10">
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
@@ -268,7 +284,7 @@ const value12 = ref()
       variant="outlined"
       placeholder="Validate"
       :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -279,14 +295,14 @@ const value12 = ref()
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
-      v-model="value11"
+      v-model="value12"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value12">
+    <var-select variant="outlined" size="small" placeholder="Small Size" v-model="value13">
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
@@ -379,7 +395,7 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
-| `clear-icon` | Clear Icon | `-` |
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) | 
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
