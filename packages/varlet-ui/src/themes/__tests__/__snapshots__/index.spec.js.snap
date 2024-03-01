@@ -1268,7 +1268,7 @@ exports[`test md3Dark theme 1`] = `
   "--pagination-text-color": "#fff",
   "--pagination-total-line-height": "24px",
   "--pagination-total-margin": "0 12px",
-  "--paper-background": "var(--color-surface-container-high)",
+  "--paper-background": "var(--color-surface-container-highest)",
   "--paper-border-radius": 0,
   "--picker-background": "var(--color-body)",
   "--picker-cancel-button-text-color": "var(--color-primary)",
