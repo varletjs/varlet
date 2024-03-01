@@ -136,8 +136,8 @@ export default defineComponent({
 
     call(bindForm, switchProvider)
 
-    useEventListener(window, 'keydown', handleKeydown)
-    useEventListener(window, 'keyup', handleKeyup)
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
       if (!isFocusing.value) {

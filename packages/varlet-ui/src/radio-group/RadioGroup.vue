@@ -15,7 +15,8 @@ import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call } from '@varlet/shared'
+import { call, preventDefault } from '@varlet/shared'
+import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio-group')
 
@@ -44,12 +45,61 @@ export default defineComponent({
     }
 
     watch(() => props.modelValue, syncRadios)
-
     watch(() => length.value, syncRadios)
 
     call(bindForm, radioGroupProvider)
-
     bindRadios(radioGroupProvider)
+
+    useEventListener(() => window, 'keydown', handleKeydown)
+
+    function handleKeydown(event: KeyboardEvent) {
+      const focusingRadioIndex = radios.findIndex(({ isFocusing }) => isFocusing.value)
+      if (focusingRadioIndex === -1) {
+        return
+      }
+
+      const hasMoveableRadio = radios.some(({ moveable }, index) => (index === focusingRadioIndex ? false : moveable()))
+      if (!hasMoveableRadio) {
+        return
+      }
+
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+        preventDefault(event)
+      }
+
+      if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        moveRadio(focusingRadioIndex, 'prev')
+        return
+      }
+
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        moveRadio(focusingRadioIndex, 'next')
+      }
+    }
+
+    function moveRadio(fromIndex: number, method: 'prev' | 'next') {
+      while (true) {
+        if (method === 'prev') {
+          fromIndex--
+        } else {
+          fromIndex++
+        }
+
+        if (fromIndex < 0) {
+          fromIndex = radios.length - 1
+        }
+
+        if (fromIndex > radios.length - 1) {
+          fromIndex = 0
+        }
+
+        const radio = radios[fromIndex]
+        if (radio.moveable()) {
+          radio.move()
+          break
+        }
+      }
+    }
 
     function validateWithTrigger(trigger: ValidateTriggers) {
       nextTick(() => {

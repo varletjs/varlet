@@ -4,7 +4,7 @@ import VarRadioGroup from '../RadioGroup'
 import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay } from '../../utils/test'
+import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
 
 test('test radio group plugin', () => {
@@ -256,5 +256,77 @@ test('test radio group layout direction', async () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test radio keyboard Enter', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: 1,
+    }),
+    template: `
+          <var-radio-group v-model="value">
+            <var-radio :checked-value="1" >吃饭</var-radio>
+            <var-radio :checked-value="2" >睡觉</var-radio>
+          </var-radio-group>
+        `,
+  })
+
+  const children = wrapper.findAllComponents({ name: 'var-radio' })
+  await trigger(children[0].find('.var-radio__action'), 'focus')
+  await triggerKeyboard(window, 'keydown', { key: 'Enter' })
+  expect(wrapper.vm.value).toBe(1)
+
+  await trigger(children[1].find('.var-radio__action'), 'focus')
+  await triggerKeyboard(window, 'keyup', { key: ' ' })
+
+  expect(wrapper.vm.value).toBe(2)
+  wrapper.unmount()
+})
+
+test('test radio keyboard Arrow', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: 1,
+    }),
+    template: `
+          <var-radio-group v-model="value">
+            <var-radio :checked-value="1" >吃饭</var-radio>
+            <var-radio :checked-value="2" >睡觉</var-radio>
+          </var-radio-group>
+        `,
+  })
+
+  const children = wrapper.findAllComponents({ name: 'var-radio' })
+  await trigger(children[0].find('.var-radio__action'), 'focus')
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowRight' })
+  await trigger(children[0].find('.var-radio__action'), 'blur')
+  await trigger(children[1].find('.var-radio__action'), 'focus')
+  expect(wrapper.vm.value).toBe(2)
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowRight' })
+  await trigger(children[1].find('.var-radio__action'), 'blur')
+  await trigger(children[0].find('.var-radio__action'), 'focus')
+  expect(wrapper.vm.value).toBe(1)
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowLeft' })
+  await trigger(children[0].find('.var-radio__action'), 'blur')
+  await trigger(children[1].find('.var-radio__action'), 'focus')
+  expect(wrapper.vm.value).toBe(2)
+
+  await triggerKeyboard(window, 'keydown', { key: 'ArrowUp' })
+  await trigger(children[1].find('.var-radio__action'), 'blur')
+  await trigger(children[0].find('.var-radio__action'), 'focus')
+  expect(wrapper.vm.value).toBe(1)
+
   wrapper.unmount()
 })

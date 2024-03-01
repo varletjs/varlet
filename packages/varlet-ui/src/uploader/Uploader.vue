@@ -190,8 +190,8 @@ export default defineComponent({
 
     call(bindForm, uploaderProvider)
 
-    useEventListener(window, 'keydown', handleKeydown)
-    useEventListener(window, 'keyup', handleKeyup)
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
 
     watch(
       () => props.modelValue,

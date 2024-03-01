@@ -26,7 +26,7 @@ export default defineComponent({
       () => props.lockScroll
     )
 
-    useEventListener(window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keydown', handleKeydown)
 
     function handleKeydown(event: KeyboardEvent) {
       if (!onStackTop() || event.key !== 'Escape' || !props.show) {

@@ -2,6 +2,7 @@
   <div :class="n('wrap')">
     <div :class="n()" @click="handleClick" v-bind="$attrs">
       <div
+        ref="action"
         :class="
           classes(
             n('action'),
@@ -10,9 +11,12 @@
             [formDisabled || disabled, n('--disabled')]
           )
         "
+        :tabindex="formDisabled || disabled ? undefined : '0'"
+        :style="{ color: checked ? checkedColor : uncheckedColor }"
         v-ripple="{ disabled: formReadonly || readonly || formDisabled || disabled || !ripple }"
         v-hover:desktop="handleHovering"
-        :style="{ color: checked ? checkedColor : uncheckedColor }"
+        @focus="isFocusing = true"
+        @blur="isFocusing = false"
       >
         <slot name="checked-icon" v-if="checked">
           <var-icon
@@ -30,7 +34,10 @@
             :size="iconSize"
           />
         </slot>
-        <var-hover-overlay :hovering="!disabled && !formDisabled && hovering" />
+        <var-hover-overlay
+          :hovering="!disabled && !formDisabled && hovering"
+          :focusing="!disabled && !formDisabled && isFocusing"
+        />
       </div>
       <div
         :class="
@@ -41,6 +48,7 @@
           )
         "
         v-if="$slots.default"
+        @click="handleTextClick"
       >
         <slot />
       </div>
@@ -61,8 +69,8 @@ import { props, type ValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call } from '@varlet/shared'
-import { useVModel } from '@varlet/use'
+import { call, preventDefault } from '@varlet/shared'
+import { useEventListener, useVModel } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio')
 
@@ -77,6 +85,8 @@ export default defineComponent({
   inheritAttrs: false,
   props,
   setup(props) {
+    const action = ref<HTMLElement>()
+    const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
     const checked = computed(() => value.value === props.checkedValue)
     const withAnimation = ref(false)
@@ -96,10 +106,49 @@ export default defineComponent({
       validate,
       resetValidation,
       reset,
+      isFocusing: computed(() => isFocusing.value),
+      // keyboard arrow move
+      move() {
+        action.value!.focus()
+        action.value!.click()
+      },
+      moveable() {
+        return !form?.disabled.value && !props.disabled && !form?.readonly.value && !props.readonly
+      },
     }
 
     call(bindRadioGroup, radioProvider)
     call(bindForm, radioProvider)
+
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!isFocusing.value) {
+        return
+      }
+
+      const { key } = event
+
+      if (key === 'Enter' || key === ' ') {
+        preventDefault(event)
+      }
+
+      if (key === 'Enter') {
+        action.value!.click()
+      }
+    }
+
+    function handleKeyup(event: KeyboardEvent) {
+      if (!isFocusing.value) {
+        return
+      }
+
+      if (event.key === ' ') {
+        preventDefault(event)
+        action.value!.click()
+      }
+    }
 
     function validateWithTrigger(trigger: ValidateTrigger) {
       nextTick(() => {
@@ -138,6 +187,10 @@ export default defineComponent({
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
+    function handleTextClick() {
+      action.value!.focus()
+    }
+
     function sync(v: any) {
       const { checkedValue, uncheckedValue } = props
       value.value = v === checkedValue ? checkedValue : uncheckedValue
@@ -167,6 +220,8 @@ export default defineComponent({
     }
 
     return {
+      action,
+      isFocusing,
       withAnimation,
       checked,
       errorMessage,
@@ -178,6 +233,7 @@ export default defineComponent({
       n,
       classes,
       handleClick,
+      handleTextClick,
       toggle,
       reset,
       validate,

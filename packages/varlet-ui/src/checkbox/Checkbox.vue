@@ -57,6 +57,7 @@
           )
         "
         v-if="$slots.default"
+        @click="handleTextClick"
       >
         <slot />
       </div>
@@ -123,6 +124,9 @@ export default defineComponent({
     call(bindCheckboxGroup, checkboxProvider)
     call(bindForm, checkboxProvider)
 
+    useEventListener(() => window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keyup', handleKeyup)
+
     function validateWithTrigger(trigger: ValidateTriggers) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
@@ -164,6 +168,10 @@ export default defineComponent({
       change(checked.value ? uncheckedValue : checkedValue)
     }
 
+    function handleTextClick() {
+      action.value!.focus()
+    }
+
     function sync(values: Array<any>) {
       const { checkedValue, uncheckedValue } = props
       value.value = values.includes(checkedValue) ? checkedValue : uncheckedValue
@@ -190,9 +198,6 @@ export default defineComponent({
 
       change(changedValue)
     }
-
-    useEventListener(() => window, 'keydown', handleKeydown)
-    useEventListener(() => window, 'keyup', handleKeyup)
 
     function handleKeydown(event: KeyboardEvent) {
       if (!isFocusing.value) {
@@ -241,6 +246,7 @@ export default defineComponent({
       classes,
       handleHovering,
       handleClick,
+      handleTextClick,
       toggle,
       reset,
       validate,

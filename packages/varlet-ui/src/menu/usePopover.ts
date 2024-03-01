@@ -384,7 +384,7 @@ export function usePopover(options: UsePopoverOptions) {
     call(options['onUpdate:show'], false)
   }
 
-  useEventListener(window, 'keydown', handleKeydown)
+  useEventListener(() => window, 'keydown', handleKeydown)
   useClickOutside(getReference, 'click', handleClickOutside)
   onWindowResize(resize)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)

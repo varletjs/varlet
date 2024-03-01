@@ -345,7 +345,6 @@ test('test checkbox keyboard Enter', async () => {
             <var-checkbox :checked-value="2" >睡觉</var-checkbox>
           </var-checkbox-group>
         `,
-    attachTo: document.body,
   })
 
   const children = wrapper.findAllComponents({ name: 'var-checkbox' })

@@ -38,7 +38,7 @@ export default defineComponent({
 
     bindPopupItems({ show: computed(() => props.show) })
 
-    useEventListener(window, 'keydown', handleKeydown)
+    useEventListener(() => window, 'keydown', handleKeydown)
 
     // internal for Dialog
     useRouteListener(() => call(props.onRouteChange))
