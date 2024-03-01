@@ -3,7 +3,7 @@ import VarSelect from '../Select'
 import Option from '../../option'
 import VarOption from '../../option/Option'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
 
@@ -542,17 +542,18 @@ test('test select offset-y', async () => {
 })
 
 describe('test select component slots', () => {
-  test('test select clear icon slot', () => {
+  test('test select clear icon slot', async () => {
     const wrapper = mount(VarSelect, {
       props: {
         clearable: true,
         modelValue: 'value',
       },
       slots: {
-        'clear-icon': () => 'clear-icon',
+        'clear-icon': ({ clear }) => h('button', { class: 'custom-clear-icon', onClick: () => clear() }, 'Clear'),
       },
     })
 
+    await wrapper.find('.custom-clear-icon').trigger('click')
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.unmount()

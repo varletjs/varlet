@@ -17,11 +17,12 @@ const value4 = ref()
 const value5 = ref()
 const value6 = ref()
 const value7 = ref()
-const value8 = ref([])
+const value8 = ref()
 const value9 = ref([])
-const value10 = ref()
-const value11 = ref([])
-const value12 = ref()
+const value10 = ref([])
+const value11 = ref()
+const value12 = ref([])
+const value13 = ref()
 </script>
 
 <template>
@@ -47,8 +48,15 @@ const value12 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
+    <var-select placeholder="使用插槽自定义清除图标" clearable v-model="value6">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
 
-    <var-select placeholder="自定义图标" v-model="value6">
+    <var-select placeholder="自定义图标" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -60,8 +68,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value6 === '吃饭' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value6 }}</span>
+        <var-icon class="selected-icon" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -74,7 +82,7 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select placeholder="自定义图标尺寸" v-model="value7">
+    <var-select placeholder="自定义图标尺寸" v-model="value8">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -86,8 +94,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :size="28" :name="value8 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
@@ -100,13 +108,13 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select placeholder="多选" multiple v-model="value8">
+    <var-select placeholder="多选" multiple v-model="value9">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select placeholder="纸片风格的多选" chip multiple v-model="value9">
+    <var-select placeholder="纸片风格的多选" chip multiple v-model="value10">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
@@ -115,7 +123,7 @@ const value12 = ref()
     <var-select
       placeholder="单选值校验"
       :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
@@ -125,14 +133,14 @@ const value12 = ref()
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
-      v-model="value11"
+      v-model="value12"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select placeholder="小尺寸" v-model="value12">
+    <var-select placeholder="小尺寸" v-model="value13">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
@@ -171,11 +179,12 @@ const value4 = ref()
 const value5 = ref()
 const value6 = ref()
 const value7 = ref()
-const value8 = ref([])
+const value8 = ref()
 const value9 = ref([])
-const value10 = ref()
-const value11 = ref([])
-const value12 = ref()
+const value10 = ref([])
+const value11 = ref()
+const value12 = ref([])
+const value13 = ref()
 </script>
 
 <template>
@@ -201,8 +210,15 @@ const value12 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
+    <var-select variant="outlined" placeholder="使用插槽自定义清除图标" clearable v-model="value6">
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <template #clear-icon="{ clear }">
+        <var-icon class="clear-icon" name="github" @click="clear" />
+      </template>
+    </var-select>
 
-    <var-select variant="outlined" placeholder="自定义图标" v-model="value6">
+    <var-select variant="outlined" placeholder="自定义图标" v-model="value7">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -214,8 +230,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :name="value6 === '吃饭' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value6 }}</span>
+        <var-icon class="selected-icon" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value7 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" />
@@ -227,7 +243,7 @@ const value12 = ref()
         <var-icon name="chevron-down" :transition="300" :class="{ 'arrow-icon-rotate': focus }" />
       </template>
     </var-select>
-    <var-select variant="outlined" placeholder="自定义图标尺寸" v-model="value7">
+    <var-select variant="outlined" placeholder="自定义图标尺寸" v-model="value8">
       <template #default>
         <var-option label="吃饭">
           <var-icon class="selected-icon" name="cake-variant" />
@@ -239,8 +255,8 @@ const value12 = ref()
         </var-option>
       </template>
       <template #selected>
-        <var-icon class="selected-icon" :size="28" :name="value7 === '吃饭' ? 'cake-variant' : 'weather-night'" />
-        <span>{{ value7 }}</span>
+        <var-icon class="selected-icon" :size="28" :name="value8 === '吃饭' ? 'cake-variant' : 'weather-night'" />
+        <span>{{ value8 }}</span>
       </template>
       <template #prepend-icon>
         <var-icon class="prepend-icon" name="github" :size="28" />
@@ -253,13 +269,13 @@ const value12 = ref()
       </template>
     </var-select>
 
-    <var-select variant="outlined" placeholder="多选" multiple v-model="value8">
+    <var-select variant="outlined" placeholder="多选" multiple v-model="value9">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select variant="outlined" placeholder="纸片风格的多选" chip multiple v-model="value9">
+    <var-select variant="outlined" placeholder="纸片风格的多选" chip multiple v-model="value10">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
@@ -269,7 +285,7 @@ const value12 = ref()
       variant="outlined"
       placeholder="单选值校验"
       :rules="[(v) => v === '摸鱼' || '您一定得选择摸鱼']"
-      v-model="value10"
+      v-model="value11"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
@@ -280,14 +296,14 @@ const value12 = ref()
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
-      v-model="value11"
+      v-model="value12"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
       <var-option label="打游戏" />
       <var-option label="写代码" />
     </var-select>
-    <var-select variant="outlined" size="small" placeholder="小尺寸" v-model="value12">
+    <var-select variant="outlined" size="small" placeholder="小尺寸" v-model="value13">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
@@ -380,7 +396,7 @@ const value12 = ref()
 | --- | --- | --- |
 | `selected` | 选择区域的内容 | `-` |
 | `prepend-icon` | 前置图标 | `-` |
-| `clear-icon` | 清除图标 | `-` |
+| `clear-icon` | 清除图标 | `clear: function` 清除函数(在使用插槽时, 可用于清除选择框内容) |
 | `append-icon` | 后置图标 | `-` |
 | `arrow-icon` | 箭头图标 | `focus: boolean` 是否处于聚焦状态, `menu-open: boolean` 是否菜单被打开 |
 

@@ -5,6 +5,7 @@ export default {
   disabled: 'Disabled',
   readonly: 'Readonly',
   clearable: 'Clearable',
+  clearIconSlot: 'Use the clear icon slot',
   customIcon: 'Custom Icon',
   customIconSize: 'Custom Icon Size',
   validate: 'Validate',
