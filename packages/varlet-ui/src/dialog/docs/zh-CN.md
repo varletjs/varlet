@@ -230,6 +230,7 @@ const show = ref(false)
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭弹窗 | _boolean_ | `true`  |
 
 ### 事件
 
@@ -243,6 +244,7 @@ const show = ref(false)
 | `confirm` | 确认时触发 | `-` |
 | `cancel` | 取消时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 方法
 

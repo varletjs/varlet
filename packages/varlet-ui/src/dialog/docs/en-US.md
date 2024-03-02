@@ -230,6 +230,7 @@ const show = ref(false)
 | `lock-scroll`               | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_             | `true`    |
 | `close-on-click-overlay`    | Whether to click the overlay to close the Dialog                                                               | _boolean_             | `true`    |
 | `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to'] \| false_ | `body`       |
+| `close-on-key-escape` | Whether to support keyboard ESC to close the dialog | _boolean_ | `true`  |
 
 ### Events
 
@@ -243,6 +244,7 @@ const show = ref(false)
 | `confirm`       | Triggered on confirm                                   | `-`                                                        |
 | `cancel`        | Triggered on cancel                                    | `-`                                                        |
 | `click-overlay` | Triggered when clicking on overlay                  | `-`                                                        |
+| `key-escape` | Triggered when click keyboard ESC  | `-` |
 
 ### Methods
 
