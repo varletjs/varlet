@@ -400,6 +400,7 @@ function handleSelect(action) {
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
 | `safe-area`   | 是否开启底部安全区适配      | _boolean_             | `false`  |
 | `teleport` | 动作面板挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭动作面板 | _boolean_ | `true`  |
 
 ### 事件
 
@@ -411,6 +412,7 @@ function handleSelect(action) {
 | `close` | 关闭动作面板时触发 | `-` |
 | `closed` | 关闭动作面板动画结束时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 方法
 

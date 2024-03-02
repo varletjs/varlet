@@ -26,6 +26,7 @@ export interface ActionSheetOptions {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   safeArea?: boolean
   onOpen?: () => void
   onOpened?: () => void
@@ -33,11 +34,9 @@ export interface ActionSheetOptions {
   onClosed?: () => void
   onClickOverlay?: () => void
   onSelect?: (action: ActionItem) => void
+  onKeyEscape?: () => void
   // internal
   teleport?: TeleportProps['to']
-  // internal for esc
-  closeOnKeyEscape?: boolean
-  onKeyEscape?: () => void
 }
 
 let singletonOptions: ActionSheetOptions | null

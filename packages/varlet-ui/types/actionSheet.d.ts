@@ -13,6 +13,7 @@ export interface ActionSheetProps extends BasicAttributes {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   safeArea?: boolean
   teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
@@ -21,6 +22,7 @@ export interface ActionSheetProps extends BasicAttributes {
   onClosed?: ListenerProp<() => void>
   onSelect?: ListenerProp<(action: ActionItem) => void>
   onClickOverlay?: ListenerProp<() => void>
+  onKeyEscape?: ListenerProp<() => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
