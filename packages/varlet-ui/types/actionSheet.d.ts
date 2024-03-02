@@ -45,12 +45,14 @@ export interface ActionSheetOptions {
   lockScroll?: boolean
   closeOnClickAction?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   safeArea?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onClose?: () => void
   onClosed?: () => void
   onClickOverlay?: () => void
+  onKeyEscape?: () => void
   onSelect?: (action: ActionItem) => void
 }
 
