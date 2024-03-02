@@ -411,6 +411,7 @@ function handleSelect(action) {
 | `close`         | Triggered when closing an action sheet            | `-`              |
 | `closed`        | Triggered when an action sheet close-animation ends | `-`              |
 | `click-overlay` | Triggered when clicking on overlay                  | `-`              |
+| `key-escape` | Triggered when click keyboard ESC  | `-` |
 
 ### Methods
 

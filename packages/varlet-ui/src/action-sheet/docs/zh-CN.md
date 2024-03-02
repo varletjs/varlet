@@ -412,6 +412,7 @@ function handleSelect(action) {
 | `close` | 关闭动作面板时触发 | `-` |
 | `closed` | 关闭动作面板动画结束时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 方法
 
