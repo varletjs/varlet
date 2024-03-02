@@ -445,7 +445,7 @@ function handleSelect(action) {
 | `onClosed` |动作面板关闭动画结束回调 | _() => void_ | `-` |
 | `onSelect` | 选项选择时回调 | _(action: Action) => void_ | `-` |
 | `onClickOverlay` | 遮罩层点击回调 | _() => void_ | `-` |
-| `onKeyEscape` | 点击键盘 ESC 时触发 | `-` |
+| `onKeyEscape` | 点击键盘 ESC 时触发 | _() => void_ | `-` |
 
 ### ActionSheet Action
 

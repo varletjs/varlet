@@ -443,6 +443,7 @@ function handleSelect(action) {
 | `onClosed`            | Action sheet close-animation ends callback                                                                           | _() => void_               | `-`          |
 | `onSelect`            | Action sheet click action callback                                                                                   | _(action: Action) => void_ | `-`          |
 | `onClickOverlay`      | Click overlay callback                                                                                               | _() => void_               | `-`          |
+| `onKeyEscape` | Triggered when click keyboard ESC  | _() => void_  | `-` |
 
 ### ActionSheet Action
 
