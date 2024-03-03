@@ -1,5 +1,5 @@
 import context from '../context'
-import { supportTouch, getStyle, getRect, hasOwn } from '@varlet/shared'
+import { supportTouch, getStyle, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { type Directive, type Plugin, type App, type DirectiveBinding } from 'vue'
 
@@ -40,7 +40,7 @@ function setStyles(element: RippleHTMLElement) {
 }
 
 function isTouchEvent(event: Event): event is TouchEvent {
-  return hasOwn(event, 'touches')
+  return 'touches' in event
 }
 
 function computeRippleStyles(element: RippleHTMLElement, event: TouchEvent | KeyboardEvent): RippleStyles {
