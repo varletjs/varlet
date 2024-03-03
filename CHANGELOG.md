@@ -1,3 +1,12 @@
+## [3.0.7](https://github.com/varletjs/varlet/compare/v3.0.6...v3.0.7) (2024-03-03)
+
+
+### Bug Fixes
+
+* **ripple:** touch event detection error ([69727fa](https://github.com/varletjs/varlet/commit/69727fa583c4418d17b7a37c0aef7d29e9b4c4ae))
+
+
+
 ## [3.0.6](https://github.com/varletjs/varlet/compare/v3.0.5...v3.0.6) (2024-02-27)
 
 
