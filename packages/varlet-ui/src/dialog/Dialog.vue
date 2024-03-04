@@ -8,7 +8,7 @@
     :overlay-style="overlayStyle"
     :lock-scroll="lockScroll"
     :close-on-click-overlay="popupCloseOnClickOverlay"
-    :close-on-key-escape="closeOnKeyEscape"
+    :close-on-key-escape="false"
     :teleport="teleport"
     @open="onOpen"
     @close="onClose"
