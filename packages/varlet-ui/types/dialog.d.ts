@@ -71,6 +71,7 @@ export interface DialogOptions {
   dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onBeforeClose?: (action: DialogActions, done: () => void) => void
@@ -79,6 +80,7 @@ export interface DialogOptions {
   onConfirm?: () => void
   onCancel?: () => void
   onClickOverlay?: () => void
+  onKeyEscape?: () => void
 }
 
 export interface IDialog {

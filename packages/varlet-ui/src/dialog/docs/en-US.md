@@ -229,8 +229,8 @@ const show = ref(false)
 | `overlay-style`             | Custom overlay style                                                                                           | _string_              | `-`       |
 | `lock-scroll`               | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_             | `true`    |
 | `close-on-click-overlay`    | Whether to click the overlay to close the Dialog                                                               | _boolean_             | `true`    |
-| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to'] \| false_ | `body`       |
 | `close-on-key-escape` | Whether to support keyboard ESC to close the dialog | _boolean_ | `true`  |
+| `teleport`                  | The location of the Dialog to mount                                                                            | _TeleportProps['to'] \| false_ | `body`       |
 
 ### Events
 
@@ -279,7 +279,8 @@ const show = ref(false)
 | `overlayClass`           | Custom overlay class                                                                                           | _string_                                                       | `-`     |
 | `overlayStyle`           | Custom overlay style                                                                                           | _string_                                                       | `-`     |
 | `lockScroll`             | Whether to disable scrolling penetration, scrolling the Dialog when disabled will not cause the body to scroll | _boolean_                                                      | `true`  |
-| `closeOnClickOverlay`    | Whether to click the overlay to close the Dialog                                                               | _boolean_                                                      | `true`  |
+| `closeOnClickOverlay`    | Whether to click the overlay to close the Dialog  | _boolean_  | `true`  |
+| `closeOnKeyEscape` |  Whether to support keyboard ESC to close the dialog | _boolean_ | `true` |
 | `onOpen`                 | Dialog open callback                                                                                           | _() => void_                                                   | `-`     |
 | `onOpened`               | Dialog open-animation ends callback                                                                            | _() => void_                                                   | `-`     |
 | `onBeforeClose`          | Callbacks prevent closure before the Dialog closes                                                             | _(action: confirm \| cancel \| close, done: Function) => void_ | `-`     |
@@ -288,6 +289,7 @@ const show = ref(false)
 | `onConfirm`              | Confirm callback                                                                                               | _() => void_                                                   | `-`     |
 | `onCancel`               | Cancel callback                                                                                                | _() => void_                                                   | `-`     |
 | `onClickOverlay`         | Click overlay callback                                                                                         | _() => void_                                                   | `-`     |
+| `onKeyEscape`            | Triggered when click keyboard ESC | _() => void_ | `-` |
 
 ### Slots
 
