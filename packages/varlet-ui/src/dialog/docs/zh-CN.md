@@ -229,6 +229,7 @@ const show = ref(false)
 | `overlay-style` | 自定义遮罩层的 style | _object_ | `-` |
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭弹窗 | _boolean_ | `true`  |
 | `teleport` | 弹出层挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
 ### 事件
@@ -243,6 +244,7 @@ const show = ref(false)
 | `confirm` | 确认时触发 | `-` |
 | `cancel` | 取消时触发 | `-` |
 | `click-overlay` | 点击遮罩层时触发 | `-` |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 方法
 
@@ -278,6 +280,7 @@ const show = ref(false)
 | `overlayStyle` | 自定义遮罩层的 style | _object_ | `-` |
 | `lockScroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `closeOnClickOverlay` | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
+| `closeOnKeyEscape` | 是否支持键盘 ESC 关闭弹窗 | _boolean_ | `true` |
 | `onOpen` | 对话框开启回调 | _() => void_ | `-` |
 | `onOpened` | 对话框开启动画结束回调 | _() => void_ | `-` |
 | `onBeforeClose` | 对话框关闭前回调，会阻止关闭 | _(action: confirm \| cancel \| close, done: Function) => void_ | `-` |
@@ -286,6 +289,7 @@ const show = ref(false)
 | `onConfirm` | 确认回调 | _() => void_ | `-` |
 | `onCancel` | 取消回调 | _() => void_ | `-` |
 | `onClickOverlay` | 遮罩层点击回调 | _() => void_ | `-` |
+| `onKeyEscape` | 点击键盘 ESC 时触发 | _() => void_ | `-` |
 
 ### 插槽
 

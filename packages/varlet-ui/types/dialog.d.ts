@@ -26,6 +26,7 @@ export interface DialogProps extends BasicAttributes {
   dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   teleport?: TeleportProps['to'] | false
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
@@ -35,6 +36,7 @@ export interface DialogProps extends BasicAttributes {
   onConfirm?: ListenerProp<() => void>
   onCancel?: ListenerProp<() => void>
   onClickOverlay?: ListenerProp<() => void>
+  onKeyEscape?: ListenerProp<() => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
@@ -69,6 +71,7 @@ export interface DialogOptions {
   dialogStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   onOpen?: () => void
   onOpened?: () => void
   onBeforeClose?: (action: DialogActions, done: () => void) => void
@@ -77,6 +80,7 @@ export interface DialogOptions {
   onConfirm?: () => void
   onCancel?: () => void
   onClickOverlay?: () => void
+  onKeyEscape?: () => void
 }
 
 export interface IDialog {

@@ -40,16 +40,15 @@ export const props = {
     'overlayStyle',
     'lockScroll',
     'closeOnClickOverlay',
+    'closeOnKeyEscape',
     'teleport',
     'onOpen',
     'onClose',
     'onOpened',
     'onClosed',
     'onClickOverlay',
+    'onKeyEscape',
     // internal for function call closes the dialog
     'onRouteChange',
-    // internal for esc
-    'closeOnKeyEscape',
-    'onKeyEscape',
   ]),
 }
