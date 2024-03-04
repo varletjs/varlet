@@ -17,12 +17,12 @@
 
 .var-dialog {
   width: var(--dialog-width);
-  border-radius: var(--dialog-border-radius);
   background: var(--dialog-background);
   transition: 0.25s background-color;
 
   &__popup[var-dialog-cover] {
     background: transparent;
+    border-radius: var(--dialog-border-radius);
   }
 
   &__title {
