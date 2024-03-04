@@ -167,6 +167,7 @@ varlet-cli build:extension
 
 ```shell
 # playground-ignore
+varlet-cli build:icons -w
 varlet-cli build:icons
 ```
 

@@ -23,6 +23,7 @@
     "url": "https://github.com/varletjs/varlet/issues"
   },
   "scripts": {
+    "dev": "varlet-cli build:icons -w",
     "build": "varlet-cli build:icons"
   },
   "devDependencies": {

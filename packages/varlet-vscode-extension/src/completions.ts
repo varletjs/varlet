@@ -1,4 +1,4 @@
-import icons, { pointCodes } from '@varlet/icons'
+import icons from '@varlet/icons'
 import {
   languages,
   Range,
@@ -94,7 +94,7 @@ export function registerCompletions(context: ExtensionContext) {
 
     resolveCompletionItem(completionItem: CompletionItem) {
       const id = completionItem.label
-      const url = `${envs().iconsStatic}/u${pointCodes[id as string]}-${id}.png?t=${Date.now()}`
+      const url = `${envs().iconsStatic}/${id}.png?t=${Date.now()}`
       const markdownString = new MarkdownString(`[icon: ${id}](${envs().t('documentation')}/icon)
 <p align="center"><img height="80" src="${url}"></p>
 <br>

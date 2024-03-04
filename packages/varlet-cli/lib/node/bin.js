@@ -49,10 +49,11 @@ program
 });
 program
     .command('build:icons')
+    .option('-w --watch', 'Watch icons for changes and rebuild')
     .description('Build icons')
-    .action(async () => {
+    .action(async (options) => {
     const { icons } = await import('./commands/icons.js');
-    return icons();
+    return icons(options);
 });
 program
     .command('preview')
