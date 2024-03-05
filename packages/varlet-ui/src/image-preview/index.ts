@@ -12,6 +12,7 @@ interface ImagePreviewOptions {
   lockScroll?: boolean
   indicator?: boolean
   closeable?: boolean
+  closeOnKeyEscape?: boolean
   imagePreventDefault?: boolean
   onOpen?: () => void
   onOpened?: () => void
@@ -19,11 +20,9 @@ interface ImagePreviewOptions {
   onClosed?: () => void
   onChange?: (index: number) => void
   onLongPress?: (index: number) => void
+  onKeyEscape?: () => void
   // internal
   teleport?: TeleportProps['to']
-  // internal for esc
-  closeOnKeyEscape?: boolean
-  onKeyEscape?: () => void
 }
 
 let singletonOptions: ImagePreviewOptions | null
