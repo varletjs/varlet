@@ -25,14 +25,13 @@ export const props = {
   ...pickProps(popupProps, [
     'lockScroll',
     'teleport',
+    'closeOnKeyEscape',
     'onOpen',
     'onClose',
     'onOpened',
     'onClosed',
+    'onKeyEscape',
     // internal for function call closes the dialog
     'onRouteChange',
-    // internal for esc
-    'closeOnKeyEscape',
-    'onKeyEscape',
   ]),
 }

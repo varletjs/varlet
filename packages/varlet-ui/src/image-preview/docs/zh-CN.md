@@ -250,6 +250,7 @@ const actions = [
 | `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数 | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
+| `close-on-key-escape` | 是否支持键盘 ESC 图片预览 | _boolean_ | `true`  |
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lock-scroll` | 锁定滚动 | _boolean_ | `true` |
@@ -266,6 +267,7 @@ const actions = [
 | `close`  | 关闭 image-preview 时触发 | `-` |
 | `closed` | 关闭 image-preview 动画结束时触发 | `-` |
 | `long-press` | 长按图片时的回调函数，回调参数为当前索引 | `index: number` 图片索引 | 
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 方法
 
@@ -296,6 +298,7 @@ const actions = [
 | `initialIndex` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数  | _string \| number_ | `2` |
 | `closeable`  | 是否显示关闭按钮 | _boolean_ | `false` |
+| `closeOnKeyEscape` | 是否支持键盘 ESC 关闭图片预览 | _boolean_ | `true` |
 | `loop`       | 是否开启循环播放 | _boolean_ | `true` |
 | `indicator`  | 是否显示分页 | _boolean_ | `true` |
 | `lockScroll` | 锁定滚动 | _boolean_ | `true` |
@@ -306,6 +309,7 @@ const actions = [
 | `onClose`  | image-preview 时关闭时候的回调 |  _() => void_ |  `-` |
 | `onClosed` | image-preview 关闭动画结束时候的回调 |  _() => void_ | `-` |
 | `onLongPress` | 长按图片时的回调函数，回调参数为当前索引 | _(index: number) => void_  |  `-` |
+| `onKeyEscape` | 点击键盘 ESC 时触发 | _() => void_ | `-` |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
