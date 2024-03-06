@@ -236,6 +236,7 @@ it is recommended to wrap a `block` element.
 | `default-style` | Whether to enable default styles                                                                                             | _boolean_ | `true`            |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
+| `close-on-key-escape` | Whether to support keyboard ESC to close the menu | _boolean_ | `true`  |
 
 ### Placement
 
