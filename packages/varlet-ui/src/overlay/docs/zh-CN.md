@@ -79,12 +79,14 @@ const show = ref(false)
 | `v-model:show` | 是否显示遮罩层                       | _boolean_             | `false` |
 | `lock-scroll`  | 是否禁止滚动穿透，禁止时滚动遮罩层不会引发 body 的滚动 | _boolean_             | `true`  |
 | `teleport`     | 遮罩层挂载的位置                      | _TeleportProps['to'] \| false_ | `-`     |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭遮罩层 | _boolean_ | `true`  |
 
 ### 事件
 
 | 事件名     | 说明       | 参数  |
 |---------|----------|-----|
 | `click` | 点击遮罩层时触发 | `-` |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 插槽
 

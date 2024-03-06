@@ -78,12 +78,14 @@ const show = ref(false)
 | `v-model:show` | Whether to display the Overlay                                                                                  | _boolean_             | `false` |
 | `lock-scroll`  | Whether to disable scrolling penetration, scrolling the Overlay when disabled will not cause the body to scroll | _boolean_             | `true`  |
 | `teleport`     | The location of the Overlay to mount                                                                            | _TeleportProps['to'] \| false_ | `-`     |
+| `close-on-key-escape` | Whether to support keyboard ESC to close the overlay | _boolean_ | `true`  |
 
 ### Events
 
 | Event   | Description                         | Arguments |
 |---------|-------------------------------------|-----------|
 | `click` | Triggered when clicking on overlay | `-`       |
+| `key-escape` | Triggered when click keyboard ESC  | `-` |
 
 ### Slots
 
