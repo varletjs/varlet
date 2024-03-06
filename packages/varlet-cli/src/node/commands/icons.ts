@@ -1,7 +1,7 @@
 import fse from 'fs-extra'
 import sharp from 'sharp'
 import slash from 'slash'
-import chokidar, { FSWatcher } from 'chokidar'
+import chokidar from 'chokidar'
 import webfont from 'webfont'
 import logger from '../shared/logger.js'
 import { parse, resolve } from 'path'
@@ -90,9 +90,9 @@ export async function buildIcons(varletConfig: Required<VarletConfig>, io: Icons
   ])
 
   const icons: { name: string; pointCode: string }[] = glyphsData.map((i: any) => ({
-      name: i.metadata.name,
-      pointCode: i.metadata.unicode[0].charCodeAt(0).toString(16),
-    }))
+    name: i.metadata.name,
+    pointCode: i.metadata.unicode[0].charCodeAt(0).toString(16),
+  }))
 
   const iconNames = icons.map((iconName) => `  '${iconName.name}'`)
 
