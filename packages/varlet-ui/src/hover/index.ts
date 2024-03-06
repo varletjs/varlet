@@ -74,10 +74,6 @@ function clearStyle(element: HoverHTMLElement) {
   Object.keys(element._hover.value as Record<string, any>).forEach((key) => {
     const value = (element._hover.value as Record<string, any>)[key]
 
-    if (element?._hover == null) {
-      return
-    }
-
     if (value != null) {
       element.style[key as any] = ''
     }
@@ -85,6 +81,9 @@ function clearStyle(element: HoverHTMLElement) {
 }
 
 function restoreStyle(element: HoverHTMLElement) {
+  if (element?._hover == null) {
+    return
+  }
   clearStyle(element)
   updateStyle(element, element._hover.rawStyle)
 }
