@@ -46,14 +46,12 @@ export interface UsePopoverOptions {
   offsetY: string | number
   reference?: string
   closeOnClickReference?: boolean
+  closeOnKeyEscape?: boolean
   onOpen?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
-
-  // internal for esc
-  closeOnKeyEscape: boolean
 }
 
 export function usePopover(options: UsePopoverOptions) {

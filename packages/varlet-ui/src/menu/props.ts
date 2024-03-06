@@ -44,16 +44,14 @@ export const props = {
   },
   popoverClass: String,
   closeOnClickReference: Boolean,
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
   onOpen: defineListenerProp<() => void>(),
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
   onClickOutside: defineListenerProp<(event: Event) => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
-
-  // internal for esc
-  closeOnKeyEscape: {
-    type: Boolean,
-    default: true,
-  },
 }
