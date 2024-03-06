@@ -153,6 +153,7 @@ const allowedDates = val => parseInt(val.split('-')[2], 10) % 2 === 1
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
 | `--date-picker-title-date-range-font-size` | `20px`                 |
+| `--date-picker-title-date-justify-content` | `normal` |
 | `--date-picker-header-arrow-filter` | `opacity(0.54)` |
 | `--date-picker-body-background-color` | `#fff`                 |
 | `--date-picker-body-height` | `280px`                |
