@@ -84,6 +84,7 @@ function restoreStyle(element: HoverHTMLElement) {
   if (element?._hover == null) {
     return
   }
+
   clearStyle(element)
   updateStyle(element, element._hover.rawStyle)
 }
