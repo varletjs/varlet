@@ -46,7 +46,7 @@ export interface UsePopoverOptions {
   offsetY: string | number
   reference?: string
   closeOnClickReference?: boolean
-  closeOnKeyEscape: boolean
+  closeOnKeyEscape?: boolean
   onOpen?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
