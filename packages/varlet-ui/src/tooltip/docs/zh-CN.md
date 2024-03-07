@@ -192,6 +192,7 @@ import { Snackbar } from '@varlet/ui'
 | `trigger` | 触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_       | `hover`   |
 | `reference`       | 关联的触发元素选择器，用于指定特定子元素为触发元素 | _string_              | `-`           |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭提示 | _boolean_ | `true`  |
 
 ### Placement
 
