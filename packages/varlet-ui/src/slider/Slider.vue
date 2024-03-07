@@ -45,7 +45,10 @@
               background: thumbsProps[item.enumValue].active ? thumbColor : undefined,
             }"
           >
-            <var-hover-overlay :hovering="item.hovering" />
+            <var-hover-overlay
+              :hovering="!isDisabled && item.hovering"
+              :focusing="!isDisabled && thumbsProps[item.enumValue].active"
+            />
           </div>
           <div
             :class="
@@ -92,7 +95,6 @@ export default defineComponent({
   directives: { Hover },
   props,
   setup(props) {
-    const isFocusing = ref(false)
     const maxDistance = ref(0)
     const sliderEl = ref<HTMLElement | null>(null)
     const isScroll = ref(false)
@@ -267,6 +269,13 @@ export default defineComponent({
       item.handleHovering(value)
     }
 
+    function emitChange(value: number | number[]) {
+      const { onChange } = props
+      call(onChange, value)
+      call(props['onUpdate:modelValue'], value)
+      validateWithTrigger()
+    }
+
     function setPercent(moveDistance: number, type: keyof ThumbsProps) {
       let rangeValue: Array<number> = []
       const { step, range, modelValue, onChange, min } = props
@@ -282,9 +291,7 @@ export default defineComponent({
 
       if (prevValue !== curValue) {
         const value = range ? rangeValue.map((value) => toPrecision(value)) : toPrecision(curValue)
-        call(onChange, value)
-        call(props['onUpdate:modelValue'], value)
-        validateWithTrigger()
+        emitChange(value)
       }
     }
 
@@ -431,55 +438,52 @@ export default defineComponent({
       resetValidation()
     }
 
+    function moveFocusingThumb(offset: 1 | -1, value: number | number[]) {
+      const stepValue = Number(props.step)
+      if (isArray(value)) {
+        const updatedFirstValue = value[0] + (activeThumb === Thumbs.First ? offset * stepValue : 0)
+        const updatedSecondValue = value[1] + (activeThumb === Thumbs.Second ? offset * stepValue : 0)
+        return [updatedFirstValue, updatedSecondValue].map(toPrecision)
+      }
+      return toPrecision(value + offset * stepValue)
+    }
+
     useEventListener(() => window, 'keydown', handleKeydown)
 
     function handleKeydown(event: KeyboardEvent) {
-      const addKeys = ['ArrowRight', 'ArrowUp']
-      const subKeys = ['ArrowLeft', 'ArrowDown']
+      type ArrowKey = 'ArrowRight' | 'ArrowUp' | 'ArrowLeft' | 'ArrowDown'
 
-      if (!isFocusing.value) {
-        return
+      const keyToOffset: Record<ArrowKey, 1 | -1> = {
+        ArrowRight: 1,
+        ArrowUp: 1,
+        ArrowLeft: -1,
+        ArrowDown: -1,
       }
 
-      const { key } = event
-      const operationFactor = addKeys.includes(key) ? 1 : subKeys.includes(key) ? -1 : 0
+      const {key} = event
 
-      if (!operationFactor) {
+      if (!(Object.keys(keyToOffset).includes(key) && activeThumb && thumbsProps[activeThumb].active)) {
         return
       }
 
       preventDefault(event)
 
-      if (isReadonly.value) {
+      if (isReadonly.value || isDisabled.value) {
         return
       }
 
-      const { step, modelValue, onChange } = props
-      const stepValue = Number(step)
-      const calcValue = (factor: 1 | -1) => {
-        if (isArray(modelValue)) {
-          const updatedFirstValue = modelValue[0] + (activeThumb === Thumbs.First ? factor * stepValue : 0)
-          const updatedSecondValue = modelValue[1] + (activeThumb === Thumbs.Second ? factor * stepValue : 0)
-          return [updatedFirstValue, updatedSecondValue].map(toPrecision)
-        }
-        return toPrecision(modelValue + factor * stepValue)
-      }
+      const offset = keyToOffset[key as ArrowKey]
 
-      const value = calcValue(operationFactor)
-
-      call(onChange, value)
-      call(props['onUpdate:modelValue'], value)
-      validateWithTrigger()
+      const value = moveFocusingThumb(offset, props.modelValue)
+      emitChange(value)
     }
 
     function handleFocus(item: ThumbsListProps) {
-      isFocusing.value = true
       activeThumb = item.enumValue
-      thumbsProps[activeThumb].active = true
+      thumbsProps[item.enumValue].active = true
     }
 
     function handleBlur() {
-      isFocusing.value = false
       thumbsProps[activeThumb].active = false
     }
 
@@ -492,7 +496,6 @@ export default defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
-      isFocusing,
       handleFocus,
       handleBlur,
       n,
