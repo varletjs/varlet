@@ -24,6 +24,7 @@ export default {
   '--date-picker-title-date-font-size': '34px',
   '--date-picker-title-date-font-weight': '500',
   '--date-picker-title-date-range-font-size': '20px',
+  '--date-picker-title-date-justify-content': 'normal',
   '--month-picker-padding': '0 12px',
   '--month-picker-item-width': '33%',
   '--month-picker-item-height': '56px',
