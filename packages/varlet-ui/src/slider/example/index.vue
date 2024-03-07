@@ -33,13 +33,13 @@ function handleChange(v) {
   <var-slider v-model="values.value" />
 
   <app-type>{{ t('stepSize') }}</app-type>
-  <var-slider v-model="values.value2" step="10" />
+  <var-slider v-model="values.value2" :step="10" />
 
   <app-type>{{ t('dualThumb') }}</app-type>
-  <var-slider v-model="values.value1" range @change="handleChange" label-visible="always" />
+  <var-slider v-model="values.value1" range @change="handleChange" />
 
   <app-type>{{ t('range') }}</app-type>
-  <var-slider v-model="values.value11" max="210" min="-50" label-visible="always" />
+  <var-slider v-model="values.value11" :max="210" :min="-50" label-visible="always" />
 
   <app-type>{{ t('disable') }}</app-type>
   <var-slider v-model="values.value3" disabled />

@@ -30,7 +30,7 @@ const value = ref(25)
 </script>
 
 <template>
-  <var-slider v-model="value" step="10" />
+  <var-slider v-model="value" :step="10" />
 </template>
 ```
 
@@ -64,7 +64,7 @@ const value = ref(0)
 </script>
 
 <template>
-  <var-slider v-model="value" max="210" min="-50" label-visible="always" />
+  <var-slider v-model="value" :max="210" :min="-50" label-visible="always" />
 </template>
 ```
 
@@ -108,7 +108,7 @@ const value = ref([7, 64])
 </script>
 
 <template>
-  <var-slider v-model="value" track-height="4" thumb-size="8" range />
+  <var-slider v-model="value" :track-height="4" :thumb-size="8" range />
 </template>
 ```
 

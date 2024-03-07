@@ -35,7 +35,7 @@ describe('test slider props', () => {
         step: NaN,
       }),
       template: `
-        <var-slider v-model="value" :step="step"/>`,
+        <var-slider v-model="value" :step="step" />`,
     })
 
     await wrapper.setData({ step: -1 })
@@ -46,7 +46,7 @@ describe('test slider props', () => {
     await trigger(el, 'touchstart', 0, 0)
     await trigger(document, 'touchmove', 50, 0)
     await trigger(document, 'touchend', 50, 0)
-
+    console.log(wrapper.vm.value)
     expect(wrapper.vm.value).not.toBe(0)
     expect(wrapper.vm.value % 3).toBe(0)
     mockRestore()

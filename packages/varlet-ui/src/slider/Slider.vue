@@ -24,7 +24,7 @@
         :tabindex="isDisabled ? undefined : '0'"
         @touchstart.stop="start($event, item.enumValue)"
         @focusin="handleFocus(item)"
-        @focusout="handleBlur"
+        @focusout="handleBlur(item)"
       >
         <slot name="button" :current-value="item.text">
           <div
@@ -45,10 +45,7 @@
               background: thumbsProps[item.enumValue].active ? thumbColor : undefined,
             }"
           >
-            <var-hover-overlay
-              :hovering="!isDisabled && item.hovering"
-              :focusing="!isDisabled && thumbsProps[item.enumValue].active"
-            />
+            <var-hover-overlay :hovering="!isDisabled && item.hovering" :focusing="!isDisabled && item.focusing" />
           </div>
           <div
             :class="
@@ -79,9 +76,9 @@ import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
 import { getLeft, toSizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
-import { isArray, isNumber, toNumber, getRect, preventDefault, call } from '@varlet/shared'
+import { isArray, isNumber, toNumber, getRect, preventDefault, call, hasOwn } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
-import { onSmartMounted, useEventListener } from '@varlet/use'
+import { onSmartMounted, onWindowResize, useEventListener } from '@varlet/use'
 import { type SliderProvider } from './provide'
 
 const { name, n, classes } = createNamespace('slider')
@@ -103,10 +100,13 @@ export default defineComponent({
     const isDisabled = computed(() => props.disabled || form?.disabled.value)
     const isReadonly = computed(() => props.readonly || form?.readonly.value)
     const isVertical = computed(() => props.direction === 'vertical')
+    const focusingFirst = ref(false)
+    const focusingSecond = ref(false)
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering: hoveringFirst, handleHovering: handleHoveringFirst } = useHoverOverlay()
     const { hovering: hoveringSecond, handleHovering: handleHoveringSecond } = useHoverOverlay()
+
     const thumbList = computed<ThumbsListProps[]>(() => {
       const { modelValue, range } = props
       let list: ThumbsListProps[] = []
@@ -117,15 +117,23 @@ export default defineComponent({
             value: getValue(modelValue[0]),
             enumValue: Thumbs.First,
             text: toPrecision(modelValue[0]),
-            hovering: unref(hoveringFirst),
+            hovering: hoveringFirst.value,
+            focusing: focusingFirst.value,
             handleHovering: handleHoveringFirst,
+            handleFocusing(value: boolean) {
+              focusingFirst.value = value
+            },
           },
           {
             value: getValue(modelValue[1]),
             enumValue: Thumbs.Second,
             text: toPrecision(modelValue[1]),
-            hovering: unref(hoveringSecond),
+            hovering: hoveringSecond.value,
+            focusing: focusingSecond.value,
             handleHovering: handleHoveringSecond,
+            handleFocusing(value: boolean) {
+              focusingSecond.value = value
+            },
           },
         ]
       } else if (isNumber(modelValue)) {
@@ -134,14 +142,19 @@ export default defineComponent({
             value: getValue(modelValue),
             enumValue: Thumbs.First,
             text: toPrecision(modelValue),
-            hovering: unref(hoveringFirst),
+            hovering: hoveringFirst.value,
+            focusing: focusingFirst.value,
             handleHovering: handleHoveringFirst,
+            handleFocusing(value: boolean) {
+              focusingFirst.value = value
+            },
           },
         ]
       }
 
       return list
     })
+
     const getFillStyle = computed<Record<string, string | undefined>>(() => {
       const { activeColor, range, modelValue } = props
 
@@ -166,6 +179,7 @@ export default defineComponent({
             background: activeColor,
           }
     })
+
     const thumbsProps = reactive<ThumbsProps>({
       [Thumbs.First]: getThumbProps(),
       [Thumbs.Second]: getThumbProps(),
@@ -182,21 +196,30 @@ export default defineComponent({
     call(bindForm, sliderProvider)
 
     watch([() => props.modelValue, () => props.step], ([modelValue, step]) => {
-      if (!stepValidator() || !valueValidator() || isScroll.value) return
+      if (!stepValidator() || !valueValidator() || isScroll.value) {
+        return
+      }
+
       setProps(modelValue as number | number[], toNumber(step))
     })
 
     watch(maxDistance, () => setProps())
 
     onSmartMounted(() => {
-      if (!stepValidator() || !valueValidator()) return
+      if (!stepValidator() || !valueValidator()) {
+        return
+      }
 
+      resizeMaxDistance()
+    })
+
+    onBeforeUnmount(removeDocumentEvents)
+    useEventListener(() => window, 'keydown', handleKeydown)
+    onWindowResize(resizeMaxDistance)
+
+    function resizeMaxDistance() {
       maxDistance.value = (sliderEl.value as HTMLElement)[isVertical.value ? 'offsetHeight' : 'offsetWidth']
-    })
-
-    onBeforeUnmount(() => {
-      removeDocumentEvents()
-    })
+    }
 
     function validate() {
       return v(props.rules, props.modelValue)
@@ -218,7 +241,9 @@ export default defineComponent({
     function getOffset(e: MouseEvent) {
       const currentTarget = e.currentTarget as HTMLElement
 
-      if (!currentTarget) return 0
+      if (!currentTarget) {
+        return 0
+      }
 
       if (!isVertical.value) {
         return e.clientX - getLeft(currentTarget)
@@ -237,8 +262,13 @@ export default defineComponent({
     }
 
     function showLabel(type: keyof ThumbsProps): boolean {
-      if (props.labelVisible === 'always') return true
-      if (props.labelVisible === 'never') return false
+      if (props.labelVisible === 'always') {
+        return true
+      }
+
+      if (props.labelVisible === 'never') {
+        return false
+      }
 
       return thumbsProps[type].active
     }
@@ -246,17 +276,31 @@ export default defineComponent({
     function getValue(value: number) {
       const { min, max } = props
 
-      if (value < toNumber(min)) return 0
-      if (value > toNumber(max)) return 100
+      if (value < toNumber(min)) {
+        return 0
+      }
+
+      if (value > toNumber(max)) {
+        return 100
+      }
 
       return ((value - toNumber(min)) / scope.value) * 100
     }
 
     function toPrecision(value: number) {
-      if (!isNumber(value)) return 0
+      if (!isNumber(value)) {
+        return 0
+      }
+
       let num = value
-      if (num < Number(props.min)) num = Number(props.min)
-      if (num > Number(props.max)) num = Number(props.max)
+
+      if (num < Number(props.min)) {
+        num = Number(props.min)
+      }
+
+      if (num > Number(props.max)) {
+        num = Number(props.max)
+      }
 
       const isInteger = parseInt(`${num}`, 10) === num
 
@@ -264,14 +308,15 @@ export default defineComponent({
     }
 
     function hover(value: boolean, item: ThumbsListProps) {
-      if (isDisabled.value) return
+      if (isDisabled.value) {
+        return
+      }
 
       item.handleHovering(value)
     }
 
     function emitChange(value: number | number[]) {
-      const { onChange } = props
-      call(onChange, value)
+      call(props.onChange, value)
       call(props['onUpdate:modelValue'], value)
       validateWithTrigger()
     }
@@ -285,6 +330,7 @@ export default defineComponent({
       const prevValue = thumbsProps[type].percentValue * stepNumber + toNumber(min)
 
       thumbsProps[type].percentValue = roundDistance
+
       if (range && isArray(modelValue)) {
         rangeValue = type === Thumbs.First ? [curValue, modelValue[1]] : [modelValue[0], curValue]
       }
@@ -296,7 +342,10 @@ export default defineComponent({
     }
 
     function getType(offset: number): keyof ThumbsProps {
-      if (!props.range) return Thumbs.First
+      if (!props.range) {
+        return Thumbs.First
+      }
+
       const thumb1Distance = thumbsProps[Thumbs.First].percentValue * unitWidth.value
       const thumb2Distance = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       const offsetToThumb1 = Math.abs(offset - thumb1Distance)
@@ -318,7 +367,8 @@ export default defineComponent({
     }
 
     function start(event: TouchEvent, type: keyof ThumbsProps) {
-      if (!maxDistance.value) maxDistance.value = (sliderEl.value as HTMLElement).offsetWidth
+      resizeMaxDistance()
+
       if (!isDisabled.value) {
         thumbsProps[type].active = true
       }
@@ -326,7 +376,10 @@ export default defineComponent({
       activeThumb = type
       addDocumentEvents()
 
-      if (isDisabled.value || isReadonly.value) return
+      if (isDisabled.value || isReadonly.value) {
+        return
+      }
+
       call(props.onStart)
       isScroll.value = true
       const { clientX, clientY } = event.touches[0]
@@ -336,15 +389,20 @@ export default defineComponent({
     function move(event: TouchEvent) {
       preventDefault(event)
 
-      if (isDisabled.value || isReadonly.value || !isScroll.value) return
+      if (isDisabled.value || isReadonly.value || !isScroll.value) {
+        return
+      }
 
       const { startPosition, currentOffset } = thumbsProps[activeThumb]
       const { clientX, clientY } = event.touches[0]
 
       let moveDistance = (isVertical.value ? startPosition - clientY : clientX - startPosition) + currentOffset
 
-      if (moveDistance <= 0) moveDistance = 0
-      else if (moveDistance >= maxDistance.value) moveDistance = maxDistance.value
+      if (moveDistance <= 0) {
+        moveDistance = 0
+      } else if (moveDistance >= maxDistance.value) {
+        moveDistance = maxDistance.value
+      }
 
       setPercent(moveDistance, activeThumb)
     }
@@ -353,10 +411,15 @@ export default defineComponent({
       removeDocumentEvents()
 
       const { range, modelValue, onEnd, step, min } = props
+
       if (!isDisabled.value) {
         thumbsProps[activeThumb].active = false
       }
-      if (isDisabled.value || isReadonly.value) return
+
+      if (isDisabled.value || isReadonly.value) {
+        return
+      }
+
       let rangeValue: Array<number> = []
 
       thumbsProps[activeThumb].currentOffset = thumbsProps[activeThumb].percentValue * unitWidth.value
@@ -383,31 +446,38 @@ export default defineComponent({
 
     function stepValidator() {
       const stepNumber = toNumber(props.step)
+
       if (isNaN(stepNumber)) {
         warn('Slider', 'type of prop "step" should be Number')
         return false
       }
+
       if (stepNumber < 0) {
         warn('Slider', '"step" should be > 0')
         return false
       }
+
       return true
     }
 
     function valueValidator() {
       const { range, modelValue } = props
+
       if (range && !isArray(modelValue)) {
         console.error('[Varlet] Slider: "modelValue" should be an Array')
         return false
       }
+
       if (!range && isArray(modelValue)) {
         console.error('[Varlet] Slider: "modelValue" should be a Number')
         return false
       }
+
       if (range && isArray(modelValue) && modelValue.length < 2) {
         console.error('[Varlet] Slider: "modelValue" should have two value')
         return false
       }
+
       return true
     }
 
@@ -415,8 +485,13 @@ export default defineComponent({
       const getPercent = (value: number) => {
         const { min, max } = props
 
-        if (value < toNumber(min)) return 0
-        if (value > toNumber(max)) return scope.value / step
+        if (value < toNumber(min)) {
+          return 0
+        }
+
+        if (value > toNumber(max)) {
+          return scope.value / step
+        }
 
         return (value - toNumber(min)) / step
       }
@@ -424,7 +499,6 @@ export default defineComponent({
       if (props.range && isArray(modelValue)) {
         thumbsProps[Thumbs.First].percentValue = getPercent(modelValue[0])
         thumbsProps[Thumbs.First].currentOffset = thumbsProps[Thumbs.First].percentValue * unitWidth.value
-
         thumbsProps[Thumbs.Second].percentValue = getPercent(modelValue[1])
         thumbsProps[Thumbs.Second].currentOffset = thumbsProps[Thumbs.Second].percentValue * unitWidth.value
       } else if (isNumber(modelValue)) {
@@ -440,15 +514,15 @@ export default defineComponent({
 
     function moveFocusingThumb(offset: 1 | -1, value: number | number[]) {
       const stepValue = Number(props.step)
+
       if (isArray(value)) {
-        const updatedFirstValue = value[0] + (activeThumb === Thumbs.First ? offset * stepValue : 0)
-        const updatedSecondValue = value[1] + (activeThumb === Thumbs.Second ? offset * stepValue : 0)
+        const updatedFirstValue = value[0] + (focusingFirst.value ? offset * stepValue : 0)
+        const updatedSecondValue = value[1] + (focusingSecond.value ? offset * stepValue : 0)
         return [updatedFirstValue, updatedSecondValue].map(toPrecision)
       }
+
       return toPrecision(value + offset * stepValue)
     }
-
-    useEventListener(() => window, 'keydown', handleKeydown)
 
     function handleKeydown(event: KeyboardEvent) {
       type ArrowKey = 'ArrowRight' | 'ArrowUp' | 'ArrowLeft' | 'ArrowDown'
@@ -460,31 +534,36 @@ export default defineComponent({
         ArrowDown: -1,
       }
 
-      const {key} = event
+      const { key } = event
 
-      if (!(Object.keys(keyToOffset).includes(key) && activeThumb && thumbsProps[activeThumb].active)) {
+      if (!hasOwn(keyToOffset, key) || isReadonly.value || isDisabled.value) {
+        return
+      }
+
+      if (props.range && !focusingFirst.value && !focusingSecond.value) {
+        return
+      }
+
+      if (!props.range && !focusingFirst.value) {
         return
       }
 
       preventDefault(event)
-
-      if (isReadonly.value || isDisabled.value) {
-        return
-      }
-
       const offset = keyToOffset[key as ArrowKey]
-
       const value = moveFocusingThumb(offset, props.modelValue)
       emitChange(value)
     }
 
     function handleFocus(item: ThumbsListProps) {
-      activeThumb = item.enumValue
-      thumbsProps[item.enumValue].active = true
+      if (isDisabled.value) {
+        return
+      }
+
+      item.handleFocusing(true)
     }
 
-    function handleBlur() {
-      thumbsProps[activeThumb].active = false
+    function handleBlur(item: ThumbsListProps) {
+      item.handleFocusing(false)
     }
 
     return {

@@ -23,7 +23,9 @@ export interface ThumbsListProps {
   enumValue: Thumbs
   text: number
   hovering: boolean
+  focusing: boolean
   handleHovering: (value: boolean) => void
+  handleFocusing: (value: boolean) => void
 }
 
 export type SliderLabel = 'always' | 'normal' | 'never'
