@@ -30,6 +30,7 @@ export interface TooltipProps extends BasicAttributes {
   teleport?: TeleportProps['to'] | false
   sameWidth?: boolean
   closeOnClickReference?: boolean
+  closeOnKeyEscape?: boolean
   onOpen?: ListenerProp<() => void>
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
