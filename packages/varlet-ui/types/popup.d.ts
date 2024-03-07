@@ -13,6 +13,7 @@ export interface PopupProps extends BasicAttributes {
   overlayStyle?: Record<string, any>
   lockScroll?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   defaultStyle?: boolean
   safeArea?: boolean
   safeAreaTop?: boolean
@@ -22,6 +23,7 @@ export interface PopupProps extends BasicAttributes {
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
   onClickOverlay?: ListenerProp<() => void>
+  onKeyEscape?: ListenerProp<() => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 

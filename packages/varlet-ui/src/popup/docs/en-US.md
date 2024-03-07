@@ -200,6 +200,7 @@ const event = ref(false)
 | `transition` | Transition animation name                                                                                     | _string_ | `-` |
 | `lock-scroll` | Whether to disable scrolling penetration, scrolling the Popup when disabled will not cause the body to scroll | _boolean_ | `true` |
 | `close-on-click-overlay` | Whether to click the overlay to close the Popup                                                               | _boolean_ | `true` |
+| `close-on-key-escape` | Whether to support keyboard ESC to close the popup | _boolean_ | `true`  |
 | `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to'] \| false_ | `body` |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `safe-area-top`          | Whether to enable top safety zone adaptation	                                                                 | _boolean_             | `false`  |
@@ -213,6 +214,7 @@ const event = ref(false)
 | `close` | Triggered when the Popup is close | `-` |
 | `closed` | Triggered when the Popup close-animation ends | `-` |
 | `click-overlay` | Triggered when you click on overlay | `-` |
+| `key-escape` | Triggered when click keyboard ESC  | `-` |
 
 ### Slots
 
