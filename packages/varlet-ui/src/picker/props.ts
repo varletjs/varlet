@@ -65,6 +65,7 @@ export const props = {
     'show',
     'onUpdate:show',
     'closeOnClickOverlay',
+    'closeOnKeyEscape',
     'teleport',
     'safeArea',
     'onOpen',
@@ -73,8 +74,6 @@ export const props = {
     'onClosed',
     'onClickOverlay',
     'onRouteChange',
-    // internal for esc
     'onKeyEscape',
-    'closeOnKeyEscape',
   ]),
 }

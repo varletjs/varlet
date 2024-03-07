@@ -23,6 +23,7 @@ interface PickerOptions {
   cancelButtonTextColor?: string
   safeArea?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   teleport?: TeleportProps['to']
   dynamic?: boolean
   onClickOverlay?: () => void
@@ -33,10 +34,7 @@ interface PickerOptions {
   onChange?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
   onConfirm?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
   onCancel?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
-
-  // internal for esc
   onKeyEscape?: () => void
-  closeOnKeyEscape?: boolean
 }
 
 type PickerResolvedState = 'confirm' | 'cancel' | 'close'
