@@ -24,6 +24,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  closeOnKeyEscape: {
+    type: Boolean,
+    default: true,
+  },
   defaultStyle: {
     type: Boolean,
     default: true,
@@ -38,14 +42,9 @@ export const props = {
   onOpened: defineListenerProp<() => void>(),
   onClose: defineListenerProp<() => void>(),
   onClosed: defineListenerProp<() => void>(),
+  onKeyEscape: defineListenerProp<() => void>(),
   onClickOverlay: defineListenerProp<() => void>(),
   'onUpdate:show': defineListenerProp<(show: boolean) => void>(),
   // internal for Dialog
   onRouteChange: defineListenerProp<() => void>(),
-  // internal for esc
-  onKeyEscape: defineListenerProp<() => void>(),
-  closeOnKeyEscape: {
-    type: Boolean,
-    default: true,
-  },
 }
