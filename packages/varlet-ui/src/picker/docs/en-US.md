@@ -470,8 +470,8 @@ function handleChange(values, indexes) {
 | `cancelButtonText`       | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm button text color | _string_ | `-` |
 | `cancelButtonTextColor`  | Cancel button text color | _string_ | `-` |
-| `closeOnClickOverlay`    | Whether to click the overlay to close the picker       | _boolean_ | 
-| `closeOnkeyEscape` | Whether to support keyboard ESC to close the picker | _boolean_ | `true`  |`true`       |
+| `closeOnClickOverlay`    | Whether to click the overlay to close the picker  | _boolean_ |  `true`  |
+| `closeOnkeyEscape`       | Whether to support keyboard ESC to close the picker | _boolean_ |`true`  |
 | `safeArea`               | Whether to enable bottom safety zone adaptation      | _boolean_             | `false`  |
 | `onClickOverlay`         | Click overlay callback  | _() => void_   | `-`  |
 | `onOpen`                 | Popup open callback | _() => void_ | `-` |
