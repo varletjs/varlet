@@ -451,6 +451,7 @@ function handleChange(values, indexes) {
 | `cancel-button-text` | 取消按钮文字 | _string_ | `取消` |
 | `confirm-button-text-color` | 确认按钮文字颜色 | _string_ | `-` |
 | `cancel-button-text-color` | 取消按钮文字颜色 | _string_ | `-` |
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭选择器 | _boolean_ | `true` |
 
 ### Picker Options
 
@@ -470,6 +471,7 @@ function handleChange(values, indexes) {
 | `confirmButtonTextColor` | 确认按钮文字颜色 | _string_ | `-` |
 | `cancelButtonTextColor`  | 取消按钮文字颜色 | _string_ | `-` |
 | `closeOnClickOverlay`    | 是否点击遮罩层关闭弹出层 | _boolean_ | `true` |
+| `closeOnKeyEscape`       | 是否支持键盘 ESC 关闭选择器 | _boolean_ | `true` |
 | `safeArea`               | 是否开启底部安全区适配      | _boolean_             | `false`  |
 | `onClickOverlay`         | 遮罩层点击回调 | _() => void_ | `-` |
 | `onOpen`                 | 弹出层开启回调 | _() => void_ | `-` |
@@ -479,6 +481,7 @@ function handleChange(values, indexes) {
 | `onChange`               | 选择内容变化时回调 | _(values: (string \| number)[], indexes: number[], options: PickerColumnOption[]) => void_ | `() => void` |
 | `onConfirm`              | 点击确认按钮时触发 | _(values: (string \| number)[], indexes: number[], options: PickerColumnOption[]) => void_ | `() => void` |
 | `onCancel`               | 点击取消按钮时触发 | _(values: (string \| number)[], indexes: number[], options: PickerColumnOption[]) => void_ | `() => void` |
+| `onKeyEscape`            | 点击键盘 ESC 时触发 | _() => void_ | `-` |
 
 ### PickerColumnOption
 
@@ -504,6 +507,7 @@ function handleChange(values, indexes) {
 | `change` | 选择内容变化时触发 | `values: (string \| number)[]` 选择的值列表 <br> `indexes: number[]` 选择的下标列表 <br> `options: PickerColumnOption[]` 选择的选项对象列表 |
 | `cancel` | 点击取消按钮时触发 | `values: (string \| number)[]` 选择的值列表 <br> `indexes: number[]` 选择的下标列表 <br> `options: PickerColumnOption[]` 选择的选项对象列表 |
 | `confirm` | 点击确认按钮时触发 | `values: (string \| number)[]` 选择的值列表 <br> `indexes: number[]` 选择的下标列表 <br> `options: PickerColumnOption[]` 选择的选项对象列表 |
+| `key-escape` | 点击键盘 ESC 时触发 | `-` |
 
 ### 插槽
 

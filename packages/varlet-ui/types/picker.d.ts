@@ -28,9 +28,11 @@ export interface PickerProps {
   cancelButtonText?: string
   confirmButtonTextColor?: string
   cancelButtonTextColor?: string
+  closeOnKeyEscape?: boolean
   onChange?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
   onConfirm?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
   onCancel?: ListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>
+  onKeyEscape?: ListenerProp<() => void>
   'onUpdate:modelValue'?: ListenerProp<(values: (string | number)[]) => void>
 }
 
@@ -74,6 +76,7 @@ export interface PickerOptions {
   cancelButtonTextColor?: string
   safeArea?: boolean
   closeOnClickOverlay?: boolean
+  closeOnKeyEscape?: boolean
   onClickOverlay?: () => void
   onOpen?: () => void
   onOpened?: () => void
@@ -82,6 +85,7 @@ export interface PickerOptions {
   onChange?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
   onConfirm?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
   onCancel?: (values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void
+  onKeyEscape?: () => void
 }
 
 export interface IPicker {
