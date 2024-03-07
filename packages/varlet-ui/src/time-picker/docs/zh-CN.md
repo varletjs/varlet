@@ -174,6 +174,7 @@ const date = ref('17:36:22')
 | `--time-picker-title-time-padding` | `0` |
 | `--time-picker-title-time-background` | `transparent` |
 | `--time-picker-title-time-active-background` | `transparent` |
+| `--time-picker-title-time-container-justify-content` | `flex-end` |
 | `--time-picker-title-ampm-button-active-background` | `transparent` |
 | `--time-picker-title-ampm-margin-left` | `10px` |
 | `--time-picker-title-ampm-border-radius` | `0` |

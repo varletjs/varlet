@@ -1385,6 +1385,8 @@ export interface StyleVars {
   timePickerTitleTimeBackground?: string
   '--time-picker-title-time-active-background'?: string
   timePickerTitleTimeActiveBackground?: string
+  '--time-picker-title-time-container-justify-content'?: string
+  timePickerTitleTimeContainerJustifyContent?: string
   '--time-picker-title-ampm-button-active-background'?: string
   timePickerTitleAmpmButtonActiveBackground?: string
   '--time-picker-title-ampm-margin-left'?: string
