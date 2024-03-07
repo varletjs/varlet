@@ -53,4 +53,5 @@ export default {
   '--time-picker-inner-top': '36px',
   '--time-picker-inner-bottom': '36px',
   '--time-picker-body-height': '288px',
+  '--time-picker-title-time-container-justify-content': 'flex-end',
 }
