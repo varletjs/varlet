@@ -21,7 +21,10 @@
         :class="n(`${direction}-thumb`)"
         :key="item.enumValue"
         :style="thumbStyle(item)"
+        :tabindex="isDisabled ? undefined : '0'"
         @touchstart.stop="start($event, item.enumValue)"
+        @focusin="handleFocus(item)"
+        @focusout="handleBlur"
       >
         <slot name="button" :current-value="item.text">
           <div
@@ -42,7 +45,10 @@
               background: thumbsProps[item.enumValue].active ? thumbColor : undefined,
             }"
           >
-            <var-hover-overlay :hovering="item.hovering" />
+            <var-hover-overlay
+              :hovering="!isDisabled && item.hovering"
+              :focusing="!isDisabled && thumbsProps[item.enumValue].active"
+            />
           </div>
           <div
             :class="
@@ -75,7 +81,7 @@ import { getLeft, toSizeUnit } from '../utils/elements'
 import { warn } from '../utils/logger'
 import { isArray, isNumber, toNumber, getRect, preventDefault, call } from '@varlet/shared'
 import { props, Thumbs, type ThumbProps, type ThumbsProps, type ThumbsListProps } from './props'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, useEventListener } from '@varlet/use'
 import { type SliderProvider } from './provide'
 
 const { name, n, classes } = createNamespace('slider')
@@ -263,6 +269,13 @@ export default defineComponent({
       item.handleHovering(value)
     }
 
+    function emitChange(value: number | number[]) {
+      const { onChange } = props
+      call(onChange, value)
+      call(props['onUpdate:modelValue'], value)
+      validateWithTrigger()
+    }
+
     function setPercent(moveDistance: number, type: keyof ThumbsProps) {
       let rangeValue: Array<number> = []
       const { step, range, modelValue, onChange, min } = props
@@ -278,9 +291,7 @@ export default defineComponent({
 
       if (prevValue !== curValue) {
         const value = range ? rangeValue.map((value) => toPrecision(value)) : toPrecision(curValue)
-        call(onChange, value)
-        call(props['onUpdate:modelValue'], value)
-        validateWithTrigger()
+        emitChange(value)
       }
     }
 
@@ -427,6 +438,55 @@ export default defineComponent({
       resetValidation()
     }
 
+    function moveFocusingThumb(offset: 1 | -1, value: number | number[]) {
+      const stepValue = Number(props.step)
+      if (isArray(value)) {
+        const updatedFirstValue = value[0] + (activeThumb === Thumbs.First ? offset * stepValue : 0)
+        const updatedSecondValue = value[1] + (activeThumb === Thumbs.Second ? offset * stepValue : 0)
+        return [updatedFirstValue, updatedSecondValue].map(toPrecision)
+      }
+      return toPrecision(value + offset * stepValue)
+    }
+
+    useEventListener(() => window, 'keydown', handleKeydown)
+
+    function handleKeydown(event: KeyboardEvent) {
+      type ArrowKey = 'ArrowRight' | 'ArrowUp' | 'ArrowLeft' | 'ArrowDown'
+
+      const keyToOffset: Record<ArrowKey, 1 | -1> = {
+        ArrowRight: 1,
+        ArrowUp: 1,
+        ArrowLeft: -1,
+        ArrowDown: -1,
+      }
+
+      const {key} = event
+
+      if (!(Object.keys(keyToOffset).includes(key) && activeThumb && thumbsProps[activeThumb].active)) {
+        return
+      }
+
+      preventDefault(event)
+
+      if (isReadonly.value || isDisabled.value) {
+        return
+      }
+
+      const offset = keyToOffset[key as ArrowKey]
+
+      const value = moveFocusingThumb(offset, props.modelValue)
+      emitChange(value)
+    }
+
+    function handleFocus(item: ThumbsListProps) {
+      activeThumb = item.enumValue
+      thumbsProps[item.enumValue].active = true
+    }
+
+    function handleBlur() {
+      thumbsProps[activeThumb].active = false
+    }
+
     return {
       Thumbs,
       sliderEl,
@@ -436,6 +496,8 @@ export default defineComponent({
       errorMessage,
       thumbsProps,
       thumbList,
+      handleFocus,
+      handleBlur,
       n,
       classes,
       thumbStyle,

@@ -687,7 +687,7 @@ exports[`test form with slider 2`] = `
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
         <div class="var-slider__horizontal-track-fill" style="top: 0px; width: 5%; left: 0%;"></div>
       </div>
-      <div class="var-slider__horizontal-thumb" style="left: 5%;">
+      <div class="var-slider__horizontal-thumb" style="left: 5%;" tabindex="0">
         <div class="var-slider__horizontal-thumb-block"></div>
         <div class="var-slider__horizontal-thumb-ripple">
           <div class="var-hover-overlay"></div>
@@ -721,7 +721,7 @@ exports[`test form with slider 3`] = `
         <div class="var-slider__horizontal-track-background" style="width: 100%;"></div>
         <div class="var-slider__horizontal-track-fill" style="top: 0px; width: 0%; left: 0%;"></div>
       </div>
-      <div class="var-slider__horizontal-thumb" style="left: 0%;">
+      <div class="var-slider__horizontal-thumb" style="left: 0%;" tabindex="0">
         <div class="var-slider__horizontal-thumb-block"></div>
         <div class="var-slider__horizontal-thumb-ripple">
           <div class="var-hover-overlay"></div>
