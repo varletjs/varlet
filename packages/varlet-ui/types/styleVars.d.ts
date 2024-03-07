@@ -481,6 +481,8 @@ export interface StyleVars {
   datePickerTitleDateFontWeight?: string
   '--date-picker-title-date-range-font-size'?: string
   datePickerTitleDateRangeFontSize?: string
+  '--date-picker-title-date-justify-content'?: string
+  datePickerTitleDateJustifyContent?: string
   '--date-picker-body-padding'?: string
   datePickerBodyPadding?: string
   '--date-picker-body-background-color'?: string
