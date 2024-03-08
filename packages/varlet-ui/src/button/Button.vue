@@ -35,7 +35,7 @@
       var-button-cover
       :color="loadingColor"
       :type="loadingType"
-      :size="loadingSize"
+      :size="loadingSize || states.size"
       :radius="loadingRadius"
       v-if="loading || pending"
     />
