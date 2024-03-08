@@ -33,7 +33,10 @@ export const props = {
   },
   loadingRadius: [Number, String],
   loadingType: pickProps(loadingProps, 'type'),
-  loadingSize: pickProps(loadingProps, 'size'),
+  loadingSize: {
+    ...pickProps(loadingProps, 'size'),
+    default: undefined,
+  },
   loadingColor: {
     ...pickProps(loadingProps, 'color'),
     default: 'currentColor',
