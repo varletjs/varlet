@@ -42,6 +42,7 @@ export interface MenuProps extends BasicAttributes {
   onOpened?: ListenerProp<() => void>
   onClose?: ListenerProp<() => void>
   onClosed?: ListenerProp<() => void>
+  onClickOutside?: ListenerProp<(event: Event) => void>
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
