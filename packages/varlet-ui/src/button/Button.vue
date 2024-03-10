@@ -59,7 +59,7 @@ import { computed, defineComponent, ref } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { useButtonGroup } from './provide'
-import { isArray, call } from '@varlet/shared'
+import { call, normalizeToArray } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('button')
 
@@ -80,8 +80,8 @@ export default defineComponent({
       if (!buttonGroup) {
         return {
           elevation: formatElevation(props.elevation, 2),
-          type: props.type != null ? props.type : 'default',
-          size: props.size != null ? props.size : 'normal',
+          type: props.type ?? 'default',
+          size: props.size ?? 'normal',
           color: props.color,
           text: props.text,
           textColor: props.textColor,
@@ -94,10 +94,10 @@ export default defineComponent({
 
       return {
         elevation: '',
-        type: props.type != null ? props.type : type.value,
-        size: props.size != null ? props.size : size.value,
-        color: props.color != null ? props.color : color.value,
-        textColor: props.textColor != null ? props.textColor : textColor.value,
+        type: props.type ?? type.value,
+        size: props.size ?? size.value,
+        color: props.color ?? color.value,
+        textColor: props.textColor ?? textColor.value,
         text: mode.value === 'text' || mode.value === 'outline',
         outline: mode.value === 'outline',
         iconContainer: mode.value === 'icon-container',
@@ -108,9 +108,7 @@ export default defineComponent({
       if (props.autoLoading) {
         pending.value = true
 
-        result = isArray(result) ? result : [result]
-
-        Promise.all(result)
+        Promise.all(normalizeToArray(result))
           .then(() => {
             pending.value = false
           })
