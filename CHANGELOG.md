@@ -1,3 +1,46 @@
+# [3.1.0](https://github.com/varletjs/varlet/compare/v3.0.7...v3.1.0) (2024-03-10)
+
+
+### Bug Fixes
+
+* **dialog:** hidden corners when border radius isn't empty ([#1509](https://github.com/varletjs/varlet/issues/1509)) ([61e4707](https://github.com/varletjs/varlet/commit/61e4707de55b44e069b6cb724eabf699d38f71bd))
+* **hover:**  don't update style when no element for nuxt ([#1516](https://github.com/varletjs/varlet/issues/1516)) ([c31a687](https://github.com/varletjs/varlet/commit/c31a6871fb7c968c793330e16a6ed9997cbc1290))
+* **hover:** don't clear style when element is empty for nuxt ([#1512](https://github.com/varletjs/varlet/issues/1512)) ([cac34b5](https://github.com/varletjs/varlet/commit/cac34b5b5cca7cf5dd079c4f8e0157486681e122))
+* **input:** the clear event cannot be invoked when using the clear-ic… ([#1491](https://github.com/varletjs/varlet/issues/1491)) ([42b8bb7](https://github.com/varletjs/varlet/commit/42b8bb7a531d81a9774c01e3fc62b2e8dd2ef875))
+* **overlay:** fix overlazy z-index ([16d906b](https://github.com/varletjs/varlet/commit/16d906b89c74f1e13f5b225bfdcc47ea11878a81))
+* **paper:** update css var default value of  paper  ([#1505](https://github.com/varletjs/varlet/issues/1505)) ([448c4b8](https://github.com/varletjs/varlet/commit/448c4b85d2ae8df17d9062e49e49f20b3345f36e))
+* **ripple:** touch event detection error ([1e4da4a](https://github.com/varletjs/varlet/commit/1e4da4a09b6bcd3990e6bcace901170a418c4f37))
+* **select:** the clear event cannot be invoked when using the clear-i… ([#1506](https://github.com/varletjs/varlet/issues/1506)) ([bd46cad](https://github.com/varletjs/varlet/commit/bd46cad6d6da375572232cd7314170a6a471e85e))
+* **switch:** disable ripple when in readonly state ([2a4aff7](https://github.com/varletjs/varlet/commit/2a4aff7820ee58347d72eea47212180354e97c3d))
+* **ui/button:** button loading icon size follows button ([#1524](https://github.com/varletjs/varlet/issues/1524)) ([2b526d3](https://github.com/varletjs/varlet/commit/2b526d31d0a0ad1160669928797b1101c967c0d6))
+
+
+### Features
+
+* **action-sheet:** support hover effect ([18f28c2](https://github.com/varletjs/varlet/commit/18f28c251645e6dde43e742fba955505e5d7dbaa))
+* **action-sheet:** support keyboard escape ([615cb73](https://github.com/varletjs/varlet/commit/615cb737bb80d3dabe9f0524f16b6732667a5200))
+* **checkbox:** support keyboard navigation ([#1484](https://github.com/varletjs/varlet/issues/1484)) ([dc7c91f](https://github.com/varletjs/varlet/commit/dc7c91fc55f7825da5a21c60373f6ae6a3bee0ef))
+* **cli/icons:** support build icons watch mode ([065d0e5](https://github.com/varletjs/varlet/commit/065d0e5e6946ac57063711058f9778e16299b7df))
+* **image-preview:** support keyboard escape ([92a7b17](https://github.com/varletjs/varlet/commit/92a7b17eb35f10ce0595a29df6472fe30c93065f))
+* **link:** support --link-focus-opacity ([b52392f](https://github.com/varletjs/varlet/commit/b52392f90b8f33d9dba8528f47147e8436b35411))
+* **link:** support choose by keyboard ([#1489](https://github.com/varletjs/varlet/issues/1489)) ([f6c3d6d](https://github.com/varletjs/varlet/commit/f6c3d6d9e4f6dc5af8923493e1ffb81e950ef6aa))
+* **menu-select:** support keyboard navigation ([68b23dc](https://github.com/varletjs/varlet/commit/68b23dca597f0296bc520f65f07cdc0e9c6f70c5))
+* **menu:** support escape close ([c0734df](https://github.com/varletjs/varlet/commit/c0734df73f3237d2c90a24dbbb50fa68a89dd5e6))
+* **overlay:** support keyboard escape close ([a12f978](https://github.com/varletjs/varlet/commit/a12f978bbfcb3055f92d66bb463250c8a58c04a4))
+* **pager:** support --paper-border-radius ([#1500](https://github.com/varletjs/varlet/issues/1500)) ([1cc94cd](https://github.com/varletjs/varlet/commit/1cc94cdefa6597188902a76ba3127030b635e14b))
+* **picker:** support keyboard escape for functional ([4faa3a4](https://github.com/varletjs/varlet/commit/4faa3a4c759d3eb37e6b7854643d2de7134d6b5c))
+* **popup, dialog:** support keyboard close ([ccae094](https://github.com/varletjs/varlet/commit/ccae09443b0be5427450e1692c0af4d039747556))
+* **radio:** support keyboard navigation ([0c17e74](https://github.com/varletjs/varlet/commit/0c17e742f3fc31e652d90f19c6235d2120098296))
+* **select:** support keyboard navigation and new allow icon slots data menuOpen ([ee277ce](https://github.com/varletjs/varlet/commit/ee277ce91e0e245c8195ee403af2aaa154d66192))
+* **slider:** support adjust value by keyboard ([#1493](https://github.com/varletjs/varlet/issues/1493)) ([#1508](https://github.com/varletjs/varlet/issues/1508)) ([7f5a34e](https://github.com/varletjs/varlet/commit/7f5a34e999f11cbb1765b18abbb81832fcd6460d))
+* **switch:** support switch by keyboard ([#1490](https://github.com/varletjs/varlet/issues/1490)) ([b58d30f](https://github.com/varletjs/varlet/commit/b58d30fe685ae2056bb4198f25de85b75a1f2721))
+* **tab:** support --tab-active-font-size and --tab-active-font-weight ([#1501](https://github.com/varletjs/varlet/issues/1501)) ([dfb66f5](https://github.com/varletjs/varlet/commit/dfb66f5e8027eaf682bece40fb79adc3d640014a))
+* **ui/datePicker:** support costom title-date "justify-content" attribute ([#1523](https://github.com/varletjs/varlet/issues/1523)) ([5f3980e](https://github.com/varletjs/varlet/commit/5f3980e7a25987870ae5e4abc99ab59fb3cb7c11))
+* **ui/timePicker:** support costom time container "justify-content" attribute ([#1522](https://github.com/varletjs/varlet/issues/1522)) ([0cac862](https://github.com/varletjs/varlet/commit/0cac86258945a529857164f73b8276edf08e4ad2))
+* **uploader:** support chooseFile by keyboard ([4120efc](https://github.com/varletjs/varlet/commit/4120efc1b54e56edb6839e8bc2f08438ced2a25e))
+
+
+
 ## [3.0.7](https://github.com/varletjs/varlet/compare/v3.0.6...v3.0.7) (2024-03-03)
 
 
