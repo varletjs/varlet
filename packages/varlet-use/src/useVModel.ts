@@ -16,7 +16,7 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   const { passive = true, eventName, defaultValue, emit } = options
   const event = eventName ?? `onUpdate:${key.toString()}`
 
-  const getValue = () => (props[key] != null ? props[key] : defaultValue)!
+  const getValue = () => (props[key] ?? defaultValue)!
 
   if (!passive) {
     return computed<P[K]>({

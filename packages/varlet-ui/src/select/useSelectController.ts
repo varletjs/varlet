@@ -52,11 +52,7 @@ export function useSelectController(options: UseSelectControllerOptions) {
   }
 
   function findValueOrLabel({ value, label }: OptionProvider) {
-    if (value.value != null) {
-      return value.value
-    }
-
-    return label.value
+    return value.value ?? label.value
   }
 
   function getSelectedValue(option: OptionProvider) {

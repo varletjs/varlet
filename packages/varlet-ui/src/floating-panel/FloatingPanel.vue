@@ -74,7 +74,7 @@ export default defineComponent({
     )
 
     function matchAnchor(anchor: number | undefined | null) {
-      setVisibleHeight(anchor != null ? anchor : minAnchor.value)
+      setVisibleHeight(anchor ?? minAnchor.value)
     }
 
     function handleTouchstart(event: TouchEvent) {
