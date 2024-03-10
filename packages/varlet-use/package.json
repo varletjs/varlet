@@ -43,7 +43,7 @@
     "@types/node": "^18.7.18",
     "tsup": "7.2.0",
     "typescript": "^5.1.5",
-    "vue": "3.4.15"
+    "vue": "3.4.21"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
