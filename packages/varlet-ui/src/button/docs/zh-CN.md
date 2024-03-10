@@ -326,7 +326,7 @@ function handleAutoLoadingClick() {
 | `loading`        | 加载状态                                                            | _boolean_ | `false`        |
 | `loading-radius` | loading 的半径，只作用于 `loading-type="circle"` 时                      | _string \| number_        | `-` |
 | `loading-type`   | loading 的类型，可选值为 `circle` `wave` `cube` `rect` `disappear`      | _string_ | `circle`       |
-| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_ | `normal`       |
+| `loading-size`   | loading 的尺寸，可选值为 `large` `normal` `small` `mini`                | _string_ | `-`       |
 | `loading-color`  | loading 的颜色                                                     | _string_ | `currentColor` |
 | `auto-loading`   | 自动 loading 模式，方便处理异步任务                                          | _boolean_ | `false`        |
 | `round`          | 是否是圆形按钮                                                         | _boolean_ | `false`        |

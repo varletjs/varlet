@@ -306,7 +306,7 @@ function handleAutoLoadingClick() {
 | `loading`        | Loading status                                                                          | _boolean_ | `false`        |
 | `loading-radius` | Loading radius, Can only be used when `loading-type="circle"`                           | _string  \| number_        | `-`      |
 | `loading-type`   | Loading type, Can be set to `circle` `wave` `cube` `rect` `disappear`                   | _string_  | `circle`       |
-| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                             | _string_  | `normal`       |
+| `loading-size`   | Loading size, Can be set to `large` `normal` `small` `mini`                             | _string_  | `-`       |
 | `loading-color`  | Loading color                                                                           | _string_  | `currentColor` |
 | `auto-loading`   | Autoload mode for easy handling of asynchronous tasks                                   | _boolean_ | `false`        |
 | `round`          | Whether to be round button                                                              | _boolean_ | `false`        |
