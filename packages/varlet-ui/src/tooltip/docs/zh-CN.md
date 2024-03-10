@@ -212,12 +212,12 @@ import { Snackbar } from '@varlet/ui'
 | `left-end` | 左侧下方位置 |
 
 ### 方法
+
 | 方法名 | 说明 | 参数 | 返回值 |
 | --- | --- | --- | --- |
 | `open` | 打开 `Tooltip` | `-` | `-` |
 | `close` | 关闭 `Tooltip` | `-` | `-` |
 | `resize` | `Tooltip` 默认插槽元素产生位置大小变化时可以调用此方法进行重绘 | `-` | `-` |
-| `click-outside` | 点击菜单外部时触发 | `event: Event` |
 
 ### 事件
 
@@ -227,6 +227,7 @@ import { Snackbar } from '@varlet/ui'
 | `opened` | 打开 `Tooltip` 动画结束时触发 | `-` |
 | `close` | 关闭 `Tooltip` 时触发 | `-` |
 | `closed` | 关闭 `Tooltip` 动画结束时触发 | `-` |
+| `click-outside` | 点击菜单外部时触发 | `event: Event` |
 
 ### 插槽
 

@@ -226,7 +226,6 @@ In the `disabled` state, the tooltip will not be opened.
 | `opened` | Triggered when the open `Tooltip` animation ends    | `-` |
 | `close` | Triggered when the `Tooltip` is closed              | `-` |
 | `closed` | Triggered when the closing `Tooltip` animation ends | `-` |
-| `click-outside` | Triggered when clicking outside the menu | `event: Event` |
 
 ### Slots
 
@@ -234,6 +233,7 @@ In the `disabled` state, the tooltip will not be opened.
 | --- |----------------------| --- |
 | `default` | Tooltip trigger element | `-` |
 | `content` | Tooltip content         | `-` |
+| `click-outside` | Triggered when clicking outside the menu | `event: Event` |
 
 ### Style Variables
 
