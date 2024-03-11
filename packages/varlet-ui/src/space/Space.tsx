@@ -40,7 +40,11 @@ export default defineComponent({
           lastIndex,
         })
 
-        return <div style={{ margin }}>{child}</div>
+        return (
+          <div class={classes([direction === 'column', n('--full')])} style={{ margin }}>
+            {child}
+          </div>
+        )
       })
 
       return (
