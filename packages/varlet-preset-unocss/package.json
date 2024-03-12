@@ -1,5 +1,5 @@
 {
-  "name": "@varlet/shared",
+  "name": "@varlet/preset-unocss",
   "version": "3.1.2",
   "type": "module",
   "main": "lib/index.cjs",
@@ -14,10 +14,10 @@
     },
     "./*": "./*"
   },
-  "description": "shared utils of varlet",
+  "description": "unocss preset of varlet",
   "keywords": [
-    "shared",
-    "utils",
+    "unocss",
+    "preset",
     "varlet"
   ],
   "author": "haoziqaq <357229046@qq.com>",
@@ -36,6 +36,9 @@
   "scripts": {
     "dev": "tsup src/index.ts --format esm --out-dir=lib --watch --dts",
     "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean"
+  },
+  "peerDependencies": {
+    "unocss":"^0.58.5"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",

@@ -5,6 +5,7 @@
   "main": "lib/index.cjs",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
       "import": "./lib/index.js",

@@ -26,6 +26,8 @@ export const buildVitePlugins = createTask(resolve(CWD, './packages/varlet-vite-
 
 export const buildShared = createTask(resolve(CWD, './packages/varlet-shared'))
 
+export const buildPresetUnocss = createTask(resolve(CWD, './packages/varlet-preset-unocss'))
+
 export const buildImportResolver = createTask(resolve(CWD, './packages/varlet-import-resolver'))
 
 export const buildUse = createTask(resolve(CWD, './packages/varlet-use'))
@@ -40,9 +42,9 @@ export async function runTaskQueue() {
   const start = performance.now()
 
   await runTask('shared & touch-emulator', () => Promise.all([buildShared(), buildToucheEmulator()]))
-  await runTask('import-resolver', buildImportResolver)
-  await runTask('use', buildUse)
-  await runTask('vite-plugins', buildVitePlugins)
+  await runTask('preset-unocss & import-resolver & use & vite-plugins', () =>
+    Promise.all([buildPresetUnocss(), buildImportResolver(), buildUse(), buildVitePlugins()])
+  )
   await runTask('cli', buildCli)
   await runTask('icons', buildIcons)
   await runTask('ui', buildUI)
