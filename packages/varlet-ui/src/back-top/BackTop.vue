@@ -48,17 +48,22 @@ export default defineComponent({
     let scroller: HTMLElement | Window
 
     const handleScroll = throttle(() => {
-      show.value = getScrollTop(scroller) >= toPxNum(props.visibilityHeight)
+      setBackTopVisibility()
     }, 200)
 
     onMounted(() => {
       setScroller()
       addScrollerEventListener()
+      setBackTopVisibility()
       disabled.value = false
     })
 
     onActivated(addScrollerEventListener)
     onSmartUnmounted(removeScrollerEventListener)
+
+    function setBackTopVisibility() {
+      show.value = getScrollTop(scroller) >= toPxNum(props.visibilityHeight)
+    }
 
     function handleClick(event: Event) {
       call(props.onClick, event)
