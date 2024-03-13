@@ -83,7 +83,7 @@ export default defineComponent({
 
       let scrollerTop = 0
 
-      if (scroller !== window) {
+      if (scroller && scroller !== window) {
         const { top } = getRect(scroller as HTMLElement)
         scrollerTop = top
       }
