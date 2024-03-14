@@ -100,6 +100,12 @@ describe('test countdown methods', () => {
   }
 
   test('test countdown start method', async () => {
+    let callCount = 0
+    vi.spyOn(performance, 'now').mockImplementation(() => {
+      callCount += 1
+      return 1000 + 500 * callCount
+    })
+
     const wrapper = mount(Wrapper)
     await delay(0)
     const text = wrapper.text()
@@ -131,6 +137,8 @@ describe('test countdown methods', () => {
   })
 
   test('test countdown reset method', async () => {
+    vi.spyOn(performance, 'now').mockReturnValue(1000)
+
     const wrapper = mount(Wrapper)
     await delay(0)
     const text = wrapper.text()
