@@ -323,7 +323,7 @@ export default defineComponent({
 
     function setPercent(moveDistance: number, type: keyof ThumbsProps) {
       let rangeValue: Array<number> = []
-      const { step, range, modelValue, onChange, min } = props
+      const { step, range, modelValue, min } = props
       const stepNumber = toNumber(step)
       const roundDistance = Math.round(moveDistance / unitWidth.value)
       const curValue = roundDistance * stepNumber + toNumber(min)
