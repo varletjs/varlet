@@ -1,3 +1,19 @@
+## [3.1.3](https://github.com/varletjs/varlet/compare/v3.1.2...v3.1.3) (2024-03-15)
+
+
+### Bug Fixes
+
+* **back-top:** update backTop component visibility after mounting ([#1528](https://github.com/varletjs/varlet/issues/1528)) ([10f5432](https://github.com/varletjs/varlet/commit/10f54320d602162aec2da593917d714bb4a625af))
+* fix the Sticky component error on first navigation ([#1530](https://github.com/varletjs/varlet/issues/1530)) ([d568ae4](https://github.com/varletjs/varlet/commit/d568ae411fe2c7f1d13d7c2dd371c6437e5e2d94))
+* **space:** set default width to 100% for each child element when direction is column ([#1527](https://github.com/varletjs/varlet/issues/1527)) ([63825ac](https://github.com/varletjs/varlet/commit/63825acf4590b5d2838ecf56b86fde279686f3b6))
+
+
+### Features
+
+* new package varlet-preset-unocss ([57f02a7](https://github.com/varletjs/varlet/commit/57f02a7d8467f48255b308fdc437eaab7ba05786))
+
+
+
 ## [3.1.2](https://github.com/varletjs/varlet/compare/v3.1.1...v3.1.2) (2024-03-10)
 
 
