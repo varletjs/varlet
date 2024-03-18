@@ -41,7 +41,7 @@ export default defineComponent({
         })
 
         return (
-          <div class={classes([direction === 'column', n('--full')])} style={{ margin }}>
+          <div class={classes([direction === 'column', n('--auto')])} style={{ margin }}>
             {child}
           </div>
         )
