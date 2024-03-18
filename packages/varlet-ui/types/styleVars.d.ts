@@ -1207,6 +1207,8 @@ export interface StyleVars {
   tableTheadBorderBottom?: string
   '--table-thead-th-text-color'?: string
   tableTheadThTextColor?: string
+  '--table-thead-th-text-align'?: string
+  tableTheadThTextAlign?: string
   '--table-thead-th-font-size'?: string
   tableTheadThFontSize?: string
   '--table-thead-tr-border-bottom'?: string

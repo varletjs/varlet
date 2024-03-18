@@ -108,7 +108,7 @@ function get(current, size) {
 
 | Prop         | Description | Type | Default |
 |--------------| -------------- | -------- | ---------- |
-| `full-width` | The width of the `table` (including the scrollable part)	| _string \| number_ | `100%` |
+| `full-width` | The width of the `table` (including the scrollable part) | _string \| number_ | `100%` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 
 ### Slots
@@ -119,6 +119,7 @@ function get(current, size) {
 | `footer` | Footer of `table` | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
@@ -127,11 +128,12 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--table-border-radius` | `2px` |
 | `--table-thead-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-thead-th-text-color` | `rgba(0, 0, 0, 0.6)` |
+| `--table-thead-th-text-align` | `left` |
 | `--table-thead-th-font-size` | `14px` |
 | `--table-thead-tr-border-bottom` | `thin solid var(--color-outline)` |
 | `--table-tbody-tr-hover-background` | `#eee` |
 | `--table-tbody-tr-border-bottom` | `thin solid var(--color-outline)` |
-| `--table-tbody-td-text-color` | `#555` | 
+| `--table-tbody-td-text-color` | `#555` |
 | `--table-tbody-td-font-size` | `16px` |
 | `--table-row-height` | `46px` |
 | `--table-row-padding` | `0 16px` |
