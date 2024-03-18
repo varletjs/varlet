@@ -1,6 +1,7 @@
 export default {
   '--table-background': '#303030',
   '--table-thead-th-text-color': 'rgba(255, 255, 255, 0.6)',
+  '--table-thead-th-text-align': 'left',
   '--table-tbody-td-text-color': '#fff',
   '--table-tbody-tr-hover-background': '#4c4b4b',
   '--table-border-radius': '2px',
