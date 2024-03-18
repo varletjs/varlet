@@ -1,3 +1,17 @@
+## [3.1.4](https://github.com/varletjs/varlet/compare/v3.1.3...v3.1.4) (2024-03-18)
+
+
+### Bug Fixes
+
+* **space:** set the default width of child elements under space to auto ([#1538](https://github.com/varletjs/varlet/issues/1538)) ([bfd8af7](https://github.com/varletjs/varlet/commit/bfd8af77c5a65094ae61838b5aba3b826badc30f))
+
+
+### Features
+
+* **table:** support --table-thead-th-text-align ([#1536](https://github.com/varletjs/varlet/issues/1536)) ([467033c](https://github.com/varletjs/varlet/commit/467033ce666d212579f1bba276878e3a7b2b8fe3))
+
+
+
 ## [3.1.3](https://github.com/varletjs/varlet/compare/v3.1.2...v3.1.3) (2024-03-15)
 
 
