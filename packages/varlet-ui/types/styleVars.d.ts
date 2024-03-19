@@ -109,6 +109,8 @@ export interface StyleVars {
   badgeDotHeight?: string
   '--bottom-navigation-height'?: string
   bottomNavigationHeight?: string
+  '--bottom-navigation-variant-height'?: string
+  bottomNavigationVariantHeight?: string
   '--bottom-navigation-z-index'?: string
   bottomNavigationZIndex?: string
   '--bottom-navigation-background-color'?: string
@@ -133,6 +135,16 @@ export interface StyleVars {
   bottomNavigationItemIconMarginBottom?: string
   '--bottom-navigation-fab-border-radius'?: string
   bottomNavigationFabBorderRadius?: string
+  '--bottom-navigation-item-variant-icon-container-height'?: string
+  bottomNavigationItemVariantIconContainerHeight?: string
+  '--bottom-navigation-item-variant-icon-container-border-radius'?: string
+  bottomNavigationItemVariantIconContainerBorderRadius?: string
+  '--bottom-navigation-item-variant-icon-container-max-width'?: string
+  bottomNavigationItemVariantIconContainerMaxWidth?: string
+  '--bottom-navigation-item-variant-active-background-color'?: string
+  bottomNavigationItemVariantActiveBackgroundColor?: string
+  '--bottom-navigation-item-variant-active-color'?: string
+  bottomNavigationItemVariantActiveColor?: string
   '--breadcrumb-active-color'?: string
   breadcrumbActiveColor?: string
   '--breadcrumb-inactive-color'?: string

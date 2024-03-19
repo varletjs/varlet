@@ -398,7 +398,7 @@ function handleSelect(action) {
 | `lock-scroll` | 是否禁止滚动穿透，禁止时滚动弹出层不会引发 body 的滚动 | _boolean_ | `true` |
 | `close-on-click-action` | 是否点击选项时关闭动作面板 | _boolean_ | `true` |
 | `close-on-click-overlay` | 是否点击遮罩层关闭动作面板 | _boolean_ | `true` |
-| `close-on-key-escape` | 是否支持键盘 ESC 关闭动作面板 | _boolean_ | `true`
+| `close-on-key-escape` | 是否支持键盘 ESC 关闭动作面板 | _boolean_ | `true` |
 | `safe-area`   | 是否开启底部安全区适配      | _boolean_             | `false`  |
 | `teleport` | 动作面板挂载的位置 | _TeleportProps['to'] \| false_ | `body` |
 
