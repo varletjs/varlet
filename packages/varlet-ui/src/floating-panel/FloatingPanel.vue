@@ -48,6 +48,7 @@ export default defineComponent({
     const { height: windowHeight } = useWindowSize()
     const defaultEndAnchor = computed(() => windowHeight.value * 0.6)
     const anchor = useVModel(props, 'anchor')
+    const visibleHeight = ref<number>(anchor.value ?? DEFAULT_START_ANCHOR)
     const anchors = computed<number[]>(() => {
       const defaultAnchors = [DEFAULT_START_ANCHOR, defaultEndAnchor.value]
       const { anchors } = props
@@ -57,7 +58,6 @@ export default defineComponent({
     const maxAnchor = computed<number>(() => Math.max(...anchors.value))
     const { disabled: teleportDisabled } = useTeleport()
     const { deltaY, touching, startTouch, moveTouch, endTouch, isReachTop, isReachBottom } = useTouch()
-    const visibleHeight = ref<number>(anchor.value ?? DEFAULT_START_ANCHOR)
 
     let startVisibleHeight: number
 
@@ -73,7 +73,9 @@ export default defineComponent({
     )
 
     onBeforeMount(() => {
-      props.anchors && matchAnchor(anchor.value)
+      if (props.anchors != null) {
+        matchAnchor(anchor.value)
+      }
     })
 
     function matchAnchor(anchor: number | undefined | null) {
