@@ -4,45 +4,17 @@ import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
 import { outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { isArray } from '@varlet/shared'
 import { pathToFileURL } from 'url'
+import { type VIConfig } from '@varlet/icon-builder'
 import { type CopyOptions } from '@varlet/vite-plugins'
 
 const { pathExistsSync, statSync } = fse
 
-export interface VarletConfigIcons {
-  /**
-   * @default `varlet-icons`
-   * Font name.
-   */
-  name?: string
-  /**
-   * @default `var-icon`
-   * Font name prefix.
-   */
-  namespace?: string
-  /**
-   * @default `true`
-   * Output base64
-   */
-  base64?: boolean
-  /**
-   * @default `./svg`
-   * SVG icons folder path.
-   */
-  entry?: string
-  /**
-   * @default `./dist`
-   * SVG icons folder path.
-   */
-  output?: string
+export interface VarletConfigIcons extends VIConfig {
   /**
    * @default true
    * Whether to generate png
    */
   genPng?: boolean
-  publicPath?: string
-  fontFamilyClassName?: string
-  fontWeight?: string
-  fontStyle?: string
 }
 
 export interface VarletConfigEsbuild {
