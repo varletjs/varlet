@@ -7,4 +7,5 @@ export default {
   clickEvent: '监听点击事件',
   fab: '悬浮按钮',
   label: '标签',
+  variant: '变体',
 }

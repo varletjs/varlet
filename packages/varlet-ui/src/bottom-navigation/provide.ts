@@ -6,6 +6,7 @@ export interface BottomNavigationProvider {
   active: ComputedRef<number | string | undefined>
   activeColor: ComputedRef<string | undefined>
   inactiveColor: ComputedRef<string | undefined>
+  variant: ComputedRef<boolean | undefined>
   onToggle(value: number | string): void
 }
 

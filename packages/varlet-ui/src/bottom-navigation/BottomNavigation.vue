@@ -1,10 +1,19 @@
 <template>
   <div
-    :class="classes(n(), n('$--box'), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
+    :class="
+      classes(
+        n(),
+        n('$--box'),
+        [fixed, n('--fixed')],
+        [border, n('--border')],
+        [safeArea, n('--safe-area')],
+        [variant, n('--variant')]
+      )
+    "
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
   >
-    <slot></slot>
+    <slot />
 
     <var-button
       v-if="$slots.fab"
@@ -47,6 +56,7 @@ export default defineComponent({
     const active = computed<number | string | undefined>(() => props.active)
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
+    const variant = computed<boolean | undefined>(() => props.variant)
     const fabProps = ref({})
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
@@ -54,6 +64,7 @@ export default defineComponent({
       active,
       activeColor,
       inactiveColor,
+      variant,
       onToggle,
     }
 

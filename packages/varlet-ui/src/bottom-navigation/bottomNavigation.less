@@ -1,5 +1,6 @@
 :root {
   --bottom-navigation-height: 50px;
+  --bottom-navigation-variant-height: 64px;
   --bottom-navigation-z-index: 1;
   --bottom-navigation-background-color: var(--color-surface-container-high);
   --bottom-navigation-border-color: var(--color-outline);
@@ -30,6 +31,10 @@
 
   &--border {
     border-top: 1px solid var(--bottom-navigation-border-color);
+  }
+
+  &--variant {
+    height: var(--bottom-navigation-variant-height);
   }
 
   &__fab[var-bottom-navigation__fab] {

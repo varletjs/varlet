@@ -167,6 +167,25 @@ const isEven = ref(true)
 </style>
 ```
 
+### Variant
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-bottom-navigation variant v-model:active="active">
+    <var-bottom-navigation-item label="label" icon="home" />
+    <var-bottom-navigation-item label="label" icon="magnify" />
+    <var-bottom-navigation-item label="label" icon="heart" />
+    <var-bottom-navigation-item label="label" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
+```
+
 ## API
 
 ### Props
@@ -182,7 +201,8 @@ const isEven = ref(true)
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
-| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
+| `fab-props`     | Fab button props                                    | _ButtonProps_ | `{ type: 'primary' }` |
+| `variant` ***3.2.0***      | Variant mode | _boolean_ | `false` |
 
 #### BottomNavigationItem Props
 
@@ -235,6 +255,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--bottom-navigation-height` | `50px` |
+| `--bottom-navigation-variant-height` | `64px` |
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-border-color` | `var(--color-outline)` |
@@ -252,3 +273,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |
 | `--bottom-navigation-fab-border-radius` | `50%` |
+| `--bottom-navigation-item-variant-icon-container-height` | `30px` |
+| `--bottom-navigation-item-variant-icon-container-border-radius` | `100px` |
+| `--bottom-navigation-item-variant-icon-container-max-width` | `58px` |
+| `--bottom-navigation-item-variant-active-background-color` | `var(--color-primary-container)` |
+| `--bottom-navigation-item-variant-active-color` | `var(--color-on-primary-container)` |

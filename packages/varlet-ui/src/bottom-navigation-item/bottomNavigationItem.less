@@ -3,14 +3,19 @@
   --bottom-navigation-item-inactive-color: #646566;
   --bottom-navigation-item-active-color: var(--color-primary);
   --bottom-navigation-item-active-background-color: var(--color-surface-container-high);
+  --bottom-navigation-item-variant-active-background-color: var(--color-primary-container);
+  --bottom-navigation-item-variant-active-color: var(--color-on-primary-container);
   --bottom-navigation-item-line-height: 1;
   --bottom-navigation-item-icon-size: 22px;
   --bottom-navigation-item-icon-margin-bottom: 5px;
+  --bottom-navigation-item-variant-icon-container-height: 30px;
+  --bottom-navigation-item-variant-icon-container-border-radius: 100px;
+  --bottom-navigation-item-variant-icon-container-max-width: 58px;
 }
 
 .var-bottom-navigation-item {
   height: 100%;
-  padding: 6px 12px 8px;
+  padding-bottom: 2px;
   position: relative;
   display: inline-flex;
   flex: 1 1 0%;
@@ -29,6 +34,10 @@
   border: 0;
   transition: color 250ms, margin 250ms;
 
+  &--variant-padding {
+    padding-bottom: 6px;
+  }
+
   &--active {
     color: var(--bottom-navigation-item-active-color);
     background-color: var(--bottom-navigation-item-active-background-color);
@@ -37,6 +46,23 @@
     .var-bottom-navigation-item__label {
       font-size: calc(var(--bottom-navigation-item-font-size) * 1.16);
     }
+  }
+
+  &--variant-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0;
+    height: var(--bottom-navigation-item-variant-icon-container-height);
+    border-radius: var(--bottom-navigation-item-variant-icon-container-border-radius);
+    max-width: var(--bottom-navigation-item-variant-icon-container-max-width);
+  }
+
+  &--variant-active {
+    color: var(--bottom-navigation-item-variant-active-color);
+    background-color: var(--bottom-navigation-item-variant-active-background-color);
+    width: 100%;
+    transition: background-color 0.2s, width 0.15s;
   }
 
   &--right-half-space {
@@ -56,9 +82,8 @@
   }
 
   &__badge[var-bottom-navigation-item-cover] {
-    position: absolute;
-    left: 4px;
-    transform: translateY(-22px);
+    margin-top: 6px;
+    margin-right: -4px;
   }
 
   &__label {

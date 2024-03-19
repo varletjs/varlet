@@ -13,6 +13,7 @@ export const props = {
   },
   fixed: Boolean,
   border: Boolean,
+  variant: Boolean,
   safeArea: Boolean,
   activeColor: String,
   inactiveColor: String,

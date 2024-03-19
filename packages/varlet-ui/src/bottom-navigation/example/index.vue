@@ -16,6 +16,7 @@ const changeEvent = ref(0)
 const clickEvent = ref(0)
 const fab = ref(0)
 const isEven = ref(true)
+const variant = ref(0)
 
 watchLang(use)
 onThemeChange()
@@ -88,5 +89,13 @@ function handleClick(active) {
     <var-bottom-navigation-item :label="t('label')" icon="heart" />
     <var-bottom-navigation-item :label="t('label')" icon="bell" />
     <var-bottom-navigation-item v-if="!isEven" :label="t('label')" icon="account-circle" />
+  </var-bottom-navigation>
+
+  <app-type>{{ t('variant') }}</app-type>
+  <var-bottom-navigation variant v-model:active="variant">
+    <var-bottom-navigation-item :label="t('label')" icon="home" />
+    <var-bottom-navigation-item :label="t('label')" icon="magnify" />
+    <var-bottom-navigation-item :label="t('label')" icon="heart" />
+    <var-bottom-navigation-item :label="t('label')" icon="account-circle" />
   </var-bottom-navigation>
 </template>

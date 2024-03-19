@@ -3,7 +3,13 @@ export default {
   '--bottom-navigation-item-font-size': 'var(--font-size-sm)',
   '--bottom-navigation-item-active-color': 'var(--color-primary)',
   '--bottom-navigation-item-active-background-color': 'var(--color-surface-container-high)',
+  '--bottom-navigation-item-variant-active-background-color': 'var(--color-primary-container)',
+  '--bottom-navigation-item-variant-active-color': 'var(--color-on-primary-container)',
+  '--bottom-navigation-fab-border-radius': '50%',
   '--bottom-navigation-item-line-height': '1',
   '--bottom-navigation-item-icon-size': '22px',
   '--bottom-navigation-item-icon-margin-bottom': '5px',
+  '--bottom-navigation-item-variant-icon-container-height': '30px',
+  '--bottom-navigation-item-variant-icon-container-border-radius': '100px',
+  '--bottom-navigation-item-variant-icon-container-max-width': '58px',
 }

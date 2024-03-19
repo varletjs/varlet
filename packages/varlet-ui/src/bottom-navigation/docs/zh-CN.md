@@ -169,6 +169,25 @@ const isEven = ref(true)
 </style>
 ```
 
+### 变体
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const active = ref(0)
+</script>
+
+<template>
+  <var-bottom-navigation variant v-model:active="active">
+    <var-bottom-navigation-item label="标签" icon="home" />
+    <var-bottom-navigation-item label="标签" icon="magnify" />
+    <var-bottom-navigation-item label="标签" icon="heart" />
+    <var-bottom-navigation-item label="标签" icon="account-circle" />
+  </var-bottom-navigation>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -184,7 +203,8 @@ const isEven = ref(true)
 | `z-index`        | 元素 z-index      | _number \| string_ | `1` |
 | `active-color`   | 选中标签的颜色         | _string_ | `-` |
 | `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
-| `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{type: "primary"}` |
+| `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{ type: 'primary' }` |
+| `variant` ***3.2.0***      | 变体模式          | _boolean_ | `false` |
 
 #### BottomNavigationItem Props
 
@@ -237,6 +257,7 @@ const isEven = ref(true)
 | 变量名 | 默认值 |
 | --- | --- |
 | `--bottom-navigation-height` | `50px` |
+| `--bottom-navigation-variant-height` | `64px` |
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-border-color` | `var(--color-outline)` |
@@ -253,4 +274,9 @@ const isEven = ref(true)
 | `--bottom-navigation-item-line-height` | `1` |
 | `--bottom-navigation-item-icon-size` | `22px` |
 | `--bottom-navigation-item-icon-margin-bottom` | `5px` |
-| `--bottom-navigation-fab-border-radius` | `50%` |
+| `--bottom-navigation-fab-border-radius` | `50%` ` |
+| `--bottom-navigation-item-variant-icon-container-height` | `30px` |
+| `--bottom-navigation-item-variant-icon-container-border-radius` | `100px` |
+| `--bottom-navigation-item-variant-icon-container-max-width` | `58px` |
+| `--bottom-navigation-item-variant-active-background-color` | `var(--color-primary-container)` |
+| `--bottom-navigation-item-variant-active-color` | `var(--color-on-primary-container)` |

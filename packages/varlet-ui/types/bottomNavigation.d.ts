@@ -13,6 +13,7 @@ export interface BottomNavigationProps extends BasicAttributes {
   activeColor?: string
   inactiveColor?: string
   fabProps?: Partial<ButtonProps>
+  variant?: boolean
   onChange?: ListenerProp<(active: string | number) => void>
   onBeforeChange?: ListenerProp<(active: string | number) => any | Promise<any>>
   onFabClick?: ListenerProp<() => void>

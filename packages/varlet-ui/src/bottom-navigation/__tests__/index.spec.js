@@ -276,4 +276,29 @@ describe('test bottom-navigation component props', () => {
     expect(wrapper.find('.var-button').classes()).toContain('var-button--success')
     wrapper.unmount()
   })
+
+  test('test variant mode', async () => {
+    const wrapper = mount({
+      components: {
+        [VarBottomNavigation.name]: VarBottomNavigation,
+        [VarBottomNavigationItem.name]: VarBottomNavigationItem,
+      },
+      data: () => ({
+        variant: false,
+      }),
+      template: `
+<var-bottom-navigation :variant="variant">
+  <var-bottom-navigation-item label="tag 1" icon="home" name="home" :badge="{ dot: true, value: 10 }" />
+  <var-bottom-navigation-item label="tag 2" icon="magnify" />
+  <var-bottom-navigation-item label="tag 3" icon="heart" />
+  <var-bottom-navigation-item label="tag 4" icon="account-circle" />
+</var-bottom-navigation>
+      `,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setData({ variant: true })
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })

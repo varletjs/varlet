@@ -1,16 +1,37 @@
 <template>
   <button
-    :class="classes(n(), n('$--box'), [isActive, n('--active')])"
+    :class="classes(n(), n('$--box'), [variant, n('--variant-padding')], [isActive && !variant, n('--active')])"
     v-ripple
     :style="{
       color: isActive ? activeColor : inactiveColor,
     }"
     @click="handleClick"
   >
-    <slot name="icon" :active="isActive">
-      <var-icon v-if="icon" :name="icon" :namespace="namespace" :class="n('icon')" var-bottom-navigation-item-cover />
-    </slot>
-    <var-badge v-if="badge" v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover />
+    <div
+      :class="
+        classes(
+          n('icon-container'),
+          [variant, n('--variant-icon-container')],
+          [isActive && variant, n('--variant-active')]
+        )
+      "
+    >
+      <var-badge v-bind="badgeProps" :class="n('badge')" var-bottom-navigation-item-cover v-if="badge">
+        <slot name="icon" :active="isActive">
+          <var-icon
+            v-if="icon"
+            :name="icon"
+            :namespace="namespace"
+            :class="n('icon')"
+            var-bottom-navigation-item-cover
+          />
+        </slot>
+      </var-badge>
+      <slot name="icon" :active="isActive" v-else>
+        <var-icon v-if="icon" :name="icon" :namespace="namespace" :class="n('icon')" var-bottom-navigation-item-cover />
+      </slot>
+    </div>
+
     <span :class="n('label')">
       <slot>{{ label }}</slot>
     </span>
@@ -48,7 +69,7 @@ export default defineComponent({
     const isActive = computed<boolean>(() => [name.value, index.value].includes(active.value))
     const badgeProps = computed(() => (props.badge === true ? defaultBadgeProps : props.badge) as BadgeProps)
     const { index, bottomNavigation, bindBottomNavigation } = useBottomNavigation()
-    const { active, activeColor, inactiveColor } = bottomNavigation
+    const { active, activeColor, inactiveColor, variant } = bottomNavigation
     const bottomNavigationItemProvider: BottomNavigationItemProvider = {
       name,
       index,
@@ -68,6 +89,7 @@ export default defineComponent({
       inactiveColor,
       badgeProps,
       isActive,
+      variant,
       n,
       classes,
       handleClick,

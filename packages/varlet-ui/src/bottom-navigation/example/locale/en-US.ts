@@ -7,4 +7,5 @@ export default {
   clickEvent: 'Click Event',
   fab: 'Fab',
   label: 'label',
+  variant: 'Variant',
 }
