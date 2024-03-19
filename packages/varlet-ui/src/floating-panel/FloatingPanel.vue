@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, onBeforeMount } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { createNamespace, formatElevation, useTeleport } from '../utils/components'
@@ -44,7 +44,6 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const visibleHeight = ref<number>(0)
     const contentRef = ref<HTMLElement | null>(null)
     const { height: windowHeight } = useWindowSize()
     const defaultEndAnchor = computed(() => windowHeight.value * 0.6)
@@ -58,20 +57,24 @@ export default defineComponent({
     const maxAnchor = computed<number>(() => Math.max(...anchors.value))
     const { disabled: teleportDisabled } = useTeleport()
     const { deltaY, touching, startTouch, moveTouch, endTouch, isReachTop, isReachBottom } = useTouch()
+    const visibleHeight = ref<number>(anchor.value ?? DEFAULT_START_ANCHOR)
 
     let startVisibleHeight: number
 
     useLock(() => touching.value)
 
-    watch(() => anchor.value, matchAnchor, { immediate: true })
+    watch(() => anchor.value, matchAnchor)
 
     watch(
       () => anchors.value,
       () => {
         matchAnchor(anchor.value)
-      },
-      { immediate: true }
+      }
     )
+
+    onBeforeMount(() => {
+      props.anchors && matchAnchor(anchor.value)
+    })
 
     function matchAnchor(anchor: number | undefined | null) {
       setVisibleHeight(anchor ?? minAnchor.value)
