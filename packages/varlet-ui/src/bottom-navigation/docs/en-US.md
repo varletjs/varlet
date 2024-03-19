@@ -255,7 +255,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable | Default |
 | --- | --- |
 | `--bottom-navigation-height` | `50px` |
-| `--bottom-navigation-variant-height` | `64px` |
+| `--bottom-navigation-variant-height` | `66px` |
 | `--bottom-navigation-z-index` | `1` |
 | `--bottom-navigation-background-color` | `var(--color-surface-container-high)` |
 | `--bottom-navigation-border-color` | `var(--color-outline)` |
