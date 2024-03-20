@@ -110,6 +110,7 @@ function get(current, size) {
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | The width of the `table` (including the scrollable part) | _string \| number_ | `100%` |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `scroller-height` ***3.2.0*** | The height of the scroll container, which can be used to implement functions such as longitudinal partial scrolling and fixed table headers. | _string \| number_ | `-` |
 
 ### Slots
 

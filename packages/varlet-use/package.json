@@ -11,8 +11,7 @@
       "import": "./lib/index.js",
       "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
-    },
-    "./*": "./*"
+    }
   },
   "description": "composable utils of varlet",
   "keywords": [

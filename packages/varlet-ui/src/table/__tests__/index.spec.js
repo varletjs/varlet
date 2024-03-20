@@ -39,6 +39,18 @@ describe('test table component props', () => {
 
     wrapper.unmount()
   })
+
+  test('test table scroller height', async () => {
+    const wrapper = mount(VarTable, {
+      props: {
+        scrollerHeight: '300px',
+      },
+    })
+
+    expect(wrapper.find('.var-table__main').attributes('style')).toContain('height: 300px;')
+
+    wrapper.unmount()
+  })
 })
 
 describe('test table component slots', () => {

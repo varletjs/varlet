@@ -18,9 +18,7 @@
 
 .var-table {
   width: 100%;
-  background: var(--table-background);
   border-radius: var(--table-border-radius);
-  transition: 0.25s background-color;
 
   * {
     box-sizing: border-box;
@@ -28,7 +26,7 @@
 
   &__main {
     width: 100%;
-    overflow-x: auto;
+    overflow: auto;
 
     > table {
       min-width: 100%;
@@ -45,6 +43,8 @@
           th {
             color: var(--table-thead-th-text-color);
             font-size: var(--table-thead-th-font-size);
+            text-align: var(--table-thead-th-text-align);
+            background: var(--table-background);
           }
 
           &:not(:last-child) {
@@ -60,6 +60,7 @@
           display: table-row;
           outline: 0;
           vertical-align: middle;
+          background: var(--table-background);
 
           &:hover {
             background: var(--table-tbody-tr-hover-background);
@@ -98,5 +99,6 @@
     width: 100%;
     min-height: var(--table-row-height);
     border-top: var(--table-footer-border-top);
+    background: var(--table-background);
   }
 }

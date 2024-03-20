@@ -35,6 +35,7 @@ onThemeChange()
         <th>{{ t('english') }}</th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
         <td>{{ t('jerry') }}</td>
