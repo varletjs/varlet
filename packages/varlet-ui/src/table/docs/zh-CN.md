@@ -109,6 +109,7 @@ function get(current, size) {
 | 参数           | 说明 | 类型 | 默认值 |
 |--------------| -------------- | -------- | ---------- |
 | `full-width` | `table` 的宽度(包含可滚动部分) | _string \| number_ | `100%` |
+| `scroller-height` | 滚动容器高度，可用于实现纵向局部滚动，固定表头等功能 | _string \| number_ | `-` |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 
 ### 插槽
