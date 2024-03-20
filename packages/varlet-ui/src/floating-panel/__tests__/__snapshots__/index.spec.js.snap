@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test floating-panel component slots > test floating-panel component default 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 100px; transform: translateY(calc(100% - 0px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content">Hello Varlet!</div></div>"`;
+exports[`test floating-panel component slots > test floating-panel component default 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 100px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content">Hello Varlet!</div></div>"`;
 
 exports[`test floating-panel components props > test floating-panel anchor 1`] = `"<div class="var-floating-panel var-elevation--3" style="height: 200px; transform: translateY(calc(100% - 100px)); transition: transform 300ms var(--floating-panel-transition-timing-function), background-color 0.25s;"><div class="var-floating-panel__header"><div class="var-floating-panel__header-toolbar"></div></div><div class="var-floating-panel__content"></div></div>"`;
 
@@ -26,7 +26,7 @@ exports[`test floating-panel components props > test floating-panel duration 1`]
 >
   <div
     class="var-floating-panel var-elevation--3"
-    style="height: 100px; transform: translateY(calc(100% - 0px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function), background-color 0.25s;"
+    style="height: 100px; transform: translateY(calc(100% - 100px)); transition: transform 0.4ms var(--floating-panel-transition-timing-function), background-color 0.25s;"
   >
     <div
       class="var-floating-panel__header"
