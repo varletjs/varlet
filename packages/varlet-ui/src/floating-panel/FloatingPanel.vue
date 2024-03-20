@@ -44,11 +44,11 @@ export default defineComponent({
   name,
   props,
   setup(props) {
+    const visibleHeight = ref<number>(0)
     const contentRef = ref<HTMLElement | null>(null)
     const { height: windowHeight } = useWindowSize()
     const defaultEndAnchor = computed(() => windowHeight.value * 0.6)
-    const anchor = useVModel(props, 'anchor')
-    const visibleHeight = ref<number>(anchor.value ?? DEFAULT_START_ANCHOR)
+    const anchor = useVModel(props, 'anchor', { defaultValue: DEFAULT_START_ANCHOR })
     const anchors = computed<number[]>(() => {
       const defaultAnchors = [DEFAULT_START_ANCHOR, defaultEndAnchor.value]
       const { anchors } = props
@@ -63,20 +63,17 @@ export default defineComponent({
 
     useLock(() => touching.value)
 
-    watch(() => anchor.value, matchAnchor)
+    watch(() => anchor.value, matchAnchor, { immediate: true })
 
     watch(
       () => anchors.value,
       () => {
         matchAnchor(anchor.value)
+      },
+      {
+        immediate: true,
       }
     )
-
-    onBeforeMount(() => {
-      if (props.anchors != null) {
-        matchAnchor(anchor.value)
-      }
-    })
 
     function matchAnchor(anchor: number | undefined | null) {
       setVisibleHeight(anchor ?? minAnchor.value)
