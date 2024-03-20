@@ -1233,6 +1233,8 @@ export interface StyleVars {
   tableTbodyTdTextColor?: string
   '--table-tbody-td-font-size'?: string
   tableTbodyTdFontSize?: string
+  '--table-tbody-td-text-align'?: string
+  tableTbodyTdTextAlign?: string
   '--table-row-height'?: string
   tableRowHeight?: string
   '--table-row-padding'?: string
