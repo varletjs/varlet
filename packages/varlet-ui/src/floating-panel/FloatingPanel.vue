@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, onBeforeMount } from 'vue'
+import { defineComponent, ref, computed, watch } from 'vue'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { createNamespace, formatElevation, useTeleport } from '../utils/components'
@@ -70,9 +70,7 @@ export default defineComponent({
       () => {
         matchAnchor(anchor.value)
       },
-      {
-        immediate: true,
-      }
+      { immediate: true }
     )
 
     function matchAnchor(anchor: number | undefined | null) {
