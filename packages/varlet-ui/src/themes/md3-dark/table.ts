@@ -9,6 +9,7 @@ export default {
   '--table-thead-tr-border-bottom': 'thin solid var(--color-outline)',
   '--table-tbody-tr-border-bottom': 'thin solid var(--color-outline)',
   '--table-tbody-td-font-size': '16px',
+  '--table-tbody-td-text-align': 'left',
   '--table-row-height': '46px',
   '--table-row-padding': '0 16px',
   '--table-footer-border-top': 'thin solid var(--color-outline)',
