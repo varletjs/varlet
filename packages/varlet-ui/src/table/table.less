@@ -45,7 +45,6 @@
           th {
             color: var(--table-thead-th-text-color);
             font-size: var(--table-thead-th-font-size);
-            text-align: var(--table-thead-th-text-align);
           }
 
           &:not(:last-child) {
@@ -83,7 +82,7 @@
         height: var(--table-row-height);
         padding: var(--table-row-padding);
         font-weight: 500;
-        text-align: left;
+        text-align: var(--table-thead-th-text-align);
       }
 
       td {
