@@ -5,9 +5,9 @@
 A dialog pops up to display the content and handle the user interaction.
 `Dialog` have provided functional and component usage, and there is no essential difference between the two usage effects and parameters.
 
-## Functional
+## Function Call
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
@@ -58,7 +58,7 @@ function hideButton() {
 </template>
 ```
 
-### Handling User Behavior
+### Handler User Behavior
 
 You can get user behavior from the method's return value, which is a `Promise`.
 Includes `confirm`, `cancel`, and `close(click the overlay to trigger closure)`.
@@ -121,7 +121,7 @@ function createAction() {
 
 ## Component Call
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
@@ -137,9 +137,9 @@ const show = ref(false)
     title="Beat It"
     message="Don't Wanna See No Blood, Don't Be A Macho Man"
     v-model:show="show"
-    @confirm="() => Snackbar.success('confirm')"
-    @cancel="() => Snackbar.error('cancel')"
-    @closed="() => Snackbar.info('closed')"
+    @confirm="Snackbar.success('confirm')"
+    @cancel="Snackbar.error('cancel')"
+    @closed="Snackbar.info('closed')"
   />
 </template>
 ```

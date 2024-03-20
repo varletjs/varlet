@@ -1,16 +1,12 @@
 <script setup>
 import { Snackbar, Dialog } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, toRefs } from 'vue'
+import { ref } from 'vue'
 import { t, use } from './locale'
 
-const values = reactive({
-  show: false,
-  show1: false,
-  show2: false,
-})
-
-const { show, show1, show2 } = toRefs(values)
+const show = ref(false)
+const show1 = ref(false)
+const show2 = ref(false)
 
 const actions = {
   confirm: () => Snackbar.success('confirm'),
@@ -75,9 +71,9 @@ function asyncClose() {
     v-model:show="show"
     :title="t('title')"
     :message="t('message')"
-    @confirm="() => Snackbar.success('confirm')"
-    @cancel="() => Snackbar.error('cancel')"
-    @closed="() => Snackbar.info('closed')"
+    @confirm="Snackbar.success('confirm')"
+    @cancel="Snackbar.error('cancel')"
+    @closed="Snackbar.info('closed')"
   />
 
   <var-button type="warning" block @click="show1 = true">{{ t('asyncClose') }}</var-button>
