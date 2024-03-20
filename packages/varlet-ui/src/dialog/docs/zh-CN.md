@@ -137,9 +137,9 @@ const show = ref(false)
     title="兰亭序"
     message="兰亭临帖 行书如行云流水"
     v-model:show="show"
-    @confirm="() => Snackbar.success('confirm')"
-    @cancel="() => Snackbar.error('cancel')"
-    @closed="() => Snackbar.info('closed')"
+    @confirm="Snackbar.success('confirm')"
+    @cancel="Snackbar.error('cancel')"
+    @closed="Snackbar.info('closed')"
   />
 </template>
 ```

@@ -4,7 +4,7 @@ export default {
   modifyTitle: 'Modify Title',
   hideButton: 'Hide Button',
   handleUserBehavior: 'Handle User Behavior',
-  asyncClose: 'Asynchronous closing',
+  asyncClose: 'Asynchronous Closing',
   componentCall: 'Component Call',
   title: 'Beat It',
   message: "Don't Wanna See No Blood, Don't Be A Macho Man",
