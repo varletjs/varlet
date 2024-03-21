@@ -9,7 +9,7 @@
 ```html
 <template>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" />
+    <var-loading />
     <var-loading type="cube" />
     <var-loading type="wave" />
     <var-loading type="rect" />
@@ -22,7 +22,7 @@
 ```html
 <template>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" color="var(--color-info)" />
+    <var-loading color="var(--color-info)" />
     <var-loading type="cube" color="var(--color-success)" />
     <var-loading type="wave" color="var(--color-warning)" />
     <var-loading type="rect" color="var(--color-danger)" />
@@ -36,7 +36,7 @@
 ```html
 <template>
   <var-space align="center" justify="space-between">
-    <var-loading type="circle" size="small" />
+    <var-loading size="small" />
     <var-loading type="cube" size="small" />
     <var-loading type="wave" size="small" />
     <var-loading type="rect" size="small" />
