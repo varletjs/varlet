@@ -54,9 +54,13 @@ pnpm add @varlet/preset-tailwindcss -D
 ```js
 // playground-ignore
 // tailwind.config.js
-const { presetVarlet } = require('@varlet/preset-tailwindcss')
+import { presetVarlet } from '@varlet/preset-tailwindcss'
 
-module.exports = {
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}',
+  ],
   presets: [presetVarlet()]
 }
 ```
