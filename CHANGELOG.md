@@ -1,3 +1,21 @@
+# [3.2.0](https://github.com/varletjs/varlet/compare/v3.1.4...v3.2.0) (2024-03-22)
+
+
+### Bug Fixes
+
+* **ui/FloatingPanel:** remove animation if no anchor when init ([#1540](https://github.com/varletjs/varlet/issues/1540)) ([ac655c7](https://github.com/varletjs/varlet/commit/ac655c7a3c83e2e4fb55f4c955ad9491c28afe35))
+
+
+### Features
+
+* add varlet-preset-tailwindcss package ([#1539](https://github.com/varletjs/varlet/issues/1539)) ([07b550b](https://github.com/varletjs/varlet/commit/07b550b3bad40d4def7be43fe6a3c10c252e445c))
+* **bottom-navigation:** support variant mode and Improve badge usability ([3cb21e7](https://github.com/varletjs/varlet/commit/3cb21e76f2fb500c279ce747fc0131279ffb9de4))
+* integrated @varlet/icon-builder ([4819fc1](https://github.com/varletjs/varlet/commit/4819fc1ef741aeb52b38f8100dac78477e7b3cc6))
+* support --table-tbody-td ([#1541](https://github.com/varletjs/varlet/issues/1541)) ([dd2cb9e](https://github.com/varletjs/varlet/commit/dd2cb9e7990e1e6e839f912e6ab9b7142d5fe945))
+* **table:** support scroller height ([8eba468](https://github.com/varletjs/varlet/commit/8eba468a65075b8ec7ea4d9ab378b06eaf524414))
+
+
+
 ## [3.1.4](https://github.com/varletjs/varlet/compare/v3.1.3...v3.1.4) (2024-03-18)
 
 

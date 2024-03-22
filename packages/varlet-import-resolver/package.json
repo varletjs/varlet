@@ -1,6 +1,6 @@
 {
   "name": "@varlet/import-resolver",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",
