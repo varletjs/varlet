@@ -6,7 +6,7 @@
 
 ### UnoCSS
 
-预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts)
+预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts)。
 
 #### 安装
 
@@ -35,7 +35,7 @@ export default defineConfig({
 
 ### Tailwindcss
 
-预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts)
+预设的详细定义[请看这里](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts)。
 
 #### 安装
 

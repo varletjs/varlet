@@ -6,7 +6,7 @@ We've provided common CSS atomization framework presets, made it easier to acces
 
 ### UnoCSS
 
-Presets detailed definition [Please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts)
+Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-unocss/src/index.ts).
 
 #### Install
 
@@ -35,7 +35,7 @@ export default defineConfig({
 
 ### Tailwindcss
 
-Presets detailed definition [Please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts)
+Presets detailed definition [please watch here](https://github.com/varletjs/varlet/blob/main/packages/varlet-preset-tailwindcss/src/index.ts).
 
 #### Install
 
