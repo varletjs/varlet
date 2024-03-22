@@ -54,10 +54,10 @@ pnpm add @varlet/preset-tailwindcss -D
 ```js
 // playground-ignore
 // tailwind.config.js
+const { presetVarlet } = require('@varlet/preset-tailwindcss')
+
 module.exports = {
-  presets: [
-    require('@varlet/preset-tailwindcss')
-  ]
+  presets: [presetVarlet()]
 }
 ```
 
