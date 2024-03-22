@@ -54,6 +54,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': '原子化 CSS 支持',
+          'en-US': 'Atomic CSS Support',
+        },
+        doc: 'atomicCssSupport',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': 'VSCode 插件',
           'en-US': 'VSCode Extension',
         },

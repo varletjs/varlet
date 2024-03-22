@@ -95,6 +95,9 @@ createApp(App).use(Varlet).mount('#app')
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `桌面端适配器，让移动端组件库可以在桌面端运行` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground)  | `Varlet 组件库在线编辑工具`       |
 | [@varlet/import-resolver](https://github.com/varletjs/varlet/tree/dev/packages/varlet-import-resolver)  | [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) `的一个解析器，用于实现 Varlet 按需引入`   |
+| [@varlet/preset-unocss](https://github.com/varletjs/varlet/tree/dev/packages/varlet-preset-unocss)  | `varlet 的` [UnoCss](https://unocss.dev/) `预设` |
+| [@varlet/preset-tailwindcss](https://github.com/varletjs/varlet/tree/dev/packages/varlet-preset-tailwindcss)  | `varlet 的` [tailwindcss](https://tailwindcss.com/) `预设` |
+| [varlet-theme-builder](https://github.com/varletjs/varlet-theme-builder) | `主题生成器，用于为 varlet material design 3 生成主题变量` | 
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension)  | `Varlet 组件库 VSCode 插件`   |
 | [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode 主题`   |
 | [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet 组件库移动端模板`   |

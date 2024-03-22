@@ -31,6 +31,9 @@ The following projects are maintained by the official team for a long time.
 | [@varlet/touch-emulator](https://github.com/varletjs/varlet/tree/dev/packages/varlet-touch-emulator) | `Desktop adapter, so that the mobile component library can run on the desktop` |
 | [@varlet/ui-playground](https://github.com/varletjs/varlet/tree/dev/packages/varlet-ui-playground) | `Varlet component library online editing tool` |
 | [@varlet/import-resolver](https://github.com/varletjs/varlet/tree/dev/packages/varlet-import-resolver)  | `A resolver for` [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components) ` used to implement Varlet and import it on demand`   |
+| [@varlet/preset-unocss](https://github.com/varletjs/varlet/tree/dev/packages/varlet-preset-unocss)  | [UnoCss](https://unocss.dev/) `presets for varlet` |
+| [@varlet/preset-tailwindcss](https://github.com/varletjs/varlet/tree/dev/packages/varlet-preset-tailwindcss)  | [tailwindcss](https://tailwindcss.com/) `presets for varlet` |
+| [varlet-theme-builder](https://github.com/varletjs/varlet-theme-builder) | `Theme generator for generating theme variables for varlet Material Design 3` | 
 | [varlet-vscode-extension](https://github.com/varletjs/varlet/tree/dev/packages/varlet-vscode-extension) | `Varlet Component Library VSCode Plugin` |
 | [vscode-theme-varlet](https://github.com/varletjs/vscode-theme-varlet)  | `Varlet VSCode Theme`   |
 | [varlet-app-example](https://github.com/varletjs/varlet-app-template)  | `Varlet component library app template`   |
