@@ -272,8 +272,8 @@ varlet-cli create
 
 ### Note before publish
 
-- 1.`npm` repository registry must set to `npm` official mirror
-- 2.Execute `npm login` to log in
+1. `npm` repository registry must set to `npm` official mirror
+2. Execute `npm login` to log in
 
 ### Q & A
 

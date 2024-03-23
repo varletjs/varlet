@@ -271,8 +271,8 @@ varlet-cli create
 
 ### 发布前注意
 
-- 1.`npm` 的仓库源必须指向 `npm` 官方镜像
-- 2.执行 `npm login` 进行登录
+1. `npm` 的仓库源必须指向 `npm` 官方镜像
+2. 执行 `npm login` 进行登录
 
 ### 问答
 
