@@ -1,3 +1,12 @@
+## [3.2.1](https://github.com/varletjs/varlet/compare/v3.2.0...v3.2.1) (2024-03-23)
+
+
+### Bug Fixes
+
+* **preset-tailwindcss:** rename preset varlet colors ([#1548](https://github.com/varletjs/varlet/issues/1548)) ([976f3d7](https://github.com/varletjs/varlet/commit/976f3d782198ab3b45ac19a652c34732e22c051a))
+
+
+
 # [3.2.0](https://github.com/varletjs/varlet/compare/v3.1.4...v3.2.0) (2024-03-22)
 
 
