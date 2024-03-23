@@ -34,29 +34,29 @@ export interface PresetVarletColors {
   danger?: string
   success?: string
   disabled?: string
-  textDisabled?: string
-  onPrimary?: string
-  onInfo?: string
-  onWarning?: string
-  onDanger?: string
-  onSuccess?: string
-  primaryContainer?: string
-  infoContainer?: string
-  warningContainer?: string
-  dangerContainer?: string
-  successContainer?: string
-  onPrimaryContainer?: string
-  onInfoContainer?: string
-  onWarningContainer?: string
-  onDangerContainer?: string
-  onSuccessContainer?: string
-  surfaceContainer?: string
-  surfaceContainerLow?: string
-  surfaceContainerHigh?: string
-  surfaceContainerHighest?: string
-  inverseSurface?: string
+  'text-disabled'?: string
+  'on-primary'?: string
+  'on-info'?: string
+  'on-warning'?: string
+  'on-danger'?: string
+  'on-success'?: string
+  'primary-container'?: string
+  'info-container'?: string
+  'warning-container'?: string
+  'danger-container'?: string
+  'success-container'?: string
+  'on-primary-container'?: string
+  'on-info-container'?: string
+  'on-warning-container'?: string
+  'on-danger-container'?: string
+  'on-success-container'?: string
+  'surface-container'?: string
+  'surface-container-low'?: string
+  'surface-container-high'?: string
+  'surface-container-highest'?: string
+  'inverse-surface'?: string
   outline?: string
-  onSurfaceVariant?: string
+  'on-surface-variant'?: string
 }
 
 function getScreens(options: PresetVarletOptions = {}) {
@@ -146,29 +146,29 @@ function getColors(options: PresetVarletOptions = {}) {
     danger: 'var(--color-danger)',
     success: 'var(--color-success)',
     disabled: 'var(--color-disabled)',
-    textDisabled: 'var(--color-text-disabled)',
-    onPrimary: 'var(--color-on-primary)',
-    onInfo: 'var(--color-on-info)',
-    onWarning: 'var(--color-on-warning)',
-    onDanger: 'var(--color-on-danger)',
-    onSuccess: 'var(--color-on-success)',
-    primaryContainer: 'var(--color-primary-container)',
-    infoContainer: 'var(--color-info-container)',
-    warningContainer: 'var(--color-warning-container)',
-    dangerContainer: 'var(--color-danger-container)',
-    successContainer: 'var(--color-success-container)',
-    onPrimaryContainer: 'var(--color-on-primary-container)',
-    onInfoContainer: 'var(--color-on-info-container)',
-    onWarningContainer: 'var(--color-on-warning-container)',
-    onDangerContainer: 'var(--color-on-danger-container)',
-    onSuccessContainer: 'var(--color-on-success-container)',
-    surfaceContainer: 'var(--color-surface-container)',
-    surfaceContainerLow: 'var(--color-surface-container-low)',
-    surfaceContainerHigh: 'var(--color-surface-container-high)',
-    surfaceContainerHighest: 'var(--color-surface-container-highest)',
-    inverseSurface: 'var(--color-inverse-surface)',
+    'text-disabled': 'var(--color-text-disabled)',
+    'on-primary': 'var(--color-on-primary)',
+    'on-info': 'var(--color-on-info)',
+    'on-warning': 'var(--color-on-warning)',
+    'on-danger': 'var(--color-on-danger)',
+    'on-success': 'var(--color-on-success)',
+    'primary-container': 'var(--color-primary-container)',
+    'info-container': 'var(--color-info-container)',
+    'warning-container': 'var(--color-warning-container)',
+    'danger-container': 'var(--color-danger-container)',
+    'success-container': 'var(--color-success-container)',
+    'on-primary-container': 'var(--color-on-primary-container)',
+    'on-info-container': 'var(--color-on-info-container)',
+    'on-warning-container': 'var(--color-on-warning-container)',
+    'on-danger-container': 'var(--color-on-danger-container)',
+    'on-success-container': 'var(--color-on-success-container)',
+    'surface-container': 'var(--color-surface-container)',
+    'surface-container-low': 'var(--color-surface-container-low)',
+    'surface-container-high': 'var(--color-surface-container-high)',
+    'surface-container-highest': 'var(--color-surface-container-highest)',
+    'inverse-surface': 'var(--color-inverse-surface)',
     outline: 'var(--color-outline)',
-    onSurfaceVariant: 'var(--color-on-surface-variant)',
+    'on-surface-variant': 'var(--color-on-surface-variant)',
   }
 
   if (colors === true) {
