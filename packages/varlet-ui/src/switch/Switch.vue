@@ -9,7 +9,12 @@
       <div
         :style="styleComputed.track"
         :class="
-          classes(n('track'), [modelValue === activeValue, n('track--active')], [errorMessage, n('track--error')])
+          classes(
+            n('track'),
+            [modelValue === activeValue, n('track--active')],
+            [errorMessage, n('track--error')],
+            [variant, n('--variant')]
+          )
         "
       ></div>
       <div
@@ -127,6 +132,8 @@ export default defineComponent({
     })
 
     const radius = computed(() => multiplySizeUnit(props.size, 0.8))
+
+    const variant = computed<boolean | undefined>(() => props.variant)
 
     const switchProvider: SwitchProvider = {
       reset,

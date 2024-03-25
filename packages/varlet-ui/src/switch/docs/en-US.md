@@ -123,6 +123,23 @@ function handleBeforeChange(value, change) {
 </template>
 ```
 
+### Variant
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch 
+    variant
+    v-model="value"
+  />
+</template>
+```
+
 ## API
 
 ### Props
