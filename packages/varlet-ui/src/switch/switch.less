@@ -10,10 +10,10 @@
   --switch-disabled-opacity: var(--opacity-disabled);
   --switch-variant-width: 52px;
   --switch-variant-height: 32px;
-  --switch-variant-handle-active-width: 24px;
-  --switch-variant-handle-active-height: 24px;
-  --switch-variant-handle-width: 16px;
-  --switch-variant-handle-height: 16px;
+  --switch-variant-handle-off-width: 16px;
+  --switch-variant-handle-off-height: 16px;
+  --switch-variant-handle-width: 24px;
+  --switch-variant-handle-height: 24px;
 }
 
 .var-switch {
@@ -100,23 +100,17 @@
       .var-switch__track {
         width: 100%;
         height: 100%;
-        padding: 4px 2px;
+        padding: 0 5px;
         border-radius: 9999px;
       }
 
-      .var-switch__ripple {
-        width: 48px;
-        height: 48px;
+      .var-switch__handle {
+        width: var(--switch-variant-handle-width);
+        height: var(--switch-variant-handle-height);
+        transform: scale(2 / 3);
 
-        .var-switch__handle {
-          width: var(--switch-variant-handle-width);
-          height: var(--switch-variant-handle-height);
-          transform: calc(var(--switch-variant-handle-height) / var(--switch-variant-handle-active-height));
-
-          &--active {
-            width: var(--switch-variant-handle-active-width);
-            height: var(--switch-variant-handle-active-height);
-          }
+        &--active {
+          transform: none;
         }
       }
     }

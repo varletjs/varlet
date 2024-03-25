@@ -1211,6 +1211,18 @@ export interface StyleVars {
   switchHandleErrorBackground?: string
   '--switch-disabled-opacity'?: string
   switchDisabledOpacity?: string
+  '--switch-variant-width'?: string
+  switchVariantWidth?: string
+  '--switch-variant-height'?: string
+  switchVariantHeight?: string
+  '--switch-variant-handle-off-width'?: string
+  switchVariantHandleOffWidth?: string
+  '--switch-variant-handle-off-height'?: string
+  switchVariantHandleOffHeight?: string
+  '--switch-variant-handle-width'?: string
+  switchVariantHandleWidth?: string
+  '--switch-variant-handle-height'?: string
+  switchVariantHandleHeight?: string
   '--table-background'?: string
   tableBackground?: string
   '--table-border-radius'?: string

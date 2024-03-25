@@ -96,8 +96,9 @@ export default defineComponent({
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
+    // const variant = computed<boolean | undefined>(() => props.variant)
     const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
-      const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
+      const { size, modelValue, color, closeColor, loadingColor, activeValue, variant } = props
 
       return {
         handle: {
@@ -113,8 +114,8 @@ export default defineComponent({
           height: multiplySizeUnit(size, 2),
         },
         track: {
-          height: multiplySizeUnit(size, 0.72),
-          width: multiplySizeUnit(size, 1.9),
+          width: multiplySizeUnit(size, variant ? 13 / 6 : 1.9),
+          height: multiplySizeUnit(size, variant ? 4 / 3 : 0.72),
           borderRadius: multiplySizeUnit(size, 2 / 3),
           filter: modelValue === activeValue || errorMessage?.value ? undefined : 'brightness(.6)',
           backgroundColor: modelValue === activeValue ? color : closeColor,
@@ -127,8 +128,6 @@ export default defineComponent({
     })
 
     const radius = computed(() => multiplySizeUnit(props.size, 0.8))
-
-    const variant = computed<boolean | undefined>(() => props.variant)
 
     const switchProvider: SwitchProvider = {
       reset,
