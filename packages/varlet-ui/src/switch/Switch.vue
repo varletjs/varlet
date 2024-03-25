@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()" v-hover:desktop="hover">
+  <div :class="classes(n(), [variant, n('--variant')])" v-hover:desktop="hover">
     <div
       ref="switchRef"
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
@@ -9,12 +9,7 @@
       <div
         :style="styleComputed.track"
         :class="
-          classes(
-            n('track'),
-            [modelValue === activeValue, n('track--active')],
-            [errorMessage, n('track--error')],
-            [variant, n('--variant')]
-          )
+          classes(n('track'), [modelValue === activeValue, n('track--active')], [errorMessage, n('track--error')])
         "
       ></div>
       <div

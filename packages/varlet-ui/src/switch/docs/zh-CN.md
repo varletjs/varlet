@@ -133,10 +133,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch 
-    variant
-    v-model="value"
-  />
+  <var-switch variant v-model="value" />
 </template>
 ```
 
@@ -160,6 +157,7 @@ const value = ref(true)
 | `rules`          | 校验规则 | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
+| `variant` ***3.2.0*** | 变体模式 | _boolean_ | `false` |
 
 ### 事件
 
@@ -184,3 +182,9 @@ const value = ref(true)
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
 | `--switch-disabled-opacity` | `var(--opacity-disabled)` |
+| `--switch-variant-width` | `52px` |
+| `--switch-variant-height` | `32px` |
+| `--switch-variant-handle-active-width` | `24px` |
+| `--switch-variant-handle-active-height` | `24px` |
+| `--switch-variant-handle-width` | `16px` |
+| `--switch-variant-handle-height` | `16px` |

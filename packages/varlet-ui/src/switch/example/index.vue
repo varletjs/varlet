@@ -53,7 +53,5 @@ onThemeChange()
     <var-switch v-model="value5" lazy-change @before-change="handleBeforeChange" />
   </var-space>
   <app-type>{{ t('variant') }}</app-type>
-  <var-space :size="['3vmin', '9vmin']">
-    <var-switch variant v-model="value6" />
-  </var-space>
+  <var-switch variant v-model="value6" />
 </template>

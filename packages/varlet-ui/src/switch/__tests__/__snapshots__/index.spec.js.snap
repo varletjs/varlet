@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test switch events > test variant mode 1`] = `
+"<div class="var-switch">
+  <div class="var-switch__block">
+    <div class="var-switch__track var-switch__track--active"></div>
+    <div class="var-switch__ripple var-switch__ripple--active" tabindex="0">
+      <div class="var-switch__handle var-elevation--2 var-switch__handle--active">
+        <!--v-if-->
+      </div>
+      <div class="var-hover-overlay"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test switch events > test variant mode 2`] = `
+"<div class="var-switch">
+  <div class="var-switch__block">
+    <div class="var-switch__track var-switch__track--active"></div>
+    <div class="var-switch__ripple var-switch__ripple--active" tabindex="0">
+      <div class="var-switch__handle var-elevation--2 var-switch__handle--active">
+        <!--v-if-->
+      </div>
+      <div class="var-hover-overlay"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;

@@ -8,4 +8,10 @@ export default {
   '--switch-handle-active-background': 'var(--color-primary)',
   '--switch-handle-error-background': 'var(--color-danger)',
   '--switch-disabled-opacity': 'var(--opacity-disabled)',
+  '--switch-variant-width': '52px',
+  '--switch-variant-height': '32px',
+  '--switch-variant-handle-active-width': '24px',
+  '--switch-variant-handle-active-height': '24px',
+  '--switch-variant-handle-width': '16px',
+  '--switch-variant-handle-height': '16px',
 }

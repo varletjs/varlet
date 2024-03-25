@@ -133,10 +133,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch 
-    variant
-    v-model="value"
-  />
+  <var-switch variant v-model="value" />
 </template>
 ```
 
@@ -160,6 +157,7 @@ const value = ref(true)
 | `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
+| `variant` ***3.2.0*** | Variant mode | _boolean_ | `false` |
 
 ### Events
 
@@ -184,3 +182,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
 | `--switch-disabled-opacity` | `var(--opacity-disabled)` |
+| `--switch-variant-width` | `52px` |
+| `--switch-variant-height` | `32px` |
+| `--switch-variant-handle-active-width` | `24px` |
+| `--switch-variant-handle-active-height` | `24px` |
+| `--switch-variant-handle-width` | `16px` |
+| `--switch-variant-handle-height` | `16px` |
