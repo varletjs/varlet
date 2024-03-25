@@ -146,7 +146,7 @@ const overlayStyle = ref(false)
 </style>
 ```
 
-### Events
+### Event
 
 ```html
 <script setup>
