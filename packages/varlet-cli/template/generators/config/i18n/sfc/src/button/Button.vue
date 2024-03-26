@@ -1,6 +1,6 @@
 <template>
   <button class="va-button" :style="{ background: color }" @click="handleClick">
-    {{ pack.button }}
+    {{ t('button') }}
     <slot />
   </button>
 </template>
@@ -9,7 +9,7 @@
 import { defineComponent, PropType } from 'vue'
 
 // i18n for component's internal
-import { pack } from '../locale'
+import { t } from '../locale'
 
 export default defineComponent({
   name: 'VaButton',
@@ -27,7 +27,7 @@ export default defineComponent({
     }
 
     return {
-      pack,
+      t,
       handleClick,
     }
   },

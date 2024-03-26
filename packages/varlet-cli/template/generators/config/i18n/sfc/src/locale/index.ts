@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import zhCN from './zh-CN'
+import { hasOwn } from '@varlet/shared'
 
 export type Message = {
   // Button component
@@ -41,7 +42,7 @@ function useLocale<T = Message>() {
   }
 
   const t = (id: string) => {
-    if (Object.prototype.hasOwnProperty.call(currentMessage.value, id)) {
+    if (hasOwn(currentMessage.value, id)) {
       return currentMessage.value[id]
     }
 
@@ -58,14 +59,14 @@ function useLocale<T = Message>() {
   }
 }
 
-const { messages, currentMessage, add, use, merge } = useLocale()
+const { messages, currentMessage, add, use, merge, t } = useLocale()
 
 add('zh-CN', zhCN)
 use('zh-CN')
 
-export { messages, currentMessage, add, use, merge, useLocale }
+export { messages, currentMessage, add, use, merge, t, useLocale }
 
-export const _LocaleComponent = { messages, currentMessage, add, use, merge, useLocale }
+export const _LocaleComponent = { messages, currentMessage, add, use, merge, t, useLocale }
 
 export default {
   messages,
@@ -73,5 +74,6 @@ export default {
   add,
   use,
   merge,
+  t,
   useLocale,
 }
