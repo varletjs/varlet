@@ -10,8 +10,6 @@ export default {
   '--switch-disabled-opacity': 'var(--opacity-disabled)',
   '--switch-variant-width': '52px',
   '--switch-variant-height': '32px',
-  '--switch-variant-handle-off-width': '16px',
-  '--switch-variant-handle-off-height': '16px',
   '--switch-variant-handle-width': '24px',
   '--switch-variant-handle-height': '24px',
 }

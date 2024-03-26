@@ -96,7 +96,6 @@ export default defineComponent({
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
-    // const variant = computed<boolean | undefined>(() => props.variant)
     const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
       const { size, modelValue, color, closeColor, loadingColor, activeValue, variant } = props
 
@@ -108,7 +107,10 @@ export default defineComponent({
           color: loadingColor,
         },
         ripple: {
-          left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
+          left:
+            modelValue === activeValue
+              ? multiplySizeUnit(size, 0.5)
+              : `-${multiplySizeUnit(size, variant ? 0.25 : 0.5)}`,
           color: modelValue === activeValue ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
@@ -121,8 +123,8 @@ export default defineComponent({
           backgroundColor: modelValue === activeValue ? color : closeColor,
         },
         switch: {
-          height: multiplySizeUnit(size, 1.2),
-          width: multiplySizeUnit(size, 2),
+          width: multiplySizeUnit(size, variant ? 13 / 6 : 2),
+          height: multiplySizeUnit(size, variant ? 4 / 3 : 1.2),
         },
       }
     })

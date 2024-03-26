@@ -1215,10 +1215,6 @@ export interface StyleVars {
   switchVariantWidth?: string
   '--switch-variant-height'?: string
   switchVariantHeight?: string
-  '--switch-variant-handle-off-width'?: string
-  switchVariantHandleOffWidth?: string
-  '--switch-variant-handle-off-height'?: string
-  switchVariantHandleOffHeight?: string
   '--switch-variant-handle-width'?: string
   switchVariantHandleWidth?: string
   '--switch-variant-handle-height'?: string
