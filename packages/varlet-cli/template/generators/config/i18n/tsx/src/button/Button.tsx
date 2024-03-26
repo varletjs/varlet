@@ -2,7 +2,7 @@ import { defineComponent, PropType } from 'vue'
 import './button.less'
 
 // i18n for component's internal
-import { pack } from '../locale'
+import { t } from '../locale'
 
 export default defineComponent({
   name: 'VaButton',
@@ -24,7 +24,7 @@ export default defineComponent({
 
       return (
         <button class="va-button" style={{ background: color }} onClick={handleClick}>
-          {pack.value.button}
+          {t('button')}
           {slots.default?.()}
         </button>
       )
