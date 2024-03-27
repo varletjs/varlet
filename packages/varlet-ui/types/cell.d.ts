@@ -4,7 +4,7 @@ import { VNode } from 'vue'
 export declare const cellProps: Record<keyof CellProps, any>
 
 export interface CellProps extends BasicAttributes {
-  title?: string | number
+  title?: string
   icon?: string
   namespace?: string
   description?: string

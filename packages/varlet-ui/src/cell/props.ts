@@ -2,7 +2,7 @@ import { defineListenerProp, pickProps } from '../utils/components'
 import { iconProps } from '../icon'
 
 export const props = {
-  title: [Number, String],
+  title: String,
   icon: pickProps(iconProps, 'name'),
   namespace: pickProps(iconProps, 'namespace'),
   description: String,

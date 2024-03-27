@@ -108,7 +108,7 @@ const handleClick = (item) => {
 
 | Prop | Description | Type | Default |
 | ----- | -------------- | -------- | ---------- |
-| `title` | Title | _string \| number_ | `-` |
+| `title` | Title | _string_ | `-` |
 | `icon` | Icon name | _string_ | `-` |
 | `namespace` |  Icon namespace | _string_ | `var-icon` |
 | `description` | Description | _string_ | `-` |
