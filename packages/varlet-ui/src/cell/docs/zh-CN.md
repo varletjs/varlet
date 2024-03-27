@@ -108,7 +108,7 @@ const handleClick = (item) => {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ----- | -------------- | -------- | ---------- |
-| `title` | 单元格标题  | _string \| number_ | `-` |
+| `title` | 单元格标题  | _string_ | `-` |
 | `icon` | 左侧图标名称 | _string_ | `-` |
 | `namespace` | 左侧图标命名空间 | _string_ | `var-icon` |
 | `description` | 单元格描述 | _string_ | `-` |
