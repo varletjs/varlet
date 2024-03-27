@@ -1219,6 +1219,20 @@ export interface StyleVars {
   switchVariantHandleWidth?: string
   '--switch-variant-handle-height'?: string
   switchVariantHandleHeight?: string
+  '--switch-variant-track-border-color'?: string
+  switchVariantTrackBorderColor?: string
+  '--switch-variant-handle-background'?: string
+  switchVariantHandleBackground?: string
+  '--switch-variant-handle-active-background'?: string
+  switchVariantHandleActiveBackground?: string
+  '--switch-variant-handle-hover-background'?: string
+  switchVariantHandleHoverBackground?: string
+  '--switch-variant-handle-active-hover-background'?: string
+  switchVariantHandleActiveHoverBackground?: string
+  '--switch-variant-track-disabled-background'?: string
+  switchVariantTrackDisabledBackground?: string
+  '--switch-variant-handle-disabled-background'?: string
+  switchVariantHandleDisabledBackground?: string
   '--table-background'?: string
   tableBackground?: string
   '--table-border-radius'?: string

@@ -12,4 +12,8 @@ export default {
   '--switch-variant-height': '32px',
   '--switch-variant-handle-width': '24px',
   '--switch-variant-handle-height': '24px',
+  '--switch-variant-track-border-color': '#938F99',
+  '--switch-variant-handle-background': '#938F99',
+  '--switch-variant-track-disabled-background': '#E6E0E9',
+  '--switch-variant-handle-disabled-background': '#141218',
 }

@@ -186,3 +186,10 @@ const value = ref(true)
 | `--switch-variant-height` | `32px` |
 | `--switch-variant-handle-width` | `24px` |
 | `--switch-variant-handle-height` | `24px` |
+| `--switch-variant-track-border-color` | `#79747E` |
+| `--switch-variant-handle-background` | `#79747E` |
+| `--switch-variant-handle-active-background` | `#fff` |
+| `--switch-variant-handle-hover-background` | `var(--color-on-surface-variant)` |
+| `--switch-variant-handle-active-hover-background` | `var(--color-on-primary-container)` |
+| `--switch-variant-track-disabled-background` | `#1D1B20` |
+| `--switch-variant-handle-disabled-background` | `#FEF7FF` |

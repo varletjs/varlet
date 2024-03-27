@@ -29,7 +29,8 @@
               n('handle'),
               n('$-elevation--2'),
               [modelValue === activeValue, n('handle--active')],
-              [errorMessage, n('handle--error')]
+              [errorMessage, n('handle--error')],
+              [hovering, n('handle--hover')]
             )
           "
         >
@@ -110,7 +111,7 @@ export default defineComponent({
           left:
             modelValue === activeValue
               ? multiplySizeUnit(size, 0.5)
-              : `-${multiplySizeUnit(size, variant ? 0.25 : 0.5)}`,
+              : `-${multiplySizeUnit(size, variant ? 1 / 3 : 0.5)}`,
           color: modelValue === activeValue ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
@@ -119,8 +120,9 @@ export default defineComponent({
           width: multiplySizeUnit(size, variant ? 13 / 6 : 1.9),
           height: multiplySizeUnit(size, variant ? 4 / 3 : 0.72),
           borderRadius: multiplySizeUnit(size, 2 / 3),
-          filter: modelValue === activeValue || errorMessage?.value ? undefined : 'brightness(.6)',
+          filter: modelValue === activeValue || errorMessage?.value ? undefined : `brightness(${variant ? 1 : 0.6})`,
           backgroundColor: modelValue === activeValue ? color : closeColor,
+          borderWidth: variant && !modelValue === activeValue ? multiplySizeUnit(size, 1 / 12) : undefined,
         },
         switch: {
           width: multiplySizeUnit(size, variant ? 13 / 6 : 2),
