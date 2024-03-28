@@ -157,7 +157,7 @@ const value = ref(true)
 | `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
-| `variant` ***3.2.0*** | Variant mode | _boolean_ | `false` |
+| `variant` ***3.2.2*** | Variant mode | _boolean_ | `false` |
 
 ### Events
 
