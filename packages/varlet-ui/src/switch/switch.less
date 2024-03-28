@@ -18,8 +18,11 @@
   --switch-variant-handle-active-background: #fff;
   --switch-variant-handle-hover-background: var(--color-on-surface-variant);
   --switch-variant-handle-active-hover-background: var(--color-on-primary-container);
-  --switch-variant-track-disabled-background: #1d1b20;
-  --switch-variant-handle-disabled-background: #fef7ff;
+  --switch-variant-track-disabled-background: rgba(231, 224, 236, 0.12);
+  --switch-variant-handle-disabled-background: rgba(29, 27, 32, 0.38);
+  --switch-variant-handle-disabled-border-color: rgba(29, 27, 32, 0.12);
+  --switch-variant-track-disabled-active-background: rgba(29, 27, 32, 0.12);
+  --switch-variant-handle-disabled-active-background: #fef7ff;
 }
 
 .var-switch {
@@ -144,20 +147,40 @@
         }
 
         &--hover {
-          transform: scale(7 / 6);
           background-color: var(--switch-variant-handle-hover-background);
+        }
+
+        &:active {
+          transform: scale(7 / 6);
         }
       }
     }
 
     .var-switch--disabled {
       .var-switch__track {
+        border-color: var(--switch-variant-handle-disabled-border-color);
         background-color: var(--switch-variant-track-disabled-background);
-        filter: brightness(0.12);
+
+        &--active {
+          border: none;
+          background-color: var(--switch-variant-track-disabled-active-background);
+        }
       }
 
       .var-switch__handle {
         background-color: var(--switch-variant-handle-disabled-background);
+
+        &:active {
+          transform: scale(2 / 3);
+        }
+
+        &--active {
+          background-color: var(--switch-variant-handle-disabled-active-background);
+
+          &:active {
+            transform: none;
+          }
+        }
       }
     }
   }
