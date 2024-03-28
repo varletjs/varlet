@@ -8,4 +8,12 @@ export default {
   '--switch-handle-active-background': 'var(--color-primary)',
   '--switch-handle-error-background': 'var(--color-danger)',
   '--switch-disabled-opacity': 'var(--opacity-disabled)',
+  '--switch-variant-width': '52px',
+  '--switch-variant-height': '32px',
+  '--switch-variant-handle-width': '24px',
+  '--switch-variant-handle-height': '24px',
+  '--switch-variant-track-border-color': '#938F99',
+  '--switch-variant-handle-background': '#938F99',
+  '--switch-variant-track-disabled-background': '#E6E0E9',
+  '--switch-variant-handle-disabled-background': '#141218',
 }

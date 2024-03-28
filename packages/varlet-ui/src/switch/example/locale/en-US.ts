@@ -9,4 +9,5 @@ export default {
   text: 'Whether to open the switch',
   state: 'Error!',
   lazyChange: 'Asynchronous Change',
+  variant: 'Variant',
 }

@@ -9,4 +9,5 @@ export default {
   text: '是否打开开关',
   state: '错误！',
   lazyChange: '异步变更',
+  variant: '变体',
 }

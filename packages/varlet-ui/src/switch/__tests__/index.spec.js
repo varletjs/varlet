@@ -242,4 +242,23 @@ describe('test switch events', () => {
     HTMLElement.prototype.click = origin
     wrapper.unmount()
   })
+
+  test('test variant mode', async () => {
+    const wrapper = mount({
+      components: {
+        [VarSwitch.name]: VarSwitch,
+      },
+      data() {
+        return {
+          value: true,
+        }
+      },
+      template: `<var-switch :variant="variant" v-model="value" />`,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setData({ variant: true })
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })

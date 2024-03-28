@@ -18,6 +18,7 @@ export interface SwitchProps extends BasicAttributes {
   size?: string | number
   lazyChange?: boolean
   validateTrigger?: Array<SwitchValidateTrigger>
+  variant?: boolean
   rules?: Array<(value: any) => any>
   onClick?: ListenerProp<(event: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
