@@ -53,5 +53,5 @@ onThemeChange()
     <var-switch v-model="value5" lazy-change @before-change="handleBeforeChange" />
   </var-space>
   <app-type>{{ t('variant') }}</app-type>
-  <var-switch variant disabled v-model="value6" />
+  <var-switch variant v-model="value6" />
 </template>
