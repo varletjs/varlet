@@ -135,7 +135,7 @@
         transform: scale(2 / 3);
         background-color: var(--switch-variant-handle-background);
         box-shadow: none;
-        transition: transform 0.25s;
+        transition: transform 0.2s;
 
         &--active {
           background-color: var(--switch-variant-handle-active-background);
@@ -149,14 +149,24 @@
         &--hover {
           background-color: var(--switch-variant-handle-hover-background);
         }
+      }
 
-        &:active {
-          transform: scale(7 / 6);
-        }
+      &:active .var-switch__handle {
+        transform: scale(7 / 6);
       }
     }
 
     .var-switch--disabled {
+      &.var-switch__block {
+        &:active .var-switch__handle {
+          transform: scale(2 / 3);
+        }
+
+        &--active .var-switch__handle {
+          transform: none !important;
+        }
+      }
+
       .var-switch__track {
         border-color: var(--switch-variant-handle-disabled-border-color);
         background-color: var(--switch-variant-track-disabled-background);
@@ -170,16 +180,8 @@
       .var-switch__handle {
         background-color: var(--switch-variant-handle-disabled-background);
 
-        &:active {
-          transform: scale(2 / 3);
-        }
-
         &--active {
           background-color: var(--switch-variant-handle-disabled-active-background);
-
-          &:active {
-            transform: none;
-          }
         }
       }
     }

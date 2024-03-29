@@ -2,7 +2,13 @@
   <div :class="classes(n(), [variant, n('--variant')])" v-hover:desktop="hover">
     <div
       ref="switchRef"
-      :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
+      :class="
+        classes(
+          n('block'),
+          [disabled || formDisabled, n('--disabled')],
+          [modelValue === activeValue, n('block--active')]
+        )
+      "
       :style="styleComputed.switch"
       @click="switchActive"
     >
