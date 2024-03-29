@@ -1,3 +1,14 @@
+## [3.2.2](https://github.com/varletjs/varlet/compare/v3.2.1...v3.2.2) (2024-03-29)
+
+
+### Bug Fixes
+
+* **cell:** limit the type of title to string ([#1555](https://github.com/varletjs/varlet/issues/1555)) ([d8b5432](https://github.com/varletjs/varlet/commit/d8b543248c63d82b56829d45cf74c4389c84d9ca))
+* **cli/create:** replace pack ([6bcd910](https://github.com/varletjs/varlet/commit/6bcd910f4b319813fe998fa20da9018db5b726a6))
+* **cli/gen:** replace pack ([#1553](https://github.com/varletjs/varlet/issues/1553)) ([baddcc2](https://github.com/varletjs/varlet/commit/baddcc2a1c866d9abc225f0dd6b99ac34d2e067c))
+
+
+
 ## [3.2.1](https://github.com/varletjs/varlet/compare/v3.2.0...v3.2.1) (2024-03-23)
 
 
