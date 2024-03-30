@@ -1229,16 +1229,6 @@ export interface StyleVars {
   switchVariantHandleHoverBackground?: string
   '--switch-variant-handle-active-hover-background'?: string
   switchVariantHandleActiveHoverBackground?: string
-  '--switch-variant-track-disabled-background'?: string
-  switchVariantTrackDisabledBackground?: string
-  '--switch-variant-handle-disabled-background'?: string
-  switchVariantHandleDisabledBackground?: string
-  '--switch-variant-handle-disabled-border-color'?: string
-  switchVariantHandleDisabledBorderColor?: string
-  '--switch-variant-track-disabled-active-background'?: string
-  switchVariantTrackDisabledActiveBackground?: string
-  '--switch-variant-handle-disabled-active-background'?: string
-  switchVariantHandleDisabledActiveBackground?: string
   '--table-background'?: string
   tableBackground?: string
   '--table-border-radius'?: string

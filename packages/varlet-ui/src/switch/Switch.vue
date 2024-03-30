@@ -2,24 +2,16 @@
   <div :class="classes(n(), [variant, n('--variant')])" v-hover:desktop="hover">
     <div
       ref="switchRef"
-      :class="
-        classes(
-          n('block'),
-          [disabled || formDisabled, n('--disabled')],
-          [modelValue === activeValue, n('block--active')]
-        )
-      "
+      :class="classes(n('block'), [disabled || formDisabled, n('--disabled')], [isActive, n('block--active')])"
       :style="styleComputed.switch"
       @click="switchActive"
     >
       <div
         :style="styleComputed.track"
-        :class="
-          classes(n('track'), [modelValue === activeValue, n('track--active')], [errorMessage, n('track--error')])
-        "
+        :class="classes(n('track'), [isActive, n('track--active')], [errorMessage, n('track--error')])"
       ></div>
       <div
-        :class="classes(n('ripple'), [modelValue === activeValue, n('ripple--active')])"
+        :class="classes(n('ripple'), [isActive, n('ripple--active')])"
         :style="styleComputed.ripple"
         :tabindex="disabled || formDisabled ? undefined : '0'"
         v-ripple="{
@@ -34,7 +26,7 @@
             classes(
               n('handle'),
               n('$-elevation--2'),
-              [modelValue === activeValue, n('handle--active')],
+              [isActive, n('handle--active')],
               [errorMessage, n('handle--error')],
               [hovering, n('handle--hover')]
             )
@@ -103,22 +95,22 @@ export default defineComponent({
     const { bindForm, form } = useForm()
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
+
+    const isActive = computed(() => props.modelValue === props.activeValue)
+
     const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
-      const { size, modelValue, color, closeColor, loadingColor, activeValue, variant } = props
+      const { size, color, closeColor, loadingColor, variant } = props
 
       return {
         handle: {
           width: multiplySizeUnit(size),
           height: multiplySizeUnit(size),
-          backgroundColor: modelValue === activeValue ? color : closeColor,
+          backgroundColor: isActive.value ? color : closeColor,
           color: loadingColor,
         },
         ripple: {
-          left:
-            modelValue === activeValue
-              ? multiplySizeUnit(size, 0.5)
-              : `-${multiplySizeUnit(size, variant ? 1 / 3 : 0.5)}`,
-          color: modelValue === activeValue ? color : closeColor || 'currentColor',
+          left: isActive.value ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, variant ? 1 / 3 : 0.5)}`,
+          color: isActive.value ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
         },
@@ -126,9 +118,9 @@ export default defineComponent({
           width: multiplySizeUnit(size, variant ? 13 / 6 : 1.9),
           height: multiplySizeUnit(size, variant ? 4 / 3 : 0.72),
           borderRadius: multiplySizeUnit(size, 2 / 3),
-          filter: modelValue === activeValue || errorMessage?.value ? undefined : `brightness(${variant ? 1 : 0.6})`,
-          backgroundColor: modelValue === activeValue ? color : closeColor,
-          borderWidth: variant && !modelValue === activeValue ? multiplySizeUnit(size, 1 / 12) : undefined,
+          filter: isActive.value || errorMessage?.value ? undefined : `brightness(${variant ? 1 : 0.6})`,
+          backgroundColor: isActive.value ? color : closeColor,
+          borderWidth: variant && !isActive.value ? multiplySizeUnit(size, 1 / 12) : undefined,
         },
         switch: {
           width: multiplySizeUnit(size, variant ? 13 / 6 : 2),
@@ -209,7 +201,7 @@ export default defineComponent({
         return
       }
 
-      const newValue = modelValue === activeValue ? inactiveValue : activeValue
+      const newValue = isActive.value ? inactiveValue : activeValue
 
       if (lazyChange) {
         call(onBeforeChange, newValue, (value) => {
@@ -237,6 +229,7 @@ export default defineComponent({
     }
 
     return {
+      isActive,
       switchRef,
       hovering,
       isFocusing,

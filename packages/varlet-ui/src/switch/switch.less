@@ -18,11 +18,6 @@
   --switch-variant-handle-active-background: #fff;
   --switch-variant-handle-hover-background: var(--color-on-surface-variant);
   --switch-variant-handle-active-hover-background: var(--color-on-primary-container);
-  --switch-variant-track-disabled-background: rgba(231, 224, 236, 0.12);
-  --switch-variant-handle-disabled-background: rgba(29, 27, 32, 0.38);
-  --switch-variant-handle-disabled-border-color: rgba(29, 27, 32, 0.12);
-  --switch-variant-track-disabled-active-background: rgba(29, 27, 32, 0.12);
-  --switch-variant-handle-disabled-active-background: #fef7ff;
 }
 
 .var-switch {
@@ -103,14 +98,20 @@
   }
 
   &--variant {
-    .var-switch__block {
-      width: var(--switch-variant-width);
-      height: var(--switch-variant-height);
+    .var-switch {
+      &__block {
+        width: var(--switch-variant-width);
+        height: var(--switch-variant-height);
 
-      .var-switch__track {
+        &:active .var-switch__handle {
+          transform: scale(7 / 6);
+        }
+      }
+
+      &__track {
         width: 100%;
         height: 100%;
-        border-radius: 9999px;
+        border-radius: calc(var(--switch-variant-height) / 2);
         background-color: var(--switch-variant-track-background);
         border: 2px solid var(--switch-variant-track-border-color);
         filter: none;
@@ -121,7 +122,7 @@
         }
       }
 
-      .var-switch__ripple {
+      &__ripple {
         left: -4px;
 
         &--active {
@@ -129,12 +130,11 @@
         }
       }
 
-      .var-switch__handle {
+      &__handle {
         width: var(--switch-variant-handle-width);
         height: var(--switch-variant-handle-height);
         transform: scale(2 / 3);
         background-color: var(--switch-variant-handle-background);
-        box-shadow: none;
         transition: transform 0.2s;
 
         &--active {
@@ -151,37 +151,9 @@
         }
       }
 
-      &:active .var-switch__handle {
-        transform: scale(7 / 6);
-      }
-    }
-
-    .var-switch--disabled {
-      &.var-switch__block {
+      &--disabled {
         &:active .var-switch__handle {
-          transform: scale(2 / 3);
-        }
-
-        &--active .var-switch__handle {
-          transform: none !important;
-        }
-      }
-
-      .var-switch__track {
-        border-color: var(--switch-variant-handle-disabled-border-color);
-        background-color: var(--switch-variant-track-disabled-background);
-
-        &--active {
-          border: none;
-          background-color: var(--switch-variant-track-disabled-active-background);
-        }
-      }
-
-      .var-switch__handle {
-        background-color: var(--switch-variant-handle-disabled-background);
-
-        &--active {
-          background-color: var(--switch-variant-handle-disabled-active-background);
+          transform: none;
         }
       }
     }

@@ -17,9 +17,4 @@ export default {
   '--switch-variant-handle-active-background': '#FFF',
   '--switch-variant-handle-hover-background': 'var(--color-on-surface-variant)',
   '--switch-variant-handle-active-hover-background': '#EADDFF',
-  '--switch-variant-track-disabled-background': 'rgba(231, 224, 236, 0.12)',
-  '--switch-variant-handle-disabled-background': 'rgba(29, 27, 32, 0.38)',
-  '--switch-variant-handle-disabled-border-color': 'rgba(29, 27, 32, 0.12)',
-  '--switch-variant-track-disabled-active-background': 'rgba(29, 27, 32, 0.12)',
-  '--switch-variant-handle-disabled-active-background': '#FEF7FF',
 }

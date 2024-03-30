@@ -14,9 +14,4 @@ export default {
   '--switch-variant-handle-height': '24px',
   '--switch-variant-track-border-color': '#938F99',
   '--switch-variant-handle-background': '#938F99',
-  '--switch-variant-track-disabled-background': 'rgba(73, 69, 79, 0.12)',
-  '--switch-variant-handle-disabled-background': '#E6E0E9',
-  '--switch-variant-handle-disabled-border-color': 'rgba(230, 224, 233, 0.12)',
-  '--switch-variant-track-disabled-active-background': 'rgba(230, 224, 233, 0.12)',
-  '--switch-variant-handle-disabled-active-background': '#141218',
 }
