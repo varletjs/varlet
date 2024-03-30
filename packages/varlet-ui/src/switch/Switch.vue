@@ -183,7 +183,6 @@ export default defineComponent({
         disabled,
         loading,
         readonly,
-        modelValue,
         activeValue,
         inactiveValue,
         lazyChange,
