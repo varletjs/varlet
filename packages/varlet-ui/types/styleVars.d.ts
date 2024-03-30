@@ -1211,6 +1211,34 @@ export interface StyleVars {
   switchHandleErrorBackground?: string
   '--switch-disabled-opacity'?: string
   switchDisabledOpacity?: string
+  '--switch-variant-width'?: string
+  switchVariantWidth?: string
+  '--switch-variant-height'?: string
+  switchVariantHeight?: string
+  '--switch-variant-handle-width'?: string
+  switchVariantHandleWidth?: string
+  '--switch-variant-handle-height'?: string
+  switchVariantHandleHeight?: string
+  '--switch-variant-track-border-color'?: string
+  switchVariantTrackBorderColor?: string
+  '--switch-variant-handle-background'?: string
+  switchVariantHandleBackground?: string
+  '--switch-variant-handle-active-background'?: string
+  switchVariantHandleActiveBackground?: string
+  '--switch-variant-handle-hover-background'?: string
+  switchVariantHandleHoverBackground?: string
+  '--switch-variant-handle-active-hover-background'?: string
+  switchVariantHandleActiveHoverBackground?: string
+  '--switch-variant-track-disabled-background'?: string
+  switchVariantTrackDisabledBackground?: string
+  '--switch-variant-handle-disabled-background'?: string
+  switchVariantHandleDisabledBackground?: string
+  '--switch-variant-handle-disabled-border-color'?: string
+  switchVariantHandleDisabledBorderColor?: string
+  '--switch-variant-track-disabled-active-background'?: string
+  switchVariantTrackDisabledActiveBackground?: string
+  '--switch-variant-handle-disabled-active-background'?: string
+  switchVariantHandleDisabledActiveBackground?: string
   '--table-background'?: string
   tableBackground?: string
   '--table-border-radius'?: string

@@ -123,6 +123,20 @@ function handleBeforeChange(value, change) {
 </template>
 ```
 
+### 变体
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch variant v-model="value" />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -143,6 +157,7 @@ function handleBeforeChange(value, change) {
 | `rules`          | 校验规则 | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
+| `variant` ***3.2.2*** | 变体模式 | _boolean_ | `false` |
 
 ### 事件
 
@@ -167,3 +182,17 @@ function handleBeforeChange(value, change) {
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
 | `--switch-disabled-opacity` | `var(--opacity-disabled)` |
+| `--switch-variant-width` | `52px` |
+| `--switch-variant-height` | `32px` |
+| `--switch-variant-handle-width` | `24px` |
+| `--switch-variant-handle-height` | `24px` |
+| `--switch-variant-track-border-color` | `#79747E` |
+| `--switch-variant-handle-background` | `#79747E` |
+| `--switch-variant-handle-active-background` | `#fff` |
+| `--switch-variant-handle-hover-background` | `var(--color-on-surface-variant)` |
+| `--switch-variant-handle-active-hover-background` | `var(--color-on-primary-container)` |
+| `--switch-variant-track-disabled-background` | `rgba(73, 69, 79, 0.12)` |
+| `--switch-variant-handle-disabled-background` | `#E6E0E9` |
+| `--switch-variant-handle-disabled-border-color` | `rgba(230, 224, 233, 0.12)` |
+| `--switch-variant-track-disabled-active-background` | `rgba(230, 224, 233, 0.12)` |
+| `--switch-variant-handle-disabled-active-background` | `#141218` |

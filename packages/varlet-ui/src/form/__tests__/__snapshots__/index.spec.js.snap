@@ -740,7 +740,7 @@ exports[`test form with switch 1`] = `
 "<form class="var-form">
   <div class="var-switch">
     <div class="var-switch__block var-switch--disabled">
-      <div style="filter: brightness(.6);" class="var-switch__track"></div>
+      <div style="filter: brightness(0.6);" class="var-switch__track"></div>
       <div class="var-switch__ripple" style="color: currentColor;">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->
@@ -789,7 +789,7 @@ exports[`test form with switch 3`] = `
 "<form class="var-form">
   <div class="var-switch">
     <div class="var-switch__block">
-      <div style="filter: brightness(.6);" class="var-switch__track"></div>
+      <div style="filter: brightness(0.6);" class="var-switch__track"></div>
       <div class="var-switch__ripple" style="color: currentColor;" tabindex="0">
         <div class="var-switch__handle var-elevation--2">
           <!--v-if-->

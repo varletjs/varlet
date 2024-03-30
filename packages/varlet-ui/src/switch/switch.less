@@ -3,11 +3,26 @@
   --switch-track-active-background: var(--color-primary);
   --switch-track-error-background: var(--color-danger);
   --switch-ripple-color: var(--color-primary);
-  --switch-handle-background: #fff;
+  --switch-handle-background: var(--color-on-primary);
   --switch-handle-color: #fff;
   --switch-handle-active-background: var(--color-primary);
   --switch-handle-error-background: var(--color-danger);
   --switch-disabled-opacity: var(--opacity-disabled);
+  --switch-variant-width: 52px;
+  --switch-variant-height: 32px;
+  --switch-variant-track-background: var(--color-surface-container-highest);
+  --switch-variant-handle-width: 24px;
+  --switch-variant-handle-height: 24px;
+  --switch-variant-track-border-color: #79747e;
+  --switch-variant-handle-background: #79747e;
+  --switch-variant-handle-active-background: #fff;
+  --switch-variant-handle-hover-background: var(--color-on-surface-variant);
+  --switch-variant-handle-active-hover-background: var(--color-on-primary-container);
+  --switch-variant-track-disabled-background: rgba(231, 224, 236, 0.12);
+  --switch-variant-handle-disabled-background: rgba(29, 27, 32, 0.38);
+  --switch-variant-handle-disabled-border-color: rgba(29, 27, 32, 0.12);
+  --switch-variant-track-disabled-active-background: rgba(29, 27, 32, 0.12);
+  --switch-variant-handle-disabled-active-background: #fef7ff;
 }
 
 .var-switch {
@@ -76,6 +91,7 @@
     transition: background-color 0.25s;
     width: 20px;
     height: 20px;
+    outline: none;
 
     &--active {
       background-color: var(--switch-handle-active-background);
@@ -83,6 +99,91 @@
 
     &--error {
       background-color: var(--switch-handle-error-background) !important;
+    }
+  }
+
+  &--variant {
+    .var-switch__block {
+      width: var(--switch-variant-width);
+      height: var(--switch-variant-height);
+
+      .var-switch__track {
+        width: 100%;
+        height: 100%;
+        border-radius: 9999px;
+        background-color: var(--switch-variant-track-background);
+        border: 2px solid var(--switch-variant-track-border-color);
+        filter: none;
+
+        &--active {
+          background-color: var(--switch-track-active-background);
+          border: none;
+        }
+      }
+
+      .var-switch__ripple {
+        left: -4px;
+
+        &--active {
+          left: 16px;
+        }
+      }
+
+      .var-switch__handle {
+        width: var(--switch-variant-handle-width);
+        height: var(--switch-variant-handle-height);
+        transform: scale(2 / 3);
+        background-color: var(--switch-variant-handle-background);
+        box-shadow: none;
+        transition: transform 0.2s;
+
+        &--active {
+          background-color: var(--switch-variant-handle-active-background);
+          transform: none;
+
+          &.var-switch__handle--hover {
+            background-color: var(--switch-variant-handle-active-hover-background);
+          }
+        }
+
+        &--hover {
+          background-color: var(--switch-variant-handle-hover-background);
+        }
+      }
+
+      &:active .var-switch__handle {
+        transform: scale(7 / 6);
+      }
+    }
+
+    .var-switch--disabled {
+      &.var-switch__block {
+        &:active .var-switch__handle {
+          transform: scale(2 / 3);
+        }
+
+        &--active .var-switch__handle {
+          transform: none !important;
+        }
+      }
+
+      .var-switch__track {
+        border-color: var(--switch-variant-handle-disabled-border-color);
+        background-color: var(--switch-variant-track-disabled-background);
+
+        &--active {
+          border: none;
+          background-color: var(--switch-variant-track-disabled-active-background);
+        }
+      }
+
+      .var-switch__handle {
+        background-color: var(--switch-variant-handle-disabled-background);
+
+        &--active {
+          background-color: var(--switch-variant-handle-disabled-active-background);
+        }
+      }
     }
   }
 

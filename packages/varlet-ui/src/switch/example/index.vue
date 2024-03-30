@@ -10,9 +10,10 @@ const values = reactive({
   value3: true,
   value4: true,
   value5: true,
+  value6: true,
 })
 
-const { value, value1, value2, value3, value4, value5 } = toRefs(values)
+const { value, value1, value2, value3, value4, value5, value6 } = toRefs(values)
 
 function handleBeforeChange(value, change) {
   setTimeout(() => {
@@ -51,4 +52,6 @@ onThemeChange()
   <var-space :size="['3vmin', '9vmin']">
     <var-switch v-model="value5" lazy-change @before-change="handleBeforeChange" />
   </var-space>
+  <app-type>{{ t('variant') }}</app-type>
+  <var-switch variant v-model="value6" />
 </template>

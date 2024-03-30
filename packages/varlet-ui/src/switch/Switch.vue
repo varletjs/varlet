@@ -1,8 +1,14 @@
 <template>
-  <div :class="n()" v-hover:desktop="hover">
+  <div :class="classes(n(), [variant, n('--variant')])" v-hover:desktop="hover">
     <div
       ref="switchRef"
-      :class="classes(n('block'), [disabled || formDisabled, n('--disabled')])"
+      :class="
+        classes(
+          n('block'),
+          [disabled || formDisabled, n('--disabled')],
+          [modelValue === activeValue, n('block--active')]
+        )
+      "
       :style="styleComputed.switch"
       @click="switchActive"
     >
@@ -29,7 +35,8 @@
               n('handle'),
               n('$-elevation--2'),
               [modelValue === activeValue, n('handle--active')],
-              [errorMessage, n('handle--error')]
+              [errorMessage, n('handle--error')],
+              [hovering, n('handle--hover')]
             )
           "
         >
@@ -97,7 +104,7 @@ export default defineComponent({
     const { errorMessage, validateWithTrigger: vt, validate: v, resetValidation } = useValidation()
     const { hovering, handleHovering } = useHoverOverlay()
     const styleComputed = computed<Record<string, Partial<StyleProps>>>(() => {
-      const { size, modelValue, color, closeColor, loadingColor, activeValue } = props
+      const { size, modelValue, color, closeColor, loadingColor, activeValue, variant } = props
 
       return {
         handle: {
@@ -107,21 +114,25 @@ export default defineComponent({
           color: loadingColor,
         },
         ripple: {
-          left: modelValue === activeValue ? multiplySizeUnit(size, 0.5) : `-${multiplySizeUnit(size, 0.5)}`,
+          left:
+            modelValue === activeValue
+              ? multiplySizeUnit(size, 0.5)
+              : `-${multiplySizeUnit(size, variant ? 1 / 3 : 0.5)}`,
           color: modelValue === activeValue ? color : closeColor || 'currentColor',
           width: multiplySizeUnit(size, 2),
           height: multiplySizeUnit(size, 2),
         },
         track: {
-          height: multiplySizeUnit(size, 0.72),
-          width: multiplySizeUnit(size, 1.9),
+          width: multiplySizeUnit(size, variant ? 13 / 6 : 1.9),
+          height: multiplySizeUnit(size, variant ? 4 / 3 : 0.72),
           borderRadius: multiplySizeUnit(size, 2 / 3),
-          filter: modelValue === activeValue || errorMessage?.value ? undefined : 'brightness(.6)',
+          filter: modelValue === activeValue || errorMessage?.value ? undefined : `brightness(${variant ? 1 : 0.6})`,
           backgroundColor: modelValue === activeValue ? color : closeColor,
+          borderWidth: variant && !modelValue === activeValue ? multiplySizeUnit(size, 1 / 12) : undefined,
         },
         switch: {
-          height: multiplySizeUnit(size, 1.2),
-          width: multiplySizeUnit(size, 2),
+          width: multiplySizeUnit(size, variant ? 13 / 6 : 2),
+          height: multiplySizeUnit(size, variant ? 4 / 3 : 1.2),
         },
       }
     })
