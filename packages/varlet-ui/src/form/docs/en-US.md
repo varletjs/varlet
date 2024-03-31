@@ -87,6 +87,7 @@ const readonly = ref(false)
         v-model="formData.score"
       />
       <var-switch
+        variant
         :rules="[v => !!v || 'You must turn on']"
         v-model="formData.license"
       />

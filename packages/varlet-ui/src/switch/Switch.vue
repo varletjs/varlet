@@ -8,7 +8,7 @@
     >
       <div
         :style="styleComputed.track"
-        :class="classes(n('track'), [isActive, n('track--active')], [errorMessage, n('track--error')])"
+        :class="classes(n('track'), [isActive, n('track--active')], [errorMessage && !variant, n('track--error')])"
       ></div>
       <div
         :class="classes(n('ripple'), [isActive, n('ripple--active')])"
@@ -27,7 +27,7 @@
               n('handle'),
               n('$-elevation--2'),
               [isActive, n('handle--active')],
-              [errorMessage, n('handle--error')],
+              [errorMessage && !variant, n('handle--error')],
               [hovering, n('handle--hover')]
             )
           "

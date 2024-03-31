@@ -81,7 +81,7 @@ onThemeChange()
         <var-checkbox :checked-value="3">{{ t('play') }}</var-checkbox>
       </var-checkbox-group>
       <var-rate :rules="[(v) => v >= 3 || t('rateMessage')]" v-model="formData.score" />
-      <var-switch :rules="[(v) => !!v || t('licenseMessage')]" v-model="formData.license" />
+      <var-switch variant :rules="[(v) => !!v || t('licenseMessage')]" v-model="formData.license" />
       <var-counter :rules="[(v) => v > 10 || t('countMessage')]" v-model="formData.count" />
       <var-slider :rules="[(v) => v > 10 || t('rangeMessage')]" v-model="formData.range" />
       <var-uploader :rules="[(v) => v.length >= 1 || t('filesMessage')]" v-model="formData.files" />

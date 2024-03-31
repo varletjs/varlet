@@ -4,20 +4,21 @@
   --switch-track-error-background: var(--color-danger);
   --switch-ripple-color: var(--color-primary);
   --switch-handle-background: var(--color-on-primary);
-  --switch-handle-color: #fff;
+  --switch-handle-color: var(--color-primary);
+  --switch-handle-active-color: var(--color-on-primary);
   --switch-handle-active-background: var(--color-primary);
   --switch-handle-error-background: var(--color-danger);
   --switch-disabled-opacity: var(--opacity-disabled);
   --switch-variant-width: 52px;
   --switch-variant-height: 32px;
+  --switch-variant-track-border-color: #888;
   --switch-variant-track-background: var(--color-surface-container-highest);
   --switch-variant-handle-width: 24px;
   --switch-variant-handle-height: 24px;
-  --switch-variant-track-border-color: #79747e;
-  --switch-variant-handle-background: #79747e;
-  --switch-variant-handle-active-background: #fff;
-  --switch-variant-handle-hover-background: var(--color-on-surface-variant);
-  --switch-variant-handle-active-hover-background: var(--color-on-primary-container);
+  --switch-variant-handle-color: var(--color-on-primary);
+  --switch-variant-handle-active-color: var(--color-primary);
+  --switch-variant-handle-background: #888;
+  --switch-variant-handle-active-background: var(--color-on-primary);
 }
 
 .var-switch {
@@ -90,6 +91,7 @@
 
     &--active {
       background-color: var(--switch-handle-active-background);
+      color: var(--switch-handle-active-color);
     }
 
     &--error {
@@ -133,21 +135,15 @@
       &__handle {
         width: var(--switch-variant-handle-width);
         height: var(--switch-variant-handle-height);
+        color: var(--switch-variant-handle-color);
         transform: scale(2 / 3);
         background-color: var(--switch-variant-handle-background);
         transition: transform 0.2s;
 
         &--active {
+          color: var(--switch-variant-handle-active-color);
           background-color: var(--switch-variant-handle-active-background);
           transform: none;
-
-          &.var-switch__handle--hover {
-            background-color: var(--switch-variant-handle-active-hover-background);
-          }
-        }
-
-        &--hover {
-          background-color: var(--switch-variant-handle-hover-background);
         }
       }
 
@@ -186,6 +182,7 @@
         transform: rotate(360deg);
       }
     }
+
     @keyframes circular {
       0% {
         stroke-dasharray: 1, 200;

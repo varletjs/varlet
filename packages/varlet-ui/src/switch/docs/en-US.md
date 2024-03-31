@@ -157,7 +157,7 @@ const value = ref(true)
 | `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
-| `variant` ***3.2.2*** | Variant mode | _boolean_ | `false` |
+| `variant` ***3.2.3*** | Variant mode | _boolean_ | `false` |
 
 ### Events
 
@@ -177,17 +177,19 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--switch-track-active-background` | `var(--color-primary)` |
 | `--switch-track-error-background` | `var(--color-danger)` |
 | `--switch-ripple-color` | `var(--color-primary)` |
-| `--switch-handle-background` | `#fff` |
-| `--switch-handle-color` | `#fff` |
+| `--switch-handle-background` | `var(--color-on-primary)` |
+| `--switch-handle-color` | `var(--color-primary)` |
+| `--switch-handle-active-color` | `var(--color-on-primary)` |
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
 | `--switch-disabled-opacity` | `var(--opacity-disabled)` |
 | `--switch-variant-width` | `52px` |
 | `--switch-variant-height` | `32px` |
+| `--switch-variant-track-border-color` | `#888` |
+| `--switch-variant-track-background` | `var(--color-surface-container-highest)` |
 | `--switch-variant-handle-width` | `24px` |
 | `--switch-variant-handle-height` | `24px` |
-| `--switch-variant-track-border-color` | `#79747E` |
-| `--switch-variant-handle-background` | `#79747E` |
-| `--switch-variant-handle-active-background` | `#fff` |
-| `--switch-variant-handle-hover-background` | `var(--color-on-surface-variant)` |
-| `--switch-variant-handle-active-hover-background` | `var(--color-on-primary-container)` |
+| `--switch-variant-handle-color` | `var(--color-on-primary)` |
+| `--switch-variant-handle-active-color` | `var(--color-primary)` |
+| `--switch-variant-handle-background` | `#888` |
+| `--switch-variant-handle-active-background` | `var(--color-on-primary)` |

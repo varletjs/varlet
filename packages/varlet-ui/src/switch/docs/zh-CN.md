@@ -157,7 +157,7 @@ const value = ref(true)
 | `rules`          | 校验规则 | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | 是否允许触发 `before-change` 事件 | _boolean_  | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
-| `variant` ***3.2.2*** | 变体模式 | _boolean_ | `false` |
+| `variant` ***3.2.3*** | 变体模式 | _boolean_ | `false` |
 
 ### 事件
 
@@ -177,17 +177,19 @@ const value = ref(true)
 | `--switch-track-active-background` | `var(--color-primary)` |
 | `--switch-track-error-background` | `var(--color-danger)` |
 | `--switch-ripple-color` | `var(--color-primary)` |
-| `--switch-handle-background` | `#fff` |
-| `--switch-handle-color` | `#fff` |
+| `--switch-handle-background` | `var(--color-on-primary)` |
+| `--switch-handle-color` | `var(--color-primary)` |
+| `--switch-handle-active-color` | `var(--color-on-primary)` |
 | `--switch-handle-active-background` | `var(--color-primary)` |
 | `--switch-handle-error-background` | `var(--color-danger)` |
 | `--switch-disabled-opacity` | `var(--opacity-disabled)` |
 | `--switch-variant-width` | `52px` |
 | `--switch-variant-height` | `32px` |
+| `--switch-variant-track-border-color` | `#888` |
+| `--switch-variant-track-background` | `var(--color-surface-container-highest)` |
 | `--switch-variant-handle-width` | `24px` |
 | `--switch-variant-handle-height` | `24px` |
-| `--switch-variant-track-border-color` | `#79747E` |
-| `--switch-variant-handle-background` | `#79747E` |
-| `--switch-variant-handle-active-background` | `#fff` |
-| `--switch-variant-handle-hover-background` | `var(--color-on-surface-variant)` |
-| `--switch-variant-handle-active-hover-background` | `var(--color-on-primary-container)` |
+| `--switch-variant-handle-color` | `var(--color-on-primary)` |
+| `--switch-variant-handle-active-color` | `var(--color-primary)` |
+| `--switch-variant-handle-background` | `#888` |
+| `--switch-variant-handle-active-background` | `var(--color-on-primary)` |
