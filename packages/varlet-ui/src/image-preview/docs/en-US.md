@@ -246,7 +246,7 @@ const actions = [
 
 | Prop         | Description   | Type  | Default  |
 | ------------ | ------------ | ------------------ | ------------ |
-| `show`       | Whether or display | _boolean_ | `false` |
+| `v-model:show` | Whether or display | _boolean_ | `false` |
 | `images`     | Need to preview the image URL | _string[]_ | `[]` |
 | `initial-index`   | Index from which the image preview starts | _string \| number_ | `0`     |
 | `zoom`       | Double-click to zoom in | _string \| number_ | `2` |
