@@ -166,7 +166,7 @@ const floating = ref(false)
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
 | `ripple`            | 是否开启水波                                                 | _boolean_ | `false`  |
-| `floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
+| `v-model:floating`          | 是否开启全屏                                                 | _boolean_ | `false`  |
 | `floating-duration` | 开关全屏所需时间（ms）                                           | _number_ | `250`    |
 
 ### 事件
