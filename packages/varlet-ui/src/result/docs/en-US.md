@@ -9,7 +9,6 @@ It is used to show the results to users.
 ```html
 <template>
   <var-result
-    type="success"
     title="Success"
     description="Hi, I'm a result description."
   >
@@ -61,7 +60,7 @@ const empty = ref(false)
   </var-space>
 
   <var-popup :default-style="false" v-model:show="success">
-    <var-result class="result" type="success" title="Success" description="Hi, I'm a result description.">
+    <var-result class="result" title="Success" description="Hi, I'm a result description.">
       <template #footer>
         <var-button type="success" @click="success = false">OK</var-button>
       </template>

@@ -9,7 +9,6 @@
 ```html
 <template>
   <var-result 
-    type="success" 
     title="成功"
     description="嗨~ 我是结果页的一段描述~"
   >
@@ -61,7 +60,7 @@ const empty = ref(false)
   </var-space>
   
   <var-popup :default-style="false" v-model:show="success">
-    <var-result class="result" type="success" title="成功" description="嗨~ 我是结果页的一段描述~">
+    <var-result class="result" title="成功" description="嗨~ 我是结果页的一段描述~">
       <template #footer>
         <var-button type="success" @click="success = false">知道了</var-button>
       </template>
