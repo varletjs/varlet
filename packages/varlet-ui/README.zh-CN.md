@@ -4,7 +4,7 @@
     <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
-  <p>基于 Vue3 的 Material design 风格移动端组件库</p>
+  <p>Vue3 移动端组件库，同时支持 Material Design 2 和 3，桌面端也有不错的体验。</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
     <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a> |
@@ -16,7 +16,6 @@
     <img src="https://img.shields.io/badge/vue-v3.2.0%2B-%23407fbc" alt="vue">
     <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
     <img src="https://img.shields.io/codecov/c/github/varletjs/varlet" alt="coverage">
-    <img src="https://img.badgesize.io/https://unpkg.com/@varlet/ui/umd/varlet.js?compression=gzip&label=gzip" alt="gzip" />
     <img src="https://github.com/varletjs/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
 </div>
