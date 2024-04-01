@@ -245,7 +245,7 @@ const actions = [
 
 | 参数         | 说明   | 类型  | 默认值  |
 | ------------ | ------------ | ------------------ | ------------ |
-| `show`       | 是否显示     | _boolean_ | `false` |
+| `v-model:show` | 是否显示     | _boolean_ | `false` |
 | `images`     | 需要预览的图片 URL 数组 | _string[]_ | `[]` |
 | `initial-index` | 图片预览起始的索引 | _string \| number_ | `0` |
 | `zoom`       | 双击放大倍数 | _string \| number_ | `2` |
