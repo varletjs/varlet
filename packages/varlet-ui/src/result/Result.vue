@@ -34,10 +34,9 @@ import Success from './Success.vue'
 import Question from './Question.vue'
 import Empty from './Empty.vue'
 import { computed, defineComponent } from 'vue'
-import { toNumber } from '@varlet/shared'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
-import { toPxNum, toSizeUnit } from '../utils/elements'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('result')
 
@@ -53,25 +52,18 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const circleSize = computed(() => {
-      const { imageSize } = props
-
-      return `calc(${imageSize ? toSizeUnit(imageSize) : 'var(--result-image-size)'} * 0.9)`
-    })
-    const borderSize = computed(() => {
-      const { imageSize } = props
-
-      return `calc(${imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.05)`
-    })
+    const circleSize = computed(
+      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.9)`
+    )
+    const borderSize = computed(
+      () => `calc(${props.imageSize ? toSizeUnit(props.imageSize) : 'var(--result-image-size)'} * 0.05)`
+    )
 
     return {
       circleSize,
       borderSize,
-      toSizeUnit,
       n,
       classes,
-      toNumber,
-      toPxNum,
     }
   },
 })
