@@ -3,14 +3,14 @@
   <span
     :class="classes(n('success-line'), n('success-line-tip'))"
     :style="{
-      animationDuration: animation ? `760ms` : '0ms',
+      animationDuration: animation ? '760ms' : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
   <span
     :class="classes(n('success-line'), n('success-line-long'))"
     :style="{
-      animationDuration: animation ? `770ms` : '0ms',
+      animationDuration: animation ? '770ms' : '0ms',
       borderRadius: `calc(${borderSize} * 0.625)`,
     }"
   />
@@ -23,7 +23,7 @@
   <span
     :class="n('success-cover-right')"
     :style="{
-      animationDuration: animation ? `4250ms` : '0ms',
+      animationDuration: animation ? '4250ms' : '0ms',
     }"
   />
 </template>
@@ -31,7 +31,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { createNamespace } from '../utils/components'
-import { toNumber } from '@varlet/shared'
 
 const { n, classes } = createNamespace('result')
 
@@ -48,7 +47,6 @@ export default defineComponent({
     return {
       n,
       classes,
-      toNumber,
     }
   },
 })
