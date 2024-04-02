@@ -98,6 +98,26 @@ describe('test switch component props', () => {
     expect(wrapper.find('.var-switch__handle').attributes('style')).toContain('width: 25px; height: 25px;')
     wrapper.unmount()
   })
+
+  test('test variant mode', async () => {
+    const wrapper = mount({
+      components: {
+        [VarSwitch.name]: VarSwitch,
+      },
+      data() {
+        return {
+          value: true,
+          variant: false,
+        }
+      },
+      template: `<var-switch :variant="variant" v-model="value" />`,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    await wrapper.setData({ variant: true })
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
 })
 
 describe('test switch events', () => {
@@ -240,25 +260,6 @@ describe('test switch events', () => {
     expect(click).toHaveBeenCalledTimes(1)
 
     HTMLElement.prototype.click = origin
-    wrapper.unmount()
-  })
-
-  test('test variant mode', async () => {
-    const wrapper = mount({
-      components: {
-        [VarSwitch.name]: VarSwitch,
-      },
-      data() {
-        return {
-          value: true,
-        }
-      },
-      template: `<var-switch :variant="variant" v-model="value" />`,
-    })
-
-    expect(wrapper.html()).toMatchSnapshot()
-    await wrapper.setData({ variant: true })
-    expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 })
