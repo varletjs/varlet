@@ -146,6 +146,19 @@ describe('test image component props', () => {
     wrapper.unmount()
   })
 
+  test('test image position', async () => {
+    const wrapper = mount(VarImage)
+
+    expect(wrapper.find('.var-image__image').attributes('style')).toContain('object-position: 50% 50%')
+
+    await wrapper.setProps({
+      position: 'left',
+    })
+    expect(wrapper.find('.var-image__image').attributes('style')).toContain('object-position: left')
+
+    wrapper.unmount()
+  })
+
   test('test image width', async () => {
     const wrapper = mount(VarImage, {
       props: {

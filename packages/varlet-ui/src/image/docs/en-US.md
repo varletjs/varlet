@@ -210,6 +210,7 @@ import logo from '../../assets/logo.png'
 | --- |--------------------------------------------------------------------------------| --- | --- |
 | `src` | Image src                                                                      | _string_ | `-` |
 | `fit` | Image fit mode, optional value is `fill` `contain` `cover` `none` `scale-down` | _string_ | `fill` |
+| `position` ***3.2.3*** | The position of the replaceable element's content in its content box, equal to [object-position](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position) | _string_ | `50% 50%` |
 | `alt` | Image alt text, the same as the native attribute of the `img` tag              | _string_ | `-` |
 | `title`   | Image title text, the same as with the native attributes of the `img` tag             | _string_ | `-` |
 | `referrerpolicy`  | Indicate which referrer to use when fetching the resource. This attribute requires attention to browser compatibility, see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)             | _string_ | `-` |

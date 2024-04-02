@@ -9,6 +9,10 @@ export const props = {
     type: String as PropType<ImageFit>,
     default: 'fill',
   },
+  position: {
+    type: String,
+    default: '50% 50%',
+  },
   alt: String,
   title: String,
   referrerpolicy: String as PropType<ImgHTMLAttributes['referrerpolicy']>,
