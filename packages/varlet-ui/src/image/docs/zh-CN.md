@@ -212,7 +212,7 @@ import logo from '../../assets/logo.png'
 | `referrerpolicy`   | 指示在获取资源时使用的来源地址。该属性需注意浏览器兼容性，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)            | _string_ | `-` |
 | `width`   | 图片宽度                                            | _string \| number_ | `-` |
 | `height`  | 图片高度                                            | _string \| number_ | `-` |
-| `radius`  | 图片圆角                                            | _string \| number_ | `-` |
+| `radius`  | 图片圆角                                            | _string \| number_ | `0` |
 | `lazy`    | 是否开启懒加载                                         | _boolean_ | `false` |
 | `loading` | 当开启懒加载时, 加载中显示的图片                               | _string_ | `-` |
 | `error`   | 当开启懒加载时, 加载失败显示的图片                              | _string_ | `-` |

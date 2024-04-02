@@ -215,7 +215,7 @@ import logo from '../../assets/logo.png'
 | `referrerpolicy`  | Indicate which referrer to use when fetching the resource. This attribute requires attention to browser compatibility, see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img)             | _string_ | `-` |
 | `width` | Image width            | _string \| number_ | `-` |
 | `height` | Image height          | _string \| number_ | `-` |
-| `radius` | Image radius                                                                   | _string \| number_ | `-` |
+| `radius` | Image radius                                                                   | _string \| number_ | `0` |
 | `lazy` | Whether to enable lazy loading                                                 | _boolean_ | `false` |
 | `loading` | When lazy loading is enabled, the image displayed in loading                   | _string_ | `-` |
 | `error` | When lazy loading is enabled, the image displayed in error                        | _string_ | `-` |
