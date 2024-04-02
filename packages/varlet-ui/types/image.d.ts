@@ -8,6 +8,7 @@ export type ImageFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 export interface ImageProps extends BasicAttributes {
   src?: string
   fit?: ImageFit
+  position?: string
   title?: string
   alt?: string
   referrerpolicy?: ImgHTMLAttributes['referrerpolicy']
