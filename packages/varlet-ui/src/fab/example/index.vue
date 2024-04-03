@@ -98,9 +98,3 @@ function toggleActions() {
     </var-button>
   </var-fab>
 </template>
-
-<style lang="less" scoped>
-.fade {
-  transform: scale(0.4);
-}
-</style>
