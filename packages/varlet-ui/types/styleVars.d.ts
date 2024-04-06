@@ -1205,6 +1205,8 @@ export interface StyleVars {
   switchHandleBackground?: string
   '--switch-handle-color'?: string
   switchHandleColor?: string
+  '--switch-handle-active-color'?: string
+  switchHandleActiveColor?: string
   '--switch-handle-active-background'?: string
   switchHandleActiveBackground?: string
   '--switch-handle-error-background'?: string
@@ -1215,20 +1217,22 @@ export interface StyleVars {
   switchVariantWidth?: string
   '--switch-variant-height'?: string
   switchVariantHeight?: string
+  '--switch-variant-track-border-color'?: string
+  switchVariantTrackBorderColor?: string
+  '--switch-variant-track-background'?: string
+  switchVariantTrackBackground?: string
   '--switch-variant-handle-width'?: string
   switchVariantHandleWidth?: string
   '--switch-variant-handle-height'?: string
   switchVariantHandleHeight?: string
-  '--switch-variant-track-border-color'?: string
-  switchVariantTrackBorderColor?: string
+  '--switch-variant-handle-color'?: string
+  switchVariantHandleColor?: string
+  '--switch-variant-handle-active-color'?: string
+  switchVariantHandleActiveColor?: string
   '--switch-variant-handle-background'?: string
   switchVariantHandleBackground?: string
   '--switch-variant-handle-active-background'?: string
   switchVariantHandleActiveBackground?: string
-  '--switch-variant-handle-hover-background'?: string
-  switchVariantHandleHoverBackground?: string
-  '--switch-variant-handle-active-hover-background'?: string
-  switchVariantHandleActiveHoverBackground?: string
   '--table-background'?: string
   tableBackground?: string
   '--table-border-radius'?: string
