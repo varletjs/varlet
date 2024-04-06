@@ -1,3 +1,18 @@
+## [3.2.3](https://github.com/varletjs/varlet/compare/v3.2.2...v3.2.3) (2024-04-06)
+
+
+### Bug Fixes
+
+* fix emit trigger when the props initialized and close [#1566](https://github.com/varletjs/varlet/issues/1566) ([853d243](https://github.com/varletjs/varlet/commit/853d243a8b034a7b368afcf055420d9abf12676f))
+
+
+### Features
+
+* **image:** support position to set image position ([#1563](https://github.com/varletjs/varlet/issues/1563)) ([6773914](https://github.com/varletjs/varlet/commit/6773914358d09a9e85e7282ab5610abe064b9da5))
+* **switch:** support variant mode ([#1552](https://github.com/varletjs/varlet/issues/1552)) ([cd82fc7](https://github.com/varletjs/varlet/commit/cd82fc7046fd1d05d218b29bdfdcab916f4b8f70))
+
+
+
 ## [3.2.2](https://github.com/varletjs/varlet/compare/v3.2.1...v3.2.2) (2024-03-29)
 
 
