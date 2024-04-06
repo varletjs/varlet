@@ -1,5 +1,5 @@
 import { call } from '@varlet/shared'
-import { computed, ref, watch, type Ref, type WritableComputedRef } from 'vue'
+import { computed, ref, watch, nextTick, type Ref, type WritableComputedRef } from 'vue'
 
 export interface UseVModelOptions<P, K extends keyof P> {
   passive?: boolean
@@ -18,6 +18,8 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
 
   const getValue = () => (props[key] ?? defaultValue)!
 
+  let shouldEmit = true
+
   if (!passive) {
     return computed<P[K]>({
       get() {
@@ -34,14 +36,21 @@ export function useVModel<P extends Record<string, any>, K extends keyof P>(
   watch(
     () => props[key],
     () => {
+      shouldEmit = false
       proxy.value = getValue()
+
+      nextTick(() => {
+        shouldEmit = true
+      })
     }
   )
 
   watch(
     () => proxy.value,
     (newValue: P[K]) => {
-      emit ? emit(event, newValue) : call(props[event], newValue)
+      if (shouldEmit) {
+        emit ? emit(event, newValue) : call(props[event], newValue)
+      }
     }
   )
 
