@@ -63,7 +63,6 @@ export function usePopover(options: UsePopoverOptions) {
     defaultValue: false,
     emit(event, value) {
       if (value) {
-        resize()
         call(options.onOpen)
       } else {
         call(options.onClose)
@@ -387,6 +386,14 @@ export function usePopover(options: UsePopoverOptions) {
   onWindowResize(resize)
   watch(() => [options.offsetX, options.offsetY, options.placement, options.strategy], resize)
   watch(() => options.disabled, close)
+  watch(
+    () => show.value,
+    (newValue) => {
+      if (newValue) {
+        resize()
+      }
+    }
+  )
 
   onMounted(() => {
     popoverInstance = createPopper(getReference() ?? host.value!, popover.value!, getPopperOptions())
