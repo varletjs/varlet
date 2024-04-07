@@ -61,7 +61,7 @@ export function usePopover(options: UsePopoverOptions) {
   const show = useVModel(options, 'show', {
     passive: true,
     defaultValue: false,
-    emit(event, value) {
+    emit(_event, value) {
       if (value) {
         call(options.onOpen)
       } else {
@@ -365,9 +365,7 @@ export function usePopover(options: UsePopoverOptions) {
 
   // expose
   const open = () => {
-    const { disabled } = options
-
-    if (disabled) {
+    if (options.disabled) {
       return
     }
 
