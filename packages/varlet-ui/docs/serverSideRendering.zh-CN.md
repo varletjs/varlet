@@ -8,49 +8,13 @@
 
 `Nuxt.js` 是一个基于 `Vue.js` 的服务端渲染应用框架，详细教程请移步 [Nuxt](https://nuxt.com)。
 
-### 按需引入
+### Nuxt Module
 
-通过插件
-[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 和 
-[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
-实现组件自动按需导入。
+组件库第一方提供了 [Varlet Nuxt Module](https://nuxt.com/modules/varlet)。以支持按需引入和自动引入，执行下面的命令进行安装，安装成功后将自动完成 nuxt 相关配置。
 
 ```shell
 # playground-ignore
-# 安装插件
-
-# npm
-npm i @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
-
-# yarn
-yarn add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
-
-# pnpm
-pnpm add @varlet/import-resolver unplugin-vue-components unplugin-auto-import -D
-```
-
-```ts
-// nuxt.config.ts
-import components from 'unplugin-vue-components/vite'
-import autoImport from 'unplugin-auto-import/vite'
-import { VarletImportResolver } from '@varlet/import-resolver'
-import { defineNuxtConfig } from 'nuxt/config'
-
-export default defineNuxtConfig({
-  vite: {
-    ssr: {
-      noExternal: ['@varlet/ui']
-    },
-    plugins: [
-      components({
-        resolvers: [VarletImportResolver()]
-      }),
-      autoImport({
-        resolvers: [VarletImportResolver({ autoImport: true })],
-      })
-    ]
-  }
-})
+npx nuxi@latest module add varlet
 ```
 
 ### 示例仓库

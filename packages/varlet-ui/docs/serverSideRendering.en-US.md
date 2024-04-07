@@ -1,58 +1,21 @@
-# Server-Side Rendering
+# Server Side Rendering
 
 ### Intro
 
-Here is the basic way to install `Varlet` in `Nuxt`. 
+Here we introduce you to the basic way of introducing `Varlet` into `Nuxt`.
 
-### Create Nuxt project
+### Create a Nuxt project
 
-`Nuxt.js` is a server-side rendering application framework based on `Vue.js`, please go to [Nuxt](https://nuxt.com) for a detailed tutorial.
+`Nuxt.js` is a server-side rendering application framework based on `Vue.js`. For detailed tutorials, please go to [Nuxt](https://nuxt.com).
 
-### Import On Demand
+### Nuxt Module
 
-via plugin
-[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) and
-[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
-Realize the automatic on-demand import of components.
+The first party of the component library provides [Varlet Nuxt Module](https://nuxt.com/modules/varlet) to support on-demand import and automatic import. Execute the following command to install it. After successful installation, nuxt related configuration will be automatically completed.
 
 ```shell
 # playground-ignore
-# Install the plugin
-
-# npm
-npm i unplugin-vue-components unplugin-auto-import -D
-
-#yarn
-yarn add unplugin-vue-components unplugin-auto-import -D
-
-#pnpm
-pnpm add unplugin-vue-components unplugin-auto-import -D
+npx nuxi@latest module add varlet
 ```
 
-```ts
-// nuxt.config.ts
-import components from 'unplugin-vue-components/vite'
-import autoImport from 'unplugin-auto-import/vite'
-import { VarletImportResolver } from '@varlet/import-resolver'
-import { defineNuxtConfig } from 'nuxt/config'
-
-export default defineNuxtConfig({
-  vite: {
-    ssr: {
-      noExternal: ['@varlet/ui']
-    },
-    plugins: [
-      components({
-        resolvers: [VarletImportResolver()]
-      }),
-      autoImport({
-        resolvers: [VarletImportResolver({ autoImport: true })],
-      })
-    ]
-  }
-})
-```
-
-### Example Repository
-
+### Example Repo
 [varlet-install-example/nuxt](https://github.com/varletjs/varlet-install-example/tree/main/nuxt)

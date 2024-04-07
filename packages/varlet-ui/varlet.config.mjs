@@ -54,22 +54,6 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '原子化 CSS 支持',
-          'en-US': 'Atomic CSS Support',
-        },
-        doc: 'atomicCssSupport',
-        type: 3,
-      },
-      {
-        text: {
-          'zh-CN': 'VSCode 插件',
-          'en-US': 'VSCode Extension',
-        },
-        doc: 'extension',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '主题系统',
           'en-US': 'Theme System',
         },
@@ -86,18 +70,34 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': '默认值定制',
-          'en-US': 'Defaults Customization',
-        },
-        doc: 'defaultsCustomization',
-        type: 3,
-      },
-      {
-        text: {
           'zh-CN': '服务端渲染',
           'en-US': 'Server-Side Rendering',
         },
         doc: 'serverSideRendering',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '原子化 CSS 支持',
+          'en-US': 'Atomic CSS Support',
+        },
+        doc: 'atomicCssSupport',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': 'VSCode 插件',
+          'en-US': 'VSCode Extension',
+        },
+        doc: 'extension',
+        type: 3,
+      },
+      {
+        text: {
+          'zh-CN': '默认值定制',
+          'en-US': 'Defaults Customization',
+        },
+        doc: 'defaultsCustomization',
         type: 3,
       },
       {
