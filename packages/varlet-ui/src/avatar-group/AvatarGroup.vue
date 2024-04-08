@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, CSSProperties } from 'vue'
+import { defineComponent, computed, type CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -30,7 +30,6 @@ export default defineComponent({
       rootStyles,
       n,
       classes,
-      toSizeUnit,
     }
   },
 })
