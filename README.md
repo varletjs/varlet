@@ -3,7 +3,7 @@
     <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
-  <p>Vue3 mobile component library supports both Material Design 2 and 3, and also has a good experience on the desktop.</p>
+  <p>A mobile component library based on Vue3, Material Design 2, Material Design 3, and supports desktop development.</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
     <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">Documentation(Gitee)</a> | 
