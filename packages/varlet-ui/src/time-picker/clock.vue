@@ -68,11 +68,9 @@ export default defineComponent({
     },
     useSeconds: {
       type: Boolean,
-      default: false,
     },
     preventNextUpdate: {
       type: Boolean,
-      default: false,
     },
     type: {
       type: String as PropType<keyof Time>,
@@ -303,7 +301,7 @@ export default defineComponent({
           .map((hour) => hours24.findIndex((hour24) => hour === hour24))
           .filter((hour) => hour >= 0)
       },
-      { immediate: true }
+      { immediate: true, deep: true }
     )
 
     return {
