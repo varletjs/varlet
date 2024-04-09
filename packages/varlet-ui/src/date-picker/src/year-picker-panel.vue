@@ -97,18 +97,12 @@ export default defineComponent({
     })
 
     const yearList: ComputedRef<Array<number>> = computed(() => {
-      const list: Array<number> = []
-      if (!props.preview) return list
-
-      let startYear = Math.floor(toNumber(props.preview) / 100 + page.value) * 100
-      startYear = startYear < 0 ? 0 : startYear
-
-      const yearRange = [startYear, startYear + 100]
-
-      for (let i = yearRange[0]; i < yearRange[1]; i++) {
-        list.push(i)
+      if (!props.preview) {
+        return []
       }
-      return list
+
+      const startYear = Math.floor(toNumber(props.preview) / 100 + page.value) * 100
+      return Array.from(Array(100), (_v, k) => Math.max(0, startYear) + k)
     })
 
     const shouldChoose = (val: string): boolean => {
@@ -137,11 +131,8 @@ export default defineComponent({
         componentProps: { min, max },
       }: { componentProps: ComponentProps } = props
 
-      let isBeforeMax = true
-      let isAfterMin = true
-
-      if (max) isBeforeMax = dayjs(year).isSameOrBefore(dayjs(max), 'year')
-      if (min) isAfterMin = dayjs(year).isSameOrAfter(dayjs(min), 'year')
+      const isBeforeMax = max ? dayjs(year).isSameOrBefore(dayjs(max), 'year') : true
+      const isAfterMin = min ? dayjs(year).isSameOrAfter(dayjs(min), 'year') : true
 
       return isBeforeMax && isAfterMin
     }
@@ -223,9 +214,11 @@ export default defineComponent({
     }
 
     const checkDate = (checkType: string) => {
-      reverse.value = checkType === 'prev'
-      panelKey.value += checkType === 'prev' ? -1 : 1
-      page.value += checkType === 'prev' ? -1 : 1
+      const isPrevType = checkType === 'prev'
+
+      reverse.value = isPrevType
+      panelKey.value += isPrevType ? -1 : 1
+      page.value += isPrevType ? -1 : 1
     }
 
     // expose for internal
