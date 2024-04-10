@@ -1,3 +1,17 @@
+## [3.2.4](https://github.com/varletjs/varlet/compare/v3.2.3...v3.2.4) (2024-04-10)
+
+
+### Bug Fixes
+
+* **time-picker:** update allow time when the value changed ([#1579](https://github.com/varletjs/varlet/issues/1579)) ([2df9378](https://github.com/varletjs/varlet/commit/2df93789f29e778518f7731991b85f2508774b72))
+
+
+### Performance Improvements
+
+* **divider:** improve accessibility ([#1582](https://github.com/varletjs/varlet/issues/1582)) ([e30c34f](https://github.com/varletjs/varlet/commit/e30c34fefb8936be6fa07d76e9db62771ab24f78))
+
+
+
 ## [3.2.3](https://github.com/varletjs/varlet/compare/v3.2.2...v3.2.3) (2024-04-06)
 
 
