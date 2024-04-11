@@ -5,7 +5,7 @@
         :class="classes(n('linear-block'), [track, n('linear-background')])"
         :style="{ height: toSizeUnit(lineWidth), background: trackColor }"
       >
-        <div v-if="indeterminate" :class="classes([indeterminate, n('linear-indeterminate')])">
+        <div v-if="indeterminate" :class="n('linear-indeterminate')">
           <div :class="classes(n(`linear--${type}`))" :style="{ background: progressColor }"></div>
           <div :class="classes(n(`linear--${type}`))" :style="{ background: progressColor }"></div>
         </div>
@@ -64,7 +64,7 @@
         ></path>
       </svg>
 
-      <div :class="classes(n('circle-label'), [labelClass, labelClass])" v-if="label">
+      <div :class="classes(n('circle-label'), labelClass)" v-if="label">
         <slot>
           {{ circleProps.roundValue }}
         </slot>
@@ -81,8 +81,8 @@ import { useId } from '@varlet/use'
 import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
-const ONE_HUNDRED = 100
-const ZERO = 0
+const MAX = 100
+const MIN = 0
 const RADIUS = 20
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
@@ -95,8 +95,8 @@ export default defineComponent({
     const id = useId()
     const linearProps = computed(() => {
       const value = toNumber(props.value)
-      const width = clamp(value, ZERO, ONE_HUNDRED)
-      const roundValue = clamp(Math.round(value), ZERO, ONE_HUNDRED)
+      const width = clamp(value, MIN, MAX)
+      const roundValue = clamp(Math.round(value), MIN, MAX)
 
       return {
         width: `${width}%`,
@@ -109,8 +109,8 @@ export default defineComponent({
 
       const diameter = (RADIUS / (1 - toPxNum(lineWidth) / toPxNum(size))) * 2
       const viewBox = `0 0 ${diameter} ${diameter}`
-      const roundValue = toNumber(value) > ONE_HUNDRED ? ONE_HUNDRED : Math.round(toNumber(value))
-      const strokeOffset = `${((ONE_HUNDRED - roundValue) / ONE_HUNDRED) * CIRCUMFERENCE}`
+      const roundValue = toNumber(value) > MAX ? MAX : Math.round(toNumber(value))
+      const strokeOffset = `${((MAX - roundValue) / MAX) * CIRCUMFERENCE}`
       const strokeWidth = (toPxNum(lineWidth) / toPxNum(size)) * diameter
 
       const beginPositionX = 0
