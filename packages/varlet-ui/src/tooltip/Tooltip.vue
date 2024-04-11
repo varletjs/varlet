@@ -22,6 +22,7 @@
           <div
             :style="{ background: color, width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined }"
             :class="classes(n('content-container'), n(`--${type}`))"
+            role="tooltip"
           >
             <slot name="content">{{ content }}</slot>
           </div>
