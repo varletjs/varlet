@@ -19,7 +19,7 @@ export type ThumbsProps = {
 }
 
 export interface ThumbsListProps {
-  value: number | number[]
+  value: number
   enumValue: Thumbs
   text: number
   hovering: boolean

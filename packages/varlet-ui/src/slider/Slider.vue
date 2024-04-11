@@ -22,6 +22,12 @@
         :key="item.enumValue"
         :style="thumbStyle(item)"
         :tabindex="isDisabled ? undefined : '0'"
+        role="slider"
+        :aria-valuemin="min"
+        :aria-valuemax="max"
+        :aria-valuenow="item.value"
+        :aria-disabled="isDisabled"
+        :aria-valuetext="`${item.text}`"
         @touchstart.stop="start($event, item.enumValue)"
         @focusin="handleFocus(item)"
         @focusout="handleBlur(item)"
@@ -294,12 +300,12 @@ export default defineComponent({
 
       let num = value
 
-      if (num < Number(props.min)) {
-        num = Number(props.min)
+      if (num < toNumber(props.min)) {
+        num = toNumber(props.min)
       }
 
-      if (num > Number(props.max)) {
-        num = Number(props.max)
+      if (num > toNumber(props.max)) {
+        num = toNumber(props.max)
       }
 
       const isInteger = parseInt(`${num}`, 10) === num
