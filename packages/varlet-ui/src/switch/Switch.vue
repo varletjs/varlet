@@ -1,5 +1,10 @@
 <template>
-  <div :class="classes(n(), [variant, n('--variant')])" v-hover:desktop="hover">
+  <div
+    :class="classes(n(), [variant, n('--variant')])"
+    role="switch"
+    :aria-checked="modelValue"
+    v-hover:desktop="hover"
+  >
     <div
       ref="switchRef"
       :class="classes(n('block'), [disabled || formDisabled, n('--disabled')], [isActive, n('block--active')])"
