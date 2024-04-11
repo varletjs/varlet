@@ -76,12 +76,13 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
-import { isPlainObject, toNumber } from '@varlet/shared'
+import { isPlainObject, toNumber, clamp } from '@varlet/shared'
 import { useId } from '@varlet/use'
 import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
 const ONE_HUNDRED = 100
+const ZERO = 0
 const RADIUS = 20
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
 
@@ -94,8 +95,8 @@ export default defineComponent({
     const id = useId()
     const linearProps = computed(() => {
       const value = toNumber(props.value)
-      const width = value > ONE_HUNDRED ? ONE_HUNDRED : value
-      const roundValue = value > ONE_HUNDRED ? ONE_HUNDRED : Math.round(value)
+      const width = clamp(value, ZERO, ONE_HUNDRED)
+      const roundValue = clamp(Math.round(value), ZERO, ONE_HUNDRED)
 
       return {
         width: `${width}%`,
