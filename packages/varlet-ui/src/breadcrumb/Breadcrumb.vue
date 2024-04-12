@@ -4,7 +4,7 @@
       <slot />
     </div>
     <slot v-if="!isLast" name="separator">
-      <div :class="n('separator')">
+      <div :class="n('separator')" aria-hidden="true">
         {{ separator ?? parentSeparator }}
       </div>
     </slot>

@@ -1,5 +1,5 @@
 <template>
-  <div :class="n()">
+  <div :class="n()" role="navigation" aria-label="Breadcrumbs">
     <slot />
   </div>
 </template>
