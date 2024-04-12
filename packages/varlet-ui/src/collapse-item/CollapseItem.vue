@@ -4,7 +4,13 @@
     :style="`--collapse-divider-top: ${divider ? 'var(--collapse-border-top)' : 'none'}`"
   >
     <div :class="classes(n('shadow'), formatElevation(elevation, 2))"></div>
-    <div :class="n('header')" @click="toggle">
+    <div
+      :class="classes(n('header'), [!disabled, n('header--cursor-pointer')])"
+      :aria-expanded="isShow"
+      :aria-disabled="disabled"
+      :role="accordion ? 'tab' : 'button'"
+      @click="toggle"
+    >
       <div :class="n('header-title')" v-if="$slots.title || title">
         <slot name="title">{{ title }}</slot>
       </div>
@@ -61,7 +67,7 @@ export default defineComponent({
     const name = computed(() => props.name)
     const disabled = computed(() => props.disabled)
     const { index, collapse, bindCollapse } = useCollapse()
-    const { offset, divider, elevation, updateItem } = collapse
+    const { offset, divider, elevation, accordion, updateItem } = collapse
 
     const collapseItemProvider: CollapseItemProvider = {
       index,
@@ -97,6 +103,7 @@ export default defineComponent({
       divider,
       elevation,
       contentEl,
+      accordion,
       n,
       classes,
       toggle,

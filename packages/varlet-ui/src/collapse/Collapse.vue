@@ -23,6 +23,7 @@ export default defineComponent({
     const offset = computed(() => props.offset)
     const divider = computed(() => props.divider)
     const elevation = computed(() => props.elevation)
+    const accordion = computed(() => props.accordion)
     const normalizeValues = computed(() => normalizeToArray(props.modelValue))
     const { length, collapseItems, bindCollapseItems } = useCollapseItem()
 
@@ -30,6 +31,7 @@ export default defineComponent({
       offset,
       divider,
       elevation,
+      accordion,
       updateItem,
     }
 

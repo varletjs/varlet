@@ -5,6 +5,7 @@ import { type ComputedRef } from 'vue'
 export interface CollapseProvider {
   offset: ComputedRef<boolean>
   divider: ComputedRef<boolean>
+  accordion: ComputedRef<boolean>
   elevation: ComputedRef<boolean | number | string>
   updateItem: (value: number | string, isExpand: boolean) => void
 }
