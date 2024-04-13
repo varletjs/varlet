@@ -2,10 +2,10 @@
 
 exports[`test swipe component props > test swipe navigation 1`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
-  <div class="var-swipe__track var-swipe--vertical" style="height: 0px; transform: translateY(0px); transition-duration: 300ms;">
-    <div class="var-swipe-item" style="height: 0px; transform: translateY(0px);">1</div>
-    <div class="var-swipe-item" style="height: 0px; transform: translateY(0px);">2</div>
-    <div class="var-swipe-item" style="height: 0px; transform: translateY(0px);">3</div>
+  <div class="var-swipe__track var-swipe--vertical" style="height: 300px; transform: translateY(0px); transition-duration: 300ms;">
+    <div class="var-swipe-item" style="height: 100px; transform: translateY(0px);" tabindex="-1" aria-hidden="false">1</div>
+    <div class="var-swipe-item" style="height: 100px; transform: translateY(0px);" tabindex="-1" aria-hidden="true">2</div>
+    <div class="var-swipe-item" style="height: 100px; transform: translateY(0px);" tabindex="-1" aria-hidden="true">3</div>
   </div>
   <transition-stub name="" appear="false" persisted="false" css="true">
     <div class="var-swipe__navigation var-swipe__navigation-prev var-swipe--navigation-vertical-prev"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-swipe__navigation-prev-button" type="button" var-swipe-cover="">
@@ -21,16 +21,20 @@ exports[`test swipe component props > test swipe navigation 1`] = `
         <div class="var-hover-overlay"></div>
       </button></div>
   </transition-stub>
-  <!--v-if-->
+  <div class="var-swipe__indicators var-swipe--indicators-vertical">
+    <div class="var-swipe__indicator var-swipe--indicator-active var-swipe--indicator-vertical"></div>
+    <div class="var-swipe__indicator var-swipe--indicator-vertical"></div>
+    <div class="var-swipe__indicator var-swipe--indicator-vertical"></div>
+  </div>
 </div>"
 `;
 
 exports[`test swipe component props > test swipe navigation 2`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
-  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 0px;">
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">1</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">2</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">3</div>
+  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">2</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">3</div>
   </div>
   <transition-stub name="" appear="false" persisted="false" css="true">
     <div class="var-swipe__navigation var-swipe__navigation-prev"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-swipe__navigation-prev-button" type="button" var-swipe-cover="">
@@ -46,16 +50,20 @@ exports[`test swipe component props > test swipe navigation 2`] = `
         <div class="var-hover-overlay"></div>
       </button></div>
   </transition-stub>
-  <!--v-if-->
+  <div class="var-swipe__indicators">
+    <div class="var-swipe__indicator var-swipe--indicator-active"></div>
+    <div class="var-swipe__indicator"></div>
+    <div class="var-swipe__indicator"></div>
+  </div>
 </div>"
 `;
 
 exports[`test swipe component props > test swipe navigation 3`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
-  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 0px;">
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">1</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">2</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">3</div>
+  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">2</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">3</div>
   </div>
   <!--v-if-->
   <!--v-if-->
@@ -69,10 +77,10 @@ exports[`test swipe component props > test swipe navigation 3`] = `
 
 exports[`test swipe component props > test swipe navigation 4`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
-  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 0px;">
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">1</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">2</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">3</div>
+  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">2</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">3</div>
   </div>
   <transition-stub name="var-swipe--navigation-prev-animation" appear="false" persisted="false" css="true">
     <div class="var-swipe__navigation var-swipe__navigation-prev"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default var-swipe__navigation-prev-button" type="button" var-swipe-cover="">
@@ -98,10 +106,10 @@ exports[`test swipe component props > test swipe navigation 4`] = `
 
 exports[`test swipe component props > test swipe navigation 5`] = `
 "<div class="var-swipe" style="width: 100px; height: 100px;">
-  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 0px;">
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">1</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">2</div>
-    <div class="var-swipe-item" style="transform: translateX(0px); width: 0px;">3</div>
+  <div class="var-swipe__track" style="transform: translateX(0px); transition-duration: 300ms; width: 300px;">
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="false">1</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">2</div>
+    <div class="var-swipe-item" style="transform: translateX(0px); width: 100px;" tabindex="-1" aria-hidden="true">3</div>
   </div>
   <transition-stub name="var-swipe--navigation-prev-animation" appear="false" persisted="false" css="true">
     <!--v-if-->
