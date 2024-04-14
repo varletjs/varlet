@@ -161,6 +161,7 @@ export default defineComponent({
     let timer = -1
     const swipeProvider: SwipeProvider = {
       size,
+      currentIndex: index,
       vertical,
     }
 

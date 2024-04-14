@@ -4,6 +4,7 @@ import { type SwipeItemProvider } from '../swipe-item/provide'
 
 export interface SwipeProvider {
   size: Ref<number>
+  currentIndex: Ref<number>
   vertical: ComputedRef<boolean>
 }
 

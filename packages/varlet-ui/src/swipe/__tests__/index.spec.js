@@ -205,10 +205,14 @@ describe('test swipe component props', () => {
       },
     })
 
+    await delay(600)
     expect(wrapper.html()).toMatchSnapshot()
+
     await wrapper.setProps({ vertical: false })
-    expect(wrapper.html()).toMatchSnapshot()
+    await delay(600)
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(true)
+    expect(wrapper.html()).toMatchSnapshot()
+
     await wrapper.setProps({ navigation: false })
     expect(wrapper.find('.var-swipe__navigation').exists()).toBe(false)
     expect(wrapper.html()).toMatchSnapshot()

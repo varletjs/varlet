@@ -6,6 +6,8 @@
       height: vertical ? `${size}px` : undefined,
       transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
     }"
+    tabindex="-1"
+    :aria-hidden="currentIndex === index ? 'false' : 'true'"
   >
     <slot />
   </div>
@@ -23,7 +25,7 @@ export default defineComponent({
   setup() {
     const translate = ref(0)
     const { swipe, bindSwipe, index } = useSwipe()
-    const { size, vertical } = swipe
+    const { size, currentIndex, vertical } = swipe
 
     const swipeItemProvider: SwipeItemProvider = {
       index,
@@ -39,6 +41,8 @@ export default defineComponent({
     return {
       n,
       size,
+      index,
+      currentIndex,
       vertical,
       translate,
     }
