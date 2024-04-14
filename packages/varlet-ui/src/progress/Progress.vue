@@ -1,5 +1,11 @@
 <template>
-  <div :class="n()">
+  <div
+    :class="n()"
+    role="progressbar"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    :aria-valuenow="indeterminate ? undefined : mode === 'linear' ? linearProps.value : circleProps.value"
+  >
     <div :class="n('linear')" v-if="mode === 'linear'">
       <div
         :class="classes(n('linear-block'), [track, n('linear-background')])"
@@ -101,6 +107,7 @@ export default defineComponent({
       return {
         width: `${width}%`,
         roundValue: `${roundValue}%`,
+        value: width,
       }
     })
 
@@ -109,7 +116,7 @@ export default defineComponent({
 
       const diameter = (RADIUS / (1 - toPxNum(lineWidth) / toPxNum(size))) * 2
       const viewBox = `0 0 ${diameter} ${diameter}`
-      const roundValue = toNumber(value) > MAX ? MAX : Math.round(toNumber(value))
+      const roundValue = clamp(Math.round(toNumber(value)), MIN, MAX)
       const strokeOffset = `${((MAX - roundValue) / MAX) * CIRCUMFERENCE}`
       const strokeWidth = (toPxNum(lineWidth) / toPxNum(size)) * diameter
 
@@ -126,6 +133,7 @@ export default defineComponent({
         strokeOffset,
         roundValue: `${roundValue}%`,
         path,
+        value: clamp(toNumber(value), MIN, MAX),
       }
     })
 
