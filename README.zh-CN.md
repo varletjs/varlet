@@ -36,11 +36,13 @@ Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全�
 - 🌍 &nbsp; 支持国际化
 - 💡 &nbsp; 支持 webstorm 组件属性高亮
 - 💪 &nbsp; 支持 SSR
+- 📦 &nbsp; 支持 [Nuxt Module](https://github.com/varletjs/varlet-nuxt)
 - 💡 &nbsp; 支持 Typescript
 - 💪 &nbsp; 确保 90% 以上单元测试覆盖率，提供稳定性保证
-- 🛠️ &nbsp; 同时支持 Material Design 2 和 Material Design 3 两套设计系统
+- 🎨 &nbsp; 同时支持 Material Design 2 和 Material Design 3 两套设计系统
 - 🛠️ &nbsp; 支持暗黑模式
-- 🛠️ &nbsp; 提供官方的 VSCode 插件
+- 🔧 &nbsp; 提供官方的 VSCode 插件
+- ⌨️ &nbsp; 支持无障碍访问（持续改进中）
 
 ### 安装
 

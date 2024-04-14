@@ -36,11 +36,13 @@ Varlet is a Material design mobile component library developed based on `Vue3`, 
 - 🌍 &nbsp; Support internationalization
 - 💡 &nbsp; Support WebStorm syntax highlighting
 - 💪 &nbsp; Support the SSR
+- 📦 &nbsp; Support [Nuxt Module](https://github.com/varletjs/varlet-nuxt)
 - 💡 &nbsp; Support the Typescript
 - 💪 &nbsp; Make sure more than 90 percent unit test coverage, providing stability assurance
-- 🛠️ &nbsp; Supports both Material Design 2 and Material Design 3 design systems
+- 🎨 &nbsp; Supports both Material Design 2 and Material Design 3 design systems
 - 🛠️ &nbsp; Support dark mode
-- 🛠️ &nbsp; Provide official VSCode extension
+- 🔧 &nbsp; Provide official VSCode extension
+- ⌨️ &nbsp; Support Accessibility (still improving)
 
 ### Install
 
