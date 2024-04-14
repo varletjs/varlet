@@ -82,6 +82,8 @@ export default defineComponent({
             [props.safeAreaTop, n('--safe-area-top')]
           )}
           style={{ zIndex: zIndex.value }}
+          role="dialog"
+          aria-modal="true"
           {...attrs}
           v-show={props.show}
         >

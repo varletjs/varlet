@@ -5,7 +5,7 @@ exports[`test image preview component props > test image preview imagePreventDef
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->
     <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" var-image-preview-cover="">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-image-preview-cover="">
         <div class="var-swipe var-image-preview__swipe" var-image-preview-cover="">
           <div class="var-swipe__track" style="width: 375px; transform: translateX(0px); transition-duration: 300ms;">
             <div class="var-swipe-item var-image-preview__swipe-item" style="width: 375px; transform: translateX(0px);" tabindex="-1" aria-hidden="false" var-image-preview-cover="">
@@ -29,7 +29,7 @@ exports[`test image preview component props > test image preview initialIndex 1`
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->
     <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" var-image-preview-cover="">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-image-preview-cover="">
         <div class="var-swipe var-image-preview__swipe" var-image-preview-cover="">
           <div class="var-swipe__track" style="width: 750px; transform: translateX(-375px); transition-duration: 300ms;">
             <div class="var-swipe-item var-image-preview__swipe-item" style="width: 375px; transform: translateX(0px);" tabindex="-1" aria-hidden="true" var-image-preview-cover="">
@@ -56,7 +56,7 @@ exports[`test image preview component props > test image preview show 1`] = `
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998; display: none;">
     <!---->
     <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000; display: none;" var-image-preview-cover="">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000; display: none;" role="dialog" aria-modal="true" var-image-preview-cover="">
         <!---->
       </div>
     </transition-stub>
@@ -69,7 +69,7 @@ exports[`test image preview component props > test image preview show 2`] = `
   <div class="var--box var-popup var-popup--pointer-events-none" style="z-index: 1998;">
     <!---->
     <transition-stub name="var-fade" appear="false" persisted="false" css="true">
-      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" var-image-preview-cover="">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-image-preview__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-image-preview-cover="">
         <div class="var-swipe var-image-preview__swipe" var-image-preview-cover="">
           <div class="var-swipe__track" style="width: 0px; transform: translateX(0px); transition-duration: 300ms;"></div>
           <!--v-if-->
