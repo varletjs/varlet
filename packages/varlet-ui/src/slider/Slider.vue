@@ -267,7 +267,7 @@ export default defineComponent({
       }
     }
 
-    function showLabel(type: keyof ThumbsProps): boolean {
+    function showLabel(type: keyof ThumbsProps) {
       if (props.labelVisible === 'always') {
         return true
       }
@@ -432,8 +432,14 @@ export default defineComponent({
     }
 
     function handleClick(event: MouseEvent) {
-      if (isDisabled.value || isReadonly.value) return
-      if ((event.target as HTMLElement).closest(`.${n('thumb')}`)) return
+      if (isDisabled.value || isReadonly.value) {
+        return
+      }
+
+      if ((event.target as HTMLElement).closest(`.${n('thumb')}`)) {
+        return
+      }
+
       const offset = getOffset(event)
       const type = getType(offset)
       activeThumb = type

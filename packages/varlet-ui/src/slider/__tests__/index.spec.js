@@ -23,6 +23,19 @@ test('test slider plugin', () => {
 })
 
 describe('test slider props', () => {
+  test('test slider direction prop', async () => {
+    const wrapper = mount(VarSlider)
+
+    expect(wrapper.find('.var-slider__horizontal').exists()).toBe(true)
+
+    await wrapper.setProps({
+      direction: 'vertical',
+    })
+    expect(wrapper.find('.var-slider__vertical').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+
   test('test step prop', async () => {
     const { mockRestore } = mockConsole('warn')
 
@@ -153,7 +166,7 @@ describe('test slider props', () => {
     })
   })
 
-  test('test trackHeight prop', () => {
+  test('test trackHeight prop', async () => {
     const wrapper = mount(VarSlider, {
       props: {
         modelValue: 2,
@@ -162,6 +175,11 @@ describe('test slider props', () => {
     })
 
     expect(wrapper.find('.var-slider__horizontal-track-background').attributes('style')).toContain('height: 4px;')
+
+    await wrapper.setProps({
+      trackHeight: 8,
+    })
+    expect(wrapper.find('.var-slider__horizontal-track-background').attributes('style')).toContain('height: 8px;')
 
     wrapper.unmount()
   })
@@ -234,6 +252,10 @@ describe('test slider props', () => {
       template,
     })
 
+    expect(wrapper.find('.var-slider--disabled').exists()).toBe(true)
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-disabled')).toBe('true')
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('tabindex')).toBe(undefined)
+
     const el = wrapper.find('.var-slider__horizontal-thumb')
 
     await trigger(el, 'touchstart', 0, 0)
@@ -245,6 +267,10 @@ describe('test slider props', () => {
       readonly: true,
     })
 
+    expect(wrapper.find('.var-slider--disabled').exists()).toBe(false)
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-disabled')).toBe(undefined)
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('tabindex')).toBe('0')
+
     await trigger(el, 'touchstart', 0, 0)
     await trigger(el, 'touchmove', 0, 50)
     await trigger(el, 'touchend', 0, 50)
@@ -252,6 +278,60 @@ describe('test slider props', () => {
     expect(startFn).toHaveBeenCalledTimes(0)
     expect(changeFn).toHaveBeenCalledTimes(0)
     expect(endFn).toHaveBeenCalledTimes(0)
+
+    wrapper.unmount()
+  })
+
+  test('test slider getValue function when the type of value is number', async () => {
+    const wrapper = mount(VarSlider, {
+      props: {
+        modelValue: 2,
+      },
+    })
+
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('2')
+
+    await wrapper.setProps({
+      modelValue: -1,
+    })
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('0')
+
+    await wrapper.setProps({
+      modelValue: 101,
+    })
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('100')
+
+    wrapper.unmount()
+  })
+
+  test('test slider getValue function when the type of value is number', async () => {
+    const wrapper = mount(VarSlider, {
+      props: {
+        modelValue: [2, 4],
+        range: true,
+      },
+    })
+
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('2')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('4')
+
+    await wrapper.setProps({
+      modelValue: [-1, 4],
+    })
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('4')
+
+    await wrapper.setProps({
+      modelValue: [1, 400],
+    })
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('1')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('100')
 
     wrapper.unmount()
   })
