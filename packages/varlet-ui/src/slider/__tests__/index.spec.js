@@ -256,6 +256,60 @@ describe('test slider props', () => {
     wrapper.unmount()
   })
 
+  test('test slider getValue function when the type of value is number', async () => {
+    const wrapper = mount(VarSlider, {
+      props: {
+        modelValue: 2,
+      },
+    })
+
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('2')
+
+    await wrapper.setProps({
+      modelValue: -1,
+    })
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('0')
+
+    await wrapper.setProps({
+      modelValue: 101,
+    })
+    expect(wrapper.find('.var-slider__horizontal-thumb').attributes('aria-valuenow')).toBe('100')
+
+    wrapper.unmount()
+  })
+
+  test('test slider getValue function when the type of value is number', async () => {
+    const wrapper = mount(VarSlider, {
+      props: {
+        modelValue: [2, 4],
+        range: true,
+      },
+    })
+
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuemin')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuemax')).toBe('100')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('2')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('4')
+
+    await wrapper.setProps({
+      modelValue: [-1, 4],
+    })
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('0')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('4')
+
+    await wrapper.setProps({
+      modelValue: [1, 400],
+    })
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[0].attributes('aria-valuenow')).toBe('1')
+    expect(wrapper.findAll('.var-slider__horizontal-thumb')[1].attributes('aria-valuenow')).toBe('100')
+
+    wrapper.unmount()
+  })
+
   test('test slider value legal', async () => {
     const fn = vi.fn()
     const { mockRestore } = mockConsole('error', fn)
