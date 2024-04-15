@@ -38,6 +38,8 @@ export type Message = {
   [key: PropertyKey]: any
 }
 
+type ValueOf<T> = T[keyof T]
+
 function useLocale<T = Message>() {
   const messages: Record<string, Partial<T>> = {}
   const currentMessage: Ref<Partial<T>> = ref({})
@@ -67,12 +69,10 @@ function useLocale<T = Message>() {
     use(lang)
   }
 
-  const t = (id: string) => {
+  const t = (id: string): ValueOf<Message> | undefined => {
     if (hasOwn(currentMessage.value, id)) {
       return currentMessage.value[id]
     }
-
-    return id
   }
 
   return {
