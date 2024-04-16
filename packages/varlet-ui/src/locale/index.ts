@@ -69,7 +69,7 @@ function useLocale<T = Message>() {
     use(lang)
   }
 
-  const t = (id: string): ValueOf<Message> | undefined => {
+  const t = (id: string): ValueOf<T> | undefined => {
     if (hasOwn(currentMessage.value, id)) {
       return currentMessage.value[id]
     }
