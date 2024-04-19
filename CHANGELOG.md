@@ -1,3 +1,24 @@
+## [3.2.5](https://github.com/varletjs/varlet/compare/v3.2.4...v3.2.5) (2024-04-19)
+
+
+### Bug Fixes
+
+* **progress:** reset value to 0 when the value is less than 0 ([#1586](https://github.com/varletjs/varlet/issues/1586)) ([915b287](https://github.com/varletjs/varlet/commit/915b287cb532ed83c9a8e038cb49c964ca5a14b1))
+
+
+### Performance Improvements
+
+* **breadcrumbs:** improve accessibility ([#1588](https://github.com/varletjs/varlet/issues/1588)) ([55268d8](https://github.com/varletjs/varlet/commit/55268d81bd8107d68d464e5c6c8ab68157b9b6aa))
+* **collapse:** improve accessibility ([#1589](https://github.com/varletjs/varlet/issues/1589)) ([c2493b9](https://github.com/varletjs/varlet/commit/c2493b9d7bf05dfb2cfe9bbd105e3554c90d19b6))
+* **popup:** improve accessibility ([#1591](https://github.com/varletjs/varlet/issues/1591)) ([2051379](https://github.com/varletjs/varlet/commit/20513798cdf0589b1dd756b05f4395a1241264da))
+* **progress:** improve accessibility ([#1587](https://github.com/varletjs/varlet/issues/1587)) ([4cb3e37](https://github.com/varletjs/varlet/commit/4cb3e377cd099fa0a6a7985481b253ecd6a52f84))
+* **slider:** improve accessibility ([#1584](https://github.com/varletjs/varlet/issues/1584)) ([cd21e9b](https://github.com/varletjs/varlet/commit/cd21e9bb9596585f85de1b7a34dbedf2057ed468))
+* **swipe:** improve accessibility ([#1592](https://github.com/varletjs/varlet/issues/1592)) ([c66fa83](https://github.com/varletjs/varlet/commit/c66fa83bfdc48a028713758b142cbd0842002c17))
+* **switch:** improve accessibility ([#1585](https://github.com/varletjs/varlet/issues/1585)) ([1b10be4](https://github.com/varletjs/varlet/commit/1b10be42fd538ed3f4255471961c741bd3d15c94))
+* **tooltip:** improve accessibility ([#1583](https://github.com/varletjs/varlet/issues/1583)) ([6107c8b](https://github.com/varletjs/varlet/commit/6107c8b33be440d52bf0f5f2f708547412b87cfc))
+
+
+
 ## [3.2.4](https://github.com/varletjs/varlet/compare/v3.2.3...v3.2.4) (2024-04-10)
 
 
