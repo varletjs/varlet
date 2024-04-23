@@ -83,7 +83,7 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { isPlainObject, toNumber, clamp } from '@varlet/shared'
-import { useId } from '@varlet/use'
+import { useClientId } from '@varlet/use'
 import { toSizeUnit, toPxNum } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
@@ -98,7 +98,7 @@ export default defineComponent({
   name,
   props,
   setup(props) {
-    const id = useId()
+    const id = useClientId()
     const linearProps = computed(() => {
       const value = toNumber(props.value)
       const width = clamp(value, MIN, MAX)

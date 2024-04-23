@@ -133,7 +133,7 @@ import { props, type InputType, type InputValidateTrigger } from './props'
 import { isEmpty, preventDefault, toNumber, call } from '@varlet/shared'
 import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
-import { onSmartMounted, useId } from '@varlet/use'
+import { onSmartMounted, useClientId } from '@varlet/use'
 import { type InputProvider } from './provide'
 
 const { name, n, classes } = createNamespace('input')
@@ -146,7 +146,7 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const id = useId()
+    const id = useClientId()
     const el = ref<HTMLInputElement | null>(null)
     const isFocusing = ref(false)
     const isComposing = ref(false)
