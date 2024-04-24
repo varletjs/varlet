@@ -7,6 +7,7 @@
 ### 安装
 
 #### CDN
+
 `varlet.js` 包含组件库的所有样式和逻辑, 引入即可。
 
 ```html
@@ -48,16 +49,37 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
-### 在线编辑组件
+### 选择设计系统
 
-我们提供了网页版的组件编辑器，方便您对组件库的各个组件进行快速上手、在线编辑、分享给他人或是下载代码包本地运行。
-您可以点击网页右上角的 `{...}` 图标或是 [这里前往](https://varlet.gitee.io/varlet-ui-playground)。
-
-### 文件路径注意
-
-在 `@varlet/ui@2.7.0` 及其之后的版本，我们推荐使用如下省略后缀名的文件引入方式，以兼容 `js` 和 `mjs`
+从 3.x 版本开始，Varlet 同时支持了 Material Design 2 和 Material Design 3 两种设计系统。
 
 ```js
 // playground-ignore
-import '@varlet/ui/es/style'
+// Varlet 默认为 Material Design 2 亮色模式
+import { Themes, StyleProvider } from '@varlet/ui'
+
+// Material Design 2 暗色模式
+StyleProvider(Themes.dark)
+// Material Design 3 亮色模式
+StyleProvider(Themes.md3Light)
+// Material Design 3 暗色模式
+StyleProvider(Themes.md3Dark)
 ```
+
+```css
+// playground-ignore
+body {
+  transition: background-color .25s, color .25s;
+  color: var(--color-text);
+  background-color: var(--color-body);
+}
+```
+
+### 支持桌面端
+
+详情见[这里](#/en-US/browserAdaptation)。
+
+### 在线体验组件
+
+我们提供了网页版的组件编辑器，方便您对组件库的各个组件进行快速上手、在线编辑、分享给他人或是下载代码包本地运行。
+您可以点击网页右上角的 `{...}` 图标或是 [这里前往](https://varlet.gitee.io/varlet-ui-playground)。
