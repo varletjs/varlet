@@ -1,3 +1,4 @@
+import { SRC_DIR } from '../shared/constant.js'
 import { defineConfig } from './varlet.config.js'
 
 const title = {

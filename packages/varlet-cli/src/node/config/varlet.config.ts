@@ -46,6 +46,7 @@ export interface VarletConfig {
   logo?: string
   themeKey?: string
   defaultLanguage?: 'zh-CN' | 'en-US'
+  alias?: Record<string, string>
   /**
    * @default `false`
    * Show mobile component on the right.

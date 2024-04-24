@@ -1,13 +1,14 @@
-import fse from 'fs-extra'
-import esbuild from 'esbuild'
+import { ES_DIR } from "../shared/constant.js"
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
-import { resolve, extname, dirname } from 'path'
-import { getVarletConfig } from '../config/varlet.config.js'
+import { resolve, relative, extname, dirname } from 'path'
+import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash-es'
 import type { BabelFileResult } from '@babel/core'
+import fse from 'fs-extra'
+import esbuild from 'esbuild'
 
 const { writeFileSync, readdirSync, readFileSync, removeSync, writeFile, pathExistsSync } = fse
 
@@ -37,20 +38,38 @@ export const tryMatchExtname = (file: string, extname: string[]) => {
   }
 }
 
-export const resolveDependence = (file: string, script: string) => {
+export const resolveAlias = (dependence: string, file: string, alias: VarletConfig['alias'] = {}) => {
+  let matchedAliasKey = Object.keys(alias).find((key) => dependence === key)
+
+  if (!matchedAliasKey) {
+    matchedAliasKey = Object.keys(alias).find((key) => dependence.startsWith(`${key}/`))
+  }
+
+  if (!matchedAliasKey) {
+    return dependence
+  }
+
+  const matchedAliasValue = alias[matchedAliasKey as keyof typeof alias]
+  const replacedValue = relative(dirname(file), resolve(ES_DIR, matchedAliasValue))
+
+  return dependence.replace(matchedAliasKey, replacedValue)
+}
+
+export const resolveDependence = (file: string, script: string, alias: VarletConfig['alias'] = {}) => {
   const replacer = (source: string, dependence: string) => {
+    // remove quotes
     dependence = dependence.slice(1, dependence.length - 1)
+    const resolvedDependence = resolveAlias(dependence, file, alias)
+    const isNodeModule = !resolvedDependence.startsWith('.')
 
-    const ext = extname(dependence)
-    const targetDependenceFile = resolve(dirname(file), dependence)
-    const scriptExtname = getScriptExtname()
-    const inNodeModules = !dependence.startsWith('.')
-    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
-
-    if (inNodeModules) {
+    if (isNodeModule) {
       // e.g. @varlet/shared
       return source
     }
+
+    const ext = extname(resolvedDependence)
+    const scriptExtname = getScriptExtname()
+    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
 
     if (ext) {
       if (scriptExtNames.includes(ext)) {
@@ -64,18 +83,20 @@ export const resolveDependence = (file: string, script: string) => {
       }
     }
 
+    const targetDependenceFile = resolve(dirname(file), resolvedDependence)
+
     if (!ext) {
       // e.g. ../button/props -> ../button/props.mjs
       const matchedScript = tryMatchExtname(targetDependenceFile, scriptExtNames)
 
       if (matchedScript) {
-        return done(`${dependence}${scriptExtname}`)
+        return done(`${resolvedDependence}${scriptExtname}`)
       }
 
       const matchedStyle = tryMatchExtname(targetDependenceFile, styleExtNames)
 
       if (matchedStyle) {
-        return done(`${dependence}${matchedStyle}`)
+        return done(`${resolvedDependence}${matchedStyle}`)
       }
     }
 
@@ -87,14 +108,14 @@ export const resolveDependence = (file: string, script: string) => {
 
       if (hasScriptIndex) {
         // e.g. -> ../button/index.mjs
-        return done(`${dependence}/index${scriptExtname}`)
+        return done(`${resolvedDependence}/index${scriptExtname}`)
       }
 
       const hasStyleIndex = files.some((file) => styleIndexes.some((name) => file.endsWith(name)))
 
       if (hasStyleIndex) {
         // e.g. -> ../button/index.css
-        return done(`${dependence}/index.css`)
+        return done(`${resolvedDependence}/index.css`)
       }
     }
 
@@ -138,11 +159,11 @@ export async function compileScriptByEsbuild(script: string) {
 
 export async function compileScript(script: string, file: string) {
   let code = isJsx(file) || isTsx(file) ? await compileScriptByBabel(script, file) : script
-
   code = await compileScriptByEsbuild(code)
+  const { alias } = await getVarletConfig()
 
   if (code) {
-    code = resolveDependence(file, code)
+    code = resolveDependence(file, code, alias)
     code = extractStyleDependencies(file, code, IMPORT_CSS_RE)
     code = extractStyleDependencies(file, code, IMPORT_LESS_RE)
   }

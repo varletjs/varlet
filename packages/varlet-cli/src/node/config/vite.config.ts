@@ -1,7 +1,4 @@
-import vue from '@vitejs/plugin-vue'
-import jsx from '@vitejs/plugin-vue-jsx'
-import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
-import {
+import { SRC_DIR ,
   ES_DIR,
   SITE_CONFIG,
   SITE_DIR,
@@ -11,15 +8,24 @@ import {
   SITE_PUBLIC_PATH,
   VITE_RESOLVE_EXTENSIONS,
   EXTENSION_ENTRY,
-} from '../shared/constant.js'
+} from "../shared/constant.js"
+import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config.js'
+import vue from '@vitejs/plugin-vue'
+import jsx from '@vitejs/plugin-vue-jsx'
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
+  const alias = get(varletConfig, 'alias', {})
   const host = get(varletConfig, 'host')
+
+  const resolveAlias = Object.entries(alias).reduce((resolveAlias, [key, value]) => {
+    resolveAlias[key] = resolve(SRC_DIR, value)
+    return resolveAlias
+  }, {} as Record<string, string>)
 
   return {
     root: SITE_DIR,
@@ -28,6 +34,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
       extensions: VITE_RESOLVE_EXTENSIONS,
 
       alias: {
+        ...resolveAlias,
         '@config': SITE_CONFIG,
         '@pc-routes': SITE_PC_ROUTES,
         '@mobile-routes': SITE_MOBILE_ROUTES,
