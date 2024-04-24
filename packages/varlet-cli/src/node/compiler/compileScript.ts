@@ -1,4 +1,4 @@
-import { ES_DIR } from "../shared/constant.js"
+import { ES_DIR } from '../shared/constant.js'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
@@ -42,6 +42,8 @@ export const resolveAlias = (dependence: string, file: string, alias: VarletConf
   let matchedAliasKey = Object.keys(alias).find((key) => dependence === key)
 
   if (!matchedAliasKey) {
+    // @/ -> yes
+    // @varlet/ui -> no
     matchedAliasKey = Object.keys(alias).find((key) => dependence.startsWith(`${key}/`))
   }
 

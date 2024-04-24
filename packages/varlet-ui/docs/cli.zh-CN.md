@@ -46,7 +46,8 @@ varlet-cli gen
 | `host` | 开发服务器主机 | _number_ | `localhost` |
 | `port` | 开发服务器端口 | _number_ | `8080` |
 | `title` | 文档中组件库的标题 | _string_ | `VARLET` |
-| `logo` | 文档中组件库的logo | _string_ | `-` |
+| `logo` | 文档中组件库的 logo | _string_ | `-` |
+| `alias` | 路径别名 (使用相对路径时，根路径为 src 文件夹) | _Record<string, string>_ | `-` |
 | `defaultLanguage` | 文档默认语言 | _string_ | `zh-CN` |
 | `defaultLightTheme` | 默认的亮色主题 | _string_ | `md3LightTheme` |
 | `defaultDarkTheme` | 默认的暗色主题 | _string_ | `md3DarkTheme` |
