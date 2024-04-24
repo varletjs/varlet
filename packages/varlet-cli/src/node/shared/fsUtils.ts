@@ -36,6 +36,8 @@ export const isScript = (file: string): boolean => pathExistsSync(file) && SCRIP
 
 export const isLess = (file: string): boolean => pathExistsSync(file) && extname(file) === '.less'
 
+export const isScss = (file: string): boolean => pathExistsSync(file) && extname(file) === '.scss'
+
 export const isPublicDir = (dir: string): boolean =>
   PUBLIC_DIR_INDEXES.some((index) => pathExistsSync(resolve(dir, index)))
 

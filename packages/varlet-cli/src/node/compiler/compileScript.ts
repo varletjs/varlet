@@ -2,7 +2,7 @@ import { ES_DIR } from '../shared/constant.js'
 import { transformAsync } from '@babel/core'
 import { bigCamelize } from '@varlet/shared'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
-import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE } from './compileStyle.js'
+import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE, IMPORT_SCSS_RE } from './compileStyle.js'
 import { resolve, relative, extname, dirname } from 'path'
 import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
 import { get } from 'lodash-es'
@@ -21,11 +21,11 @@ export const IMPORT_DEPENDENCE_RE = /import\s+(".*?"|'.*?')/g
 
 export const scriptExtNames = ['.vue', '.ts', '.tsx', '.mjs', '.js', '.jsx']
 
-export const styleExtNames = ['.less', '.css']
+export const styleExtNames = ['.less', '.scss', '.css']
 
 export const scriptIndexes = ['index.mjs', 'index.vue', 'index.ts', 'index.tsx', 'index.js', 'index.jsx']
 
-export const styleIndexes = ['index.less', 'index.css']
+export const styleIndexes = ['index.less', 'index.scss', 'index.css']
 
 export const tryMatchExtname = (file: string, extname: string[]) => {
   // eslint-disable-next-line no-restricted-syntax
@@ -169,6 +169,7 @@ export async function compileScript(script: string, file: string) {
     code = resolveDependence(file, code, alias)
     code = extractStyleDependencies(file, code, IMPORT_CSS_RE)
     code = extractStyleDependencies(file, code, IMPORT_LESS_RE)
+    code = extractStyleDependencies(file, code, IMPORT_SCSS_RE)
   }
 
   removeSync(file)

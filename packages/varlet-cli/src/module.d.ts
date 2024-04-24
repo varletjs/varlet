@@ -4,6 +4,12 @@ declare module 'less' {
   export { render }
 }
 
+declare module 'node-sass' {
+  declare const renderSync: any
+
+  export { renderSync }
+}
+
 declare module 'jest' {
   declare const runCLI: any
 

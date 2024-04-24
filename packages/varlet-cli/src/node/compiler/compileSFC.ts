@@ -13,8 +13,9 @@ import { SRC_DIR, ES_DIR } from '../shared/constant.js'
 import { compileScript, getScriptExtname } from './compileScript.js'
 import ts from 'typescript'
 import {
-  clearEmptyLine,
+  compressCss,
   compileLess,
+  compileScss,
   extractStyleDependencies,
   normalizeStyleDependency,
   STYLE_IMPORT_RE,
@@ -134,11 +135,15 @@ export async function compileSFC(sfc: string) {
     })
 
     code = extractStyleDependencies(file, code, STYLE_IMPORT_RE)
-    writeFileSync(file, clearEmptyLine(code), 'utf-8')
+    writeFileSync(file, compressCss(code), 'utf-8')
     smartAppendFileSync(cssFile, `import '${dependencyPath}.css'\n`)
 
     if (style.lang === 'less') {
       await compileLess(file)
+    }
+
+    if (style.lang === 'scss') {
+      compileScss(file)
     }
   }
 }

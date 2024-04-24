@@ -11,10 +11,10 @@ import {
   LIB_DIR,
   UMD_DIR,
 } from '../shared/constant.js'
-import { getPublicDirs, isDir, isDTS, isLess, isScript, isSFC } from '../shared/fsUtils.js'
+import { getPublicDirs, isDir, isDTS, isLess, isScript, isScss, isSFC } from '../shared/fsUtils.js'
 import { compileSFC } from './compileSFC.js'
 import { compileESEntry, compileScriptFile, getScriptExtname } from './compileScript.js'
-import { clearLessFiles, compileLess } from './compileStyle.js'
+import { clearLessFiles, clearScssFiles, compileLess, compileScss } from './compileStyle.js'
 import { BundleBuildOptions, getBundleConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { generateReference } from './compileTypes.js'
@@ -76,6 +76,7 @@ export async function compileFile(file: string) {
   isSFC(file) && (await compileSFC(file))
   isScript(file) && (await compileScriptFile(file))
   isLess(file) && (await compileLess(file))
+  isScss(file) && compileScss(file)
   isDir(file) && (await compileDir(file))
 }
 
@@ -97,5 +98,6 @@ export async function compileModule() {
   const publicDirs = await getPublicDirs()
   await compileESEntry(dest, publicDirs)
   clearLessFiles(dest)
+  clearScssFiles(dest)
   generateReference(dest)
 }
