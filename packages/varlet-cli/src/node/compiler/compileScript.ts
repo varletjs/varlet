@@ -52,7 +52,8 @@ export const resolveAlias = (dependence: string, file: string, alias: VarletConf
   }
 
   const matchedAliasValue = alias[matchedAliasKey as keyof typeof alias]
-  const replacedValue = relative(dirname(file), resolve(ES_DIR, matchedAliasValue))
+  const isRelative = matchedAliasValue.startsWith('.')
+  const replacedValue = isRelative ? relative(dirname(file), resolve(ES_DIR, matchedAliasValue)) : matchedAliasValue
 
   return dependence.replace(matchedAliasKey, replacedValue)
 }
@@ -61,17 +62,17 @@ export const resolveDependence = (file: string, script: string, alias: VarletCon
   const replacer = (source: string, dependence: string) => {
     // remove quotes
     dependence = dependence.slice(1, dependence.length - 1)
+    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
     const resolvedDependence = resolveAlias(dependence, file, alias)
-    const isNodeModule = !resolvedDependence.startsWith('.')
 
+    const isNodeModule = !resolvedDependence.startsWith('.')
     if (isNodeModule) {
       // e.g. @varlet/shared
-      return source
+      return done(resolvedDependence)
     }
 
     const ext = extname(resolvedDependence)
     const scriptExtname = getScriptExtname()
-    const done = (targetDependence: string) => source.replace(dependence, targetDependence)
 
     if (ext) {
       if (scriptExtNames.includes(ext)) {

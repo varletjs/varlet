@@ -1,4 +1,5 @@
-import { SRC_DIR ,
+import {
+  SRC_DIR,
   ES_DIR,
   SITE_CONFIG,
   SITE_DIR,
@@ -8,7 +9,7 @@ import { SRC_DIR ,
   SITE_PUBLIC_PATH,
   VITE_RESOLVE_EXTENSIONS,
   EXTENSION_ENTRY,
-} from "../shared/constant.js"
+} from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
@@ -23,7 +24,8 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
   const host = get(varletConfig, 'host')
 
   const resolveAlias = Object.entries(alias).reduce((resolveAlias, [key, value]) => {
-    resolveAlias[key] = resolve(SRC_DIR, value)
+    const isRelative = value.startsWith('.')
+    resolveAlias[key] = isRelative ? resolve(SRC_DIR, value) : value
     return resolveAlias
   }, {} as Record<string, string>)
 
