@@ -1,3 +1,20 @@
+## [3.2.6](https://github.com/varletjs/varlet/compare/v3.2.5...v3.2.6) (2024-04-25)
+
+
+### Bug Fixes
+
+* **cli:** fix standalone module alias replace error ([9c8e805](https://github.com/varletjs/varlet/commit/9c8e805f872ba3c92346683e7e855ba4a0120a5c))
+* fix hydration error caused by use id ([660a689](https://github.com/varletjs/varlet/commit/660a689b0397d46071488d17717315647de63be6))
+* **use:** fix non unique id warning in browser ([e44b40c](https://github.com/varletjs/varlet/commit/e44b40c52b1aa0b4a55c1cc425d385d64d949504))
+
+
+### Features
+
+* **cli:** support sass ([500b4aa](https://github.com/varletjs/varlet/commit/500b4aac248de4ef7b84bea1e84c93b12f4c7507))
+* **cli:** support scripts alias ([229e934](https://github.com/varletjs/varlet/commit/229e934a84fed213906d8a96abf2ded57b36adba))
+
+
+
 ## [3.2.5](https://github.com/varletjs/varlet/compare/v3.2.4...v3.2.5) (2024-04-19)
 
 
