@@ -77,7 +77,7 @@ body {
 
 ### 支持桌面端
 
-详情见[这里](#/en-US/browserAdaptation)。
+详情见[这里](#/zh-CN/browserAdaptation)。
 
 ### 在线体验组件
 

@@ -77,7 +77,7 @@ body {
 
 ### Support Desktop
 
-Details see [here](#/zh-CN/browserAdaptation).
+Details see [here](#/en-US/browserAdaptation).
 
 ### Components Playground
 
