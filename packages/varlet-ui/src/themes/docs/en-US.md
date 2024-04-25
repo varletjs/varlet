@@ -8,7 +8,7 @@ The component library organizes styles through [css variables](https://developer
 
 | Available Themes | Theme Pack |
 | --- | --- |
-| `Material Design 2 Light` | CSS Default_ |
+| `Material Design 2 Light` | _CSS Default_ |
 | `Material Design 2 Dark` | _Themes.dark_ |
 | `Material Design 3 Light` | _Themes.md3Light_ |
 | `Material Design 3 Dark` | _Themes.md3Dark_ |
