@@ -30,7 +30,7 @@
           :class="
             classes(
               n('handle'),
-              n('$-elevation--2'),
+              formatElevation(buttonElevation, 2),
               [isActive, n('handle--active')],
               [errorMessage && !variant, n('handle--error')],
               [hovering, n('handle--hover')]
@@ -67,7 +67,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, nextTick, ref } from 'vue'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
 import { props, type ValidateTrigger } from './props'
@@ -244,6 +244,7 @@ export default defineComponent({
       formReadonly: form?.readonly,
       n,
       classes,
+      formatElevation,
       multiplySizeUnit,
       switchActive,
       hover,
