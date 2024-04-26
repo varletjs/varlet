@@ -150,6 +150,7 @@ const value = ref(true)
 | `readonly`       | 是否只读 | _boolean_ | `false` |
 | `loading`        | 是否为加载状态 | _boolean_ | `false` |
 | `ripple`         | 是否启用水波纹 | _boolean_ | `true` |
+| `button-elevation` ***3.2.7*** | 控制按钮的海拔效果 | _boolean_ | `true` |
 | `color`          | 打开状态下的颜色 | _string_ | `-` |
 | `loading-color`  | 加载图标的颜色 | _string_ | `-` |
 | `close-color`    | 关闭状态下的颜色 | _string_ | `-` |

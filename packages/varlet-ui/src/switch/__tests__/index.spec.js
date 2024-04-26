@@ -55,6 +55,19 @@ describe('test switch component props', () => {
     wrapper.unmount()
   })
 
+  test('test switch buttonElevation', async () => {
+    const wrapper = mount(VarSwitch)
+
+    expect(wrapper.find('.var-elevation--2').exists()).toBeTruthy()
+
+    await wrapper.setProps({
+      buttonElevation: 4,
+    })
+
+    expect(wrapper.find('.var-elevation--4').exists()).toBeTruthy()
+    wrapper.unmount()
+  })
+
   test('test switch loading', () => {
     const wrapper = mount(VarSwitch, {
       props: {
