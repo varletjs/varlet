@@ -12,6 +12,7 @@ export interface SwitchProps extends BasicAttributes {
   readonly?: boolean
   loading?: boolean
   ripple?: boolean
+  handleElevation?: boolean
   color?: string
   loadingColor?: string
   closeColor?: string

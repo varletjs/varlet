@@ -150,6 +150,7 @@ const value = ref(true)
 | `readonly`       | Whether to readonly switch | _boolean_ | `false` |
 | `loading`        | Whether to show loading icon | _boolean_ | `false` |
 | `ripple`         | Whether to open ripple | _boolean_ | `true` |
+| `handle-elevation`   | The elevation of handle button | _boolean_ | `true` |
 | `color`          | Background color when open | _string_ | `-` |
 | `close-color`    | Background color when close | _string_ | `-` |
 | `loading-color`  | Color of loading icon | _string_ | `-` |

@@ -27,6 +27,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  handleElevation: {
+    type: [Boolean, String, Number],
+    default: true,
+  },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTrigger>>,
     default: () => ['onChange', 'onLazyChange'],
