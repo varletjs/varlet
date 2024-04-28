@@ -125,18 +125,18 @@ export function registerCompletions(context: ExtensionContext) {
       }
 
       let name: string
-      let lastValue: string
+      let matchedValue: string
       let startIndex = 0
 
       // eslint-disable-next-line no-restricted-syntax
       for (const matched of text.matchAll(ATTR_RE)) {
         name = kebabCase(matched[1] ?? matched[2])
-        lastValue = matched[0]
+        matchedValue = matched[0]
         startIndex = matched.index!
       }
 
       const currentIndex = text.length
-      const endIndex = startIndex! + lastValue!.length
+      const endIndex = startIndex! + matchedValue!.length
 
       if (currentIndex > endIndex || currentIndex < startIndex!) {
         return null
@@ -149,10 +149,10 @@ export function registerCompletions(context: ExtensionContext) {
         return null
       }
 
-      const curString = document.getText().substring(startIndex, endIndex).split(' ')
-      const curSubString = curString[curString.length - 1]
-      const hasAt = curSubString.startsWith('@')
-      const hasColon = curSubString.startsWith(':')
+      const words = matchedValue!.split(' ')
+      const lastWord = words[words.length - 1]
+      const hasAt = lastWord.startsWith('@')
+      const hasColon = lastWord.startsWith(':')
 
       const events = tag.events.map((event) => {
         const item = new CompletionItem(
