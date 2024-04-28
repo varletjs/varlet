@@ -76,7 +76,7 @@ export function registerCompletions(context: ExtensionContext) {
   }
 
   const iconsProvider: CompletionItemProvider = {
-    provideCompletionItems(document, position) {
+    provideCompletionItems(document: TextDocument, position: Position) {
       const line = document.getText(
         new Range(new Position(position.line, 0), new Position(position.line, position.character))
       )
@@ -126,7 +126,7 @@ export function registerCompletions(context: ExtensionContext) {
 
       let name: string
       let lastValue: string
-      let startIndex: number
+      let startIndex = 0
 
       // eslint-disable-next-line no-restricted-syntax
       for (const matched of text.matchAll(ATTR_RE)) {
@@ -149,8 +149,10 @@ export function registerCompletions(context: ExtensionContext) {
         return null
       }
 
-      const hasAt = text.endsWith('@')
-      const hasColon = text.endsWith(':')
+      const curString = document.getText().substring(startIndex, endIndex).split(' ')
+      const curSubString = curString[curString.length - 1]
+      const hasAt = curSubString.startsWith('@')
+      const hasColon = curSubString.startsWith(':')
 
       const events = tag.events.map((event) => {
         const item = new CompletionItem(
@@ -161,6 +163,7 @@ export function registerCompletions(context: ExtensionContext) {
           CompletionItemKind.Event
         )
 
+        item.filterText = event.name
         item.documentation = new MarkdownString(`\
 **Event**: ${event.name}
 
