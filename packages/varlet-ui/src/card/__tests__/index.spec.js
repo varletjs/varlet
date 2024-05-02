@@ -116,16 +116,16 @@ describe('test card component props', () => {
   test('test card src', async () => {
     const wrapper = mount(VarCard, {
       props: {
-        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        src: 'https://varletjs.github.io/varlet/cat.jpg',
       },
     })
 
-    expect(wrapper.find('img').attributes('src')).toBe('https://varlet.gitee.io/varlet-ui/cat.jpg')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varletjs.github.io/varlet/cat.jpg')
 
     await wrapper.setProps({
-      src: 'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+      src: 'https://varletjs.github.io/varlet/cat2.jpg',
     })
-    expect(wrapper.find('img').attributes('src')).toBe('https://varlet.gitee.io/varlet-ui/cat2.jpg')
+    expect(wrapper.find('img').attributes('src')).toBe('https://varletjs.github.io/varlet/cat2.jpg')
 
     wrapper.unmount()
   })
@@ -135,7 +135,7 @@ describe('test card component props', () => {
       const wrapper = mount(VarCard, {
         props: {
           fit,
-          src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          src: 'https://varletjs.github.io/varlet/cat.jpg',
         },
       })
 
@@ -148,7 +148,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         alt: 'This is alt',
-        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        src: 'https://varletjs.github.io/varlet/cat.jpg',
       },
     })
 
@@ -166,7 +166,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         imageHeight: 100,
-        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        src: 'https://varletjs.github.io/varlet/cat.jpg',
       },
     })
 
@@ -184,7 +184,7 @@ describe('test card component props', () => {
     const wrapper = mount(VarCard, {
       props: {
         imageWidth: 100,
-        src: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+        src: 'https://varletjs.github.io/varlet/cat.jpg',
       },
     })
 
@@ -232,7 +232,7 @@ describe('test card component slots', () => {
   test('test card image slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        image: '<img src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="cat" />',
+        image: '<img src="https://varletjs.github.io/varlet/cat.jpg" alt="cat" />',
       },
     })
 

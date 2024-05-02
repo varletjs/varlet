@@ -8,27 +8,27 @@ onThemeChange()
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-image src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image src="https://varletjs.github.io/varlet/cat.jpg" />
 
   <app-type>{{ t('fitMode') }}</app-type>
   <var-space :size="['6vmin', '6vmin']">
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" src="https://varletjs.github.io/varlet/cat.jpg" />
       <div class="image-example-text">fill</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="cover" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="cover" src="https://varletjs.github.io/varlet/cat.jpg" />
       <div class="image-example-text">cover</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="none" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="none" src="https://varletjs.github.io/varlet/cat.jpg" />
       <div class="image-example-text">none</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="contain" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="contain" src="https://varletjs.github.io/varlet/cat.jpg" />
       <div class="image-example-text">contain</div>
     </div>
 
@@ -37,7 +37,7 @@ onThemeChange()
         width="22.666vmin"
         height="22.666vmin"
         fit="scale-down"
-        src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+        src="https://varletjs.github.io/varlet/cat.jpg"
       />
       <div class="image-example-text">scale-down</div>
     </div>
@@ -50,7 +50,7 @@ onThemeChange()
       height="22.666vmin"
       fit="cover"
       :radius="10"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      src="https://varletjs.github.io/varlet/cat.jpg"
       class="image-example-fit-item"
     />
 
@@ -59,18 +59,18 @@ onThemeChange()
       height="22.666vmin"
       fit="cover"
       radius="50%"
-      src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+      src="https://varletjs.github.io/varlet/cat.jpg"
     />
   </var-space>
 
   <app-type>{{ t('useRipple') }}</app-type>
-  <var-image ripple src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image ripple src="https://varletjs.github.io/varlet/cat.jpg" />
 
   <app-type>{{ t('useLazyLoad') }}</app-type>
-  <var-image lazy src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+  <var-image lazy src="https://varletjs.github.io/varlet/cat.jpg" />
 
   <app-type>{{ t('useFailureSlot') }}</app-type>
-  <var-image width="22.666vmin" height="22.666vmin" src="https://varlet.gitee.io/varlet-ui/ca.jpg">
+  <var-image width="22.666vmin" height="22.666vmin" src="https://varletjs.github.io/varlet/ca.jpg">
     <template #error>
       <svg viewBox="0 0 24 24" style="width: 100%; height: 100%">
         <path

@@ -12,39 +12,39 @@ onThemeChange()
 <template>
   <app-type>{{ t('avatarSize') }}</app-type>
   <var-space align="center">
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="mini" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="small" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="large" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" size="21vmin" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" size="mini" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" size="small" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" size="large" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" size="21vmin" />
   </var-space>
 
   <app-type>{{ t('avatarShape') }}</app-type>
   <var-space>
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" :round="false" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" :round="false" />
   </var-space>
 
   <app-type>{{ t('fitMode') }}</app-type>
   <var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" />
       <span>cover</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="fill" />
+      <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" fit="fill" />
       <span>fill</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="contain" />
+      <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" fit="contain" />
       <span>contain</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="none" />
+      <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" fit="none" />
       <span>none</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" fit="scale-down" />
+      <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" fit="scale-down" />
       <span>scale-down</span>
     </var-space>
   </var-space>
@@ -68,25 +68,25 @@ onThemeChange()
 
   <app-type>{{ t('avatarHorizontalGroup') }}</app-type>
   <var-avatar-group>
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat2.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
   <app-type>{{ t('avatarVerticalGroup') }}</app-type>
   <var-avatar-group vertical>
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
-    <var-avatar src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat2.jpg" bordered />
+    <var-avatar src="https://varletjs.github.io/varlet/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 
   <app-type>{{ t('avatarHoverable') }}</app-type>
   <var-avatar-group>
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat.jpg" bordered />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat2.jpg" bordered />
-    <var-avatar hoverable src="https://varlet.gitee.io/varlet-ui/cat3.jpg" bordered />
+    <var-avatar hoverable src="https://varletjs.github.io/varlet/cat.jpg" bordered />
+    <var-avatar hoverable src="https://varletjs.github.io/varlet/cat2.jpg" bordered />
+    <var-avatar hoverable src="https://varletjs.github.io/varlet/cat3.jpg" bordered />
     <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>

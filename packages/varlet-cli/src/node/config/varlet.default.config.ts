@@ -23,7 +23,7 @@ export default defineConfig({
   host: 'localhost',
   port: 8080,
   title: 'VARLET',
-  logo: 'https://varlet.gitee.io/varlet-ui/varlet_icon.png',
+  logo: 'https://varletjs.github.io/varlet/varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
     /**
@@ -433,11 +433,11 @@ export default defineConfig({
           items: [
             {
               label: 'v3.x',
-              link: 'https://varlet.gitee.io/varlet-ui',
+              link: 'https://varletjs.github.io/varlet',
             },
             {
               label: 'v2.x',
-              link: 'https://varlet.gitee.io/varlet-ui/v2',
+              link: 'https://varletjs.github.io/varlet/v2',
             },
           ],
         },
@@ -457,7 +457,7 @@ export default defineConfig({
       ],
       github: 'https://github.com/varletjs/varlet',
       changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
-      playground: 'https://varlet.gitee.io/varlet-ui-playground',
+      playground: 'https://varletjs.github.io/varlet/playground',
       themes: [
         { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
         { 'zh-CN': 'Md2 暗色', 'en-US': 'Md2 Dark', value: 'darkTheme' },

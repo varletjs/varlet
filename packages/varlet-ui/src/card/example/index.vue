@@ -21,7 +21,7 @@ onThemeChange()
     :title="t('title')"
     :subtitle="t('subtitle')"
     :description="t('description')"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
   />
 
   <app-type>{{ t('useSlot') }}</app-type>
@@ -29,7 +29,7 @@ onThemeChange()
     :title="t('title')"
     :subtitle="t('subtitle')"
     :description="t('description')"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
   >
     <template #extra>
       <var-space>
@@ -44,7 +44,7 @@ onThemeChange()
     :title="t('title')"
     :subtitle="t('description')"
     layout="row"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
   >
     <template #extra>
       <var-button text round>
@@ -64,7 +64,7 @@ onThemeChange()
     v-model:floating="floating"
     :title="t('title')"
     :subtitle="t('subtitle')"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
   >
     <template #extra>
       <var-button type="primary" @click="floating = true">{{ t('floating') }}</var-button>

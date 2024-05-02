@@ -11,103 +11,103 @@ onThemeChange()
   <app-type>{{ t('basicUsage') }}</app-type>
   <var-swipe class="swipe">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('forbidLoop') }}</app-type>
   <var-swipe class="swipe" :loop="false">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('autoplay') }}</app-type>
   <var-swipe class="swipe" :autoplay="2000">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('vertical') }}</app-type>
   <var-swipe class="swipe" vertical>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('navigation') }}</app-type>
   <var-swipe class="swipe" navigation>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <var-swipe class="swipe" style="margin-top: 12px" navigation="hover">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('handleChange') }}</app-type>
   <var-swipe class="swipe" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" alt="" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" alt="" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" alt="" />
     </var-swipe-item>
   </var-swipe>
 
   <app-type>{{ t('customIndicator') }}</app-type>
   <var-swipe class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat.jpg" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat2.jpg" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat2.jpg" />
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-item" src="https://varlet.gitee.io/varlet-ui/cat3.jpg" />
+      <img class="swipe-item" src="https://varletjs.github.io/varlet/cat3.jpg" />
     </var-swipe-item>
     <template #indicator="{ index, length, to }">
       <div class="swipe-indicators">

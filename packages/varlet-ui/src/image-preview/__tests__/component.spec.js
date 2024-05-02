@@ -56,7 +56,7 @@ describe('test image preview component props', () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
         show: true,
       },
     })
@@ -64,7 +64,7 @@ describe('test image preview component props', () => {
     expect(wrapper.findAll('.var-image-preview__zoom-container').length).toBe(1)
 
     await wrapper.setProps({
-      images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+      images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
     })
     expect(wrapper.findAll('.var-image-preview__zoom-container').length).toBe(2)
 
@@ -75,7 +75,7 @@ describe('test image preview component props', () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
         imagePreventDefault: true,
         show: true,
       },
@@ -92,7 +92,7 @@ describe('test image preview component props', () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
         initialIndex: 1,
         show: true,
       },
@@ -109,7 +109,7 @@ describe('test image preview component props', () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
         show: true,
       },
     })
@@ -130,7 +130,7 @@ describe('test image preview component props', () => {
       props: {
         teleport: null,
         show: true,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
         'onUpdate:show': onUpdateShow,
       },
     })
@@ -160,7 +160,7 @@ describe('test image preview component props', () => {
       props: {
         teleport: null,
         show: true,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
       },
     })
 
@@ -195,7 +195,7 @@ describe('test image preview component events', () => {
       props: {
         teleport: null,
         show: true,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
         'onUpdate:show': onUpdateShow,
       },
     })
@@ -211,7 +211,7 @@ describe('test image preview component events', () => {
     const wrapper = mount(VarImagePreview, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg'],
         onLongPress,
         show: true,
       },
@@ -242,7 +242,7 @@ describe('test image preview component methods', () => {
     const wrapper = mount(Wrapper, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
         show: true,
       },
     })
@@ -284,7 +284,7 @@ describe('test image preview component methods', () => {
     const wrapper = mount(Wrapper, {
       props: {
         teleport: null,
-        images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+        images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
         show: true,
       },
     })

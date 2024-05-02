@@ -5,7 +5,7 @@ import { createApp } from 'vue'
 import { trigger } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
 
-const HREF = 'https://varlet.gitee.io/varlet-ui/'
+const HREF = 'https://varletjs.github.io/varlet/'
 
 const TARGET = '_blank'
 

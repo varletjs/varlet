@@ -13,7 +13,7 @@ Image-Preview, Support double-click magnification, Support function call and com
 import { ImagePreview } from '@varlet/ui'
 
 function preview() {
-  ImagePreview('https://varlet.gitee.io/varlet-ui/cat.jpg')
+  ImagePreview('https://varletjs.github.io/varlet/cat.jpg')
 }
 </script>
 
@@ -30,8 +30,8 @@ import { ImagePreview, Snackbar } from '@varlet/ui'
 function preview() {
   ImagePreview({
     images: [
-      'https://varlet.gitee.io/varlet-ui/cat.jpg',
-      'https://varlet.gitee.io/varlet-ui/cat2.jpg'
+      'https://varletjs.github.io/varlet/cat.jpg',
+      'https://varletjs.github.io/varlet/cat2.jpg'
     ],
     onChange(index) {
       Snackbar(String(index))
@@ -56,8 +56,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 </script>
 
@@ -81,8 +81,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 </script>
 
@@ -110,8 +110,8 @@ import { ref } from 'vue'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 </script>
 
@@ -140,8 +140,8 @@ import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 </script>
 
@@ -172,8 +172,8 @@ import { Snackbar } from '@varlet/ui'
 
 const show = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 </script>
 
@@ -203,8 +203,8 @@ import { ref } from 'vue'
 const show = ref(false)
 const menuShow = ref(false)
 const images = ref([
-  'https://varlet.gitee.io/varlet-ui/cat.jpg',
-  'https://varlet.gitee.io/varlet-ui/cat2.jpg',
+  'https://varletjs.github.io/varlet/cat.jpg',
+  'https://varletjs.github.io/varlet/cat2.jpg',
 ])
 const actions = [
   {
