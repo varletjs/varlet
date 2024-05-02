@@ -7,7 +7,7 @@
   <p>一个移动端组件库，基于 Vue3, Material Design 2, Material Design 3，并支持桌面端开发。</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
-    <a href="https://varletjs.github.io/varlet">文档(Gitee)</a> |
+    <a href="https://varletjs.github.io/varlet">文档(Github)</a> |
     <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>
   </p>
   <p>

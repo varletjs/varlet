@@ -6,7 +6,7 @@
   <p>A mobile component library based on Vue3, Material Design 2, Material Design 3, and supports desktop development.</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
-    <a href="https://varletjs.github.io/varlet/#/en-US/index">Documentation(Gitee)</a> | 
+    <a href="https://varletjs.github.io/varlet/#/en-US/index">Documentation(Github)</a> | 
     <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文README</a>
   </p>
   <p>
