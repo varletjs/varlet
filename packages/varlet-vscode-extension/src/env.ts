@@ -28,7 +28,7 @@ export function envs() {
   const documentationZh = `${origin}/#/zh-CN`
   const playground = useVercelOrigin
     ? 'https://varlet-ui-playground.vercel.app'
-    : 'https://varlet.gitee.io/varlet-ui-playground'
+    : 'https://varletjs.github.io/varlet/playground'
   const iconsStatic = useVercelOrigin
     ? 'https://varlet-varletjs.vercel.app/icons/png'
     : 'https://varlet.gitee.io/varlet-ui/icons/png'
