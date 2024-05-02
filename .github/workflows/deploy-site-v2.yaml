@@ -1,11 +1,11 @@
-name: Deploy Playground And Sync to Gitee
+name: Deploy Site V2
 
 on:
   push:
-    branches: [main]
+    branches: ['v2.x']
 
 jobs:
-  deploy-playground-sync-gitee:
+  deploy-site-v2:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,21 +23,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile && node scripts/bootstrap.mjs
 
-      - name: Build playground
-        run: pnpm build:play
+      - name: Build site
+        run: pnpm build
 
       - name: Deploy site
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
-          branch: playground-gh-page
-          folder: packages/varlet-ui-playground/site
+          branch: gh-page
+          folder: packages/varlet-ui/site
           single-commit: true
           clean: true
-
-      - name: Sync to Gitee
-        uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-        with:
-          source-repo: git@github.com:varletjs/varlet.git
-          destination-repo: git@gitee.com:varlet/varlet-ui-playground.git
+          target-folder: v2
