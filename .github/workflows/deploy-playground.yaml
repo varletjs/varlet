@@ -1,11 +1,11 @@
-name: Deploy Playground
+name: Deploy Varlet Playground
 
 on:
   push:
     branches: [main]
 
 jobs:
-  deploy-playground
+  deploy-varlet-playground
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
