@@ -1,3 +1,17 @@
+## [3.2.7](https://github.com/varletjs/varlet/compare/v3.2.6...v3.2.7) (2024-05-02)
+
+
+### Bug Fixes
+
+* **extension:** modify prompt bug ([#1608](https://github.com/varletjs/varlet/issues/1608)) ([3c4c50b](https://github.com/varletjs/varlet/commit/3c4c50bbbc6d9e065a713aa83d237d65e53166ad))
+
+
+### Features
+
+* **switch:** support buttonElevation ([#1605](https://github.com/varletjs/varlet/issues/1605)) ([ef74261](https://github.com/varletjs/varlet/commit/ef74261c1d4139caaf14c7ffa74f1428066e2fc4))
+
+
+
 ## [3.2.6](https://github.com/varletjs/varlet/compare/v3.2.5...v3.2.6) (2024-04-25)
 
 
