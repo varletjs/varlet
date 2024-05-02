@@ -1,13 +1,13 @@
 
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui">
-    <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
+  <a href="https://varletjs.github.io/varlet">
+    <img src="https://varletjs.github.io/varlet/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>基于 Vue3 的 Material design 风格移动端组件库</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
-    <a href="https://varlet.gitee.io/varlet-ui">文档(Gitee)</a> |
+    <a href="https://varletjs.github.io/varlet">文档(Github)</a> |
     <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>
   </p>
   <p>
@@ -110,7 +110,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### 演练场
 
-在 [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground) 对组件进行在线编辑。
+在 [Varlet UI Playground](https://varletjs.github.io/varlet/playground) 对组件进行在线编辑。
 
 ### 贡献
 

@@ -45,7 +45,7 @@ watchDarkMode(Themes.dark, (theme) => {
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-success)" />
 
   <app-type>{{ pack.useImage }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="https://varlet.gitee.io/varlet-ui/cat.jpg" :size="32" />
+  <var-icon class="icon-example__animation-icon" name="https://varletjs.github.io/varlet/cat.jpg" :size="32" />
 
   <app-type>{{ pack.clickEvent }}</app-type>
   <var-icon

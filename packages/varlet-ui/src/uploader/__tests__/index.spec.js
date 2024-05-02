@@ -102,8 +102,8 @@ test('test uploader preview', async () => {
     props: {
       modelValue: [
         {
-          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          url: 'https://varletjs.github.io/varlet/cat.jpg',
+          cover: 'https://varletjs.github.io/varlet/cat.jpg',
         },
       ],
       'onUpdate:modelValue': onUpdateModelValue,
@@ -129,8 +129,8 @@ test('test uploader preview event', async () => {
     props: {
       modelValue: [
         {
-          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          url: 'https://varletjs.github.io/varlet/cat.jpg',
+          cover: 'https://varletjs.github.io/varlet/cat.jpg',
         },
       ],
       onPreview,
@@ -153,8 +153,8 @@ test('test uploader prevent default preview', async () => {
     props: {
       modelValue: [
         {
-          url: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
-          cover: 'https://varlet.gitee.io/varlet-ui/cat.jpg',
+          url: 'https://varletjs.github.io/varlet/cat.jpg',
+          cover: 'https://varletjs.github.io/varlet/cat.jpg',
         },
       ],
       preventDefaultPreview: true,

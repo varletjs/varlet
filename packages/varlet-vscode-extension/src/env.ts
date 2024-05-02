@@ -23,15 +23,15 @@ export function getWebTypesTags(): HtmlTag[] {
 
 export function envs() {
   const { language, useVercelOrigin } = getConfig()
-  const origin = useVercelOrigin ? 'https://varlet-varletjs.vercel.app' : 'https://varlet.gitee.io/varlet-ui'
+  const origin = useVercelOrigin ? 'https://varlet-varletjs.vercel.app' : 'https://varletjs.github.io/varlet'
   const documentationEn = `${origin}/#/en-US`
   const documentationZh = `${origin}/#/zh-CN`
   const playground = useVercelOrigin
     ? 'https://varlet-ui-playground.vercel.app'
-    : 'https://varlet.gitee.io/varlet-ui-playground'
+    : 'https://varletjs.github.io/varlet/playground'
   const iconsStatic = useVercelOrigin
     ? 'https://varlet-varletjs.vercel.app/icons/png'
-    : 'https://varlet.gitee.io/varlet-ui/icons/png'
+    : 'https://varletjs.github.io/varlet/icons/png'
   const texts = {
     'zh-CN': {
       documentation: documentationZh,

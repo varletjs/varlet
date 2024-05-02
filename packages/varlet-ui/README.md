@@ -1,12 +1,12 @@
 <div align="center">
-  <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">
-    <img src="https://varlet.gitee.io/varlet-ui/logo.svg" width="150">
+  <a href="https://varletjs.github.io/varlet/#/en-US/index">
+    <img src="https://varletjs.github.io/varlet/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>Material design mobile component library for Vue3</p>
   <p>
     <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
-    <a href="https://varlet.gitee.io/varlet-ui/#/en-US/index">Documentation(Gitee)</a> | 
+    <a href="https://varletjs.github.io/varlet/#/en-US/index">Documentation(Github)</a> | 
     <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文README</a>
   </p>
   <p>
@@ -110,7 +110,7 @@ The following projects are maintained by community personnel, welcome to add.
 
 ### Playground
 
-See [Varlet UI Playground](https://varlet.gitee.io/varlet-ui-playground).
+See [Varlet UI Playground](https://varletjs.github.io/varlet/playground).
 
 ### Contribution
 

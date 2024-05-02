@@ -41,7 +41,7 @@ test('test image preview onChange callback', async () => {
   const onChange = vi.fn()
 
   ImagePreview({
-    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+    images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
     onChange,
   })
   await delay(200)
@@ -86,7 +86,7 @@ test('test image preview setDefaultOptions and resetDefaultOptions', async () =>
 
 test('test image preview imagePreventDefault', async () => {
   ImagePreview({
-    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+    images: ['https://varletjs.github.io/varlet/cat.jpg'],
     imagePreventDefault: true,
   })
 
@@ -100,7 +100,7 @@ test('test image preview onLongPress callback', async () => {
   const onLongPress = vi.fn()
 
   ImagePreview({
-    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg'],
+    images: ['https://varletjs.github.io/varlet/cat.jpg'],
     onLongPress,
   })
 
@@ -116,7 +116,7 @@ test('test image preview onLongPress callback', async () => {
 
 test('test image preview initialIndex', async () => {
   ImagePreview({
-    images: ['https://varlet.gitee.io/varlet-ui/cat.jpg', 'https://varlet.gitee.io/varlet-ui/cat2.jpg'],
+    images: ['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'],
     initialIndex: 1,
   })
 

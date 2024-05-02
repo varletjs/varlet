@@ -48,7 +48,7 @@ Display content and actions about a single subject.
   <var-card 
     title="Dangerous" 
     subtitle="The girl was dangerous" 
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
   />
 </template>
@@ -62,7 +62,7 @@ Display content and actions about a single subject.
     title="Dangerous"
     subtitle="The girl was dangerous"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
   >
     <template #extra>
       <var-space>
@@ -81,7 +81,7 @@ Display content and actions about a single subject.
   <var-card
     title="Dangerous"
     subtitle="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
     layout="row"
   >
     <template #extra>
@@ -122,7 +122,7 @@ const floating = ref(false)
   <var-card
     title="Dangerous"
     subtitle="The girl was dangerous"
-    src="https://varlet.gitee.io/varlet-ui/cat.jpg"
+    src="https://varletjs.github.io/varlet/cat.jpg"
     v-model:floating="floating"
   >
     <template #extra>
