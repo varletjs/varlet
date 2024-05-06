@@ -185,6 +185,7 @@ export default defineComponent({
     }
 
     function handleClick(index: number) {
+      focusInput(index)
       call(props.onClick, index)
     }
 
