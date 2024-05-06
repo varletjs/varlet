@@ -14,7 +14,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" />
+  <var-otp-input v-model="value" />
 </template>
 ```
 
@@ -28,7 +28,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" readonly/>
+  <var-otp-input v-model="value" readonly/>
 </template>
 ```
 
@@ -42,7 +42,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" disabled/>
+  <var-otp-input v-model="value" disabled/>
 </template>
 ```
 
@@ -56,7 +56,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" rules="[(v) => v.length === 6 || '必须输入6位验证码']"/>
+  <var-otp-input v-model="value" rules="[(v) => v.length === 6 || '必须输入6位验证码']"/>
 </template>
 ```
 
@@ -70,7 +70,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" size="small"/>
+  <var-otp-input v-model="value" size="small"/>
 </template>
 ```
 
@@ -120,8 +120,8 @@ const value = ref('')
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `focus` | 聚焦时触发 | `index: Number` |
-| `blur` | 失焦时触发 | `index: Number` |
-| `click` | 点击时触发 | `index: Number` |
+| `focus` | 聚焦时触发 | `index: number` |
+| `blur` | 失焦时触发 | `index: number` |
+| `click` | 点击时触发 | `index: number` |
 | `input` | 输入时触发 | `value: string` |
 | `change` | 更新时触发 | `value: string` |

@@ -14,7 +14,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" />
+  <var-otp-input v-model="value" />
 </template>
 ```
 
@@ -28,7 +28,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" readonly/>
+  <var-otp-input v-model="value" readonly/>
 </template>
 ```
 
@@ -42,7 +42,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" disabled/>
+  <var-otp-input v-model="value" disabled/>
 </template>
 ```
 
@@ -56,7 +56,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" rules="[(v) => v.length === 6 || '必须输入6位验证码']"/>
+  <var-otp-input v-model="value" rules="[(v) => v.length === 6 || 'Must enter a 6-digit verification code.']"/>
 </template>
 ```
 
@@ -70,7 +70,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="standardValue" size="small"/>
+  <var-otp-input v-model="value" size="small"/>
 </template>
 ```
 
@@ -120,8 +120,8 @@ const value = ref('')
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Triggered while focusing | `event: Event` |
-| `blur` | Triggered when out of focus | `event: Event` |
-| `click` | Triggered on Click | `event: Event` |
-| `input` | Triggered on input | `value: string`, `event: Event` |
-| `change` | Triggered on change | `value: string`, `event: Event` |
+| `focus` | Triggered while focusing | `index: number` |
+| `blur` | Triggered when out of focus | `index: number` |
+| `click` | Triggered on Click | `index: number` |
+| `input` | Triggered on input | `value: string` |
+| `change` | Triggered on change | `value: string` |

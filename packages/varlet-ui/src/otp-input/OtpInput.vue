@@ -153,11 +153,12 @@ export default defineComponent({
     }
 
     async function handleKeydown(event: KeyboardEvent) {
-      if (props.readonly) return
+      if (props.readonly || !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(event.key)) {
+        return
+      }
+
       const array = model.value.slice()
       let target: 'next' | 'prev' | 'first' | 'last' | number | null = null
-
-      if (!['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(event.key)) return
 
       preventDefault(event)
 

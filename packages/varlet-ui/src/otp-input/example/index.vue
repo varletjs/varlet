@@ -35,5 +35,3 @@ onThemeChange()
 
   <div style="height: 40px"></div>
 </template>
-
-<style scoped lang="less"></style>
