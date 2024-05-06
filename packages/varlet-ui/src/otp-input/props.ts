@@ -17,10 +17,6 @@ export const props = {
     type: Array as PropType<OptInputValidateTrigger[]>,
     default: () => ['onInput'],
   },
-  variant: {
-    type: Boolean,
-    default: false,
-  },
   rules: Array as PropType<Array<(v: string) => any>>,
   onFocus: defineListenerProp<(i: number) => void>(),
   onBlur: defineListenerProp<(i: number) => void>(),
@@ -29,6 +25,7 @@ export const props = {
   onChange: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
   ...pickProps(inputProps, [
+    'variant',
     'size',
     'readonly',
     'autofocus',

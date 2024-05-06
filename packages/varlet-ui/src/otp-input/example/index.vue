@@ -7,15 +7,15 @@ const standardValue = ref('')
 const standardValue2 = ref('123')
 const standardValue3 = ref('123')
 const standardValue4 = ref('')
-const standardValue5 = ref('')
 const variantValue = ref('')
+const variantValue2 = ref('')
 
 watchLang(use)
 onThemeChange()
 </script>
 
 <template>
-  <app-type>{{ t('standard') }}</app-type>
+  <app-type>{{ t('basicUsage') }}</app-type>
   <var-otp-input v-model="standardValue" />
 
   <app-type>{{ t('readonly') }}</app-type>
@@ -27,11 +27,11 @@ onThemeChange()
   <app-type>{{ t('validate') }}</app-type>
   <var-otp-input v-model="standardValue4" :rules="[(v) => v.length === 6 || t('errorMessage')]" />
 
-  <app-type>{{ t('smallSize') }}</app-type>
-  <var-otp-input v-model="standardValue5" size="small" />
-
   <app-type>{{ t('variant') }}</app-type>
-  <var-otp-input v-model="variantValue" variant />
+  <var-otp-input v-model="variantValue" variant="outlined" />
+
+  <app-type>{{ t('smallSize') }}</app-type>
+  <var-otp-input v-model="variantValue2" variant="outlined" size="small" />
 
   <div style="height: 40px"></div>
 </template>

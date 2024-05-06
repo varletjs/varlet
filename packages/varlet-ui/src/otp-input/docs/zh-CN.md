@@ -96,7 +96,7 @@ const value = ref('')
 | --- |--------------------------------------------------------------------------| --- | --- |
 | `v-model` | 绑定的值                                                                     | _string\|number_ | `-` |
 | `size` | 输入框尺寸，可选值 `normal` `small`                                                          | _string_ | `normal` |
-| `variant` | 是否采用变体外观                                      | _boolean_ | `false` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `text-color` | 文字颜色                                                                     | _string_ | `-` |
 | `focus-color` | 聚焦时的主要颜色                                                                 | _string_ | `-` |
 | `blur-color` | 失焦时的主要颜色                                                                 | _string_ | `-` |

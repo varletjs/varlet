@@ -2,20 +2,20 @@
   <div :class="classes(n())" ref="contentRef">
     <div :class="n('container')">
       <var-input
-        v-for="(_, i) of $props.length"
+        v-for="(_, i) of length"
         v-model="model[i]"
-        maxlength="1"
         type="number"
-        :key="'otp-input-' + i"
+        :key="i"
+        :maxlength="1"
         :ref="(el) => setRef(el as VarInputInstance, i)"
-        :variant="variant ? 'standard' : 'outlined'"
-        :readonly="$props.readonly"
-        :disabled="$props.disabled"
-        :size="$props.size"
-        :text-color="$props.textColor"
-        :focus-color="$props.focusColor"
-        :blur-color="$props.blurColor"
-        :autofocus="i === 0 && $props.autofocus"
+        :variant="variant"
+        :readonly="readonly"
+        :disabled="disabled"
+        :size="size"
+        :text-color="textColor"
+        :focus-color="focusColor"
+        :blur-color="blurColor"
+        :autofocus="i === 0 && autofocus"
         @input="handleInput"
         @focus="handleFocus(i)"
         @blur="handleBlur(i)"
@@ -33,12 +33,12 @@
 
 <script lang="ts">
 import VarInput from '../input'
+import VarFormDetails from '../form-details'
 import { defineComponent, ref, computed, nextTick, watch } from 'vue'
 import { props, type OptInputValidateTrigger } from './props'
 import { call, preventDefault, raf } from '@varlet/shared'
 import { useValidation, createNamespace } from '../utils/components'
 import { useForm } from '../form/provide'
-import { focusChild } from '../utils/elements'
 import { type OtpInputProvider } from './provide'
 
 const { name, n, classes } = createNamespace('otp-input')
@@ -49,6 +49,7 @@ export default defineComponent({
   name,
   components: {
     VarInput,
+    VarFormDetails,
   },
   props,
   setup(props) {
@@ -113,6 +114,14 @@ export default defineComponent({
       })
     }
 
+    function focusInput(target: number | 'next' | 'prev') {
+      const newIndex = target === 'next' ? focusIndex.value + 1 : target === 'prev' ? focusIndex.value - 1 : target
+      if (inputRefs.value && inputRefs.value[newIndex]) {
+        focusIndex.value = newIndex
+        inputRefs.value[newIndex].focus()
+      }
+    }
+
     function handleFocus(index: number) {
       focusIndex.value = index
       valueWhenFocus.value = model.value[index]
@@ -138,7 +147,7 @@ export default defineComponent({
       call(props.onInput, model.value.join(''))
 
       if (target) {
-        focusChild(contentRef.value!, target)
+        focusInput(target)
       }
       validateWithTrigger('onInput')
     }
@@ -171,7 +180,7 @@ export default defineComponent({
       if (!target) return
 
       await raf()
-      focusChild(contentRef.value!, target)
+      focusInput(target)
     }
 
     function handleClick(index: number) {
@@ -205,9 +214,6 @@ export default defineComponent({
       model,
       contentRef,
       inputRefs,
-      formDisabled: form?.disabled,
-      formReadonly: form?.readonly,
-      length,
       errorMessage,
       focusIndex,
       variant: props.variant,

@@ -96,7 +96,7 @@ const value = ref('')
 | --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- |
 | `v-model` | The value of the binding                                                                                                               | _string\|number_ | `-` |
 | `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
-| `variant` | Whether to use variant appearance                                      | _boolean_ | `false` |
+| `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `text-color` | Text color                                                                                                                             | _string_ | `-` |
 | `focus-color` | The primary color in focus                                                                                                             | _string_ | `-` |
 | `blur-color` | The primary color in blur                                                                                                              | _string_ | `-` |
