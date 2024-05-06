@@ -17,20 +17,10 @@ onThemeChange()
   <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" />
 
   <app-type>{{ t('showImage') }}</app-type>
-  <var-card
-    :title="t('title')"
-    :subtitle="t('subtitle')"
-    :description="t('description')"
-    src="https://varletjs.github.io/varlet/cat.jpg"
-  />
+  <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" src="cat.jpg" />
 
   <app-type>{{ t('useSlot') }}</app-type>
-  <var-card
-    :title="t('title')"
-    :subtitle="t('subtitle')"
-    :description="t('description')"
-    src="https://varletjs.github.io/varlet/cat.jpg"
-  >
+  <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" src="cat.jpg">
     <template #extra>
       <var-space>
         <var-button type="primary">{{ t('action1') }}</var-button>
@@ -40,12 +30,7 @@ onThemeChange()
   </var-card>
 
   <app-type>{{ t('horizontal') }}</app-type>
-  <var-card
-    :title="t('title')"
-    :subtitle="t('description')"
-    layout="row"
-    src="https://varletjs.github.io/varlet/cat.jpg"
-  >
+  <var-card :title="t('title')" :subtitle="t('description')" layout="row" src="cat.jpg">
     <template #extra>
       <var-button text round>
         <var-icon name="star" />
@@ -60,12 +45,7 @@ onThemeChange()
   <var-card :title="t('title')" :subtitle="t('subtitle')" :description="t('description')" ripple />
 
   <app-type>{{ t('floating') }}</app-type>
-  <var-card
-    v-model:floating="floating"
-    :title="t('title')"
-    :subtitle="t('subtitle')"
-    src="https://varletjs.github.io/varlet/cat.jpg"
-  >
+  <var-card v-model:floating="floating" :title="t('title')" :subtitle="t('subtitle')" src="cat.jpg">
     <template #extra>
       <var-button type="primary" @click="floating = true">{{ t('floating') }}</var-button>
     </template>

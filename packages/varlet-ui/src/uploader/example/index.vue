@@ -8,28 +8,28 @@ const values = reactive({
   files: [],
   files2: [
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
     },
     {
       url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-      cover: 'https://varletjs.github.io/varlet/cover.jpg',
+      cover: 'cover.jpg',
     },
   ],
   files3: [
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'loading',
     },
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'success',
     },
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'error',
     },
   ],
@@ -41,31 +41,31 @@ const values = reactive({
   files9: [],
   files10: [
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'error',
     },
   ],
   files11: [
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
     },
   ],
   files12: [
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'loading',
     },
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'success',
     },
     {
-      url: 'https://varletjs.github.io/varlet/cat.jpg',
-      cover: 'https://varletjs.github.io/varlet/cat.jpg',
+      url: 'cat.jpg',
+      cover: 'cat.jpg',
       state: 'error',
     },
   ],

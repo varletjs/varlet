@@ -8,37 +8,32 @@ onThemeChange()
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <var-image src="https://varletjs.github.io/varlet/cat.jpg" />
+  <var-image src="cat.jpg" />
 
   <app-type>{{ t('fitMode') }}</app-type>
   <var-space :size="['6vmin', '6vmin']">
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" src="https://varletjs.github.io/varlet/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" src="cat.jpg" />
       <div class="image-example-text">fill</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="cover" src="https://varletjs.github.io/varlet/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="cover" src="cat.jpg" />
       <div class="image-example-text">cover</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="none" src="https://varletjs.github.io/varlet/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="none" src="cat.jpg" />
       <div class="image-example-text">none</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image width="22.666vmin" height="22.666vmin" fit="contain" src="https://varletjs.github.io/varlet/cat.jpg" />
+      <var-image width="22.666vmin" height="22.666vmin" fit="contain" src="cat.jpg" />
       <div class="image-example-text">contain</div>
     </div>
 
     <div class="image-example-fit-item">
-      <var-image
-        width="22.666vmin"
-        height="22.666vmin"
-        fit="scale-down"
-        src="https://varletjs.github.io/varlet/cat.jpg"
-      />
+      <var-image width="22.666vmin" height="22.666vmin" fit="scale-down" src="cat.jpg" />
       <div class="image-example-text">scale-down</div>
     </div>
   </var-space>
@@ -50,27 +45,21 @@ onThemeChange()
       height="22.666vmin"
       fit="cover"
       :radius="10"
-      src="https://varletjs.github.io/varlet/cat.jpg"
+      src="cat.jpg"
       class="image-example-fit-item"
     />
 
-    <var-image
-      width="22.666vmin"
-      height="22.666vmin"
-      fit="cover"
-      radius="50%"
-      src="https://varletjs.github.io/varlet/cat.jpg"
-    />
+    <var-image width="22.666vmin" height="22.666vmin" fit="cover" radius="50%" src="cat.jpg" />
   </var-space>
 
   <app-type>{{ t('useRipple') }}</app-type>
-  <var-image ripple src="https://varletjs.github.io/varlet/cat.jpg" />
+  <var-image ripple src="cat.jpg" />
 
   <app-type>{{ t('useLazyLoad') }}</app-type>
-  <var-image lazy src="https://varletjs.github.io/varlet/cat.jpg" />
+  <var-image lazy src="cat.jpg" />
 
   <app-type>{{ t('useFailureSlot') }}</app-type>
-  <var-image width="22.666vmin" height="22.666vmin" src="https://varletjs.github.io/varlet/ca.jpg">
+  <var-image width="22.666vmin" height="22.666vmin" src="ca.jpg">
     <template #error>
       <svg viewBox="0 0 24 24" style="width: 100%; height: 100%">
         <path

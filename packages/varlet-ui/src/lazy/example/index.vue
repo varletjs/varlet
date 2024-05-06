@@ -8,14 +8,14 @@ watchLang(use)
 
 <template>
   <app-type>{{ t('basicUsage') }}</app-type>
-  <img class="lazy-example-cat" v-lazy="'https://varletjs.github.io/varlet/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varletjs.github.io/varlet/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varletjs.github.io/varlet/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varletjs.github.io/varlet/cat.jpg'" />
-  <img class="lazy-example-cat" v-lazy="'https://varletjs.github.io/varlet/cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
+  <img class="lazy-example-cat" v-lazy="'cat.jpg'" />
 
   <app-type>{{ t('backgroundImageLazyLoad') }}</app-type>
-  <div class="lazy-example-cat" v-lazy:background-image="'https://varletjs.github.io/varlet/cat.jpg'"></div>
+  <div class="lazy-example-cat" v-lazy:background-image="'cat.jpg'"></div>
 </template>
 
 <style scoped lang="less">

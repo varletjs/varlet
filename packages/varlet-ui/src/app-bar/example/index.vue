@@ -52,7 +52,7 @@ onThemeChange()
   <app-type>{{ t('custom') }}</app-type>
   <var-app-bar
     round
-    image="https://varletjs.github.io/varlet/tree.jpeg"
+    image="tree.jpeg"
     image-linear-gradient="to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%"
   >
     {{ t('title') }}

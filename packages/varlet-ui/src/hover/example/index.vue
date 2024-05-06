@@ -28,7 +28,7 @@ onThemeChange()
 
   <app-type>{{ t('functionBinding') }}</app-type>
   <div class="image-container" v-hover="handleHover">
-    <var-image src="https://varletjs.github.io/varlet/tree.jpeg" />
+    <var-image src="tree.jpeg" />
     <div class="image-mask" :style="{ transform: `translateY(${translateY})` }">HOVER</div>
   </div>
 </template>

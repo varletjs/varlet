@@ -15,8 +15,8 @@ const preventEventShow = ref(false)
 const imagePreventDefault = ref(true)
 const extraSlotsShow = ref(false)
 const menuShow = ref(false)
-const images = ref(['https://varletjs.github.io/varlet/cat.jpg', 'https://varletjs.github.io/varlet/cat2.jpg'])
-const image = ref(['https://varletjs.github.io/varlet/cat.jpg'])
+const images = ref(['cat.jpg', 'cat2.jpg'])
+const image = ref(['cat.jpg'])
 const actions = computed(() => [
   {
     name: t('operate'),
