@@ -21,17 +21,20 @@ export function getWebTypesTags(): HtmlTag[] {
   return (getConfig().language === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
+const defaultOrigin = 'https://varlet.pages.dev'
+const defaultPlayground = 'https://varlet.pages.dev/playground'
+const defaultIconsStatic = 'https://varlet.pages.dev/icons/png'
+const vercelOrigin = 'https://varlet-varletjs.vercel.app'
+const vercelPlayground = 'https://varlet-ui-playground.vercel.app'
+const vercelIconsStatic = 'https://varlet-varletjs.vercel.app/icons/png'
+
 export function envs() {
   const { language, useVercelOrigin } = getConfig()
-  const origin = useVercelOrigin ? 'https://varlet-varletjs.vercel.app' : 'https://varlet.gitee.io/varlet-ui'
+  const origin = useVercelOrigin ? vercelOrigin : defaultOrigin
   const documentationEn = `${origin}/#/en-US`
   const documentationZh = `${origin}/#/zh-CN`
-  const playground = useVercelOrigin
-    ? 'https://varlet-ui-playground.vercel.app'
-    : 'https://varletjs.github.io/varlet/playground'
-  const iconsStatic = useVercelOrigin
-    ? 'https://varlet-varletjs.vercel.app/icons/png'
-    : 'https://varlet.gitee.io/varlet-ui/icons/png'
+  const playground = useVercelOrigin ? vercelPlayground : defaultPlayground
+  const iconsStatic = useVercelOrigin ? vercelIconsStatic : defaultIconsStatic
   const texts = {
     'zh-CN': {
       documentation: documentationZh,
