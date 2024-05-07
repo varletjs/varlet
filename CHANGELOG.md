@@ -1,3 +1,12 @@
+## [3.2.8](https://github.com/varletjs/varlet/compare/v3.2.7...v3.2.8) (2024-05-07)
+
+
+### Bug Fixes
+
+* **extension:** fix links ([70e1bbe](https://github.com/varletjs/varlet/commit/70e1bbe2e845b3db086bcc7fc96ae88246124871))
+
+
+
 ## [3.2.7](https://github.com/varletjs/varlet/compare/v3.2.6...v3.2.7) (2024-05-02)
 
 
