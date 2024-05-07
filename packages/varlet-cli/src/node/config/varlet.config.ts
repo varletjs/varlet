@@ -65,6 +65,10 @@ export interface VarletConfig {
   copy?: CopyOptions['paths']
   icons?: VarletConfigIcons
   esbuild?: VarletConfigEsbuild
+  bundle?: {
+    external?: string[]
+    globals?: Record<string, string>
+  }
   /**
    * @default `[]`
    * Directive folder name for component library.

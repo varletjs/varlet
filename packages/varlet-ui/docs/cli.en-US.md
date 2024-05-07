@@ -61,6 +61,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `analysis` | Document statistics related | _{ baidu: string }_ | `-` |
 | `pc` | PC side document structure configuration | _Record<string, any>_ | `-` |
 | `mobile` | Mobile document structure configuration | _Record<string, any>_ | `-` |
+| `bundle` | Bundle output options | _{ external: string[], globals: Record<string, string> }_ | `-` |
 | `directives` | Component library directive folder name | _string[]_ | `[]` |
 | `copy` | Copy file configuration | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `- ` |
 | `icons` | Font icon packaging related configurations | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts) _ | `-` |

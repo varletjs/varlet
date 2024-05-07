@@ -111,6 +111,8 @@ export interface BundleBuildOptions {
 export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
   const plugins = []
   const name = get(varletConfig, 'name')
+  const external = get(varletConfig, 'bundle.external', [])
+  const globals = get(varletConfig, 'bundle.globals', {})
   const { fileName, output, format, emptyOutDir, removeEnv } = buildOptions
 
   if (format === 'umd') {
@@ -144,12 +146,13 @@ export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptio
         entry: resolve(ES_DIR, 'index.bundle.mjs'),
       },
       rollupOptions: {
-        external: ['vue'],
+        external: ['vue', ...external],
         output: {
           dir: output,
           exports: 'named',
           globals: {
             vue: 'Vue',
+            ...globals,
           },
         },
       },
