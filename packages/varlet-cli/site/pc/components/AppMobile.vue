@@ -1,12 +1,14 @@
 <template>
   <div class="varlet-site-mobile varlet-site-mobile--375">
     <div class="varlet-site-mobile-content">
-      <iframe id="mobile" :src="`./mobile.html#/${componentName}?language=${language}&platform=pc&replace=${replace}${hash ? `#${hash}` : ''}`"></iframe>
+      <iframe id="mobile" :src="`${getMobileIndex()}#/${componentName}?language=${language}&platform=pc&replace=${replace}${hash ? `#${hash}` : ''}`"></iframe>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { getMobileIndex } from '@varlet/cli/client'
+
 export default {
   name: 'AppMobile',
   props: {
@@ -21,6 +23,11 @@ export default {
     },
     hash: {
       type: String
+    }
+  },
+  setup() {
+    return {
+      getMobileIndex
     }
   }
 }

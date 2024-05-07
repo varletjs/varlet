@@ -89,6 +89,7 @@ import {
   watchLang,
   watchTheme,
   setTheme,
+  getMobileIndex,
   type Theme,
 } from '@varlet/cli/client'
 import { removeEmpty, inIframe, isPhone } from '../utils'
@@ -114,7 +115,7 @@ export default defineComponent({
     const changeLanguage = (lang: string) => {
       language.value = lang
       showMenu.value = false
-      window.location.href = `./mobile.html#${route.path}?language=${language.value}&replace=${route.query.replace}`
+      window.location.href = `${getMobileIndex()}#${route.path}?language=${language.value}&replace=${route.query.replace}`
 
       if (!isPhone() && inIframe()) {
         ;(window.top as any).scrollToMenu(redirect.slice(1))
@@ -122,7 +123,7 @@ export default defineComponent({
     }
 
     const back = () => {
-      window.location.href = `./mobile.html#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
+      window.location.href = `${getMobileIndex()}#${redirect}?language=${language.value}&replace=${redirect.slice(1)}`
 
       if (!isPhone() && inIframe()) {
         ;(window.top as any).scrollToMenu(redirect.slice(1))

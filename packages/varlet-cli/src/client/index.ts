@@ -139,4 +139,9 @@ export function watchTheme(
   cb(getBrowserTheme(), 'default')
 }
 
+export function getMobileIndex() {
+  const isCf = window.location.origin.includes('pages.dev')
+  return isCf ? './mobile' : './mobile.html'
+}
+
 export { AppType, StyleProvider }
