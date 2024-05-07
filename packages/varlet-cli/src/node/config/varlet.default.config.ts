@@ -23,7 +23,7 @@ export default defineConfig({
   host: 'localhost',
   port: 8080,
   title: 'VARLET',
-  logo: 'https://varletjs.github.io/varlet/varlet_icon.png',
+  logo: 'varlet_icon.png',
   defaultLanguage: 'zh-CN',
   highlight: {
     /**
@@ -429,15 +429,15 @@ export default defineConfig({
       currentVersion: 'v2.x',
       versions: [
         {
-          name: 'varlet.gitee.io',
+          name: 'varlet.pages.dev',
           items: [
             {
               label: 'v3.x',
-              link: 'https://varletjs.github.io/varlet',
+              link: 'https://varlet.pages.dev',
             },
             {
               label: 'v2.x',
-              link: 'https://varletjs.github.io/varlet/v2',
+              link: 'https://varlet.pages.dev/v2',
             },
           ],
         },
