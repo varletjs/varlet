@@ -12,7 +12,7 @@ import {
 } from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
-import { get } from 'lodash-es'
+import { get, filter, map } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
@@ -66,6 +66,14 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
           logo: get(varletConfig, `logo`),
           baidu: get(varletConfig, `analysis.baidu`, ''),
           pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
+          pcScriptsHead: map(
+            filter(get(varletConfig, 'pc.scripts'), (config) => config.pos === 'head'),
+            (config) => config.url
+          ).join(),
+          pcScriptsBody: map(
+            filter(get(varletConfig, 'pc.scripts'), (config) => config.pos === 'body'),
+            (config) => config.url
+          ).join(),
           pcDescription: get(varletConfig, `pc.description['${defaultLanguage}']`),
           pcKeywords: get(varletConfig, `pc.keywords['${defaultLanguage}']`),
           mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),

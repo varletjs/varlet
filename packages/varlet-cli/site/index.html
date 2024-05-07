@@ -57,10 +57,24 @@
       }
     })
   </script>
+  <% if (pcScriptsHead) {
+    let scripts = pcScriptsHead.split(',');
+    for (let i = 0; i < scripts.length; i++) { %>
+      <script src="<%= scripts[i] %>"></script>
+  <%  }
+    }
+  %>
 </head>
 <body>
 <div id="app"></div>
 
 <script type="module" src="/pc/main.ts"></script>
+  <% if (pcScriptsBody) {
+      let scripts = pcScriptsBody.split(',');
+      for (let i = 0; i < scripts.length; i++) { %>
+        <script src="<%= scripts[i] %>"></script>
+  <%  }
+    }
+  %>
 </body>
 </html>
