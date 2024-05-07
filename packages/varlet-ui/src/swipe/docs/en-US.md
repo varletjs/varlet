@@ -10,13 +10,13 @@ Displays a collection of items that can be scrolled and scrolled across the scre
 <template>
   <var-swipe class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -41,13 +41,13 @@ Displays a collection of items that can be scrolled and scrolled across the scre
 <template>
   <var-swipe class="swipe-example" :loop="false">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -72,13 +72,13 @@ Displays a collection of items that can be scrolled and scrolled across the scre
 <template>
   <var-swipe class="swipe-example" :autoplay="2000">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -103,13 +103,13 @@ Displays a collection of items that can be scrolled and scrolled across the scre
 <template>
   <var-swipe class="swipe-example" vertical>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -136,25 +136,25 @@ Navigation buttons can be enabled by setting `navigation`, when `navigation` is 
 <template>
   <var-swipe class="swipe-example" navigation>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 
   <var-swipe class="swipe-example" navigation="hover">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -185,13 +185,13 @@ import { Snackbar } from '@varlet/ui'
 <template>
   <var-swipe class="swipe-example" @change="(index) => Snackbar(String(index))">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
   </var-swipe>
 </template>
@@ -216,13 +216,13 @@ import { Snackbar } from '@varlet/ui'
 <template>
   <var-swipe class="swipe-example">
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat2.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat2.jpg">
     </var-swipe-item>
     <var-swipe-item>
-      <img class="swipe-example-image" src="https://varletjs.github.io/varlet/cat3.jpg">
+      <img class="swipe-example-image" src="https://varlet.pages.dev/cat3.jpg">
     </var-swipe-item>
     
     <template #indicator="{ index, length, to }">

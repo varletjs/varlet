@@ -1,11 +1,12 @@
 
 <div align="center">
-  <a href="https://varletjs.github.io/varlet">
-    <img src="https://varletjs.github.io/varlet/logo.svg" width="150">
+  <a href="https://varlet.pages.dev">
+    <img src="https://varlet.pages.dev/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>一个移动端组件库，基于 Vue3, Material Design 2, Material Design 3，并支持桌面端开发。</p>
   <p>
+    <a href="https://varlet.pages.dev">文档(Cloudflare)</a> | 
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
     <a href="https://varletjs.github.io/varlet">文档(Github)</a> |
     <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>

@@ -1,10 +1,11 @@
 <div align="center">
-  <a href="https://varletjs.github.io/varlet/#/en-US/index">
-    <img src="https://varletjs.github.io/varlet/logo.svg" width="150">
+  <a href="https://varlet.pages.dev/#/en-US/index">
+    <img src="https://varlet.pages.dev/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
   <p>A mobile component library based on Vue3, Material Design 2, Material Design 3, and supports desktop development.</p>
   <p>
+    <a href="https://varlet.pages.dev/#/en-US/index">Documentation(Cloudflare)</a> |
     <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
     <a href="https://varletjs.github.io/varlet/#/en-US/index">Documentation(Github)</a> | 
     <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文README</a>

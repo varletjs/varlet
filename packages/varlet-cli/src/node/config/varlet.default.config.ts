@@ -429,15 +429,15 @@ export default defineConfig({
       currentVersion: 'v3.x',
       versions: [
         {
-          name: 'varlet.gitee.io',
+          name: 'varlet.pages.dev',
           items: [
             {
               label: 'v3.x',
-              link: 'https://varletjs.github.io/varlet',
+              link: 'https://varlet.pages.dev',
             },
             {
               label: 'v2.x',
-              link: 'https://varletjs.github.io/varlet/v2',
+              link: 'https://varlet.pages.dev/v2',
             },
           ],
         },
