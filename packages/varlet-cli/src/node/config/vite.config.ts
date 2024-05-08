@@ -12,7 +12,7 @@ import {
 } from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
-import { get, filter, map } from 'lodash-es'
+import { get, filter, map, join } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
@@ -28,6 +28,41 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     resolveAlias[key] = isRelative ? resolve(SRC_DIR, value) : value
     return resolveAlias
   }, {} as Record<string, string>)
+
+  const resolveCustomHtml = () => {
+    const transformKey = (baseKey: string, suffix: 'Start' | 'End' | 'ScriptStart') =>
+      `${baseKey.replace(/\.([a-z])/g, (_, group) => group.toUpperCase())}${suffix}`
+
+    const resolveContent = (type: string) => {
+      const contentData = get(varletConfig, type, {})
+
+      const resolveContentByPosition = (position: 'start' | 'end' | 'script-start') =>
+        join(map(filter(contentData, { position }), 'content'), ',')
+
+      return {
+        [transformKey(type, 'Start')]: resolveContentByPosition('start'),
+        [transformKey(type, 'End')]: resolveContentByPosition('end'),
+        ...(/\.body$/.test(type)
+          ? {
+              [transformKey(type, 'ScriptStart')]: resolveContentByPosition('script-start'),
+            }
+          : {}),
+      }
+    }
+
+    const resolvePositions = (keyName: string) => {
+      const headResults = resolveContent(`${keyName}.head`)
+      const bodyResults = resolveContent(`${keyName}.body`)
+
+      return { ...headResults, ...bodyResults }
+    }
+
+    const sections = ['pc.html', 'mobile.html']
+    return sections.reduce((acc, section) => {
+      const results = resolvePositions(section)
+      return { ...acc, ...results }
+    }, {})
+  }
 
   return {
     root: SITE_DIR,
@@ -66,19 +101,12 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
           logo: get(varletConfig, `logo`),
           baidu: get(varletConfig, `analysis.baidu`, ''),
           pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
-          pcScriptsHead: map(
-            filter(get(varletConfig, 'pc.scripts'), (config) => config.pos === 'head'),
-            (config) => config.url
-          ).join(),
-          pcScriptsBody: map(
-            filter(get(varletConfig, 'pc.scripts'), (config) => config.pos === 'body'),
-            (config) => config.url
-          ).join(),
           pcDescription: get(varletConfig, `pc.description['${defaultLanguage}']`),
           pcKeywords: get(varletConfig, `pc.keywords['${defaultLanguage}']`),
           mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           mobileDescription: get(varletConfig, `mobile.description['${defaultLanguage}']`),
           mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
+          ...resolveCustomHtml(),
         },
       }),
     ],

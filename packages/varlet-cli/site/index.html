@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% if (pcHtmlHeadStart) {
+    pcHtmlHeadStart.split(',').forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
   <meta charset="UTF-8" />
   <title><%= pcTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
@@ -57,24 +62,29 @@
       }
     })
   </script>
-  <% if (pcScriptsHead) {
-    let scripts = pcScriptsHead.split(',');
-    for (let i = 0; i < scripts.length; i++) { %>
-      <script src="<%= scripts[i] %>"></script>
-  <%  }
-    }
-  %>
+  <% if (pcHtmlHeadEnd) {
+    pcHtmlHeadEnd.split(',').forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
 </head>
 <body>
+<% if (pcHtmlBodyStart) {
+  pcHtmlBodyStart.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <div id="app"></div>
-
+<% if (pcHtmlBodyScriptStart) {
+  pcHtmlBodyScriptStart.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <script type="module" src="/pc/main.ts"></script>
-  <% if (pcScriptsBody) {
-      let scripts = pcScriptsBody.split(',');
-      for (let i = 0; i < scripts.length; i++) { %>
-        <script src="<%= scripts[i] %>"></script>
-  <%  }
-    }
-  %>
+<% if (pcHtmlBodyEnd) {
+  pcHtmlBodyEnd.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 </body>
 </html>

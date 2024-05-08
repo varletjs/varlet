@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% if (mobileHtmlHeadStart) {
+    mobileHtmlHeadStart.split(',').forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
   <meta charset="UTF-8" />
   <title><%= mobileTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
@@ -38,10 +43,29 @@
       })()
     }
   </script>
+  <% if (mobileHtmlHeadEnd) {
+    mobileHtmlHeadEnd.split(',').forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
 </head>
 <body>
+<% if (mobileHtmlBodyStart) {
+  mobileHtmlBodyStart.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <div id="app"></div>
-
+<% if (mobileHtmlBodyScriptStart) {
+  mobileHtmlBodyScriptStart.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <script type="module" src="/mobile/main.ts"></script>
+<% if (mobileHtmlBodyEnd) {
+  mobileHtmlBodyEnd.split(',').forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 </body>
 </html>
