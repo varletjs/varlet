@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <% if (pcHtmlHeadStart) {
-    pcHtmlHeadStart.split(',').forEach(function(tag) { %>
+    pcHtmlHeadStart.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
@@ -63,26 +63,26 @@
     })
   </script>
   <% if (pcHtmlHeadEnd) {
-    pcHtmlHeadEnd.split(',').forEach(function(tag) { %>
+    pcHtmlHeadEnd.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
 </head>
 <body>
 <% if (pcHtmlBodyStart) {
-  pcHtmlBodyStart.split(',').forEach(function(tag) { %>
+  pcHtmlBodyStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <div id="app"></div>
 <% if (pcHtmlBodyScriptStart) {
-  pcHtmlBodyScriptStart.split(',').forEach(function(tag) { %>
+  pcHtmlBodyScriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <script type="module" src="/pc/main.ts"></script>
 <% if (pcHtmlBodyEnd) {
-  pcHtmlBodyEnd.split(',').forEach(function(tag) { %>
+  pcHtmlBodyEnd.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>

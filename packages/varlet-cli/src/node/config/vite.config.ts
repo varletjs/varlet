@@ -12,7 +12,7 @@ import {
 } from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
-import { get, filter, map, join } from 'lodash-es'
+import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
@@ -34,15 +34,17 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
       `${baseKey.replace(/\.([a-z])/g, (_, group) => group.toUpperCase())}${suffix}`
 
     const resolveContent = (type: string) => {
-      const contentData = get(varletConfig, type, {})
+      const contentData: Array<{ position: string; content: string }> = get(varletConfig, type, {})
 
       const resolveContentByPosition = (position: 'start' | 'end' | 'script-start') =>
-        join(map(filter(contentData, { position }), 'content'), ',')
+        Object.values(contentData)
+          .filter((item) => item.position === position)
+          .map((item) => item.content)
 
       return {
         [transformKey(type, 'Start')]: resolveContentByPosition('start'),
         [transformKey(type, 'End')]: resolveContentByPosition('end'),
-        ...(/\.body$/.test(type)
+        ...(type.endsWith('.body')
           ? {
               [transformKey(type, 'ScriptStart')]: resolveContentByPosition('script-start'),
             }

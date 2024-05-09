@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <% if (mobileHtmlHeadStart) {
-    mobileHtmlHeadStart.split(',').forEach(function(tag) { %>
+    mobileHtmlHeadStart.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
@@ -44,26 +44,26 @@
     }
   </script>
   <% if (mobileHtmlHeadEnd) {
-    mobileHtmlHeadEnd.split(',').forEach(function(tag) { %>
+    mobileHtmlHeadEnd.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
 </head>
 <body>
 <% if (mobileHtmlBodyStart) {
-  mobileHtmlBodyStart.split(',').forEach(function(tag) { %>
+  mobileHtmlBodyStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <div id="app"></div>
 <% if (mobileHtmlBodyScriptStart) {
-  mobileHtmlBodyScriptStart.split(',').forEach(function(tag) { %>
+  mobileHtmlBodyScriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <script type="module" src="/mobile/main.ts"></script>
 <% if (mobileHtmlBodyEnd) {
-  mobileHtmlBodyEnd.split(',').forEach(function(tag) { %>
+  mobileHtmlBodyEnd.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
