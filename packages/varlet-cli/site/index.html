@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% if (pcHtmlHeadStart) {
+  <% if (pcHtmlHeadStart.length > 0) {
     pcHtmlHeadStart.forEach(function(tag) { %>
       <%- tag %>
     <% });
@@ -62,26 +62,26 @@
       }
     })
   </script>
-  <% if (pcHtmlHeadEnd) {
+  <% if (pcHtmlHeadEnd.length > 0) {
     pcHtmlHeadEnd.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
 </head>
 <body>
-<% if (pcHtmlBodyStart) {
+<% if (pcHtmlBodyStart.length > 0) {
   pcHtmlBodyStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <div id="app"></div>
-<% if (pcHtmlBodyScriptStart) {
+<% if (pcHtmlBodyScriptStart.length > 0) {
   pcHtmlBodyScriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <script type="module" src="/pc/main.ts"></script>
-<% if (pcHtmlBodyEnd) {
+<% if (pcHtmlBodyEnd.length > 0) {
   pcHtmlBodyEnd.forEach(function(tag) { %>
     <%- tag %>
   <% });

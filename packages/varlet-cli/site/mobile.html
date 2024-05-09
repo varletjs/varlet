@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% if (mobileHtmlHeadStart) {
+  <% if (mobileHtmlHeadStart.length > 0) {
     mobileHtmlHeadStart.forEach(function(tag) { %>
       <%- tag %>
     <% });
@@ -43,26 +43,26 @@
       })()
     }
   </script>
-  <% if (mobileHtmlHeadEnd) {
+  <% if (mobileHtmlHeadEnd.length > 0) {
     mobileHtmlHeadEnd.forEach(function(tag) { %>
       <%- tag %>
     <% });
   } %>
 </head>
 <body>
-<% if (mobileHtmlBodyStart) {
+<% if (mobileHtmlBodyStart.length > 0) {
   mobileHtmlBodyStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <div id="app"></div>
-<% if (mobileHtmlBodyScriptStart) {
+<% if (mobileHtmlBodyScriptStart.length > 0) {
   mobileHtmlBodyScriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
 } %>
 <script type="module" src="/mobile/main.ts"></script>
-<% if (mobileHtmlBodyEnd) {
+<% if (mobileHtmlBodyEnd.length > 0) {
   mobileHtmlBodyEnd.forEach(function(tag) { %>
     <%- tag %>
   <% });
