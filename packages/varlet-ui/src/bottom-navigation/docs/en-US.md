@@ -200,6 +200,7 @@ const active = ref(0)
 | `safe-area`       | Whether to enable bottom safe area adaptation | _boolean_ | `false` |
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
+| `placeholder`    | Whether to generate placeholder elements of the same height at the bottom (fixed required)  | _boolean_ | `false` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
 | `fab-props`     | Fab button props                                    | _ButtonProps_ | `{ type: 'primary' }` |
 | `variant` ***3.2.0***      | Variant mode | _boolean_ | `false` |

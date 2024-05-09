@@ -223,9 +223,9 @@ describe('test bottom-navigation component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-bottom-navigation').attributes('style')).toContain('z-index: 2;')
+    expect(wrapper.find('.var-bottom-navigation--wrapper').attributes('style')).toContain('z-index: 2;')
     await wrapper.setProps({ zIndex: '3' })
-    expect(wrapper.find('.var-bottom-navigation').attributes('style')).toContain('z-index: 3;')
+    expect(wrapper.find('.var-bottom-navigation--wrapper').attributes('style')).toContain('z-index: 3;')
     wrapper.unmount()
   })
 
@@ -259,6 +259,20 @@ describe('test bottom-navigation component props', () => {
     wrapper.findAll('.var-bottom-navigation-item').forEach((item) => {
       expect(item.attributes('style')).toContain('color: rgb(255, 255, 255);')
     })
+    wrapper.unmount()
+  })
+
+  test('test bottom-navigation placeholder', async () => {
+    const wrapper = mount(Wrapper, {
+      props: {
+        fixed: true,
+        placeholder: true,
+      },
+    })
+
+    expect(wrapper.find('.var-bottom-navigation--fixed').exists()).toBe(true)
+    await wrapper.setProps({ fixed: false, placeholder: false })
+    expect(wrapper.find('.var-bottom-navigation--fixed').exists()).toBe(false)
     wrapper.unmount()
   })
 

@@ -9,13 +9,15 @@
 }
 
 .var-bottom-navigation {
-  width: 100%;
-  height: var(--bottom-navigation-height);
-  display: flex;
-  position: relative;
-  background-color: var(--bottom-navigation-background-color);
-  transition: background-color 250ms, border-color 250ms;
-  -webkit-tap-highlight-color: transparent;
+  &--wrapper {
+    width: 100%;
+    height: var(--bottom-navigation-height);
+    display: flex;
+    position: relative;
+    background-color: var(--bottom-navigation-background-color);
+    transition: background-color 250ms, border-color 250ms;
+    -webkit-tap-highlight-color: transparent;
+  }
 
   &--safe-area {
     padding-bottom: constant(safe-area-inset-bottom); // iOS < 11.2

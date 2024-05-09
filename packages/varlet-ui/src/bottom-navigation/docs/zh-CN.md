@@ -203,6 +203,7 @@ const active = ref(0)
 | `z-index`        | 元素 z-index      | _number \| string_ | `1` |
 | `active-color`   | 选中标签的颜色         | _string_ | `-` |
 | `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
+| `placeholder`    | 是否在底部生成相同高度的占位元素(需设置 fixed)  | _boolean_ | `false` |
 | `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{ type: 'primary' }` |
 | `variant` ***3.2.0***      | 变体模式          | _boolean_ | `false` |
 
