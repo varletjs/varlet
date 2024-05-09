@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <% if (pcHtmlHeadStart.length > 0) {
+    pcHtmlHeadStart.forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
   <meta charset="UTF-8" />
   <title><%= pcTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
@@ -57,10 +62,29 @@
       }
     })
   </script>
+  <% if (pcHtmlHeadEnd.length > 0) {
+    pcHtmlHeadEnd.forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  } %>
 </head>
 <body>
+<% if (pcHtmlBodyStart.length > 0) {
+  pcHtmlBodyStart.forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <div id="app"></div>
-
+<% if (pcHtmlBodyScriptStart.length > 0) {
+  pcHtmlBodyScriptStart.forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 <script type="module" src="/pc/main.ts"></script>
+<% if (pcHtmlBodyEnd.length > 0) {
+  pcHtmlBodyEnd.forEach(function(tag) { %>
+    <%- tag %>
+  <% });
+} %>
 </body>
 </html>

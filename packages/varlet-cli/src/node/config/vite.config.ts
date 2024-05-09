@@ -29,6 +29,43 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     return resolveAlias
   }, {} as Record<string, string>)
 
+  const resolveCustomHtml = () => {
+    const transformKey = (baseKey: string, suffix: 'Start' | 'End' | 'ScriptStart') =>
+      `${baseKey.replace(/\.([a-z])/g, (_, group) => group.toUpperCase())}${suffix}`
+
+    const resolveContent = (type: string) => {
+      const contentData: Array<{ position: string; content: string }> = get(varletConfig, type, {})
+
+      const resolveContentByPosition = (position: 'start' | 'end' | 'script-start') =>
+        Object.values(contentData)
+          .filter((item) => item.position === position)
+          .map((item) => item.content)
+
+      return {
+        [transformKey(type, 'Start')]: resolveContentByPosition('start'),
+        [transformKey(type, 'End')]: resolveContentByPosition('end'),
+        ...(type.endsWith('.body')
+          ? {
+              [transformKey(type, 'ScriptStart')]: resolveContentByPosition('script-start'),
+            }
+          : {}),
+      }
+    }
+
+    const resolvePositions = (keyName: string) => {
+      const headResults = resolveContent(`${keyName}.head`)
+      const bodyResults = resolveContent(`${keyName}.body`)
+
+      return { ...headResults, ...bodyResults }
+    }
+
+    const sections = ['pc.html', 'mobile.html']
+    return sections.reduce((acc, section) => {
+      const results = resolvePositions(section)
+      return { ...acc, ...results }
+    }, {})
+  }
+
   return {
     root: SITE_DIR,
 
@@ -71,6 +108,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
           mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           mobileDescription: get(varletConfig, `mobile.description['${defaultLanguage}']`),
           mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
+          ...resolveCustomHtml(),
         },
       }),
     ],
