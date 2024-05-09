@@ -28,7 +28,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="value" readonly/>
+  <var-otp-input v-model="value" readonly />
 </template>
 ```
 
@@ -42,7 +42,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="value" disabled/>
+  <var-otp-input v-model="value" disabled />
 </template>
 ```
 
@@ -56,21 +56,7 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="value" rules="[(v) => v.length === 6 || '必须输入6位验证码']"/>
-</template>
-```
-
-### 小尺寸外观
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-otp-input v-model="value" size="small"/>
+  <var-otp-input v-model="value" rules="[(v) => v.length === 6 || '必须输入6位验证码']" />
 </template>
 ```
 
@@ -84,7 +70,21 @@ const value = ref('')
 </script>
 
 <template>
-  <var-otp-input v-model="value" variant/>
+  <var-otp-input v-model="value" variant="outlined" />
+</template>
+```
+
+### 小尺寸变体外观
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-otp-input v-model="value" variant="outlined" size="small" />
 </template>
 ```
 
