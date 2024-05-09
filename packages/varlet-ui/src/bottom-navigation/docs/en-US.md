@@ -182,6 +182,7 @@ const isEven = ref(true)
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
+| `placeholder`    | Whether or not to generate a placeholder element at the bottom (requires fixed to be set as well) | _boolean_ | `false` |
 | `fab-props`     | Fab button props                                    | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props

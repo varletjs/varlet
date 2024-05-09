@@ -16,6 +16,7 @@ export const props = {
   safeArea: Boolean,
   activeColor: String,
   inactiveColor: String,
+  placeholder: Boolean,
   fabProps: Object as PropType<ExtractPublicPropTypes<typeof buttonProps>>,
   onChange: defineListenerProp<(active: number | string) => void>(),
   onBeforeChange: defineListenerProp<(active: number | string) => any | Promise<any>>(),

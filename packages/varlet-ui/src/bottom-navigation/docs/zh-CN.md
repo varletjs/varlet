@@ -184,6 +184,7 @@ const isEven = ref(true)
 | `z-index`        | 元素 z-index      | _number \| string_ | `1` |
 | `active-color`   | 选中标签的颜色         | _string_ | `-` |
 | `inactive-color` | 未选中标签的颜色        | _string_ | `-` |
+| `placeholder`    | 是否在底部生成占位元素(需同时设置 fixed) | _boolean_ | `false` |
 | `fab-props`      | 悬浮按钮属性          | _ButtonProps_ | `{type: "primary"}` |
 
 #### BottomNavigationItem Props

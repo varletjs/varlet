@@ -1,31 +1,36 @@
 <template>
-  <div
-    :class="classes(n(), n('$--box'), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
-    ref="bottomNavigationDom"
-    :style="`z-index:${zIndex}`"
-  >
-    <slot></slot>
-
-    <var-button
-      v-if="$slots.fab"
-      :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
-      var-bottom-navigation__fab
-      @click="handleFabClick"
-      v-bind="fabProps"
-      round
+  <div :class="classes(n())">
+    <div
+      :class="classes(n('--wrapper'), [fixed, n('--fixed')], [border, n('--border')], [safeArea, n('--safe-area')])"
+      ref="bottomNavigationDom"
+      :style="`z-index:${zIndex}`"
     >
-      <slot name="fab"></slot>
-    </var-button>
+      <slot></slot>
+
+      <var-button
+        v-if="$slots.fab"
+        :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
+        var-bottom-navigation__fab
+        @click="handleFabClick"
+        ref="fabButton"
+        v-bind="fabProps"
+        round
+      >
+        <slot name="fab"></slot>
+      </var-button>
+    </div>
+
+    <div v-if="fixed && placeholder" :class="classes(n('--placeholder'))" :style="{ height: placeholderHeight }" />
   </div>
 </template>
 
 <script lang="ts">
 import VarButton from '../button'
-import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
+import { defineComponent, ref, computed, onUpdated, watch, onMounted } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace } from '../utils/components'
-import { isNumber, normalizeToArray, call } from '@varlet/shared'
+import { isNumber, normalizeToArray, call, getRect } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
@@ -45,10 +50,12 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const bottomNavigationDom = ref<HTMLElement | null>(null)
+    const fabButton = ref<HTMLElement | null>(null)
     const active = computed<number | string | undefined>(() => props.active)
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
     const fabProps = ref({})
+    const placeholderHeight = ref()
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
     const bottomNavigationProvider: BottomNavigationProvider = {
@@ -69,6 +76,10 @@ export default defineComponent({
       },
       { immediate: true, deep: true }
     )
+
+    onMounted(() => {
+      setPlaceholderHeight()
+    })
 
     onSmartMounted(() => {
       if (!slots.fab) {
@@ -180,12 +191,28 @@ export default defineComponent({
       call(props.onFabClick)
     }
 
+    function setPlaceholderHeight() {
+      if (props.fixed && props.placeholder) {
+        const bottomRect = getRect(bottomNavigationDom.value)
+        let totalHeight = bottomRect.height
+
+        if (slots.fab) {
+          const fabRect = getRect(fabButton.value.$el)
+          totalHeight = bottomRect.top - fabRect.top + bottomRect.height
+        }
+
+        placeholderHeight.value = `${totalHeight}px`
+      }
+    }
+
     return {
       length,
       bottomNavigationDom,
+      fabButton,
       fabProps,
       n,
       classes,
+      placeholderHeight,
       handleFabClick,
     }
   },
