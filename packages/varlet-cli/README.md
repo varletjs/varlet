@@ -59,8 +59,8 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `md3DarkTheme` | md3 dark mode document theme | _Record<string, any>_ | `-` |
 | `highlight` | Document code snippet style related | _{ style: string }_ | `-` |
 | `analysis` | Document statistics related | _{ baidu: string }_ | `-` |
-| `pc` | PC side document structure configuration | _Record<string, any>_ | `-` |
-| `mobile` | Mobile document structure configuration | _Record<string, any>_ | `-` |
+| `pc` | PC side document structure configuration | _[VarletConfigPc](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
+| `mobile` | Mobile document structure configuration | _[VarletConfigMobile](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `bundle` | Bundle output options | _{ external: string[], globals: Record<string, string> }_ | `-` |
 | `directives` | Component library directive folder name | _string[]_ | `[]` |
 | `copy` | Copy file configuration | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `- ` |

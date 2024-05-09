@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% if (pcHtmlHeadStart.length > 0) {
-    pcHtmlHeadStart.forEach(function(tag) { %>
+  <% 
+    pcHtmlInject.head.start.forEach(function(tag) { %>
       <%- tag %>
     <% });
-  } %>
+  %>
   <meta charset="UTF-8" />
   <title><%= pcTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
@@ -37,6 +37,11 @@
       color: var(--site-config-color-text);
     }
   </style>
+  <% 
+    pcHtmlInject.head.scriptStart.forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  %>
   <script>
     if ('<%= baidu %>') {
       var _hmt = _hmt || [];
@@ -62,29 +67,29 @@
       }
     })
   </script>
-  <% if (pcHtmlHeadEnd.length > 0) {
-    pcHtmlHeadEnd.forEach(function(tag) { %>
+  <% 
+    pcHtmlInject.head.end.forEach(function(tag) { %>
       <%- tag %>
     <% });
-  } %>
+  %>
 </head>
 <body>
-<% if (pcHtmlBodyStart.length > 0) {
-  pcHtmlBodyStart.forEach(function(tag) { %>
+<% 
+  pcHtmlInject.body.start.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 <div id="app"></div>
-<% if (pcHtmlBodyScriptStart.length > 0) {
-  pcHtmlBodyScriptStart.forEach(function(tag) { %>
+<% 
+  pcHtmlInject.body.scriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 <script type="module" src="/pc/main.ts"></script>
-<% if (pcHtmlBodyEnd.length > 0) {
-  pcHtmlBodyEnd.forEach(function(tag) { %>
+<% 
+  pcHtmlInject.body.end.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 </body>
 </html>

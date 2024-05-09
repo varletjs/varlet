@@ -59,8 +59,8 @@ varlet-cli gen
 | `md3DarkTheme` | md3 暗黑模式文档主题 | _Record<string, any>_ | `-` |
 | `highlight` | 文档代码片段样式相关 | _{ style: string }_ | `-` |
 | `analysis` | 文档统计相关 | _{ baidu: string }_ | `-` |
-| `pc` | pc 端文档结构配置 | _Record<string, any>_ | `-` |
-| `mobile` | mobile 端文档结构配置 | _Record<string, any>_ | `-` |
+| `pc` | pc 端文档结构配置 | _[VarletConfigPc](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
+| `mobile` | mobile 端文档结构配置 | _[VarletConfigMobile](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `bundle` | 组件库编译的捆绑产物配置 | _{ external: string[], globals: Record<string, string> }_ | `-` |
 | `directives` | 组件库指令文件夹名称 | _string[]_ | `[]` |
 | `copy` | 复制文件配置 | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |

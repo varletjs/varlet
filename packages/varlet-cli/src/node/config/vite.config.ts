@@ -14,9 +14,27 @@ import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
 import { get } from 'lodash-es'
 import { resolve } from 'path'
-import { VarletConfig } from './varlet.config.js'
+import { VarletConfig, type VarletConfigHtmlInject, type VarletConfigHtmlInjectPoint } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
+
+export function getHtmlInject(inject: VarletConfigHtmlInject) {
+  const getContent = (injectKey: keyof VarletConfigHtmlInject, position: VarletConfigHtmlInjectPoint['position']) =>
+    inject[injectKey]?.filter((point) => point.position === position).map((point) => point.content) ?? []
+
+  return {
+    head: {
+      start: getContent('head', 'start'),
+      end: getContent('head', 'end'),
+      scriptStart: getContent('head', 'script-start'),
+    },
+    body: {
+      start: getContent('body', 'start'),
+      end: getContent('body', 'end'),
+      scriptStart: getContent('body', 'script-start'),
+    },
+  }
+}
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
   const defaultLanguage = get(varletConfig, 'defaultLanguage')
@@ -28,43 +46,6 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     resolveAlias[key] = isRelative ? resolve(SRC_DIR, value) : value
     return resolveAlias
   }, {} as Record<string, string>)
-
-  const resolveCustomHtml = () => {
-    const transformKey = (baseKey: string, suffix: 'Start' | 'End' | 'ScriptStart') =>
-      `${baseKey.replace(/\.([a-z])/g, (_, group) => group.toUpperCase())}${suffix}`
-
-    const resolveContent = (type: string) => {
-      const contentData: Array<{ position: string; content: string }> = get(varletConfig, type, {})
-
-      const resolveContentByPosition = (position: 'start' | 'end' | 'script-start') =>
-        Object.values(contentData)
-          .filter((item) => item.position === position)
-          .map((item) => item.content)
-
-      return {
-        [transformKey(type, 'Start')]: resolveContentByPosition('start'),
-        [transformKey(type, 'End')]: resolveContentByPosition('end'),
-        ...(type.endsWith('.body')
-          ? {
-              [transformKey(type, 'ScriptStart')]: resolveContentByPosition('script-start'),
-            }
-          : {}),
-      }
-    }
-
-    const resolvePositions = (keyName: string) => {
-      const headResults = resolveContent(`${keyName}.head`)
-      const bodyResults = resolveContent(`${keyName}.body`)
-
-      return { ...headResults, ...bodyResults }
-    }
-
-    const sections = ['pc.html', 'mobile.html']
-    return sections.reduce((acc, section) => {
-      const results = resolvePositions(section)
-      return { ...acc, ...results }
-    }, {})
-  }
 
   return {
     root: SITE_DIR,
@@ -105,10 +86,11 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
           pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
           pcDescription: get(varletConfig, `pc.description['${defaultLanguage}']`),
           pcKeywords: get(varletConfig, `pc.keywords['${defaultLanguage}']`),
+          pcHtmlInject: getHtmlInject(get(varletConfig, 'pc.htmlInject')),
           mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
           mobileDescription: get(varletConfig, `mobile.description['${defaultLanguage}']`),
           mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
-          ...resolveCustomHtml(),
+          mobileHtmlInject: getHtmlInject(get(varletConfig, 'mobile.htmlInject')),
         },
       }),
     ],

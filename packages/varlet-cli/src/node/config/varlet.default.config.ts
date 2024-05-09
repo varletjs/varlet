@@ -473,6 +473,10 @@ export default defineConfig({
       defaultFold: false,
       foldHeight: 50,
     },
+    htmlInject: {
+      head: [],
+      body: [],
+    },
   },
   mobile: {
     title,
@@ -491,6 +495,10 @@ export default defineConfig({
         { 'zh-CN': 'Md3 亮色', 'en-US': 'Md3 Light', value: 'md3LightTheme' },
         { 'zh-CN': 'Md3 暗色', 'en-US': 'Md3 Dark', value: 'md3DarkTheme' },
       ],
+    },
+    htmlInject: {
+      head: [],
+      body: [],
     },
   },
   themeKey: 'VARLET_V3_THEME',

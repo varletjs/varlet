@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% if (mobileHtmlHeadStart.length > 0) {
-    mobileHtmlHeadStart.forEach(function(tag) { %>
+  <% 
+    mobileHtmlInject.head.start.forEach(function(tag) { %>
       <%- tag %>
     <% });
-  } %>
+  %>
   <meta charset="UTF-8" />
   <title><%= mobileTitle %></title>
   <meta http-equiv="Cache-Control" content="no-cache">
@@ -32,6 +32,11 @@
       font-display: swap;
     }
   </style>
+  <% 
+    mobileHtmlInject.head.scriptStart.forEach(function(tag) { %>
+      <%- tag %>
+    <% });
+  %>
   <script>
     if ('<%= baidu %>') {
       var _hmt = _hmt || [];
@@ -43,29 +48,29 @@
       })()
     }
   </script>
-  <% if (mobileHtmlHeadEnd.length > 0) {
-    mobileHtmlHeadEnd.forEach(function(tag) { %>
+  <% 
+    mobileHtmlInject.head.end.forEach(function(tag) { %>
       <%- tag %>
     <% });
-  } %>
+  %>
 </head>
 <body>
-<% if (mobileHtmlBodyStart.length > 0) {
-  mobileHtmlBodyStart.forEach(function(tag) { %>
+<% 
+  mobileHtmlInject.body.start.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 <div id="app"></div>
-<% if (mobileHtmlBodyScriptStart.length > 0) {
-  mobileHtmlBodyScriptStart.forEach(function(tag) { %>
+<% 
+  mobileHtmlInject.body.scriptStart.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 <script type="module" src="/mobile/main.ts"></script>
-<% if (mobileHtmlBodyEnd.length > 0) {
-  mobileHtmlBodyEnd.forEach(function(tag) { %>
+<% 
+  mobileHtmlInject.body.end.forEach(function(tag) { %>
     <%- tag %>
   <% });
-} %>
+%>
 </body>
 </html>

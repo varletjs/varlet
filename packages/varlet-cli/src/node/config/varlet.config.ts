@@ -21,6 +21,96 @@ export interface VarletConfigEsbuild {
   target?: string | string[]
 }
 
+export interface VarletConfigHtmlInjectPoint {
+  position?: 'start' | 'end' | 'script-start'
+  content?: string
+}
+
+export interface VarletConfigHtmlInject {
+  head?: VarletConfigHtmlInjectPoint[]
+  body?: VarletConfigHtmlInjectPoint[]
+}
+
+export interface VarletConfigPcMenu {
+  text: Record<string, string>
+  type: number
+  doc?: string
+}
+
+export interface VarletConfigPcHeader {
+  i18n?: Record<string, string>
+  currentVersion?: string
+  github?: string
+  changelog?: string
+  playground?: string
+  themes?: Record<string, string>[]
+  versions?: {
+    name: string
+    items?: { label?: string; link?: string }[]
+  }[]
+}
+
+export interface VarletConfigMobileHeader {
+  i18n?: Record<string, string>
+  github?: string
+  themes?: Record<string, string>[]
+}
+
+export interface VarletConfigPcIndexPage {
+  description?: Record<string, string>
+  started?: Record<string, string>
+  viewOnGithub?: Record<string, string>
+  features?: { name: Record<string, string>; description: Record<string, string> }[]
+  teamMembers?: {
+    label: Record<string, string>
+    members: {
+      name?: Record<string, string>
+      title?: Record<string, string>
+      description?: Record<string, string>
+      avatar?: string
+      github?: string
+      twitter?: string
+    }[]
+  }
+  contributors?: {
+    label?: Record<string, string>
+    link?: string
+    image?: string
+  }
+  sponsors?: {
+    label?: Record<string, string>
+    link?: string
+    image?: string
+  }
+  license?: Record<string, string>
+  copyright?: Record<string, string>
+}
+
+export interface VarletConfigPc {
+  title?: Record<string, string>
+  description?: Record<string, string>
+  keywords?: Record<string, string>
+  redirect?: string
+  clipboard?: Record<string, string>
+  indexPage?: VarletConfigPcIndexPage
+  header?: VarletConfigPcHeader
+  menu?: VarletConfigPcMenu[]
+  htmlInject?: VarletConfigHtmlInject
+  fold?: {
+    defaultFold?: boolean
+    foldHeight?: number
+  }
+}
+
+export interface VarletConfigMobile {
+  title?: Record<string, string>
+  description?: Record<string, string>
+  keywords?: Record<string, string>
+  redirect?: string
+  header?: VarletConfigMobileHeader
+  htmlInject?: VarletConfigHtmlInject
+}
+
 export interface VarletConfig {
   /**
    * @default `Varlet`
@@ -60,8 +150,8 @@ export interface VarletConfig {
   defaultDarkTheme?: 'darkTheme' | 'md3DarkTheme'
   highlight?: { style: string }
   analysis?: { baidu: string }
-  pc?: Record<string, any>
-  mobile?: Record<string, any>
+  pc?: VarletConfigPc
+  mobile?: VarletConfigMobile
   copy?: CopyOptions['paths']
   icons?: VarletConfigIcons
   esbuild?: VarletConfigEsbuild

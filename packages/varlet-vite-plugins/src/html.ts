@@ -2,7 +2,7 @@ import ejs from 'ejs'
 import type { Plugin } from 'vite'
 
 export interface HtmlOptions {
-  data?: Record<string, string | string[]>
+  data?: Record<string, string | string[] | Record<string, any>>
 }
 
 export function html(options: HtmlOptions): Plugin {
