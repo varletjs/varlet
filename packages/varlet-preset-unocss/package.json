@@ -1,6 +1,6 @@
 {
   "name": "@varlet/preset-unocss",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",

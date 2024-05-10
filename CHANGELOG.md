@@ -1,3 +1,18 @@
+## [3.2.9](https://github.com/varletjs/varlet/compare/v3.2.8...v3.2.9) (2024-05-10)
+
+
+### Bug Fixes
+
+* **cli:** compatible with cloudflare omit file suffix ([f6b9ece](https://github.com/varletjs/varlet/commit/f6b9ece27837f963f010869459e9c3d4834a01cd))
+
+
+### Features
+
+* **cli:** config of adding custom content into index.html ([#1616](https://github.com/varletjs/varlet/issues/1616)) ([31babaf](https://github.com/varletjs/varlet/commit/31babafc4cf37d04ad67f11f36aff50793e3a80a))
+* **cli:** support config.bundle ([560af0c](https://github.com/varletjs/varlet/commit/560af0c31b0262b30f0d99250b7687e520634cb2))
+
+
+
 ## [3.2.8](https://github.com/varletjs/varlet/compare/v3.2.7...v3.2.8) (2024-05-07)
 
 
