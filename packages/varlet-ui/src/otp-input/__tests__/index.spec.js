@@ -1,7 +1,7 @@
 import OtpInput from '..'
 import VarOtpInput from '../OtpInput'
 import { mount } from '@vue/test-utils'
-import { createApp, h } from 'vue'
+import { createApp } from 'vue'
 // import { trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
 

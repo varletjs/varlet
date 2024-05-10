@@ -55,6 +55,7 @@ export default defineComponent({
   setup(props) {
     const contentRef = ref()
     const inputRefs = ref<Array<VarInputInstance> | null>([])
+    const { bindForm } = useForm()
     const {
       errorMessage,
       validateWithTrigger: vt,
@@ -62,8 +63,6 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
-
-    const { bindForm, form } = useForm()
 
     const model = computed({
       get() {
@@ -218,7 +217,6 @@ export default defineComponent({
       inputRefs,
       errorMessage,
       focusIndex,
-      variant: props.variant,
       n,
       classes,
       handleInput,
