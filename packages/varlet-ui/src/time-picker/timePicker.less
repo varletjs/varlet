@@ -57,7 +57,7 @@
 }
 
 // Mixins
-.after-before-basic {
+.var-time-picker-after-before-basic {
   content: '';
   position: absolute;
   border-radius: 100%;
@@ -189,7 +189,7 @@
       border-color: var(--time-picker-clock-hand-border-color);
 
       &::before {
-        .after-before-basic();
+        .var-time-picker-after-before-basic();
 
         background: transparent;
         border: var(--time-picker-clock-hand-before-border-width) solid;
@@ -200,7 +200,7 @@
       }
 
       &::after {
-        .after-before-basic();
+        .var-time-picker-after-before-basic();
 
         border-color: inherit;
         height: var(--time-picker-clock-hand-after-height);

@@ -16,7 +16,7 @@
 }
 
 // Mixins
-.tag {
+.var-step-tag {
   width: var(--step-tag-size);
   height: var(--step-tag-size);
   background: var(--step-tag-background);
@@ -32,7 +32,7 @@
 }
 
 // Mixins
-.content {
+.var-step-content {
   font-size: var(--step-content-font-size);
   color: var(--step-content-color);
   cursor: pointer;
@@ -62,7 +62,7 @@
 
     &-tag {
       margin: var(--step-tag-margin);
-      .tag();
+      .var-step-tag();
 
       &--active {
         background: var(--step-tag-active-color);
@@ -70,7 +70,7 @@
     }
 
     &-content {
-      .content();
+      .var-step-content();
 
       &--active {
         color: var(--step-content-active-color);
@@ -96,7 +96,7 @@
     &-tag {
       flex-shrink: 0;
       margin: var(--step-vertical-tag-margin);
-      .tag();
+      .var-step-tag();
 
       &--active {
         background: var(--step-tag-active-color);
@@ -104,7 +104,7 @@
     }
 
     &-content {
-      .content();
+      .var-step-content();
 
       &--active {
         color: var(--step-content-active-color);

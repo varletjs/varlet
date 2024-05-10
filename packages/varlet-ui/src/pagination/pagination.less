@@ -20,7 +20,7 @@
 }
 
 // Mixins
-.pagination-flex-nowrap {
+.var-pagination-flex-nowrap {
   display: flex;
   white-space: nowrap;
   align-items: center;
@@ -97,14 +97,14 @@
   }
 
   &__total {
-    .pagination-flex-nowrap();
+    .var-pagination-flex-nowrap();
 
     line-height: var(--pagination-total-line-height);
     margin: var(--pagination-total-margin);
   }
 
   &__size {
-    .pagination-flex-nowrap();
+    .var-pagination-flex-nowrap();
 
     line-height: var(--pagination-size-line-height);
     margin: var(--pagination-item-margin);
@@ -124,7 +124,7 @@
 
   &__quickly,
   &__simple {
-    .pagination-flex-nowrap();
+    .var-pagination-flex-nowrap();
 
     [var-pagination-cover] {
       width: var(--pagination-input-width);
