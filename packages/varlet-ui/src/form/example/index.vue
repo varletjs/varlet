@@ -49,7 +49,7 @@ onThemeChange()
       <var-input
         type="password"
         :placeholder="t('password')"
-        :rules="[(v) => !!v || t('passwordMessage')]"
+        :rules="[(v) => !!v || t('passwordMessage'), (v) => v.length >= 8 || t('passwordMinLengthMessage')]"
         v-model="formData.password"
       />
       <var-select

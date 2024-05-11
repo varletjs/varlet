@@ -4,6 +4,7 @@ export default {
   usernameMessage: 'The username cannot be empty',
   password: 'Please input password',
   passwordMessage: 'The password cannot be empty',
+  passwordMinLengthMessage: 'The password cannot be less than 8 characters',
   department: 'Please select department',
   departmentMessage: 'The select cannot be empty',
   eat: 'Eat',

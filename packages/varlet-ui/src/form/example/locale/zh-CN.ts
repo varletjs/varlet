@@ -4,6 +4,7 @@ export default {
   usernameMessage: '用户名不能为空',
   password: '请输入密码',
   passwordMessage: '请输入密码',
+  passwordMinLengthMessage: '密码长度不能低于8位',
   department: '请选择部门',
   departmentMessage: '必须选一个部门',
   eat: '吃饭',
