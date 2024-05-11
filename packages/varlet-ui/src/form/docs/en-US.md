@@ -45,7 +45,7 @@ const readonly = ref(false)
       <var-input
         type="password"
         placeholder="Please input password"
-        :rules="[v => !!v || 'The password cannot be empty']"
+        :rules="[v => !!v || 'The password cannot be empty', (v) => v.length >= 8 || 'The password cannot be less than 8 characters']"
         v-model="formData.password"
       />
       <var-select
@@ -160,7 +160,7 @@ function handleReset() {
       <var-input
         type="password"
         placeholder="Please input password"
-        :rules="[v => !!v || 'The password cannot be empty']"
+        :rules="[v => !!v || 'The password cannot be empty', (v) => v.length >= 8 || 'The password cannot be less than 8 characters']"
         v-model="formData.password"
       />
 

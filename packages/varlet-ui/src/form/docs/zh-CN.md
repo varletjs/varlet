@@ -45,7 +45,7 @@ const readonly = ref(false)
       <var-input
         type="password"
         placeholder="请输入密码"
-        :rules="[v => !!v || '密码不能为空']"
+        :rules="[v => !!v || '密码不能为空', (v) => v.length >= 8 || '密码长度不能低于8位']"
         v-model="formData.password"
       />
       <var-select
@@ -160,7 +160,7 @@ function handleReset() {
       <var-input
         type="password"
         placeholder="请输入密码"
-        :rules="[v => !!v || '密码不能为空']"
+        :rules="[v => !!v || '密码不能为空', (v) => v.length <= 8 || '密码长度不能低于8位']"
         v-model="formData.password"
       />
 
