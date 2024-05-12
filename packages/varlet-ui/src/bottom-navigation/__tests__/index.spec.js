@@ -223,9 +223,9 @@ describe('test bottom-navigation component props', () => {
       },
     })
 
-    expect(wrapper.find('.var-bottom-navigation--wrapper').attributes('style')).toContain('z-index: 2;')
+    expect(wrapper.find('.var-bottom-navigation').attributes('style')).toContain('z-index: 2;')
     await wrapper.setProps({ zIndex: '3' })
-    expect(wrapper.find('.var-bottom-navigation--wrapper').attributes('style')).toContain('z-index: 3;')
+    expect(wrapper.find('.var-bottom-navigation').attributes('style')).toContain('z-index: 3;')
     wrapper.unmount()
   })
 
@@ -263,16 +263,17 @@ describe('test bottom-navigation component props', () => {
   })
 
   test('test bottom-navigation placeholder', async () => {
-    const wrapper = mount(Wrapper, {
+    const wrapper = mount(VarBottomNavigation, {
       props: {
-        fixed: true,
         placeholder: true,
+        fixed: true,
       },
     })
 
-    expect(wrapper.find('.var-bottom-navigation--fixed').exists()).toBe(true)
-    await wrapper.setProps({ fixed: false, placeholder: false })
-    expect(wrapper.find('.var-bottom-navigation--fixed').exists()).toBe(false)
+    expect(wrapper.find('.var-bottom-navigation--placeholder').exists()).toBe(true)
+    await wrapper.setProps({ placeholder: false, fixed: false })
+    expect(wrapper.find('.var-bottom-navigation--placeholder').exists()).toBe(false)
+
     wrapper.unmount()
   })
 

@@ -1,43 +1,39 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`test bottom-navigation component props > test variant mode 1`] = `
-"<div class="var-bottom-navigation">
-  <div class="var-bottom-navigation--wrapper var--box" style="z-index: 1;"><button class="var-bottom-navigation-item var--box">
-      <div class="var-bottom-navigation-item__icon-container">
-        <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>
-          <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top var-badge--dot var-bottom-navigation-item__badge" style="--badge-offset-y: 0px; --badge-offset-x: 0px;" var-bottom-navigation-item-cover=""><!--v-if--><!--v-if--></span></transition-stub>
-        </div>
-      </div><span class="var-bottom-navigation-item__label">tag 1</span>
-    </button><button class="var-bottom-navigation-item var--box">
-      <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 2</span>
-    </button><button class="var-bottom-navigation-item var--box">
-      <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 3</span>
-    </button><button class="var-bottom-navigation-item var--box">
-      <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
-    </button>
-    <!--v-if-->
-  </div>
+"<div class="var-bottom-navigation var--box" style="z-index: 1;"><button class="var-bottom-navigation-item var--box">
+    <div class="var-bottom-navigation-item__icon-container">
+      <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>
+        <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top var-badge--dot var-bottom-navigation-item__badge" style="--badge-offset-y: 0px; --badge-offset-x: 0px;" var-bottom-navigation-item-cover=""><!--v-if--><!--v-if--></span></transition-stub>
+      </div>
+    </div><span class="var-bottom-navigation-item__label">tag 1</span>
+  </button><button class="var-bottom-navigation-item var--box">
+    <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 2</span>
+  </button><button class="var-bottom-navigation-item var--box">
+    <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 3</span>
+  </button><button class="var-bottom-navigation-item var--box">
+    <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
+  </button>
   <!--v-if-->
-</div>"
+</div>
+<!--v-if-->"
 `;
 
 exports[`test bottom-navigation component props > test variant mode 2`] = `
-"<div class="var-bottom-navigation">
-  <div class="var-bottom-navigation--wrapper var--box var-bottom-navigation--variant" style="z-index: 1;"><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
-      <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container">
-        <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>
-          <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top var-badge--dot var-bottom-navigation-item__badge" style="--badge-offset-y: 0px; --badge-offset-x: 0px;" var-bottom-navigation-item-cover=""><!--v-if--><!--v-if--></span></transition-stub>
-        </div>
-      </div><span class="var-bottom-navigation-item__label">tag 1</span>
-    </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
-      <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 2</span>
-    </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
-      <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 3</span>
-    </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
-      <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
-    </button>
-    <!--v-if-->
-  </div>
+"<div class="var-bottom-navigation var--box var-bottom-navigation--variant" style="z-index: 1;"><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
+    <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container">
+      <div class="var-badge var--box"><i class="var-icon var-icon--set var-icon-home var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i>
+        <transition-stub name="var-badge-fade" appear="false" persisted="true" css="true"><span class="var-badge__content var-badge--default var-badge--right-top var-badge--dot var-bottom-navigation-item__badge" style="--badge-offset-y: 0px; --badge-offset-x: 0px;" var-bottom-navigation-item-cover=""><!--v-if--><!--v-if--></span></transition-stub>
+      </div>
+    </div><span class="var-bottom-navigation-item__label">tag 1</span>
+  </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
+    <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-magnify var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 2</span>
+  </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
+    <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-heart var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 3</span>
+  </button><button class="var-bottom-navigation-item var--box var-bottom-navigation-item--variant-padding">
+    <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
+  </button>
   <!--v-if-->
-</div>"
+</div>
+<!--v-if-->"
 `;
