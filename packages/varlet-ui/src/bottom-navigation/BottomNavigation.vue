@@ -1,35 +1,34 @@
 <template>
-  <div :class="classes(n())">
-    <div
-      :class="
-        classes(
-          n('--wrapper'),
-          n('$--box'),
-          [fixed, n('--fixed')],
-          [border, n('--border')],
-          [safeArea, n('--safe-area')],
-          [variant, n('--variant')]
-        )
-      "
-      ref="bottomNavigationDom"
-      :style="`z-index:${zIndex}`"
+  <div
+    :class="
+      classes(
+        n(),
+        n('$--box'),
+        [fixed, n('--fixed')],
+        [border, n('--border')],
+        [safeArea, n('--safe-area')],
+        [variant, n('--variant')]
+      )
+    "
+    ref="bottomNavigationDom"
+    :style="`z-index:${zIndex}`"
+    v-bind="$attrs"
+  >
+    <slot />
+
+    <var-button
+      v-if="$slots.fab"
+      :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
+      var-bottom-navigation__fab
+      @click="handleFabClick"
+      v-bind="fabProps"
+      id="var-bottom-navigation__fab"
     >
-      <slot />
-
-      <var-button
-        v-if="$slots.fab"
-        :class="classes(n('fab'), [length % 2, n('--fab-right'), n('--fab-center')])"
-        var-bottom-navigation__fab
-        @click="handleFabClick"
-        v-bind="fabProps"
-        ref="fabButton"
-      >
-        <slot name="fab"></slot>
-      </var-button>
-    </div>
-
-    <div v-if="fixed && placeholder" :class="classes(n('--placeholder'))" :style="{ height: placeholderHeight }" />
+      <slot name="fab"></slot>
+    </var-button>
   </div>
+
+  <div v-if="fixed && placeholder" :class="classes(n('--placeholder'))" :style="{ height: placeholderHeight }" />
 </template>
 
 <script lang="ts">
@@ -58,7 +57,6 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     const bottomNavigationDom = ref<HTMLElement | null>(null)
-    const fabButton = ref<InstanceType<typeof VarButton> | null>(null)
     const active = computed<number | string | undefined>(() => props.active)
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
@@ -208,7 +206,7 @@ export default defineComponent({
       let totalHeight = bottomRect.height
 
       if (slots.fab) {
-        const fabRect = getRect(fabButton.value!.$el)
+        const fabRect = getRect(document.getElementById('var-bottom-navigation__fab')!)
         totalHeight = bottomRect.top - fabRect.top + bottomRect.height
       }
 
@@ -218,7 +216,6 @@ export default defineComponent({
     return {
       length,
       bottomNavigationDom,
-      fabButton,
       fabProps,
       placeholderHeight,
       n,
