@@ -9,6 +9,16 @@ export const kebabCase = (s: string): string => {
   return ret.split(' ').join('-').toLowerCase()
 }
 
+export const slash = (path: string) => {
+  const isExtendedLengthPath = path.startsWith('\\\\?\\')
+
+  if (isExtendedLengthPath) {
+    return path
+  }
+
+  return path.replace(/\\/g, '/')
+}
+
 export type BEM<S extends string | undefined, N extends string, NC extends string> = S extends undefined
   ? NC
   : S extends `$--${infer CM}`

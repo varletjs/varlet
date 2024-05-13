@@ -1,5 +1,5 @@
-import slash from 'slash'
 import fse from 'fs-extra'
+import { slash } from '@varlet/shared'
 import {
   DOCS_DIR_NAME,
   EXAMPLE_DIR_NAME,

@@ -59,8 +59,8 @@ importers:
         specifier: ^7.22.5
         version: 7.22.5(@babel/core@7.22.5)
       '@varlet/icon-builder':
-        specifier: 0.0.4
-        version: 0.0.4
+        specifier: 0.2.1
+        version: 0.2.1
       '@varlet/release':
         specifier: ^0.2.5
         version: 0.2.5
@@ -151,9 +151,6 @@ importers:
       sharp:
         specifier: 0.31.1
         version: 0.31.1
-      slash:
-        specifier: ^3.0.0
-        version: 3.0.0
       typescript:
         specifier: ^5.1.5
         version: 5.1.5
@@ -2626,8 +2623,8 @@ packages:
       - rollup
     dev: false
 
-  /@varlet/icon-builder@0.0.4:
-    resolution: {integrity: sha512-reVGzjbXG8wmHATXkEirfVoycBB1zIh2sUnRs9ZDx+PhEFuBnaaIDxIFYdJ+fYtuGSnavqduvx/SK0x0nLOVIQ==}
+  /@varlet/icon-builder@0.2.1:
+    resolution: {integrity: sha512-95RWZJwuJOiUjxgVZ9rlg7IkfS4YK52LmIPA3M0Xwe0PNqgWk5ubaa1E4HvDJsVP6R8n0SnhpHAUOcGsW6jGiA==}
     engines: {node: '>=16.0.0', pnpm: '>=8.0'}
     hasBin: true
     dependencies:
@@ -2635,7 +2632,7 @@ packages:
       commander: 11.1.0
       fs-extra: 11.1.1
       picocolors: 1.0.0
-      slash: 5.1.0
+      unconfig: 0.3.13
       webfont: 11.2.26(chokidar@3.6.0)
     dev: false
 
@@ -7823,11 +7820,6 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
 
-  /slash@5.1.0:
-    resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
-    engines: {node: '>=14.16'}
-    dev: false
-
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
@@ -8588,6 +8580,14 @@ packages:
       defu: 6.1.4
       jiti: 1.21.0
       mlly: 1.4.2
+    dev: false
+
+  /unconfig@0.3.13:
+    resolution: {integrity: sha512-N9Ph5NC4+sqtcOjPfHrRcHekBCadCXWTBzp2VYYbySOHW0PfD9XLCeXshTXjkPYwLrBr9AtSeU0CZmkYECJhng==}
+    dependencies:
+      '@antfu/utils': 0.7.7
+      defu: 6.1.4
+      jiti: 1.21.0
     dev: false
 
   /underscore@1.13.6:

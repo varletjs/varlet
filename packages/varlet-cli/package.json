@@ -41,7 +41,7 @@
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
     "@varlet/release": "^0.2.5",
-    "@varlet/icon-builder": "0.0.4",
+    "@varlet/icon-builder": "0.2.1",
     "@babel/core": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@vitejs/plugin-vue": "5.0.4",
@@ -69,7 +69,6 @@
     "picocolors": "^1.0.0",
     "semver": "^7.3.5",
     "sharp": "0.31.1",
-    "slash": "^3.0.0",
     "typescript": "^5.1.5"
   },
   "devDependencies": {
