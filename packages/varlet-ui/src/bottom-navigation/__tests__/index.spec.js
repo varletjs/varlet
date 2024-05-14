@@ -273,6 +273,8 @@ describe('test bottom-navigation component props', () => {
     expect(wrapper.find('.var-bottom-navigation--placeholder').exists()).toBe(true)
     await wrapper.setProps({ placeholder: false, fixed: false })
     expect(wrapper.find('.var-bottom-navigation--placeholder').exists()).toBe(false)
+    await wrapper.setProps({ placeholder: true, fixed: false })
+    expect(wrapper.find('.var-bottom-navigation--placeholder').exists()).toBe(false)
 
     wrapper.unmount()
   })

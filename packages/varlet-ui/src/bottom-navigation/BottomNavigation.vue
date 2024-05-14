@@ -28,7 +28,7 @@
     </var-button>
   </div>
 
-  <div v-if="fixed && placeholder" class="var-bottom-navigation--placeholder" :style="{ height: placeholderHeight }" />
+  <div v-if="fixed && placeholder" :class="n('--placeholder')" :style="{ height: placeholderHeight }" />
 </template>
 
 <script lang="ts">
@@ -221,7 +221,6 @@ export default defineComponent({
       n,
       classes,
       handleFabClick,
-      setPlaceholderHeight,
     }
   },
 })
