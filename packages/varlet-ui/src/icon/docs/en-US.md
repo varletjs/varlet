@@ -94,43 +94,129 @@ function toggle() {
 </style>
 ```
 
-### Custom Icons
+### Custom icon library (plugin definition)
 
-First you need to set up your own font and install it into your project.
-Let's assume that we extend a font named `my-icons`.
+The component library provides two ways to customize the icon library, `plug-in definition` and `manual definition`. This section introduces the `plug-in definition` method.
 
-```css
-/* playground-ignore */
-/* Set the font */
-@font-face {
-  font-family: "my-icons";
-  src: url("https://xxx.my-icons.ttf") format("truetype");
-}
+#### Install plugin
 
-/* Set namespace */
-.my-icon {
-  font-family: "my-icons";
-}
-/* OR */
-.my-icon--set {
-  font-family: "my-icons";
-}
-/* Set namespace end */
+Install `@varlet/unplugin-icon-builder` and integrate with the build tool. For more plug-in options, please [refer here](https://github.com/varletjs/varlet-iconx/tree/main/packages/varlet-unplugin-icon-builder#options-type-declaration).
 
-/* Font names map code points */
-.my-icon-hot::before {
-  content: "\F000";
+```shell
+# playground-ignore
+#npm
+npm i @varlet/unplugin-icon-builder -D
+# yarn
+yarn add @varlet/unplugin-icon-builder -D
+# pnpm
+pnpm add @varlet/unplugin-icon-builder -D
+```
+
+#### Vite Configuration
+
+```ts
+// playground-ignore
+// vite.config.ts
+import { defineConfig } from 'vite'
+import icon from '@varlet/unplugin-icon-builder/vite'
+
+export default defineConfig({
+   plugins: [icon()],
+})
+```
+
+#### Webpack Configuration
+
+```ts
+// playground-ignore
+// vite.config.ts
+const Icon = require('@varlet/unplugin-icon-builder/webpack')
+
+module.exports = {
+   plugins: [Icon.default()]
 }
 ```
 
-Here you have successfully extended your icon library.
-So `my-icon` is your font `namespace`.
-You can use it this way:
+#### Vue Cli Configuration
+
+```ts
+// playground-ignore
+// vite.config.ts
+const { defineConfig } = require('@vue/cli-service')
+const Icon = require('@varlet/unplugin-icon-builder/webpack')
+
+module.exports = defineConfig({
+   transpileDependencies: true,
+   configureWebpack: {
+     plugins: [Icon.default()]
+   },
+})
+```
+
+#### Project Structure
+
+`svg-icons` will default to the icon library folder.
+
+```ts
+// playground-ignore
+|-- project
+   |-- src
+     |-- main.ts
+   |-- svg-icons
+     |-- account-circle.svg
+```
+
+#### Import the entry file into the virtual module
+
+```ts
+// playground-ignore
+// main.ts
+import 'virtual-icons'
+```
+
+#### Using Icons
 
 ```html
 <!-- playground-ignore -->
 <template>
-  <var-icon namespace="my-icon" name="hot" />
+   <var-icon namespace="i" name="account-circle" />
+</template>
+```
+
+### Custom icon library (manually defined)
+
+First you need to set up your own font and import it into your project. This assumes that a font named `i-icons` is extended.
+
+```css
+/* playground-ignore */
+/* Set font */
+@font-face {
+   font-family: "i-icons";
+   src: url("https://xxx.i-icons.ttf") format("truetype");
+}
+
+/* Set namespace */
+.i {
+   font-family: "i-icons";
+}
+/* or */
+.i--set {
+   font-family: "i-icons";
+}
+/* Set the end of the namespace */
+
+/* Font name mapping code point */
+.i-account-circle::before {
+   content: "\F000";
+}
+```
+
+#### Using icons
+
+```html
+<!-- playground-ignore -->
+<template>
+   <var-icon namespace="i" name="account-circle" />
 </template>
 ```
 

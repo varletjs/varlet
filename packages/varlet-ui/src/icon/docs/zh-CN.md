@@ -93,41 +93,129 @@ function toggle() {
 </style>
 ```
 
-### 自定义图标库
+### 自定义图标库 (插件定义)
 
-首先您需要设置您自己的字体，并引入到您的项目。
-这里假设扩展一个名为 `my-icons` 的字体。
+组件库提供了两种自定义图标库的方式，`插件定义`和`手动定义`，这部分介绍`插件定义`的方式。
+
+#### 安装插件
+
+安装 `@varlet/unplugin-icon-builder`，并与构建工具集成，更多的插件选项请[参考这里](https://github.com/varletjs/varlet-iconx/tree/main/packages/varlet-unplugin-icon-builder#options-type-declaration)。
+
+```shell
+# playground-ignore
+# npm
+npm i @varlet/unplugin-icon-builder -D
+# yarn
+yarn add @varlet/unplugin-icon-builder -D
+# pnpm
+pnpm add @varlet/unplugin-icon-builder -D
+```
+
+#### Vite 配置
+
+```ts
+// playground-ignore
+// vite.config.ts
+import { defineConfig } from 'vite'
+import icon from '@varlet/unplugin-icon-builder/vite'
+
+export default defineConfig({
+  plugins: [icon()],
+})
+```
+
+#### Webpack 配置
+
+```ts
+// playground-ignore
+// vite.config.ts
+const Icon = require('@varlet/unplugin-icon-builder/webpack')
+
+module.exports = {
+  plugins: [Icon.default()]
+}
+```
+
+#### Vue Cli 配置
+
+```ts
+// playground-ignore
+// vite.config.ts
+const { defineConfig } = require('@vue/cli-service')
+const Icon = require('@varlet/unplugin-icon-builder/webpack')
+
+module.exports = defineConfig({
+  transpileDependencies: true,
+  configureWebpack: {
+    plugins: [Icon.default()]
+  },
+})
+```
+
+#### 项目结构
+
+`svg-icons` 将默认作为图标库文件夹。
+
+```ts
+// playground-ignore
+|-- project
+  |-- src
+    |-- main.ts
+  |-- svg-icons
+    |-- account-circle.svg
+```
+
+#### 入口文件导入虚拟模块
+
+```ts
+// playground-ignore
+// main.ts
+import 'virtual-icons'
+```
+
+#### 使用图标
+
+```html
+<!-- playground-ignore -->
+<template>
+  <var-icon namespace="i" name="account-circle" />
+</template>
+```
+
+### 自定义图标库 (手动定义)
+
+首先您需要设置您自己的字体，并引入到您的项目。这里假设扩展一个名为 `i-icons` 的字体。
 
 ```css
 /* playground-ignore */
 /* 设置字体 */
 @font-face {
-  font-family: "my-icons";
-  src: url("https://xxx.my-icons.ttf") format("truetype");
+  font-family: "i-icons";
+  src: url("https://xxx.i-icons.ttf") format("truetype");
 }
 
 /* 设置命名空间 */
-.my-icon {
-  font-family: "my-icons";
+.i {
+  font-family: "i-icons";
 }
 /* 或 */
-.my-icon--set {
-  font-family: "my-icons";
+.i--set {
+  font-family: "i-icons";
 }
 /* 设置命名空间结束 */
 
 /* 字体名称映射码点 */
-.my-icon-hot::before {
+.i-account-circle::before {
   content: "\F000";
 }
 ```
 
-到这里你就成功的扩展了自己的图标库，`my-icon` 就是你的字体 `命名空间(namespace)`，您可以这样使用。
+#### 使用图标
 
 ```html
 <!-- playground-ignore -->
 <template>
-  <var-icon namespace="my-icon" name="hot" />
+  <var-icon namespace="i" name="account-circle" />
 </template>
 ```
 
