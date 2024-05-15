@@ -111,11 +111,12 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent, ref, computed, nextTick, onUpdated } from 'vue'
+import { defineComponent, ref, computed, nextTick, onUpdated, watch } from 'vue'
 import { props } from './props'
-import { isEmpty, getStyle, call } from '@varlet/shared'
+import { isEmpty, getStyle, call, doubleRaf } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
+import { usePopup } from '../popup/provide'
 
 const { name, n, classes } = createNamespace('field-decorator')
 
@@ -132,6 +133,7 @@ export default defineComponent({
     const middleOffsetHeight = ref('0px')
     const transitionDisabled = ref(true)
     const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocusing))
+    const { popup, bindPopup } = usePopup()
 
     const color = computed<string | undefined>(() =>
       !props.errorMessage ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
@@ -148,6 +150,20 @@ export default defineComponent({
     })
 
     onUpdated(resize)
+
+    call(bindPopup, null)
+
+    if (popup) {
+      watch(
+        () => popup.show.value,
+        async (show) => {
+          if (show) {
+            await doubleRaf()
+            resize()
+          }
+        }
+      )
+    }
 
     function computePlaceholderState() {
       const { hint, value, composing } = props
