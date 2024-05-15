@@ -121,7 +121,7 @@ import { defineConfig } from 'vite'
 import icon from '@varlet/unplugin-icon-builder/vite'
 
 export default defineConfig({
-   plugins: [icon()],
+  plugins: [icon()],
 })
 ```
 
@@ -133,7 +133,7 @@ export default defineConfig({
 const Icon = require('@varlet/unplugin-icon-builder/webpack')
 
 module.exports = {
-   plugins: [Icon.default()]
+  plugins: [Icon.default()]
 }
 ```
 
@@ -146,10 +146,10 @@ const { defineConfig } = require('@vue/cli-service')
 const Icon = require('@varlet/unplugin-icon-builder/webpack')
 
 module.exports = defineConfig({
-   transpileDependencies: true,
-   configureWebpack: {
-     plugins: [Icon.default()]
-   },
+  transpileDependencies: true,
+  configureWebpack: {
+    plugins: [Icon.default()]
+  },
 })
 ```
 
@@ -179,7 +179,7 @@ import 'virtual-icons'
 ```html
 <!-- playground-ignore -->
 <template>
-   <var-icon namespace="i" name="account-circle" />
+  <var-icon namespace="i" name="account-circle" />
 </template>
 ```
 
@@ -191,23 +191,23 @@ First you need to set up your own font and import it into your project. This ass
 /* playground-ignore */
 /* Set font */
 @font-face {
-   font-family: "i-icons";
-   src: url("https://xxx.i-icons.ttf") format("truetype");
+  font-family: "i-icons";
+  src: url("https://xxx.i-icons.ttf") format("truetype");
 }
 
 /* Set namespace */
 .i {
-   font-family: "i-icons";
+  font-family: "i-icons";
 }
 /* or */
 .i--set {
-   font-family: "i-icons";
+  font-family: "i-icons";
 }
 /* Set the end of the namespace */
 
 /* Font name mapping code point */
 .i-account-circle::before {
-   content: "\F000";
+  content: "\F000";
 }
 ```
 
@@ -216,7 +216,7 @@ First you need to set up your own font and import it into your project. This ass
 ```html
 <!-- playground-ignore -->
 <template>
-   <var-icon namespace="i" name="account-circle" />
+  <var-icon namespace="i" name="account-circle" />
 </template>
 ```
 
