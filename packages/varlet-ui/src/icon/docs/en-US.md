@@ -96,10 +96,6 @@ function toggle() {
 
 ### Custom icon library (plugin definition)
 
-The component library provides two ways to customize the icon library, `plug-in definition` and `manual definition`. This section introduces the `plug-in definition` method.
-
-#### Install plugin
-
 Install `@varlet/unplugin-icon-builder` and integrate with the build tool. For more plug-in options, please [refer here](https://github.com/varletjs/varlet-iconx/tree/main/packages/varlet-unplugin-icon-builder#options-type-declaration).
 
 ```shell

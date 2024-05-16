@@ -95,10 +95,6 @@ function toggle() {
 
 ### 自定义图标库 (插件定义)
 
-组件库提供了两种自定义图标库的方式，`插件定义`和`手动定义`，这部分介绍`插件定义`的方式。
-
-#### 安装插件
-
 安装 `@varlet/unplugin-icon-builder`，并与构建工具集成，更多的插件选项请[参考这里](https://github.com/varletjs/varlet-iconx/tree/main/packages/varlet-unplugin-icon-builder#options-type-declaration)。
 
 ```shell
@@ -154,7 +150,7 @@ module.exports = defineConfig({
 
 #### 项目结构
 
-`svg-icons` 将默认作为图标库文件夹。
+`svg-icons` 将作为默认的图标库文件夹。
 
 ```ts
 // playground-ignore
