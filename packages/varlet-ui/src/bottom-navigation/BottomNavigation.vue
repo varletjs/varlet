@@ -22,7 +22,6 @@
       var-bottom-navigation__fab
       @click="handleFabClick"
       v-bind="fabProps"
-      id="var-bottom-navigation__fab"
     >
       <slot name="fab"></slot>
     </var-button>
@@ -43,6 +42,7 @@ import { type BottomNavigationItemProvider } from '../bottom-navigation-item/pro
 
 const { name, n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
+const { n: nFab } = createNamespace('bottom-navigation__fab')
 
 const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
 const LEFT_HALF_SPACE_CLASS = nItem('--left-half-space')
@@ -206,7 +206,7 @@ export default defineComponent({
       let totalHeight = bottomRect.height
 
       if (slots.fab) {
-        const fabRect = getRect(document.getElementById('var-bottom-navigation__fab')!)
+        const fabRect = getRect(bottomNavigationDom.value!.querySelector(`.${nFab()}`)!)
         totalHeight = bottomRect.top - fabRect.top + bottomRect.height
       }
 
