@@ -27,7 +27,7 @@
     </var-button>
   </div>
 
-  <div v-if="fixed && placeholder" :class="n('--placeholder')" :style="{ height: placeholderHeight }" />
+  <div v-if="fixed && placeholder" :class="n('placeholder')" :style="{ height: placeholderHeight }" />
 </template>
 
 <script lang="ts">
@@ -42,7 +42,6 @@ import { type BottomNavigationItemProvider } from '../bottom-navigation-item/pro
 
 const { name, n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
-const { n: nFab } = createNamespace('bottom-navigation__fab')
 
 const RIGHT_HALF_SPACE_CLASS = nItem('--right-half-space')
 const LEFT_HALF_SPACE_CLASS = nItem('--left-half-space')
@@ -86,7 +85,7 @@ export default defineComponent({
     )
 
     onSmartMounted(() => {
-      setPlaceholderHeight()
+      resizePlaceholder()
 
       if (!slots.fab) {
         return
@@ -197,17 +196,17 @@ export default defineComponent({
       call(props.onFabClick)
     }
 
-    function setPlaceholderHeight() {
+    function resizePlaceholder() {
       if (!props.fixed || !props.placeholder) {
         return
       }
 
-      const bottomRect = getRect(bottomNavigationDom.value!)
-      let totalHeight = bottomRect.height
+      const bottomNavigationRect = getRect(bottomNavigationDom.value!)
+      let totalHeight = bottomNavigationRect.height
 
       if (slots.fab) {
-        const fabRect = getRect(bottomNavigationDom.value!.querySelector(`.${nFab()}`)!)
-        totalHeight = bottomRect.top - fabRect.top + bottomRect.height
+        const fabRect = getRect(bottomNavigationDom.value!.querySelector('.var-bottom-navigation__fab')!)
+        totalHeight = bottomNavigationRect.top - fabRect.top + bottomNavigationRect.height
       }
 
       placeholderHeight.value = `${totalHeight}px`

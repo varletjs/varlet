@@ -201,7 +201,7 @@ const active = ref(0)
 | `z-index`       | Z-index                                             | _number \| string_ | `1` |
 | `active-color`  | Color of active tab item                            | _string_ | `-` |
 | `inactive-color` | Color of inactive tab item                          | _string_ | `-` |
-| `placeholder` ***3.2.10***  | Whether to generate placeholder elements of the same height at the bottom (`fixed` required)  | _boolean_ | `false` |
+| `placeholder` ***3.2.11***  | Whether to generate placeholder elements of the same height at the bottom (`fixed` required)  | _boolean_ | `false` |
 | `fab-props`     | Fab button props                                    | _ButtonProps_ | `{ type: 'primary' }` |
 | `variant` ***3.2.0***      | Variant mode | _boolean_ | `false` |
 
