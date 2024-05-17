@@ -1,3 +1,17 @@
+## [3.2.10](https://github.com/varletjs/varlet/compare/v3.2.9...v3.2.10) (2024-05-17)
+
+
+### Bug Fixes
+
+* **field:** resize when popup show ([865f972](https://github.com/varletjs/varlet/commit/865f9726efac941e7c437b7cbda6fd45229a848e))
+
+
+### Features
+
+* **shared:** support slash ([8ffabdc](https://github.com/varletjs/varlet/commit/8ffabdc573252b1cecaf752edd2ee9817573b23b))
+
+
+
 ## [3.2.9](https://github.com/varletjs/varlet/compare/v3.2.8...v3.2.9) (2024-05-10)
 
 
