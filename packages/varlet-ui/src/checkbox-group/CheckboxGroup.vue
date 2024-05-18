@@ -24,11 +24,11 @@
 import VarFormDetails from '../form-details'
 import VarCheckbox from '../checkbox'
 import { defineComponent, computed, watch, nextTick } from 'vue'
-import { props, type CheckboxGroupValidateTrigger } from './props'
+import { props, type CheckboxGroupValidateTrigger, CheckboxOption } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq, call, isArray, isFunction } from '@varlet/shared'
+import { uniq, call, isArray, isFunction, isNumber, isString } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 
@@ -39,7 +39,18 @@ export default defineComponent({
   setup(props) {
     const max = computed(() => props.max)
     const checkedCount = computed(() => props.modelValue.length)
-    const checkboxOptions = computed(() => (isArray(props.options) ? props.options : []))
+    const checkboxOptions = computed(() => {
+      const options = isArray(props.options) ? props.options : []
+      return options.map((option) => {
+        if (isNumber(option) || isString(option)) {
+          return {
+            label: option,
+            value: option,
+          } as CheckboxOption
+        }
+        return option
+      })
+    })
     const { length, checkboxes, bindCheckboxes } = useCheckboxes()
     const { bindForm } = useForm()
     const {

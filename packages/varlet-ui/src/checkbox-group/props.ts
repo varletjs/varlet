@@ -15,7 +15,7 @@ export const props = {
     default: () => [],
   },
   max: [String, Number],
-  options: Array<CheckboxOption>,
+  options: Array as PropType<Array<CheckboxOption | string | number>>,
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

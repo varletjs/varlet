@@ -17,6 +17,12 @@ const values = reactive({
   value11: [],
   group: null,
   indeterminate: true,
+  options: [
+    { label: 'eat', value: 0, disabled: true },
+    { label: 'sleep', value: 1 },
+    { label: 'game', value: 2 },
+  ],
+  optionsValue: [],
 })
 
 const {
@@ -33,6 +39,8 @@ const {
   value10,
   value11,
   indeterminate,
+  optionsValue,
+  options,
 } = toRefs(values)
 
 watchLang(use)
@@ -84,6 +92,14 @@ onThemeChange()
     <var-button type="primary" @click="$refs.group.checkAll()">{{ t('checkAll') }}</var-button>
     <var-button type="primary" @click="$refs.group.inverseAll()">{{ t('inverseAll') }}</var-button>
   </var-space>
+
+  <app-type>{{ t('checkboxGroupOptions') }}</app-type>
+  <var-checkbox-group v-model="optionsValue" :options="options">
+    <template #label="{ option }">
+      <span><var-icon v-if="option.label === 'game'" name="cellphone" />{{ t(option.label) }}</span>
+    </template>
+  </var-checkbox-group>
+  <div class="relation">{{ t('currentValue') }} {{ optionsValue }}</div>
 
   <app-type>{{ t('vertical') }}</app-type>
   <var-checkbox-group v-model="value9" direction="vertical">
