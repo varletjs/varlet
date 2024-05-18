@@ -1,7 +1,13 @@
-import { type PropType } from 'vue'
+import { type PropType, type RenderFunction } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
+
+export interface CheckboxOption {
+  label?: string | RenderFunction
+  disabled?: boolean
+  value: any
+}
 
 export const props = {
   modelValue: {
@@ -9,6 +15,7 @@ export const props = {
     default: () => [],
   },
   max: [String, Number],
+  options: Array<CheckboxOption>,
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

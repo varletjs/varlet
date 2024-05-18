@@ -1,7 +1,20 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <slot />
+      <template v-if="checkboxOptions.length">
+        <var-checkbox
+          v-for="option in checkboxOptions"
+          :key="option.value.toString()"
+          :checked-value="option.value"
+          :model-value="option.value"
+          :disabled="option.disabled"
+        >
+          <slot name="label" :option="option">
+            {{ isFunction(option.label) ? option.label() : option.label }}
+          </slot>
+        </var-checkbox>
+      </template>
+      <slot v-else />
     </div>
     <var-form-details :error-message="errorMessage" />
   </div>
@@ -9,22 +22,24 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
+import VarCheckbox from '../checkbox'
 import { defineComponent, computed, watch, nextTick } from 'vue'
 import { props, type CheckboxGroupValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq, call } from '@varlet/shared'
+import { uniq, call, isArray, isFunction } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 
 export default defineComponent({
   name,
-  components: { VarFormDetails },
+  components: { VarFormDetails, VarCheckbox },
   props,
   setup(props) {
     const max = computed(() => props.max)
     const checkedCount = computed(() => props.modelValue.length)
+    const checkboxOptions = computed(() => (isArray(props.options) ? props.options : []))
     const { length, checkboxes, bindCheckboxes } = useCheckboxes()
     const { bindForm } = useForm()
     const {
@@ -86,7 +101,7 @@ export default defineComponent({
     }
 
     function syncCheckboxes() {
-      return checkboxes.forEach(({ sync }) => sync(props.modelValue))
+      checkboxes.forEach(({ sync }) => sync(props.modelValue))
     }
 
     function resetWithAnimation() {
@@ -132,6 +147,7 @@ export default defineComponent({
 
     return {
       errorMessage,
+      checkboxOptions,
       n,
       classes,
       checkAll,
@@ -139,6 +155,7 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
+      isFunction,
     }
   },
 })
