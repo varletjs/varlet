@@ -1,21 +1,21 @@
 import { isArray } from './is.js'
 
 export const debounce = (fn: any, delay = 0) => {
-  let timer: number
+  let timer: any
 
   return function (this: unknown, ...args: any[]) {
     if (timer) {
-      window.clearTimeout(timer)
+      clearTimeout(timer)
     }
 
-    timer = window.setTimeout(() => {
+    timer = setTimeout(() => {
       fn.apply(this, args)
     }, delay)
   }
 }
 
 export const throttle = (fn: any, delay = 200): (() => void) => {
-  let timer: number
+  let timer: any
   let start = 0
 
   return function loop(this: unknown, ...args) {
@@ -27,14 +27,14 @@ export const throttle = (fn: any, delay = 200): (() => void) => {
     }
 
     if (timer) {
-      window.clearTimeout(timer)
+      clearTimeout(timer)
     }
 
     if (elapsed >= delay) {
       fn.apply(this, args)
       start = now
     } else {
-      timer = window.setTimeout(() => {
+      timer = setTimeout(() => {
         loop.apply(this, args)
       }, delay - elapsed)
     }
