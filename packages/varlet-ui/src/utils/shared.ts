@@ -64,9 +64,13 @@ export const cubic = (value: number): number => value ** 3
 export const easeInOutCubic = (value: number): number =>
   value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2
 
-// eslint-disable-next-line default-param-last
-export const padStart = (str = '', maxLength: number, fillString = ''): string => {
-  if (str.length >= maxLength) return str
+export const padStart = (str: string | undefined, maxLength: number, fillString = ''): string => {
+  if (str === undefined) {
+    str = ''
+  }
+  if (str.length >= maxLength) {
+    return str
+  }
 
   const len = maxLength - str.length
   const repeatCount = Math.floor(len / fillString.length)
