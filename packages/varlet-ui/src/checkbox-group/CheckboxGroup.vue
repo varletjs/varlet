@@ -1,8 +1,16 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <checkbox-group-option v-if="checkboxGroupOptions.length" :options="checkboxGroupOptions" />
-      <slot v-else />
+      <template v-if="checkboxGroupOptions.length">
+        <checkbox-group-option
+          v-for="option in checkboxGroupOptions"
+          :key="option.value.toString()"
+          :checked-value="option.value"
+          :label="option.label"
+          :disabled="option.disabled"
+        />
+      </template>
+      <slot />
     </div>
     <var-form-details :error-message="errorMessage" />
   </div>
@@ -16,7 +24,7 @@ import { props, type CheckboxGroupValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq, call, isArray, isFunction } from '@varlet/shared'
+import { uniq, call, isArray } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 
@@ -143,7 +151,6 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
-      isFunction,
     }
   },
 })
