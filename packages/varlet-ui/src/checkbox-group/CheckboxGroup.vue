@@ -5,7 +5,7 @@
         <checkbox-group-option
           v-for="option in checkboxGroupOptions"
           :key="option.value.toString()"
-          :checked-value="option.value"
+          :value="option.value"
           :label="option.label"
           :disabled="option.disabled"
           :checked="modelValue.includes(option.value)"
