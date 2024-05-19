@@ -265,7 +265,7 @@ const value = ref([])
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
-| `label`    |   The text of checkbox    | _string \| function \| VNode_      | `-`   |
+| `label`    |   The text of checkbox    | _string \| (option: CheckboxGroupOption, checked: boolean) => VNodeChild \| VNode_      | `-`   |
 | `value`  |    The value of checkbox    | _any_      | `-`   |
 | `disabled`    |    Whether to disable checkbox   | _boolean_      | `-`   |
 
