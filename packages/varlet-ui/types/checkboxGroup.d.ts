@@ -14,7 +14,7 @@ export type CheckboxGroupValidateTrigger = 'onChange'
 export interface CheckboxGroupOption {
   label?: string | RenderFunction
   disabled?: boolean
-  value: any
+  value?: any
 }
 
 export { CheckboxGroupDirection }

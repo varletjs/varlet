@@ -1,9 +1,9 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <template v-if="checkboxOptions.length">
+      <template v-if="checkboxGroupOptions.length">
         <var-checkbox
-          v-for="option in checkboxOptions"
+          v-for="option in checkboxGroupOptions"
           :key="option.value.toString()"
           :checked-value="option.value"
           :disabled="option.disabled"
@@ -23,11 +23,11 @@
 import VarFormDetails from '../form-details'
 import VarCheckbox from '../checkbox'
 import { defineComponent, computed, watch, nextTick } from 'vue'
-import { props, type CheckboxGroupValidateTrigger, CheckboxGroupOption } from './props'
+import { props, type CheckboxGroupValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq, call, isArray, isFunction, isNumber, isString } from '@varlet/shared'
+import { uniq, call, isArray, isFunction } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 
@@ -38,18 +38,7 @@ export default defineComponent({
   setup(props) {
     const max = computed(() => props.max)
     const checkedCount = computed(() => props.modelValue.length)
-    const checkboxOptions = computed(() => {
-      const options = isArray(props.options) ? props.options : []
-      return options.map((option) => {
-        if (isNumber(option) || isString(option)) {
-          return {
-            label: option,
-            value: option,
-          } as CheckboxGroupOption
-        }
-        return option
-      })
-    })
+    const checkboxGroupOptions = computed(() => (isArray(props.options) ? props.options : []))
     const { length, checkboxes, bindCheckboxes } = useCheckboxes()
     const { bindForm } = useForm()
     const {
@@ -157,7 +146,7 @@ export default defineComponent({
 
     return {
       errorMessage,
-      checkboxOptions,
+      checkboxGroupOptions,
       n,
       classes,
       checkAll,
