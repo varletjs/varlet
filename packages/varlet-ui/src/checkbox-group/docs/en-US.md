@@ -159,21 +159,14 @@ import { ref } from 'vue'
 
 const value = ref([])
 const options = ref([
-  { label: 'eat', value: 0, disabled: true },
-  { label: 'sleep', value: 1 },
-  { label: 'game', value: 2 },
+  { label: 'Eat', value: 0, disabled: true },
+  { label: 'Sleep', value: 1 },
+  { label: 'Game', value: 2 },
 ])
 </script>
 
 <template>
-  <var-checkbox-group v-model="value" :options="options">
-    <template #label="{ option }">
-      <span>
-        <var-icon v-if="option.label === 'game'" name="cellphone" />
-        {{ option.label }}
-      </span>
-    </template>
-  </var-checkbox-group>
+  <var-checkbox-group v-model="value" :options="options" />
   <div>Current value: {{ value }}</div>
 </template>
 ```

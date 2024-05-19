@@ -165,14 +165,7 @@ const options = ref([
 </script>
 
 <template>
-  <var-checkbox-group v-model="value" :options="options">
-    <template #label="{ option }">
-      <span>
-        <var-icon v-if="option.label === '游戏'" name="cellphone" />
-        {{ option.label }}
-      </span>
-    </template>
-  </var-checkbox-group>
+  <var-checkbox-group v-model="value" :options="options" />
   <div>当前的值: {{ value }}</div>
 </template>
 ```

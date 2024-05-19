@@ -1,18 +1,7 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <template v-if="checkboxGroupOptions.length">
-        <var-checkbox
-          v-for="option in checkboxGroupOptions"
-          :key="option.value.toString()"
-          :checked-value="option.value"
-          :disabled="option.disabled"
-        >
-          <slot name="label" :option="option">
-            {{ isFunction(option.label) ? option.label() : option.label }}
-          </slot>
-        </var-checkbox>
-      </template>
+      <checkbox-group-option v-if="checkboxGroupOptions.length" :options="checkboxGroupOptions" />
       <slot v-else />
     </div>
     <var-form-details :error-message="errorMessage" />
@@ -21,7 +10,7 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import VarCheckbox from '../checkbox'
+import CheckboxGroupOption from './CheckboxGroupOption'
 import { defineComponent, computed, watch, nextTick } from 'vue'
 import { props, type CheckboxGroupValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
@@ -33,7 +22,7 @@ const { name, n, classes } = createNamespace('checkbox-group')
 
 export default defineComponent({
   name,
-  components: { VarFormDetails, VarCheckbox },
+  components: { VarFormDetails, CheckboxGroupOption },
   props,
   setup(props) {
     const max = computed(() => props.max)

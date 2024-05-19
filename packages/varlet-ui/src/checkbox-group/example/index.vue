@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, computed } from 'vue'
 import { use, t } from './locale'
 
 const values = reactive({
@@ -17,11 +17,6 @@ const values = reactive({
   value11: [],
   group: null,
   indeterminate: true,
-  options: [
-    { label: 'eat', value: 0, disabled: true },
-    { label: 'sleep', value: 1 },
-    { label: 'game', value: 2 },
-  ],
   optionsValue: [],
 })
 
@@ -40,8 +35,13 @@ const {
   value11,
   indeterminate,
   optionsValue,
-  options,
 } = toRefs(values)
+
+const options = computed(() => [
+  { label: t('eat'), value: 0, disabled: true },
+  { label: t('sleep'), value: 1 },
+  { label: t('game'), value: 2 },
+])
 
 watchLang(use)
 onThemeChange()
@@ -94,11 +94,7 @@ onThemeChange()
   </var-space>
 
   <app-type>{{ t('checkboxGroupOptions') }}</app-type>
-  <var-checkbox-group v-model="optionsValue" :options="options">
-    <template #label="{ option }">
-      <span><var-icon v-if="option.label === 'game'" name="cellphone" />{{ t(option.label) }}</span>
-    </template>
-  </var-checkbox-group>
+  <var-checkbox-group v-model="optionsValue" :options="options" />
   <div class="relation">{{ t('currentValue') }} {{ optionsValue }}</div>
 
   <app-type>{{ t('vertical') }}</app-type>
