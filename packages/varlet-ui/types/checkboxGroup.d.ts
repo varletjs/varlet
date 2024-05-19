@@ -11,7 +11,7 @@ export declare const checkboxGroupProps: Record<keyof CheckboxGroupProps, any>
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
-export interface CheckboxOption {
+export interface CheckboxGroupOption {
   label?: string | RenderFunction
   disabled?: boolean
   value: any
@@ -22,7 +22,7 @@ export { CheckboxGroupDirection }
 export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number
-  options?: Array<string | number | CheckboxOption>
+  options?: Array<CheckboxGroupOption>
   direction?: CheckboxGroupDirection
   validateTrigger?: Array<CheckboxGroupValidateTrigger>
   rules?: Array<(value: any) => any>

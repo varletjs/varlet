@@ -3,7 +3,7 @@ import { defineListenerProp } from '../utils/components'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
-export interface CheckboxOption {
+export interface CheckboxGroupOption {
   label?: string | RenderFunction
   disabled?: boolean
   value: any
@@ -15,7 +15,7 @@ export const props = {
     default: () => [],
   },
   max: [String, Number],
-  options: Array as PropType<Array<CheckboxOption | string | number>>,
+  options: Array as PropType<Array<CheckboxGroupOption>>,
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

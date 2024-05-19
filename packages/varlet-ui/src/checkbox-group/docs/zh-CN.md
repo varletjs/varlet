@@ -264,10 +264,10 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | 指定可选项 | _Array<string \| number \| CheckboxOption>_ | `-` |
+| `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
-### CheckboxOption 
+### CheckboxGroupOption 
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|

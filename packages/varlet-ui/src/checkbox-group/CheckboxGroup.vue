@@ -6,7 +6,6 @@
           v-for="option in checkboxOptions"
           :key="option.value.toString()"
           :checked-value="option.value"
-          :model-value="option.value"
           :disabled="option.disabled"
         >
           <slot name="label" :option="option">
@@ -24,7 +23,7 @@
 import VarFormDetails from '../form-details'
 import VarCheckbox from '../checkbox'
 import { defineComponent, computed, watch, nextTick } from 'vue'
-import { props, type CheckboxGroupValidateTrigger, CheckboxOption } from './props'
+import { props, type CheckboxGroupValidateTrigger, CheckboxGroupOption } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
@@ -46,7 +45,7 @@ export default defineComponent({
           return {
             label: option,
             value: option,
-          } as CheckboxOption
+          } as CheckboxGroupOption
         }
         return option
       })
