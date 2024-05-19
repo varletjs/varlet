@@ -8,6 +8,7 @@
           :checked-value="option.value"
           :label="option.label"
           :disabled="option.disabled"
+          :checked="modelValue.includes(option.value)"
         />
       </template>
       <slot />

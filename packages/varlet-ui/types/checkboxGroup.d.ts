@@ -5,14 +5,16 @@ import {
   ListenerProp,
   SetPropsDefaults,
 } from './varComponent'
-import { VNode, type RenderFunction } from 'vue'
+import { VNode, VNodeChild } from 'vue'
 
 export declare const checkboxGroupProps: Record<keyof CheckboxGroupProps, any>
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
+export type CheckboxGroupLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
+
 export interface CheckboxGroupOption {
-  label?: string | RenderFunction
+  label?: string | VNode | CheckboxGroupLabelRender
   disabled?: boolean
   value?: any
 }

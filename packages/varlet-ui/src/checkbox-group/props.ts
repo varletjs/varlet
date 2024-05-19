@@ -1,10 +1,12 @@
-import { type PropType, type RenderFunction } from 'vue'
+import { VNode, VNodeChild, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
+export type CheckboxGroupLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
+
 export interface CheckboxGroupOption {
-  label?: string | RenderFunction
+  label?: string | VNode | CheckboxGroupLabelRender
   disabled?: boolean
   value?: any
 }
