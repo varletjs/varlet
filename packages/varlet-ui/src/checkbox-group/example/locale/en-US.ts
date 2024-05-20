@@ -18,4 +18,5 @@ export default {
   indeterminate: 'Indeterminate',
   indeterminateValue: 'Current value:',
   toggle: 'Toggle',
+  max: 'Maximum Number Of Checked',
 }

@@ -18,4 +18,5 @@ export default {
   indeterminate: '不确定状态',
   indeterminateValue: '不确定状态的值:',
   toggle: '切换',
+  max: '最大选中数量',
 }
