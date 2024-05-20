@@ -166,6 +166,25 @@ const value = ref([])
 </template>
 ```
 
+### Maximum Number Of Checked
+
+In a checkbox group, you can limit the maximum number of selections by setting `max`.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :max="1">
+    <var-checkbox :checked-value="0">Eat</var-checkbox>
+    <var-checkbox :checked-value="1">Sleep</var-checkbox>
+  </var-checkbox-group>
+</template>
+```
+
 ### Checkbox Validation
 
 ```html

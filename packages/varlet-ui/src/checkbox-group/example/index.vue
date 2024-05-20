@@ -14,12 +14,26 @@ const values = reactive({
   value8: [],
   value9: [],
   value10: false,
+  value11: [],
   group: null,
   indeterminate: true,
 })
 
-const { value, value2, value3, value4, value5, value6, value7, value8, value9, group, value10, indeterminate } =
-  toRefs(values)
+const {
+  value,
+  value2,
+  value3,
+  value4,
+  value5,
+  value6,
+  value7,
+  value8,
+  value9,
+  group,
+  value10,
+  value11,
+  indeterminate,
+} = toRefs(values)
 
 watchLang(use)
 onThemeChange()
@@ -77,6 +91,12 @@ onThemeChange()
     <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
   </var-checkbox-group>
   <div class="relation">{{ t('currentValue') }} {{ value9 }}</div>
+
+  <app-type>{{ t('max') }}</app-type>
+  <var-checkbox-group v-model="value11" :max="1">
+    <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
+  </var-checkbox-group>
 
   <app-type>{{ t('checkboxValidate') }}</app-type>
   <var-checkbox v-model="value7" :rules="[(v) => v || t('checkboxValidateMessage')]">

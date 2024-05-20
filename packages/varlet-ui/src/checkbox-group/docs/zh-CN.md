@@ -166,6 +166,25 @@ const value = ref([])
 </template>
 ```
 
+### 最大选中数量
+
+在复选框组中，可以通过设置 `max` 属性来限制最大选中数量。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :max="1">
+    <var-checkbox :checked-value="0">吃饭</var-checkbox>
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
+  </var-checkbox-group>
+</template>
+```
+
 ### 复选框字段校验
 
 ```html
