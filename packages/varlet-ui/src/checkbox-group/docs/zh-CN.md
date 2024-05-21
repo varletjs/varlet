@@ -260,7 +260,7 @@ const value = ref([])
 | `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
-### CheckboxGroupOption 
+#### CheckboxGroupOption 
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|

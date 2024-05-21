@@ -11,10 +11,10 @@ export declare const checkboxGroupProps: Record<keyof CheckboxGroupProps, any>
 
 export type CheckboxGroupValidateTrigger = 'onChange'
 
-export type CheckboxGroupLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
+export type CheckboxGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
 
 export interface CheckboxGroupOption {
-  label?: string | VNode | CheckboxGroupLabelRender
+  label?: string | VNode | CheckboxGroupOptionLabelRender
   disabled?: boolean
   value?: any
 }

@@ -261,7 +261,7 @@ const value = ref([])
 | `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `-` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
 
-### CheckboxGroupOption 
+#### CheckboxGroupOption 
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
