@@ -1,3 +1,13 @@
+## [3.2.11](https://github.com/varletjs/varlet/compare/v3.2.10...v3.2.11) (2024-05-24)
+
+
+### Features
+
+* **bottom-navigation:** add placeholder prop ([#1618](https://github.com/varletjs/varlet/issues/1618)) ([471a563](https://github.com/varletjs/varlet/commit/471a5634470e377920df6e7776f8869c45c5e59a))
+* **checkbox-group:** support options ([#1624](https://github.com/varletjs/varlet/issues/1624)) ([e345c0a](https://github.com/varletjs/varlet/commit/e345c0aec176938c8a550526aa59a4106ba8439b))
+
+
+
 ## [3.2.10](https://github.com/varletjs/varlet/compare/v3.2.9...v3.2.10) (2024-05-17)
 
 
