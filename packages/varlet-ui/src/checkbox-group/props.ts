@@ -1,7 +1,15 @@
-import { type PropType } from 'vue'
+import { VNode, VNodeChild, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type CheckboxGroupValidateTrigger = 'onChange'
+
+export type CheckboxGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
+
+export interface CheckboxGroupOption {
+  label?: string | VNode | CheckboxGroupOptionLabelRender
+  disabled?: boolean
+  value?: any
+}
 
 export const props = {
   modelValue: {
@@ -9,6 +17,7 @@ export const props = {
     default: () => [],
   },
   max: [String, Number],
+  options: Array as PropType<Array<CheckboxGroupOption>>,
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

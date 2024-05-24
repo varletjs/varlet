@@ -148,6 +148,27 @@ const value = ref([])
   <div>当前的值: {{ value }}</div>
 </template>
 ```
+### 复选框组选项
+
+通过 `options` 属性设置子元素。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { label: '吃饭', value: 0, disabled: true },
+  { label: '睡觉', value: 1 },
+  { label: '游戏', value: 2 },
+])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :options="options" />
+  <div>当前的值: {{ value }}</div>
+</template>
+```
 
 ### 垂直布局
 
@@ -236,7 +257,16 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
+| `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
+
+#### CheckboxGroupOption 
+
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `label`    |    选项的标签    | _string \| (option: CheckboxGroupOption, checked: boolean) => VNodeChild \| VNode_      | `-`   |
+| `value`  |    选项的值    | _any_      | `-`   |
+| `disabled`    |    是否禁用   | _boolean_      | `-`   |
 
 #### Checkbox Props
 

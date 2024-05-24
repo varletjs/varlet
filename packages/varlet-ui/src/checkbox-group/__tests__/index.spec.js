@@ -330,6 +330,44 @@ test('test checkbox group layout direction', async () => {
   wrapper.unmount()
 })
 
+test('test checkbox group options', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      options: [
+        { label: 'eat', value: 0, disabled: true },
+        { label: 'sleep', value: 1 },
+        { label: 'game', value: 2 },
+      ],
+    }),
+    template: `
+      <var-checkbox-group v-model="value" :options="options">
+      </var-checkbox-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  wrapper.unmount()
+})
+
 test('test checkbox keyboard Enter', async () => {
   const wrapper = mount({
     components: {

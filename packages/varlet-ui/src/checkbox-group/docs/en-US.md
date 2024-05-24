@@ -149,6 +149,28 @@ const value = ref([])
 </template>
 ```
 
+### CheckboxGroup Options
+
+Setting child elements via the `options` prop.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { label: 'Eat', value: 0, disabled: true },
+  { label: 'Sleep', value: 1 },
+  { label: 'Game', value: 2 },
+])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :options="options" />
+  <div>Current value: {{ value }}</div>
+</template>
+```
+
 ### Vertical Direction
 
 ```html
@@ -236,7 +258,16 @@ const value = ref([])
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
+| `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `-` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
+
+#### CheckboxGroupOption 
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of checkbox    | _string \| (option: CheckboxGroupOption, checked: boolean) => VNodeChild \| VNode_      | `-`   |
+| `value`  |    The value of checkbox    | _any_      | `-`   |
+| `disabled`    |    Whether to disable checkbox   | _boolean_      | `-`   |
 
 #### Checkbox Props
 

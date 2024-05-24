@@ -3,6 +3,7 @@
 exports[`test checkbox group layout direction 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--vertical">
+    <!--v-if-->
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
@@ -36,9 +37,59 @@ exports[`test checkbox group layout direction 1`] = `
 </div>"
 `;
 
+exports[`test checkbox group options 1`] = `
+"<div class="var-checkbox-group__wrap">
+  <div class="var-checkbox-group var-checkbox-group--horizontal">
+    <div class="var-checkbox__wrap">
+      <div class="var-checkbox">
+        <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--disabled">
+          <!--v-if-->
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <div class="var-hover-overlay"></div>
+        </div>
+        <div class="var-checkbox__text var-checkbox--disabled">eat</div>
+      </div>
+      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+    </div>
+    <div class="var-checkbox__wrap">
+      <div class="var-checkbox">
+        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+          <!--v-if-->
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <div class="var-hover-overlay"></div>
+        </div>
+        <div class="var-checkbox__text">sleep</div>
+      </div>
+      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+    </div>
+    <div class="var-checkbox__wrap">
+      <div class="var-checkbox">
+        <div class="var-checkbox__action var-checkbox--unchecked" tabindex="0">
+          <!--v-if-->
+          <!--v-if--><i class="var-icon var-icon--set var-icon-checkbox-blank-outline var-checkbox__icon" style="transition-duration: 0ms;" var-checkbox-cover=""></i>
+          <div class="var-hover-overlay"></div>
+        </div>
+        <div class="var-checkbox__text">game</div>
+      </div>
+      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+        <!--v-if-->
+      </transition-stub>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
 exports[`test checkbox group validation 1`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
+    <!--v-if-->
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--unchecked var-checkbox--error" tabindex="0">
@@ -86,6 +137,7 @@ exports[`test checkbox group validation 1`] = `
 exports[`test checkbox group validation 2`] = `
 "<div class="var-checkbox-group__wrap">
   <div class="var-checkbox-group var-checkbox-group--horizontal">
+    <!--v-if-->
     <div class="var-checkbox__wrap">
       <div class="var-checkbox">
         <div class="var-checkbox__action var-checkbox--checked" tabindex="0">
