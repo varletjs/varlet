@@ -201,15 +201,8 @@ export default defineComponent({
         return
       }
 
-      const bottomNavigationRect = getRect(bottomNavigationDom.value!)
-      let totalHeight = bottomNavigationRect.height
-
-      if (slots.fab) {
-        const fabRect = getRect(bottomNavigationDom.value!.querySelector('.var-bottom-navigation__fab')!)
-        totalHeight = bottomNavigationRect.top - fabRect.top + bottomNavigationRect.height
-      }
-
-      placeholderHeight.value = `${totalHeight}px`
+      const { height } = getRect(bottomNavigationDom.value!)
+      placeholderHeight.value = `${height}px`
     }
 
     return {
