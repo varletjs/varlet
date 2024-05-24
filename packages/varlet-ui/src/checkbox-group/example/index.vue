@@ -38,9 +38,9 @@ const {
 } = toRefs(values)
 
 const options = computed(() => [
-  { label: t('eat'), value: 0, disabled: true },
+  { label: t('eat'), value: 0 },
   { label: t('sleep'), value: 1 },
-  { label: t('game'), value: 2 },
+  { label: t('game'), value: 2, disabled: true },
 ])
 
 watchLang(use)

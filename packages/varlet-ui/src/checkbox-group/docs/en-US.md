@@ -159,9 +159,9 @@ import { ref } from 'vue'
 
 const value = ref([])
 const options = ref([
-  { label: 'Eat', value: 0, disabled: true },
+  { label: 'Eat', value: 0 },
   { label: 'Sleep', value: 1 },
-  { label: 'Game', value: 2 },
+  { label: 'Game', value: 2, disabled: true },
 ])
 </script>
 
