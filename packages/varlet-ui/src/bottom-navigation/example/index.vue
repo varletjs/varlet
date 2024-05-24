@@ -92,7 +92,7 @@ function handleClick(active) {
   </var-bottom-navigation>
 
   <app-type>{{ t('variant') }}</app-type>
-  <var-bottom-navigation placeholder fixed variant v-model:active="variant">
+  <var-bottom-navigation fixed v-model:active="variant">
     <var-bottom-navigation-item :label="t('label')" icon="home" />
     <var-bottom-navigation-item :label="t('label')" icon="magnify" />
     <var-bottom-navigation-item :label="t('label')" icon="heart" />
