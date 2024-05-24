@@ -15,7 +15,8 @@ exports[`test bottom-navigation component props > test variant mode 1`] = `
     <div class="var-bottom-navigation-item__icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
   </button>
   <!--v-if-->
-</div>"
+</div>
+<!--v-if-->"
 `;
 
 exports[`test bottom-navigation component props > test variant mode 2`] = `
@@ -33,5 +34,6 @@ exports[`test bottom-navigation component props > test variant mode 2`] = `
     <div class="var-bottom-navigation-item__icon-container var-bottom-navigation-item--variant-icon-container"><i class="var-icon var-icon--set var-icon-account-circle var-bottom-navigation-item__icon" style="transition-duration: 0ms;" var-bottom-navigation-item-cover=""></i></div><span class="var-bottom-navigation-item__label">tag 4</span>
   </button>
   <!--v-if-->
-</div>"
+</div>
+<!--v-if-->"
 `;

@@ -12,6 +12,7 @@
     "
     ref="bottomNavigationDom"
     :style="`z-index:${zIndex}`"
+    v-bind="$attrs"
   >
     <slot />
 
@@ -25,6 +26,8 @@
       <slot name="fab"></slot>
     </var-button>
   </div>
+
+  <div v-if="fixed && placeholder" :class="n('placeholder')" :style="{ height: placeholderHeight }" />
 </template>
 
 <script lang="ts">
@@ -33,7 +36,7 @@ import { defineComponent, ref, computed, onUpdated, watch } from 'vue'
 import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace } from '../utils/components'
-import { isNumber, normalizeToArray, call } from '@varlet/shared'
+import { isNumber, normalizeToArray, call, getRect } from '@varlet/shared'
 import { onSmartMounted } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
@@ -57,6 +60,7 @@ export default defineComponent({
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
     const variant = computed<boolean | undefined>(() => props.variant)
+    const placeholderHeight = ref()
     const fabProps = ref({})
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
@@ -81,6 +85,8 @@ export default defineComponent({
     )
 
     onSmartMounted(() => {
+      resizePlaceholder()
+
       if (!slots.fab) {
         return
       }
@@ -190,10 +196,27 @@ export default defineComponent({
       call(props.onFabClick)
     }
 
+    function resizePlaceholder() {
+      if (!props.fixed || !props.placeholder) {
+        return
+      }
+
+      const bottomNavigationRect = getRect(bottomNavigationDom.value!)
+      let totalHeight = bottomNavigationRect.height
+
+      if (slots.fab) {
+        const fabRect = getRect(bottomNavigationDom.value!.querySelector('.var-bottom-navigation__fab')!)
+        totalHeight = bottomNavigationRect.top - fabRect.top + bottomNavigationRect.height
+      }
+
+      placeholderHeight.value = `${totalHeight}px`
+    }
+
     return {
       length,
       bottomNavigationDom,
       fabProps,
+      placeholderHeight,
       n,
       classes,
       handleFabClick,

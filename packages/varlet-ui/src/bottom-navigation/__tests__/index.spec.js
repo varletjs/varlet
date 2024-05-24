@@ -262,6 +262,23 @@ describe('test bottom-navigation component props', () => {
     wrapper.unmount()
   })
 
+  test('test bottom-navigation placeholder', async () => {
+    const wrapper = mount(VarBottomNavigation, {
+      props: {
+        placeholder: true,
+        fixed: true,
+      },
+    })
+
+    expect(wrapper.find('.var-bottom-navigation__placeholder').exists()).toBe(true)
+    await wrapper.setProps({ placeholder: false, fixed: false })
+    expect(wrapper.find('.var-bottom-navigation__placeholder').exists()).toBe(false)
+    await wrapper.setProps({ placeholder: true, fixed: false })
+    expect(wrapper.find('.var-bottom-navigation__placeholder').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('test bottom-navigation fab-props', async () => {
     const wrapper = mount(Wrapper, {
       props: {

@@ -12,6 +12,7 @@ export interface BottomNavigationProps extends BasicAttributes {
   zIndex?: number | string
   activeColor?: string
   inactiveColor?: string
+  placeholder?: boolean
   fabProps?: Partial<ButtonProps>
   variant?: boolean
   onChange?: ListenerProp<(active: string | number) => void>
