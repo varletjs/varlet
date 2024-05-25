@@ -264,7 +264,7 @@ const value = ref([])
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `label`    |    选项的标签    | _string \| (option: CheckboxGroupOption, checked: boolean) => VNodeChild \| VNode_      | `-`   |
+| `label`    |    选项的标签    | _string \| VNode \| (option: CheckboxGroupOption, checked: boolean) => VNodeChild_      | `-`   |
 | `value`  |    选项的值    | _any_      | `-`   |
 | `disabled`    |    是否禁用   | _boolean_      | `-`   |
 
