@@ -304,7 +304,7 @@ const value = ref([])
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `unchecked-value`) and validate messages | `-` | `-` |
-| `toggle` | Toggle the checked state, pass `checked-value` to check, `unchecked-value` to uncheck, do not pass or other cases to reverse | `value: any` | `-` |
+| `toggle` | Toggle the checked state, pass `checked-value` to check, `unchecked-value` to uncheck, do not pass or other cases to reverse | `value?: any` | `-` |
 
 ### Events
 
