@@ -9,8 +9,17 @@ export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export type SelectSize = 'small' | 'normal'
 
+export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
+
+export interface SelectOption {
+  label?: string | VNode | SelectOptionLabelRender
+  disabled?: boolean
+  value?: any
+}
+
 export interface SelectProps extends BasicAttributes {
   modelValue?: any
+  options: Array<SelectOption>
   variant?: SelectVariant
   size?: SelectSize
   placeholder?: string

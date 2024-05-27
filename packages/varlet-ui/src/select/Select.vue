@@ -110,6 +110,14 @@
 
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+          <template v-if="selectOptions.length">
+            <select-option
+              v-for="option in selectOptions"
+              :key="(option.value || option.label)?.toString()"
+              :checked="multiple && modelValue?.includes(option.value)"
+              :option="option"
+            />
+          </template>
           <slot />
         </div>
       </template>
@@ -125,6 +133,7 @@ import VarMenu from '../menu'
 import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
+import SelectOption from './SelectOption'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty, call, preventDefault, doubleRaf } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
@@ -147,6 +156,7 @@ export default defineComponent({
     VarChip,
     VarFieldDecorator,
     VarFormDetails,
+    SelectOption,
   },
   props,
   setup(props) {
@@ -157,6 +167,7 @@ export default defineComponent({
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
+    const selectOptions = computed(() => (isArray(props.options) ? props.options : []))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
@@ -424,6 +435,7 @@ export default defineComponent({
       cursor,
       placeholderColor,
       enableCustomPlaceholder,
+      selectOptions,
       n,
       classes,
       handleFocus,

@@ -16,6 +16,8 @@ export default {
   relation: 'Label relation value',
   multiple: 'Multiple Selection',
   chipMultiple: 'Multiple choice of paper style',
+  selectOptions: 'Select options',
+  selectOptionsMultiple: 'selectOptionsMultiple',
   eat: 'Eat',
   sleep: 'Sleep',
   play: 'Play game',

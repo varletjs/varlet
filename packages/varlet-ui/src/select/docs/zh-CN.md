@@ -9,6 +9,14 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+const options = [
+  {
+    label: '吃饭',
+  },
+  {
+    label: '睡觉',
+  },
+]
 
 const value = ref()
 const value2 = ref()
@@ -23,6 +31,8 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
 </script>
 
 <template>
@@ -143,6 +153,10 @@ const value13 = ref()
     <var-select placeholder="小尺寸" v-model="value13">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
+    </var-select>
+    <var-select placeholder="下拉框选项" v-model="value14" :options="options">
+    </var-select>
+    <var-select placeholder="下拉框选项" v-model="value15" :options="options" multiple>
     </var-select>
   </var-space>
 </template>
@@ -407,6 +421,7 @@ const value13 = ref()
 | `default` | 选项显示的内容 | `selected: boolean` 是否选中 |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 #### Select Variables

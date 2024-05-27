@@ -9,6 +9,14 @@ Display and select the content through the drop-down menu.
 ```html
 <script setup>
 import { ref } from 'vue'
+const options = [
+  {
+    label: 'Eat',
+  },
+  {
+    label: 'Sleep',
+  },
+]
 
 const value = ref()
 const value2 = ref()
@@ -23,6 +31,8 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
 </script>
 
 <template>
@@ -142,6 +152,10 @@ const value13 = ref()
     <var-select size="small" placeholder="Small Size" v-model="value13">
       <var-option label="Eat" />
       <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Select Options" v-model="value14" :options="options">
+    </var-select>
+    <var-select placeholder="Select Options Multiple" v-model="value15" :options="options">
     </var-select>
   </var-space>
 </template>
@@ -395,7 +409,7 @@ const value13 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
-| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) | 
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
@@ -406,6 +420,7 @@ const value13 = ref()
 | `default` | Options to display the content | `selected: boolean` selected or not |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Select Variables

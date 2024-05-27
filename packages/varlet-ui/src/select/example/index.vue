@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { use, t } from './locale'
 
 const standardValue = ref()
@@ -16,6 +16,8 @@ const standardValue10 = ref([])
 const standardValue11 = ref()
 const standardValue12 = ref([])
 const standardValue13 = ref()
+const standardValue14 = ref()
+const standardValue15 = ref([])
 
 const outlinedValue = ref()
 const outlinedValue2 = ref()
@@ -30,6 +32,14 @@ const outlinedValue10 = ref([])
 const outlinedValue11 = ref()
 const outlinedValue12 = ref([])
 const outlinedValue13 = ref()
+const options = computed(() => [
+  {
+    label: t('eat'),
+  },
+  {
+    label: t('sleep'),
+  },
+])
 
 onThemeChange()
 watchLang((lang) => {
@@ -46,6 +56,8 @@ watchLang((lang) => {
   standardValue11.value = undefined
   standardValue12.value = []
   standardValue13.value = undefined
+  standardValue14.value = undefined
+  standardValue15.value = []
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -185,6 +197,9 @@ watchLang((lang) => {
     <var-select :placeholder="t('smallSize')" v-model="standardValue13">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
+    </var-select>
+    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options"> </var-select>
+    <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple>
     </var-select>
   </var-space>
 

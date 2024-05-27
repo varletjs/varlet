@@ -1,4 +1,4 @@
-import { type PropType } from 'vue'
+import { VNode, VNodeChild, type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { fieldDecoratorProps } from '../field-decorator'
 
@@ -6,11 +6,20 @@ export type SelectValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick
 
 export type SelectTextAlign = 'left' | 'right' | 'center'
 
+export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
+
+export interface SelectOption {
+  label?: string | VNode | SelectOptionLabelRender
+  disabled?: boolean
+  value?: any
+}
+
 export const props = {
   modelValue: {
     type: [String, Number, Boolean, Array] as PropType<any>,
     default: undefined,
   },
+  options: Array as PropType<Array<SelectOption>>,
   multiple: Boolean,
   offsetY: {
     type: [String, Number],

@@ -448,6 +448,61 @@ test('test select focus & blur methods', async () => {
   wrapper.unmount()
 })
 
+test('test select options', async () => {
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: '',
+      options: [{ label: 'eat', disabled: true }, { label: 'sleep' }, { label: 'game' }],
+    }),
+    template: `
+      <var-select v-model="value" :options="options">
+      </var-select>
+    `,
+  })
+
+  await wrapper.trigger('click')
+  const options = document.querySelectorAll('.var-option')
+  await trigger(options[0], 'click')
+  expect(wrapper.vm.value).toBe('')
+
+  await trigger(options[1], 'click')
+  expect(wrapper.vm.value).toBe('sleep')
+
+  wrapper.unmount()
+})
+
+test('test select options multiple', async () => {
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: [],
+      options: [
+        { label: 'eat', value: 0, disabled: true },
+        { label: 'sleep', value: 1 },
+        { label: 'game', value: 2 },
+      ],
+    }),
+    template: `
+      <var-select v-model="value" :options="options" multiple>
+      </var-select>
+    `,
+  })
+
+  await wrapper.trigger('click')
+  const options = document.querySelectorAll('.var-option')
+  await trigger(options[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(options[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(options[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  wrapper.unmount()
+})
+
 test('test select keyboard select option by space', async () => {
   const wrapper = mount(
     {
