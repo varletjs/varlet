@@ -45,6 +45,7 @@ Also refer to `@varlet/ui` [varlet.config.mjs](https://github.com/varletjs/varle
 | `namespace` | Component library namespace, will be used as component prefix | _string_ | `var` |
 | `host` | Development server host | _number_ | `localhost` |
 | `port` | Development server port | _number_ | `8080` |
+| `proxy` | Development server proxy | _Record<string, string \| ProxyOptions>_ | `-` |
 | `title` | The title of the component library in the document | _string_ | `VARLET` |
 | `logo` | The logo of the component library in the document | _string_ | `-` |
 | `alias` | Path alias (root is src folder when use relative path) | _Record<string, string>_ | `-` |

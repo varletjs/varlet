@@ -6,6 +6,7 @@ import { isArray } from '@varlet/shared'
 import { pathToFileURL } from 'url'
 import { type VIConfig } from '@varlet/icon-builder'
 import { type CopyOptions } from '@varlet/vite-plugins'
+import { ProxyOptions } from 'vite'
 
 const { pathExistsSync, statSync } = fse
 
@@ -132,6 +133,7 @@ export interface VarletConfig {
    * Local dev server port
    */
   port?: number
+  proxy?: Record<string, string | ProxyOptions>
   title?: string
   logo?: string
   themeKey?: string
