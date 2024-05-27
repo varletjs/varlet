@@ -4,7 +4,7 @@
       <template v-if="checkboxGroupOptions.length">
         <checkbox-group-option
           v-for="option in checkboxGroupOptions"
-          :key="option.value.toString()"
+          :key="option.value"
           :checked="modelValue.includes(option.value)"
           :option="option"
         />
@@ -158,5 +158,6 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../checkbox/checkbox';
 @import './checkboxGroup';
 </style>
