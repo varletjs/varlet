@@ -64,6 +64,7 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     server: {
       port: get(varletConfig, 'port'),
       host: host === 'localhost' ? '0.0.0.0' : host,
+      proxy: get(varletConfig, 'proxy', {}),
     },
 
     publicDir: SITE_PUBLIC_PATH,

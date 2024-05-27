@@ -45,6 +45,7 @@ varlet-cli gen
 | `namespace` | 组件库命名空间, 会作为组件前缀 | _string_ | `var` |
 | `host` | 开发服务器主机 | _number_ | `localhost` |
 | `port` | 开发服务器端口 | _number_ | `8080` |
+| `proxy` | 开发服务器代理 | _Record<string, string \| ProxyOptions>_ | `-` |
 | `title` | 文档中组件库的标题 | _string_ | `VARLET` |
 | `logo` | 文档中组件库的 logo | _string_ | `-` |
 | `alias` | 路径别名 (使用相对路径时，根路径为 src 文件夹) | _Record<string, string>_ | `-` |
