@@ -180,14 +180,14 @@ import { ref } from 'vue'
 
 const value = ref([])
 const options = ref([
-  { event: '吃饭', order: 0 },
-  { event: '睡觉', order: 1 },
-  { event: '游戏', order: 2 },
+  { name: '吃饭', id: 0 },
+  { name: '睡觉', id: 1 },
+  { name: '游戏', id: 2 },
 ])
 </script>
 
 <template>
-  <var-checkbox-group v-model="value" :options="options" label-key="event" value-key="order" />
+  <var-checkbox-group v-model="value" :options="options" label-key="name" value-key="id" />
   <div>当前的值: {{ value }}</div>
 </template>
 ```

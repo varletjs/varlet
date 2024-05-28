@@ -46,9 +46,9 @@ const options = computed(() => [
 ])
 
 const fieldOptions = computed(() => [
-  { event: t('eat'), order: 0 },
-  { event: t('sleep'), order: 1 },
-  { event: t('game'), order: 2 },
+  { name: t('eat'), id: 0 },
+  { name: t('sleep'), id: 1 },
+  { name: t('game'), id: 2 },
 ])
 
 watchLang(use)
@@ -106,7 +106,7 @@ onThemeChange()
   <div class="relation">{{ t('currentValue') }} {{ optionsValue }}</div>
 
   <app-type>{{ t('customFields') }}</app-type>
-  <var-checkbox-group v-model="fieldValue" :options="fieldOptions" label-key="event" value-key="order" />
+  <var-checkbox-group v-model="fieldValue" :options="fieldOptions" label-key="name" value-key="id" />
   <div class="relation">{{ t('currentValue') }} {{ fieldValue }}</div>
 
   <app-type>{{ t('vertical') }}</app-type>

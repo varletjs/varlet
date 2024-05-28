@@ -4,10 +4,10 @@
       <template v-if="checkboxGroupOptions.length">
         <checkbox-group-option
           v-for="option in checkboxGroupOptions"
-          :key="option[valueField]"
-          :checked="modelValue.includes(option[valueField])"
-          :label-key="labelField"
-          :value-key="valueField"
+          :key="option[valueKey]"
+          :checked="modelValue.includes(option[valueKey])"
+          :label-key="labelKey"
+          :value-key="valueKey"
           :option="option"
         />
       </template>
@@ -37,8 +37,6 @@ export default defineComponent({
     const max = computed(() => props.max)
     const checkedCount = computed(() => props.modelValue.length)
     const checkboxGroupOptions = computed(() => (isArray(props.options) ? props.options : []))
-    const valueField = computed(() => props.valueKey ?? 'value')
-    const labelField = computed(() => props.labelKey ?? 'label')
     const { length, checkboxes, bindCheckboxes } = useCheckboxes()
     const { bindForm } = useForm()
     const {
@@ -147,8 +145,6 @@ export default defineComponent({
     return {
       errorMessage,
       checkboxGroupOptions,
-      labelField,
-      valueField,
       n,
       classes,
       checkAll,

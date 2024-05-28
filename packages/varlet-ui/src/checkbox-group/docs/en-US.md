@@ -181,14 +181,14 @@ import { ref } from 'vue'
 
 const value = ref([])
 const options = ref([
-  { event: 'Eat', order: 0 },
-  { event: 'Sleep', order: 1 },
-  { event: 'Game', order: 2 },
+  { name: 'Eat', id: 0 },
+  { name: 'Sleep', id: 1 },
+  { name: 'Game', id: 2 },
 ])
 </script>
 
 <template>
-  <var-checkbox-group v-model="value" :options="options" label-key="event" value-key="order" />
+  <var-checkbox-group v-model="value" :options="options" label-key="name" value-key="id" />
   <div>Current value: {{ value }}</div>
 </template>
 ```

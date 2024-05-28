@@ -19,8 +19,14 @@ export const props = {
   },
   max: [String, Number],
   options: Array as PropType<Array<CheckboxGroupOption>>,
-  labelKey: String,
-  valueKey: String,
+  labelKey: {
+    type: String,
+    default: 'label',
+  },
+  valueKey: {
+    type: String,
+    default: 'value',
+  },
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',
