@@ -484,12 +484,13 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../styles/elevation';
+@import '../hover-overlay/hoverOverlay';
+@import '../ripple/ripple';
 @import '../form-details/formDetails';
 @import '../icon/icon';
 @import '../popup/popup';
 @import '../swipe/swipe';
 @import '../swipe-item/swipeItem';
 @import '../image-preview/imagePreview';
-@import '../hover-overlay/hoverOverlay';
 @import './uploader';
 </style>
