@@ -16,9 +16,11 @@
       @touchend="handleTouchend"
       @touchcancel="handleTouchend"
     >
-      <div :class="n('header')">
-        <div :class="n('header-toolbar')"></div>
-      </div>
+      <slot name="header">
+        <div :class="n('header')">
+          <div :class="n('header-toolbar')"></div>
+        </div>
+      </slot>
       <div :class="n('content')" ref="contentRef">
         <slot></slot>
       </div>

@@ -147,13 +147,27 @@ describe('test floating-panel components props', () => {
 })
 
 describe('test floating-panel component slots', () => {
-  test('test floating-panel component default', async () => {
+  test('test floating-panel component default slot', async () => {
     const root = document.createElement('div')
     const wrapper = mount(VarFloatingPanel, {
       props: {
         teleport: root,
       },
       slots: { default: () => 'Hello Varlet!' },
+    })
+
+    expect(root.innerHTML).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+
+  test('test floating-panel component header slot', async () => {
+    const root = document.createElement('div')
+    const wrapper = mount(VarFloatingPanel, {
+      props: {
+        teleport: root,
+      },
+      slots: { header: () => 'Hello Varlet!' },
     })
 
     expect(root.innerHTML).toMatchSnapshot()

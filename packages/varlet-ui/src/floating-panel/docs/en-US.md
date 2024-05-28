@@ -70,6 +70,7 @@ By default, both the head area and the content area of a FloatingPanel can be dr
 | Name | Description | SlotProps |
 | --- | --- | --- |
 | `default` | Custom panel content | `-` |
+| `header`  | Custom panel header  | `-` |
 
 ### Style Variables
 
