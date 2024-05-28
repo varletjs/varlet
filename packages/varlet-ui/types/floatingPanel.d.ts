@@ -22,6 +22,8 @@ export class FloatingPanel extends VarComponent {
 
   $slots: {
     default(): VNode[]
+
+    header(): VNode[]
   }
 }
 
