@@ -9,6 +9,7 @@ export interface CheckboxGroupOption {
   label: string | VNode | CheckboxGroupOptionLabelRender
   value: any
   disabled?: boolean
+  [key: string]: any
 }
 
 export const props = {
@@ -18,6 +19,8 @@ export const props = {
   },
   max: [String, Number],
   options: Array as PropType<Array<CheckboxGroupOption>>,
+  labelKey: String,
+  valueKey: String,
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

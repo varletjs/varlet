@@ -17,6 +17,7 @@ export interface CheckboxGroupOption {
   label: string | VNode | CheckboxGroupOptionLabelRender
   value: any
   disabled?: boolean
+  [key: string]: any
 }
 
 export { CheckboxGroupDirection }
@@ -24,6 +25,8 @@ export { CheckboxGroupDirection }
 export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number
+  labelKey?: string
+  valueKey?: string
   options?: Array<CheckboxGroupOption>
   direction?: CheckboxGroupDirection
   validateTrigger?: Array<CheckboxGroupValidateTrigger>
