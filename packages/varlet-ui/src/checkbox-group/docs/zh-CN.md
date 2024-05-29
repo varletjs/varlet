@@ -359,7 +359,7 @@ const value = ref([])
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
 | `indeterminate-icon` | 不确定状态图标 | `-` |
-| `default` | 显示的文本 | `-` |
+| `default` | 显示的文本 | `checked: boolean` 是否选中 |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

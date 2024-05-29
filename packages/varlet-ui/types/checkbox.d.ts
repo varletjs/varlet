@@ -30,7 +30,7 @@ export class Checkbox extends VarComponent {
   $props: CheckboxProps
 
   $slots: {
-    default(): VNode[]
+    default(checked: boolean): VNode[]
     'checked-icon'(): VNode[]
     'unchecked-icon'(): VNode[]
     'indeterminate-icon'(): VNode[]

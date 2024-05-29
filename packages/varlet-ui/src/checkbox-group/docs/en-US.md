@@ -360,7 +360,7 @@ const value = ref([])
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |
 | `indeterminate-icon` | Indeterminate icon | `-` |
-| `default` | Displayed text | `-` |
+| `default` | Displayed text | `checked: boolean` is checked |
 
 ### Style Variables
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
