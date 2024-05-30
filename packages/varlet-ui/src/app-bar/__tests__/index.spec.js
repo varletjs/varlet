@@ -84,12 +84,12 @@ describe('test app bar component props', () => {
       },
     })
 
-    expect(wrapper.classes().includes('var-elevation--3')).toBe(true)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
 
     await wrapper.setProps({
       elevation: false,
     })
-    expect(wrapper.classes().includes('var-elevation--3')).toBe(false)
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(false)
 
     wrapper.unmount()
   })
