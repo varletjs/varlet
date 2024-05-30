@@ -27,7 +27,7 @@ export default defineComponent({
       const { option, labelKey, valueKey } = props
 
       return (
-        <Checkbox checkedValue={option[valueKey]} disabled={props.option.disabled}>
+        <Checkbox checkedValue={option[valueKey]} disabled={option.disabled}>
           {{
             default: ({ checked }: { checked: boolean }) =>
               isFunction(option[labelKey]) ? option[labelKey](option, checked) : option[labelKey],
