@@ -68,18 +68,29 @@ function handleClose() {
   &__logo {
     height: 36px;
     border-radius: 8px;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__description {
     display: flex;
     align-items: center;
-    height: 34px;
+    height: 32px;
     border-radius: 100px;
     padding: 0 18px;
     margin-left: 12px;
     font-size: 15px;
     background: #d0bcff;
     color: #381e72;
+    transition: all 0.2s;
+    transform-origin: left;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__close-button {
