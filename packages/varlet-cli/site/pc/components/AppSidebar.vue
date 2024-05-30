@@ -66,8 +66,6 @@ const changeRoute = (item: Menu) => {
   width: 246px;
   height: 100vh;
   top: 60px;
-  bottom: 0;
-  left: 0;
   z-index: 6;
   overflow-y: scroll;
   box-shadow: 0 8px 12px var(--site-config-color-shadow);
