@@ -14,9 +14,11 @@ export type CheckboxGroupValidateTrigger = 'onChange'
 export type CheckboxGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
 
 export interface CheckboxGroupOption {
-  label: string | VNode | CheckboxGroupOptionLabelRender
-  value: any
+  label?: string | VNode | CheckboxGroupOptionLabelRender
+  value?: any
   disabled?: boolean
+
+  [key: PropertyKey]: any
 }
 
 export { CheckboxGroupDirection }
@@ -24,6 +26,8 @@ export { CheckboxGroupDirection }
 export interface CheckboxGroupProps extends BasicAttributes {
   modelValue?: any[]
   max?: string | number
+  labelKey?: string
+  valueKey?: string
   options?: Array<CheckboxGroupOption>
   direction?: CheckboxGroupDirection
   validateTrigger?: Array<CheckboxGroupValidateTrigger>

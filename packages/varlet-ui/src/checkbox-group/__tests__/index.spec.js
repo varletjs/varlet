@@ -3,7 +3,7 @@ import Checkbox from '../../checkbox'
 import VarCheckboxGroup from '../CheckboxGroup'
 import VarCheckbox from '../../checkbox/Checkbox'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay, triggerKeyboard, trigger } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
 
@@ -364,6 +364,168 @@ test('test checkbox group options', async () => {
 
   await trigger(children[2], 'click')
   expect(wrapper.vm.value).toStrictEqual([1])
+
+  wrapper.unmount()
+})
+
+test('test checkbox group label-key', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      options: [
+        { name: 'eat', value: 0, disabled: true },
+        { name: 'sleep', value: 1 },
+        { name: 'game', value: 2 },
+      ],
+      labelKey: 'name',
+    }),
+    template: `
+      <var-checkbox-group v-model="value" :options="options" :label-key="labelKey">
+      </var-checkbox-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  wrapper.unmount()
+})
+
+test('test checkbox group value-key', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      options: [
+        { label: 'eat', id: 0, disabled: true },
+        { label: 'sleep', id: 1 },
+        { label: 'game', id: 2 },
+      ],
+      valueKey: 'id',
+    }),
+    template: `
+      <var-checkbox-group v-model="value" :options="options" :value-key="valueKey">
+      </var-checkbox-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  wrapper.unmount()
+})
+
+test('test checkbox group label is VNode', async () => {
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      options: [
+        { name: h('h1', 'eat'), id: 0, disabled: true },
+        { name: h('h2', 'sleep'), id: 1 },
+        { name: h('h3', 'game'), id: 2 },
+      ],
+      valueKey: 'id',
+      labelKey: 'name',
+    }),
+    template: `
+      <var-checkbox-group v-model="value" :options="options" :label-key="labelKey" :value-key="valueKey">
+      </var-checkbox-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+
+  wrapper.unmount()
+})
+
+test('test checkbox group label is function', async () => {
+  const formatLabel = (option, checked) => `${option.id}-${checked}`
+  const wrapper = mount({
+    components: {
+      [VarCheckboxGroup.name]: VarCheckboxGroup,
+      [VarCheckbox.name]: VarCheckbox,
+    },
+    data: () => ({
+      value: [],
+      options: [
+        { name: formatLabel, id: 0, disabled: true },
+        { name: formatLabel, id: 1 },
+        { name: formatLabel, id: 2 },
+      ],
+      valueKey: 'id',
+      labelKey: 'name',
+    }),
+    template: `
+      <var-checkbox-group v-model="value" :options="options" :label-key="labelKey" :value-key="valueKey">
+      </var-checkbox-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual([])
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1, 2])
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual([1])
+  expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.unmount()
 })

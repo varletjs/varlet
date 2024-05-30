@@ -4,8 +4,9 @@
       <template v-if="checkboxGroupOptions.length">
         <checkbox-group-option
           v-for="option in checkboxGroupOptions"
-          :key="option.value"
-          :checked="modelValue.includes(option.value)"
+          :key="option[valueKey]"
+          :label-key="labelKey"
+          :value-key="valueKey"
           :option="option"
         />
       </template>

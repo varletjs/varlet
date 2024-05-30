@@ -171,6 +171,28 @@ const options = ref([
 </template>
 ```
 
+### Custom Fields
+
+Customize the format of the data in `options` through the `label-key` and `value-key` attributes.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { name: 'Eat', id: 0 },
+  { name: 'Sleep', id: 1 },
+  { name: 'Game', id: 2 },
+])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :options="options" label-key="name" value-key="id" />
+  <div>Current value: {{ value }}</div>
+</template>
+```
+
 ### Vertical Direction
 
 ```html
@@ -259,6 +281,8 @@ const value = ref([])
 | `max` | Maximum number of checked | _string \| number_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
 | `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `-` |
+| `label-key` ***3.2.12*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.2.12*** | As the key that uniquely identifies value | _string_ | `value` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
 
 #### CheckboxGroupOption 
@@ -336,7 +360,7 @@ const value = ref([])
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |
 | `indeterminate-icon` | Indeterminate icon | `-` |
-| `default` | Displayed text | `-` |
+| `default` | Displayed text | `checked: boolean` is checked |
 
 ### Style Variables
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).

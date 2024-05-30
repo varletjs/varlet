@@ -59,7 +59,7 @@
         v-if="$slots.default"
         @click="handleTextClick"
       >
-        <slot />
+        <slot :checked="checked" />
       </div>
     </div>
 

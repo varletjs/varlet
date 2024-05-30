@@ -18,6 +18,7 @@ const values = reactive({
   group: null,
   indeterminate: true,
   optionsValue: [],
+  fieldValue: [],
 })
 
 const {
@@ -35,12 +36,19 @@ const {
   value11,
   indeterminate,
   optionsValue,
+  fieldValue,
 } = toRefs(values)
 
 const options = computed(() => [
   { label: t('eat'), value: 0 },
   { label: t('sleep'), value: 1 },
   { label: t('game'), value: 2, disabled: true },
+])
+
+const fieldOptions = computed(() => [
+  { name: t('eat'), id: 0 },
+  { name: t('sleep'), id: 1 },
+  { name: t('game'), id: 2 },
 ])
 
 watchLang(use)
@@ -96,6 +104,10 @@ onThemeChange()
   <app-type>{{ t('checkboxGroupOptions') }}</app-type>
   <var-checkbox-group v-model="optionsValue" :options="options" />
   <div class="relation">{{ t('currentValue') }} {{ optionsValue }}</div>
+
+  <app-type>{{ t('customFields') }}</app-type>
+  <var-checkbox-group v-model="fieldValue" :options="fieldOptions" label-key="name" value-key="id" />
+  <div class="relation">{{ t('currentValue') }} {{ fieldValue }}</div>
 
   <app-type>{{ t('vertical') }}</app-type>
   <var-checkbox-group v-model="value9" direction="vertical">

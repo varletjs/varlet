@@ -6,9 +6,11 @@ export type CheckboxGroupValidateTrigger = 'onChange'
 export type CheckboxGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
 
 export interface CheckboxGroupOption {
-  label: string | VNode | CheckboxGroupOptionLabelRender
-  value: any
+  label?: string | VNode | CheckboxGroupOptionLabelRender
+  value?: any
   disabled?: boolean
+
+  [key: PropertyKey]: any
 }
 
 export const props = {
@@ -18,6 +20,14 @@ export const props = {
   },
   max: [String, Number],
   options: Array as PropType<Array<CheckboxGroupOption>>,
+  labelKey: {
+    type: String,
+    default: 'label',
+  },
+  valueKey: {
+    type: String,
+    default: 'value',
+  },
   direction: {
     type: String as PropType<'horizontal' | 'vertical'>,
     default: 'horizontal',

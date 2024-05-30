@@ -24,13 +24,17 @@ export interface CheckboxProps extends BasicAttributes {
   'onUpdate:indeterminate'?: ListenerProp<(value: boolean) => void>
 }
 
+export interface CheckboxData {
+  checked: boolean
+}
+
 export class Checkbox extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<CheckboxProps>
 
   $props: CheckboxProps
 
   $slots: {
-    default(): VNode[]
+    default(data: CheckboxData): VNode[]
     'checked-icon'(): VNode[]
     'unchecked-icon'(): VNode[]
     'indeterminate-icon'(): VNode[]

@@ -170,6 +170,28 @@ const options = ref([
 </template>
 ```
 
+### 自定义字段
+
+通过 `label-key` 和 `value-key` 属性自定义 `options` 中数据的格式。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { name: '吃饭', id: 0 },
+  { name: '睡觉', id: 1 },
+  { name: '游戏', id: 2 },
+])
+</script>
+
+<template>
+  <var-checkbox-group v-model="value" :options="options" label-key="name" value-key="id" />
+  <div>当前的值: {{ value }}</div>
+</template>
+```
+
 ### 垂直布局
 
 ```html
@@ -258,6 +280,8 @@ const value = ref([])
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
 | `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
+| `label-key` ***3.2.12*** | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` ***3.2.12*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
 #### CheckboxGroupOption 
@@ -335,7 +359,7 @@ const value = ref([])
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
 | `indeterminate-icon` | 不确定状态图标 | `-` |
-| `default` | 显示的文本 | `-` |
+| `default` | 显示的文本 | `checked: boolean` 是否选中 |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
