@@ -89,8 +89,9 @@ function handleClose() {
       width: 100%;
       height: 100%;
       z-index: 1;
+      pointer-events: none;
       animation: varlet-site-ad-animation 8s infinite;
-      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.3), hsla(0, 0%, 100%, 0));
+      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0.2), hsla(0, 0%, 100%, 0));
       transition: 0.25s background-color;
     }
   }
