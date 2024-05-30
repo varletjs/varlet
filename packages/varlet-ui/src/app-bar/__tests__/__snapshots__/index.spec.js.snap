@@ -11,7 +11,8 @@ exports[`test app bar component props > test app bar image and image-linear-grad
       <!--v-if-->
     </div>
   </div>
-</div>"
+</div>
+<!--v-if-->"
 `;
 
 exports[`test app bar slots > test app bar content slot 1`] = `
@@ -25,5 +26,6 @@ exports[`test app bar slots > test app bar content slot 1`] = `
       <!--v-if-->
     </div>
   </div>This is content slot
-</div>"
+</div>
+<!--v-if-->"
 `;

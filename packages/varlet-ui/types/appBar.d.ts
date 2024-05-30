@@ -16,6 +16,7 @@ export interface AppBarProps extends BasicAttributes {
   imageLinearGradient?: string
   safeAreaTop?: boolean
   fixed?: boolean
+  placeholder?: boolean
   zIndex?: number | string
 }
 

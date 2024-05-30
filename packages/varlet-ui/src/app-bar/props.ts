@@ -23,4 +23,5 @@ export const props = {
     default: 1,
   },
   fixed: Boolean,
+  placeholder: Boolean,
 }

@@ -119,6 +119,23 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
+  test('test app-bar placeholder', async () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        placeholder: true,
+        fixed: true,
+      },
+    })
+
+    expect(wrapper.find('.var-app-bar__placeholder').exists()).toBe(true)
+    await wrapper.setProps({ placeholder: false, fixed: false })
+    expect(wrapper.find('.var-app-bar__placeholder').exists()).toBe(false)
+    await wrapper.setProps({ placeholder: true, fixed: false })
+    expect(wrapper.find('.var-app-bar__placeholder').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('test app bar z-index', async () => {
     const wrapper = mount(VarAppBar)
 
