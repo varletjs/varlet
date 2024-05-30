@@ -1,3 +1,23 @@
+## [3.2.12](https://github.com/varletjs/varlet/compare/v3.2.11...v3.2.12) (2024-05-30)
+
+
+### Bug Fixes
+
+* **cell:** add missing ripple less file import ([#1642](https://github.com/varletjs/varlet/issues/1642)) ([61ed078](https://github.com/varletjs/varlet/commit/61ed078cf2c0d9edc7456503af7e1311caa21bbe))
+* **checkbox-group:** set option label and value to be required ([#1635](https://github.com/varletjs/varlet/issues/1635)) ([0dbc67c](https://github.com/varletjs/varlet/commit/0dbc67cb815415d3b06e6e9bc6f913fad358da1a))
+* **paper:** add missing ripple less file import ([#1637](https://github.com/varletjs/varlet/issues/1637)) ([098adfb](https://github.com/varletjs/varlet/commit/098adfb3f6b8b699987724c3b765bdc2e0b9957e))
+* **uploader:** add missing ripple less file import ([#1638](https://github.com/varletjs/varlet/issues/1638)) ([6ac83ca](https://github.com/varletjs/varlet/commit/6ac83cae3a74a30a0893bfca5f4435fc8d7c40a8))
+
+
+### Features
+
+* **checkbox-group:** support label-key and value-key prop and export checked for default slot ([#1640](https://github.com/varletjs/varlet/issues/1640)) ([a18f947](https://github.com/varletjs/varlet/commit/a18f947a75a0b0a14151afa1a150b36e47c4e2cf))
+* **cli:** support ad ([9726408](https://github.com/varletjs/varlet/commit/9726408c4a0be21016c941fc82645929fb5cc8c6))
+* **cli:** support server.proxy ([#1636](https://github.com/varletjs/varlet/issues/1636)) ([c75300f](https://github.com/varletjs/varlet/commit/c75300f9a1320d58ddcb1ac57ee549397efa6199))
+* **floating-panel:** support header slot ([#1639](https://github.com/varletjs/varlet/issues/1639)) ([1a6fbb0](https://github.com/varletjs/varlet/commit/1a6fbb0a917facf3d1741311d36bef1b45c0d6b6))
+
+
+
 ## [3.2.11](https://github.com/varletjs/varlet/compare/v3.2.10...v3.2.11) (2024-05-24)
 
 
