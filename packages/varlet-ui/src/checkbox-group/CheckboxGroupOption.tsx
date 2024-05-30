@@ -1,12 +1,13 @@
 import { defineComponent, type PropType } from 'vue'
-import Checkbox from '../checkbox'
 import { isFunction } from '@varlet/shared'
 import { CheckboxGroupOption } from './props'
+import { createNamespace } from '../utils/components'
+import Checkbox from '../checkbox'
 
-import '../checkbox/checkbox.less'
+const { name } = createNamespace('checkbox-group-option')
 
 export default defineComponent({
-  name: 'CheckboxGroupOption',
+  name,
   props: {
     labelKey: {
       type: String,
@@ -16,21 +17,20 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    option: Object as PropType<CheckboxGroupOption>,
+    option: {
+      type: Object as PropType<CheckboxGroupOption>,
+      required: true,
+    },
   },
   setup(props) {
     return () => {
-      if (props.option == null) {
-        return
-      }
+      const { option, labelKey, valueKey } = props
 
       return (
-        <Checkbox checkedValue={props.option[props.valueKey]} disabled={props.option.disabled}>
+        <Checkbox checkedValue={option[valueKey]} disabled={props.option.disabled}>
           {{
             default: ({ checked }: { checked: boolean }) =>
-              isFunction(props.option![props.labelKey])
-                ? props.option![props.labelKey](props.option, checked)
-                : props.option![props.labelKey],
+              isFunction(option[labelKey]) ? option[labelKey](option, checked) : option[labelKey],
           }}
         </Checkbox>
       )
