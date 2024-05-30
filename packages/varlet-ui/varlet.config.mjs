@@ -15,7 +15,7 @@ export default defineConfig({
       },
       description: {
         'zh-CN': 'AI 写代码？作画、写歌？一个应用全部搞定！',
-        'en-US': 'Coding? Drawing ? Creation ? All in one AI App!',
+        'en-US': 'Coding? Drawing? Creation? All in one AI App!',
       },
       background: 'linear-gradient(45deg, #9ab9e8, rgb(198, 46, 138))'
     },
