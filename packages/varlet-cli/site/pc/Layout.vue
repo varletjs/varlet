@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import config from '@config'
+import AppAd from './components/AppAd.vue'
 import AppMobile from './components/AppMobile.vue'
 import AppHeader from './components/AppHeader.vue'
 import AppSidebar from './components/AppSidebar.vue'
@@ -23,7 +24,7 @@ const doc: Ref<HTMLElement | null> = ref(null)
 const route = useRoute()
 
 const getComponentNameByMenuName = (menuName: string) => {
-  const currentMenu = menu.value.find(menu => menu.doc === menuName)
+  const currentMenu = menu.value.find((menu) => menu.doc === menuName)
   return currentMenu?.type === MenuTypes.COMPONENT ? menuName : mobileRedirect.slice(1)
 }
 
@@ -31,9 +32,7 @@ const init = () => {
   const { menuName } = getPCLocationInfo()
 
   nextTick(() => {
-    const children = document
-      .querySelector('.varlet-site-sidebar')!
-      .getElementsByClassName('var-cell')
+    const children = document.querySelector('.varlet-site-sidebar')!.getElementsByClassName('var-cell')
     const index = menu.value.findIndex((item) => item.doc === menuName)
 
     if (index !== -1) {
@@ -90,7 +89,7 @@ watch(
     menuName.value = _menuName
     hash.value = _hash
     language.value = lang
-    useMobile.value = menu.value.find(item => item.doc === _menuName)?.useMobile ?? get(config, 'useMobile')
+    useMobile.value = menu.value.find((item) => item.doc === _menuName)?.useMobile ?? get(config, 'useMobile')
     document.title = get(config, 'pc.title')[lang] as string
   },
   { immediate: true }
@@ -99,22 +98,15 @@ watch(
 
 <template>
   <div class="varlet-site">
-    <app-header :language="language"/>
+    <app-ad :language="language" />
+
+    <app-header :language="language" />
 
     <div class="varlet-site-content">
-      <app-sidebar
-        :language="language"
-        :menu="menu"
-        :menu-name="menuName"
-        @change="handleSidebarChange"
-      />
+      <app-sidebar :language="language" :menu="menu" :menu-name="menuName" @change="handleSidebarChange" />
 
-      <div
-        class="varlet-site-doc-container"
-        ref="doc"
-        :class="[!useMobile && 'varlet-site-doc-container--pc-only']"
-      >
-        <router-view/>
+      <div class="varlet-site-doc-container" ref="doc" :class="[!useMobile && 'varlet-site-doc-container--pc-only']">
+        <router-view />
       </div>
 
       <app-mobile
@@ -127,13 +119,15 @@ watch(
     </div>
   </div>
 
-  <var-popup
-    position="right"
-    :show="context.showPlayground"
-    @click-overlay="confirmClose"
-  >
+  <var-popup position="right" :show="context.showPlayground" @click-overlay="confirmClose">
     <div class="varlet-site-playground-container">
-      <iframe v-if="context.showPlayground" id="playground" class="varlet-site-playground-iframe" :src="context.playgroundURL" allow="clipboard-write">
+      <iframe
+        v-if="context.showPlayground"
+        id="playground"
+        class="varlet-site-playground-iframe"
+        :src="context.playgroundURL"
+        allow="clipboard-write"
+      >
       </iframe>
     </div>
   </var-popup>
@@ -143,51 +137,69 @@ watch(
 .hljs {
   background: var(--site-config-color-hl-background) !important;
   padding: 0 !important;
-  transition: all .25s
+  transition: all 0.25s;
 }
 
 .hljs code {
   line-height: 31px;
 }
 
-.hljs-comment, .hljs-meta, .hljs-quote {
-  color: var(--site-config-color-hl-group-a)
+.hljs-comment,
+.hljs-meta,
+.hljs-quote {
+  color: var(--site-config-color-hl-group-a);
 }
 
-.hljs-keyword, .hljs-name, .hljs-selector-tag, .hljs-tag {
-  color: var(--site-config-color-hl-group-b)
+.hljs-keyword,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-tag {
+  color: var(--site-config-color-hl-group-b);
 }
 
-.hljs-attribute, .hljs-selector-id {
-  color: var(--site-config-color-hl-group-c)
+.hljs-attribute,
+.hljs-selector-id {
+  color: var(--site-config-color-hl-group-c);
 }
 
-.hljs-addition, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-string {
-  color: var(--site-config-color-hl-group-d)
+.hljs-addition,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-string {
+  color: var(--site-config-color-hl-group-d);
 }
 
 .hljs-subst {
-  color: var(--site-config-color-hl-group-e)
+  color: var(--site-config-color-hl-group-e);
 }
 
-.hljs-link, .hljs-regexp {
-  color: var(--site-config-color-hl-group-f)
+.hljs-link,
+.hljs-regexp {
+  color: var(--site-config-color-hl-group-f);
 }
 
-.hljs-doctag, .hljs-section, .hljs-title, .hljs-type {
-  color: var(--site-config-color-hl-group-g)
+.hljs-doctag,
+.hljs-section,
+.hljs-title,
+.hljs-type {
+  color: var(--site-config-color-hl-group-g);
 }
 
-.hljs-bullet, .hljs-literal, .hljs-symbol, .hljs-template-variable, .hljs-variable {
-  color: var(--site-config-color-hl-group-h)
+.hljs-bullet,
+.hljs-literal,
+.hljs-symbol,
+.hljs-template-variable,
+.hljs-variable {
+  color: var(--site-config-color-hl-group-h);
 }
 
-.hljs-deletion, .hljs-number {
-  color: var(--site-config-color-hl-group-i)
+.hljs-deletion,
+.hljs-number {
+  color: var(--site-config-color-hl-group-i);
 }
 
 .var-popup__content {
-  background-color: rgba(0, 0, 0, 0)
+  background-color: rgba(0, 0, 0, 0);
 }
 </style>
 
@@ -197,7 +209,7 @@ watch(
   font-family: inherit;
   padding: 0;
   white-space: pre-wrap;
-}
+};
 
 iframe {
   display: block;
@@ -246,12 +258,10 @@ iframe {
 
   &-site {
     min-width: 1200px;
-    padding: 60px 0 0;
 
     &-content {
       display: flex;
       background: var(--site-config-color-body);
-      margin-left: 246px;
       min-height: calc(100vh - 60px);
     }
 
@@ -282,7 +292,6 @@ iframe {
           text-decoration: none;
         }
       }
-
 
       a {
         color: var(--site-config-color-link);
@@ -346,7 +355,8 @@ iframe {
         }
       }
 
-      ul,ol {
+      ul,
+      ol {
         padding: 0 0 0 18px;
       }
 
@@ -439,7 +449,7 @@ iframe {
         background: var(--site-config-color-bar);
         padding: 20px;
         margin-bottom: 30px;
-        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),  0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 
         &:first-child {
           margin-top: 30px;

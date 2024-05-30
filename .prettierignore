@@ -1,5 +1,4 @@
 packages/varlet-cli/lib/**
-packages/varlet-cli/site/**
 packages/varlet-cli/template/**
 
 packages/varlet-vite-plugins/lib/**

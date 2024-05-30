@@ -51,6 +51,16 @@ export interface VarletConfigPcHeader {
   }[]
 }
 
+export interface VarletConfigPcAd {
+  id?: string
+  logo?: string
+  logoHeight?: string
+  description?: Record<string, string>
+  link?: Record<string, string>
+  background?: string
+  textColor?: string
+}
+
 export interface VarletConfigMobileHeader {
   i18n?: Record<string, string>
   github?: string
@@ -94,6 +104,7 @@ export interface VarletConfigPc {
   redirect?: string
   clipboard?: Record<string, string>
   indexPage?: VarletConfigPcIndexPage
+  ad?: VarletConfigPcAd
   header?: VarletConfigPcHeader
   menu?: VarletConfigPcMenu[]
   htmlInject?: VarletConfigHtmlInject

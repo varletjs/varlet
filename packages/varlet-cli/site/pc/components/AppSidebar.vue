@@ -62,8 +62,9 @@ const changeRoute = (item: Menu) => {
 
 .varlet-site-sidebar {
   padding: 0 0 15px;
-  position: fixed;
+  position: sticky;
   width: 246px;
+  height: 100vh;
   top: 60px;
   bottom: 0;
   left: 0;
