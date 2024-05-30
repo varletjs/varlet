@@ -14,10 +14,11 @@ export type CheckboxGroupValidateTrigger = 'onChange'
 export type CheckboxGroupOptionLabelRender = (option: CheckboxGroupOption, checked: boolean) => VNodeChild
 
 export interface CheckboxGroupOption {
-  label: string | VNode | CheckboxGroupOptionLabelRender
-  value: any
+  label?: string | VNode | CheckboxGroupOptionLabelRender
+  value?: any
   disabled?: boolean
-  [key: string]: any
+
+  [key: PropertyKey]: any
 }
 
 export { CheckboxGroupDirection }
