@@ -29,7 +29,14 @@ function handleClose() {
     :style="{ background: ad?.background, color: ad?.textColor }"
   >
     <img class="varlet-site-ad__logo" :style="{ height: ad?.logoHeight }" :src="ad.logo" v-if="ad.logo" />
-    <div class="varlet-site-ad__description" v-if="ad.description">{{ ad.description[language] }}</div>
+    <div
+      class="varlet-site-ad__description"
+      :style="{ background: ad?.descriptionBackground, color: ad?.descriptionTextColor }"
+      v-if="ad.description"
+    >
+      <span>{{ ad.description[language] }}</span>
+      <var-icon style="margin-left: 4px" name="chevron-right" :size="24" />
+    </div>
     <var-button class="varlet-site-ad__close-button" text round @click.prevent="handleClose">
       <var-icon name="window-close" :size="20" />
     </var-button>
@@ -43,7 +50,7 @@ function handleClose() {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 52px;
   color: #fff;
   text-decoration: unset;
   overflow: hidden;
@@ -64,10 +71,15 @@ function handleClose() {
   }
 
   &__description {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    border-radius: 100px;
+    padding: 0 18px;
     margin-left: 12px;
     font-size: 15px;
-    font-weight: bold;
-    padding-bottom: 2px;
+    background: #d0bcff;
+    color: #381e72;
   }
 
   &__close-button {

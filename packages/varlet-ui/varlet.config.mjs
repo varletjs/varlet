@@ -17,7 +17,7 @@ export default defineConfig({
         'zh-CN': 'AI 写代码？作画、写歌？一个应用全部搞定！',
         'en-US': 'AI writes code? Draws pictures? Writes songs? One app does it all!',
       },
-      background: 'linear-gradient(45deg, #751854, #c62e8a)'
+      background: 'linear-gradient(45deg, #9ab9e8, rgb(198, 46, 138))'
     },
     header: {
       playground:

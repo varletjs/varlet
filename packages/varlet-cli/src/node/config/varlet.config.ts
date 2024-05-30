@@ -56,6 +56,8 @@ export interface VarletConfigPcAd {
   logo?: string
   logoHeight?: string
   description?: Record<string, string>
+  descriptionBackground?: string
+  descriptionTextColor?: string
   link?: Record<string, string>
   background?: string
   textColor?: string
