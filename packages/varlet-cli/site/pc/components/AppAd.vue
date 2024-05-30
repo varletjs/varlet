@@ -46,6 +46,7 @@ function handleClose() {
   height: 56px;
   color: #fff;
   text-decoration: unset;
+  overflow: hidden;
 
   @keyframes varlet-site-ad-animation {
     from {
