@@ -35,6 +35,16 @@
 
       <a
         class="varlet-site-header__link"
+        style="width: auto; border-radius: 3px; padding: 0 12px; height: 40px"
+        target="_blank"
+        :href="ai"
+        v-ripple
+        v-if="ai"
+      >
+        <span>AI Agent</span>
+      </a>
+      <a
+        class="varlet-site-header__link"
         style="margin-right: 8px"
         target="_blank"
         :href="changelog"
@@ -133,6 +143,7 @@ export default defineComponent({
     const github: Ref<string> = ref(get(config, 'pc.header.github'))
     const themes: Ref<Record<string, any>> = ref(get(config, 'pc.header.themes'))
     const changelog: Ref<string> = ref(get(config, 'pc.header.changelog'))
+    const ai: Ref<string> = ref(get(config, 'pc.header.ai'))
     const redirect = get(config, 'pc.redirect')
     const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
     const currentTheme = ref(getBrowserTheme())
@@ -210,6 +221,7 @@ export default defineComponent({
       nonEmptyLanguages,
       playground,
       changelog,
+      ai,
       github,
       isOpenLanguageMenu,
       isOpenVersionsMenu,

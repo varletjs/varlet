@@ -17,9 +17,10 @@ export default defineConfig({
         'zh-CN': 'AI 写代码？作画、写歌？一个应用全部搞定！',
         'en-US': 'Coding? Drawing? Creation? All in one AI App!',
       },
-      background: 'linear-gradient(45deg, #9ab9e8, rgb(198, 46, 138))'
+      background: 'linear-gradient(45deg, #9ab9e8, rgb(198, 46, 138))',
     },
     header: {
+      ai: 'https://gpt.qilepan.com/chat/share?shareId=y3ytky9ifjgl6fxtva1ai16h',
       playground:
         process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://varlet.pages.dev/playground',
     },

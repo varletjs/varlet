@@ -44,6 +44,7 @@ export interface VarletConfigPcHeader {
   github?: string
   changelog?: string
   playground?: string
+  ai?: string
   themes?: Record<string, string>[]
   versions?: {
     name: string
