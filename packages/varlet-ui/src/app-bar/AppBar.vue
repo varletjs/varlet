@@ -44,7 +44,7 @@
 import { defineComponent, ref, onUpdated, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { getRect } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('app-bar')
@@ -77,6 +77,8 @@ export default defineComponent({
         'z-index': zIndex,
       }
     })
+
+    onWindowResize(resizePlaceholder)
 
     onSmartMounted(() => {
       computePadding()
