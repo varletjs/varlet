@@ -114,6 +114,28 @@ const value = ref(0)
 </template>
 ```
 
+### RadioGroup Options
+
+Setting child elements via the `options` prop.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { label: 'Eat', value: 0 },
+  { label: 'Sleep', value: 1 },
+  { label: 'Game', value: 2, disabled: true },
+])
+</script>
+
+<template>
+  <var-radio-group v-model="value" :options="options" />
+  <div>Current value: {{ value }}</div>
+</template>
+```
+
 ### Vertical Direction
 
 ```html
@@ -181,7 +203,18 @@ const value = ref(false)
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
+| `options` ***3.2.14*** | Specifies options | _RadioGroupOption[]_ | `-` |
+| `label-key` ***3.2.14*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.2.14*** | As the key that uniquely identifies value | _string_ | `value` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+
+#### RadioGroupOption 
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of radio    | _string \| VNode \| (option: RadioGroupOption, checked: boolean) => VNodeChild_      | `-`   |
+| `value`  |    The value of radio    | _any_      | `-`   |
+| `disabled`    |    Whether to disable radio   | _boolean_      | `-`   |
 
 #### Radio Props
 

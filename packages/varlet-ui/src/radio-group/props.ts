@@ -1,7 +1,17 @@
-import { type PropType } from 'vue'
+import { VNode, VNodeChild, type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
 export type ValidateTriggers = 'onChange'
+
+export type RadioGroupOptionLabelRender = (option: RadioGroupOption, checked: boolean) => VNodeChild
+
+export interface RadioGroupOption {
+  label?: string | VNode | RadioGroupOptionLabelRender
+  value?: any
+  disabled?: boolean
+
+  [key: PropertyKey]: any
+}
 
 export type RadioGroupDirection = 'horizontal' | 'vertical'
 
@@ -13,6 +23,15 @@ export const props = {
   direction: {
     type: String as PropType<RadioGroupDirection>,
     default: 'horizontal',
+  },
+  options: Array as PropType<Array<RadioGroupOption>>,
+  labelKey: {
+    type: String,
+    default: 'label',
+  },
+  valueKey: {
+    type: String,
+    default: 'value',
   },
   validateTrigger: {
     type: Array as PropType<Array<ValidateTriggers>>,

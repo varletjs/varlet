@@ -1,6 +1,15 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
+      <template v-if="radioGroupOptions.length">
+        <radio-group-option
+          v-for="option in radioGroupOptions"
+          :key="option[valueKey]"
+          :label-key="labelKey"
+          :value-key="valueKey"
+          :option="option"
+        />
+      </template>
       <slot />
     </div>
 
@@ -10,19 +19,20 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
+import RadioGroupOption from './RadioGroupOption'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { props, type ValidateTriggers } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, preventDefault } from '@varlet/shared'
+import { call, preventDefault, isArray } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio-group')
 
 export default defineComponent({
   name,
-  components: { VarFormDetails },
+  components: { VarFormDetails, RadioGroupOption },
   props,
   setup(props) {
     const { length, radios, bindRadios } = useRadios()
@@ -34,6 +44,7 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
+    const radioGroupOptions = computed(() => (isArray(props.options) ? props.options : []))
     const radioGroupErrorMessage = computed(() => errorMessage.value)
 
     const radioGroupProvider: RadioGroupProvider = {
@@ -136,6 +147,7 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
+      radioGroupOptions,
     }
   },
 })
