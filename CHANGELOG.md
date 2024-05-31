@@ -1,3 +1,17 @@
+## [3.2.13](https://github.com/varletjs/varlet/compare/v3.2.12...v3.2.13) (2024-05-31)
+
+
+### Bug Fixes
+
+* **cell:** disable tap highlights on iOS ([#1646](https://github.com/varletjs/varlet/issues/1646)) ([7850af5](https://github.com/varletjs/varlet/commit/7850af5930585e4aa3e4af38f27eed0f98a0ddc7)), closes [#1645](https://github.com/varletjs/varlet/issues/1645)
+
+
+### Features
+
+* **cli:** support ai agent ([a92c840](https://github.com/varletjs/varlet/commit/a92c840266149c6c4fa10e2b52829122c5f1f46b))
+
+
+
 ## [3.2.12](https://github.com/varletjs/varlet/compare/v3.2.11...v3.2.12) (2024-05-30)
 
 
