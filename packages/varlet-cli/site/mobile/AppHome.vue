@@ -53,7 +53,7 @@ export default {
         query: {
           language: lang.value,
           platform: platform.value,
-          replace: component.doc
+          replace: component.doc,
         },
       })
 
@@ -77,9 +77,7 @@ export default {
 
 <style lang="less">
 .varlet-logo {
-  height: 100px;
   padding-top: 30px;
-  margin-bottom: 20px;
 }
 
 .varlet-home__title {
@@ -96,9 +94,9 @@ export default {
 }
 
 .varlet-home__desc {
-  margin: 0 0 40px;
   color: var(--site-config-color-sub-text);
   font-size: 14px;
+  line-height: 22px;
 }
 
 .varlet-home__image {
