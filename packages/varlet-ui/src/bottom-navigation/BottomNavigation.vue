@@ -37,7 +37,7 @@ import { props } from './props'
 import { useBottomNavigationItems, type BottomNavigationProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { isNumber, normalizeToArray, call, getRect } from '@varlet/shared'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
 
 const { name, n, classes } = createNamespace('bottom-navigation')
@@ -83,6 +83,8 @@ export default defineComponent({
       },
       { immediate: true, deep: true }
     )
+
+    onWindowResize(resizePlaceholder)
 
     onSmartMounted(() => {
       resizePlaceholder()
