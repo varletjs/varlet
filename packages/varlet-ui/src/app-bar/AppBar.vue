@@ -10,7 +10,7 @@
         formatElevation(elevation, 3)
       )
     "
-    ref="appBarDom"
+    ref="appBar"
     :style="rootStyles"
     v-bind="$attrs"
   >
@@ -53,7 +53,7 @@ export default defineComponent({
   name,
   props,
   setup(props, { slots }) {
-    const appBarDom = ref<HTMLElement | null>(null)
+    const appBar = ref<HTMLElement | null>(null)
     const paddingLeft = ref<number | undefined>()
     const paddingRight = ref<number | undefined>()
     const placeholderHeight = ref()
@@ -97,7 +97,7 @@ export default defineComponent({
         return
       }
 
-      const { height } = getRect(appBarDom.value!)
+      const { height } = getRect(appBar.value!)
       placeholderHeight.value = `${height}px`
     }
 
@@ -108,7 +108,7 @@ export default defineComponent({
       n,
       classes,
       formatElevation,
-      appBarDom,
+      appBar,
       placeholderHeight,
     }
   },
