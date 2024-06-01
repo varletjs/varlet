@@ -145,6 +145,7 @@ const active = ref(0)
 | `title-position` | 标题位置，可选值为 `left` `center` `right` | _string_ | `left`  |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `fixed`          | 是否固定到顶部                            | _boolean_ | `false` |
+| `placeholder`  ***3.2.14***   | 是否在顶部生成相同高度的占位元素(需设置 `fixed`)  | _boolean_ | `false` |
 | `z-index`          | 元素 z-index                            | _number \| string_ | `1` |
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
 | `image`          | 背景图片                            | _string_ | `-` |

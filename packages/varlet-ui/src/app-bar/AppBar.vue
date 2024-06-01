@@ -10,7 +10,9 @@
         formatElevation(elevation, 3)
       )
     "
+    ref="appBar"
     :style="rootStyles"
+    v-bind="$attrs"
   >
     <div :class="n('toolbar')">
       <div :class="n('left')">
@@ -34,13 +36,16 @@
 
     <slot name="content" />
   </div>
+
+  <div v-if="fixed && placeholder" :class="n('placeholder')" :style="{ height: placeholderHeight }" />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, onUpdated, computed, CSSProperties } from 'vue'
 import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
-import { onSmartMounted } from '@varlet/use'
+import { onSmartMounted, onWindowResize } from '@varlet/use'
+import { getRect } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('app-bar')
 
@@ -48,8 +53,10 @@ export default defineComponent({
   name,
   props,
   setup(props, { slots }) {
+    const appBar = ref<HTMLElement | null>(null)
     const paddingLeft = ref<number | undefined>()
     const paddingRight = ref<number | undefined>()
+    const placeholderHeight = ref()
     const rootStyles = computed<CSSProperties>(() => {
       const { image, color, textColor, imageLinearGradient, zIndex } = props
 
@@ -71,12 +78,27 @@ export default defineComponent({
       }
     })
 
-    onSmartMounted(computePadding)
+    onWindowResize(resizePlaceholder)
+
+    onSmartMounted(() => {
+      computePadding()
+      resizePlaceholder()
+    })
+
     onUpdated(computePadding)
 
     function computePadding() {
       paddingLeft.value = slots.left ? 0 : undefined
       paddingRight.value = slots.right ? 0 : undefined
+    }
+
+    function resizePlaceholder() {
+      if (!props.fixed || !props.placeholder) {
+        return
+      }
+
+      const { height } = getRect(appBar.value!)
+      placeholderHeight.value = `${height}px`
     }
 
     return {
@@ -86,6 +108,8 @@ export default defineComponent({
       n,
       classes,
       formatElevation,
+      appBar,
+      placeholderHeight,
     }
   },
 })
