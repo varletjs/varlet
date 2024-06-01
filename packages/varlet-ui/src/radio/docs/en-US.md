@@ -28,4 +28,4 @@
 | --- | --- | --- |
 | `checked-icon` | Checked icon | `-` |
 | `unchecked-icon` | Unchecked icon | `-` |
-| `default` | Displayed text | `-` |
+| `default` | Displayed text | `checked: boolean` is checked |
