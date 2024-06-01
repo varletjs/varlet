@@ -22,13 +22,17 @@ export interface RadioProps extends BasicAttributes {
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }
 
+export interface RadioData {
+  checked: boolean
+}
+
 export class Radio extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<RadioProps>
 
   $props: RadioProps
 
   $slots: {
-    default(): VNode[]
+    default(data: RadioData): VNode[]
     'checked-icon'(): VNode[]
     'unchecked-icon'(): VNode[]
   }
