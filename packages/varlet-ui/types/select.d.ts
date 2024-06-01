@@ -19,7 +19,7 @@ export interface SelectOption {
 
 export interface SelectProps extends BasicAttributes {
   modelValue?: any
-  options: Array<SelectOption>
+  options?: Array<SelectOption>
   variant?: SelectVariant
   size?: SelectSize
   placeholder?: string
