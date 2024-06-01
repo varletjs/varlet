@@ -148,6 +148,7 @@ const value = ref([])
   <div>当前的值: {{ value }}</div>
 </template>
 ```
+
 ### 复选框组选项
 
 通过 `options` 属性设置子元素。
@@ -267,7 +268,6 @@ const value = ref([])
 </template>
 ```
 
-
 ## API
 
 ### 属性
@@ -279,12 +279,10 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
-| `label-key` ***3.2.12*** | 作为 label 唯一标识的键名 | _string_ | `label` |
-| `value-key` ***3.2.12*** | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `options` _**3.2.11**_ | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |
 
-#### CheckboxGroupOption 
+#### CheckboxGroupOption
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
@@ -362,6 +360,7 @@ const value = ref([])
 | `default` | 显示的文本 | `checked: boolean` 是否选中 |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |

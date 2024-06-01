@@ -268,7 +268,6 @@ const value = ref([])
 </template>
 ```
 
-
 ## API
 
 ### Props
@@ -280,12 +279,10 @@ const value = ref([])
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `-` |
-| `label-key` ***3.2.12*** | As the key that uniquely identifies label | _string_ | `label` |
-| `value-key` ***3.2.12*** | As the key that uniquely identifies value | _string_ | `value` |
+| `options` _**3.2.11**_ | Specifies options | _CheckboxGroupOption[]_ | `-` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
 
-#### CheckboxGroupOption 
+#### CheckboxGroupOption
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
@@ -363,6 +360,7 @@ const value = ref([])
 | `default` | Displayed text | `checked: boolean` is checked |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
