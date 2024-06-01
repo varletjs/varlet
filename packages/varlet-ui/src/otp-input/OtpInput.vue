@@ -137,7 +137,7 @@ export default defineComponent({
       array[focusIndex.value] = value
       let target: any = null
       const modelLength = model.value.filter(Boolean).length
-      if (focusIndex.value > modelLength) {
+      if (focusIndex.value >= modelLength) {
         target = modelLength
       } else if (focusIndex.value + 1 !== props.length) {
         target = 'next'
