@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes(n())" ref="contentRef">
+  <div :class="classes(n())">
     <div :class="n('container')">
       <var-input
         v-for="(_, i) of length"
@@ -7,7 +7,11 @@
         type="number"
         :key="i"
         :maxlength="1"
-        :ref="(el) => setRef(el as VarInputInstance, i)"
+        :ref="
+          (el) => {
+            inputRefs[i] = el as VarInputInstance
+          }
+        "
         :variant="variant"
         :readonly="readonly"
         :disabled="disabled"
@@ -17,8 +21,8 @@
         :blur-color="blurColor"
         :autofocus="i === 0 && autofocus"
         @input="handleInput"
-        @focus="handleFocus(i)"
-        @blur="handleBlur(i)"
+        @focus="(event) => handleFocus(event, i)"
+        @blur="handleBlur"
         @click="handleClick(i)"
         @keydown="handleKeydown"
       />
@@ -34,7 +38,7 @@
 <script lang="ts">
 import VarInput from '../input'
 import VarFormDetails from '../form-details'
-import { defineComponent, ref, computed, nextTick, watch } from 'vue'
+import { defineComponent, ref, computed, nextTick } from 'vue'
 import { props, type OptInputValidateTrigger } from './props'
 import { call, preventDefault, raf } from '@varlet/shared'
 import { useValidation, createNamespace } from '../utils/components'
@@ -53,8 +57,9 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const contentRef = ref()
-    const inputRefs = ref<Array<VarInputInstance> | null>([])
+    const inputRefs = ref<Array<VarInputInstance>>([])
+    const focusIndex = ref(props.autofocus ? 0 : -1)
+
     const { bindForm } = useForm()
     const {
       errorMessage,
@@ -75,23 +80,6 @@ export default defineComponent({
       },
     })
 
-    const valueWhenFocus = ref('')
-    const focusIndex = ref(-1)
-    const blurIndex = ref(-1)
-
-    watch(
-      () => focusIndex.value,
-      (index) => {
-        if (index === -1) {
-          validateWithTrigger('onBlur')
-          call(props.onBlur, blurIndex.value)
-        } else {
-          validateWithTrigger('onFocus')
-          call(props.onFocus, index)
-        }
-      }
-    )
-
     const otpInputProvider: OtpInputProvider = {
       reset,
       validate,
@@ -99,12 +87,6 @@ export default defineComponent({
     }
 
     call(bindForm, otpInputProvider)
-
-    function setRef(el: VarInputInstance | null, index: number) {
-      if (inputRefs.value && el) {
-        inputRefs.value[index] = el
-      }
-    }
 
     function validateWithTrigger(trigger: OptInputValidateTrigger) {
       nextTick(() => {
@@ -114,52 +96,60 @@ export default defineComponent({
     }
 
     function focusInput(target: number | 'next' | 'prev') {
-      const newIndex = target === 'next' ? focusIndex.value + 1 : target === 'prev' ? focusIndex.value - 1 : target
-      if (inputRefs.value && inputRefs.value[newIndex]) {
-        focusIndex.value = newIndex
-        inputRefs.value[newIndex].focus()
+      if (target === 'next') {
+        focusIndex.value += 1
+      } else if (target === 'prev') {
+        focusIndex.value -= 1
+      } else {
+        focusIndex.value = target
       }
+
+      inputRefs.value[focusIndex.value].focus()
     }
 
-    function handleFocus(index: number) {
+    function handleFocus(event: Event, index: number) {
       focusIndex.value = index
-      valueWhenFocus.value = model.value[index]
+      call(props.onFocus, event)
     }
 
-    function handleBlur(index: number) {
-      blurIndex.value = index
-      focusIndex.value = -1
+    function handleBlur(event: Event) {
+      call(props.onBlur, event)
     }
 
-    function handleInput(val: string) {
+    function handleInput(value: string) {
       const array = model.value.slice()
-      const value = val
       array[focusIndex.value] = value
-      let target: any = null
-      const modelLength = model.value.filter(Boolean).length
+
+      let target: 'next' | 'prev' | number | null = null
+      const modelLength = model.value.length
+
       if (focusIndex.value >= modelLength) {
         target = modelLength
       } else if (focusIndex.value + 1 !== props.length) {
         target = 'next'
       }
+
       model.value = array
+
       call(props.onInput, model.value.join(''))
 
       if (target) {
         focusInput(target)
       }
+
       validateWithTrigger('onInput')
     }
 
     async function handleKeydown(event: KeyboardEvent) {
-      if (props.readonly || !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(event.key)) {
+      const { disabled, readonly } = props
+      if (disabled || readonly || !['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(event.key)) {
         return
       }
 
-      const array = model.value.slice()
-      let target: 'next' | 'prev' | 'first' | 'last' | number | null = null
-
       preventDefault(event)
+
+      const array = model.value.slice()
+      let target: 'next' | 'prev' | null = null
 
       if (event.key === 'ArrowLeft') {
         target = 'prev'
@@ -168,16 +158,17 @@ export default defineComponent({
       } else if (['Backspace', 'Delete'].includes(event.key)) {
         array[focusIndex.value] = ''
         model.value = array
+
         if (focusIndex.value > 0 && event.key === 'Backspace') {
-          if (valueWhenFocus.value) {
-            valueWhenFocus.value = ''
-          } else {
-            target = 'prev'
-          }
+          target = 'prev'
         }
+
         validateWithTrigger('onInput')
       }
-      if (!target) return
+
+      if (!target) {
+        return
+      }
 
       await raf()
       focusInput(target)
@@ -201,19 +192,20 @@ export default defineComponent({
 
     // expose
     function focus() {
-      blurIndex.value > -1 && inputRefs.value?.[blurIndex.value].focus()
+      focusIndex.value = 0
+      inputRefs.value[0].focus()
     }
 
     // expose
     function blur() {
-      if (focusIndex.value === -1) return
-      blurIndex.value = focusIndex.value
-      inputRefs.value?.[focusIndex.value].blur()
+      if (focusIndex.value > -1) {
+        inputRefs.value[focusIndex.value].blur()
+      }
+      focusIndex.value = -1
     }
 
     return {
       model,
-      contentRef,
       inputRefs,
       errorMessage,
       focusIndex,
@@ -224,7 +216,6 @@ export default defineComponent({
       handleBlur,
       handleKeydown,
       handleClick,
-      setRef,
       blur,
       focus,
       reset,

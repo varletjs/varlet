@@ -120,8 +120,8 @@ const value = ref('')
 
 | Event | Description | Arguments |
 | --- | --- | --- |
-| `focus` | Triggered while focusing | `index: number` |
-| `blur` | Triggered when out of focus | `index: number` |
+| `focus` | Triggered while focusing | `event: Event` |
+| `blur` | Triggered when out of focus | `event: Event` |
 | `click` | Triggered on Click | `index: number` |
 | `input` | Triggered on input | `value: string` |
 | `change` | Triggered on change | `value: string` |

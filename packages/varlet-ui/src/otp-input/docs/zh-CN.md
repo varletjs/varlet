@@ -120,8 +120,8 @@ const value = ref('')
 
 | 事件名 | 说明 | 参数 |
 | --- | --- | --- |
-| `focus` | 聚焦时触发 | `index: number` |
-| `blur` | 失焦时触发 | `index: number` |
+| `focus` | 聚焦时触发 | `event: Event` |
+| `blur` | 失焦时触发  | `event: Event` |
 | `click` | 点击时触发 | `index: number` |
 | `input` | 输入时触发 | `value: string` |
 | `change` | 更新时触发 | `value: string` |
