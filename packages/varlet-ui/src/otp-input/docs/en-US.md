@@ -125,3 +125,12 @@ const value = ref('')
 | `click` | Triggered on Click | `index: number` |
 | `input` | Triggered on input | `value: string` |
 | `change` | Triggered on change | `value: string` |
+
+### Style Variables
+
+Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
+
+| Variable | Default |
+| --- | --- |
+| `--var-otp-input-text-align` | `center` |
+| `--var-otp-input-margin-right` | `8px` |

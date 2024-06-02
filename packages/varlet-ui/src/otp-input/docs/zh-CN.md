@@ -125,3 +125,12 @@ const value = ref('')
 | `click` | 点击时触发 | `index: number` |
 | `input` | 输入时触发 | `value: string` |
 | `change` | 更新时触发 | `value: string` |
+
+### 样式变量
+
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+| 变量名 | 默认值 |
+| --- | --- |
+| `--var-otp-input-text-align` | `center` |
+| `--var-otp-input-margin-right` | `8px` |

@@ -54,6 +54,7 @@ export * from './menu'
 export * from './menuOption'
 export * from './menuSelect'
 export * from './option'
+export * from './otpInput'
 export * from './overlay'
 export * from './pagination'
 export * from './paper'
@@ -144,6 +145,7 @@ declare module 'vue' {
     VarMenuOption: typeof import('@varlet/ui')['_MenuOptionComponent']
     VarMenuSelect: typeof import('@varlet/ui')['_MenuSelectComponent']
     VarOption: typeof import('@varlet/ui')['_OptionComponent']
+    VarOtpInput: typeof import('@varlet/ui')['_OtpInputComponent']
     VarOverlay: typeof import('@varlet/ui')['_OverlayComponent']
     VarPagination: typeof import('@varlet/ui')['_PaginationComponent']
     VarPaper: typeof import('@varlet/ui')['_PaperComponent']
