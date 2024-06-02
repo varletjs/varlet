@@ -237,5 +237,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../form-details/formDetails';
+@import '../input/input';
 @import './otpInput';
 </style>
