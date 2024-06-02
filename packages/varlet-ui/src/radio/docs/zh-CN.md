@@ -28,4 +28,4 @@
 | --- | --- | --- |
 | `checked-icon` | 选中图标 | `-` |
 | `unchecked-icon` | 未选中图标 | `-` |
-| `default` | 显示的文本 | `-` |
+| `default` | 显示的文本 | `checked: boolean` 是否选中 |
