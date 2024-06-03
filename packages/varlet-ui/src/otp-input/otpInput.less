@@ -1,0 +1,24 @@
+:root {
+  --var-otp-input-text-align: center;
+  --var-otp-input-margin-right: 8px;
+}
+
+.var-otp-input {
+  &__container {
+    display: flex;
+
+    .var-input[var-otp-input-cover] {
+      .var-form-details {
+        display: none;
+      }
+
+      .var-input__input {
+        text-align: var(--var-otp-input-text-align);
+      }
+
+      &:not(:last-child) {
+        margin-right: var(--var-otp-input-margin-right);
+      }
+    }
+  }
+}

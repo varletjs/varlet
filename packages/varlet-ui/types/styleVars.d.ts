@@ -837,6 +837,10 @@ export interface StyleVars {
   menuOptionTextColor?: string
   '--menu-option-disabled-color'?: string
   menuOptionDisabledColor?: string
+  '--var-otp-input-text-align'?: string
+  varOtpInputTextAlign?: string
+  '--var-otp-input-margin-right'?: string
+  varOtpInputMarginRight?: string
   '--overlay-background-color'?: string
   overlayBackgroundColor?: string
   '--pagination-text-color'?: string
