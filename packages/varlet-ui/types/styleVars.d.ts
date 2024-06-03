@@ -427,8 +427,6 @@ export interface StyleVars {
   collapseItemMarginTop?: string
   '--collapse-disable-color'?: string
   collapseDisableColor?: string
-  '--collapse-divider-top'?: string
-  collapseDividerTop?: string
   '--collapse-border-top'?: string
   collapseBorderTop?: string
   '--countdown-text-color'?: string
@@ -495,14 +493,14 @@ export interface StyleVars {
   datePickerTitleDateRangeFontSize?: string
   '--date-picker-title-date-justify-content'?: string
   datePickerTitleDateJustifyContent?: string
-  '--date-picker-body-padding'?: string
-  datePickerBodyPadding?: string
+  '--date-picker-header-arrow-filter'?: string
+  datePickerHeaderArrowFilter?: string
   '--date-picker-body-background-color'?: string
   datePickerBodyBackgroundColor?: string
   '--date-picker-body-height'?: string
   datePickerBodyHeight?: string
-  '--date-picker-header-arrow-filter'?: string
-  datePickerHeaderArrowFilter?: string
+  '--date-picker-body-padding'?: string
+  datePickerBodyPadding?: string
   '--date-picker-header-padding'?: string
   datePickerHeaderPadding?: string
   '--date-picker-actions-padding'?: string

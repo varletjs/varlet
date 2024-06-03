@@ -3,6 +3,8 @@ import { SRC_DIR, TYPES_DIR } from '../shared/constant.js'
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils.js'
 import { camelize } from '@varlet/shared'
+import { getVarletConfig } from '../config/varlet.config.js'
+import { get } from 'lodash-es'
 
 const { ensureDirSync, readdirSync, readFileSync, writeFileSync } = fse
 
@@ -14,23 +16,28 @@ export function compileMD(path: string, keys: Set<string>) {
   })
 }
 
-export function compileDir(path: string, keys: Set<string>) {
+export function compileDir(path: string, keys: Set<string>, defaultLanguage: 'zh-CN' | 'en-US') {
   const dir = readdirSync(path)
 
   dir.forEach((filename) => {
     const filePath = resolve(path, filename)
 
-    isDir(filePath) && compileDir(filePath, keys)
-    isMD(filePath) && compileMD(filePath, keys)
+    isDir(filePath) && compileDir(filePath, keys, defaultLanguage)
+
+    if (isMD(filePath) && filename.includes(defaultLanguage)) {
+      compileMD(filePath, keys)
+    }
   })
 }
 
-export function compileStyleVars() {
+export async function compileStyleVars() {
   ensureDirSync(TYPES_DIR)
+
+  const defaultLanguage = get(await getVarletConfig(), 'defaultLanguage')
 
   const keys = new Set<string>()
 
-  compileDir(SRC_DIR, keys)
+  compileDir(SRC_DIR, keys, defaultLanguage)
 
   let template = [...keys].reduce((template, key: string) => {
     template += `  '${key}'?: string\n`
