@@ -5,7 +5,7 @@
         v-for="(_, i) of length"
         v-model="model[i]"
         type="number"
-        var-input-cover
+        var-otp-input-cover
         :key="i"
         :maxlength="1"
         :ref="
