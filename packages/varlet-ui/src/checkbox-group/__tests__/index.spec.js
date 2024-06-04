@@ -352,7 +352,7 @@ test('test checkbox group options', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  const children = wrapper.findAll('.var-checkbox')
   await trigger(children[0], 'click')
   expect(wrapper.vm.value).toStrictEqual([])
 
@@ -391,7 +391,7 @@ test('test checkbox group label-key', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  const children = wrapper.findAll('.var-checkbox')
   await trigger(children[0], 'click')
   expect(wrapper.vm.value).toStrictEqual([])
 
@@ -430,7 +430,7 @@ test('test checkbox group value-key', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  const children = wrapper.findAll('.var-checkbox')
   await trigger(children[0], 'click')
   expect(wrapper.vm.value).toStrictEqual([])
 
@@ -470,7 +470,7 @@ test('test checkbox group label is VNode', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  const children = wrapper.findAll('.var-checkbox')
   await trigger(children[0], 'click')
   expect(wrapper.vm.value).toStrictEqual([])
 
@@ -511,7 +511,7 @@ test('test checkbox group label is function', async () => {
 
   expect(wrapper.html()).toMatchSnapshot()
 
-  const children = wrapper.findAllComponents({ name: 'var-checkbox' })
+  const children = wrapper.findAll('.var-checkbox')
   await trigger(children[0], 'click')
   expect(wrapper.vm.value).toStrictEqual([])
 
