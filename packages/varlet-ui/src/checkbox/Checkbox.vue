@@ -1,6 +1,6 @@
 <template>
-  <div :class="n('wrap')" @click="handleClick">
-    <div :class="n()">
+  <div :class="n('wrap')">
+    <div :class="n()" @click="handleClick">
       <div
         ref="action"
         :class="
