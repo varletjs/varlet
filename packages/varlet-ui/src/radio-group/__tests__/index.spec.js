@@ -259,6 +259,44 @@ test('test radio group layout direction', async () => {
   wrapper.unmount()
 })
 
+test('test radio group options', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { label: 'eat', value: 0 },
+        { label: 'sleep', value: 1 },
+        { label: 'game', value: 2, disabled: true },
+      ],
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  wrapper.unmount()
+})
+
 test('test radio keyboard Enter', async () => {
   const wrapper = mount({
     components: {
