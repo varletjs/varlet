@@ -159,6 +159,9 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../ripple/ripple';
+@import '../icon/icon';
+@import '../hover-overlay/hoverOverlay';
 @import '../checkbox/checkbox';
 @import './checkboxGroup';
 </style>
