@@ -203,9 +203,9 @@ const value = ref(0)
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | 指定可选项 | _RadioGroupOption[]_ | `-` |
-| `label-key` ***3.2.12*** | 作为 label 唯一标识的键名 | _string_ | `label` |
-| `value-key` ***3.2.12*** | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `options` ***3.2.14*** | 指定可选项 | _RadioGroupOption[]_ | `-` |
+| `label-key` ***3.2.14*** | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` ***3.2.14*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
 
 #### RadioGroupOption 
