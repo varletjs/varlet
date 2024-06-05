@@ -156,6 +156,9 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../ripple/ripple';
+@import '../hover-overlay/hoverOverlay';
+@import '../icon/icon';
 @import '../radio/radio';
 @import './radioGroup';
 </style>
