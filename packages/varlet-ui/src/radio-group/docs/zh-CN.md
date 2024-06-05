@@ -136,6 +136,28 @@ const options = ref([
 </template>
 ```
 
+### 自定义字段
+
+通过 `label-key` 和 `value-key` 属性自定义 `options` 中数据的格式。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  { name: '吃饭', id: 0 },
+  { name: '睡觉', id: 1 },
+  { name: '游戏', id: 2 },
+])
+</script>
+
+<template>
+  <var-radio-group v-model="value" :options="options" label-key="name" value-key="id" />
+  <div>当前的值: {{ value }}</div>
+</template>
+```
+
 ### 垂直布局
 
 ```html

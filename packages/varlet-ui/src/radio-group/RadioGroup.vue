@@ -156,5 +156,6 @@ export default defineComponent({
 <style lang="less">
 @import '../styles/common';
 @import '../form-details/formDetails';
+@import '../radio/radio';
 @import './radioGroup';
 </style>

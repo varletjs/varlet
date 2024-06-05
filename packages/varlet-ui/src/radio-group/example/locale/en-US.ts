@@ -17,4 +17,5 @@ export default {
   radioGroupValidate: 'RadioGroup Validate',
   radioValidateMessage: 'Please check your choice',
   radioGroupValidateMessage: 'Please check eat',
+  customFields: 'Custom Fields',
 }

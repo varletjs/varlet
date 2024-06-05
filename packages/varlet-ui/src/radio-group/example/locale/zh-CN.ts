@@ -17,4 +17,5 @@ export default {
   radioGroupValidate: '单选框组字段校验',
   radioValidateMessage: '请勾选',
   radioGroupValidateMessage: '必须选择吃饭',
+  customFields: '自定义字段',
 }

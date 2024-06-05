@@ -136,6 +136,28 @@ const options = ref([
 </template>
 ```
 
+### Custom Fields
+
+Customize the format of the data in `options` through the `label-key` and `value-key` attributes.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  { name: 'Eat', id: 0 },
+  { name: 'Sleep', id: 1 },
+  { name: 'Game', id: 2 },
+])
+</script>
+
+<template>
+  <var-radio-group v-model="value" :options="options" label-key="name" value-key="id" />
+  <div>Current value: {{ value }}</div>
+</template>
+```
+
 ### Vertical Direction
 
 ```html
