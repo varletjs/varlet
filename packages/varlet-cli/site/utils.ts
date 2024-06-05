@@ -1,7 +1,3 @@
-import { get } from 'lodash-es'
-import { Themes } from '@varlet/ui'
-import { StyleProvider, type Theme, withSiteConfigNamespace, setColorScheme } from '@varlet/cli/client'
-
 export interface Menu {
   doc: string
   text: Record<string, string>

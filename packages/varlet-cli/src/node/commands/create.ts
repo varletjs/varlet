@@ -3,7 +3,6 @@ import fse from 'fs-extra'
 import logger from '../shared/logger.js'
 import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
 import inquirer from 'inquirer'
-import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { glob } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
@@ -51,7 +50,7 @@ async function renderTemplates(componentFolder: string, componentFolderName: str
 export async function create(options: CreateCommandOptions) {
   logger.title('\n📦📦 Create a component ! \n')
 
-  const namespace = get(await getVarletConfig(), 'namespace')
+  const { namespace } = await getVarletConfig()
   const renderData: RenderData = {
     namespace,
     bigCamelizeNamespace: bigCamelize(namespace),

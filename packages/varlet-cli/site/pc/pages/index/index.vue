@@ -2,7 +2,6 @@
 import config from '@config'
 import AppHeader from '../../components/AppHeader.vue'
 import AppAd from '../../components/AppAd.vue'
-import { get } from 'lodash-es'
 import { ref, watch, type Ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getPCLocationInfo, watchTheme, onThemeChange, getBrowserTheme, setTheme, type Theme } from '@varlet/cli/client'
@@ -10,10 +9,10 @@ import { getPCLocationInfo, watchTheme, onThemeChange, getBrowserTheme, setTheme
 const route = useRoute()
 const router = useRouter()
 const currentTheme = ref(getBrowserTheme())
-const github = get(config, 'pc.header.github')
-const title: Ref<string> = ref(get(config, 'title'))
-const language: Ref<string> = ref(get(config, 'defaultLanguage'))
-const indexPage: Ref<Record<string, any>> = ref(get(config, 'pc.indexPage'))
+const github = config?.pc?.header?.github
+const title: Ref<string> = ref(config?.title)
+const language: Ref<string> = ref(config?.defaultLanguage)
+const indexPage: Ref<Record<string, any>> = ref(config?.pc?.indexPage)
 
 const getStar = () => {
   router.push(`/${language.value}/home`)
@@ -28,7 +27,7 @@ const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: curre
 const setCurrentTheme = (theme: Theme) => {
   currentTheme.value = theme
   setTheme(currentTheme.value)
-  window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
+  window.localStorage.setItem(config?.themeKey, currentTheme.value)
 }
 
 const setLocale = () => {
@@ -36,7 +35,7 @@ const setLocale = () => {
   if (!lang) return
 
   language.value = lang
-  document.title = get(config, 'pc.title')[lang] as string
+  document.title = config?.pc.title[lang] as string
 }
 
 const to = (url: string) => {

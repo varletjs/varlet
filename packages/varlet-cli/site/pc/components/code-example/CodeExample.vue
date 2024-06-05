@@ -2,7 +2,7 @@
   <div class="var-site-code-example">
     <div class="var-site-code-example__toolbar">
       <var-button text round @click="toggle" v-if="fold && !disabledFold">
-        <var-icon name="xml" size="18"/>
+        <var-icon name="xml" size="18" />
       </var-button>
 
       <var-button
@@ -12,11 +12,11 @@
         round
         v-if="clipboard"
       >
-        <var-icon name="content-copy" size="18"/>
+        <var-icon name="content-copy" size="18" />
       </var-button>
 
       <var-button text round @click="toPlayground" v-if="playground">
-        <var-icon name="code-json" size="18"/>
+        <var-icon name="code-json" size="18" />
       </var-button>
     </div>
     <div
@@ -28,7 +28,7 @@
         height: height >= 0 ? `${height}px` : undefined,
       }"
     >
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
@@ -39,7 +39,6 @@ import Clipboard from 'clipboard'
 import { Context, Snackbar } from '@varlet/ui'
 import { defineComponent, nextTick, ref, onMounted, type Ref } from 'vue'
 import { doubleRaf } from '@varlet/shared'
-import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo } from '@varlet/cli/client'
 import { utoa } from '../../../utils'
 import { type SiteContext } from '../../../types'
@@ -54,17 +53,19 @@ export default defineComponent({
   props: {
     playgroundIgnore: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props) {
     const code: Ref<HTMLElement | null> = ref(null)
     const cid: Ref<number> = ref(clipId++)
-    const fold: Ref = ref(get(config, 'pc.fold'))
+    const fold: Ref = ref(config?.pc?.fold)
     const disabledFold: Ref<boolean> = ref(false)
-    const clipboard: Ref = ref(get(config, 'pc.clipboard', {}))
+    const clipboard: Ref = ref(config?.pc?.clipboard || {})
     const height: Ref<number> = ref(-1)
-    const playground: Ref<string | undefined> = ref(!props.playgroundIgnore ? get(config, 'pc.header.playground') : undefined)
+    const playground: Ref<string | undefined> = ref(
+      !props.playgroundIgnore ? config?.pc?.header?.playground : undefined
+    )
     let timer: any = null
 
     const toggle = async () => {
@@ -120,12 +121,12 @@ export default defineComponent({
       clipboard,
       playground,
       toggle,
-      toPlayground
+      toPlayground,
     }
-  }
+  },
 })
 </script>
 
 <style lang="less">
-@import "./codeExample";
+@import './codeExample';
 </style>

@@ -4,7 +4,7 @@ declare module 'less' {
   export { render }
 }
 
-declare module 'node-sass' {
+declare module 'sass' {
   declare const renderSync: any
 
   export { renderSync }

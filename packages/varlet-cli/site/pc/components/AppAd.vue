@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import config from '@config'
-import { get } from 'lodash-es'
 import { ref } from 'vue'
 
 defineProps({
@@ -10,7 +9,7 @@ defineProps({
   },
 })
 
-const ad = ref(get(config, 'pc.ad'))
+const ad = ref(config?.pc?.ad)
 const storageKey = `varlet-site-ad-closed-${ad.value?.id}`
 const isClose = ref(localStorage.getItem(storageKey) == 'true')
 

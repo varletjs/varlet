@@ -3,7 +3,6 @@ import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
 import { bigCamelize } from '@varlet/shared'
 import { resolve, relative } from 'path'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash-es'
 import { compileStyleVars } from './compileStyleVars.js'
 
 const { ensureDir, writeFileSync, readdir, writeFile, readJSONSync } = fse
@@ -21,9 +20,7 @@ export async function compileTypes() {
   await ensureDir(TYPES_DIR)
   compileStyleVars()
 
-  const varletConfig = await getVarletConfig()
-  const namespace = get(varletConfig, 'namespace')
-  const directives = get(varletConfig, 'directives')
+  const { namespace = '', directives = '' } = await getVarletConfig()
   const { name: libraryName } = readJSONSync(UI_PACKAGE_JSON)
 
   const filenames = await readdir(TYPES_DIR)
