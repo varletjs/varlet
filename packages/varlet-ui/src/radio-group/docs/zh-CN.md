@@ -114,6 +114,50 @@ const value = ref(0)
 </template>
 ```
 
+### 单选框组选项
+
+通过 `options` 属性设置子元素。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref([])
+const options = ref([
+  { label: '吃饭', value: 0 },
+  { label: '睡觉', value: 1 },
+  { label: '游戏', value: 2, disabled: true },
+])
+</script>
+
+<template>
+  <var-radio-group v-model="value" :options="options" />
+  <div>当前的值: {{ value }}</div>
+</template>
+```
+
+### 自定义字段
+
+通过 `label-key` 和 `value-key` 属性自定义 `options` 中数据的格式。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref(0)
+const options = ref([
+  { name: '吃饭', id: 0 },
+  { name: '睡觉', id: 1 },
+  { name: '游戏', id: 2 },
+])
+</script>
+
+<template>
+  <var-radio-group v-model="value" :options="options" label-key="name" value-key="id" />
+  <div>当前的值: {{ value }}</div>
+</template>
+```
+
 ### 垂直布局
 
 ```html
@@ -181,7 +225,18 @@ const value = ref(0)
 | --- | --- | --- | --- |
 | `v-model` | 绑定的值 | _any_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
+| `options` ***3.2.14*** | 指定可选项 | _RadioGroupOption[]_ | `-` |
+| `label-key` ***3.2.14*** | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` ***3.2.14*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any) => any>_ | `-` |
+
+#### RadioGroupOption 
+
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `label`    |    选项的标签    | _string \| VNode \| (option: RadioGroupOption, checked: boolean) => VNodeChild_      | `-`   |
+| `value`  |    选项的值    | _any_      | `-`   |
+| `disabled`    |    是否禁用   | _boolean_      | `-`   |
 
 #### Radio Props
 

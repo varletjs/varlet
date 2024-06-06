@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { toRefs, reactive } from 'vue'
+import { toRefs, reactive, computed } from 'vue'
 import { use, t } from './locale'
 
 const values = reactive({
@@ -13,8 +13,23 @@ const values = reactive({
   value7: false,
   value8: 0,
   value9: 0,
+  optionValue: 0,
+  fieldValue: 0,
 })
-const { value, value2, value3, value4, value5, value6, value7, value8, value9 } = toRefs(values)
+const { value, value2, value3, value4, value5, value6, value7, value8, value9, optionValue, fieldValue } =
+  toRefs(values)
+
+const options = computed(() => [
+  { label: t('eat'), value: 0 },
+  { label: t('sleep'), value: 1 },
+  { label: t('game'), value: 2, disabled: true },
+])
+
+const fieldOptions = computed(() => [
+  { name: t('eat'), id: 0 },
+  { name: t('sleep'), id: 1 },
+  { name: t('game'), id: 2 },
+])
 
 watchLang(use)
 onThemeChange()
@@ -50,6 +65,14 @@ onThemeChange()
     <var-radio :checked-value="1">{{ t('sleep') }}</var-radio>
   </var-radio-group>
   <div class="relation">{{ t('currentValue') }} {{ value6 }}</div>
+
+  <app-type>{{ t('radioGroupOptions') }}</app-type>
+  <var-radio-group v-model="optionValue" :options="options" />
+  <div class="relation">{{ t('currentValue') }} {{ optionValue }}</div>
+
+  <app-type>{{ t('customFields') }}</app-type>
+  <var-radio-group v-model="fieldValue" :options="fieldOptions" label-key="name" value-key="id" />
+  <div class="relation">{{ t('currentValue') }} {{ fieldValue }}</div>
 
   <app-type>{{ t('vertical') }}</app-type>
   <var-radio-group v-model="value9" direction="vertical">

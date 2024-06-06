@@ -3,7 +3,7 @@ import Radio from '../../radio'
 import VarRadioGroup from '../RadioGroup'
 import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
 
@@ -256,6 +256,205 @@ test('test radio group layout direction', async () => {
   })
 
   expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})
+
+test('test radio group options', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { label: 'eat', value: 0 },
+        { label: 'sleep', value: 1 },
+        { label: 'game', value: 2, disabled: true },
+      ],
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  wrapper.unmount()
+})
+
+test('test radio group label-key', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { name: 'eat', value: 0 },
+        { name: 'sleep', value: 1 },
+        { name: 'game', value: 2, disabled: true },
+      ],
+      labelKey: 'name',
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options" :label-key="labelKey">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  wrapper.unmount()
+})
+
+test('test radio group value-key', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { label: 'eat', id: 0 },
+        { label: 'sleep', id: 1 },
+        { label: 'game', id: 2, disabled: true },
+      ],
+      valueKey: 'id',
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options" :value-key="valueKey">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  wrapper.unmount()
+})
+
+test('test radio group label is VNode', async () => {
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { name: h('h1', 'eat'), id: 0 },
+        { name: h('h2', 'sleep'), id: 1 },
+        { name: h('h3', 'game'), id: 2, disabled: true },
+      ],
+      valueKey: 'id',
+      labelKey: 'name',
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options" :label-key="labelKey" :value-key="valueKey">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+
+  wrapper.unmount()
+})
+
+test('test radio group label is function', async () => {
+  const formatLabel = (option, checked) => `${option.id}-${checked}`
+  const wrapper = mount({
+    components: {
+      [VarRadioGroup.name]: VarRadioGroup,
+      [VarRadio.name]: VarRadio,
+    },
+    data: () => ({
+      value: null,
+      options: [
+        { name: formatLabel, id: 0 },
+        { name: formatLabel, id: 1 },
+        { name: formatLabel, id: 2, disabled: true },
+      ],
+      valueKey: 'id',
+      labelKey: 'name',
+    }),
+    template: `
+      <var-radio-group v-model="value" :options="options" :label-key="labelKey" :value-key="valueKey">
+      </var-radio-group>
+    `,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  const children = wrapper.findAll('.var-radio')
+
+  expect(wrapper.vm.value).toStrictEqual(null)
+
+  await trigger(children[0], 'click')
+  expect(wrapper.vm.value).toStrictEqual(0)
+
+  await trigger(children[1], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await trigger(children[2], 'click')
+  expect(wrapper.vm.value).toStrictEqual(1)
+  expect(wrapper.html()).toMatchSnapshot()
+
   wrapper.unmount()
 })
 
