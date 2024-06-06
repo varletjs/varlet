@@ -122,7 +122,7 @@ const value = ref(0)
 <script setup>
 import { ref } from 'vue'
 
-const value = ref([])
+const value = ref(0)
 const options = ref([
   { label: '吃饭', value: 0 },
   { label: '睡觉', value: 1 },

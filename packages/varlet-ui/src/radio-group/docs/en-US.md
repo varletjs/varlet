@@ -122,7 +122,7 @@ Setting child elements via the `options` prop.
 <script setup>
 import { ref } from 'vue'
 
-const value = ref([])
+const value = ref(0)
 const options = ref([
   { label: 'Eat', value: 0 },
   { label: 'Sleep', value: 1 },
