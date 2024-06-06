@@ -8,13 +8,15 @@
     }"
     tabindex="-1"
     :aria-hidden="currentIndex !== index"
+    @focus="isFocusing = true"
+    @blur="isFocusing = false"
   >
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useSwipe, type SwipeItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
@@ -25,11 +27,13 @@ export default defineComponent({
   name,
   setup() {
     const translate = ref(0)
+    const isFocusing = ref(false)
     const { swipe, bindSwipe, index } = useSwipe()
     const { size, currentIndex, vertical } = swipe
 
     const swipeItemProvider: SwipeItemProvider = {
       index,
+      isFocusing: computed(() => isFocusing.value),
       setTranslate,
     }
 
@@ -40,6 +44,7 @@ export default defineComponent({
     }
 
     return {
+      isFocusing,
       size,
       index,
       currentIndex,
