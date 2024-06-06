@@ -2,12 +2,12 @@
   <div
     :class="n()"
     :style="{
-      width: !vertical ? `${size}px` : undefined,
-      height: vertical ? `${size}px` : undefined,
-      transform: `translate${vertical ? 'Y' : 'X'}(${translate}px)`,
+      width: !vertical ? toSizeUnit(size) : undefined,
+      height: vertical ? toSizeUnit(size) : undefined,
+      transform: `translate${vertical ? 'Y' : 'X'}(${toSizeUnit(translate)})`,
     }"
     tabindex="-1"
-    :aria-hidden="currentIndex === index ? 'false' : 'true'"
+    :aria-hidden="currentIndex !== index"
   >
     <slot />
   </div>
@@ -17,6 +17,7 @@
 import { defineComponent, ref } from 'vue'
 import { useSwipe, type SwipeItemProvider } from './provide'
 import { createNamespace } from '../utils/components'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n } = createNamespace('swipe-item')
 
@@ -39,12 +40,13 @@ export default defineComponent({
     }
 
     return {
-      n,
       size,
       index,
       currentIndex,
       vertical,
       translate,
+      n,
+      toSizeUnit,
     }
   },
 })
