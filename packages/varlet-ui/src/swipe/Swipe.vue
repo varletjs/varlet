@@ -3,10 +3,10 @@
     <div
       :class="classes(n('track'), [vertical, n('--vertical')])"
       :style="{
-        width: !vertical ? `${trackSize}px` : undefined,
-        height: vertical ? `${trackSize}px` : undefined,
-        transform: `translate${vertical ? 'Y' : 'X'}(${trackTranslate}px)`,
-        transitionDuration: lockDuration ? `0ms` : `${toNumber(duration)}ms`,
+        width: !vertical ? toSizeUnit(trackSize) : undefined,
+        height: vertical ? toSizeUnit(trackSize) : undefined,
+        transform: `translate${vertical ? 'Y' : 'X'}(${toSizeUnit(trackTranslate)})`,
+        transitionDuration: lockDuration ? '0ms' : `${toNumber(duration)}ms`,
       }"
       @touchstart="handleTouchstart"
       @touchmove="handleTouchmove"
@@ -119,6 +119,7 @@ import { createNamespace } from '../utils/components'
 import { onSmartUnmounted, onWindowResize, useTouch } from '@varlet/use'
 import { usePopup } from '../popup/provide'
 import { type SwipeItemProvider } from '../swipe-item/provide'
+import { toSizeUnit } from '../utils/elements'
 
 const SWIPE_DELAY = 250
 const SWIPE_OFFSET = 20
@@ -502,6 +503,7 @@ export default defineComponent({
       lockDuration,
       hovering,
       n,
+      toSizeUnit,
       classes,
       handleTouchstart,
       handleTouchmove,
