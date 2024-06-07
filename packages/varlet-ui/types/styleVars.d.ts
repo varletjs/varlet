@@ -1,1593 +1,811 @@
-export interface StyleVars {
+type RemoveTwoDashes<T extends string> = T extends `--${infer Rest}` ? Rest : T
+
+type CamelCase<S extends string> =
+  S extends `${infer P1}-${infer P2}`
+    ? `${P1}${CamelCase<Capitalize<P2>>}`
+    : S
+
+type FormatStyleVars<T> = {
+  [K in keyof T as  CamelCase<RemoveTwoDashes<K & string>>]?: T[K];
+} & T
+
+interface BaseStyleVars {
   '--action-sheet-border-radius'?: string
-  actionSheetBorderRadius?: string
   '--action-sheet-border-top'?: string
-  actionSheetBorderTop?: string
   '--action-sheet-background'?: string
-  actionSheetBackground?: string
   '--action-sheet-title-color'?: string
-  actionSheetTitleColor?: string
   '--action-sheet-title-padding'?: string
-  actionSheetTitlePadding?: string
   '--action-sheet-title-font-size'?: string
-  actionSheetTitleFontSize?: string
   '--action-sheet-action-item-height'?: string
-  actionSheetActionItemHeight?: string
   '--action-sheet-action-item-padding'?: string
-  actionSheetActionItemPadding?: string
   '--action-sheet-action-item-color'?: string
-  actionSheetActionItemColor?: string
   '--action-sheet-action-item-disabled-color'?: string
-  actionSheetActionItemDisabledColor?: string
   '--action-sheet-icon-margin'?: string
-  actionSheetIconMargin?: string
   '--action-sheet-icon-size'?: string
-  actionSheetIconSize?: string
   '--app-bar-color'?: string
-  appBarColor?: string
   '--app-bar-text-color'?: string
-  appBarTextColor?: string
   '--app-bar-height'?: string
-  appBarHeight?: string
   '--app-bar-title-padding'?: string
-  appBarTitlePadding?: string
   '--app-bar-title-font-size'?: string
-  appBarTitleFontSize?: string
   '--app-bar-left-gap'?: string
-  appBarLeftGap?: string
   '--app-bar-right-gap'?: string
-  appBarRightGap?: string
   '--app-bar-border-radius'?: string
-  appBarBorderRadius?: string
   '--app-bar-font-size'?: string
-  appBarFontSize?: string
   '--avatar-text-color'?: string
-  avatarTextColor?: string
   '--avatar-border-radius'?: string
-  avatarBorderRadius?: string
   '--avatar-mini-size'?: string
-  avatarMiniSize?: string
   '--avatar-small-size'?: string
-  avatarSmallSize?: string
   '--avatar-normal-size'?: string
-  avatarNormalSize?: string
   '--avatar-large-size'?: string
-  avatarLargeSize?: string
   '--avatar-border'?: string
-  avatarBorder?: string
   '--avatar-background-color'?: string
-  avatarBackgroundColor?: string
   '--avatar-hover-transform'?: string
-  avatarHoverTransform?: string
   '--avatar-group-offset'?: string
-  avatarGroupOffset?: string
   '--back-top-right'?: string
-  backTopRight?: string
   '--back-top-bottom'?: string
-  backTopBottom?: string
   '--back-top-button-size'?: string
-  backTopButtonSize?: string
   '--back-top-button-border-radius'?: string
-  backTopButtonBorderRadius?: string
   '--badge-content-padding'?: string
-  badgeContentPadding?: string
   '--badge-content-border'?: string
-  badgeContentBorder?: string
   '--badge-content-border-radius'?: string
-  badgeContentBorderRadius?: string
   '--badge-content-font-size'?: string
-  badgeContentFontSize?: string
   '--badge-icon-size'?: string
-  badgeIconSize?: string
   '--badge-default-color'?: string
-  badgeDefaultColor?: string
   '--badge-primary-color'?: string
-  badgePrimaryColor?: string
   '--badge-danger-color'?: string
-  badgeDangerColor?: string
   '--badge-success-color'?: string
-  badgeSuccessColor?: string
   '--badge-warning-color'?: string
-  badgeWarningColor?: string
   '--badge-info-color'?: string
-  badgeInfoColor?: string
   '--badge-default-text-color'?: string
-  badgeDefaultTextColor?: string
   '--badge-primary-text-color'?: string
-  badgePrimaryTextColor?: string
   '--badge-danger-text-color'?: string
-  badgeDangerTextColor?: string
   '--badge-success-text-color'?: string
-  badgeSuccessTextColor?: string
   '--badge-warning-text-color'?: string
-  badgeWarningTextColor?: string
   '--badge-info-text-color'?: string
-  badgeInfoTextColor?: string
   '--badge-dot-width'?: string
-  badgeDotWidth?: string
   '--badge-dot-height'?: string
-  badgeDotHeight?: string
   '--bottom-navigation-height'?: string
-  bottomNavigationHeight?: string
   '--bottom-navigation-variant-height'?: string
-  bottomNavigationVariantHeight?: string
   '--bottom-navigation-z-index'?: string
-  bottomNavigationZIndex?: string
   '--bottom-navigation-background-color'?: string
-  bottomNavigationBackgroundColor?: string
   '--bottom-navigation-border-color'?: string
-  bottomNavigationBorderColor?: string
   '--bottom-navigation-fab-offset'?: string
-  bottomNavigationFabOffset?: string
   '--bottom-navigation-item-font-size'?: string
-  bottomNavigationItemFontSize?: string
   '--bottom-navigation-item-inactive-color'?: string
-  bottomNavigationItemInactiveColor?: string
   '--bottom-navigation-item-active-color'?: string
-  bottomNavigationItemActiveColor?: string
   '--bottom-navigation-item-active-background-color'?: string
-  bottomNavigationItemActiveBackgroundColor?: string
   '--bottom-navigation-item-line-height'?: string
-  bottomNavigationItemLineHeight?: string
   '--bottom-navigation-item-icon-size'?: string
-  bottomNavigationItemIconSize?: string
   '--bottom-navigation-item-icon-margin-bottom'?: string
-  bottomNavigationItemIconMarginBottom?: string
   '--bottom-navigation-fab-border-radius'?: string
-  bottomNavigationFabBorderRadius?: string
   '--bottom-navigation-item-variant-icon-container-height'?: string
-  bottomNavigationItemVariantIconContainerHeight?: string
   '--bottom-navigation-item-variant-icon-container-border-radius'?: string
-  bottomNavigationItemVariantIconContainerBorderRadius?: string
   '--bottom-navigation-item-variant-icon-container-max-width'?: string
-  bottomNavigationItemVariantIconContainerMaxWidth?: string
   '--bottom-navigation-item-variant-active-background-color'?: string
-  bottomNavigationItemVariantActiveBackgroundColor?: string
   '--bottom-navigation-item-variant-active-color'?: string
-  bottomNavigationItemVariantActiveColor?: string
   '--breadcrumb-active-color'?: string
-  breadcrumbActiveColor?: string
   '--breadcrumb-inactive-color'?: string
-  breadcrumbInactiveColor?: string
   '--breadcrumb-separator-margin'?: string
-  breadcrumbSeparatorMargin?: string
   '--breadcrumb-separator-font-size'?: string
-  breadcrumbSeparatorFontSize?: string
   '--button-default-text-color'?: string
-  buttonDefaultTextColor?: string
   '--button-primary-text-color'?: string
-  buttonPrimaryTextColor?: string
   '--button-danger-text-color'?: string
-  buttonDangerTextColor?: string
   '--button-success-text-color'?: string
-  buttonSuccessTextColor?: string
   '--button-warning-text-color'?: string
-  buttonWarningTextColor?: string
   '--button-info-text-color'?: string
-  buttonInfoTextColor?: string
   '--button-default-color'?: string
-  buttonDefaultColor?: string
   '--button-primary-color'?: string
-  buttonPrimaryColor?: string
   '--button-danger-color'?: string
-  buttonDangerColor?: string
   '--button-success-color'?: string
-  buttonSuccessColor?: string
   '--button-warning-color'?: string
-  buttonWarningColor?: string
   '--button-info-color'?: string
-  buttonInfoColor?: string
   '--button-default-icon-color'?: string
-  buttonDefaultIconColor?: string
   '--button-primary-icon-color'?: string
-  buttonPrimaryIconColor?: string
   '--button-danger-icon-color'?: string
-  buttonDangerIconColor?: string
   '--button-success-icon-color'?: string
-  buttonSuccessIconColor?: string
   '--button-warning-icon-color'?: string
-  buttonWarningIconColor?: string
   '--button-info-icon-color'?: string
-  buttonInfoIconColor?: string
   '--button-default-icon-container-color'?: string
-  buttonDefaultIconContainerColor?: string
   '--button-primary-icon-container-color'?: string
-  buttonPrimaryIconContainerColor?: string
   '--button-danger-icon-container-color'?: string
-  buttonDangerIconContainerColor?: string
   '--button-success-icon-container-color'?: string
-  buttonSuccessIconContainerColor?: string
   '--button-warning-icon-container-color'?: string
-  buttonWarningIconContainerColor?: string
   '--button-info-icon-container-color'?: string
-  buttonInfoIconContainerColor?: string
   '--button-disabled-color'?: string
-  buttonDisabledColor?: string
   '--button-disabled-text-color'?: string
-  buttonDisabledTextColor?: string
   '--button-border-radius'?: string
-  buttonBorderRadius?: string
   '--button-mini-padding'?: string
-  buttonMiniPadding?: string
   '--button-small-padding'?: string
-  buttonSmallPadding?: string
   '--button-normal-padding'?: string
-  buttonNormalPadding?: string
   '--button-large-padding'?: string
-  buttonLargePadding?: string
   '--button-round-padding'?: string
-  buttonRoundPadding?: string
   '--button-mini-height'?: string
-  buttonMiniHeight?: string
   '--button-small-height'?: string
-  buttonSmallHeight?: string
   '--button-normal-height'?: string
-  buttonNormalHeight?: string
   '--button-large-height'?: string
-  buttonLargeHeight?: string
   '--button-mini-font-size'?: string
-  buttonMiniFontSize?: string
   '--button-small-font-size'?: string
-  buttonSmallFontSize?: string
   '--button-normal-font-size'?: string
-  buttonNormalFontSize?: string
   '--button-large-font-size'?: string
-  buttonLargeFontSize?: string
   '--card-background'?: string
-  cardBackground?: string
   '--card-padding'?: string
-  cardPadding?: string
   '--card-border-radius'?: string
-  cardBorderRadius?: string
   '--card-outline-color'?: string
-  cardOutlineColor?: string
   '--card-image-width'?: string
-  cardImageWidth?: string
   '--card-row-image-width'?: string
-  cardRowImageWidth?: string
   '--card-image-height'?: string
-  cardImageHeight?: string
   '--card-row-image-height'?: string
-  cardRowImageHeight?: string
   '--card-title-color'?: string
-  cardTitleColor?: string
   '--card-title-font-size'?: string
-  cardTitleFontSize?: string
   '--card-title-padding'?: string
-  cardTitlePadding?: string
   '--card-title-margin'?: string
-  cardTitleMargin?: string
   '--card-title-row-margin'?: string
-  cardTitleRowMargin?: string
   '--card-subtitle-color'?: string
-  cardSubtitleColor?: string
   '--card-subtitle-font-size'?: string
-  cardSubtitleFontSize?: string
   '--card-subtitle-padding'?: string
-  cardSubtitlePadding?: string
   '--card-subtitle-margin'?: string
-  cardSubtitleMargin?: string
   '--card-subtitle-row-margin'?: string
-  cardSubtitleRowMargin?: string
   '--card-description-color'?: string
-  cardDescriptionColor?: string
   '--card-description-font-size'?: string
-  cardDescriptionFontSize?: string
   '--card-description-margin'?: string
-  cardDescriptionMargin?: string
   '--card-description-padding'?: string
-  cardDescriptionPadding?: string
   '--card-footer-padding'?: string
-  cardFooterPadding?: string
   '--card-footer-margin'?: string
-  cardFooterMargin?: string
   '--card-footer-right'?: string
-  cardFooterRight?: string
   '--card-footer-bottom'?: string
-  cardFooterBottom?: string
   '--card-line-height'?: string
-  cardLineHeight?: string
   '--card-row-line-height'?: string
-  cardRowLineHeight?: string
   '--card-floating-buttons-bottom'?: string
-  cardFloatingButtonsBottom?: string
   '--card-floating-buttons-right'?: string
-  cardFloatingButtonsRight?: string
   '--card-floating-buttons-color'?: string
-  cardFloatingButtonsColor?: string
   '--card-close-button-icon-size'?: string
-  cardCloseButtonIconSize?: string
   '--card-close-button-size'?: string
-  cardCloseButtonSize?: string
   '--card-close-button-primary-color'?: string
-  cardCloseButtonPrimaryColor?: string
   '--card-close-button-text-color'?: string
-  cardCloseButtonTextColor?: string
   '--card-close-button-border-radius'?: string
-  cardCloseButtonBorderRadius?: string
   '--cell-color'?: string
-  cellColor?: string
   '--cell-font-size'?: string
-  cellFontSize?: string
   '--cell-description-font-size'?: string
-  cellDescriptionFontSize?: string
   '--cell-description-color'?: string
-  cellDescriptionColor?: string
   '--cell-padding'?: string
-  cellPadding?: string
   '--cell-min-height'?: string
-  cellMinHeight?: string
   '--cell-border-color'?: string
-  cellBorderColor?: string
   '--cell-border-left'?: string
-  cellBorderLeft?: string
   '--cell-border-right'?: string
-  cellBorderRight?: string
   '--cell-icon-right'?: string
-  cellIconRight?: string
   '--cell-extra-left'?: string
-  cellExtraLeft?: string
   '--checkbox-checked-color'?: string
-  checkboxCheckedColor?: string
   '--checkbox-unchecked-color'?: string
-  checkboxUncheckedColor?: string
   '--checkbox-disabled-color'?: string
-  checkboxDisabledColor?: string
   '--checkbox-error-color'?: string
-  checkboxErrorColor?: string
   '--checkbox-action-padding'?: string
-  checkboxActionPadding?: string
   '--checkbox-text-color'?: string
-  checkboxTextColor?: string
   '--checkbox-icon-size'?: string
-  checkboxIconSize?: string
   '--chip-default-text-color'?: string
-  chipDefaultTextColor?: string
   '--chip-primary-text-color'?: string
-  chipPrimaryTextColor?: string
   '--chip-danger-text-color'?: string
-  chipDangerTextColor?: string
   '--chip-success-text-color'?: string
-  chipSuccessTextColor?: string
   '--chip-warning-text-color'?: string
-  chipWarningTextColor?: string
   '--chip-info-text-color'?: string
-  chipInfoTextColor?: string
   '--chip-default-color'?: string
-  chipDefaultColor?: string
   '--chip-primary-color'?: string
-  chipPrimaryColor?: string
   '--chip-danger-color'?: string
-  chipDangerColor?: string
   '--chip-success-color'?: string
-  chipSuccessColor?: string
   '--chip-warning-color'?: string
-  chipWarningColor?: string
   '--chip-info-color'?: string
-  chipInfoColor?: string
   '--chip-primary-plain-color'?: string
-  chipPrimaryPlainColor?: string
   '--chip-danger-plain-color'?: string
-  chipDangerPlainColor?: string
   '--chip-success-plain-color'?: string
-  chipSuccessPlainColor?: string
   '--chip-warning-plain-color'?: string
-  chipWarningPlainColor?: string
   '--chip-info-plain-color'?: string
-  chipInfoPlainColor?: string
   '--chip-border-radius'?: string
-  chipBorderRadius?: string
   '--chip-normal-height'?: string
-  chipNormalHeight?: string
   '--chip-large-height'?: string
-  chipLargeHeight?: string
   '--chip-small-height'?: string
-  chipSmallHeight?: string
   '--chip-mini-height'?: string
-  chipMiniHeight?: string
   '--chip-round-radius'?: string
-  chipRoundRadius?: string
   '--chip-normal-padding'?: string
-  chipNormalPadding?: string
   '--chip-large-padding'?: string
-  chipLargePadding?: string
   '--chip-small-padding'?: string
-  chipSmallPadding?: string
   '--chip-mini-padding'?: string
-  chipMiniPadding?: string
   '--chip-text-normal-margin'?: string
-  chipTextNormalMargin?: string
   '--chip-text-large-margin'?: string
-  chipTextLargeMargin?: string
   '--chip-text-small-margin'?: string
-  chipTextSmallMargin?: string
   '--chip-text-mini-margin'?: string
-  chipTextMiniMargin?: string
   '--chip-mini-font-size'?: string
-  chipMiniFontSize?: string
   '--chip-small-font-size'?: string
-  chipSmallFontSize?: string
   '--chip-normal-font-size'?: string
-  chipNormalFontSize?: string
   '--chip-large-font-size'?: string
-  chipLargeFontSize?: string
   '--collapse-background'?: string
-  collapseBackground?: string
   '--collapse-text-color'?: string
-  collapseTextColor?: string
   '--collapse-header-font-size'?: string
-  collapseHeaderFontSize?: string
   '--collapse-header-padding'?: string
-  collapseHeaderPadding?: string
   '--collapse-content-font-size'?: string
-  collapseContentFontSize?: string
   '--collapse-content-padding'?: string
-  collapseContentPadding?: string
   '--collapse-item-margin-top'?: string
-  collapseItemMarginTop?: string
   '--collapse-disable-color'?: string
-  collapseDisableColor?: string
   '--collapse-border-top'?: string
-  collapseBorderTop?: string
   '--countdown-text-color'?: string
-  countdownTextColor?: string
   '--countdown-text-font-size'?: string
-  countdownTextFontSize?: string
   '--counter-padding'?: string
-  counterPadding?: string
   '--counter-font-color'?: string
-  counterFontColor?: string
   '--counter-background'?: string
-  counterBackground?: string
   '--counter-input-width'?: string
-  counterInputWidth?: string
   '--counter-input-margin'?: string
-  counterInputMargin?: string
   '--counter-input-font-size'?: string
-  counterInputFontSize?: string
   '--counter-button-size'?: string
-  counterButtonSize?: string
   '--counter-button-text-color'?: string
-  counterButtonTextColor?: string
   '--counter-button-icon-size'?: string
-  counterButtonIconSize?: string
   '--counter-disabled-color'?: string
-  counterDisabledColor?: string
   '--counter-disabled-opacity'?: string
-  counterDisabledOpacity?: string
   '--counter-error-color'?: string
-  counterErrorColor?: string
   '--date-picker-border-radius'?: string
-  datePickerBorderRadius?: string
   '--date-picker-font-size'?: string
-  datePickerFontSize?: string
   '--date-picker-min-width'?: string
-  datePickerMinWidth?: string
   '--date-picker-main-color'?: string
-  datePickerMainColor?: string
   '--date-picker-title-hint-color'?: string
-  datePickerTitleHintColor?: string
   '--date-picker-title-hint-font-size'?: string
-  datePickerTitleHintFontSize?: string
   '--date-picker-title-height'?: string
-  datePickerTitleHeight?: string
   '--date-picker-title-padding'?: string
-  datePickerTitlePadding?: string
   '--date-picker-title-background'?: string
-  datePickerTitleBackground?: string
   '--date-picker-title-color'?: string
-  datePickerTitleColor?: string
   '--date-picker-title-year-font-size'?: string
-  datePickerTitleYearFontSize?: string
   '--date-picker-title-year-font-weight'?: string
-  datePickerTitleYearFontWeight?: string
   '--date-picker-title-year-margin-bottom'?: string
-  datePickerTitleYearMarginBottom?: string
   '--date-picker-title-date-height'?: string
-  datePickerTitleDateHeight?: string
   '--date-picker-title-date-font-size'?: string
-  datePickerTitleDateFontSize?: string
   '--date-picker-title-date-font-weight'?: string
-  datePickerTitleDateFontWeight?: string
   '--date-picker-title-date-range-font-size'?: string
-  datePickerTitleDateRangeFontSize?: string
   '--date-picker-title-date-justify-content'?: string
-  datePickerTitleDateJustifyContent?: string
   '--date-picker-header-arrow-filter'?: string
-  datePickerHeaderArrowFilter?: string
   '--date-picker-body-background-color'?: string
-  datePickerBodyBackgroundColor?: string
   '--date-picker-body-height'?: string
-  datePickerBodyHeight?: string
   '--date-picker-body-padding'?: string
-  datePickerBodyPadding?: string
   '--date-picker-header-padding'?: string
-  datePickerHeaderPadding?: string
   '--date-picker-actions-padding'?: string
-  datePickerActionsPadding?: string
   '--date-picker-header-color'?: string
-  datePickerHeaderColor?: string
   '--month-picker-padding'?: string
-  monthPickerPadding?: string
   '--month-picker-item-width'?: string
-  monthPickerItemWidth?: string
   '--month-picker-item-height'?: string
-  monthPickerItemHeight?: string
   '--month-picker-item-button-max-width'?: string
-  monthPickerItemButtonMaxWidth?: string
   '--year-picker-padding'?: string
-  yearPickerPadding?: string
   '--year-picker-item-width'?: string
-  yearPickerItemWidth?: string
   '--year-picker-item-height'?: string
-  yearPickerItemHeight?: string
   '--year-picker-item-button-max-width'?: string
-  yearPickerItemButtonMaxWidth?: string
   '--day-picker-content-item-width'?: string
-  dayPickerContentItemWidth?: string
   '--day-picker-content-item-font-size'?: string
-  dayPickerContentItemFontSize?: string
   '--day-picker-content-item-padding'?: string
-  dayPickerContentItemPadding?: string
   '--day-picker-content-item-button-width'?: string
-  dayPickerContentItemButtonWidth?: string
   '--day-picker-content-item-button-height'?: string
-  dayPickerContentItemButtonHeight?: string
   '--day-picker-content-item-button-font-size'?: string
-  dayPickerContentItemButtonFontSize?: string
   '--day-picker-head-item-color'?: string
-  dayPickerHeadItemColor?: string
   '--day-picker-head-item-padding'?: string
-  dayPickerHeadItemPadding?: string
   '--day-picker-head-item-font-weight'?: string
-  dayPickerHeadItemFontWeight?: string
   '--dialog-width'?: string
-  dialogWidth?: string
   '--dialog-background'?: string
-  dialogBackground?: string
   '--dialog-border-radius'?: string
-  dialogBorderRadius?: string
   '--dialog-title-padding'?: string
-  dialogTitlePadding?: string
   '--dialog-title-font-size'?: string
-  dialogTitleFontSize?: string
   '--dialog-message-color'?: string
-  dialogMessageColor?: string
   '--dialog-message-padding'?: string
-  dialogMessagePadding?: string
   '--dialog-message-line-height'?: string
-  dialogMessageLineHeight?: string
   '--dialog-message-font-size'?: string
-  dialogMessageFontSize?: string
   '--dialog-actions-padding'?: string
-  dialogActionsPadding?: string
   '--dialog-button-margin-left'?: string
-  dialogButtonMarginLeft?: string
   '--dialog-title-color'?: string
-  dialogTitleColor?: string
   '--dialog-confirm-button-color'?: string
-  dialogConfirmButtonColor?: string
   '--dialog-cancel-button-color'?: string
-  dialogCancelButtonColor?: string
   '--divider-color'?: string
-  dividerColor?: string
   '--divider-text-color'?: string
-  dividerTextColor?: string
   '--divider-text-margin'?: string
-  dividerTextMargin?: string
   '--divider-text-padding'?: string
-  dividerTextPadding?: string
   '--divider-inset'?: string
-  dividerInset?: string
   '--fab-top'?: string
-  fabTop?: string
   '--fab-bottom'?: string
-  fabBottom?: string
   '--fab-left'?: string
-  fabLeft?: string
   '--fab-right'?: string
-  fabRight?: string
   '--fab-trigger-size'?: string
-  fabTriggerSize?: string
   '--fab-trigger-border-radius'?: string
-  fabTriggerBorderRadius?: string
   '--fab-trigger-inactive-icon-size'?: string
-  fabTriggerInactiveIconSize?: string
   '--fab-trigger-active-icon-size'?: string
-  fabTriggerActiveIconSize?: string
   '--fab-actions-padding'?: string
-  fabActionsPadding?: string
   '--fab-action-margin'?: string
-  fabActionMargin?: string
   '--fab-action-size'?: string
-  fabActionSize?: string
   '--fab-action-border-radius'?: string
-  fabActionBorderRadius?: string
   '--fab-transition-standard-easing'?: string
-  fabTransitionStandardEasing?: string
   '--floating-panel-z-index'?: string
-  floatingPanelZIndex?: string
   '--floating-panel-border-top'?: string
-  floatingPanelBorderTop?: string
   '--floating-panel-border-radius'?: string
-  floatingPanelBorderRadius?: string
   '--floating-panel-background'?: string
-  floatingPanelBackground?: string
   '--floating-panel-header-height'?: string
-  floatingPanelHeaderHeight?: string
   '--floating-panel-toolbar-width'?: string
-  floatingPanelToolbarWidth?: string
   '--floating-panel-toolbar-height'?: string
-  floatingPanelToolbarHeight?: string
   '--floating-panel-toolbar-border-radius'?: string
-  floatingPanelToolbarBorderRadius?: string
   '--floating-panel-toolbar-background'?: string
-  floatingPanelToolbarBackground?: string
   '--floating-panel-transition-timing-function'?: string
-  floatingPanelTransitionTimingFunction?: string
   '--form-details-error-message-color'?: string
-  formDetailsErrorMessageColor?: string
   '--form-details-extra-message-color'?: string
-  formDetailsExtraMessageColor?: string
   '--form-details-margin-top'?: string
-  formDetailsMarginTop?: string
   '--form-details-font-size'?: string
-  formDetailsFontSize?: string
   '--form-details-message-margin-right'?: string
-  formDetailsMessageMarginRight?: string
   '--icon-size'?: string
-  iconSize?: string
   '--image-preview-swipe-indicators-text-color'?: string
-  imagePreviewSwipeIndicatorsTextColor?: string
   '--image-preview-swipe-indicators-padding'?: string
-  imagePreviewSwipeIndicatorsPadding?: string
   '--image-preview-zoom-container-background'?: string
-  imagePreviewZoomContainerBackground?: string
   '--image-preview-close-icon-top'?: string
-  imagePreviewCloseIconTop?: string
   '--image-preview-close-icon-right'?: string
-  imagePreviewCloseIconRight?: string
   '--image-preview-close-icon-size'?: string
-  imagePreviewCloseIconSize?: string
   '--image-preview-close-icon-color'?: string
-  imagePreviewCloseIconColor?: string
   '--image-preview-extra-top'?: string
-  imagePreviewExtraTop?: string
   '--image-preview-extra-left'?: string
-  imagePreviewExtraLeft?: string
   '--index-bar-list-right'?: string
-  indexBarListRight?: string
   '--index-bar-list-top'?: string
-  indexBarListTop?: string
   '--index-bar-list-left'?: string
-  indexBarListLeft?: string
   '--index-bar-list-bottom'?: string
-  indexBarListBottom?: string
   '--index-bar-list-transform'?: string
-  indexBarListTransform?: string
   '--index-bar-list-item-font-size'?: string
-  indexBarListItemFontSize?: string
   '--index-bar-list-item-color'?: string
-  indexBarListItemColor?: string
   '--index-bar-list-item-active-color'?: string
-  indexBarListItemActiveColor?: string
   '--index-bar-list-item-height'?: string
-  indexBarListItemHeight?: string
   '--index-bar-list-item-padding'?: string
-  indexBarListItemPadding?: string
   '--field-decorator-text-color'?: string
-  fieldDecoratorTextColor?: string
   '--field-decorator-error-color'?: string
-  fieldDecoratorErrorColor?: string
   '--field-decorator-blur-color'?: string
-  fieldDecoratorBlurColor?: string
   '--field-decorator-focus-color'?: string
-  fieldDecoratorFocusColor?: string
   '--field-decorator-placeholder-size'?: string
-  fieldDecoratorPlaceholderSize?: string
   '--field-decorator-icon-size'?: string
-  fieldDecoratorIconSize?: string
   '--field-decorator-line-size'?: string
-  fieldDecoratorLineSize?: string
   '--field-decorator-line-focus-size'?: string
-  fieldDecoratorLineFocusSize?: string
   '--field-decorator-line-border-radius'?: string
-  fieldDecoratorLineBorderRadius?: string
   '--field-decorator-disabled-color'?: string
-  fieldDecoratorDisabledColor?: string
   '--field-decorator-standard-normal-margin-top'?: string
-  fieldDecoratorStandardNormalMarginTop?: string
   '--field-decorator-standard-normal-margin-bottom'?: string
-  fieldDecoratorStandardNormalMarginBottom?: string
   '--field-decorator-standard-normal-icon-margin-top'?: string
-  fieldDecoratorStandardNormalIconMarginTop?: string
   '--field-decorator-standard-normal-icon-margin-bottom'?: string
-  fieldDecoratorStandardNormalIconMarginBottom?: string
   '--field-decorator-standard-normal-non-hint-margin-top'?: string
-  fieldDecoratorStandardNormalNonHintMarginTop?: string
   '--field-decorator-standard-small-margin-top'?: string
-  fieldDecoratorStandardSmallMarginTop?: string
   '--field-decorator-standard-small-margin-bottom'?: string
-  fieldDecoratorStandardSmallMarginBottom?: string
   '--field-decorator-standard-small-icon-margin-top'?: string
-  fieldDecoratorStandardSmallIconMarginTop?: string
   '--field-decorator-standard-small-icon-margin-bottom'?: string
-  fieldDecoratorStandardSmallIconMarginBottom?: string
   '--field-decorator-standard-small-non-hint-margin-top'?: string
-  fieldDecoratorStandardSmallNonHintMarginTop?: string
   '--field-decorator-outlined-normal-margin-top'?: string
-  fieldDecoratorOutlinedNormalMarginTop?: string
   '--field-decorator-outlined-normal-margin-bottom'?: string
-  fieldDecoratorOutlinedNormalMarginBottom?: string
   '--field-decorator-outlined-normal-padding-left'?: string
-  fieldDecoratorOutlinedNormalPaddingLeft?: string
   '--field-decorator-outlined-normal-padding-right'?: string
-  fieldDecoratorOutlinedNormalPaddingRight?: string
   '--field-decorator-outlined-normal-placeholder-space'?: string
-  fieldDecoratorOutlinedNormalPlaceholderSpace?: string
   '--field-decorator-outlined-normal-icon-margin-top'?: string
-  fieldDecoratorOutlinedNormalIconMarginTop?: string
   '--field-decorator-outlined-normal-icon-margin-bottom'?: string
-  fieldDecoratorOutlinedNormalIconMarginBottom?: string
   '--field-decorator-outlined-small-margin-top'?: string
-  fieldDecoratorOutlinedSmallMarginTop?: string
   '--field-decorator-outlined-small-margin-bottom'?: string
-  fieldDecoratorOutlinedSmallMarginBottom?: string
   '--field-decorator-outlined-small-padding-left'?: string
-  fieldDecoratorOutlinedSmallPaddingLeft?: string
   '--field-decorator-outlined-small-padding-right'?: string
-  fieldDecoratorOutlinedSmallPaddingRight?: string
   '--field-decorator-outlined-small-placeholder-space'?: string
-  fieldDecoratorOutlinedSmallPlaceholderSpace?: string
   '--field-decorator-outlined-small-icon-margin-top'?: string
-  fieldDecoratorOutlinedSmallIconMarginTop?: string
   '--field-decorator-outlined-small-icon-margin-bottom'?: string
-  fieldDecoratorOutlinedSmallIconMarginBottom?: string
   '--input-input-height'?: string
-  inputInputHeight?: string
   '--input-input-font-size'?: string
-  inputInputFontSize?: string
   '--input-textarea-height'?: string
-  inputTextareaHeight?: string
   '--link-default-color'?: string
-  linkDefaultColor?: string
   '--link-primary-color'?: string
-  linkPrimaryColor?: string
   '--link-danger-color'?: string
-  linkDangerColor?: string
   '--link-success-color'?: string
-  linkSuccessColor?: string
   '--link-warning-color'?: string
-  linkWarningColor?: string
   '--link-info-color'?: string
-  linkInfoColor?: string
   '--link-disabled-color'?: string
-  linkDisabledColor?: string
   '--link-font-size'?: string
-  linkFontSize?: string
   '--link-focus-opacity'?: string
-  linkFocusOpacity?: string
   '--list-loading-height'?: string
-  listLoadingHeight?: string
   '--list-finished-height'?: string
-  listFinishedHeight?: string
   '--list-error-height'?: string
-  listErrorHeight?: string
   '--list-loading-color'?: string
-  listLoadingColor?: string
   '--list-finished-color'?: string
-  listFinishedColor?: string
   '--list-error-color'?: string
-  listErrorColor?: string
   '--list-loading-font-size'?: string
-  listLoadingFontSize?: string
   '--list-finished-font-size'?: string
-  listFinishedFontSize?: string
   '--list-error-font-size'?: string
-  listErrorFontSize?: string
   '--loading-color'?: string
-  loadingColor?: string
   '--loading-opacity'?: string
-  loadingOpacity?: string
   '--loading-desc-margin'?: string
-  loadingDescMargin?: string
   '--loading-desc-color'?: string
-  loadingDescColor?: string
   '--loading-bar-color'?: string
-  loadingBarColor?: string
   '--loading-bar-error-color'?: string
-  loadingBarErrorColor?: string
   '--loading-bar-height'?: string
-  loadingBarHeight?: string
   '--menu-background-color'?: string
-  menuBackgroundColor?: string
   '--menu-border-radius'?: string
-  menuBorderRadius?: string
   '--menu-select-menu-max-height'?: string
-  menuSelectMenuMaxHeight?: string
   '--menu-select-menu-padding'?: string
-  menuSelectMenuPadding?: string
   '--menu-select-menu-border-radius'?: string
-  menuSelectMenuBorderRadius?: string
   '--menu-select-menu-background-color'?: string
-  menuSelectMenuBackgroundColor?: string
   '--menu-option-normal-height'?: string
-  menuOptionNormalHeight?: string
   '--menu-option-small-height'?: string
-  menuOptionSmallHeight?: string
   '--menu-option-mini-height'?: string
-  menuOptionMiniHeight?: string
   '--menu-option-large-height'?: string
-  menuOptionLargeHeight?: string
   '--menu-option-padding'?: string
-  menuOptionPadding?: string
   '--menu-option-normal-font-size'?: string
-  menuOptionNormalFontSize?: string
   '--menu-option-small-font-size'?: string
-  menuOptionSmallFontSize?: string
   '--menu-option-mini-font-size'?: string
-  menuOptionMiniFontSize?: string
   '--menu-option-large-font-size'?: string
-  menuOptionLargeFontSize?: string
   '--menu-option-selected-background'?: string
-  menuOptionSelectedBackground?: string
   '--menu-option-text-color'?: string
-  menuOptionTextColor?: string
   '--menu-option-disabled-color'?: string
-  menuOptionDisabledColor?: string
   '--overlay-background-color'?: string
-  overlayBackgroundColor?: string
   '--pagination-text-color'?: string
-  paginationTextColor?: string
   '--pagination-font-size'?: string
-  paginationFontSize?: string
   '--pagination-active-color'?: string
-  paginationActiveColor?: string
   '--pagination-active-bg-color'?: string
-  paginationActiveBgColor?: string
   '--pagination-hover-bg-color'?: string
-  paginationHoverBgColor?: string
   '--pagination-total-margin'?: string
-  paginationTotalMargin?: string
   '--pagination-total-line-height'?: string
-  paginationTotalLineHeight?: string
   '--pagination-item-width'?: string
-  paginationItemWidth?: string
   '--pagination-item-height'?: string
-  paginationItemHeight?: string
   '--pagination-item-margin'?: string
-  paginationItemMargin?: string
   '--pagination-item-border-radius'?: string
-  paginationItemBorderRadius?: string
   '--pagination-input-width'?: string
-  paginationInputWidth?: string
   '--pagination-disabled-color'?: string
-  paginationDisabledColor?: string
   '--pagination-bg-disabled-color'?: string
-  paginationBgDisabledColor?: string
   '--pagination-size-line-height'?: string
-  paginationSizeLineHeight?: string
   '--pagination-size-padding'?: string
-  paginationSizePadding?: string
   '--paper-background'?: string
-  paperBackground?: string
   '--paper-border-radius'?: string
-  paperBorderRadius?: string
   '--picker-background'?: string
-  pickerBackground?: string
   '--picker-toolbar-height'?: string
-  pickerToolbarHeight?: string
   '--picker-confirm-button-text-color'?: string
-  pickerConfirmButtonTextColor?: string
   '--picker-cancel-button-text-color'?: string
-  pickerCancelButtonTextColor?: string
   '--picker-picked-border'?: string
-  pickerPickedBorder?: string
   '--picker-title-font-size'?: string
-  pickerTitleFontSize?: string
   '--picker-title-text-color'?: string
-  pickerTitleTextColor?: string
   '--picker-option-font-size'?: string
-  pickerOptionFontSize?: string
   '--picker-option-text-color'?: string
-  pickerOptionTextColor?: string
   '--picker-toolbar-padding'?: string
-  pickerToolbarPadding?: string
   '--picker-mask-background-image'?: string
-  pickerMaskBackgroundImage?: string
   '--popup-overlay-background-color'?: string
-  popupOverlayBackgroundColor?: string
   '--popup-content-background-color'?: string
-  popupContentBackgroundColor?: string
   '--progress-font-size'?: string
-  progressFontSize?: string
   '--progress-track-color'?: string
-  progressTrackColor?: string
   '--progress-label-color'?: string
-  progressLabelColor?: string
   '--progress-background'?: string
-  progressBackground?: string
   '--progress-default-color'?: string
-  progressDefaultColor?: string
   '--progress-primary-color'?: string
-  progressPrimaryColor?: string
   '--progress-danger-color'?: string
-  progressDangerColor?: string
   '--progress-success-color'?: string
-  progressSuccessColor?: string
   '--progress-warning-color'?: string
-  progressWarningColor?: string
   '--progress-info-color'?: string
-  progressInfoColor?: string
   '--progress-linear-border-radius'?: string
-  progressLinearBorderRadius?: string
   '--pull-refresh-size'?: string
-  pullRefreshSize?: string
   '--pull-refresh-background'?: string
-  pullRefreshBackground?: string
   '--pull-refresh-color'?: string
-  pullRefreshColor?: string
   '--pull-refresh-success-color'?: string
-  pullRefreshSuccessColor?: string
   '--pull-refresh-icon-size'?: string
-  pullRefreshIconSize?: string
   '--radio-checked-color'?: string
-  radioCheckedColor?: string
   '--radio-unchecked-color'?: string
-  radioUncheckedColor?: string
   '--radio-disabled-color'?: string
-  radioDisabledColor?: string
   '--radio-error-color'?: string
-  radioErrorColor?: string
   '--radio-action-padding'?: string
-  radioActionPadding?: string
   '--radio-icon-size'?: string
-  radioIconSize?: string
   '--radio-text-color'?: string
-  radioTextColor?: string
   '--rate-color'?: string
-  rateColor?: string
   '--rate-size'?: string
-  rateSize?: string
   '--rate-primary-color'?: string
-  ratePrimaryColor?: string
   '--rate-disabled-color'?: string
-  rateDisabledColor?: string
   '--rate-error-color'?: string
-  rateErrorColor?: string
   '--rate-action-padding'?: string
-  rateActionPadding?: string
   '--result-background'?: string
-  resultBackground?: string
   '--result-info-color'?: string
-  resultInfoColor?: string
   '--result-info-border-color'?: string
-  resultInfoBorderColor?: string
   '--result-success-color'?: string
-  resultSuccessColor?: string
   '--result-success-border-color'?: string
-  resultSuccessBorderColor?: string
   '--result-error-color'?: string
-  resultErrorColor?: string
   '--result-error-border-color'?: string
-  resultErrorBorderColor?: string
   '--result-warning-color'?: string
-  resultWarningColor?: string
   '--result-warning-border-color'?: string
-  resultWarningBorderColor?: string
   '--result-question-color'?: string
-  resultQuestionColor?: string
   '--result-question-border-color'?: string
-  resultQuestionBorderColor?: string
   '--result-empty-color'?: string
-  resultEmptyColor?: string
   '--result-empty-border-color'?: string
-  resultEmptyBorderColor?: string
   '--result-padding'?: string
-  resultPadding?: string
   '--result-border-radius'?: string
-  resultBorderRadius?: string
   '--result-title-color'?: string
-  resultTitleColor?: string
   '--result-title-font-size'?: string
-  resultTitleFontSize?: string
   '--result-title-margin'?: string
-  resultTitleMargin?: string
   '--result-image-size'?: string
-  resultImageSize?: string
   '--result-title-font-weight'?: string
-  resultTitleFontWeight?: string
   '--result-description-margin'?: string
-  resultDescriptionMargin?: string
   '--result-description-font-size'?: string
-  resultDescriptionFontSize?: string
   '--result-description-color'?: string
-  resultDescriptionColor?: string
   '--result-description-line-height'?: string
-  resultDescriptionLineHeight?: string
   '--ripple-cubic-bezier'?: string
-  rippleCubicBezier?: string
   '--ripple-color'?: string
-  rippleColor?: string
   '--select-scroller-background'?: string
-  selectScrollerBackground?: string
   '--select-scroller-padding'?: string
-  selectScrollerPadding?: string
   '--select-scroller-max-height'?: string
-  selectScrollerMaxHeight?: string
   '--select-scroller-border-radius'?: string
-  selectScrollerBorderRadius?: string
   '--select-label-font-size'?: string
-  selectLabelFontSize?: string
   '--select-chip-margin'?: string
-  selectChipMargin?: string
   '--select-arrow-size'?: string
-  selectArrowSize?: string
   '--select-standard-menu-margin'?: string
-  selectStandardMenuMargin?: string
   '--option-height'?: string
-  optionHeight?: string
   '--option-padding'?: string
-  optionPadding?: string
   '--option-font-size'?: string
-  optionFontSize?: string
   '--option-selected-background'?: string
-  optionSelectedBackground?: string
   '--option-text-color'?: string
-  optionTextColor?: string
   '--skeleton-content-padding'?: string
-  skeletonContentPadding?: string
   '--skeleton-card-height'?: string
-  skeletonCardHeight?: string
   '--skeleton-card-border-radius'?: string
-  skeletonCardBorderRadius?: string
   '--skeleton-card-margin-bottom'?: string
-  skeletonCardMarginBottom?: string
   '--skeleton-card-background-color'?: string
-  skeletonCardBackgroundColor?: string
   '--skeleton-animation-background'?: string
-  skeletonAnimationBackground?: string
   '--skeleton-avatar-size'?: string
-  skeletonAvatarSize?: string
   '--skeleton-avatar-border-radius'?: string
-  skeletonAvatarBorderRadius?: string
   '--skeleton-avatar-margin-right'?: string
-  skeletonAvatarMarginRight?: string
   '--skeleton-avatar-background-color'?: string
-  skeletonAvatarBackgroundColor?: string
   '--skeleton-title-width'?: string
-  skeletonTitleWidth?: string
   '--skeleton-title-border-radius'?: string
-  skeletonTitleBorderRadius?: string
   '--skeleton-title-background-color'?: string
-  skeletonTitleBackgroundColor?: string
   '--skeleton-row-height'?: string
-  skeletonRowHeight?: string
   '--skeleton-row-border-radius'?: string
-  skeletonRowBorderRadius?: string
   '--skeleton-row-margin-top'?: string
-  skeletonRowMarginTop?: string
   '--slider-error-color'?: string
-  sliderErrorColor?: string
   '--slider-track-background'?: string
-  sliderTrackBackground?: string
   '--slider-track-height'?: string
-  sliderTrackHeight?: string
   '--slider-track-border-radius'?: string
-  sliderTrackBorderRadius?: string
   '--slider-track-fill-border-radius'?: string
-  sliderTrackFillBorderRadius?: string
   '--slider-track-fill-background'?: string
-  sliderTrackFillBackground?: string
   '--slider-thumb-block-background'?: string
-  sliderThumbBlockBackground?: string
   '--slider-thumb-ripple-background'?: string
-  sliderThumbRippleBackground?: string
   '--slider-thumb-label-background'?: string
-  sliderThumbLabelBackground?: string
   '--slider-thumb-label-font-size'?: string
-  sliderThumbLabelFontSize?: string
   '--slider-thumb-label-text-color'?: string
-  sliderThumbLabelTextColor?: string
   '--slider-thumb-size'?: string
-  sliderThumbSize?: string
   '--slider-disabled-opacity'?: string
-  sliderDisabledOpacity?: string
   '--snackbar-width'?: string
-  snackbarWidth?: string
   '--snackbar-color'?: string
-  snackbarColor?: string
   '--snackbar-border-radius'?: string
-  snackbarBorderRadius?: string
   '--snackbar-background'?: string
-  snackbarBackground?: string
   '--snackbar-font-size'?: string
-  snackbarFontSize?: string
   '--snackbar-margin'?: string
-  snackbarMargin?: string
   '--snackbar-border-color'?: string
-  snackbarBorderColor?: string
   '--snackbar-success-background'?: string
-  snackbarSuccessBackground?: string
   '--snackbar-info-background'?: string
-  snackbarInfoBackground?: string
   '--snackbar-error-background'?: string
-  snackbarErrorBackground?: string
   '--snackbar-warning-background'?: string
-  snackbarWarningBackground?: string
   '--snackbar-content-padding'?: string
-  snackbarContentPadding?: string
   '--snackbar-action-margin'?: string
-  snackbarActionMargin?: string
   '--snackbar-icon-margin'?: string
-  snackbarIconMargin?: string
   '--snackbar-vertical-action-margin'?: string
-  snackbarVerticalActionMargin?: string
   '--space-size-mini-y'?: string
-  spaceSizeMiniY?: string
   '--space-size-mini-x'?: string
-  spaceSizeMiniX?: string
   '--space-size-small-y'?: string
-  spaceSizeSmallY?: string
   '--space-size-small-x'?: string
-  spaceSizeSmallX?: string
   '--space-size-normal-y'?: string
-  spaceSizeNormalY?: string
   '--space-size-normal-x'?: string
-  spaceSizeNormalX?: string
   '--space-size-large-y'?: string
-  spaceSizeLargeY?: string
   '--space-size-large-x'?: string
-  spaceSizeLargeX?: string
   '--step-tag-size'?: string
-  stepTagSize?: string
   '--step-tag-background'?: string
-  stepTagBackground?: string
   '--step-tag-font-size'?: string
-  stepTagFontSize?: string
   '--step-tag-color'?: string
-  stepTagColor?: string
   '--step-tag-active-color'?: string
-  stepTagActiveColor?: string
   '--step-tag-margin'?: string
-  stepTagMargin?: string
   '--step-tag-icon-size'?: string
-  stepTagIconSize?: string
   '--step-content-font-size'?: string
-  stepContentFontSize?: string
   '--step-content-color'?: string
-  stepContentColor?: string
   '--step-content-active-color'?: string
-  stepContentActiveColor?: string
   '--step-line-background'?: string
-  stepLineBackground?: string
   '--step-line-gap'?: string
-  stepLineGap?: string
   '--step-vertical-tag-margin'?: string
-  stepVerticalTagMargin?: string
   '--step-vertical-min-height'?: string
-  stepVerticalMinHeight?: string
   '--swipe-indicator-color'?: string
-  swipeIndicatorColor?: string
   '--swipe-indicators-offset'?: string
-  swipeIndicatorsOffset?: string
   '--swipe-indicator-offset'?: string
-  swipeIndicatorOffset?: string
   '--swipe-navigation-z-index'?: string
-  swipeNavigationZIndex?: string
   '--swipe-navigation-button-width'?: string
-  swipeNavigationButtonWidth?: string
   '--swipe-navigation-button-height'?: string
-  swipeNavigationButtonHeight?: string
   '--swipe-navigation-button-border-radius'?: string
-  swipeNavigationButtonBorderRadius?: string
   '--swipe-navigation-icon-size'?: string
-  swipeNavigationIconSize?: string
   '--swipe-navigation-prev-left'?: string
-  swipeNavigationPrevLeft?: string
   '--swipe-navigation-next-right'?: string
-  swipeNavigationNextRight?: string
   '--swipe-navigation-prev-top'?: string
-  swipeNavigationPrevTop?: string
   '--swipe-navigation-next-bottom'?: string
-  swipeNavigationNextBottom?: string
   '--switch-track-background'?: string
-  switchTrackBackground?: string
   '--switch-track-active-background'?: string
-  switchTrackActiveBackground?: string
   '--switch-track-error-background'?: string
-  switchTrackErrorBackground?: string
   '--switch-ripple-color'?: string
-  switchRippleColor?: string
   '--switch-handle-background'?: string
-  switchHandleBackground?: string
   '--switch-handle-color'?: string
-  switchHandleColor?: string
   '--switch-handle-active-color'?: string
-  switchHandleActiveColor?: string
   '--switch-handle-active-background'?: string
-  switchHandleActiveBackground?: string
   '--switch-handle-error-background'?: string
-  switchHandleErrorBackground?: string
   '--switch-disabled-opacity'?: string
-  switchDisabledOpacity?: string
   '--switch-variant-width'?: string
-  switchVariantWidth?: string
   '--switch-variant-height'?: string
-  switchVariantHeight?: string
   '--switch-variant-track-border-color'?: string
-  switchVariantTrackBorderColor?: string
   '--switch-variant-track-background'?: string
-  switchVariantTrackBackground?: string
   '--switch-variant-handle-width'?: string
-  switchVariantHandleWidth?: string
   '--switch-variant-handle-height'?: string
-  switchVariantHandleHeight?: string
   '--switch-variant-handle-color'?: string
-  switchVariantHandleColor?: string
   '--switch-variant-handle-active-color'?: string
-  switchVariantHandleActiveColor?: string
   '--switch-variant-handle-background'?: string
-  switchVariantHandleBackground?: string
   '--switch-variant-handle-active-background'?: string
-  switchVariantHandleActiveBackground?: string
   '--table-background'?: string
-  tableBackground?: string
   '--table-border-radius'?: string
-  tableBorderRadius?: string
   '--table-thead-border-bottom'?: string
-  tableTheadBorderBottom?: string
   '--table-thead-th-text-color'?: string
-  tableTheadThTextColor?: string
   '--table-thead-th-text-align'?: string
-  tableTheadThTextAlign?: string
   '--table-thead-th-font-size'?: string
-  tableTheadThFontSize?: string
   '--table-thead-tr-border-bottom'?: string
-  tableTheadTrBorderBottom?: string
   '--table-tbody-tr-hover-background'?: string
-  tableTbodyTrHoverBackground?: string
   '--table-tbody-tr-border-bottom'?: string
-  tableTbodyTrBorderBottom?: string
   '--table-tbody-td-text-color'?: string
-  tableTbodyTdTextColor?: string
   '--table-tbody-td-font-size'?: string
-  tableTbodyTdFontSize?: string
   '--table-tbody-td-text-align'?: string
-  tableTbodyTdTextAlign?: string
   '--table-row-height'?: string
-  tableRowHeight?: string
   '--table-row-padding'?: string
-  tableRowPadding?: string
   '--table-footer-border-top'?: string
-  tableFooterBorderTop?: string
   '--tabs-item-horizontal-height'?: string
-  tabsItemHorizontalHeight?: string
   '--tabs-item-vertical-height'?: string
-  tabsItemVerticalHeight?: string
   '--tabs-radius'?: string
-  tabsRadius?: string
   '--tabs-padding'?: string
-  tabsPadding?: string
   '--tabs-indicator-size'?: string
-  tabsIndicatorSize?: string
   '--tabs-indicator-border-radius'?: string
-  tabsIndicatorBorderRadius?: string
   '--tabs-indicator-background'?: string
-  tabsIndicatorBackground?: string
   '--tabs-background'?: string
-  tabsBackground?: string
   '--tabs-indicator-inner-size'?: string
-  tabsIndicatorInnerSize?: string
   '--tab-padding'?: string
-  tabPadding?: string
   '--tab-active-color'?: string
-  tabActiveColor?: string
   '--tab-inactive-color'?: string
-  tabInactiveColor?: string
   '--tab-disabled-color'?: string
-  tabDisabledColor?: string
   '--tab-font-size'?: string
-  tabFontSize?: string
   '--tab-font-weight'?: string
-  tabFontWeight?: string
   '--tab-active-font-size'?: string
-  tabActiveFontSize?: string
   '--tab-active-font-weight'?: string
-  tabActiveFontWeight?: string
   '--font-size-xs'?: string
-  fontSizeXs?: string
   '--font-size-sm'?: string
-  fontSizeSm?: string
   '--font-size-md'?: string
-  fontSizeMd?: string
   '--font-size-lg'?: string
-  fontSizeLg?: string
   '--icon-size-xs'?: string
-  iconSizeXs?: string
   '--icon-size-sm'?: string
-  iconSizeSm?: string
   '--icon-size-md'?: string
-  iconSizeMd?: string
   '--icon-size-lg'?: string
-  iconSizeLg?: string
   '--color-body'?: string
-  colorBody?: string
   '--color-text'?: string
-  colorText?: string
   '--color-primary'?: string
-  colorPrimary?: string
   '--color-info'?: string
-  colorInfo?: string
   '--color-success'?: string
-  colorSuccess?: string
   '--color-warning'?: string
-  colorWarning?: string
   '--color-danger'?: string
-  colorDanger?: string
   '--color-disabled'?: string
-  colorDisabled?: string
   '--color-text-disabled'?: string
-  colorTextDisabled?: string
   '--color-on-primary'?: string
-  colorOnPrimary?: string
   '--color-on-info'?: string
-  colorOnInfo?: string
   '--color-on-success'?: string
-  colorOnSuccess?: string
   '--color-on-warning'?: string
-  colorOnWarning?: string
   '--color-on-danger'?: string
-  colorOnDanger?: string
   '--color-primary-container'?: string
-  colorPrimaryContainer?: string
   '--color-info-container'?: string
-  colorInfoContainer?: string
   '--color-success-container'?: string
-  colorSuccessContainer?: string
   '--color-warning-container'?: string
-  colorWarningContainer?: string
   '--color-danger-container'?: string
-  colorDangerContainer?: string
   '--color-on-primary-container'?: string
-  colorOnPrimaryContainer?: string
   '--color-on-info-container'?: string
-  colorOnInfoContainer?: string
   '--color-on-success-container'?: string
-  colorOnSuccessContainer?: string
   '--color-on-warning-container'?: string
-  colorOnWarningContainer?: string
   '--color-on-danger-container'?: string
-  colorOnDangerContainer?: string
   '--color-surface-container'?: string
-  colorSurfaceContainer?: string
   '--color-surface-container-low'?: string
-  colorSurfaceContainerLow?: string
   '--color-surface-container-high'?: string
-  colorSurfaceContainerHigh?: string
   '--color-surface-container-highest'?: string
-  colorSurfaceContainerHighest?: string
   '--color-inverse-surface'?: string
-  colorInverseSurface?: string
   '--color-outline'?: string
-  colorOutline?: string
   '--color-on-surface-variant'?: string
-  colorOnSurfaceVariant?: string
   '--opacity-disabled'?: string
-  opacityDisabled?: string
   '--opacity-hover'?: string
-  opacityHover?: string
   '--opacity-focus'?: string
-  opacityFocus?: string
   '--cubic-bezier'?: string
-  cubicBezier?: string
   '--shadow-key-umbra-opacity'?: string
-  shadowKeyUmbraOpacity?: string
   '--shadow-key-penumbra-opacity'?: string
-  shadowKeyPenumbraOpacity?: string
   '--shadow-key-ambient-opacity'?: string
-  shadowKeyAmbientOpacity?: string
   '--time-picker-border-radius'?: string
-  timePickerBorderRadius?: string
   '--time-picker-font-size'?: string
-  timePickerFontSize?: string
   '--time-picker-min-width'?: string
-  timePickerMinWidth?: string
   '--time-picker-title-height'?: string
-  timePickerTitleHeight?: string
   '--time-picker-title-padding'?: string
-  timePickerTitlePadding?: string
   '--time-picker-title-margin-bottom'?: string
-  timePickerTitleMarginBottom?: string
   '--time-picker-title-color'?: string
-  timePickerTitleColor?: string
   '--time-picker-title-background'?: string
-  timePickerTitleBackground?: string
   '--time-picker-title-hint-color'?: string
-  timePickerTitleHintColor?: string
   '--time-picker-title-hint-font-size'?: string
-  timePickerTitleHintFontSize?: string
   '--time-picker-title-inactive-opacity'?: string
-  timePickerTitleInactiveOpacity?: string
   '--time-picker-title-time-font-size'?: string
-  timePickerTitleTimeFontSize?: string
   '--time-picker-title-time-margin'?: string
-  timePickerTitleTimeMargin?: string
   '--time-picker-title-time-border-radius'?: string
-  timePickerTitleTimeBorderRadius?: string
   '--time-picker-title-time-padding'?: string
-  timePickerTitleTimePadding?: string
   '--time-picker-title-time-background'?: string
-  timePickerTitleTimeBackground?: string
   '--time-picker-title-time-active-background'?: string
-  timePickerTitleTimeActiveBackground?: string
   '--time-picker-title-time-container-justify-content'?: string
-  timePickerTitleTimeContainerJustifyContent?: string
   '--time-picker-title-ampm-button-active-background'?: string
-  timePickerTitleAmpmButtonActiveBackground?: string
   '--time-picker-title-ampm-margin-left'?: string
-  timePickerTitleAmpmMarginLeft?: string
   '--time-picker-title-ampm-border-radius'?: string
-  timePickerTitleAmpmBorderRadius?: string
   '--time-picker-title-ampm-border'?: string
-  timePickerTitleAmpmBorder?: string
   '--time-picker-title-ampm-button-padding'?: string
-  timePickerTitleAmpmButtonPadding?: string
   '--time-picker-clock-left'?: string
-  timePickerClockLeft?: string
   '--time-picker-clock-right'?: string
-  timePickerClockRight?: string
   '--time-picker-clock-top'?: string
-  timePickerClockTop?: string
   '--time-picker-clock-bottom'?: string
-  timePickerClockBottom?: string
   '--time-picker-clock-container-width'?: string
-  timePickerClockContainerWidth?: string
   '--time-picker-clock-container-height'?: string
-  timePickerClockContainerHeight?: string
   '--time-picker-clock-container-background'?: string
-  timePickerClockContainerBackground?: string
   '--time-picker-clock-hand-height'?: string
-  timePickerClockHandHeight?: string
   '--time-picker-clock-hand-width'?: string
-  timePickerClockHandWidth?: string
   '--time-picker-clock-hand-bottom'?: string
-  timePickerClockHandBottom?: string
   '--time-picker-clock-hand-left'?: string
-  timePickerClockHandLeft?: string
   '--time-picker-clock-hand-background'?: string
-  timePickerClockHandBackground?: string
   '--time-picker-clock-hand-border-color'?: string
-  timePickerClockHandBorderColor?: string
   '--time-picker-clock-hand-before-width'?: string
-  timePickerClockHandBeforeWidth?: string
   '--time-picker-clock-hand-before-height'?: string
-  timePickerClockHandBeforeHeight?: string
   '--time-picker-clock-hand-before-border-width'?: string
-  timePickerClockHandBeforeBorderWidth?: string
   '--time-picker-clock-hand-after-width'?: string
-  timePickerClockHandAfterWidth?: string
   '--time-picker-clock-hand-after-height'?: string
-  timePickerClockHandAfterHeight?: string
   '--time-picker-clock-item-height'?: string
-  timePickerClockItemHeight?: string
   '--time-picker-clock-item-width'?: string
-  timePickerClockItemWidth?: string
   '--time-picker-clock-item-active-background'?: string
-  timePickerClockItemActiveBackground?: string
   '--time-picker-clock-item-active-color'?: string
-  timePickerClockItemActiveColor?: string
   '--time-picker-clock-item-disable-color'?: string
-  timePickerClockItemDisableColor?: string
   '--time-picker-clock-item-disable-background'?: string
-  timePickerClockItemDisableBackground?: string
   '--time-picker-clock-item-text-color'?: string
-  timePickerClockItemTextColor?: string
   '--time-picker-inner-left'?: string
-  timePickerInnerLeft?: string
   '--time-picker-inner-right'?: string
-  timePickerInnerRight?: string
   '--time-picker-inner-top'?: string
-  timePickerInnerTop?: string
   '--time-picker-inner-bottom'?: string
-  timePickerInnerBottom?: string
   '--time-picker-body-background'?: string
-  timePickerBodyBackground?: string
   '--time-picker-body-height'?: string
-  timePickerBodyHeight?: string
   '--time-picker-actions-padding'?: string
-  timePickerActionsPadding?: string
   '--tooltip-opacity'?: string
-  tooltipOpacity?: string
   '--tooltip-border-radius'?: string
-  tooltipBorderRadius?: string
   '--tooltip-font-size'?: string
-  tooltipFontSize?: string
   '--tooltip-padding'?: string
-  tooltipPadding?: string
   '--tooltip-offset'?: string
-  tooltipOffset?: string
   '--tooltip-default-color'?: string
-  tooltipDefaultColor?: string
   '--tooltip-primary-color'?: string
-  tooltipPrimaryColor?: string
   '--tooltip-info-color'?: string
-  tooltipInfoColor?: string
   '--tooltip-success-color'?: string
-  tooltipSuccessColor?: string
   '--tooltip-warning-color'?: string
-  tooltipWarningColor?: string
   '--tooltip-danger-color'?: string
-  tooltipDangerColor?: string
   '--tooltip-default-text-color'?: string
-  tooltipDefaultTextColor?: string
   '--tooltip-primary-text-color'?: string
-  tooltipPrimaryTextColor?: string
   '--tooltip-info-text-color'?: string
-  tooltipInfoTextColor?: string
   '--tooltip-success-text-color'?: string
-  tooltipSuccessTextColor?: string
   '--tooltip-warning-text-color'?: string
-  tooltipWarningTextColor?: string
   '--tooltip-danger-text-color'?: string
-  tooltipDangerTextColor?: string
   '--uploader-action-background'?: string
-  uploaderActionBackground?: string
   '--uploader-action-icon-color'?: string
-  uploaderActionIconColor?: string
   '--uploader-action-icon-size'?: string
-  uploaderActionIconSize?: string
   '--uploader-action-margin'?: string
-  uploaderActionMargin?: string
   '--uploader-file-size'?: string
-  uploaderFileSize?: string
   '--uploader-file-margin'?: string
-  uploaderFileMargin?: string
   '--uploader-file-name-background'?: string
-  uploaderFileNameBackground?: string
   '--uploader-file-name-color'?: string
-  uploaderFileNameColor?: string
   '--uploader-file-name-font-size'?: string
-  uploaderFileNameFontSize?: string
   '--uploader-file-name-padding'?: string
-  uploaderFileNamePadding?: string
   '--uploader-file-border-radius'?: string
-  uploaderFileBorderRadius?: string
   '--uploader-file-text-align'?: string
-  uploaderFileTextAlign?: string
   '--uploader-file-close-background'?: string
-  uploaderFileCloseBackground?: string
   '--uploader-file-close-size'?: string
-  uploaderFileCloseSize?: string
   '--uploader-file-close-icon-font-size'?: string
-  uploaderFileCloseIconFontSize?: string
   '--uploader-file-close-icon-color'?: string
-  uploaderFileCloseIconColor?: string
   '--uploader-file-cover-fit'?: string
-  uploaderFileCoverFit?: string
   '--uploader-file-cover-background'?: string
-  uploaderFileCoverBackground?: string
   '--uploader-preview-video-width'?: string
-  uploaderPreviewVideoWidth?: string
   '--uploader-preview-video-height'?: string
-  uploaderPreviewVideoHeight?: string
   '--uploader-file-indicator-height'?: string
-  uploaderFileIndicatorHeight?: string
   '--uploader-file-indicator-normal-color'?: string
-  uploaderFileIndicatorNormalColor?: string
   '--uploader-file-indicator-success-color'?: string
-  uploaderFileIndicatorSuccessColor?: string
   '--uploader-file-indicator-error-color'?: string
-  uploaderFileIndicatorErrorColor?: string
   '--uploader-file-progress-color'?: string
-  uploaderFileProgressColor?: string
   '--uploader-disabled-color'?: string
-  uploaderDisabledColor?: string
   '--uploader-disabled-text-color'?: string
-  uploaderDisabledTextColor?: string
   '--uploader-loading-background'?: string
-  uploaderLoadingBackground?: string
   '--watermark-content-color'?: string
-  watermarkContentColor?: string
   [key: PropertyKey]: string
 }
+
+export interface StyleVars extends FormatStyleVars<BaseStyleVars> {}
