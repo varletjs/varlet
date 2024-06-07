@@ -1,3 +1,31 @@
+## [3.2.14](https://github.com/varletjs/varlet/compare/v3.2.13...v3.2.14) (2024-06-07)
+
+
+### Bug Fixes
+
+* **avatar:** disable tap highlights on iOS ([#1657](https://github.com/varletjs/varlet/issues/1657)) ([f54684d](https://github.com/varletjs/varlet/commit/f54684d68dac99e39fc2c4691c31df4a7514b70e))
+* **bottom-navigation:** improve variant active animation ([8ea13a8](https://github.com/varletjs/varlet/commit/8ea13a86254eeabcb607a6dc419d95e8b8001745))
+* **checkbox-group:** add mission style import ([c1501ab](https://github.com/varletjs/varlet/commit/c1501ab5a6dea0129601408af467b4c507ec5f26))
+* **checkbox:** don't trigger click event when clicking validate message ([#1654](https://github.com/varletjs/varlet/issues/1654)) ([ed21fd9](https://github.com/varletjs/varlet/commit/ed21fd99997833ee90ae3b5ac4bfdc78674dcd6e))
+* **ellipsis:** disable tap highlights on iOS ([#1652](https://github.com/varletjs/varlet/issues/1652)) ([18e73fd](https://github.com/varletjs/varlet/commit/18e73fd0f793465f289f54de0a9601f49d7fc46a))
+* **link:** disable tap highlights on iOS ([#1651](https://github.com/varletjs/varlet/issues/1651)) ([a9d0154](https://github.com/varletjs/varlet/commit/a9d0154e4ebae497555fd26bba56c8ed7f9726e8))
+* **paper:** disable tap highlights on iOS ([#1650](https://github.com/varletjs/varlet/issues/1650)) ([25f84e3](https://github.com/varletjs/varlet/commit/25f84e3369834740a7a1a7785bf3b6e8c37f7a4e))
+
+
+### Features
+
+* **app-bar:** add placeholder prop ([#1643](https://github.com/varletjs/varlet/issues/1643)) ([f0c5afe](https://github.com/varletjs/varlet/commit/f0c5afe3235a36c550c1723ed8bad2b29faa91e9))
+* **radio-group:** support options and label-key and value-key ([#1648](https://github.com/varletjs/varlet/issues/1648)) ([31413cb](https://github.com/varletjs/varlet/commit/31413cb807ef4117551777bc26ba2830cf771ad0))
+* **radio:** default slot export checked ([#1649](https://github.com/varletjs/varlet/issues/1649)) ([9ba0da4](https://github.com/varletjs/varlet/commit/9ba0da4eb1a6bfdd1f8aa9c9c7eff119697d1ced))
+* **swipe:** support keyboard arrowLeft and arrowRight ([#1659](https://github.com/varletjs/varlet/issues/1659)) ([581d47e](https://github.com/varletjs/varlet/commit/581d47e5c11da5e8617c54881a11907108747e04))
+
+
+### Performance Improvements
+
+* **cli:** reduce the size of styleVars type ([#1660](https://github.com/varletjs/varlet/issues/1660)) ([887206b](https://github.com/varletjs/varlet/commit/887206b7d72b59a8566abd0a2a913536ce7e686a))
+
+
+
 ## [3.2.13](https://github.com/varletjs/varlet/compare/v3.2.12...v3.2.13) (2024-05-31)
 
 
