@@ -116,7 +116,7 @@ import { useSwipeItems, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber, doubleRaf, preventDefault, call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
-import { onSmartUnmounted, onWindowResize, useTouch } from '@varlet/use'
+import { onSmartUnmounted, onWindowResize, useEventListener, useTouch } from '@varlet/use'
 import { usePopup } from '../popup/provide'
 import { type SwipeItemProvider } from '../swipe-item/provide'
 import { toSizeUnit } from '../utils/elements'
@@ -167,6 +167,8 @@ export default defineComponent({
     }
 
     bindSwipeItems(swipeProvider)
+
+    useEventListener(() => window, 'keydown', handleKeydown)
 
     call(bindPopup, null)
 
@@ -394,6 +396,29 @@ export default defineComponent({
       }
 
       return n(`--navigation${props.vertical ? '-vertical' : ''}-${type}-animation`)
+    }
+
+    function handleKeydown(event: KeyboardEvent) {
+      if (!swipeItems.length) {
+        return
+      }
+
+      const focusingSwipeItemIndex = swipeItems.findIndex(({ isFocusing }) => isFocusing.value)
+      if (focusingSwipeItemIndex === -1) {
+        return
+      }
+
+      const { key } = event
+
+      preventDefault(event)
+
+      if (key === 'ArrowLeft') {
+        prev()
+      }
+
+      if (key === 'ArrowRight') {
+        next()
+      }
     }
 
     // expose

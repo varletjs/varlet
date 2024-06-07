@@ -5,6 +5,7 @@ import { type SwipeProvider, SWIPE_BIND_SWIPE_ITEM_KEY } from '../swipe/provide'
 
 export interface SwipeItemProvider {
   index: ComputedRef<number>
+  isFocusing: ComputedRef<boolean>
   setTranslate(x: number): void
 }
 
