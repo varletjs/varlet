@@ -201,6 +201,18 @@ test('test radio validation', async () => {
   wrapper.unmount()
 })
 
+test('test radio default slot', () => {
+  const wrapper = mount(VarRadio, {
+    slots: {
+      default: ({ checked }) => h('span', { class: 'test-default-slot' }, checked),
+    },
+  })
+
+  expect(wrapper.find('.test-default-slot').text()).toBe('false')
+
+  wrapper.unmount()
+})
+
 test('test radio group validation', async () => {
   const wrapper = mount({
     components: {
@@ -487,7 +499,7 @@ test('test radio keyboard Enter', async () => {
   wrapper.unmount()
 })
 
-test('test radio keyboard Arrow', async () => {
+test('test radio group keyboard Arrow', async () => {
   const wrapper = mount({
     components: {
       [VarRadioGroup.name]: VarRadioGroup,
