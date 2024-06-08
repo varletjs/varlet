@@ -113,7 +113,9 @@
           <template v-if="selectOptions.length">
             <select-option
               v-for="option in selectOptions"
-              :key="(option.value || option.label)?.toString()"
+              :key="option[valueKey]"
+              :label-key="labelKey"
+              :value-key="valueKey"
               :checked="multiple && modelValue?.includes(option.value)"
               :option="option"
             />

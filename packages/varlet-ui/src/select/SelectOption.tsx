@@ -8,21 +8,35 @@ import '../option/option.less'
 export default defineComponent({
   name: 'SelectOption',
   props: {
-    checked: Boolean,
-    option: Object as PropType<SelectOption>,
+    labelKey: {
+      type: String,
+      required: true,
+    },
+    valueKey: {
+      type: String,
+      required: true,
+    },
+    option: {
+      type: Object as PropType<SelectOption>,
+      required: true,
+    },
   },
   setup(props) {
     return () => {
-      if (props.option == null) {
-        return
-      }
+      const { option, labelKey, valueKey } = props
 
       return (
         <VarOption
-          label={isFunction(props.option.label) ? props.option.label(props.option, props.checked) : props.option.label}
-          value={props.option.value}
-          disabled={props.option.disabled}
-        ></VarOption>
+          label={option.label}
+          value={option.value || option.label}
+          disabled={option.disabled}
+          checkedValue={option[valueKey] ? option[valueKey] : option[labelKey]}
+        >
+          {{
+            default: ({ optionSelected }: { optionSelected: boolean }) =>
+              isFunction(option[labelKey]) ? option[labelKey](option, optionSelected) : option[labelKey],
+          }}
+        </VarOption>
       )
     }
   },

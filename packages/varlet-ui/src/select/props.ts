@@ -12,6 +12,7 @@ export interface SelectOption {
   label?: string | VNode | SelectOptionLabelRender
   disabled?: boolean
   value?: any
+  [key: PropertyKey]: any
 }
 
 export const props = {
@@ -20,6 +21,14 @@ export const props = {
     default: undefined,
   },
   options: Array as PropType<Array<SelectOption>>,
+  labelKey: {
+    type: String,
+    default: 'label',
+  },
+  valueKey: {
+    type: String,
+    default: 'value',
+  },
   multiple: Boolean,
   offsetY: {
     type: [String, Number],
