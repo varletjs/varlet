@@ -213,6 +213,18 @@ test('test checkbox validation', async () => {
   wrapper.unmount()
 })
 
+test('test radio default slot', () => {
+  const wrapper = mount(VarCheckbox, {
+    slots: {
+      default: ({ checked }) => h('span', { class: 'test-default-slot' }, checked),
+    },
+  })
+
+  expect(wrapper.find('.test-default-slot').text()).toBe('false')
+
+  wrapper.unmount()
+})
+
 test('test checkbox group max', async () => {
   const wrapper = mount({
     components: {
