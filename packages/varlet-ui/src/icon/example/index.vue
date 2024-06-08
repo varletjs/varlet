@@ -129,7 +129,7 @@ function toggle() {
     margin: 0 2% 4%;
     border-radius: 10px;
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
     user-select: none;
     transition: background-color 0.25s;
   }

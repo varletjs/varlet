@@ -122,7 +122,7 @@ export default {
   padding: 10px 12px;
   font-size: 15px;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   transition: all 0.3s;
   color: var(--site-config-color-text);
 
