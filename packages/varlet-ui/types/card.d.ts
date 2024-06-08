@@ -25,15 +25,15 @@ export interface CardProps extends BasicAttributes {
   'onUpdate:floating'?: ListenerProp<(value: boolean) => void>
 }
 
-export interface TitleData {
+export interface CardTitleData {
   titleClass: string
 }
 
-export interface SubtitleData {
+export interface CardSubtitleData {
   subtitleClass: string
 }
 
-export interface DescriptionData {
+export interface CardDescriptionData {
   descriptionClass: string
 }
 
@@ -44,9 +44,9 @@ export class Card extends VarComponent {
 
   $slots: {
     image(): VNode[]
-    title(data: TitleData): VNode[]
-    subtitle(data: SubtitleData): VNode[]
-    description(data: DescriptionData): VNode[]
+    title(data: CardTitleData): VNode[]
+    subtitle(data: CardSubtitleData): VNode[]
+    description(data: CardDescriptionData): VNode[]
     extra(): VNode[]
     'close-button'(): VNode[]
     'floating-content'(): VNode[]
