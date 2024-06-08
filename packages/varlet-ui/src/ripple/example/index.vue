@@ -30,7 +30,7 @@ onThemeChange()
   height: 100px;
   user-select: none;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   background-color: var(--color-surface-container-highest);
   transition: background-color 0.25s;
 }

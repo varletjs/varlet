@@ -199,7 +199,7 @@ watch(
 }
 
 .var-popup__content {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 </style>
 

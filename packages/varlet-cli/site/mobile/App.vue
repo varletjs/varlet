@@ -3,19 +3,27 @@
     <header>
       <var-app-bar class="app-bar" title-position="left" :title="bigCamelizeComponentName">
         <template #left>
-          <var-button v-if="showBackIcon" style="margin-right: 6px;" text round @click="back" color="transparent" text-color="#fff">
-            <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px"/>
+          <var-button
+            v-if="showBackIcon"
+            style="margin-right: 6px"
+            text
+            round
+            @click="back"
+            color="transparent"
+            text-color="#fff"
+          >
+            <var-icon name="chevron-left" class="arrow-left" style="margin-top: 1px" />
           </var-button>
           <var-button
             v-if="!showBackIcon && github"
-            style="margin-left: 2px; margin-right: 6px;"
+            style="margin-left: 2px; margin-right: 6px"
             text
             round
             color="transparent"
             text-color="#fff"
             @click="toGithub"
           >
-            <var-icon name="github" class="github" style="margin-top: 1px;"/>
+            <var-icon name="github" class="github" style="margin-top: 1px" />
           </var-button>
         </template>
         <template #right>
@@ -27,8 +35,8 @@
             text-color="#fff"
             @click.stop="showThemeMenu = true"
           >
-            <var-icon name="palette" :size="28" class="palette"/>
-            <var-icon name="chevron-down" class="arrow-down"/>
+            <var-icon name="palette" :size="28" class="palette" />
+            <var-icon name="chevron-down" class="arrow-down" />
           </var-button>
           <var-button
             v-if="languages"
@@ -38,14 +46,14 @@
             text-color="#fff"
             @click.stop="showMenu = true"
           >
-            <var-icon name="translate" class="i18n"/>
-            <var-icon name="chevron-down" class="arrow-down"/>
+            <var-icon name="translate" class="i18n" />
+            <var-icon name="chevron-down" class="arrow-down" />
           </var-button>
         </template>
       </var-app-bar>
     </header>
     <div class="router-view__block">
-      <router-view/>
+      <router-view />
     </div>
 
     <transition name="site-menu">
@@ -82,16 +90,9 @@
 
 <script lang="ts">
 import config from '@config'
-import { computed,  defineComponent, ref, watch, type Ref, type ComputedRef } from 'vue'
+import { computed, defineComponent, ref, watch, type Ref, type ComputedRef } from 'vue'
 import { useRoute } from 'vue-router'
-import {
-  getBrowserTheme,
-  watchLang,
-  watchTheme,
-  setTheme,
-  getMobileIndex,
-  type Theme,
-} from '@varlet/cli/client'
+import { getBrowserTheme, watchLang, watchTheme, setTheme, getMobileIndex, type Theme } from '@varlet/cli/client'
 import { removeEmpty, inIframe, isPhone } from '../utils'
 import { bigCamelize } from '@varlet/shared'
 import { get } from 'lodash-es'
@@ -115,7 +116,9 @@ export default defineComponent({
     const changeLanguage = (lang: string) => {
       language.value = lang
       showMenu.value = false
-      window.location.href = `${getMobileIndex()}#${route.path}?language=${language.value}&replace=${route.query.replace}`
+      window.location.href = `${getMobileIndex()}#${route.path}?language=${language.value}&replace=${
+        route.query.replace
+      }`
 
       if (!isPhone() && inIframe()) {
         ;(window.top as any).scrollToMenu(redirect.slice(1))
@@ -216,7 +219,7 @@ body {
   min-height: 100vh;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   background: var(--site-config-color-mobile-body);
   color: var(--site-config-color-text);
   transition: background-color 0.25s, color 0.25s;
