@@ -40,13 +40,13 @@
       </slot>
 
       <div :class="n('container')">
-        <slot name="title">
+        <slot name="title" :slot-class="n('title')">
           <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
-        <slot name="subtitle">
+        <slot name="subtitle" :slot-class="n('subtitle')">
           <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
         </slot>
-        <slot name="description">
+        <slot name="description" :slot-class="n('description')">
           <div :class="n('description')" v-if="description">{{ description }}</div>
         </slot>
         <div :class="n('footer')" v-if="$slots.extra">

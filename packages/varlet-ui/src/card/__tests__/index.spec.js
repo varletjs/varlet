@@ -1,7 +1,7 @@
 import Card from '..'
 import VarCard from '../Card'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
 
@@ -244,7 +244,7 @@ describe('test card component slots', () => {
   test('test card title slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        title: '<span>title</span>',
+        title: ({ slotClass }) => h('span', { class: slotClass }, 'title'),
       },
     })
 
@@ -256,7 +256,7 @@ describe('test card component slots', () => {
   test('test card subtitle slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        subtitle: '<span>subtitle</span>',
+        subtitle: ({ slotClass }) => h('span', { class: slotClass }, 'subtitle'),
       },
     })
 
@@ -268,7 +268,7 @@ describe('test card component slots', () => {
   test('test card description slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        description: '<span>description</span>',
+        description: ({ slotClass }) => h('span', { class: slotClass }, 'description'),
       },
     })
 
