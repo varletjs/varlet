@@ -137,7 +137,7 @@ export default defineComponent({
           direction={dragProps.direction}
           attraction={dragProps.attraction}
           boundary={dragProps.boundary}
-          onClick={(e) => handleClick(e, !isActive.value, children.length)}
+          onClick={(e: Event) => handleClick(e, !isActive.value, children.length)}
           {...attrs}
         >
           <div
