@@ -39,6 +39,7 @@ import { createNamespace } from '../utils/components'
 import { isNumber, normalizeToArray, call, getRect } from '@varlet/shared'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { type BottomNavigationItemProvider } from '../bottom-navigation-item/provide'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('bottom-navigation')
 const { n: nItem } = createNamespace('bottom-navigation-item')
@@ -60,7 +61,7 @@ export default defineComponent({
     const activeColor = computed<string | undefined>(() => props.activeColor)
     const inactiveColor = computed<string | undefined>(() => props.inactiveColor)
     const variant = computed<boolean | undefined>(() => props.variant)
-    const placeholderHeight = ref()
+    const placeholderHeight = ref<string | undefined>()
     const fabProps = ref({})
     const { length, bottomNavigationItems, bindBottomNavigationItem } = useBottomNavigationItems()
 
@@ -204,7 +205,7 @@ export default defineComponent({
       }
 
       const { height } = getRect(bottomNavigationDom.value!)
-      placeholderHeight.value = `${height}px`
+      placeholderHeight.value = toSizeUnit(height)
     }
 
     return {

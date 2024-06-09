@@ -46,6 +46,7 @@ import { props } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { onSmartMounted, onWindowResize } from '@varlet/use'
 import { getRect } from '@varlet/shared'
+import { toSizeUnit } from '../utils/elements'
 
 const { name, n, classes } = createNamespace('app-bar')
 
@@ -56,7 +57,7 @@ export default defineComponent({
     const appBar = ref<HTMLElement | null>(null)
     const paddingLeft = ref<number | undefined>()
     const paddingRight = ref<number | undefined>()
-    const placeholderHeight = ref()
+    const placeholderHeight = ref<string | undefined>()
     const rootStyles = computed<CSSProperties>(() => {
       const { image, color, textColor, imageLinearGradient, zIndex } = props
 
@@ -98,7 +99,7 @@ export default defineComponent({
       }
 
       const { height } = getRect(appBar.value!)
-      placeholderHeight.value = `${height}px`
+      placeholderHeight.value = toSizeUnit(height)
     }
 
     return {
