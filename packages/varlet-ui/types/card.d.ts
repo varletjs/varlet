@@ -26,15 +26,15 @@ export interface CardProps extends BasicAttributes {
 }
 
 export interface CardTitleData {
-  titleClass: string
+  slotClass: string
 }
 
 export interface CardSubtitleData {
-  subtitleClass: string
+  slotClass: string
 }
 
 export interface CardDescriptionData {
-  descriptionClass: string
+  slotClass: string
 }
 
 export class Card extends VarComponent {

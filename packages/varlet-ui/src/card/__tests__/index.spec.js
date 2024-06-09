@@ -244,7 +244,7 @@ describe('test card component slots', () => {
   test('test card title slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        title: ({ titleClass }) => h('span', { class: titleClass }, 'title'),
+        title: ({ slotClass }) => h('span', { class: slotClass }, 'title'),
       },
     })
 
@@ -256,7 +256,7 @@ describe('test card component slots', () => {
   test('test card subtitle slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        subtitle: ({ subtitleClass }) => h('span', { class: subtitleClass }, 'subtitle'),
+        subtitle: ({ slotClass }) => h('span', { class: slotClass }, 'subtitle'),
       },
     })
 
@@ -268,7 +268,7 @@ describe('test card component slots', () => {
   test('test card description slot', () => {
     const wrapper = mount(VarCard, {
       slots: {
-        description: ({ descriptionClass }) => h('span', { class: descriptionClass }, 'description'),
+        description: ({ slotClass }) => h('span', { class: slotClass }, 'description'),
       },
     })
 
