@@ -27,13 +27,13 @@ export async function compileTypes() {
   const { name: libraryName } = readJSONSync(UI_PACKAGE_JSON)
 
   const filenames = await readdir(TYPES_DIR)
-  const includeFilenames = filenames.filter((filename) => filename !== 'index.d.ts' && filename !== 'global.d.ts')
+  const includeFilenames = filenames.filter((filename) => !['index.d.ts', 'global.d.ts'].includes(filename))
   const exports: string[] = []
   const componentDeclares: string[] = []
   const directiveDeclares: string[] = []
 
   includeFilenames.forEach((filename) => {
-    const folder = filename.slice(0, filename.indexOf('.d.ts'))
+    const folder = filename.replace('.d.ts', '')
     const name = bigCamelize(folder)
 
     exports.push(`export * from './${folder}'`)
