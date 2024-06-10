@@ -309,7 +309,7 @@ function openMultiple() {
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |
 | `position`| `Snackbar` position, Optional value is one of `top, center, bottom`                | _string_ | `top` |
 | `duration`| Display duration                                                                   | _number_ | `3000` |
-| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` ***3.2.15*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content` | Custom content                                                                     | _string_ | `-` |
 | `content-class` | Class of custom content                                                            | _string_ | `-` |
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
@@ -364,7 +364,7 @@ The `clear` method on the instance can close the current instance, and the `clea
 | `type`          | `Snackbar` type, Optional value is one of `success, warning, info, error, loading`              | _string_ | `-` |
 | `position`      | `Snackbar` position, Optional value is one of `top, center, bottom`                             | _string_ | `top` |
 | `duration`      | Display duration (Need to be closed manually when the `type` prop is `loading`)                 | _number_ | `3000` |
-| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` ***3.2.15*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content`       | Custom content                                                                                  | _string \| VNode \| (() => VNode)_ | `-` |
 | `icon`          | Custom icon                                                                                     | _string \| VNode \| (() => VNode)_ | `-`               |
 | `action`        | Custom action of right                                                                          | _string \| VNode \| (() => VNode)_ | `-`               |
