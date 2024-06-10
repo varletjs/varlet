@@ -5,7 +5,7 @@
         classes(
           n('wrapper'),
           n(`wrapper-${position}`),
-          n('$-elevation--4'),
+          formatElevation(elevation, 4),
           [vertical, n('vertical')],
           [type && SNACKBAR_TYPE.includes(type), n(`wrapper-${type}`)]
         )
@@ -41,7 +41,7 @@ import { useZIndex } from '../context/zIndex'
 import { props } from './props'
 import { useLock } from '../context/lock'
 import { SNACKBAR_TYPE, type SnackbarType } from './index'
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { onSmartMounted } from '@varlet/use'
 import { call } from '@varlet/shared'
 
@@ -121,6 +121,7 @@ export default defineComponent({
       isForbidClick,
       n,
       classes,
+      formatElevation,
     }
   },
 })

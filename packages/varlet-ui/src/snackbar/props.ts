@@ -18,6 +18,10 @@ export const props = {
     type: Number,
     default: 3000,
   },
+  elevation: {
+    type: [Boolean, String, Number],
+    default: true,
+  },
   vertical: Boolean,
   loadingType: pickProps(loadingProps, 'type'),
   loadingSize: pickProps(loadingProps, 'size'),

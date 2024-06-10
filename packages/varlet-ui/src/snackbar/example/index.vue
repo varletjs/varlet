@@ -135,7 +135,7 @@ function openMultiple() {
       </template>
     </var-snackbar>
 
-    <var-snackbar v-model:show="show4" :duration="1000">
+    <var-snackbar v-model:show="show4" :duration="100000" :elevation="5">
       {{ t('text') }}
     </var-snackbar>
 

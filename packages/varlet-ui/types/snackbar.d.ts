@@ -20,6 +20,7 @@ export interface SnackbarProps extends BasicAttributes {
   lockScroll?: boolean
   contentClass?: string
   duration?: number
+  elevation?: boolean | string | number
   vertical?: boolean
   show?: boolean
   forbidClick?: boolean
@@ -51,6 +52,7 @@ export interface SnackbarOptions {
   icon?: string | VNode | (() => VNode)
   action?: string | VNode | (() => VNode)
   duration?: number
+  elevation?: boolean | string | number
   contentClass?: string
   vertical?: boolean
   loadingType?: string

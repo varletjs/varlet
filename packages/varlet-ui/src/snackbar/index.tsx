@@ -29,6 +29,7 @@ interface SnackbarOptions {
   lockScroll?: boolean
   contentClass?: string
   duration?: number
+  elevation?: boolean | string | number
   vertical?: boolean
   forbidClick?: boolean
   onOpen?: () => void
@@ -84,6 +85,7 @@ const defaultOptionsValue: SnackbarOptions = {
   action: '',
   position: 'top',
   duration: 3000,
+  elevation: true,
   vertical: false,
   contentClass: undefined,
   loadingType: 'circle',
