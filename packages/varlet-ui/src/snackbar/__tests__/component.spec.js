@@ -18,6 +18,7 @@ test('test snackbar style', async () => {
       position="center"
       content-class="test-snackbar"
       vertical
+      :elevation="5"
       :duration="500"
       loading-type="wave"
       loading-size="large"

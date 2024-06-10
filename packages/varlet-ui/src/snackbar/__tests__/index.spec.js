@@ -24,6 +24,24 @@ test('test snackbar functional', async () => {
   Snackbar.clear()
 })
 
+test('test snackbar elevation', async () => {
+  expect(document.body.querySelector('.var-snackbar')).toBeFalsy()
+
+  const { clear } = Snackbar({
+    content: 'test snackbar',
+    elevation: 5,
+  })
+
+  await delay(200)
+  expect(document.body.querySelector('.var-elevation--5')).toBeTruthy()
+
+  clear()
+  await delay(200)
+  expect(document.body.querySelector('.var-elevation--5')).toBeFalsy()
+
+  Snackbar.clear()
+})
+
 test('test snackbar type', async () => {
   Snackbar.success('test snackbar')
   await delay(200)
