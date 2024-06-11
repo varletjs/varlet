@@ -30,11 +30,11 @@ const router = createRouter({
       return {
         el: to.hash,
         behavior: 'smooth',
-        top: 100
-      };
+        top: 100,
+      }
     }
 
-    return { top: 0 };
+    return { top: 0 }
   },
 })
 
@@ -52,7 +52,6 @@ router.beforeEach((to: any, from: any) => {
   }
 })
 
-
 Object.defineProperty(window, 'onMobileRouteChange', {
   value: (path: string, language: string, replace: string, hash: string) => {
     if (path === mobileRedirect) {
@@ -61,7 +60,7 @@ Object.defineProperty(window, 'onMobileRouteChange', {
     }
 
     router.replace(`/${language}${path}${hash}`)
-  }
+  },
 })
 
 Object.defineProperty(window, 'scrollToMenu', {
@@ -71,7 +70,7 @@ Object.defineProperty(window, 'scrollToMenu', {
       const scroller = cell.parentNode as HTMLElement
       scroller.scrollTo({ top: cell.offsetTop - scroller.offsetHeight / 2 })
     })
-  }
+  },
 })
 
 createApp(App)

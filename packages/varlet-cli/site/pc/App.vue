@@ -14,13 +14,15 @@ export default defineComponent({
       const { language, menuName } = getPCLocationInfo()
 
       if (isPhone() && useMobile.value) {
-        window.location.href = `${getMobileIndex()}#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
+        window.location.href = `${getMobileIndex()}#/${menuName}?language=${
+          language || defaultLanguage
+        }&platform=mobile`
         return
       }
     }
 
     onMounted(init)
-  }
+  },
 })
 </script>
 

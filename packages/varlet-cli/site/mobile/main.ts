@@ -21,7 +21,7 @@ redirect &&
 
 routes.push({
   path: '/home',
-  component: () => import('./AppHome.vue')
+  component: () => import('./AppHome.vue'),
 })
 
 const router = createRouter({
@@ -57,7 +57,4 @@ router.beforeEach((to: any) => {
   }
 })
 
-createApp(App)
-  .use(router)
-  .use(Varlet)
-  .mount('#app')
+createApp(App).use(router).use(Varlet).mount('#app')
