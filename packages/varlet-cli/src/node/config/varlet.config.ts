@@ -1,8 +1,7 @@
 import fse from 'fs-extra'
-import { mergeWith } from 'lodash-es'
 import { VARLET_CONFIG, SITE_CONFIG } from '../shared/constant.js'
 import { outputFileSyncOnChange } from '../shared/fsUtils.js'
-import { isArray } from '@varlet/shared'
+import { isArray, mergeWith } from '@varlet/shared'
 import { pathToFileURL } from 'url'
 import { type VIConfig } from '@varlet/icon-builder'
 import { type CopyOptions } from '@varlet/vite-plugins'
@@ -186,7 +185,7 @@ export function defineConfig(config: VarletConfig) {
   return config
 }
 
-export function mergeStrategy(value: any, srcValue: any, key: string) {
+export function mergeStrategy(_: any, srcValue: any, key: any, _object: any, _source: any) {
   const keys = ['features', 'members']
 
   if (keys.includes(key) && isArray(srcValue)) {

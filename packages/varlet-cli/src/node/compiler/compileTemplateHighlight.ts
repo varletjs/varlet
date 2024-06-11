@@ -17,7 +17,6 @@ import {
 } from '../shared/constant.js'
 import { resolve } from 'path'
 import { getCliVersion, isDir, isMD } from '../shared/fsUtils.js'
-import { get } from 'lodash-es'
 import { getVarletConfig, type VarletConfig } from '../config/varlet.config.js'
 
 const { ensureDir, readdirSync, readFileSync, writeFileSync } = fse
@@ -106,7 +105,7 @@ export function compileWebTypes(
   }))
 
   webTypes.contributions.html.tags.push({
-    name: `${get(varletConfig, 'namespace')}-${componentName}`,
+    name: `${varletConfig?.namespace}-${componentName}`,
     attributes,
     events,
     slots,
@@ -159,7 +158,7 @@ export function compileLanguageMD(varletConfig: Required<VarletConfig>, options:
     $schema: 'https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json',
     framework: 'vue',
     version: getCliVersion(),
-    name: get(varletConfig, 'title'),
+    name: varletConfig?.title,
     contributions: {
       html: {
         tags: [],

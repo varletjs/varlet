@@ -95,7 +95,6 @@ import { useRoute } from 'vue-router'
 import { getBrowserTheme, watchLang, watchTheme, setTheme, getMobileIndex, type Theme } from '@varlet/cli/client'
 import { removeEmpty, inIframe, isPhone } from '../utils'
 import { bigCamelize } from '@varlet/shared'
-import { get } from 'lodash-es'
 
 export default defineComponent({
   setup() {
@@ -105,12 +104,12 @@ export default defineComponent({
     const showMenu: Ref<boolean> = ref(false)
     const showThemeMenu: Ref<boolean> = ref(false)
     const language: Ref<string> = ref('')
-    const languages: Ref<Record<string, string>> = ref(get(config, 'mobile.header.i18n'))
-    const themes: Ref<Record<string, any>[]> = ref(get(config, 'mobile.header.themes'))
+    const languages: Ref<Record<string, string>> = ref(config?.mobile?.header?.i18n ?? {})
+    const themes: Ref<Record<string, any>[]> = ref(config?.mobile?.header?.themes ?? {})
     const nonEmptyLanguages: ComputedRef<Record<string, string>> = computed(() => removeEmpty(languages.value))
-    const redirect = get(config, 'mobile.redirect', '')
-    const github: Ref<string> = ref(get(config, 'mobile.header.github'))
-    const darkMode: Ref<string> = ref(get(config, 'mobile.header.darkMode'))
+    const redirect = config?.mobile?.redirect ?? ''
+    const github: Ref<string> = ref(config?.mobile?.header?.github ?? '')
+    const darkMode: Ref<string> = ref(config?.mobile?.header?.darkMode ?? '')
     const currentTheme = ref(getBrowserTheme())
 
     const changeLanguage = (lang: string) => {
@@ -160,7 +159,7 @@ export default defineComponent({
     const setCurrentTheme = (theme: Theme) => {
       currentTheme.value = theme
       setTheme(currentTheme.value)
-      window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
+      window.localStorage.setItem(config?.themeKey, currentTheme.value)
     }
 
     const toggleTheme = (value: Theme) => {

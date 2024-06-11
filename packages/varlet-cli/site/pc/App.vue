@@ -3,24 +3,25 @@ import config from '@config'
 import { defineComponent, onMounted, ref } from 'vue'
 import { getPCLocationInfo, getMobileIndex } from '@varlet/cli/client'
 import { isPhone } from '../utils'
-import { get } from 'lodash-es'
 
 export default defineComponent({
   setup() {
-    const useMobile = ref(get(config, 'useMobile'))
-    const defaultLanguage = get(config, 'defaultLanguage')
+    const useMobile = ref(config?.useMobile)
+    const defaultLanguage = config?.defaultLanguage
 
     const init = () => {
       const { language, menuName } = getPCLocationInfo()
 
       if (isPhone() && useMobile.value) {
-        window.location.href = `${getMobileIndex()}#/${menuName}?language=${language || defaultLanguage}&platform=mobile`
+        window.location.href = `${getMobileIndex()}#/${menuName}?language=${
+          language || defaultLanguage
+        }&platform=mobile`
         return
       }
     }
 
     onMounted(init)
-  }
+  },
 })
 </script>
 

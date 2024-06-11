@@ -5,7 +5,6 @@ import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.j
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE, IMPORT_SCSS_RE } from './compileStyle.js'
 import { resolve, relative, extname, dirname } from 'path'
 import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash-es'
 import type { BabelFileResult } from '@babel/core'
 import fse from 'fs-extra'
 import esbuild from 'esbuild'
@@ -153,7 +152,7 @@ export async function compileScriptByEsbuild(script: string) {
 
   const { code } = await esbuild.transform(script, {
     loader: 'ts',
-    target: get(varletConfig, 'esbuild.target'),
+    target: varletConfig?.esbuild?.target,
     format: 'esm',
   })
 

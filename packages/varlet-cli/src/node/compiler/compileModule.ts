@@ -18,14 +18,13 @@ import { clearLessFiles, clearScssFiles, compileLess, compileScss } from './comp
 import { BundleBuildOptions, getBundleConfig } from '../config/vite.config.js'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { generateReference } from './compileTypes.js'
-import { get } from 'lodash-es'
 import { kebabCase } from '@varlet/shared'
 
 const { copy, ensureFileSync, readdir, removeSync } = fse
 
 export async function compileBundle() {
   const varletConfig = await getVarletConfig()
-  const name = kebabCase(get(varletConfig, 'name'))
+  const name = kebabCase(varletConfig?.name || '')
   const buildOptions: BundleBuildOptions[] = [
     {
       format: 'es',

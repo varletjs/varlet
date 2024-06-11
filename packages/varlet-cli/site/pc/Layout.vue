@@ -7,15 +7,14 @@ import AppSidebar from './components/AppSidebar.vue'
 import { Context } from '@varlet/ui'
 import { nextTick, onMounted, ref, watch, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { get } from 'lodash-es'
 import { getPCLocationInfo } from '@varlet/cli/client'
 import { MenuTypes, type Menu } from '../utils'
 import { type SiteContext } from '../types'
 
 const context = Context as SiteContext
-const menu: Ref<Menu[]> = ref(get(config, 'pc.menu', []))
-const useMobile = ref(get(config, 'useMobile'))
-const mobileRedirect = get(config, 'mobile.redirect')
+const menu: Ref<Menu[]> = ref(config?.pc?.menu ?? [])
+const useMobile = ref(config?.useMobile)
+const mobileRedirect = config?.mobile?.redirect
 const language: Ref<string> = ref('')
 const componentName: Ref<string | undefined> = ref()
 const menuName: Ref<string> = ref('')
@@ -89,8 +88,8 @@ watch(
     menuName.value = _menuName
     hash.value = _hash
     language.value = lang
-    useMobile.value = menu.value.find((item) => item.doc === _menuName)?.useMobile ?? get(config, 'useMobile')
-    document.title = get(config, 'pc.title')[lang] as string
+    useMobile.value = menu.value.find((item) => item.doc === _menuName)?.useMobile ?? config?.useMobile
+    document.title = config?.pc?.title[lang] as string
   },
   { immediate: true }
 )

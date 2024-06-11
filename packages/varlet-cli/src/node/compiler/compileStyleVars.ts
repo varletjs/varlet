@@ -3,7 +3,6 @@ import { SRC_DIR, TYPES_DIR } from '../shared/constant.js'
 import { resolve } from 'path'
 import { isDir, isMD } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash-es'
 
 const { ensureDirSync, readdirSync, readFileSync, writeFileSync } = fse
 
@@ -32,7 +31,7 @@ export function compileDir(path: string, keys: Set<string>, defaultLanguage: 'zh
 export async function compileStyleVars() {
   ensureDirSync(TYPES_DIR)
 
-  const defaultLanguage = get(await getVarletConfig(), 'defaultLanguage')
+  const { defaultLanguage } = await getVarletConfig()
 
   const keys = new Set<string>()
 

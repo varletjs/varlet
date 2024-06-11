@@ -1,6 +1,6 @@
 import fse from 'fs-extra'
 import less from 'less'
-import sass from 'node-sass'
+import sass from 'sass'
 import glob from 'glob'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'

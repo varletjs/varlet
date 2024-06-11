@@ -116,7 +116,6 @@
 <script lang="ts">
 import config from '@config'
 import { ref, computed, defineComponent } from 'vue'
-import { get } from 'lodash-es'
 import { getBrowserTheme, getPCLocationInfo, Theme, watchTheme, setTheme } from '@varlet/cli/client'
 import { removeEmpty } from '../../utils'
 import { useRouter } from 'vue-router'
@@ -130,22 +129,22 @@ export default defineComponent({
     },
   },
   setup() {
-    const title: Ref<string> = ref(get(config, 'title'))
-    const logo: Ref<string> = ref(get(config, 'logo'))
-    const languages: Ref<Record<string, string>> = ref(get(config, 'pc.header.i18n'))
-    const currentVersion: Ref<string> = ref(get(config, 'pc.header.currentVersion'))
-    const versions = get(config, 'pc.header.versions')
+    const title: Ref<string> = ref(config?.title)
+    const logo: Ref<string> = ref(config?.pc?.logo)
+    const languages: Ref<Record<string, string>> = ref(config?.pc?.header?.i18n ?? {})
+    const currentVersion: Ref<string> = ref(config?.pc?.header?.currentVersion ?? '')
+    const versions = config?.pc?.header?.versions
     const isShowVersion: Ref<boolean> = ref(!!versions)
     const versionItems: Ref<Array<Record<string, any>>> = ref(
       (versions ?? []).find((i: any) => window.location.host.includes(i.name))?.items ?? versions?.[0]?.items ?? []
     )
-    const playground: Ref<string> = ref(get(config, 'pc.header.playground'))
-    const github: Ref<string> = ref(get(config, 'pc.header.github'))
-    const themes: Ref<Record<string, any>> = ref(get(config, 'pc.header.themes'))
-    const changelog: Ref<string> = ref(get(config, 'pc.header.changelog'))
-    const ai: Ref<string> = ref(get(config, 'pc.header.ai'))
-    const redirect = get(config, 'pc.redirect')
-    const darkMode: Ref<boolean> = ref(get(config, 'pc.header.darkMode'))
+    const playground: Ref<string> = ref(config?.pc?.header?.playground)
+    const github: Ref<string> = ref(config?.pc?.header?.github)
+    const themes: Ref<Record<string, any>> = ref(config?.pc?.header?.themes ?? {})
+    const changelog: Ref<string> = ref(config?.pc?.header?.changelog)
+    const ai: Ref<string> = ref(config?.pc?.header?.ai)
+    const redirect = config?.pc?.redirect ?? ''
+    const darkMode: Ref<boolean> = ref(config?.pc?.header?.darkMode ?? false)
     const currentTheme = ref(getBrowserTheme())
 
     const isOpenLanguageMenu: Ref<boolean> = ref(false)
@@ -168,7 +167,7 @@ export default defineComponent({
     const setCurrentTheme = (theme: Theme) => {
       currentTheme.value = theme
       setTheme(currentTheme.value)
-      window.localStorage.setItem(get(config, 'themeKey'), currentTheme.value)
+      window.localStorage.setItem(config?.themeKey, currentTheme.value)
     }
 
     const getThemeMessage = () => ({ action: 'theme-change', from: 'pc', data: currentTheme.value })

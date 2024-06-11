@@ -4,7 +4,6 @@ import chokidar from 'chokidar'
 import logger from '../shared/logger.js'
 import { parse, resolve } from 'path'
 import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash-es'
 import { buildIcons, getIo } from '@varlet/icon-builder'
 import { ICONS_PNG_DIR_NAME } from '../shared/constant.js'
 
@@ -58,7 +57,7 @@ async function buildPNG(io: { entry: string; output: string }) {
 }
 
 export async function build(varletConfig: Required<VarletConfig>, io: { entry: string; output: string }) {
-  await Promise.all([buildPNG(io), buildIcons(get(varletConfig, 'icons'))])
+  await Promise.all([buildPNG(io), buildIcons(varletConfig?.icons)])
 }
 
 export interface IconsCommandOptions {
@@ -67,7 +66,7 @@ export interface IconsCommandOptions {
 
 export async function icons({ watch = false }: IconsCommandOptions = {}) {
   const varletConfig = await getVarletConfig()
-  const io = getIo(get(varletConfig, 'icons'))
+  const io = getIo(varletConfig?.icons)
 
   const task = () => build(varletConfig, io)
 

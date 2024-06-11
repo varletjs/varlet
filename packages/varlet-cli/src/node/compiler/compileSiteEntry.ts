@@ -15,7 +15,6 @@ import {
 } from '../shared/constant.js'
 import { glob, isDir, outputFileSyncOnChange } from '../shared/fsUtils.js'
 import { getVarletConfig } from '../config/varlet.config.js'
-import { get } from 'lodash-es'
 
 const { copy } = fse
 
@@ -95,7 +94,7 @@ export async function findRootDocs(draftMode: boolean): Promise<string[]> {
 }
 
 export async function findPageLocales(): Promise<string[]> {
-  const defaultLanguage = get(await getVarletConfig(), 'defaultLanguage')
+  const { defaultLanguage } = await getVarletConfig()
   const userPages = await glob(`${ROOT_PAGES_DIR}/*`)
   const baseLocales = await glob(`${SITE}/pc/pages/**/${LOCALE_DIR_NAME}/*.ts`)
 

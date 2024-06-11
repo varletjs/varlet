@@ -6,7 +6,6 @@ import { ES_DIR, SRC, SRC_DIR, VARLET_CONFIG } from '../shared/constant.js'
 import { buildSiteEntry } from '../compiler/compileSiteEntry.js'
 import { getDevConfig } from '../config/vite.config.js'
 import { getVarletConfig, VarletConfig } from '../config/varlet.config.js'
-import { get, merge } from 'lodash-es'
 import { resolve } from 'path'
 import { generateEsEntryTemplate, getScriptExtname } from '../compiler/compileScript.js'
 import { getPublicDirs } from '../shared/fsUtils.js'
@@ -18,7 +17,7 @@ let server: ViteDevServer
 let watcher: FSWatcher
 
 async function stub(varletConfig: Required<VarletConfig>) {
-  const name = kebabCase(get(varletConfig, 'name'))
+  const name = kebabCase(varletConfig?.name || '')
   // keep esm and css file for playground
   const esmFile = resolve(ES_DIR, `${name}.esm.js`)
   const cssFile = resolve(ES_DIR, `style.css`)
@@ -55,7 +54,10 @@ async function startServer(options: DevCommandOptions) {
   await buildSiteEntry(options.draft ?? false)
 
   const devConfig = getDevConfig(varletConfig)
-  const inlineConfig = merge(devConfig, options.force ? { optimizeDeps: { force: true } } : {})
+  const inlineConfig = {
+    ...devConfig,
+    ...(options.force ? { optimizeDeps: { force: true } } : {}),
+  }
 
   // create all instance
   server = await createServer(inlineConfig)

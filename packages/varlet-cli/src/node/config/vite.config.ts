@@ -12,7 +12,6 @@ import {
 } from '../shared/constant.js'
 import { markdown, html, inlineCss, copy } from '@varlet/vite-plugins'
 import { InlineConfig } from 'vite'
-import { get } from 'lodash-es'
 import { resolve } from 'path'
 import { VarletConfig, type VarletConfigHtmlInject, type VarletConfigHtmlInjectPoint } from './varlet.config.js'
 import vue from '@vitejs/plugin-vue'
@@ -37,9 +36,7 @@ export function getHtmlInject(inject: VarletConfigHtmlInject) {
 }
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
-  const defaultLanguage = get(varletConfig, 'defaultLanguage')
-  const alias = get(varletConfig, 'alias', {})
-  const host = get(varletConfig, 'host')
+  const { defaultLanguage, alias = {}, host } = varletConfig
 
   const resolveAlias = Object.entries(alias).reduce((resolveAlias, [key, value]) => {
     const isRelative = value.startsWith('.')
@@ -62,9 +59,9 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
     },
 
     server: {
-      port: get(varletConfig, 'port'),
+      port: varletConfig?.port,
       host: host === 'localhost' ? '0.0.0.0' : host,
-      proxy: get(varletConfig, 'proxy', {}),
+      proxy: varletConfig?.proxy || {},
     },
 
     publicDir: SITE_PUBLIC_PATH,
@@ -76,22 +73,24 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
 
       jsx(),
 
-      markdown({ style: get(varletConfig, 'highlight.style') }),
+      markdown({ style: varletConfig?.highlight?.style }),
 
-      copy({ paths: get(varletConfig, 'copy', []) }),
+      copy({ paths: varletConfig?.copy || [] }),
 
       html({
         data: {
-          logo: get(varletConfig, `logo`),
-          baidu: get(varletConfig, `analysis.baidu`, ''),
-          pcTitle: get(varletConfig, `pc.title['${defaultLanguage}']`),
-          pcDescription: get(varletConfig, `pc.description['${defaultLanguage}']`),
-          pcKeywords: get(varletConfig, `pc.keywords['${defaultLanguage}']`),
-          pcHtmlInject: getHtmlInject(get(varletConfig, 'pc.htmlInject')),
-          mobileTitle: get(varletConfig, `mobile.title['${defaultLanguage}']`),
-          mobileDescription: get(varletConfig, `mobile.description['${defaultLanguage}']`),
-          mobileKeywords: get(varletConfig, `mobile.keywords['${defaultLanguage}']`),
-          mobileHtmlInject: getHtmlInject(get(varletConfig, 'mobile.htmlInject')),
+          logo: varletConfig?.logo,
+          baidu: varletConfig?.analysis?.baidu,
+          pcTitle: varletConfig?.pc?.title ? varletConfig?.pc?.title[defaultLanguage] : '',
+          pcDescription: varletConfig?.pc?.description ? varletConfig?.pc?.description[defaultLanguage] : '',
+          pcKeywords: varletConfig?.pc?.keywords ? varletConfig?.pc?.keywords[defaultLanguage] : '',
+          pcHtmlInject: getHtmlInject(varletConfig?.pc?.htmlInject || {}),
+          mobileTitle: varletConfig?.mobile?.title ? varletConfig?.mobile?.title[defaultLanguage] : '',
+          mobileDescription: varletConfig?.mobile?.description
+            ? varletConfig?.mobile?.description[defaultLanguage]
+            : '',
+          mobileKeywords: varletConfig?.mobile?.keywords ? varletConfig?.mobile?.keywords[defaultLanguage] : '',
+          mobileHtmlInject: getHtmlInject(varletConfig?.mobile?.htmlInject || {}),
         },
       }),
     ],
@@ -131,9 +130,8 @@ export interface BundleBuildOptions {
 
 export function getBundleConfig(varletConfig: Required<VarletConfig>, buildOptions: BundleBuildOptions): InlineConfig {
   const plugins = []
-  const name = get(varletConfig, 'name')
-  const external = get(varletConfig, 'bundle.external', [])
-  const globals = get(varletConfig, 'bundle.globals', {})
+  const name = varletConfig?.name
+  const { external = [], globals = {} } = varletConfig?.bundle || {}
   const { fileName, output, format, emptyOutDir, removeEnv } = buildOptions
 
   if (format === 'umd') {
