@@ -9,7 +9,7 @@ import { inIframe, isPhone } from '../utils'
 import '@varlet/touch-emulator'
 import '@varlet/ui/es/style'
 
-const redirect = config?.mobile.redirect
+const redirect = config?.mobile?.redirect
 const defaultLanguage = config?.defaultLanguage
 
 redirect &&

@@ -89,7 +89,7 @@ watch(
     hash.value = _hash
     language.value = lang
     useMobile.value = menu.value.find((item) => item.doc === _menuName)?.useMobile ?? config?.useMobile
-    document.title = config?.pc.title[lang] as string
+    document.title = config?.pc?.title[lang] as string
   },
   { immediate: true }
 )
