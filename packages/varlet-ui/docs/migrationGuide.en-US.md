@@ -45,7 +45,7 @@ In order to make component style definition easier and support `Material Design 
 | `--opacity-hover` |
 | `--opacity-focus` |
 
-以下列举了一些可能会影响页面样式的变量变更。
+Here are some variables that may affect the appearance of your page.
 
 - DatePicker 
 
