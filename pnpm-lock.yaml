@@ -330,9 +330,6 @@ importers:
         specifier: ^10.2.1
         version: 10.4.0
     devDependencies:
-      '@types/lodash-es':
-        specifier: ^4.17.6
-        version: 4.17.6
       '@types/node':
         specifier: ^18.7.18
         version: 18.7.18
@@ -363,9 +360,6 @@ importers:
       live-server:
         specifier: ^1.2.1
         version: 1.2.2
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       typescript:
         specifier: ^5.1.5
         version: 5.1.5
@@ -5849,6 +5843,7 @@ packages:
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}

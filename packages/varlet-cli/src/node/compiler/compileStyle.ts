@@ -1,6 +1,6 @@
 import fse from 'fs-extra'
 import less from 'less'
-import sass from 'sass'
+import * as sass from 'sass'
 import glob from 'glob'
 import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
@@ -74,8 +74,6 @@ export function compileScss(file: string) {
       return { file: path }
     },
   })
-
-  console.log(css.toString('utf8'))
 
   writeFileSync(replaceExt(file, '.css'), compressCss(css.toString('utf8')), 'utf-8')
 }
