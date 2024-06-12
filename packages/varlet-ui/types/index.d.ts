@@ -50,6 +50,7 @@ export * from './list'
 export * from './loading'
 export * from './loadingBar'
 export * from './locale'
+export * from './localeProvider'
 export * from './menu'
 export * from './menuOption'
 export * from './menuSelect'
@@ -140,6 +141,7 @@ declare module 'vue' {
     VarLoading: typeof import('@varlet/ui')['_LoadingComponent']
     VarLoadingBar: typeof import('@varlet/ui')['_LoadingBarComponent']
     VarLocale: typeof import('@varlet/ui')['_LocaleComponent']
+    VarLocaleProvider: typeof import('@varlet/ui')['_LocaleProviderComponent']
     VarMenu: typeof import('@varlet/ui')['_MenuComponent']
     VarMenuOption: typeof import('@varlet/ui')['_MenuOptionComponent']
     VarMenuSelect: typeof import('@varlet/ui')['_MenuSelectComponent']
