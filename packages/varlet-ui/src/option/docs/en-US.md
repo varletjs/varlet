@@ -12,4 +12,4 @@
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Options to display the content | `-` |
+| `default` | Options to display the content | `selected: boolean` selected or not |

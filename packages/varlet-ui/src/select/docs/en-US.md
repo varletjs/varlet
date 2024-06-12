@@ -403,7 +403,7 @@ const value13 = ref()
 
 | Name | Description | SlotProps |
 | --- | --- | --- |
-| `default` | Options to display the content | `-` |
+| `default` | Options to display the content | `selected: boolean` selected or not |
 
 ### Style Variables
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).

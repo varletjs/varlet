@@ -7,9 +7,44 @@ import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
 
+const Wrapper = {
+  components: {
+    [VarSelect.name]: VarSelect,
+    [VarOption.name]: VarOption,
+  },
+}
+
 test('test select plugin', () => {
   const app = createApp({}).use(Select)
   expect(app.component(Select.name)).toBeTruthy()
+})
+
+test('test option plugin', () => {
+  const app = createApp({}).use(Option)
+  expect(app.component(Option.name)).toBeTruthy()
+})
+
+test('test option default slot', () => {
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      value: '',
+    }),
+    template: `
+      <var-select v-model="value">
+        <var-option label="吃饭" />
+        <var-option>
+          <template #default="{ selected }">
+            <span class="test-default-slot">{{ selected }}</span>
+          </template>
+        </var-option>
+      </var-select>
+    `,
+  })
+
+  expect(document.querySelector('.test-default-slot').textContent).toBe('false')
+
+  wrapper.unmount()
 })
 
 test('test select variant', () => {
@@ -55,18 +90,6 @@ test('test select size', () => {
   expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
 })
-
-test('test option plugin', () => {
-  const app = createApp({}).use(Option)
-  expect(app.component(Option.name)).toBeTruthy()
-})
-
-const Wrapper = {
-  components: {
-    [VarSelect.name]: VarSelect,
-    [VarOption.name]: VarOption,
-  },
-}
 
 test('test select by label', async () => {
   const wrapper = mount({

@@ -29,7 +29,7 @@
       @change="handleSelect"
     />
 
-    <slot>
+    <slot :selected="optionSelected">
       <div :class="classes(n('text'), n('$--ellipsis'))">
         {{ label }}
       </div>
