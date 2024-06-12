@@ -34,11 +34,11 @@
             :text-color="cancelButtonTextColor"
             @click="cancel"
           >
-            {{ cancelButtonText ?? t('pickerCancelButtonText') }}
+            {{ cancelButtonText ?? t('pickerCancelButtonText', { locale }) }}
           </var-button>
         </slot>
         <slot name="title">
-          <div :class="n('title')">{{ title ?? t('pickerTitle') }}</div>
+          <div :class="n('title')">{{ title ?? t('pickerTitle', { locale }) }}</div>
         </slot>
         <slot name="confirm">
           <var-button
@@ -48,7 +48,7 @@
             :text-color="confirmButtonTextColor"
             @click="confirm"
           >
-            {{ confirmButtonText ?? t('pickerConfirmButtonText') }}
+            {{ confirmButtonText ?? t('pickerConfirmButtonText', { locale }) }}
           </var-button>
         </slot>
       </div>
@@ -105,6 +105,7 @@ import { clamp, clampArrayRange, call } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { t } from '../locale'
 import { createNamespace } from '../utils/components'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 export interface ScrollColumn {
   id: number
@@ -144,6 +145,7 @@ export default defineComponent({
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
     const columnHeight = computed(() => optionCount.value * optionHeight.value)
     const { prevY, moveY, dragging, startTouch, moveTouch, endTouch } = useTouch()
+    const { locale } = injectLocaleProvider()
 
     let prevIndexes: number[] = []
 
@@ -436,13 +438,14 @@ export default defineComponent({
     }
 
     return {
-      t,
       optionHeight,
       optionCount,
       scrollColumns,
       columnHeight,
       center,
       Transition,
+      locale,
+      t,
       n,
       classes,
       setScrollEl,

@@ -20,7 +20,7 @@
   >
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
-        <div :class="n('title')">{{ title ?? t('actionSheetTitle') }}</div>
+        <div :class="n('title')">{{ title ?? t('actionSheetTitle', { locale }) }}</div>
       </slot>
 
       <slot name="actions">
@@ -51,6 +51,7 @@ import { createNamespace } from '../utils/components'
 import { call } from '@varlet/shared'
 import { useVModel } from '@varlet/use'
 import { type ActionItem } from './index'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 const { name, n, classes } = createNamespace('action-sheet')
 
@@ -65,6 +66,7 @@ export default defineComponent({
   props,
   setup(props) {
     const show = useVModel(props, 'show')
+    const { locale } = injectLocaleProvider()
 
     function handleSelect(action: ActionItem) {
       if (action.disabled) {
@@ -81,6 +83,7 @@ export default defineComponent({
 
     return {
       show,
+      locale,
       t,
       n,
       classes,

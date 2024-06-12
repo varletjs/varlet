@@ -70,19 +70,19 @@
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
       <var-menu-select placement="cover-top" :disabled="disabled" v-model="size">
         <div :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])">
-          <span>{{ size }}{{ t('paginationItem') }} / {{ t('paginationPage') }}</span>
+          <span>{{ size }}{{ t('paginationItem', { locale }) }} / {{ t('paginationPage', { locale }) }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
 
         <template #options>
           <var-menu-option v-for="(option, index) in sizeOption" :key="index" :value="option" @click="clickSize">
-            {{ option }}{{ t('paginationItem') }} / {{ t('paginationPage') }}
+            {{ option }}{{ t('paginationItem', { locale }) }} / {{ t('paginationPage', { locale }) }}
           </var-menu-option>
         </template>
       </var-menu-select>
     </li>
     <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, n('item--disabled')])">
-      {{ t('paginationJump') }}
+      {{ t('paginationJump', { locale }) }}
       <var-input
         v-model="quickJumperValue"
         :disabled="disabled"
@@ -110,6 +110,7 @@ import { props, type Range } from './props'
 import { isNumber, toNumber, call } from '@varlet/shared'
 import { t } from '../locale'
 import { createNamespace, formatElevation } from '../utils/components'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 const { name, n, classes } = createNamespace('pagination')
 
@@ -146,6 +147,8 @@ export default defineComponent({
 
       return props.showTotal(toNumber(props.total), range.value)
     })
+
+    const { locale } = injectLocaleProvider()
 
     watch([() => props.current, () => props.size], ([newCurrent, newSize]) => {
       current.value = toNumber(newCurrent) || 1
@@ -291,7 +294,6 @@ export default defineComponent({
     }
 
     return {
-      t,
       current,
       size,
       pageCount,
@@ -299,6 +301,8 @@ export default defineComponent({
       quickJumperValue,
       simpleCurrentValue,
       totalText,
+      locale,
+      t,
       n,
       classes,
       getMode,

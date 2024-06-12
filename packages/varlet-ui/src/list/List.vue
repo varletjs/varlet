@@ -4,18 +4,18 @@
 
     <slot name="loading" v-if="loading">
       <div :class="n('loading')">
-        <div :class="n('loading-text')">{{ loadingText ?? t('listLoadingText') }}</div>
+        <div :class="n('loading-text')">{{ loadingText ?? t('listLoadingText', { locale }) }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div :class="n('finished')">{{ finishedText ?? t('listFinishedText') }}</div>
+      <div :class="n('finished')">{{ finishedText ?? t('listFinishedText', { locale }) }}</div>
     </slot>
 
     <slot name="error" v-if="error">
       <div :class="n('error')" v-ripple @click="load">
-        {{ errorText ?? t('listErrorText') }}
+        {{ errorText ?? t('listErrorText', { locale }) }}
       </div>
     </slot>
 
@@ -34,6 +34,7 @@ import { createNamespace } from '../utils/components'
 import { t } from '../locale'
 import { onSmartMounted, onSmartUnmounted } from '@varlet/use'
 import { useTabItem } from './provide'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 const { name, n, classes } = createNamespace('list')
 
@@ -46,6 +47,7 @@ export default defineComponent({
     const listEl = ref<HTMLElement | null>(null)
     const detectorEl = ref<HTMLElement | null>(null)
     const { tabItem, bindTabItem } = useTabItem()
+    const { locale } = injectLocaleProvider()
 
     let scroller: HTMLElement | Window
 
@@ -104,9 +106,10 @@ export default defineComponent({
     }
 
     return {
-      t,
       listEl,
+      locale,
       detectorEl,
+      t,
       isNumber,
       load,
       check,

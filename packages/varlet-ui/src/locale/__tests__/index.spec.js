@@ -15,7 +15,7 @@ test('test add lang', () => {
   use(lang)
 
   expect(t('lang')).toBe(lang)
-  expect(messages[lang]).toBe(message)
+  expect(messages.value[lang]).toStrictEqual(message)
 })
 
 test('test merge lang', () => {

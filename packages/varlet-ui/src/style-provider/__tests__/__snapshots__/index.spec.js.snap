@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test styleProvider component 1`] = `"<div class="var-style-provider" style="--cell-font-size: 30px;"></div>"`;
+
+exports[`test styleProvider tag 1`] = `"<span class="var-style-provider"></span>"`;

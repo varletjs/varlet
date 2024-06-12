@@ -24,7 +24,7 @@
       v-bind="$attrs"
     >
       <div :class="n('title')">
-        <slot name="title">{{ title ?? t('dialogTitle') }}</slot>
+        <slot name="title">{{ title ?? t('dialogTitle', { locale }) }}</slot>
       </div>
       <div :class="n('message')" :style="{ textAlign: messageAlign }">
         <slot>
@@ -41,7 +41,7 @@
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ cancelButtonText ?? t('dialogCancelButtonText') }}
+          {{ cancelButtonText ?? t('dialogCancelButtonText', { locale }) }}
         </var-button>
         <var-button
           :class="classes(n('button'), n('confirm-button'))"
@@ -52,7 +52,7 @@
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ confirmButtonText ?? t('dialogConfirmButtonText') }}
+          {{ confirmButtonText ?? t('dialogConfirmButtonText', { locale }) }}
         </var-button>
       </div>
     </div>
@@ -68,6 +68,7 @@ import { t } from '../locale'
 import { createNamespace } from '../utils/components'
 import { toSizeUnit } from '../utils/elements'
 import { call } from '@varlet/shared'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 const { name, n, classes } = createNamespace('dialog')
 
@@ -82,6 +83,7 @@ export default defineComponent({
   setup(props) {
     const popupShow = ref(false)
     const popupCloseOnClickOverlay = ref(false)
+    const { locale } = injectLocaleProvider()
 
     watch(
       () => props.show,
@@ -163,6 +165,7 @@ export default defineComponent({
 
     return {
       t,
+      locale,
       popupShow,
       popupCloseOnClickOverlay,
       n,

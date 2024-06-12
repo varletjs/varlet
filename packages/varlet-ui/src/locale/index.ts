@@ -41,37 +41,47 @@ export type Message = {
 type ValueOf<T> = T[keyof T]
 
 function useLocale<T = Message>() {
-  const messages: Record<string, Partial<T>> = {}
+  const messages = ref<Record<string, Partial<T>>>({})
   const currentMessage: Ref<Partial<T>> = ref({})
 
   const add = (lang: string, message: Partial<T> & { lang?: string }) => {
     message.lang = lang
-    messages[lang] = message
+    messages.value[lang] = message
   }
 
   const use = (lang: string) => {
-    if (!messages[lang]) {
+    if (!messages.value[lang]) {
       console.warn(`The ${lang} does not exist. You can mount a language message using the add method`)
       return {}
     }
 
-    currentMessage.value = messages[lang]
+    currentMessage.value = messages.value[lang]
   }
 
   const merge = (lang: string, message: Partial<T>) => {
-    if (!messages[lang]) {
+    if (!messages.value[lang]) {
       console.warn(`The ${lang} does not exist. You can mount a language message using the add method`)
       return
     }
 
-    messages[lang] = { ...messages[lang], ...message }
+    messages.value[lang] = { ...messages.value[lang], ...message }
 
     use(lang)
   }
 
-  const t = (id: string): ValueOf<T> | undefined => {
-    if (hasOwn(currentMessage.value, id)) {
+  const t = (id: string, options: { locale?: string } = {}): ValueOf<T> | undefined => {
+    const { locale } = options
+
+    if (locale == null && hasOwn(currentMessage.value, id)) {
       return currentMessage.value[id]
+    }
+
+    if (locale != null && hasOwn(messages.value, locale)) {
+      const targetMessage = messages.value[locale]
+
+      if (hasOwn(targetMessage, id)) {
+        return targetMessage[id]
+      }
     }
   }
 

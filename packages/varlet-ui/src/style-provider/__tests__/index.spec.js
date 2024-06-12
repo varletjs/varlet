@@ -17,7 +17,7 @@ test('test styleProvider plugin', () => {
 
 test('test styleProvider functional', async () => {
   StyleProvider({
-    'cell-font-size': '30px',
+    '--cell-font-size': '30px',
   })
 
   await delay(0)
@@ -32,9 +32,15 @@ test('test styleProvider component', async () => {
 
   await wrapper.setProps({
     styleVars: {
-      'cell-font-size': '30px',
+      '--cell-font-size': '30px',
     },
   })
   expect(el.attributes('style')).toBe('--cell-font-size: 30px;')
+  expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
+})
+
+test('test styleProvider tag', () => {
+  const wrapper = mount(VarStyleProvider, { props: { tag: 'span' } })
+  expect(wrapper.html()).toMatchSnapshot()
 })
