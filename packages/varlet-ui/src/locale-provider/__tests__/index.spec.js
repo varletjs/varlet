@@ -5,8 +5,6 @@ import { createApp, h } from 'vue'
 import { expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
-Locale.add('en-US', Locale.enUS)
-
 test('test localeProvider component plugin', () => {
   const app = createApp({}).use(LocaleProvider)
   expect(app.component(LocaleProvider.name)).toBeTruthy()
@@ -23,6 +21,12 @@ test('test localeProvider tag', async () => {
 test('test localeProvider locale', async () => {
   const container = document.createElement('div')
   const wrapper = mount(LocaleProvider, {
+    props: {
+      messages: {
+        'zh-CN': Locale.zhCN,
+        'en-US': Locale.enUS,
+      },
+    },
     slots: {
       default: () => h(Dialog, { show: true, teleport: container }),
     },

@@ -20,7 +20,7 @@
   >
     <div :class="classes(n(), n('$--box'))" v-bind="$attrs">
       <slot name="title">
-        <div :class="n('title')">{{ title ?? t('actionSheetTitle', { locale }) }}</div>
+        <div :class="n('title')">{{ title ?? (pt ? pt : t)('actionSheetTitle') }}</div>
       </slot>
 
       <slot name="actions">
@@ -66,7 +66,7 @@ export default defineComponent({
   props,
   setup(props) {
     const show = useVModel(props, 'show')
-    const { locale } = injectLocaleProvider()
+    const { t: pt } = injectLocaleProvider()
 
     function handleSelect(action: ActionItem) {
       if (action.disabled) {
@@ -83,7 +83,7 @@ export default defineComponent({
 
     return {
       show,
-      locale,
+      pt,
       t,
       n,
       classes,

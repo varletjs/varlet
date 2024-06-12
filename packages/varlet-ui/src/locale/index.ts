@@ -69,19 +69,9 @@ function useLocale<T = Message>() {
     use(lang)
   }
 
-  const t = (id: string, options: { locale?: string } = {}): ValueOf<T> | undefined => {
-    const { locale } = options
-
-    if (locale == null && hasOwn(currentMessage.value, id)) {
+  const t = (id: string): ValueOf<T> | undefined => {
+    if (hasOwn(currentMessage.value, id)) {
       return currentMessage.value[id]
-    }
-
-    if (locale != null && hasOwn(messages.value, locale)) {
-      const targetMessage = messages.value[locale]
-
-      if (hasOwn(targetMessage, id)) {
-        return targetMessage[id]
-      }
     }
   }
 
@@ -100,9 +90,22 @@ const { messages, currentMessage, add, use, merge, t } = useLocale()
 add('zh-CN', zhCN)
 use('zh-CN')
 
-export { zhCN, enUS, messages, currentMessage, add, use, merge, t, useLocale }
+export { zhCN, enUS, zhTW, zhHK, faIR, messages, currentMessage, add, use, merge, t, useLocale }
 
-export const _LocaleComponent = { zhCN, enUS, messages, currentMessage, add, use, merge, t, useLocale }
+export const _LocaleComponent = {
+  zhCN,
+  enUS,
+  zhTW,
+  zhHK,
+  faIR,
+  messages,
+  currentMessage,
+  add,
+  use,
+  merge,
+  t,
+  useLocale,
+}
 
 export default {
   zhCN,

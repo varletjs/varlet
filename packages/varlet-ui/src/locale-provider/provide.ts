@@ -1,8 +1,8 @@
 import { keyInProvides } from '@varlet/use'
-import { computed, inject, provide, type ComputedRef } from 'vue'
+import { inject, provide } from 'vue'
 
 export interface LocaleProvider {
-  locale: ComputedRef<string>
+  t: (id: string) => string | undefined
 }
 
 export const LOCALE_PROVIDER_KEY = Symbol('LOCALE_PROVIDER_KEY')
@@ -13,7 +13,7 @@ export function provideLocaleProvider(localeProvider: LocaleProvider) {
 
 export function injectLocaleProvider() {
   if (!keyInProvides(LOCALE_PROVIDER_KEY)) {
-    return { locale: computed(() => undefined) }
+    return { t: null }
   }
 
   return inject<LocaleProvider>(LOCALE_PROVIDER_KEY)!

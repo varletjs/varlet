@@ -24,7 +24,7 @@
       v-bind="$attrs"
     >
       <div :class="n('title')">
-        <slot name="title">{{ title ?? t('dialogTitle', { locale }) }}</slot>
+        <slot name="title">{{ title ?? (pt ? pt : t)('dialogTitle') }}</slot>
       </div>
       <div :class="n('message')" :style="{ textAlign: messageAlign }">
         <slot>
@@ -41,7 +41,7 @@
           v-if="cancelButton"
           @click="cancel"
         >
-          {{ cancelButtonText ?? t('dialogCancelButtonText', { locale }) }}
+          {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
         </var-button>
         <var-button
           :class="classes(n('button'), n('confirm-button'))"
@@ -52,7 +52,7 @@
           v-if="confirmButton"
           @click="confirm"
         >
-          {{ confirmButtonText ?? t('dialogConfirmButtonText', { locale }) }}
+          {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
         </var-button>
       </div>
     </div>
@@ -83,7 +83,7 @@ export default defineComponent({
   setup(props) {
     const popupShow = ref(false)
     const popupCloseOnClickOverlay = ref(false)
-    const { locale } = injectLocaleProvider()
+    const { t: pt } = injectLocaleProvider()
 
     watch(
       () => props.show,
@@ -164,10 +164,10 @@ export default defineComponent({
     }
 
     return {
-      t,
-      locale,
       popupShow,
       popupCloseOnClickOverlay,
+      pt,
+      t,
       n,
       classes,
       handleClickOverlay,

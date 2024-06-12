@@ -4,18 +4,18 @@
 
     <slot name="loading" v-if="loading">
       <div :class="n('loading')">
-        <div :class="n('loading-text')">{{ loadingText ?? t('listLoadingText', { locale }) }}</div>
+        <div :class="n('loading-text')">{{ loadingText ?? (pt ? pt : t)('listLoadingText') }}</div>
         <var-loading size="mini" :radius="10" />
       </div>
     </slot>
 
     <slot name="finished" v-if="finished">
-      <div :class="n('finished')">{{ finishedText ?? t('listFinishedText', { locale }) }}</div>
+      <div :class="n('finished')">{{ finishedText ?? (pt ? pt : t)('listFinishedText') }}</div>
     </slot>
 
     <slot name="error" v-if="error">
       <div :class="n('error')" v-ripple @click="load">
-        {{ errorText ?? t('listErrorText', { locale }) }}
+        {{ errorText ?? (pt ? pt : t)('listErrorText') }}
       </div>
     </slot>
 
@@ -47,7 +47,7 @@ export default defineComponent({
     const listEl = ref<HTMLElement | null>(null)
     const detectorEl = ref<HTMLElement | null>(null)
     const { tabItem, bindTabItem } = useTabItem()
-    const { locale } = injectLocaleProvider()
+    const { t: pt } = injectLocaleProvider()
 
     let scroller: HTMLElement | Window
 
@@ -107,8 +107,8 @@ export default defineComponent({
 
     return {
       listEl,
-      locale,
       detectorEl,
+      pt,
       t,
       isNumber,
       load,

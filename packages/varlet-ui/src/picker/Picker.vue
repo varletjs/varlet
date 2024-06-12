@@ -34,11 +34,11 @@
             :text-color="cancelButtonTextColor"
             @click="cancel"
           >
-            {{ cancelButtonText ?? t('pickerCancelButtonText', { locale }) }}
+            {{ cancelButtonText ?? (pt ? pt : t)('pickerCancelButtonText') }}
           </var-button>
         </slot>
         <slot name="title">
-          <div :class="n('title')">{{ title ?? t('pickerTitle', { locale }) }}</div>
+          <div :class="n('title')">{{ title ?? (pt ? pt : t)('pickerTitle') }}</div>
         </slot>
         <slot name="confirm">
           <var-button
@@ -48,7 +48,7 @@
             :text-color="confirmButtonTextColor"
             @click="confirm"
           >
-            {{ confirmButtonText ?? t('pickerConfirmButtonText', { locale }) }}
+            {{ confirmButtonText ?? (pt ? pt : t)('pickerConfirmButtonText') }}
           </var-button>
         </slot>
       </div>
@@ -145,7 +145,7 @@ export default defineComponent({
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
     const columnHeight = computed(() => optionCount.value * optionHeight.value)
     const { prevY, moveY, dragging, startTouch, moveTouch, endTouch } = useTouch()
-    const { locale } = injectLocaleProvider()
+    const { t: pt } = injectLocaleProvider()
 
     let prevIndexes: number[] = []
 
@@ -444,7 +444,7 @@ export default defineComponent({
       columnHeight,
       center,
       Transition,
-      locale,
+      pt,
       t,
       n,
       classes,

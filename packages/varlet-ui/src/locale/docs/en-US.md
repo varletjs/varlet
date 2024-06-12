@@ -36,9 +36,14 @@ OR
 <!-- playground-ignore -->
 <script setup>
 import { ref } from 'vue'
+import { Locale } from '@varlet/ui'
 
-const locale = ref('zh-CN')
 const show = ref(true)
+const locale = ref('zh-CN')
+const messages = {
+  'zh-CN': Locale.zhCN,
+  'en-US': Locale.enUS
+}
 
 function switchLocale() {
   locale.value = locale.value === 'zh-CN' ? 'en-US' : 'zh-CN'
@@ -46,7 +51,7 @@ function switchLocale() {
 </script>
 
 <template>
-  <var-locale-provider :locale="locale">
+  <var-locale-provider :locale="locale" :messages="messages">
     <var-dialog v-model:show="show" />
   </var-locale-provider>
 </template>
@@ -76,6 +81,7 @@ function switchLocale() {
 | Prop         | Description   | Type                     | Default | 
 |--------------|---------------|--------------------------|---------| 
 | `locale` | Current locale | _string_ | `zh-CN`    |
+| `messages`    | Language messages      | _Record<string, Record<string, string>>_                 | `-`   |
 | `tag`        | Tag name      | _string_                 | `div`   |
 
 ### Slots

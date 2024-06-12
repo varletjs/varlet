@@ -1,7 +1,7 @@
 <template>
   <div :class="classes(n(), formatElevation(elevation, 2))" ref="picker">
     <div :class="n('title')" :style="{ background: titleColor || color }">
-      <div :class="n('title-hint')">{{ hint ?? t('timePickerHint') }}</div>
+      <div :class="n('title-hint')">{{ hint ?? (pt ? pt : t)('timePickerHint') }}</div>
       <div :class="n('title-time-container')">
         <div :class="n('title-time')">
           <div :class="classes(n('title-btn'), [type === 'hour', n('title-btn--active')])" @click="checkPanel('hour')">
@@ -73,6 +73,7 @@ import { createNamespace, formatElevation } from '../utils/components'
 import { padStart } from '../utils/shared'
 import { getNumberTime, getIsDisableMinute, getIsDisableSecond } from './utils'
 import { t } from '../locale'
+import { injectLocaleProvider } from '../locale-provider/provide'
 
 const { name, n, classes } = createNamespace('time-picker')
 
@@ -115,6 +116,7 @@ export default defineComponent({
 
       return secondRad.value
     })
+    const { t: pt } = injectLocaleProvider()
 
     watch(
       () => props.modelValue,
@@ -347,6 +349,7 @@ export default defineComponent({
       n,
       classes,
       t,
+      pt,
       moveHand,
       checkPanel,
       checkAmpm,

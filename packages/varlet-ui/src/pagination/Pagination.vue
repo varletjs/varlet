@@ -70,19 +70,19 @@
     <li v-if="showSizeChanger" :class="classes(n('size'), [disabled, n('item--disabled')])">
       <var-menu-select placement="cover-top" :disabled="disabled" v-model="size">
         <div :class="classes(n('size--open'), [current <= 1 || disabled, n('size--open--disabled')])">
-          <span>{{ size }}{{ t('paginationItem', { locale }) }} / {{ t('paginationPage', { locale }) }}</span>
+          <span>{{ size }}{{ (pt ? pt : t)('paginationItem') }} / {{ (pt ? pt : t)('paginationPage') }}</span>
           <var-icon :class="n('size--open-icon')" var-pagination-cover name="menu-down" />
         </div>
 
         <template #options>
           <var-menu-option v-for="(option, index) in sizeOption" :key="index" :value="option" @click="clickSize">
-            {{ option }}{{ t('paginationItem', { locale }) }} / {{ t('paginationPage', { locale }) }}
+            {{ option }}{{ (pt ? pt : t)('paginationItem') }} / {{ (pt ? pt : t)('paginationPage') }}
           </var-menu-option>
         </template>
       </var-menu-select>
     </li>
     <li v-if="showQuickJumper && !simple" :class="classes(n('quickly'), [disabled, n('item--disabled')])">
-      {{ t('paginationJump', { locale }) }}
+      {{ (pt ? pt : t)('paginationJump') }}
       <var-input
         v-model="quickJumperValue"
         :disabled="disabled"
@@ -148,7 +148,7 @@ export default defineComponent({
       return props.showTotal(toNumber(props.total), range.value)
     })
 
-    const { locale } = injectLocaleProvider()
+    const { t: pt } = injectLocaleProvider()
 
     watch([() => props.current, () => props.size], ([newCurrent, newSize]) => {
       current.value = toNumber(newCurrent) || 1
@@ -301,7 +301,7 @@ export default defineComponent({
       quickJumperValue,
       simpleCurrentValue,
       totalText,
-      locale,
+      pt,
       t,
       n,
       classes,
