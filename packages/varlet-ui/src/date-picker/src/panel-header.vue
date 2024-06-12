@@ -35,6 +35,7 @@ import { defineComponent, ref, computed, watch } from 'vue'
 import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { t } from '../../locale'
+import { injectLocaleProvider } from '../../locale-provider/provide'
 import type { Ref, ComputedRef, PropType } from 'vue'
 import type { Preview, PanelBtnDisabled } from '../props'
 
@@ -65,6 +66,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const reverse: Ref<boolean> = ref(false)
     const forwardOrBackNum: Ref<number> = ref(0)
+    const { t: pt } = injectLocaleProvider()
 
     const showDate: ComputedRef<number | string> = computed(() => {
       const { date, type } = props
@@ -74,8 +76,8 @@ export default defineComponent({
 
       if (type === 'month') return toNumber(previewYear) + forwardOrBackNum.value
 
-      const monthName = t('datePickerMonthDict')?.[previewMonth!].name
-      return t('lang') === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
+      const monthName = (pt || t)('datePickerMonthDict')?.[previewMonth!].name
+      return (pt || t)('lang') === 'zh-CN' ? `${previewYear} ${monthName}` : `${monthName} ${previewYear}`
     })
 
     const checkDate = (checkType: string) => {

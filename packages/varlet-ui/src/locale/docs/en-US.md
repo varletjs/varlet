@@ -3,7 +3,7 @@
 ### Intro
 Component library uses Chinese as the default language, support multi-language switch.
 
-### Multi-language Switch
+### Multi-language Switch (Functional)
 
 The `Locale` component is introduced to realize multi-language switching, and `Locale.add` is used for language extension.
 
@@ -23,22 +23,21 @@ Locale.merge('en-US', {
 })
 ```
 
-Use `Locale.use` or `LocaleProvider` to switch language.
+Use `Locale.use` to switch language.
 
 ```js
 // playground-ignore
 Locale.use('en-US')
 ```
 
-OR
+### Multi-language Switch (Component declarative)
 
 ```html
-<!-- playground-ignore -->
 <script setup>
 import { ref } from 'vue'
 import { Locale } from '@varlet/ui'
 
-const show = ref(true)
+const date = ref('2021-04-08')
 const locale = ref('zh-CN')
 const messages = {
   'zh-CN': Locale.zhCN,
@@ -52,7 +51,8 @@ function switchLocale() {
 
 <template>
   <var-locale-provider :locale="locale" :messages="messages">
-    <var-dialog v-model:show="show" />
+    <var-date-picker v-model="date" />
+    <var-button type="primary" @click="switchLocale">Switch</var-button>
   </var-locale-provider>
 </template>
 ```

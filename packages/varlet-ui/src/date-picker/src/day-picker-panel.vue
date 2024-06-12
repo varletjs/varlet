@@ -60,6 +60,7 @@ import { toNumber } from '@varlet/shared'
 import { createNamespace } from '../../utils/components'
 import { t } from '../../locale'
 import { onSmartMounted } from '@varlet/use'
+import { injectLocaleProvider } from '../../locale-provider/provide'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -108,6 +109,8 @@ export default defineComponent({
       right: false,
     })
 
+    const { t: pt } = injectLocaleProvider()
+
     const isCurrent: ComputedRef<boolean> = computed(
       () => props.preview.previewYear === currentYear && props.preview.previewMonth === currentMonth
     )
@@ -127,7 +130,7 @@ export default defineComponent({
       return [...WEEK_HEADER.slice(index), ...WEEK_HEADER.slice(0, index)]
     })
 
-    const getDayAbbr = (key: Week): string => t('datePickerWeekDict')?.[key].abbr ?? ''
+    const getDayAbbr = (key: Week): string => (pt || t)('datePickerWeekDict')?.[key].abbr ?? ''
 
     const filterDay = (day: number): number | string => (day > 0 ? day : '')
 

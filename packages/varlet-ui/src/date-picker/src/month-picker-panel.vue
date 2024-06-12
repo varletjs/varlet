@@ -44,6 +44,7 @@ import { createNamespace } from '../../utils/components'
 import { t } from '../../locale'
 import type { Ref, ComputedRef, UnwrapRef, PropType, RendererNode } from 'vue'
 import type { Choose, Preview, ComponentProps, Month, PanelBtnDisabled } from '../props'
+import { injectLocaleProvider } from '../../locale-provider/provide'
 
 dayjs.extend(isSameOrBefore)
 dayjs.extend(isSameOrAfter)
@@ -90,11 +91,13 @@ export default defineComponent({
       right: false,
     })
 
+    const { t: pt } = injectLocaleProvider()
+
     const isSameYear: ComputedRef<boolean> = computed(() => props.choose.chooseYear === props.preview.previewYear)
 
     const isCurrentYear: ComputedRef<boolean> = computed(() => props.preview.previewYear === currentYear)
 
-    const getMonthAbbr = (key: Month): string => t('datePickerMonthDict')?.[key].abbr ?? ''
+    const getMonthAbbr = (key: Month): string => (pt || t)('datePickerMonthDict')?.[key].abbr ?? ''
 
     const inRange = (key: string): boolean => {
       const {

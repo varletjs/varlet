@@ -4,7 +4,7 @@
 
 组件库使用中文作为默认语言，支持多语言切换。
 
-### 多语言切换
+### 多语言切换 (函数式)
 
 引入 `Locale` 组件实现多语言切换，使用 `Locale.add` 进行语言扩展。
 
@@ -24,22 +24,21 @@ Locale.merge('en-US', {
 })
 ```
 
-使用 `Locale.use` 或 `LocaleProvider` 切换语言。
+使用 `Locale.use` 切换语言。
 
 ```js
 // playground-ignore
 Locale.use('en-US')
 ```
 
-或
+### 多语言切换 (组件声明式)
 
 ```html
-<!-- playground-ignore -->
 <script setup>
 import { ref } from 'vue'
 import { Locale } from '@varlet/ui'
 
-const show = ref(true)
+const date = ref('2021-04-08')
 const locale = ref('zh-CN')
 const messages = {
   'zh-CN': Locale.zhCN,
@@ -53,7 +52,8 @@ function switchLocale() {
 
 <template>
   <var-locale-provider :locale="locale" :messages="messages">
-    <var-dialog v-model:show="show" />
+    <var-date-picker v-model="date" />
+    <var-button type="primary" @click="switchLocale">切换</var-button>
   </var-locale-provider>
 </template>
 ```

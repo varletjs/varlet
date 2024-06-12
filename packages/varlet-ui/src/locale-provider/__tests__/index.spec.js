@@ -1,6 +1,7 @@
 import LocaleProvider from '../index'
 import Dialog from '../../dialog/Dialog.vue'
 import Locale from '../../locale'
+import DatePicker from '../../date-picker'
 import { createApp, h } from 'vue'
 import { expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
@@ -28,17 +29,21 @@ test('test localeProvider locale', async () => {
       },
     },
     slots: {
-      default: () => h(Dialog, { show: true, teleport: container }),
+      default: () =>
+        h('div', [h(Dialog, { show: true, teleport: container }), h(DatePicker, { modelValue: '2021-04-08' })]),
     },
   })
   expect(container.innerHTML).toMatchSnapshot()
+  expect(wrapper.html()).toMatchSnapshot()
   expect(container.innerHTML).contains('确认')
   expect(container.innerHTML).contains('取消')
   expect(container.innerHTML).contains('提示')
   await wrapper.setProps({ locale: 'en-US' })
   expect(container.innerHTML).toMatchSnapshot()
+  expect(wrapper.html()).toMatchSnapshot()
   expect(container.innerHTML).contains('Confirm')
   expect(container.innerHTML).contains('Cancel')
   expect(container.innerHTML).contains('Hint')
+
   wrapper.unmount()
 })
