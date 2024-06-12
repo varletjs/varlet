@@ -7,6 +7,7 @@ export interface MenuOptionProps extends BasicAttributes {
   label?: any
   value?: any
   disabled?: boolean
+  ripple?: boolean
 }
 
 export class MenuOption extends VarComponent {

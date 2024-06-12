@@ -4,7 +4,7 @@
     :class="
       classes(n(), n('$--box'), n(`--${size}`), [optionSelected, n('--selected-color')], [disabled, n('--disabled')])
     "
-    v-ripple="{ disabled }"
+    v-ripple="{ disabled: disabled || !ripple }"
     v-hover:desktop="handleHovering"
     :tabindex="disabled ? undefined : '-1'"
     @click="handleClick"
