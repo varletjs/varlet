@@ -24,6 +24,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  elevation: {
+    type: [Boolean, Number, String],
+    default: false,
+  },
   block: Boolean,
   closeable: Boolean,
   onClose: defineListenerProp<(e: Event) => void>(),

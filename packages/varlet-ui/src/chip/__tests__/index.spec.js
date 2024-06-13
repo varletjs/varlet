@@ -63,6 +63,25 @@ describe('test chip component props', () => {
     wrapper.unmount()
   })
 
+  test('test chip elevation', async () => {
+    const wrapper = mount(VarChip)
+
+    expect(wrapper.find('.var-elevation--1').exists()).toBe(false)
+
+    await wrapper.setProps({
+      elevation: true,
+    })
+
+    expect(wrapper.find('.var-elevation--1').exists()).toBe(true)
+
+    await wrapper.setProps({
+      elevation: 3,
+    })
+    expect(wrapper.find('.var-elevation--3').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
+
   test('test chip round', async () => {
     const wrapper = mount(VarChip, {
       props: {
