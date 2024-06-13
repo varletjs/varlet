@@ -1,11 +1,12 @@
 # Locale
 
 ### Intro
+
 Component library uses Chinese as the default language, support multi-language switch.
 
 ### Multi-language Switch (Functional)
 
-The `Locale` component is introduced to realize multi-language switching, and `Locale.add` is used for language extension.
+`Locale.add` is used for language mounted.
 
 ```js
 // playground-ignore
@@ -14,7 +15,7 @@ import { Locale } from '@varlet/ui'
 Locale.add('en-US', Locale.enUS)
 ```
 
-Use `Locale.merge` to merge languages.
+Use `Locale.merge` to override languages.
 
 ```js
 // playground-ignore
@@ -59,8 +60,8 @@ function switchLocale() {
 
 ### Notes
 
+- `Locale.use` operates on a singleton language instance context. Do not call it on the server. It is recommended for client-side rendering scenarios.
 - `LocaleProvider` is only valid for the sub-components it wraps, and is invalid for functional calls to components. It is recommended for server-side rendering scenarios.
-- `Locale.use` operates on a singleton language instance. Do not call it on the server. It is recommended for client-side rendering scenarios.
 
 ### Currently Supported Languages
 

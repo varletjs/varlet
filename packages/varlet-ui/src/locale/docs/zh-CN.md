@@ -6,7 +6,7 @@
 
 ### 多语言切换 (函数式)
 
-引入 `Locale` 组件实现多语言切换，使用 `Locale.add` 进行语言扩展。
+使用 `Locale.add` 进行语言扩展。
 
 ```js
 // playground-ignore
@@ -15,7 +15,7 @@ import { Locale } from '@varlet/ui'
 Locale.add('en-US', Locale.enUS)
 ```
 
-使用 `Locale.merge` 进行语言合并。
+使用 `Locale.merge` 进行语言内容覆盖。
 
 ```js
 // playground-ignore
@@ -60,8 +60,8 @@ function switchLocale() {
 
 ### 注意事项
 
-- `LocaleProvider` 仅对其包裹的子孙组件有效，对组件的函数式调用无效，推荐用于服务端渲染的场景。
-- `Locale.use` 操作的是单例的语言实例，不要在服务端调用，推荐用于客户端渲染的场景。
+- `Locale.use` 操作的是单例语言实例，请不要在服务端使用，推荐用于客户端渲染的场景。
+- `LocaleProvider` 仅对组件包裹的子孙组件有效，对组件的函数式调用无效，推荐用于服务端渲染的场景。
 
 ### 目前支持的语言
 
