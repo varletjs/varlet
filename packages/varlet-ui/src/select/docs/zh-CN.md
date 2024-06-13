@@ -404,7 +404,7 @@ const value13 = ref()
 
 | 插槽名 | 说明 | 参数 |
 | --- | --- | --- |
-| `default` | 选项显示的内容 | `-` |
+| `default` | 选项显示的内容 | `selected: boolean` 是否选中 |
 
 ### 样式变量
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。

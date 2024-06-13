@@ -9,13 +9,17 @@ export interface OptionProps extends BasicAttributes {
   disabled?: boolean
 }
 
+export interface OptionData {
+  selected: boolean
+}
+
 export class Option extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<OptionProps>
 
   $props: OptionProps
 
   $slots: {
-    default(): VNode[]
+    default(data: OptionData): VNode[]
   }
 }
 
