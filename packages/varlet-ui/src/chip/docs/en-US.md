@@ -156,6 +156,7 @@ Set the chip color through the `color` and `text-color` attributes.
 | `plain` | Whether to be hollow label | _boolean_ | `false` |
 | `round` | Whether to be round label | _boolean_ | `true` |
 | `block` | Whether to be block label | _boolean_ | `false` |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `false`    |
 | `closeable` | Whether to be closed label | _boolean_ | `false`|
 | `icon-name` | Custom closeable icon must be used when `Closeable` is `true`| _string_ | `-` |
 | `namespace` | Closeable icon namespace | _string_ | `var-icon` |

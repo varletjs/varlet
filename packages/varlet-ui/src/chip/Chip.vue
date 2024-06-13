@@ -1,6 +1,10 @@
 <template>
   <transition :name="n('$-fade')">
-    <span :class="classes(n(), n('$--box'), ...contentClass)" :style="chipStyle" v-bind="$attrs">
+    <span
+      :class="classes(n(), n('$--box'), formatElevation(elevation, 1), ...contentClass)"
+      :style="chipStyle"
+      v-bind="$attrs"
+    >
       <slot name="left" />
 
       <span :class="n(`text-${size}`)">
@@ -20,7 +24,7 @@
 import VarIcon from '../icon'
 import { defineComponent, computed, CSSProperties } from 'vue'
 import { props } from './props'
-import { createNamespace } from '../utils/components'
+import { createNamespace, formatElevation } from '../utils/components'
 import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('chip')
@@ -67,6 +71,7 @@ export default defineComponent({
       contentClass,
       n,
       classes,
+      formatElevation,
       handleClose,
     }
   },
@@ -75,6 +80,7 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
+@import '../styles/elevation';
 @import '../icon/icon';
 @import './chip';
 </style>
