@@ -7,7 +7,7 @@
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
 | `disabled` | Whether to disable | _boolean_ | `false` |
-| `ripple` | Whether to enable ripple | _boolean_ | `true` |
+| `ripple` ***3.3.0***  | Whether to enable ripple | _boolean_ | `true` |
 
 ### Slots
 

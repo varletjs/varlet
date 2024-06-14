@@ -307,7 +307,7 @@ function openMultiple() {
 | `type`           | `Snackbar` 类型，可选值为 `success warning info error loading` | _string_ | `-` |
 | `position`       | `Snackbar`  位置，可选值为 `top center bottom`                 | _string_ | `top` |
 | `duration`       | 显示时长                                                    | _number_ | `3000` |
-| `elevation` ***3.2.15*** | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
+| `elevation` ***3.3.0***  | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `content`        | 自定义内容                                                   | _string_ | `-` |
 | `content-class`  | 自定义内容的类名                                                | _string_ | `-` |
 | `vertical`       | 是否启用竖直排列方式                                              | _boolean_ | `false` |

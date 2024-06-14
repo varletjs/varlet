@@ -154,7 +154,7 @@ const show1= ref(true)
 | `plain` | 是否为空心样式 | _boolean_ | `false` |
 | `round` | 是否为圆角样式 | _boolean_ | `true` |
 | `block` | 是否为块级样式 | _boolean_ | `false` |
-| `elevation` | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                  | _string \| number \| boolean_ | `false`            |
+| `elevation` ***3.3.0***  | 海拔高度，可选值为 `true`、`false` 和 `0-24` 的等级                                  | _string \| number \| boolean_ | `false`            |
 | `closeable` | 是否为可关闭纸片 | _boolean_ | `false` |
 | `icon-name` | 自定义可关闭纸片的图标，必须在 `closeable` 为 `true` 的条件下才能用 | _string_ | `-` |
 | `namespace` | 自定义可关闭纸片的图标的命名空间 | _string_ | `var-icon` |
