@@ -1,3 +1,23 @@
+# [3.3.0](https://github.com/varletjs/varlet/compare/v3.2.14...v3.3.0) (2024-06-14)
+
+
+### Bug Fixes
+
+* **option:** add missing style import and remove useless import ([#1678](https://github.com/varletjs/varlet/issues/1678)) ([e38800f](https://github.com/varletjs/varlet/commit/e38800fdff629b856a13d0cec8152252c21b7ee3))
+
+
+### Features
+
+* **card:** export class for title, subtitle and description slot ([#1662](https://github.com/varletjs/varlet/issues/1662)) ([14bb35c](https://github.com/varletjs/varlet/commit/14bb35c75e977722eb538c24924a9a1069eb58f6))
+* **chip:** support elevation ([#1680](https://github.com/varletjs/varlet/issues/1680)) ([4ac22dc](https://github.com/varletjs/varlet/commit/4ac22dcd5e7a6aaa8e8dc245b1fe3bf70a903774))
+* **locale-provider:** support messages ([0f52452](https://github.com/varletjs/varlet/commit/0f5245215fa88db19992447b2a88d0271ba3b592))
+* **menu-option:** support ripple ([#1676](https://github.com/varletjs/varlet/issues/1676)) ([ad2689b](https://github.com/varletjs/varlet/commit/ad2689bd80a8557ccaa7c9bd16cfcc39b1ef233b))
+* new component locale-provider and makes locale messages reactive ([8adb4c1](https://github.com/varletjs/varlet/commit/8adb4c102b933d207e3aa0ee9d82a3b1420a05e8))
+* **option:** export selected prop for default slot ([#1677](https://github.com/varletjs/varlet/issues/1677)) ([704ca37](https://github.com/varletjs/varlet/commit/704ca378a9e4ca9707572f199edcbc80ec582450))
+* **snackbar:** support elevation ([#1669](https://github.com/varletjs/varlet/issues/1669)) ([04a6596](https://github.com/varletjs/varlet/commit/04a6596f2edd6f07082979019d0784bfff99fc42))
+
+
+
 ## [3.2.14](https://github.com/varletjs/varlet/compare/v3.2.13...v3.2.14) (2024-06-07)
 
 
