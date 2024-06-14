@@ -309,7 +309,7 @@ function openMultiple() {
 | `type`| `Snackbar` type, Optional value is one of `success, warning, info, error, loading` | _string_ | `-` |
 | `position`| `Snackbar` position, Optional value is one of `top, center, bottom`                | _string_ | `top` |
 | `duration`| Display duration                                                                   | _number_ | `3000` |
-| `elevation` ***3.2.15*** | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` ***3.3.0***  | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `content` | Custom content                                                                     | _string_ | `-` |
 | `content-class` | Class of custom content                                                            | _string_ | `-` |
 | `vertical` | Whether to use multi-line                                                          | _boolean_ | `false` |
