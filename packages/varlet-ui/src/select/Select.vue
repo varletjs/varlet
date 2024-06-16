@@ -116,7 +116,6 @@
               :key="option[valueKey]"
               :label-key="labelKey"
               :value-key="valueKey"
-              :checked="multiple && modelValue?.includes(option.value)"
               :option="option"
             />
           </template>
@@ -465,5 +464,6 @@ export default defineComponent({
 @import '../field-decorator/fieldDecorator';
 @import '../form-details/formDetails';
 @import '../chip/chip';
+@import '../option/option';
 @import './select';
 </style>

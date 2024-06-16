@@ -366,10 +366,18 @@ const value13 = ref()
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `options` _**3.2.11**_ | Specifies options | _SelectOption[]_ | `-` |
+| `options` ***3.3.1*** | Specifies options | _SelectOption[]_ | `-` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed, The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
-#### SelectOption
+#### SelectOption 
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of option    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    The value of option    | _any_      | `-`   |
+| `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
+
+#### Option Props
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |

@@ -367,10 +367,18 @@ const value13 = ref()
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
-| `options` _**3.2.11**_ | 指定可选项 | _SelectOption[]_ | `-` |
+| `options` ***3.3.1*** | 指定可选项 | _SelectOption[]_ | `-` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
 
-#### SelectOption
+#### SelectOption 
+
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `label`    |    选项的标签    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    选项的值    | _any_      | `-`   |
+| `disabled`    |    是否禁用   | _boolean_      | `-`   |
+
+#### Option Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

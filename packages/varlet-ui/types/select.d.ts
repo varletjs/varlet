@@ -13,8 +13,10 @@ export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) =
 
 export interface SelectOption {
   label?: string | VNode | SelectOptionLabelRender
-  disabled?: boolean
   value?: any
+  disabled?: boolean
+
+  [key: PropertyKey]: any
 }
 
 export interface SelectProps extends BasicAttributes {

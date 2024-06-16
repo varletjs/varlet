@@ -1,12 +1,13 @@
-import { defineComponent, ref, type PropType } from 'vue'
-import VarOption from '../option'
+import { defineComponent, type PropType } from 'vue'
 import { isFunction } from '@varlet/shared'
 import { SelectOption } from './props'
+import { createNamespace } from '../utils/components'
+import Option from '../option'
 
-import '../option/option.less'
+const { name } = createNamespace('select-option')
 
 export default defineComponent({
-  name: 'SelectOption',
+  name,
   props: {
     labelKey: {
       type: String,
@@ -22,29 +23,17 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const label = ref('')
-
     return () => {
       const { option, labelKey, valueKey } = props
 
-      const setOption = (optionSelected: boolean) => {
-        label.value = isFunction(option[labelKey]) ? option[labelKey](option, optionSelected) : option[labelKey]
-      }
-
       return (
-        <VarOption
-          label={label.value}
-          value={option.value || option.label}
-          disabled={option.disabled}
-          checkedValue={option[valueKey] ? option[valueKey] : option[labelKey]}
-        >
+        <Option label={option[labelKey]} value={option[valueKey]} disabled={option.disabled}>
           {{
-            default: ({ optionSelected }: { optionSelected: boolean }) => {
-              setOption(optionSelected)
-              return label.value
+            default: ({ selected }: { selected: boolean }) => {
+              isFunction(option[labelKey]) ? option[labelKey](option, selected) : option[labelKey]
             },
           }}
-        </VarOption>
+        </Option>
       )
     }
   },
