@@ -18,6 +18,7 @@ export default {
   chipMultiple: '纸片风格的多选',
   selectOptions: '下拉框选项',
   selectOptionsMultiple: '下拉框选项（多选）',
+  customFields: '自定义字段',
   eat: '吃饭',
   sleep: '睡觉',
   play: '打游戏',

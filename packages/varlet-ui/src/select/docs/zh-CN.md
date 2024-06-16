@@ -9,12 +9,35 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+
 const options = [
   {
     label: '吃饭',
+    value: 1,
   },
   {
     label: '睡觉',
+    value: 2,
+  },
+  {
+    label: '打游戏',
+    value: 3,
+    disabled: true,
+  },
+]
+const keyOptions = [
+   {
+    name: '吃饭',
+    id: 1,
+  },
+  {
+    name: '睡觉',
+    id: 2,
+  },
+  {
+    name: '打游戏',
+    id: 3,
+    disabled: true,
   },
 ]
 
@@ -33,6 +56,7 @@ const value12 = ref([])
 const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -156,7 +180,9 @@ const value15 = ref([])
     </var-select>
     <var-select placeholder="下拉框选项" v-model="value14" :options="options">
     </var-select>
-    <var-select placeholder="下拉框选项" v-model="value15" :options="options" multiple>
+    <var-select placeholder="下拉框选项（多选）" v-model="value15" :options="options" multiple>
+    </var-select>
+    <var-select placeholder="自定义字段" v-model="value16" :options="options" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>

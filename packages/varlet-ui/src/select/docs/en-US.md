@@ -12,9 +12,31 @@ import { ref } from 'vue'
 const options = [
   {
     label: 'Eat',
+    value: 1,
   },
   {
     label: 'Sleep',
+    value: 2,
+  },
+  {
+    label: 'Play game',
+    value: 3,
+    disabled: true,
+  },
+]
+const keyOptions = [
+  {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
   },
 ]
 
@@ -33,6 +55,7 @@ const value12 = ref([])
 const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -155,7 +178,9 @@ const value15 = ref([])
     </var-select>
     <var-select placeholder="Select Options" v-model="value14" :options="options">
     </var-select>
-    <var-select placeholder="Select Options Multiple" v-model="value15" :options="options">
+    <var-select placeholder="Multiple Select Options" v-model="value15" :options="options" multiple>
+    </var-select>
+    <var-select placeholder="Custom Fields" v-model="value16" :options="options" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>

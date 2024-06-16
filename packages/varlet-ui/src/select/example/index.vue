@@ -18,6 +18,7 @@ const standardValue12 = ref([])
 const standardValue13 = ref()
 const standardValue14 = ref()
 const standardValue15 = ref([])
+const standardValue16 = ref()
 
 const outlinedValue = ref()
 const outlinedValue2 = ref()
@@ -35,9 +36,31 @@ const outlinedValue13 = ref()
 const options = computed(() => [
   {
     label: t('eat'),
+    value: 1,
   },
   {
     label: t('sleep'),
+    value: 2,
+  },
+  {
+    label: t('play'),
+    value: 3,
+    disabled: true,
+  },
+])
+const keyOptions = computed(() => [
+  {
+    name: t('eat'),
+    id: 1,
+  },
+  {
+    name: t('sleep'),
+    id: 2,
+  },
+  {
+    name: t('play'),
+    id: 3,
+    disabled: true,
   },
 ])
 
@@ -58,6 +81,7 @@ watchLang((lang) => {
   standardValue13.value = undefined
   standardValue14.value = undefined
   standardValue15.value = []
+  standardValue16.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -198,8 +222,16 @@ watchLang((lang) => {
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options"> </var-select>
+    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options"></var-select>
     <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple>
+    </var-select>
+    <var-select
+      :placeholder="t('customFields')"
+      v-model="standardValue16"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    >
     </var-select>
   </var-space>
 
