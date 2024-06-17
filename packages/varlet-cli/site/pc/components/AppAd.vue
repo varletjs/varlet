@@ -82,7 +82,7 @@ function handleClose() {
   }
 
   &__close-button {
-    position: absolute;
+    position: absolute !important;
     top: 50%;
     right: 35px;
     transform: translateY(-50%);
