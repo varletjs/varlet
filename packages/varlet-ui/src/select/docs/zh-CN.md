@@ -182,7 +182,7 @@ const value16 = ref()
     </var-select>
     <var-select placeholder="下拉框选项（多选）" v-model="value15" :options="options" multiple>
     </var-select>
-    <var-select placeholder="自定义字段" v-model="value16" :options="options" label-key="name" value-key="id">
+    <var-select placeholder="自定义字段" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>

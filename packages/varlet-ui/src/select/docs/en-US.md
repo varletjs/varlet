@@ -180,7 +180,7 @@ const value16 = ref()
     </var-select>
     <var-select placeholder="Multiple Select Options" v-model="value15" :options="options" multiple>
     </var-select>
-    <var-select placeholder="Custom Fields" v-model="value16" :options="options" label-key="name" value-key="id">
+    <var-select placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>
