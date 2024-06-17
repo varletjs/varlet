@@ -1,3 +1,12 @@
+## [3.3.1](https://github.com/varletjs/varlet/compare/v3.3.0...v3.3.1) (2024-06-17)
+
+
+### Bug Fixes
+
+* fix md3 light theme format error ([ae36ea4](https://github.com/varletjs/varlet/commit/ae36ea4dedee698f7680b9db2b670fc3e8b537e0))
+
+
+
 # [3.3.0](https://github.com/varletjs/varlet/compare/v3.2.14...v3.3.0) (2024-06-14)
 
 
