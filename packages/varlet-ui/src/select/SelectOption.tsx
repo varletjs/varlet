@@ -1,4 +1,4 @@
-import { defineComponent, type PropType } from 'vue'
+import { defineComponent, type PropType, ref } from 'vue'
 import { isFunction } from '@varlet/shared'
 import { SelectOption } from './props'
 import { createNamespace } from '../utils/components'
@@ -23,14 +23,20 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const label = ref('')
     return () => {
       const { option, labelKey, valueKey } = props
 
+      const setOption = (selected: boolean) => {
+        label.value = isFunction(option[labelKey]) ? option[labelKey](option, selected) : option[labelKey]
+      }
+
       return (
-        <Option label={option[labelKey]} value={option[valueKey]} disabled={option.disabled}>
+        <Option label={label.value} value={option[valueKey]} disabled={option.disabled}>
           {{
             default: ({ selected }: { selected: boolean }) => {
-              isFunction(option[labelKey]) ? option[labelKey](option, selected) : option[labelKey]
+              setOption(selected)
+              return label.value
             },
           }}
         </Option>

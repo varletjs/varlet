@@ -67,15 +67,17 @@
                     @click.stop
                     @close="() => handleClose(l)"
                   >
-                    {{ l }}
+                    <select-label :label="l" />
                   </var-chip>
                 </div>
                 <div :class="n('values')" v-else>
-                  {{ labels.join(separator) }}
+                  <template v-for="(l, i) in labels" :key="l">
+                    <select-label :label="l" />{{ i === labels.length - 1 ? '' : separator }}
+                  </template>
                 </div>
               </template>
 
-              <span v-else>{{ label }}</span>
+              <select-label v-else :label="label" />
             </slot>
           </div>
 
@@ -135,6 +137,7 @@ import VarChip from '../chip'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import SelectOption from './SelectOption'
+import SelectLabel from './SelectLabel'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import { isArray, isEmpty, call, preventDefault, doubleRaf } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
@@ -158,6 +161,7 @@ export default defineComponent({
     VarFieldDecorator,
     VarFormDetails,
     SelectOption,
+    SelectLabel,
   },
   props,
   setup(props) {

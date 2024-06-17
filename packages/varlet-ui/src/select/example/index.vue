@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { computed, ref } from 'vue'
+import { computed, ref, h } from 'vue'
 import { use, t } from './locale'
 
 const standardValue = ref()
@@ -35,11 +35,11 @@ const outlinedValue12 = ref([])
 const outlinedValue13 = ref()
 const options = computed(() => [
   {
-    label: t('eat'),
+    label: h('h1', 'fff'),
     value: 1,
   },
   {
-    label: t('sleep'),
+    label: (option, selected) => `${option.value}${selected}`,
     value: 2,
   },
   {

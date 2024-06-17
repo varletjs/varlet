@@ -8,8 +8,10 @@ export type SelectTextAlign = 'left' | 'right' | 'center'
 
 export type SelectOptionLabelRender = (option: SelectOption, checked: boolean) => VNodeChild
 
+export type SelectOptionLabel = string | VNode | SelectOptionLabelRender
+
 export interface SelectOption {
-  label?: string | VNode | SelectOptionLabelRender
+  label?: SelectOptionLabel
   value?: any
   disabled?: boolean
 
