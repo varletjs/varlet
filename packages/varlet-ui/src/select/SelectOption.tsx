@@ -23,24 +23,30 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const label = ref('')
-    return () => {
-      const { option, labelKey, valueKey } = props
+    const isSelected = ref()
 
-      const setOption = (selected: boolean) => {
-        label.value = isFunction(option[labelKey]) ? option[labelKey](option, selected) : option[labelKey]
-      }
-
-      return (
-        <Option label={label.value} value={option[valueKey]} disabled={option.disabled}>
-          {{
-            default: ({ selected }: { selected: boolean }) => {
-              setOption(selected)
-              return label.value
-            },
-          }}
-        </Option>
-      )
+    const setSelected = (selected: boolean) => {
+      isSelected.value = selected
     }
+
+    const renderLabel = (selected: boolean) => {
+      const label = props.option[props.labelKey]
+      return isFunction(label) ? label(props.option, selected) : label
+    }
+
+    return () => (
+      <Option
+        label={renderLabel(isSelected.value)}
+        value={props.option[props.valueKey]}
+        disabled={props.option.disabled}
+      >
+        {{
+          default: ({ selected }: { selected: boolean }) => {
+            setSelected(selected)
+            return renderLabel(selected)
+          },
+        }}
+      </Option>
+    )
   },
 })

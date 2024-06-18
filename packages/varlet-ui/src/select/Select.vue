@@ -71,8 +71,8 @@
                   </var-chip>
                 </div>
                 <div :class="n('values')" v-else>
-                  <template v-for="(l, i) in labels" :key="l">
-                    <select-label :label="l" />{{ i === labels.length - 1 ? '' : separator }}
+                  <template v-for="(l, labelIndex) in labels" :key="l">
+                    <select-label :label="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
                 </div>
               </template>
