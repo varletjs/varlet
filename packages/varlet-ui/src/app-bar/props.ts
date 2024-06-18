@@ -18,6 +18,7 @@ export const props = {
   image: String,
   imageLinearGradient: String,
   safeAreaTop: Boolean,
+  border: Boolean,
   zIndex: {
     type: [Number, String] as PropType<number | string>,
     default: 1,

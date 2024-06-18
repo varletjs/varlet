@@ -148,6 +148,7 @@ const active = ref(0)
 | `placeholder`  ***3.2.14***   | 是否在顶部生成相同高度的占位元素(需设置 `fixed`)  | _boolean_ | `false` |
 | `z-index`          | 元素 z-index                            | _number \| string_ | `1` |
 | `round`          | 是否使用圆角                            | _boolean_ | `false` |
+| `border`          | 是否使用底部边框                            | _boolean_ | `false` |
 | `image`          | 背景图片                            | _string_ | `-` |
 | `image-linear-gradient` | 背景图片渐变色 | _string_ | `-` |
 | `safe-area-top` | 是否开启顶部安全区适配 | _boolean_ | `false` |
@@ -176,3 +177,4 @@ const active = ref(0)
 | `--app-bar-right-gap`     | `6px` |
 | `--app-bar-border-radius` | `4px` |
 | `--app-bar-font-size` | `var(--font-size-lg)` |
+| `--app-bar-border-bottom` | `thin solid var(--color-outline)` |

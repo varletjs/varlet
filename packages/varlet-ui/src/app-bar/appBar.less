@@ -8,6 +8,7 @@
   --app-bar-right-gap: 6px;
   --app-bar-border-radius: 4px;
   --app-bar-font-size: var(--font-size-lg);
+  --app-bar-border-bottom: thin solid var(--color-outline);
 }
 
 .var-app-bar {
@@ -29,7 +30,9 @@
   &__title {
     font-size: var(--app-bar-title-font-size);
     flex: 1;
+    height: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -70,5 +73,9 @@
     position: fixed;
     top: 0;
     left: 0;
+  }
+
+  &--border {
+    border-bottom: var(--app-bar-border-bottom);
   }
 }

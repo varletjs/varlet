@@ -32,6 +32,17 @@ describe('test app bar component props', () => {
     wrapper.unmount()
   })
 
+  test('test app bar border', () => {
+    const wrapper = mount(VarAppBar, {
+      props: {
+        border: true,
+      },
+    })
+
+    expect(wrapper.find('.var-app-bar').classes('var-app-bar--border')).toBeTruthy()
+    wrapper.unmount()
+  })
+
   test('test app bar textColor', () => {
     const wrapper = mount(VarAppBar, {
       props: {

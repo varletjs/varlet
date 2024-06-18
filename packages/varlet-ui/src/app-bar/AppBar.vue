@@ -7,6 +7,7 @@
         [safeAreaTop, n('--safe-area-top')],
         [round, n('--round')],
         [fixed, n('--fixed')],
+        [border, n('--border')],
         formatElevation(elevation, 3)
       )
     "

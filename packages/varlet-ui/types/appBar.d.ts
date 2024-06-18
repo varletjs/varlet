@@ -18,6 +18,7 @@ export interface AppBarProps extends BasicAttributes {
   fixed?: boolean
   placeholder?: boolean
   zIndex?: number | string
+  border?: boolean
 }
 
 export class AppBar extends VarComponent {
