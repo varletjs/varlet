@@ -8,7 +8,7 @@ export default defineComponent({
   name,
   props: {
     label: {
-      type: Object as PropType<SelectOptionLabel>,
+      type: [String, Object, Function] as PropType<SelectOptionLabel>,
       required: true,
     },
   },

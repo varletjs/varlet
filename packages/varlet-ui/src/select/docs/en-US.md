@@ -390,9 +390,9 @@ const value13 = ref()
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
-| `options` ***3.3.1*** | Specifies options | _SelectOption[]_ | `-` |
-| `label-key` ***3.3.1*** | As the key that uniquely identifies label | _string_ | `label` |
-| `value-key` ***3.3.1*** | As the key that uniquely identifies value | _string_ | `value` |
+| `options` ***3.3.2*** | Specifies options | _SelectOption[]_ | `-` |
+| `label-key` ***3.3.2*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.3.2*** | As the key that uniquely identifies value | _string_ | `value` |
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed, The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
 
