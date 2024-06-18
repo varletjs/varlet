@@ -8,7 +8,7 @@ exports[`test select component slots > test select append icon slot 1`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
-            <div class="var-select__label"><span></span></div>
+            <div class="var-select__label"></div>
             <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
         </div>
@@ -36,7 +36,7 @@ exports[`test select component slots > test select clear icon slot 1`] = `
         <div class="var-field-decorator__icon"></div>
         <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
-            <div class="var-select__label"><span></span></div>
+            <div class="var-select__label"></div>
             <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow var-select--arrow-rotate" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
         </div>
@@ -64,7 +64,7 @@ exports[`test select component slots > test select prepend icon slot 1`] = `
         <div class="var-field-decorator__icon">prepend-icon</div>
         <div class="var-field-decorator__middle">
           <div class="var-select__select" style="text-align: left;">
-            <div class="var-select__label"><span></span></div>
+            <div class="var-select__label"></div>
             <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
         </div>
@@ -156,7 +156,7 @@ exports[`test select hint to be false 1`] = `
         <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
         <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
           <div class="var-select__select" style="text-align: left;">
-            <div class="var-select__label"><span></span></div>
+            <div class="var-select__label"></div>
             <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
           </div>
         </div>
