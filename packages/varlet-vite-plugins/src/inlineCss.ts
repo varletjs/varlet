@@ -19,11 +19,13 @@ export function inlineCss(options: InlineCssOptions): Plugin {
       const { cssFile, jsFile, onEnd } = options
 
       if (!pathExistsSync(cssFile)) {
-        this.error('css file cannot found')
+        this.warn('css file cannot found')
+        return
       }
 
       if (!pathExistsSync(jsFile)) {
-        this.error('js file cannot found')
+        this.warn('js file cannot found')
+        return
       }
 
       const cssCode = readFileSync(cssFile, 'utf-8')
