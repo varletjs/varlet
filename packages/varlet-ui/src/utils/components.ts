@@ -15,8 +15,9 @@ import {
   type ComponentPublicInstance,
   type Plugin,
   type App,
+  defineComponent,
 } from 'vue'
-import { createNamespaceFn, isArray, isPlainObject } from '@varlet/shared'
+import { createNamespaceFn, isArray, isPlainObject, isString } from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -215,3 +216,19 @@ export function formatElevation(elevation: number | boolean | string, defaultLev
 
   return `var-elevation--${elevation}`
 }
+
+export const MaybeVNode = defineComponent({
+  props: {
+    is: {
+      type: [String, Object] as PropType<string | VNode>,
+    },
+
+    tag: {
+      type: String,
+      default: 'span',
+    },
+  },
+  setup(props) {
+    return () => (isString(props.is) ? h(props.tag, props.is) : props.is)
+  },
+})

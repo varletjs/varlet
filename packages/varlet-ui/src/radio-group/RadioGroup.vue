@@ -2,13 +2,16 @@
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
       <template v-if="radioGroupOptions.length">
-        <radio-group-option
+        <var-radio
           v-for="option in radioGroupOptions"
           :key="option[valueKey]"
-          :label-key="labelKey"
-          :value-key="valueKey"
-          :option="option"
-        />
+          :checked-value="option[valueKey]"
+          :disabled="option.disabled"
+        >
+          <template #default="{ checked }">
+            <maybe-v-node :is="isFunction(option[labelKey]) ? option[labelKey](option, checked) : option[labelKey]" />
+          </template>
+        </var-radio>
       </template>
       <slot />
     </div>
@@ -19,20 +22,20 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import RadioGroupOption from './RadioGroupOption'
+import VarRadio from '../radio'
 import { computed, defineComponent, nextTick, watch } from 'vue'
 import { props, type ValidateTriggers } from './props'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, preventDefault, isArray } from '@varlet/shared'
+import { call, preventDefault, isArray, isFunction } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio-group')
 
 export default defineComponent({
   name,
-  components: { VarFormDetails, RadioGroupOption },
+  components: { VarFormDetails, VarRadio, MaybeVNode },
   props,
   setup(props) {
     const { length, radios, bindRadios } = useRadios()
@@ -147,6 +150,7 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
+      isFunction,
       radioGroupOptions,
     }
   },
