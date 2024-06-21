@@ -31,7 +31,7 @@
 
     <slot :selected="optionSelected">
       <div :class="classes(n('text'), n('$--ellipsis'))">
-        {{ label }}
+        <maybe-v-node :is="labelVNode" />
       </div>
     </slot>
 
@@ -46,9 +46,9 @@ import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, computed, ref, watch } from 'vue'
 import { useSelect, OptionProvider } from './provide'
-import { createNamespace } from '../utils/components'
+import { createNamespace, MaybeVNode } from '../utils/components'
 import { props } from './props'
-import { preventDefault } from '@varlet/shared'
+import { preventDefault, isFunction } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('option')
@@ -59,6 +59,7 @@ export default defineComponent({
   components: {
     VarCheckbox,
     VarHoverOverlay,
+    MaybeVNode,
   },
   props,
   setup(props) {
@@ -66,14 +67,16 @@ export default defineComponent({
     const isFocusing = ref(false)
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
-    const label = computed<any>(() => props.label)
+    const labelVNode = computed<any>(() =>
+      isFunction(props.label) ? props.label(props.option, optionSelected.value) : props.label
+    )
     const value = computed<any>(() => props.value)
     const { select, bindSelect } = useSelect()
     const { multiple, focusColor, onSelect, computeLabel } = select
     const { hovering, handleHovering } = useHoverOverlay()
 
     const optionProvider: OptionProvider = {
-      label,
+      label: labelVNode,
       value,
       selected,
       sync,
@@ -138,8 +141,10 @@ export default defineComponent({
       focusColor,
       hovering,
       isFocusing,
+      labelVNode,
       n,
       classes,
+      isFunction,
       handleHovering,
       handleClick,
       handleSelect,

@@ -67,17 +67,17 @@
                     @click.stop
                     @close="() => handleClose(l)"
                   >
-                    <select-label :label="l" />
+                    <maybe-v-node :is="l" />
                   </var-chip>
                 </div>
                 <div :class="n('values')" v-else>
                   <template v-for="(l, labelIndex) in labels" :key="l">
-                    <select-label :label="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
+                    <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
                   </template>
                 </div>
               </template>
 
-              <select-label v-else :label="label" />
+              <maybe-v-node v-else :is="label" />
             </slot>
           </div>
 
@@ -113,12 +113,13 @@
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
           <template v-if="selectOptions.length">
-            <select-option
+            <var-option
               v-for="option in selectOptions"
               :key="option[valueKey]"
-              :label-key="labelKey"
-              :value-key="valueKey"
+              :label="option[labelKey]"
+              :value="option[valueKey]"
               :option="option"
+              :disabled="option.disabled"
             />
           </template>
           <slot />
@@ -134,14 +135,13 @@
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
+import VarOption from '../option'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
-import SelectOption from './SelectOption'
-import SelectLabel from './SelectLabel'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty, call, preventDefault, doubleRaf } from '@varlet/shared'
+import { isArray, isEmpty, call, preventDefault, doubleRaf, isFunction } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
@@ -158,10 +158,10 @@ export default defineComponent({
     VarIcon,
     VarMenu,
     VarChip,
+    VarOption,
     VarFieldDecorator,
     VarFormDetails,
-    SelectOption,
-    SelectLabel,
+    MaybeVNode,
   },
   props,
   setup(props) {
@@ -441,6 +441,7 @@ export default defineComponent({
       placeholderColor,
       enableCustomPlaceholder,
       selectOptions,
+      isFunction,
       n,
       classes,
       handleFocus,
