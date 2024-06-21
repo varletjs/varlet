@@ -2,13 +2,16 @@
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
       <template v-if="checkboxGroupOptions.length">
-        <checkbox-group-option
+        <var-checkbox
           v-for="option in checkboxGroupOptions"
           :key="option[valueKey]"
-          :label-key="labelKey"
-          :value-key="valueKey"
-          :option="option"
-        />
+          :checked-value="option[valueKey]"
+          :disabled="option.disabled"
+        >
+          <template #default="{ checked }">
+            <maybe-v-node :is="isFunction(option[labelKey]) ? option[labelKey](option, checked) : option[labelKey]" />
+          </template>
+        </var-checkbox>
       </template>
       <slot />
     </div>
@@ -18,19 +21,19 @@
 
 <script lang="ts">
 import VarFormDetails from '../form-details'
-import CheckboxGroupOption from './CheckboxGroupOption'
+import VarCheckbox from '../checkbox'
 import { defineComponent, computed, watch, nextTick } from 'vue'
 import { props, type CheckboxGroupValidateTrigger } from './props'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useCheckboxes, type CheckboxGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { uniq, call, isArray } from '@varlet/shared'
+import { uniq, call, isArray, isFunction } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('checkbox-group')
 
 export default defineComponent({
   name,
-  components: { VarFormDetails, CheckboxGroupOption },
+  components: { VarFormDetails, VarCheckbox, MaybeVNode },
   props,
   setup(props) {
     const max = computed(() => props.max)
@@ -151,6 +154,7 @@ export default defineComponent({
       reset,
       validate,
       resetValidation,
+      isFunction,
     }
   },
 })
