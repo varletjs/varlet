@@ -17,7 +17,7 @@ export default {
   multiple: 'Multiple Selection',
   chipMultiple: 'Multiple choice of paper style',
   selectOptions: 'Select Options',
-  selectOptionsMultiple: 'Multiply Select Options',
+  selectOptionsMultiple: 'Multiple Select Options',
   customFields: 'Custom Fields',
   eat: 'Eat',
   sleep: 'Sleep',
