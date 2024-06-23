@@ -1,3 +1,12 @@
+## [3.3.2](https://github.com/varletjs/varlet/compare/v3.3.1...v3.3.2) (2024-06-23)
+
+
+### Features
+
+* **app-bar:** support props border ([367d007](https://github.com/varletjs/varlet/commit/367d0076e7d7f240885299d9ff2116765fccb806))
+
+
+
 ## [3.3.1](https://github.com/varletjs/varlet/compare/v3.3.0...v3.3.1) (2024-06-17)
 
 

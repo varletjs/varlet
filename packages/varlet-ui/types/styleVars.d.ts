@@ -31,6 +31,7 @@ interface BaseStyleVars {
   '--app-bar-right-gap'?: string
   '--app-bar-border-radius'?: string
   '--app-bar-font-size'?: string
+  '--app-bar-border-bottom'?: string
   '--avatar-text-color'?: string
   '--avatar-border-radius'?: string
   '--avatar-mini-size'?: string
