@@ -148,7 +148,7 @@ const active = ref(0)
 | `placeholder` ***3.2.14***  | Whether to generate placeholder elements of the same height at the top (`fixed` required)  | _boolean_ | `false` |
 | `z-index`          | AppBar element z-index                            | _number \| string_ | `1` |
 | `round`          | Whether to use rounded border                        | _boolean_ | `false` |
-| `border ***3.3.2***`          | Whether to use bottom border                            | _boolean_ | `false` |
+| `border` ***3.3.2***          | Whether to use bottom border                            | _boolean_ | `false` |
 | `image`          | Background image                            | _string_ | `-` |
 | `image-linear-gradient` | Background image linear gradient | _string_ | `-` |
 | `safe-area-top` | Whether to enable top safe area adaptation | _boolean_ | `false` |
