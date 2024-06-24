@@ -311,7 +311,7 @@ bindForm?.(apis)
 | --- |-------------------------------------------| --- | -- |
 | `readonly` | 是否只读                                      | _boolean_ | `false` |
 | `disabled` | 是否禁用                                      | _boolean_ | `false` |
-| `scroll-to-error` | 是否在效验不通过时滚动到不通过的表单项，可选值为 `start` `end` | _string_ | `-` |
+| `scroll-to-error` | 是否在校验不通过时滚动到不通过的表单项，可选值为 `start` `end` | _string_ | `-` |
 | `scroll-to-error-offset-y` | 滚动到校验不通过的表单项的位置偏移量 | _number \| string_ | `0` |
 
 #### FormDetails Props
@@ -349,6 +349,7 @@ bindForm?.(apis)
 | `default` | 表单内容 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 #### FormDetails Variables
