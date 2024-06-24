@@ -48,7 +48,7 @@ function toggle() {
     class="icon-example__animation-icon"
     name="checkbox-marked-circle"
     color="var(--color-primary)"
-    @click="() => Snackbar.success(t('clickSuccess'))"
+    @click="Snackbar.success(t('clickSuccess'))"
   />
 
   <app-type>{{ t('iconAnimation') }}</app-type>

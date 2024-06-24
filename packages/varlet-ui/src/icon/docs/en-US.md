@@ -45,7 +45,7 @@ import { Snackbar } from '@varlet/ui'
   <var-icon 
     name="checkbox-marked-circle"
     color="var(--color-primary)"
-    @click="() => Snackbar.success('Click success')"
+    @click="Snackbar.success('Click success')"
   />
 </template>
 ```

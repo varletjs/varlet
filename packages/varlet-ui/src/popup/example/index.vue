@@ -70,10 +70,10 @@ onThemeChange()
   <var-button type="primary" block @click="event = true">{{ t('event') }}</var-button>
   <var-popup
     v-model:show="event"
-    @open="() => Snackbar.info('open')"
-    @opened="() => Snackbar.success('opened')"
-    @close="() => Snackbar.warning('close')"
-    @closed="() => Snackbar.error('closed')"
+    @open="Snackbar.info('open')"
+    @opened="Snackbar.success('opened')"
+    @close="Snackbar.warning('close')"
+    @closed="Snackbar.error('closed')"
   >
     <div class="block">{{ t('text') }}</div>
   </var-popup>
