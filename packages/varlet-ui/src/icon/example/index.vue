@@ -41,7 +41,7 @@ function toggle() {
   <var-icon class="icon-example__animation-icon" name="checkbox-marked-circle" color="var(--color-success)" />
 
   <app-type>{{ t('useImage') }}</app-type>
-  <var-icon class="icon-example__animation-icon" name="cat.jpg" :size="32" />
+  <var-icon class="icon-example__animation-icon" name="https://varlet.pages.dev/cat.jpg" :size="32" />
 
   <app-type>{{ t('clickEvent') }}</app-type>
   <var-icon
