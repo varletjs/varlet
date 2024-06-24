@@ -130,7 +130,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### 反馈和交流
 
-我们推荐使用`issue`列表进行最直接有效的反馈，也可以下面的方式
+我们推荐使用 [issue](https://github.com/varletjs/varlet/issues) 列表进行最直接有效的反馈，也可以下面的方式
 
 * 微信
 
