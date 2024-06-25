@@ -3,8 +3,8 @@ import { supportTouch, getStyle, getRect } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { type Directive, type Plugin, type App, type DirectiveBinding } from 'vue'
 
-import './ripple.less'
 import '../styles/common.less'
+import './ripple.less'
 
 const { n } = createNamespace('ripple')
 
