@@ -40,13 +40,19 @@ export interface DialogProps extends BasicAttributes {
   'onUpdate:show'?: ListenerProp<(show: boolean) => void>
 }
 
+export interface DialogActionsData {
+  slotClass: string
+  cancel: () => void
+  confirm: () => void
+}
+
 export class DialogComponent extends VarComponent {
   $props: DialogProps
 
   $slots: {
     default(): VNode[]
     title(): VNode[]
-    footer(): VNode[]
+    actions(data: DialogActionsData): VNode[]
   }
 }
 
