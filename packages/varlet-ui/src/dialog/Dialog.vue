@@ -32,28 +32,30 @@
         </slot>
       </div>
       <div :class="n('actions')">
-        <var-button
-          :class="classes(n('button'), n('cancel-button'))"
-          var-dialog-cover
-          text
-          :text-color="cancelButtonTextColor"
-          :color="cancelButtonColor"
-          v-if="cancelButton"
-          @click="cancel"
-        >
-          {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
-        </var-button>
-        <var-button
-          :class="classes(n('button'), n('confirm-button'))"
-          var-dialog-cover
-          text
-          :text-color="confirmButtonTextColor"
-          :color="confirmButtonColor"
-          v-if="confirmButton"
-          @click="confirm"
-        >
-          {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
-        </var-button>
+        <slot name="footer">
+          <var-button
+            :class="classes(n('button'), n('cancel-button'))"
+            var-dialog-cover
+            text
+            :text-color="cancelButtonTextColor"
+            :color="cancelButtonColor"
+            v-if="cancelButton"
+            @click="cancel"
+          >
+            {{ cancelButtonText ?? (pt ? pt : t)('dialogCancelButtonText') }}
+          </var-button>
+          <var-button
+            :class="classes(n('button'), n('confirm-button'))"
+            var-dialog-cover
+            text
+            :text-color="confirmButtonTextColor"
+            :color="confirmButtonColor"
+            v-if="confirmButton"
+            @click="confirm"
+          >
+            {{ confirmButtonText ?? (pt ? pt : t)('dialogConfirmButtonText') }}
+          </var-button>
+        </slot>
       </div>
     </div>
   </var-popup>

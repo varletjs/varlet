@@ -297,6 +297,7 @@ const show = ref(false)
 | --------- | ---------------------- | --------- |
 | `default` | Dialog content message | `-`       |
 | `title`   | Dialog title           | `-`       |
+| `footer`  | Dialog footer | `-` |
 
 ### Style Variables
 

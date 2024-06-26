@@ -46,6 +46,7 @@ export class DialogComponent extends VarComponent {
   $slots: {
     default(): VNode[]
     title(): VNode[]
+    footer(): VNode[]
   }
 }
 
