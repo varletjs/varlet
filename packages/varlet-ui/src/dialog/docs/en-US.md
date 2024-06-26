@@ -297,6 +297,7 @@ const show = ref(false)
 | --------- | ---------------------- | --------- |
 | `default` | Dialog content message | `-`       |
 | `title`   | Dialog title           | `-`       |
+| `actions`  | Dialog actions | `slotClass: string` the class of actions container <br> `cancel: () => void` cancel callback function <br> `confirm: () => void` confirm callback function |
 
 ### Style Variables
 

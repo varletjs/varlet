@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test dialog component slots > test dialog actions slot 1`] = `
+"<transition-stub name="var-fade" appear="false" persisted="false" css="true">
+  <div class="var--box var-popup" style="z-index: 1998;">
+    <div class="var-popup__overlay" style="z-index: 1999;"></div>
+    <transition-stub name="var-pop-center" appear="false" persisted="false" css="true">
+      <div class="var-popup__content var-popup--center var-popup--content-background-color var-elevation--3 var-dialog__popup" style="z-index: 2000;" role="dialog" aria-modal="true" var-dialog-cover="">
+        <div class="var--box var-dialog">
+          <div class="var-dialog__title">提示</div>
+          <div class="var-dialog__message" style="text-align: left;"></div>
+          <div class="var-dialog__actions"><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default cancel" type="button">
+              <!--v-if-->
+              <div class="var-button__content">cancel</div>
+              <div class="var-hover-overlay"></div>
+            </button><button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default confirm" type="button">
+              <!--v-if-->
+              <div class="var-button__content">confirm</div>
+              <div class="var-hover-overlay"></div>
+            </button></div>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</transition-stub>"
+`;

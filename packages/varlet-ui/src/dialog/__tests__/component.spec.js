@@ -1,5 +1,6 @@
 import Dialog from '..'
 import VarDialog from '../Dialog'
+import VarButton from '../../button'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
@@ -355,6 +356,44 @@ describe('test dialog component events', () => {
     await triggerKeyboard(window, 'keydown', { key: 'Escape' })
     expect(onKeyEscape).toBeCalledTimes(1)
     expect(wrapper.vm.show).toBe(true)
+
+    wrapper.unmount()
+  })
+})
+
+describe('test dialog component slots', () => {
+  test('test dialog actions slot', async () => {
+    const wrapper = mount({
+      components: {
+        [VarDialog.name]: VarDialog,
+        [VarButton.name]: VarButton,
+      },
+      data: () => ({
+        show: true,
+      }),
+      template: `<var-dialog v-model:show="show" :teleport="null">
+        <template #actions="{slotClass, cancel, confirm}">
+          <div :class="slotClass">
+            <var-button class="cancel" @click="cancel">cancel</var-button>
+            <var-button class="confirm" @click="confirm">confirm</var-button>
+          </div>
+        </template>
+      </var-dialog>`,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.find('.cancel').trigger('click')
+    await delay(300)
+    expect(wrapper.vm.show).toBe(false)
+
+    await wrapper.setData({
+      show: true,
+    })
+
+    await wrapper.find('.confirm').trigger('click')
+    await delay(300)
+    expect(wrapper.vm.show).toBe(false)
 
     wrapper.unmount()
   })
