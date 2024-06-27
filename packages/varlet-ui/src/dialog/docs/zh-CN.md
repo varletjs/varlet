@@ -297,7 +297,7 @@ const show = ref(false)
 | --- | --- | --- |
 | `default` | 对话框主要内容 | `-` |
 | `title` | 对话框标题 | `-` |
-| `actions` | 对话框底部操作区域 | `slotClass: string` 操作容器样式 <br> `cancel: () => void` 取消的回调函数 <br> `confirm: () => void` 确认的回调函数 |
+| `actions` ***3.3.3*** | 对话框底部操作区域 | `slotClass: string` 操作容器样式 <br> `cancel: () => void` 取消的回调函数 <br> `confirm: () => void` 确认的回调函数 |
 
 ### 样式变量
 
