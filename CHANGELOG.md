@@ -1,3 +1,12 @@
+## [3.3.3](https://github.com/varletjs/varlet/compare/v3.3.2...v3.3.3) (2024-06-27)
+
+
+### Features
+
+* **dialog:** support actions slot ([#1689](https://github.com/varletjs/varlet/issues/1689)) ([2d4e0e5](https://github.com/varletjs/varlet/commit/2d4e0e59c063bf6045ecf1558b77faeffad89931))
+
+
+
 ## [3.3.2](https://github.com/varletjs/varlet/compare/v3.3.1...v3.3.2) (2024-06-23)
 
 
