@@ -64,7 +64,7 @@ const changeRoute = (item: Menu) => {
   padding: 0 0 15px;
   position: sticky;
   width: 246px;
-  height: 100vh;
+  height: calc(100vh - 60px - 15px);
   top: 60px;
   z-index: 6;
   overflow-y: scroll;

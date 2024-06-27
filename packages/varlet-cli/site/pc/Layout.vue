@@ -261,7 +261,7 @@ iframe {
     &-content {
       display: flex;
       background: var(--site-config-color-body);
-      min-height: calc(100vh - 60px);
+      min-height: calc(100vh - 60px - var(--site-ad-height));
     }
 
     &-doc-container {

@@ -13,9 +13,16 @@ const ad = ref(config?.pc?.ad)
 const storageKey = `varlet-site-ad-closed-${ad.value?.id}`
 const isClose = ref(localStorage.getItem(storageKey) == 'true')
 
+setSiteAddHeight()
+
+function setSiteAddHeight() {
+  document.documentElement.style.setProperty('--site-ad-height', isClose.value || !ad.value ? '0px' : '52px')
+}
+
 function handleClose() {
   localStorage.setItem(`varlet-site-ad-closed-${ad.value?.id}`, 'true')
   isClose.value = true
+  setSiteAddHeight()
 }
 </script>
 
@@ -24,8 +31,10 @@ function handleClose() {
     class="varlet-site-ad varlet-site-ad--animation"
     :href="ad?.link[language]"
     target="_blank"
-    :class="{ 'varlet-site-ad--close': isClose || !ad }"
-    :style="{ background: ad?.background, color: ad?.textColor }"
+    :style="{
+      background: ad?.background,
+      color: ad?.textColor,
+    }"
   >
     <img class="varlet-site-ad__logo" :style="{ height: ad?.logoHeight }" :src="ad.logo" v-if="ad.logo" />
     <div
@@ -49,7 +58,7 @@ function handleClose() {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: var(--site-ad-height);
   color: #fff;
   text-decoration: unset;
   overflow: hidden;
@@ -86,10 +95,6 @@ function handleClose() {
     top: 50%;
     right: 35px;
     transform: translateY(-50%);
-  }
-
-  &--close {
-    height: 0;
   }
 
   &--animation {
