@@ -1,6 +1,7 @@
 import Dialog from '..'
 import VarDialog from '../Dialog'
 import VarButton from '../../button'
+import VarIcon from '../../icon'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
@@ -362,6 +363,50 @@ describe('test dialog component events', () => {
 })
 
 describe('test dialog component slots', () => {
+  test('test dialog title slot', async () => {
+    const wrapper = mount({
+      components: {
+        [VarDialog.name]: VarDialog,
+        [VarIcon.name]: VarIcon,
+      },
+      data: () => ({
+        show: true,
+      }),
+      template: `
+        <var-dialog v-model:show="show" :teleport="null">
+          <template #title>
+            <var-icon name="information" />
+          </template>
+        </var-dialog>
+      `,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.find('.var-icon').exists()
+
+    wrapper.unmount()
+  })
+
+  test('test dialog default slot', async () => {
+    const wrapper = mount({
+      data: () => ({
+        show: true,
+      }),
+      template: `
+        <var-dialog v-model:show="show" :teleport="null">
+          dialog default slot
+        </var-dialog>
+      `,
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    expect(wrapper.text()).toBe('dialog default slot')
+
+    wrapper.unmount()
+  })
+
   test('test dialog actions slot', async () => {
     const wrapper = mount({
       components: {
