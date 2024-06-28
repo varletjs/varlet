@@ -68,7 +68,16 @@ export default defineComponent({
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
     const labelVNode = computed<any>(() =>
-      isFunction(props.label) ? props.label(props.option ?? {}, optionSelected.value) : props.label
+      isFunction(props.label)
+        ? props.label(
+            props.option ?? {
+              label: props.label,
+              value: props.value,
+              disabled: props.disabled,
+            },
+            optionSelected.value
+          )
+        : props.label
     )
     const value = computed<any>(() => props.value)
     const { select, bindSelect } = useSelect()
