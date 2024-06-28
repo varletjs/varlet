@@ -71,7 +71,6 @@ export default defineComponent({
       isFunction(props.label)
         ? props.label(
             props.option ?? {
-              label: props.label,
               value: props.value,
               disabled: props.disabled,
             },
