@@ -67,10 +67,11 @@ export default defineComponent({
     const isFocusing = ref(false)
     const optionSelected = ref(false)
     const selected = computed(() => optionSelected.value)
-    const labelVNode = computed<any>(() =>
+    const labelVNode = computed(() =>
       isFunction(props.label)
         ? props.label(
             props.option ?? {
+              label: props.label,
               value: props.value,
               disabled: props.disabled,
             },
