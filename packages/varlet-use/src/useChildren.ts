@@ -1,4 +1,4 @@
-import { removeItem } from '@varlet/shared'
+import { removeItem, isArray } from '@varlet/shared'
 import {
   getCurrentInstance,
   computed,
@@ -19,7 +19,7 @@ function flatVNodes(subTree: any) {
       return
     }
 
-    if (Array.isArray(subTree?.children)) {
+    if (isArray(subTree?.children)) {
       subTree.children.forEach((child: any) => {
         if (isVNode(child)) {
           vNodes.push(child)

@@ -1,3 +1,5 @@
+import { isArray } from './is.js'
+
 export function mergeWith<TObject extends Record<string, any>, TSource extends Record<string, any>>(
   object: TObject,
   source: TSource,
@@ -28,7 +30,7 @@ export function mergeWith<TObject extends Record<string, any>, TSource extends R
           if (isObject(targetValue)) {
             target[key] = baseMerge(targetValue, srcValue)
           } else {
-            target[key] = baseMerge(Array.isArray(srcValue) ? [] : {}, srcValue)
+            target[key] = baseMerge(isArray(srcValue) ? [] : {}, srcValue)
           }
         } else {
           target[key] = srcValue
