@@ -16,8 +16,8 @@ export function useSelectController(options: UseSelectControllerOptions) {
     optionProviders: optionProvidersGetter,
     optionProvidersLength: optionProvidersLengthGetter,
   } = options
-  const label = ref<string | number>('')
-  const labels = ref<(string | number)[]>([])
+  const label = ref<any>('')
+  const labels = ref<any[]>([])
 
   watch(modelValueGetter, syncOptions, { deep: true })
   watch(optionProvidersLengthGetter, syncOptions)

@@ -67,15 +67,17 @@
                     @click.stop
                     @close="() => handleClose(l)"
                   >
-                    {{ l }}
+                    <maybe-v-node :is="l" />
                   </var-chip>
                 </div>
                 <div :class="n('values')" v-else>
-                  {{ labels.join(separator) }}
+                  <template v-for="(l, labelIndex) in labels" :key="l">
+                    <maybe-v-node :is="l" />{{ labelIndex !== labels.length - 1 ? separator : '' }}
+                  </template>
                 </div>
               </template>
 
-              <span v-else>{{ label }}</span>
+              <maybe-v-node v-else :is="label" />
             </slot>
           </div>
 
@@ -110,6 +112,16 @@
 
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
+          <template v-if="selectOptions.length">
+            <var-option
+              v-for="option in selectOptions"
+              :key="option[valueKey]"
+              :label="option[labelKey]"
+              :value="option[valueKey]"
+              :option="option"
+              :disabled="option.disabled"
+            />
+          </template>
           <slot />
         </div>
       </template>
@@ -123,12 +135,13 @@
 import VarIcon from '../icon'
 import VarMenu from '../menu'
 import VarChip from '../chip'
+import VarOption from '../option'
 import VarFieldDecorator from '../field-decorator'
 import VarFormDetails from '../form-details'
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import { isArray, isEmpty, call, preventDefault, doubleRaf } from '@varlet/shared'
+import { isArray, isEmpty, call, preventDefault, doubleRaf, isFunction } from '@varlet/shared'
 import { props, type SelectValidateTrigger } from './props'
-import { useValidation, createNamespace } from '../utils/components'
+import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useOptions, type SelectProvider } from './provide'
 import { useForm } from '../form/provide'
 import { focusChildElementByKey, toPxNum } from '../utils/elements'
@@ -145,8 +158,10 @@ export default defineComponent({
     VarIcon,
     VarMenu,
     VarChip,
+    VarOption,
     VarFieldDecorator,
     VarFormDetails,
+    MaybeVNode,
   },
   props,
   setup(props) {
@@ -157,6 +172,7 @@ export default defineComponent({
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
+    const selectOptions = computed(() => (isArray(props.options) ? props.options : []))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
@@ -424,6 +440,8 @@ export default defineComponent({
       cursor,
       placeholderColor,
       enableCustomPlaceholder,
+      selectOptions,
+      isFunction,
       n,
       classes,
       handleFocus,
@@ -451,5 +469,6 @@ export default defineComponent({
 @import '../field-decorator/fieldDecorator';
 @import '../form-details/formDetails';
 @import '../chip/chip';
+@import '../option/option';
 @import './select';
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { use, t } from './locale'
 
 const standardValue = ref()
@@ -16,6 +16,9 @@ const standardValue10 = ref([])
 const standardValue11 = ref()
 const standardValue12 = ref([])
 const standardValue13 = ref()
+const standardValue14 = ref()
+const standardValue15 = ref([])
+const standardValue16 = ref()
 
 const outlinedValue = ref()
 const outlinedValue2 = ref()
@@ -30,6 +33,36 @@ const outlinedValue10 = ref([])
 const outlinedValue11 = ref()
 const outlinedValue12 = ref([])
 const outlinedValue13 = ref()
+const options = computed(() => [
+  {
+    label: t('eat'),
+    value: 1,
+  },
+  {
+    label: t('sleep'),
+    value: 2,
+  },
+  {
+    label: t('play'),
+    value: 3,
+    disabled: true,
+  },
+])
+const keyOptions = computed(() => [
+  {
+    name: t('eat'),
+    id: 1,
+  },
+  {
+    name: t('sleep'),
+    id: 2,
+  },
+  {
+    name: t('play'),
+    id: 3,
+    disabled: true,
+  },
+])
 
 onThemeChange()
 watchLang((lang) => {
@@ -46,6 +79,9 @@ watchLang((lang) => {
   standardValue11.value = undefined
   standardValue12.value = []
   standardValue13.value = undefined
+  standardValue14.value = undefined
+  standardValue15.value = []
+  standardValue16.value = undefined
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -185,6 +221,17 @@ watchLang((lang) => {
     <var-select :placeholder="t('smallSize')" v-model="standardValue13">
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
+    </var-select>
+    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options"></var-select>
+    <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple>
+    </var-select>
+    <var-select
+      :placeholder="t('customFields')"
+      v-model="standardValue16"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    >
     </var-select>
   </var-space>
 
