@@ -390,6 +390,9 @@ describe('test dialog component slots', () => {
 
   test('test dialog default slot', async () => {
     const wrapper = mount({
+      components: {
+        [VarDialog.name]: VarDialog,
+      },
       data: () => ({
         show: true,
       }),
@@ -400,9 +403,9 @@ describe('test dialog component slots', () => {
       `,
     })
 
-    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.find('.var-dialog__message').text()).toBe('dialog default slot')
 
-    expect(wrapper.text()).toBe('dialog default slot')
+    expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.unmount()
   })
