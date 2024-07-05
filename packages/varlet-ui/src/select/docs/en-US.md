@@ -9,36 +9,6 @@ Display and select the content through the drop-down menu.
 ```html
 <script setup>
 import { ref } from 'vue'
-const options = [
-  {
-    label: 'Eat',
-    value: 1,
-  },
-  {
-    label: 'Sleep',
-    value: 2,
-  },
-  {
-    label: 'Play game',
-    value: 3,
-    disabled: true,
-  },
-]
-const keyOptions = [
-  {
-    name: 'Eat',
-    id: 1,
-  },
-  {
-    name: 'Sleep',
-    id: 2,
-  },
-  {
-    name: 'Play game',
-    id: 3,
-    disabled: true,
-  },
-]
 
 const value = ref()
 const value2 = ref()
@@ -56,6 +26,38 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+
+const options = ref([
+  {
+    label: 'Eat',
+    value: 1,
+  },
+  {
+    label: 'Sleep',
+    value: 2,
+  },
+  {
+    label: 'Play game',
+    value: 3,
+    disabled: true,
+  },
+])
+
+const keyOptions = ref([
+  {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
+  },
+])
 </script>
 
 <template>
@@ -223,6 +225,38 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+
+const options = ref([
+  {
+    label: 'Eat',
+    value: 1,
+  },
+  {
+    label: 'Sleep',
+    value: 2,
+  },
+  {
+    label: 'Play game',
+    value: 3,
+    disabled: true,
+  },
+])
+
+const keyOptions = ref([
+  {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
+  },
+])
 </script>
 
 <template>

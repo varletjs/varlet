@@ -10,37 +10,6 @@
 <script setup>
 import { ref } from 'vue'
 
-const options = [
-  {
-    label: '吃饭',
-    value: 1,
-  },
-  {
-    label: '睡觉',
-    value: 2,
-  },
-  {
-    label: '打游戏',
-    value: 3,
-    disabled: true,
-  },
-]
-const keyOptions = [
-   {
-    name: '吃饭',
-    id: 1,
-  },
-  {
-    name: '睡觉',
-    id: 2,
-  },
-  {
-    name: '打游戏',
-    id: 3,
-    disabled: true,
-  },
-]
-
 const value = ref()
 const value2 = ref()
 const value3 = ref()
@@ -57,6 +26,38 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+
+const options = ref([
+  {
+    label: '吃饭',
+    value: 1,
+  },
+  {
+    label: '睡觉',
+    value: 2,
+  },
+  {
+    label: '打游戏',
+    value: 3,
+    disabled: true,
+  },
+])
+
+const keyOptions = ref([
+   {
+    name: '吃饭',
+    id: 1,
+  },
+  {
+    name: '睡觉',
+    id: 2,
+  },
+  {
+    name: '打游戏',
+    id: 3,
+    disabled: true,
+  },
+])
 </script>
 
 <template>
@@ -225,6 +226,38 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+
+const options = ref([
+  {
+    label: '吃饭',
+    value: 1,
+  },
+  {
+    label: '睡觉',
+    value: 2,
+  },
+  {
+    label: '打游戏',
+    value: 3,
+    disabled: true,
+  },
+])
+
+const keyOptions = ref([
+   {
+    name: '吃饭',
+    id: 1,
+  },
+  {
+    name: '睡觉',
+    id: 2,
+  },
+  {
+    name: '打游戏',
+    id: 3,
+    disabled: true,
+  },
+])
 </script>
 
 <template>
