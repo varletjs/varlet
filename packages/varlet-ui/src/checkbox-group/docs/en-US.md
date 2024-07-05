@@ -149,7 +149,7 @@ const value = ref([])
 </template>
 ```
 
-### CheckboxGroup Options
+### Options API
 
 Setting child elements via the `options` prop.
 

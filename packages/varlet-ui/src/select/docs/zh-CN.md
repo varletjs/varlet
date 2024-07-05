@@ -178,12 +178,9 @@ const value16 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
-    <var-select placeholder="下拉框选项" v-model="value14" :options="options">
-    </var-select>
-    <var-select placeholder="下拉框选项（多选）" v-model="value15" :options="options" multiple>
-    </var-select>
-    <var-select placeholder="自定义字段" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
-    </var-select>
+    <var-select placeholder="选项式 API" v-model="value14" :options="options" />
+    <var-select placeholder="选项式 API（多选）" v-model="value15" :options="options" multiple />
+    <var-select placeholder="自定义字段" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 
@@ -225,6 +222,9 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -347,6 +347,9 @@ const value13 = ref()
       <var-option label="吃饭" />
       <var-option label="睡觉" />
     </var-select>
+    <var-select variant="outlined" placeholder="选项式 API" v-model="value14" :options="options" />
+    <var-select variant="outlined" placeholder="选项式 API（多选）" v-model="value15" :options="options" multiple />
+    <var-select variant="outlined" placeholder="自定义字段" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 

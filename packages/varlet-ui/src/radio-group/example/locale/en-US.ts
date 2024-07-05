@@ -11,7 +11,7 @@ export default {
   checkAll: 'Check All',
   inverseAll: 'Inverse All',
   radioGroup: 'RadioGroup',
-  radioGroupOptions: 'RadioGroup Options',
+  radioGroupOptions: 'Options API',
   vertical: 'Vertical Direction',
   radioValidate: 'Radio Validation',
   radioGroupValidate: 'RadioGroup Validate',

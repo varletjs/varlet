@@ -114,7 +114,7 @@ const value = ref(0)
 </template>
 ```
 
-### RadioGroup Options
+### Options API
 
 Setting child elements via the `options` prop.
 

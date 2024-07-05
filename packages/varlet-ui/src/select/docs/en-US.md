@@ -176,12 +176,9 @@ const value16 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
-    <var-select placeholder="Select Options" v-model="value14" :options="options">
-    </var-select>
-    <var-select placeholder="Multiple Select Options" v-model="value15" :options="options" multiple>
-    </var-select>
-    <var-select placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
-    </var-select>
+    <var-select placeholder="Options API" v-model="value14" :options="options" />
+    <var-select placeholder="Options API" v-model="value15" :options="options" multiple />
+    <var-select placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 
@@ -223,6 +220,9 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -345,6 +345,9 @@ const value13 = ref()
       <var-option label="Eat" />
       <var-option label="Sleep" />
     </var-select>
+    <var-select variant="outlined" placeholder="Options API" v-model="value14" :options="options" />
+    <var-select variant="outlined" placeholder="Options API" v-model="value15" :options="options" multiple />
+    <var-select variant="outlined" placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id" />
   </var-space>
 </template>
 

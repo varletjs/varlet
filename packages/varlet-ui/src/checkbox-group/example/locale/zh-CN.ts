@@ -11,7 +11,7 @@ export default {
   checkAll: '全选',
   inverseAll: '反选',
   checkboxGroup: '复选框组',
-  checkboxGroupOptions: '复选框组选项',
+  checkboxGroupOptions: '选项式 API',
   customFields: '自定义字段',
   vertical: '垂直布局',
   checkboxValidate: '复选框字段校验',

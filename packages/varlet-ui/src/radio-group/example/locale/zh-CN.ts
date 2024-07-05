@@ -11,7 +11,7 @@ export default {
   checkAll: '全选',
   inverseAll: '反选',
   radioGroup: '单选框组',
-  radioGroupOptions: '单选框组选项',
+  radioGroupOptions: '选项式 API',
   vertical: '垂直布局',
   radioValidate: '单选框字段校验',
   radioGroupValidate: '单选框组字段校验',

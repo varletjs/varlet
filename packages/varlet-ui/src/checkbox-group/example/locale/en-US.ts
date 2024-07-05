@@ -11,7 +11,7 @@ export default {
   checkAll: 'Check All',
   inverseAll: 'Inverse All',
   checkboxGroup: 'CheckboxGroup',
-  checkboxGroupOptions: 'CheckboxGroup Options',
+  checkboxGroupOptions: 'Options API',
   customFields: 'Custom Fields',
   vertical: 'Vertical Direction',
   checkboxValidate: 'Checkbox Validation',

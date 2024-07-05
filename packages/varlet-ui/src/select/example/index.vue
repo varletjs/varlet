@@ -33,6 +33,9 @@ const outlinedValue10 = ref([])
 const outlinedValue11 = ref()
 const outlinedValue12 = ref([])
 const outlinedValue13 = ref()
+const outlinedValue14 = ref()
+const outlinedValue15 = ref([])
+const outlinedValue16 = ref()
 const options = computed(() => [
   {
     label: t('eat'),
@@ -96,6 +99,9 @@ watchLang((lang) => {
   outlinedValue11.value = undefined
   outlinedValue12.value = []
   outlinedValue13.value = undefined
+  outlinedValue14.value = undefined
+  outlinedValue15.value = []
+  outlinedValue16.value = undefined
 
   use(lang)
 })
@@ -222,17 +228,15 @@ watchLang((lang) => {
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
-    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options"></var-select>
-    <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple>
-    </var-select>
+    <var-select :placeholder="t('selectOptions')" v-model="standardValue14" :options="options" />
+    <var-select :placeholder="t('selectOptionsMultiple')" v-model="standardValue15" :options="options" multiple />
     <var-select
       :placeholder="t('customFields')"
       v-model="standardValue16"
       :options="keyOptions"
       label-key="name"
       value-key="id"
-    >
-    </var-select>
+    />
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
@@ -357,6 +361,22 @@ watchLang((lang) => {
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
     </var-select>
+    <var-select variant="outlined" :placeholder="t('selectOptions')" v-model="outlinedValue14" :options="options" />
+    <var-select
+      variant="outlined"
+      :placeholder="t('selectOptionsMultiple')"
+      v-model="outlinedValue15"
+      :options="options"
+      multiple
+    />
+    <var-select
+      variant="outlined"
+      :placeholder="t('customFields')"
+      v-model="outlinedValue16"
+      :options="keyOptions"
+      label-key="name"
+      value-key="id"
+    />
   </var-space>
 
   <div class="space"></div>

@@ -114,7 +114,7 @@ const value = ref(0)
 </template>
 ```
 
-### 单选框组选项
+### 选项式 API
 
 通过 `options` 属性设置子元素。
 

@@ -148,7 +148,7 @@ const value = ref([])
   <div>当前的值: {{ value }}</div>
 </template>
 ```
-### 复选框组选项
+### 选项式 API
 
 通过 `options` 属性设置子元素。
 
