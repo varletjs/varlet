@@ -1,3 +1,12 @@
+## [3.3.4](https://github.com/varletjs/varlet/compare/v3.3.3...v3.3.4) (2024-07-05)
+
+
+### Features
+
+* **select:** support options, labelKey and valueKey ([#1634](https://github.com/varletjs/varlet/issues/1634)) ([4539b1b](https://github.com/varletjs/varlet/commit/4539b1b337fcffcef5f66375e8fd5adf480a83fa))
+
+
+
 ## [3.3.3](https://github.com/varletjs/varlet/compare/v3.3.2...v3.3.3) (2024-06-27)
 
 
