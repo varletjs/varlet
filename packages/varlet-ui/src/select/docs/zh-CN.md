@@ -10,6 +10,37 @@
 <script setup>
 import { ref } from 'vue'
 
+const options = [
+  {
+    label: '吃饭',
+    value: 1,
+  },
+  {
+    label: '睡觉',
+    value: 2,
+  },
+  {
+    label: '打游戏',
+    value: 3,
+    disabled: true,
+  },
+]
+const keyOptions = [
+   {
+    name: '吃饭',
+    id: 1,
+  },
+  {
+    name: '睡觉',
+    id: 2,
+  },
+  {
+    name: '打游戏',
+    id: 3,
+    disabled: true,
+  },
+]
+
 const value = ref()
 const value2 = ref()
 const value3 = ref()
@@ -23,6 +54,9 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -143,6 +177,12 @@ const value13 = ref()
     <var-select placeholder="小尺寸" v-model="value13">
       <var-option label="吃饭" />
       <var-option label="睡觉" />
+    </var-select>
+    <var-select placeholder="下拉框选项" v-model="value14" :options="options">
+    </var-select>
+    <var-select placeholder="下拉框选项（多选）" v-model="value15" :options="options" multiple>
+    </var-select>
+    <var-select placeholder="自定义字段" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>
@@ -352,8 +392,19 @@ const value13 = ref()
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
+| `options` _**3.3.4**_ | 指定可选项 | _SelectOption[]_ | `-` |
+| `label-key` _**3.3.4**_ | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` _**3.3.4**_ | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
+
+#### SelectOption
+
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `label`    |    选项的标签    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    选项的值    | _any_      | `-`   |
+| `disabled`    |    是否禁用   | _boolean_      | `-`   |
 
 #### Option Props
 
@@ -407,6 +458,7 @@ const value13 = ref()
 | `default` | 选项显示的内容 | `selected: boolean` 是否选中 |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 #### Select Variables

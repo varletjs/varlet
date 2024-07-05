@@ -9,6 +9,36 @@ Display and select the content through the drop-down menu.
 ```html
 <script setup>
 import { ref } from 'vue'
+const options = [
+  {
+    label: 'Eat',
+    value: 1,
+  },
+  {
+    label: 'Sleep',
+    value: 2,
+  },
+  {
+    label: 'Play game',
+    value: 3,
+    disabled: true,
+  },
+]
+const keyOptions = [
+  {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
+  },
+]
 
 const value = ref()
 const value2 = ref()
@@ -23,6 +53,9 @@ const value10 = ref([])
 const value11 = ref()
 const value12 = ref([])
 const value13 = ref()
+const value14 = ref()
+const value15 = ref([])
+const value16 = ref()
 </script>
 
 <template>
@@ -142,6 +175,12 @@ const value13 = ref()
     <var-select size="small" placeholder="Small Size" v-model="value13">
       <var-option label="Eat" />
       <var-option label="Sleep" />
+    </var-select>
+    <var-select placeholder="Select Options" v-model="value14" :options="options">
+    </var-select>
+    <var-select placeholder="Multiple Select Options" v-model="value15" :options="options" multiple>
+    </var-select>
+    <var-select placeholder="Custom Fields" v-model="value16" :options="keyOptions" label-key="name" value-key="id">
     </var-select>
   </var-space>
 </template>
@@ -351,8 +390,19 @@ const value13 = ref()
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
+| `options` _**3.3.4**_ | Specifies options | _SelectOption[]_ | `-` |
+| `label-key` _**3.3.4**_ | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` _**3.3.4**_ | As the key that uniquely identifies value | _string_ | `value` |
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed, The remaining values are converted to text as user prompts | _Array<(v: any \| any[]) => any>_ | `-` |
+
+#### SelectOption
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of option    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    The value of option    | _any_      | `-`   |
+| `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
 
 #### Option Props
 
@@ -395,7 +445,7 @@ const value13 = ref()
 | --- | --- | --- |
 | `selected` | Select the contents of the area | `-` |
 | `prepend-icon` | Prepend icon | `-` |
-| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) | 
+| `clear-icon` | Clear Icon | `clear: (e: Event) => void` clear function (can be used to clear select box contents when using slots) |
 | `append-icon` | Append icon | `-` |
 | `arrow-icon` | Arrow icon | `focus: boolean` Whether to focus, `menu-open: boolean` Whether menu opened |
 
@@ -406,6 +456,7 @@ const value13 = ref()
 | `default` | Options to display the content | `selected: boolean` selected or not |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Select Variables
