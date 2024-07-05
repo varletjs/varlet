@@ -392,13 +392,13 @@ const value13 = ref()
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
-| `options` ***3.3.2*** | 指定可选项 | _SelectOption[]_ | `-` |
-| `label-key` ***3.3.2*** | 作为 label 唯一标识的键名 | _string_ | `label` |
-| `value-key` ***3.3.2*** | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `options` _**3.3.4**_ | 指定可选项 | _SelectOption[]_ | `-` |
+| `label-key` _**3.3.4**_ | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` _**3.3.4**_ | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: any \| any[]) => any>_ | `-` |
 
-#### SelectOption 
+#### SelectOption
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
