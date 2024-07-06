@@ -4,7 +4,7 @@
     <img src="https://varlet.pages.dev/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
-  <p>一个移动端组件库，基于 Vue3, Material Design 2, Material Design 3，并支持桌面端开发。</p>
+  <p>一个 Vue3 组件库，基于 Material Design 2 和 3，支持移动端、桌面端。</p>
   <p>
     <a href="https://varlet.pages.dev">文档(Cloudflare)</a> | 
     <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
@@ -25,7 +25,7 @@
 
 ### 介绍
 
-Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由 `varletjs` 社区团队进行维护。
+Varlet 是一个 `Vue3` 组件库，基于 Material Design 2 和 3，支持移动端、桌面端，由 `varletjs` 组织维护。
 
 ### 特性
 

@@ -2,7 +2,7 @@
 
 ### Intro
 
-Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by `varletjs` community team.
+Varlet is a `Vue3` component library based on Material Design 2 and 3, supporting mobile and desktop, developed and maintained by `varletjs` organization.
 
 ### Features
 

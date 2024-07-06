@@ -77,7 +77,7 @@ body {
 
 ### 支持桌面端
 
-详情见[这里](#/zh-CN/browserAdaptation)。
+`Varlet` 是一个移动端优先的组件库，支持桌面端需要安装一个适配器，详情见[浏览器适配](#/zh-CN/browserAdaptation)。
 
 ### 在线体验组件
 

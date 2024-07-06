@@ -77,7 +77,7 @@ body {
 
 ### Support Desktop
 
-Details see [here](#/en-US/browserAdaptation).
+`Varlet` is a mobile-first component library. To support desktop, you need to install an adapter. See [browser adaptation](#/en-US/browserAdaptation) for details.
 
 ### Components Playground
 

@@ -2,7 +2,7 @@
 
 ### 介绍
 
-Varlet 是一个基于 `Vue3` 开发的 Material 风格移动端组件库，全面拥抱 `Vue3` 生态，由 `varletjs` 社区团队开发和维护。
+Varlet 是一个 `Vue3` 组件库，基于 Material Design 2 和 3，支持移动端、桌面端，由 `varletjs` 组织维护。
 
 ### 特性
 

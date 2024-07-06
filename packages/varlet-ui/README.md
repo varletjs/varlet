@@ -3,7 +3,7 @@
     <img src="https://varlet.pages.dev/logo.svg" width="150">
   </a>
   <h1>VARLET</h1>
-  <p>A mobile component library based on Vue3, Material Design 2, Material Design 3, and supports desktop development.</p>
+  <p>A Vue3 component library based on Material Design 2 and 3, supporting mobile and desktop.</p>
   <p>
     <a href="https://varlet.pages.dev/#/en-US/index">Documentation(Cloudflare)</a> |
     <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
@@ -24,7 +24,7 @@
 
 ### Intro
 
-Varlet is a Material design mobile component library developed based on `Vue3`, developed and maintained by `varletjs` community team.
+Varlet is a `Vue3` component library based on Material Design 2 and 3, supporting mobile and desktop, developed and maintained by `varletjs` organization.
 
 
 ### Features
