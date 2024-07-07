@@ -228,13 +228,6 @@ export default defineComponent({
     function handleBlur(e: FocusEvent) {
       isFocusing.value = false
 
-      if (props.modelModifiers.trim) {
-        const value = props.modelValue!.trim()
-        call(props['onUpdate:modelValue'], value)
-        call(props.onChange, value, e)
-        validateWithTrigger('onChange')
-      }
-
       call(props.onBlur, e)
       validateWithTrigger('onBlur')
     }
@@ -283,7 +276,11 @@ export default defineComponent({
     }
 
     function handleChange(e: Event) {
-      const value = updateValue(e)
+      const value = withTrim(updateValue(e))
+
+      if (props.modelModifiers.trim) {
+        call(props['onUpdate:modelValue'], value)
+      }
 
       call(props.onChange, value, e)
       validateWithTrigger('onChange')
@@ -325,6 +322,10 @@ export default defineComponent({
       }
 
       return value.replace(/[^-0-9.]/g, '')
+    }
+
+    function withTrim(value: string) {
+      return props.modelModifiers.trim ? value.trim() : value
     }
 
     function withMaxlength(value: string) {
