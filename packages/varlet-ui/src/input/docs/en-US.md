@@ -91,6 +91,7 @@ const value8 = ref('')
 const value9 = ref('')
 const value10 = ref('')
 const value11 = ref('')
+const value12 = ref('')
 </script>
 
 <template>
@@ -133,6 +134,7 @@ const value11 = ref('')
     <var-input variant="outlined" placeholder="Maxlength" :maxlength="10" v-model="value9" />
     <var-input variant="outlined" placeholder="Textarea" textarea v-model="value10" />
     <var-input variant="outlined" placeholder="Small Size" size="small" v-model="value11" />
+    <var-input variant="outlined" placeholder="Removes whitespace from both ends of this string" v-model.trim="value12" />
   </var-space>
 </template>
 
