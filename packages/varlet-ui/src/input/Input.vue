@@ -242,7 +242,7 @@ export default defineComponent({
       }
 
       // avoid vue cannot render when the target is the same with props.modelValue
-      const targetValue = withMaxlength(withTrim(value))
+      const targetValue = withMaxlength(value)
       if (targetValue === props.modelValue) {
         target.value = targetValue
       }
@@ -276,7 +276,11 @@ export default defineComponent({
     }
 
     function handleChange(e: Event) {
-      const value = updateValue(e)
+      const value = withTrim(updateValue(e))
+
+      if (props.modelModifiers.trim) {
+        call(props['onUpdate:modelValue'], value)
+      }
 
       call(props.onChange, value, e)
       validateWithTrigger('onChange')
