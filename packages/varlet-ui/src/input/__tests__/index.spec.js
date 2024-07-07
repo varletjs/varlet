@@ -336,7 +336,7 @@ test('test input trim', async () => {
   })
 
   await wrapper.find('.var-input__input').setValue('123 ')
-  await wrapper.find('.var-input__input').trigger('input')
+  await wrapper.find('.var-input__input').trigger('blur')
 
   expect(onUpdateModelValue).lastCalledWith('123')
   wrapper.unmount()
