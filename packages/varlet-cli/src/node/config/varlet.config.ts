@@ -179,6 +179,7 @@ export interface VarletConfig {
    * Directive folder name for component library.
    */
   directives?: string[]
+  _cf?: string[]
 }
 
 export function defineConfig(config: VarletConfig) {

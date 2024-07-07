@@ -504,6 +504,7 @@ export default defineConfig({
   themeKey: 'VARLET_V3_THEME',
   defaultLightTheme: 'md3LightTheme',
   defaultDarkTheme: 'md3DarkTheme',
+  _cf: ['pages.dev', 'varletjs.org'],
   lightTheme: {
     'color-body': '#fff',
     'color-index-page-background': '#fff',
