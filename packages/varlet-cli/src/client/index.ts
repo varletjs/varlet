@@ -139,7 +139,7 @@ export function watchTheme(
 }
 
 export function getMobileIndex() {
-  const isCf = config._cf.includes(window.location.origin)
+  const isCf = config._cf.some((path: string) => window.location.origin.includes(path))
   return isCf ? './mobile' : './mobile.html'
 }
 
