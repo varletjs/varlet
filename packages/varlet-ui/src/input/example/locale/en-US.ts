@@ -6,6 +6,7 @@ export default {
   textarea: 'Textarea',
   maxlength: 'Maxlength',
   disabled: 'Disabled',
+  trim: 'Removes whitespace from both ends of this string',
   readonly: 'Readonly',
   clearable: 'Clearable',
   clearIconSlot: 'Use the clear icon slot',

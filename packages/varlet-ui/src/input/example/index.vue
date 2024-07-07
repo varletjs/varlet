@@ -14,6 +14,7 @@ const standardValue8 = ref('')
 const standardValue9 = ref('')
 const standardValue10 = ref('')
 const standardValue11 = ref('')
+const standardValue12 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -68,6 +69,7 @@ onThemeChange()
     <var-input :placeholder="t('maxlength')" :maxlength="10" v-model="standardValue9" />
     <var-input :placeholder="t('textarea')" textarea v-model="standardValue10" />
     <var-input :placeholder="t('smallSize')" size="small" v-model="standardValue11" />
+    <var-input :placeholder="t('trim')" v-model.trim="standardValue12" />
   </var-space>
 
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>

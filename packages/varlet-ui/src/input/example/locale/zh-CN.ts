@@ -6,6 +6,7 @@ export default {
   textarea: '文本域',
   maxlength: '最大长度',
   disabled: '禁用',
+  trim: '移除空白字符',
   readonly: '只读',
   clearable: '可清除',
   clearIconSlot: '使用插槽自定义清除图标',

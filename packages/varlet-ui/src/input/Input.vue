@@ -228,6 +228,13 @@ export default defineComponent({
     function handleBlur(e: FocusEvent) {
       isFocusing.value = false
 
+      if (props.modelModifiers.trim) {
+        const value = props.modelValue!.trim()
+        call(props['onUpdate:modelValue'], value)
+        call(props.onChange, value, e)
+        validateWithTrigger('onChange')
+      }
+
       call(props.onBlur, e)
       validateWithTrigger('onBlur')
     }
@@ -242,7 +249,7 @@ export default defineComponent({
       }
 
       // avoid vue cannot render when the target is the same with props.modelValue
-      const targetValue = withMaxlength(withTrim(value))
+      const targetValue = withMaxlength(value)
       if (targetValue === props.modelValue) {
         target.value = targetValue
       }
@@ -318,10 +325,6 @@ export default defineComponent({
       }
 
       return value.replace(/[^-0-9.]/g, '')
-    }
-
-    function withTrim(value: string) {
-      return props.modelModifiers.trim ? value.trim() : value
     }
 
     function withMaxlength(value: string) {
