@@ -7,14 +7,62 @@ const title = {
 
 const description = {
   'zh-CN':
-    'Varlet 是一个基于 Vue3 开发的 Material Design 组件库，全面拥抱 Vue3 生态，支持移动端和桌面端，由 varletjs 组织维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发体验。',
+    'Varlet 是一个基于 Vue3 开发的 Material Design 组件库，全面拥抱 Vue3 生态，支持移动端和桌面端，由 varletjs 组织维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发验。',
   'en-US':
     'Varlet is a Material design component library developed based on Vue3, supporting mobile and desktop, developed and maintained by varletjs organization. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience.',
 }
 
 const keywords = {
-  'zh-CN': 'Varlet,UI,Vue3 组件库,Material Design 2,Material Design 3,移动端,桌面端',
-  'en-US': 'Varlet,UI,Vue3 Mobile Components Library,Material Design 2,Material Design 3,Mobile,Desktop',
+  'zh-CN': [
+    'Varlet',
+    'Varlet UI',
+    'varlet',
+    'varlet-ui',
+    'Vue3 组件库',
+    'Material Design 2',
+    'Material Design 3',
+    '移动端',
+    '桌面端',
+    '提供 60+ 个高质量通用组件',
+    '组件十分轻量',
+    '由国人开发，完善的中英文文档和后勤保障',
+    '支持按需引入',
+    '支持主题定制',
+    '支持国际化',
+    '支持 webstorm 组件属性高亮',
+    '支持 SSR',
+    '支持 Nuxt Module',
+    '支持 Typescript',
+    '提供官方的 VSCode 插件',
+    '支持无障碍访问（持续改进中）',
+  ].join(','),
+  'en-US': [
+    'Varlet',
+    'Varlet UI',
+    'varlet',
+    'varlet-ui',
+    'UI',
+    'Vue3 Mobile Components Library',
+    'Material Design 2',
+    'Material Design 3',
+    'Mobile',
+    'Desktop',
+    'Provide 60+ high quality general purpose components',
+    'Components are very lightweight',
+    'Developed by Chinese, complete Chinese and English documentation and logistics support',
+    'Support on-demand introduction',
+    'Support theme customization',
+    'Support internationalization',
+    'Support WebStorm syntax highlighting',
+    'Support the SSR',
+    'Support Nuxt Module',
+    'Support the Typescript',
+    'Make sure more than 90 percent unit test coverage, providing stability assurance',
+    'Supports both Material Design 2 and Material Design 3 design systems',
+    'Support dark mode',
+    'Provide official VSCode extension',
+    'Support Accessibility (still improving)',
+  ].join(','),
 }
 
 export default defineConfig({

@@ -55,6 +55,11 @@
   %>
 </head>
 <body>
+  <div style="position: absolute; top: -99999px; z-index: -99999">
+    <h1><%= mobileTitle %></h1>
+    <h2><%= mobileKeywords %></h2>
+    <p><%= mobileDescription %></p>
+  </div>
 <% 
   mobileHtmlInject.body.start.forEach(function(tag) { %>
     <%- tag %>
@@ -72,11 +77,5 @@
     <%- tag %>
   <% });
 %>
-
-<div style="position: absolute; top: -99999px; z-index: -99999">
-  <h1><%= mobileTitle %></h1>
-  <h2><%= mobileKeywords %></h2>
-  <p><%= mobileDescription %></p>
-</div>
 </body>
 </html>
