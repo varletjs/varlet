@@ -39,4 +39,4 @@ export const inMobile = () =>
 
 const { hasOwnProperty } = Object.prototype
 
-export const hasOwn = (val: object, key: string | symbol): key is keyof typeof val => hasOwnProperty.call(val, key)
+export const hasOwn = <T extends object>(val: T, key: PropertyKey): key is keyof T => hasOwnProperty.call(val, key)
