@@ -24,6 +24,14 @@ export type MenuSelectStrategy = PositioningStrategy
 
 export type MenuSelectSize = 'normal' | 'mini' | 'small' | 'large'
 
+export type MenuSelectOptionLabelRender = (option: MenuSelectOption, checked: boolean) => VNodeChild
+
+export interface MenuSelectOption {
+  label?: string | VNode | MenuSelectOptionLabelRender
+  disabled?: boolean
+  value?: any
+}
+
 export interface MenuSelectProps extends BasicAttributes {
   modelValue?: any
   size?: MenuSelectSize

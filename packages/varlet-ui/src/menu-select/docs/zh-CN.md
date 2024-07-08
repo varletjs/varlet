@@ -213,6 +213,71 @@ const value = ref()
 </template>
 ```
 
+### 选项属性式用法
+
+可以将选项以数组形式传给 `options` 属性。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const selectOptions = computed(() => [
+  {
+    label: '吃饭',
+  },
+  {
+    label: '睡觉',
+  },
+  {
+    label: '打游戏',
+    disabled: true,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="selectOptions">
+    <var-button type="primary">{{ value ? value : '请选择' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
+### 自定义键的选项属性式用法
+
+可以将选项以对象形式传给 `options` 属性，通过 `label-key` 和 `value-key` 属性指定选项数组内文本和值的字段。
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const selectOptions = [
+   {
+    name: '吃饭',
+    id: 1,
+  },
+  {
+    name: '睡觉',
+    id: 2,
+  },
+  {
+    name: '打游戏',
+    id: 3,
+    disabled: true,
+  },
+]
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="selectOptions" label-key="name" value-key="id">
+    <var-button type="primary">{{ value ? value : '请选择' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -239,6 +304,17 @@ const value = ref()
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
+| `options` | 指定可选项 | _SelectOption[]_ | `-` |
+| `label-key` | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` | 作为 value 唯一标识的键名 | _string_ | `value` |
+
+#### SelectOption
+
+| 参数 | 说明 | 类型             | 默认值       |
+| ------- | --- |----------------|-----------|
+| `label`    |    选项的标签    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    选项的值    | _any_      | `-`   |
+| `disabled`    |    是否禁用   | _boolean_      | `-`   |
 
 #### MenuOption Props
 
@@ -247,7 +323,7 @@ const value = ref()
 | `label` | 选项显示的文本 | _any_ | `-` |
 | `value` | 选项绑定的值 | _any_ | `-` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
-| `ripple` ***3.3.0***  | 是否启用水波效果 | _boolean_ | `true` |
+| `ripple` _**3.3.0**_  | 是否启用水波效果 | _boolean_ | `true` |
 
 ### Placement
 

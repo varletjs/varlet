@@ -213,6 +213,71 @@ const value = ref()
 </template>
 ```
 
+### Option Attribute Usage
+
+You can pass the options as an array to the `options` property.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const selectOptions = computed(() => [
+  {
+    label: 'Eat',
+  },
+  {
+    label: 'Sleep',
+  },
+  {
+    label: 'Play game',
+    disabled: true,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="selectOptions">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
+### Custom Key Option Attribute Usage
+
+You can pass the options as an array of objects to the `options` property. Use the `label-key` and `value-key` properties to specify the fields for the label and value within the options array.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const selectOptions = [
+   {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
+  },
+]
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="selectOptions" label-key="name" value-key="id">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
 ## API
 
 ### Props
@@ -239,6 +304,17 @@ const value = ref()
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
+| `options`    | Specifies options | _SelectOption[]_ | `-` |
+| `label-key`    | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key`    | As the key that uniquely identifies value | _string_ | `value` |
+
+#### SelectOption
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of option    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    The value of option    | _any_      | `-`   |
+| `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
 
 #### MenuOption Props
 
@@ -247,7 +323,7 @@ const value = ref()
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
 | `disabled` | Whether to disable | _boolean_ | `false` |
-| `ripple` ***3.3.0***  | Whether to enable ripple | _boolean_ | `true` |
+| `ripple` _**3.3.0**_  | Whether to enable ripple | _boolean_ | `true` |
 
 ### Placement
 
@@ -340,4 +416,3 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-option-selected-background` | `var(--color-primary)` |
 | `--menu-option-text-color` | `#555` |
 | `--menu-option-disabled-color` | `var(--color-text-disabled)` |
-
