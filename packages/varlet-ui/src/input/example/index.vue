@@ -109,7 +109,7 @@ onThemeChange()
     <var-input variant="outlined" :placeholder="t('maxlength')" :maxlength="10" v-model="outlinedValue9" />
     <var-input variant="outlined" :placeholder="t('textarea')" textarea v-model="outlinedValue10" />
     <var-input variant="outlined" :placeholder="t('smallSize')" size="small" v-model="outlinedValue11" />
-    <var-input variant="outlined" :placeholder="t('trim')" v-model.trim="standardValue12" />
+    <var-input variant="outlined" :placeholder="t('trim')" v-model.trim="outlinedValue12" />
   </var-space>
 
   <div style="height: 40px"></div>
