@@ -21,9 +21,9 @@ export function getWebTypesTags(): HtmlTag[] {
   return (getConfig().language === 'en-US' ? enWebTypes : zhWebTypes).contributions.html.tags
 }
 
-const defaultOrigin = 'https://varlet.pages.dev'
-const defaultPlayground = 'https://varlet.pages.dev/playground'
-const defaultIconsStatic = 'https://varlet.pages.dev/icons/png'
+const defaultOrigin = 'https://varletjs.org'
+const defaultPlayground = 'https://varletjs.org/playground'
+const defaultIconsStatic = 'https://varletjs.org/icons/png'
 const vercelOrigin = 'https://varlet-varletjs.vercel.app'
 const vercelPlayground = 'https://varlet-ui-playground.vercel.app'
 const vercelIconsStatic = 'https://varlet-varletjs.vercel.app/icons/png'

@@ -29,7 +29,7 @@
 
 ```html
 <template>
-  <var-icon name="https://varlet.pages.dev/cat.jpg" :size="32" />
+  <var-icon name="https://varletjs.org/cat.jpg" :size="32" />
 </template>
 ```
 

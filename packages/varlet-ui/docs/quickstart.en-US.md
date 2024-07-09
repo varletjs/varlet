@@ -84,4 +84,4 @@ body {
 We provide a web version of the component editor,
 which is convenient for you to quickly get started with each component of the component library,
 edit it online, share it with others, or download the code package to run locally.
-You can click the `{...}` icon in the upper right corner of the page or [go here](https://varlet.pages.dev/playground).
+You can click the `{...}` icon in the upper right corner of the page or [go here](https://varletjs.org/playground).

@@ -69,7 +69,7 @@ exports[`test card component slots > test card floating-content slot 2`] = `
 
 exports[`test card component slots > test card image slot 1`] = `
 "<div class="var-card var-elevation--1">
-  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;"><img src="https://varletjs.github.io/varlet/cat.jpg" alt="cat">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;"><img src="https://varletjs.org/varlet/cat.jpg" alt="cat">
     <div class="var-card__container">
       <!--v-if-->
       <!--v-if-->

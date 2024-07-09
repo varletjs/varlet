@@ -44,7 +44,7 @@ body {
 
 ### 主题生成器
 
-我们提供了一个[主题生成器](https://varletjs.github.io/varlet-theme-builder)，可以通过产品主题色或产品图片智能推导出符合设计系统的配色。
+我们提供了一个[主题生成器](https://varletjs.org/varlet-theme-builder)，可以通过产品主题色或产品图片智能推导出符合设计系统的配色。
 
 - 注意: 只支持生成 Material Design 3 的主题配色
 

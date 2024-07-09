@@ -9,11 +9,11 @@
 ```html
 <template>
   <var-space align="center">
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" size="mini" />
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" size="small" />
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" />
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" size="large" />
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" :size="78" />
+    <var-avatar src="https://varletjs.org/cat.jpg" size="mini" />
+    <var-avatar src="https://varletjs.org/cat.jpg" size="small" />
+    <var-avatar src="https://varletjs.org/cat.jpg" />
+    <var-avatar src="https://varletjs.org/cat.jpg" size="large" />
+    <var-avatar src="https://varletjs.org/cat.jpg" :size="78" />
   </var-space>
 </template>
 ```
@@ -23,8 +23,8 @@
 ```html
 <template>
   <var-space>
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" />
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" :round="false" />
+    <var-avatar src="https://varletjs.org/cat.jpg" />
+    <var-avatar src="https://varletjs.org/cat.jpg" :round="false" />
   </var-space>
 </template>
 ```
@@ -35,23 +35,23 @@
 <template>
   <var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.pages.dev/cat.jpg" />
+      <var-avatar src="https://varletjs.org/cat.jpg" />
       <span>cover</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.pages.dev/cat.jpg" fit="fill" />
+      <var-avatar src="https://varletjs.org/cat.jpg" fit="fill" />
       <span>fill</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.pages.dev/cat.jpg" fit="contain" />
+      <var-avatar src="https://varletjs.org/cat.jpg" fit="contain" />
       <span>contain</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.pages.dev/cat.jpg" fit="none" />
+      <var-avatar src="https://varletjs.org/cat.jpg" fit="none" />
       <span>none</span>
     </var-space>
     <var-space direction="column" align="center">
-      <var-avatar src="https://varlet.pages.dev/cat.jpg" fit="scale-down" />
+      <var-avatar src="https://varletjs.org/cat.jpg" fit="scale-down" />
       <span>scale-down</span>
     </var-space>
   </var-space>
@@ -96,9 +96,9 @@ const text = ref('VARLET')
 ```html
 <template>
   <var-avatar-group>
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" bordered />
-    <var-avatar src="https://varlet.pages.dev/cat2.jpg" bordered />
-    <var-avatar src="https://varlet.pages.dev/cat3.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat2.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
@@ -109,9 +109,9 @@ const text = ref('VARLET')
 ```html
 <template>
   <var-avatar-group vertical>
-    <var-avatar src="https://varlet.pages.dev/cat.jpg" bordered />
-    <var-avatar src="https://varlet.pages.dev/cat2.jpg" bordered />
-    <var-avatar src="https://varlet.pages.dev/cat3.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat2.jpg" bordered />
+    <var-avatar src="https://varletjs.org/cat3.jpg" bordered />
     <var-avatar bordered>+2</var-avatar>
   </var-avatar-group>
 </template>
@@ -122,9 +122,9 @@ const text = ref('VARLET')
 ```html
 <template>
   <var-avatar-group>
-    <var-avatar hoverable src="https://varlet.pages.dev/cat.jpg" />
-    <var-avatar hoverable src="https://varlet.pages.dev/cat2.jpg" />
-    <var-avatar hoverable src="https://varlet.pages.dev/cat3.jpg" />
+    <var-avatar hoverable src="https://varletjs.org/cat.jpg" />
+    <var-avatar hoverable src="https://varletjs.org/cat2.jpg" />
+    <var-avatar hoverable src="https://varletjs.org/cat3.jpg" />
     <var-avatar hoverable bordered>+2</var-avatar>
   </var-avatar-group>
 </template>

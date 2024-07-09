@@ -10,7 +10,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
 
 ```html
 <template>
-  <var-image src="https://varlet.pages.dev/cat.jpg" />
+  <var-image src="https://varletjs.org/cat.jpg" />
 </template>
 ```
 
@@ -22,35 +22,35 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     <var-image
       width="85px"
       height="85px"
-      src="https://varlet.pages.dev/cat.jpg"
+      src="https://varletjs.org/cat.jpg"
     />
 
     <var-image 
       width="85px" 
       height="85px"
       fit="cover" 
-      src="https://varlet.pages.dev/cat.jpg" 
+      src="https://varletjs.org/cat.jpg" 
     />
 
     <var-image 
       width="85px"
       height="85px"
       fit="none"
-      src="https://varlet.pages.dev/cat.jpg"
+      src="https://varletjs.org/cat.jpg"
     />
 
     <var-image 
       width="85px"
       height="85px" 
       fit="contain"
-      src="https://varlet.pages.dev/cat.jpg" 
+      src="https://varletjs.org/cat.jpg" 
     />
     
     <var-image 
       width="85px"
       height="85px" 
       fit="scale-down"
-      src="https://varlet.pages.dev/cat.jpg" 
+      src="https://varletjs.org/cat.jpg" 
     />
   </var-space>
 </template>
@@ -66,7 +66,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       fit="cover"
       :radius="10"
-      src="https://varlet.pages.dev/cat.jpg"
+      src="https://varletjs.org/cat.jpg"
     />
 
     <var-image
@@ -74,7 +74,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
       height="85px"
       fit="cover"
       radius="50%"
-      src="https://varlet.pages.dev/cat.jpg"
+      src="https://varletjs.org/cat.jpg"
     />
   </var-space>
 </template>
@@ -88,7 +88,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     width="85px"
     height="85px"
     ripple
-    src="https://varlet.pages.dev/cat.jpg"
+    src="https://varletjs.org/cat.jpg"
   />
 </template>
 ```
@@ -101,7 +101,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     width="85px"
     height="85px"
     lazy
-    src="https://varlet.pages.dev/cat.jpg"
+    src="https://varletjs.org/cat.jpg"
   />
 </template>
 ```
@@ -117,7 +117,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
     height="85px"
     loading="https://xxx.xxx/loading.png"
     error="https://xxx.xxx/error.png"
-    src="https://varlet.pages.dev/cat.jpg"
+    src="https://varletjs.org/cat.jpg"
   />
 </template>
 ```
@@ -129,7 +129,7 @@ Supports `Lazy load`, `loading images`, `error images`, and default Settings for
   <var-image 
     width="22.666vw" 
     height="22.666vw" 
-    src="https://varlet.pages.dev/ca.jpg"
+    src="https://varletjs.org/ca.jpg"
   >
     <template #error>
       <svg viewBox="0 0 24 24" style="width: 100%; height: 100%;">
