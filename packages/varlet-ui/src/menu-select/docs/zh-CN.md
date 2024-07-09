@@ -304,11 +304,11 @@ const selectOptions = [
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
-| `options` | 指定可选项 | _SelectOption[]_ | `-` |
-| `label-key` | 作为 label 唯一标识的键名 | _string_ | `label` |
-| `value-key` | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `options` ***3.3.5*** | 指定可选项 | _MenuSelectOption[]_ | `-` |
+| `label-key` ***3.3.5*** | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` ***3.3.5*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 
-#### SelectOption
+#### MenuSelectOption
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|

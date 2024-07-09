@@ -159,5 +159,5 @@ export default defineComponent({
 @import '../styles/common';
 @import '../menu/menu';
 @import './menuSelect';
-@import '../option/option';
+@import '../menu-option/menuOption';
 </style>
