@@ -49,6 +49,10 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### Support Desktop
+
+`Varlet` is a mobile-first component library. To support desktop, you need to install an adapter. See [browser adaptation](#/en-US/browserAdaptation) for details.
+
 ### Choose a design system
 
 Starting from version 3.x, Varlet supports both Material Design 2 and Material Design 3 design systems.
@@ -74,10 +78,6 @@ body {
   background-color: var(--color-body);
 }
 ```
-
-### Support Desktop
-
-`Varlet` is a mobile-first component library. To support desktop, you need to install an adapter. See [browser adaptation](#/en-US/browserAdaptation) for details.
 
 ### Components Playground
 

@@ -49,6 +49,10 @@ import '@varlet/ui/es/style'
 createApp(App).use(Varlet).mount('#app')
 ```
 
+### 支持桌面端
+
+`Varlet` 是一个移动端优先的组件库，支持桌面端需要安装一个适配器，详情见[浏览器适配](#/zh-CN/browserAdaptation)。
+
 ### 选择设计系统
 
 从 3.x 版本开始，Varlet 同时支持了 Material Design 2 和 Material Design 3 两种设计系统。
@@ -74,10 +78,6 @@ body {
   background-color: var(--color-body);
 }
 ```
-
-### 支持桌面端
-
-`Varlet` 是一个移动端优先的组件库，支持桌面端需要安装一个适配器，详情见[浏览器适配](#/zh-CN/browserAdaptation)。
 
 ### 在线体验组件
 
