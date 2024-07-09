@@ -94,7 +94,7 @@ const active = ref(0)
 <template>
   <var-app-bar
     round
-    image="https://varlet.pages.dev/tree.jpeg"
+    image="https://varletjs.org/tree.jpeg"
     image-linear-gradient="to right top, rgba(29, 68, 147, 0.5) 0%, rgba(74, 198, 170, 0.9) 100%"
   >
     标题

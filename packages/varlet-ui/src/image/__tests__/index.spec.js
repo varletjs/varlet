@@ -5,7 +5,7 @@ import { createApp } from 'vue'
 import { delay, trigger } from '../../utils/test'
 import { expect, vi, test, describe } from 'vitest'
 
-const SRC = 'https://varletjs.github.io/varlet/cat.png'
+const SRC = 'https://varletjs.org/varlet/cat.png'
 
 test('test image plugin', () => {
   const app = createApp({}).use(Image)

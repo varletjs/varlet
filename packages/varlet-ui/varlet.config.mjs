@@ -22,7 +22,7 @@ export default defineConfig({
     header: {
       ai: 'https://gpt.qilepan.com/chat/share?shareId=y3ytky9ifjgl6fxtva1ai16h',
       playground:
-        process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://varlet.pages.dev/playground',
+        process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://varletjs.org/playground',
     },
     menu: [
       {

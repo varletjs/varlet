@@ -86,7 +86,7 @@ test('test watermark opacity', async () => {
 test('test watermark image', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
     },
   })
 
@@ -119,7 +119,7 @@ test('test watermark image rotate', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       rotate: 20,
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
     },
   })
 
@@ -256,7 +256,7 @@ test('test watermark image offsetX', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetX: 20,
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
     },
   })
 
@@ -276,7 +276,7 @@ test('test watermark image offsetY', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
       offsetY: 20,
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
     },
   })
 
@@ -308,7 +308,7 @@ test('test watermark content slot', async () => {
 test('test watermark priority between image and content', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
       content: 'Varlet UI',
     },
   })
@@ -323,7 +323,7 @@ test('test watermark priority between image and content', async () => {
 test('test watermark priority between image and content slot', async () => {
   const wrapper = mount(VarWatermark, {
     props: {
-      image: 'https://varletjs.github.io/varlet/varlet_icon.png',
+      image: 'https://varletjs.org/varlet/varlet_icon.png',
     },
     slots: {
       content: () => 'Varlet UI',

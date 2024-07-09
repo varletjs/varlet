@@ -33,12 +33,12 @@ import { ref } from 'vue'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg'
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg'
   },
   {
     url: 'https://www.runoob.com/try/demo_source/mov_bbb.mp4',
-    cover: 'https://varlet.pages.dev/cover.jpg'
+    cover: 'https://varletjs.org/cover.jpg'
   }
 ])
 </script>
@@ -57,8 +57,8 @@ import { Dialog } from '@varlet/ui'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg'
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg'
   }
 ])
 
@@ -85,18 +85,18 @@ import { ref } from 'vue'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'loading'
   },
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'success'
   },
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'error'
   }
 ])
@@ -292,8 +292,8 @@ import { Dialog } from '@varlet/ui'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg'
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg'
   }
 ])
 
@@ -340,8 +340,8 @@ import { ref } from 'vue'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'error',
   },
 ])
@@ -365,18 +365,18 @@ import { ref } from 'vue'
 
 const files = ref([
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'loading',
   },
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'success',
   },
   {
-    url: 'https://varlet.pages.dev/cat.jpg',
-    cover: 'https://varlet.pages.dev/cat.jpg',
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
     state: 'error',
   },
 ])

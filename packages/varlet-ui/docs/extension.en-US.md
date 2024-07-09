@@ -20,25 +20,25 @@ VsCode Extension Marketplace Search [varlet-vscode-extension](https://marketplac
 
 Grammatical hints appear when you enter the keyword of the component name, and you can quickly complete it after selecting it.
 
-<img src="https://varlet.pages.dev/vscode/1.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/1.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 Moving the mouse to the component name will display the document address of the component, which can be clicked to jump, and it also directly displays the properties, events and slots of the component in the form of a table.
 
-<img src="https://varlet.pages.dev/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/2.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 Press space or attribute keywords in the attribute input range of the label to display attribute completion prompts and attribute information.
 
-<img src="https://varlet.pages.dev/vscode/3.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/3.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 When the `name` property of the `Icon` component is input, an icon preview will appear, and syntax completion will be performed after selection.
 
-<img src="https://varlet.pages.dev/vscode/4.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/4.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 Frame the code snippet, and you can quickly open `Playground` in the right-click menu to preview the framed code online.
 
-<img src="https://varlet.pages.dev/vscode/7.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/7.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
 
 Support switching between Chinese and English, more friendly to Chinese people.
 
-<img src="https://varlet.pages.dev/vscode/5.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
-<img src="https://varlet.pages.dev/vscode/6.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 10px">
+<img src="https://varletjs.org/vscode/5.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 16px">
+<img src="https://varletjs.org/vscode/6.png" style="width: 100%; display: block; border-radius: 4px; margin-top: 10px">
