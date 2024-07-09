@@ -429,6 +429,19 @@ export default defineConfig({
       currentVersion: 'v2.x',
       versions: [
         {
+          name: 'varletjs.org',
+          items: [
+            {
+              label: 'v3.x',
+              link: 'https://varletjs.org',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varletjs.org/v2',
+            },
+          ],
+        },
+        {
           name: 'varlet.pages.dev',
           items: [
             {
