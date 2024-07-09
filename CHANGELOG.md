@@ -1,3 +1,13 @@
+## [3.3.5](https://github.com/varletjs/varlet/compare/v3.3.4...v3.3.5) (2024-07-09)
+
+
+### Bug Fixes
+
+* **cli:** fix cf site logic ([da2766e](https://github.com/varletjs/varlet/commit/da2766efbf0db52415467ea731289c301f38973e))
+* **input:** trim value after blurring while setting trim modifier ([#1693](https://github.com/varletjs/varlet/issues/1693)) ([1c4f41a](https://github.com/varletjs/varlet/commit/1c4f41a3a806a2abd660d825f54fea022e1f901d))
+
+
+
 ## [3.3.4](https://github.com/varletjs/varlet/compare/v3.3.3...v3.3.4) (2024-07-05)
 
 
