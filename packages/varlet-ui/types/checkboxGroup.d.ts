@@ -51,9 +51,9 @@ export class CheckboxGroup extends VarComponent {
 
   reset(): void
 
-  checkAll(): any
+  checkAll(): any[]
 
-  inverseAll(): any
+  inverseAll(): any[]
 }
 
 export class _CheckboxGroupComponent extends CheckboxGroup {}

@@ -317,8 +317,8 @@ const value = ref([])
 | `validate` | 触发校验 | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | 清空校验信息 | `-` | `-` |
 | `reset` | 清空绑定的值(设置为 `[]`)和校验信息 | `-` | `-` |
-| `checkAll` | 全选 | `-` | `value: any` |
-| `inverseAll` | 反选 | `-` | `value: any` |
+| `checkAll` | 全选 | `-` | `value: any[]` |
+| `inverseAll` | 反选 | `-` | `value: any[]` |
 
 #### Checkbox Methods
 

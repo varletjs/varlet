@@ -318,8 +318,8 @@ const value = ref([])
 | `validate` | Trigger validate | `-` | `valid: Promise<boolean>` |
 | `resetValidation` | Clearing validate messages | `-` | `-` |
 | `reset` | Clear the value of the binding(set to `[]`) and validate messages | `-` | `-` |
-| `checkAll` | Check all | `-` | `value: any` |
-| `inverseAll` | Inverse all | `-` | `value: any` |
+| `checkAll` | Check all | `-` | `value: any[]` |
+| `inverseAll` | Inverse all | `-` | `value: any[]` |
 
 #### Checkbox Methods
 
