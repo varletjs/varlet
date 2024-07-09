@@ -477,7 +477,7 @@ export default defineConfig({
       currentVersion: 'v3.x',
       versions: [
         {
-          name: 'varlet.pages.dev',
+          name: 'varletjs.org',
           items: [
             {
               label: 'v3.x',
@@ -490,11 +490,24 @@ export default defineConfig({
           ],
         },
         {
+          name: 'varlet.pages.dev',
+          items: [
+            {
+              label: 'v3.x',
+              link: 'https://varlet.pages.dev',
+            },
+            {
+              label: 'v2.x',
+              link: 'https://varlet.pages.dev/v2',
+            },
+          ],
+        },
+        {
           name: 'varletjs.vercel.app',
           items: [
             {
               label: 'v3.x',
-              link: 'varlet-varletjs.vercel.app',
+              link: 'https://varlet-varletjs.vercel.app',
             },
             {
               label: 'v2.x',
@@ -505,7 +518,7 @@ export default defineConfig({
       ],
       github: 'https://github.com/varletjs/varlet',
       changelog: 'https://github.com/varletjs/varlet/blob/main/CHANGELOG.md',
-      playground: 'https://varletjs.org/varlet/playground',
+      playground: 'https://varletjs.org/playground',
       themes: [
         { 'zh-CN': 'Md2 亮色', 'en-US': 'Md2 Light', value: 'lightTheme' },
         { 'zh-CN': 'Md2 暗色', 'en-US': 'Md2 Dark', value: 'darkTheme' },

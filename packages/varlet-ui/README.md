@@ -5,10 +5,8 @@
   <h1>VARLET</h1>
   <p>A Vue3 component library based on Material Design 2 and 3, supporting mobile and desktop.</p>
   <p>
-    <a href="https://varletjs.org/#/en-US/index">Documentation(Cloudflare)</a> |
-    <a href="https://varlet-varletjs.vercel.app/#/en-US/index">Documentation(Vercel)</a> |
-    <a href="https://varletjs.org/varlet/#/en-US/index">Documentation(Github)</a> | 
-    <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文README</a>
+    <a href="https://varletjs.org/#/en-US/index">Documentation</a> |
+    <a href="https://github.com/varletjs/varlet/blob/dev/README.zh-CN.md">中文介绍</a>
   </p>
   <p>
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
@@ -122,7 +120,7 @@ The following projects are maintained by community personnel, welcome to add.
 
 ### Playground
 
-See [Varlet UI Playground](https://varletjs.org/varlet/playground).
+See [Varlet UI Playground](https://varletjs.org/playground).
 
 ### Contribution
 

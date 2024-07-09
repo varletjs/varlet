@@ -6,9 +6,7 @@
   <h1>VARLET</h1>
   <p>一个 Vue3 组件库，基于 Material Design 2 和 3，支持移动端、桌面端。</p>
   <p>
-    <a href="https://varletjs.org">文档(Cloudflare)</a> | 
-    <a href="https://varlet-varletjs.vercel.app">文档(Vercel)</a> | 
-    <a href="https://varletjs.org/varlet">文档(Github)</a> |
+    <a href="https://varletjs.org">文档</a> | 
     <a href="https://github.com/varletjs/varlet/blob/dev/README.md">ENGLISH README</a>
   </p>
   <p>
@@ -122,7 +120,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### 演练场
 
-在 [Varlet UI Playground](https://varletjs.org/varlet/playground) 对组件进行在线编辑。
+在 [Varlet UI Playground](https://varletjs.org/playground) 对组件进行在线编辑。
 
 ### 贡献
 
