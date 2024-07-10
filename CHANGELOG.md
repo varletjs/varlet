@@ -1,3 +1,13 @@
+## [3.3.6](https://github.com/varletjs/varlet/compare/v3.3.5...v3.3.6) (2024-07-10)
+
+
+### Bug Fixes
+
+* **input:** fix missing dot key on ios ([2dd86cd](https://github.com/varletjs/varlet/commit/2dd86cd61d3651e8f1b34642e069f6681cef56bb))
+* reset last validation before trigger validate event ([#1703](https://github.com/varletjs/varlet/issues/1703)) ([b43cfc0](https://github.com/varletjs/varlet/commit/b43cfc022f16e055972b38227899ace53582d83d))
+
+
+
 ## [3.3.5](https://github.com/varletjs/varlet/compare/v3.3.4...v3.3.5) (2024-07-09)
 
 
