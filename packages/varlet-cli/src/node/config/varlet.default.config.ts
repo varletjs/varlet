@@ -1,15 +1,15 @@
 import { defineConfig } from './varlet.config.js'
 
 const title = {
-  'zh-CN': 'Varlet - Vue3 Material Design 组件库',
-  'en-US': 'Varlet - Vue3 Material design component library',
+  'zh-CN': 'Varlet UI - Vue3 Material Design 组件库',
+  'en-US': 'Varlet UI - Vue3 Material design component library',
 }
 
 const description = {
   'zh-CN':
-    'Varlet 是一个基于 Vue3 开发的 Material Design 组件库，全面拥抱 Vue3 生态，支持移动端和桌面端，由 varletjs 组织维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发验。',
+    'Varlet UI 是一个基于 Vue3 开发的 Material Design 组件库，全面拥抱 Vue3 生态，支持移动端和桌面端，由 varletjs 组织维护。支持 Typescript、按需引入、暗黑模式、主题定制、国际化，并提供 VSCode 插件保障良好的开发验。',
   'en-US':
-    'Varlet is a Material design component library developed based on Vue3, supporting mobile and desktop, developed and maintained by varletjs organization. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience.',
+    'Varlet UI is a Material design component library developed based on Vue3, supporting mobile and desktop, developed and maintained by varletjs organization. Support Typescript, import on demand, dark mode, theme customization, internationalization, and provide VSCode plugin to ensure a good development experience.',
 }
 
 const keywords = {
