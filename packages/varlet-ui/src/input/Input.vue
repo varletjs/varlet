@@ -60,7 +60,7 @@
         :maxlength="maxlength"
         :rows="rows"
         :enterkeyhint="enterkeyhint"
-        :inputmode="inputmode"
+        :inputmode="type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -94,7 +94,7 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :enterkeyhint="enterkeyhint"
-        :inputmode="inputmode"
+        :inputmode="type === 'number' ? 'decimal' : undefined"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -160,7 +160,7 @@ export default defineComponent({
     } = useValidation()
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'text'))
     const normalizedType = computed<InputType>(() => {
-      if (props.type === 'number' || props.type === 'decimal') {
+      if (props.type === 'number') {
         return 'text'
       }
 
@@ -203,17 +203,6 @@ export default defineComponent({
       resetValidation,
     }
 
-    const inputmode = computed(() => {
-      switch (props.type) {
-        case 'number':
-          return 'numeric'
-        case 'decimal':
-          return 'decimal'
-      }
-
-      return undefined
-    })
-
     call(bindForm, inputProvider)
 
     onSmartMounted(() => {
@@ -248,7 +237,7 @@ export default defineComponent({
 
       let { value } = target
 
-      if (props.type === 'number' || props.type === 'decimal') {
+      if (props.type === 'number') {
         value = formatNumber(value)
       }
 
@@ -387,7 +376,6 @@ export default defineComponent({
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
-      inputmode,
       n,
       classes,
       isEmpty,

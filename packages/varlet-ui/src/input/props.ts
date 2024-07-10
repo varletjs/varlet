@@ -2,7 +2,7 @@ import { type PropType, InputHTMLAttributes } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { fieldDecoratorProps } from '../field-decorator'
 
-export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email' | 'decimal'
+export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
