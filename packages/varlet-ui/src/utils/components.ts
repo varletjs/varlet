@@ -147,6 +147,8 @@ export function useValidation() {
 
     const resArr = await Promise.all(rules.map((rule) => rule(value, apis)))
 
+    resetValidation()
+
     return !resArr.some((res) => {
       if (res !== true) {
         errorMessage.value = String(res)
