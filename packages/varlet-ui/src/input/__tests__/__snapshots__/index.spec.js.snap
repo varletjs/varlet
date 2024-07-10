@@ -310,7 +310,7 @@ exports[`test input type 3`] = `
     <div class="var-field-decorator__controller" style="cursor: text; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
       <div class="var-field-decorator__icon"></div>
       <div class="var-field-decorator__middle">
-        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" inputmode="numeric">
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text" inputmode="decimal">
       </div>
       <!--v-if-->
       <div class="var-field-decorator__icon">

@@ -67,7 +67,7 @@ test('test input type', () => {
     switch (type) {
       case 'number': {
         expect(wrapper.find('input').attributes('type')).toBe('text')
-        expect(wrapper.find('input').attributes('inputmode')).toBe('numeric')
+        expect(wrapper.find('input').attributes('inputmode')).toBe('decimal')
         break
       }
 
