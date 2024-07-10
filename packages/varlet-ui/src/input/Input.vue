@@ -160,7 +160,7 @@ export default defineComponent({
     } = useValidation()
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'text'))
     const normalizedType = computed<InputType>(() => {
-      if (props.type === 'number') {
+      if (props.type === 'number' || props.type === 'decimal') {
         return 'text'
       }
 
@@ -248,7 +248,7 @@ export default defineComponent({
 
       let { value } = target
 
-      if (props.type === 'number') {
+      if (props.type === 'number' || props.type === 'decimal') {
         value = formatNumber(value)
       }
 
