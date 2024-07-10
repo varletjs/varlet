@@ -14,6 +14,8 @@ export default {
   customIconSize: 'Custom Icon Size',
   validate: 'Validate',
   placeholder: 'Please enter text',
+  numberPlaceholder: 'Please enter number',
+  floatPlaceholder: 'Please enter float number',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
 }

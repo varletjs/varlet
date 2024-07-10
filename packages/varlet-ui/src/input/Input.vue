@@ -60,7 +60,7 @@
         :maxlength="maxlength"
         :rows="rows"
         :enterkeyhint="enterkeyhint"
-        :inputmode="type === 'number' ? 'numeric' : undefined"
+        :inputmode="inputmode"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -94,7 +94,7 @@
         :placeholder="!hint ? placeholder : undefined"
         :maxlength="maxlength"
         :enterkeyhint="enterkeyhint"
-        :inputmode="type === 'number' ? 'numeric' : undefined"
+        :inputmode="inputmode"
         :style="{
           color: !errorMessage ? textColor : undefined,
           caretColor: !errorMessage ? focusColor : undefined,
@@ -202,6 +202,17 @@ export default defineComponent({
       validate,
       resetValidation,
     }
+
+    const inputmode = computed(() => {
+      switch (props.type) {
+        case 'number':
+          return 'numeric'
+        case 'decimal':
+          return 'decimal'
+      }
+
+      return undefined
+    })
 
     call(bindForm, inputProvider)
 
@@ -376,6 +387,7 @@ export default defineComponent({
       maxlengthText,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
+      inputmode,
       n,
       classes,
       isEmpty,

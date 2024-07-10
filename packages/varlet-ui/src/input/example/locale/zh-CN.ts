@@ -14,6 +14,8 @@ export default {
   customIconSize: '自定义图标尺寸',
   validate: '字段校验',
   placeholder: '请输入文本',
+  numberPlaceholder: '请输入数字',
+  floatPlaceholder: '请输入小数',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
 }
