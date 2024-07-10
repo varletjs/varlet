@@ -149,6 +149,22 @@ const value12 = ref('')
 </style>
 ```
 
+### Number point keyboard
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-input variant="outlined" placeholder="number point keyboard" type="decimal" v-model="value" />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### Props
@@ -157,7 +173,7 @@ const value12 = ref('')
 | --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- | 
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
-| `type` | Input type, The optional value is `text` `password` `number` `tel`                                                                     | _string_ | `text` |
+| `type` | Input type, The optional value is `text` `password` `number` `tel` `decimal`                                                              | _string_ | `text` |
 | `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |

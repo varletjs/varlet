@@ -149,6 +149,22 @@ const value12 = ref('')
 </style>
 ```
 
+### 小数点键盘
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-input variant="outlined" placeholder="小数点键盘" type="decimal" v-model="value" />
+  </var-space>
+</template>
+```
+
 ## API
 
 ### 属性
@@ -157,7 +173,7 @@ const value12 = ref('')
 | --- |--------------------------------------------------------------------------| --- | --- |
 | `v-model` | 绑定的值                                                                     | _string_ | `-` |
 | `placeholder` | 占位符                                                                      | _string_ | `-` |
-| `type` | 输入框类型, 可选值为 `text` `password` `number` `tel`                             | _string_ | `text` |
+| `type` | 输入框类型, 可选值为 `text` `password` `number` `tel` `decimal`                          | _string_ | `text` |
 | `size` | 输入框尺寸，可选值 `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | 最大长度                                                                     | _string \| number_ | `-` |

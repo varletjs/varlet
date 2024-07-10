@@ -37,6 +37,8 @@ onThemeChange()
   <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
     <var-input :placeholder="t('placeholder')" v-model="standardValue" />
+    <var-input :placeholder="t('numberPlaceholder')" type="number" v-model="standardValue" />
+    <var-input :placeholder="t('floatPlaceholder')" type="decimal" v-model="standardValue" />
     <var-input :placeholder="t('readonly')" readonly v-model="standardValue2" />
     <var-input :placeholder="t('disabled')" disabled v-model="standardValue3" />
     <var-input :placeholder="t('clearable')" clearable v-model="standardValue4" />

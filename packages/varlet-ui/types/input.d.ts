@@ -5,7 +5,7 @@ export declare const inputProps: Record<keyof InputProps, any>
 
 export type InputValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
-export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email'
+export type InputType = 'text' | 'password' | 'number' | 'tel' | 'email' | 'decimal'
 
 export type InputSize = 'small' | 'normal'
 
