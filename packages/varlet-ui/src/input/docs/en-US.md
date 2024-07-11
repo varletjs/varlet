@@ -22,11 +22,13 @@ const value9 = ref('')
 const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
+const value13 = ref('')
 </script>
 
 <template>
   <var-space direction="column" size="large">
     <var-input placeholder="Please enter text" v-model="value" />
+    <var-input placeholder="Please enter number" type="number" v-model="value13" />
     <var-input placeholder="Readonly" readonly v-model="value2" />
     <var-input placeholder="Disabled" disabled v-model="value3" />
     <var-input placeholder="Clearable" clearable v-model="value4" />
@@ -92,11 +94,13 @@ const value9 = ref('')
 const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
+const value13 = ref('')
 </script>
 
 <template>
   <var-space direction="column" size="large">
     <var-input variant="outlined" placeholder="Please enter text" v-model="value" />
+    <var-input variant="outlined" placeholder="Please enter number" type="number" v-model="value13" />
     <var-input variant="outlined" placeholder="Readonly" readonly v-model="value2" />
     <var-input variant="outlined" placeholder="Disabled" disabled v-model="value3" />
     <var-input variant="outlined" placeholder="Clearable" clearable v-model="value4" />
@@ -149,22 +153,6 @@ const value12 = ref('')
 </style>
 ```
 
-### Number point keyboard
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-space direction="column" size="large">
-    <var-input variant="outlined" placeholder="number point keyboard" type="decimal" v-model="value" />
-  </var-space>
-</template>
-```
-
 ## API
 
 ### Props
@@ -173,7 +161,7 @@ const value = ref('')
 | --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- | 
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
-| `type` | Input type, The optional value is `text` `password` `number` `tel` `decimal`                                                              | _string_ | `text` |
+| `type` | Input type, The optional value is `text` `password` `number` `tel`                                                            | _string_ | `text` |
 | `size` | Input size, The optional value is `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | Input variants, The optional value is `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | Maxlength                                                                                                                              | _string \| number_ | `-` |

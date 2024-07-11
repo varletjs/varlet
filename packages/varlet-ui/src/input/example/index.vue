@@ -15,6 +15,7 @@ const standardValue9 = ref('')
 const standardValue10 = ref('')
 const standardValue11 = ref('')
 const standardValue12 = ref('')
+const standardValue13 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -28,6 +29,7 @@ const outlinedValue9 = ref('')
 const outlinedValue10 = ref('')
 const outlinedValue11 = ref('')
 const outlinedValue12 = ref('')
+const outlinedValue13 = ref('')
 
 watchLang(use)
 onThemeChange()
@@ -37,8 +39,7 @@ onThemeChange()
   <app-type>{{ t('standard') }}</app-type>
   <var-space direction="column" :size="['3vmin', 0]">
     <var-input :placeholder="t('placeholder')" v-model="standardValue" />
-    <var-input :placeholder="t('numberPlaceholder')" type="number" v-model="standardValue" />
-    <var-input :placeholder="t('floatPlaceholder')" type="decimal" v-model="standardValue" />
+    <var-input :placeholder="t('numberPlaceholder')" type="number" v-model="standardValue13" />
     <var-input :placeholder="t('readonly')" readonly v-model="standardValue2" />
     <var-input :placeholder="t('disabled')" disabled v-model="standardValue3" />
     <var-input :placeholder="t('clearable')" clearable v-model="standardValue4" />
@@ -78,6 +79,7 @@ onThemeChange()
   <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
   <var-space direction="column" :size="['6vmin', 0]">
     <var-input variant="outlined" :placeholder="t('placeholder')" v-model="outlinedValue" />
+    <var-input variant="outlined" :placeholder="t('numberPlaceholder')" type="number" v-model="outlinedValue13" />
     <var-input variant="outlined" :placeholder="t('readonly')" readonly v-model="outlinedValue2" />
     <var-input variant="outlined" :placeholder="t('disabled')" disabled v-model="outlinedValue3" />
     <var-input variant="outlined" :placeholder="t('clearable')" clearable v-model="outlinedValue4" />
