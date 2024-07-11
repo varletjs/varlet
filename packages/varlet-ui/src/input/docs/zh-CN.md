@@ -22,11 +22,13 @@ const value9 = ref('')
 const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
+const value13 = ref('')
 </script>
 
 <template>
   <var-space direction="column" size="large">
     <var-input placeholder="请输入文本" v-model="value" />
+    <var-input placeholder="请输入数字" type="number" v-model="value13" />
     <var-input placeholder="只读" readonly v-model="value2" />
     <var-input placeholder="禁用" disabled v-model="value3" />
     <var-input placeholder="可清除" clearable v-model="value4" />
@@ -92,11 +94,13 @@ const value9 = ref('')
 const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
+const value13 = ref('')
 </script>
 
 <template>
   <var-space direction="column" size="large">
     <var-input variant="outlined" placeholder="请输入文本" v-model="value" />
+    <var-input variant="outlined" placeholder="请输入数字" type="number" v-model="value13" />
     <var-input variant="outlined" placeholder="只读" readonly v-model="value2" />
     <var-input variant="outlined" placeholder="禁用" disabled v-model="value3" />
     <var-input variant="outlined" placeholder="可清除" clearable v-model="value4" />
@@ -149,22 +153,6 @@ const value12 = ref('')
 </style>
 ```
 
-### 小数点键盘
-
-```html
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-
-<template>
-  <var-space direction="column" size="large">
-    <var-input variant="outlined" placeholder="小数点键盘" type="decimal" v-model="value" />
-  </var-space>
-</template>
-```
-
 ## API
 
 ### 属性
@@ -173,7 +161,7 @@ const value = ref('')
 | --- |--------------------------------------------------------------------------| --- | --- |
 | `v-model` | 绑定的值                                                                     | _string_ | `-` |
 | `placeholder` | 占位符                                                                      | _string_ | `-` |
-| `type` | 输入框类型, 可选值为 `text` `password` `number` `tel` `decimal`                          | _string_ | `text` |
+| `type` | 输入框类型, 可选值为 `text` `password` `number` `tel`                         | _string_ | `text` |
 | `size` | 输入框尺寸，可选值 `normal` `small`                                                          | _string_ | `normal` |
 | `variant` | 输入框风格, 可选值为 `standard` `outlined`                                      | _string_ | `standard` |
 | `maxlength` | 最大长度                                                                     | _string \| number_ | `-` |
