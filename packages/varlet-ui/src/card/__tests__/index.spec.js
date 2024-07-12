@@ -229,6 +229,17 @@ describe('test card component props', () => {
 })
 
 describe('test card component slots', () => {
+  test('test card default slot', () => {
+    const wrapper = mount(VarCard, {
+      slots: {
+        default: '<span>This is default content</span>',
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
   test('test card image slot', () => {
     const wrapper = mount(VarCard, {
       slots: {

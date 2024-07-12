@@ -1,5 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`test card component slots > test card default slot 1`] = `
+"<div class="var-card var-elevation--1">
+  <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;"><span>This is default content</span></div>
+  <div class="var-card__holder" style="width: auto; height: auto;"></div>
+</div>"
+`;
+
 exports[`test card component slots > test card description slot 1`] = `
 "<div class="var-card var-elevation--1">
   <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
