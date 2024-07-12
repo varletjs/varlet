@@ -23,10 +23,10 @@ import { StyleProvider, Themes } from '@varlet/ui'
 
 <template>
   <var-space direction="column" size="large">
-    <var-button block @click="() => StyleProvider(null)">Material Design 2 Light</var-button>
-    <var-button block @click="() => StyleProvider(Themes.dark)">Material Design 2 Dark</var-button>
-    <var-button block @click="() => StyleProvider(Themes.md3Light)">Material Design 3 Light</var-button>
-    <var-button block @click="() => StyleProvider(Themes.md3Dark)">Material Design 3 Dark</var-button>
+    <var-button type="primary" block @click="StyleProvider(null)">Material Design 2 Light</var-button>
+    <var-button type="primary" block @click="StyleProvider(Themes.dark)">Material Design 2 Dark</var-button>
+    <var-button type="primary" block @click="StyleProvider(Themes.md3Light)">Material Design 3 Light</var-button>
+    <var-button type="primary" block @click="StyleProvider(Themes.md3Dark)">Material Design 3 Dark</var-button>
   </var-space>
 </template>
 ```
