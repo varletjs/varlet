@@ -38,6 +38,7 @@
             :label="option[labelKey]"
             :value="option[valueKey]"
             :option="option"
+            :ripple="option.ripple"
             :disabled="option.disabled"
           />
         </template>
@@ -158,6 +159,6 @@ export default defineComponent({
 @import '../styles/elevation';
 @import '../styles/common';
 @import '../menu/menu';
-@import './menuSelect';
 @import '../menu-option/menuOption';
+@import './menuSelect';
 </style>

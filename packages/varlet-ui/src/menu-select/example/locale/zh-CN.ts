@@ -16,6 +16,6 @@ export default {
   scrollable: '可滚动',
   multiple: '多选',
   closeOnSelect: '选择选项时禁止关闭菜单',
-  selectOptions: '选项属性式使用',
-  selectOptionsWithCustomizedKey: '自定义键的选项属性式使用',
+  selectOptions: '选项式 API',
+  selectOptionsWithCustomizedKey: '选项式 API（自定义字段）',
 }

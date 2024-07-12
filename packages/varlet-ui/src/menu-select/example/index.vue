@@ -28,21 +28,21 @@ const selectOptions = computed(() => [
     disabled: true,
   },
 ])
-const keyedSelectOptions = [
+const keyedSelectOptions = computed(() => [
   {
-    name: '吃饭',
+    name: t('eat'),
     id: 1,
   },
   {
-    name: '睡觉',
+    name: t('sleep'),
     id: 2,
   },
   {
-    name: '打游戏',
+    name: t('play'),
     id: 3,
     disabled: true,
   },
-]
+])
 
 watchLang((lang) => {
   use(lang)

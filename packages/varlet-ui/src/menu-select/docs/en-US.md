@@ -213,7 +213,7 @@ const value = ref()
 </template>
 ```
 
-### Option Attribute Usage
+### Options API
 
 You can pass the options as an array to the `options` property.
 
@@ -244,7 +244,7 @@ const selectOptions = computed(() => [
 </template>
 ```
 
-### Custom Key Option Attribute Usage
+### Options API With Customized Key
 
 You can pass the options as an array of objects to the `options` property. Use the `label-key` and `value-key` properties to specify the fields for the label and value within the options array.
 
@@ -254,7 +254,7 @@ import { ref } from 'vue'
 
 const value = ref()
 
-const selectOptions = [
+const options = [
    {
     name: 'Eat',
     id: 1,
@@ -272,7 +272,7 @@ const selectOptions = [
 </script>
 
 <template>
-  <var-menu-select v-model="value" :options="selectOptions" label-key="name" value-key="id">
+  <var-menu-select v-model="value" :options="options" label-key="name" value-key="id">
     <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
   </var-menu-select>
 </template>
@@ -323,7 +323,7 @@ const selectOptions = [
 | `label` | The text that the option displays | _any_ | `-` |
 | `value` | The value of the option binding | _any_ | `-` |
 | `disabled` | Whether to disable | _boolean_ | `false` |
-| `ripple` _**3.3.0**_  | Whether to enable ripple | _boolean_ | `true` |
+| `ripple` ***3.3.0***  | Whether to enable ripple | _boolean_ | `true` |
 
 ### Placement
 

@@ -67,6 +67,7 @@ export default defineComponent({
               label: props.label,
               value: props.value,
               disabled: props.disabled,
+              ripple: props.ripple,
             },
             optionSelected.value
           )
