@@ -179,6 +179,7 @@ const floating = ref(false)
 
 | Name | Description | SlotProps |
 |-----------------|---------------------------------| --------- |
+| `default`       | Default slots                    | `-`       |
 | `image`         | Custom image                    | `-`       |
 | `title`         | Custom title                    | `slotClass: string`  title class   |
 | `subtitle`      | Custom subtitle                 | `slotClass: string` subtitle class   |

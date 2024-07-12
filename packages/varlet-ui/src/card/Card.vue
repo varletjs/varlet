@@ -25,61 +25,63 @@
           : undefined,
       }"
     >
-      <slot name="image">
-        <img
-          :class="n('image')"
-          :style="{
-            objectFit: fit,
-            height: toSizeUnit(imageHeight),
-            width: toSizeUnit(imageWidth),
-          }"
-          :src="src"
-          :alt="alt"
-          v-if="src"
-        />
-      </slot>
+      <slot>
+        <slot name="image">
+          <img
+            :class="n('image')"
+            :style="{
+              objectFit: fit,
+              height: toSizeUnit(imageHeight),
+              width: toSizeUnit(imageWidth),
+            }"
+            :src="src"
+            :alt="alt"
+            v-if="src"
+          />
+        </slot>
 
-      <div :class="n('container')">
-        <slot name="title" :slot-class="n('title')">
-          <div :class="n('title')" v-if="title">{{ title }}</div>
-        </slot>
-        <slot name="subtitle" :slot-class="n('subtitle')">
-          <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
-        </slot>
-        <slot name="description" :slot-class="n('description')">
-          <div :class="n('description')" v-if="description">{{ description }}</div>
-        </slot>
-        <div :class="n('footer')" v-if="$slots.extra">
-          <slot name="extra" />
+        <div :class="n('container')">
+          <slot name="title" :slot-class="n('title')">
+            <div :class="n('title')" v-if="title">{{ title }}</div>
+          </slot>
+          <slot name="subtitle" :slot-class="n('subtitle')">
+            <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
+          </slot>
+          <slot name="description" :slot-class="n('description')">
+            <div :class="n('description')" v-if="description">{{ description }}</div>
+          </slot>
+          <div :class="n('footer')" v-if="$slots.extra">
+            <slot name="extra" />
+          </div>
+          <div
+            :class="n('floating-content')"
+            :style="{
+              height: contentHeight,
+              opacity,
+              transition: `opacity ${floatingDuration * 2}ms`,
+            }"
+            v-if="$slots['floating-content'] && !isRow"
+          >
+            <slot name="floating-content" />
+          </div>
         </div>
+
         <div
-          :class="n('floating-content')"
+          :class="classes(n('floating-buttons'), n('$--box'))"
           :style="{
-            height: contentHeight,
+            zIndex,
             opacity,
             transition: `opacity ${floatingDuration * 2}ms`,
           }"
-          v-if="$slots['floating-content'] && !isRow"
+          v-if="showFloatingButtons"
         >
-          <slot name="floating-content" />
+          <slot name="close-button">
+            <var-button var-card-cover :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
+              <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
+            </var-button>
+          </slot>
         </div>
-      </div>
-
-      <div
-        :class="classes(n('floating-buttons'), n('$--box'))"
-        :style="{
-          zIndex,
-          opacity,
-          transition: `opacity ${floatingDuration * 2}ms`,
-        }"
-        v-if="showFloatingButtons"
-      >
-        <slot name="close-button">
-          <var-button var-card-cover :class="classes(n('close-button'), n('$-elevation--6'))" @click.stop="close">
-            <var-icon var-card-cover name="window-close" :class="n('close-button-icon')" />
-          </var-button>
-        </slot>
-      </div>
+      </slot>
     </div>
 
     <div
