@@ -312,7 +312,7 @@ const options = [
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
-| `label`    |   The text of option    | _string \| VNode \| (option: SelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `label`    |   The text of option    | _string \| VNode \| (option: MenuSelectOption, selected: boolean) => VNodeChild_      | `-`   |
 | `value`  |    The value of option    | _any_      | `-`   |
 | `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
 
