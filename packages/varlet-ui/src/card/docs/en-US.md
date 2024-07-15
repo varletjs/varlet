@@ -180,6 +180,7 @@ const floating = ref(false)
 | Name | Description | SlotProps |
 |-----------------|---------------------------------| --------- |
 | `image`         | Custom image                    | `-`       |
+| `image`         | Custom content                  | `-`       |
 | `title`         | Custom title                    | `slotClass: string`  title class   |
 | `subtitle`      | Custom subtitle                 | `slotClass: string` subtitle class   |
 | `description`   | Custom description              | `slotClass: string` description class   |

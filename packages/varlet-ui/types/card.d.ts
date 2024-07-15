@@ -44,6 +44,7 @@ export class Card extends VarComponent {
 
   $slots: {
     image(): VNode[]
+    default(): VNode[]
     title(data: CardTitleData): VNode[]
     subtitle(data: CardSubtitleData): VNode[]
     description(data: CardDescriptionData): VNode[]

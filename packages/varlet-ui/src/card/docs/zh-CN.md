@@ -180,6 +180,7 @@ const floating = ref(false)
 | 插槽名           | 说明      | 参数 |
 |---------------|---------| ---- |
 | `image`       | 自定义图片   | `-`  |
+| `image`       | 自定义卡片内容   | `-`  |
 | `title`       | 自定义标题   | `slotClass: string` 标题样式  |
 | `subtitle`    | 自定义副标题  | `slotClass: string` 副标题样式 |
 | `description` | 自定义描述   | `slotClass: string` 描述样式 |
