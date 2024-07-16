@@ -141,6 +141,11 @@ interface BaseStyleVars {
   '--card-title-padding'?: string
   '--card-title-margin'?: string
   '--card-title-row-margin'?: string
+  '--card-content-padding'?: string
+  '--card-content-margin'?: string
+  '--card-content-color'?: string
+  '--card-content-font-size'?: string
+  '--card-content-row-margin'?: string
   '--card-subtitle-color'?: string
   '--card-subtitle-font-size'?: string
   '--card-subtitle-padding'?: string
