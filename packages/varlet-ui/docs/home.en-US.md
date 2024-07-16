@@ -73,7 +73,3 @@ See [Varlet Contribution](https://github.com/varletjs/varlet/blob/dev/.github/CO
 <a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; margin-top: 16px">
   <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; border-radius: 4px;">
 </a>
-
-### Sponsor this project
-
-Sponsor this project to support our better creation. It is recommended to use [afdian](https://afdian.net/a/haoziqaq) to subscribe, and your avatar will appear in this project.

@@ -150,11 +150,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### 赞助本项目
 
-赞助本项目，支持我们更好的创作。推荐使用爱发电进行订阅，您的头像将出现在本项目中。
-
-#### 爱发电
-
-<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+赞助本项目，支持我们更好的创作。
 
 #### 微信 / 支付宝
 

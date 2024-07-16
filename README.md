@@ -150,11 +150,7 @@ We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for
 
 ### Sponsor this project
 
-Sponsor this project to support our better creation. It is recommended to use afdian to subscribe, and your avatar will appear in this project.
-
-#### Afdian
-
-<a href="https://afdian.net/a/haoziqaq">https://afdian.net/a/haoziqaq</a>
+Sponsor this project to support our better creation. 
 
 #### Wechat / Alipay
 

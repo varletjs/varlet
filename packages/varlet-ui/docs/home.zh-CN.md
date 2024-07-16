@@ -72,7 +72,3 @@ Varlet 是一个 `Vue3` 组件库，基于 Material Design 2 和 3，支持移�
 <a href="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; margin-top: 16px">
   <img src="https://cdn.jsdelivr.net/gh/varletjs/varlet-static/sponsorkit/sponsors.svg" style="width: 100%; display: block; border-radius: 4px;">
 </a>
-
-### 赞助本项目
-
-赞助本项目，支持我们更好的创作。推荐使用[爱发电](https://afdian.net/a/haoziqaq)进行订阅，您的头像将出现在本项目中。
