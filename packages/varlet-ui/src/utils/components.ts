@@ -90,7 +90,9 @@ export function mount(component: Component): MountInstance {
     instance: app.mount(host),
     unmount() {
       app.unmount()
-      document.body.removeChild(host)
+      if (host.parentNode) {
+        document.body.removeChild(host)
+      }
     },
   }
 }
