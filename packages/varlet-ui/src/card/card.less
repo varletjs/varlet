@@ -12,6 +12,11 @@
   --card-title-padding: 0 12px;
   --card-title-margin: 15px 0 0 0;
   --card-title-row-margin: 12px 0;
+  --card-content-padding: 0 16px;
+  --card-content-margin: 16px 0 0 0;
+  --card-content-color: var(--color-on-surface-variant);
+  --card-content-font-size: 14px;
+  --card-content-row-margin: 16px 0 0 0;
   --card-subtitle-color: rgba(0, 0, 0, 0.6);
   --card-subtitle-font-size: 14px;
   --card-subtitle-padding: 0 12px;
@@ -64,6 +69,19 @@
     flex-direction: row;
     position: relative;
     line-height: var(--card-row-line-height);
+  }
+
+  &__content {
+    padding: var(--card-content-padding);
+    margin: var(--card-content-margin);
+    font-size: var(--card-content-font-size);
+    color: var(--card-content-color);
+    transition: padding 0.25s, margin 0.25s, font-size 0.25s;
+  }
+
+  &--layout-row &__content {
+    max-width: 100%;
+    margin: var(--card-title-row-margin);
   }
 
   &__image {

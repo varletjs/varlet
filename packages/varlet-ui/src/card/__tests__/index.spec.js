@@ -241,6 +241,18 @@ describe('test card component slots', () => {
     wrapper.unmount()
   })
 
+  test('test card default slot', () => {
+    const wrapper = mount(VarCard, {
+      slots: {
+        default: 'default slot',
+      },
+    })
+
+    expect(wrapper.find('.var-card__content').text()).toBe('default slot')
+
+    wrapper.unmount()
+  })
+
   test('test card title slot', () => {
     const wrapper = mount(VarCard, {
       slots: {

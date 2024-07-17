@@ -180,6 +180,7 @@ const floating = ref(false)
 | 插槽名           | 说明      | 参数 |
 |---------------|---------| ---- |
 | `image`       | 自定义图片   | `-`  |
+| `default` ***3.3.7***      | 自定义内容   | `-`  |
 | `title`       | 自定义标题   | `slotClass: string` 标题样式  |
 | `subtitle`    | 自定义副标题  | `slotClass: string` 副标题样式 |
 | `description` | 自定义描述   | `slotClass: string` 描述样式 |
@@ -206,6 +207,11 @@ const floating = ref(false)
 | `--card-title-padding`              | `0 12px`             |
 | `--card-title-margin`               | `15px 0 0 0`         |
 | `--card-title-row-margin`           | `12px 0`             |
+| `--card-content-padding`            | `0 16px`             |
+| `--card-content-margin`             | `16px 0 0 0`         |
+| `--card-content-color`              | `var(--color-on-surface-variant)`|
+| `--card-content-font-size`          | `14px`               |
+| `--card-content-row-margin`         | `16px 0 0 0`         |
 | `--card-subtitle-color`             | `rgba(0, 0, 0, 0.6)` |
 | `--card-subtitle-font-size`         | `14px`               |
 | `--card-subtitle-padding`           | `0 13px`             |
