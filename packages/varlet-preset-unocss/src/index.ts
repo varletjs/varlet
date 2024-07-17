@@ -39,6 +39,37 @@ export interface PresetVarletColors {
   inverseSurface?: string
   outline?: string
   onSurfaceVariant?: string
+  hslBody?: string
+  hslText?: string
+  hslPrimary?: string
+  hslInfo?: string
+  hslWarning?: string
+  hslDanger?: string
+  hslSuccess?: string
+  hslDisabled?: string
+  hslTextDisabled?: string
+  hslOnPrimary?: string
+  hslOnInfo?: string
+  hslOnWarning?: string
+  hslOnDanger?: string
+  hslOnSuccess?: string
+  hslPrimaryContainer?: string
+  hslInfoContainer?: string
+  hslWarningContainer?: string
+  hslDangerContainer?: string
+  hslSuccessContainer?: string
+  hslOnPrimaryContainer?: string
+  hslOnInfoContainer?: string
+  hslOnWarningContainer?: string
+  hslOnDangerContainer?: string
+  hslOnSuccessContainer?: string
+  hslSurfaceContainer?: string
+  hslSurfaceContainerLow?: string
+  hslSurfaceContainerHigh?: string
+  hslSurfaceContainerHighest?: string
+  hslInverseSurface?: string
+  hslOutline?: string
+  hslOnSurfaceVariant?: string
 }
 
 function getBreakpoints(options: PresetVarletOptions = {}) {
@@ -104,6 +135,37 @@ function getColors(options: PresetVarletOptions = {}) {
     inverseSurface: 'var(--color-inverse-surface)',
     outline: 'var(--color-outline)',
     onSurfaceVariant: 'var(--color-on-surface-variant)',
+    hslBody: '0, 0%, 100%',
+    hslText: '0, 0%, 20%',
+    hslPrimary: '220, 99%, 61%',
+    hslInfo: '196, 100%, 47%',
+    hslWarning: '37, 100%, 50%',
+    hslDanger: '4, 90%, 58%',
+    hslSuccess: '164, 100%, 38%',
+    hslDisabled: '0, 0%, 88%',
+    hslTextDisabled: '0, 0%, 67%',
+    hslOnPrimary: '0, 0%, 100%',
+    hslOnInfo: '0, 0%, 100%',
+    hslOnWarning: '0, 0%, 100%',
+    hslOnDanger: '0, 0%, 100%',
+    hslOnSuccess: '0, 0%, 100%',
+    hslPrimaryContainer: '220, 99%, 61%;',
+    hslInfoContainer: '196, 100%, 47%',
+    hslWarningContainer: '37, 100%, 50%',
+    hslDangerContainer: '4, 90%, 58%',
+    hslSuccessContainer: '164, 100%, 38%',
+    hslOnPrimaryContainer: '0, 0%, 100%',
+    hslOnInfoContainer: '0, 0%, 100%',
+    hslOnWarningContainer: '0, 0%, 100%',
+    hslOnDangerContainer: '0, 0%, 100%',
+    hslOnSuccessContainer: '0, 0%, 100%',
+    hslSurfaceContainer: '0, 0%, 100%',
+    hslSurfaceContainerLow: '0, 0%, 100%',
+    hslSurfaceContainerHigh: '0, 0%, 100%',
+    hslSurfaceContainerHighest: '0, 0%, 100%',
+    hslInverseSurface: '0, 0%, 20%',
+    hslOutline: '0, 0%, 0%',
+    hslOnSurfaceVariant: '0, 0%, 53%',
   }
 
   if (colors === true) {

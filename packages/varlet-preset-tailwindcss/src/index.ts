@@ -57,6 +57,37 @@ export interface PresetVarletColors {
   'inverse-surface'?: string
   outline?: string
   'on-surface-variant'?: string
+  'hsl-body'?: string
+  'hsl-text'?: string
+  'hsl-primary'?: string
+  'hsl-info'?: string
+  'hsl-warning'?: string
+  'hsl-danger'?: string
+  'hsl-success'?: string
+  'hsl-disabled'?: string
+  'hsl-text-disabled'?: string
+  'hsl-on-primary'?: string
+  'hsl-on-info'?: string
+  'hsl-on-warning'?: string
+  'hsl-on-danger'?: string
+  'hsl-on-success'?: string
+  'hsl-primary-container'?: string
+  'hsl-info-container'?: string
+  'hsl-warning-container'?: string
+  'hsl-danger-container'?: string
+  'hsl-success-container'?: string
+  'hsl-on-primary-container'?: string
+  'hsl-on-info-container'?: string
+  'hsl-on-warning-container'?: string
+  'hsl-on-danger-container'?: string
+  'hsl-on-success-container'?: string
+  'hsl-surface-container'?: string
+  'hsl-surface-container-low'?: string
+  'hsl-surface-container-high'?: string
+  'hsl-surface-container-highest'?: string
+  'hsl-inverse-surface'?: string
+  'hsl-outline'?: string
+  'hsl-on-surface-variant'?: string
 }
 
 function getScreens(options: PresetVarletOptions = {}) {
@@ -169,6 +200,37 @@ function getColors(options: PresetVarletOptions = {}) {
     'inverse-surface': 'var(--color-inverse-surface)',
     outline: 'var(--color-outline)',
     'on-surface-variant': 'var(--color-on-surface-variant)',
+    'hsl-body': '0, 0%, 100%',
+    'hsl-text': '0, 0%, 20%',
+    'hsl-primary': '220, 99%, 61%',
+    'hsl-info': '196, 100%, 47%',
+    'hsl-warning': '37, 100%, 50%',
+    'hsl-danger': '4, 90%, 58%',
+    'hsl-success': '164, 100%, 38%',
+    'hsl-disabled': '0, 0%, 88%',
+    'hsl-text-disabled': '0, 0%, 67%',
+    'hsl-on-primary': '0, 0%, 100%',
+    'hsl-on-info': '0, 0%, 100%',
+    'hsl-on-warning': '0, 0%, 100%',
+    'hsl-on-danger': '0, 0%, 100%',
+    'hsl-on-success': '0, 0%, 100%',
+    'hsl-primary-container': '220, 99%, 61%;',
+    'hsl-info-container': '196, 100%, 47%',
+    'hsl-warning-container': '37, 100%, 50%',
+    'hsl-danger-container': '4, 90%, 58%',
+    'hsl-success-container': '164, 100%, 38%',
+    'hsl-on-primary-container': '0, 0%, 100%',
+    'hsl-on-info-container': '0, 0%, 100%',
+    'hsl-on-warning-container': '0, 0%, 100%',
+    'hsl-on-danger-container': '0, 0%, 100%',
+    'hsl-on-success-container': '0, 0%, 100%',
+    'hsl-surface-container': '0, 0%, 100%',
+    'hsl-surface-container-low': '0, 0%, 100%',
+    'hsl-surface-container-high': '0, 0%, 100%',
+    'hsl-surface-container-highest': '0, 0%, 100%',
+    'hsl-inverse-surface': '0, 0%, 20%',
+    'hsl-outline': '0, 0%, 0%',
+    'hsl-on-surface-variant': '0, 0%, 53%',
   }
 
   if (colors === true) {
