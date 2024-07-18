@@ -672,36 +672,67 @@ interface BaseStyleVars {
   '--icon-size-sm'?: string
   '--icon-size-md'?: string
   '--icon-size-lg'?: string
+  '--hsl-body'?: string
   '--color-body'?: string
+  '--hsl-text'?: string
   '--color-text'?: string
+  '--hsl-primary'?: string
   '--color-primary'?: string
+  '--hsl-info'?: string
   '--color-info'?: string
+  '--hsl-success'?: string
   '--color-success'?: string
+  '--hsl-warning'?: string
   '--color-warning'?: string
+  '--hsl-danger'?: string
   '--color-danger'?: string
+  '--hsl-disabled'?: string
   '--color-disabled'?: string
+  '--hsl-text-disabled'?: string
   '--color-text-disabled'?: string
+  '--hsl-on-primary'?: string
   '--color-on-primary'?: string
+  '--hsl-on-info'?: string
   '--color-on-info'?: string
+  '--hsl-on-success'?: string
   '--color-on-success'?: string
+  '--hsl-on-warning'?: string
   '--color-on-warning'?: string
+  '--hsl-on-danger'?: string
   '--color-on-danger'?: string
+  '--hsl-primary-container'?: string
   '--color-primary-container'?: string
+  '--hsl-info-container'?: string
   '--color-info-container'?: string
+  '--hsl-success-container'?: string
   '--color-success-container'?: string
+  '--hsl-warning-container'?: string
   '--color-warning-container'?: string
+  '--hsl-danger-container'?: string
   '--color-danger-container'?: string
+  '--hsl-on-primary-container'?: string
   '--color-on-primary-container'?: string
+  '--hsl-on-info-container'?: string
   '--color-on-info-container'?: string
+  '--hsl-on-success-container'?: string
   '--color-on-success-container'?: string
+  '--hsl-on-warning-container'?: string
   '--color-on-warning-container'?: string
+  '--hsl-on-danger-container'?: string
   '--color-on-danger-container'?: string
+  '--hsl-surface-container'?: string
   '--color-surface-container'?: string
+  '--hsl-surface-container-low'?: string
   '--color-surface-container-low'?: string
+  '--hsl-surface-container-high'?: string
   '--color-surface-container-high'?: string
+  '--hsl-surface-container-highest'?: string
   '--color-surface-container-highest'?: string
+  '--hsl-inverse-surface'?: string
   '--color-inverse-surface'?: string
+  '--hsl-outline'?: string
   '--color-outline'?: string
+  '--hsl-on-surface-variant'?: string
   '--color-on-surface-variant'?: string
   '--opacity-disabled'?: string
   '--opacity-hover'?: string
