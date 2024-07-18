@@ -291,7 +291,7 @@ test('test menu-select keyboard Escape', async () => {
   wrapper.unmount()
 })
 
-test('test menu-select modelValue', async () => {
+test('test menu-select options api', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -304,6 +304,11 @@ test('test menu-select modelValue', async () => {
       options: [
         {
           label: 'Option 1',
+          value: 1,
+        },
+        {
+          label: () => h('div', { class: 'container' }, 'Option 2'),
+          value: 2,
         },
       ],
     },
@@ -313,11 +318,12 @@ test('test menu-select modelValue', async () => {
   })
 
   await trigger(root.querySelector('.var-menu-option'), 'click')
-  expect(wrapper.vm.modelValue).toBe('Option 1')
+  expect(root.querySelector('.container').textContent).toBe('Option 2')
+  expect(wrapper.vm.modelValue).toBe(1)
   wrapper.unmount()
 })
 
-test('test menu-select multiple', async () => {
+test('test menu-select multiple options api', async () => {
   const onUpdateModelValue = vi.fn((value) => {
     wrapper.setProps({ modelValue: value })
   })
@@ -330,12 +336,15 @@ test('test menu-select multiple', async () => {
       options: [
         {
           label: 'Option 1',
+          value: 1,
         },
         {
           label: 'Option 2',
+          value: 2,
         },
         {
           label: 'Option 3',
+          value: 3,
         },
       ],
       multiple: true,
@@ -347,7 +356,7 @@ test('test menu-select multiple', async () => {
 
   await delay(0)
   await trigger(root.querySelector('.var-menu-option'), 'click')
-  expect(wrapper.vm.modelValue).toStrictEqual(['Option 1'])
+  expect(wrapper.vm.modelValue).toStrictEqual([1])
   wrapper.unmount()
 })
 
