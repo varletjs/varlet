@@ -226,12 +226,15 @@ const value = ref()
 const selectOptions = computed(() => [
   {
     label: 'Eat',
+    value: 1,
   },
   {
     label: 'Sleep',
+    value: 2,
   },
   {
     label: 'Play game',
+    value: 3,
     disabled: true,
   },
 ])
@@ -253,7 +256,6 @@ You can pass the options as an array of objects to the `options` property. Use t
 import { ref } from 'vue'
 
 const value = ref()
-
 const options = [
    {
     name: 'Eat',

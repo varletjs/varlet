@@ -255,7 +255,6 @@ const options = ref([
 import { ref } from 'vue'
 
 const value = ref()
-
 const options = [
    {
     name: '吃饭',

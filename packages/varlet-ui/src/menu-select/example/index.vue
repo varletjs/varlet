@@ -19,12 +19,15 @@ const options = ref(Array.from({ length: 30 }, (_, index) => ({ label: `Option $
 const selectOptions = computed(() => [
   {
     label: t('eat'),
+    value: 1,
   },
   {
     label: t('sleep'),
+    value: 2,
   },
   {
     label: t('play'),
+    value: 3,
     disabled: true,
   },
 ])
