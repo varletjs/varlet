@@ -1,9 +1,12 @@
 import context from '.'
 import { watch, onBeforeMount, onUnmounted, onDeactivated, onActivated, getCurrentInstance } from 'vue'
+import { createNamespace } from '../utils/components'
+
+const { n } = createNamespace('')
 
 export function resolveLock() {
-  const lockCounts: number = Object.keys(context.locks).length
-  lockCounts <= 0 ? document.body.classList.remove('var--lock') : document.body.classList.add('var--lock')
+  const lockCounts = Object.keys(context.locks).length
+  lockCounts <= 0 ? document.body.classList.remove(n('$--lock')) : document.body.classList.add(n('$--lock'))
 }
 
 export function addLock(uid: number) {
