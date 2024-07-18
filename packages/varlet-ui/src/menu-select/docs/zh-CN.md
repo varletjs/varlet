@@ -306,9 +306,9 @@ const options = [
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |
 | `popover-class` | 弹出层的 class                                                    | _string_             | `-`            |
 | `close-on-click-reference` | 是否在点击菜单触发元素后关闭菜单 | _boolean_ | `false` |
-| `options` ***3.3.5*** | 指定可选项 | _MenuSelectOption[]_ | `-` |
-| `label-key` ***3.3.5*** | 作为 label 唯一标识的键名 | _string_ | `label` |
-| `value-key` ***3.3.5*** | 作为 value 唯一标识的键名 | _string_ | `value` |
+| `options` ***3.3.7*** | 指定可选项 | _MenuSelectOption[]_ | `-` |
+| `label-key` ***3.3.7*** | 作为 label 唯一标识的键名 | _string_ | `label` |
+| `value-key` ***3.3.7*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 
 #### MenuSelectOption
 

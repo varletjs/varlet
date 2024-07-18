@@ -304,9 +304,9 @@ const options = [
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
-| `options` ***3.3.5*** | Specifies options | _MenuSelectOption[]_ | `-` |
-| `label-key` ***3.3.5*** | As the key that uniquely identifies label | _string_ | `label` |
-| `value-key` ***3.3.5*** | As the key that uniquely identifies value | _string_ | `value` |
+| `options` ***3.3.7*** | Specifies options | _MenuSelectOption[]_ | `-` |
+| `label-key` ***3.3.7*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.3.7*** | As the key that uniquely identifies value | _string_ | `value` |
 
 #### MenuSelectOption
 
