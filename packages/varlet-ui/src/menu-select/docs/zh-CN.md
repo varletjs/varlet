@@ -255,7 +255,7 @@ const options = ref([
 import { ref } from 'vue'
 
 const value = ref()
-const options = [
+const options = ref([
    {
     name: '吃饭',
     id: 1,
@@ -269,7 +269,7 @@ const options = [
     id: 3,
     disabled: true,
   },
-]
+])
 </script>
 
 <template>

@@ -222,8 +222,7 @@ You can pass the options as an array to the `options` property.
 import { ref } from 'vue'
 
 const value = ref()
-
-const selectOptions = computed(() => [
+const options = ref([
   {
     label: 'Eat',
     value: 1,
@@ -241,7 +240,7 @@ const selectOptions = computed(() => [
 </script>
 
 <template>
-  <var-menu-select v-model="value" :options="selectOptions">
+  <var-menu-select v-model="value" :options="options">
     <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
   </var-menu-select>
 </template>
@@ -256,7 +255,7 @@ You can pass the options as an array of objects to the `options` property. Use t
 import { ref } from 'vue'
 
 const value = ref()
-const options = [
+const options = ref([
    {
     name: 'Eat',
     id: 1,
@@ -270,7 +269,7 @@ const options = [
     id: 3,
     disabled: true,
   },
-]
+])
 </script>
 
 <template>
