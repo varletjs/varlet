@@ -39,6 +39,37 @@ export interface PresetVarletColors {
   inverseSurface?: string
   outline?: string
   onSurfaceVariant?: string
+  hslBody?: string
+  hslText?: string
+  hslPrimary?: string
+  hslInfo?: string
+  hslWarning?: string
+  hslDanger?: string
+  hslSuccess?: string
+  hslDisabled?: string
+  hslTextDisabled?: string
+  hslOnPrimary?: string
+  hslOnInfo?: string
+  hslOnWarning?: string
+  hslOnDanger?: string
+  hslOnSuccess?: string
+  hslPrimaryContainer?: string
+  hslInfoContainer?: string
+  hslWarningContainer?: string
+  hslDangerContainer?: string
+  hslSuccessContainer?: string
+  hslOnPrimaryContainer?: string
+  hslOnInfoContainer?: string
+  hslOnWarningContainer?: string
+  hslOnDangerContainer?: string
+  hslOnSuccessContainer?: string
+  hslSurfaceContainer?: string
+  hslSurfaceContainerLow?: string
+  hslSurfaceContainerHigh?: string
+  hslSurfaceContainerHighest?: string
+  hslInverseSurface?: string
+  hslOutline?: string
+  hslOnSurfaceVariant?: string
 }
 
 function getBreakpoints(options: PresetVarletOptions = {}) {
@@ -104,6 +135,37 @@ function getColors(options: PresetVarletOptions = {}) {
     inverseSurface: 'var(--color-inverse-surface)',
     outline: 'var(--color-outline)',
     onSurfaceVariant: 'var(--color-on-surface-variant)',
+    hslBody: 'hsla(var(--hsl-body), <alpha-value>)',
+    hslText: 'hsla(var(--hsl-text), <alpha-value>)',
+    hslPrimary: 'hsla(var(--hsl-primary), <alpha-value>)',
+    hslInfo: 'hsla(var(--hsl-info), <alpha-value>)',
+    hslWarning: 'hsla(var(--hsl-warning), <alpha-value>)',
+    hslDanger: 'hsla(var(--hsl-danger), <alpha-value>)',
+    hslSuccess: 'hsla(var(--hsl-success), <alpha-value>)',
+    hslDisabled: 'hsla(var(--hsl-disabled), <alpha-value>)',
+    hslTextDisabled: 'hsla(var(--hsl-text-disabled), <alpha-value>)',
+    hslOnPrimary: 'hsla(var(--hsl-on-primary), <alpha-value>)',
+    hslOnInfo: 'hsla(var(--hsl-on-info), <alpha-value>)',
+    hslOnWarning: 'hsla(var(--hsl-on-warning), <alpha-value>)',
+    hslOnDanger: 'hsla(var(--hsl-on-danger), <alpha-value>)',
+    hslOnSuccess: 'hsla(var(--hsl-on-success), <alpha-value>)',
+    hslPrimaryContainer: 'hsla(var(--hsl-primary-container), <alpha-value>)',
+    hslInfoContainer: 'hsla(var(--hsl-info-container), <alpha-value>)',
+    hslWarningContainer: 'hsla(var(--hsl-warning-container), <alpha-value>)',
+    hslDangerContainer: 'hsla(var(--hsl-danger-container), <alpha-value>)',
+    hslSuccessContainer: 'hsla(var(--hsl-success-container), <alpha-value>)',
+    hslOnPrimaryContainer: 'hsla(var(--hsl-on-primary-container), <alpha-value>)',
+    hslOnInfoContainer: 'hsla(var(--hsl-on-info-container), <alpha-value>)',
+    hslOnWarningContainer: 'hsla(var(--hsl-on-warning-container), <alpha-value>)',
+    hslOnDangerContainer: 'hsla(var(--hsl-on-danger-container), <alpha-value>)',
+    hslOnSuccessContainer: 'hsla(var(--hsl-on-success-container), <alpha-value>)',
+    hslSurfaceContainer: 'hsla(var(--hsl-surface-container), <alpha-value>)',
+    hslSurfaceContainerLow: 'hsla(var(--hsl-surface-container-low), <alpha-value>)',
+    hslSurfaceContainerHigh: 'hsla(var(--hsl-surface-container-high), <alpha-value>)',
+    hslSurfaceContainerHighest: 'hsla(var(--hsl-surface-container-highest), <alpha-value>)',
+    hslInverseSurface: 'hsla(var(--hsl-inverse-surface), <alpha-value>)',
+    hslOutline: 'hsla(var(--hsl-outline), <alpha-value>)',
+    hslOnSurfaceVariant: 'hsla(var(--hsl-on-surface-variant), <alpha-value>)',
   }
 
   if (colors === true) {

@@ -57,6 +57,37 @@ export interface PresetVarletColors {
   'inverse-surface'?: string
   outline?: string
   'on-surface-variant'?: string
+  'hsl-body'?: string
+  'hsl-text'?: string
+  'hsl-primary'?: string
+  'hsl-info'?: string
+  'hsl-warning'?: string
+  'hsl-danger'?: string
+  'hsl-success'?: string
+  'hsl-disabled'?: string
+  'hsl-text-disabled'?: string
+  'hsl-on-primary'?: string
+  'hsl-on-info'?: string
+  'hsl-on-warning'?: string
+  'hsl-on-danger'?: string
+  'hsl-on-success'?: string
+  'hsl-primary-container'?: string
+  'hsl-info-container'?: string
+  'hsl-warning-container'?: string
+  'hsl-danger-container'?: string
+  'hsl-success-container'?: string
+  'hsl-on-primary-container'?: string
+  'hsl-on-info-container'?: string
+  'hsl-on-warning-container'?: string
+  'hsl-on-danger-container'?: string
+  'hsl-on-success-container'?: string
+  'hsl-surface-container'?: string
+  'hsl-surface-container-low'?: string
+  'hsl-surface-container-high'?: string
+  'hsl-surface-container-highest'?: string
+  'hsl-inverse-surface'?: string
+  'hsl-outline'?: string
+  'hsl-on-surface-variant'?: string
 }
 
 function getScreens(options: PresetVarletOptions = {}) {
@@ -169,6 +200,37 @@ function getColors(options: PresetVarletOptions = {}) {
     'inverse-surface': 'var(--color-inverse-surface)',
     outline: 'var(--color-outline)',
     'on-surface-variant': 'var(--color-on-surface-variant)',
+    'hsl-body': 'hsla(var(--hsl-body), <alpha-value>)',
+    'hsl-text': 'hsla(var(--hsl-text), <alpha-value>)',
+    'hsl-primary': 'hsla(var(--hsl-primary), <alpha-value>)',
+    'hsl-info': 'hsla(var(--hsl-info), <alpha-value>)',
+    'hsl-warning': 'hsla(var(--hsl-warning), <alpha-value>)',
+    'hsl-danger': 'hsla(var(--hsl-danger), <alpha-value>)',
+    'hsl-success': 'hsla(var(--hsl-success), <alpha-value>)',
+    'hsl-disabled': 'hsla(var(--hsl-disabled), <alpha-value>)',
+    'hsl-text-disabled': 'hsla(var(--hsl-text-disabled), <alpha-value>)',
+    'hsl-on-primary': 'hsla(var(--hsl-on-primary), <alpha-value>)',
+    'hsl-on-info': 'hsla(var(--hsl-on-info), <alpha-value>)',
+    'hsl-on-warning': 'hsla(var(--hsl-on-warning), <alpha-value>)',
+    'hsl-on-danger': 'hsla(var(--hsl-on-danger), <alpha-value>)',
+    'hsl-on-success': 'hsla(var(--hsl-on-success), <alpha-value>)',
+    'hsl-primary-container': 'hsla(var(--hsl-primary-container), <alpha-value>)',
+    'hsl-info-container': 'hsla(var(--hsl-info-container), <alpha-value>)',
+    'hsl-warning-container': 'hsla(var(--hsl-warning-container), <alpha-value>)',
+    'hsl-danger-container': 'hsla(var(--hsl-danger-container), <alpha-value>)',
+    'hsl-success-container': 'hsla(var(--hsl-success-container), <alpha-value>)',
+    'hsl-on-primary-container': 'hsla(var(--hsl-on-primary-container), <alpha-value>)',
+    'hsl-on-info-container': 'hsla(var(--hsl-on-info-container), <alpha-value>)',
+    'hsl-on-warning-container': 'hsla(var(--hsl-on-warning-container), <alpha-value>)',
+    'hsl-on-danger-container': 'hsla(var(--hsl-on-danger-container), <alpha-value>)',
+    'hsl-on-success-container': 'hsla(var(--hsl-on-success-container), <alpha-value>)',
+    'hsl-surface-container': 'hsla(var(--hsl-surface-container), <alpha-value>)',
+    'hsl-surface-container-low': 'hsla(var(--hsl-surface-container-low), <alpha-value>)',
+    'hsl-surface-container-high': 'hsla(var(--hsl-surface-container-high), <alpha-value>)',
+    'hsl-surface-container-highest': 'hsla(var(--hsl-surface-container-highest), <alpha-value>)',
+    'hsl-inverse-surface': 'hsla(var(--hsl-inverse-surface), <alpha-value>)',
+    'hsl-outline': 'hsla(var(--hsl-outline), <alpha-value>)',
+    'hsl-on-surface-variant': 'hsla(var(--hsl-on-surface-variant), <alpha-value>)',
   }
 
   if (colors === true) {
