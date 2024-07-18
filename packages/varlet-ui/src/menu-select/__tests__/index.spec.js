@@ -290,3 +290,134 @@ test('test menu-select keyboard Escape', async () => {
   mockRestore()
   wrapper.unmount()
 })
+
+test('test menu-select modelValue', async () => {
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: undefined,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      options: [
+        {
+          label: 'Option 1',
+        },
+      ],
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+    },
+  })
+
+  await trigger(root.querySelector('.var-menu-option'), 'click')
+  expect(wrapper.vm.modelValue).toBe('Option 1')
+  wrapper.unmount()
+})
+
+test('test menu-select multiple', async () => {
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: [],
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      options: [
+        {
+          label: 'Option 1',
+        },
+        {
+          label: 'Option 2',
+        },
+        {
+          label: 'Option 3',
+        },
+      ],
+      multiple: true,
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+    },
+  })
+
+  await delay(0)
+  await trigger(root.querySelector('.var-menu-option'), 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual(['Option 1'])
+  wrapper.unmount()
+})
+
+test('test menu-select label-key', async () => {
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: undefined,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      options: [
+        {
+          name: 'Option 1',
+        },
+        {
+          name: 'Option 2',
+        },
+        {
+          name: 'Option 3',
+        },
+      ],
+      labelKey: 'name',
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+    },
+  })
+
+  await delay(0)
+  await trigger(root.querySelector('.var-menu-option'), 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual('Option 1')
+  wrapper.unmount()
+})
+
+test('test menu-select value-key', async () => {
+  const onUpdateModelValue = vi.fn((value) => {
+    wrapper.setProps({ modelValue: value })
+  })
+  const root = document.createElement('div')
+  const wrapper = mount(VarMenuSelect, {
+    props: {
+      modelValue: undefined,
+      'onUpdate:modelValue': onUpdateModelValue,
+      teleport: root,
+      options: [
+        {
+          label: 'Option 1',
+          id: 1,
+        },
+        {
+          label: 'Option 2',
+          id: 2,
+        },
+        {
+          label: 'Option 3',
+          id: 3,
+        },
+      ],
+      valueKey: 'id',
+    },
+    slots: {
+      default: () => h('div', 'trigger'),
+    },
+  })
+
+  await delay(0)
+  await trigger(root.querySelector('.var-menu-option'), 'click')
+  expect(wrapper.vm.modelValue).toStrictEqual(1)
+  wrapper.unmount()
+})

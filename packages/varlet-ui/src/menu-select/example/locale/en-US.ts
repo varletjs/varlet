@@ -16,4 +16,6 @@ export default {
   scrollable: 'Scrollable',
   multiple: 'Multiple',
   closeOnSelect: 'Disable Close On Select',
+  selectOptions: 'Options API',
+  selectOptionsWithCustomizedKey: 'Options API (With Customized Key)',
 }

@@ -1,3 +1,6 @@
+import { PropType } from 'vue'
+import { MenuSelectOption } from '../menu-select/props'
+
 export const props = {
   label: {},
   value: {},
@@ -6,4 +9,6 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  // internal
+  option: Object as PropType<MenuSelectOption>,
 }

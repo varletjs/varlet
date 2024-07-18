@@ -213,6 +213,71 @@ const value = ref()
 </template>
 ```
 
+### Options API
+
+You can pass the options as an array to the `options` property.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const selectOptions = computed(() => [
+  {
+    label: 'Eat',
+  },
+  {
+    label: 'Sleep',
+  },
+  {
+    label: 'Play game',
+    disabled: true,
+  },
+])
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="selectOptions">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
+### Options API With Customized Key
+
+You can pass the options as an array of objects to the `options` property. Use the `label-key` and `value-key` properties to specify the fields for the label and value within the options array.
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const value = ref()
+
+const options = [
+   {
+    name: 'Eat',
+    id: 1,
+  },
+  {
+    name: 'Sleep',
+    id: 2,
+  },
+  {
+    name: 'Play game',
+    id: 3,
+    disabled: true,
+  },
+]
+</script>
+
+<template>
+  <var-menu-select v-model="value" :options="options" label-key="name" value-key="id">
+    <var-button type="primary">{{ value ? value : 'Please Select' }}</var-button>
+  </var-menu-select>
+</template>
+```
+
 ## API
 
 ### Props
@@ -239,6 +304,17 @@ const value = ref()
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |
 | `popover-class` | Class of the popover                                                    | _string_             | `-`            |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
+| `options` ***3.3.7*** | Specifies options | _MenuSelectOption[]_ | `-` |
+| `label-key` ***3.3.7*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.3.7*** | As the key that uniquely identifies value | _string_ | `value` |
+
+#### MenuSelectOption
+
+| Prop | Description | Type | Default |
+| ------- | --- |----------------|-----------|
+| `label`    |   The text of option    | _string \| VNode \| (option: MenuSelectOption, selected: boolean) => VNodeChild_      | `-`   |
+| `value`  |    The value of option    | _any_      | `-`   |
+| `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
 
 #### MenuOption Props
 
@@ -340,4 +416,3 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-option-selected-background` | `var(--color-primary)` |
 | `--menu-option-text-color` | `#555` |
 | `--menu-option-disabled-color` | `var(--color-text-disabled)` |
-

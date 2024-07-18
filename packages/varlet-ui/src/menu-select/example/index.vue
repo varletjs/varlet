@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { watchLang, onThemeChange, AppType } from '@varlet/cli/client'
 import { use, t } from './locale'
 
@@ -13,7 +13,36 @@ const valueMapping = ref()
 const valueScrollable = ref()
 const valueCloseOnSelect = ref()
 const valueMultiple = ref([])
+const valueSelectOptions = ref()
+const valueKeyedSelectOptions = ref()
 const options = ref(Array.from({ length: 30 }, (_, index) => ({ label: `Option ${index + 1}`, value: index })))
+const selectOptions = computed(() => [
+  {
+    label: t('eat'),
+  },
+  {
+    label: t('sleep'),
+  },
+  {
+    label: t('play'),
+    disabled: true,
+  },
+])
+const keyedSelectOptions = computed(() => [
+  {
+    name: t('eat'),
+    id: 1,
+  },
+  {
+    name: t('sleep'),
+    id: 2,
+  },
+  {
+    name: t('play'),
+    id: 3,
+    disabled: true,
+  },
+])
 
 watchLang((lang) => {
   use(lang)
@@ -139,5 +168,15 @@ onThemeChange()
       <var-menu-option :label="t('sleep')" />
       <var-menu-option :label="t('play')" />
     </template>
+  </var-menu-select>
+
+  <app-type>{{ t('selectOptions') }}</app-type>
+  <var-menu-select v-model="valueSelectOptions" :options="selectOptions">
+    <var-button type="primary">{{ valueSelectOptions ? valueSelectOptions : t('please') }}</var-button>
+  </var-menu-select>
+
+  <app-type>{{ t('selectOptionsWithCustomizedKey') }}</app-type>
+  <var-menu-select v-model="valueKeyedSelectOptions" :options="keyedSelectOptions" label-key="name" value-key="id">
+    <var-button type="primary">{{ valueKeyedSelectOptions ? valueKeyedSelectOptions : t('please') }}</var-button>
   </var-menu-select>
 </template>
