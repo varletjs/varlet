@@ -30,6 +30,7 @@ export interface MenuSelectOption {
   label?: string | VNode | MenuSelectOptionLabelRender
   disabled?: boolean
   value?: any
+  ripple?: boolean
 }
 
 export interface MenuSelectProps extends BasicAttributes {

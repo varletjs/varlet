@@ -315,6 +315,7 @@ const options = [
 | `label`    |   The text of option    | _string \| VNode \| (option: MenuSelectOption, selected: boolean) => VNodeChild_      | `-`   |
 | `value`  |    The value of option    | _any_      | `-`   |
 | `disabled`    |    Whether to disable option   | _boolean_      | `-`   |
+| `ripple`  | Whether to enable ripple | _boolean_ | `true` |
 
 #### MenuOption Props
 
