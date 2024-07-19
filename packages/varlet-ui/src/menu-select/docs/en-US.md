@@ -393,7 +393,7 @@ const options = ref([
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
-#### Select Variables
+#### MenuSelect Variables
 
 | Variable | Default |
 | --- | --- |
@@ -402,7 +402,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--menu-select-menu-border-radius` | `2px` |
 | `--menu-select-menu-background-color` | `var(--color-surface-container-high)` |
 
-#### Option Variables
+#### MenuOption Variables
 
 | Variable | Default |
 | --- | --- |

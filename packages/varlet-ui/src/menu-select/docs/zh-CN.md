@@ -393,7 +393,7 @@ const options = ref([
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
-#### Select Variables
+#### MenuSelect Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
@@ -402,7 +402,7 @@ const options = ref([
 | `--menu-select-menu-border-radius` | `2px` |
 | `--menu-select-menu-background-color` | `var(--color-surface-container-high)` |
 
-#### Option Variables
+#### MenuOption Variables
 
 | 变量名 | 默认值 |
 | --- | --- |
