@@ -12,6 +12,7 @@ export interface MenuSelectOption {
   label?: MenuSelectOptionLabel
   value?: any
   disabled?: boolean
+  ripple?: boolean
   [key: PropertyKey]: any
 }
 
