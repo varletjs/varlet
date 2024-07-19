@@ -213,9 +213,11 @@ function getColors(options: PresetVarletOptions = {}) {
 export function presetVarlet(options: PresetVarletOptions = {}) {
   return {
     theme: {
-      colors: getColors(options),
-      screens: getScreens(options),
-      fontSize: getFontSize(options),
+      extend: {
+        colors: getColors(options),
+        screens: getScreens(options),
+        fontSize: getFontSize(options),
+      },
     },
   }
 }
