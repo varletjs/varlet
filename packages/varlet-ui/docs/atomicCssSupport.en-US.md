@@ -76,3 +76,12 @@ export default {
 </template>
 ```
 
+We also support the HSL variables, which makes the transparency of adjusting the color easier.
+
+```html
+<!-- playground-ignore -->
+<template>
+  <div class="bg-hsl-primary/50 text-hsl-text/70">hello</div>
+</template>
+```
+

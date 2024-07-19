@@ -76,3 +76,12 @@ export default {
 </template>
 ```
 
+我们同时也支持了 hsl 变量，这使得调整颜色的透明度变得更加容易。
+
+```html
+<!-- playground-ignore -->
+<template>
+  <div class="bg-hsl-primary/50 text-hsl-text/70">hello</div>
+</template>
+```
+
