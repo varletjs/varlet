@@ -1,7 +1,6 @@
 export interface PresetVarletOptions {
   screens?: boolean | PresetVarletScreens
   fontSize?: boolean | PresetVarletFontSize
-  opacity?: boolean | PresetVarletOpacity
   colors?: boolean | PresetVarletColors
 }
 
@@ -17,12 +16,6 @@ export interface PresetVarletFontSize {
   sm?: string
   md?: string
   lg?: string
-}
-
-export interface PresetVarletOpacity {
-  disabled?: string
-  hover?: string
-  focus?: string
 }
 
 export interface PresetVarletColors {
@@ -138,29 +131,6 @@ function getFontSize(options: PresetVarletOptions = {}) {
   }
 }
 
-function getOpacity(options: PresetVarletOptions = {}) {
-  const { opacity = true } = options
-
-  if (!opacity) {
-    return
-  }
-
-  const defaultOpacity: PresetVarletOpacity = {
-    disabled: 'var(--font-size-disabled)',
-    hover: 'var(--font-size-hover)',
-    focus: 'var(--font-size-focus)',
-  }
-
-  if (opacity === true) {
-    return defaultOpacity
-  }
-
-  return {
-    ...defaultOpacity,
-    ...opacity,
-  }
-}
-
 function getColors(options: PresetVarletOptions = {}) {
   const { colors = true } = options
 
@@ -246,7 +216,6 @@ export function presetVarlet(options: PresetVarletOptions = {}) {
       colors: getColors(options),
       screens: getScreens(options),
       fontSize: getFontSize(options),
-      opacity: getOpacity(options),
     },
   }
 }

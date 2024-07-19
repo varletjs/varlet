@@ -3,7 +3,6 @@ import { type Preset } from 'unocss'
 export interface PresetVarletOptions {
   breakpoints?: boolean | { sm?: string | number; md?: string | number; lg?: string | number; xl?: string | number }
   fontSize?: boolean
-  opacity?: boolean
   colors?: boolean | PresetVarletColors
 }
 
@@ -176,7 +175,7 @@ function getColors(options: PresetVarletOptions = {}) {
 }
 
 export function presetVarlet(options: PresetVarletOptions = {}): Preset {
-  const { fontSize = true, opacity = true } = options
+  const { fontSize = true } = options
 
   return {
     name: '@varlet/preset-unocss',
@@ -196,16 +195,6 @@ export function presetVarlet(options: PresetVarletOptions = {}): Preset {
           return {
             'font-size': `var(--font-size-${s})`,
           }
-        },
-      ],
-      [
-        /^opacity-(.*)$/,
-        ([, s]) => {
-          if (!opacity || !['disabled', 'hover', 'focus'].includes(s)) {
-            return
-          }
-
-          return { opacity: `var(--opacity-${s})` }
         },
       ],
     ],
