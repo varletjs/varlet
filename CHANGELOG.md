@@ -1,3 +1,20 @@
+## [3.3.7](https://github.com/varletjs/varlet/compare/v3.3.6...v3.3.7) (2024-07-19)
+
+
+### Bug Fixes
+
+* fix dialog unmount instance error ([#1711](https://github.com/varletjs/varlet/issues/1711)) ([a19c6e7](https://github.com/varletjs/varlet/commit/a19c6e743fc64ba0d79c4f23a6c87fb7d8870c6e))
+* **preset-tailwindcss:** fix issue where tailwindcss default styles were overridden by varlet tailwindcss preset ([#1716](https://github.com/varletjs/varlet/issues/1716)) ([aaf1cbf](https://github.com/varletjs/varlet/commit/aaf1cbfe4deb08292ef7c30d9821e911fcd2589b))
+
+
+### Features
+
+* **card:** support default slot ([#1709](https://github.com/varletjs/varlet/issues/1709)) ([faed196](https://github.com/varletjs/varlet/commit/faed196b96cad7214822cf433bdd2e923a6a80b1))
+* **menu-select:** supports options, labelKey and valueKey ([#1695](https://github.com/varletjs/varlet/issues/1695)) ([6b4bc49](https://github.com/varletjs/varlet/commit/6b4bc494b229e2bfdb7305de97da530b6cd74e07))
+* support hsl css var ([#1710](https://github.com/varletjs/varlet/issues/1710)) ([f85eea5](https://github.com/varletjs/varlet/commit/f85eea5f2d41a80245bf8110d70a4cece6f50ba3))
+
+
+
 ## [3.3.6](https://github.com/varletjs/varlet/compare/v3.3.5...v3.3.6) (2024-07-10)
 
 
