@@ -1,3 +1,12 @@
+## [3.3.8](https://github.com/varletjs/varlet/compare/v3.3.7...v3.3.8) (2024-07-20)
+
+
+### Bug Fixes
+
+* fix table thead tr background error ([b4bd065](https://github.com/varletjs/varlet/commit/b4bd0658798d5131425a1c635f9805c2ed4abfd4))
+
+
+
 ## [3.3.7](https://github.com/varletjs/varlet/compare/v3.3.6...v3.3.7) (2024-07-19)
 
 
