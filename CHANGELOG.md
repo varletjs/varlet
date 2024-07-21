@@ -1,3 +1,12 @@
+## [3.3.9](https://github.com/varletjs/varlet/compare/v3.3.8...v3.3.9) (2024-07-21)
+
+
+### Bug Fixes
+
+* fix vue api mission in jsx file and close [#1718](https://github.com/varletjs/varlet/issues/1718) ([1c722aa](https://github.com/varletjs/varlet/commit/1c722aaee980f350e165ade564d479e860048a68))
+
+
+
 ## [3.3.8](https://github.com/varletjs/varlet/compare/v3.3.7...v3.3.8) (2024-07-20)
 
 
