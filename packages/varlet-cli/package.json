@@ -20,8 +20,7 @@
     "client.d.ts",
     "template",
     "site",
-    "tsconfig.json",
-    "preset.cjs"
+    "tsconfig.json"
   ],
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
@@ -38,15 +37,15 @@
     "build": "rimraf ./lib && tsc"
   },
   "dependencies": {
-    "@babel/core": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.5",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
     "@varlet/icon-builder": "0.2.14",
     "@varlet/release": "^0.2.5",
     "@varlet/shared": "workspace:*",
     "@varlet/vite-plugins": "workspace:*",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitejs/plugin-vue-jsx": "3.1.0",
-    "@vue/babel-plugin-jsx": "1.2.1",
+    "@vue/babel-plugin-jsx": "1.2.2",
     "@vue/compiler-sfc": "3.4.21",
     "@vue/runtime-core": "3.4.21",
     "chokidar": "^3.5.2",

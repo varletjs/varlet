@@ -6,6 +6,7 @@ import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE, IMPORT_SCSS_RE
 import { resolve, relative, extname, dirname } from 'path'
 import { VarletConfig, getVarletConfig } from '../config/varlet.config.js'
 import type { BabelFileResult } from '@babel/core'
+import jsx from '@vue/babel-plugin-jsx'
 import fse from 'fs-extra'
 import esbuild from 'esbuild'
 
@@ -137,7 +138,7 @@ export async function compileScriptByBabel(script: string, file: string) {
     presets: ['@babel/preset-typescript'],
     plugins: [
       [
-        '@vue/babel-plugin-jsx',
+        jsx,
         {
           enableObjectSlots: false,
         },
@@ -147,6 +148,7 @@ export async function compileScriptByBabel(script: string, file: string) {
 
   return code!
 }
+
 export async function compileScriptByEsbuild(script: string) {
   const varletConfig = await getVarletConfig()
 
