@@ -71,7 +71,7 @@ const divider = ref(false)
 
 ### 手风琴模式
 
-使用 `accordion` 属性开启手风琴模式，此时 `value` 为字符串。
+使用 `accordion` 属性开启手风琴模式，此时 `value` 为字符串或者数字。
 
 ```html
 <script setup>

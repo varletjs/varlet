@@ -73,7 +73,7 @@ const divider = ref(false)
 
 ### Accordion Mode
 
-Use `accordion` prop to open accordion mode, In this case `value` is a String.
+Use the `accordion` property to enable accordion mode. `value` can be a string or a number.
 
 ```html
 <script setup>
@@ -218,7 +218,7 @@ function closeAllSkipDisabled() {
 
 | Prop       | Description                 | Type               | Default        |
 | ---------- | --------------------------- | ------------------ | -------------- |
-| `name`     | Name                        | _string \| number_ | `index`        |
+| `name`     | Unique identifier, defaults to index value       | _string \| number_ | `index`        |
 | `title`    | Title                       | _string \| number_ | `-`            |
 | `icon`     | Icon name                   | _string_           | `chevron-down` |
 | `disabled` | Whether to disable collapse | _boolean_          | `false`        |
