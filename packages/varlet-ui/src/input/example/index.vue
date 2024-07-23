@@ -5,7 +5,7 @@ import { use, t } from './locale'
 
 const standardValue = ref('')
 const standardValue2 = ref('')
-const standardValue3 = ref('')
+const standardValue3 = ref('varlet')
 const standardValue4 = ref('')
 const standardValue5 = ref('')
 const standardValue6 = ref('')
