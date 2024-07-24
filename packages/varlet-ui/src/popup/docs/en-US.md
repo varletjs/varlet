@@ -204,6 +204,7 @@ const event = ref(false)
 | `teleport` | The location of the Popup to mount                                                                            | _TeleportProps['to'] \| false_ | `body` |
 | `safe-area`              | Whether to enable bottom safety zone adaptation	                                                              | _boolean_             | `false`  |
 | `safe-area-top`          | Whether to enable top safety zone adaptation	                                                                 | _boolean_             | `false`  |
+| `z-index`  ***3.3.10***   | 	 The zIndex of element       | _number_             | `-`  |
 
 ### Events
 

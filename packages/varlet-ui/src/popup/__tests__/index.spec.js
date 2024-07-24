@@ -60,6 +60,21 @@ test('test popup onOpen & onClose', async () => {
   wrapper.unmount()
 })
 
+test('test popup zIndex', async () => {
+  const wrapper = mount(Wrapper, {
+    props: {
+      zIndex: 40,
+    },
+  })
+
+  await wrapper.setData({ show: true })
+  expect(wrapper.find('.var-popup').attributes('style')).toContain('z-index: 38')
+  expect(wrapper.find('.var-popup__overlay').attributes('style')).toContain('z-index: 39')
+  expect(wrapper.find('.var-popup__content').attributes('style')).toContain('z-index: 40')
+
+  wrapper.unmount()
+})
+
 test('test popup close on clickOverlay', async () => {
   const onClose = vi.fn()
   const onClickOverlay = vi.fn()

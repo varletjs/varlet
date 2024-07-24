@@ -206,6 +206,7 @@ const event = ref(false)
 | `teleport`               | 弹出层挂载的位置                                         | _TeleportProps['to'] \| false_ | `body`      |
 | `safe-area`              | 是否开启底部安全区适配	                                     | _boolean_             | `false`  |
 | `safe-area-top`          | 是否开启顶部安全区适配	                                     | _boolean_             | `false`  |
+| `z-index`  ***3.3.10***         | 	 元素 z-index            | _number_             | `-`  |
 
 ### 事件
 

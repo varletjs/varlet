@@ -32,6 +32,7 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  zIndex: Number,
   safeArea: Boolean,
   safeAreaTop: Boolean,
   teleport: {
