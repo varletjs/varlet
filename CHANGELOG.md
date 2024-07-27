@@ -1,3 +1,12 @@
+## [3.3.10](https://github.com/varletjs/varlet/compare/v3.3.9...v3.3.10) (2024-07-27)
+
+
+### Features
+
+* **popup:** support zIndex ([#1721](https://github.com/varletjs/varlet/issues/1721)) ([82e4b71](https://github.com/varletjs/varlet/commit/82e4b7142847f41a9132f2387816961842e81ed5))
+
+
+
 ## [3.3.9](https://github.com/varletjs/varlet/compare/v3.3.8...v3.3.9) (2024-07-21)
 
 
