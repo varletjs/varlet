@@ -140,6 +140,7 @@ export default defineComponent({
   setup(props) {
     const modelValue = useVModel(props, 'modelValue')
     const scrollColumns = ref<ScrollColumn[]>([])
+    const visibleColumnsNum = ref<number>(Infinity)
     const optionHeight = computed(() => toPxNum(props.optionHeight))
     const optionCount = computed(() => toPxNum(props.optionCount))
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
@@ -148,6 +149,14 @@ export default defineComponent({
     const { t: pt } = injectLocaleProvider()
 
     let prevIndexes: number[] = []
+
+    watch(
+      () => props.columnsNum,
+      (newVal) => {
+        visibleColumnsNum.value = +(newVal || Infinity)
+      },
+      { immediate: true }
+    )
 
     initScrollColumns()
 
@@ -174,7 +183,8 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      return columns.map((column, idx) => {
+      const visibleColumns = columns.slice(0, visibleColumnsNum.value)
+      return visibleColumns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
@@ -196,16 +206,21 @@ export default defineComponent({
       })
     }
 
-    function normalizeCascadeMode(column: PickerColumnOption[]) {
+    function normalizeCascadeMode(columns: PickerColumnOption[]) {
       const scrollColumns: ScrollColumn[] = []
 
-      createChildren(scrollColumns, column)
+      createChildren(scrollColumns, columns)
 
       return scrollColumns
     }
 
-    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[], syncModelValue = true) {
-      if (children.length) {
+    function createChildren(
+      scrollColumns: ScrollColumn[],
+      children: PickerColumnOption[],
+      syncModelValue = true,
+      depth = 1
+    ) {
+      if (children.length && depth <= visibleColumnsNum.value) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
@@ -232,7 +247,8 @@ export default defineComponent({
         createChildren(
           scrollColumns,
           scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
-          syncModelValue
+          syncModelValue,
+          depth + 1
         )
       }
     }
@@ -242,7 +258,8 @@ export default defineComponent({
       createChildren(
         scrollColumns.value,
         scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
-        false
+        false,
+        scrollColumns.value.length + 1
       )
     }
 

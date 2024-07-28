@@ -447,6 +447,7 @@ function handleChange(values, indexes) {
 | `cascade` | Whether to enable cascade mode | _boolean_ | `true` |
 | `option-height` | The height of the option | _string \| number_ | `44` |
 | `option-count` | Number of visible options | _string \| number_ | `6` |
+| `columns-num`  | Number of visible columns | _string \| number_ | `Infinity` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
 | `cancel-button-text` | Cancel button text | _string_ | `Cancel` |
 | `confirm-button-text-color` | Confirm button text color | _string_ | `-` |
@@ -466,6 +467,7 @@ function handleChange(values, indexes) {
 | `cascade`                | Whether to enable cascade mode | _boolean_ | `true` |
 | `optionHeight`           | The height of the option | _string \| number_ | `44` |
 | `optionCount`            | Number of visible options | _string \| number_ | `6` |
+| `columnsNum`             | Number of visible columns | _string \| number_ | `Infinity` |
 | `confirmButtonText`      | Confirm button text | _string_ | `Confirm` |
 | `cancelButtonText`       | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm button text color | _string_ | `-` |

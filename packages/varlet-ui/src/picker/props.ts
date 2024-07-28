@@ -1,6 +1,7 @@
 import { type PropType } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { popupProps } from '../popup'
+import { warn } from '../utils/logger'
 
 export type PickerColumnOption = {
   text?: string | number
@@ -46,6 +47,16 @@ export const props = {
   optionCount: {
     type: [Number, String],
     default: 6,
+  },
+  columnsNum: {
+    type: [String, Number],
+    validator(value: string | number) {
+      if (+value <= 0) {
+        warn('Picker', '"columnsNum" should be > 0')
+        return false
+      }
+      return true
+    },
   },
   confirmButtonText: String,
   cancelButtonText: String,

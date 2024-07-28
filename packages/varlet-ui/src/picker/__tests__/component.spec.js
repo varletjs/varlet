@@ -234,6 +234,143 @@ test('test custom key', async () => {
   wrapper.unmount()
 })
 
+test('test multiple column picker columnsNum', async () => {
+  const onConfirm = vi.fn()
+  const wrapper = mount(VarPicker, {
+    props: {
+      columns: [
+        [
+          { text: 'A', value: '1-1' },
+          { text: 'B', value: '1-2' },
+          { text: 'C', value: '1-3' },
+        ],
+        [
+          { text: 'A', value: '2-1' },
+          { text: 'B', value: '2-2' },
+          { text: 'C', value: '2-3' },
+        ],
+        [
+          { text: 'A', value: '3-1' },
+          { text: 'B', value: '3-2' },
+          { text: 'C', value: '3-3' },
+        ],
+      ],
+      columnsNum: 2,
+      onConfirm,
+    },
+  })
+  const columns = wrapper.findAll('.var-picker__column')
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(columns.length).toBe(2)
+
+  await triggerDrag(columns[1].element, 0, -44)
+  await wrapper.find('.var-picker__confirm-button').trigger('click')
+  expect(onConfirm).lastCalledWith(
+    ['1-1', '2-2'],
+    [0, 1],
+    [
+      {
+        text: 'A',
+        value: '1-1',
+      },
+      {
+        text: 'B',
+        value: '2-2',
+      },
+    ]
+  )
+  wrapper.unmount()
+})
+
+test('test cascade column picker columnsNum', async () => {
+  const onConfirm = vi.fn()
+  const wrapper = mount(VarPicker, {
+    props: {
+      columns: [
+        {
+          text: '四川省',
+          children: [
+            {
+              text: '成都市',
+              children: [
+                {
+                  text: '温江区',
+                },
+              ],
+            },
+            {
+              text: '攀枝花市',
+              children: [
+                {
+                  text: '东区',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          text: '江苏省',
+          children: [
+            {
+              text: '无锡市',
+              children: [
+                {
+                  text: '新吴区',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      cascade: true,
+      columnsNum: 2,
+      onConfirm,
+    },
+  })
+  const columns = wrapper.findAll('.var-picker__column')
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(columns.length).toBe(2)
+
+  await triggerDrag(columns[1].element, 0, -44)
+  await wrapper.find('.var-picker__confirm-button').trigger('click')
+  expect(onConfirm).lastCalledWith(
+    ['四川省', '攀枝花市'],
+    [0, 1],
+    [
+      {
+        text: '四川省',
+        children: [
+          {
+            text: '成都市',
+            children: [
+              {
+                text: '温江区',
+              },
+            ],
+          },
+          {
+            text: '攀枝花市',
+            children: [
+              {
+                text: '东区',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        text: '攀枝花市',
+        children: [
+          {
+            text: '东区',
+          },
+        ],
+      },
+    ]
+  )
+  wrapper.unmount()
+})
+
 test('test column option className', async () => {
   const wrapper = mount(VarPicker, {
     props: {
