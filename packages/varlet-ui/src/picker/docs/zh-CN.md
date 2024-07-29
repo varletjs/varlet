@@ -202,6 +202,32 @@ async function picker() {
 </template>
 ```
 
+### 配置显示列
+
+可以通过`columns-num`属性配置显示的列数，如果设置为`0`将显示所有列。
+
+```html
+<script setup>
+import { Picker, Snackbar } from '@varlet/ui'
+import columns from '@varlet/ui/json/area.json'
+
+async function picker() {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    columnsNum: 2,
+    onChange(values, indexes) {
+      Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+    },
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">配置显示列</var-button>
+</template>
+```
+
 ## 组件调用
 
 ### 单列选择
@@ -379,6 +405,44 @@ function handleChange(values, indexes) {
 
 <template>
   <var-picker :columns="columns" @change="handleChange" />
+</template>
+```
+
+### 配置显示列
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const columns = ref([
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+])
+
+function handleChange(values, indexes) {
+  Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+}
+</script>
+
+<template>
+  <var-picker :columns="columns" columns-num="2" @change="handleChange" />
 </template>
 ```
 

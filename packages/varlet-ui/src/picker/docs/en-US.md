@@ -202,6 +202,32 @@ async function picker() {
 </template>
 ```
 
+### Columns Number
+
+`columns-num` property is used to config number of columns to be displayed. Specifically, Set `columns-num` with `0`, total columns will be displayed.
+
+```html
+<script setup>
+import { Picker, Snackbar } from '@varlet/ui'
+import columns from '@varlet/ui/json/area.json'
+
+async function picker() {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    columnsNum: 2,
+    onChange(values, indexes) {
+      Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+    },
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Columns Number</var-button>
+</template>
+```
+
 ## Component Call
 
 ### Single Column Picker
@@ -379,6 +405,44 @@ function handleChange(values, indexes) {
 
 <template>
   <var-picker :columns="columns" @change="handleChange" />
+</template>
+```
+
+### Columns Number
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const columns = ref([
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+])
+
+function handleChange(values, indexes) {
+  Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+}
+</script>
+
+<template>
+  <var-picker :columns="columns" columns-num="2" @change="handleChange" />
 </template>
 ```
 
