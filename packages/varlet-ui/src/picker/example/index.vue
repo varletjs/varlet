@@ -150,6 +150,9 @@ function handleChange(values, indexes) {
   <app-type>{{ t('areaPicker') }}</app-type>
   <var-picker :columns="columns4" cascade @change="handleChange" />
 
+  <app-type>{{ t('columnsNumber') }}</app-type>
+  <var-picker :columns="columns4" columns-num="2" cascade @change="handleChange" />
+
   <app-type>{{ t('valueMapping') }}</app-type>
   <var-picker :columns="columns5" @change="handleChange" />
 

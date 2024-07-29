@@ -447,7 +447,7 @@ function handleChange(values, indexes) {
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
 | `option-count` | 可见的选项个数 | _string \| number_ | `6` |
-| `columns-num` | 显示列数 | _string \| number_ | `Infinity` |
+| `columns-num`  ***3.3.11*** | 显示列数 | _string \| number_ | `-` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
 | `cancel-button-text` | 取消按钮文字 | _string_ | `取消` |
 | `confirm-button-text-color` | 确认按钮文字颜色 | _string_ | `-` |
@@ -467,7 +467,7 @@ function handleChange(values, indexes) {
 | `cascade`                | 是否开启级联模式 | _boolean_ | `true` |
 | `optionHeight`           | 选项的高度 | _string \| number_ | `44` |
 | `optionCount`            | 可见的选项个数 | _string \| number_ | `6` |
-| `columnsNum`             | 显示列数 | _string \| number_ | `Infinity` |
+| `columnsNum`  ***3.3.11***   | 显示列数 | _string \| number_ | `-` |
 | `confirmButtonText`      | 确认按钮文字 | _string_ | `确认` |
 | `cancelButtonText`       | 取消按钮文字 | _string_ | `取消` |
 | `confirmButtonTextColor` | 确认按钮文字颜色 | _string_ | `-` |

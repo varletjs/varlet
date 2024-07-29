@@ -101,7 +101,7 @@ import VarPopup from '../popup'
 import { defineComponent, watch, ref, computed, Transition, type ComponentPublicInstance } from 'vue'
 import { props, type PickerColumnOption } from './props'
 import { useTouch, useVModel } from '@varlet/use'
-import { clamp, clampArrayRange, call } from '@varlet/shared'
+import { clamp, clampArrayRange, call, toNumber } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { t } from '../locale'
 import { createNamespace } from '../utils/components'
@@ -140,7 +140,7 @@ export default defineComponent({
   setup(props) {
     const modelValue = useVModel(props, 'modelValue')
     const scrollColumns = ref<ScrollColumn[]>([])
-    const visibleColumnsNum = ref<number>(Infinity)
+    const visibleColumnsNum = computed(() => toNumber(props.columnsNum))
     const optionHeight = computed(() => toPxNum(props.optionHeight))
     const optionCount = computed(() => toPxNum(props.optionCount))
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
@@ -149,14 +149,6 @@ export default defineComponent({
     const { t: pt } = injectLocaleProvider()
 
     let prevIndexes: number[] = []
-
-    watch(
-      () => props.columnsNum,
-      (newVal) => {
-        visibleColumnsNum.value = +(newVal || Infinity)
-      },
-      { immediate: true }
-    )
 
     initScrollColumns()
 
@@ -183,7 +175,7 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      const visibleColumns = columns.slice(0, visibleColumnsNum.value)
+      const visibleColumns = visibleColumnsNum.value ? columns.slice(0, visibleColumnsNum.value) : columns
       return visibleColumns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -220,7 +212,7 @@ export default defineComponent({
       syncModelValue = true,
       depth = 1
     ) {
-      if (children.length && depth <= visibleColumnsNum.value) {
+      if (children.length && (!visibleColumnsNum.value || depth <= visibleColumnsNum.value)) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
