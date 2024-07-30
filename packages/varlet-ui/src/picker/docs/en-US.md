@@ -204,7 +204,7 @@ async function picker() {
 
 ### Columns Number
 
-`columns-num` property is used to config number of columns to be displayed. Specifically, Set `columns-num` with `0`, total columns will be displayed.
+`columns-num` property is used to config number of columns to be displayed. Specifically, set `columns-num` with `0`, total columns will be displayed.
 
 ```html
 <script setup>
