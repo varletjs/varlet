@@ -140,7 +140,7 @@ export default defineComponent({
   setup(props) {
     const modelValue = useVModel(props, 'modelValue')
     const scrollColumns = ref<ScrollColumn[]>([])
-    const visibleColumnsNum = computed(() => toNumber(props.columnsNum))
+    const visibleColumnsCount = computed(() => toNumber(props.columnsCount))
     const optionHeight = computed(() => toPxNum(props.optionHeight))
     const optionCount = computed(() => toPxNum(props.optionCount))
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
@@ -175,7 +175,7 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      const visibleColumns = visibleColumnsNum.value ? columns.slice(0, visibleColumnsNum.value) : columns
+      const visibleColumns = visibleColumnsCount.value ? columns.slice(0, visibleColumnsCount.value) : columns
       return visibleColumns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -212,7 +212,7 @@ export default defineComponent({
       syncModelValue = true,
       depth = 1
     ) {
-      if (children.length && (!visibleColumnsNum.value || depth <= visibleColumnsNum.value)) {
+      if (children.length && (!visibleColumnsCount.value || depth <= visibleColumnsCount.value)) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,

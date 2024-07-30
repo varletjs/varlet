@@ -17,7 +17,7 @@ interface PickerOptions {
   cascade?: boolean
   optionHeight?: number | string
   optionCount?: number | string
-  columnsNum?: number | string
+  columnsCount?: number | string
   confirmButtonText?: string
   cancelButtonText?: string
   confirmButtonTextColor?: string

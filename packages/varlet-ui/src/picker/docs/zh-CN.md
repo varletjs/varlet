@@ -204,7 +204,7 @@ async function picker() {
 
 ### 配置显示列
 
-可以通过`columns-num`属性配置显示的列数，如果设置为`0`将显示所有列。
+可以通过`columns-count`属性配置显示的列数，如果不设置或设置为`0`将显示所有列。
 
 ```html
 <script setup>
@@ -215,7 +215,7 @@ async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
-    columnsNum: 2,
+    columnsCount: 2,
     onChange(values, indexes) {
       Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
     },
@@ -442,7 +442,7 @@ function handleChange(values, indexes) {
 </script>
 
 <template>
-  <var-picker :columns="columns" columns-num="2" @change="handleChange" />
+  <var-picker :columns="columns" columns-count="2" @change="handleChange" />
 </template>
 ```
 
@@ -511,7 +511,7 @@ function handleChange(values, indexes) {
 | `cascade` | 是否开启级联模式 | _boolean_ | `true` |
 | `option-height` | 选项的高度(px rem) | _string \| number_ | `44` |
 | `option-count` | 可见的选项个数 | _string \| number_ | `6` |
-| `columns-num`  ***3.3.11*** | 显示列数 | _string \| number_ | `-` |
+| `columns-count`  ***3.3.11*** | 显示列数(默认显示全部列) | _string \| number_ | `-` |
 | `confirm-button-text` | 确认按钮文字 | _string_ | `确认` |
 | `cancel-button-text` | 取消按钮文字 | _string_ | `取消` |
 | `confirm-button-text-color` | 确认按钮文字颜色 | _string_ | `-` |
@@ -531,7 +531,7 @@ function handleChange(values, indexes) {
 | `cascade`                | 是否开启级联模式 | _boolean_ | `true` |
 | `optionHeight`           | 选项的高度 | _string \| number_ | `44` |
 | `optionCount`            | 可见的选项个数 | _string \| number_ | `6` |
-| `columnsNum`  ***3.3.11***   | 显示列数 | _string \| number_ | `-` |
+| `columnsCount`  ***3.3.11***   | 显示列数(默认显示全部列) | _string \| number_ | `-` |
 | `confirmButtonText`      | 确认按钮文字 | _string_ | `确认` |
 | `cancelButtonText`       | 取消按钮文字 | _string_ | `取消` |
 | `confirmButtonTextColor` | 确认按钮文字颜色 | _string_ | `-` |

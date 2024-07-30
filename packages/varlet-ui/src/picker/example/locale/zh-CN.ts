@@ -5,7 +5,7 @@ export default {
   multiplePicker: '多列选择',
   cascadePicker: '级联选择',
   areaPicker: '地区选择',
-  columnsNumber: '配置显示列',
+  columnsCount: '配置显示列',
   valueMapping: '值映射',
   twoWayBinding: '双向绑定',
   reset: '点击重置',

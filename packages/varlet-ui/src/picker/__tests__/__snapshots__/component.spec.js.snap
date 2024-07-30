@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`test cascade column picker columnsNum 1`] = `
+exports[`test cascade column picker columnsCount 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">
@@ -194,7 +194,7 @@ exports[`test custom key 2`] = `
 </transition-stub>"
 `;
 
-exports[`test multiple column picker columnsNum 1`] = `
+exports[`test multiple column picker columnsCount 1`] = `
 "<transition-stub appear="false" persisted="false" css="true" var-picker-cover="">
   <div class="var-picker">
     <div class="var-picker__toolbar"><button class="var-button var--box var-button--normal var--inline-flex var-button--text var-button--text-default var-picker__cancel-button" type="button" var-picker-cover="">

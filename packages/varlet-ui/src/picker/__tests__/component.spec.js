@@ -234,7 +234,7 @@ test('test custom key', async () => {
   wrapper.unmount()
 })
 
-test('test multiple column picker columnsNum', async () => {
+test('test multiple column picker columnsCount', async () => {
   const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
@@ -255,7 +255,7 @@ test('test multiple column picker columnsNum', async () => {
           { text: 'C', value: '3-3' },
         ],
       ],
-      columnsNum: 2,
+      columnsCount: 2,
       onConfirm,
     },
   })
@@ -282,7 +282,7 @@ test('test multiple column picker columnsNum', async () => {
   wrapper.unmount()
 })
 
-test('test cascade column picker columnsNum', async () => {
+test('test cascade column picker columnsCount', async () => {
   const onConfirm = vi.fn()
   const wrapper = mount(VarPicker, {
     props: {
@@ -323,7 +323,7 @@ test('test cascade column picker columnsNum', async () => {
         },
       ],
       cascade: true,
-      columnsNum: 2,
+      columnsCount: 2,
       onConfirm,
     },
   })

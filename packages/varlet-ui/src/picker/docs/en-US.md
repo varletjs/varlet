@@ -202,9 +202,9 @@ async function picker() {
 </template>
 ```
 
-### Columns Number
+### Columns Count
 
-`columns-num` property is used to config number of columns to be displayed. Specifically, set `columns-num` with `0`, total columns will be displayed.
+`columns-count` property is used to config number of columns to be displayed. Specifically, not set or set `columns-count` with `0`, total columns will be displayed.
 
 ```html
 <script setup>
@@ -215,7 +215,7 @@ async function picker() {
   const { state, texts, indexes } = await Picker({
     cascade: true,
     columns,
-    columnsNum: 2,
+    columnsCount: 2,
     onChange(values, indexes) {
       Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
     },
@@ -224,7 +224,7 @@ async function picker() {
 </script>
 
 <template>
-  <var-button type="primary" block @click="picker">Columns Number</var-button>
+  <var-button type="primary" block @click="picker">Columns Count</var-button>
 </template>
 ```
 
@@ -408,7 +408,7 @@ function handleChange(values, indexes) {
 </template>
 ```
 
-### Columns Number
+### Columns Count
 
 ```html
 <script setup>
@@ -442,7 +442,7 @@ function handleChange(values, indexes) {
 </script>
 
 <template>
-  <var-picker :columns="columns" columns-num="2" @change="handleChange" />
+  <var-picker :columns="columns" columns-count="2" @change="handleChange" />
 </template>
 ```
 
@@ -511,7 +511,7 @@ function handleChange(values, indexes) {
 | `cascade` | Whether to enable cascade mode | _boolean_ | `true` |
 | `option-height` | The height of the option | _string \| number_ | `44` |
 | `option-count` | Number of visible options | _string \| number_ | `6` |
-| `columns-num`  ***3.3.11***  | Number of visible columns | _string \| number_ | `-` |
+| `columns-count`  ***3.3.11***  | Number of visible columns(defaults to display total columns) | _string \| number_ | `-` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
 | `cancel-button-text` | Cancel button text | _string_ | `Cancel` |
 | `confirm-button-text-color` | Confirm button text color | _string_ | `-` |
@@ -531,7 +531,7 @@ function handleChange(values, indexes) {
 | `cascade`                | Whether to enable cascade mode | _boolean_ | `true` |
 | `optionHeight`           | The height of the option | _string \| number_ | `44` |
 | `optionCount`            | Number of visible options | _string \| number_ | `6` |
-| `columnsNum`  ***3.3.11***  | Number of visible columns | _string \| number_ | `-` |
+| `columnsCount`  ***3.3.11***  | Number of visible columns(defaults to display total columns) | _string \| number_ | `-` |
 | `confirmButtonText`      | Confirm button text | _string_ | `Confirm` |
 | `cancelButtonText`       | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm button text color | _string_ | `-` |
