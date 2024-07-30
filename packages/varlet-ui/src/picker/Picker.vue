@@ -198,10 +198,10 @@ export default defineComponent({
       })
     }
 
-    function normalizeCascadeMode(columns: PickerColumnOption[]) {
+    function normalizeCascadeMode(column: PickerColumnOption[]) {
       const scrollColumns: ScrollColumn[] = []
 
-      createChildren(scrollColumns, columns)
+      createChildren(scrollColumns, column)
 
       return scrollColumns
     }
