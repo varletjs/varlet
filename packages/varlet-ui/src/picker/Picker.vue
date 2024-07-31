@@ -175,7 +175,7 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      const visibleColumns = visibleColumnsCount.value ? columns.slice(0, visibleColumnsCount.value) : columns
+      const visibleColumns = props.columnsCount != null ? columns.slice(0, visibleColumnsCount.value) : columns
       return visibleColumns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
@@ -212,7 +212,7 @@ export default defineComponent({
       syncModelValue = true,
       depth = 1
     ) {
-      if (children.length && (!visibleColumnsCount.value || depth <= visibleColumnsCount.value)) {
+      if (children.length && (props.columnsCount == null || depth <= visibleColumnsCount.value)) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,

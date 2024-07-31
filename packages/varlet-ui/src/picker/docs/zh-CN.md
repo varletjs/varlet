@@ -204,7 +204,7 @@ async function picker() {
 
 ### 配置显示列
 
-可以通过`columns-count`属性配置显示的列数，如果不设置或设置为`0`将显示所有列。
+可以通过`columns-count`属性配置显示的列数，默认将显示所有列。
 
 ```html
 <script setup>
