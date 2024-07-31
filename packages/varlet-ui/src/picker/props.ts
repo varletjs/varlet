@@ -47,6 +47,7 @@ export const props = {
     type: [Number, String],
     default: 6,
   },
+  columnsCount: [String, Number],
   confirmButtonText: String,
   cancelButtonText: String,
   confirmButtonTextColor: String,

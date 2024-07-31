@@ -101,7 +101,7 @@ import VarPopup from '../popup'
 import { defineComponent, watch, ref, computed, Transition, type ComponentPublicInstance } from 'vue'
 import { props, type PickerColumnOption } from './props'
 import { useTouch, useVModel } from '@varlet/use'
-import { clamp, clampArrayRange, call } from '@varlet/shared'
+import { clamp, clampArrayRange, call, toNumber } from '@varlet/shared'
 import { toPxNum, getTranslateY } from '../utils/elements'
 import { t } from '../locale'
 import { createNamespace } from '../utils/components'
@@ -140,6 +140,7 @@ export default defineComponent({
   setup(props) {
     const modelValue = useVModel(props, 'modelValue')
     const scrollColumns = ref<ScrollColumn[]>([])
+    const visibleColumnsCount = computed(() => toNumber(props.columnsCount))
     const optionHeight = computed(() => toPxNum(props.optionHeight))
     const optionCount = computed(() => toPxNum(props.optionCount))
     const center = computed(() => (optionCount.value * optionHeight.value) / 2 - optionHeight.value / 2)
@@ -174,7 +175,8 @@ export default defineComponent({
     }
 
     function normalizeNormalMode(columns: PickerColumnOption[][]) {
-      return columns.map((column, idx) => {
+      const visibleColumns = props.columnsCount != null ? columns.slice(0, visibleColumnsCount.value) : columns
+      return visibleColumns.map((column, idx) => {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
@@ -204,8 +206,13 @@ export default defineComponent({
       return scrollColumns
     }
 
-    function createChildren(scrollColumns: ScrollColumn[], children: PickerColumnOption[], syncModelValue = true) {
-      if (children.length) {
+    function createChildren(
+      scrollColumns: ScrollColumn[],
+      children: PickerColumnOption[],
+      syncModelValue = true,
+      depth = 1
+    ) {
+      if (children.length && (props.columnsCount == null || depth <= visibleColumnsCount.value)) {
         const scrollColumn: ScrollColumn = {
           id: sid++,
           prevY: 0,
@@ -232,7 +239,8 @@ export default defineComponent({
         createChildren(
           scrollColumns,
           scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
-          syncModelValue
+          syncModelValue,
+          depth + 1
         )
       }
     }
@@ -242,7 +250,8 @@ export default defineComponent({
       createChildren(
         scrollColumns.value,
         scrollColumn.column[scrollColumn.index][getOptionKey('children')] ?? [],
-        false
+        false,
+        scrollColumns.value.length + 1
       )
     }
 

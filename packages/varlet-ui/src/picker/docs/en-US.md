@@ -202,6 +202,32 @@ async function picker() {
 </template>
 ```
 
+### Columns Count
+
+`columns-count` property is used to config number of columns to be displayed. If not set, total columns will be displayed.
+
+```html
+<script setup>
+import { Picker, Snackbar } from '@varlet/ui'
+import columns from '@varlet/ui/json/area.json'
+
+async function picker() {
+  const { state, texts, indexes } = await Picker({
+    cascade: true,
+    columns,
+    columnsCount: 2,
+    onChange(values, indexes) {
+      Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+    },
+  })
+}
+</script>
+
+<template>
+  <var-button type="primary" block @click="picker">Columns Count</var-button>
+</template>
+```
+
 ## Component Call
 
 ### Single Column Picker
@@ -382,6 +408,44 @@ function handleChange(values, indexes) {
 </template>
 ```
 
+### Columns Count
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { Snackbar } from '@varlet/ui'
+
+const columns = ref([
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+  [
+    { text: 'A', value: 1 },
+    { text: 'B', value: 2 },
+    { text: 'C', value: 3 },
+    { text: 'D', value: 4 },
+  ],
+])
+
+function handleChange(values, indexes) {
+  Snackbar(`values: ${values.toString()}, indexes: ${indexes.toString()}`)
+}
+</script>
+
+<template>
+  <var-picker :columns="columns" columns-count="2" @change="handleChange" />
+</template>
+```
+
 ### Two-way binding
 
 ```html
@@ -447,6 +511,7 @@ function handleChange(values, indexes) {
 | `cascade` | Whether to enable cascade mode | _boolean_ | `true` |
 | `option-height` | The height of the option | _string \| number_ | `44` |
 | `option-count` | Number of visible options | _string \| number_ | `6` |
+| `columns-count`  ***3.3.11***  | Number of visible columns(defaults to display total columns) | _string \| number_ | `-` |
 | `confirm-button-text` | Confirm button text | _string_ | `Confirm` |
 | `cancel-button-text` | Cancel button text | _string_ | `Cancel` |
 | `confirm-button-text-color` | Confirm button text color | _string_ | `-` |
@@ -466,6 +531,7 @@ function handleChange(values, indexes) {
 | `cascade`                | Whether to enable cascade mode | _boolean_ | `true` |
 | `optionHeight`           | The height of the option | _string \| number_ | `44` |
 | `optionCount`            | Number of visible options | _string \| number_ | `6` |
+| `columnsCount`  ***3.3.11***  | Number of visible columns(defaults to display total columns) | _string \| number_ | `-` |
 | `confirmButtonText`      | Confirm button text | _string_ | `Confirm` |
 | `cancelButtonText`       | Cancel button text | _string_ | `Cancel` |
 | `confirmButtonTextColor` | Confirm button text color | _string_ | `-` |
