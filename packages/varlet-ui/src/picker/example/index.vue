@@ -144,8 +144,8 @@ function handleChange(values, indexes) {
     <var-button type="primary" block @click="picker2">{{ t('multiplePicker') }}</var-button>
     <var-button type="primary" block @click="picker3">{{ t('cascadePicker') }}</var-button>
     <var-button type="primary" block @click="picker4">{{ t('areaPicker') }}</var-button>
-    <var-button type="primary" block @click="picker5">{{ t('valueMapping') }}</var-button>
     <var-button type="primary" block @click="picker6">{{ t('columnsCount') }}</var-button>
+    <var-button type="primary" block @click="picker5">{{ t('valueMapping') }}</var-button>
   </var-space>
 
   <app-type>{{ t('componentCall') }}</app-type>
@@ -162,11 +162,11 @@ function handleChange(values, indexes) {
   <app-type>{{ t('areaPicker') }}</app-type>
   <var-picker :columns="columns4" cascade @change="handleChange" />
 
+  <app-type>{{ t('columnsCount') }}</app-type>
+  <var-picker :columns="columns4" cascade :columns-count="2" @change="handleChange" />
+
   <app-type>{{ t('valueMapping') }}</app-type>
   <var-picker :columns="columns5" @change="handleChange" />
-
-  <app-type>{{ t('columnsCount') }}</app-type>
-  <var-picker :columns="columns5" columns-count="2" @change="handleChange" />
 
   <app-type>{{ t('twoWayBinding') }}</app-type>
   <var-space direction="column" size="large">
