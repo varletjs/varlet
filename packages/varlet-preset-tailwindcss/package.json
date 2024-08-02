@@ -1,6 +1,6 @@
 {
   "name": "@varlet/preset-tailwindcss",
-  "version": "3.3.10",
+  "version": "3.3.11",
   "type": "module",
   "main": "lib/index.cjs",
   "module": "lib/index.js",

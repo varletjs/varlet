@@ -1,3 +1,12 @@
+## [3.3.11](https://github.com/varletjs/varlet/compare/v3.3.10...v3.3.11) (2024-08-02)
+
+
+### Features
+
+* **picker:** support columnsCount ([#1722](https://github.com/varletjs/varlet/issues/1722)) ([3570f05](https://github.com/varletjs/varlet/commit/3570f05a775dff3662ea5808fc5dad14dfff6b81))
+
+
+
 ## [3.3.10](https://github.com/varletjs/varlet/compare/v3.3.9...v3.3.10) (2024-07-27)
 
 
