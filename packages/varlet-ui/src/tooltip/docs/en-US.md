@@ -189,7 +189,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `teleport` | The location of the tooltip mount                                                     | _TeleportProps['to'] \| false_ | `body`    |
 | `same-width`    | Whether to same width as trigger element                   | _boolean_ | `false`           |
 | `disabled` | Whether to disable the tooltip                                                      | _boolean_            | `false`   |
-| `trigger` | Tooltip trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `hover`   |
+| `trigger` | Tooltip trigger method, optional value is `click` `hover` `manual` | _string_  | `hover`   |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `close-on-click-reference` | Whether to close the menu when clicking the reference element | _boolean_ | `false` |
 | `close-on-key-escape` | Whether to support keyboard ESC to close the tooltip | _boolean_ | `true`  |

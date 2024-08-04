@@ -18,7 +18,7 @@ export type MenuPlacement =
   | 'cover-left'
   | 'cover-right'
 
-export type MenuTrigger = 'click' | 'hover'
+export type MenuTrigger = 'click' | 'hover' | 'manual'
 
 export type MenuStrategy = PositioningStrategy
 

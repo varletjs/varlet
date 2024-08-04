@@ -9,7 +9,7 @@ type TooltipNeededPopperPlacement = Exclude<PopperPlacement, 'auto' | 'auto-star
 
 export type TooltipPlacement = TooltipNeededPopperPlacement
 
-export type TooltipTrigger = 'click' | 'hover'
+export type TooltipTrigger = 'click' | 'hover' | 'manual'
 
 export type TooltipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
 

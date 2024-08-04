@@ -119,17 +119,15 @@ onThemeChange()
   </var-menu>
 
   <app-type>{{ t('disabled') }}</app-type>
-  <var-space justify="space-between">
-    <var-menu disabled>
-      <var-button type="primary" disabled>{{ t('disabled') }}</var-button>
+  <var-menu disabled>
+    <var-button type="primary" disabled>{{ t('disabled') }}</var-button>
 
-      <template #menu>
-        <var-cell>{{ t('menuOption') }}</var-cell>
-        <var-cell>{{ t('menuOption') }}</var-cell>
-        <var-cell>{{ t('menuOption') }}</var-cell>
-      </template>
-    </var-menu>
-  </var-space>
+    <template #menu>
+      <var-cell>{{ t('menuOption') }}</var-cell>
+      <var-cell>{{ t('menuOption') }}</var-cell>
+      <var-cell>{{ t('menuOption') }}</var-cell>
+    </template>
+  </var-menu>
 
   <app-type>{{ t('twoWayBinding') }}</app-type>
   <var-menu v-model:show="show">

@@ -299,7 +299,7 @@ const options = ref([
 | `offset-y`      | The y-axis offset, relative to the menu-aligned position                                                                     | _number \| string_           | `0` |
 | `teleport`      | The location of the menu mount                                                                                               | _TeleportProps['to'] \| false_ | `body`            |
 | `disabled`      | Whether to disable the menu                                                                                                  | _boolean_            | `false`           |
-| `trigger`       | Menu trigger method, optional value is `click` `hover`, `click` is triggered when clicked, `hover` is triggered when hovered | _string_  | `click`           |
+| `trigger`       | Menu trigger method, optional value is `click` `hover` `manual` | _string_  | `click`           |
 | `reference`       | The associated trigger element selector is used to specify specific child elements as trigger elements | _string_              | `-`           |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `same-width`    | Whether to same width as trigger element                                                                                     | _boolean_ | `false`           |

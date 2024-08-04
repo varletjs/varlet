@@ -299,7 +299,7 @@ const options = ref([
 | `offset-y`      | y 轴偏移量， 相对于菜单对齐后的位置                                         | _number \| string_           | `0` |
 | `teleport`      | 菜单挂载的位置                                                     | _TeleportProps['to'] \| false_ | `body`            |
 | `disabled`      | 是否禁用菜单                                                      | _boolean_             | `false`           |
-| `trigger`       | 菜单触发方式，可选值为 `click` `hover`, `click` 为点击时触发, `hover` 为悬停时触发 | _string_              | `click`           |
+| `trigger`       | 菜单触发方式，可选值为 `click` `hover` `manual` | _string_              | `click`           |
 | `reference`       | 菜单关联的触发元素选择器，用于指定菜单的特定子元素为触发元素 | _string_              | `-`           |
 | `elevation` | 海拔高度，可选值为 `true` `false` 和 `0-24` 的等级 | _string \| number \| boolean_|   `true`    |
 | `same-width`    | 是否与触发元素同宽                                                   | _boolean_             | `false`           |

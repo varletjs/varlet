@@ -1,13 +1,11 @@
 import { defineListenerProp } from '../utils/components'
 import { type PropType, type TeleportProps } from 'vue'
-import type { NeededPopperPlacement } from '../menu/usePopover'
+import type { NeededPopperPlacement, Trigger } from '../menu/usePopover'
 import type { PositioningStrategy } from '@popperjs/core'
 
 export type Placement = NeededPopperPlacement
 
 export type TooltipType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
-
-export type TooltipTrigger = 'click' | 'hover'
 
 export const props = {
   type: {
@@ -19,7 +17,7 @@ export const props = {
   show: Boolean,
   disabled: Boolean,
   trigger: {
-    type: String as PropType<TooltipTrigger>,
+    type: String as PropType<Trigger>,
     default: 'hover',
   },
   reference: String,
