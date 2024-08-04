@@ -47,6 +47,9 @@ test('test tooltip click trigger', async () => {
 
   const wrapper = mount(VarTooltip, {
     attachTo: document.body,
+    props: {
+      trigger: 'click',
+    },
   })
 
   await wrapper.trigger('click')
@@ -75,7 +78,6 @@ test('test tooltip hover trigger and events', async () => {
 
   const wrapper = mount(VarTooltip, {
     props: {
-      trigger: 'hover',
       teleport: root,
       onOpen,
       onOpened,
