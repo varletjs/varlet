@@ -72,6 +72,27 @@ test('test menu click trigger', async () => {
   mockRestore()
 })
 
+test('test menu manual trigger', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarMenu, {
+    props: {
+      trigger: 'manual',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+  await wrapper.trigger('click')
+  await trigger(root.querySelector('.var-menu__menu'), 'mouseenter')
+  await delay(300)
+  expect(root.innerHTML).toMatchSnapshot()
+
+  mockRestore()
+})
+
 test('test menu hover trigger and events', async () => {
   const { mockRestore } = mockStubs()
 

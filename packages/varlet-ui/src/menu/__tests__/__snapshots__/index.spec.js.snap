@@ -16,6 +16,8 @@ exports[`test menu hover trigger and events 1`] = `"<div style="z-index: 2000; p
 
 exports[`test menu hover trigger and events 2`] = `"<div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3" data-popper-placement="bottom-start"></div>"`;
 
+exports[`test menu manual trigger 1`] = `"<div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3"></div>"`;
+
 exports[`test menu offset 1`] = `"<div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3"></div>"`;
 
 exports[`test menu placement 1`] = `"<div style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;" class="var-menu__menu var--box var-menu--menu-background-color var-elevation--3"></div>"`;
