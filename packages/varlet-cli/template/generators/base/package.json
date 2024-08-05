@@ -66,8 +66,8 @@
     "pre-commit": "pnpm exec lint-staged --allow-empty --concurrent false",
     "commit-msg": "pnpm exec varlet-cli commit-lint -p $1"
   },
-  "packageManager": "pnpm@8.0.0",
+  "packageManager": "pnpm@9.1.1",
   "engines": {
-    "pnpm": ">=8.0"
+    "pnpm": ">=9.0"
   }
 }

@@ -36,13 +36,13 @@ function handleClose() {
       color: ad?.textColor,
     }"
   >
-    <img class="varlet-site-ad__logo" :style="{ height: ad?.logoHeight }" :src="ad.logo" v-if="ad.logo" />
+    <img class="varlet-site-ad__logo" :style="{ height: ad?.logoHeight }" :src="ad?.logo" v-if="ad?.logo" />
     <div
       class="varlet-site-ad__description"
       :style="{ background: ad?.descriptionBackground, color: ad?.descriptionTextColor }"
-      v-if="ad.description"
+      v-if="ad?.description"
     >
-      <span>{{ ad.description[language] }}</span>
+      <span>{{ ad?.description?.[language] }}</span>
       <var-icon style="margin-left: 4px" name="chevron-right" :size="24" />
     </div>
     <var-button class="varlet-site-ad__close-button" text round @click.prevent="handleClose">
