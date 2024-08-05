@@ -187,7 +187,7 @@ export function defineConfig(config: VarletConfig) {
 }
 
 export function mergeStrategy(_: any, srcValue: any, key: any) {
-  const keys = ['features', 'members']
+  const keys = ['features', 'members', 'versions', 'themes', '_cf']
 
   if (keys.includes(key) && isArray(srcValue)) {
     return srcValue
