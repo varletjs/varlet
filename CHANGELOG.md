@@ -1,3 +1,17 @@
+## [3.3.12](https://github.com/varletjs/varlet/compare/v3.3.11...v3.3.12) (2024-08-05)
+
+
+### Bug Fixes
+
+* **cli:** ad maybe emptry ([ad569f4](https://github.com/varletjs/varlet/commit/ad569f4c6464aa601538c082d4e6070e88fbbfe4))
+
+
+### Features
+
+* **usePopover:** support manual trigger and close [#1725](https://github.com/varletjs/varlet/issues/1725) ([92a80d6](https://github.com/varletjs/varlet/commit/92a80d6bba0b1b7e4dfed53fcffcc7acef6d2561))
+
+
+
 ## [3.3.11](https://github.com/varletjs/varlet/compare/v3.3.10...v3.3.11) (2024-08-02)
 
 
