@@ -63,8 +63,9 @@ function setStyle() {
 |--------------|------------------------|-----------|--------|
 | `color`      | LoadingBar color       | _string_  | `-`    |
 | `errorColor` | LoadingBar error color | _string_  | `-`    |
-| `height`     | LoadingBar height      | _string\|number_ | `-` |
-| `top`        | LoadingBar top         | _string\|number_ | `-` |
+| `height`     | LoadingBar height      | _string \| number_ | `-` |
+| `top`        | LoadingBar top         | _string \| number_ | `-` |
+| `finishDelay` | The delay time of the finish function, which can be used to increase the duration of loading animation | _number_ | `-` |
 
 ### Style Variables
 

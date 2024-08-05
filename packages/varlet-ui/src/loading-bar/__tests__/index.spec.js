@@ -12,6 +12,7 @@ test('test loading-bar methods', async () => {
   expect(el.style.opacity).toBe('1')
 
   LoadingBar.finish()
+  await delay(0)
   await delay(300)
   expect(el.style.opacity).toBe('0')
 
@@ -20,6 +21,29 @@ test('test loading-bar methods', async () => {
   expect(document.querySelector('.var-loading-bar--error')).toBeTruthy()
   await delay(900)
   expect(document.querySelector('.var-loading-bar--error')).toBeFalsy()
+})
+
+test('test loading-bar finish delay', async () => {
+  LoadingBar.setDefaultOptions({
+    finishDelay: 500,
+  })
+  LoadingBar.start()
+
+  const el = document.querySelector('.var-loading-bar')
+  expect(el).toBeTruthy()
+
+  await delay(300)
+  expect(el.style.opacity).toBe('1')
+
+  LoadingBar.finish()
+  await delay(0)
+  await delay(300)
+  expect(el.style.opacity).toBe('1')
+
+  await delay(800)
+  expect(el.style.opacity).toBe('0')
+
+  LoadingBar.resetDefaultOptions()
 })
 
 test('test setDefaultOptions and resetDefaultOptions', async () => {

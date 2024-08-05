@@ -63,8 +63,10 @@ function setStyle() {
 |--------------|--------------|-----------|--------|
 | `color`      | 加载条颜色        | _string_  | `-`    |
 | `errorColor` | 加载失败时的颜色     | _string_  | `-`    |
-| `height`     | 加载条的高度       | _string\|number_ | `-` |
-| `top`        | 加载条距离页面顶部的距离 | _string\|number_ | `-` |
+| `height`     | 加载条的高度       | _string \| number_ | `-` |
+| `top`        | 加载条距离页面顶部的距离 | _string \| number_ | `-` |
+| `height`     | 加载条的高度       | _string \| number_ | `-` |
+| `finishDelay` | 结束加载的延时时间(单位 ms)，可用于增加加载动画的持续时间 | _number_ | `-` |
 
 ### 样式变量
 

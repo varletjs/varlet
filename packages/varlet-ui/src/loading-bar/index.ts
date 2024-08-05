@@ -8,6 +8,7 @@ interface LoadingBarOptions {
   errorColor?: string
   height?: string | number
   top?: string | number
+  finishDelay?: number
 }
 
 interface InternalProps {
@@ -28,29 +29,34 @@ interface LoadingBar {
   resetDefaultOptions(): void
 }
 
+const OPACITY_DELAY = 200
+
 let valueTimer: number
 let errorTimer: number
-let opacityTimer: number
 let finishTimer: number
+let finishErrorTimer: number
+let opacityTimer: number
+
 let isMount: boolean
-let setOptions: LoadingBarOptions = {}
+let internalOptions: LoadingBarOptions = {}
 
 const internalProps: InternalProps = {
   value: 0,
   opacity: 0,
   error: false,
 }
-const props: LoadingBarOptions & InternalProps = reactive(internalProps)
 
-const setDefaultOptions = (options: LoadingBarOptions) => {
-  Object.assign(props, options)
-  setOptions = options
+const ctx: LoadingBarOptions & InternalProps = reactive(internalProps)
+
+function setDefaultOptions(options: LoadingBarOptions) {
+  Object.assign(ctx, options)
+  internalOptions = options
 }
 
 const resetDefaultOptions = () => {
-  Object.keys(setOptions).forEach((key) => {
-    if (props[key as keyof LoadingBarOptions] !== undefined) {
-      props[key as keyof LoadingBarOptions] = undefined
+  Object.keys(internalOptions).forEach((key) => {
+    if (ctx[key as keyof LoadingBarOptions] !== undefined) {
+      ctx[key as keyof LoadingBarOptions] = undefined
     }
   })
 }
@@ -58,72 +64,76 @@ const resetDefaultOptions = () => {
 const mount = () => {
   if (!isMount) {
     isMount = true
-    mountInstance(LoadingBarComponent, props)
+    mountInstance(LoadingBarComponent, ctx)
   }
 }
 
-const tickValue = () => {
+const tick = () => {
   valueTimer = window.setTimeout(() => {
-    if (props.value >= 95) return
-    let num = Math.random()
+    if (ctx.value >= 95) {
+      return
+    }
 
-    if (props.value < 70) num = Math.round(5 * Math.random())
-
-    props.value += num
-    tickValue()
+    ctx.value += ctx.value < 70 ? Math.round(5 * Math.random()) : Math.random()
+    tick()
   }, 200)
 }
 
 const clearTimer = () => {
-  window.clearTimeout(errorTimer)
   window.clearTimeout(valueTimer)
   window.clearTimeout(opacityTimer)
   window.clearTimeout(finishTimer)
+  window.clearTimeout(errorTimer)
+  window.clearTimeout(finishErrorTimer)
+}
+
+const finishTask = () => {
+  clearTimer()
+  ctx.value = 100
+
+  opacityTimer = window.setTimeout(() => {
+    ctx.opacity = 0
+
+    finishErrorTimer = window.setTimeout(() => {
+      ctx.error = false
+    }, 250)
+  }, OPACITY_DELAY + 100)
 }
 
 const start = () => {
   clearTimer()
-  props.error = false
-  props.value = 0
+  ctx.error = false
+  ctx.value = 0
 
   mount()
 
   opacityTimer = window.setTimeout(() => {
-    props.opacity = 1
-  }, 200)
+    ctx.opacity = 1
+  }, OPACITY_DELAY)
 
-  tickValue()
+  tick()
 }
 
 const finish = () => {
-  clearTimer()
-  props.value = 100
-
-  opacityTimer = window.setTimeout(() => {
-    props.opacity = 0
-
-    errorTimer = window.setTimeout(() => {
-      props.error = false
-    }, 250)
-  }, 300)
+  finishTimer = window.setTimeout(finishTask, ctx.finishDelay ?? 0)
 }
 
 const error = () => {
   clearTimer()
-  props.error = true
+  ctx.error = true
 
-  if (props.value === 100) {
-    props.value = 0
+  if (ctx.value === 100) {
+    ctx.value = 0
   }
 
   mount()
 
   opacityTimer = window.setTimeout(() => {
-    props.opacity = 1
-  }, 200)
+    ctx.opacity = 1
+  }, OPACITY_DELAY)
 
-  tickValue()
-  finishTimer = window.setTimeout(finish, 300)
+  tick()
+  errorTimer = window.setTimeout(finishTask, 300)
 }
 
 const LoadingBar: LoadingBar = {

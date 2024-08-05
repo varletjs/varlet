@@ -3,6 +3,7 @@ export interface LoadingBarOptions {
   errorColor?: string
   height?: string | number
   top?: string | number
+  finishDelay?: number
 }
 
 export declare const loadingBarProps: Record<string, any>
