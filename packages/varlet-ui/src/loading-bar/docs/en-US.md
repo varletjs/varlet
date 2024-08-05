@@ -54,7 +54,7 @@ function setStyle() {
 | `LoadingBar.start`  | Start loading  | `-` | `-` |
 | `LoadingBar.finish` | Finish loading  | `-` | `-` |
 | `LoadingBar.error`  | Loading error  | `-` | `-` |
-| `LoadingBar.setDefaultOptions` | Set default option configuration | _options_ | `-` |
+| `LoadingBar.setDefaultOptions` | Set default option configuration | _options: LoadingBarOptions_ | `-` |
 | `LoadingBar.resetDefaultOptions` | Reset default option configuration | _-_ | `-` |
 
 ### LoadingBar Options
@@ -65,7 +65,7 @@ function setStyle() {
 | `errorColor` | LoadingBar error color | _string_  | `-`    |
 | `height`     | LoadingBar height      | _string \| number_ | `-` |
 | `top`        | LoadingBar top         | _string \| number_ | `-` |
-| `finishDelay` | The delay time of the finish function, which can be used to increase the duration of loading animation | _number_ | `-` |
+| `finishDelay` ***3.3.13*** | The delay time of the finish function, which can be used to increase the duration of loading animation | _number_ | `-` |
 
 ### Style Variables
 

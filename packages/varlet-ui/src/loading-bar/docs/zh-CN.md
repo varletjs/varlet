@@ -54,7 +54,7 @@ function setStyle() {
 | `LoadingBar.start`  | 开始加载  | `-` | `-` |
 | `LoadingBar.finish` | 结束加载  | `-` | `-` |
 | `LoadingBar.error`  | 加载失败  | `-` | `-` |
-| `LoadingBar.setDefaultOptions` | 设置默认的选项配置 | _options: Options_ | `-` |
+| `LoadingBar.setDefaultOptions` | 设置默认的选项配置 | _options: LoadingBarOptions_ | `-` |
 | `LoadingBar.resetDefaultOptions` | 重置默认的选项配置 | _-_ | `-` |
 
 ### LoadingBar Options
@@ -66,7 +66,7 @@ function setStyle() {
 | `height`     | 加载条的高度       | _string \| number_ | `-` |
 | `top`        | 加载条距离页面顶部的距离 | _string \| number_ | `-` |
 | `height`     | 加载条的高度       | _string \| number_ | `-` |
-| `finishDelay` | 结束加载的延时时间(单位 ms)，可用于增加加载动画的持续时间 | _number_ | `-` |
+| `finishDelay` ***3.3.13*** | 结束加载的延时时间(单位 ms)，可用于增加加载动画的持续时间 | _number_ | `-` |
 
 ### 样式变量
 
