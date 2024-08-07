@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import zhCN from './zh-CN'
-import { hasOwn } from '@varlet/shared'
 
 export type Message = {
   // Button component
@@ -13,6 +12,10 @@ export type Message = {
 }
 
 type ValueOf<T> = T[keyof T]
+
+const { hasOwnProperty } = Object.prototype
+
+const hasOwn = <T extends object>(val: T, key: PropertyKey): key is keyof T => hasOwnProperty.call(val, key)
 
 function useLocale<T = Message>() {
   const messages: Record<string, Partial<T>> = {}
