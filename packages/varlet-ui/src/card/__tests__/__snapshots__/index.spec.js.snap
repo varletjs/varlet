@@ -93,8 +93,8 @@ exports[`test card component slots > test card subtitle slot 1`] = `
   <div class="var-card__floater" style="width: 100%; height: 100%; overflow: hidden;">
     <!--v-if-->
     <div class="var-card__container">
-      <!--v-if-->
       <!--v-if--><span class="var-card__subtitle">subtitle</span>
+      <!--v-if-->
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
