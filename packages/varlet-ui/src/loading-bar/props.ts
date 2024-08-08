@@ -12,4 +12,6 @@ export const props = {
   errorColor: String,
   height: [Number, String],
   top: [Number, String],
+
+  transitionDuration: Number,
 }

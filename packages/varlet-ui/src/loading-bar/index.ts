@@ -15,6 +15,7 @@ interface InternalProps {
   value: number
   opacity: number
   error: boolean
+  transitionDuration?: number
 }
 
 interface LoadingBar {
@@ -70,6 +71,8 @@ const mount = () => {
 
 const tick = () => {
   valueTimer = window.setTimeout(() => {
+    ctx.transitionDuration = undefined
+
     if (ctx.value >= 95) {
       return
     }
@@ -104,6 +107,7 @@ const start = () => {
   clearTimer()
   ctx.error = false
   ctx.value = 0
+  ctx.transitionDuration = 0
 
   mount()
 
@@ -124,6 +128,7 @@ const error = () => {
 
   if (ctx.value === 100) {
     ctx.value = 0
+    ctx.transitionDuration = 0
   }
 
   mount()

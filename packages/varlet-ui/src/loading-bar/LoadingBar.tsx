@@ -23,6 +23,7 @@ export default defineComponent({
           height: toSizeUnit(props.height),
           backgroundColor: props.error ? props.errorColor : props.color,
           top: toSizeUnit(props.top),
+          transitionDuration: props.transitionDuration == null ? undefined : `${props.transitionDuration}ms`,
         }}
       ></div>
     )
