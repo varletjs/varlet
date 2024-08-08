@@ -243,6 +243,17 @@ describe('test button component props', () => {
     wrapper.unmount()
   })
 
+  test('test button focusable', () => {
+    const wrapper = mount(VarButton, {
+      props: {
+        focusable: false,
+      },
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
   test('test button text color', () => {
     const wrapper = mount(VarButton, {
       props: {

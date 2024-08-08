@@ -316,6 +316,7 @@ function handleAutoLoadingClick() {
 | `outline`        | Whether to be outline button                                                            | _boolean_ | `false`        |
 | `disabled`       | Whether to disable button                                                               | _boolean_ | `false`        |
 | `ripple`         | Whether to be ripple button                                                             | _boolean_ | `true`         |
+| `focusable`         | Whether to be focus button                                                        | _boolean_ | `true`         |
 | `text-color`     | Button Text color                                                                       | _string_  | `-`            |
 | `color`          | Button background color                                                                 | _string_  | `-`            |
 | `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |

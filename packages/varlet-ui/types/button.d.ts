@@ -25,6 +25,7 @@ export interface ButtonProps extends BasicAttributes {
   iconContainer?: boolean
   disabled?: boolean
   ripple?: boolean
+  focusable?: boolean
   autoLoading?: boolean
   color?: string
   textColor?: string

@@ -25,6 +25,10 @@ export const props = {
     type: Boolean,
     default: true,
   },
+  focusable: {
+    type: Boolean,
+    default: true,
+  },
   color: String,
   textColor: String,
   elevation: {

@@ -1,5 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`test button component props > test button focusable 1`] = `
+"<button class="var-button var--box var-button--normal var--inline-flex var-elevation--2 var-button--default" tabindex="-1" type="button">
+  <!--v-if-->
+  <div class="var-button__content"></div>
+  <div class="var-hover-overlay"></div>
+</button>"
+`;
+
 exports[`test button group component props > test button group color and text-color 1`] = `
 "<div class="var-button-group var--box var-button-group--mode-normal var-button-group--horizontal var-elevation--2"><button class="var-button var--box var-button--normal var--inline-flex var-button--default" style="color: red; background: yellow;" type="button">
     <!--v-if-->

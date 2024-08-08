@@ -17,6 +17,7 @@
         [states.text && disabled, n('--text-disabled')]
       )
     "
+    :tabindex="focusable ? undefined : '-1'"
     v-ripple="{ disabled: disabled || !ripple || loading || pending }"
     v-hover:desktop="handleHovering"
     :style="{
@@ -27,7 +28,7 @@
     :disabled="disabled"
     @click="handleClick"
     @touchstart="handleTouchstart"
-    @focus="isFocusing = true"
+    @focus="handleFocus"
     @blur="isFocusing = false"
   >
     <var-loading
@@ -138,16 +139,25 @@ export default defineComponent({
       attemptAutoLoading(call(onTouchstart, e))
     }
 
+    function handleFocus() {
+      if (!props.focusable) {
+        return
+      }
+
+      isFocusing.value = true
+    }
+
     return {
       pending,
       states,
       hovering,
+      isFocusing,
       n,
       classes,
       handleHovering,
       handleClick,
       handleTouchstart,
-      isFocusing,
+      handleFocus,
     }
   },
 })
