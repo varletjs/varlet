@@ -1,3 +1,19 @@
+## [3.3.13](https://github.com/varletjs/varlet/compare/v3.3.12...v3.3.13) (2024-08-08)
+
+
+### Bug Fixes
+
+* **card:** fix position error of the default slot ([cf3ea33](https://github.com/varletjs/varlet/commit/cf3ea3324830ec407c879ac570b4885d3fe62cdb))
+* **cli:** adjust deps ([fb9c67d](https://github.com/varletjs/varlet/commit/fb9c67dfb1f22aff99719ed0ff290edf342abceb))
+
+
+### Features
+
+* **button:** support focusable ([751971a](https://github.com/varletjs/varlet/commit/751971a8d29012741f588280b236f57b0a72009a))
+* **loading-bar:** support finishDelay ([8892ff4](https://github.com/varletjs/varlet/commit/8892ff43826317f1a6207385bd87d91ff0fb6d8f))
+
+
+
 ## [3.3.12](https://github.com/varletjs/varlet/compare/v3.3.11...v3.3.12) (2024-08-05)
 
 

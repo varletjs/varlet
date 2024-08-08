@@ -1,6 +1,6 @@
 {
   "name": "@varlet/eslint-config",
-  "version": "3.3.12",
+  "version": "3.3.13",
   "description": "eslint config of varlet",
   "keywords": [
     "eslint",

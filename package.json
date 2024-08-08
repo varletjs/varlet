@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "3.3.12",
+  "version": "3.3.13",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
