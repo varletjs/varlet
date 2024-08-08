@@ -43,12 +43,12 @@
         <slot name="title" :slot-class="n('title')">
           <div :class="n('title')" v-if="title">{{ title }}</div>
         </slot>
-        <div :class="n('content')" v-if="$slots.default">
-          <slot />
-        </div>
         <slot name="subtitle" :slot-class="n('subtitle')">
           <div :class="n('subtitle')" v-if="subtitle">{{ subtitle }}</div>
         </slot>
+        <div :class="n('content')" v-if="$slots.default">
+          <slot />
+        </div>
         <slot name="description" :slot-class="n('description')">
           <div :class="n('description')" v-if="description">{{ description }}</div>
         </slot>
