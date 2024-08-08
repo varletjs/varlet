@@ -108,19 +108,19 @@
 ```html
 <template>
   <var-space :size="[10, 10]">
-    <var-button type="primary" round>
+    <var-button type="primary" round icon-container>
       <var-icon name="plus" />
     </var-button>
-    <var-button type="info" round>
+    <var-button type="info" round icon-container>
       <var-icon name="information" />
     </var-button>
-    <var-button type="success" round>
+    <var-button type="success" round icon-container>
       <var-icon name="check" />
     </var-button>
-    <var-button type="warning" round>
+    <var-button type="warning" round icon-container>
       <var-icon name="warning" />
     </var-button>
-    <var-button type="danger" round>
+    <var-button type="danger" round icon-container>
       <var-icon name="window-close" />
     </var-button>
   </var-space>
