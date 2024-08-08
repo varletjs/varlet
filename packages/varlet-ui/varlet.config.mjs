@@ -643,6 +643,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Auto Complete 自动完成',
+          'en-US': 'Auto Complete',
+        },
+        doc: 'auto-complete',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Select 选择框',
           'en-US': 'Select',
         },
