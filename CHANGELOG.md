@@ -1,3 +1,13 @@
+## [3.3.14](https://github.com/varletjs/varlet/compare/v3.3.13...v3.3.14) (2024-08-12)
+
+
+### Bug Fixes
+
+* **fab:** fix list patch error by key ([fa32b78](https://github.com/varletjs/varlet/commit/fa32b78c8868fc90e7cbef5b55a95aebed52928c))
+* **space:** fix list patch error by key and close [#1731](https://github.com/varletjs/varlet/issues/1731) ([8380ad5](https://github.com/varletjs/varlet/commit/8380ad5cc0ca578771c2f35b5ce2b6f45af171aa))
+
+
+
 ## [3.3.13](https://github.com/varletjs/varlet/compare/v3.3.12...v3.3.13) (2024-08-08)
 
 

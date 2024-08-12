@@ -6,7 +6,7 @@
   "displayName": "varlet-vscode-extension",
   "description": "varlet extension for vscode",
   "publisher": "haoziqaq",
-  "version": "3.3.13",
+  "version": "3.3.14",
   "engines": {
     "vscode": "^1.56.0"
   },
