@@ -159,7 +159,9 @@ export default defineComponent({
                 onClick={(e) => e.stopPropagation()}
               >
                 {children.map((child) => (
-                  <div class={n('action')}>{child}</div>
+                  <div class={n('action')} key={child.key ?? undefined}>
+                    {child}
+                  </div>
                 ))}
               </div>
             </Transition>
