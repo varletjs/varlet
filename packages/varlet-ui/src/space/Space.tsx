@@ -1,4 +1,4 @@
-import { defineComponent, VNodeChild } from 'vue'
+import { defineComponent, VNode, VNodeChild } from 'vue'
 import { props, type SpaceSize } from './props'
 import { isArray, call } from '@varlet/shared'
 import { createNamespace, flatFragment } from '../utils/components'
@@ -26,11 +26,10 @@ export default defineComponent({
   setup(props, { slots }) {
     return () => {
       const { inline, justify, align, wrap, direction, size } = props
-      let children: VNodeChild[] = call(slots.default) ?? []
+      const _children: VNodeChild[] = call(slots.default) ?? []
       const [y, x] = getSize(size, isInternalSize(size))
 
-      children = flatFragment(children)
-
+      const children = flatFragment(_children)
       const lastIndex = children.length - 1
       const spacers = children.map((child, index) => {
         const margin = computeMargin(y, x, {
@@ -41,7 +40,7 @@ export default defineComponent({
         })
 
         return (
-          <div class={classes([direction === 'column', n('--auto')])} style={{ margin }}>
+          <div class={classes([direction === 'column', n('--auto')])} key={child.key ?? undefined} style={{ margin }}>
             {child}
           </div>
         )
