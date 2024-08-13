@@ -1,4 +1,4 @@
-import { defineComponent, VNode, VNodeChild } from 'vue'
+import { defineComponent, VNodeChild } from 'vue'
 import { props, type SpaceSize } from './props'
 import { isArray, call } from '@varlet/shared'
 import { createNamespace, flatFragment } from '../utils/components'
