@@ -130,9 +130,6 @@ importers:
       live-server:
         specifier: ^1.2.1
         version: 1.2.2
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
       markdown-it:
         specifier: ^12.2.3
         version: 12.3.2
@@ -185,9 +182,6 @@ importers:
       '@types/inquirer':
         specifier: ^9.0.2
         version: 9.0.2
-      '@types/lodash-es':
-        specifier: ^4.17.5
-        version: 4.17.6
       '@types/markdown-it':
         specifier: ^12.2.3
         version: 12.2.3
@@ -1368,12 +1362,6 @@ packages:
 
   '@types/linkify-it@3.0.2':
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
-
-  '@types/lodash-es@4.17.6':
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
-
-  '@types/lodash@4.14.184':
-    resolution: {integrity: sha512-RoZphVtHbxPZizt4IcILciSWiC6dcn+eZ8oX9IWEYfDMcocdd42f7NPI6fQj+6zI8y4E0L7gu2pcZKLGTRaV9Q==}
 
   '@types/markdown-it@12.2.3':
     resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
@@ -3406,9 +3394,6 @@ packages:
   locate-path@7.2.0:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-
-  lodash-es@4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -5834,12 +5819,6 @@ snapshots:
 
   '@types/linkify-it@3.0.2': {}
 
-  '@types/lodash-es@4.17.6':
-    dependencies:
-      '@types/lodash': 4.14.184
-
-  '@types/lodash@4.14.184': {}
-
   '@types/markdown-it@12.2.3':
     dependencies:
       '@types/linkify-it': 3.0.2
@@ -8232,8 +8211,6 @@ snapshots:
   locate-path@7.2.0:
     dependencies:
       p-locate: 6.0.0
-
-  lodash-es@4.17.21: {}
 
   lodash.merge@4.6.2: {}
 
