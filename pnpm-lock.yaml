@@ -142,9 +142,6 @@ importers:
       sass:
         specifier: ^1.77.4
         version: 1.77.4
-      semver:
-        specifier: ^7.3.5
-        version: 7.5.4
       sharp:
         specifier: 0.31.1
         version: 0.31.1
@@ -188,9 +185,6 @@ importers:
       '@types/node':
         specifier: ^18.7.20
         version: 18.7.20
-      '@types/semver':
-        specifier: ^7.3.9
-        version: 7.3.12
       '@types/sharp':
         specifier: 0.31.1
         version: 0.31.1
