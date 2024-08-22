@@ -29,8 +29,8 @@ jobs:
     - name: Install
       run: pnpm install
 
-    - name: Build
-      run: pnpm build
+    - name: Bootstrap
+      run: pnpm bootstrap
 
     - name: Release
       run: pnpm dlx pkg-pr-new publish --compact --pnpm './packages/*'
