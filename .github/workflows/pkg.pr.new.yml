@@ -26,9 +26,6 @@ jobs:
         node-version: lts/*
         cache: pnpm
 
-    - name: Install
-      run: pnpm install
-
     - name: Bootstrap
       run: pnpm bootstrap
 
