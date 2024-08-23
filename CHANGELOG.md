@@ -1,3 +1,12 @@
+## [3.3.16](https://github.com/varletjs/varlet/compare/v3.3.15...v3.3.16) (2024-08-23)
+
+
+### Bug Fixes
+
+* **area:** fix area info ([#1736](https://github.com/varletjs/varlet/issues/1736)) ([b90ff66](https://github.com/varletjs/varlet/commit/b90ff6606d7add71bd3f6bc849074cd1070bf49c))
+
+
+
 ## [3.3.15](https://github.com/varletjs/varlet/compare/v3.3.14...v3.3.15) (2024-08-16)
 
 
