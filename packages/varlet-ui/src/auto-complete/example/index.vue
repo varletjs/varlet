@@ -1,5 +1,4 @@
 <script setup>
-import VarAutoComplete from '..'
 import { watchLang, AppType } from '@varlet/cli/client'
 import { use } from './locale'
 import { ref, computed } from 'vue'
