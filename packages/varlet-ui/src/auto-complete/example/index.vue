@@ -21,7 +21,6 @@ const options = computed(() =>
 <template>
   <app-type>Mobile phone example code</app-type>
   <var-auto-complete placeholder="auto" clearable :options="options" v-model="value" />
-
   <app-type>Mobile phone example code</app-type>
   <var-auto-complete variant="outlined" clearable placeholder="auto" :options="options" v-model="value" />
 </template>

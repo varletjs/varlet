@@ -4,7 +4,6 @@
     :class="n()"
     :tabindex="disabled || formDisabled ? undefined : '0'"
     @focusin="handleFocus"
-    @focusout="handleBlur"
     @click="handleClick"
   >
     <var-menu-select
@@ -12,6 +11,7 @@
       placement="bottom"
       same-width
       auto-complete-cover
+      :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
       :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
       v-model:show="isShowMenuSelect"
@@ -20,7 +20,6 @@
       <var-input
         ref="input"
         v-bind="{
-          readonly,
           validateTrigger,
           rules,
           enterkeyhint,
@@ -33,12 +32,15 @@
           hint,
           textColor,
           blurColor,
+          readonly,
           disabled,
           clearable,
         }"
         autocomplete="off"
         :is-force-focusing-effect="isFocusing"
         @input="handleInput"
+        @blur="handleBlur"
+        @clear="handleClear"
         v-model="value"
       >
         <template #prepend-icon v-if="$slots['prepend-icon']">
@@ -49,8 +51,8 @@
           <slot name="append-icon" />
         </template>
 
-        <template #clear-icon v-if="$slots['clear-icon']">
-          <slot name="clear-icon" />
+        <template #clear-icon="{ clear }" v-if="$slots['clear-icon']">
+          <slot name="clear-icon" :clear="clear" />
         </template>
 
         <template #extra-message v-if="$slots['extra-message']">
@@ -107,15 +109,29 @@ export default defineComponent({
     const isShowMenuSelect = ref(false)
     const { bindForm, form } = useForm()
 
+    let clearing = false
+
     const autoCompleteProvider: AutoCompleteProvider = {
       reset,
       resetValidation,
       validate,
     }
 
-    useClickOutside(root, 'click', () => {
-      isShowMenuSelect.value = false
-    })
+    useClickOutside(
+      () => root.value!,
+      'click',
+      () => {
+        // After the clear operation is executed, the clear button will be removed from the component tree,
+        // resulting in a false positive of click outside.
+        if (clearing) {
+          clearing = false
+          return
+        }
+
+        isShowMenuSelect.value = false
+        handleBlur()
+      }
+    )
 
     watch(() => props.options, syncOptions)
 
@@ -139,20 +155,27 @@ export default defineComponent({
     }
 
     function handleKeydown(event: KeyboardEvent) {
-      if (form?.disabled.value || form?.readonly.value || props.disabled || props.readonly || !isFocusing.value) {
+      if (
+        form?.disabled.value ||
+        form?.readonly.value ||
+        props.disabled ||
+        props.readonly ||
+        !isFocusing.value ||
+        !isShowMenuSelect.value
+      ) {
         return
       }
 
       const { key } = event
 
-      if (key === 'Tab' && isShowMenuSelect.value) {
+      if (key === 'Tab') {
         preventDefault(event)
+        root.value!.focus()
         isShowMenuSelect.value = false
-        handleBlur()
         return
       }
 
-      if (!['ArrowUp', 'ArrowDown', 'Enter'].includes(key) && isShowMenuSelect.value) {
+      if (!['ArrowUp', 'ArrowDown', 'Enter'].includes(key)) {
         input.value!.focus()
       }
     }
@@ -171,7 +194,16 @@ export default defineComponent({
       call(props.onInput, newValue, event)
     }
 
+    function handleClear() {
+      clearing = true
+      isShowMenuSelect.value = getShowMenuSelect(value.value!)
+    }
+
     function handleFocus() {
+      if (isFocusing.value) {
+        return
+      }
+
       isFocusing.value = true
       input.value!.focus()
       isShowMenuSelect.value = getShowMenuSelect(value.value ?? '')
@@ -180,12 +212,11 @@ export default defineComponent({
     }
 
     function handleBlur() {
-      if (isShowMenuSelect.value) {
+      if (isShowMenuSelect.value || !isFocusing.value) {
         return
       }
 
       isFocusing.value = false
-      isShowMenuSelect.value = false
       call(props.onBlur)
     }
 
@@ -207,6 +238,10 @@ export default defineComponent({
     }
 
     function handleClick(event: Event) {
+      if (props.disabled || form?.disabled) {
+        return
+      }
+
       call(props.onClick, event)
     }
 
@@ -219,9 +254,11 @@ export default defineComponent({
       isFocusing,
       input,
       formDisabled: form?.disabled,
+      formReadonly: form?.readonly,
       n,
       classes,
       handleInput,
+      handleClear,
       handleFocus,
       handleClick,
       handleBlur,
