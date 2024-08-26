@@ -12,7 +12,7 @@
         textColor,
         focusColor,
         blurColor,
-        isFocusing,
+        isFocusing: isForceFocusingEffect != null ? isForceFocusingEffect : isFocusing,
         errorMessage,
         formDisabled,
         disabled,
@@ -50,7 +50,7 @@
           )
         "
         ref="el"
-        autocomplete="new-password"
+        :autocomplete="autocomplete ? autocomplete : 'new-password'"
         :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"
@@ -85,7 +85,7 @@
           )
         "
         ref="el"
-        autocomplete="new-password"
+        :autocomplete="autocomplete ? autocomplete : 'new-password'"
         :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"

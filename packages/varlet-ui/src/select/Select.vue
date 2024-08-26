@@ -252,14 +252,12 @@ export default defineComponent({
       }
 
       if (key === 'Escape' && showMenu.value) {
-        root.value!.focus()
         preventDefault(event)
         showMenu.value = false
         return
       }
 
       if (key === 'Tab' && showMenu.value) {
-        root.value!.focus()
         preventDefault(event)
         handleBlur()
         return

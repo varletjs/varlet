@@ -58,7 +58,6 @@ export const props = {
   onChange: defineListenerProp<(value: any) => void>(),
   onClear: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),
-  // dynamic internal
   ...pickProps(fieldDecoratorProps, [
     'size',
     'variant',

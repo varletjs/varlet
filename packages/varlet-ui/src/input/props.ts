@@ -37,7 +37,6 @@ export const props = {
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
-  // dynamic internal
   ...pickProps(fieldDecoratorProps, [
     'size',
     'variant',
@@ -51,4 +50,10 @@ export const props = {
     'clearable',
     'onClick',
   ]),
+  // internal
+  autocomplete: String,
+  isForceFocusingEffect: {
+    type: Boolean,
+    default: undefined,
+  },
 }
