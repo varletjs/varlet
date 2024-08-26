@@ -40,7 +40,23 @@
         :is-force-focusing-effect="isFocusing"
         @input="handleInput"
         v-model="value"
-      />
+      >
+        <template #prepend-icon v-if="$slots['prepend-icon']">
+          <slot name="prepend-icon" />
+        </template>
+
+        <template #append-icon v-if="$slots['append-icon']">
+          <slot name="append-icon" />
+        </template>
+
+        <template #clear-icon v-if="$slots['clear-icon']">
+          <slot name="clear-icon" />
+        </template>
+
+        <template #extra-message v-if="$slots['extra-message']">
+          <slot name="extra-message" />
+        </template>
+      </var-input>
 
       <template #options>
         <div ref="optionsRef" :class="n('options')">
