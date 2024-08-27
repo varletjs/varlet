@@ -56,4 +56,8 @@ export const props = {
     type: Boolean,
     default: undefined,
   },
+  isForceErrorEffect: {
+    type: Boolean,
+    default: undefined,
+  },
 }

@@ -32,7 +32,7 @@
           focusColor,
           blurColor,
           isFocusing,
-          errorMessage,
+          isError: !!errorMessage,
           formDisabled,
           disabled,
           clearable,

@@ -13,7 +13,7 @@
         focusColor,
         blurColor,
         isFocusing: isForceFocusingEffect != null ? isForceFocusingEffect : isFocusing,
-        errorMessage,
+        isError: isForceErrorEffect != null ? isForceErrorEffect : !!errorMessage,
         formDisabled,
         disabled,
         clearable,

@@ -20,9 +20,7 @@
       <var-input
         ref="input"
         v-bind="{
-          rules,
           enterkeyhint,
-          onClear,
           maxlength,
           placeholder,
           size,
@@ -36,11 +34,12 @@
           clearable,
         }"
         autocomplete="off"
-        :validate-trigger="inputValidateTrigger"
         :is-force-focusing-effect="isFocusing"
+        :is-force-error-effect="!!errorMessage"
         @input="handleInput"
         @blur="handleBlur"
         @clear="handleClear"
+        @change="handleChange"
         v-model="value"
       >
         <template #prepend-icon v-if="$slots['prepend-icon']">
@@ -74,6 +73,8 @@
         </div>
       </template>
     </var-menu-select>
+
+    <var-form-details :error-message="errorMessage" />
   </div>
 </template>
 
@@ -81,9 +82,10 @@
 import VarInput from '../input'
 import VarMenuSelect from '../menu-select'
 import VarMenuOption from '../menu-option'
-import { computed, defineComponent, nextTick, ref, watch } from 'vue'
-import { props } from './props'
-import { createNamespace } from '../utils/components'
+import VarFormDetails from '../form-details'
+import { defineComponent, nextTick, ref, watch } from 'vue'
+import { type AutoCompleteValidateTrigger, props } from './props'
+import { createNamespace, useValidation } from '../utils/components'
 import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
 import { call, preventDefault, raf } from '@varlet/shared'
 import { useForm } from '../form/provide'
@@ -97,6 +99,7 @@ export default defineComponent({
     VarInput,
     VarMenuSelect,
     VarMenuOption,
+    VarFormDetails,
   },
   props,
   setup(props) {
@@ -108,9 +111,14 @@ export default defineComponent({
     const value = useVModel(props, 'modelValue')
     const localOptions = ref(props.options)
     const isShowMenuSelect = ref(false)
-    const inputValidateTrigger = computed(() =>
-      props.validateTrigger.filter((trigger) => !['onFocus', 'onBlur', 'onClick'].includes(trigger))
-    )
+
+    const {
+      errorMessage,
+      validateWithTrigger: vt,
+      validate: v,
+      // expose
+      resetValidation,
+    } = useValidation()
 
     const { bindForm, form } = useForm()
 
@@ -146,20 +154,23 @@ export default defineComponent({
 
     // expose
     function reset() {
-      input.value!.reset()
-    }
-
-    // expose
-    function resetValidation() {
-      input.value!.resetValidation()
+      value.value = ''
+      resetValidation()
     }
 
     // expose
     function validate() {
-      return input.value!.validate()
+      return v(props.rules, value.value)
     }
 
-    function handleKeydown(event: KeyboardEvent) {
+    function validateWithTrigger(trigger: AutoCompleteValidateTrigger) {
+      nextTick(() => {
+        const { validateTrigger, rules, modelValue } = props
+        vt(validateTrigger, trigger, rules, modelValue)
+      })
+    }
+
+    async function handleKeydown(event: KeyboardEvent) {
       if (
         form?.disabled.value ||
         form?.readonly.value ||
@@ -182,6 +193,12 @@ export default defineComponent({
 
       if (!['ArrowUp', 'ArrowDown', 'Enter'].includes(key)) {
         input.value!.focus()
+        return
+      }
+
+      if (key === 'Enter') {
+        await raf()
+        input.value!.focus()
       }
     }
 
@@ -189,6 +206,8 @@ export default defineComponent({
       // wait for the menu-select to close
       await raf()
 
+      // Menu select is not updated when closed,
+      // to solve the flickering problem caused by options changing when closed
       if (isShowMenuSelect.value) {
         localOptions.value = props.options
       }
@@ -197,11 +216,13 @@ export default defineComponent({
     async function handleInput(newValue: string, event: Event) {
       call(props.onInput, newValue, event)
       isShowMenuSelect.value = getShowMenuSelect(newValue)
+      validateWithTrigger('onInput')
     }
 
     function handleClear() {
       clearing = true
       isShowMenuSelect.value = getShowMenuSelect(value.value!)
+      validateWithTrigger('onClear')
     }
 
     function handleFocus() {
@@ -214,10 +235,7 @@ export default defineComponent({
       isShowMenuSelect.value = getShowMenuSelect(value.value ?? '')
       syncOptions()
       call(props.onFocus)
-
-      if (props.validateTrigger.includes('onFocus')) {
-        nextTick(validate)
-      }
+      validateWithTrigger('onFocus')
     }
 
     function handleBlur() {
@@ -227,10 +245,7 @@ export default defineComponent({
 
       isFocusing.value = false
       call(props.onBlur)
-
-      if (props.validateTrigger.includes('onBlur')) {
-        nextTick(validate)
-      }
+      validateWithTrigger('onBlur')
     }
 
     function handleClick(event: Event) {
@@ -239,10 +254,12 @@ export default defineComponent({
       }
 
       call(props.onClick, event)
+      validateWithTrigger('onClick')
+    }
 
-      if (props.validateTrigger.includes('onClick')) {
-        nextTick(validate)
-      }
+    function handleChange(newValue: string) {
+      call(props.onChange, newValue)
+      validateWithTrigger('onChange')
     }
 
     function handleAutoComplete(newValue: string) {
@@ -252,6 +269,7 @@ export default defineComponent({
 
       value.value = newValue
       call(props.onChange, newValue)
+      validateWithTrigger('onChange')
     }
 
     function getShowMenuSelect(newValue: string) {
@@ -272,7 +290,7 @@ export default defineComponent({
       input,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
-      inputValidateTrigger,
+      errorMessage,
       n,
       classes,
       handleInput,
@@ -280,6 +298,7 @@ export default defineComponent({
       handleFocus,
       handleClick,
       handleBlur,
+      handleChange,
       handleAutoComplete,
     }
   },
@@ -296,5 +315,6 @@ export default defineComponent({
 @import '../menu/menu';
 @import '../menu-option/menuOption';
 @import '../menu-select/menuSelect';
+@import '../form-details/formDetails';
 @import './autoComplete';
 </style>

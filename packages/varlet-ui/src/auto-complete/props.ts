@@ -6,7 +6,7 @@ export type AutoCompleteOptionLabelRender = (option: AutoCompleteOption, checked
 
 export type AutoCompleteOptionLabel = string | VNode | AutoCompleteOptionLabelRender
 
-export type AutoCompleteOptionValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+export type AutoCompleteValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
 
 export interface AutoCompleteOption {
   label?: AutoCompleteOptionLabel
@@ -37,7 +37,7 @@ export const props = {
   maxlength: [String, Number],
   readonly: Boolean,
   validateTrigger: {
-    type: Array as PropType<AutoCompleteOptionValidateTrigger[]>,
+    type: Array as PropType<AutoCompleteValidateTrigger[]>,
     default: () => ['onInput', 'onClear'],
   },
   rules: Array as PropType<Array<(v: string) => any>>,
