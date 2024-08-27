@@ -17,4 +17,5 @@ export default {
   numberPlaceholder: 'Please enter number',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
+  customMenuShowTiming: 'Custom Menu Show Timing',
 }

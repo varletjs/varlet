@@ -17,4 +17,5 @@ export default {
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',
   clearableText: '可清除文本',
+  customMenuShowTiming: '自定义菜单显示时机',
 }

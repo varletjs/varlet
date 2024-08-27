@@ -3,7 +3,7 @@
     ref="root"
     :class="n()"
     :tabindex="disabled || formDisabled ? undefined : '0'"
-    @focusin="handleFocus"
+    @focusin="focus"
     @click="handleClick"
   >
     <var-menu-select
@@ -37,7 +37,7 @@
         :is-force-focusing-effect="isFocusing"
         :is-force-error-effect="!!errorMessage"
         @input="handleInput"
-        @blur="handleBlur"
+        @blur="blur"
         @clear="handleClear"
         @change="handleChange"
         v-model="value"
@@ -142,7 +142,7 @@ export default defineComponent({
         }
 
         isShowMenuSelect.value = false
-        handleBlur()
+        blur()
       }
     )
 
@@ -161,6 +161,31 @@ export default defineComponent({
     // expose
     function validate() {
       return v(props.rules, value.value)
+    }
+
+    // expose
+    function focus() {
+      if (isFocusing.value || props.disabled || form?.disabled.value) {
+        return
+      }
+
+      isFocusing.value = true
+      input.value!.focus()
+      isShowMenuSelect.value = getShowMenuSelect(value.value ?? '')
+      syncOptions()
+      call(props.onFocus)
+      validateWithTrigger('onFocus')
+    }
+
+    // expose
+    function blur() {
+      if (isShowMenuSelect.value || !isFocusing.value) {
+        return
+      }
+
+      isFocusing.value = false
+      call(props.onBlur)
+      validateWithTrigger('onBlur')
     }
 
     function validateWithTrigger(trigger: AutoCompleteValidateTrigger) {
@@ -225,29 +250,6 @@ export default defineComponent({
       validateWithTrigger('onClear')
     }
 
-    function handleFocus() {
-      if (isFocusing.value || props.disabled || form?.disabled.value) {
-        return
-      }
-
-      isFocusing.value = true
-      input.value!.focus()
-      isShowMenuSelect.value = getShowMenuSelect(value.value ?? '')
-      syncOptions()
-      call(props.onFocus)
-      validateWithTrigger('onFocus')
-    }
-
-    function handleBlur() {
-      if (isShowMenuSelect.value || !isFocusing.value) {
-        return
-      }
-
-      isFocusing.value = false
-      call(props.onBlur)
-      validateWithTrigger('onBlur')
-    }
-
     function handleClick(event: Event) {
       if (props.disabled || form?.disabled.value) {
         return
@@ -282,7 +284,7 @@ export default defineComponent({
         return false
       }
 
-      return newValue.length > 0 && props.options.length > 0
+      return props.getShow != null ? props.getShow(newValue) : newValue.length > 0 && props.options.length > 0
     }
 
     return {
@@ -299,9 +301,9 @@ export default defineComponent({
       n,
       handleInput,
       handleClear,
-      handleFocus,
       handleClick,
-      handleBlur,
+      blur,
+      focus,
       handleChange,
       handleAutoComplete,
     }

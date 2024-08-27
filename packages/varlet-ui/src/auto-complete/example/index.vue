@@ -13,6 +13,19 @@ const { value: standardValue7, options: standardOptions7 } = useAutoComplete()
 const { value: standardValue8, options: standardOptions8 } = useAutoComplete()
 const { value: standardValue9, options: standardOptions9 } = useAutoComplete()
 const { value: standardValue10, options: standardOptions10 } = useAutoComplete()
+const { value: standardValue11, options: standardOptions11 } = useAutoComplete()
+
+const { value: outlinedValue, options: outlinedOptions } = useAutoComplete()
+const { value: outlinedValue2, options: outlinedOptions2 } = useAutoComplete()
+const { value: outlinedValue3, options: outlinedOptions3 } = useAutoComplete()
+const { value: outlinedValue4, options: outlinedOptions4 } = useAutoComplete()
+const { value: outlinedValue5, options: outlinedOptions5 } = useAutoComplete()
+const { value: outlinedValue6, options: outlinedOptions6 } = useAutoComplete()
+const { value: outlinedValue7, options: outlinedOptions7 } = useAutoComplete()
+const { value: outlinedValue8, options: outlinedOptions8 } = useAutoComplete()
+const { value: outlinedValue9, options: outlinedOptions9 } = useAutoComplete()
+const { value: outlinedValue10, options: outlinedOptions10 } = useAutoComplete()
+const { value: outlinedValue11, options: outlinedOptions11 } = useAutoComplete()
 
 watchLang(use)
 
@@ -76,10 +89,112 @@ function useAutoComplete() {
       v-model="standardValue9"
     />
     <var-auto-complete
-      size="small"
-      :placeholder="t('smallSize')"
+      :placeholder="t('customMenuShowTiming')"
+      :get-show="(value) => value.length > 3"
       :options="standardOptions10"
       v-model="standardValue10"
+    />
+    <var-auto-complete
+      size="small"
+      :placeholder="t('smallSize')"
+      :options="standardOptions11"
+      v-model="standardValue11"
+    />
+  </var-space>
+
+  <app-type style="margin-top: 10vmin">{{ t('outlined') }}</app-type>
+  <var-space direction="column" :size="['6vmin', 0]">
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('placeholder')"
+      :options="outlinedOptions"
+      v-model="outlinedValue"
+    />
+    <var-auto-complete
+      variant="outlined"
+      readonly
+      :placeholder="t('readonly')"
+      :options="outlinedOptions2"
+      v-model="outlinedValue2"
+    />
+    <var-auto-complete
+      variant="outlined"
+      disabled
+      :placeholder="t('disabled')"
+      :options="outlinedOptions3"
+      v-model="outlinedValue3"
+    />
+    <var-auto-complete
+      variant="outlined"
+      clearable
+      :placeholder="t('clearable')"
+      :options="outlinedOptions4"
+      v-model="outlinedValue4"
+    />
+    <var-auto-complete
+      variant="outlined"
+      clearable
+      :placeholder="t('clearIconSlot')"
+      :options="outlinedOptions5"
+      v-model="outlinedValue5"
+    >
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('validate')"
+      :options="outlinedOptions6"
+      :rules="[(v) => v.length > 6 || t('maxMessage')]"
+      v-model="outlinedValue6"
+    />
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('displayIcon')"
+      :options="outlinedOptions7"
+      v-model="outlinedValue7"
+    >
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('customIconSize')"
+      :options="outlinedOptions8"
+      v-model="outlinedValue8"
+    >
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" size="8vmin" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" size="12vmin" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('maxlength')"
+      :maxlength="10"
+      :options="outlinedOptions9"
+      v-model="outlinedValue9"
+    />
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('customMenuShowTiming')"
+      :get-show="(value) => value.length > 3"
+      :options="outlinedOptions10"
+      v-model="outlinedValue10"
+    />
+    <var-auto-complete
+      variant="outlined"
+      size="small"
+      :placeholder="t('smallSize')"
+      :options="outlinedOptions11"
+      v-model="outlinedValue11"
     />
   </var-space>
 </template>

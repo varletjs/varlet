@@ -36,6 +36,7 @@ export const props = {
     type: Array as PropType<AutoCompleteValidateTrigger[]>,
     default: () => ['onInput', 'onClear', 'onChange'],
   },
+  getShow: Function as PropType<(v: string) => boolean>,
   rules: Array as PropType<Array<(v: string) => any>>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
   onFocus: defineListenerProp<() => void>(),
