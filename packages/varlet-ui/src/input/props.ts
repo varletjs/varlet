@@ -50,7 +50,7 @@ export const props = {
     'clearable',
     'onClick',
   ]),
-  // internal
+  // internal start
   autocomplete: String,
   isForceFocusingEffect: {
     type: Boolean,
@@ -60,4 +60,9 @@ export const props = {
     type: Boolean,
     default: undefined,
   },
+  isShowFormDetails: {
+    type: Boolean,
+    default: true,
+  },
+  // internal end
 }

@@ -19,9 +19,7 @@ exports[`test auto-complete custom color 1`] = `
           <div class="var-field-decorator__dot" style="background: blue;"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -51,9 +49,7 @@ exports[`test auto-complete disabled 1`] = `
           <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -81,9 +77,7 @@ exports[`test auto-complete hint and line 1`] = `
         </div>
         <!--v-if-->
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -113,9 +107,7 @@ exports[`test auto-complete modelValue 1`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -144,9 +136,7 @@ exports[`test auto-complete placeholder 1`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -176,9 +166,7 @@ exports[`test auto-complete readonly 1`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -208,9 +196,7 @@ exports[`test auto-complete size 1`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -240,18 +226,7 @@ exports[`test auto-complete slots 1`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <div class="var-form-details">
-          <div class="var-form-details__error-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-              <!--v-if-->
-            </transition-stub>
-          </div>
-          <div class="var-form-details__extra-message">
-            <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">extra-message</transition-stub>
-          </div>
-        </div>
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -281,9 +256,7 @@ exports[`test auto-complete validation 1`] = `
           <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -324,9 +297,7 @@ exports[`test auto-complete validation 2`] = `
           <div class="var-field-decorator__dot"></div>
         </div>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->
@@ -358,9 +329,7 @@ exports[`test auto-complete variant 1`] = `
           </legend>
         </fieldset>
       </div>
-      <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-        <!--v-if-->
-      </transition-stub>
+      <!--v-if-->
     </div>
     <!--teleport start-->
     <!--teleport end-->

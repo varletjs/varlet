@@ -81,9 +81,7 @@ exports[`test form with auto-complete 1`] = `
             <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
           </div>
         </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
+        <!--v-if-->
       </div>
       <!--teleport start-->
       <!--teleport end-->
@@ -126,9 +124,7 @@ exports[`test form with auto-complete 2`] = `
             <div class="var-field-decorator__dot"></div>
           </div>
         </div>
-        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
-          <!--v-if-->
-        </transition-stub>
+        <!--v-if-->
       </div>
       <!--teleport start-->
       <!--teleport end-->

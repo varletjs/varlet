@@ -21,8 +21,8 @@
       <var-input
         ref="input"
         v-bind="{
-          enterkeyhint,
           maxlength,
+          enterkeyhint,
           placeholder,
           size,
           variant,
@@ -38,6 +38,7 @@
         autocomplete="off"
         :is-force-focusing-effect="isFocusing"
         :is-force-error-effect="!!errorMessage"
+        :is-show-form-details="false"
         @input="handleInput"
         @blur="handleBlur"
         @clear="handleClear"
@@ -76,7 +77,7 @@
       </template>
     </var-menu-select>
 
-    <var-form-details :error-message="errorMessage" />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop />
   </div>
 </template>
 
@@ -85,11 +86,11 @@ import VarInput from '../input'
 import VarMenuSelect from '../menu-select'
 import VarMenuOption from '../menu-option'
 import VarFormDetails from '../form-details'
-import { defineComponent, nextTick, ref, watch } from 'vue'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
 import { type AutoCompleteValidateTrigger, props, type AutoCompleteOption } from './props'
 import { createNamespace, useValidation } from '../utils/components'
 import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
-import { call, preventDefault, raf, toNumber } from '@varlet/shared'
+import { call, isEmpty, preventDefault, raf, toNumber } from '@varlet/shared'
 import { useForm } from '../form/provide'
 import { AutoCompleteProvider } from './provide'
 
@@ -113,6 +114,20 @@ export default defineComponent({
     const value = useVModel(props, 'modelValue')
     const viewOptions = ref<AutoCompleteOption[]>([])
     const isShowMenuSelect = ref(false)
+
+    const maxlengthText = computed(() => {
+      const { maxlength } = props
+
+      if (!maxlength) {
+        return ''
+      }
+
+      if (isEmpty(value.value)) {
+        return `0 / ${maxlength}`
+      }
+
+      return `${String(value.value).length}/${maxlength}`
+    })
 
     const {
       errorMessage,
@@ -307,6 +322,7 @@ export default defineComponent({
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       errorMessage,
+      maxlengthText,
       n,
       handleInput,
       handleClear,
