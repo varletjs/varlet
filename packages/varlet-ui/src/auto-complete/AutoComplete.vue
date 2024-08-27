@@ -7,10 +7,10 @@
     @click="handleClick"
   >
     <var-menu-select
-      trigger="manual"
-      placement="bottom"
       same-width
       auto-complete-cover
+      trigger="manual"
+      placement="bottom"
       :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
       :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
@@ -91,7 +91,7 @@ import { call, preventDefault, raf } from '@varlet/shared'
 import { useForm } from '../form/provide'
 import { AutoCompleteProvider } from './provide'
 
-const { name, n, classes } = createNamespace('auto-complete')
+const { name, n } = createNamespace('auto-complete')
 
 export default defineComponent({
   name,
@@ -283,16 +283,15 @@ export default defineComponent({
     return {
       root,
       optionsRef,
+      input,
       value,
       isShowMenuSelect,
       localOptions,
       isFocusing,
-      input,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,
       errorMessage,
       n,
-      classes,
       handleInput,
       handleClear,
       handleFocus,
