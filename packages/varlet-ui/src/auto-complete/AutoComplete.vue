@@ -147,7 +147,7 @@ export default defineComponent({
       }
     )
 
-    watch(() => props.options, syncOptions)
+    watch(() => [props.options, isFocusing.value], syncOptions)
 
     call(bindForm, autoCompleteProvider)
 
@@ -172,8 +172,6 @@ export default defineComponent({
 
       isFocusing.value = true
       input.value!.focus()
-      isShowMenuSelect.value = getShowMenuSelect(value.value ?? '')
-      syncOptions()
       call(props.onFocus)
       validateWithTrigger('onFocus')
     }
