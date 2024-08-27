@@ -9,6 +9,7 @@
     <var-menu-select
       same-width
       auto-complete-cover
+      scrollable
       trigger="manual"
       placement="bottom"
       :disabled="disabled || formDisabled || readonly || formReadonly"
@@ -63,7 +64,7 @@
       <template #options>
         <div ref="optionsRef" :class="n('options')">
           <var-menu-option
-            v-for="option in localOptions"
+            v-for="option in viewOptions"
             :key="option[valueKey]"
             :label="option[labelKey]"
             :value="option[valueKey]"
@@ -85,7 +86,7 @@ import VarMenuSelect from '../menu-select'
 import VarMenuOption from '../menu-option'
 import VarFormDetails from '../form-details'
 import { defineComponent, nextTick, ref, watch } from 'vue'
-import { type AutoCompleteValidateTrigger, props } from './props'
+import { type AutoCompleteValidateTrigger, props, type AutoCompleteOption } from './props'
 import { createNamespace, useValidation } from '../utils/components'
 import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
 import { call, preventDefault, raf, toNumber } from '@varlet/shared'
@@ -110,7 +111,7 @@ export default defineComponent({
 
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
-    const localOptions = ref(props.options)
+    const viewOptions = ref<AutoCompleteOption[]>([])
     const isShowMenuSelect = ref(false)
 
     const {
@@ -238,25 +239,23 @@ export default defineComponent({
     }
 
     async function syncOptions() {
-      // wait for the menu-select to close
-      await raf()
+      if (isFocusing.value) {
+        isShowMenuSelect.value = getShowMenuSelect(value.value!)
+      }
 
-      // Menu select is not updated when closed,
-      // to solve the flickering problem caused by options changing when closed
+      // when the menu is closed, the options are not updated, avoiding the flicker of the menu
       if (isShowMenuSelect.value) {
-        localOptions.value = props.options
+        viewOptions.value = props.options
       }
     }
 
     async function handleInput(newValue: string, event: Event) {
       call(props.onInput, newValue, event)
-      isShowMenuSelect.value = getShowMenuSelect(newValue)
       validateWithTrigger('onInput')
     }
 
     function handleClear() {
       clearing = true
-      isShowMenuSelect.value = getShowMenuSelect(value.value!)
       call(props.onClear, value.value!)
       validateWithTrigger('onClear')
     }
@@ -294,7 +293,7 @@ export default defineComponent({
         return false
       }
 
-      return props.getShow != null ? props.getShow(newValue) : newValue.length > 0 && props.options.length > 0
+      return props.options.length > 0 && (props.getShow != null ? props.getShow(newValue) : newValue.length > 0)
     }
 
     return {
@@ -303,7 +302,7 @@ export default defineComponent({
       input,
       value,
       isShowMenuSelect,
-      localOptions,
+      viewOptions,
       isFocusing,
       formDisabled: form?.disabled,
       formReadonly: form?.readonly,

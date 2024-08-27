@@ -520,3 +520,20 @@ test('test auto-complete clear-icon scoped clear method', async () => {
 
   wrapper.unmount()
 })
+
+test('test auto-complete blur without focus', () => {
+  const onBlur = vi.fn()
+  const wrapper = mount(AutoComplete, {
+    props: {
+      onBlur,
+    },
+  })
+
+  wrapper.vm.blur()
+  expect(onBlur).toHaveBeenCalledTimes(0)
+
+  wrapper.vm.focus()
+  wrapper.vm.blur()
+  expect(onBlur).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
+})

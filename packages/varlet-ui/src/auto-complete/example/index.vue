@@ -1,7 +1,7 @@
 <script setup>
 import { watchLang, AppType } from '@varlet/cli/client'
 import { use, t } from './locale'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const { value: standardValue, options: standardOptions } = useAutoComplete()
 const { value: standardValue2, options: standardOptions2 } = useAutoComplete()
