@@ -77,7 +77,7 @@
       </template>
     </var-menu-select>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop />
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" />
   </div>
 </template>
 

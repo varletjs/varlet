@@ -117,12 +117,7 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details
-      :error-message="errorMessage"
-      :extra-message="maxlengthText"
-      @mousedown.stop
-      v-if="isShowFormDetails"
-    >
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" v-if="isShowFormDetails">
       <template v-if="$slots['extra-message']" #extra-message>
         <slot name="extra-message" />
       </template>
