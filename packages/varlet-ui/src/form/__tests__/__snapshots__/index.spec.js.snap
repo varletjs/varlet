@@ -61,6 +61,85 @@ exports[`test form events 2`] = `
 </form>"
 `;
 
+exports[`test form with auto-complete 1`] = `
+"<form class="var-form">
+  <div class="var-auto-complete" tabindex="0">
+    <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+      <div class="var-input var--box">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__middle">
+              <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            </div>
+            <!--v-if-->
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
+          </div>
+          <div class="var-field-decorator__line var-field-decorator--line-error">
+            <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
+          </div>
+        </div>
+        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+          <!--v-if-->
+        </transition-stub>
+      </div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <div class="var-form-details">
+        <div class="var-form-details__error-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <div>不能为空</div>
+          </transition-stub>
+        </div>
+        <div class="var-form-details__extra-message">
+          <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+            <!--v-if-->
+          </transition-stub>
+        </div>
+      </div>
+    </transition-stub>
+  </div>
+</form>"
+`;
+
+exports[`test form with auto-complete 2`] = `
+"<form class="var-form">
+  <div class="var-auto-complete" tabindex="0">
+    <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+      <div class="var-input var--box">
+        <div class="var-field-decorator var--box var-field-decorator--standard">
+          <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+            <div class="var-field-decorator__icon"></div>
+            <div class="var-field-decorator__middle">
+              <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+            </div>
+            <!--v-if-->
+            <div class="var-field-decorator__icon">
+              <!--v-if-->
+            </div>
+          </div>
+          <div class="var-field-decorator__line">
+            <div class="var-field-decorator__dot"></div>
+          </div>
+        </div>
+        <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+          <!--v-if-->
+        </transition-stub>
+      </div>
+      <!--teleport start-->
+      <!--teleport end-->
+    </div>
+    <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+      <!--v-if-->
+    </transition-stub>
+  </div>
+</form>"
+`;
+
 exports[`test form with checkbox 1`] = `
 "<form class="var-form">
   <div class="var-checkbox__wrap">

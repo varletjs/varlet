@@ -13,7 +13,7 @@
       placement="bottom"
       :disabled="disabled || formDisabled || readonly || formReadonly"
       :class="n('menu-select')"
-      :popover-class="variant === 'standard' && hint ? n('--standard-menu-margin') : undefined"
+      :popover-class="variant === 'standard' ? n('--standard-menu-margin') : undefined"
       v-model:show="isShowMenuSelect"
       @update:model-value="handleAutoComplete"
     >
@@ -28,6 +28,7 @@
           line,
           hint,
           textColor,
+          focusColor,
           blurColor,
           readonly,
           disabled,
@@ -37,7 +38,7 @@
         :is-force-focusing-effect="isFocusing"
         :is-force-error-effect="!!errorMessage"
         @input="handleInput"
-        @blur="blur"
+        @blur="handleBlur"
         @clear="handleClear"
         @change="handleChange"
         v-model="value"
@@ -141,7 +142,6 @@ export default defineComponent({
           return
         }
 
-        isShowMenuSelect.value = false
         blur()
       }
     )
@@ -154,13 +154,13 @@ export default defineComponent({
 
     // expose
     function reset() {
-      value.value = ''
+      call(props['onUpdate:modelValue'], '')
       resetValidation()
     }
 
     // expose
     function validate() {
-      return v(props.rules, value.value)
+      return v(props.rules, props.modelValue)
     }
 
     // expose
@@ -179,13 +179,23 @@ export default defineComponent({
 
     // expose
     function blur() {
-      if (isShowMenuSelect.value || !isFocusing.value) {
+      if (!isFocusing.value) {
         return
       }
 
       isFocusing.value = false
+      isShowMenuSelect.value = false
+      input.value!.blur()
       call(props.onBlur)
       validateWithTrigger('onBlur')
+    }
+
+    function handleBlur() {
+      if (isShowMenuSelect.value) {
+        return
+      }
+
+      blur()
     }
 
     function validateWithTrigger(trigger: AutoCompleteValidateTrigger) {
@@ -223,7 +233,7 @@ export default defineComponent({
 
       if (key === 'Enter') {
         await raf()
-        input.value!.focus()
+        input.value?.focus()
       }
     }
 
@@ -247,6 +257,7 @@ export default defineComponent({
     function handleClear() {
       clearing = true
       isShowMenuSelect.value = getShowMenuSelect(value.value!)
+      call(props.onClear, value.value!)
       validateWithTrigger('onClear')
     }
 
@@ -274,7 +285,6 @@ export default defineComponent({
       }
 
       value.value = newValue
-
       call(props.onChange, newValue)
       validateWithTrigger('onChange')
     }
@@ -302,10 +312,14 @@ export default defineComponent({
       handleInput,
       handleClear,
       handleClick,
+      handleChange,
+      handleBlur,
+      handleAutoComplete,
+      reset,
+      validate,
+      resetValidation,
       blur,
       focus,
-      handleChange,
-      handleAutoComplete,
     }
   },
 })

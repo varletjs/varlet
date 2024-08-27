@@ -1,6 +1,6 @@
 import { type InputHTMLAttributes, type PropType, type VNode, type VNodeChild } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
-import { fieldDecoratorProps } from '../field-decorator'
+import { inputProps } from '../input'
 
 export type AutoCompleteOptionLabelRender = (option: AutoCompleteOption, checked: boolean) => VNodeChild
 
@@ -32,30 +32,30 @@ export const props = {
   },
   maxlength: [String, Number],
   readonly: Boolean,
+  disabled: Boolean,
   validateTrigger: {
     type: Array as PropType<AutoCompleteValidateTrigger[]>,
     default: () => ['onInput', 'onClear', 'onChange'],
   },
   getShow: Function as PropType<(v: string) => boolean>,
   rules: Array as PropType<Array<(v: string) => any>>,
-  enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),
   onChange: defineListenerProp<(value: string) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
+  onClick: defineListenerProp<(e: Event) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
-  ...pickProps(fieldDecoratorProps, [
+  ...pickProps(inputProps, [
     'size',
     'variant',
     'placeholder',
+    'enterkeyhint',
     'line',
     'hint',
     'textColor',
     'focusColor',
     'blurColor',
-    'disabled',
     'clearable',
-    'onClick',
   ]),
 }
