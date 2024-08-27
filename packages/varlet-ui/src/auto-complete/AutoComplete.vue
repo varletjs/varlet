@@ -147,7 +147,7 @@ export default defineComponent({
       }
     )
 
-    watch(() => [props.options, isFocusing.value], syncOptions)
+    watch(() => [props.options, isFocusing.value], changeMenuState)
 
     call(bindForm, autoCompleteProvider)
 
@@ -236,7 +236,7 @@ export default defineComponent({
       }
     }
 
-    async function syncOptions() {
+    async function changeMenuState() {
       if (isFocusing.value) {
         isShowMenuSelect.value = getShowMenuSelect(value.value!)
       }
@@ -248,12 +248,14 @@ export default defineComponent({
     }
 
     async function handleInput(newValue: string, event: Event) {
+      changeMenuState()
       call(props.onInput, newValue, event)
       validateWithTrigger('onInput')
     }
 
     function handleClear() {
       clearing = true
+      changeMenuState()
       call(props.onClear, value.value!)
       validateWithTrigger('onClear')
     }
