@@ -87,7 +87,7 @@ import { defineComponent, nextTick, ref, watch } from 'vue'
 import { type AutoCompleteValidateTrigger, props } from './props'
 import { createNamespace, useValidation } from '../utils/components'
 import { useClickOutside, useEventListener, useVModel } from '@varlet/use'
-import { call, preventDefault, raf } from '@varlet/shared'
+import { call, preventDefault, raf, toNumber } from '@varlet/shared'
 import { useForm } from '../form/provide'
 import { AutoCompleteProvider } from './provide'
 
@@ -226,7 +226,7 @@ export default defineComponent({
     }
 
     function handleFocus() {
-      if (isFocusing.value) {
+      if (isFocusing.value || props.disabled || form?.disabled.value) {
         return
       }
 
@@ -263,11 +263,16 @@ export default defineComponent({
     }
 
     function handleAutoComplete(newValue: string) {
+      if (props.maxlength != null) {
+        newValue = newValue.slice(0, toNumber(props.maxlength))
+      }
+
       if (newValue === value.value) {
         return
       }
 
       value.value = newValue
+
       call(props.onChange, newValue)
       validateWithTrigger('onChange')
     }

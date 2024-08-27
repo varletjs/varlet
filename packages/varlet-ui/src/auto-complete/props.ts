@@ -18,10 +18,6 @@ export interface AutoCompleteOption {
 
 export const props = {
   modelValue: String,
-  modelModifiers: {
-    type: Object as PropType<{ trim?: boolean }>,
-    default: () => ({}),
-  },
   options: {
     type: Array as PropType<Array<AutoCompleteOption>>,
     default: () => [],
@@ -38,7 +34,7 @@ export const props = {
   readonly: Boolean,
   validateTrigger: {
     type: Array as PropType<AutoCompleteValidateTrigger[]>,
-    default: () => ['onInput', 'onClear'],
+    default: () => ['onInput', 'onClear', 'onChange'],
   },
   rules: Array as PropType<Array<(v: string) => any>>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
