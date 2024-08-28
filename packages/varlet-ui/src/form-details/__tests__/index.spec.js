@@ -56,15 +56,12 @@ describe('test form details component slots', () => {
   test('test chip extraMessage slots', () => {
     const wrapper = mount(FormDetails, {
       slots: {
-        extraMessage: () => 'This is extraMessage slots',
+        'extra-message': () => 'This is extra message slot',
       },
     })
 
     const extraMessageWrapper = wrapper.find('.var-form-details__extra-message')
-
-    if (extraMessageWrapper.exists()) {
-      expect(extraMessageWrapper.html()).toContain('This is extraMessage slots')
-    }
+    expect(extraMessageWrapper.text()).toBe('This is extra message slot')
 
     wrapper.unmount()
   })
