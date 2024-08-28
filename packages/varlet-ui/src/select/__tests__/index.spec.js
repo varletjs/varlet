@@ -32,7 +32,7 @@ test('test option default slot', () => {
     }),
     template: `
       <var-select v-model="value">
-        <var-option label="吃饭" />
+        <var-option label="eat" />
         <var-option>
           <template #default="{ selected }">
             <span class="test-default-slot">{{ selected }}</span>
@@ -99,15 +99,15 @@ test('test select by label', async () => {
     }),
     template: `
       <var-select v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
   })
 
   await wrapper.trigger('click')
   await trigger(document.querySelector('.var-option'), 'click')
-  expect(wrapper.vm.value).toBe('吃饭')
+  expect(wrapper.vm.value).toBe('eat')
 
   wrapper.unmount()
 })
@@ -120,8 +120,8 @@ test('test select by value', async () => {
     }),
     template: `
       <var-select v-model="value">
-        <var-option label="吃饭" :value="1" />
-        <var-option label="睡觉" :value="2" />
+        <var-option label="eat" :value="1" />
+        <var-option label="sleep" :value="2" />
       </var-select>
     `,
   })
@@ -141,8 +141,8 @@ test('test select by disabled', async () => {
     }),
     template: `
       <var-select v-model="value">
-        <var-option label="吃饭" disabled />
-        <var-option label="睡觉" disabled />
+        <var-option label="eat" disabled />
+        <var-option label="sleep" disabled />
       </var-select>
     `,
   })
@@ -158,12 +158,12 @@ test('test select hint to be false', () => {
   const wrapper = mount({
     ...Wrapper,
     data: () => ({
-      value: '吃饭',
+      value: 'eat',
     }),
     template: `
       <var-select :hint="false" v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
   })
@@ -186,8 +186,8 @@ test('test select onFocus', async () => {
     },
     template: `
       <var-select v-model="value" @focus="onFocus">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
   })
@@ -207,7 +207,7 @@ test('test select disabled', async () => {
       ...Wrapper,
       data: () => ({
         disabled: true,
-        value: '睡觉',
+        value: 'sleep',
       }),
       methods: {
         onFocus,
@@ -222,8 +222,8 @@ test('test select disabled', async () => {
         @focus="onFocus"
         @blur="onBlur"
       >
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -243,10 +243,10 @@ test('test select disabled', async () => {
   await wrapper.trigger('click')
   await wrapper.setData({ disabled: true })
   await trigger(document.querySelector('.var-option'), 'click')
-  expect(wrapper.vm.value).toBe('睡觉')
+  expect(wrapper.vm.value).toBe('sleep')
 
   await wrapper.find('.var-icon-close-circle').trigger('click')
-  expect(wrapper.vm.value).toBe('睡觉')
+  expect(wrapper.vm.value).toBe('sleep')
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -261,7 +261,7 @@ test('test select readonly', async () => {
       ...Wrapper,
       data: () => ({
         readonly: true,
-        value: '睡觉',
+        value: 'sleep',
       }),
       methods: {
         onFocus,
@@ -276,8 +276,8 @@ test('test select readonly', async () => {
         @focus="onFocus"
         @blur="onBlur"
       >
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -297,10 +297,10 @@ test('test select readonly', async () => {
   await trigger(document.querySelector('.var-select__menu'), 'click')
   await wrapper.setData({ readonly: true })
   await trigger(document.querySelector('.var-option'), 'click')
-  expect(wrapper.vm.value).toBe('睡觉')
+  expect(wrapper.vm.value).toBe('sleep')
 
   await wrapper.find('.var-icon-close-circle').trigger('click')
-  expect(wrapper.vm.value).toBe('睡觉')
+  expect(wrapper.vm.value).toBe('sleep')
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -311,12 +311,12 @@ test('test select clear', async () => {
     {
       ...Wrapper,
       data: () => ({
-        value: '吃饭',
+        value: 'eat',
       }),
       template: `
       <var-select clearable v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -338,8 +338,8 @@ test('test select multiple value', async () => {
       }),
       template: `
       <var-select multiple v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -349,7 +349,7 @@ test('test select multiple value', async () => {
   await wrapper.trigger('click')
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
-  expect(wrapper.vm.value).toStrictEqual(['吃饭', '睡觉'])
+  expect(wrapper.vm.value).toStrictEqual(['eat', 'sleep'])
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -364,8 +364,8 @@ test('test select multiple value in chips', async () => {
       }),
       template: `
       <var-select multiple chip v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -375,11 +375,11 @@ test('test select multiple value in chips', async () => {
   await wrapper.trigger('click')
 
   Array.from(document.querySelectorAll('.var-option')).forEach((el) => trigger(el, 'click'))
-  expect(wrapper.vm.value).toStrictEqual(['吃饭', '睡觉'])
+  expect(wrapper.vm.value).toStrictEqual(['eat', 'sleep'])
   await delay(16)
 
   await wrapper.find('.var-chip--close').trigger('click')
-  expect(wrapper.vm.value).toStrictEqual(['睡觉'])
+  expect(wrapper.vm.value).toStrictEqual(['sleep'])
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -393,9 +393,9 @@ test('test select validation', async () => {
         value: '',
       }),
       template: `
-      <var-select ref="select" :rules="[v => !!v || '您必须选择一个']" v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+      <var-select ref="select" :rules="[v => !!v || 'You must choose one option']" v-model="value">
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -406,7 +406,7 @@ test('test select validation', async () => {
 
   select.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须选择一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.trigger('click')
@@ -429,8 +429,8 @@ test('test select focus & blur methods', async () => {
     }),
     template: `
       <var-select ref="select" v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
   })
@@ -457,8 +457,8 @@ test('test select keyboard select option by space', async () => {
       }),
       template: `
       <var-select v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -470,7 +470,7 @@ test('test select keyboard select option by space', async () => {
   await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
   await triggerKeyboard(document.querySelector('.var-option'), 'focus')
   await triggerKeyboard(window, 'keyup', { key: ' ' })
-  expect(wrapper.vm.value).toBe('吃饭')
+  expect(wrapper.vm.value).toBe('eat')
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -485,8 +485,8 @@ test('test select keyboard select option by enter', async () => {
       }),
       template: `
       <var-select v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -498,7 +498,7 @@ test('test select keyboard select option by enter', async () => {
   await triggerKeyboard(window, 'keydown', { key: 'ArrowDown' })
   await triggerKeyboard(document.querySelector('.var-option'), 'focus')
   await triggerKeyboard(window, 'keydown', { key: 'Enter' })
-  expect(wrapper.vm.value).toBe('吃饭')
+  expect(wrapper.vm.value).toBe('eat')
 
   wrapper.unmount()
   document.body.innerHTML = ''
@@ -513,8 +513,8 @@ test('test select keyboard close menu by escape', async () => {
       }),
       template: `
       <var-select v-model="value">
-        <var-option label="吃饭" />
-        <var-option label="睡觉" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
       </var-select>
     `,
     },
@@ -542,10 +542,10 @@ test('test select offset-y', async () => {
       }),
       template: `
       <var-select ref="select" offset-y="40">
-        <var-option label="火猫" />
-        <var-option label="土猫" />
-        <var-option label="紫猫" />
-        <var-option label="蓝猫" />
+        <var-option label="eat" />
+        <var-option label="sleep" />
+        <var-option label="read" />
+        <var-option label="game" />
       </var-select>
       `,
     },

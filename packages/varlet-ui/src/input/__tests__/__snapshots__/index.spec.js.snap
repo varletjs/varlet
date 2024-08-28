@@ -394,7 +394,7 @@ exports[`test input validation 1`] = `
     <div class="var-form-details">
       <div class="var-form-details__error-message">
         <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-          <div>长度必须大于3</div>
+          <div>The length of value must be more than three</div>
         </transition-stub>
       </div>
       <div class="var-form-details__extra-message">

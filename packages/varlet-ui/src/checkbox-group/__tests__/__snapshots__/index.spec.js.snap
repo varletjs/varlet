@@ -421,7 +421,7 @@ exports[`test checkbox group validation 1`] = `
     <div class="var-form-details">
       <div class="var-form-details__error-message">
         <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-          <div>至少选一个</div>
+          <div>You must choose one option at least</div>
         </transition-stub>
       </div>
       <div class="var-form-details__extra-message">
@@ -550,7 +550,7 @@ exports[`test checkbox validation 1`] = `
     <div class="var-form-details">
       <div class="var-form-details__error-message">
         <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-          <div>您必须勾选</div>
+          <div>You must choose one option</div>
         </transition-stub>
       </div>
       <div class="var-form-details__extra-message">

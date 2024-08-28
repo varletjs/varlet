@@ -246,7 +246,7 @@ test('test uploader validation', async () => {
   const wrapper = mount(VarUploader, {
     props: {
       modelValue: [],
-      rules: [(v) => v.length >= 1 || '您至少上传一个'],
+      rules: [(v) => v.length >= 1 || 'You must upload one file at least'],
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
@@ -254,7 +254,7 @@ test('test uploader validation', async () => {
   wrapper.vm.validate()
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您至少上传一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must upload one file at least')
 
   await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
   await delay(16)
@@ -409,12 +409,12 @@ test('test uploader progress', () => {
 test('test uploader extra slot', async () => {
   const wrapper = mount(VarUploader, {
     slots: {
-      'extra-message': () => '还能上传3个文件',
+      'extra-message': () => 'There are three files rest to upload',
     },
   })
 
   await delay(100)
-  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能上传3个文件')
+  expect(wrapper.find('.var-form-details__extra-message').text()).toBe('There are three files rest to upload')
 
   wrapper.unmount()
 })

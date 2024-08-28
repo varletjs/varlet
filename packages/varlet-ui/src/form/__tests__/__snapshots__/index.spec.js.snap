@@ -22,7 +22,7 @@ exports[`test form events 1`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>不能为空</div>
+            <div>It can not be not empty</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -112,7 +112,7 @@ exports[`test form with checkbox 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须勾选</div>
+            <div>You must choose one option</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -198,7 +198,7 @@ exports[`test form with counter 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须大于0</div>
+            <div>The value must be more than zero</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -303,7 +303,7 @@ exports[`test form with input 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>不能为空</div>
+            <div>It can not be not empty</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -387,7 +387,7 @@ exports[`test form with radio 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须勾选</div>
+            <div>You must choose one option</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -468,7 +468,7 @@ exports[`test form with rate 2`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须大于0</div>
+            <div>The value must be more than zero</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -520,7 +520,7 @@ exports[`test form with select 1`] = `
             <div class="var-select__select var-select--disabled" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
-                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>选项1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
+                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>option1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div>
               <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
@@ -554,7 +554,7 @@ exports[`test form with select 2`] = `
             <div class="var-select__select" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
-                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>选项1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
+                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--default var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>option1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div>
               <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
@@ -588,7 +588,7 @@ exports[`test form with select 3`] = `
             <div class="var-select__select var-select--error" style="text-align: left;">
               <div class="var-select__label">
                 <div class="var-select__chips">
-                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>选项1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
+                  <transition-stub name="var-fade" appear="false" persisted="false" css="true"><span class="var-chip var--box var-chip--small var--inline-flex var-chip--danger var-chip--round var-select__chip" var-select-cover=""><span class="var-chip__text-small"><span>option1</span></span><span class="var-chip--close"><i class="var-icon var-icon--set var-icon-close-circle" style="transition-duration: 0ms;"></i></span></span></transition-stub>
                 </div>
               </div>
               <!--v-if--><i class="var-icon var-icon--set var-icon-menu-down var-select__arrow" style="transition-duration: 300ms;" var-select-cover=""></i>
@@ -608,7 +608,7 @@ exports[`test form with select 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>选择必须多于1个</div>
+            <div>You must choose one option at least</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -699,7 +699,7 @@ exports[`test form with slider 2`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>必须大于10</div>
+            <div>It must be more than ten</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -771,7 +771,7 @@ exports[`test form with switch 2`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>您必须开启</div>
+            <div>It should be truthy</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">
@@ -850,7 +850,7 @@ exports[`test form with uploader 3`] = `
       <div class="var-form-details">
         <div class="var-form-details__error-message">
           <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-            <div>至少上传一个</div>
+            <div>You must upload one file at least</div>
           </transition-stub>
         </div>
         <div class="var-form-details__extra-message">

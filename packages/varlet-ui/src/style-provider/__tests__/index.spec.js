@@ -37,10 +37,13 @@ test('test styleProvider component', async () => {
   })
   expect(el.attributes('style')).toBe('--cell-font-size: 30px;')
   expect(wrapper.html()).toMatchSnapshot()
+
   wrapper.unmount()
 })
 
 test('test styleProvider tag', () => {
   const wrapper = mount(VarStyleProvider, { props: { tag: 'span' } })
   expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
 })

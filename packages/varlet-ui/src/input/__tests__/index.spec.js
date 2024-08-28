@@ -299,7 +299,7 @@ test('test input validation', async () => {
   const wrapper = mount(VarInput, {
     props: {
       modelValue: '',
-      rules: [(v) => v.length > 3 || '长度必须大于3'],
+      rules: [(v) => v.length > 3 || 'The length of value must be more than three'],
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
@@ -307,7 +307,7 @@ test('test input validation', async () => {
   await wrapper.find('.var-input__input').setValue('1')
   await wrapper.find('.var-input__input').trigger('input')
   await delay(16)
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('长度必须大于3')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('The length of value must be more than three')
   expect(wrapper.html()).toMatchSnapshot()
 
   wrapper.vm.reset()
@@ -368,12 +368,12 @@ describe('test input component slots', () => {
   test('test input extra slot', async () => {
     const wrapper = mount(VarInput, {
       slots: {
-        'extra-message': () => '还能输入10个字符',
+        'extra-message': () => 'There are ten characters that you can input',
       },
     })
 
     await delay(100)
-    expect(wrapper.find('.var-form-details__extra-message').text()).toBe('还能输入10个字符')
+    expect(wrapper.find('.var-form-details__extra-message').text()).toBe('There are ten characters that you can input')
 
     wrapper.unmount()
   })
