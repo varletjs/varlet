@@ -3,7 +3,7 @@
 exports[`test timePicker hint 1`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
-    <div class="var-time-picker__title-hint">选择打卡时间</div>
+    <div class="var-time-picker__title-hint">choose clock-in time</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
         <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span class="var-time-picker__title-splitter">:</span>
@@ -46,7 +46,7 @@ exports[`test timePicker hint 1`] = `
 exports[`test timePicker hint 2`] = `
 "<div class="var-time-picker">
   <div class="var-time-picker__title">
-    <div class="var-time-picker__title-hint">选择下班时间</div>
+    <div class="var-time-picker__title-hint">choose off-duty time</div>
     <div class="var-time-picker__title-time-container">
       <div class="var-time-picker__title-time">
         <div class="var-time-picker__title-btn var-time-picker__title-btn--active">00</div><span class="var-time-picker__title-splitter">:</span>
