@@ -112,7 +112,7 @@ exports[`test uploader validation 1`] = `
     <div class="var-form-details">
       <div class="var-form-details__error-message">
         <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-          <div>您至少上传一个</div>
+          <div>You must upload one file at least</div>
         </transition-stub>
       </div>
       <div class="var-form-details__extra-message">

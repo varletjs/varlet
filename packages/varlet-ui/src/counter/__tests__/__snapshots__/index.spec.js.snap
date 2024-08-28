@@ -151,7 +151,7 @@ exports[`test counter validation 1`] = `
     <div class="var-form-details">
       <div class="var-form-details__error-message">
         <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
-          <div>必须大于0</div>
+          <div>The value must be more than zero</div>
         </transition-stub>
       </div>
       <div class="var-form-details__extra-message">
