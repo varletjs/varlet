@@ -1,11 +1,12 @@
 import FormDetails from '..'
+import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 
 test('test form details plugin', () => {
   const app = createApp({}).use(FormDetails)
   expect(app.component(FormDetails.name)).toBeTruthy()
-} )
+})
 
 describe('test form details component props', () => {
   test('test form details errorMessage', async () => {
