@@ -189,7 +189,7 @@ test('test checkbox validation', async () => {
   const wrapper = mount(VarCheckbox, {
     props: {
       modelValue: false,
-      rules: [(v) => v || '您必须勾选'],
+      rules: [(v) => v || 'You must choose one option'],
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
@@ -197,7 +197,7 @@ test('test checkbox validation', async () => {
   wrapper.vm.validate()
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须勾选')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-checkbox').trigger('click')
@@ -263,7 +263,7 @@ test('test checkbox group validation', async () => {
       value: [],
     }),
     template: `
-      <var-checkbox-group ref="checkboxGroup" :rules="[v => v.length >= 1 || '至少选一个']" v-model="value">
+      <var-checkbox-group ref="checkboxGroup" :rules="[v => v.length >= 1 || 'You must choose one option at least']" v-model="value">
         <var-checkbox :checked-value="1" />
         <var-checkbox :checked-value="2" />
       </var-checkbox-group>
@@ -274,7 +274,7 @@ test('test checkbox group validation', async () => {
 
   checkboxGroup.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('至少选一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option at least')
   expect(wrapper.html()).toMatchSnapshot()
 
   checkboxGroup.reset()
@@ -553,8 +553,8 @@ test('test checkbox keyboard Enter', async () => {
     }),
     template: `
           <var-checkbox-group v-model="value">
-            <var-checkbox :checked-value="1" >吃饭</var-checkbox>
-            <var-checkbox :checked-value="2" >睡觉</var-checkbox>
+            <var-checkbox :checked-value="1" >eat</var-checkbox>
+            <var-checkbox :checked-value="2" >sleep</var-checkbox>
           </var-checkbox-group>
         `,
   })

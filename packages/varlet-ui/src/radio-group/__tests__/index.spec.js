@@ -177,7 +177,7 @@ test('test radio validation', async () => {
   const wrapper = mount(VarRadio, {
     props: {
       modelValue: false,
-      rules: [(v) => v || '您必须勾选'],
+      rules: [(v) => v || 'You must choose one option at least'],
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })
@@ -185,7 +185,7 @@ test('test radio validation', async () => {
   wrapper.vm.validate()
   await delay(16)
 
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('您必须勾选')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option at least')
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.find('.var-radio').trigger('click')
@@ -223,7 +223,7 @@ test('test radio group validation', async () => {
       value: 2,
     }),
     template: `
-      <var-radio-group ref="radioGroup" :rules="[v => v === 1 || '必须选第一个']" v-model="value">
+      <var-radio-group ref="radioGroup" :rules="[v => v === 1 || 'You must choose the first option']" v-model="value">
         <var-radio :checked-value="1" />
         <var-radio :checked-value="2" />
       </var-radio-group>
@@ -234,7 +234,7 @@ test('test radio group validation', async () => {
 
   radioGroup.validate()
   await delay(16)
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('必须选第一个')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose the first option')
   expect(wrapper.html()).toMatchSnapshot()
 
   radioGroup.reset()
@@ -481,8 +481,8 @@ test('test radio keyboard Enter', async () => {
     }),
     template: `
           <var-radio-group v-model="value">
-            <var-radio :checked-value="1" >吃饭</var-radio>
-            <var-radio :checked-value="2" >睡觉</var-radio>
+            <var-radio :checked-value="1" >eat</var-radio>
+            <var-radio :checked-value="2" >sleep</var-radio>
           </var-radio-group>
         `,
   })
@@ -510,8 +510,8 @@ test('test radio group keyboard Arrow', async () => {
     }),
     template: `
           <var-radio-group v-model="value">
-            <var-radio :checked-value="1" >吃饭</var-radio>
-            <var-radio :checked-value="2" >睡觉</var-radio>
+            <var-radio :checked-value="1" >est</var-radio>
+            <var-radio :checked-value="2" >sleep</var-radio>
           </var-radio-group>
         `,
   })
