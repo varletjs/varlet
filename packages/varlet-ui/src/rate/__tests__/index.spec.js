@@ -248,14 +248,14 @@ describe('test rate component props', () => {
     const wrapper = mount(VarRate, {
       props: {
         modelValue: 0,
-        rules: [(v) => v >= 1 || '至少选择一分'],
+        rules: [(v) => v >= 1 || 'The lowest score is one'],
         'onUpdate:modelValue': onUpdateModelValue,
       },
     })
 
     wrapper.vm.validate()
     await delay(16)
-    expect(wrapper.find('.var-form-details__error-message').text()).toBe('至少选择一分')
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('The lowest score is one')
     await wrapper.find('.var-rate__content').trigger('click')
     await delay(16)
     expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()

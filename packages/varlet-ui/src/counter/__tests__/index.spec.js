@@ -147,7 +147,7 @@ test('test counter readonly', async () => {
 test('test counter validation', async () => {
   const wrapper = mount({
     ...Wrapper,
-    template: `<var-counter ref="counter" :rules="[v => v > 0 || '必须大于0']" v-model="value" />`,
+    template: `<var-counter ref="counter" :rules="[v => v > 0 || 'The value must be more than zero']" v-model="value" />`,
   })
 
   const { counter } = wrapper.vm.$refs
@@ -156,7 +156,7 @@ test('test counter validation', async () => {
   await delay(16)
 
   expect(wrapper.html()).toMatchSnapshot()
-  expect(wrapper.find('.var-form-details__error-message').text()).toBe('必须大于0')
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('The value must be more than zero')
 
   await wrapper.find('.var-counter__increment-button').trigger('click')
   await delay(16)

@@ -44,14 +44,14 @@ test('test timePicker style and format', async () => {
 test('test timePicker hint', async () => {
   const wrapper = mount(VarTimePicker, {
     props: {
-      hint: '选择打卡时间',
+      hint: 'choose clock-in time',
     },
   })
 
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setProps({
-    hint: '选择下班时间',
+    hint: 'choose off-duty time',
   })
   expect(wrapper.html()).toMatchSnapshot()
   wrapper.unmount()
