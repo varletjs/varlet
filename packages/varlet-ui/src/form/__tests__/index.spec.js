@@ -533,6 +533,8 @@ test('test form with slider', async () => {
   expect(onChange).toHaveBeenCalled()
   expect(onStart).toHaveBeenCalledTimes(1)
   expect(onEnd).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
 })
 
 test('test form events', async () => {
@@ -571,4 +573,6 @@ test('test form events', async () => {
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
   expect(onReset).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
 })
