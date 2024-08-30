@@ -5,17 +5,9 @@ import VarFormDetails from '../../form-details'
 import { nextTick } from 'vue'
 
 const props = defineProps({
-  modelValue: {
-    type: Boolean,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
+  modelValue: Boolean,
+  disabled: Boolean,
+  readonly: Boolean,
   rules: {
     type: Array,
   },
@@ -29,6 +21,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+
 const { useForm, useValidation } = Form
 const {
   errorMessage,

@@ -145,7 +145,7 @@ function handleSubmit(valid) {
 }
 
 function handleReset() {
-  Snackbar(`onReset`)
+  Snackbar('onReset')
 }
 </script>
 
@@ -188,17 +188,9 @@ import { Form } from '@varlet/ui'
 import { nextTick } from 'vue'
 
 const props = defineProps({
-  modelValue: {
-    type: Boolean
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
-  readonly: {
-    type: Boolean,
-    default: false
-  },
+  modelValue: Boolean,
+  disabled: Boolean,
+  readonly: Boolean,
   rules: {
     type: Array
   },
