@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, type PropType, type VNode, type VNodeChild } from 'vue'
+import { type PropType, type VNode, type VNodeChild } from 'vue'
 import { defineListenerProp, pickProps } from '../utils/components'
 import { inputProps } from '../input'
 
