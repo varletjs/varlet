@@ -1,0 +1,13 @@
+import { VarComponent, BasicAttributes, SetPropsDefaults } from '../../types/varComponent'
+
+export declare const <%- camelizeName %>Props: Record<keyof <%- bigCamelizeName %>Props, any>
+
+export interface <%- bigCamelizeName %>Props extends BasicAttributes {}
+
+export class <%- bigCamelizeName %> extends VarComponent {
+  static setPropsDefaults: SetPropsDefaults<<%- bigCamelizeName %>Props>
+  
+  $props: <%- bigCamelizeName %>Props
+}
+
+export class _<%- bigCamelizeName %>Component extends <%- bigCamelizeName %> {}
