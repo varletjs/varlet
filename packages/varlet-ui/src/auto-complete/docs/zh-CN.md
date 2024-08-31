@@ -31,7 +31,7 @@
 | `text-color` | 文字颜色                 | _string_ | `-` |
 | `focus-color` | 聚焦时的主要颜色                  | _string_ | `-` |
 | `blur-color` | 失焦时的主要颜色               | _string_ | `-` |
-| `get-show` | 根据输入值决定是否显示菜单 | _(v: string) => boolean_ | | `-` |
+| `get-show` | 根据输入值决定是否显示菜单 | _(v: string) => boolean_ | `-` |
 
 #### AutoCompleteOption 
 

@@ -31,7 +31,7 @@ Autocomplete function of input field.
 | `text-color` | Text color                     | _string_ | `-` |
 | `focus-color` | The primary color in focus  | _string_ | `-` |
 | `blur-color` | The primary color in blur      | _string_ | `-` |
-| `get-show` | Determine whether the menu is displayed according to the input value | _(v: string) => boolean_ | | `-` |
+| `get-show` | Determine whether the menu is displayed according to the input value | _(v: string) => boolean_ | `-` |
 
 #### AutoCompleteOption 
 
