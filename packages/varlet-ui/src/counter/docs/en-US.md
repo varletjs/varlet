@@ -179,7 +179,7 @@ const value = ref(0)
 | `press` | Long press the open button | _boolean_ | `true` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
 | `lazy-change` | Whether to prevent the component itself from updating the bound value | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _ValidateTriggers[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
+| `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _CounterValidateTrigger[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: number) => any>_ | `-` |
 
 ### Methods

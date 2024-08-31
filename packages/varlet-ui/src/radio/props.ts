@@ -1,7 +1,7 @@
 import { type PropType } from 'vue'
 import { defineListenerProp } from '../utils/components'
 
-export type ValidateTrigger = 'onChange'
+export type RadioValidateTrigger = 'onChange'
 
 export const props = {
   modelValue: {
@@ -26,7 +26,7 @@ export const props = {
     default: true,
   },
   validateTrigger: {
-    type: Array as PropType<Array<ValidateTrigger>>,
+    type: Array as PropType<Array<RadioValidateTrigger>>,
     default: () => ['onChange'],
   },
   rules: Array as PropType<Array<(value: any) => any>>,

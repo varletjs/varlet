@@ -24,7 +24,7 @@
 import VarFormDetails from '../form-details'
 import VarRadio from '../radio'
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { props, type ValidateTriggers } from './props'
+import { props, type RadioGroupValidateTrigger } from './props'
 import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
@@ -114,7 +114,7 @@ export default defineComponent({
       }
     }
 
-    function validateWithTrigger(trigger: ValidateTriggers) {
+    function validateWithTrigger(trigger: RadioGroupValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

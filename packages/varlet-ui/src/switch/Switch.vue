@@ -70,7 +70,7 @@ import { defineComponent, computed, nextTick, ref } from 'vue'
 import { useValidation, createNamespace, formatElevation } from '../utils/components'
 import { multiplySizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
-import { props, type ValidateTrigger } from './props'
+import { props, type SwitchValidateTrigger } from './props'
 import { call, preventDefault } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 import { type SwitchProvider } from './provide'
@@ -174,7 +174,7 @@ export default defineComponent({
       return v(props.rules, props.modelValue)
     }
 
-    function validateWithTrigger(trigger: ValidateTrigger) {
+    function validateWithTrigger(trigger: SwitchValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
