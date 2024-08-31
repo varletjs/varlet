@@ -157,7 +157,7 @@ const value = ref(true)
 | `size`           | Size of switch | _string \| number_ | `-` |
 | `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
-| `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _ValidateTriggers[]_ | `['onChange', 'onLazyChange']` |
+| `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _SwitchValidateTrigger[]_ | `['onChange', 'onLazyChange']` |
 | `variant` ***3.2.3*** | Variant mode | _boolean_ | `false` |
 
 ### Events

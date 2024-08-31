@@ -101,7 +101,7 @@ import VarFormDetails from '../form-details'
 import Ripple from '../ripple'
 import { defineComponent, ref, watch, computed, nextTick, type ComputedRef } from 'vue'
 import { Decimal } from 'decimal.js'
-import { props, type ValidateTrigger } from './props'
+import { props, type CounterValidateTrigger } from './props'
 import { toNumber, call } from '@varlet/shared'
 import { toSizeUnit } from '../utils/elements'
 import { useForm } from '../form/provide'
@@ -170,7 +170,7 @@ export default defineComponent({
       return v(props.rules, props.modelValue)
     }
 
-    function validateWithTrigger(trigger: ValidateTrigger) {
+    function validateWithTrigger(trigger: CounterValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

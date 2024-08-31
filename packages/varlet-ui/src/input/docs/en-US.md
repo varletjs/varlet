@@ -177,7 +177,7 @@ const value13 = ref('')
 | `clearable` | Whether the clearable                                                                                                                  | _boolean_ | `false` |
 | `resize` | Whether textarea can be dragged to resize                                                                                              | _boolean_ | `false` |
 | `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
+| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _InputValidateTrigger[]_ | `['onInput', 'onClear']` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
