@@ -8,7 +8,7 @@ Autocomplete function of input field.
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
@@ -110,7 +110,7 @@ function useAutoComplete() {
 
 ```html
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
