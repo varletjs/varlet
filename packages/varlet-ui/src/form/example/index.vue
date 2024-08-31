@@ -7,7 +7,7 @@ import { use, t } from './locale'
 const formData = reactive({
   username: '',
   password: '',
-  search: '',
+  email: '',
   department: '',
   gender: undefined,
   license: false,
@@ -25,7 +25,7 @@ const disabled = ref(false)
 const readonly = ref(false)
 const suggestions = computed(() =>
   ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
-    const [prefix] = formData.search.split('@')
+    const [prefix] = formData.email.split('@')
     return {
       label: prefix + suffix,
       value: prefix + suffix,
@@ -64,10 +64,10 @@ onThemeChange()
         v-model="formData.password"
       />
       <var-auto-complete
-        :placeholder="t('username')"
-        :rules="[(v) => !!v || t('usernameMessage')]"
+        :placeholder="t('email')"
+        :rules="[(v) => !!v || t('emailMessage')]"
         :options="suggestions"
-        v-model="formData.search"
+        v-model="formData.email"
       />
       <var-select
         :placeholder="t('department')"
