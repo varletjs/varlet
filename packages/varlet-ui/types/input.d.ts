@@ -18,6 +18,7 @@ export interface InputProps extends BasicAttributes {
   rows?: string | number
   placeholder?: string
   hint?: boolean
+  line?: boolean
   textColor?: string
   focusColor?: string
   blurColor?: string
