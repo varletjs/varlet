@@ -5,7 +5,6 @@ import {
   Variant as AutoCompleteVariant,
   SetPropsDefaults,
 } from './varComponent'
-import { InputSize as AutoCompleteSize, InputValidateTrigger as AutoCompleteValidateTrigger } from './input'
 import { VNode, VNodeChild, type InputHTMLAttributes } from 'vue'
 
 export declare const autoComponentProps: Record<keyof AutoCompleteProps, any>
@@ -13,6 +12,10 @@ export declare const autoComponentProps: Record<keyof AutoCompleteProps, any>
 export type AutoCompleteOptionLabelRender = (option: AutoCompleteOption, checked: boolean) => VNodeChild
 
 export type AutoCompleteOptionLabel = string | VNode | AutoCompleteOptionLabelRender
+
+export type AutoCompleteValidateTrigger = 'onFocus' | 'onBlur' | 'onChange' | 'onClick' | 'onClear' | 'onInput'
+
+export type AutoCompleteSize = 'small' | 'normal'
 
 export interface AutoCompleteOption {
   label?: AutoCompleteOptionLabel
