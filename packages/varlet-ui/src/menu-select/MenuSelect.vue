@@ -31,9 +31,9 @@
         ref="menuOptionsRef"
         :class="classes(n('menu'), formatElevation(elevation, 3), [scrollable, n('--scrollable')])"
       >
-        <template v-if="menuSelectOptions.length">
+        <template v-if="options.length">
           <var-menu-option
-            v-for="option in menuSelectOptions"
+            v-for="option in options"
             :key="option[valueKey]"
             :label="option[labelKey]"
             :value="option[valueKey]"
@@ -57,7 +57,7 @@ import { createNamespace, formatElevation } from '../utils/components'
 import { useMenuOptions, type MenuSelectProvider } from './provide'
 import { useSelectController } from '../select/useSelectController'
 import { type MenuOptionProvider } from '../menu-option/provide'
-import { call, isArray, preventDefault } from '@varlet/shared'
+import { call, preventDefault } from '@varlet/shared'
 import { useEventListener, useVModel } from '@varlet/use'
 import { focusChildElementByKey } from '../utils/elements'
 
@@ -71,7 +71,6 @@ export default defineComponent({
     const menu = ref<null | typeof VarMenu>(null)
     const menuOptionsRef = ref<null | HTMLElement>(null)
     const show = useVModel(props, 'show')
-    const menuSelectOptions = computed(() => (isArray(props.options) ? props.options : []))
     const { menuOptions, length, bindMenuOptions } = useMenuOptions()
     const { computeLabel, getSelectedValue } = useSelectController({
       modelValue: () => props.modelValue,
@@ -143,7 +142,6 @@ export default defineComponent({
       show,
       menu,
       menuOptionsRef,
-      menuSelectOptions,
       n,
       classes,
       formatElevation,

@@ -1,9 +1,9 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <template v-if="radioGroupOptions.length">
+      <template v-if="options.length">
         <var-radio
-          v-for="option in radioGroupOptions"
+          v-for="option in options"
           :key="option[valueKey]"
           :checked-value="option[valueKey]"
           :disabled="option.disabled"
@@ -47,7 +47,6 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
-    const radioGroupOptions = computed(() => (isArray(props.options) ? props.options : []))
     const radioGroupErrorMessage = computed(() => errorMessage.value)
 
     const radioGroupProvider: RadioGroupProvider = {
@@ -151,7 +150,6 @@ export default defineComponent({
       validate,
       resetValidation,
       isFunction,
-      radioGroupOptions,
     }
   },
 })

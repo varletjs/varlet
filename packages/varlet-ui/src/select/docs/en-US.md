@@ -427,7 +427,7 @@ const keyOptions = ref([
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `disabled` | Whether the disabled | _boolean_ | `false` |
 | `clearable` | Whether the clearable | _boolean_ | `false` |
-| `options` ***3.3.4*** | Specifies options | _SelectOption[]_ | `-` |
+| `options` ***3.3.4*** | Specifies options | _SelectOption[]_ | `[]` |
 | `label-key` ***3.3.4*** | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` ***3.3.4*** | As the key that uniquely identifies value | _string_ | `value` |
 | `validate-trigger` | Timing to trigger validation, optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |

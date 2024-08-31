@@ -12,8 +12,11 @@
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
-| `v-model` | 绑定的值 | _any[]_ | `[]` |
-| `options`  | 指定可选项 | _AutoCompleteOption[]_ | `-` |
+| `v-model` | 绑定的值 | _string_ | `-` |
+| `variant` | 输入框风格, 可选值为 `standard` `outlined`    | _string_ | `standard` |
+| `size` | 输入框尺寸，可选值 `normal` `small`              | _string_ | `normal` |
+| `placeholder` | 占位符                      | _string_ | `-` |
+| `options`  | 指定可选项 | _AutoCompleteOption[]_ | `[]` |
 | `label-key`  | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key`  | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `maxlength` | 最大长度           | _string \| number_ | `-` |
@@ -28,9 +31,7 @@
 | `text-color` | 文字颜色                 | _string_ | `-` |
 | `focus-color` | 聚焦时的主要颜色                  | _string_ | `-` |
 | `blur-color` | 失焦时的主要颜色               | _string_ | `-` |
-| `placeholder` | 占位符                      | _string_ | `-` |
-| `size` | 输入框尺寸，可选值 `normal` `small`              | _string_ | `normal` |
-| `variant` | 输入框风格, 可选值为 `standard` `outlined`    | _string_ | `standard` |
+| `get-show` | 根据输入值决定是否显示菜单 | _(v: string) => boolean_ | | `-` |
 
 #### AutoCompleteOption 
 
@@ -78,4 +79,41 @@
 
 | 变量名                      | 默认值           |
 | --------------------------- | ---------------- |
+| `--field-decorator-text-color` | `#555` |
+| `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-blur-color` | `#888` |
+| `--field-decorator-focus-color` | `var(--color-primary)` |
+| `--field-decorator-placeholder-size` | `16px` |
+| `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-line-size` | `1px` |
+| `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
+| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
+| `--field-decorator-outlined-normal-padding-left` | `16px` |
+| `--field-decorator-outlined-normal-padding-right` | `16px` |
+| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
+| `--field-decorator-outlined-small-padding-left` | `12px` |
+| `--field-decorator-outlined-small-padding-right` | `12px` |
+| `--field-decorator-outlined-small-placeholder-space` | `2px` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
+| `--input-input-height` | `24px` |
+| `--input-input-font-size` | `16px` |
+| `--input-textarea-height` | `auto` |
 | `--auto-complete-options-padding`       | `6px 0`  |

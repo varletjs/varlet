@@ -70,7 +70,6 @@
             :label="option[labelKey]"
             :value="option[valueKey]"
             :option="option"
-            :ripple="option.ripple"
             :disabled="option.disabled"
           />
         </div>

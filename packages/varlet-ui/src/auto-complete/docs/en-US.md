@@ -13,7 +13,10 @@ Autocomplete function of input field.
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
 | `v-model` | The value of the binding                   | _string_ | `-` |
-| `options`  | Specifies options | _AutoCompleteOption[]_ | `-` |
+| `variant` | Input variants, The optional value is `standard` `outlined`    | _string_ | `standard` |
+| `size` | Input size, The optional value is `normal` `small`     | _string_ | `normal` |
+| `placeholder` | placeholder          | _string_ | `-` |
+| `options`  | Specifies options | _AutoCompleteOption[]_ | `[]` |
 | `label-key` | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` | As the key that uniquely identifies value | _string_ | `value` |
 | `maxlength` | Maxlength               | _string \| number_ | `-` |
@@ -28,9 +31,7 @@ Autocomplete function of input field.
 | `text-color` | Text color                     | _string_ | `-` |
 | `focus-color` | The primary color in focus  | _string_ | `-` |
 | `blur-color` | The primary color in blur      | _string_ | `-` |
-| `placeholder` | placeholder          | _string_ | `-` |
-| `size` | Input size, The optional value is `normal` `small`     | _string_ | `normal` |
-| `variant` | Input variants, The optional value is `standard` `outlined`    | _string_ | `standard` |
+| `get-show` | Determine whether the menu is displayed according to the input value | _(v: string) => boolean_ | | `-` |
 
 #### AutoCompleteOption 
 
@@ -78,4 +79,41 @@ Here are the CSS variables used by the component. Styles can be customized using
 
 | Variable | Default |
 | --- | --- |
+| `--field-decorator-text-color` | `#555` |
+| `--field-decorator-error-color` | `var(--color-danger)` |
+| `--field-decorator-blur-color` | `#888` |
+| `--field-decorator-focus-color` | `var(--color-primary)` |
+| `--field-decorator-placeholder-size` | `16px` |
+| `--field-decorator-icon-size` | `20px` |
+| `--field-decorator-line-size` | `1px` |
+| `--field-decorator-line-focus-size` | `2px` |
+| `--field-decorator-line-border-radius` | `4px` |
+| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
+| `--field-decorator-standard-normal-margin-top` | `22px` |
+| `--field-decorator-standard-normal-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
+| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
+| `--field-decorator-standard-small-margin-top` | `18px` |
+| `--field-decorator-standard-small-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-icon-margin-top` | `18px` |
+| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
+| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
+| `--field-decorator-outlined-normal-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
+| `--field-decorator-outlined-normal-padding-left` | `16px` |
+| `--field-decorator-outlined-normal-padding-right` | `16px` |
+| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
+| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
+| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
+| `--field-decorator-outlined-small-margin-top` | `8px` |
+| `--field-decorator-outlined-small-margin-bottom` | `8px` |
+| `--field-decorator-outlined-small-padding-left` | `12px` |
+| `--field-decorator-outlined-small-padding-right` | `12px` |
+| `--field-decorator-outlined-small-placeholder-space` | `2px` |
+| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
+| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
+| `--input-input-height` | `24px` |
+| `--input-input-font-size` | `16px` |
+| `--input-textarea-height` | `auto` |
 | `--auto-complete-options-padding`       | `6px 0`  |

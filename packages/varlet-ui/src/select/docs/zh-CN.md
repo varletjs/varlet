@@ -428,7 +428,7 @@ const keyOptions = ref([
 | `readonly` | 是否只读 | _boolean_ | `false` |
 | `disabled` | 是否禁用 | _boolean_ | `false` |
 | `clearable` | 是否可清除 | _boolean_ | `false` |
-| `options` ***3.3.4*** | 指定可选项 | _SelectOption[]_ | `-` |
+| `options` ***3.3.4*** | 指定可选项 | _SelectOption[]_ | `[]` |
 | `label-key` ***3.3.4*** | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` ***3.3.4*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onClose` | _ValidateTriggers[]_ | `['onChange', 'onClear', 'onClose']` |
