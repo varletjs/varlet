@@ -177,7 +177,7 @@ const value13 = ref('')
 | `clearable` | 是否可清除                                                                    | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸                                                            | _boolean_ | `false` |
 | `autofocus` | 是否自动聚焦                                                                   | _boolean_ | `false` |
-| `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示                                   | _Array<(v: string) => any>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 

@@ -74,7 +74,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { defineComponent, ref, computed, nextTick } from 'vue'
-import { props, type ValidateTriggers } from './props'
+import { props, type CheckboxValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useCheckboxGroup, type CheckboxProvider } from './provide'
 import { useForm } from '../form/provide'
@@ -127,7 +127,7 @@ export default defineComponent({
     useEventListener(() => window, 'keydown', handleKeydown)
     useEventListener(() => window, 'keyup', handleKeyup)
 
-    function validateWithTrigger(trigger: ValidateTriggers) {
+    function validateWithTrigger(trigger: CheckboxValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
