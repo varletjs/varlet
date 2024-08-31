@@ -4,6 +4,214 @@
 
 Autocomplete function of input field.
 
+### Standard Variant
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  return {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete placeholder="Please enter text" :options="options" v-model="value" />
+    <var-auto-complete readonly placeholder="Readonly" :options="options2" v-model="value2" />
+    <var-auto-complete disabled placeholder="Disabled" :options="options3" v-model="value3" />
+    <var-auto-complete clearable placeholder="Clearable" :options="options4" v-model="value4" />
+    <var-auto-complete clearable placeholder="Use the clear icon slot" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      placeholder="Validate"
+      :options="options6"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      v-model="value6"
+    />
+    <var-auto-complete placeholder="Display Icon" :options="options7" v-model="value7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete placeholder="Custom Icon Size" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      placeholder="Maxlength"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      placeholder="Custom Menu Show Timing"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      size="small"
+      placeholder="Small Size"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
+### Outlined Variant
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  return {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete variant="outlined" placeholder="Please enter text" :options="options" v-model="value" />
+    <var-auto-complete variant="outlined" readonly placeholder="Readonly" :options="options2" v-model="value2" />
+    <var-auto-complete variant="outlined" disabled placeholder="Disabled" :options="options3" v-model="value3" />
+    <var-auto-complete variant="outlined" clearable placeholder="Clearable" :options="options4" v-model="value4" />
+    <var-auto-complete variant="outlined" clearable placeholder="Use the clear icon slot" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="outlined"
+      placeholder="Validate"
+      :options="options6"
+      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      v-model="value6"
+    />
+    <var-auto-complete variant="outlined" placeholder="Display Icon" :options="options7" v-model="value7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete variant="outlined" placeholder="Custom Icon Size" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      variant="outlined"
+      placeholder="Maxlength"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      variant="outlined"
+      placeholder="Custom Menu Show Timing"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      variant="outlined"
+      size="small"
+      placeholder="Small Size"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
 ## API
 
 ### Props
@@ -75,45 +283,6 @@ Autocomplete function of input field.
 
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
-#### AutoComplete Variables
-
 | Variable | Default |
 | --- | --- |
-| `--field-decorator-text-color` | `#555` |
-| `--field-decorator-error-color` | `var(--color-danger)` |
-| `--field-decorator-blur-color` | `#888` |
-| `--field-decorator-focus-color` | `var(--color-primary)` |
-| `--field-decorator-placeholder-size` | `16px` |
-| `--field-decorator-icon-size` | `20px` |
-| `--field-decorator-line-size` | `1px` |
-| `--field-decorator-line-focus-size` | `2px` |
-| `--field-decorator-line-border-radius` | `4px` |
-| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-margin-top` | `22px` |
-| `--field-decorator-standard-normal-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
-| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
-| `--field-decorator-standard-small-margin-top` | `18px` |
-| `--field-decorator-standard-small-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-margin-top` | `18px` |
-| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
-| `--field-decorator-outlined-normal-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
-| `--field-decorator-outlined-normal-padding-left` | `16px` |
-| `--field-decorator-outlined-normal-padding-right` | `16px` |
-| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
-| `--field-decorator-outlined-small-margin-top` | `8px` |
-| `--field-decorator-outlined-small-margin-bottom` | `8px` |
-| `--field-decorator-outlined-small-padding-left` | `12px` |
-| `--field-decorator-outlined-small-padding-right` | `12px` |
-| `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
-| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
-| `--input-input-height` | `24px` |
-| `--input-input-font-size` | `16px` |
-| `--input-textarea-height` | `auto` |
-| `--auto-complete-options-padding`       | `6px 0`  |
+| `--auto-complete-options-padding` | `6px 0`  |

@@ -4,6 +4,214 @@
 
 输入框自动完成功能。
 
+### 标准外观
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  return {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete placeholder="请输入文本" :options="options" v-model="value" />
+    <var-auto-complete readonly placeholder="只读" :options="options2" v-model="value2" />
+    <var-auto-complete disabled placeholder="禁用" :options="options3" v-model="value3" />
+    <var-auto-complete clearable placeholder="可清除" :options="options4" v-model="value4" />
+    <var-auto-complete clearable placeholder="使用插槽自定义清除图标" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      placeholder="字段校验"
+      :options="options6"
+      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      v-model="value6"
+    />
+    <var-auto-complete placeholder="显示图标" :options="options7" v-model="value7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete placeholder="自定义图标尺寸" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      placeholder="最大长度"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      placeholder="自定义菜单显示时机"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      size="small"
+      placeholder="小尺寸"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
+### 外边框外观
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const { value, options } = useAutoComplete()
+const { value: value2, options: options2 } = useAutoComplete()
+const { value: value3, options: options3 } = useAutoComplete()
+const { value: value4, options: options4 } = useAutoComplete()
+const { value: value5, options: options5 } = useAutoComplete()
+const { value: value6, options: options6 } = useAutoComplete()
+const { value: value7, options: options7 } = useAutoComplete()
+const { value: value8, options: options8 } = useAutoComplete()
+const { value: value9, options: options9 } = useAutoComplete()
+const { value: value10, options: options10 } = useAutoComplete()
+const { value: value11, options: options11 } = useAutoComplete()
+
+function useAutoComplete() {
+  const value = ref('')
+  const options = computed(() =>
+    ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+      const [prefix] = value.value.split('@')
+      return {
+        label: `${prefix}${suffix}`,
+        value: `${prefix}${suffix}`,
+      }
+    })
+  )
+
+  return {
+    value,
+    options,
+  }
+}
+</script>
+
+<template>
+  <var-space direction="column" size="large">
+    <var-auto-complete variant="outlined" placeholder="请输入文本" :options="options" v-model="value" />
+    <var-auto-complete variant="outlined" readonly placeholder="只读" :options="options2" v-model="value2" />
+    <var-auto-complete variant="outlined" disabled placeholder="禁用" :options="options3" v-model="value3" />
+    <var-auto-complete variant="outlined" clearable placeholder="可清除" :options="options4" v-model="value4" />
+    <var-auto-complete variant="outlined" clearable placeholder="使用插槽自定义清除图标" :options="options5" v-model="value5">
+      <template #clear-icon="{ clear }">
+        <var-icon name="error" @click="clear" />
+      </template>
+    </var-auto-complete>
+    <var-auto-complete
+      variant="outlined"
+      placeholder="字段校验"
+      :options="options6"
+      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      v-model="value6"
+    />
+    <var-auto-complete variant="outlined" placeholder="显示图标" :options="options7" v-model="value7">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete variant="outlined" placeholder="自定义图标尺寸" :options="options8" v-model="value8">
+      <template #prepend-icon>
+        <var-icon class="prepend-icon" name="github" :size="28" />
+      </template>
+      <template #append-icon>
+        <var-icon class="append-icon" name="github" :size="42" />
+      </template>
+    </var-auto-complete>  
+    <var-auto-complete
+      variant="outlined"
+      placeholder="最大长度"
+      :maxlength="10"
+      :options="options9"
+      v-model="value9"
+    />
+    <var-auto-complete
+      variant="outlined"
+      placeholder="自定义菜单显示时机"
+      :get-show="(value) => value.length > 3"
+      :options="options10"
+      v-model="value10"
+    />  
+    <var-auto-complete
+      variant="outlined"
+      size="small"
+      placeholder="小尺寸"
+      :options="options11"
+      v-model="value11"
+    />  
+  </var-space>
+</template>
+
+<style>
+.prepend-icon {
+  margin-right: 6px;
+}
+
+.append-icon {
+  margin-left: 6px;
+}
+</style>
+```
+
 ## API
 
 ### 属性
@@ -75,45 +283,6 @@
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
-#### AutoComplete Variables
-
 | 变量名                      | 默认值           |
 | --------------------------- | ---------------- |
-| `--field-decorator-text-color` | `#555` |
-| `--field-decorator-error-color` | `var(--color-danger)` |
-| `--field-decorator-blur-color` | `#888` |
-| `--field-decorator-focus-color` | `var(--color-primary)` |
-| `--field-decorator-placeholder-size` | `16px` |
-| `--field-decorator-icon-size` | `20px` |
-| `--field-decorator-line-size` | `1px` |
-| `--field-decorator-line-focus-size` | `2px` |
-| `--field-decorator-line-border-radius` | `4px` |
-| `--field-decorator-disabled-color` | `var(--color-text-disabled)` |
-| `--field-decorator-standard-normal-margin-top` | `22px` |
-| `--field-decorator-standard-normal-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-icon-margin-top` | `22px` |
-| `--field-decorator-standard-normal-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-normal-non-hint-margin-top` | `4px` |
-| `--field-decorator-standard-small-margin-top` | `18px` |
-| `--field-decorator-standard-small-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-icon-margin-top` | `18px` |
-| `--field-decorator-standard-small-icon-margin-bottom` | `4px` |
-| `--field-decorator-standard-small-non-hint-margin-top` | `2px` |
-| `--field-decorator-outlined-normal-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-margin-bottom` | `16px` |
-| `--field-decorator-outlined-normal-padding-left` | `16px` |
-| `--field-decorator-outlined-normal-padding-right` | `16px` |
-| `--field-decorator-outlined-normal-placeholder-space` | `4px` |
-| `--field-decorator-outlined-normal-icon-margin-top` | `16px` |
-| `--field-decorator-outlined-normal-icon-margin-bottom` | `16px` |
-| `--field-decorator-outlined-small-margin-top` | `8px` |
-| `--field-decorator-outlined-small-margin-bottom` | `8px` |
-| `--field-decorator-outlined-small-padding-left` | `12px` |
-| `--field-decorator-outlined-small-padding-right` | `12px` |
-| `--field-decorator-outlined-small-placeholder-space` | `2px` |
-| `--field-decorator-outlined-small-icon-margin-top` | `8px` |
-| `--field-decorator-outlined-small-icon-margin-bottom` | `8px` |
-| `--input-input-height` | `24px` |
-| `--input-input-font-size` | `16px` |
-| `--input-textarea-height` | `auto` |
-| `--auto-complete-options-padding`       | `6px 0`  |
+| `--auto-complete-options-padding` | `6px 0`  |
