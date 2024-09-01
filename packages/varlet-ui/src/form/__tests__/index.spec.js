@@ -10,9 +10,10 @@ import VarRate from '../../rate/Rate'
 import VarUploader from '../../uploader/Uploader'
 import VarSwitch from '../../switch/Switch'
 import VarSlider from '../../slider/Slider'
+import VarAutoComplete from '../../auto-complete/AutoComplete.vue'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, mockScrollTo } from '../../utils/test'
+import { delay, trigger, mockScrollTo, mockStubs } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
 
 mockScrollTo()
@@ -49,6 +50,7 @@ const Wrapper = {
     [VarUploader.name]: VarUploader,
     [VarSwitch.name]: VarSwitch,
     [VarSlider.name]: VarSlider,
+    [VarAutoComplete.name]: VarAutoComplete,
   },
 }
 
@@ -573,6 +575,31 @@ test('test form events', async () => {
   await delay(16)
   expect(wrapper.html()).toMatchSnapshot()
   expect(onReset).toHaveBeenCalledTimes(1)
+
+  wrapper.unmount()
+})
+
+test('test form with auto-complete', async () => {
+  const wrapper = mount({
+    ...Wrapper,
+    data: () => ({
+      disabled: false,
+      readonly: false,
+      value: '',
+    }),
+    template: `
+      <var-form ref="form" scroll-to-error="start" :disabled="disabled" :readonly="readonly">
+        <var-auto-complete
+          :rules="[v => !!v || '不能为空']"
+          v-model="value"
+        />
+      </var-form>
+    `,
+  })
+  await delay(16)
+  const { form } = wrapper.vm.$refs
+  await expectValidate(form, wrapper, '不能为空')
+  await expectReset(form, wrapper)
 
   wrapper.unmount()
 })

@@ -279,7 +279,7 @@ const value = ref([])
 | `v-model` | 绑定的值 | _any[]_ | `[]` |
 | `max` | 最大选择的数量 | _string \| number_ | `-` |
 | `direction` | 布局方向，可选值为 `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `-` |
+| `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `[]` |
 | `label-key` ***3.2.12*** | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` ***3.2.12*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(value: any[]) => any>_ | `-` |

@@ -1,0 +1,19 @@
+:root {
+  --auto-complete-options-padding: 6px 0;
+}
+
+.var-auto-complete {
+  outline: none;
+
+  &__menu-select[auto-complete-cover] {
+    display: block;
+  }
+
+  &__options {
+    padding: var(--auto-complete-options-padding);
+  }
+
+  &--standard-menu-margin {
+    margin-top: var(--field-decorator-line-focus-size) !important;
+  }
+}

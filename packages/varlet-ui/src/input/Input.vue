@@ -12,8 +12,8 @@
         textColor,
         focusColor,
         blurColor,
-        isFocusing,
-        errorMessage,
+        isFocusing: isForceFocusingEffect != null ? isForceFocusingEffect : isFocusing,
+        isError: isForceErrorEffect != null ? isForceErrorEffect : !!errorMessage,
         formDisabled,
         disabled,
         clearable,
@@ -50,7 +50,7 @@
           )
         "
         ref="el"
-        autocomplete="new-password"
+        :autocomplete="autocomplete ? autocomplete : 'new-password'"
         :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"
@@ -85,7 +85,7 @@
           )
         "
         ref="el"
-        autocomplete="new-password"
+        :autocomplete="autocomplete ? autocomplete : 'new-password'"
         :id="id"
         :disabled="formDisabled || disabled"
         :readonly="formReadonly || readonly"
@@ -117,7 +117,7 @@
       </template>
     </var-field-decorator>
 
-    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" @mousedown.stop>
+    <var-form-details :error-message="errorMessage" :extra-message="maxlengthText" v-if="isShowFormDetails">
       <template v-if="$slots['extra-message']" #extra-message>
         <slot name="extra-message" />
       </template>

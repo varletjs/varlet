@@ -49,7 +49,7 @@
     "compile:style-vars": "varlet-cli compile:style-vars",
     "create": "varlet-cli create -i",
     "test": "varlet-cli test",
-    "test:watch": "varlet-cli test -w",
+    "test:watch": "varlet-cli test -w -cov",
     "test:coverage": "varlet-cli test -cov"
   },
   "peerDependencies": {

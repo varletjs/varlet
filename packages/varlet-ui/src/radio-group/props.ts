@@ -24,7 +24,10 @@ export const props = {
     type: String as PropType<RadioGroupDirection>,
     default: 'horizontal',
   },
-  options: Array as PropType<Array<RadioGroupOption>>,
+  options: {
+    type: Array as PropType<RadioGroupOption[]>,
+    default: () => [],
+  },
   labelKey: {
     type: String,
     default: 'label',

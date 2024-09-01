@@ -14,6 +14,7 @@ import { reactive, ref } from 'vue'
 const formData = reactive({
   username: '',
   password: '',
+  email: '',
   department: '',
   gender: undefined,
   license: false,
@@ -27,6 +28,16 @@ const formData = reactive({
 const form = ref(null)
 const disabled = ref(false)
 const readonly = ref(false)
+
+const emailSuggestions = computed(() =>
+  ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+    const [prefix] = formData.email.split('@')
+    return {
+      label: prefix + suffix,
+      value: prefix + suffix,
+    }
+  })
+)
 </script>
 
 <template>
@@ -47,6 +58,12 @@ const readonly = ref(false)
         placeholder="请输入密码"
         :rules="[v => !!v || '密码不能为空', (v) => v.length >= 8 || '密码长度不能低于8位']"
         v-model="formData.password"
+      />
+      <var-auto-complete
+        placeholder="请输入邮箱"
+        :rules="[v => !!v || '邮箱不能为空']"
+        :options="emailSuggestions"
+        v-model="formData.email"
       />
       <var-select
         placeholder="请选择部门"

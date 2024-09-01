@@ -1,0 +1,341 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`test auto-complete custom color 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="color: green; cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text" style="color: red; caret-color: blue;">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line" style="background: green;">
+          <div class="var-field-decorator__dot" style="background: blue;"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete disabled 1`] = `
+"<div class="var-auto-complete">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--disabled">
+        <div class="var-field-decorator__controller var-field-decorator--disabled" style="overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input var-input--disabled" autocomplete="off" id="var-input-mock-id" disabled="" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line var-field-decorator--line-disabled">
+          <div class="var-field-decorator__dot var-field-decorator--line-disabled"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete hint and line 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon var-field-decorator--icon-non-hint"></div>
+          <div class="var-field-decorator__middle var-field-decorator--middle-non-hint">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text" style="--input-placeholder-color: var(--field-decorator-placeholder-color, var(--field-decorator-blur-color));">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon var-field-decorator--icon-non-hint">
+            <!--v-if-->
+          </div>
+        </div>
+        <!--v-if-->
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete modelValue 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete placeholder 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div><label class="var-field-decorator__placeholder var--ellipsis var-field-decorator--hint-center var-field-decorator--transition-disabled" for="var-input-mock-id"><span>Hello</span></label>
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete readonly 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" readonly="" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete size 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard var-field-decorator--small">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete slots 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon">prepend-icon</div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->append-icon
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete validation 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line var-field-decorator--line-error">
+          <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <div class="var-form-details">
+      <div class="var-form-details__error-message">
+        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+          <div>Required</div>
+        </transition-stub>
+      </div>
+      <div class="var-form-details__extra-message">
+        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete validation 2`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--standard">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <div class="var-field-decorator__line">
+          <div class="var-field-decorator__dot"></div>
+        </div>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test auto-complete variant 1`] = `
+"<div class="var-auto-complete" tabindex="0">
+  <div class="var-menu var--box var-menu-select var-auto-complete__menu-select" tabindex="-1" auto-complete-cover="">
+    <div class="var-input var--box">
+      <div class="var-field-decorator var--box var-field-decorator--outlined">
+        <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+          <div class="var-field-decorator__icon"></div>
+          <div class="var-field-decorator__middle">
+            <!--v-if--><input class="var-input__input" autocomplete="off" id="var-input-mock-id" type="text">
+          </div>
+          <!--v-if-->
+          <div class="var-field-decorator__icon">
+            <!--v-if-->
+          </div>
+        </div>
+        <fieldset class="var-field-decorator__line">
+          <legend class="var-field-decorator__line-legend">
+            <!--v-if-->
+          </legend>
+        </fieldset>
+      </div>
+      <!--v-if-->
+    </div>
+    <!--teleport start-->
+    <!--teleport end-->
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;

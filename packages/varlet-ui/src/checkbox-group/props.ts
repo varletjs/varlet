@@ -19,7 +19,10 @@ export const props = {
     default: () => [],
   },
   max: [String, Number],
-  options: Array as PropType<Array<CheckboxGroupOption>>,
+  options: {
+    type: Array as PropType<CheckboxGroupOption[]>,
+    default: () => [],
+  },
   labelKey: {
     type: String,
     default: 'label',

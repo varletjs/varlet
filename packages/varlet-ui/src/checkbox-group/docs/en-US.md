@@ -280,7 +280,7 @@ const value = ref([])
 | `v-model` | The value of the binding | _any[]_ | `[]` |
 | `max` | Maximum number of checked | _string \| number_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `-` |
+| `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `[]` |
 | `label-key` ***3.2.12*** | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` ***3.2.12*** | As the key that uniquely identifies value | _string_ | `value` |
 | `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |

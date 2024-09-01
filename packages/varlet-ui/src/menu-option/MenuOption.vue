@@ -23,8 +23,8 @@
     />
 
     <slot>
-      <div :class="classes(n('text'), n('$--ellipsis'))">
-        <maybe-v-node :is="labelVNode" />
+      <div :class="classes(n('text'))">
+        <maybe-v-node :class="n('$--ellipsis')" :is="labelVNode" />
       </div>
     </slot>
 

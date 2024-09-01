@@ -12,7 +12,7 @@ import { ref } from 'vue'
 
 const value = ref('')
 const value2 = ref('')
-const value3 = ref('varlet')
+const value3 = ref('')
 const value4 = ref('')
 const value5 = ref('')
 const value6 = ref('')

@@ -32,7 +32,7 @@
           focusColor,
           blurColor,
           isFocusing,
-          errorMessage,
+          isError: !!errorMessage,
           formDisabled,
           disabled,
           clearable,
@@ -112,9 +112,9 @@
 
       <template #menu>
         <div ref="menuEl" :class="classes(n('scroller'), n('$-elevation--3'))">
-          <template v-if="selectOptions.length">
+          <template v-if="options.length">
             <var-option
-              v-for="option in selectOptions"
+              v-for="option in options"
               :key="option[valueKey]"
               :label="option[labelKey]"
               :value="option[valueKey]"
@@ -172,7 +172,6 @@ export default defineComponent({
     const focusColor = computed(() => props.focusColor)
     const isEmptyModelValue = computed(() => isEmpty(props.modelValue))
     const cursor = computed(() => (props.disabled || props.readonly ? '' : 'pointer'))
-    const selectOptions = computed(() => (isArray(props.options) ? props.options : []))
     const offsetY = ref(0)
     const { bindForm, form } = useForm()
     const { length, options, bindOptions } = useOptions()
@@ -440,7 +439,6 @@ export default defineComponent({
       cursor,
       placeholderColor,
       enableCustomPlaceholder,
-      selectOptions,
       isFunction,
       n,
       classes,
