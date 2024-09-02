@@ -63,7 +63,7 @@
       </var-input>
 
       <template #options>
-        <div ref="optionsRef" :class="n('options')">
+        <div :class="n('options')">
           <var-menu-option
             v-for="option in viewOptions"
             :key="option[valueKey]"
@@ -107,7 +107,6 @@ export default defineComponent({
   setup(props) {
     const root = ref<HTMLElement>()
     const input = ref<InstanceType<typeof VarInput>>()
-    const optionsRef = ref<HTMLElement>()
 
     const isFocusing = ref(false)
     const value = useVModel(props, 'modelValue')
@@ -312,7 +311,6 @@ export default defineComponent({
 
     return {
       root,
-      optionsRef,
       input,
       value,
       isShowMenuSelect,
@@ -349,6 +347,5 @@ export default defineComponent({
 @import '../menu/menu';
 @import '../menu-option/menuOption';
 @import '../menu-select/menuSelect';
-@import '../form-details/formDetails';
 @import './autoComplete';
 </style>

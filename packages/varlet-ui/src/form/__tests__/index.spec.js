@@ -13,7 +13,7 @@ import VarSlider from '../../slider/Slider'
 import VarAutoComplete from '../../auto-complete/AutoComplete.vue'
 import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
-import { delay, trigger, mockScrollTo, mockStubs } from '../../utils/test'
+import { delay, trigger, mockScrollTo } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
 
 mockScrollTo()

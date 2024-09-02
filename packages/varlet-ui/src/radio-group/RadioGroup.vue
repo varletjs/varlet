@@ -28,7 +28,7 @@ import { props, type RadioGroupValidateTrigger } from './props'
 import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, preventDefault, isArray, isFunction } from '@varlet/shared'
+import { call, preventDefault, isFunction } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio-group')
