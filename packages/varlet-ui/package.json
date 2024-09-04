@@ -71,6 +71,7 @@
     "@vue/test-utils": "2.4.1",
     "@types/node": "^18.7.18",
     "@vitest/coverage-istanbul": "2.0.5",
+    "zod": "^3.23.8",
     "jsdom": "24.1.1",
     "vitest": "2.0.5",
     "clipboard": "^2.0.6",
