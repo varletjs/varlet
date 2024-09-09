@@ -6,9 +6,10 @@ import { Dialog, Snackbar } from '@varlet/ui'
 import * as defaultCompiler from 'vue/compiler-sfc'
 import type { Store, SFCOptions, StoreState, OutputModes } from '@vue/repl'
 
-const varletImports = {
+const imports = {
   '@varlet/ui': usePreviewVersion ? './varlet.esm.js' : 'https://cdn.jsdelivr.net/npm/@varlet/ui/es/varlet.esm.js',
   '@varlet/ui/json/area.json': './varlet-area.js',
+  zod: 'https://cdn.jsdelivr.net/npm/zod/lib/index.mjs',
 }
 
 const appFile = 'src/App.vue'
@@ -357,7 +358,7 @@ export class ReplStore implements Store {
           {
             imports: {
               vue: this.defaultVueRuntimeURL,
-              ...varletImports,
+              ...imports,
               'vue/server-renderer': this.defaultVueServerRendererURL,
             },
           },

@@ -29,7 +29,7 @@ export const props = {
     type: Array as PropType<InputValidateTrigger[]>,
     default: () => ['onInput', 'onClear'],
   },
-  rules: Array as PropType<Array<(v: string) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),

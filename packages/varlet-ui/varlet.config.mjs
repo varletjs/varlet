@@ -89,6 +89,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Zod 验证',
+          'en-US': 'Zod Validation',
+        },
+        doc: 'zodValidation',
+        type: 3,
+      },
+      {
+        text: {
           'zh-CN': '原子化 CSS 支持',
           'en-US': 'Atomic CSS Support',
         },
