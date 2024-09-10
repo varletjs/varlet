@@ -5,7 +5,8 @@ import VarRadio from '../../radio/Radio'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
+import { z } from 'zod'
 
 test('test radio group plugin', () => {
   const app = createApp({}).use(RadioGroup)
@@ -540,4 +541,77 @@ test('test radio group keyboard Arrow', async () => {
   expect(wrapper.vm.value).toBe(1)
 
   wrapper.unmount()
+})
+
+describe('test validation with zod', () => {
+  test('radio', async () => {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+    const zn = z.number().refine((v) => v === 1, { message: 'You must choose one option `1`' })
+
+    const wrapper = mount(VarRadio, {
+      props: {
+        modelValue: 0,
+        rules: zn,
+        uncheckedValue: 0,
+        checkedValue: 1,
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.vm.validate()
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option `1`')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.find('.var-radio').trigger('click')
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.vm.reset()
+    await delay(16)
+    expect(wrapper.props('modelValue')).toBe(0)
+
+    wrapper.unmount()
+  })
+  test('radio group', async () => {
+    const zn = z.number().refine((v) => v === 1, { message: 'You must choose one option `1`' })
+    const wrapper = mount({
+      components: {
+        [VarRadioGroup.name]: VarRadioGroup,
+        [VarRadio.name]: VarRadio,
+      },
+      data: () => ({
+        value: 2,
+        rules: zn,
+      }),
+      template: `
+        <var-radio-group ref="radioGroup" :rules="rules" v-model="value">
+          <var-radio :checked-value="1" />
+          <var-radio :checked-value="2" />
+        </var-radio-group>
+      `,
+    })
+
+    const { radioGroup } = wrapper.vm.$refs
+
+    radioGroup.validate()
+    await delay(16)
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option `1`')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    radioGroup.reset()
+    await delay(16)
+    expect(wrapper.vm.value).toBe(undefined)
+
+    await wrapper.find('.var-radio').trigger('click')
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })

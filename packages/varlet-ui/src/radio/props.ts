@@ -29,7 +29,7 @@ export const props = {
     type: Array as PropType<Array<RadioValidateTrigger>>,
     default: () => ['onChange'],
   },
-  rules: Array as PropType<Array<(value: any) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   onClick: defineListenerProp<(e: Event) => void>(),
   onChange: defineListenerProp<(value: any) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: any) => void>(),

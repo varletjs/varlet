@@ -39,7 +39,7 @@ export const props = {
     type: Array as PropType<Array<CheckboxGroupValidateTrigger>>,
     default: () => ['onChange'],
   },
-  rules: Array as PropType<Array<(value: any) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   onChange: defineListenerProp<(value: Array<any>) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: Array<any>) => void>(),
 }
