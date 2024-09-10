@@ -430,7 +430,7 @@ const files = ref([
 | `hide-list` | 是否隐藏文件列表 | _boolean_ | `false` |
 | `resolve-type` | 文件预处理类型，可选值为 `default` `file` `data-url`（`default`，图片文件包含 dataURL 编码和 File 对象，其他类型仅包含 File 对象。`file`，仅包含 File 对象。`data-url`，所有文件类型都包含 dataURL 编码和 File 对象） | _string_ | `default` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _UploaderValidateTrigger[]_ | `['onChange', 'onRemove']` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示 | _Array<(v: VarFile, u: VarFileUtils) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
 
 ### VarFile

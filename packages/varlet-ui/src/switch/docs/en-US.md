@@ -155,7 +155,7 @@ const value = ref(true)
 | `close-color`    | Background color when close | _string_ | `-` |
 | `loading-color`  | Color of loading icon | _string_ | `-` |
 | `size`           | Size of switch | _string \| number_ | `-` |
-| `rules`          | Validation rules | _Array<(value: any) => any>_  | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 | `lazy-change`    | Whether to allow the `before-change` event to be triggered | _boolean_  | `false` |
 | `validate-trigger` | Timing to trigger verification, optional values are `onChange` `onLazyChange` | _SwitchValidateTrigger[]_ | `['onChange', 'onLazyChange']` |
 | `variant` ***3.2.3*** | Variant mode | _boolean_ | `false` |

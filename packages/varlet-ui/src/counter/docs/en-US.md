@@ -180,7 +180,7 @@ const value = ref(0)
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
 | `lazy-change` | Whether to prevent the component itself from updating the bound value | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _CounterValidateTrigger[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
-| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: number) => any>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
 ### Methods
 
