@@ -3,6 +3,7 @@ import { createApp, nextTick, h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test, vi } from 'vitest'
 import { trigger, triggerKeyboard } from '../../utils/test'
+import { z } from 'zod'
 
 test('test auto-complete plugin', () => {
   const app = createApp({}).use(AutoComplete)
@@ -535,5 +536,28 @@ test('test auto-complete blur without focus', () => {
   wrapper.vm.focus()
   wrapper.vm.blur()
   expect(onBlur).toHaveBeenCalledTimes(1)
+  wrapper.unmount()
+})
+
+test('test auto-complete valiation with zod', async () => {
+  const onUpdateModelValue = vi.fn()
+  const wrapper = mount(AutoComplete, {
+    props: {
+      modelValue: '',
+      rules: z.string().min(1, 'Required'),
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.vm.validate()
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.vm.resetValidation()
+  await nextTick()
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.vm.reset()
+  await nextTick()
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
   wrapper.unmount()
 })

@@ -38,7 +38,7 @@ export const props = {
     default: () => ['onInput', 'onClear', 'onChange'],
   },
   getShow: Function as PropType<(v: string) => boolean>,
-  rules: Array as PropType<Array<(v: string) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onInput: defineListenerProp<(value: string, e: Event) => void>(),

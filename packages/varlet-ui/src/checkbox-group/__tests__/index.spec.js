@@ -5,7 +5,8 @@ import VarCheckbox from '../../checkbox/Checkbox'
 import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay, triggerKeyboard, trigger } from '../../utils/test'
-import { expect, vi, test } from 'vitest'
+import { expect, vi, test, describe } from 'vitest'
+import { z } from 'zod'
 
 test('test checkbox group plugin', () => {
   const app = createApp({}).use(CheckboxGroup)
@@ -573,4 +574,74 @@ test('test checkbox keyboard Enter', async () => {
   expect(wrapper.vm.value).toStrictEqual([1])
 
   wrapper.unmount()
+})
+
+describe('validation with zod', () => {
+  test('checkbox', async () => {
+    const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+    const wrapper = mount(VarCheckbox, {
+      props: {
+        modelValue: false,
+        rules: z.boolean().refine((v) => v, { message: 'You must choose one option' }),
+        'onUpdate:modelValue': onUpdateModelValue,
+      },
+    })
+
+    wrapper.vm.validate()
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    await wrapper.find('.var-checkbox').trigger('click')
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.vm.reset()
+    await delay(16)
+    expect(wrapper.props('modelValue')).toBe(false)
+
+    wrapper.unmount()
+  })
+
+  test('checkbox group', async () => {
+    const wrapper = mount({
+      components: {
+        [VarCheckboxGroup.name]: VarCheckboxGroup,
+        [VarCheckbox.name]: VarCheckbox,
+      },
+      data: () => ({
+        value: [],
+        rules: z.array(z.number()).refine((v) => v.length >= 1, { message: 'You must choose one option at least' }),
+      }),
+      template: `
+        <var-checkbox-group ref="checkboxGroup" :rules="rules" v-model="value">
+          <var-checkbox :checked-value="1" />
+          <var-checkbox :checked-value="2" />
+        </var-checkbox-group>
+      `,
+    })
+
+    const { checkboxGroup } = wrapper.vm.$refs
+
+    checkboxGroup.validate()
+    await delay(16)
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must choose one option at least')
+    expect(wrapper.html()).toMatchSnapshot()
+
+    checkboxGroup.reset()
+    await delay(16)
+    expect(wrapper.vm.value).toStrictEqual([])
+
+    await wrapper.find('.var-checkbox').trigger('click')
+    await delay(16)
+
+    expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
 })
