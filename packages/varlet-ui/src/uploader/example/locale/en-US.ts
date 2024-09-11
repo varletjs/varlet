@@ -9,6 +9,7 @@ export default {
   disabled: 'Disabled',
   readonly: 'Readonly',
   validate: 'Validate',
+  validateWithZod: 'Validate with Zod',
   validateMessage: 'There is a file that failed to upload',
   style: 'Customize upload styles',
   upload: 'Upload',

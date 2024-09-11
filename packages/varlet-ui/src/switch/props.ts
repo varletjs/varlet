@@ -22,7 +22,7 @@ export const props = {
   closeColor: String,
   size: [String, Number],
   variant: Boolean,
-  rules: Array as PropType<Array<(v: any) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   ripple: {
     type: Boolean,
     default: true,

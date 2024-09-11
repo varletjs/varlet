@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, mockFileReader, mockStubs, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test } from 'vitest'
+import { z } from 'zod'
 
 const createEvent = (filename, type) => ({
   target: {
@@ -612,4 +613,35 @@ test('test uploader keyboard space for chooseFile', async () => {
 
   HTMLInputElement.prototype.click = origin
   wrapper.unmount()
+})
+
+test('test uploader validation with zod', async () => {
+  const { mockRestore } = mockFileReader('data:image/png;base64,')
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarUploader, {
+    props: {
+      modelValue: [],
+      rules: z.array(z.any()).min(1, 'You must upload one file at least'),
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  wrapper.vm.validate()
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('You must upload one file at least')
+
+  await wrapper.vm.handleChange(createEvent('cat.png', 'image/png'))
+  await delay(16)
+  expect(onUpdateModelValue).toHaveBeenCalledTimes(1)
+  expect(wrapper.html()).toMatchSnapshot()
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+
+  wrapper.vm.reset()
+  await delay(16)
+  expect(wrapper.vm.modelValue).toStrictEqual([])
+
+  wrapper.unmount()
+  mockRestore()
 })

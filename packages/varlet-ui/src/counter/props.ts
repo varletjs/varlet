@@ -49,7 +49,7 @@ export const props = {
     type: Array as PropType<Array<CounterValidateTrigger>>,
     default: () => ['onInputChange', 'onLazyChange', 'onIncrement', 'onDecrement'],
   },
-  rules: Array as PropType<Array<(v: number) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   onBeforeChange: defineListenerProp<(value: number, change: (value: string | number) => void) => void>(),
   onChange: defineListenerProp<(value: number) => void>(),
   onIncrement: defineListenerProp<(value: number) => void>(),

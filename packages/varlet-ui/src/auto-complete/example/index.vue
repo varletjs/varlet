@@ -2,6 +2,7 @@
 import { watchLang, AppType } from '@varlet/cli/client'
 import { use, t } from './locale'
 import { ref, computed } from 'vue'
+import { z } from 'zod'
 
 const { value: standardValue, options: standardOptions } = useAutoComplete()
 const { value: standardValue2, options: standardOptions2 } = useAutoComplete()
@@ -14,6 +15,7 @@ const { value: standardValue8, options: standardOptions8 } = useAutoComplete()
 const { value: standardValue9, options: standardOptions9 } = useAutoComplete()
 const { value: standardValue10, options: standardOptions10 } = useAutoComplete()
 const { value: standardValue11, options: standardOptions11 } = useAutoComplete()
+const { value: standardValue12, options: standardOptions12 } = useAutoComplete()
 
 const { value: outlinedValue, options: outlinedOptions } = useAutoComplete()
 const { value: outlinedValue2, options: outlinedOptions2 } = useAutoComplete()
@@ -65,6 +67,12 @@ function useAutoComplete() {
       :options="standardOptions6"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
       v-model="standardValue6"
+    />
+    <var-auto-complete
+      :placeholder="t('validateWithZod')"
+      :options="standardOptions12"
+      :rules="z.number().min(7, { message: t('maxMessage') })"
+      v-model="standardValue12"
     />
     <var-auto-complete :placeholder="t('displayIcon')" :options="standardOptions7" v-model="standardValue7">
       <template #prepend-icon>

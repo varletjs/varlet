@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, trigger, mockConsole } from '../../utils/test'
 import { expect, vi, test, describe, beforeAll, afterAll } from 'vitest'
+import { z } from 'zod'
 
 const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth')
 beforeAll(() => {
@@ -450,4 +451,27 @@ test('test slider events', async () => {
   expect(wrapper.vm.value).not.toEqual([20, 30])
 
   wrapper.unmount()
+})
+
+test('test slider validation with zod', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSlider.name]: VarSlider,
+    },
+    data: () => ({
+      value: 0,
+      rules: z.number().min(10, 'slider value must be greater than 10'),
+    }),
+    template: `<var-slider v-model="value" :rules="rules" />`,
+  })
+
+  const el = wrapper.find('.var-slider__horizontal-thumb')
+
+  await trigger(el, 'touchstart', 0, 0)
+  await trigger(document, 'touchmove', 5, 0)
+  await trigger(document, 'touchend', 5, 0)
+  await delay(100)
+
+  expect(wrapper.find('.var-slider__horizontal--error').exists()).toBeTruthy()
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('slider value must be greater than 10')
 })

@@ -44,7 +44,7 @@ export interface AutoCompleteProps extends BasicAttributes {
   clearable?: boolean
   validateTrigger?: AutoCompleteValidateTrigger[]
   getShow?: (v: string) => boolean
-  rules?: Array<(v: string) => any>
+  rules?: any
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
   onFocus?: ListenerProp<() => void>
   onBlur?: ListenerProp<() => void>

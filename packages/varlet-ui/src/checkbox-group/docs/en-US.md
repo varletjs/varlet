@@ -283,7 +283,7 @@ const value = ref([])
 | `options` ***3.2.11*** | Specifies options | _CheckboxGroupOption[]_ | `[]` |
 | `label-key` ***3.2.12*** | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` ***3.2.12*** | As the key that uniquely identifies value | _string_ | `value` |
-| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any[]) => any>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
 #### CheckboxGroupOption 
 
@@ -307,7 +307,7 @@ const value = ref([])
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `indeterminate` | Whether indeterminate status(style has the highest priority) | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `rules` | The validation rules, return `true` to indicate that the validation passed. The remaining values are converted to text as user prompts | _Array<(value: any) => any>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
 ### Methods
 

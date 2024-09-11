@@ -54,7 +54,7 @@ export const props = {
     type: Array as PropType<Array<SelectValidateTrigger>>,
     default: () => ['onChange', 'onClear', 'onClose'],
   },
-  rules: Array as PropType<Array<(v: any) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   onFocus: defineListenerProp<() => void>(),
   onBlur: defineListenerProp<() => void>(),
   onClose: defineListenerProp<(value: any) => void>(),

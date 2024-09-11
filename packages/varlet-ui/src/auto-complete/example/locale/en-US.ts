@@ -10,6 +10,7 @@ export default {
   displayIcon: 'Display Icon',
   customIconSize: 'Custom Icon Size',
   validate: 'Validate',
+  validateWithZod: 'Validate with Zod',
   placeholder: 'Please enter text',
   maxMessage: 'Text length must be greater than 6',
   clearableText: 'Clearable Text',
