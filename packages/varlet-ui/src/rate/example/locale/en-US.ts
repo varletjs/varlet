@@ -7,6 +7,7 @@ export default {
   disabledAndReadonly: 'Disabled And Readonly',
   listenEvent: 'Listen Event',
   validate: 'Validate',
+  validateWithZod: 'Validate With Zod',
   errorMessage: 'It has to be greater than 2',
   clearable: 'Can Be Cleared',
 }

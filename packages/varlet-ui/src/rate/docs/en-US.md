@@ -176,6 +176,21 @@ const score = ref(3)
 </template>
 ```
 
+### Validate With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const score = ref(3)
+</script>
+
+<template>
+  <var-rate :rules="z.number().min(3, 'It has to be greater than 2')" v-model='score'/>
+</template>
+```
+
 ## API
 
 ### props

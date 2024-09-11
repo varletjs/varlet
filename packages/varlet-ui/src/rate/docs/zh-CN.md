@@ -178,6 +178,21 @@ const score = ref(3)
 </template>
 ```
 
+### 使用 Zod 校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const score = ref(3)
+</script>
+
+<template>
+  <var-rate :rules="z.number().min(3, '必须大于2')" v-model='score'/>
+</template>
+```
+
 ## API
 
 ### 属性

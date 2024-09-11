@@ -7,6 +7,7 @@ export default {
   disabledAndReadonly: '禁用与只读',
   listenEvent: '监听事件',
   validate: '字段校验',
+  validateWithZod: '使用 Zod 校验',
   errorMessage: '必须大于2',
   clearable: '可清空',
 }
