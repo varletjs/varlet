@@ -97,6 +97,21 @@ const value = ref(true)
 </template>
 ```
 
+### 使用 Zod 校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :rules="z.boolean().refine((val) => val === true, { message: '错误！' })" />
+</template>
+```
+
 ### 异步变更
 
 在某些场景下需要等待服务器返回成功之后再执行变更。

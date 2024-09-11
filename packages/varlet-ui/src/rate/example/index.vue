@@ -2,8 +2,8 @@
 import { Snackbar } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive } from 'vue'
-import { t, use } from './locale'
 import { z } from 'zod'
+import { t, use } from './locale'
 
 const scores = reactive({
   score: 3,
