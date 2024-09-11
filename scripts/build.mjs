@@ -1,11 +1,11 @@
-import execa from 'execa'
+import { x } from 'tinyexec'
 import { createSpinner } from 'nanospinner'
 import { resolve } from 'path'
 
 const CWD = process.cwd()
 
 export function createTask(cwd, command = 'build') {
-  return () => execa('pnpm', [command], { cwd })
+  return () => x('pnpm', [command], { nodeOptions: { cwd } })
 }
 
 export async function runTask(taskName, task) {
