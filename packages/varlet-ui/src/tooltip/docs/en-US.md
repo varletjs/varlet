@@ -109,7 +109,7 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" color="#d81b60">
+  <var-tooltip content="Tooltip" color="#d81b60" text-color="#fff">
     <var-button type="primary">Custom Color</var-button>
   </var-tooltip>
 </template>
@@ -181,6 +181,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `v-model:show` | Whether to show the tooltip                                    | _boolean_             | `false`   |
 | `content` | Display content | _string_              | `-`       |
 | `color`          | Tooltip background color                                                            | _string_  | `-`       |
+| `text-color`     | Tooltip text color                                                                  | _string_  | `-`       |
 | `type`           | Tooltip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
 | `placement` | Tooltip popup placement                                        | _Placement_          | `bottom`     |
 | `strategy`       | Tooltip position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |

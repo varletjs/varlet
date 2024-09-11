@@ -20,6 +20,7 @@ export interface TooltipProps extends BasicAttributes {
   disabled?: boolean
   content?: string
   color?: string
+  textColor?: string
   type?: TooltipType
   trigger?: TooltipTrigger
   reference?: string

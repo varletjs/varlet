@@ -40,6 +40,8 @@ exports[`test tooltip placement 11`] = `"<div class="var-tooltip__tooltip var--b
 
 exports[`test tooltip placement 12`] = `"<div class="var-tooltip__tooltip var--box" style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;"><div class="var-tooltip__content-container var-tooltip--default" role="tooltip"></div></div>"`;
 
+exports[`test tooltip text-color 1`] = `"<div class="var-tooltip__tooltip var--box" style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;"><div style="color: rgb(255, 255, 255);" class="var-tooltip__content-container var-tooltip--default" role="tooltip"></div></div>"`;
+
 exports[`test tooltip type 1`] = `"<div class="var-tooltip__tooltip var--box" style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;"><div class="var-tooltip__content-container var-tooltip--default" role="tooltip"></div></div>"`;
 
 exports[`test tooltip type 2`] = `"<div class="var-tooltip__tooltip var--box" style="z-index: 2000; display: none; position: absolute; left: 0px; top: 0px; margin: 0px;"><div class="var-tooltip__content-container var-tooltip--primary" role="tooltip"></div></div>"`;
