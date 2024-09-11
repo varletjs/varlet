@@ -166,6 +166,26 @@ test('test tooltip color', async () => {
   mockRestore()
 })
 
+test('test tooltip text-color', async () => {
+  const { mockRestore } = mockStubs()
+
+  const root = document.createElement('div')
+
+  const wrapper = mount(VarTooltip, {
+    props: {
+      textColor: '#fff',
+      teleport: root,
+    },
+  })
+
+  await doubleRaf()
+
+  expect(root.innerHTML).toMatchSnapshot()
+
+  wrapper.unmount()
+  mockRestore()
+})
+
 test('test tooltip offset', async () => {
   const { mockRestore } = mockStubs()
 

@@ -13,6 +13,7 @@ export const props = {
     default: 'default',
   },
   color: String,
+  textColor: String,
   content: String,
   show: Boolean,
   disabled: Boolean,
