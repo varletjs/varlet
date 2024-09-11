@@ -167,7 +167,7 @@ In the `disabled` state, the tooltip will not be opened.
 ```html
 <template>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>Disabled</var-button>
+    <var-button type="primary">Disabled</var-button>
   </var-tooltip>
 </template>
 ```
