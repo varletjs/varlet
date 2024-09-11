@@ -153,6 +153,24 @@ const value = ref(0)
 </template>
 ```
 
+### Validate with Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter
+    :rules="z.number().min(6, 'Please select a value greater than 5')"
+    v-model="value"
+  />
+</template>
+```
+
 ## API
 
 ### Props

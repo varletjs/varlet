@@ -153,6 +153,24 @@ const value = ref(0)
 </template>
 ```
 
+### 使用 Zod 校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(0)
+</script>
+
+<template>
+  <var-counter
+    :rules="z.number().min(6, '请选择大于5的值')"
+    v-model="value"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
