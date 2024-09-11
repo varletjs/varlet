@@ -247,6 +247,26 @@ const value = ref([])
 </template>
 ```
 
+### 使用 Zod 校验复选框字段
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox
+    v-model="value"
+    :rules="z.boolean().refine((val) => val, { message: '请勾选' })"
+  >
+    当前的值: {{ value }}
+  </var-checkbox>
+</template>
+```
+
 ### 复选框组字段校验
 
 ```html
@@ -260,6 +280,27 @@ const value = ref([])
   <var-checkbox-group
     v-model="value"
     :rules="[v => v.length === 2 || '请全选']"
+  >
+    <var-checkbox :checked-value="0">吃饭</var-checkbox>
+    <var-checkbox :checked-value="1">睡觉</var-checkbox>
+  </var-checkbox-group>
+</template>
+```
+
+### 使用 Zod 校验复选框组字段
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group
+    v-model="value"
+    :rules="z.array(z.number()).length(2, { message: '请全选' })"
   >
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
     <var-checkbox :checked-value="1">睡觉</var-checkbox>

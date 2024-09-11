@@ -9,6 +9,7 @@ Display and select the content through the drop-down menu.
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref()
 const value2 = ref()
@@ -221,6 +222,7 @@ const keyOptions = ref([
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref()
 const value2 = ref()
