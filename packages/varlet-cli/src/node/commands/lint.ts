@@ -8,7 +8,7 @@ export async function lint() {
   const spinner = createSpinner()
   try {
     spinner.start({ text: 'prettier starting...' })
-    await x('prettier', ['--write', '--cache', '.'])
+    await x('prettier', ['--write', '--cache', '.'], { nodeOptions: { stdio: 'inherit' }, throwOnError: true })
     spinner.success({ text: 'prettier success' })
 
     spinner.start({ text: 'eslint starting...' })
@@ -25,14 +25,17 @@ export async function lint() {
       './packages/varlet-ui-playground/src',
       './packages/varlet-import-resolver/src',
     ]
-    const { stdout } = await x('eslint', [
-      ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),
-      '--fix',
-      '--cache',
-      '--ext',
-      ESLINT_EXTENSIONS.join(),
-    ])
-
+    const { stdout } = await x(
+      'eslint',
+      [
+        ...eslintPatterns.filter((pattern) => isDir(resolve(CWD, pattern))),
+        '--fix',
+        '--cache',
+        '--ext',
+        ESLINT_EXTENSIONS.join(),
+      ],
+      { nodeOptions: { stdio: 'inherit' }, throwOnError: true }
+    )
     const type = stdout ? 'warn' : 'success'
 
     spinner[type]({ text: stdout || 'eslint success' })
