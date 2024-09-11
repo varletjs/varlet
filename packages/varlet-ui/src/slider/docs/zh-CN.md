@@ -207,6 +207,21 @@ const value = ref(20)
 </template>
 ```
 
+### 使用 Zod 校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(20)
+</script>
+
+<template>
+  <var-slider v-model="value" :rules="z.number().min(36, '错误信息')" />
+</template>
+```
+
 ### 垂直方向
 
 通过设置 `direction` 属性值为 `vertical` 来让滑块垂直显示。

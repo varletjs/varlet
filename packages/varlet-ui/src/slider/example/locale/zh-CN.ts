@@ -10,6 +10,7 @@ export default {
   showLabel: '显示标签',
   customBtn: '自定义按钮',
   validateValue: '值的校验',
+  validateWithZod: '使用 Zod 校验',
   errMsg: '错误信息',
   vertical: '垂直方向',
 }

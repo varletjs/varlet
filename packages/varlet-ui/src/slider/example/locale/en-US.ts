@@ -10,6 +10,7 @@ export default {
   showLabel: 'Show Label',
   customBtn: 'Custom Button',
   validateValue: 'Validate Value',
+  validateWithZod: 'Validate With Zod',
   errMsg: 'error message',
   vertical: 'Vertical',
 }

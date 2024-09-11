@@ -207,6 +207,21 @@ const value = ref(20)
 </template>
 ```
 
+### Validate With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(20)
+</script>
+
+<template>
+  <var-slider v-model="value" :rules="z.number().min(36, 'error message')" />
+</template>
+```
+
 ### Vertical
 
 Set the `direction` attribute value to `vertical` to make the slider display vertically.
