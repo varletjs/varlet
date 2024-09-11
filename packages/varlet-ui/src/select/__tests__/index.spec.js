@@ -80,7 +80,7 @@ test('test select variant', () => {
   })
 })
 
-test('test select size', () => {
+test('test select size', async () => {
   const wrapper = mount(VarSelect, {
     props: {
       value: '',
@@ -88,8 +88,16 @@ test('test select size', () => {
     },
   })
 
-  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
+  expect(wrapper.find('.var-field-decorator--small').exists()).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    size: 'normal',
+  })
+
+  expect(wrapper.find('.var-field-decorator--small').exists()).toBeFalsy()
+
+  wrapper.unmount()
 })
 
 test('test select by label', async () => {
@@ -527,6 +535,7 @@ test('test select keyboard close menu by escape', async () => {
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
   await triggerKeyboard(window, 'keydown', { key: 'Escape' })
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
+
   wrapper.unmount()
   document.body.innerHTML = ''
 })
@@ -757,11 +766,10 @@ describe('test select validation with zod', () => {
         rules: [zs],
       }),
       template: `
-      <var-select ref="select" v-model="value" :options="options" value-key="id" :rules="rules">
+      <var-select v-model="value" :options="options" value-key="id" :rules="rules">
       </var-select>
     `,
     })
-    const { select } = wrapper.vm.$refs
 
     await wrapper.trigger('click')
     const options = document.querySelectorAll('.var-option')
@@ -772,5 +780,7 @@ describe('test select validation with zod', () => {
     await delay(16)
     expect(wrapper.find('.var-form-details__error-message').text()).toBe('Invalid option. expect to be `varlet`')
     expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
   })
 })
