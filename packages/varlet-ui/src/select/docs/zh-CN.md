@@ -26,6 +26,8 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+const value17 = ref()
+const value18 = ref([])
 
 const options = ref([
   {
@@ -165,10 +167,30 @@ const keyOptions = ref([
       <var-option label="摸鱼" />
     </var-select>
     <var-select
+      placeholder="使用 Zod 校验单选值"
+      :rules="z.string().refine((val) => val === '摸鱼', { message: '您一定得选择摸鱼' })"
+      v-model="value17"
+    >
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <var-option label="摸鱼" />
+    </var-select>
+    <var-select
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
       v-model="value12"
+    >
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <var-option label="打游戏" />
+      <var-option label="写代码" />
+    </var-select>
+    <var-select
+      multiple
+      placeholder="使用 Zod 校验多选值"
+      :rules="z.array(z.string()).min(2, { message: '您至少选择两个选项' })"
+      v-model="value18"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />
@@ -226,6 +248,8 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+const value17 = ref()
+const value18 = ref([])
 
 const options = ref([
   {
@@ -366,10 +390,32 @@ const keyOptions = ref([
     </var-select>
     <var-select
       variant="outlined"
+      placeholder="使用 Zod 校验单选值"
+      :rules="z.string().refine((val) => val === '摸鱼', { message: '您一定得选择摸鱼' })"
+      v-model="value17"
+    >
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <var-option label="摸鱼" />
+    </var-select>
+    <var-select
+      variant="outlined"
       multiple
       placeholder="多选值校验"
       :rules="[(v) => v.length >= 2 || '您至少选择两个选项']"
       v-model="value12"
+    >
+      <var-option label="吃饭" />
+      <var-option label="睡觉" />
+      <var-option label="打游戏" />
+      <var-option label="写代码" />
+    </var-select>
+    <var-select
+      variant="outlined"
+      multiple
+      placeholder="使用 Zod 校验多选值"
+      :rules="z.array(z.string()).min(2, { message: '您至少选择两个选项' })"
+      v-model="value18"
     >
       <var-option label="吃饭" />
       <var-option label="睡觉" />

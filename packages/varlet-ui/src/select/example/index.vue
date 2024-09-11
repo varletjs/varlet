@@ -1,6 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { computed, ref } from 'vue'
+import { z } from 'zod'
 import { use, t } from './locale'
 
 const standardValue = ref()
@@ -19,6 +20,8 @@ const standardValue13 = ref()
 const standardValue14 = ref()
 const standardValue15 = ref([])
 const standardValue16 = ref()
+const standardValue17 = ref()
+const standardValue18 = ref([])
 
 const outlinedValue = ref()
 const outlinedValue2 = ref()
@@ -36,6 +39,8 @@ const outlinedValue13 = ref()
 const outlinedValue14 = ref()
 const outlinedValue15 = ref([])
 const outlinedValue16 = ref()
+const outlinedValue17 = ref()
+const outlinedValue18 = ref([])
 const options = computed(() => [
   {
     label: t('eat'),
@@ -85,6 +90,8 @@ watchLang((lang) => {
   standardValue14.value = undefined
   standardValue15.value = []
   standardValue16.value = undefined
+  standardValue17.value = undefined
+  standardValue18.value = []
 
   outlinedValue.value = undefined
   outlinedValue2.value = undefined
@@ -102,6 +109,8 @@ watchLang((lang) => {
   outlinedValue14.value = undefined
   outlinedValue15.value = []
   outlinedValue16.value = undefined
+  outlinedValue17.value = undefined
+  outlinedValue18.value = []
 
   use(lang)
 })
@@ -214,10 +223,30 @@ watchLang((lang) => {
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().refine((val) => val === t('rest'), { message: t('mustSelectRest') })"
+      v-model="standardValue17"
+    >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('rest')" />
+    </var-select>
+    <var-select
       multiple
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
       v-model="standardValue12"
+    >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
+    </var-select>
+    <var-select
+      multiple
+      :placeholder="t('multipleValidateWithZod')"
+      :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
+      v-model="standardValue18"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
@@ -346,11 +375,33 @@ watchLang((lang) => {
       <var-option :label="t('rest')" />
     </var-select>
     <var-select
+      variant="outlined"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().refine((val) => val === t('rest'), { message: t('mustSelectRest') })"
+      v-model="outlinedValue17"
+    >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('rest')" />
+    </var-select>
+    <var-select
       multiple
       variant="outlined"
       :placeholder="t('multipleValidate')"
       :rules="[(v) => v.length >= 2 || t('mustSelectMoreThan')]"
       v-model="outlinedValue12"
+    >
+      <var-option :label="t('eat')" />
+      <var-option :label="t('sleep')" />
+      <var-option :label="t('play')" />
+      <var-option :label="t('coding')" />
+    </var-select>
+    <var-select
+      multiple
+      variant="outlined"
+      :placeholder="t('multipleValidateWithZod')"
+      :rules="z.array(z.string()).min(2, { message: t('mustSelectMoreThan') })"
+      v-model="outlinedValue18"
     >
       <var-option :label="t('eat')" />
       <var-option :label="t('sleep')" />
