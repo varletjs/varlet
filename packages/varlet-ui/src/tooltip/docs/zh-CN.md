@@ -167,7 +167,7 @@ import { Snackbar } from '@varlet/ui'
 ```html
 <template>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>禁用提示</var-button>
+    <var-button type="primary">禁用提示</var-button>
   </var-tooltip>
 </template>
 ```

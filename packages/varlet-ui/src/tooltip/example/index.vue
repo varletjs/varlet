@@ -106,7 +106,7 @@ onThemeChange()
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>{{ t('disabled') }}</var-button>
+    <var-button type="primary">{{ t('disabled') }}</var-button>
   </var-tooltip>
 
   <div style="margin-bottom: 100px"></div>
