@@ -17,7 +17,7 @@ export interface CheckboxProps extends BasicAttributes {
   iconSize?: string | number
   ripple?: boolean
   validateTrigger?: Array<CheckboxValidateTrigger>
-  rules?: Array<(value: any) => any>
+  rules?: any
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>

@@ -9,6 +9,7 @@ export default {
   disabled: '禁用',
   readonly: '只读',
   validate: '字段校验',
+  validateWithZod: '使用 Zod 进行校验',
   validateMessage: '存在上传失败的文件',
   style: '自定义上传样式',
   upload: '上传',

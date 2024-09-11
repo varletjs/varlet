@@ -30,7 +30,7 @@ export interface RadioGroupProps extends BasicAttributes {
   labelKey?: string
   valueKey?: string
   validateTrigger?: Array<RadioGroupValidateTrigger>
-  rules?: Array<(value: any) => any>
+  rules?: any
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }

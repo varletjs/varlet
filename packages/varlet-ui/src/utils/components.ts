@@ -175,9 +175,9 @@ export function useValidation() {
           return true
         }
       } else if (result !== true) {
-          errorMessage.value = String(result)
-          return true
-        }
+        errorMessage.value = String(result)
+        return true
+      }
 
       return false
     })

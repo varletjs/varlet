@@ -26,7 +26,7 @@ export interface CounterProps extends BasicAttributes {
   press?: boolean
   ripple?: boolean
   validateTrigger?: Array<CounterValidateTrigger>
-  rules?: Array<(v: number) => any>
+  rules?: any
   onBeforeChange?: ListenerProp<(value: number, change: (value: string | number) => void) => void>
   onChange?: ListenerProp<(value: number) => void>
   onIncrement?: ListenerProp<(value: number) => void>
