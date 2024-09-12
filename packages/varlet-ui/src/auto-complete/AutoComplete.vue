@@ -288,7 +288,7 @@ export default defineComponent({
       validateWithTrigger('onChange')
     }
 
-    function handleAutoComplete(newValue: string) {
+    async function handleAutoComplete(newValue: string) {
       if (props.maxlength != null) {
         newValue = newValue.slice(0, toNumber(props.maxlength))
       }
@@ -301,6 +301,7 @@ export default defineComponent({
       call(props.onChange, newValue)
       validateWithTrigger('onChange')
 
+      await raf()
       input.value!.focus()
     }
 
