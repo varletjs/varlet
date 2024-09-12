@@ -65,4 +65,8 @@ export const props = {
     'onClickOutside',
     'onUpdate:show',
   ]),
+
+  // internal start
+  onKeyEscape: defineListenerProp<() => void>(),
+  // internal end
 }

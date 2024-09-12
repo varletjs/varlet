@@ -17,6 +17,7 @@
       :popover-class="variant === 'standard' ? n('--standard-menu-margin') : undefined"
       v-model:show="isShowMenuSelect"
       @update:model-value="handleAutoComplete"
+      @key-escape="handleKeyEscape"
     >
       <var-input
         ref="input"
@@ -299,6 +300,12 @@ export default defineComponent({
       value.value = newValue
       call(props.onChange, newValue)
       validateWithTrigger('onChange')
+
+      input.value!.focus()
+    }
+
+    function handleKeyEscape() {
+      input.value!.focus()
     }
 
     function getShowMenuSelect(newValue: string) {
@@ -326,6 +333,7 @@ export default defineComponent({
       handleClick,
       handleChange,
       handleBlur,
+      handleKeyEscape,
       handleAutoComplete,
       reset,
       validate,

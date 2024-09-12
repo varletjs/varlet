@@ -115,6 +115,7 @@ export default defineComponent({
       if (key === 'Escape') {
         menu.value!.$el.focus()
         close()
+        call(props.onKeyEscape)
         return
       }
 
