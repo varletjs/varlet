@@ -293,13 +293,11 @@ export default defineComponent({
         newValue = newValue.slice(0, toNumber(props.maxlength))
       }
 
-      if (newValue === value.value) {
-        return
+      if (newValue !== value.value) {
+        value.value = newValue
+        call(props.onChange, newValue)
+        validateWithTrigger('onChange')
       }
-
-      value.value = newValue
-      call(props.onChange, newValue)
-      validateWithTrigger('onChange')
 
       await raf()
       input.value!.focus()
