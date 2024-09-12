@@ -8,7 +8,7 @@
         classes(
           n('controller'),
           [isFocusing, n('--focus')],
-          [errorMessage, n('--error')],
+          [isError, n('--error')],
           [formDisabled || disabled, n('--disabled')]
         )
       "
@@ -38,7 +38,7 @@
             [isFocusing, n('--focus')],
             [hintCenter, n('--hint-center')],
             [formDisabled || disabled, n('--disabled')],
-            [errorMessage, n('--error')],
+            [isError, n('--error')],
             [transitionDisabled, n('--transition-disabled')],
             computePlaceholderState()
           )
@@ -66,7 +66,7 @@
           classes(
             n('line'),
             [isFocusing, n('--line-focus')],
-            [errorMessage, n('--line-error')],
+            [isError, n('--line-error')],
             [formDisabled || disabled, n('--line-disabled')]
           )
         "
@@ -89,8 +89,8 @@
       </fieldset>
 
       <div
-        :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [errorMessage, n('--line-error')])"
-        :style="{ background: !errorMessage ? blurColor : undefined }"
+        :class="classes(n('line'), [formDisabled || disabled, n('--line-disabled')], [isError, n('--line-error')])"
+        :style="{ background: !isError ? blurColor : undefined }"
         v-else
       >
         <div
@@ -99,10 +99,10 @@
               n('dot'),
               [isFocusing, n('--line-focus')],
               [formDisabled || disabled, n('--line-disabled')],
-              [errorMessage, n('--line-error')]
+              [isError, n('--line-error')]
             )
           "
-          :style="{ background: !errorMessage ? focusColor : undefined }"
+          :style="{ background: !isError ? focusColor : undefined }"
         />
       </div>
     </template>
@@ -136,7 +136,7 @@ export default defineComponent({
     const { popup, bindPopup } = usePopup()
 
     const color = computed<string | undefined>(() =>
-      !props.errorMessage ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
+      !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
     )
 
     onWindowResize(resize)

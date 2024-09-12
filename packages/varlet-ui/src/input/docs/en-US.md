@@ -9,10 +9,11 @@ The behavior of the input box is consistent with the basic content, and the user
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref('')
 const value2 = ref('')
-const value3 = ref('varlet')
+const value3 = ref('')
 const value4 = ref('')
 const value5 = ref('')
 const value6 = ref('')
@@ -23,6 +24,7 @@ const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
+const value14 = ref('')
 </script>
 
 <template>
@@ -39,8 +41,13 @@ const value13 = ref('')
     </var-input>
     <var-input
       placeholder="Validate"
-      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      :rules="(v) => v.length > 6 || 'Text length must be greater than 6'"
       v-model="value6"
+    />
+    <var-input
+      placeholder="Validate"
+      :rules="z.string().min(7, 'Text length must be greater than 6')"
+      v-model="value14"
     />
     <var-input placeholder="Display Icon" v-model="value7">
       <template #prepend-icon>
@@ -81,6 +88,7 @@ const value13 = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref('')
 const value2 = ref('')
@@ -95,6 +103,7 @@ const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
+const value14 = ref('')
 </script>
 
 <template>
@@ -112,8 +121,14 @@ const value13 = ref('')
     <var-input
       variant="outlined"
       placeholder="Validate"
-      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      :rules="(v) => v.length > 6 || 'Text length must be greater than 6'"
       v-model="value6"
+    />
+    <var-input
+      variant="outlined"
+      placeholder="Validate"
+      :rules="z.string().min(7, 'Text length must be greater than 6')"
+      v-model="value14"
     />
     <var-input variant="outlined" placeholder="Display Icon" v-model="value7">
       <template #prepend-icon>
@@ -177,8 +192,8 @@ const value13 = ref('')
 | `clearable` | Whether the clearable                                                                                                                  | _boolean_ | `false` |
 | `resize` | Whether textarea can be dragged to resize                                                                                              | _boolean_ | `false` |
 | `autofocus` | Whether the autofocus                                                                                                                  | _boolean_ | `false` |
-| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | The validation rules, return `true` to indicate that the validation passed,The remaining values are converted to text as user prompts | _Array<(v: string) => any>_ | `-` |
+| `validate-trigger` | Timing to trigger validation, The optional value is `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput`                        | _InputValidateTrigger[]_ | `['onInput', 'onClear']` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 | `enterkeyhint` | Customize the enter key style, See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
 ### Methods

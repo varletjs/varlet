@@ -6,6 +6,7 @@ import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay, trigger, triggerKeyboard } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
+import { z } from 'zod'
 
 const Wrapper = {
   components: {
@@ -79,7 +80,7 @@ test('test select variant', () => {
   })
 })
 
-test('test select size', () => {
+test('test select size', async () => {
   const wrapper = mount(VarSelect, {
     props: {
       value: '',
@@ -87,8 +88,16 @@ test('test select size', () => {
     },
   })
 
-  expect(wrapper.find('.var-field-decorator--small')).toBeTruthy()
+  expect(wrapper.find('.var-field-decorator--small').exists()).toBeTruthy()
   expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setProps({
+    size: 'normal',
+  })
+
+  expect(wrapper.find('.var-field-decorator--small').exists()).toBeFalsy()
+
+  wrapper.unmount()
 })
 
 test('test select by label', async () => {
@@ -526,6 +535,7 @@ test('test select keyboard close menu by escape', async () => {
   expect(document.querySelector('.var-menu__menu').style.display).toBe('')
   await triggerKeyboard(window, 'keydown', { key: 'Escape' })
   expect(document.querySelector('.var-menu__menu').style.display).toBe('none')
+
   wrapper.unmount()
   document.body.innerHTML = ''
 })
@@ -736,6 +746,39 @@ describe('test select component slots', () => {
       },
     })
 
+    expect(wrapper.html()).toMatchSnapshot()
+
+    wrapper.unmount()
+  })
+})
+
+describe('test select validation with zod', () => {
+  test('string', async () => {
+    const zs = z.string().refine((d) => d === 'varlet', { message: 'Invalid option. expect to be `varlet`' })
+    const wrapper = mount({
+      ...Wrapper,
+      data: () => ({
+        value: '',
+        options: [
+          { label: 'varlet', value: 'varlet' },
+          { label: 'varlet-ui', value: 'varlet-ui' },
+        ],
+        rules: [zs],
+      }),
+      template: `
+      <var-select v-model="value" :options="options" value-key="id" :rules="rules">
+      </var-select>
+    `,
+    })
+
+    await wrapper.trigger('click')
+    const options = document.querySelectorAll('.var-option')
+    await trigger(options[0], 'click')
+    expect(wrapper.vm.value).toBe('varlet')
+
+    await trigger(options[1], 'click')
+    await delay(16)
+    expect(wrapper.find('.var-form-details__error-message').text()).toBe('Invalid option. expect to be `varlet`')
     expect(wrapper.html()).toMatchSnapshot()
 
     wrapper.unmount()

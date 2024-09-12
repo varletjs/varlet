@@ -3,7 +3,7 @@ import { VNode } from 'vue'
 
 export declare const checkboxProps: Record<keyof CheckboxProps, any>
 
-export type CheckboxValidateTriggers = 'onChange'
+export type CheckboxValidateTrigger = 'onChange'
 
 export interface CheckboxProps extends BasicAttributes {
   modelValue?: any
@@ -16,8 +16,8 @@ export interface CheckboxProps extends BasicAttributes {
   indeterminate?: boolean
   iconSize?: string | number
   ripple?: boolean
-  validateTrigger?: Array<CheckboxValidateTriggers>
-  rules?: Array<(value: any) => any>
+  validateTrigger?: Array<CheckboxValidateTrigger>
+  rules?: any
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>

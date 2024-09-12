@@ -21,7 +21,10 @@ export const props = {
     type: [String, Number, Boolean, Array] as PropType<any>,
     default: undefined,
   },
-  options: Array as PropType<Array<MenuSelectOption>>,
+  options: {
+    type: Array as PropType<MenuSelectOption[]>,
+    default: () => [],
+  },
   labelKey: {
     type: String,
     default: 'label',

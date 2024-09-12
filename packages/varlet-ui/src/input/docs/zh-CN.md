@@ -9,10 +9,11 @@
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref('')
 const value2 = ref('')
-const value3 = ref('varlet')
+const value3 = ref('')
 const value4 = ref('')
 const value5 = ref('')
 const value6 = ref('')
@@ -23,6 +24,7 @@ const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
+const value14 = ref('')
 </script>
 
 <template>
@@ -39,8 +41,13 @@ const value13 = ref('')
     </var-input>
     <var-input
       placeholder="字段校验"
-      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      :rules="(v) => v.length > 6 || '文本长度必须大于6'"
       v-model="value6"
+    />
+    <var-input
+      placeholder="字段校验(Zod)"
+      :rules="z.string().min(7, '文本长度必须大于6')"
+      v-model="value14"
     />
     <var-input placeholder="显示图标" v-model="value7">
       <template #prepend-icon>
@@ -81,6 +88,7 @@ const value13 = ref('')
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref('')
 const value2 = ref('')
@@ -95,6 +103,7 @@ const value10 = ref('')
 const value11 = ref('')
 const value12 = ref('')
 const value13 = ref('')
+const value14 = ref('')
 </script>
 
 <template>
@@ -112,8 +121,14 @@ const value13 = ref('')
     <var-input
       variant="outlined"
       placeholder="字段校验"
-      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      :rules="(v) => v.length > 6 || '文本长度必须大于6'"
       v-model="value6"
+    />
+    <var-input
+      variant="outlined"
+      placeholder="字段校验"
+      :rules="z.string().min(7, t('maxMessage'))"
+      v-model="value14"
     />
     <var-input variant="outlined" placeholder="显示图标" v-model="value7">
       <template #prepend-icon>
@@ -177,8 +192,8 @@ const value13 = ref('')
 | `clearable` | 是否可清除                                                                    | _boolean_ | `false` |
 | `resize` | 文本域是否可以拖动调整尺寸                                                            | _boolean_ | `false` |
 | `autofocus` | 是否自动聚焦                                                                   | _boolean_ | `false` |
-| `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _ValidateTriggers[]_ | `['onInput', 'onClear']` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示                                   | _Array<(v: string) => any>_ | `-` |
+| `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _InputValidateTrigger[]_ | `['onInput', 'onClear']` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 
 ### 方法

@@ -1,4 +1,5 @@
 import { useEventListener } from '@varlet/use'
+import type { SafeParseReturnType, ZodType } from 'zod'
 import {
   createApp,
   h,
@@ -17,7 +18,15 @@ import {
   type App,
   defineComponent,
 } from 'vue'
-import { createNamespaceFn, isArray, isPlainObject, isString } from '@varlet/shared'
+import {
+  createNamespaceFn,
+  hasOwn,
+  isArray,
+  isFunction,
+  isPlainObject,
+  isString,
+  normalizeToArray,
+} from '@varlet/shared'
 
 export type ListenerProp<F> = F | F[]
 
@@ -139,21 +148,34 @@ export function flatFragment(vNodes: any) {
   return result
 }
 
+export function isZodRule(rule: unknown): rule is ZodType {
+  return isPlainObject(rule) && isFunction(rule.safeParseAsync)
+}
+
+export function isZodResult(result: unknown): result is SafeParseReturnType<any, any> {
+  return isPlainObject(result) && hasOwn(result, 'success')
+}
+
 export function useValidation() {
   const errorMessage: Ref<string> = ref('')
 
-  const validate = async (rules: any, value: any, apis?: any): Promise<boolean> => {
-    if (!isArray(rules) || !rules.length) {
-      return true
-    }
+  const validate = async (ruleOrRules: any | any[], value: any, apis?: any): Promise<boolean> => {
+    const rules = normalizeToArray(ruleOrRules).filter((rule) => isZodRule(rule) || isFunction(rule))
 
-    const resArr = await Promise.all(rules.map((rule) => rule(value, apis)))
+    const results = await Promise.all(
+      rules.map((rule) => (isZodRule(rule) ? rule.safeParseAsync(value) : rule(value, apis)))
+    )
 
     resetValidation()
 
-    return !resArr.some((res) => {
-      if (res !== true) {
-        errorMessage.value = String(res)
+    return !results.some((result) => {
+      if (isZodResult(result)) {
+        if (result.success === false) {
+          errorMessage.value = result.error.issues[0].message
+          return true
+        }
+      } else if (result !== true) {
+        errorMessage.value = String(result)
         return true
       }
 

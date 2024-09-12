@@ -11,6 +11,7 @@ overrides:
   object.assign: npm:@nolyfill/object.assign@latest
   object.entries: npm:@nolyfill/object.entries@latest
   object.values: npm:@nolyfill/object.values@latest
+  tinyexec: npm:tinyexec@^0.3.0
 
 importers:
 
@@ -28,9 +29,6 @@ importers:
       eslint:
         specifier: ^8.43.0
         version: 8.43.0
-      execa:
-        specifier: ^5.0.0
-        version: 5.1.1
       nano-staged:
         specifier: 0.8.0
         version: 0.8.0
@@ -46,6 +44,9 @@ importers:
       simple-git-hooks:
         specifier: ^2.8.0
         version: 2.8.0
+      tinyexec:
+        specifier: npm:tinyexec@^0.3.0
+        version: 0.3.0
       typescript:
         specifier: ^5.1.5
         version: 5.1.5
@@ -106,9 +107,6 @@ importers:
       esbuild:
         specifier: 0.19.3
         version: 0.19.3
-      execa:
-        specifier: ^5.0.0
-        version: 5.1.1
       fs-extra:
         specifier: ^9.0.1
         version: 9.1.0
@@ -145,6 +143,9 @@ importers:
       sharp:
         specifier: 0.31.1
         version: 0.31.1
+      tinyexec:
+        specifier: npm:tinyexec@^0.3.0
+        version: 0.3.0
       typescript:
         specifier: ^5.1.5
         version: 5.1.5
@@ -360,6 +361,9 @@ importers:
       vue-router:
         specifier: 4.2.0
         version: 4.2.0(vue@3.4.21(typescript@5.1.5))
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
 
   packages/varlet-ui-playground:
     dependencies:
@@ -4214,8 +4218,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  send@0.18.0:
-    resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
+  send@0.19.0:
+    resolution: {integrity: sha512-dW41u5VfLXu8SJh5bwRmyYUbAoSB3c9uQh6L8h/KtsFREPWpbX1lrljJo186Jc4nmci/sGUZ9a0a0J2zgfq2hw==}
     engines: {node: '>= 0.8.0'}
 
   serve-index@1.9.1:
@@ -4499,6 +4503,9 @@ packages:
 
   tinybench@2.9.0:
     resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
+
+  tinyexec@0.3.0:
+    resolution: {integrity: sha512-tVGE0mVJPGb0chKhqmsoosjsS+qUnJVGJpZgsHYQcGoPlG3B51R3PouqTgEGH2Dc9jjFyOqOpix6ZHNMXp1FZg==}
 
   tinypool@1.0.0:
     resolution: {integrity: sha512-KIKExllK7jp3uvrNtvRBYBWBOAXSX8ZvoaD8T+7KB/QHIuoJW3Pmr60zucywjAlMb5TeXUkcs/MWeWLu0qvuAQ==}
@@ -4994,6 +5001,9 @@ packages:
   yocto-queue@1.0.0:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
+
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
 snapshots:
 
@@ -8147,7 +8157,7 @@ snapshots:
       object-assign: 4.1.1
       opn: 6.0.0
       proxy-middleware: 0.15.0
-      send: 0.18.0
+      send: 0.19.0
       serve-index: 1.9.1
     transitivePeerDependencies:
       - supports-color
@@ -9050,7 +9060,7 @@ snapshots:
     dependencies:
       lru-cache: 6.0.0
 
-  send@0.18.0:
+  send@0.19.0:
     dependencies:
       debug: 2.6.9
       depd: 2.0.0
@@ -9391,6 +9401,8 @@ snapshots:
   tiny-emitter@2.1.0: {}
 
   tinybench@2.9.0: {}
+
+  tinyexec@0.3.0: {}
 
   tinypool@1.0.0: {}
 
@@ -9972,3 +9984,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.0.0: {}
+
+  zod@3.23.8: {}

@@ -61,7 +61,6 @@ export const props = {
   onCancel:
     defineListenerProp<(values: (string | number)[], indexes: number[], options: PickerColumnOption[]) => void>(),
   'onUpdate:modelValue': defineListenerProp<(values: (string | number)[]) => void>(),
-  // dynamic internal
   ...pickProps(popupProps, [
     'show',
     'onUpdate:show',

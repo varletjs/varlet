@@ -3,6 +3,7 @@ import { Snackbar, Dialog } from '@varlet/ui'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, onUnmounted } from 'vue'
 import { use, t } from './locale'
+import { z } from 'zod'
 
 const values = reactive({
   files: [],
@@ -72,6 +73,7 @@ const values = reactive({
   files13: [],
   files14: [],
   files15: [],
+  files16: [],
 })
 
 let timer
@@ -199,6 +201,14 @@ function handleActionClick(chooseFile) {
 
   <app-type>{{ t('validate') }}</app-type>
   <var-uploader :rules="[(v, u) => u.getError().length === 0 || t('validateMessage')]" v-model="values.files10" />
+
+  <app-type>{{ t('validateWithZod') }}</app-type>
+  <var-uploader
+    :rules="
+      z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, t('validateMessage'))
+    "
+    v-model="values.files16"
+  />
 
   <app-type>{{ t('customRender') }}</app-type>
   <var-space>

@@ -5,6 +5,7 @@ export const install: (app: App) => void
 
 export * from './actionSheet'
 export * from './appBar'
+export * from './autoComplete'
 export * from './avatar'
 export * from './avatarGroup'
 export * from './backTop'
@@ -98,6 +99,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     VarActionSheet: typeof import('@varlet/ui')['_ActionSheetComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
+    VarAutoComplete: typeof import('@varlet/ui')['_AutoCompleteComponent']
     VarAvatar: typeof import('@varlet/ui')['_AvatarComponent']
     VarAvatarGroup: typeof import('@varlet/ui')['_AvatarGroupComponent']
     VarBackTop: typeof import('@varlet/ui')['_BackTopComponent']

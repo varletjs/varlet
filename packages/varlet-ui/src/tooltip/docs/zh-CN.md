@@ -110,7 +110,7 @@ const placementOptions = [
 
 ```html
 <template>
-  <var-tooltip content="Tooltip" color="#d81b60">
+  <var-tooltip content="Tooltip" color="#d81b60" text-color="#fff">
     <var-button type="primary">自定义颜色</var-button>
   </var-tooltip>
 </template>
@@ -167,7 +167,7 @@ import { Snackbar } from '@varlet/ui'
 ```html
 <template>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>禁用提示</var-button>
+    <var-button type="primary">禁用提示</var-button>
   </var-tooltip>
 </template>
 ```
@@ -181,6 +181,7 @@ import { Snackbar } from '@varlet/ui'
 | `v-model:show` | 是否显示 | _boolean_       | `false`   |
 | `content` | 显示的内容 | _string_    | `-`       |
 | `color` | 背景颜色 | _string_       | `-`       |
+| `text-color` | 文字颜色 | _string_       | `-`       |
 | `type`  | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
 | `placement` | 弹出位置 | _Placement_    | `bottom`     |
 | `strategy`  | 定位方式，可选值为 `absolute` `fixed` | _string_    | `absolute`    |

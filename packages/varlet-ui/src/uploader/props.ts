@@ -58,7 +58,7 @@ export const props = {
     type: Array as PropType<Array<UploaderValidateTrigger>>,
     default: () => ['onChange', 'onRemove'],
   },
-  rules: Array as PropType<Array<(v: VarFile) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   hideList: Boolean,
   preventDefaultPreview: Boolean,
   onClickAction: defineListenerProp<(chooseFile: () => void, event: Event) => void>(),

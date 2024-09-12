@@ -39,7 +39,7 @@ export const props = {
   textColor: String,
   focusColor: String,
   blurColor: String,
-  errorMessage: String,
+  isError: Boolean,
   formDisabled: Boolean,
   disabled: Boolean,
   clearable: Boolean,

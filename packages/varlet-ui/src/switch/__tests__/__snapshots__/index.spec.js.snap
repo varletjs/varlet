@@ -33,3 +33,20 @@ exports[`test switch component props > test variant mode 2`] = `
   </transition-stub>
 </div>"
 `;
+
+exports[`test switch valiation with zod 1`] = `
+"<div class="var-switch" role="switch" aria-checked="true">
+  <div class="var-switch__block var-switch__block--active">
+    <div class="var-switch__track var-switch__track--active" style=""></div>
+    <div class="var-switch__ripple var-switch__ripple--active" tabindex="0" style="">
+      <div class="var-switch__handle var-elevation--2 var-switch__handle--active">
+        <!--v-if-->
+      </div>
+      <div class="var-hover-overlay"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;

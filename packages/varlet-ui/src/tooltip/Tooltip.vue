@@ -20,7 +20,11 @@
           @mouseleave="handlePopoverMouseleave"
         >
           <div
-            :style="{ background: color, width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined }"
+            :style="{
+              background: color,
+              color: textColor,
+              width: sameWidth ? toSizeUnit(Math.ceil(hostSize.width)) : undefined,
+            }"
             :class="classes(n('content-container'), n(`--${type}`))"
             role="tooltip"
           >

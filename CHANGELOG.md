@@ -1,3 +1,13 @@
+# [3.4.0](https://github.com/varletjs/varlet/compare/v3.3.16...v3.4.0) (2024-09-02)
+
+
+### Features
+
+* **cli:** support generate component type file for create command ([#1744](https://github.com/varletjs/varlet/issues/1744)) ([3333798](https://github.com/varletjs/varlet/commit/3333798c3db7b1786329556ebde35abc9ff04c5f))
+* new component auto complete and refactor options api ([#1742](https://github.com/varletjs/varlet/issues/1742)) ([c90668d](https://github.com/varletjs/varlet/commit/c90668d7075701a2fbe66f0034099d7eb1f1820b))
+
+
+
 ## [3.3.16](https://github.com/varletjs/varlet/compare/v3.3.15...v3.3.16) (2024-08-23)
 
 

@@ -29,7 +29,7 @@ export const props = {
     type: Array as PropType<InputValidateTrigger[]>,
     default: () => ['onInput', 'onClear'],
   },
-  rules: Array as PropType<Array<(v: string) => any>>,
+  rules: [Array, Function, Object] as PropType<any>,
   enterkeyhint: String as PropType<InputHTMLAttributes['enterKeyHint']>,
   onFocus: defineListenerProp<(e: FocusEvent) => void>(),
   onBlur: defineListenerProp<(e: FocusEvent) => void>(),
@@ -37,7 +37,6 @@ export const props = {
   onChange: defineListenerProp<(value: string, e: Event) => void>(),
   onClear: defineListenerProp<(value: string) => void>(),
   'onUpdate:modelValue': defineListenerProp<(value: string) => void>(),
-  // dynamic internal
   ...pickProps(fieldDecoratorProps, [
     'size',
     'variant',
@@ -51,4 +50,19 @@ export const props = {
     'clearable',
     'onClick',
   ]),
+  // internal start
+  autocomplete: String,
+  isForceFocusingEffect: {
+    type: Boolean,
+    default: undefined,
+  },
+  isForceErrorEffect: {
+    type: Boolean,
+    default: undefined,
+  },
+  isShowFormDetails: {
+    type: Boolean,
+    default: true,
+  },
+  // internal end
 }

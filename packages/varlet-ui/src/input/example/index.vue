@@ -2,10 +2,11 @@
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, t } from './locale'
+import { z } from 'zod'
 
 const standardValue = ref('')
 const standardValue2 = ref('')
-const standardValue3 = ref('varlet')
+const standardValue3 = ref('')
 const standardValue4 = ref('')
 const standardValue5 = ref('')
 const standardValue6 = ref('')
@@ -16,6 +17,7 @@ const standardValue10 = ref('')
 const standardValue11 = ref('')
 const standardValue12 = ref('')
 const standardValue13 = ref('')
+const standardValue14 = ref('')
 
 const outlinedValue = ref('')
 const outlinedValue2 = ref('')
@@ -30,6 +32,7 @@ const outlinedValue10 = ref('')
 const outlinedValue11 = ref('')
 const outlinedValue12 = ref('')
 const outlinedValue13 = ref('')
+const outlinedValue14 = ref('')
 
 watchLang(use)
 onThemeChange()
@@ -48,10 +51,11 @@ onThemeChange()
         <var-icon name="error" @click="clear" />
       </template>
     </var-input>
+    <var-input :placeholder="t('validate')" :rules="(v) => v.length > 6 || t('maxMessage')" v-model="standardValue6" />
     <var-input
-      :placeholder="t('validate')"
-      :rules="[(v) => v.length > 6 || t('maxMessage')]"
-      v-model="standardValue6"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().min(7, t('maxMessage'))"
+      v-model="standardValue14"
     />
     <var-input :placeholder="t('displayIcon')" v-model="standardValue7">
       <template #prepend-icon>
@@ -91,8 +95,14 @@ onThemeChange()
     <var-input
       variant="outlined"
       :placeholder="t('validate')"
-      :rules="[(v) => v.length > 6 || t('maxMessage')]"
+      :rules="(v) => v.length > 6 || t('maxMessage')"
       v-model="outlinedValue6"
+    />
+    <var-input
+      variant="outlined"
+      :placeholder="t('validateWithZod')"
+      :rules="z.string().min(7, t('maxMessage'))"
+      v-model="outlinedValue14"
     />
     <var-input variant="outlined" :placeholder="t('displayIcon')" v-model="outlinedValue7">
       <template #prepend-icon>

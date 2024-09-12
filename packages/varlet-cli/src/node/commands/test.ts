@@ -1,4 +1,4 @@
-import execa from 'execa'
+import { x } from 'tinyexec'
 import { VITEST_CONFIG } from '../shared/constant.js'
 
 interface TestCommandOptions {
@@ -24,5 +24,5 @@ export async function test({ component, watch, coverage }: TestCommandOptions) {
     args.push('--dir', `src/${component.trim()}`)
   }
 
-  await execa('vitest', args, { stdin: 'inherit', stdout: 'inherit', stderr: 'inherit' })
+  await x('vitest', args, { nodeOptions: { stdio: 'inherit' }, throwOnError: true })
 }

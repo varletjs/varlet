@@ -1,6 +1,6 @@
 {
   "name": "@varlet/ui",
-  "version": "3.3.16",
+  "version": "3.4.0",
   "description": "A material like components library",
   "main": "lib/varlet.cjs.js",
   "module": "es/index.mjs",
@@ -49,7 +49,7 @@
     "compile:style-vars": "varlet-cli compile:style-vars",
     "create": "varlet-cli create -i",
     "test": "varlet-cli test",
-    "test:watch": "varlet-cli test -w",
+    "test:watch": "varlet-cli test -w -cov",
     "test:coverage": "varlet-cli test -cov"
   },
   "peerDependencies": {
@@ -71,6 +71,7 @@
     "@vue/test-utils": "2.4.1",
     "@types/node": "^18.7.18",
     "@vitest/coverage-istanbul": "2.0.5",
+    "zod": "^3.23.8",
     "jsdom": "24.1.1",
     "vitest": "2.0.5",
     "clipboard": "^2.0.6",

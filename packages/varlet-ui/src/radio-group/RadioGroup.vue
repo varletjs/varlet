@@ -1,9 +1,9 @@
 <template>
   <div :class="n('wrap')">
     <div :class="classes(n(), n(`--${direction}`))">
-      <template v-if="radioGroupOptions.length">
+      <template v-if="options.length">
         <var-radio
-          v-for="option in radioGroupOptions"
+          v-for="option in options"
           :key="option[valueKey]"
           :checked-value="option[valueKey]"
           :disabled="option.disabled"
@@ -24,11 +24,11 @@
 import VarFormDetails from '../form-details'
 import VarRadio from '../radio'
 import { computed, defineComponent, nextTick, watch } from 'vue'
-import { props, type ValidateTriggers } from './props'
+import { props, type RadioGroupValidateTrigger } from './props'
 import { useValidation, createNamespace, MaybeVNode } from '../utils/components'
 import { useRadios, type RadioGroupProvider } from './provide'
 import { useForm } from '../form/provide'
-import { call, preventDefault, isArray, isFunction } from '@varlet/shared'
+import { call, preventDefault, isFunction } from '@varlet/shared'
 import { useEventListener } from '@varlet/use'
 
 const { name, n, classes } = createNamespace('radio-group')
@@ -47,7 +47,6 @@ export default defineComponent({
       // expose
       resetValidation,
     } = useValidation()
-    const radioGroupOptions = computed(() => (isArray(props.options) ? props.options : []))
     const radioGroupErrorMessage = computed(() => errorMessage.value)
 
     const radioGroupProvider: RadioGroupProvider = {
@@ -115,7 +114,7 @@ export default defineComponent({
       }
     }
 
-    function validateWithTrigger(trigger: ValidateTriggers) {
+    function validateWithTrigger(trigger: RadioGroupValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)
@@ -151,7 +150,6 @@ export default defineComponent({
       validate,
       resetValidation,
       isFunction,
-      radioGroupOptions,
     }
   },
 })

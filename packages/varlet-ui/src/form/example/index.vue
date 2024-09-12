@@ -1,12 +1,13 @@
 <script setup>
 import VarCustomFormComponent from './CustomFormComponent'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { use, t } from './locale'
 
 const formData = reactive({
   username: '',
   password: '',
+  email: '',
   department: '',
   gender: undefined,
   license: false,
@@ -22,11 +23,21 @@ const formData = reactive({
 const form = ref(null)
 const disabled = ref(false)
 const readonly = ref(false)
+const suggestions = computed(() =>
+  ['@qq.com', '@163.com', '@gmail.com'].map((suffix) => {
+    const [prefix] = formData.email.split('@')
+    return {
+      label: prefix + suffix,
+      value: prefix + suffix,
+    }
+  })
+)
 
 watchLang((lang) => {
   use(lang)
   form.value?.reset()
 })
+
 onThemeChange()
 </script>
 
@@ -51,6 +62,12 @@ onThemeChange()
         :placeholder="t('password')"
         :rules="[(v) => !!v || t('passwordMessage'), (v) => v.length >= 8 || t('passwordMinLengthMessage')]"
         v-model="formData.password"
+      />
+      <var-auto-complete
+        :placeholder="t('email')"
+        :rules="[(v) => !!v || t('emailMessage')]"
+        :options="suggestions"
+        v-model="formData.email"
       />
       <var-select
         :placeholder="t('department')"

@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp } from 'vue'
 import { delay, triggerKeyboard } from '../../utils/test'
 import { expect, vi, test, describe } from 'vitest'
+import { z } from 'zod'
 
 test('test switch plugin', () => {
   const app = createApp({}).use(Switch)
@@ -275,4 +276,24 @@ describe('test switch events', () => {
     HTMLElement.prototype.click = origin
     wrapper.unmount()
   })
+})
+
+test('test switch valiation with zod', async () => {
+  const wrapper = mount({
+    components: {
+      [VarSwitch.name]: VarSwitch,
+    },
+    data: () => ({
+      modelValue: true,
+      rules: z.boolean().refine((v) => v, 'value must be true'),
+    }),
+    template: `<var-switch v-model="modelValue" :rules="rules" />`,
+  })
+
+  await wrapper.setData({
+    modelValue: false,
+  })
+  await wrapper.find('.var-switch__block').trigger('click')
+  await delay(16)
+  expect(wrapper.html()).toMatchSnapshot()
 })

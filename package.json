@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "3.3.16",
+  "version": "3.4.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
@@ -36,7 +36,7 @@
     "@varlet/eslint-config": "workspace:*",
     "@varlet/icons": "workspace:*",
     "eslint": "^8.43.0",
-    "execa": "^5.0.0",
+    "tinyexec": "^0.3.0",
     "rimraf": "^5.0.1",
     "nano-staged": "0.8.0",
     "nanospinner": "^1.1.0",
@@ -55,7 +55,8 @@
       "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
       "object.assign": "npm:@nolyfill/object.assign@latest",
       "object.entries": "npm:@nolyfill/object.entries@latest",
-      "object.values": "npm:@nolyfill/object.values@latest"
+      "object.values": "npm:@nolyfill/object.values@latest",
+      "tinyexec": "npm:tinyexec@^0.3.0"
     }
   }
 }

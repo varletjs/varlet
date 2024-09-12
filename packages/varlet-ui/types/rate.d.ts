@@ -21,7 +21,7 @@ export interface RateProps extends BasicAttributes {
   readonly?: boolean
   clearable?: boolean
   ripple?: boolean
-  rules?: Array<(value: number) => any>
+  rules?: any
   onChange?: ListenerProp<(value: number) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: number) => void>
 }

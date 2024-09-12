@@ -75,7 +75,7 @@ onThemeChange()
   </var-space>
 
   <app-type>{{ t('customColor') }}</app-type>
-  <var-tooltip content="Tooltip" color="#d81b60">
+  <var-tooltip content="Tooltip" color="#d81b60" text-color="#fff">
     <var-button type="primary">{{ t('customColor') }}</var-button>
   </var-tooltip>
 
@@ -106,7 +106,7 @@ onThemeChange()
 
   <app-type>{{ t('disabled') }}</app-type>
   <var-tooltip content="Tooltip" disabled>
-    <var-button type="primary" disabled>{{ t('disabled') }}</var-button>
+    <var-button type="primary">{{ t('disabled') }}</var-button>
   </var-tooltip>
 
   <div style="margin-bottom: 100px"></div>

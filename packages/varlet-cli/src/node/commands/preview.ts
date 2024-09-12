@@ -1,6 +1,6 @@
 import fse from 'fs-extra'
 import logger from '../shared/logger.js'
-import execa from 'execa'
+import { x } from 'tinyexec'
 import { SITE_OUTPUT_PATH } from '../shared/constant.js'
 
 const { pathExistsSync } = fse
@@ -12,7 +12,7 @@ export async function preview() {
   }
 
   try {
-    await execa.command('live-server --port=5500', { cwd: SITE_OUTPUT_PATH }).stdout?.pipe(process.stdout)
+    await x('live-server', ['--port=5500'], { nodeOptions: { cwd: SITE_OUTPUT_PATH, stdio: 'inherit' } })
   } catch (e: any) {
     logger.error(e.toString())
   }

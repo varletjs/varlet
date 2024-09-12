@@ -453,6 +453,86 @@ exports[`test input validation 3`] = `
 </div>"
 `;
 
+exports[`test input validation with zod 1`] = `
+"<div class="var-input var--box">
+  <div class="var-field-decorator var--box var-field-decorator--standard">
+    <div class="var-field-decorator__controller var-field-decorator--error" style="cursor: text; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+      <div class="var-field-decorator__icon"></div>
+      <div class="var-field-decorator__middle">
+        <!--v-if--><input class="var-input__input var-input--error var-input--caret-error" autocomplete="new-password" id="var-input-mock-id" type="text">
+      </div>
+      <!--v-if-->
+      <div class="var-field-decorator__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-field-decorator__line var-field-decorator--line-error">
+      <div class="var-field-decorator__dot var-field-decorator--line-error"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <div class="var-form-details">
+      <div class="var-form-details__error-message">
+        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+          <div>The length of value must be more than three</div>
+        </transition-stub>
+      </div>
+      <div class="var-form-details__extra-message">
+        <transition-stub name="var-form-details__message" appear="false" persisted="false" css="true">
+          <!--v-if-->
+        </transition-stub>
+      </div>
+    </div>
+  </transition-stub>
+</div>"
+`;
+
+exports[`test input validation with zod 2`] = `
+"<div class="var-input var--box">
+  <div class="var-field-decorator var--box var-field-decorator--standard">
+    <div class="var-field-decorator__controller" style="cursor: text; overflow: hidden; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+      <div class="var-field-decorator__icon"></div>
+      <div class="var-field-decorator__middle">
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
+      </div>
+      <!--v-if-->
+      <div class="var-field-decorator__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-field-decorator__line">
+      <div class="var-field-decorator__dot"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
+exports[`test input validation with zod 3`] = `
+"<div class="var-input var--box">
+  <div class="var-field-decorator var--box var-field-decorator--standard">
+    <div class="var-field-decorator__controller" style="cursor: text; overflow: visible; --field-decorator-middle-offset-left: 0px; --field-decorator-middle-offset-width: 0px; --field-decorator-middle-offset-height: 0px;">
+      <div class="var-field-decorator__icon"></div>
+      <div class="var-field-decorator__middle">
+        <!--v-if--><input class="var-input__input" autocomplete="new-password" id="var-input-mock-id" type="text">
+      </div>
+      <!--v-if-->
+      <div class="var-field-decorator__icon">
+        <!--v-if-->
+      </div>
+    </div>
+    <div class="var-field-decorator__line">
+      <div class="var-field-decorator__dot"></div>
+    </div>
+  </div>
+  <transition-stub name="var-form-details" appear="false" persisted="false" css="true">
+    <!--v-if-->
+  </transition-stub>
+</div>"
+`;
+
 exports[`test input variant 1`] = `
 "<div class="var-input var--box">
   <div class="var-field-decorator var--box var-field-decorator--standard">

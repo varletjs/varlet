@@ -65,7 +65,7 @@ import Ripple from '../ripple'
 import Hover from '../hover'
 import VarHoverOverlay, { useHoverOverlay } from '../hover-overlay'
 import { computed, defineComponent, nextTick, ref } from 'vue'
-import { props, type ValidateTrigger } from './props'
+import { props, type RadioValidateTrigger } from './props'
 import { useValidation, createNamespace } from '../utils/components'
 import { useRadioGroup, type RadioProvider } from './provide'
 import { useForm } from '../form/provide'
@@ -150,7 +150,7 @@ export default defineComponent({
       }
     }
 
-    function validateWithTrigger(trigger: ValidateTrigger) {
+    function validateWithTrigger(trigger: RadioValidateTrigger) {
       nextTick(() => {
         const { validateTrigger, rules, modelValue } = props
         vt(validateTrigger, trigger, rules, modelValue)

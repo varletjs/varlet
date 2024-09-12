@@ -1,6 +1,6 @@
 {
   "name": "@varlet/cli",
-  "version": "3.3.16",
+  "version": "3.4.0",
   "type": "module",
   "description": "cli of varlet",
   "bin": {
@@ -52,7 +52,7 @@
     "commander": "^8.3.0",
     "ejs": "^3.1.8",
     "esbuild": "0.19.3",
-    "execa": "^5.0.0",
+    "tinyexec": "^0.3.0",
     "fs-extra": "^9.0.1",
     "glob": "^7.2.0",
     "hash-sum": "^2.0.0",

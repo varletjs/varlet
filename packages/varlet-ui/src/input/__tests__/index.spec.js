@@ -4,6 +4,7 @@ import { mount } from '@vue/test-utils'
 import { createApp, h } from 'vue'
 import { delay } from '../../utils/test'
 import { expect, vi, describe, test } from 'vitest'
+import { z } from 'zod'
 
 test('test input plugin', () => {
   const app = createApp({}).use(Input)
@@ -300,6 +301,37 @@ test('test input validation', async () => {
     props: {
       modelValue: '',
       rules: [(v) => v.length > 3 || 'The length of value must be more than three'],
+      'onUpdate:modelValue': onUpdateModelValue,
+    },
+  })
+
+  await wrapper.find('.var-input__input').setValue('1')
+  await wrapper.find('.var-input__input').trigger('input')
+  await delay(16)
+  expect(wrapper.find('.var-form-details__error-message').text()).toBe('The length of value must be more than three')
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.vm.reset()
+  await delay(16)
+  expect(wrapper.props('modelValue')).toBe('')
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.find('.var-input__input').setValue('1234')
+  await wrapper.find('.var-input__input').trigger('input')
+  await delay(16)
+  expect(wrapper.find('.var-form-details__error-message').exists()).toBeFalsy()
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
+
+test('test input validation with zod', async () => {
+  const onUpdateModelValue = vi.fn((value) => wrapper.setProps({ modelValue: value }))
+
+  const wrapper = mount(VarInput, {
+    props: {
+      modelValue: '',
+      rules: z.string().min(4, 'The length of value must be more than three'),
       'onUpdate:modelValue': onUpdateModelValue,
     },
   })

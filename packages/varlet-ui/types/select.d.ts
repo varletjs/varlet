@@ -43,7 +43,7 @@ export interface SelectProps extends BasicAttributes {
   separator?: string
   textAlign?: SelectTextAlign
   validateTrigger?: Array<SelectValidateTrigger>
-  rules?: Array<(v: any) => any>
+  rules?: any
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>

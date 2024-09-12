@@ -18,6 +18,7 @@ export interface InputProps extends BasicAttributes {
   rows?: string | number
   placeholder?: string
   hint?: boolean
+  line?: boolean
   textColor?: string
   focusColor?: string
   blurColor?: string
@@ -28,7 +29,7 @@ export interface InputProps extends BasicAttributes {
   resize?: boolean
   autofocus?: boolean
   validateTrigger?: InputValidateTrigger[]
-  rules?: Array<(v: string) => any>
+  rules?: any
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
