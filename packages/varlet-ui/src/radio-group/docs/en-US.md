@@ -265,9 +265,9 @@ const value = ref(false)
 | --- | --- | --- | --- |
 | `v-model` | The value of the binding | _any_ | `-` |
 | `direction` | The layout direction, optional value is `horizontal` `vertical` | _string_ | `horizontal` |
-| `options` _**3.2.14**_ | Specifies options | _RadioGroupOption[]_ | `[]` |
-| `label-key` _**3.2.14**_ | As the key that uniquely identifies label | _string_ | `label` |
-| `value-key` _**3.2.14**_ | As the key that uniquely identifies value | _string_ | `value` |
+| `options` ***3.2.14*** | Specifies options | _RadioGroupOption[]_ | `[]` |
+| `label-key` ***3.2.14*** | As the key that uniquely identifies label | _string_ | `label` |
+| `value-key` ***3.2.14*** | As the key that uniquely identifies value | _string_ | `value` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
 #### RadioGroupOption
