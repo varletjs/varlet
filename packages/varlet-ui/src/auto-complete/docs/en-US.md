@@ -56,13 +56,13 @@ function useAutoComplete() {
     <var-auto-complete
       placeholder="Validate"
       :options="options6"
-      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      :rules="v => v.length > 6 || 'Text length must be greater than 6'"
       v-model="value6"
     />
     <var-auto-complete
-      placeholder="validateWithZod"
+      placeholder="validate With Zod"
       :options="options12"
-      :rules="z.string().min(7, { message: 'Text length must be greater than 6'})"
+      :rules="z.string().min(7, 'Text length must be greater than 6')"
       v-model="value12"
     />
     <var-auto-complete placeholder="Display Icon" :options="options7" v-model="value7">
@@ -166,14 +166,14 @@ function useAutoComplete() {
       variant="outlined"
       placeholder="Validate"
       :options="options6"
-      :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
+      :rules="v => v.length > 6 || 'Text length must be greater than 6'"
       v-model="value6"
     />
     <var-auto-complete
       variant="outlined"
-      placeholder="validateWithZod"
+      placeholder="validate With Zod"
       :options="options12"
-      :rules="z.string().min(7, { message: 'Text length must be greater than 6' })"
+      :rules="z.string().min(7, 'Text length must be greater than 6')"
       v-model="value12"
     />
     <var-auto-complete variant="outlined" placeholder="Display Icon" :options="options7" v-model="value7">

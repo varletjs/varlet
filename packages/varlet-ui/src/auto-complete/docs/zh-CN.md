@@ -9,6 +9,7 @@
 ```html
 <script setup>
 import { ref, computed } from 'vue'
+import { z } from 'zod'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
@@ -56,13 +57,13 @@ function useAutoComplete() {
     <var-auto-complete
       placeholder="字段校验"
       :options="options6"
-      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      :rules="v => v.length > 6 || '文本长度必须大于6'"
       v-model="value6"
     />
     <var-auto-complete
-      placeholder="使用Zod进行校验"
+      placeholder="使用 Zod 进行校验"
       :options="options12"
-      :rules="z.string().min(7, { message: '文本长度必须大于6'})"
+      :rules="z.string().min(7, '文本长度必须大于6')"
       v-model="value12"
     />
     <var-auto-complete placeholder="显示图标" :options="options7" v-model="value7">
@@ -118,6 +119,7 @@ function useAutoComplete() {
 ```html
 <script setup>
 import { ref, computed } from 'vue'
+import { z } from 'zod'
 
 const { value, options } = useAutoComplete()
 const { value: value2, options: options2 } = useAutoComplete()
@@ -166,14 +168,14 @@ function useAutoComplete() {
       variant="outlined"
       placeholder="字段校验"
       :options="options6"
-      :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
+      :rules="v => v.length > 6 || '文本长度必须大于6'"
       v-model="value6"
     />
     <var-auto-complete
       variant="outlined"
-      placeholder="使用Zod进行校验"
+      placeholder="使用 Zod 进行校验"
       :options="options12"
-      :rules="z.string().min(7, { message: '文本长度必须大于6' })"
+      :rules="z.string().min(7, '文本长度必须大于6')"
       v-model="value12"
     />
     <var-auto-complete variant="outlined" placeholder="显示图标" :options="options7" v-model="value7">

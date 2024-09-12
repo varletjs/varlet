@@ -45,7 +45,7 @@ const value14 = ref('')
       v-model="value6"
     />
     <var-input
-      placeholder="Validate"
+      placeholder="Validate With Zod"
       :rules="z.string().min(7, 'Text length must be greater than 6')"
       v-model="value14"
     />
@@ -126,7 +126,7 @@ const value14 = ref('')
     />
     <var-input
       variant="outlined"
-      placeholder="validateWithZod"
+      placeholder="validate With Zod"
       :rules="z.string().min(7, 'Text length must be greater than 6')"
       v-model="value14"
     />

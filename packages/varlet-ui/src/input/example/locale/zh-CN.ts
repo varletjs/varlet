@@ -13,7 +13,7 @@ export default {
   displayIcon: '显示图标',
   customIconSize: '自定义图标尺寸',
   validate: '字段校验',
-  validateWithZod: '字段校验(Zod)',
+  validateWithZod: '使用 Zod 进行校验',
   placeholder: '请输入文本',
   numberPlaceholder: '请输入数字',
   maxMessage: '文本长度必须大于6',

@@ -50,7 +50,7 @@ const emailSuggestions = computed(() =>
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="请输入用户名"
-        :rules="[v => !!v || '用户名不能为空']"
+        :rules="v => !!v || '用户名不能为空'"
         v-model="formData.username"
       />
       <var-input
@@ -61,13 +61,13 @@ const emailSuggestions = computed(() =>
       />
       <var-auto-complete
         placeholder="请输入邮箱"
-        :rules="[v => !!v || '邮箱不能为空']"
+        :rules="v => !!v || '邮箱不能为空'"
         :options="emailSuggestions"
         v-model="formData.email"
       />
       <var-select
         placeholder="请选择部门"
-        :rules="[v => !!v || '必须选一个部门']"
+        :rules="v => !!v || '必须选一个部门'"
         v-model="formData.department"
       >
         <var-option label="吃饭部"  />
@@ -77,7 +77,7 @@ const emailSuggestions = computed(() =>
       <var-select
         multiple
         placeholder="请选择组织"
-        :rules="[v => v.length >= 1 || '至少选择一个组织']"
+        :rules="v => v.length >= 1 || '至少选择一个组织'"
         v-model="formData.group"
       >
         <var-option label="吃饭组"  />
@@ -85,14 +85,14 @@ const emailSuggestions = computed(() =>
         <var-option label="打游戏组" />
       </var-select>
       <var-radio-group
-        :rules="[v => !!v || '必须选择一个性别']"
+        :rules="v => !!v || '必须选择一个性别'"
         v-model="formData.gender"
       >
         <var-radio :checked-value="1">男</var-radio>
         <var-radio :checked-value="2">女</var-radio>
       </var-radio-group>
       <var-checkbox-group
-        :rules="[v => v.length > 0 || '至少选择一个爱好']"
+        :rules="v => v.length > 0 || '至少选择一个爱好'"
         v-model="formData.like"
       >
         <var-checkbox :checked-value="1">吃饭</var-checkbox>
@@ -100,24 +100,24 @@ const emailSuggestions = computed(() =>
         <var-checkbox :checked-value="3">打游戏</var-checkbox>
       </var-checkbox-group>
       <var-rate
-        :rules="[v => v >= 3 || '必须大于2']"
+        :rules="v => v >= 3 || '必须大于2'"
         v-model="formData.score"
       />
       <var-switch
         variant
-        :rules="[v => !!v || '您必须开启']"
+        :rules="v => !!v || '您必须开启'"
         v-model="formData.license"
       />
       <var-counter
-        :rules="[v => v > 10 || '必须大于10']"
+        :rules="v => v > 10 || '必须大于10'"
         v-model="formData.count"
       />
       <var-slider
-        :rules="[v => v > 10 || '必须大于10']"
+        :rules="v => v > 10 || '必须大于10'"
         v-model="formData.range"
       />
       <var-uploader
-        :rules="[v => v.length >= 1 || '至少上传一张图片']"
+        :rules="v => v.length >= 1 || '至少上传一张图片'"
         v-model="formData.files"
       />
 
@@ -171,7 +171,7 @@ function handleReset() {
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="请输入用户名"
-        :rules="[v => !!v || '用户名不能为空']"
+        :rules="v => !!v || '用户名不能为空'"
         v-model="formData.username"
       />
       <var-input

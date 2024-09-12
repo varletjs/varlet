@@ -45,7 +45,7 @@ const value14 = ref('')
       v-model="value6"
     />
     <var-input
-      placeholder="字段校验(Zod)"
+      placeholder="使用 Zod 进行校验"
       :rules="z.string().min(7, '文本长度必须大于6')"
       v-model="value14"
     />
@@ -126,8 +126,8 @@ const value14 = ref('')
     />
     <var-input
       variant="outlined"
-      placeholder="字段校验"
-      :rules="z.string().min(7, t('maxMessage'))"
+      placeholder="使用 Zod 进行校验"
+      :rules="z.string().min(7, '文本长度必须大于6')"
       v-model="value14"
     />
     <var-input variant="outlined" placeholder="显示图标" v-model="value7">

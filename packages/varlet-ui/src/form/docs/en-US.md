@@ -39,7 +39,7 @@ const readonly = ref(false)
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="Please input username"
-        :rules="[v => !!v || 'The username cannot be empty']"
+        :rules="v => !!v || 'The username cannot be empty'"
         v-model="formData.username"
       />
       <var-input
@@ -50,7 +50,7 @@ const readonly = ref(false)
       />
       <var-select
         placeholder="Please select department"
-        :rules="[v => !!v || 'The select cannot be empty']"
+        :rules="v => !!v || 'The select cannot be empty'"
         v-model="formData.department"
       >
         <var-option label="Eat department"  />
@@ -60,7 +60,7 @@ const readonly = ref(false)
       <var-select
         multiple
         placeholder="Please select group"
-        :rules="[v => v.length >= 1 || 'The select cannot be empty']"
+        :rules="v => v.length >= 1 || 'The select cannot be empty'"
         v-model="formData.group"
       >
         <var-option label="Eat group"  />
@@ -68,14 +68,14 @@ const readonly = ref(false)
         <var-option label="Play game group" />
       </var-select>
       <var-radio-group
-        :rules="[v => !!v || 'The gender cannot be empty']"
+        :rules="v => !!v || 'The gender cannot be empty'"
         v-model="formData.gender"
       >
         <var-radio :checked-value="1">Male</var-radio>
         <var-radio :checked-value="2">Female</var-radio>
       </var-radio-group>
       <var-checkbox-group
-        :rules="[v => v.length > 0 || 'The select cannot be empty']"
+        :rules="v => v.length > 0 || 'The select cannot be empty'"
         v-model="formData.like"
       >
         <var-checkbox :checked-value="1">Eat</var-checkbox>
@@ -83,24 +83,24 @@ const readonly = ref(false)
         <var-checkbox :checked-value="3">Play game</var-checkbox>
       </var-checkbox-group>
       <var-rate
-        :rules="[v => v >= 3 || 'It has to be greater than 2']"
+        :rules="v => v >= 3 || 'It has to be greater than 2'"
         v-model="formData.score"
       />
       <var-switch
         variant
-        :rules="[v => !!v || 'You must turn on']"
+        :rules="v => !!v || 'You must turn on'"
         v-model="formData.license"
       />
       <var-counter
-        :rules="[v => v > 10 || 'It has to be greater than 10']"
+        :rules="v => v > 10 || 'It has to be greater than 10'"
         v-model="formData.count"
       />
       <var-slider
-        :rules="[v => v > 10 || 'It has to be greater than 10']"
+        :rules="v => v > 10 || 'It has to be greater than 10'"
         v-model="formData.range"
       />
       <var-uploader
-        :rules="[v => v.length >= 1 || 'Upload at least one picture']"
+        :rules="v => v.length >= 1 || 'Upload at least one picture'"
         v-model="formData.files"
       />
 
@@ -154,7 +154,7 @@ function handleReset() {
     <var-space direction="column" :size="[14, 0]">
       <var-input
         placeholder="Please input username"
-        :rules="[v => !!v || 'The username cannot be empty']"
+        :rules="v => !!v || 'The username cannot be empty'"
         v-model="formData.username"
       />
       <var-input

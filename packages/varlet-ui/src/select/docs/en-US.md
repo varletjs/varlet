@@ -159,8 +159,17 @@ const keyOptions = ref([
     </var-select>
     <var-select
       placeholder="Validate"
-      :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
+      :rules="v => v === 'Rest' || 'You must choose to rest'"
       v-model="value11"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
+      placeholder="Validate With Zod"
+      :rules="z.string().refine((val) => val === 'Rest', 'You must choose to rest')"
+      v-model="value17"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -169,7 +178,7 @@ const keyOptions = ref([
     <var-select
       multiple
       placeholder="Multiple Validate"
-      :rules="[(v) => v.length >= 2 || 'You select at least two options']"
+      :rules="v => v.length >= 2 || 'You select at least two options'"
       v-model="value12"
     >
       <var-option label="Eat" />
@@ -180,7 +189,7 @@ const keyOptions = ref([
     <var-select
       multiple
       placeholder="Multiple Validate With Zod"
-      :rules="z.array(z.string()).min(2, { message: 'You select at least two options' })"
+      :rules="z.array(z.string()).min(2, 'You select at least two options')"
       v-model="value18"
     >
       <var-option label="Eat" />
@@ -373,17 +382,8 @@ const keyOptions = ref([
     <var-select
       variant="outlined"
       placeholder="Validate"
-      :rules="[(v) => v === 'Rest' || 'You must choose to rest']"
+      :rules="v => v === 'Rest' || 'You must choose to rest'"
       v-model="value11"
-    >
-      <var-option label="Eat" />
-      <var-option label="Sleep" />
-      <var-option label="Rest" />
-    </var-select>
-    <var-select
-      placeholder="Validate With Zod"
-      :rules="z.string().refine((val) => val === 'Rest', { message: 'You must choose to rest' })"
-      v-model="value17"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -392,7 +392,7 @@ const keyOptions = ref([
     <var-select
       variant="outlined"
       placeholder="Validate With Zod"
-      :rules="z.string().refine((val) => val === 'Rest', { message: 'You must choose to rest' })"
+      :rules="z.string().refine((val) => val === 'Rest', 'You must choose to rest')"
       v-model="value17"
     >
       <var-option label="Eat" />
@@ -403,7 +403,7 @@ const keyOptions = ref([
       variant="outlined"
       multiple
       placeholder="Multiple Validate"
-      :rules="[(v) => v.length >= 2 || 'You select at least two options']"
+      :rules="v => v.length >= 2 || 'You select at least two options'"
       v-model="value12"
     >
       <var-option label="Eat" />
@@ -415,7 +415,7 @@ const keyOptions = ref([
       variant="outlined"
       multiple
       placeholder="Multiple Validate With Zod"
-      :rules="z.array(z.string()).min(2, { message: 'You select at least two options' })"
+      :rules="z.array(z.string()).min(2, 'You select at least two options')"
       v-model="value18"
     >
       <var-option label="Eat" />
