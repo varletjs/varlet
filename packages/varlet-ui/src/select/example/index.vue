@@ -224,7 +224,7 @@ watchLang((lang) => {
     </var-select>
     <var-select
       :placeholder="t('validateWithZod')"
-      :rules="z.string().refine((val) => val === t('rest'), { message: t('mustSelectRest') })"
+      :rules="z.string().refine((v) => v === t('rest'), { message: t('mustSelectRest') })"
       v-model="standardValue17"
     >
       <var-option :label="t('eat')" />
@@ -377,7 +377,7 @@ watchLang((lang) => {
     <var-select
       variant="outlined"
       :placeholder="t('validateWithZod')"
-      :rules="z.string().refine((val) => val === t('rest'), { message: t('mustSelectRest') })"
+      :rules="z.string().refine((v) => v === t('rest'), { message: t('mustSelectRest') })"
       v-model="outlinedValue17"
     >
       <var-option :label="t('eat')" />

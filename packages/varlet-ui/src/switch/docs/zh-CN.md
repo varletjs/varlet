@@ -93,7 +93,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" :rules="[(v) => v === true || '错误！']"/>
+  <var-switch v-model="value" :rules="v => v === true || '错误!'"/>
 </template>
 ```
 
@@ -108,7 +108,7 @@ const value = ref(true)
 </script>
 
 <template>
-  <var-switch v-model="value" :rules="z.boolean().refine((val) => val === true, { message: '错误！' })" />
+  <var-switch v-model="value" :rules="z.boolean().refine(v => v === true, '错误!')" />
 </template>
 ```
 

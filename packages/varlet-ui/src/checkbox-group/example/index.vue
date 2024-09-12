@@ -133,7 +133,7 @@ onThemeChange()
   </var-checkbox>
 
   <app-type>{{ t('checkboxValidateWithZod') }}</app-type>
-  <var-checkbox v-model="value12" :rules="z.boolean().refine((val) => val, { message: t('checkboxValidateMessage') })">
+  <var-checkbox v-model="value12" :rules="z.boolean().refine((v) => v, { message: t('checkboxValidateMessage') })">
     {{ t('currentValue') }} {{ value12 }}
   </var-checkbox>
 

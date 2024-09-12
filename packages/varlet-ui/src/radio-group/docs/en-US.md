@@ -207,7 +207,7 @@ const value = ref(false)
 <template>
   <var-radio
     v-model="value"
-    :rules="z.boolean().refine((v) => v, { message: 'Please check your choice' })"
+    :rules="z.boolean().refine((v) => v, 'Please check your choice')"
   >
     Current value: {{ value }}
   </var-radio>
@@ -226,7 +226,7 @@ const value = ref(false)
 <template>
   <var-radio-group
     v-model="value"
-    :rules="[v => v === 0 || 'Please check eat']"
+    :rules="v => v === 0 || 'Please check eat'"
   >
     <var-radio :checked-value="0">Eat</var-radio>
     <var-radio :checked-value="1">Sleep</var-radio>
@@ -247,7 +247,7 @@ const value = ref(false)
 <template>
   <var-radio-group
     v-model="value"
-    :rules="z.number().refine((v => v === 0, { message: 'Please check eat' }))"
+    :rules="z.number().refine((v => v === 0, 'Please check eat'))"
   >
     <var-radio :checked-value="0">Eat</var-radio>
     <var-radio :checked-value="1">Sleep</var-radio>

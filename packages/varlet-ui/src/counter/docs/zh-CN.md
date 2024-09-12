@@ -147,7 +147,7 @@ const value = ref(0)
 
 <template>
   <var-counter
-    :rules="[v => v > 5 || '请选择大于5的值']"
+    :rules="v => v > 5 || '请选择大于5的值'"
     v-model="value"
   />
 </template>

@@ -240,7 +240,7 @@ const value = ref([])
 <template>
   <var-checkbox
     v-model="value"
-    :rules="[v => v || '请勾选']"
+    :rules="v => v || '请勾选'"
   >
     当前的值: {{ value }}
   </var-checkbox>
@@ -260,7 +260,7 @@ const value = ref([])
 <template>
   <var-checkbox
     v-model="value"
-    :rules="z.boolean().refine((val) => val, { message: '请勾选' })"
+    :rules="z.boolean().refine(v => v, '请勾选')"
   >
     当前的值: {{ value }}
   </var-checkbox>
@@ -279,7 +279,7 @@ const value = ref([])
 <template>
   <var-checkbox-group
     v-model="value"
-    :rules="[v => v.length === 2 || '请全选']"
+    :rules="v => v.length === 2 || '请全选'"
   >
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
     <var-checkbox :checked-value="1">睡觉</var-checkbox>
@@ -300,7 +300,7 @@ const value = ref([])
 <template>
   <var-checkbox-group
     v-model="value"
-    :rules="z.array(z.number()).length(2, { message: '请全选' })"
+    :rules="z.array(z.number()).length(2, '请全选')"
   >
     <var-checkbox :checked-value="0">吃饭</var-checkbox>
     <var-checkbox :checked-value="1">睡觉</var-checkbox>

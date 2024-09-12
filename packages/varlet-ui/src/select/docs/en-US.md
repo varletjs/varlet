@@ -168,7 +168,7 @@ const keyOptions = ref([
     </var-select>
     <var-select
       placeholder="Validate With Zod"
-      :rules="z.string().refine((val) => val === 'Rest', 'You must choose to rest')"
+      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
       v-model="value17"
     >
       <var-option label="Eat" />
@@ -392,7 +392,7 @@ const keyOptions = ref([
     <var-select
       variant="outlined"
       placeholder="Validate With Zod"
-      :rules="z.string().refine((val) => val === 'Rest', 'You must choose to rest')"
+      :rules="z.string().refine(v => v === 'Rest', 'You must choose to rest')"
       v-model="value17"
     >
       <var-option label="Eat" />

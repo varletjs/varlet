@@ -241,7 +241,7 @@ const value = ref([])
 <template>
   <var-checkbox
     v-model="value"
-    :rules="[v => v || 'Please check your choices']"
+    :rules="v => v || 'Please check your choices'"
   >
     Current value: {{ value }}
   </var-checkbox>
@@ -261,7 +261,7 @@ const value = ref([])
 <template>
   <var-checkbox
     v-model="value"
-    :rules="z.boolean().refine((val) => val, { message: 'Please check your choices' })"
+    :rules="z.boolean().refine(v => v, 'Please check your choices')"
   >
     Current value: {{ value }}
   </var-checkbox>
@@ -280,7 +280,7 @@ const value = ref([])
 <template>
   <var-checkbox-group
     v-model="value"
-    :rules="[v => v.length === 2 || 'Please check all']"
+    :rules="v => v.length === 2 || 'Please check all'"
   >
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>
@@ -301,7 +301,7 @@ const value = ref([])
 <template>
   <var-checkbox-group
     v-model="value"
-    :rules="z.array(z.number()).length(2, { message: 'Please check all' })"
+    :rules="z.array(z.number()).length(2, 'Please check all')"
   >
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>

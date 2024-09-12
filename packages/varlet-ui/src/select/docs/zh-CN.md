@@ -169,7 +169,7 @@ const keyOptions = ref([
     </var-select>
     <var-select
       placeholder="使用 Zod 校验单选值"
-      :rules="z.string().refine((val) => val === '摸鱼', '您一定得选择摸鱼')"
+      :rules="z.string().refine(v => v === '摸鱼', '您一定得选择摸鱼')"
       v-model="value17"
     >
       <var-option label="吃饭" />
@@ -393,7 +393,7 @@ const keyOptions = ref([
     <var-select
       variant="outlined"
       placeholder="使用 Zod 校验单选值"
-      :rules="z.string().refine((val) => val === '摸鱼', '您一定得选择摸鱼')"
+      :rules="z.string().refine(v => v === '摸鱼', '您一定得选择摸鱼')"
       v-model="value17"
     >
       <var-option label="吃饭" />

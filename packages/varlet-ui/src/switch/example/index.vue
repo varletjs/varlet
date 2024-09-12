@@ -55,7 +55,7 @@ onThemeChange()
 
   <app-type>{{ t('validateWithZod') }}</app-type>
   <var-space :size="['3vmin', '9vmin']">
-    <var-switch v-model="value7" :rules="z.boolean().refine((val) => val === true, { message: t('state') })" />
+    <var-switch v-model="value7" :rules="z.boolean().refine((v) => v === true, { message: t('state') })" />
   </var-space>
 
   <app-type>{{ t('lazyChange') }}</app-type>

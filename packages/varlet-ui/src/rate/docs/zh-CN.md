@@ -134,8 +134,6 @@ const score = ref(3.5)
 </template>
 ```
 
-
-
 ### 监听事件
 
 通过调用 `change` 事件完成其他交互逻辑。
@@ -174,7 +172,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate :rules="[(v) => v >= 3 || '必须大于2']" v-model='score'/>
+  <var-rate :rules="[v => v > 2 || '必须大于2']" v-model='score'/>
 </template>
 ```
 

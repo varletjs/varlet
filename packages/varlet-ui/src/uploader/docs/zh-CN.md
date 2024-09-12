@@ -373,7 +373,7 @@ const files = ref([
 <template>
   <var-uploader
     :rules="
-      z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, '存在上传失败的文件')
+      z.array(z.any()).refine(v => v.filter(file => file.state === 'error').length === 0, '存在上传失败的文件')
     "
     v-model="files"
   />

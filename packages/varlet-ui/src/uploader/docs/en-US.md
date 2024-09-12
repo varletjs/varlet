@@ -374,7 +374,7 @@ const files = ref([
 <template>
   <var-uploader
     :rules="
-      z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, 'There is a file that failed to upload')
+      z.array(z.any()).refine(v => v.filter(file => file.state === 'error').length === 0, 'There is a file that failed to upload')
     "
     v-model="files"
   />

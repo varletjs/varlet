@@ -226,7 +226,7 @@ const value = ref(0)
 <template>
   <var-radio-group
     v-model="value"
-    :rules="[v => v === 0 || '必须选择吃饭']"
+    :rules="v => v === 0 || '必须选择吃饭'"
   >
     <var-radio :checked-value="0">吃饭</var-radio>
     <var-radio :checked-value="1">睡觉</var-radio>
@@ -247,7 +247,7 @@ const value = ref(false)
 <template>
   <var-radio-group
     v-model="value"
-    :rules="z.number().refine((v => v === 0, { message: '必须选择吃饭' }))"
+    :rules="z.number().refine((v => v === 0, '必须选择吃饭'))"
   >
     <var-radio :checked-value="0">吃饭</var-radio>
     <var-radio :checked-value="1">睡觉</var-radio>

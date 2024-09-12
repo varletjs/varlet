@@ -172,7 +172,7 @@ const score = ref(3)
 </script>
 
 <template>
-  <var-rate :rules="[(v) => v >= 3 || 'It has to be greater than 2']" v-model='score'/>
+  <var-rate :rules="[v => v > 2 || 'It has to be greater than 2']" v-model='score'/>
 </template>
 ```
 
