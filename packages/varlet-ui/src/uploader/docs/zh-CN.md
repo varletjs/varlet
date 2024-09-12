@@ -354,6 +354,32 @@ const files = ref([
 </template>
 ```
 
+### 使用 Zod 进行校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const files = ref([
+  {
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
+    state: 'error',
+  },
+])
+</script>
+
+<template>
+  <var-uploader
+    :rules="
+      z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, '存在上传失败的文件')
+    "
+    v-model="files"
+  />
+</template>
+```
+
 ### 自定义渲染
 
 通过 `hide-list` 隐藏组件的文件列表，自定义文件列表的渲染逻辑。
@@ -431,7 +457,6 @@ const files = ref([
 | `resolve-type` | 文件预处理类型，可选值为 `default` `file` `data-url`（`default`，图片文件包含 dataURL 编码和 File 对象，其他类型仅包含 File 对象。`file`，仅包含 File 对象。`data-url`，所有文件类型都包含 dataURL 编码和 File 对象） | _string_ | `default` |
 | `validate-trigger` | 触发验证的时机， 可选值为 `onChange` `onRemove` | _UploaderValidateTrigger[]_ | `['onChange', 'onRemove']` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
-
 
 ### VarFile
 

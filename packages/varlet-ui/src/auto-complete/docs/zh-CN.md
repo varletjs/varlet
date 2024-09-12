@@ -21,6 +21,7 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
+const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -57,6 +58,12 @@ function useAutoComplete() {
       :options="options6"
       :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
       v-model="value6"
+    />
+    <var-auto-complete
+      placeholder="使用Zod进行校验"
+      :options="options12"
+      :rules="z.string().min(7, { message: '文本长度必须大于6'})"
+      v-model="value12"
     />
     <var-auto-complete placeholder="显示图标" :options="options7" v-model="value7">
       <template #prepend-icon>
@@ -123,6 +130,7 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
+const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -160,6 +168,13 @@ function useAutoComplete() {
       :options="options6"
       :rules="[(v) => v.length > 6 || '文本长度必须大于6']"
       v-model="value6"
+    />
+    <var-auto-complete
+      variant="outlined"
+      placeholder="使用Zod进行校验"
+      :options="options12"
+      :rules="z.string().min(7, { message: '文本长度必须大于6' })"
+      v-model="value12"
     />
     <var-auto-complete variant="outlined" placeholder="显示图标" :options="options7" v-model="value7">
       <template #prepend-icon>
@@ -241,7 +256,7 @@ function useAutoComplete() {
 | `blur-color` | 失焦时的主要颜色               | _string_ | `-` |
 | `get-show` | 根据输入值决定是否显示菜单 | _(v: string) => boolean_ | `-` |
 
-#### AutoCompleteOption 
+#### AutoCompleteOption
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|

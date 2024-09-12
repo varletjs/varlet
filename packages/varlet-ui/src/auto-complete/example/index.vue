@@ -28,6 +28,7 @@ const { value: outlinedValue8, options: outlinedOptions8 } = useAutoComplete()
 const { value: outlinedValue9, options: outlinedOptions9 } = useAutoComplete()
 const { value: outlinedValue10, options: outlinedOptions10 } = useAutoComplete()
 const { value: outlinedValue11, options: outlinedOptions11 } = useAutoComplete()
+const { value: outlinedValue12, options: outlinedOptions12 } = useAutoComplete()
 
 watchLang(use)
 
@@ -71,7 +72,7 @@ function useAutoComplete() {
     <var-auto-complete
       :placeholder="t('validateWithZod')"
       :options="standardOptions12"
-      :rules="z.number().min(7, { message: t('maxMessage') })"
+      :rules="z.string().min(7, { message: t('maxMessage') })"
       v-model="standardValue12"
     />
     <var-auto-complete :placeholder="t('displayIcon')" :options="standardOptions7" v-model="standardValue7">
@@ -156,6 +157,13 @@ function useAutoComplete() {
       :options="outlinedOptions6"
       :rules="[(v) => v.length > 6 || t('maxMessage')]"
       v-model="outlinedValue6"
+    />
+    <var-auto-complete
+      variant="outlined"
+      :placeholder="t('validateWithZod')"
+      :options="outlinedOptions12"
+      :rules="z.string().min(7, { message: t('maxMessage') })"
+      v-model="outlinedValue12"
     />
     <var-auto-complete
       variant="outlined"

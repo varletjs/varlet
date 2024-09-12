@@ -1,6 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { toRefs, reactive, computed } from 'vue'
+import { z } from 'zod'
 import { use, t } from './locale'
 
 const values = reactive({
@@ -13,11 +14,26 @@ const values = reactive({
   value7: false,
   value8: 0,
   value9: 0,
+  value10: false,
+  value11: 0,
   optionValue: 0,
   fieldValue: 0,
 })
-const { value, value2, value3, value4, value5, value6, value7, value8, value9, optionValue, fieldValue } =
-  toRefs(values)
+const {
+  value,
+  value2,
+  value3,
+  value4,
+  value5,
+  value6,
+  value7,
+  value8,
+  value9,
+  value10,
+  value11,
+  optionValue,
+  fieldValue,
+} = toRefs(values)
 
 const options = computed(() => [
   { label: t('eat'), value: 0 },
@@ -86,12 +102,27 @@ onThemeChange()
     {{ t('currentValue') }} {{ value7 }}
   </var-radio>
 
+  <app-type>{{ t('radioValidateWithZod') }}</app-type>
+  <var-radio v-model="value10" :rules="z.boolean().refine((v) => v, { message: t('radioValidateMessage') })">
+    {{ t('currentValue') }} {{ value10 }}
+  </var-radio>
+
   <app-type>{{ t('radioGroupValidate') }}</app-type>
   <var-radio-group v-model="value8" :rules="[(v) => v === 0 || t('radioGroupValidateMessage')]">
     <var-radio :checked-value="0">{{ t('eat') }}</var-radio>
     <var-radio :checked-value="1">{{ t('sleep') }}</var-radio>
   </var-radio-group>
   <div class="relation">{{ t('currentValue') }} {{ value8 }}</div>
+
+  <app-type>{{ t('radioGroupValidateWithZod') }}</app-type>
+  <var-radio-group
+    v-model="value11"
+    :rules="z.number().refine((v) => v === 0, { message: t('radioGroupValidateMessage') })"
+  >
+    <var-radio :checked-value="0">{{ t('eat') }}</var-radio>
+    <var-radio :checked-value="1">{{ t('sleep') }}</var-radio>
+  </var-radio-group>
+  <div class="relation">{{ t('currentValue') }} {{ value11 }}</div>
 
   <div class="space"></div>
 </template>

@@ -355,6 +355,32 @@ const files = ref([
 </template>
 ```
 
+### Validate with Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const files = ref([
+  {
+    url: 'https://varletjs.org/cat.jpg',
+    cover: 'https://varletjs.org/cat.jpg',
+    state: 'error',
+  },
+])
+</script>
+
+<template>
+  <var-uploader
+    :rules="
+      z.array(z.any()).refine((v) => v.filter((file) => file.state === 'error').length === 0, 'There is a file that failed to upload')
+    "
+    v-model="files"
+  />
+</template>
+```
+
 ### Custom Render File List
 
 You can use the `hide-list` to hide component files list, then you can render this list by custom.
@@ -409,7 +435,6 @@ const files = ref([
 </style>
 ```
 
-
 ## API
 
 ### Props
@@ -433,7 +458,6 @@ const files = ref([
 | `resolve-type` | The file preprocessing type, can be set to `default` `file` `data-url` (`default`, the image type contains dataURL and File object, other types contain only File object. `file`, which contains only File object. `data-url`, all file types contain dataURL and File object) | _string_ | `default` |
 | `validate-trigger` | Timing to trigger validation. The optional value is `onChange` `onRemove` | _UploaderValidateTrigger[]_ | `['onChange', 'onRemove']` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
-
 
 ### VarFile
 
