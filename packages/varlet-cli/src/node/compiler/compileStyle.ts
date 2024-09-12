@@ -6,12 +6,9 @@ import { replaceExt, smartAppendFileSync } from '../shared/fsUtils.js'
 import { parse, resolve } from 'path'
 import { getScriptExtname } from './compileScript.js'
 import { CWD } from '../shared/constant.js'
-import { createRequire } from 'module'
 
 const { render: renderLess } = less
-const { renderSync: renderScss } = sass
 const { readFileSync, writeFileSync, unlinkSync } = fse
-const require = createRequire(import.meta.url)
 
 export const EMPTY_SPACE_RE = /[\s]+/g
 export const EMPTY_LINE_RE = /[\n\r]*/g
@@ -57,25 +54,11 @@ export async function compileLess(file: string) {
 }
 
 export function compileScss(file: string) {
-  const source = readFileSync(file, 'utf-8')
-  const { css } = renderScss({
-    data: source,
-    file,
-    importer(path: string) {
-      if (!path.endsWith('.scss') || !path.endsWith('.css')) {
-        path += '.scss'
-      }
-
-      if (path.startsWith('~')) {
-        path = path.replace('~', '')
-        path = require.resolve(path)
-      }
-
-      return { file: path }
-    },
+  const { css } = sass.compile(file, {
+    loadPaths: [resolve(CWD, 'node_modules')],
   })
 
-  writeFileSync(replaceExt(file, '.css'), compressCss(css.toString('utf8')), 'utf-8')
+  writeFileSync(replaceExt(file, '.css'), compressCss(css), 'utf-8')
 }
 
 export function clearLessFiles(dir: string) {
