@@ -1,6 +1,7 @@
 <script setup>
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
 import { reactive, toRefs, computed } from 'vue'
+import { z } from 'zod'
 import { use, t } from './locale'
 
 const values = reactive({
@@ -15,6 +16,8 @@ const values = reactive({
   value9: [],
   value10: false,
   value11: [],
+  value12: false,
+  value13: [],
   group: null,
   indeterminate: true,
   optionsValue: [],
@@ -34,6 +37,8 @@ const {
   group,
   value10,
   value11,
+  value12,
+  value13,
   indeterminate,
   optionsValue,
   fieldValue,
@@ -127,12 +132,27 @@ onThemeChange()
     {{ t('currentValue') }} {{ value7 }}
   </var-checkbox>
 
+  <app-type>{{ t('checkboxValidateWithZod') }}</app-type>
+  <var-checkbox v-model="value12" :rules="z.boolean().refine((val) => val, { message: t('checkboxValidateMessage') })">
+    {{ t('currentValue') }} {{ value12 }}
+  </var-checkbox>
+
   <app-type>{{ t('checkboxGroupValidate') }}</app-type>
   <var-checkbox-group v-model="value8" :rules="[(v) => v.length === 2 || t('checkboxGroupValidateMessage')]">
     <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
     <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
   </var-checkbox-group>
   <div class="relation">{{ t('currentValue') }} {{ value8 }}</div>
+
+  <app-type>{{ t('checkboxGroupValidateWithZod') }}</app-type>
+  <var-checkbox-group
+    v-model="value13"
+    :rules="z.array(z.number()).length(2, { message: t('checkboxGroupValidateMessage') })"
+  >
+    <var-checkbox :checked-value="0">{{ t('eat') }}</var-checkbox>
+    <var-checkbox :checked-value="1">{{ t('sleep') }}</var-checkbox>
+  </var-checkbox-group>
+  <div class="relation">{{ t('currentValue') }} {{ value13 }}</div>
 
   <div class="space"></div>
 </template>

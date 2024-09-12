@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import { use, t } from './locale'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { z } from 'zod'
 
 const values = reactive({
   value: 0,
@@ -13,6 +14,7 @@ const values = reactive({
   value7: 0,
   value8: 0,
   value9: 0,
+  value10: 0,
 })
 
 watchLang(use)
@@ -52,6 +54,9 @@ function handleBeforeChange(value, change) {
 
   <app-type>{{ t('validate') }}</app-type>
   <var-counter :rules="[(v) => v > 5 || t('validateMessage')]" v-model="values.value9" />
+
+  <app-type>{{ t('validateWithZod') }}</app-type>
+  <var-counter :rules="z.number().min(6, t('validateMessage'))" v-model="values.value10" />
 
   <div class="space"></div>
 </template>

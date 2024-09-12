@@ -126,7 +126,7 @@ const value14 = ref('')
     />
     <var-input
       variant="outlined"
-      placeholder="Validate"
+      placeholder="validateWithZod"
       :rules="z.string().min(7, 'Text length must be greater than 6')"
       v-model="value14"
     />
@@ -172,8 +172,8 @@ const value14 = ref('')
 
 ### Props
 
-| Prop | Description                                                                                                                            | Type | Default | 
-| --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- | 
+| Prop | Description                                                                                                                            | Type | Default |
+| --- |----------------------------------------------------------------------------------------------------------------------------------------| --- | --- |
 | `v-model` | The value of the binding                                                                                                               | _string_ | `-` |
 | `placeholder` | placeholder                                                                                                                            | _string_ | `-` |
 | `type` | Input type, The optional value is `text` `password` `number` `tel`                                                            | _string_ | `text` |
@@ -227,6 +227,7 @@ const value14 = ref('')
 | `extra-message` | Extra message | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |

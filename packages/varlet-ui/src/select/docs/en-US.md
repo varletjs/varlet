@@ -9,6 +9,7 @@ Display and select the content through the drop-down menu.
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref()
 const value2 = ref()
@@ -26,6 +27,8 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+const value17 = ref()
+const value18 = ref([])
 
 const options = ref([
   {
@@ -174,6 +177,17 @@ const keyOptions = ref([
       <var-option label="Play game" />
       <var-option label="Coding" />
     </var-select>
+    <var-select
+      multiple
+      placeholder="Multiple Validate With Zod"
+      :rules="z.array(z.string()).min(2, { message: 'You select at least two options' })"
+      v-model="value18"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
     <var-select size="small" placeholder="Small Size" v-model="value13">
       <var-option label="Eat" />
       <var-option label="Sleep" />
@@ -208,6 +222,7 @@ const keyOptions = ref([
 ```html
 <script setup>
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const value = ref()
 const value2 = ref()
@@ -225,6 +240,8 @@ const value13 = ref()
 const value14 = ref()
 const value15 = ref([])
 const value16 = ref()
+const value17 = ref()
+const value18 = ref([])
 
 const options = ref([
   {
@@ -364,11 +381,42 @@ const keyOptions = ref([
       <var-option label="Rest" />
     </var-select>
     <var-select
+      placeholder="Validate With Zod"
+      :rules="z.string().refine((val) => val === 'Rest', { message: 'You must choose to rest' })"
+      v-model="value17"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
+      variant="outlined"
+      placeholder="Validate With Zod"
+      :rules="z.string().refine((val) => val === 'Rest', { message: 'You must choose to rest' })"
+      v-model="value17"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Rest" />
+    </var-select>
+    <var-select
       variant="outlined"
       multiple
       placeholder="Multiple Validate"
       :rules="[(v) => v.length >= 2 || 'You select at least two options']"
       v-model="value12"
+    >
+      <var-option label="Eat" />
+      <var-option label="Sleep" />
+      <var-option label="Play game" />
+      <var-option label="Coding" />
+    </var-select>
+    <var-select
+      variant="outlined"
+      multiple
+      placeholder="Multiple Validate With Zod"
+      :rules="z.array(z.string()).min(2, { message: 'You select at least two options' })"
+      v-model="value18"
     >
       <var-option label="Eat" />
       <var-option label="Sleep" />

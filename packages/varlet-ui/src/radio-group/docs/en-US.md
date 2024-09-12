@@ -194,6 +194,26 @@ const value = ref(false)
 </template>
 ```
 
+### Radio Validate With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    v-model="value"
+    :rules="z.boolean().refine((v) => v, { message: 'Please check your choice' })"
+  >
+    Current value: {{ value }}
+  </var-radio>
+</template>
+```
+
 ### RadioGroup Validate
 
 ```html
@@ -214,6 +234,26 @@ const value = ref(false)
 </template>
 ```
 
+### RadioGroup Validate With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio-group
+    v-model="value"
+    :rules="z.number().refine((v => v === 0, { message: 'Please check eat' }))"
+  >
+    <var-radio :checked-value="0">Eat</var-radio>
+    <var-radio :checked-value="1">Sleep</var-radio>
+  </var-radio-group>
+</template>
+```
 
 ## API
 
@@ -230,7 +270,7 @@ const value = ref(false)
 | `value-key` ***3.2.14*** | As the key that uniquely identifies value | _string_ | `value` |
 | `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
-#### RadioGroupOption 
+#### RadioGroupOption
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|
@@ -304,6 +344,7 @@ const value = ref(false)
 | `default` | Displayed text | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 #### Radio Variables

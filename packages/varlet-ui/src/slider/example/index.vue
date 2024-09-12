@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { AppType, watchLang, onThemeChange } from '@varlet/cli/client'
+import { z } from 'zod'
 import { t, use } from './locale'
 
 const values = reactive({
@@ -18,6 +19,7 @@ const values = reactive({
   value11: 0,
   value12: 50,
   value13: [7, 64],
+  value14: 20,
 })
 
 watchLang(use)
@@ -74,6 +76,9 @@ function handleChange(v) {
 
   <app-type>{{ t('validateValue') }}</app-type>
   <var-slider v-model="values.value8" :rules="[(v) => v > 35 || t('errMsg')]" />
+
+  <app-type>{{ t('validateWithZod') }}</app-type>
+  <var-slider v-model="values.value14" :rules="z.number().min(36, t('errMsg'))" />
 
   <app-type>{{ t('vertical') }}</app-type>
   <var-space justify="space-around">

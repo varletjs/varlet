@@ -21,6 +21,7 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
+const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -57,6 +58,12 @@ function useAutoComplete() {
       :options="options6"
       :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
       v-model="value6"
+    />
+    <var-auto-complete
+      placeholder="validateWithZod"
+      :options="options12"
+      :rules="z.string().min(7, { message: 'Text length must be greater than 6'})"
+      v-model="value12"
     />
     <var-auto-complete placeholder="Display Icon" :options="options7" v-model="value7">
       <template #prepend-icon>
@@ -123,6 +130,7 @@ const { value: value8, options: options8 } = useAutoComplete()
 const { value: value9, options: options9 } = useAutoComplete()
 const { value: value10, options: options10 } = useAutoComplete()
 const { value: value11, options: options11 } = useAutoComplete()
+const { value: value12, options: options12 } = useAutoComplete()
 
 function useAutoComplete() {
   const value = ref('')
@@ -160,6 +168,13 @@ function useAutoComplete() {
       :options="options6"
       :rules="[(v) => v.length > 6 || 'Text length must be greater than 6']"
       v-model="value6"
+    />
+    <var-auto-complete
+      variant="outlined"
+      placeholder="validateWithZod"
+      :options="options12"
+      :rules="z.string().min(7, { message: 'Text length must be greater than 6' })"
+      v-model="value12"
     />
     <var-auto-complete variant="outlined" placeholder="Display Icon" :options="options7" v-model="value7">
       <template #prepend-icon>
@@ -241,7 +256,7 @@ function useAutoComplete() {
 | `blur-color` | The primary color in blur      | _string_ | `-` |
 | `get-show` | Determine whether the menu is displayed according to the input value | _(v: string) => boolean_ | `-` |
 
-#### AutoCompleteOption 
+#### AutoCompleteOption
 
 | Prop | Description | Type | Default |
 | ------- | --- |----------------|-----------|

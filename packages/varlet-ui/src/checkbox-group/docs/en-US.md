@@ -248,6 +248,26 @@ const value = ref([])
 </template>
 ```
 
+### Checkbox Validation With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox
+    v-model="value"
+    :rules="z.boolean().refine((val) => val, { message: 'Please check your choices' })"
+  >
+    Current value: {{ value }}
+  </var-checkbox>
+</template>
+```
+
 ### CheckboxGroup Validate
 
 ```html
@@ -261,6 +281,27 @@ const value = ref([])
   <var-checkbox-group
     v-model="value"
     :rules="[v => v.length === 2 || 'Please check all']"
+  >
+    <var-checkbox :checked-value="0">Eat</var-checkbox>
+    <var-checkbox :checked-value="1">Sleep</var-checkbox>
+  </var-checkbox-group>
+</template>
+```
+
+### CheckboxGroup Validate with Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref([])
+</script>
+
+<template>
+  <var-checkbox-group
+    v-model="value"
+    :rules="z.array(z.number()).length(2, { message: 'Please check all' })"
   >
     <var-checkbox :checked-value="0">Eat</var-checkbox>
     <var-checkbox :checked-value="1">Sleep</var-checkbox>

@@ -8,5 +8,6 @@ export default {
   lazyChange: 'Asynchronous Change',
   size: 'Set Size',
   validate: 'Validate',
+  validateWithZod: 'Validate With Zod',
   validateMessage: 'Please set a value greater than 5',
 }

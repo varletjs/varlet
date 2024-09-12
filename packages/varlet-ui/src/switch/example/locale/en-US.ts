@@ -6,6 +6,7 @@ export default {
   size: 'Size',
   loading: 'Loading',
   validateValue: 'Validate Value',
+  validateWithZod: 'Validate With Zod',
   text: 'Whether to open the switch',
   state: 'Error!',
   lazyChange: 'Asynchronous Change',

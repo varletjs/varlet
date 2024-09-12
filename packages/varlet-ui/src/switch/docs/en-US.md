@@ -97,6 +97,21 @@ const value = ref(true)
 </template>
 ```
 
+### Validate With Zod
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(true)
+</script>
+
+<template>
+  <var-switch v-model="value" :rules="z.boolean().refine((val) => val === true, { message: 'Error！' })" />
+</template>
+```
+
 ### Asynchronous Change
 
 In some scenarios, you may need to wait for the server to return successfully before making changes.

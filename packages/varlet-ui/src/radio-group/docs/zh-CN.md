@@ -194,6 +194,26 @@ const value = ref(false)
 </template>
 ```
 
+### 使用 Zod 对单选框字段校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio
+    v-model="value"
+    :rules="z.boolean().refine((v) => v, { message: '请勾选' })"
+  >
+    当前的值: {{ value }}
+  </var-radio>
+</template>
+```
+
 ### 单选框组字段校验
 
 ```html
@@ -214,6 +234,26 @@ const value = ref(0)
 </template>
 ```
 
+### 使用 Zod 对单选框组字段校验
+
+```html
+<script setup>
+import { ref } from 'vue'
+import { z } from 'zod'
+
+const value = ref(false)
+</script>
+
+<template>
+  <var-radio-group
+    v-model="value"
+    :rules="z.number().refine((v => v === 0, { message: '必须选择吃饭' }))"
+  >
+    <var-radio :checked-value="0">吃饭</var-radio>
+    <var-radio :checked-value="1">睡觉</var-radio>
+  </var-radio-group>
+</template>
+```
 
 ## API
 
@@ -230,7 +270,7 @@ const value = ref(0)
 | `value-key` ***3.2.14*** | 作为 value 唯一标识的键名 | _string_ | `value` |
 | `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 
-#### RadioGroupOption 
+#### RadioGroupOption
 
 | 参数 | 说明 | 类型             | 默认值       |
 | ------- | --- |----------------|-----------|
@@ -304,6 +344,7 @@ const value = ref(0)
 | `default` | 显示的文本 | `-` |
 
 ### 样式变量
+
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 #### Radio Variables
