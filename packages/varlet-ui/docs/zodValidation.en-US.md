@@ -58,7 +58,7 @@ function handleSubmit(valid) {
       <var-input 
         type="password" 
         placeholder="Confirmation Password"
-        :rules="z.string().min(6, 'Confirmation password must be at least 6 characters').refine(v => v === user.password, 'Does not match password')" 
+        :rules="[z.string().min(6, 'Confirmation password must be at least 6 characters'), v => v === user.password || 'Does not match password']" 
         v-model="user.repeatPassword" 
       />
       <var-button type="primary" native-type="submit">Submit</var-button>
@@ -76,18 +76,18 @@ If you use `Typescript`, define a `Zod Schema` to get both Typescript types and 
 import { ref } from 'vue'
 import { z } from 'zod'
 
+const UserSchema = z.object({
+  name: z.string().min(1, 'Name required'),
+  email: z.string().email('Email format error'),
+  password: z.string().min(6, 'Password must be at least 6 characters'),
+  repeatPassword: z.string().min(6, 'Confirmation password must be at least 6 characters'),
+})
+
 const user = ref<z.infer<typeof UserSchema>>({
   name: '',
   email: '',
   password: '',
   repeatPassword: ''
-})
-
-const UserSchema = z.object({
-  name: z.string().min(1, 'Name required'),
-  email: z.string().email('Email format error'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-  repeatPassword: z.string().min(6, 'Confirmation password must be at least 6 characters').refine(v => v === user.value.password, 'Does not match password'),
 })
 
 function handleSubmit(valid) {
@@ -117,7 +117,7 @@ function handleSubmit(valid) {
       <var-input 
         type="password" 
         placeholder="Confirmation Password"
-        :rules="UserSchema.shape.repeatPassword" 
+        :rules="[UserSchema.shape.repeatPassword, v => v === user.password || 'Does not match password']" 
         v-model="user.repeatPassword" 
       />
       <var-button type="primary" native-type="submit">Submit</var-button>

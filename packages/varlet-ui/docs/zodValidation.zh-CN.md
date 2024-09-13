@@ -56,7 +56,7 @@ function handleSubmit(valid) {
       <var-input 
         type="password" 
         placeholder="确认密码"
-        :rules="z.string().min(6, '密码最少6位').refine(v => v === user.password, '与密码不一致')" 
+        :rules="[z.string().min(6, '密码最少6位'), v => v === user.password || '与密码不一致']" 
         v-model="user.repeatPassword" 
       />
       <var-button type="primary" native-type="submit">提交</var-button>
@@ -74,18 +74,18 @@ function handleSubmit(valid) {
 import { ref } from 'vue'
 import { z } from 'zod'
 
+const UserSchema = z.object({
+  name: z.string().min(1, '名称不能为空'),
+  email: z.string().email('邮箱格式有误'),
+  password: z.string().min(6, '密码最少6位'),
+  repeatPassword: z.string().min(6, '确认密码最少6位'),
+})
+
 const user = ref<z.infer<typeof UserSchema>>({
   name: '',
   email: '',
   password: '',
   repeatPassword: ''
-})
-
-const UserSchema = z.object({
-  name: z.string().min(1, '名称不能为空'),
-  email: z.string().email('邮箱格式有误'),
-  password: z.string().min(6, '密码最少6位'),
-  repeatPassword: z.string().min(6, '确认密码最少6位').refine(v => v === user.value.password, '与密码不一致'),
 })
 
 function handleSubmit(valid) {
@@ -115,7 +115,7 @@ function handleSubmit(valid) {
       <var-input 
         type="password" 
         placeholder="确认密码"
-        :rules="UserSchema.shape.repeatPassword" 
+        :rules="[UserSchema.shape.repeatPassword, v => v === user.password || '与密码不一致']" 
         v-model="user.repeatPassword" 
       />
       <var-button type="primary" native-type="submit">提交</var-button>
