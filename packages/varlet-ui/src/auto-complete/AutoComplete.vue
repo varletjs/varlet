@@ -300,7 +300,7 @@ export default defineComponent({
       }
 
       await raf()
-      input.value!.focus()
+      input.value?.focus()
     }
 
     function handleKeyEscape() {
