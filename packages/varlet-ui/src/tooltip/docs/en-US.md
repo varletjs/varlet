@@ -1,6 +1,7 @@
 # Tooltip
 
 ### Intro
+
 Displays a tooltip when the element is clicked or hovered, 
 and changes the display position of the tooltip by controlling the placement and offset.
 
@@ -181,7 +182,7 @@ In the `disabled` state, the tooltip will not be opened.
 | `v-model:show` | Whether to show the tooltip                                    | _boolean_             | `false`   |
 | `content` | Display content | _string_              | `-`       |
 | `color`          | Tooltip background color                                                            | _string_  | `-`       |
-| `text-color`     | Tooltip text color                                                                  | _string_  | `-`       |
+| `text-color`  ***3.5.0***   | Tooltip text color                                                                  | _string_  | `-`       |
 | `type`           | Tooltip type, can be set to `default` `primary` `info` `success` `warning` `danger` | _string_  | `default` |
 | `placement` | Tooltip popup placement                                        | _Placement_          | `bottom`     |
 | `strategy`       | Tooltip position strategy, optional value is `absolute` `fixed` | _string_              | `absolute`           |
