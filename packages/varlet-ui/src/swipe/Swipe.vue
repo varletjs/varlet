@@ -112,7 +112,7 @@ import VarButton from '../button'
 import VarIcon from '../icon'
 import Hover from '../hover'
 import { defineComponent, ref, computed, watch, onActivated } from 'vue'
-import { useSwipeItems, type SwipeProvider } from './provide'
+import { useSwipeItems, useSwipeResizeListeners, type SwipeProvider } from './provide'
 import { props, type SwipeToOptions } from './props'
 import { clamp, isNumber, toNumber, doubleRaf, preventDefault, call } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
@@ -141,6 +141,7 @@ export default defineComponent({
     const index = ref(0)
     const hovering = ref(false)
     const { swipeItems, bindSwipeItems, length } = useSwipeItems()
+    const { swipeResizeListeners, bindSwipeResizeListeners } = useSwipeResizeListeners()
     const { popup, bindPopup } = usePopup()
     const {
       deltaX,
@@ -171,6 +172,7 @@ export default defineComponent({
     useEventListener(() => window, 'keydown', handleKeydown)
 
     call(bindPopup, null)
+    call(bindSwipeResizeListeners, null)
 
     watch(
       () => length.value,
@@ -441,6 +443,10 @@ export default defineComponent({
 
       setTimeout(() => {
         lockDuration.value = false
+      })
+
+      swipeResizeListeners.forEach(({ onResize }) => {
+        onResize()
       })
     }
 

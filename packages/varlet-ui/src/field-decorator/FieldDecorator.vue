@@ -117,6 +117,7 @@ import { isEmpty, getStyle, call, doubleRaf } from '@varlet/shared'
 import { createNamespace } from '../utils/components'
 import { onWindowResize, onSmartMounted } from '@varlet/use'
 import { usePopup } from '../popup/provide'
+import { useSwipeResizeDispatcher } from '../swipe/provide'
 
 const { name, n, classes } = createNamespace('field-decorator')
 
@@ -134,6 +135,7 @@ export default defineComponent({
     const transitionDisabled = ref(true)
     const isFloating = computed(() => props.hint && (!isEmpty(props.value) || props.isFocusing))
     const { popup, bindPopup } = usePopup()
+    const { bindSwipeResizeDispatcher } = useSwipeResizeDispatcher()
 
     const color = computed<string | undefined>(() =>
       !props.isError ? (props.isFocusing ? props.focusColor : props.blurColor) : undefined
@@ -152,6 +154,11 @@ export default defineComponent({
     onUpdated(resize)
 
     call(bindPopup, null)
+    call(bindSwipeResizeDispatcher, {
+      onResize() {
+        nextTick().then(resize)
+      },
+    })
 
     if (popup) {
       watch(
