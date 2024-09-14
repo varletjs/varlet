@@ -2,6 +2,7 @@ import {
   VarComponent,
   BasicAttributes,
   Direction as RadioGroupDirection,
+  Rules as RadioGroupRules,
   ListenerProp,
   SetPropsDefaults,
 } from './varComponent'
@@ -30,7 +31,7 @@ export interface RadioGroupProps extends BasicAttributes {
   labelKey?: string
   valueKey?: string
   validateTrigger?: Array<RadioGroupValidateTrigger>
-  rules?: any
+  rules?: RadioGroupRules
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>
 }

@@ -3,6 +3,7 @@ import {
   BasicAttributes,
   ListenerProp,
   Variant as AutoCompleteVariant,
+  Rules as AutoCompleteRules,
   SetPropsDefaults,
 } from './varComponent'
 import { VNode, VNodeChild, type InputHTMLAttributes } from 'vue'
@@ -44,7 +45,7 @@ export interface AutoCompleteProps extends BasicAttributes {
   clearable?: boolean
   validateTrigger?: AutoCompleteValidateTrigger[]
   getShow?: (v: string) => boolean
-  rules?: any
+  rules?: AutoCompleteRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
   onFocus?: ListenerProp<() => void>
   onBlur?: ListenerProp<() => void>

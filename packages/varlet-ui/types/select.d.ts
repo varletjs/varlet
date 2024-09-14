@@ -1,4 +1,11 @@
-import { VarComponent, BasicAttributes, ListenerProp, Variant as SelectVariant, SetPropsDefaults } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  ListenerProp,
+  Variant as SelectVariant,
+  Rules as SelectRules,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode } from 'vue'
 
 export declare const selectProps: Record<keyof SelectProps, any>
@@ -43,7 +50,7 @@ export interface SelectProps extends BasicAttributes {
   separator?: string
   textAlign?: SelectTextAlign
   validateTrigger?: Array<SelectValidateTrigger>
-  rules?: any
+  rules?: SelectRules
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>
   onClick?: ListenerProp<(e: Event) => void>

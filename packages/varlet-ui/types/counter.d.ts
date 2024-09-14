@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as CounterRules } from './varComponent'
 
 export declare const counterProps: Record<keyof CounterProps, any>
 
@@ -26,7 +26,7 @@ export interface CounterProps extends BasicAttributes {
   press?: boolean
   ripple?: boolean
   validateTrigger?: Array<CounterValidateTrigger>
-  rules?: any
+  rules?: CounterRules
   onBeforeChange?: ListenerProp<(value: number, change: (value: string | number) => void) => void>
   onChange?: ListenerProp<(value: number) => void>
   onIncrement?: ListenerProp<(value: number) => void>

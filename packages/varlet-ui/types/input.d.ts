@@ -1,4 +1,11 @@
-import { VarComponent, BasicAttributes, ListenerProp, Variant as InputVariant, SetPropsDefaults } from './varComponent'
+import {
+  VarComponent,
+  BasicAttributes,
+  ListenerProp,
+  Variant as InputVariant,
+  Rules as InputRules,
+  SetPropsDefaults,
+} from './varComponent'
 import { VNode, InputHTMLAttributes } from 'vue'
 
 export declare const inputProps: Record<keyof InputProps, any>
@@ -29,7 +36,7 @@ export interface InputProps extends BasicAttributes {
   resize?: boolean
   autofocus?: boolean
   validateTrigger?: InputValidateTrigger[]
-  rules?: any
+  rules?: InputRules
   enterkeyhint?: InputHTMLAttributes['enterKeyHint']
   onFocus?: ListenerProp<(e: Event) => void>
   onBlur?: ListenerProp<(e: Event) => void>

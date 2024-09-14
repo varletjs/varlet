@@ -18,6 +18,10 @@ export type Variant = 'outlined' | 'standard'
 
 export type ListenerProp<F> = F | F[]
 
+export type Rule = Record<string, any> | ((v: any) => any)
+
+export type Rules = Rule[]
+
 export interface BasicAttributes {
   class?: string | Record<string, any>
   style?: string | Record<string, any>

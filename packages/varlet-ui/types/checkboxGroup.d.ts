@@ -2,6 +2,7 @@ import {
   VarComponent,
   BasicAttributes,
   Direction as CheckboxGroupDirection,
+  Rules as CheckboxGroupRules,
   ListenerProp,
   SetPropsDefaults,
 } from './varComponent'
@@ -31,7 +32,7 @@ export interface CheckboxGroupProps extends BasicAttributes {
   options?: Array<CheckboxGroupOption>
   direction?: CheckboxGroupDirection
   validateTrigger?: Array<CheckboxGroupValidateTrigger>
-  rules?: any
+  rules?: CheckboxGroupRules
   onChange?: ListenerProp<(value: Array<any>) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: Array<any>) => void>
 }

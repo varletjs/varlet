@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, Rules as RadioRules, SetPropsDefaults } from './varComponent'
 import { VNode } from 'vue'
 
 export declare const radioProps: Record<keyof RadioProps, any>
@@ -16,7 +16,7 @@ export interface RadioProps extends BasicAttributes {
   iconSize?: string | number
   ripple?: boolean
   validateTrigger?: Array<RadioValidateTrigger>
-  rules?: any
+  rules?: RadioRules
   onClick?: ListenerProp<(e: Event) => void>
   onChange?: ListenerProp<(value: any) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: any) => void>

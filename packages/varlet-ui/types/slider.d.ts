@@ -2,6 +2,7 @@ import {
   VarComponent,
   BasicAttributes,
   Direction as SliderDirection,
+  Rules as SliderRules,
   ListenerProp,
   SetPropsDefaults,
 } from './varComponent'
@@ -30,7 +31,7 @@ export interface SliderProps extends BasicAttributes {
   disabled?: boolean
   readonly?: boolean
   direction?: SliderDirection
-  rules?: any
+  rules?: SliderRules
   onChange?: ListenerProp<(value: number | Array<number>) => void>
   onStart?: ListenerProp<() => void>
   onEnd?: ListenerProp<(value: number | Array<number>) => void>

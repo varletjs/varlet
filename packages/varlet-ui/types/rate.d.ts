@@ -1,4 +1,4 @@
-import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults } from './varComponent'
+import { VarComponent, BasicAttributes, ListenerProp, SetPropsDefaults, Rules as RateRules } from './varComponent'
 
 export declare const rateProps: Record<keyof RateProps, any>
 
@@ -21,7 +21,7 @@ export interface RateProps extends BasicAttributes {
   readonly?: boolean
   clearable?: boolean
   ripple?: boolean
-  rules?: any
+  rules?: RateRules
   onChange?: ListenerProp<(value: number) => void>
   'onUpdate:modelValue'?: ListenerProp<(value: number) => void>
 }
