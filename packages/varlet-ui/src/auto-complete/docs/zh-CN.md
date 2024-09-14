@@ -248,7 +248,7 @@ function useAutoComplete() {
 | `readonly` | 是否只读            | _boolean_ | `false` |
 | `disabled` | 是否禁用            | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onFocus` `onBlur` `onChange` `onClick` `onClear` `onInput` | _AutoCompleteValidateTrigger[]_ | `['onInput', 'onClear', 'onChange']` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示     | _Array<(v: string) => any>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其余的值则转换为文本作为用户提示     | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
 | `enterkeyhint` | 定制回车键样式，参见 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint) | _string_ | `-` |
 | `clearable` | 是否可清除              | _boolean_ | `false` |
 | `line` | 是否显示分割线                | _boolean_ | `true` |

@@ -207,7 +207,7 @@ const value = ref(false)
 <template>
   <var-radio
     v-model="value"
-    :rules="z.boolean().refine((v) => v, { message: '请勾选' })"
+    :rules="z.boolean().refine((v) => v, '请勾选')"
   >
     当前的值: {{ value }}
   </var-radio>
