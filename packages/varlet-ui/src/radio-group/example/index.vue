@@ -103,7 +103,7 @@ onThemeChange()
   </var-radio>
 
   <app-type>{{ t('radioValidateWithZod') }}</app-type>
-  <var-radio v-model="value10" :rules="z.boolean().refine((v) => v, { message: t('radioValidateMessage') })">
+  <var-radio v-model="value10" :rules="z.boolean().refine((v) => v, t('radioValidateMessage'))">
     {{ t('currentValue') }} {{ value10 }}
   </var-radio>
 
@@ -115,10 +115,7 @@ onThemeChange()
   <div class="relation">{{ t('currentValue') }} {{ value8 }}</div>
 
   <app-type>{{ t('radioGroupValidateWithZod') }}</app-type>
-  <var-radio-group
-    v-model="value11"
-    :rules="z.number().refine((v) => v === 0, { message: t('radioGroupValidateMessage') })"
-  >
+  <var-radio-group v-model="value11" :rules="z.number().refine((v) => v === 0, t('radioGroupValidateMessage'))">
     <var-radio :checked-value="0">{{ t('eat') }}</var-radio>
     <var-radio :checked-value="1">{{ t('sleep') }}</var-radio>
   </var-radio-group>
