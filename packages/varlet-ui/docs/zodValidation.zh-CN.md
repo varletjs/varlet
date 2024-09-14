@@ -9,7 +9,14 @@
 为了控制组件库的尺寸，我们不内置 `Zod`，所以需要手动安装。
 
 ```shell
-pnpm i zod
+# npm
+npm i zod -S   
+
+# yarn
+yarn add zod    
+
+# pnpm
+pnpm add zod
 ```
 
 ### 基本使用

@@ -10,7 +10,14 @@ We support form validation based on [Zod](https://zod.dev/) in `3.5.0+`.
 In order to control the size of the component library, we do not build-in `Zod`, so you need to install it manually.
 
 ```shell
-pnpm i zod
+# npm
+npm i zod -S   
+
+# yarn
+yarn add zod    
+
+# pnpm
+pnpm add zod
 ```
 
 ### Basic Usage
@@ -67,7 +74,7 @@ function handleSubmit(valid) {
 </template>
 ```
 
-### Use with Typescript
+### Use With Typescript
 
 If you use `Typescript`, define a `Zod Schema` to get both Typescript types and form rules.
 
