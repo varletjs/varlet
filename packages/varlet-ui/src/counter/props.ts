@@ -5,7 +5,7 @@ export type CounterValidateTrigger = 'onIncrement' | 'onDecrement' | 'onInputCha
 
 export const props = {
   modelValue: {
-    type: [String, Number],
+    type: Number,
     default: 0,
   },
   min: [String, Number],
@@ -50,7 +50,7 @@ export const props = {
     default: () => ['onInputChange', 'onLazyChange', 'onIncrement', 'onDecrement'],
   },
   rules: [Array, Function, Object] as PropType<any>,
-  onBeforeChange: defineListenerProp<(value: number, change: (value: string | number) => void) => void>(),
+  onBeforeChange: defineListenerProp<(value: number, change: (value: number) => void) => void>(),
   onChange: defineListenerProp<(value: number) => void>(),
   onIncrement: defineListenerProp<(value: number) => void>(),
   onDecrement: defineListenerProp<(value: number) => void>(),

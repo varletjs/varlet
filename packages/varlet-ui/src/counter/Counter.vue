@@ -342,7 +342,7 @@ export default defineComponent({
       call(props['onUpdate:modelValue'], normalizedValueNum)
     }
 
-    function change(value: string | number) {
+    function change(value: number) {
       setNormalizedValue(normalizeValue(String(value)))
       validateWithTrigger('onLazyChange')
     }

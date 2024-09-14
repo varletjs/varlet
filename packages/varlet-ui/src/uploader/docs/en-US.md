@@ -349,7 +349,7 @@ const files = ref([
 
 <template>
   <var-uploader
-    :rules="[(v, u) => u.getError().length === 0 || 'There is a file that failed to upload']"
+    :rules="(v, u) => u.getError().length === 0 || 'There is a file that failed to upload'"
     v-model="files"
   />
 </template>
@@ -457,7 +457,7 @@ const files = ref([
 | `hide-list` | Whether to hide the file list | _boolean_ | `false` |
 | `resolve-type` | The file preprocessing type, can be set to `default` `file` `data-url` (`default`, the image type contains dataURL and File object, other types contain only File object. `file`, which contains only File object. `data-url`, all file types contain dataURL and File object) | _string_ | `default` |
 | `validate-trigger` | Timing to trigger validation. The optional value is `onChange` `onRemove` | _UploaderValidateTrigger[]_ | `['onChange', 'onRemove']` |
-| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: VarFile[]) => any \| ZodType \| Array<(v: VarFile[]) => any \| ZodType>_ | `-` |
 
 ### VarFile
 

@@ -268,7 +268,7 @@ const value = ref(false)
 | `options` ***3.2.14*** | Specifies options | _RadioGroupOption[]_ | `[]` |
 | `label-key` ***3.2.14*** | As the key that uniquely identifies label | _string_ | `label` |
 | `value-key` ***3.2.14*** | As the key that uniquely identifies value | _string_ | `value` |
-| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: any) => any \| ZodType \| Array<(v: any) => any \| ZodType>_ | `-` |
 
 #### RadioGroupOption
 

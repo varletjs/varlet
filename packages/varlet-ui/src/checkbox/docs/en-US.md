@@ -14,7 +14,7 @@
 | `readonly` | Whether the readonly | _boolean_ | `false` |
 | `indeterminate` | Whether indeterminate status(style has the highest priority) | _boolean_ | `false` |
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
-| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: any) => any \| ZodType \| Array<(v: any) => any \| ZodType>_ | `-` |
 
 ### Events
 

@@ -267,7 +267,7 @@ const value2 = ref([7, 64])
 | `disabled`| Whether to disable slider                                                | _boolean_  | `false` |
 | `readonly`| Whether to readonly slider                                               | _boolean_  | `false` |
 | `direction` | Direction of slider, Can be set to `vertical horizontal`                           | _string_ | `horizontal` |
-| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: number \| [number, number]) => any \| ZodType \| Array<(v: number \| [number, number]) => any \| ZodType>_ | `-` |
 ### Events
 
 | Event | Description | arguments |

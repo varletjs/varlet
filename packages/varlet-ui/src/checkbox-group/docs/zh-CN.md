@@ -323,7 +323,7 @@ const value = ref([])
 | `options` ***3.2.11*** | 指定可选项 | _CheckboxGroupOption[]_ | `[]` |
 | `label-key` ***3.2.12*** | 作为 label 唯一标识的键名 | _string_ | `label` |
 | `value-key` ***3.2.12*** | 作为 value 唯一标识的键名 | _string_ | `value` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: any[]) => any \| ZodType \| Array<(v: any[]) => any \| ZodType>_ | `-` |
 
 #### CheckboxGroupOption 
 

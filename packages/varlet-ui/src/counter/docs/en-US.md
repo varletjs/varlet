@@ -177,7 +177,7 @@ const value = ref(0)
 
 | Prop | Description | Type | Default |
 | --- | --- | --- | --- |
-| `v-model` | The value of the binding | _string \| number_ | `0` |
+| `v-model` | The value of the binding | _number_ | `0` |
 | `min` | Minimum value | _string \| number_ | `-` |
 | `max` | Maximum value | _string \| number_ | `-` |
 | `step` | Step size | _string \| number_ | `1` |
@@ -198,7 +198,7 @@ const value = ref(0)
 | `ripple` | Whether to open ripple | _boolean_ | `true` |
 | `lazy-change` | Whether to prevent the component itself from updating the bound value | _boolean_ | `false` |
 | `validate-trigger` | Timing to trigger validation，Optional value is `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _CounterValidateTrigger[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
-| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | Validation rules, return `true` to indicate verification passes, other types of values ​​will be converted into text as user prompts. [Zod validation](#/en-US/zodValidation) is supported since `3.5.0` | _(v: number) => any \| ZodType \| Array<(v: number) => any \| ZodType>_ | `-` |
 
 ### Methods
 

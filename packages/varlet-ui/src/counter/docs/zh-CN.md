@@ -177,7 +177,7 @@ const value = ref(0)
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `v-model` | 绑定的值 | _string \| number_ | `0` |
+| `v-model` | 绑定的值 | _number_ | `0` |
 | `min` | 最小值 | _string \| number_ | `-` |
 | `max` | 最大值 | _string \| number_ | `-` |
 | `step` | 步长 | _string \| number_ | `1` |
@@ -198,7 +198,7 @@ const value = ref(0)
 | `ripple` | 是否开启水波纹 | _boolean_ | `true` |
 | `lazy-change` | 是否阻止组件本身的绑定值更新操作 | _boolean_ | `false` |
 | `validate-trigger` | 触发验证的时机，可选值为 `onInputChange` `onLazyChange` `onIncrement` `onDecrement` | _CounterValidateTrigger[]_ | `['onIncrement', 'onDecrement', 'onInputChange', 'onLazyChange']` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: number) => any \| ZodType \| Array<(v: number) => any \| ZodType>_ | `-` |
 
 ### 方法
 

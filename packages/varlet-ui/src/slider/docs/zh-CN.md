@@ -268,7 +268,7 @@ const value2 = ref([7, 64])
 | `disabled`         | 是否禁用                              | _boolean_ | `false`           |
 | `readonly`         | 是否只读                              | _boolean_ | `false`           |
 | `direction`        | 显示方向，可选值为 `vertical horizontal`        | _string_ | `horizontal` |
-| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: string) => any \| ZodType \| Array<(v: string) => any \| ZodType>_ | `-` |
+| `rules` | 验证规则，返回 `true` 表示验证通过，其它类型的值将转换为文本作为用户提示。自 `3.5.0` 开始支持 [Zod 验证](#/zh-CN/zodValidation)  | _(v: number \| [number, number]) => any \| ZodType \| Array<(v: number \| [number, number]) => any \| ZodType>_ | `-` |
 
 ### 事件
 
