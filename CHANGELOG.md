@@ -1,3 +1,26 @@
+# [3.5.0](https://github.com/varletjs/varlet/compare/v3.4.0...v3.5.0) (2024-09-15)
+
+
+### Bug Fixes
+
+* **auto-complete:** fix focus behavior ([0cb2055](https://github.com/varletjs/varlet/commit/0cb205508c1850f9f2afda6c0720917420958c1d))
+* **auto-complete:** fix focus behavior ([3cb43b4](https://github.com/varletjs/varlet/commit/3cb43b46e3f306d34ae01d7f64f39998f8406636))
+* **auto-complete:** fix focus not trigger when new value is not changed ([7a0960a](https://github.com/varletjs/varlet/commit/7a0960a0a24c22ec07ec3ecf3645a87b1b0a1706))
+* **complier:** fix scss [@import](https://github.com/import) node_modules icons ([#1758](https://github.com/varletjs/varlet/issues/1758)) ([44c0756](https://github.com/varletjs/varlet/commit/44c07565422aaf62b4ac69304e5448440496bbe5))
+* **counter:** fix v-model types ([bdb5da0](https://github.com/varletjs/varlet/commit/bdb5da03c103245e26a4323958c5447553558bda))
+* **field:** fix placeholder resize failure in swipe and close [#1763](https://github.com/varletjs/varlet/issues/1763) ([23f907c](https://github.com/varletjs/varlet/commit/23f907cac477c6cc88c67a5ffd3f8d570b97d82b))
+
+
+### Features
+
+* form components support zod validation ([#1751](https://github.com/varletjs/varlet/issues/1751)) ([7eabc07](https://github.com/varletjs/varlet/commit/7eabc07dd427396dd65e1316b83aac9980294b9d))
+* **input:** support zod validation ([8ff8bff](https://github.com/varletjs/varlet/commit/8ff8bffeeb0afb7c7616dc093bafb459a278f156))
+* **tooltip:** support textColor ([#1756](https://github.com/varletjs/varlet/issues/1756)) ([25962ef](https://github.com/varletjs/varlet/commit/25962ef1c2b4b401f8cf2c3fe41cc46b98e24d05))
+* using tinyexec ([#1752](https://github.com/varletjs/varlet/issues/1752)) ([b83ad7a](https://github.com/varletjs/varlet/commit/b83ad7a4a7bfcdb3ddb11db5d9aa688ed0429ec2))
+* wip ([b5f7469](https://github.com/varletjs/varlet/commit/b5f746935934bf2965f748b226ceb9680140c965))
+
+
+
 # [3.4.0](https://github.com/varletjs/varlet/compare/v3.3.16...v3.4.0) (2024-09-02)
 
 
