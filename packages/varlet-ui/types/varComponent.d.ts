@@ -20,7 +20,7 @@ export type ListenerProp<F> = F | F[]
 
 export type Rule = Record<string, any> | ((v: any) => any)
 
-export type Rules = Rule[]
+export type Rules = Rule | Rule[]
 
 export interface BasicAttributes {
   class?: string | Record<string, any>
