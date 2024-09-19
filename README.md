@@ -128,7 +128,7 @@ See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CON
 
 ### GitCode Repo
 
-See [Here](https://gitcode.com/varletjs/varlet)
+See [Here](https://gitcode.com/varletjs/varlet).
 
 ### Community
 

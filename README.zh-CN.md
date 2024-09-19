@@ -128,7 +128,7 @@ createApp(App).use(Varlet).mount('#app')
 
 ### GitCode 仓库
  
-详情见 [GitCode 仓库](https://gitcode.com/varletjs/varlet)
+详情见 [GitCode 仓库](https://gitcode.com/varletjs/varlet)。
 
 ### 反馈和交流
 
