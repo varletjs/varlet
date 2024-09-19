@@ -126,6 +126,10 @@ See [Varlet UI Playground](https://varletjs.org/playground).
 
 See [Contributing Guide](https://github.com/varletjs/varlet/blob/dev/.github/CONTRIBUTING.md).
 
+### GitCode Repo
+
+See [Here](https://gitcode.com/varletjs/varlet)
+
 ### Community
 
 We recommend that [issue](https://github.com/varletjs/varlet/issues) be used for problem feedback, or others:
