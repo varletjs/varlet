@@ -142,5 +142,14 @@ export function markdown(options: MarkdownOptions): Plugin {
         this.error(e)
       }
     },
+
+    handleHotUpdate(ctx) {
+      if (!/\.md$/.test(ctx.file)) {
+        return
+      }
+
+      const {read} = ctx
+      ctx.read = async () => markdownToVue(await read(), options)
+    },
   }
 }
