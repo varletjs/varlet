@@ -148,7 +148,7 @@ export function markdown(options: MarkdownOptions): Plugin {
         return
       }
 
-      const {read} = ctx
+      const { read } = ctx
       ctx.read = async () => markdownToVue(await read(), options)
     },
   }
