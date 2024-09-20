@@ -29,10 +29,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { isPlainObject, toNumber, call } from '@varlet/shared'
 import { props } from './props'
-import { useRow, type ColPadding, type ColProvider, type ColSizeDescriptor } from './provide'
+import { useRow, type ColPadding, type ColSizeDescriptor } from './provide'
 import { padStartFlex, toSizeUnit } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
@@ -44,20 +44,11 @@ export default defineComponent({
   setup(props) {
     const span = computed(() => toNumber(props.span))
     const offset = computed(() => toNumber(props.offset))
-    const padding = ref<ColPadding>({ left: 0, right: 0, top: 0, bottom: 0 })
-    const { row, bindRow } = useRow()
-
-    const colProvider: ColProvider = {
-      setPadding(pad: ColPadding) {
-        padding.value = pad
-      },
-    }
-
-    watch([() => props.span, () => props.offset], () => {
-      row?.computePadding()
+    const { row } = useRow()
+    const padding = computed<ColPadding>(() => {
+      const [y = 0, x = 0] = row?.average?.value || []
+      return { left: x, right: x, top: y, bottom: y }
     })
-
-    call(bindRow, colProvider)
 
     function getSize(mode: string, size: string | number | ColSizeDescriptor | undefined) {
       const classes: string[] = []
@@ -68,11 +59,10 @@ export default defineComponent({
 
       if (isPlainObject(size)) {
         const { offset, span } = size
-
-        Number(span) >= 0 && classes.push(n(`--span-${mode}-${span}`))
-        offset && classes.push(n(`--offset-${mode}-${offset}`))
-      } else {
-        Number(size) >= 0 && classes.push(n(`--span-${mode}-${size}`))
+        if (Number(span) >= 0) classes.push(n(`--span-${mode}-${span}`))
+        if (offset) classes.push(n(`--offset-${mode}-${offset}`))
+      } else if (Number(size) >= 0) {
+        classes.push(n(`--span-${mode}-${size}`))
       }
 
       return classes

@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { isArray, call } from '@varlet/shared'
 import { useCols, type RowProvider } from './provide'
@@ -29,20 +29,11 @@ export default defineComponent({
     const average = computed(() =>
       isArray(props.gutter) ? props.gutter.map((numeric) => toPxNum(numeric) / 2) : [0, toPxNum(props.gutter) / 2]
     )
-    const { cols, bindCols, length } = useCols()
+    const { bindCols } = useCols()
 
-    const rowProvider: RowProvider = { computePadding }
+    const rowProvider: RowProvider = { average }
 
-    watch(() => length.value, computePadding)
-    watch(() => props.gutter, computePadding)
     bindCols(rowProvider)
-
-    function computePadding() {
-      cols.forEach((col) => {
-        const [y, x] = average.value
-        col.setPadding({ left: x, right: x, top: y, bottom: y })
-      })
-    }
 
     function handleClick(e: Event) {
       call(props.onClick, e)
