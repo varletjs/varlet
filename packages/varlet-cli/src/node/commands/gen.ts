@@ -1,11 +1,10 @@
 import logger from '../shared/logger.js'
 import fse from 'fs-extra'
-import inquirer from 'inquirer'
+import { input, confirm, select } from '@inquirer/prompts'
 import { resolve } from 'path'
 import { CLI_PACKAGE_JSON, CWD, GENERATORS_DIR } from '../shared/constant.js'
 
 const { copy, pathExistsSync, readFileSync, writeFileSync, rename } = fse
-const { prompt } = inquirer
 
 type CodeStyle = 'tsx' | 'sfc'
 
@@ -34,10 +33,9 @@ function syncVersion(name: string) {
 export async function gen(options: GenCommandOptions) {
   logger.title('\n📦📦 Generate cli application ! \n')
 
-  const { name } = options.name
-    ? options
-    : await prompt({
-        name: 'name',
+  const name = options.name
+    ? options.name
+    : await input({
         message: 'Name of the generate application: ',
         default: 'varlet-cli-app',
       })
@@ -54,21 +52,20 @@ export async function gen(options: GenCommandOptions) {
   if (options.sfc || options.tsx) {
     codeStyle = options.sfc ? 'sfc' : 'tsx'
   } else {
-    const { style } = await prompt({
-      name: 'style',
-      type: 'list',
+    const style: CodeStyle = await select({
       message: 'Please select your component library programming format',
-      choices: ['sfc', 'tsx'],
+      choices: [
+        { name: 'sfc', value: 'sfc' },
+        { name: 'tsx', value: 'tsx' },
+      ],
     })
 
     codeStyle = style
   }
 
-  const { i18n } = options.i18n
-    ? options
-    : await prompt({
-        name: 'i18n',
-        type: 'confirm',
+  const i18n = options.i18n
+    ? options.i18n
+    : await confirm({
         message: 'Whether to use i18n?',
         default: false,
       })
