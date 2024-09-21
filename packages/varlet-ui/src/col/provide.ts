@@ -13,12 +13,12 @@ export type ColSizeDescriptor = {
   offset?: number | string
 }
 
-export type ColProvider = object
-
 export function useRow() {
-  const { parentProvider } = useParent<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
+  const { index, bindParent, parentProvider } = useParent<RowProvider, null>(ROW_BIND_COL_KEY)
 
   return {
+    index,
     row: parentProvider,
+    bindRow: bindParent,
   }
 }

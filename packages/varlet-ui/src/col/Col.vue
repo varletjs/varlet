@@ -44,11 +44,14 @@ export default defineComponent({
   setup(props) {
     const span = computed(() => toNumber(props.span))
     const offset = computed(() => toNumber(props.offset))
-    const { row } = useRow()
     const padding = computed<ColPadding>(() => {
-      const [y = 0, x = 0] = row?.average?.value || []
+      const [y = 0, x = 0] = row?.average.value ?? []
       return { left: x, right: x, top: y, bottom: y }
     })
+
+    const { row, bindRow } = useRow()
+
+    call(bindRow, null)
 
     function getSize(mode: string, size: string | number | ColSizeDescriptor | undefined) {
       const classes: string[] = []
@@ -59,9 +62,19 @@ export default defineComponent({
 
       if (isPlainObject(size)) {
         const { offset, span } = size
-        if (Number(span) >= 0) classes.push(n(`--span-${mode}-${span}`))
-        if (offset) classes.push(n(`--offset-${mode}-${offset}`))
-      } else if (Number(size) >= 0) {
+
+        if (Number(span) >= 0) {
+          classes.push(n(`--span-${mode}-${span}`))
+        }
+
+        if (offset) {
+          classes.push(n(`--offset-${mode}-${offset}`))
+        }
+
+        return classes
+      }
+
+      if (Number(size) >= 0) {
         classes.push(n(`--span-${mode}-${size}`))
       }
 

@@ -9,9 +9,11 @@ export interface RowProvider {
 export const ROW_BIND_COL_KEY = Symbol('ROW_BIND_COL_KEY')
 
 export function useCols() {
-  const { bindChildren } = useChildren<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
+  const { length, childProviders: cols, bindChildren } = useChildren<RowProvider, ColProvider>(ROW_BIND_COL_KEY)
 
   return {
+    length,
+    cols,
     bindCols: bindChildren,
   }
 }

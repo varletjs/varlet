@@ -16,7 +16,7 @@
 import { defineComponent, computed } from 'vue'
 import { props } from './props'
 import { isArray, call } from '@varlet/shared'
-import { useCols, type RowProvider } from './provide'
+import { useCols } from './provide'
 import { toPxNum, padStartFlex } from '../utils/elements'
 import { createNamespace } from '../utils/components'
 
@@ -31,9 +31,7 @@ export default defineComponent({
     )
     const { bindCols } = useCols()
 
-    const rowProvider: RowProvider = { average }
-
-    bindCols(rowProvider)
+    bindCols({ average })
 
     function handleClick(e: Event) {
       call(props.onClick, e)
