@@ -1,3 +1,7 @@
+## [3.5.1](https://github.com/varletjs/varlet/compare/v3.5.0...v3.5.1) (2024-09-21)
+
+
+
 # [3.5.0](https://github.com/varletjs/varlet/compare/v3.4.0...v3.5.0) (2024-09-15)
 
 
