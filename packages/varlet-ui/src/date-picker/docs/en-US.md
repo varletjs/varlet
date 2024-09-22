@@ -147,6 +147,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--date-picker-title-year-font-size` | `var(--font-size-md)`  |
 | `--date-picker-title-year-font-weight` | `500`                  |
 | `--date-picker-title-year-margin-bottom` | `8px`                  |
+| `--date-picker-title-year-min-height` | `21px`                  |
 | `--date-picker-title-date-height` | `48px`                 |
 | `--date-picker-title-date-font-size` | `34px`                 |
 | `--date-picker-title-date-font-weight` | `500`                  |
@@ -168,6 +169,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--year-picker-item-height` | `56px`                 |
 | `--year-picker-item-button-max-width` | `140px`                |
 | `--day-picker-content-item-width` | `14.28%`               |
+| `--day-picker-content-item-min-height` | `21px`               |
 | `--day-picker-content-item-font-size` | `var(--font-size-sm)`  |
 | `--day-picker-content-item-padding` | `2px 0`                |
 | `--day-picker-content-item-button-width` | `32px`                 |

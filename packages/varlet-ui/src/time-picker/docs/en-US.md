@@ -166,6 +166,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--time-picker-title-background` | `var(--color-primary)` |
 | `--time-picker-title-hint-color` | `'#fff'` |
 | `--time-picker-title-hint-font-size` | `14px` |
+| `--time-picker-title-hint-min-height` | `21px` |
 | `--time-picker-title-inactive-opacity` | `0.6` |
 | `--time-picker-title-time-font-size` | `50px` |
 | `--time-picker-title-time-margin` | `0 5px` |
