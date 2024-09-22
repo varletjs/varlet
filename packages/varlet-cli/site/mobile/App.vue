@@ -235,6 +235,7 @@ body {
   padding: 15px 0;
   color: var(--site-config-color-sub-text);
   font-size: 14px;
+  min-height: 50px;
 }
 
 header {
