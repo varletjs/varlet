@@ -234,3 +234,30 @@ test('test timePicker titleColor', async () => {
   expect(wrapper.find('.var-time-picker__title').attributes('style')).toContain('background: red')
   wrapper.unmount()
 })
+
+test('test timePicker reset when modelValue is undefined or an empty string', async () => {
+  const wrapper = mount({
+    components: {
+      [VarTimePicker.name]: VarTimePicker,
+    },
+    data() {
+      return {
+        time: '10:22',
+      }
+    },
+    template: `<var-time-picker v-model="time" />`,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ time: undefined })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ time: '20:30' })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ time: '' })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
