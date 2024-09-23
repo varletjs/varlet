@@ -121,29 +121,44 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (value) => {
-        if (value) {
-          const { hour, minute, second } = getNumberTime(value)
-
-          const formatHour12 = dayjs().hour(hour).format('hh')
-          const formatHour24 = dayjs().hour(hour).format('HH')
-          const formatMinute = dayjs().minute(minute).format('mm')
-          const formatSecond = dayjs().second(second).format('ss')
-
-          hourRad.value = (formatHour12 === '12' ? 0 : toNumber(formatHour12)) * 30
-          minuteRad.value = toNumber(formatMinute) * 6
-          secondRad.value = toNumber(formatSecond) * 6
-
-          time.value = getTime(value)
-
-          if (props.format !== '24hr') {
-            ampm.value = padStart(`${hour}`, 2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
-          }
-
-          isInner.value = props.format === '24hr' && hours24.includes(formatHour24)
+        if (value === undefined || value === '') {
+          resetTime()
+          return
         }
+
+        const { hour, minute, second } = getNumberTime(value)
+
+        const formatHour12 = dayjs().hour(hour).format('hh')
+        const formatHour24 = dayjs().hour(hour).format('HH')
+        const formatMinute = dayjs().minute(minute).format('mm')
+        const formatSecond = dayjs().second(second).format('ss')
+
+        hourRad.value = (formatHour12 === '12' ? 0 : toNumber(formatHour12)) * 30
+        minuteRad.value = toNumber(formatMinute) * 6
+        secondRad.value = toNumber(formatSecond) * 6
+
+        time.value = getTime(value)
+
+        if (props.format !== '24hr') {
+          ampm.value = padStart(`${hour}`, 2, '0') === formatHour24 && hours24.includes(formatHour24) ? 'pm' : 'am'
+        }
+
+        isInner.value = props.format === '24hr' && hours24.includes(formatHour24)
       },
       { immediate: true }
     )
+
+    function resetTime() {
+      hourRad.value = undefined
+      minuteRad.value = 0
+      secondRad.value = 0
+      time.value = {
+        hour: '00',
+        minute: '00',
+        second: '00',
+      }
+      ampm.value = 'am'
+    }
 
     function update(newTime: string) {
       call(props['onUpdate:modelValue'], newTime)
