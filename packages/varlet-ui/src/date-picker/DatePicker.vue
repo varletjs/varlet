@@ -267,7 +267,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       (value) => {
-        if (!checkValue() || invalidFormatDate(value) || !value) return
+        if (!checkValue() || invalidFormatDate(value)) return
 
         if (props.range) {
           if (!isArray(value)) return
@@ -513,8 +513,9 @@ export default defineComponent({
       rangeDate.value = formatDateList.filter((date) => date !== 'Invalid Date')
     }
 
-    function dateInit(value: string) {
-      const formatDate = dayjs(value).format('YYYY-MM-D')
+    function dateInit(value: string | undefined) {
+      const handleValue = value ? dayjs(value) : dayjs()
+      const formatDate = dayjs(handleValue).format('YYYY-MM-D')
 
       if (invalidFormatDate(formatDate)) return
 
