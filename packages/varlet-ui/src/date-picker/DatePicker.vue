@@ -107,7 +107,7 @@ import dayjs from 'dayjs/esm/index.js'
 import MonthPickerPanel from './src/month-picker-panel.vue'
 import YearPickerPanel from './src/year-picker-panel.vue'
 import DayPickerPanel from './src/day-picker-panel.vue'
-import { defineComponent, ref, computed, reactive, watch, type RendererNode } from 'vue'
+import { defineComponent, ref, computed, watch, type RendererNode } from 'vue'
 import {
   props,
   MONTH_LIST,
@@ -158,7 +158,7 @@ export default defineComponent({
     const yearPanelEl = ref<RendererNode | null>(null)
     const monthPanelEl = ref<RendererNode | null>(null)
     const dayPanelEl = ref<RendererNode | null>(null)
-    const componentProps = reactive<ComponentProps>({
+    const componentProps = computed<ComponentProps>(() => ({
       allowedDates: props.allowedDates,
       type: props.type,
       color: props.color,
@@ -169,7 +169,7 @@ export default defineComponent({
       multiple: props.multiple,
       range: props.range,
       buttonElevation: props.buttonElevation,
-    })
+    }))
     const getChoose = computed<Choose>(() => ({
       chooseMonth: chooseMonth.value,
       chooseYear: chooseYear.value,

@@ -36,7 +36,7 @@ export function getHtmlInject(inject: VarletConfigHtmlInject) {
 }
 
 export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig {
-  const { defaultLanguage, alias = {}, host } = varletConfig
+  const { alias = {}, host } = varletConfig
 
   const resolveAlias = Object.entries(alias).reduce((resolveAlias, [key, value]) => {
     const isRelative = value.startsWith('.')
