@@ -422,3 +422,32 @@ test('test datePicker titleColor', async () => {
 
   wrapper.unmount()
 })
+
+test('test datePicker reset when modelValue is undefined or an empty string', async () => {
+  const wrapper = mount({
+    components: {
+      [VarDatePicker.name]: VarDatePicker,
+    },
+    data() {
+      return {
+        date: '2024-09-23',
+      }
+    },
+    template: `<var-date-picker v-model="date" />`,
+  })
+
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ date: undefined })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ date: '2024-09-23' })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ date: '' })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({ date: '2024-09-23' })
+  expect(wrapper.html()).toMatchSnapshot()
+  wrapper.unmount()
+})

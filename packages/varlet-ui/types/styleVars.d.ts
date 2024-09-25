@@ -259,6 +259,7 @@ interface BaseStyleVars {
   '--date-picker-title-year-font-size'?: string
   '--date-picker-title-year-font-weight'?: string
   '--date-picker-title-year-margin-bottom'?: string
+  '--date-picker-title-year-min-height'?: string
   '--date-picker-title-date-height'?: string
   '--date-picker-title-date-font-size'?: string
   '--date-picker-title-date-font-weight'?: string
@@ -280,6 +281,7 @@ interface BaseStyleVars {
   '--year-picker-item-height'?: string
   '--year-picker-item-button-max-width'?: string
   '--day-picker-content-item-width'?: string
+  '--day-picker-content-item-min-height'?: string
   '--day-picker-content-item-font-size'?: string
   '--day-picker-content-item-padding'?: string
   '--day-picker-content-item-button-width'?: string
@@ -752,6 +754,7 @@ interface BaseStyleVars {
   '--time-picker-title-background'?: string
   '--time-picker-title-hint-color'?: string
   '--time-picker-title-hint-font-size'?: string
+  '--time-picker-title-hint-min-height'?: string
   '--time-picker-title-inactive-opacity'?: string
   '--time-picker-title-time-font-size'?: string
   '--time-picker-title-time-margin'?: string
