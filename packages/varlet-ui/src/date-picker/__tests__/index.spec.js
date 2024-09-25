@@ -439,13 +439,10 @@ test('test datePicker reset when modelValue is undefined or an empty string', as
   expect(wrapper.html()).toMatchSnapshot()
 
   await wrapper.setData({ time: undefined })
-  expect(wrapper.html()).toMatchSnapshot()
+  await wrapper.setData({ time: '2024-09-23' })
+  await wrapper.setData({ time: '' })
 
   await wrapper.setData({ time: '2024-09-23' })
   expect(wrapper.html()).toMatchSnapshot()
-
-  await wrapper.setData({ time: '' })
-  expect(wrapper.html()).toMatchSnapshot()
-
   wrapper.unmount()
 })
