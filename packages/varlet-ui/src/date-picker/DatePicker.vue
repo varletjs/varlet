@@ -515,7 +515,7 @@ export default defineComponent({
 
     function dateInit(value: string | undefined) {
       const handleValue = value ? dayjs(value) : dayjs()
-      const formatDate = dayjs(handleValue).format('YYYY-MM-D')
+      const formatDate = handleValue.format('YYYY-MM-D')
 
       if (invalidFormatDate(formatDate)) return
 
