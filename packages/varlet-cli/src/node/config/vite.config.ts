@@ -81,15 +81,15 @@ export function getDevConfig(varletConfig: Required<VarletConfig>): InlineConfig
         data: {
           logo: varletConfig?.logo,
           baidu: varletConfig?.analysis?.baidu,
-          pcTitle: varletConfig?.pc?.title ? varletConfig?.pc?.title[defaultLanguage] : '',
-          pcDescription: varletConfig?.pc?.description ? varletConfig?.pc?.description[defaultLanguage] : '',
-          pcKeywords: varletConfig?.pc?.keywords ? varletConfig?.pc?.keywords[defaultLanguage] : '',
+
+          pcTitle: varletConfig?.seo?.title ?? '',
+          pcDescription: varletConfig?.seo?.description ?? '',
+          pcKeywords: varletConfig?.seo?.keywords ?? '',
           pcHtmlInject: getHtmlInject(varletConfig?.pc?.htmlInject || {}),
-          mobileTitle: varletConfig?.mobile?.title ? varletConfig?.mobile?.title[defaultLanguage] : '',
-          mobileDescription: varletConfig?.mobile?.description
-            ? varletConfig?.mobile?.description[defaultLanguage]
-            : '',
-          mobileKeywords: varletConfig?.mobile?.keywords ? varletConfig?.mobile?.keywords[defaultLanguage] : '',
+
+          mobileTitle: varletConfig?.seo?.title ?? '',
+          mobileDescription: varletConfig?.seo?.description ?? '',
+          mobileKeywords: varletConfig?.seo?.keywords ?? '',
           mobileHtmlInject: getHtmlInject(varletConfig?.mobile?.htmlInject || {}),
         },
       }),

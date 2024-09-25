@@ -67,6 +67,7 @@ varlet-cli gen
 | `copy` | 复制文件配置 | _[CopyPath[]](https://github.com/varletjs/varlet/blob/dev/packages/varlet-vite-plugins/src/copy.ts)_ | `-` |
 | `icons` | 字体图标打包相关配置 | _[VarletConfigIcons](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
 | `esbuild` | esbuild 配置 | _[VarletConfigEsbuild](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | `-` |
+| `seo` | seo 选项 | _[VarletConfigSeo](https://github.com/varletjs/varlet/blob/dev/packages/varlet-cli/src/node/config/varlet.config.ts)_ | ` -` |
 
 #### Menu
 

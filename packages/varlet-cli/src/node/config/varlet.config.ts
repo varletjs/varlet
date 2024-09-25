@@ -69,6 +69,12 @@ export interface VarletConfigMobileHeader {
   themes?: Record<string, string>[]
 }
 
+export interface VarletConfigSeo {
+  title?: string
+  description?: string
+  keywords?: string
+}
+
 export interface VarletConfigPcIndexPage {
   description?: Record<string, string>
   started?: Record<string, string>
@@ -101,8 +107,6 @@ export interface VarletConfigPcIndexPage {
 
 export interface VarletConfigPc {
   title?: Record<string, string>
-  description?: Record<string, string>
-  keywords?: Record<string, string>
   redirect?: string
   clipboard?: Record<string, string>
   indexPage?: VarletConfigPcIndexPage
@@ -118,8 +122,6 @@ export interface VarletConfigPc {
 
 export interface VarletConfigMobile {
   title?: Record<string, string>
-  description?: Record<string, string>
-  keywords?: Record<string, string>
   redirect?: string
   header?: VarletConfigMobileHeader
   htmlInject?: VarletConfigHtmlInject
@@ -150,6 +152,11 @@ export interface VarletConfig {
   title?: string
   logo?: string
   themeKey?: string
+  seo?: {
+    title?: string
+    description?: string
+    keywords?: string
+  }
   defaultLanguage?: 'zh-CN' | 'en-US'
   alias?: Record<string, string>
   /**
