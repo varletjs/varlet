@@ -422,3 +422,31 @@ test('test datePicker titleColor', async () => {
 
   wrapper.unmount()
 })
+
+test('test datePicker rerender date panel when max or min changes', async () => {
+  const wrapper = mount({
+    components: {
+      [VarDatePicker.name]: VarDatePicker,
+    },
+    data() {
+      return {
+        date: '2024-12-23',
+        max: '2024-12-24',
+        min: '2024-12-22',
+      }
+    },
+    template: `<var-date-picker v-model="date" :min="min" :max="max" />`,
+  })
+
+  await delay(100)
+  expect(wrapper.html()).toMatchSnapshot()
+
+  await wrapper.setData({
+    min: '2025-01-05',
+    date: '2025-01-06',
+    max: '2025-01-07',
+  })
+  expect(wrapper.html()).toMatchSnapshot()
+
+  wrapper.unmount()
+})
