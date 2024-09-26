@@ -1,23 +1,29 @@
 <template>
   <div class="var-site-code-example">
     <div class="var-site-code-example__toolbar">
-      <var-button text round @click="toggle" v-if="fold && !disabledFold">
-        <var-icon name="xml" size="18" />
-      </var-button>
+      <var-tooltip placement="top" :content="height >= 0 ? 'Show Source' : 'Hide Source'">
+        <var-button text round @click="toggle" v-if="fold && !disabledFold">
+          <var-icon name="xml" size="18" />
+        </var-button>
+      </var-tooltip>
 
-      <var-button
-        :id="`clip-trigger-${cid}`"
-        :data-clipboard-target="`#clip-target-${cid}`"
-        text
-        round
-        v-if="clipboard"
-      >
-        <var-icon name="content-copy" size="18" />
-      </var-button>
+      <var-tooltip placement="top" content="Copy Example Code">
+        <var-button
+          :id="`clip-trigger-${cid}`"
+          :data-clipboard-target="`#clip-target-${cid}`"
+          text
+          round
+          v-if="clipboard"
+        >
+          <var-icon name="content-copy" size="18" />
+        </var-button>
+      </var-tooltip>
 
-      <var-button text round @click="toPlayground" v-if="playground">
-        <var-icon name="code-json" size="18" />
-      </var-button>
+      <var-tooltip placement="top" content="Edit In Playground">
+        <var-button text round @click="toPlayground" v-if="playground">
+          <var-icon name="code-json" size="18" />
+        </var-button>
+      </var-tooltip>
     </div>
     <div
       :id="`clip-target-${cid}`"
