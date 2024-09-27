@@ -1,3 +1,21 @@
+## [3.5.3](https://github.com/varletjs/varlet/compare/v3.5.2...v3.5.3) (2024-09-27)
+
+
+### Bug Fixes
+
+* **date-picker:** rerender date panel when max or min changes ([#1782](https://github.com/varletjs/varlet/issues/1782)) ([2df3ee2](https://github.com/varletjs/varlet/commit/2df3ee22d422e2220d47c833fce5fa264cb88968))
+* **date-picker:** reset datePicker when modelValue is undefined or an empty string ([#1779](https://github.com/varletjs/varlet/issues/1779)) ([8ee1048](https://github.com/varletjs/varlet/commit/8ee1048b99150f771f19b3e3b2db1d2ad74ee97b))
+* **picker:** fix page reflow caused by text size change ([f786eaf](https://github.com/varletjs/varlet/commit/f786eaf636c6fb9a583a1cb45876399db38f9adc))
+* **time-picker:** reset time when modelValue is undefined or an empty string ([#1778](https://github.com/varletjs/varlet/issues/1778)) ([02058e5](https://github.com/varletjs/varlet/commit/02058e5e11f29b53703dc97af07ad12c25bd5c1d))
+
+
+### Features
+
+* **cli:** support seo options ([36c774f](https://github.com/varletjs/varlet/commit/36c774fe0de6f8189c53668a6d43ba0b24cb958e))
+* support more css vars for date-picker and time-picker ([d1bc44b](https://github.com/varletjs/varlet/commit/d1bc44bc56c2e3a5b85992046fe8a6bdeb8a9b69))
+
+
+
 ## [3.5.2](https://github.com/varletjs/varlet/compare/v3.5.1...v3.5.2) (2024-09-21)
 
 
