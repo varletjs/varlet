@@ -302,6 +302,8 @@ export default defineComponent({
       }
     )
 
+    watch(() => [props.componentProps.max, props.componentProps.min], initHeader)
+
     return {
       n,
       nDate,

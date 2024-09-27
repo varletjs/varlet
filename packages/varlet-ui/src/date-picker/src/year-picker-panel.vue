@@ -236,16 +236,20 @@ export default defineComponent({
     )
 
     watch(
-      yearList,
-      (list) => {
-        const {
-          componentProps: { min, max },
-        } = props
-        if (max)
+      () => [yearList.value, props.componentProps.max, props.componentProps.min],
+      (newVal) => {
+        const [list, max, min] = newVal as [number[], string, string]
+        if (max) {
           panelBtnDisabled.right = !dayjs(`${toNumber(list[list.length - 1])}`).isSameOrBefore(dayjs(max), 'year')
-        if (min) panelBtnDisabled.left = !dayjs(`${toNumber(list[0])}`).isSameOrAfter(dayjs(min), 'year')
+        }
 
-        if (toNumber(list[0] <= 0)) panelBtnDisabled.left = false
+        if (min) {
+          panelBtnDisabled.left = !dayjs(`${toNumber(list[0])}`).isSameOrAfter(dayjs(min), 'year')
+        }
+
+        if (toNumber(list[0] <= 0)) {
+          panelBtnDisabled.left = false
+        }
       },
       {
         immediate: true,

@@ -216,14 +216,14 @@ export default defineComponent({
     }
 
     watch(
-      () => props.preview.previewYear,
-      (year) => {
-        const {
-          componentProps: { min, max },
-        } = props
-
-        if (max) panelBtnDisabled.right = !dayjs(`${toNumber(year) + 1}`).isSameOrBefore(dayjs(max), 'year')
-        if (min) panelBtnDisabled.left = !dayjs(`${toNumber(year) - 1}`).isSameOrAfter(dayjs(min), 'year')
+      () => [props.preview.previewYear, props.componentProps.max, props.componentProps.min],
+      ([year, max, min]) => {
+        if (max) {
+          panelBtnDisabled.right = !dayjs(`${toNumber(year) + 1}`).isSameOrBefore(dayjs(max), 'year')
+        }
+        if (min) {
+          panelBtnDisabled.left = !dayjs(`${toNumber(year) - 1}`).isSameOrAfter(dayjs(min), 'year')
+        }
       },
       { immediate: true }
     )
