@@ -182,6 +182,13 @@ varlet-cli build:icons
 varlet-cli test
 ```
 
+#### 执行单个组件的单元测试
+
+```shell
+# playground-ignore
+varlet-cli test -c <componentName>
+```
+
 #### 以 watch 模式执行单元测试
 
 ```shell

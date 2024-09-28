@@ -183,6 +183,13 @@ varlet-cli build:icons
 varlet-cli test
 ```
 
+#### Execute a unit test
+
+```shell
+# playground-ignore
+varlet-cli test -c <componentName>
+```
+
 #### Execute unit tests in watch mode
 
 ```shell
