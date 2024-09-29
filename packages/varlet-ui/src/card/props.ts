@@ -14,6 +14,7 @@ export const props = {
   imageHeight: [String, Number],
   imageWidth: [String, Number],
   outline: Boolean,
+  filled: Boolean,
   layout: {
     type: String as PropType<CardLayout>,
     default: 'column',

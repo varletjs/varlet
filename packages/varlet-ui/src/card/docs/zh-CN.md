@@ -148,6 +148,21 @@ const floating = ref(false)
 </template>
 ```
 
+
+### 填充
+
+```html
+<template>
+  <var-card
+    filled
+    :elevation="0"
+    title="本草纲目"
+    subtitle="我表情悠哉 跳个大概"
+    description="如果华佗再世,崇洋都被医治,外邦来学汉字,激发我民族意识。马钱子、决明子、苍耳子，还有莲子；黄药子、苦豆子、川楝子，我要面子。用我的方式，改写一部历史。没什么别的事，跟着我念几个字。山药当归枸杞 GO，山药 当归 枸杞 GO，看我抓一把中药，服下一帖骄傲~"
+  />
+</template>
+```
+
 ## API
 
 ### 属性
@@ -162,6 +177,7 @@ const floating = ref(false)
 | `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
 | `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
 | `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
+| `filled`            | 是否使用填充                                                | _boolean_ | `false`  |
 | `alt`               | 替代文本，和 img 标签原生属性一致                                                   | _string_ | `-`      |
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
@@ -195,6 +211,7 @@ const floating = ref(false)
 | 变量名                                 | 默认值                  |
 |-------------------------------------|----------------------|
 | `--card-background`                 | `var(--color-surface-container-highest)`               |
+| `--card-filled-color`               | `var(--color-filled)` |
 | `--card-padding`                    | `0px 0 15px 0`       |
 | `--card-border-radius`              | `4px`                |
 | `--card-outline-color`              | `var(--color-outline)` |

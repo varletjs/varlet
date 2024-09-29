@@ -148,6 +148,20 @@ const floating = ref(false)
 </template>
 ```
 
+### Filled
+
+```html
+<template>
+  <var-card
+    filled
+    :elevation="0"
+    title="Dangerous"
+    subtitle="The girl was dangerous"
+    description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
+  />
+</template>
+```
+
 ## API
 
 ### Props
@@ -161,6 +175,7 @@ const floating = ref(false)
 | `src`               | The src of Image                                                | _string_ | `-`      |
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
+| `filled`            | Whether to be filled card                                       | _boolean_ | `false`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
 | `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
@@ -195,6 +210,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 | Variable                            | Default               |
 |-------------------------------------|-----------------------|
 | `--card-background`                 | `var(--color-surface-container-highest)`                |
+| `--card-filled-color`               | `var(--color-filled)` |
 | `--card-padding`                    | `0px 0 15px 0`        |
 | `--card-border-radius`              | `4px`                 |
 | `--card-outline-color`              | `var(--color-outline)` |
