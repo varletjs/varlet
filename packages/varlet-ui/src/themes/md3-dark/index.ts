@@ -130,8 +130,6 @@ export default {
   '--color-surface-container-highest': 'hsla(var(--hsl-surface-container-highest), 1)',
   '--hsl-inverse-surface': '280, 17%, 90%',
   '--color-inverse-surface': 'hsla(var(--hsl-inverse-surface), 1)',
-  '--hsl-filled': '257, 6%, 22%',
-  '--color-filled': 'hsla(var(--hsl-filled), 1)',
   '--hsl-outline': '264, 7%, 29%',
   '--color-outline': 'hsla(var(--hsl-outline), 1)',
   '--hsl-on-surface-variant': '270, 11%, 79%',
