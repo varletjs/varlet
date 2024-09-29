@@ -7,7 +7,7 @@
         [isRow, n('--layout-row')],
         [outline, n('--outline')],
         [filled, n('--filled')],
-        !filled ? formatElevation(elevation, 1) : undefined
+        [!filled, formatElevation(elevation, 1)]
       )
     "
     :style="{
