@@ -1,0 +1,80 @@
+:root {
+  --alert-padding: 16px;
+  --alert-border-radius: 4px;
+  --alert-prepend-icon-margin-right: 12px;
+  --alert-close-icon-margin-left: 12px;
+  --alert-default-text-color: #555;
+  --alert-primary-text-color: var(--color-on-primary-container);
+  --alert-danger-text-color: var(--color-on-danger-container);
+  --alert-success-text-color: var(--color-on-success-container);
+  --alert-warning-text-color: var(--color-on-warning-container);
+  --alert-info-text-color: var(--color-on-info-container);
+  --alert-default-color: #e0e0e0;
+  --alert-primary-color: var(--color-primary-container);
+  --alert-danger-color: var(--color-danger-container);
+  --alert-success-color: var(--color-success-container);
+  --alert-warning-color: var(--color-warning-container);
+  --alert-info-color: var(--color-info-container);
+}
+
+.var-alert {
+  padding: var(--alert-padding);
+  border-radius: var(--alert-border-radius);
+  display: flex;
+  background-color: transparent;
+
+  &--outlined {
+    border: thin solid currentColor;
+  }
+
+  &--prepend {
+    margin-right: var(--alert-prepend-icon-margin-right);
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    word-break: normal;
+    word-wrap: break-word;
+  }
+
+  &__content {
+    flex: 1;
+    font-size: 14px;
+  }
+
+  &--close {
+    cursor: pointer;
+    margin-left: var(--alert-close-icon-margin-left);
+  }
+
+  &--default {
+    color: var(--alert-default-text-color);
+    background: var(--alert-default-color);
+  }
+
+  &--primary {
+    color: var(--alert-primary-text-color);
+    background-color: var(--alert-primary-color);
+  }
+
+  &--info {
+    color: var(--alert-info-text-color);
+    background-color: var(--alert-info-color);
+  }
+
+  &--success {
+    color: var(--alert-success-text-color);
+    background-color: var(--alert-success-color);
+  }
+
+  &--warning {
+    color: var(--alert-warning-text-color);
+    background-color: var(--alert-warning-color);
+  }
+
+  &--danger {
+    color: var(--alert-danger-text-color);
+    background-color: var(--alert-danger-color);
+  }
+}
