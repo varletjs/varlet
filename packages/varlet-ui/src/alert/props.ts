@@ -9,6 +9,7 @@ export const props = {
     type: String as PropType<AlertType>,
     default: 'default',
   },
+  color: String,
   title: String,
   text: String,
   closeable: Boolean,

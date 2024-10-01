@@ -45,4 +45,22 @@ describe('test alert component props', () => {
 
     wrapper.unmount()
   })
+
+  test('test alert text', async () => {
+    const wrapper = mount(VarAlert, {
+      props: {
+        color: 'red',
+      },
+    })
+
+    expect(wrapper.find('.var-alert').attributes('style')).toContain('background-color: red')
+
+    await wrapper.setProps({
+      color: 'green',
+    })
+
+    expect(wrapper.find('.var-alert').attributes('style')).toContain('background-color: green')
+
+    wrapper.unmount()
+  })
 })
