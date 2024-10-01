@@ -2,7 +2,7 @@ export default {
   basicUsage: 'Basic Usage',
   title: 'Dangerous',
   showSubtitle: 'Show Subtitle',
-  outline: 'Outline',
+  outline: 'Outlined',
   filled: 'Filled',
   subtitle: 'The girl was dangerous',
   horizontal: 'Horizontal',

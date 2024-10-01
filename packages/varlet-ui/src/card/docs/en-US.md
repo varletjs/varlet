@@ -134,13 +134,12 @@ const floating = ref(false)
 </style>
 ```
 
-### Outline
+### Outlined
 
 ```html
 <template>
   <var-card
-    outline
-    :elevation="0"
+    variant="outlined"
     title="Dangerous"
     subtitle="The girl was dangerous"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."
@@ -153,7 +152,7 @@ const floating = ref(false)
 ```html
 <template>
   <var-card
-    filled
+    variant="filled"
     title="Dangerous"
     subtitle="The girl was dangerous"
     description="The way she came into the place I knew right then and there.There was something different about this girl.The way she moved her hair her face her lines.Divinity in motion as she stalked the room.I could feel the aura of her presence.Every head turned feeling passion and lust.The girl was persuasive the girl I could not trust.The girl was bad.The girl was dangerous."

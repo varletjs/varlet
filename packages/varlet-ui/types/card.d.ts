@@ -7,7 +7,10 @@ export type CardFit = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
 
 export type CardLayout = 'row' | 'column'
 
+export type CardVariant = 'standard' | 'outlined' | 'filled'
+
 export interface CardProps extends BasicAttributes {
+  variant?: CardVariant
   src?: string
   fit?: CardFit
   imageHeight?: string | number
@@ -19,11 +22,16 @@ export interface CardProps extends BasicAttributes {
   elevation?: boolean | number | string
   filled?: boolean
   ripple?: boolean
-  onClick?: ListenerProp<(e: Event) => void>
   layout?: CardLayout
   floating?: boolean
   floatingDuration?: number
+  onClick?: ListenerProp<(e: Event) => void>
   'onUpdate:floating'?: ListenerProp<(value: boolean) => void>
+
+  /**
+   * @deprecated
+   */
+  outline?: boolean
 }
 
 export interface CardTitleData {
