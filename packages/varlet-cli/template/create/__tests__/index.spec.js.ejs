@@ -1,4 +1,5 @@
 import <%- bigCamelizeName %> from '..'
+import <%- bigCamelizeNamespace + bigCamelizeName %> from '../<%- bigCamelizeName %>'
 import { createApp } from 'vue'
 import { mount } from '@vue/test-utils'
 import { expect, test } from 'vitest'

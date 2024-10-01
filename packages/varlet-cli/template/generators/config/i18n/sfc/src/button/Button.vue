@@ -1,5 +1,5 @@
 <template>
-  <button class="va-button" :style="{ background: color }" @click="handleClick">
+  <button :class="n()" :style="{ background: color }" @click="handleClick">
     {{ t('button') }}
     <slot />
   </button>
@@ -7,12 +7,15 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
+import { createNamespace } from '../utils/components'
 
 // i18n for component's internal
 import { t } from '../locale'
 
+const { name, n, classes } = createNamespace('button')
+
 export default defineComponent({
-  name: 'VaButton',
+  name,
   props: {
     color: {
       type: String,
@@ -28,6 +31,7 @@ export default defineComponent({
 
     return {
       t,
+      n,
       handleClick,
     }
   },
