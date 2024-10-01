@@ -1,7 +1,7 @@
 export default {
   '--card-border-radius': '12px',
   '--card-background': 'var(--color-surface-container-low)',
-  '--card-filled-color': 'var(--color-surface-container-highest)',
+  '--card-filled-background': 'var(--color-surface-container-highest)',
   '--card-image-height': '188px',
   '--card-title-color': '#1D1B20',
   '--card-title-font-size': '16px',

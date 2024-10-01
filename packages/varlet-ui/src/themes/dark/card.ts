@@ -4,7 +4,7 @@ export default {
   '--card-description-color': '#aaaaaa',
   '--card-padding': '0 0 15px 0',
   '--card-background': 'var(--color-surface-container-highest)',
-  '--card-filled-color': 'var(--color-surface-container-highest)',
+  '--card-filled-background': 'var(--color-surface-container-highest)',
   '--card-outline-color': 'var(--color-outline)',
   '--card-border-radius': '4px',
   '--card-image-width': '100%',
