@@ -19,6 +19,8 @@ packages/varlet-ui/types/styleVars.d.ts
 packages/varlet-ui-playground/dist/**
 packages/varlet-ui-playground/public/**
 packages/varlet-ui-playground/*.d.ts
+packages/varlet-preset-tailwindcss/lib/**
+packages/varlet-preset-unocss/lib/**
 packages/varlet-shared/lib/**
 packages/varlet-import-resolver/lib/**
 packages/varlet-use/lib/**
