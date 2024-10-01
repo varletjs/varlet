@@ -58,7 +58,7 @@ function useLocale<T = Message>() {
     add,
     use,
     merge,
-    t
+    t,
   }
 }
 
