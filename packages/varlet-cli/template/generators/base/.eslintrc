@@ -12,7 +12,5 @@
     "types/index.d.ts",
     ".varlet/**"
   ],
-  "extends": [
-    "@varlet"
-  ]
+  "extends": ["@varlet"]
 }

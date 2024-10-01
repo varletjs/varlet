@@ -22,7 +22,7 @@ export default defineComponent({
       const { color } = props
 
       return (
-        <button class={ n()} style={{ background: color }} onClick={handleClick}>
+        <button class={n()} style={{ background: color }} onClick={handleClick}>
           {slots.default?.()}
         </button>
       )

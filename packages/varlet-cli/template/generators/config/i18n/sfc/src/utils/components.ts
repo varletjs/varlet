@@ -18,4 +18,3 @@ export function withInstall<T = Component>(component: Component, target?: T): Co
 }
 
 export const createNamespace = createNamespaceFn('va')
-

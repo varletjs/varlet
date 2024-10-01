@@ -8,7 +8,7 @@ export default defineConfig({
       darkMode: null,
       i18n: null,
       playground: null,
-      versions: null
+      versions: null,
     },
     menu: [
       {
@@ -44,5 +44,5 @@ export default defineConfig({
       i18n: null,
       darkMode: null,
     },
-  }
+  },
 })

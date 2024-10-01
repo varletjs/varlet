@@ -1,5 +1,5 @@
 import type { Component, Plugin, App } from 'vue'
-import { createNamespaceFn } from '@varlet/shared';
+import { createNamespaceFn } from '@varlet/shared'
 
 export type ComponentWithInstall<T> = T & Plugin
 

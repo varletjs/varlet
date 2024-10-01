@@ -24,7 +24,7 @@ export default defineComponent({
     const handleClick = (e: Event) => {
       props.onClick?.(e)
     }
-    
+
     return {
       n,
       handleClick,
