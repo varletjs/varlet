@@ -1,26 +1,28 @@
 <template>
-  <div
-    :class="classes(n(), n(`--${type}`), [outline, n('--outline')], formatElevation(elevation, 2), n('$--box'))"
-    :style="{
-      'background-color': color,
-    }"
-    role="alert"
-  >
-    <div :class="n('--prepend')" v-if="$slots['prepend']">
-      <slot name="prepend" />
-    </div>
-    <div :class="n('content')">
-      <div :class="n('title')">
-        <slot name="title">{{ title }}</slot>
+  <transition :name="`${n()}-fade`">
+    <div
+      :class="classes(n(), n(`--${type}`), [outline, n('--outline')], formatElevation(elevation, 2), n('$--box'))"
+      :style="{
+        'background-color': color,
+      }"
+      role="alert"
+    >
+      <div :class="n('--prepend')" v-if="$slots['prepend']">
+        <slot name="prepend" />
       </div>
-      <slot>{{ text }}</slot>
+      <div :class="n('content')">
+        <div :class="n('title')">
+          <slot name="title">{{ title }}</slot>
+        </div>
+        <slot>{{ text }}</slot>
+      </div>
+      <div v-if="closeable" :class="n('--close')" @click="handleClose">
+        <slot name="close">
+          <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
+        </slot>
+      </div>
     </div>
-    <div v-if="closeable" :class="n('--close')" @click="handleClose">
-      <slot name="close">
-        <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
-      </slot>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script lang="ts">
