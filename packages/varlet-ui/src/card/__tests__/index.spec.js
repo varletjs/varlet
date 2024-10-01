@@ -113,6 +113,23 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
+  test('test card filled', async () => {
+    const wrapper = mount(VarCard, {
+      props: {
+        filled: true,
+      },
+    })
+
+    expect(wrapper.find('.var-card--filled').exists()).toBe(true)
+
+    await wrapper.setProps({
+      filled: false,
+    })
+    expect(wrapper.find('.var-card--filled').exists()).toBe(false)
+
+    wrapper.unmount()
+  })
+
   test('test card src', async () => {
     const wrapper = mount(VarCard, {
       props: {

@@ -60,6 +60,9 @@ onThemeChange()
 
   <app-type>{{ t('outline') }}</app-type>
   <var-card :title="t('title')" :subtitle="t('subtitle')" outline elevation="0" :description="t('description')" />
+
+  <app-type>{{ t('filled') }}</app-type>
+  <var-card :title="t('title')" :subtitle="t('subtitle')" filled :description="t('description')" />
 </template>
 
 <style scoped lang="less">

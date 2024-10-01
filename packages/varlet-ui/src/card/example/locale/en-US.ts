@@ -3,6 +3,7 @@ export default {
   title: 'Dangerous',
   showSubtitle: 'Show Subtitle',
   outline: 'Outline',
+  filled: 'Filled',
   subtitle: 'The girl was dangerous',
   horizontal: 'Horizontal',
   description:
