@@ -96,34 +96,34 @@ describe('test card component props', () => {
     wrapper.unmount()
   })
 
-  test('test card outline', async () => {
+  test('test card outlined variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
-        outline: true,
+        variant: 'outlined',
       },
     })
 
     expect(wrapper.find('.var-card--outline').exists()).toBe(true)
 
     await wrapper.setProps({
-      outline: false,
+      variant: 'standard',
     })
     expect(wrapper.find('.var-card--outline').exists()).toBe(false)
 
     wrapper.unmount()
   })
 
-  test('test card filled', async () => {
+  test('test card filled variant', async () => {
     const wrapper = mount(VarCard, {
       props: {
-        filled: true,
+        variant: 'filled',
       },
     })
 
     expect(wrapper.find('.var-card--filled').exists()).toBe(true)
 
     await wrapper.setProps({
-      filled: false,
+      variant: 'standard',
     })
     expect(wrapper.find('.var-card--filled').exists()).toBe(false)
 
