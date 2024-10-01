@@ -167,6 +167,7 @@ const floating = ref(false)
 
 | 参数                  | 说明                                                     | 类型       | 默认值      |
 |---------------------|--------------------------------------------------------|----------|----------|
+| `variant`  ***3.5.4***           | 卡片外观，可选值 `standard` `outlined` `filled`            | _string_ | `standard`      |
 | `title`             | 卡片标题                                                   | _string_ | `-`      |
 | `subtitle`          | 卡片副标题                                                  | _string_ | `-`      |
 | `description`       | 卡片描述                                                   | _string_ | `-`      |
@@ -174,8 +175,6 @@ const floating = ref(false)
 | `src`               | 图片地址                                                   | _string_ | `-`      |
 | `layout`            | 排列方式，可选值为 `row` `column`                               | _string_ | `column` |
 | `fit`               | 填充模式，可选值为 `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
-| `outline`           | 是否使用外边框                                                | _boolean_ | `false`  |
-| `filled`            | 是否使用填充                                                | _boolean_ | `false`  |
 | `alt`               | 替代文本，和 img 标签原生属性一致                                                   | _string_ | `-`      |
 | `image-height`      | 图片高度                                                   | _string \| number_  | `-`     |
 | `image-width`       | 图片宽度                                                   | _string \| number_  | `-`     |
