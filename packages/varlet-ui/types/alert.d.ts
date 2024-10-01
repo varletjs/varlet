@@ -1,13 +1,34 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
+import { VNode } from 'vue'
+import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from './varComponent'
 
 export declare const alertProps: Record<keyof AlertProps, any>
 
-export interface AlertProps extends BasicAttributes {}
+export type AlertType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+
+export interface AlertProps extends BasicAttributes {
+  type?: AlertType
+  color?: string
+  title?: string
+  text?: string
+  closeable?: boolean
+  elevation?: boolean | string | number
+  outline?: boolean
+  iconName?: string
+  namespace?: string
+  onClose?: ListenerProp<(e: Event) => void>
+}
 
 export class Alert extends VarComponent {
   static setPropsDefaults: SetPropsDefaults<AlertProps>
 
   $props: AlertProps
+
+  $slots: {
+    default(): VNode[]
+    title(): VNode[]
+    prepend(): VNode[]
+    close(): VNode[]
+  }
 }
 
 export class _AlertComponent extends Alert {}
