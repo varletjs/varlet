@@ -16,7 +16,7 @@ export const props = {
     type: [Boolean, String, Number],
     default: false,
   },
-  outlined: Boolean,
+  outline: Boolean,
   iconName: pickProps(iconProps, 'name'),
   namespace: pickProps(iconProps, 'namespace'),
   onClose: defineListenerProp<(e: Event) => void>(),

@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classes(n(), n(`--${type}`), [outlined, n('--outlined')], formatElevation(elevation, 2), n('$--box'))"
+    :class="classes(n(), n(`--${type}`), [outline, n('--outline')], formatElevation(elevation, 2), n('$--box'))"
     role="alert"
   >
     <div :class="n('--prepend')" v-if="$slots['prepend-icon']">
