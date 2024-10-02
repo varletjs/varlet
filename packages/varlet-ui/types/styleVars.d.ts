@@ -130,6 +130,7 @@ interface BaseStyleVars {
   '--button-normal-font-size'?: string
   '--button-large-font-size'?: string
   '--card-background'?: string
+  '--card-filled-background'?: string
   '--card-padding'?: string
   '--card-border-radius'?: string
   '--card-outline-color'?: string
