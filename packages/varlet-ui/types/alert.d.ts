@@ -26,8 +26,8 @@ export class Alert extends VarComponent {
   $slots: {
     default(): VNode[]
     title(): VNode[]
-    prepend(): VNode[]
-    close(): VNode[]
+    icon(): VNode[]
+    'close-icon'(): VNode[]
   }
 }
 

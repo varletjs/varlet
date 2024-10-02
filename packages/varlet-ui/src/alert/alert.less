@@ -15,6 +15,9 @@
   --alert-success-color: var(--color-success-container);
   --alert-warning-color: var(--color-warning-container);
   --alert-info-color: var(--color-info-container);
+  --alert-content-font-size: 14px;
+  --alert-title-font-size: 16px;
+  --alert-title-font-weight: 500;
 }
 
 .var-alert {
@@ -27,23 +30,23 @@
     border: thin solid currentColor;
   }
 
-  &--prepend {
+  &__icon {
     margin-right: var(--alert-prepend-icon-margin-right);
   }
 
   &__title {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: var(--alert-title-font-size);
+    font-weight: var(--alert-title-font-weight);
     word-break: normal;
     word-wrap: break-word;
   }
 
   &__content {
     flex: 1;
-    font-size: 14px;
+    font-size: var(--alert-content-font-size);
   }
 
-  &--close {
+  &__close-icon {
     cursor: pointer;
     margin-left: var(--alert-close-icon-margin-left);
   }

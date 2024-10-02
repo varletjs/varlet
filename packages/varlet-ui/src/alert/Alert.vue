@@ -7,8 +7,8 @@
       }"
       role="alert"
     >
-      <div :class="n('--prepend')" v-if="$slots['prepend']">
-        <slot name="prepend" />
+      <div :class="n('icon')" v-if="$slots['icon']">
+        <slot name="icon" />
       </div>
       <div :class="n('content')">
         <div :class="n('title')">
@@ -16,8 +16,8 @@
         </div>
         <slot>{{ text }}</slot>
       </div>
-      <div v-if="closeable" :class="n('--close')" @click="handleClose">
-        <slot name="close">
+      <div v-if="closeable" :class="n('close-icon')" @click="handleClose">
+        <slot name="close-icon">
           <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
         </slot>
       </div>

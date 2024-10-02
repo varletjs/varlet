@@ -73,7 +73,7 @@ describe('test alert component props', () => {
       closeable: true,
     })
 
-    expect(wrapper.find('.var-alert--close').exists()).toBe(true)
+    expect(wrapper.find('.var-alert__close-icon').exists()).toBe(true)
 
     wrapper.unmount()
   })
@@ -123,11 +123,11 @@ describe('test alert component events', () => {
       },
     })
 
-    const closeElement = wrapper.find('.var-alert--close')
+    const closeIcon = wrapper.find('.var-alert__close-icon')
 
-    expect(closeElement.exists()).toBe(true)
+    expect(closeIcon.exists()).toBe(true)
 
-    await closeElement.trigger('click')
+    await closeIcon.trigger('click')
 
     expect(onClose).toHaveBeenCalledTimes(1)
 
@@ -136,14 +136,14 @@ describe('test alert component events', () => {
 })
 
 describe('test alert component slots', () => {
-  test('test alert prepend slot', () => {
+  test('test alert icon slot', () => {
     const wrapper = mount(VarAlert, {
       slots: {
-        prepend: () => 'Pride And Prejudice',
+        icon: () => 'Pride And Prejudice',
       },
     })
 
-    expect(wrapper.find('.var-alert--prepend').text()).toBe('Pride And Prejudice')
+    expect(wrapper.find('.var-alert__icon').text()).toBe('Pride And Prejudice')
 
     wrapper.unmount()
   })
@@ -172,17 +172,17 @@ describe('test alert component slots', () => {
     wrapper.unmount()
   })
 
-  test('test alert close slot', () => {
+  test('test alert close icon slot', () => {
     const wrapper = mount(VarAlert, {
       props: {
         closeable: true,
       },
       slots: {
-        close: () => 'Pride And Prejudice',
+        'close-icon': () => 'Pride And Prejudice',
       },
     })
 
-    expect(wrapper.find('.var-alert--close').text()).toBe('Pride And Prejudice')
+    expect(wrapper.find('.var-alert__close-icon').text()).toBe('Pride And Prejudice')
 
     wrapper.unmount()
   })
