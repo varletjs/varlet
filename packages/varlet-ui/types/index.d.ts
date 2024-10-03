@@ -21,6 +21,7 @@ export * from './cell'
 export * from './checkbox'
 export * from './checkboxGroup'
 export * from './chip'
+export * from './code'
 export * from './col'
 export * from './collapse'
 export * from './collapseItem'
@@ -115,6 +116,7 @@ declare module 'vue' {
     VarCheckbox: typeof import('@varlet/ui')['_CheckboxComponent']
     VarCheckboxGroup: typeof import('@varlet/ui')['_CheckboxGroupComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
+    VarCode: typeof import('@varlet/ui')['_CodeComponent']
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarCollapse: typeof import('@varlet/ui')['_CollapseComponent']
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']

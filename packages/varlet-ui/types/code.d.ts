@@ -19,4 +19,4 @@ export class Code extends VarComponent {
   $props: CodeProps
 }
 
-export class _WatermarkComponent extends Code {}
+export class _CodeComponent extends Code {}

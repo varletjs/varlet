@@ -224,6 +224,9 @@ interface BaseStyleVars {
   '--chip-small-font-size'?: string
   '--chip-normal-font-size'?: string
   '--chip-large-font-size'?: string
+  '--code-margin'?: string
+  '--code-border-radius'?: string
+  '--code-content-padding'?: string
   '--collapse-background'?: string
   '--collapse-text-color'?: string
   '--collapse-header-font-size'?: string
@@ -847,9 +850,6 @@ interface BaseStyleVars {
   '--uploader-disabled-text-color'?: string
   '--uploader-loading-background'?: string
   '--watermark-content-color'?: string
-  '--code-margin'?: string
-  '--code-border-radius'?: string;
-  '--code-content-padding'?: string;
   [key: PropertyKey]: string
 }
 
