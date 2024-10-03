@@ -62,6 +62,7 @@ import overlay from './overlay'
 import ripple from './ripple'
 import space from './space'
 import swipe from './swipe'
+import code from './code'
 
 export default {
   '--font-size-xs': '10px',
@@ -204,4 +205,5 @@ export default {
   ...ripple,
   ...space,
   ...swipe,
+  ...code,
 } as StyleVars

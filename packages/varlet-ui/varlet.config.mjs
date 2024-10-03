@@ -393,6 +393,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Code 代码块',
+          'en-US': 'Code',
+        },
+        doc: 'code',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': '导航组件',
           'en-US': 'Navigation Components',
         },

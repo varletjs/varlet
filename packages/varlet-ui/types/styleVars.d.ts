@@ -847,6 +847,9 @@ interface BaseStyleVars {
   '--uploader-disabled-text-color'?: string
   '--uploader-loading-background'?: string
   '--watermark-content-color'?: string
+  '--code-margin'?: string
+  '--code-border-radius'?: string;
+  '--code-content-padding'?: string;
   [key: PropertyKey]: string
 }
 
