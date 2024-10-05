@@ -35,11 +35,9 @@ describe('test code component props', () => {
       slots: {
         default: () =>
           h(VarCode, {
-            props: {
-              code,
-              language: 'javascript',
-              theme: 'monokai',
-            },
+            code,
+            language: 'javascript',
+            theme: 'monokai',
           }),
       },
     })
@@ -59,10 +57,8 @@ describe('test code component props', () => {
       slots: {
         default: () =>
           h(VarCode, {
-            props: {
-              content: code,
-              lang: 'javascript',
-            },
+            content: code,
+            lang: 'javascript',
           }),
       },
     })
@@ -82,11 +78,9 @@ describe('test code component props', () => {
       slots: {
         default: () =>
           h(VarCode, {
-            props: {
-              code,
-              language: 'javascript',
-              theme: 'material-theme',
-            },
+            code,
+            language: 'javascript',
+            theme: 'material-theme',
           }),
       },
     })
