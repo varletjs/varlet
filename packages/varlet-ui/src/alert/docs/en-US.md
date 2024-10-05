@@ -58,7 +58,7 @@ Here are the CSS variables used by the component. Styles can be customized using
 |-----------------------------| --- |
 | `--alert-padding` | `16px` |
 | `--alert-border-radius` | `4px` |
-| `--alert-prepend-icon-margin-right` | `12px` |
+| `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
 | `--alert-default-text-color` | `#555` |
 | `--alert-primary-text-color` | `var(--color-on-primary-container)` |

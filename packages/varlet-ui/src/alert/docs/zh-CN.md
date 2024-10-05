@@ -58,7 +58,7 @@
 |-----------------------------  | ---   |
 | `--alert-padding` | `16px` |
 | `--alert-border-radius` | `4px` |
-| `--alert-prepend-icon-margin-right` | `12px` |
+| `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
 | `--alert-default-text-color` | `#555` |
 | `--alert-primary-text-color` | `var(--color-on-primary-container)` |

@@ -24,7 +24,7 @@ interface BaseStyleVars {
   '--action-sheet-icon-size'?: string
   '--alert-padding'?: string
   '--alert-border-radius'?: string
-  '--alert-prepend-icon-margin-right'?: string
+  '--alert-icon-margin-right'?: string
   '--alert-close-icon-margin-left'?: string
   '--alert-default-text-color'?: string
   '--alert-primary-text-color'?: string
