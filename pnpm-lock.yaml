@@ -315,9 +315,6 @@ importers:
       decimal.js:
         specifier: ^10.2.1
         version: 10.4.0
-      shiki:
-        specifier: ^1.21.0
-        version: 1.21.0
     devDependencies:
       '@types/node':
         specifier: ^18.7.18
@@ -343,12 +340,18 @@ importers:
       clipboard:
         specifier: ^2.0.6
         version: 2.0.11
+      highlight.js:
+        specifier: ^10.7.2
+        version: 10.7.3
       jsdom:
         specifier: 24.1.1
         version: 24.1.1
       live-server:
         specifier: ^1.2.1
         version: 1.2.2
+      shiki:
+        specifier: ^1.21.0
+        version: 1.21.0
       typescript:
         specifier: ^5.1.5
         version: 5.1.5

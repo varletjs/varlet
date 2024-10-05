@@ -1,21 +1,12 @@
-import type { BundledLanguage, BundledTheme } from 'shiki'
-import { PropType } from 'vue'
-
-export type CodeLanguage = BundledLanguage
-
-export type CodeTheme = BundledTheme
-
 export const props = {
-  content: {
+  code: {
     type: String,
     default: '',
   },
-  lang: {
-    type: String as PropType<CodeLanguage>,
-    default: 'javascript',
+  language: {
+    type: String,
   },
   theme: {
-    type: String as PropType<CodeTheme>,
-    default: 'material-theme',
+    type: String,
   },
 }

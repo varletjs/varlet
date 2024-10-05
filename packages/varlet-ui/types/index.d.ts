@@ -38,6 +38,7 @@ export * from './fab'
 export * from './floatingPanel'
 export * from './form'
 export * from './formDetails'
+export * from './highlighterProvider'
 export * from './hover'
 export * from './hoverOverlay'
 export * from './icon'
@@ -133,6 +134,7 @@ declare module 'vue' {
     VarFloatingPanel: typeof import('@varlet/ui')['_FloatingPanelComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
+    VarHighlighterProvider: typeof import('@varlet/ui')['_HighlighterProviderComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']

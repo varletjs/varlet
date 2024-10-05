@@ -1,16 +1,11 @@
-import { BundledLanguage, BundledTheme } from 'shiki'
 import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 
 export declare const codeProps: Record<keyof CodeProps, any>
 
-export type CodeLanguage = BundledLanguage
-
-export type CodeTheme = BundledTheme
-
 export interface CodeProps extends BasicAttributes {
-  content?: string
-  lang?: CodeLanguage
-  theme?: CodeTheme
+  code?: string
+  language?: string
+  theme?: string
 }
 
 export class Code extends VarComponent {

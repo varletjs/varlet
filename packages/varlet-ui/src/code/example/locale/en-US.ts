@@ -1,5 +1,4 @@
 export default {
-  basicUsage: 'Basic Usage',
-  theme: 'theme',
-  language: 'language',
+  language: 'Toggle Language',
+  theme: 'Toggle Theme',
 }

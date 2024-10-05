@@ -1,9 +1,11 @@
 import Code from '..'
 import VarCode from '../Code'
+import VarHighlighterProvider from '../../highlighter-provider'
 import { mount } from '@vue/test-utils'
-import { createApp } from 'vue'
+import { createApp, h } from 'vue'
 import { delay } from '../../utils/test'
 import { expect, describe, test } from 'vitest'
+import { codeToHtml } from 'shiki'
 
 const code = `function twoSum(nums, target) {
   const map = new Map();
@@ -24,9 +26,21 @@ test('test code use', () => {
 
 describe('test code component props', () => {
   test('test code content', async () => {
-    const wrapper = mount(VarCode, {
+    const wrapper = mount(VarHighlighterProvider, {
       props: {
-        content: code,
+        highlighter: {
+          codeToHtml,
+        },
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            props: {
+              code,
+              language: 'javascript',
+              theme: 'monokai',
+            },
+          }),
       },
     })
 
@@ -36,10 +50,20 @@ describe('test code component props', () => {
   })
 
   test('test code lang', async () => {
-    const wrapper = mount(VarCode, {
+    const wrapper = mount(VarHighlighterProvider, {
       props: {
-        content: code,
-        lang: 'javascript',
+        highlighter: {
+          codeToHtml,
+        },
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            props: {
+              content: code,
+              lang: 'javascript',
+            },
+          }),
       },
     })
 
@@ -49,10 +73,21 @@ describe('test code component props', () => {
   })
 
   test('test code theme', async () => {
-    const wrapper = mount(VarCode, {
+    const wrapper = mount(VarHighlighterProvider, {
       props: {
-        content: code,
-        theme: 'material-theme',
+        highlighter: {
+          codeToHtml,
+        },
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            props: {
+              code,
+              language: 'javascript',
+              theme: 'material-theme',
+            },
+          }),
       },
     })
 
