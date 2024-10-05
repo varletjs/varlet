@@ -1,6 +1,6 @@
 <template>
-  <div :class="classes(n())">
-    <div :class="classes(n('content'))" v-html="htmlCode"></div>
+  <div :class="n()">
+    <div :class="n('content')" v-html="highlightedCode"></div>
   </div>
 </template>
 
@@ -10,26 +10,25 @@ import { codeToHtml } from 'shiki'
 import { createNamespace } from '../utils/components'
 import { props } from './props'
 
-const { name, n, classes } = createNamespace('code')
+const { name, n } = createNamespace('code')
 
 export default defineComponent({
   name,
   props,
   setup(props) {
-    const htmlCode = ref<string | undefined>(undefined)
+    const highlightedCode = ref<string | undefined>(undefined)
 
     watch(
       () => [props.content, props.lang, props.theme],
       async ([code, lang, theme]) => {
-        htmlCode.value = await codeToHtml(code, { lang, theme })
+        highlightedCode.value = await codeToHtml(code, { lang, theme })
       },
       { immediate: true }
     )
 
     return {
-      htmlCode,
+      highlightedCode,
       n,
-      classes,
     }
   },
 })
@@ -37,5 +36,5 @@ export default defineComponent({
 
 <style lang="less">
 @import '../styles/common';
-@import './code.less';
+@import './code';
 </style>
