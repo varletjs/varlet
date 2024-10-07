@@ -1,3 +1,13 @@
+## [3.5.4](https://github.com/varletjs/varlet/compare/v3.5.3...v3.5.4) (2024-10-07)
+
+
+### Features
+
+* **card:** support filled variant ([#1786](https://github.com/varletjs/varlet/issues/1786)) ([effd58f](https://github.com/varletjs/varlet/commit/effd58f3fc6b457751e2d9eed05757988a978b4e))
+* **card:** support variant ([77bdaf2](https://github.com/varletjs/varlet/commit/77bdaf2f9efd11d591189bb71c04908a3636e16d))
+
+
+
 ## [3.5.3](https://github.com/varletjs/varlet/compare/v3.5.2...v3.5.3) (2024-09-27)
 
 
