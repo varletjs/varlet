@@ -12,7 +12,6 @@ export interface Highlighter {
 export const props = {
   highlighter: {
     type: Object as PropType<Highlighter>,
-    default: null,
   },
   theme: {
     type: String,

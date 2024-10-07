@@ -1,4 +1,4 @@
 export default {
-  language: '切换语言',
-  theme: '切换主题',
+  shiki: '使用 Shiki',
+  hljs: '使用 highlight.js',
 }

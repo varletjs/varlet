@@ -6,92 +6,73 @@ Code component, used to display code blocks and highlight code syntax.
 
 ### Notes
 
-Due to package size considerations, Varlet does not include a built-in code highlighter. If you need to use the code block component, please ensure you use the [HighlighterProvider component](#/en-US/highlighter-provider) to customize the highlighter.
+- Due to package size considerations, Varlet does not include a built-in code highlighter. If you need to use the code block component, please ensure you use the HighlighterProvider component to customize the highlighter.
+- Using the HighlighterProvider component, you can set different highlighters for different code blocks. It is recommended to use [Shiki](https://shiki.style/) as the highlighter, as it has built-in support for `codeToHtml` and offers more flexibility in switching languages and themes.
 
-### Toggle Language
+### Use Shiki
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { codeToHtml } from 'shiki'
+import { codeToHtml } from 'shiki'
 
-  const jsCode = `function twoSum(nums, target) {
-    const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        const theOther = target - nums[i];
-        if (map.has(theOther)) {
-            return [map.get(theOther), i];
-        }
-        map.set(nums[i], i);
-    }
-  };`
-  const javaCode = `class Solution {
-    public int[] twoSum(int[] nums, int target) {
-      Map<Integer, Integer> map = new HashMap<>();
-      for (int i = 0; i < nums.length; i++) {
-        int theOther = target - nums[i];
-        if (map.containsKey(theOther)) {
-          return new int[] { map.get(theOther), i };
-        }
-        map.put(nums[i], i);
-      }
-      throw new IllegalArgumentException("No two sum solution");
-    }
-  }`
-
-  const language = ref('javascript');
-
-  function createHighlighter() {
-    return {
-      codeToHtml,
-    }
+function createHighlighter() {
+  return {
+    codeToHtml,
   }
+}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()">
-    <var-select :hint="false" v-model="language">
-      <var-option label="javascript" value="javascript" />
-      <var-option label="java" value="java" />
-    </var-select>
-    <var-code :code="language === 'javascript' ? jsCode : javaCode" language="javascript" theme="monokai" />
+  <var-highlighter-provider :highlighter="createHighlighter()" theme="nord">
+    <var-code code="console.log('varlet')" language="javascript" />
+    <var-code code="console.log('varlet')" language="javascript" theme='one-dark' />
+    <var-code code="console.log('varlet')" language="javascript" theme='one-dark-pro' />
   </var-highlighter-provider>
 </template>
 ```
-### Toggle Theme
+
+### Use highlight.js
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { codeToHtml } from 'shiki'
+import hljs from 'highlight.js'
+import javascript from 'highlight.js/lib/languages/javascript'
 
-  const code = `function twoSum(nums, target) {
-    const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        const theOther = target - nums[i];
-        if (map.has(theOther)) {
-            return [map.get(theOther), i];
-        }
-        map.set(nums[i], i);
-    }
-  };`
- 
-  const theme = ref('monokai');
+hljs.registerLanguage('javascript', javascript)
 
-  function createHighlighter() {
-    return {
-      codeToHtml,
-    }
+function createHljsHighlighter() {
+  const loadedThemes = new Set()
+
+  return {
+    codeToHtml: async (code, { lang, theme }) => {
+      if (!loadedThemes.has(loadedThemes)) {
+        const response = await fetch(
+          `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css`
+        )
+        const cssText = await response.text()
+        const modifiedCss = cssText.replace(/[^{.*?}]+(?=\{)|(?<=\})[^{}]+/g, (s) => `.${theme} ${s}`)
+        const style = document.createElement('style')
+        style.textContent = modifiedCss
+        document.head.appendChild(style)
+        loadedThemes.add(theme)
+      }
+
+      const highlightedCode = hljs.highlight(code, { language: lang }).value
+      return `
+        <div class="${theme}">
+          <pre class="hljs"><code>${highlightedCode}</code></pre>
+        </div>
+      `
+    },
   }
+}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()">
-    <var-select :hint="false" v-model="theme">
-      <var-option label="monokai" value="monokai" />
-      <var-option label="nord" value="nord" />
-    </var-select>
-    <var-code :code="code" language="javascript" :theme="theme" />
+  <var-highlighter-provider :highlighter="createHighlighter()"  theme="nord">
+    <var-code code="console.log('varlet')" language="javascript" />
+    <var-code code="console.log('varlet')" language="javascript" theme="monokai" />
+    <var-code code="console.log('varlet')" language="javascript" theme="atom-one-dark" />
   </var-highlighter-provider>
 </template>
 ```
@@ -100,11 +81,43 @@ Due to package size considerations, Varlet does not include a built-in code high
 
 ### Props
 
+#### Code Props
+
 | Prop              | Description                                                | Type            | Default            |
 |------------------|--------------------------------------------------------------|----------------|------------------|
 | `code`           | Code Snippet                                                 | _string_       | `-`              |
 | `language`       | Language                                                    | _string_       | `-`              |
 | `theme`          | Theme                                                        | _string_       | `-`              |
+
+#### HighlighterProvider Props
+
+| Prop             | Description                                                  | Type           | Default       |
+|------------------|--------------------------------------------------------------|----------------|------------------|
+| `highlighter`    | Shader                                                       | `Highlighter`  | `-`              |
+| `theme`          | Theme                                                        | _string_       | `-`              |
+| `tag`            | Tag name                                                     | _string_       | `div`              |
+
+
+#### Highlighter
+
+| Prop | Description | Type | Default |
+| ------ | ------ | ------ | ------ |
+| `codeToHtml` | Callback this function when the content, theme, or language changes, and specify the lang and theme options. It will return an HTML string. | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
+
+#### CodeToHtmlOptions
+
+| Prop | Description | Type | Default |
+| ------ | ------ | ------ | ------ |
+| `lang` | language | _string_ | `-` |
+| `theme` | theme | _string_ | `-` |
+
+### Slots
+
+#### HighlighterProvider Slots
+
+| Name | Description | SlotProps |
+| --- | --- | --- |
+| `default` | Component content | `-` |
 
 ### Style Variables
 

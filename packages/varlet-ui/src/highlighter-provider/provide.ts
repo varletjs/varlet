@@ -3,7 +3,7 @@ import { inject, provide } from 'vue'
 import type { Highlighter } from './props'
 
 export interface HighlighterProvider {
-  highlighter: Highlighter | null
+  highlighter?: Highlighter
   theme?: string
 }
 
@@ -15,7 +15,7 @@ export function provideHighlighterProvider(highlighterProvider: HighlighterProvi
 
 export function injectHighlighterProvider() {
   if (!keyInProvides(HIGHLIGHTER_PROVIDER_KEY)) {
-    return { highlighter: null } as HighlighterProvider
+    return { highlighter: undefined } as HighlighterProvider
   }
 
   return inject<HighlighterProvider>(HIGHLIGHTER_PROVIDER_KEY)!

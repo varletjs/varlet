@@ -6,92 +6,73 @@
 
 ### 注意事项
 
-由于包体积原因，varlet 不内置代码着色器，如果你需要使用代码块组件，请确保使用 [HighlighterProvider 组件](#/zh-CN/highlighter-provider) 进行着色器定制。
+- 由于包体积原因，varlet 不内置代码着色器，如果你需要使用代码块组件，请确保使用 HighlighterProvider 组件进行着色器定制。
+- 通过 HighlighterProvider 组件可以为不同的代码块设置不同的着色器。推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，因为它本身就实现了 `codeToHtml`，并且在语言和主题切换上也更加灵活。
 
-### 切换语言
+### 使用 Shiki
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { codeToHtml } from 'shiki'
+import { codeToHtml } from 'shiki'
 
-  const jsCode = `function twoSum(nums, target) {
-    const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        const theOther = target - nums[i];
-        if (map.has(theOther)) {
-            return [map.get(theOther), i];
-        }
-        map.set(nums[i], i);
-    }
-  };`
-  const javaCode = `class Solution {
-    public int[] twoSum(int[] nums, int target) {
-      Map<Integer, Integer> map = new HashMap<>();
-      for (int i = 0; i < nums.length; i++) {
-        int theOther = target - nums[i];
-        if (map.containsKey(theOther)) {
-          return new int[] { map.get(theOther), i };
-        }
-        map.put(nums[i], i);
-      }
-      throw new IllegalArgumentException("No two sum solution");
-    }
-  }`
-
-  const language = ref('javascript');
-
-  function createHighlighter() {
-    return {
-      codeToHtml,
-    }
+function createHighlighter() {
+  return {
+    codeToHtml,
   }
+}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()">
-    <var-select :hint="false" v-model="language">
-      <var-option label="javascript" value="javascript" />
-      <var-option label="java" value="java" />
-    </var-select>
-    <var-code :code="language === 'javascript' ? jsCode : javaCode" language="javascript" theme="monokai" />
+  <var-highlighter-provider :highlighter="createHighlighter()" theme="nord">
+    <var-code code="console.log('varlet')" language="javascript" />
+    <var-code code="console.log('varlet')" language="javascript" theme='monokai' />
+    <var-code code="console.log('varlet')" language="javascript" theme='one-dark-pro' />
   </var-highlighter-provider>
 </template>
 ```
-### 切换主题
+
+### 使用 highlighter.js
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-  import { codeToHtml } from 'shiki'
+import hljs from 'highlight.js'
+import javascript from 'highlight.js/lib/languages/javascript'
 
-  const code = `function twoSum(nums, target) {
-    const map = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        const theOther = target - nums[i];
-        if (map.has(theOther)) {
-            return [map.get(theOther), i];
-        }
-        map.set(nums[i], i);
-    }
-  };`
- 
-  const theme = ref('monokai');
+hljs.registerLanguage('javascript', javascript)
 
-  function createHighlighter() {
-    return {
-      codeToHtml,
-    }
+function createHighlighter() {
+  const loadedThemes = new Set()
+
+  return {
+    codeToHtml: async (code, { lang, theme }) => {
+      if (!loadedThemes.has(loadedThemes)) {
+        const response = await fetch(
+          `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css`
+        )
+        const cssText = await response.text()
+        const modifiedCss = cssText.replace(/[^{.*?}]+(?=\{)|(?<=\})[^{}]+/g, (s) => `.${theme} ${s}`)
+        const style = document.createElement('style')
+        style.textContent = modifiedCss
+        document.head.appendChild(style)
+        loadedThemes.add(theme)
+      }
+
+      const highlightedCode = hljs.highlight(code, { language: lang }).value
+      return `
+        <div class="${theme}">
+          <pre class="hljs"><code>${highlightedCode}</code></pre>
+        </div>
+      `
+    },
   }
+}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()">
-    <var-select :hint="false" v-model="theme">
-      <var-option label="monokai" value="monokai" />
-      <var-option label="nord" value="nord" />
-    </var-select>
-    <var-code :code="code" language="javascript" :theme="theme" />
+  <var-highlighter-provider :highlighter="createHighlighter()"  theme="nord">
+    <var-code code="console.log('varlet')" language="javascript" />
+    <var-code code="console.log('varlet')" language="javascript" theme="monokai" />
+    <var-code code="console.log('varlet')" language="javascript" theme="atom-one-dark" />
   </var-highlighter-provider>
 </template>
 ```
@@ -100,11 +81,43 @@
 
 ### 属性
 
-| 参数              | 说明                                                        | 类型            | 默认值            |
-|------------------|--------------------------------------------------------------|----------------|------------------|
+#### Code Props
+
+| 参数              | 说明                                                         | 类型            | 默认值            |
+|------------------|-------------------------------------------------------------|-----------------|------------------|
 | `code`           | 代码片段                                                      | _string_       | `-`              |
 | `language`       | 语言                                                         | _string_       | `-`              |
 | `theme`          | 主题                                                         | _string_       | `-`              |
+
+#### HighlighterProvider Props
+
+| 参数              | 说明                                                        | 类型            | 默认值            |
+|------------------|--------------------------------------------------------------|----------------|------------------|
+| `highlighter`    | 着色器                                                       | `Highlighter`   | `-`              |
+| `theme`          | 主题                                                         | _string_       | `-`              |
+| `tag`            | 自定义标签名                                                  | _string_       | `div`              |
+
+#### Highlighter
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ------ | ------ | ------ | ------ |
+| `codeToHtml` | 当内容、主题、语言发生改变时回调该函数，并指定 lang 和 theme 选项，它将返回一个 HTML 字符串 | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
+
+#### CodeToHtmlOptions
+
+| 参数 | 说明 | 类型 | 默认值 |
+| ------ | ------ | ------ | ------ |
+| `lang` | 语言 | _string_ | `-` |
+| `theme` | 主题 | _string_ | `-` |
+
+### 插槽
+
+#### HighlighterProvider Slots
+
+| 插槽名 | 说明 | 参数 |
+| --- | --- | --- |
+| `default` | 组件内容 | `-` |
+
 
 ### 样式变量
 

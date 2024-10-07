@@ -146,14 +146,6 @@ export default defineConfig({
       },
       {
         text: {
-          'zh-CN': 'HighlighterProvider 着色器定制',
-          'en-US': 'HighlighterProvider',
-        },
-        doc: 'highlighter-provider',
-        type: 2,
-      },
-      {
-        text: {
           'zh-CN': 'Button 按钮',
           'en-US': 'Button',
         },

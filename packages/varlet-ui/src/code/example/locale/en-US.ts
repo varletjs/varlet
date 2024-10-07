@@ -1,4 +1,4 @@
 export default {
-  language: 'Toggle Language',
-  theme: 'Toggle Theme',
+  shiki: 'Use Shiki',
+  hljs: 'Use highlighter.js',
 }
