@@ -17,10 +17,12 @@ watchLang(use)
   <var-alert :text="t('alertText')" />
 
   <app-type>{{ t('type') }}</app-type>
-  <var-alert :title="t('alertTitle')" :text="t('alertText')" />
-  <var-alert :title="t('alertTitle')" :text="t('alertText')" type="success" style="margin-top: 10px" />
-  <var-alert :title="t('alertTitle')" :text="t('alertText')" type="info" style="margin-top: 10px" />
-  <var-alert :title="t('alertTitle')" :text="t('alertText')" type="danger" style="margin-top: 10px" />
+  <var-space :size="[10, 10]">
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" />
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" type="success" style="margin-top: 10px" />
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" type="info" style="margin-top: 10px" />
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" type="error" style="margin-top: 10px" />
+  </var-space>
 
   <app-type>{{ t('customIcon') }}</app-type>
   <var-alert :title="t('alertTitle')" :text="t('alertText')">

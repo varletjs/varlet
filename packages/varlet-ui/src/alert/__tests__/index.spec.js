@@ -28,6 +28,26 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
+  test('test alert type', () => {
+    const ICON_TYPE_MAP = {
+      success: 'checkbox-marked-circle',
+      warning: 'warning',
+      info: 'information',
+      error: 'error',
+    }
+
+    ;['info', 'success', 'warning', 'error'].forEach((type) => {
+      const wrapper = mount(VarAlert, {
+        props: { type },
+      })
+
+      expect(wrapper.find('.var-alert--' + type).exists()).toBe(true)
+      expect(wrapper.find('.var-icon-' + ICON_TYPE_MAP[type]).exists()).toBe(true)
+
+      wrapper.unmount()
+    })
+  })
+
   test('test alert text', async () => {
     const wrapper = mount(VarAlert, {
       props: {

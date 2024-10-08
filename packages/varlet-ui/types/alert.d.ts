@@ -3,7 +3,7 @@ import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from '.
 
 export declare const alertProps: Record<keyof AlertProps, any>
 
-export type AlertType = 'info' | 'success' | 'warning' | 'danger'
+export type AlertType = 'info' | 'success' | 'warning' | 'error'
 
 export interface AlertProps extends BasicAttributes {
   type?: AlertType

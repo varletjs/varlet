@@ -26,11 +26,11 @@ interface BaseStyleVars {
   '--alert-border-radius'?: string
   '--alert-icon-margin-right'?: string
   '--alert-close-icon-margin-left'?: string
-  '--alert-danger-text-color'?: string
+  '--alert-error-text-color'?: string
   '--alert-success-text-color'?: string
   '--alert-warning-text-color'?: string
   '--alert-info-text-color'?: string
-  '--alert-danger-color'?: string
+  '--alert-error-color'?: string
   '--alert-success-color'?: string
   '--alert-warning-color'?: string
   '--alert-info-color'?: string

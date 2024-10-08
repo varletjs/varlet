@@ -33,15 +33,15 @@ Alerts display brief messages for the user without interrupting their use.
     text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="success"
   />
-    <var-alert 
+  <var-alert 
     title="Pride And Prejudice" 
     text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="info"
   />
-    <var-alert 
+  <var-alert 
     title="Pride And Prejudice" 
     text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    type="danger"
+    type="error"
   />
 </template>
 ```
@@ -49,14 +49,16 @@ Alerts display brief messages for the user without interrupting their use.
 ### Custom Icon
 
 ```html
-<var-alert 
-  title="Pride And Prejudice" 
-  text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
->
-  <template #icon>
-    <var-icon name="heart" />
-  </template>
-</var-alert>
+<template>
+  <var-alert 
+    title="Pride And Prejudice" 
+    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+  >
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+  </var-alert>
+</template>
 ```
 
 ### Allow To Close
@@ -89,7 +91,7 @@ const show = ref(true)
 
 | Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
-| `type` | Type, optional values are `info`, `success`, `warning`, `danger` | _string_ | `warning` | 
+| `type` | Type, optional values are `info`, `success`, `warning`, `error` | _string_ | `warning` | 
 | `color` | Background color | string | `-` | 
 | `title` | Title | string | `-` | 
 | `text` | Content | string | `-` | 
@@ -123,11 +125,11 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
-| `--alert-danger-text-color` | `var(--color-on-danger-container)` |
+| `--alert-error-text-color` | `var(--color-on-danger-container)` |
 | `--alert-success-text-color` | `var(--color-on-success-container)` |
 | `--alert-warning-text-color` | `var(--color-on-warning-container)` |
 | `--alert-info-text-color` | `var(--color-on-info-container)` |
-| `--alert-danger-color` | `var(--color-danger-container)` |
+| `--alert-error-color` | `var(--color-danger-container)` |
 | `--alert-success-color` | `var(--color-success-container)` |
 | `--alert-warning-color` | `var(--color-warning-container)` |
 | `--alert-info-color` | `var(--color-info-container)` |

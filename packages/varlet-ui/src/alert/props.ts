@@ -2,7 +2,7 @@ import { type PropType } from 'vue'
 import { iconProps } from '../icon'
 import { defineListenerProp, pickProps } from '../utils/components'
 
-export type AlertType = 'info' | 'success' | 'warning' | 'danger'
+export type AlertType = 'info' | 'success' | 'warning' | 'error'
 
 export const props = {
   type: {

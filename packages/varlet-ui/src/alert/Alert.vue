@@ -7,7 +7,7 @@
       }"
       role="alert"
     >
-      <div :class="n('icon')" v-if="$slots['icon']">
+      <div :class="n('icon')" v-if="isInternalType || $slots['icon']">
         <slot name="icon">
           <var-icon v-if="isInternalType" :name="ICON_TYPE_MAP[type]" />
         </slot>
@@ -50,13 +50,14 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isInternalType = computed(() => ['info', 'success', 'danger', 'warning'].includes(props.type))
+    const isInternalType = computed(() => ['info', 'success', 'error', 'warning'].includes(props.type))
 
     function handleClose(e: Event) {
       call(props.onClose, e)
     }
 
     return {
+      ICON_TYPE_MAP,
       n,
       classes,
       isInternalType,
