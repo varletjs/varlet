@@ -1,7 +1,5 @@
 <template>
-  <div :class="n()">
-    <div :class="n('content')" v-html="highlightedCode"></div>
-  </div>
+  <div :class="n()" v-html="highlightedCode"></div>
 </template>
 
 <script lang="ts">

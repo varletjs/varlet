@@ -340,9 +340,6 @@ importers:
       clipboard:
         specifier: ^2.0.6
         version: 2.0.11
-      highlight.js:
-        specifier: ^10.7.2
-        version: 10.7.3
       jsdom:
         specifier: 24.1.1
         version: 24.1.1

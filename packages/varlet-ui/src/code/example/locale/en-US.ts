@@ -1,4 +1,3 @@
 export default {
-  shiki: 'Use Shiki',
-  hljs: 'Use highlighter.js',
+  basicUsage: 'Basic Usage',
 }

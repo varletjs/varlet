@@ -9,7 +9,7 @@
 - 由于包体积原因，varlet 不内置代码着色器，如果你需要使用代码块组件，请确保使用 HighlighterProvider 组件进行着色器定制。
 - 通过 HighlighterProvider 组件可以为不同的代码块设置不同的着色器。推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，因为它本身就实现了 `codeToHtml`，并且在语言和主题切换上也更加灵活。
 
-### 使用 Shiki
+### 基本使用
 
 ```html
 <script setup>
@@ -27,52 +27,6 @@ function createHighlighter() {
     <var-code code="console.log('varlet')" language="javascript" />
     <var-code code="console.log('varlet')" language="javascript" theme='monokai' />
     <var-code code="console.log('varlet')" language="javascript" theme='one-dark-pro' />
-  </var-highlighter-provider>
-</template>
-```
-
-### 使用 highlighter.js
-
-```html
-<script setup>
-import hljs from 'highlight.js'
-import javascript from 'highlight.js/lib/languages/javascript'
-
-hljs.registerLanguage('javascript', javascript)
-
-function createHighlighter() {
-  const loadedThemes = new Set()
-
-  return {
-    codeToHtml: async (code, { lang, theme }) => {
-      if (!loadedThemes.has(loadedThemes)) {
-        const response = await fetch(
-          `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/${theme}.min.css`
-        )
-        const cssText = await response.text()
-        const modifiedCss = cssText.replace(/[^{.*?}]+(?=\{)|(?<=\})[^{}]+/g, (s) => `.${theme} ${s}`)
-        const style = document.createElement('style')
-        style.textContent = modifiedCss
-        document.head.appendChild(style)
-        loadedThemes.add(theme)
-      }
-
-      const highlightedCode = hljs.highlight(code, { language: lang }).value
-      return `
-        <div class="${theme}">
-          <pre class="hljs"><code>${highlightedCode}</code></pre>
-        </div>
-      `
-    },
-  }
-}
-</script>
-
-<template>
-  <var-highlighter-provider :highlighter="createHighlighter()"  theme="nord">
-    <var-code code="console.log('varlet')" language="javascript" />
-    <var-code code="console.log('varlet')" language="javascript" theme="monokai" />
-    <var-code code="console.log('varlet')" language="javascript" theme="atom-one-dark" />
   </var-highlighter-provider>
 </template>
 ```
@@ -125,6 +79,5 @@ function createHighlighter() {
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--code-margin` | `16px 0` |
 | `--code-border-radius` | `4px` |
 | `--code-content-padding` | `16px` |

@@ -72,7 +72,6 @@
     "@vue/runtime-core": "3.4.21",
     "@vue/test-utils": "2.4.1",
     "clipboard": "^2.0.6",
-    "highlight.js": "^10.7.2",
     "jsdom": "24.1.1",
     "live-server": "^1.2.1",
     "shiki": "^1.21.0",

@@ -1,22 +1,16 @@
 :root {
-  --code-margin: 16px 0;
   --code-border-radius: 4px;
   --code-content-padding: 16px;
 }
 
 .var-code {
-  margin: var(--code-margin);
   border-radius: var(--code-border-radius);
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
 
-  &__content {
-    height: 100%;
-  }
-
-  &__content pre {
+  pre {
     padding: var(--code-content-padding);
     border-radius: var(--code-border-radius);
     width: 100%;

@@ -224,7 +224,6 @@ interface BaseStyleVars {
   '--chip-small-font-size'?: string
   '--chip-normal-font-size'?: string
   '--chip-large-font-size'?: string
-  '--code-margin'?: string
   '--code-border-radius'?: string
   '--code-content-padding'?: string
   '--collapse-background'?: string
