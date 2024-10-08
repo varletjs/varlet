@@ -8,7 +8,7 @@
 
 ```html
 <template>
-  <var-alert title="Varlet UI" />
+  <var-alert title="傲慢与偏见" />
 </template>
 ```
 
@@ -16,7 +16,71 @@
 
 ```html
 <template>
-  <var-alert title="Varlet UI" text="Varlet UI 是一个基于 Vue3 开发的 Material Design 组件库，全面拥抱 Vue3 生态，支持移动端和桌面端，由 varletjs 组织维护。" />
+  <var-alert text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。" />
+</template>
+```
+
+### 类型
+
+```html
+<template>
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+  />
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    type="success"
+  />
+    <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    type="info"
+  />
+    <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    type="danger"
+  />
+</template>
+```
+
+### 自定义图标
+
+```html
+<template>
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+  >
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+  </var-alert>
+</template>
+```
+
+### 允许关闭
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const show = ref(true)
+</script>
+
+<template>
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    closeable
+    @click="show = false"
+  >
+    <template #icon>
+      <var-icon name="heart" />
+    </template>
+  </var-alert>
 </template>
 ```
 
@@ -26,7 +90,7 @@
 
 | 参数          | 说明 | 类型 | 默认值 |
 |-------------| ---- | ---- | ---- |
-| `type`      | 类型，可选值为 `default` `primary` `info` `success` `warning` `danger` | _string_ | `default` |
+| `type`      | 类型，可选值为 `info` `success` `warning` `danger` | _string_ | `warning` |
 | `color` | 背景色 | _string_ | `-` |
 | `title` | 标题 | _string_ | `-` |
 | `text`  | 内容 | _string_ | `-` |
@@ -60,14 +124,10 @@
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
-| `--alert-default-text-color` | `#555` |
-| `--alert-primary-text-color` | `var(--color-on-primary-container)` |
 | `--alert-danger-text-color` | `var(--color-on-danger-container)` |
 | `--alert-success-text-color` | `var(--color-on-success-container)` |
 | `--alert-warning-text-color` | `var(--color-on-warning-container)` |
 | `--alert-info-text-color` | `var(--color-on-info-container)` |
-| `--alert-default-color` | `#e0e0e0` |
-| `--alert-primary-color` | `var(--color-primary-container)` |
 | `--alert-danger-color` | `var(--color-danger-container)` |
 | `--alert-success-color` | `var(--color-success-container)` |
 | `--alert-warning-color` | `var(--color-warning-container)` |

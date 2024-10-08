@@ -2,12 +2,12 @@ import { type PropType } from 'vue'
 import { iconProps } from '../icon'
 import { defineListenerProp, pickProps } from '../utils/components'
 
-export type AlertType = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
+export type AlertType = 'info' | 'success' | 'warning' | 'danger'
 
 export const props = {
   type: {
     type: String as PropType<AlertType>,
-    default: 'default',
+    default: 'warning',
   },
   color: String,
   title: String,

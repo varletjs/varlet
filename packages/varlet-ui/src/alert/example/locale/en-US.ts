@@ -1,6 +1,9 @@
 export default {
   title: 'Title',
   content: 'Content',
-  alertText:
-    'Varlet UI is a Material design component library developed based on Vue3, supporting mobile and desktop, developed and maintained by varletjs organization.',
+  alertTitle: 'Pride And Prejudice',
+  alertText: `I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you.`,
+  type: 'Type',
+  customIcon: 'Custom Icon',
+  allowToClose: 'Allow To Close',
 }

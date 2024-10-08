@@ -8,7 +8,9 @@
       role="alert"
     >
       <div :class="n('icon')" v-if="$slots['icon']">
-        <slot name="icon" />
+        <slot name="icon">
+          <var-icon v-if="isInternalType" :name="ICON_TYPE_MAP[type]" />
+        </slot>
       </div>
       <div :class="n('content')">
         <div :class="n('title')">
@@ -27,12 +29,19 @@
 
 <script lang="ts">
 import VarIcon from '../icon'
-import { defineComponent } from 'vue'
-import { props } from './props'
+import { defineComponent, computed } from 'vue'
+import { props, type AlertType } from './props'
 import { createNamespace, formatElevation } from '../utils/components'
 import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('alert')
+
+const ICON_TYPE_MAP: Record<AlertType, string> = {
+  success: 'checkbox-marked-circle',
+  warning: 'warning',
+  info: 'information',
+  error: 'error',
+}
 
 export default defineComponent({
   name,
@@ -41,6 +50,8 @@ export default defineComponent({
   },
   props,
   setup(props) {
+    const isInternalType = computed(() => ['info', 'success', 'danger', 'warning'].includes(props.type))
+
     function handleClose(e: Event) {
       call(props.onClose, e)
     }
@@ -48,6 +59,7 @@ export default defineComponent({
     return {
       n,
       classes,
+      isInternalType,
       formatElevation,
       handleClose,
     }
