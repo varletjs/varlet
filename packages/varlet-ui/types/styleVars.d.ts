@@ -40,11 +40,11 @@ interface BaseStyleVars {
   '--alert-tonal-success-color'?: string
   '--alert-tonal-warning-color'?: string
   '--alert-tonal-info-color'?: string
-  '--alert-content-font-size'?: string
+  '--alert-message-font-size'?: string
   '--alert-title-font-size'?: string
   '--alert-title-font-weight'?: string
   '--alert-title-margin-bottom'?: string
-  '--alert-content-line-height'?: string
+  '--alert-message-line-height'?: string
   '--alert-title-line-height'?: string
   '--app-bar-color'?: string
   '--app-bar-text-color'?: string

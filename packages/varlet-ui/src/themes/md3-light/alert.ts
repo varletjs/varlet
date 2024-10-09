@@ -16,7 +16,7 @@ export default {
   '--alert-tonal-error-color': 'var(--color-on-danger)',
   '--alert-tonal-success-color': 'var(--color-on-success)',
   '--alert-tonal-warning-color': 'var(--color-on-warning)',
-  '--alert-tonal-info-color': 'var(--color-on-info)',
+  '--alert-tonal-info-color': 'var(--color-on-info-container)',
   '--alert-message-font-size': '14px',
   '--alert-title-font-size': '16px',
   '--alert-title-font-weight': '500',
