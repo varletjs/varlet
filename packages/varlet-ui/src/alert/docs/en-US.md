@@ -165,3 +165,5 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
 | `--alert-title-margin-bottom` | `5px` |
+| `--alert-content-line-height`| `18px` |
+| `--alert-title-line-height`| `28px` |
