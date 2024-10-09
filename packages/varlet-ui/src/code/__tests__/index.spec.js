@@ -30,7 +30,7 @@ describe('test code component props', () => {
       },
     })
 
-    await delay(100)
+    await delay(300)
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
