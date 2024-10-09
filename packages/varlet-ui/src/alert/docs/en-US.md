@@ -12,7 +12,7 @@ Alerts display brief messages for the user without interrupting their use.
 </template>
 ```
 
-### Content
+### Message
 
 ```html
 <template>
@@ -117,7 +117,7 @@ const show = ref(true)
 | `color` | Background color | string | `-` | 
 | `title` | Title | string | `-` | 
 | `message` | Message | string | `-` | 
-| `elevation` | Elevation, optional values are true, false, and levels from 0-24 | string | number | boolean | `false` | 
+| `elevation` | Elevation, optional values are true, false, and levels from 0-24 | _string \| number \| boolean_ | `false` | 
 | `closeable` | Whether the alert is closeable | boolean | `false` | 
 | `icon-name` | Custom icon for the closeable alert, can only be used when closeable is true | string | `-` | 
 | `namespace` | Namespace for the custom closeable alert icon | string | `var-icon` |

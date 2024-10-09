@@ -69,6 +69,12 @@ describe('test alert component props', () => {
 
     expect(wrapper.find('.var-alert__message').text()).toBe('Jane Eyre')
 
+    await wrapper.setProps({
+      message: undefined,
+    })
+
+    expect(wrapper.find('.var-alert__message').exists()).toBe(false)
+
     wrapper.unmount()
   })
 

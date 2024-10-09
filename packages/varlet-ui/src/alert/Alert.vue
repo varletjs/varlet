@@ -17,7 +17,7 @@
           <div :class="n('title')" v-if="title || $slots['title']">
             <slot name="title">{{ title }}</slot>
           </div>
-          <div :class="n('message')">
+          <div :class="n('message')" v-if="message || $slots['default']">
             <slot>{{ message }}</slot>
           </div>
         </div>
