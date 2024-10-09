@@ -13,7 +13,7 @@
         </slot>
       </div>
       <div :class="n('content')">
-        <div :class="n('title')">
+        <div :class="n('title')" v-if="title || $slots['title']">
           <slot name="title">{{ title }}</slot>
         </div>
         <slot>{{ text }}</slot>
