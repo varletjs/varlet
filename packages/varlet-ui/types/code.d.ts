@@ -6,6 +6,7 @@ export interface CodeProps extends BasicAttributes {
   code?: string
   language?: string
   theme?: string
+  wordWrap?: boolean
 }
 
 export class Code extends VarComponent {

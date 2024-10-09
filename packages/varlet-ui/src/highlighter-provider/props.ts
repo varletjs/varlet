@@ -10,13 +10,8 @@ export interface Highlighter {
 }
 
 export const props = {
-  highlighter: {
-    type: Object as PropType<Highlighter>,
-  },
-  theme: {
-    type: String,
-    default: 'nord',
-  },
+  highlighter: Object as PropType<Highlighter>,
+  theme: String,
   tag: {
     type: String,
     default: 'div',

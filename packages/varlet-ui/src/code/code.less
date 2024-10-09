@@ -1,21 +1,22 @@
 :root {
-  --code-border-radius: 4px;
-  --code-content-padding: 16px;
+  --code-font-size: 14px;
+  --code-line-height: 1.7;
 }
 
 .var-code {
-  border-radius: var(--code-border-radius);
-  position: relative;
-  overflow: hidden;
   width: 100%;
-  height: 100%;
+  line-height: var(--code-line-height);
+  font-size: var(--code-font-size);
 
   pre {
-    padding: var(--code-content-padding);
-    border-radius: var(--code-border-radius);
     width: 100%;
-    height: 100%;
     margin: 0;
     overflow: auto;
+    background-color: transparent !important;
+  }
+
+  &--word-wrap pre {
+    white-space: pre-wrap;
+    word-break: break-all;
   }
 }

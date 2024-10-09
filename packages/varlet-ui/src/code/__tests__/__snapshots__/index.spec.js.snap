@@ -2,51 +2,21 @@
 
 exports[`test code component props > test code content 1`] = `
 "<div class="var-highlighter-provider">
-  <div class="var-code"><pre class="shiki monokai" style="background-color:#272822;color:#F8F8F2" tabindex="0"><code><span class="line"><span style="color:#66D9EF;font-style:italic">function</span><span style="color:#A6E22E"> twoSum</span><span style="color:#F8F8F2">(</span><span style="color:#FD971F;font-style:italic">nums</span><span style="color:#F8F8F2">, </span><span style="color:#FD971F;font-style:italic">target</span><span style="color:#F8F8F2">) {</span></span>
-<span class="line"><span style="color:#66D9EF;font-style:italic">  const</span><span style="color:#F8F8F2"> map </span><span style="color:#F92672">=</span><span style="color:#F92672"> new</span><span style="color:#A6E22E"> Map</span><span style="color:#F8F8F2">();</span></span>
-<span class="line"><span style="color:#F92672">  for</span><span style="color:#F8F8F2"> (</span><span style="color:#66D9EF;font-style:italic">let</span><span style="color:#F8F8F2"> i </span><span style="color:#F92672">=</span><span style="color:#AE81FF"> 0</span><span style="color:#F8F8F2">; i </span><span style="color:#F92672">&lt;</span><span style="color:#F8F8F2"> nums.length; i</span><span style="color:#F92672">++</span><span style="color:#F8F8F2">) {</span></span>
-<span class="line"><span style="color:#66D9EF;font-style:italic">      const</span><span style="color:#F8F8F2"> num </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> nums[i];</span></span>
-<span class="line"><span style="color:#66D9EF;font-style:italic">      const</span><span style="color:#F8F8F2"> theOther </span><span style="color:#F92672">=</span><span style="color:#F8F8F2"> target </span><span style="color:#F92672">-</span><span style="color:#F8F8F2"> num;</span></span>
-<span class="line"><span style="color:#F92672">      if</span><span style="color:#F8F8F2"> (map.</span><span style="color:#A6E22E">has</span><span style="color:#F8F8F2">(theOther)) {</span></span>
-<span class="line"><span style="color:#F92672">          return</span><span style="color:#F8F8F2"> [map.</span><span style="color:#A6E22E">get</span><span style="color:#F8F8F2">(theOther), i];</span></span>
-<span class="line"><span style="color:#F8F8F2">      }</span></span>
-<span class="line"><span style="color:#F8F8F2">      map.</span><span style="color:#A6E22E">set</span><span style="color:#F8F8F2">(num, i);</span></span>
-<span class="line"><span style="color:#F8F8F2">  }</span></span>
-<span class="line"><span style="color:#F8F8F2">};</span></span></code></pre>
+  <div class="var-code"><pre class="shiki vitesse-light" style="background-color:#ffffff;color:#393a34" tabindex="0"><code><span class="line"><span style="color:#B07D48">console</span><span style="color:#999999">.</span><span style="color:#59873A">log</span><span style="color:#999999">(</span><span style="color:#B5695977">'</span><span style="color:#B56959">hello world</span><span style="color:#B5695977">'</span><span style="color:#999999">)</span></span></code></pre>
   </div>
 </div>"
 `;
 
-exports[`test code component props > test code lang 1`] = `
+exports[`test code component props > test code language 1`] = `
 "<div class="var-highlighter-provider">
-  <div class="var-code" content="function twoSum(nums, target) {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
-      const theOther = target - num;
-      if (map.has(theOther)) {
-          return [map.get(theOther), i];
-      }
-      map.set(num, i);
-  }
-};" lang="javascript"><pre class="shiki nord" style="background-color:#2e3440ff;color:#d8dee9ff" tabindex="0"><code><span class="line"><span></span></span></code></pre>
+  <div class="var-code"><pre class="shiki vitesse-light" style="background-color:#ffffff;color:#393a34" tabindex="0"><code><span class="line"><span style="color:#998418">print</span><span style="color:#999999">(</span><span style="color:#B5695977">'</span><span style="color:#B56959">Hello Varlet UI</span><span style="color:#B5695977">'</span><span style="color:#999999">)</span></span></code></pre>
   </div>
 </div>"
 `;
 
 exports[`test code component props > test code theme 1`] = `
 "<div class="var-highlighter-provider">
-  <div class="var-code"><pre class="shiki material-theme" style="background-color:#263238;color:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#C792EA">function</span><span style="color:#82AAFF"> twoSum</span><span style="color:#89DDFF">(</span><span style="color:#EEFFFF;font-style:italic">nums</span><span style="color:#89DDFF">,</span><span style="color:#EEFFFF;font-style:italic"> target</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> {</span></span>
-<span class="line"><span style="color:#C792EA">  const</span><span style="color:#EEFFFF"> map</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> new</span><span style="color:#82AAFF"> Map</span><span style="color:#F07178">()</span><span style="color:#89DDFF">;</span></span>
-<span class="line"><span style="color:#89DDFF;font-style:italic">  for</span><span style="color:#F07178"> (</span><span style="color:#C792EA">let</span><span style="color:#EEFFFF"> i</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 0</span><span style="color:#89DDFF">;</span><span style="color:#EEFFFF"> i</span><span style="color:#89DDFF"> &lt;</span><span style="color:#EEFFFF"> nums</span><span style="color:#89DDFF">.</span><span style="color:#EEFFFF">length</span><span style="color:#89DDFF">;</span><span style="color:#EEFFFF"> i</span><span style="color:#89DDFF">++</span><span style="color:#F07178">) </span><span style="color:#89DDFF">{</span></span>
-<span class="line"><span style="color:#C792EA">      const</span><span style="color:#EEFFFF"> num</span><span style="color:#89DDFF"> =</span><span style="color:#EEFFFF"> nums</span><span style="color:#F07178">[</span><span style="color:#EEFFFF">i</span><span style="color:#F07178">]</span><span style="color:#89DDFF">;</span></span>
-<span class="line"><span style="color:#C792EA">      const</span><span style="color:#EEFFFF"> theOther</span><span style="color:#89DDFF"> =</span><span style="color:#EEFFFF"> target</span><span style="color:#89DDFF"> -</span><span style="color:#EEFFFF"> num</span><span style="color:#89DDFF">;</span></span>
-<span class="line"><span style="color:#89DDFF;font-style:italic">      if</span><span style="color:#F07178"> (</span><span style="color:#EEFFFF">map</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">has</span><span style="color:#F07178">(</span><span style="color:#EEFFFF">theOther</span><span style="color:#F07178">)) </span><span style="color:#89DDFF">{</span></span>
-<span class="line"><span style="color:#89DDFF;font-style:italic">          return</span><span style="color:#F07178"> [</span><span style="color:#EEFFFF">map</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">get</span><span style="color:#F07178">(</span><span style="color:#EEFFFF">theOther</span><span style="color:#F07178">)</span><span style="color:#89DDFF">,</span><span style="color:#EEFFFF"> i</span><span style="color:#F07178">]</span><span style="color:#89DDFF">;</span></span>
-<span class="line"><span style="color:#89DDFF">      }</span></span>
-<span class="line"><span style="color:#EEFFFF">      map</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">set</span><span style="color:#F07178">(</span><span style="color:#EEFFFF">num</span><span style="color:#89DDFF">,</span><span style="color:#EEFFFF"> i</span><span style="color:#F07178">)</span><span style="color:#89DDFF">;</span></span>
-<span class="line"><span style="color:#89DDFF">  }</span></span>
-<span class="line"><span style="color:#89DDFF">};</span></span></code></pre>
+  <div class="var-code"><pre class="shiki material-theme" style="background-color:#263238;color:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#EEFFFF">console</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">log</span><span style="color:#EEFFFF">(</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">hello world</span><span style="color:#89DDFF">'</span><span style="color:#EEFFFF">)</span></span></code></pre>
   </div>
 </div>"
 `;

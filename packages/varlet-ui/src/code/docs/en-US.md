@@ -2,31 +2,54 @@
 
 ### Intro
 
-Code component, used to display code blocks and highlight code syntax.
+Code Block component, used for code highlighted
 
 ### Notes
 
-- Due to package size considerations, Varlet does not include a built-in code highlighter. If you need to use the code block component, please ensure you use the HighlighterProvider component to customize the highlighter.
-- Using the HighlighterProvider component, you can set different highlighters for different code blocks. It is recommended to use [Shiki](https://shiki.style/) as the highlighter, as it has built-in support for `codeToHtml` and offers more flexibility in switching languages and themes.
+- Due to the size of the package, the component library does not have a built-in code highlighter. Please make sure to use the `HighlighterProvider` component to correctly set the highlighter
+- The component library recommends using [Shiki](https://shiki.tmrs.site/) as the highlighter. For the themes and detailed configuration, please refer to the documentation
 
-### Basic Usage
+### Install Shiki
+
+```shell
+# npm
+npm install shiki -S
+# yarn
+yarn add shiki
+# pnpm
+pnpm add shiki
+```
+
+### Basic Use
 
 ```html
 <script setup>
 import { codeToHtml } from 'shiki'
-
-function createHighlighter() {
-  return {
-    codeToHtml,
-  }
-}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()" theme="nord">
-    <var-code code="console.log('varlet')" language="javascript" />
-    <var-code code="console.log('varlet')" language="javascript" theme='one-dark' />
-    <var-code code="console.log('varlet')" language="javascript" theme='one-dark-pro' />
+  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
+    <var-space direction="column" size="large">
+      <var-code code="console.log('Hello Varlet UI')" language="javascript" />
+      <var-code code="print('Hello Varlet UI')" language="python" />
+      <var-code code="console.log('Hello Varlet UI')" language="javascript" theme="github-light" />
+    </var-space>
+  </var-highlighter-provider>
+</template>
+```
+
+### Word Wrap
+
+Set `word-wrap` to support automatic line wrapping when code overflows.
+
+```html
+<script setup>
+import { codeToHtml } from 'shiki'
+</script>
+
+<template>
+  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
+    <var-code code="console.log('Hello Varlet UI');console.log('Hello Varlet UI');" language="javascript" word-wrap />
   </var-highlighter-provider>
 </template>
 ```
@@ -37,47 +60,37 @@ function createHighlighter() {
 
 #### Code Props
 
-| Prop              | Description                                                | Type            | Default            |
-|------------------|--------------------------------------------------------------|----------------|------------------|
-| `code`           | Code Snippet                                                 | _string_       | `-`              |
-| `language`       | Language                                                    | _string_       | `-`              |
-| `theme`          | Theme                                                        | _string_       | `-`              |
+| Prop | Description | Type | Default |
+|------------------|-------------------------------------------------------------|-----------------|------------------|
+| `code`           | Code Snippet                                                      | _string_       | `-`              |
+| `language`       | Code Language                                                         | _string_       | `-`              |
+| `theme`          | Code Theme                                                         | _string_       | `-`              |
 
 #### HighlighterProvider Props
 
-| Prop             | Description                                                  | Type           | Default       |
+| Prop | Description | Type | Default |
 |------------------|--------------------------------------------------------------|----------------|------------------|
-| `highlighter`    | Shader                                                       | `Highlighter`  | `-`              |
-| `theme`          | Theme                                                        | _string_       | `-`              |
-| `tag`            | Tag name                                                     | _string_       | `div`              |
-
+| `highlighter`    | Code Highlighter                                                       | `Highlighter`   | `-`              |
+| `theme`          | Code Theme                                                         | _string_       | `-`              |
+| `tag`            | Custom tag name                                                  | _string_       | `div`              |
 
 #### Highlighter
 
 | Prop | Description | Type | Default |
 | ------ | ------ | ------ | ------ |
-| `codeToHtml` | Callback this function when the content, theme, or language changes, and specify the lang and theme options. It will return an HTML string. | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
+| `codeToHtml` | Highlighter function, component highlighter must implement this function | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
 
 #### CodeToHtmlOptions
 
 | Prop | Description | Type | Default |
 | ------ | ------ | ------ | ------ |
-| `lang` | language | _string_ | `-` |
-| `theme` | theme | _string_ | `-` |
-
-### Slots
-
-#### HighlighterProvider Slots
-
-| Name | Description | SlotProps |
-| --- | --- | --- |
-| `default` | Component content | `-` |
+| `lang` | Code Language | _string_ | `-` |
+| `theme` | Code Theme | _string_ | `-` |
 
 ### Style Variables
-
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
 | --- | --- |
-| `--code-border-radius` | `4px` |
-| `--code-content-padding` | `16px` |
+| `--code-line-height` | `1.7` |
+| `--code-font-size` | `14px` |

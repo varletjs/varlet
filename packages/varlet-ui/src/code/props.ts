@@ -9,4 +9,5 @@ export const props = {
   theme: {
     type: String,
   },
+  wordWrap: Boolean,
 }

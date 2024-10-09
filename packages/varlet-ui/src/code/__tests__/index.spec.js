@@ -7,18 +7,6 @@ import { delay } from '../../utils/test'
 import { expect, describe, test } from 'vitest'
 import { codeToHtml } from 'shiki'
 
-const code = `function twoSum(nums, target) {
-  const map = new Map();
-  for (let i = 0; i < nums.length; i++) {
-      const num = nums[i];
-      const theOther = target - num;
-      if (map.has(theOther)) {
-          return [map.get(theOther), i];
-      }
-      map.set(num, i);
-  }
-};`
-
 test('test code use', () => {
   const app = createApp({}).use(Code)
   expect(app.component(Code.name)).toBeTruthy()
@@ -31,34 +19,35 @@ describe('test code component props', () => {
         highlighter: {
           codeToHtml,
         },
+        theme: 'vitesse-light',
       },
       slots: {
         default: () =>
           h(VarCode, {
-            code,
+            code: "console.log('hello world')",
             language: 'javascript',
-            theme: 'monokai',
           }),
       },
     })
 
-    await delay(300)
+    await delay(100)
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
 
-  test('test code lang', async () => {
+  test('test code language', async () => {
     const wrapper = mount(VarHighlighterProvider, {
       props: {
         highlighter: {
           codeToHtml,
         },
+        theme: 'vitesse-light',
       },
       slots: {
         default: () =>
           h(VarCode, {
-            content: code,
-            lang: 'javascript',
+            code: "print('Hello Varlet UI')",
+            language: 'python',
           }),
       },
     })
@@ -78,7 +67,7 @@ describe('test code component props', () => {
       slots: {
         default: () =>
           h(VarCode, {
-            code,
+            code: "console.log('hello world')",
             language: 'javascript',
             theme: 'material-theme',
           }),

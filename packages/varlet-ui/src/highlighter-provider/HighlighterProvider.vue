@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, h } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { call } from '@varlet/shared'
@@ -11,7 +11,10 @@ export default defineComponent({
   name,
   props,
   setup(props, { slots }) {
-    provideHighlighterProvider({ highlighter: props.highlighter, theme: props.theme })
+    const highlighter = computed(() => props.highlighter)
+    const theme = computed(() => props.theme)
+
+    provideHighlighterProvider({ highlighter, theme })
 
     return () =>
       h(

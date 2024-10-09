@@ -2,31 +2,54 @@
 
 ### 介绍
 
-代码块组件，用于显示代码块并突出显示代码语法。
+代码块组件，用于代码着色
 
 ### 注意事项
 
-- 由于包体积原因，varlet 不内置代码着色器，如果你需要使用代码块组件，请确保使用 HighlighterProvider 组件进行着色器定制。
-- 通过 HighlighterProvider 组件可以为不同的代码块设置不同的着色器。推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，因为它本身就实现了 `codeToHtml`，并且在语言和主题切换上也更加灵活。
+- 由于包体积的原因，组件库不内置代码着色器，请使用 `HighlighterProvider` 组件正确设置着色器
+- 组件库推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，可用主题及详细配置请参考其文档
+
+### 安装 Shiki
+
+```shell
+# npm
+npm install shiki -S
+# yarn
+yarn add shiki
+# pnpm
+pnpm add shiki
+```
 
 ### 基本使用
 
 ```html
 <script setup>
 import { codeToHtml } from 'shiki'
-
-function createHighlighter() {
-  return {
-    codeToHtml,
-  }
-}
 </script>
 
 <template>
-  <var-highlighter-provider :highlighter="createHighlighter()" theme="nord">
-    <var-code code="console.log('varlet')" language="javascript" />
-    <var-code code="console.log('varlet')" language="javascript" theme='monokai' />
-    <var-code code="console.log('varlet')" language="javascript" theme='one-dark-pro' />
+  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
+    <var-space direction="column" size="large">
+      <var-code code="console.log('Hello Varlet UI')" language="javascript" />
+      <var-code code="print('Hello Varlet UI')" language="python" />
+      <var-code code="console.log('Hello Varlet UI')" language="javascript" theme="github-light" />
+    </var-space>
+  </var-highlighter-provider>
+</template>
+```
+
+### 自动换行
+
+设置 `word-wrap` 支持在代码溢出时自动换行。
+
+```html
+<script setup>
+import { codeToHtml } from 'shiki'
+</script>
+
+<template>
+  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
+    <var-code code="console.log('Hello Varlet UI');console.log('Hello Varlet UI');" language="javascript" word-wrap />
   </var-highlighter-provider>
 </template>
 ```
@@ -55,7 +78,7 @@ function createHighlighter() {
 
 | 参数 | 说明 | 类型 | 默认值 |
 | ------ | ------ | ------ | ------ |
-| `codeToHtml` | 当内容、主题、语言发生改变时回调该函数，并指定 lang 和 theme 选项，它将返回一个 HTML 字符串 | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
+| `codeToHtml` | 着色函数，组件的着色器必须实现该函数 | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
 
 #### CodeToHtmlOptions
 
@@ -64,20 +87,11 @@ function createHighlighter() {
 | `lang` | 语言 | _string_ | `-` |
 | `theme` | 主题 | _string_ | `-` |
 
-### 插槽
-
-#### HighlighterProvider Slots
-
-| 插槽名 | 说明 | 参数 |
-| --- | --- | --- |
-| `default` | 组件内容 | `-` |
-
-
 ### 样式变量
 
 以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
 
 | 变量名 | 默认值 |
 | --- | --- |
-| `--code-border-radius` | `4px` |
-| `--code-content-padding` | `16px` |
+| `--code-line-height` | `1.7` |
+| `--code-font-size` | `14px` |

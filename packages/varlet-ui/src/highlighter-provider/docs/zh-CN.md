@@ -1,5 +1,3 @@
-# 着色器定制
-
 ## API
 
 ### 属性
@@ -9,19 +7,6 @@
 | `highlighter`    | 着色器                                                       | `Highlighter`   | `-`              |
 | `theme`          | 主题                                                         | _string_       | `-`              |
 | `tag`            | 自定义标签名                                                  | _string_       | `div`              |
-
-### Highlighter
-
-| 参数 | 说明 | 类型 | 默认值 |
-| ------ | ------ | ------ | ------ |
-| `codeToHtml` | 当内容、主题、语言发生改变时回调该函数，并指定 lang 和 theme 选项，它将返回一个 HTML 字符串 | `(code: string, options: CodeToHtmlOptions) => Promise<string>` | `-`
-
-### CodeToHtmlOptions
-
-| 参数 | 说明 | 类型 | 默认值 |
-| ------ | ------ | ------ | ------ |
-| `lang` | 语言 | _string_ | `-` |
-| `theme` | 主题 | _string_ | `-` |
 
 ### 插槽
 
