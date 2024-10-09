@@ -12,12 +12,16 @@
           <var-icon v-if="isInternalType" :name="ICON_TYPE_MAP[type]" />
         </slot>
       </div>
-      <div :class="n('content')">
-        <div :class="n('title')" v-if="title || $slots['title']">
-          <slot name="title">{{ title }}</slot>
+      <slot name="content">
+        <div :class="n('content')">
+          <div :class="n('title')" v-if="title || $slots['title']">
+            <slot name="title">{{ title }}</slot>
+          </div>
+          <div :class="n('message')">
+            <slot>{{ message }}</slot>
+          </div>
         </div>
-        <slot>{{ text }}</slot>
-      </div>
+      </slot>
       <div v-if="closeable" :class="n('close-icon')" @click="handleClose">
         <slot name="close-icon">
           <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />

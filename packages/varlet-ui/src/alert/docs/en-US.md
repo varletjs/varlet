@@ -16,7 +16,7 @@ Alerts display brief messages for the user without interrupting their use.
 
 ```html
 <template>
-  <var-alert text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you." />
+  <var-alert message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you." />
 </template>
 ```
 
@@ -26,21 +26,21 @@ Alerts display brief messages for the user without interrupting their use.
 <template>
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
   />
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="success"
   />
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="warning"
   />
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="error"
   />
 </template>
@@ -52,16 +52,16 @@ Alerts display brief messages for the user without interrupting their use.
 <template>
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
   />
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     variant="outlined"
   />
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     variant="tonal"
   />
 </template>
@@ -73,7 +73,7 @@ Alerts display brief messages for the user without interrupting their use.
 <template>
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
   >
     <template #icon>
       <var-icon name="heart" />
@@ -94,7 +94,7 @@ const show = ref(true)
 <template>
   <var-alert 
     title="Pride And Prejudice" 
-    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     closeable
     @click="show = false"
   >
@@ -116,7 +116,7 @@ const show = ref(true)
 | `variant`   | Variant, optional values are `standard` `outlined` `tonal` | _string_ | `standard` |
 | `color` | Background color | string | `-` | 
 | `title` | Title | string | `-` | 
-| `text` | Content | string | `-` | 
+| `message` | Message | string | `-` | 
 | `elevation` | Elevation, optional values are true, false, and levels from 0-24 | string | number | boolean | `false` | 
 | `closeable` | Whether the alert is closeable | boolean | `false` | 
 | `icon-name` | Custom icon for the closeable alert, can only be used when closeable is true | string | `-` | 
@@ -126,7 +126,8 @@ const show = ref(true)
 
 | Name | Description | SlotProps |
 | ---- | ---- | ----|
-| `default` | The content of alert | `-` |
+| `default` | The message of alert | `-` |
+| `content` | The content of alert | `-` |
 | `title`   | The title of alert | `-` |
 | `icon` | The prepend icon of alert | `-` |
 | `close-icon`   | The close icon of alert | `-` |
@@ -161,9 +162,9 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-tonal-success-color`| `var(--color-on-success)` |
 | `--alert-tonal-warning-color`| `var(--color-on-warning)` |
 | `--alert-tonal-info-color`| `var(--color-on-info)` |
-| `--alert-content-font-size` | `14px` |
+| `--alert-message-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
 | `--alert-title-margin-bottom` | `5px` |
-| `--alert-content-line-height`| `18px` |
+| `--alert-message-line-height`| `18px` |
 | `--alert-title-line-height`| `28px` |

@@ -17,11 +17,11 @@
   --alert-tonal-success-color: var(--color-on-success);
   --alert-tonal-warning-color: var(--color-on-warning);
   --alert-tonal-info-color: var(--color-on-info);
-  --alert-content-font-size: 14px;
-  --alert-content-line-height: 18px;
+  --alert-message-font-size: 14px;
   --alert-title-font-size: 16px;
   --alert-title-font-weight: 500;
   --alert-title-margin-bottom: 5px;
+  --alert-message-line-height: 18px;
   --alert-title-line-height: 28px;
 }
 
@@ -35,6 +35,10 @@
     margin-right: var(--alert-icon-margin-right);
   }
 
+  &__content {
+    flex: 1;
+  }
+
   &__title {
     font-size: var(--alert-title-font-size);
     font-weight: var(--alert-title-font-weight);
@@ -44,10 +48,9 @@
     word-wrap: break-word;
   }
 
-  &__content {
-    flex: 1;
-    font-size: var(--alert-content-font-size);
-    line-height: var(--alert-content-line-height);
+  &__message {
+    font-size: var(--alert-message-font-size);
+    line-height: var(--alert-message-line-height);
   }
 
   &__close-icon {

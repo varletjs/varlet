@@ -17,7 +17,7 @@ export const props = {
   },
   color: String,
   title: String,
-  text: String,
+  message: String,
   closeable: Boolean,
   elevation: {
     type: [Boolean, String, Number],

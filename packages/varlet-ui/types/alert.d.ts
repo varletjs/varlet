@@ -12,7 +12,7 @@ export interface AlertProps extends BasicAttributes {
   variant?: AlertVariant
   color?: string
   title?: string
-  text?: string
+  message?: string
   closeable?: boolean
   elevation?: boolean | string | number
   iconName?: string
@@ -27,6 +27,7 @@ export class Alert extends VarComponent {
 
   $slots: {
     default(): VNode[]
+    content(): VNode[]
     title(): VNode[]
     icon(): VNode[]
     'close-icon'(): VNode[]

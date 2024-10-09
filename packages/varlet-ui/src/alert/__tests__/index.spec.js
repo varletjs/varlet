@@ -25,6 +25,12 @@ describe('test alert component props', () => {
 
     expect(wrapper.find('.var-alert__title').text()).toBe('Jane Eyre')
 
+    await wrapper.setProps({
+      title: undefined,
+    })
+
+    expect(wrapper.find('.var-alert__title').exists()).toBe(false)
+
     wrapper.unmount()
   })
 
@@ -48,20 +54,20 @@ describe('test alert component props', () => {
     })
   })
 
-  test('test alert text', async () => {
+  test('test alert message', async () => {
     const wrapper = mount(VarAlert, {
       props: {
-        text: 'Pride And Prejudice',
+        message: 'Pride And Prejudice',
       },
     })
 
-    expect(wrapper.find('.var-alert__content').text()).toBe('Pride And Prejudice')
+    expect(wrapper.find('.var-alert__message').text()).toBe('Pride And Prejudice')
 
     await wrapper.setProps({
-      text: 'Jane Eyre',
+      message: 'Jane Eyre',
     })
 
-    expect(wrapper.find('.var-alert__content').text()).toBe('Jane Eyre')
+    expect(wrapper.find('.var-alert__message').text()).toBe('Jane Eyre')
 
     wrapper.unmount()
   })
@@ -173,7 +179,7 @@ describe('test alert component slots', () => {
       },
     })
 
-    expect(wrapper.find('.var-alert__content').text()).toBe('Pride And Prejudice')
+    expect(wrapper.find('.var-alert__message').text()).toBe('Pride And Prejudice')
 
     wrapper.unmount()
   })
@@ -186,6 +192,18 @@ describe('test alert component slots', () => {
     })
 
     expect(wrapper.find('.var-alert__title').text()).toBe('Pride And Prejudice')
+
+    wrapper.unmount()
+  })
+
+  test('test alert content slot', () => {
+    const wrapper = mount(VarAlert, {
+      slots: {
+        content: () => 'Pride And Prejudice',
+      },
+    })
+
+    expect(wrapper.find('.var-alert').text()).toBe('Pride And Prejudice')
 
     wrapper.unmount()
   })

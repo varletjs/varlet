@@ -17,10 +17,10 @@ export default {
   '--alert-tonal-success-color': 'var(--color-on-success)',
   '--alert-tonal-warning-color': 'var(--color-on-warning)',
   '--alert-tonal-info-color': 'var(--color-on-info)',
-  '--alert-content-font-size': '14px',
+  '--alert-message-font-size': '14px',
   '--alert-title-font-size': '16px',
   '--alert-title-font-weight': '500',
   '--alert-title-margin-bottom': '5px',
-  '--alert-content-line-height': '18px',
+  '--alert-message-line-height': '18px',
   '--alert-title-line-height': '28px',
 }
