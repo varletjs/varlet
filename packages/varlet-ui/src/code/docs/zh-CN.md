@@ -7,7 +7,7 @@
 ### 注意事项
 
 - 由于包体积的原因，组件库不内置代码着色器，请使用 `HighlighterProvider` 组件正确设置着色器
-- 组件库推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，可用主题及详细配置请参考其文档
+- 组件库推荐使用 [Shiki](https://shiki.tmrs.site/) 作为着色器，[可用主题](https://shiki.tmrs.site/themes)及详细配置请参考其文档
 
 ### 安装 Shiki
 

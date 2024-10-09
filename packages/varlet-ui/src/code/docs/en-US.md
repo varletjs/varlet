@@ -7,7 +7,7 @@ Code Block component, used for code highlighted
 ### Notes
 
 - Due to the size of the package, the component library does not have a built-in code highlighter. Please make sure to use the `HighlighterProvider` component to correctly set the highlighter
-- The component library recommends using [Shiki](https://shiki.tmrs.site/) as the highlighter. For the themes and detailed configuration, please refer to the documentation
+- The component library recommends using [Shiki](https://shiki.tmrs.site/) as the highlighter. For the [themes](https://shiki.tmrs.site/themes) and detailed configuration, please refer to the documentation
 
 ### Install Shiki
 
