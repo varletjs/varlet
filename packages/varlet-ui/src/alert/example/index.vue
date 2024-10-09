@@ -4,7 +4,10 @@ import { watchLang, AppType } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, t } from './locale'
 
+const options = ['info', 'success', 'warning', 'error'].map((value) => ({ label: value, value }))
+
 const show = ref(true)
+const type = ref('info')
 
 watchLang(use)
 </script>
@@ -25,10 +28,17 @@ watchLang(use)
   </var-space>
 
   <app-type>{{ t('variant') }}</app-type>
+  <var-select v-model="type" :options="options" style="margin-bottom: 10px" />
   <var-space :size="[10, 10]">
-    <var-alert :title="t('alertTitle')" :text="t('alertText')" />
-    <var-alert :title="t('alertTitle')" :text="t('alertText')" variant="outlined" style="margin-top: 10px" />
-    <var-alert :title="t('alertTitle')" :text="t('alertText')" variant="tonal" style="margin-top: 10px" />
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" :type="type" />
+    <var-alert
+      :title="t('alertTitle')"
+      :text="t('alertText')"
+      variant="outlined"
+      :type="type"
+      style="margin-top: 10px"
+    />
+    <var-alert :title="t('alertTitle')" :text="t('alertText')" variant="tonal" :type="type" style="margin-top: 10px" />
   </var-space>
 
   <app-type>{{ t('customIcon') }}</app-type>

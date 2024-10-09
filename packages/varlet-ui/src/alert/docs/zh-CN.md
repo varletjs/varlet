@@ -152,6 +152,14 @@ const show = ref(true)
 | `--alert-success-background` | `var(--color-success)` |
 | `--alert-warning-background` | `var(--color-warning)` |
 | `--alert-info-background` | `var(--color-info)` |
+| `--alert-tonal-error-background`| `var(--color-danger-container)` |
+| `--alert-tonal-success-background`| `var(--color-success-container)` |
+| `--alert-tonal-warning-background`| `var(--color-warning-container)` |
+| `--alert-tonal-info-background`| `var(--color-info-container)` |
+| `--alert-tonal-error-color`| `var(--color-on-danger)` |
+| `--alert-tonal-success-color`| `var(--color-on-success)` |
+| `--alert-tonal-warning-color`| `var(--color-on-warning)` |
+| `--alert-tonal-info-color`| `var(--color-on-info)` |
 | `--alert-content-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
