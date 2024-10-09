@@ -3,7 +3,7 @@ export default {
   '--alert-border-radius': '4px',
   '--alert-icon-margin-right': '12px',
   '--alert-close-icon-margin-left': '12px',
-  '--alert-color': 'rgba(0, 0, 0, 0.87)',
+  '--alert-outlined-color': '#fff',
   '--alert-standard-color': 'rgba(255, 255, 255, 0.87)',
   '--alert-error-background': 'var(--color-danger)',
   '--alert-success-background': 'var(--color-success)',

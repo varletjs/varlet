@@ -26,7 +26,7 @@ interface BaseStyleVars {
   '--alert-border-radius'?: string
   '--alert-icon-margin-right'?: string
   '--alert-close-icon-margin-left'?: string
-  '--alert-color'?: string
+  '--alert-outlined-color'?: string
   '--alert-standard-color'?: string
   '--alert-error-background'?: string
   '--alert-success-background'?: string

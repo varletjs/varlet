@@ -1,6 +1,6 @@
 <script setup>
 import VarAlert from '..'
-import { watchLang, AppType } from '@varlet/cli/client'
+import { watchLang, AppType, onThemeChange } from '@varlet/cli/client'
 import { ref } from 'vue'
 import { use, t } from './locale'
 
@@ -10,6 +10,7 @@ const show = ref(true)
 const type = ref('info')
 
 watchLang(use)
+onThemeChange()
 </script>
 
 <template>
