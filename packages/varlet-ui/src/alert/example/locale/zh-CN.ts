@@ -6,4 +6,5 @@ export default {
   type: '类型',
   customIcon: '自定义图标',
   allowToClose: '允许关闭',
+  variant: '变体',
 }

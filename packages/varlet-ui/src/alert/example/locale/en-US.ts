@@ -6,4 +6,5 @@ export default {
   type: 'Type',
   customIcon: 'Custom Icon',
   allowToClose: 'Allow To Close',
+  variant: 'Variant',
 }

@@ -36,12 +36,33 @@
   <var-alert 
     title="傲慢与偏见" 
     text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
-    type="info"
+    type="warning"
   />
   <var-alert 
     title="傲慢与偏见" 
     text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
     type="error"
+  />
+</template>
+```
+
+### 变体
+
+```html
+<template>
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+  />
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    variant="outlined"
+  />
+  <var-alert 
+    title="傲慢与偏见" 
+    text="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
+    variant="tonal"
   />
 </template>
 ```
@@ -90,7 +111,8 @@ const show = ref(true)
 
 | 参数          | 说明 | 类型 | 默认值 |
 |-------------| ---- | ---- | ---- |
-| `type`      | 类型，可选值为 `info` `success` `warning` `error` | _string_ | `warning` |
+| `type`      | 类型，可选值为 `info` `success` `warning` `error` | _string_ | `info` |
+| `variant`      | 变体，可选值为 `standard` `outlined` `tonal` | _string_ | `standard` |
 | `color` | 背景色 | _string_ | `-` |
 | `title` | 标题 | _string_ | `-` |
 | `text`  | 内容 | _string_ | `-` |
@@ -124,7 +146,8 @@ const show = ref(true)
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
-| `--alert-color` | `rgba(255, 255, 255, 0.87)` |
+| `--alert-color` | `rgba(0, 0, 0, 0.87)` |
+| `--alert-standard-color` | `rgba(255, 255, 255, 0.87)` |
 | `--alert-error-background` | `var(--color-danger)` |
 | `--alert-success-background` | `var(--color-success)` |
 | `--alert-warning-background` | `var(--color-warning)` |

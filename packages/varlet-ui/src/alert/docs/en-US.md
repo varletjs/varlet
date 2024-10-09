@@ -36,12 +36,33 @@ Alerts display brief messages for the user without interrupting their use.
   <var-alert 
     title="Pride And Prejudice" 
     text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    type="info"
+    type="warning"
   />
   <var-alert 
     title="Pride And Prejudice" 
     text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     type="error"
+  />
+</template>
+```
+
+### Variant
+
+```html
+<template>
+  <var-alert 
+    title="Pride And Prejudice" 
+    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+  />
+  <var-alert 
+    title="Pride And Prejudice" 
+    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    variant="outlined"
+  />
+  <var-alert 
+    title="Pride And Prejudice" 
+    text="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    variant="tonal"
   />
 </template>
 ```
@@ -91,7 +112,8 @@ const show = ref(true)
 
 | Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
-| `type` | Type, optional values are `info`, `success`, `warning`, `error` | _string_ | `warning` | 
+| `type` | Type, optional values are `info`, `success`, `warning`, `error` | _string_ | `info` | 
+| `variant`   | Variant, optional values are `standard` `outlined` `tonal` | _string_ | `standard` |
 | `color` | Background color | string | `-` | 
 | `title` | Title | string | `-` | 
 | `text` | Content | string | `-` | 
@@ -125,7 +147,8 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
-| `--alert-color` | `rgba(255, 255, 255, 0.87)` |
+| `--alert-color` | `rgba(0, 0, 0, 0.87)` |
+| `--alert-standard-color` | `rgba(255, 255, 255, 0.87)` |
 | `--alert-error-background` | `var(--color-danger)` |
 | `--alert-success-background` | `var(--color-success)` |
 | `--alert-warning-background` | `var(--color-warning)` |

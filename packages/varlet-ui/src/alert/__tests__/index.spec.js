@@ -98,18 +98,16 @@ describe('test alert component props', () => {
     wrapper.unmount()
   })
 
-  test('test alert outline', async () => {
-    const wrapper = mount(VarAlert)
+  test('test alert variant', async () => {
+    ;['tonal', 'outlined', 'standard'].forEach((variant) => {
+      const wrapper = mount(VarAlert, {
+        props: { variant },
+      })
 
-    expect(wrapper.find('.var-alert--outline').exists()).toBe(false)
+      expect(wrapper.find('.var-alert--' + variant).exists()).toBe(true)
 
-    await wrapper.setProps({
-      outline: true,
+      wrapper.unmount()
     })
-
-    expect(wrapper.find('.var-alert--outline').exists()).toBe(true)
-
-    wrapper.unmount()
   })
 
   test('test alert elevation', async () => {

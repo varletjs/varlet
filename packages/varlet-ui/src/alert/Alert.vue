@@ -1,7 +1,7 @@
 <template>
   <transition :name="`${n()}-fade`">
     <div
-      :class="classes(n(), n(`--${type}`), [outline, n('--outline')], formatElevation(elevation, 2), n('$--box'))"
+      :class="classes(n(), n(`--${variant}`), n(`--${type}`), formatElevation(elevation, 2), n('$--box'))"
       :style="{
         'background-color': color,
       }"

@@ -5,14 +5,16 @@ export declare const alertProps: Record<keyof AlertProps, any>
 
 export type AlertType = 'info' | 'success' | 'warning' | 'error'
 
+export type AlertVariant = 'filled' | 'outlined' | 'standard'
+
 export interface AlertProps extends BasicAttributes {
   type?: AlertType
+  variant?: AlertVariant
   color?: string
   title?: string
   text?: string
   closeable?: boolean
   elevation?: boolean | string | number
-  outline?: boolean
   iconName?: string
   namespace?: string
   onClose?: ListenerProp<(e: Event) => void>
