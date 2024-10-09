@@ -62,6 +62,7 @@ import space from './space'
 import swipe from './swipe'
 import tooltip from './tooltip'
 import select from './select'
+import code from './code'
 
 export default {
   '--font-size-xs': '10px',
@@ -204,4 +205,5 @@ export default {
   ...swipe,
   ...tooltip,
   ...select,
+  ...code,
 } as StyleVars

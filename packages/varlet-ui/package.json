@@ -64,20 +64,21 @@
     "decimal.js": "^10.2.1"
   },
   "devDependencies": {
+    "@types/node": "^18.7.18",
     "@varlet/cli": "workspace:*",
-    "@varlet/ui": "workspace: *",
     "@varlet/touch-emulator": "workspace:*",
+    "@varlet/ui": "workspace: *",
+    "@vitest/coverage-istanbul": "2.0.5",
     "@vue/runtime-core": "3.4.21",
     "@vue/test-utils": "2.4.1",
-    "@types/node": "^18.7.18",
-    "@vitest/coverage-istanbul": "2.0.5",
-    "zod": "^3.23.8",
-    "jsdom": "24.1.1",
-    "vitest": "2.0.5",
     "clipboard": "^2.0.6",
+    "jsdom": "24.1.1",
     "live-server": "^1.2.1",
+    "shiki": "^1.21.0",
     "typescript": "^5.1.5",
+    "vitest": "2.0.5",
     "vue": "3.4.21",
-    "vue-router": "4.2.0"
+    "vue-router": "4.2.0",
+    "zod": "^3.23.8"
   }
 }

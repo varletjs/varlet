@@ -62,6 +62,7 @@ import step from './step'
 import swipe from './swipe'
 import watermark from './watermark'
 import appBar from './appBar'
+import code from './code'
 
 export default {
   '--font-size-xs': '10px',
@@ -204,4 +205,5 @@ export default {
   ...swipe,
   ...watermark,
   ...appBar,
+  ...code,
 } as StyleVars

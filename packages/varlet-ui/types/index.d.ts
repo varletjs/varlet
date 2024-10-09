@@ -21,6 +21,7 @@ export * from './cell'
 export * from './checkbox'
 export * from './checkboxGroup'
 export * from './chip'
+export * from './code'
 export * from './col'
 export * from './collapse'
 export * from './collapseItem'
@@ -37,6 +38,7 @@ export * from './fab'
 export * from './floatingPanel'
 export * from './form'
 export * from './formDetails'
+export * from './highlighterProvider'
 export * from './hover'
 export * from './hoverOverlay'
 export * from './icon'
@@ -115,6 +117,7 @@ declare module 'vue' {
     VarCheckbox: typeof import('@varlet/ui')['_CheckboxComponent']
     VarCheckboxGroup: typeof import('@varlet/ui')['_CheckboxGroupComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
+    VarCode: typeof import('@varlet/ui')['_CodeComponent']
     VarCol: typeof import('@varlet/ui')['_ColComponent']
     VarCollapse: typeof import('@varlet/ui')['_CollapseComponent']
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']
@@ -131,6 +134,7 @@ declare module 'vue' {
     VarFloatingPanel: typeof import('@varlet/ui')['_FloatingPanelComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarFormDetails: typeof import('@varlet/ui')['_FormDetailsComponent']
+    VarHighlighterProvider: typeof import('@varlet/ui')['_HighlighterProviderComponent']
     VarHoverOverlay: typeof import('@varlet/ui')['_HoverOverlayComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
