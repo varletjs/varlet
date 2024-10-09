@@ -26,17 +26,15 @@ interface BaseStyleVars {
   '--alert-border-radius'?: string
   '--alert-icon-margin-right'?: string
   '--alert-close-icon-margin-left'?: string
-  '--alert-error-text-color'?: string
-  '--alert-success-text-color'?: string
-  '--alert-warning-text-color'?: string
-  '--alert-info-text-color'?: string
-  '--alert-error-color'?: string
-  '--alert-success-color'?: string
-  '--alert-warning-color'?: string
-  '--alert-info-color'?: string
+  '--alert-color'?: string
+  '--alert-error-background'?: string
+  '--alert-success-background'?: string
+  '--alert-warning-background'?: string
+  '--alert-info-background'?: string
   '--alert-content-font-size'?: string
   '--alert-title-font-size'?: string
   '--alert-title-font-weight'?: string
+  '--alert-title-margin-bottom'?: string
   '--app-bar-color'?: string
   '--app-bar-text-color'?: string
   '--app-bar-height'?: string

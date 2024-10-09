@@ -125,14 +125,12 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-border-radius` | `4px` |
 | `--alert-icon-margin-right` | `12px` |
 | `--alert-close-icon-margin-left` | `12px` |
-| `--alert-error-text-color` | `var(--color-on-danger-container)` |
-| `--alert-success-text-color` | `var(--color-on-success-container)` |
-| `--alert-warning-text-color` | `var(--color-on-warning-container)` |
-| `--alert-info-text-color` | `var(--color-on-info-container)` |
-| `--alert-error-color` | `var(--color-danger-container)` |
-| `--alert-success-color` | `var(--color-success-container)` |
-| `--alert-warning-color` | `var(--color-warning-container)` |
-| `--alert-info-color` | `var(--color-info-container)` |
+| `--alert-color` | `rgba(255, 255, 255, 0.87)` |
+| `--alert-error-background` | `var(--color-danger)` |
+| `--alert-success-background` | `var(--color-success)` |
+| `--alert-warning-background` | `var(--color-warning)` |
+| `--alert-info-background` | `var(--color-info)` |
 | `--alert-content-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
+| `--alert-title-margin-bottom` | `5px` |
