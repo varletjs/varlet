@@ -31,5 +31,8 @@ onThemeChange((theme) => {
 
     <app-type>{{ t('wordWrap') }}</app-type>
     <var-code code="console.log('Hello Varlet UI');console.log('Hello Varlet UI');" language="javascript" word-wrap />
+
+    <app-type>{{ t('trim') }}</app-type>
+    <var-code code="   console.log('Hello Varlet UI');   " language="javascript" word-wrap />
   </var-highlighter-provider>
 </template>
