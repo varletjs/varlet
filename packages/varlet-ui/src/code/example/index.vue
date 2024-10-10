@@ -33,6 +33,6 @@ onThemeChange((theme) => {
     <var-code code="console.log('Hello Varlet UI');console.log('Hello Varlet UI');" language="javascript" word-wrap />
 
     <app-type>{{ t('trim') }}</app-type>
-    <var-code code="   console.log('Hello Varlet UI');   " language="javascript" word-wrap />
+    <var-code code="   console.log('Hello Varlet UI');   " language="javascript" trim />
   </var-highlighter-provider>
 </template>
