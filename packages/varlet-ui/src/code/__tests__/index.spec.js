@@ -116,7 +116,29 @@ describe('test code component props', () => {
           h(VarCode, {
             code: "   console.log('hello world')   ",
             language: 'javascript',
-            trim: true,
+          }),
+      },
+    })
+
+    await delay(300)
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+
+  test('test code no trim', async () => {
+    const wrapper = mount(VarHighlighterProvider, {
+      props: {
+        highlighter: {
+          codeToHtml,
+        },
+        theme: 'vitesse-light',
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            code: "   console.log('hello world')   ",
+            language: 'javascript',
+            trim: false,
           }),
       },
     })
