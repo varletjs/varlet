@@ -20,7 +20,7 @@ yarn add shiki
 pnpm add shiki
 ```
 
-### Basic Use
+### Basic Usage
 
 ```html
 <script setup>
@@ -65,6 +65,7 @@ import { codeToHtml } from 'shiki'
 | `code`           | Code Snippet                                                      | _string_       | `-`              |
 | `language`       | Code Language                                                         | _string_       | `-`              |
 | `theme`          | Code Theme                                                         | _string_       | `-`              |
+| `word-wrap`          | Whether to support automatic line wrapping when code overflows                                                         | _boolean_       | `false`              |
 
 #### HighlighterProvider Props
 
@@ -88,6 +89,7 @@ import { codeToHtml } from 'shiki'
 | `theme` | Code Theme | _string_ | `-` |
 
 ### Style Variables
+
 Here are the CSS variables used by the component. Styles can be customized using [StyleProvider](#/en-US/style-provider).
 
 | Variable | Default |
