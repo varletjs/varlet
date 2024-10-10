@@ -3,11 +3,7 @@ export const props = {
     type: String,
     default: '',
   },
-  language: {
-    type: String,
-  },
-  theme: {
-    type: String,
-  },
+  language: String,
+  theme: String,
   wordWrap: Boolean,
 }

@@ -78,4 +78,28 @@ describe('test code component props', () => {
     expect(wrapper.html()).toMatchSnapshot()
     wrapper.unmount()
   })
+
+  test('test code word-wrap', async () => {
+    const wrapper = mount(VarHighlighterProvider, {
+      props: {
+        highlighter: {
+          codeToHtml,
+        },
+        theme: 'vitesse-light',
+      },
+      slots: {
+        default: () =>
+          h(VarCode, {
+            code: "console.log('hello world')",
+            language: 'javascript',
+            wordWrap: true,
+          }),
+      },
+    })
+
+    await delay(300)
+    expect(wrapper.find('.var-code--word-wrap').exists()).toBe(true)
+
+    wrapper.unmount()
+  })
 })

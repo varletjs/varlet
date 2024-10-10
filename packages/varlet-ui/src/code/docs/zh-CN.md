@@ -65,6 +65,7 @@ import { codeToHtml } from 'shiki'
 | `code`           | 代码片段                                                      | _string_       | `-`              |
 | `language`       | 语言                                                         | _string_       | `-`              |
 | `theme`          | 主题                                                         | _string_       | `-`              |
+| `word-wrap`          |    是否开启在代码溢出时自动换行                                                    | _boolean_       | `false`              |
 
 #### HighlighterProvider Props
 
