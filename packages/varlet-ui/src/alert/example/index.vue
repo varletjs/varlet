@@ -35,14 +35,14 @@ onThemeChange()
     <var-alert
       :title="t('alertTitle')"
       :message="t('alertText')"
-      variant="outlined"
+      variant="tonal"
       :type="type"
       style="margin-top: 10px"
     />
     <var-alert
       :title="t('alertTitle')"
       :message="t('alertText')"
-      variant="tonal"
+      variant="outlined"
       :type="type"
       style="margin-top: 10px"
     />
@@ -56,7 +56,7 @@ onThemeChange()
   </var-alert>
 
   <app-type>{{ t('allowToClose') }}</app-type>
-  <var-alert v-if="show" :title="t('alertTitle')" :message="t('alertText')" closeable @click="show = false">
+  <var-alert v-if="show" :title="t('alertTitle')" :message="t('alertText')" closeable @close="show = false">
     <template #icon>
       <var-icon name="heart" />
     </template>

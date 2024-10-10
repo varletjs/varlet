@@ -43,7 +43,7 @@ interface BaseStyleVars {
   '--alert-message-font-size'?: string
   '--alert-title-font-size'?: string
   '--alert-title-font-weight'?: string
-  '--alert-title-margin-bottom'?: string
+  '--alert-message-margin-top'?: string
   '--alert-message-line-height'?: string
   '--alert-title-line-height'?: string
   '--app-bar-color'?: string

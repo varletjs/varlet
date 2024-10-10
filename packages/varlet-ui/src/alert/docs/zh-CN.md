@@ -57,12 +57,12 @@
   <var-alert 
     title="傲慢与偏见" 
     message="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
-    variant="outlined"
+    variant="tonal"
   />
   <var-alert 
     title="傲慢与偏见" 
     message="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
-    variant="tonal"
+    variant="outlined"
   />
 </template>
 ```
@@ -96,7 +96,7 @@ const show = ref(true)
     title="傲慢与偏见" 
     message="我也说不准是在什么时间，什么地点，看见你的什么神情，听见你的什么言语，便开始爱上了你。"
     closeable
-    @click="show = false"
+    @close="show = false"
   >
     <template #icon>
       <var-icon name="heart" />
@@ -157,13 +157,13 @@ const show = ref(true)
 | `--alert-tonal-success-background`| `var(--color-success-container)` |
 | `--alert-tonal-warning-background`| `var(--color-warning-container)` |
 | `--alert-tonal-info-background`| `var(--color-info-container)` |
-| `--alert-tonal-error-color`| `var(--color-on-danger)` |
-| `--alert-tonal-success-color`| `var(--color-on-success)` |
-| `--alert-tonal-warning-color`| `var(--color-on-warning)` |
+| `--alert-tonal-error-color`| `var(--color-on-danger-container)` |
+| `--alert-tonal-success-color`| `var(--color-on-success-container)` |
+| `--alert-tonal-warning-color`| `var(--color-on-warning-container)` |
 | `--alert-tonal-info-color`| `var(--color-on-info-container)` |
 | `--alert-message-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
-| `--alert-title-margin-bottom` | `5px` |
+| `--alert-message-margin-top` | `5px` |
 | `--alert-message-line-height`| `18px` |
 | `--alert-title-line-height`| `28px` |

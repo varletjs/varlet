@@ -57,12 +57,12 @@ Alerts display brief messages for the user without interrupting their use.
   <var-alert 
     title="Pride And Prejudice" 
     message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    variant="outlined"
+    variant="tonal"
   />
   <var-alert 
     title="Pride And Prejudice" 
     message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    variant="tonal"
+    variant="outlined"
   />
 </template>
 ```
@@ -96,7 +96,7 @@ const show = ref(true)
     title="Pride And Prejudice" 
     message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
     closeable
-    @click="show = false"
+    @close="show = false"
   >
     <template #icon>
       <var-icon name="heart" />
@@ -158,13 +158,13 @@ Here are the CSS variables used by the component. Styles can be customized using
 | `--alert-tonal-success-background`| `var(--color-success-container)` |
 | `--alert-tonal-warning-background`| `var(--color-warning-container)` |
 | `--alert-tonal-info-background`| `var(--color-info-container)` |
-| `--alert-tonal-error-color`| `var(--color-on-danger)` |
-| `--alert-tonal-success-color`| `var(--color-on-success)` |
-| `--alert-tonal-warning-color`| `var(--color-on-warning)` |
+| `--alert-tonal-error-color`| `var(--color-on-danger-container)` |
+| `--alert-tonal-success-color`| `var(--color-on-success-container)` |
+| `--alert-tonal-warning-color`| `var(--color-on-warning-container)` |
 | `--alert-tonal-info-color`| `var(--color-on-info-container)` |
 | `--alert-message-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
-| `--alert-title-margin-bottom` | `5px` |
+| `--alert-message-margin-top` | `5px` |
 | `--alert-message-line-height`| `18px` |
 | `--alert-title-line-height`| `28px` |

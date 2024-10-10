@@ -13,14 +13,14 @@
   --alert-tonal-success-background: var(--color-success-container);
   --alert-tonal-warning-background: var(--color-warning-container);
   --alert-tonal-info-background: var(--color-info-container);
-  --alert-tonal-error-color: var(--color-on-danger);
-  --alert-tonal-success-color: var(--color-on-success);
-  --alert-tonal-warning-color: var(--color-on-warning);
+  --alert-tonal-error-color: var(--color-on-danger-container);
+  --alert-tonal-success-color: var(--color-on-success-container);
+  --alert-tonal-warning-color: var(--color-on-warning-container);
   --alert-tonal-info-color: var(--color-on-info-container);
   --alert-message-font-size: 14px;
   --alert-title-font-size: 16px;
   --alert-title-font-weight: 500;
-  --alert-title-margin-bottom: 5px;
+  --alert-message-margin-top: 5px;
   --alert-message-line-height: 18px;
   --alert-title-line-height: 28px;
 }
@@ -42,10 +42,13 @@
   &__title {
     font-size: var(--alert-title-font-size);
     font-weight: var(--alert-title-font-weight);
-    margin-bottom: var(--alert-title-margin-bottom);
     line-height: var(--alert-title-line-height);
     word-break: normal;
     word-wrap: break-word;
+  }
+
+  &__title + &__message {
+    margin-top: var(--alert-message-margin-top);
   }
 
   &__message {
