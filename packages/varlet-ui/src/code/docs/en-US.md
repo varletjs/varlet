@@ -54,20 +54,6 @@ import { codeToHtml } from 'shiki'
 </template>
 ```
 
-### Trim
-
-```html
-<script setup>
-import { codeToHtml } from 'shiki'
-</script>
-
-<template>
-  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
-    <var-code code="   console.log('Hello Varlet UI');   " language="javascript" trim />
-  </var-highlighter-provider>
-</template>
-```
-
 ## API
 
 ### Props

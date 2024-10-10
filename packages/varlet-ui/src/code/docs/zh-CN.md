@@ -54,21 +54,6 @@ import { codeToHtml } from 'shiki'
 </template>
 ```
 
-
-### 移除首尾空白字符
-
-```html
-<script setup>
-import { codeToHtml } from 'shiki'
-</script>
-
-<template>
-  <var-highlighter-provider :highlighter="{ codeToHtml }" theme="vitesse-light">
-    <var-code code="   console.log('Hello Varlet UI');   " language="javascript" trim />
-  </var-highlighter-provider>
-</template>
-```
-
 ## API
 
 ### 属性
