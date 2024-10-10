@@ -22,6 +22,30 @@ interface BaseStyleVars {
   '--action-sheet-action-item-disabled-color'?: string
   '--action-sheet-icon-margin'?: string
   '--action-sheet-icon-size'?: string
+  '--alert-padding'?: string
+  '--alert-border-radius'?: string
+  '--alert-icon-margin-right'?: string
+  '--alert-close-icon-margin-left'?: string
+  '--alert-outlined-color'?: string
+  '--alert-standard-color'?: string
+  '--alert-error-background'?: string
+  '--alert-success-background'?: string
+  '--alert-warning-background'?: string
+  '--alert-info-background'?: string
+  '--alert-tonal-error-background'?: string
+  '--alert-tonal-success-background'?: string
+  '--alert-tonal-warning-background'?: string
+  '--alert-tonal-info-background'?: string
+  '--alert-tonal-error-color'?: string
+  '--alert-tonal-success-color'?: string
+  '--alert-tonal-warning-color'?: string
+  '--alert-tonal-info-color'?: string
+  '--alert-message-font-size'?: string
+  '--alert-title-font-size'?: string
+  '--alert-title-font-weight'?: string
+  '--alert-message-margin-top'?: string
+  '--alert-message-line-height'?: string
+  '--alert-title-line-height'?: string
   '--app-bar-color'?: string
   '--app-bar-text-color'?: string
   '--app-bar-height'?: string

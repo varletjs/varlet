@@ -1,5 +1,6 @@
 import { StyleVars } from '../../style-provider'
 import button from './button'
+import alert from './alert'
 import hoverOverlay from './hoverOverlay'
 import menu from './menu'
 import menuSelect from './menuSelect'
@@ -143,6 +144,7 @@ export default {
   '--shadow-key-penumbra-opacity': 'rgba(0, 0, 0, 0.14)',
   '--shadow-key-ambient-opacity': 'rgba(0, 0, 0, 0.12)',
   ...button,
+  ...alert,
   ...hoverOverlay,
   ...menu,
   ...menuSelect,

@@ -1,5 +1,6 @@
 import { StyleVars } from '../../style-provider'
 import actionSheet from './actionSheet'
+import alert from './alert'
 import badge from './badge'
 import button from './button'
 import card from './card'
@@ -143,6 +144,7 @@ export default {
   '--shadow-key-penumbra-opacity': 'rgba(0, 0, 0, 0.14)',
   '--shadow-key-ambient-opacity': 'rgba(0, 0, 0, 0.12)',
   ...button,
+  ...alert,
   ...cell,
   ...card,
   ...timePicker,
