@@ -20,13 +20,13 @@ export default defineComponent({
 
     if (highlighter) {
       watch(
-        () => [highlighter.value, props.code, props.language, normalizedTheme.value] as const,
-        async ([highlighter, code, lang, theme]) => {
+        () => [highlighter.value, props.code, props.language, normalizedTheme.value, props.trim] as const,
+        async ([highlighter, code, lang, theme, trim]) => {
           if (!highlighter) {
             return
           }
 
-          highlightedCode.value = await highlighter.codeToHtml(code, { lang, theme })
+          highlightedCode.value = await highlighter.codeToHtml(trim ? code.trim() : code, { lang, theme })
         },
         { immediate: true }
       )

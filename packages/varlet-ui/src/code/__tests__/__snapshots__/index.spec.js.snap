@@ -14,9 +14,23 @@ exports[`test code component props > test code language 1`] = `
 </div>"
 `;
 
+exports[`test code component props > test code no trim 1`] = `
+"<div class="var-highlighter-provider">
+  <div class="var-code"><pre class="shiki vitesse-light" style="background-color:#ffffff;color:#393a34" tabindex="0"><code><span class="line"><span style="color:#B07D48">   console</span><span style="color:#999999">.</span><span style="color:#59873A">log</span><span style="color:#999999">(</span><span style="color:#B5695977">'</span><span style="color:#B56959">hello world</span><span style="color:#B5695977">'</span><span style="color:#999999">)</span><span style="color:#393A34">   </span></span></code></pre>
+  </div>
+</div>"
+`;
+
 exports[`test code component props > test code theme 1`] = `
 "<div class="var-highlighter-provider">
   <div class="var-code"><pre class="shiki material-theme" style="background-color:#263238;color:#EEFFFF" tabindex="0"><code><span class="line"><span style="color:#EEFFFF">console</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">log</span><span style="color:#EEFFFF">(</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">hello world</span><span style="color:#89DDFF">'</span><span style="color:#EEFFFF">)</span></span></code></pre>
+  </div>
+</div>"
+`;
+
+exports[`test code component props > test code trim 1`] = `
+"<div class="var-highlighter-provider">
+  <div class="var-code"><pre class="shiki vitesse-light" style="background-color:#ffffff;color:#393a34" tabindex="0"><code><span class="line"><span style="color:#B07D48">console</span><span style="color:#999999">.</span><span style="color:#59873A">log</span><span style="color:#999999">(</span><span style="color:#B5695977">'</span><span style="color:#B56959">hello world</span><span style="color:#B5695977">'</span><span style="color:#999999">)</span></span></code></pre>
   </div>
 </div>"
 `;

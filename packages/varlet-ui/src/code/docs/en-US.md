@@ -66,6 +66,7 @@ import { codeToHtml } from 'shiki'
 | `language`       | Code Language                                                         | _string_       | `-`              |
 | `theme`          | Code Theme                                                         | _string_       | `-`              |
 | `word-wrap`          | Whether to support automatic line wrapping when code overflows                                                         | _boolean_       | `false`              |
+| `trim`           | Whether to remove the blank characters at the beginning and end of the code    | _boolean_      | `true`           |
 
 #### HighlighterProvider Props
 

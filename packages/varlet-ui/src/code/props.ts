@@ -6,4 +6,8 @@ export const props = {
   language: String,
   theme: String,
   wordWrap: Boolean,
+  trim: {
+    type: Boolean,
+    default: true,
+  },
 }

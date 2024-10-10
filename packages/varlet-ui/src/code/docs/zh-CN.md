@@ -66,6 +66,7 @@ import { codeToHtml } from 'shiki'
 | `language`       | 语言                                                         | _string_       | `-`              |
 | `theme`          | 主题                                                         | _string_       | `-`              |
 | `word-wrap`          |    是否开启在代码溢出时自动换行                                                    | _boolean_       | `false`              |
+| `trim`           | 是否移除代码开头和结尾的空白字符                                        | _boolean_      | `true`           |
 
 #### HighlighterProvider Props
 
