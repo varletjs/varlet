@@ -11,7 +11,7 @@ export default defineComponent({
   props,
   setup(props, { slots }) {
     return () => {
-      return <div class="<%- namespace %>-<%- kebabCaseName %>">{ slots.default?.() }</div>
+      return <div class={n()}>{ slots.default?.() }</div>
     }
   },
 })
