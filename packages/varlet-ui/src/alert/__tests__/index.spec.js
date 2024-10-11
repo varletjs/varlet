@@ -39,10 +39,10 @@ describe('test alert component props', () => {
       success: 'checkbox-marked-circle',
       warning: 'warning',
       info: 'information',
-      error: 'error',
+      danger: 'error',
     }
 
-    ;['info', 'success', 'warning', 'error'].forEach((type) => {
+    ;['info', 'success', 'warning', 'danger'].forEach((type) => {
       const wrapper = mount(VarAlert, {
         props: { type },
       })

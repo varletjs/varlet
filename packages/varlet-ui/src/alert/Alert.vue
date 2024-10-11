@@ -1,34 +1,34 @@
 <template>
-  <transition :name="`${n()}-fade`">
-    <div
-      :class="classes(n(), n(`--${variant}`), n(`--${type}`), formatElevation(elevation, 2), n('$--box'))"
-      :style="{
-        'background-color': color,
-      }"
-      role="alert"
-    >
-      <div :class="n('icon')" v-if="isInternalType || $slots['icon']">
-        <slot name="icon">
-          <var-icon v-if="isInternalType" :name="ICON_TYPE_MAP[type]" />
-        </slot>
-      </div>
-      <slot name="content">
-        <div :class="n('content')">
-          <div :class="n('title')" v-if="title || $slots['title']">
-            <slot name="title">{{ title }}</slot>
-          </div>
-          <div :class="n('message')" v-if="message || $slots['default']">
-            <slot>{{ message }}</slot>
-          </div>
-        </div>
+  <div
+    :class="classes(n(), n('$--box'), n(`--${variant}`), n(`--${type}`), formatElevation(elevation, 2))"
+    :style="{
+      'background-color': color,
+    }"
+    role="alert"
+  >
+    <div :class="n('icon')" v-if="isInternalType || $slots['icon']">
+      <slot name="icon">
+        <var-icon v-if="isInternalType" :name="iconTypeMap[type]" />
       </slot>
-      <div v-if="closeable" :class="n('close-icon')" @click="handleClose">
-        <slot name="close-icon">
-          <var-icon :name="`${iconName ? iconName : 'close-circle'}`" :namespace="namespace" />
-        </slot>
-      </div>
     </div>
-  </transition>
+
+    <slot name="content">
+      <div :class="n('content')">
+        <div :class="n('title')" v-if="title || $slots['title']">
+          <slot name="title">{{ title }}</slot>
+        </div>
+        <div :class="n('message')" v-if="message || $slots['default']">
+          <slot>{{ message }}</slot>
+        </div>
+      </div>
+    </slot>
+
+    <div v-if="closeable" :class="n('close-icon')" @click="handleClose">
+      <slot name="close-icon">
+        <var-icon name="close-circle" />
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -40,11 +40,11 @@ import { call } from '@varlet/shared'
 
 const { name, n, classes } = createNamespace('alert')
 
-const ICON_TYPE_MAP: Record<AlertType, string> = {
+const iconTypeMap: Record<AlertType, string> = {
   success: 'checkbox-marked-circle',
   warning: 'warning',
   info: 'information',
-  error: 'error',
+  danger: 'error',
 }
 
 export default defineComponent({
@@ -54,16 +54,16 @@ export default defineComponent({
   },
   props,
   setup(props) {
-    const isInternalType = computed(() => ['info', 'success', 'error', 'warning'].includes(props.type))
+    const isInternalType = computed(() => ['info', 'success', 'danger', 'warning'].includes(props.type))
 
     function handleClose(e: Event) {
       call(props.onClose, e)
     }
 
     return {
-      ICON_TYPE_MAP,
       n,
       classes,
+      iconTypeMap,
       isInternalType,
       formatElevation,
       handleClose,

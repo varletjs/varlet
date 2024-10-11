@@ -3,9 +3,9 @@ import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from '.
 
 export declare const alertProps: Record<keyof AlertProps, any>
 
-export type AlertType = 'info' | 'success' | 'warning' | 'error'
+export type AlertType = 'info' | 'success' | 'warning' | 'danger'
 
-export type AlertVariant = 'filled' | 'outlined' | 'standard'
+export type AlertVariant = 'tonal' | 'outlined' | 'standard'
 
 export interface AlertProps extends BasicAttributes {
   type?: AlertType
@@ -15,8 +15,6 @@ export interface AlertProps extends BasicAttributes {
   message?: string
   closeable?: boolean
   elevation?: boolean | string | number
-  iconName?: string
-  namespace?: string
   onClose?: ListenerProp<(e: Event) => void>
 }
 

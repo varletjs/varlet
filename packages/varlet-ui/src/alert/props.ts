@@ -1,8 +1,7 @@
 import { type PropType } from 'vue'
-import { iconProps } from '../icon'
-import { defineListenerProp, pickProps } from '../utils/components'
+import { defineListenerProp } from '../utils/components'
 
-export type AlertType = 'info' | 'success' | 'warning' | 'error'
+export type AlertType = 'info' | 'success' | 'warning' | 'danger'
 
 export type AlertVariant = 'tonal' | 'outlined' | 'standard'
 
@@ -23,7 +22,5 @@ export const props = {
     type: [Boolean, String, Number],
     default: false,
   },
-  iconName: pickProps(iconProps, 'name'),
-  namespace: pickProps(iconProps, 'namespace'),
   onClose: defineListenerProp<(e: Event) => void>(),
 }

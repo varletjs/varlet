@@ -24,25 +24,27 @@ Alerts display brief messages for the user without interrupting their use.
 
 ```html
 <template>
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-  />
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    type="success"
-  />
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    type="warning"
-  />
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    type="error"
-  />
+  <var-space direction="column" size="large">
+    <var-alert 
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    />
+    <var-alert 
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+      type="success"
+    />
+    <var-alert 
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+      type="warning"
+    />
+    <var-alert 
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+      type="danger"
+    />
+  </var-space>
 </template>
 ```
 
@@ -50,20 +52,22 @@ Alerts display brief messages for the user without interrupting their use.
 
 ```html
 <template>
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-  />
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    variant="tonal"
-  />
-  <var-alert 
-    title="Pride And Prejudice" 
-    message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
-    variant="outlined"
-  />
+  <var-space direction="column" size="large">
+    <var-alert 
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    />
+    <var-alert 
+      variant="tonal"
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    />
+    <var-alert
+      variant="outlined"
+      title="Pride And Prejudice" 
+      message="I can't say exactly when, where, what expression I saw on your face, or what words I heard, that made me fall in love with you."
+    />
+  </var-space>
 </template>
 ```
 
@@ -112,15 +116,13 @@ const show = ref(true)
 
 | Prop | Description | Type | Default |
 | ---- | ---- | ---- | ---- |
-| `type` | Type, optional values are `info`, `success`, `warning`, `error` | _string_ | `info` | 
+| `type` | Type, optional values are `info`, `success`, `warning`, `danger` | _string_ | `info` | 
 | `variant`   | Variant, optional values are `standard` `outlined` `tonal` | _string_ | `standard` |
 | `color` | Background color | string | `-` | 
 | `title` | Title | string | `-` | 
 | `message` | Message | string | `-` | 
 | `elevation` | Elevation, optional values are true, false, and levels from 0-24 | _string \| number \| boolean_ | `false` | 
 | `closeable` | Whether the alert is closeable | boolean | `false` | 
-| `icon-name` | Custom icon for the closeable alert, can only be used when closeable is true | string | `-` | 
-| `namespace` | Namespace for the custom closeable alert icon | string | `var-icon` |
 
 ### Slots
 
@@ -146,25 +148,29 @@ Here are the CSS variables used by the component. Styles can be customized using
 |-----------------------------| --- |
 | `--alert-padding` | `16px` |
 | `--alert-border-radius` | `4px` |
-| `--alert-icon-margin-right` | `12px` |
-| `--alert-close-icon-margin-left` | `12px` |
-| `--alert-outlined-color` | `rgba(0, 0, 0, 0.87)` |
-| `--alert-standard-color` | `rgba(255, 255, 255, 0.87)` |
-| `--alert-error-background` | `var(--color-danger)` |
+| `--alert-icon-size` | `22px` |
+| `--alert-icon-margin` | `0 12px 0 0` |
+| `--alert-close-icon-size` | `22px` |
+| `--alert-close-icon-margin` | `2px 0 0 12px` |
+| `--alert-standard-info-text-color` | `var(--color-on-info)` |
+| `--alert-standard-danger-text-color` | `var(--color-on-danger)` |
+| `--alert-standard-success-text-color` | `var(--color-on-success)` |
+| `--alert-standard-warning-text-color` | `var(--color-on-warning)` |
+| `--alert-danger-background` | `var(--color-danger)` |
 | `--alert-success-background` | `var(--color-success)` |
 | `--alert-warning-background` | `var(--color-warning)` |
 | `--alert-info-background` | `var(--color-info)` |
-| `--alert-tonal-error-background`| `var(--color-danger-container)` |
-| `--alert-tonal-success-background`| `var(--color-success-container)` |
-| `--alert-tonal-warning-background`| `var(--color-warning-container)` |
-| `--alert-tonal-info-background`| `var(--color-info-container)` |
-| `--alert-tonal-error-color`| `var(--color-on-danger-container)` |
-| `--alert-tonal-success-color`| `var(--color-on-success-container)` |
-| `--alert-tonal-warning-color`| `var(--color-on-warning-container)` |
-| `--alert-tonal-info-color`| `var(--color-on-info-container)` |
+| `--alert-tonal-danger-background` | `hsla(var(--hsl-danger), 0.12)` |
+| `--alert-tonal-success-background` | `hsla(var(--hsl-success), 0.12)` |
+| `--alert-tonal-warning-background` | `hsla(var(--hsl-warning), 0.12)` |
+| `--alert-tonal-info-background` | `hsla(var(--hsl-info), 0.12)` |
+| `--alert-tonal-danger-text-color` | `var(--color-danger)` |
+| `--alert-tonal-success-text-color` | `var(--color-success)` |
+| `--alert-tonal-warning-text-color` | `var(--color-warning)` |
+| `--alert-tonal-info-text-color` | `var(--color-info)` |
 | `--alert-message-font-size` | `14px` |
 | `--alert-title-font-size` | `16px` |
 | `--alert-title-font-weight` | `500` |
-| `--alert-message-margin-top` | `5px` |
-| `--alert-message-line-height`| `18px` |
-| `--alert-title-line-height`| `28px` |
+| `--alert-message-margin-top` | `4px` |
+| `--alert-message-line-height` | `1.5` |
+| `--alert-title-line-height` | `1.5` |
