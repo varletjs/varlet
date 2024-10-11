@@ -478,6 +478,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'Alert 警告信息',
+          'en-US': 'Alert',
+        },
+        doc: 'alert',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Drag 拖拽',
           'en-US': 'Drag',
         },

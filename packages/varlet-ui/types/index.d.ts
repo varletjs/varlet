@@ -4,6 +4,7 @@ export const version: string
 export const install: (app: App) => void
 
 export * from './actionSheet'
+export * from './alert'
 export * from './appBar'
 export * from './autoComplete'
 export * from './avatar'
@@ -100,6 +101,7 @@ export * from './watermark'
 declare module 'vue' {
   export interface GlobalComponents {
     VarActionSheet: typeof import('@varlet/ui')['_ActionSheetComponent']
+    VarAlert: typeof import('@varlet/ui')['_AlertComponent']
     VarAppBar: typeof import('@varlet/ui')['_AppBarComponent']
     VarAutoComplete: typeof import('@varlet/ui')['_AutoCompleteComponent']
     VarAvatar: typeof import('@varlet/ui')['_AvatarComponent']
