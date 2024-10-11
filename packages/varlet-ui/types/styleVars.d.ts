@@ -24,22 +24,26 @@ interface BaseStyleVars {
   '--action-sheet-icon-size'?: string
   '--alert-padding'?: string
   '--alert-border-radius'?: string
-  '--alert-icon-margin-right'?: string
-  '--alert-close-icon-margin-left'?: string
-  '--alert-outlined-color'?: string
-  '--alert-standard-color'?: string
-  '--alert-error-background'?: string
+  '--alert-icon-size'?: string
+  '--alert-icon-margin'?: string
+  '--alert-close-icon-size'?: string
+  '--alert-close-icon-margin'?: string
+  '--alert-standard-info-text-color'?: string
+  '--alert-standard-danger-text-color'?: string
+  '--alert-standard-success-text-color'?: string
+  '--alert-standard-warning-text-color'?: string
+  '--alert-danger-background'?: string
   '--alert-success-background'?: string
   '--alert-warning-background'?: string
   '--alert-info-background'?: string
-  '--alert-tonal-error-background'?: string
+  '--alert-tonal-danger-background'?: string
   '--alert-tonal-success-background'?: string
   '--alert-tonal-warning-background'?: string
   '--alert-tonal-info-background'?: string
-  '--alert-tonal-error-color'?: string
-  '--alert-tonal-success-color'?: string
-  '--alert-tonal-warning-color'?: string
-  '--alert-tonal-info-color'?: string
+  '--alert-tonal-danger-text-color'?: string
+  '--alert-tonal-success-text-color'?: string
+  '--alert-tonal-warning-text-color'?: string
+  '--alert-tonal-info-text-color'?: string
   '--alert-message-font-size'?: string
   '--alert-title-font-size'?: string
   '--alert-title-font-weight'?: string

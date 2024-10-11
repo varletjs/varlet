@@ -16,7 +16,7 @@ onThemeChange()
   <app-type>{{ t('title') }}</app-type>
   <var-alert :title="t('alertTitle')" />
 
-  <app-type>{{ t('content') }}</app-type>
+  <app-type>{{ t('message') }}</app-type>
   <var-alert :message="t('alertText')" />
 
   <app-type>{{ t('type') }}</app-type>
@@ -29,7 +29,7 @@ onThemeChange()
 
   <app-type>{{ t('variant') }}</app-type>
   <var-space direction="column" size="large">
-    <var-select v-model="type" :options="options" />
+    <var-select variant="outlined" size="small" v-model="type" :options="options" />
     <var-alert :title="t('alertTitle')" :message="t('alertText')" :type="type" />
     <var-alert variant="tonal" :title="t('alertTitle')" :message="t('alertText')" :type="type" />
     <var-alert variant="outlined" :title="t('alertTitle')" :message="t('alertText')" :type="type" />
@@ -43,9 +43,5 @@ onThemeChange()
   </var-alert>
 
   <app-type>{{ t('allowToClose') }}</app-type>
-  <var-alert v-if="show" :title="t('alertTitle')" :message="t('alertText')" closeable @close="show = false">
-    <template #icon>
-      <var-icon name="heart" />
-    </template>
-  </var-alert>
+  <var-alert v-if="show" :title="t('alertTitle')" :message="t('alertText')" closeable @close="show = false" />
 </template>
