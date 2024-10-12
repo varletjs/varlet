@@ -24,7 +24,7 @@
     "release:extension": "pnpm --dir ./packages/varlet-vscode-extension release"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec nano-staged --allow-empty --concurrent false",
+    "pre-commit": "pnpm exec nano-staged --allow-empty",
     "commit-msg": "pnpm exec varlet-cli commit-lint -p $1 && pnpm exec varlet-cli checklist $1"
   },
   "nano-staged": {
