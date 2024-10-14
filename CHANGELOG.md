@@ -1,3 +1,12 @@
+## [3.6.1](https://github.com/varletjs/varlet/compare/v3.6.0...v3.6.1) (2024-10-14)
+
+
+### Bug Fixes
+
+* **highlighter-provder:** fix CodeToHtmlOptions types ([dd0d2d7](https://github.com/varletjs/varlet/commit/dd0d2d7f2e860cb679f61816063d3d9f15c02243))
+
+
+
 # [3.6.0](https://github.com/varletjs/varlet/compare/v3.5.4...v3.6.0) (2024-10-14)
 
 
