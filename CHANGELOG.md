@@ -1,3 +1,14 @@
+# [3.6.0](https://github.com/varletjs/varlet/compare/v3.5.4...v3.6.0) (2024-10-14)
+
+
+### Features
+
+* **code:** support trim ([#1794](https://github.com/varletjs/varlet/issues/1794)) ([0a2e43a](https://github.com/varletjs/varlet/commit/0a2e43a7d3a12b04357e8301564be6ec6c0321b4))
+* support alert component ([#1787](https://github.com/varletjs/varlet/issues/1787)) ([8b5079f](https://github.com/varletjs/varlet/commit/8b5079fa07475ee1a011da212716eccf7e1d44b9))
+* support code component ([#1791](https://github.com/varletjs/varlet/issues/1791)) ([fefbde6](https://github.com/varletjs/varlet/commit/fefbde6c9b200e36d4ebbd324ce51a3e59380963))
+
+
+
 ## [3.5.4](https://github.com/varletjs/varlet/compare/v3.5.3...v3.5.4) (2024-10-07)
 
 
