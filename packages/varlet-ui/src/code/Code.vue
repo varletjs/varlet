@@ -21,7 +21,7 @@ export default defineComponent({
     if (highlighter) {
       watch(
         () => [highlighter.value, props.code, props.language, normalizedTheme.value, props.trim] as const,
-        async ([highlighter, code, lang, theme, trim]) => {
+        async ([highlighter, code, lang = '', theme = '', trim]) => {
           if (!highlighter) {
             return
           }

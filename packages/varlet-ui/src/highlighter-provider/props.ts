@@ -1,8 +1,8 @@
 import { PropType } from 'vue'
 
 export interface CodeToHtmlOptions {
-  lang?: string
-  theme?: string
+  lang: string
+  theme: string
 }
 
 export interface Highlighter {

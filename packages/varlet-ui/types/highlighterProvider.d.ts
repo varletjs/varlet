@@ -3,8 +3,8 @@ import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
 export declare const highlighterProps: Record<keyof HighlighterProviderProps, any>
 
 export interface CodeToHtmlOptions {
-  lang?: string
-  theme?: string
+  lang: string
+  theme: string
 }
 
 export interface Highlighter {
