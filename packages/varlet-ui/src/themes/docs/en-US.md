@@ -44,7 +44,7 @@ body {
 
 ### Theme Builder
 
-We provide a [theme builder](https://varletjs.org/varlet-theme-builder), which can intelligently deduce color matching that conforms to the design system through product theme colors or product pictures.
+We provide a [theme builder](https://varletjs.github.io/varlet-theme-builder/), which can intelligently deduce color matching that conforms to the design system through product theme colors or product pictures.
 
 - Note: Only supports generating theme colors for Material Design 3
 
