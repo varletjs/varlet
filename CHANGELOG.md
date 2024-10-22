@@ -1,3 +1,12 @@
+## [3.6.2](https://github.com/varletjs/varlet/compare/v3.6.1...v3.6.2) (2024-10-22)
+
+
+### Bug Fixes
+
+* **alert:** add props default setter ([#1804](https://github.com/varletjs/varlet/issues/1804)) ([7e0c887](https://github.com/varletjs/varlet/commit/7e0c8876b76a502305ff5bb1cc68f0bfc7637b14))
+
+
+
 ## [3.6.1](https://github.com/varletjs/varlet/compare/v3.6.0...v3.6.1) (2024-10-14)
 
 
