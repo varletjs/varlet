@@ -1,0 +1,90 @@
+import{_ as o,m as r,p as a,q as t,w as e,Q as s,a1 as c,b as n,e as h}from"./index-p72OOaSl.js";const p={components:{}},i={class:"varlet-site-doc"},j=a("h1",null,"开关",-1),m={class:"card"},g={id:"jie4shao4"},u=a("p",null,"开关选择器。",-1),_={class:"card"},v={id:"ji1ben3shi3yong4"},y=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),f={class:"card"},w={id:"jin4yong4"},b=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"disabled"),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),k={class:"card"},z={id:"zhi1du2"},x=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"readonly"),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),C={class:"card"},N={id:"zi4ding4yi4yan2se4"},V=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"color"),s("="),a("span",{class:"hljs-string"},'"var(--color-warning)"'),s(),a("span",{class:"hljs-attr"},"close-color"),s("="),a("span",{class:"hljs-string"},'"var(--color-info)"'),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),Z={class:"card"},B={id:"bu4tong2da4xiao3"},T=a("p",null,[s("通过 "),a("code",null,"size"),s(" 属性改变 Switch 大小。")],-1),S=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"size"),s("="),a("span",{class:"hljs-string"},'"15"'),s(" />")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(" />")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"size"),s("="),a("span",{class:"hljs-string"},'"25"'),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),$={class:"card"},A={id:"jia1zai4zhuang4tai4"},E=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},"loading"),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),L={class:"card"},P={id:"zhi2de0jiao4yan4"},q=a("p",null,[s("通过传入一个校验器数组可以对值进行校验，校验器返回 "),a("code",null,"true"),s(" 则为校验通过。 以外的值将转换为文本作为用户提示。")],-1),I=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},":rules"),s("="),a("span",{class:"hljs-string"},`"v => v === true || '错误!'"`),s("/>")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),Q={class:"card"},D={id:"shi3yong4Zo0djiao4yan4"},F=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { z } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'zod'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(),a("span",{class:"hljs-attr"},":rules"),s("="),a("span",{class:"hljs-string"},`"z.boolean().refine(v => v === true, '错误!')"`),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),G={class:"card"},H={id:"yi4bu4bian4geng1"},J=a("p",null,[s("在某些场景下需要等待服务器返回成功之后再执行变更。 设置 "),a("code",null,"lazy-change"),s(" 后会阻止组件本身的绑定值更新操作， 并注册 "),a("code",null,"before-change"),s(" 事件进行手动更新。")],-1),K=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+
+`),a("span",{class:"hljs-function"},[a("span",{class:"hljs-keyword"},"function"),s(),a("span",{class:"hljs-title"},"handleBeforeChange"),s("("),a("span",{class:"hljs-params"},"value, change"),s(") ")]),s(`{
+  `),a("span",{class:"hljs-built_in"},"setTimeout"),s("("),a("span",{class:"hljs-function"},"() =>"),s(" change(value), "),a("span",{class:"hljs-number"},"500"),s(`)
+}
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(` 
+    `),a("span",{class:"hljs-attr"},"lazy-change"),s(`
+    `),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(`
+    @`),a("span",{class:"hljs-attr"},"before-change"),s("="),a("span",{class:"hljs-string"},'"handleBeforeChange"'),s(`
+  />`)]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),M={class:"card"},O={id:"bian4ti3"},R=a("pre",{class:"hljs"},[a("code",null,[a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"script"),s(),a("span",{class:"hljs-attr"},"setup"),s(">")]),a("span",{class:"javascript"},[s(`
+`),a("span",{class:"hljs-keyword"},"import"),s(" { ref } "),a("span",{class:"hljs-keyword"},"from"),s(),a("span",{class:"hljs-string"},"'vue'"),s(`
+
+`),a("span",{class:"hljs-keyword"},"const"),s(" value = ref("),a("span",{class:"hljs-literal"},"true"),s(`)
+`)]),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"script"),s(">")]),s(`
+
+`),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+  `),a("span",{class:"hljs-tag"},[s("<"),a("span",{class:"hljs-name"},"var-switch"),s(),a("span",{class:"hljs-attr"},"variant"),s(),a("span",{class:"hljs-attr"},"v-model"),s("="),a("span",{class:"hljs-string"},'"value"'),s(" />")]),s(`
+`),a("span",{class:"hljs-tag"},[s("</"),a("span",{class:"hljs-name"},"template"),s(">")]),s(`
+`)])],-1),U=a("h2",null,"API",-1),W={class:"card"},X={id:"shu3xing4"},Y=c('<table><thead><tr><th>参数</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>v-model</code></td><td>开关选中状态</td><td><em>any</em></td><td><code>false</code></td></tr><tr><td><code>active-value</code></td><td>开关打开时的值</td><td><em>any</em></td><td><code>true</code></td></tr><tr><td><code>inactive-value</code></td><td>开关关闭时的值</td><td><em>any</em></td><td><code>false</code></td></tr><tr><td><code>disabled</code></td><td>是否禁用</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>readonly</code></td><td>是否只读</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>loading</code></td><td>是否为加载状态</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>ripple</code></td><td>是否启用水波纹</td><td><em>boolean</em></td><td><code>true</code></td></tr><tr><td><code>button-elevation</code> <em><strong>3.2.7</strong></em></td><td>控制按钮的海拔效果</td><td><em>boolean</em></td><td><code>true</code></td></tr><tr><td><code>color</code></td><td>打开状态下的颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>loading-color</code></td><td>加载图标的颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>close-color</code></td><td>关闭状态下的颜色</td><td><em>string</em></td><td><code>-</code></td></tr><tr><td><code>size</code></td><td>switch 的大小</td><td><em>string | number</em></td><td><code>-</code></td></tr><tr><td><code>rules</code></td><td>验证规则，返回 <code>true</code> 表示验证通过，其它类型的值将转换为文本作为用户提示。自 <code>3.5.0</code> 开始支持 <a href="#/zh-CN/zodValidation">Zod 验证</a></td><td><em>((v: any) =&gt; any) | ZodType | Array&lt;((v: any) =&gt; any) | ZodType&gt;</em></td><td><code>-</code></td></tr><tr><td><code>lazy-change</code></td><td>是否允许触发 <code>before-change</code> 事件</td><td><em>boolean</em></td><td><code>false</code></td></tr><tr><td><code>validate-trigger</code></td><td>触发验证的时机，可选值为 <code>onChange</code> <code>onLazyChange</code></td><td><em>SwitchValidateTrigger[]</em></td><td><code>[&#39;onChange&#39;, &#39;onLazyChange&#39;]</code></td></tr><tr><td><code>variant</code> <em><strong>3.2.3</strong></em></td><td>变体模式</td><td><em>boolean</em></td><td><code>false</code></td></tr></tbody></table>',1),ss={class:"card"},as={id:"shi4jian4"},ts=c("<table><thead><tr><th>事件名</th><th>说明</th><th>回调参数</th></tr></thead><tbody><tr><td><code>click</code></td><td>点击时触发</td><td><code>event: Event</code></td></tr><tr><td><code>change</code></td><td>开关状态切换时触发</td><td><code>value: any</code></td></tr><tr><td><code>before-change</code></td><td>变更之前(仅限 <code>lazy-change</code> 模式)触发</td><td><code>value: any</code> <br> <code>change: (value: any) =&gt; void</code></td></tr></tbody></table>",1),es={class:"card"},ls={id:"yang4shi4bian4liang4"},ds=c('<p>以下为组件使用的 css 变量，可以使用 <a href="#/zh-CN/style-provider">StyleProvider 组件</a> 进行样式定制。</p><table><thead><tr><th>变量名</th><th>默认值</th></tr></thead><tbody><tr><td><code>--switch-track-background</code></td><td><code>#fff</code></td></tr><tr><td><code>--switch-track-active-background</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--switch-track-error-background</code></td><td><code>var(--color-danger)</code></td></tr><tr><td><code>--switch-ripple-color</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--switch-handle-background</code></td><td><code>var(--color-on-primary)</code></td></tr><tr><td><code>--switch-handle-color</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--switch-handle-active-color</code></td><td><code>var(--color-on-primary)</code></td></tr><tr><td><code>--switch-handle-active-background</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--switch-handle-error-background</code></td><td><code>var(--color-danger)</code></td></tr><tr><td><code>--switch-disabled-opacity</code></td><td><code>var(--opacity-disabled)</code></td></tr><tr><td><code>--switch-variant-width</code></td><td><code>52px</code></td></tr><tr><td><code>--switch-variant-height</code></td><td><code>32px</code></td></tr><tr><td><code>--switch-variant-track-border-color</code></td><td><code>#888</code></td></tr><tr><td><code>--switch-variant-track-background</code></td><td><code>var(--color-surface-container-highest)</code></td></tr><tr><td><code>--switch-variant-handle-width</code></td><td><code>24px</code></td></tr><tr><td><code>--switch-variant-handle-height</code></td><td><code>24px</code></td></tr><tr><td><code>--switch-variant-handle-color</code></td><td><code>var(--color-on-primary)</code></td></tr><tr><td><code>--switch-variant-handle-active-color</code></td><td><code>var(--color-primary)</code></td></tr><tr><td><code>--switch-variant-handle-background</code></td><td><code>#888</code></td></tr><tr><td><code>--switch-variant-handle-active-background</code></td><td><code>var(--color-on-primary)</code></td></tr></tbody></table>',2);function cs(ns,os,rs,hs,ps,is){const l=n("router-link"),d=n("var-site-code-example");return h(),r("div",i,[j,a("div",m,[a("h3",g,[t(l,{to:"#jie4shao4"},{default:e(()=>[s("#")]),_:1}),s("介绍")]),u]),a("div",_,[a("h3",v,[t(l,{to:"#ji1ben3shi3yong4"},{default:e(()=>[s("#")]),_:1}),s("基本使用")]),t(d,null,{default:e(()=>[y]),_:1})]),a("div",f,[a("h3",w,[t(l,{to:"#jin4yong4"},{default:e(()=>[s("#")]),_:1}),s("禁用")]),t(d,null,{default:e(()=>[b]),_:1})]),a("div",k,[a("h3",z,[t(l,{to:"#zhi1du2"},{default:e(()=>[s("#")]),_:1}),s("只读")]),t(d,null,{default:e(()=>[x]),_:1})]),a("div",C,[a("h3",N,[t(l,{to:"#zi4ding4yi4yan2se4"},{default:e(()=>[s("#")]),_:1}),s("自定义颜色")]),t(d,null,{default:e(()=>[V]),_:1})]),a("div",Z,[a("h3",B,[t(l,{to:"#bu4tong2da4xiao3"},{default:e(()=>[s("#")]),_:1}),s("不同大小")]),T,t(d,null,{default:e(()=>[S]),_:1})]),a("div",$,[a("h3",A,[t(l,{to:"#jia1zai4zhuang4tai4"},{default:e(()=>[s("#")]),_:1}),s("加载状态")]),t(d,null,{default:e(()=>[E]),_:1})]),a("div",L,[a("h3",P,[t(l,{to:"#zhi2de0jiao4yan4"},{default:e(()=>[s("#")]),_:1}),s("值的校验")]),q,t(d,null,{default:e(()=>[I]),_:1})]),a("div",Q,[a("h3",D,[t(l,{to:"#shi3yong4Zo0djiao4yan4"},{default:e(()=>[s("#")]),_:1}),s("使用 Zod 校验")]),t(d,null,{default:e(()=>[F]),_:1})]),a("div",G,[a("h3",H,[t(l,{to:"#yi4bu4bian4geng1"},{default:e(()=>[s("#")]),_:1}),s("异步变更")]),J,t(d,null,{default:e(()=>[K]),_:1})]),a("div",M,[a("h3",O,[t(l,{to:"#bian4ti3"},{default:e(()=>[s("#")]),_:1}),s("变体")]),t(d,null,{default:e(()=>[R]),_:1})]),U,a("div",W,[a("h3",X,[t(l,{to:"#shu3xing4"},{default:e(()=>[s("#")]),_:1}),s("属性")]),Y]),a("div",ss,[a("h3",as,[t(l,{to:"#shi4jian4"},{default:e(()=>[s("#")]),_:1}),s("事件")]),ts]),a("div",es,[a("h3",ls,[t(l,{to:"#yang4shi4bian4liang4"},{default:e(()=>[s("#")]),_:1}),s("样式变量")]),ds])])}const ms=o(p,[["render",cs]]);export{ms as default};
