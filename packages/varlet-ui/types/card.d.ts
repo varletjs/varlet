@@ -20,7 +20,6 @@ export interface CardProps extends BasicAttributes {
   subtitle?: string
   description?: string
   elevation?: boolean | number | string
-  filled?: boolean
   ripple?: boolean
   layout?: CardLayout
   floating?: boolean
