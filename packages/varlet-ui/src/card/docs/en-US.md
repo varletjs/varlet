@@ -170,11 +170,10 @@ const floating = ref(false)
 | `title`             | The title of Card                                               | _string_ | `-`      |
 | `subtitle`          | The subtitle of Card                                            | _string_ | `-`      |
 | `description`       | The description of Card                                         | _string_ | `-`      |
- `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
+| `elevation` | Elevation level, options `true` `false` and level of `0-24` | _string \| number \| boolean_|   `true`    |
 | `src`               | The src of Image                                                | _string_ | `-`      |
 | `layout`            | Arrangement mode, options `row` `column`                        | _string_ | `column` |
 | `fit`               | Fill mode, options `fill` `contain` `cover` `none` `scale-down` | _string_ | `cover`  |
-| `filled`            | Whether to be filled card                                       | _boolean_ | `false`  |
 | `outline`           | Whether to be outline card                                      | _boolean_ | `false`  |
 | `alt`               | Image alt text, the same as the native attribute of the `img` tag                                                       | _string_ | `-`      |
 | `image-height`      | Height of Image                                                 | _string \| number_  | `-`     |
