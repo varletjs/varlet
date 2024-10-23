@@ -40,6 +40,8 @@ export const props = {
   onClick: defineListenerProp<(e: Event) => void>(),
   'onUpdate:floating': defineListenerProp<(value: boolean) => void>(),
 
-  // deprecated
+  /**
+   * @deprecated use outlined variant instead
+   */
   outline: Boolean,
 }
