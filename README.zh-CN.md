@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/npm/v/@varlet/ui?style=flat-square" alt="version">
     <img src="https://img.shields.io/github/stars/varletjs/varlet" alt="stars">
     <img src="https://img.shields.io/badge/vue-v3.2.0%2B-%23407fbc" alt="vue">
-    <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="licence">
+    <img src="https://img.shields.io/npm/l/@varlet/ui.svg" alt="license">
     <img src="https://img.shields.io/codecov/c/github/varletjs/varlet" alt="coverage">
     <img src="https://github.com/varletjs/varlet/workflows/CI/badge.svg" alt="ci">
   </p>
