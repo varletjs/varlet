@@ -1,3 +1,12 @@
+## [3.6.3](https://github.com/varletjs/varlet/compare/v3.6.2...v3.6.3) (2024-10-28)
+
+
+### Bug Fixes
+
+* **card:** fix CardProps types ([#1807](https://github.com/varletjs/varlet/issues/1807)) ([aa09774](https://github.com/varletjs/varlet/commit/aa09774e8404571b8692c144f4dd96d2f1c7ed2e))
+
+
+
 ## [3.6.2](https://github.com/varletjs/varlet/compare/v3.6.1...v3.6.2) (2024-10-22)
 
 
