@@ -24,6 +24,9 @@ export async function lint() {
       './packages/varlet-vscode-extension/src',
       './packages/varlet-ui-playground/src',
       './packages/varlet-import-resolver/src',
+      './packages/varlet-vite-plugins/src',
+      './packages/varlet-preset-unocss/src',
+      './packages/varlet-preset-tailwindcss/src',
     ]
     const { stdout } = await x(
       'eslint',
