@@ -1,6 +1,6 @@
 import { ES_DIR } from '../shared/constant.js'
 import { transformAsync } from '@babel/core'
-import { bigCamelize } from '@varlet/shared'
+import { pascalCase } from '@varlet/shared'
 import { getVersion, isDir, isJsx, isTsx, replaceExt } from '../shared/fsUtils.js'
 import { extractStyleDependencies, IMPORT_CSS_RE, IMPORT_LESS_RE, IMPORT_SCSS_RE } from './compileStyle.js'
 import { resolve, relative, extname, dirname } from 'path'
@@ -202,7 +202,7 @@ export function generateEsEntryTemplate(options: GenerateEsEntryTemplateOptions)
   const publicComponents: string[] = []
 
   publicDirs.forEach((dirname: string) => {
-    const publicComponent = bigCamelize(dirname)
+    const publicComponent = pascalCase(dirname)
     const module = `'${root}${dirname}/index${scriptExtname}'`
 
     publicComponents.push(publicComponent)

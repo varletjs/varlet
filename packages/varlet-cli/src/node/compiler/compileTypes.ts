@@ -1,6 +1,6 @@
 import fse from 'fs-extra'
 import { TYPES_DIR, UI_PACKAGE_JSON } from '../shared/constant.js'
-import { bigCamelize } from '@varlet/shared'
+import { pascalCase } from '@varlet/shared'
 import { resolve, relative } from 'path'
 import { getVarletConfig } from '../config/varlet.config.js'
 import { compileStyleVars } from './compileStyleVars.js'
@@ -31,7 +31,7 @@ export async function compileTypes() {
 
   includeFilenames.forEach((filename) => {
     const folder = filename.replace('.d.ts', '')
-    const name = bigCamelize(folder)
+    const name = pascalCase(folder)
 
     exports.push(`export * from './${folder}'`)
 
@@ -43,7 +43,7 @@ export async function compileTypes() {
     if (directives.includes(folder)) {
       directiveDeclares.push(`v${name}: typeof import('${libraryName}')['_${name}Component']`)
     } else {
-      componentDeclares.push(`${bigCamelize(namespace)}${name}: typeof import('${libraryName}')['_${name}Component']`)
+      componentDeclares.push(`${pascalCase(namespace)}${name}: typeof import('${libraryName}')['_${name}Component']`)
     }
   })
 

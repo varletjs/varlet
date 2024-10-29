@@ -94,7 +94,7 @@ import { computed, defineComponent, ref, watch, type Ref, type ComputedRef } fro
 import { useRoute } from 'vue-router'
 import { getBrowserTheme, watchLang, watchTheme, setTheme, getMobileIndex, type Theme } from '@varlet/cli/client'
 import { removeEmpty, inIframe, isPhone } from '../utils'
-import { bigCamelize } from '@varlet/shared'
+import { pascalCase } from '@varlet/shared'
 
 export default defineComponent({
   setup() {
@@ -147,8 +147,8 @@ export default defineComponent({
     watch(
       () => route.path,
       (to: string) => {
-        const componentName = bigCamelize(to.slice(1))
-        const redirectName = bigCamelize(redirect.slice(1))
+        const componentName = pascalCase(to.slice(1))
+        const redirectName = pascalCase(redirect.slice(1))
         bigCamelizeComponentName.value = componentName === redirectName ? '' : componentName
         showBackIcon.value = componentName !== redirectName
       }

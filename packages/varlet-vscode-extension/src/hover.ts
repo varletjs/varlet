@@ -1,4 +1,4 @@
-import { kebabCase, bigCamelize, uniq } from '@varlet/shared'
+import { kebabCase, pascalCase, uniq } from '@varlet/shared'
 import { languages, Position, Hover, MarkdownString, Uri, type TextDocument, type ExtensionContext } from 'vscode'
 import { componentsMap } from './componentsMap'
 import { TAG_BIG_CAMELIZE_RE, LANGUAGE_IDS, TAG_LINK_RE } from './constant'
@@ -29,7 +29,7 @@ export interface TableData {
 
 export function getComponentTableData(component: string) {
   const name = `var-${component}`
-  const bigCamelName = bigCamelize(name)
+  const bigCamelName = pascalCase(name)
   const tags = getWebTypesTags()
   const tag = tags.find((tag) => tag.name === name)
   const documentation = `${envs().t('documentation')}${componentsMap[component].path}`

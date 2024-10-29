@@ -1,7 +1,7 @@
 import ejs from 'ejs'
 import fse from 'fs-extra'
 import logger from '../shared/logger.js'
-import { bigCamelize, camelize, kebabCase } from '@varlet/shared'
+import { pascalCase, camelize, kebabCase } from '@varlet/shared'
 import { input, confirm, select } from '@inquirer/prompts'
 import { resolve } from 'path'
 import { glob } from '../shared/fsUtils.js'
@@ -38,7 +38,7 @@ async function renderTemplates(componentFolder: string, componentFolderName: str
     const code = ejs.render(templateCode, renderData)
     const file = template
       .replace('[componentName]', camelize(componentFolderName))
-      .replace('[ComponentName]', bigCamelize(componentFolderName))
+      .replace('[ComponentName]', pascalCase(componentFolderName))
       .replace('.ejs', '')
 
     writeFileSync(file, code)
@@ -52,7 +52,7 @@ export async function create(options: CreateCommandOptions) {
   const { namespace } = await getVarletConfig()
   const renderData: RenderData = {
     namespace,
-    bigCamelizeNamespace: bigCamelize(namespace),
+    bigCamelizeNamespace: pascalCase(namespace),
     kebabCaseName: 'component-name',
     bigCamelizeName: 'ComponentName',
     camelizeName: 'componentName',
@@ -68,7 +68,7 @@ export async function create(options: CreateCommandOptions) {
 
   renderData.kebabCaseName = kebabCase(name)
   renderData.camelizeName = camelize(name)
-  renderData.bigCamelizeName = bigCamelize(name)
+  renderData.bigCamelizeName = pascalCase(name)
   const componentFolder = resolve(SRC_DIR, renderData.kebabCaseName)
   const componentFolderName = renderData.kebabCaseName
 

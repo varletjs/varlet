@@ -11,7 +11,7 @@ import {
   type CompletionItemProvider,
 } from 'vscode'
 import { componentsMap, type ComponentDescriptor } from './componentsMap'
-import { bigCamelize, isString, kebabCase } from '@varlet/shared'
+import { pascalCase, isString, kebabCase } from '@varlet/shared'
 import { ATTR_RE, LANGUAGE_IDS, PROP_NAME_RE } from './constant'
 import { getWebTypesTags, envs } from './env'
 
@@ -48,7 +48,7 @@ export function registerCompletions(context: ExtensionContext) {
 
         completionItems.push(
           new CompletionItem(name, CompletionItemKind.Field),
-          new CompletionItem(bigCamelize(name), CompletionItemKind.Field)
+          new CompletionItem(pascalCase(name), CompletionItemKind.Field)
         )
       })
 
