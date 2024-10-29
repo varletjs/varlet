@@ -16,7 +16,7 @@ packages/varlet-ui/highlight/**
 packages/varlet-ui/types/index.d.ts
 packages/varlet-ui/types/styleVars.d.ts
 
-packages/varlet-ui-playground/dist/**
+packages/varlet-ui-playground/site/**
 packages/varlet-ui-playground/public/**
 packages/varlet-ui-playground/*.d.ts
 packages/varlet-preset-tailwindcss/lib/**
