@@ -36,13 +36,10 @@ packages/varlet-ui/highlight
 packages/varlet-ui/public/icons
 
 packages/varlet-ui-playground/site
-packages/varlet-ui-playground/public/touch-emulator
 packages/varlet-ui-playground/public/varlet.esm.js
 packages/varlet-ui-playground/public/varlet-touch-emulator.js
 packages/varlet-ui-playground/public/varlet.css
 packages/varlet-ui-playground/public/varlet-area.js
-packages/varlet-ui-playground/auto-imports.d.ts
-packages/varlet-ui-playground/components.d.ts
 
 packages/varlet-icons/dist
 
