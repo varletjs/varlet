@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
-    "typescript": "^5.1.5",
+    "typescript": "5.4.0",
     "tsup": "7.2.0"
   }
 }
