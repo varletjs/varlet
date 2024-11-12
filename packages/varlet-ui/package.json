@@ -75,7 +75,7 @@
     "jsdom": "24.1.1",
     "live-server": "^1.2.1",
     "shiki": "^1.21.0",
-    "typescript": "5.4.0",
+    "typescript": "5.3.3",
     "vitest": "2.0.5",
     "vue": "3.4.21",
     "vue-router": "4.2.0",

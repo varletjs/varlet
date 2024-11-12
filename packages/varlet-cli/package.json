@@ -63,7 +63,7 @@
     "picocolors": "^1.0.0",
     "sass": "^1.77.4",
     "sharp": "0.31.1",
-    "typescript": "5.4.0",
+    "typescript": "5.3.3",
     "vite": "5.4.6",
     "vitest": "2.1.1",
     "vue": "3.4.21"
