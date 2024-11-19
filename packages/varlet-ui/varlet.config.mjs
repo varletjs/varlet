@@ -265,6 +265,14 @@ export default defineConfig({
       },
       {
         text: {
+          'zh-CN': 'CountTo 数字动画',
+          'en-US': 'CountTo',
+        },
+        doc: 'count-to',
+        type: 2,
+      },
+      {
+        text: {
           'zh-CN': 'Skeleton 骨架屏',
           'en-US': 'Skeleton',
         },

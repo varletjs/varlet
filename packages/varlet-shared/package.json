@@ -37,7 +37,7 @@
     "build": "tsup src/index.ts --format esm,cjs --out-dir=lib --dts --clean"
   },
   "dependencies": {
-    "rattail": "1.0.0"
+    "rattail": "1.0.12"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",

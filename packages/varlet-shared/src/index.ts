@@ -1,2 +1,3 @@
-export * from './is.js'
+export * from './is'
+export * from './motion'
 export * from 'rattail'
