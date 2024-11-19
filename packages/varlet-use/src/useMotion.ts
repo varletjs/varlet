@@ -12,7 +12,7 @@ export interface UseMotionOptions {
 export function useMotion(options: UseMotionOptions) {
   const value = ref(options.from)
   const state = ref<MotionState>('pending')
-  const { start, reset, pause, getState } = motion({
+  const { start, reset, pause } = motion({
     ...options,
     frame: ({ value: newValue, done }) => {
       value.value = newValue
@@ -31,7 +31,6 @@ export function useMotion(options: UseMotionOptions) {
     state,
     start,
     pause,
-    getState,
     reset: () => {
       value.value = options.from
       reset()
