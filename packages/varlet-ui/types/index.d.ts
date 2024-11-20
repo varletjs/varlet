@@ -28,6 +28,7 @@ export * from './collapse'
 export * from './collapseItem'
 export * from './collapseTransition'
 export * from './context'
+export * from './countTo'
 export * from './countdown'
 export * from './counter'
 export * from './datePicker'
@@ -125,6 +126,7 @@ declare module 'vue' {
     VarCollapseItem: typeof import('@varlet/ui')['_CollapseItemComponent']
     VarCollapseTransition: typeof import('@varlet/ui')['_CollapseTransitionComponent']
     VarContext: typeof import('@varlet/ui')['_ContextComponent']
+    VarCountTo: typeof import('@varlet/ui')['_CountToComponent']
     VarCountdown: typeof import('@varlet/ui')['_CountdownComponent']
     VarCounter: typeof import('@varlet/ui')['_CounterComponent']
     VarDatePicker: typeof import('@varlet/ui')['_DatePickerComponent']

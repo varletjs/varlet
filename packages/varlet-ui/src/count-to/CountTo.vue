@@ -1,15 +1,12 @@
 <template>
   <div :class="n()">
-    <div :style="{ transform: `translateX(${value}px)` }">{{ value }}: {{ state }}</div>
-    <button @click="start">Start</button>
-    <button @click="pause">Pause</button>
-    <button @click="reset">Reset</button>
+    <slot v-bind="numberData"> {{ numberData.value }} </slot>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { props } from './props'
+import { defineComponent, computed, onMounted } from 'vue'
+import { props, type NumberData } from './props'
 import { createNamespace } from '../utils/components'
 import { useMotion } from '@varlet/use'
 import { floor } from '@varlet/shared'
@@ -19,33 +16,46 @@ const { name, n } = createNamespace('count-to')
 export default defineComponent({
   name,
   props,
-  setup() {
+  setup(props) {
     const {
       value: _value,
       state,
       start,
       pause,
-      reset,
+      reset: _reset,
     } = useMotion({
-      from: 0,
-      to: 200,
-      duration: 2000,
+      from: Number(props.from),
+      to: Number(props.to),
+      duration: Number(props.duration),
+      timingFunction: props.timingFunction,
+      onFinished: props.onFinished,
     })
 
-    const value = computed(() => floor(_value.value))
+    const numberData = computed<NumberData>(() => ({
+      value: floor(_value.value),
+      state: state.value,
+    }))
+
+    onMounted(() => {
+      if (props.autoStart) {
+        start()
+      }
+    })
+
+    function reset() {
+      _reset()
+      if (props.autoStart) {
+        start()
+      }
+    }
 
     return {
+      numberData,
       n,
       start,
       pause,
       reset,
-      state,
-      value,
     }
   },
 })
 </script>
-
-<style lang="less">
-@import './countTo';
-</style>
