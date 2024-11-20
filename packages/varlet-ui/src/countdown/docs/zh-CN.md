@@ -189,4 +189,4 @@ function change() {
 | 变量名                         | 默认值 |
 |-----------------------------| --- |
 | `--countdown-text-color`     | `var(--color-text)`                |
-| `--countdown-text-font-size` | `var(--font-size-lg)` 
+| `--countdown-text-font-size` | `var(--font-size-lg)` |

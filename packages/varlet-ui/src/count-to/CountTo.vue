@@ -1,15 +1,15 @@
 <template>
   <div :class="n()">
-    <slot v-bind="numberData"> {{ numberData.value }} </slot>
+    <slot :value="value"> {{ value }} </slot>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted } from 'vue'
-import { props, type NumberData } from './props'
+import { defineComponent, computed, onMounted, watch } from 'vue'
+import { props } from './props'
 import { createNamespace } from '../utils/components'
 import { useMotion } from '@varlet/use'
-import { floor } from '@varlet/shared'
+import { call, floor, toNumber } from '@varlet/shared'
 
 const { name, n } = createNamespace('count-to')
 
@@ -19,29 +19,27 @@ export default defineComponent({
   setup(props) {
     const {
       value: _value,
-      state,
-      start,
-      pause,
       reset: _reset,
+      // expose
+      start,
+      // expose
+      pause,
     } = useMotion({
-      from: Number(props.from),
-      to: Number(props.to),
-      duration: Number(props.duration),
+      from: () => toNumber(props.from),
+      to: () => toNumber(props.to),
+      duration: () => toNumber(props.duration),
       timingFunction: props.timingFunction,
-      onFinished: props.onFinished,
+      onFinished() {
+        call(props.onEnd)
+      },
     })
 
-    const numberData = computed<NumberData>(() => ({
-      value: floor(_value.value),
-      state: state.value,
-    }))
+    const value = computed(() => floor(_value.value, toNumber(props.precision)))
 
-    onMounted(() => {
-      if (props.autoStart) {
-        start()
-      }
-    })
+    watch(() => [props.from, props.to, props.duration], reset)
+    onMounted(reset)
 
+    // expose
     function reset() {
       _reset()
       if (props.autoStart) {
@@ -50,12 +48,19 @@ export default defineComponent({
     }
 
     return {
-      numberData,
+      value,
       n,
       start,
       pause,
       reset,
+      toNumber,
+      floor,
     }
   },
 })
 </script>
+
+<style lang="less">
+@import '../styles/common';
+@import './countTo';
+</style>

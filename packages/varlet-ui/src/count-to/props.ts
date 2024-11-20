@@ -1,9 +1,5 @@
 import { PropType } from 'vue'
-
-export type NumberData = {
-  value: number
-  state: 'running' | 'paused' | 'pending' | 'finished'
-}
+import { defineListenerProp } from '../utils/components'
 
 export const props = {
   from: {
@@ -16,7 +12,11 @@ export const props = {
   },
   duration: {
     type: [String, Number],
-    default: 3000,
+    default: 2000,
+  },
+  precision: {
+    type: [String, Number],
+    default: 0,
   },
   autoStart: {
     type: Boolean,
@@ -25,7 +25,5 @@ export const props = {
   timingFunction: {
     type: Function as PropType<(v: number) => number>,
   },
-  onFinished: {
-    type: Function as PropType<() => void>,
-  },
+  onEnd: defineListenerProp<() => void>(),
 }

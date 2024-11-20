@@ -263,14 +263,7 @@ export default defineConfig({
         },
         type: 1,
       },
-      {
-        text: {
-          'zh-CN': 'CountTo 数字动画',
-          'en-US': 'CountTo',
-        },
-        doc: 'count-to',
-        type: 2,
-      },
+
       {
         text: {
           'zh-CN': 'Skeleton 骨架屏',
@@ -602,6 +595,14 @@ export default defineConfig({
           'en-US': 'LoadingBar',
         },
         doc: 'loading-bar',
+        type: 2,
+      },
+      {
+        text: {
+          'zh-CN': 'CountTo 数字动画',
+          'en-US': 'CountTo',
+        },
+        doc: 'count-to',
         type: 2,
       },
       {

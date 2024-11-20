@@ -1,5 +1,6 @@
 export default {
   basicUsage: 'Basic Usage',
+  precision: 'Precision',
   customDuration: 'Custom Duration',
   customStyle: 'Custom Style',
   manualControl: 'Manual Control',

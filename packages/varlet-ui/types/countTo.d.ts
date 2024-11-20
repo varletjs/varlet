@@ -1,19 +1,19 @@
-import { VarComponent, BasicAttributes, SetPropsDefaults } from './varComponent'
+import { VarComponent, BasicAttributes, SetPropsDefaults, ListenerProp } from './varComponent'
 
 export declare const countToProps: Record<keyof CountToProps, any>
 
-export interface CountToNumberData {
+export interface CountToData {
   value: number
-  state: 'running' | 'paused' | 'pending' | 'finished'
 }
 
 export interface CountToProps extends BasicAttributes {
   from: string | number
   to: string | number
   duration: string | number
+  precision: string | number
   autoStart: boolean
-  timingFunction?: PropType<(v: number) => number>
-  onFinished?: PropType<() => void>
+  timingFunction?: (v: number) => number
+  onEnd?: ListenerProp<() => void>
 }
 
 export class CountTo extends VarComponent {
@@ -22,7 +22,7 @@ export class CountTo extends VarComponent {
   $props: CountToProps
 
   $slots: {
-    default(data: CountToNumberData): VNode[]
+    default(data: CountToData): VNode[]
   }
 
   start(): void

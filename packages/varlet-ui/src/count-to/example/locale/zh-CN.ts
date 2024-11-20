@@ -1,5 +1,6 @@
 export default {
   basicUsage: '基本使用',
+  precision: '精度',
   customDuration: '自定义时长',
   customStyle: '自定义样式',
   manualControl: '手动控制',

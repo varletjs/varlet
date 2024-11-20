@@ -151,7 +151,7 @@ function change() {
 
 ### Events
 
-| Event    | Description                     | arguments            |
+| Event    | Description                     | Arguments            |
 | -------- | ------------------------------- | -------------------- |
 | `end`    | Emitted after countdown ended   | `-`                  |
 | `change` | Emitted after countdown changed | `timeData: TimeData` |
@@ -176,7 +176,7 @@ function change() {
 
 Use ref to get CountDown instance and call instance methods.
 
-| Method | Description	 | arguments | Return |
+| Method | Description	 | Arguments | Return |
 | ---- | ------- | -------- |--------|
 | `start` | Start countdown | `-`       | `-` |
 | `pause` | Pause countdown | `-`       | `-` |

@@ -14,6 +14,16 @@
 </template>
 ```
 
+### 精度
+
+通过 `precision` 控制数值精度
+
+```html
+<template>
+  <var-count-to :from="0" :to="123456" :precision="2" />
+</template>
+```
+
 ### 自定义时长
 
 通过 `duration` 属性可以指定动画时长（单位为毫秒）。
@@ -26,13 +36,11 @@
 
 ### 自定义样式
 
-默认作用域插槽暴露了 `state` 和 `value` 两个属性，可以通过插槽自定义样式。
-
 ```html
 <template>
   <var-count-to :from="0" :to="123456">
-    <template #default="{ state, value }">
-      <i>{{ state }}: {{ value.toLocaleString() }}</i>
+    <template #default="{ value }">
+      {{ value.toLocaleString() }}
     </template>
   </var-count-to>
 </template>
@@ -44,30 +52,26 @@
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456" :timing-function="(t) => 1 - Math.pow(1 - t, 2)" />
+  <var-count-to :from="0" :to="123456" :timing-function="(v) => 1 - Math.pow(1 - v, 3)" />
 </template>
 ```
 
 ### 手动控制
 
-通过 ref 获取到组件实例后，可以调用 `start`、`pause`、`reset` 方法。
+可以调用 `start`、`pause`、`reset` 方法，手动控制动画的开始、暂停、重置。
 
 ```html
 <script setup>
-  import { ref } from 'vue'
-
-  const countToRef = ref()
+import { ref } from 'vue'
+  
+const countTo = ref()
 </script>
 
 <template>
-  <var-count-to :from="0" :to="123456" ref="countToRef" :auto-start="false" />
-  <var-row style="margin-top: 10px">
-    <var-button-group>
-      <var-button @click="countToRef.start()">{{ t('startText') }}</var-button>
-      <var-button @click="countToRef.pause()">{{ t('pauseText') }}</var-button>
-      <var-button @click="countToRef.reset()">{{ t('resetText') }} </var-button>
-    </var-button-group>
-  </var-row>
+  <var-count-to ref="countTo" :from="0" :to="123456" :auto-start="false" />
+  <var-button @click="countTo.start()">开始</var-button>
+  <var-button @click="countTo.pause()">暂停</var-button>
+  <var-button @click="countTo.reset()">重置</var-button>
 </template>
 ```
 
@@ -79,34 +83,36 @@
 | ------------ | -------------------------- | ------------------ | ------- |
 | `from`       | 起始值                     | _number \| string_ | `0`     |
 | `to`         | 目标值                     | _number \| string_ | `0`     |
-| `duration`   | 动画持续时间（单位：毫秒） | _number \| string_ | `30000` |
+| `duration`   | 动画持续时间（单位：毫秒） | _number \| string_ | `2000` |
+| `precision`   | 精度 | _number \| string_ | `2` |
 | `auto-start` | 是否自动开始播放动画       | _boolean_          | `true`  |
+| `timing-function` | 动画曲线函数       | _(v: number) => number_          | `v => v`  |
 
 ### 事件
 
 | 事件名     | 说明           | 回调参数 |
 | ---------- | -------------- | -------- |
-| `finished` | 动画结束时触发 | `-`      |
+| `end` | 动画结束时触发 | `-`      |
 
 ### 插槽
 
 | 插槽名    | 说明       | 参数                     |
 | --------- | ---------- | ------------------------ |
-| `default` | 自定义内容 | `numberData: NumberData` |
-
-### NumberData 格式
-
-| 名称    | 说明         | 类型                                               |
-| ------- | ------------ | -------------------------------------------------- |
-| `value` | 当前数值     | `number`                                           |
-| `state` | 当前播放状态 | `'running' \| 'paused' \| 'pending' \| 'finished'` |
+| `default` | 自定义内容 | `value: number` |
 
 ### 方法
 
-通过 ref 可以获取到 CountDown 实例并调用实例方法.
-
 | 方法名  | 说明                                                      | 参数 | 返回值 |
 | ------- | --------------------------------------------------------- | ---- | ------ |
-| `start` | 开始倒计时                                                | `-`  | `-`    |
-| `pause` | 暂停倒计时                                                | `-`  | `-`    |
-| `reset` | 重设动画，若 `auto-start` 为 `true`，重设后会自动开始播放 | `-`  | `-`    |
+| `start` | 开始动画                                                | `-`  | `-`    |
+| `pause` | 暂停动画                                                | `-`  | `-`    |
+| `reset` | 重置动画，若 `auto-start` 为 `true`，重置后会自动开始播放 | `-`  | `-`    |
+
+### 样式变量
+
+以下为组件使用的 css 变量，可以使用 [StyleProvider 组件](#/zh-CN/style-provider) 进行样式定制。
+
+| 变量名                         | 默认值 |
+|-----------------------------| --- |
+| `--count-to-text-color`     | `var(--color-text)`  |
+| `--count-to-text-font-size` | `var(--font-size-lg)` |
