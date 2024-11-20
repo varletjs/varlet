@@ -69,18 +69,18 @@ const countTo = ref()
 
 <template>
   <var-count-to ref="countTo" :from="0" :to="123456" :auto-start="false" />
-  <var-button @click="countToRef.start()">{{ t('startText') }}</var-button>
-  <var-button @click="countToRef.pause()">{{ t('pauseText') }}</var-button>
-  <var-button @click="countToRef.reset()">{{ t('resetText') }}</var-button>
+  <var-button @click="countToRef.start()">Start</var-button>
+  <var-button @click="countToRef.pause()">Pause</var-button>
+  <var-button @click="countToRef.reset()">Reset</var-button>
 </template>
 ```
 
 ## API
 
-### Properties
+### Props
 
-| Property     | Description                              | Type               | Default | --- |
-| ------------ | ---------------------------------------- | ------------------ | ------- | --- |
+| Prop         | Description                      | Type               | Default        |
+| ------------ | ---------------------------------------- | ------------------ | ------- |
 | `from`       | Start value                              | _number \| string_ | `0`     |
 | `to`         | Target value                             | _number \| string_ | `0`     |
 | `duration`   | Animation duration (ms)                  | _number \| string_ | `2000` |
@@ -90,19 +90,19 @@ const countTo = ref()
 
 ### Events
 
-| Event Name | Description                   | Callback Parameters |
+| Event    | Description                     | Arguments            |
 | ---------- | ----------------------------- | ------------------- |
 | `end` | Triggered when animation ends | `-`                 |
 
 ### Slots
 
-| Slot Name | Description    | Parameters               |
+| Name      | Description    | SlotProps            |
 | --------- | -------------- | ------------------------ |
 | `default` | Custom content | `value: number` |
 
 ### Methods
 
-| Method  | Description                                                                          | Arguments | Return |
+| Method | Description	 | Arguments | Return |
 | ------- | ------------------------------------------------------------------------------------ | --------- | ------ |
 | `start` | Start the animation                                                                  | `-`       | `-`    |
 | `pause` | Pause the animation                                                                  | `-`       | `-`    |
