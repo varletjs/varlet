@@ -10,7 +10,7 @@ The `from` and `to` attributes specify the start and target values.
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456" />
+  <var-count-to :to="123456" />
 </template>
 ```
 
@@ -20,7 +20,7 @@ Controlling numerical precision with `precision`
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456" />
+  <var-count-to :to="123456" />
 </template>
 ```
 
@@ -30,7 +30,7 @@ The `duration` attribute specifies the animation duration in milliseconds.
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456" :duration="100000" />
+  <var-count-to :to="123456" :duration="100000" />
 </template>
 ```
 
@@ -38,7 +38,7 @@ The `duration` attribute specifies the animation duration in milliseconds.
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456">
+  <var-count-to :to="123456">
     <template #default="{ value }">
       {{ value.toLocaleString() }}
     </template>
@@ -52,7 +52,7 @@ The `timing-function` attribute specifies the animation curve.
 
 ```html
 <template>
-  <var-count-to :from="0" :to="123456" :timing-function="(v) => 1 - Math.pow(1 - v, 3)" />
+  <var-count-to :to="123456" :timing-function="(v) => 1 - Math.pow(1 - v, 3)" />
 </template>
 ```
 
@@ -68,7 +68,7 @@ const countTo = ref()
 </script>
 
 <template>
-  <var-count-to ref="countTo" :from="0" :to="123456" :auto-start="false" />
+  <var-count-to ref="countTo" :to="123456" :auto-start="false" />
   <var-button @click="countToRef.start()">Start</var-button>
   <var-button @click="countToRef.pause()">Pause</var-button>
   <var-button @click="countToRef.reset()">Reset</var-button>
