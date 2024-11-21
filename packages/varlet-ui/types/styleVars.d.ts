@@ -263,6 +263,8 @@ interface BaseStyleVars {
   '--collapse-item-margin-top'?: string
   '--collapse-disable-color'?: string
   '--collapse-border-top'?: string
+  '--count-to-text-color'?: string
+  '--count-to-text-font-size'?: string
   '--countdown-text-color'?: string
   '--countdown-text-font-size'?: string
   '--counter-padding'?: string
