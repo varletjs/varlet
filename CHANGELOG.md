@@ -1,3 +1,12 @@
+# [3.7.0](https://github.com/varletjs/varlet/compare/v3.6.5...v3.7.0) (2024-11-21)
+
+
+### Features
+
+* new component CountTo ([#1815](https://github.com/varletjs/varlet/issues/1815)) ([b00508d](https://github.com/varletjs/varlet/commit/b00508de19aeb625a5638872d13d99ca8f107c6f))
+
+
+
 ## [3.6.5](https://github.com/varletjs/varlet/compare/v3.6.4...v3.6.5) (2024-11-12)
 
 
